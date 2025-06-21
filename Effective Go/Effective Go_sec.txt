@@ -1,0 +1,3052 @@
+Effective Go -TheGo Programming Language
+Effective Go - Go 编程语言
+Documentation Effective Go Effective Go Introduction Go is a new language .
+文档 Effective Go Effective Go 简介 Go 是一种新语言。
+Although it borrows ideas from existing languages ,
+虽然它借鉴了现有语言的思想，
+it has unusual properties that make effective Go programs different in character from programs written in its relatives .
+它具有不寻常的属性，这使得有效的 Go 程序在特性上与其相关程序不同。
+A straightforward translation of a C ++ or Java program into Go is unlikely to produce a satisfactory result —Java programs are written in Java ,
+将 C++ 或 Java 程序直接翻译成 Go 程序不太可能产生令人满意的结果——Java 程序是用 Java 编写的，
+not Go .  不是去。
+Ontheother hand ,  另一方面，
+thinking abouttheproblem from a Go perspective could produce a successful but quite different program .
+从 Go 的角度考虑问题可能会产生一个成功但截然不同的程序。
+In other words ,  换句话说，
+to write Go well ,
+为了写好 Go，
+it 's important to understand its properties and idioms .
+了解它的属性和习惯用法非常重要。
+It 's also important to knowtheestablished conventions for programming in Go ,
+了解 Go 编程中已建立的约定也很重要，
+such as naming ,  例如命名，
+formatting ,  格式化，
+program construction ,  程序构建，
+and so on ,  等等，
+so that programs you write will be easy for other Go programmers to understand .
+这样你编写的程序就容易被其他 Go 程序员理解。
+This document gives tips for writing clear ,
+本文档提供了编写清晰程序的技巧，
+idiomatic Go code .  地道的 Go 代码。
+It augmentsthelanguage specification ,
+它扩充了语言规范，
+theTour of Go ,  Go 语言之旅，
+and How to Write Go Code ,
+以及如何编写 Go 代码，
+all of which you should read first .
+所有这些你应该先阅读。
+Note added January ,  1 月添加的注释，
+2022 : This document was written for Go 's release in 2009 ,
+2022：本文档是为 Go 在 2009 年发布而编写的，
+and has not been updated significantly since .
+并且自那以后没有进行重大更新。
+Although it is a good guide to understand how to usethelanguage itself ,
+虽然这是一个理解如何使用该语言本身的好指南，
+thanks tothestability of the language ,
+感谢该语言的稳定性，
+it says little aboutthelibraries and nothing about significant changes to the Go ecosystem since it was written ,
+它很少提及库，也没有提及自编写以来 Go 生态系统的重大变化，
+such asthebuild system ,  例如构建系统，
+testing ,  测试，
+modules ,  模块，
+and polymorphism .  以及多态。
+There are no plans to update it ,
+没有更新它的计划，
+as so much has happened and a large and growing set of documents ,
+因为已经发生了太多事情，并且有大量且不断增长的文档，
+blogs ,  博客，
+and books do a fine job of describing modern Go usage .
+“书籍在描述现代 Go 的用法方面做得很好。”
+Effective Go continues to be useful ,
+“Effective Go” 仍然很有用，
+butthereader should understand it is far from a complete guide .
+但读者应该明白，它远非一份完整的指南。
+See issue 28782 for context .
+有关上下文，请参见 issue 28782。
+ExamplesTheGo package sources are intended to serve not only as the core library but also as examples of how to use the language .
+示例 TheGo 包的源代码不仅旨在作为核心库，还旨在作为如何使用该语言的示例。
+Moreover ,  而且，
+many ofthepackages contain working ,
+许多软件包都包含可运行的，
+self -contained executable examples you can run directly fromthego .dev web site ,
+独立的 executable 示例，您可以直接从 thego.dev 网站运行，
+such as this one (if necessary ,
+例如这个（如有必要，
+click ontheword "Example" to open it up ).
+点击“示例”这个词来打开它）。
+If you have a question about how to approach a problem or how something might be implemented ,
+如果您对如何解决问题或如何实施某些事情有疑问，
+thedocumentation ,  请查阅相关文档，
+code and examples inthelibrary can provide answers ,
+代码和示例 inthelibrary 可以提供答案，
+ideas and background .  想法和背景。
+Formatting Formatting issues arethemost contentious but the least consequential .
+格式化 格式化问题是最有争议但最不重要的。
+People can adapt to different formatting styles but it 's better if they don 't have to ,
+人们可以适应不同的格式样式，但最好不必这样做，
+and less time is devoted tothetopic if everyone adheres to the same style .
+如果每个人都坚持相同的风格，那么花费在主题上的时间就会减少。
+Theproblem is how to approach this Utopia without a long prescriptive style guide .
+问题是如何在没有冗长的规定性风格指南的情况下接近这个乌托邦。
+With Go we take an unusual approach and letthemachine take care of most formatting issues .
+使用 Go，我们采用一种不寻常的方法，让机器处理大部分格式问题。
+Thegofmt program (also available as go fmt ,
+Thegofmt 程序（也可作为 go fmt 使用，
+which operates atthepackage level rather than source file level ) reads a Go program and emits the source in a standard style of indentation and vertical alignment ,
+它在包级别而不是源文件级别运行，读取 Go 程序并以标准的缩进和垂直对齐方式发出源代码，
+retaining and if necessary reformatting comments .
+保留并在必要时重新格式化注释。
+If you want to know how to handle some new layout situation ,
+如果你想知道如何处理一些新的布局情况，
+run gofmt ;  运行 gofmt;
+iftheanswer doesn 't seem right ,
+如果答案看起来不对，
+rearrange your program (or file a bug about gofmt ),
+重新安排你的程序（或者提交一个关于 gofmt 的 bug），
+don 't work around it .
+不要回避它。
+As an example ,  举个例子，
+there 's no need to spend time lining upthecomments on the fields of a structure .
+没有必要花时间对齐结构体字段上的注释。
+Gofmt will do that for you .
+Gofmt 会为你做这件事。
+Giventhedeclaration type T struct { name string // name of the object value int // its value } gofmt will line up the columns : type T struct { name string // name of the object value int // its value } All Go code in the standard packages has been formatted with gofmt .
+给出如下声明： type T struct { name string // 对象的名称 value int // 对象的值 } gofmt 将会对齐这些列： type T struct { name string // 对象的名称 value int // 对象的值 } 标准包中的所有 Go 代码都已使用 gofmt 格式化。
+Some formatting details remain .
+一些格式化细节仍然存在。
+Very briefly : Indentation We use tabs for indentation and gofmt emits them by default .
+非常简要地说：缩进我们使用制表符进行缩进，并且 gofmt 默认情况下会发出制表符。
+Use spaces only if you must .
+仅在必须时才使用空格。
+Line length Go has no line length limit .
+行长度 Go 没有行长度限制。
+Don 't worry about overflowing a punched card .
+不用担心超出穿孔卡。
+If a line feels too long ,
+如果一行感觉太长，
+wrap it and indent with an extra tab .
+将其换行并用额外的制表符缩进。
+Parentheses Go needs fewer parentheses than C and Java : control structures ( if ,
+括号 Go 需要比 C 和 Java 更少的括号：控制结构（if，
+for ,  for，
+switch ) do not have parentheses in their syntax .
+开关）的语法中没有括号。
+Also ,  此外，
+theoperator precedence hierarchy is shorter and clearer ,
+运算符优先级层次结构更短更清晰，
+so x <<8 + y <<16 means whatthespacing implies ,
+所以 x <<8 + y <<16 表示间距所暗示的含义，
+unlike intheother languages .
+与其他语言不同。
+Commentary Go provides C -style /* */ block comments and C ++-style // line comments .
+注释 Go 提供了 C 风格的 /* */ 块注释和 C++ 风格的 // 行注释。
+Line comments arethenorm ;
+行注释是常态；
+block comments appear mostly as package comments ,
+块注释主要作为包注释出现，
+but are useful within an expression or to disable large swaths of code .
+但在表达式中很有用，或者可以禁用大段代码。
+Comments that appear before top -level declarations ,
+出现在顶层声明之前的注释，
+with no intervening newlines ,
+且没有插入换行符，
+are considered to documentthedeclaration itself .
+被认为是对声明本身的文档说明。
+These “doc comments ” aretheprimary documentation for a given Go package or command .
+这些“文档注释”是给定 Go 包或命令的主要文档。
+For more about doc comments ,
+有关文档注释的更多信息，
+see “ Go Doc Comments ”.
+请参阅“Go 文档注释”。
+Names Names are as important in Go as in any other language .
+名字在 Go 中和在任何其他语言中一样重要。
+They even have semantic effect :thevisibility of a name outside a package is determined by whether its first character is upper case .
+它们甚至具有语义效应：包外名称的可见性取决于其首字母是否为大写。
+It 's therefore worth spending a little time talking about naming conventions in Go programs .
+因此，花一点时间讨论 Go 程序中的命名约定是值得的。
+Package names When a package is imported ,
+包名当导入一个包时，
+thepackage name becomes an accessor for the contents .
+包名成为内容的访问器。
+After import "bytes"theimporting package can talk about bytes .Buffer .
+导入“bytes”后，导入包可以讨论 bytes .Buffer 。
+It 's helpful if everyone usingthepackage can use the same name to refer to its contents ,
+如果使用该软件包的每个人都可以使用相同的名称来引用其内容，这将很有帮助，
+which implies thatthepackage name should be good : short ,
+这意味着包名应该好：简短，
+concise ,  简洁的
+evocative .  令人回味的。
+By convention ,  按照惯例，
+packages are given lower case ,
+包采用小写，
+single -word names ;  单字名称；
+there should be no need for underscores or mixedCaps .
+应该不需要下划线或混合大小写。
+Err ontheside of brevity ,
+尽量简洁。
+since everyone using your package will be typing that name .
+因为每个使用您软件包的人都将键入该名称。
+And don 't worry about collisions a priori .
+并且不要先验地担心冲突。
+Thepackage name is only the default name for imports ;
+包名只是导入的默认名称；
+it need not be unique across all source code ,
+它不必在所有源代码中都是唯一的，
+and intherare case of a collision the importing package can choose a different name to use locally .
+并且在极少数发生冲突的情况下，导入包可以选择在本地使用不同的名称。
+In any case ,  无论如何，
+confusion is rare becausethefile name in the import determines just which package is being used .
+混淆的情况很少见，因为导入中的文件名决定了正在使用的包。
+Another convention is thatthepackage name is the base name of its source directory ;
+另一个约定是包名是其源目录的基本名称；
+thepackage in src /encoding/base64 is imported as "encoding/base64" but has name base64 ,
+src/encoding/base64 中的包作为“encoding/base64”导入，但名称为 base64，
+not encoding_base64 and not encodingBase64 .
+不是 encoding_base64，也不是 encodingBase64。
+Theimporter of a package will use the name to refer to its contents ,
+包的导入者将使用该名称来引用其内容，
+so exported names inthepackage can use that fact to avoid repetition .
+因此，包中导出的名称可以利用这一事实来避免重复。
+(Don't usetheimport .  （不要使用 import .
+notation ,  notation，
+which can simplify tests that must run outsidethepackage they are testing ,
+它可以简化必须在被测试包之外运行的测试，
+but should otherwise be avoided .
+但在其他情况下应避免使用。
+) For instance ,  ) 例如，
+thebuffered reader type in the bufio package is called Reader ,
+bufio 包中的 buffered reader 类型称为 Reader，
+not BufReader ,  不是 BufReader，
+because users see it as bufio .Reader ,
+因为用户将其视为 bufio.Reader，
+which is a clear ,
+这是一个清晰，
+concise name .  简洁的名称。
+Moreover ,  而且，
+because imported entities are always addressed with their package name ,
+因为导入的实体总是使用它们的包名来寻址，
+bufio .Reader does not conflict with io .Reader .
+bufio.Reader 不会与 io.Reader 冲突。
+Similarly ,  类似地，
+thefunction to make new instances of ring .Ring —which is the definition of a constructor in Go —would normally be called NewRing ,
+用于创建 ring.Ring 新实例的函数（即 Go 中构造函数的定义）通常称为 NewRing，
+but since Ring istheonly type exported by the package ,
+但由于 Ring 是包导出的唯一类型，
+and sincethepackage is called ring ,
+并且由于该包被称为 ring，
+it 's called just New ,
+它就被简称为 New。
+which clients ofthepackage see as ring .New .
+软件包的哪些客户端将其视为环。新的。
+Usethepackage structure to help you choose good names .
+使用软件包结构来帮助您选择好的名称。
+Another short example is once .Do ;
+另一个简短的例子是 once .Do ;
+once .Do(setup) reads well and would not be improved by writing once .DoOrWaitUntilDone(setup) .
+once .Do(setup) 阅读起来很流畅，如果写成 once .DoOrWaitUntilDone(setup) 反而不会更好。
+Long names don 't automatically make things more readable .
+过长的名称并不会自动使事物更易读。
+A helpful doc comment can often be more valuable than an extra long name .
+一个有用的文档注释通常比一个超长的名称更有价值。
+Getters Go doesn 't provide automatic support for getters and setters .
+Getters Go 不提供对 getter 和 setter 的自动支持。
+There 's nothing wrong with providing getters and setters yourself ,
+自己提供 getter 和 setter 没有问题，
+and it 's often appropriate to do so ,
+而且通常这样做是合适的，
+but it 's neither idiomatic nor necessary to put Get intothegetter 's name .
+但在 getter 的名称中加入 Get 既不符合习惯，也没有必要。
+If you have a field called owner (lower case ,
+如果你有一个名为 owner 的字段（小写），
+unexported ),  未导出），
+thegetter method should be called Owner (upper case ,
+thegetter 方法应该被称为 Owner（大写，
+exported ),  已导出），
+not GetOwner .  而不是 GetOwner。
+Theuse of upper -case names for export provides the hook to discriminate the field from the method .
+使用大写名称进行导出提供了一种区分字段和方法的钩子。
+A setter function ,  一个 setter 函数，
+if needed ,  如果需要，
+will likely be called SetOwner .
+可能会被调用 SetOwner。
+Both names read well in practice : owner := obj .Owner() if owner !
+这两个名字在实践中都很好读：owner := obj .Owner() 如果 owner !
+= user { obj .SetOwner(user) } Interface names By convention ,
+= user { obj .SetOwner(user) } 接口名称 按照惯例，
+one -method interfaces are named bythemethod name plus an -er suffix or similar modification to construct an agent noun : Reader ,
+单方法接口的命名方式是方法名加上 -er 后缀或类似的修改，以构成一个动作名词：Reader，
+Writer ,
+Formatter ,  格式化器 ,
+CloseNotifier etc . There are a number of such names and it 's productive to honor them andthefunction names they capture .
+CloseNotifier 等。有很多这样的名称，尊重它们以及它们捕获的函数名称是有成效的。
+Read ,  读取 ,
+Write ,  写 ,
+Close ,  关闭，
+Flush ,  刷新，
+String and so on have canonical signatures and meanings .
+String 等等具有规范的签名和含义。
+To avoid confusion ,  为了避免混淆，
+don 't give your method one of those names unless it hasthesame signature and meaning .
+除非你的方法具有相同的签名和含义，否则不要给它起这样的名字。
+Conversely ,  相反地，
+if your type implements a method withthesame meaning as a method on a well -known type ,
+如果你的类型实现了一个方法，其含义与一个众所周知的类型上的方法相同，
+give itthesame name and signature ;
+给它相同的名称和签名；
+call your string -converter method String not ToString .
+调用你的字符串转换方法，String 而不是 ToString。
+MixedCaps Finally ,  混合大小写 最终，
+theconvention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names .
+Go 中的惯例是使用 MixedCaps 或 mixedCaps，而不是下划线来编写多字名称。
+Semicolons Like C ,  分号 像 C 一样，
+Go 's formal grammar uses semicolons to terminate statements ,
+Go 的正式语法使用分号来结束语句，
+but unlike in C ,
+但与 C 不同，
+those semicolons do not appear inthesource .
+这些分号不会出现在源代码中。
+Insteadthelexer uses a simple rule to insert semicolons automatically as it scans ,
+相反，词法分析器使用一个简单的规则在扫描时自动插入分号，
+sotheinput text is mostly free of them .
+所以输入的文本基本上没有它们。
+Therule is this .  规则是这样的。
+Ifthelast token before a newline is an identifier (which includes words like int and float64 ),
+如果换行符之前的最后一个标记是标识符（包括像 int 和 float64 这样的词），
+a basic literal such as a number or string constant ,
+一个基本的字面量，如数字或字符串常量，
+or one ofthetokens break continue fallthrough return ++ -- ) } the lexer always inserts a semicolon after the token .
+或者标记 break continue fallthrough return ++ -- ) } 其中之一，词法分析器总是在标记后插入分号。
+This could be summarized as ,
+这可以概括为，
+“ifthenewline comes after a token that could end a statement ,
+“如果换行符出现在可以结束语句的标记之后，
+insert a semicolon ”.  插入一个分号”。
+A semicolon can also be omitted immediately before a closing brace ,
+在右花括号之前也可以省略分号，
+so a statement such as go func () { for { dst <- <-src } }() needs no semicolons .
+因此，像 go func () { for { dst <- <-src } }() 这样的语句不需要分号。
+Idiomatic Go programs have semicolons only in places such as for loop clauses ,
+地道的 Go 程序只在 for 循环子句等地方使用分号，
+to separatetheinitializer ,
+用于分隔初始化器，
+condition ,  条件，
+and continuation elements .
+和延续元素。
+They are also necessary to separate multiple statements on a line ,
+它们也是在一行上分隔多个语句所必需的，
+should you write code that way .
+如果你那样写代码的话。
+One consequence ofthesemicolon insertion rules is that you cannot put the opening brace of a control structure ( if ,
+分号插入规则的一个后果是，你不能把控制结构（if，
+for ,  for，
+switch ,  开关，
+or select ) onthenext line .
+或选择)在下一行。
+If you do ,  如果你这样做，
+a semicolon will be inserted beforethebrace ,
+分号将插入到括号前，
+which could cause unwanted effects .
+这可能会导致不良影响。
+Write them like this if i < f () { g () } not like this if i < f () // wrong !
+如果 i < f () { g () }，就这样写，不要像这样写：如果 i < f () // 错误！
+{ // wrong !  { // 错误！
+g () } Control structuresThecontrol structures of Go are related to those of C but differ in important ways .
+g () } 控制结构 Go 的控制结构与 C 的控制结构相关，但在重要方面有所不同。
+There is no do or while loop ,
+没有 do 或 while 循环，
+only a slightly generalized for ;
+只有一个稍微通用的 for ;
+switch is more flexible ;
+switch 更加灵活;
+if and switch accept an optional initialization statement like that of for ;
+if 和 switch 接受一个可选的初始化语句，类似于 for 的初始化语句;
+break and continue statements take an optional label to identify what to break or continue ;
+break 和 continue 语句可以使用可选标签来标识要中断或继续的内容；
+and there are new control structures including a type switch and a multiway communications multiplexer ,
+并且有新的控制结构，包括类型开关和多路通信复用器，
+select .  select 。
+Thesyntax is also slightly different : there are no parentheses and the bodies must always be brace -delimited.
+语法也略有不同：没有括号，主体必须始终用大括号分隔。
+If In Go a simple if looks like this : if x > 0 { return y } Mandatory braces encourage writing simple if statements on multiple lines .
+在 Go 中，一个简单的 if 语句看起来像这样：if x > 0 { return y } 强制使用大括号鼓励将简单的 if 语句写在多行上。
+It 's good style to do so anyway ,
+无论如何，这样做是一种好的风格，
+especially whenthebody contains a control statement such as a return or break .
+特别是当主体包含诸如 return 或 break 之类的控制语句时。
+Since if and switch accept an initialization statement ,
+由于 if 和 switch 接受初始化语句，
+it 's common to see one used to set up a local variable .
+常见用法是用它来设置一个局部变量。
+if err := file .Chmod(0664);
+如果 err := file.Chmod(0664);
+err !  错误！
+= nil { log .Print(err) return err } IntheGo libraries ,
+= nil { log .Print(err) return err } 在 Go 语言库中，
+you 'll find that when an if statement doesn 't flow intothenext statement —that is ,
+你会发现，当 if 语句没有流入下一个语句时——也就是说，
+thebody ends in break ,
+主体以 break 结尾，
+continue ,  continue，
+goto ,  goto，
+or return —theunnecessary else is omitted .
+或者返回——不必要的 else 被省略了。
+f ,
+err := os .Open(name) if err !
+err := os .Open(name) 如果 err !
+= nil { return err } codeUsing (f) This is an example of a common situation where code must guard against a sequence of error conditions .
+= nil { return err } codeUsing (f) 这是一个常见的例子，代码必须防范一系列错误条件。
+Thecode reads well if the successful flow of control runs down the page ,
+如果控制流的成功运行顺着页面向下，代码的可读性就很好，
+eliminating error cases as they arise .
+消除出现时的错误情况。
+Since error cases tend to end in return statements ,
+由于错误情况往往以 return 语句结束，
+theresulting code needs no else statements .
+因此生成的代码不需要 else 语句。
+f ,  f，
+err := os .Open(name) if err !
+err := os .Open(name) 如果 err !
+= nil { return err } d ,
+err := f .Stat() if err !
+err := f .Stat() 如果 err !
+= nil { f .Close() return err } codeUsing (f,
+d ) Redeclaration and reassignment An aside :Thelast example in the previous section demonstrates a detail of how the := short declaration form works .
+d) 重新声明和重新赋值 题外话：上一节中的最后一个例子演示了 := 短声明形式的工作原理的细节。
+Thedeclaration that calls os .Open reads ,
+调用 os .Open 的声明读取，
+f ,  f，
+err := os .Open(name) This statement declares two variables ,
+err := os .Open(name) 这个语句声明了两个变量，
+f and err .  f 和 err 。
+A few lines later ,
+几行之后，
+thecall to f .Stat reads ,
+调用 f.Stat 读取，
+d ,  d,
+err := f .Stat() which looks as if it declares d and err .
+err := f .Stat() 看起来像是声明了 d 和 err 。
+Notice ,  注意，
+though ,  虽然，
+that err appears in both statements .
+但 err 出现在两个语句中。
+This duplication is legal : err is declared bythefirst statement ,
+这种重复是合法的：err 由第一个语句声明，
+but only re -assigned inthesecond .
+但仅在第二个语句中重新赋值。
+This means thatthecall to f .Stat uses the existing err variable declared above ,
+这意味着对 f.Stat 的调用使用上面声明的现有 err 变量，
+and just gives it a new value .
+只是给它一个新的值。
+In a := declaration a variable v may appear even if it has already been declared ,
+在 := 声明中，即使变量 v 已经被声明，它仍然可以出现，
+provided : this declaration is inthesame scope as the existing declaration of v (if v is already declared in an outer scope ,
+前提是：此声明与 v 的现有声明在同一作用域中（如果 v 已经在外部作用域中声明，
+thedeclaration will create a new variable §),
+则该声明将创建一个新变量 §），
+thecorresponding value in the initialization is assignable to v ,
+初始化中对应的值可以赋值给 v
+and there is at least one other variable that is created bythedeclaration .
+并且至少还有一个变量是由声明创建的。
+This unusual property is pure pragmatism ,
+这种不寻常的特性纯粹是实用主义。
+making it easy to use a single err value ,
+使得使用单个 err 值变得容易。
+for example ,  例如，
+in a long if -else chain .
+在一个很长的 if-else 链中。
+You 'll see it used often .
+你会经常看到它被使用。
+§ It 's worth noting here that in Gothescope of function parameters and return values is the same as the function body ,
+§ 值得注意的是，在 Gothe 中，函数参数和返回值的范围与函数体相同，
+even though they appear lexically outsidethebraces that enclose the body .
+即使它们在词法上出现在包围函数体的大括号之外。
+ForTheGo for loop is similar to —but not the same as —C's.
+Go 语言的 for 循环与 C 语言的 for 循环相似，但不完全相同。
+It unifies for and while and there is no do -while .
+它统一了 for 和 while，并且没有 do-while。
+There are three forms ,
+有三种形式，
+only one of which has semicolons .
+其中只有一种形式有分号。
+// Like a C for for init ;
+// 就像 C 语言的 for 循环初始化 ;
+condition ;  条件 ;
+post { } // Like a C while for condition { } // Like a C for (;
+后置 { } // 就像 C 语言的 while 循环条件 { } // 就像 C 语言的 for (;
+) for { } Short declarations make it easy to declaretheindex variable right in the loop .
+) for { } 短声明使得在循环中声明索引变量变得容易。
+sum := 0 for i := 0 ;
+i < 10 ;
+i ++ { sum += i } If you 're looping over an array ,
+slice ,
+string ,  字符串 ,
+or map ,  或映射 ,
+or reading from a channel ,
+或从通道读取 ,
+a range clause can managetheloop .
+range 子句可以管理循环。
+for key ,  对于键，
+value := range oldMap { newMap [key] = value } If you only needthefirst item in the range (the key or index ),
+值 := range oldMap { newMap [key] = value } 如果你只需要范围内的第一个项目（键或索引），
+dropthesecond : for key := range m { if key .expired() { delete (m,
+删除第二个：for key := range m { if key .expired() { delete (m,
+key ) } } If you only needthesecond item in the range (the value ),
+键) } } 如果你只需要范围内的第二个项目（值），
+usetheblank identifier ,  使用空白标识符，
+an underscore ,  一个下划线，
+to discardthefirst : sum := 0 for _ ,
+丢弃第一个：sum := 0 for _ ,
+value := range array { sum += value }Theblank identifier has many uses ,
+value := range array { sum += value } 空白标识符有很多用途，
+as described in a later section .
+如后续章节所述。
+For strings ,  对于字符串，
+therange does more work for you ,
+therange 为你做了更多的工作，
+breaking out individual Unicode code points by parsingtheUTF -8. Erroneous encodings consume one byte and produce the replacement rune U +FFFD.
+通过解析 UTF-8 来分解各个 Unicode 代码点。错误的编码消耗一个字节并生成替换符 U+FFFD。
+(Thename (with associated builtin type ) rune is Go terminology for a single Unicode code point .
+(名称（带有相关的内置类型）rune 是 Go 术语，用于表示单个 Unicode 代码点。
+Seethelanguage specification for details .
+有关详细信息，请参见语言规范。
+)Theloop for pos ,  )pos 的循环，
+char := range "日本\x80語" { // \x80 is an illegal UTF -8 encoding fmt .Printf("character %#U starts at byte position %d\n",
+char := range "日本\x80 語" { // \x80 是一个非法的 UTF-8 编码 fmt .Printf("字符 %#U 从字节位置 %d 开始\n",
+char ,  字符 ,
+pos ) } prints character U +65E5 '日' starts at byte position 0 character U +672C '本' starts at byte position 3 character U +FFFD '�' starts at byte position 6 character U +8A9E '語' starts at byte position 7 Finally ,
+pos ) } 打印字符 U +65E5 '日' 从字节位置 0 开始，字符 U +672C '本' 从字节位置 3 开始，字符 U +FFFD '' 从字节位置 6 开始，字符 U +8A9E '语' 从字节位置 7 开始。
+Go has no comma operator and ++ and -- are statements not expressions .
+Go 没有逗号运算符，++ 和 -- 是语句而不是表达式。
+Thus if you want to run multiple variables in a for you should use parallel assignment (although that precludes ++ and -- ).
+因此，如果要在 for 循环中运行多个变量，则应使用并行赋值（尽管这排除了 ++ 和 --）。
+// Reverse a for i ,
+// 反转 for i ,
+j := 0 ,
+len (a)-1;
+i < j ;
+i ,  我，
+j = i +1,  j = i +1，
+j -1 { a [i],
+j -1 { a [i]，
+a [j] = a [j],
+a [j] = a [j]，
+a [i] } Switch Go 's switch is more general than C 's.
+Go 语言的 switch 语句比 C 语言的更通用。
+Theexpressions need not be constants or even integers ,
+表达式不必是常量甚至整数。
+thecases are evaluated top to bottom until a match is found ,
+case 语句从上到下依次计算，直到找到匹配项。
+and iftheswitch has no expression it switches on true .
+如果 switch 没有表达式，则它在 true 上进行切换。
+It 's therefore possible —and idiomatic —to write an if - else - if - else chain as a switch .
+因此，可以——而且符合习惯——将 if - else - if - else 链写成 switch。
+func unhex (c byte ) byte { switch { case '0' <= c && c <= '9': return c - '0' case 'a' <= c && c <= 'f': return c - 'a' + 10 case 'A' <= c && c <= 'F': return c - 'A' + 10 } return 0 } There is no automatic fall through ,
+func unhex (c byte ) byte { switch { case '0' <= c && c <= '9': return c - '0' case 'a' <= c && c <= 'f': return c - 'a' + 10 case 'A' <= c && c <= 'F': return c - 'A' + 10 } return 0 } There is no automatic fall through , (func unhex (c byte) byte { switch { case '0' <= c && c <= '9': return c - '0' case 'a' <= c && c <= 'f': return c - 'a' + 10 case 'A' <= c && c <= 'F': return c - 'A' + 10 } return 0 } 这里没有自动失败传递,)
+but cases can be presented in comma -separated lists .
+but cases can be presented in comma -separated lists . (但是 case 可以用逗号分隔的列表来表示。)
+func shouldEscape (c byte ) bool { switch c { case ' ',
+'%': return true } return false } Although they are not nearly as common in Go as some other C -like languages ,
+'%': return true } return false } 虽然它们在 Go 中不像其他一些类似 C 的语言那样常见，
+break statements can be used to terminate a switch early .
+break 语句可以用来提前终止 switch 语句。
+Sometimes ,  有时，
+though ,  虽然，
+it 's necessary to break out of a surrounding loop ,
+有必要跳出一个周围的循环，
+nottheswitch ,  nottheswitch，
+and in Go that can be accomplished by putting a label ontheloop and "breaking" to that label .
+在 Go 中，可以通过在循环上放置一个标签并“break”到该标签来实现。
+This example shows both uses .
+这个例子展示了这两种用法。
+Loop : for n := 0 ;
+循环：for n := 0 ;
+n < len (src);
+n += size { switch { case src [n] < sizeOne : if validateOnly { break } size = 1 update (src[n]) case src [n] < sizeTwo : if n +1 >= len (src) { err = errShortInput break Loop } if validateOnly { break } size = 2 update (src[n] + src [n+1]<
+n += size { switch { case src [n] < sizeOne : if validateOnly { break } size = 1 update (src[n]) case src [n] < sizeTwo : if n +1 >= len (src) { err = errShortInput break Loop } if validateOnly { break } size = 2 update (src[n] + src [n+1]
+thecontinue statement also accepts an optional label but it applies only to loops.
+continuestatement 也接受一个可选标签，但它只适用于循环。
+To close this section,  为了结束本节，
+here 'sacomparison routine for byte slices that uses two switch statements: //Compare returns an integer comparing the two byte slices,
+here'sacomparisonroutineforbyteslicesthatusestwoswitchstatements: //比较返回一个整数，比较两个字节切片，
+//lexicographically.  //按字典顺序排列。
+//The result will be0ifa == b ,
+//如果 a == b，结果将为 0，
+-1 ifa<b ,  //如果 a
+and +1 ifa>">">>bfunc Compare (a,
+b[]byte) int{fori := 0 ;
+i< len (a) &&i< len (b);
+i ++ {switch{casea[i] >">">>b[i]: return1casea[i] <b[i]: return -1} }switch{case len (a) >">">> len (b): return1case len (a) < len (b): return -1}return0 }Type switchAswitch can also be used to discover the dynamic type of an interface variable.
+Suchatype switch uses the syntax ofatype assertion with the keyword type inside the parentheses.
+Suchatypeswitch 使用类型断言的语法，其中括号内包含关键字 type。
+If the switch declaresavariable in the expression,
+如果 switch 在表达式中声明一个变量，
+the variable will have the corresponding type in each clause.
+则该变量在每个子句中都将具有相应的类型。
+It 's also idiomatic to reuse the name in such cases,
+在这种情况下，重用名称也是惯用的做法，
+in effect declaringanew variable with the same name butadifferent type in each case.
+在每个案例中，使用相同的名称但不同的类型来声明一个新的变量是无效的。
+vartinterface{} t =functionOfSomeType()switcht := t .
+var t interface{} t = functionOfSomeType() switch t := t .
+(type){default:fmt .Printf("unexpected type %T\n",
+(type){default:fmt.Printf("意外类型%T\n",
+t ) //%T prints whatever typethas case bool:fmt .Printf("boolean %t\n",
+t ) //%T 打印任何类型 case bool:fmt.Printf("布尔值%t\n",
+t ) // thas type bool case int:fmt .Printf("integer %d\n",
+t) // thastypeboolcaseint: fmt.Printf("整数%d\n",
+t ) // thas type int case *bool: fmt .Printf("pointer to boolean %t\n",
+t) // thastypeintcase*bool: fmt.Printf("指向布尔值的指针%t\n",
+*t)// thas type *bool case *int: fmt .Printf("pointer to integer %d\n",
+*t)// thastype*boolcase*int: fmt.Printf("指向整数的指针%d\n",
+*t)// thas type *int}Functions Multiple return values One of Go 's unusual features is that functions and methods can return multiple values.
+*t)// thastype*int}函数多重返回值 Go 的一个不寻常的特性是函数和方法可以返回多个值。
+This form can be used to improve onacouple of clumsy idioms inCprograms:in -band error returns such as -1 for EOF and modifying an argument passed by address.
+这种形式可以用来改进 C 程序中一些笨拙的习惯用法：带内错误返回，例如 -1 代表 EOF，以及修改按地址传递的参数。
+InC ,  在 C 语言中，
+awrite error is signaled byanegative count with the error code secreted away inavolatile location.
+写入错误通过一个负数计数来表示，错误代码被隐藏在一个易失的位置。
+In Go,  在 Go 语言中，
+Write can returnacount and an error:“Yes,
+Writecanreturnacountandanerror：“是的，
+you wrote some bytes but not all of them because you filled the device”.
+你写入了一些字节，但并非全部，因为你已填满设备”。
+The signature of the Write method on files from package os is:func (file *File) Write (b []byte) (n int,
+来自 package osis 的文件上的 Writemethod 的签名：func(file*File)Write(b[]byte)(nint,
+err error)and as the documentation says,
+errerror)正如文档所说，
+it returns the number of bytes written andanon -nil error whenn !
+当 n ! 时，它返回写入的字节数和一个非 nil 错误。
+=len (b).  =len(b)。
+This isacommon style;  这是一种常见的风格；
+see the section on error handling for more examples.
+有关更多示例，请参见关于错误处理的部分。
+Asimilar approach obviates the need to passapointer toareturn value to simulateareference parameter.
+类似的方法避免了传递指针作为返回值来模拟引用参数的需要。
+Here 'sasimple -minded function to grabanumber fromaposition inabyte slice,
+这是一个简单的函数，用于从字节切片中的某个位置获取一个数字，
+returning the number and the next position.
+返回数字和下一个位置。
+func nextInt (b []byte,  func nextInt(b []byte,
+iint)(int,
+int) {for;
+i< len (b) &&!
+isDigit (b[i]);
+i ++ { } x := 0for;
+i< len (b) && isDigit (b[i]);
+i ++ { x = x*10+int (b[i])-'0'}returnx ,
+i }You could use it to scan the numbers in an input sliceblike this:fori := 0 ;
+i< len (b);  我
+{ x ,
+i =nextInt (b,
+i )fmt .Println(x)}Named result parameters The return or result "parameters" ofaGo function can be given names and used as regular variables,
+i )fmt.Println(x)}命名结果参数 Go 函数的返回或结果“参数”可以被赋予名称并用作常规变量，
+just like the incoming parameters.
+就像传入的参数一样。
+When named,  当命名时，
+they are initialized to the zero values for their types when the function begins;
+当函数开始时，它们被初始化为它们类型的零值；
+if the function executesareturn statement with no arguments,
+如果函数执行一个没有参数的 return 语句，
+the current values of the result parameters are used as the returned values.
+结果参数的当前值用作返回值。
+The names are not mandatory but they can make code shorter and clearer:they 're documentation.
+名称不是强制性的，但它们可以使代码更短更清晰：它们是文档。
+If we name the results of nextInt it becomes obvious which returned int is which.
+如果我们命名 nextInt 的结果，那么哪个返回的 int 是什么就很明显了。
+func nextInt (b []byte,
+pos int)(value,
+nextPos int) {Because named results are initialized and tied to an unadorned return,
+nextPosint) {因为具名结果会被初始化并与一个未修饰的返回相关联，
+they can simplify as well as clarify.
+它们既可以简化也可以阐明。
+Here 'saversion of io .ReadFull that uses them well:func ReadFull (r Reader,
+这是使用它们的 io.ReadFull 的一个版本：func ReadFull(rReader,
+buf []byte) (n int,
+err error) {for len (buf) >">">>0&& err==nil{var nr int nr,
+err= r.Read(buf)n +=nr buf=buf [nr:]}return}Defer Go 's defer statement schedulesafunction call (the deferred function)to be run immediately before the function executing the defer returns.
+err= r.Read(buf)n +=nrbuf=buf[nr:]}return}DeferGo 的 defer 语句安排一个函数调用（延迟函数）在执行 defer 的函数返回之前立即运行。
+It 's an unusual but effective way to deal with situations such as resources that must be released regardless of which pathafunction takes to return.
+这是一种不寻常但有效的方法来处理必须释放的资源等情况，无论函数采用哪种路径返回。
+The canonical examples are unlockingamutex or closingafile.
+规范的例子是解锁一个互斥锁或关闭一个文件。
+//Contents returns the file 's contents asastring.
+//Contents 以字符串形式返回文件内容。
+func Contents (filename string)(string,
+error) { f ,  错误) { f ,
+err:=os .Open(filename) if err!
+=nil{return"",
+err}deferf.Close()// f.Close will run when we 're finished.
+err}defer f.Close() // f.Close 将在我们完成时运行。
+var result []byte buf:=make ([]byte,
+var result []byte buf := make([]byte,
+100)for{ n ,  100) for { n ,
+err:= f.Read(buf[0:]) result=append (result,
+err := f.Read(buf[0:]) result = append(result,
+buf [0:n]...
+) //append is discussed later.
+) //稍后讨论 append。
+if err!
+=nil{if err==io .EOF{break}return"",
+err// fwill be closed if we return here.
+err// 如果我们返回此处，fwillbeclosed.
+} }return string (result),  } }返回字符串(result),
+nil// fwill be closed if we return here.
+nil// 如果我们返回此处，fwillbeclosed.
+}Deferringacall toafunction such as Close has two advantages.
+}推迟调用像 Close 这样的函数有两个优点。
+First,  首先，
+it guarantees that you will never forget to close the file,
+它保证您永远不会忘记关闭文件，
+amistake that 's easy to make if you later edit the function to addanew return path.
+如果您稍后编辑该函数以添加新的返回路径，则很容易犯这个错误。
+Second,  其次，
+it means that the close sits near the open,
+这意味着 close 靠近 open，
+which is much clearer than placing it at the end of the function.
+这比将其放置在函数的末尾要清晰得多。
+The arguments to the deferred function (which include the receiver if the function isamethod)are evaluated when the defer executes,
+推迟执行的函数的参数（如果该函数是一个方法，则包括接收者）在 defer 执行时进行计算，
+not when the call executes.  而不是在调用执行时计算。
+Besides avoiding worries about variables changing values as the function executes,
+除了避免担心变量在函数执行时改变值之外，
+this means thatasingle deferred call site can defer multiple function executions.
+这意味着一个单独的 defer 调用点可以推迟多个函数的执行。
+Here 'sasilly example.  这是一个愚蠢的例子。
+fori := 0 ;
+i<5 ;
+i ++ {defer fmt .Printf("%d",
+i ++ {defer fmt.Printf("%d",
+i ) }Deferred functions are executed in LIFO order,
+i ) }延迟函数以 LIFO 顺序执行，
+so this code will cause4 3 2 1 0to be printed when the function returns.
+这个代码将导致函数返回时打印 4 3 2 1 0。
+Amore plausible example isasimple way to trace function execution through the program.
+一个更合理的例子是跟踪程序执行的功能的简单方法。
+We could writeacouple of simple tracing routines like this:func trace (s string) {fmt .Println("entering:",
+我们可以编写几个简单的追踪例程，如下所示：functrace(sstring) {fmt.Println("entering:",
+s ) }func untrace (s string) {fmt .Println("leaving:",
+s ) } //Use them like this:funca () {trace ("a") defer untrace ("a")//do something....
+s) } //像这样使用它们：funca () {trace("a")deferuntrace("a")//执行某些操作....
+}We can do better by exploiting the fact that arguments to deferred functions are evaluated when the defer executes.
+}我们可以通过利用延迟函数的参数在延迟执行时被求值这一事实来做得更好。
+The tracing routine can set up the argument to the untracing routine.
+跟踪例程可以设置取消跟踪例程的参数。
+This example:func trace (s string)string{fmt .Println("entering:",
+此示例：functrace(s string) string{fmt.Println("entering:",
+s )returns }func un (s string) {fmt .Println("leaving:",
+s) 返回 }funcun(sstring) {fmt.Println("离开:",
+s ) }funca () {defer un (trace("a")) fmt .Println("ina ") }funcb () {defer un (trace("b")) fmt .Println("inb ") a () }func main() { b () }prints entering: binbentering: ainaleaving: aleaving: bFor programmers accustomed to block -level resource management from other languages,
+s) }funca () {deferun(trace("a"))fmt.Println("ina ") }funcb () {deferun(trace("b"))fmt.Println("inb ") a () }funcmain() { b () }printsentering: binbentering: ainaleaving: aleaving: b 对于习惯于其他语言的块级资源管理的程序员来说，
+defer may seem peculiar,  defer 可能看起来很奇怪，
+but its most interesting and powerful applications come precisely from the fact that it 's not block -based but function -based.
+但它最有趣和最强大的应用恰恰来自于它不是基于块而是基于函数的事实。
+In the section on panic and recover we 'll see another example of its possibilities.
+在关于恐慌和恢复的部分，我们将看到它的可能性的另一个例子。
+Data Allocation with new Go has two allocation primitives,
+使用 new 进行数据分配 Go 有两个分配原语，
+the built -in functions new and make.
+内置函数 new 和 make。
+They do different things and apply to different types,
+它们做不同的事情并应用于不同的类型，
+which can be confusing,  这可能会让人困惑，
+but the rules are simple.  但规则很简单。
+Let 's talk about new first.  让我们先来谈谈 new。
+It 'sabuilt -in function that allocates memory,
+这是一个用于分配内存的内置函数，
+but unlike its namesakes in some other languages it does not initialize the memory,
+但与其他一些语言中同名的函数不同，它不会初始化内存，
+it only zeros it.  它只会将其置零。
+That is,  也就是说，
+new (T) allocates zeroed storage foranew item of typeTand returns its address,
+new(T) 为 T 类型的新项目分配零初始化的存储空间并返回其地址，
+avalue of type *T.  类型 *T 的一个值。
+In Go terminology,  在 Go 术语中，
+it returnsapointer toanewly allocated zero value of typeT .
+它返回一个指向类型 T 的新分配的零值的指针。
+Since the memory returned by new is zeroed,
+由于 new 返回的内存已置零，
+it 's helpful to arrange when designing your data structures that the zero value of each type can be used without further initialization.
+在设计数据结构时，如果每种类型的零值都可以直接使用而无需进一步初始化，这将很有帮助。
+This meansauser of the data structure can create one with new and get right to work.
+这意味着数据结构的用户可以使用 new 创建一个数据结构并立即开始工作。
+For example,  例如，
+the documentation for bytes .Buffer states that "the zero value for Buffer is an empty buffer ready to use."
+bytes.Buffer 的文档指出“Buffer 的零值是一个可以使用的空缓冲区”。
+Similarly,  类似地，
+sync .Mutex does not have an explicit constructor or Init method.
+sync.Mutex 没有显式的构造函数或 Init 方法。
+Instead,  相反，
+the zero value forasync .Mutex is defined to be an unlocked mutex.
+async.Mutex 的零值被定义为一个未锁定的互斥锁。
+The zero -value-is-useful property works transitively.
+零值即用的特性具有传递性。
+Consider this type declaration.
+考虑以下类型声明。
+type SyncedBuffer struct{lock sync .Mutex buffer bytes .Buffer}Values of type SyncedBuffer are also ready to use immediately upon allocation or just declaration.
+type SyncedBuffer struct { lock sync.Mutex buffer bytes.Buffer } SyncedBuffer 类型的变量在分配或声明后即可立即使用。
+In the next snippet,  在下一个代码片段中，
+bothpandvwill work correctly without further arrangement.
+即使不做进一步的安排，p 和 v 都能正确工作。
+p :=new (SyncedBuffer)//type *SyncedBuffer varvSyncedBuffer//type SyncedBuffer Constructors and composite literals Sometimes the zero value isn 't good enough and an initializing constructor is necessary,
+p := new(SyncedBuffer) // 类型 *SyncedBuffer var v SyncedBuffer // 类型 SyncedBuffer 构造函数和复合文字 有时候零值不够好，需要一个初始化构造函数，
+as in this example derived from package os.
+就像这个来自 os 包的例子。
+func NewFile (fd int,
+name string)*File{if fd <0 {return nil} f :=new (File)f.fd=fdf.name=namef.dirinfo=nilf.nepipe= 0returnf }There 'salot of boilerplate in there.
+namestring)*File{iffd<0 {returnnil} f :=new(File)f.fd=fdf.name=namef.dirinfo=nilf.nepipe= 0returnf } 这里面有很多样板代码。
+We can simplify it usingacomposite literal,
+我们可以使用复合字面量来简化它，
+which is an expression that createsanew instance each time it is evaluated.
+这是一个每次评估都会创建一个新实例的表达式。
+func NewFile (fd int,
+name string)*File{if fd <0 {return nil} f :=File {fd,
+name,
+nil,
+0 }return &f}Note that,  0 }return&f}请注意，
+unlike inC ,  与 C 不同，
+it 's perfectly OK to return the address ofalocal variable;
+返回局部变量的地址是完全可以的；
+the storage associated with the variable survives after the function returns.
+与变量关联的存储在函数返回后仍然存在。
+In fact,  事实上，
+taking the address ofacomposite literal allocatesafresh instance each time it is evaluated,
+每次计算复合文字的地址都会分配一个新的实例，
+so we can combine these last two lines.
+所以我们可以将最后两行合并。
+return &File{fd,
+name,  姓名，
+nil,  无，
+0 }The fields ofacomposite literal are laid out in order and must all be present.
+0 }复合文字的字段按顺序排列，并且必须全部存在。
+However,  然而，
+by labeling the elements explicitly as field:value pairs,
+通过将元素明确标记为字段:值对，
+the initializers can appear in any order,
+初始化器可以以任何顺序出现，
+with the missing ones left as their respective zero values.
+缺少的那些将保留为它们各自的零值。
+Thus we could say return &File{fd: fd,
+因此我们可以说 return &File{fd:fd,
+name:name}Asalimiting case,
+name:name} 作为一个限制情况，
+ifacomposite literal contains no fields at all,
+如果一个复合字面量完全不包含任何字段，
+it createsazero value for the type.
+它会为该类型创建一个零值。
+The expressions new (File) and &File{} are equivalent.
+表达式 new(File) 和 &File{} 是等价的。
+Composite literals can also be created for arrays,
+复合字面量也可以为数组创建，
+slices,  切片，
+and maps,  andmaps，
+with the field labels being indices or map keys as appropriate.
+字段标签分别是索引或映射键（如果适用）。
+In these examples,  在这些例子中，
+the initializations work regardless of the values of Enone,
+无论 Enone 的值如何，初始化工作都会进行。
+Eio,
+and Einval,  以及 Einval，
+as long as they are distinct.  只要它们是不同的。
+a := [...
+]string {Enone: "no error",
+Eio:"Eio",
+Einval:"invalid argument"} s :=[]string {Enone: "no error",
+Eio:"Eio",
+Einval:"invalid argument"} m :=map [int]string{Enone: "no error",
+Eio:"Eio",
+Einval:"invalid argument"}Allocation with make Back to allocation.
+Einval:"invalidargument"}使用 make 进行分配返回到分配。
+The built -in function make (T,
+内置函数 make(T,
+args)servesapurpose different from new (T).
+args) 的作用与 new(T) 不同。
+It creates slices,  它创建切片，
+maps,  映射，
+and channels only,  并且仅创建通道，
+and it returns an initialized (not zeroed)value of typeT(not *T).
+并且返回类型 T 的已初始化（非零）值（非*T）。
+The reason for the distinction is that these three types represent,
+区分的原因是这三种类型代表，
+under the covers,  在底层，
+references to data structures that must be initialized before use.
+必须在使用前初始化的数据结构的引用。
+Aslice,  一个切片，
+for example,  例如，
+isathree -item descriptor containingapointer to the data (inside an array),
+是一个包含指向数据（在数组内）的指针的三项描述符，
+the length,  长度，
+and the capacity,  和容量，
+and until those items are initialized,
+并且在这些项目初始化之前，
+the slice is nil.  该切片为零。
+For slices,  对于切片，
+maps,  映射，
+and channels,
+make initializes the internal data structure and prepares the value for use.
+For instance,  例如，
+make ([]int,
+100)allocates an array of 100 ints and then createsaslice structure with length 10 andacapacity of 100 pointing at the first 10 elements of the array.
+(When makingaslice,  （制作切片时，
+the capacity can be omitted;  可以省略容量；
+see the section on slices for more information.
+有关更多信息，请参见关于切片的部分。）
+)In contrast,  ）相反，
+new ([]int) returnsapointer toanewly allocated,
+new([]int) 返回一个指向新分配的零值切片结构的指针，
+zeroed slice structure,  零值切片结构，
+that is,  也就是说，
+apointer toanil slice value.
+指向 nil 切片值的指针。
+These examples illustrate the difference between new and make.
+这些例子说明了 new 和 make 之间的区别。
+varp*[]int=new ([]int)//allocates slice structure;
+var p *[]int = new([]int) // 分配切片结构体;
+*p==nil;  *p == nil;
+rarely useful varv[]int=make ([]int,
+很少有用 var v[]int = make([]int,
+100) //the slicevnow refers toanew array of 100 ints//Unnecessarily complex:varp*[]int=new ([]int) *p=make ([]int,
+100) //theslicevnowreferstoanewarrayof100ints//不必要的复杂：varp*[]int=new([]int)*p=make([]int,
+100) //Idiomatic: v :=make ([]int,
+100) //惯用：v :=make([]int,
+100)Remember that make applies only to maps,
+100)请记住，make 仅适用于映射，
+slices and channels and does not returnapointer.
+切片和通道，不返回指针。
+To obtain an explicit pointer allocate with new or take the address ofavariable explicitly.
+要获得显式指针，可以使用 new 分配或显式获取变量的地址。
+Arrays Arrays are useful when planning the detailed layout of memory and sometimes can help avoid allocation,
+数组在规划内存的详细布局时很有用，有时可以帮助避免分配，
+but primarily they areabuilding block for slices,
+但它们主要是切片的构建块，
+the subject of the next section.
+这是下一节的主题。
+To lay the foundation for that topic,
+为该主题奠定基础，
+here areafew words about arrays.
+以下是关于数组的一些说明。
+There are major differences between the ways arrays work in Go andC .
+Go 和 C 中数组的工作方式存在重大差异。
+In Go,  在 Go 中，
+Arrays are values.  数组是值。
+Assigning one array to another copies all the elements.
+将一个数组分配给另一个数组会复制所有元素。
+In particular,  特别是，
+if you pass an array toafunction,
+如果你将一个数组传递给一个函数，
+it will receiveacopy of the array,
+它将收到数组的副本，
+notapointer to it.  而不是指向它的指针。
+The size of an array is part of its type.
+数组的大小是其类型的一部分。
+The types [10]int and [20]int are distinct.
+类型[10]int 和[20]int 是不同的。
+The value property can be useful but also expensive;
+if you wantC-like behavior and efficiency,
+you can passapointer to the array.
+func Sum (a *[3]float64) (sum float64) {for_ ,
+v :=range *a{sum+= v }return}array:= [...
+]float64{7.0,
+9.1}x :=Sum (&array)//Note the explicit address -of operator But even this style isn 't idiomatic Go.
+9.1}x :=Sum(&array)//注意显式的地址运算符，但即使这种风格也不是地道的 Go。
+Use slices instead.  使用切片代替。
+Slices Slices wrap arrays to giveamore general,
+SlicesSliceswraparray 提供了一个更通用的
+powerful,  强大的
+and convenient interface to sequences of data.
+且方便的数据序列接口。
+Except for items with explicit dimension such as transformation matrices,
+除了具有显式维度的项目（如变换矩阵）外，
+most array programming in Go is done with slices rather than simple arrays.
+在 Go 中，大多数数组编程都是使用切片而不是简单数组完成的。
+Slices hold references to an underlying array,
+切片保存对底层数组的引用，
+and if you assign one slice to another,
+如果你将一个切片赋值给另一个切片，
+both refer to the same array.  两者都指向同一个数组。
+Ifafunction takesaslice argument,
+如果一个函数接受一个切片参数，
+changes it makes to the elements of the slice will be visible to the caller,
+它对切片元素所做的更改对调用者是可见的，
+analogous to passingapointer to the underlying array.
+类似于传递一个指向底层数组的指针。
+ARead function can therefore acceptaslice argument rather thanapointer andacount;
+因此，一个 Read 函数可以接受一个切片参数，而不是一个指针和一个计数；
+the length within the slice sets an upper limit of how much data to read.
+切片中的长度设置了读取多少数据的上限。
+Here is the signature of the Read method of the File type in package os:func (f *File) Read (buf []byte) (n int,
+这是 package os 中 File 类型的 Read 方法的签名：func (f *File) Read(buf []byte) (n int, err error)
+err error)The method returns the number of bytes read and an error value,
+该方法返回读取的字节数和一个错误值（如果存在）。
+if any.  如果有的话。
+To read into the first 32 bytes ofalarger buffer buf,
+将其读入到更大的缓冲区 buf 的前 32 个字节中，
+slice (here used asaverb)the buffer.
+对缓冲区进行切片（这里用作动词）。
+n ,
+err:= f.Read(buf[0:32]) Such slicing is common and efficient.
+err:= f.Read(buf[0:32]) 这种切片方式很常见且高效。
+In fact,  事实上，
+leaving efficiency aside for the moment,
+暂且不考虑效率，
+the following snippet would also read the first 32 bytes of the buffer.
+以下代码段也会读取缓冲区的前 32 个字节。
+varnint var err error fori := 0 ;
+i< 32;
+i ++ {nbytes,
+e := f.Read(buf[i:i+1])//Read one byte.
+ext: e := f.Read(buf[i:i+1])//读取一个字节。
+n +=nbytes if nbytes== 0 || e !
+=nil{err= ebreak} }The length ofaslice may be changed as long as it still fits within the limits of the underlying array;
+=nil{err= ebreak} }切片的长度可以改变，只要它仍然符合底层数组的限制；
+just assign it toaslice of itself.
+只是将其分配给自身的一个切片。
+The capacity ofaslice,  切片的容量，
+accessible by the built -in function cap,
+可以通过内置函数 cap 访问，
+reports the maximum length the slice may assume.
+报告切片可能呈现的最大长度。
+Here isafunction to append data toaslice.
+这是一个将数据附加到切片的功能。
+If the data exceeds the capacity,
+如果数据超过容量，
+the slice is reallocated.  则重新分配切片。
+The resulting slice is returned.
+返回结果切片。
+The function uses the fact that len and cap are legal when applied to the nil slice,
+该函数利用了当应用于 nil 切片时，len 和 cap 是合法的事实，
+and return0 .  并返回 0。
+func Append (slice,
+data []byte) []byte{ l :=len (slice) ifl +len (data) >">">> cap (slice){ //reallocate//Allocate double what 's needed,
+data[]byte)[]byte{ l :=len(slice)if l +len(data)>">">> cap(slice){ //重新分配//分配所需的两倍，
+for future growth.  为了未来成长。
+newSlice:=make ([]byte,
+(l+len(data))*2)//The copy function is predeclared and works for any slice type.
+(l+len(data))*2)//copy 函数是预先声明的，适用于任何切片类型。
+copy (newSlice,
+slice)slice=newSlice}slice=slice [0:l+len(data)] copy (slice[l:],
+data)return slice}We must return the slice afterwards because,
+data)returnslice}我们必须事后返回切片，因为，
+although Append can modify the elements of slice,
+虽然 Append 可以修改切片的元素，
+the slice itself (the run -time data structure holding the pointer,
+切片本身（保存指针的运行时数据结构，
+length,  长度，
+and capacity)is passed by value.
+和容量)是按值传递的。
+The idea of appending toaslice is so useful it 's captured by the append built -in function.
+将内容追加到切片的想法非常有用，它被内置的 append 函数捕获。
+To understand that function 's design,
+要理解该函数的设计，
+though,  虽然，
+we needalittle more information,
+我们需要更多信息，
+so we 'll return to it later.  所以我们稍后再来处理。
+Two -dimensional slices Go 's arrays and slices are one -dimensional.
+二维切片 Go 的数组和切片是一维的。
+To create the equivalent ofa2D array or slice,
+要创建等效于 2D 数组或切片的东西，
+it is necessary to define an array -of-arrays or slice -of-slices,
+有必要定义一个数组的数组或切片的切片，
+like this:type Transform [3][3]float64// A3x3 array,
+像这样：type Transform[3][3]float64 // 一个 3x3 数组，
+really an array of arrays.  实际上是一个数组的数组。
+type LinesOfText [][]byte// Aslice of byte slices.
+type LinesOfText[][]byte // 一个字节切片的切片。
+Because slices are variable -length,
+因为切片是可变长度的，
+it is possible to have each inner slice beadifferent length.
+所以每个内部切片都可以有不同的长度。
+That can beacommon situation,
+这可能是一种常见的情况，
+as in our LinesOfText example:each line has an independent length.
+就像我们的 LinesOfText 示例一样：每行都有一个独立的长度。
+text:=LinesOfText{[]byte("Now is the time"),
+text: text:=LinesOfText{[]byte("现在是时候了")，
+[]byte("for all good gophers"),
+[]byte("为了所有优秀的 gopher")，
+[]byte("to bring some fun to the party."
+[]byte("给聚会带来一些乐趣。"
+}Sometimes it 's necessary to allocatea2D slice,
+}有时候需要分配一个二维切片，
+asituation that can arise when processing scan lines of pixels,
+处理像素扫描线时可能出现的情况，
+for instance.  例如。
+There are two ways to achieve this.
+有两种方法可以实现这一点。
+One is to allocate each slice independently;
+一种是独立分配每个切片；
+the other is to allocateasingle array and point the individual slices into it.
+另一种是分配一个数组并将各个切片指向它。
+Which to use depends on your application.
+使用哪种取决于你的应用程序。
+If the slices might grow or shrink,
+如果切片可能会增长或缩小，
+they should be allocated independently to avoid overwriting the next line;
+它们应该被独立分配以避免覆盖下一行；
+if not,  如果没有，
+it can be more efficient to construct the object withasingle allocation.
+通过单次分配构造对象可以更有效率。
+For reference,  供参考，
+here are sketches of the two methods.
+这里是两种方法的草图。
+First,  首先，
+aline atatime: //Allocate the top -level slice.
+一次一行：//分配顶层切片。
+picture:=make ([][]uint8,
+YSize) //One row per unit ofy .
+//Loop over the rows,  //遍历行，
+allocating the slice for each row.
+为每行分配切片。
+fori :=range picture{picture [i]=make ([]uint8,
+XSize) }And now as one allocation,
+XSize) }现在作为一个分配，
+sliced into lines: //Allocate the top -level slice,
+slicedintolines: //分配顶层切片，
+the same as before.  和以前一样。
+picture:=make ([][]uint8,
+YSize) //One row per unit ofy .
+YSize) // 每个单位一行 YSize)。
+//Allocate one large slice to hold all the pixels.
+//分配一个大的切片来保存所有像素。
+pixels:=make ([]uint8,
+XSize *YSize)//Has type []uint8 even though picture is [][]uint8.
+XSize*YSize) // 即使图片是[][]uint8，也具有类型[]uint8。
+//Loop over the rows,  //循环遍历行，
+slicing each row from the front of the remaining pixels slice.
+从剩余像素切片的前面切分每一行。
+fori :=range picture{picture [i],
+for i := range picture{picture[i],
+pixels=pixels [:XSize],
+pixels [XSize:]}Maps Maps areaconvenient and powerful built -in data structure that associate values of one type (the key)with values of another type (the element or value).
+pixels[XSize:]}MapsMaps 是一种方便且强大的内置数据结构，它将一种类型的值（键）与另一种类型的值（元素或值）相关联。
+The key can be of any type for which the equality operator is defined,
+键可以是定义了相等运算符的任何类型，
+such as integers,  例如整数，
+floating point and complex numbers,
+浮点数和复数，
+strings,  字符串
+pointers,  指针
+interfaces (as long as the dynamic type supports equality),
+接口（只要动态类型支持相等性），
+structs and arrays.  结构体和数组。
+Slices cannot be used as map keys,
+切片不能用作 map 键，
+because equality is not defined on them.
+因为平等没有在它们上定义。
+Like slices,  喜欢切片，
+maps hold references to an underlying data structure.
+映射保存对底层数据结构的引用。
+If you passamap toafunction that changes the contents of the map,
+如果你将一个映射传递给一个改变映射内容的功能，
+the changes will be visible in the caller.
+这些更改将在调用者中可见。
+Maps can be constructed using the usual composite literal syntax with colon -separated key -value pairs,
+可以使用通常的复合文字语法构造 Map，其中键值对以冒号分隔，
+so it 's easy to build them during initialization.
+所以在初始化期间很容易构建它们。
+var timeZone=map [string]int{ "UTC":0*60*60,
+var timeZone=map[string]int{"UTC":0*60*60,
+"EST": -5*60*60,
+"CST": -6*60*60,
+"MST": -7*60*60,
+"PST": -8*60*60,
+}Assigning and fetching map values looks syntactically just like doing the same for arrays and slices except that the index doesn 't need to be an integer.
+}分配和获取 map 值在语法上看起来与对数组和切片执行相同操作非常相似，只是索引不需要是整数。
+offset:=timeZone ["EST"] An attempt to fetchamap value withakey that is not present in the map will return the zero value for the type of the entries in the map.
+offset:=timeZone["EST"] 尝试获取 map 中不存在的键的 map 值将返回 map 中条目类型的零值。
+For instance,  例如，
+if the map contains integers,
+如果 map 包含整数，
+looking upanon -existent key will return0 .
+查找不存在的键将返回 0。
+Aset can be implemented asamap with value type bool.
+集合可以实现为值类型为布尔值的映射。
+Set the map entry to true to put the value in the set,
+将映射条目设置为 true 以将值放入集合中，
+and then test it by simple indexing.
+然后通过简单索引来测试它。
+attended:=map [string]bool{ "Ann": true,
+"Joe": true,  "乔":真，
+}if attended [person]{ //will be false if person is not in the map fmt .Println(person,
+}如果参加[人]{ //如果人不在映射中，则为假 fmt.Println(人，
+"was at the meeting") }Sometimes you need to distinguishamissing entry fromazero value.
+"参加了会议")}有时你需要区分一个缺失的条目和一个零值。
+Is there an entry for "UTC" or is that0because it 's not in the map at all?
+"UTC"有条目吗？或者它完全不在地图上，所以是 0？
+You can discriminate withaform of multiple assignment.
+您可以使用多重赋值的形式进行区分。
+var seconds int var ok bool seconds,
+var seconds int var ok bool seconds,
+ok=timeZone [tz] For obvious reasons this is called the “comma ok”idiom.
+ok=timeZone[tz] 显而易见的原因是，这被称为“逗号 ok”用法。
+In this example,  在这个例子中，
+if tz is present,  如果 iftzispresent，
+seconds will be set appropriately and ok will be true;
+则 secondswillbesetappropriately，并且 okwillbetrue；
+if not,  如果不是，
+seconds will be set to zero and ok will be false.
+则 secondswillbesettozero，并且 okwillbefalse。
+Here 'safunction that puts it together withanice error report:func offset (tz string)int{if seconds,
+这是一个将它们组合在一起并提供良好错误报告的函数：funcoffset(tzstring)int{ifseconds,
+ok:=timeZone [tz];
+ok{return seconds}log .Println("unknown time zone:",
+ok{returnseconds}log.Println("未知时区:",
+tz)return0 }To test for presence in the map without worrying about the actual value,
+tz)return0 }要在不考虑实际值的情况下测试地图中是否存在，
+you can use the blank identifier( _ )in place of the usual variable for the value.
+你可以使用空白标识符(_)来代替该值的常用变量。
+present:=timeZone [tz] To deleteamap entry,
+present:=timeZone[tz]要删除一个 map 条目，
+use the delete built -in function,
+使用 delete 内建函数，
+whose arguments are the map and the key to be deleted.
+它的参数是 map 和要删除的键。
+It 's safe to do this even if the key is already absent from the map.
+即使该键已从映射中消失，这样做也是安全的。
+delete (timeZone,
+"PDT")//Now on Standard Time Printing Formatted printing in Go usesastyle similar toC's printf family but is richer and more general.
+"PDT")//现在是标准时间。格式化打印在 Go 中使用类似于 C 的 printf 系列的风格，但更丰富和更通用。
+The functions live in the fmt package and have capitalized names:fmt .Printf,
+这些函数存在于 fmt 包中，并且具有大写名称：fmt.Printf,
+fmt .Fprintf,
+fmt .Sprintf and so on.  fmt.Sprintf 等等。
+The string functions(Sprintf etc.
+字符串函数（Sprintf 等）
+)returnastring rather than filling inaprovided buffer.
+)返回一个字符串，而不是填充提供的缓冲区。
+You don 't need to provideaformat string.
+你不需要提供格式字符串。
+For each of Printf,  对于 Printf，
+Fprintf and Sprintf there is another pair of functions,
+Fprintf 和 Sprintf，还有另一对函数，
+for instance Print and Println.
+例如 Print 和 Println。
+These functions do not takeaformat string but instead generateadefault format for each argument.
+这些函数不接受格式字符串，而是为每个参数生成默认格式。
+The Println versions also insertablank between arguments and appendanewline to the output while the Print versions add blanks only if the operand on neither side isastring.
+Println 版本还在参数之间插入一个空格，并在输出中附加一个换行符，而 Print 版本仅在操作数两侧都是字符串时才添加空格。
+In this example each line produces the same output.
+在此示例中，每一行都会生成相同的输出。
+fmt .Printf("Hello %d\n",  fmt.Printf("你好%d\n",
+23)fmt .Fprint(os.Stdout,
+"Hello",  "你好",
+"\n") fmt .Println("Hello",
+"\n")fmt.Println("你好",
+23)fmt .Println(fmt.Sprint("Hello",
+23)fmt.Println(fmt.Sprint("你好",
+23))The formatted print functions fmt .Fprint and friends take asafirst argument any object that implements the io .Writer interface;
+23))格式化的打印函数 fmt.Fprint 和 friends 将实现 io.Writer 接口的任何对象作为第一个参数；
+the variables os .Stdout and os .Stderr are familiar instances.
+变量 os.Stdout 和 os.Stderr 是常见的实例。
+Here things start to diverge fromC .
+在这里，事情开始与 C 不同。
+First,  首先，
+the numeric formats such as %d do not take flags for signedness or size;
+诸如 %d 之类的数字格式不采用有符号或大小的标志；
+instead,  而是，
+the printing routines use the type of the argument to decide these properties.
+打印例程使用参数的类型来决定这些属性。
+varxuint64= 1<<64- 1fmt .Printf("%d %x;
+%d %x\n",
+x ,
+x ,
+int64 (x),
+int64 (x)) prints 18446744073709551615 ffffffffffffffff;
+int64(x))打印 18446744073709551615ffffffffffffffff;
+-1 -1 If you just want the default conversion,
+-1-1 如果你只想要默认转换，
+such as decimal for integers,
+例如整数的小数,
+you can use the catchall format %v (for “value”);
+您可以使用通配符格式%v（表示“值”）;
+the result is exactly what Print and Println would produce.
+结果与 Print 和 Println 产生的结果完全相同。
+Moreover,  此外，
+that format can print any value,
+该格式可以打印任何值，
+even arrays,  偶数数组,
+slices,  切片,
+structs,  结构体,
+and maps.  和映射。
+Here isaprint statement for the time zone map defined in the previous section.
+这是前一节中定义的时区映射的打印语句。
+fmt .Printf("%v\n",
+timeZone) //or just fmt .Println(timeZone) which gives output:map [CST:-21600 EST :-18000 MST :-25200 PST :-28800 UTC :0] For maps,
+timeZone) //或者直接 fmt.Println(timeZone)，它会输出：map[CST:-21600EST:-18000MST:-25200PST:-28800UTC:0]对于映射，
+Printf and friends sort the output lexicographically by key.
+Printf 和 friends 会按键的字典顺序对输出进行排序。
+When printingastruct,  打印结构体时，
+the modified format %+v annotates the fields of the structure with their names,
+修改后的格式 %+v 会用它们的名称注释结构的字段，
+and for any value the alternate format %#v prints the value in full Go syntax.
+对于任何值，备用格式 %#v 会以完整的 Go 语法打印该值。
+typeTstruct{ aintbfloat64cstring} t :=&T{7 ,
+type T struct { a int b float64 c string } t := &T{7 ,
+"abc\tdef"}fmt .Printf("%v\n",
+t )fmt .Printf("%+v\n",
+t )fmt .Printf("%#v\n",
+t )fmt .Printf("%#v\n",
+timeZone)prints &{7 -2.35 abc def}&{a:7b:-2.35c:abc def}&main.
+timeZone)打印&{7-2.35abcdef}&{a:7b:-2.35c:abcdef}&main。
+T{a:7,
+b:-2.35,
+c:"abc\tdef"} map [string]int{"CST":-21600,
+"EST":-18000,
+"MST":-25200,
+"PST":-28800,
+"UTC":0} (Note the ampersands.
+"UTC":0}(注意这些 & 符号。
+)That quoted string format is also available through %q when applied toavalue of type string or []byte.
+)当应用于字符串或[]byte 类型的值时，也可以通过%q 获得该引用字符串格式。
+The alternate format %#q will use backquotes instead if possible.
+备用格式 %#q 将尽可能使用反引号。
+(The %q format also applies to integers and runes,
+（该%q 格式也适用于整数和符文，
+producingasingle -quoted rune constant.
+产生一个单引号的符文常量。
+)Also,  ）此外，
+%x works on strings,  %x 适用于字符串，
+byte arrays and byte slices as well as on integers,
+字节数组和字节切片以及整数，
+generatingalong hexadecimal string,
+生成长十六进制字符串，
+and withaspace in the format(% x)it puts spaces between the bytes.
+并且在格式 (% x) 中使用空格，它会在字节之间放置空格。
+Another handy format is %T,  另一个方便的格式是 %T，
+which prints the type ofavalue.
+fmt .Printf("%T\n",
+timeZone)prints map [string]int If you want to control the default format foracustom type,
+all that 's required is to defineamethod with the signature String()string on the type.
+For our simple typeT ,  对于我们的简单类型 T，
+that might look like this.  看起来可能像这样。
+func (t *T) String()string{return fmt .Sprintf("%d/%g/%q",
+t .  t.
+a ,
+t .  t 。
+b ,
+t .  t 。
+c ) }fmt .Printf("%v\n",  c) }fmt.Printf("%v\n",
+t )to print in the format7/-2.35/"abc\tdef" (If you need to print values of typeTas well as pointers toT ,
+t) 以格式 7/-2.35/"abc\tdef" 打印（如果需要打印 T 类型的值以及指向 T 的指针，
+the receiver for String must be of value type;
+String 的接收者必须是值类型；
+this example usedapointer because that 's more efficient and idiomatic for struct types.
+这个例子使用了指针，因为对于结构体类型来说，这样更高效且符合习惯。
+See the section below on pointers vs.value receivers for more information.
+有关指针与值接收器的更多信息，请参见下文。
+)Our String method is able to call Sprintf because the print routines are fully reentrant and can be wrapped this way.
+)我们的 String 方法能够调用 Sprintf，因为打印例程是完全可重入的，并且可以以这种方式包装。
+There is one important detail to understand about this approach,
+关于这种方法，有一个重要的细节需要理解，
+however:don 't constructaString method by calling Sprintf inaway that will recur into your String method indefinitely.
+但是：不要通过以某种方式调用 Sprintf 来构造 String 方法，这种方式会无限期地重复进入你的 String 方法。
+This can happen if the Sprintf call attempts to print the receiver directly asastring,
+如果 Sprintf 调用尝试直接将接收器作为字符串打印，则可能发生这种情况，
+which in turn will invoke the method again.
+这反过来又会再次调用该方法。
+It 'sacommon and easy mistake to make,
+这是一个常见且容易犯的错误，
+as this example shows.  正如此示例所示。
+type MyString string func (m MyString)String()string{return fmt .Sprintf("MyString=%s",
+type MyString string func(m MyString) String() string { return fmt.Sprintf("MyString=%s",
+m ) //Error:will recur forever.
+m) //错误：将永远递归。
+}It 's also easy to fix:convert the argument to the basic string type,
+} 也很容易修复：将参数转换为基本字符串类型，
+which does not have the method.
+这样就没有该方法了。
+type MyString string func (m MyString)String()string{return fmt .Sprintf("MyString=%s",
+type MyStringstring func(m MyString) String() string { return fmt.Sprintf("MyString=%s",
+string (m))//OK:note conversion.
+string(m)) //好的：注意转换。
+}In the initialization section we 'll see another technique that avoids this recursion.
+在初始化部分，我们将看到另一种避免这种递归的技术。
+Another printing technique is to passaprint routine 's arguments directly to another such routine.
+另一种打印技术是将打印例程的参数直接传递给另一个例程。
+The signature of Printf uses the type...
+Printf 的签名使用类型...
+interface{}for its final argument to specify that an arbitrary number of parameters (of arbitrary type)can appear after the format.
+interface{} 作为其最后一个参数，以指定在格式之后可以出现任意数量的参数（任意类型）。
+func Printf (format string,  func Printf(格式字符串,
+v ...
+interface{})(n int,
+err error) {Within the function Printf,
+errerror) {在函数 Printf 中，
+vacts likeavariable of type []interface{} but if it is passed to another variadic function,
+vacts 就像一个[]interface{}类型的变量，但如果它传递给另一个可变参数函数，
+it acts likearegular list of arguments.
+它的行为就像一个常规的参数列表。
+Here is the implementation of the function log .Println we used above.
+这是我们上面使用的函数 log.Println 的实现。
+It passes its arguments directly to fmt .Sprintln for the actual formatting.
+它将其参数直接传递给 fmt.Sprintln 进行实际格式化。
+//Println prints to the standard logger in the manner of fmt .Println.
+//Println 以 fmt.Println 的方式打印到标准记录器。
+func Println (v...  func Println(v...
+interface{}) {std .Output(2,
+fmt .Sprintln(v...
+)) //Output takes parameters (int,
+)) //Output 接受参数(int,
+string) }We write...  字符串) }我们写...
+aftervin the nested call to Sprintln to tell the compiler to treatvasalist of arguments;
+在嵌套调用 Sprintln 后，告诉编译器将 va 视为参数列表；
+otherwise it would just passvasasingle slice argument.
+否则它只会将 va 作为一个切片参数传递。
+There 's even more to printing than we 've covered here.
+甚至还有比我们这里介绍的更多的打印功能。
+See the godoc documentation for package fmt for the details.
+有关详细信息，请参阅 fmt 包的 godoc 文档。
+By the way,  顺便说一句，
+a ...
+parameter can be ofaspecific type,
+参数可以是特定类型，
+for instance...  例如...
+int foramin function that chooses the least ofalist of integers:func Min (a...
+例如，一个函数选择一个整数列表中最小的整数：funcMin(a...
+int)int{min:=int (^uint(0) >>">>">>>1 ) //largest int for_ ,
+i :=rangea {ifi< min{min= i } }return min}Append Now we have the missing piece we needed to explain the design of the append built -in function.
+i :=rangea {ifi
+The signature of append is different from our custom Append function above.
+append 的签名与我们上面自定义的 Append 函数不同。
+Schematically,  示意地，
+it 's like this:func append (slice[] T ,
+它是这样的：func append(slice[] T ,
+elements...  元素...
+T ) [] TwhereTisaplaceholder for any given type.
+T ) [] T 其中 T 是任何给定类型的占位符。
+You can 't actually writeafunction in Go where the typeTis determined by the caller.
+你实际上不能在 Go 中编写一个类型 T 由调用者决定的函数。
+That 's why append is built in:it needs support from the compiler.
+这就是 append 是内置的原因：它需要编译器的支持。
+What append does is append the elements to the end of the slice and return the result.
+Whatappenddoesis 将元素追加到切片的末尾并返回结果。
+The result needs to be returned because,
+需要返回结果，因为，
+as with our hand -written Append,
+就像我们手写的 Append 一样，
+the underlying array may change.
+底层数组可能会改变。
+This simple examplex :=[]int{1,
+这个简单的例子 x := []int{1,
+3 } x =append (x,
+6 )fmt .Println(x) prints [12 3 4 5 6 ] .
+6 )fmt.Println(x) 打印 [12 3 4 5 6 ] 。
+So append worksalittle like Printf,
+所以 append 的工作方式有点像 Printf，
+collecting an arbitrary number of arguments.
+收集任意数量的参数。
+But what if we wanted to do what our Append does and appendaslice toaslice?
+但是，如果我们想做我们的 Append 所做的事情，并将一个切片附加到另一个切片呢？
+Easy:use...  简单：使用...
+at the call site,  在调用点，
+just as we did in the call to Output above.
+就像我们在上面对 Output 的调用中所做的那样。
+This snippet produces identical output to the one above.
+此代码片段产生与上面相同的输出。
+x :=[]int{1,  xt: x :=[]int{1,
+3 } y :=[]int{4,
+6 } x =append (x,
+y ...
+)fmt .Println(x) Without that...
+it wouldn 't compile because the types would be wrong;
+因为类型错误，它无法编译;
+yis not of type int.  y 不是 int 类型。
+Initialization Although it doesn 't look superficially very different from initialization inCorC ++,
+初始化虽然表面上看起来与 C 或 C++ 中的初始化没有太大区别，
+initialization in Go is more powerful.
+但 Go 中的初始化功能更强大。
+Complex structures can be built during initialization and the ordering issues among initialized objects,
+可以在初始化期间构建复杂结构，并且可以正确处理已初始化对象之间的排序问题，
+even among different packages,
+甚至在不同的包之间也是如此。
+are handled correctly.  可以正确处理。
+Constants Constants in Go are just that —constant.
+常量 Go 中的常量就是常量。
+They are created at compile time,
+它们在编译时创建，
+even when defined as locals in functions,
+即使在函数中定义为局部变量，
+and can only be numbers,  并且只能是数字，
+characters (runes),  字符（符文），
+strings or booleans.  字符串或布尔值。
+Because of the compile -time restriction,
+由于编译时限制，
+the expressions that define them must be constant expressions,
+定义它们的表达式必须是常量表达式，
+evaluatable by the compiler.
+可由编译器评估。
+For instance,  例如，
+1<<3 isaconstant expression,
+1<<3 是一个常量表达式，
+while math .Sin(math.Pi/4) is not because the function call to math .Sin needs to happen at run time.
+而 math.Sin(math.Pi/4) 则不是，因为对 math.Sin 的函数调用需要在运行时发生。
+In Go,  在 Go 中，
+enumerated constants are created using the iota enumerator.
+枚举常量是使用 iota 枚举器创建的。
+Since iota can be part of an expression and expressions can be implicitly repeated,
+由于 iota 可以是表达式的一部分，并且表达式可以隐式重复，
+it is easy to build intricate sets of values.
+因此很容易构建复杂的值集合。
+type ByteSize float64 const( _ =iota//ignore first value by assigning to blank identifier KB ByteSize= 1<< (10*iota)MB GB TB PB EB ZB YB)The ability to attachamethod such as String to any user -defined type makes it possible for arbitrary values to format themselves automatically for printing.
+typeByteSizefloat64const( _ =iota//通过分配给空白标识符忽略第一个值 KBByteSize= 1<<(10*iota)MBGBTBPBEBZBYB) 将诸如 String 之类的方法附加到任何用户定义的类型的能力使得任意值可以自动格式化以进行打印。
+Although you 'll see it most often applied to structs,
+虽然你会看到它最常应用于结构体，
+this technique is also useful for scalar types such as floating -point types like ByteSize.
+这种技术也适用于标量类型，例如浮点类型，如 ByteSize。
+func (b ByteSize)String()string{switch{caseb>=">=">>= YB:return fmt .Sprintf("%.
+2fYB",
+b/YB) caseb>=">=">>= ZB:return fmt .Sprintf("%.
+2fZB",
+b/ZB) caseb>=">=">>= EB:return fmt .Sprintf("%.
+2fEB",
+b/EB) caseb>=">=">>= PB:return fmt .Sprintf("%.
+2fPB",  2fPB"，
+b/PB) caseb>=">=">>= TB:return fmt .Sprintf("%.
+2fTB",  2fTB"，
+b/TB) caseb>=">=">>= GB:return fmt .Sprintf("%.
+2fGB",
+b/GB) caseb>=">=">>= MB:return fmt .Sprintf("%.
+2fMB",
+b/MB) caseb>=">=">>= KB:return fmt .Sprintf("%.
+2fKB",  2fKB\"，
+b/KB)}return fmt .Sprintf("%.
+2fB",  2fB\"，
+b ) }The expression YB prints as1.00YB,
+b ) }表达式 YB 打印为 1.00YB，
+while ByteSize (1e13) prints as9.09TB.
+whileByteSize(1e13) 打印为 9.09TB。
+The use here of Sprintf to implement ByteSize 's String method is safe (avoids recurring indefinitely)not because ofaconversion but because it calls Sprintf with %f,
+在此处使用 Sprintf 实现 ByteSize 的 String 方法是安全的（避免无限循环），不是因为转换，而是因为它使用 %f 调用 Sprintf。
+which is notastring format:Sprintf will only call the String method when it wantsastring,
+%f 不是字符串格式：Sprintf 仅在需要字符串时调用 String 方法。
+and %f wantsafloating -point value.
+并且 %f 需要一个浮点数值。
+Variables Variables can be initialized just like constants but the initializer can beageneral expression computed at run time.
+变量的初始化方式与常量类似，但初始化器可以是运行时计算的通用表达式。
+var(home=os .Getenv("HOME") user=os .Getenv("USER") gopath=os .Getenv("GOPATH"))The init function Finally,
+var(home=os.Getenv("HOME") user=os.Getenv("USER") gopath=os.Getenv("GOPATH")) init 函数最后，
+each source file can define its own niladic init function to set up whatever state is required.
+每个源文件都可以定义自己的无参数 init 函数来设置所需的任何状态。
+(Actually each file can have multiple init functions.
+(实际上，每个文件可以有多个 init 函数。）
+)And finally means finally:init is called after all the variable declarations in the package have evaluated their initializers,
+)Andfinallymeansfinally: initis 在包中所有变量声明都已评估其初始值设定项之后调用的，
+and those are evaluated only after all the imported packages have been initialized.
+并且这些初始值设定项仅在所有导入的包都已初始化之后才进行评估。
+Besides initializations that cannot be expressed as declarations,
+除了无法表示为声明的初始化之外，
+acommon use of init functions is to verify or repair correctness of the program state before real execution begins.
+init 函数的常见用途是在实际执行开始之前验证或修复程序状态的正确性。
+func init() {if user== "" {log .Fatal("$USER not set") }if home== "" {home="/home/"+user}if gopath== "" {gopath=home+"/go"} //gopath may be overridden by --gopath flag on command line.
+funcinit() {if user == "" {log.Fatal("$USER not set")} if home == "" {home = "/home/" + user} if gopath == "" {gopath = home + "/go"} // gopath 可能会被命令行中的 --gopath flag 覆盖。
+flag .StringVar(&gopath,
+"gopath",
+gopath,
+"override default GOPATH") }Methods Pointers vs.Values As we saw with ByteSize,
+"overridedefaultGOPATH") }方法指针与值正如我们用 ByteSize 看到的那样，
+methods can be defined for any named type (exceptapointer or an interface);
+方法可以为任何命名类型定义（指针或接口除外）；
+the receiver does not have to beastruct.
+接收器不必是结构体。
+In the discussion of slices above,
+在上面对切片的讨论中，
+we wrote an Append function.  我们编写了一个 Append 函数。
+We can define it asamethod on slices instead.
+我们可以将其定义为切片上的一个方法。
+To do this,  为此，
+we first declareanamed type to which we can bind the method,
+我们首先声明一个命名类型，我们可以将该方法绑定到该类型。
+and then make the receiver for the methodavalue of that type.
+然后将该方法的接收器设置为该类型的值。
+type ByteSlice []byte func (slice ByteSlice)Append (data []byte) []byte{ //Body exactly the same as the Append function defined above.
+type ByteSlice []byte func(slice ByteSlice) Append(data []byte) []byte{ //主体与上面定义的 Append 函数完全相同。
+}This still requires the method to return the updated slice.
+}这仍然需要该方法返回更新后的切片。
+We can eliminate that clumsiness by redefining the method to takeapointer toaByteSlice as its receiver,
+我们可以通过将该方法重新定义为以指向 ByteSlice 的指针作为其接收器来消除这种笨拙性，
+so the method can overwrite the caller 's slice.
+这样该方法就可以覆盖调用者的切片。
+func (p *ByteSlice) Append (data []byte){slice:=*p//Body as above,
+without the return.  没有返回。
+*p=slice}In fact,  *p=slice} 实际上，
+we can do even better.  我们可以做得更好。
+If we modify our function so it looks likeastandard Write method,
+如果我们修改函数，使它看起来像一个标准的 Write 方法，
+like this,  像这样，
+func (p *ByteSlice) Write (data []byte) (n int,
+err error) {slice:=*p//Again as above.
+errerror) {slice:=*p//和上面一样。
+*p=slice return len (data),
+nil}then the type *ByteSlice satisfies the standard interface io .Writer,
+nil}然后类型*ByteSlice 满足标准接口 io.Writer，
+which is handy.  这很方便。
+For instance,  例如，
+we can print into one.  我们可以打印到其中一个。
+varbByteSlice fmt .Fprintf(&b,
+"This hour has %d days \n",  "这一小时有%d 天\n",
+7 )We pass the address ofaByteSlice because only *ByteSlice satisfies io .Writer.
+7) 我们传递 ByteSlice 的地址，因为只有 *ByteSlice 满足 io.Writer。
+The rule about pointers vs.values for receivers is that value methods can be invoked on pointers and values,
+关于接收器的指针与值的规则是，值方法可以在指针和值上调用，
+but pointer methods can only be invoked on pointers.
+但指针方法只能在指针上调用。
+This rule arises because pointer methods can modify the receiver;
+出现此规则的原因是指针方法可以修改接收者；
+invoking them onavalue would cause the method to receiveacopy of the value,
+在值上调用它们会导致该方法接收值的副本，
+so any modifications would be discarded.
+因此任何修改都将被丢弃。
+The language therefore disallows this mistake.
+因此，该语言不允许这个错误。
+There isahandy exception,  这里有一个方便的例外，
+though.  虽然。
+When the value is addressable,
+当该值是可寻址的，
+the language takes care of the common case of invokingapointer method onavalue by inserting the address operator automatically.
+该语言通过自动插入地址运算符来处理在值上调用指针方法的常见情况。
+In our example,  在我们的例子中，
+the variablebis addressable,
+变量 b 是可寻址的。
+so we can call its Write method with justb.Write.
+所以我们可以仅用 b.Write 调用它的 Write 方法。
+The compiler will rewrite that to (&b).
+编译器会将其重写为(&b)。
+Write for us.  为我们写入。
+By the way,  顺便说一句，
+the idea of using Write onaslice of bytes is central to the implementation of bytes .Buffer.
+使用 Write 对字节切片进行操作的想法是 bytes.Buffer 实现的核心。
+Interfaces and other types Interfaces Interfaces in Go provideaway to specify the behavior of an object:if something can do this,
+接口和其他类型接口 Go 中的接口提供了一种指定对象行为的方式：如果某事物可以做到这一点，
+then it can be used here.  那么它就可以在这里使用。
+We 've seenacouple of simple examples already;
+我们已经看过几个简单的例子了；
+custom printers can be implemented byaString method while Fprintf can generate output to anything withaWrite method.
+可以通过字符串方法实现自定义打印机扫描，而 Fprintf 可以生成输出到任何具有 Write 方法的对象。
+Interfaces with only one or two methods are common in Go code,
+在 Go 代码中，只有一两个方法的接口很常见，
+and are usually givenaname derived from the method,
+并且通常会根据方法给出一个名称，
+such as io .Writer for something that implements Write.
+例如 io.Writer 用于实现 Write 的接口。
+Atype can implement multiple interfaces.
+一个类型可以实现多个接口。
+For instance,  例如，
+acollection can be sorted by the routines in package sort if it implements sort .Interface,
+如果一个集合实现了 sort.Interface 接口，它就可以通过 package sort 中的例程进行排序，
+which contains Len() ,  其中包含 Len() 方法，
+Less (i,
+jint)bool,
+and Swap (i,
+jint) ,  jint),
+and it could also haveacustom formatter.
+并且它也可以有一个自定义的格式化器。
+In this contrived example Sequence satisfies both.
+在这个人为设计的例子中，序列满足两者。
+type Sequence []int//Methods required by sort .Interface.
+type Sequence[]int //sort.Interface 需要的方法。
+func (s Sequence)Len()int{return len (s)}func (s Sequence)Less (i,
+func(s Sequence) Len() int { return len(s) } func(s Sequence) Less(i,
+jint)bool{returns[i] <s[j]}func (s Sequence)Swap (i,
+j int) bool { return s[i] < s[j] } func(s Sequence) Swap(i,
+jint) { s[i],
+s[j]= s[j],
+s[i]} //Copy returnsacopy of the Sequence.
+s[i]} //Copy 返回序列的副本。
+func (s Sequence)Copy()Sequence{copy:=make (Sequence,
+len (s)) return append (copy,
+s ...
+) } //Method for printing-sorts the elements before printing.
+func (s Sequence)String()string{ s = s.Copy()//Makeacopy;
+don 't overwrite argument.  不要覆盖参数。
+sort .Sort(s) str:= "["fori ,
+elem:=ranges { //Loop isO(N²);
+elem:=ranges { //循环是 O(N²);
+will fix that in next example.
+将在下一个示例中修复它。
+ifi>">">>0 {str+= " " }str+=fmt .Sprint(elem)}return str+ "]" }Conversions The String method of Sequence is recreating the work that Sprint already does for slices.
+ifi>">">>0 {str+= " " }str+=fmt.Sprint(elem)}returnstr+ "]" }转换 Sequence 的 String 方法正在重新创建 Sprint 已经为切片所做的工作。
+(It also has complexityO(N²),
+(它也有复杂度 O(N²)，
+which is poor.  这很糟糕。
+)We can share the effort (and also speed it up)if we convert the Sequence toaplain []int before calling Sprint.
+)如果我们先将 Sequence 转换为普通的 []int，然后再调用 Sprint，我们可以分摊工作量（并加快速度）。
+func (s Sequence)String()string{ s = s.Copy() sort .Sort(s) return fmt .Sprint([]int(s))}This method is another example of the conversion technique for calling Sprintf safely fromaString method.
+func(s Sequence)String()string{ s = s.Copy() sort.Sort(s) return fmt.Sprint([]int(s))} 这个方法是另一种转换技术的示例，用于从 String 方法安全地调用 Sprintf。
+Because the two types(Sequence and []int)are the same if we ignore the type name,
+因为如果我们忽略类型名称，那么两种类型（Sequence 和[]int）是相同的，
+it 's legal to convert between them.
+所以它们之间可以合法转换。
+The conversion doesn 't createanew value,
+这种转换不会创建新值，
+it just temporarily acts as though the existing value hasanew type.
+它只是暂时充当现有值具有新类型。
+(There are other legal conversions,
+（还有其他合法的转换，
+such as from integer to floating point,
+例如从整数到浮点数，
+that do createanew value.  这确实会创建一个新值。
+)It 's an idiom in Go programs to convert the type of an expression to accessadifferent set of methods.
+）这是一种惯用的 Go 程序，用于转换表达式的类型以访问不同的方法集。
+As an example,  举个例子，
+we could use the existing type sort .IntSlice to reduce the entire example to this:type Sequence []int//Method for printing-sorts the elements before printing func (s Sequence)String()string{ s = s.Copy() sort .IntSlice(s).
+我们可以使用现有的 typesort.IntSlice 来减少整个示例：type Sequence[]int // 打印方法 - 在打印之前对元素进行排序 func(s Sequence) String() string { s = s.Copy() sort.IntSlice(s)。
+Sort()return fmt .Sprint([]int(s))}Now,
+Sort() return fmt.Sprint([]int(s))} 现在，
+instead of having Sequence implement multiple interfaces (sorting and printing),
+不是让 Sequence 实现多个接口（排序和打印），
+we 're using the ability ofadata item to be converted to multiple types(Sequence,
+我们正在使用数据项转换为多种类型（Sequence，
+sort .IntSlice and []int),  sort.IntSlice 和 []int)，
+each of which does some part of the job.
+其中每个都完成工作的一部分。
+That 's more unusual in practice but can be effective.
+这在实践中不太常见，但可能有效。
+Interface conversions and type assertions Type switches areaform of conversion:they take an interface and,
+接口转换和类型断言类型开关是转换的一种形式：它们接受一个接口，并且，
+for each case in the switch,  对于 switch 中的每种情况，
+inasense convert it to the type of that case.
+在某种意义上，将其转换为该种情况的类型。
+Here 'sasimplified version of how the code under fmt .Printf turnsavalue intoastring usingatype switch.
+这是一个简化版本的代码，展示了 fmt.Printf 如何使用类型 switch 将值转换为字符串。
+If it 's alreadyastring,  如果它已经是字符串，
+we want the actual string value held by the interface,
+我们想要接口持有的实际字符串值，
+while if it hasaString method we want the result of calling the method.
+如果它有一个 String 方法，我们想要调用该方法的结果。
+type Stringer interface{String()string}var value interface{} //Value provided by caller.
+type Stringer interface { String() string } var value interface {} //调用者提供的值。
+switch str:=value.  switch str := value.
+(type){case string:return str case Stringer:return str .String()}The first case findsaconcrete value;
+(类型){casestring:returnstrcaseStringer:returnstr.String()}第一个案例找到一个具体的值;
+the second converts the interface into another interface.
+第二个将接口转换为另一个接口。
+It 's perfectly fine to mix types this way.
+这样混合类型完全没问题。
+What if there 's only one type we care about?
+如果我们只关心一种类型呢？
+If we know the value holdsastring and we just want to extract it?
+如果我们知道这个值是一个字符串，并且我们只想提取它？
+Aone -case type switch would do,
+应该使用 Aone-casetypeswitch，
+but so wouldatype assertion.
+但是会进行类型断言。
+Atype assertion takes an interface value and extracts from itavalue of the specified explicit type.
+类型断言接受一个接口值，并从中提取指定显式类型的值。
+The syntax borrows from the clause openingatype switch,
+该语法借鉴了类型 switch 的子句开头，
+but with an explicit type rather than the type keyword:value.
+但使用显式类型而不是 type 关键字：value。
+(typeName) and the result isanew value with the static type typeName.
+(typeName)，结果是一个具有静态类型 typeName 的新值。
+That type must either be the concrete type held by the interface,
+该类型必须是接口所持有的具体类型，
+orasecond interface type that the value can be converted to.
+或者是该值可以转换为的第二个接口类型。
+To extract the string we know is in the value,
+要提取我们知道在该值中的字符串，
+we could write:str:=value.  我们可以这样写：str:=value。
+(string) But if it turns out that the value does not containastring,
+(字符串)但如果结果表明该值不包含字符串，
+the program will crash witharun -time error.
+程序将会因运行时错误而崩溃。
+To guard against that,  为了防止这种情况，
+use the "comma,  使用“逗号，
+ok"idiom to test,  好吧"idiomtotest，
+safely,  安全地，
+whether the value isastring:str,
+ok:=value.  好的:=值。
+(string) if ok{fmt .Printf("string value is:%q\n",
+str) }else{fmt .Printf("value is notastring \n")}If the type assertion fails,
+str will still exist and be of type string,
+but it will have the zero value,
+但它将具有零值，
+an empty string.  一个空字符串。
+As an illustration of the capability,
+作为能力的一个例证，
+here 's an if-else statement that 's equivalent to the type switch that opened this section.
+这是一个 if-else 语句，它等价于打开本节的类型开关。
+if str,  如果字符串，
+ok:=value.  好的:=值。
+(string);  (字符串);
+ok{return str}else if str,  好的{returnstr}elseifstr,
+ok:=value.  好的:=值。
+(Stringer);  (字符串器);
+ok{return str .String()}Generality Ifatype exists only to implement an interface and will never have exported methods beyond that interface,
+ok{returnstr.String()}通用性如果一个类型仅仅是为了实现一个接口而存在，并且除了该接口之外，永远不会有导出的方法，
+there is no need to export the type itself.
+那么就没有必要导出该类型本身。
+Exporting just the interface makes it clear the value has no interesting behavior beyond what is described in the interface.
+仅导出接口可以清楚地表明，除了接口中描述的行为之外，该值没有其他有趣的行为了。
+It also avoids the need to repeat the documentation on every instance ofacommon method.
+这样可以避免在通用方法的每个实例上重复文档。
+In such cases,  在这种情况下，
+the constructor should return an interface value rather than the implementing type.
+构造函数应该返回一个接口值，而不是实现类型。
+As an example,  举个例子，
+in the hash libraries both crc32 .NewIEEE and adler32 .New return the interface type hash .Hash32.
+在 hash 库中，crc32.NewIEEE 和 adler32.New 都返回接口类型 hash.Hash32。
+Substituting the CRC -32 algorithm for Adler -32 inaGo program requires only changing the constructor call;
+将 Go 程序中的 Adler-32 算法替换为 CRC-32 算法只需要更改构造函数调用；
+the rest of the code is unaffected by the change of algorithm.
+代码的其余部分不受算法更改的影响。
+Asimilar approach allows the streaming cipher algorithms in the various crypto packages to be separated from the block ciphers they chain together.
+类似的方法允许将各种加密包中的流密码算法与它们链接在一起的分组密码分开。
+The Block interface in the crypto /cipher package specifies the behavior ofablock cipher,
+crypto/cipher 包中的 Block 接口指定了分组密码的行为，
+which provides encryption ofasingle block of data.
+它提供了对单个数据块的加密。
+Then,  然后，
+by analogy with the bufio package,
+通过类比 bufio 包，
+cipher packages that implement this interface can be used to construct streaming ciphers,
+实现此接口的密码包可用于构建流密码，
+represented by the Stream interface,
+由 Stream 接口表示，
+without knowing the details of the block encryption.
+在不了解块加密的细节的情况下。
+The crypto /cipher interfaces look like this:type Block interface{BlockSize()int Encrypt (dst,
+crypto/cipher 接口看起来像这样：type Block interface { BlockSize() int Encrypt(dst,
+src []byte) Decrypt (dst,  src []byte) Decrypt(dst,
+src []byte)}type Stream interface{XORKeyStream (dst,
+src []byte)} type Stream interface { XORKeyStream(dst,
+src []byte)}Here 's the definition of the counter mode (CTR) stream,
+src[]byte)}这是计数器模式（CTR）流的定义，
+which turnsablock cipher intoastreaming cipher;
+它将块密码转换为流密码；
+notice that the block cipher 's details are abstracted away: //NewCTR returnsaStream that encrypts /decrypts using the given Block in//counter mode.
+请注意，块密码的细节已被抽象出来：//NewCTR 返回一个使用给定块以//计数器模式加密/解密的流。
+The length of iv must be the same as the Block 's block size.
+iv 的长度必须与 Block 的块大小相同。
+func NewCTR (block Block,
+iv []byte) Stream NewCTR applies not just to one specific encryption algorithm and data source but to any implementation of the Block interface and any Stream.
+iv[]byte)StreamNewCTR 不仅适用于一种特定的加密算法和数据源，还适用于 Block 接口和任何 Stream 的任何实现。
+Because they return interface values,
+因为它们返回接口值，
+replacing CTR encryption with other encryption modes isalocalized change.
+用其他加密模式替换 CTR 加密是一个局部更改。
+The constructor calls must be edited,
+构造函数调用必须被编辑，
+but because the surrounding code must treat the result only asaStream,
+但因为周围的代码必须只将结果视为一个流，
+it won 't notice the difference.
+它不会注意到区别。
+Interfaces and methods Since almost anything can have methods attached,
+接口和方法由于几乎任何东西都可以附加方法，
+almost anything can satisfy an interface.
+几乎任何东西都可以满足一个接口。
+One illustrative example is in the http package,
+一个说明性的例子是在 httppackage 中，
+which defines the Handler interface.
+它定义了 Handler 接口。
+Any object that implements Handler can serve HTTP requests.
+任何实现了 Handler 的对象都可以服务 HTTP 请求。
+type Handler interface{ServeHTTP (ResponseWriter,
+typeHandler 接口{ServeHTTP(ResponseWriter,
+*Request)}ResponseWriter is itself an interface that provides access to the methods needed to return the response to the client.
+*Request)}ResponseWriter 本身就是一个接口，它提供了返回客户端响应所需的方法。
+Those methods include the standard Write method,
+这些方法包括标准的 Write 方法，
+so an http .ResponseWriter can be used wherever an io .Writer can be used.
+因此，可以在任何可以使用 io.Writer 的地方使用 http.ResponseWriter。
+Request isastruct containingaparsed representation of the request from the client.
+Requestisastruct 包含来自客户端的请求的已解析表示。
+For brevity,  为了简洁起见，
+let 's ignore POSTs and assume HTTP requests are always GETs;
+让我们忽略 POST，并假设 HTTP 请求始终是 GET；
+that simplification does not affect the way the handlers are set up.
+这种简化不会影响处理程序的设置方式。
+Here 'satrivial implementation ofahandler to count the number of times the page is visited.
+这是一个用于计算页面访问次数的处理器的简单实现。
+//Simple counter server.  //简单的计数器服务器。
+type Counter struct{ nint}func (ctr *Counter) ServeHTTP (w http .ResponseWriter,
+type Counter struct { n int } func (ctr *Counter) ServeHTTP(w http.ResponseWriter,
+req *http.Request){ctr.  req *http.Request) { ctr.
+n ++fmt .Fprintf(w,
+"counter=%d\n",
+ctr.
+n ) }(Keeping with our theme,
+n ) }(与我们的主题保持一致，
+note how Fprintf can print to an http .ResponseWriter.
+注意 Fprintf 如何打印到 http.ResponseWriter。
+)Inareal server,  )在真实的服务器中，
+access to ctr.  访问 ctr。
+nwould need protection from concurrent access.
+n 需要防止并发访问。
+See the sync and atomic packages for suggestions.
+建议使用 Seethesyncandatomic 包。
+For reference,  供参考，
+here 's how to attach suchaserver toanode on the URL tree.
+这是将此类服务器附加到 URL 树上的节点的方法。
+import "net/http"...
+ctr:=new (Counter) http .Handle("/counter",
+ctr)But why make Counterastruct?
+ctr)为什么要将 Counter 做成结构体呢？
+An integer is all that 's needed.
+只需要一个整数就够了。
+(The receiver needs to beapointer so the increment is visible to the caller.
+（接收者需要是指针，这样增量才能对调用者可见。
+) //Simpler counter server.
+) //Simplercounterserver。
+type Counter int func (ctr *Counter) ServeHTTP (w http .ResponseWriter,
+req *http.Request){*ctr++ fmt .Fprintf(w,
+"counter=%d\n",
+*ctr)}What if your program has some internal state that needs to be notified thatapage has been visited?
+*ctr) 如果你的程序有一些内部状态需要通知页面已被访问，该怎么办？
+Tieachannel to the web page.  将通道绑定到网页。
+// Achannel that sendsanotification on each visit.
+// 一个在每次访问时发送通知的通道。
+//(Probably want the channel to be buffered.
+//（可能希望通道被缓冲。
+)type Chan chan *http.Request func (ch Chan)ServeHTTP (w http .ResponseWriter,
+req *http.Request){ch <- req fmt .Fprint(w,
+"notification sent") }Finally,
+let 's say we wanted to present on /args the arguments used when invoking the server binary.
+It 's easy to writeafunction to print the arguments.
+编写一个打印参数的函数很容易。
+func ArgServer() {fmt .Println(os.Args)}How do we turn that into an HTTP server?
+funcArgServer() {fmt.Println(os.Args)} 我们如何将其转换为 HTTP 服务器？
+We could make ArgServeramethod of some type whose value we ignore,
+我们可以将 ArgServer 作为某种类型的方法，忽略其值，
+but there 'sacleaner way.  但有一种更简洁的方法。
+Since we can defineamethod for any type except pointers and interfaces,
+既然我们可以为除了指针和接口之外的任何类型定义一个方法，
+we can writeamethod forafunction.
+我们可以为一个函数编写一个方法。
+The http package contains this code: //The HandlerFunc type is an adapter to allow the use of//ordinary functions as HTTP handlers.
+httppackage 包含以下代码： //HandlerFunc 类型是一个适配器，允许使用 //普通函数作为 HTTP 处理程序。
+Iffisafunction//with the appropriate signature,
+如果 f 是一个具有适当签名的函数，
+HandlerFunc (f) isa //Handler object that callsf .
+HandlerFunc(f) 是一个调用 f 的 //Handler 对象。
+type HandlerFunc func (ResponseWriter,
+type HandlerFunc func(ResponseWriter,
+*Request)//ServeHTTP callsf(w,
+*Request) //ServeHTTP 调用 f(w,
+req).  req)。
+func (f HandlerFunc)ServeHTTP (w ResponseWriter,
+req *Request){ f(w,
+req) }HandlerFunc isatype withamethod,
+req) }HandlerFunc 是一种带有方法的类型，
+ServeHTTP,  ServeHTTP，
+so values of that type can serve HTTP requests.
+因此该类型的值可以处理 HTTP 请求。
+Look at the implementation of the method:the receiver isafunction,
+看一下该方法的实现：接收者是一个函数，
+f ,  f，
+and the method callsf .  并且该方法调用 f。
+That may seem odd but it 's not that different from,
+这可能看起来很奇怪，但实际上并没有什么不同，
+say,  说，
+the receiver beingachannel and the method sending on the channel.
+接收器是一个通道，方法在该通道上发送。
+To make ArgServer into an HTTP server,
+要将 ArgServer 转换为 HTTP 服务器，
+we first modify it to have the right signature.
+我们首先修改它以使其具有正确的签名。
+//Argument server.
+func ArgServer (w http .ResponseWriter,
+req *http.Request){fmt .Fprintln(w,
+os .Args)}ArgServer now has the same signature as HandlerFunc,
+so it can be converted to that type to access its methods,
+因此可以将其转换为该类型以访问其方法，
+just as we converted Sequence to IntSlice to access IntSlice .Sort.
+就像我们将 Sequence 转换为 IntSlice 以访问 IntSlice.Sort 一样。
+The code to set it up is concise:http .Handle("/args",
+设置它的代码很简洁：http.Handle("/args",
+http .HandlerFunc(ArgServer)) When someone visits the page /args,
+http.HandlerFunc(ArgServer)) 当有人访问页面 /args 时，
+the handler installed at that page has value ArgServer and type HandlerFunc.
+在该页面安装的处理程序具有值 ArgServer 和类型 HandlerFunc。
+The HTTP server will invoke the method ServeHTTP of that type,
+HTTP 服务器将调用该类型的 ServeHTTP 方法，
+with ArgServer as the receiver,
+以 ArgServer 作为接收者，
+which will in turn call ArgServer (via the invocationf(w,
+这将反过来调用 ArgServer（通过调用 f(w,
+req)inside HandlerFunc .ServeHTTP).
+req)insideHandlerFunc.ServeHTTP)。
+The arguments will then be displayed.
+然后将显示参数。
+In this section we have made an HTTP server fromastruct,
+在本节中，我们从一个结构体创建了一个 HTTP 服务器，
+an integer,  一个整数，
+achannel,  一个频道，
+andafunction,  一个和函数，
+all because interfaces are just sets of methods,
+全部因为接口只是方法的集合，
+which can be defined for (almost) any type.
+可以为（几乎）任何类型定义。
+The blank identifier We 've mentioned the blank identifieracouple of times now,
+空白标识符我们已经提到过几次空白标识符了，
+in the context of for range loops and maps.
+在 for range 循环和 map 的上下文中。
+The blank identifier can be assigned or declared with any value of any type,
+空白标识符可以被赋值或声明为任何类型的任何值，
+with the value discarded harmlessly.
+值被无害地丢弃。
+It 'sabit like writing to the Unix /dev/null file:it representsawrite -only value to be used asaplace -holder whereavariable is needed but the actual value is irrelevant.
+这有点像写入 Unix 的/dev/null 文件：它表示一个只写的变量，用作占位符，在需要变量但实际值无关紧要时使用。
+It has uses beyond those we 've seen already.
+它有超出我们已经看到的用途。
+The blank identifier in multiple assignment The use ofablank identifier inafor range loop isaspecial case ofageneral situation:multiple assignment.
+空白标识符在多重赋值中，在 for range 循环中使用空白标识符是一种特殊情况：多重赋值。
+If an assignment requires multiple values on the left side,
+如果赋值需要在左侧有多个值，
+but one of the values will not be used by the program,
+但是程序不会使用其中一个值，
+ablank identifier on the left -hand-side of the assignment avoids the need to createadummy variable and makes it clear that the value is to be discarded.
+赋值左侧的空白标识符避免了创建虚拟变量的需要，并清楚地表明该值将被丢弃。
+For instance,  例如，
+when callingafunction that returnsavalue and an error,
+当调用返回一个值和一个错误的函数时，
+but only the error is important,
+但只有错误是重要的，
+use the blank identifier to discard the irrelevant value.
+使用空白标识符来丢弃不相关的值。
+if_ ,  如果_ ,
+err:=os .Stat(path);
+os .IsNotExist(err){fmt .Printf("%s does not exist \n",
+os.IsNotExist(err){fmt.Printf("%s 不存在\n",
+path) }Occasionally you 'll see code that discards the error value in order to ignore the error;
+path) } 有时你会看到为了忽略错误而丢弃错误值的代码；
+this is terrible practice.  这是很糟糕的做法。
+Always check error returns;  务必检查错误返回值;
+they 're provided forareason.
+它们的存在是有原因的。
+//Bad!  //不好!
+This code will crash if path does not exist.
+如果路径不存在，此代码将会崩溃。
+fi,
+_ :=os .Stat(path) if fi .IsDir(){fmt .Printf("%s isadirectory \n",
+_ := os.Stat(path) iffi.IsDir(){fmt.Printf("%s 是一个目录\n",
+path) }Unused imports and variables It is an error to importapackage or to declareavariable without using it.
+路径) } 未使用的导入和变量。导入一个包或声明一个变量而不使用它是一个错误。
+Unused imports bloat the program and slow compilation,
+未使用的导入会使程序膨胀并减慢编译速度，
+whileavariable that is initialized but not used is at leastawasted computation and perhaps indicative ofalarger bug.
+而一个被初始化但未使用的变量至少是一种浪费的计算，并且可能表明存在更大的错误。
+Whenaprogram is under active development,
+当程序处于积极开发阶段时，
+however,  然而，
+unused imports and variables often arise and it can be annoying to delete them just to have the compilation proceed,
+未使用的导入和变量经常出现，并且为了让编译继续进行，删除它们可能很烦人，
+only to have them be needed again later.
+结果稍后又需要它们。
+The blank identifier providesaworkaround.
+空白标识符提供了一种解决方法。
+This half -written program has two unused imports(fmt and io)and an unused variable(fd),
+这个写了一半的程序有两个未使用的导入（fmt 和 io）和一个未使用的变量 (fd)，
+so it will not compile,  因此它不会编译，
+but it would be nice to see if the code so far is correct.
+但如果能看到巴黎的代码是否正确就太好了。
+package main import("fmt" "io" "log" "os")func main() {fd,
+package mainimport("fmt""io""log""os")funcmain() {fd,
+err:=os .Open("test.go") if err!
+=nil{log .Fatal(err)} //TODO:use fd.
+=nil{log.Fatal(err)} //TODO: 使用 fd。
+}To silence complaints about the unused imports,
+}为了消除对未使用导入的抱怨，
+useablank identifier to refer toasymbol from the imported package.
+使用空白标识符来引用导入包中的符号。
+Similarly,  类似地，
+assigning the unused variable fd to the blank identifier will silence the unused variable error.
+将未使用的变量赋给空白标识符将消除未使用的变量错误。
+This version of the program does compile.
+这个版本的程序可以编译。
+package main import("fmt" "io" "log" "os")var_ =fmt .Printf//For debugging;
+packagemainimport("fmt""io""log""os")var_ =fmt.Printf//用于调试;
+delete when done.  完成后删除。
+var_io .Reader//For debugging;
+var_io.Reader//用于调试;
+delete when done.  完成后删除。
+func main() {fd,
+err:=os .Open("test.go") if err!
+=nil{log .Fatal(err)} //TODO:use fd.
+=nil{log.Fatal(err)} //TODO:使用 fd.
+_ =fd}By convention,  _ =fd}按照惯例，
+the global declarations to silence import errors should come right after the imports and be commented,
+全局声明静默导入错误应该紧跟在导入之后并加上注释，
+both to make them easy to find and asareminder to clean things up later.
+这样既方便查找，又能提醒稍后进行清理。
+Import for side effect An unused import like fmt or io in the previous example should eventually be used or removed:blank assignments identify code asawork in progress.
+Importforsideeffect 一个未使用的导入，比如 fmt 或 io 在前面的例子中，最终应该被使用或移除：空白赋值将代码标识为正在进行的工作。
+But sometimes it is useful to importapackage only for its side effects,
+但有时导入一个包仅仅是为了它的副作用是很有用的，
+without any explicit use.  而没有任何明确的使用。
+For example,  例如，
+during its init function,  在其初始化函数中，
+the net /http/pprof package registers HTTP handlers that provide debugging information.
+net/http/pprof 包注册了提供调试信息的 HTTP 处理程序。
+It has an exported API,  它有一个导出的 API，
+but most clients need only the handler registration and access the data throughaweb page.
+但大多数客户端只需要处理程序注册，并通过网页访问数据。
+To import the package only for its side effects,
+要导入包仅用于其副作用，
+rename the package to the blank identifier:import_"net/http/pprof" This form of import makes clear that the package is being imported for its side effects,
+将包重命名为空白标识符：import_"net/http/pprof" 这种导入形式清楚地表明该包是为了其副作用而导入的，
+because there is no other possible use of the package:in this file,
+因为没有其他可能使用该包的方式：在这个文件中，
+it doesn 't haveaname.  它没有名字。
+(If it did,  (如果这样做，
+and we didn 't use that name,  而且我们没有使用那个名字，
+the compiler would reject the program.
+编译器会拒绝该程序。
+)Interface checks As we saw in the discussion of interfaces above,
+)接口检查正如我们在上面对接口的讨论中看到的那样，
+atype need not declare explicitly that it implements an interface.
+一种类型不需要显式声明它实现了接口。
+Instead,  相反，
+atype implements the interface just by implementing the interface 's methods.
+一种类型只需实现接口的方法即可实现该接口。
+In practice,  在实践中，
+most interface conversions are static and therefore checked at compile time.
+大多数接口转换是静态的，因此在编译时进行检查。
+For example,  例如，
+passing an *os.File toafunction expecting an io .Reader will not compile unless *os.File implements the io .Reader interface.
+将 *os.File 传递给需要 io.Reader 的函数将不会编译，除非 *os.File 实现了 io.Reader 接口。
+Some interface checks do happen at run -time,
+有些接口检查在运行时进行，
+though.  虽然。
+One instance is in the encoding /json package,
+一个实例位于 encoding/json 包中，
+which definesaMarshaler interface.
+该包定义了一个 Marshaler 接口。
+When the JSON encoder receivesavalue that implements that interface,
+当 JSON 编码器接收到一个实现了该接口的值时，
+the encoder invokes the value 's marshaling method to convert it to JSON instead of doing the standard conversion.
+编码器调用值的编组方法将其转换为 JSON，而不是进行标准转换。
+The encoder checks this property at run time withatype assertion like: m ,
+编码器使用类型断言在运行时检查此属性，例如：m ,
+ok:=val.
+(json.Marshaler) If it 's necessary only to ask whetheratype implements an interface,
+(json.Marshaler) 如果只需要询问类型是否实现了接口，
+without actually using the interface itself,
+在不实际使用接口本身的情况下，
+perhaps as part of an error check,
+也许作为错误检查的一部分，
+use the blank identifier to ignore the type -asserted value:if_ ,
+使用空白标识符来忽略类型断言的值：if _ ,
+ok:=val.
+(json.Marshaler);
+ok{fmt .Printf("value %v of type %T implements json .Marshaler\n",
+ok{fmt.Printf("value%voftype%T 实现了 json.Marshaler\n",
+val,
+val) }One place this situation arises is when it is necessary to guarantee within the package implementing the type that it actually satisfies the interface.
+val) } 出现这种情况的一个地方是，需要保证在实现该类型的包中，它实际上满足该接口。
+Ifatype —for example,  例如，Iface 类型
+json .RawMessage —needsacustom JSON representation,
+json.RawMessage—需要自定义 JSON 表示形式，
+it should implement json .Marshaler,
+它应该实现 json.Marshaler，
+but there are no static conversions that would cause the compiler to verify this automatically.
+但是没有静态转换会导致编译器自动验证这一点。
+If the type inadvertently fails to satisfy the interface,
+如果类型不小心未能满足接口，
+the JSON encoder will still work,
+JSON 编码器仍然可以工作，
+but will not use the custom implementation.
+但不会使用自定义实现。
+To guarantee that the implementation is correct,
+为了保证实现是正确的，
+aglobal declaration using the blank identifier can be used in the package:var_json .Marshaler=(*RawMessage)(nil) In this declaration,
+使用空白标识符的全局声明可以在包中使用：var_json.Marshaler=(*RawMessage)(nil)。在这个声明中，
+the assignment involvingaconversion ofa*RawMessage toaMarshaler requires that *RawMessage implements Marshaler,
+涉及将 *RawMessage 转换为 Marshaler 的赋值需要 *RawMessage 实现 Marshaler，
+and that property will be checked at compile time.
+并且该属性将在编译时进行检查。
+Should the json .Marshaler interface change,
+如果 json.Marshaler 接口发生更改，
+this package will no longer compile and we will be on notice that it needs to be updated.
+这个包将不再编译，我们会注意到它需要更新。
+The appearance of the blank identifier in this construct indicates that the declaration exists only for the type checking,
+在这种结构中出现空白标识符表明该声明仅用于类型检查，
+not to createavariable.  不要创建一个变量。
+Don 't do this for every type that satisfies an interface,
+不要对每个满足接口的类型都这样做，
+though.  虽然。
+By convention,
+such declarations are only used when there are no static conversions already present in the code,
+这样的声明只在代码中已经存在静态转换时使用，
+which isarare event.  这是一种罕见的情况。
+Embedding Go does not provide the typical,
+EmbeddingGo 语言不提供典型的、
+type -driven notion of subclassing,
+类型驱动的子类概念，
+but it does have the ability to “borrow” pieces of an implementation by embedding types withinastruct or interface.
+但它确实有能力通过将类型嵌入到结构或接口中来“借用”实现的一部分。
+Interface embedding is very simple.
+接口嵌入非常简单。
+We 've mentioned the io .Reader and io .Writer interfaces before;
+我们之前提到过 io.Reader 和 io.Writer 接口；
+here are their definitions.  这是它们的定义。
+type Reader interface{Read (p []byte) (n int,
+type Reader interface { Read(p []byte) (n int,
+err error) }type Writer interface{Write (p []byte) (n int,
+err error) } type Writer interface { Write(p []byte) (n int,
+err error) }The io package also exports several other interfaces that specify objects that can implement several such methods.
+errerror) }Theiopackage 还导出了几个其他的接口，这些接口指定了可以实现多个此类方法的对象。
+For instance,  例如，
+there is io .ReadWriter,  它是 io.ReadWriter，
+an interface containing both Read and Write.
+一个包含 Read 和 Write 的接口。
+We could specify io .ReadWriter by listing the two methods explicitly,
+我们可以通过显式列出这两种方法来指定 io.ReadWriter，
+but it 's easier and more evocative to embed the two interfaces to form the new one,
+但将两个接口嵌入以形成新接口更容易且更具启发性，
+like this: //ReadWriter is the interface that combines the Reader and Writer interfaces.
+像这样：//ReadWriter 是组合了 Reader 和 Writer 接口的接口。
+type ReadWriter interface{Reader Writer}This says just what it looks like: AReadWriter can do whataReader does and whataWriter does;
+type ReadWriter interface { ReaderWriter } 这说明了它的字面意思：ReadWriter 可以做 Reader 所做的事情和 Writer 所做的事情；
+it isaunion of the embedded interfaces.
+它是嵌入接口的联合。
+Only interfaces can be embedded within interfaces.
+只有接口可以嵌入到接口中。
+The same basic idea applies to structs,
+同样的基本思想也适用于结构体，
+but with more far -reaching implications.
+但具有更深远的影响。
+The bufio package has two struct types,
+bufio 包有两种结构体类型，
+bufio .Reader and bufio .Writer,
+bufio.Reader 和 bufio.Writer，
+each of which of course implements the analogous interfaces from package io.
+当然，它们各自实现了来自 io 包的类似接口。
+And bufio also implementsabuffered reader /writer,
+并且 bufio 也实现了一个带缓冲的 reader/writer，
+which it does by combiningareader andawriter into one struct using embedding:it lists the types within the struct but does not give them field names.
+它通过使用嵌入将 reader 和 writer 组合成一个结构来实现：它列出了结构中的类型，但没有给它们字段名。
+//ReadWriter stores pointers toaReader andaWriter.
+//ReadWriter 存储指向 Reader 和 Writer 的指针。
+//It implements io .ReadWriter.
+//它实现了 io.ReadWriter 接口。
+type ReadWriter struct{*Reader//*bufio.Reader *Writer//*bufio.Writer}The embedded elements are pointers to structs and of course must be initialized to point to valid structs before they can be used.
+type ReadWriter struct { *Reader // *bufio.Reader *Writer // *bufio.Writer } 嵌入的元素是指向结构的指针，当然在使用前必须初始化以指向有效的结构。
+The ReadWriter struct could be written as type ReadWriter struct{reader *Reader writer *Writer}but then to promote the methods of the fields and to satisfy the io interfaces,
+ReadWriter 结构也可以写成 type ReadWriter struct { reader *Reader writer *Writer }，但为了提升字段的方法并满足 io 接口，
+we would also need to provide forwarding methods,
+我们还需要提供转发方法，
+like this:func (rw *ReadWriter) Read (p []byte) (n int,
+像这样：func(rw*ReadWriter)Read(p[]byte)(n int,
+err error) {return rw .reader.Read(p)}By embedding the structs directly,
+errerror) {returnrw.reader.Read(p)} 通过直接嵌入结构体，
+we avoid this bookkeeping.  我们避免这种簿记。
+The methods of embedded types come along for free,
+嵌入类型的方法是免费提供的，
+which means that bufio .ReadWriter not only has the methods of bufio .Reader and bufio .Writer,
+这意味着 bufio.ReadWriter 不仅具有 bufio.Reader 和 bufio.Writer 的方法，
+it also satisfies all three interfaces:io .Reader,
+它还满足所有三个接口：io.Reader，
+io .Writer,  io.Writer，
+and io .ReadWriter.  andio.ReadWriter。
+There 's an important way in which embedding differs from subclassing.
+嵌入与子类化的一个重要区别在于。
+When we embedatype,  当我们嵌入一个类型时，
+the methods of that type become methods of the outer type,
+该类型的方法将成为外部类型的方法，
+but when they are invoked the receiver of the method is the inner type,
+但当它们被调用时，该方法的接收者是内部类型，
+not the outer one.  而不是外部类型。
+In our example,  在我们的例子中，
+when the Read method ofabufio .ReadWriter is invoked,
+当调用 bufio.ReadWriter 的 Read 方法时，
+it has exactly the same effect as the forwarding method written out above;
+它与上面写出的转发方法具有完全相同的效果；
+the receiver is the reader field of the ReadWriter,
+接收者是 ReadWriter 的 reader 字段，
+not the ReadWriter itself.  而不是 ReadWriter 本身。
+Embedding can also beasimple convenience.
+嵌入也可以是一种简单的便利。
+This example shows an embedded field alongsidearegular,
+这个例子展示了一个嵌入字段和一个常规字段。
+named field.  命名字段。
+type Job struct{Command string *log.Logger}The Job type now has the Print,
+type Job struct { Command string *log.Logger } Job 类型现在有 Print，
+Printf,
+Println and other methods of *log.Logger.
+Println 和其他*log.Logger 的方法。
+We could have given the Loggerafield name,
+我们本可以给 Logger 一个字段名，
+of course,  当然，
+but it 's not necessary to do so.
+但没有必要这样做。
+And now,  现在，
+once initialized,  初始化之后，
+we can log to the Job:job .Println("starting now...
+我们可以记录到 Job：job.Println("现在开始...
+")The Logger isaregular field of the Job struct,
+")Logger 是 Job 结构的常规字段，
+so we can initialize it in the usual way inside the constructor for Job,
+所以我们可以像往常一样在 Job 的构造函数中初始化它，
+like this,  像这样，
+func NewJob (command string,
+logger *log.Logger) *Job{return &Job{command,
+logger} }or withacomposite literal,
+logger} }或使用复合文字，
+job:=&Job{command,
+log .New(os.Stderr,
+"Job:",  "工作:"
+log .Ldate)} If we need to refer to an embedded field directly,
+log.Ldate)}如果我们需要直接引用嵌入字段，
+the type name of the field,  该字段的类型名称，
+ignoring the package qualifier,
+忽略包限定符，
+serves asafield name,  用作字段名称，
+as it did in the Read method of our ReadWriter struct.
+就像在我们的 ReadWriter 结构体的 Read 方法中所做的那样。
+Here,  在这里，
+if we needed to access the *log.Logger ofaJob variable job,
+如果我们需要访问 Job 变量 job 的*log.Logger，
+we would write job .Logger,  我们会写 job.Logger，
+which would be useful if we wanted to refine the methods of Logger.
+如果我们想改进 Logger 的方法，这将非常有用。
+func (job *Job) Printf (format string,
+func(job *Job)Printf(格式字符串，
+args...
+interface{}) {job .Logger.Printf("%q: %s",
+job .Command,
+fmt .Sprintf(format,
+args...
+)) }Embedding types introduces the problem of name conflicts but the rules to resolve them are simple.
+First,  首先，
+afield or methodXhides any other itemXinamore deeply nested part of the type.
+afieldormethodX 会隐藏类型中更深层嵌套部分中的任何其他项 X。
+If log .Logger containedafield or method called Command,
+如果 log.Logger 包含一个名为 Command 的字段或方法，
+the Command field of Job would dominate it.
+Job 的 Command 字段将覆盖它。
+Second,  其次，
+if the same name appears at the same nesting level,
+如果相同的名称出现在相同的嵌套级别，
+it is usually an error;  这通常是一个错误;
+it would be erroneous to embed log .Logger if the Job struct contained another field or method called Logger.
+如果 Job 结构包含另一个名为 Logger 的字段或方法，那么嵌入 log.Logger 将是错误的。
+However,  然而，
+if the duplicate name is never mentioned in the program outside the type definition,
+如果重复的名称在类型定义之外的程序中从未被提及，
+it is OK.  这是可以的。
+This qualification provides some protection against changes made to types embedded from outside;
+此限定符提供了一些针对从外部嵌入的类型所做更改的保护；
+there is no problem ifafield is added that conflicts with another field in another subtype if neither field is ever used.
+如果从未使用的字段与另一个子类型中的另一个字段冲突，则没有问题。
+Concurrency Share by communicating Concurrent programming isalarge topic and there is space only for some Go -specific highlights here.
+并发通过通信共享。并发编程是一个很大的主题，这里只有一些 Go 相关的重点。
+Concurrent programming in many environments is made difficult by the subtleties required to implement correct access to shared variables.
+在许多环境中，并发编程因实现对共享变量的正确访问所需的微妙之处而变得困难。
+Go encouragesadifferent approach in which shared values are passed around on channels and,
+Go 鼓励一种不同的方法，其中共享值在通道上传递，并且
+in fact,  事实上，
+never actively shared by separate threads of execution.
+永远不会被单独的执行线程主动共享。
+Only one goroutine has access to the value at any given time.
+在任何给定时间，只有一个 goroutine 可以访问该值。
+Data races cannot occur,  数据竞争不会发生，
+by design.  通过设计。
+To encourage this way of thinking we have reduced it toaslogan:Do not communicate by sharing memory;
+为了鼓励这种思维方式，我们将其简化为一句口号：不要通过共享内存进行通信；
+instead,  而是，
+share memory by communicating.
+通过通信共享内存。
+This approach can be taken too far.
+这种方法可能会走得太远。
+Reference counts may be best done by puttingamutex around an integer variable,
+引用计数最好通过在整数变量周围放置互斥锁来完成，
+for instance.  例如。
+But asahigh -level approach,
+但这是一个高层次的方法，
+using channels to control access makes it easier to write clear,
+使用通道来控制访问可以更容易地编写清晰、
+correct programs.  正确的程序。
+One way to think about this model is to consideratypical single -threaded program running on one CPU.
+思考这个模型的一种方式是考虑一个运行在单个 CPU 上的典型的单线程程序。
+It has no need for synchronization primitives.
+它不需要同步原语。
+Now run another such instance;
+现在运行另一个这样的实例；
+it too needs no synchronization.
+它也不需要同步。
+Now let those two communicate;
+现在让这两个实例进行通信；
+if the communication is the synchronizer,
+如果通信是同步器，
+there 's still no need for other synchronization.
+就仍然不需要其他同步。
+Unix pipelines,  Unix 管道，
+for example,  例如，
+fit this model perfectly.  完全符合此模型。
+Although Go 's approach to concurrency originates in Hoare 's Communicating Sequential Processes (CSP),
+虽然 Go 的并发处理方法源于霍尔的通信顺序进程 (CSP)，
+it can also be seen asatype -safe generalization of Unix pipes.
+但它也可以被看作是 Unix 管道的一种类型安全泛化。
+Goroutines They 're called goroutines because the existing terms —threads,
+Goroutines 它们被称为 goroutines 是因为现有的术语——线程，
+coroutines,  协程，
+processes,  进程，
+and so on —convey inaccurate connotations.
+等等——传达了不准确的含义。
+Agoroutine hasasimple model:it isafunction executing concurrently with other goroutines in the same address space.
+一个 Goroutine 有一个简单的模型：它是一个与同一地址空间中的其他 goroutine 并发执行的函数。
+It is lightweight,  它很轻巧，
+costing little more than the allocation of stack space.
+成本仅仅略高于堆栈空间的分配。
+And the stacks start small,  而且堆栈开始时很小，
+so they are cheap,  所以它们很便宜，
+and grow by allocating (and freeing)heap storage as required.
+并通过按需分配（和释放）堆存储来增长。
+Goroutines are multiplexed onto multiple OS threads so if one should block,
+Goroutine 被多路复用到多个操作系统线程上，因此如果一个线程阻塞，
+such as while waiting forI/O,
+例如在等待 I/O 时，
+others continue to run.  其他线程会继续运行。
+Their design hides many of the complexities of thread creation and management.
+他们的设计隐藏了线程创建和管理的许多复杂性。
+Prefixafunction or method call with the go keyword to run the call inanew goroutine.
+在函数或方法调用前加上 go 关键字，可以在新的 goroutine 中运行该调用。
+When the call completes,  当调用完成时，
+the goroutine exits,  该 goroutine 退出，
+silently.  静静地。
+(The effect is similar to the Unix shell 's & notation for runningacommand in the background.
+(效果类似于 Unix shell 的&符号，用于在后台运行命令。
+)go list .Sort()//run list .Sort concurrently;
+don 't wait for it.  不要等待它。
+Afunction literal can be handy inagoroutine invocation.
+一个函数字面量在 goroutine 调用中非常有用。
+func Announce (message string,
+func Announce(message string,
+delay time .Duration){go func() {time .Sleep(delay) fmt .Println(message)}() //Note the parentheses-must call the function.
+delay time.Duration){go func() {time.Sleep(delay) fmt.Println(message)}() //注意括号 - 必须调用该函数。
+}In Go,  }在 Go 中，
+function literals are closures:the implementation makes sure the variables referred to by the function survive as long as they are active.
+函数字面量是闭包：该实现确保函数引用的变量只要处于活动状态就能存在。
+These examples aren 't too practical because the functions have no way of signaling completion.
+这些例子不太实用，因为这些函数无法发出完成信号。
+For that,  为此，
+we need channels.  我们需要通道。
+Channels Like maps,  ChannelsLikemaps，
+channels are allocated with make,
+通道通过 make 函数分配，
+and the resulting value acts asareference to an underlying data structure.
+并且结果值充当对底层数据结构的引用。
+If an optional integer parameter is provided,
+如果提供了可选的整数参数，
+it sets the buffer size for the channel.
+它设置通道的缓冲区大小。
+The default is zero,  默认值为零，
+for an unbuffered or synchronous channel.
+对于无缓冲或同步通道。
+ci:=make (chan int) //unbuffered channel of integers cj:=make (chan int,
+ci:=make(chanint) //整数的无缓冲通道 cj:=make(chanint,
+0 ) //unbuffered channel of integers cs:=make (chan *os.File,
+0) //整数的非缓冲通道 cs:=make(chan*os.File,
+100) //buffered channel of pointers to Files Unbuffered channels combine communication —the exchange ofavalue —with synchronization —guaranteeing that two calculations (goroutines) are inaknown state.
+100) //指向文件的指针的缓冲通道。非缓冲通道将通信（值的交换）与同步（保证两个计算（goroutine）处于已知状态）结合在一起。
+There are lots of nice idioms using channels.
+有很多使用通道的好习惯用法。
+Here 's one to get us started.  这是一个帮助你入门的例子。
+In the previous section we launchedasort in the background.
+在上一节中，我们在后台启动了一个排序。
+Achannel can allow the launching goroutine to wait for the sort to complete.
+通过通道可以使启动的 goroutine 等待排序完成。
+c :=make (chan int) //Allocateachannel.
+c := make(chan int) // 分配一个通道。
+//Start the sort inagoroutine;
+// 在一个 goroutine 中启动排序；
+when it completes,  当它完成时，
+signal on the channel.  通道上的信号。
+go func() {list .Sort()c<-1 //Sendasignal;
+gofunc() {list.Sort() c <- 1 //发送信号；
+value does not matter.  值无关紧要。
+}()doSomethingForAWhile()<-c//Wait for sort to finish;
+}()doSomethingForAWhile()<-c//等待排序完成;
+discard sent value.  丢弃发送的值。
+Receivers always block until there is data to receive.
+接收者总是阻塞直到有数据可以接收。
+If the channel is unbuffered,
+如果通道是无缓冲的，
+the sender blocks until the receiver has received the value.
+发送者会一直阻塞，直到接收者收到该值。
+If the channel hasabuffer,  如果通道有一个缓冲区，
+the sender blocks only until the value has been copied to the buffer;
+发送者仅在值被复制到缓冲区后才阻塞；
+if the buffer is full,  如果缓冲区已满，
+this means waiting until some receiver has retrievedavalue.
+这意味着等待直到某个接收者检索到一个值。
+Abuffered channel can be used likeasemaphore,
+缓冲通道可以像信号量一样使用，
+for instance to limit throughput.
+例如限制吞吐量。
+In this example,  在这个例子中，
+incoming requests are passed to handle,
+传入的请求被传递到 handle，
+which sendsavalue into the channel,
+它将一个值发送到通道中，
+processes the request,  处理请求，
+and then receivesavalue from the channel to ready the “semaphore” for the next consumer.
+然后从通道接收一个值，为下一个消费者准备好“信号量”。
+The capacity of the channel buffer limits the number of simultaneous calls to process.
+通道缓冲区的容量限制了要处理的并发调用数。
+var sem=make (chan int,  var sem = make(chan int,
+MaxOutstanding)func handle (r *Request){sem <-1 //Wait for active queue to drain.
+MaxOutstanding) func handle(r *Request) { sem <- 1 //等待活动队列耗尽。
+process (r)//May takealong time.
+process(r) //可能需要很长时间。
+<-sem//Done;  <-sem//完成;
+enable next request to run.  启用下一个要运行的请求。
+}func Serve (queue chan *Request){for{req:=<-queue go handle (req)//Don 't wait for handle to finish.
+}funcServe(queuechan*Request){for{req:=<-queuegohandle(req)//不要等待 handle 完成。
+} }Once MaxOutstanding handlers are executing process,
+}}一旦最大未完成处理程序正在执行进程，
+any more will block trying to send into the filled channel buffer,
+anymorewillblocktryingtosendintothefilledchannelbuffer，(anymore 将会阻塞尝试发送到已填充的通道缓冲区)
+until one of the existing handlers finishes and receives from the buffer.
+untiloneoftheexistinghandlersfinishesandreceivesfromthebuffer. (直到其中一个现有处理程序完成并从缓冲区接收。)
+This design hasaproblem,  这个设计有个问题，
+though:Serve createsanew goroutine for every incoming request,
+虽然：Serve 为每个传入的请求创建一个新的 goroutine，
+even though only MaxOutstanding of them can run at any moment.
+即使在任何时刻只能运行它们中的最大未完成数。
+Asaresult,  因此，
+the program can consume unlimited resources if the requests come in too fast.
+如果请求进入得太快，程序可能会消耗无限的资源。
+We can address that deficiency by changing Serve to gate the creation of the goroutines:func Serve (queue chan *Request){for req:=range queue{sem <-1go func() {process (req) <-sem}() } }(Note that in Go versions before1.22 this code hasabug:the loop variable is shared across all goroutines.
+我们可以通过更改 Serve 来限制 goroutine 的创建来解决这个缺陷：func Serve(queue chan *Request){ for req := range queue { sem <- 1 go func() { process(req) <- sem }() } }(请注意，在 1.22 之前的 Go 版本中，此代码存在一个错误：循环变量在所有 goroutine 之间共享。
+See the Go wiki for details.  请参阅 Gowiki 了解详情。
+)Another approach that manages resources well is to startafixed number of handle goroutines all reading from the request channel.
+另一种有效管理资源的方法是启动固定数量的处理 goroutine，全部从请求通道读取。
+The number of goroutines limits the number of simultaneous calls to process.
+goroutine 的数量限制了同时调用进程的数量。
+This Serve function also acceptsachannel on which it will be told to exit;
+此 Serve 函数还接受一个通道，它将通过该通道被告知退出；
+after launching the goroutines it blocks receiving from that channel.
+启动 goroutine 后，它会阻塞从该通道接收数据。
+func handle (queue chan *Request){forr :=range queue{process (r)} }func Serve (clientRequests chan *Request,
+func handle(queue chan *Request){ for r := range queue { process(r) } } func Serve(clientRequests chan *Request,
+quit chan bool) { //Start handlers fori := 0 ;
+quitchan bool) { //启动处理程序 for i := 0 ;
+i< MaxOutstanding;
+i ++ {go handle (clientRequests)}<-quit//Wait to be told to exit.
+i ++ {gohandle(clientRequests)}<-退出//等待被告知退出。
+}Channels of channels One of the most important properties of Go is thatachannel isafirst -class value that can be allocated and passed around like any other.
+}通道的通道 Go 最重要的特性之一是通道是一流的值，可以像其他任何值一样被分配和传递。
+Acommon use of this property is to implement safe,
+这个属性的一个常见用途是实现安全的，
+parallel demultiplexing.  并行解复用。
+In the example in the previous section,
+在上一节的例子中，
+handle was an idealized handler forarequest but we didn 't define the type it was handling.
+handle 是一个理想化的请求处理程序，但我们没有定义它正在处理的类型。
+If that type includesachannel on which to reply,
+如果该类型包含一个用于回复的通道，
+each client can provide its own path for the answer.
+则每个客户端都可以提供自己的答案路径。
+Here 'saschematic definition of type Request.
+这是 Request 类型的示意定义。
+type Request struct{args []intffunc ([]int) int resultChan chan int}The client providesafunction and its arguments,
+typeRequest struct { args []int f func([]int) int resultChan chan int } 客户端提供一个函数及其参数，
+as well asachannel inside the request object on which to receive the answer.
+以及请求对象内部的一个通道，用于接收答案。
+func sum (a []int) (s int) {for_ ,
+func sum(a []int) (s int) { for _,
+v :=rangea { s += v }return}request:=&Request{[]int{3,
+sum,  总和，
+make (chan int)} //Send request clientRequests <- request//Wait for response.
+make(chanint)} //发送请求 clientRequests<-request//等待响应。
+fmt .Printf("answer: %d\n",
+fmt.Printf("答案:%d\n",
+<-request.resultChan) On the server side,
+<-request.resultChan)在服务器端，
+the handler function is the only thing that changes.
+唯一改变的是处理函数。
+func handle (queue chan *Request){for req:=range queue{req .resultChan <- req.
+funchandle(queuechan*Request){for req := range queue {req.resultChan<-req.
+f(req.args)} }There 's clearlyalot more to do to make it realistic,
+f(req.args)} }显然，要使其更具现实意义，还有很多工作要做，
+but this code isaframework forarate -limited,
+但这个代码是一个速率限制的框架，
+parallel,  并行的，
+non -blocking RPC system,  非阻塞 RPC 系统，
+and there 's notamutex in sight.
+而且没有互斥锁的踪影。
+Parallelization Another application of these ideas is to parallelizeacalculation across multiple CPU cores.
+并行化这些想法的另一个应用是在多个 CPU 内核上并行计算。
+If the calculation can be broken into separate pieces that can execute independently,
+如果计算可以分解成可以独立执行的单独部分，
+it can be parallelized,  它可以并行化，
+withachannel to signal when each piece completes.
+并使用一个通道来指示每个部分何时完成。
+Let 's say we have an expensive operation to perform onavector of items,
+假设我们需要对一个项目向量执行一个昂贵的操作，
+and that the value of the operation on each item is independent,
+并且该操作在每个项目上的值是独立的，
+as in this idealized example.
+如在这个理想化的例子中。
+type Vector []float64//Apply the operation tov[i],
+type Vector[]float64 //将操作应用于 v[i]，
+v[i+1]...
+up tov[n-1].  uptov[n-1]。
+func (v Vector)DoSome (i,
+nint,  nint，
+uVector,  uVector，
+cchan int) {for;
+i<n ;
+i ++ { v[i]+= u.Op(v[i])} c<-1 //signal that this piece is done}We launch the pieces independently inaloop,
+i ++ { v[i]+= u.Op(v[i])} c<-1 //发出信号表明该片段已完成}我们通过循环独立启动这些片段，
+one per CPU.  每个 CPU 一个。
+They can complete in any order but it doesn 't matter;
+它们可以以任何顺序完成，但这无关紧要；
+we just count the completion signals by draining the channel after launching all the goroutines.
+我们只需在启动所有 goroutine 后，通过耗尽通道来计算完成信号。
+const numCPU= 4 //number of CPU cores func (v Vector)DoAll (u Vector) { c :=make (chan int,
+const numCPU= 4 //CPU 核心数量 func(vVector) DoAll(uVector) { c := make(chan int,
+numCPU) //Buffering optional but sensible.
+numCPU) //缓冲是可选的，但很明智。
+fori := 0 ;
+i< numCPU;
+i ++ {gov.DoSome(i*len(v)/numCPU,
+(i+1)*len(v)/numCPU,
+u ,
+c ) } //Drain the channel.  c ) } //Drainthechannel。
+fori := 0 ;
+i< numCPU;
+i ++ {<-c//wait for one task to complete} //All done.
+我 ++ {<-c//等待一个任务完成} //全部完成。
+}Rather than createaconstant value for numCPU,
+}与其为 numCPU 创建一个常量值，
+we can ask the runtime what value is appropriate.
+我们可以询问运行时什么值是合适的。
+The function runtime .NumCPU returns the number of hardware CPU cores in the machine,
+函数 runtime.NumCPU 返回机器中硬件 CPU 核心的数量。
+so we could write var numCPU=runtime .NumCPU() There is alsoafunction runtime .GOMAXPROCS,
+sowecouldwritevarnumCPU=runtime.NumCPU() 还有一个函数 runtime.GOMAXPROCS,
+which reports (or sets)the user -specified number of cores thataGo program can have running simultaneously.
+它报告（或设置）用户指定的可同时运行 Go 程序的内核数。
+It defaults to the value of runtime .NumCPU but can be overridden by setting the similarly named shell environment variable or by calling the function withapositive number.
+它默认为 runtime.NumCPU 的值，但可以通过设置同名的 shell 环境变量或使用正数调用该函数来覆盖。
+Calling it with zero just queries the value.
+使用零调用它只是查询该值。
+Therefore if we want to honor the user 's resource request,
+因此，如果我们想尊重用户的资源请求，
+we should write var numCPU=runtime .GOMAXPROCS(0) Be sure not to confuse the ideas of concurrency —structuringaprogram as independently executing components —and parallelism —executing calculations in parallel for efficiency on multiple CPUs.
+我们应该写 varnumCPU=runtime.GOMAXPROCS(0) 务必不要混淆并发（将程序构建为独立执行的组件）和并行（为了在多个 CPU 上提高效率而并行执行计算）的概念。
+Although the concurrency features of Go can make some problems easy to structure as parallel computations,
+虽然 Go 的并发特性可以使某些问题易于构建为并行计算，
+Go isaconcurrent language,  Go 是一种并发语言，
+notaparallel one,  不是所有并行都是一样的，
+and not all parallelization problems fit Go 's model.
+并非所有并行化问题都适合 Go 的模型。
+Foradiscussion of the distinction,
+关于区别的讨论，
+see the talk cited in this blog post.
+请参阅此博客文章中引用的演讲。
+Aleaky buffer The tools of concurrent programming can even make non -concurrent ideas easier to express.
+并发编程工具甚至可以使非并发的想法更容易表达。
+Here 's an example abstracted from an RPC package.
+这是一个从 RPC 包中抽象出来的例子。
+The client goroutine loops receiving data from some source,
+客户端 goroutine 循环接收来自某个来源的数据，
+perhapsanetwork.  也许是网络。
+To avoid allocating and freeing buffers,
+为了避免分配和释放缓冲区，
+it keepsafree list,  它保留一个空闲列表，
+and usesabuffered channel to represent it.
+并使用缓冲通道来表示它。
+If the channel is empty,  如果通道为空，
+anew buffer gets allocated.  分配了一个新的缓冲区。
+Once the message buffer is ready,
+一旦消息缓冲区准备就绪，
+it 's sent to the server on serverChan.
+它会通过 serverChan 发送到服务器。
+var freeList=make (chan *Buffer,
+var freeList = make(chan *Buffer,
+100)var serverChan=make (chan *Buffer) func client() {for{varb*Buffer//Grababuffer if available;
+100) varserverChan=make(chan*Buffer) funcclient() {for{varb*Buffer//获取一个可用的缓冲区；
+allocate if not.  如果没有，则分配。
+select{caseb =<-freeList://Got one;
+select{caseb =<-freeList://获取了一个;
+nothing more to do.  没有什么可做的了。
+default: //None free,  默认值：//Nonefree，
+so allocateanew one.  所以分配一个新的。
+b =new (Buffer)}load (b)//Read next message from the net.
+b =new(Buffer)}load(b)//从网络读取下一条消息。
+serverChan <-b //Send to server.
+serverChan<-b //发送到服务器。
+} }The server loop receives each message from the client,
+} }服务器循环接收来自客户端的每个消息，
+processes it,  处理它，
+and returns the buffer to the free list.
+并将缓冲区返回到空闲列表。
+func server() {for{ b :=<-serverChan//Wait for work.
+func server() { for { b := <-serverChan // 等待工作。
+process (b)//Reuse buffer if there 's room.
+process(b)//如果空间足够，重用缓冲区。
+select{case freeList <-b : //Buffer on free list;
+select{casefreeList<-b : //缓冲区在空闲列表中;
+nothing more to do.  没有更多事情要做。
+default: //Free list full,  default: //空闲列表已满，
+just carry on.  坚持下去。
+} } }The client attempts to retrieveabuffer from freeList;
+}} }客户端尝试从 freeList 中检索缓冲区;
+if none is available,  如果没有可用的，
+it allocatesafresh one.  它会分配一个新的。
+The server 's send to freeList putsbback on the free list unless the list is full,
+服务器发送到空闲列表将缓冲区放回空闲列表，除非列表已满，
+in which case the buffer is dropped on the floor to be reclaimed by the garbage collector.
+在这种情况下，缓冲区将被丢弃在地上，由垃圾收集器回收。
+(The default clauses in the select statements execute when no other case is ready,
+（select 语句中的默认子句在没有其他 case 准备好时执行，
+meaning that the selects never block.
+意味着 select 永远不会阻塞。
+)This implementation buildsaleaky bucket free list in justafew lines,
+)这个实现仅用几行代码构建了一个泄露桶空闲列表，
+relying on the buffered channel and the garbage collector for bookkeeping.
+依靠缓冲通道和垃圾回收器进行簿记。
+Errors Library routines must often return some sort of error indication to the caller.
+错误库例程通常必须向调用者返回某种错误指示。
+As mentioned earlier,  如前所述，
+Go 's multivalue return makes it easy to returnadetailed error description alongside the normal return value.
+Go 的多重返回值使得在正常返回值之外返回更详细的错误描述变得容易。
+It is good style to use this feature to provide detailed error information.
+使用此功能来提供更详细的错误信息是一种好的风格。
+For example,  例如，
+as we 'll see,  正如我们将看到的，
+os .Open doesn 't just returnanil pointer on failure,
+it also returns an error value that describes what went wrong.
+By convention,
+errors have type error,
+asimple built -in interface.
+一个简单的内置接口。
+type error interface{Error()string} Alibrary writer is free to implement this interface witharicher model under the covers,
+typeerrorinterface{Error()string} 库编写者可以自由地在底层使用更丰富的模型来实现此接口，
+making it possible not only to see the error but also to provide some context.
+这样不仅可以查看错误，还可以提供一些上下文。
+As mentioned,  如前所述，
+alongside the usual *os.File return value,
+通常的*os.Filereturnvalue 之外，
+os .Open also returns an error value.
+os.Open 也会返回一个错误值。
+If the file is opened successfully,
+如果文件成功打开，
+the error will be nil,  该错误将为 nil。
+but when there isaproblem,  但当出现问题时，
+it will hold an os .PathError: //PathError records an error and the operation and//file path that caused it.
+它会产生一个 os.PathError：//PathError 记录一个错误以及导致它的操作和//文件路径。
+type PathError struct{Op string//"open",
+typePathErrorstruct{Opstring //"open",
+"unlink",
+etc.Path string//The associated file.
+等等。路径字符串//关联的文件。
+Err error//Returned by the system call.
+Errerror//系统调用返回。
+}func (e *PathError) Error()string{returne.Op+ " " + e.Path+ ": " + e.Err.Error()}PathError 's Error generatesastring like this:open /etc/passwx: no such file or directory Such an error,
+}func(e*PathError)Error()string{returne.Op+ " " + e.Path+ ": " + e.Err.Error()}PathError 的 Errorgeneratesastringlikethis:open/etc/passwx:nosuchfileordirectory 这样的错误，
+which includes the problematic file name,
+其中包括有问题的文件名，
+the operation,  该操作，
+and the operating system error it triggered,
+以及它触发的操作系统错误，
+is useful even if printed far from the call that caused it;
+即使打印的位置远离导致它的调用也很有用；
+it is much more informative than the plain "no such file or directory".
+它比简单的“没有此文件或目录”更有信息量。
+When feasible,  如果可行，
+error strings should identify their origin,
+错误字符串应标识其来源，
+such as by havingaprefix naming the operation or package that generated the error.
+例如，通过使用前缀命名生成错误的 operation 或 package。
+For example,  例如，
+in package image,
+the string representation foradecoding error due to an unknown format is "image: unknown format".
+由于未知格式导致的解码错误的字符串表示形式为“image:unknownformat”。
+Callers that care about the precise error details can useatype switch oratype assertion to look for specific errors and extract details.
+关心精确错误详细信息的调用者可以使用类型开关或类型断言来查找特定错误并提取详细信息。
+For PathErrors this might include examining the internal Err field for recoverable failures.
+对于 PathError，这可能包括检查 internalErr 字段以查找可恢复的故障。
+for try:= 0 ;
+try <2 ;
+try++ {file,  try++ {文件,
+err=os .Create(filename) if err==nil{return}ife ,
+ok:=err.  好吧:=错误。
+(*os.PathError);
+ok &&e.Err==syscall .ENOSPC{deleteTempFiles() //Recover some space.
+好的 && e.Err == syscall.ENOSPC { deleteTempFiles() // 回收一些空间。
+continue}return}The second if statement here is another type assertion.
+continue}return}这里的第二个 if 语句是另一种类型断言。
+If it fails,  如果它失败，
+ok will be false,  ok 将为 false，
+andewill be nil.  并且 ew 将为 nil。
+If it succeeds,  如果成功，
+ok will be true,  okwillbetrue，
+which means the error was of type *os.PathError,
+这意味着错误类型为*os.PathError，
+and then so ise ,  然后 soise，
+which we can examine for more information about the error.
+我们可以检查它以获取有关该错误的更多信息。
+Panic The usual way to report an error toacaller is to return an error as an extra return value.
+Panic 通常向调用者报告错误的方式是返回一个错误作为额外的返回值。
+The canonical Read method isawell -known instance;
+规范的 Read 方法是一个众所周知的实例；
+it returnsabyte count and an error.
+它返回一个字节数和一个错误。
+But what if the error is unrecoverable?
+但如果错误无法恢复呢？
+Sometimes the program simply cannot continue.
+有时程序根本无法继续。
+For this purpose,  为此，
+there isabuilt -in function panic that in effect createsarun -time error that will stop the program (but see the next section).
+有一个内置函数 panic，它可以有效地创建一个运行时错误，该错误将停止程序（但请参阅下一节）。
+The function takesasingle argument of arbitrary type —oftenastring —to be printed as the program dies.
+该函数接受任意类型的单个参数（通常是字符串），以便在程序终止时打印。
+It 's alsoaway to indicate that something impossible has happened,
+这也是表明发生了不可能的事情的一种方式，
+such as exiting an infinite loop.
+例如退出无限循环。
+// Atoy implementation of cube root using Newton 's method.
+// 使用牛顿法的立方根的玩具实现。
+func CubeRoot (x float64)float64{ z := x/3//Arbitrary initial value fori := 0 ;
+funcCubeRoot(xfloat64)float64{ z := x/3//任意初始值 for i := 0 ;
+i< 1e6;
+i ++ {prevz:= z z -=(z*z*z-x)/(3*z*z) if veryClose (z,
+i ++ {prevz:= z z -=(z*z*z-x)/(3*z*z)如果非常接近(z,
+prevz) {returnz } } // Amillion iterations has not converged;
+prevz) {returnz } } // 一百万次迭代没有收敛；
+something is wrong.  出了问题。
+panic (fmt.Sprintf("CubeRoot(%g) did not converge",
+panic(fmt.Sprintf("CubeRoot(%g)没有收敛",
+x )) }This is only an example but real library functions should avoid panic.
+x )) }这只是一个例子，但真正的库函数应该避免崩溃。
+If the problem can be masked or worked around,
+如果问题可以被掩盖或解决，
+it 's always better to let things continue to run rather than taking down the whole program.
+让程序继续运行总是比关闭整个程序要好。
+One possible counterexample is during initialization:if the library truly cannot set itself up,
+一个可能的反例是在初始化期间：如果库真的无法自行设置，
+it might be reasonable to panic,
+恐慌也许是合理的。
+so to speak.  可以这么说。
+var user=os .Getenv("USER") func init() {if user== "" {panic ("no value for $USER")} }Recover When panic is called,
+varuser=os.Getenv("USER")funcinit() {ifuser== "" {panic("novaluefor$USER")} }当 panic 被调用时恢复，
+including implicitly for run -time errors such as indexingaslice out of bounds or failingatype assertion,
+包括运行时错误，例如切片索引越界或类型断言失败。
+it immediately stops execution of the current function and begins unwinding the stack of the goroutine,
+它立即停止当前函数的执行，并开始展开 goroutine 的堆栈，
+running any deferred functions along the way.
+运行沿途的任何延迟函数。
+If that unwinding reaches the top of the goroutine 's stack,
+如果展开到达 goroutine 堆栈的顶部，
+the program dies.  程序将会崩溃。
+However,  然而，
+it is possible to use the built -in function recover to regain control of the goroutine and resume normal execution.
+可以使用内置函数 recover 来重新获得对 goroutine 的控制并恢复正常执行。
+Acall to recover stops the unwinding and returns the argument passed to panic.
+调用 recover 会停止展开（unwinding）并返回传递给 panic 的参数。
+Because the only code that runs while unwinding is inside deferred functions,
+因为在展开期间唯一运行的代码是在延迟函数内部，
+recover is only useful inside deferred functions.
+所以 recover 仅在延迟函数内部有用。
+One application of recover is to shut downafailing goroutine insideaserver without killing the other executing goroutines.
+恢复机制的一个应用是在不杀死其他正在执行的 goroutine 的情况下关闭服务器内部发生故障的 goroutine。
+func server (workChan <-chan *Work){for work:=range workChan{go safelyDo (work)} }func safelyDo (work *Work){defer func() {if err:=recover();
+func server(workChan <-chan *Work) { for work := range workChan { go safelyDo(work) } } func safelyDo(work *Work) { defer func() { if err := recover();
+err!  错误!
+=nil{log .Println("work failed:",
+= nil { log.Println("工作失败:",
+err) } }()do (work)}In this example,
+err) } }()do(work)} 在这个例子中，
+if do (work) panics,  如果 do(work) 发生 panic，
+the result will be logged and the goroutine will exit cleanly without disturbing the others.
+结果将被记录，并且 goroutine 将干净地退出，而不会干扰其他 goroutine。
+There 's no need to do anything else in the deferred closure;
+在延迟闭包中不需要做任何其他事情；
+calling recover handles the condition completely.
+callingrecover 完全处理了这种情况。
+Because recover always returns nil unless called directly fromadeferred function,
+因为 recover 总是返回 nil，除非直接从 defer 函数中调用，
+deferred code can call library routines that themselves use panic and recover without failing.
+延迟的编解码器可以调用库例程，这些例程本身使用 panic 和 recover 而不会失败。
+As an example,  举个例子，
+the deferred function in safelyDo might callalogging function before calling recover,
+safelyDo 中的延迟函数可能会在调用 recover 之前调用日志记录函数，
+and that logging code would run unaffected by the panicking state.
+并且该日志记录代码将不受 panic 状态的影响而运行。
+With our recovery pattern in place,
+有了我们的恢复模式，
+the do function (and anything it calls)can get out of any bad situation cleanly by calling panic.
+dofunction（以及它调用的任何东西）可以通过调用 panic 来干净地摆脱任何糟糕的情况。
+We can use that idea to simplify error handling in complex software.
+我们可以使用这个想法来简化复杂软件中的错误处理。
+Let 's look at an idealized version ofaregexp package,
+让我们来看一个正则表达式包的理想化版本，
+which reports parsing errors by calling panic withalocal error type.
+通过调用带有本地错误类型的 panic 来报告解析错误。
+Here 's the definition of Error,
+这是 Error 的定义，
+an error method,  一个 error 方法，
+and the Compile function.  以及 Compile 函数。
+//Error is the type ofaparse error;
+it satisfies the error interface.
+它的满足错误接口。
+type Error string func (e Error)Error()string{return string (e)} //error isamethod of *Regexp that reports parsing errors by//panicking with an Error.
+typeErrorstringfunc(eError)Error()string{returnstring(e)} //error 是*Regexp 的一个方法，它通过//使用 Error 发生 panic 来报告解析错误。
+func (regexp *Regexp) error (err string) {panic (Error(err))} //Compile returnsaparsed representation of the regular expression.
+func Compile (str string)(regexp *Regexp,
+err error) {regexp=new (Regexp)//doParse will panic if there isaparse error.
+defer func() {ife :=recover();
+e !  e ! Translation:
+=nil{regexp=nil//Clear return value.
+=nil{regexp=nil//清除返回值。
+err= e .  err= e 。
+(Error)//Will re -panic if notaparse error.
+(错误)//如果不是解析错误，将会重新 panic。
+} }()return regexp .doParse(str),
+} }() 返回 regexp.doParse(str),
+nil}If doParse panics,  nil} 如果 DoParse 发生 panic，
+the recovery block will set the return value to nil —deferred functions can modify named return values.
+recovery block 会将返回值设置为 nil——延迟函数可以修改具名返回值。
+It will then check,  然后它会检查，
+in the assignment to err,  在赋值给 err 时，
+that the problem wasaparse error by asserting that it has the local type Error.
+通过断言它具有局部类型 Error，来表明问题是解析错误。
+If it does not,  如果没有，
+the type assertion will fail,
+类型断言将会失败，
+causingarun -time error that continues the stack unwinding as though nothing had interrupted it.
+导致运行时错误，并继续堆栈展开，就像没有发生任何中断一样。
+This check means that if something unexpected happens,
+这种检查意味着如果发生意外情况，
+such as an index out of bounds,
+像这样的数组越界，
+the code will fail even though we are using panic and recover to handle parse errors.
+即使我们使用 panic 和 recover 来处理解析错误，代码仍然会失败。
+With error handling in place,
+有了适当的错误处理，
+the error method (because it 'samethod bound toatype,
+errormethod（因为它是一个绑定到类型的方法，
+it 's fine,  没关系，
+even natural,  甚至自然，
+for it to have the same name as the builtin error type)makes it easy to report parse errors without worrying about unwinding the parse stack by hand:if pos== 0 {re .error("'*' illegal at start of expression") }Useful though this pattern is,
+因为它与内置错误类型具有相同的名称，所以可以很容易地报告解析错误，而无需担心手动展开解析堆栈：如果 pos== 0 {re.error("'*'在表达式开头非法") }虽然这种模式很有用，
+it should be used only withinapackage.
+它应该只在包中使用。
+Parse turns its internal panic calls into error values;
+将内部恐慌调用解析转换为错误值；
+it does not expose panics to its client.
+它不会向其客户端公开 panic。
+That isagood rule to follow.  这是一个值得遵循的好规则。
+By the way,  顺便说一句，
+this re -panic idiom changes the panic value if an actual error occurs.
+如果发生实际错误，此重新 panic 习语会更改 panic 值。
+However,  然而，
+both the original and new failures will be presented in the crash report,
+原始的和新的故障都将出现在崩溃报告中，
+so the root cause of the problem will still be visible.
+因此问题的根本原因仍然可见。
+Thus this simple re -panic approach is usually sufficient —it'sacrash after all —but if you want to display only the original value,
+因此，这种简单的重新 panic 方法通常就足够了——毕竟是崩溃——但如果您只想显示原始值，
+you can writealittle more code to filter unexpected problems and re -panic with the original error.
+您可以编写更多代码来过滤意外问题并使用原始错误重新 panic。
+That 's left as an exercise for the reader.
+这部分留给读者作为练习。
+Aweb server Let 's finish withacomplete Go program,
+一个 web 服务器，让我们用一个完整的 Go 程序来完成。
+aweb server.  一个 web 服务器。
+This one is actuallyakind of web re -server.
+这实际上是一种 web 服务器。
+Google providesaservice at chart .apis.google.com that does automatic formatting of data into charts and graphs.
+Google 提供了一项服务，网址为 chart.apis.google.com，该服务可自动将数据格式化为图表和图形。
+It 's hard to use interactively,
+很难以交互方式使用它，
+though,  虽然，
+because you need to put the data into the URL asaquery.
+因为你需要将数据放入 URL 作为查询。
+The program here providesanicer interface to one form of data:givenashort piece of text,
+这里的程序提供了一个更友好的数据接口：给定一小段文本，
+it calls on the chart server to produceaQR code,
+它调用图表服务器来生成一个二维码，
+amatrix of boxes that encode the text.
+一个编码文本的盒子矩阵。
+That image can be grabbed with your cell phone 's camera and interpreted as,
+该图像可以用你手机的摄像头捕捉并解释为，
+for instance,  例如，
+aURL,  网址，
+saving you typing the URL into the phone 's tiny keyboard.
+这样可以省去你在手机的小键盘上输入网址的麻烦。
+Here 's the complete program.
+An explanation follows.  解释如下。
+package main import("flag" "html/template" "log" "net/http")var addr=flag .String("addr",
+"http service address") // Q=17,
+"httpserviceaddress") // Q=17，
+R=18 var templ=template .Must(template.New("qr").
+Parse (templateStr)) func main() {flag .Parse() http .Handle("/",
+http .HandlerFunc(QR)) err:=http .ListenAndServe(*addr,
+nil)if err!
+=nil{log .Fatal("ListenAndServe:",
+err) } }func QR (w http .ResponseWriter,
+req *http.Request){templ .Execute(w,
+req .FormValue("s"))}const templateStr= `{{if.
+}}chs =300x300&cht=qr&choe=UTF-8&chl={{.
+}}"/>">">/>
+{{.
+}}
+
+{{end}}
+
+`The pieces up to main should be easy to follow.
+主要部分的碎片应该易于理解。
+The one flag setsadefault HTTP port for our server.
+该标志为我们的服务器设置了一个默认 HTTP 端口。
+The template variable templ is where the fun happens.
+模板变量 templ 是有趣的地方。
+It builds an HTML template that will be executed by the server to display the page;
+它构建一个 HTML 模板，该模板将由服务器执行以显示页面；
+more about that inamoment.  稍后会详细介绍。
+The main function parses the flags and,
+主函数解析标志，
+using the mechanism we talked about above,
+使用我们上面讨论的主题机制，
+binds the function QR to the root path for the server.
+将函数 QR 绑定到服务器的根路径。
+Then http .ListenAndServe is called to start the server;
+然后调用 http.ListenAndServe 启动服务器；
+it blocks while the server runs.
+它会阻塞直到服务器运行。
+QR just receives the request,
+QR 只是接收请求，
+which contains form data,  其中包含表单数据，
+and executes the template on the data in the form value nameds .
+并以名为 .s 的值的形式对数据执行模板。
+The template package html /template is powerful;
+模板包 html/template 功能强大；
+this program just touches on its capabilities.
+这个程序只是触及了它的能力。
+In essence,  本质上，
+it rewritesapiece of HTML text on the fly by substituting elements derived from data items passed to templ .Execute,
+它通过替换从传递给 templ.Execute 的数据项派生的元素，动态重写一段 HTML 文本，
+in this case the form value.  在这种情况下，是表单值。
+Within the template text(templateStr),
+在模板文本 (templateStr) 中，
+double -brace-delimited pieces denote template actions.
+双花括号分隔的部分表示模板操作。
+The piece from {{if.
+}}to {{end}} executes only if the value of the current data item,
+}}到{{end}}仅当当前数据项的值时执行，
+called.  被称为。
+(dot),  (点),
+is non -empty.  是非空的。
+That is,  也就是说，
+when the string is empty,  当字符串为空时，
+this piece of the template is suppressed.
+模板的这一部分会被抑制。
+The two snippets{{.  这两个代码片段{{。
+}}say to show the data presented to the template —the query string —on the web page.
+}}说明如何在网页上显示呈现给模板的数据（查询字符串）。
+The HTML template package automatically provides appropriate escaping so the text is safe to display.
+HTML 模板包会自动提供适当的转义，以便文本可以安全显示。
+The rest of the template string is just the HTML to show when the page loads.
+模板字符串的其余部分只是页面加载时要显示的 HTML。
+If this is too quick an explanation,
+如果这个解释太快，
+see the documentation for the template package foramore thorough discussion.
+有关更详尽的讨论，请参阅模板包的文档。
+And there you have it: auseful web server inafew lines of code plus some data -driven HTML text.
+这就是：一个有用的网络服务器，只需几行代码加上一些数据驱动的 HTML 文本。
+Go is powerful enough to makealot happen inafew lines.
+Go 非常强大，可以用几行代码完成很多事情。
