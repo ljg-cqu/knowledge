@@ -1,570 +1,514 @@
-'I'm in a job interview.'. Requirements: 1. Ensure MECE compliance. 2. Classify and categorize logically and appropriately. 3. Use numbered lists for clear explanations when possible. 4. All answers/outputs must be provided in both English and Chinese, with the English sentence appearing first, followed by the corresponding Chinese sentence. 5. Correct spelling and grammar. 6. List alternative words or phrases. 7. Rewrite in the following nine styles: formal, semi-formal, conversational, casual, polite, humorous, emojify, social, and promotional. 8. Expand content into concise paragraphs within 200 words for each of the nine aforementioned styles. 9. Provide five responses to the content (simulating dialogue) for each of the nine aforementioned styles. 10. List ten closely relevant words for each of the following word categories: nouns, verbs, adjectives, adverbs, prepositions, conjunctions, particles, pronouns, numerals, measure words, determiners, and interjections. Provide concise explanations and corresponding usage examples for each word.
+'I'm in a job interview.'. Requirements: 1. Ensure MECE compliance. 2. Classify and categorize logically and appropriately. 3. Use numbered lists for clear explanations when possible. 4. All answers/outputs must be provided in both English and Chinese, with the English sentence appearing first, followed by the corresponding Chinese sentence. 5. Correct spelling and grammar. 6. List the core alternative words or phrases. 7. Rewrite in the following 24 tones: formality (formal, semi-formal, polite), informality (conversational, casual, social, emojify), emotional (romantic, coquettish, naughty, angry), functional (strict, euphemistic, assertive, humorous, cunning, analogical, promotional), stylistic (sarcastic, playful, reflective, optimistic, pessimistic, encouraging). 8. Expand content into concise paragraphs within 200 words for each of the 24 aforementioned tones. 9. Provide one response to the content (simulating dialogue) for each of the 24 aforementioned tones. 10. List 10 closely relevant words for each of the following word categories: nouns, verbs, adjectives, adverbs, prepositions, conjunctions, particles, pronouns, numerals, measure words, determiners, and interjections. Provide concise explanations and corresponding usage examples for each word.
 
-Sat Jun 21 2025
+Sun Jun 22 2025
 
-### MECE Compliance and Logical Structure  
-To ensure MECE (Mutually Exclusive, Collectively Exhaustive) compliance in answering “I'm in a job interview,” all outputs are organized into discrete, non-overlapping categories and address every requirement specified. Content is systematically divided by style, function, and linguistic aspect, ensuring no redundancy and covering all necessary facets of the prompt in both English and Chinese.
+### Core Alternative Words or Phrases for "I'm in a Job Interview" / “我正在参加工作面试”的核心表达
 
----
+The alternatives are classified using the MECE (Mutually Exclusive, Collectively Exhaustive) approach, ensuring every angle of the situation is covered without overlap. Each English phrase is paired with its accurate Chinese translation and is grouped into logical categories.
 
-### 1. Central Phrase and Alternatives  
-#### Main Sentence  
-- English: I’m in a job interview.  
-- 中文：我正在参加面试。
+#### 1. Participation-Based Expressions / 参与性表达
+1. I am currently engaged in a job interview.  
+   我目前正在参加一场工作面试。
+2. I am attending a job interview at the moment.  
+   我此刻正在参加一场工作面试。
+3. I'm taking part in an interview for a job position.  
+   我正在参加工作职位的面试。
+4. I'm participating in a professional interview session.  
+   我正在参与一次专业的面试会。
+5. I’m in an interview process for employment.  
+   我正处于求职面试过程中。
 
-#### Alternative Expressions  
-- English:  
-  1. I am currently attending a job interview.  
-  2. I’m in the middle of an interview.  
-  3. I am being interviewed for a position.  
-  4. I’m undergoing a professional interview.  
-  5. I’m at a job interview session.
-- 中文：  
-  1. 我正在进行一场求职面试。  
-  2. 我在接受面试。  
-  3. 我正在参加职位面试。  
-  4. 我正在被面试。  
-  5. 我正在面试现场。
+#### 2. Status/Process-Based Expressions / 状态或过程性表达
+6. I'm in the middle of a job interview.  
+   我正在面试中。
+7. My job interview is currently in progress.  
+   我的工作面试正在进行中。
+8. I am undergoing a formal interview procedure.  
+   我正在接受正式面试程序。
+9. I'm currently undergoing an interview assessment.  
+   我目前正在接受面试评估。
 
----
+#### 3. Interaction-Based Expressions / 互动性表达
+10. I’m chatting with an interviewer for a possible position.  
+    我正在与面试官交谈，争取一个职位。
+11. I’m answering employment interview questions at present.  
+    我目前正在回答面试问题。
+12. I’m meeting recruiters for an interview.  
+    我正在见招聘人员进行面试。
+13. I'm facing an interview board at this moment.  
+    我此刻正在面试委员会前面试。
 
-### 2. Nine Styles: Concise Paragraphs and Simulated Dialogues  
-Each style is explained and expanded into a concise paragraph (within 200 words), followed by five representative simulated dialogue responses in both languages.
+#### 4. Candidacy/Competitive Expressions / 竞选性表达
+14. I'm being interviewed for a potential role.  
+    我正在接受岗位面试。
+15. I’m presently being considered for a job position.  
+    我现在正被考虑担任某职位。
+16. I'm competing in a selection interview session.  
+    我正在参加选聘面试会。
 
----
-
-#### 2.1 Formal Style (正式风格)  
-**Paragraph:**  
-English: In a formal setting, the statement “I’m in a job interview” is communicated with clarity and professionalism, emphasizing the nature and purpose of the situation. Candidates typically use precise and courteous language, highlighting their engagement in a structured evaluation for a professional role. The tone is respectful and aligns with traditional business communication.  
-中文：在正式环境中，表达“我正在参加面试”时注重清晰与专业，强调情境的正式性与目的。候选人通常使用准确而礼貌的语言，突出自己正参与一个结构化的职位评估。语气庄重，符合传统商务沟通的规范。
-
-**Simulated Dialogues:**  
-1. English: “Thank you for inviting me; I am currently in a job interview and ready to present my qualifications.”  
-   中文：“感谢您的邀请；我当前正在参加面试，准备展示我的资历。”  
-2. English: “At this moment, I am engaged in a professional interview process.”  
-   中文：“此刻，我正处于一场专业面试过程中。”  
-3. English: “I am in a job interview, demonstrating my suitability for the position.”  
-   中文：“我正在参加面试，展示自己与该职位的契合度。”  
-4. English: “Currently, I am participating in an official interview session.”  
-   中文：“我目前正在参加一场正式的面试。”  
-5. English: “I am being assessed in a job interview for a relevant role.”  
-   中文：“我正在接受有关岗位的面试评估。”
-
----
-
-#### 2.2 Semi-Formal Style (半正式风格)  
-**Paragraph:**  
-English: In a semi-formal context, “I’m in a job interview” maintains a balance between professionalism and a conversational atmosphere. The language is respectful but less rigid, making the exchange more approachable while upholding a business-like tone.  
-中文：在半正式环境下，“我正在参加面试”兼具专业性与亲切氛围。语言礼貌而不拘谨，使交流更易接近，同时保持一定的商务感。
-
-**Simulated Dialogues:**  
-1. English: “I’m actually in a job interview right now, talking about my experiences.”  
-   中文：“我现在正在面试，正在聊我的经历。”  
-2. English: “Currently, I’m attending an interview for a new position.”  
-   中文：“我目前正在面试一个新职位。”  
-3. English: “I’m in the middle of an interview, looking forward to learning more.”  
-   中文：“我正在面试中，期待了解更多信息。”  
-4. English: “Yes, I’m being interviewed and sharing my background.”  
-   中文：“是的，我正在接受面试，并分享我的背景。”  
-5. English: “It’s a job interview, and I’m excited to participate.”  
-   中文：“现在是面试时间，我很高兴参与其中。”
+#### 5. Temporal/Situational Expressions / 时间或情景表达
+17. I am having my employment interview today.  
+    我今天正在参加求职面试。
+18. I’m on a job interview call right now.  
+    我现在正参与工作面试电话。
+19. I am attending the candidate assessment interview.  
+    我正在参加候选人评估面试。
 
 ---
 
-#### 2.3 Conversational Style (对话式风格)  
-**Paragraph:**  
-English: The conversational style uses everyday language and an inviting tone. Saying, “I’m in a job interview,” naturally fits into informal exchanges, allowing candidates to sound genuine, relatable, and at ease, encouraging open discussion.  
-中文：对话式风格采用日常表达与亲切语气。说“我正在参加面试”非常适合非正式交流，使候选人显得真诚、易于接近且放松，促进行业对话。
+### 24 Tone-Specific Rewrites with Paragraph Expansions and Simulated Dialogue Responses
 
-**Simulated Dialogues:**  
-1. English: “Oh, I’m in a job interview at the moment—pretty exciting!”  
-   中文：“哦，我现在正在面试——挺兴奋的！”  
-2. English: “I’m interviewing right now and hoping for a good outcome.”  
-   中文：“我正在面试，希望有个好结果。”  
-3. English: “Yep, I’m in a job interview, answering some questions.”  
-   中文：“是的，我正在面试，正在回答问题。”  
-4. English: “I’m actually at a job interview, wish me luck!”  
-   中文：“我真的正在面试，祝我好运吧！”  
-5. English: “It’s a job interview, just being myself.”  
-   中文：“就是面试，做我自己就好。”
+Each variation is mutually exclusive and collectively exhaustive, representing all possible communicative tones and styles.
 
----
+#### 1. Formal  
+I am currently engaged in a job interview.  
+我目前正在参加一场工作面试。
 
-#### 2.4 Casual Style (随意风格)  
-**Paragraph:**  
-English: In casual settings, “I’m in a job interview” is expressed informally, reflecting comfort and spontaneity. The language is relaxed, employing slang or common expressions, making the conversation light and approachable.  
-中文：在随意环境中，“我正在参加面试”以非正式方式表达，体现放松和自然。语言轻松，可带俚语或口语化表达，使交流更为轻松亲近。
+This is a formal setting that demands clear articulation, proper etiquette, and professionalism at every level. Every answer I provide must align with the established standards of conduct, and I am expected to demonstrate my qualifications in a structured and respectful manner. Such occasions call for maintaining composure and focusing intently on the process.
 
-**Simulated Dialogues:**  
-1. English: “Hey, I’m just in a job interview right now.”  
-   中文：“嘿，我现在正面试呢。”  
-2. English: “Yup, doing the interview thing.”  
-   中文：“嗯，正在面试这事儿。”  
-3. English: “I’m at a job interview, nothing fancy.”  
-   中文：“我在面试，没啥特别的。”  
-4. English: “In an interview—let’s see how it goes.”  
-   中文：“在面试，看看运气吧。”  
-5. English: “Just trying to get through this job interview.”  
-   中文：“就是应付下这场面试。”
+**Dialogue:**  
+"Thank you for notifying me; I wish you a very successful interview."  
+“感谢您的通知，祝您面试圆满成功。”
 
----
+#### 2. Semi-formal  
+I'm taking part in an interview for a job position.  
+我正在参加工作职位的面试。
 
-#### 2.5 Polite Style (礼貌风格)  
-**Paragraph:**  
-English: The polite style emphasizes courteous phrasing. “I’m in a job interview” is stated with gratitude, humility, and positive regard for the opportunity. Respondents thank the interviewer and express hope for a positive interaction.  
-中文：礼貌风格重视有礼表述。“我正在参加面试”带有感激与谦逊，对面试机会持积极且尊重的态度。应答时感谢主考官，并表达良好互动的期望。
+The environment is professional yet not overly rigid, allowing for respectful conversation alongside the presentation of my skills and experiences. My objective is to strike a balance between formal expression and authentic self-presentation.
 
-**Simulated Dialogues:**  
-1. English: “Thank you kindly for your time; I am presently in a job interview.”  
-   中文：“非常感谢您的时间；我正在参加面试。”  
-2. English: “It’s an honor to sit in this job interview.”  
-   中文：“很荣幸能参加这次面试。”  
-3. English: “I greatly appreciate the chance to be in this job interview.”  
-   中文：“非常感激有机会参加这次面试。”  
-4. English: “I’m grateful to be interviewed for this role.”  
-   中文：“我很感恩能为此岗位接受面试。”  
-5. English: “Thank you for this opportunity; I’m in a job interview at the moment.”  
-   中文：“感谢您给我机会，目前我正处于面试中。”
+**Dialogue:**  
+"Good luck! Please share your experience afterwards."  
+“祝你好运！面试后记得和我分享经历。”
 
----
+#### 3. Polite  
+I'm presently involved in a job interview; please excuse any brief replies.  
+我目前正在参加工作面试，如有简短回复请见谅。
 
-#### 2.6 Humorous Style (幽默风格)  
-**Paragraph:**  
-English: In the humorous style, light-heartedness and wit are combined with the main message. “I’m in a job interview” can be delivered with a joke or playful remark, easing tension and revealing personality, while keeping the context clear.  
-中文：幽默风格将轻松与机智结合，表达核心信息。“我正在参加面试”可配以玩笑或俏皮语，缓解紧张气氛同时展现个性，并保持情境明确。
+During moments like this, I value your understanding if my responses are delayed or short. The importance of this event requires my full attention, and I deeply appreciate your patience and support.
 
-**Simulated Dialogues:**  
-1. English: “If I ace this job interview, coffee’s on me!”  
-   中文：“要是我面试成功，咖啡算我的！”  
-2. English: “I’m in a job interview—trying not to sweat too much!”  
-   中文：“我正面试呢——努力不出太多汗！”  
-3. English: “Currently starring in the thrilling adventure called ‘Job Interview!’”  
-   中文：“我正在出演‘面试大冒险’这场刺激戏！”  
-4. English: “Hope this job interview doesn’t require dance moves.”  
-   中文：“希望这场面试不要求跳舞。”  
-5. English: “I’m in a job interview—wish me luck, or at least good snacks!”  
-   中文：“我在面试，祝我好运吧，或者来点好吃的也行！”
+**Dialogue:**  
+"No worries at all! Focus on your interview."  
+“完全没关系！放心专心面试吧。”
 
----
+#### 4. Conversational  
+I'm in the middle of a job interview right now.  
+我现在正在进行工作面试。
 
-#### 2.7 Emojify Style (表情符号风格)  
-**Paragraph:**  
-English: The emojify style incorporates emojis that visually represent emotions, status, or intent. “I’m in a job interview” is enhanced with emojis to express nervousness, excitement, or positivity, making the message lively and relatable for digital audiences.  
-中文：表情符号风格融入表情符号，直观传达情感、状态或意图。“我正在参加面试”辅以表情，表达紧张、兴奋或积极，使信息生动、适合网络语境。
+I’m currently chatting with the interviewer, sharing my background and answering questions. It’s a bit nerve-wracking but I’m hopeful and trying to relax into a natural conversation.
 
-**Simulated Dialogues:**  
-1. English: “I’m in a job interview now! 🤞💼”  
-   中文：“我正在面试！🤞💼”  
-2. English: “Wish me luck in my interview! 😅🌟”  
-   中文：“祝我面试好运！😅🌟”  
-3. English: “Job interview time! 🙌👔”  
-   中文：“面试时间到！🙌👔”  
-4. English: “Interview nerves kicking in! 😬😬”  
-   中文：“面试紧张上线！😬😬”  
-5. English: “Hoping for success in my interview today! ✨🤞”  
-   中文：“希望今天面试成功！✨🤞”
+**Dialogue:**  
+"Take it easy! I hope it goes well for you."  
+“慢慢来！祝你面试顺利。”
 
----
+#### 5. Casual  
+I'm at a job interview.  
+我在参加工作面试。
 
-#### 2.8 Social Style (社交风格)  
-**Paragraph:**  
-English: The social style focuses on interpersonal positivity and connection. Candidates state “I’m in a job interview” while highlighting a team-oriented or collaborative spirit, showing adaptability and openness to new relationships.  
-中文：社交风格强调积极人际关系和联系。候选人在说“我正在参加面试”时，突出团队协作精神，展现适应力和开放心态。
+Just hanging in there, taking questions as they come. It’s nothing too stiff, just trying to be genuine and go with the flow.
 
-**Simulated Dialogues:**  
-1. English: “I’m in a job interview and excited to connect with the team.”  
-   中文：“我正在面试，期待和团队建立联系。”  
-2. English: “In an interview, looking forward to meeting new colleagues.”  
-   中文：“在面试，盼望认识新同事。”  
-3. English: “Currently in a job interview, hoping to join this vibrant community.”  
-   中文：“我现在在面试，希望融入这个有活力的团队。”  
-4. English: “I’m in a job interview, ready to collaborate and grow.”  
-   中文：“我在面试，准备好协作和成长。”  
-5. English: “Interviewing now—teamwork matters to me.”  
-   中文：“正在面试，团队合作对我很重要。”
+**Dialogue:**  
+"Don’t sweat it! You’ll do great."  
+“别紧张！你肯定行。”
 
----
+#### 6. Social  
+Kicking off my job interview today! Wish me luck!  
+今天开始我的工作面试！祝我好运！
 
-#### 2.9 Promotional Style (宣传风格)  
-**Paragraph:**  
-English: The promotional style sells the individual by confidently stating “I’m in a job interview,” quickly tying in achievements and why the candidate is valuable. The tone is assertive, persuasive, and focused on benefits the candidate brings.  
-中文：宣传风格通过自信地表述“我正在参加面试”，迅速关联成就与个人价值。语气坚定、说服力强，强调候选人带来的益处。
+I’m excited for this opportunity and grateful for everyone cheering me on. Your support gives me the morale boost I need for this important step in my career.
 
-**Simulated Dialogues:**  
-1. English: “I’m in a job interview, ready to prove my track record of exceeding goals.”  
-   中文：“我正在参加面试，准备证明我超额完成目标的能力。”  
-2. English: “Currently in an interview—your next dedicated team member!”  
-   中文：“现在正面试——你们未来敬业团队成员！”  
-3. English: “I’m in a job interview, offering innovative solutions for your company.”  
-   中文：“我正在面试，为贵公司带来创新解决方案。”  
-4. English: “In this job interview, I’m showing why I’m the best fit for the role.”  
-   中文：“在这场面试中，我展示了自己是最佳人选。”  
-5. English: “Preparing for job interview success—let’s achieve greatness together!”  
-   中文：“正在为面试成功做准备——让我们一同成就卓越！”
+**Dialogue:**  
+"All the best! The whole crew’s cheering for you!"  
+“一切顺利！大家都在为你加油！”
 
----
+#### 7. Emojify  
+I'm 🎤 in a job interview 🕒 right now.  
+我现在正在进行🎤工作面试🕒。
 
-### 3. Ten Closely Relevant Words per Category (with Explanation and Usage)  
-Each table below provides bilingual vocabulary, concise explanations, and an example for each word category.
+Bringing my A-game and best smiles 😄. Crossing fingers for a positive result! 🤞💪
 
-#### 3.1 Nouns | 名词
+**Dialogue:**  
+"Go for it! 🚀 You’re a superstar! 🌟"  
+“加油！🚀 你是超级明星！🌟”
 
-| English  | 中文      | Explanation                       | Example (EN/CN)                                  |
-|----------|-----------|-----------------------------------|--------------------------------------------------|
-| job      | 工作      | Work position                     | I found a job. / 我找到了一份工作。             |
-| position | 职位      | Specific employment               | The position is open. / 该职位正在招聘。         |
-| interview| 面试      | Candidate evaluation meeting      | The interview went well. / 面试进行得很好。     |
-| resume   | 简历      | Summary of experience             | My resume is ready. / 我的简历已准备好。         |
-| candidate| 候选人    | Job applicant                     | The candidate is excellent. / 候选人很优秀。     |
-| skills   | 技能      | Abilities                         | My skills match the role. / 我的技能符合职位。   |
-| experience| 经验     | Practical knowledge               | I have experience. / 我有经验。                  |
-| qualification| 资格 | Credentials required              | He has the qualification. / 他有该资格。         |
-| responsibility|责任  | Duty or task                      | Responsibility comes with the job. / 这份工作有责任。|
-| company  | 公司      | Employer organization             | The company is growing. / 公司正在发展。         |
+#### 8. Romantic  
+I'm presently in a job interview, but thoughts of you keep me warm.  
+我目前正在参加工作面试，但思念你让我心头温暖。
 
-#### 3.2 Verbs | 动词
+Even when I’m under stress, your encouragement and love surround me, giving me confidence and calmness to face any question bravely.
 
-| English  | 中文    | Explanation              | Example (EN/CN)                                |
-|----------|---------|--------------------------|------------------------------------------------|
-| apply    | 申请    | Submit request           | I will apply tomorrow. / 我明天要申请。         |
-| prepare  | 准备    | Get ready                | She prepared for the interview. / 她为面试做准备。|
-| answer   | 回答    | Respond to questions     | Please answer clearly. / 请清楚地回答。         |
-| listen   | 听      | Pay attention to sound   | Listen to the question. / 听问题。              |
-| explain  | 解释    | Make clear, clarify      | Let me explain. / 让我来解释。                  |
-| communicate|交流  | Exchange ideas           | We communicate often. / 我们经常交流。          |
-| succeed  | 成功    | Achieve goals            | I hope to succeed. / 我希望成功。               |
-| demonstrate|展示  | Show, display            | Demonstrate your skills. / 展示你的技能。       |
-| negotiate|谈判    | Discuss to agree         | He can negotiate. / 他很会谈判。                |
-| impress  | 打动    | Create positive impact   | You impressed the manager. / 你打动了经理。     |
+**Dialogue:**  
+"I’m always with you in spirit, supporting you every second."  
+“我一直在你身边默默支持你每一刻。”
 
-#### 3.3 Adjectives | 形容词
+#### 9. Coquettish  
+I'm in a job interview now, hoping to charm them just like I charm you.  
+我现在在参加工作面试，希望像迷住你一样迷住他们。
 
-| English     | 中文           | Explanation                                 | Example (EN/CN)                                    |
-|-------------|----------------|---------------------------------------------|----------------------------------------------------|
-| confident   | 自信的         | Sure of abilities                           | She is confident. / 她很自信。                     |
-| qualified   | 合格的         | Meeting requirements                        | He is qualified. / 他很合格。                      |
-| experienced | 有经验的       | With practical knowledge                    | Experienced staff help. / 有经验的员工很有帮助。   |
-| professional| 专业的         | Businesslike and skilled                    | Stay professional. / 保持专业。                    |
-| punctual    | 守时的         | On time                                     | He is punctual. / 他很守时。                       |
-| polite      | 礼貌的         | Well-mannered                               | Be polite. / 要有礼貌。                            |
-| motivated   | 积极的         | Eager to act                                | She is motivated. / 她很积极。                     |
-| adaptable   | 适应力强的     | Good at adjusting                           | He is adaptable. / 他很适应新环境。                |
-| prepared    | 充分准备的     | Ready in advance                            | She is well prepared. / 她准备充分。               |
-| enthusiastic| 热情的         | Very eager and interested                   | Candidates are enthusiastic. / 候选人很热情。       |
+Maybe a little wit and charm will help me win the interviewers’ hearts, just as it worked with you. Wish me luck in shining my unique light.
 
-#### 3.4 Adverbs | 副词
+**Dialogue:**  
+"I bet no interviewer can resist your charm!"  
+“我相信没有面试官能抵挡你的魅力！”
 
-| English     | 中文           | Explanation                                      | Example (EN/CN)                                 |
-|-------------|----------------|--------------------------------------------------|-------------------------------------------------|
-| clearly     | 清晰地         | In a clear way                                   | Answer clearly. / 清晰地回答。                  |
-| confidently | 自信地         | With confidence                                  | Respond confidently. / 自信地回应。             |
-| effectively | 有效地         | In a productive way                              | Speak effectively. / 有效地表达。               |
-| professionally|专业地       | With professionalism                             | Behave professionally. / 要专业地表现。         |
-| eagerly     | 渴望地         | With strong desire                               | Eagerly apply. / 渴望地申请。                  |
-| attentively | 专心地         | With attention                                   | Listen attentively. / 专心地听。                |
-| smoothly    | 顺利地         | Without issues                                   | The interview went smoothly. / 面试很顺利。     |
-| thoroughly  | 彻底地         | In a detailed way                                | Answer thoroughly. / 彻底地回答。              |
-| promptly    | 及时地         | Without delay                                    | Respond promptly. / 及时回应。                  |
-| politely    | 礼貌地         | In a polite manner                               | Speak politely. / 礼貌地说话。                  |
+#### 10. Naughty  
+I'm stuck in a job interview—wish I was somewhere more fun!  
+我被困在工作面试中——真希望能去更有趣的地方！
 
-#### 3.5 Prepositions | 介词
+I know I’m supposed to be serious here, but part of me just wants to escape and do something mischievous. Maybe I’ll surprise them with a funny response later!
 
-| English  | 中文     | Explanation                    | Example (EN/CN)                                    |
-|----------|----------|--------------------------------|----------------------------------------------------|
-| at       | 在       | Present/location/time          | Waiting at the lobby. / 在大厅等候。                |
-| in       | 在       | Within a space or event        | In a job interview. / 在面试中。                    |
-| on       | 在……上   | Date/time/surface              | On Monday. / 在星期一。                            |
-| with     | 与       | Accompanied by                 | Interview with HR. / 与人事部面试。                 |
-| for      | 为了     | Purpose                        | Interview for a role. / 为职位面试。                |
-| about    | 关于     | Topic of discussion            | Ask about company. / 询问公司情况。                |
-| between  | 在……之间| Between questions              | Between interviews. / 在面试之间。                  |
-| during   | 在……期间| Within a time period           | During the interview. / 面试期间。                  |
-| before   | 在……之前| Prior to an event              | Before the meeting. / 会议前。                      |
-| after    | 在……之后| Following an event             | After the interview. / 面试后。                      |
+**Dialogue:**  
+"Don’t be too naughty—save your jokes for after the interview!"  
+“别太调皮了——面试后再开玩笑吧！”
 
-#### 3.6 Conjunctions | 连词
+#### 11. Angry  
+I'm in a job interview, but this process is driving me mad!  
+我正在参加工作面试，但整个流程让我快疯了！
 
-| English     | 中文           | Explanation                                  | Example (EN/CN)                                |
-|-------------|----------------|----------------------------------------------|------------------------------------------------|
-| and         | 和             | Adds information                            | Skills and experience. / 技能和经验。            |
-| but         | 但是           | Contrasts information                       | I tried but failed. / 我尝试了但是失败了。        |
-| or          | 或者           | Offers options                              | Call or email. / 打电话或者发邮件。              |
-| because     | 因为           | Gives reason                                | I left because I was ill. / 我因为生病离开了。    |
-| although    | 尽管           | Introduces contrast                         | Although tired, I persisted. / 尽管累，我坚持了。|
-| since       | 自从/因为      | Time or reason                              | Since joining, I improved. / 自从加入后我进步了。|
-| while       | 当……时         | Time/Contrast                               | Smile while speaking. / 说话时要微笑。           |
-| however     | 然而           | Contrasts previous                          | I wanted it; however, I declined. / 我想要，然而我拒绝了。|
-| moreover    | 此外           | Adds information                            | Moreover, I can code. / 此外，我会编程。         |
-| therefore   | 因此           | Shows result                                | I studied. Therefore, I passed. / 我学习了，因此通过了。|
+Repetitive questions and endless formalities are wearing down my patience. Sometimes it feels unfair, but I’m still giving my best.
 
-#### 3.7 Particles | 助词
+**Dialogue:**  
+"Hang in there—the end is near, and you’ve got this!"  
+“坚持住——快结束了，你一定行！”
 
-| English | 中文   | Explanation                 | Example (EN/CN)                                 |
-|---------|--------|----------------------------|-------------------------------------------------|
-| up      | 上     | Completes verb phrase       | Stand up. / 站起来。                            |
-| out     | 出     | Shows exit, conclusion     | Fill out the form. / 填好表格。                  |
-| well    | 好     | Emphasis/confirmation      | Well done. / 做得好。                            |
-| just    | 只是   | Time/emphasis limitation   | I just finished. / 我刚完成。                    |
-| really  | 真     | Adds force                 | I really care. / 我真的在乎。                    |
-| now     | 现在   | Time focus                 | You can start now. / 你现在可以开始。            |
-| also    | 也     | Adds information           | I also speak Chinese. / 我也会说中文。           |
-| even    | 甚至   | Emphasizes extremes        | I even sang. / 我甚至唱了歌。                    |
-| so      | 所以   | Shows result, emphasis     | It's raining so I stayed. / 下雨了所以我留下了。 |
-| too     | 也/太  | Adds extra/agreement       | Me too. / 我也是。                               |
+#### 12. Strict  
+Currently engaged in a job interview; punctuality and professionalism are imperative.  
+目前正参加工作面试；守时和专业非常重要。
 
-#### 3.8 Pronouns | 代词
+Every aspect of this experience—the schedule, conduct, and communication—demands absolute accuracy and discipline. Any deviation is unacceptable, and seriousness is non-negotiable.
 
-| English | 中文    | Explanation                       | Example (EN/CN)                            |
-|---------|---------|-----------------------------------|--------------------------------------------|
-| I       | 我      | Refers to self                    | I am here. / 我在这里。                    |
-| you     | 你      | Second-person singular/plural      | You did great. / 你做得很好。              |
-| he      | 他      | Third-person singular (male)       | He passed the test. / 他通过了考试。       |
-| she     | 她      | Third-person singular (female)     | She is polite. / 她很有礼貌。              |
-| it      | 它/这   | Refers to thing/animal            | It is new. / 它是新的。                    |
-| we      | 我们    | First-person plural                | We succeeded. / 我们成功了。               |
-| they    | 他们    | Third-person plural                | They are here. / 他们在这里。              |
-| me      | 我      | Object form of “I”                | Call me. / 打电话给我。                    |
-| him     | 他      | Object form of “he”               | Ask him. / 问问他。                        |
-| us      | 我们    | Object form “we”                  | Trust us. / 相信我们。                     |
+**Dialogue:**  
+"Stay on track; your professionalism will speak for itself."  
+“保持规范，你的专业素养会说明一切。”
 
-#### 3.9 Numerals | 数词
+#### 13. Euphemistic  
+I am presently occupied with a professional discussion regarding employment opportunities.  
+我目前正参与一场关于职业机会的专业讨论。
 
-| English | 中文 | Explanation                | Example (EN/CN)                            |
-|---------|------|----------------------------|--------------------------------------------|
-| one     | 一   | The number 1               | One job opening. / 一个职位空缺。           |
-| two     | 二   | The number 2               | Two candidates. / 两位候选人。              |
-| three   | 三   | The number 3               | Three questions. / 三个问题。              |
-| four    | 四   | The number 4               | Four tasks. / 四项任务。                   |
-| five    | 五   | The number 5               | Five minutes. / 五分钟。                   |
-| six     | 六   | The number 6               | Six examples. / 六个例子。                 |
-| seven   | 七   | The number 7               | Seven days. / 七天。                       |
-| eight   | 八   | The number 8               | Eight resumes. / 八份简历。                |
-| nine    | 九   | The number 9               | Nine answers. / 九个答案。                 |
-| ten     | 十   | The number 10              | Ten interviews. / 十次面试。               |
+I prefer to see this as a constructive dialogue about collaboration and growth potential rather than a high-pressure trial. This mindset makes the experience more positive.
 
-#### 3.10 Measure Words | 量词
+**Dialogue:**  
+"May your conversation open new horizons for both sides."  
+“愿你的谈话为双方带来新机遇。”
 
-| English | 中文  | Explanation                        | Example (EN/CN)                             |
-|---------|-------|------------------------------------|---------------------------------------------|
-| piece   | 个    | General item                       | A piece of advice. / 一条建议。              |
-| set     | 套    | Collection                         | A set of questions. / 一套问题。             |
-| pair    | 双    | Two related items                  | A pair of shoes. / 一双鞋。                  |
-| cup     | 杯    | Liquid container                   | A cup of tea. / 一杯茶。                    |
-| bottle  | 瓶    | Bottle container                   | A bottle of water. / 一瓶水。                |
-| slice   | 片    | Thin flat object                   | A slice of bread. / 一片面包。               |
-| box     | 盒    | Box-shaped container               | A box of paper. / 一盒纸。                   |
-| packet  | 包    | Packaged object                    | A packet of sugar. / 一包糖。                |
-| loaf    | 条    | Long-shaped, e.g. loaf of bread    | A loaf of bread. / 一条面包。                |
-| sheet   | 张    | Flat/thin item                     | A sheet of paper. / 一张纸。                 |
+#### 14. Assertive  
+I am in a job interview, fully ready to demonstrate my qualifications.  
+我正在参加工作面试，完全准备好展示我的资历。
 
-#### 3.11 Determiners | 限定词
+I know my strengths and have thoroughly prepared to showcase my competencies. I take the lead confidently, showing I deserve this chance.
 
-| English | 中文      | Explanation                | Example (EN/CN)                                |
-|---------|-----------|----------------------------|------------------------------------------------|
-| the     | 这个/该   | Specifies noun             | The resume is complete. / 这份简历已完成。       |
-| a       | 一个      | Indefinite article         | A candidate is waiting. / 有一位候选人在等。     |
-| an      | 一个      | Before vowel sound         | An answer is needed. / 需要一个回答。           |
-| some    | 一些      | Undefined plural           | Some examples exist. / 有一些例子。             |
-| any     | 任何      | Expresses uncertainty      | Any question is welcome. / 欢迎任何问题。       |
-| each    | 每个      | Every single one           | Each candidate spoke. / 每位候选人都发言了。     |
-| every   | 每个      | All instances; totality    | Every resume matters. / 每份简历都重要。         |
-| this    | 这个      | Points to something near   | This answer is correct. / 这个答案是对的。       |
-| that    | 那个      | Points to something far    | That question was hard. / 那个问题很难。         |
-| these   | 这些      | Plural near                | These interviews count. / 这些面试很重要。       |
+**Dialogue:**  
+"Go ahead—let your determination and ability shine through!"  
+“加油——让你的决心和能力闪耀出来！”
 
-#### 3.12 Interjections | 感叹词
+#### 15. Humorous  
+I'm navigating the thrilling rollercoaster of a job interview right now!  
+我现在正经历一场刺激的工作面试过山车！
 
-| English   | 中文  | Explanation                    | Example (EN/CN)                                     |
-|-----------|-------|--------------------------------|------------------------------------------------------|
-| wow       | 哇    | Surprise or admiration         | Wow, great answer! / 哇，好棒的回答！                |
-| oh        | 哦    | Realization or surprise        | Oh, I see. / 哦，我明白了。                           |
-| hey       | 嘿    | Getting attention              | Hey, can you help? / 嘿，你能帮忙吗？                |
-| ouch      | 哎呀  | Pain or discomfort             | Ouch, that hurt. / 哎呀，好疼。                      |
-| alas      | 唉    | Regret or disappointment       | Alas, I missed it. / 唉，我错过了。                  |
-| hmm       | 嗯    | Thinking, hesitation           | Hmm, let me think. / 嗯，让我想想。                  |
-| well      | 好吧  | Mild agreement or transition   | Well, let's begin. / 好吧，我们开始吧。              |
-| uh        | 呃    | Hesitation                     | Uh, not sure about that. / 呃，不太确定。            |
-| yay       | 耶    | Joy, excitement                | Yay, I got the job! / 耶，我拿到工作了！             |
-| yikes     | 咦    | Alarm, shock                   | Yikes, that was unexpected! / 咦，太意外了！          |
+Every question is like a loop or dip, but I’m hanging on and trying not to scream. Laughter is a great safety harness in this ride.
+
+**Dialogue:**  
+"Hands up and enjoy the ride—just don’t drop your resume!"  
+“举起手来享受旅程——可别掉了简历！”
+
+#### 16. Cunning  
+I'm currently evaluating the job interviewers while they assess me.  
+我正在评估面试官，他们也在评估我。
+
+As I answer, I also observe them closely, picking up every subtle hint that could give me an edge. The process is a two-way street.
+
+**Dialogue:**  
+"Smart move! Reading the room is part of acing the interview."  
+“聪明！察言观色也是面试成功的关键。”
+
+#### 17. Analogical  
+I'm in a job interview, like a player on stage awaiting their cue.  
+我正在参加工作面试，就像舞台上的演员等待登场。
+
+I rehearse my lines, wait for my moment, and hope to give a performance worthy of applause. Timing and preparation matter.
+
+**Dialogue:**  
+"Break a leg out there—your stage is set!"  
+“祝你演出成功——舞台已经准备好了！”
+
+#### 18. Promotional  
+I am showcasing my skills in a job interview to secure the perfect position.  
+我正在工作面试中展示我的技能，以争取理想职位。
+
+This is my moment to market myself, highlight my achievements, and prove that I am the best fit for the position. Confidence is my product.
+
+**Dialogue:**  
+"Seize the chance—sell your strengths loud and clear!"  
+“抓住机会——大声推销你的优点！”
+
+#### 19. Sarcastic  
+Yeah, I’m just casually having a blast in this job interview.  
+是的，我正在这场工作面试中开心透了。
+
+What could be more fun than answering the same questions for the hundredth time? Clearly, this is the highlight of my week!
+
+**Dialogue:**  
+"Try not to get too bored—maybe you’ll get a new question this time!"  
+“别太无聊——也许这次会有新问题呢！”
+
+#### 20. Playful  
+I'm on the interview battlefield—ready to win the prize!  
+我正在面试战场——准备赢得奖品！
+
+Every question is like a new round in a game. With quick wit and a cheerful attitude, I’m determined to emerge as the champion.
+
+**Dialogue:**  
+"Game on! Wishing you victory and a winning prize!"  
+“开战吧！祝你胜利赢得大奖！”
+
+#### 21. Reflective  
+I'm in a job interview, contemplating both past experiences and future goals.  
+我正在参加工作面试，思考过去的经历和未来的目标。
+
+This is a chance to reflect on how my journey has shaped me and how this role aligns with my future ambitions. Self-awareness guides my answers.
+
+**Dialogue:**  
+"Let your story inspire them—the best candidates are self-aware."  
+“让你的故事打动他们——最优秀的候选人都自知。”
+
+#### 22. Optimistic  
+I'm in a job interview, confident this is the start of something great!  
+我正在参加工作面试，自信这将是美好事物的开始！
+
+I’m positive that this opportunity opens doors to wonderful new experiences. I approach every question with hope and open-mindedness.
+
+**Dialogue:**  
+"Your positivity is contagious—let’s look forward to good news!"  
+“你的乐观真有感染力——等你传来好消息！”
+
+#### 23. Pessimistic  
+I'm in a job interview, unsure if this opportunity is meant for me.  
+我正在参加工作面试，不确定这个机会是否属于我。
+
+Doubts and insecurities linger, but I am still giving it my best shot. If it doesn’t go my way, at least I tried.
+
+**Dialogue:**  
+"Just doing your best is already a big achievement."  
+“尽力了就已经很棒了。”
+
+#### 24. Encouraging  
+I'm in a job interview, ready to show my best—you can do this too!  
+我正在参加工作面试，准备展现最好的一面——你也可以做到！
+
+If you’re nervous about an interview too, remember that preparation and belief in yourself are key. Let’s encourage each other!
+
+**Dialogue:**  
+"We’re both cheering each other on—let’s achieve our goals!"  
+“我们互相鼓励——一起实现目标！”
 
 ---
 
-### 4. Summary Table: Central Output Example  
-| Style         | Example (English / 中文)                               |
-|---------------|-------------------------------------------------------|
-| Formal        | I am currently in a job interview. <br>我当前正在参加面试。              |
-| Semi-Formal   | I’m in a job interview right now. <br>我现在正在面试。                  |
-| Conversational| Oh, I’m in a job interview at the moment! <br>哦，我现在正在面试！        |
-| Casual        | Hey, I’m just in a job interview right now. <br>嘿，我现在正面试呢。    |
-| Polite        | Thank you, I am presently in a job interview. <br>感谢您，我正在面试。   |
-| Humorous      | If I ace this job interview, coffee’s on me! <br>要是我面试成功，咖啡算我的！ |
-| Emojify       | I’m in a job interview now! 🤞💼 <br>我正在面试！🤞💼                     |
-| Social        | I’m in a job interview and excited to connect with the team. <br>我正在面试，期待和团队建立联系。 |
-| Promotional   | I’m in a job interview, ready to prove my track record. <br>我正在参加面试，准备证明我的业绩。  |
+### Ten Closely Relevant Words for Each Grammatical Category
+
+Below is a MECE-organized table of 10 words per category, each with an English explanation, English example sentence, Chinese explanation, and Chinese example.
+
+| Type | Word | English Explanation & Example | 中文解释与例句 |
+|------|------|-------------------------------|---------------|
+| **Nouns** | interview | Formal job assessment. The interview went well. | 面试：面试很顺利。 |
+| | candidate | Job applicant. Each candidate is unique. | 候选人：每个候选人都很独特。 |
+| | resume | Document of experience. Please submit your resume. | 简历：请提交你的简历。 |
+| | panel | Group of interviewers. The panel asked many questions. | 小组：小组问了很多问题。 |
+| | qualification | Eligibility evidence. She showed her qualifications. | 资质：她出示了自己的资质。 |
+| | recruiter | Person hiring. The recruiter sent an email. | 招聘人员：招聘人员发了邮件。 |
+| | assessment | Evaluation. The assessment lasted an hour. | 评估：评估持续了一小时。 |
+| | offer | Formal invitation. She received an offer. | 通知：她收到了录用通知。 |
+| | reference | Recommendation provider. Provide two references. | 推荐人：请提供两位推荐人。 |
+| | vacancy | Open position. There’s a vacancy in IT. | 空缺：IT部门有空缺。 |
+| **Verbs** | apply | Seek a job. I applied yesterday. | 申请：我昨天申请了。 |
+| | prepare | Get ready. She prepared carefully. | 准备：她准备得很充分。 |
+| | attend | Be present. He will attend tomorrow. | 参加：他明天会参加。 |
+| | answer | Respond. Please answer this. | 回答：请回答这个。 |
+| | impress | Make a mark. Try to impress. | 留下印象：尽量留下好印象。 |
+| | discuss | Talk about. We discussed salary. | 讨论：我们讨论了薪资。 |
+| | negotiate | Reach agreement. She negotiated benefits. | 协商：她协商了福利。 |
+| | evaluate | Make a judgment. They evaluated skills. | 评估：他们评估了技能。 |
+| | follow up | Contact later. Follow up after. | 跟进：之后要跟进。 |
+| | demonstrate | Show ability. Demonstrate your skills. | 展示：展示你的技能。 |
+| **Adjectives** | confident | Self-assured. He was confident. | 自信：他很自信。 |
+| | professional | Businesslike. Stay professional. | 专业：保持专业。 |
+| | qualified | Meets requirements. She is qualified. | 合格：她很合格。 |
+| | nervous | Anxious. Feeling nervous. | 紧张：感到紧张。 |
+| | prepared | Ready. He is well prepared. | 准备充分：他准备充分。 |
+| | articulate | Expressive. She is articulate. | 表达清晰：她表达清晰。 |
+| | flexible | Adaptable. Be flexible. | 灵活：要灵活。 |
+| | polite | Courteous. Stay polite. | 礼貌：保持礼貌。 |
+| | reliable | Trustworthy. He is reliable. | 可靠：他很可靠。 |
+| | enthusiastic | Eager. She’s enthusiastic. | 热情：她很热情。 |
+| **Adverbs** | clearly | Easy to understand. Speak clearly. | 清楚地：说清楚。 |
+| | confidently | With confidence. Answer confidently. | 自信地：自信回答。 |
+| | promptly | Without delay. Reply promptly. | 及时地：及时回复。 |
+| | politely | With manners. Ask politely. | 有礼貌地：有礼貌地问。 |
+| | thoroughly | Completely. Prepare thoroughly. | 彻底地：彻底准备。 |
+| | briefly | In few words. Explain briefly. | 简要地：简要解释。 |
+| | honestly | With truth. Speak honestly. | 诚实地：诚实发言。 |
+| | attentively | With focus. Listen attentively. | 专心地：专心听。 |
+| | professionally | Behave with decorum. Dress professionally. | 专业地：着装专业。 |
+| | nervously | With tension. She smiled nervously. | 紧张地：她紧张地笑。 |
+| **Prepositions** | during | Time period. During lunch, call me. | 在……期间：午餐时联系我。 |
+| | after | Next in time. After work, I'll rest. | 在……之后：下班后休息。 |
+| | with | Together. Work with the team. | 与……一起：和团队一起工作。 |
+| | for | Intended to. Prepare for the test. | 为了：为考试做准备。 |
+| | at | Specific time/place. At the office. | 在：在办公室。 |
+| | between | Separating two. Between you and me. | 在……之间：你我之间。 |
+| | on | Related to. Focus on skills. | 关于：关注技能。 |
+| | in | Within. In the interview. | 在……中：在面试中。 |
+| | by | Before deadline. Finish by 5pm. | 在……之前：五点前完成。 |
+| | about | Regarding. Speak about goals. | 关于：谈目标。 |
+| **Conjunctions** | and | Adds info. Clear and concise. | 和：清楚和简洁。 |
+| | or | Offers options. Phone or email. | 或：电话或邮件。 |
+| | but | Contrasts. Smart, but shy. | 但：聪明但害羞。 |
+| | because | Gives reason. Left because tired. | 因为：因为累所以离开。 |
+| | so | Effect/result. Worked, so succeeded. | 所以：努力所以成功。 |
+| | although | Makes concession. Although nervous, tried. | 虽然：虽然紧张，还是试了。 |
+| | while | At same time. While working. | 同时：工作时。 |
+| | yet | Contrasts. Small, yet strong. | 但却：小但却很强。 |
+| | since | Explains cause. Since raining, stay. | 因为：因为下雨，留下来。 |
+| | if | Sets condition. If ready, go. | 如果：如果准备好就去。 |
+| **Particles** | up | Completed action. Follow up later. | 跟进：之后跟进。 |
+| | just | Only/recently. Just finished. | 刚刚：刚刚完成。 |
+| | well | Start/continue idea. Well, let’s begin. | 嗯：嗯，我们开始吧。 |
+| | out | Finished. Fill out a form. | 填完：填完表格。 |
+| | now | Immediacy. Now, your turn. | 现在：现在到你了。 |
+| | even | Emphasis. Even experts err. | 连：连专家也错。 |
+| | so | Transition. So, we proceed. | 那么：那么继续。 |
+| | off | Ended/switch. The meeting’s off. | 结束：会议结束了。 |
+| | on | Continue. Carry on. | 继续：继续前进。 |
+| | down | Record. Write down ID. | 写下：写下号码。 |
+| **Pronouns** | I | Self. I am ready. | 我：我准备好了。 |
+| | you | Listener. You passed. | 你：你通过了。 |
+| | he | Male third. He is late. | 他：他迟到了。 |
+| | she | Female third. She arrived early. | 她：她早到了。 |
+| | we | Group incl. self. We start now. | 我们：我们现在开始。 |
+| | they | Others. They called me. | 他们：他们给我打电话。 |
+| | it | Neutral subject. It is cold. | 它/这：天气冷。 |
+| | my | Self’s possession. My answer. | 我的：我的答案。 |
+| | your | Listener’s possession. Your resume. | 你的：你的简历。 |
+| | their | Their. Their results. | 他们的：他们的结果。 |
+| **Numerals** | one | 1. One question left. | 一：还剩一个问题。 |
+| | two | 2. Two days off. | 二：休息两天。 |
+| | three | 3. Three offers. | 三：三份录用。 |
+| | four | 4. Four tasks done. | 四：完成了四项任务。 |
+| | five | 5. Five rounds. | 五：五轮面试。 |
+| | ten | 10. Ten resumes sent. | 十：发了十份简历。 |
+| | first | Order #1. First interview. | 第一：第一次面试。 |
+| | second | Order #2. Second chance. | 第二：第二次机会。 |
+| | few | Some, not many. Few passed. | 少数：通过的很少。 |
+| | many | A large number. Many tried. | 许多：许多人尝试了。 |
+| **Measure Words** | piece | Single item. A piece of advice. | 一条：一条建议。 |
+| | pair | Two together. A pair of shoes. | 一双：一双鞋。 |
+| | cup | Beverage amount. A cup of tea. | 一杯：一杯茶。 |
+| | bottle | Container. A bottle of water. | 一瓶：一瓶水。 |
+| | pack | Grouped unit. A pack of papers. | 一包：一包文件。 |
+| | dozen | Twelve units. A dozen eggs. | 一打：一打鸡蛋。 |
+| | slice | Thin segment. A slice of bread. | 一片：一片面包。 |
+| | set | Collection. A set of tools. | 一套：一套工具。 |
+| | sheet | Flat paper. A sheet of paper. | 一张：一张纸。 |
+| | entry | List record. An entry in a log. | 一条：一条记录。 |
+| **Determiners** | the | Specific. The answer is right. | 这/那：答案是对的。 |
+| | a | Any/single. A solution exists. | 一个：有一个办法。 |
+| | my | Self’s thing. My experience. | 我的：我的经验。 |
+| | your | Listener’s thing. Your skills. | 你的：你的技能。 |
+| | this | Near/now. This job. | 这个：这个工作。 |
+| | that | Far/past. That offer. | 那个：那个录用。 |
+| | some | Portion. Some questions. | 一些：一些问题。 |
+| | every | All. Every candidate. | 每个：每个候选人。 |
+| | several | A few. Several interviews. | 几个：几个面试。 |
+| | no | Negation/none. No mistakes. | 没有：没有错误。 |
+| **Interjections** | Oh! | Surprise. Oh! I see. | 哦！我明白了。 |
+| | Hmm | Thinking. Hmm, maybe. | 嗯，也许吧。 |
+| | Wow! | Impress. Wow! Great! | 哇！太棒了！ |
+| | Ah! | Realization. Ah, that’s why! | 啊，原来如此！ |
+| | Oops! | Minor error. Oops! Forgot! | 哎呀，忘记了！ |
+| | Hey! | Attention. Hey, over here! | 嘿，这里！ |
+| | Uh-oh! | Problem. Uh-oh, mistake! | 哎呀，出错了！ |
+| | Yay! | Cheer. Yay, passed! | 耶，通过了！ |
+| | alas! | Regret. Alas, failed! | 唉，失败了！ |
+| | Eh? | Uncertainty. Eh? Again? | 咦？再说一遍？ |
 
 ---
 
-### 5. Conclusion  
-This bilingual, MECE-compliant report provides clear, logically organized, and linguistically accurate outputs for “I’m in a job interview.” All requirements concerning style, grammar, categorization, alternative expressions, simulated dialogues, vocabulary, and bilingual presentation are satisfied, offering a comprehensive reference for effective job interview communication in both English and Chinese.
+This comprehensive report ensures correct spelling, grammar, and logical organization for all outputs, providing a robust multilingual reference for job interview contexts, fully aligned with MECE standards and best language practices.
 
 Bibliography
-A. Bangerter, Franciska Krings, Marion Petetin, & S. Blatti. (2008). Les représentations de l’entretien structuré chez les recruteurs. In Psychologie Du Travail Et Des Organisations. https://linkinghub.elsevier.com/retrieve/pii/S1420253016302059
+A. Margulis. (2011). Doing Well in a Job Interview. https://link.springer.com/chapter/10.1007/978-1-4419-7503-4_7
 
-A. Durou. (2016). Les emplois non locatifs de WHERE et WHEN : éléments de réflexion. https://www.semanticscholar.org/paper/bb6c16c46aa79f8974b57ce118d390afb6ceefaf
+A Valenti, M Chita-Tegmark, T Law, & A Bock. (2019). When your face and tone of voice don’t say it all: Inferring emotional state from word semantics and conversational topics. https://hrilab.tufts.edu/publications/valenti19aamasws.pdf
 
-A. Houghton. (2003). Getting that job: Preparing for interview. In BMJ. https://www.semanticscholar.org/paper/a1e1692ad7bc49b3d95fe2e52a69360329a03f50
+AH Gervasio & M Crawford. (1989). Social evaluations of assertiveness: A critique and speech act reformulation. In Psychology of Women Quarterly. https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1471-6402.1989.tb00982.x
 
-A. Sayburn. (2018). Hot topics for interviews. In BMJ. https://www.semanticscholar.org/paper/f0211b8074069ffcf96f661792ca8d65f3a2f340
+C Roberts. (2012). Translating global experience into global models of competency: Linguistic inequalities in the job interview. In Diversities. https://kclpure.kcl.ac.uk/portal/en/publications/translating-global-experience-into-global-models-of-competency-li
 
-Callista Sainsbury. (1994). Book Review: How to have a Winning Job Interview. In Australian Journal of Career Development. https://journals.sagepub.com/doi/10.1177/103841629400300224
-
-Chris Stanford. (2007). Job interviews: a two‐way street. In In Practice. https://bvajournals.onlinelibrary.wiley.com/doi/10.1136/inpract.29.3.173
-
-CJ Lai & LY Chang. (2023). The effects of students’ employment of translation principles and techniques on English-Chinese sight translation performance: An eye-tracking and interview …. In Social Sciences & Humanities Open. https://www.sciencedirect.com/science/article/pii/S259029112300147X
-
-CM Speas. (1979). Job-seeking interview skills training: A comparison of four instructional techniques. In Journal of Counseling Psychology. https://psycnet.apa.org/record/1979-34439-001
-
-CN Li & SA Thompson. (1979). Third-person pronouns and zero-anaphora in Chinese discourse. In Syntax and semantics. https://brill.com/downloadpdf/display/book/edcoll/9789004368897/BP000014.pdf
-
-D. Fuhrmann. (2016). Sample Chief Accountant Job Interview Questions Answers. https://www.semanticscholar.org/paper/7f9d15cbb631cebeec023eb079e9c26cd8029c39
-
-D. Haseltine & James Gould. (2013). Job-search basics: a scientific approach to interviewing. In Nature Immunology. https://www.nature.com/articles/ni.2748
-
-D Holtrop, JK Oostrom, & WRJ van Breda. (2022). Exploring the application of a text-to-personality technique in job interviews. https://www.tandfonline.com/doi/abs/10.1080/1359432X.2022.2051484
-
-DJ Puchala. (1975). Domestic politics and regional harmonization in the European Communities. In World Politics. https://www.cambridge.org/core/journals/world-politics/article/domestic-politics-and-regional-harmonization-in-the-european-communities/5137A16D2F44494F34871FA7C9B0C254
-
-DL Paulhus, BG Westlake, & SS Calvez. (2013). Self‐presentation style in job interviews: The role of personality and culture. https://onlinelibrary.wiley.com/doi/abs/10.1111/jasp.12157
-
-Dong & Hong-yu. (2015). How to Win a Job Interview. https://www.semanticscholar.org/paper/d60d3d57e54ab202dbce27eb1f745cd14e145bd4
-
-Doris Brenner. (2020). Ziel von Bewerberinterviews. https://link.springer.com/chapter/10.1007/978-3-658-31088-2_3
-
-DW Engstrom, LM Piedra, & JW Min. (2009). Bilingual social workers: Language and service complexities. In Administration in Social Work. https://www.tandfonline.com/doi/abs/10.1080/03643100902768832
-
-Dwi Angga Septianingrum. (2016). Conjunction in Compound Sentences of Essay by 10th Grade of Vocational High School (Multiple-site Case Study). https://www.semanticscholar.org/paper/e958e012288b068f2f0a0e6d607ce0c7c283b733
+Colin I S G Lee, Will Felps, & Piers Steel. (2017). Who gets the Job Interview. https://journals.aom.org/doi/10.5465/AMBPP.2017.17187abstract
 
 E. Neill. (2016). Job interview dos and don’ts. https://www.semanticscholar.org/paper/59ff676945aed39a74463725d3622212f70f2f97
 
-E. Schwager. (1990). Medical English Usage And Abusage. http://choicereviews.org/login
-
 E. Wilson. (2018). 7 stages of a job interview. https://www.semanticscholar.org/paper/4342d34f370d25980281585fa56848888114bdea
 
-F. Drake. (1946). Types of interviews. https://content.apa.org/books/11637-002
-
-F Katamba. (2015). English words: Structure, history, usage. https://www.taylorfrancis.com/books/mono/10.4324/9780203495971/english-words-francis-katamba
-
-Fetty Poerwita Sary. (2016). Siapkah Mahasiswa Kelas Internasional Menulis Tugas Akhir Berbahasa Inggris. https://www.semanticscholar.org/paper/e3b215fc4d106d8abbc367cb26e58903e0641c31
-
-Gary Hudson & Sarah Rowlands. (2018). The Interview. In The Broadcast Journalism Handbook. https://www.semanticscholar.org/paper/0ee3c8e6b998371bf4b3bbcc3983f2071194c9bf
-
-George R. Marshall & C. N. Cofer. (1970). SINGLE-WORD FREE-ASSOCIATION NORMS FOR 328 RESPONSES FROM THE CONNECTICUT CULTURAL NORMS FOR VERBAL ITEMS IN CATEGORIES. https://linkinghub.elsevier.com/retrieve/pii/B9780125630504500108
-
-H Chen & H Liu. (2016). How to measure word length in spoken and written Chinese. In Journal of Quantitative Linguistics. https://www.tandfonline.com/doi/abs/10.1080/09296174.2015.1071147
-
-He An-fang. (2008). A Study of the Point of View and Shift of Personal Pronouns in English Writing. In Journal of Chongqing University of Arts and Sciences. https://www.semanticscholar.org/paper/ef0e66473ad890174b65ec34b7008305be6019fb
-
-I. Krishnan, Muthukumaran Kanasan, Nirmala Devi Tailan, Pauline Georgina Priya Hebert Sundram, & Kiret Kaur. (2022). Reviews on the Job Interview Approaches in Malaysia Context. In Malaysian Journal of Social Sciences and Humanities (MJSSH). https://www.semanticscholar.org/paper/193bb28a9867db8292a3e0901ce4ee1077297f07
+Europasian Journals. (2020). Grammar and Spelling Checker. In Europasian Journal of Medical Sciences. https://www.europasianjournals.org/ejms/index.php/ejms/search
 
 I Naim, MI Tanveer, & D Gildea. (2015). Automated prediction and analysis of job interview performance: The role of what you say and how you say it. https://ieeexplore.ieee.org/abstract/document/7163127/
 
-IA Krishnan & M Maniam. (2021). A Syntactical Analysis of Fresh Graduates’ Job Interview Responses. https://pdfs.semanticscholar.org/f264/a4f014f0c5aa2a91fc08739f1492a9c8f523.pdf
+I Naim, MI Tanveer, & D Gildea. (2016). Automated analysis and prediction of job interview performance. https://ieeexplore.ieee.org/abstract/document/7579163/
 
-J. Bartholdi & Kevin L. McCroan. (1991). Scheduling Interviews for a Job Fair. In Oper. Res. https://pubsonline.informs.org/doi/10.1287/opre.38.6.951
+IA Krishnan, M Maniam, & MBM Mokhtar. (2024). An appraisal analysis of the performance of Malaysian fresh graduates in a job interview. In SAGE Open. https://journals.sagepub.com/doi/abs/10.1177/21582440231214893
 
-J. Lines. (1997). 30 minutes-- before your job interview. https://www.semanticscholar.org/paper/5c8fe6dee6c343222c544723613fb25c2d8eca50
+J. G. Hollandsworth, R. Kazelskis, J. Stevens, & M. Dressel. (1979). Relative Contributions of Verbal, Articulative, and Nonverbal Communication to Employment Decisions in the Job Interview Setting. In Personnel Psychology. https://onlinelibrary.wiley.com/doi/10.1111/j.1744-6570.1979.tb02140.x
 
-JDU Geldenhuys. (1978). Categories of English. In English Usage in Southern Africa. https://unisapressjournals.co.za/index.php/EUSA/article/download/5421/3259
+J Scheuer. (2001). Recontextualization and communicative styles in job interviews. In Discourse studies. https://journals.sagepub.com/doi/abs/10.1177/1461445601003002004
 
-Jelena Mirkovic, S. Forrest, & M. Gaskell. (2011). Semantic Regularities in Grammatical Categories: Learning Grammatical Gender in an Artificial Language. In Cognitive Science. https://www.semanticscholar.org/paper/3c90f55660092d0bc3ffc3b4e141c14fa32bd3c6
+JS Vedeler. (2024). How is disability addressed in a job interview? In Disability & society. https://www.tandfonline.com/doi/abs/10.1080/09687599.2022.2162860
 
-Julie Brosy, Adrian Bangerter, & E. Mayor. (2016). Disfluent Responses to Job Interview Questions and What They Entail. In Discourse Processes. https://www.tandfonline.com/doi/full/10.1080/0163853X.2016.1150769
+K. Barber & Robert Pontisso. (2006). Canadian A-Z of grammar, spelling, & punctuation. https://www.semanticscholar.org/paper/65e092e665cdaa1cfffda45cb26e91aaa59868dd
 
-Karen L. Weihs & James T. Chapados. (1986). Interviewing skills training--a study. In Social science & medicine. https://linkinghub.elsevier.com/retrieve/pii/0277953686903217
+Karen Lee & Jane Whitmore. (2010). Getting your first job: the interview. In The British Journal of Midwifery. https://www.magonlinelibrary.com/doi/10.12968/bjom.2010.18.7.48789
 
-KG Melchers, D Bösser, & T Hartstein. (2012). Assessment of situational demands in a selection interview: Reflective style or sensitivity? https://onlinelibrary.wiley.com/doi/abs/10.1111/ijsa.12010
+LS Nguyen & D Gatica-Perez. (2015). I would hire you in a minute: Thin slices of nonverbal behavior in job interviews. https://dl.acm.org/doi/abs/10.1145/2818346.2820760
 
-L. Borbye. (2008). Professional conduct during the job application process. https://linkinghub.elsevier.com/retrieve/pii/B9780123738691500042
+Lynn Westbrook. (2007). Chat reference communication patterns and implications: applying politeness theory. In J. Documentation. https://www.semanticscholar.org/paper/7ddbfad67ae28e40a54902f1c877d387f5f490c0
 
-L Chen, R Zhao, CW Leong, & B Lehman. (2017). Automated video interview judgment on a large-sized corpus collected online. https://ieeexplore.ieee.org/abstract/document/8273646/
+M. Edis. (1989). Key skills for the interviewer. In Nursing times. https://link.springer.com/chapter/10.1007/978-1-349-12095-6_23
 
-L. Figueredo & C. Varnhagen. (2006). Spelling and grammar checkers: are they intrusive? In Br. J. Educ. Technol. https://onlinelibrary.wiley.com/doi/10.1111/j.1467-8535.2006.00562.x
+M Junus, M Sarosa, M Fatnuriyah, MU Hoesny, & Z Sari. (2014). Interviewer BOT Design to Help Student Learning English for Job Interview. In IC-ITECHS. https://jurnal.stiki.ac.id/IC-ITECHS/article/view/349
 
-Liang Chun-nin. (2011). Simple Analysis of Common Pronunciation Mistakes in English Learning. In Journal of Changchun University of Science and Technology. https://www.semanticscholar.org/paper/e018e52e0bf1d86c0cca149216a29090163a11be
+M Sieverding. (2009). “Be Cool!”: Emotional costs of hiding feelings in a job interview. https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-2389.2009.00481.x
 
-Liu Dan-ton. (2010). On Translation of the Chinese Numerals into English. https://www.semanticscholar.org/paper/8706f96515a1e09d87746b0022dbca9753d3cf2e
+Naniek Risnawati. (2023). Job Interview Ethics. In INTERNATIONAL CONFERENCE ON DIGITAL ADVANCE TOURISM, MANAGEMENT AND TECHNOLOGY. https://www.semanticscholar.org/paper/8d959e10ef252d18a416f6ae7f5f3cc6d32c4268
 
-M Meçe. (2015). Accessible Justice System For All: The Case of The Roma Minority in Albania. https://www.files.ethz.ch/isn/189031/ECMI_Working_Paper_84.pdf
+P Suraprajit. (2020). Job interview: An analysis of communication strategies used by Thai prospective employees. In Theory and Practice in Language Studies. https://www.researchgate.net/profile/Prathomwat-Suraprajit/publication/344031175_Job_Interview_An_Analysis_of_Communication_Strategies_Used_by_Thai_Prospective_Employees/links/61efd4155779d35951d2ea24/Job-Interview-An-Analysis-of-Communication-Strategies-Used-by-Thai-Prospective-Employees.pdf
 
-M Misra & ML Miller. (2022). Marine conservation tourism and the Giant Pacific Octopus: A SWOT analysis of two public engagement programs and the viability of a hybrid program at the Seattle …. In Regional Studies in Marine Science. https://www.sciencedirect.com/science/article/pii/S2352485522000378
+Pontus Wärnestål, Lars Degerstedt, & Arne Jönsson. (2007). Interview and Delivery: Dialogue Strategies for Conversational Recommender Systems. In Nordic Conference of Computational Linguistics. https://www.semanticscholar.org/paper/d4db12405ffebfa94f9c0480ea2995c1485f55d4
 
-M. Nicole. (2019). From Good to Great. https://onlinelibrary.wiley.com/doi/10.1002/9781119260325.ch6
+R. Haller. (2005). Zur Qualität der Interviews. https://link.springer.com/chapter/10.1007/978-3-322-80738-0_18
 
-MA Campion, DK Palmer, & JE Campion. (1997). A review of structure in the selection interview. In Personnel psychology. https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1744-6570.1997.tb00709.x
+R. Ribes, P. Iannarelli, & Rafael F Duarte. (2009). Getting Ready for a Job Interview in English. https://link.springer.com/chapter/10.1007/978-3-540-77127-2_10
 
-Martin Brust. (2021). Im Vorstellungsgespräch ehrlich und glaubwürdig rüberkommen. In agrarzeitung. https://www.semanticscholar.org/paper/62310a06c63130bcc372965c40837860c9ef2f3a
+R. Zepp, J. Monin, & C. Lei. (1987). Common logical errors in English and Chinese. In Educational Studies in Mathematics. https://link.springer.com/article/10.1007/BF00367911
 
-MD Bell & A Weinstein. (2011). Simulated job interview skill training for people with psychiatric disability: feasibility and tolerability of virtual reality training. In Schizophrenia bulletin. https://academic.oup.com/schizophreniabulletin/article-abstract/37/suppl_2/S91/1871049
+RA Posthuma & FP Morgeson. (2002). Beyond employment interview validity: A comprehensive narrative review of recent research and trends over time. https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1744-6570.2002.tb00103.x
 
-MR King & GJ Manaster. (1977). Body image, self-esteem, expectations, self-assessments, and actual success in a simulated job interview. In Journal of Applied Psychology. https://psycnet.apa.org/record/1978-13364-001
+SK Nambiar, R Das, & S Rasipuram. (2017). Automatic generation of actionable feedback towards improving social competency in job interviews. https://dl.acm.org/doi/abs/10.1145/3139513.3139515
 
-MVN Corcuera, RJ Donaire, RV Mendillo, & L Vea. (n.d.). Analyzing Lexical and Prosodic Features of Bilingual Job Interviews in Evaluating Interview Performance. https://ieomsociety.org/proceedings/2022rome/56.pdf
-
-N. Greenbaum, G. Leech, Jan Svartvik, & R. Huddleston. (2016). A comprehensive grammar of the English language. By RANDOLPH QUIRK, SID-. https://www.semanticscholar.org/paper/754e00f028d4921044a34e3fc32b40dada1140da
-
-Nao Takeuchi & Tomoko Koda. (2021). Job Interview Training System using Multimodal Behavior Analysis. In 2021 9th International Conference on Affective Computing and Intelligent Interaction Workshops and Demos (ACIIW). https://ieeexplore.ieee.org/document/9666270/
-
-OS Her. (2016). Structure of numerals and classifiers in Chinese. https://www.academia.edu/download/105266488/lali.18.1.02her.pdf
-
-Phillip J. Glenn. (2010). Interviewer laughs: Shared laughter and asymmetries in employment interviews. In Journal of Pragmatics. https://linkinghub.elsevier.com/retrieve/pii/S0378216610000226
-
-R. Huddleston. (1988). English grammar: Nouns and noun phrases. https://www.cambridge.org/core/books/abs/english-grammar/nouns-and-noun-phrases/974242594DE55C29CF74B98F211A94AC
-
-Reiko Fujikawa. (2013). Common Errors Made by Japanese Students of EnglishErrors in Articles and Singular and Plural Nouns. https://www.semanticscholar.org/paper/0d4a24bb1e35052e9fa7803e22c1028d59bdf939
-
-S. Burnett. (2002). How to perform well at interview. In BMJ. https://www.semanticscholar.org/paper/2099cdc4996dcbeabde23ab956658c6be416ec9e
-
-S Choi. (2014). … job interview communication in business English as a lingua franca (BELF) contexts: a corpus-based comparative study of multicultural job interview communications …. https://etheses.bham.ac.uk/id/eprint/5328/
-
-S Greenbaum. (1996). English grammar. https://www.academia.edu/download/56103730/The_Oxford_English_Grammar.pdf
-
-SR Parton, SA Siltanen, & LA Hosman. (2002). Employment interview outcomes and speech style effects. https://journals.sagepub.com/doi/abs/10.1177/02627x02021002003
-
-Steve D. Ugbah & Stevina U. Evuleocha. (1992). The Importance of Written, Verbal, and Nonverbal Communication Factors in Employment Interview Decisions. In Journal of Employment Counseling. https://onlinelibrary.wiley.com/doi/10.1002/j.2161-1920.1992.tb00165.x
-
-Sukumar. (2006). How to Handle Interview. In Social Science Research Network. https://www.semanticscholar.org/paper/aba1f9570f95d5d4032e201627b3a9a8b02dec73
-
-T. DeGroot & Janaki Gooty. (2009). Can Nonverbal Cues be Used to Make Meaningful Personality Attributions in Employment Interviews? In Journal of Business and Psychology. https://link.springer.com/article/10.1007/s10869-009-9098-0
-
-Tri Yulia Nurhalimah. (2018). Adverbial Cara dan Adverbial Sarana dala. https://doi.org/10.26499/metalingua.v14i2.202
-
-TW Dougherty & DB Turban. (1994). Confirming first impressions in the employment interview: A field study of interviewer behavior. https://psycnet.apa.org/fulltext/1995-07716-001.html
+Stuart James. (2008). Good Word Guide: The Fast Way to Correct English – Spelling, Punctuation, Grammar and Usage (6th edition). https://www.semanticscholar.org/paper/76386d4105f5bf892ddfba7a2b5ba403944883d1
 
 Understanding the Purpose of a Job Interview. (2012). https://www.semanticscholar.org/paper/c0fa3fe76437127eede5e3074494b3118cc87f2a
 
-Vanina Sumrova. (2023). Common Gender Nouns in Nayden Gerov’s Dictionary. In Journal of Bulgarian Language. https://www.semanticscholar.org/paper/e29b63b0051dba3a7778c6334df4c4fb083086db
+V. Matousek & I. Kopecek. (2005). Formal Model of a Dialogue. https://www.semanticscholar.org/paper/f9870cbe88a467704aee20ca590c6237edb1de09
 
-Wang Xiaoyan. (2013). A Study of Speech Characteristics of Conversation in Job Interview from the Perspective of Interpersonal Metafunction Theory. In Journal of Chongqing University of Technology. https://www.semanticscholar.org/paper/ba6d82377f0889924227884849a4b7117122184e
+X Wu & Y Wu. (2022). From spelling to grammar: A new framework for chinese grammatical error correction. In arXiv. https://arxiv.org/abs/2211.01625
 
-Yvonne Dooley. (2018). Guides: MGMT 4300: Recruitment, Selection and Placement: Interviewing. https://www.semanticscholar.org/paper/a82677bff4ef19e36aa6e8f4f72912699bbe8973
-
-Zhang Yan. (2003). Merging and Simplification of Chinese Measure Words. In Journal of Shandong University. https://www.semanticscholar.org/paper/a1587334d0532f000145d12503f38d86249a2b24
+Y Jiang, T Wang, T Lin, & F Wang. (2012). A rule based Chinese spelling and grammar detection system utility. https://ieeexplore.ieee.org/abstract/document/6257223/
 
 Zimmermann Pg. (1997). Job interviews: tips and techniques. In Accident and emergency nursing. https://linkinghub.elsevier.com/retrieve/pii/S0965230297900278
 
-บุษรา อวนศรี. (2014). แบบเรียนภาษาไทยเพื่อการสัมภาษณ์งานเบื้องต้นสำหรับผู้เรียนชาวต่างประเทศ TEXTBOOK OF THAI LANGUAGE ON BASIC JOB INTERVIEW FOR FOREIGN LEARNER. https://www.semanticscholar.org/paper/4ff707a208b1e9c7c65b1aa5cd37040da2d43a9e
+Л. Ван. (2024). The variability of the forms of responses in a conversational dialogue. In Modern scientist. https://www.semanticscholar.org/paper/a2d1cbeec8184c35c91d4249c4e78e8a506f7782
 
-佳恂 洪. (2024). A Study on the Multifunctional Use of the Word “Gè” in Chaoshan Dialect. In Modern Linguistics. https://www.hanspub.org/journal/doi.aspx?DOI=10.12677/ml.2024.12121194
-
-前田 大輔. (2006). プロカウンセラーの心理の達人マニュアル : TA(交流分析)応用心理学と現代催眠(NLP)によるコミュニケーションの極意. https://www.semanticscholar.org/paper/de3b7f1b9b0606c73e7d5a484e152850558f2127
-
-卫兴华. (2013). 共同富裕是中国特色社会主义的根本原则——访著名经济学家、中国人民大学经济学院卫兴华教授. https://www.semanticscholar.org/paper/9dcea7f73859cf4d31e6cf986cd7850988512b45
-
-李广义 & 田凤俊. (1993). “a(an)+单位词+of+名词”结构范例. https://www.semanticscholar.org/paper/f176fdfd451d29c67dec443657091979f5bf2a42
-
-李灵红 & 徐亚芬. (2008). “臭豆腐”变成“香豆腐.” https://www.semanticscholar.org/paper/7b00135303e21e2efba325b86c5a9a0c24c85075
+石井 隆之. (2008). あなたの魅力を伝える面接の英語 = English for your successful job interviews which makes you more attractive. https://www.semanticscholar.org/paper/535072ddffe8fd4b3b97a875f908bf78ad45d392
 
 
 
 Generated by Liner
-https://getliner.com/search/s/5926611/t/85849735
+https://getliner.com/search/s/5926611/t/85871197
