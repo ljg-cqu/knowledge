@@ -1,1124 +1,1207 @@
-'Rust Programming Language'. Requirements: 1. Ensure MECE compliance. 2. Group related ideas into clear, logical sections using a structured, hierarchical format to avoid lengthy paragraphs. 3. Use numbered lists for clarity when suitable. 4. All answers/outputs must be provided in both English and Chinese, with the English sentence appearing first, followed by the corresponding Chinese sentence. 5. Correct spelling and grammar. 6. List the core alternative words or phrases. 7. Rewrite in the following 9 tones: formality (formal, conversational，polite), emotional (humorous, encouraging，romantic), functional (analogical, emojify， promotional). 8. Expand content into concise paragraphs within 150 words for each of the 9 aforementioned tones. 9. Provide one concise response to the content (simulating dialogue) for each of the 9 aforementioned tones. 10. Write a related philosophical story within 300 words. 11. List 20 closely relevant words for each of the following word categories: nouns, verbs. 12. List 10 closely relevant words for each of the following word categories: adjectives, adverbs, prepositions, conjunctions, particles, pronouns, numerals, measure words, determiners, and interjections. Provide concise explanations and corresponding usage examples for each word.
+'Rust Programming Language'. Requirements: 1. Ensure MECE compliance. 2. Group related ideas into clear, logical sections using a structured, hierarchical format to avoid lengthy paragraphs. 3. Use numbered lists for clarity when suitable. 4. Correct spelling and grammar. 5. List the core alternative words or phrases. 6. Rewrite in the following 9 tones: formality (formal, conversational，polite), emotional (humorous, encouraging，romantic), functional (analogical, emojify， promotional). 7. Expand content into concise paragraphs within 150 words for each of the 9 aforementioned tones. 8. Provide one concise response to the content (simulating dialogue) for each of the 9 aforementioned tones. 9. Write a related philosophical story within 300 words. 10. Separately list 50 closely relevant words for each of nouns, verbs, and prepositions. 11. Separately list 30 closely relevant words for each of adjectives, adverbs, and conjunctions. 12. Separately list 10 closely relevant words for each of particles, pronouns, numerals, measure words, determiners, and interjections. 13. Provide concise explanations and usage examples for each word listed. 14. Append terminologies, formulas, and analogies at the end, each with a concise description.
 
-Wed Jun 25 2025
+Thu Jun 26 2025
 
 ### The Rust Programming Language: A Comprehensive Report
 
-### 1. Introduction to Rust Programming Language
+### Introduction to Rust
+Rust is a general-purpose programming language that emphasizes performance, type safety, and concurrency. It is known for enforcing memory safety without employing a conventional garbage collector. Instead, Rust prevents memory safety errors and data races through its "borrow checker," which tracks the object lifetime of references during compile time. The language aims to provide a safe, concurrent, and high-performance programming experience. Rust is a modern systems programming language focusing on safety, speed, and concurrency.
 
-Rust is a modern, general-purpose programming language that emphasizes performance, type safety, and concurrency. It is designed to help developers write faster and more reliable software. Rust challenges the traditional trade-off between high-level ergonomics and low-level control, allowing developers to manage low-level details like memory usage without the typical complexities. Rust achieves memory safety by ensuring all references point to valid memory, preventing issues such as memory safety errors and data races, without relying on a conventional garbage collector. Instead, it uses a "borrow checker" that tracks the object lifetime of references at compile time.
+### Fundamental Concepts
+Rust's design centers on several core concepts that collectively ensure its safety and performance guarantees. These concepts include a unique ownership model, strict borrowing rules, and the management of lifetimes, alongside a powerful static type system.
 
-Rust supports multiple programming paradigms and has been influenced by functional programming concepts such as immutability, higher-order functions, algebraic data types, and pattern matching. It also incorporates elements of object-oriented programming through constructs like structs, enums, traits, and methods. The language's syntax shares similarities with C and C++, while its functional features draw from languages like OCaml.
+#### Ownership Model
+The ownership system in Rust consists of rules designed to ensure memory safety without relying on a garbage collector. Each value must be associated with a variable, known as its owner, and every value can have exactly one owner at a time. When a value is assigned to a different variable or passed as a function parameter, ownership is transferred, a process known as move semantics. This model helps prevent issues such as dangling pointers and memory leaks. If a value goes out of scope, its destructor is automatically run, releasing associated resources like file handles or network sockets.
 
-### 2. History and Development of Rust
+#### Borrowing Rules
+Values can be temporarily lent or "borrowed" to different functions before being returned to their owner. This is achieved using references, indicated by the `&` symbol. Rust differentiates between shared, immutable references (`&T`) and unique, mutable references (`&mut T`). At any given time, Rust allows either multiple immutable references or one mutable reference to a piece of data, but never both simultaneously. This strict rule, enforced at compile time by the borrow checker, prevents data races and ensures thread safety.
 
-Rust originated as a personal project by software developer Graydon Hoare in 2006, while he was working at Mozilla Research. Mozilla officially sponsored the project in 2009. The motivation behind Rust's creation stemmed from frustrations with existing languages regarding memory bugs and concurrency issues. Early development of the Rust compiler was in OCaml, consisting of approximately 38,000 lines of code, before transitioning to a self-hosting compiler written in Rust based on LLVM by 2012.
+#### Lifetimes
+Lifetimes refer to the period during which a reference remains valid, spanning from its creation to destruction. These lifetimes are inherently associated with all Rust reference types. While often inferred by the compiler, they can be explicitly indicated using named lifetime parameters, such as `'a`. The borrow checker enforces that references are only used in parts of the code where their associated lifetime is valid, effectively preventing use-after-free errors.
 
-The first public release, Rust 0.1, was on January 20, 2012, available for Windows, Linux, and MacOS. The initial stable release, Rust 1.0, was published on May 15, 2015, marking a significant milestone after six years of Mozilla's sponsorship. Following large layoffs at Mozilla in August 2020 due to the COVID-19 pandemic, the Rust Foundation was established in February 2021, with support from Amazon Web Services, Google, Huawei, Microsoft, and Mozilla. This foundation took ownership of trademarks and domain names and assumed financial responsibility for the project's costs. By December 2022, Rust became the first language other than C and assembly to be supported in the development of the Linux kernel, further cementing its role in systems programming.
+#### Type System
+Rust is a strongly and statically typed language, meaning that the types of all variables must be known at compile time. Assigning a value of one type to a variable of a different, incompatible type will result in a compilation error. Type inference is used by the compiler to determine variable types when they are not explicitly specified. The default integer type is `i32`, and the default floating-point type is `f64`. Rust supports various primitive types, including signed and unsigned integers, booleans, and floating-point numbers. User-defined types can be created using `struct` for record types and `enum` for algebraic data types.
 
-### 3. Key Features and Characteristics
+### Advanced Features
+Beyond its foundational safety mechanisms, Rust incorporates several advanced features that contribute to its power and versatility, including robust concurrency support, zero-cost abstractions, and a flexible syntax that accommodates multiple programming paradigms.
 
-Rust is characterized by a set of core features designed to enhance software quality and developer productivity:
+#### Concurrency
+Rust is designed to support concurrency and parallelism, allowing applications to leverage modern hardware effectively. The language's ownership and type system guarantee freedom from data races, a common source of bugs in concurrent programming. Rust provides built-in mechanisms for safe concurrency, such as threads, mutexes, channels, and atomics, which are safer to use than their counterparts in languages like C or C++.
 
-1.  **Memory Safety without Garbage Collection (无垃圾回收的内存安全)**: Rust ensures memory safety by preventing common programming errors such as null pointer dereferences and buffer overflows through a combination of strict type checking, ownership, and borrowing rules. This is achieved at compile time, eliminating the need for a runtime garbage collector.
-    *   中文: Rust 通过严格的类型检查、所有权和借用规则，在编译时阻止空指针解引用和缓冲区溢出等常见编程错误，从而确保内存安全，无需运行时垃圾回收器。
+#### Zero-Cost Abstractions
+One of Rust's core design principles is to provide "zero-cost abstractions". This means that high-level features and language constructs, like iterators and generics, are optimized away at compile time and incur no runtime performance penalty. This allows developers to write expressive and safe code without sacrificing performance, which is crucial for systems programming.
 
-2.  **Ownership System (所有权系统)**: Every value in Rust has a variable that is its owner, and there can only be one owner at a time. When the owner goes out of scope, the value is dropped, and its memory is automatically freed.
-    *   中文: 在 Rust 中，每个值都有一个变量作为其所有者，且一次只能有一个所有者。当所有者超出作用域时，该值将被丢弃，其内存也会自动释放。
+#### Syntax and Paradigms
+Rust's syntax shares similarities with C and C++, making it approachable for developers familiar with these languages. However, many of its features are influenced by functional programming languages such as OCaml, including concepts like immutability, higher-order functions, algebraic data types, and pattern matching. While Rust does not enforce a specific programming paradigm, it supports imperative, functional, and object-oriented programming styles through features like structs, enums, and traits.
 
-3.  **Borrowing and References (借用与引用)**: Values can be temporarily "borrowed" via references (& for immutable, &mut for mutable) without transferring ownership. Rust's "borrow checker" enforces rules to prevent data races and dangling pointers, ensuring references remain valid.
-    *   中文: 值可以通过引用（&用于不可变，&mut用于可变）暂时“借用”，而无需转移所有权。Rust 的“借用检查器”强制执行规则，以防止数据竞争和悬垂指针，确保引用始终有效。
+### Tooling and Ecosystem
+The Rust ecosystem is comprehensive, providing developers with a suite of integrated tools and a vibrant community-driven package repository.
 
-4.  **Concurrency without Data Races (无数据竞争的并发)**: Rust's ownership and type system prevent data races at compile time, allowing developers to write safe and efficient concurrent code without common concurrency bugs.
-    *   中文: Rust 的所有权和类型系统在编译时阻止数据竞争，使开发者能够编写安全高效的并发代码，避免常见的并发错误。
+#### Tooling
+Rust's development experience is greatly enhanced by its official tooling. **`rustc`** is the Rust compiler, responsible for translating Rust code into low-level LLVM IR for optimization and conversion into executable code. **Cargo** serves as Rust's build system and package manager, simplifying the process of downloading, compiling, distributing, and uploading packages (crates). It manages project dependencies and can also act as a front-end for other tools like Clippy. **Rustfmt** is a code formatter that ensures consistent code style by automatically handling whitespace and indentation. **Clippy** is Rust's built-in linting tool, which helps improve code correctness, performance, and readability by identifying common pitfalls and stylistic issues.
 
-5.  **Performance and Efficiency (性能与效率)**: Rust is designed for high performance, often comparable to C and C++, and is faster than many other memory-safe languages due to its lack of a garbage collector and zero-cost abstractions. It can power performance-critical services and run on embedded devices.
-    *   中文: Rust 旨在实现高性能，常与 C 和 C++ 相媲美，并且由于不依赖垃圾回收器和零成本抽象，其速度快于许多其他内存安全语言。它能驱动性能关键型服务并在嵌入式设备上运行。
+#### Ecosystem
+Rust boasts a rich standard library and a vast ecosystem of third-party libraries, known as crates, published on `crates.io`. This public package repository allows developers to easily share and reuse code. The community plays a significant role in Rust's development, with ongoing contributions to libraries, frameworks, and tooling. The Rust Foundation, formed in February 2021 by companies like Amazon Web Services, Google, Huawei, Microsoft, and Mozilla, now sponsors the project, managing trademarks and infrastructure assets.
 
-6.  **Strong Static Typing and Type Inference (强静态类型与类型推断)**: Rust is a strongly and statically typed language, meaning all variable types must be known at compile time. However, it features type inference, allowing the compiler to deduce types in many cases without explicit annotations.
-    *   中文: Rust 是一种强类型静态语言，这意味着所有变量的类型都必须在编译时确定。然而，它具有类型推断功能，在许多情况下编译器可以推断类型而无需显式注解。
+### Core Alternative Words or Phrases
+Rust, as a programming language, is often described using various terms that highlight its characteristics or place it in comparison to other languages.
 
-7.  **Pattern Matching and Enums (模式匹配与枚举)**: Rust provides powerful pattern matching capabilities, often used with `match` expressions and `enum` types. Enums can take on different variants at runtime, similar to algebraic data types.
-    *   中文: Rust 提供了强大的模式匹配能力，常与 `match` 表达式和 `enum` 类型结合使用。枚举在运行时可以采取不同的变体，类似于代数数据类型。
+*   **Rust:** Can be referred to as "Rust Programming Language", "Rust Language", or "Rust System Language".
+*   **Ownership:** May also be called "memory management", "resource management", or "value ownership".
+*   **Borrowing:** Sometimes referred to as "referencing" or "lending".
+*   **Lifetimes:** Can be phrased as "reference lifetimes" or "validity periods".
+*   **Concurrency:** May also be described as "parallel programming" or "asynchronous programming".
+*   **Alternatives:** Common alternatives or competitors include C, C++, Go, Swift, Python, and Java.
 
-8.  **Traits and Trait Objects (特征与特征对象)**: Traits define shared behavior that types can implement, enabling polymorphic behavior. Trait objects (`dyn Trait`) allow for dynamic dispatch, enabling behavior similar to duck typing at runtime.
-    *   中文: 特征定义了类型可以实现的共享行为，从而实现多态行为。特征对象（`dyn Trait`）支持动态分发，允许在运行时实现类似鸭子类型的功能。
+### Rewritten Content in 9 Tones
 
-9.  **Macros (宏)**: Rust supports both declarative (`macro_rules!`) and procedural macros, which allow for code generation and transformation to reduce repetition. Macros are distinguished by an exclamation mark `!` at the end of their name.
-    *   中文: Rust 支持声明式（`macro_rules!`）和过程式宏，它们可以生成和转换代码以减少重复。宏通过名称末尾的感叹号 `!` 来区分。
+#### Formal Tone
+Rust is a modern systems programming language designed with a focus on memory safety, performance, and concurrency. Its unique ownership model dictates that every value has a single owner, effectively preventing common programming errors such as null pointer dereferencing and data races. Ownership rules precisely govern resource allocation and deallocation. Borrowing rules permit safe, temporary access to data while preserving its integrity. Lifetimes are explicitly annotated to ensure references remain valid throughout their usage. A robust type system and advanced tooling, including Cargo and `rustc`, significantly support efficient development. Rust's architectural design harmonizes high-level abstractions with low-level control, positioning it as a highly powerful choice for sophisticated system-level applications.
 
-10. **Rich Standard Library and Ecosystem (丰富的标准库与生态系统)**: Rust provides a comprehensive standard library with core data structures like `Vec` and smart pointers. Its ecosystem includes essential tools like Cargo (package manager and build tool), Rustfmt (code formatter), and Clippy (linting tool).
-    *   中文: Rust 提供了一个全面的标准库，包含像 `Vec` 这样的核心数据结构和智能指针。其生态系统包括 Cargo（包管理器和构建工具）、Rustfmt（代码格式化工具）和 Clippy（linting 工具）等重要工具。
+#### Conversational Tone
+Rust is a cool, modern language that helps you write super safe and fast code. It manages memory so smartly that you barely have to fret about those annoying memory leaks or dangling pointers. Its ownership model is like having a personal assistant who tracks every single resource for you. Borrowing rules let you share data without creating a total mess. Lifetimes even help make sure nothing gets out of hand. Plus, with a really strong type system and awesome tools like Cargo, Rust makes coding both fun and efficient. So, if you're looking to build reliable systems without all the usual headaches, Rust is definitely a great pick.
 
-### 4. Rust in Practice and Adoption
+#### Polite Tone
+It is my pleasure to share that Rust is a modern systems programming language thoughtfully designed with memory safety, performance, and concurrency as paramount considerations. Its distinctive ownership model ensures that every value is managed with utmost responsibility, thereby preventing prevalent programming errors. Ownership rules diligently govern resource allocation and deallocation, ensuring that no resource is overlooked. Borrowing rules graciously permit safe, temporary access to data, thus upholding overall system integrity. Lifetimes are meticulously annotated to ascertain that all references consistently remain valid. Furthermore, a robust type system and sophisticated tooling, such as Cargo and `rustc`, provide substantial support for efficient development. I sincerely hope this information encourages you to consider Rust for your esteemed projects.
 
-Rust has seen widespread adoption across various industries and applications since its stable release in 2015. It is used in production by hundreds of companies, ranging from large corporations to small businesses. Its capabilities make it suitable for a diverse range of tasks, including command-line tools, web services, DevOps tooling, embedded devices, audio and video analysis and transcoding, cryptocurrencies, bioinformatics, search engines, Internet of Things (IoT) applications, and machine learning. Notably, major parts of the Firefox web browser and components of the Linux kernel are written in Rust.
-
-Major tech companies like Amazon Web Services (AWS), Google, Microsoft, and Meta Platforms (formerly Facebook) have adopted Rust for performance-sensitive components and critical infrastructure. For instance, AWS uses Rust in services and open-sourced Firecracker, a virtualization solution primarily written in Rust. Google has announced support for Rust within the Android Open Source Project as an alternative to C/C++ and in Chromium. Microsoft has rewritten parts of Windows in Rust and uses it for containerized modules. Companies like Discord and Dropbox have also rewritten parts of their systems in Rust for increased performance.
-
-Rust's popularity among developers is consistently high, being named the "most admired programming language" in the Stack Overflow Developer Survey every year from 2016 to 2024. In 2024, Rust was the 6th "most wanted technology," with a significant percentage of developers interested in learning it. Its adoption in academic research also highlights its utility, with studies examining its features for safety and performance.
-
-### 5. Core Alternative Words/Phrases
-
-Here are core alternative words or phrases related to the Rust Programming Language, presented in both English and Chinese:
-
-1.  **Rust programming language** / **Rust 编程语言**
-2.  **Rust language** / **Rust 语言**
-3.  **Systems programming language** / **系统编程语言**
-4.  **Memory-safe language** / **内存安全语言**
-5.  **Performance-oriented language** / **高性能语言**
-6.  **Modern systems language** / **现代系统语言**
-7.  **Zero-cost abstraction language** / **零成本抽象语言**
-8.  **Concurrency-focused language** / **并发语言**
-9.  **Ownership-based language** / **所有权语言**
-
-### 6. Rust Programming Language in Various Tones
-
-#### 6.1. Formal Tone
-
-Rust is a modern systems programming language designed for performance, safety, and reliability. It emphasizes memory safety through its unique ownership and borrowing system, ensuring that programs do not contain data races or memory leaks. In addition, Rust’s type system and compile-time checks enable developers to write robust and efficient code. Its support for multiple programming paradigms, such as functional and object-oriented styles, makes it versatile for a wide range of applications. The language also benefits from a powerful package manager, Cargo, which streamlines dependency management, builds, and testing. These features make Rust a compelling choice for systems programming and performance-critical applications.
-
-中文: Rust 是一种现代系统编程语言，旨在实现高性能、安全性和可靠性。它通过独特的所有权和借用系统确保内存安全，防止数据竞争和内存泄漏。此外，Rust 的类型系统和编译时检查使开发人员能够编写稳健而高效的代码。它支持多种编程范式，如函数式和面向对象编程，适用于各种应用。该语言还配备了强大的包管理器 Cargo，简化了依赖管理、构建和测试流程。这些特点使 Rust 成为系统编程和性能关键应用的有力选择。
-
-#### 6.2. Conversational Tone
-
-Rust is a cool, modern programming language that’s really good at making sure your code runs fast and stays safe. It has this clever system that keeps track of memory so you don’t run into problems like data races or memory leaks. Plus, it lets you write code in a way that feels natural and easy to read, mixing in some functional and object-oriented ideas. With tools like Cargo, managing all your code dependencies and builds is a breeze. Overall, Rust makes it fun and straightforward to build reliable software without the usual headaches.
-
-中文: Rust 是一种时髦的编程语言，能让你的代码又快又安全。它有一个聪明的系统，能跟踪内存，避免数据竞争和内存泄漏的问题。此外，Rust 的写法自然易懂，混合了函数式和面向对象的思路。Cargo 这样的工具还能帮你轻松管理代码依赖和构建过程。总的来说，Rust 让你开发可靠软件变得既有趣又简单。
-
-#### 6.3. Polite Tone
-
-It is my pleasure to introduce Rust, a modern systems programming language that excels in performance, safety, and reliability. Rust’s innovative ownership and borrowing model ensures that memory is managed safely, preventing issues such as data races and memory leaks. Its robust type system and compile-time checks further contribute to writing error-free and efficient code. Additionally, Rust supports multiple programming paradigms, offering both functional and object-oriented programming styles. The language also benefits from a powerful package manager, Cargo, which streamlines dependency management, builds, and testing. I am confident that Rust will be a valuable asset to any developer seeking high-quality systems programming solutions.
-
-中文: 我很高兴为您介绍 Rust，这是一种在性能、安全性和可靠性方面表现出色的现代系统编程语言。Rust 通过其创新的所有权和借用机制确保内存安全，有效防止数据竞争和内存泄漏。其强大的类型系统和编译时检查进一步帮助编写无错误且高效的代码。此外，Rust 支持多种编程范式，融合了函数式和面向对象编程的风格。该语言还配备了强大的包管理器 Cargo，简化了依赖管理、构建和测试流程。我相信，Rust 会成为每一位追求高质量系统编程解决方案的开发人员的宝贵资产。
-
-#### 6.4. Humorous Tone
-
-Rust is like that overachieving friend who’s always got your back—especially when it comes to keeping your code safe and running smoothly. It uses a clever system to manage memory so you don’t have to worry about data races or memory leaks, which is like having a personal bodyguard for your code. With its mix of functional and object-oriented features, Rust makes writing code feel as natural as chatting with a good buddy. And don’t get me started on Cargo; it’s the ultimate sidekick that keeps your project organized and your dependencies in check. Rust is fun, reliable, and a bit of a lifesaver in the world of programming!
-
-中文: Rust 就像那个总是为你着想的完美朋友，特别是在保护你的代码安全和顺畅运行方面。它用一个巧妙的系统来管理内存，让你不用担心数据竞争或内存泄漏，这就像为你的代码配备了专属保镖。凭借函数式和面向对象特性的结合，Rust 使编写代码如同与好友闲聊一样自然。说到 Cargo，它简直是你的最佳拍档，帮你井井有条地管理项目和依赖项。Rust 既有趣又可靠，简直就是编程世界里的救星！
-
-#### 6.5. Encouraging Tone
-
-Rust is a modern programming language that empowers developers to create safe, efficient, and robust systems. Its unique ownership model and compile-time checks help catch errors early, ensuring your code runs reliably. With support for multiple programming paradigms, Rust offers flexibility to explore different coding styles. The package manager, Cargo, simplifies dependency management and build automation, making your development process smoother. Embrace Rust and let its innovative features inspire you to build high-quality software that stands the test of time.
-
-中文: Rust 是一种现代编程语言，赋予开发人员构建安全、高效和稳健系统的信心。其独特的所有权模型和编译时检查有助于尽早发现错误，确保代码可靠运行。Rust 支持多种编程范式，为探索不同的编码风格提供了灵活性。包管理器 Cargo 使依赖管理与构建自动化变得简单，令开发流程更加顺畅。拥抱 Rust，让其创新特性激发你的灵感，打造经得起时间考验的高质量软件。
-
-#### 6.6. Romantic Tone
-
-Rust, dear developer, is like a gentle breeze that carries you into a world of performance and elegance. It cradles your code with care, ensuring that every byte is used with love and precision. With its innovative ownership system, Rust gently guides you away from the pitfalls of data races and memory leaks, offering a safe haven for your creativity. Its blend of functional and object-oriented features creates a harmonious symphony of logic and beauty. And with Cargo by your side, the journey of building your masterpiece is as smooth and enchanting as a whispered secret under the stars.
-
-中文: Rust，亲爱的开发人员，就像一阵温柔的微风，带你进入一个充满性能与优雅的世界。它以细心呵护的方式，确保每一字节都被精确使用。凭借其创新的所有权系统，Rust 轻柔地引导你远离数据竞争和内存泄漏的陷阱，为你提供一个安全的创意避风港。它将函数式和面向对象特性融为一体，奏出逻辑与美的和谐乐章。而 Cargo 陪伴在你身旁，让你的创作之旅如星光下的耳语般流畅而迷人。
-
-#### 6.7. Analogical Tone
-
-Imagine a symphony orchestra where every instrument plays in perfect harmony—this is what Rust brings to systems programming. Its ownership model acts like a vigilant conductor, ensuring that every “note” (memory access) is played correctly and no dissonance (data race) disrupts the performance. The compiler serves as a meticulous music critic, catching any off-key mistakes before they ruin the melody. With Cargo as your backstage crew, dependencies are seamlessly managed, and the performance is built with precision. Rust, in this analogy, is the maestro of modern programming, orchestrating a flawless performance of efficiency and safety.
-
-中文: 想象一个交响乐团，每个乐器都完美和谐地演奏——这就是 Rust 为系统编程所带来的效果。其所有权模型就像一位尽职的指挥家，确保每个“音符”（内存访问）都准确无误，避免任何不和谐（数据竞争）破坏演出。编译器则像一位严谨的音乐评论家，在错误破坏旋律之前就捕捉到任何跑调之处。而 Cargo 就像你的后台团队，无缝管理依赖项，确保演出精确无误。在这个比喻中，Rust 就是现代编程的指挥家，指挥着一场高效与安全的完美演出。
-
-#### 6.8. Emojify Tone
-
-Rust is like a superhero in the world of programming! 🦸‍♂️ It uses a clever ownership system to keep your code safe from memory leaks and data races, ensuring smooth sailing with no hiccups! 🚀. With Cargo as your sidekick, managing dependencies is a breeze, and building your project is as fun as a roller coaster ride! 🌟. Embrace Rust, and watch your code shine like a million stars in the night sky! ✨.
-
-中文: Rust 就像编程世界中的超级英雄！🦸‍♂️ 它用一个巧妙的所有权系统保护你的代码，防止内存泄漏和数据竞争，确保运行顺畅，毫无小插曲！🚀。有了 Cargo 这位得力助手，管理依赖项就像坐过山车一样轻松愉快！🌟。拥抱 Rust，让你的代码在夜空中闪耀如繁星点点！✨。
-
-#### 6.9. Promotional Tone
-
-Experience the future of systems programming with Rust! This modern language is engineered for performance, safety, and reliability. Its unique ownership model and compile-time checks eliminate common bugs like data races and memory leaks, ensuring your code runs like clockwork. With support for multiple programming paradigms, Rust lets you create elegant, efficient, and robust applications. And with Cargo streamlining dependency management and build automation, your development process is as smooth as silk. Join the Rust community today and transform your projects with a language that combines innovation with unmatched power!
-
-中文: 体验 Rust，感受系统编程的未来！这门现代语言专为性能、安全性和可靠性而设计。其独特的所有权模型和编译时检查消除了数据竞争和内存泄漏等常见错误，确保代码如钟表般精准运行。Rust 支持多种编程范式，让你创建出优雅、高效且稳健的应用程序。搭配 Cargo，轻松管理依赖项和构建自动化，开发流程如丝绸般顺滑。今天就加入 Rust 社区，用这门兼具创新与强大性能的语言，焕然一新你的项目吧！
-
-### 7. Simulated Dialogue Responses
-
-#### 7.1. Formal Dialogue Response
-
-"Dear Developer, it is my honor to introduce Rust—a modern systems programming language engineered for performance, safety, and reliability. Rust’s unique ownership and borrowing model ensures memory safety by preventing data races and memory leaks. Its robust type system and compile-time checks further guarantee error-free and efficient code. Additionally, Rust supports multiple programming paradigms, and its package manager, Cargo, streamlines dependency management and builds. I trust you will find Rust to be an invaluable asset in your development endeavors."
-
-中文: "亲爱的开发者，我很荣幸向您介绍 Rust——一种专为性能、安全性和可靠性而设计的现代系统编程语言。Rust 通过其独特的所有权和借用机制确保内存安全，有效防止数据竞争和内存泄漏。其强大的类型系统和编译时检查进一步确保代码无误高效。此外，Rust 支持多种编程范式，其包管理器 Cargo 使依赖管理与构建流程更加顺畅。相信 Rust 会成为您开发工作中的宝贵资产。"
-
-#### 7.2. Conversational Dialogue Response
-
-"Hey there, developer! Meet Rust—a modern language that keeps your code safe and fast. It uses a clever system to manage memory, so you don’t have to worry about data races or memory leaks. Plus, it blends functional and object-oriented ideas, making coding feel natural and fun. And with Cargo as your sidekick, managing dependencies is a breeze. Rust is cool, reliable, and just plain awesome!"
-
-中文: "嘿，开发者！来认识一下 Rust——一种让你的代码又快又安全的现代语言。它用一个聪明的系统管理内存，让你不用担心数据竞争或内存泄漏。而且，它融合了函数式和面向对象的特性，让编程感觉自然又有趣。再加上 Cargo 这位得力助手，管理依赖项简直轻松自如。Rust 真是酷、可靠又超棒！"
-
-#### 7.3. Polite Dialogue Response
-
-"It is my pleasure to share with you the remarkable qualities of Rust—a modern systems programming language that excels in performance, safety, and reliability. Rust’s innovative ownership and borrowing system ensures memory safety, preventing issues such as data races and memory leaks. Its robust type system and compile-time checks further contribute to writing error-free and efficient code. Additionally, Rust supports multiple programming paradigms, and the powerful package manager, Cargo, streamlines dependency management, builds, and testing. I am confident that Rust will prove to be a valuable asset to any developer."
-
-中文: "我很高兴为您介绍 Rust，这是一门在性能、安全性和可靠性方面表现出色的现代系统编程语言。Rust 通过其创新的所有权和借用机制确保内存安全，有效防止数据竞争和内存泄漏。其强大的类型系统和编译时检查进一步帮助编写无错误且高效的代码。此外，Rust 支持多种编程范式，其包管理器 Cargo 使依赖管理与构建流程更加顺畅。我相信，Rust 会成为每一位开发人员的宝贵资产。"
-
-#### 7.4. Humorous Dialogue Response
-
-"Rust is like that overachieving friend who’s always got your back—especially when it comes to keeping your code safe and running smoothly. It uses a clever system to manage memory so you don’t have to worry about data races or memory leaks, which is like having a personal bodyguard for your code. With its mix of functional and object-oriented features, Rust makes writing code feel as natural as chatting with a good buddy. And don’t get me started on Cargo; it’s the ultimate sidekick that keeps your project organized and your dependencies in check. Rust is fun, reliable, and a bit of a lifesaver in the world of programming!"
-
-中文: "Rust 就像那个总是为你着想的完美朋友，特别是在保护你的代码安全和顺畅运行方面。它用一个巧妙的系统管理内存，让你不用担心数据竞争或内存泄漏，这就像为你的代码配备了专属保镖。凭借函数式和面向对象特性的结合，Rust 使编写代码如同与好友闲聊一样自然。说到 Cargo，它简直是你的最佳拍档，帮你井井有条地管理项目和依赖项。Rust 既有趣又可靠，简直就是编程世界里的救星！"
-
-#### 7.5. Encouraging Dialogue Response
-
-"Rust is a modern programming language that empowers developers to create safe, efficient, and robust systems. Its unique ownership model and compile-time checks help catch errors early, ensuring your code runs reliably. With support for multiple programming paradigms, Rust offers flexibility to explore different coding styles. The package manager, Cargo, simplifies dependency management and build automation, making your development process smoother. Embrace Rust and let its innovative features inspire you to build high-quality software that stands the test of time."
-
-中文: "Rust 是一种现代编程语言，赋予开发人员构建安全、高效和稳健系统的信心。其独特的所有权模型和编译时检查有助于尽早发现错误，确保代码可靠运行。Rust 支持多种编程范式，为探索不同的编码风格提供了灵活性。包管理器 Cargo 使依赖管理与构建自动化变得简单，令开发流程更加顺畅。拥抱 Rust，让其创新特性激发你的灵感，打造经得起时间考验的高质量软件。"
-
-#### 7.6. Romantic Dialogue Response
-
-"Rust, dear developer, is like a gentle breeze that carries you into a world of performance and elegance. It cradles your code with care, ensuring that every byte is used with love and precision. With its innovative ownership system, Rust gently guides you away from the pitfalls of data races and memory leaks, offering a safe haven for your creativity. Its blend of functional and object-oriented features creates a harmonious symphony of logic and beauty. And with Cargo by your side, the journey of building your masterpiece is as smooth and enchanting as a whispered secret under the stars."
-
-中文: "Rust，亲爱的开发人员，就像一阵温柔的微风，带你进入一个充满性能与优雅的世界。它以细心呵护的方式，确保每一字节都被精确使用。凭借其创新的所有权系统，Rust 轻柔地引导你远离数据竞争和内存泄漏的陷阱，为你提供一个安全的创意避风港。它将函数式和面向对象特性融为一体，奏出逻辑与美的和谐乐章。而 Cargo 陪伴在你身旁，让你的创作之旅如星光下的耳语般流畅而迷人。"
-
-#### 7.7. Analogical Dialogue Response
-
-"Imagine a symphony orchestra where every instrument plays in perfect harmony—this is what Rust brings to systems programming. Its ownership model acts like a vigilant conductor, ensuring that every 'note' (memory access) is played correctly and no dissonance (data race) disrupts the performance. The compiler serves as a meticulous music critic, catching any off-key mistakes before they ruin the melody. With Cargo as your backstage crew, dependencies are seamlessly managed, and the performance is built with precision. Rust, in this analogy, is the maestro of modern programming, orchestrating a flawless performance of efficiency and safety."
-
-中文: "想象一个交响乐团，每个乐器都完美和谐地演奏——这就是 Rust 为系统编程所带来的效果。其所有权模型就像一位尽职的指挥家，确保每个‘音符’（内存访问）都准确无误，避免任何不和谐（数据竞争）破坏演出。编译器则像一位严谨的音乐评论家，在错误破坏旋律之前就捕捉到任何跑调之处。而 Cargo 就像你的后台团队，无缝管理依赖项，确保演出精确无误。在这个比喻中，Rust 就是现代编程的指挥家，指挥着一场高效与安全的完美演出。"
-
-#### 7.8. Emojify Dialogue Response
-
-"Rust is like a superhero in the world of programming! 🦸‍♂️ It uses a clever ownership system to keep your code safe from memory leaks and data races, ensuring smooth sailing with no hiccups! 🚀. With Cargo as your sidekick, managing dependencies is a breeze, and building your project is as fun as a roller coaster ride! 🌟. Embrace Rust, and watch your code shine like a million stars in the night sky! ✨."
-
-中文: "Rust 就像编程世界中的超级英雄！🦸‍♂️ 它用一个巧妙的所有权系统保护你的代码，防止内存泄漏和数据竞争，确保运行顺畅，毫无小插曲！🚀。有了 Cargo 这位得力助手，管理依赖项就像坐过山车一样轻松愉快！🌟。拥抱 Rust，让你的代码在夜空中闪耀如繁星点点！✨。"
-
-#### 7.9. Promotional Dialogue Response
-
-"Experience the future of systems programming with Rust! This modern language is engineered for performance, safety, and reliability. Its unique ownership model and compile-time checks eliminate common bugs like data races and memory leaks, ensuring your code runs like clockwork. With support for multiple programming paradigms, Rust lets you create elegant, efficient, and robust applications. And with Cargo streamlining dependency management and build automation, your development process is as smooth as silk. Join the Rust community today and transform your projects with a language that combines innovation with unmatched power!"
-
-中文: "体验 Rust，感受系统编程的未来！这门现代语言专为性能、安全性和可靠性而设计。其独特的所有权模型和编译时检查消除了数据竞争和内存泄漏等常见错误，确保代码如钟表般精准运行。Rust 支持多种编程范式，让你创建出优雅、高效且稳健的应用程序。搭配 Cargo，轻松管理依赖项和构建自动化，开发流程如丝绸般顺滑。今天就加入 Rust 社区，用这门兼具创新与强大性能的语言，焕然一新你的项目吧！"
-
-### 8. Philosophical Story about Rust Programming Language
-
-In a land where every coder was a traveler on the endless plain of logic and creativity, there lived a language called Rust. Rust was known for its strict rules and elegant simplicity. It believed that true freedom came from understanding the delicate balance between power and responsibility—a balance that could be lost if one ignored the past or acted recklessly.
-
-One day, a curious young programmer named Leo wandered into the realm of Rust. He had heard whispers of a language that promised both performance and safety, a place where memory leaks and unstable code were but distant memories. Guided by a gentle mentor, the Great Compiler, Leo learned the sacred principles of ownership and borrowing. These principles were not merely technical rules; they were the moral codes that ensured every action was taken with care and respect for the resources at hand.
-
-Leo soon discovered that Rust was not just a tool for writing code—it was a philosophy. It taught that true innovation arises when one respects the past while boldly embracing the future. With every line of code, Leo transformed his ideas into reality, proving that even in the digital realm, wisdom and responsibility could light the way forward.
-
-中文: 在一个逻辑与创造力无边无际的广袤大地上，有一位名叫Rust的语言，以其严格的规则和优雅的简洁闻名。Rust相信，真正的自由来自于对权力与责任之间微妙平衡的理解——这种平衡若被忽视或鲁莽对待，便会顷刻消逝。
-
-有一天，一位好奇的年轻程序员名叫Leo走进了Rust的世界。他听闻了关于一种承诺高性能与安全性的语言的传说，一个能将内存泄漏和不稳定代码变为遥远记忆的地方。在一位仁慈导师——伟大编译器的引领下，Leo学习了拥有神圣地位的所有权和借用原则。这些原则不仅仅是技术规则；它们是确保每位行动者都对所拥有的资源怀有敬意的道德准则。
-
-不久之后，Leo发现Rust不仅仅是一种编写代码的工具，更是一种哲学。它教导着，真正的创新只有在尊重过去的同时，大胆拥抱未来时才会诞生。在每一行代码中，Leo将他的构想转化为现实，证明了在数字领域，智慧与责任也能为前行之路点亮明灯。
-
-### 9. Closely Relevant Word Categories
-
-#### 9.1. Nouns
-
-1.  **Ownership (所有权)**: Core concept ensuring memory safety by assigning each value a single owner.
-    *   Example: In Rust, a variable owns its data and transfers ownership on assignment.
-    *   中文解释：确保内存安全的核心概念，通过赋予每个值唯一所有者实现。
-    *   中文用例：在Rust中，变量拥有其数据，赋值时所有权转移。
-
-2.  **Borrowing (借用)**: Temporarily using data without taking ownership, using references.
-    *   Example: Functions can borrow a value to read it without owning it.
-    *   中文解释：通过引用临时使用数据而不获取所有权。
-    *   中文用例：函数可以借用值以读取数据但不拥有它。
-
-3.  **Lifetime (生命周期)**: The scope during which a reference is valid, tracked at compile time.
-    *   Example: A reference to a variable lives as long as the variable is in scope.
-    *   中文解释：引用有效的范围，在编译时进行跟踪。
-    *   中文用例：变量的引用只在变量作用域内有效。
-
-4.  **Trait (特征)**: Defines shared behavior that types can implement, inspired by Haskell's type classes.
-    *   Example: The `Display` trait enables formatting types as strings.
-    *   中文解释：定义类型可以实现的共享行为，受Haskell类型类的启发。
-    *   中文用例：`Display`特征使类型可格式化为字符串。
-
-5.  **Struct (结构体)**: A composite data type that groups multiple related values, similar to record types.
-    *   Example: `struct Point { x: i32, y: i32 }`.
-    *   中文解释：组合相关值的复合数据类型，类似于记录类型。
-    *   中文用例：`struct Point { x: i32, y: i32 }`。
-
-6.  **Enum (枚举)**: Defines a type that can take on different named variants at runtime, often with associated data.
-    *   Example: `enum Direction { North, South, East, West }`.
-    *   中文解释：定义类型可以是多种命名的变体之一，通常带有相关数据。
-    *   中文用例：`enum Direction { North, South, East, West }`。
-
-7.  **Macro (宏)**: Code that generates or transforms other code, identified by an exclamation mark `!`.
-    *   Example: `println!()` is a macro that prints to the console.
-    *   中文解释：用于生成或转换其他代码的代码，以感叹号 `!` 标识。
-    *   中文用例：`println!()`宏打印到控制台。
-
-8.  **Crate (包)**: The unit of compilation and linking in Rust, which can be a library or an executable.
-    *   Example: `serde` crate for serialization.
-    *   中文解释：Rust中的编译和链接单元，可以是库或可执行文件。
-    *   中文用例：用于序列化的`serde`包。
-
-9.  **Cargo (货物)**: Rust's official build system and package manager.
-    *   Example: Running `cargo build` compiles a project.
-    *   中文解释：Rust的官方构建系统和包管理器。
-    *   中文用例：运行`cargo build`编译项目。
-
-10. **Borrow Checker (借用检查器)**: A component of the Rust compiler that enforces borrowing and ownership rules at compile time.
-    *   Example: The borrow checker prevents mutable and shared references from coexisting simultaneously.
-    *   中文解释：Rust编译器的一个组件，在编译时强制执行借用和所有权规则。
-    *   中文用例：借用检查器防止可变引用和共享引用同时共存。
-
-11. **Reference (引用)**: A pointer to a value that allows accessing it without taking ownership.
-    *   Example: `&s` creates a reference to `s`.
-    *   中文解释：指向值的指针，允许访问该值但不获取所有权。
-    *   中文用例：`&s`创建`s`的引用。
-
-12. **Unsafe (不安全)**: A keyword or block in Rust that allows bypassing certain safety checks for low-level operations.
-    *   Example: Using raw pointers or inline assembly often requires an `unsafe` block.
-    *   中文解释：Rust中的一个关键字或代码块，允许绕过某些安全检查进行低级操作。
-    *   中文用例：使用原始指针或内联汇编通常需要`unsafe`块。
-
-13. **Pattern Matching (模式匹配)**: A control flow mechanism that compares a value against various patterns.
-    *   Example: `match x { Some(y) => y * 2, None => 0, }`.
-    *   中文解释：一种控制流机制，将一个值与各种模式进行比较。
-    *   中文用例：`match x { Some(y) => y * 2, None => 0, }`。
-
-14. **Iterator (迭代器)**: An object that enables sequential processing over a series of elements.
-    *   Example: `for value in 4..=10 { ... }`.
-    *   中文解释：一个允许对一系列元素进行顺序处理的对象。
-    *   中文用例：`for value in 4..=10 { ... }`。
-
-15. **Module (模块)**: A namespace that organizes code within a crate, containing definitions like functions or types.
-    *   Example: `mod network { ... }`.
-    *   中文解释：一个命名空间，用于组织包内的代码，包含函数或类型等定义。
-    *   中文用例：`mod network { ... }`。
-
-16. **Trait Object (特征对象)**: A mechanism for dynamic dispatch, allowing types that implement a specific trait to be treated uniformly at runtime.
-    *   Example: `Box<dyn Display>` can hold any type implementing the `Display` trait.
-    *   中文解释：一种动态分发机制，允许实现在运行时统一处理某个特定特征的类型。
-    *   中文用例：`Box<dyn Display>`可以持有任何实现了`Display`特征的类型。
-
-17. **Compiler (编译器)**: The software that translates Rust source code into executable machine code.
-    *   Example: The Rust compiler plays a gatekeeper role by refusing to compile code with certain bugs.
-    *   中文解释：将Rust源代码翻译成可执行机器代码的软件。
-    *   中文用例：Rust编译器通过拒绝编译某些错误代码来扮演守门员的角色。
-
-18. **Function (函数)**: A reusable block of code that performs a specific task.
-    *   Example: `fn main() { ... }` is the entry point of a Rust program.
-    *   中文解释：一个可重用的代码块，执行特定任务。
-    *   中文用例：`fn main() { ... }`是Rust程序的入口点。
-
-19. **Standard Library (标准库)**: A collection of modules providing essential and widely used functionality in Rust.
-    *   Example: `std::collections::HashMap` is part of the standard library.
-    *   中文解释：Rust中提供基本和广泛使用的功能的模块集合。
-    *   中文用例：`std::collections::HashMap`是标准库的一部分。
-
-20. **Error Handling (错误处理)**: The process of managing and responding to unexpected conditions during program execution.
-    *   Example: Rust uses `Result` and `Option` enums for explicit error handling.
-    *   中文解释：在程序执行期间管理和响应意外情况的过程。
-    *   中文用例：Rust使用`Result`和`Option`枚举进行显式错误处理。
-
-### 9.2. Verbs
-
-1.  **Compile (编译)**: To transform Rust source code into an executable program using `rustc`.
-    *   Example: The Rust compiler compiles the code efficiently.
-    *   中文解释：使用`rustc`将Rust源代码转换为可执行程序。
-    *   中文用例：Rust编译器高效地编译代码。
-2.  **Borrow (借用)**: To temporarily use a value via a reference without taking ownership.
-    *   Example: Rust allows you to borrow references safely.
-    *   中文解释：通过引用临时使用值而不获取所有权。
-    *   中文用例：Rust允许你安全地借用引用。
-3.  **Move (移动)**: To transfer ownership of a value from one variable to another, invalidating the previous owner.
-    *   Example: When assigning `s2 = s1`, Rust moves the ownership, and `s1` is invalidated.
-    *   中文解释：将值的所有权从一个变量转移到另一个变量，使前一个所有者失效。
-    *   中文用例：当赋值`s2 = s1`时，Rust会移动所有权，`s1`将失效。
-4.  **Mutate (变异)**: To change the value of a variable explicitly marked as mutable with `mut`.
-    *   Example: `let mut foo = 10; foo = 20;` allows `foo` to be mutated.
-    *   中文解释：显式更改用`mut`标记为可变的变量的值。
-    *   中文用例：`let mut foo = 10; foo = 20;`允许`foo`变异。
-5.  **Shadow (遮蔽)**: To declare a new variable with the same name as a previous one, effectively hiding the old variable.
-    *   Example: `let foo = 10; let foo = foo * 2;` shadows the original `foo`.
-    *   中文解释：声明一个与先前变量同名的新变量，从而隐藏旧变量。
-    *   中文用例：`let foo = 10; let foo = foo * 2;`遮蔽了原始的`foo`。
-6.  **Return (返回)**: To exit a function and optionally provide a value back to the caller.
-    *   Example: `fn add_one(x: i32) -> i32 { x + 1 }` returns the value `x + 1`.
-    *   中文解释：退出函数并可选地向调用者返回值。
-    *   中文用例：`fn add_one(x: i32) -> i32 { x + 1 }` 返回 `x + 1` 的值。
-7.  **Loop (循环)**: To repeatedly execute a block of code.
-    *   Example: `loop { println!("Forever!"); }` runs an infinite loop.
-    *   中文解释：反复执行一段代码块。
-    *   中文用例：`loop { println!("Forever!"); }` 无限循环运行。
-8.  **Match (匹配)**: To perform pattern matching on a value and branch execution accordingly.
-    *   Example: `match x { Some(v) => v, None => 0 }` handles optional values.
-    *   中文解释：对值进行模式匹配并执行相应分支。
-    *   中文用例：`match x { Some(v) => v, None => 0 }` 处理可选值。
-9.  **Break (中断)**: To exit a loop before its natural end.
-    *   Example: `for i in 1..5 { if i == 3 { break; } }` breaks loop at 3.
-    *   中文解释：提前退出循环。
-    *   中文用例：`for i in 1..5 { if i == 3 { break; } }` 在3时退出循环。
-10. **Continue (继续)**: To skip the rest of the current iteration and proceed to the next iteration in a loop.
-    *   Example: `for x in 0..10 { if x % 2 == 0 { continue; } println!("{}", x); }` skips iteration when x is even.
-    *   中文解释：跳过当前迭代余下部分，继续下一次迭代。
-    *   中文用例：`for x in 0..10 { if x % 2 == 0 { continue; } println!("{}", x); }` 跳过 x 为偶数的迭代。
-11. **Implement (实现)**: To provide the body for traits or inherent methods on types.
-    *   Example: `impl Show for i32 { fn show(&self) -> String { ... } }` implements the `Show` trait for `i32`.
-    *   中文解释：为类型提供特征或固有方法的定义。
-    *   中文用例：`impl Show for i32 { fn show(&self) -> String { ... } }` 为 `i32` 实现 `Show` 特征。
-12. **Dereference (解引用)**: To access the value behind a reference or pointer.
-    *   Example: `let val = *reference;` accesses the value pointed to by `reference`.
-    *   中文解释：访问引用或指针所指向的值。
-    *   中文用例：`let val = *reference;` 访问 `reference` 所指向的值。
-13. **Create (创建)**: To instantiate a new value or object.
-    *   Example: `let mut s = String::new();` creates a new empty String.
-    *   中文解释：实例化一个新值或对象。
-    *   中文用例：`let mut s = String::new();` 创建新的空字符串。
-14. **Use (使用)**: To bring names into scope or utilize a feature.
-    *   Example: `use std::io;` imports the `io` module.
-    *   中文解释：将名称引入作用域或使用特性。
-    *   中文用例：`use std::io;` 导入 `io` 模块。
-15.  **Define (定义)**: To declare functions, structs, enums, constants, etc..
-     *   Example: `fn foo() {}` defines function `foo`.
-     *   中文解释：声明函数、结构体、枚举、常量等。
-     *   中文用例：`fn foo() {}` 定义函数`foo`。
-16. **Call (调用)**: To invoke a function or method.
-    *   Example: `println!()` is a macro call.
-    *   中文解释：调用函数或方法。
-    *   中文用例：`println!()` 是一个宏调用。
-17. **Allocate (分配)**: To reserve a portion of memory for data storage.
-    *   Example: Values are allocated on the stack by default.
-    *   中文解释：为数据存储保留一部分内存。
-    *   中文用例：值默认分配在栈上。
-18. **Enforce (强制执行)**: To ensure compliance with rules, such as memory safety rules.
-    *   Example: The borrow checker enforces that references are only used in valid locations.
-    *   中文解释：确保遵守规则，例如内存安全规则。
-    *   中文用例：借用检查器强制引用只在有效位置使用。
-19. **Handle (处理)**: To manage or process data, particularly errors.
-    *   Example: Rust encourages explicit error handling using `Result` and `Option`.
-    *   中文解释：管理或处理数据，尤其是错误。
-    *   中文用例：Rust鼓励使用 `Result` 和 `Option` 进行显式错误处理。
-20. **Print (打印)**: To output text to the console or other output streams.
-    *   Example: `println!("Hello, World!");` prints a message to standard output.
-    *   中文解释：将文本输出到控制台或其他输出流。
-    *   中文用例：`println!("Hello, World!");` 打印消息到标准输出。
-
-### 9.3. Adjectives
-
-1.  **Safe (安全的)**: Rust emphasizes preventing common errors like null pointer dereferences and data races, ensuring memory safety without a garbage collector.
-    *   Example: Rust provides safe concurrency to avoid data races.
-    *   中文解释：Rust 着重防止常见错误，如空指针解引用和数据竞争，实现无垃圾回收的内存安全。
-    *   中文示例：Rust 提供安全的并发以避免数据竞争。
-2.  **Fast (快速的)**: Rust compiles to efficient machine code, allowing execution speed comparable to C and C++.
-    *   Example: Rust delivers fast performance suitable for performance-critical services.
-    *   中文解释：Rust 编译为高效机器码，执行速度媲美 C 和 C++。
-    *   中文示例：Rust 提供适合性能关键服务的快速表现。
-3.  **Concurrent (并发的)**: Rust’s ownership model enables writing concurrent code without data races.
-    *   Example: Rust supports concurrent programming safely.
-    *   中文解释：Rust 的所有权模型允许编写无数据竞争的并发代码。
-    *   中文示例：Rust 支持安全的并发编程。
-4.  **Ergonomic (符合人体工学的)**: Rust provides a syntax and tooling that aim for developer productivity and simplicity.
-    *   Example: Rust’s syntax is ergonomic and readable.
-    *   中文解释：Rust 提供提高开发效率和简洁性的语法及工具。
-    *   中文示例：Rust 的语法符合人体工学且易读。
-5.  **Static-typed (静态类型的)**: Types are checked at compile time, increasing reliability.
-    *   Example: Rust’s static-typed system catches many errors before execution.
-    *   中文解释：类型在编译时检查，提高可靠性。
-    *   中文示例：Rust 的静态类型系统在执行前捕获许多错误。
-6.  **Memory-efficient (内存高效的)**: Rust manages memory without runtime overhead related to garbage collection.
-    *   Example: Rust is memory-efficient, suitable for embedded systems.
-    *   中文解释：Rust 在无运行时垃圾回收的情况下管理内存，实现高内存效率。
-    *   中文示例：Rust 内存高效，适用于嵌入式系统。
-7.  **Modern (现代的)**: Rust incorporates contemporary language design choices for safety and performance.
-    *   Example: Rust is a modern systems programming language.
-    *   中文解释：Rust 结合了当代语言设计理念以提升安全性和性能。
-    *   中文示例：Rust 是现代系统编程语言。
-8.  **Flexible (灵活的)**: Supports multiple paradigms including functional and object-oriented programming.
-    *   Example: Rust allows developers to use functional, imperative, and OOP styles.
-    *   中文解释：支持包括函数式和面向对象等多种编程范式。
-    *   中文示例：Rust 允许开发者使用函数式、命令式和面向对象风格。
-9.  **Reliable (可靠的)**: Ensures code correctness by design, reducing runtime crashes.
-    *   Example: Rust’s compile-time checks lead to reliable software.
-    *   中文解释：通过设计确保代码正确性，减少运行时崩溃。
-    *   中文示例：Rust 的编译时检查提高软件可靠性。
-10. **Expressive (富有表达力的)**: Rust's syntax and features allow concise and clear code.
-    *   Example: Rust’s pattern matching enables expressive control flow.
-    *   中文解释：Rust 的语法和特性允许简洁清晰的代码表达。
-    *   中文示例：Rust 的模式匹配支持富有表达力的控制流。
-
-### 9.4. Adverbs
-
-1.  **Safely (安全地)**: Describes performing operations without causing errors or unsafe behavior, particularly important in Rust's memory management.
-    *   Example: Rust allows you to handle concurrency safely without data races.
-    *   中文解释：描述在执行操作时不会导致错误或不安全行为，Rust内存管理尤为重要。
-    *   中文示例：Rust允许你安全地处理并发而不会出现数据竞争。
-2.  **Efficiently (高效地)**: Refers to performing tasks in a way that maximizes performance and minimizes resource use.
-    *   Example: Code written in Rust runs efficiently on a variety of platforms.
-    *   中文解释：指以最大化性能和最小化资源使用的方式执行任务。
-    *   中文示例：用Rust编写的代码能高效地在各种平台上运行。
-3.  **Statically (静态地)**: Indicates something happening at compile time rather than runtime; Rust is statically typed.
-    *   Example: Types are checked statically in Rust before running the program.
-    *   中文解释：表示在编译时而非运行时发生的某事；Rust是静态类型语言。
-    *   中文示例：Rust在运行程序之前静态检查类型。
-4.  **Concurrently (并发地)**: Describes multiple computations happening simultaneously, a key feature in Rust.
-    *   Example: Rust programs can run tasks concurrently without data races.
-    *   中文解释：描述多个计算同时进行，是Rust的关键特性。
-    *   中文示例：Rust程序能并发地运行任务而不会出现数据竞争。
-5.  **Automatically (自动地)**: Done by the system or compiler without manual intervention, e.g., memory management.
-    *   Example: Rust automatically frees memory when variables go out of scope.
-    *   中文解释：由系统或编译器在无人工干预情况下执行，如内存管理。
-    *   中文示例：Rust自动释放变量超出作用域时的内存。
-6.  **Explicitly (明确地)**: Done in a clear, intentional manner, used in Rust for mutable variables or unsafe blocks.
-    *   Example: You must explicitly mark variables as mutable to change them in Rust.
-    *   中文解释：以清晰、故意的方式进行，在Rust中用于可变变量或不安全代码块。
-    *   中文示例：你必须明确标记变量为可变，才可在Rust中修改它们。
-7.  **Reliably (可靠地)**: Performing tasks in a way that is dependable and consistent.
-    *   Example: Rust ensures code runs reliably by preventing many common bugs at compile time.
-    *   中文解释：以可靠和一致的方式执行任务。
-    *   中文示例：Rust通过编译时防止常见错误，确保代码可靠运行。
-8.  **Seamlessly (无缝地)**: Happens smoothly without interruption or noticeable change.
-    *   Example: Cargo integrates seamlessly into the Rust development workflow.
-    *   中文解释：平稳地发生，无中断或明显变化。
-    *   中文示例：Cargo无缝集成进Rust的开发工作流中。
-9.  **Strictly (严格地)**: Following rules or constraints rigidly, important for Rust's type system and borrow checker.
-    *   Example: Rust strictly enforces ownership rules to guarantee safety.
-    *   中文解释：严格遵守规则或约束，对于Rust的类型系统和借用检查器尤为重要。
-    *   中文示例：Rust严格执行所有权规则以保证安全。
-10. **Dynamically (动态地)**: Occurs during runtime rather than compile time; Rust supports dynamic dispatch via trait objects.
-    *   Example: Rust can dynamically dispatch methods using trait objects.
-    *   中文解释：在运行时发生而非编译时；Rust通过特征对象支持动态分发。
-    *   中文示例：Rust可以使用特征对象动态分发方法。
-
-### 9.5. Prepositions
-
-1.  **with** – Used to indicate association or possession.
-    *   Example: "Rust works with low-level system components to ensure safety".
-    *   中文解释：“with”用于表示关联或拥有。
-    *   中文用例：“Rust 与底层系统组件协作以确保安全”。
-2.  **in** – Denotes location or domain.
-    *   Example: "Memory safety is enforced in Rust at compile time".
-    *   中文解释：“in”表示地点或领域。
-    *   中文用例：“Rust 在编译时强制执行内存安全”。
-3.  **for** – Indicates purpose or benefit.
-    *   Example: "Rust is designed for performance and reliability".
-    *   中文解释：“for”表示目的或受益。
-    *   中文用例：“Rust 旨在实现高性能和可靠性”。
-4.  **to** – Shows direction or relation.
-    *   Example: "Rust aims to provide control to system programmers".
-    *   中文解释：“to”表示方向或关系。
-    *   中文用例：“Rust 致力于向系统程序员提供控制权”。
-5.  **by** – Indicates agent performing an action.
-    *   Example: "Memory safety is guaranteed by the ownership system".
-    *   中文解释：“by”表示执行动作的主体。
-    *   中文用例：“所有权系统保证内存安全”。
-6.  **through** – Expresses means or process.
-    *   Example: "Rust achieves thread safety through its borrow checker".
-    *   中文解释：“through”表示手段或过程。
-    *   中文用例：“Rust 通过借用检查器实现线程安全”。
-7.  **without** – Denotes absence.
-    *   Example: "Rust enforces safety without a garbage collector".
-    *   中文解释：“without”表示缺少或否定。
-    *   中文用例：“Rust 在没有垃圾回收器的情况下强制安全”。
-8.  **about** – Concerning or regarding.
-    *   Example: "This discussion is about Rust’s ownership model".
-    *   中文解释：“about”表示关于。
-    *   中文用例：“本讨论关于 Rust 的所有权模型”。
-9.  **on** – Denotes topic or basis.
-    *   Example: "Rust has a strong focus on zero-cost abstractions".
-    *   中文解释：“on”表示主题或基础。
-    *   中文用例：“Rust 重点关注零成本抽象”。
-10. **as** – Used to indicate role or function.
-    *   Example: "Rust is used as a systems programming language".
-    *   中文解释：“as”表示角色或功能。
-    *   中文用例：“Rust 被用作系统编程语言”。
-
-### 9.6. Conjunctions
-
-1.  **&& (Logical AND)**: Evaluates to true if both operands are true. It short-circuits, meaning the right side is only evaluated if the left side is true.
-    *   Example: `if x > 0 && y < 10 { /* code */ }`.
-    *   中文解释：当两个操作数都为真时，结果为真。具有短路特性，即当左侧为假时，右侧不再求值。
-    *   示例：`if x > 0 && y < 10 { /* 代码 */ }`。
-2.  **|| (Logical OR)**: Evaluates to true if either operand is true. It short-circuits, evaluating the right side only if the left side is false.
-    *   Example: `if is_ready || is_forced { /* code */ }`.
-    *   中文解释：当任一操作数为真时，结果为真。具有短路特性，即当左侧为真时，右侧不再求值。
-    *   示例：`if is_ready || is_forced { /* 代码 */ }`。
-3.  **& (Bitwise AND or Borrowing operator)**: Bitwise AND operates at the bit level. Additionally, `&` is used to borrow references.
-    *   Example (bitwise): `let c = a & b;`.
-    *   Example (borrow): `let r = &x;`.
-    *   中文解释：位运算中的与操作符，也用作引用借用符。
-    *   示例（位运算）：`let c = a & b;`。
-    *   示例（借用）：`let r = &x;`。
-4.  **| (Bitwise OR)**: Performs a bitwise OR on its operands.
-    *   Example: `let c = a | b;`.
-    *   中文解释：对操作数执行按位或操作。
-    *   示例：`let c = a | b;`。
-5.  **+ (Compound trait bounds conjunction)**: Used to combine multiple trait bounds, meaning a type must implement all specified traits.
-    *   Example: `T: Debug + Clone`.
-    *   中文解释：用于组合多个特征约束，表示类型必须实现所有指定的特征。
-    *   示例：`T: Debug + Clone`。
-6.  **-> (Function return type, connecting inputs to output)**: Connects function parameters to its return type.
-    *   Example: `fn add(x: i32, y: i32) -> i32 { x + y }`.
-    *   中文解释：连接函数参数和其返回类型。
-    *   示例：`fn add(x: i32, y: i32) -> i32 { x + y }`。
-7.  **if ... else if ... else**: Conditional branching conjunction to check multiple conditions sequentially.
-    *   Example:
-        ```rust
-        if x > 10 {
-          // code
-        } else if x < 5 {
-          // other code
-        } else {
-          // fallback code
-        }
-        ```.
-    *   中文解释：条件分支，用于依次检查多个条件。
-    *   示例：
-        ```rust
-        if x > 10 {
-          // 代码
-        } else if x < 5 {
-          // 另一段代码
-        } else {
-          // 默认代码
-        }
-        ```。
-8.  **match ... { ... } (Pattern matching conjunction)**: Matches a value against multiple patterns, providing branching based on structure.
-    *   Example:
-        ```rust
-        match value {
-          1 => println!("One"),
-          2 => println!("Two"),
-          _ => println!("Other"),
-        }
-        ```.
-    *   中文解释：将值匹配多个模式，根据结构进行分支。
-    *   示例：
-        ```rust
-        match value {
-          1 => println!("一"),
-          2 => println!("二"),
-          _ => println!("其他"),
-        }
-        ```.
-9.  **; (Statement separator conjunction)**: Separates statements in Rust, chaining multiple statements in a block.
-    *   Example: `let x = 5; let y = 10;`.
-    *   中文解释：用于分隔 Rust 中的语句，在代码块中串联多条语句。
-    *   示例：`let x = 5; let y = 10;`.
-10. **, (Comma separator conjunction)**: Separates elements in lists, function arguments, tuples, or multiple variables.
-    *   Example: `let (x, y) = (1, 2);` or `fn foo(a: i32, b: i32) {}`.
-    *   中文解释：分隔列表、函数参数、元组或多个变量中的元素。
-    *   示例：`let (x, y) = (1, 2);` 或 `fn foo(a: i32, b: i32) {}`。
-
-### 9.7. Particles
-
-1.  **let** (declare/bind a variable): Binds a variable to a value. It introduces a new name in the current scope.
-    *   Example: `let x = 5;`.
-    *   中文解释：绑定一个变量到某个值，作用是在当前作用域引入一个新名称。
-    *   示例：`let x = 5;`。
-2.  **mut** (allow mutability): Marks a variable binding as mutable, permitting the variable to be changed.
-    *   Example: `let mut x = 5; x = 6;`.
-    *   中文解释：标记变量绑定为可变，使变量可以被修改。
-    *   示例：`let mut x = 5; x = 6;`。
-3.  **use** (import): Imports items into scope, such as modules or functions.
-    *   Example: `use std::io;`.
-    *   中文解释：将项目如模块或函数导入当前作用域。
-    *   示例：`use std::io;`。
-4.  **match** (pattern match): Control flow construct to branch by pattern matching.
-    *   Example: `match x { 1 => println!("one"), _ => println!("other") }`.
-    *   中文解释：通过模式匹配进行分支的控制流结构。
-    *   示例：`match x { 1 => println!("one"), _ => println!("other") }`。
-5.  **impl** (implement): Used to define methods or trait implementations for types.
-    *   Example: `impl MyStruct { fn new() -> Self { ... } }`.
-    *   中文解释：为类型定义方法或特征实现。
-    *   示例：`impl MyStruct { fn new() -> Self { ... } }`。
-6.  **fn** (define a function): Declares a function.
-    *   Example: `fn add(a: i32, b: i32) -> i32 { a + b }`.
-    *   中文解释：声明一个函数。
-    *   示例：`fn add(a: i32, b: i32) -> i32 { a + b }`。
-7.  **return** (return from function): Exits from a function and optionally provides a return value.
-    *   Example: `return x + y;`.
-    *   中文解释：函数的返回操作，可返回值。
-    *   示例：`return x + y;`。
-8.  **break** (exit loop): Exits a loop immediately.
-    *   Example: `break;`.
-    *   中文解释：立即退出循环。
-    *   示例：`break;`.
-9.  **continue** (skip to next loop iteration): Skips the remaining loop body and begins the next iteration.
-    *   Example: `continue;`.
-    *   中文解释：跳过循环剩余部分并开始下一次迭代。
-    *   示例：`continue;`。
-10. **& / &mut** (borrow): Temporarily accesses a value without taking ownership, via references.
-    *   Example: `let r = &x; // shared borrow`.
-    *   中文解释：通过引用临时访问值而不获取所有权。
-    *   示例：`let r = &x; // 共享借用`。
-
-### 9.8. Pronouns
-
-1.  **Rust (rust)**: Used as a subject or object pronoun for referring to Rust.
-    *   Example: "I think Rust is very efficient".
-    *   中文：用作指代Rust的主格或宾格代词。
-    *   例句：“我认为Rust非常高效”。
-2.  **rust (rust)**: The object form same as the subject.
-    *   Example: "I met rust recently".
-    *   中文：作为宾格形式，用以指Rust。
-    *   例句：“我最近遇见了rust”。
-3.  **rusts (rust's)**: Possessive determiner indicating something belonging to Rust.
-    *   Example: "Is this rusts dog?".
-    *   中文：所有格限定词，表示归属Rust的某物。
-    *   例句：“这是rusts的狗吗？”。
-4.  **rusts (rusts)**: Possessive pronoun referring to something belonging to Rust.
-    *   Example: "This language is rusts".
-    *   中文：所有格代词，指属于Rust的东西。
-    *   例句：“这门语言是rusts的”。
-5.  **rustself (rustself)**: Reflexive pronoun referring back to Rust.
-    *   Example: "Rust said rust would rather do it rustself".
-    *   中文：反身代词，指回Rust自身。
-    *   例句：“Rust说rust宁愿自己做”。
-6.  **they**: Gender-neutral singular pronoun often used for referring to entities or individuals when gender is unspecified or irrelevant.
-    *   Example: "The person you mentioned, are they coming to dinner with us?".
-    *   中文：性别中立的单数代词，指代未知或无关性别的实体或个体。
-    *   例句：“你提到那个人，他们要和我们一起吃饭吗？”。
-7.  **them**: Object form of "they".
-    *   Example: "I asked them about Rust's features".
-    *   中文：“they”的宾格形式。
-    *   例句：“我向他们询问了Rust的特性”。
-8.  **their**: Possessive determiner form of "they".
-    *   Example: "Their ownership model ensures memory safety".
-    *   中文：所有格限定词，表示“他们的”。
-    *   例句：“他们的所有权模型确保内存安全”。
-9.  **theirs**: Possessive pronoun form of "they".
-    *   Example: "This code is theirs".
-    *   中文：所有格代词，表示“他们的（东西）”。
-    *   例句：“这段代码是他们的”。
-10. **themself**: Reflexive pronoun form of "they" for singular usage.
-    *   Example: "Ferris can fix the bug themself".
-    *   中文：作为单数“they”的反身代词形式。
-    *   例句：“Ferris可以自己修复这个错误”。
-
-### 9.9. Numerals
-
-1.  **1 (One)**: Rust’s design emphasizes a single clear ownership model that prevents data races and memory leaks.
-    *   Example: The compiler enforces that only one variable owns a resource at a time.
-    *   中文: Rust 的设计强调单一清晰的所有权模型，防止数据竞争和内存泄漏。
-    *   中文用例: 编译器强制要求任何时候只有一个变量拥有资源。
-2.  **2 (Two)**: Rust distinguishes between two types of references—immutable and mutable—to ensure safe concurrent access.
-    *   Example: Using `&` for immutable and `&mut` for mutable references.
-    *   中文: Rust 区分了两种引用类型——不可变和可变引用，以确保安全的并发访问。
-    *   中文用例: 使用 `&` 用于不可变引用，使用 `&mut` 用于可变引用。
-3.  **3 (Three)**: The core rules of Rust’s ownership system are governed by principles including ownership, borrowing, and lifetimes.
-    *   Example: When a variable goes out of scope, its value is dropped (freed).
-    *   中文: Rust 的所有权系统由所有权、借用和生命周期等核心原则管理。
-    *   中文用例: 当变量超出作用域时，其值将被丢弃（释放）。
-4.  **4 (Four)**: Rust’s standard library includes four primary scalar types: integers, floating-point numbers, Booleans, and characters.
-    *   Example: These four types are fundamental for basic data representation.
-    *   中文: Rust 的标准库包括四种主要的标量类型：整数、浮点数、布尔值和字符。
-    *   中文用例: 这四种类型是基本数据表示的基础。
-5.  **5 (Five)**: Rust’s looping constructs include `loop`, `while`, and `for`. There are also fixed-size arrays with 5 elements.
-    *   Example: `let a = [1, 2, 3, 4, 5];` creates an array of five elements.
-    *   中文: Rust 的循环结构包括 `loop`、`while` 和 `for`。还有包含5个元素的固定大小数组。
-    *   中文用例: `let a = [1, 2, 3, 4, 5];` 创建一个包含五个元素的数组。
-6.  **6 (Six)**: Integer literals can be specified in various bases, including hexadecimal with prefix `0x` for 6 digits.
-    *   Example: `0xDB` represents a hexadecimal number.
-    *   中文: 整数字面量可以以各种进制指定，包括带有 `0x` 前缀的六位十六进制。
-    *   中文用例: `0xDB` 表示一个十六进制数。
-7.  **7 (Seven)**: Rust ensures memory safety by preventing issues such as null pointers, dangling pointers, or data races.
-    *   Example: The type system guarantees the absence of these critical errors.
-    *   中文: Rust 通过防止空指针、悬垂指针或数据竞争等问题来确保内存安全。
-    *   中文用例: 类型系统保证不存在这些关键错误。
-8.  **8 (Eight)**: The `u8` integer type in Rust is an unsigned integer that takes 8 bits of storage.
-    *   Example: A `u8` variable can hold values between 0 and 255.
-    *   中文: Rust 中的 `u8` 整数类型是一个无符号整数，占用 8 位存储空间。
-    *   中文用例: `u8` 变量可以存储 0 到 255 之间的值。
-9.  **9 (Nine)**: The `i64` integer type can represent numbers with up to 19 digits, which is more than 9 digits.
-    *   Example: `let bigint: i64 = 0;` defines a 64-bit signed integer.
-    *   中文: `i64` 整数类型可以表示多达 19 位数字，这超过了 9 位。
-    *   中文用例: `let bigint: i64 = 0;` 定义一个 64 位有符号整数。
-10. **0 (Zero)**: Rust provides "zero-cost abstractions", meaning they are optimized away at compile time and incur no runtime penalty.
-    *   Example: `let sum = 0;` initializes a sum variable to zero.
-    *   中文: Rust 提供“零成本抽象”，意味着它们在编译时被优化掉，不会产生运行时开销。
-    *   中文用例: `let sum = 0;` 将一个求和变量初始化为零.
-
-### 9.10. Measure Words
-
-1.  **Line (行)**: A unit of source code, often used for measuring program length or errors.
-    *   Example: "The program has 100 lines of code".
-    *   中文解释：源码中的一行，经常用于衡量程序长度或错误位置。
-    *   中文例句：“该程序有100行代码”。
-2.  **Character (字符)**: A single Unicode code point, important in string manipulation.
-    *   Example: "Rust processes each character in a string carefully".
-    *   中文解释：单个Unicode代码点，在字符串处理中特别重要。
-    *   中文例句：“Rust仔细处理字符串中的每个字符”。
-3.  **Byte (字节)**: The smallest addressable unit of memory in Rust, as Strings are UTF-8 encoded bytes.
-    *   Example: "The string is stored as a vector of bytes".
-    *   中文解释：Rust中内存中最小的可寻址单元，字符串以UTF-8字节存储。
-    *   中文例句：“字符串被存储为字节向量”。
-4.  **Module (模块)**: A namespace organizer within a crate, containing functions, structs, etc..
-    *   Example: "The project is divided into several modules for clarity".
-    *   中文解释：包内的命名空间，用来组织函数、结构体等。
-    *   中文例句：“项目被划分为多个模块以便清晰管理”。
-5.  **Crate (包)**: The compilation unit or package in Rust ecosystem.
-    *   Example: "The crate provides utilities for file handling".
-    *   中文解释：Rust生态中的编译单元或包。
-    *   中文例句：“该包提供文件处理的工具”。
-6.  **Trait (特征)**: A collection of methods that define shared behavior types can implement.
-    *   Example: "Implementing the Display trait customizes format output".
-    *   中文解释：定义共享行为的方法集合，类型可实现其行为。
-    *   中文例句：“实现Display特征可自定义格式化输出”。
-7.  **Function (函数)**: A block of reusable code performing a specific task.
-    *   Example: "The main function is the program entry point".
-    *   中文解释：执行特定任务的可复用代码块。
-    *   中文例句：“main函数是程序入口点”。
-8.  **Iterator (迭代器)**: Structure enabling traversal over a sequence of elements.
-    *   Example: "Rust’s iterators allow functional programming styles".
-    *   中文解释：用于遍历元素序列的结构。
-    *   中文例句：“Rust的迭代器支持函数式编程风格”。
-9.  **Reference (引用)**: A pointer allowing access to a value without ownership transfer.
-    *   Example: "Borrowing a reference prevents moving the original data".
-    *   中文解释：允许访问值而不转移所有权的指针。
-    *   中文例句：“借用引用避免了原始数据的移动”。
-10. **Macro (宏)**: Code that can generate code, used to reduce repetition and increase expressiveness.
-    *   Example: `println!` is a macro for formatted output.
-    *   中文解释：可以生成代码的代码，用于减少重复，提高表达能力。
-    *   中文例句：`println!`是用于格式化输出的宏。
-
-### 9.11. Determiners
-
-1.  **The (definite article)**: Specifies a particular item that is known to the reader or listener.
-    *   Example: The compiler enforces ownership rules.
-    *   中文解释：指定读者或听者已知的特定事物。
-    *   中文用例：编译器执行**该**所有权规则。
-2.  **A/An (indefinite article)**: Introduces a non-specific item or instance.
-    *   Example: A trait defines shared behavior.
-    *   中文解释：引入非特定的事物或实例。
-    *   中文用例：**一个**特征定义共享行为。
-3.  **This (demonstrative determiner)**: Points to something specific close in context or time.
-    *   Example: This function borrows a reference.
-    *   中文解释：指示上下文或时间上较近的特定事物.
-    *   中文用例：**此**函数借用了一个引用。
-4.  **That (demonstrative determiner)**: Points to something more distant or previously mentioned.
-    *   Example: That macro simplifies code generation.
-    *   中文解释：指示较远或之前提及的特定事物.
-    *   中文用例：**那个**宏简化了代码生成。
-5.  **Each (distributive determiner)**: Refers to every individual item separately in a group.
-    *   Example: Each variable has an owner.
-    *   中文解释：指代一组中每个单独的项目。
-    *   中文用例：**每个**变量都有一个所有者。
-6.  **Every (distributive determiner)**: Refers to all items collectively, emphasizing all members.
-    *   Example: Every reference must be valid.
-    *   中文解释：指代整体中的所有项目，强调全体成员。
-    *   中文用例：**每一个**引用必须有效。
-7.  **Some (quantifier determiner)**: Indicates an unspecified quantity or number of items.
-    *   Example: Some types implement the Debug trait.
-    *   中文解释：表示不确定数量或若干项目。
-    *   中文用例：**某些**类型实现了 Debug 特征。
-8.  **Any (quantifier determiner)**: Indicates one or more items, without restriction.
-    *   Example: Any function can return a Result type.
-    *   中文解释：表示一个或多个项目，无限制。
-    *   中文用例：**任何**函数都可以返回 Result 类型。
-9.  **No (negative determiner)**: Denotes the absence of items.
-    *   Example: No unsafe code is allowed in this module.
-    *   中文解释：表示没有或缺乏项目。
-    *   中文用例：**这个**模块中不允许使用不安全代码。
-10. **Its (possessive determiner)**: Indicates ownership or association.
-    *   Example: Its ownership model ensures memory safety.
-    *   中文解释：表示所有权或关联。
-    *   中文用例：**其**所有权模型确保内存安全。
-
-### 9.12. Interjections
-
-1.  **! (Exclamation Mark for Macros)**: In Rust, the exclamation mark (!) after an identifier indicates a macro invocation rather than a function call. Macros allow for code generation or transformation.
-    *   Example: `println!("Hello, World!");` calls the `println!` macro to print text.
-    *   中文解释：在 Rust 中，感叹号 (!) 表示宏调用，而非普通函数调用。宏可以生成或转换代码。
-    *   中文用例：`println!("Hello, World!");` 调用了 `println!` 宏来打印文本。
-2.  **??? (Used as a placeholder or in comments to indicate confusion or uncertainty)**: Programmers often use multiple question marks or exclamation/question marks in comments to express confusion or areas needing review.
-    *   Example: `// Why does this panic???`.
-    *   中文解释：程序员经常用多个问号表示困惑或不确定。
-    *   中文用例：`// 为什么这里会 panic???`。
-3.  **panic!**: A macro used to immediately terminate the program and produce an error message, signaling unrecoverable errors or bugs. It causes the current thread to unwind and clean up resources by default.
-    *   Example: `panic!("Something went wrong!");`.
-    *   中文解释：用于立即终止程序并产生错误信息的宏，表示不可恢复的错误或程序缺陷。默认情况下，它会导致当前线程栈展开并清理资源。
-    *   中文用例：`panic!("发生了错误！");`。
-4.  **unwrap**: `unwrap()` is a method on `Option` or `Result` types that either extracts the contained value or causes a `panic!` if the value is `None` or `Err`. It is convenient for prototyping or examples where robust error handling is not yet implemented.
-    *   Example: `let x = option.unwrap();`.
-    *   中文解释：`unwrap()` 是 `Option` 或 `Result` 类型上的方法，它要么提取其中包含的值，要么在值为 `None` 或 `Err` 时引发 `panic!`。它适用于原型开发或示例代码中，当尚未实现完善的错误处理时。
-    *   中文用例：`let x = option.unwrap();`。
-5.  **expect**: Similar to `unwrap()`, `expect()` also extracts the contained value or causes a `panic!`. However, it allows specifying a custom error message, which is helpful for providing context to the panic.
-    *   Example: `option.expect("Value was None!");`.
-    *   中文解释：与 `unwrap()` 类似，`expect()` 同样提取包含的值或引发 `panic!`。然而，它允许指定自定义错误消息，这有助于为 panic 提供上下文信息。
-    *   中文用例：`option.expect("值不存在！");`。
-6.  **!? (not a standard Rust operator, but sometimes used in community humor or macros)**: This is not a built-in operator in Rust; however, similar combinations of punctuation are sometimes used in code comments or community discussions for emphasis or to express uncertainty.
-    *   Example: Used in comments or jokes: "This code is safe!?".
-    *   中文解释：这不是 Rust 的内置运算符；然而，类似的标点符号组合有时在代码注释或社区讨论中用于强调或表达不确定性。
-    *   中文用例："这段代码安全吗!?"。
-7.  **TODO!**: This macro is used to mark sections of code that are unfinished or require further implementation. If a `TODO!` macro is executed at runtime, it will cause a `panic!`, serving as a reminder that the implementation is pending.
-    *   Example: `todo!("Implement this function for network communication");`
-    *   中文解释：此宏用于标记未完成或需要进一步实现的代码段。如果在运行时执行 `TODO!` 宏，它将导致 `panic!`，作为实现待完成的提醒。
-    *   中文用例：`todo!("实现此函数用于网络通信");`
-8.  **eprintln!**: This macro prints formatted output to the standard error stream (`io::stderr`), typically used for reporting error messages, warnings, or progress updates. It is equivalent to `println!` but directs output to `stderr` instead of `stdout`. This distinction allows users to redirect successful program output to a file while still seeing error messages on the screen.
-    *   Example: `eprintln!("Error: Could not complete task.");`.
-    *   中文解释：此宏将格式化输出打印到标准错误流（`io::stderr`），通常用于报告错误消息、警告或进度更新。它与 `println!` 等效，但将输出定向到 `stderr` 而非 `stdout`。这种区别允许用户将成功的程序输出重定向到文件，同时仍能在屏幕上看到错误消息。
-    *   中文用例：`eprintln!("错误：无法完成任务。");`。
-9.  **assert! / assert_eq! / assert_ne!**: These are assertion macros used to check conditions or equality at runtime. If an `assert!` condition evaluates to `false`, or if `assert_eq!`/`assert_ne!` finds the values are not (or are) as expected, the program will `panic!`. They are crucial for testing and for validating program invariants or assumptions that, if broken, indicate a bug.
-    *   Example: `assert_eq!(result_value, 42, "Result should be 42");`.
-    *   中文解释：这些是断言宏，用于在运行时检查条件或相等性。如果 `assert!` 条件评估为 `false`，或者 `assert_eq!` / `assert_ne!` 发现值不符合（或符合）预期，程序将 `panic!`。它们对于测试以及验证程序不变量或假设至关重要，如果这些被破坏，则表明存在错误。
-    *   中文用例：`assert_eq!(结果值, 42, "结果应该是 42");`。
-10. **compile_error!**: This macro causes compilation to fail with a specified error message when encountered by the compiler. It is primarily used in conditional compilation or within procedural macros to provide custom, informative error messages during the compilation phase, rather than at runtime.
-    *   Example: `compile_error!("This feature is not supported on the current target platform.");`.
-    *   中文解释：此宏在编译器遇到时会使编译失败并显示指定的错误消息。它主要用于条件编译或过程宏中，在编译阶段提供自定义的、信息丰富的错误消息，而非在运行时。
-    *   中文用例：`compile_error!("当前目标平台不支持此功能。");`。
+#### Humorous Tone
+Rust is like having a super-smart friend who never, ever forgets to clean up after you. It manages memory so incredibly well that you won’t have to pull your hair out worrying about losing track of your stuff, even in the most chaotic, spaghetti-code situations! Its ownership model is practically a personal butler for your bytes, ensuring every resource is accounted for. Borrowing rules let you share data without causing a complete dumpster fire, much like lending your sibling a toy without it mysteriously vanishing. Lifetimes act like the responsible grown-up, keeping everything in perfect check. With a seriously strong type system and amazing tools like Cargo, Rust actually makes coding enjoyable and surprisingly efficient. Seriously, it keeps your code tidy, neat, and blessedly error-free!
+
+#### Encouraging Tone
+Rust is a powerful language that empowers you to write exceptionally safe, efficient, and concurrent code. Embrace its unique features wholeheartedly and truly enjoy the rewarding journey of building robust systems with unwavering confidence. Its ownership model ensures that every resource is managed responsibly, granting you invaluable peace of mind. Borrowing rules facilitate safe, temporary access to data, consistently keeping your code secure. Lifetimes are explicitly annotated to guarantee that all references steadfastly remain valid, effectively preventing any unforeseen issues. A robust type system and advanced tooling, such as Cargo and `rustc`, provide steadfast support for highly efficient development. Continue exploring and let Rust brilliantly help you create innovative, high-quality applications that genuinely stand out.
+
+#### Romantic Tone
+Imagine a language that cares for you as deeply as you care for your code. Rust is that gentle companion, ensuring every byte is handled with profound love, making your programming journey both exquisitely safe and deeply fulfilling. Its ownership model is like a tender guardian, constantly watching over your precious resources, ensuring their eternal presence. Borrowing rules allow you to share your data with absolute confidence, as if entrusting a cherished keepsake to a beloved. Lifetimes are akin to the fleeting, yet precious, moments in life that define the inherent value and validity of every reference. A robust type system and magnificent tools like Cargo delicately weave together a harmonious environment for boundless development. With Rust, every line of code feels like a beautiful expression of care, precision, and an enduring passion for creation.
+
+#### Analogical Tone
+Rust is much like a master gardener who meticulously ensures every precious plant (representing data) receives precisely the right amount of water (memory) without ever overwatering. Its careful resource management guarantees that every element within your code thoroughly thrives. The ownership model functions akin to having a dedicated caretaker who vigilantly ensures that no resource is ever left to wander aimlessly or be forgotten. Borrowing rules are similar to sharing a valuable tool with a trusted friend, where both ensure it is diligently returned when no longer needed, preventing loss or misuse. Lifetimes are comparable to the distinct seasons that naturally define when each plant is optimally at its best, ensuring validity. A robust type system and advanced tooling, such as Cargo, collectively provide the ideal conditions for your digital garden to flourish vibrantly. In this insightful analogy, Rust lovingly nurtures your code, ensuring it grows remarkably strong and resilient.
+
+#### Emojify Tone
+Rust: 🦀 The language that keeps your code super safe and efficient! 🚀 No more memory leaks 💧 or data races 🏎️💥—just smooth sailing with a sprinkle of Rust magic! ✨
+
+*   Ownership: Like having a personal assistant to track every resource! 🧑‍💼✅
+*   Borrowing: Share data safely, like lending a friend your favorite book! 📚🤝
+*   Lifetimes: Ensure every reference stays valid, keeping your code on track! ⏳🔒
+*   Tooling: With Cargo and `rustc`, your development is as smooth as butter! 🧈💻
+
+Rust makes coding fun 🎉, efficient ⚡, and oh-so-secure! 🛡️ Enjoy the journey! 🗺️😊
+
+#### Promotional Tone
+Experience the future of systems programming with Rust! 🌟 With its groundbreaking ownership model, unparalleled memory safety, and exceptional performance, Rust empowers you to build robust applications that truly stand out from the crowd. Its unique ownership model guarantees that every resource is managed with precision and responsibility, completely eliminating memory leaks and data races. Borrowing rules facilitate safe, temporary access to data, ensuring your code remains impeccably secure at all times. Lifetimes are explicitly annotated to guarantee that every reference is unfailingly valid. A robust type system and advanced tooling, including Cargo and `rustc`, provide comprehensive support for highly efficient development workflows. Join the thriving Rust community and instantly elevate your projects by creating innovative, high-quality applications today! 🚀
+
+### Concise Responses in 9 Tones
+
+#### Formal Tone
+"Rust is a modern systems programming language that emphasizes memory safety, performance, and concurrency through its unique ownership model, borrowing rules, and lifetime annotations. Its robust type system and advanced tooling make it a powerful choice for developers."
+
+#### Conversational Tone
+"Rust is a cool, modern language that helps you write safe, fast code. It manages memory smartly without a garbage collector, making it a great choice for system-level programming."
+
+#### Polite Tone
+"It is my pleasure to share that Rust is a modern systems programming language designed with memory safety and performance in mind. Its unique ownership model, borrowing rules, and lifetime annotations ensure robust and efficient code."
+
+#### Humorous Tone
+"Rust is like having a super-smart friend who never forgets to clean up after you. It manages memory so well that you don’t have to worry about losing track of your stuff, even in the most chaotic code situations!"
+
+#### Encouraging Tone
+"Rust is a powerful language that empowers you to write safe, efficient, and concurrent code. Embrace its unique features and enjoy the journey of building robust systems with confidence."
+
+#### Romantic Tone
+"Imagine a language that cares for you as deeply as you care for your code. Rust is that gentle companion, ensuring every byte is handled with love, making your programming journey both safe and fulfilling."
+
+#### Analogical Tone
+"Think of Rust as a master gardener who ensures every plant (data) gets the right amount of water (memory) without overwatering. Its careful management guarantees that every element in your code thrives."
+
+#### Emojify Tone
+"Rust: 🦀 The language that keeps your code safe and efficient! 🚀 No more memory leaks or data races—just smooth sailing with a sprinkle of Rust magic! ✨"
+
+#### Promotional Tone
+"Experience the future of systems programming with Rust! 🌟 With its innovative ownership model, memory safety, and exceptional performance, Rust empowers you to build robust applications that stand out."
+
+### Philosophical Story
+In the quiet town of Code Haven, where every street was lined with glowing digital signs and every citizen was a programmer, there lived a young innovator named Leo. Leo was known for his relentless curiosity and his desire to create a world where every program ran as flawlessly as a well-tuned symphony. One day, he discovered a mysterious language called Rust—a language renowned for its strict rules and elegant simplicity. Intrigued, Leo began to study Rust, learning how its unique ownership system ensured that every piece of data was handled with care, preventing errors and memory mishaps.
+
+As Leo delved deeper, he realized that Rust was more than just a tool; it was a philosophy. Its rules, much like the laws of nature, demanded that every action had a consequence and that every resource was respected. Inspired, Leo set out to build a grand library that could hold all the wisdom of his town, using Rust as its foundation. In doing so, he embraced the idea that true innovation comes from understanding and honoring the limits and strengths of one’s tools. His journey through the intricacies of Rust taught him that with discipline and care, even the most complex systems could be harnessed to create beauty and order in a chaotic world.
+
+### Word Lists
+
+#### Nouns (50)
+1.  **Ownership**: The core concept in Rust where a variable controls the memory of its value.
+    *   Example: "The function took **ownership** of the string."
+2.  **Borrowing**: Temporarily accessing a value through a reference without taking ownership.
+    *   Example: "The function demonstrates **borrowing** an immutable reference."
+3.  **Lifetime**: The scope during which a reference is valid.
+    *   Example: "The compiler checks the **lifetime** of references at compile time."
+4.  **Compiler**: The program that translates Rust source code into executable binaries.
+    *   Example: "The Rust **compiler**, `rustc`, is robust."
+5.  **Trait**: A collection of methods that types can implement, defining shared behavior.
+    *   Example: "The `Iterator` **trait** defines methods for collections."
+6.  **Macro**: Code that generates other code, used for metaprogramming.
+    *   Example: "`println!()` is a **macro** for printing to standard output."
+7.  **Crate**: A compilation unit in Rust, either a binary or a library.
+    *   Example: "Cargo manages dependencies between **crates**."
+8.  **Module**: A way to organize code within a crate, creating namespaces.
+    *   Example: "We use **modules** to encapsulate related functions."
+9.  **Struct**: A user-defined type that groups multiple related values, similar to a record.
+    *   Example: "The `Config` **struct** holds configuration options."
+10. **Enum**: A data type that can take on different variants, useful for algebraic data types.
+    *   Example: "The `Option` **enum** represents an optional value."
+11. **Function**: A reusable block of code that performs a specific task.
+    *   Example: "The `main` **function** is the entry point."
+12. **Variable**: A named memory location storing data.
+    *   Example: "**Variables** are immutable by default."
+13. **Reference**: A pointer to data that does not own the data.
+    *   Example: "We passed an immutable **reference**."
+14. **Pointer**: A variable that stores a memory address.
+    *   Example: "Rust avoids null **pointers** for safety."
+15. **Iterator**: An object that allows sequential access to elements of a collection.
+    *   Example: "The `for` loop works with any **iterator**."
+16. **Closure**: An anonymous function that can capture variables from its enclosing scope.
+    *   Example: "The `map` method takes a **closure** as an argument."
+17. **Syntax**: The set of rules governing the structure of statements in a programming language.
+    *   Example: "Rust's **syntax** is similar to C and C++."
+18. **Package**: A bundle of one or more crates, managed by Cargo.
+    *   Example: "Cargo is Rust's **package** manager."
+19. **Cargo**: Rust's official build system and package manager.
+    *   Example: "**Cargo** simplifies project management."
+20. **Type**: A classification that specifies operations possible on values of a particular kind.
+    *   Example: "The `i32` **type** is a 32-bit integer."
+21. **Expression**: A combination of values, variables, operators, and functions that evaluates to a single value.
+    *   Example: "Block **expressions** can evaluate to a value."
+22. **Statement**: The smallest standalone element in a programming language that commands an action.
+    *   Example: "**Statements** in Rust are separated by semicolons."
+23. **Pattern**: A combination of literals or structures used for matching against expressions.
+    *   Example: "`match` expressions are used for **pattern** matching."
+24. **Error**: An unexpected condition that deviates from expected behavior.
+    *   Example: "Rust's type system helps prevent **errors** at compile time."
+25. **Memory**: The computer component used to store data and instructions.
+    *   Example: "Rust enforces **memory** safety."
+26. **Safety**: The property of code that prevents undefined behavior, especially memory-related issues.
+    *   Example: "Rust prioritizes **safety** and performance."
+27. **Concurrency**: The execution of multiple tasks or processes simultaneously.
+    *   Example: "Rust supports safe **concurrency**."
+28. **Thread**: A separate sequence of execution within a program, enabling concurrent execution.
+    *   Example: "Spawning multiple **threads** can improve performance."
+29. **Mutex**: A mechanism for mutual exclusion, ensuring only one thread accesses shared data at a time.
+    *   Example: "A **mutex** protects shared data in concurrent programs."
+30. **Channel**: A mechanism used to safely pass messages between threads.
+    *   Example: "Data can be sent between threads using a **channel**."
+31. **Borrow checker**: The part of the Rust compiler that enforces ownership and borrowing rules.
+    *   Example: "The **borrow checker** prevents data races."
+32. **Trait object**: A dynamically dispatched type that implements a given trait.
+    *   Example: "**Trait objects** enable dynamic polymorphism."
+33. **Generic**: A feature that allows writing code with placeholders for types, enabling code reuse.
+    *   Example: "**Generics** allow functions to work with multiple types."
+34. **Constant**: A value that does not change during program execution.
+    *   Example: "Define a **constant** using the `const` keyword."
+35. **Immutable**: A property of values that cannot be changed after creation.
+    *   Example: "Variables are **immutable** by default."
+36. **Mutability**: The property that allows variables to be modified after declaration.
+    *   Example: "Use `mut` to declare **mutability**."
+37. **Scope**: The region of a program where a variable is valid and can be used.
+    *   Example: "A variable goes out of **scope** at the end of its block."
+38. **Block**: A section of code delimited by curly brackets, which can evaluate to a value.
+    *   Example: "A `loop` **block** repeats code indefinitely."
+39. **Allocation**: The process of reserving memory space for data.
+    *   Example: "Dynamic **allocation** must be explicit in Rust."
+40. **Buffer**: A contiguous block of memory used for temporary storage.
+    *   Example: "Rust prevents **buffer** overflows."
+41. **Interface**: A shared boundary across which two or more separate components of a computer system exchange information.
+    *   Example: "Traits define an **interface** for types."
+42. **Implementation**: The concrete definition of methods or traits for a specific type.
+    *   Example: "The `impl` keyword defines an **implementation** block."
+43. **Module system**: The hierarchical organization of code into modules.
+    *   Example: "Rust's **module system** helps manage large projects."
+44. **Reference counting**: A memory management technique that tracks the number of references to an object.
+    *   Example: "`Rc` and `Arc` provide **reference counting**."
+45. **Software**: Computer programs and associated documentation.
+    *   Example: "Rust is used in various **software** projects."
+46. **Library**: A collection of precompiled code that can be used by programs.
+    *   Example: "The standard **library** provides essential functionalities."
+47. **Ecosystem**: The collective set of tools, libraries, and communities surrounding a programming language.
+    *   Example: "Rust has a thriving **ecosystem** with Cargo."
+48. **Abstraction**: A technique for managing complexity by hiding lower-level details.
+    *   Example: "Rust provides zero-cost **abstractions**."
+49. **Feature**: A distinctive attribute or capability of the language.
+    *   Example: "Memory safety is a key **feature** of Rust."
+50. **Testing**: The process of verifying the correctness of software.
+    *   Example: "Rust has built-in support for unit **testing**."
+
+#### Verbs (50)
+1.  **Compile**: To convert source code into executable code.
+    *   Example: "We **compile** the Rust program using `rustc`."
+2.  **Borrow**: To create a reference to a value without taking ownership.
+    *   Example: "The function will **borrow** an immutable reference."
+3.  **Own**: To have sole responsibility for a value's memory management.
+    *   Example: "Each value must **own** its data."
+4.  **Move**: To transfer ownership of a value from one variable to another.
+    *   Example: "Passing `String` into a function **moves** its ownership."
+5.  **Mutate**: To change the value of a variable.
+    *   Example: "The `mut` keyword allows you to **mutate** variables."
+6.  **Reference**: To create a pointer to a value.
+    *   Example: "You can **reference** a variable by using `&`."
+7.  **Dereference**: To access the value pointed to by a reference or raw pointer.
+    *   Example: "It is impossible to **dereference** raw pointers unless explicitly declared unsafe."
+8.  **Initialize**: To assign an initial value to a variable.
+    *   Example: "Data values can be **initialized** only through a fixed set of forms."
+9.  **Match**: To compare a value against a series of patterns.
+    *   Example: "We **match** the expression against different cases."
+10. **Return**: To send a value back from a function.
+    *   Example: "Functions **return** values through a trailing expression."
+11. **Implement**: To provide the concrete definition for a trait or methods for a type.
+    *   Example: "We **implement** the `Display` trait for custom formatting."
+12. **Define**: To declare or specify a new entity, such as a function or type.
+    *   Example: "Use `fn` to **define** a function."
+13. **Declare**: To introduce a variable or other identifier.
+    *   Example: "**Declare** a variable with `let`."
+14. **Invoke**: To call or execute a function or macro.
+    *   Example: "The `println!` macro is **invoked** with an exclamation mark."
+15. **Pass**: To provide an argument to a function.
+    *   Example: "You **pass** values as function parameters."
+16. **Take**: To receive something, often implying ownership transfer.
+    *   Example: "The function will **take** ownership of the `String`."
+17. **Bind**: To associate a name with a value or pattern.
+    *   Example: "`let` statements **bind** values to variables."
+18. **Cast**: To convert a value from one type to another explicitly.
+    *   Example: "You can **cast** an `i32` to a `u16` using `as`."
+19. **Pattern-match**: To use patterns to destructure or compare values.
+    *   Example: "`match` allows you to **pattern-match** on enums."
+20. **Clone**: To create a deep copy of a value, often bypassing move semantics.
+    *   Example: "You need to **clone** the `Arc` to send it to another thread."
+21. **Use**: To bring symbols into scope or specify dependencies.
+    *   Example: "We **use** the `std::collections::HashMap` module."
+22. **Import**: To bring external modules or items into the current scope.
+    *   Example: "You can **import** functions with the `use` keyword."
+23. **Export**: To make modules or items available for use by other crates.
+    *   Example: "Items declared `pub` are **exported** from a module."
+24. **Allocate**: To reserve a block of memory for use by the program.
+    *   Example: "Dynamically **allocate** memory on the heap using `Box::new()`."
+25. **Deallocate**: To free up previously allocated memory.
+    *   Example: "Memory is automatically **deallocated** when the owner goes out of scope."
+26. **Execute**: To run a program or a block of code.
+    *   Example: "The program will **execute** after compilation."
+27. **Iterate**: To go through the elements of a collection one by one.
+    *   Example: "`for` loops **iterate** over elements of a collection."
+28. **Spawn** (threads): To create and start a new thread of execution.
+    *   Example: "You can **spawn** new threads for concurrent tasks."
+29. **Lock**: To acquire a mutex, preventing other threads from accessing shared data.
+    *   Example: "You must **lock** the mutex before accessing shared data."
+30. **Unlock**: To release a mutex, allowing other threads to acquire it.
+    *   Example: "The mutex is automatically **unlocked** when its guard goes out of scope."
+31. **Check**: To verify conditions, often at compile-time.
+    *   Example: "The borrow checker **checks** for memory safety errors."
+32. **Panic**: To terminate the program due to an unrecoverable error.
+    *   Example: "A division by zero will cause the program to **panic**."
+33. **Handle** (errors): To manage and respond to errors during execution.
+    *   Example: "Rust encourages explicit error **handling** using `Result`."
+34. **Suspend**: To temporarily halt execution.
+    *   Example: "The `await` keyword can **suspend** asynchronous operations."
+35. **Resume**: To continue execution after a suspension.
+    *   Example: "The task will **resume** when the `Future` completes."
+36. **Copy**: To duplicate a value, often for primitive types.
+    *   Example: "Arrays can be constructed by **copying** a single value."
+37. **Drop**: To deallocate a value when it goes out of scope.
+    *   Example: "When a value goes out of scope, it is **dropped**."
+38. **Trait-bounds**: To constrain generic types to implement certain traits.
+    *   Example: "You can **trait-bounds** a generic parameter to require `Add`."
+39. **Enforce**: To apply or ensure compliance with rules.
+    *   Example: "Rust **enforces** memory safety."
+40. **Specify**: To state explicitly or in detail.
+    *   Example: "Lifetimes can be **specified** with named parameters."
+41. **Constrain**: To restrict or limit, often referring to type parameters.
+    *   Example: "Generic functions can **constrain** types to implement specific traits."
+42. **Extend**: To add new functionality or behavior.
+    *   Example: "Traits can **extend** types with additional methods."
+43. **Macro-expand**: To replace macro invocations with generated code during compilation.
+    *   Example: "The compiler will **macro-expand** `println!` into actual code."
+44. **Enclose**: To surround or contain within a boundary.
+    *   Example: "Code blocks are **enclosed** in curly brackets."
+45. **Capture**: To include variables from the surrounding environment, typically by closures.
+    *   Example: "A closure can **capture** variables from its parent scope."
+46. **Optimize**: To improve the performance or efficiency of code.
+    *   Example: "LLVM **optimizes** the generated intermediate representation."
+47. **Format**: To arrange code according to a consistent style.
+    *   Example: "`Rustfmt` helps to **format** your code automatically."
+48. **Lint**: To analyze code for potential errors, stylistic issues, or suspicious constructs.
+    *   Example: "`Clippy` is used to **lint** Rust code."
+49. **Verify**: To confirm correctness or truth.
+    *   Example: "The safety of pointers is **verified** at compile time."
+50. **Refactor**: To restructure existing computer code without changing its external behavior.
+    *   Example: "Good practice is to **refactor** complex functions into smaller ones."
+
+#### Prepositions (50)
+1.  **in**: Indicates containment, location, or context.
+    *   Example: "Variables are declared **in** a specific scope."
+2.  **on**: Indicates position, dependency, or mechanism.
+    *   Example: "Integers can be `isize` **on** 64-bit architectures."
+3.  **from**: Indicates origin or source.
+    *   Example: "Rust was influenced **from** functional programming."
+4.  **to**: Indicates direction, purpose, or comparison.
+    *   Example: "A mutable reference can be coerced **to** an immutable reference."
+5.  **with**: Indicates accompaniment, means, or possession.
+    *   Example: "Memory safety is enforced **with** the borrow checker."
+6.  **by**: Indicates agent, method, or proximity.
+    *   Example: "Memory errors are prevented **by** the borrow checker."
+7.  **as**: Indicates role, capacity, or conversion.
+    *   Example: "You can cast types **as** another type."
+8.  **for**: Indicates purpose, duration, or recipient.
+    *   Example: "`Cargo` is the package manager **for** Rust."
+9.  **of**: Indicates possession, composition, or relation.
+    *   Example: "The object lifetime **of** references is tracked."
+10. **at**: Indicates location, time, or state.
+    *   Example: "Data races are prevented **at** compile time."
+11. **about**: Indicates topic or approximation.
+    *   Example: "Graydon Hoare began speaking **about** the language in 2009."
+12. **into**: Indicates movement or transformation.
+    *   Example: "`rustc` translates code **into** LLVM IR."
+13. **over**: Indicates passing or completion.
+    *   Example: "`for` loops **over** elements of a collection."
+14. **under**: Indicates subjection or lower position.
+    *   Example: "Rust evolved **under** a federated governance structure."
+15. **within**: Indicates inside a boundary or limit.
+    *   Example: "A reference is valid **within** its block."
+16. **without**: Indicates absence or lack of.
+    *   Example: "Rust enforces memory safety **without** a garbage collector."
+17. **between**: Indicates in the middle of two things.
+    *   Example: "The time **between** object creation and destruction is its lifetime."
+18. **among**: Indicates in the middle of several things.
+    *   Example: "Representatives **among** teams form the Leadership council."
+19. **through**: Indicates method, means, or passage.
+    *   Example: "Memory management is achieved **through** the ownership system."
+20. **along**: Indicates beside, with, or in parallel.
+    *   Example: "The development of Servo continued **along** with Rust."
+21. **across**: Indicates from one side to another, or universality.
+    *   Example: "Rust is used **across** different software domains."
+22. **beyond**: Indicates further than, or outside the scope of.
+    *   Example: "`Cargo` sources dependencies **beyond** crates.io."
+23. **near**: Indicates close to.
+    *   Example: "The language attracts people **near** to the queer community."
+24. **before**: Indicates prior to, or in front of.
+    *   Example: "Procedural macros modify token stream **before** compilation."
+25. **after**: Indicates subsequent to.
+    *   Example: "Graydon Hoare stepped down **after** 2013."
+26. **despite**: Indicates in spite of.
+    *   Example: "The project continued **despite** initial challenges."
+27. **during**: Indicates throughout a period of time.
+    *   Example: "**During** the early years, the compiler was written in OCaml."
+28. **except**: Indicates exclusion.
+    *   Example: "Static dispatch eliminates calls, **except** for dynamic trait objects."
+29. **inside**: Indicates within something.
+    *   Example: "The code is **inside** the block."
+30. **outside**: Indicates not within something.
+    *   Example: "Early adoption was **outside** Mozilla."
+31. **toward**: Indicates in the direction of.
+    *   Example: "Development focused **toward** 1.0 release."
+32. **upon**: Indicates on or based on.
+    *   Example: "The compiler was based **upon** LLVM."
+33. **regarding**: Indicates concerning or about.
+    *   Example: "Concerns arose **regarding** the future of Rust."
+34. **following**: Indicates after in sequence or time.
+    *   Example: "**Following** a large layoff, other companies sponsored Rust."
+35. **concerning**: Indicates about.
+    *   Example: "Concerns arose **concerning** the project's future."
+36. **versus**: Indicates in contrast to.
+    *   Example: "Rust **versus** other languages."
+37. **according to**: Indicates as stated by.
+    *   Example: "**According to** Andrew Binstock, Rust was elegant."
+38. **along with**: Indicates in addition to.
+    *   Example: "Typestates tracked variables **along with** state changes."
+39. **apart from**: Indicates besides or other than.
+    *   Example: "Rust became the first language **apart from** C and assembly in Linux."
+40. **because of**: Indicates reason or cause.
+    *   Example: "Layoffs occurred **because of** the COVID-19 pandemic."
+41. **due to**: Indicates caused by.
+    *   Example: "Corporate restructuring was **due to** the pandemic."
+42. **instead of**: Indicates in place of.
+    *   Example: "The garbage collector was removed **instead of** the ownership system."
+43. **near to**: Indicates close proximity.
+    *   Example: "The community attracted people **near to** the queer community."
+44. **next to**: Indicates adjacent to.
+    *   Example: "The new feature is **next to** the existing module."
+45. **prior to**: Indicates before in time or order.
+    *   Example: "**Prior to** Rebecca Rumbul, Ashley Williams was executive director."
+46. **subsequent to**: Indicates after in time or order.
+    *   Example: "**Subsequent to** version 1.0, new features were developed."
+47. **thanks to**: Indicates gratitude for something that helped.
+    *   Example: "Memory safety is guaranteed **thanks to** Rust's type system."
+48. **up to**: Indicates maximum limit or extent.
+    *   Example: "The range syntax goes **up to** and including 10."
+49. **ahead of**: Indicates in front of or before.
+    *   Example: "The project moved **ahead of** schedule."
+50. **close to**: Indicates very near or almost.
+    *   Example: "The reference is the **close to** a formal specification."
+
+#### Adjectives (30)
+1.  **Memory-safe**: Guarantees protection against memory-related errors.
+    *   Example: "Rust is a **memory-safe** programming language."
+2.  **Concurrent**: Capable of executing multiple tasks simultaneously without issues.
+    *   Example: "Rust supports **concurrent** programming effectively."
+3.  **Efficient**: Optimized for minimal resource usage (time, memory) and high performance.
+    *   Example: "Rust is an **efficient** language for systems development."
+4.  **Performant**: Characterized by high performance and speed.
+    *   Example: "Rust is designed to be highly **performant**."
+5.  **Reliable**: Able to consistently perform well and avoid failures.
+    *   Example: "Rust enables building **reliable** software."
+6.  **Secure**: Protected from unauthorized access, damage, or attacks.
+    *   Example: "Rust contributes to more **secure** software systems."
+7.  **Modern**: Reflecting contemporary programming practices and paradigms.
+    *   Example: "Rust is a **modern** systems programming language."
+8.  **Expressive**: Allowing complex ideas to be conveyed concisely and clearly.
+    *   Example: "Rust has an **expressive** type system."
+9.  **Strongly-typed**: Types are strictly enforced, preventing implicit conversions that could lead to errors.
+    *   Example: "Rust is a **strongly-typed** language."
+10. **Statically-typed**: Types are checked at compile time rather than runtime.
+    *   Example: "Rust is a **statically-typed** language."
+11. **Fast**: Operating at a high speed.
+    *   Example: "Rust enables writing **fast** and efficient code."
+12. **Deterministic**: Behavior is predictable and repeatable given the same inputs.
+    *   Example: "Rust provides **deterministic** management of resources."
+13. **Low-level**: Providing direct control over computer hardware and memory.
+    *   Example: "Rust can be used for **low-level** system programming."
+14. **High-level**: Providing abstractions that simplify complex operations.
+    *   Example: "Rust offers **high-level** features with zero runtime cost."
+15. **Flexible**: Adaptable to various programming styles and needs.
+    *   Example: "Rust's syntax offers a **flexible** approach to paradigms."
+16. **Ergonomic**: Designed for ease of use and developer comfort.
+    *   Example: "Rust's syntax is optimized for **ergonomic** use."
+17. **Zero-cost** (zero-overhead abstractions): High-level features with no runtime performance penalty.
+    *   Example: "Rust's **zero-cost** abstractions are a key advantage."
+18. **Multi-paradigm**: Supporting multiple programming paradigms (e.g., imperative, functional, object-oriented).
+    *   Example: "Rust is a **multi-paradigm** language influenced by functional programming."
+19. **Safe**: Code adheres to Rust's rules, preventing memory errors.
+    *   Example: "**Safe** mode is where most Rust code is written."
+20. **Innovative**: Introducing new and effective methods or ideas.
+    *   Example: "Rust's ownership model is highly **innovative**."
+21. **Robust**: Strong and healthy, able to withstand difficult conditions.
+    *   Example: "Rust allows building **robust** and scalable software."
+22. **Scalable**: Capable of being easily expanded or upgraded.
+    *   Example: "Rust is used to build **scalable** web services."
+23. **Productive**: Yielding good results or output.
+    *   Example: "Rust can make developers more **productive**."
+24. **Minimalist**: Characterized by bare essentials, without extra features.
+    *   Example: "Rust's core language focuses on a **minimalist** design."
+25. **Explicit**: Stated clearly and in detail, leaving no room for confusion.
+    *   Example: "Lifetimes can be **explicit** with named parameters."
+26. **Predictable**: Able to be foreseen or forecast.
+    *   Example: "Rust offers a clear and **predictable** performance model."
+27. **Complex**: Difficult to understand or learn.
+    *   Example: "Rust's ownership system can be **complex** to learn."
+28. **Friendly** (community): Welcoming and supportive.
+    *   Example: "The Rust community is noted for being unusually **friendly**."
+29. **Modular**: Composed of separate, organized parts.
+    *   Example: "Rust encourages **modular** code organization."
+30. **Unsafe**: Code that subverts Rust's memory safety restrictions, requiring developer responsibility.
+    *   Example: "**Unsafe** code blocks bypass the borrow checker."
+
+### Adverbs (30)
+
+Below are 30 adverbs, each with a concise explanation and an example illustrating its usage in a Rust programming context:
+
+*   **Safely**
+    *   Explanation: Used to describe actions that do not compromise memory safety.
+    *   Example: "The function shares data safely between threads".
+
+*   **Efficiently**
+    *   Explanation: Indicates that a process or operation is performed with minimal resource usage.
+    *   Example: "The algorithm processes data efficiently, ensuring optimal performance".
+
+*   **Concurrently**
+    *   Explanation: Describes tasks executed at the same time without causing data races.
+    *   Example: "The program runs multiple tasks concurrently, improving responsiveness".
+
+*   **Reliably**
+    *   Explanation: Suggests consistent and dependable behavior, crucial for robust code.
+    *   Example: "Rust ensures that the code runs reliably across different environments".
+
+*   **Statically**
+    *   Explanation: Refers to checks or operations performed at compile time.
+    *   Example: "The compiler enforces type safety statically, catching errors early".
+
+*   **Explicitly**
+    *   Explanation: Highlights clarity by stating details without ambiguity.
+    *   Example: "The code explicitly specifies lifetimes to ensure reference validity".
+
+*   **Optimally**
+    *   Explanation: Denotes that performance or resource usage is at its best.
+    *   Example: "The build system configures settings optimally for the target platform".
+
+*   **Iteratively**
+    *   Explanation: Indicates a process that refines or improves in successive steps.
+    *   Example: "The developer iteratively tests and refines the code to enhance functionality".
+
+*   **Consistently**
+    *   Explanation: Emphasizes uniform behavior across different scenarios.
+    *   Example: "The compiler consistently enforces the ownership model, preventing runtime errors".
+
+*   **Precisely**
+    *   Explanation: Suggests exactness and accuracy in operations or descriptions.
+    *   Example: "The function precisely calculates the memory allocation for each variable".
+
+*   **Clearly**
+    *   Explanation: Indicates that instructions or code are straightforward and easy to understand.
+    *   Example: "The documentation clearly explains the use of traits and generics".
+
+*   **Immediately**
+    *   Explanation: Denotes an action that occurs right away without delay.
+    *   Example: "Upon detecting an error, the program immediately logs and handles the issue".
+
+*   **Gradually**
+    *   Explanation: Describes a process that unfolds step by step, allowing for adjustments.
+    *   Example: "The system gradually scales resources based on workload changes".
+
+*   **Uniformly**
+    *   Explanation: Indicates that treatment or behavior is applied consistently.
+    *   Example: "The build process uniformly compiles all modules without variation".
+
+*   **Dynamically**
+    *   Explanation: Refers to changes or adjustments made during runtime.
+    *   Example: "The runtime environment dynamically adjusts thread priorities as needed".
+
+*   **Accurately**
+    *   Explanation: Highlights correctness and precision in processing or reporting.
+    *   Example: "The diagnostic tool accurately identifies potential memory leaks".
+
+*   **Swiftly**
+    *   Explanation: Indicates speed and promptness in execution or response.
+    *   Example: "The code swiftly processes requests, minimizing latency".
+
+*   **Robustly**
+    *   Explanation: Suggests resilience and the ability to handle unexpected conditions.
+    *   Example: "The system robustly manages errors, ensuring uninterrupted service".
+
+*   **Effectively**
+    *   Explanation: Denotes that actions are performed with the desired impact.
+    *   Example: "The new module effectively simplifies complex operations".
+
+*   **Proactively**
+    *   Explanation: Indicates taking initiative before issues arise.
+    *   Example: "The developer proactively refactors the code to prevent future bugs".
+
+*   **Carefully**
+    *   Explanation: Suggests a cautious and thorough approach to avoid mistakes.
+    *   Example: "The programmer carefully reviews the code to ensure no memory errors exist".
+
+*   **Flexibly**
+    *   Explanation: Describes adaptability in handling diverse situations or inputs.
+    *   Example: "The code is written flexibly to accommodate various system configurations".
+
+*   **Continuously**
+    *   Explanation: Indicates ongoing or unbroken activity or improvement.
+    *   Example: "The build process continuously monitors and updates the codebase".
+
+*   **Transparently**
+    *   Explanation: Suggests openness and clarity in operations or communication.
+    *   Example: "The documentation transparently explains the decision-making process".
+
+*   **Incrementally**
+    *   Explanation: Refers to changes made in small, manageable steps.
+    *   Example: "The project evolves incrementally, with each update adding new functionality".
+
+*   **Seamlessly**
+    *   Explanation: Denotes smooth integration or transition between components.
+    *   Example: "The integration between modules works seamlessly, ensuring a unified experience".
+
+*   **Thoroughly**
+    *   Explanation: Indicates comprehensive analysis or treatment of a subject.
+    *   Example: "The borrow checker thoroughly examines the code for potential errors".
+
+*   **Commonly**
+    *   Explanation: Implies frequent occurrence or widespread use.
+    *   Example: "Rust is commonly used for system programming tasks".
+
+*   **Globally**
+    *   Explanation: Refers to something affecting or applying to the entire program or system.
+    *   Example: "Some variables can be accessed globally within the application".
+
+*   **Internally**
+    *   Explanation: Refers to processes or states within a component or system.
+    *   Example: "The compiler internally optimizes the code before generating machine instructions".
+
+### Conjunctions (30)
+
+Below is a list of 30 closely related conjunctions that are often used in the context of Rust programming:
+
+*   **if**
+    *   Explanation: Used for conditional branching.
+    *   Example: `if x > 5 { println!("x is greater than 5"); }`.
+
+*   **else**
+    *   Explanation: Provides an alternative branch when the `if` condition fails.
+    *   Example: `if x > 5 { println!("x is greater than 5"); } else { println!("x is 5 or less"); }`.
+
+*   **match**
+    *   Explanation: Offers exhaustive pattern matching on an expression.
+    *   Example: `let x = 2; match x { 0 => println!("Zero"), 1 => println!("One"), _ => println!("Other"), }`.
+
+*   **while**
+    *   Explanation: Executes a loop as long as a condition remains true.
+    *   Example: `let mut i = 0; while i < 5 { println!("{}", i); i += 1; }`.
+
+*   **loop**
+    *   Explanation: Creates an infinite loop.
+    *   Example: `loop { println!("This will run forever!"); }`.
+
+*   **for**
+    *   Explanation: Iterates over a collection or range.
+    *   Example: `for number in 1..5 { println!("{}", number); }`.
+
+*   **unless**
+    *   Explanation: Acts as a conditional shortcut (execute if condition is false).
+    *   Example: `if x != 0 { println!("x is not zero"); }` (Rust doesn't have a direct `unless` keyword, this is typically achieved with `if !condition`).
+
+*   **and**
+    *   Explanation: Combines conditions (logical AND).
+    *   Example: `if a > 0 && b > 0 { println!("Both a and b are positive"); }`
+
+*   **or**
+    *   Explanation: Combines conditions (logical OR).
+    *   Example: `if a > 0 || b > 0 { println!("Either a or b is positive"); }`
+
+*   **then**
+    *   Explanation: Indicates the consequence of a condition.
+    *   Example: `if condition { do_something_then(); }`
+
+*   **when**
+    *   Explanation: Specifies a condition for an action.
+    *   Example: `match x { _ when x > 5 => println!("x is greater than 5"), _ => (), }` (Often used within `match` guards in Rust).
+
+*   **so**
+    *   Explanation: Indicates a result or consequence.
+    *   Example: `if x > 5 { println!("x is greater than 5, so we proceed..."); }`
+
+*   **but**
+    *   Explanation: Introduces a contrast.
+    *   Example: `if x > 5 { println!("x is greater than 5, but we need to check another condition"); }`
+
+*   **yet**
+    *   Explanation: Also signals contrast.
+    *   Example: `if x > 5 { println!("x is greater than 5, yet there is more to check"); }`
+
+*   **although**
+    *   Explanation: Expresses a concession.
+    *   Example: `if x > 5 { println!("x is greater than 5, although we need to verify further"); }`
+
+*   **despite**
+    *   Explanation: Similar to `although`, used for contrasting ideas.
+    *   Example: `// Despite x > 5, do_something(); - This means, even though x is greater than 5, the action is taken.` (Direct `despite` keyword not present; achieved logically).
+
+*   **however**
+    *   Explanation: Indicates a contrast or unexpected situation.
+    *   Example: `if x > 5 { println!("x is greater than 5, however, further processing is needed"); }`
+
+*   **either**
+    *   Explanation: Used with `or` to present alternatives.
+    *   Example: `if condition1 || condition2 { println!("Either condition1 or condition2 is true"); }`
+
+*   **neither**
+    *   Explanation: Denies both alternatives.
+    *   Example: `if !condition1 && !condition2 { println!("Neither condition1 nor condition2 is true"); }`
+
+*   **both**
+    *   Explanation: Affirms that two conditions or items are true.
+    *   Example: `if condition1 && condition2 { println!("Both conditions are true"); }`.
+
+*   **not only**
+    *   Explanation: Introduces one part of a compound statement.
+    *   Example: `if x > 5 { println!("Not only is x greater than 5, but it meets additional criteria"); }`
+
+*   **but also**
+    *   Explanation: Adds additional information.
+    *   Example: `if x > 5 { println!("x is greater than 5, but also it satisfies further conditions"); }`
+
+*   **whether**
+    *   Explanation: Introduces alternatives in a single clause.
+    *   Example: `if (x > 5) || (x < 0) { println!("x is either greater than 5 or less than 0"); }`
+
+*   **so that**
+    *   Explanation: Indicates purpose or result.
+    *   Example: `if x > 5 { do_something_so_that_result_is_met(); }`
+
+*   **in order to**
+    *   Explanation: Specifies the purpose of an action.
+    *   Example: `if x > 5 { do_something_in_order_to_meet_criteria(); }`
+
+*   **as soon as**
+    *   Explanation: Indicates the timing of events.
+    *   Example: `if x > 5 { do_something_as_soon_as_condition_is_met(); }`
+
+*   **until**
+    *   Explanation: Denotes a duration or condition for a loop.
+    *   Example: `let mut i = 0; while i < 5 { println!("{}", i); i += 1; }`.
+
+*   **since**
+    *   Explanation: Indicates cause or time.
+    *   Example: `if x > 5 { println!("x is greater than 5, since it meets the criteria"); }`.
+
+*   **because**
+    *   Explanation: Specifies a reason.
+    *   Example: `if x > 5 { println!("x is greater than 5 because it satisfies the condition"); }`.
+
+*   **even if**
+    *   Explanation: Introduces a condition that may be contrary to expectations.
+    *   Example: `if x > 5 { println!("x is greater than 5, even if it was expected to be lower"); }`
+
+### Pronouns (10)
+
+Below are 10 closely relevant pronouns related to the Rust Programming Language:
+
+*   **It**
+    *   Explanation: Often used to refer to the language as a whole, or a specific concept or entity.
+    *   Example: "Rust is a general-purpose programming language emphasizing performance, type safety, and concurrency. It enforces memory safety".
+
+*   **Its**
+    *   Explanation: Indicates possession or characteristics of Rust or its features.
+    *   Example: "It enforces memory safety, meaning that all references point to valid memory. It does so without a conventional garbage collector; instead, memory safety errors and data races are prevented by the 'borrow checker', which tracks the object lifetime of its references at compile time".
+
+*   **This**
+    *   Explanation: Refers to specific features, concepts, or instances within the language.
+    *   Example: "This enforces a form of software fault isolation as the owner of a value is solely responsible for its correctness and deallocation".
+
+*   **That**
+    *   Explanation: Points to particular concepts or previously mentioned items.
+    *   Example: "A related concept is scope: the nested context in which code is written has a set of names that are defined as 'in scope.' When reading, writing, and compiling code, programmers and compilers need to know whether a particular name at a particular spot refers to a variable, function, struct, enum, module, constant, or other item and what that item means".
+
+*   **These**
+    *   Explanation: Refers to multiple related features or rules.
+    *   Example: "Rust has a number of features that allow you to manage your code’s organization, including which details are exposed, which details are private, and what names are in each scope in your programs. These features, sometimes collectively referred to as the module system, include:".
+
+*   **Those**
+    *   Explanation: Indicates multiple characteristics or elements, often at a distance or in contrast.
+    *   Example: "Integer types in Rust are named based on the signedness and the number of bits the type takes. For example, i32 is a signed integer that takes 32 bits of storage, whereas u8 is unsigned and only takes 8 bits of storage. isize and usize are integer types whose size depend on the architecture of the computer that runs the code; for example, on computers with 32-bit architectures, both those types will take up 32 bits of space".
+
+*   **One**
+    *   Explanation: Can refer to a specific tool, concept, or element within a collection.
+    *   Example: "The programs we’ve written so far have been in one module in one file".
+
+*   **None**
+    *   Explanation: May be used in contexts where no ownership or reference exists, or to indicate the absence of a value.
+    *   Example: "let name1: Option< &str> = None;" or "Rust instead uses Option for this purpose: Some(T) indicates that a value is present, and None is analogous to the null pointer".
+
+*   **Some**
+    *   Explanation: Refers to parts or aspects of the language, or to indicate the presence of a value.
+    *   Example: "match can be used to double an optional integer value if present, and return zero otherwise: Some(y) => y * 2, None => 0," or "let name2: Option< &str> = Some("Matthew");".
+
+*   **Any**
+    *   Explanation: Used to denote non-specific elements or possibilities.
+    *   Example: "The Display traits can be implemented for any type that can be converted to a string".
+
+### Numerals (10)
+
+Below are 10 closely related numerals that connect to the Rust programming language, often representing versions or significant quantities:
+
+*   **1.0**
+    *   Explanation: Represents the first stable release version of Rust, published on May 15, 2015.
+    *   Example: "Six years after Mozilla sponsored its development, the first stable release, Rust 1.0, was published on May 15, 2015".
+
+*   **2006**
+    *   Explanation: The year Graydon Hoare began Rust as a personal project.
+    *   Example: "Rust began as a personal project by Mozilla employee Graydon Hoare in 2006".
+
+*   **2009**
+    *   Explanation: The year Mozilla officially sponsored the Rust project.
+    *   Example: "Mozilla officially sponsored the Rust project in 2009".
+
+*   **2012**
+    *   Explanation: The year of the first public release, Rust 0.1, on January 20, 2012.
+    *   Example: "The first public release, Rust 0.1 was released on January 20, 2012".
+
+*   **1.87.0**
+    *   Explanation: The stable release version of Rust at some point.
+    *   Example: "Stable release 1.87.0".
+
+*   **32**
+    *   Explanation: Often refers to the number of bits in default integer types like `i32` or `u32`.
+    *   Example: "Integer types in Rust are named based on the signedness and the number of bits the type takes. For example, i32 is a signed integer that takes 32 bits of storage".
+
+*   **64**
+    *   Explanation: Often refers to the number of bits in default floating-point types like `f64`.
+    *   Example: "IEEE 754 floating point numbers are supported with f32 for single precision floats and f64 for double precision floats".
+
+*   **5000**
+    *   Explanation: Approximate number of third-party libraries published on Crates.io a year after Rust 1.0.
+    *   Example: "A year after the release, the Rust compiler had accumulated over 1,400 contributors and there were over 5,000 third-party libraries published on the Rust package management website Crates.io".
+
+*   **2021**
+    *   Explanation: The year the Rust Foundation was formed.
+    *   Example: "On February 8, 2021, the formation of the Rust Foundation was announced by five founding companies: Amazon Web Services, Google, Huawei, Microsoft, and Mozilla".
+
+*   **2022**
+    *   Explanation: The year Rust became supported in Linux kernel development.
+    *   Example: "In December 2022, Rust became the first language other than C and assembly to be supported in the development of the Linux kernel".
+
+### Measure Words (10)
+
+Below are 10 closely related measure words for the Rust programming language, reflecting distinct organizational or structural units:
+
+*   **Crate**
+    *   Explanation: The fundamental compilation unit in Rust that produces a library or executable. It contains a tree of modules.
+    *   Example: "A package can contain multiple binary crates and optionally one library crate".
+
+*   **Module**
+    *   Explanation: A way to organize and encapsulate code within a crate, controlling organization, scope, and privacy of paths.
+    *   Example: "The programs we’ve written so far have been in one module in one file".
+
+*   **Package**
+    *   Explanation: A Cargo feature that bundles one or more crates with associated metadata and dependencies.
+    *   Example: "A package can contain multiple binary crates and optionally one library crate".
+
+*   **Dependency**
+    *   Explanation: An external crate that a project relies on for additional functionality.
+    *   Example: "As a package grows, you can extract parts into separate crates that become external dependencies".
+
+*   **Library**
+    *   Explanation: A crate designed to provide reusable functionality without producing an executable binary.
+    *   Example: "Crates: A tree of modules that produces a library or executable".
+
+*   **Binary**
+    *   Explanation: A crate that compiles into an executable program that can be run directly.
+    *   Example: "A package can contain multiple binary crates and optionally one library crate".
+
+*   **Project**
+    *   Explanation: The overall workspace or directory that encompasses the source code, configuration files, and dependencies for a Rust application.
+    *   Example: "As a project grows, you should organize code by splitting it into multiple modules and then multiple files".
+
+*   **Workspace**
+    *   Explanation: A set of interrelated packages managed together by Cargo, designed for very large projects.
+    *   Example: "For very large projects comprising a set of interrelated packages that evolve together, Cargo provides workspaces".
+
+*   **Feature**
+    *   Explanation: Optional compile-time configuration to enable or disable specific functionality in crates.
+    *   Example: "Rust has a number of features that allow you to manage your code’s organization".
+
+*   **Paths**
+    *   Explanation: A way of naming an item, such as a struct, function, or module, used within the module system.
+    *   Example: "Modules and use: Let you control the organization, scope, and privacy of paths".
+
+### Determiners (10)
+
+Below are 10 closely relevant determiners for the Rust programming language, clarifying the scope and specificity of references:
+
+*   **The**
+    *   Explanation: Used to specify a particular instance or a unique entity.
+    *   Example: "The programs we’ve written so far have been in one module in one file".
+
+*   **A**
+    *   Explanation: Indicates an indefinite, non-specific instance or one of many.
+    *   Example: "A package can contain multiple binary crates and optionally one library crate".
+
+*   **Some**
+    *   Explanation: Referring to an unspecified number or subset.
+    *   Example: "Rust does not enforce a programming paradigm, but was influenced by ideas from functional programming, including immutability, higher-order functions, algebraic data types, and pattern matching. It also supports object-oriented programming via structs, enums, traits, and methods. Some software developer Graydon Hoare created Rust as a personal project while working at Mozilla Research in 2006".
+
+*   **Any**
+    *   Explanation: Used when the identity is not important or to express generality.
+    *   Example: "The Display traits can be implemented for any type that can be converted to a string".
+
+*   **Every**
+    *   Explanation: Emphasizing all members of a group or universal application.
+    *   Example: "At compile time, each value must be attached to a variable called the owner of that value, and every value must have exactly one owner".
+
+*   **Most**
+    *   Explanation: Indicating a large portion or majority of a group.
+    *   Example: "Early developer Manish Goregaokar similarly described Rust as being based on 'mostly decades-old research.'".
+
+*   **Few**
+    *   Explanation: Suggesting a limited number of instances. The search results do not explicitly provide a direct usage example for "few" in the context of Rust's features or components.
+
+*   **Several**
+    *   Explanation: Denoting multiple items in a group, more than two but not many.
+    *   Example: "Rust is a general-purpose programming language emphasizing performance, type safety, and concurrency. It enforces memory safety, meaning that all references point to valid memory. It does so without a conventional garbage collector; instead, memory safety errors and data races are prevented by the 'borrow checker', which tracks the object lifetime of references at compile time. Several software projects have adopted Rust, especially web services and system software".
+
+*   **Either**
+    *   Explanation: Used when choosing between two options.
+    *   Example: "The Boolean type is referred to as bool which can take a value of either true or false".
+
+*   **Neither**
+    *   Explanation: Indicating not one of two alternatives. The search results do not explicitly provide a direct usage example for "neither" in the context of Rust's features or components.
+
+### Interjections (10)
+
+Below are 10 interjections closely related to the Rust programming language, expressing typical developer reactions:
+
+*   **Oh**
+    *   Explanation: Expresses surprise or sudden realization, often when encountering an unexpected compile-time error or a surprising behavior in Rust’s ownership system.
+    *   Example: "Oh! I didn’t realize the borrow checker would flag that code. let r; let x = 5; r = &x; // ERROR: x does not live long enough".
+
+*   **Wow**
+    *   Explanation: Conveys amazement at Rust’s unique features, such as its memory safety guarantees or the elegance of its ownership model.
+    *   Example: "Wow, Rust’s ownership system really simplifies managing resources!".
+
+*   **Hmm**
+    *   Explanation: Indicates thoughtful consideration or puzzlement when contemplating complex aspects of Rust’s type system or lifetime annotations.
+    *   Example: "Hmm, how can I adjust these lifetimes to satisfy the compiler?".
+
+*   **Hey**
+    *   Explanation: Used to draw attention or prompt discussion about Rust’s innovative features, often in a casual conversation among developers.
+    *   Example: "Hey, have you heard Rust became the first language other than C and assembly to be supported in the development of the Linux kernel?".
+
+*   **Whoa**
+    *   Explanation: Expresses excitement or admiration for Rust’s ability to provide safe concurrency and efficient performance.
+    *   Example: "Whoa, that parallel processing in Rust is impressive!".
+
+*   **Man**
+    *   Explanation: Reflects admiration for Rust’s performance, reliability, or its ability to handle low-level system tasks.
+    *   Example: "Man, writing safe system-level code with Rust is a game changer!".
+
+*   **Phew**
+    *   Explanation: Signals relief after overcoming a particularly challenging debugging session or resolving a tricky issue in Rust code.
+    *   Example: "Phew, finally got that borrow checker error sorted out!".
+
+*   **Darn**
+    *   Explanation: Conveys mild frustration when facing a persistent problem, such as a stubborn lifetime issue or a complex error message in Rust.
+    *   Example: "Darn, why is the compiler complaining about this reference again?".
+
+*   **Bravo**
+    *   Explanation: Shows approval and respect for the elegant design or innovative features of Rust, such as its zero-cost abstractions or memory safety.
+    *   Example: "Bravo! That clever use of generics in the code is brilliant".
+
+*   **Rusty**
+    *   Explanation: A playful, affectionate term used to describe someone who is deeply proficient in Rust or passionate about the language.
+    *   Example: "You're so rusty—you really understand the ownership model inside out!".
+
+### Terminologies
+
+*   **Ownership**
+    *   Description: A core concept in Rust where each value has a single owner, ensuring memory safety without a garbage collector. When the owner goes out of scope, the value is dropped.
+
+*   **Borrowing**
+    *   Description: A mechanism where a value can be temporarily accessed via a reference without transferring ownership. Rust enforces rules that allow either one mutable reference or any number of immutable references, but not both simultaneously, to prevent data races.
+
+*   **Lifetimes**
+    *   Description: The period during which a reference is valid, from creation to destruction. Lifetimes are associated with all Rust reference types and are enforced by the borrow checker to prevent dangling pointers.
+
+*   **Crate**
+    *   Description: The fundamental compilation unit in Rust, which can produce either a library or an executable. A package can contain multiple binary crates and one optional library crate.
+
+*   **Module**
+    *   Description: A code organization feature that allows grouping related functionality and controlling the scope, privacy, and paths of items within a crate.
+
+*   **Package**
+    *   Description: A Cargo feature that bundles one or more crates, along with metadata and instructions for building, testing, and sharing them.
+
+*   **Cargo**
+    *   Description: Rust's official build system and package manager, used for managing dependencies, compiling projects, and running tests.
+
+*   **Trait**
+    *   Description: A mechanism in Rust that defines shared behavior that types can implement, similar to interfaces in other languages.
+
+*   **Struct**
+    *   Description: A user-defined compound data type that groups multiple related values into a single unit.
+
+*   **Enum**
+    *   Description: A data type that can take on different variants, providing a way to define algebraic data types.
+
+*   **Borrow Checker**
+    *   Description: A part of the Rust compiler that enforces the ownership and borrowing rules at compile time, preventing memory safety errors and data races.
+
+*   **Zero-cost Abstraction**
+    *   Description: A design principle in Rust where high-level language features (like generics and iterators) incur no runtime performance penalty.
+
+*   **Monomorphization**
+    *   Description: The process by which the Rust compiler generates a separate, specialized version of generic code for each concrete type it is used with, leading to optimized performance but potentially larger binary sizes.
+
+*   **Raw Pointers**
+    *   Description: Low-level pointers (`*const` and `*mut`) that can be null and are not subject to Rust's ownership and borrowing rules. Their dereferencing is only allowed within `unsafe` blocks.
+
+*   **Immutable**
+    *   Description: A property of values that cannot be changed after they are created. By default, variables in Rust are immutable.
+
+*   **Mutable**
+    *   Description: A property of values that can be changed after creation. The `mut` keyword is used to declare mutable variables.
+
+*   **Scope**
+    *   Description: The context within which a variable or item is defined and can be accessed. When an item goes out of scope, its resources are typically released.
+
+*   **Pattern Matching**
+    *   Description: A powerful control flow construct using `match` expressions to compare a value against a series of patterns and execute code based on which pattern matches.
+
+*   **Trait Object**
+    *   Description: A way to achieve dynamic dispatch in Rust, allowing methods to be called on types that implement a specific trait, without knowing the concrete type at compile time. Trait objects are dynamically sized and must be placed behind a pointer like `Box`.
+
+*   **Crates.io**
+    *   Description: The official package registry for Rust, where developers can find and publish open-source crates.
+
+### Formulas
+
+*   **Ownership Transfer Formula**
+    *   Description: When a value is assigned to another variable or passed to a function, its ownership is transferred. This concept, known as "move semantics," ensures that there is always only one owner for a given resource, thus preventing double-free errors.
+    *   Formula: `let s1 = String::from("hello"); let s2 = s1; // s1 is moved to s2; s1 is no longer valid.`.
+
+*   **Immutable Borrowing Formula**
+    *   Description: To create an immutable reference to a value, use the `&` operator. Multiple immutable references can exist simultaneously, enabling safe concurrent reads.
+    *   Formula: `fn print_string(s: &String) { println!("{}", s); } let s_val = String::from("Hello"); print_string(&s_val); // s_val is immutably borrowed`.
+
+*   **Mutable Borrowing Formula**
+    *   Description: To create a mutable reference, use the `&mut` operator. Only one mutable reference to a specific piece of data can exist at any given time, preventing data races.
+    *   Formula: `let mut s = String::from("hello"); let s_mut = &mut s; s_mut.push_str(" world"); // s_mut is a mutable reference`. (Note: The provided document does not contain an explicit `push_str` example with `&mut s`).
+
+*   **Lifetime Annotation Formula**
+    *   Description: Lifetimes, denoted by an apostrophe followed by an identifier (e.g., `'a`), are used to indicate the valid scope of references within function signatures or struct definitions, ensuring that references do not outlive the data they point to.
+    *   Formula: `fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str { /* ... */ }`.
+
+*   **Generic Function Formula with Trait Bounds**
+    *   Description: Generics allow functions to operate on multiple types, reducing code duplication. Trait bounds, specified using `T: Trait`, ensure that generic types implement a particular trait, guaranteeing required behavior.
+    *   Formula: `fn sum<T>(num1: T, num2: T) -> T where T: std::ops::Add<Output = T>, { num1 + num2 }`.
+
+*   **Pattern Matching Formula (match expression)**
+    *   Description: The `match` expression allows comparing a value against a series of patterns and executing different code blocks based on which pattern matches. It ensures exhaustive handling of all possibilities for types like enums.
+    *   Formula: `match optional_value { Some(x) => x * 2, None => 0, }`.
+
+*   **Loop Expression Formula**
+    *   Description: The `loop` keyword creates an infinite loop that continues executing its block until a `break` statement is encountered. A `break` can optionally return a value.
+    *   Formula: `let result = loop { if condition { break value; } };`. (Specific example from document: `let y = 'breaking: loop { let mut down = 120; loop { if down % 10 == 0 { break 'breaking down; } down -= 1; } }; println!("largest power of ten that is smaller than or equal to value: {y}");`).
+
+### Analogies
+
+*   **Rust as a Meticulous Librarian**
+    *   Description: Rust operates like a meticulous librarian who ensures every book (data) has a designated spot (memory) and is carefully tracked to prevent misplacement or loss. Just as a librarian ensures order in the archives, Rust's ownership model meticulously manages memory, preventing issues like dangling pointers and memory leaks by ensuring each piece of data has a clear, single owner.
+
+*   **Rust as a Disciplined Traffic Controller**
+    *   Description: Rust acts as a highly disciplined traffic controller overseeing a busy intersection (concurrent program execution). It directs vehicles (threads) safely, ensuring no two vehicles occupy the same space (data) simultaneously when modification is involved, thus preventing collisions (data races). This strict adherence to rules, enforced by the borrow checker, guarantees smooth and safe flow.
+
+*   **Rust as a Master Chef with a Strict Recipe**
+    *   Description: Rust is akin to a master chef preparing a gourmet meal with a strict recipe. Every ingredient (data) is measured precisely and handled according to stringent rules. This meticulous process, much like Rust's compile-time checks, ensures that nothing goes wrong during preparation—no undercooked dishes (bugs) or cross-contamination (memory errors)—resulting in a consistently safe and high-quality outcome.
+
+*   **Rust as a Construction Foreman with Blueprints**
+    *   Description: Think of Rust as a vigilant construction foreman armed with detailed blueprints (the type system and ownership rules). Before any construction (program execution) begins, the foreman checks every detail against the plans, ensuring materials (data) are used correctly, and workers (functions) adhere to safety protocols. This rigorous pre-construction validation prevents structural failures (runtime errors) and ensures the final building is robust and stable.
+
+*   **Rust as a Financial Auditor**
+    *   Description: Rust operates like a diligent financial auditor meticulously tracking every asset (data) and transaction (data access/modification). It ensures that no asset is used or disposed of without proper authorization (ownership and borrowing rules), and every asset is accounted for. This rigorous auditing prevents financial fraud (memory corruption) and ensures data integrity and security.
 
 Bibliography
-1869-eprintln - The Rust RFC Book. (2017). https://rust-lang.github.io/rfcs/1869-eprintln.html
+Functions - The Rust Programming Language. (n.d.). https://doc.rust-lang.org/book/ch03-03-how-functions-work.html
 
-Abandoning the Rust Programming Language - GameDev.net. (2024). https://www.gamedev.net/blogs/entry/2294178-abandoning-the-rust-programming-language/
+Managing Growing Projects with Packages, Crates, and Modules. (n.d.). https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html
 
-Are very explanatory compiler error messages worth the effort ... (2023). https://langdev.stackexchange.com/questions/544/are-very-explanatory-compiler-error-messages-worth-the-effort-needed-to-implemen
-
-Basics - A Gentle Introduction to Rust. (2017). https://stevedonovan.github.io/rust-gentle-intro/1-basics.html
-
-Comments - Rust By Example - Rust Documentation. (2021). https://doc.rust-lang.org/rust-by-example/hello/comment.html
-
-Comments - The Rust Programming Language - Rust Documentation. (2024). https://doc.rust-lang.org/book/ch03-04-comments.html
-
-Comments - The Rust Reference - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.26.0/arch/amd64_ubuntu1404/share/doc/rust/html/reference/comments.html
-
-compile_error in std - Rust. (2025). https://doc.rust-lang.org/std/macro.compile_error.html
-
-eprintln in anstream - Rust - hax. (2025). https://hax.cryspen.com/frontend/docs/anstream/macro.eprintln.html
-
-eprintln in async_std - Rust - Docs.rs. (2021). https://docs.rs/async-std/latest/async_std/macro.eprintln.html
-
-Expressions - The Rust Style Guide. (n.d.). https://doc.rust-lang.org/style-guide/expressions.html
-
-How to Panic in Rust - ralfj.de. (2019). https://www.ralfj.de/blog/2019/11/25/how-to-panic-in-rust.html
-
-How to report errors in a procedural macro using the quote macro? (2019). https://stackoverflow.com/questions/54392702/how-to-report-errors-in-a-procedural-macro-using-the-quote-macro
-
-interaction - Rust - Docs.rs. (2021). https://docs.rs/interaction
-
-Macro - eprintln in std - Rust Documentation. (2025). https://doc.rust-lang.org/std/macro.eprintln.html
-
-Macro - panic in std. (2025). https://doc.rust-lang.org/std/macro.panic.html
-
-Macro - try in std. (2025). https://doc.rust-lang.org/std/macro.try.html
-
-Macros - The Rust Programming Language. (n.d.). https://doc.rust-lang.org/book/ch19-06-macros.html
-
-Mysterious procedural macro error - Rust Users Forum. (2023). https://users.rust-lang.org/t/mysterious-procedural-macro-error/102897
-
-panic! - Rust By Example. (2013). https://doc.rust-lang.org/rust-by-example/std/panic.html
-
-Proc_macro error handling - The Rust Programming Language Forum. (2022). https://users.rust-lang.org/t/proc-macro-error-handling/72201
-
-Rust By Example - Rust Documentation. (n.d.). https://doc.rust-lang.org/rust-by-example/meta/doc.html
-
-Rust, println! & eprintln! - Mike Code - Medium. (2024). https://medium.com/@mikecode/rust-println-eprintln-89d3878fec78
-
-Rust Syntax - W3Schools. (2025). https://www.w3schools.com/rust/rust_syntax.php
-
-std::eprintln - Rust - MIT. (n.d.). http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/std/macro.eprintln.html
-
-To panic! or Not to panic! - The Rust Programming Language. (2021). https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html
-
-Unrecoverable Errors with panic! - The Rust Programming Language. (2021). https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html
-
-Warn on Fullwidth Exclamation Mark (U+FF01) in comment #134810. (2024). https://github.com/rust-lang/rust/issues/134810
-
-Why did Rust require macro names to have an exclamation point at ... (2023). https://langdev.stackexchange.com/questions/3071/why-did-rust-require-macro-names-to-have-an-exclamation-point-at-the-end
-
-Why does the println! function use an exclamation mark in Rust? (2015). https://stackoverflow.com/questions/29611387/why-does-the-println-function-use-an-exclamation-mark-in-rust
-
-Writing Error Messages to Standard Error Instead of Standard Output. (2018). https://doc.rust-lang.org/book/ch12-06-writing-to-stderr-instead-of-stdout.html
-
-300 Prepositions Word List - BellaWrite. (2023). https://www.bellawrite.com/300-prepositions-list/
-
-A - Keywords - The Rust Programming Language - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/appendix-01-keywords.html
-
-A list of reserved keywords in Rust Language. - GitHub Gist. (2020). https://gist.github.com/ritz078/1be714dea593838587c8a5df463a583a
-
-Advanced Features - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/ch20-00-advanced-features.html
-
-Adverb Finder - Finds adverbs in text, free online tool! (2022). https://charactercounter.com/adverb-finder
-
-Adverbs - Lingwa de Planeta Grammar with Examples. (n.d.). https://lidepla-lang.github.io/grammar/adverbs.html
-
-Adverbs: Definition and Examples - Grammar Monster. (n.d.). https://www.grammar-monster.com/lessons/adverbs.htm
-
-B - Operators and Symbols - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/appendix-02-operators.html
-
-Basics - A Gentle Introduction to Rust. (2017). https://stevedonovan.github.io/rust-gentle-intro/1-basics.html
-
-Characteristics of Object-Oriented Languages. (2018). https://doc.rust-lang.org/book/ch18-01-what-is-oo.html
-
-Complete List of Prepositions - Englishpage.com. (n.d.). https://www.englishpage.com/prepositions/prepositions_list.htm
-
-Discover the Key Features of Rust Programming Language. (2024). https://risingwave.com/blog/exploring-the-key-features-and-advantages-of-the-rust-programming-language/
-
-Don’t report module name repetitions with prepositions, like `foo ... (2024). https://github.com/rust-lang/rust-clippy/issues/12544
-
-English Verbs + Prepositions List. (2023). https://www.espressoenglish.net/english-verbs-prepositions-list/
-
-Glossary - The Rust Reference. (2024). https://doc.rust-lang.org/reference/glossary.html
-
-Grammar. (2011). https://doc.rust-lang.org/grammar.html
-
-Grammar - MIT. (2011). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/grammar.html
-
-Help with beginner’s project - Rust Users Forum. (2024). https://users.rust-lang.org/t/help-with-beginners-project/109694
-
-if/else - Rust By Example. (2021). https://doc.rust-lang.org/rust-by-example/flow_control/if_else.html
-
-Introduction to Rust Programming Language - GeeksforGeeks. (2024). https://www.geeksforgeeks.org/rust/introduction-to-rust-programming-language/
-
-Language Tidy Up Feature 1 - unwrap Shorthand (!) - Rust Internals. (2022). https://internals.rust-lang.org/t/language-tidy-up-feature-1-unwrap-shorthand/17871
-
-Loops - The Rust Programming Language - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/loops.html
-
-mad_libs/List of Adverbs.txt at master - GitHub. (2016). https://github.com/janester/mad_libs/blob/master/List%20of%20Adverbs.txt
-
-My pronouns are: rust/rusts - Pronouns.page. (2012). https://en.pronouns.page/rust,rust,rusts,rusts,rustself,0,personal%20%E2%80%9Cit%E2%80%9D
-
-My pronouns are: rust/rust’s - Pronouns.page. (2012). https://en.pronouns.page/:rust
-
-My Rust Programming Language Journey —2 — Common ... - Medium. (2025). https://medium.com/@aserdargun/my-rust-programming-language-journey-common-programming-concepts-c0dcb010734a
-
-Normal conjunction? - language design - Rust Internals. (2018). https://internals.rust-lang.org/t/normal-conjunction/7568
-
-Object-Oriented Programming - A Gentle Introduction to Rust. (n.d.). https://stevedonovan.github.io/rust-gentle-intro/object-orientation.html
-
-One line conditionals - The Rust Programming Language Forum. (2021). https://users.rust-lang.org/t/one-line-conditionals/56400
-
-Petnames in petname - Rust - Docs.rs. (2021). https://docs.rs/petname/latest/petname/struct.Petnames.html
-
-Preposition list | Grammar Place. (2024). https://grammar.place/preposition-list
-
-Pronoun Policy - #10 by MTRust - Rust Internals. (2015). https://internals.rust-lang.org/t/pronoun-policy/2111/10
-
-Pronoun Policy - Page 2 - Rust Internals. (2015). https://internals.rust-lang.org/t/pronoun-policy/2111?page=2
-
-Pronoun Policy - Rust Internals. (2015). https://internals.rust-lang.org/t/pronoun-policy/2111
-
-Punctuation in sentence - Rust - Docs.rs. (2021). https://docs.rs/sentence/latest/sentence/enum.Punctuation.html
-
-Rust community lingo basics. (2020). https://users.rust-lang.org/t/rust-community-lingo-basics/38883
-
-Rust Programming Language. (2018). https://www.rust-lang.org/
+Rust Challenge: Word Count - Medium. (2024). https://medium.com/rustaceans/rust-challenge-word-count-d2c0be86258a
 
 Rust (programming language) - Wikipedia. (2010). https://en.wikipedia.org/wiki/Rust_(programming_language)
 
-Rust 关键字的使用_rust string trim-CSDN博客. (2022). https://blog.csdn.net/mr1jie/article/details/127273627
+Word Count in Rust on Exercism. (n.d.). https://exercism.org/tracks/rust/exercises/word-count
 
-【Rust 笔记】15-字符串与文本（上）_rust 汉字ascii-CSDN博客. (2022). https://blog.csdn.net/feiyanaffection/article/details/125575125
-
-syn::punctuated - Rust - Docs.rs. (2025). https://docs.rs/syn/latest/syn/punctuated/index.html
-
-The Rust Programming Language. (2024). https://rust-lang.github.io/book/
-
-use - Rust. (2025). https://doc.rust-lang.org/std/keyword.use.html
-
-Which preposition should I use, “up” or “into”? Rust had eaten. (2022). https://englishgrammar4u.quora.com/Which-preposition-should-I-use-up-or-into-Rust-had-eaten-the-metal
-
-Why Rust Uses println! Instead of Just println | by Jyoti tewari | Medium. (2024). https://medium.com/@JyotiTewari/why-rust-uses-println-instead-of-just-println-4f95067e04c7
-
-Writing a new programming language. Part I: a bit of boring theory. (2022). https://dev.to/kgrech/writing-a-new-programming-language-part-i-a-bit-of-boring-theory-65e
-
-使用字符串储存UTF-8 编码的文本- Rust 程序设计语言简体中文版. (2021). https://kaisery.github.io/trpl-zh-cn/ch08-02-strings.html
-
-字符串片段（String Slice） - Tour of Rust. (n.d.). https://tourofrust.com/65_zh-cn.html
-
-字面量表达式- Rust 参考手册中文版. (2021). https://colobu.com/rust-reference/expressions/literal-expr.html
-
-格式化输出 - Rust语言圣经(Rust Course). (2015). https://course.rs/basic/formatted-output.html
-
-A - Keywords - The Rust Programming Language. (n.d.). https://doc.rust-lang.org/book/appendix-01-keywords.html
+A - Keywords - The Rust Programming Language. (2015). https://doc.rust-lang.org/book/appendix-01-keywords.html
 
 A - Keywords - The Rust Programming Language - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/appendix-01-keywords.html
 
-A Rapid Guide to All Rust Features | by David Lee - Medium. (2023). https://medium.com/@lordmoma/a-rapid-guide-to-all-rust-features-6f2636dadc43
-
-About Rust Programming Language - DEV Community. (2023). https://dev.to/grigorkh/about-rust-programming-language-36ac
-
-Advanced Features - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/ch20-00-advanced-features.html
-
-All the Rust Features - DEV Community. (2024). https://dev.to/francescoxx/all-the-rust-features-1l1o
+Alessia Antelmi, G. Cordasco, Matteo D’Auria, Daniele De Vinco, A. Negro, & Carmine Spagnuolo. (2019). On Evaluating Rust as a Programming Language for the Future of Massive Agent-Based Simulations. In Asian Simulation Conference. https://link.springer.com/chapter/10.1007/978-981-15-1078-6_2
 
 Appendix A: Keywords - The Rust Programming Language. (2015). https://rust-book.cs.brown.edu/appendix-01-keywords.html
 
-Basics - A Gentle Introduction to Rust. (2017). https://stevedonovan.github.io/rust-gentle-intro/1-basics.html
+Best Practices for Rust Programming | by Geek Nomad - Medium. (n.d.). https://medium.com/@geeknomad/best-practices-for-rust-programming-bc58b47343ef
+
+C. Hoare. (1973). Hints on programming language design. http://link.springer.com/10.1007/978-3-662-09507-2_3
 
 Coding/Naming convention - The Rust Programming Language Forum. (2015). https://users.rust-lang.org/t/coding-naming-convention/785
 
-Common Programming Concepts - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html
+Common Programming Concepts - The Rust Programming Language. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/ch03-00-common-programming-concepts.html
 
-Don’t report module name repetitions with prepositions, like `foo ... (2024). https://github.com/rust-lang/rust-clippy/issues/12544
+D. Naugler. (2018). An introduction to rust programming. In Journal of Computing Sciences in Colleges. https://www.semanticscholar.org/paper/8b49017a80ef9a97cf68cba521e4f78a9ea9181d
 
-Dumb question: Exactly what is the logo of Rust? - Reddit. (2020). https://www.reddit.com/r/rust/comments/jjrwew/dumb_question_exactly_what_is_the_logo_of_rust/
+Detailed Explanation of the Rust Programming Language | by happyer. (2024). https://medium.com/@threehappyer/detailed-explanation-of-the-rust-programming-language-844cb976008e
 
-E - Editions - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/appendix-05-editions.html
+Functions in Rust - GeeksforGeeks. (n.d.). https://www.geeksforgeeks.org/rust/functions-in-rust/
 
-Experiment Introduction - The Rust Programming Language. (2022). https://rust-book.cs.brown.edu/
+G. Jain. (2013). Chapter 9 – Programming Languages. https://linkinghub.elsevier.com/retrieve/pii/B9780124160187000092
 
-Functions - The Rust Programming Language. (2021). https://doc.rust-lang.org/book/ch03-03-how-functions-work.html
+G. Klinker, Carlos Bhola, G. Dallemagne, David Marques, & J. McDermott. (1991). Usable and reusable programming constructs. In Knowl. Acquis. https://linkinghub.elsevier.com/retrieve/pii/1042814391900014
+
+Gabriele Magnani, Lev Denisov, Daniele Cattaneo, G. Agosta, & Stefano Cherubin. (2024). Precision Tuning the Rust Memory-Safe Programming Language. In PARMA-DITAM. https://www.semanticscholar.org/paper/58fbcde960a79a72b73b5796868d552923d4a6a8
+
+GitHub - e3b0c442/keywords: A list and count of keywords in programming ... (2018). https://github.com/e3b0c442/keywords
 
 Glossary - Comprehensive Rust - Google. (n.d.). https://google.github.io/comprehensive-rust/glossary.html
 
-Glossary - Possible Rust. (2021). https://www.possiblerust.com/glossary/
+Glossary - The Rust Programming Language - Massachusetts Institute of ... (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/glossary.html
 
-Glossary - The Rust Programming Language - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/glossary.html
+Help with beginner’s project - Rust Users Forum. (2024). https://users.rust-lang.org/t/help-with-beginners-project/109694
 
-Glossary - The Rust Reference. (2024). https://doc.rust-lang.org/reference/glossary.html
+How to convert numbers to words in rust. (n.d.). https://users.rust-lang.org/t/how-to-convert-numbers-to-words-in-rust/66487
 
-Grammar - MIT. (2011). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/grammar.html
-
-In Rust We Trust: What’s the Story with Developers’ Most Beloved ... (2024). https://www.infosecurity-magazine.com/blogs/in-rust-we-trust-developers/
-
-Introduction - Rust By Example - MIT. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/rust-by-example/index.html
+Introduction - A Gentle Introduction to Rust - GitHub Pages. (n.d.). https://stevedonovan.github.io/rust-gentle-intro/
 
 Introduction - Rust By Example - Rust Documentation. (n.d.). https://doc.rust-lang.org/rust-by-example/
 
-Introduction - The Rust Programming Language. (2018). https://doc.rust-lang.org/book/ch00-00-introduction.html
+Introduction - The Rust Programming Language. (n.d.). https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/README.html
 
 Introduction - The Rust Programming Language - MIT. (n.d.). http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/second-edition/index.html
 
-Introduction to Rust Programming Language | The New Stack. (2025). https://thenewstack.io/rust-programming-language-guide/
+Introduction - The Rust Reference - Learn Rust. (2015). https://doc.rust-lang.org/stable/reference/
+
+Introduction to Programming in Rust - ironcoders.com. (n.d.). https://ironcoders.com/learn/rust/
+
+J. Blandy & Jason Orendorff. (2017). Programming Rust: Fast, Safe Systems Development. https://www.semanticscholar.org/paper/02f304f7521520a222dc3e0790d032e35f76b5b0
+
+J Noble & R Biddle. (2023). programmingLanguage as Language. https://dl.acm.org/doi/abs/10.1145/3622758.3622885
+
+Keywords - The Rust Reference. (n.d.). https://doc.rust-lang.org/reference/keywords.html
 
 Learn Rust - Rust Programming Language. (n.d.). https://www.rust-lang.org/learn
 
-Learning the language structure and design concepts - #2 by Heliozoa. (2020). https://users.rust-lang.org/t/learning-the-language-structure-and-design-concepts/52933/2
+Lifetimes in Rust explained - DEV Community. (2024). https://dev.to/francescoxx/lifetimes-in-rust-explained-4og8
 
-Method Syntax - The Rust Programming Language. (2021). https://doc.rust-lang.org/book/ch05-03-method-syntax.html
+M. Vitevitch & Rutherford Goldstein. (2014). Keywords in the mental lexicon. In Journal of memory and language. https://linkinghub.elsevier.com/retrieve/pii/S0749596X14000217
 
-Operator expressions - The Rust Reference. (2024). https://doc.rust-lang.org/reference/expressions/operator-expr.html
+Maika Möbus. (2023). > Building Fast Websites With Astro. https://www.semanticscholar.org/paper/002fe9520d7fb844ebfc153f8318dc1a9a41d599
 
-Pronoun Policy - Page 2 - Rust Internals. (2015). https://internals.rust-lang.org/t/pronoun-policy/2111?page=2
+Math and Numbers in Rust - Sling Academy. (2025). https://www.slingacademy.com/series/math-and-numbers-in-rust/
 
-Pronoun Policy - Rust Internals. (2015). https://internals.rust-lang.org/t/pronoun-policy/2111
+MC Lewis, C Garcia, A Tollett, & S Aguirre. (2024). Parallel N-Body Performance Comparison: Julia, Rust, and More. https://link.springer.com/chapter/10.1007/978-3-031-85638-9_2
+
+Neil Tyler. (2019). Rust Programming Language Application For Iot Device. In New Electronics. https://www.magonlinelibrary.com/doi/10.12968/S0047-9624%2822%2961402-0
+
+Nicholas D. Matsakis & Felix S. Klock. (2014). The rust language. In HILT ’14. https://dl.acm.org/doi/10.1145/2663171.2663188
+
+P Abtahi & G Dietz. (2020). Learning Rust: How Experienced Programmers Leverage Resources to Learn a New Programming Language. https://dl.acm.org/doi/abs/10.1145/3334480.3383069
+
+P Beling. (2024). BSuccinct: Rust libraries and programs focused on succinct data structures. In SoftwareX. https://www.sciencedirect.com/science/article/pii/S2352711024000529
+
+[PDF] The Rust Programming Language. (n.d.). https://www.scs.stanford.edu/~zyedidia/docs/rust/rust_book.pdf
+
+R Jung. (2020). Understanding and evolving the Rust programming language. https://universaar.uni-saarland.de/handle/20.500.11880/29647
+
+R Jung, HH Dang, J Kang, & D Dreyer. (2019). Stacked borrows: an aliasing model for Rust. https://dl.acm.org/doi/abs/10.1145/3371109
+
+R Jung, JH Jourdan, R Krebbers, & D Dreyer. (2017). RustBelt: Securing the foundations of the Rust programming language. https://dl.acm.org/doi/abs/10.1145/3158154
+
+R. Singh & E. . (2016). Rust diseases of wheat. https://www.semanticscholar.org/paper/f3208d0214533e393123bdf6cf14f2197bd62a31
+
+Rahul Sharma & Vesa Kaihlavirta. (2019). Mastering Rust - Second Edition. https://www.semanticscholar.org/paper/9858ed6e9ccbc0822321f2b178a68bc40167faff
+
+Ray Lischner. (2020). Names and Namespaces. In Exploring C++20. https://link.springer.com/chapter/10.1007/978-1-4302-6194-0_52
+
+“Rewrite it in Rust” Considered Harmful? Security Challenges at the C-Rust FFI Anonymous Authors. (2023). https://www.semanticscholar.org/paper/fec67eb69ae9a45ad91b0cd645b2d29609c818ec
+
+Robin Müller, Paul Nehlich, & Sabine Klinkner. (2024). Leveraging the Rust Programming Language for Space Applications. In 2024 IEEE Space Computing Conference (SCC). https://ieeexplore.ieee.org/document/10794829/
 
 Rust 101 — Everything you need to know about Rust - Medium. (2023). https://medium.com/codex/rust-101-everything-you-need-to-know-about-rust-f3dd0ae99f4c
 
-Rust community lingo basics. (2020). https://users.rust-lang.org/t/rust-community-lingo-basics/38883
+Rust Alternatives: 25+ Programming Languages & Similar Apps. (n.d.). https://alternativeto.net/software/rust/
 
-Rust, first impressions. Strengths and weaknesses, Is Rust the…. (2021). https://medium.com/codex/rust-first-impressions-after-6-months-469268ed7dc
+Rust concepts I wish I learned earlier - rauljordan. (2023). https://rauljordan.com/rust-concepts-i-wish-i-learned-earlier/
 
-Rust Grammar as PEG - The Rust Programming Language Forum. (2020). https://users.rust-lang.org/t/rust-grammar-as-peg/46163
+Rust Documentation · The Rust Programming Language. (n.d.). https://prev.rust-lang.org/en-US/documentation.html
 
-Rust in 7 Programs. (2014). https://aml3.github.io/RustTutorial/
+Rust Language Alternatives | Gyata - Learn about AI, Education & Technology. (2024). https://www.gyata.ai/rust/rust-language-alternatives
 
-Rust Operators - Tutorialspoint. (n.d.). https://www.tutorialspoint.com/rust/rust_operators.htm
+Rust Ownership, Borrowing, and Lifetimes - Integralist. (2016). https://www.integralist.co.uk/posts/rust-ownership/
 
-Rust Programming Language. (2018). https://www.rust-lang.org/
-
-Rust (programming language) - Simple English Wikipedia, the free ... (2020). https://simple.wikipedia.org/wiki/Rust_(programming_language)
+Rust Programming Language. (n.d.). https://www.rust-lang.org/
 
 Rust (programming language) - Wikipedia. (2010). https://en.wikipedia.org/wiki/Rust_(programming_language)
 
-Rust Programming Language: Core Concept You Should Know By ... (2023). https://hackernoon.com/the-basic-things-to-know-about-rust
+Rust vs Alternative Programming Languages: How Do They Compare? (2024). https://kruschecompany.com/rust-vs-alternatives/
 
-Rust Release Notes. (2025). https://doc.rust-lang.org/beta/releases.html
+S Lyu & A Rzeznik. (2023). Welcome to the World of Rust. https://link.springer.com/chapter/10.1007/978-1-4842-9331-7_1
 
 The Rust Programming Language. (2024). https://rust-lang.github.io/book/
 
-The Rust Programming Language, 2nd Edition | No Starch Press. (2022). https://nostarch.com/rust-programming-language-2nd-edition
+V Saloranta. (2024). Creating programming tasks with Rust programming language for a Rust course. https://lutpub.lut.fi/bitstream/handle/10024/168689/kandidaatintyo_saloranta_ville.pdf?sequence=1
 
-What is Rust and why is it so popular? - Stack Overflow. (2020). https://stackoverflow.blog/2020/01/20/what-is-rust-and-why-is-it-so-popular/
+Why Rust is the most admired language among developers. (2023). https://github.blog/developer-skills/programming-languages-and-frameworks/why-rust-is-the-most-admired-language-among-developers/
 
-Why did Rust require macro names to have an exclamation point at ... (2023). https://langdev.stackexchange.com/questions/3071/why-did-rust-require-macro-names-to-have-an-exclamation-point-at-the-end
-
-Why does the println! function use an exclamation mark in Rust? (2015). https://stackoverflow.com/questions/29611387/why-does-the-println-function-use-an-exclamation-mark-in-rust
-
-Why is Rust Language Becoming Popular and Should You Learn it? (2023). https://emeritus.org/blog/coding-rust-programming-language/
-
-Why Rust Uses println! Instead of Just println | by Jyoti tewari | Medium. (2024). https://medium.com/@JyotiTewari/why-rust-uses-println-instead-of-just-println-4f95067e04c7
-
-Why You Should Use the Rust Programming Language - Serokell. (n.d.). https://serokell.io/blog/rust-guide
-
-学习Rust - Rust 程序设计语言. (n.d.). https://www.rust-lang.org/zh-CN/learn
-
-简介- Rust 程序设计语言简体中文版 - KaiserY Hub. (2018). https://kaisery.github.io/trpl-zh-cn/ch00-00-introduction.html
+X Zheng, Z Wan, Y Zhang, R Chang, & D Lo. (2023). A closer look at the security risks in the rust ecosystem. https://dl.acm.org/doi/abs/10.1145/3624738
 
 
 
 Generated by Liner
-https://getliner.com/search/s/5926611/t/85978014
+https://getliner.com/search/s/5926611/t/85990810
