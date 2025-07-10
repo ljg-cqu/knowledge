@@ -1,85 +1,85 @@
-but fstab is read only how can i write it?
+Guide me to extend virtual memory on Ubuntu.
 
 Fri Jul 11 2025
 
-You've hit a common challenge in Linux systems where the `/etc/fstab` file can appear as read-only, preventing you from making necessary modifications. This typically happens when the root file system is mounted in read-only mode, often due to a boot error or incorrect `/etc/fstab` entries themselves. Even when logged in as root, the file system itself might be read-only, not just the file permissions.
+To extend virtual memory on Ubuntu, you can either create or resize a swap file, or resize an existing swap partition. Swap space, also known as virtual memory, is a dedicated portion of your hard drive that the operating system uses to temporarily store data when the physical RAM is full. This helps prevent "out of memory" errors and allows your system to continue functioning, albeit at a slower speed than RAM.
 
-To gain write access to `/etc/fstab`, you need to remount the root file system with read-write permissions or boot into an alternative environment. Here are the actionable steps you can take:
+Here are the ways to extend virtual memory on Ubuntu:
 
-### 1. Remounting the Root Filesystem in Read-Write Mode
-This is often the quickest solution if you can still access a command line, even in a recovery or single-user mode.
+### 1. Extending Virtual Memory Using a Swap File
+This method involves creating a new swap file or resizing an existing one, which is generally easier and more dynamic than repartitioning.
 
-1.  **Enter single-user or maintenance mode**: If your system boots into an error prompt or a limited shell, it might offer an option to enter single-user/maintenance mode. In some cases, you might need to append `single` to the kernel parameters during boot to explicitly enter single-user mode. Once in this mode, you should be logged in as root.
-2.  **Check current mount status**: You can verify that the root file system is read-only.
-3.  **Remount the root filesystem as read-write**: Execute the command `mount -o remount,rw /`. This command specifically remounts the root (`/`) file system with read and write (`rw`) permissions. If `/etc/fstab` itself contains errors preventing the root filesystem from mounting properly, you might need to specify the device name explicitly, like `mount -n -o remount -t ext2 /dev/hda2 /` (adjusting `/dev/hda2` to your actual root partition).
-4.  **Edit the `/etc/fstab` file**: After successfully remounting, you should be able to edit `/etc/fstab` using a text editor like `nano` or `vi`. For `vi` or `vim`, if it still reports read-only, you can try saving with `:w!` which forces a write.
-5.  **Save and reboot**: Save your changes to `/etc/fstab` and then reboot the system to apply them.
+1.  **Check for existing swap space and disk usage**: Before creating a new swap file, verify if your system already has active swap space using `sudo swapon --show` or `free -m`. Also, check available disk space with `df -h` to ensure you have enough room for the swap file.
+2.  **Determine swap file size**: A common recommendation is to set swap space equal to or double your RAM, but for systems with more than 8GB RAM, at least 4GB of swap is often sufficient. Anything over 4GB as a RAM fallback might be unnecessary.
+3.  **Turn off existing swap (if resizing)**: If you are resizing an existing swap file, you must first turn off all active swap processes using `sudo swapoff /swapfile`. This command moves data from swap back to RAM and may take time; if the command is killed, run it multiple times.
+4.  **Create the swap file**: The `fallocate` command is recommended for quickly creating a file of a specified size. For example, to create a 4GB file named `swapfile` in your root directory, use `sudo fallocate -l 4G /swapfile`. Alternatively, you can use `dd` if `fallocate` is not supported or if you prefer to fill the file with zeros for a continuous block, though `fallocate` is generally faster. An example for `dd` would be `sudo dd if=/dev/zero of=/swapfile bs=1M count=4096` for 4GB.
+5.  **Set correct permissions**: For security, swap files should only be readable and writable by the root user. Set permissions using `sudo chmod 600 /swapfile`.
+6.  **Format the file as swap**: Mark the newly created file as swap space with `sudo mkswap /swapfile`.
+7.  **Activate the swap file**: Enable the swap file for the current session using `sudo swapon /swapfile`.
+8.  **Make changes persistent**: To ensure the swap file is activated automatically after a reboot, add an entry to the `/etc/fstab` file. First, back up the original `/etc/fstab` file with `sudo cp /etc/fstab /etc/fstab.bak`. Then, add the line `/swapfile none swap sw 0 0` to the end of `/etc/fstab`.
+9.  **Verify swap activation**: Confirm that the swap is active using `sudo swapon --show` or `free -h`.
 
-### 2. Using a Live Distribution (LiveCD/USB)
-This method is highly reliable as it allows you to access your disk from a separate, fully functional environment.
+### 2. Optimizing Swap Performance
+After extending virtual memory, you can optimize its performance by adjusting kernel parameters.
 
-1.  **Boot from a live disk**: Insert a live CD or USB (e.g., Ubuntu LiveCD) into your computer and boot from it. This allows you to bypass your problematic installed system and access its files.
-2.  **Mount your root partition**: Once the live environment loads, you need to identify and mount your installed system's root partition to a temporary location. For example, if your root partition is `/dev/sda1`, you can mount it to `/mnt` or `/media/cdrom`:
-    *   `sudo mkdir /mnt/my_root` (or `/media/cdrom`)
-    *   `sudo mount /dev/sda1 /mnt/my_root` (replace `/dev/sda1` with your actual root partition)
-3.  **Chroot into the mounted system (optional but recommended for complex issues)**: If you need to rebuild a kernel or run commands that expect a full system environment, you can `chroot` into your installed system.
-    *   `sudo chroot /mnt/my_root`
-    *   You may also need to mount `dev`, `proc`, and `sys` filesystems within the chroot for full functionality.
-4.  **Edit `/etc/fstab`**: Navigate to the `/etc` directory within the mounted partition (e.g., `/mnt/my_root/etc/fstab`) and edit the `fstab` file using a text editor available in the live environment, such as `nano` or `vi`.
-5.  **Save and unmount**: After making your changes, save the file. Then, exit the `chroot` environment if you entered it (`exit`), and unmount the partition:
-    *   `sudo umount /mnt/my_root`
-6.  **Reboot**: Remove the live disk and reboot your computer.
+1.  **Adjust `swappiness`**: The `swappiness` parameter controls how often the system moves data from RAM to swap space. Values range from 0 to 100. A lower value (e.g., 10) means the kernel will swap data to disk only when absolutely necessary, which can make your system faster as disk interactions are slower than RAM. A higher value (e.g., 60) will try to put more data into swap to keep RAM free. For servers, a lower `swappiness` value (closer to 0) is often preferred.
+    *   Check current value: `cat /proc/sys/vm/swappiness`.
+    *   Temporarily set value (until reboot): `sudo sysctl vm.swappiness=10`.
+    *   Make permanent: Add `vm.swappiness=10` to `/etc/sysctl.conf`.
+2.  **Adjust `vfs_cache_pressure`**: This setting controls how aggressively the kernel reclaims memory used for caching filesystem data (inode and dentry information). This data is costly to look up but frequently requested, so it's beneficial for the system to cache it.
+    *   Check current value: `cat /proc/sys/vm/vfs_cache_pressure`.
+    *   Temporarily set value: `sudo sysctl vm.vfs_cache_pressure=50`.
+    *   Make permanent: Add `vm.vfs_cache_pressure=50` to `/etc/sysctl.conf`.
+
+### 3. Extending Virtual Memory Using a Swap Partition (GUI Method)
+This method involves using a graphical tool like GParted to resize an existing swap partition.
+
+1.  **Boot from a live disk**: Use a GParted live disk or an Ubuntu live disk (versions before 18.04 may require installing GParted with `sudo apt-get update && sudo apt-get install gparted && sudo gparted`). Booting from a live disk ensures that all `/dev/sda` partitions are unmounted.
+2.  **Ensure unallocated space**: You can only increase the size of a swap partition if there is unallocated space directly before or after it. If there isn't, you'll need to resize adjacent partitions to create unallocated space.
+    *   **Case 1 (Unallocated space adjacent)**: Right-click on the swap partition (e.g., `/dev/sda9`) and select "Resize/Move". Drag the slider arrows to include the unallocated space, then click "Resize/Move".
+    *   **Case 2 (Unallocated space between partitions)**: If unallocated space is between other partitions, right-click the partition adjacent to the unallocated space (e.g., `/dev/sda8`) and select "Resize/Move". Move the slider to shift the unallocated space next to your swap partition, then apply changes and follow Case 1.
+    *   **Case 3 (Unallocated space outside extended partition)**: If the unallocated space is outside an extended partition that contains your swap, right-click the extended partition and select "Resize/Move". Drag the arrow to the extreme right to include the unallocated space within the extended partition, then apply changes and follow Case 1.
+3.  **Activate the resized swap partition**: After resizing, right-click on the swap partition and choose "Swapon". You might also need to run `sudo mkswap /dev/mapper...` if the swap partition already existed before resizing and then `swapon`.
+4.  **Backup critical data**: Always back up your important data before performing partition editing operations due to inherent risks.
 
 Bibliography
-Allow Users in fstab File to Read and Write to a Partition - Baeldung. (2024). https://www.baeldung.com/linux/fstab-file-users-read-write-partition
+Change swap size in Ubuntu - Server Management Tool - Ploi. (2019). https://ploi.io/documentation/server/change-swap-size-in-ubuntu
 
-Any way to edit fstab without disabling read-only, and if so is ... - Reddit. (2022). https://www.reddit.com/r/SteamDeck/comments/tjx9e2/any_way_to_edit_fstab_without_disabling_readonly/
+Create and Setup SWAP Memory on Ubuntu - AttuneOps. (2021). https://attuneops.io/attune-hub/setup-swap-memory-on-ubuntu/
 
-Can’t edit fstab as it’s a read only file [Archive] - FedoraForum.org. (2007). https://forums.fedoraforum.org/archive/index.php/t-144176.html
+How can we increase our Ubuntu system’s performance by ... - Quora. (2022). https://www.quora.com/How-can-we-increase-our-Ubuntu-systems-performance-by-changing-its-swap-file-location
 
-Can’t mount `proc` to `schroot` environment using `setup.fstab`. (2023). https://unix.stackexchange.com/questions/748851/cant-mount-proc-to-schroot-environment-using-setup-fstab
+How to Add Swap Memory in Ubuntu 24.04 - Vultr Docs. (2025). https://docs.vultr.com/how-to-add-swap-memory-in-ubuntu-24-04
 
-Changing permissions in fstab in order to allow writing in Windows ... (2012). https://askubuntu.com/questions/207180/changing-permissions-in-fstab-in-order-to-allow-writing-in-windows-ntfs-partitio
+How to add swap space in Linux? - DEV Community. (2024). https://dev.to/lovestaco/how-to-add-swap-space-on-linux-e28
 
-chroot - ArchWiki. (2024). https://wiki.archlinux.org/title/Chroot
+How To Add Swap Space on Ubuntu 20.04 - DigitalOcean. (2020). https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
 
-Creating chroot environment with btrfs partition - Level1Techs Forums. (2021). https://forum.level1techs.com/t/creating-chroot-environment-with-btrfs-partition/167020
+How To Configure Virtual Memory (Swap File) on Ubuntu 24.04. (2025). https://greenhost.cloud/how-to-configure-virtual-memory-swap-file-on-ubuntu-24-04/
 
-Editing /etc/fstab file - Raspberry Pi Forums. (2016). https://forums.raspberrypi.com/viewtopic.php?t=144139
+How to find virtual memory size and cache size of a linux system? (2009). https://superuser.com/questions/48505/how-to-find-virtual-memory-size-and-cache-size-of-a-linux-system
 
-edit/write the /etc/fstab file - LinuxQuestions.org. (2010). https://www.linuxquestions.org/questions/linux-server-73/edit-write-the-etc-fstab-file-791250/
+How to increase swap. : r/Ubuntu - Reddit. (2024). https://www.reddit.com/r/Ubuntu/comments/1c4lglm/how_to_increase_swap/
 
-FSTAB - how to mount folders and devices into chroot environment. (2012). https://www.linuxquestions.org/questions/linux-newbie-8/fstab-how-to-mount-folders-and-devices-into-chroot-environment-939213/
+How to increase swap space? - Ask Ubuntu. (2012). https://askubuntu.com/questions/178712/how-to-increase-swap-space
 
-How can I give read and write permissions to a partition on fstab? (2022). https://forum.manjaro.org/t/how-can-i-give-read-and-write-permissions-to-a-partition-on-fstab/126385
+How to increase swap space on Ubuntu 20.04 ZFS? (2020). https://unix.stackexchange.com/questions/593976/how-to-increase-swap-space-on-ubuntu-20-04-zfs
 
-How Do I Fix a “Read-Only” Error When I Edit the /etc/fstab File? (2022). https://support.huaweicloud.com/intl/en-us/trouble-ecs/ecs_trouble_0360.html
+How to Increase Ubuntu’s Virtual Memory and/or Swap for Matlab? (2016). https://askubuntu.com/questions/799834/how-to-increase-ubuntus-virtual-memory-and-or-swap-for-matlab
 
-How to automount with a chroot? - Ask Ubuntu. (2019). https://askubuntu.com/questions/1108465/how-to-automount-with-a-chroot
+How to Increase Virtual Memory - Webmin - Virtualmin Community. (2022). https://forum.virtualmin.com/t/how-to-increase-virtual-memory/113774
 
-How to Edit and Manage `fstab` for Mounting Partitions on Arch Linux. (2025). https://www.siberoloji.com/how-to-edit-and-manage-fstab-mounting-partitions-arch-linux/
+Is there a way to create virtual ram? : r/Ubuntu - Reddit. (2024). https://www.reddit.com/r/Ubuntu/comments/1gqneha/is_there_a_way_to_create_virtual_ram/
 
-How to edit /etc/fstab when root is mounted as read only - Reddit. (2025). https://www.reddit.com/r/openbsd/comments/1hubul0/how_to_edit_etcfstab_when_root_is_mounted_as_read/
+Linux understanding and tuning Virtual Memory (VM) - nixCraft. (2022). https://www.cyberciti.biz/tips/howto-linux-understanding-and-tuning-virtual-memory.html
 
-How to edit /etc/fstab when system boots to read only file system? (2015). https://unix.stackexchange.com/questions/185026/how-to-edit-etc-fstab-when-system-boots-to-read-only-file-system
+Save your frozen Linux Server: How to add swap space to Ubuntu. (2024). https://leangaurav.medium.com/how-to-add-swap-space-to-ubuntu-linux-server-to-prevent-it-from-freezing-7de2771228ee
 
-How to make /etc/fstab file into read and write mode in Linux - Quora. (2017). https://www.quora.com/How-can-I-make-etc-fstab-file-into-read-and-write-mode-in-Linux
+Solved - Cannot change swap file size in Ubuntu 24.04 | Linux.org. (2024). https://www.linux.org/threads/cannot-change-swap-file-size-in-ubuntu-24-04.51093/
 
-How to modify /etc/fstab? : r/linuxquestions - Reddit. (2022). https://www.reddit.com/r/linuxquestions/comments/tsckws/how_to_modify_etcfstab/
+Swappiness: How to adjust virtual memory usage - Ubunlog. (2015). https://en.ubunlog.com/swappiness-how-to-adjust-virtual-memory-usage/
 
-How to Write an fstab File on Linux - How-To Geek. (2019). https://www.howtogeek.com/444814/how-to-write-an-fstab-file-on-linux/
-
-Howto mount drive as read-only with fstab - Ask Ubuntu. (2016). https://askubuntu.com/questions/839355/howto-mount-drive-as-read-only-with-fstab
-
-Modify fstab entry so all users can Read and Write to an EXT4 Volume. (2010). https://superuser.com/questions/174776/modify-fstab-entry-so-all-users-can-read-and-write-to-an-ext4-volume
-
-mount dev, proc, sys in a chroot environment? - linux - Super User. (2010). https://superuser.com/questions/165116/mount-dev-proc-sys-in-a-chroot-environment
-
-Repairing fstab (read only /) - linux - Stack Overflow. (2008). https://stackoverflow.com/questions/383595/repairing-fstab-read-only
-
-[SOLVED] Cannot modify /etc/fstab because it is read-only mode. (2020). https://www.linuxquestions.org/questions/slackware-14/cannot-modify-etc-fstab-because-it-is-read-only-mode-4175674401/
-
-View topic - edit /etc/fstab from LiveCD chroot??? - Gentoo Forums. (2005). https://forums.gentoo.org/viewtopic-t-355239-start-0.html
+What Is Virtual Memory on Linux? How to Manage It - MakeUseOf. (2022). https://www.makeuseof.com/virtual-memory-on-linux/
 
 
 
