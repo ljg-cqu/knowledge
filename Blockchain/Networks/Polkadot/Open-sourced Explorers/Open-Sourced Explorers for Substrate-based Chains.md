@@ -31,3 +31,26 @@ Certainly! Here's a list of the open-sourced explorers for Substrate-based chain
     - https://github.com/subquery/subql
 
 These links will take you directly to the GitHub repositories of each project. You can explore the code, contribute, or use these projects as a base for your own development. Remember that some projects might have multiple repositories or be part of larger project structures, so you may need to navigate within the organization's GitHub page to find specific components.
+
+--------------------------------------------------------------------------------------
+
+Here are the GitHub links for the tools you requested:
+
+- **Moonscan**:  
+  There is no official open-source GitHub repository for Moonscan. Moonscan is a block explorer for Moonbeam, but its codebase is not publicly available.
+
+- **Expedition**:  
+  Expedition is a block explorer for EVM chains.  
+  [https://github.com/xops/expedition](https://github.com/xops/expedition)
+
+- **Subscan**:  
+  [https://github.com/itering/subscan](https://github.com/itering/subscan)
+
+- **Polkadot.js**:
+   - Polkadot.js API: [https://github.com/polkadot-js/api](https://github.com/polkadot-js/api)
+   - Polkadot.js Apps (UI): [https://github.com/polkadot-js/apps](https://github.com/polkadot-js/apps)
+   - Polkadot.js Extension: [https://github.com/polkadot-js/extension](https://github.com/polkadot-js/extension)
+
+**Note:**
+- Moonscan is a closed-source explorer, so there is no public GitHub repo.
+- If you need more explorers or specific tools, let me know!
