@@ -56,3 +56,18 @@ To count the accumulated transactions in a range of blocks on Polkadot as a prog
 You can use JavaScript/TypeScript libraries (Polkadot.js API, Dedot, PAPI), Python Substrate Interface, Rust’s Subxt, the Sidecar REST API, or Ethereum-compatible JSON-RPC endpoints (for PolkaVM) to programmatically count transactions in a range of blocks on Polkadot. Choose the tool that best fits your programming language and environment preferences.
 
 If you need code examples for a specific tool, let me know which one you’d like to use!
+
+---
+
+Among the tools listed, the ones built with Rust are:
+
+- **Subxt**: A Rust library for type-safe interaction with Polkadot SDK-based blockchains. It allows you to submit transactions, query on-chain state, and access other blockchain data directly from Rust code. Subxt is designed specifically for Rust developers and leverages Rust’s strong type system for compile-time safety and reliability [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api).
+- **Sidecar**: While the Sidecar REST API is a service that you interact with via HTTP, it is not explicitly stated in the knowledge sources whether Sidecar itself is implemented in Rust. The documentation focuses on its usage as a RESTful service, not its internal implementation [Sidecar API](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+**Which is better for a Rust programmer: Subxt or Sidecar?**
+
+- **Subxt** is the clear choice for Rust programmers. It is a native Rust library, providing a type-safe, idiomatic Rust interface for interacting with Polkadot SDK-based chains. It allows you to build, sign, and submit transactions, as well as query chain state, all within your Rust codebase [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api).
+- **Sidecar** is a REST API service. While you can interact with it from Rust (or any language that can make HTTP requests), it is not a Rust-native solution and does not provide the compile-time type safety or direct integration that Subxt offers.
+
+**Conclusion:**  
+If you are a Rust programmer, Subxt is the recommended and more powerful tool for direct, type-safe, and idiomatic interaction with Polkadot blockchains. Sidecar is better suited for environments where REST APIs are preferred or required, or when working in languages/environments with limited WebSocket or native SDK support [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api) [Sidecar API](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
