@@ -71,3 +71,37 @@ Among the tools listed, the ones built with Rust are:
 
 **Conclusion:**  
 If you are a Rust programmer, Subxt is the recommended and more powerful tool for direct, type-safe, and idiomatic interaction with Polkadot blockchains. Sidecar is better suited for environments where REST APIs are preferred or required, or when working in languages/environments with limited WebSocket or native SDK support [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api) [Sidecar API](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+---
+Based on the knowledge sources, the following tools have strong support for WebSocket communication:
+
+- **Polkadot.js API**: Designed to connect to Polkadot nodes via WebSocket, allowing real-time interaction with the chain.
+- **Dedot**: Supports WebSocket connections through its `WsProvider`, enabling efficient communication with Polkadot nodes [Dedot Get Started](https://docs.polkadot.com/develop/toolkit/api-libraries/dedot/#get-started).
+- **Polkadot-API (PAPI)**: Offers built-in WebSocket providers (`getWsProvider`) for both browser and Node.js environments, with features like connection status tracking and failover [Polkadot-API Providers](https://papi.how/providers/ws/#ws-provider).
+- **Python Substrate Interface**: Allows connecting to nodes using WebSocket endpoints (e.g., `wss://rpc.polkadot.io`) [Python Substrate Interface](https://docs.polkadot.com/develop/toolkit/api-libraries/py-substrate-interface/#python-substrate-interface).
+- **Subxt**: While not explicitly detailed in the sources above, Subxt is a Rust library that typically connects to nodes via WebSocket endpoints, as is standard for Polkadot SDK-based chains.
+
+**Sidecar** is primarily a REST API service and does not natively support WebSocket communication for querying chain data [Sidecar API](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+**Summary:**  
+The best-supported tools for WebSocket communication are Polkadot.js API, Dedot, Polkadot-API (PAPI), and Python Substrate Interface. Sidecar is not designed for WebSocket but for RESTful HTTP access.
+
+---
+Here is a competitor analysis table for the main tools available to count accumulated transactions in a range of blocks on Polkadot, focusing on WebSocket support, language, and other relevant features, based strictly on the provided knowledge sources:
+
+| Tool/Library                | Language(s)         | WebSocket Support | REST Support | Type Safety | Notes                                                                                  |
+|-----------------------------|---------------------|-------------------|--------------|-------------|----------------------------------------------------------------------------------------|
+| **Polkadot.js API**         | JavaScript, TypeScript | Yes               | No           | Yes         | Widely used, maintenance mode, strong ecosystem support [Polkadot.js API](https://docs.polkadot.com/develop/toolkit/api-libraries/polkadot-js-api/) |
+| **Dedot**                   | JavaScript, TypeScript | Yes               | No           | Yes         | Next-gen, lightweight, tree-shakable, strong TypeScript support [Dedot](https://docs.polkadot.com/develop/toolkit/api-libraries/dedot/#dedot) |
+| **Polkadot-API (PAPI)**     | TypeScript             | Yes               | No           | Yes         | Modular, composable, light-client first, multi-version JSON-RPC [PAPI](https://papi.how/requirements/#requirements) |
+| **Python Substrate Interface** | Python             | Yes               | No           | Python typing | Pythonic access to Polkadot SDK-based chains [Python Substrate Interface](https://docs.polkadot.com/develop/toolkit/api-libraries/py-substrate-interface/) |
+| **Subxt**                   | Rust                  | Yes (implied)     | No           | Yes         | Rust-native, type-safe, for advanced Rust developers [Subxt](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/) |
+| **Sidecar**                 | Any (via HTTP)        | No                | Yes          | N/A         | REST API, not WebSocket, acts as a caching layer [Sidecar API](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api) |
+
+**Key Points:**
+- All libraries except Sidecar support WebSocket communication for real-time chain interaction.
+- Sidecar is REST-only and language-agnostic, suitable for environments where WebSocket is not ideal.
+- Type safety is strong in Dedot, Polkadot-API (PAPI), and Subxt.
+- Subxt is the best fit for Rust programmers; others are best for JavaScript/TypeScript or Python environments.
+
+If you need a deeper comparison on a specific feature or want to see example code for any of these tools, let me know!
