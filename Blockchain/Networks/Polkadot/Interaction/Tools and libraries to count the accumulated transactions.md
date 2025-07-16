@@ -105,3 +105,97 @@ Here is a competitor analysis table for the main tools available to count accumu
 - Subxt is the best fit for Rust programmers; others are best for JavaScript/TypeScript or Python environments.
 
 If you need a deeper comparison on a specific feature or want to see example code for any of these tools, let me know!
+
+---
+
+Yes, your understanding is correct:
+
+1. **Sidecar runs as a Node.js service**: You install and run Sidecar with Node.js. It connects to a Substrate-based node, and you can specify which node to connect to by setting the appropriate RPC endpoint (for example, using the `SAS_SUBSTRATE_URL` environment variable) [Sidecar API Usage](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#usage).
+
+2. **dApp interacts with Sidecar via RESTful HTTP**: Your dApp communicates with the Sidecar service using standard RESTful HTTP requests. Sidecar then forwards these requests to the connected Substrate node, retrieves the data, and returns it to your dApp. Sidecar acts as a caching layer and provides standardized REST endpoints, making it easier to interact with the blockchain without dealing directly with complex RPC calls [Sidecar API Introduction](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+This setup is especially useful for developers who prefer REST APIs or are working in environments where WebSocket support is limited.
+
+---
+
+Based on the knowledge sources:
+
+- **Subxt** is a Rust library designed for type-safe interaction with Polkadot SDK-based blockchains. It communicates with nodes using WebSocket (ws) endpoints and does not provide a RESTful interface. All examples and documentation for Subxt show usage over WebSocket connections, such as connecting to a node at `ws://localhost:9944` or another ws endpoint [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api).
+
+- **Sidecar API** is a RESTful service that you run alongside a node. It exposes HTTP endpoints and forwards requests to the connected Substrate node, which can be specified by the user. Sidecar is designed for RESTful access and is not a Rust library, but a standalone service you interact with over HTTP [Sidecar API Introduction](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+**Conclusion:**  
+You are correct: Subxt provides WebSocket support but not RESTful support. If you want to interact with a Substrate chain from Rust using both WebSocket (for type-safe, direct node interaction) and RESTful (for HTTP-based access), you would need to use Subxt for WebSocket and interact with the Sidecar API for RESTful endpoints. This combination allows you to cover both interaction styles [API Libraries](https://docs.polkadot.com/develop/toolkit/api-libraries/#api-libraries).
+
+---
+
+As a Golang programmer, you can interact with a Substrate-based chain in both WebSocket and RESTful styles by combining two approaches:
+
+1. **WebSocket Interaction:**  
+   Use a Go client library such as [go-substrate-rpc-client](https://github.com/centrifuge/go-substrate-rpc-client) to connect directly to a Substrate node via WebSocket. This allows you to perform type-safe, real-time interactions with the blockchain, such as querying storage, submitting extrinsics, and subscribing to events. The knowledge sources list this library as a Go option for client libraries, but do not provide detailed usage instructions [Wiki: Open Source Polkadot Stack](https://wiki.polkadot.network/general/build-open-source/#tools-apis-and-languages).
+
+2. **RESTful Interaction:**  
+   Run the [Sidecar API](https://github.com/paritytech/substrate-api-sidecar) service alongside your node. Sidecar exposes RESTful HTTP endpoints that you can call from your Go application using standard HTTP client libraries. This is useful for simple queries and when you prefer REST over WebSocket. The knowledge sources describe how to install and use Sidecar for RESTful access [Sidecar API Introduction](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+**Summary:**  
+You would use a Go WebSocket client library for direct, real-time blockchain interaction, and make HTTP requests to the Sidecar API for RESTful access. This combination allows you to leverage both interaction styles as needed.
+
+If you need specific code examples for Go, the knowledge sources do not provide them, but they do confirm the existence of the necessary tools.
+
+---
+
+For **Rust programmers**, the recommended tool is **Subxt**. Subxt allows you to connect to a Polkadot SDK-based node via WebSocket, load blocks, and examine extrinsics (transactions) within each block. You can use its block querying features to iterate over a range of blocks and count the accumulated transactions. The documentation specifically mentions the ability to load recent blocks or subscribe to new/finalized blocks and examine extrinsics and events at those blocks [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#installation).
+
+For **Golang programmers**, the knowledge sources mention the existence of the [go-substrate-rpc-client](https://github.com/centrifuge/go-substrate-rpc-client) library for WebSocket-based interaction, but do not provide details or examples for counting transactions in a block range. The sources do not provide explicit instructions or code for this use case in Go, so you may need to consult the library’s documentation directly [Wiki: Open Source Polkadot Stack](https://wiki.polkadot.network/general/build-open-source/#tools-apis-and-languages).
+
+Alternatively, for both Rust and Go, you can use the **Sidecar API** (a RESTful service) to query block data. Sidecar exposes REST endpoints for blocks, and you can fetch block details (including extrinsics) for each block in your range and count the transactions. This approach is language-agnostic, as any language with HTTP client support can consume Sidecar’s REST API [Sidecar API Usage](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#usage).
+
+**Summary:**
+- **Rust:** Use Subxt for direct WebSocket access, or Sidecar API for RESTful access.
+- **Go:** Use Sidecar API for RESTful access; Go WebSocket libraries exist, but the knowledge sources do not provide details for this specific use case.
+
+---
+You are correct: if your task does not require real-time communication, using a RESTful approach is more appropriate and often simpler. The Sidecar API is specifically designed for this use case. With Sidecar, you can:
+
+1. **Read block hashes from a range of blocks** by querying the relevant REST endpoints.
+2. **Fetch block details (including transactions/extrinsics) for each block** using the Sidecar API’s block endpoints.
+
+This approach allows you to efficiently accumulate transaction counts over a block range without the complexity of maintaining a WebSocket connection. Sidecar exposes standardized REST endpoints for block and transaction data, making it suitable for batch or historical data analysis in any language with HTTP support, including Rust and Go [Sidecar API Usage](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#usage).
+
+If you need to know the exact endpoints or how to structure the requests, you can refer to the [Sidecar API list endpoints](https://paritytech.github.io/substrate-api-sidecar/dist/).
+
+---
+
+Yes, for TPS (transactions per second) testing where you need to send requests intensively, using **WebSocket** is generally better. WebSocket connections are designed for high-throughput, low-latency, and bidirectional communication, which is ideal for sending a large number of transactions quickly and efficiently.
+
+According to the knowledge sources:
+
+- **WebSocket supports sending requests to transfer tokens and interact with smart contracts.** Libraries like Subxt (for Rust) and go-substrate-rpc-client (for Go) interact with Substrate nodes over WebSocket, allowing you to submit extrinsics (transactions), which include token transfers and smart contract interactions, as well as querying chain state and subscribing to events [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#subxt-rust-api).
+
+- RESTful APIs like Sidecar are more suitable for querying data and are not designed for high-frequency transaction submission or for sending extrinsics to the chain [Sidecar API Introduction](https://docs.polkadot.com/develop/toolkit/api-libraries/sidecar/#sidecar-api).
+
+**Summary:**  
+For TPS testing and sending many transactions (including token transfers and smart contract interactions), WebSocket is the recommended approach. RESTful APIs are not suitable for this purpose.
+
+---
+
+Based on the knowledge sources:
+
+- For **Rust programmers**, subscribing to events from a Substrate-based chain is supported by **Subxt**. Subxt provides features to retrieve events emitted from recent blocks and to subscribe to new or finalized blocks, allowing examination of extrinsics, events, and storage at those blocks [Subxt Rust API](https://docs.polkadot.com/develop/toolkit/api-libraries/subxt/#installation).
+
+- For **Golang programmers**, the knowledge sources mention the existence of [go-substrate-rpc-client](https://github.com/centrifuge/go-substrate-rpc-client) as a Go client library for interacting with Substrate nodes, but do not provide explicit documentation or examples for event subscription. Therefore, while it is likely that go-substrate-rpc-client supports event subscriptions, the knowledge sources do not confirm this capability.
+
+**In summary:**
+- Rust programmers can use Subxt to subscribe to events.
+- For Go, go-substrate-rpc-client is the main library, but the knowledge sources do not explicitly confirm event subscription support.
+
+If you require event subscription in Go, you may need to consult the go-substrate-rpc-client documentation directly, as the provided knowledge sources do not contain enough information to confirm this feature.
+
+---
+
+Based on the knowledge sources, **Subxt** is recommended for Rust programmers, while **go-substrate-rpc-client** is listed as the Go client library for interacting with Substrate-based chains. The sources do not provide a direct comparison or explicit recommendation between the two, as they are designed for different programming languages—Subxt for Rust and go-substrate-rpc-client for Go [Wiki: Open Source Polkadot Stack](https://wiki.polkadot.network/general/build-open-source/#tools-apis-and-languages).
+
+If you are working in Rust, use **Subxt**.  
+If you are working in Go, use **go-substrate-rpc-client**.
+
+The knowledge sources do not contain enough information to recommend one over the other for the same language or to compare their features or performance directly.
