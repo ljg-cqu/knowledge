@@ -76,3 +76,11 @@ aider-install
 ---
 
 Aider is now installed and ready to use.
+
+### 7. Configure Aider for later use
+
+A command to use DeepSeek with Aider would look like this:
+
+```
+aider --model deepseek --api-key deepseek=<YOUR_DEEPSEEK_API_KEY> --openai-api-base <YOUR_DEEPSEEK_API_BASE_URL> [your files or other aider commands]
+```
