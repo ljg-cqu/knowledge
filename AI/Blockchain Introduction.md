@@ -36,7 +36,35 @@ timeline
 ```
 
 ## What is Blockchain?
-Blockchain is a revolutionary distributed ledger technology that maintains a continuously growing list of records (blocks) linked and secured using cryptography. Each block contains:
+Blockchain is a revolutionary distributed ledger technology that maintains a continuously growing list of records (blocks) linked and secured using cryptography. 
+
+```mermaid
+graph LR
+    A[Transaction] --> B[Block Formation]
+    B --> C[Consensus Verification]
+    C --> D[Block Added to Chain]
+    D --> E[Network Synchronization]
+```
+
+### Blockchain Data Structure
+```mermaid
+graph LR
+    Block1[Block #1] -->|Previous Hash| Block2[Block #2]
+    Block2 -->|Previous Hash| Block3[Block #3]
+    Block3 -->|Previous Hash| Block4[Block #4]
+    
+    subgraph Block Anatomy
+    Block2 --> Header[Header]
+    Block2 --> Body[Body]
+    Header --> Hash[Hash]
+    Header --> PrevHash[Previous Hash]
+    Header --> Timestamp[Timestamp]
+    Header --> Nonce[Nonce]
+    Body --> Transactions[Transactions]
+    end
+```
+
+Each block contains:
 - A cryptographic hash of the previous block
 - A timestamp
 - Transaction data
@@ -46,6 +74,21 @@ This creates an immutable chain where altering any block would require changing 
 ## Core Principles and Characteristics
 
 ### Decentralization
+```mermaid
+graph TD
+    A[Node 1] -->|Broadcast| B[Node 2]
+    A -->|Broadcast| C[Node 3]
+    A -->|Broadcast| D[Node 4]
+    B -->|Broadcast| C
+    B -->|Broadcast| D
+    C -->|Broadcast| D
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style D fill:#f9f,stroke:#333
+```
+
 Unlike traditional databases controlled by central authorities, blockchain operates on a peer-to-peer network where:
 - All participants (nodes) maintain a copy of the ledger
 - Consensus algorithms validate transactions
