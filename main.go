@@ -49,8 +49,19 @@ func (p *Protein) CalculateEnergy() float64 {
 	return energy
 }
 
+
 func main() {
 	protein := NewProtein("HPHPPHHPH")
 	protein.Fold(math.Pi / 3) // 60 degree angle
 	fmt.Printf("Protein energy: %.2f\n", protein.CalculateEnergy())
 }
+
+app.get('/sqrt/:n', (req, res) => {
+const n = parseFloat(req.params.n);
+
+// Add error handling for NaN and less than zero. AI!
+
+const result = math.sqrt(n);
+res.json({ result: result });
+});
+
