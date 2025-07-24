@@ -54,3 +54,5 @@ func main() {
 	protein.Fold(math.Pi / 3) // 60 degree angle
 	fmt.Printf("Protein energy: %.2f\n", protein.CalculateEnergy())
 }
+
+// Write a testing file, AI!
