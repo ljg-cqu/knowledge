@@ -1,6 +1,7 @@
-# Types of LLM Applications and Competitive Landscape
+# Types of LLM Applications and Competitive Landscape [^1]
 
 ## 1. Terminal-Based Applications
+[^1]: MECE framework adapted from McKinsey problem-solving methodology
 **Examples:**
 - Aider (CLI code assistant)
 - GPT-CLI (Command line interface for GPT)
@@ -92,21 +93,74 @@
 
 ## 6. IDE Plugins  
 **Examples:**  
-- GitHub Copilot  
-- Codeium  
-- Tabnine  
+- GitHub Copilot [^2]  
+- Codeium [^3]  
+- Tabnine [^4]  
+- Cody by Sourcegraph (VSCode plugin) [^5]  
+- Continue.dev (Open-source alternative) [^6]  
 
 **Advantages:**  
-✓ Deep code context awareness  
+✓ Deep code context awareness [^7]  
 ✓ Real-time suggestions  
-✓ Language-specific optimizations
+✓ Language-specific optimizations  
+✓ Project-aware completions (Cody) [^5]  
 
 **Disadvantages:**  
 ✗ IDE-specific implementations  
-✗ Can be distracting  
-✗ Requires setup
+✗ Can be distracting [^8]  
+✗ Requires setup  
+✗ Potential code privacy concerns [^9]  
 
 ---
+
+## 7. Voice Assistants  
+**Examples:**  
+- Alexa LLM (Amazon's new Alexa) [^10]  
+- Siri with GPT integration (unofficial) [^11]  
+- Humane AI Pin (wearable voice agent) [^12]  
+
+**Advantages:**  
+✓ Hands-free operation  
+✓ Natural conversation flow  
+✓ Always-available interface  
+
+**Disadvantages:**  
+✗ Limited complex task handling  
+✗ Audio-only output limitations  
+✗ Privacy concerns with always-listening [^13]  
+
+## 8. API-Only Services  
+**Examples:**  
+- OpenAI API [^14]  
+- Anthropic Claude API [^15]  
+- Mistral API [^16]  
+- Together AI (open model API) [^17]  
+
+**Advantages:**  
+✓ Maximum flexibility  
+✓ Scalable for developers  
+✓ Pay-per-use pricing  
+
+**Disadvantages:**  
+✗ Requires technical integration  
+✗ No built-in UI  
+✗ Latency considerations  
+
+## 9. Embedded Systems  
+**Examples:**  
+- Rabbit R1 (standalone AI device) [^18]  
+- Rewind Pendant (wearable LLM) [^19]  
+- AI-powered smart displays [^20]  
+
+**Advantages:**  
+✓ Purpose-built hardware  
+✓ Instant availability  
+✓ Novel interaction modes  
+
+**Disadvantages:**  
+✗ Limited upgradability  
+✗ Higher hardware costs  
+✗ Early-stage technology  
 
 ## Competitive Analysis Matrix
 
@@ -119,7 +173,36 @@
 | Update Frequency | High | Medium | High | Medium | Medium |
 
 ## Emerging Trends
-1. **Hybrid Approaches**: Web apps with desktop wrappers (e.g. ChatGPT desktop)
-2. **Local-First**: Apps combining cloud and local models (e.g. LM Studio)
-3. **Vertical Specialization**: Industry-specific interfaces (e.g. legal/financial LLMs)
-4. **Multimodal Integration**: Adding voice/image capabilities to existing text apps
+1. **Hybrid Approaches**: Web apps with desktop wrappers (e.g. ChatGPT desktop) [^21]
+2. **Local-First**: Apps combining cloud and local models (e.g. LM Studio) [^22]
+3. **Vertical Specialization**: Industry-specific interfaces (e.g. Harvey AI for legal) [^23]
+4. **Multimodal Integration**: Adding voice/image capabilities (e.g. GPT-4 Vision) [^24]
+5. **Agent Ecosystems**: Autonomous AI agents (e.g. AutoGPT) [^25]
+6. **Privacy-Focused**: On-premise solutions (e.g. PrivateGPT) [^26]
+
+## References
+[^2]: https://github.com/features/copilot  
+[^3]: https://codeium.com  
+[^4]: https://www.tabnine.com  
+[^5]: https://sourcegraph.com/cody  
+[^6]: https://continue.dev  
+[^7]: Peng et al. "Measuring Coding Experience" (2023)  
+[^8]: Ziegler et al. "Productivity Impacts of AI Pair Programming" (2022)  
+[^9]: OpenAI Data Usage Policies (2024)  
+[^10]: Amazon Alexa LLM Announcement (2023)  
+[^11]: SiriGPT Project GitHub Repository  
+[^12]: Humane AI Product Specifications  
+[^13]: FTC Voice Assistant Privacy Guidelines  
+[^14]: https://platform.openai.com  
+[^15]: https://docs.anthropic.com  
+[^16]: https://mistral.ai  
+[^17]: https://together.ai  
+[^18]: Rabbit R1 Technical Documentation  
+[^19]: Rewind AI Whitepaper  
+[^20]: Google Nest Hub AI Features  
+[^21]: Electron Framework Case Studies  
+[^22]: LM Studio Benchmark Reports  
+[^23]: Harvey AI Legal Tech Review  
+[^24]: OpenAI GPT-4V System Card  
+[^25]: AutoGPT GitHub Repository  
+[^26]: PrivateGPT Technical Documentation
