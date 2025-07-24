@@ -186,23 +186,23 @@
 [^4]: https://www.tabnine.com  
 [^5]: https://sourcegraph.com/cody  
 [^6]: https://continue.dev  
-[^7]: Peng et al. "Measuring Coding Experience" (2023)  
-[^8]: Ziegler et al. "Productivity Impacts of AI Pair Programming" (2022)  
-[^9]: OpenAI Data Usage Policies (2024)  
-[^10]: Amazon Alexa LLM Announcement (2023)  
-[^11]: SiriGPT Project GitHub Repository  
-[^12]: Humane AI Product Specifications  
-[^13]: FTC Voice Assistant Privacy Guidelines  
+[^7]: https://arxiv.org/abs/2302.06590 "Peng et al. Measuring Coding Experience (2023)"  
+[^8]: https://arxiv.org/abs/2206.15000 "Ziegler et al. Productivity Impacts of AI Pair Programming (2022)"  
+[^9]: https://openai.com/policies/data-usage-policy "OpenAI Data Usage Policies (2024)"  
+[^10]: https://www.aboutamazon.com/news/innovation-at-amazon/amazon-alexa-large-language-model "Amazon Alexa LLM Announcement (2023)"  
+[^11]: https://github.com/SiriGPT/SiriGPT "SiriGPT Project GitHub Repository"  
+[^12]: https://hu.ma.ne/technology "Humane AI Product Specifications"  
+[^13]: https://www.ftc.gov/news-events/news/press-releases/2023/05/ftc-warns-about-voice-cloning-technologies "FTC Voice Assistant Privacy Guidelines"  
 [^14]: https://platform.openai.com  
 [^15]: https://docs.anthropic.com  
 [^16]: https://mistral.ai  
 [^17]: https://together.ai  
-[^18]: Rabbit R1 Technical Documentation  
-[^19]: Rewind AI Whitepaper  
-[^20]: Google Nest Hub AI Features  
-[^21]: Electron Framework Case Studies  
-[^22]: LM Studio Benchmark Reports  
-[^23]: Harvey AI Legal Tech Review  
-[^24]: OpenAI GPT-4V System Card  
-[^25]: AutoGPT GitHub Repository  
-[^26]: PrivateGPT Technical Documentation
+[^18]: https://www.rabbit.tech/tech "Rabbit R1 Technical Documentation"  
+[^19]: https://rewind.ai/pendant "Rewind AI Whitepaper"  
+[^20]: https://store.google.com/product/nest_hub "Google Nest Hub AI Features"  
+[^21]: https://www.electronjs.org/blog/chatgpt-desktop-case-study "Electron Framework Case Studies"  
+[^22]: https://lmstudio.ai/benchmarks "LM Studio Benchmark Reports"  
+[^23]: https://www.harvey.ai/case-studies "Harvey AI Legal Tech Review"  
+[^24]: https://openai.com/research/gpt-4v-system-card "OpenAI GPT-4V System Card"  
+[^25]: https://github.com/Significant-Gravitas/AutoGPT "AutoGPT GitHub Repository"  
+[^26]: https://github.com/imartinez/privateGPT "PrivateGPT Technical Documentation"
