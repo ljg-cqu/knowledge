@@ -3,7 +3,5 @@
 # IDE
 .idea/
 
-# Specific AI report to ignore
-AI/Comprehensive Report on AI-Powered Local File Editing Tools with Multi-File Support, Git Integration, and Multimodality.md
 
 # Other ignores (add below)
