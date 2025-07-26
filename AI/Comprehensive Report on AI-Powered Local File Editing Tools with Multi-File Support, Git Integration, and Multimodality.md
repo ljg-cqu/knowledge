@@ -92,7 +92,7 @@ AI tools increasingly support multimodal inputs to enhance AI coding interaction
 
 | Tool/Category            | Local File CRUD | Multi-File Edit Support | Git Integration                        | Multimodality (Voice/Image/Audio) | Key Highlights                                      | Platform                       |
 |-------------------------|----------------|-------------------------|--------------------------------------|----------------------------------|----------------------------------------------------|-------------------------------|
-| **Aider**               | Full           | Yes, with repo-wide map | Auto Git commits, undo, branch mgmt  | Voice coding, image & URL support | Instruction-driven chat, multi-model, flexible UI  | CLI + IDE plugins + Browser UI |
+| **Aider**               | Full           | Yes, with repo-wide map | Auto Git commits, undo, branch mgmt  | Voice coding, image & URL support | Instruction-driven chat, multi-model, flexible UI  | CLI + IDE plugins + Browser UI (Windows/macOS/Linux) |
 | **llm-edit**            | Basic          | Limited documentation   | Limited Git features documented      | No explicit mention               | Lightweight CLI editing tool                        | CLI                           |
 | **MCP Text Editor**     | Partial line/block edit | Atomic multi-file ops   | Not specified                        | Not specified                    | Token-efficient partial edits, conflict detection  | Python server (Win/macOS/Linux)|
 | **Gemini CLI**          | Yes (assumed)  | Yes                     | Limited information                  | Image, audio, web crawling supported | CLI with multimodal capabilities                    | CLI                           |
@@ -104,7 +104,26 @@ AI tools increasingly support multimodal inputs to enhance AI coding interaction
 
 ---
 
-## 6. Best Practices and Recommendations
+## 6. Cross-Platform Support Analysis
+
+When evaluating AI-powered file editing tools, cross-platform compatibility is crucial for teams using mixed operating systems:
+
+### 6.1 Platform Coverage
+- **Aider**: Fully supports Windows, macOS, and Linux with:
+  - Native CLI experience on all platforms
+  - Browser UI works across platforms
+  - Voice support (except some Windows limitations)
+- **MCP Text Editor Server**: Explicitly designed for Windows/macOS/Linux
+- **GitHub Copilot**: Runs in VSCode/JetBrains IDEs which are cross-platform
+- **Gemini CLI**: Primarily tested on Linux/macOS, Windows support via WSL
+
+### 6.2 Key Considerations
+- Windows users may need WSL for optimal CLI tool performance
+- Voice features often have platform-specific dependencies
+- File system path handling differences between OSes
+- Native vs web-based UIs have different cross-platform behaviors
+
+## 7. Best Practices and Recommendations
 
 - Add only relevant files to AI editing sessions to reduce token usage and improve accuracy.
 - Use modular, small-to-medium sized multi-file changes to balance change comprehensiveness and reviewability.
