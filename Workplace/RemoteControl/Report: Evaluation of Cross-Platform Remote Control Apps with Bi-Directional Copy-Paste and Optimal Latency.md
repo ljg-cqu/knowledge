@@ -4,6 +4,16 @@ Sun Jul 27 2025
 
 Cross-platform remote control apps supporting bi-directional copy/paste enable smooth clipboard sharing between local and remote devices, enhancing productivity. Below is a detailed competitor analysis with official websites included.
 
+### Cross-Platform Support Details
+
+Each application's platform compatibility varies significantly. Below is a breakdown of supported operating systems and versions:
+
+- **Windows**: All solutions support Windows 10/11, with most also supporting Windows 7/8.1
+- **macOS**: Support typically requires macOS 10.13 (High Sierra) or later
+- **Linux**: Most solutions focus on mainstream distributions (Ubuntu, Debian, Fedora, CentOS)
+- **Mobile**: iOS 14+/Android 8.0+ are commonly supported minimum versions
+- **Web Browsers**: Some solutions offer web-based access via Chrome, Firefox, Edge, Safari
+
 ### Cross-Platform Remote Control Apps Supporting Bi-Directional Copy/Paste
 
 - **AnyViewer**  
@@ -48,18 +58,18 @@ Cross-platform remote control apps supporting bi-directional copy/paste enable s
 
 ### Comparative Table
 
-| App Name                | Platforms Supported                | Bi-Directional Copy/Paste | File Transfer Method        | Security Features                  | Pricing Model      | Official Website                             |
-|-------------------------|----------------------------------|---------------------------|-----------------------------|----------------------------------|--------------------|----------------------------------------------|
-| **AnyViewer**            | Windows, iOS, Android            | Yes                       | Drag and Drop               | ECC Encryption                   | Commercial         | https://www.anyviewer.com/                    |
-| **Zoho Assist**          | Windows, Mac, Linux, iOS, Android| Yes                       | Integrated                  | TLS 1.2 & AES 256-bit encryption| Commercial         | https://www.zoho.com/assist/                  |
-| **Iperius Remote**       | Windows, Mac, Android            | Yes                       | Copy-paste, Drag and Drop  | High reliability, secure        | Commercial (trial) | https://www.iperiusremote.com/                |
-| **Clipboard Remote**     | Windows, macOS, iOS, Android    | Yes                       | Clipboard only (manual)     | Local network encryption        | Free               | https://www.ntwind.com/cross-platform/clipboard-remote.html |
-| **TeamViewer**           | Windows, Mac, Linux, Mobile      | Yes                       | File sharing, Clipboard     | Strong encryption               | Commercial         | https://www.teamviewer.com/                    |
-| **ManageEngine Remote Access Plus** | Windows, Mac, Linux          | Yes                       | File transfer, Clipboard    | Enterprise-grade security       | Multi-tier Pricing | https://www.manageengine.com/assist.html      |
-| **Supremo**              | Windows, Mac, Linux              | Yes                       | Drag and Drop, Integrated  | Encrypted connections           | Free & Paid        | https://www.supremocontrol.com/               |
-| **RemotePC**             | Windows, Mac                    | Yes                       | File transfer, Printing    | Secure and scalable             | Commercial         | https://www.remotepc.com/                      |
-| **SuperOps.ai**          | Windows, Web-based               | Yes                       | Integrated                 | AI-powered management           | Commercial         | https://superops.ai/                           |
-| **NinjaOne**             | Windows, Mac, Linux, iOS, Android| Yes                       | Integrated                 | Automated endpoint management   | Commercial         | https://www.ninjaone.com/                      |
+| App Name                | Platforms Supported                                                                 | Bi-Directional Copy/Paste | File Transfer Method        | Security Features                  | Pricing Model      | Official Website                             |
+|-------------------------|-----------------------------------------------------------------------------------|---------------------------|-----------------------------|----------------------------------|--------------------|----------------------------------------------|
+| **AnyViewer**            | Windows (7/10/11), iOS (14+), Android (8.0+)                                      | Yes                       | Drag and Drop               | ECC Encryption                   | Commercial         | https://www.anyviewer.com/                    |
+| **Zoho Assist**          | Windows (7/10/11), macOS (10.13+), Linux (Ubuntu/Debian/Fedora), iOS (14+), Android (8.0+), Web | Yes | Integrated                  | TLS 1.2 & AES 256-bit encryption| Commercial         | https://www.zoho.com/assist/                  |
+| **Iperius Remote**       | Windows (7/10/11), macOS (10.13+), Android (8.0+)                                 | Yes                       | Copy-paste, Drag and Drop  | High reliability, secure        | Commercial (trial) | https://www.iperiusremote.com/                |
+| **Clipboard Remote**     | Windows (10/11), macOS (10.15+), iOS (15+), Android (10+)                        | Yes                       | Clipboard only (manual)     | Local network encryption        | Free               | https://www.ntwind.com/cross-platform/clipboard-remote.html |
+| **TeamViewer**           | Windows (7/10/11), macOS (10.13+), Linux (main distros), iOS (14+), Android (8.0+), Web | Yes | File sharing, Clipboard     | Strong encryption               | Commercial         | https://www.teamviewer.com/                    |
+| **ManageEngine Remote Access Plus** | Windows (10/11), macOS (10.15+), Linux (Ubuntu/Debian/RHEL)                 | Yes                       | File transfer, Clipboard    | Enterprise-grade security       | Multi-tier Pricing | https://www.manageengine.com/assist.html      |
+| **Supremo**              | Windows (7/10/11), macOS (10.13+), Linux (Ubuntu/Debian)                         | Yes                       | Drag and Drop, Integrated  | Encrypted connections           | Free & Paid        | https://www.supremocontrol.com/               |
+| **RemotePC**             | Windows (10/11), macOS (10.15+)                                                  | Yes                       | File transfer, Printing    | Secure and scalable             | Commercial         | https://www.remotepc.com/                      |
+| **SuperOps.ai**          | Windows (10/11), Web (Chrome/Firefox/Edge/Safari)                                | Yes                       | Integrated                 | AI-powered management           | Commercial         | https://superops.ai/                           |
+| **NinjaOne**             | Windows (10/11), macOS (10.15+), Linux (Ubuntu/Debian), iOS (14+), Android (8.0+) | Yes                       | Integrated                 | Automated endpoint management   | Commercial         | https://www.ninjaone.com/                      |
 
 ---
 
