@@ -18,18 +18,22 @@ Each application's platform compatibility varies significantly. Below is a break
 
 - **AnyViewer**  
   Provides fast, secure remote desktop access with drag-and-drop file transfer and robust encryption. Compatible with Windows, iOS, and Android.  
+  Pricing: Free for basic use, Professional plan at $9.90/month (unlimited devices)  
   Official Website: https://www.anyviewer.com/
 
 - **Zoho Assist**  
   Offers secure cloud-based remote support with multiple monitor viewing, file transfers, chat tools, and enterprise-grade security. Compatible with Windows, Mac, Linux, iOS, and Android.  
+  Pricing: Starts at $10/technician/month (Standard plan), Enterprise at $25/technician/month  
   Official Website: https://www.zoho.com/assist/
 
 - **Iperius Remote**  
   Supports remote desktop on Windows, Mac, and Android, allowing copy-paste and drag-and-drop file sharing through a reliable, secure platform from a developer with two decades of experience.  
+  Pricing: €29.90 one-time fee for 1 PC, €199 for 10 PCs  
   Official Website: https://www.iperiusremote.com/
 
 - **Clipboard Remote**  
   Enables easy manual clipboard sharing of text, URLs, images, and photos within LAN/Wi-Fi on Windows, macOS, iOS, and Android devices with encryption and strong privacy.  
+  Pricing: Free version available, Pro version at $19.95 one-time payment  
   Official Website: https://www.ntwind.com/cross-platform/clipboard-remote.html
 
 - **TeamViewer**  
@@ -58,11 +62,11 @@ Each application's platform compatibility varies significantly. Below is a break
 
 ### Comparative Table
 
-| App Name                | Platforms Supported                                                                 | Bi-Directional Copy/Paste | File Transfer Method        | Security Features                  | Pricing Model      | Official Website                             |
+| App Name                | Platforms Supported                                                                 | Bi-Directional Copy/Paste | File Transfer Method        | Security Features                  | Pricing Details                          | Official Website                             |
 |-------------------------|-----------------------------------------------------------------------------------|---------------------------|-----------------------------|----------------------------------|--------------------|----------------------------------------------|
-| **AnyViewer**            | Windows (7/10/11), iOS (14+), Android (8.0+)                                      | Yes                       | Drag and Drop               | ECC Encryption                   | Commercial         | https://www.anyviewer.com/                    |
-| **Zoho Assist**          | Windows (7/10/11), macOS (10.13+), Linux (Ubuntu/Debian/Fedora), iOS (14+), Android (8.0+), Web | Yes | Integrated                  | TLS 1.2 & AES 256-bit encryption| Commercial         | https://www.zoho.com/assist/                  |
-| **Iperius Remote**       | Windows (7/10/11), macOS (10.13+), Android (8.0+)                                 | Yes                       | Copy-paste, Drag and Drop  | High reliability, secure        | Commercial (trial) | https://www.iperiusremote.com/                |
+| **AnyViewer**            | Windows (7/10/11), iOS (14+), Android (8.0+)                                      | Yes                       | Drag and Drop               | ECC Encryption                   | Free basic plan, $9.90/month (Professional) | https://www.anyviewer.com/                    |
+| **Zoho Assist**          | Windows (7/10/11), macOS (10.13+), Linux (Ubuntu/Debian/Fedora), iOS (14+), Android (8.0+), Web | Yes | Integrated                  | TLS 1.2 & AES 256-bit encryption| $10-$25/technician/month | https://www.zoho.com/assist/                  |
+| **Iperius Remote**       | Windows (7/10/11), macOS (10.13+), Android (8.0+)                                 | Yes                       | Copy-paste, Drag and Drop  | High reliability, secure        | €29.90-€199 one-time | https://www.iperiusremote.com/                |
 | **Clipboard Remote**     | Windows (10/11), macOS (10.15+), iOS (15+), Android (10+)                        | Yes                       | Clipboard only (manual)     | Local network encryption        | Free               | https://www.ntwind.com/cross-platform/clipboard-remote.html |
 | **TeamViewer**           | Windows (7/10/11), macOS (10.13+), Linux (main distros), iOS (14+), Android (8.0+), Web | Yes | File sharing, Clipboard     | Strong encryption               | Commercial         | https://www.teamviewer.com/                    |
 | **ManageEngine Remote Access Plus** | Windows (10/11), macOS (10.15+), Linux (Ubuntu/Debian/RHEL)                 | Yes                       | File transfer, Clipboard    | Enterprise-grade security       | Multi-tier Pricing | https://www.manageengine.com/assist.html      |
