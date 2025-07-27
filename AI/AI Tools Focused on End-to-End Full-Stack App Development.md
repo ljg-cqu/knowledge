@@ -69,7 +69,26 @@ In conclusion, for true end-to-end full-stack app creation, platforms like Repli
 
 This landscape is rapidly evolving with new capabilities emerging continually to further automate, speed, and simplify full-stack app development powered by AI.
 
-Bibliography
+## Official Websites
+
+**Bolt AI** - https://bolt.new/
+
+**Bubble** - https://bubble.io/
+
+**Cognition AI (Devin)** - https://www.cognition-labs.com/
+
+**Cursor** - https://cursor.sh/
+
+**Firebase Studio** - https://firebase.studio/
+
+**GitHub Copilot** - https://github.com/features/copilot
+
+**Replit** - https://replit.com/
+
+**CodeConductor / Codev** - https://co.dev/
+
+## Bibliography
+
 5 essential AI tools for full stack developers - Lumenalta. (2025). https://lumenalta.com/insights/5-essential-ai-tools-for-full-stack-developers
 
 7 Best AI App Builders for 2025: Tested & Ranked - Lindy. (2025). https://www.lindy.ai/blog/ai-app-builder
@@ -78,13 +97,13 @@ Bibliography
 
 10 Best AI Coding Assistant Tools in 2025 – Guide for Developers. (2025). https://www.thedroidsonroids.com/blog/best-ai-coding-assistant-tools
 
-ai generated fullstack sites? : r/sveltejs - Reddit. (2024). https://www.reddit.com/r/sveltejs/comments/1e56jk8/ai_generated_fullstack_sites/
+ai generated fullstack sites? : r/sveltejs - Reddit. (2024). https://www.reddit.com/r/sveltejs/comments/1e56jk8/ai_generated_fullstack_sites/
 
 Best AI Code Generators You Should Know If You Want To Stay ... (2025). https://dev.to/dev_kiran/best-ai-code-generators-you-should-know-if-you-want-to-stay-ahead-252k
 
 Best AI Coding Assistants as of July 2025 - Shakudo. (2025). https://www.shakudo.io/blog/best-ai-coding-assistants
 
-Best AI for coding / app development? : r/ArtificialInteligence - Reddit. (2023). https://www.reddit.com/r/ArtificialInteligence/comments/174jb5j/best_ai_for_coding_app_development/
+Best AI for coding / app development? : r/ArtificialInteligence - Reddit. (2023). https://www.reddit.com/r/ArtificialInteligence/comments/174jb5j/best_ai_for_coding_app_development/
 
 Best AI Tools for Coding in 2025: 6 Tools Worth Your Time. (2024). https://www.pragmaticcoders.com/resources/ai-developer-tools
 
@@ -94,7 +113,7 @@ Bubble: The full-stack no-code app builder. (n.d.). https://bubble.io/
 
 Build Full-Stack Web Applications in Minutes with Codev | AI App ... (n.d.). https://co.dev/
 
-Easiest Way to Develop a Mobile App with AI : r/nocode - Reddit. (2025). https://www.reddit.com/r/nocode/comments/1iaw4j4/easiest_way_to_develop_a_mobile_app_with_ai/
+Easiest Way to Develop a Mobile App with AI : r/nocode - Reddit. (2025). https://www.reddit.com/r/nocode/comments/1iaw4j4/easiest_way_to_develop_a_mobile_app_with_ai/
 
 Firebase Studio. (n.d.). https://firebase.studio/
 
