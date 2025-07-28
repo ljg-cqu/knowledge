@@ -6,61 +6,61 @@ LLM-powered command-line interface (CLI) tools have become essential for automat
 
 ## 1. AI-Powered Terminal Emulators with Embedded Automation
 
-### 1.1 Warp Terminal  
+### 1.1 [Warp Terminal](https://www.warp.dev/)
 Warp Terminal is a modern Rust-based terminal that integrates AI agents allowing users to communicate with the terminal in natural language to generate, execute, and automate system commands. It supports real-time collaboration through Warp Drive, workflow saving, sharing, and interactive command editing with IDE-like features. Warp integrates foundation LLMs from Anthropic, OpenAI, and Google Gemini to assist with command suggestions, error corrections, and workflow automation. Its privacy model includes zero data retention on enterprise plans and local natural language detection. Warp currently supports macOS and Linux (beta), with Windows support forthcoming((612)). It is particularly suitable for developers needing an intuitive, collaborative, and powerful terminal to automate complex workflows((760)).
 
 ---
 
 ## 2. Open-Source AI Agents and Coding Assistants in CLI
 
-### 2.1 Gemini CLI  
+### 2.1 [Gemini CLI](https://cloud.google.com/gemini)
 Google's Gemini CLI is an open-source AI terminal agent powered by the Gemini 2.5 Pro model, boasting a massive 1 million token context window and multimodal support including images and PDFs. It executes system commands via a sandboxed `run_shell_command` tool with restricted permissions for security, and extensible via Model Context Protocol (MCP) servers to interact with external APIs or tools. Gemini CLI is free for users with a Google account and supports macOS, Linux, and Windows((892)). It excels at codebase analysis, multi-step workflow automation, and integrates with Google Cloud services. Some users report occasional limitations with direct command execution in specific edge cases.
 
-### 2.2 Claude Code  
+### 2.2 [Claude Code](https://www.anthropic.com/claude-code)
 Anthropic’s Claude Code is a closed-source, agentic coding tool that operates inside the terminal, automating file edits, running shell commands, git operations, and performing tests using natural language. It supports lifecycle hooks allowing deterministic automation of commands at defined intervals or events((919)). Claude Code maintains a large 200,000 token context window supporting complex project state management and integrates MCP servers for enhanced external tool connectivity((42)). Runs on macOS, Linux, and Windows (Docker/WSL2), it emphasizes security with command blocklisting and user approvals. Its strengths include deep codebase reasoning and enterprise-ready automation workflows.
 
 ---
 
 ## 3. LLM-Powered CLI Utilities and Plugins for Shell Command Automation
 
-### 3.1 GitHub Copilot CLI  
+### 3.1 [GitHub Copilot CLI](https://github.com/features/copilot)
 GitHub Copilot CLI enables developers to convert natural language inputs into shell commands, Git commands, and GitHub CLI commands, with explanations and execution confirmation. It features an interactive chat-like interface to assist with finding, explaining, revising, and executing commands, balancing automation with safety via confirmation prompts. Copilot CLI integrates closely with GitHub ecosystems and Windows Terminal chat experience, supporting all major operating systems. It excels at automating Git workflows and complex shell scripting for developers seeking enhanced command line productivity((861)).
 
-### 3.2 ShellGPT  
+### 3.2 [ShellGPT](https://github.com/TheR1D/shell_gpt)
 ShellGPT is an open-source tool that generates and optionally executes shell commands from natural language prompts using GPT-4 or local LLMs via Ollama, across Linux, macOS, and Windows platforms. It is suitable for scripting assistance and quick command generation with user control over execution.
 
-### 3.3 llm-cmd  
+### 3.3 [llm-cmd](https://github.com/simonw/llm-cmd)
 llm-cmd is a CLI plugin converting natural language instructions into shell commands with user review before execution. Supporting models such as GPT-3.5, GPT-4, and Claude, it provides cross-platform automation and user control, bridging natural language inputs to shell automation.
 
-### 3.4 how.sh  
+### 3.4 [how.sh](https://github.com/sudoaugustin/how.sh)
 how.sh is a CLI utility that integrates with multiple LLM backends including OpenAI and local models, allowing users to generate and execute shell commands to automate CLI workflows with flexibility((936)).
 
-### 3.5 Aider  
+### 3.5 [Aider](https://aider.chat/)
 Aider is an AI pair programming assistant running in the terminal that automates coding tasks, system commands, linting, testing, and git repository interactions using multiple supported LLM backends.
 
-### 3.6 AIChat  
+### 3.6 [AIChat](https://github.com/sigoden/aichat)
 AIChat is a multi-function LLM CLI toolkit featuring a shell assistant capable of transforming natural language instructions into executable shell commands supporting diverse LLM providers to automate terminal workflows efficiently.
 
-### 3.7 DeveloperGPT  
+### 3.7 [DeveloperGPT](https://github.com/luo-anthony/DeveloperGPT)
 DeveloperGPT supports natural language interfacing to terminal commands and in-terminal chat, powered by various LLMs including Google Gemini, OpenAI GPT-series, and Anthropic Claude, enabling complex workflow automation.
 
-### 3.8 CommanderAI  
+### 3.8 [CommanderAI](https://github.com/cchauser/Commander-AI)
 CommanderAI is a Windows-focused AI-driven system automation tool that converts natural language tasks into executable system commands facilitating operations and workflow management.
 
-### 3.9 Loz  
+### 3.9 [Loz](https://github.com/joone/loz)
 Loz is a command-line tool enabling users’ preferred LLM to execute system commands and Unix pipe operations for automation within Unix-like environments.
 
-### 3.10 LM Studio CLI (lms)  
+### 3.10 [LM Studio CLI (lms)](https://lmstudio.ai/)
 LM Studio CLI provides local scripting, model management, and LLM workflow automation with a focus on privacy and local model operation, deployed cross-platform.
 
 ---
 
 ## 4. Interactive AI Shells and AI-Native Terminals
 
-### 4.1 ShellE / SynthOS  
+### 4.1 [ShellE / SynthOS](https://github.com/shell-ai/shell-ai)
 ShellE harnesses generative AI to power an interactive shell allowing terminal command automation with generative workflows for enhanced developer productivity.
 
-### 4.2 Wave Terminal  
+### 4.2 [Wave Terminal](https://www.waveterm.dev/)
 Wave Terminal is an open-source AI-native terminal combining traditional CLI features with graphical enhancements like file previews and web browsing, including built-in AI assistance for persistent and complex workflows.
 
 ---
