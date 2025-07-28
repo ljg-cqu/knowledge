@@ -1,27 +1,3 @@
-### Official Websites
-
-- [Warp Terminal](https://www.warp.dev/)
-- [Google Gemini CLI](https://cloud.google.com/gemini)
-- [Claude Code](https://www.anthropic.com/claude-code)
-- [GitHub Copilot CLI](https://github.com/features/copilot)
-- [ShellGPT](https://www.shellgpt.dev/)
-- [llm-cmd](https://github.com/simonw/llm-cmd)
-- [how.sh](https://www.how.sh/)
-- [Aider](https://aider.chat/)
-- [AIChat](https://www.aichat.dev/)
-- [DeveloperGPT](https://github.com/luo-anthony/DeveloperGPT)
-- [CommanderAI](https://github.com/cchauser/Commander-AI)
-- [Loz](https://github.com/joone/loz)
-- [LM Studio CLI](https://lmstudio.ai/)
-- [ShellE / SynthOS](https://www.synthos.dev/)
-- [Wave Terminal](https://www.waveterm.dev/)
-
----
-
-Generate the final report that meet the MECE principle.
-
-Mon Jul 28 2025
-
 # Comprehensive Report: LLM-Powered CLI Tools for System Command Automation
 
 LLM-powered command-line interface (CLI) tools have become essential for automating system commands, enhancing developer productivity, and simplifying interaction with complex workflows by leveraging natural language understanding integrated with direct shell execution capabilities. This report systematically categorizes and analyses all major LLM-powered CLI tools capable of automating system commands, ensuring a complete, mutually exclusive, and collectively exhaustive overview that meets the MECE principle.
@@ -123,7 +99,28 @@ Wave Terminal is an open-source AI-native terminal combining traditional CLI fea
 
 ---
 
-## 7. Summary
+### 7. Official Websites
+
+- [Warp Terminal](https://www.warp.dev/)
+- [Google Gemini CLI](https://cloud.google.com/gemini)
+- [Claude Code](https://www.anthropic.com/claude-code)
+- [GitHub Copilot CLI](https://github.com/features/copilot)
+- [ShellGPT](https://www.shellgpt.dev/)
+- [llm-cmd](https://github.com/simonw/llm-cmd)
+- [how.sh](https://www.how.sh/)
+- [Aider](https://aider.chat/)
+- [AIChat](https://www.aichat.dev/)
+- [DeveloperGPT](https://github.com/luo-anthony/DeveloperGPT)
+- [CommanderAI](https://github.com/cchauser/Commander-AI)
+- [Loz](https://github.com/joone/loz)
+- [LM Studio CLI](https://lmstudio.ai/)
+- [ShellE / SynthOS](https://www.synthos.dev/)
+- [Wave Terminal](https://www.waveterm.dev/)
+
+---
+
+
+## 8. Summary
 
 LLM-powered CLI tools for automating system commands have matured into a diverse ecosystem serving varied user needs:
 
