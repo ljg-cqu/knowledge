@@ -13,9 +13,9 @@ These tools combine traditional Git interfaces (both GUI and CLI) with AI capabi
 
 #### 2. AI-Driven Commit Message Generators
 These solutions focus exclusively on automatically generating detailed, human-readable commit messages that summarize code changes and describe their impact. They are often integrated as Git hooks or CLI additions to streamline the commit process.
-- **AutoCommit**: Uses GPT-4 or similar LLMs to analyze diffs and produce context-rich commit messages automatically, integrating seamlessly with GitHub CLI for effortless commit message creation.
-- **aicommits**: Supports multiple LLM providers to generate meaningful commit messages with explanations. It offers interactive and automated modes for staging, committing, and pushing features.
-- **LLMCommit**: A fast CLI tool generating quick, clear AI-powered commit messages while automating commit and push steps. It emphasizes concise messaging that reflects the code changes’ purpose and impact.
+- **AutoCommit** (https://github.com/unconventionaldotdev/auto-commit): Uses GPT-4 or similar LLMs to analyze diffs and produce context-rich commit messages automatically, integrating seamlessly with GitHub CLI for effortless commit message creation.
+- **aicommits** (https://github.com/Nutlope/aicommits): Supports multiple LLM providers to generate meaningful commit messages with explanations. It offers interactive and automated modes for staging, committing, and pushing features.
+- **LLMCommit** (https://github.com/zurawiki/llmcommit): A fast CLI tool generating quick, clear AI-powered commit messages while automating commit and push steps. It emphasizes concise messaging that reflects the code changes’ purpose and impact.
 - **GitHub Copilot Chat for Commit Messages** (https://github.com/features/copilot): GitHub Copilot’s AI chat integrated into IDEs can assist in writing or explaining commit messages based on diff context.
 - **OpenCommit** (https://github.com/di-sukharev/opencommit): Praised for its rich feature set, including CLI and GitHub Actions support, customizable commit messages, locale support, and Git hooks for automated commit message generation. It leverages the cost-effective ChatGPT 3.5-turbo model.
 
