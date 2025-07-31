@@ -21,7 +21,7 @@ Before you start, ensure you have:
 ```bash
 hostname -I
 ```
-Example output: `10.1.1.242 10.1.1.131`
+Example output: `10.1.1.131 10.1.1.242`
 
 ---
 
@@ -61,7 +61,7 @@ You can choose to set up SSH tunnels to route traffic securely. Use the IP addre
 In the first terminal window/tab, run:
 
 ```bash
-ssh -D 20170 zealy@10.1.1.242
+ssh -D 20170 zealy@10.1.1.131
 ```
 
 **B. HTTP Proxy Connection**
@@ -69,7 +69,7 @@ ssh -D 20170 zealy@10.1.1.242
 In a second terminal window/tab, run:
 
 ```bash
-ssh -L 20171:localhost:20171 zealy@10.1.1.242
+ssh -L 20171:localhost:20171 zealy@10.1.1.131
 ```
 
 **C. HTTP (with Rule) Proxy Connection**
@@ -77,7 +77,7 @@ ssh -L 20171:localhost:20171 zealy@10.1.1.242
 In a third terminal window/tab, run:
 
 ```bash
-ssh -L 20172:localhost:20172 zealy@10.1.1.242
+ssh -L 20172:localhost:20172 zealy@10.1.1.131
 ```
 
 Enter your password for the `zealy` account when prompted for each SSH connection.
@@ -116,15 +116,15 @@ If you prefer to access V2rayA services directly without using SSH tunneling, fo
 - Use the Ubuntu machine’s IP address directly in the URL:
 
   - For HTTP Proxy:  
-    URL: `http://10.1.1.242:20171`
+    URL: `http://10.1.1.131:20171`
   - For HTTP (with Rule) Proxy:  
-    URL: `http://10.1.1.242:20172`
+    URL: `http://10.1.1.131:20172`
 
 - For Command-Line Access in Terminal on macOS:  
   You can also access the HTTP service directly using curl. This is useful for testing or for command-line tools.
 
   ```bash
-  curl http://10.1.1.242:20171
+  curl http://10.1.1.131:20171
   ```
 
 ---
