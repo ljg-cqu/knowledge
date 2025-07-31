@@ -1,24 +1,26 @@
-**Setting Up Local Network Access to V2rayA on Windows 11 from macOS**
-This manual provides a comprehensive guide on accessing the V2rayA service running on a Windows 11 machine from a macOS device over a local network. This guide encompasses methods for direct access, configurations for firewall settings, and command-line proxy environment variables.
-Prerequisites
+# Setting Up Local Network Access to V2rayA on Windows 11 from macOS
+
+This manual provides a comprehensive guide on accessing the V2rayA service running on a Windows 11 machine from a macOS device over a local network.
+
+## Prerequisites
+
 Before you start, ensure you have:
-A Windows 11 machine with V2rayA installed and listening on the appropriate ports:
-Port 1080 (SOCKS5 proxy) — typically used in V2ray setups.
-Port 80 (HTTP proxy) — if configured for HTTP access.
-Other ports as needed based on your V2rayA configuration.
-A macOS device connected to the same local network.
-**Step 1: Obtain the IP Address of the Windows Machine**
-Open Command Prompt on Windows (use Win + R, type cmd, and hit Enter).
-Execute the following command to get the IP address:
+- A Windows 11 machine with V2rayA installed and listening on:
+  - Port 1080 (SOCKS5 proxy)
+  - Port 80 (HTTP proxy)
+- A macOS device connected to the same local network
+## Step 1: Obtain the IP Address of the Windows Machine
+1. Open Command Prompt on Windows (Win + R → `cmd`)
+2. Execute:
+```bash
 ipconfig
-Look for the IPv4 Address, typically something like 192.168.x.x.
-**Step 2: Check the Firewall Status on Windows**
-Open Windows Security:
-Go to the Start Menu, search for "Windows Security," and open it.
-Check Firewall Settings:
-Click on Firewall & network protection.
-Make sure your firewall is turned on, then proceed to allow the necessary ports.
-**Step 3: Configure the Windows Firewall**
+```
+3. Look for the IPv4 Address (e.g., 192.168.x.x)
+## Step 2: Configure Windows Firewall
+1. Open Windows Security → Firewall & network protection
+2. Create new Inbound Rules for:
+   - TCP port 1080 (SOCKS5)
+   - TCP port 80 (HTTP)
 If the Windows Firewall is active, you need to allow access to the ports used by V2rayA:
 Open Windows Security and go to Firewall & network protection.
 Click on Advanced settings from the sidebar.

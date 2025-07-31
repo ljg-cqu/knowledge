@@ -1,31 +1,28 @@
-**Setting Up Local Network Access to VrayA on Ubuntu from macOS**
+# Setting Up Local Network Access to V2rayA on Ubuntu from macOS
 This manual provides a comprehensive guide on accessing the VrayA service running on an Ubuntu machine from a macOS device over a local network. It covers methods for direct access, routed connections through SSH tunneling, firewall configurations, and command-line proxy environment variables, as well as how to set system-level proxy settings that can accommodate both approaches.
-Prerequisites
+## Prerequisites
+
 Before you start, ensure you have:
-An Ubuntu machine with VrayA running, listening on:
-Port 20170 (SOCKS5 proxy)
-Port 20171 (HTTP proxy)
-Port 20172 (HTTP with rule proxy)
-A macOS device connected to the same local network.
-Basic command-line knowledge and access to the Ubuntu machine.
-**Step 1: Obtain the IP Address of the Ubuntu Machine**
-Open Terminal on Ubuntu.
-Execute the following command to get the IP address(es):
+- Ubuntu machine with V2rayA listening on:
+  - 20170 (SOCKS5)
+  - 20171 (HTTP)
+  - 20172 (HTTP with rule)
+- macOS device on the same network
+## Step 1: Get Ubuntu IP Address
+```bash
 hostname -I
-Example output: 10.1.1.242 10.1.1.131.
-Choose one of the IP addresses for further steps (e.g., 10.1.1.242).
+```
+Example output: `10.1.1.242 10.1.1.131`
 **Step 2: Check the Firewall Status**
 Open Terminal on Ubuntu.
 Check if UFW (Uncomplicated Firewall) is active:
 sudo ufw status
-**Step 3: Configure the Firewall**
-If UFW is active, allow access to the ports used by VrayA. Run the following commands in the Terminal on your Ubuntu machine:
-sudo ufw allow 20170/tcp  # Allow SOCKS5
-sudo ufw allow 20171/tcp  # Allow HTTP
-sudo ufw allow 20172/tcp  # Allow HTTP with rule
-Verify the changes:
-sudo ufw status
-You should see the allowed ports listed.
+## Step 2: Configure UFW Firewall
+```bash
+sudo ufw allow 20170/tcp  # SOCKS5
+sudo ufw allow 20171/tcp  # HTTP
+sudo ufw allow 20172/tcp  # HTTP with rule
+```
 **Step 4: Open Terminal on macOS**
 Launch the Terminal application from your macOS.
 **Step 5: Create SSH Tunnels to Access VrayA (Optional)**
