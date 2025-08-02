@@ -16,7 +16,7 @@ The landscape of LLM-powered automation tools is diverse, ranging from integrate
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Warp** | AI-Enhanced Terminal | Developers, DevOps | **Yes** | AI agents understand natural language to generate and execute shell commands and workflows directly in the terminal. |(https://www.warp.dev) |
 | **AutoGen** | LLM Agent Framework | Developers, Researchers | **Yes** | Offers built-in, secure code execution via Docker and excels at having agents autonomously write, execute, and refine code. |(https://microsoft.github.io/autogen) |
-| **Playwright MCP** | AI Test Automation | QA Teams, Developers | **Yes** | An AI-augmented server layer for Playwright that translates natural language to test code and supports self-healing scripts. | (Integrated into various solutions) |
+| **Playwright MCP** | AI Test Automation | QA Teams, Developers | **Yes** | An AI-augmented server layer for Playwright that translates natural language to test code and supports self-healing scripts. | (https://playwright.dev) |
 | **n8n** | Workflow Automation | Technical Teams | **Yes** | Features built-in AI nodes and allows custom code for creating complex, automated workflows with over 400 integrations. |(https://n8n.io) |
 | **Relay.app** | Human-in-the-Loop Automation | Business & Technical Teams | **Yes** | Builds AI agents that can execute tasks, interact with over 100 apps, and incorporate manual approval steps. |(https://relay.app) |
 | **LangGraph** | LLM Application Framework | Developers | **No (Framework)** | Supports code execution through external tools; it is designed for managing complex workflows where code is one component. |(https://www.langchain.com/langgraph) |
