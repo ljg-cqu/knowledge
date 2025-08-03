@@ -489,22 +489,7 @@ impl<H: Hasher, D: Data, S: Signature> Dag<H, D, S> {
         &mut self,
         units: Vec<Unit<H, D, S>>,
     ) -> Vec<Result<(), AddError>> {
-        // Group units by their dependencies to enable parallel processing
-        let mut results = Vec::with_capacity(units.len());
-        let mut ready_units = Vec::new();
-        
-        // First pass: identify units that are ready to be processed
-        for unit in units {
-            if self.has_all_parents(&unit) {
-                ready_units.push(unit);
-            } else {
-                // Queue for later processing
-                self.pending_units.entry(unit.round())
-                    .or_default()
-                    .push(unit);
-                results.push(Ok(()));
-            }
-        }
+        // ... logic to identify ready_units ...
         
         // Process ready units in parallel
         let mut handles = Vec::with_capacity(ready_units.len());
