@@ -97,6 +97,98 @@ Once a unit is received from the network, it is immediately passed to the `Dag`'
 
 If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and the `Reconstruction` logic generates `Request`s for the missing parents, which are then sent out to the network by the `Consensus` handler.
 
+#### DAG Structure Visualization
+
+The following diagram illustrates how units form the DAG structure, with each unit referencing its parents from the previous round:
+
+```mermaid
+graph TB
+    subgraph "Round 0 (Genesis)"
+        A0["Unit A0<br/>Creator: A"]
+        B0["Unit B0<br/>Creator: B"]
+        C0["Unit C0<br/>Creator: C"]
+    end
+    
+    subgraph "Round 1"
+        A1["Unit A1<br/>Creator: A<br/>Parents: A0,B0,C0"]
+        B1["Unit B1<br/>Creator: B<br/>Parents: A0,B0,C0"]
+        C1["Unit C1<br/>Creator: C<br/>Parents: A0,B0,C0"]
+    end
+    
+    subgraph "Round 2"
+        A2["Unit A2<br/>Creator: A<br/>Parents: A1,B1,C1"]
+        B2["Unit B2<br/>Creator: B<br/>Parents: A1,B1,C1"]
+        C2["Unit C2<br/>Creator: C<br/>Parents: A1,B1,C1"]
+    end
+    
+    subgraph "Round 3 (Finalization Wave)"
+        A3["Unit A3<br/>Creator: A<br/>Parents: A2,B2,C2"]
+        B3["Unit B3<br/>Creator: B<br/>Parents: A2,B2,C2"]
+        C3["Unit C3<br/>Creator: C<br/>Parents: A2,B2,C2"]
+    end
+
+    A0 --> A1
+    B0 --> A1
+    C0 --> A1
+    
+    A0 --> B1
+    B0 --> B1
+    C0 --> B1
+    
+    A0 --> C1
+    B0 --> C1
+    C0 --> C1
+    
+    A1 --> A2
+    B1 --> A2
+    C1 --> A2
+    
+    A1 --> B2
+    B1 --> B2
+    C1 --> B2
+    
+    A1 --> C2
+    B1 --> C2
+    C1 --> C2
+    
+    A2 --> A3
+    B2 --> A3
+    C2 --> A3
+    
+    A2 --> B3
+    B2 --> B3
+    C2 --> B3
+    
+    A2 --> C3
+    B2 --> C3
+    C2 --> C3
+
+    style A0 fill:#ffcccc
+    style B0 fill:#ccffcc
+    style C0 fill:#ccccff
+    style A1 fill:#ffcccc
+    style B1 fill:#ccffcc
+    style C1 fill:#ccccff
+    style A2 fill:#ffcccc
+    style B2 fill:#ccffcc
+    style C2 fill:#ccccff
+    style A3 fill:#ffcccc,stroke:#ff0000,stroke-width:3px
+    style B3 fill:#ccffcc,stroke:#ff0000,stroke-width:3px
+    style C3 fill:#ccccff,stroke:#ff0000,stroke-width:3px
+```
+
+*Note: The thick red borders on Round 3 units indicate they are part of a finalization wave, where the `Ordering` component has determined they can be safely finalized.*
+
+### Step 4: Finalization
+
+As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. Using the rules of the AlephBFT protocol (which involve virtual voting and a common coin), the `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Once a batch is finalized, it is passed to the `finalization_handler`, which makes the data available to the application layer.
+*   **Fork Detection**: It checks if the unit's creator has already produced a different unit at the same height. If so, it generates a `NewForker` alert.
+*   **Duplicate Check**: It ensures the unit has not already been processed.
+
+### Step 3: Reconstruction
+
+If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and the `Reconstruction` logic generates `Request`s for the missing parents, which are then sent out to the network by the `Consensus` handler.
+
 ### Step 4: Finalization
 
 As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. Using the rules of the AlephBFT protocol (which involve virtual voting and a common coin), the `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Once a batch is finalized, it is passed to the `finalization_handler`, which makes the data available to the application layer.
