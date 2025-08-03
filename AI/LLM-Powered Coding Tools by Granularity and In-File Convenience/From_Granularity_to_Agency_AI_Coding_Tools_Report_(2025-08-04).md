@@ -1,4 +1,4 @@
-# A Comprehensive Analysis of LLM-Powered Coding Tools: A Granularity-Focused Report
+# From Granularity to Agency: A Report on the Evolving Landscape of AI Coding Tools
 
 **Last Updated**: 2025-08-04
 **Status**: Final
@@ -36,7 +36,7 @@ This section provides a detailed analysis of the most prominent tools, synthesiz
 | **Tool** | **Category** | **Key Interaction Models** | **Key Differentiator / Strength** | **Ideal User Persona** |
 | :--- | :--- | :--- | :--- | :--- |
 | [**Cursor**](https://cursor.sh/) | AI-Native Editor | Chat, Commands, Auto-Refactor | **Project-wide context awareness**; can reason about and edit across your entire codebase. | Developers who want a fully integrated AI-first editor and are willing to switch IDEs. |
-| **Windsurf Editor (Cascade)** | AI-Native Editor | Agentic Chat, Commands, Automated Workflows | **Agentic capabilities**; can execute commands and manage multi-step workflows. | Developers who want an AI partner that can take action, not just suggest code. |
+| [**Windsurf Editor (Cascade)**](https://www.windsurfhq.com/) | AI-Native Editor | Agentic Chat, Commands, Automated Workflows | **Agentic capabilities**; can execute commands and manage multi-step workflows. | Developers who want an AI partner that can take action, not just suggest code. |
 | [**GitHub Copilot**](https://github.com/features/copilot) | IDE Extension | Autocomplete, Chat, Select-and-Ask | Best-in-class autocompletion and deep integration with the GitHub ecosystem. | Developers heavily invested in the GitHub ecosystem who want a polished, all-around assistant. |
 | [**Codeium**](https://codeium.com/) | IDE Extension | Autocomplete, Chat | Extremely generous free tier with unlimited usage; very fast suggestions. | Individual developers or teams looking for a powerful, free alternative to GitHub Copilot. |
 | [**Tabnine**](https://www.tabnine.com/) | IDE Extension | Autocomplete, Chat | Strong focus on privacy and enterprise needs, with options for self-hosting. | Enterprises with strict privacy and security requirements. |
