@@ -1245,33 +1245,7 @@ struct MonitoringThresholds {
 
 These operational considerations ensure that AlephBFT deployments maintain the high performance and reliability characteristics demonstrated in the protocol design while providing the operational flexibility required for production blockchain networks.
 
-## 9. Quick Reference
-
-### 9.1 Key Specifications
-
-| Specification | Value | Notes |
-|---------------|-------|---------|
-| **Consensus Model** | Asynchronous BFT | No timing assumptions |
-| **Fault Tolerance** | f < N/3 Byzantine nodes | Standard BFT guarantee |
-| **Throughput** | 89,600 TPS | Peak verified performance |
-| **Finality Time** | 416ms | Peak performance conditions |
-| **Committee Size** | 80-120 nodes | Production deployment range |
-| **Max Committee** | 200+ nodes | Theoretical limit |
-| **Communication** | O(N²) complexity | Per consensus round |
-| **Safety Model** | Asynchronous | No synchrony assumptions |
-
-### 9.2 Performance Benchmarks
-
-| Condition | Throughput | Finality | Notes |
-|-----------|------------|----------|-------|
-| **Peak (Controlled)** | 89,600 TPS | 416ms | 112 AWS nodes, 5 continents |
-| **Production (Rust)** | 40,000 TPS | 0.6s | Substrate implementation |
-| **Optimal** | 15,000 TPS | 400ms | Ideal network conditions |
-| **Normal** | 10,000 TPS | 1.0s | Typical production load |
-| **Stressed** | 8,000 TPS | 2.0s | High network latency |
-| **Byzantine (33%)** | 7,500 TPS | 1.5s | Maximum Byzantine nodes |
-
-## 10. Implementation Notes and Disclaimers
+## 9. Implementation Notes and Disclaimers
 
 ### Code Accuracy and Simplifications
 
@@ -1321,7 +1295,7 @@ This comprehensive technical analysis of AlephBFT, grounded in direct examinatio
 
 AlephBFT demonstrates exceptional engineering sophistication through its modular architecture that cleanly separates asynchronous orchestration (`run_session`) from deterministic core logic (`Consensus` handler). This separation of concerns enhances both robustness and maintainability while enabling the protocol to achieve remarkable performance characteristics:
 
-*   **Proven Performance**: Production deployment on Aleph Zero demonstrates sustained throughput exceeding 10,000 TPS with sub-second finality
+*   **Proven Performance**: Peak verified performance of 89,600 TPS with 416ms finality in controlled benchmarks, with production deployment achieving 40,000 TPS
 *   **Theoretical Rigor**: Mathematical guarantees provide `O(N²)` communication complexity with probabilistic finality approaching 99.9% within seconds
 *   **Operational Resilience**: Comprehensive fault tolerance mechanisms handle up to 33% Byzantine nodes while maintaining network partition recovery
 
@@ -1347,7 +1321,7 @@ The analysis reveals AlephBFT's readiness for enterprise deployment through comp
 
 AlephBFT's combination of theoretical soundness, proven performance, and operational maturity positions it as a compelling choice for demanding distributed applications. The protocol's asynchronous nature and DAG-based architecture provide fundamental advantages in scenarios requiring:
 
-*   **High Throughput**: Applications demanding 10,000+ TPS with minimal latency
+*   **High Throughput**: Applications demanding 40,000+ TPS with sub-second finality
 *   **Network Resilience**: Systems operating across unreliable or high-latency networks
 *   **Byzantine Tolerance**: Environments where malicious actors pose significant threats
 *   **Operational Flexibility**: Deployments requiring dynamic committee management and zero-downtime upgrades
