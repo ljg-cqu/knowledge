@@ -1,4 +1,4 @@
-# AlephBFT Consensus Protocol: Comprehensive Technical Findings
+# Understanding AlephBFT: A Complete Guide to the Consensus Protocol
 
 ## 1. Introduction
 
