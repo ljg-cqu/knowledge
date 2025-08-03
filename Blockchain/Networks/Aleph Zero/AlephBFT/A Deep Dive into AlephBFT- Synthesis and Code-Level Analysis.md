@@ -163,7 +163,34 @@ impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
 
 ### Step 3: Reconstruction
 
-If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and the `Reconstruction` logic generates `Request`s for the missing parents, which are then sent out to the network by the `Consensus` handler.
+If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan." The logic below shows how this is handled.
+
+```rust
+// Simplified from consensus/src/dag/reconstruction.rs
+fn process_unit(
+    &mut self,
+    unit: Unit<H, D, S>,
+) -> Result<Status, Error> {
+    let unit_hash = unit.hash();
+
+    if self.dag.has_all_parents(&unit) {
+        // All parents are present, so we can insert the unit into the DAG.
+        self.dag.insert(unit);
+        return Ok(Status::Connected);
+    } else {
+        // Some parents are missing. Store as an orphan and request them.
+        let missing_parents = self.dag.get_missing_parents(&unit);
+        self.orphanage.add(unit, missing_parents.clone());
+        
+        // Generate requests for the missing parents
+        let requests = missing_parents.into_iter()
+            .map(|parent_hash| Request::new(parent_hash, self.node_index))
+            .collect();
+            
+        return Ok(Status::MissingParents(requests));
+    }
+}
+```
 
 #### DAG Structure Visualization
 
