@@ -21,13 +21,11 @@ Developed by Cardinal Cryptography and powering the Aleph Zero blockchain since 
 
 **Key Differentiators:**
 - **Asynchronous Operation**: No timing assumptions or synchrony requirements
-- **DAG-Based Parallelism**: Concurrent unit processing eliminates sequential bottlenecks  
+- **DAG-Based Parallelism**: Concurrent unit processing eliminates sequential bottlenecks
 - **Production Maturity**: Deployed and battle-tested in live blockchain networks
 - **Modular Architecture**: Clean separation of concerns enhances maintainability and robustness
 
 This technical analysis provides a comprehensive examination of AlephBFT's architecture, implementation, and performance characteristics, positioning it within the broader landscape of Byzantine fault-tolerant consensus protocols.
-
-
 
 ## 2. Core Architecture: From Orchestration to Finality
 
