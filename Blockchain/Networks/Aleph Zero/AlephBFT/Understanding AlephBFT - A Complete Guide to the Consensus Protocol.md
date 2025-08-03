@@ -1021,7 +1021,10 @@ fn finalization_probability(round: Round, support_ratio: f64) -> f64 {
 
 ### Code Accuracy and Simplifications
 
-This report provides a technical analysis of the AlephBFT consensus protocol based on examination of the actual Cardinal Cryptography AlephBFT codebase.
+This report provides a technical analysis based on examination of the actual Cardinal Cryptography codebase:
+
+- **AlephBFT**: `f35c7bb` - https://github.com/Cardinal-Cryptography/AlephBFT
+- **aleph-node**: `5e990985` - https://github.com/Cardinal-Cryptography/aleph-node
 
 **Code Examples:**
 - Code snippets in this report are **simplified for clarity** and educational purposes
@@ -1038,11 +1041,7 @@ This report provides a technical analysis of the AlephBFT consensus protocol bas
 - Additional supporting components are mentioned but not exhaustively analyzed
 - Focus is on understanding consensus mechanisms rather than implementation details
 
-For developers implementing or integrating with AlephBFT:
-1. **Consult the actual codebase** for precise implementation details and current API
-2. **Review the official documentation** at https://cardinal-cryptography.github.io/AlephBFT/
-3. **Examine test cases** in the repository for practical usage examples
-4. **Consider the complexity** of production-ready implementations beyond the conceptual overview provided here
+**For Implementation:** Consult the actual repositories above for precise implementation details, current APIs, and production-ready complexity beyond this conceptual overview.
 
 ## 10. Conclusion
 
