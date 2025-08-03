@@ -17,7 +17,7 @@ This report provides a comprehensive technical guide to understanding AlephBFT, 
 
 AlephBFT represents a breakthrough in distributed consensus technology, delivering production-proven Byzantine fault tolerance with exceptional performance characteristics (Gągol et al., 2019). This analysis, based on direct examination of the Cardinal Cryptography codebase, reveals a mature protocol that successfully bridges theoretical innovation with practical deployment requirements.
 
-Developed by Cardinal Cryptography and powering the Aleph Zero blockchain since 2021, AlephBFT addresses fundamental limitations of traditional consensus mechanisms by eliminating synchrony assumptions while achieving over 10,000 TPS with sub-second finality (Aleph Zero Foundation, 2024a). Unlike partially synchronous protocols such as PBFT, Tendermint, and HotStuff, AlephBFT operates in fully asynchronous network environments, providing superior partition tolerance and network resilience.
+Developed by Cardinal Cryptography and powering the Aleph Zero blockchain since 2021, AlephBFT addresses fundamental limitations of traditional consensus mechanisms by eliminating synchrony assumptions while achieving exceptional performance: up to 89,600 TPS with 416ms finality under optimal laboratory conditions, and over 10,000 TPS with sub-second finality in production deployment (Aleph Zero Foundation, 2024a). Unlike partially synchronous protocols such as PBFT, Tendermint, and HotStuff, AlephBFT operates in fully asynchronous network environments, providing superior partition tolerance and network resilience.
 
 **Key Differentiators:**
 - **Asynchronous Operation**: No timing assumptions or synchrony requirements
@@ -854,7 +854,7 @@ Synthesizing the analysis from existing reports with a direct code-level underst
 | :--- | :--- | :--- | :--- | :--- |
 | **Model** | Asynchronous BFT | Partial Sync BFT | Partial Sync BFT | Partial Sync BFT |
 | **Fault Tolerance** | `f < N/3` | `f < N/3` | `f < N/3` | `f < N/3` |
-| **Theoretical TPS** | 10,000+ (Aleph Zero implementation) | 1,000-10,000 (depends on implementation) | 1,000-10,000 (Cosmos Hub: ~1,000 TPS) | 10,000+ (Libra/Diem implementation) |
+| **Theoretical TPS** | 89,600 (lab conditions), 10,000+ (production) | 1,000-10,000 (depends on implementation) | 1,000-10,000 (Cosmos Hub: ~1,000 TPS) | 10,000+ (Libra/Diem implementation) |
 | **Finality Time** | ~1 second (Aleph Zero) | 1-3 seconds | 6-7 seconds (Cosmos Hub) | 1-2 seconds |
 | **Latency** | Low (no synchrony assumptions) | Moderate (view changes) | High (round-based, 2/3+1 votes) | Low (pipelined, 2/3+1 votes) |
 | **Communication** | `O(N²)` + alerts | `O(N²)` | `O(N²)` | `O(N)` pipelined |
