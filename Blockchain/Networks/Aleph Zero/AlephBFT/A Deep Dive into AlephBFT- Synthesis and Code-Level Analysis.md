@@ -349,19 +349,6 @@ pub struct ControlHash<H: Hasher> {
     // Optional additional data for validation
     additional_data: Vec<u8>,
 }
-
-```rust
-pub struct PreUnit<H: Hasher> {
-    creator: NodeIndex,
-    round: Round,
-    control_hash: ControlHash<H>,
-}
-
-pub struct Unit<H: Hasher, D: Data, S: Signature> {
-    pre_unit: PreUnit<H>,
-    data: D,
-    signature: S,
-}
 ```
 
 The relationship between these structures can be visualized as follows:
@@ -452,32 +439,15 @@ impl<H: Hasher, D: Data, S: Signature> Alert<H, D, S> {
         Ok(())
     }
 }
-
-```rust
-pub struct Alert<H: Hasher, D: Data, S: Signature> {
-    sender: NodeIndex,
-    notification: ForkingNotification<H, D, S>,
-    legit_units: Vec<UnitCoord<H>>,
-}
 ```
 
 *   **`sender`**: The node that is raising the alert.
 *   **`notification`**: The evidence of the fork, which consists of the two conflicting units created by the malicious node.
 *   **`legit_units`**: A list of units that the sender has created, which helps other nodes to determine the correct version of the DAG.
 
-## 5. SWOT Analysis and Comparative Landscape
+## 5. Comparative Analysis of Consensus Protocols
 
-Synthesizing the analysis from existing reports with a direct code-level understanding allows for a more nuanced evaluation of AlephBFT's position in the broader landscape of consensus protocols.
-
-### 5.1. SWOT Analysis of AlephBFT
-
-| | Strengths | Weaknesses |
-| :--- | :--- | :--- |
-| **Internal** | **Asynchronous Safety**: The protocol's design, centered around the `Dag` and `Ordering` components, makes no assumptions about network synchrony, ensuring safety even in volatile network conditions. <br><br> **High Throughput & Monotonic Finality**: The DAG structure allows for the parallel processing of units, and the `Extender` ensures that once a batch is finalized, it is irreversible. <br><br> **Native Substrate Integration**: The `finality-aleph` crate demonstrates a deep and effective integration with Substrate, replacing GRANDPA as a finality gadget. | **Implementation Complexity**: The highly modular and asynchronous nature, while powerful, introduces significant complexity. Managing the interactions between the `NetworkHub`, `Creator`, `AlertService`, and `Consensus` service requires careful handling of multiple communication channels and task lifecycles. <br><br> **Alert Overhead**: The fork-alerting mechanism, while crucial for security, introduces additional network traffic and processing overhead, managed by the dedicated `AlertService`. <br><br> **Static Configuration**: Key parameters like session length and committee size are defined in the `Config` struct (`consensus/src/config.rs`) and are not designed to be adjusted dynamically within a session. |
-| **External** | **Opportunities** | **Threats** |
-| | **Growing Demand for Asynchronous BFT**: As decentralized applications become more global, the need for protocols that can handle high-latency, unreliable networks is increasing. <br><br> **Hybrid Consensus Models**: The modular design could allow for future integration with other systems, such as those using machine learning for threat detection. | **Competition from Optimized Protocols**: Protocols like HotStuff, while only partially synchronous, offer lower implementation complexity and may perform better in stable, low-latency network environments. <br><br> **Evolving Attack Vectors**: New attacks on BFT systems may emerge, requiring continuous maintenance and updates to the protocol's security mechanisms, particularly the `Validator` and `Alert` systems. |
-
-### 5.2. Comparative Analysis
+Synthesizing the analysis from existing reports with a direct code-level understanding allows for a more nuanced evaluation of AlephBFT's position in the broader landscape of consensus protocols. The following table compares AlephBFT with other prominent BFT consensus mechanisms.
 
 | Feature | AlephBFT | PBFT | Tendermint | HotStuff |
 | :--- | :--- | :--- | :--- | :--- |
