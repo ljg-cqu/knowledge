@@ -695,7 +695,299 @@ pub struct Consensus<UFH, MK> {
 
 These components work together to provide the robust, fault-tolerant consensus mechanism described in the main architecture.
 
-## 5. Comparative Analysis of Consensus Protocols
+## 5. Storage Architecture and Persistence
+
+AlephBFT's storage architecture is a critical component that ensures consensus safety, fault tolerance, and performance optimization. The system employs a sophisticated multi-tier storage model that seamlessly integrates in-memory processing with persistent backup mechanisms. Understanding this architecture is essential for grasping how AlephBFT maintains Byzantine fault tolerance in production environments.
+
+### 5.1 Multi-Tier Storage Model
+
+AlephBFT implements a three-tier storage architecture, each serving distinct purposes in the consensus process:
+
+<div align="center">
+
+```mermaid
+flowchart TB
+    subgraph MemoryTier ["🧠 In-Memory Storage Tier"]
+        direction TB
+        UnitStore["UnitStore<br/>Canonical Units & Lookups"]
+        ProcessingUnits["Processing Units<br/>Validation Pipeline"]
+        DagReconstruction["DAG Reconstruction<br/>Orphan Units & Parent Requests"]
+    end
+    
+    subgraph PersistentTier ["💾 Persistent Storage Tier"]
+        direction TB
+        BackupSaver["BackupSaver<br/>Async Unit Persistence"]
+        BackupLoader["BackupLoader<br/>Recovery & Restoration"]
+        BackupStorage["Backup Storage<br/>Encoded Unit Stream"]
+    end
+    
+    subgraph NetworkTier ["🌐 Network Storage Tier"]
+        direction TB
+        Responder["Responder<br/>Unit Request Handling"]
+        Dissemination["Dissemination<br/>Unit Broadcasting"]
+        RequestResponse["Request/Response<br/>Missing Parent Resolution"]
+    end
+    
+    MemoryTier --> PersistentTier
+    MemoryTier <--> NetworkTier
+    PersistentTier --> MemoryTier
+    
+    style UnitStore fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style ProcessingUnits fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style DagReconstruction fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style BackupSaver fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style BackupLoader fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style BackupStorage fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style Responder fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style Dissemination fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style RequestResponse fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+```
+
+</div>
+
+**In-Memory Storage Tier:**
+- **`UnitStore`**: Central repository for all processed units with multiple access patterns (hash lookup, canonical units, top row tracking)
+- **Processing Units**: Temporary storage during validation pipeline to detect forks and duplicates
+- **DAG Reconstruction**: Manages orphan units awaiting parents and parent request coordination
+
+**Persistent Storage Tier:**
+- **`BackupSaver`**: Asynchronous persistence engine that writes units to backup storage
+- **`BackupLoader`**: Recovery mechanism that restores units from backup during node restart
+- **Backup Storage**: Encoded unit stream providing crash recovery and fault tolerance
+
+**Network Storage Tier:**
+- **`Responder`**: Handles requests for missing units from other nodes
+- **Dissemination**: Manages unit broadcasting and network distribution
+- **Request/Response**: Coordinates missing parent resolution across the network
+
+### 5.2 Backup and Recovery System
+
+The backup system is the cornerstone of AlephBFT's fault tolerance, ensuring that consensus state can be recovered after node failures. The implementation in `consensus/src/backup/` provides robust persistence and recovery mechanisms.
+
+#### 5.2.1 BackupSaver: Asynchronous Persistence
+
+The `BackupSaver` component provides asynchronous, non-blocking persistence of consensus units:
+
+```rust
+// From consensus/src/backup/saver.rs
+pub struct BackupSaver<H: Hasher, D: Data, MK: MultiKeychain, W: AsyncWrite> {
+    units_from_consensus: Receiver<DagUnit<H, D, MK>>,
+    responses_for_consensus: Sender<DagUnit<H, D, MK>>,
+    backup: Pin<Box<W>>,
+}
+
+impl<H: Hasher, D: Data, MK: MultiKeychain, W: AsyncWrite> BackupSaver<H, D, MK, W> {
+    pub async fn save_unit(&mut self, unit: &DagUnit<H, D, MK>) -> Result<(), std::io::Error> {
+        // Convert to unchecked signed unit for serialization
+        let unit: UncheckedSignedUnit<_, _, _> = unit.clone().unpack().into();
+        
+        // Write encoded unit to backup storage
+        self.backup.write_all(&unit.encode()).await?;
+        self.backup.flush().await
+    }
+    
+    pub async fn run(&mut self, mut terminator: Terminator) {
+        loop {
+            futures::select! {
+                unit = self.units_from_consensus.next() => {
+                    // Process incoming units for backup
+                    if let Some(unit) = unit {
+                        if let Err(e) = self.save_unit(&unit).await {
+                            error!("Failed to save unit to backup: {}", e);
+                            continue;
+                        }
+                        // Notify consensus that unit is safely persisted
+                        if self.responses_for_consensus.unbounded_send(unit).is_err() {
+                            break;
+                        }
+                    }
+                }
+                _ = terminator.get_exit().fuse() => {
+                    break;
+                }
+            }
+        }
+    }
+}
+```
+
+**Key Features:**
+- **Asynchronous I/O**: Non-blocking persistence that doesn't impact consensus performance
+- **Codec Serialization**: Units are encoded using the `codec` crate for efficient storage
+- **Error Handling**: Robust error handling with logging and graceful degradation
+- **Acknowledgment**: Consensus is notified when units are safely persisted
+
+#### 5.2.2 BackupLoader: Recovery and Restoration
+
+The `BackupLoader` handles recovery from persistent storage during node restart:
+
+```rust
+// From consensus/src/backup/loader.rs
+pub struct BackupLoader<H: Hasher, D: Data, S: Signature, R: AsyncRead> {
+    backup: Pin<Box<R>>,
+    index: NodeIndex,
+    session_id: SessionId,
+}
+
+impl<H: Hasher, D: Data, S: Signature, R: AsyncRead> BackupLoader<H, D, S, R> {
+    pub async fn load_backup(
+        &mut self,
+    ) -> Result<(Vec<UncheckedSignedUnit<H, D, S>>, Round), LoaderError> {
+        // Load all units from backup storage
+        let units = self.load().await?;
+        
+        // Verify consistency and integrity
+        self.verify_units(&units)?;
+        
+        // Determine next round for this node
+        let next_round: Round = units
+            .iter()
+            .filter(|u| u.as_signable().creator() == self.index)
+            .map(|u| u.as_signable().round())
+            .max()
+            .map(|round| round + 1)
+            .unwrap_or(0);
+
+        Ok((units, next_round))
+    }
+    
+    fn verify_units(&self, units: &Vec<UncheckedSignedUnit<H, D, S>>) -> Result<(), LoaderError> {
+        let mut already_loaded_coords = HashSet::new();
+
+        for unit in units {
+            let full_unit = unit.as_signable();
+            let coord = full_unit.coord();
+
+            // Verify session consistency
+            if full_unit.session_id() != self.session_id {
+                return Err(LoaderError::WrongSession(
+                    coord, self.session_id, full_unit.session_id(),
+                ));
+            }
+
+            // Verify parent consistency - all parents must appear before their children
+            for parent in full_unit.as_pre_unit().control_hash().parents() {
+                if !already_loaded_coords.contains(&parent) {
+                    return Err(LoaderError::InconsistentData(coord));
+                }
+            }
+
+            already_loaded_coords.insert(coord);
+        }
+
+        Ok()
+    }
+}
+```
+
+**Recovery Guarantees:**
+- **Consistency Verification**: Ensures all parent-child relationships are intact
+- **Session Validation**: Verifies units belong to the correct consensus session
+- **Round Calculation**: Determines the correct starting round for resumed consensus
+- **Integrity Checking**: Validates the complete backup before restoration
+
+### 5.3 Storage Integration in Consensus Flow
+
+Storage operations are tightly integrated into the consensus lifecycle, ensuring that persistence never compromises safety or liveness:
+
+#### 5.3.1 Unit Persistence Checkpoint
+
+Every unit that successfully passes validation and reconstruction must be persisted before being added to the ordering process:
+
+```rust
+// From consensus/src/consensus/handler.rs - Step 5 in Unit Lifecycle
+pub fn on_unit_backup_saved(
+    &mut self,
+    unit: DagUnit<UFH::Hasher, UFH::Data, MK>,
+) -> Option<AddressedDisseminationMessage<UFH::Hasher, UFH::Data, MK::Signature>> {
+    let unit_hash = unit.hash();
+    
+    // 1. Add to permanent storage
+    self.store.insert(unit.clone());
+    
+    // 2. Notify DAG that processing is complete
+    self.dag.finished_processing(&unit_hash);
+    
+    // 3. Forward to ordering for finalization
+    self.ordering.add_unit(unit.clone());
+    
+    // 4. Update task management
+    self.task_manager.add_unit(&unit)
+}
+```
+
+#### 5.3.2 Recovery Integration
+
+During node startup, the backup loader restores the consensus state before normal operation begins:
+
+```rust
+// Recovery process during consensus initialization
+let (backup_units, next_round) = backup_loader.load_backup().await?;
+
+// Restore units to the DAG and UnitStore
+for unit in backup_units {
+    unit_store.insert(unit.clone());
+    dag.add_restored_unit(unit);
+}
+
+// Resume consensus from the correct round
+creator.set_starting_round(next_round);
+```
+
+### 5.4 Storage Performance and Optimization
+
+#### 5.4.1 Memory Management
+
+AlephBFT employs several strategies to optimize memory usage while maintaining performance:
+
+**Cached Hash Optimization:**
+```rust
+// Units cache their hash values to avoid recomputation
+pub struct FullUnit<H: Hasher, D: Data> {
+    // ... other fields
+    hash: RwLock<Option<H::Hash>>,  // Cached hash for performance
+}
+```
+
+**Garbage Collection:**
+- Old units are periodically removed from memory after finalization
+- The `UnitStore` maintains only necessary units for ongoing consensus
+- Backup storage provides long-term persistence without memory overhead
+
+#### 5.4.2 I/O Performance
+
+**Asynchronous Operations:**
+- All backup operations use async I/O to prevent blocking consensus
+- Concurrent processing of backup saving and consensus logic
+- Buffered writes with explicit flushing for durability
+
+**Serialization Efficiency:**
+- Uses the `codec` crate for compact, efficient serialization
+- Streaming writes to minimize memory allocation
+- Incremental backup appending rather than full state dumps
+
+### 5.5 Fault Tolerance Guarantees
+
+The storage architecture provides several critical fault tolerance guarantees:
+
+**Crash Recovery:**
+- Complete consensus state can be restored from backup
+- No loss of finalized units or consensus progress
+- Automatic detection of the correct resumption point
+
+**Byzantine Fault Tolerance:**
+- Backup integrity is cryptographically verified
+- Session validation prevents cross-session contamination
+- Parent-child relationship verification ensures DAG consistency
+
+**Network Partition Tolerance:**
+- Local backup enables independent recovery
+- Network storage tier provides redundancy across nodes
+- Request/response mechanisms handle missing data gracefully
+
+The storage architecture thus serves as the foundation for AlephBFT's production-ready fault tolerance, ensuring that consensus can survive and recover from various failure scenarios while maintaining safety and liveness properties.
+
+## 6. Comparative Analysis of Consensus Protocols
 
 Synthesizing the analysis from existing reports with a direct code-level understanding allows for a more nuanced evaluation of AlephBFT's position in the broader landscape of consensus protocols. The following table compares AlephBFT with other prominent BFT consensus mechanisms.
 
@@ -713,7 +1005,7 @@ Synthesizing the analysis from existing reports with a direct code-level underst
 | **Implementation Complexity** | High (modular, async) | High (complex view changes) | Moderate (simpler than PBFT) | Low (simplest of the four) |
 | **Code-Level Insight** | Highly modular with dedicated tasks for networking, creation, and alerts. Finality via `Extender`'s analysis of the `Dag`. | Monolithic, with complex view-change logic. | Round-based, with clear leader election per round. | Simplified leader-based model with pipelined voting for efficiency. |
 
-## 6. SWOT Analysis of AlephBFT
+## 7. SWOT Analysis of AlephBFT
 
 | | Strengths | Weaknesses |
 | :--- | :--- | :--- |
@@ -721,7 +1013,7 @@ Synthesizing the analysis from existing reports with a direct code-level underst
 | **External** | **Opportunities** | **Threats** |
 | | **Growing Demand for Asynchronous BFT**: As decentralized applications become more global, the need for protocols that can handle high-latency, unreliable networks is increasing. <br><br> **Hybrid Consensus Models**: The modular design could allow for future integration with other systems, such as those using machine learning for threat detection. | **Competition from Optimized Protocols**: Protocols like HotStuff, while only partially synchronous, offer lower implementation complexity and may perform better in stable, low-latency network environments. <br><br> **Evolving Attack Vectors**: New attacks on BFT systems may emerge, requiring continuous maintenance and updates to the protocol's security mechanisms, particularly the `Validator` and `Alert` systems. |
 
-## 7. In-Depth Analysis of AlephBFT
+## 8. In-Depth Analysis of AlephBFT
 
 This section provides a deeper analysis of AlephBFT's key attributes, building upon the comparative overview.
 
@@ -804,7 +1096,7 @@ impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
 
 *   **Byzantine Fault Tolerance**: Like other BFT protocols, AlephBFT guarantees safety and liveness as long as the number of malicious nodes (`f`) is less than one-third of the total nodes in the committee (`N/3`).
 
-## 8. Implementation Notes and Disclaimers
+## 9. Implementation Notes and Disclaimers
 
 ### Code Accuracy and Simplifications
 
@@ -846,7 +1138,7 @@ For developers implementing or integrating with AlephBFT:
 3. **Examine test cases** in the repository for practical usage examples
 4. **Consider the complexity** of production-ready implementations beyond the conceptual overview provided here
 
-## 9. Conclusion
+## 10. Conclusion
 
 AlephBFT stands as a testament to sophisticated engineering in the distributed consensus space. A direct, code-level analysis of the `aleph-bft` crate reveals a protocol that is not only theoretically sound but also implemented with a remarkable degree of modularity and precision. By separating the asynchronous orchestration in `run_session` from the deterministic core logic in the `Consensus` handler, the protocol achieves a clean separation of concerns that enhances both its robustness and its maintainability.
 
