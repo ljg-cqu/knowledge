@@ -83,11 +83,79 @@ sequenceDiagram
 
 ### Step 1: Creation
 
-A new unit is born in the `creation` module, specifically within the `run` function (`consensus/src/creation/mod.rs`). This component is responsible for bundling data from the `DataProvider` with the necessary metadata to form a new unit. It does not create units continuously but is gated by the `Creator`'s ability to gather a supermajority of parent units from the previous round, ensuring the DAG grows in a structured manner.
+A new unit is born in the `creation` module, specifically within the `run` function (`consensus/src/creation/mod.rs`). Here's a simplified version of the unit creation process:
+
+```rust
+// Simplified from consensus/src/creation/mod.rs
+async fn create_unit<H: Hasher, D: Data, S: Signature>(
+    &mut self,
+    data_provider: &impl DataProvider<D>,
+    round: Round,
+    parents: Vec<UnitHandle<H, D, S>>,
+) -> Result<Unit<H, D, S>, Error> {
+    // Get the data to include in the unit
+    let data = data_provider.get_data().await?;
+    
+    // Create control hash from parent units
+    let control_hash = self.create_control_hash(parents);
+    
+    // Create the pre-unit (unsigned)
+    let pre_unit = PreUnit {
+        creator: self.node_index,
+        round,
+        control_hash,
+    };
+    
+    // Sign the pre-unit
+    let signature = self.keychain.sign(&pre_unit).await?;
+    
+    // Combine into final unit
+    Ok(Unit {
+        pre_unit,
+        data,
+        signature,
+    })
+}
 
 ### Step 2: Validation
 
-Once a unit is received from the network, it is immediately passed to the `Dag`'s `add_unit` function (`consensus/src/dag/mod.rs`). This triggers the first stage of the DAG pipeline: validation. The `Validator` (`consensus/src/dag/validation.rs`) performs several critical checks:
+Once a unit is received from the network, it is immediately passed to the `Dag`'s `add_unit` function. Here's a simplified version of the validation logic:
+
+```rust
+// Simplified from consensus/src/dag/validation.rs
+impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
+    pub fn validate_unit(
+        &self,
+        unit: &Unit<H, D, S>,
+        dag: &Dag<H, D, S>,
+    ) -> Result<(), ValidationError> {
+        // 1. Verify the signature
+        self.verify_signature(unit)?;
+        
+        // 2. Check for duplicate units (same creator and round)
+        if dag.contains_unit(unit.creator(), unit.round()) {
+            return Err(ValidationError::DuplicateUnit);
+        }
+        
+        // 3. Verify the control hash matches the parents
+        let computed_hash = self.compute_control_hash(unit.parents());
+        if computed_hash != unit.control_hash() {
+            return Err(ValidationError::InvalidControlHash);
+        }
+        
+        // 4. Check for equivocation (forks)
+        if dag.has_equivocation(unit.creator(), unit.round()) {
+            return Err(ValidationError::ForkDetected);
+        }
+        
+        // 5. Verify round advancement rules
+        self.verify_round_advancement(unit, dag)?;
+        
+        Ok(())
+    }
+    
+    // ... other validation methods ...
+}
 
 *   **Correctness**: It verifies the unit's signature and internal consistency.
 *   **Fork Detection**: It checks if the unit's creator has already produced a different unit at the same height. If so, it generates a `NewForker` alert.
