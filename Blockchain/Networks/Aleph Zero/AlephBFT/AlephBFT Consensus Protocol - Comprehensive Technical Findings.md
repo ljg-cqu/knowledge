@@ -59,72 +59,28 @@ flowchart TD
 | **`Dag`** | `consensus/src/dag/mod.rs` | A two-stage pipeline that validates incoming units and then reconstructs the DAG, requesting missing parents as needed. This is the gatekeeper for all data entering the consensus process. |
 | **`Ordering`** | `consensus/src/extension/mod.rs` | The finalization engine. It takes the partially ordered DAG and applies the finalization rules to produce a linear, canonical sequence of finalized unit batches. |
 
-### 2.1 Network Layer: Consensus-Critical Communication
+### Network Layer: Consensus-Critical Communication
 
-AlephBFT's network layer provides the essential communication infrastructure for distributed consensus, implemented in `consensus/src/network/` with a focus on Byzantine fault tolerance and high-performance message routing.
-
-#### 2.1.1 Network Hub Architecture
-
-The `Network Hub` coordinates all consensus communication through asynchronous message handling:
+AlephBFT's network layer handles two critical message types: `UnitMessage` for consensus unit propagation and `AlertMessage` for Byzantine fault detection. The `Network Hub` coordinates asynchronous message routing with O(N²) broadcast patterns for unit dissemination and alert propagation.
 
 ```rust
-// Simplified from consensus/src/network/hub.rs and mod.rs
+// Core network architecture from consensus/src/network/
 pub struct Hub<H, D, S, MS, N> {
-    network: N,                           // Underlying network implementation
-    units_to_send: Receiver<UnitMessage>, // Outgoing consensus units
-    alerts_to_send: Receiver<AlertMessage>, // Outgoing fork alerts
+    network: N,
+    units_to_send: Receiver<UnitMessage>,
+    alerts_to_send: Receiver<AlertMessage>,
 }
 
-// Core message types for consensus communication
 enum NetworkDataInner<H, D, S, MS> {
-    Units(UnitMessage<H, D, S>),        // Consensus unit propagation
-    Alert(AlertMessage<H, D, S, MS>),   // Fork detection alerts
-}
-
-// Async message processing loop
-pub async fn run(mut self, mut terminator: Terminator) {
-    loop {
-        futures::select! {
-            unit_message = self.units_to_send.next() => {
-                self.send(NetworkData(Units(unit_message)), Recipient::Everyone);
-            }
-            alert_message = self.alerts_to_send.next() => {
-                self.send(NetworkData(Alert(alert_message)), Recipient::Everyone);
-            }
-        }
-    }
+    Units(UnitMessage<H, D, S>),        // Consensus units
+    Alert(AlertMessage<H, D, S, MS>),   // Fork evidence
 }
 ```
 
-#### 2.1.2 Communication Patterns
-
-**Communication Patterns:**
-*   **Unit Dissemination**: New units broadcast to all committee members for parallel validation
-*   **Alert Propagation**: Fork detection evidence disseminated network-wide for Byzantine fault handling
-*   **Parent Requests**: Targeted requests for missing unit dependencies
-*   **Redundant Delivery**: Critical messages sent through multiple paths for reliability
-
-#### 2.1.3 Fault Tolerance and Performance
-
-**Byzantine Fault Handling:**
-*   **Message Authentication**: All messages cryptographically signed and verified
-*   **Fork Detection**: Network propagates evidence of Byzantine behavior with automatic node exclusion
-*   **Asynchronous Delivery**: No timing assumptions - handles arbitrary network delays and partitions
-*   **Duplicate Detection**: Consensus layer filters duplicate messages without network-level coordination
-
-**Performance Optimizations:**
-*   **Concurrent Processing**: Async message handling prevents blocking on network I/O
-*   **Direct Routing**: Messages sent directly to recipients without intermediate hops
-*   **Efficient Serialization**: Codec-based encoding minimizes bandwidth usage
-*   **Modular Design**: Network implementation pluggable without changing consensus logic
-
-**Network Partition Recovery:**
-*   **Graceful Degradation**: Consensus continues with majority partition (> 2f+1 nodes)
-*   **Automatic Reconnection**: Network layer handles reconnection without consensus restart
-*   **State Synchronization**: Nodes automatically catch up when partitions heal
-*   **Local Persistence**: Backup system enables recovery of consensus state
-
-The network layer provides the robust, high-performance foundation that enables AlephBFT's asynchronous consensus to operate effectively in Byzantine environments while maintaining the performance characteristics required for production deployment.
+**Key Characteristics:**
+- **Asynchronous Delivery**: No timing assumptions enable partition tolerance
+- **Byzantine Fault Tolerance**: Cryptographic message authentication and fork detection
+- **Modular Design**: Network implementation pluggable without consensus logic changes
 
 ## 3. The Lifecycle of a Unit: A Step-by-Step Walkthrough
 
