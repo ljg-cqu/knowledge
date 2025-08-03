@@ -814,39 +814,7 @@ for unit in backup_units {
 creator.set_starting_round(next_round);
 ```
 
-### 5.4 Storage Performance and Optimization
-
-#### 5.4.1 Memory Management
-
-AlephBFT employs several strategies to optimize memory usage while maintaining performance:
-
-**Cached Hash Optimization:**
-```rust
-// Units cache their hash values to avoid recomputation
-pub struct FullUnit<H: Hasher, D: Data> {
-    // ... other fields
-    hash: RwLock<Option<H::Hash>>,  // Cached hash for performance
-}
-```
-
-**Garbage Collection:**
-- Old units are periodically removed from memory after finalization
-- The `UnitStore` maintains only necessary units for ongoing consensus
-- Backup storage provides long-term persistence without memory overhead
-
-#### 5.4.2 I/O Performance
-
-**Asynchronous Operations:**
-- All backup operations use async I/O to prevent blocking consensus
-- Concurrent processing of backup saving and consensus logic
-- Buffered writes with explicit flushing for durability
-
-**Serialization Efficiency:**
-- Uses the `codec` crate for compact, efficient serialization
-- Streaming writes to minimize memory allocation
-- Incremental backup appending rather than full state dumps
-
-### 5.5 Fault Tolerance Guarantees
+### 5.4 Fault Tolerance Guarantees
 
 The storage architecture provides several critical fault tolerance guarantees:
 
