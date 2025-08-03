@@ -775,15 +775,24 @@ Storage operations are tightly integrated into the consensus lifecycle, ensuring
 #### 5.3.1 Unit Persistence Checkpoint
 
 Every unit that successfully passes validation and reconstruction must be persisted before being added to the ordering process. The consensus handler ensures that units are safely stored before proceeding with finalization, maintaining the critical safety property that finalized units are never lost even in the event of node failures.
-    
-    // 2. Notify DAG that processing is complete
-    self.dag.finished_processing(&unit_hash);
-    
-    // 3. Forward to ordering for finalization
-    self.ordering.add_unit(unit.clone());
-    
-    // 4. Update task management
-    self.task_manager.add_unit(&unit)
+
+```rust
+// Consensus handler processing with storage integration
+impl ConsensusHandler {
+    async fn process_unit(&mut self, unit: SignedUnit) -> Result<()> {
+        // 1. Persist unit before proceeding with consensus
+        self.backup_saver.save_unit(&unit).await?;
+        
+        // 2. Notify DAG that processing is complete
+        self.dag.finished_processing(&unit.hash());
+        
+        // 3. Forward to ordering for finalization
+        self.ordering.add_unit(unit.clone());
+        
+        // 4. Update task management
+        self.task_manager.add_unit(&unit)?;
+        Ok(())
+    }
 }
 ```
 
