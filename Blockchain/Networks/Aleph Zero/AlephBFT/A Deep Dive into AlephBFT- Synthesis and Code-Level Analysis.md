@@ -227,7 +227,7 @@ graph TD
     PreUnit --> Round
     PreUnit --> ControlHash
 
-    ControlHash --> "Hash(Parents)"
+    ControlHash --> ParentHash[Hash of Parents]
 ```
 
 *   **`creator`**: The index of the node that created the unit.
