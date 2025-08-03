@@ -1250,143 +1250,26 @@ These operational considerations ensure that AlephBFT deployments maintain the h
 ### 9.1 Key Specifications
 
 | Specification | Value | Notes |
-|---------------|-------|-------|
+|---------------|-------|---------|
 | **Consensus Model** | Asynchronous BFT | No timing assumptions |
 | **Fault Tolerance** | f < N/3 Byzantine nodes | Standard BFT guarantee |
-| **Throughput** | 10,000+ TPS | Production validated |
-| **Finality Time** | 0.8-1.2 seconds | Average under normal conditions |
+| **Throughput** | 89,600 TPS | Peak verified performance |
+| **Finality Time** | 416ms | Peak performance conditions |
 | **Committee Size** | 80-120 nodes | Production deployment range |
 | **Max Committee** | 200+ nodes | Theoretical limit |
-| **Network Latency** | <200ms optimal | Between committee members |
 | **Communication** | O(N²) complexity | Per consensus round |
+| **Safety Model** | Asynchronous | No synchrony assumptions |
 
-### 9.2 Infrastructure Requirements
+### 9.2 Performance Benchmarks
 
-#### Minimum Production Node
-```yaml
-CPU: 4 cores @ 2.5GHz
-Memory: 8 GB RAM
-Storage: 100 GB SSD
-Network: 100 Mbps symmetric
-Latency: <500ms to other nodes
-```
-
-#### Recommended Production Node
-```yaml
-CPU: 8 cores @ 3.0GHz
-Memory: 16 GB RAM
-Storage: 500 GB NVMe SSD
-Network: 1 Gbps symmetric
-Latency: <200ms to other nodes
-Redundancy: RAID 1 for consensus data
-```
-
-### 9.3 Performance Benchmarks
-
-| Condition | Throughput | Finality | CPU Usage | Memory Usage |
-|-----------|------------|----------|-----------|-------------|
-| **Optimal** | 15,000 TPS | 400ms | 45% | 2 GB |
-| **Normal** | 10,000 TPS | 1.0s | 60% | 3 GB |
-| **Stressed** | 8,000 TPS | 2.0s | 80% | 4 GB |
-| **Byzantine (33%)** | 7,500 TPS | 1.5s | 70% | 3.5 GB |
-
-### 9.4 Deployment Checklist
-
-#### Pre-Deployment
-- [ ] **Hardware Requirements**: Verify CPU, memory, storage, network specifications
-- [ ] **Network Connectivity**: Test latency and bandwidth between all committee members
-- [ ] **Security Setup**: Configure firewalls, VPNs, and access controls
-- [ ] **Monitoring Infrastructure**: Deploy metrics collection and alerting systems
-- [ ] **Backup Systems**: Configure automated backup and recovery procedures
-
-#### Deployment
-- [ ] **Committee Configuration**: Define validator set and network topology
-- [ ] **Genesis Setup**: Initialize first consensus round and committee state
-- [ ] **Network Bootstrap**: Establish P2P connections between all committee members
-- [ ] **Consensus Start**: Begin consensus process with initial data
-- [ ] **Health Verification**: Confirm all nodes participating and finalizing units
-
-#### Post-Deployment
-- [ ] **Performance Monitoring**: Verify TPS, finality, and resource utilization metrics
-- [ ] **Security Monitoring**: Monitor for Byzantine behavior and fork detection
-- [ ] **Operational Procedures**: Test upgrade, backup, and recovery procedures
-- [ ] **Documentation**: Update operational runbooks and incident response procedures
-
-### 9.5 Monitoring Thresholds
-
-#### Warning Thresholds
-```yaml
-Finality Time: >5 seconds
-Throughput: <5,000 TPS
-Byzantine Nodes: >10% of committee
-Network Partitions: Any partition detected
-Memory Usage: >80% of available
-CPU Usage: >85% sustained
-```
-
-#### Critical Thresholds
-```yaml
-Finality Time: >30 seconds
-Throughput: <1,000 TPS
-Byzantine Nodes: >25% of committee
-Consensus Halt: No progress for >60 seconds
-Memory Usage: >95% of available
-Disk Usage: >90% of available
-```
-
-### 9.6 Common Issues and Solutions
-
-| Issue | Symptoms | Solution |
-|-------|----------|----------|
-| **High Latency** | Slow finality, reduced TPS | Check network connectivity, reduce committee size |
-| **Memory Leaks** | Increasing memory usage | Restart nodes, check unit retention policies |
-| **Byzantine Nodes** | Fork alerts, inconsistent state | Identify and exclude malicious nodes |
-| **Network Partitions** | Consensus halt, missing units | Verify network connectivity, wait for healing |
-| **Storage Issues** | Backup failures, disk full | Monitor disk usage, configure log rotation |
-
-### 9.7 Integration Patterns
-
-#### Blockchain Integration
-```rust
-// Example integration with blockchain layer
-struct BlockchainConsensus {
-    aleph_bft: AlephBFT<BlockData, BlockHash>,
-    block_producer: BlockProducer,
-    state_manager: StateManager,
-}
-
-impl BlockchainConsensus {
-    async fn process_finalized_batch(&mut self, batch: Batch<BlockData>) {
-        for block_data in batch.units() {
-            let block = self.block_producer.create_block(block_data);
-            self.state_manager.apply_block(block).await;
-        }
-    }
-}
-```
-
-#### API Integration
-```rust
-// Example API for submitting transactions
-pub struct ConsensusAPI {
-    data_provider: DataProvider,
-}
-
-impl ConsensusAPI {
-    pub async fn submit_transaction(&self, tx: Transaction) -> Result<TxHash> {
-        let data = self.data_provider.prepare_data(tx);
-        // Data will be included in next consensus unit
-        Ok(tx.hash())
-    }
-    
-    pub async fn get_finality_status(&self, tx_hash: TxHash) -> FinalityStatus {
-        // Check if transaction has been finalized
-        self.data_provider.check_finality(tx_hash)
-    }
-}
-```
-
-This Quick Reference provides immediate access to the most critical information for deploying, monitoring, and operating AlephBFT in production environments.
+| Condition | Throughput | Finality | Notes |
+|-----------|------------|----------|-------|
+| **Peak (Controlled)** | 89,600 TPS | 416ms | 112 AWS nodes, 5 continents |
+| **Production (Rust)** | 40,000 TPS | 0.6s | Substrate implementation |
+| **Optimal** | 15,000 TPS | 400ms | Ideal network conditions |
+| **Normal** | 10,000 TPS | 1.0s | Typical production load |
+| **Stressed** | 8,000 TPS | 2.0s | High network latency |
+| **Byzantine (33%)** | 7,500 TPS | 1.5s | Maximum Byzantine nodes |
 
 ## 10. Implementation Notes and Disclaimers
 
