@@ -47,6 +47,147 @@ flowchart TD
 | **`Dag`** | `consensus/src/dag/mod.rs` | A two-stage pipeline that validates incoming units and then reconstructs the DAG, requesting missing parents as needed. This is the gatekeeper for all data entering the consensus process. |
 | **`Ordering`** | `consensus/src/extension/mod.rs` | The finalization engine. It takes the partially ordered DAG and applies the finalization rules to produce a linear, canonical sequence of finalized unit batches. |
 
+### 2.1 Network Layer: P2P Communication and Message Routing
+
+The network layer in AlephBFT provides the critical communication infrastructure that enables distributed consensus. The implementation in `consensus/src/network/` demonstrates a sophisticated approach to P2P networking that abstracts away low-level networking details while providing robust message routing and fault tolerance.
+
+#### 2.1.1 Network Hub Architecture
+
+The `Network Hub` serves as the central communication coordinator, managing all incoming and outgoing messages between committee members:
+
+```rust
+// From consensus/src/network/hub.rs
+pub struct Hub<H: Hasher, D: Data, S: Signature, MS: PartialMultisignature, N: Network<NetworkData<H, D, S, MS>>> {
+    network: N,                                                    // Underlying network implementation
+    units_to_send: Receiver<(UnitMessage<H, D, S>, Recipient)>,   // Outgoing unit messages
+    units_received: Sender<UnitMessage<H, D, S>>,                 // Incoming unit messages
+    alerts_to_send: Receiver<(AlertMessage<H, D, S, MS>, Recipient)>, // Outgoing alert messages
+    alerts_received: Sender<AlertMessage<H, D, S, MS>>,           // Incoming alert messages
+}
+
+impl<H: Hasher, D: Data, S: Signature, MS: PartialMultisignature, N: Network<NetworkData<H, D, S, MS>>> Hub<H, D, S, MS, N> {
+    pub async fn run(mut self, mut terminator: Terminator) {
+        loop {
+            futures::select! {
+                // Handle outgoing unit messages
+                unit_message = self.units_to_send.next() => {
+                    if let Some((unit_message, recipient)) = unit_message {
+                        self.send(NetworkData(Units(unit_message)), recipient);
+                    }
+                }
+                // Handle outgoing alert messages
+                alert_message = self.alerts_to_send.next() => {
+                    if let Some((alert_message, recipient)) = alert_message {
+                        self.send(NetworkData(Alert(alert_message)), recipient);
+                    }
+                }
+                // Handle incoming messages from the network
+                network_data = self.network.next() => {
+                    if let Some(data) = network_data {
+                        self.handle_incoming(data);
+                    }
+                }
+                // Handle termination signal
+                _ = terminator.get_exit().fuse() => {
+                    break;
+                }
+            }
+        }
+    }
+}
+```
+
+#### 2.1.2 Message Types and Serialization
+
+AlephBFT defines a comprehensive message protocol that handles all consensus communication needs:
+
+```rust
+// From consensus/src/network/mod.rs
+#[derive(Clone, Eq, PartialEq, Debug, Decode, Encode)]
+pub(crate) enum NetworkDataInner<H: Hasher, D: Data, S: Signature, MS: PartialMultisignature> {
+    Units(UnitMessage<H, D, S>),        // Consensus unit propagation
+    Alert(AlertMessage<H, D, S, MS>),   // Fork detection alerts
+}
+
+// Opaque network message format
+#[derive(Clone, Eq, PartialEq, Debug, Decode, Encode)]
+pub struct NetworkData<H: Hasher, D: Data, S: Signature, MS: PartialMultisignature>(
+    pub(crate) NetworkDataInner<H, D, S, MS>,
+);
+```
+
+**Message Categories:**
+
+*   **Unit Messages**: Carry consensus units (proposals, votes) between committee members
+*   **Alert Messages**: Propagate fork detection evidence and Byzantine fault notifications
+*   **Request Messages**: Solicit missing units or parents from other nodes
+*   **Response Messages**: Provide requested units to requesting nodes
+
+#### 2.1.3 Communication Patterns and Routing
+
+AlephBFT employs sophisticated communication patterns optimized for Byzantine fault tolerance:
+
+**Broadcasting Patterns:**
+```rust
+// Broadcast to all committee members
+pub enum Recipient {
+    Everyone,           // Broadcast to all nodes
+    Node(NodeIndex),    // Send to specific node
+}
+```
+
+**Message Routing Strategies:**
+*   **Unit Dissemination**: New units are broadcast to all committee members for validation
+*   **Alert Propagation**: Fork alerts are disseminated to ensure network-wide awareness
+*   **Targeted Requests**: Missing parent requests are sent to specific nodes likely to have the data
+*   **Redundant Delivery**: Critical messages may be sent through multiple paths for reliability
+
+#### 2.1.4 Network Fault Tolerance and Recovery
+
+The network layer provides robust fault tolerance mechanisms essential for Byzantine environments:
+
+**Message Reliability:**
+*   **Asynchronous Delivery**: No assumptions about message delivery timing
+*   **Duplicate Detection**: Consensus layer handles duplicate message filtering
+*   **Out-of-Order Handling**: DAG reconstruction manages units arriving out of sequence
+*   **Missing Data Recovery**: Automatic parent request mechanisms fill gaps
+
+**Network Partition Tolerance:**
+*   **Local State Persistence**: Backup system enables recovery after network partitions
+*   **Graceful Degradation**: Consensus continues with available nodes (if > 2f+1)
+*   **Automatic Reconnection**: Network layer handles reconnection without consensus restart
+*   **State Synchronization**: Nodes catch up automatically when partitions heal
+
+**Byzantine Fault Handling:**
+*   **Message Authentication**: All messages are cryptographically signed
+*   **Fork Detection**: Network propagates evidence of Byzantine behavior
+*   **Isolation Mechanisms**: Detected Byzantine nodes are excluded from consensus
+*   **Evidence Preservation**: Fork proofs are stored and disseminated for accountability
+
+#### 2.1.5 Performance Considerations
+
+The network architecture is designed for high-performance consensus in distributed environments:
+
+**Throughput Optimization:**
+*   **Concurrent Processing**: Async message handling prevents blocking
+*   **Efficient Serialization**: Codec-based encoding minimizes message size
+*   **Batched Operations**: Multiple units can be processed in parallel
+*   **Stream Processing**: Continuous message flow without request/response delays
+
+**Latency Minimization:**
+*   **Direct Routing**: Messages sent directly to intended recipients
+*   **Minimal Hops**: No intermediate routing or consensus on message delivery
+*   **Pipelined Processing**: Network and consensus operations overlap
+*   **Optimistic Delivery**: Messages processed immediately upon receipt
+
+**Scalability Features:**
+*   **Modular Design**: Network implementation can be swapped without changing consensus
+*   **Configurable Topology**: Supports various network topologies and deployment models
+*   **Resource Management**: Bounded message queues prevent memory exhaustion
+*   **Load Balancing**: Message processing distributed across async tasks
+
+The network layer thus provides the robust, high-performance communication foundation that enables AlephBFT's sophisticated consensus mechanisms to operate effectively in real-world Byzantine environments.
+
 ## 3. The Lifecycle of a Unit: A Step-by-Step Walkthrough
 
 To understand how AlephBFT achieves consensus, it is essential to follow the journey of a single unit from creation to finalization. This process is a carefully choreographed dance between the various components of the `aleph-bft` crate. The sequence diagram below illustrates this flow.
