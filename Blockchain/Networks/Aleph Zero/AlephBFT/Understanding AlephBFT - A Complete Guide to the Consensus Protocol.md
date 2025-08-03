@@ -17,7 +17,7 @@ This report provides a comprehensive technical guide to understanding AlephBFT, 
 
 AlephBFT represents a breakthrough in distributed consensus technology, delivering production-proven Byzantine fault tolerance with exceptional performance characteristics (Gągol et al., 2019). This analysis, based on direct examination of the Cardinal Cryptography codebase, reveals a mature protocol that successfully bridges theoretical innovation with practical deployment requirements.
 
-Developed by Cardinal Cryptography and powering the Aleph Zero blockchain since 2021, AlephBFT addresses fundamental limitations of traditional consensus mechanisms by eliminating synchrony assumptions while achieving up to 89,600 TPS with 416ms finality (Aleph Zero Foundation, 2024a). Unlike partially synchronous protocols such as PBFT, Tendermint, and HotStuff, AlephBFT operates in fully asynchronous network environments, providing superior partition tolerance and network resilience.
+Developed by Cardinal Cryptography and powering the Aleph Zero blockchain since 2021, AlephBFT addresses fundamental limitations of traditional consensus mechanisms by eliminating synchrony assumptions while achieving over 10,000 TPS with sub-second finality (Aleph Zero Foundation, 2024a). Unlike partially synchronous protocols such as PBFT, Tendermint, and HotStuff, AlephBFT operates in fully asynchronous network environments, providing superior partition tolerance and network resilience.
 
 **Key Differentiators:**
 - **Asynchronous Operation**: No timing assumptions or synchrony requirements
