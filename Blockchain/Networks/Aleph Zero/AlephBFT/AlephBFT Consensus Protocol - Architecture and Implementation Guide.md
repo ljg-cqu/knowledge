@@ -1,4 +1,4 @@
-# AlephBFT Consensus Protocol: Technical Analysis
+# AlephBFT Consensus Protocol: Architecture and Implementation Guide
 
 ## 0. Executive Summary
 
