@@ -196,9 +196,7 @@ fn process_unit(
 }
 ```
 
-#### DAG Structure Visualization
-
-The following diagram illustrates how units form the DAG structure, with each unit referencing its parents from the previous round:
+This process builds the DAG round by round, as visualized below:
 
 ```mermaid
 graph TB
