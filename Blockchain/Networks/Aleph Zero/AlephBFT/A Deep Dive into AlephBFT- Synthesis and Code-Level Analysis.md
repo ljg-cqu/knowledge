@@ -491,9 +491,23 @@ Synthesizing the analysis from existing reports with a direct code-level underst
 | **Implementation Complexity** | High (modular, async) | High (complex view changes) | Moderate (simpler than PBFT) | Low (simplest of the four) |
 | **Code-Level Insight** | Highly modular with dedicated tasks for networking, creation, and alerts. Finality via `Extender`'s analysis of the `Dag`. | Monolithic, with complex view-change logic. | Round-based, with clear leader election per round. | Simplified leader-based model with pipelined voting for efficiency. |
 
-### 5.3. Performance Analysis Notes
+## 6. SWOT Analysis of AlephBFT
 
-The following points expand on the performance metrics in the table above. The code snippet illustrates how the DAG structure enables parallel processing, which is a key contributor to AlephBFT's high throughput.
+| | Strengths | Weaknesses |
+| :--- | :--- | :--- |
+| **Internal** | **Asynchronous Safety**: The protocol's design, centered around the `Dag` and `Ordering` components, makes no assumptions about network synchrony, ensuring safety even in volatile network conditions. <br><br> **High Throughput & Monotonic Finality**: The DAG structure allows for the parallel processing of units, and the `Extender` ensures that once a batch is finalized, it is irreversible. <br><br> **Native Substrate Integration**: The `finality-aleph` crate demonstrates a deep and effective integration with Substrate, replacing GRANDPA as a finality gadget. | **Implementation Complexity**: The highly modular and asynchronous nature, while powerful, introduces significant complexity. Managing the interactions between the `NetworkHub`, `Creator`, `AlertService`, and `Consensus` service requires careful handling of multiple communication channels and task lifecycles. <br><br> **Alert Overhead**: The fork-alerting mechanism, while crucial for security, introduces additional network traffic and processing overhead, managed by the dedicated `AlertService`. <br><br> **Static Configuration**: Key parameters like session length and committee size are defined in the `Config` struct (`consensus/src/config.rs`) and are not designed to be adjusted dynamically within a session. |
+| **External** | **Opportunities** | **Threats** |
+| | **Growing Demand for Asynchronous BFT**: As decentralized applications become more global, the need for protocols that can handle high-latency, unreliable networks is increasing. <br><br> **Hybrid Consensus Models**: The modular design could allow for future integration with other systems, such as those using machine learning for threat detection. | **Competition from Optimized Protocols**: Protocols like HotStuff, while only partially synchronous, offer lower implementation complexity and may perform better in stable, low-latency network environments. <br><br> **Evolving Attack Vectors**: New attacks on BFT systems may emerge, requiring continuous maintenance and updates to the protocol's security mechanisms, particularly the `Validator` and `Alert` systems. |
+
+## 7. In-Depth Analysis of AlephBFT
+
+This section provides a deeper analysis of AlephBFT's key attributes, building upon the comparative overview.
+
+### 7.1. Performance and Scalability
+
+AlephBFT's architecture is engineered for high performance and scalability, primarily through its asynchronous, DAG-based model. The key mechanisms are:
+
+*   **DAG-Based Parallelism**: Unlike traditional blockchains that process transactions sequentially, AlephBFT's DAG structure allows for the parallel processing of units. This is the core of its scalability, as units with available parents can be validated and added to the DAG concurrently. The `add_units` function below demonstrates this parallel approach using `tokio::spawn`:
 
 ```rust
 // Simplified from consensus/src/dag/mod.rs
