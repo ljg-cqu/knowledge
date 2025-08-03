@@ -316,7 +316,37 @@ The `aleph-bft` crate defines several key data structures that are fundamental t
 
 ### The `Unit`
 
-The most fundamental data structure in AlephBFT is the `Unit`. It represents a single message created by a node and contains the following key fields (defined in `aleph-bft-types/src/lib.rs`):
+The most fundamental data structure in AlephBFT is the `Unit`. It represents a single message created by a node and contains the following key fields (defined in `aleph-bft-types/src/lib.rs`). Here's the actual implementation with some comments for clarity:
+
+```rust
+// A unit is the fundamental building block of the AlephBFT protocol.
+// It represents a single message created by a node in the network.
+pub struct Unit<H: Hasher, D: Data, S: Signature> {
+    // The pre-unit contains the core metadata
+    pre_unit: PreUnit<H>,
+    // The actual data being agreed upon (e.g., block hash)
+    data: D,
+    // Signature from the creator to ensure authenticity
+    signature: S,
+}
+
+// PreUnit contains the structural information about the unit
+pub struct PreUnit<H: Hasher> {
+    // Index of the node that created this unit
+    creator: NodeIndex,
+    // The round number this unit belongs to
+    round: Round,
+    // Hash of parent units, ensuring DAG structure
+    control_hash: ControlHash<H>,
+}
+
+// ControlHash represents a commitment to a set of parent units
+pub struct ControlHash<H: Hasher> {
+    // Hash of all parent units
+    parents_hash: H::Hash,
+    // Optional additional data for validation
+    additional_data: Vec<u8>,
+}
 
 ```rust
 pub struct PreUnit<H: Hasher> {
