@@ -316,38 +316,48 @@ fn next_batch(&mut self) -> Option<Vec<H::Hash>> {
 
 The `aleph-bft` crate defines several key data structures that are fundamental to the protocol's operation. Understanding these structures is essential for a deep appreciation of the implementation.
 
-### The `Unit`
+### The `Unit` Trait and `FullUnit` Implementation
 
-The most fundamental data structure in AlephBFT is the `Unit`. It represents a single message created by a node and contains the following key fields (defined in `aleph-bft-types/src/lib.rs`). Here's the actual implementation with some comments for clarity:
+In the AlephBFT codebase, `Unit` is defined as a trait that provides an abstract interface for units, while `FullUnit` is the concrete implementation. This design allows for flexibility and different unit representations throughout the consensus process.
 
 ```rust
-// A unit is the fundamental building block of the AlephBFT protocol.
-// It represents a single message created by a node in the network.
-pub struct Unit<H: Hasher, D: Data, S: Signature> {
-    // The pre-unit contains the core metadata
+// From consensus/src/units/mod.rs
+// Abstract representation of a unit from the DAG point of view
+pub trait Unit: 'static + Send + Clone {
+    type Hasher: Hasher;
+
+    fn hash(&self) -> <Self::Hasher as Hasher>::Hash;
+    fn coord(&self) -> UnitCoord;
+    fn control_hash(&self) -> &ControlHash<Self::Hasher>;
+    fn session_id(&self) -> SessionId;
+    
+    // Default implementations
+    fn creator(&self) -> NodeIndex {
+        self.coord().creator()
+    }
+    fn round(&self) -> Round {
+        self.coord().round()
+    }
+}
+
+// The concrete implementation of a unit
+pub struct FullUnit<H: Hasher, D: Data> {
     pre_unit: PreUnit<H>,
-    // The actual data being agreed upon (e.g., block hash)
-    data: D,
-    // Signature from the creator to ensure authenticity
-    signature: S,
+    data: Option<D>,  // Note: Optional data
+    session_id: SessionId,
+    hash: RwLock<Option<H::Hash>>,  // Cached hash for performance
 }
 
 // PreUnit contains the structural information about the unit
 pub struct PreUnit<H: Hasher> {
-    // Index of the node that created this unit
-    creator: NodeIndex,
-    // The round number this unit belongs to
-    round: Round,
-    // Hash of parent units, ensuring DAG structure
+    coord: UnitCoord,  // Wraps creator and round
     control_hash: ControlHash<H>,
 }
 
-// ControlHash represents a commitment to a set of parent units
-pub struct ControlHash<H: Hasher> {
-    // Hash of all parent units
-    parents_hash: H::Hash,
-    // Optional additional data for validation
-    additional_data: Vec<u8>,
+// Unit coordinates (creator and round)
+pub struct UnitCoord {
+    round: Round,
+    creator: NodeIndex,
 }
 ```
 
@@ -355,23 +365,33 @@ The relationship between these structures can be visualized as follows:
 
 ```mermaid
 graph TD
-    Unit --> PreUnit
-    Unit --> Data
-    Unit --> Signature
+    Unit["Unit (Trait)"] --> FullUnit["FullUnit (Implementation)"]
+    
+    FullUnit --> PreUnit
+    FullUnit --> Data["Option&lt;Data&gt;"]
+    FullUnit --> SessionId
+    FullUnit --> Hash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
 
-    PreUnit --> Creator
-    PreUnit --> Round
+    PreUnit --> UnitCoord
     PreUnit --> ControlHash
+    
+    UnitCoord --> Creator["NodeIndex"]
+    UnitCoord --> Round
 
-    ControlHash --> ParentHash[Hash of Parents]
-    ControlHash --> AdditionalData[Additional Data]
+    ControlHash --> ParentHash["Hash of Parents"]
+    ControlHash --> AdditionalData["Additional Data"]
 ```
 
-*   **`creator`**: The index of the node that created the unit.
-*   **`round`**: The round number in which the unit was created.
-*   **`control_hash`**: A hash of the unit's parents, which serves as a commitment to the unit's position in the DAG.
-*   **`data`**: The actual data that the consensus is being run on (e.g., a block hash or a set of transactions).
-*   **`signature`**: The creator's signature on the unit, which ensures its authenticity.
+**Key Components:**
+
+*   **`Unit` (trait)**: Abstract interface defining the essential methods for any unit implementation
+*   **`FullUnit`**: Concrete implementation containing the actual unit data and metadata
+*   **`UnitCoord`**: Coordinates (creator and round) that uniquely identify a unit in the absence of forks
+*   **`PreUnit`**: Core structural information including coordinates and control hash
+*   **`data: Option<D>`**: Optional data payload being agreed upon (e.g., block hash or transactions)
+*   **`session_id`**: Identifier for the consensus session
+*   **`hash`**: Cached hash value for performance optimization using `RwLock`
+*   **`control_hash`**: Commitment to the unit's parents, ensuring DAG integrity
 
 ### The `ControlHash`
 
@@ -445,6 +465,31 @@ impl<H: Hasher, D: Data, S: Signature> Alert<H, D, S> {
 *   **`sender`**: The node that is raising the alert.
 *   **`notification`**: The evidence of the fork, which consists of the two conflicting units created by the malicious node.
 *   **`legit_units`**: A list of units that the sender has created, which helps other nodes to determine the correct version of the DAG.
+
+### Additional Key Components
+
+The actual AlephBFT implementation includes several additional components that support the core consensus logic:
+
+```rust
+// From consensus/src/consensus/handler.rs
+pub struct Consensus<UFH, MK> {
+    store: UnitStore<DagUnit<UFH::Hasher, UFH::Data, MK>>,
+    dag: Dag<UFH::Hasher, UFH::Data, MK>,
+    responder: Responder<UFH::Hasher, UFH::Data, MK>,
+    ordering: Ordering<MK, UFH>,
+    task_manager: TaskManager<UFH::Hasher>,
+}
+```
+
+**Supporting Components:**
+
+*   **`UnitStore`**: Manages storage and retrieval of processed units, maintaining the local state of the DAG
+*   **`Responder`**: Handles network requests for missing units and provides responses to other nodes
+*   **`TaskManager`**: Manages timing and scheduling of various consensus tasks (requests, retries, etc.)
+*   **`Validator`**: Performs cryptographic verification and structural validation of incoming units
+*   **`BackupLoader/BackupSaver`**: Provides persistence mechanisms for recovery and fault tolerance
+
+These components work together to provide the robust, fault-tolerant consensus mechanism described in the main architecture.
 
 ## 5. Comparative Analysis of Consensus Protocols
 
@@ -555,7 +600,49 @@ impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
 
 *   **Byzantine Fault Tolerance**: Like other BFT protocols, AlephBFT guarantees safety and liveness as long as the number of malicious nodes (`f`) is less than one-third of the total nodes in the committee (`N/3`).
 
-## 8. Conclusion
+## 8. Implementation Notes and Disclaimers
+
+### Code Accuracy and Simplifications
+
+This report provides a technical analysis of the AlephBFT consensus protocol based on examination of the actual Cardinal Cryptography AlephBFT codebase. The analysis was conducted on **August 3, 2025** using the following specific repository versions:
+
+**Repository Versions:**
+- **AlephBFT**: `f35c7bb` - "Separate out the synchronous logic from consensus (#558)"
+  - Repository: https://github.com/Cardinal-Cryptography/AlephBFT
+- **aleph-node**: `5e990985` - "INFRA-113: Rework cron triggers (#1970)"
+  - Repository: https://github.com/Cardinal-Cryptography/aleph-node
+
+Readers should be aware of the following:
+
+**Code Examples:**
+- Code snippets in this report are **simplified for clarity** and educational purposes
+- Actual implementation includes extensive error handling, trait bounds, and async patterns not shown
+- Function signatures may be simplified to focus on core concepts rather than exact implementation details
+
+**Data Structure Representations:**
+- The report has been updated to reflect the actual codebase structure where `Unit` is a trait with `FullUnit` as the concrete implementation
+- Some complex generic constraints and lifetime parameters are omitted for readability
+- Caching mechanisms (like `RwLock<Option<Hash>>`) and performance optimizations are mentioned but not fully detailed
+
+**Architecture Coverage:**
+- The report covers the main consensus flow and key components but omits some supporting infrastructure
+- Additional components like `UnitStore`, `TaskManager`, and backup mechanisms are mentioned but not exhaustively analyzed
+- Network protocols, serialization details, and low-level optimizations are beyond the scope of this analysis
+
+**Verification Status:**
+- Core architectural concepts, file structure, and component relationships have been verified against the actual codebase
+- The consensus flow (creation → validation → reconstruction → finalization) accurately reflects the implementation
+- Module organization and key function names match the actual AlephBFT repository
+
+### Recommendations for Further Study
+
+For developers implementing or integrating with AlephBFT:
+1. **Consult the actual codebase** for precise implementation details and current API
+2. **Review the official documentation** at https://cardinal-cryptography.github.io/AlephBFT/
+3. **Examine test cases** in the repository for practical usage examples
+4. **Consider the complexity** of production-ready implementations beyond the conceptual overview provided here
+
+## 9. Conclusion
 
 AlephBFT stands as a testament to sophisticated engineering in the distributed consensus space. A direct, code-level analysis of the `aleph-bft` crate reveals a protocol that is not only theoretically sound but also implemented with a remarkable degree of modularity and precision. By separating the asynchronous orchestration in `run_session` from the deterministic core logic in the `Consensus` handler, the protocol achieves a clean separation of concerns that enhances both its robustness and its maintainability.
 
