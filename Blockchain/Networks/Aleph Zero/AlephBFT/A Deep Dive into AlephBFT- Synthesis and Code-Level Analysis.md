@@ -116,10 +116,17 @@ async fn create_unit<H: Hasher, D: Data, S: Signature>(
         signature,
     })
 }
+```
 
 ### Step 2: Validation
 
-Once a unit is received from the network, it is immediately passed to the `Dag`'s `add_unit` function. Here's a simplified version of the validation logic:
+Once a unit is received from the network, it is immediately passed to the `Dag` for validation. This critical step acts as a gatekeeper and involves several checks:
+
+*   **Correctness**: It verifies the unit's signature and internal consistency.
+*   **Fork Detection**: It checks if the unit's creator has already produced a different unit at the same height. If so, it generates a `NewForker` alert.
+*   **Duplicate Check**: It ensures the unit has not already been processed.
+
+The code below shows a simplified version of this validation logic:
 
 ```rust
 // Simplified from consensus/src/dag/validation.rs
