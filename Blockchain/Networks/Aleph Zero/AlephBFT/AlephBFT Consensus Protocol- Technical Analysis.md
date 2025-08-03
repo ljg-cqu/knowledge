@@ -8,6 +8,8 @@
 
 While previous reports correctly identify the DAG-based nature of AlephBFT, a direct analysis of the `aleph-bft` crate reveals a sophisticated, modular architecture that cleanly separates asynchronous orchestration from deterministic, core logic. The consensus engine is not a single monolithic component but a collaboration of specialized modules, each with a distinct responsibility.
 
+<div align="center">
+
 ```mermaid
 flowchart TD
     subgraph "run_session() - The Conductor"
@@ -35,6 +37,8 @@ flowchart TD
     style G fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style H fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
 ```
+
+</div>
 
 | Component | Source Location (`aleph-bft` crate) | Role |
 | :--- | :--- | :--- |
