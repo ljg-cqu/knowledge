@@ -878,7 +878,7 @@ Synthesizing the analysis from existing reports with a direct code-level underst
 
 This section provides a deeper analysis of AlephBFT's key attributes, building upon the comparative overview.
 
-### 7.1. Performance and Scalability
+### 8.1 Performance and Scalability
 
 AlephBFT's architecture is engineered for high performance and scalability, primarily through its asynchronous, DAG-based model. The key mechanisms are:
 
@@ -913,7 +913,7 @@ impl<H: Hasher, D: Data, S: Signature> Dag<H, D, S> {
 
 *   **Communication Complexity Trade-off**: The primary scalability constraint is the `O(N²)` communication complexity in the worst case, which is typical for many BFT protocols. AlephBFT accepts this trade-off to gain the resilience and security of its asynchronous model and fork-alerting system. For typical committee sizes, the protocol remains highly efficient.
 
-### 7.2. Security
+### 8.2 Security
 
 AlephBFT's security model is robust, designed to provide strong guarantees even in hostile, asynchronous environments. The key pillars of its security are:
 
@@ -1017,193 +1017,13 @@ fn finalization_probability(round: Round, support_ratio: f64) -> f64 {
 *   **No Rollbacks**: Once finalized, units cannot be reverted (unlike probabilistic finality)
 *   **Deterministic Eventually**: All honest nodes will eventually agree on finalization
 
-### 8.4 Real-World Performance and Benchmarking
 
-AlephBFT's theoretical capabilities translate into impressive real-world performance, as demonstrated by the Aleph Zero blockchain deployment and controlled benchmarking environments.
-
-#### 8.4.1 Production Performance Metrics
-
-**Aleph Zero Mainnet Performance (2024-2025):**
-*   **Sustained Throughput**: 10,000+ TPS during peak usage periods
-*   **Average Finality**: 0.8-1.2 seconds under normal network conditions
-*   **Peak Finality**: Sub-500ms during optimal network conditions
-*   **Committee Size**: 80-120 validators in production deployment
-*   **Network Latency Tolerance**: Maintains performance with up to 500ms inter-node latency
-
-**Benchmarking Results:**
-```rust
-// Performance benchmarking framework (simplified)
-struct BenchmarkResults {
-    throughput_tps: u32,
-    finality_ms: u64,
-    cpu_usage_percent: f64,
-    memory_usage_mb: u64,
-    network_bandwidth_mbps: f64,
-}
-
-// Typical benchmark results under controlled conditions
-let optimal_conditions = BenchmarkResults {
-    throughput_tps: 15_000,
-    finality_ms: 400,
-    cpu_usage_percent: 45.0,
-    memory_usage_mb: 2_048,
-    network_bandwidth_mbps: 100.0,
-};
-
-let stressed_conditions = BenchmarkResults {
-    throughput_tps: 8_000,
-    finality_ms: 2_000,
-    cpu_usage_percent: 80.0,
-    memory_usage_mb: 4_096,
-    network_bandwidth_mbps: 250.0,
-};
-```
-
-#### 8.4.2 Performance Under Adversarial Conditions
-
-**Byzantine Node Tolerance:**
-*   **Up to 33% Byzantine Nodes**: Maintains full functionality with up to `f = (N-1)/3` malicious nodes
-*   **Performance Degradation**: 15-25% throughput reduction with maximum Byzantine nodes
-*   **Fork Detection Overhead**: 5-10% additional CPU usage for alert processing
-*   **Recovery Time**: 2-5 seconds to exclude detected Byzantine nodes
-
-**Network Partition Scenarios:**
-*   **Partition Tolerance**: Continues operation with majority partition (`> 2f+1` nodes)
-*   **Minority Partition**: Gracefully halts to prevent safety violations
-*   **Partition Recovery**: Automatic state synchronization within 10-30 seconds
-*   **No Data Loss**: Complete recovery of all finalized state after partition healing
-
-#### 8.4.3 Resource Utilization Patterns
-
-**CPU Usage:**
-*   **Signature Verification**: 40-50% of CPU time during peak throughput
-*   **DAG Operations**: 25-30% for validation and reconstruction
-*   **Network I/O**: 15-20% for message processing and serialization
-*   **Backup Operations**: 5-10% for asynchronous persistence
-
-**Memory Usage:**
-*   **Unit Storage**: 1-2 GB for 24-hour unit retention
-*   **Processing Buffers**: 256-512 MB for validation pipelines
-*   **Network Buffers**: 128-256 MB for message queues
-*   **Backup Buffers**: 64-128 MB for persistence operations
-
-**Network Bandwidth:**
-*   **Unit Dissemination**: 80-90% of bandwidth during normal operation
-*   **Alert Messages**: 5-10% under normal conditions, up to 30% during attacks
-*   **Parent Requests**: 5-15% depending on network synchronization
-*   **Backup Traffic**: Negligible due to local persistence
-
-### 8.5 Operational Deployment Considerations
-
-Deploying AlephBFT in production environments requires careful consideration of operational requirements, monitoring strategies, and maintenance procedures.
-
-#### 8.5.1 Infrastructure Requirements
-
-**Hardware Specifications:**
-```yaml
-# Minimum production node requirements
-minimum_specs:
-  cpu: "4 cores @ 2.5GHz"
-  memory: "8 GB RAM"
-  storage: "100 GB SSD"
-  network: "100 Mbps symmetric"
-
-# Recommended production node requirements
-recommended_specs:
-  cpu: "8 cores @ 3.0GHz"
-  memory: "16 GB RAM"
-  storage: "500 GB NVMe SSD"
-  network: "1 Gbps symmetric"
-  redundancy: "RAID 1 for consensus data"
-```
-
-**Network Requirements:**
-*   **Latency**: < 200ms between committee members for optimal performance
-*   **Reliability**: 99.9%+ uptime to maintain consensus participation
-*   **Bandwidth**: 100+ Mbps per node for committee sizes of 100+ validators
-*   **Connectivity**: Direct connectivity preferred, NAT traversal supported
-
-#### 8.5.2 Committee Size Optimization
-
-The choice of committee size involves critical trade-offs between security and performance:
-
-**Security vs. Performance Trade-offs:**
-*   **Small Committees (10-30 nodes)**: High performance, lower decentralization
-*   **Medium Committees (50-100 nodes)**: Balanced performance and security
-*   **Large Committees (100+ nodes)**: Maximum security, higher communication overhead
-
-**Optimal Committee Size Calculation:**
-```rust
-// Committee size optimization based on security and performance requirements
-fn optimal_committee_size(
-    security_requirement: f64,  // Desired security level (0.0-1.0)
-    performance_target: u32,    // Target TPS
-    network_latency: u64,       // Average network latency in ms
-) -> u32 {
-    let base_size = (security_requirement * 300.0) as u32;
-    let performance_factor = (performance_target as f64 / 10000.0).sqrt();
-    let latency_factor = (200.0 / network_latency as f64).sqrt();
-    
-    (base_size as f64 * performance_factor * latency_factor) as u32
-}
-```
-
-#### 8.5.3 Monitoring and Observability
-
-**Critical Metrics:**
-*   **Consensus Health**: Finalization rate, round progression, committee participation
-*   **Performance Metrics**: TPS, finality time, resource utilization
-*   **Security Indicators**: Fork detection events, Byzantine node identification
-*   **Network Health**: Message delivery rates, partition detection, peer connectivity
-
-**Alerting Thresholds:**
-```rust
-// Production monitoring thresholds
-struct MonitoringThresholds {
-    finality_time_warning: Duration::from_secs(5),
-    finality_time_critical: Duration::from_secs(30),
-    throughput_warning: 5_000,  // TPS below this triggers warning
-    throughput_critical: 1_000, // TPS below this triggers critical alert
-    byzantine_nodes_warning: 0.1, // 10% of committee
-    byzantine_nodes_critical: 0.25, // 25% of committee
-}
-```
-
-#### 8.5.4 Upgrade and Maintenance Procedures
-
-**Rolling Upgrades:**
-*   **Gradual Deployment**: Upgrade nodes in batches to maintain consensus
-*   **Backward Compatibility**: Protocol versions must be compatible during transition
-*   **Rollback Capability**: Ability to revert to previous version if issues arise
-*   **Zero-Downtime**: Consensus continues during upgrade process
-
-**Backup and Recovery:**
-*   **Automated Backups**: Continuous backup of consensus state to persistent storage
-*   **Point-in-Time Recovery**: Ability to restore to any previous consensus state
-*   **Cross-Region Replication**: Backup data replicated across geographic regions
-*   **Recovery Testing**: Regular testing of backup and recovery procedures
-
-**Operational Procedures:**
-*   **Node Addition**: Dynamic addition of new committee members
-*   **Node Removal**: Graceful removal of committee members
-*   **Emergency Procedures**: Rapid response to security incidents or network attacks
-*   **Performance Tuning**: Optimization of node configuration for specific deployment environments
-
-These operational considerations ensure that AlephBFT deployments maintain the high performance and reliability characteristics demonstrated in the protocol design while providing the operational flexibility required for production blockchain networks.
 
 ## 9. Implementation Notes and Disclaimers
 
 ### Code Accuracy and Simplifications
 
-This report provides a technical analysis of the AlephBFT consensus protocol based on examination of the actual Cardinal Cryptography AlephBFT codebase. The analysis was conducted on **August 3, 2025** using the following specific repository versions:
-
-**Repository Versions:**
-- **AlephBFT**: `f35c7bb` - "Separate out the synchronous logic from consensus (#558)"
-  - Repository: https://github.com/Cardinal-Cryptography/AlephBFT
-- **aleph-node**: `5e990985` - "INFRA-113: Rework cron triggers (#1970)"
-  - Repository: https://github.com/Cardinal-Cryptography/aleph-node
-
-Readers should be aware of the following:
+This report provides a technical analysis of the AlephBFT consensus protocol based on examination of the actual Cardinal Cryptography AlephBFT codebase.
 
 **Code Examples:**
 - Code snippets in this report are **simplified for clarity** and educational purposes
@@ -1211,21 +1031,14 @@ Readers should be aware of the following:
 - Function signatures may be simplified to focus on core concepts rather than exact implementation details
 
 **Data Structure Representations:**
-- The report has been updated to reflect the actual codebase structure where `Unit` is a trait with `FullUnit` as the concrete implementation
+- `Unit` is a trait with `FullUnit` as the concrete implementation in the actual codebase
 - Some complex generic constraints and lifetime parameters are omitted for readability
-- Caching mechanisms (like `RwLock<Option<Hash>>`) and performance optimizations are mentioned but not fully detailed
+- Performance optimizations and caching mechanisms are simplified for understanding
 
 **Architecture Coverage:**
-- The report covers the main consensus flow and key components but omits some supporting infrastructure
-- Additional components like `UnitStore`, `TaskManager`, and backup mechanisms are mentioned but not exhaustively analyzed
-- Network protocols, serialization details, and low-level optimizations are beyond the scope of this analysis
-
-**Verification Status:**
-- Core architectural concepts, file structure, and component relationships have been verified against the actual codebase
-- The consensus flow (creation → validation → reconstruction → finalization) accurately reflects the implementation
-- Module organization and key function names match the actual AlephBFT repository
-
-### Recommendations for Further Study
+- The report covers the main consensus flow and key components
+- Additional supporting components are mentioned but not exhaustively analyzed
+- Focus is on understanding consensus mechanisms rather than implementation details
 
 For developers implementing or integrating with AlephBFT:
 1. **Consult the actual codebase** for precise implementation details and current API
