@@ -86,35 +86,35 @@ sequenceDiagram
 A new unit is born in the `creation` module, specifically within the `run` function (`consensus/src/creation/mod.rs`). Here's a simplified version of the unit creation process:
 
 ```rust
-// Simplified from consensus/src/creation/mod.rs
-async fn create_unit<H: Hasher, D: Data, S: Signature>(
-    &mut self,
-    data_provider: &impl DataProvider<D>,
-    round: Round,
-    parents: Vec<UnitHandle<H, D, S>>,
-) -> Result<Unit<H, D, S>, Error> {
-    // Get the data to include in the unit
-    let data = data_provider.get_data().await?;
+// Simplified from consensus/src/creation/creator.rs
+impl<H: Hasher> Creator<H> {
+    pub fn create_unit(&self, round: Round) -> Result<PreUnit<H>> {
+        // Determine control hash based on available parents
+        let control_hash = match round.checked_sub(1) {
+            // Genesis round: empty control hash
+            None => ControlHash::new(&NodeMap::with_size(self.n_members)),
+            // Regular round: hash of prospective parents from previous round
+            Some(prev_round) => {
+                let parent_collector = self.round_collectors
+                    .get(usize::from(prev_round))
+                    .ok_or(ConstraintError::NotEnoughParents)?;
+                ControlHash::new(parent_collector.prospective_parents(self.node_id)?)
+            }
+        };
+
+        // Create and return the pre-unit
+        Ok(PreUnit::new(self.node_id, round, control_hash))
+    }
     
-    // Create control hash from parent units
-    let control_hash = self.create_control_hash(parents);
-    
-    // Create the pre-unit (unsigned)
-    let pre_unit = PreUnit {
-        creator: self.node_index,
-        round,
-        control_hash,
-    };
-    
-    // Sign the pre-unit
-    let signature = self.keychain.sign(&pre_unit).await?;
-    
-    // Combine into final unit
-    Ok(Unit {
-        pre_unit,
-        data,
-        signature,
-    })
+    pub fn add_unit<U: Unit<Hasher = H>>(&mut self, unit: &U) {
+        // Add unit to all relevant round collectors
+        let start_round = unit.round();
+        let end_round = cmp::max(start_round, self.current_round());
+        for round in start_round..=end_round {
+            self.get_or_initialize_collector_for_round(round)
+                .add_unit(unit);
+        }
+    }
 }
 ```
 
@@ -130,38 +130,42 @@ The code below shows a simplified version of this validation logic:
 
 ```rust
 // Simplified from consensus/src/dag/validation.rs
-impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
-    pub fn validate_unit(
-        &self,
-        unit: &Unit<H, D, S>,
-        dag: &Dag<H, D, S>,
-    ) -> Result<(), ValidationError> {
-        // 1. Verify the signature
-        self.verify_signature(unit)?;
+impl<H: Hasher, D: Data, MK: MultiKeychain> Validator<H, D, MK> {
+    pub fn validate(
+        &mut self,
+        unit: UncheckedSignedUnit<H, D, MK::Signature>,
+        store: &UnitStore<U>,
+    ) -> Result<SignedUnit<H, D, MK>, Error<H, D, MK>> {
+        // 1. Basic unit validation (signature, structure)
+        let unit = self.unit_validator.validate_unit(unit)?;
+        let unit_hash = unit.as_signable().hash();
+        let creator = unit.creator();
         
-        // 2. Check for duplicate units (same creator and round)
-        if dag.contains_unit(unit.creator(), unit.round()) {
-            return Err(ValidationError::DuplicateUnit);
+        // 2. Check for duplicates in store and processing units
+        if store.unit(&unit_hash).is_some() ||
+           self.processing_units.unit(&unit_hash).is_some() {
+            return Err(Error::Duplicate(unit));
         }
         
-        // 3. Verify the control hash matches the parents
-        let computed_hash = self.compute_control_hash(unit.parents());
-        if computed_hash != unit.control_hash() {
-            return Err(ValidationError::InvalidControlHash);
+        // 3. Fork detection - check if creator already has unit at this round
+        if let Some(existing_unit) = self.processing_units.get(creator, unit.round()) {
+            if existing_unit.hash() != unit_hash {
+                // Fork detected! Generate alert
+                let alert = Alert::new_fork_alert(creator, existing_unit.clone(), unit.clone());
+                return Err(Error::NewForker(Box::new(alert)));
+            }
         }
         
-        // 4. Check for equivocation (forks)
-        if dag.has_equivocation(unit.creator(), unit.round()) {
-            return Err(ValidationError::ForkDetected);
+        // 4. Check if creator is known forker
+        if self.is_forker(creator) {
+            return Err(Error::Uncommitted(unit));
         }
         
-        // 5. Verify round advancement rules
-        self.verify_round_advancement(unit, dag)?;
+        // 5. Add to processing units for future fork detection
+        self.processing_units.insert(unit.clone());
         
-        Ok(())
+        Ok(unit)
     }
-    
-    // ... other validation methods ...
 }
 ```
 
@@ -170,28 +174,48 @@ impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
 If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and requests are sent out for the missing parents. The logic below shows how this is handled, and the subsequent diagram illustrates the resulting DAG structure.
 
 ```rust
-// Simplified from consensus/src/dag/reconstruction.rs
-fn process_unit(
-    &mut self,
-    unit: Unit<H, D, S>,
-) -> Result<Status, Error> {
-    let unit_hash = unit.hash();
-
-    if self.dag.has_all_parents(&unit) {
-        // All parents are present, so we can insert the unit into the DAG.
-        self.dag.insert(unit);
-        return Ok(Status::Connected);
-    } else {
-        // Some parents are missing. Store as an orphan and request them.
-        let missing_parents = self.dag.get_missing_parents(&unit);
-        self.orphanage.add(unit, missing_parents.clone());
+// Simplified from consensus/src/dag/reconstruction/mod.rs
+impl<U: Unit> Reconstruction<U> {
+    pub fn add_unit(&mut self, unit: U) -> ReconstructionResult<U> {
+        // Handle genesis units (round 0) - no parents needed
+        if unit.round() == 0 {
+            let reconstructed = ReconstructedUnit::initial(unit);
+            return ReconstructionResult::reconstructed(reconstructed);
+        }
         
-        // Generate requests for the missing parents
-        let requests = missing_parents.into_iter()
-            .map(|parent_hash| Request::new(parent_hash, self.node_index))
-            .collect();
-            
-        return Ok(Status::MissingParents(requests));
+        // For non-genesis units, try to reconstruct with available parents
+        let unit_hash = unit.hash();
+        let control_hash = unit.control_hash();
+        
+        // Check if we can reconstruct parents from the DAG
+        match self.dag.try_reconstruct_parents(control_hash) {
+            Some(parents) => {
+                // All parents available - create reconstructed unit
+                match ReconstructedUnit::with_parents(unit, parents) {
+                    Ok(reconstructed) => {
+                        self.dag.insert_unit(&reconstructed);
+                        ReconstructionResult::reconstructed(reconstructed)
+                    }
+                    Err(unit) => {
+                        // Control hash mismatch - request explicit parents
+                        ReconstructionResult::request(Request::ParentsOf(unit_hash))
+                    }
+                }
+            }
+            None => {
+                // Missing parents - store for later and request them
+                self.parent_reconstruction.add_unit(unit_hash, control_hash);
+                ReconstructionResult::request(Request::ParentsOf(unit_hash))
+            }
+        }
+    }
+    
+    pub fn add_parents(
+        &mut self,
+        unit_hash: HashFor<U>,
+        parents: NodeMap<(HashFor<U>, Round)>,
+    ) -> ReconstructionResult<U> {
+        self.parent_reconstruction.add_parents(unit_hash, parents)
     }
 }
 ```
