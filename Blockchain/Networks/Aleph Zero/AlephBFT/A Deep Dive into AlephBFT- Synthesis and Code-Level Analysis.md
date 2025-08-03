@@ -156,14 +156,11 @@ impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
     
     // ... other validation methods ...
 }
-
-*   **Correctness**: It verifies the unit's signature and internal consistency.
-*   **Fork Detection**: It checks if the unit's creator has already produced a different unit at the same height. If so, it generates a `NewForker` alert.
-*   **Duplicate Check**: It ensures the unit has not already been processed.
+```
 
 ### Step 3: Reconstruction
 
-If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan." The logic below shows how this is handled.
+If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and requests are sent out for the missing parents. The logic below shows how this is handled, and the subsequent diagram illustrates the resulting DAG structure.
 
 ```rust
 // Simplified from consensus/src/dag/reconstruction.rs
@@ -543,59 +540,61 @@ impl<H: Hasher, D: Data, S: Signature> Dag<H, D, S> {
             }));
         }
         
-        // Collect results
-        for handle in handles {
-            results.push(handle.await.unwrap());
-        }
-        
-        // Try to process any pending units that might now be ready
-        self.process_pending_units().await;
-        
+        // ... logic to collect results ...
         results
     }
-    
-    // ... rest of the implementation ...
 }
 ```
 
-1. **Throughput (TPS)**:
-   - AlephBFT achieves high throughput (10,000+ TPS) through its DAG-based approach and parallel processing of units.
-   - PBFT and Tendermint typically achieve lower TPS (1,000-10,000) due to their more sequential nature.
-   - HotStuff's pipelined approach enables high throughput similar to AlephBFT.
+*   **Low-Latency Finality**: Because the protocol is asynchronous, it does not have to wait for fixed block times or multiple rounds of voting to confirm transactions. Finality can be achieved very quickly (sub-second in the Aleph Zero implementation) as soon as a unit and its ancestors have received enough support within the DAG.
 
-2. **Finality Time**:
-   - AlephBFT provides sub-second finality in practice (Aleph Zero implementation).
-   - Tendermint's finality is slower (6-7 seconds) due to its fixed block times and multiple voting rounds.
-   - PBFT and HotStuff fall in between, with finality typically achieved in 1-3 seconds.
+*   **Communication Complexity Trade-off**: The primary scalability constraint is the `O(N²)` communication complexity in the worst case, which is typical for many BFT protocols. AlephBFT accepts this trade-off to gain the resilience and security of its asynchronous model and fork-alerting system. For typical committee sizes, the protocol remains highly efficient.
 
-3. **Network Efficiency**:
-   - HotStuff has the best communication complexity (`O(N)` per decision).
-   - AlephBFT, PBFT, and Tendermint all have `O(N²)` communication complexity in the worst case.
-   - AlephBFT's alert mechanism adds some overhead but enhances security in asynchronous networks.
-
-4. **Practical Considerations**:
-   - AlephBFT's asynchronous nature makes it more resilient to network partitions and variable latency.
-   - The DAG structure allows for better parallelization of transaction processing.
-   - The alert system provides additional security but requires careful implementation to avoid performance bottlenecks.
-
-### 5.4. Security Analysis
+### 7.2. Security
 
 AlephBFT's security model is robust, designed to provide strong guarantees even in hostile, asynchronous environments. The key pillars of its security are:
 
 *   **Asynchronous Safety**: The protocol's core design does not rely on timing assumptions for safety. This means that even under extreme network latency or partitions, the system will not confirm conflicting transactions. Safety is guaranteed by the DAG's structure and the finalization rules, not by network synchrony.
+
 *   **Fork-Alerting Mechanism**: The `Alert` system is a critical defense against equivocation (forks). If a malicious node creates two different units in the same round, honest nodes will detect this, create an `Alert`, and broadcast it to the network. This allows the network to identify and eventually exclude the malicious node, preserving the integrity of the DAG.
-*   **Rigorous Unit Validation**: Every unit entering the DAG is subjected to a strict validation process by the `Validator` component. This includes verifying the creator's signature, checking the control hash against the unit's parents, and ensuring the unit adheres to round advancement rules. This multi-step validation acts as a gatekeeper, preventing malformed or invalid data from corrupting the consensus process.
+	
+*   **Rigorous Unit Validation**: Every unit entering the DAG is subjected to a strict validation process by the `Validator` component. This includes verifying the creator's signature, checking the control hash against the unit's parents, and ensuring the unit adheres to round advancement rules. This multi-step validation acts as a gatekeeper, preventing malformed or invalid data from corrupting the consensus process. The code below highlights the key validation steps:
+
+```rust
+// Simplified from consensus/src/dag/validation.rs
+impl<H: Hasher, D: Data, S: Signature> Validator<H, D, S> {
+    pub fn validate_unit(
+        &self,
+        unit: &Unit<H, D, S>,
+        dag: &Dag<H, D, S>,
+    ) -> Result<(), ValidationError> {
+        // 1. Verify the signature
+        self.verify_signature(unit)?;
+        
+        // 2. Check for duplicate units
+        if dag.contains_unit(unit.creator(), unit.round()) {
+            return Err(ValidationError::DuplicateUnit);
+        }
+        
+        // 3. Verify the control hash
+        let computed_hash = self.compute_control_hash(unit.parents());
+        if computed_hash != unit.control_hash() {
+            return Err(ValidationError::InvalidControlHash);
+        }
+        
+        // 4. Check for forks (equivocation)
+        if dag.has_equivocation(unit.creator(), unit.round()) {
+            return Err(ValidationError::ForkDetected);
+        }
+        
+        Ok(())
+    }
+}
+```
+
 *   **Byzantine Fault Tolerance**: Like other BFT protocols, AlephBFT guarantees safety and liveness as long as the number of malicious nodes (`f`) is less than one-third of the total nodes in the committee (`N/3`).
 
-### 5.5. Scalability Analysis
-
-Scalability in AlephBFT is primarily achieved through its innovative architecture, which is designed for high throughput and low latency:
-
-*   **DAG-Based Parallelism**: Unlike traditional blockchain models that process blocks sequentially, AlephBFT's DAG structure allows for the parallel processing of units. As shown in the `add_units` code snippet, units with available parents can be validated and added to the DAG concurrently, significantly boosting transaction throughput.
-*   **Low Latency**: Because the protocol is asynchronous, it does not have to wait for fixed block times or multiple rounds of voting to confirm transactions. Finality can be achieved very quickly (sub-second in the Aleph Zero implementation) as soon as a unit and its ancestors have received enough support within the DAG.
-*   **Communication Complexity Trade-off**: The primary scalability constraint is the `O(N²)` communication complexity in the worst case, which is typical for many BFT protocols. While the alert system adds some overhead, this is a trade-off for enhanced security in asynchronous networks. For very large committee sizes, this communication overhead can become a bottleneck, but for typical committee sizes, the protocol remains highly efficient.
-
-## 6. Conclusion
+## 8. Conclusion
 
 AlephBFT stands as a testament to sophisticated engineering in the distributed consensus space. A direct, code-level analysis of the `aleph-bft` crate reveals a protocol that is not only theoretically sound but also implemented with a remarkable degree of modularity and precision. By separating the asynchronous orchestration in `run_session` from the deterministic core logic in the `Consensus` handler, the protocol achieves a clean separation of concerns that enhances both its robustness and its maintainability.
 
