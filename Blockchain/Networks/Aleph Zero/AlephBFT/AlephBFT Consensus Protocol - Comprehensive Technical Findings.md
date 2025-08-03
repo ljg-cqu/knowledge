@@ -7,18 +7,18 @@
 AlephBFT represents a breakthrough in distributed consensus technology, delivering production-proven Byzantine fault tolerance with exceptional performance characteristics. This analysis, based on direct examination of the Cardinal Cryptography codebase, reveals a mature protocol that successfully bridges theoretical innovation with practical deployment requirements.
 
 **Performance Highlights:**
-- **Peak Throughput**: Up to 89,600 TPS demonstrated in Golang implementation (112 AWS nodes, 5 continents)
-- **Validation Time**: 416 milliseconds for peak throughput scenarios
-- **Rust Implementation**: 40,000 TPS with 0.6-second finality (current Substrate-integrated version)
-- **Scalability**: Supports 100+ validator committees with graceful performance degradation
-- **Fault Tolerance**: Maintains full functionality with up to 33% Byzantine (malicious) nodes
-- **Production Status**: Mainnet operational since 2021 with continuous improvements (latest: Zahir update April 2024)
+- **Peak Throughput**: Up to 89,600 TPS demonstrated in Golang implementation (112 AWS nodes, 5 continents) (Aleph Zero Foundation, 2024a)
+- **Validation Time**: 416 milliseconds for peak throughput scenarios (Aleph Zero Foundation, 2024a)
+- **Rust Implementation**: 40,000 TPS with 0.6-second finality (current Substrate-integrated version) (Aleph Zero Foundation, 2024b)
+- **Scalability**: Supports 100+ validator committees with graceful performance degradation (Gagol et al., 2019)
+- **Fault Tolerance**: Maintains full functionality with up to 33% Byzantine (malicious) nodes (Gagol et al., 2019)
+- **Production Status**: Mainnet operational since 2021 with continuous improvements (latest: Zahir update April 2024) (Aleph Zero Foundation, 2024c)
 
 **Technical Innovations:**
-- **Asynchronous Operation**: No timing assumptions, superior network partition tolerance
-- **DAG-Based Parallelism**: Concurrent unit processing eliminates sequential bottlenecks
-- **Sophisticated Fork Detection**: Automatic Byzantine node identification and exclusion
-- **Modular Architecture**: Clean separation of concerns enhances maintainability and robustness
+- **Asynchronous Operation**: No timing assumptions, superior network partition tolerance (Gagol et al., 2019)
+- **DAG-Based Parallelism**: Concurrent unit processing eliminates sequential bottlenecks (Gagol et al., 2019)
+- **Sophisticated Fork Detection**: Automatic Byzantine node identification and exclusion (Aleph Zero Foundation, 2024a)
+- **Modular Architecture**: Clean separation of concerns enhances maintainability and robustness (Cardinal Cryptography, 2024)
 
 ### Strategic Recommendations
 
@@ -57,10 +57,16 @@ AlephBFT represents a breakthrough in distributed consensus technology, deliveri
 | Dimension | AlephBFT | PBFT | Tendermint | HotStuff |
 |-----------|----------|------|------------|----------|
 | **Network Model** | Asynchronous | Synchronous | Partially Sync | Partially Sync |
-| **Throughput** | 89,600 TPS (peak) | 1,000-3,000 TPS | 1,000-7,000 TPS | 1,000-5,000 TPS |
-| **Finality** | 416ms (peak) | 2-5s | 1-6s | 1-3s |
+| **Throughput** | 89,600 TPS (peak)¹ | 1,000-3,000 TPS² | 1,000-7,000 TPS³ | 1,000-5,000 TPS⁴ |
+| **Finality** | 416ms (peak)¹ | 2-5s² | 1-6s³ | 1-3s⁴ |
 | **Partition Tolerance** | Excellent | Poor | Good | Good |
 | **Production Maturity** | High | High | High | Medium |
+
+**References:**
+¹ Aleph Zero Foundation (2024a). About Aleph Zero. *Aleph Zero Documentation*.
+² Castro, M., & Liskov, B. (2002). Practical Byzantine fault tolerance and proactive recovery. *ACM Transactions on Computer Systems*, 20(4), 398-461.
+³ Buchman, E. (2016). Tendermint: Byzantine fault tolerance in the age of blockchains. *University of Guelph*.
+⁴ Yin, M., Malkhi, D., Reiter, M. K., Gueta, G. G., & Abraham, I. (2019). HotStuff: BFT consensus with linearity and responsiveness. *Proceedings of the 2019 ACM Symposium on Principles of Distributed Computing*, 347-356.
 
 ### Business Impact
 
@@ -1574,7 +1580,7 @@ AlephBFT demonstrates exceptional engineering sophistication through its modular
 
 The comparative analysis positions AlephBFT favorably against established protocols like PBFT, Tendermint, and HotStuff. Key differentiators include:
 
-*   **Asynchronous Operation**: Unlike synchronous protocols, AlephBFT makes no timing assumptions, providing superior network partition tolerance
+*   **Asynchronous Operation**: Unlike synchronous protocols, AlephBFT makes no timing assumptions, providing superior network partition tolerance (Gagol et al., 2019)
 *   **DAG-Based Parallelism**: Enables concurrent unit processing, eliminating the sequential bottlenecks inherent in linear blockchain approaches
 *   **Sophisticated Fork Detection**: The alert system provides robust Byzantine fault handling with automatic malicious node identification and exclusion
 *   **Production Validation**: Real-world deployment data validates theoretical performance claims, demonstrating practical viability
@@ -1612,3 +1618,31 @@ AlephBFT represents a mature, production-ready consensus protocol that successfu
 The protocol's deployment in the Aleph Zero blockchain provides concrete validation of its capabilities, demonstrating that the theoretical advantages translate into real-world performance benefits. For organizations requiring high-performance, Byzantine fault-tolerant consensus with operational flexibility, AlephBFT stands as one of the most sophisticated and proven solutions available.
 
 This analysis confirms that AlephBFT is not merely an academic exercise but a production-grade consensus engine capable of meeting the demanding requirements of modern distributed applications. Its continued evolution and adoption will likely influence the broader consensus protocol landscape, setting new standards for performance, resilience, and operational excellence in distributed systems.
+
+---
+
+## References
+
+Aleph Zero Foundation. (2024a). *About Aleph Zero*. Aleph Zero Documentation. Retrieved August 3, 2024, from https://docs.alephzero.org/aleph-zero/explore/about-aleph-zero
+
+Aleph Zero Foundation. (2024b). *What is the fastest blockchain and why? Analysis of 43 blockchains*. Aleph Zero Blog. Retrieved August 3, 2024, from https://alephzero.org/blog/what-is-the-fastest-blockchain-and-why-analysis-of-43-blockchains/
+
+Aleph Zero Foundation. (2024c). *Aleph Zero Mainnet 13.3 Zahir has been launched!* Aleph Zero Blog. Retrieved August 3, 2024, from https://alephzero.org/blog/aleph-zero-mainnet-zahir/
+
+Aleph Zero Foundation. (2024d). *AlephBFT Consensus*. Aleph Zero Documentation. Retrieved August 3, 2024, from https://docs.alephzero.org/aleph-zero/explore/alephbft-consensus
+
+Aleph Zero Foundation. (2024e). *Fundamentals: TPS vs. Latency vs. Finality*. Aleph Zero Blog. Retrieved August 3, 2024, from https://alephzero.org/blog/tps-latency-finality/
+
+Buchman, E. (2016). *Tendermint: Byzantine fault tolerance in the age of blockchains* [Doctoral dissertation, University of Guelph]. University of Guelph Electronic Theses and Practica.
+
+Cardinal Cryptography. (2024). *AlephBFT: Rust implementation of AlephBFT consensus protocol* [Computer software]. GitHub. https://github.com/Cardinal-Cryptography/AlephBFT
+
+Cardinal Cryptography. (2024). *aleph-node: Node implementation for Aleph blockchain built with Substrate framework* [Computer software]. GitHub. https://github.com/Cardinal-Cryptography/aleph-node
+
+Castro, M., & Liskov, B. (2002). Practical Byzantine fault tolerance and proactive recovery. *ACM Transactions on Computer Systems*, 20(4), 398-461. https://doi.org/10.1145/571637.571640
+
+Gągol, A., Leśniak, D., Straszak, D., & Świętek, M. (2019). *Aleph: Efficient atomic broadcast in asynchronous networks with Byzantine nodes*. arXiv preprint arXiv:1908.05156. https://doi.org/10.48550/arXiv.1908.05156
+
+Lamport, L., Shostak, R., & Pease, M. (1982). The Byzantine Generals Problem. *ACM Transactions on Programming Languages and Systems*, 4(3), 382-401. https://doi.org/10.1145/357172.357176
+
+Yin, M., Malkhi, D., Reiter, M. K., Gueta, G. G., & Abraham, I. (2019). HotStuff: BFT consensus with linearity and responsiveness. *Proceedings of the 2019 ACM Symposium on Principles of Distributed Computing*, 347-356. https://doi.org/10.1145/3293611.3331591
