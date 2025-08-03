@@ -390,9 +390,66 @@ The `ControlHash` is a critical component for ensuring the integrity of the DAG.
 1.  **Commitment**: By including the `ControlHash` in the signed `PreUnit`, the creator commits to the exact set of parents for that unit, preventing certain types of attacks.
 2.  **Efficiency**: It allows nodes to verify the parent-child relationships in the DAG without needing to have all the parent units available locally.
 
-### The `Alert`
+### The `Alert` System
 
-Fork alerts are a cornerstone of AlephBFT's security model. The `Alert` struct (defined in `consensus/src/alerts/mod.rs`) encapsulates the evidence of a fork and is broadcast to the network to notify other nodes of a malicious actor.
+Fork alerts are a cornerstone of AlephBFT's security model. Here's how the alert system works in practice:
+
+```rust
+// Simplified from consensus/src/alerts/mod.rs
+
+/// Represents an alert about a detected fork
+pub struct Alert<H: Hasher, D: Data, S: Signature> {
+    /// The node that detected and is reporting the fork
+    sender: NodeIndex,
+    /// Evidence of the fork (two conflicting units)
+    notification: ForkingNotification<H, D, S>,
+    /// Units from the sender to help others determine the correct chain
+    legit_units: Vec<UnitCoord<H>>,
+}
+
+impl<H: Hasher, D: Data, S: Signature> Alert<H, D, S> {
+    /// Creates a new alert when a fork is detected
+    pub fn new_fork_alert(
+        forker: NodeIndex,
+        unit1: Unit<H, D, S>,
+        unit2: Unit<H, D, S>,
+        my_units: Vec<Unit<H, D, S>>,
+    ) -> Self {
+        let notification = ForkingNotification {
+            forker,
+            first_unit: unit1,
+            second_unit: unit2,
+        };
+        
+        let legit_units = my_units.into_iter()
+            .map(|u| u.coord())
+            .collect();
+            
+        Alert {
+            sender: self.node_index,
+            notification,
+            legit_units,
+        }
+    }
+    
+    /// Verifies if the alert is valid
+    pub fn verify(&self) -> Result<(), AlertError> {
+        // Verify the forker actually created two different units in the same round
+        if self.notification.first_unit.creator() != self.notification.forker ||
+           self.notification.second_unit.creator() != self.notification.forker ||
+           self.notification.first_unit.round() != self.notification.second_unit.round() ||
+           self.notification.first_unit == self.notification.second_unit {
+            return Err(AlertError::InvalidForkEvidence);
+        }
+        
+        // Verify the signature on the alert
+        self.verify_signature()?;
+        
+        // Additional verification logic...
+        
+        Ok(())
+    }
+}
 
 ```rust
 pub struct Alert<H: Hasher, D: Data, S: Signature> {
