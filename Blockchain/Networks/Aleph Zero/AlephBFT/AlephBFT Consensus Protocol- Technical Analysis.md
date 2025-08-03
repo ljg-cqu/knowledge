@@ -81,9 +81,13 @@ sequenceDiagram
     end
 ```
 
-### Step 1: Creation
+### Step 1: Data Acquisition and Unit Creation
 
-A new unit is born in the `creation` module, specifically within the `run` function (`consensus/src/creation/mod.rs`). Here's a simplified version of the unit creation process:
+The consensus process begins when the `DataProvider` supplies new data to be included in the consensus. This triggers the unit creation process in the `creation` module (`consensus/src/creation/mod.rs`). The process involves several sub-steps:
+
+**1.1 Data Collection**: The `DataProvider` provides data (e.g., transactions, state changes) to be included in the unit.
+
+**1.2 PreUnit Creation**: The `Creator` determines the appropriate parents and creates a `PreUnit`:
 
 ```rust
 // Simplified from consensus/src/creation/creator.rs
@@ -118,7 +122,30 @@ impl<H: Hasher> Creator<H> {
 }
 ```
 
-### Step 2: Validation
+**1.3 Unit Signing and Packaging**: Once the `PreUnit` is created, it's combined with the data and signed to create a complete `FullUnit`:
+
+```rust
+// Simplified from consensus/src/creation/mod.rs
+let data = data_provider.get_data().await;
+let full_unit = FullUnit::new(pre_unit, data, session_id);
+let signed_unit = keychain.sign(full_unit).await?;
+```
+
+**1.4 Local Broadcasting**: The newly created unit is sent to the local consensus service and broadcast to the network:
+
+```rust
+outgoing_units.unbounded_send(signed_unit)?;
+```
+
+### Step 2: Network Dissemination
+
+Once created, the unit is disseminated through the network infrastructure:
+
+**2.1 Network Hub Processing**: The `NetworkHub` receives the unit and broadcasts it to all committee members.
+
+**2.2 Peer Reception**: Other nodes receive the unit through their network connections and forward it to their local consensus handlers.
+
+### Step 3: Validation
 
 Once a unit is received from the network, it is immediately passed to the `Dag` for validation. This critical step acts as a gatekeeper and involves several checks:
 
@@ -169,9 +196,17 @@ impl<H: Hasher, D: Data, MK: MultiKeychain> Validator<H, D, MK> {
 }
 ```
 
-### Step 3: Reconstruction
+### Step 4: DAG Reconstruction
 
-If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and requests are sent out for the missing parents. The logic below shows how this is handled, and the subsequent diagram illustrates the resulting DAG structure.
+If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction/mod.rs`). This component attempts to connect the unit to its parents in the local DAG. The reconstruction process involves several sub-steps:
+
+**4.1 Parent Availability Check**: The system checks if all required parents are available in the local DAG.
+
+**4.2 Reconstruction Attempt**: If parents are available, the unit is reconstructed with explicit parent relationships.
+
+**4.3 Missing Parent Handling**: If parents are missing, the unit is stored temporarily and parent requests are generated.
+
+The logic below shows how this is handled:
 
 ```rust
 // Simplified from consensus/src/dag/reconstruction/mod.rs
@@ -298,9 +333,33 @@ graph TB
     style C3 fill:#e7f3ff,stroke:#007bff,stroke-width:3px,color:#000
 ```
 
-*Note: The thick red borders on Round 3 units indicate they are part of a finalization wave, where the `Ordering` component has determined they can be safely finalized.*
+*Note: The blue borders on Round 3 units indicate they are part of a finalization wave, where the `Ordering` component has determined they can be safely finalized.*
 
-### Step 4: Finalization
+### Step 5: Backup and Persistence
+
+Once a unit is successfully reconstructed, it must be persisted for fault tolerance:
+
+**5.1 Backup Saving**: The reconstructed unit is sent to the backup saver for persistent storage:
+
+```rust
+// From consensus/src/consensus/handler.rs
+pub fn on_unit_backup_saved(
+    &mut self,
+    unit: DagUnit<UFH::Hasher, UFH::Data, MK>,
+) -> Option<AddressedDisseminationMessage<UFH::Hasher, UFH::Data, MK::Signature>> {
+    let unit_hash = unit.hash();
+    self.store.insert(unit.clone());
+    self.dag.finished_processing(&unit_hash);
+    self.ordering.add_unit(unit.clone());
+    self.task_manager.add_unit(&unit)
+}
+```
+
+**5.2 Store Integration**: The unit is added to the local `UnitStore` for future reference and parent resolution.
+
+**5.3 DAG Finalization**: The DAG component is notified that processing is complete, allowing cleanup of temporary state.
+
+### Step 6: Ordering and Finalization
 
 As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. The `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Here is a simplified view of how it produces finalized batches.
 
@@ -390,6 +449,8 @@ The relationship between these structures can be visualized as follows:
 ```mermaid
 graph TD
     Unit["Unit (Trait)"] --> FullUnit["FullUnit (Implementation)"]
+    Unit --> DagUnit["DagUnit (DAG Implementation)"]
+    Unit --> ReconstructedUnit["ReconstructedUnit"]
     
     FullUnit --> PreUnit
     FullUnit --> Data["Option&lt;Data&gt;"]
@@ -402,27 +463,56 @@ graph TD
     UnitCoord --> Creator["NodeIndex"]
     UnitCoord --> Round
 
-    ControlHash --> ParentHash["Hash of Parents"]
-    ControlHash --> AdditionalData["Additional Data"]
+    ControlHash --> ParentMap["NodeMap&lt;Round&gt;"]
+    ControlHash --> CombinedHash["H::Hash"]
+    
+    ParentMap --> NodeMap["NodeMap&lt;T&gt;"]
+    NodeMap --> NodeIndex
+    NodeMap --> NodeCount
+    
+    UnitStore --> StoreByHash["HashMap&lt;Hash, Unit&gt;"]
+    UnitStore --> CanonicalUnits["NodeMap&lt;HashMap&lt;Round, Hash&gt;&gt;"]
+    UnitStore --> TopRow["NodeMap&lt;Round&gt;"]
+    
+    Alert --> Sender["NodeIndex"]
+    Alert --> ForkProof["(Unit, Unit)"]
+    Alert --> LegitUnits["Vec&lt;Unit&gt;"]
+    Alert --> AlertHash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
     
     style Unit fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
     style FullUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
+    style DagUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
+    style ReconstructedUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
     style PreUnit fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
     style Data fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
     style SessionId fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
     style Hash fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
     style UnitCoord fill:#fff8e7,stroke:#ffc107,stroke-width:2px,color:#000
     style ControlHash fill:#fff8e7,stroke:#ffc107,stroke-width:2px,color:#000
+    style ParentMap fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style CombinedHash fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style NodeMap fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style UnitStore fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style Alert fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
     style Creator fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style Round fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
-    style ParentHash fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
-    style AdditionalData fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style NodeIndex fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style NodeCount fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style StoreByHash fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style CanonicalUnits fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style TopRow fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    style Sender fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
+    style ForkProof fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
+    style LegitUnits fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
+    style AlertHash fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
 ```
 
 **Key Components:**
 
 *   **`Unit` (trait)**: Abstract interface defining the essential methods for any unit implementation
 *   **`FullUnit`**: Concrete implementation containing the actual unit data and metadata
+*   **`DagUnit`**: Specialized unit implementation used within the DAG for consensus processing
+*   **`ReconstructedUnit`**: Unit with explicit parent references, created during DAG reconstruction
 *   **`UnitCoord`**: Coordinates (creator and round) that uniquely identify a unit in the absence of forks
 *   **`PreUnit`**: Core structural information including coordinates and control hash
 *   **`data: Option<D>`**: Optional data payload being agreed upon (e.g., block hash or transactions)
@@ -430,12 +520,67 @@ graph TD
 *   **`hash`**: Cached hash value for performance optimization using `RwLock`
 *   **`control_hash`**: Commitment to the unit's parents, ensuring DAG integrity
 
+### Core Infrastructure Types
+
+*   **`NodeMap<T>`**: Fundamental mapping structure from `NodeIndex` to values of type `T`, used throughout the system
+*   **`NodeIndex`**: Unique identifier for committee members (0 to N-1)
+*   **`NodeCount`**: Total number of nodes in the committee
+*   **`Round`**: Consensus round number, starting from 0 (genesis)
+
+### Storage and Management
+
+*   **`UnitStore`**: Central storage managing all processed units with multiple access patterns:
+    - `by_hash`: Direct hash-to-unit lookup
+    - `canonical_units`: First unit seen for each (creator, round) pair
+    - `top_row`: Highest round seen from each creator
+
 ### The `ControlHash`
 
-The `ControlHash` is a critical component for ensuring the integrity of the DAG. It is a hash of the parents of a unit, and it serves two key purposes:
+The `ControlHash` is a critical component for ensuring the integrity of the DAG. It contains two essential fields:
 
-1.  **Commitment**: By including the `ControlHash` in the signed `PreUnit`, the creator commits to the exact set of parents for that unit, preventing certain types of attacks.
-2.  **Efficiency**: It allows nodes to verify the parent-child relationships in the DAG without needing to have all the parent units available locally.
+```rust
+// From consensus/src/units/control_hash.rs
+pub struct ControlHash<H: Hasher> {
+    parents: NodeMap<Round>,        // Maps each parent's creator to their round
+    combined_hash: H::Hash,         // Hash of all parent (hash, round) pairs
+}
+```
+
+The `ControlHash` serves multiple purposes:
+
+1.  **Parent Commitment**: By including the `ControlHash` in the signed `PreUnit`, the creator commits to the exact set of parents for that unit, preventing equivocation attacks.
+2.  **Efficient Verification**: It allows nodes to verify parent-child relationships without needing all parent units locally.
+3.  **Round Validation**: The `parents` field enables validation of proper round progression and parent count requirements.
+4.  **Integrity Assurance**: The `combined_hash` ensures cryptographic integrity of the parent set.
+
+### Validation Pipeline Structures
+
+The validation process involves several key data structures:
+
+```rust
+// Validation pipeline types
+pub type UncheckedSignedUnit<H, D, S> = UncheckedSigned<FullUnit<H, D>, S>;
+pub type SignedUnit<H, D, S> = Signed<FullUnit<H, D>, S>;
+
+// Request types for missing data
+pub enum Request<H: Hasher> {
+    ParentsOf(H::Hash),
+    UnitByHash(H::Hash),
+}
+
+// Reconstruction results
+pub enum ReconstructionResult<U: Unit> {
+    Reconstructed(ReconstructedUnit<U>),
+    Request(Request<U::Hasher>),
+    Pending,
+}
+```
+
+**Validation Flow:**
+*   **`UncheckedSignedUnit`**: Raw unit received from network, not yet validated
+*   **`SignedUnit`**: Unit that has passed signature and structural validation
+*   **`Request`**: Enum for requesting missing parents or specific units
+*   **`ReconstructionResult`**: Outcome of attempting to reconstruct a unit with its parents
 
 ### The `Alert` System
 
