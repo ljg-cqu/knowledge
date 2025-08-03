@@ -276,17 +276,39 @@ graph TB
 
 ### Step 4: Finalization
 
-As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. Using the rules of the AlephBFT protocol (which involve virtual voting and a common coin), the `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Once a batch is finalized, it is passed to the `finalization_handler`, which makes the data available to the application layer.
-*   **Fork Detection**: It checks if the unit's creator has already produced a different unit at the same height. If so, it generates a `NewForker` alert.
-*   **Duplicate Check**: It ensures the unit has not already been processed.
+As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. The `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Here is a simplified view of how it produces finalized batches.
 
-### Step 3: Reconstruction
+```rust
+// Simplified from consensus/src/extension/extender.rs
+fn next_batch(&mut self) -> Option<Vec<H::Hash>> {
+    let mut finalized_batch = Vec::new();
+    let mut current_round = self.last_finalized_round + 1;
 
-If a unit passes validation, it moves to the `Reconstruction` stage (`consensus/src/dag/reconstruction.rs`). This component attempts to connect the unit to its parents in the local DAG. If the parents are not yet present, the unit is temporarily stored as an "orphan," and the `Reconstruction` logic generates `Request`s for the missing parents, which are then sent out to the network by the `Consensus` handler.
+    loop {
+        // Attempt to find a head for the current round.
+        // A head is a unit with a supermajority of paths from the previous round's heads.
+        if let Some(head) = self.find_head(current_round) {
+            // If a head is found, all its ancestors up to the previous finalized round
+            // can be considered finalized.
+            let new_finalized = self.collect_ancestors(head, self.last_finalized_round);
+            finalized_batch.extend(new_finalized);
+            
+            self.last_finalized_round = current_round;
+            current_round += 1;
+        } else {
+            // Not enough support to finalize this round yet.
+            break;
+        }
+    }
 
-### Step 4: Finalization
+    if !finalized_batch.is_empty() {
+        Some(finalized_batch)
+    } else {
+        None
+    }
+}
+```
 
-As the DAG grows, the `Ordering` component (`consensus/src/extension/mod.rs`) continuously analyzes its structure. Using the rules of the AlephBFT protocol (which involve virtual voting and a common coin), the `Extender` (`consensus/src/extension/extender.rs`) identifies batches of units that have achieved a supermajority of support. Once a batch is finalized, it is passed to the `finalization_handler`, which makes the data available to the application layer.
 
 ## 4. Key Data Structures
 
