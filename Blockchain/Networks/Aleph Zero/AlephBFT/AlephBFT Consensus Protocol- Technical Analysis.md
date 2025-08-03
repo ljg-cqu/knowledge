@@ -447,38 +447,52 @@ pub struct UnitCoord {
 The relationship between these structures can be visualized as follows:
 
 ```mermaid
-graph TD
-    Unit["Unit (Trait)"] --> FullUnit["FullUnit (Implementation)"]
-    Unit --> DagUnit["DagUnit (DAG Implementation)"]
-    Unit --> ReconstructedUnit["ReconstructedUnit"]
-    
-    FullUnit --> PreUnit
-    FullUnit --> Data["Option&lt;Data&gt;"]
-    FullUnit --> SessionId
-    FullUnit --> Hash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
+flowchart TB
+    subgraph UnitHierarchy ["🏗️ Unit Hierarchy & Core Structures"]
+        direction TB
+        Unit["Unit (Trait)"] --> FullUnit["FullUnit (Implementation)"]
+        Unit --> DagUnit["DagUnit (DAG Implementation)"]
+        Unit --> ReconstructedUnit["ReconstructedUnit"]
+        
+        FullUnit --> PreUnit
+        FullUnit --> Data["Option&lt;Data&gt;"]
+        FullUnit --> SessionId
+        FullUnit --> Hash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
 
-    PreUnit --> UnitCoord
-    PreUnit --> ControlHash
-    
-    UnitCoord --> Creator["NodeIndex"]
-    UnitCoord --> Round
+        PreUnit --> UnitCoord
+        PreUnit --> ControlHash
+        
+        UnitCoord --> Creator["NodeIndex"]
+        UnitCoord --> Round
 
-    ControlHash --> ParentMap["NodeMap&lt;Round&gt;"]
-    ControlHash --> CombinedHash["H::Hash"]
+        ControlHash --> ParentMap["NodeMap&lt;Round&gt;"]
+        ControlHash --> CombinedHash["H::Hash"]
+        
+        ParentMap --> NodeMap["NodeMap&lt;T&gt;"]
+        NodeMap --> NodeIndex
+        NodeMap --> NodeCount
+    end
     
-    ParentMap --> NodeMap["NodeMap&lt;T&gt;"]
-    NodeMap --> NodeIndex
-    NodeMap --> NodeCount
+    UnitHierarchy ~~~ StorageSystem
     
-    UnitStore --> StoreByHash["HashMap&lt;Hash, Unit&gt;"]
-    UnitStore --> CanonicalUnits["NodeMap&lt;HashMap&lt;Round, Hash&gt;&gt;"]
-    UnitStore --> TopRow["NodeMap&lt;Round&gt;"]
+    subgraph StorageSystem ["💾 Storage & Management System"]
+        direction TB
+        UnitStore["UnitStore"] --> StoreByHash["HashMap&lt;Hash, Unit&gt;"]
+        UnitStore --> CanonicalUnits["NodeMap&lt;HashMap&lt;Round, Hash&gt;&gt;"]
+        UnitStore --> TopRow["NodeMap&lt;Round&gt;"]
+    end
     
-    Alert --> Sender["NodeIndex"]
-    Alert --> ForkProof["(Unit, Unit)"]
-    Alert --> LegitUnits["Vec&lt;Unit&gt;"]
-    Alert --> AlertHash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
+    StorageSystem ~~~ AlertSystem
     
+    subgraph AlertSystem ["🚨 Alert & Fork Detection System"]
+        direction TB
+        Alert["Alert"] --> Sender["NodeIndex"]
+        Alert --> ForkProof["(Unit, Unit)"]
+        Alert --> LegitUnits["Vec&lt;Unit&gt;"]
+        Alert --> AlertHash["RwLock&lt;Option&lt;Hash&gt;&gt;"]
+    end
+    
+    %% Styling for Unit Hierarchy
     style Unit fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
     style FullUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
     style DagUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
@@ -492,15 +506,19 @@ graph TD
     style ParentMap fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style CombinedHash fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style NodeMap fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
-    style UnitStore fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
-    style Alert fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
     style Creator fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style Round fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style NodeIndex fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
     style NodeCount fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    
+    %% Styling for Storage System
+    style UnitStore fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
     style StoreByHash fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
     style CanonicalUnits fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
     style TopRow fill:#f0e7ff,stroke:#6f42c1,stroke-width:2px,color:#000
+    
+    %% Styling for Alert System
+    style Alert fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
     style Sender fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
     style ForkProof fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
     style LegitUnits fill:#ffe7e7,stroke:#dc3545,stroke-width:2px,color:#000
