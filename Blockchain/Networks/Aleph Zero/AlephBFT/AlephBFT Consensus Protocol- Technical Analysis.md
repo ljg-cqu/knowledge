@@ -26,14 +26,14 @@ flowchart TD
 
     B -- Drives --> E
 
-    style A fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
-    style C fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
-    style D fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
-    style B fill:#cce5ff,stroke:#007bff,stroke-width:2px
-    style E fill:#f8d7da,stroke:#dc3545,stroke-width:2px
-    style F fill:#fff3cd,stroke:#ffc107,stroke-width:2px
-    style G fill:#d4edda,stroke:#28a745,stroke-width:2px
-    style H fill:#e2e3e5,stroke:#6c757d,stroke-width:2px
+    style A fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style C fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style D fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style B fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style E fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
+    style F fill:#fff8e7,stroke:#ffc107,stroke-width:2px,color:#000
+    style G fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style H fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
 ```
 
 | Component | Source Location (`aleph-bft` crate) | Role |
@@ -284,18 +284,18 @@ graph TB
     B2 --> C3
     C2 --> C3
 
-    style A0 fill:#ffcccc
-    style B0 fill:#ccffcc
-    style C0 fill:#ccccff
-    style A1 fill:#ffcccc
-    style B1 fill:#ccffcc
-    style C1 fill:#ccccff
-    style A2 fill:#ffcccc
-    style B2 fill:#ccffcc
-    style C2 fill:#ccccff
-    style A3 fill:#ffcccc,stroke:#ff0000,stroke-width:3px
-    style B3 fill:#ccffcc,stroke:#ff0000,stroke-width:3px
-    style C3 fill:#ccccff,stroke:#ff0000,stroke-width:3px
+    style A0 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style B0 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style C0 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style A1 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style B1 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style C1 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style A2 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style B2 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style C2 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style A3 fill:#e7f3ff,stroke:#007bff,stroke-width:3px,color:#000
+    style B3 fill:#e7f3ff,stroke:#007bff,stroke-width:3px,color:#000
+    style C3 fill:#e7f3ff,stroke:#007bff,stroke-width:3px,color:#000
 ```
 
 *Note: The thick red borders on Round 3 units indicate they are part of a finalization wave, where the `Ordering` component has determined they can be safely finalized.*
@@ -404,6 +404,19 @@ graph TD
 
     ControlHash --> ParentHash["Hash of Parents"]
     ControlHash --> AdditionalData["Additional Data"]
+    
+    style Unit fill:#e7f3ff,stroke:#007bff,stroke-width:2px,color:#000
+    style FullUnit fill:#fff2e7,stroke:#fd7e14,stroke-width:2px,color:#000
+    style PreUnit fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style Data fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style SessionId fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style Hash fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#000
+    style UnitCoord fill:#fff8e7,stroke:#ffc107,stroke-width:2px,color:#000
+    style ControlHash fill:#fff8e7,stroke:#ffc107,stroke-width:2px,color:#000
+    style Creator fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style Round fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style ParentHash fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
+    style AdditionalData fill:#e7f5e7,stroke:#28a745,stroke-width:2px,color:#000
 ```
 
 **Key Components:**
