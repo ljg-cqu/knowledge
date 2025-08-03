@@ -564,6 +564,23 @@ impl<H: Hasher, D: Data, S: Signature> Dag<H, D, S> {
    - The DAG structure allows for better parallelization of transaction processing.
    - The alert system provides additional security but requires careful implementation to avoid performance bottlenecks.
 
+### 5.4. Security Analysis
+
+AlephBFT's security model is robust, designed to provide strong guarantees even in hostile, asynchronous environments. The key pillars of its security are:
+
+*   **Asynchronous Safety**: The protocol's core design does not rely on timing assumptions for safety. This means that even under extreme network latency or partitions, the system will not confirm conflicting transactions. Safety is guaranteed by the DAG's structure and the finalization rules, not by network synchrony.
+*   **Fork-Alerting Mechanism**: The `Alert` system is a critical defense against equivocation (forks). If a malicious node creates two different units in the same round, honest nodes will detect this, create an `Alert`, and broadcast it to the network. This allows the network to identify and eventually exclude the malicious node, preserving the integrity of the DAG.
+*   **Rigorous Unit Validation**: Every unit entering the DAG is subjected to a strict validation process by the `Validator` component. This includes verifying the creator's signature, checking the control hash against the unit's parents, and ensuring the unit adheres to round advancement rules. This multi-step validation acts as a gatekeeper, preventing malformed or invalid data from corrupting the consensus process.
+*   **Byzantine Fault Tolerance**: Like other BFT protocols, AlephBFT guarantees safety and liveness as long as the number of malicious nodes (`f`) is less than one-third of the total nodes in the committee (`N/3`).
+
+### 5.5. Scalability Analysis
+
+Scalability in AlephBFT is primarily achieved through its innovative architecture, which is designed for high throughput and low latency:
+
+*   **DAG-Based Parallelism**: Unlike traditional blockchain models that process blocks sequentially, AlephBFT's DAG structure allows for the parallel processing of units. As shown in the `add_units` code snippet, units with available parents can be validated and added to the DAG concurrently, significantly boosting transaction throughput.
+*   **Low Latency**: Because the protocol is asynchronous, it does not have to wait for fixed block times or multiple rounds of voting to confirm transactions. Finality can be achieved very quickly (sub-second in the Aleph Zero implementation) as soon as a unit and its ancestors have received enough support within the DAG.
+*   **Communication Complexity Trade-off**: The primary scalability constraint is the `O(N²)` communication complexity in the worst case, which is typical for many BFT protocols. While the alert system adds some overhead, this is a trade-off for enhanced security in asynchronous networks. For very large committee sizes, this communication overhead can become a bottleneck, but for typical committee sizes, the protocol remains highly efficient.
+
 ## 6. Conclusion
 
 AlephBFT stands as a testament to sophisticated engineering in the distributed consensus space. A direct, code-level analysis of the `aleph-bft` crate reveals a protocol that is not only theoretically sound but also implemented with a remarkable degree of modularity and precision. By separating the asynchronous orchestration in `run_session` from the deterministic core logic in the `Consensus` handler, the protocol achieves a clean separation of concerns that enhances both its robustness and its maintainability.
