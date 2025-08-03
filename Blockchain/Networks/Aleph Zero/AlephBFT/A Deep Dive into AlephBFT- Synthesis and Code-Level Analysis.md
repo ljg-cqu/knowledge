@@ -463,11 +463,11 @@ pub struct Alert<H: Hasher, D: Data, S: Signature> {
 *   **`notification`**: The evidence of the fork, which consists of the two conflicting units created by the malicious node.
 *   **`legit_units`**: A list of units that the sender has created, which helps other nodes to determine the correct version of the DAG.
 
-## 5. Analysis: Strengths, Weaknesses, and Comparative Landscape
+## 5. SWOT Analysis and Comparative Landscape
 
 Synthesizing the analysis from existing reports with a direct code-level understanding allows for a more nuanced evaluation of AlephBFT's position in the broader landscape of consensus protocols.
 
-### SWOT Analysis
+### 5.1. SWOT Analysis of AlephBFT
 
 | | Strengths | Weaknesses |
 | :--- | :--- | :--- |
