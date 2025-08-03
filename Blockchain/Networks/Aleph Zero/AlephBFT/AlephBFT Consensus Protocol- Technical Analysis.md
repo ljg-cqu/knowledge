@@ -1,4 +1,4 @@
-# A Deep Dive into AlephBFT: Synthesis and Code-Level Analysis
+# AlephBFT Consensus Protocol- Technical Analysis
 
 ## 1. Introduction
 
@@ -364,6 +364,7 @@ graph TD
     PreUnit --> ControlHash
 
     ControlHash --> ParentHash[Hash of Parents]
+    ControlHash --> AdditionalData[Additional Data]
 ```
 
 *   **`creator`**: The index of the node that created the unit.
