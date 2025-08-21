@@ -1,0 +1,21 @@
+# AGENTS.md
+
+- Project type: Markdown-only knowledge base; no compiled code, no tests, no runtime.
+- Build/lint/test: None configured. Optional lint: `npx markdownlint-cli2 "**/*.md"`; optional format: `npx prettier -w "**/*.md"`.
+- Single-test note: Not applicable (no test framework present).
+- Repo structure: Topic-first folders (e.g., AI/, Blockchain/, ComputerScience/, RDR (Reflect, Do, Rest)/, Thinking/, Workplace/). Files are standalone notes.
+- No subprojects, internal APIs, services, or databases; this is a content repository.
+- Filenames use bracketed tags conveying note type: `[scan]` overview, `[crit]` critique, `[lang]` language, `[deve]` development, `[prac]` practice, `[queX]` questions, numeric prefixes like `[1-q0]` for ordering.
+- Authoring style: GitHub-Flavored Markdown. Start with a clear H1 matching the title. Use concise sections and bullet lists.
+- Code blocks: use fenced blocks with a language tag when present (e.g., ```bash, ```go). Keep command lines copy-pastable.
+- Links: Prefer relative links to other notes; include descriptive link text. For external references, include source URLs inline.
+- Tables: Use simple GitHub Markdown tables when helpful; keep widths reasonable.
+- Images/diagrams: Embed with Markdown. Mermaid diagrams are allowed inside fenced ```mermaid blocks.
+- Language: Primarily English; some files mix languages. Keep each note internally consistent.
+- Naming: Words separated by spaces are common; preserve existing naming patterns (including commas/parentheses) when updating.
+- Organization: Place new notes under the most specific existing folder; reuse the bracketed tags for consistency.
+- Conventions: Avoid trailing whitespace; keep lines reasonably short (<120 chars) for readability in diffs.
+- Versioning: Small, topic-scoped commits with informative messages; group edits by note/topic rather than sweeping changes.
+- Safety: Do not add secrets; external command examples should not leak tokens/keys.
+- Editor/AI rules files: None found (no Cursor/Claude/Windsurf/Cline/Goose/Copilot rule files present).
+- Suggested tooling (optional, not required): link check (`npx markdown-link-check`), spell/style (`vale`), format (`prettier`).
