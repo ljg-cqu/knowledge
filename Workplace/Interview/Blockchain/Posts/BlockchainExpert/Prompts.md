@@ -26,6 +26,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - **Format:** Markdown with proper headings and code blocks
 - **Clarification:** Use code snippets, tables, analogies, formulas, and diverse diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.)
 - **Research:** Latest info from authoritative sources (official docs, codebases, standards); cross-reference multiple sources
+- **Citations:** Include APA 7th edition references for all sourced material, aligning with the output template section.
 - **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; **evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment)**; verify accuracy, completeness, relevance, and MECE compliance
 
 ## Output Template
@@ -46,4 +47,9 @@ Generate 100 interview Q&A pairs based on the provided job description.
 ## Terminology & Key Concepts
 
 **[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
-```
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
+- **Verification:** Ensure each reference is credible and directly supports the content.
