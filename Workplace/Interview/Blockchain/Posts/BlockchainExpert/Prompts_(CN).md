@@ -1,49 +1,49 @@
-# Prompts
+# 提示
 
-Generate 100 interview Q&A pairs based on the provided job description.
+根据提供的职位描述生成100个面试问答对。
 
-## Requirements
+## 要求
 
-### 1. Coverage & Organization
+### 1. 覆盖范围与组织
 
-- **MECE Approach:** Cover all technical areas (Mutually Exclusive, Collectively Exhaustive)
-- **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
-- **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
-- **Perspectives:** Engineering (software, front/back-end, infra), management (product, requirements, architecture, system), operations (testing, marketing)
-- **Difficulty:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic
+- **MECE 方法：** 覆盖所有技术领域（互斥、完全穷尽）
+- **要素：** 技术（技术、算法、模式、最佳实践、框架、公式、库），理论（理论、原则、公理、定律、假设、模型），实践（法规、市场动态、风险、成本、用例）
+- **上下文：** 历史演变、法律/监管环境、未来趋势；关键事件和统计数据
+- **视角：** 工程（软件、前/后端、基础设施），管理（产品、需求、架构、系统），运营（测试、市场营销）
+- **难度：** 基础（20%）、中级（40%）、高级（40%），按主题分组
 
-### 2. Content Design
+### 2. 内容设计
 
-- **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
-- **Evaluation:** Technical (performance, security, scalability, maintainability) and business (cost, efficiency, impact, market fit) dimensions
-- **Trade-offs:** Address essential/non-trivial trade-offs with decision-making guidance
-- **Questions:** Mix theoretical, practical, and scenario-based on real-world applications
-- **Answers:** 150-300 words with technical details, technologies, and practical examples; explain key concepts/terminologies clearly using analogies, formulas, etc. as needed
+- **目标：** 高级/专家级别，具有深入的技术理解和广泛的战略视角
+- **评估：** 技术（性能、安全性、可扩展性、可维护性）和业务（成本、效率、影响、市场适应性）维度
+- **权衡：** 处理本质/非平凡的权衡，并提供决策指导
+- **问题：** 混合理论、实践和基于实际应用的场景问题
+- **答案：** 150-300字，包含技术细节、技术和实际例子；使用类比、公式等清晰解释关键概念/术语
 
-### 3. Execution
+### 3. 执行
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation
-- **Format:** Markdown with proper headings and code blocks
-- **Clarification:** Use code snippets, tables, analogies, formulas, and diverse diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.)
-- **Research:** Latest info from authoritative sources (official docs, codebases, standards); cross-reference multiple sources
-- **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; verify accuracy, completeness, relevance, and MECE compliance
+- **规划：** 仔细思考，反思思考，在生成前创建综合计划
+- **格式：** Markdown，具有适当的标题和代码块
+- **澄清：** 使用代码片段、表格、类比、公式和多种图表类型（结构：架构、类、C4、ERD、块；行为：序列、状态、流程图、数据流；项目：甘特、看板、用户旅程；分析：图表、图形、时间线等）
+- **研究：** 来自权威来源的最新信息（官方文档、代码库、标准）；交叉引用多个来源
+- **质量：** 确保本质/有价值的问答，具有高质量输出；应用创造性然后批判性思维；**从多个角度评估（利弊、风险、益处、替代方案、对利益相关者的情感/心理影响、市场情绪）**；验证准确性、完整性、相关性和MECE合规性
 
-## Output Template
+## 输出模板
 
 ```markdown
-## [Topic Area] (Questions X-Y)
+## [主题区域] (问题 X-Y)
 
-### QX: [Question text]
+### QX: [问题文本]
 
-**Difficulty:** [Foundational/Intermediate/Advanced]
+**难度：** [基础/中级/高级]
 
-**Answer:** [150-300 words with technical details and examples]
+**答案：** [150-300字，包含技术细节和例子]
 
-[Code/Diagram/Table/Formula/Analogy as needed]
+[代码/图表/表格/公式/类比等]
 
 ---
 
-## Terminology & Key Concepts
+## 术语与关键概念
 
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
+**[术语/概念]：** [清晰定义，使用类比/公式/例子等]
 ```
