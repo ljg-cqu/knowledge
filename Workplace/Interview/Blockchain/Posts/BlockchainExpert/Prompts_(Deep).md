@@ -1,29 +1,31 @@
 # Prompts
 
-Generate 100 interview Q&A pairs based on the provided job description.
+Generate 50 interview Q&A pairs based on the provided job description.
 
 ## Requirements
 
 ### 1. Coverage & Organization
 
 - **MECE Approach:** Cover all technical areas (Mutually Exclusive, Collectively Exhaustive)
-- **Elements:** Technical (techniques, algorithms, protocols, patterns, best practices, frameworks, formulas, libraries), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
+- **Elements:** Technical (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases)
 - **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
-- **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites, and audits; capture language support, licensing, maturity, integration hooks, and performance/security benchmarks.
+- **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites, and audits; capture language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks.
 - **Inference Lists:** Provide bullet summaries for adoption signals, interoperability impacts, roadmap implications, and operational risks per topic cluster.
 - **Open Questions & Research:** Surface unresolved problems, knowledge gaps, emergent risks, and prioritized investigation tracks per topic cluster.
 - **Authoritative Literature:** Distill takeaways from white/yellow papers, peer-reviewed studies, theses, market investigations, regulatory reports, books/manuals, and vetted encyclopedic resources; link claims to practical implementation guidance.
 - **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions for each topic cluster.
 - **Collaboration & Organizational Dynamics:** Address cross-functional communication, governance models, institutional constraints, change management, and cultural alignment within teams and partner organizations.
-- **Perspectives:** Engineering (front-end, back-end, full-stack), architecture & infrastructure, database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market
+- **Governance & Trust Dimensions:** Assess permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
+- **Perspectives:** Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market
 - **Philosophical & Macro Disciplines:** Integrate philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis across topic clusters.
 - **Difficulty:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic
 
 ### 2. Content Design
 
 - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
-- **Evaluation:** Technical (performance, security, scalability, maintainability) and business (cost, efficiency, impact, market fit) dimensions
-- **Trade-offs:** Address essential/non-trivial trade-offs with decision-making guidance
+- **Evaluation:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA) and business (cost, efficiency, impact, market fit) dimensions
+- **Trade-offs:** Address essential/non-trivial trade-offs with decision-making guidance, including permissioning vs. decentralization choices, trust/privacy balances, algorithmic complexity limits, and upgrade path risks with mitigation strategies
+- **Governance & Assurance:** Examine how permission boundaries, stakeholder trust models, privacy/transparency requirements, error-tolerance envelopes, and distributed consistency guarantees influence architectural options.
 - **Macro Narratives:** Relate answers to systemic dynamics (economic cycles, stock/crypto market behaviors, liquidity and valuation trends, regulatory shifts, geopolitical/security considerations, societal adoption patterns, organizational behavior, historical precedents, macroeconomic/industry economic models).
 - **Collaboration & Communication:** Surface stakeholder alignment plans, cross-team workflows, and communication cadences that impact execution quality.
 - **Organizational & Strategic Operations:** Highlight business model implications, institutional capabilities, change readiness, and long-term strategic positioning.
@@ -37,7 +39,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - **Clarification:** Include at least one mermaid diagram and one table per Q&A for clarity; also use code snippets, tables, analogies, comparisons, formulas, and diverse mermaid diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.)
 - **Research:** Latest info from authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources
 - **Citations:** Include APA 7th edition references for all sourced material, aligning with the output template section.
-- **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; **evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment)**; verify accuracy, completeness, relevance, and MECE compliance
+- **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; evaluate from multiple angles per the template's **Multi-Angle Evaluation** checklist (pros, cons, risks, benefits, alternatives, stakeholder emotional/psychological impact, market sentiment); verify accuracy, completeness, relevance, and MECE compliance
 - **Holistic Reasoning:** Harmonize technical depth with philosophical rigor and macro-level insight; trace implications across disciplines while maintaining MECE clarity.
 
 ## Output Template
@@ -61,16 +63,19 @@ Generate 100 interview Q&A pairs based on the provided job description.
 #### Comparisons
 - [Relevant comparisons to aid understanding, e.g., vs. other technologies, historical vs. current, etc.]
 
-#### Element Coverage (Technical | Theoretical | Practical)
-- Technical Techniques, Protocols & Frameworks: [...]
+- Technical Techniques, Protocols, Frameworks & Design Patterns: [...]
 - Theoretical Principles & Models: [...]
-- Practical Regulations, Risks & Use Cases: [...]
+- Practical Regulations, Permission Models & Decentralization, Upgrade Governance, Risks & Use Cases: [...]
 
 #### Technical Evaluation (Performance | Security | Scalability | Maintainability)
-- Performance: [...]
+- Performance (Throughput & Latency): [...]
 - Security: [...]
 - Scalability: [...]
 - Maintainability: [...]
+- Algorithm Complexity & Error Tolerance: [...]
+- Reliability & High Availability: [...]
+- Distributed Consistency Guarantees: [...]
+- Hardware Requirements & Optimizations: [... including energy and resource consumption analysis]
 
 #### Business Evaluation (Cost | Efficiency | Impact | Market Fit)
 - Cost: [...]
@@ -81,10 +86,11 @@ Generate 100 interview Q&A pairs based on the provided job description.
 #### Multi-Angle Evaluation (Pros | Cons | Risks | Benefits | Stakeholder Impact | Market Sentiment)
 - Pros: [...]
 - Cons: [...]
-- Risks: [...]
+- Risks: [... include upgrade/migration failure modes and rollback contingencies]
 - Benefits: [...]
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
+- Trust & Privacy/Transparency Considerations: [...]
 
 #### Collaboration & Communication Plan
 - Stakeholders & Roles: [...]
@@ -98,7 +104,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - Strategic Positioning & Differentiation: [...]
 
 #### Trade-offs & Decision Guidance
-- [Critical trade-off analysis and recommended decision criteria]
+- [Critical trade-off analysis and recommended decision criteria with explicit permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, and upgrade/rollback guidance]
 
 #### Context & Trend Signals
 - Historical Evolution: [...]
@@ -138,8 +144,8 @@ Generate 100 interview Q&A pairs based on the provided job description.
 #### Inference Summary
 - Adoption Signals: [...]
 - Interoperability Impacts: [...]
-- Roadmap Implications: [...]
-- Operational Risks: [...]
+- Roadmap Implications: [... include upgrade sequencing considerations]
+- Operational Risks: [... highlight upgrade readiness, testing coverage, and rollback triggers]
 
 #### Terminology & Key Concepts
 
@@ -163,7 +169,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 
 #### Codebase & Library References
 
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations]
+- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
 
 #### Authoritative Literature & Reports
 
