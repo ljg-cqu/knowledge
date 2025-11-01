@@ -32,8 +32,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 ### 2. Content Design
 
-- **Target Level:** Analyze/Evaluate (Bloom). Expect candidates to synthesize information, compare alternatives, and justify recommendations with deep technical understanding and broad strategic perspective.
- - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
+- **Target Level:** Analyze/Evaluate (Bloom). Expect candidates to synthesize information, compare alternatives, and justify recommendations with deep technical understanding and broad strategic perspective (senior/expert level).
 - **Deliverables:** Require outputs such as issue lists, solution memos (≤300 words), decision matrices, stakeholder communication drafts, and remediation timelines.
 - **Trade-offs:** Explicitly test understanding of essential/non-trivial trade-offs (e.g., privacy vs transparency, throughput vs consistency, centralization vs decentralization, cost vs resilience, permissioning vs. decentralization choices, trust/privacy balances, algorithmic complexity limits, upgrade path risks with mitigation strategies).
 - **Evaluation Dimensions:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance, distributed consistency guarantees) and business (cost, efficiency, impact, market fit) dimensions.
@@ -132,7 +131,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 **Language:** python  
 **Difficulty:** Intermediate  
-**Bloom:** Apply/Create
+**Bloom:** Analyze/Evaluate
 
 ### Scenario Context
 
@@ -303,7 +302,4 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **References:** List all sources cited in the scenario context.
 - **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
 - **Verification:** Ensure each reference is credible and directly supports the content.
-```
-
-````
 ```

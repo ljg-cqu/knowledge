@@ -32,8 +32,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 ### 2. Content Design
 
-- **Target Level:** Remember/Understand (Bloom). Test factual recall, definition accuracy, and basic comprehension.
- - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
+- **Target Level:** Remember/Understand (Bloom). Test factual recall, definition accuracy, and basic comprehension (senior/expert level with deep technical understanding and broad strategic perspective).
 - **Answer Format:** Provide canonical answers as arrays including accepted synonyms (e.g., ["scalability", "scale"]) and alternate spellings (e.g., "decentralization" vs "decentralisation").
 - **Normalization Rules:** Define explicit rules: case-insensitive matching, whitespace trimming, punctuation stripping. State rounding/formatting conventions for numeric answers.
 - **Partial Credit:** State per-blank scoring (e.g., 1 point per correct blank) and tolerance ranges for numeric values.
@@ -281,7 +280,4 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **References:** List sources for specialized terminology or definitions.
 - **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
 - **Verification:** Ensure terminology is from credible, current sources.
-```
-
-````
 ```

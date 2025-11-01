@@ -33,8 +33,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 ### 2. Content Design
 
-- **Target Level:** Apply/Create (Bloom). Test ability to implement algorithms, manipulate data structures, handle edge cases, and write clean, idiomatic code with technical depth and practical application awareness.
- - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
+- **Target Level:** Apply/Create (Bloom). Test ability to implement algorithms, manipulate data structures, handle edge cases, and write clean, idiomatic code with technical depth and practical application awareness (senior/expert level).
 - **Starter Code:** Provide a skeleton with function signature, docstrings, and placeholder comments to guide implementation. Include necessary imports and data structure definitions.
 - **Test Coverage:** Supply 6–10 unit tests covering:
   - **Public tests (3–5):** Shown to students for immediate feedback; include basic cases and one edge case.
@@ -314,7 +313,4 @@ def validate_transfer(tx):
 - **References:** List sources for algorithms, protocols, or standards referenced in the task.
 - **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
 - **Verification:** Ensure each reference is credible and directly supports the content.
-```
-
-````
 ```
