@@ -1,4 +1,3 @@
-````markdown
 # True / False (T/F) Prompt Template
 
 Purpose: Produce declarative statements that students judge as True or False. This file provides an authoring and grading template separate from multi-option MCQs.
@@ -51,4 +50,3 @@ Grading notes:
 - If justification required, award partial credit for correct letter and additional credit for valid rationale (e.g., 70% + 30%).
 
 Use when: you need quick binary-check facts or to test conceptual clarity with low authoring overhead.
-````
