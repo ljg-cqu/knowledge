@@ -38,19 +38,54 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 ## Output Template
 
 ```markdown
-Statement: <declarative statement>
+## Contents
 
-Options:
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Statements 1–20](#statements-120)
+
+## Executive Summary
+
+- [2–3 bullets: assessment goals, statement scope, grading approach]
+
+## Coverage & Difficulty Summary
+
+| Difficulty | Count | Statements |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Key terms and concepts covered]
+
+## How to Use
+
+- Machine-gradable by exact-match of answer (A/True or B/False); normalize inputs ("A", "True", "true", "T")
+- Optional: require justification for higher-credit items (70% for correct letter + 30% for rationale)
+
+---
+
+## Statements 1–20
+
+### SX: [Short title]
+
+**Statement:** Byzantine Fault Tolerance consensus algorithms can tolerate up to 50% malicious nodes.
+
+**Options:**
 - A. True
 - B. False
 
-Answer: A  # or B
+**Answer:** B
 
-Rationale:
-- Correct: <1–2 sentence explanation>
-- Common misconception: <brief note>
+**Rationale:**
+- **Correct:** BFT algorithms (e.g., PBFT) can tolerate up to (n-1)/3 malicious nodes, not 50%. For example, in a 4-node network, only 1 Byzantine node can be tolerated.
+- **Common misconception:** Confusion with crash fault tolerance (e.g., Raft), which tolerates up to 50% crash failures.
 
-Difficulty: easy
-Bloom: Remember
-Citation: <APA if sourced>
+**Difficulty:** intermediate  
+**Bloom:** Understand  
+**Citation:** Castro, M., & Liskov, B. (1999). Practical Byzantine fault tolerance. *OSDI*, 99, 173–186.
 ```

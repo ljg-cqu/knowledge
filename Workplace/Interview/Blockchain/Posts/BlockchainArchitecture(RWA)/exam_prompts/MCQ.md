@@ -39,23 +39,59 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 ## Output Template
 
 ```markdown
-Stem: <question text>
+## Contents
 
-Options:
-- A. Option A
-- B. Option B
-- C. Option C
-- D. Option D
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Questions 1–25](#questions-125)
 
-Answer: A
+## Executive Summary
 
-Rationale:
-- Correct: <short explanation>
-Rationale for distractors:
-- B: <why wrong>
-- C: <why wrong>
-- D: <why wrong>
+- [2–3 bullets: assessment goals, topic coverage, grading approach]
 
-Difficulty: medium
-Bloom: Apply
+## Coverage & Difficulty Summary
+
+| Difficulty | Count | Questions |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Key terms and concepts tested]
+
+## How to Use
+
+- Machine-gradable by exact-match of answer letter; shuffle options client-side to randomize
+- Use for formative assessment or timed quizzes; review distractor analytics to identify misconceptions
+
+---
+
+## Questions 1–25
+
+### QX: [Question stem]
+
+**Stem:** Which consensus mechanism prioritizes finality over throughput in permissioned blockchains?
+
+**Options:**
+- A. Raft
+- B. PBFT
+- C. Proof of Work
+- D. Proof of Stake
+
+**Answer:** B
+
+**Rationale:**
+- **Correct (B):** PBFT provides Byzantine fault tolerance with deterministic finality, prioritizing safety over speed in permissioned settings.
+
+**Distractor notes:**
+- A: Raft provides crash fault tolerance but not Byzantine fault tolerance; suitable for non-adversarial environments.
+- C: Proof of Work is used in permissionless blockchains and prioritizes decentralization over finality.
+- D: Proof of Stake is primarily for permissionless chains; finality mechanisms vary by implementation.
+
+**Difficulty:** intermediate  
+**Bloom:** Apply
 ```

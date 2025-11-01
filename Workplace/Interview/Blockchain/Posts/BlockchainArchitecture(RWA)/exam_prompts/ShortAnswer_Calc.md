@@ -40,19 +40,58 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 ## Output Template
 
 ```markdown
-Problem: <problem statement with numeric data>
+## Contents
 
-Answer: <numeric or short text>
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Problems 1–12](#problems-112)
 
-Units: <units or none>
+## Executive Summary
 
-Tolerance: <±percentage or ±units>
+- [2–3 bullets: assessment goals, calculation scope, grading approach]
 
-Worked solution:
-- Step 1: ...
-- Step 2: ...
+## Coverage & Difficulty Summary
 
-Partial credit rules: <description>
-Difficulty: medium
-Bloom: Apply|Analyze
+| Difficulty | Count | Problems |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Key formulas, units, and conventions]
+
+## How to Use
+
+- Machine-gradable with tolerance checks; manual review for justification questions
+- Scoring: Method credit + arithmetic credit; store worked solutions for feedback
+
+---
+
+## Problems 1–12
+
+### PX: [Problem title]
+
+**Problem:** A blockchain processes 500 transactions per block with an average block time of 6 seconds. Calculate the throughput in transactions per second (TPS).
+
+**Answer:** 83.33 TPS
+
+**Units:** transactions per second (TPS)
+
+**Tolerance:** ±2%
+
+**Worked solution:**
+1. Transactions per block: 500
+2. Block time: 6 seconds
+3. TPS = 500 / 6 = 83.33 TPS
+
+**Partial credit rules:**
+- Correct formula with arithmetic error: 70%
+- Correct setup but incomplete: 50%
+
+**Difficulty:** foundational  
+**Bloom:** Apply
 ```

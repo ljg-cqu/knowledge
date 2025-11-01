@@ -42,21 +42,88 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 ## Output Template
 
 ```markdown
-Buggy file: buggy.py
+## Contents
 
-Failing test output:
-<stderr or assertion here>
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Task 1: Title](#task-1-title)
+- [Task 2: Title](#task-2-title)
 
-Tasks:
+## Executive Summary
+
+- [2–4 bullets: assessment goals, bug type coverage, evaluation approach]
+
+## Coverage & Difficulty Summary
+
+| Difficulty | Count | Tasks |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Key concepts, APIs, patterns relevant to debugging tasks]
+
+## How to Use
+
+- Evaluate fix correctness, root-cause depth, and test coverage
+- Scoring: Fix (0–6), Explanation (0–3), Tests (0–1)
+
+---
+
+## Task X: [Title]
+
+**Language:** python  
+**Difficulty:** medium  
+**Bloom:** Analyze|Evaluate
+
+### Buggy Code
+
+\`\`\`python
+# buggy.py
+def process_transactions(txs):
+    total = 0
+    for tx in txs:
+        total += tx['amount']
+    return total / len(txs)  # Bug: division by zero if txs is empty
+\`\`\`
+
+### Failing Test Output
+
+```
+AssertionError: Expected 0, got ZeroDivisionError
+```
+
+### Tasks
+
 1. Fix the bug
 2. Explain root cause (2–4 sentences)
 3. Provide tests that now pass
 
-Solution notes (for graders):
-- Corrected code: (fenced code block)
-- Root cause explanation: 2–4 sentences
-- Tests: list of tests that now pass and their expected output
+### Solution Notes (for graders)
 
-Difficulty: medium
-Bloom: Analyze|Evaluate
+**Corrected code:**
+
+\`\`\`python
+def process_transactions(txs):
+    if not txs:
+        return 0
+    total = 0
+    for tx in txs:
+        total += tx['amount']
+    return total / len(txs)
+\`\`\`
+
+**Root cause explanation:** The function fails when the input list is empty because it attempts division by zero. The fix adds a guard clause to return 0 for empty inputs.
+
+**Tests:**
+- `process_transactions([])` -> `0` (now passes)
+- `process_transactions([{"amount": 100}])` -> `100` (now passes)
+
+**Grader Notes:**
+- Partial credit: Correct diagnosis but incomplete fix → 60%
+- Common mistakes: catching exception instead of preventing it, incorrect edge-case handling
 ```

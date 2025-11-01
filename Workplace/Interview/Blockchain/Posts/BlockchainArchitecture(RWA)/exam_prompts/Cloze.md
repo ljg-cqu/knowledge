@@ -41,15 +41,50 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 ## Output Template
 
 ```markdown
-Text: The blockchain trilemma consists of ___, ___, and ___.
+## Contents
 
-Answers:
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Items 1–15](#items-115)
+
+## Executive Summary
+
+- [2–3 bullets: assessment goals, term coverage scope, scoring approach]
+
+## Coverage & Difficulty Summary
+
+| Difficulty | Count | Items |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Core terms tested in cloze items]
+
+## How to Use
+
+- Auto-gradable with normalization rules; suitable for timed quizzes or self-assessment
+- Per-blank scoring enables partial credit; review borderline answers manually
+
+---
+
+## Items 1–15
+
+### Item X
+
+**Text:** The blockchain trilemma consists of ___, ___, and ___.
+
+**Answers:**
 - Blank 1: scalability (accept: scalability, scale)
 - Blank 2: security (accept: security)
 - Blank 3: decentralization (accept: decentralization, decentralised)
 
-Normalization: case-insensitive, trim whitespace, strip punctuation
-Partial credit: per-blank (e.g., 1 point per correct blank)
-Difficulty: easy
-Bloom: Remember
+**Normalization:** case-insensitive, trim whitespace, strip punctuation  
+**Partial credit:** 1 point per correct blank  
+**Difficulty:** easy  
+**Bloom:** Remember
 ```

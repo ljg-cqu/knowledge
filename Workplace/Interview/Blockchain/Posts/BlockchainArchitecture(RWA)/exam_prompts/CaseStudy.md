@@ -40,23 +40,70 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 ## Output Template
 
 ```markdown
-Scenario: <200–400 word scenario text>
+## Contents
 
-Tasks:
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Scenario 1: Title](#scenario-1-title)
+- [Scenario 2: Title](#scenario-2-title)
+
+## Executive Summary
+
+- [2–4 bullets: assessment goals, topic scope, key trade-offs tested]
+
+## Coverage & Difficulty Summary
+
+| Difficulty | Count | Scenarios |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
+
+## Glossary & Acronym Index
+
+- [Key terms and acronyms used across scenarios]
+
+## How to Use
+
+- Allow 45–60 min per scenario; evaluate depth of analysis, trade-off reasoning, and communication clarity
+- Use rubrics for consistent grading; award partial credit per task checklist
+
+---
+
+## Scenario X: [Title]
+
+**Difficulty:** [Foundational/Intermediate/Advanced]  
+**Bloom:** Analyze|Evaluate
+
+### Scenario Context
+
+<200–400 word scenario text with constraints, metrics, stakeholder details>
+
+### Tasks
+
 1. Identify top 3 issues
 2. Propose 2 solutions and discuss trade-offs
 3. Draft a recommendation memo (≤300 words)
 
-Expected key points:
-- Task 1: ...
-- Task 2: ...
-- Task 3: ...
+### Expected Key Points
 
-Grading breakdown:
-- Task1 max: 8
-- Task2 max: 10
-- Task3 max: 6
+- **Task 1:** [List expected issues and evidence to cite]
+- **Task 2:** [List expected solutions, trade-offs, and decision criteria]
+- **Task 3:** [List key elements of a strong memo: clarity, justification, stakeholder framing]
 
-Difficulty: medium
-Bloom: Analyze|Evaluate
+### Grading Rubric
+
+| Task | Max Points | Criteria |
+|---|---:|---|
+| Task 1 | 8 | Correctness, completeness, evidence |
+| Task 2 | 10 | Feasibility, trade-off depth, alternatives |
+| Task 3 | 6 | Clarity, structure, decision justification |
+
+### Grader Notes
+
+- Partial credit: Correct diagnosis + incomplete solution = 60%
+- Bonus: Novel insights, consideration of edge cases, stakeholder impact analysis
+- Common omissions: [List typical gaps]
 ```

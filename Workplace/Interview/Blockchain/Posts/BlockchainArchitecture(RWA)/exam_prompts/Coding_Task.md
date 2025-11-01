@@ -44,24 +44,80 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 ## Output Template
 
 ```markdown
-Task: Implement `validate_transfer(tx)` that checks signature, balance, and asset type.
+## Contents
 
-Language: python
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use](#how-to-use)
+- [Task 1: Title](#task-1-title)
+- [Task 2: Title](#task-2-title)
 
-Function signature: def validate_transfer(tx):
+## Executive Summary
 
-Constraints: time=1s, memory=256MB, allowed libs: stdlib
+- [2–4 bullets: assessment goals, programming scope, auto-grading approach]
 
-Starter code: (include `starter.py` skeleton)
+## Coverage & Difficulty Summary
 
-Public tests:
-- input: ... -> output: ...
-- input: ... -> output: ...
+| Difficulty | Count | Tasks |
+|---|---:|---|
+| Foundational | | |
+| Intermediate | | |
+| Advanced | | |
 
-Hidden tests: (not shown to students)
+## Glossary & Acronym Index
 
-Reference solution: path or short description
+- [Key algorithms, data structures, protocol concepts tested]
 
-Difficulty: medium
-Bloom: Apply|Create
+## How to Use
+
+- Auto-grade via isolated test runner; public tests for feedback, hidden tests for robustness
+- Scoring: Correctness (60–80%), Edge cases (10–25%), Style/tests (5–10%)
+
+---
+
+## Task X: [Title]
+
+**Language:** python  
+**Difficulty:** medium  
+**Bloom:** Apply|Create
+
+### Problem Description
+
+Implement `validate_transfer(tx)` that checks signature, balance, and asset type.
+
+**Function signature:** `def validate_transfer(tx):`
+
+**Constraints:** time=1s, memory=256MB, allowed libs: stdlib
+
+### Starter Code
+
+\`\`\`python
+def validate_transfer(tx):
+    """
+    Validate a blockchain transfer transaction.
+    Args: tx (dict) - transaction with keys: from, to, amount, signature, asset_type
+    Returns: bool - True if valid, False otherwise
+    """
+    # TODO: Implement validation logic
+    pass
+\`\`\`
+
+### Public Tests
+
+- input: `{"from": "alice", "to": "bob", "amount": 100, ...}` -> output: `True`
+- input: `{"from": "alice", "to": "bob", "amount": -10, ...}` -> output: `False`
+
+### Hidden Tests
+
+(Not shown to students; test edge cases, large inputs, boundary values)
+
+### Reference Solution
+
+[Path to solution or brief description of approach and complexity]
+
+### Grader Notes
+
+- Common mistakes: missing edge-case checks, inefficient algorithms, incorrect signature validation
+- Partial credit: Correct logic but inefficient → 70%
 ```
