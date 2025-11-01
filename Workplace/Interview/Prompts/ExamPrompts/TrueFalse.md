@@ -34,6 +34,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 ### 2. Content Design
 
 - **Target Level:** Remember/Understand/Apply (Bloom). Use factual statements for lower levels; use concise scenario-based judgments for higher levels (e.g., "Given X constraint, approach Y is optimal"). Senior/expert level statements should test deep technical understanding and awareness of nuanced distinctions.
+ - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
 - **Rationale:** Provide a 1–2 sentence rationale explaining why the statement is true or false. Include a one-sentence note on common misconceptions to aid feedback.
 - **Justification (Optional):** For higher-credit items, require a brief written justification (2–3 sentences) in addition to the T/F answer. State scoring split (e.g., 70% for correct letter + 30% for valid rationale).
 - **Evaluation Dimensions:** Technical (performance, security, scalability, algorithm complexity, error tolerance, distributed consistency) and business (cost, efficiency, impact, market fit) considerations when relevant.

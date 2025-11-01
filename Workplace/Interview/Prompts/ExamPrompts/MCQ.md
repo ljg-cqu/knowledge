@@ -34,6 +34,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 ### 2. Content Design
 
 - **Target Level:** Remember/Understand/Apply (Bloom). Adjust difficulty by the depth of reasoning required to eliminate distractors. Senior/expert level questions should test deep technical understanding and broad strategic perspective.
+ - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
 - **Stem:** Provide a clear, concise stem (1–2 sentences). Avoid double negatives, ambiguous phrasing, or "all of the above" / "none of the above" unless pedagogically justified.
 - **Options:** Four options labeled A–D. Exactly one correct answer. Distractors should be similar in length and structure to the correct answer to avoid cueing.
 - **Rationale:** Provide a 1–2 sentence rationale for the correct answer and brief notes (1 sentence each) explaining why distractors are incorrect (e.g., "B is incorrect because it confuses consensus finality with transaction confirmation").

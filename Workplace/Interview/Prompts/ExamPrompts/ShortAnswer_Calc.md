@@ -34,6 +34,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 ### 2. Content Design
 
 - **Target Level:** Apply/Analyze (Bloom). Test ability to apply formulas, perform multi-step calculations, interpret results, and justify reasoning with technical depth and practical awareness.
+ - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
 - **Answer Format:** Provide exact expected answer, units, and acceptable tolerance (e.g., ±2% for percentages, ±0.5 for small integers).
 - **Worked Solution:** Supply a 2–4 step worked solution showing method and intermediate results. Use clear mathematical notation or pseudocode where appropriate.
 - **Partial Credit:** Define rules for method vs arithmetic credit (e.g., correct method with arithmetic error = 70%; correct setup but incomplete = 50%).

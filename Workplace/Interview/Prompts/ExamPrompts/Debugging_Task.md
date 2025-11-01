@@ -33,6 +33,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 ### 2. Content Design
 
 - **Target Level:** Analyze/Evaluate (Bloom). Test ability to read code, diagnose root causes, and propose correct fixes with technical depth and awareness of best practices.
+ - **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
 - **Deliverables:** Require three outputs:
   1. **Corrected code:** Fixed version with minimal changes (annotate changes with comments if helpful).
   2. **Root-cause explanation:** 2–4 sentence explanation identifying the bug, why it occurs, and what principle/pattern was violated.
