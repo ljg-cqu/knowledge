@@ -1,20 +1,44 @@
 # True / False (T/F) Prompt Template
 
-Purpose: Produce declarative statements that students judge as True or False. This file provides an authoring and grading template separate from multi-option MCQs.
+Purpose: Short, unambiguous declarative statements for binary judgment (True/False). Include a brief rationale when full credit requires it.
+
+## Contents
+
+- [Requirements](#requirements)
+- [Output Template](#output-template)
 
 ## Requirements
 
-- Coverage & Organization: Statements must be precise and unambiguous (avoid double negatives). Use the MECE principle when selecting statements across an exam bank to avoid overlapping claims.
-- Content Design: Target Remember/Understand/Apply Bloom levels. Prefer factual or definitional statements for lower levels and scenario-based judgement statements for higher levels.
-- Evaluation: Machine-gradable by option letter (A/True, B/False). If justification is required, specify whether it's optional or required for full credit.
-- Execution & Format: Markdown output. If a statement references external facts, include an APA citation. Include difficulty and Bloom tags.
+### 1. Coverage & Organization
 
-## Output template (Markdown — for LLM or exam-generator)
+- **Question Quantity & Distribution:** Generate 12–20 True/False statements per topic cluster. Difficulty distribution: Foundational (40%), Intermediate (40%), Advanced (20%).
+- **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational statements test factual recall; intermediate statements require understanding of principles and relationships; advanced statements involve applying concepts to judge scenario-based claims.
+- **Statement Design:** Create factual, unambiguous declarative statements. Use MECE principles to avoid overlapping or contradictory items within a bank.
+- **Precision:** Keep statements short (≤2 lines) and avoid double negatives, vague qualifiers (e.g., "often", "usually"), or ambiguous technical terms.
+- **Scope:** Cover key facts, definitions, principles, and simple scenario judgments. Mix foundational recall with conceptual understanding.
 
-Example output (Markdown):
+### 2. Content Design
+
+- **Target Level:** Remember/Understand/Apply (Bloom). Use factual statements for lower levels; use concise scenario-based judgments for higher levels (e.g., "Given X constraint, approach Y is optimal").
+- **Rationale:** Provide a 1–2 sentence rationale explaining why the statement is true or false. Include a one-sentence note on common misconceptions to aid feedback.
+- **Justification (Optional):** For higher-credit items, require a brief written justification (2–3 sentences) in addition to the T/F answer. State scoring split (e.g., 70% for correct letter + 30% for valid rationale).
+
+### 3. Evaluation & Grading
+
+- **Grading:** Machine-gradable by exact-match of answer letter (A/True or B/False). Normalize accepted inputs (e.g., accept "A", "True", "true", "T").
+- **Partial Credit:** If justification is required, award partial credit for correct answer with weak justification or incorrect answer with valid reasoning that identifies a key issue.
+- **Quality Check:** Ensure statements are defensible with authoritative sources; avoid subjective or opinion-based items.
+
+### 4. Execution & Format
+
+- **Format:** Markdown with clearly labeled statement, options (A/B), answer, and rationale. Use fenced blocks for code snippets if the statement references code behavior.
+- **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
+- **Citations:** Include APA 7 citations when statements rely on external standards, protocol specifications, regulatory requirements, or published research.
+
+## Output Template
 
 ```markdown
-Statement: <declarative statement to judge>
+Statement: <declarative statement>
 
 Options:
 - A. True
@@ -24,29 +48,9 @@ Answer: A  # or B
 
 Rationale:
 - Correct: <1–2 sentence explanation>
-- Common misconception: <why the opposite may look plausible>
+- Common misconception: <brief note>
 
-Difficulty: easy|medium|hard
-Bloom: Remember|Understand|Apply
+Difficulty: easy
+Bloom: Remember
 Citation: <APA if sourced>
 ```
-
-Template (to give to an LLM):
-"Create 10 True/False statements on [topic]. Requirements:
-- Provide a clear declarative statement per item.
-- Indicate the correct answer (True or False) and a 1–2 sentence rationale for correctness and one-sentence note on common misconception.
-- Tag each item with difficulty and Bloom level.
-
-Output format (Markdown): follow the Example output block above."
-
-Example:
-- Statement: "Proof of Stake requires validators to expend computational work to create blocks."
-- Options: A. True, B. False
-- Answer: B
-- Rationale: "False — Proof of Stake requires validators to lock tokens as stake; Proof of Work requires computational work."
-
-Grading notes:
-- Machine-gradable by exact answer letter.
-- If justification required, award partial credit for correct letter and additional credit for valid rationale (e.g., 70% + 30%).
-
-Use when: you need quick binary-check facts or to test conceptual clarity with low authoring overhead.

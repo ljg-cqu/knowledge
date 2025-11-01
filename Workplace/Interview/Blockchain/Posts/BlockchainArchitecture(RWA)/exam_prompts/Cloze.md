@@ -1,17 +1,44 @@
 # Cloze / Fill-in-the-Blank Prompt Template
 
-Purpose: Create cloze tests that assess recall and comprehension. Good for vocabulary, definitions, or equation completion.
+Purpose: Short fill-in-the-blank items to test precise recall (definitions, terms, short phrases, equations).
+
+## Contents
+
+- [Requirements](#requirements)
+- [Output Template](#output-template)
 
 ## Requirements
 
-- Coverage & Organization: Use MECE when selecting target terms/phrases; avoid overlapping blanks that cause ambiguous answers.
-- Content Design: Target recall/understand levels (Foundational/Intermediate). Provide canonical answers (with synonyms) and normalization rules. State partial-credit policy.
-- Evaluation: Provide an acceptance list per blank; list tolerances for numeric blanks and provide grading guidance for partial credit.
-- Execution & Format: Markdown output; include ALT text for any inline images. Provide citations when blanks rely on sourced definitions.
+### 1. Coverage & Organization
 
-## Output template (Markdown — for LLM or exam-generator)
+- **Question Quantity & Distribution:** Generate 10–15 cloze items per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
+- **Bloom Taxonomy:** Target Remember/Understand levels. Foundational items test direct recall of definitions; intermediate items require understanding of relationships between concepts; advanced items test comprehension of nuanced distinctions or context-dependent terminology.
+- **Term Selection:** Use MECE principles to choose target terms/phrases. Cover key vocabulary (technical terms, protocols, acronyms), formulas, and short conceptual phrases.
+- **Scope:** Keep each item narrowly scoped and unambiguous. Avoid overlapping blanks or ambiguous phrasing that could confuse candidates.
+- **Context:** Provide sufficient surrounding text to make the blank unambiguous; avoid overly generic sentences.
 
-Example output (Markdown):
+### 2. Content Design
+
+- **Target Level:** Remember/Understand (Bloom). Test factual recall, definition accuracy, and basic comprehension.
+- **Answer Format:** Provide canonical answers as arrays including accepted synonyms (e.g., ["scalability", "scale"]) and alternate spellings (e.g., "decentralization" vs "decentralisation").
+- **Normalization Rules:** Define explicit rules: case-insensitive matching, whitespace trimming, punctuation stripping. State rounding/formatting conventions for numeric answers.
+- **Partial Credit:** State per-blank scoring (e.g., 1 point per correct blank) and tolerance ranges for numeric values.
+
+### 3. Evaluation & Grading
+
+- **Acceptance Lists:** Provide a list of acceptable answers per blank; include common variations and synonyms.
+- **Tolerances:** For numeric blanks, specify acceptable ranges (e.g., ±2% or ±0.5 units).
+- **Grader Notes:** Document borderline cases and common near-miss answers; provide guidance on when to award partial credit.
+- **Distractor Notes:** Include a brief note on why common wrong answers are incorrect to aid feedback systems.
+
+### 4. Execution & Format
+
+- **Format:** Markdown. Use underscores (___) or brackets ([blank]) to indicate blanks clearly.
+- **Accessibility:** Provide ALT text for any inline images or diagrams used in cloze items.
+- **Tags:** Label each item with Difficulty and Bloom level.
+- **Citations:** Include APA 7 citations when definitions rely on external authoritative sources (standards, papers, official documentation).
+
+## Output Template
 
 ```markdown
 Text: The blockchain trilemma consists of ___, ___, and ___.
@@ -21,39 +48,8 @@ Answers:
 - Blank 2: security (accept: security)
 - Blank 3: decentralization (accept: decentralization, decentralised)
 
-Normalization: case-insensitive, trim whitespace
-Partial credit: per-blank or none
-Difficulty: easy|medium|hard
-Bloom: Remember|Understand
+Normalization: case-insensitive, trim whitespace, strip punctuation
+Partial credit: per-blank (e.g., 1 point per correct blank)
+Difficulty: easy
+Bloom: Remember
 ```
-
-Template (LLM):
-"Create a cloze item based on the following sentence or paragraph: `[text with blanks indicated as ___]`. Requirements:
-- Provide the canonical answer(s) for each blank as an array (accept synonyms).
-- Provide normalization rules (case-insensitive, strip punctuation, allow numeric equivalence where applicable).
-- Provide one distractor explanation per blank (why a common wrong answer is wrong).
-- Provide difficulty and Bloom level.
-
-Output format (Markdown):
-
-```markdown
-Text: The blockchain trilemma consists of ___, ___, and ___.
-
-Answers: ["scalability","security","decentralization"]
-
-Normalization: case-insensitive, trim whitespace
-
-Distractor notes: confusion between decentralization and distribution
-```
-"
-
-Example:
-- Text: "A smart contract is ___ that runs on a blockchain and executes ___ when conditions are met."
-- Answers: ["a program","actions"]
-
-Grading tips:
-- Use normalization and a small synonym list for each blank.
-- Consider partial credit: one correct blank out of two = 50%.
-- For numeric blanks provide tolerance (±%) or canonical rounding rules.
-
-Use when: assessing recall of specific facts or filling missing technical terms.

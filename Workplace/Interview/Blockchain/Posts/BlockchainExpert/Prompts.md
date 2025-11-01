@@ -11,7 +11,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
  - **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
 - **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
  - **Perspectives:** Engineering (software, front/back-end, infra), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), management (product, requirements, architecture, system), operations (testing, marketing)
-- **Difficulty:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic
+- **Difficulty & Bloom:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic. Target Bloom taxonomy levels: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced)
 
 ### 2. Content Design
 

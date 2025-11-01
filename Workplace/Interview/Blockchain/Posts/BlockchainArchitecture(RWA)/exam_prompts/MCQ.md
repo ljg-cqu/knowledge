@@ -1,18 +1,42 @@
 # Multiple-Choice (MCQ) Prompt Template
 
-Purpose: Generate single-best-answer multiple-choice questions (3+ options) with plausible distractors and a concise rationale for the correct option. For binary True/False items use `TrueFalse.md`.
+Purpose: Single-best-answer MCQs (4 options) with plausible distractors and concise rationales for graders.
+
+## Contents
+
+- [Requirements](#requirements)
+- [Output Template](#output-template)
 
 ## Requirements
 
-- Coverage & Organization: follow MECE principle for topic selection; ensure distractors cover common misconceptions and non-overlapping concepts.
-- Content Design: Target senior/intermediate candidates. Each item must include a clear stem, four options (A–D), exactly one correct answer, and a 1–2 sentence rationale for the correct option and brief notes on distractors.
-- Evaluation: Machine-gradable by option letter; include difficulty tag (easy/medium/hard) and Bloom level.
-- Execution & Format: Markdown output; include a compact Contents link if used within a larger exam. Provide authoritative references if a fact needs sourcing.
-- Assets & Citations: If code snippets or diagrams are used, include them as fenced blocks and cite sources (APA) where needed.
+### 1. Coverage & Organization
 
-## Output template (Markdown — for LLM or exam-generator)
+- **Question Quantity & Distribution:** Generate 15–25 MCQs per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
+- **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational MCQs test factual recall; intermediate MCQs require understanding relationships and selecting correct approaches; advanced MCQs demand application of concepts to novel scenarios or selection among nuanced alternatives.
+- **Topic Selection:** Use MECE principles to select topics. Ensure comprehensive coverage across technical areas (protocols, algorithms, patterns), theoretical foundations (principles, models), and practical concerns (regulations, use cases, trade-offs).
+- **Distractor Design:** Ensure distractors map to common misconceptions, near-misses, or outdated practices. Distractors must be mutually exclusive and plausible to candidates unfamiliar with the topic.
+- **Balance:** Mix factual recall, conceptual understanding, and application-level questions within a bank.
 
-Example output (Markdown):
+### 2. Content Design
+
+- **Target Level:** Remember/Understand/Apply (Bloom). Adjust difficulty by the depth of reasoning required to eliminate distractors.
+- **Stem:** Provide a clear, concise stem (1–2 sentences). Avoid double negatives, ambiguous phrasing, or "all of the above" / "none of the above" unless pedagogically justified.
+- **Options:** Four options labeled A–D. Exactly one correct answer. Distractors should be similar in length and structure to the correct answer to avoid cueing.
+- **Rationale:** Provide a 1–2 sentence rationale for the correct answer and brief notes (1 sentence each) explaining why distractors are incorrect (e.g., "B is incorrect because it confuses consensus finality with transaction confirmation").
+
+### 3. Evaluation & Grading
+
+- **Grading:** Machine-gradable by exact-match of the answer letter (A/B/C/D). If randomizing option order, preserve correct index in metadata.
+- **Partial Credit:** Not typically used for MCQs; consider offering hints or retries in formative assessments.
+- **Quality Check:** Validate that exactly one option is unambiguously correct and that all distractors are defensibly wrong.
+
+### 4. Execution & Format
+
+- **Format:** Markdown. Use fenced code blocks for code snippets or configuration examples in stems/options. Include mermaid diagrams or comparison tables when clarifying technical concepts.
+- **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
+- **Citations:** Include APA 7 citations when factual claims (e.g., protocol specs, performance benchmarks, regulatory requirements) require authoritative sourcing.
+
+## Output Template
 
 ```markdown
 Stem: <question text>
@@ -27,53 +51,11 @@ Answer: A
 
 Rationale:
 - Correct: <short explanation>
-- Distractors:
-  - B: <why wrong>
-  - C: <why wrong>
-  - D: <why wrong>
-
-Difficulty: easy|medium|hard
-Bloom: Remember|Apply|Analyze
-```
-
-Template (to give to an LLM):
-
-"Create a multiple-choice question on [topic]. Requirements:
-- Provide a clear question stem (1–2 sentences).
-- Provide 4 options labeled A–D. Exactly one option must be correct.
-- Make three distractors plausible and common misconceptions.
-- Mark the correct option and provide a 1–2 sentence rationale explaining why it's correct and why each distractor is wrong.
-- Indicate difficulty (easy/medium/hard) and Bloom level (Remember/Apply/Analyze/etc.).
-
-Output format (Markdown):
-
-```markdown
-Stem: ...
-
-Options:
-- A. ...
-- B. ...
-- C. ...
-- D. ...
-
-Answer: A
-
-Rationale: ...
+Rationale for distractors:
+- B: <why wrong>
+- C: <why wrong>
+- D: <why wrong>
 
 Difficulty: medium
 Bloom: Apply
 ```
-"
-
-Example:
-- Stem: "Which consensus mechanism requires validators to stake tokens to participate in block validation?"
-- Options: A) Proof of Work, B) Proof of Stake, C) Practical Byzantine Fault Tolerance, D) Proof of Capacity
-- Answer: B
-- Rationale: "Proof of Stake requires validators to lock up tokens as collateral; Proof of Work relies on computational work..."
-
-Grading/automation notes:
-- Machine-gradable: yes (exact-match of the correct option letter).
-- To randomize, shuffle options client-side but track the correct index.
-- For variants, ask the LLM to produce N unique items with non-overlapping stems.
-
-Use when: you need quick objective items that are easily auto-scored or used in LMSs.

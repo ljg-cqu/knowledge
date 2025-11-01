@@ -1,17 +1,45 @@
 # Debugging / Code-Reading Prompt Template
 
-Purpose: Supply buggy code plus failing test output and ask students to fix the bug and explain the root cause.
+Purpose: Provide a short buggy code snippet plus failing output; ask students to fix the bug, explain the root cause, and supply minimal passing tests.
+
+## Contents
+
+- [Requirements](#requirements)
+- [Output Template](#output-template)
 
 ## Requirements
 
-- Coverage & Organization: Provide minimal reproducible buggy code and a clear failing test or error output; avoid multi-bug puzzles when assessing a single concept.
-- Content Design: Target Analyze/Evaluate levels. Ask for corrected code, root-cause explanation (concise), and tests that now pass.
-- Evaluation: Score on correctness of fix, correctness of explanation, and test coverage. Allow partial credit for correct diagnosis even if fix is incomplete.
-- Execution & Format: Markdown with code fences for buggy code and failing output. Provide tester instructions and expected corrected behavior.
+### 1. Coverage & Organization
 
-## Output template (Markdown — for LLM or exam-generator)
+- **Question Quantity & Distribution:** Generate 5–8 debugging tasks per topic cluster. Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
+- **Bloom Taxonomy:** Target Analyze/Evaluate levels. Foundational tasks involve identifying obvious bugs with clear error messages; intermediate tasks require tracing logic flow and understanding API contracts; advanced tasks demand evaluating subtle concurrency issues or security vulnerabilities.
+- **Bug Scope:** Provide a single, realistic, focused bug in a 10–50 line snippet. Avoid multi-bug puzzles unless explicitly testing triage skills.
+- **Bug Types:** Cover common categories: off-by-one errors, type mismatches, incorrect API usage, concurrency issues, edge-case handling, logic errors, or security flaws (e.g., missing validation).
+- **Context:** Include minimal surrounding context (imports, data structures, function calls) to make the bug reproducible without extraneous code.
 
-Example output (Markdown):
+### 2. Content Design
+
+- **Target Level:** Analyze/Evaluate (Bloom). Test ability to read code, diagnose root causes, and propose correct fixes.
+- **Deliverables:** Require three outputs:
+  1. **Corrected code:** Fixed version with minimal changes (annotate changes with comments if helpful).
+  2. **Root-cause explanation:** 2–4 sentence explanation identifying the bug, why it occurs, and what principle/pattern was violated.
+  3. **Passing tests:** Minimal test cases that now pass (previously failed) to demonstrate the fix.
+- **Failing Output:** Provide realistic failing test output (stderr, assertion errors, unexpected behavior) to guide diagnosis.
+
+### 3. Evaluation & Grading
+
+- **Rubric:** Recommended scoring: Fix correctness (0–6 pts), Explanation quality (0–3 pts), Tests provided (0–1 pt). Adjust per difficulty.
+- **Partial Credit:** Award partial credit for correct diagnosis even if fix is incomplete, or correct fix with weak explanation.
+- **Grader Notes:** Document common incorrect approaches (e.g., treating symptom instead of root cause) and alternative valid fixes. List edge cases where fixes might fail.
+
+### 4. Execution & Format
+
+- **Format:** Markdown with fenced code blocks for buggy code, failing output, and corrected code. Include instructions to run tests and verify the fix.
+- **Clarity Aids:** When helpful, include a small mermaid diagram or table showing expected vs actual behavior, or a flowchart highlighting where logic diverges.
+- **Tags:** Label each task with Difficulty, Bloom level, and language.
+- **Citations:** Include APA 7 citations only if the bug references external APIs, standards, or protocol-specific behavior.
+
+## Output Template
 
 ```markdown
 Buggy file: buggy.py
@@ -24,32 +52,11 @@ Tasks:
 2. Explain root cause (2–4 sentences)
 3. Provide tests that now pass
 
-Solution notes:
-<corrected code and explanation>
+Solution notes (for graders):
+- Corrected code: (fenced code block)
+- Root cause explanation: 2–4 sentences
+- Tests: list of tests that now pass and their expected output
 
-Difficulty: medium|hard
+Difficulty: medium
 Bloom: Analyze|Evaluate
 ```
-
-Template (LLM):
-"Create a debugging exercise. Requirements:
-- Provide a short code snippet (10–50 lines) with one or two realistic bugs.
-- Provide the failing test or runtime error message.
-- Tasks: 1) Fix the bug(s) and provide corrected code. 2) Explain root cause in 2–4 sentences. 3) Provide minimal tests that now pass.
-- Provide the corrected solution and brief explanation for graders.
-
-Output format (files):
-- `buggy.py` (or equivalent)
-- `tests.py` with failing test and then passing tests
-- `solution.md` with corrected code and explanation
-
-Example (brief):
-- Buggy code: off-by-one in block height calculation causes index error.
-- Failing output: "IndexError: list index out of range"
-- Expected student output: fix loop boundary, add defensive checks, and explain root cause.
-
-Grading notes:
-- Score for correct fix (0–6), explanation quality (0–3), and tests (0–1).
-- Allow partial credit if the fix handles most but not all edge cases.
-
-Use when: assessing debugging skills, code reading, and explanation.

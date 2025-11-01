@@ -1,17 +1,43 @@
 # Short Answer / Numeric Calculation Prompt Template
 
-Purpose: Short constructed-response items that require a concise answer, often numeric. Ideal for calculations, unit conversions, and short justification.
+Purpose: Short constructed-response items requiring concise numeric or short-text answers (calculations, conversions, brief justification).
+
+## Contents
+
+- [Requirements](#requirements)
+- [Output Template](#output-template)
 
 ## Requirements
 
-- Coverage & Organization: Problems should be self-contained and avoid ambiguous assumptions; specify units and conventions (binary vs decimal MB, etc.).
-- Content Design: Target Apply/Analyze Bloom levels. Provide exact answer, units, tolerance, and a worked solution (2–4 steps). State partial-credit rules (method vs arithmetic).
-- Evaluation: Machine-gradable numeric checks with tolerance; include human-check notes when justifications are required.
-- Execution & Format: Markdown output with fenced calculation steps and final answer clearly labeled. Cite formulas or reference tables if used.
+### 1. Coverage & Organization
 
-## Output template (Markdown — for LLM or exam-generator)
+- **Question Quantity & Distribution:** Generate 8–12 short-answer/calculation problems per topic cluster. Difficulty distribution: Foundational (25%), Intermediate (50%), Advanced (25%).
+- **Bloom Taxonomy:** Target Apply/Analyze levels. Foundational problems test direct formula application; intermediate problems require multi-step calculations and unit conversions; advanced problems demand analysis of results, selection of appropriate methods, or justification of assumptions.
+- **Problem Scope:** Self-contained problems with all necessary data. Use MECE to avoid overlapping question types across a bank.
+- **Units & Conventions:** Explicitly state units and conventions (e.g., MB = 10^6 bytes vs 2^20 bytes; percentages vs decimals; rounding rules). Provide alternate acceptable answers when ambiguity exists.
+- **Problem Types:** Cover calculations (e.g., throughput, latency, gas costs), unit conversions, formula applications, and short justifications (2–3 sentences).
 
-Example output (Markdown):
+### 2. Content Design
+
+- **Target Level:** Apply/Analyze (Bloom). Test ability to apply formulas, perform multi-step calculations, interpret results, and justify reasoning.
+- **Answer Format:** Provide exact expected answer, units, and acceptable tolerance (e.g., ±2% for percentages, ±0.5 for small integers).
+- **Worked Solution:** Supply a 2–4 step worked solution showing method and intermediate results. Use clear mathematical notation or pseudocode where appropriate.
+- **Partial Credit:** Define rules for method vs arithmetic credit (e.g., correct method with arithmetic error = 70%; correct setup but incomplete = 50%).
+
+### 3. Evaluation & Grading
+
+- **Normalization:** Define numeric normalization rules: strip commas, accept scientific notation, case-insensitive for units (e.g., "KB" vs "kb").
+- **Tolerance:** Specify acceptable ranges per question type. Use percentage tolerance for large numbers, absolute tolerance for small values.
+- **Human Check:** Include grader notes for questions requiring short justification or interpretation (e.g., "Explain why X is more efficient than Y"). Provide model answers and acceptable variations.
+
+### 4. Execution & Format
+
+- **Format:** Markdown with fenced calculation steps. Clearly label the final answer line (e.g., "**Answer:** 42.5 ms").
+- **Clarity Aids:** Use tables to organize data (e.g., inputs, parameters), and include formulas in LaTeX/KaTeX notation when helpful (e.g., `$T = N / R$`).
+- **Tags:** Label each item with Difficulty, Bloom level, and question type (calculation/conversion/justification).
+- **Citations:** Include APA 7 citations when formulas reference standards, protocol specifications, or published benchmarks.
+
+## Output Template
 
 ```markdown
 Problem: <problem statement with numeric data>
@@ -27,38 +53,6 @@ Worked solution:
 - Step 2: ...
 
 Partial credit rules: <description>
-Difficulty: easy|medium|hard
+Difficulty: medium
 Bloom: Apply|Analyze
 ```
-
-Template (LLM):
-"Create a short-answer numeric problem on [topic]. Requirements:
-- Provide the problem statement with all numerical data.
-- Provide the exact answer, units, and acceptable tolerance (e.g., ±2% or ±0.5 units).
-- Provide a step-by-step worked solution (2–4 steps).
-- Provide grading notes for partial credit (e.g., correct method but arithmetic error = 75%).
-
-Output format (Markdown):
-
-```markdown
-Problem: Given a block size of 2 MB and an average transaction size of 250 bytes, how many transactions fit in a block?
-
-Answer: 8,192 (or note conventions: 8,000 depending on decimal MB assumption)
-
-Units: transactions
-
-Worked solution: 2 MB = 2*1024*1024 = 2,097,152 bytes; 2,097,152 / 250 ≈ 8,388 → depending on MB definition use 2,000,000/250=8,000.
-
-Partial credit rules: Correct method but different byte/MB assumptions: 75%
-```
-"
-
-Example:
-- Problem: "If a node has 8 GB RAM and the blockchain index uses 1.2 GB, what percentage of RAM is used?"
-- Answer: 15% (approx)
-
-Grading/automation tips:
-- For numeric answers use normalization and tolerance checks.
-- Store worked solutions alongside answers to enable automated feedback.
-
-Use when: evaluating calculation skills and application of formulas.
