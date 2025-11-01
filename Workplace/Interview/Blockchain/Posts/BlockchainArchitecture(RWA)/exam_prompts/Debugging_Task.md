@@ -12,6 +12,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 ### 1. Coverage & Organization
 
 - **Question Quantity & Distribution:** Generate 5–8 debugging tasks per topic cluster. Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
+- **Numbering:** Number all tasks sequentially (Task 1, Task 2, etc.) for easy tracking and reference. Include task numbers in Contents links.
 - **Bloom Taxonomy:** Target Analyze/Evaluate levels. Foundational tasks involve identifying obvious bugs with clear error messages; intermediate tasks require tracing logic flow and understanding API contracts; advanced tasks demand evaluating subtle concurrency issues or security vulnerabilities.
 - **Bug Scope:** Provide a single, realistic, focused bug in a 10–50 line snippet. Avoid multi-bug puzzles unless explicitly testing triage skills.
 - **Bug Types:** Cover common categories: off-by-one errors, type mismatches, incorrect API usage, concurrency issues, edge-case handling, logic errors, or security flaws (e.g., missing validation).
@@ -74,7 +75,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 
 ---
 
-## Task X: [Title]
+## Task 1: [Title]
 
 **Language:** python  
 **Difficulty:** medium  

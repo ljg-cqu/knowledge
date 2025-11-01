@@ -12,6 +12,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 ### 1. Coverage & Organization
 
 - **Question Quantity & Distribution:** Generate 12–20 True/False statements per topic cluster. Difficulty distribution: Foundational (40%), Intermediate (40%), Advanced (20%).
+- **Numbering:** Number all statements sequentially (S1, S2, etc.) for easy tracking and reference. Include statement numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational statements test factual recall; intermediate statements require understanding of principles and relationships; advanced statements involve applying concepts to judge scenario-based claims.
 - **Statement Design:** Create factual, unambiguous declarative statements. Use MECE principles to avoid overlapping or contradictory items within a bank.
 - **Precision:** Keep statements short (≤2 lines) and avoid double negatives, vague qualifiers (e.g., "often", "usually"), or ambiguous technical terms.
@@ -71,7 +72,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 ## Statements 1–20
 
-### SX: [Short title]
+### S1: BFT malicious node tolerance
 
 **Statement:** Byzantine Fault Tolerance consensus algorithms can tolerate up to 50% malicious nodes.
 

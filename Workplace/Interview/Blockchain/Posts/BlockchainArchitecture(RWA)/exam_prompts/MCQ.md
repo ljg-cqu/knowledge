@@ -12,6 +12,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 ### 1. Coverage & Organization
 
 - **Question Quantity & Distribution:** Generate 15–25 MCQs per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
+- **Numbering:** Number all questions sequentially (Q1, Q2, etc.) for easy tracking and reference. Include question numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational MCQs test factual recall; intermediate MCQs require understanding relationships and selecting correct approaches; advanced MCQs demand application of concepts to novel scenarios or selection among nuanced alternatives.
 - **Topic Selection:** Use MECE principles to select topics. Ensure comprehensive coverage across technical areas (protocols, algorithms, patterns), theoretical foundations (principles, models), and practical concerns (regulations, use cases, trade-offs).
 - **Distractor Design:** Ensure distractors map to common misconceptions, near-misses, or outdated practices. Distractors must be mutually exclusive and plausible to candidates unfamiliar with the topic.
@@ -72,7 +73,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 ## Questions 1–25
 
-### QX: [Question stem]
+### Q1: Which consensus mechanism prioritizes finality over throughput in permissioned blockchains?
 
 **Stem:** Which consensus mechanism prioritizes finality over throughput in permissioned blockchains?
 

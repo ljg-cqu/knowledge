@@ -12,6 +12,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 ### 1. Coverage & Organization
 
 - **Question Quantity & Distribution:** Generate 5–8 coding tasks per topic cluster. Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
+- **Numbering:** Number all tasks sequentially (Task 1, Task 2, etc.) for easy tracking and reference. Include task numbers in Contents links.
 - **Bloom Taxonomy:** Target Apply/Create levels. Foundational tasks test basic implementation of known algorithms; intermediate tasks require applying patterns to solve multi-step problems; advanced tasks demand creating novel solutions or optimizing for complex constraints.
 - **Task Scope:** Keep tasks narrowly scoped and self-contained. Use MECE when building a question bank to avoid overlapping concepts.
 - **Specification:** Provide complete problem description including input/output formats, function signature, data structures, allowed libraries, and all edge cases.
@@ -76,7 +77,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 ---
 
-## Task X: [Title]
+## Task 1: [Title]
 
 **Language:** python  
 **Difficulty:** medium  
