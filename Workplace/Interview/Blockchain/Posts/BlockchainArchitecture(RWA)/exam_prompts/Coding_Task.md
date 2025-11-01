@@ -30,7 +30,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 ### 3. Evaluation & Grading
 
-- **Scoring Breakdown:** Recommended: Correctness (60–80%), Edge-case handling (10–25%), Code style/tests (5–10%). Adjust per difficulty.
+- **Scoring Breakdown:** Recommended: Correctness (70%), Edge-case handling (20%), Code style/tests (10%). Adjust proportions per difficulty while maintaining 100% total.
 - **Grader Notes:** Document common implementation mistakes, performance pitfalls, and partial-credit guidance (e.g., correct logic but inefficient → 70%).
 - **Auto-Grading:** Use an isolated test runner (e.g., pytest, unittest, jest). Public tests provide feedback; hidden tests ensure robustness without over-fitting.
 
@@ -40,7 +40,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Security:** Avoid shipping secrets (private keys, API tokens). Use ephemeral/generated keys or mock credentials where blockchain/crypto interactions are needed.
 - **Clarity Aids:** Include a small flowchart (mermaid) showing input→processing→output flow when helpful. Use tables to summarize test cases or constraints.
 - **Tags:** Label each task with Difficulty, Bloom level, and language.
-- **Citations:** Include APA 7 citations when tasks reference external protocols, algorithms, or standards.
+- **Citations:** Include APA 7 citations for tasks referencing external protocols, algorithms, or standards.
 
 ## Output Template
 
@@ -80,8 +80,8 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 ## Task 1: [Title]
 
 **Language:** python  
-**Difficulty:** medium  
-**Bloom:** Apply|Create
+**Difficulty:** Intermediate  
+**Bloom:** Apply/Create
 
 ### Problem Description
 

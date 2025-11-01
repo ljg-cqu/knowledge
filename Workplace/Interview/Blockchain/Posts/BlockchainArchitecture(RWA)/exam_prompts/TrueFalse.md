@@ -34,7 +34,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 - **Format:** Markdown with clearly labeled statement, options (A/B), answer, and rationale. Use fenced blocks for code snippets if the statement references code behavior.
 - **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
-- **Citations:** Include APA 7 citations when statements rely on external standards, protocol specifications, regulatory requirements, or published research.
+- **Citations:** Include APA 7 citations for statements from external standards, protocol specifications, regulatory requirements, or published research.
 
 ## Output Template
 
@@ -86,7 +86,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Correct:** BFT algorithms (e.g., PBFT) can tolerate up to (n-1)/3 malicious nodes, not 50%. For example, in a 4-node network, only 1 Byzantine node can be tolerated.
 - **Common misconception:** Confusion with crash fault tolerance (e.g., Raft), which tolerates up to 50% crash failures.
 
-**Difficulty:** intermediate  
+**Difficulty:** Intermediate  
 **Bloom:** Understand  
 **Citation:** Castro, M., & Liskov, B. (1999). Practical Byzantine fault tolerance. *OSDI*, 99, 173–186.
 ```

@@ -14,7 +14,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - **Question Quantity & Distribution:** Generate 15–25 MCQs per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
 - **Numbering:** Number all questions sequentially (Q1, Q2, etc.) for easy tracking and reference. Include question numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational MCQs test factual recall; intermediate MCQs require understanding relationships and selecting correct approaches; advanced MCQs demand application of concepts to novel scenarios or selection among nuanced alternatives.
-- **Topic Selection:** Use MECE principles to select topics. Ensure comprehensive coverage across technical areas (protocols, algorithms, patterns), theoretical foundations (principles, models), and practical concerns (regulations, use cases, trade-offs).
+- **Topic Selection:** Use MECE principles to select topics. Ensure comprehensive coverage across technical areas (protocols, algorithms, patterns), theoretical foundations (principles, models), and practical concerns (regulations, use cases, trade-offs). For blockchain architecture (RWA), emphasize consensus mechanisms, asset tokenization standards, custody models, scalability solutions, and regulatory frameworks.
 - **Distractor Design:** Ensure distractors map to common misconceptions, near-misses, or outdated practices. Distractors must be mutually exclusive and plausible to candidates unfamiliar with the topic.
 - **Balance:** Mix factual recall, conceptual understanding, and application-level questions within a bank.
 
@@ -35,7 +35,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 - **Format:** Markdown. Use fenced code blocks for code snippets or configuration examples in stems/options. Include mermaid diagrams or comparison tables when clarifying technical concepts.
 - **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
-- **Citations:** Include APA 7 citations when factual claims (e.g., protocol specs, performance benchmarks, regulatory requirements) require authoritative sourcing.
+- **Citations:** Include APA 7 citations for factual claims (protocol specs, performance benchmarks, regulatory requirements) requiring authoritative sources.
 
 ## Output Template
 
@@ -93,6 +93,6 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - C: Proof of Work is used in permissionless blockchains and prioritizes decentralization over finality.
 - D: Proof of Stake is primarily for permissionless chains; finality mechanisms vary by implementation.
 
-**Difficulty:** intermediate  
+**Difficulty:** Intermediate  
 **Bloom:** Apply
 ```

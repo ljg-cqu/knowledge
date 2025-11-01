@@ -37,7 +37,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Format:** Markdown. Use underscores (___) or brackets ([blank]) to indicate blanks clearly.
 - **Accessibility:** Provide ALT text for any inline images or diagrams used in cloze items.
 - **Tags:** Label each item with Difficulty and Bloom level.
-- **Citations:** Include APA 7 citations when definitions rely on external authoritative sources (standards, papers, official documentation).
+- **Citations:** Include APA 7 citations for definitions from authoritative sources (standards, papers, official documentation).
 
 ## Output Template
 
@@ -86,6 +86,6 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 **Normalization:** case-insensitive, trim whitespace, strip punctuation  
 **Partial credit:** 1 point per correct blank  
-**Difficulty:** easy  
+**Difficulty:** Foundational  
 **Bloom:** Remember
 ```

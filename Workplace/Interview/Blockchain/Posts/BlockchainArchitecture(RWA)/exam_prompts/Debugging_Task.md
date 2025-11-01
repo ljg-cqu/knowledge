@@ -38,7 +38,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Format:** Markdown with fenced code blocks for buggy code, failing output, and corrected code. Include instructions to run tests and verify the fix.
 - **Clarity Aids:** When helpful, include a small mermaid diagram or table showing expected vs actual behavior, or a flowchart highlighting where logic diverges.
 - **Tags:** Label each task with Difficulty, Bloom level, and language.
-- **Citations:** Include APA 7 citations only if the bug references external APIs, standards, or protocol-specific behavior.
+- **Citations:** Include APA 7 citations for bugs referencing external APIs, standards, or protocol-specific behavior.
 
 ## Output Template
 
@@ -78,24 +78,24 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 ## Task 1: [Title]
 
 **Language:** python  
-**Difficulty:** medium  
-**Bloom:** Analyze|Evaluate
+**Difficulty:** Intermediate  
+**Bloom:** Analyze/Evaluate
 
 ### Buggy Code
 
 \`\`\`python
-# buggy.py
-def process_transactions(txs):
-    total = 0
-    for tx in txs:
-        total += tx['amount']
-    return total / len(txs)  # Bug: division by zero if txs is empty
+# buggy.py - Smart contract interaction for RWA token transfer
+def process_rwa_transfers(transfers):
+    total_value = 0
+    for transfer in transfers:
+        total_value += transfer['asset_value']
+    return total_value / len(transfers)  # Bug: division by zero if transfers is empty
 \`\`\`
 
 ### Failing Test Output
 
 ```
-AssertionError: Expected 0, got ZeroDivisionError
+AssertionError: Expected 0.0 for empty transfer list, got ZeroDivisionError
 ```
 
 ### Tasks
@@ -109,20 +109,20 @@ AssertionError: Expected 0, got ZeroDivisionError
 **Corrected code:**
 
 \`\`\`python
-def process_transactions(txs):
-    if not txs:
-        return 0
-    total = 0
-    for tx in txs:
-        total += tx['amount']
-    return total / len(txs)
+def process_rwa_transfers(transfers):
+    if not transfers:
+        return 0.0
+    total_value = 0
+    for transfer in transfers:
+        total_value += transfer['asset_value']
+    return total_value / len(transfers)
 \`\`\`
 
-**Root cause explanation:** The function fails when the input list is empty because it attempts division by zero. The fix adds a guard clause to return 0 for empty inputs.
+**Root cause explanation:** The function fails when the input list is empty because it attempts division by zero. The fix adds a guard clause to return 0.0 for empty inputs, ensuring safe calculation of average asset value across RWA token transfers.
 
 **Tests:**
-- `process_transactions([])` -> `0` (now passes)
-- `process_transactions([{"amount": 100}])` -> `100` (now passes)
+- `process_rwa_transfers([])` -> `0.0` (now passes)
+- `process_rwa_transfers([{"asset_value": 100000}])` -> `100000.0` (now passes)
 
 **Grader Notes:**
 - Partial credit: Correct diagnosis but incomplete fix → 60%

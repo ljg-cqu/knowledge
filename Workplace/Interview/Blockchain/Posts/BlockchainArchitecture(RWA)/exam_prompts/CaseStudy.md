@@ -16,7 +16,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Bloom Taxonomy:** Target Analyze/Evaluate levels primarily. Foundational scenarios test analysis of straightforward issues; intermediate scenarios require comparing alternatives and discussing trade-offs; advanced scenarios demand evaluation of complex system interactions and synthesis of multi-faceted recommendations.
 - **Scenario Design:** Provide 200–400 words with explicit constraints, assumed facts, and self-contained context. Ensure scenario reflects real-world complexity (technical debt, resource limits, stakeholder conflicts).
 - **Task Structure:** 3–4 MECE tasks covering: issue identification, solution proposals with trade-offs, remediation plans, stakeholder communication, and decision recommendations.
-- **Context:** Include relevant historical/regulatory context, key metrics, and system interactions. Surface technical (protocols, patterns, performance) and business (cost, impact, risk) dimensions.
+- **Context:** Include relevant historical/regulatory context, key metrics, and system interactions. Surface technical (protocols, patterns, performance) and business (cost, impact, risk) dimensions. For RWA contexts, incorporate tokenization standards, custody requirements, regulatory compliance, or asset lifecycle considerations.
 
 ### 2. Content Design
 
@@ -75,8 +75,9 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 ## Scenario 1: [Title]
 
-**Difficulty:** [Foundational/Intermediate/Advanced]  
-**Bloom:** Analyze|Evaluate
+**Language:** python  
+**Difficulty:** Intermediate  
+**Bloom:** Apply/Create
 
 ### Scenario Context
 
