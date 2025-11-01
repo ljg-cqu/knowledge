@@ -1,6 +1,6 @@
 # Multiple-Choice (MCQ) Prompt Template
 
-Purpose: Generate single-best-answer multiple-choice questions with plausible distractors and a concise rationale for the correct option.
+Purpose: Generate single-best-answer multiple-choice questions (3+ options) with plausible distractors and a concise rationale for the correct option. For binary True/False items use `TrueFalse.md`.
 
 ## Requirements
 

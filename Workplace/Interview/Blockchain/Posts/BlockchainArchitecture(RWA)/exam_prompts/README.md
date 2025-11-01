@@ -15,7 +15,8 @@ Files kept in this folder:
 - `CaseStudy.md` — scenario-based multi-part
 - `Coding_Task.md` — coding prompt (machine-gradable)
 - `Debugging_Task.md` — debugging prompt
-- `Data_Interpretation.md` — data/graph/table questions
+ - `Data_Interpretation.md` — data/graph/table questions
+ - `TrueFalse.md` — true/false statements (binary items)
 
 Note: other prompt files (essays, image-based, adaptive UI, oral viva, peer assessment, practical labs, project portfolios, audio/video, accessibility, integrity/proctoring, multimodal simulation) were removed to keep the folder minimal per project preference. If you want any of them restored, I can revert the deletions or recreate simplified versions.
 
