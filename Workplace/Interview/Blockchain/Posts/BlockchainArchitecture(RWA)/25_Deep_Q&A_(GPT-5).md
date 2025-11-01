@@ -2,6 +2,44 @@
 
 Aligned to `Job_Description.md` and generated per `Prompts_(Deep).md` (date: 2025-11-01).
 
+## Contents
+
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary-meets-requirements-1--2)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use This in Interviews](#how-to-use-this-in-interviews)
+- [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
+- [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Alliance chain architecture & governance (Q1–Q5)](#alliance-chain-architecture--governance-questions-1-5)
+  - [Q1: Choose between FISCO BCOS vs Fabric](#q1-how-would-you-choose-between-fisco-bcos-and-hyperledger-fabric-for-a-consortium-chain-serving-vehicle-rwa-and-mobility-saas)
+  - [Q2: Permissioning and identity](#q2-how-do-you-design-permissioning-and-identity-in-a-consortium-mobility-network-with-regulators-and-rental-firms)
+  - [Q3: Consensus/performance tuning](#q3-which-consensus-and-performance-tuning-strategies-would-you-apply-to-meet-sub-500-ms-p95-latency-and-1000-tps)
+  - [Q4: Contract architecture (lease/commission)](#q4-what-smart-contract-architecture-would-you-use-for-digital-lease-agreements-and-commission-split-in-an-rwa-context)
+  - [Q5: Off-chain storage under GDPR/PIPL](#q5-how-do-you-handle-off-chain-storage-ipfsarweave-for-contracts-and-evidence-under-gdprpipl-constraints)
+- [Consensus, contracts, security & performance (Q6–Q12)](#consensus-contracts-security--performance-questions-6-12)
+  - [Q6: Tokenization models for vehicle RWA](#q6-what-tokenization-models-suit-vehicle-rwa-title-tokens-revenue-share-tokens-or-structured-notes)
+  - [Q7: Oracle integration design](#q7-how-would-you-design-oracle-integration-for-traffic-violations-insurance-status-and-market-prices)
+  - [Q8: IoT TBox integrity & anchoring](#q8-how-do-you-ensure-iot-tbox-telemetry-integrity-and-selective-on-chain-anchoring)
+  - [Q9: Reliable/idempotent gateway](#q9-how-would-you-design-the-gateway-service-in-gojavanode-to-be-reliable-and-idempotent-under-retries)
+  - [Q10: Securing/auditing Solidity](#q10-how-will-you-secure-and-audit-solidity-contracts-for-revenue-splits-and-rwa-compliance)
+  - [Q11: Privacy patterns (channels/ZK/MPC)](#q11-which-privacy-patterns-fitfabric-channelsprivate-data-evm-zk-proofs-or-off-chain-mpc)
+  - [Q12: Cross-chain liquidity strategy](#q12-what-cross-chain-strategy-enables-liquidity-while-keeping-core-ops-on-a-consortium-chain)
+- [Data, integration, ops & economics (Q13–Q19)](#data-integration-ops--economics-questions-13-19)
+  - [Q13: Incentive design without gaming](#q13-how-would-you-design-token-incentives-for-rental-companies-managers-and-drivers-without-creating-perverse-incentives)
+  - [Q14: Upgrade/rollback strategy](#q14-what-is-your-upgraderollback-strategy-for-contracts-and-network-configuration)
+  - [Q15: Data access patterns (CouchDB vs events)](#q15-how-will-you-design-data-access-patternsfabrics-couchdb-vs-evm-event-indexing)
+  - [Q16: HA/DR and observability](#q16-how-do-you-ensure-hadr-and-observability-for-consortium-nodes-and-orderers)
+  - [Q17: Wallets & key management UX](#q17-what-wallet-and-key-management-approach-would-you-use-to-reduce-user-friction-custodialsocial-recovery)
+  - [Q18: Legal/regulatory alignment](#q18-how-do-you-align-with-legalregulatory-regimes-for-rwa-kycaml-securities-data-privacy)
+  - [Q19: Benchmarking and SLOs](#q19-how-will-you-benchmark-and-set-slos-for-the-blockchain-layer-and-gateway)
+- [Strategy, security & cross-functional (Q20–Q25)](#strategy-security--cross-functional-questions-20-25)
+  - [Q20: TCO comparison (consortium vs L2)](#q20-what-is-the-tco-comparison-between-a-consortium-chain-and-using-a-public-l2-for-core-operations)
+  - [Q21: Integrating SAAS, AI, and blockchain](#q21-how-do-you-integrate-saas-ai-models-and-blockchain-without-leaking-pii)
+  - [Q22: Consortium governance & sanctions](#q22-how-do-you-govern-consortium-membership-onboardingoffboarding-and-sanctions-slashing)
+  - [Q23: Fraud detection (on/off-chain)](#q23-how-would-you-detect-and-mitigate-fraud-using-on-chainoff-chain-analytics-eg-odometer-rollback-collusion)
+  - [Q24: Threat model and mitigations](#q24-what-is-your-threat-model-mev-replay-oracle-manipulation-collusion-and-mitigations)
+  - [Q25: Program leadership over 12 months](#q25-how-would-you-lead-cross-functional-delivery-for-the-consortium-rwa-program-over-12-months)
+
 ## Executive Summary
 
 - Purpose: Provide 25 expert-level, MECE Q&As to assess and design a consortium blockchain for mobility RWA, spanning architecture, security, performance, privacy, IoT, tokenization, compliance, cross-chain, SRE/ops, and program leadership.

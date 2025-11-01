@@ -36,15 +36,89 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 - **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation
 - **Format:** Markdown with proper headings and code blocks
-- **Clarification:** Include at least one mermaid diagram and one table per Q&A for clarity; also use code snippets, tables, analogies, comparisons, formulas, and diverse mermaid diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.)
+- **Clarification:** Include at least one mermaid diagram and one table per Q&A for clarity; also use code snippets, tables, analogies, comparisons, formulas, and diverse mermaid diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.). Mermaid portability: prefer avoiding edge labels and quote node labels containing special characters (parentheses, slashes).
 - **Research:** Latest info from authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources
 - **Citations:** Include APA 7th edition references for all sourced material, aligning with the output template section.
 - **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; evaluate from multiple angles per the template's **Multi-Angle Evaluation** checklist (pros, cons, risks, benefits, alternatives, stakeholder emotional/psychological impact, market sentiment); verify accuracy, completeness, relevance, and MECE compliance
 - **Holistic Reasoning:** Harmonize technical depth with philosophical rigor and macro-level insight; trace implications across disciplines while maintaining MECE clarity.
+- **Navigation:** Add a compact "Contents" section near the top. Link to major sections
+   (Executive Summary; Coverage & Difficulty; Glossary; How to Use; Key Decision Criteria
+   checklist and matrix; each topic area header) and to every question (Q1–Q25) using
+   GitHub-compatible anchors (lowercase, hyphens; punctuation removed). Optional: add
+   a small "Back to top" link at the end of each question.
+
+- **Preface Sections (required at top of the document):**
+	 - Contents (compact ToC with anchor links to major sections and Q1–Q25)
+	 - Executive Summary (3–6 bullets on goals, platform choices, performance/security targets, ops posture)
+	 - Coverage & Difficulty Summary:
+		 - Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and question indices)
+		 - Topic Cluster Mapping Table (Cluster → scope → question indices)
+	 - Glossary & Acronym Index (short definitions of key terms)
+	 - How to Use This in Interviews (3–5 bullets with guidance and prompts)
+	 - Key Decision Criteria Checklist (privacy, performance SLOs, security, interop/liquidity, ops/HA-DR, governance/upgrades, tokenomics/RWA)
+	 - Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred platform/approach with notes/signals
 
 ## Output Template
 
 ```markdown
+## Contents
+
+- [Executive Summary](#executive-summary)
+- [Coverage & Difficulty Summary](#coverage--difficulty-summary)
+- [Glossary & Acronym Index](#glossary--acronym-index)
+- [How to Use This in Interviews](#how-to-use-this-in-interviews)
+- [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
+- [Key Decision Criteria Matrix](#key-decision-criteria-matrix-quick-picks)
+- [Topic Area] (Questions X–Y)
+- [QX: Question text](#qx-question-text)
+
+## Executive Summary
+
+- [3–6 bullets on goals, platform choices, performance/security targets, ops posture]
+
+## Coverage & Difficulty Summary
+
+- Difficulty distribution and indices:
+
+| Difficulty | Count | Questions |
+|---|---:|---|
+| Foundational |  |  |
+| Intermediate |  |  |
+| Advanced |  |  |
+
+- Topic cluster mapping:
+
+| Topic Cluster | Scope | Questions |
+|---|---|---|
+| Alliance chain architecture & governance |  |  |
+| Smart contracts, security & privacy |  |  |
+| Data, integration, ops & economics |  |  |
+| Strategy & cross-functional leadership |  |  |
+
+## Glossary & Acronym Index
+
+- MSP: Membership Service Provider; org identity/policy in Fabric
+- CA: Certificate Authority; X.509 issuance and revocation
+- DID/VC: Decentralized Identifiers / Verifiable Credentials
+- PBFT/Raft: Byzantine vs crash fault tolerant consensus families
+
+## How to Use This in Interviews
+
+- Pick 5–7 questions aligned to candidate background; focus on trade-offs and decision criteria
+- Use diagrams/tables as prompts; ask for impact of changing consensus/privacy
+- Probe governance and rollback (bridge exploit, oracle outage, DR failover)
+
+## Key Decision Criteria Checklist
+
+- Privacy & compliance, Performance SLOs, Security posture, Interop & liquidity, Ops & HA/DR, Governance & upgrades, Tokenomics & RWA
+
+## Key Decision Criteria Matrix (Quick Picks)
+
+| Criteria | Prefer Hyperledger Fabric | Prefer FISCO BCOS (EVM) | Notes/Signals |
+|---|---|---|---|
+| Privacy & compliance | Channels + PDC, endorsement policies | Group/permissioning | Need bilateral privacy/regulator views → Fabric |
+| Interop & liquidity |  | ABI/SDK reuse, L2/public bridge ease | Future cross-chain/token listings → EVM |
+
 ## [Topic Area] (Questions X-Y)
 
 ### QX: [Question text]
