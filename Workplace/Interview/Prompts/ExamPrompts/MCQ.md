@@ -11,7 +11,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 15–25 MCQs per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
+- **Question Quantity & Distribution:** Generate 15–25 MCQs per topic cluster (aim for 20+ when comprehensive coverage is needed; use 15–18 for focused or narrow topic clusters). Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
 - **Numbering:** Number all questions sequentially (Q1, Q2, etc.) for easy tracking and reference. Include question numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational MCQs test factual recall; intermediate MCQs require understanding relationships and selecting correct approaches; advanced MCQs demand application of concepts to novel scenarios or selection among nuanced alternatives.
 - **Topic Selection & Elements:** Use MECE principles to select topics. Ensure comprehensive coverage across: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases). For blockchain architecture (RWA), emphasize consensus mechanisms, asset tokenization standards, custody models, scalability solutions, and regulatory frameworks.

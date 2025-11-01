@@ -11,7 +11,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 12–20 True/False statements per topic cluster. Difficulty distribution: Foundational (40%), Intermediate (40%), Advanced (20%).
+- **Question Quantity & Distribution:** Generate 12–20 True/False statements per topic cluster (aim for 16+ when comprehensive coverage is needed; use 12–14 for focused or narrow topic clusters). Difficulty distribution: Foundational (40%), Intermediate (40%), Advanced (20%).
 - **Numbering:** Number all statements sequentially (S1, S2, etc.) for easy tracking and reference. Include statement numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational statements test factual recall; intermediate statements require understanding of principles and relationships; advanced statements involve applying concepts to judge scenario-based claims.
 - **Statement Design & Elements:** Create factual, unambiguous declarative statements. Use MECE principles to avoid overlapping or contradictory items within a bank. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, facts, use cases).

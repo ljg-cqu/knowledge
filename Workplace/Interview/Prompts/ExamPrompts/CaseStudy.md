@@ -11,7 +11,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 3–5 case study scenarios per topic cluster. Difficulty distribution: Foundational (20%), Intermediate (40%), Advanced (40%).
+- **Question Quantity & Distribution:** Generate 3–5 case study scenarios per topic cluster (aim for 4–5 when comprehensive coverage is needed; use 3 for focused or narrow topic clusters). Difficulty distribution: Foundational (20%), Intermediate (40%), Advanced (40%).
 - **Numbering:** Number all scenarios sequentially (Scenario 1, Scenario 2, etc.) for easy tracking and reference. Include scenario numbers in Contents links.
 - **Bloom Taxonomy:** Target Analyze/Evaluate levels primarily. Foundational scenarios test analysis of straightforward issues; intermediate scenarios require comparing alternatives and discussing trade-offs; advanced scenarios demand evaluation of complex system interactions and synthesis of multi-faceted recommendations.
 - **Scenario Design & Elements:** Provide 200–400 words with explicit constraints, assumed facts, and self-contained context. Ensure scenario reflects real-world complexity (technical debt, resource limits, stakeholder conflicts). Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases).

@@ -11,7 +11,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 10–15 cloze items per topic cluster. Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
+- **Question Quantity & Distribution:** Generate 10–15 cloze items per topic cluster (aim for 12+ when comprehensive coverage is needed; use 10–11 for focused or narrow topic clusters). Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
 - **Numbering:** Number all items sequentially (Item 1, Item 2, etc.) for easy tracking and reference. Include item numbers in Contents links.
 - **Bloom Taxonomy:** Target Remember/Understand levels. Foundational items test direct recall of definitions; intermediate items require understanding of relationships between concepts; advanced items test comprehension of nuanced distinctions or context-dependent terminology.
 - **Term Selection & Elements:** Use MECE principles to choose target terms/phrases. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, key terms, acronyms, market dynamics, permission/consensus governance, risks, costs, use cases).

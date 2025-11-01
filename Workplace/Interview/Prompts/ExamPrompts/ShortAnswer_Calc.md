@@ -11,7 +11,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 8–12 short-answer/calculation problems per topic cluster. Difficulty distribution: Foundational (25%), Intermediate (50%), Advanced (25%).
+- **Question Quantity & Distribution:** Generate 8–12 short-answer/calculation problems per topic cluster (aim for 10+ when comprehensive coverage is needed; use 8–9 for focused or narrow topic clusters). Difficulty distribution: Foundational (25%), Intermediate (50%), Advanced (25%).
 - **Numbering:** Number all problems sequentially (P1, P2, etc.) for easy tracking and reference. Include problem numbers in Contents links.
 - **Bloom Taxonomy:** Target Apply/Analyze levels. Foundational problems test direct formula application; intermediate problems require multi-step calculations and unit conversions; advanced problems demand analysis of results, selection of appropriate methods, or justification of assumptions.
 - **Problem Scope & Elements:** Self-contained problems with all necessary data. Use MECE to avoid overlapping question types across a bank. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases).

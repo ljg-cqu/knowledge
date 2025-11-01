@@ -11,7 +11,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 ### 1. Coverage & Organization
 
-- **Question Quantity & Distribution:** Generate 5–8 coding tasks per topic cluster. Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
+- **Question Quantity & Distribution:** Generate 5–8 coding tasks per topic cluster (aim for 7+ when comprehensive coverage is needed; use 5–6 for focused or narrow topic clusters). Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
 - **Numbering:** Number all tasks sequentially (Task 1, Task 2, etc.) for easy tracking and reference. Include task numbers in Contents links.
 - **Bloom Taxonomy:** Target Apply/Create levels. Foundational tasks test basic implementation of known algorithms; intermediate tasks require applying patterns to solve multi-step problems; advanced tasks demand creating novel solutions or optimizing for complex constraints.
 - **Task Scope & Elements:** Keep tasks narrowly scoped and self-contained. Use MECE when building a question bank to avoid overlapping concepts. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, risks, costs, use cases, edge-case handling).
