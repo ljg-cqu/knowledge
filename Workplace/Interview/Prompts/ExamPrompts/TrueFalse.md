@@ -51,7 +51,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Employ clarity aids (mermaid diagrams, tables, analogies) as needed; maintain mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain terminology within rationales when necessary.
 - Ground statements in real-world facts and scenarios.
-- Include a compact Contents section linking to major headings, including the global reference sections, and all statements (S1–Sn) using GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each statement beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each statement with Difficulty and Bloom level.
 - Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
@@ -90,10 +90,13 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Statements 1–20](#statements-120)
-  - [S1: Statement topic](#s1-statement-topic)
-  - [S2: Statement topic](#s2-statement-topic)
-  - ... (link to each statement)
+- [Statement Bank](#statement-bank-statements-1-20)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [S1: Statement topic](#s1-statement-topic)
+    - [S2: Statement topic](#s2-statement-topic)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [S3: Statement topic](#s3-statement-topic)
+    - [S4: Statement topic](#s4-statement-topic)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -139,9 +142,11 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 ---
 
-## Statements 1–20
+## Statement Bank (Statements 1–20)
 
-### S1: BFT malicious node tolerance
+### Topic 1: [Topic title | scope]
+
+#### S1: BFT malicious node tolerance
 
 **Language:** N/A (or specify if code-based, e.g., python, javascript, solidity)  
 **Difficulty:** Intermediate  

@@ -49,7 +49,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Cite all sourced material in APA 7th edition and align references with the output template.
 - Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
 - Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
-- Provide a compact Contents section linking to prefatory material, the global reference sections, and every question (Q1–Q25). Add optional "Back to top" anchors after each Q&A if desired.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to prefatory material and the global reference sections. Add optional "Back to top" anchors after each Q&A if desired.
 
 ## Output Template
 
@@ -63,7 +63,12 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
 - [Topic Areas](#topic-areas-questions-x-y)
-  - [QX: Question text](#qx-question-text)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Q1: Question text](#q1-question-text)
+    - [Q2: Question text](#q2-question-text)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Q3: Question text](#q3-question-text)
+    - [Q4: Question text](#q4-question-text)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -127,15 +132,17 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 ## Topic Areas (Questions X–Y)
 
-### QX: [Question text]
+### Topic 1: [Topic title | scope]
+
+#### QX: [Question text]
 
 **Difficulty:** [Foundational/Intermediate/Advanced]
 **Question Type:** [Theoretical/Practical/Scenario]
 
-#### Answer Narrative (150-300 words)
+##### Answer Narrative (150-300 words)
 [Comprehensive response with technical depth and practical illustration]
 
-#### Supporting Artifacts
+##### Supporting Artifacts
 - At least one Mermaid diagram (e.g., flowchart, architecture)
 - At least one table (e.g., comparison, data summary)
 - [Additional code snippets, formulas, analogies, comparisons as needed]
@@ -144,14 +151,14 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 **Failure Path Insight:** [Describe the failure/unhappy path surfaced and the mitigation or contingency actions to highlight.]
 
-#### Comparisons
+##### Comparisons
 - [Relevant comparisons to aid understanding, e.g., vs. other technologies, historical vs. current, etc.]
 
 - Technical Techniques, Protocols, Frameworks & Design Patterns: [...]
 - Theoretical Principles & Models: [...]
 - Practical Regulations, Permission Models & Decentralization, Upgrade Governance, Risks & Use Cases: [...]
 
-#### Technical Evaluation (Performance | Security | Scalability | Maintainability)
+##### Technical Evaluation (Performance | Security | Scalability | Maintainability)
 - Performance (Throughput & Latency): [...]
 - Security: [...]
 - Scalability: [...]
@@ -161,13 +168,13 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Distributed Consistency Guarantees: [...]
 - Hardware Requirements & Optimizations: [... including energy and resource consumption analysis]
 
-#### Business Evaluation (Cost | Efficiency | Impact | Market Fit)
+##### Business Evaluation (Cost | Efficiency | Impact | Market Fit)
 - Cost: [...]
 - Efficiency: [...]
 - Impact: [...]
 - Market Fit: [...]
 
-#### Multi-Angle Evaluation (Pros | Cons | Risks | Benefits | Stakeholder Impact | Market Sentiment)
+##### Multi-Angle Evaluation (Pros | Cons | Risks | Benefits | Stakeholder Impact | Market Sentiment)
 - Pros: [...]
 - Cons: [...]
 - Risks: [... include upgrade/migration failure modes and rollback contingencies]
@@ -176,27 +183,27 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
 
-#### Collaboration & Communication Plan
+##### Collaboration & Communication Plan
 - Stakeholders & Roles: [...]
 - Communication Cadence & Channels: [...]
 - Cross-Functional Alignment Tactics: [...]
 
-#### Organizational & Strategic Fit
+##### Organizational & Strategic Fit
 - Business Model Impact: [...]
 - Institutional Capabilities & Gaps: [...]
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-#### Trade-offs & Decision Guidance
+##### Trade-offs & Decision Guidance
 - [Critical trade-off analysis and recommended decision criteria with explicit permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, and upgrade/rollback guidance]
 
-#### Context & Trend Signals
+##### Context & Trend Signals
 - Historical Evolution: [...]
 - Regulatory Landscape: [...]
 - Future Trends: [...]
 - Key Events & Statistics: [...]
 
-#### Perspective-Based Insights
+##### Perspective-Based Insights
 - Engineering (front-end/back-end/full-stack): [...]
 - Architecture & Infrastructure: [...]
 - Database & Data Engineering: [...]
@@ -217,7 +224,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Military & Security Strategy: [...]
 - Historical Context & Precedents: [...]
 
-#### Market & Macro Systems Analysis
+##### Market & Macro Systems Analysis
 - Systemic Forces & Feedback Loops: [...]
 - Regulatory & Policy Trajectories: [...]
 - Market Structure & Liquidity Dynamics: [...]
@@ -225,36 +232,37 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Societal Adoption & Behavioral Shifts: [...]
 - Competitive & Ecosystem Positioning: [...]
 - Macroeconomic & Industry Economic Models: [...]
-#### Inference Summary
+
+##### Inference Summary
 - Adoption Signals: [...]
 - Interoperability Impacts: [...]
 - Roadmap Implications: [... include upgrade sequencing considerations]
 - Operational Risks: [... highlight upgrade readiness, testing coverage, and rollback triggers]
 
-#### Terminology & Key Concepts
+##### Terminology & Key Concepts
 
 **[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
-#### Assumptions & Preconditions
+##### Assumptions & Preconditions
 
 - [Explicit assumption + rationale]
 
-#### Validation & Evidence Checks
+##### Validation & Evidence Checks
 
 - [Data point, benchmark, or experiment backing the answer]
 
-#### Counterexamples & Edge Cases
+##### Counterexamples & Edge Cases
 
 - [Scenario that challenges the main answer + mitigation]
 
-#### Alternatives Considered
+##### Alternatives Considered
 
 - [Option compared, trade-off summary, selection rationale]
 
-#### Actionable Conclusions & Next Steps
+##### Actionable Conclusions & Next Steps
 - [Decision, prioritized action, owner/timeline cues]
 
-#### Open Questions & Research Agenda
+##### Open Questions & Research Agenda
 - Remaining Challenges: [...]
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]

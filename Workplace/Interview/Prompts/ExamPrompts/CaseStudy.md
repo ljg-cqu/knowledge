@@ -67,7 +67,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Define terminology with analogies/formulas/examples when useful.
 - Integrate historical, regulatory, and technical context plus key events/statistics.
 - Base scenarios on real-world applications spanning theoretical, practical, and scenario contexts.
-- Include a compact Contents section linking to major sections and every scenario (Scenario 1–Scenario n) with GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each scenario beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each scenario with Difficulty and Bloom level.
 - Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
@@ -107,10 +107,13 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Scenarios](#scenarios)
-  - [Scenario 1: Title](#scenario-1-title)
-  - [Scenario 2: Title](#scenario-2-title)
-  - ... (link to each scenario)
+- [Scenario Bank](#scenario-bank-scenarios-1-20)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Scenario 1: Title](#scenario-1-title)
+    - [Scenario 2: Title](#scenario-2-title)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Scenario 3: Title](#scenario-3-title)
+    - [Scenario 4: Title](#scenario-4-title)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -156,23 +159,27 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 ---
 
-## Scenario 1: [Title]
+## Scenario Bank (Scenarios 1–20)
+
+### Topic 1: [Topic title | scope]
+
+#### Scenario 1: [Title]
 
 **Language:** python  
 **Difficulty:** Intermediate  
 **Bloom:** Analyze/Evaluate
 
-### Scenario Context
+##### Scenario Context
 
 <200–400 word scenario text with constraints, metrics, stakeholder details>
 
-### Tasks
+##### Tasks
 
 1. Identify top 3 issues
 2. Propose 2 solutions and discuss trade-offs
 3. Draft a recommendation memo (≤300 words)
 
-### Expected Key Points
+##### Expected Key Points
 
 - **Task 1:** [List expected issues and evidence to cite]
 - **Task 2:** [List expected solutions, trade-offs, and decision criteria]

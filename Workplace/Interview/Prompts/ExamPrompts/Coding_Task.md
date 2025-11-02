@@ -59,7 +59,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Provide clarifying aids such as flowcharts (mermaid), tables summarizing test cases/constraints, analogies, comparisons, formulas. Maintain mermaid portability (no edge labels; quote node labels containing special characters like parentheses/slashes).
 - Explain terminology and key concepts within problem descriptions and comments.
 - Root tasks in real-world scenarios with relevant technical context and best practices.
-- Provide a compact Contents section linking to major sections, including the global reference sections, and all tasks (Task 1–Task n) using GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations.
 - Tag each task with Difficulty, Bloom level, language.
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
@@ -98,10 +98,13 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Tasks](#tasks)
-  - [Task 1: Title](#task-1-title)
-  - [Task 2: Title](#task-2-title)
-  - ... (link to each task)
+- [Task Bank](#task-bank-tasks-1-n)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Task 1: Title](#task-1-title)
+    - [Task 2: Title](#task-2-title)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Task 3: Title](#task-3-title)
+    - [Task 4: Title](#task-4-title)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -153,9 +156,11 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 - [List standards, white/yellow papers, audits, books/manuals, and peer-reviewed studies underpinning algorithms or frameworks across the task set. Summarize core findings and practical implications.]
 
-## Tasks
+## Task Bank (Tasks 1–n)
 
-### Task 1: [Title]
+### Topic 1: [Topic title | scope]
+
+#### Task 1: [Title]
 
 **Language:** python  
 **Difficulty:** Intermediate  

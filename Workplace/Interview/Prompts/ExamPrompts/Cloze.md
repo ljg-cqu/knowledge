@@ -5,6 +5,13 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 ## Contents
 
 - [Requirements](#requirements)
+  - [Item Scope & Distribution](#item-scope--distribution)
+  - [Term Selection & Context](#term-selection--context)
+  - [Analytical Coverage & Perspectives](#analytical-coverage--perspectives)
+  - [Diagnostic Focus](#diagnostic-focus)
+  - [Content Design](#content-design)
+  - [Evaluation & Grading](#evaluation--grading)
+  - [Execution & Format](#execution--format)
 - [Output Template](#output-template)
 
 ## Requirements
@@ -64,7 +71,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Use clarifying aids—mermaid diagrams, tables, code snippets, analogies—while ensuring mermaid portability (no edge labels, quote node labels containing special characters like parentheses or slashes).
 - Use precise technical language and explain key terminology as needed.
 - Integrate real-world contexts so items reflect practical applications.
-- Include a compact Contents section linking to major headings, including the global reference sections, and all items (Item 1–Item n) with GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each item beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each item with Difficulty and Bloom level.
 - Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
@@ -104,10 +111,13 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Items 1–15](#items-115)
-  - [Item 1: Topic](#item-1-topic)
-  - [Item 2: Topic](#item-2-topic)
-  - ... (link to each item)
+- [Item Bank](#item-bank-items-1-15)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Item 1: Topic](#item-1-topic)
+    - [Item 2: Topic](#item-2-topic)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Item 3: Topic](#item-3-topic)
+    - [Item 4: Topic](#item-4-topic)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -159,9 +169,11 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 - [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed research supporting terminology usage across items. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
-## Items 1–15
+## Item Bank (Items 1–15)
 
-### Item 1
+### Topic 1: [Topic title | scope]
+
+#### Item 1: Topic
 
 **Language:** N/A (or specify if code-based, e.g., python, javascript, solidity)  
 **Difficulty:** Foundational  

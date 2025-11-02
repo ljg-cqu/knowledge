@@ -47,7 +47,7 @@ Generate 50 interview Q&A pairs based on the provided job description.
 - Use clarifying assets (code snippets, tables, analogies, formulas, mermaid diagrams—architecture, class, C4, ERD, block, sequence, state, flowchart, data flow, Gantt, Kanban, user journey, analytical charts). Include complexity class, compute/memory bounds, and energy/resource estimates when relevant.
 - Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references.
 - Document consulted codebases/tools and justify their reliability.
-- Provide a compact Contents block linking to major sections, including the global reference sections, for quick scanning.
+- Provide a comprehensive Contents block at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Cite sources in APA 7th edition and ensure alignment with the output template.
 - Apply creative then critical thinking, evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment), and verify accuracy, completeness, relevance, and MECE compliance.
 
@@ -56,6 +56,12 @@ Generate 50 interview Q&A pairs based on the provided job description.
 ```markdown
 ## Contents
 - [Topic Areas](#topic-areas-questions-x-y)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Q1: Question text](#q1-question-text)
+    - [Q2: Question text](#q2-question-text)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Q3: Question text](#q3-question-text)
+    - [Q4: Question text](#q4-question-text)
 - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
@@ -63,7 +69,9 @@ Generate 50 interview Q&A pairs based on the provided job description.
 
 ## Topic Areas (Questions X-Y)
 
-### QX: [Question text]
+### Topic 1: [Topic title | scope]
+
+#### QX: [Question text]
 
 **Difficulty:** [Foundational/Intermediate/Advanced]
 

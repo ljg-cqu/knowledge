@@ -48,7 +48,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Present questions in Markdown with clear headings; use fenced code blocks for stems/options when including code or configuration snippets.
 - Employ clarifying aids (mermaid diagrams, tables, code snippets, analogies, comparisons, formulas) with mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terminology where needed and integrate historical, regulatory, technical, and statistical context to ground questions in real-world applications.
-- Provide a compact Contents section linking to major headings, including the global reference sections, and each question (Q1–Qn) using GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each item with Difficulty and Bloom level.
 - Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance.
@@ -87,10 +87,13 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Questions 1–25](#questions-125)
-  - [Q1: Question text](#q1-question-text)
-  - [Q2: Question text](#q2-question-text)
-  - ... (link to each question)
+- [Question Bank](#question-bank-questions-1-25)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [Q1: Question text](#q1-question-text)
+    - [Q2: Question text](#q2-question-text)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [Q3: Question text](#q3-question-text)
+    - [Q4: Question text](#q4-question-text)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -144,9 +147,11 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 - [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning question content. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
-## Questions 1–25
+## Question Bank (Questions 1–25)
 
-### Q1: Which consensus mechanism prioritizes finality over throughput in permissioned blockchains?
+### Topic 1: [Topic title | coverage notes]
+
+#### Q1: Which consensus mechanism prioritizes finality over throughput in permissioned blockchains?
 
 **Language:** N/A (or specify if code-based, e.g., python, javascript, solidity)  
 **Difficulty:** Intermediate  
@@ -176,13 +181,13 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 **Comparison Notes:** [Summarize the comparison/contrast takeaways and decision criteria highlighted by this question.]
 
-### Supporting Artifacts (when helpful for complex MCQs)
+##### Supporting Artifacts (when helpful for complex MCQs)
 
 - Mermaid diagrams (e.g., concept relationships, architecture comparison)
 - Tables (e.g., feature comparison, performance benchmarks)
 - Code snippets, analogies, formulas to clarify technical concepts
 
-### Technical Evaluation (Performance | Security | Scalability | Maintainability)
+##### Technical Evaluation (Performance | Security | Scalability | Maintainability)
 - Performance (Throughput & Latency): [...]
 - Security: [...]
 - Scalability: [...]
@@ -192,13 +197,13 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Distributed Consistency Guarantees: [...]
 - Hardware Requirements & Optimizations: [... including energy and resource consumption analysis]
 
-### Business Evaluation (Cost | Efficiency | Impact | Market Fit)
+##### Business Evaluation (Cost | Efficiency | Impact | Market Fit)
 - Cost: [...]
 - Efficiency: [...]
 - Impact: [...]
 - Market Fit: [...]
 
-### Multi-Angle Evaluation (Pros | Cons | Risks | Benefits | Stakeholder Impact | Market Sentiment)
+##### Multi-Angle Evaluation (Pros | Cons | Risks | Benefits | Stakeholder Impact | Market Sentiment)
 - Pros: [...]
 - Cons: [...]
 - Risks: [... include upgrade/migration failure modes and rollback contingencies]
@@ -207,36 +212,36 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
 
-### Context & Background (when relevant)
+##### Context & Background (when relevant)
 
 - Historical Evolution: [...]
 - Regulatory Landscape: [...]
 - Technical Context: [...]
 - Key Events & Statistics: [...]
 
-### Evaluation Dimensions Tested (for graders)
+##### Evaluation Dimensions Tested (for graders)
 
 - Technical: [Performance, security, scalability, complexity aspects tested]
 - Business: [Cost, efficiency, impact, market fit aspects tested]
 - Trade-offs: [Key trade-offs examined in question]
 
-### Assumptions & Preconditions (question setup)
+##### Assumptions & Preconditions (question setup)
 
 - [Explicit assumption + rationale]
 
-### Validation & Evidence Checks (expected reasoning)
+##### Validation & Evidence Checks (expected reasoning)
 
 - [Data point, benchmark, or experiment backing the correct answer]
 
-### Counterexamples & Edge Cases (alternative scenarios)
+##### Counterexamples & Edge Cases (alternative scenarios)
 
 - [Scenario that challenges the main answer + mitigation]
 
-### Alternatives Considered (distractor analysis)
+##### Alternatives Considered (distractor analysis)
 
 - [Why plausible alternatives were rejected; trade-off summary]
 
-### Trade-offs & Decision Guidance (when relevant)
+##### Trade-offs & Decision Guidance (when relevant)
 
 - [Critical trade-off analysis tested in the question; decision criteria with explicit permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, and upgrade/rollback guidance]
 

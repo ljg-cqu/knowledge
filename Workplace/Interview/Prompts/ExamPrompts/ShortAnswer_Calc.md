@@ -58,7 +58,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Use tables to organize inputs/parameters and LaTeX/KaTeX formulas when helpful (e.g., `$T = N / R$`).
 - Employ clarifying aids (mermaid diagrams, code snippets, analogies, comparisons) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terms/units as needed; ground problems in real-world scenarios.
-- Provide a compact Contents section linking to major headings, including the global reference sections, and all problems (P1–Pn) with GitHub-compatible anchors.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each problem beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
@@ -97,10 +97,13 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
-- [Problems 1–12](#problems-112)
-  - [P1: Problem title](#p1-problem-title)
-  - [P2: Problem title](#p2-problem-title)
-  - ... (link to each problem)
+- [Problem Bank](#problem-bank-problems-1-12)
+  - [Topic 1: Topic title](#topic-1-topic-title)
+    - [P1: Problem title](#p1-problem-title)
+    - [P2: Problem title](#p2-problem-title)
+  - [Topic 2: Topic title](#topic-2-topic-title)
+    - [P3: Problem title](#p3-problem-title)
+    - [P4: Problem title](#p4-problem-title)
 - [Codebase & Library References](#codebase--library-references)
 - [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
@@ -152,9 +155,11 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 - [List standards, papers, documentation, audits, and reports underpinning formulas or benchmarks across problems. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
-## Problems 1–12
+## Problem Bank (Problems 1–12)
 
-### P1: Calculate blockchain throughput
+### Topic 1: [Topic title | scope]
+
+#### P1: Calculate blockchain throughput
 
 **Language:** N/A (calculation)  
 **Difficulty:** Foundational  
