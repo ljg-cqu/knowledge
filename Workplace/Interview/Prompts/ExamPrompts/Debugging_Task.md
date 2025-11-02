@@ -21,7 +21,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Authoritative Literature:** Base realistic bugs on documented anti-patterns from white/yellow papers, security audits, standards, or API documentation.
 - **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions in the expected solution and grader notes.
 - **Validation & Evidence Checks:** Provide test cases demonstrating the bug and validating the fix.
-- **Counterexamples & Edge Cases:** Include scenarios where naive fixes might fail or where alternative fix approaches have trade-offs.
+- **Counterexamples & Edge Cases:** Include scenarios where naive fixes might fail or where alternative fix approaches have trade-offs, emphasizing failure/unhappy paths and recovery expectations.
 - **Governance & Trust Dimensions:** Include bugs related to permission boundaries, trust model violations, privacy leaks, design-pattern mismatches, system error-tolerance failures, or reliability/HA issues when applicable.
 - **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
 - **Philosophical & Macro Disciplines:** For advanced bugs, integrate broader considerations from philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as relevant to bug context.
@@ -49,6 +49,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Partial Credit:** Award partial credit for correct diagnosis even if fix is incomplete, or correct fix with weak explanation.
 - **Grader Notes:** Document common incorrect approaches (e.g., treating symptom instead of root cause) and alternative valid fixes. List edge cases where fixes might fail.
 - **Misconception Focus:** Explain the misconception this bug surfaces and the insight graders should reinforce.
+- **Failure Path Insight:** Describe the failure/unhappy path the bug reveals and the mitigation or regression testing guidance interviewers should emphasize.
 
 ### 4. Execution & Format
 

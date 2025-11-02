@@ -18,7 +18,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - **Distractor Design:** Ensure distractors map to common misconceptions, near-misses, or outdated practices. Distractors must be mutually exclusive and plausible to candidates unfamiliar with the topic.
 - **Balance:** Mix factual recall, conceptual understanding, and application-level questions within a bank.
 - **Validation & Evidence Checks:** Provide clear evidence backing correct answers from authoritative sources.
-- **Counterexamples & Edge Cases:** Include scenarios that challenge straightforward interpretations.
+- **Counterexamples & Edge Cases:** Include scenarios that challenge straightforward interpretations and highlight failure/unhappy paths with rollback or mitigation expectations.
 - **Codebases & Libraries:** When testing knowledge of specific frameworks/tools, ensure questions reflect current authoritative repositories, SDKs, tooling suites, language support, and maturity levels.
 - **Inference Lists:** For advanced MCQs, test understanding of adoption signals, interoperability impacts, roadmap implications, and operational risks.
 - **Authoritative Literature:** Base questions on white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
@@ -155,6 +155,8 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - D: Proof of Stake is primarily for permissionless chains; finality mechanisms vary by implementation.
 
 **Misconception Focus:** [State the misconception this question addresses and the key corrective feedback for interviewers.]
+
+**Failure Path Insight:** [Describe the failure or unhappy path this scenario surfaces and the mitigation/testing guidance to emphasize.]
 
 ### Supporting Artifacts (when helpful for complex MCQs)
 

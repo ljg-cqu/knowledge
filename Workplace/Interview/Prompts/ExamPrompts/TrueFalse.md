@@ -17,7 +17,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Statement Design & Elements:** Create factual, unambiguous declarative statements. Use MECE principles to avoid overlapping or contradictory items within a bank. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, facts, use cases).
 - **Precision:** Keep statements short (≤2 lines) and avoid double negatives, vague qualifiers (e.g., "often", "usually"), or ambiguous technical terms.
 - **Validation & Evidence Checks:** Provide authoritative sources and evidence backing each statement's truth or falsity.
-- **Counterexamples & Edge Cases:** Include scenarios where statements might seem different or require clarification.
+- **Counterexamples & Edge Cases:** Include scenarios where statements might seem different or require clarification, highlighting failure/unhappy paths and expected mitigations.
 - **Scope:** Cover key facts, definitions, principles, and simple scenario judgments. Mix foundational recall with conceptual understanding.
 - **Context:** Include relevant historical context, regulatory/legal landscape, technical background, and statistical data in rationales.
 - **Codebases & Libraries:** When statements involve specific frameworks/tools, ensure accuracy reflects current authoritative repositories, SDKs, and official documentation.
@@ -146,6 +146,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Common misconception:** Confusion with crash fault tolerance (e.g., Raft), which tolerates up to 50% crash failures.
 
 **Misconception Focus:** [State the misconception this statement targets and the corrective insight to emphasize during review.]
+
+**Failure Path Insight:** [Describe the failure or unhappy path this statement is designed to probe and the mitigation guidance to reinforce.]
 
 **Citation:** Castro, M., & Liskov, B. (1999). Practical Byzantine fault tolerance. *OSDI*, 99, 173–186.
 

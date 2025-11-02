@@ -30,6 +30,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Counterexamples & Edge Cases:** Test understanding of edge cases and scenarios that challenge main solutions.
 - **Alternatives Considered:** Require candidates to consider and compare alternative approaches.
 - **Misconception Targeting:** Identify the prevalent misconception or oversimplified heuristic each scenario should surface and document the corrective narrative that interviewers will reinforce in the output template.
+- **Failure Path Coverage:** Highlight failure/unhappy path trajectories (e.g., rollback missteps, degraded performance, stakeholder conflicts) and specify expected mitigation or contingency planning notes to capture in the output template.
 
 ### 2. Content Design
 
@@ -167,6 +168,10 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 ### Misconception Focus
 
 - [Describe the misconception this scenario reveals and the guidance for steering candidates toward the accurate model.]
+
+### Failure Path Insight
+
+- [Summarize the failure or unhappy path the scenario is designed to surface and the mitigation/contingency expectations.]
 
 ### Supporting Artifacts (for scenario context clarity)
 

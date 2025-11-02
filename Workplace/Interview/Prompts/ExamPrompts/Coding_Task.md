@@ -19,7 +19,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Constraints:** State explicit constraints: time limits (e.g., 1s per test), memory limits (e.g., 256MB), allowed standard libraries, and prohibited approaches (if any).
 - **Complexity:** Specify expected algorithm complexity (time/space) when relevant to the learning objective.
 - **Validation & Evidence Checks:** Provide test cases and benchmarks that support correct implementation.
-- **Counterexamples & Edge Cases:** Test handling of edge cases through hidden tests (empty inputs, large inputs, boundary values).
+- **Counterexamples & Edge Cases:** Test handling of edge cases through hidden tests (empty inputs, large inputs, boundary values) and ensure failure/unhappy paths trigger rollback or mitigation expectations.
 - **Misconception Targeting:** For each task, note the common misconception or flawed implementation strategy the test suite is designed to surface, and capture the corrective takeaway that must appear in the output template.
 - **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites when tasks involve specific frameworks or protocols; capture language support, licensing, maturity, integration hooks.
 - **Authoritative Literature:** Base tasks on algorithms/protocols from white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
@@ -52,6 +52,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Document common implementation mistakes, performance pitfalls, and partial-credit guidance (e.g., correct logic but inefficient → 70%).
 - Highlight tests that reveal misunderstanding of key concepts.
 - **Misconception Focus:** [Summarize the misconception this task addresses and the key message to reinforce with candidates.]
+- **Failure Path Insight:** [Explain the failure or unhappy path the tests are designed to expose and the mitigation or hardening steps interviewers should stress.]
 
 ### Auto-Grading
 

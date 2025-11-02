@@ -17,7 +17,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Term Selection & Elements:** Use MECE principles to choose target terms/phrases. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, key terms, acronyms, market dynamics, permission/consensus governance, risks, costs, use cases).
 - **Scope:** Keep each item narrowly scoped and unambiguous. Avoid overlapping blanks or ambiguous phrasing that could confuse candidates.
 - **Validation & Evidence Checks:** Provide authoritative sources confirming term definitions and usage.
-- **Counterexamples & Edge Cases:** Include related terms often confused with target terms, with clear distinctions.
+- **Counterexamples & Edge Cases:** Include related terms often confused with target terms, with clear distinctions, and call out failure/unhappy path interpretations that require correction.
 - **Misconception Targeting:** Document the near-miss or misconception each blank could trigger and specify the corrective note that will appear in the output template for interviewer guidance.
 - **Context:** Provide sufficient surrounding text to make the blank unambiguous; include relevant historical evolution, legal/regulatory landscape, future trends, key events, and statistical data.
 - **Codebases & Libraries:** When testing library/framework terminology, ensure terms reflect current authoritative repositories, SDKs, and tooling suites.
@@ -144,6 +144,8 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 **Partial credit:** 1 point per correct blank
 
 **Misconception Focus:** [Highlight the confusion this item is designed to surface and the clarification to reinforce.]
+
+**Failure Path Insight:** [Describe the failure scenario or incorrect application this item is meant to surface and the mitigation guidance.]
 
 ### Supporting Context Artifacts (when helpful)
 

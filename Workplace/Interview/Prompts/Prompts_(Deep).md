@@ -32,6 +32,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - **Questions:** Mix theoretical, practical, and scenario-based on real-world applications
 - **Answers:** 150-300 words with technical details, technologies, and practical examples; explain key concepts/terminologies clearly using analogies, formulas, etc. as needed
 - **Misconception Targeting:** Explicitly state the misconception, bias, or oversimplified heuristic each Q&A is designed to surface, and capture the corrective insight that must appear in the output template for interviewer debriefs.
+- **Failure Path Coverage:** Call out the critical failure/unhappy path scenario (e.g., rollback gaps, degraded resilience, stakeholder conflicts) each Q&A should address and record the mitigation guidance for the output template.
 
 ### 3. Execution
 
@@ -136,6 +137,8 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - [Additional code snippets, formulas, analogies, comparisons as needed]
 
 **Misconception Focus:** [Summarize the misconception this question targets and the corrective guidance interviewers should reinforce.]
+
+**Failure Path Insight:** [Describe the failure/unhappy path surfaced and the mitigation or contingency actions to highlight.]
 
 #### Comparisons
 - [Relevant comparisons to aid understanding, e.g., vs. other technologies, historical vs. current, etc.]

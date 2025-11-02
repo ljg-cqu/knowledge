@@ -18,7 +18,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - **Units & Conventions:** Explicitly state units and conventions (e.g., MB = 10^6 bytes vs 2^20 bytes; percentages vs decimals; rounding rules). Provide alternate acceptable answers when ambiguity exists.
 - **Problem Types:** Cover calculations (e.g., throughput, latency, gas costs, tokenization ratios, collateralization rates, consensus performance, resource consumption), unit conversions, formula applications, and short justifications (2–3 sentences). For RWA contexts, include asset valuation, transaction fee modeling, or compliance threshold calculations.
 - **Validation & Evidence Checks:** Provide authoritative sources and benchmarks supporting formulas and calculation methods.
-- **Counterexamples & Edge Cases:** Include calculations that test boundary conditions and sensitivity to assumptions.
+- **Counterexamples & Edge Cases:** Include calculations that test boundary conditions and sensitivity to assumptions, highlighting failure/unhappy path outcomes and expected mitigations or rollbacks.
 - **Misconception Targeting:** Document the common computational or conceptual misconception each problem is crafted to reveal, and specify the corrective note that will be surfaced in the output template.
 - **Context:** Include relevant historical evolution, technical context, key events, statistical data, and real-world application scenarios.
 - **Codebases & Libraries:** When problems involve specific frameworks/protocols, reference authoritative sources for formulas, benchmarks, and performance characteristics.
@@ -152,6 +152,8 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 **Human Check:** Validate rounding explanation if answer differs by <±2%
 
 **Misconception Focus:** [Clarify the mistaken assumption this calculation addresses and the guidance interviewers should reinforce.]
+
+**Failure Path Insight:** [Describe the failure scenario or incorrect interpretation this calculation is meant to uncover and the mitigation guidance.]
 
 ### Supporting Artifacts (problem context)
 
