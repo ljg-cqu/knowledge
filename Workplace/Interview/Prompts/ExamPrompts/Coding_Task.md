@@ -23,6 +23,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Provide a complete specification: input/output formats, function signatures, data structures, allowed/prohibited libraries, explicit constraints (time/memory limits), and historical or real-world application context.
 - State expected time/space complexity when learning objectives demand it.
 - Reference authoritative repositories, SDKs, tooling suites with details on language support, licensing, maturity, integration hooks; base tasks on protocols/algorithms documented in white/yellow papers, peer-reviewed studies, standards, books/manuals, curated encyclopedias.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prefer the most authoritative material per language.
 
 ### Analytical Coverage & Diagnostics
 
@@ -63,6 +64,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Tag each task with Difficulty, Bloom level, language.
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition.
+- Annotate the bibliography by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps where non-English sources are unavailable and default to strong English references.
 
 ### Shared Evaluation Checklist (apply to every task)
 

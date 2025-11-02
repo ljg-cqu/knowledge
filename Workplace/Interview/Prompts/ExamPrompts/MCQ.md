@@ -21,6 +21,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Use MECE principles to assemble topics spanning technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) dimensions. For blockchain/RWA contexts emphasize consensus mechanisms, tokenization standards, custody models, scalability solutions, regulatory frameworks.
 - Balance factual recall, conceptual understanding, and application-level questions across the bank.
 - Base content on authoritative repositories, SDKs, tooling suites, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias; provide evidence backing correct answers.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English sources, ~30% high-quality Chinese sources, ~10% high-quality sources in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 - Include scenarios highlighting failure/unhappy paths with rollback or mitigation expectations, and ensure comparisons (protocol choices, architectural patterns, governance models) capture rationale for preferred options.
 - Address perspectives across engineering (front-end, back-end, full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
 - Integrate governance/trust dimensions (permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error tolerance, reliability/high availability) and collaboration/organizational dynamics (cross-functional communication, governance models, institutional constraints, change management).
@@ -52,6 +53,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Tag each item with Difficulty and Bloom level.
 - Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance.
 - Harmonize technical depth with broader context and macro insight; cite factual claims (protocol specs, performance benchmarks, regulatory requirements) using APA 7th edition.
+- Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and default to the strongest English references.
 
 ### Shared Evaluation Checklist (apply to every question)
 
@@ -304,7 +306,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 ### APA Style Source Citations
 
-- **References:** List sources for factual claims, performance benchmarks, or protocol specifications.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
+- **References:** List sources for factual claims, performance benchmarks, or protocol specifications, grouped by source language with the target distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are unavailable, note the gap and rely on high-quality English references.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and tag each citation with language and jurisdiction (e.g., `[EN][US]`, `[ZH][CN]`).
+- **Verification:** Ensure each reference is authoritative, current, and directly supports the content; call out regulatory/legal sources explicitly.
 ```

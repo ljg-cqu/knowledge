@@ -22,6 +22,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Apply MECE principles to prevent overlap or contradiction within the bank; cover technical, theoretical, and practical facets: techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations (including energy/resource consumption); theories, principles, axioms, laws, assumptions, models; regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases.
 - Provide rationales including historical context, regulatory/legal landscape, technical background, statistical data as needed.
 - Base statements on authoritative repositories, SDKs, documentation, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English sources, ~30% high-quality Chinese sources, ~10% high-quality sources in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 - Integrate governance/trust dimensions (permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error tolerance, reliability/high availability) and highlight failure/unhappy path scenarios with mitigation guidance.
 - Frame comparisons (consensus models, governance patterns, architecture options) and document criteria for preferring alternatives.
 - Cover perspectives across engineering disciplines, architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
@@ -51,10 +52,11 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Explain terminology within rationales when necessary.
 - Ground statements in real-world facts and scenarios.
 - Include a compact Contents section linking to major headings and all statements (S1–Sn) using GitHub-compatible anchors.
-- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable.
 - Tag each statement with Difficulty and Bloom level.
 - Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning across disciplines; cite external standards, protocol specs, regulatory requirements using APA 7th edition.
+- Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and default to high-quality English references.
 
 ### Shared Evaluation Checklist (apply to every statement)
 

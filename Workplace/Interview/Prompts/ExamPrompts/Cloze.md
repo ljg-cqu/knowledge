@@ -23,6 +23,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Provide surrounding context that clarifies the blank and incorporates historical evolution, legal/regulatory landscape, future trends, key events, statistical data, and relevant narratives.
 - Include authoritative codebases, SDKs, tooling suites when terminology relates to specific implementations, noting language support, licensing, maturity, integration hooks.
 - Use authoritative literature (white/yellow papers, peer-reviewed studies, standards, books/manuals, vetted encyclopedias) to anchor definitions.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prefer the most authoritative material per language.
 
 ### Analytical Coverage & Perspectives
 
@@ -69,6 +70,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
 - Maintain holistic reasoning so terminology remains aligned with cross-disciplinary relevance.
 - Cite definitions using APA 7th edition formatting.
+- Annotate the reference list by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and rely on strong English references as needed.
 
 ### Shared Evaluation Checklist (apply to every item)
 

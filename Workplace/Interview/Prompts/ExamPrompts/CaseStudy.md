@@ -23,6 +23,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Structure tasks MECE-style (3–4 prompts) spanning issue identification, solution proposals with trade-offs, remediation plans, stakeholder communication, decision recommendations.
 - Provide contextual grounding: historical evolution, legal/regulatory landscape, future trends, key events, statistical data, system interactions. Highlight technical metrics (protocols, patterns, performance, complexity, distributed consistency, reliability/HA) and business metrics (cost, impact, risk, market fit). For RWA scenarios, include tokenization standards, custody requirements, compliance obligations, asset lifecycle details.
 - Reference authoritative repositories, SDKs, tooling suites, audits with notes on language support, licensing, maturity, integration hooks, distributed consistency models, performance/security benchmarks.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 
 ### Analytical Coverage & Perspectives
 
@@ -72,6 +73,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
 - Ensure holistic reasoning that balances technical depth, philosophical rigor, macro insight, and MECE clarity.
 - Cite standards, frameworks, regulatory references, and other sources in APA 7th edition.
+- Annotate the scenario bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources cannot be located.
 
 ### Shared Evaluation Checklist (apply to every scenario and response)
 

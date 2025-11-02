@@ -23,6 +23,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Rotate through bug categories (off-by-one, type mismatch, incorrect API usage, concurrency, edge-case handling, logic, security, performance, governance/permission violations).
 - Supply enough surrounding context (imports, data structures, calls) to reproduce the failure and include historical/API/best-practice notes when they illuminate pitfalls.
 - Reference authoritative repositories, SDKs, documentation, and audits when framework-specific behavior matters; cite anti-patterns from white/yellow papers, security audits, standards, or official docs.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 
 ### Analytical Coverage & Artifacts
 
@@ -67,6 +68,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Tag each task with Difficulty, Bloom level, and language.
 - Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance.
 - Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition.
+- Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages) and document gaps when non-English sources are unavailable.
 
 ### Shared Evaluation Checklist (applies to every task)
 

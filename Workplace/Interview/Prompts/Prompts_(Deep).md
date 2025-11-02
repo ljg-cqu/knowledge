@@ -45,6 +45,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Deliver in Markdown with clear headings and code blocks.
 - Include at least one mermaid diagram and one table per Q&A. Use additional clarifying assets (code snippets, analogies, comparisons, formulas, diverse mermaid diagram types). For mermaid portability, avoid edge labels and quote node labels containing special characters.
 - Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources.
+- Curate citations with language diversity targets (adjust when credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Note language and jurisdiction for each source and prioritize the most authoritative evidence available per language.
 - Cite all sourced material in APA 7th edition and align references with the output template.
 - Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
 - Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
@@ -255,6 +256,6 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 #### APA Style Source Citations
 
-- **References:** List all sources cited in the answers.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
+- **References:** List all sources cited in the answers, grouped by source language with the target distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are unavailable, document the gap and default to the strongest English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and annotate each citation with language and jurisdiction tags (e.g., `[EN][US]`, `[ZH][CN]`).
+- **Verification:** Ensure each reference is credible, current, and directly supports the content, calling out regulatory or legal sources explicitly.

@@ -23,6 +23,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Mix calculation types: throughput, latency, gas costs, tokenization ratios, collateralization rates, consensus performance, resource consumption, unit conversions, formula applications, short justifications (2–3 sentences). For RWA scenarios, include asset valuation, transaction fee modeling, compliance thresholds.
 - Supply contextual framing: historical evolution, technical context, regulatory landscape, key events, statistical data, real-world application scenarios.
 - Cite authoritative formulas/benchmarks via standards, white/yellow papers, official documentation, peer-reviewed studies.
+- Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English sources, ~30% high-quality Chinese sources, ~10% high-quality sources in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 
 ### Analytical Coverage & Diagnostics
 
@@ -62,6 +63,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning by linking technical depth, macro insight, and MECE structure; cite formulas/benchmarks in APA 7th edition.
+- Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). When credible non-English sources cannot be located, document the gap and rely on strong English references.
 
 ### Shared Evaluation Checklist (apply to every problem)
 

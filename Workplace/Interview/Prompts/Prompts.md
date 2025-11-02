@@ -12,6 +12,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - Cover all technical areas using a mutually exclusive, collectively exhaustive structure.
 - Include technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, risks, costs, use cases) elements.
 - Reference authoritative codebases, SDKs, audits, and tooling suites; record language support, licensing, maturity, integration hooks, and performance/security benchmarks.
+- Curate citations with the following language diversity targets (adjust when credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Note source language/jurisdiction explicitly and prefer the most authoritative material available in each language.
 
 **Insight coverage per Q&A**
 - Document the misconception, bias, or oversimplified heuristic surfaced and write the corrective insight into the narrative.
@@ -96,6 +97,6 @@ Generate 100 interview Q&A pairs based on the provided job description.
 
 ## APA Style Source Citations
 
-- **References:** List all sources cited in the answers.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
