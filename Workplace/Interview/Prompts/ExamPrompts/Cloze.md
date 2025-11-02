@@ -20,6 +20,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Counterexamples & Edge Cases:** Include related terms often confused with target terms, with clear distinctions, and call out failure/unhappy path interpretations that require correction.
 - **Misconception Targeting:** Document the near-miss or misconception each blank could trigger and specify the corrective note that will appear in the output template for interviewer guidance.
 - **Comparison Coverage:** When helpful, situate terms against close alternatives or competing methodologies and document the decision criteria that distinguish them for later reference in outputs.
+- **Conflict & Feedback Coverage:** Surface terminology linked to stakeholder tension, communication friction, or feedback loops so graders can probe alignment and resolution strategies in rationales.
 - **Context:** Provide sufficient surrounding text to make the blank unambiguous; include relevant historical evolution, legal/regulatory landscape, future trends, key events, and statistical data.
 - **Codebases & Libraries:** When testing library/framework terminology, ensure terms reflect current authoritative repositories, SDKs, and tooling suites.
 - **Authoritative Literature:** Base terminology on white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
@@ -149,6 +150,8 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 **Failure Path Insight:** [Describe the failure scenario or incorrect application this item is meant to surface and the mitigation guidance.]
 
 **Comparison Notes:** [Capture the key comparison/contrast insight (e.g., term vs. synonym/alternative) and the selection criteria to emphasize.]
+
+**Conflict/Feedback Notes:** [Summarize conflict triggers, stakeholder feedback cues, and recommended alignment tactics tied to this terminology.]
 
 ### Supporting Context Artifacts (when helpful)
 
