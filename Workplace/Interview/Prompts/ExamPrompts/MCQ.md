@@ -37,6 +37,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - **Stem:** Provide a clear, concise stem (1–2 sentences). Avoid double negatives, ambiguous phrasing, or "all of the above" / "none of the above" unless pedagogically justified.
 - **Options:** Four options labeled A–D. Exactly one correct answer. Distractors should be similar in length and structure to the correct answer to avoid cueing.
 - **Rationale:** Provide a 1–2 sentence rationale for the correct answer and brief notes (1 sentence each) explaining why distractors are incorrect (e.g., "B is incorrect because it confuses consensus finality with transaction confirmation").
+- **Misconception Targeting:** For every question, identify the misconception or outdated pattern each distractor represents and capture the corrective insight that resolves it; surface this note in the output template.
 - **Evaluation Dimensions:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance, distributed consistency) and business (cost, efficiency, impact, market fit) considerations.
 - **Trade-offs:** For advanced MCQs, test understanding of essential trade-offs (e.g., permissioning vs. decentralization, trust/privacy balances, algorithmic complexity limits, upgrade path risks).
 - **Governance & Assurance:** Include questions on permission boundaries, trust models, privacy/transparency requirements, error-tolerance envelopes, and distributed consistency guarantees.
@@ -152,6 +153,8 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - A: Raft provides crash fault tolerance but not Byzantine fault tolerance; suitable for non-adversarial environments.
 - C: Proof of Work is used in permissionless blockchains and prioritizes decentralization over finality.
 - D: Proof of Stake is primarily for permissionless chains; finality mechanisms vary by implementation.
+
+**Misconception Focus:** [State the misconception this question addresses and the key corrective feedback for interviewers.]
 
 ### Supporting Artifacts (when helpful for complex MCQs)
 

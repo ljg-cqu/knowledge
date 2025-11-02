@@ -7,10 +7,10 @@ Generate 100 interview Q&A pairs based on the provided job description.
 ### 1. Coverage & Organization
 
 - **MECE Approach:** Cover all technical areas (Mutually Exclusive, Collectively Exhaustive)
-- **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
- - **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
+- **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
+- **Misconception Targeting:** For each Q&A, note the misconception, bias, or oversimplified heuristic it is designed to surface and capture the corrective insight that should appear in the output narrative.
 - **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
- - **Perspectives:** Engineering (software, front/back-end, infra), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), management (product, requirements, architecture, system), operations (testing, marketing)
+- **Perspectives:** Engineering (software, front/back-end, infra), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), management (product, requirements, architecture, system), operations (testing, marketing)
 - **Difficulty & Bloom:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic. Target Bloom taxonomy levels: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced)
 
 ### 2. Content Design
@@ -43,6 +43,8 @@ Generate 100 interview Q&A pairs based on the provided job description.
 **Answer:** [150-300 words with technical details and examples]
 
 [Code/Diagram/Table/Formula/Analogy as needed]
+
+**Misconception Focus:** [Summarize the misconception this Q&A addresses and the corrective guidance to emphasize.]
 
 ---
 

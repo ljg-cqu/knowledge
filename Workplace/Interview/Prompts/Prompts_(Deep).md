@@ -31,6 +31,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - **Organizational & Strategic Operations:** Highlight business model implications, institutional capabilities, change readiness, and long-term strategic positioning.
 - **Questions:** Mix theoretical, practical, and scenario-based on real-world applications
 - **Answers:** 150-300 words with technical details, technologies, and practical examples; explain key concepts/terminologies clearly using analogies, formulas, etc. as needed
+- **Misconception Targeting:** Explicitly state the misconception, bias, or oversimplified heuristic each Q&A is designed to surface, and capture the corrective insight that must appear in the output template for interviewer debriefs.
 
 ### 3. Execution
 
@@ -133,6 +134,8 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - At least one Mermaid diagram (e.g., flowchart, architecture)
 - At least one table (e.g., comparison, data summary)
 - [Additional code snippets, formulas, analogies, comparisons as needed]
+
+**Misconception Focus:** [Summarize the misconception this question targets and the corrective guidance interviewers should reinforce.]
 
 #### Comparisons
 - [Relevant comparisons to aid understanding, e.g., vs. other technologies, historical vs. current, etc.]

@@ -29,6 +29,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Organizational & Strategic Operations:** For advanced bugs, consider business model impact, institutional capabilities, change readiness implications, and strategic positioning effects of the bug and fix.
 - **Inference Lists:** For advanced bugs, test understanding of how bugs affect adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
 - **Open Questions & Research:** For advanced bugs, surface awareness of systemic issues, edge cases, emergent risks, and investigation needs revealed by the bug.
+- **Misconception Targeting:** Document the debugging misconception or faulty heuristic each task should expose, along with the corrective framing to include in the output template for interviewer debriefs.
 
 ### 2. Content Design
 
@@ -47,6 +48,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Rubric:** Recommended scoring: Fix correctness (0–6 pts), Explanation quality (0–3 pts), Tests provided (0–1 pt). Adjust per difficulty.
 - **Partial Credit:** Award partial credit for correct diagnosis even if fix is incomplete, or correct fix with weak explanation.
 - **Grader Notes:** Document common incorrect approaches (e.g., treating symptom instead of root cause) and alternative valid fixes. List edge cases where fixes might fail.
+- **Misconception Focus:** Explain the misconception this bug surfaces and the insight graders should reinforce.
 
 ### 4. Execution & Format
 

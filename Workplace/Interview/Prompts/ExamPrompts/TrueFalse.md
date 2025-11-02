@@ -34,7 +34,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 ### 2. Content Design
 
 - **Target Level:** Remember/Understand/Apply (Bloom). Use factual statements for lower levels; use concise scenario-based judgments for higher levels (e.g., "Given X constraint, approach Y is optimal") targeting senior/expert level with deep technical understanding and awareness of nuanced distinctions.
-- **Rationale:** Provide a 1–2 sentence rationale explaining why the statement is true or false. Include a one-sentence note on common misconceptions to aid feedback.
+- **Rationale:** Provide a 1–2 sentence rationale explaining why the statement is true or false. Include a one-sentence note on the specific misconception being corrected so interviewers can surface it in the output template.
 - **Justification (Optional):** For higher-credit items, require a brief written justification (2–3 sentences) in addition to the T/F answer. State scoring split (e.g., 70% for correct letter + 30% for valid rationale).
 - **Evaluation Dimensions:** Technical (performance, security, scalability, algorithm complexity, error tolerance, distributed consistency) and business (cost, efficiency, impact, market fit) considerations when relevant.
 - **Trade-offs:** For advanced statements, test understanding of trade-offs (e.g., "Byzantine fault tolerance always outperforms crash fault tolerance" - False, because of throughput trade-offs).
@@ -144,6 +144,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 **Rationale:**
 - **Correct:** BFT algorithms (e.g., PBFT) can tolerate up to (n-1)/3 malicious nodes, not 50%. For example, in a 4-node network, only 1 Byzantine node can be tolerated.
 - **Common misconception:** Confusion with crash fault tolerance (e.g., Raft), which tolerates up to 50% crash failures.
+
+**Misconception Focus:** [State the misconception this statement targets and the corrective insight to emphasize during review.]
 
 **Citation:** Castro, M., & Liskov, B. (1999). Practical Byzantine fault tolerance. *OSDI*, 99, 173–186.
 

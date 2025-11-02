@@ -29,6 +29,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Validation & Evidence Checks:** Require explicit evidence, data points, or benchmarks supporting scenario solutions.
 - **Counterexamples & Edge Cases:** Test understanding of edge cases and scenarios that challenge main solutions.
 - **Alternatives Considered:** Require candidates to consider and compare alternative approaches.
+- **Misconception Targeting:** Identify the prevalent misconception or oversimplified heuristic each scenario should surface and document the corrective narrative that interviewers will reinforce in the output template.
 
 ### 2. Content Design
 
@@ -162,6 +163,10 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Partial credit: Correct diagnosis + incomplete solution = 60%
 - Bonus: Novel insights, consideration of edge cases, stakeholder impact analysis
 - Common omissions: [List typical gaps]
+
+### Misconception Focus
+
+- [Describe the misconception this scenario reveals and the guidance for steering candidates toward the accurate model.]
 
 ### Supporting Artifacts (for scenario context clarity)
 

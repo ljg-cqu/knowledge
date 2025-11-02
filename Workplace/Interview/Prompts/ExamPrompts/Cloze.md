@@ -18,6 +18,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Scope:** Keep each item narrowly scoped and unambiguous. Avoid overlapping blanks or ambiguous phrasing that could confuse candidates.
 - **Validation & Evidence Checks:** Provide authoritative sources confirming term definitions and usage.
 - **Counterexamples & Edge Cases:** Include related terms often confused with target terms, with clear distinctions.
+- **Misconception Targeting:** Document the near-miss or misconception each blank could trigger and specify the corrective note that will appear in the output template for interviewer guidance.
 - **Context:** Provide sufficient surrounding text to make the blank unambiguous; include relevant historical evolution, legal/regulatory landscape, future trends, key events, and statistical data.
 - **Codebases & Libraries:** When testing library/framework terminology, ensure terms reflect current authoritative repositories, SDKs, and tooling suites.
 - **Authoritative Literature:** Base terminology on white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
@@ -141,6 +142,8 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 **Normalization:** case-insensitive, trim whitespace, strip punctuation  
 **Partial credit:** 1 point per correct blank
+
+**Misconception Focus:** [Highlight the confusion this item is designed to surface and the clarification to reinforce.]
 
 ### Supporting Context Artifacts (when helpful)
 

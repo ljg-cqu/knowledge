@@ -20,6 +20,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Complexity:** Specify expected algorithm complexity (time/space) when relevant to the learning objective.
 - **Validation & Evidence Checks:** Provide test cases and benchmarks that support correct implementation.
 - **Counterexamples & Edge Cases:** Test handling of edge cases through hidden tests (empty inputs, large inputs, boundary values).
+- **Misconception Targeting:** For each task, note the common misconception or flawed implementation strategy the test suite is designed to surface, and capture the corrective takeaway that must appear in the output template.
 - **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites when tasks involve specific frameworks or protocols; capture language support, licensing, maturity, integration hooks.
 - **Authoritative Literature:** Base tasks on algorithms/protocols from white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
 - **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions (e.g., in reference solution notes and grader guidance), especially for advanced tasks.
@@ -46,8 +47,15 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 ### 3. Evaluation & Grading
 
 - **Scoring Breakdown:** Recommended: Correctness (70%), Edge-case handling (20%), Code style/tests (10%). Adjust proportions per difficulty while maintaining 100% total.
-- **Grader Notes:** Document common implementation mistakes, performance pitfalls, and partial-credit guidance (e.g., correct logic but inefficient → 70%).
-- **Auto-Grading:** Use an isolated test runner (e.g., pytest, unittest, jest). Public tests provide feedback; hidden tests ensure robustness without over-fitting.
+- **Grader Notes:**
+
+- Document common implementation mistakes, performance pitfalls, and partial-credit guidance (e.g., correct logic but inefficient → 70%).
+- Highlight tests that reveal misunderstanding of key concepts.
+- **Misconception Focus:** [Summarize the misconception this task addresses and the key message to reinforce with candidates.]
+
+### Auto-Grading
+
+- Use an isolated test runner (e.g., pytest, unittest, jest). Public tests provide feedback; hidden tests ensure robustness without over-fitting.
 
 ### 4. Execution & Format
 

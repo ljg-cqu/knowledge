@@ -19,6 +19,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - **Problem Types:** Cover calculations (e.g., throughput, latency, gas costs, tokenization ratios, collateralization rates, consensus performance, resource consumption), unit conversions, formula applications, and short justifications (2–3 sentences). For RWA contexts, include asset valuation, transaction fee modeling, or compliance threshold calculations.
 - **Validation & Evidence Checks:** Provide authoritative sources and benchmarks supporting formulas and calculation methods.
 - **Counterexamples & Edge Cases:** Include calculations that test boundary conditions and sensitivity to assumptions.
+- **Misconception Targeting:** Document the common computational or conceptual misconception each problem is crafted to reveal, and specify the corrective note that will be surfaced in the output template.
 - **Context:** Include relevant historical evolution, technical context, key events, statistical data, and real-world application scenarios.
 - **Codebases & Libraries:** When problems involve specific frameworks/protocols, reference authoritative sources for formulas, benchmarks, and performance characteristics.
 - **Authoritative Literature:** Base formulas and calculations on white/yellow papers, standards, official documentation, and peer-reviewed studies.
@@ -142,14 +143,15 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 **Tolerance:** ±2%
 
-**Worked solution:**
-1. Transactions per block: 500
-2. Block time: 6 seconds
-3. TPS = 500 / 6 = 83.33 TPS
+**Worked Solution:**
+1. Throughput = transactions per block ÷ block time
+2. 500 ÷ 6 = 83.33 TPS
 
-**Partial credit rules:**
-- Correct formula with arithmetic error: 70% of question points
-- Correct setup but incomplete: 50% of question points
+**Partial Credit:** Method correct, arithmetic rounded incorrectly (±2%) = 70%
+
+**Human Check:** Validate rounding explanation if answer differs by <±2%
+
+**Misconception Focus:** [Clarify the mistaken assumption this calculation addresses and the guidance interviewers should reinforce.]
 
 ### Supporting Artifacts (problem context)
 
