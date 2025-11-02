@@ -68,7 +68,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Integrate historical, regulatory, and technical context plus key events/statistics.
 - Base scenarios on real-world applications spanning theoretical, practical, and scenario contexts.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each scenario beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
+- Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Scenario Bank as the final major section so strategic framing appears first and multi-part scenarios can be appended or resumed easily after truncation.
 - Tag each scenario with Difficulty and Bloom level.
 - Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
 - Ensure holistic reasoning that balances technical depth, philosophical rigor, macro insight, and MECE clarity.
@@ -107,6 +107,9 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Scenario Bank](#scenario-bank-scenarios-1-20)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Scenario 1: Title](#scenario-1-title)
@@ -114,9 +117,6 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Scenario 3: Title](#scenario-3-title)
     - [Scenario 4: Title](#scenario-4-title)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -157,7 +157,19 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 | [Criterion 1] | [Approach description] | [Approach description] | [Decision guidance] |
 | [Criterion 2] | [Approach description] | [Approach description] | [Decision guidance] |
 
----
+## Codebase & Library References
+
+- [List repositories/libraries cited across scenarios. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [Summarize standards, white/yellow papers, audits, books/manuals, and peer-reviewed studies referenced across scenarios. Highlight core findings, practical implications, credibility signals, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Scenario Bank (Scenarios 1–20)
 
@@ -333,9 +345,4 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
 
-## APA Style Source Citations
-
-- **References:** List all sources cited across scenarios, grouped by language when relevant.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language/jurisdiction tags.
-- **Verification:** Ensure each reference is credible, current, and directly supports the content; cross-check scenario tags against this list.
 ```

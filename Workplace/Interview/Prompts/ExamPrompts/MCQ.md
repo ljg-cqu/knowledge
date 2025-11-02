@@ -49,7 +49,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Employ clarifying aids (mermaid diagrams, tables, code snippets, analogies, comparisons, formulas) with mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terminology where needed and integrate historical, regulatory, technical, and statistical context to ground questions in real-world applications.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Question Bank as the last major section so high-level planning stays visible and item generation can resume smoothly after truncation.
 - Tag each item with Difficulty and Bloom level.
 - Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance.
 - Harmonize technical depth with broader context and macro insight; cite factual claims (protocol specs, performance benchmarks, regulatory requirements) using APA 7th edition.
@@ -87,6 +87,9 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Question Bank](#question-bank-questions-1-25)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Q1: Question text](#q1-question-text)
@@ -94,9 +97,6 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Q3: Question text](#q3-question-text)
     - [Q4: Question text](#q4-question-text)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -146,6 +146,12 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 ## Authoritative Literature & Reports
 
 - [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning question content. Summarize core findings, practical implications, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Question Bank (Questions 1–25)
 
@@ -245,80 +251,4 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 - [Critical trade-off analysis tested in the question; decision criteria with explicit permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, and upgrade/rollback guidance]
 
-### Perspective-Based Insights (question design angle)
-
-- Engineering (front-end/back-end/full-stack): [...]
-- Architecture & Infrastructure: [... including hardware design, deployment, energy/resource consumption]
-- Database & Data Engineering: [...]
-- Quality Assurance & Testing: [...]
-- Product Management: [...]
-- Project/Program Management: [...]
-- Requirements & Business Analysis: [...]
-- Operations, DevOps & SRE: [...]
-- Marketing & Commercialization: [...]
-- Team Collaboration & Communication: [...]
-- Organizational & Institutional Dynamics: [...]
-- Philosophy (necessity vs. contingency, ethics, epistemology): [...]
-- Economics, Finance & Capital Markets (stock, crypto, commodities): [...]
-- Psychology & Sociology: [...]
-- Education & Workforce Development: [...]
-- Anthropology & Cultural Dynamics: [...]
-- Law, Policy & Governance: [...]
-- Military & Security Strategy: [...]
-- Historical Context & Precedents: [...]
-
-### Market & Macro Systems Analysis (for advanced questions)
-
-- Systemic Forces & Feedback Loops: [...]
-- Regulatory & Policy Trajectories: [...]
-- Market Structure & Liquidity Dynamics: [...]
-- Geopolitical & Security Implications: [...]
-- Societal Adoption & Behavioral Shifts: [...]
-- Competitive & Ecosystem Positioning: [...]
-- Macroeconomic & Industry Economic Models: [...]
-
-### Inference Summary (for advanced questions)
-
-- Adoption Signals: [...]
-- Interoperability Impacts: [...]
-- Roadmap Implications: [... include upgrade sequencing considerations]
-- Operational Risks: [... highlight upgrade readiness, testing coverage, rollback triggers]
-
-### Collaboration & Communication Plan (when relevant)
-
-- Stakeholders & Roles: [...]
-- Communication Cadence & Channels: [...]
-- Cross-Functional Alignment Tactics: [...]
-
-### Organizational & Strategic Fit (when relevant)
-
-- Business Model Impact: [...]
-- Institutional Capabilities & Gaps: [...]
-- Change Management & Governance: [...]
-- Strategic Positioning & Differentiation: [...]
-
-### Codebase & Library References (when testing specific tools/frameworks)
-
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-### Authoritative Literature (question grounding)
-
-- **[Paper/Standard/Documentation]:** [Source for the factual content tested]
-
-### Actionable Conclusions (learning objective)
-
-- [Key takeaway or principle the question reinforces; prioritized action]
-
-### Open Questions & Research Agenda (for advanced questions)
-
-- Remaining Challenges: [...]
-- Hypotheses & Experiments: [...]
-- Data/Resource Needs: [...]
-- Timeline & Ownership for Exploration: [...]
-
-### APA Style Source Citations
-
-- **References:** List sources for factual claims, performance benchmarks, or protocol specifications, grouped by source language with the target distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are unavailable, note the gap and rely on high-quality English references.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and tag each citation with language and jurisdiction (e.g., `[EN][US]`, `[ZH][CN]`).
-- **Verification:** Ensure each reference is authoritative, current, and directly supports the content; call out regulatory/legal sources explicitly.
 ```

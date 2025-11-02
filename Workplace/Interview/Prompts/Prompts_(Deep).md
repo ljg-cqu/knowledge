@@ -49,7 +49,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Cite all sourced material in APA 7th edition and align references with the output template.
 - Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
 - Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to prefatory material and the global reference sections. Add optional "Back to top" anchors after each Q&A if desired.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to prefatory material and the global reference sections. Add optional "Back to top" anchors after each Q&A if desired. Keep the Topic Areas/Q&A section as the final major block so planning, glossary, and reference material lead and deep-dive entries can be appended or resumed cleanly after truncation.
 
 ## Output Template
 
@@ -62,6 +62,9 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Topic Areas](#topic-areas-questions-x-y)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Q1: Question text](#q1-question-text)
@@ -69,9 +72,6 @@ Generate 25 interview Q&A pairs based on the provided job description.
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Q3: Question text](#q3-question-text)
     - [Q4: Question text](#q4-question-text)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -129,6 +129,10 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and other vetted references referenced across question clusters, with notes on core findings, credibility, and language/jurisdiction.]
 
 ## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Topic Areas (Questions X–Y)
 
@@ -238,10 +242,6 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Interoperability Impacts: [...]
 - Roadmap Implications: [... include upgrade sequencing considerations]
 - Operational Risks: [... highlight upgrade readiness, testing coverage, and rollback triggers]
-
-##### Terminology & Key Concepts
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ##### Assumptions & Preconditions
 

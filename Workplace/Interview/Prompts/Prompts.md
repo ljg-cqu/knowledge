@@ -48,13 +48,18 @@ Generate 50 interview Q&A pairs based on the provided job description.
 - Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references.
 - Document consulted codebases/tools and justify their reliability.
 - Provide a comprehensive Contents block at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Cite sources in APA 7th edition and ensure alignment with the output template.
+- Cite sources in APA 7th edition and ensure alignment with the output template. Keep the Topic Areas/Q&A section as the last major block so planning, glossary, and reference material lead and new Q&A entries can be appended or resumed cleanly after truncation.
 - Apply creative then critical thinking, evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment), and verify accuracy, completeness, relevance, and MECE compliance.
 
 ## Output Template
 
 ```markdown
 ## Contents
+
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Topic Areas](#topic-areas-questions-x-y)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Q1: Question text](#q1-question-text)
@@ -62,10 +67,24 @@ Generate 50 interview Q&A pairs based on the provided job description.
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Q3: Question text](#q3-question-text)
     - [Q4: Question text](#q4-question-text)
-- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
+
+## Glossary, Terminology & Acronyms
+
+**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
+
+## Codebase & Library References
+
+- [Aggregate repositories, SDKs, audits, or tooling suites cited across the bank. Include stack, modules, maturity, licensing, integration hooks, performance/security benchmarks, and language support.]
+
+## Authoritative Literature & Reports
+
+- [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and vetted references referenced across Q&A clusters, with notes on core findings, credibility, and language/jurisdiction.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Topic Areas (Questions X-Y)
 
@@ -98,23 +117,3 @@ Generate 50 interview Q&A pairs based on the provided job description.
 **Signals & Open Questions:** [Capture adoption signals, interoperability impacts, roadmap implications, operational risks, and research priorities.]
 
 **Cross-Functional & Governance Notes:** [Highlight permission/trust considerations, alignment tactics, and organizational dynamics.]
-
----
-
-## Glossary, Terminology & Acronyms
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
-
-## Codebase & Library References
-
-- [Aggregate repositories, SDKs, audits, or tooling suites cited across the bank. Include stack, modules, maturity, licensing, integration hooks, performance/security benchmarks, and language support.]
-
-## Authoritative Literature & Reports
-
-- [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and vetted references referenced across Q&A clusters, with notes on core findings, credibility, and language/jurisdiction.]
-
-## APA Style Source Citations
-
-- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
-- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.

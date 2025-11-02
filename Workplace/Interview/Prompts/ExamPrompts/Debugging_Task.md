@@ -64,7 +64,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Explain terminology and error patterns in context; integrate API documentation and best-practice commentary.
 - Ground scenarios in real-world debugging incidents.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations.
+- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations. Keep the Task Bank as the final major section so the plan-first scaffold stays visible and additional debugging tasks can be appended or resumed cleanly after truncation.
 - Tag each task with Difficulty, Bloom level, and language.
 - Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance.
 - Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition through a single consolidated references section.
@@ -102,6 +102,9 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Task Bank](#task-bank-tasks-1-n)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Task 1: Title](#task-1-title)
@@ -109,9 +112,6 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Task 3: Title](#task-3-title)
     - [Task 4: Title](#task-4-title)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -153,6 +153,20 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 | [Criterion 2] | [Approach description] | [Approach description] | [Decision guidance] |
 
 ## Codebase & Library References
+
+- [Aggregate APIs, libraries, SDKs, audits cited across debugging tasks. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning bug patterns or fixes. Summarize core findings, practical implications, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
+
+## Task Bank (Tasks 1–n)
 
 ### Topic 1: [Topic title | scope]
 

@@ -72,7 +72,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Use precise technical language and explain key terminology as needed.
 - Integrate real-world contexts so items reflect practical applications.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each item beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
+- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Item Bank as the last major section so planning content leads and fill-in-the-blank entries can be appended or resumed safely after truncation.
 - Tag each item with Difficulty and Bloom level.
 - Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
 - Maintain holistic reasoning so terminology remains aligned with cross-disciplinary relevance.
@@ -111,6 +111,9 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Item Bank](#item-bank-items-1-15)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Item 1: Topic](#item-1-topic)
@@ -118,9 +121,6 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Item 3: Topic](#item-3-topic)
     - [Item 4: Topic](#item-4-topic)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -168,6 +168,12 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 ## Authoritative Literature & Reports
 
 - [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed research supporting terminology usage across items. Summarize core findings, practical implications, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Item Bank (Items 1–15)
 
@@ -311,16 +317,10 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 - [Key takeaway or principle the term reinforces; prioritized action]
 
-### Open Questions & Research Agenda (for advanced terms)
+-### Open Questions & Research Agenda (for advanced terms)
 
 - Remaining Challenges: [...]
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
-
-## APA Style Source Citations
-
-- **References:** List sources for specialized terminology or definitions across items.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and annotate language/jurisdiction tags.
-- **Verification:** Ensure each reference is credible, current, and directly supports the content; document gaps when non-English sources are unavailable.
 ```

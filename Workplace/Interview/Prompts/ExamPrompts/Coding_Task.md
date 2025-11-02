@@ -60,7 +60,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Explain terminology and key concepts within problem descriptions and comments.
 - Root tasks in real-world scenarios with relevant technical context and best practices.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations.
+- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations. Keep the Task Bank as the last major section so the planning scaffold remains visible and new tasks can be appended or resumed cleanly after truncation.
 - Tag each task with Difficulty, Bloom level, language.
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition using a single consolidated references section.
@@ -98,6 +98,9 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Task Bank](#task-bank-tasks-1-n)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [Task 1: Title](#task-1-title)
@@ -105,9 +108,6 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [Task 3: Title](#task-3-title)
     - [Task 4: Title](#task-4-title)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -155,6 +155,12 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 ## Authoritative Literature & Reports
 
 - [List standards, white/yellow papers, audits, books/manuals, and peer-reviewed studies underpinning algorithms or frameworks across the task set. Summarize core findings and practical implications.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Task Bank (Tasks 1–n)
 
@@ -326,11 +332,5 @@ def validate_transfer(tx):
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
-
-## APA Style Source Citations
-
-- **References:** List sources for algorithms, protocols, or standards referenced across tasks.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content; include language/jurisdiction tags as needed.
 
 ```

@@ -52,7 +52,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Explain terminology within rationales when necessary.
 - Ground statements in real-world facts and scenarios.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each statement beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
-- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Statement Bank as the last major section so plan-first guidance remains visible and new statements can be appended or resumed cleanly after truncation.
 - Tag each statement with Difficulty and Bloom level.
 - Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning across disciplines; cite external standards, protocol specs, regulatory requirements using APA 7th edition.
@@ -90,6 +90,9 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Statement Bank](#statement-bank-statements-1-20)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [S1: Statement topic](#s1-statement-topic)
@@ -97,9 +100,6 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [S3: Statement topic](#s3-statement-topic)
     - [S4: Statement topic](#s4-statement-topic)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -141,6 +141,20 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 | [Criterion 2] | [Condition description] | [Condition description] | [Decision guidance] |
 
 ---
+
+## Codebase & Library References
+
+- [Aggregate frameworks, tools, SDKs, audits, or repositories cited across the T/F bank. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning statements. Summarize core findings, practical implications, credibility signals, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Statement Bank (Statements 1–20)
 
@@ -202,10 +216,6 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
-
-### Terminology & Key Concepts (for context)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ### Context & Background (when relevant)
 
@@ -291,17 +301,3 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Institutional Capabilities & Gaps: [...]
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
-
-### APA Style Source Citations
-
-- **References:** List sources for factual claims from external standards, protocol specifications, regulatory requirements, or published research.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
-
-## Codebase & Library References
-
-- [Aggregate frameworks, tools, SDKs, audits, or repositories cited across the T/F bank. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
-
-## Authoritative Literature & Reports
-
-- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning statements. Summarize core findings, practical implications, credibility signals, and language/jurisdiction tags.]

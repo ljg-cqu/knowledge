@@ -60,6 +60,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Explain key terms/units as needed; ground problems in real-world scenarios.
 - Provide a comprehensive Contents section at the top that lists every topic/group and nests each problem beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
+- Keep the Problem Bank as the final section of the output template so planning, reference, and aggregation content leads and Q&A entries can be appended or resumed safely after truncation.
 - Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning by linking technical depth, macro insight, and MECE structure; cite formulas/benchmarks in APA 7th edition.
@@ -97,6 +98,9 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 - [Problem Bank](#problem-bank-problems-1-12)
   - [Topic 1: Topic title](#topic-1-topic-title)
     - [P1: Problem title](#p1-problem-title)
@@ -104,9 +108,6 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
   - [Topic 2: Topic title](#topic-2-topic-title)
     - [P3: Problem title](#p3-problem-title)
     - [P4: Problem title](#p4-problem-title)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -154,6 +155,12 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 ## Authoritative Literature & Reports
 
 - [List standards, papers, documentation, audits, and reports underpinning formulas or benchmarks across problems. Summarize core findings, practical implications, and language/jurisdiction tags.]
+
+## APA Style Source Citations
+
+- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
+- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
 
 ## Problem Bank (Problems 1–12)
 
@@ -298,14 +305,6 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-### Codebase & Library References (when applicable)
-
-- **[Tool/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes; formulas, performance characteristics]
-
-### Authoritative Literature (formula/benchmark sources)
-
-- **[Paper/Standard/Documentation]:** [Source for formula, benchmark, or calculation method; core findings, practical implications]
-
 ### Actionable Conclusions (problem takeaway)
 
 - [Key insight, practical implication, design guidance; prioritized action]
@@ -316,10 +315,3 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
-
-### APA Style Source Citations
-
-- **References:** List sources for formulas, benchmarks, or standards referenced in the problem.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
-```
