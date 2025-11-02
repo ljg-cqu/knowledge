@@ -33,7 +33,7 @@
 
 **Answer:** (150-300 words with technical depth, examples, trade-offs)
 
-**Supporting Artifacts:** [Diagram/table/code/formula]
+**Supporting Artifacts:** [Mermaid Diagram/table/code/formula]
 
 **Key Insights:** Misconception | Failure Path | Trade-offs
 
