@@ -14,7 +14,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Generate 16–20 case study scenarios in total. Let distribution across topic clusters follow the MECE coverage plan so each cluster receives proportional attention.
 - **Stretch tier (senior/expert):** When extended depth is required, target 20–22 scenarios total while preserving the difficulty mix and proportional cluster coverage.
 - Number scenarios sequentially (Scenario 1, Scenario 2, …) and add anchors in the Contents section.
-- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution targeting Bloom Analyze/Evaluate. Foundational scenarios emphasize straightforward diagnoses, intermediate scenarios compare alternatives and trade-offs, advanced scenarios synthesize complex interactions and recommendations.
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution targeting Bloom Analyze/Evaluate. Foundational scenarios emphasize straightforward diagnoses, intermediate scenarios compare alternatives and trade-offs, advanced scenarios synthesize complex interactions, macro implications, and prioritized recommendations.
 
 ### Scenario Composition & Context
 

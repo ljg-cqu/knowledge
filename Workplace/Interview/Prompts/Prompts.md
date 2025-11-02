@@ -1,8 +1,8 @@
 # Prompts
 
-Generate 100 interview Q&A pairs based on the provided job description.
+Generate 50 interview Q&A pairs based on the provided job description.
 
-**Stretch tier (senior/expert):** When a deeper bank is required, expand to 108–115 Q&A pairs while preserving the coverage, difficulty, and artifact expectations below.
+**Stretch tier (senior/expert):** When a deeper bank is required, expand to 56–62 Q&A pairs while preserving the coverage, difficulty, and artifact expectations below.
 
 ## Requirements
 

@@ -14,7 +14,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Generate 18–24 coding tasks in total. Allocate tasks across topic clusters according to the MECE coverage plan so each cluster is represented proportionally.
 - **Stretch tier (senior/expert):** For extended deep dives, target 24–28 tasks total while keeping the same difficulty distribution and proportional cluster coverage.
 - Number tasks sequentially (Task 1, Task 2, …) with anchors in the Contents section.
-- Maintain Foundational (20%), Intermediate (50%), Advanced (30%) distribution targeting Bloom Apply/Create: foundational tasks implement known algorithms, intermediate tasks apply patterns to multi-step problems, advanced tasks design novel or optimized solutions under complex constraints.
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution targeting Bloom Apply/Create: foundational tasks implement known algorithms, intermediate tasks apply patterns to multi-step problems with realistic constraints, advanced tasks design novel or optimized solutions under complex, cross-disciplinary trade-offs.
 
 ### Specification & Context
 

@@ -14,7 +14,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Generate 24–32 cloze items in total. Allocate items across topic clusters based on the MECE coverage plan so each cluster receives proportional emphasis.
 - **Stretch tier (senior/expert):** For extended mastery checks, target 32–36 items total while maintaining the same difficulty mix and proportional cluster coverage.
 - Number items sequentially (Item 1, Item 2, …) with matching anchors in the Contents block.
-- Maintain Foundational (30%), Intermediate (50%), Advanced (20%) distribution targeting Bloom Remember/Understand. Foundational items focus on direct recall, intermediate items test conceptual relationships, advanced items probe nuanced distinctions or context-dependent terminology.
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution targeting Bloom Remember/Understand. Foundational items focus on direct recall, intermediate items test conceptual relationships, advanced items probe nuanced distinctions, multi-blank context, or scenario-dependent terminology.
 
 ### Term Selection & Context
 
