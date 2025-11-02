@@ -20,6 +20,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - **Validation & Evidence Checks:** Provide authoritative sources and benchmarks supporting formulas and calculation methods.
 - **Counterexamples & Edge Cases:** Include calculations that test boundary conditions and sensitivity to assumptions, highlighting failure/unhappy path outcomes and expected mitigations or rollbacks.
 - **Misconception Targeting:** Document the common computational or conceptual misconception each problem is crafted to reveal, and specify the corrective note that will be surfaced in the output template.
+- **Comparison Coverage:** Where appropriate, contrast alternative calculation methods, assumptions, or tooling (e.g., formula variants, estimation techniques) and record the criteria for preferring one approach over another.
 - **Context:** Include relevant historical evolution, technical context, key events, statistical data, and real-world application scenarios.
 - **Codebases & Libraries:** When problems involve specific frameworks/protocols, reference authoritative sources for formulas, benchmarks, and performance characteristics.
 - **Authoritative Literature:** Base formulas and calculations on white/yellow papers, standards, official documentation, and peer-reviewed studies.
@@ -154,6 +155,8 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 **Misconception Focus:** [Clarify the mistaken assumption this calculation addresses and the guidance interviewers should reinforce.]
 
 **Failure Path Insight:** [Describe the failure scenario or incorrect interpretation this calculation is meant to uncover and the mitigation guidance.]
+
+**Comparison Notes:** [Capture the comparison/contrast insight (e.g., method A vs method B) and the decision criteria guiding the preferred approach.]
 
 ### Supporting Artifacts (problem context)
 

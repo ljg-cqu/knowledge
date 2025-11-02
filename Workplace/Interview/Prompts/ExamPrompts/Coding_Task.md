@@ -21,6 +21,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Validation & Evidence Checks:** Provide test cases and benchmarks that support correct implementation.
 - **Counterexamples & Edge Cases:** Test handling of edge cases through hidden tests (empty inputs, large inputs, boundary values) and ensure failure/unhappy paths trigger rollback or mitigation expectations.
 - **Misconception Targeting:** For each task, note the common misconception or flawed implementation strategy the test suite is designed to surface, and capture the corrective takeaway that must appear in the output template.
+- **Comparison Coverage:** Where relevant, require comparisons between implementation strategies (e.g., data structures, concurrency models, security hardening options) and document the criteria for preferring one approach over another.
 - **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites when tasks involve specific frameworks or protocols; capture language support, licensing, maturity, integration hooks.
 - **Authoritative Literature:** Base tasks on algorithms/protocols from white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
 - **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions (e.g., in reference solution notes and grader guidance), especially for advanced tasks.
@@ -53,6 +54,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Highlight tests that reveal misunderstanding of key concepts.
 - **Misconception Focus:** [Summarize the misconception this task addresses and the key message to reinforce with candidates.]
 - **Failure Path Insight:** [Explain the failure or unhappy path the tests are designed to expose and the mitigation or hardening steps interviewers should stress.]
+- **Comparison Notes:** [Capture the comparison/contrast insights (e.g., approach A vs B) and the decision criteria emphasized in evaluation.]
 
 ### Auto-Grading
 

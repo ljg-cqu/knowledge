@@ -31,6 +31,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Alternatives Considered:** Require candidates to consider and compare alternative approaches.
 - **Misconception Targeting:** Identify the prevalent misconception or oversimplified heuristic each scenario should surface and document the corrective narrative that interviewers will reinforce in the output template.
 - **Failure Path Coverage:** Highlight failure/unhappy path trajectories (e.g., rollback missteps, degraded performance, stakeholder conflicts) and specify expected mitigation or contingency planning notes to capture in the output template.
+- **Comparison Coverage:** Ensure scenarios demand explicit comparisons (e.g., architectural patterns, governance models, rollout strategies) and capture the criteria for preferring one option over another in the output template.
 
 ### 2. Content Design
 
@@ -172,6 +173,10 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 ### Failure Path Insight
 
 - [Summarize the failure or unhappy path the scenario is designed to surface and the mitigation/contingency expectations.]
+
+### Comparison Notes
+
+- [Document the key comparison/contrast insights and decision criteria highlighted by this scenario.]
 
 ### Supporting Artifacts (for scenario context clarity)
 

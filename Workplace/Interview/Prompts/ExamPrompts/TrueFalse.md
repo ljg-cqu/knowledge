@@ -18,6 +18,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Precision:** Keep statements short (≤2 lines) and avoid double negatives, vague qualifiers (e.g., "often", "usually"), or ambiguous technical terms.
 - **Validation & Evidence Checks:** Provide authoritative sources and evidence backing each statement's truth or falsity.
 - **Counterexamples & Edge Cases:** Include scenarios where statements might seem different or require clarification, highlighting failure/unhappy paths and expected mitigations.
+- **Comparison Coverage:** When relevant, frame statements to test contrasts between approaches (e.g., consensus models, governance patterns, architectural options) and note the rationale for preferring one over another.
 - **Scope:** Cover key facts, definitions, principles, and simple scenario judgments. Mix foundational recall with conceptual understanding.
 - **Context:** Include relevant historical context, regulatory/legal landscape, technical background, and statistical data in rationales.
 - **Codebases & Libraries:** When statements involve specific frameworks/tools, ensure accuracy reflects current authoritative repositories, SDKs, and official documentation.
@@ -148,6 +149,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 **Misconception Focus:** [State the misconception this statement targets and the corrective insight to emphasize during review.]
 
 **Failure Path Insight:** [Describe the failure or unhappy path this statement is designed to probe and the mitigation guidance to reinforce.]
+
+**Comparison Notes:** [Capture the key comparison/contrast insight this statement evaluates and the decision criteria for differentiating options.]
 
 **Citation:** Castro, M., & Liskov, B. (1999). Practical Byzantine fault tolerance. *OSDI*, 99, 173–186.
 

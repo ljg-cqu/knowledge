@@ -30,6 +30,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Inference Lists:** For advanced bugs, test understanding of how bugs affect adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
 - **Open Questions & Research:** For advanced bugs, surface awareness of systemic issues, edge cases, emergent risks, and investigation needs revealed by the bug.
 - **Misconception Targeting:** Document the debugging misconception or faulty heuristic each task should expose, along with the corrective framing to include in the output template for interviewer debriefs.
+- **Comparison Coverage:** Encourage evaluators to contrast alternative fixes or diagnostic strategies and capture the criteria (e.g., performance vs. maintainability) for choosing the preferred approach.
 
 ### 2. Content Design
 
@@ -50,6 +51,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Grader Notes:** Document common incorrect approaches (e.g., treating symptom instead of root cause) and alternative valid fixes. List edge cases where fixes might fail.
 - **Misconception Focus:** Explain the misconception this bug surfaces and the insight graders should reinforce.
 - **Failure Path Insight:** Describe the failure/unhappy path the bug reveals and the mitigation or regression testing guidance interviewers should emphasize.
+- **Comparison Notes:** Capture the comparison/contrast insight (e.g., brute-force fix vs. principled refactor) and the decision criteria guiding the preferred solution.
 
 ### 4. Execution & Format
 

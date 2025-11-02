@@ -10,6 +10,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
 - **Misconception Targeting:** For each Q&A, note the misconception, bias, or oversimplified heuristic it is designed to surface and capture the corrective insight that should appear in the output narrative.
 - **Failure Path Coverage:** Capture the key failure/unhappy path scenario (e.g., rollback gaps, degraded service, stakeholder misalignment) and the mitigation guidance that must appear in the output narrative.
+- **Comparison Coverage:** Ensure each Q&A highlights meaningful comparisons or contrasts (technologies, architectures, governance patterns, etc.) where relevant, capturing the rationale for preferring one option over another in the output narrative.
 - **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
 - **Perspectives:** Engineering (software, front/back-end, infra), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), management (product, requirements, architecture, system), operations (testing, marketing)
 - **Difficulty & Bloom:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic. Target Bloom taxonomy levels: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced)
@@ -48,6 +49,8 @@ Generate 100 interview Q&A pairs based on the provided job description.
 **Misconception Focus:** [Summarize the misconception this Q&A addresses and the corrective guidance to emphasize.]
 
 **Failure Path Insight:** [Describe the failure/unhappy path surfaced and the mitigation or contingency guidance to highlight.]
+
+**Comparison Notes:** [Capture the key comparison/contrast insights and decision criteria that arose in the answer.]
 
 ---
 
