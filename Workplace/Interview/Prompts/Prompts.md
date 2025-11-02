@@ -4,42 +4,49 @@ Generate 100 interview Q&A pairs based on the provided job description.
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Coverage & Organization
 
-- **MECE Approach:** Cover all technical areas (Mutually Exclusive, Collectively Exhaustive)
-- **Elements:** Technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, risks, costs, use cases)
-- **Codebases & Tooling:** Reference authoritative repositories, SDKs, audits, and tooling suites with quick notes on language support, licensing, maturity, integration hooks, and performance/security benchmarks.
-- **Misconception Targeting:** For each Q&A, note the misconception, bias, or oversimplified heuristic it is designed to surface and capture the corrective insight that should appear in the output narrative.
-- **Failure Path Coverage:** Capture the key failure/unhappy path scenario (e.g., rollback gaps, degraded service, stakeholder misalignment) and the mitigation guidance that must appear in the output narrative.
-- **Comparison Coverage:** Ensure each Q&A highlights meaningful comparisons or contrasts (technologies, architectures, governance patterns, etc.) where relevant, capturing the rationale for preferring one option over another in the output narrative.
-- **Conflict & Feedback Coverage:** Surface stakeholder tensions, conflict drivers, feedback loops, and resolution tactics so interviewers can probe communication and alignment strategies.
-- **Signals & Risks:** Summarize adoption signals, interoperability impacts, roadmap implications, and operational risks for each topic cluster.
-- **Open Research:** Flag unresolved issues, knowledge gaps, or prioritized investigation tracks that emerge.
-- **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
-- **Perspectives:** Engineering (software, front/back-end, infra), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product & program management, requirements/business analysis, operations/DevOps, marketing & go-to-market
-- **Difficulty & Bloom:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic. Target Bloom taxonomy levels: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced)
+**MECE topic coverage**
+- Cover all technical areas using a mutually exclusive, collectively exhaustive structure.
+- Include technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, risks, costs, use cases) elements.
+- Reference authoritative codebases, SDKs, audits, and tooling suites; record language support, licensing, maturity, integration hooks, and performance/security benchmarks.
 
-### 2. Content Design
+**Insight coverage per Q&A**
+- Document the misconception, bias, or oversimplified heuristic surfaced and write the corrective insight into the narrative.
+- Capture failure/unhappy paths (e.g., rollback gaps, degraded service, stakeholder misalignment) plus mitigation guidance.
+- Highlight meaningful comparisons or contrasts (technologies, architectures, governance patterns, etc.) and the rationale for option selection.
+- Surface stakeholder tensions, conflict drivers, feedback loops, and resolution tactics to probe communication and alignment strategies.
+- Summarize adoption signals, interoperability impacts, roadmap considerations, operational risks, and open research tracks that emerge.
 
-- **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
-- **Evaluation:** Technical (performance, security, scalability, maintainability, algorithmic complexity & error tolerance, reliability/HA, energy/resource metrics) and business (cost, efficiency, impact, market fit, operational energy cost)
-- **Trade-offs:** Address essential/non-trivial trade-offs with decision-making guidance
-- **Questions:** Mix theoretical, practical, and scenario-based on real-world applications
-- **Answers:** 150-300 words with technical details, technologies, and practical examples; explain key concepts/terminologies clearly using analogies, formulas, etc. as needed
-- **Evidence Discipline:** State explicit assumptions, validation checks, counterexamples, and alternatives to keep reasoning auditable.
-- **Authoritative Sources:** Integrate takeaways from standards, peer-reviewed literature, regulatory reports, and other vetted references that directly support the guidance.
-- **Collaboration & Governance:** Highlight permission/trust considerations and cross-functional alignment tactics that influence execution quality.
+**Context & perspective balance**
+- Provide historical evolution, legal/regulatory landscape, future trends, key events, and statistical data for each cluster.
+- Address perspectives spanning engineering (software, front-end, back-end, infrastructure), architecture & infrastructure (including hardware design, deployment, energy/resource consumption), database & data engineering, quality assurance/testing, product & program management, requirements/business analysis, operations/DevOps, and marketing & go-to-market.
 
-### 3. Execution
+**Difficulty profile**
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution grouped by topic.
+- Align Bloom taxonomy targets: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced).
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation
-- **Format:** Markdown with proper headings and code blocks
-- **Clarification:** Use code snippets, tables, analogies, formulas, and diverse mermaid diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.). Where relevant, include complexity class plus compute/memory and energy/resource estimates (e.g., O(n), memory bounds, J/tx, kW/node).
-- **Research:** Latest info from authoritative sources (official docs, codebases, standards); cross-reference multiple sources
-- **Documentation:** Call out the specific codebases/tools consulted and note why each is trusted.
-- **Navigation:** Begin with a compact contents block linking to the major sections of the output for quick scanning.
-- **Citations:** Include APA 7th edition references for all sourced material, aligning with the output template section.
-- **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; **evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment)**; verify accuracy, completeness, relevance, and MECE compliance
+### Content Design
+
+- Target senior/expert readers with both deep technical understanding and broad strategic perspective.
+- Evaluate answers along technical dimensions (performance, security, scalability, maintainability, algorithmic complexity & error tolerance, reliability/HA, energy/resource metrics) and business dimensions (cost, efficiency, impact, market fit, operational energy cost).
+- Address essential and non-trivial trade-offs with clear decision-making guidance.
+- Mix theoretical, practical, and scenario-based questions grounded in real-world applications.
+- Write 150–300 word answers with technical details, concrete technologies, and practical examples; clarify terminology with analogies, formulas, or visuals when helpful.
+- Maintain evidence discipline: state assumptions, validation checks, counterexamples, and alternatives to keep reasoning auditable.
+- Integrate authoritative sources (standards, peer-reviewed literature, regulatory reports, vetted references) and explain why each is trusted.
+- Highlight collaboration, permission, trust, and governance considerations plus cross-functional alignment tactics influencing execution quality.
+
+### Execution
+
+- Plan before drafting: reflect on approach, outline coverage, and ensure MECE structure.
+- Deliver in Markdown with clear headings and code blocks.
+- Use clarifying assets (code snippets, tables, analogies, formulas, mermaid diagrams—architecture, class, C4, ERD, block, sequence, state, flowchart, data flow, Gantt, Kanban, user journey, analytical charts). Include complexity class, compute/memory bounds, and energy/resource estimates when relevant.
+- Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references.
+- Document consulted codebases/tools and justify their reliability.
+- Provide a compact Contents block linking to major sections for quick scanning.
+- Cite sources in APA 7th edition and ensure alignment with the output template.
+- Apply creative then critical thinking, evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment), and verify accuracy, completeness, relevance, and MECE compliance.
 
 ## Output Template
 

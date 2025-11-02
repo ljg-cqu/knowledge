@@ -9,79 +9,80 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Task Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 5–8 coding tasks per topic cluster (aim for 7+ when comprehensive coverage is needed; use 5–6 for focused or narrow topic clusters). Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
-- **Numbering:** Number all tasks sequentially (Task 1, Task 2, etc.) for easy tracking and reference. Include task numbers in Contents links.
-- **Bloom Taxonomy:** Target Apply/Create levels. Foundational tasks test basic implementation of known algorithms; intermediate tasks require applying patterns to solve multi-step problems; advanced tasks demand creating novel solutions or optimizing for complex constraints.
-- **Task Scope & Elements:** Keep tasks narrowly scoped and self-contained. Use MECE when building a question bank to avoid overlapping concepts. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, risks, costs, use cases, edge-case handling).
-- **Specification:** Provide complete problem description including input/output formats, function signature, data structures, allowed libraries, and all edge cases. Include relevant historical evolution, technical context, and real-world application scenarios.
-- **Constraints:** State explicit constraints: time limits (e.g., 1s per test), memory limits (e.g., 256MB), allowed standard libraries, and prohibited approaches (if any).
-- **Complexity:** Specify expected algorithm complexity (time/space) when relevant to the learning objective.
-- **Validation & Evidence Checks:** Provide test cases and benchmarks that support correct implementation.
-- **Counterexamples & Edge Cases:** Test handling of edge cases through hidden tests (empty inputs, large inputs, boundary values) and ensure failure/unhappy paths trigger rollback or mitigation expectations.
-- **Misconception Targeting:** For each task, note the common misconception or flawed implementation strategy the test suite is designed to surface, and capture the corrective takeaway that must appear in the output template.
-- **Comparison Coverage:** Where relevant, require comparisons between implementation strategies (e.g., data structures, concurrency models, security hardening options) and document the criteria for preferring one approach over another.
-- **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites when tasks involve specific frameworks or protocols; capture language support, licensing, maturity, integration hooks.
-- **Authoritative Literature:** Base tasks on algorithms/protocols from white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions (e.g., in reference solution notes and grader guidance), especially for advanced tasks.
-- **Governance & Trust Dimensions:** When relevant, include permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/HA strategies in task specifications (e.g., cryptographic validation, access control, distributed consistency).
-- **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** For advanced tasks, integrate broader considerations from philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as appropriate.
-- **Collaboration & Organizational Dynamics:** For advanced tasks, consider cross-functional communication patterns, governance models, institutional constraints, and change management in code design.
-- **Organizational & Strategic Operations:** For advanced tasks, consider business model implications, institutional capabilities, change readiness, and long-term strategic positioning in code architecture and design choices.
-- **Inference Lists:** For advanced tasks, test implementations that inform adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
-- **Open Questions & Research:** For advanced tasks, surface awareness of implementation limitations, edge cases, emergent risks, and investigation needs in code comments or documentation.
+- Generate 5–8 coding tasks per topic cluster (use 7+ for comprehensive sets, 5–6 for narrow focus).
+- Number tasks sequentially (Task 1, Task 2, …) with anchors in the Contents section.
+- Maintain Foundational (20%), Intermediate (50%), Advanced (30%) distribution targeting Bloom Apply/Create: foundational tasks implement known algorithms, intermediate tasks apply patterns to multi-step problems, advanced tasks design novel or optimized solutions under complex constraints.
 
-### 2. Content Design
+### Specification & Context
 
-- **Target Level:** Apply/Create (Bloom). Test ability to implement algorithms, manipulate data structures, handle edge cases, and write clean, idiomatic code with technical depth and practical application awareness (senior/expert level).
-- **Starter Code:** Provide a skeleton with function signature, docstrings, and placeholder comments to guide implementation. Include necessary imports and data structure definitions.
-- **Test Coverage:** Supply 6–10 unit tests covering:
-  - **Public tests (3–5):** Shown to students for immediate feedback; include basic cases and one edge case.
-  - **Hidden tests (3–5):** Not shown; test robustness, performance, and additional edge cases (e.g., empty inputs, large inputs, boundary values).
-- **Reference Solution:** Provide a correct, well-commented implementation and brief explanation of approach/complexity.
-- **Evaluation Dimensions:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance) and business (efficiency, practical impact) considerations.
-- **Trade-offs:** For advanced tasks, address essential trade-offs (e.g., time vs space complexity, security vs performance, consistency vs availability).
-- **Governance & Assurance:** When applicable, examine permission boundaries, trust models, privacy requirements, and error-tolerance expectations in code design.
+- Keep tasks narrowly scoped and self-contained; apply MECE principles to avoid overlapping concepts.
+- Cover technical, theoretical, and practical elements: techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations (including energy/resource consumption); theories, principles, axioms, laws, assumptions, models; regulations, market dynamics, permission/consensus governance, risks, costs, use cases, edge-case handling.
+- Provide a complete specification: input/output formats, function signatures, data structures, allowed/prohibited libraries, explicit constraints (time/memory limits), and historical or real-world application context.
+- State expected time/space complexity when learning objectives demand it.
+- Reference authoritative repositories, SDKs, tooling suites with details on language support, licensing, maturity, integration hooks; base tasks on protocols/algorithms documented in white/yellow papers, peer-reviewed studies, standards, books/manuals, curated encyclopedias.
 
-### 3. Evaluation & Grading
+### Analytical Coverage & Diagnostics
 
-- **Scoring Breakdown:** Recommended: Correctness (70%), Edge-case handling (20%), Code style/tests (10%). Adjust proportions per difficulty while maintaining 100% total.
-- **Grader Notes:**
+- Supply public and hidden tests that validate correct implementation, performance, and edge-case handling (empty inputs, large inputs, boundary values). Hidden tests must expose failure/unhappy paths and rollback expectations.
+- Capture explicit assumptions, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions in reference solutions and grader notes, especially for advanced tasks.
+- Document misconceptions or flawed strategies each task is designed to surface, plus corrective takeaways.
+- Require comparisons between implementation strategies (data structures, concurrency models, security hardening options) and define decision criteria.
+- Include governance/trust considerations (permission models, decentralization, privacy/transparency balances, design-pattern choices, error tolerance, reliability/HA expectations) when relevant.
+- Examine perspectives from engineering (front-end, back-end, full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- For advanced tasks, add philosophical, economic, financial, capital-market, psychological, sociological, anthropological, legal, policy, military strategy, education system, and historical lenses where appropriate.
+- Discuss cross-functional communication, governance models, institutional constraints, change management, cultural alignment, business model implications, institutional capabilities, change readiness, strategic positioning, adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (including upgrade readiness, testing coverage, rollback triggers), and open research agendas tied to the implementation.
 
-- Document common implementation mistakes, performance pitfalls, and partial-credit guidance (e.g., correct logic but inefficient → 70%).
-- Highlight tests that reveal misunderstanding of key concepts.
-- **Misconception Focus:** [Summarize the misconception this task addresses and the key message to reinforce with candidates.]
-- **Failure Path Insight:** [Explain the failure or unhappy path the tests are designed to expose and the mitigation or hardening steps interviewers should stress.]
-- **Comparison Notes:** [Capture the comparison/contrast insights (e.g., approach A vs B) and the decision criteria emphasized in evaluation.]
+### Content Design
 
-### Auto-Grading
+- Target senior/expert-level Apply/Create proficiency: implementing algorithms, manipulating data structures, handling edge cases, writing clean idiomatic code with practical awareness.
+- Provide starter code with function signatures, docstrings, placeholder comments, necessary imports, and data structure definitions.
+- Deliver 6–10 unit tests: 3–5 public tests (basic + representative edge case) and 3–5 hidden tests (robustness, performance, additional edge cases). Clarify test runner usage (pytest, unittest, jest, etc.).
+- Include a reference solution with commentary and complexity analysis.
+- Evaluate along technical dimensions (throughput/latency, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance) and business dimensions (efficiency, practical impact).
+- Address trade-offs such as time vs space complexity, security vs performance, consistency vs availability; examine permission boundaries, trust models, privacy requirements, error-tolerance expectations.
 
-- Use an isolated test runner (e.g., pytest, unittest, jest). Public tests provide feedback; hidden tests ensure robustness without over-fitting.
+### Evaluation & Grading
 
-### 4. Execution & Format
+- Recommend scoring breakdowns totaling 100% (e.g., Correctness 70%, Edge-case handling 20%, Code style/tests 10%) and adjust per difficulty.
+- Provide grader notes detailing common implementation mistakes, performance pitfalls, partial-credit guidance (e.g., correct logic but inefficient → 70%), and tests that reveal misunderstanding of key concepts.
+- Record misconception focus, failure path insights, and comparison notes for interviewers.
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use fenced code blocks. Specify language (e.g., `python`, `javascript`) and include instructions to run tests locally.
-- **Security:** Avoid shipping secrets (private keys, API tokens). Use ephemeral/generated keys or mock credentials where blockchain/crypto interactions are needed.
-- **Clarity Aids:** Include a small flowchart (mermaid) showing input→processing→output flow when helpful. Use tables to summarize test cases or constraints. Use diverse visualization types: mermaid diagrams (structural, behavioral, analytical), analogies, comparisons. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Explain key concepts/terminologies clearly in problem descriptions and comments.
-- **Context Integration:** Include relevant technical context, best practices, and real-world application scenarios.
-- **Real-World Grounding:** Base tasks on real-world applications and practical coding scenarios.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all tasks (Task 1–Task n) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and Task 1–Task n)
-  - Executive Summary (2–4 bullets: assessment goals, programming scope, auto-grading approach)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and task indices); Topic Cluster Mapping Table (Cluster → scope → task indices)
-  - Glossary & Acronym Index (key algorithms, data structures, protocol concepts tested)
-  - How to Use This in Interviews (auto-grading setup, scoring breakdown, and local testing instructions)
-  - Key Decision Criteria Checklist (when applicable: algorithm selection criteria, security requirements, performance targets, etc.)
-  - Key Decision Criteria Matrix (Quick Picks) mapping implementation approaches to criteria (when applicable)
-- **Tags:** Label each task with Difficulty, Bloom level, and language.
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Ensure tasks reflect best practices and broader software engineering principles.
-- **Citations:** Include APA 7th edition references for tasks referencing external protocols, algorithms, or standards.
+### Execution & Format
+
+- Plan carefully before authoring; align coverage, difficulty mix, and artifact checklist.
+- Use Markdown with clear headings and fenced code blocks for problem statements, starter code, tests, and reference solutions. Include commands for running tests locally.
+- Avoid embedding secrets; use mock credentials for blockchain/crypto contexts.
+- Provide clarifying aids such as flowcharts (mermaid), tables summarizing test cases/constraints, analogies, comparisons, formulas. Maintain mermaid portability (no edge labels; quote node labels containing special characters like parentheses/slashes).
+- Explain terminology and key concepts within problem descriptions and comments.
+- Root tasks in real-world scenarios with relevant technical context and best practices.
+- Insert a compact Contents section linking to major sections and all tasks (Task 1–Task n) using GitHub-compatible anchors.
+- Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, programming scope, auto-grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (auto-grading setup, scoring breakdown, local testing instructions); Key Decision Criteria Checklist (algorithm selection, security requirements, performance targets, etc.); Key Decision Criteria Matrix (Quick Picks) mapping implementation approaches to criteria when applicable.
+- Tag each task with Difficulty, Bloom level, language.
+- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
+- Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition.
+
+### Shared Evaluation Checklist (apply to every task)
+
+- **Technical Evaluation**: performance (throughput/latency), security posture, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource consumption.
+- **Business Evaluation**: cost implications, efficiency, impact, market fit.
+- **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
+- **Terminology & Key Concepts**: define algorithms, data structures, protocol concepts with analogies/formulas/examples for graders.
+- **Context & Background**: outline historical evolution, technical context, market dynamics, regulatory landscape, key events/statistics underpinning the problem.
+- **Validation & Evidence Checks**: include benchmarks, datasets, or experiments supporting solution correctness/performance.
+- **Counterexamples & Edge Cases**: document scenarios challenging naive implementations and expected mitigations.
+- **Alternatives & Trade-offs**: compare approaches, note trade-offs, specify decision criteria (permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance).
+- **Perspective-Based Insights**: evaluate solutions across engineering disciplines, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: assess systemic forces, regulatory/policy trajectories, market structure/liquidity, geopolitical/security implications, societal adoption/behavior shifts, competitive ecosystem positioning, macroeconomic/industry models when relevant.
+- **Inference Summary**: identify adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
+- **Collaboration & Communication Plan**: define stakeholders, communication cadence/channels, cross-functional alignment tactics for implementation.
+- **Organizational & Strategic Fit**: analyze business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
+- **Codebase & Library References**: enumerate repositories/libraries with stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
+- **Authoritative Literature**: cite standards, documentation, audits, papers underpinning algorithms or frameworks.
+- **Actionable Conclusions**: summarize best practices, design principles, prioritized follow-up actions.
+- **Open Questions & Research Agenda**: list remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for further exploration.
+- **APA Style Source Citations**: ensure all references follow APA 7th edition and directly support task content.
 
 ## Output Template
 

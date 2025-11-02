@@ -9,69 +9,89 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Scenario Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 3–5 case study scenarios per topic cluster (aim for 4–5 when comprehensive coverage is needed; use 3 for focused or narrow topic clusters). Difficulty distribution: Foundational (20%), Intermediate (40%), Advanced (40%).
-- **Numbering:** Number all scenarios sequentially (Scenario 1, Scenario 2, etc.) for easy tracking and reference. Include scenario numbers in Contents links.
-- **Bloom Taxonomy:** Target Analyze/Evaluate levels primarily. Foundational scenarios test analysis of straightforward issues; intermediate scenarios require comparing alternatives and discussing trade-offs; advanced scenarios demand evaluation of complex system interactions and synthesis of multi-faceted recommendations.
-- **Scenario Design & Elements:** Provide 200–400 words with explicit constraints, assumed facts, and self-contained context. Ensure scenario reflects real-world complexity (technical debt, resource limits, stakeholder conflicts). Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases).
-- **Task Structure:** 3–4 MECE tasks covering: issue identification, solution proposals with trade-offs, remediation plans, stakeholder communication, and decision recommendations.
-- **Context:** Include relevant historical evolution, legal/regulatory landscape, future trends, key events, statistical data, and system interactions. Surface technical (protocols, patterns, performance, algorithm complexity, distributed consistency, reliability/HA) and business (cost, impact, risk, market fit) dimensions. For RWA contexts, incorporate tokenization standards, custody requirements, regulatory compliance, or asset lifecycle considerations.
-- **Codebases & Libraries:** When relevant, identify authoritative repositories, SDKs, tooling suites, and audits; capture language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks.
-- **Inference Lists:** Provide bullet summaries for adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers) per scenario.
-- **Open Questions & Research:** Surface unresolved problems, knowledge gaps, emergent risks, and prioritized investigation tracks per scenario.
-- **Authoritative Literature:** Distill takeaways from white/yellow papers, peer-reviewed studies, theses, market investigations, regulatory reports, books/manuals, and vetted encyclopedic resources; link claims to practical implementation guidance.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions for each scenario.
-- **Collaboration & Organizational Dynamics:** Address cross-functional communication, governance models, institutional constraints, change management, and cultural alignment within teams and partner organizations.
-- **Governance & Trust Dimensions:** Assess permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
-- **Perspectives:** Ensure scenarios cover: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** Integrate philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as relevant to scenarios.
-- **Validation & Evidence Checks:** Require explicit evidence, data points, or benchmarks supporting scenario solutions.
-- **Counterexamples & Edge Cases:** Test understanding of edge cases and scenarios that challenge main solutions.
-- **Alternatives Considered:** Require candidates to consider and compare alternative approaches.
-- **Misconception Targeting:** Identify the prevalent misconception or oversimplified heuristic each scenario should surface and document the corrective narrative that interviewers will reinforce in the output template.
-- **Failure Path Coverage:** Highlight failure/unhappy path trajectories (e.g., rollback missteps, degraded performance, stakeholder conflicts) and specify expected mitigation or contingency planning notes to capture in the output template.
-- **Comparison Coverage:** Ensure scenarios demand explicit comparisons (e.g., architectural patterns, governance models, rollout strategies) and capture the criteria for preferring one option over another in the output template.
+- Generate 3–5 case study scenarios per topic cluster (aim for 4–5 for comprehensive coverage, 3 for focused clusters).
+- Number scenarios sequentially (Scenario 1, Scenario 2, …) and add anchors in the Contents section.
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution targeting Bloom Analyze/Evaluate. Foundational scenarios emphasize straightforward diagnoses, intermediate scenarios compare alternatives and trade-offs, advanced scenarios synthesize complex interactions and recommendations.
 
-### 2. Content Design
+### Scenario Composition & Context
 
-- **Target Level:** Analyze/Evaluate (Bloom). Expect candidates to synthesize information, compare alternatives, and justify recommendations with deep technical understanding and broad strategic perspective (senior/expert level).
-- **Deliverables:** Require outputs such as issue lists, solution memos (≤300 words), decision matrices, stakeholder communication drafts, and remediation timelines.
-- **Trade-offs:** Explicitly test understanding of essential/non-trivial trade-offs (e.g., privacy vs transparency, throughput vs consistency, centralization vs decentralization, cost vs resilience, permissioning vs. decentralization choices, trust/privacy balances, algorithmic complexity limits, upgrade path risks with mitigation strategies).
-- **Evaluation Dimensions:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance, distributed consistency guarantees) and business (cost, efficiency, impact, market fit) dimensions.
-- **Governance & Assurance:** Examine how permission boundaries, stakeholder trust models, privacy/transparency requirements, error-tolerance envelopes, and distributed consistency guarantees influence scenario solutions.
-- **Macro Narratives:** Relate scenario solutions to systemic dynamics (economic cycles, stock/crypto market behaviors, liquidity and valuation trends, regulatory shifts, geopolitical/security considerations, societal adoption patterns, organizational behavior, historical precedents, macroeconomic/industry economic models).
-- **Collaboration & Communication:** Surface stakeholder alignment plans, cross-team workflows, and communication cadences that impact execution quality in scenario solutions.
-- **Organizational & Strategic Operations:** Highlight business model implications, institutional capabilities, change readiness, and long-term strategic positioning in scenario context and expected solutions.
+- Draft 200–400 word scenarios with explicit constraints, assumed facts, and self-contained context reflecting real-world complexity (technical debt, resource limits, stakeholder conflict).
+- Cover technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) dimensions.
+- Structure tasks MECE-style (3–4 prompts) spanning issue identification, solution proposals with trade-offs, remediation plans, stakeholder communication, decision recommendations.
+- Provide contextual grounding: historical evolution, legal/regulatory landscape, future trends, key events, statistical data, system interactions. Highlight technical metrics (protocols, patterns, performance, complexity, distributed consistency, reliability/HA) and business metrics (cost, impact, risk, market fit). For RWA scenarios, include tokenization standards, custody requirements, compliance obligations, asset lifecycle details.
+- Reference authoritative repositories, SDKs, tooling suites, audits with notes on language support, licensing, maturity, integration hooks, distributed consistency models, performance/security benchmarks.
 
-### 3. Evaluation & Grading
+### Analytical Coverage & Perspectives
 
-- **Rubric:** Provide scoring bands and breakdown per task (e.g., Task 1: 8 pts, Task 2: 10 pts, Task 3: 6 pts).
-- **Partial Credit:** Supply checklists for partial credit (e.g., correct diagnosis + incomplete solution = 60%). Document expected evidence and common omissions.
-- **Grader Notes:** List key points, acceptable alternative approaches, and edge cases that deserve bonus credit.
+- Summarize adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (including upgrade readiness, testing coverage, rollback triggers) per scenario.
+- Surface unresolved problems, knowledge gaps, emergent risks, prioritized investigation tracks.
+- Capture explicit assumptions, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions.
+- Address cross-functional communication, governance models, institutional constraints, change management, cultural alignment, business model implications, institutional capabilities, change readiness, strategic positioning.
+- Evaluate permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error-tolerance expectations, reliability/high-availability strategies.
+- Incorporate perspectives: engineering (front-end, back-end, full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- Integrate philosophical (necessity vs contingency, ethics, epistemology), economic, financial, capital-market, psychological, sociological, anthropological, legal, policy, military strategy, education system, and historical viewpoints where applicable.
+- Require evidence: data points, benchmarks, or citations validating recommendations.
 
-### 4. Execution & Format
+### Diagnostic Focus
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use clear task headings, fenced code blocks, and tables. Include assets in `assets/` folder (logs, configs, diagrams) when needed.
-- **Clarity Aids:** Use decision matrices (criteria vs options), mermaid diagrams (sequence/flow charts), and comparison tables to clarify system interactions. Use diverse visualization types: mermaid diagrams (structural, behavioral, analytical), code snippets, analogies, comparisons, formulas. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Explain key concepts/terminologies clearly using analogies, formulas, etc. as needed.
-- **Context Integration:** Include historical evolution, legal/regulatory landscape, future trends, key events, and statistical data to enrich scenarios.
-- **Real-World Grounding:** Base scenarios on real-world applications; mix theoretical, practical, and scenario-based contexts reflecting actual business/technical challenges.
-- **Multi-Angle Evaluation:** Evaluate scenarios from multiple angles including pros, cons, risks, benefits, alternatives, stakeholder emotional/psychological impact, and market sentiment.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all scenarios (Scenario 1–Scenario n) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and Scenario 1–Scenario n)
-  - Executive Summary (2–4 bullets: assessment goals, topic scope, key trade-offs tested)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and scenario indices); Topic Cluster Mapping Table (Cluster → scope → scenario indices)
-  - Glossary & Acronym Index (short definitions of key terms)
-  - How to Use This in Interviews (evaluation guidance and rubric application notes)
-  - Key Decision Criteria Checklist (when applicable to scenario domain: privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.)
-  - Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches with notes/signals (when applicable)
-- **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Harmonize technical depth with philosophical rigor and macro-level insight; trace implications across disciplines while maintaining MECE clarity.
-- **Citations:** Include APA 7th edition references for standards, frameworks, or regulatory references used in scenarios.
+- Identify the misconception or oversimplified heuristic each scenario reveals and outline corrective guidance for interviewers.
+- Highlight failure/unhappy path trajectories (e.g., rollback missteps, degraded performance, stakeholder conflict) and specify mitigation/contingency notes for the template.
+- Emphasize comparisons (architectural patterns, governance models, rollout strategies) and codify decision criteria for selecting preferred options.
+
+### Content Design
+
+- Target senior/expert candidates who synthesize information, compare options, and justify recommendations with depth.
+- Require deliverables such as issue lists, ≤300-word solution memos, decision matrices, stakeholder communication drafts, remediation timelines.
+- Test essential trade-offs: privacy vs transparency, throughput vs consistency, centralization vs decentralization, cost vs resilience, permissioning vs decentralization, trust/privacy balances, algorithmic complexity limits, upgrade path risks with mitigation strategies.
+- Evaluate outputs along technical (throughput/latency, security, scalability, maintainability, reliability/HA, algorithm complexity, error tolerance, distributed consistency guarantees) and business (cost, efficiency, impact, market fit) axes.
+- Examine how permission boundaries, trust models, privacy/transparency requirements, error-tolerance envelopes, distributed consistency guarantees shape solutions.
+- Connect responses to macro narratives (economic cycles, stock/crypto markets, liquidity/valuation trends, regulatory shifts, geopolitical/security factors, societal adoption, organizational behavior, historical precedents, macro/industry models).
+- Surface stakeholder alignment plans, cross-team workflows, communication cadences that affect execution quality.
+- Articulate business model implications, institutional capabilities, change readiness, long-term strategic positioning.
+
+### Evaluation & Grading
+
+- Provide scoring bands per task (e.g., Task 1: 8 pts, Task 2: 10 pts, Task 3: 6 pts) with clear criteria.
+- Offer partial-credit checklists (e.g., correct diagnosis but incomplete solution = 60%) and document expected evidence and common omissions.
+- Detail grader notes: key points, acceptable alternatives, edge cases worth bonus credit.
+
+### Execution & Format
+
+- Plan thoroughly before generation; validate coverage, difficulty balance, and artifact checklist.
+- Deliver content in Markdown with clear task headings, fenced code blocks, and tables. Store supplemental assets in `assets/` (logs, configs, diagrams) when needed.
+- Use decision matrices, mermaid diagrams (sequence, flow, structural), comparison tables, code snippets, analogies, formulas to clarify interactions. For mermaid portability avoid edge labels and quote node labels containing special characters (parentheses, slashes).
+- Define terminology with analogies/formulas/examples when useful.
+- Integrate historical, regulatory, and technical context plus key events/statistics.
+- Base scenarios on real-world applications spanning theoretical, practical, and scenario contexts.
+- Include a compact Contents section linking to major sections and every scenario (Scenario 1–Scenario n) with GitHub-compatible anchors.
+- Provide required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable.
+- Tag each scenario with Difficulty and Bloom level.
+- Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
+- Ensure holistic reasoning that balances technical depth, philosophical rigor, macro insight, and MECE clarity.
+- Cite standards, frameworks, regulatory references, and other sources in APA 7th edition.
+
+### Shared Evaluation Checklist (apply to every scenario and response)
+
+- **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity, error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements and energy/resource consumption.
+- **Business Evaluation**: cost, efficiency, impact, market fit.
+- **Multi-Angle Review**: pros, cons, risks (including upgrade/migration and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
+- **Terminology & Key Concepts**: provide concise definitions with analogies or formulas where needed.
+- **Context & Background**: capture historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics relevant to the scenario.
+- **Validation & Evidence Checks**: include data points, benchmarks, experiments supporting conclusions.
+- **Counterexamples & Edge Cases**: document challenging scenarios and mitigation strategies.
+- **Alternatives & Trade-offs**: compare options, record trade-offs, specify decision criteria (permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance).
+- **Perspective-Based Insights**: interpret responses across engineering, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: discuss systemic forces, regulatory/policy trajectories, market structure/liquidity, geopolitical/security implications, societal adoption/behavior shifts, competitive ecosystem positioning, macroeconomic/industry models.
+- **Inference Summary**: note adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
+- **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, cross-functional alignment tactics.
+- **Organizational & Strategic Fit**: analyze business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
+- **Codebase & Library References**: list repositories/libraries with stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
+- **Authoritative Literature**: cite papers, standards, audits, books with core findings, practical implications, credibility signals.
+- **Actionable Conclusions & Next Steps**: summarize decisions, prioritized actions, owners/timelines.
+- **Open Questions & Research Agenda**: capture remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for exploration.
+- **APA Style Source Citations**: ensure references follow APA 7th edition and directly support scenario content.
 
 ## Output Template
 

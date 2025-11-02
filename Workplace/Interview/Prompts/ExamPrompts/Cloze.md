@@ -9,66 +9,86 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Item Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 10–15 cloze items per topic cluster (aim for 12+ when comprehensive coverage is needed; use 10–11 for focused or narrow topic clusters). Difficulty distribution: Foundational (30%), Intermediate (50%), Advanced (20%).
-- **Numbering:** Number all items sequentially (Item 1, Item 2, etc.) for easy tracking and reference. Include item numbers in Contents links.
-- **Bloom Taxonomy:** Target Remember/Understand levels. Foundational items test direct recall of definitions; intermediate items require understanding of relationships between concepts; advanced items test comprehension of nuanced distinctions or context-dependent terminology.
-- **Term Selection & Elements:** Use MECE principles to choose target terms/phrases. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, key terms, acronyms, market dynamics, permission/consensus governance, risks, costs, use cases).
-- **Scope:** Keep each item narrowly scoped and unambiguous. Avoid overlapping blanks or ambiguous phrasing that could confuse candidates.
-- **Validation & Evidence Checks:** Provide authoritative sources confirming term definitions and usage.
-- **Counterexamples & Edge Cases:** Include related terms often confused with target terms, with clear distinctions, and call out failure/unhappy path interpretations that require correction.
-- **Misconception Targeting:** Document the near-miss or misconception each blank could trigger and specify the corrective note that will appear in the output template for interviewer guidance.
-- **Comparison Coverage:** When helpful, situate terms against close alternatives or competing methodologies and document the decision criteria that distinguish them for later reference in outputs.
-- **Conflict & Feedback Coverage:** Surface terminology linked to stakeholder tension, communication friction, or feedback loops so graders can probe alignment and resolution strategies in rationales.
-- **Context:** Provide sufficient surrounding text to make the blank unambiguous; include relevant historical evolution, legal/regulatory landscape, future trends, key events, and statistical data.
-- **Codebases & Libraries:** When testing library/framework terminology, ensure terms reflect current authoritative repositories, SDKs, and tooling suites.
-- **Authoritative Literature:** Base terminology on white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases (near-miss terms), alternatives considered (synonyms/related terms), and actionable conclusions in grader notes where relevant.
-- **Governance & Trust Dimensions:** Include terms related to permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
-- **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** Include relevant terms from philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as appropriate.
-- **Collaboration & Organizational Dynamics:** Include terms related to cross-functional communication, governance models, institutional constraints, change management, and cultural alignment.
-- **Organizational & Strategic Operations:** Include terminology related to business model implications, institutional capabilities, change readiness, and long-term strategic positioning.
-- **Inference Lists:** Include terms related to adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
-- **Open Questions & Research:** Include awareness of terminology related to unresolved problems, knowledge gaps, emergent risks per topic cluster.
+- Generate 10–15 cloze items per topic cluster (target 12+ for broad coverage, 10–11 for narrow scopes).
+- Number items sequentially (Item 1, Item 2, …) with matching anchors in the Contents block.
+- Maintain Foundational (30%), Intermediate (50%), Advanced (20%) distribution targeting Bloom Remember/Understand. Foundational items focus on direct recall, intermediate items test conceptual relationships, advanced items probe nuanced distinctions or context-dependent terminology.
 
-### 2. Content Design
+### Term Selection & Context
 
-- **Target Level:** Remember/Understand (Bloom). Test factual recall, definition accuracy, and basic comprehension (senior/expert level with deep technical understanding and broad strategic perspective).
-- **Answer Format:** Provide canonical answers as arrays including accepted synonyms (e.g., ["scalability", "scale"]) and alternate spellings (e.g., "decentralization" vs "decentralisation").
-- **Normalization Rules:** Define explicit rules: case-insensitive matching, whitespace trimming, punctuation stripping. State rounding/formatting conventions for numeric answers.
-- **Partial Credit:** State per-blank scoring (e.g., 1 point per correct blank) and tolerance ranges for numeric values.
+- Apply MECE principles when selecting terms/phrases across technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and energy/resource optimization), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, key terms, acronyms, market dynamics, permission/consensus governance, risks, costs, use cases) pillars.
+- Keep each blank narrowly scoped and unambiguous; avoid overlapping blanks and ambiguous phrasing.
+- Provide surrounding context that clarifies the blank and incorporates historical evolution, legal/regulatory landscape, future trends, key events, statistical data, and relevant narratives.
+- Include authoritative codebases, SDKs, tooling suites when terminology relates to specific implementations, noting language support, licensing, maturity, integration hooks.
+- Use authoritative literature (white/yellow papers, peer-reviewed studies, standards, books/manuals, vetted encyclopedias) to anchor definitions.
 
-### 3. Evaluation & Grading
+### Analytical Coverage & Perspectives
 
-- **Acceptance Lists:** Provide a list of acceptable answers per blank; include common variations and synonyms.
-- **Tolerances:** For numeric blanks, specify acceptable ranges (e.g., ±2% or ±0.5 units).
-- **Grader Notes:** Document borderline cases and common near-miss answers; provide guidance on when to award partial credit.
-- **Distractor Notes:** Include a brief note on why common wrong answers are incorrect to aid feedback systems.
+- Document authoritative validation for each term, including sources confirming definitions and usage.
+- Capture counterexamples/edge cases: near-miss terms, commonly confused phrases, failure/unhappy path interpretations plus corrective guidance.
+- Record explicit assumptions, validation checks, alternatives considered (synonyms/related terms), and actionable conclusions in grader notes where relevant.
+- Address terminology connected to stakeholder tension, communication friction, or feedback loops to support alignment discussions.
+- Incorporate governance and trust dimensions (permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error-tolerance expectations, reliability/high-availability strategies).
+- Provide coverage across engineering disciplines (front-end, back-end, full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- Integrate philosophical, economic, financial, capital-market, psychological, sociological, anthropological, legal, policy, military strategy, education system, and historical perspectives when terminology intersects those domains.
+- Include terms signaling adoption, interoperability, roadmap implications (including upgrade sequencing), operational risks (including upgrade readiness, testing coverage, rollback triggers), unresolved questions, and emerging risks.
 
-### 4. Execution & Format
+### Diagnostic Focus
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use underscores (___) or brackets ([blank]) to indicate blanks clearly.
-- **Accessibility:** Provide ALT text for any inline images or diagrams used in cloze items.
-- **Clarity Aids:** When helpful, use mermaid diagrams, tables, code snippets, or analogies to provide context. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Ensure surrounding context clearly defines terms; use precise technical language.
-- **Context Integration:** Include relevant historical, regulatory, or technical context in the surrounding text where appropriate.
-- **Real-World Grounding:** Base items on real-world terminology and practical applications.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all items (Item 1–Item n) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and Item 1–Item n)
-  - Executive Summary (2–3 bullets: assessment goals, term coverage scope, scoring approach)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and item indices); Topic Cluster Mapping Table (Cluster → scope → item indices)
-  - Glossary & Acronym Index (core terms tested in cloze items)
-  - How to Use This in Interviews (auto-grading guidance and normalization rules)
-  - Key Decision Criteria Checklist (when applicable to terminology domain)
-  - Key Decision Criteria Matrix (Quick Picks) for term selection/usage patterns (when applicable)
-- **Tags:** Label each item with Difficulty and Bloom level.
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Ensure terms reflect current best practices and cross-disciplinary relevance.
-- **Citations:** Include APA 7th edition references for definitions from authoritative sources (standards, papers, official documentation).
+- Explicitly state the misconception, near-miss, or bias each blank targets and outline corrective notes for interviewer guidance.
+- Highlight decision criteria when comparing close alternatives or competing methodologies.
+- Capture stakeholder conflict or feedback cues relevant to the terminology.
+
+### Content Design
+
+- Target senior/expert audiences expected to demonstrate precise recall and nuanced understanding.
+- Provide canonical answer arrays listing accepted synonyms and alternate spellings (e.g., ["decentralization", "decentralisation"]).
+- Define normalization rules: case-insensitive matching, whitespace trimming, punctuation stripping; specify rounding/formatting conventions for numeric responses.
+- Note per-blank scoring (e.g., 1 point each) and tolerance ranges for numeric values.
+
+### Evaluation & Grading
+
+- Supply acceptance lists with common variations and synonyms for every blank.
+- Specify numeric tolerances (±% or ±absolute) where applicable.
+- Document grader notes on borderline answers, near misses, and partial-credit guidance.
+- Explain distractor notes describing why common incorrect answers fail, supporting feedback systems.
+
+### Execution & Format
+
+- Plan thoroughly before authoring to ensure MECE coverage and difficulty balance.
+- Present content in Markdown with clear headings; indicate blanks using underscores (___) or bracketed placeholders ([blank]).
+- Provide ALT text for any inline images or diagrams.
+- Use clarifying aids—mermaid diagrams, tables, code snippets, analogies—while ensuring mermaid portability (no edge labels, quote node labels containing special characters like parentheses or slashes).
+- Use precise technical language and explain key terminology as needed.
+- Integrate real-world contexts so items reflect practical applications.
+- Include a compact Contents section linking to major headings and all items (Item 1–Item n) with GitHub-compatible anchors.
+- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable).
+- Tag each item with Difficulty and Bloom level.
+- Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
+- Maintain holistic reasoning so terminology remains aligned with cross-disciplinary relevance.
+- Cite definitions using APA 7th edition formatting.
+
+### Shared Evaluation Checklist (apply to every item)
+
+- **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource consumption when pertinent to the term.
+- **Business Evaluation**: cost, efficiency, impact, market fit implications of the terminology.
+- **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
+- **Terminology & Key Concepts**: provide concise definitions with analogies/formulas/examples for graders.
+- **Context & Background**: capture historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics tied to the term.
+- **Validation & Evidence Checks**: reference authoritative sources validating definitions/usage.
+- **Counterexamples & Edge Cases**: log confusing alternatives, clarify distinctions, and note mitigation guidance.
+- **Alternatives & Trade-offs**: document competing terms/synonyms, articulate selection criteria (permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance).
+- **Perspective-Based Insights**: assess term relevance across engineering, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: consider systemic forces, regulatory/policy trajectories, market structure/liquidity, geopolitical/security implications, societal adoption/behavior shifts, competitive ecosystem positioning, macroeconomic/industry models.
+- **Inference Summary**: note adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness/testing coverage/rollback triggers).
+- **Collaboration & Communication Plan**: highlight stakeholders, communication cadence/channels, alignment tactics relevant to terminology usage.
+- **Organizational & Strategic Fit**: describe business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation linked to the term.
+- **Codebase & Library References**: cite repositories/libraries when terms arise from specific tools, including stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
+- **Authoritative Literature**: list standards, papers, documentation supporting usage with core findings and implications.
+- **Actionable Conclusions**: summarize key takeaways, prioritized actions, or principles enforced by the term.
+- **Open Questions & Research Agenda**: capture remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for deeper exploration.
+- **APA Style Source Citations**: ensure all references follow APA 7th edition and are credible/current.
 
 ## Output Template
 

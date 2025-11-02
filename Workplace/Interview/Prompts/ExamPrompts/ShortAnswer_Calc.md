@@ -9,67 +9,79 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Problem Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 8–12 short-answer/calculation problems per topic cluster (aim for 10+ when comprehensive coverage is needed; use 8–9 for focused or narrow topic clusters). Difficulty distribution: Foundational (25%), Intermediate (50%), Advanced (25%).
-- **Numbering:** Number all problems sequentially (P1, P2, etc.) for easy tracking and reference. Include problem numbers in Contents links.
-- **Bloom Taxonomy:** Target Apply/Analyze levels. Foundational problems test direct formula application; intermediate problems require multi-step calculations and unit conversions; advanced problems demand analysis of results, selection of appropriate methods, or justification of assumptions.
-- **Problem Scope & Elements:** Self-contained problems with all necessary data. Use MECE to avoid overlapping question types across a bank. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases).
-- **Units & Conventions:** Explicitly state units and conventions (e.g., MB = 10^6 bytes vs 2^20 bytes; percentages vs decimals; rounding rules). Provide alternate acceptable answers when ambiguity exists.
-- **Problem Types:** Cover calculations (e.g., throughput, latency, gas costs, tokenization ratios, collateralization rates, consensus performance, resource consumption), unit conversions, formula applications, and short justifications (2–3 sentences). For RWA contexts, include asset valuation, transaction fee modeling, or compliance threshold calculations.
-- **Validation & Evidence Checks:** Provide authoritative sources and benchmarks supporting formulas and calculation methods.
-- **Counterexamples & Edge Cases:** Include calculations that test boundary conditions and sensitivity to assumptions, highlighting failure/unhappy path outcomes and expected mitigations or rollbacks.
-- **Misconception Targeting:** Document the common computational or conceptual misconception each problem is crafted to reveal, and specify the corrective note that will be surfaced in the output template.
-- **Comparison Coverage:** Where appropriate, contrast alternative calculation methods, assumptions, or tooling (e.g., formula variants, estimation techniques) and record the criteria for preferring one approach over another.
-- **Context:** Include relevant historical evolution, technical context, key events, statistical data, and real-world application scenarios.
-- **Codebases & Libraries:** When problems involve specific frameworks/protocols, reference authoritative sources for formulas, benchmarks, and performance characteristics.
-- **Authoritative Literature:** Base formulas and calculations on white/yellow papers, standards, official documentation, and peer-reviewed studies.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions for problems (especially advanced ones).
-- **Governance & Trust Dimensions:** When applicable, include calculations involving permission thresholds, trust model parameters, privacy/transparency metrics, design-pattern choices, system error-tolerance bounds, or reliability/HA parameters.
-- **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** For advanced problems, integrate philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as relevant.
-- **Collaboration & Organizational Dynamics:** For advanced problems, include calculations that inform stakeholder alignment, cross-team workflows, or organizational decision-making.
-- **Organizational & Strategic Operations:** For advanced problems, include calculations that inform business model impact, institutional capabilities assessment, change readiness evaluation, and strategic positioning analysis.
-- **Inference Lists:** For advanced problems, test calculations that inform adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
-- **Open Questions & Research:** For advanced problems, surface awareness of calculation limitations, uncertainty ranges, emergent risks, and investigation needs.
+- Generate 8–12 problems per topic cluster (target 10+ for broad coverage, 8–9 for focused clusters).
+- Number problems sequentially (P1, P2, …) with matching anchors in the Contents block.
+- Maintain Foundational (25%), Intermediate (50%), Advanced (25%) distribution aligned to Bloom Apply/Analyze: foundational problems apply formulas directly, intermediate ones require multi-step calculations and unit conversions, advanced ones demand method selection, assumption justification, or result interpretation.
 
-### 2. Content Design
+### Data & Context Requirements
 
-- **Target Level:** Apply/Analyze (Bloom). Test ability to apply formulas, perform multi-step calculations, interpret results, and justify reasoning with technical depth and practical awareness (senior/expert level).
-- **Answer Format:** Provide exact expected answer, units, and acceptable tolerance (e.g., ±2% for percentages, ±0.5 for small integers).
-- **Worked Solution:** Supply a 2–4 step worked solution showing method and intermediate results. Use clear mathematical notation or pseudocode where appropriate.
-- **Partial Credit:** Define rules for method vs arithmetic credit (e.g., correct method with arithmetic error = 70%; correct setup but incomplete = 50%).
-- **Evaluation Dimensions:** Technical (performance metrics, algorithm complexity, resource consumption) and business (cost efficiency, impact assessment, market fit) considerations.
-- **Trade-offs:** For advanced problems, address trade-offs in approach selection (e.g., accuracy vs computational cost, security vs performance).
-- **Governance & Assurance:** When applicable, include calculations that inform permission boundaries, trust thresholds, privacy requirements, or error-tolerance parameters.
+- Provide self-contained problems with all necessary data, using MECE principles to avoid overlapping question types. Cover technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) pillars.
+- State units and conventions explicitly (e.g., MB = 10^6 vs 2^20 bytes, percentages vs decimals, rounding rules) and list acceptable alternative answers when ambiguity exists.
+- Mix calculation types: throughput, latency, gas costs, tokenization ratios, collateralization rates, consensus performance, resource consumption, unit conversions, formula applications, short justifications (2–3 sentences). For RWA scenarios, include asset valuation, transaction fee modeling, compliance thresholds.
+- Supply contextual framing: historical evolution, technical context, regulatory landscape, key events, statistical data, real-world application scenarios.
+- Cite authoritative formulas/benchmarks via standards, white/yellow papers, official documentation, peer-reviewed studies.
 
-### 3. Evaluation & Grading
+### Analytical Coverage & Diagnostics
 
-- **Normalization:** Define numeric normalization rules: strip commas, accept scientific notation, case-insensitive for units (e.g., "KB" vs "kb").
-- **Tolerance:** Specify acceptable ranges per question type. Use percentage tolerance (e.g., ±2%) for large numbers or ratios, absolute tolerance (e.g., ±0.5) for small integer values.
-- **Human Check:** Include grader notes for questions requiring short justification or interpretation (e.g., "Explain why X is more efficient than Y"). Provide model answers and acceptable variations.
+- Document assumptions, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions (especially for advanced problems).
+- Highlight boundary conditions and sensitivity analyses, noting failure/unhappy path outcomes and expected mitigation or rollback guidance.
+- Capture common computational/conceptual misconceptions each problem surfaces, plus corrective notes for the template.
+- Contrast alternative methods, assumptions, or tooling (formula variants, estimation techniques) and record decision criteria.
+- Integrate governance/trust metrics (permission thresholds, trust parameters, privacy/transparency metrics, design-pattern choices, error-tolerance bounds, reliability/HA metrics) when relevant.
+- Cover perspectives across engineering disciplines, architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- For advanced problems, add philosophical, economic, financial, capital-market, psychological, sociological, anthropological, legal, policy, military strategy, education system, and historical angles when calculations influence those domains.
+- Surface adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers), calculation limitations, uncertainty ranges, emergent risks, and research agendas.
 
-### 4. Execution & Format
+### Content Design
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use fenced calculation steps. Clearly label the final answer line (e.g., "**Answer:** 42.5 ms").
-- **Clarity Aids:** Use tables to organize data (e.g., inputs, parameters), and include formulas in LaTeX/KaTeX notation when helpful (e.g., `$T = N / R$`). Use diverse visualization types: mermaid diagrams (structural, behavioral, analytical), code snippets, analogies, comparisons. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Explain key concepts/terminologies clearly using analogies, formulas, etc. as needed.
-- **Context Integration:** Include relevant historical evolution, legal/regulatory landscape, future trends, key events, and statistical data where appropriate.
-- **Real-World Grounding:** Base problems on real-world applications and practical scenarios.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all problems (P1–Pn) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and P1–Pn)
-  - Executive Summary (2–3 bullets: assessment goals, calculation scope, grading approach)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and problem indices); Topic Cluster Mapping Table (Cluster → scope → problem indices)
-  - Glossary & Acronym Index (key formulas, units, and conventions)
-  - How to Use This in Interviews (machine-grading with tolerance checks, manual review guidance for justifications)
-  - Key Decision Criteria Checklist (when applicable: formula selection, accuracy requirements, computational approach, etc.)
-  - Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria (when applicable)
-- **Tags:** Label each item with Difficulty, Bloom level, and question type (calculation/conversion/justification).
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Harmonize technical depth with broader context and macro-level insight; trace implications across disciplines while maintaining MECE clarity.
-- **Citations:** Include APA 7th edition references for formulas referencing standards, protocol specifications, or published benchmarks.
+- Target senior/expert Apply/Analyze capability: applying formulas, performing multi-step calculations, interpreting results, justifying reasoning with technical depth and practical awareness.
+- Specify exact expected answers with units and tolerances (e.g., ±2% for percentages, ±0.5 for small integers).
+- Provide worked solutions (2–4 steps) showing method, intermediate values, and final result in clear notation (mathematical expressions, pseudocode, or tables).
+- Define partial-credit rules (e.g., correct method with arithmetic error = 70%; correct setup but incomplete = 50%).
+- Evaluate responses against technical metrics (performance, algorithm complexity, resource consumption) and business metrics (cost efficiency, impact, market fit).
+- Discuss trade-offs such as accuracy vs computational cost, security vs performance; analyze permission boundaries, trust thresholds, privacy requirements, error-tolerance parameters when relevant.
+
+### Evaluation & Grading
+
+- Establish normalization rules for numeric answers (strip commas, accept scientific notation, case-insensitive units).
+- Specify tolerances per problem type (percentage or absolute ranges) and require manual review for short justifications.
+- Provide grader notes including model answers, acceptable variations, borderline cases, and guidance for awarding partial credit.
+
+### Execution & Format
+
+- Plan thoroughly before authoring; ensure coverage map, difficulty mix, and artifact list are satisfied.
+- Present content in Markdown with clear headings, fenced calculation steps, and explicit answer lines (e.g., “**Answer:** 42.5 ms”).
+- Use tables to organize inputs/parameters and LaTeX/KaTeX formulas when helpful (e.g., `$T = N / R$`).
+- Employ clarifying aids (mermaid diagrams, code snippets, analogies, comparisons) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
+- Explain key terms/units as needed; ground problems in real-world scenarios.
+- Provide a compact Contents section linking to major headings and all problems (P1–Pn) with GitHub-compatible anchors.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary & Acronym Index (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable.
+- Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
+- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
+- Maintain holistic reasoning by linking technical depth, macro insight, and MECE structure; cite formulas/benchmarks in APA 7th edition.
+
+### Shared Evaluation Checklist (apply to every problem)
+
+- **Technical Evaluation**: performance metrics, algorithm complexity, resource consumption, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource usage.
+- **Business Evaluation**: cost efficiency, impact, market fit.
+- **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
+- **Terminology & Key Concepts**: define formulas/units with analogies/examples for graders.
+- **Context & Background**: outline historical evolution, regulatory context, technical background, key events/statistics influencing the calculation.
+- **Validation & Evidence Checks**: provide benchmarks, data points, or studies verifying formulas and results.
+- **Counterexamples & Edge Cases**: list scenarios that challenge assumptions and corresponding mitigations.
+- **Alternatives & Trade-offs**: compare calculation methods, note trade-offs, specify decision criteria (permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance).
+- **Perspective-Based Insights**: evaluate problem implications across engineering, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: assess systemic forces, regulatory/policy trajectories, market structure/liquidity, geopolitical/security implications, societal adoption/behavior shifts, competitive ecosystem positioning, macroeconomic/industry models.
+- **Inference Summary**: capture adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
+- **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, alignment tactics relevant to the calculation outcome.
+- **Organizational & Strategic Fit**: analyze business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
+- **Codebase & Library References**: cite tools/libraries used for calculations (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes).
+- **Authoritative Literature**: reference standards, papers, documentation supporting formulas or benchmarks.
+- **Actionable Conclusions**: summarize lessons, best practices, prioritized actions.
+- **Open Questions & Research Agenda**: list unresolved challenges, hypotheses, experiments, data/resource needs, timelines/ownership for deeper exploration.
+- **APA Style Source Citations**: ensure references comply with APA 7th edition and support problem content.
 
 ## Output Template
 

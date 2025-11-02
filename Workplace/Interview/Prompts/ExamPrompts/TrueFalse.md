@@ -9,65 +9,72 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Statement Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 12–20 True/False statements per topic cluster (aim for 16+ when comprehensive coverage is needed; use 12–14 for focused or narrow topic clusters). Difficulty distribution: Foundational (40%), Intermediate (40%), Advanced (20%).
-- **Numbering:** Number all statements sequentially (S1, S2, etc.) for easy tracking and reference. Include statement numbers in Contents links.
-- **Bloom Taxonomy:** Target Remember/Understand/Apply levels. Foundational statements test factual recall; intermediate statements require understanding of principles and relationships; advanced statements involve applying concepts to judge scenario-based claims.
-- **Statement Design & Elements:** Create factual, unambiguous declarative statements. Use MECE principles to avoid overlapping or contradictory items within a bank. Cover: **Technical** (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), **Theoretical** (theories, principles, axioms, laws, assumptions, models), and **Practical** (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, facts, use cases).
-- **Precision:** Keep statements short (≤2 lines) and avoid double negatives, vague qualifiers (e.g., "often", "usually"), or ambiguous technical terms.
-- **Validation & Evidence Checks:** Provide authoritative sources and evidence backing each statement's truth or falsity.
-- **Counterexamples & Edge Cases:** Include scenarios where statements might seem different or require clarification, highlighting failure/unhappy paths and expected mitigations.
-- **Comparison Coverage:** When relevant, frame statements to test contrasts between approaches (e.g., consensus models, governance patterns, architectural options) and note the rationale for preferring one over another.
-- **Scope:** Cover key facts, definitions, principles, and simple scenario judgments. Mix foundational recall with conceptual understanding.
-- **Context:** Include relevant historical context, regulatory/legal landscape, technical background, and statistical data in rationales.
-- **Codebases & Libraries:** When statements involve specific frameworks/tools, ensure accuracy reflects current authoritative repositories, SDKs, and official documentation.
-- **Authoritative Literature:** Base statements on white/yellow papers, peer-reviewed studies, standards, books/manuals, and vetted encyclopedic resources.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions in rationales where relevant.
-- **Governance & Trust Dimensions:** Include statements on permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
-- **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** Include relevant statements from philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as appropriate.
-- **Collaboration & Organizational Dynamics:** Include statements on cross-functional communication, governance models, institutional constraints, change management, and cultural alignment where relevant.
-- **Organizational & Strategic Operations:** Include statements on business model implications, institutional capabilities, change readiness, and long-term strategic positioning where relevant.
-- **Inference Lists:** For advanced statements, test understanding of adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
-- **Open Questions & Research:** For advanced statements, surface awareness of unresolved problems, knowledge gaps, emergent risks per topic cluster.
+- Generate 12–20 statements per topic cluster (aim for 16+ for broad coverage, 12–14 for narrow focus).
+- Number statements sequentially (S1, S2, …) with anchors in the Contents block.
+- Maintain Foundational (40%), Intermediate (40%), Advanced (20%) distribution aligned to Bloom Remember/Understand/Apply: foundational items test factual recall, intermediate items probe relational understanding, advanced items apply concepts to judge scenario-based claims.
 
-### 2. Content Design
+### Statement Composition & Context
 
-- **Target Level:** Remember/Understand/Apply (Bloom). Use factual statements for lower levels; use concise scenario-based judgments for higher levels (e.g., "Given X constraint, approach Y is optimal") targeting senior/expert level with deep technical understanding and awareness of nuanced distinctions.
-- **Rationale:** Provide a 1–2 sentence rationale explaining why the statement is true or false. Include a one-sentence note on the specific misconception being corrected so interviewers can surface it in the output template.
-- **Justification (Optional):** For higher-credit items, require a brief written justification (2–3 sentences) in addition to the T/F answer. State scoring split (e.g., 70% for correct letter + 30% for valid rationale).
-- **Evaluation Dimensions:** Technical (performance, security, scalability, algorithm complexity, error tolerance, distributed consistency) and business (cost, efficiency, impact, market fit) considerations when relevant.
-- **Trade-offs:** For advanced statements, test understanding of trade-offs (e.g., "Byzantine fault tolerance always outperforms crash fault tolerance" - False, because of throughput trade-offs).
-- **Governance & Assurance:** Include statements testing understanding of permission boundaries, trust models, privacy/transparency requirements, and reliability expectations.
+- Write concise, unambiguous declarative statements (≤2 lines) that avoid double negatives and vague qualifiers.
+- Apply MECE principles to prevent overlap or contradiction within the bank; cover technical, theoretical, and practical facets: techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations (including energy/resource consumption); theories, principles, axioms, laws, assumptions, models; regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases.
+- Provide rationales including historical context, regulatory/legal landscape, technical background, statistical data as needed.
+- Base statements on authoritative repositories, SDKs, documentation, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias.
+- Integrate governance/trust dimensions (permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error tolerance, reliability/high availability) and highlight failure/unhappy path scenarios with mitigation guidance.
+- Frame comparisons (consensus models, governance patterns, architecture options) and document criteria for preferring alternatives.
+- Cover perspectives across engineering disciplines, architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- Incorporate philosophical, economic, financial, capital-market, psychological, sociological, anthropological, legal, policy, military strategy, education system, and historical viewpoints when relevant.
+- Address collaboration/organizational dynamics (cross-functional communication, governance models, institutional constraints, change management, cultural alignment) and organizational/strategic operations (business model implications, institutional capabilities, change readiness, strategic positioning).
+- Surface adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers), unresolved questions, knowledge gaps, and emergent risks for advanced statements.
 
-### 3. Evaluation & Grading
+### Diagnostic Focus
 
-- **Grading:** Machine-gradable by exact-match of answer letter (A/True or B/False). Normalize accepted inputs (e.g., accept "A", "True", "true", "T").
-- **Partial Credit:** If justification is required, award partial credit for correct answer with weak justification or incorrect answer with valid reasoning that identifies a key issue.
-- **Quality Check:** Ensure statements are defensible with authoritative sources; avoid subjective or opinion-based items.
+- Target specific misconceptions or outdated heuristics; note corrective insights for interviewer guidance.
+- Provide rationales (1–2 sentences) explaining truth value and a concise note per distractor misconception when feedback is needed.
+- Allow optional written justification (2–3 sentences) for higher-credit items; specify grading split (e.g., answer 70% + rationale 30%).
+- Evaluate along technical (performance, security, scalability, algorithm complexity, error tolerance, distributed consistency) and business (cost, efficiency, impact, market fit) dimensions; capture trade-offs in advanced items (e.g., BFT vs CFT throughput).
+- Assess governance/assurance implications (permission boundaries, trust models, privacy/transparency requirements, reliability expectations).
 
-### 4. Execution & Format
+### Evaluation & Grading
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use clearly labeled statement, options (A/B), answer, and rationale. Use fenced blocks for code snippets if the statement references code behavior.
-- **Clarity Aids:** When helpful, use mermaid diagrams, tables, or analogies to clarify technical concepts. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Ensure statements use precise technical language; explain key concepts in rationales.
-- **Context Integration:** Include relevant historical, regulatory, or technical context in rationales where appropriate.
-- **Real-World Grounding:** Base statements on real-world facts and practical scenarios.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all statements (S1–Sn) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and S1–Sn)
-  - Executive Summary (2–3 bullets: assessment goals, statement scope, grading approach)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and statement indices); Topic Cluster Mapping Table (Cluster → scope → statement indices)
-  - Glossary & Acronym Index (key terms and concepts covered)
-  - How to Use This in Interviews (machine-grading by exact-match, optional justification requirements)
-  - Key Decision Criteria Checklist (when applicable to statement domain)
-  - Key Decision Criteria Matrix (Quick Picks) for evaluating claims (when applicable)
-- **Tags:** Label each item with Difficulty (Foundational/Intermediate/Advanced) and Bloom level.
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Ensure statements reflect current understanding and cross-disciplinary implications.
-- **Citations:** Include APA 7th edition references for statements from external standards, protocol specifications, regulatory requirements, or published research.
+- Machine-grade by exact match to answer (A/True or B/False); normalize accepted inputs (“A”, “True”, “true”, “T”).
+- When justification is required, award partial credit for correct letter with weak rationale or incorrect letter with insightful reasoning.
+- Ensure every statement is defensible with authoritative sources; avoid subjective claims.
+
+### Execution & Format
+
+- Plan coverage and difficulty mix before writing.
+- Structure content in Markdown with clear headings; present statements with labeled options (A. True, B. False), answer, and rationale. Use fenced code blocks when referencing code behavior.
+- Employ clarity aids (mermaid diagrams, tables, analogies) as needed; maintain mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
+- Explain terminology within rationales when necessary.
+- Ground statements in real-world facts and scenarios.
+- Include a compact Contents section linking to major headings and all statements (S1–Sn) using GitHub-compatible anchors.
+- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable.
+- Tag each statement with Difficulty and Bloom level.
+- Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
+- Maintain holistic reasoning across disciplines; cite external standards, protocol specs, regulatory requirements using APA 7th edition.
+
+### Shared Evaluation Checklist (apply to every statement)
+
+- **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity & error tolerance, distributed consistency guarantees, hardware requirements & energy/resource consumption.
+- **Business Evaluation**: cost, efficiency, impact, market fit.
+- **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
+- **Terminology & Key Concepts**: provide definitions with analogies/formulas/examples for graders.
+- **Context & Background**: outline historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics relevant to the claim.
+- **Validation & Evidence Checks**: document data points, benchmarks, or sources verifying truth value.
+- **Counterexamples & Edge Cases**: note scenarios requiring clarification and mitigation guidance.
+- **Alternatives & Trade-offs**: compare related claims, articulate trade-offs, provide decision criteria (permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance).
+- **Perspective-Based Insights**: examine implications across engineering, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: consider systemic forces, regulatory/policy trajectories, market structure/liquidity, geopolitical/security implications, societal adoption/behavior shifts, competitive ecosystem positioning, macroeconomic/industry models.
+- **Inference Summary**: record adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
+- **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, alignment tactics relating to the claim.
+- **Organizational & Strategic Fit**: evaluate business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
+- **Codebase & Library References**: cite frameworks/tools referenced (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes).
+- **Authoritative Literature**: reference standards, documentation, audits, or papers supporting the statement.
+- **Actionable Conclusions**: highlight key takeaways or decision principles reinforced by the claim.
+- **Open Questions & Research Agenda**: capture unresolved issues, hypotheses, required data/experiments, timelines/ownership.
+- **APA Style Source Citations**: ensure all references follow APA 7th edition and directly support the content.
 
 ## Output Template
 

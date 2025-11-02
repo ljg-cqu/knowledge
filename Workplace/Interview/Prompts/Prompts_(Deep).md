@@ -4,67 +4,53 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Coverage & Organization
 
-- **MECE Approach:** Cover all technical areas (Mutually Exclusive, Collectively Exhaustive)
-- **Elements:** Technical (techniques, algorithms, algorithm complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy and resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), practical (regulations, market dynamics, permission/consensus governance, upgrade planning/rollback strategies, risks, costs, use cases)
-- **Context:** Historical evolution, legal/regulatory landscape, future trends; key events and statistical data
-- **Codebases & Libraries:** Identify authoritative repositories, SDKs, tooling suites, and audits; capture language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks.
-- **Inference Lists:** Provide bullet summaries for adoption signals, interoperability impacts, roadmap implications, and operational risks per topic cluster.
-- **Open Questions & Research:** Surface unresolved problems, knowledge gaps, emergent risks, and prioritized investigation tracks per topic cluster.
-- **Authoritative Literature:** Distill takeaways from white/yellow papers, peer-reviewed studies, theses, market investigations, regulatory reports, books/manuals, and vetted encyclopedic resources; link claims to practical implementation guidance.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions for each topic cluster.
-- **Collaboration & Organizational Dynamics:** Address cross-functional communication, governance models, institutional constraints, change management, and cultural alignment within teams and partner organizations.
-- **Governance & Trust Dimensions:** Assess permission models vs. decentralization levels, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
-- **Perspectives:** Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market
-- **Philosophical & Macro Disciplines:** Integrate philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis across topic clusters.
-- **Difficulty & Bloom:** Foundational (20%), Intermediate (40%), Advanced (40%), grouped by topic. Target Bloom taxonomy levels: Remember/Understand (foundational), Apply/Analyze (intermediate), Evaluate/Create (advanced)
+**MECE & scope expansion**
+- Use a mutually exclusive, collectively exhaustive structure across technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations with energy–resource emphasis), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) pillars.
+- Provide contextual framing: historical evolution, legal/regulatory landscape, future trends, key events, statistical data.
+- Catalog authoritative repositories, SDKs, tooling suites, and audits with language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks.
 
-### 2. Content Design
+**Analytical artifacts per topic cluster**
+- Summarize adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
+- Surface unresolved problems, emergent risks, knowledge gaps, and prioritized investigation tracks.
+- Record explicit assumptions, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions.
+- Detail collaboration dynamics, governance models, institutional constraints, change management, and cultural alignment.
+- Assess permission level vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, system error-tolerance expectations, and reliability/high-availability strategies.
 
-- **Target:** Senior/expert level with deep technical understanding and broad strategic perspective
-- **Evaluation:** Technical (throughput/latency performance, security, scalability, maintainability, reliability/HA) and business (cost, efficiency, impact, market fit) dimensions
-- **Trade-offs:** Address essential/non-trivial trade-offs with decision-making guidance, including permissioning vs. decentralization choices, trust/privacy balances, algorithmic complexity limits, and upgrade path risks with mitigation strategies
-- **Governance & Assurance:** Examine how permission boundaries, stakeholder trust models, privacy/transparency requirements, error-tolerance envelopes, and distributed consistency guarantees influence architectural options.
-- **Macro Narratives:** Relate answers to systemic dynamics (economic cycles, stock/crypto market behaviors, liquidity and valuation trends, regulatory shifts, geopolitical/security considerations, societal adoption patterns, organizational behavior, historical precedents, macroeconomic/industry economic models).
-- **Collaboration & Communication:** Surface stakeholder alignment plans, cross-team workflows, and communication cadences that impact execution quality.
-- **Organizational & Strategic Operations:** Highlight business model implications, institutional capabilities, change readiness, and long-term strategic positioning.
-- **Questions:** Mix theoretical, practical, and scenario-based on real-world applications
-- **Answers:** 150-300 words with technical details, technologies, and practical examples; explain key concepts/terminologies clearly using analogies, formulas, etc. as needed
-- **Misconception Targeting:** Explicitly state the misconception, bias, or oversimplified heuristic each Q&A is designed to surface, and capture the corrective insight that must appear in the output template for interviewer debriefs.
-- **Failure Path Coverage:** Call out the critical failure/unhappy path scenario (e.g., rollback gaps, degraded resilience, stakeholder conflicts) each Q&A should address and record the mitigation guidance for the output template.
-- **Comparison Coverage:** Highlight comparative analyses (e.g., platform choices, architectural patterns, governance models) and ensure the answer records criteria for preferring one option over alternatives.
+**Perspective & discipline breadth**
+- Cover engineering (front-end, back-end, full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
+- Integrate philosophy (necessity vs contingency, ethics, epistemology), economics, finance and capital markets, psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis when relevant.
 
-### 3. Execution
+**Difficulty profile**
+- Maintain Foundational (20%), Intermediate (40%), Advanced (40%) distribution with Bloom targets aligned: Remember/Understand, Apply/Analyze, Evaluate/Create.
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation
-- **Format:** Markdown with proper headings and code blocks
-- **Clarification:** Include at least one mermaid diagram and one table per Q&A for clarity; also use code snippets, tables, analogies, comparisons, formulas, and diverse mermaid diagram types (structural: architecture, class, C4, ERD, block; behavioral: sequence, state, flowchart, data flow; project: Gantt, Kanban, user journey; analytical: charts, graphs, timelines, etc.). Mermaid portability: prefer avoiding edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Research:** Latest info from authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources
-- **Citations:** Include APA 7th edition references for all sourced material, aligning with the output template section.
-- **Quality:** Ensure essential/valuable Q&A with high-quality output; apply creative then critical thinking; evaluate from multiple angles per the template's **Multi-Angle Evaluation** checklist (pros, cons, risks, benefits, alternatives, stakeholder emotional/psychological impact, market sentiment); verify accuracy, completeness, relevance, and MECE compliance
-- **Holistic Reasoning:** Harmonize technical depth with philosophical rigor and macro-level insight; trace implications across disciplines while maintaining MECE clarity.
-- **Navigation:** Add a compact "Contents" section near the top. Link to major sections
-   (Executive Summary; Coverage & Difficulty; Glossary; How to Use; Key Decision Criteria
-   checklist and matrix; each topic area header) and to every question (Q1–Q25) using
-   GitHub-compatible anchors (lowercase, hyphens; punctuation removed). Optional: add
-   a small "Back to top" link at the end of each question.
+### Content Design
 
-- **Preface Sections (required at top of the document):**
-	 - Contents (compact ToC with anchor links to major sections and Q1–Q25)
-	 - Executive Summary (3–6 bullets on goals, platform choices, performance/security targets, ops posture)
-	 - Coverage & Difficulty Summary:
-		 - Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and question indices)
-		 - Topic Cluster Mapping Table (Cluster → scope → question indices)
-	 - Glossary & Acronym Index (short definitions of key terms)
-	 - How to Use This in Interviews (3–5 bullets with guidance and prompts)
-	 - Key Decision Criteria Checklist (privacy, performance SLOs, security, interop/liquidity, ops/HA-DR, governance/upgrades, tokenomics/RWA)
-	 - Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred platform/approach with notes/signals
+- Target senior/expert audiences requiring deep technical, strategic, and macro-level insight.
+- Evaluate along technical (throughput/latency, security, scalability, maintainability, reliability/HA) and business (cost, efficiency, impact, market fit) axes.
+- Articulate trade-offs including permissioning vs decentralization, trust/privacy balances, algorithmic complexity limits, upgrade path risks with mitigation strategies.
+- Explain how permission boundaries, stakeholder trust models, privacy/transparency requirements, error-tolerance envelopes, and distributed consistency guarantees influence architecture.
+- Tie answers to macro narratives (economic cycles, market behaviors, liquidity/valuation trends, regulatory shifts, geopolitical/security considerations, societal adoption, organizational behavior, historical precedents, macroeconomic/industry models).
+- Outline stakeholder alignment plans, cross-team workflows, communication cadences, business model implications, institutional capabilities, change readiness, and strategic positioning.
+- Mix theoretical, practical, and scenario questions anchored in real-world applications.
+- Produce 150–300 word answers rich in technical detail; clarify terminology with analogies, formulas, code snippets, tables, and diagrams.
+- Explicitly log misconception targets, failure/unhappy paths, mitigation guidance, comparative insights, and decision criteria in the template outputs.
+
+### Execution
+
+- Plan thoroughly before generation; ensure coverage map, difficulty mix, and artifact checklist are in place.
+- Deliver in Markdown with clear headings and code blocks.
+- Include at least one mermaid diagram and one table per Q&A. Use additional clarifying assets (code snippets, analogies, comparisons, formulas, diverse mermaid diagram types). For mermaid portability, avoid edge labels and quote node labels containing special characters.
+- Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources.
+- Cite all sourced material in APA 7th edition and align references with the output template.
+- Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
+- Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
+- Provide a compact Contents section linking to prefatory material and every question (Q1–Q25). Add optional "Back to top" anchors after each Q&A if desired.
 
 ## Output Template
 
-```markdown
-## Contents
+### Contents
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)

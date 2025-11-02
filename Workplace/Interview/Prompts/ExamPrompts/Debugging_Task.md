@@ -9,71 +9,84 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 
 ## Requirements
 
-### 1. Coverage & Organization
+### Task Scope & Distribution
 
-- **Question Quantity & Distribution:** Generate 5–8 debugging tasks per topic cluster (aim for 7+ when comprehensive coverage is needed; use 5–6 for focused or narrow topic clusters). Difficulty distribution: Foundational (20%), Intermediate (50%), Advanced (30%).
-- **Numbering:** Number all tasks sequentially (Task 1, Task 2, etc.) for easy tracking and reference. Include task numbers in Contents links.
-- **Bloom Taxonomy:** Target Analyze/Evaluate levels. Foundational tasks involve identifying obvious bugs with clear error messages; intermediate tasks require tracing logic flow and understanding API contracts; advanced tasks demand evaluating subtle concurrency issues or security vulnerabilities.
-- **Bug Scope & Elements:** Provide a single, realistic, focused bug in a 10–50 line snippet. Avoid multi-bug puzzles unless explicitly testing triage skills. Cover: **Technical** (algorithms, algorithm complexity issues, protocols, patterns, best practices, frameworks, libraries, hardware/resource issues), **Theoretical** (principles, models), and **Practical** (edge-case handling, security flaws, permission/consensus governance bugs, use cases).
-- **Bug Types:** Cover common categories: off-by-one errors, type mismatches, incorrect API usage, concurrency issues, edge-case handling, logic errors, security flaws (e.g., missing validation), performance issues, or governance/permission violations.
-- **Context:** Include minimal surrounding context (imports, data structures, function calls) to make the bug reproducible without extraneous code. Include relevant historical context, API documentation, best practices, or common pitfall notes.
-- **Codebases & Libraries:** When bugs involve framework-specific issues, reference authoritative repositories, SDKs, official documentation, and known pitfalls.
-- **Authoritative Literature:** Base realistic bugs on documented anti-patterns from white/yellow papers, security audits, standards, or API documentation.
-- **Critical Thinking Artifacts:** Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions in the expected solution and grader notes.
-- **Validation & Evidence Checks:** Provide test cases demonstrating the bug and validating the fix.
-- **Counterexamples & Edge Cases:** Include scenarios where naive fixes might fail or where alternative fix approaches have trade-offs, emphasizing failure/unhappy paths and recovery expectations.
-- **Governance & Trust Dimensions:** Include bugs related to permission boundaries, trust model violations, privacy leaks, design-pattern mismatches, system error-tolerance failures, or reliability/HA issues when applicable.
-- **Perspectives:** Ensure coverage across: Engineering (front-end, back-end, full-stack), architecture & infrastructure (including hardware design, deployment, and energy/resource consumption), database & data engineering, quality assurance/testing, product management, project/program management, requirements/business analysis, operations & DevOps, marketing & go-to-market.
-- **Philosophical & Macro Disciplines:** For advanced bugs, integrate broader considerations from philosophy (necessity vs. contingency, ethics, epistemology), economics, finance, capital markets (stock/crypto/commodity exchanges, liquidity, valuation), psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis as relevant to bug context.
-- **Collaboration & Organizational Dynamics:** For advanced bugs, consider how bugs impact cross-functional communication, governance models, institutional constraints, or change management.
-- **Organizational & Strategic Operations:** For advanced bugs, consider business model impact, institutional capabilities, change readiness implications, and strategic positioning effects of the bug and fix.
-- **Inference Lists:** For advanced bugs, test understanding of how bugs affect adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
-- **Open Questions & Research:** For advanced bugs, surface awareness of systemic issues, edge cases, emergent risks, and investigation needs revealed by the bug.
-- **Misconception Targeting:** Document the debugging misconception or faulty heuristic each task should expose, along with the corrective framing to include in the output template for interviewer debriefs.
-- **Comparison Coverage:** Encourage evaluators to contrast alternative fixes or diagnostic strategies and capture the criteria (e.g., performance vs. maintainability) for choosing the preferred approach.
+- Generate 5–8 debugging tasks per topic cluster (use 7+ for broad coverage, 5–6 for narrow focus).
+- Number tasks sequentially (Task 1, Task 2, …) and include anchors in the Contents block.
+- Maintain Foundational (20%), Intermediate (50%), Advanced (30%) difficulty mix aligned to Bloom Analyze/Evaluate expectations. Foundational items expose obvious bugs with clear errors, intermediate items require logic/API tracing, advanced items highlight subtle concurrency or security failures.
 
-### 2. Content Design
+### Bug Composition & Context
 
-- **Target Level:** Analyze/Evaluate (Bloom). Test ability to read code, diagnose root causes, and propose correct fixes with technical depth and awareness of best practices (senior/expert level).
-- **Deliverables:** Require three outputs:
-  1. **Corrected code:** Fixed version with minimal changes (annotate changes with comments if helpful).
-  2. **Root-cause explanation:** 2–4 sentence explanation identifying the bug, why it occurs, and what principle/pattern was violated.
-  3. **Passing tests:** Minimal test cases that now pass (previously failed) to demonstrate the fix.
-- **Failing Output:** Provide realistic failing test output (stderr, assertion errors, unexpected behavior) to guide diagnosis.
-- **Evaluation Dimensions:** Technical (correctness, security, performance impact, maintainability) and practical (adherence to API contracts, best practices, error-tolerance expectations).
-- **Trade-offs:** For advanced bugs, highlight trade-offs in fix approaches (e.g., simple fix vs robust fix, performance vs clarity).
-- **Governance & Assurance:** When applicable, assess fixes for permission boundary violations, trust model integrity, or privacy/transparency requirements.
+- Provide a single focused bug in 10–50 lines; avoid multi-bug scenarios unless explicitly testing triage.
+- Address technical, theoretical, and practical facets: algorithms and complexity issues, protocols, patterns, best practices, frameworks, libraries, hardware/resource concerns; principles/models; edge-case handling, security flaws, permission/consensus governance issues, operational use cases.
+- Rotate through bug categories (off-by-one, type mismatch, incorrect API usage, concurrency, edge-case handling, logic, security, performance, governance/permission violations).
+- Supply enough surrounding context (imports, data structures, calls) to reproduce the failure and include historical/API/best-practice notes when they illuminate pitfalls.
+- Reference authoritative repositories, SDKs, documentation, and audits when framework-specific behavior matters; cite anti-patterns from white/yellow papers, security audits, standards, or official docs.
 
-### 3. Evaluation & Grading
+### Analytical Coverage & Artifacts
 
-- **Rubric:** Recommended scoring: Fix correctness (0–6 pts), Explanation quality (0–3 pts), Tests provided (0–1 pt). Adjust per difficulty.
-- **Partial Credit:** Award partial credit for correct diagnosis even if fix is incomplete, or correct fix with weak explanation.
-- **Grader Notes:** Document common incorrect approaches (e.g., treating symptom instead of root cause) and alternative valid fixes. List edge cases where fixes might fail.
-- **Misconception Focus:** Explain the misconception this bug surfaces and the insight graders should reinforce.
-- **Failure Path Insight:** Describe the failure/unhappy path the bug reveals and the mitigation or regression testing guidance interviewers should emphasize.
-- **Comparison Notes:** Capture the comparison/contrast insight (e.g., brute-force fix vs. principled refactor) and the decision criteria guiding the preferred solution.
+- Capture explicit assumption lists, validation checks, counterexamples/edge cases, alternatives considered, and actionable conclusions in solutions and grader notes.
+- Provide failing tests that demonstrate the bug and passing tests that validate the fix.
+- Highlight scenarios where naïve fixes fail or alternative approaches introduce trade-offs, emphasizing failure/unhappy paths and recovery expectations.
+- Examine permission boundaries, trust model violations, privacy leaks, design-pattern mismatches, error-tolerance breakdowns, and reliability/high-availability impacts.
+- Discuss perspectives from engineering (front-end/back-end/full-stack), architecture & infrastructure (hardware design, deployment, energy/resource consumption), database & data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations & DevOps, and marketing/go-to-market.
+- For advanced prompts, extend coverage to philosophy (necessity vs contingency, ethics, epistemology), economics, finance and capital markets, psychology, sociology, anthropology, law, policy, military strategy, education systems, and historical analysis.
+- Address cross-functional communication, governance models, institutional constraints, change management, cultural alignment, business model impact, institutional capability gaps, change readiness, strategic positioning, adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (including upgrade readiness, testing coverage, rollback triggers), and open research agendas surfaced by the bug.
 
-### 4. Execution & Format
+### Diagnostic Focus
 
-- **Planning:** Think carefully, reflect on thinking, create comprehensive plan before generation.
-- **Format:** Markdown with proper headings and code blocks. Use fenced code blocks for buggy code, failing output, and corrected code. Include instructions to run tests and verify the fix.
-- **Clarity Aids:** When helpful, include a small mermaid diagram or table showing expected vs actual behavior, or a flowchart highlighting where logic diverges. Use diverse visualization types: mermaid diagrams (structural, behavioral, analytical), tables, analogies, comparisons. For mermaid portability: avoid edge labels and quote node labels containing special characters (parentheses, slashes).
-- **Terminology:** Explain technical concepts and error patterns clearly in root-cause explanations.
-- **Context Integration:** Include relevant API documentation, best practices, or common pitfall context.
-- **Real-World Grounding:** Base bugs on real-world coding errors and practical debugging scenarios.
-- **Navigation:** Add a compact "Contents" section near the top with anchor links to major sections and all tasks (Task 1–Task n) using GitHub-compatible anchors (lowercase, hyphens; punctuation removed).
-- **Preface Sections (required at top of the document):**
-  - Contents (compact ToC with anchor links to major sections and Task 1–Task n)
-  - Executive Summary (2–4 bullets: assessment goals, bug type coverage, evaluation approach)
-  - Coverage & Difficulty Summary: Difficulty Distribution Table (Foundational/Intermediate/Advanced with counts and task indices); Topic Cluster Mapping Table (Cluster → scope → task indices)
-  - Glossary & Acronym Index (key concepts, APIs, patterns relevant to debugging tasks)
-  - How to Use This in Interviews (evaluation rubric, partial credit guidelines, and fix verification instructions)
-  - Key Decision Criteria Checklist (when applicable: fix approach criteria, security considerations, performance impacts, etc.)
-  - Key Decision Criteria Matrix (Quick Picks) mapping fix approaches to criteria (when applicable)
-- **Tags:** Label each task with Difficulty, Bloom level, and language.
-- **Research & Quality:** Gather latest information from authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); avoid outdated information; cross-reference multiple sources; ensure essential/valuable content with high quality; verify accuracy, completeness, relevance, and MECE compliance; apply both creative and critical thinking to validate question quality.
-- **Holistic Reasoning:** Ensure bugs reflect realistic coding challenges and teach broader debugging principles.
-- **Citations:** Include APA 7th edition references for bugs referencing external APIs, standards, or protocol-specific behavior.
+- Document the misconception or faulty heuristic each task exposes and articulate the corrective framing for interviewers.
+- Describe the failure/unhappy path the bug reveals with mitigation or regression-testing guidance.
+- Capture contrast between competing fixes or diagnostic strategies, with criteria such as performance versus maintainability guiding the preferred approach.
+
+### Content Design
+
+- Target senior/expert practitioners demonstrating Analyze/Evaluate proficiency.
+- Require three deliverables per task: minimal-change corrected code (comment when useful), a 2–4 sentence root-cause explanation naming the violated principle/pattern, and minimal passing tests that formerly failed.
+- Provide realistic failing output (stderr, assertion traces, unexpected behavior) to direct debugging effort.
+- Evaluate responses for technical correctness, security, performance impact, maintainability, and practical alignment with API contracts, patterns, and error-tolerance expectations.
+- Discuss trade-offs between simple and robust fixes, performance versus clarity, or alternative remediation strategies, including governance or assurance considerations (permission boundaries, trust integrity, privacy/transparency requirements).
+
+### Evaluation & Grading
+
+- Use a rubric such as Fix correctness (0–6 pts), Explanation depth (0–3 pts), Tests provided (0–1 pt); adjust per difficulty.
+- Grant partial credit for correct diagnosis with incomplete fix or a correct fix with thin explanation.
+- Document common incorrect approaches, valid alternative fixes, and edge cases that merit bonus credit.
+- Reinforce the targeted misconception, failure path expectations, and comparison notes within grader guidance.
+
+### Execution & Format
+
+- Plan deliberately before writing; map coverage, difficulty mix, and artifact requirements.
+- Present content in Markdown with clear headings and fenced code blocks for buggy code, failing output, corrected code, and tests. Include run instructions.
+- Use clarifying aids—mermaid diagrams (structural, behavioral, analytical), tables, analogies, comparisons. For portability, avoid mermaid edge labels and quote node labels containing special characters (parentheses, slashes).
+- Explain terminology and error patterns in context; integrate API documentation and best-practice commentary.
+- Ground scenarios in real-world debugging incidents.
+- Provide a compact Contents section linking to major headings and all tasks (Task 1–Task n) with GitHub-compatible anchors.
+- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary & Acronym Index (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), and Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable).
+- Tag each task with Difficulty, Bloom level, and language.
+- Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance.
+- Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition.
+
+### Shared Evaluation Checklist (applies to every task)
+
+- **Technical Evaluation**: performance (throughput/latency implications), security considerations, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & optimizations (including energy/resource analysis).
+- **Business Evaluation**: cost impact, efficiency, broader impact, market fit.
+- **Multi-Angle Evaluation**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust and privacy/transparency considerations.
+- **Terminology & Key Concepts**: define bug patterns or domain terms with analogies/formulas/examples for graders.
+- **Context & Background**: outline historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics when relevant.
+- **Validation & Evidence Checks**: supply data points, benchmarks, or tests that verify bug reproduction and fix correctness.
+- **Counterexamples & Edge Cases**: document scenarios challenging the main fix plus mitigation guidance.
+- **Alternatives & Trade-offs**: compare alternative fixes, discuss trade-offs, and provide decision criteria covering permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, upgrade/rollback guidance.
+- **Perspective-Based Insights**: evaluate responses through engineering, architecture/infrastructure, database/data engineering, QA/testing, product management, project/program management, requirements/business analysis, operations/DevOps/SRE, marketing/commercialization, team collaboration/communication, organizational/institutional dynamics, philosophy, economics/finance/capital markets, psychology/sociology, education/workforce development, anthropology/cultural dynamics, law/policy/governance, military/security strategy, historical context.
+- **Market & Macro Systems Analysis**: discuss systemic forces, regulatory/policy trajectories, market structure & liquidity, geopolitical/security implications, societal adoption & behavior shifts, competitive/ecosystem positioning, macroeconomic/industry models when the bug has strategic impact.
+- **Inference Summary**: note adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
+- **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, cross-functional alignment tactics relevant to the bug.
+- **Organizational & Strategic Fit**: analyze business model impact, institutional capabilities/gaps, change management/governance requirements, strategic positioning/differentiation implications.
+- **Codebase & Library References**: list APIs/libraries with usage patterns, common pitfalls, stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
+- **Authoritative Literature**: cite documentation, papers, audits with core findings, practical implications, credibility signals.
+- **Actionable Conclusions**: summarize key lessons, best practices, preventive measures, prioritized follow-up actions.
+- **Open Questions & Research Agenda**: capture remaining challenges, hypotheses/experiments, data/resource needs, timeline/ownership for further exploration.
+- **APA Style Source Citations**: list all references following APA 7th edition with verification notes.
 
 ## Output Template
 
