@@ -42,18 +42,28 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Partial credit typically not awarded; optionally provide hints/retries in formative contexts.
 - Perform quality checks ensuring one unambiguous correct option and defensibly incorrect distractors.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan coverage and difficulty distribution before writing.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders; replace each placeholder once the associated question cluster and validation are complete.
+- Capture citation metadata immediately after authoring each question (author, year, title, URL/DOI, language tag) and consolidate sources into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Present questions in Markdown with clear headings; use fenced code blocks for stems/options when including code or configuration snippets.
-- Employ clarifying aids (mermaid diagrams, tables, code snippets, analogies, comparisons, formulas) with mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
+- Ensure each topic cluster collectively leverages clarifying aids (mermaid diagrams, tables, code snippets, analogies, comparisons, formulas) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terminology where needed and integrate historical, regulatory, technical, and statistical context to ground questions in real-world applications.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance. If a retrieval pipeline pre-collects evidence, document its scope and extend with targeted per-question research as needed.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` markers until headings and anchors are finalized.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Question Bank as the last major section so high-level planning stays visible and item generation can resume smoothly after truncation.
 - Tag each item with Difficulty and Bloom level.
-- Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance.
 - Harmonize technical depth with broader context and macro insight; cite factual claims (protocol specs, performance benchmarks, regulatory requirements) using APA 7th edition.
 - Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and default to the strongest English references.
+
+### Finalization Checklist
+
+- Eliminate all `[TBD]` placeholders and confirm Contents anchors mirror finalized headings.
+- Verify total question count, difficulty distribution, and topic coverage match Requirements targets.
+- Ensure each topic cluster provides the required supporting artifacts (diagrams, tables, comparisons, formulas) and that rationales cover correct and distractor reasoning.
+- Confirm every in-text citation appears in the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary reflects the final evidence set.
+- Execute a holistic QA pass for accuracy, coherence, formatting, and MECE compliance before publication.
 
 ### Shared Evaluation Checklist (apply to every question)
 
@@ -192,6 +202,8 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Mermaid diagrams (e.g., concept relationships, architecture comparison)
 - Tables (e.g., feature comparison, performance benchmarks)
 - Code snippets, analogies, formulas to clarify technical concepts
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 ##### Technical Evaluation (Performance | Security | Scalability | Maintainability)
 - Performance (Throughput & Latency): [...]

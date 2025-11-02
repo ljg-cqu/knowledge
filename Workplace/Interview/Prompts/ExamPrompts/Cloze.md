@@ -63,21 +63,31 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Document grader notes on borderline answers, near misses, and partial-credit guidance.
 - Explain distractor notes describing why common incorrect answers fail, supporting feedback systems.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan thoroughly before authoring to ensure MECE coverage and difficulty balance.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders. Replace each placeholder after the associated item content and validation are complete.
+- Capture citation metadata immediately after drafting each item (author, year, title, URL/DOI, language tag) and consolidate sources into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Present content in Markdown with clear headings; indicate blanks using underscores (___) or bracketed placeholders ([blank]).
 - Provide ALT text for any inline images or diagrams.
-- Use clarifying aids—mermaid diagrams, tables, code snippets, analogies—while ensuring mermaid portability (no edge labels, quote node labels containing special characters like parentheses or slashes).
+- Ensure each topic cluster collectively includes clarifying aids—mermaid diagrams, tables, code snippets, analogies—while ensuring mermaid portability (no edge labels, quote node labels containing special characters like parentheses or slashes).
 - Use precise technical language and explain key terminology as needed.
 - Integrate real-world contexts so items reflect practical applications.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each item beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance. If a retrieval pipeline pre-collects references, document its scope and supplement with per-item research as needed.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each item beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` labels until headings are finalized.
 - Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Item Bank as the last major section so planning content leads and fill-in-the-blank entries can be appended or resumed safely after truncation.
 - Tag each item with Difficulty and Bloom level.
-- Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
 - Maintain holistic reasoning so terminology remains aligned with cross-disciplinary relevance.
 - Cite definitions using APA 7th edition formatting via a single consolidated references section.
 - Annotate the reference list by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and rely on strong English references as needed.
+
+### Finalization Checklist
+
+- Resolve all `[TBD]` placeholders and verify the Contents anchors match the finalized headings.
+- Confirm item counts, difficulty mix, and topic coverage satisfy Requirements targets.
+- Ensure each topic cluster supplies the required contextual artifacts (tables, diagrams, code snippets, analogies) and that they are referenced correctly.
+- Verify every in-text citation appears in the APA section with the correct language tag and that the Authoritative Literature & Reports summary reflects the final source set.
+- Run a final QA for accuracy, coherence, formatting, and MECE compliance before release.
 
 ### Shared Evaluation Checklist (apply to every item)
 
@@ -208,6 +218,8 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Mermaid diagrams (e.g., concept maps, relationships)
 - Tables (e.g., term comparisons, definitions)
 - Code snippets, analogies, comparisons as context
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 ### Technical Evaluation (Performance | Security | Scalability | Maintainability)
 - Performance (Throughput & Latency): [...]

@@ -40,16 +40,26 @@ Generate 50 interview Q&A pairs based on the provided job description.
 - Integrate authoritative sources (standards, peer-reviewed literature, regulatory reports, vetted references) and explain why each is trusted, capturing shared citations in the global Authoritative Literature & Reports section.
 - Highlight collaboration, permission, trust, and governance considerations plus cross-functional alignment tactics influencing execution quality.
 
-### Execution
+-### Execution
 
 - Plan before drafting: reflect on approach, outline coverage, and ensure MECE structure.
+- During planning, scaffold the Contents and global reference blocks with clear `[TBD]` placeholders; replace each placeholder once the related Q&A material is drafted and validated.
+- Capture citation details immediately after drafting each Q&A, maintain a running log, and consolidate the sources into the global APA section during post-processing.
 - Deliver in Markdown with clear headings and code blocks.
-- Use clarifying assets (code snippets, tables, analogies, formulas, mermaid diagrams—architecture, class, C4, ERD, block, sequence, state, flowchart, data flow, Gantt, Kanban, user journey, analytical charts). Include complexity class, compute/memory bounds, and energy/resource estimates when relevant.
-- Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references.
+- Use clarifying assets (code snippets, tables, analogies, formulas, mermaid diagrams—architecture, class, C4, ERD, block, sequence, state, flowchart, data flow, Gantt, Kanban, user journey, analytical charts). Include complexity class, compute/memory bounds, and energy/resource estimates when relevant. Distribute these artifacts across the set so every required asset appears at least once per topic cluster.
+- Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references. If a retrieval pipeline pre-fetches resources, document its coverage and limitations; otherwise perform targeted research per topic during drafting.
 - Document consulted codebases/tools and justify their reliability.
-- Provide a comprehensive Contents block at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Provide a comprehensive Contents block at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` markers until each entry is ready, then replace them with the final titles.
 - Cite sources in APA 7th edition and ensure alignment with the output template. Keep the Topic Areas/Q&A section as the last major block so planning, glossary, and reference material lead and new Q&A entries can be appended or resumed cleanly after truncation.
 - Apply creative then critical thinking, evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment), and verify accuracy, completeness, relevance, and MECE compliance.
+
+### Finalization Checklist
+
+- Remove all `[TBD]` placeholders and confirm the Contents block matches the finalized headings.
+- Verify difficulty and coverage distributions meet the specified targets.
+- Ensure every cited source appears in the APA section with correct language tagging and that each citation is supported in the answers.
+- Confirm required artifacts (diagrams, tables, code snippets, etc.) are present across the topic clusters and accurately referenced.
+- Run a final accuracy, coherence, and formatting review against the template expectations.
 
 ## Output Template
 
@@ -117,3 +127,5 @@ Generate 50 interview Q&A pairs based on the provided job description.
 **Signals & Open Questions:** [Capture adoption signals, interoperability impacts, roadmap implications, operational risks, and research priorities.]
 
 **Cross-Functional & Governance Notes:** [Highlight permission/trust considerations, alignment tactics, and organizational dynamics.]
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; ensure all placeholders are resolved before delivery.

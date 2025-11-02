@@ -56,19 +56,29 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Document common incorrect approaches, valid alternative fixes, and edge cases that merit bonus credit.
 - Reinforce the targeted misconception, failure path expectations, and comparison notes within grader guidance.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan deliberately before writing; map coverage, difficulty mix, and artifact requirements.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders; replace each placeholder once the associated debugging task, fix, and validation artifacts are finalized.
+- Capture citation metadata immediately after writing each task (author, year, title, URL/DOI, language tag) and consolidate entries into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Present content in Markdown with clear headings and fenced code blocks for buggy code, failing output, corrected code, and tests. Include run instructions.
-- Use clarifying aids—mermaid diagrams (structural, behavioral, analytical), tables, analogies, comparisons. For portability, avoid mermaid edge labels and quote node labels containing special characters (parentheses, slashes).
+- Ensure each topic cluster collectively employs clarifying aids—mermaid diagrams (structural, behavioral, analytical), tables, analogies, comparisons—while maintaining portability (avoid mermaid edge labels and quote node labels containing special characters such as parentheses or slashes).
 - Explain terminology and error patterns in context; integrate API documentation and best-practice commentary.
 - Ground scenarios in real-world debugging incidents.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance. When a retrieval pipeline pre-collects resources, document its scope and supplement with per-task research to cover gaps.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Maintain `[TBD]` labels until headings and anchors are final.
 - Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations. Keep the Task Bank as the final major section so the plan-first scaffold stays visible and additional debugging tasks can be appended or resumed cleanly after truncation.
 - Tag each task with Difficulty, Bloom level, and language.
-- Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance.
 - Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition through a single consolidated references section.
 - Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages) and document gaps when non-English sources are unavailable.
+
+### Finalization Checklist
+
+- Remove all `[TBD]` placeholders and confirm Contents anchors match the finalized headings.
+- Verify task counts, difficulty mix, and topic distribution align with Requirements targets.
+- Ensure each topic cluster provides the required supporting artifacts (diagrams, tables, comparisons) and that buggy code, corrected code, explanations, and tests are complete and consistent.
+- Confirm every in-text citation maps to the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary reflects the final source set.
+- Execute the provided tests against the corrected code to validate fixes, then perform a holistic QA for accuracy, coherence, formatting, and MECE compliance before delivery.
 
 ### Shared Evaluation Checklist (applies to every task)
 
@@ -218,6 +228,8 @@ def process_rwa_transfers(transfers):
 **Tests:**
 - `process_rwa_transfers([])` -> `0.0` (now passes)
 - `process_rwa_transfers([{"asset_value": 100000}])` -> `100000.0` (now passes)
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 **Grader Notes:**
 - Partial credit: Correct diagnosis but incomplete fix → 60%

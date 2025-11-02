@@ -59,21 +59,32 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Offer partial-credit checklists (e.g., correct diagnosis but incomplete solution = 60%) and document expected evidence and common omissions.
 - Detail grader notes: key points, acceptable alternatives, edge cases worth bonus credit.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan thoroughly before generation; validate coverage, difficulty balance, and artifact checklist.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders; replace each placeholder after the corresponding scenario content and validation are complete.
+- Capture citation metadata immediately after drafting each scenario (author, year, title, URL/DOI, language tag) and consolidate these entries into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Deliver content in Markdown with clear task headings, fenced code blocks, and tables. Store supplemental assets in `assets/` (logs, configs, diagrams) when needed.
-- Use decision matrices, mermaid diagrams (sequence, flow, structural), comparison tables, code snippets, analogies, formulas to clarify interactions. For mermaid portability avoid edge labels and quote node labels containing special characters (parentheses, slashes).
+- Ensure each topic cluster collectively includes decision matrices, mermaid diagrams (sequence, flow, structural), comparison tables, code snippets, analogies, and formulas as appropriate. For mermaid portability avoid edge labels and quote node labels containing special characters (parentheses, slashes).
 - Define terminology with analogies/formulas/examples when useful.
 - Integrate historical, regulatory, and technical context plus key events/statistics.
 - Base scenarios on real-world applications spanning theoretical, practical, and scenario contexts.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each scenario beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Research using authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-check information. If a retrieval pipeline pre-collects evidence, document its scope and fill remaining gaps through targeted per-scenario research.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each scenario beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Retain `[TBD]` labels until final titles are confirmed.
 - Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Scenario Bank as the final major section so strategic framing appears first and multi-part scenarios can be appended or resumed easily after truncation.
 - Tag each scenario with Difficulty and Bloom level.
 - Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
 - Ensure holistic reasoning that balances technical depth, philosophical rigor, macro insight, and MECE clarity.
 - Cite standards, frameworks, regulatory references, and other sources in APA 7th edition, pointing every in-text citation to a single consolidated references section and summarizing sources in the global Authoritative Literature & Reports section.
 - Annotate the scenario bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources cannot be located.
+
+### Finalization Checklist
+
+- Remove every `[TBD]` placeholder and verify the Contents anchors mirror the finalized headings.
+- Confirm scenario counts, difficulty mix, and topic coverage align with the Requirements targets.
+- Ensure each topic cluster delivers the required artifacts (matrices, diagrams, tables, supporting code) and they are referenced accurately in the text.
+- Verify every in-text citation maps to the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary reflects the final source set.
+- Perform a holistic QA of accuracy, coherence, formatting, and MECE compliance before delivery.
 
 ### Shared Evaluation Checklist (apply to every scenario and response)
 
@@ -218,6 +229,8 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 ### Failure Path Insight
 
 - [Summarize the failure or unhappy path the scenario is designed to surface and the mitigation/contingency expectations.]
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 ### Comparison Notes
 

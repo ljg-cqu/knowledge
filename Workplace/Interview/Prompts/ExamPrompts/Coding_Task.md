@@ -51,20 +51,30 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Provide grader notes detailing common implementation mistakes, performance pitfalls, partial-credit guidance (e.g., correct logic but inefficient → 70%), and tests that reveal misunderstanding of key concepts.
 - Record misconception focus, failure path insights, and comparison notes for interviewers.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan carefully before authoring; align coverage, difficulty mix, and artifact checklist.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders. Replace each placeholder after the associated task content, tests, and validation are finalized.
+- Capture citation metadata immediately after drafting each task (author, year, title, URL/DOI, language tag) and consolidate sources in the global Authoritative Literature & Reports and APA sections during post-processing.
 - Use Markdown with clear headings and fenced code blocks for problem statements, starter code, tests, and reference solutions. Include commands for running tests locally.
 - Avoid embedding secrets; use mock credentials for blockchain/crypto contexts.
-- Provide clarifying aids such as flowcharts (mermaid), tables summarizing test cases/constraints, analogies, comparisons, formulas. Maintain mermaid portability (no edge labels; quote node labels containing special characters like parentheses/slashes).
+- Ensure each topic cluster collectively features clarifying aids such as flowcharts (mermaid), tables summarizing test cases/constraints, analogies, comparisons, and formulas. Maintain mermaid portability (no edge labels; quote node labels containing special characters like parentheses/slashes).
 - Explain terminology and key concepts within problem descriptions and comments.
 - Root tasks in real-world scenarios with relevant technical context and best practices.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance. If a retrieval pipeline pre-collects references, document its scope and augment with per-task research as needed.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each task beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` labels until headings are finalized.
 - Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations. Keep the Task Bank as the last major section so the planning scaffold remains visible and new tasks can be appended or resumed cleanly after truncation.
 - Tag each task with Difficulty, Bloom level, language.
-- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition using a single consolidated references section.
 - Annotate the bibliography by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps where non-English sources are unavailable and default to strong English references.
+
+### Finalization Checklist
+
+- Remove every `[TBD]` placeholder and confirm Contents anchors match the finalized headings.
+- Verify task counts, difficulty mix, language coverage, and topic distribution align with Requirements targets.
+- Ensure each topic cluster supplies the planned supporting artifacts (diagrams, tables, analogies, formulas) and that starter code, public tests, hidden tests, and reference solutions are complete and consistent.
+- Confirm every in-text citation maps to the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary reflects the final source set.
+- Execute the full automated test suite against the reference solutions to validate correctness, then run a holistic QA for accuracy, coherence, formatting, and MECE compliance before release.
 
 ### Shared Evaluation Checklist (apply to every task)
 
@@ -216,6 +226,8 @@ def validate_transfer(tx):
 - Mermaid diagrams (e.g., flowchart showing input→processing→output, architecture)
 - Tables (e.g., test case summary, constraint summary)
 - Analogies, comparisons to clarify problem domain
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 ### Technical Evaluation Considerations (for graders)
 

@@ -47,16 +47,26 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 ### Execution & Format
 
 - Plan coverage and difficulty mix before writing.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders; replace each placeholder after the corresponding statement set and validation artifacts are completed.
+- Capture citation metadata immediately after drafting each statement (author, year, title, URL/DOI, language tag) and consolidate sources into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Structure content in Markdown with clear headings; present statements with labeled options (A. True, B. False), answer, and rationale. Use fenced code blocks when referencing code behavior.
-- Employ clarity aids (mermaid diagrams, tables, analogies) as needed; maintain mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
+- Ensure each topic cluster collectively incorporates clarity aids (mermaid diagrams, tables, analogies) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain terminology within rationales when necessary.
 - Ground statements in real-world facts and scenarios.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each statement beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance. If a retrieval pipeline pre-collects resources, document its scope and extend with per-statement research as needed.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each statement beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` markers until headings and anchors are finalized.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations. Keep the Statement Bank as the last major section so plan-first guidance remains visible and new statements can be appended or resumed cleanly after truncation.
 - Tag each statement with Difficulty and Bloom level.
-- Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning across disciplines; cite external standards, protocol specs, regulatory requirements using APA 7th edition.
 - Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and default to high-quality English references.
+
+### Finalization Checklist
+
+- Remove every `[TBD]` placeholder and verify Contents anchors mirror finalized headings.
+- Confirm statement counts, difficulty mix, and topic coverage satisfy Requirements targets.
+- Ensure each topic cluster includes the required supporting artifacts (diagrams, tables, analogies) and that rationales accurately address correct answers and misconceptions.
+- Validate that every in-text citation appears in the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary reflects the final evidence set.
+- Conduct a holistic QA for factual accuracy, clarity, formatting, and MECE alignment before release.
 
 ### Shared Evaluation Checklist (apply to every statement)
 

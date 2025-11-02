@@ -51,20 +51,30 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Specify tolerances per problem type (percentage or absolute ranges) and require manual review for short justifications.
 - Provide grader notes including model answers, acceptable variations, borderline cases, and guidance for awarding partial credit.
 
-### Execution & Format
+-### Execution & Format
 
 - Plan thoroughly before authoring; ensure coverage map, difficulty mix, and artifact list are satisfied.
+- During planning, scaffold Contents, prefatory sections, and global reference blocks with `[TBD]` placeholders; replace each placeholder once the corresponding problem set and validation artifacts are complete.
+- Capture citation metadata immediately after drafting each problem (author, year, title, URL/DOI, language tag) and consolidate sources into the global Authoritative Literature & Reports and APA sections during post-processing.
 - Present content in Markdown with clear headings, fenced calculation steps, and explicit answer lines (e.g., “**Answer:** 42.5 ms”).
 - Use tables to organize inputs/parameters and LaTeX/KaTeX formulas when helpful (e.g., `$T = N / R$`).
-- Employ clarifying aids (mermaid diagrams, code snippets, analogies, comparisons) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
+- Ensure each topic cluster collectively incorporates clarifying aids (mermaid diagrams, code snippets, analogies, comparisons) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terms/units as needed; ground problems in real-world scenarios.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each problem beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections.
+- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance. If a retrieval pipeline pre-collects references, document its scope and supplement with per-problem research as needed.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each problem beneath it using the exact titles that appear in the body, alongside links to the prefatory and global reference sections. Keep `[TBD]` markers until headings and anchors are final.
 - Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Keep the Problem Bank as the final section of the output template so planning, reference, and aggregation content leads and Q&A entries can be appended or resumed safely after truncation.
 - Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
-- Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning by linking technical depth, macro insight, and MECE structure; cite formulas/benchmarks in APA 7th edition.
 - Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). When credible non-English sources cannot be located, document the gap and rely on strong English references.
+
+### Finalization Checklist
+
+- Clear all `[TBD]` placeholders and confirm Contents anchors reflect finalized headings.
+- Verify problem counts, difficulty distribution, topic coverage, and question-type balance meet Requirements targets.
+- Ensure each topic cluster contains the planned supporting artifacts (tables, formulas, diagrams, analogies) and that worked solutions, tolerances, and partial-credit rules are consistent.
+- Confirm every in-text citation appears in the consolidated APA section with correct language tags and that the Authoritative Literature & Reports summary matches the final evidence set.
+- Execute a holistic QA for calculation accuracy, unit consistency, formatting, and MECE compliance before release.
 
 ### Shared Evaluation Checklist (apply to every problem)
 
@@ -200,6 +210,8 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Formulas in LaTeX/KaTeX notation (e.g., `$T = N / R$`)
 - Mermaid diagrams (e.g., data flow, relationships) when helpful
 - Analogies, comparisons to clarify concepts
+
+> **Working note:** Use `[TBD]` placeholders while planning Contents and reference sections; clear all placeholders during finalization.
 
 ### Technical Evaluation Considerations (for graders)
 - Performance (Throughput & Latency): [...]

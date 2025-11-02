@@ -39,17 +39,27 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Produce 150–300 word answers rich in technical detail; clarify terminology with analogies, formulas, code snippets, tables, and diagrams.
 - Explicitly log misconception targets, failure/unhappy paths, mitigation guidance, comparative insights, and decision criteria in the template outputs.
 
-### Execution
+-### Execution
 
 - Plan thoroughly before generation; ensure coverage map, difficulty mix, and artifact checklist are in place.
+- During planning, scaffold the Contents, glossary, and global reference sections with explicit `[TBD]` placeholders that will be resolved once related content is drafted and verified.
+- Capture citation metadata immediately after finishing each Q&A, maintain a running log (author, year, title, URL, language tag), and consolidate the sources into the global APA section during post-processing.
 - Deliver in Markdown with clear headings and code blocks.
-- Include at least one mermaid diagram and one table per Q&A. Use additional clarifying assets (code snippets, analogies, comparisons, formulas, diverse mermaid diagram types). For mermaid portability, avoid edge labels and quote node labels containing special characters.
-- Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources and capture shared citations in the global Authoritative Literature & Reports section.
+- Ensure each topic cluster collectively contains at least one mermaid diagram and one table. Use additional clarifying assets (code snippets, analogies, comparisons, formulas, diverse mermaid diagram types) as needed. For mermaid portability, avoid edge labels and quote node labels containing special characters.
+- Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources and capture shared citations in the global Authoritative Literature & Reports section. When a retrieval pipeline pre-collects references, document its scope and fill gaps through targeted per-topic research.
 - Curate citations with language diversity targets (adjust when credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Note language and jurisdiction for each source and prioritize the most authoritative evidence available per language.
 - Cite all sourced material in APA 7th edition and align references with the output template.
 - Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
 - Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
-- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to prefatory material and the global reference sections. Add optional "Back to top" anchors after each Q&A if desired. Keep the Topic Areas/Q&A section as the final major block so planning, glossary, and reference material lead and deep-dive entries can be appended or resumed cleanly after truncation.
+- Provide a comprehensive Contents section at the top that lists every topic/group and nests each question beneath it using the exact titles that appear in the body, alongside links to prefatory material and the global reference sections. Maintain `[TBD]` markers until the corresponding sections are completed, then replace them with final titles. Add optional "Back to top" anchors after each Q&A if desired. Keep the Topic Areas/Q&A section as the final major block so planning, glossary, and reference material lead and deep-dive entries can be appended or resumed cleanly after truncation.
+
+### Finalization Checklist
+
+- Remove all `[TBD]` placeholders and confirm the Contents block mirrors the final heading structure.
+- Verify the difficulty distribution and topic coverage align with Requirements targets.
+- Confirm every cited source appears in the APA section with correct language tags and matches in-text citations.
+- Ensure each topic cluster includes the required diagrams, tables, and supporting artifacts with accurate references.
+- Perform a holistic review for accuracy, coherence, MECE compliance, and adherence to formatting expectations.
 
 ## Output Template
 
