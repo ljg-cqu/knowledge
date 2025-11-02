@@ -19,10 +19,7 @@
   - [Item 1: [Brief description]](#item-1-brief-description)
 - [Topic 2: [Topic title]](#topic-2-topic-title)
   - [Item 2: [Brief description]](#item-2-brief-description)
-- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
-- [Codebase & Library References](#codebase--library-references)
-- [Authoritative Literature & Reports](#authoritative-literature--reports)
-- [APA Style Source Citations](#apa-style-source-citations)
+- [Reference Sections](#reference-sections)
 
 ---
 
@@ -44,27 +41,14 @@
 
 ---
 
-## Glossary, Terminology & Acronyms
+## Reference Sections
 
-[Key terms tested in cloze items with language tags]
+See [../Shared_References.md](../Shared_References.md) for detailed formatting guidelines on:
 
----
+- [Glossary, Terminology & Acronyms](../Shared_References.md#glossary-terminology--acronyms)
+- [Codebase & Library References](../Shared_References.md#codebase--library-references)
+- [Authoritative Literature & Reports](../Shared_References.md#authoritative-literature--reports)
+- [APA Style Source Citations](../Shared_References.md#apa-style-source-citations)
 
-## Codebase & Library References
-
-- [Aggregate repositories, SDKs, audits, or tooling suites cited across the deep-dive bank. Include stack, modules, maturity, licensing, integration hooks, performance/security benchmarks, distributed consistency guarantees, reliability/HA posture, and language support.]
-
----
-
-## Authoritative Literature & Reports
-
-- [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and other vetted references referenced across question clusters, with notes on core findings, credibility, and language/jurisdiction.]
-
----
-
-## APA Style Source Citations
-
-- **References:** List all sources cited in the answers, grouped by source language with the targeted distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are not available, document the gap and default to high-quality English sources.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language tags (e.g., `[EN]`, `[ZH]`, `[JP]`).
-- **Verification:** Ensure each reference is credible, jurisdiction-appropriate, and directly supports the content; highlight regulatory or legal sources when applicable.
+Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
