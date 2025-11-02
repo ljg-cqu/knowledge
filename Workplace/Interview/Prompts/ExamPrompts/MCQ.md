@@ -11,7 +11,8 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 ### Question Scope & Distribution
 
-- Generate 15–25 MCQs per topic cluster (aim for 20+ for comprehensive coverage, 15–18 for focused clusters).
+- Generate 30–40 MCQs in total. Distribute questions across topic clusters according to the MECE coverage plan so each cluster receives proportional attention.
+- **Stretch tier (senior/expert):** For intensive evaluation sets, target 36–42 MCQs total while keeping the difficulty mix and proportional cluster coverage intact.
 - Number questions sequentially (Q1, Q2, …) and include anchors in the Contents section.
 - Maintain Foundational (30%), Intermediate (50%), Advanced (20%) distribution aligned to Bloom Remember/Understand/Apply: foundational questions check factual recall, intermediate questions test relationships and approach selection, advanced questions require applying concepts to nuanced scenarios.
 

@@ -11,7 +11,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 ### Statement Scope & Distribution
 
-- Generate 12–20 statements per topic cluster (aim for 16+ for broad coverage, 12–14 for narrow focus).
+- Generate 18–24 statements in total. Distribute statements across topic clusters according to the MECE coverage plan so each cluster receives proportional emphasis.
+- **Stretch tier (senior/expert):** For extended coverage, target 24–28 statements total while keeping the difficulty mix and proportional cluster coverage intact.
 - Number statements sequentially (S1, S2, …) with anchors in the Contents block.
 - Maintain Foundational (40%), Intermediate (40%), Advanced (20%) distribution aligned to Bloom Remember/Understand/Apply: foundational items test factual recall, intermediate items probe relational understanding, advanced items apply concepts to judge scenario-based claims.
 

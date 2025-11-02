@@ -2,6 +2,8 @@
 
 Generate 25 interview Q&A pairs based on the provided job description.
 
+**Stretch tier (senior/expert):** When additional depth is needed, expand to 30–32 Q&A pairs while maintaining the coverage, artifact, and difficulty expectations described below.
+
 ## Requirements
 
 ### Coverage & Organization

@@ -11,7 +11,8 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 ### Problem Scope & Distribution
 
-- Generate 8–12 problems per topic cluster (target 10+ for broad coverage, 8–9 for focused clusters).
+- Generate 20–28 problems in total. Distribute problems across topic clusters according to the MECE coverage plan so each cluster receives proportional emphasis.
+- **Stretch tier (senior/expert):** For advanced cohorts, target 28–32 problems total while preserving the difficulty mix and proportional cluster coverage.
 - Number problems sequentially (P1, P2, …) with matching anchors in the Contents block.
 - Maintain Foundational (25%), Intermediate (50%), Advanced (25%) distribution aligned to Bloom Apply/Analyze: foundational problems apply formulas directly, intermediate ones require multi-step calculations and unit conversions, advanced ones demand method selection, assumption justification, or result interpretation.
 

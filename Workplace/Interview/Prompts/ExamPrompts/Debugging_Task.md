@@ -11,7 +11,8 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 
 ### Task Scope & Distribution
 
-- Generate 5–8 debugging tasks per topic cluster (use 7+ for broad coverage, 5–6 for narrow focus).
+- Generate 15–20 debugging tasks in total. Allocate tasks across topic clusters following the MECE coverage plan so each cluster is represented proportionally.
+- **Stretch tier (senior/expert):** When deeper coverage is required, target 20–22 tasks total while retaining the same difficulty mix and proportional cluster coverage.
 - Number tasks sequentially (Task 1, Task 2, …) and include anchors in the Contents block.
 - Maintain Foundational (20%), Intermediate (50%), Advanced (30%) difficulty mix aligned to Bloom Analyze/Evaluate expectations. Foundational items expose obvious bugs with clear errors, intermediate items require logic/API tracing, advanced items highlight subtle concurrency or security failures.
 
