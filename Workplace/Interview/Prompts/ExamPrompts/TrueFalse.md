@@ -21,7 +21,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Write concise, unambiguous declarative statements (≤2 lines) that avoid double negatives and vague qualifiers.
 - Apply MECE principles to prevent overlap or contradiction within the bank; cover technical, theoretical, and practical facets: techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations (including energy/resource consumption); theories, principles, axioms, laws, assumptions, models; regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases.
 - Provide rationales including historical context, regulatory/legal landscape, technical background, statistical data as needed.
-- Base statements on authoritative repositories, SDKs, documentation, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias.
+- Base statements on authoritative repositories, SDKs, documentation, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias, documenting shared tooling in the global Codebase & Library References section and shared citations in the global Authoritative Literature & Reports section.
 - Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English sources, ~30% high-quality Chinese sources, ~10% high-quality sources in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 - Integrate governance/trust dimensions (permission vs decentralization, trust guarantees, privacy/transparency balances, design-pattern choices, error tolerance, reliability/high availability) and highlight failure/unhappy path scenarios with mitigation guidance.
 - Frame comparisons (consensus models, governance patterns, architecture options) and document criteria for preferring alternatives.
@@ -51,8 +51,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Employ clarity aids (mermaid diagrams, tables, analogies) as needed; maintain mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain terminology within rationales when necessary.
 - Ground statements in real-world facts and scenarios.
-- Include a compact Contents section linking to major headings and all statements (S1–Sn) using GitHub-compatible anchors.
-- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable.
+- Include a compact Contents section linking to major headings, including the global reference sections, and all statements (S1–Sn) using GitHub-compatible anchors.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, scope, grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (grading guidance, optional justification instructions); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping claim evaluation criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each statement with Difficulty and Bloom level.
 - Base content on up-to-date authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning across disciplines; cite external standards, protocol specs, regulatory requirements using APA 7th edition.
@@ -63,7 +63,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity & error tolerance, distributed consistency guarantees, hardware requirements & energy/resource consumption.
 - **Business Evaluation**: cost, efficiency, impact, market fit.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: provide definitions with analogies/formulas/examples for graders.
+- **Terminology & Key Concepts**: keep shared definitions in the global Glossary, Terminology & Acronyms section; add statement-specific clarifications only when unique.
 - **Context & Background**: outline historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics relevant to the claim.
 - **Validation & Evidence Checks**: document data points, benchmarks, or sources verifying truth value.
 - **Counterexamples & Edge Cases**: note scenarios requiring clarification and mitigation guidance.
@@ -73,8 +73,8 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - **Inference Summary**: record adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
 - **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, alignment tactics relating to the claim.
 - **Organizational & Strategic Fit**: evaluate business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
-- **Codebase & Library References**: cite frameworks/tools referenced (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes).
-- **Authoritative Literature**: reference standards, documentation, audits, or papers supporting the statement.
+- **Codebase & Library References**: cite frameworks/tools referenced (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes) in the global Codebase & Library References section.
+- **Authoritative Literature**: reference standards, documentation, audits, or papers supporting the statement via the global Authoritative Literature & Reports section.
 - **Actionable Conclusions**: highlight key takeaways or decision principles reinforced by the claim.
 - **Open Questions & Research Agenda**: capture unresolved issues, hypotheses, required data/experiments, timelines/ownership.
 - **APA Style Source Citations**: ensure all references follow APA 7th edition and directly support the content.
@@ -86,7 +86,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -94,6 +94,9 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
   - [S1: Statement topic](#s1-statement-topic)
   - [S2: Statement topic](#s2-statement-topic)
   - ... (link to each statement)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -114,7 +117,7 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 | [Cluster A] | [Scope/Boundaries] | S1–x |
 | [Cluster B] | [Scope/Boundaries] | S(x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key terms and concepts covered]
 
@@ -284,34 +287,16 @@ Purpose: Short, unambiguous declarative statements for binary judgment (True/Fal
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-### Codebase & Library References (when testing specific implementations)
-
-- **[Tool/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-### Authoritative Literature (statement grounding)
-
-- **[Paper/Standard/Documentation]:** [Source for the factual claim; core findings, practical implications]
-
-### Actionable Conclusions (learning objective)
-
-- [Key principle or distinction the statement reinforces; prioritized action]
-
-### Open Questions & Research Agenda (for advanced statements)
-
-- Remaining Challenges: [...]
-- Hypotheses & Experiments: [...]
-- Data/Resource Needs: [...]
-- Timeline & Ownership for Exploration: [...]
-
-### Context & Background (when relevant to statement)
-
-- Historical Evolution: [How this fact/principle evolved]
-- Technical Context: [Surrounding technical context]
-- Market Dynamics: [When statement involves economic/market aspects]
-
 ### APA Style Source Citations
 
 - **References:** List sources for factual claims from external standards, protocol specifications, regulatory requirements, or published research.
 - **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
 - **Verification:** Ensure each reference is credible and directly supports the content.
-```
+
+## Codebase & Library References
+
+- [Aggregate frameworks, tools, SDKs, audits, or repositories cited across the T/F bank. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning statements. Summarize core findings, practical implications, credibility signals, and language/jurisdiction tags.]

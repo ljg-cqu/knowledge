@@ -11,7 +11,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 **MECE topic coverage**
 - Cover all technical areas using a mutually exclusive, collectively exhaustive structure.
 - Include technical (techniques, algorithms, patterns, best practices, frameworks, formulas, libraries, hardware requirements and optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, risks, costs, use cases) elements.
-- Reference authoritative codebases, SDKs, audits, and tooling suites; record language support, licensing, maturity, integration hooks, and performance/security benchmarks.
+- Reference authoritative codebases, SDKs, audits, and tooling suites; record language support, licensing, maturity, integration hooks, and performance/security benchmarks, consolidating shared notes in the global Codebase & Tool References section.
 - Curate citations with the following language diversity targets (adjust when credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Note source language/jurisdiction explicitly and prefer the most authoritative material available in each language.
 
 **Insight coverage per Q&A**
@@ -37,7 +37,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - Mix theoretical, practical, and scenario-based questions grounded in real-world applications.
 - Write 150–300 word answers with technical details, concrete technologies, and practical examples; clarify terminology with analogies, formulas, or visuals when helpful.
 - Maintain evidence discipline: state assumptions, validation checks, counterexamples, and alternatives to keep reasoning auditable.
-- Integrate authoritative sources (standards, peer-reviewed literature, regulatory reports, vetted references) and explain why each is trusted.
+- Integrate authoritative sources (standards, peer-reviewed literature, regulatory reports, vetted references) and explain why each is trusted, capturing shared citations in the global Authoritative Literature & Reports section.
 - Highlight collaboration, permission, trust, and governance considerations plus cross-functional alignment tactics influencing execution quality.
 
 ### Execution
@@ -47,7 +47,7 @@ Generate 100 interview Q&A pairs based on the provided job description.
 - Use clarifying assets (code snippets, tables, analogies, formulas, mermaid diagrams—architecture, class, C4, ERD, block, sequence, state, flowchart, data flow, Gantt, Kanban, user journey, analytical charts). Include complexity class, compute/memory bounds, and energy/resource estimates when relevant.
 - Research using current authoritative sources (official docs, codebases, standards) and cross-check multiple references.
 - Document consulted codebases/tools and justify their reliability.
-- Provide a compact Contents block linking to major sections for quick scanning.
+- Provide a compact Contents block linking to major sections, including the global reference sections, for quick scanning.
 - Cite sources in APA 7th edition and ensure alignment with the output template.
 - Apply creative then critical thinking, evaluate from multiple angles (pros, cons, risks, benefits, alternatives, emotional/psychological impact on stakeholders, market sentiment), and verify accuracy, completeness, relevance, and MECE compliance.
 
@@ -55,11 +55,13 @@ Generate 100 interview Q&A pairs based on the provided job description.
 
 ```markdown
 ## Contents
-- [Topic Areas](#topic-area-questions-x-y)
-- [Terminology & Key Concepts](#terminology--key-concepts)
+- [Topic Areas](#topic-areas-questions-x-y)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
 - [APA Style Source Citations](#apa-style-source-citations)
 
-## [Topic Area] (Questions X-Y)
+## Topic Areas (Questions X-Y)
 
 ### QX: [Question text]
 
@@ -91,9 +93,17 @@ Generate 100 interview Q&A pairs based on the provided job description.
 
 ---
 
-## Terminology & Key Concepts
+## Glossary, Terminology & Acronyms
 
 **[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
+
+## Codebase & Library References
+
+- [Aggregate repositories, SDKs, audits, or tooling suites cited across the bank. Include stack, modules, maturity, licensing, integration hooks, performance/security benchmarks, and language support.]
+
+## Authoritative Literature & Reports
+
+- [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and vetted references referenced across Q&A clusters, with notes on core findings, credibility, and language/jurisdiction.]
 
 ## APA Style Source Citations
 

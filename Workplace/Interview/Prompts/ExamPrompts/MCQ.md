@@ -18,7 +18,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 ### Topic Selection & Context
 
-- Use MECE principles to assemble topics spanning technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) dimensions. For blockchain/RWA contexts emphasize consensus mechanisms, tokenization standards, custody models, scalability solutions, regulatory frameworks.
+- Use MECE principles to assemble topics spanning technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) dimensions. For blockchain/RWA contexts emphasize consensus mechanisms, tokenization standards, custody models, scalability solutions, regulatory frameworks, documenting shared tooling in the global Codebase & Library References section and shared literature in the global Authoritative Literature & Reports section.
 - Balance factual recall, conceptual understanding, and application-level questions across the bank.
 - Base content on authoritative repositories, SDKs, tooling suites, standards, white/yellow papers, peer-reviewed studies, books/manuals, vetted encyclopedias; provide evidence backing correct answers.
 - Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English sources, ~30% high-quality Chinese sources, ~10% high-quality sources in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
@@ -48,8 +48,8 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Present questions in Markdown with clear headings; use fenced code blocks for stems/options when including code or configuration snippets.
 - Employ clarifying aids (mermaid diagrams, tables, code snippets, analogies, comparisons, formulas) with mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terminology where needed and integrate historical, regulatory, technical, and statistical context to ground questions in real-world applications.
-- Provide a compact Contents section linking to major headings and each question (Q1–Qn) using GitHub-compatible anchors.
-- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary & Acronym Index (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable.
+- Provide a compact Contents section linking to major headings, including the global reference sections, and each question (Q1–Qn) using GitHub-compatible anchors.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, topic coverage, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key terms/concepts); How to Use This in Interviews (machine-grading approach, randomization notes, assessment context); Key Decision Criteria Checklist (domain-specific considerations); Key Decision Criteria Matrix (Quick Picks) mapping concepts to decision criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each item with Difficulty and Bloom level.
 - Base material on current authoritative sources; cross-reference for accuracy, completeness, relevance, and MECE compliance.
 - Harmonize technical depth with broader context and macro insight; cite factual claims (protocol specs, performance benchmarks, regulatory requirements) using APA 7th edition.
@@ -60,7 +60,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - **Technical Evaluation**: throughput/latency, security, scalability, maintainability, algorithm complexity, error tolerance, distributed consistency, hardware requirements & energy/resource consumption when relevant.
 - **Business Evaluation**: cost, efficiency, impact, market fit.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: provide definitions with analogies/formulas/examples for graders.
+- **Terminology & Key Concepts**: keep definitions in the global Glossary, Terminology & Acronyms section; add question-specific clarifications only when unique.
 - **Context & Background**: summarize historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics informing the question.
 - **Validation & Evidence Checks**: cite data points or references supporting the correct answer.
 - **Counterexamples & Edge Cases**: note scenarios challenging the answer and provide clarifications.
@@ -71,10 +71,10 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - **Collaboration & Communication Plan**: outline stakeholders, communication cadence/channels, alignment tactics connected to question themes.
 - **Organizational & Strategic Fit**: assess business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
 - **Codebase & Library References**: list repositories, SDKs, or libraries with stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes when the question references them.
-- **Authoritative Literature**: cite standards, documentation, audits, or papers underpinning the question.
+- **Authoritative Literature**: cite standards, documentation, audits, or papers underpinning the question via the global Authoritative Literature & Reports section.
 - **Actionable Conclusions**: state key takeaways or decision principles reinforced by the question.
 - **Open Questions & Research Agenda**: log unresolved issues, hypotheses, needed experiments/data, timelines/ownership for further study.
-- **APA Style Source Citations**: ensure all references follow APA 7th edition and directly support the content.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-question entries; ensure each question cites sources back to that section.
 
 ## Output Template
 
@@ -83,7 +83,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -91,6 +91,9 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
   - [Q1: Question text](#q1-question-text)
   - [Q2: Question text](#q2-question-text)
   - ... (link to each question)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -111,7 +114,7 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 | [Cluster A] | [Scope/Boundaries] | Q1–Qx |
 | [Cluster B] | [Scope/Boundaries] | Q(x+1)–Qy |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key terms and concepts tested]
 
@@ -132,6 +135,14 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 | [Criterion 2] | [Option description] | [Option description] | [Decision guidance] |
 
 ---
+
+## Codebase & Library References
+
+- [Aggregate repositories, SDKs, audits, or tooling suites cited across the MCQ bank. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed studies underpinning question content. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
 ## Questions 1–25
 
@@ -195,10 +206,6 @@ Purpose: Single-best-answer MCQs (4 options) with plausible distractors and conc
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
-
-### Terminology & Key Concepts (for context)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ### Context & Background (when relevant)
 

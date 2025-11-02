@@ -58,8 +58,8 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Use tables to organize inputs/parameters and LaTeX/KaTeX formulas when helpful (e.g., `$T = N / R$`).
 - Employ clarifying aids (mermaid diagrams, code snippets, analogies, comparisons) while maintaining mermaid portability (no edge labels; quote node labels containing special characters such as parentheses/slashes).
 - Explain key terms/units as needed; ground problems in real-world scenarios.
-- Provide a compact Contents section linking to major headings and all problems (P1–Pn) with GitHub-compatible anchors.
-- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary & Acronym Index (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable.
+- Provide a compact Contents section linking to major headings, including the global reference sections, and all problems (P1–Pn) with GitHub-compatible anchors.
+- Include required prefatory sections: Contents; Executive Summary (2–3 bullets on goals, calculation scope, grading approach); Coverage & Difficulty Summary (difficulty distribution table + topic cluster mapping); Glossary, Terminology & Acronyms (key formulas/units/conventions); How to Use This in Interviews (machine-grading/tolerance guidance, manual review notes); Key Decision Criteria Checklist (formula selection, accuracy requirements, computational approach, etc.); Key Decision Criteria Matrix (Quick Picks) mapping calculation methods to criteria when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each problem with Difficulty, Bloom level, and question type (calculation, conversion, justification).
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
 - Maintain holistic reasoning by linking technical depth, macro insight, and MECE structure; cite formulas/benchmarks in APA 7th edition.
@@ -70,7 +70,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - **Technical Evaluation**: performance metrics, algorithm complexity, resource consumption, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource usage.
 - **Business Evaluation**: cost efficiency, impact, market fit.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: define formulas/units with analogies/examples for graders.
+- **Terminology & Key Concepts**: keep definitions in the global Glossary, Terminology & Acronyms section; add problem-specific clarifications only when unique.
 - **Context & Background**: outline historical evolution, regulatory context, technical background, key events/statistics influencing the calculation.
 - **Validation & Evidence Checks**: provide benchmarks, data points, or studies verifying formulas and results.
 - **Counterexamples & Edge Cases**: list scenarios that challenge assumptions and corresponding mitigations.
@@ -80,11 +80,11 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - **Inference Summary**: capture adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness, testing coverage, rollback triggers).
 - **Collaboration & Communication Plan**: identify stakeholders, communication cadence/channels, alignment tactics relevant to the calculation outcome.
 - **Organizational & Strategic Fit**: analyze business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation.
-- **Codebase & Library References**: cite tools/libraries used for calculations (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes).
-- **Authoritative Literature**: reference standards, papers, documentation supporting formulas or benchmarks.
+- **Codebase & Library References**: cite tools/libraries used for calculations (stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes) in the global Codebase & Library References section.
+- **Authoritative Literature**: reference standards, papers, documentation supporting formulas or benchmarks via the global Authoritative Literature & Reports section.
 - **Actionable Conclusions**: summarize lessons, best practices, prioritized actions.
 - **Open Questions & Research Agenda**: list unresolved challenges, hypotheses, experiments, data/resource needs, timelines/ownership for deeper exploration.
-- **APA Style Source Citations**: ensure references comply with APA 7th edition and support problem content.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-problem entries; ensure each problem cites sources back to that section.
 
 ## Output Template
 
@@ -93,7 +93,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -101,6 +101,9 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
   - [P1: Problem title](#p1-problem-title)
   - [P2: Problem title](#p2-problem-title)
   - ... (link to each problem)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -121,7 +124,7 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 | [Cluster A] | [Scope/Boundaries] | P1–x |
 | [Cluster B] | [Scope/Boundaries] | P(x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key formulas, units, and conventions]
 
@@ -141,7 +144,13 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 | [Criterion 1] | [Method description] | [Method description] | [Decision guidance] |
 | [Criterion 2] | [Method description] | [Method description] | [Decision guidance] |
 
----
+## Codebase & Library References
+
+- [Aggregate tools, libraries, and computational frameworks cited across problems. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, papers, documentation, audits, and reports underpinning formulas or benchmarks across problems. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
 ## Problems 1–12
 
@@ -204,10 +213,6 @@ Purpose: Short constructed-response items requiring concise numeric or short-tex
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
-
-### Terminology & Key Concepts (problem domain)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ### Context & Background (problem domain)
 

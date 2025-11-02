@@ -22,7 +22,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Cover technical, theoretical, and practical elements: techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations (including energy/resource consumption); theories, principles, axioms, laws, assumptions, models; regulations, market dynamics, permission/consensus governance, risks, costs, use cases, edge-case handling.
 - Provide a complete specification: input/output formats, function signatures, data structures, allowed/prohibited libraries, explicit constraints (time/memory limits), and historical or real-world application context.
 - State expected time/space complexity when learning objectives demand it.
-- Reference authoritative repositories, SDKs, tooling suites with details on language support, licensing, maturity, integration hooks; base tasks on protocols/algorithms documented in white/yellow papers, peer-reviewed studies, standards, books/manuals, curated encyclopedias.
+- Reference authoritative repositories, SDKs, tooling suites with details on language support, licensing, maturity, integration hooks, and document them once in the global Codebase & Library References section. Base tasks on protocols/algorithms documented in white/yellow papers, peer-reviewed studies, standards, books/manuals, curated encyclopedias, and capture them in the global Authoritative Literature & Reports section.
 - Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prefer the most authoritative material per language.
 
 ### Analytical Coverage & Diagnostics
@@ -59,11 +59,11 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - Provide clarifying aids such as flowcharts (mermaid), tables summarizing test cases/constraints, analogies, comparisons, formulas. Maintain mermaid portability (no edge labels; quote node labels containing special characters like parentheses/slashes).
 - Explain terminology and key concepts within problem descriptions and comments.
 - Root tasks in real-world scenarios with relevant technical context and best practices.
-- Insert a compact Contents section linking to major sections and all tasks (Task 1–Task n) using GitHub-compatible anchors.
-- Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, programming scope, auto-grading approach); Coverage & Difficulty Summary (difficulty table + topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (auto-grading setup, scoring breakdown, local testing instructions); Key Decision Criteria Checklist (algorithm selection, security requirements, performance targets, etc.); Key Decision Criteria Matrix (Quick Picks) mapping implementation approaches to criteria when applicable.
+- Provide a compact Contents section linking to major sections, including the global reference sections, and all tasks (Task 1–Task n) using GitHub-compatible anchors.
+- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations.
 - Tag each task with Difficulty, Bloom level, language.
 - Base content on current authoritative sources; cross-reference for accuracy, completeness, relevance, MECE compliance.
-- Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition.
+- Apply holistic reasoning so tasks reflect best software-engineering practices; cite external protocols, algorithms, standards in APA 7th edition using a single consolidated references section.
 - Annotate the bibliography by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps where non-English sources are unavailable and default to strong English references.
 
 ### Shared Evaluation Checklist (apply to every task)
@@ -71,7 +71,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Technical Evaluation**: performance (throughput/latency), security posture, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource consumption.
 - **Business Evaluation**: cost implications, efficiency, impact, market fit.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: define algorithms, data structures, protocol concepts with analogies/formulas/examples for graders.
+- **Terminology & Key Concepts**: keep definitions in the global Glossary, Terminology & Acronyms section; add task-specific clarifications only when unique.
 - **Context & Background**: outline historical evolution, technical context, market dynamics, regulatory landscape, key events/statistics underpinning the problem.
 - **Validation & Evidence Checks**: include benchmarks, datasets, or experiments supporting solution correctness/performance.
 - **Counterexamples & Edge Cases**: document scenarios challenging naive implementations and expected mitigations.
@@ -85,7 +85,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 - **Authoritative Literature**: cite standards, documentation, audits, papers underpinning algorithms or frameworks.
 - **Actionable Conclusions**: summarize best practices, design principles, prioritized follow-up actions.
 - **Open Questions & Research Agenda**: list remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for further exploration.
-- **APA Style Source Citations**: ensure all references follow APA 7th edition and directly support task content.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-task entries; ensure every task cites sources back to that section.
 
 ## Output Template
 
@@ -94,7 +94,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -102,6 +102,9 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
   - [Task 1: Title](#task-1-title)
   - [Task 2: Title](#task-2-title)
   - ... (link to each task)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -122,7 +125,7 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 | [Cluster A] | [Scope/Boundaries] | Task 1–x |
 | [Cluster B] | [Scope/Boundaries] | Task (x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key algorithms, data structures, protocol concepts tested]
 
@@ -142,9 +145,17 @@ Purpose: Narrow, self-contained programming tasks designed for automated grading
 | [Criterion 1] | [Approach description] | [Approach description] | [Decision guidance] |
 | [Criterion 2] | [Approach description] | [Approach description] | [Decision guidance] |
 
----
+## Codebase & Library References
 
-## Task 1: [Title]
+- [Aggregate repositories, SDKs, and tooling suites used across tasks. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, white/yellow papers, audits, books/manuals, and peer-reviewed studies underpinning algorithms or frameworks across the task set. Summarize core findings and practical implications.]
+
+## Tasks
+
+### Task 1: [Title]
 
 **Language:** python  
 **Difficulty:** Intermediate  
@@ -169,7 +180,7 @@ def validate_transfer(tx):
     """
     # TODO: Implement validation logic
     pass
-\`\`\`
+```
 
 ### Public Tests
 
@@ -220,10 +231,6 @@ def validate_transfer(tx):
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
-
-### Terminology & Key Concepts (problem domain)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ### Context & Background (problem domain)
 
@@ -304,14 +311,6 @@ def validate_transfer(tx):
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-### Codebase & Library References (when applicable)
-
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-### Authoritative Literature (algorithm/protocol sources)
-
-- **[Paper/Standard/Documentation]:** [Core findings, practical implications, reference link]
-
 ### Actionable Conclusions (from reference solution)
 
 - [Key takeaway, best practice, design principle; prioritized action]
@@ -323,9 +322,10 @@ def validate_transfer(tx):
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
 
-### APA Style Source Citations (problem references)
+## APA Style Source Citations
 
-- **References:** List sources for algorithms, protocols, or standards referenced in the task.
+- **References:** List sources for algorithms, protocols, or standards referenced across tasks.
 - **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
+- **Verification:** Ensure each reference is credible and directly supports the content; include language/jurisdiction tags as needed.
+
 ```

@@ -22,7 +22,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Address technical, theoretical, and practical facets: algorithms and complexity issues, protocols, patterns, best practices, frameworks, libraries, hardware/resource concerns; principles/models; edge-case handling, security flaws, permission/consensus governance issues, operational use cases.
 - Rotate through bug categories (off-by-one, type mismatch, incorrect API usage, concurrency, edge-case handling, logic, security, performance, governance/permission violations).
 - Supply enough surrounding context (imports, data structures, calls) to reproduce the failure and include historical/API/best-practice notes when they illuminate pitfalls.
-- Reference authoritative repositories, SDKs, documentation, and audits when framework-specific behavior matters; cite anti-patterns from white/yellow papers, security audits, standards, or official docs.
+- Reference authoritative repositories, SDKs, documentation, and audits when framework-specific behavior matters; document them once in the global Codebase & Library References section. Cite anti-patterns from white/yellow papers, security audits, standards, or official docs, and capture them in the global Authoritative Literature & Reports section.
 - Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 
 ### Analytical Coverage & Artifacts
@@ -63,11 +63,11 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - Use clarifying aids—mermaid diagrams (structural, behavioral, analytical), tables, analogies, comparisons. For portability, avoid mermaid edge labels and quote node labels containing special characters (parentheses, slashes).
 - Explain terminology and error patterns in context; integrate API documentation and best-practice commentary.
 - Ground scenarios in real-world debugging incidents.
-- Provide a compact Contents section linking to major headings and all tasks (Task 1–Task n) with GitHub-compatible anchors.
-- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary & Acronym Index (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), and Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable).
+- Provide a compact Contents section linking to major headings, including the global reference sections, and all tasks (Task 1–Task n) with GitHub-compatible anchors.
+- Include required prefatory sections: Contents, Executive Summary (assessment goals, bug coverage, evaluation approach), Coverage & Difficulty Summary (difficulty table plus topic cluster mapping), Glossary, Terminology & Acronyms (key APIs/patterns), How to Use This in Interviews (rubric, partial credit, fix verification), Key Decision Criteria Checklist (fix approach/security/performance/etc.), Key Decision Criteria Matrix (Quick Picks mapping approaches to criteria when applicable), Codebase & Library References, Authoritative Literature & Reports, and APA Style Source Citations.
 - Tag each task with Difficulty, Bloom level, and language.
 - Base content on current authoritative sources (official docs, white/yellow papers, academic theses, audits, standards, curated wikis/encyclopedias, codebases); cross-reference to ensure accuracy, completeness, relevance, and MECE compliance.
-- Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition.
+- Apply holistic reasoning so bugs teach broader debugging principles; cite references using APA 7th edition through a single consolidated references section.
 - Annotate the bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages) and document gaps when non-English sources are unavailable.
 
 ### Shared Evaluation Checklist (applies to every task)
@@ -75,7 +75,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Technical Evaluation**: performance (throughput/latency implications), security considerations, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & optimizations (including energy/resource analysis).
 - **Business Evaluation**: cost impact, efficiency, broader impact, market fit.
 - **Multi-Angle Evaluation**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust and privacy/transparency considerations.
-- **Terminology & Key Concepts**: define bug patterns or domain terms with analogies/formulas/examples for graders.
+- **Terminology & Key Concepts**: keep definitions in the global Glossary, Terminology & Acronyms section; add task-specific clarifications only when unique.
 - **Context & Background**: outline historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics when relevant.
 - **Validation & Evidence Checks**: supply data points, benchmarks, or tests that verify bug reproduction and fix correctness.
 - **Counterexamples & Edge Cases**: document scenarios challenging the main fix plus mitigation guidance.
@@ -89,7 +89,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 - **Authoritative Literature**: cite documentation, papers, audits with core findings, practical implications, credibility signals.
 - **Actionable Conclusions**: summarize key lessons, best practices, preventive measures, prioritized follow-up actions.
 - **Open Questions & Research Agenda**: capture remaining challenges, hypotheses/experiments, data/resource needs, timeline/ownership for further exploration.
-- **APA Style Source Citations**: list all references following APA 7th edition with verification notes.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-task entries; ensure each task cites sources back to that section.
 
 ## Output Template
 
@@ -98,7 +98,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -106,6 +106,9 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
   - [Task 1: Title](#task-1-title)
   - [Task 2: Title](#task-2-title)
   - ... (link to each task)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -126,7 +129,7 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 | [Cluster A] | [Scope/Boundaries] | Task 1–x |
 | [Cluster B] | [Scope/Boundaries] | Task (x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key concepts, APIs, patterns relevant to debugging tasks]
 
@@ -145,6 +148,14 @@ Purpose: Provide a short buggy code snippet plus failing output; ask students to
 |---|---|---|---|
 | [Criterion 1] | [Approach description] | [Approach description] | [Decision guidance] |
 | [Criterion 2] | [Approach description] | [Approach description] | [Decision guidance] |
+
+## Codebase & Library References
+
+- [Aggregate APIs, libraries, and tooling suites referenced across tasks. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List documentation, papers, audits, standards, and reports cited across tasks. Summarize core findings, practical implications, and credibility signals.]
 
 ---
 
@@ -289,14 +300,6 @@ def process_rwa_transfers(transfers):
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-### Codebase & Library References (when applicable)
-
-- **[API/Library]:** [Correct usage pattern, common pitfalls, official documentation reference; stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-### Authoritative Literature (bug pattern sources)
-
-- **[Documentation/Paper/Audit]:** [Bug pattern description, best practice guidance, reference link; core findings, practical implications]
-
 ### Actionable Conclusions (debugging takeaway)
 
 - [Key lesson, best practice, preventive measure; prioritized action]
@@ -307,9 +310,3 @@ def process_rwa_transfers(transfers):
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
-
-### APA Style Source Citations (when referencing external APIs/standards)
-
-- **References:** List sources for API documentation, bug pattern literature, or security advisories.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.

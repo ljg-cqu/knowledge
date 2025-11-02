@@ -11,7 +11,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 **MECE & scope expansion**
 - Use a mutually exclusive, collectively exhaustive structure across technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations with energy–resource emphasis), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) pillars.
 - Provide contextual framing: historical evolution, legal/regulatory landscape, future trends, key events, statistical data.
-- Catalog authoritative repositories, SDKs, tooling suites, and audits with language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks.
+- Catalog authoritative repositories, SDKs, tooling suites, and audits with language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks, consolidating shared notes in the global Codebase & Tool References section.
 
 **Analytical artifacts per topic cluster**
 - Summarize adoption signals, interoperability impacts, roadmap implications (including upgrade sequencing), and operational risks (including upgrade readiness, testing coverage, rollback triggers).
@@ -44,25 +44,29 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Plan thoroughly before generation; ensure coverage map, difficulty mix, and artifact checklist are in place.
 - Deliver in Markdown with clear headings and code blocks.
 - Include at least one mermaid diagram and one table per Q&A. Use additional clarifying assets (code snippets, analogies, comparisons, formulas, diverse mermaid diagram types). For mermaid portability, avoid edge labels and quote node labels containing special characters.
-- Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources.
+- Research using current authoritative sources (official docs, white/yellow papers, academic theses, market investigations, audits, standards, books/manuals, curated wikis/encyclopedias, codebases); cross-reference multiple sources and capture shared citations in the global Authoritative Literature & Reports section.
 - Curate citations with language diversity targets (adjust when credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Note language and jurisdiction for each source and prioritize the most authoritative evidence available per language.
 - Cite all sourced material in APA 7th edition and align references with the output template.
 - Ensure high-quality output via creative then critical review, leveraging the multi-angle evaluation checklist (pros, cons, risks, benefits, stakeholder emotional/psychological impact, market sentiment, alternatives).
 - Ensure holistic reasoning by connecting technical detail, philosophical rigor, macro-level implications, and MECE clarity.
-- Provide a compact Contents section linking to prefatory material and every question (Q1–Q25). Add optional "Back to top" anchors after each Q&A if desired.
+- Provide a compact Contents section linking to prefatory material, the global reference sections, and every question (Q1–Q25). Add optional "Back to top" anchors after each Q&A if desired.
 
 ## Output Template
 
-### Contents
+```markdown
+## Contents
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
-- [Key Decision Criteria Matrix](#key-decision-criteria-matrix-quick-picks)
-- [Topic Area] (Questions X–Y)
-- [QX: Question text](#qx-question-text)
+- [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
+- [Topic Areas](#topic-areas-questions-x-y)
+  - [QX: Question text](#qx-question-text)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -87,7 +91,7 @@ Generate 25 interview Q&A pairs based on the provided job description.
 | Data, integration, ops & economics |  |  |
 | Strategy & cross-functional leadership |  |  |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - MSP: Membership Service Provider; org identity/policy in Fabric
 - CA: Certificate Authority; X.509 issuance and revocation
@@ -111,7 +115,17 @@ Generate 25 interview Q&A pairs based on the provided job description.
 | Privacy & compliance | Channels + PDC, endorsement policies | Group/permissioning | Need bilateral privacy/regulator views → Fabric |
 | Interop & liquidity |  | ABI/SDK reuse, L2/public bridge ease | Future cross-chain/token listings → EVM |
 
-## [Topic Area] (Questions X-Y)
+## Codebase & Library References
+
+- [Aggregate repositories, SDKs, audits, or tooling suites cited across the deep-dive bank. Include stack, modules, maturity, licensing, integration hooks, performance/security benchmarks, distributed consistency guarantees, reliability/HA posture, and language support.]
+
+## Authoritative Literature & Reports
+
+- [Summarize standards, white/yellow papers, peer-reviewed literature, regulatory reports, and other vetted references referenced across question clusters, with notes on core findings, credibility, and language/jurisdiction.]
+
+## APA Style Source Citations
+
+## Topic Areas (Questions X–Y)
 
 ### QX: [Question text]
 
@@ -237,14 +251,6 @@ Generate 25 interview Q&A pairs based on the provided job description.
 
 - [Option compared, trade-off summary, selection rationale]
 
-#### Codebase & Library References
-
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-#### Authoritative Literature & Reports
-
-- **[Paper/Report/Book]:** [Core findings, practical implications, credibility signals, reference link]
-
 #### Actionable Conclusions & Next Steps
 - [Decision, prioritized action, owner/timeline cues]
 
@@ -253,9 +259,3 @@ Generate 25 interview Q&A pairs based on the provided job description.
 - Hypotheses & Experiments: [...]
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
-
-#### APA Style Source Citations
-
-- **References:** List all sources cited in the answers, grouped by source language with the target distribution (~60% English, ~30% Chinese, ~10% other languages). If credible non-English sources are unavailable, document the gap and default to the strongest English sources.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and annotate each citation with language and jurisdiction tags (e.g., `[EN][US]`, `[ZH][CN]`).
-- **Verification:** Ensure each reference is credible, current, and directly supports the content, calling out regulatory or legal sources explicitly.

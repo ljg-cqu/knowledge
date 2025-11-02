@@ -64,12 +64,12 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Use clarifying aids—mermaid diagrams, tables, code snippets, analogies—while ensuring mermaid portability (no edge labels, quote node labels containing special characters like parentheses or slashes).
 - Use precise technical language and explain key terminology as needed.
 - Integrate real-world contexts so items reflect practical applications.
-- Include a compact Contents section linking to major headings and all items (Item 1–Item n) with GitHub-compatible anchors.
-- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable).
+- Include a compact Contents section linking to major headings, including the global reference sections, and all items (Item 1–Item n) with GitHub-compatible anchors.
+- Provide required prefatory sections: Contents; Executive Summary (2–3 bullets on assessment goals, term coverage, scoring approach); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (auto-grading guidance, normalization rules); Key Decision Criteria Checklist (terminology domain considerations); Key Decision Criteria Matrix (Quick Picks for term usage patterns when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each item with Difficulty and Bloom level.
 - Base content on current authoritative sources; cross-reference to ensure quality, accuracy, completeness, relevance, and MECE compliance.
 - Maintain holistic reasoning so terminology remains aligned with cross-disciplinary relevance.
-- Cite definitions using APA 7th edition formatting.
+- Cite definitions using APA 7th edition formatting via a single consolidated references section.
 - Annotate the reference list by source language (target ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources are unavailable and rely on strong English references as needed.
 
 ### Shared Evaluation Checklist (apply to every item)
@@ -77,7 +77,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity & error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements & energy/resource consumption when pertinent to the term.
 - **Business Evaluation**: cost, efficiency, impact, market fit implications of the terminology.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration failure modes and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: provide concise definitions with analogies/formulas/examples for graders.
+- **Terminology & Key Concepts**: keep shared definitions in the global Glossary, Terminology & Acronyms section; add item-specific clarifications only when unique.
 - **Context & Background**: capture historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics tied to the term.
 - **Validation & Evidence Checks**: reference authoritative sources validating definitions/usage.
 - **Counterexamples & Edge Cases**: log confusing alternatives, clarify distinctions, and note mitigation guidance.
@@ -87,11 +87,11 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - **Inference Summary**: note adoption signals, interoperability impacts, roadmap implications (upgrade sequencing), operational risks (upgrade readiness/testing coverage/rollback triggers).
 - **Collaboration & Communication Plan**: highlight stakeholders, communication cadence/channels, alignment tactics relevant to terminology usage.
 - **Organizational & Strategic Fit**: describe business model impact, institutional capabilities/gaps, change management/governance, strategic positioning/differentiation linked to the term.
-- **Codebase & Library References**: cite repositories/libraries when terms arise from specific tools, including stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
-- **Authoritative Literature**: list standards, papers, documentation supporting usage with core findings and implications.
+- **Codebase & Library References**: cite repositories/libraries when terms arise from specific tools in the global Codebase & Library References section, including stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes.
+- **Authoritative Literature**: list standards, papers, documentation supporting usage with core findings and implications in the global Authoritative Literature & Reports section.
 - **Actionable Conclusions**: summarize key takeaways, prioritized actions, or principles enforced by the term.
 - **Open Questions & Research Agenda**: capture remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for deeper exploration.
-- **APA Style Source Citations**: ensure all references follow APA 7th edition and are credible/current.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-item entries; ensure each item cites sources back to that section.
 
 ## Output Template
 
@@ -100,7 +100,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -108,6 +108,9 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
   - [Item 1: Topic](#item-1-topic)
   - [Item 2: Topic](#item-2-topic)
   - ... (link to each item)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -128,7 +131,7 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 | [Cluster A] | [Scope/Boundaries] | Item 1–x |
 | [Cluster B] | [Scope/Boundaries] | Item (x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Core terms tested in cloze items]
 
@@ -148,7 +151,13 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 | [Criterion 1] | [Term/usage description] | [Term/usage description] | [Decision guidance] |
 | [Criterion 2] | [Term/usage description] | [Term/usage description] | [Decision guidance] |
 
----
+## Codebase & Library References
+
+- [Aggregate repositories, SDKs, audits, or tooling suites referenced across the cloze bank. Include stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, and permission/governance notes.]
+
+## Authoritative Literature & Reports
+
+- [List standards, documentation, audits, white/yellow papers, books/manuals, and peer-reviewed research supporting terminology usage across items. Summarize core findings, practical implications, and language/jurisdiction tags.]
 
 ## Items 1–15
 
@@ -206,10 +215,6 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Stakeholder Emotional/Psychological Impact: [...]
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
-
-### Terminology & Key Concepts (for graders)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
 
 ### Context & Background (when relevant)
 
@@ -290,14 +295,6 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Change Management & Governance: [...]
 - Strategic Positioning & Differentiation: [...]
 
-### Codebase & Library References (when testing technical terms)
-
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations; authoritative source for the term]
-
-### Authoritative Literature (term sources)
-
-- **[Paper/Report/Book/Standard]:** [Source for the terminology tested; core findings, practical implications]
-
 ### Actionable Conclusions (learning objective)
 
 - [Key takeaway or principle the term reinforces; prioritized action]
@@ -309,9 +306,9 @@ Purpose: Short fill-in-the-blank items to test precise recall (definitions, term
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
 
-### APA Style Source Citations
+## APA Style Source Citations
 
-- **References:** List sources for specialized terminology or definitions.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure terminology is from credible, current sources.
+- **References:** List sources for specialized terminology or definitions across items.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and annotate language/jurisdiction tags.
+- **Verification:** Ensure each reference is credible, current, and directly supports the content; document gaps when non-English sources are unavailable.
 ```

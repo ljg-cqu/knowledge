@@ -22,7 +22,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Cover technical (techniques, algorithms, complexity profiles, protocols, patterns, best practices, frameworks, formulas, libraries, hardware requirements/optimizations including energy/resource consumption), theoretical (theories, principles, axioms, laws, assumptions, models), and practical (regulations, market dynamics, permission/consensus governance, upgrade/rollback strategies, risks, costs, use cases) dimensions.
 - Structure tasks MECE-style (3–4 prompts) spanning issue identification, solution proposals with trade-offs, remediation plans, stakeholder communication, decision recommendations.
 - Provide contextual grounding: historical evolution, legal/regulatory landscape, future trends, key events, statistical data, system interactions. Highlight technical metrics (protocols, patterns, performance, complexity, distributed consistency, reliability/HA) and business metrics (cost, impact, risk, market fit). For RWA scenarios, include tokenization standards, custody requirements, compliance obligations, asset lifecycle details.
-- Reference authoritative repositories, SDKs, tooling suites, audits with notes on language support, licensing, maturity, integration hooks, distributed consistency models, performance/security benchmarks.
+- Reference authoritative repositories, SDKs, tooling suites, audits with notes on language support, licensing, maturity, integration hooks, distributed consistency models, and performance/security benchmarks, consolidating shared notes in the global Codebase & Library References section.
 - Curate references with language diversity targets (adjust if credible sources are unavailable): ~60% high-quality English references, ~30% high-quality Chinese references, ~10% high-quality references in other relevant languages. Label each source with language/jurisdiction and prioritize the most authoritative material per language.
 
 ### Analytical Coverage & Perspectives
@@ -68,11 +68,11 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Integrate historical, regulatory, and technical context plus key events/statistics.
 - Base scenarios on real-world applications spanning theoretical, practical, and scenario contexts.
 - Include a compact Contents section linking to major sections and every scenario (Scenario 1–Scenario n) with GitHub-compatible anchors.
-- Provide required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary & Acronym Index; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable.
+- Include required prefatory sections: Contents; Executive Summary (2–4 bullets on assessment goals, topic scope, trade-offs tested); Coverage & Difficulty Summary (difficulty table plus topic cluster mapping); Glossary, Terminology & Acronyms; How to Use This in Interviews (evaluation guidance, rubric notes); Key Decision Criteria Checklist (privacy, performance SLOs, security, interop, ops/HA-DR, governance/upgrades, etc.); Key Decision Criteria Matrix (Quick Picks) mapping criteria to preferred approaches when applicable); Codebase & Library References; Authoritative Literature & Reports; APA Style Source Citations.
 - Tag each scenario with Difficulty and Bloom level.
 - Maintain research rigor: use authoritative sources (official documentation, white/yellow papers, academic theses, audits, standards, books/manuals, curated wikis/encyclopedias, codebases), avoid outdated references, cross-check information.
 - Ensure holistic reasoning that balances technical depth, philosophical rigor, macro insight, and MECE clarity.
-- Cite standards, frameworks, regulatory references, and other sources in APA 7th edition.
+- Cite standards, frameworks, regulatory references, and other sources in APA 7th edition, pointing every in-text citation to a single consolidated references section and summarizing sources in the global Authoritative Literature & Reports section.
 - Annotate the scenario bibliography by source language (targeting ~60% English, ~30% Chinese, ~10% other languages). Document gaps when credible non-English sources cannot be located.
 
 ### Shared Evaluation Checklist (apply to every scenario and response)
@@ -80,7 +80,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Technical Evaluation**: performance, security, scalability, maintainability, algorithm complexity, error tolerance, reliability/high availability, distributed consistency guarantees, hardware requirements and energy/resource consumption.
 - **Business Evaluation**: cost, efficiency, impact, market fit.
 - **Multi-Angle Review**: pros, cons, risks (including upgrade/migration and rollback contingencies), benefits, stakeholder emotional/psychological impact, market sentiment, trust/privacy/transparency considerations.
-- **Terminology & Key Concepts**: provide concise definitions with analogies or formulas where needed.
+- **Terminology & Key Concepts**: keep shared definitions in the global Glossary, Terminology & Acronyms section; add scenario-specific clarifications only when unique.
 - **Context & Background**: capture historical evolution, regulatory landscape, technical context, market dynamics, key events/statistics relevant to the scenario.
 - **Validation & Evidence Checks**: include data points, benchmarks, experiments supporting conclusions.
 - **Counterexamples & Edge Cases**: document challenging scenarios and mitigation strategies.
@@ -94,7 +94,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - **Authoritative Literature**: cite papers, standards, audits, books with core findings, practical implications, credibility signals.
 - **Actionable Conclusions & Next Steps**: summarize decisions, prioritized actions, owners/timelines.
 - **Open Questions & Research Agenda**: capture remaining challenges, hypotheses, experiments, data/resource needs, timelines/ownership for exploration.
-- **APA Style Source Citations**: ensure references follow APA 7th edition and directly support scenario content.
+- **APA Style Source Citations**: maintain a consolidated APA 7th edition reference list rather than per-scenario entries; ensure each scenario cites sources back to that section.
 
 ## Output Template
 
@@ -103,7 +103,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 - [Executive Summary](#executive-summary)
 - [Coverage & Difficulty Summary](#coverage--difficulty-summary)
-- [Glossary & Acronym Index](#glossary--acronym-index)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [How to Use This in Interviews](#how-to-use-this-in-interviews)
 - [Key Decision Criteria Checklist](#key-decision-criteria-checklist)
 - [Key Decision Criteria Matrix (Quick Picks)](#key-decision-criteria-matrix-quick-picks)
@@ -111,6 +111,9 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
   - [Scenario 1: Title](#scenario-1-title)
   - [Scenario 2: Title](#scenario-2-title)
   - ... (link to each scenario)
+- [Codebase & Library References](#codebase--library-references)
+- [Authoritative Literature & Reports](#authoritative-literature--reports)
+- [APA Style Source Citations](#apa-style-source-citations)
 
 ## Executive Summary
 
@@ -131,7 +134,7 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 | [Cluster A] | [Scope/Boundaries] | Scenario 1–x |
 | [Cluster B] | [Scope/Boundaries] | Scenario (x+1)–y |
 
-## Glossary & Acronym Index
+## Glossary, Terminology & Acronyms
 
 - [Key terms and acronyms used across scenarios]
 
@@ -232,10 +235,6 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Market Sentiment: [...]
 - Trust & Privacy/Transparency Considerations: [...]
 
-### Terminology & Key Concepts (scenario domain)
-
-**[Term/Concept]:** [Clear definition with analogy/formula/example as needed]
-
 ### Context & Background (scenario grounding)
 
 - Historical Evolution: [...]
@@ -316,14 +315,6 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 
 - [Critical trade-off analysis and recommended decision criteria with explicit permission/decentralization, trust/privacy, algorithm complexity, design-pattern alignment, and upgrade/rollback guidance]
 
-### Codebase & Library References (when applicable)
-
-- **[Repository/Library]:** [Stack, modules, maturity, licensing, integration notes, performance/security considerations, distributed consistency support, reliability/HA posture, permission/governance notes]
-
-### Authoritative Literature & Reports (scenario grounding)
-
-- **[Paper/Report/Book]:** [Core findings, practical implications, credibility signals, reference link]
-
 ### Actionable Conclusions & Next Steps (expected in candidate recommendations)
 
 - [Decision, prioritized action, owner/timeline cues]
@@ -335,9 +326,9 @@ Purpose: Multi-part scenario questions that assess systems thinking, trade-off a
 - Data/Resource Needs: [...]
 - Timeline & Ownership for Exploration: [...]
 
-### APA Style Source Citations (scenario references)
+## APA Style Source Citations
 
-- **References:** List all sources cited in the scenario context.
-- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available).
-- **Verification:** Ensure each reference is credible and directly supports the content.
+- **References:** List all sources cited across scenarios, grouped by language when relevant.
+- **Format:** Follow APA 7th edition (author, year, title, source, DOI/URL when available) and include language/jurisdiction tags.
+- **Verification:** Ensure each reference is credible, current, and directly supports the content; cross-check scenario tags against this list.
 ```
