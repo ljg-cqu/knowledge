@@ -82,32 +82,32 @@ This directory contains standardized templates for creating interview questions 
 
 ## Common Framework
 
-All templates are governed by the shared standards in [Requirements.md](Requirements.md) and [Shared_References.md](Shared_References.md). Use the checklist below as a quick navigation aid.
+All templates follow consistent standards embedded within each file. Each template is self-contained with complete specifications and formatting guidelines.
 
 ### Difficulty Distribution
-- Maintain the [20% / 40% / 40% mix](Requirements.md#difficulty-distribution) across foundational, intermediate, and advanced items.
+- Maintain the 20% / 40% / 40% mix across foundational, intermediate, and advanced items.
 
 ### Content Principles
-- Apply the [MECE coverage and analysis requirements](Requirements.md#content-principles), ensuring technical, theoretical, practical, and contextual depth.
+- Apply MECE coverage and analysis requirements, ensuring technical, theoretical, practical, and contextual depth.
 - Represent multiple viewpoints—engineering, architecture, QA, product, ops, security, economics, and policy.
 
 ### Citation Standards
-- Follow the [language mix, source quality, and APA formatting rules](Requirements.md#citation-standards).
+- Follow language mix (~60% EN, ~30% ZH, ~10% other), source quality standards, and APA 7th edition formatting.
 
 ### Evaluation Dimensions
-- Calibrate scoring against the [technical, business, strategic, and actionable dimensions](Requirements.md#evaluation-dimensions).
+- Calibrate scoring against technical, business, strategic, and actionable dimensions.
 
 ### Reference Sections
-- Populate the shared reference blocks defined in [Shared_References.md](Shared_References.md), covering glossary entries, codebase & libraries, literature & reports, and APA citations.
+- Each template includes embedded reference formatting guidelines covering glossary entries, codebase & libraries, literature & reports, and APA citations.
 
 ## Usage Guide
 
 ### Quick Start
 1. Choose the appropriate template based on assessment goals
-2. Review [Requirements.md](Requirements.md) for common standards
+2. Review the template's Specifications section for standards
 3. Follow the template structure in the chosen file
-4. Populate content following difficulty distribution
-5. Reference [Shared_References.md](Shared_References.md) for citation formatting
+4. Populate content following difficulty distribution (20/40/40)
+5. Use the embedded reference formatting guidelines in the Output Format section
 
 ### Combining Templates
 For comprehensive assessments, combine multiple formats:
@@ -126,24 +126,22 @@ Each template includes:
 
 ```
 Prompts/
-├── README.md                    # This file
-├── Requirements.md              # Common standards & principles
-├── Shared_References.md         # Reference formatting guidelines
-├── QA.md                        # Q&A template
+├── README.md                    # This file - Overview and usage guide
+├── QA.md                        # Question & Answer framework template
 └── Templates/
-    ├── Case_Study.md
-    ├── Cloze.md
-    ├── Coding_Task.md
-    ├── Debugging_Task.md
-    ├── MCQ.md
-    ├── Short_Answer.md
-    └── True_False.md
+    ├── Case_Study.md            # Case study scenarios
+    ├── Cloze.md                 # Fill-in-the-blank questions
+    ├── Coding_Task.md           # Programming challenges
+    ├── Debugging_Task.md        # Code debugging tasks
+    ├── MCQ.md                   # Multiple choice questions
+    ├── Short_Answer.md          # Short answer and calculation problems
+    └── True_False.md            # True/false statements
 ```
 
 ## Maintenance
 
-- **Updating Standards:** Modify [Requirements.md](Requirements.md) for framework-wide changes
-- **Reference Formats:** Update [Shared_References.md](Shared_References.md) for citation changes
+- **Updating Standards:** Each template is self-contained; update individual files as needed
+- **Reference Formats:** Citation guidelines are embedded within each template's Output Format section
 - **Template Evolution:** Maintain backward compatibility when updating individual templates
 - **Version Control:** Document significant changes in commit messages
 
