@@ -77,29 +77,23 @@ This directory contains standardized templates for creating interview questions 
 
 ## Common Framework
 
-All templates share:
+All templates are governed by the shared standards in [Requirements.md](Requirements.md) and [Shared_References.md](Shared_References.md). Use the checklist below as a quick navigation aid.
 
-### Difficulty Distribution (from [Requirements.md](Requirements.md))
-- **Foundational:** 20%
-- **Intermediate:** 40%
-- **Advanced:** 40%
+### Difficulty Distribution
+- Maintain the [20% / 40% / 40% mix](Requirements.md#difficulty-distribution) across foundational, intermediate, and advanced items.
 
 ### Content Principles
-- **MECE Coverage:** Technical, theoretical, practical, contextual
-- **Analysis Required:** Assumptions, failure paths, comparisons, trade-offs
-- **Multi-Perspective:** Engineering, architecture, QA, product, ops, security, economics, policy
+- Apply the [MECE coverage and analysis requirements](Requirements.md#content-principles), ensuring technical, theoretical, practical, and contextual depth.
+- Represent multiple viewpoints—engineering, architecture, QA, product, ops, security, economics, and policy.
 
 ### Citation Standards
-- **Languages:** ~60% EN, ~30% ZH, ~10% other (tagged: [EN], [ZH], etc.)
-- **Sources:** Official docs, peer-reviewed studies, standards, audits, vetted code
-- **Format:** APA 7th with language tags
+- Follow the [language mix, source quality, and APA formatting rules](Requirements.md#citation-standards).
 
-### Reference Sections (from [Shared_References.md](Shared_References.md))
-All templates include:
-- Glossary, Terminology & Acronyms
-- Codebase & Library References
-- Authoritative Literature & Reports
-- APA Style Source Citations
+### Evaluation Dimensions
+- Calibrate scoring against the [technical, business, strategic, and actionable dimensions](Requirements.md#evaluation-dimensions).
+
+### Reference Sections
+- Populate the shared reference blocks defined in [Shared_References.md](Shared_References.md), covering glossary entries, codebase & libraries, literature & reports, and APA citations.
 
 ## Usage Guide
 
