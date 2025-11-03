@@ -2,6 +2,17 @@
 
 Common reference sections used across all interview prompt templates.
 
+## Minimum Entry Requirements
+
+| Reference section | Floor count | Notes |
+| --- | --- | --- |
+| Glossary, Terminology & Acronyms | ≥10 entries | Cover core concepts, domain-specific jargon, and localized terminology. |
+| Codebase & Library References | ≥5 entries | Represent the primary stack components, SDKs, and supporting tooling. |
+| Authoritative Literature & Reports | ≥6 entries | Blend standards, peer-reviewed work, and regulatory or industry analyses. |
+| APA Style Source Citations | ≥12 total | Maintain the language mix (~60% EN / ~30% ZH / ~10% other); document gaps when unmet. |
+
+> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+
 ---
 
 ## Glossary, Terminology & Acronyms

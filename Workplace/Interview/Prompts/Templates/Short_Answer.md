@@ -4,7 +4,7 @@
 
 ## Specifications
 
-- **Scope**: 20–32 problems
+- **Scope**: 25–40 problems
 - **Structure**: Self-contained; state units/conventions explicitly
 - **Types**: Throughput, latency, gas costs, consensus performance, conversions, justifications (2–3 sentences)
 - **Answers**: Exact values with units/tolerances; worked solutions (2–4 steps); support LaTeX/KaTeX

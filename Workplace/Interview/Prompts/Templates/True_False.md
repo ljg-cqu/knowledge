@@ -4,8 +4,9 @@
 
 ## Specifications
 
-- **Scope**: 18–28 statements
+- **Scope**: 18–32 statements
 - **Format**: Concise declarative (≤2 lines); avoid double negatives
+- **Difficulty Tags**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md)
 - **Rationale**: 1–2 sentences with sources
 - **Optional Justification**: 2–3 sentences; answer 70% + rationale 30%
 - **Grading**: Machine-gradable (A/True or B/False)

@@ -4,8 +4,9 @@
 
 ## Specifications
 
-- **Scope**: 24–36 items
+- **Scope**: 24–40 items
 - **Format**: Unambiguous blanks (___); array of acceptable answers
+- **Difficulty Tags**: Track 20/40/40 distribution per [../Requirements.md](../Requirements.md)
 - **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances
 - **Grading**: Acceptance lists with tolerances; document borderline answers, partial credit
 

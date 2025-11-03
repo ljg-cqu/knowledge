@@ -19,15 +19,16 @@ This directory contains standardized templates for creating interview questions 
 ### 2. [Templates/MCQ.md](Templates/MCQ.md) - Multiple Choice Questions
 **Use when:** Testing foundational knowledge, identifying misconceptions, or conducting rapid screening.
 
-- **Scope:** 30–50 questions
+- **Scope:** 40–80 questions
 - **Format:** 4 options, exactly one correct
+- **Difficulty Tags:** Label each stem to maintain the 20/40/40 distribution from [Requirements.md](Requirements.md)
 - **Best for:** Initial screening, knowledge verification, online assessments
 - **Grading:** Machine-gradable, no partial credit
 
 ### 3. [Templates/Short_Answer.md](Templates/Short_Answer.md) - Short Answer / Calculation
 **Use when:** Evaluating quantitative skills, formula application, and technical justifications.
 
-- **Scope:** 20–32 problems
+- **Scope:** 25–40 problems
 - **Types:** Throughput, latency, gas costs, conversions, performance calculations
 - **Best for:** Technical depth assessment, engineering positions
 - **Grading:** Partial credit available (method 70%, setup 50%)
@@ -35,16 +36,18 @@ This directory contains standardized templates for creating interview questions 
 ### 4. [Templates/True_False.md](Templates/True_False.md) - True/False Statements
 **Use when:** Quickly validating understanding of factual information and common misconceptions.
 
-- **Scope:** 18–28 statements
+- **Scope:** 18–32 statements
 - **Format:** Concise declaratives with rationale
+- **Difficulty Tags:** Track difficulty to balance misconception coverage across levels
 - **Best for:** Knowledge verification, misconception identification
 - **Grading:** Machine-gradable with optional justification (70% answer + 30% rationale)
 
 ### 5. [Templates/Cloze.md](Templates/Cloze.md) - Fill-in-the-Blank
 **Use when:** Testing specific terminology, formulas, or technical vocabulary recall.
 
-- **Scope:** 24–36 items
+- **Scope:** 24–40 items
 - **Format:** Unambiguous blanks with acceptance lists
+- **Difficulty Tags:** Maintain coverage balance and document mastery progression
 - **Best for:** API knowledge, command syntax, terminology verification
 - **Grading:** Case-insensitive with tolerance ranges
 

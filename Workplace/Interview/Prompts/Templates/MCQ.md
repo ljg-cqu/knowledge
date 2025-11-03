@@ -4,10 +4,11 @@
 
 ## Specifications
 
-- **Scope**: 30–50 MCQs
+- **Scope**: 40–80 MCQs
 - **Format**: Concise stems (1–2 sentences), 4 options, exactly one correct
-- **Distractors**: Map to misconceptions or outdated practices
-- **Rationale**: 1–2 sentences
+- **Difficulty Tags**: Track 20/40/40 distribution from [../Requirements.md](../Requirements.md)
+- **Distractors**: Map to misconceptions or outdated practices; flag rationale alignment
+- **Rationale**: 1–2 sentences with citation when applicable
 - **Grading**: Machine-gradable; no partial credit
 
 ## Output Format
