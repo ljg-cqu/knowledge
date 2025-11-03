@@ -6,6 +6,7 @@
 
 - **Scope**: 25–30 Q&A pairs for senior/expert level
 - **Answer Length**: 150–300 words covering misconceptions, failure paths, trade-offs, decision criteria
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [Requirements.md](Requirements.md#difficulty-distribution)
 - **Artifacts**: ≥1 diagram + ≥1 table per topic cluster
 
 ## Output Format
@@ -50,3 +51,4 @@ See [Shared_References.md](Shared_References.md) for detailed formatting guideli
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

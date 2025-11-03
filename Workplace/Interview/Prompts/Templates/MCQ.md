@@ -6,7 +6,7 @@
 
 - **Scope**: 40–80 MCQs
 - **Format**: Concise stems (1–2 sentences), 4 options, exactly one correct
-- **Difficulty Tags**: Track 20/40/40 distribution from [../Requirements.md](../Requirements.md)
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Distractors**: Map to misconceptions or outdated practices; flag rationale alignment
 - **Rationale**: 1–2 sentences with citation when applicable
 - **Grading**: Machine-gradable; no partial credit
@@ -58,3 +58,4 @@ See [../Shared_References.md](../Shared_References.md) for detailed formatting g
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

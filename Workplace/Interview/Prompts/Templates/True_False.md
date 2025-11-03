@@ -6,7 +6,7 @@
 
 - **Scope**: 18–32 statements
 - **Format**: Concise declarative (≤2 lines); avoid double negatives
-- **Difficulty Tags**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md)
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Rationale**: 1–2 sentences with sources
 - **Optional Justification**: 2–3 sentences; answer 70% + rationale 30%
 - **Grading**: Machine-gradable (A/True or B/False)
@@ -54,3 +54,4 @@ See [../Shared_References.md](../Shared_References.md) for detailed formatting g
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

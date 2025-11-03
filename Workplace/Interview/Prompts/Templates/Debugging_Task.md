@@ -5,6 +5,7 @@
 ## Specifications
 
 - **Scope**: 15–22 tasks
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Bug Types**: Single focused bug (10–50 lines): off-by-one, type mismatch, API, concurrency, edge cases, logic, security, performance
 - **Deliverables**: Buggy code, failing tests, corrected code (minimal fix), root-cause explanation (2–4 sentences)
 - **Grading**: Fix 0–6 pts, Explanation 0–3 pts, Tests 0–1 pt; partial credit for correct diagnosis
@@ -70,3 +71,4 @@ See [../Shared_References.md](../Shared_References.md) for detailed formatting g
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

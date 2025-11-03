@@ -5,6 +5,7 @@
 ## Specifications
 
 - **Scope**: 18–28 tasks
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Problem**: Self-contained with I/O spec, signatures, constraints (time/memory, libs)
 - **Tests**: 6–10 unit tests (3–5 public, 3–5 hidden)
 - **Reference**: Working solution with complexity analysis
@@ -69,3 +70,4 @@ See [../Shared_References.md](../Shared_References.md) for detailed formatting g
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

@@ -6,7 +6,7 @@
 
 - **Scope**: 24–40 items
 - **Format**: Unambiguous blanks (___); array of acceptable answers
-- **Difficulty Tags**: Track 20/40/40 distribution per [../Requirements.md](../Requirements.md)
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances
 - **Grading**: Acceptance lists with tolerances; document borderline answers, partial credit
 

@@ -5,6 +5,7 @@
 ## Specifications
 
 - **Scope**: 16–22 scenarios
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Context**: 200–400 words with constraints, stakeholders, technical details
 - **Tasks**: 3–4 MECE tasks per scenario
 - **Deliverables**: Issue lists, memos (≤300 words), matrices, communications

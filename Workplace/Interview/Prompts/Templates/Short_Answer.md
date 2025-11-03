@@ -6,6 +6,7 @@
 
 - **Scope**: 25–40 problems
 - **Structure**: Self-contained; state units/conventions explicitly
+- **Difficulty Distribution**: Maintain 20/40/40 balance per [../Requirements.md](../Requirements.md#difficulty-distribution)
 - **Types**: Throughput, latency, gas costs, consensus performance, conversions, justifications (2–3 sentences)
 - **Answers**: Exact values with units/tolerances; worked solutions (2–4 steps); support LaTeX/KaTeX
 - **Grading**: Normalize input; apply tolerances
@@ -60,3 +61,4 @@ See [../Shared_References.md](../Shared_References.md) for detailed formatting g
 
 Populate these sections with content specific to your topic area following the shared formatting standards.
 ```
+

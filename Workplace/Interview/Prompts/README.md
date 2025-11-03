@@ -13,6 +13,7 @@ This directory contains standardized templates for creating interview questions 
 
 - **Scope:** 25–30 Q&A pairs
 - **Answer Length:** 150–300 words with technical depth
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced questions
 - **Best for:** Senior/expert technical interviews, architectural discussions
 - **Includes:** Diagrams, tables, misconception analysis, failure paths
 
@@ -21,7 +22,7 @@ This directory contains standardized templates for creating interview questions 
 
 - **Scope:** 40–80 questions
 - **Format:** 4 options, exactly one correct
-- **Difficulty Tags:** Label each stem to maintain the 20/40/40 distribution from [Requirements.md](Requirements.md)
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced questions
 - **Best for:** Initial screening, knowledge verification, online assessments
 - **Grading:** Machine-gradable, no partial credit
 
@@ -29,6 +30,7 @@ This directory contains standardized templates for creating interview questions 
 **Use when:** Evaluating quantitative skills, formula application, and technical justifications.
 
 - **Scope:** 25–40 problems
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced problems
 - **Types:** Throughput, latency, gas costs, conversions, performance calculations
 - **Best for:** Technical depth assessment, engineering positions
 - **Grading:** Partial credit available (method 70%, setup 50%)
@@ -38,7 +40,7 @@ This directory contains standardized templates for creating interview questions 
 
 - **Scope:** 18–32 statements
 - **Format:** Concise declaratives with rationale
-- **Difficulty Tags:** Track difficulty to balance misconception coverage across levels
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced statements
 - **Best for:** Knowledge verification, misconception identification
 - **Grading:** Machine-gradable with optional justification (70% answer + 30% rationale)
 
@@ -47,7 +49,7 @@ This directory contains standardized templates for creating interview questions 
 
 - **Scope:** 24–40 items
 - **Format:** Unambiguous blanks with acceptance lists
-- **Difficulty Tags:** Maintain coverage balance and document mastery progression
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced items
 - **Best for:** API knowledge, command syntax, terminology verification
 - **Grading:** Case-insensitive with tolerance ranges
 
@@ -55,6 +57,7 @@ This directory contains standardized templates for creating interview questions 
 **Use when:** Evaluating programming skills, algorithm design, and code quality.
 
 - **Scope:** 18–28 tasks
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced tasks
 - **Components:** Problem statement, test cases, reference solution
 - **Best for:** Software engineering roles, algorithm positions
 - **Grading:** Correctness 70%, Edge cases 20%, Style 10%
@@ -63,6 +66,7 @@ This directory contains standardized templates for creating interview questions 
 **Use when:** Assessing problem diagnosis, debugging skills, and code comprehension.
 
 - **Scope:** 15–22 tasks
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced tasks
 - **Bug Types:** Off-by-one, type mismatch, concurrency, security, performance
 - **Best for:** Senior developer roles, code review skills
 - **Grading:** Fix 0–6 pts, Explanation 0–3 pts, Tests 0–1 pt
@@ -71,6 +75,7 @@ This directory contains standardized templates for creating interview questions 
 **Use when:** Evaluating system design, stakeholder management, and holistic problem-solving.
 
 - **Scope:** 16–22 scenarios
+- **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced scenarios
 - **Context:** 200–400 words with constraints and stakeholders
 - **Best for:** Architect roles, team lead positions, strategic thinking
 - **Components:** Issue identification, solution proposals, communication
