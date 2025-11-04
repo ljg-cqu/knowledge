@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 24–40 items for senior/expert level
+- **Scope**: 24–40 items for senior/architect/expert level
 - **Format**: Unambiguous blanks (___); array of acceptable answers
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances

@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 25–40 problems for senior/expert level
+- **Scope**: 25–40 problems for senior/architect/expert level
 - **Structure**: Self-contained; state units/conventions explicitly
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Types**: Throughput, latency, gas costs, consensus performance, conversions, justifications (2–3 sentences)

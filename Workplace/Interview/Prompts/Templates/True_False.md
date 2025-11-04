@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 18–32 statements for senior/expert level
+- **Scope**: 18–32 statements for senior/architect/expert level
 - **Format**: Concise declarative (≤2 lines); avoid double negatives
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Rationale**: 1–2 sentences with sources

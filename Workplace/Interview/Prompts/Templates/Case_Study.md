@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 16–22 scenarios for senior/expert level
+- **Scope**: 16–22 scenarios for senior/architect/expert level
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Context**: 200–400 words with constraints, stakeholders, technical details
 - **Tasks**: 3–4 MECE tasks per scenario

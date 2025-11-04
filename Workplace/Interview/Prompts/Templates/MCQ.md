@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 40–80 MCQs for senior/expert level
+- **Scope**: 40–80 MCQs for senior/architect/expert level
 - **Format**: Concise stems (1–2 sentences), 4 options, exactly one correct
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Distractors**: Map to misconceptions or outdated practices; flag rationale alignment

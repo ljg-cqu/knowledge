@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 18–28 tasks for senior/expert level
+- **Scope**: 18–28 tasks for senior/architect/expert level
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Problem**: Self-contained with I/O spec, signatures, constraints (time/memory, libs)
 - **Tests**: 6–10 unit tests (3–5 public, 3–5 hidden)

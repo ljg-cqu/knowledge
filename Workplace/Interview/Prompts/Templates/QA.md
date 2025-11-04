@@ -12,7 +12,7 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 25–30 Q&A pairs for senior/expert level
+- **Scope**: 25–30 Q&A pairs for senior/architect/expert level
 - **Answer Length**: 150–300 words covering misconceptions, failure paths, trade-offs, decision criteria
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Artifacts**: ≥1 diagram + ≥1 table per topic cluster
@@ -228,7 +228,7 @@ Before finalizing, review each question:
 - Clarity: Single unambiguous ask; avoid double-barreled wording
 - Signal: Tests reasoning/decision criteria, not trivia
 - Depth: Enables discussion of failure modes, trade-offs, constraints
-- Realism: Anchored in scenarios a senior/expert would face
+- Realism: Anchored in scenarios a senior/architect/expert would face
 - Discriminative power: Distinguishes shallow recall from practical expertise
 - Alignment: Matches the stated seniority and target tech stack/context
 

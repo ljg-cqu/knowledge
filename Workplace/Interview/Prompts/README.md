@@ -4,7 +4,7 @@ A comprehensive collection of interview question templates for technical assessm
 
 ## Overview
 
-This directory contains standardized templates for creating interview questions and assessments at senior/expert levels. All templates follow consistent formatting, citation standards, and evaluation frameworks.
+This directory contains standardized templates for creating interview questions and assessments at senior/architect/expert levels. All templates follow consistent formatting, citation standards, and evaluation frameworks.
 
 ## Template Types
 
@@ -14,7 +14,7 @@ This directory contains standardized templates for creating interview questions 
 - **Scope:** 25–30 Q&A pairs
 - **Answer Length:** 150–300 words with technical depth
 - **Difficulty Distribution:** Maintain 20/40/40 balance across foundational, intermediate, and advanced questions
-- **Best for:** Senior/expert technical interviews, architectural discussions
+- **Best for:** Senior/architect/expert technical interviews, architectural discussions
 - **Includes:** Diagrams, tables, misconception analysis, failure paths
 
 ### 2. [Templates/MCQ.md](Templates/MCQ.md) - Multiple Choice Questions
