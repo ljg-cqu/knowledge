@@ -8,7 +8,7 @@ This directory contains standardized templates for creating interview questions 
 
 ## Template Types
 
-### 1. [QA.md](QA.md) - Question & Answer
+### 1. [Templates/QA.md](Templates/QA.md) - Question & Answer
 **Use when:** Assessing deep conceptual understanding, trade-off analysis, and decision-making capabilities.
 
 - **Scope:** 25–30 Q&A pairs
@@ -127,13 +127,13 @@ Each template includes:
 ```
 Prompts/
 ├── README.md                    # This file - Overview and usage guide
-├── QA.md                        # Question & Answer framework template
 └── Templates/
     ├── Case_Study.md            # Case study scenarios
     ├── Cloze.md                 # Fill-in-the-blank questions
     ├── Coding_Task.md           # Programming challenges
     ├── Debugging_Task.md        # Code debugging tasks
     ├── MCQ.md                   # Multiple choice questions
+    ├── QA.md                    # Question & Answer framework template
     ├── Short_Answer.md          # Short answer and calculation problems
     └── True_False.md            # True/false statements
 ```
