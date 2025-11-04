@@ -22,6 +22,8 @@ Define quality requirements, standards, and constraints.
 - **MECE Coverage**: Technical, theoretical, practical, contextual
 - **Analysis Required**: Assumptions, failure paths, comparisons, trade-offs, adoption signals
 - **Multi-Perspective**: Engineering, architecture, QA, product, operations, security, economics, policy
+- **Conflict Handling**: Present competing viewpoints when domain has active debates; cite counter-evidence for dominant approaches
+- **Consensus Clarity**: State where field agrees vs. where experts disagree; acknowledge assumption-dependent conclusions
 
 ### Evaluation Dimensions
 
@@ -126,6 +128,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - For EACH topic cluster: List linked authoritative sources (L#/A#) and codebase refs (C#)
 - Report: `Topic 1: [L1, A3, C2] → 2 auth + 1 code ✓ | Topic 2: [A5] → 1 auth + 0 code ✗`
 - Pass if: EVERY topic has ≥2 authoritative + ≥1 codebase
+
+**Step 11 – Perspective Balance**
+- Identify contentious topics (where experts/frameworks disagree)
+- For EACH: Verify ≥2 perspectives cited
+- Report: `X contentious topics; Y balanced (Z%)`
+- Pass if: ≥80% balanced OR rationale provided
 
 **Validation Report Template:**
 ```

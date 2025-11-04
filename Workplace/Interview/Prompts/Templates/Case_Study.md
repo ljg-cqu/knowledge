@@ -19,6 +19,7 @@ Define quality requirements, standards, and constraints.
 - **Deliverables**: Issue lists, memos (≤300 words), matrices, communications
 - **Trade-offs**: Privacy vs transparency, throughput vs consistency, cost vs resilience, decentralization
 - **Grading**: Partial-credit checklists; document evidence, omissions, alternatives
+- **Conflict Handling**: Solutions acknowledge competing approaches; clarify where experts agree vs disagree on framework choices
 
 ### Citation Standards
 

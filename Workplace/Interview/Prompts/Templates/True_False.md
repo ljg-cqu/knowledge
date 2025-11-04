@@ -18,6 +18,7 @@ Define quality requirements, standards, and constraints.
 - **Rationale**: 1–2 sentences with sources
 - **Optional Justification**: 2–3 sentences; answer 70% + rationale 30%
 - **Grading**: Machine-gradable (A/True or B/False)
+- **Conflict Handling**: For context-dependent statements, rationale clarifies assumptions and conditions under which statement holds
 
 ### Citation Standards
 

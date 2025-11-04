@@ -19,6 +19,7 @@ Define quality requirements, standards, and constraints.
 - **Answers**: Exact values with units/tolerances; worked solutions (2–4 steps); support LaTeX/KaTeX
 - **Grading**: Normalize input; apply tolerances
 - **Partial Credit**: Correct method 70%, setup only 50%
+- **Conflict Handling**: Document alternative valid methods in worked solutions; clarify when multiple approaches are acceptable
 
 ### Citation Standards
 
@@ -100,26 +101,17 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y numerical problems have tolerances; Z missing` (list issues)
 - Pass if: All numerical problems have tolerances (Z=0)
 
-**Step 10 – Unit Compliance**
-- For EACH problem: Verify units specified in answer and given values
-- Report: `X of Y problems have units specified; Z missing` (list issues)
-- Pass if: All problems have units (Z=0)
+**Step 10 – Unit Consistency**
+- For ALL numerical problems: Verify units consistent throughout
+- Report: `X of Y problems have consistent units; Z inconsistent` (list issues)
+- Pass if: All problems have consistent units (Z=0)
+
+**Step 11 – Perspective Balance**
+- Identify problems with multiple valid methods; verify alternatives documented
+- Report: `X multi-method problems; Y document alternatives (Z%)`
+- Pass if: ≥80% document alternatives
 
 **Validation Report Template:**
-```
-| Check | Result | Status |
-|-------|--------|--------|
-| Floors | G:X C:Y L:Z A:W P:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
-| Links | Y/X accessible | PASS/FAIL |
-| Cross-refs | Y/X resolved | PASS/FAIL |
-| Solution completeness | Y/X complete | PASS/FAIL |
-| Tolerance specification | Y/X specified | PASS/FAIL |
-| Unit compliance | Y/X units present | PASS/FAIL |
-```
 
 > **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
 

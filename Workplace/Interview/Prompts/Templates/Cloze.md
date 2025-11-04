@@ -17,6 +17,7 @@ Define quality requirements, standards, and constraints.
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
 - **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances
 - **Grading**: Acceptance lists with tolerances; document borderline answers, partial credit
+- **Conflict Handling**: For contested terminology, acceptance lists include valid variants from different schools/regions
 
 ### Citation Standards
 

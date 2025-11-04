@@ -90,6 +90,7 @@ All templates follow consistent standards embedded within each file. Each templa
 ### Content Principles
 - Apply MECE coverage and analysis requirements, ensuring technical, theoretical, practical, and contextual depth.
 - Represent multiple viewpoints—engineering, architecture, QA, product, ops, security, economics, and policy.
+- For contentious topics, present competing perspectives with citations; acknowledge where experts disagree vs. consensus exists.
 
 ### Citation Standards
 - Follow language mix (~60% EN, ~30% ZH, ~10% other), source quality standards, and APA 7th edition formatting.

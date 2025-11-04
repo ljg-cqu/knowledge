@@ -18,6 +18,7 @@ Define quality requirements, standards, and constraints.
 - **Tests**: 6–10 unit tests (3–5 public, 3–5 hidden)
 - **Reference**: Working solution with complexity analysis
 - **Grading**: Correctness 70%, Edge cases 20%, Style 10%
+- **Conflict Handling**: Document alternative valid algorithms with trade-offs (time vs space, readability vs performance)
 
 ### Citation Standards
 

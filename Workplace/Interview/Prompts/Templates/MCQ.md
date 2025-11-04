@@ -18,6 +18,7 @@ Define quality requirements, standards, and constraints.
 - **Distractors**: Map to misconceptions or outdated practices; flag rationale alignment
 - **Rationale**: 1–2 sentences with citation when applicable
 - **Grading**: Machine-gradable; no partial credit
+- **Conflict Handling**: For contentious topics, distractors should reflect legitimate competing views; rationale clarifies consensus vs dissent
 
 ### Citation Standards
 
@@ -103,6 +104,11 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - For EACH question: Verify options are mutually exclusive and unambiguous
 - Report: `X of Y questions have unambiguous options; Z have overlapping/vague options` (list issues)
 - Pass if: All questions have unambiguous options (Z=0)
+
+**Step 11 – Perspective Balance**
+- Identify contentious topics; verify ≥2 perspectives cited where applicable
+- Report: `X contentious; Y balanced (Z%)`
+- Pass if: ≥80% balanced OR rationale provided
 
 **Validation Report Template:**
 ```

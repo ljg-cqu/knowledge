@@ -17,6 +17,7 @@ Define quality requirements, standards, and constraints.
 - **Bug Types**: Single focused bug (10–50 lines): off-by-one, type mismatch, API, concurrency, edge cases, logic, security, performance
 - **Deliverables**: Buggy code, failing tests, corrected code (minimal fix), root-cause explanation (2–4 sentences)
 - **Grading**: Fix 0–6 pts, Explanation 0–3 pts, Tests 0–1 pt; partial credit for correct diagnosis
+- **Conflict Handling**: Document alternative valid fixes with trade-offs (minimal change vs comprehensive refactor)
 
 ### Citation Standards
 
