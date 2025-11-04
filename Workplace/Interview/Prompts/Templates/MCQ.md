@@ -105,10 +105,11 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y questions have unambiguous options; Z have overlapping/vague options` (list issues)
 - Pass if: All questions have unambiguous options (Z=0)
 
-**Step 11 – Perspective Balance**
-- Identify contentious topics; verify ≥2 perspectives cited where applicable
-- Report: `X contentious; Y balanced (Z%)`
-- Pass if: ≥80% balanced OR rationale provided
+**Step 11 – Conflict Handling Compliance**
+- Identify contentious topics (where experts/frameworks disagree)
+- For EACH: Verify distractors reflect legitimate competing views and rationale clarifies consensus vs dissent
+- Report: `X applicable questions; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
 
 **Validation Report Template:**
 ```

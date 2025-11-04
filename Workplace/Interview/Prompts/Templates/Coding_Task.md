@@ -105,6 +105,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y tasks have constraints; Z missing` (list issues)
 - Pass if: All tasks have constraints (Z=0)
 
+**Step 11 – Conflict Handling Compliance**
+- Identify tasks with multiple valid algorithmic approaches
+- For EACH: Verify alternative algorithms documented with trade-offs (time vs space, readability vs performance)
+- Report: `X applicable tasks; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |

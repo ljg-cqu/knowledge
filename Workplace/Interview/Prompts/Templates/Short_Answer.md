@@ -106,10 +106,11 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y problems have consistent units; Z inconsistent` (list issues)
 - Pass if: All problems have consistent units (Z=0)
 
-**Step 11 – Perspective Balance**
-- Identify problems with multiple valid methods; verify alternatives documented
-- Report: `X multi-method problems; Y document alternatives (Z%)`
-- Pass if: ≥80% document alternatives
+**Step 11 – Conflict Handling Compliance**
+- Identify problems with multiple valid solution methods
+- For EACH: Verify alternative methods documented in worked solutions with clarity on when each is acceptable
+- Report: `X applicable problems; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
 
 **Validation Report Template:**
 

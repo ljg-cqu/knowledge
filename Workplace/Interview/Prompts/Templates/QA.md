@@ -129,11 +129,11 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `Topic 1: [L1, A3, C2] → 2 auth + 1 code ✓ | Topic 2: [A5] → 1 auth + 0 code ✗`
 - Pass if: EVERY topic has ≥2 authoritative + ≥1 codebase
 
-**Step 11 – Perspective Balance**
+**Step 11 – Conflict Handling Compliance**
 - Identify contentious topics (where experts/frameworks disagree)
-- For EACH: Verify ≥2 perspectives cited
-- Report: `X contentious topics; Y balanced (Z%)`
-- Pass if: ≥80% balanced OR rationale provided
+- For EACH: Verify ≥2 competing perspectives cited with counter-evidence
+- Report: `X applicable Q&As; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
 
 **Validation Report Template:**
 ```

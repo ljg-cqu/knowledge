@@ -104,6 +104,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y tasks have test coverage; Z missing` (list issues)
 - Pass if: All tasks have tests (Z=0)
 
+**Step 11 – Conflict Handling Compliance**
+- Identify tasks with multiple valid fix approaches
+- For EACH: Verify alternative fixes documented with trade-offs (minimal change vs comprehensive refactor)
+- Report: `X applicable tasks; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |

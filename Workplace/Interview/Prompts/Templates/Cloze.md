@@ -104,6 +104,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y items have normalization rules; Z missing` (list issues)
 - Pass if: All items have rules (Z=0)
 
+**Step 11 – Conflict Handling Compliance**
+- Identify items with contested terminology (terms with multiple valid variants across schools/regions)
+- For EACH: Verify acceptance lists include ≥2 valid variants
+- Report: `X applicable items; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |

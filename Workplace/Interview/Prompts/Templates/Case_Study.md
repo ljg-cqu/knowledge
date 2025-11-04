@@ -106,6 +106,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X of Y scenarios have complete rubrics; Z missing/incomplete` (list issues)
 - Pass if: All scenarios have complete rubrics (Z=0)
 
+**Step 11 – Conflict Handling Compliance**
+- Identify scenarios with competing frameworks/approaches
+- For EACH: Verify solutions acknowledge alternatives and clarify consensus vs dissent
+- Report: `X applicable scenarios; Y comply (Z%)`
+- Pass if: ≥80% comply OR rationale provided
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |
