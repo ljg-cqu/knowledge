@@ -2,16 +2,36 @@
 
 ## Executive Summary
 
-Threshold signature protocols have evolved significantly to meet the security and performance demands of modern blockchain systems. This report provides a comprehensive analysis of major protocol families (ECDSA, EdDSA, BLS, and Schnorr), their implementations, and blockchain compatibility across the entire ecosystem. The analysis covers protocols from pioneering implementations to cutting-edge developments, ensuring readers have complete visibility into threshold signature technology and its applications.
+Threshold signature protocols have evolved significantly to meet the security and performance demands of modern blockchain systems. This document serves as a comprehensive reference for building MPC services, with direct links to implementations, security advisories, and related resources.
+
+### Key Resources
+- [IETF FROST RFC](https://datatracker.ietf.org/doc/draft-irtf-cfrg-frost/): Standard for FROST threshold signatures
+- [BLS Signatures](https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/): IETF standard for BLS signatures
+- [MPC Alliance](https://www.mpcalliance.org/): Industry standards and best practices
+- [Awesome MPC](https://github.com/rdragos/awesome-mpc): Curated list of MPC resources
+- [Coinbase Kryptology](https://github.com/coinbase/kryptology): Advanced cryptography library with Threshold ECDSA and DKG in Go
+- [SKALE libBLS](https://github.com/skalenetwork/libBLS): BLS signatures and threshold encryption library in C++
+- [Celo Threshold BLS](https://github.com/celo-org/celo-threshold-bls-rs): Threshold BLS signatures and DKG in Rust
+- [NuCypher NuBLS](https://github.com/nucypher/NuBLS): Rust implementation of BLS-based threshold protocols
+- [Unbound Tech MPC](https://github.com/unbound-tech/blockchain-crypto-mpc): 2-party ECDSA and EdDSA in C++
+- [Cardinals Threshold ECDSA](https://gitlab.com/cardinals1/threshold-ecdsa): Threshold ECDSA implementation
+- [Aleph Zero Consensus](https://github.com/aleph-zero-foundation/consensus-go): Threshold BLS for randomness in consensus
+- [Polychain Threshold Ed25519](https://gitlab.com/polychainlabs/threshold-ed25519): Threshold Ed25519 in Go
+- [THORChain TSS](https://gitlab.com/thorchain/tss): TSS repositories for various protocols
+- [Frost-Dalek](https://github.com/isislovecruft/frost-dalek): Rust implementation of FROST for Schnorr signatures
+- [PoA Threshold Crypto](https://github.com/poanetwork/threshold_crypto): Rust pairing-based threshold cryptosystem
+- [Axelar ToFN](https://github.com/axelarnetwork/tofn): Rust implementation of GG20 for threshold ECDSA
+- [Open TSS](https://github.com/LatticeX-Foundation/opentss): Rust multi-party threshold signature scheme
+- [MPECDSA](https://gitlab.com/neucrypt/mpecdsa): Rust implementations for 2-of-n and t-of-n ECDSA
 
 ### Quick Reference: Protocol Families and Blockchains
 
 | Protocol Family | Implementations | Key Blockchains | Primary Use Cases | Status |
 | --- | --- | --- | --- | --- |
-| **ECDSA** | GG18, GG20, MPC-CMP, CGGMP, DKLS23, CCLST | Bitcoin, Ethereum L1, Avalanche, Cosmos, Polkadot, Filecoin, Hedera, XRP, Stacks, Dogecoin | Custody, multi-sig wallets, cross-chain | ✅ Production |
-| **EdDSA** | FROST-Ed25519 | Solana, Cardano, Near, Tezos, Aptos, Sui, Monero | High-throughput DeFi, validators, privacy | ✅ Production |
-| **BLS** | BLS Aggregation, Threshold BLS | Ethereum 2.0, Filecoin, Dfinity, Polkadot, Chia, Algorand, Harmony | PoS consensus, validator committees | ✅ Production |
-| **Schnorr** | MuSig2, FROST-Schnorr | Bitcoin Taproot, Lightning Network | Privacy-enhanced multisig, channels | ✅ Production |
+| **ECDSA** | [GG18](https://github.com/ZenGo-X/multi-party-ecdsa), [GG20](https://github.com/bnb-chain/tss-lib), [MPC-CMP](https://github.com/hugohn/mpc-cmp), [CGGMP](https://github.com/webb-tools/cggmp-threshold-ecdsa), [DKLS23](https://github.com/silence-laboratories/dkls23), [CCLST](https://github.com/getamis/alice) | Bitcoin, Ethereum L1, Avalanche, Cosmos, Polkadot, Filecoin, Hedera, XRP, Stacks, Dogecoin | Custody, multi-sig wallets, cross-chain | ✅ Production |
+| **EdDSA** | [FROST-Ed25519](https://github.com/taurushq-io/frost-ed25519) | Solana, Cardano, Near, Tezos, Aptos, Sui, Monero | High-throughput DeFi, validators, privacy | ✅ Production |
+| **BLS** | [BLS Aggregation](https://github.com/herumi/bls), [Threshold BLS](https://github.com/ZenGo-X/multi-party-bls) | Ethereum 2.0, Filecoin, Dfinity, Polkadot, Chia, Algorand, Harmony | PoS consensus, validator committees | ✅ Production |
+| **Schnorr** | [MuSig2](https://github.com/conduition/musig2), [FROST-Schnorr](https://github.com/ZcashFoundation/frost), [Frost-Dalek](https://github.com/isislovecruft/frost-dalek) | Bitcoin Taproot, Lightning Network | Privacy-enhanced multisig, channels | ✅ Production |
 | **RSA** | Shoup, Damgård-Dupont | Legacy PKI systems | Traditional infrastructure | ⚠️ Legacy |
 | **Post-Quantum** | Dilithium, FALCON, SPHINCS+ | Experimental/Research | Future quantum resistance | 🔬 Emerging |
 
@@ -30,27 +50,33 @@ flowchart TD
         GG18["GG18
         • 9 rounds
         • Paillier-based
-        • Basic security"]
+        • Basic security
+        • [GitHub](https://github.com/ZenGo-X/multi-party-ecdsa)"]
         GG20["GG20
         • 7 rounds
         • Paillier-based
-        • Identifiable abort"]
+        • Identifiable abort
+        • [GitHub](https://github.com/bnb-chain/tss-lib)"]
         MPC_CMP["MPC-CMP
         • 1-round signing
         • Enhanced Paillier
-        • Key refresh"]
+        • Key refresh
+        • [GitHub](https://github.com/hugohn/mpc-cmp)"]
         CGGMP["CGGMP
         • 3 rounds keygen
         • UC-secure
-        • Advanced ZK proofs"]
+        • Advanced ZK proofs
+        • [GitHub](https://github.com/webb-tools/cggmp-threshold-ecdsa)"]
         DKLS["DKLS23
         • 3 rounds
         • 2-party optimized
-        • Malicious secure"]
+        • Malicious secure
+        • [GitHub](https://github.com/silence-laboratories/dkls23)"]
         CCLST["CCLST
+        • 3/2 rounds
         • Class group-based
         • 4-9x bandwidth saving
-        • Non-interactive"]
+        • [GitHub](https://github.com/getamis/alice)"]
     end
     
     subgraph EdDSA_Impl["EdDSA Implementation"]
@@ -80,6 +106,10 @@ flowchart TD
         • Threshold capable
         • DKG-based
         • Flexible setup"]
+        Frost_Dalek["Frost-Dalek
+        • Single-round
+        • Ristretto group
+        • t-of-n"]
     end
     
     subgraph Blockchain_ECDSA["ECDSA Blockchains"]
@@ -126,19 +156,19 @@ flowchart TD
     ECDSA --> GG18 & GG20 & MPC_CMP & CGGMP & DKLS & CCLST
     EdDSA --> FROST_Ed
     BLS --> BLS_Agg & Threshold_BLS
-    Schnorr --> MuSig2 & FROST_Schnorr
+    Schnorr --> MuSig2 & FROST_Schnorr & Frost_Dalek
     
     GG18 & GG20 & MPC_CMP & CGGMP & DKLS & CCLST --> BTC & ETH1 & Multi_ECDSA
     FROST_Ed --> SOL & Cardano_Ed
     BLS_Agg & Threshold_BLS --> ETH2 & BLS_Chains
-    MuSig2 & FROST_Schnorr --> BTC_Taproot & Lightning
+    MuSig2 & FROST_Schnorr & Frost_Dalek --> BTC_Taproot & Lightning
 
     classDef protocol fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#000000
     classDef impl fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000000
     classDef blockchain fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000000
     
     class ECDSA,EdDSA,BLS,Schnorr protocol
-    class GG18,GG20,MPC_CMP,CGGMP,DKLS,CCLST,FROST_Ed,BLS_Agg,Threshold_BLS,MuSig2,FROST_Schnorr impl
+    class GG18,GG20,MPC_CMP,CGGMP,DKLS,CCLST,FROST_Ed,BLS_Agg,Threshold_BLS,MuSig2,FROST_Schnorr,Frost_Dalek impl
     class BTC,ETH1,ETH2,SOL,Multi_ECDSA,Cardano_Ed,BLS_Chains,BTC_Taproot,Lightning blockchain
 ```
 
@@ -148,32 +178,36 @@ flowchart TD
 
 | Implementation | Rounds (Keygen/Sign) | Encryption Basis | Key Features | Security Model | Blockchain Compatibility |
 | --- | --- | --- | --- | --- | --- |
-| GG18 | 9/9 | Paillier | Basic threshold, t≤n | Semi-honest | Bitcoin, Ethereum, Multi-chain |
-| GG20 | 7/7 | Paillier | Identifiable abort, non-interactive online | Malicious | Bitcoin, Ethereum, Multi-chain |
-| MPC-CMP | 3/1 | Enhanced Paillier | Key refresh, adaptive security | UC-secure | Bitcoin, Ethereum, Multi-chain |
-| CGGMP | 3/3 | Paillier + DH | UC-secure, advanced ZK proofs, key refresh | UC-secure | Bitcoin, Ethereum, Multi-chain |
-| DKLS23 | 3/3 | Paillier-based | 2-party optimized, reduced rounds | Malicious | Bitcoin, Ethereum, Multi-chain |
-| CCLST | 3/2 | Class group | 4-9x bandwidth reduction, non-interactive | Malicious | Bitcoin, Ethereum, Multi-chain |
+| [GG18](https://github.com/ZenGo-X/multi-party-ecdsa) | 9/9 | Paillier | Basic threshold, t≤n | Semi-honest | Bitcoin, Ethereum, Multi-chain |
+| [GG20](https://github.com/bnb-chain/tss-lib) | 7/7 | Paillier | Identifiable abort, non-interactive online | Malicious | Bitcoin, Ethereum, Multi-chain |
+| [MPC-CMP](https://github.com/hugohn/mpc-cmp) | 3/1 | Enhanced Paillier | Key refresh, adaptive security | UC-secure | Bitcoin, Ethereum, Multi-chain |
+| [CGGMP](https://github.com/webb-tools/cggmp-threshold-ecdsa) | 3/3 | Paillier + DH | UC-secure, advanced ZK proofs, key refresh | UC-secure | Bitcoin, Ethereum, Multi-chain |
+| [DKLS23](https://github.com/silence-laboratories/dkls23) | 3/3 | Paillier-based | 2-party optimized, reduced rounds | Malicious | Bitcoin, Ethereum, Multi-chain |
+| [CCLST](https://github.com/getamis/alice) | 3/2 | Class group | 4-9x bandwidth reduction, non-interactive | Malicious | Bitcoin, Ethereum, Multi-chain |
+| [Gennaro-Goldfeder ECDSA Paper](https://eprint.iacr.org/2019/114.pdf) | N/A | N/A | Fast multiparty threshold ECDSA | UC-secure | Multi-chain |
+| [Tillem-Burundukov Survey](https://new.ingwb.com/binaries/content/assets/insights/themes/distributed-ledger-technology/ing-releases-multiparty-threshold-signing-library-to-improve-customer-security/threshold-signatures-using-secure-multiparty-computation.pdf) | N/A | N/A | Comprehensive survey of ECDSA threshold schemes | Various | Multi-chain |
+| [Aumasson-Hamelink-Shlomovits Survey](https://eprint.iacr.org/2020/1390.pdf) | N/A | N/A | Survey of ECDSA threshold signatures | Malicious | Multi-chain |
 
 #### EdDSA Family
 
 | Implementation | Rounds | Key Generation | Key Features | Blockchain Compatibility |
 | --- | --- | --- | --- | --- |
-| FROST-Ed25519 | Single-round | DKG-based | Flexible threshold, preprocessing | Solana, Cardano |
+| [FROST-Ed25519](https://github.com/taurushq-io/frost-ed25519) | Single-round | DKG-based | Flexible threshold, preprocessing | Solana, Cardano |
 
 #### BLS Family
 
 | Implementation | Key Feature | Aggregation | Use Case | Blockchain Compatibility |
 | --- | --- | --- | --- | --- |
-| BLS Aggregation | Signature aggregation | Yes | Scalable consensus | Ethereum 2.0, Filecoin, Dfinity |
-| Threshold BLS | Committee signing | Yes | Distributed randomness | Polkadot, Chia, ZetaChain |
+| [BLS Aggregation](https://github.com/herumi/bls) | Signature aggregation | Yes | Scalable consensus | Ethereum 2.0, Filecoin, Dfinity |
+| [Threshold BLS](https://github.com/ZenGo-X/multi-party-bls) | Committee signing | Yes | Distributed randomness | Polkadot, Chia, ZetaChain |
 
 #### Schnorr Family
 
 | Implementation | Rounds | Key Aggregation | Threshold Support | Blockchain Compatibility |
 | --- | --- | --- | --- | --- |
-| MuSig2 | 2 rounds | Yes | n-of-n | Bitcoin Taproot, Lightning |
-| FROST-Schnorr | Single-round | No | t-of-n | Bitcoin Taproot, General use |
+| [MuSig2](https://github.com/conduition/musig2) | 2 rounds | Yes | n-of-n | Bitcoin Taproot, Lightning |
+| [FROST-Schnorr](https://github.com/ZcashFoundation/frost) | Single-round | No | t-of-n | Bitcoin Taproot, General use |
+| [Frost-Dalek](https://github.com/isislovecruft/frost-dalek) | Single-round | No | t-of-n | Multi-chain |
 
 ### Protocol Evolution and Characteristics
 
@@ -253,6 +287,7 @@ BLS signatures revolutionized blockchain scalability through signature aggregati
   - **Reduced network overhead**: Dramatically fewer messages to gossip
   - **Committee consensus**: Efficient for large validator sets
 
+
 2. **Threshold BLS**:
   - **Distributed Key Generation (DKG)**: Trustless key generation
   - **Distributed randomness**: Used in Filecoin, drand beacon
@@ -286,6 +321,12 @@ Schnorr signatures enable efficient multisignature schemes for Bitcoin and beyon
   - **Versatile configurations**: Support various threshold setups (e.g., 2-of-4)
   - **Taproot compatible**: Works with Bitcoin Taproot
   - **Privacy preserving**: Threshold constellation hidden on-chain
+
+3. **Frost-Dalek**:
+  - **Single-round signing**: With preprocessing phase
+  - **Ristretto group**: Efficient Schnorr signatures
+  - **t-of-n threshold**: Flexible threshold support
+  - **Multi-chain**: Compatible with multiple blockchain platforms
 
 **Key Characteristics**:
 - Linear signature aggregation (simpler than BLS pairing)
@@ -365,6 +406,7 @@ Schnorr signatures enable efficient multisignature schemes for Bitcoin and beyon
 **Bitcoin Taproot (Schnorr)**:
 - **MuSig2**: n-of-n multisignature support
 - **FROST-Schnorr**: Flexible threshold signatures
+- **Frost-Dalek**: Single-round threshold Schnorr signatures
 - **Privacy benefits**: Multisig indistinguishable from single-sig
 - **Script path**: Complex spending conditions with Taproot
 
@@ -423,12 +465,11 @@ Schnorr signatures enable efficient multisignature schemes for Bitcoin and beyon
 - **Historical significance**: Early threshold signature research
 - **Limited blockchain use**: Rarely used in modern blockchain systems
 - **Performance**: Slower than elliptic curve approaches
-
-**Why Not Common in Blockchains**:
-- Larger key and signature sizes vs EC approaches
-- Slower verification compared to ECDSA/EdDSA
-- Most blockchains standardized on EC cryptography
-- Legacy system compatibility is primary use case
+- **Why Not Common in Blockchains**:
+  - Larger key and signature sizes vs EC approaches
+  - Slower verification compared to ECDSA/EdDSA
+  - Most blockchains standardized on EC cryptography
+  - Legacy system compatibility is primary use case
 
 **Notable Protocols**:
 - Shoup (2000): Practical threshold RSA
@@ -710,30 +751,35 @@ Schnorr signatures enable efficient multisignature schemes for Bitcoin and beyon
 
 ## Conclusion
 
-This comprehensive analysis covers the complete landscape of threshold signature protocols across four major families (ECDSA, EdDSA, BLS, and Schnorr) and their implementations across the entire blockchain ecosystem. Key takeaways:
+This comprehensive analysis covers the complete landscape of threshold signature protocols across four major families (ECDSA, EdDSA, BLS, and Schnorr) and their implementations across the entire blockchain ecosystem. The extensive resource collection at the end provides direct links to GitHub repositories, research papers, and documentation for building comprehensive MPC services. Key takeaways:
 
 ### Protocol Coverage
 
-**ECDSA Family** (6 protocols):
+**ECDSA Family** (8+ protocols):
 - **GG18, GG20**: Pioneering protocols with known vulnerabilities
 - **MPC-CMP, CGGMP**: Modern UC-secure protocols with key refresh
 - **DKLS23**: Optimized 2-party protocol
 - **CCLST**: Revolutionary class group-based approach with 4-9x bandwidth improvement
+- **Binance TSS, Keep ECDSA**: Production implementations used by major platforms
 
-**EdDSA Family**:
+**EdDSA Family** (4+ protocols):
 - **FROST-Ed25519**: High-performance threshold signatures for Solana, Cardano
+- **Multi-Party EdDSA**: General purpose threshold EdDSA implementations
 
-**BLS Family**:
+**BLS Family** (6+ protocols):
 - **BLS Aggregation**: Enables massive scalability (Ethereum 2.0, 500,000+ validators)
 - **Threshold BLS**: Distributed randomness and committee signing
+- **LibBLS, Celo Threshold BLS**: Production-ready implementations
 
-**Schnorr Family**:
+**Schnorr Family** (6+ protocols):
 - **MuSig2**: Efficient n-of-n multisig for Bitcoin Taproot
 - **FROST-Schnorr**: Flexible t-of-n threshold signatures
+- **Frost-Dalek**: Single-round threshold Schnorr signatures
+- **ICE-FROST, secp256k1-frost**: Modular and Bitcoin-compatible implementations
 
 ### Blockchain Coverage
 
-**ECDSA-based**: Bitcoin, Ethereum L1, Avalanche, Cosmos, Polkadot, Filecoin, Hedera, XRP Ledger, Stacks, Dogecoin
+**ECDSA-based**: Bitcoin, Ethereum L1, Avalanche, Cosmos, Polkadot, Filecoin, Hedera, XRP, Stacks, Dogecoin
 
 **EdDSA-based**: Solana, Cardano (native Ed25519; ECDSA/Schnorr for cross-chain), Near Protocol, Tezos, Aptos, Sui, Monero (with ring signatures)
 
@@ -758,7 +804,11 @@ The choice of threshold signature protocol depends on:
 
 ### Future Outlook
 
-Threshold signature technology continues to evolve:
+Threshold signature technology continues to evolve, with active research in these areas:
+- [Post-Quantum Threshold Signatures](https://csrc.nist.gov/Projects/post-quantum-cryptography)
+- [Secure Multi-Party Computation Frameworks](https://www.mpcalliance.org/working-groups/)
+- [Formal Verification of MPC Protocols](https://eprint.iacr.org/2020/300)
+- [Cross-chain Interoperability Standards](https://interoperability.chain.link/)
 - **Security improvements**: Addressing vulnerabilities (6ix1een, Death by 1M cuts)
 - **Efficiency gains**: Reduced rounds (DKLS23: 6→3 rounds), bandwidth (CCLST: 4-9x)
 - **Standardization**: Cross-blockchain BLS12-381 adoption
@@ -776,7 +826,7 @@ This analysis provides readers with complete visibility into threshold signature
 
 **G2: MPC (Multi-Party Computation)**: Cryptographic technique allowing multiple parties to jointly compute a function over their inputs while keeping those inputs private [EN]
 
-**G3: DKG (Distributed Key Generation)**: Protocol for generating cryptographic keys in a distributed manner without any single party knowing the complete private key [EN]
+**G3: DKG (Distributed Key Generation)**: Protocol for generating cryptographic keys in a distributed manner without any single party knowing the complete private key. See [Pedersen's DKG paper](https://link.springer.com/chapter/10.1007/3-540-46766-1_9) and [Feldman's VSS](https://www.cs.umd.edu/~gasarch/TOPICS/secretsharing/feldmanVSS.pdf) for foundational work. [EN]
 
 **G4: UC-Security (Universally Composable Security)**: Strong security framework ensuring protocols remain secure when composed with other protocols in arbitrary environments [EN]
 
@@ -800,7 +850,7 @@ This analysis provides readers with complete visibility into threshold signature
 
 **G14: Taproot**: Bitcoin upgrade enabling Schnorr signatures and improved privacy/efficiency [EN]
 
-**G15: Pairing-based Cryptography**: Cryptographic techniques using bilinear pairings on elliptic curves, foundation for BLS signatures [EN]
+**G15: Pairing-based Cryptography**: Cryptographic techniques using bilinear pairings on elliptic curves, foundation for BLS signatures. See [Pairing-Based Cryptography at High Security Levels](https://eprint.iacr.org/2005/076.pdf) for in-depth analysis. [EN]
 
 **G16: secp256k1**: Elliptic curve used by Bitcoin and Ethereum for ECDSA signatures [EN]
 
@@ -878,6 +928,31 @@ This analysis provides readers with complete visibility into threshold signature
 - **Maturity**: Apache 2.0 License, production-ready
 - **Benchmarks**: Hardware-friendly, optimized for validators
 - **Repository**: https://github.com/axelarnetwork/tofn
+
+**C9: ZenGo-X/multi-party-bls** (Rust)
+- **Stack/Modules**: Threshold BLS signatures over BLS12-381
+- **Maturity**: GPL-3.0 License, research-to-production transition
+- **Benchmarks**: Supports dishonest majority, extensive test vectors
+- **Repository**: https://github.com/ZenGo-X/multi-party-bls
+
+**C10: herumi/bls** (C++/Go bindings)
+- **Stack/Modules**: BLS aggregation, threshold key shares
+- **Maturity**: BSD-3-Clause License, widely adopted in PoS chains
+- **Benchmarks**: Optimized pairings, fast multi-signature verification
+- **Repository**: https://github.com/herumi/bls
+
+**C11: ZcashFoundation/frost** (Rust)
+- **Stack/Modules**: FROST threshold Schnorr suites (Ed25519, secp256k1)
+- **Maturity**: MIT/Apache 2.0 dual license, production-grade
+- **Benchmarks**: RFC 9591 reference with comprehensive interoperability tests
+- **Repository**: https://github.com/ZcashFoundation/frost
+- **Related**: [FROST Security Analysis](https://eprint.iacr.org/2020/852), [IETF Draft](https://datatracker.ietf.org/doc/draft-irtf-cfrg-frost/)
+
+**C12: conduition/musig2** (Rust)
+- **Stack/Modules**: MuSig2 multisignature protocol (BIP-0327 compliant)
+- **Maturity**: MIT License, actively maintained
+- **Benchmarks**: Deterministic round reduction, Taproot-compatible outputs
+- **Repository**: https://github.com/conduition/musig2
 
 ### Authoritative Literature & Reports
 
@@ -1058,3 +1133,143 @@ Stacks. (2023). *Stacks blockchain: Bitcoin L2*. https://www.stacks.co/ [EN]
 van Saberhagen, N. (2013). CryptoNote v2.0. https://cryptonote.org/whitepaper.pdf [EN]
 
 Noether, S., & Mackenzie, A. (2016). Ring confidential transactions. *Ledger*, 1, 1-18. https://doi.org/10.5195/ledger.2016.34 [EN]
+
+### Resources for Threshold Signature Protocols in MPC Services
+
+#### Core Protocol Implementations
+
+**ECDSA Family**
+- **GG18/GG20**: [ZenGo-X/multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa) - Comprehensive implementation of GG18 and GG20 protocols in Go
+- **CGGMP**: [webb-tools/cggmp-threshold-ecdsa](https://github.com/webb-tools/cggmp-threshold-ecdsa) - UC-secure threshold ECDSA with advanced ZK proofs
+- **DKLS23**: [silence-laboratories/dkls23](https://github.com/silence-laboratories/dkls23) - 2-party optimized ECDSA with malicious security
+- **CCLST**: [getamis/alice](https://github.com/getamis/alice) - Bandwidth-efficient threshold ECDSA using class groups
+- **ING Bank TSS**: [ing-bank/threshold-signatures](https://github.com/ing-bank/threshold-signatures) - Production-grade ECDSA implementation with formal security audit
+
+**EdDSA Family**
+- **FROST-Ed25519**: [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) - FROST implementation for Ed25519 signatures
+- **Multi-Party EdDSA**: [KZen-networks/multi-party-eddsa](https://github.com/KZen-networks/multi-party-eddsa) - General purpose threshold EdDSA
+
+**BLS Family**
+- **BLS Aggregation**: [herumi/bls](https://github.com/herumi/bls) - High-performance BLS signature library
+- **Threshold BLS**: [ZenGo-X/multi-party-bls](https://github.com/ZenGo-X/multi-party-bls) - Threshold BLS signatures with DKG
+- **LibBLS (SKALE)**: [skalenetwork/libBLS](https://github.com/skalenetwork/libBLS) - Production-grade BLS and threshold encryption
+
+**Schnorr Family**
+- **MuSig2**: [conduition/musig2](https://github.com/conduition/musig2) - 2-round Schnorr multi-signatures
+- **FROST-Schnorr**: [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) - FROST implementation for Schnorr signatures
+- **Frost-Dalek**: [isislovecruft/frost-dalek](https://github.com/isislovecruft/frost-dalek) - Pure-Rust FROST implementation
+
+#### General-Purpose Libraries
+- **Coinbase Kryptology**: [coinbase/kryptology](https://github.com/coinbase/kryptology) - Advanced cryptography library with Threshold ECDSA and DKG in Go
+- **IBM TSS**: [IBM/TSS](https://github.com/IBM/TSS) - Simple and secure threshold signature schemes
+- **TSSKit**: [Turing-Space/TSSKit](https://github.com/Turing-Space/TSSKit) - Toolkit for threshold signature schemes
+
+#### Research and Standards
+- **IETF FROST RFC**: [draft-irtf-cfrg-frost](https://datatracker.ietf.org/doc/draft-irtf-cfrg-frost/) - Standard for FROST threshold signatures
+- **BLS Signatures RFC**: [draft-irtf-cfrg-bls-signature](https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/) - IETF standard for BLS signatures
+- **MPC Alliance**: [mpcalliance.org](https://www.mpcalliance.org/) - Industry standards and best practices
+- **Awesome MPC**: [rdragos/awesome-mpc](https://github.com/rdragos/awesome-mpc) - Curated list of MPC resources
+
+#### Security Audits and Analysis
+- **ING TSS Security Audit**: [Report](https://github.com/ing-bank/threshold-signatures/blob/master/docs/report_ing_tss_1.0.pdf) - Security assessment by Kudelski Security
+- **Threshold Cryptography Literature**: [sanjibbaral435/Threshold-Cryptography-Literature](https://github.com/sanjibbaral435/Threshold-Cryptography-Literature) - Collection of research papers
+
+#### Blockchain-Specific Implementations
+- **Ethereum 2.0**: Native BLS threshold signatures for validator duties
+- **Polkadot/Substrate**: [polkadot/threshold-bolt](https://github.com/w3f/threshold-bolt) - Threshold signature framework
+- **Cosmos**: [cosmos/ics23](https://github.com/cosmos/ics23) - Includes threshold signature support
+- **THORChain TSS**: [thorchain/tss](https://gitlab.com/thorchain/tss) - TSS for cross-chain operations
+- **Axelar ToFN**: [axelarnetwork/tofn](https://github.com/axelarnetwork/tofn) - Rust implementation of GG20 for cross-chain
+
+Below is a curated list of high-quality GitHub repositories and essential references for threshold signature protocols, organized by signature scheme type. These resources are selected for their relevance to building comprehensive MPC services and to avoid redundancy with existing content.
+
+### ECDSA Family
+- **GG18/GG20**: [ZenGo-X/multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa) - Multi-party ECDSA implementation.
+- **CGGMP**: [webb-tools/cggmp-threshold-ecdsa](https://github.com/webb-tools/cggmp-threshold-ecdsa) - Threshold ECDSA with CGGMP protocol.
+- **DKLS23**: [silence-laboratories/dkls23](https://github.com/silence-laboratories/dkls23) - Silent Shard's threshold ECDSA signatures.
+- **CCLST**: [getamis/alice](https://github.com/getamis/alice) - Hierarchical Threshold Signature Scheme.
+- **Keep ECDSA**: [keep-network/keep-ecdsa](https://github.com/keep-network/keep-ecdsa) - Smart contracts and client for Keep ECDSA.
+- **Two-Party ECDSA JS**: [Safeheron/two-party-ecdsa-js](https://github.com/Safeheron/two-party-ecdsa-js) - TypeScript implementation of 2/2 threshold ECDSA.
+- **TinySig**: [NillionNetwork/tinysig](https://github.com/NillionNetwork/tinysig) - Pure-Python implementation of threshold ECDSA via MPC.
+- **Binance TSS**: [bnb-chain/tss-lib](https://github.com/bnb-chain/tss-lib) - Production-grade threshold signature scheme for ECDSA and EdDSA used by Binance.
+
+### EdDSA Family
+- **FROST-Ed25519**: [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) - FROST implementation for Ed25519.
+- **Multi-Party EdDSA**: [KZen-networks/multi-party-eddsa](https://github.com/KZen-networks/multi-party-eddsa) - Multi-party EdDSA signatures.
+- **Polychain Threshold Ed25519**: [polychainlabs/threshold-ed25519](https://gitlab.com/polychainlabs/threshold-ed25519) - Threshold Ed25519 implementation in Go for high-performance blockchains.
+
+### BLS Family
+- **BLS Aggregation**: [herumi/bls](https://github.com/herumi/bls) - BLS signature aggregation library.
+- **Threshold BLS**: [ZenGo-X/multi-party-bls](https://github.com/ZenGo-X/multi-party-bls) - Multi-party BLS threshold signatures.
+- **LibBLS (SKALE)**: [skalenetwork/libBLS](https://github.com/skalenetwork/libBLS) - BLS signatures for SKALE network with threshold capabilities.
+- **BLS Signatures (Chia Network)**: [Chia-Network/bls-signatures](https://github.com/Chia-Network/bls-signatures) - BLS signatures implementation.
+- **Celo Threshold BLS**: [celo-org/celo-threshold-bls-rs](https://github.com/celo-org/celo-threshold-bls-rs) - Threshold BLS signatures and DKG implementation in Rust for Celo blockchain.
+- **NuCypher NuBLS**: [nucypher/NuBLS](https://github.com/nucypher/NuBLS) - Rust implementation of BLS-based threshold protocols including threshold encryption.
+
+### Schnorr Family
+- **MuSig2**: [conduition/musig2](https://github.com/conduition/musig2) - MuSig2 Schnorr signature scheme.
+- **FROST-Schnorr**: [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) - Rust implementation of FROST by Zcash Foundation.
+- **Multi-Party Schnorr**: [KZen-networks/multi-party-schnorr](https://github.com/KZen-networks/multi-party-schnorr) - Multi-party Schnorr signatures.
+- **ICE-FROST**: [topos-protocol/ice-frost](https://github.com/topos-protocol/ice-frost) - Modular Rust implementation of ICE-FROST.
+- **secp256k1-frost**: [bancaditalia/secp256k1-frost](https://github.com/bancaditalia/secp256k1-frost) - Implementation of FROST extending the secp256k1 library for Bitcoin compatibility.
+
+### General Threshold Signature Libraries
+- **TSSKit**: [Turing-Space/TSSKit-Threshold-Signature-Scheme-Toolkit](https://github.com/Turing-Space/TSSKit-Threshold-Signature-Scheme-Toolkit) - Toolkit for selecting appropriate threshold signature schemes.
+- **IBM TSS**: [IBM/TSS](https://github.com/IBM/TSS) - Simplified threshold signature schemes.
+- **Coinbase Kryptology**: [coinbase/kryptology](https://github.com/coinbase/kryptology) - Advanced cryptography library with Threshold ECDSA and DKG in Go.
+- **Safeheron Multi-Party Sig C++**: [Safeheron/multi-party-sig-cpp](https://github.com/Safeheron/multi-party-sig-cpp) - C++ implementation of GG18, CCLST, and CGGMP protocols for production environments.
+
+### Research Papers and Literature
+- **Threshold Cryptography Literature**: [sanjibbaral435/Threshold-Cryptography-Literature](https://github.com/sanjibbaral435/Threshold-Cryptography-Literature) - Comprehensive collection of research papers on threshold cryptography, covering RSA, ECDSA, DSS, and more recent advancements.
+- **Comprehensive Survey of Threshold Signatures**: [eprint.iacr.org/2023/1554](https://eprint.iacr.org/2023/1554) - Systematic survey of threshold digital signatures including NIST standards and post-quantum cryptography.
+
+### Advanced Implementations and Frameworks
+- **MPC-CMP**: [hugohn/mpc-cmp](https://github.com/hugohn/mpc-cmp) - Implementation of UC Non-Interactive, Proactive, Threshold ECDSA with Identifiable Aborts (GG21). Features single-round signing and enhanced security.
+- **Multi-Party Sig**: [taurushq-io/multi-party-sig](https://github.com/taurushq-io/multi-party-sig) - Comprehensive multi-party signature library supporting multiple threshold schemes with parallel processing optimization.
+- **Safeheron Multi-Party Sig C++**: [Safeheron/multi-party-sig-cpp](https://github.com/Safeheron/multi-party-sig-cpp) - C++ implementation of GG18, CCLST, and CGGMP protocols for production environments.
+- **Silent Shard DKLS23 Low-Level**: [silence-laboratories/silent-shard-dkls23-ll](https://github.com/silence-laboratories/silent-shard-dkls23-ll) - Multi-Party Computation implementation of DKLS23 with dynamic quorum management.
+- **Axelar ToFN**: [axelarnetwork/tofn](https://github.com/axelarnetwork/tofn) - Rust implementation of GG20 threshold ECDSA protocol for cross-chain applications.
+
+### Distributed Key Generation (DKG) Libraries
+- **Frost-Dalek**: [isislovecruft/frost-dalek](https://github.com/isislovecruft/frost-dalek) - Rust implementation of FROST using the Dalek cryptography libraries for Ristretto group operations.
+- **Axelar ToFN**: [axelarnetwork/tofn](https://github.com/axelarnetwork/tofn) - Rust implementation of GG20 threshold ECDSA protocol for cross-chain applications.
+- **Open TSS**: [LatticeX-Foundation/opentss](https://github.com/LatticeX-Foundation/opentss) - Rust multi-party threshold signature scheme library supporting various protocols.
+- **MPECDSA**: [neucrypt/mpecdsa](https://gitlab.com/neucrypt/mpecdsa) - Rust implementations for 2-of-n and t-of-n ECDSA threshold signatures.
+- **FROST Python Bindings**: [devos50/frost-python](https://github.com/devos50/frost-python) - Python bindings to the FROST Rust library for easier integration.
+
+### Blockchain-Specific Threshold Implementations
+- **Celo Threshold BLS**: [celo-org/celo-threshold-bls-rs](https://github.com/celo-org/celo-threshold-bls-rs) - Threshold BLS signatures and DKG implementation in Rust for Celo blockchain.
+- **NuCypher NuBLS**: [nucypher/NuBLS](https://github.com/nucypher/NuBLS) - Rust implementation of BLS-based threshold protocols including threshold encryption.
+- **Unbound Tech MPC**: [unbound-tech/blockchain-crypto-mpc](https://github.com/unbound-tech/blockchain-crypto-mpc) - 2-party ECDSA and EdDSA implementations in C++ for blockchain applications.
+- **Cardinals Threshold ECDSA**: [cardinals1/threshold-ecdsa](https://gitlab.com/cardinals1/threshold-ecdsa) - Threshold ECDSA implementation with focus on security and performance.
+- **THORChain TSS**: [thorchain/tss](https://gitlab.com/thorchain/tss) - TSS repositories for various protocols used in THORChain cross-chain operations.
+- **Polychain Threshold Ed25519**: [polychainlabs/threshold-ed25519](https://gitlab.com/polychainlabs/threshold-ed25519) - Threshold Ed25519 implementation in Go for high-performance blockchains.
+- **Ethereum Consensus Specs**: [ethereum/consensus-specs](https://github.com/ethereum/consensus-specs) - Official BLS signature specifications for Ethereum 2.0.
+
+### Post-Quantum Threshold Signatures (Emerging)
+- **Plover**: [tprest.github.io/pdf/pub/plover.pdf](https://tprest.github.io/pdf/pub/plover.pdf) - Masking-friendly hash-and-sign lattice signatures for post-quantum threshold schemes.
+- **Threshold Computation in the Head**: [eprint.iacr.org/2023/1573](https://eprint.iacr.org/2023/1573) - Improved framework for post-quantum signatures using MPC-in-the-Head paradigm.
+- **Partially Non-Interactive Lattice Threshold**: [eprint.iacr.org/2024/467.pdf](https://eprint.iacr.org/2024/467.pdf) - Two-round lattice-based threshold signatures research.
+- **Ringtail**: [eprint.iacr.org/2024/1113](https://eprint.iacr.org/2024/1113) - Practical two-round threshold signatures from Learning with Errors (LWE).
+
+### Recent Academic Papers (2023-2024)
+- **Dynamic-FROST**: [eprint.iacr.org/2024/896.pdf](https://eprint.iacr.org/2024/896.pdf) - Schnorr threshold signatures with flexible committee management.
+- **Threshold ECDSA in Three Rounds**: [eprint.iacr.org/2023/765](https://eprint.iacr.org/2023/765) - Optimized three-round threshold ECDSA protocol (IEEE S&P 2024).
+- **Password-Protected Threshold Signatures**: [eprint.iacr.org/2024/1469](https://eprint.iacr.org/2024/1469) - Threshold signatures with password protection for custody applications.
+- **Partially Non-Interactive Two-Round Lattice-Based Threshold Signatures**: [eprint.iacr.org/2024/467.pdf](https://eprint.iacr.org/2024/467.pdf) - Efficient two-round threshold signatures with reduced communication.
+
+### Comprehensive Resource Collections
+- **ZenGo Awesome TSS**: [ZenGo-X/awesome-tss](https://github.com/ZenGo-X/awesome-tss) - Curated list of distributed key generation and threshold signature implementations.
+- **Threshold Signature Scheme Resources**: [danielmbirochi/Threshold-Signature-Scheme-Resources](https://github.com/danielmbirochi/Threshold-Signature-Scheme-Resources) - Comprehensive collection of threshold signature implementations and resources.
+- **Threshold Cryptography Topics**: [GitHub Topics/threshold-cryptography](https://github.com/topics/threshold-cryptography) - Community-curated threshold cryptography implementations and discussions.
+- **Awesome MPC**: [rdragos/awesome-mpc](https://github.com/rdragos/awesome-mpc) - Curated list of MPC resources including threshold signatures.
+
+### Security Audits and Industry Reports
+- **Silent Shard Security Audit**: [silence-laboratories/dkls23/blob/main/docs/ToB-SilenceLaboratories_2024.04.10.pdf](https://github.com/silence-laboratories/dkls23/blob/main/docs/ToB-SilenceLaboratories_2024.04.10.pdf) - Trail of Bits security audit of DKLS23 implementation.
+- **Alpha-Ray Key Extraction Attacks**: Research on key extraction attacks on threshold ECDSA implementations and mitigations.
+
+### Standards and Specifications
+- **IETF FROST Draft**: [draft-irtf-cfrg-frost-15](https://www.ietf.org/archive/id/draft-irtf-cfrg-frost-15.html) - IETF specification for FROST threshold signatures with multiple ciphersuites.
+- **IETF BLS Signatures Draft**: [draft-irtf-cfrg-bls-signature](https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/) - IETF standardization draft for BLS signature schemes.
+
+This comprehensive collection of resources provides a solid foundation for developing MPC services that cover all major types of threshold signature protocols. The resources span production-ready implementations, academic research, emerging post-quantum solutions, and industry standards, ensuring developers have access to robust and secure implementations for any blockchain ecosystem. Organizations building comprehensive MPC services can leverage these high-quality implementations to support ECDSA, EdDSA, BLS, and Schnorr threshold signatures across all major blockchain platforms.
