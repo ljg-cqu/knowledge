@@ -57,17 +57,24 @@ Supporting Artifacts:
 - Diagram (Mermaid)
 ```mermaid
 flowchart LR
-A[Use case: Target chain] -->|EVM / secp256k1| B[GG18/GG20 (ECDSA)]
-A -->|Solana / Ed25519| C[FROST (EdDSA)]
-B --> D[Native signature; lower on-chain friction]
-C --> E[2-round; IETF draft; batching]
+    A["Use case: Target chain"]
+    B["GG18/GG20 - ECDSA"]
+    C["FROST - EdDSA"]
+    D["Native signature<br/>lower on-chain friction"]
+    E["2-round<br/>IETF draft<br/>batching"]
+
+    A -->|EVM secp256k1| B
+    A -->|Solana Ed25519| C
+    B --> D
+    C --> E
 ```
-- Table: 协议-链匹配简表  
+- Table: 协议-链匹配简表
+
 | 协议 | 原生链匹配 | 交互轮数 | 中止特性 | 审计/标准化 |
-|---|---|---|---|---|
-| GG18 | ECDSA(EVM) | 多轮 | 可中止 | 学术+工业实现 |
-| GG20 | ECDSA(EVM) | 1轮 | 可识别中止 | 学术+工业实现 |
-| FROST | Ed25519(Solana) | 2轮 | 鲁棒 | IETF 标准草案 |
+| --- | --- | --- | --- | --- |
+| GG18 | ECDSA - EVM | 多轮 | 可中止 | 学术+工业实现 |
+| GG20 | ECDSA - EVM | 1轮 | 可识别中止 | 学术+工业实现 |
+| FROST | Ed25519 - Solana | 2轮 | 鲁棒 | IETF 标准草案 |
 
 [Ref: L1, L2, L3]. [0]
 
@@ -128,12 +135,13 @@ EVM -->|No| SOL{Solana?}
 SOL -->|Yes| FROST[Threshold EdDSA: FROST]
 SOL -->|No| Alt[Check chain algo/contract wallet]
 ```
-- Table: 算法/链特性与实现要点  
+- Table: 算法/链特性与实现要点
+
 | 链/算法 | 规范要点 | MPC 协议推荐 | 注意事项 |
-|---|---|---|---|
-| Ethereum / secp256k1 | EIP-1559/2098 | GG20(GG18) | V,R,S 编码、EIP-2 低 S |
-| Bitcoin / Schnorr | BIP-340/341 | tSchnorr/Adaptor | Taproot script path |
-| Solana / Ed25519 | Solana tx msg | FROST | recent blockhash/nonce |
+| --- | --- | --- | --- |
+| Ethereum - secp256k1 | EIP-1559/2098 | GG20 (GG18) | V,R,S 编码、EIP-2 低 S |
+| Bitcoin - Schnorr | BIP-340/341 | tSchnorr/Adaptor | Taproot script path |
+| Solana - Ed25519 | Solana tx msg | FROST | recent blockhash/nonce |
 
 [Ref: A3, A4, A5, L2, L3]. [0]
 
@@ -208,10 +216,11 @@ MPC Node A->>Client: Partial response
 Client->>MPC Node A: Round 2 (if needed)
 Note over All: Trace spans: net RTT, preproc wait, compute
 ```
-- Table: 性能/可靠性调优清单  
+- Table: 性能/可靠性调优清单
+
 | 维度 | 措施 | 影响 |
-|---|---|---|
-| 协议 | 降轮次（GG20/FROST） | ↓延迟 |
+| --- | --- | --- |
+| 协议 | 降轮次 (GG20/FROST) | ↓延迟 |
 | 网络 | mTLS/QUIC/就近路由 | ↓抖动 |
 | 预处理 | 预测+库存+批处理 | ↓尾延迟 |
 | 可靠性 | 可识别中止/踢出 | ↑活性 |
@@ -291,9 +300,10 @@ BTCMsg --> Sign
 SOLMsg --> Sign
 Sign --> Broadcast[RPC Broadcast/Simulation]
 ```
-- Table: 关键规范对照  
+- Table: 关键规范对照
+
 | 链 | 关键规范 | SDK 要点 |
-|---|---|---|
+| --- | --- | --- |
 | EVM | EIP-1559/2098 | 低S、链ID、typed data |
 | BTC | BIP-340/341/342 | PSBT、sighash、Taproot |
 | Solana | Msg/Blockhash | 序列化、账户顺序 |
@@ -370,9 +380,10 @@ Transport -->|mTLS/Pinning| Security
 MPCNodes -->|Least Privilege| Security
 Chain -->|Anti-replay| Security
 ```
-- Table: 合规/安全对照  
+- Table: 合规/安全对照
+
 | 要求 | 关注点 | 落地 |
-|---|---|---|
+| --- | --- | --- |
 | GDPR | 数据最小化/区域化 | 匿名化/区域存储 |
 | FIPS 140-3 | 模块/DRBG | FIPS 组件/文档 |
 | SOC 2 | 过程与证据 | 控制库/审计 |
@@ -449,9 +460,10 @@ Signer->>RPC: Broadcast(traceID)
 RPC-->>SDK: TxHash/Receipt(traceID)
 SDK-->>Frontend: Status(traceID)
 ```
-- Table: 运营指标  
+- Table: 运营指标
+
 | 指标 | 目标 | 触发动作 |
-|---|---|---|
+| --- | --- | --- |
 | P95 签名延迟 | <300ms | 预处理加库存/路由优化 |
 | 可识别中止率 | <0.5% | 踢出/重组 |
 | SDK 错误率 | <0.2% | 灰度/回退 |
