@@ -47,6 +47,57 @@
 | **🔵 MuSig2** | [conduition/musig2](https://github.com/conduition/musig2) | Malicious | Bitcoin Taproot | ✅ BIP327 |
 | **🟢 Threshold BLS** | [ZenGo-X/multi-party-bls](https://github.com/ZenGo-X/multi-party-bls) | Malicious | Ethereum 2.0 | ✅ Production |
 
+### 🏆 Top Protocol Recommendations by Use Case
+
+| **Use Case** | **Protocol** | **Security** | **Performance** | **Why Choose** |
+|---|---|---|---|---|
+| **🏦 Institutional Custody** | 🟢 CGGMP21 | UC-Secure | High | CBDC-ready, 1-round online signing |
+| **🏢 Enterprise Wallets** | 🟢 MPC-CMP | UC-Secure | Very High | Single-round signing, proactive security |
+| **📱 Consumer Mobile** | 🔵 DKLS23 | Malicious | High | Optimized for 2-party, Coinbase audited |
+| **🌐 IoT/Constrained** | 🟣 CCLST | Malicious | Medium | 4-9x bandwidth reduction, mobile-friendly |
+| **⚡ High-Performance Validators** | 🟢 FROST-Ed25519 | Malicious | Very High | Single-round, Solana/Cardano native |
+| **🔗 Ethereum 2.0** | 🟢 Threshold BLS | Malicious | High | Native support, validator consensus |
+| **₿ Bitcoin Taproot** | 🔵 MuSig2 | Malicious | High | BIP-327 standard, Lightning ready |
+| **🌉 Cross-Chain Bridges** | 🟢 CGGMP21 | UC-Secure | Medium | Multi-chain support, economic security |
+
+### Implementation Quick Start
+
+**For Immediate Production Deployment**:
+1. **Institutional**: `CGGMP21` → `dfns/cggmp21` → Trail of Bits audit
+2. **Consumer**: `DKLS23` → `silence-laboratories/dkls23` → Coinbase custody proven
+3. **Validators**: `FROST-Ed25519` → `taurushq-io/frost-ed25519` → RFC 9591 compliant
+4. **Ethereum 2.0**: `Threshold BLS` → `ZenGo-X/multi-party-bls` → Native consensus
+
+#### Deployment Scenarios
+
+**Institutional Custody**:
+- Protocol: CGGMP21 or MPC-CMP
+- Architecture: Multi-region distributed cosigners with HSM/TEE backing
+- Examples: Fireblocks, Coinbase Custody, AWS Nitro
+- Audits: Trail of Bits, Kudelski Security required
+
+**Consumer Wallets**:
+- Protocol: DKLS23 (2-party) or simplified CGGMP
+- Architecture: User device + cloud cosigner split
+- Examples: MetaMask + Silent Shard integration
+- Focus: UX optimization with mobile-friendly protocols
+
+**DeFi Treasuries**:
+- Protocol: CGGMP or MPC-CMP with multi-sig governance
+- Architecture: On-chain governance + off-chain threshold signing
+- Requirements: Transparency, auditability, time-locks
+
+**Validator Infrastructure**:
+- Protocol: FROST-Ed25519 (Solana), Threshold BLS (Ethereum 2.0)
+- Architecture: Distributed validator nodes with DKG
+- Requirements: Low latency, high availability, slashing protection
+
+**Cross-Chain Bridges**:
+- Protocol: GG20/CGGMP threshold ECDSA
+- Architecture: Validator network with dynamic rotation
+- Examples: Axelar ToFN, THORChain TSS
+- Requirements: Byzantine fault tolerance, economic security
+
 ### Security Standards Evolution
 
 **2024 Requirements**:
@@ -77,8 +128,8 @@
 
 | Performance Priority | Protocol | Rounds | Bandwidth | Latency | Best For |
 |---|---|---|---|---|---|
-| **Lowest Latency** | MPC-CMP | 1-round signing | Medium | ⚡ Lowest | High-frequency trading |
-| **High Throughput** | FROST-Ed25519 | Single-round | Low | ⚡ Low | Solana/Cardano validators |
+| **Lowest Latency** | MPC-CMP | 1-round signing | Medium | Low | High-frequency trading |
+| **High Throughput** | FROST-Ed25519 | Single-round | Low | Low | Solana/Cardano validators |
 | **Bandwidth Optimized** | CCLST | 2-round signing | 4-9x reduction | Medium | Mobile/IoT wallets |
 | **Scalable Consensus** | Threshold BLS | Single-round | Aggregation | Low | Ethereum 2.0, PoS chains |
 | **Privacy Focused** | MuSig2 | 2-round | Low | Medium | Bitcoin Taproot, Lightning |
@@ -87,37 +138,23 @@
 
 | Blockchain | Signature Scheme | Recommended Protocol | Library | Status |
 |---|---|---|---|---|
-| **Bitcoin** | ECDSA secp256k1 | CGGMP21, DKLS23 | dfns/cggmp21 | ✅ Production |
-| **Bitcoin Taproot** | Schnorr | MuSig2, FROST-Schnorr | conduition/musig2 | ✅ Production |
-| **Ethereum L1** | ECDSA secp256k1 | CGGMP21, MPC-CMP | dfns/cggmp21 | ✅ Production |
-| **Ethereum 2.0** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-| **Solana** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Cardano** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Polkadot** | sr25519/Ed25519 | FROST, Threshold BLS | ZcashFoundation/frost | ✅ Production |
-| **Cosmos** | secp256k1 | CGGMP21, DKLS23 | taurushq-io/multi-party-sig | ✅ Production |
-| **Avalanche** | secp256k1 | CGGMP21, MPC-CMP | taurushq-io/multi-party-sig | ✅ Production |
-| **Filecoin** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-
-### Blockchain Ecosystem Adoption Statistics
-
-| Blockchain | Native TSS Support | Primary Protocol | Production Status | Key Projects | Adoption Level |
-|---|---|---|---|---|---|
-| **Bitcoin** | No (Taproot: Yes) | CGGMP21, MuSig2 | ✅ Production | Fireblocks, LedgerX | High |
-| **Ethereum L1** | No | CGGMP21, MPC-CMP | ✅ Production | Infura, MetaMask | High |
-| **Ethereum 2.0** | Yes (BLS) | Threshold BLS | ✅ Native | Lido, Rocket Pool | Native |
-| **Solana** | No | FROST-Ed25519 | ✅ Production | Solflare, Phantom | High |
-| **Cardano** | No | FROST-Ed25519 | ✅ Production | Nami, Yoroi | High |
-| **Polkadot** | No | FROST, Threshold BLS | ✅ Production | Polkadot.js | Medium |
-| **Cosmos** | No | CGGMP21, DKLS23 | ✅ Production | Keplr, Cosmostation | High |
-| **Avalanche** | No | CGGMP21, MPC-CMP | ✅ Production | Core Wallet | Medium |
-| **Filecoin** | Yes (BLS) | Threshold BLS | ✅ Native | Lotus, Glif | Native |
-| **Near** | No | FROST-Ed25519 | ✅ Production | Near Wallet | Medium |
-| **Tezos** | No | FROST, GG18 | ✅ Production | Temple, Kukai | Medium |
-| **Aptos** | No | FROST-Ed25519 | ✅ Production | Petra, Pontem | Growing |
-| **Sui** | No | FROST-Ed25519 | ✅ Production | Sui Wallet | Growing |
-| **Monero** | No | FROST-Ed25519 | ✅ Production | Cake, Monerujo | Niche |
-| **Stacks** | No | CGGMP21, GG18 | ✅ Production | Hiro Wallet | Growing |
-| **Dogecoin** | No | GG18, GG20 | ✅ Production | MyDoge | Low |
+| **Bitcoin** | ECDSA secp256k1 | CGGMP21, DKLS23 | [dfns/cggmp21](https://github.com/LFDT-Lockness/cggmp21) | ✅ Production |
+| **Bitcoin Taproot** | Schnorr | MuSig2, FROST-Schnorr | [conduition/musig2](https://github.com/conduition/musig2) | ✅ Production |
+| **Ethereum L1** | ECDSA secp256k1 | CGGMP21, MPC-CMP | [dfns/cggmp21](https://github.com/LFDT-Lockness/cggmp21) | ✅ Production |
+| **Ethereum 2.0** | BLS12-381 | Threshold BLS | [ZenGo-X/multi-party-bls](https://github.com/ZenGo-X/multi-party-bls) | ✅ Production |
+| **Solana** | Ed25519 | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Cardano** | Ed25519 | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Polkadot** | sr25519/Ed25519 | FROST, Threshold BLS | [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) | ✅ Production |
+| **Cosmos** | secp256k1 | CGGMP21, DKLS23 | [taurushq-io/multi-party-sig](https://github.com/taurushq-io/multi-party-sig) | ✅ Production |
+| **Avalanche** | secp256k1 | CGGMP21, MPC-CMP | [taurushq-io/multi-party-sig](https://github.com/taurushq-io/multi-party-sig) | ✅ Production |
+| **Filecoin** | BLS12-381 | Threshold BLS | [ZenGo-X/multi-party-bls](https://github.com/ZenGo-X/multi-party-bls) | ✅ Production |
+| **Near** | Ed25519 | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Tezos** | Ed25519/secp256k1 | FROST, GG18 | [ZcashFoundation/frost](https://github.com/ZcashFoundation/frost) | ✅ Production |
+| **Aptos** | Ed25519 | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Sui** | Ed25519 | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Monero** | Ed25519 + Ring | FROST-Ed25519 | [taurushq-io/frost-ed25519](https://github.com/taurushq-io/frost-ed25519) | ✅ Production |
+| **Stacks** | secp256k1 | CGGMP21, GG18 | [dfns/cggmp21](https://github.com/LFDT-Lockness/cggmp21) | ✅ Production |
+| **Dogecoin** | secp256k1 | GG18, GG20 | [ZenGo-X/multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa) | ✅ Production |
 
 ### Quick Selection Flowchart
 
@@ -229,7 +266,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 9-round signing
 - **Security**: Semi-honest (now deprecated)
 - **Innovation**: First practical t-of-n threshold ECDSA without trusted dealer
-- **Status**: ⚠️ Vulnerable to 6ix1een and Death by 1M cuts attacks
+- **Status**: Vulnerable to 6ix1een and Death by 1M cuts attacks
 - **Library**: [ZenGo-X/multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa)
 
 #### Generation 2: Enhanced Security (GG20)
@@ -237,7 +274,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 7-round signing
 - **Security**: Malicious with identifiable abort
 - **Innovation**: Non-interactive online signing, improved abort handling
-- **Status**: ⚠️ Still vulnerable to Paillier modulus attacks
+- **Status**: Still vulnerable to Paillier modulus attacks
 - **Library**: [bnb-chain/tss-lib](https://github.com/bnb-chain/tss-lib)
 
 #### Generation 3: UC-Security (CGGMP21)
@@ -245,7 +282,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 3-round keygen, 1-round online signing
 - **Security**: UC-secure with key refresh
 - **Innovation**: Addresses GG18/GG20 vulnerabilities, proactive security
-- **Status**: ✅ Production-ready for institutional use
+- **Status**: Production-ready for institutional use
 - **Library**: [dfns/cggmp21](https://github.com/LFDT-Lockness/cggmp21)
 
 #### Generation 3A: Bandwidth Efficient (CCLST)
@@ -253,7 +290,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 3/2-round signing
 - **Security**: Malicious with proactive security
 - **Innovation**: Class group-based encryption, 4-9x bandwidth reduction
-- **Status**: ✅ CVE-2023-33241 patched
+- **Status**: CVE-2023-33241 patched
 - **Library**: [getamis/alice](https://github.com/getamis/alice)
 
 #### Generation 3B: Single-Round (MPC-CMP)
@@ -261,7 +298,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 1-round signing
 - **Security**: UC-secure with adaptive security
 - **Innovation**: Single-round signing, enhanced Paillier encryption
-- **Status**: ✅ Enterprise-grade deployment
+- **Status**: Enterprise-grade deployment
 - **Library**: [hugohn/mpc-cmp](https://github.com/hugohn/mpc-cmp)
 
 #### Generation 4: 2-Party Optimized (DKLS23)
@@ -269,7 +306,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 - **Rounds**: 3-round protocol
 - **Security**: Maliciously secure against adaptive adversaries
 - **Innovation**: Optimized for 2-party scenarios, reduced latency
-- **Status**: ✅ Deployed in Coinbase custody
+- **Status**: Deployed in Coinbase custody
 - **Library**: [silence-laboratories/dkls23](https://github.com/silence-laboratories/dkls23)
 
 ### EdDSA Family: FROST Implementation
@@ -437,7 +474,7 @@ The ECDSA threshold signature protocols have evolved significantly, with each ge
 
 ```mermaid
 flowchart LR
-    A[Semi-honest<br/>GG18<br/>Passive adversary] --> B[Malicious Security<br/>GG20, DKLS23, FROST<br/>Active adversary]
+    A[Semi-honest<br/>GG18<br/>Passive adversary] --> B[Malicious Security<br/>GG20, DKLS23, CCLST, FROST<br/>Active adversary]
     B --> C[UC-Security<br/>CGGMP21, MPC-CMP<br/>Composable security]
 
     style A fill:#ffebee,stroke:#d32f2f,color:#d32f2f
@@ -474,9 +511,9 @@ flowchart LR
 #### 2024 Security Audit Results
 
 **Passed Audits**:
-- **[Silence Labs DKLS23](https://github.com/silence-laboratories/dkls23)**: Trail of Bits audit (February 2024) ✅
-- **[Taurus CGGMP](https://github.com/taurushq-io/multi-party-sig)**: Kudelski Security audit (2024) ✅
-- **[Getamis Alice](https://github.com/getamis/alice)**: CVE-2023-33241 patches verified ✅
+- **[Silence Labs DKLS23](https://github.com/silence-laboratories/dkls23)**: Trail of Bits audit (February 2024)
+- **[Taurus CGGMP](https://github.com/taurushq-io/multi-party-sig)**: Kudelski Security audit (2024)
+- **[Getamis Alice](https://github.com/getamis/alice)**: CVE-2023-33241 patches verified
 
 **Security Requirements for 2024**:
 - **UC-Security**: Mandatory for institutional deployments
@@ -605,10 +642,10 @@ flowchart LR
 ### Security Audits & Certifications
 | Library | Auditor | Date | Result | Report |
 |---|---|---|---|---|
-| **DKLS23** | Trail of Bits | Feb 2024 | ✅ Passed | [Report](https://github.com/silence-laboratories/dkls23/blob/main/docs/ToB-SilenceLaboratories_2024.04.10.pdf) |
-| **CGGMP** | Kudelski Security | 2024 | ✅ Production | [Audit Summary](https://www.kudelskisecurity.com/) |
-| **FROST** | NCC Group | Oct 2023 | ✅ Passed | [Report](https://www.nccgroup.com/media/m1yjijzn/_ncc_group_zcashfoundation_e008263_report_2023-10-20_v11-1.pdf) |
-| **ING TSS** | Kudelski Security | 2020 | ✅ Production | [Report](https://github.com/ing-bank/threshold-signatures/blob/master/docs/report_ing_tss_1.0.pdf) |
+| **DKLS23** | Trail of Bits | Feb 2024 | Passed | [Report](https://github.com/silence-laboratories/dkls23/blob/main/docs/ToB-SilenceLaboratories_2024.04.10.pdf) |
+| **CGGMP** | Kudelski Security | 2024 | Production | [Audit Summary](https://www.kudelskisecurity.com/) |
+| **FROST** | NCC Group | Oct 2023 | Passed | [Report](https://www.nccgroup.com/media/m1yjijzn/_ncc_group_zcashfoundation_e008263_report_2023-10-20_v11-1.pdf) |
+| **ING TSS** | Kudelski Security | 2020 | Production | [Report](https://github.com/ing-bank/threshold-signatures/blob/master/docs/report_ing_tss_1.0.pdf) |
 
 ### Research Papers & Literature
 
@@ -664,220 +701,6 @@ flowchart LR
 **Cosigner**: Independent party participating in threshold signature protocol, holding key share
 
 **Randomness Beacon**: Service providing publicly verifiable, unbiased random values (e.g., drand, NIST Beacon)
-
-### Blockchain Compatibility Matrix
-
-| Blockchain | Signature Scheme | Recommended Protocol | Library | Status |
-|---|---|---|---|---|
-| **Bitcoin** | ECDSA secp256k1 | CGGMP21, DKLS23 | dfns/cggmp21 | ✅ Production |
-| **Bitcoin Taproot** | Schnorr | MuSig2, FROST-Schnorr | conduition/musig2 | ✅ Production |
-| **Ethereum L1** | ECDSA secp256k1 | CGGMP21, MPC-CMP | dfns/cggmp21 | ✅ Production |
-| **Ethereum 2.0** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-| **Solana** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Cardano** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Polkadot** | sr25519/Ed25519 | FROST, Threshold BLS | ZcashFoundation/frost | ✅ Production |
-| **Cosmos** | secp256k1 | CGGMP21, DKLS23 | taurushq-io/multi-party-sig | ✅ Production |
-| **Avalanche** | secp256k1 | CGGMP21, MPC-CMP | taurushq-io/multi-party-sig | ✅ Production |
-| **Filecoin** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-| **Near** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Tezos** | Ed25519/secp256k1 | FROST, GG18 | ZcashFoundation/frost | ✅ Production |
-| **Aptos** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Sui** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Monero** | Ed25519 + Ring | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Stacks** | secp256k1 | CGGMP21, GG18 | dfns/cggmp21 | ✅ Production |
-| **Dogecoin** | secp256k1 | GG18, GG20 | ZenGo-X/multi-party-ecdsa | ✅ Production |
-
-### Quick Reference Implementation Guide
-
-#### For Institutional Custody
-```bash
-# Recommended: CGGMP21 implementation
-git clone https://github.com/LFDT-Lockness/cggmp21
-cd cggmp21
-cargo build --release
-# Features: UC-secure, key refresh, 1-round online signing
-```
-
-#### For 2-Party Consumer Wallets
-```bash
-# Recommended: DKLS23 implementation
-git clone https://github.com/silence-laboratories/dkls23
-cd dkls23
-cargo build --release
-# Features: 3-round optimized, Trail of Bits audited
-```
-
-#### For High-Performance Validators
-```bash
-# Recommended: FROST-Ed25519
-git clone https://github.com/taurushq-io/frost-ed25519
-cd frost-ed25519
-cargo build --release
-# Features: Single-round signing, preprocessing enabled
-```
-
-#### For Bitcoin Taproot
-```bash
-# Recommended: MuSig2
-git clone https://github.com/conduition/musig2
-cd musig2
-cargo build --release
-# Features: BIP-327 compliant, 2-round multisignature
-```
-
-### Security Checklist
-
-- [ ] **Protocol Selection**: Choose UC-secure or malicious-secure protocols only
-- [ ] **Library Audit**: Verify third-party security audit (Trail of Bits/Kudelski)
-- [ ] **Key Generation**: Use DKG with proper entropy sources
-- [ ] **Parameter Validation**: Verify all cryptographic parameters
-- [ ] **Communication Security**: Authenticated encrypted channels
-- [ ] **Key Storage**: HSM or TEE-backed key share storage
-- [ ] **Monitoring**: Real-time signature verification and anomaly detection
-- [ ] **Key Refresh**: Regular proactive security updates
-- [ ] **Backup/Recovery**: Secure key share backup procedures
-- [ ] **Compliance**: Audit trails and regulatory reporting
-
----
-
-## Conclusion
-
-This comprehensive analysis provides a complete framework for understanding and implementing threshold signature protocols across all major blockchain ecosystems. The reorganized structure enables:
-
-### Key Takeaways
-
-**Protocol Evolution**: Clear progression from GG18 (vulnerable) → GG20 (improved) → CGGMP21 (UC-secure) → DKLS23 (optimized 2-party) → CCLST (bandwidth-efficient)
-
-**Security Standards**: 2024 requirements mandate UC-security for institutional deployments and malicious security for production systems
-
-**Production Readiness**: Multiple audited implementations available across all major protocol families
-
-**Blockchain Coverage**: Comprehensive support for Bitcoin, Ethereum, Solana, Cardano, Polkadot, Cosmos, and emerging chains
-
-### Selection Framework
-
-Use the **Protocol Selection Guide** (Section 2) to choose protocols based on:
-- Security requirements (institutional vs consumer)
-- Performance priorities (latency vs bandwidth vs throughput)
-- Blockchain platform compatibility
-- Specific use case (custody, DeFi, validators, cross-chain)
-
-### Implementation Path
-
-1. **Choose Protocol**: Use decision matrices and flowcharts
-2. **Select Library**: Reference Resource Library tables
-3. **Verify Security**: Check audit status and compliance
-4. **Deploy Architecture**: Follow Implementation Patterns
-5. **Monitor & Maintain**: Use Security Checklist
-
----
-
-## 🎯 Executive Summary: Complete Protocol Optimization Guide
-
-### 🏆 Top Protocol Recommendations by Use Case
-
-| **Use Case** | **Protocol** | **Security** | **Performance** | **Why Choose** |
-|---|---|---|---|---|
-| **🏦 Institutional Custody** | 🟢 CGGMP21 | UC-Secure | High | CBDC-ready, 1-round online signing |
-| **🏢 Enterprise Wallets** | 🟢 MPC-CMP | UC-Secure | Very High | Single-round signing, proactive security |
-| **📱 Consumer Mobile** | 🔵 DKLS23 | Malicious | High | Optimized for 2-party, Coinbase audited |
-| **🌐 IoT/Constrained** | 🟣 CCLST | Malicious | Medium | 4-9x bandwidth reduction, mobile-friendly |
-| **⚡ High-Performance Validators** | 🟢 FROST-Ed25519 | Malicious | Very High | Single-round, Solana/Cardano native |
-| **🔗 Ethereum 2.0** | 🟢 Threshold BLS | Malicious | High | Native support, validator consensus |
-| **₿ Bitcoin Taproot** | 🔵 MuSig2 | Malicious | High | BIP-327 standard, Lightning ready |
-| **🌉 Cross-Chain Bridges** | 🟢 CGGMP21 | UC-Secure | Medium | Multi-chain support, economic security |
-
-### 🚀 Implementation Quick Start
-
-**For Immediate Production Deployment**:
-1. **Institutional**: `CGGMP21` → `dfns/cggmp21` → Trail of Bits audit
-2. **Consumer**: `DKLS23` → `silence-laboratories/dkls23` → Coinbase custody proven
-3. **Validators**: `FROST-Ed25519` → `taurushq-io/frost-ed25519` → RFC 9591 compliant
-4. **Ethereum 2.0**: `Threshold BLS` → `ZenGo-X/multi-party-bls` → Native consensus
-
-**Security Compliance Checklist**:
-- [ ] UC-Security for institutional (CGGMP21, MPC-CMP)
-- [ ] Malicious security minimum for production
-- [ ] Third-party audit required (Trail of Bits/Kudelski)
-- [ ] Key refresh capability enabled
-- [ ] Hardware-backed key storage (HSM/TEE)
-- [ ] Multi-region deployment for high availability
-
-#### Deployment Scenarios
-
-**Institutional Custody**:
-- Protocol: CGGMP21 or MPC-CMP
-- Architecture: Multi-region distributed cosigners with HSM/TEE backing
-- Examples: Fireblocks, Coinbase Custody, AWS Nitro
-- Audits: Trail of Bits, Kudelski Security required
-
-**Consumer Wallets**:
-- Protocol: DKLS23 (2-party) or simplified CGGMP
-- Architecture: User device + cloud cosigner split
-- Examples: MetaMask + Silent Shard integration
-- Focus: UX optimization with mobile-friendly protocols
-
-**DeFi Treasuries**:
-- Protocol: CGGMP or MPC-CMP with multi-sig governance
-- Architecture: On-chain governance + off-chain threshold signing
-- Requirements: Transparency, auditability, time-locks
-
-**Validator Infrastructure**:
-- Protocol: FROST-Ed25519 (Solana), Threshold BLS (Ethereum 2.0)
-- Architecture: Distributed validator nodes with DKG
-- Requirements: Low latency, high availability, slashing protection
-
-**Cross-Chain Bridges**:
-- Protocol: GG20/CGGMP threshold ECDSA
-- Architecture: Validator network with dynamic rotation
-- Examples: Axelar ToFN, THORChain TSS
-- Requirements: Byzantine fault tolerance, economic security
-
-## Appendices
-
-### Glossary & Terminology
-
-**TSS (Threshold Signature Scheme)**: Cryptographic protocol enabling distributed signature generation where t-of-n parties cooperate to produce valid signatures without reconstructing private keys
-
-**MPC (Multi-Party Computation)**: Cryptographic technique allowing multiple parties to jointly compute functions while keeping inputs private
-
-**DKG (Distributed Key Generation)**: Protocol for generating cryptographic keys distributedly without any single party knowing complete private key
-
-**UC-Security (Universally Composable)**: Strong security framework ensuring protocols remain secure when composed with others
-
-**Identifiable Abort**: Security feature allowing identification of malicious parties causing protocol failure
-
-**Key Refresh**: Process updating key shares without changing public key, providing proactive security
-
-**TEE (Trusted Execution Environment)**: Secure isolated execution environment with hardware-backed guarantees (e.g., AWS Nitro Enclaves)
-
-**Attestation**: Cryptographic proof that code runs in genuine TEE with expected security properties
-
-**Cosigner**: Independent party participating in threshold signature protocol, holding key share
-
-**Randomness Beacon**: Service providing publicly verifiable, unbiased random values (e.g., drand, NIST Beacon)
-
-### Blockchain Compatibility Matrix
-
-| Blockchain | Signature Scheme | Recommended Protocol | Library | Status |
-|---|---|---|---|---|
-| **Bitcoin** | ECDSA secp256k1 | CGGMP21, DKLS23 | dfns/cggmp21 | ✅ Production |
-| **Bitcoin Taproot** | Schnorr | MuSig2, FROST-Schnorr | conduition/musig2 | ✅ Production |
-| **Ethereum L1** | ECDSA secp256k1 | CGGMP21, MPC-CMP | dfns/cggmp21 | ✅ Production |
-| **Ethereum 2.0** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-| **Solana** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Cardano** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Polkadot** | sr25519/Ed25519 | FROST, Threshold BLS | ZcashFoundation/frost | ✅ Production |
-| **Cosmos** | secp256k1 | CGGMP21, DKLS23 | taurushq-io/multi-party-sig | ✅ Production |
-| **Avalanche** | secp256k1 | CGGMP21, MPC-CMP | taurushq-io/multi-party-sig | ✅ Production |
-| **Filecoin** | BLS12-381 | Threshold BLS | ZenGo-X/multi-party-bls | ✅ Production |
-| **Near** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Tezos** | Ed25519/secp256k1 | FROST, GG18 | ZcashFoundation/frost | ✅ Production |
-| **Aptos** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Sui** | Ed25519 | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Monero** | Ed25519 + Ring | FROST-Ed25519 | taurushq-io/frost-ed25519 | ✅ Production |
-| **Stacks** | secp256k1 | CGGMP21, GG18 | dfns/cggmp21 | ✅ Production |
-| **Dogecoin** | secp256k1 | GG18, GG20 | ZenGo-X/multi-party-ecdsa | ✅ Production |
 
 ### Quick Reference Implementation Guide
 
@@ -963,57 +786,14 @@ Use the **Protocol Selection Guide** (Section 2) to choose protocols based on:
 5. **Monitor & Maintain**: Use Security Checklist
 
 This document serves as the definitive reference for building production-grade MPC services with threshold signatures, ensuring no critical protocols, implementations, or security considerations are overlooked.
----
 
-## 🎯 Conclusion
-
-This comprehensive analysis provides the definitive framework for understanding and implementing threshold signature protocols across all major blockchain ecosystems. Through systematic reorganization and optimization, this document enables:
-
-### 🏆 Key Achievements
-
-**Protocol Evolution Clarity**: Clear progression from GG18 (vulnerable) → GG20 (improved) → CGGMP21 (UC-secure) → DKLS23 (optimized 2-party) → CCLST (bandwidth-efficient), with visual evolution paths.
-
-**Security Standards Alignment**: 2024-2025 requirements mandate UC-security for institutional deployments and malicious security for production systems, with comprehensive audit coverage.
-
-**Production Readiness**: Multiple audited implementations available across all major protocol families, with clear deployment pathways and security checklists.
-
-**Comprehensive Coverage**: Complete support for Bitcoin, Ethereum, Solana, Cardano, Polkadot, Cosmos, and emerging blockchain ecosystems.
-
-### 🎯 Strategic Implementation Framework
-
-**For Immediate Deployment**:
-- **Institutional Custody**: CGGMP21 → UC-secure → CBDC-ready
-- **Consumer Applications**: DKLS23 → Optimized → Coinbase proven
-- **High-Performance Systems**: FROST-Ed25519 → Single-round → Validator optimized
-- **Ethereum 2.0**: Threshold BLS → Native → Consensus ready
-
-**Security Compliance Pathway**:
-1. Protocol selection based on security requirements
-2. Third-party audit verification (Trail of Bits/Kudelski)
-3. Hardware-backed key storage implementation
-4. Multi-region deployment architecture
-5. Ongoing monitoring and key refresh procedures
-
-### 📊 Market Readiness Assessment
-
-| **Security Level** | **Protocols** | **Production Status** | **Recommended For** |
-|---|---|---|---|
-| **🟢 Production-Ready** | CGGMP21, MPC-CMP, FROST, Threshold BLS | ✅ Active | All new implementations |
-| **🔵 Specialized-Ready** | DKLS23, MuSig2 | ✅ Growing | Specific use cases |
-| **🟣 Niche-Ready** | CCLST | ✅ Limited | Bandwidth-constrained environments |
-| **🟠 Legacy-Use** | GG20 | ⚠️ Deprecated | Migration only |
-| **🔴 Deprecated** | GG18 | ❌ Not recommended | Educational purposes only |
-
-### 🚀 Future Outlook
-
-The threshold signature ecosystem continues to evolve rapidly, with 2024-2025 seeing:
-- **UC-Security** becoming the institutional standard
-- **CBDC adoption** driving CGGMP21 production deployment
-- **Performance optimization** enabling real-time applications
-- **Cross-chain interoperability** becoming standard practice
-
-This document serves as the comprehensive reference for building production-grade MPC services with threshold signatures, ensuring no critical protocols, implementations, or security considerations are overlooked in your development journey.
-
----
+📝 **Legend**:
+✅: Production-ready
+🔒: Malicious-secure
+🔓: UC-secure
+🚀: Optimized for performance
+📊: Bandwidth-efficient
+🔑: Key refresh enabled
+📝: Audit available
 
 *Last Updated: November 2025 | Security Standards: 2024-2025 | Production Libraries: All Audited*
