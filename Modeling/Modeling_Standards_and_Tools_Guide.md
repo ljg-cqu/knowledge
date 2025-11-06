@@ -192,13 +192,23 @@ ArchiMate 3.2 provides viewpoints across business, application, technology, and 
 
 ### DMN Diagram Types
 
-DMN 1.4 provides two main diagram types for decision modeling.
+DMN 1.4 provides one diagram type (DRD) and two expression forms (Decision Table, Literal Expression) for decision modeling.
 
 | Diagram Type | Purpose (Why) | Use When | Common Applications |
 |--------------|---------------|----------|---------------------|
 | **Decision Requirements Diagram (DRD)** | Show decision dependencies | Modeling decision logic | Business rules, approval workflows |
 | **Decision Table** | Define decision logic with rules | Implementing executable decisions | Pricing rules, eligibility checks |
 | **Literal Expression** | Express decisions in code/formulas | Complex calculations | Financial calculations, scoring models |
+
+### CMMN Diagrams & Elements
+
+| Element | Purpose (Why) | Use When | Common Applications |
+|---------|---------------|----------|---------------------|
+| **Case Plan Model Diagram** | Model case structure and stages | Knowledge/intake-driven, event-heavy processes | Customer support, compliance cases, investigations |
+| **Stage** | Group related tasks into phases | Organizing long-running, evolving cases | Onboarding phases, claims handling |
+| **Task (Human/Process/Case/Decision)** | Perform work or call BPMN/DMN/other cases | Human-in-the-loop or external orchestration needed | Exception handling, approvals |
+| **Sentry (Entry/Exit Criteria)** | Event/condition-based activation | Non-linear, event-driven lifecycles | Regulatory triggers, SLAs |
+| **Case File/Item** | Case data artifacts | Managing evolving case data | Evidence tracking, documents |
 
 ### Data Modeling Diagrams
 
@@ -393,12 +403,12 @@ Mathematical expressions are specialized modeling languages used in parametric d
 | Tool | UML Diagrams | BPMN | SysML | ArchiMate | Data Models | Best For |
 |------|--------------|------|-------|-----------|-------------|----------|
 | **PlantUML** | All 14 types | Process, Activity | Limited | No | ERD, Schema | Text-based, version control, automation |
-| **Mermaid** | Class, Sequence, State, ER | Basic flowcharts | No | No | ERD | Web integration, documentation, Markdown |
-| **Visual Paradigm** | All 14 types | All types | All 9 types | No | All types | Professional UML/SysML modeling |
-| **Enterprise Architect** | All 14 types | All types | All 9 types | Limited | All types | Enterprise-scale, comprehensive |
+| **Mermaid** | Class, Sequence, State, ER | No | No | No | ERD | Web integration, documentation, Markdown |
+| **Visual Paradigm** | All 14 types | All types | All 9 types | All viewpoints | All types | Professional UML/SysML/ArchiMate modeling |
+| **Enterprise Architect** | All 14 types | All types | All 9 types | All viewpoints (MDG) | All types | Enterprise-scale, comprehensive |
 | **MagicDraw** | All 14 types | Process | All 9 types | No | All types | Systems engineering, SysML focus |
 | **Archi** | Limited | No | No | All viewpoints | Limited | Enterprise architecture, ArchiMate |
-| **Camunda Modeler** | Sequence, Activity | All types | No | No | Limited | Executable BPMN, process automation |
+| **Camunda Modeler** | No | Process, Collaboration | No | No | Limited | Executable BPMN and DMN, process automation |
 | **Draw.io** | Basic UML | Basic BPMN | No | Basic | ERD | Quick diagrams, lightweight |
 | **Lucidchart** | Most UML | Process, Collaboration | Limited | Limited | ERD, DFD | Team collaboration, cloud-based |
 
