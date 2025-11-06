@@ -6,20 +6,35 @@ This document outlines the Phase 1 architecture for the MPC Wallet system, focus
 ## Core Components
 
 ### 1. Coordinator
-- **Role**: Central coordination of MPC activities
+- **Role**: Control-plane orchestrator and signature collector
 - **Responsibilities**:
-  - Define MPC cluster participants
-  - Manage node membership
-  - Assign tasks to MPC nodes
-  - Monitor node health
+  - Define MPC clusters and select task participants
+  - Manage node membership and monitor liveness
+  - Issue round assignments and control commands over direct links
+  - Subscribe to partial-signature channels, verify shares, and aggregate the final signature
+  - Publish completed signatures to downstream services
 
 ### 2. MPC Nodes
-- **Role**: Independent computation nodes
+- **Role**: Independent cryptographic workers
 - **Responsibilities**:
-  - Participate in MPC rounds
-  - Maintain local state
-  - Handle state synchronization
-  - Execute cryptographic operations
+  - Hold sealed key shares and execute MPC rounds via the broker
+  - Derive per-request nonces and emit partial signatures
+  - Maintain only minimal ephemeral state required for each session
+  - Avoid on-chain awareness; no transaction submission logic
+
+### 3. Transaction Service
+- **Role**: Blockchain interaction boundary
+- **Responsibilities**:
+  - Consume completed signatures from the message broker
+  - Construct and submit transactions, manage nonces, and track confirmations
+  - Handle retries, rebroadcasts, and audit logging outside MPC rounds
+
+### 4. Message Broker
+- **Role**: Shared transport for MPC data planes
+- **Responsibilities**:
+  - Provide isolated channels for round messages, state sync, partial signatures, and final signatures
+  - Enforce ACLs/QoS per channel for durability and replay protection
+  - Decouple producers and consumers across all MPC-related services
 
 ## Communication Architecture
 
@@ -74,54 +89,61 @@ state_sync:
 
 ```mermaid
 graph TB
-    subgraph "Independent Node Architecture"
-        subgraph "Node 1"
-            DC1[Direct Connection]
-            BC1[Broker Connection]
-            LS1[Local State]
-            LC1[Local Computation]
-        end
-        
-        subgraph "Node 2"
-            DC2[Direct Connection]
-            BC2[Broker Connection]
-            LS2[Local State]
-            LC2[Local Computation]
-        end
-        
-        subgraph "Node 3"
-            DC3[Direct Connection]
-            BC3[Broker Connection]
-            LS3[Local State]
-            LC3[Local Computation]
-        end
-        
-        C[Coordinator]
-        MB[Message Broker]
-        
-        C <--> DC1
-        C <--> DC2
-        C <--> DC3
-        
-        BC1 <--> MB
-        BC2 <--> MB
-        BC3 <--> MB
+    C["Coordinator\n(control + aggregation)"]
+    TS["Transaction Service"]
+
+    subgraph "Message Broker"
+        RC["Round Channel"]
+        SS["State Sync Channel"]
+        PS["Partial Signature Channel"]
+        FS["Final Signature Channel"]
     end
+
+    subgraph "MPC Nodes"
+        N1["MPC Node 1"]
+        N2["MPC Node 2"]
+        N3["MPC Node 3"]
+    end
+
+    C -- "control-plane gRPC" --> N1
+    C -- "control-plane gRPC" --> N2
+    C -- "control-plane gRPC" --> N3
+
+    N1 -- "publish/consume" --> RC
+    N2 -- "publish/consume" --> RC
+    N3 -- "publish/consume" --> RC
+
+    N1 -. "state hints" .-> SS
+    N2 -. "state hints" .-> SS
+    N3 -. "state hints" .-> SS
+
+    N1 -- "emit partial" --> PS
+    N2 -- "emit partial" --> PS
+    N3 -- "emit partial" --> PS
+
+    C -- "subscribes" --> PS
+    C -- "publishes final" --> FS
+    TS -- "consumes" --> FS
 ```
 
 ### Benefits
 
 #### Failure Isolation
-- One node failure doesn't affect others
-- Independent recovery processes
+- One node failure does not block other signers or downstream submission
+- Coordinator aggregation can be replicated for high availability without exposing key material
+
+#### Operational Clarity
+- Coordinator limits scope to control-plane orchestration and signature aggregation
+- MPC nodes focus on share custody, nonce derivation, and protocol rounds
+- Transaction service owns blockchain interaction, retries, and auditing
 
 #### Scalability
-- Easy to add/remove nodes
-- Independent scaling
+- Broker topics allow independent scaling of MPC nodes, coordinator replicas, and transaction workers
+- Control and data planes remain decoupled, simplifying autoscaling policies
 
-#### Maintenance
-- Independent updates
-- Isolated debugging
+#### Maintainability
+- Clear separation of responsibilities eases upgrades and incident isolation
+- Channel-level ACLs/QoS deliver predictable behavior across services
 
 ## Message Broker Channels
 
@@ -135,6 +157,14 @@ message_broker:
       
     state_sync:
       type: "state_updates"
+      retention: "persistent"
+      
+    partial_signatures:
+      type: "signature_aggregation"
+      retention: "short_term"
+      
+    signatures_final:
+      type: "transaction_handoff"
       retention: "persistent"
       
     heartbeats:
