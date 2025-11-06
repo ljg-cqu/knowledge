@@ -4,6 +4,57 @@
 
 This guide provides a comprehensive framework for understanding and selecting modeling standards and tools across software development, enterprise architecture, and business process domains. It follows MECE principles to ensure complete, non-overlapping coverage of essential concepts.
 
+### Table of Contents
+
+1. **Modeling Standards Classification**
+   - Structural Standards (UML, SysML, ArchiMate)
+   - Process Standards (BPMN, DMN, CMMN)
+   - Architecture Frameworks (TOGAF, Zachman, DoDAF)
+   - Data Standards (DFD, ERD, Schema)
+
+2. **Diagram Types by Standard**
+   - UML Diagrams (14 types: structural + behavioral)
+   - BPMN Diagrams (4 types + swim lanes)
+   - SysML Diagrams (9 types)
+   - ArchiMate Viewpoints (7 core)
+   - DMN Diagrams (3 types)
+   - Data Modeling Diagrams (4 types)
+   - Complete Taxonomy (visual map)
+   - Selection Guide (decision flowchart)
+   - Practical Examples (scenarios, anti-patterns, patterns)
+
+3. **Tools Ecosystem**
+   - Tool Selection Matrix
+   - Graphics-Based Tools (General, Professional, Open Source)
+   - Text-Based Diagramming (PlantUML, Mermaid, Graphviz, TikZ)
+   - Markup Languages (Markdown, AsciiDoc, reStructuredText)
+   - Mathematical Notation & Formulas (LaTeX, MathML, AsciiMath, Unicode)
+   - Tool Support Matrix (diagram capabilities)
+   - Rendering & Integration (platform support, syntax examples)
+
+4. **Decision Framework**
+   - Standards vs Tools Distinctions
+   - Selection Criteria (Mermaid flowchart)
+   - Application Mapping (domain-specific, project size)
+   - Implementation Best Practices (governance, integration)
+
+5. **Strategic Implementation**
+   - Emerging Trends & Future Outlook (timeline, roadmap)
+   - Hybrid Modeling Strategies (combinations, patterns)
+   - Decision Support System (comprehensive framework)
+   - Migration & Transition Strategies (phases, risks, paths)
+
+6. **Quick Reference**
+   - Standard & Diagram Type Cheat Sheet
+   - Tool Selection Cheat Sheet
+   - Executive Summary & Strategic Recommendations
+
+7. **Reference Sections**
+   - Glossary, Terminology & Acronyms
+   - Codebase & Library References
+   - Authoritative Literature & Standards
+   - APA Style Citations
+
 ## Modeling Standards Classification
 
 ```mermaid
@@ -12,19 +63,19 @@ graph TD
     A --> C[Process Standards]
     A --> D[Architecture Frameworks]
     A --> E[Data Standards]
-    
+
     B --> B1[UML - Software]
     B --> B2[SysML - Systems]
     B --> B3[ArchiMate - Enterprise]
-    
+
     C --> C1[BPMN - Business Processes]
     C --> C2[DMN - Decisions]
     C --> C3[CMMN - Case Management]
-    
+
     D --> D1[TOGAF]
     D --> D2[Zachman]
     D --> D3[DoDAF]
-    
+
     E --> E1[DFD/ERD]
     E --> E2[JSON/XML Schema]
 ```
@@ -61,6 +112,206 @@ graph TD
 | **ERD** | Relational | Database design | Visual |
 | **JSON Schema** | Validation | API/data contracts | Text |
 | **XML Schema** | Validation | Document structure | Text |
+
+## Diagram Types by Standard
+
+### UML Diagram Types
+
+UML 2.5.1 provides 14 diagram types organized into structural and behavioral categories.
+
+#### UML Structural Diagrams
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Class Diagram** | Define system structure, relationships, attributes | Designing object-oriented systems | Database schema, API design, domain modeling |
+| **Object Diagram** | Show instances at specific time | Need concrete examples of class relationships | Testing scenarios, configuration snapshots |
+| **Component Diagram** | Model software components and dependencies | Architecting modular systems | Microservices architecture, plugin systems |
+| **Composite Structure Diagram** | Show internal structure of classes | Complex class internals needed | Design patterns, container relationships |
+| **Package Diagram** | Organize model elements into groups | Managing large-scale systems | Module organization, dependency management |
+| **Deployment Diagram** | Model physical deployment architecture | Planning infrastructure | Cloud deployment, hardware mapping |
+| **Profile Diagram** | Extend UML with domain-specific concepts | Customizing UML for specialized domains | Embedded systems, real-time systems |
+
+#### UML Behavioral Diagrams
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Use Case Diagram** | Capture functional requirements | Gathering stakeholder requirements | Feature planning, user story mapping |
+| **Activity Diagram** | Model workflows and processes | Documenting business logic | Algorithm design, workflow automation |
+| **State Machine Diagram** | Define object lifecycle and state transitions | Modeling stateful behavior | UI states, protocol design, game logic |
+| **Sequence Diagram** | Show time-ordered message exchanges | Designing interactions between objects | API call sequences, authentication flows |
+| **Communication Diagram** | Emphasize object relationships in interactions | Focus on structural organization | Distributed system design |
+| **Timing Diagram** | Show timing constraints and behavior | Real-time or time-critical systems | Hardware interfaces, protocol timing |
+| **Interaction Overview Diagram** | Combine activity and sequence diagrams | Complex interaction scenarios | Multi-step business processes |
+
+### BPMN Diagram Types
+
+BPMN 2.0.2 focuses on business process modeling with different perspectives.
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Process Diagram** | Model end-to-end business processes | Documenting workflows | Order fulfillment, approval processes |
+| **Collaboration Diagram** | Show interactions between participants | Multi-party processes | B2B integration, supply chain |
+| **Choreography Diagram** | Define message exchanges without central control | Peer-to-peer interactions | Microservices orchestration |
+| **Conversation Diagram** | High-level view of message flows | Initial process design | Stakeholder communication |
+
+**BPMN Swim Lanes:**
+- **Pool**: Represents participant/organization
+- **Lane**: Represents role/department within pool
+
+### SysML Diagram Types
+
+SysML 1.6 extends UML for systems engineering with 9 diagram types.
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Requirement Diagram** | Capture and trace requirements | Managing system requirements | Requirements engineering, traceability |
+| **Block Definition Diagram (BDD)** | Define system structure and components | Architecting hardware-software systems | IoT systems, embedded design |
+| **Internal Block Diagram (IBD)** | Show internal structure and connections | Detailed component design | Interface design, signal flow |
+| **Parametric Diagram** | Model constraints and performance | Engineering analysis, optimization | Performance modeling, constraint solving |
+| **Activity Diagram** | Model system behavior and flows | Process modeling | Control algorithms, data processing |
+| **Sequence Diagram** | Show time-based interactions | Timing-critical scenarios | Protocol design, hardware-software interaction |
+| **State Machine Diagram** | Model system modes and transitions | State-dependent behavior | Device states, operational modes |
+| **Use Case Diagram** | Capture system functionality | Requirements capture | System capabilities, stakeholder needs |
+| **Package Diagram** | Organize model elements | Large system organization | Model management, reusable libraries |
+
+### ArchiMate Diagram Types
+
+ArchiMate 3.2 provides viewpoints across business, application, technology, and strategy layers.
+
+#### Core Viewpoints
+
+| Viewpoint | Purpose (Why) | Use When | Common Applications |
+|-----------|---------------|----------|---------------------|
+| **Organization Viewpoint** | Show organizational structure | Modeling business roles and actors | Org charts, responsibility mapping |
+| **Business Process Viewpoint** | Document business processes | Process optimization | Value stream mapping, process improvement |
+| **Application Structure Viewpoint** | Model application components | IT landscape documentation | Application portfolio, integration architecture |
+| **Technology Viewpoint** | Show infrastructure and platforms | Infrastructure planning | Cloud architecture, data center design |
+| **Layered Viewpoint** | Multiple layers in single view | Holistic architecture view | Enterprise architecture overview |
+| **Strategy Viewpoint** | Link strategy to execution | Strategic planning | Digital transformation, capability planning |
+| **Migration Viewpoint** | Show transition states | Planning architecture changes | Roadmap planning, modernization |
+
+### DMN Diagram Types
+
+DMN 1.4 provides two main diagram types for decision modeling.
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Decision Requirements Diagram (DRD)** | Show decision dependencies | Modeling decision logic | Business rules, approval workflows |
+| **Decision Table** | Define decision logic with rules | Implementing executable decisions | Pricing rules, eligibility checks |
+| **Literal Expression** | Express decisions in code/formulas | Complex calculations | Financial calculations, scoring models |
+
+### Data Modeling Diagrams
+
+| Diagram Type | Purpose (Why) | Use When | Common Applications |
+|--------------|---------------|----------|---------------------|
+| **Entity-Relationship Diagram (ERD)** | Model data entities and relationships | Database design | Relational database schema, data warehousing |
+| **Data Flow Diagram (DFD)** | Show data movement through system | Analyzing data processing | ETL pipelines, data integration |
+| **Logical Data Model** | Technology-independent data structure | Conceptual database design | Enterprise data modeling |
+| **Physical Data Model** | Database-specific implementation | Database implementation | SQL schema generation, optimization |
+
+### Complete Diagram Type Taxonomy
+
+```mermaid
+graph TB
+    A[All Diagram Types] --> B[UML: 14 Types]
+    A --> C[BPMN: 4 Types]
+    A --> D[SysML: 9 Types]
+    A --> E[ArchiMate: 7+ Viewpoints]
+    A --> F[DMN: 3 Types]
+    A --> G[Data: 4 Types]
+
+    B --> B1[Structural: 7]
+    B --> B2[Behavioral: 7]
+
+    B1 --> B1A[Class<br/>Object<br/>Component<br/>Composite Structure]
+    B1 --> B1B[Package<br/>Deployment<br/>Profile]
+
+    B2 --> B2A[Use Case<br/>Activity<br/>State Machine<br/>Sequence]
+    B2 --> B2B[Communication<br/>Timing<br/>Interaction Overview]
+
+    C --> C1[Process<br/>Collaboration<br/>Choreography<br/>Conversation]
+
+    D --> D1[Requirement<br/>BDD<br/>IBD<br/>Parametric<br/>Activity]
+    D --> D2[Sequence<br/>State Machine<br/>Use Case<br/>Package]
+
+    E --> E1[Organization<br/>Business Process<br/>Application<br/>Technology]
+    E --> E2[Layered<br/>Strategy<br/>Migration]
+
+    F --> F1[DRD<br/>Decision Table<br/>Literal Expression]
+
+    G --> G1[ERD<br/>DFD<br/>Logical<br/>Physical]
+```
+
+### Diagram Selection Guide
+
+```mermaid
+flowchart TD
+    A[What are you modeling?] --> B{Domain}
+
+    B -->|Software Structure| C[UML: Class, Component]
+    B -->|Software Behavior| D[UML: Sequence, Activity, State]
+    B -->|Business Process| E[BPMN: Process, Collaboration]
+    B -->|System Engineering| F[SysML: BDD, IBD, Parametric]
+    B -->|Enterprise Architecture| G[ArchiMate: Layered, Migration]
+    B -->|Decision Logic| H[DMN: DRD, Decision Table]
+    B -->|Data Model| I[ERD, DFD]
+
+    C --> J{Level of Detail}
+    D --> J
+    E --> J
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+
+    J -->|High-Level| K[Overview Diagrams]
+    J -->|Detailed| L[Specific Diagrams]
+```
+
+### Practical Diagram Usage Examples
+
+#### Scenario-Based Diagram Selection
+
+| Scenario | Primary Diagram | Supporting Diagrams | Why This Combination |
+|----------|----------------|---------------------|----------------------|
+| **Designing REST API** | UML Class Diagram | Sequence Diagram, Component Diagram | Class for data models, Sequence for request/response flow, Component for service architecture |
+| **Documenting Login Flow** | UML Sequence Diagram | Activity Diagram, State Machine | Sequence for step-by-step interaction, Activity for business logic, State for session states |
+| **Order Processing System** | BPMN Process Diagram | ERD, DMN Decision Table | BPMN for workflow, ERD for order data, DMN for approval rules |
+| **IoT Device Design** | SysML Block Definition | Internal Block Diagram, Sequence Diagram | BDD for components, IBD for connections, Sequence for communication protocol |
+| **Cloud Migration Planning** | ArchiMate Migration Viewpoint | Layered Viewpoint, Technology Viewpoint | Migration for roadmap, Layered for current/target state, Technology for infrastructure |
+| **E-commerce Checkout** | BPMN Collaboration | UML Sequence, DMN Decision Table | BPMN for multi-party process, Sequence for payment API, DMN for discount rules |
+| **Microservices Architecture** | UML Component Diagram | Deployment Diagram, Sequence Diagram | Component for services, Deployment for containers, Sequence for inter-service calls |
+| **Mobile App UI Flow** | UML State Machine | Activity Diagram, Use Case Diagram | State Machine for screen transitions, Activity for user journeys, Use Case for features |
+
+#### Common Anti-Patterns to Avoid
+
+| Anti-Pattern | Problem | Correct Approach |
+|--------------|---------|------------------|
+| Using Class Diagram for behavior | Static structure doesn't show runtime behavior | Use Sequence or Activity diagrams for behavior |
+| BPMN for software flow | BPMN is business-focused, not code-level | Use UML Activity diagrams for software algorithms |
+| Single diagram for everything | Overwhelming complexity | Use multiple focused diagrams with clear purpose |
+| Too much detail in overview | Cluttered, hard to understand | Separate high-level and detailed diagrams |
+| Mixing abstraction levels | Conceptual and implementation details mixed | Use Logical/Physical separation |
+
+#### Diagram Combination Patterns
+
+**Pattern 1: Full System Documentation**
+1. **Requirements**: Use Case Diagram (UML) or Requirement Diagram (SysML)
+2. **Structure**: Class Diagram (UML) or BDD (SysML)
+3. **Behavior**: Sequence + Activity Diagrams
+4. **Deployment**: Deployment Diagram (UML) or Technology Viewpoint (ArchiMate)
+
+**Pattern 2: Business Process Automation**
+1. **Process Flow**: BPMN Process Diagram
+2. **Decision Rules**: DMN Decision Table
+3. **Data Model**: ERD
+4. **System Integration**: BPMN Collaboration Diagram
+
+**Pattern 3: Enterprise Architecture**
+1. **Strategy**: ArchiMate Strategy Viewpoint
+2. **Current State**: ArchiMate Layered Viewpoint
+3. **Target State**: ArchiMate Layered Viewpoint
+4. **Transition**: ArchiMate Migration Viewpoint
 
 ## Tools Ecosystem
 
@@ -117,6 +368,217 @@ graph TD
 | **AsciiDoc** | Features | Books/manuals | Antora, Asciidoctor |
 | **reStructuredText** | Extensibility | Python docs | Sphinx |
 
+### Mathematical Notation & Formula Languages
+
+Mathematical expressions are specialized modeling languages used in parametric diagrams, decision logic, and engineering constraints.
+
+| Notation | Syntax Style | Use Case | Rendering |
+|----------|--------------|----------|-----------|
+| **LaTeX Math** | `$ E = mc^2 $` | Scientific, engineering formulas | KaTeX, MathJax |
+| **MathML** | XML-based | Accessible math on web | Native browser |
+| **AsciiMath** | `` `E = mc^2` `` | Simplified math notation | MathJax converter |
+| **Unicode Math** | Native symbols (∑, ∫, ≈) | Simple inline expressions | Direct rendering |
+
+#### Math in Modeling Standards
+
+| Standard | Where Math Appears | Purpose | Notation Type |
+|----------|-------------------|---------|---------------|
+| **SysML Parametric Diagrams** | Constraint blocks | Engineering constraints, performance | LaTeX, OCL |
+| **DMN Literal Expressions** | Decision logic | Calculations, scoring formulas | FEEL, custom |
+| **UML OCL** | Constraints | Invariants, pre/post conditions | OCL language |
+| **ArchiMate** | Goal/Requirement elements | KPIs, metrics | Text description |
+
+### Tool Support for Diagram Types
+
+| Tool | UML Diagrams | BPMN | SysML | ArchiMate | Data Models | Best For |
+|------|--------------|------|-------|-----------|-------------|----------|
+| **PlantUML** | All 14 types | Process, Activity | Limited | No | ERD, Schema | Text-based, version control, automation |
+| **Mermaid** | Class, Sequence, State, ER | Basic flowcharts | No | No | ERD | Web integration, documentation, Markdown |
+| **Visual Paradigm** | All 14 types | All types | All 9 types | No | All types | Professional UML/SysML modeling |
+| **Enterprise Architect** | All 14 types | All types | All 9 types | Limited | All types | Enterprise-scale, comprehensive |
+| **MagicDraw** | All 14 types | Process | All 9 types | No | All types | Systems engineering, SysML focus |
+| **Archi** | Limited | No | No | All viewpoints | Limited | Enterprise architecture, ArchiMate |
+| **Camunda Modeler** | Sequence, Activity | All types | No | No | Limited | Executable BPMN, process automation |
+| **Draw.io** | Basic UML | Basic BPMN | No | Basic | ERD | Quick diagrams, lightweight |
+| **Lucidchart** | Most UML | Process, Collaboration | Limited | Limited | ERD, DFD | Team collaboration, cloud-based |
+
+### Diagram Rendering & Integration Capabilities
+
+#### Direct Rendering Support
+
+| Tool/Language | Rendering Method | Where It Renders | Live Preview | Export Formats |
+|---------------|------------------|------------------|--------------|----------------|
+| **Mermaid** | Native Markdown | GitHub, GitLab, Notion, Obsidian, MkDocs | Yes | SVG, PNG, PDF |
+| **PlantUML** | Server/Plugin | IDE, CI/CD, Confluence, GitLab (plugin) | Yes (with plugin) | SVG, PNG, PDF, ASCII |
+| **Graphviz (DOT)** | CLI/Library | Server-side, Jupyter, Sphinx | Partial | SVG, PNG, PDF, PS |
+| **Draw.io** | Embedded viewer | Confluence, VS Code (plugin), GitHub (viewer) | Yes | SVG, PNG, PDF, XML |
+| **TikZ** | LaTeX compilation | PDF documents, academic papers | No | PDF only |
+
+#### Markdown Integration Comparison
+
+| Feature | Mermaid | PlantUML | Graphviz | Draw.io |
+|---------|---------|----------|----------|---------|
+| **Inline Markdown Syntax** | ✅ Native `\`\`\`mermaid` | ❌ Needs plugin/server | ❌ Needs plugin | ❌ Embed only |
+| **GitHub Rendering** | ✅ Native | ✅ With GitHub Actions | ❌ | ✅ With viewer |
+| **GitLab Rendering** | ✅ Native | ✅ With integration | ❌ | ✅ With plugin |
+| **Jupyter Notebooks** | ✅ With extension | ✅ With magic command | ✅ Native library | ❌ |
+| **VS Code Preview** | ✅ Built-in | ✅ With extension | ✅ With extension | ✅ With extension |
+| **Confluence** | ❌ | ✅ With macro | ❌ | ✅ Native |
+| **Notion** | ✅ Native | ❌ | ❌ | ❌ Embed only |
+
+#### Platform-Specific Rendering
+
+**Documentation Platforms:**
+```markdown
+# Mermaid (Native Rendering)
+Supported: GitHub, GitLab, Notion, Obsidian, MkDocs, Docusaurus, VuePress, Docsify
+
+# PlantUML (Plugin/Server Required)
+Supported: Confluence, GitLab, Asciidoctor, Sphinx, MkDocs (with plugin)
+
+# Draw.io (Viewer/Embed)
+Supported: Confluence (native), GitHub (viewer), VS Code (extension)
+```
+
+**IDE Integration:**
+| IDE | Mermaid | PlantUML | Graphviz | Draw.io |
+|-----|---------|----------|----------|---------|
+| **VS Code** | Preview extension | Preview extension | Preview extension | Edit extension |
+| **IntelliJ IDEA** | Plugin | Plugin | Plugin | Plugin |
+| **Sublime Text** | Plugin | Plugin | Plugin | Limited |
+| **Vim/Neovim** | Plugin | Plugin | Plugin | External |
+
+#### Code Block Syntax Examples
+
+**Mermaid (Native Markdown):**
+````markdown
+```mermaid
+graph TD
+    A[Start] --> B[Process]
+    B --> C[End]
+```
+````
+
+**PlantUML (Requires Plugin/Server):**
+````markdown
+```plantuml
+@startuml
+A -> B: Message
+B -> C: Forward
+@enduml
+```
+````
+
+**Graphviz (Requires Plugin):**
+````markdown
+```dot
+digraph G {
+    A -> B -> C;
+}
+```
+````
+
+#### Rendering Performance
+
+| Tool | Initial Load | Update Speed | Large Diagrams | Browser Resource |
+|------|--------------|--------------|----------------|------------------|
+| **Mermaid** | Fast | Instant | Medium (100+ nodes) | Low-Medium |
+| **PlantUML** | Medium | Medium | High (1000+ nodes) | Low (server-side) |
+| **Graphviz** | Fast | Fast | Very High | Low (server-side) |
+| **Draw.io** | Medium | Instant | High | Medium |
+
+#### Best Practices by Use Case
+
+| Use Case | Recommended Tool | Why | Rendering Method |
+|----------|-----------------|-----|------------------|
+| **GitHub README** | Mermaid | Native rendering, no setup | Inline markdown |
+| **Technical documentation** | PlantUML + MkDocs | Comprehensive diagrams | Plugin + static site |
+| **Team wiki (Confluence)** | Draw.io | Native integration | Embedded editor |
+| **API documentation** | Mermaid | Fast, simple, version control | Inline markdown |
+| **Academic papers** | TikZ | Publication quality | LaTeX compilation |
+| **Complex architecture** | PlantUML | Detailed diagrams, flexible | Server rendering |
+| **Real-time collaboration** | Lucidchart | Cloud-based, live editing | Web application |
+
+### Mathematical Formula Rendering
+
+#### Math Rendering Engines
+
+| Engine | Rendering Method | Platforms | Syntax Support | Quality |
+|--------|------------------|-----------|----------------|---------|
+| **KaTeX** | Client-side JavaScript | Web, Markdown docs | LaTeX subset | Fast, high-quality |
+| **MathJax** | Client/Server JavaScript | Web, Jupyter, Sphinx | LaTeX, MathML, AsciiMath | Comprehensive, slower |
+| **Native MathML** | Browser native | Modern browsers | MathML only | Accessible, limited |
+| **LaTeX** | Compilation | PDF documents | Full LaTeX | Publication quality |
+
+#### Markdown Math Integration
+
+| Platform | Inline Math | Block Math | Rendering Engine | Syntax |
+|----------|-------------|------------|------------------|--------|
+| **GitHub** | ✅ | ✅ | MathJax | `$...$` or `$$...$$` |
+| **GitLab** | ✅ | ✅ | KaTeX | `$...$` or `$$...$$` |
+| **Jupyter Notebook** | ✅ | ✅ | MathJax | `$...$` or `$$...$$` |
+| **Obsidian** | ✅ | ✅ | MathJax | `$...$` or `$$...$$` |
+| **Notion** | ✅ | ✅ | KaTeX | `$$...$$` (inline/block) |
+| **MkDocs** | ✅ (plugin) | ✅ (plugin) | MathJax/KaTeX | `$...$` or `$$...$$` |
+| **Confluence** | ❌ | ❌ (use macro) | LaTeX macro | Macro syntax |
+
+#### Math Syntax Examples
+
+**Inline Math (renders in GitHub/GitLab):**
+```markdown
+The equation $E = mc^2$ shows energy-mass equivalence.
+```
+
+**Block Math:**
+```markdown
+$$
+\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+```
+
+**SysML Parametric Example:**
+```
+Constraint: Power = Voltage × Current
+Mathematical: P = V \times I
+Performance: \eta = \frac{P_{out}}{P_{in}} \times 100\%
+```
+
+**DMN Literal Expression Example:**
+```
+// Discount calculation
+if (orderAmount > 1000) then
+    orderAmount * 0.9
+else if (orderAmount > 500) then
+    orderAmount * 0.95
+else
+    orderAmount
+```
+
+#### Common Math Symbols in Modeling
+
+| Symbol | LaTeX | Unicode | Use in Modeling |
+|--------|-------|---------|-----------------|
+| **Summation** | `\sum` | ∑ | Aggregate calculations |
+| **Product** | `\prod` | ∏ | Combined constraints |
+| **Integral** | `\int` | ∫ | Continuous systems |
+| **Partial derivative** | `\partial` | ∂ | Rate of change |
+| **Approximately** | `\approx` | ≈ | Tolerance modeling |
+| **Less/Greater than** | `\leq`, `\geq` | ≤, ≥ | Constraint bounds |
+| **Not equal** | `\neq` | ≠ | Invariant conditions |
+| **For all** | `\forall` | ∀ | Universal constraints |
+| **Exists** | `\exists` | ∃ | Existential constraints |
+
+#### Tool Support for Mathematical Modeling
+
+| Tool | Math Input | Rendering | Export | Use Case |
+|------|------------|-----------|--------|----------|
+| **MagicDraw/SysML** | Constraint language | Native | PDF, Word | Engineering analysis |
+| **Camunda/DMN** | FEEL expressions | Text | BPMN/DMN XML | Decision logic |
+| **Jupyter Notebook** | LaTeX in markdown | MathJax | HTML, PDF | Scientific computing |
+| **Modelica** | Mathematical DSL | Simulation | Plots, data | Physical systems |
+| **Maple/Mathematica** | Symbolic math | Native | Various | Symbolic analysis |
+| **MATLAB/Simulink** | MATLAB syntax | Plots | Code, models | Numerical simulation |
+
 ## Standards vs Tools: Key Distinctions
 
 | Aspect | Standards | Tools |
@@ -166,13 +628,13 @@ flowchart TD
 
 ### Domain-Specific Recommendations
 
-| Domain | Primary Standards | Recommended Tools | Use Cases |
-|--------|------------------|------------------|-----------|
-| **Software Development** | UML, SysML | Visual Paradigm, StarUML, PlantUML | System design, API documentation |
-| **Business Process** | BPMN, DMN | Camunda, Bizagi, Lucidchart | Workflow automation, decision modeling |
-| **Enterprise Architecture** | ArchiMate, TOGAF | Archi, Enterprise Architect | IT strategy, business alignment |
-| **Systems Engineering** | SysML | MagicDraw, IBM Rhapsody | Embedded systems, hardware-software |
-| **Data Architecture** | ERD, Schema | Draw.io, ER/Studio | Database design, API contracts |
+| Domain | Primary Standards | Key Diagram Types | Recommended Tools | Common Use Cases |
+|--------|------------------|-------------------|-------------------|------------------|
+| **Software Development** | UML, SysML | Class, Sequence, Component, Deployment | Visual Paradigm, StarUML, PlantUML | API design, microservices, object-oriented design |
+| **Business Process** | BPMN, DMN | Process, Collaboration, Decision Table | Camunda, Bizagi, Lucidchart | Workflow automation, approval processes, business rules |
+| **Enterprise Architecture** | ArchiMate, TOGAF | Layered, Migration, Strategy Viewpoints | Archi, Enterprise Architect | Digital transformation, IT strategy, capability planning |
+| **Systems Engineering** | SysML | BDD, IBD, Requirement, Parametric | MagicDraw, IBM Rhapsody | IoT devices, embedded systems, hardware-software integration |
+| **Data Architecture** | ERD, DFD, Schema | ERD, Logical/Physical Data Model | Draw.io, ER/Studio, ERwin | Database design, data warehousing, ETL pipelines |
 
 ### Project Size Guidelines
 
@@ -287,16 +749,6 @@ graph LR
 | **Standard + Custom** | ArchiMate + Custom | Archi + Internal tools | Enterprise-specific needs |
 | **Process + Analytics** | BPMN, DMN | Camunda + Power BI | Process optimization |
 
-### Migration & Transition Planning
-
-| Migration Phase | Duration | Key Activities | Success Metrics |
-|-----------------|----------|----------------|-----------------|
-| **Assessment** | 2-4 weeks | Current state analysis, requirements gathering | Complete inventory |
-| **Pilot** | 4-8 weeks | Small team testing, validation | 90% user satisfaction |
-| **Phased Rollout** | 8-16 weeks | Department by department deployment | 80% adoption per phase |
-| **Full Migration** | 4-8 weeks | Organization-wide transition | 100% operational |
-| **Optimization** | Ongoing | Continuous improvement | Efficiency gains |
-
 ## Decision Support System
 
 ### Comprehensive Selection Framework
@@ -342,16 +794,27 @@ flowchart TD
 
 ## Quick Reference Guide
 
-### Standard Selection Cheat Sheet
+### Standard & Diagram Type Cheat Sheet
 
-| Need | Standard | Why |
-|------|----------|-----|
-| **Object-oriented design** | UML | Industry standard for software structure |
-| **Business process mapping** | BPMN | Visual process flow notation |
-| **System engineering** | SysML | Hardware-software integration |
-| **Enterprise architecture** | ArchiMate | Multi-layer business-IT alignment |
-| **Decision logic** | DMN | Executable decision rules |
-| **Database design** | ERD | Relational data modeling |
+| Need | Standard | Specific Diagram Type | Why |
+|------|----------|----------------------|-----|
+| **API design** | UML | Class Diagram + Sequence Diagram | Structure data models and interaction flows |
+| **Object-oriented design** | UML | Class Diagram, Object Diagram | Define classes, relationships, instances |
+| **User requirements** | UML/SysML | Use Case Diagram | Capture functional requirements |
+| **Message flows** | UML | Sequence Diagram, Communication Diagram | Time-ordered interactions |
+| **Workflow logic** | UML/BPMN | Activity Diagram (UML) or Process Diagram (BPMN) | Algorithm or business process flows |
+| **State transitions** | UML/SysML | State Machine Diagram | Lifecycle and state-dependent behavior |
+| **Component architecture** | UML | Component Diagram, Deployment Diagram | Modular structure and infrastructure |
+| **Business process mapping** | BPMN | Process Diagram, Collaboration Diagram | Visual process flow with roles |
+| **Multi-party processes** | BPMN | Collaboration Diagram with Pools/Lanes | Cross-organizational workflows |
+| **Decision logic** | DMN | Decision Requirements Diagram, Decision Table | Executable business rules |
+| **System engineering** | SysML | Block Definition Diagram, Internal Block Diagram | Hardware-software integration |
+| **Requirements tracing** | SysML | Requirement Diagram | Requirements management |
+| **Performance analysis** | SysML | Parametric Diagram | Engineering constraints |
+| **Enterprise architecture** | ArchiMate | Layered Viewpoint, Migration Viewpoint | Multi-layer business-IT alignment |
+| **Digital transformation** | ArchiMate | Strategy Viewpoint, Migration Viewpoint | Strategic planning and transition |
+| **Database design** | ERD/DFD | ERD, Logical/Physical Data Model | Relational data modeling |
+| **Data pipelines** | DFD | Data Flow Diagram | ETL and data integration |
 
 ### Tool Selection Cheat Sheet
 
@@ -360,13 +823,23 @@ flowchart TD
 | **Quick diagrams** | Draw.io, Mermaid | Free | Low | Immediate productivity |
 | **Team collaboration** | Lucidchart, Miro | $$ | Low | Real-time editing |
 | **Professional UML** | Visual Paradigm, MagicDraw | $$$ | Medium | Advanced features |
-| **Text-based diagrams** | PlantUML, GraphViz | Free | Medium | Version control friendly |
+| **Text-based diagrams** | PlantUML, Graphviz | Free | Medium | Version control friendly |
 | **Enterprise architecture** | Archi, Enterprise Architect | Free-$$$ | Medium | Standards compliance |
 | **Systems engineering** | MagicDraw, IBM Rhapsody | $$$$ | High | Domain-specific features |
 | **Business process** | Camunda, Bizagi | $$-$$$ | Medium | Executable processes |
 | **Documentation integration** | PlantUML + GitBook | Free | Low | Living documentation |
 
 ## Migration & Transition Strategies
+
+### Migration Planning Phases
+
+| Migration Phase | Duration | Key Activities | Success Metrics |
+|-----------------|----------|----------------|-----------------|
+| **Assessment** | 2-4 weeks | Current state analysis, requirements gathering | Complete inventory |
+| **Pilot** | 4-8 weeks | Small team testing, validation | 90% user satisfaction |
+| **Phased Rollout** | 8-16 weeks | Department by department deployment | 80% adoption per phase |
+| **Full Migration** | 4-8 weeks | Organization-wide transition | 100% operational |
+| **Optimization** | Ongoing | Continuous improvement | Efficiency gains |
 
 ### Tool Migration Path
 
@@ -469,6 +942,15 @@ flowchart TD
 - **MDE**: Model-Driven Engineering - software development paradigm focused on models
 - **DSL**: Domain-Specific Language - specialized language for particular domains
 - **Metamodel**: Model describing structure and constraints of other models
+- **OCL**: Object Constraint Language - formal language for UML/SysML constraints
+- **FEEL**: Friendly Enough Expression Language - DMN expression language for decisions
+
+**Mathematical Modeling Languages:**
+- **LaTeX Math**: Mathematical notation used in scientific and engineering documentation
+- **KaTeX**: Fast math rendering engine for web platforms
+- **MathJax**: Comprehensive JavaScript display engine for LaTeX, MathML, and AsciiMath
+- **Constraint Language**: Mathematical expressions in SysML Parametric Diagrams
+- **Literal Expression**: DMN term for executable formulas and calculations
 
 ### Codebase & Library References
 
@@ -498,6 +980,16 @@ flowchart TD
 - **Flowable**: Business process engine
   - Repository: https://github.com/flowable/flowable-engine
   - Documentation: https://www.flowable.org/docs/
+
+**Mathematical Rendering Libraries:**
+- **KaTeX**: Fast math typesetting for the web
+  - Repository: https://github.com/KaTeX/KaTeX
+  - Documentation: https://katex.org/
+- **MathJax**: Beautiful and accessible math in all browsers
+  - Repository: https://github.com/mathjax/MathJax
+  - Documentation: https://www.mathjax.org/
+- **AsciiMath**: Easy-to-write markup for mathematics
+  - Website: http://asciimath.org/
 
 ### Authoritative Literature & Standards
 
