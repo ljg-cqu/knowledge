@@ -15,7 +15,8 @@ Define quality requirements, standards, and constraints.
 - **Scope**: 25–30 Q&A pairs for senior/architect/expert level technical leaders
 - **Answer Length**: 150–300 words covering business-technical alignment, strategic trade-offs, value mapping, organizational constraints
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Artifacts**: ≥1 diagram + ≥1 table per topic cluster
+- **Visual Requirements**: ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
+- **Business Analysis Depth**: Strategic modeling, value/risk analysis, organizational dynamics, architectural translation
 
 ### Content Principles
 
@@ -31,6 +32,80 @@ Define quality requirements, standards, and constraints.
 - **Strategic**: Business model evolution, growth adaptability, risk mitigation, regulatory landscape, investment priorities
 - **Organizational**: Team structure, communication patterns, capability gaps, cultural alignment, change management
 - **Architectural**: Business-technical mapping, constraint translation, flexibility requirements, scalability drivers, technical debt implications
+
+### Visual Element Standards
+
+**Per Topic Cluster Requirements**: Primary diagram + supporting table + quantitative element
+
+#### Diagram Selection by Analysis Type
+
+| Analysis Type | Primary Diagram | Standard | Supporting Elements |
+|---------------|-----------------|----------|---------------------|
+| **Strategic Modeling** | Business Model Canvas, Value Stream Map | BPMN, ArchiMate | ROI: `(Revenue - Investment) / Investment × 100%` |
+| **Value & Risk Analysis** | Risk matrix, Decision tree | DMN | Risk: `Probability × Impact × Exposure` |
+| **Documentation** | C4 Context/Container, Component diagram | UML, C4 | Performance: `Availability = Uptime / Total Time × 100%` |
+| **Organizational** | Team topology, Conway's Law map | Custom | Communication overhead metrics |
+| **Architecture Translation** | Value→Architecture mapping | UML, DDD | Debt: `Remediation Cost / Dev Cost × 100%` |
+| **Evolution** | Migration roadmap, Timeline | Gantt | NPV: `Σ(Cash Flow / (1 + r)^n) - Investment` |
+
+**Standards Reference**: BPMN (processes), DMN (decisions), UML (structure/behavior), ArchiMate (enterprise), SysML (requirements), ERD/DFD (data), C4 (software views)
+
+#### Business Frameworks (Apply Relevant Combination)
+
+- **Business Model Canvas**: 9-block analysis → architectural implications
+- **Value Proposition**: Customer segments → technical requirements
+- **SWOT/Porter's Five Forces**: Strategic positioning → architecture priorities
+- **Lean Canvas**: Problem-solution fit → validation strategy
+
+#### Visual Quality Standards
+
+**Rendering**: Prefer Mermaid (GitHub-native). Syntax example:
+```mermaid
+flowchart TD
+    A[Start] --> B[Process]
+    B --> C[End]
+```
+
+**Math**: Inline `$formula$` or block `$$formula$$`. Define variables on first use.
+
+**Common Math Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
+
+**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note
+
+**Anti-patterns**: Avoid single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
+
+**Combination Patterns**: For comprehensive analysis, combine multiple diagram types:
+- **Full Documentation**: Requirements (Use Case) → Structure (Class/Component) → Behavior (Sequence/Activity) → Deployment
+- **Process Automation**: BPMN Process → DMN Decision Table → ERD Data Model → Integration Diagram
+- **Enterprise Architecture**: Strategy → Current State → Target State → Migration (all ArchiMate viewpoints)
+
+**Quick Reference – Diagram Shortcut Guide**
+| Need | Recommended Diagram(s) | Standard |
+|------|-----------------------|----------|
+| API design | Class + Sequence | UML |
+| Workflow logic | Activity (UML) / Process (BPMN) | UML / BPMN |
+| Decision logic | Decision Table + Requirements | DMN / SysML |
+| Business process | Process / Collaboration with Pools & Lanes | BPMN |
+| Database design | ERD + Data Flow | ERD / DFD |
+| System architecture | Component + Deployment | UML |
+| Enterprise strategy | Strategy + Migration viewpoints | ArchiMate |
+
+### Additional Decision & Cost Tables
+
+**Risk‑Based Decision Matrix** (choose tool/approach based on risk level):
+| Risk Factor | Low‑Risk Approach | Medium‑Risk Approach | High‑Risk Approach |
+|------------|-------------------|----------------------|-------------------|
+| Budget Constraints | Open‑source (PlantUML, Archi) | Mixed (Free + Limited paid) | Full commercial suite |
+| Timeline Pressure | Familiar tools only | Quick‑learning tools | Comprehensive training |
+| Integration Needs | Stand‑alone tools | API‑connected tools | Fully integrated platform |
+| Compliance Requirements | Basic standards compliance | Industry‑specific compliance | Regulatory‑grade compliance |
+
+**Cost‑Benefit Analysis Framework** (estimate ROI of tooling):
+| Investment Level | Tool Cost | Training Cost | ROI Timeline | Total Value |
+|----------------|----------|--------------|--------------|------------|
+| Starter | $0‑5K | $1‑2K | 3‑6 months | Quick wins, limited scale |
+| Professional | $10‑50K | $5‑15K | 6‑12 months | Balanced investment, good ROI |
+| Enterprise | $100K+ | $25K+ | 12‑24 months | Long‑term value, high impact |
 
 ### Citation Standards
 
@@ -54,7 +129,7 @@ Define quality requirements, standards, and constraints.
 
 1. Follow MECE structure; maintain 20/40/40 difficulty balance
 2. Meet all reference floors; address Business/Strategic/Organizational/Architectural dimensions
-3. Include ≥1 diagram + ≥1 table per topic cluster
+3. Include ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
 4. Per topic: ≥2 authoritative sources + ≥1 tool reference
 5. Document any gaps with remediation plan
 
@@ -97,6 +172,12 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 **Step 12 – Judgment**: ≥70% scenario-based ("How would...", "When should...") vs recall ("What is...")
 
+**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + supporting table + quantitative element
+
+**Step 14 – Business Framework Application**: ≥80% answers apply relevant business frameworks (BMC, Value Prop, SWOT, etc.)
+
+**Step 15 – Mathematical Analysis**: ≥60% answers include quantitative formulas or calculations where appropriate
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |
@@ -113,13 +194,16 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 | Per-topic mins | X/Y topics meet | PASS/FAIL |
 | Biz-Tech mapping | X/Y explicit | PASS/FAIL |
 | Judgment vs Recall | X% judgment-based | PASS/FAIL |
+| Visual coverage | X% have diagram+table+formula | PASS/FAIL |
+| Framework application | X% apply biz frameworks | PASS/FAIL |
+| Mathematical analysis | X% include quantitative elements | PASS/FAIL |
 ```
 
 > **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
 
 ### Submission Checklist
 
-- [ ] All 12 validation steps PASS (see report table above)
+- [ ] All 15 validation steps PASS (see report table above)
 - [ ] ALL reference floors met + quality gates passed
 
 ---
@@ -150,22 +234,18 @@ Follow these steps in order. Execute inline quality checks at each step before p
 3. State concrete Key Insight (misalignment/constraint/value mapping failure/organizational impedance)
 4. **Check**: Every 5 Q&As verify word counts, citations, value-to-architecture tracing, judgment focus
 
-### Step 4: Artifacts
-1. Create ≥1 diagram + ≥1 table per topic cluster:
-   - Strategic Modeling: Business Model Canvas, domain models
-   - Value & Risk Analysis: Value mapping matrices, risk assessment tables
-   - Documentation & Visualization: System boundary diagrams, component relationships, data flows
-   - Organizational Dynamics: Team topology diagrams, communication patterns
-   - Architectural Translation: Value→Architecture mapping, decision matrices
-   - Evolution & Adaptation: Migration roadmaps, evolution strategies
-2. **Check**: All clusters covered with relevant artifact types
+### Step 4: Visual Artifacts
+1. Per topic cluster, create ≥3 elements: primary diagram + supporting table + quantitative formula
+2. Use Mermaid for diagrams; include captions and legends
+3. Apply relevant business frameworks (BMC, Value Prop, SWOT) with architectural mapping
+4. **Check**: All clusters covered; visuals align with analysis type (see Diagram Selection table in Part I)
 
 ### Step 5: References
 1. Populate Glossary/Tools/Literature/APA with required fields
 2. **Check**: All [Ref: ID] resolve
 
 ### Step 6: Validation
-Execute all 12 steps (Part I). Fix failures; re-validate until all PASS.
+Execute all 15 steps (Part I). Fix failures; re-validate until all PASS.
 
 ### Step 7: Final Review
 Apply critique criteria. Check submission checklist. Submit when all PASS.
@@ -271,9 +351,15 @@ Overview of coverage and difficulty distribution.
 
 [150-300 word answer with inline [Ref: ID] citations, explicitly connecting business drivers to architectural decisions]
 
-**Supporting Artifact**:
+**Supporting Artifacts** (Select 3+ matching analysis type):
 
-[Business Model Canvas | Value stream map | Value→Architecture mapping matrix | Risk assessment table | System boundary diagram | Component relationship diagram | Data flow diagram | Team topology diagram | Context map | Decision matrix | Migration roadmap | Evolution strategy]
+| Artifact Type | Examples | Key Formulas |
+|---------------|----------|--------------|
+| **Strategic** | BMC, Value proposition map, Competitive matrix, Roadmap | `ROI = (Revenue - Investment) / Investment × 100%` |
+| **Risk & Financial** | Risk matrix, Decision tree, Cost-benefit table, TCO | `Risk = Probability × Impact × Exposure`<br>`NPV = Σ(Cash Flow / (1 + r)^n) - Investment` |
+| **Technical** | C4 diagrams, System boundary, Data flow, Component graph | `Availability = (Total Time - Downtime) / Total Time × 100%` |
+| **Organizational** | Team topology, Communication map, Stakeholder diagram | Conway's Law analysis, efficiency metrics |
+| **Evolution** | Migration roadmap, Timeline, Debt assessment, Impact table | `Debt Ratio = Remediation Cost / Dev Cost × 100%` |
 
 ---
 
