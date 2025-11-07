@@ -1,6 +1,6 @@
-# Interview Q&A - Business Understanding for Software Architecture
+# Interview Q&A - Software Architecture for Development Guidance
 
-Framework for generating high-quality interview question banks focused on comprehensive business understanding that benefits software architecture decisions.
+Framework for generating high-quality interview question banks focused on comprehensive software architecture that guides development implementation.
 
 ---
 
@@ -13,64 +13,73 @@ Define quality requirements, standards, and constraints.
 ### Scope and Structure
 
 - **Scope**: 25–30 Q&A pairs for senior/architect/expert level technical leaders
-- **Answer Length**: 150–300 words covering business-technical alignment, strategic trade-offs, value mapping, organizational constraints
+- **Answer Length**: 150–300 words covering architecture patterns, design principles, implementation guidance, quality attributes
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Visual Requirements**: ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
-- **Business Analysis Depth**: Strategic modeling, value/risk analysis, organizational dynamics, architectural translation
+- **Visual Requirements**: ≥1 primary diagram + ≥1 code example + ≥1 supporting table + ≥1 quantitative element per topic cluster
+- **Architecture Analysis Depth**: Structural patterns, behavioral design, quality attributes, deployment strategies, implementation guidance
 
 ### Content Principles
 
-- **MECE Coverage**: Four dimensions (Strategic Modeling, Documentation, Visualization, Analysis) × Four perspectives (Strategic, Operational, Organizational, Architectural)
-- **Analysis Required**: Value mapping (propositions → technical features), risk assessment (business/operational/regulatory), constraint analysis, evolution planning, transition from business to architecture
-- **Multi-Perspective**: Strategic (business model, market position), Operational (processes, capabilities), Organizational (structure, culture), Architectural (system design, technical debt)
-- **Framework Handling**: Present competing frameworks (Business Model Canvas vs Lean Canvas, Value Stream vs Process Mapping); cite counter-evidence; acknowledge context (B2B vs B2C, enterprise vs startup, regulated vs unregulated)
-- **Practitioner Clarity**: State where field agrees vs disagrees; distinguish universal principles vs context-specific practices; trace architectural decisions to business value
+- **MECE Coverage**: Four dimensions (Structural Patterns, Behavioral Design, Quality Attributes, Deployment) × Four perspectives (Design, Implementation, Operations, Evolution)
+- **Analysis Required**: Pattern selection, quality attribute trade-offs, implementation strategies, scalability analysis, reliability design, evolution planning, architecture → code translation
+- **Multi-Perspective**: Design (patterns, principles), Implementation (code structure, frameworks), Operations (deployment, monitoring), Evolution (migration, refactoring)
+- **Pattern Handling**: Present competing patterns (Hexagonal vs Layered, Event-Driven vs Request-Response, Microservices vs Modular Monolith); cite trade-offs; acknowledge context (scale, team size, domain complexity)
+- **Practitioner Clarity**: State where field agrees vs disagrees; distinguish universal principles vs context-specific practices; trace architecture to implementation code
 
 ### Evaluation Dimensions
 
-- **Business**: Value propositions, revenue models, customer segments, market positioning, competitive dynamics
-- **Strategic**: Business model evolution, growth adaptability, risk mitigation, regulatory landscape, investment priorities
-- **Organizational**: Team structure, communication patterns, capability gaps, cultural alignment, change management
-- **Architectural**: Business-technical mapping, constraint translation, flexibility requirements, scalability drivers, technical debt implications
+- **Structural**: Component organization, dependency management, modularity, coupling/cohesion, layering strategies
+- **Behavioral**: Communication patterns, data flow, event handling, state management, error handling
+- **Quality Attributes**: Performance, scalability, reliability, security, maintainability, testability
+- **Deployment**: Infrastructure patterns, containerization, orchestration, CI/CD, monitoring, observability
 
 ### Visual Element Standards
 
-**Per Topic Cluster Requirements**: Primary diagram + supporting table + quantitative element
+**Per Topic Cluster Requirements**: Primary diagram + code example + supporting table + quantitative element
 
 #### Diagram Selection by Analysis Type
 
-| Analysis Type | Primary Diagram | Standard | Supporting Elements |
-|---------------|-----------------|----------|---------------------|
-| **Strategic Modeling** | Business Model Canvas, Value Stream Map | BPMN, ArchiMate | ROI: `(Revenue - Investment) / Investment × 100%` |
-| **Value & Risk Analysis** | Risk matrix, Decision tree | DMN | Risk: `Probability × Impact × Exposure` |
-| **Documentation** | C4 Context/Container, Component diagram | UML, C4 | Performance: `Availability = Uptime / Total Time × 100%` |
-| **Organizational** | Team topology, Conway's Law map | Custom | Communication overhead metrics |
-| **Architecture Translation** | Value→Architecture mapping | UML, DDD | Debt: `Remediation Cost / Dev Cost × 100%` |
-| **Evolution** | Migration roadmap, Timeline | Gantt | NPV: `Σ(Cash Flow / (1 + r)^n) - Investment` |
+| Analysis Type | Primary Diagram | Standard | Code + Metrics |
+|---------------|-----------------|----------|----------------|
+| **Structural Patterns** | Class diagram, Component diagram | UML, C4 | Code snippet + `Cohesion = Related Methods / Total Methods` |
+| **Behavioral Design** | Sequence diagram, State machine | UML | Event flow code + `Latency = Response Time - Processing Time` |
+| **Quality Attributes** | Deployment diagram, Performance model | UML, Custom | Config code + `Throughput = Requests / Time`, `Error Rate = Errors / Total × 100%` |
+| **Data Management** | ERD, Data flow diagram | ERD, DFD | Repository code + `Query Performance = Execution Time / Data Size` |
+| **Integration** | Sequence diagram, API diagram | UML, OpenAPI | API code + `Response Time = Latency + Processing + Network` |
+| **Evolution** | Migration diagram, Refactoring roadmap | Custom | Migration code + `Migration Risk = Changed LOC / Total LOC × Complexity` |
 
 **Standards Reference**: BPMN (processes), DMN (decisions), UML (structure/behavior), ArchiMate (enterprise), SysML (requirements), ERD/DFD (data), C4 (software views)
 
-#### Business Frameworks (Apply Relevant Combination)
+#### Architecture Patterns (Apply Relevant Combination)
 
-- **Business Model Canvas**: 9-block analysis → architectural implications
-- **Value Proposition**: Customer segments → technical requirements
-- **SWOT/Porter's Five Forces**: Strategic positioning → architecture priorities
-- **Lean Canvas**: Problem-solution fit → validation strategy
+- **Hexagonal (Ports & Adapters)**: Core domain isolation → dependency inversion
+- **Event-Driven Architecture**: Async communication → loose coupling → scalability
+- **CQRS (Command Query Responsibility Segregation)**: Read/write separation → performance optimization
+- **Microservices**: Service decomposition → independent deployment → team autonomy
+- **Layered Architecture**: Separation of concerns → maintainability
+- **Domain-Driven Design**: Strategic/tactical patterns → bounded contexts → aggregates
 
 #### Visual Quality Standards
 
-**Rendering**: Prefer Mermaid (GitHub-native). Syntax example:
+**Rendering**: Use Mermaid (GitHub-native); avoid external renderers. Syntax example:
 ```mermaid
 flowchart TD
     A[Start] --> B[Process]
     B --> C[End]
 ```
 
+**Code Examples**: Include idiomatic code snippets in relevant language (Go, Java, Python, TypeScript). Use fenced code blocks with language tags:
+```go
+type Repository interface {
+    Save(ctx context.Context, entity Entity) error
+}
+```
+
 **Math**: Inline `$formula$` or block `$$formula$$`. Define variables on first use.
 
 **Common Math Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
 
-**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note
+**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note, 💻 Code
 
 **Anti-patterns**: Avoid single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
 
@@ -79,38 +88,41 @@ flowchart TD
 - **Process Automation**: BPMN Process → DMN Decision Table → ERD Data Model → Integration Diagram
 - **Enterprise Architecture**: Strategy → Current State → Target State → Migration (all ArchiMate viewpoints)
 
-**Quick Reference – Diagram Shortcut Guide**
-| Need | Recommended Diagram(s) | Standard |
-|------|-----------------------|----------|
-| API design | Class + Sequence | UML |
-| Workflow logic | Activity (UML) / Process (BPMN) | UML / BPMN |
-| Decision logic | Decision Table + Requirements | DMN / SysML |
-| Business process | Process / Collaboration with Pools & Lanes | BPMN |
-| Database design | ERD + Data Flow | ERD / DFD |
-| System architecture | Component + Deployment | UML |
-| Enterprise strategy | Strategy + Migration viewpoints | ArchiMate |
+**Quick Reference – Diagram & Code Guide**
+| Need | Recommended Diagram(s) | Code Example | Standard |
+|------|------------------------|--------------|----------|
+| API design | Class + Sequence | Interface/Controller code | UML + OpenAPI |
+| Event handling | Sequence + State machine | Event publisher/subscriber | UML |
+| Data access | ERD + Class diagram | Repository pattern code | ERD + UML |
+| Service communication | Sequence + Component | HTTP/gRPC client code | UML |
+| State management | State machine + Class | State pattern implementation | UML |
+| System structure | Component + Deployment | Module/package structure | UML + C4 |
+| Performance optimization | Deployment + Flow | Caching/pooling code | Custom |
 
-### Additional Decision & Cost Tables
+### Architecture Decision Matrices
 
-**Risk‑Based Decision Matrix** (choose tool/approach based on risk level):
-| Risk Factor | Low‑Risk Approach | Medium‑Risk Approach | High‑Risk Approach |
-|------------|-------------------|----------------------|-------------------|
-| Budget Constraints | Open‑source (PlantUML, Archi) | Mixed (Free + Limited paid) | Full commercial suite |
-| Timeline Pressure | Familiar tools only | Quick‑learning tools | Comprehensive training |
-| Integration Needs | Stand‑alone tools | API‑connected tools | Fully integrated platform |
-| Compliance Requirements | Basic standards compliance | Industry‑specific compliance | Regulatory‑grade compliance |
+**Pattern Selection Matrix** (choose architecture pattern based on requirements):
+| Requirement | Modular Monolith | Microservices | Event‑Driven | Serverless |
+|-------------|------------------|---------------|----------------|------------|
+| Team Size | 1‑10 | 10+ | 5+ | 1‑5 |
+| Deployment Frequency | Weekly | Daily/Continuous | Daily/Continuous | On‑demand |
+| Scalability Needs | Moderate | High | High | Very High |
+| Complexity Tolerance | Low‑Medium | High | High | Low |
+| Operational Overhead | Low | High | Medium | Very Low |
 
-**Cost‑Benefit Analysis Framework** (estimate ROI of tooling):
-| Investment Level | Tool Cost | Training Cost | ROI Timeline | Total Value |
-|----------------|----------|--------------|--------------|------------|
-| Starter | $0‑5K | $1‑2K | 3‑6 months | Quick wins, limited scale |
-| Professional | $10‑50K | $5‑15K | 6‑12 months | Balanced investment, good ROI |
-| Enterprise | $100K+ | $25K+ | 12‑24 months | Long‑term value, high impact |
+**Quality Attribute Trade‑Off Matrix** (prioritize based on system requirements):
+| Priority | Performance | Scalability | Reliability | Maintainability | Security |
+|----------|-------------|-------------|-------------|-----------------|----------|
+| **High‑Traffic System** | Critical | Critical | High | Medium | High |
+| **Enterprise Application** | Medium | Medium | Critical | Critical | Critical |
+| **Startup MVP** | Medium | Medium | Medium | Critical | High |
+| **Real‑Time System** | Critical | High | Critical | Medium | High |
+| **Data‑Intensive** | High | Critical | High | Medium | Critical |
 
 ### Citation Standards
 
 - **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Business frameworks & methodologies; (2) Architecture patterns & practices; (3) Case studies & industry reports; (4) Tools & platforms
+- **Source Types**: (1) Architecture patterns & design principles; (2) Performance & scalability practices; (3) Implementation case studies; (4) Frameworks & tools
 - **Format**: APA 7th with language tags
 - **Inline Citation**: Use [Ref: ID] after factual claims, frameworks, business models, architectural patterns, best practices, trade-off analyses
 
@@ -118,9 +130,9 @@ flowchart TD
 
 | Section | Floor | Content |
 |---------|-------|---------|
-| Glossary | ≥10 | Business Model Canvas, Value Proposition, Customer Segment, DDD, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, Revenue Stream, System Boundaries |
-| Tools | ≥5 | Business modeling (Miro), architecture visualization (ArchiMate, C4), documentation (Confluence), diagramming (LucidChart), strategic planning (Wardley Maps) |
-| Literature | ≥6 | Business strategy (Osterwalder), DDD (Evans, Vernon), organizational design (Conway, Skelton), integration (Hohpe), microservices (Richardson) |
+| Glossary | ≥10 | Hexagonal Architecture, CQRS, Event Sourcing, DDD, Bounded Context, Aggregate, Repository Pattern, Domain Event, Saga Pattern, Circuit Breaker, Service Mesh, API Gateway, Sidecar Pattern, Strangler Fig |
+| Tools | ≥5 | Architecture visualization (C4-style Mermaid), documentation (Confluence, MkDocs), code generation (OpenAPI), observability (Prometheus, Grafana), testing (JMeter, k6) |
+| Literature | ≥6 | Architecture patterns (Fowler, Richards), DDD (Evans, Vernon), microservices (Richardson, Newman), distributed systems (Kleppmann), performance (Gregg) |
 | Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
 
 **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
@@ -128,8 +140,8 @@ flowchart TD
 ### Usage Guidelines
 
 1. Follow MECE structure; maintain 20/40/40 difficulty balance
-2. Meet all reference floors; address Business/Strategic/Organizational/Architectural dimensions
-3. Include ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
+2. Meet all reference floors; address Structural/Behavioral/Quality/Deployment dimensions
+3. Include ≥1 primary diagram + ≥1 code example + ≥1 supporting table + ≥1 quantitative element per topic cluster
 4. Per topic: ≥2 authoritative sources + ≥1 tool reference
 5. Document any gaps with remediation plan
 
@@ -164,19 +176,21 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 **Step 8 – Word Count**: Sample 5 answers; all 150-300 words
 
-**Step 9 – Key Insights**: All concrete (business-technical misalignment/constraint trade-off/value mapping failure/organizational impedance)
+**Step 9 – Key Insights**: All concrete (pattern trade-offs/quality attribute conflicts/scalability bottlenecks/implementation complexity)
 
 **Step 10 – Per-Topic**: Each has ≥2 authoritative + ≥1 tool
 
-**Step 11 – Business-Technical Mapping**: ≥80% of answers explicitly connect business drivers to architectural decisions with citations
+**Step 11 – Architecture-Code Mapping**: ≥80% of answers explicitly connect architecture patterns to implementation code with citations
 
 **Step 12 – Judgment**: ≥70% scenario-based ("How would...", "When should...") vs recall ("What is...")
 
-**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + supporting table + quantitative element
+**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + code example + supporting table + performance/quantitative metric
 
-**Step 14 – Business Framework Application**: ≥80% answers apply relevant business frameworks (BMC, Value Prop, SWOT, etc.)
+**Step 14 – Architecture Pattern Application**: ≥80% answers apply relevant architecture patterns (Hexagonal, CQRS, Event-Driven, etc.)
 
-**Step 15 – Mathematical Analysis**: ≥60% answers include quantitative formulas or calculations where appropriate
+**Step 15 – Performance Analysis**: ≥60% answers include performance metrics, formulas, or calculations where appropriate
+
+**Step 16 – Code Example Coverage**: ≥80% of answers include idiomatic code snippets demonstrating patterns
 
 **Validation Report Template:**
 ```
@@ -192,18 +206,19 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 | Word counts | 5/5 compliant | PASS/FAIL |
 | Key Insights | Y/X concrete | PASS/FAIL |
 | Per-topic mins | X/Y topics meet | PASS/FAIL |
-| Biz-Tech mapping | X/Y explicit | PASS/FAIL |
+| Arch-Code mapping | X/Y explicit | PASS/FAIL |
 | Judgment vs Recall | X% judgment-based | PASS/FAIL |
-| Visual coverage | X% have diagram+table+formula | PASS/FAIL |
-| Framework application | X% apply biz frameworks | PASS/FAIL |
-| Mathematical analysis | X% include quantitative elements | PASS/FAIL |
+| Visual coverage | X% have diagram+code+table+metric | PASS/FAIL |
+| Pattern application | X% apply arch patterns | PASS/FAIL |
+| Performance analysis | X% include metrics/formulas | PASS/FAIL |
+| Code examples | X% include code snippets | PASS/FAIL |
 ```
 
 > **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
 
 ### Submission Checklist
 
-- [ ] All 15 validation steps PASS (see report table above)
+- [ ] All 16 validation steps PASS (see report table above)
 - [ ] ALL reference floors met + quality gates passed
 
 ---
@@ -217,35 +232,37 @@ Execute generation workflow with inline quality checks at each step.
 Follow these steps in order. Execute inline quality checks at each step before proceeding.
 
 ### Step 1: Topic Identification & Planning
-1. Identify 5-6 clusters aligned with framework: Strategic Modeling (Business Model, Domain) | Value & Risk Analysis | Documentation & Visualization | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
+1. Identify 5-6 clusters aligned with framework: Structural Patterns | Behavioral Design | Quality Attributes | Data Management | Integration Patterns | Evolution & Migration
 2. Allocate 4-6 Q&As per cluster (total 25-30); assign 20/40/40 difficulty (F/I/A)
 3. **Check**: Total = 25-30, ratio ≈20/40/40
 
 ### Step 2: Reference Collection
-1. **Glossary (≥10)**: Business Model Canvas, Value Proposition, Customer Segment, Revenue Stream, Domain-Driven Design, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, System Boundaries
-2. **Tools (≥5)**: Miro (business modeling), ArchiMate/C4 Model (architecture visualization), Confluence (documentation), LucidChart (diagramming), Wardley Maps
-3. **Literature (≥6)**: Osterwalder (Business Model), Evans/Vernon (DDD), Conway (organizational design), Hohpe (integration), Richardson (microservices) + ZH sources (周爱民, 张逸, 肖然)
+1. **Glossary (≥10)**: Hexagonal Architecture, CQRS, Event Sourcing, DDD, Bounded Context, Aggregate, Repository Pattern, Domain Event, Saga Pattern, Circuit Breaker, Service Mesh, API Gateway, Sidecar Pattern, Strangler Fig
+2. **Tools (≥5)**: C4/PlantUML (architecture visualization), Confluence/MkDocs (documentation), OpenAPI (code generation), Prometheus/Grafana (observability), JMeter/k6 (testing)
+3. **Literature (≥6)**: Fowler/Richards (patterns), Evans/Vernon (DDD), Richardson/Newman (microservices), Kleppmann (distributed systems), Gregg (performance) + ZH sources (周爱民, 张逸)
 4. **Citations (≥12)**: Tag language, year, type (1-4); assign IDs (G#/T#/L#/A#)
 5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
 
 ### Step 3: Q&A Generation
 1. Write scenario-based questions ("How would...", "When should..."); draft 150-300 word answers
-2. Include ≥1 [Ref: ID] per answer; explicitly trace business value → architectural decisions
-3. State concrete Key Insight (misalignment/constraint/value mapping failure/organizational impedance)
-4. **Check**: Every 5 Q&As verify word counts, citations, value-to-architecture tracing, judgment focus
+2. Include ≥1 [Ref: ID] per answer; explicitly trace architecture patterns → implementation code
+3. Include code snippets demonstrating patterns (Go, Java, Python, TypeScript)
+4. State concrete Key Insight (pattern trade-offs/quality conflicts/scalability bottlenecks/complexity)
+5. **Check**: Every 5 Q&As verify word counts, citations, code examples, architecture-to-code tracing, judgment focus
 
 ### Step 4: Visual Artifacts
-1. Per topic cluster, create ≥3 elements: primary diagram + supporting table + quantitative formula
+1. Per topic cluster, create ≥4 elements: primary diagram + code example + supporting table + performance metric
 2. Use Mermaid for diagrams; include captions and legends
-3. Apply relevant business frameworks (BMC, Value Prop, SWOT) with architectural mapping
-4. **Check**: All clusters covered; visuals align with analysis type (see Diagram Selection table in Part I)
+3. Include idiomatic code snippets with language tags (```go, ```java, ```python, ```typescript)
+4. Apply relevant architecture patterns (Hexagonal, CQRS, Event-Driven, DDD) with code implementation
+5. **Check**: All clusters covered; visuals + code align with analysis type (see Diagram Selection table in Part I)
 
 ### Step 5: References
 1. Populate Glossary/Tools/Literature/APA with required fields
 2. **Check**: All [Ref: ID] resolve
 
 ### Step 6: Validation
-Execute all 15 steps (Part I). Fix failures; re-validate until all PASS.
+Execute all 16 steps (Part I). Fix failures; re-validate until all PASS.
 
 ### Step 7: Final Review
 Apply critique criteria. Check submission checklist. Submit when all PASS.
@@ -260,11 +277,11 @@ Template structure for generated question banks with quality criteria.
 
 **Implementation Approach:**
 
-Questions should guide candidates through the transition framework:
-1. **Start with Value Mapping**: Identify value propositions → map to technical requirements → prioritize by business impact
-2. **Assess Risk Factors**: Document business risks → evaluate operational constraints → consider regulatory requirements
-3. **Consider Organizational Factors**: Align with team structure → reflect communication patterns → account for future changes
-4. **Trace to Architecture**: Show explicit connection from business drivers to architectural decisions
+Questions should guide candidates through the architecture-to-code framework:
+1. **Start with Pattern Selection**: Identify requirements → select appropriate patterns → justify trade-offs
+2. **Assess Quality Attributes**: Define performance goals → evaluate scalability needs → consider reliability requirements
+3. **Design Implementation**: Create component structure → define interfaces → plan data flow
+4. **Trace to Code**: Show explicit connection from architecture patterns to implementation code
 
 **Quality Criteria:**
 
@@ -272,30 +289,30 @@ Questions should guide candidates through the transition framework:
   - ✅ "How would you translate a shift from one-time licensing to subscription revenue into architectural requirements?"
   - ❌ "Explain business models and microservices architecture"
   
-- **Signal**: Tests business-technical translation, not trivia
-  - ✅ "Your CEO wants to enter a regulated market. How does this change your architecture strategy?"
-  - ❌ "List the nine components of Business Model Canvas"
+- **Signal**: Tests architecture-code translation, not trivia
+  - ✅ "How would you implement a saga pattern for distributed transactions? Show the code structure."
+  - ❌ "List the components of hexagonal architecture"
   
-- **Depth**: Enables discussion of business constraints, value trade-offs, organizational impacts
-  - ✅ "Choose one: monolith refactor, strangler pattern, or greenfield rewrite for a company pivoting from B2B to B2C. How do you decide?"
+- **Depth**: Enables discussion of quality attributes, pattern trade-offs, implementation complexity
+  - ✅ "Choose one: CQRS, event sourcing, or traditional CRUD for a high-traffic analytics platform. Show code examples for your choice."
   - ❌ "Should you use microservices? Yes/no"
   
-- **Realism**: Scenarios matching senior/architect/expert roles bridging business and technology
-  - ✅ "Sales promises real-time analytics to close a $10M deal. Engineering says it requires 6-month platform rebuild. How do you navigate this?"
+- **Realism**: Scenarios matching senior/architect/expert roles bridging design and implementation
+  - ✅ "Your API latency increased from 50ms to 500ms after adding distributed tracing. How would you diagnose and fix this? Show relevant code."
   - ❌ "Design a payment system from scratch"
   
 - **Discriminative**: Tests judgment over recall
-  - ✅ "When does Conway's Law suggest organizational restructuring before technical refactoring?"
-  - ❌ "What is Conway's Law?"
+  - ✅ "When should you choose repository pattern over active record? Demonstrate both with code examples."
+  - ❌ "What is the repository pattern?"
   
-- **Alignment**: Match seniority (Senior: tactical alignment | Architect: strategic translation | Expert: business-technical strategy)
+- **Alignment**: Match seniority (Senior: pattern implementation | Architect: system design | Expert: architecture strategy)
 
 **Success Factors:**
 
 Answers should demonstrate:
-- Maintaining current understanding (regular business review, prompt documentation updates, adaptive decisions)
-- Clear communication (documented decisions, knowledge sharing, living documentation)
-- Value alignment (trace decisions to business value, measure impact on value propositions, adjust based on feedback)
+- Maintaining current understanding (regular pattern updates, architecture documentation, adaptive refactoring)
+- Clear communication (documented patterns, code examples, living architecture)
+- Implementation excellence (trace patterns to code, measure performance metrics, optimize based on profiling)
 
 ---
 
@@ -326,12 +343,12 @@ Overview of coverage and difficulty distribution.
 
 | Topic | Question Range | Count | Difficulty Mix |
 |-------|---------------|-------|----------------|
-| Strategic Modeling (Business Model, Domain) | Q1-Q5 | 5 | 1F, 2I, 2A |
-| Value & Risk Analysis | Q6-Q10 | 5 | 1F, 2I, 2A |
-| Documentation & Visualization | Q11-Q15 | 5 | 1F, 2I, 2A |
-| Organizational Dynamics | Q16-Q20 | 5 | 1F, 2I, 2A |
-| Architectural Translation | Q21-Q25 | 5 | 1F, 2I, 2A |
-| Evolution & Adaptation | Q26-Q30 | 5 | 1F, 2I, 2A |
+| Structural Patterns (Layering, Components, Modules) | Q1-Q5 | 5 | 1F, 2I, 2A |
+| Behavioral Design (Events, State, Communication) | Q6-Q10 | 5 | 1F, 2I, 2A |
+| Quality Attributes (Performance, Scalability, Reliability) | Q11-Q15 | 5 | 1F, 2I, 2A |
+| Data Management (Persistence, Caching, Consistency) | Q16-Q20 | 5 | 1F, 2I, 2A |
+| Integration Patterns (APIs, Messaging, Sync) | Q21-Q25 | 5 | 1F, 2I, 2A |
+| Evolution & Migration (Refactoring, Modernization) | Q26-Q30 | 5 | 1F, 2I, 2A |
 | **Total** | | **30** | **6F, 12I, 12A** |
 
 **Legend**: F = Foundational, I = Intermediate, A = Advanced
@@ -343,23 +360,29 @@ Overview of coverage and difficulty distribution.
 ### Q1: [Question Text]
 
 **Difficulty**: [Foundational/Intermediate/Advanced]  
-**Type**: [Strategic Modeling/Value & Risk Analysis/Documentation & Visualization/Organizational Dynamics/Architectural Translation/Evolution & Adaptation]
+**Type**: [Structural Patterns/Behavioral Design/Quality Attributes/Data Management/Integration Patterns/Evolution & Migration]
 
-**Key Insight**: [One sentence stating specific business-technical misalignment/constraint trade-off/value mapping failure/organizational impedance this question exposes]
+**Key Insight**: [One sentence stating specific pattern trade-offs/quality attribute conflicts/scalability bottlenecks/implementation complexity this question exposes]
 
 **Answer**:
 
-[150-300 word answer with inline [Ref: ID] citations, explicitly connecting business drivers to architectural decisions]
+[150-300 word answer with inline [Ref: ID] citations, explicitly connecting architecture patterns to implementation code]
+
+**Code Example**:
+```language
+// Idiomatic code demonstrating the pattern
+```
 
 **Supporting Artifacts** (Select 3+ matching analysis type):
 
-| Artifact Type | Examples | Key Formulas |
-|---------------|----------|--------------|
-| **Strategic** | BMC, Value proposition map, Competitive matrix, Roadmap | `ROI = (Revenue - Investment) / Investment × 100%` |
-| **Risk & Financial** | Risk matrix, Decision tree, Cost-benefit table, TCO | `Risk = Probability × Impact × Exposure`<br>`NPV = Σ(Cash Flow / (1 + r)^n) - Investment` |
-| **Technical** | C4 diagrams, System boundary, Data flow, Component graph | `Availability = (Total Time - Downtime) / Total Time × 100%` |
-| **Organizational** | Team topology, Communication map, Stakeholder diagram | Conway's Law analysis, efficiency metrics |
-| **Evolution** | Migration roadmap, Timeline, Debt assessment, Impact table | `Debt Ratio = Remediation Cost / Dev Cost × 100%` |
+| Artifact Type | Diagrams | Code Examples | Metrics |
+|---------------|----------|---------------|----------|
+| **Structural** | Class, Component, Package diagrams | Interface definitions, Module structure | `Cohesion = Related Methods / Total`, `Coupling = Dependencies / Components` |
+| **Behavioral** | Sequence, State machine, Activity diagrams | Event handlers, State pattern code | `Latency = Response - Processing`, `Throughput = Requests / Time` |
+| **Quality** | Deployment, Performance model | Config code, Optimization patterns | `Error Rate = Errors / Total × 100%`, `Availability = Uptime / Total × 100%` |
+| **Data** | ERD, Data flow diagrams | Repository, DAO, Caching code | `Query Time = Execution / Data Size`, `Cache Hit Rate = Hits / Total × 100%` |
+| **Integration** | API, Sequence diagrams | HTTP/gRPC client, Message handlers | `API Latency = Network + Processing`, `Message Rate = Messages / Time` |
+| **Evolution** | Migration, Refactoring diagrams | Strangler pattern, Feature toggles | `Migration Risk = Changed LOC / Total × Complexity` |
 
 ---
 
@@ -367,69 +390,69 @@ Overview of coverage and difficulty distribution.
 
 ### Glossary, Terminology & Acronyms
 
-**G1. Business Model Canvas (BMC)**  
-Strategic management template with 9 building blocks: Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure. Used for business model design, validation, innovation. Related: Lean Canvas, Value Proposition Canvas [EN]
+**G1. Hexagonal Architecture (Ports & Adapters)**
+Architecture pattern isolating core domain from external systems via ports (interfaces) and adapters (implementations). Enables testability and technology independence. Related: Dependency Inversion [EN]
 
-**G2. Value Proposition**  
-The bundle of products/services creating value for a specific customer segment; answers "why customers choose you." Maps to technical features and quality attributes (performance, reliability, usability). Used for product-market fit, differentiation, architecture prioritization. Related: Jobs-to-be-Done, Quality Attributes [EN]
+**G2. CQRS (Command Query Responsibility Segregation)**
+Separates write (commands) from read (queries) models to optimize scalability and performance. Related: Event Sourcing [EN]
 
-**G3. Customer Segment**  
-Distinct groups of people/organizations an enterprise aims to reach and serve, with common needs, behaviors, or attributes. Maps to system design decisions (interfaces, workflows, data models). Used for market targeting, personalization, resource allocation. Related: Persona, Market Segmentation, ICP [EN]
+**G3. Event Sourcing**
+Stores state as an append-only log of events; rebuilds current state by replaying events. Enables auditability and temporal queries. Related: CQRS [EN]
 
-**G4. Domain-Driven Design (DDD)**  
-Software development approach focusing on complex domain modeling through collaboration between technical and domain experts; emphasizes ubiquitous language, bounded contexts, aggregates. Used for complex business logic, microservices boundaries, team organization. Related: Event Storming, Context Mapping [EN]
+**G4. Domain-Driven Design (DDD)**
+Strategic and tactical patterns for complex domains: ubiquitous language, bounded contexts, aggregates, repositories, domain events. [EN]
 
-**G5. Bounded Context**  
-DDD pattern defining explicit boundaries within which a domain model is valid; different contexts can have different models of the same concept. Used for microservices decomposition, team autonomy, integration design. Related: Context Map, Anti-Corruption Layer [EN]
+**G5. Bounded Context**
+Explicit boundary within which a model is consistent. Drives service decomposition and integration design. Related: Context Map, ACL [EN]
 
-**G6. Conway's Law**  
-"Organizations design systems that mirror their communication structure." Used for team topology design, architecture alignment, organizational change planning. Related: Inverse Conway Maneuver, Team Topologies [EN]
+**G6. Aggregate**
+Consistency boundary composed of an aggregate root and related entities/value objects. Enforces invariants. Related: Repository [EN]
 
-**G7. Technical Debt**  
-Implied cost of additional rework caused by choosing quick/limited solutions now instead of better approaches that would take longer; includes code debt, architectural debt, knowledge debt. Used for refactoring prioritization, risk assessment, investment planning. Related: Architectural Erosion, Entropy [EN]
+**G7. Repository Pattern**
+Abstraction for data access that persists aggregates/entities without leaking persistence concerns. [EN]
 
-**G8. Capability Mapping**  
-Technique identifying and organizing business capabilities (what the business does) independent of how it's done; used for strategic planning, gap analysis, transformation roadmaps. Related: Business Capability Model, Value Stream Mapping [EN]
+**G8. Domain Event**
+Immutable fact capturing something that happened in the domain; used for decoupling and eventual consistency. [EN]
 
-**G9. Process Mapping**  
-Visual documentation of workflows, activities, decision points, and information flows; used for optimization, automation, understanding current state. Related: Value Stream Mapping, BPMN, Swimlane Diagrams [EN]
+**G9. Saga Pattern**
+Orchestrates/coordinates a set of local transactions to implement a long-running business process across services. [EN]
 
-**G10. Wardley Mapping**  
-Strategic planning technique visualizing components of a value chain positioned by visibility (y-axis) and evolution (x-axis); used for strategic decision-making, identifying opportunities, anticipating change. Related: Value Chain Analysis, Strategic Positioning [EN]
+**G10. Circuit Breaker**
+Prevents cascading failures by opening on repeated errors/timeouts; retries with backoff. Related: Bulkhead [EN]
 
-**G11. Living Documentation**  
-Documentation that evolves with the system, stays current through automation and continuous updates; captures current state and evolution history. Used for knowledge sharing, onboarding, architectural understanding. Related: Documentation as Code, ADR [EN]
+**G11. Service Mesh**
+Infrastructure layer handling service-to-service communication (mTLS, retries, observability) via sidecars. [EN]
 
-**G12. Architecture Decision Records (ADR)**  
-Lightweight documentation capturing architectural decisions, context, consequences, and trade-offs; immutable log of choices made. Used for decision transparency, knowledge preservation, future reference. Related: Decision Log, Design Rationale [EN]
+**G12. API Gateway**
+Entry point for APIs handling routing, auth, throttling, and aggregation. Related: BFF [EN]
 
-**G13. Value Stream Mapping**  
-Lean technique visualizing steps in delivering value to customers, identifying waste, bottlenecks, and improvement opportunities. Used for process optimization, lead time reduction, efficiency analysis. Related: Process Mapping, Flow Analysis [EN]
+**G13. Sidecar Pattern**
+Deploy helper components alongside the main service for cross-cutting concerns (proxy, logging). [EN]
 
-**G14. Revenue Stream**  
-Ways an organization generates income from customer segments (e.g., one-time sale, subscription, usage-based, freemium, licensing). Directly impacts architectural requirements (metering, billing, multi-tenancy). Used for business model design, pricing strategy, technical planning. Related: Monetization Model, Pricing Strategy [EN]
+**G14. Strangler Fig Pattern**
+Incrementally replace legacy system by routing traffic to new components until full cutover. [EN]
 
-**G15. System Boundaries**  
-Explicit definition of what is inside vs outside the system scope; determines interfaces, integration points, and responsibilities. Used for context diagrams, scope management, interface design. Related: Context Diagram, Bounded Context, Integration Points [EN]
+**G15. CAP Theorem**
+In presence of partition, a distributed system must choose between Consistency or Availability. Related: PACELC [EN]
 
 ---
 
-### Business & Architecture Tools
+### Architecture & Development Tools
 
-**T1. Miro** (Visual Collaboration & Business Modeling)  
-Infinite canvas for Business Model Canvas, Value Proposition Canvas, journey mapping, process flows, architecture diagrams. Freemium to Enterprise. 80M+ users (Dell, Cisco, Deloitte). Updated Q4 2024 (enhanced AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Confluence. Use cases: Business model workshops, domain modeling sessions, architecture design, stakeholder alignment. https://miro.com [EN]
+**T1. Mermaid** (Text‑based Diagrams)
+GitHub‑native rendering for flowchart, sequence, class, state, ER, and gantt diagrams. Use fenced code blocks in Markdown. https://mermaid.js.org [EN]
 
-**T2. ArchiMate** (Enterprise Architecture Modeling)  
-Open standard for enterprise architecture modeling covering business, application, technology, motivation, implementation layers. Used with tools like Archi (free), Sparx EA, BiZZdesign. Supports capability mapping, process modeling, technology mapping. ISO/IEC/IEEE 42010 compliant. Use cases: Business-IT alignment, impact analysis, transformation planning. https://www.opengroup.org/archimate-forum [EN]
+**T2. OpenAPI** (API Specification)
+Language‑agnostic interface definition for REST APIs (YAML/JSON). Enables client/server code generation and contract testing. https://www.openapis.org [EN]
 
-**T3. C4 Model** (Software Architecture Diagramming)  
-Hierarchical set of diagrams (Context, Container, Component, Code) for visualizing software architecture at different abstraction levels. Free, tool-agnostic (Structurizr, PlantUML, Draw.io support). Created by Simon Brown. Use cases: Architecture documentation, stakeholder communication, onboarding. https://c4model.com [EN]
+**T3. JSON Schema** (Data Contracts)
+JSON‑based schema for validating and documenting JSON data structures; supports tooling and codegen. https://json-schema.org [EN]
 
-**T4. Confluence** (Documentation & Knowledge Management)  
-Team workspace for documentation, decision records, architecture diagrams, process documentation. Free to Enterprise ($5.75-$11/user/mo). 75K+ companies (Spotify, LinkedIn). Updated Q3 2024 (AI-powered search, summaries). Integrates: Jira, Slack, Miro, Lucidchart, Draw.io. Use cases: Architecture Decision Records (ADRs), living documentation, business context sharing. https://www.atlassian.com/software/confluence [EN]
+**T4. Kubernetes Manifests** (YAML)
+Declarative deployment specs (Deployment/Service/Ingress). LLM‑executable YAML for ops automation. https://kubernetes.io [EN]
 
-**T5. LucidChart** (Diagramming & Visual Communication)  
-Cloud-based diagramming for flowcharts, process maps, org charts, architecture diagrams, ERDs. Individual ($7.95/mo) to Enterprise. 60M+ users (Google, GE, NBC). Updated Q4 2024 (AI diagram generation). Integrates: Google Workspace, Microsoft 365, Slack, Confluence, Jira. Use cases: Process mapping, capability modeling, architecture visualization, stakeholder presentations. https://www.lucidchart.com [EN]
+**T5. ADR (Architecture Decision Records)**
+Markdown‑based decision log (adr‑tools). Encourages traceability from architecture to implementation. https://adr.github.io [EN]
 
 ---
 
@@ -496,75 +519,65 @@ Microservices decomposition, data management, communication patterns. Practical 
 
 ## Validation Report
 
-Execute 12-step validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
+Execute 16-step validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
 
 ---
 
 ## Example Question
 
-Demonstrates the transition framework: Business Understanding → Value/Risk Models → Architectural Decisions.
+Demonstrates the architecture→code framework: Pattern Selection → Quality Attributes → Implementation → Metrics.
 
-### Q1: How would you translate a company's shift from one-time perpetual licensing to subscription-based SaaS revenue into architectural requirements and constraints?
+### Q1: How would you implement a Saga pattern for distributed transactions across Order, Payment, and Inventory services? Show the sequence, code structure, and key metrics.
 
 **Difficulty**: Advanced  
-**Type**: Strategic Modeling, Architectural Translation
+**Type**: Behavioral Design, Integration Patterns
 
-**Key Insight**: Tests ability to trace business model changes through value/risk models to architectural decisions; distinguishes architects who systematically translate business drivers from those treating architecture as isolated technical concern.
+**Key Insight**: Tests ability to apply orchestration with compensations, reason about failure modes, and connect sequence flows to concrete code and SLOs.
 
 **Answer**:
 
-**Strategic Modeling** [Ref: G1]: Business Model Canvas analysis reveals Revenue Streams (upfront → recurring), Customer Relationships (transactional → continuous), Key Activities (+customer success/retention) [Ref: L1, A1].
-
-**Value Model** [Ref: G2]: Value propositions shift to continuous delivery, uptime guarantees, feature velocity. Customer segments expand to include multi-tier (freemium/pro/enterprise). Technical features required: real-time analytics, self-service onboarding, usage-based billing [Ref: A7].
-
-**Risk Model**: Business risks (churn, downtime revenue impact), operational constraints (SLA commitments 99.9%+), regulatory requirements (data residency, SOC2/GDPR compliance) [Ref: A12, A13].
-
-**Architectural Translation** [Ref: A16]: (1) Multi-tenancy for cost efficiency with tenant isolation [Ref: L6]; (2) Usage metering via event streaming [Ref: A6]; (3) Feature flagging for tier management [Ref: A11]; (4) HA/DR for SLA compliance; (5) Regional deployment for data residency.
-
-**Technical Debt** [Ref: G7]: Legacy assumptions (licensing checks, offline operation, customer-hosted) require migration strategy. Use Strangler pattern [Ref: A10] to extract multi-tenant services incrementally.
-
-**Organizational Dynamics** [Ref: G6]: Conway's Law—add Customer Success, DevOps, SRE teams; architecture must enable their workflows [Ref: A8, L4]. Document decisions via ADR [Ref: G12].
-
-**Supporting Artifact**:
-
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Order
+    participant Payment
+    participant Inventory
+    Client->>Order: PlaceOrder()
+    Order->>Payment: Authorize()
+    Payment-->>Order: OK
+    Order->>Inventory: Reserve()
+    Inventory-->>Order: OK
+    Order-->>Client: Confirmed
+    alt failure
+        Inventory-->>Order: FAIL
+        Order->>Payment: Compensate()
+        Order-->>Client: Rejected
+    end
 ```
-Transition Framework: Business Understanding → Architectural Decisions
 
-┌─────────────────────────────────────────────────────────────────────────┐
-│ BUSINESS MODEL CANVAS CHANGES                                           │
-├─────────────────────────────────────────────────────────────────────────┤
-│ Revenue Streams: Upfront → Recurring                                    │
-│ Customer Relationships: Transactional → Continuous                      │
-│ Key Activities: +Customer Success, +Retention                           │
-└─────────────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────────────┐
-│ VALUE MODEL                    │ RISK MODEL                             │
-├────────────────────────────────┼────────────────────────────────────────┤
-│ • Continuous delivery          │ • Business: Churn, downtime revenue    │
-│ • Uptime guarantees            │ • Operational: SLA 99.9%+              │
-│ • Feature velocity             │ • Regulatory: Data residency, SOC2     │
-│ • Multi-tier segments          │                                        │
-└────────────────────────────────┴────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────────────┐
-│ ARCHITECTURAL DECISIONS                                                 │
-├──────────────────────────┬──────────────────────────┬──────────────────┤
-│ Requirement              │ Technical Solution       │ Priority         │
-├──────────────────────────┼──────────────────────────┼──────────────────┤
-│ Multi-tenant efficiency  │ Tenant isolation, quotas │ Critical         │
-│ Usage metering           │ Event streaming          │ High             │
-│ Tier management          │ Feature flags            │ High             │
-│ SLA compliance           │ HA/DR, monitoring        │ Critical         │
-│ Data residency           │ Regional deployment      │ High             │
-│ Continuous delivery      │ CI/CD, blue-green        │ High             │
-└──────────────────────────┴──────────────────────────┴──────────────────┘
-
-Evolution Strategy (Strangler Pattern):
-Phase 1 (M1-3): Multi-tenancy foundation, basic metering
-Phase 2 (M4-6): Feature flags, CI/CD pipeline  
-Phase 3 (M7-9): HA/DR, regional deployment
-Phase 4 (M10-12): Analytics, customer success integrations
+```typescript
+// Saga orchestrator (simplified)
+async function placeOrder(cmd: PlaceOrder) {
+  const orderId = await orderRepo.create(cmd);
+  try {
+    await payment.authorize(orderId, cmd.amount);
+    await inventory.reserve(orderId, cmd.items);
+    await orderRepo.confirm(orderId);
+  } catch (e) {
+    await payment.compensate(orderId);
+    await inventory.release(orderId);
+    await orderRepo.reject(orderId, (e as Error).message);
+    throw e;
+  }
+}
 ```
+
+| Metric | Formula | Target |
+|--------|---------|--------|
+| Latency (p95) | `Response - Processing` | < 300 ms |
+| Error Rate | `Errors / Total × 100%` | < 0.5% |
+| Throughput | `Requests / Time` | ≥ 200 rps |
+
+Notes: Use idempotent operations and retries with exponential backoff; emit domain events for observability; record compensations for auditability.
 
 ---
