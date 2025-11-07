@@ -1,61 +1,65 @@
 # Modeling Standards and Tools Guide
 
-## Overview
+## 1. Overview
 
 This guide provides a comprehensive framework for understanding and selecting modeling standards and tools across software development, enterprise architecture, and business process domains. It follows MECE principles to ensure complete, non-overlapping coverage of essential concepts.
 
 ### Table of Contents
 
-1. **Modeling Standards Classification**
-   - Structural Standards (UML, SysML, ArchiMate)
-   - Process Standards (BPMN, DMN, CMMN)
-   - Architecture Frameworks (TOGAF, Zachman, DoDAF)
-   - Data Standards (DFD, ERD, Schema)
+1. **[Modeling Standards Classification](#modeling-standards-classification)**
+   - [Structural Standards](#structural-modeling-standards) (UML, SysML, ArchiMate)
+   - [Process Standards](#process-modeling-standards) (BPMN, DMN, CMMN)
+   - [Architecture Frameworks](#architecture-frameworks) (TOGAF, Zachman, DoDAF)
+   - [Data Standards](#data-modeling-standards) (DFD, ERD, Schema)
 
-2. **Diagram Types by Standard**
-   - UML Diagrams (14 types: structural + behavioral)
-   - BPMN Diagrams (4 types + swim lanes)
-   - SysML Diagrams (9 types)
-   - ArchiMate Viewpoints (7 core)
-   - DMN Diagrams (3 types)
-   - Data Modeling Diagrams (4 types)
-   - Complete Taxonomy (visual map)
-   - Selection Guide (decision flowchart)
-   - Practical Examples (scenarios, anti-patterns, patterns)
+2. **[Diagram Types by Standard](#diagram-types-by-standard)**
+   - [UML Diagrams](#uml-diagram-types) (14 types: structural + behavioral)
+   - [BPMN Diagrams](#bpmn-diagram-types) (4 types + swim lanes)
+   - [SysML Diagrams](#sysml-diagram-types) (9 types)
+   - [ArchiMate Viewpoints](#archimate-viewpoints) (7 core)
+   - [DMN Diagrams](#dmn-diagram-types) (3 types)
+   - [CMMN Elements](#cmmn-diagrams--elements)
+   - [Data Modeling Diagrams](#data-modeling-diagrams)
+   - [Complete Taxonomy](#complete-diagram-type-taxonomy) (visual map)
+   - [Selection Guide](#diagram-selection-guide) (decision flowchart)
+   - [Practical Usage Examples](#practical-usage-examples) (scenarios, anti-patterns, patterns)
 
-3. **Tools Ecosystem**
-   - Tool Selection Matrix
-   - Graphics-Based Tools (General, Professional, Open Source)
-   - Text-Based Diagramming (PlantUML, Mermaid, Graphviz, TikZ)
-   - Markup Languages (Markdown, AsciiDoc, reStructuredText)
-   - Mathematical Notation & Formulas (LaTeX, MathML, AsciiMath, Unicode)
-   - Tool Support Matrix (diagram capabilities)
-   - Rendering & Integration (platform support, syntax examples)
+3. **[Tools Ecosystem](#tools-ecosystem)**
+   - [Tool Selection Matrix](#tool-selection-matrix)
+   - [Graphics-Based Tools](#graphics-based-tools) (General, Professional, Open Source)
+   - [Text-Based Diagramming](#text-based-diagramming) (PlantUML, Mermaid, Graphviz, TikZ)
+   - [Markup Languages](#markup-languages-for-documentation) (Markdown, AsciiDoc, reStructuredText)
+   - [Mathematical Notation & Formulas](#mathematical-notation--formula-languages) (LaTeX, MathML, AsciiMath, Unicode)
+   - [Tool Support Matrix](#tool-support-for-diagram-types) (diagram capabilities)
+   - [Rendering & Integration](#diagram-rendering--integration-capabilities) (platform support, syntax examples)
 
-4. **Decision Framework**
-   - Standards vs Tools Distinctions
-   - Selection Criteria (Mermaid flowchart)
-   - Application Mapping (domain-specific, project size)
-   - Implementation Best Practices (governance, integration)
+4. **[Decision Framework](#decision-framework)**
+   - [Standards vs Tools Distinctions](#standards-vs-tools-key-distinctions)
+   - [Selection Criteria](#selection-criteria) (Mermaid flowchart)
+   - [Application Mapping](#application-mapping) (domain-specific, project size)
+   - [Implementation Best Practices](#implementation-best-practices) (governance, integration)
 
-5. **Strategic Implementation**
-   - Emerging Trends & Future Outlook (timeline, roadmap)
-   - Hybrid Modeling Strategies (combinations, patterns)
-   - Decision Support System (comprehensive framework)
-   - Migration & Transition Strategies (phases, risks, paths)
+5. **[Strategic Implementation Framework](#strategic-implementation-framework)**
+   - [Emerging Trends](#emerging-trends--future-directions) (timeline, roadmap)
+   - [Hybrid Modeling Strategies](#hybrid-usage-strategies) (combinations, patterns)
+   - [Decision Support System](#decision-support-system) (comprehensive framework)
+   - [Migration & Transition Strategies](#migration--transition-strategies) (phases, risks, paths)
 
-6. **Quick Reference**
-   - Standard & Diagram Type Cheat Sheet
-   - Tool Selection Cheat Sheet
-   - Executive Summary & Strategic Recommendations
+6. **[Quick Reference](#quick-reference-guide)**
+   - [Standard & Diagram Type Cheat Sheet](#standard--diagram-type-cheat-sheet)
+   - [Tool Selection Cheat Sheet](#tool-selection-cheat-sheet)
+   - [Executive Summary](#executive-summary--recommendations)
 
-7. **Reference Sections**
-   - Glossary, Terminology & Acronyms
-   - Codebase & Library References
-   - Authoritative Literature & Standards
-   - APA Style Citations
+7. **[Reference Sections](#reference-sections)**
+   - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+   - [Codebase & Library References](#codebase--library-references)
+   - [Authoritative Literature & Standards](#authoritative-literature--standards)
+   - [APA Style Citations](#apa-style-citations)
 
-## Modeling Standards Classification
+[↑ Back to Top](#overview) | [Next: Modeling Standards Classification →](#modeling-standards-classification)
+
+<a id="modeling-standards-classification"></a>
+## 2. Modeling Standards Classification
 
 ```mermaid
 graph TD
@@ -80,7 +84,7 @@ graph TD
     E --> E2[JSON/XML Schema]
 ```
 
-### Structural Modeling Standards
+### 2.1 Structural Modeling Standards
 
 | Standard | Domain | Primary Use | Version | Governing Body |
 |----------|--------|-------------|---------|----------------|
@@ -88,7 +92,7 @@ graph TD
 | **SysML** | Systems Engineering | Complex system design | 1.6 | OMG |
 | **ArchiMate** | Enterprise Architecture | Multi-layer architecture | 3.2 | The Open Group |
 
-### Process Modeling Standards
+### 2.2 Process Modeling Standards
 
 | Standard | Domain | Primary Use | Version | Governing Body |
 |----------|--------|-------------|---------|----------------|
@@ -96,7 +100,7 @@ graph TD
 | **DMN** | Decision Management | Decision rules & logic | 1.4 | OMG |
 | **CMMN** | Case Management | Adaptive case handling | 1.1 | OMG |
 
-### Architecture Frameworks
+### 2.3 Architecture Frameworks
 
 | Framework | Scope | Industry Focus | Complexity |
 |-----------|-------|----------------|------------|
@@ -104,7 +108,7 @@ graph TD
 | **Zachman** | Enterprise Architecture | Government/Large Enterprise | High |
 | **DoDAF** | Defense Architecture | Military/Defense | Very High |
 
-### Data Modeling Standards
+### 2.4 Data Modeling Standards
 
 | Standard | Type | Use Case | Format |
 |----------|------|----------|--------|
@@ -113,9 +117,11 @@ graph TD
 | **JSON Schema** | Validation | API/data contracts | Text |
 | **XML Schema** | Validation | Document structure | Text |
 
-## Diagram Types by Standard
+<a id="diagram-types-by-standard"></a>
+## 3. Diagram Types by Standard
 
-### UML Diagram Types
+<a id="uml-diagram-types"></a>
+### 3.1 UML Diagram Types
 
 UML 2.5.1 provides 14 diagram types organized into structural and behavioral categories.
 
@@ -143,7 +149,8 @@ UML 2.5.1 provides 14 diagram types organized into structural and behavioral cat
 | **Timing Diagram** | Show timing constraints and behavior | Real-time or time-critical systems | Hardware interfaces, protocol timing |
 | **Interaction Overview Diagram** | Combine activity and sequence diagrams | Complex interaction scenarios | Multi-step business processes |
 
-### BPMN Diagram Types
+<a id="bpmn-diagram-types"></a>
+### 3.2 BPMN Diagram Types
 
 BPMN 2.0.2 focuses on business process modeling with different perspectives.
 
@@ -158,7 +165,8 @@ BPMN 2.0.2 focuses on business process modeling with different perspectives.
 - **Pool**: Represents participant/organization
 - **Lane**: Represents role/department within pool
 
-### SysML Diagram Types
+<a id="sysml-diagram-types"></a>
+### 3.3 SysML Diagram Types
 
 SysML 1.6 extends UML for systems engineering with 9 diagram types.
 
@@ -174,11 +182,10 @@ SysML 1.6 extends UML for systems engineering with 9 diagram types.
 | **Use Case Diagram** | Capture system functionality | Requirements capture | System capabilities, stakeholder needs |
 | **Package Diagram** | Organize model elements | Large system organization | Model management, reusable libraries |
 
-### ArchiMate Diagram Types
+<a id="archimate-viewpoints"></a>
+### 3.4 ArchiMate Viewpoints
 
 ArchiMate 3.2 provides viewpoints across business, application, technology, and strategy layers.
-
-#### Core Viewpoints
 
 | Viewpoint | Purpose (Why) | Use When | Common Applications |
 |-----------|---------------|----------|---------------------|
@@ -190,7 +197,8 @@ ArchiMate 3.2 provides viewpoints across business, application, technology, and 
 | **Strategy Viewpoint** | Link strategy to execution | Strategic planning | Digital transformation, capability planning |
 | **Migration Viewpoint** | Show transition states | Planning architecture changes | Roadmap planning, modernization |
 
-### DMN Diagram Types
+<a id="dmn-diagram-types"></a>
+### 3.5 DMN Diagram Types
 
 DMN 1.4 provides one diagram type (DRD) and two expression forms (Decision Table, Literal Expression) for decision modeling.
 
@@ -200,7 +208,8 @@ DMN 1.4 provides one diagram type (DRD) and two expression forms (Decision Table
 | **Decision Table** | Define decision logic with rules | Implementing executable decisions | Pricing rules, eligibility checks |
 | **Literal Expression** | Express decisions in code/formulas | Complex calculations | Financial calculations, scoring models |
 
-### CMMN Diagrams & Elements
+<a id="cmmn-diagrams--elements"></a>
+### 3.6 CMMN Diagrams & Elements
 
 | Element | Purpose (Why) | Use When | Common Applications |
 |---------|---------------|----------|---------------------|
@@ -210,7 +219,8 @@ DMN 1.4 provides one diagram type (DRD) and two expression forms (Decision Table
 | **Sentry (Entry/Exit Criteria)** | Event/condition-based activation | Non-linear, event-driven lifecycles | Regulatory triggers, SLAs |
 | **Case File/Item** | Case data artifacts | Managing evolving case data | Evidence tracking, documents |
 
-### Data Modeling Diagrams
+<a id="data-modeling-diagrams"></a>
+### 3.7 Data Modeling Diagrams
 
 | Diagram Type | Purpose (Why) | Use When | Common Applications |
 |--------------|---------------|----------|---------------------|
@@ -219,7 +229,8 @@ DMN 1.4 provides one diagram type (DRD) and two expression forms (Decision Table
 | **Logical Data Model** | Technology-independent data structure | Conceptual database design | Enterprise data modeling |
 | **Physical Data Model** | Database-specific implementation | Database implementation | SQL schema generation, optimization |
 
-### Complete Diagram Type Taxonomy
+<a id="complete-diagram-type-taxonomy"></a>
+### 3.8 Complete Diagram Type Taxonomy
 
 ```mermaid
 graph TB
@@ -252,7 +263,8 @@ graph TB
     G --> G1[ERD<br/>DFD<br/>Logical<br/>Physical]
 ```
 
-### Diagram Selection Guide
+<a id="diagram-selection-guide"></a>
+### 3.9 Diagram Selection Guide
 
 ```mermaid
 flowchart TD
@@ -278,7 +290,8 @@ flowchart TD
     J -->|Detailed| L[Specific Diagrams]
 ```
 
-### Practical Diagram Usage Examples
+<a id="practical-usage-examples"></a>
+### 3.10 Practical Usage Examples
 
 #### Scenario-Based Diagram Selection
 
@@ -323,9 +336,11 @@ flowchart TD
 3. **Target State**: ArchiMate Layered Viewpoint
 4. **Transition**: ArchiMate Migration Viewpoint
 
-## Tools Ecosystem
+<a id="tools-ecosystem"></a>
+## 4. Tools Ecosystem
 
-### Tool Selection Matrix
+<a id="tool-selection-matrix"></a>
+### 4.1 Tool Selection Matrix
 
 | Tool Type | Cost | Learning Curve | Collaboration | Standards Support |
 |-----------|------|----------------|--------------|-------------------|
@@ -334,7 +349,8 @@ flowchart TD
 | **Open Source Tools** | Free | Medium | Medium | Good |
 | **Text-Based Tools** | Free | Low | High (Git) | Excellent |
 
-### Graphics-Based Tools
+<a id="graphics-based-tools"></a>
+### 4.2 Graphics-Based Tools
 
 #### General Graphics Tools
 | Tool | Primary Use | Platforms | Collaboration |
@@ -361,7 +377,8 @@ flowchart TD
 | **Modelio** | UML, BPMN | Java | Plugin ecosystem |
 | **ArgoUML** | UML | Java | Standards compliant |
 
-### Text-Based Diagramming
+<a id="text-based-diagramming"></a>
+### 4.3 Text-Based Diagramming
 
 | Language | Primary Use | Rendering | Ecosystem |
 |----------|-------------|-----------|-----------|
@@ -370,7 +387,8 @@ flowchart TD
 | **Graphviz (DOT)** | Graph layouts | C library | Extensive |
 | **TikZ** | Publication quality | LaTeX | Academic |
 
-### Markup Languages for Documentation
+<a id="markup-languages-for-documentation"></a>
+### 4.4 Markup Languages for Documentation
 
 | Language | Strength | Use Case | Tooling |
 |----------|----------|----------|--------|
@@ -378,7 +396,8 @@ flowchart TD
 | **AsciiDoc** | Features | Books/manuals | Antora, Asciidoctor |
 | **reStructuredText** | Extensibility | Python docs | Sphinx |
 
-### Mathematical Notation & Formula Languages
+<a id="mathematical-notation--formula-languages"></a>
+### 4.5 Mathematical Notation & Formula Languages
 
 Mathematical expressions are specialized modeling languages used in parametric diagrams, decision logic, and engineering constraints.
 
@@ -398,7 +417,8 @@ Mathematical expressions are specialized modeling languages used in parametric d
 | **UML OCL** | Constraints | Invariants, pre/post conditions | OCL language |
 | **ArchiMate** | Goal/Requirement elements | KPIs, metrics | Text description |
 
-### Tool Support for Diagram Types
+<a id="tool-support-for-diagram-types"></a>
+### 4.6 Tool Support for Diagram Types
 
 | Tool | UML Diagrams | BPMN | SysML | ArchiMate | Data Models | Best For |
 |------|--------------|------|-------|-----------|-------------|----------|
@@ -412,7 +432,8 @@ Mathematical expressions are specialized modeling languages used in parametric d
 | **Draw.io** | Basic UML | Basic BPMN | No | Basic | ERD | Quick diagrams, lightweight |
 | **Lucidchart** | Most UML | Process, Collaboration | Limited | Limited | ERD, DFD | Team collaboration, cloud-based |
 
-### Diagram Rendering & Integration Capabilities
+<a id="diagram-rendering--integration-capabilities"></a>
+### 4.7 Diagram Rendering & Integration Capabilities
 
 #### Direct Rendering Support
 
@@ -589,7 +610,8 @@ else
 | **Maple/Mathematica** | Symbolic math | Native | Various | Symbolic analysis |
 | **MATLAB/Simulink** | MATLAB syntax | Plots | Code, models | Numerical simulation |
 
-## Standards vs Tools: Key Distinctions
+<a id="standards-vs-tools-key-distinctions"></a>
+### 5.1 Standards vs Tools: Key Distinctions
 
 | Aspect | Standards | Tools |
 |--------|-----------|-------|
@@ -599,28 +621,33 @@ else
 | **Lifecycle** | Version-controlled evolution | Feature-driven development |
 | **Interoperability** | Ensured by specification | Varies by implementation |
 
-## Decision Framework
+<a id="decision-framework"></a>
+## 5. Decision Framework
 
-### Standard Selection Criteria
+<a id="selection-criteria"></a>
+### 5.2 Selection Criteria
 
 ```mermaid
 flowchart TD
     A[Select Modeling Standard] --> B{Domain Type?}
+
     B -->|Software| C[UML/SysML]
     B -->|Business| D[BPMN/DMN]
     B -->|Enterprise| E[ArchiMate/TOGAF]
-    B -->|Data| F[DFD/ERD/Schema]
+    B -->|Systems| F[SysML]
+    B -->|Data| G[ERD/Schema]
     
-    C --> G{Complexity?}
-    D --> G
-    E --> G
-    F --> G
+    C --> H{Complexity?}
+    D --> H
+    E --> H
+    F --> H
+    G --> H
     
-    G -->|Simple| H[Lightweight Standard]
-    G -->|Complex| I[Comprehensive Standard]
+    H -->|Simple| I[Lightweight Standard]
+    H -->|Complex| J[Comprehensive Standard]
     
-    H --> J[Tool Selection]
-    I --> J
+    I --> K[Tool Selection]
+    J --> K
 ```
 
 ### Tool Selection Matrix
@@ -634,9 +661,10 @@ flowchart TD
 | **Collaboration** | Medium | Multi-user, version control |
 | **Standards Compliance** | High | Specification adherence |
 
-## Application Mapping
+<a id="application-mapping"></a>
+### 5.3 Application Mapping
 
-### Domain-Specific Recommendations
+#### Domain-Specific Recommendations
 
 | Domain | Primary Standards | Key Diagram Types | Recommended Tools | Common Use Cases |
 |--------|------------------|-------------------|-------------------|------------------|
@@ -646,7 +674,7 @@ flowchart TD
 | **Systems Engineering** | SysML | BDD, IBD, Requirement, Parametric | MagicDraw, IBM Rhapsody | IoT devices, embedded systems, hardware-software integration |
 | **Data Architecture** | ERD, DFD, Schema | ERD, Logical/Physical Data Model | Draw.io, ER/Studio, ERwin | Database design, data warehousing, ETL pipelines |
 
-### Project Size Guidelines
+#### Project Size Guidelines
 
 | Project Size | Team | Duration | Recommended Approach |
 |--------------|------|----------|---------------------|
@@ -655,9 +683,10 @@ flowchart TD
 | **Large** | 20+ people | > 1 year | Professional tools (EA, Visual Paradigm) |
 | **Enterprise** | Multiple teams | Ongoing | Integrated suite (TOGAF + tools) |
 
-## Implementation Best Practices
+<a id="implementation-best-practices"></a>
+### 5.4 Implementation Best Practices
 
-### Modeling Governance Framework
+#### Modeling Governance Framework
 
 ```mermaid
 graph TD
@@ -680,7 +709,7 @@ graph TD
 | **Quality Assurance** | Automated validation checks | Zero critical compliance errors |
 | **Knowledge Sharing** | Centralized pattern repositories | 80% model reuse rate |
 
-### Integration Ecosystem
+#### Integration Ecosystem
 
 | Integration Type | Tools & Platforms | Benefits |
 |------------------|-------------------|----------|
@@ -690,7 +719,8 @@ graph TD
 | **Collaboration** | Slack, Teams integration | Real-time notifications |
 | **Code Generation** | Model-to-code frameworks | Reduced development time |
 
-## Emerging Trends & Future Outlook
+<a id="emerging-trends--future-directions"></a>
+### 6.1 Emerging Trends & Future Directions
 
 ### Technology Evolution Timeline
 
@@ -728,9 +758,11 @@ timeline
 | **Low-Code/No-Code Integration** | Medium | Growing | OutSystems, Appian, Mendix |
 | **Blockchain-Based Model Storage** | Low | Experimental | Emerging research projects |
 
-## Strategic Implementation Framework
+<a id="strategic-implementation-framework"></a>
+## 6. Strategic Implementation Framework
 
-### Hybrid Modeling Strategies
+<a id="hybrid-usage-strategies"></a>
+### 6.2 Hybrid Modeling Strategies
 
 ```mermaid
 graph LR
@@ -759,7 +791,8 @@ graph LR
 | **Standard + Custom** | ArchiMate + Custom | Archi + Internal tools | Enterprise-specific needs |
 | **Process + Analytics** | BPMN, DMN | Camunda + Power BI | Process optimization |
 
-## Decision Support System
+<a id="decision-support-system"></a>
+### 6.3 Decision Support System
 
 ### Comprehensive Selection Framework
 
@@ -802,9 +835,13 @@ flowchart TD
 | **Professional** | $10-50K | $5-15K | 6-12 months | Balanced investment, good ROI |
 | **Enterprise** | $100K+ | $25K+ | 12-24 months | Long-term value, high impact |
 
-## Quick Reference Guide
+<a id="quick-reference-guide"></a>
+## 7. Quick Reference Guide
 
-### Standard & Diagram Type Cheat Sheet
+**Purpose:** Quick lookup tables for selecting standards and tools based on specific needs.
+
+<a id="standard--diagram-type-cheat-sheet"></a>
+### 7.1 Standard & Diagram Type Cheat Sheet
 
 | Need | Standard | Specific Diagram Type | Why |
 |------|----------|----------------------|-----|
@@ -826,7 +863,8 @@ flowchart TD
 | **Database design** | ERD/DFD | ERD, Logical/Physical Data Model | Relational data modeling |
 | **Data pipelines** | DFD | Data Flow Diagram | ETL and data integration |
 
-### Tool Selection Cheat Sheet
+<a id="tool-selection-cheat-sheet"></a>
+### 7.2 Tool Selection Cheat Sheet
 
 | Scenario | Recommended Tool(s) | Cost | Learning Curve | Key Benefit |
 |----------|-------------------|------|----------------|-------------|
@@ -839,7 +877,8 @@ flowchart TD
 | **Business process** | Camunda, Bizagi | $$-$$$ | Medium | Executable processes |
 | **Documentation integration** | PlantUML + GitBook | Free | Low | Living documentation |
 
-## Migration & Transition Strategies
+<a id="migration--transition-strategies"></a>
+### 6.4 Migration & Transition Strategies
 
 ### Migration Planning Phases
 
@@ -884,7 +923,8 @@ flowchart TD
 | **Operational Risks** | Productivity loss, downtime | Parallel operation, rollback plans | < 5% productivity impact |
 | **Compliance Risks** | Standards violations, audit failures | Automated validation, regular reviews | Zero critical violations |
 
-## Executive Summary & Strategic Recommendations
+<a id="executive-summary--recommendations"></a>
+### 7.3 Executive Summary & Strategic Recommendations
 
 ### Decision Tree for Modeling Approach
 
@@ -930,9 +970,11 @@ flowchart TD
 | **Government/Defense** | DoDAF + IBM Rhapsody + Custom Tools | $250K+ | 12-24 months | Regulatory compliance, long-term value |
 | **Consulting/Professional Services** | Lucidchart + Visio + Multiple Standards | $50-100K | 3-6 months | Client flexibility, tool diversity |
 
-## Reference Sections
+<a id="reference-sections"></a>
+## 8. Reference Sections
 
-### Glossary, Terminology & Acronyms
+<a id="glossary-terminology--acronyms"></a>
+### 8.1 Glossary, Terminology & Acronyms
 
 **Core Modeling Standards:**
 - **UML**: Unified Modeling Language - software system structure and behavior modeling
@@ -962,7 +1004,8 @@ flowchart TD
 - **Constraint Language**: Mathematical expressions in SysML Parametric Diagrams
 - **Literal Expression**: DMN term for executable formulas and calculations
 
-### Codebase & Library References
+<a id="codebase--library-references"></a>
+### 8.2 Codebase & Library References
 
 **Open Source Modeling Platforms:**
 - **PlantUML**: Text-based UML/BPMN diagramming
@@ -1001,7 +1044,8 @@ flowchart TD
 - **AsciiMath**: Easy-to-write markup for mathematics
   - Website: http://asciimath.org/
 
-### Authoritative Literature & Standards
+<a id="authoritative-literature--standards"></a>
+### 8.3 Authoritative Literature & Standards
 
 **Standards Organizations:**
 - **Object Management Group (OMG)**: https://www.omg.org/
@@ -1023,7 +1067,8 @@ flowchart TD
 - **SysML Resources**: https://sysml.org/
 - **ArchiMate Specification**: https://publications.opengroup.org/standards/archimate
 
-### APA Style Citations
+<a id="apa-style-citations"></a>
+### 8.4 APA Style Citations
 
 **Standards Specifications:**
 - Object Management Group. (2017). *OMG Unified Modeling Language (OMG UML) Version 2.5.1*. https://www.omg.org/spec/UML/2.5.1/
