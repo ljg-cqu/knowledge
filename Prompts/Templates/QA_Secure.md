@@ -70,7 +70,7 @@ flowchart LR
 | **Incident Response** | Incident workflow, Recovery process | NIST SP 800-61, ISO 22301 | Response procedure + `MTTR = Time to Recovery`, `RTO = Recovery Time Objective` |
 | **Compliance** | Audit trail, Control mapping | ISO 27001, IEC 61508 | Evidence documentation + `Compliance Rate = Controls Met / Total Controls × 100%` |
 
-**Standards Reference**: IEC 61508 (functional safety), IEC 61511 (process industry safety), ISO 26262 (automotive safety), ISO/SAE 21434 (automotive cybersecurity), IEC 62443 (industrial security), ISO 27001 (information security), NIST CSF (cybersecurity framework), ISO 31000 (risk management), ISO 22301 (business continuity)
+**Standards Reference**: IEC 61508 (functional safety), IEC 61511 (process industry safety), ISO 26262 (automotive safety), ISO/SAE 21434 (automotive cybersecurity), IEC 62304 (medical device software), ISO 14971 (medical device risk management), IEC 62443 (industrial security), ISO 27001 (information security), NIST CSF 2.0 (cybersecurity framework), ISO 31000 (risk management), ISO 22301 (business continuity)
 
 #### Metrics Quick Reference
 
