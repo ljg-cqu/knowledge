@@ -152,10 +152,9 @@ Thirdly, **Customer Segments** for different tiers will have varying performance
 
 Finally, the **Key Activities** related to customer onboarding, service delivery, and support must adapt. Automated provisioning and de-provisioning of features based on subscription status are critical. The architecture needs to facilitate integration with CRM and customer support systems to handle tier-specific inquiries and manage service level agreements (SLAs). This transformation from a transactional (one-time license) to a continuous relationship model impacts nearly every architectural layer, from data models to deployment strategies.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MPC Wallet Tiered Subscription - Feature to Architecture Mapping
 
 ```
-MPC Wallet Tiered Subscription - Feature to Architecture Mapping
 
 | Business Requirement (Revenue Model) | Value Proposition | Architectural Consideration | Technical Capability | Priority |
 |---|---|---|---|---|
@@ -166,8 +165,10 @@ MPC Wallet Tiered Subscription - Feature to Architecture Mapping
 | **Dedicated API Access / SDK** | Seamless integration for partners/developers | API gateway with authentication | API versioning, robust documentation, developer portal | High |
 | **Priority Processing** | Low-latency transactions for critical operations | Resource allocation, traffic shaping | QoS mechanisms, dedicated microservices, load balancing | Medium |
 | **Audit & Reporting Features** | Compliance, financial oversight for enterprises | Immutable logging, data warehousing | Audit trails, reporting dashboards, data export APIs | High |
+```
 
-Diagram: Revenue Model to Architecture Mapping
+**Diagram: Revenue Model to Architecture Mapping**
+
 ```
                                                 ┌───────────────────┐
                                                 │ Subscription Mgr  │
@@ -220,10 +221,9 @@ External services can interact with the MPC wallet through clearly defined APIs,
 
 From a cryptographic security perspective, no unencrypted private key material should ever cross the system boundary or reside outside the core MPC module. All interactions across the boundary must be authenticated, authorized, and encrypted (e.g., mTLS for internal services, HTTPS for external APIs). Operationally, clear APIs and SDKs facilitate integration with both internal product teams and external partners, enabling modularity and reducing integration overhead. Changes to external services should not necessitate changes to the core MPC logic, promoting loose coupling and maintainability.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MPC Wallet System Context Diagram
 
 ```
-MPC Wallet System Context Diagram
 
 ┌───────────────────────────────────────────────────────────┐
 │              EXTERNAL ACTORS / SYSTEMS                    │
@@ -263,7 +263,8 @@ MPC Wallet System Context Diagram
              ▼                            ▼
 ┌─────────────────────┐               ┌─────────────────────┐
 │ Blockchain Networks │               │ Monitoring &        │
-│ (Ethereum, BTC, Solana)             │ Alerting Systems    │
+│ (Ethereum, BTC,     │               │ Alerting Systems    │
+│ Solana)             │               │                     │
 └─────────────────────┘               └─────────────────────┘
 ```
 
@@ -299,10 +300,9 @@ Conducting a risk assessment for an MPC wallet with Account Abstraction (AA) and
     - **Decentralized Oracles**: For session key contextual data, where possible.
     - **Continuous Monitoring**: Anomaly detection for unusual `UserOperation` patterns or session key usage.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Risk Assessment Table - MPC Wallet with AA and Session Keys
 
 ```
-Risk Assessment Table: MPC Wallet with AA and Session Keys
 
 | Feature/Component | Attack Surface/Threat | Abuse Scenario | Likelihood | Impact | Mitigation Strategy |
 |---|---|---|---|---|---|
@@ -346,10 +346,9 @@ When evaluating threshold signature schemes (TSS) like GG18, GG20, or FROST for 
 - For broad compatibility with existing ECDSA-based blockchains (e.g., Ethereum), an optimized **Threshold ECDSA** protocol, potentially a newer variant of Lindell's work or CGGMP21, would be chosen, carefully weighing the performance-security trade-offs and ensuring up-to-date implementations to avoid known vulnerabilities.
 - The choice would also be influenced by the acceptable level of trust in external parties for key shares and the overall operational environment (e.g., mobile vs. backend environments).
 
-**Supporting Artifact**:
+**Supporting Artifact**: Comparison of Threshold Signature Schemes for MPC Wallets
 
 ```
-Comparison of Threshold Signature Schemes for MPC Wallets
 
 | Feature | GG18 | GG20 | FROST |
 |---|---|---|---|
@@ -388,10 +387,9 @@ Operating a blockchain wallet and MPC-based security solution across multiple ju
 
 MPC solutions offer advantages in data privacy by allowing computations on encrypted data, potentially aiding GDPR compliance by minimizing personal data exposure. However, the data collected during KYC/AML still falls under privacy regulations. The architectural impact includes designing for data localization, anonymization/pseudonymization, and secure data storage, particularly given that some blockchain data is immutable and publicly accessible, complicating erasure requests.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Regulatory Compliance and Strategic Risks for MPC Wallets
 
 ```
-Regulatory Compliance and Strategic Risks for MPC Wallets
 
 | Area | Strategic Business Risk | Key Regulatory Requirement | Architectural Impact |
 |---|---|---|---|
@@ -400,8 +398,10 @@ Regulatory Compliance and Strategic Risks for MPC Wallets
 | **Data Privacy** | Fines, loss of trust, user exodus | GDPR, CCPA, data localization laws | Data anonymization/pseudonymization, secure data storage (EU-based), explicit consent mechanisms, data access/deletion request handling |
 | **Securities** | Legal action, product bans, investor mistrust | Classification of crypto assets, licensing for token issuance/trading | Legal framework for token classification, specialized compliance modules for security tokens, regional asset restrictions |
 | **Cross-Jurisdictional** | Operational complexity, inconsistent legal interpretations | Varying licenses, tax laws, reporting obligations | Modular compliance engine, region-specific configurations, legal counsel integrations, adaptable tax reporting tools |
+```
 
-Diagram: Regulatory Impact on MPC Wallet Architecture
+**Diagram: Regulatory Impact on MPC Wallet Architecture**
+
 ```
                                         ┌─────────────────────────────────┐
                                         │ External Regulatory Landscape   │
@@ -478,10 +478,9 @@ Assessing and mitigating single point of failure (SPOF) risks in an MPC system f
 
 By employing a layered defense strategy and continuously auditing each stage of the MPC lifecycle, enterprises can significantly mitigate SPOF risks and achieve robust asset custody.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MPC System Single Point of Failure (SPOF) Risk Mitigation
 
 ```
-MPC System Single Point of Failure (SPOF) Risk Mitigation
 
 | SPOF Risk Area | Description | Mitigation Strategy | Architectural/Operational Impact |
 |---|---|---|---|
@@ -492,7 +491,7 @@ MPC System Single Point of Failure (SPOF) Risk Mitigation
 | **Operational Control** | Human error, insider threats, or weak access controls. | **Segregation of Duties & Least Privilege**: Limit any single individual's access to multiple key shares; enforce strict authorization policies. | Requires strong identity and access management (IAM), audit logging, and continuous monitoring for suspicious activity. |
 ```
 
-Diagram: Key Sharding and Recovery Flow in MPC
+**Diagram: Key Sharding and Recovery Flow in MPC**
 
 ```mermaid
 graph TD
@@ -549,10 +548,9 @@ Integrating Multi-Factor Authentication (MFA) and device verification into an MP
 
 Architectural decisions must consider configurable MFA options, seamless device enrollment, and transparent user communication about security features to optimize this trade-off.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MFA and Device Verification Impact on MPC Wallet
 
 ```
-MFA and Device Verification Impact on MPC Wallet
 
 | Aspect | Impact on Security Posture | Impact on User Experience | Architectural Consideration |
 |---|---|---|---|
@@ -682,10 +680,9 @@ Maintaining "living documentation" for a rapidly evolving MPC wallet project is 
 
 By adopting these practices, the documentation becomes an integral, evolving part of the project, fostering a shared understanding across business, development, and security teams.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Living Documentation Framework for MPC Wallet
 
 ```
-Living Documentation Framework for MPC Wallet
 
 | Documentation Type | Content | Tools/Format | Automation/Integration | Stakeholders |
 |---|---|---|---|---|
@@ -734,10 +731,9 @@ The BMC directly informs architectural planning by prioritizing capabilities ali
 
 By mapping business components to architectural elements, we ensure that technical investments directly support the strategic goals of the WaaS offering.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Business Model Canvas for MPC Wallet-as-a-Service (WaaS)
 
 ```
-Business Model Canvas for MPC Wallet-as-a-Service (WaaS)
 
 | **Key Partners**                                 | **Key Activities**                                | **Value Proposition**                                | **Customer Relationships**                    | **Customer Segments**                                |
 |--------------------------------------------------|---------------------------------------------------|------------------------------------------------------|-----------------------------------------------|------------------------------------------------------|
@@ -797,10 +793,9 @@ Here's how ADRs would be used for such a critical component:
 
 ADRs would be stored as simple Markdown files in a `/docs/arch/decisions` folder within the project repository, version-controlled alongside the code. This "living" aspect ensures that the architectural rationale is always accessible and up-to-date, providing a clear narrative of the MPC wallet's cryptographic evolution.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Example ADR for TSS Protocol Transition
 
 ```
-Example ADR for TSS Protocol Transition
 
 # ADR 0005: Transition from GG18 to GG20 Threshold ECDSA
 
@@ -946,10 +941,9 @@ Operational constraints and organizational factors profoundly impact the design 
 
 Addressing these factors requires a proactive strategy that involves cross-functional collaboration, continuous security training, a robust CI/CD pipeline, and the use of tools like Team Topologies to align organizational structure with desired architectural outcomes.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Operational and Organizational Factors Impacting MPC Wallet Design
 
 ```
-Operational and Organizational Factors Impacting MPC Wallet Design
 
 | Factor Category | Specific Factor | Impact on Design/Deployment | Mitigation Strategy |
 |---|---|---|---|
@@ -1058,10 +1052,9 @@ Adopting advanced cryptographic techniques like Zero-Knowledge Proofs (ZKPs) or 
 
 By taking a structured approach to skill development, fostering a supportive learning environment, and integrating these advanced capabilities through well-defined architectural boundaries, the organization can successfully adopt cutting-edge cryptography while enhancing overall team capability.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Capability Gap Analysis & Remediation Plan for Advanced Cryptography
 
 ```
-Capability Gap Analysis & Remediation Plan for Advanced Cryptography
 
 | Capability Gap | Current State | Target State | Remediation Strategy | Metrics for Success |
 |---|---|---|---|---|
@@ -1109,10 +1102,9 @@ Balancing high-security practices with agile development in a blockchain securit
 
 By embedding security into every phase of the agile development lifecycle, from planning and coding to testing and deployment, an organization can achieve both rapid iteration and a high-security posture for its blockchain and MPC solutions.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Agile Security Integration for MPC Wallet Development
 
 ```
-Agile Security Integration for MPC Wallet Development
 
 | Agile Phase | Security Practice | Tools/Techniques | Impact on Speed vs. Security |
 |---|---|---|---|
@@ -1167,10 +1159,9 @@ The business requirement of "mitigating single-point-of-failure (SPOF) risks" fo
 
 By carefully designing these three areas with redundancy, distribution, and resilience, the MPC wallet can effectively mitigate SPOF risks, providing robust security for enterprise digital assets.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MPC Wallet SPOF Mitigation Architecture Decisions
 
 ```
-MPC Wallet SPOF Mitigation Architecture Decisions
 
 | Business Requirement (SPOF Mitigation) | Architectural Component | Specific Architectural Decision | Justification for SPOF Mitigation |
 |---|---|---|---|
@@ -1222,10 +1213,9 @@ Integrating MPC cryptographic capabilities as an SDK or API for internal product
 
 By adhering to these patterns and practices, the MPC cryptographic capabilities can be safely and effectively integrated across various products and partners, enhancing the security ecosystem.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Architectural Patterns & Best Practices for MPC API/SDK Integration
 
 ```
-Architectural Patterns & Best Practices for MPC API/SDK Integration
 
 | Area | Architectural Pattern/Best Practice | Security Benefit | Usability Benefit | Maintainability Benefit |
 |---|---|---|---|---|
@@ -1330,10 +1320,9 @@ Implementing Account Abstraction (AA) (e.g., ERC-4337, EIP-7702) in an MPC walle
 
 Overall, AA pushes much of the wallet's functionality into smart contracts and external services (`Bundlers`, `Paymasters`), requiring the MPC infrastructure to evolve from primarily securing EOA keys to securing the control over smart contract wallets and their delegated capabilities. This demands a modular and flexible architecture that can adapt to new AA standards while maintaining cryptographic integrity.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Architectural Impact of Account Abstraction on MPC Wallets
 
 ```
-Architectural Impact of Account Abstraction on MPC Wallets
 
 | Feature Area | Pre-AA MPC Wallet Infrastructure | Post-AA MPC Wallet Infrastructure | Architectural Implications |
 |---|---|---|---|
@@ -1380,10 +1369,9 @@ Ensuring the performance and stability of MPC wallet signature protocols (like E
 
 By proactively selecting efficient protocols, optimizing backend infrastructure, and tailoring client-side implementations, a low-latency, high-performance, and stable MPC wallet can be delivered across diverse environments.
 
-**Supporting Artifact**:
+**Supporting Artifact**: MPC Wallet Signature Protocol Performance and Stability Optimization
 
 ```
-MPC Wallet Signature Protocol Performance and Stability Optimization
 
 | Environment | Performance Challenge | Optimization Strategy | Technical Impact | Expected Outcome |
 |---|---|---|---|---|
@@ -1443,10 +1431,9 @@ Transitioning from a legacy multi-signature (multisig) wallet architecture to an
 
 This phased approach allows for controlled deployment, reduces risks, and leverages the superior security and operational benefits of MPC over time.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Migration Roadmap - Multisig to MPC Wallet Solution
 
 ```
-Migration Roadmap: Multisig to MPC Wallet Solution
 
 | Phase | Timeline | Key Activities | Deliverables | Risk Mitigation |
 |---|---|---|---|---|
@@ -1635,10 +1622,9 @@ Transitioning from a legacy multi-signature (multisig) wallet architecture to an
 
 This phased approach allows for controlled deployment, reduces risks, and leverages the superior security and operational benefits of MPC over time.
 
-**Supporting Artifact**:
+**Supporting Artifact**: Migration Roadmap - Multisig to MPC Wallet Solution
 
 ```
-Migration Roadmap: Multisig to MPC Wallet Solution
 
 | Phase | Timeline | Key Activities | Deliverables | Risk Mitigation |
 |---|---|---|---|---|
