@@ -74,16 +74,16 @@ flowchart LR
 
 #### Metrics Quick Reference
 
-| Metric | Formula |
-|--------|---------|
-| Risk Score | `Risk = Likelihood × Severity` |
-| MTBF | `MTBF = Operating Time / Failures` |
-| MTTR | `MTTR = Recovery Time / Incidents` |
-| MTTD | `MTTD = Detection Time / Incidents` |
-| Detection Rate | `True Positives / Total Incidents × 100%` |
-| False Positive Rate | `False Alarms / Total Alerts × 100%` |
-| CVSS | `0–10` (Base × Temporal × Environmental) |
-| Availability | `Uptime / Total × 100%` |
+| Metric | Formula | Notes |
+|--------|---------|-------|
+| Risk Score | `Risk = Likelihood × Severity` | Scale: 0-10 or qualitative matrix |
+| MTBF | `MTBF = Total Operating Time / Number of Failures` | Higher = better reliability |
+| MTTR | `MTTR = Total Restoration Time / Number of Incidents` | Includes diagnosis + repair + verification |
+| MTTD | `MTTD = Total Detection Time / Number of Incidents` | Lower = faster threat detection |
+| Detection Rate | `True Positives / Total Incidents × 100%` | Target: ≥95% for critical systems |
+| False Positive Rate | `False Alarms / Total Alerts × 100%` | Target: ≤2% to prevent alert fatigue |
+| CVSS | `Base × Temporal × Environmental` | Range: 0-10 (Critical ≥9.0) |
+| Availability | `Uptime / (Uptime + Downtime) × 100%` | Target: 99.9% (8.76h/yr downtime) |
 
 #### Safety & Security Frameworks (Apply Relevant Combination)
 
@@ -225,7 +225,7 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 **Step 14 – Framework Application**: ≥80% answers apply relevant safety/security frameworks (Defense-in-Depth, Fail-Safe, Zero-Trust, etc.)
 
-**Step 15 – Risk Analysis**: ≥60% answers include risk metrics, formulas, or calculations where appropriate
+**Step 15 – Risk Analysis**: ≥60% answers include quantitative metrics from Metrics Quick Reference (Risk Score, MTBF, MTTR, MTTD, Detection Rate, CVSS, Availability) with formulas and targets
 
 **Step 16 – Practical Example Coverage**: ≥80% of answers include practical scenarios demonstrating prevention, detection, or response measures
 
@@ -419,7 +419,6 @@ Overview of coverage and difficulty distribution.
 | **Security Assurance** | Attack tree, Data flow, Defense-in-depth | Attack scenarios, Access control policies | `Attack Surface = Entry Points × Vulnerabilities`, `CVSS Score` |
 | **Risk Assessment** | Risk matrix, Probability-Impact | Risk quantification, Control selection | `Risk Score = P × I`, `Residual Risk = Initial Risk - Control Effectiveness` |
 | **Prevention Measures** | Control hierarchy, Monitoring flow | Prevention controls, Detection mechanisms | `Control Effectiveness = Prevented / Total × 100%`, `False Positive Rate` |
-| **Incident Response** | Incident workflow, Recovery process | Emergency procedures, Communication plans | `MTTR = Time to Recovery`, `RTO = Recovery Time Objective`, `RPO = Data Loss Window` |
 | **Compliance** | Audit trail, Control mapping | Evidence documentation, Training records | `Compliance Rate = Controls Met / Total × 100%`, `Audit Findings` |
 
 ### Template Stubs (use when needed)
@@ -445,6 +444,39 @@ incident_playbook:
   metrics:
     mttd_target_min: 5
     mttr_target_min: 30
+  severity_matrix:
+    critical:
+      escalation: "immediate (≤5min)"
+      mttd_target: 5
+      mttr_target: 30
+      stakeholders: [ciso, ceo, regulator]
+    high:
+      escalation: "within 15min"
+      mttd_target: 15
+      mttr_target: 60
+      stakeholders: [security_lead, ops_manager]
+    medium:
+      escalation: "within 1hour"
+      mttd_target: 30
+      mttr_target: 120
+      stakeholders: [team_lead, ops]
+    low:
+      escalation: "next business day"
+      mttd_target: 60
+      mttr_target: 240
+      stakeholders: [oncall_engineer]
+  response_procedures:
+    detect: "siem_alert + threat_intel + validation"
+    contain: "isolate_segments + preserve_evidence + block_indicators"
+    eradicate: "patch_vulnerabilities + rollback_configs + purge_compromise"
+    recover: "restore_from_backup + verify_integrity + monitor_anomalies"
+  communications:
+    channels: [phone, pager, chat, email]
+    templates: [initial_alert, status_update, resolution_report]
+  post_incident:
+    lessons_learned: true
+    threat_model_update: true
+    control_improvement: true
 ```
 
 **Risk Register (Table)**
