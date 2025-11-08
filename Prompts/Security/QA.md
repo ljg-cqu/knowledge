@@ -29,7 +29,7 @@ Define quality requirements, standards, and constraints.
 ### Evaluation Dimensions
 
 - **Safety Assurance**: Hazard analysis (FMEA, FTA, HAZOP), fail-safe design, redundancy, fault tolerance, safety instrumented systems, safety certification
-- **Security Assurance**: Threat modeling (STRIDE, PASTA), vulnerability assessment, access control, encryption, intrusion detection, security audits
+- **Security Assurance**: Threat modeling (STRIDE, PASTA), SAST, DAST, SCA (SBOM), fuzz testing, penetration testing, API/IaC/container scanning, access control, encryption, intrusion detection, security audits
 - **Operational Resilience**: Incident detection, emergency response procedures, business continuity, disaster recovery, system monitoring, anomaly detection
 - **Compliance & Governance**: Regulatory standards (IEC 61508, ISO 26262, ISO 27001), risk management frameworks, audit trails, documentation, training programs
 
@@ -40,7 +40,7 @@ Define quality requirements, standards, and constraints.
 | Goal | Prevent unintended harm | Prevent malicious compromise |
 | Threats | Faults, human error, environment | Adversaries, insiders, exploits |
 | Focus | Fail-safe, redundancy, hazards | CIA, access control, detection |
-| Evaluation | FMEA, FTA, HAZOP | STRIDE, CVSS, testing (SAST/DAST) |
+| Evaluation | FMEA, FTA, HAZOP | STRIDE, CVSS, testing (SAST/DAST/Fuzz/Pentest) |
 | Outcomes | Safe states, SIL targets | Risk reduction, ISMS controls |
 
 ```mermaid
@@ -69,6 +69,7 @@ flowchart LR
 | **Detection & Monitoring** | State machine, Alert flow | Custom, SIEM | Monitoring logic + `Detection Rate = True Positives / Total Incidents × 100%`, `MTTD = Time to Detection` |
 | **Incident Response** | Incident workflow, Recovery process | NIST SP 800-61, ISO 22301 | Response procedure + `MTTR = Time to Recovery`, `RTO = Recovery Time Objective` |
 | **Compliance** | Audit trail, Control mapping | ISO 27001, IEC 61508 | Evidence documentation + `Compliance Rate = Controls Met / Total Controls × 100%` |
+| **Security Testing** | Attack chain, Test coverage map | NIST SP 800-115, OWASP ASVS | Pentest/fuzz plan + `Coverage = Tests Run / Identified Vectors × 100%`, `Defect Escape Rate = Post-Release Findings / Total Findings × 100%` |
 
 **Standards Reference**: IEC 61508 (functional safety), IEC 61511 (process industry safety), ISO 26262 (automotive safety), ISO/SAE 21434 (automotive cybersecurity), IEC 62304 (medical device software), ISO 14971 (medical device risk management), IEC 62443 (industrial security), ISO 27001 (information security), NIST CSF 2.0 (cybersecurity framework), ISO 31000 (risk management), ISO 22301 (business continuity)
 
@@ -84,6 +85,8 @@ flowchart LR
 | False Positive Rate | `False Alarms / Total Alerts × 100%` | Target: ≤2% to prevent alert fatigue |
 | CVSS | `Base × Temporal × Environmental` | Range: 0-10 (Critical ≥9.0) |
 | Availability | `Uptime / (Uptime + Downtime) × 100%` | Target: 99.9% (8.76h/yr downtime) |
+| Test Coverage | `Tests Run / Identified Vectors × 100%` | Security testing completeness |
+| Defect Escape Rate | `Post-Release Findings / Total Findings × 100%` | Lower = better quality gate |
 
 #### Safety & Security Frameworks (Apply Relevant Combination)
 
@@ -159,7 +162,7 @@ safety_limits:
 ### Citation Standards
 
 - **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Safety & security standards; (2) Risk assessment methodologies; (3) Incident case studies & lessons learned; (4) Tools & frameworks
+- **Source Types**: (1) Safety & security standards; (2) Risk assessment methodologies; (3) Historical incident analysis & lessons learned; (4) Tools & frameworks
 - **Format**: APA 7th with language tags
 - **Inline Citation**: Use [Ref: ID] after factual claims, standards, risk metrics, control frameworks, incident statistics, regulatory requirements
 
@@ -169,7 +172,7 @@ safety_limits:
 |---------|-------|---------|
 | Glossary | ≥10 | FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL (Safety Integrity Level), CIA Triad, Attack Surface, Threat Vector |
 | Tools | ≥5 | Risk assessment (BowTieXP, FMEA tools), threat modeling (Microsoft Threat Modeling Tool), SIEM (Splunk, ELK), vulnerability scanning (Nessus, Qualys), incident management (PagerDuty, ServiceNow) |
-| Literature | ≥10 | Safety standards (IEC 61508, IEC 61511, ISO 26262, ISO/SAE 21434, IEC 62304, ISO 14971), security frameworks (NIST CSF, ISO 27001, IEC 62443, NIST SP 800-82, NIST SP 800-61), risk management (ISO 31000, FAIR), threat modeling (Shostack), safety engineering (Leveson) |
+| Literature | ≥10 | Safety standards (IEC 61508, IEC 61511, ISO 26262, ISO/SAE 21434, IEC 62304, ISO 14971), security frameworks (NIST CSF, ISO 27001, IEC 62443, NIST SP 800-82, NIST SP 800-61, NIST SP 800-115, OWASP ASVS), risk management (ISO 31000, FAIR), incident analysis (Stuxnet, breaches, supply chain, ransomware), threat modeling (Shostack), safety engineering (Leveson) + ZH sources (安全工程, 信息安全) |
 | Citations | ≥20 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags); for international standards, EN-heavy distributions are acceptable |
 
 **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
@@ -190,83 +193,13 @@ safety_limits:
 - **Tool Details**: Pricing, adoption metrics, last update ≤18 months, key integrations
 - **Links**: Validate accessibility; use DOIs/archived URLs
 - **Cross-refs**: All [Ref: ID] resolve to entries
+- **Security Testing Coverage**: Security Assurance/Prevention topics include SAST/DAST/SCA; risk‑aligned fuzz or pentest; IaC/container scanning for cloud‑native
 
 > Scaling: For >30 Q&A, increase floors by ~1.5×. Prioritize gates before raising floors.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
-
-**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥10, APA ≥20, Q&As 25-30 (20/40/40)
-
-**Step 2 – Citations**: ≥70% answers have ≥1; ≥30% have ≥2
-
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-
-**Step 4 – Recency**: ≥50% from last 3 years (≥70% for digital transformation/cloud-native)
-
-**Step 5 – Diversity**: ≥3 source types; no single >25%
-
-**Step 6 – Links**: All accessible or archived
-
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-
-**Step 8 – Word Count**: Sample 5 answers; all 150-300 words
-
-**Step 9 – Key Insights**: All concrete (risk trade-offs/control effectiveness/incident impact/regulatory requirements)
-
-**Step 10 – Per-Topic**: Each has ≥2 authoritative + ≥1 tool
-
-**Step 11 – Requirements-to-Controls Mapping**: ≥80% of answers explicitly connect safety/security requirements to control implementations with citations
-
-**Step 12 – Judgment**: ≥70% scenario-based ("How would...", "When should...") vs recall ("What is...")
-
-**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + example scenario + supporting table + risk/performance metric
-
-**Step 14 – Framework Application**: ≥80% answers apply relevant safety/security frameworks (Defense-in-Depth, Fail-Safe, Zero-Trust, etc.)
-
-**Step 15 – Risk Analysis**: ≥60% answers include quantitative metrics from Metrics Quick Reference (Risk Score, MTBF, MTTR, MTTD, Detection Rate, CVSS, Availability) with formulas and targets
-
-**Step 16 – Practical Example Coverage**: ≥80% of answers include practical scenarios demonstrating prevention, detection, or response measures
-
-**Validation Report Template:**
-```
-| Check | Result | Status |
-|-------|--------|--------|
-| Floors | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
-| Links | Y/X accessible | PASS/FAIL |
-| Cross-refs | Y/X resolved | PASS/FAIL |
-| Word counts | 5/5 compliant | PASS/FAIL |
-| Key Insights | Y/X concrete | PASS/FAIL |
-| Per-topic mins | X/Y topics meet | PASS/FAIL |
-| Req-Controls mapping | X/Y explicit | PASS/FAIL |
-| Judgment vs Recall | X% judgment-based | PASS/FAIL |
-| Visual coverage | X% have diagram+scenario+table+metric | PASS/FAIL |
-| Framework application | X% apply safety/security frameworks | PASS/FAIL |
-| Risk analysis | X% include risk metrics/formulas | PASS/FAIL |
-| Practical examples | X% include prevention/detection/response scenarios | PASS/FAIL |
-```
-
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
-
-### Submission Checklist
-
-- [ ] All 16 validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
-
----
-
-# Part II: Instructions
-
-Execute generation workflow with inline quality checks at each step.
-
-## Instructions
-
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+Execute all validation steps (Part I). Fix failures; re-validate until all PASS.
 
 ### Step 1: Topic Identification & Planning
 1. Identify 5-6 clusters aligned with framework: Safety Assurance | Security Assurance | Operational Resilience | Compliance & Governance | Prevention Measures | Incident Response
@@ -381,7 +314,7 @@ Overview of coverage and difficulty distribution.
 | Topic | Question Range | Count | Difficulty Mix |
 |-------|---------------|-------|----------------|
 | Safety Assurance (Hazard Analysis, Fail-Safe, Redundancy) | Q1-Q5 | 5 | 1F, 2I, 2A |
-| Security Assurance (Threat Modeling, Access Control, Encryption) | Q6-Q10 | 5 | 1F, 2I, 2A |
+| Security Assurance (Threat Modeling, Security Testing, Access Control, Encryption) | Q6-Q10 | 5 | 1F, 2I, 2A |
 | Risk Assessment & Management (FMEA, STRIDE, Quantification) | Q11-Q15 | 5 | 1F, 2I, 2A |
 | Prevention & Control Measures (Defense-in-Depth, Detection) | Q16-Q20 | 5 | 1F, 2I, 2A |
 | Incident Response & Recovery (Emergency Procedures, BCDR) | Q21-Q25 | 5 | 1F, 2I, 2A |
@@ -420,6 +353,7 @@ Overview of coverage and difficulty distribution.
 | **Risk Assessment** | Risk matrix, Probability-Impact | Risk quantification, Control selection | `Risk Score = P × I`, `Residual Risk = Initial Risk - Control Effectiveness` |
 | **Prevention Measures** | Control hierarchy, Monitoring flow | Prevention controls, Detection mechanisms | `Control Effectiveness = Prevented / Total × 100%`, `False Positive Rate` |
 | **Compliance** | Audit trail, Control mapping | Evidence documentation, Training records | `Compliance Rate = Controls Met / Total × 100%`, `Audit Findings` |
+| **Security Testing** | Attack chain, Test coverage map | Pentest/fuzz runs, API test cases | `Coverage = Tests Run / Identified Vectors × 100%`, `Defect Escape Rate` |
 
 ### Template Stubs (use when needed)
 
@@ -555,6 +489,27 @@ Path or means by which attacker gains unauthorized access. Examples: phishing (s
 **G16. MTTD (Mean Time To Detect)**
 Average time to detect incidents from occurrence. Formula: `MTTD = Total Detection Time / Number of Incidents`. Lower MTTD reduces exposure window; pairs with MTTR for comprehensive response assessment. Related: Detection Rate, MTTR, Security Monitoring. [EN]
 
+**G17. SAST (Static Application Security Testing)**
+Analyzes source/byte code without execution to find vulnerabilities early (shift‑left). Complements DAST. [EN]
+
+**G18. DAST (Dynamic Application Security Testing)**
+Tests running applications externally to find exploitable issues (black‑box/gray‑box). [EN]
+
+**G19. SCA (Software Composition Analysis)**
+Identifies vulnerabilities and licenses in dependencies; produces SBOM; monitors CVEs. [EN]
+
+**G20. Fuzz Testing**
+Automated generation of malformed/random inputs to trigger crashes or unexpected states. [EN]
+
+**G21. Penetration Testing**
+Controlled adversarial testing to exploit weaknesses and validate real‑world impact. [EN]
+
+**G22. IaC & Container Scanning**
+Scans Infrastructure‑as‑Code and container images for misconfigurations and known vulnerabilities. [EN]
+
+**G23. API Security Testing**
+Validates API endpoints against OWASP API Top 10; auth, rate‑limit, input handling. [EN]
+
 ---
 
 ### Safety & Security Tools
@@ -573,6 +528,24 @@ Automated network scanners detecting misconfigurations, missing patches, known v
 
 **T5. PagerDuty / ServiceNow** (Incident Management)
 Incident response platforms for alerting, escalation, collaboration, and post-mortem tracking. Integrates with monitoring tools (Prometheus, Datadog). [EN]
+
+**T6. OWASP ZAP** (DAST)
+Open-source web/app DAST scanner for automated and manual testing. https://www.zaproxy.org/ [EN]
+
+**T7. Semgrep** (SAST)
+Lightweight static analysis with rule packs for common vulns; CI integration. https://semgrep.dev/ [EN]
+
+**T8. Snyk / OWASP Dependency-Check** (SCA/SBOM)
+Dependency vulnerability and license scanning; SBOM generation. https://snyk.io/ • https://owasp.org/www-project-dependency-check/ [EN]
+
+**T9. AFL++ / libFuzzer** (Fuzzing)
+Modern fuzzers for native code; coverage‑guided testing. https://github.com/AFLplusplus/AFLplusplus • https://llvm.org/docs/LibFuzzer.html [EN]
+
+**T10. Burp Suite** (Web/API testing)
+Intercepting proxy for manual/automated testing, including APIs. https://portswigger.net/burp [EN]
+
+**T11. Trivy** (Container & IaC scanning)
+Scans container images, SBOMs, and IaC for CVEs/misconfigurations. https://aquasecurity.github.io/trivy/ [EN]
 
 ---
 
@@ -607,6 +580,24 @@ Security architecture and controls for ICS/SCADA, including segmentation, whitel
 
 **L10. ISO 14971:2019. *Medical devices — Application of risk management to medical devices*.**  
 Framework for identifying hazards, estimating and evaluating risks, controlling risks, and monitoring post‑production information.
+
+**L11. NIST SP 800-115. (2008). *Technical Guide to Information Security Testing and Assessment*.**
+Comprehensive methodology for security testing including penetration testing, vulnerability assessment, and security assessment planning.
+
+**L12. OWASP ASVS 4.0. (2019). *Application Security Verification Standard*.**
+Framework for testing application security controls and providing developers with security requirements list.
+
+**L13. Langner, R. (2011). *Stuxnet: Dissecting a cyberweapon*. IEEE Security & Privacy, 9(3), 49-51.**
+Technical analysis of the first known cyberweapon targeting industrial control systems; lessons for ICS security.
+
+**L14. Krebs, B. (2014). *Krebs on Security: In-depth security news and investigation*.**
+Comprehensive coverage of major data breaches including Target, Equifax; attack patterns and defensive lessons.
+
+**L15. CISA. (2021). *Colonial Pipeline cybersecurity incident: Lessons learned*.**
+Official analysis of ransomware attack on critical infrastructure; emergency response and recovery insights.
+
+**L16. Mandiant. (2021). *Highly Evasive Attacker Leverages SolarWinds Supply Chain*.**
+Analysis of supply chain compromise via software updates; nation-state APT tactics and detection strategies.
 
 ---
 
@@ -654,11 +645,23 @@ Framework for identifying hazards, estimating and evaluating risks, controlling 
 
 **A20. International Organization for Standardization. (2019). *ISO 14971: Medical devices — Application of risk management to medical devices*. ISO. [EN]**
 
+**A21. Scarfone, K., Souppaya, M., Cody, A., & Orebaugh, A. (2008). *Technical guide to information security testing and assessment* (NIST SP 800-115). NIST. https://doi.org/10.6028/NIST.SP.800-115 [EN]**
+
+**A22. OWASP Foundation. (2019). *Application Security Verification Standard (ASVS) 4.0*. OWASP. https://owasp.org/www-project-application-security-verification-standard/ [EN]**
+
+**A23. Langner, R. (2011). Stuxnet: Dissecting a cyberweapon. *IEEE Security & Privacy*, 9(3), 49-51. https://doi.org/10.1109/MSP.2011.67 [EN]**
+
+**A24. Krebs, B. (2014). *Krebs on Security: In-depth security news and investigation*. https://krebsonsecurity.com/ [EN]**
+
+**A25. Cybersecurity and Infrastructure Security Agency. (2021). *Colonial Pipeline cybersecurity incident analysis*. CISA. https://www.cisa.gov/colonial-pipeline-cyber-incident [EN]**
+
+**A26. Mandiant. (2021). *Highly evasive attacker leverages SolarWinds supply chain to compromise multiple global victims with SUNBURST backdoor*. Mandiant. https://www.mandiant.com/resources/blog/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor [EN]**
+
 ---
 
 ## Validation Report
 
-Execute 16-step validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
+Execute full validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
 
 ---
 
