@@ -6,128 +6,140 @@ Framework for generating high-quality product management short answer assessment
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints for PM scenarios.
+## Scope and Constraints
 
-## Specifications
+- **Problem count**: 25–40 for senior/director/VP level Product Managers
+- **Difficulty split**: 20% Foundational / 40% Intermediate / 40% Advanced
+- **Problem types**: Product strategy, prioritization, metrics, stakeholder communication, trade-off analysis
+- **Problem format**: Self-contained prompt (2–3 sentences); concise answer (2–4 steps with frameworks, metrics, principles); worked solution with [Ref: ID] citations
+- **Grading approach**: Partial credit for correct method, setup, and product judgment; document alternative valid approaches
 
-### Scope and Structure
+## Reference Floors
 
-- **Scope**: 25–40 problems for senior/director/VP level Product Managers
-- **Structure**: Self-contained; state units/conventions explicitly
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Types**: Product strategy, prioritization, metrics, stakeholder communication, trade-off analysis, justification (2–3 sentences)
-- **Answers**: Concise, actionable responses (2–4 steps); support frameworks, metrics, and product principles
-- **Grading**: Partial credit for correct method, setup, and product judgment
-- **Conflict Handling**: Document alternative valid approaches; clarify when multiple PM strategies are acceptable
+| Section | Minimum | Content |
+|---------|---------|----------|
+| Glossary | 10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST, etc. |
+| Tools | 5 | Analytics, roadmapping, research platforms, collaboration |
+| Literature | 6 | PM frameworks, market analyses, launches, case studies |
+| APA Citations | 12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with language tags) |
 
-### Citation Standards
-
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Product frameworks (RICE, AARRR, JTBD, OKR); (2) Research & data (market analyses, user research, case studies); (3) PM literature (books, articles, launches); (4) Tools & platforms (analytics, roadmapping, research tools)
-- **Format**: APA 7th with language tags
-- **Distribution**: Product Tools/Platforms; PM Literature/Case Studies
-- **Inline Citation**: Use [Ref: ID] in worked solutions when referencing frameworks, market data, user insights, metrics, best practices. Problem statements may include citations for specifications or benchmarks.
-
-### Reference Minimum Requirements
-
-| Section | Floor | Content |
-|---------|-------|---------|
-| Glossary | ≥10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST, etc. |
-| Tools | ≥5 | Analytics, roadmapping, research platforms, collaboration |
-| Literature | ≥6 | PM frameworks, market analyses, launches, case studies |
-| Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
-
+**Scaling**: For >40 problems, increase floors by ~1.5×. Prioritize quality gates before raising floors.  
 **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
 
-### Quality Gates
+## Citation Standards
+
+- **Language mix**: ~60% [EN], ~30% [ZH], ~10% other; tag each citation
+- **Source types**: (1) Product frameworks; (2) Research & data; (3) PM literature; (4) Tools & platforms
+- **Format**: APA 7th edition with language tags
+- **Inline usage**: Use [Ref: ID] in worked solutions when citing frameworks, data, insights, metrics, best practices
+
+## Quality Gates
 
 - **Recency**: ≥50% citations from last 3 years (≥70% for AI/platform domains)
 - **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% problems have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, user base, last update ≤18 months, key integrations
-- **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
+- **Evidence**: ≥70% problems cite ≥1 reference; ≥30% cite ≥2 references
+- **Tool metadata**: Pricing, user base, last update ≤18 months, key integrations
+- **Links**: All accessible or archived (DOIs preferred)
+- **Cross-references**: All [Ref: ID] resolve to G#/T#/L#/A# entries
 
-> Scaling: For >40 problems, increase floors by ~1.5×. Prioritize gates before raising floors.
+## Success Criteria
 
-### Pre-Submission Validation
-
-Execute ALL steps below. Present results in validation report table. Fix failures and re-run until all PASS.
-
-**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Problems 25–40 (20/40/40)
-**Step 2 – Citations**: ≥70% problems have ≥1; ≥30% have ≥2
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-**Step 4 – Recency**: ≥50% from last 3 years (≥70% for AI/platform)
-**Step 5 – Diversity**: ≥3 source types; no single >25%
-**Step 6 – Links**: All accessible or archived
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-
-**Validation Report Template:**
-```
-| Check | Result | Status |
-|-------|--------|--------|
-| Floors | G:X T:Y L:Z A:W P:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
-| Links | Y/X accessible | PASS/FAIL |
-| Cross-refs | Y/X resolved | PASS/FAIL |
-```
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
-
-### Submission Checklist
-- [ ] All validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
+- All reference floors met or exception documented
+- Problem count and difficulty split within spec
+- Citation language mix within tolerance (EN 50–70%, ZH 20–40%, Other 5–15%)
+- All quality gates passed
+- Validation report complete with all PASS results
+- Output format matches Part III template exactly
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+## Workflow
 
-## Instructions
+Follow these steps sequentially. Execute inline checks before proceeding.
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+### Step 1: Plan Problem Distribution
 
-### Step 1: Topic Identification & Planning
-1. Identify 4–6 PM clusters: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | Go-to-Market
-2. Allocate 4–8 problems per cluster (total 25–40)
-3. Assign difficulty levels ensuring 20/40/40 balance
-4. **Check**: Total = 25–40, ratio ≈20/40/40
+1. Identify 4–6 PM domains: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | Go-to-Market
+2. Allocate 4–8 problems per domain (total 25–40)
+3. Assign difficulty ensuring 20/40/40 split (Foundational/Intermediate/Advanced)
+4. **Self-check**: Total within 25–40; ratio ≈ 20/40/40
 
-### Step 2: Reference Collection
-1. **Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
-2. **Tools (≥5)**: Mixpanel/Amplitude (analytics), ProductBoard/Aha! (roadmapping), Dovetail/UserTesting (research), Miro (collaboration)
-3. **Literature (≥6)**: Cagan, Olsen, Torres, Perri, Patton, Klement + ZH sources (俞军, 梁宁, 苏杰)
-4. **Citations (≥12)**: Tag language, year, type (1–4); assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
+### Step 2: Collect References
 
-### Step 3: Problem Generation
-1. For EACH problem: Write prompt (2–3 sentences, product context, frameworks, metrics)
-2. Provide concise, actionable answer (2–4 steps, frameworks, metrics, product principles)
-3. Worked solution with [Ref: ID] citations for frameworks, data, best practices
-4. **Check**: Every 5 problems verify lengths, citations, solution quality
+1. **Glossary**: Select ≥10 terms (RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST, etc.)
+2. **Tools**: Select ≥5 platforms (analytics, roadmapping, research, collaboration)
+3. **Literature**: Select ≥6 sources (Cagan, Olsen, Torres, Perri, Patton, Klement; ZH: 俞军, 梁宁, 苏杰)
+4. **Citations**: Create ≥12 APA entries; tag language; assign IDs (G#/T#/L#/A#)
+5. **Self-check**: Counts meet floors; language mix ~60/30/10%; recency ≥50% last 3yr; ≥3 source types
 
-### Step 4: Reference Sections
-1. Populate Glossary/Tools/Literature/APA with required fields
-2. **Check**: All [Ref: ID] resolve
+### Step 3: Generate Problems
 
-### Step 5: Validation
-Execute all steps. Fix failures; re-validate until all PASS.
+1. For each problem:
+   - Write prompt: 2–3 sentences with product context, frameworks, metrics
+   - Write answer: 2–4 concise, actionable steps with frameworks, metrics, principles
+   - Write worked solution: step-by-step reasoning with [Ref: ID] citations
+2. **Self-check**: Every 5 problems, verify prompt length, answer clarity, citation presence, solution depth
 
-### Step 6: Final Review
-Check submission checklist. Submit when all PASS.
+### Step 4: Populate Reference Sections
+
+1. Complete Glossary, Tools, Literature, APA sections per Part III format
+2. Include all required metadata (tool pricing, user base, update date, integrations, etc.)
+3. **Self-check**: All [Ref: ID] used in problems resolve to entries; no orphan IDs
+
+### Step 5: Validate and Submit
+
+Execute all validation checks. Present results in validation report. Fix failures and re-run until all PASS.
+
+**Validation Checks:**
+
+1. **Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Problems 25–40 with 20/40/40 split
+2. **Citation coverage**: ≥70% problems cite ≥1 reference; ≥30% cite ≥2 references
+3. **Language mix**: EN 50–70%, ZH 20–40%, Other 5–15%
+4. **Recency**: ≥50% citations from last 3 years (≥70% for AI/platform)
+5. **Source diversity**: ≥3 types; no single type >25%
+6. **Links**: All accessible or archived
+7. **Cross-references**: All [Ref: ID] resolve correctly
+
+**Validation Report Format** (see Part III for template)
+
+> **MANDATORY**: If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
+
+**Submission Checklist:**
+
+- [ ] All validation checks PASS
+- [ ] All reference floors met (or exception documented)
+- [ ] All quality gates satisfied
+- [ ] Output format matches Part III template
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated short answer banks.
+## Template Structure
 
-## Output Format
+Use this structure for all generated short answer banks.
 
-Use this structure when generating short answer banks:
+### Validation Report Template
+
+Present validation results using this table:
+
+```
+| Check | Result | Status |
+|-------|--------|--------|
+| Counts | G:X T:Y L:Z A:W P:N (F/I/A) | PASS/FAIL |
+| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Language mix | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Recency | X% last 3yr | PASS/FAIL |
+| Source diversity | N types, max P% | PASS/FAIL |
+| Links | Y/X accessible | PASS/FAIL |
+| Cross-refs | Y/X resolved | PASS/FAIL |
+```
+
+### Problem Bank Structure
+
+Use this markdown structure:
 
 ```markdown
 ## Contents
