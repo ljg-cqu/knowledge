@@ -8,7 +8,7 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 
 ## Specifications
 
-**Scope**: 25–30 pattern-based Q&As (20/40/40 F/I/A), 150–300 words each
+**Scope**: 30 pattern-based Q&As (20/40/40 F/I/A), 150–300 words each
 
 **Pattern Coverage**: Regulatory, Business, Market, Technical, Data, Organizational, NFR (10 sub-dimensions), Process, Hybrid patterns
 
@@ -136,7 +136,7 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 | Glossary | ≥25 | Regulatory: GDPR, CCPA, Consent, Audit Trail; Business: Freemium, Platform, Network Effects; Market: Blue Ocean, Disruptive Innovation; Technical: Repository, Strangler Fig; Data: Polyglot Persistence, Event Sourcing, Data Lake, CQRS; Organizational: Conway's Law, Team Topologies, Two-Pizza Team, DevOps/SRE; NFR: Circuit Breaker, Caching, Retry, Idempotency, Sharding, Zero-Trust, Feature Flags, DI, SOLID, Test Doubles |
 | Tools | ≥10 | Compliance (OneTrust), business (Strategyzer, Blue Ocean tools), patterns (GoF, POSA), data (dbt, Databricks, Snowflake), org design (Team Topologies book), process (BPMN.io, Miro), monitoring (Prometheus, Grafana), security (Vault, OWASP ZAP), testing (Pact) |
 | Literature | ≥12 | Regulatory (GDPR, NIST), business (Osterwalder, Porter), market (Blue Ocean Strategy, Innovator's Dilemma), patterns (GoF, Fowler, POSA), data (Kleppmann Data-Intensive, Kimball), org/team (Skelton Team Topologies, Forsgren Accelerate), NFR (Nygard Release It!, Google SRE) |
-| Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
+| Citations | ≥12 (distinct from Literature) | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
 
 **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
 
@@ -148,23 +148,20 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 
 ### Quality Gates
 
-- **Recency**: ≥50% last 3yr (≥70% digital/cloud)
-- **Diversity**: ≥3 types, no single >25%
-- **Evidence**: ≥70% ≥1 citation, ≥30% ≥2
-- **Tool Details**: Pricing, adoption, update <18mo
-- **Links**: Accessible/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve
+- **Categories**: Recency; Diversity; Evidence; Tool details; Links; Cross-refs
+- **Thresholds**: Numeric thresholds are defined in Validation Steps. Ensure all checks PASS there.
 
 ### Pre-Submission Validation (21 Steps)
 
 **Reference Counts** (Steps 1-7):
-- Glossary ≥25, Tools ≥10, Literature ≥12, APA ≥12, Q&As 25-30 (20/40/40)
+- Glossary ≥25, Tools ≥10, Literature ≥12, APA ≥12, Q&As 30 (20/40/40)
 - Citations: ≥70% answers ≥1, ≥30% ≥2
 - Language: EN 50-70%, ZH 20-40%, Other 5-15%
 - Recency: ≥50% last 3yr (≥70% for digital/cloud)
 - Diversity: ≥3 source types, no single >25%
 - Links: All accessible/archived
 - Cross-refs: All [Ref: ID] resolve
+ - Tool details: Pricing stated, adoption evidence, last update <18mo
 
 **Content Quality** (Steps 8-12):
 - Word count: 5 samples, all 150-300
@@ -190,6 +187,7 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 | Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
+| Tool details | Pricing/adoption/recency present | PASS/FAIL |
 | Word count | 5/5 in range | PASS/FAIL |
 | Key insights | Y/X concrete | PASS/FAIL |
 | Per-topic refs | X/Y meet min | PASS/FAIL |
@@ -215,9 +213,9 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 
 ## Pattern-Based Generation Steps
 
-**Step 1: Pattern Selection** - Select 8-12 clusters from 11 domains, allocate 2-4 Q&As each (25-30 total, 20/40/40 F/I/A). Check coverage.
+**Step 1: Pattern Selection** - Select 8-12 clusters from 11 domains, allocate 2-4 Q&As each (30 total, 20/40/40 F/I/A). Check coverage.
 
-**Step 2: Pattern References** - Collect ≥25 glossary, ≥10 tools, ≥12 literature (L1-L15 provided), ≥12 APA citations. Check floors, 60/30/10 language, ≥50% recency.
+**Step 2: Pattern References** - Collect ≥25 glossary, ≥10 tools, ≥12 literature (L1-L15 provided), ≥12 APA citations (distinct from Literature). Check floors, 60/30/10 language, ≥50% recency.
 
 **Step 3: Pattern Q&As** - Write scenario-based questions. Per answer: ALL 7 quality criteria (Part I) + ≥1 [Ref: ID] + example. Check every 5 Q&As.
 
@@ -270,22 +268,22 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 
 | Pattern Domain | Range | Count | F/I/A | Examples |
 |----------------|-------|-------|-------|----------|
-| Regulatory | Q1-Q3 | 3 | 1/1/1 | GDPR, Consent, Audit |
-| Business & Market | Q4-Q6 | 3 | 1/1/1 | Subscription, Blue Ocean, Land & Expand |
-| Technical | Q7-Q8 | 2 | 1/1/0 | Repository, Strangler Fig |
+| Regulatory | Q1-Q3 | 3 | 0/1/2 | GDPR, Consent, Audit |
+| Business & Market | Q4-Q6 | 3 | 1/2/0 | Subscription, Blue Ocean, Land & Expand |
+| Technical | Q7-Q8 | 2 | 0/1/1 | Repository, Strangler Fig |
 | Data | Q9-Q11 | 3 | 1/1/1 | Polyglot, Event Sourcing, CQRS |
 | Organizational | Q12-Q14 | 3 | 1/1/1 | Conway, Team Topologies, DevOps |
-| NFR - Security, Reliability & Observability | Q15-Q17 | 3 | 1/1/1 | Zero-Trust, Retry, Tracing |
-| NFR - Performance, Scalability & Availability | Q18-Q20 | 3 | 1/1/1 | Caching, Sharding, Circuit Breaker |
+| NFR - Security, Reliability & Observability | Q15-Q17 | 3 | 0/1/2 | Zero-Trust, Retry, Tracing |
+| NFR - Performance, Scalability & Availability | Q18-Q20 | 3 | 0/1/2 | Caching, Sharding, Circuit Breaker |
 | NFR - Adaptability, Flexibility & Extensibility | Q21-Q23 | 3 | 1/1/1 | Feature Flags, DI, Middleware |
-| NFR - Maintainability & Testability | Q24-Q26 | 3 | 1/1/1 | SOLID, Clean Arch, Test Doubles |
+| NFR - Maintainability & Testability | Q24-Q26 | 3 | 1/1/1 | SOLID, Clean Architecture, Test Doubles |
 | Process | Q27-Q28 | 2 | 1/1/0 | Retrospectives, Incident Response |
 | Hybrid | Q29-Q30 | 2 | 0/1/1 | Multi-domain patterns |
-| **Total** | | **30** | **9/13/8** | |
+| **Total** | | **30** | **6/12/12** | |
 
 ---
 
-## Topic 1: [Topic Title]
+## Topic 1
 
 ### Q1: [Question Text]
 
@@ -338,7 +336,7 @@ Generate Q&As demonstrating proven, reusable patterns with empirical evidence, m
 
 ## Reference Sections
 
-### Glossary, Terminology & Acronyms
+### Glossary
 
 **G1. GDPR (General Data Protection Regulation)**
 EU regulation establishing data protection and privacy framework. Key patterns: consent management, right to erasure, data portability, breach notification (72h). Applicability: EU residents' data [EN]
@@ -432,7 +430,7 @@ Teams own full lifecycle from development to production operations. Benefits: fa
 
 ---
 
-### Pattern Analysis & Implementation Tools
+### Tools
 
 **T1. OneTrust** (Compliance Management)
 GDPR/CCPA consent management, cookie compliance, privacy automation. Features: consent SDK, preference center, audit trails. Pricing: Enterprise. Adoption: 12,000+ orgs. https://onetrust.com [EN]
@@ -472,7 +470,7 @@ Practical guide to team organization patterns. Four team types, three interactio
 
 ---
 
-### Authoritative Literature & Case Studies
+### Literature
 
 **L1. Official GDPR Regulation (EU 2016/679)**  
 Comprehensive data protection regulation. Key articles: Art. 6 (lawful basis), Art. 7 (consent), Art. 17 (erasure), Art. 33 (breach notification). Foundation for regulatory patterns. https://gdpr-info.eu [EN]
@@ -521,54 +519,31 @@ Empirical research on high-performing organizations. Organizational patterns: De
 
 ---
 
-### APA Style Source Citations
+### Citations
 
-**A1. European Parliament & Council. (2016). Regulation (EU) 2016/679 (General Data Protection Regulation). *Official Journal of the European Union*, L119. https://gdpr-info.eu [EN]**
+**A1. Object Management Group (OMG). (2013). Business Process Model and Notation (BPMN) Version 2.0.2. https://www.omg.org/spec/BPMN/2.0.2 [EN]**
 
-**A2. California State Legislature. (2018). California Consumer Privacy Act (CCPA), AB-375. *California Legislative Information*. https://leginfo.legislature.ca.gov [EN]**
+**A2. California State Legislature. (2018). California Consumer Privacy Act (CCPA), AB-375. https://leginfo.legislature.ca.gov [EN]**
 
-**A3. Osterwalder, A., & Pigneur, Y. (2010). *Business model generation: A handbook for visionaries, game changers, and challengers*. Wiley. [EN]**
+**A3. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28-31. [EN]**
 
-**A4. Porter, M. E. (1985). *Competitive advantage: Creating and sustaining superior performance*. Free Press. [EN]**
+**A4. Scrum.org. (2020). The Scrum Guide. https://scrumguides.org [EN]**
 
-**A5. Christensen, C. M. (1997). *The innovator's dilemma: When new technologies cause great firms to fail*. Harvard Business Review Press. [EN]**
+**A5. National Institute of Standards and Technology (NIST). (2018). Framework for Improving Critical Infrastructure Cybersecurity (Version 1.1). https://www.nist.gov/cyberframework [EN]**
 
-**A6. Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design patterns: Elements of reusable object-oriented software*. Addison-Wesley Professional. [EN]**
+**A6. ISO/IEC. (2022). ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements. https://www.iso.org/standard/82875.html [EN]**
 
-**A7. Fowler, M. (2002). *Patterns of enterprise application architecture*. Addison-Wesley Professional. [EN]**
+**A7. OWASP Foundation. (2021). OWASP Application Security Verification Standard 4.0.3. https://owasp.org/www-project-application-security-verification-standard/ [EN]**
 
-**A8. Buschmann, F., Meunier, R., Rohnert, H., Sommerlad, P., & Stal, M. (1996). *Pattern-oriented software architecture, volume 1: A system of patterns*. Wiley. [EN]**
+**A8. The Open Group. (2021). ArchiMate 3.2 Specification. https://pubs.opengroup.org/architecture/archimate3-doc/ [EN]**
 
-**A9. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28-31. [EN]**
+**A9. Mermaid. (2023). Mermaid Official Documentation. https://mermaid.js.org [EN]**
 
-**A10. Beck, K., Beedle, M., van Bennekum, A., et al. (2001). *Manifesto for agile software development*. Agile Alliance. https://agilemanifesto.org [EN]**
+**A10. Pact Foundation. (2023). Pact Specification v3. https://docs.pact.io/ [EN]**
 
-**A11. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
+**A11. 周爱民. (2021). 架构的本质. 电子工业出版社. [ZH]**
 
-**A12. Sutherland, J., & Schwaber, K. (2020). *The Scrum guide*. Scrum.org. https://scrumguides.org [EN]**
-
-**A13. 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]**
-(Zhou, A. (2021). *The essence of architecture*. Publishing House of Electronics Industry.)
-
-**A14. 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]**
-(Zhang, Y. (2019). *Domain-driven design in practice*. Publishing House of Electronics Industry.)
-
-**A15. Alexander, C., Ishikawa, S., & Silverstein, M. (1977). *A pattern language: Towns, buildings, construction*. Oxford University Press. [EN]**
-(Original pattern language framework; inspired software patterns)
-
-**A16. NIST. (2018). *Framework for improving critical infrastructure cybersecurity* (Version 1.1). National Institute of Standards and Technology. https://www.nist.gov/cyberframework [EN]**
-
-**A17. Nygard, M. T. (2018). *Release it!: Design and deploy production-ready software* (2nd ed.). Pragmatic Bookshelf. [EN]**
-
-**A18. Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). *Site reliability engineering: How Google runs production systems*. O'Reilly Media. [EN]**
-
-**A19. Kleppmann, M. (2017). *Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems*. O'Reilly Media. [EN]**
-
-**A20. Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). Wiley. [EN]**
-
-**A21. Kim, W. C., & Mauborgne, R. (2015). *Blue ocean strategy, expanded edition: How to create uncontested market space and make the competition irrelevant*. Harvard Business Review Press. [EN]**
-
-**A22. Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The science of lean software and DevOps: Building and scaling high performing technology organizations*. IT Revolution Press. [EN]**
+**A12. 张逸. (2019). 领域驱动设计实践. 电子工业出版社. [ZH]**
 
 ---
 
