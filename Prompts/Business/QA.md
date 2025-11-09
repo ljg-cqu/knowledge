@@ -15,6 +15,7 @@ Framework for generating high-quality interview question banks focused on compre
 **Difficulty Distribution**: 20/40/40 balance (Foundational/Intermediate/Advanced).
 
 **Content Principles**:
+
 - **MECE Coverage**: Four dimensions (Strategic Modeling, Documentation, Visualization, Analysis) × Four perspectives (Strategic, Operational, Organizational, Architectural)
 - **Analysis Required**: Value mapping (propositions → technical features), risk assessment (business/operational/regulatory), constraint analysis, evolution planning, business-technical mapping
 - **Multi-Perspective**: Strategic (business model, market position), Operational (processes, capabilities), Organizational (structure, culture), Architectural (system design, technical debt)
@@ -33,10 +34,12 @@ Assess answers across four lenses:
 ## Terminology and ID Conventions
 
 **Standard Terms**:
+
 - **business-technical mapping**: Tracing business drivers to architectural decisions
 - **topic**: Thematic grouping of 4–6 related Q&A pairs
 
 **Reference ID Format**:
+
 - **G#**: Glossary term (G1, G2, ...)
 - **T#**: Tool (T1, T2, ...)
 - **L#**: Literature (L1, L2, ...)
@@ -45,16 +48,17 @@ Assess answers across four lenses:
 
 ## Reference Requirements
 
-| Category | Min Count | Required Fields | ID Prefix | Citation Rules |
-|----------|-----------|-----------------|-----------|----------------|
-| **Glossary** | ≥10 | Term, definition, usage, related concepts, language tag | G# | Include BMC, Value Proposition, Customer Segment, DDD, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, Revenue Stream, System Boundaries |
-| **Tools** | ≥5 | Name, purpose, pricing, adoption metrics, last update (≤18 months), key integrations, URL | T# | Include business modeling (Miro), architecture visualization (ArchiMate, C4), documentation (Confluence), diagramming (LucidChart), strategic planning (Wardley Maps) |
-| **Literature** | ≥6 | Author(s), year, title, publisher, language tag | L# | Include Osterwalder (Business Model), Evans/Vernon (DDD), Conway (organizational design), Hohpe (integration), Richardson (microservices) + ZH sources |
-| **Citations** | ≥12 | APA 7th format with language tags | A# | ~60% EN / ~30% ZH / ~10% other; ≥50% from last 3 years (≥70% for digital transformation/cloud-native) |
+| Category       | Min Count | Required Fields                                                                           | ID Prefix | Citation Rules                                                                                                                                                                                                                |
+| -------------- | --------- | ----------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Glossary**   | ≥10       | Term, definition, usage, related concepts, language tag                                   | G#        | Include BMC, Value Proposition, Customer Segment, DDD, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, Revenue Stream, System Boundaries |
+| **Tools**      | ≥5        | Name, purpose, pricing, adoption metrics, last update (≤18 months), key integrations, URL | T#        | Include business modeling (Miro), architecture visualization (ArchiMate, C4), documentation (Confluence), diagramming (LucidChart), strategic planning (Wardley Maps)                                                         |
+| **Literature** | ≥6        | Author(s), year, title, publisher, language tag                                           | L#        | Include Osterwalder (Business Model), Evans/Vernon (DDD), Conway (organizational design), Hohpe (integration), Richardson (microservices) + ZH sources                                                                        |
+| **Citations**  | ≥12       | APA 7th format with language tags                                                         | A#        | ~60% EN / ~30% ZH / ~10% other; ≥50% from last 3 years (≥70% for digital transformation/cloud-native)                                                                                                                         |
 
 **Per Topic**: ≥2 authoritative sources + ≥1 tool reference.
 
 **Quality Gates**:
+
 - **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
 - **Diversity**: ≥3 source types; no single source >25%
 - **Evidence**: ≥70% answers have ≥1 citation; ≥30% have ≥2 citations
@@ -68,6 +72,7 @@ Assess answers across four lenses:
 **Per Topic**: ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element.
 
 **Rendering Standards**:
+
 - **Diagrams**: Prefer Mermaid (GitHub-native); include captions and legends
 - **Math**: Inline `$formula$` or block `$$formula$$`; define variables on first use
 - **Common Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
@@ -75,30 +80,31 @@ Assess answers across four lenses:
 
 **Diagram Selection by Analysis Type**:
 
-| Analysis Type | Primary Diagram | Standard | Supporting Elements |
-|---------------|-----------------|----------|---------------------|
-| **Strategic Modeling** | Business Model Canvas, Value Stream Map | BPMN, ArchiMate | ROI: `(Revenue - Investment) / Investment × 100%` |
-| **Value & Risk Analysis** | Risk matrix, Decision tree | DMN | Risk: `Probability × Impact × Exposure` |
-| **Documentation** | C4 Context/Container, Component diagram | UML, C4 | Availability: `Uptime / Total Time × 100%` |
-| **Organizational** | Team topology, Conway's Law map | Custom | Communication overhead metrics |
-| **Business-Technical Mapping** | Value→Architecture mapping | UML, DDD | Debt: `Remediation Cost / Dev Cost × 100%` |
-| **Evolution** | Migration roadmap, Timeline | Gantt | NPV: `Σ(Cash Flow / (1 + r)^n) - Investment` |
+| Analysis Type                  | Primary Diagram                         | Standard        | Supporting Elements                               |
+| ------------------------------ | --------------------------------------- | --------------- | ------------------------------------------------- |
+| **Strategic Modeling**         | Business Model Canvas, Value Stream Map | BPMN, ArchiMate | ROI: `(Revenue - Investment) / Investment × 100%` |
+| **Value & Risk Analysis**      | Risk matrix, Decision tree              | DMN             | Risk: `Probability × Impact × Exposure`           |
+| **Documentation**              | C4 Context/Container, Component diagram | UML, C4         | Availability: `Uptime / Total Time × 100%`        |
+| **Organizational**             | Team topology, Conway's Law map         | Custom          | Communication overhead metrics                    |
+| **Business-Technical Mapping** | Value→Architecture mapping              | UML, DDD        | Debt: `Remediation Cost / Dev Cost × 100%`        |
+| **Evolution**                  | Migration roadmap, Timeline             | Gantt           | NPV: `Σ(Cash Flow / (1 + r)^n) - Investment`      |
 
 **Quick Reference by Need**:
 
-| Need | Diagram | Standard |
-|------|---------|----------|
-| API design | Class + Sequence | UML |
-| Workflow logic | Activity / Process | UML / BPMN |
-| Decision logic | Decision Table + Requirements | DMN / SysML |
-| Business process | Process / Collaboration (Pools & Lanes) | BPMN |
-| Database design | ERD + Data Flow | ERD / DFD |
-| System architecture | Component + Deployment | UML |
-| Enterprise strategy | Strategy + Migration viewpoints | ArchiMate |
+| Need                | Diagram                                 | Standard    |
+| ------------------- | --------------------------------------- | ----------- |
+| API design          | Class + Sequence                        | UML         |
+| Workflow logic      | Activity / Process                      | UML / BPMN  |
+| Decision logic      | Decision Table + Requirements           | DMN / SysML |
+| Business process    | Process / Collaboration (Pools & Lanes) | BPMN        |
+| Database design     | ERD + Data Flow                         | ERD / DFD   |
+| System architecture | Component + Deployment                  | UML         |
+| Enterprise strategy | Strategy + Migration viewpoints         | ArchiMate   |
 
 **Anti-patterns**: Single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale.
 
 **Business Frameworks** (apply relevant combination):
+
 - **Business Model Canvas**: 9-block analysis → architectural implications
 - **Value Proposition**: Customer segments → technical requirements
 - **SWOT/Porter's Five Forces**: Strategic positioning → architecture priorities
@@ -156,6 +162,7 @@ Apply critique criteria (Part III). Check submission checklist. Submit when all 
 ## Question Design & Critique
 
 **Implementation Approach** - Guide candidates through the transition framework:
+
 1. **Value Mapping**: Identify value propositions → map to technical requirements → prioritize by business impact
 2. **Risk Assessment**: Document business risks → evaluate operational constraints → consider regulatory requirements
 3. **Organizational Factors**: Align with team structure → reflect communication patterns → account for future changes
@@ -166,24 +173,21 @@ Apply critique criteria (Part III). Check submission checklist. Submit when all 
 - **Clarity**: Single unambiguous ask
   - ✅ "How would you translate a shift from one-time licensing to subscription revenue into architectural requirements?"
   - ❌ "Explain business models and microservices architecture"
-  
 - **Signal**: Tests business-technical mapping, not trivia
   - ✅ "Your CEO wants to enter a regulated market. How does this change your architecture strategy?"
   - ❌ "List the nine components of Business Model Canvas"
-  
 - **Depth**: Enables discussion of business constraints, value trade-offs, organizational impacts
   - ✅ "Choose: monolith refactor, strangler pattern, or greenfield rewrite for a company pivoting from B2B to B2C. How do you decide?"
   - ❌ "Should you use microservices? Yes/no"
-  
 - **Realism**: Scenarios matching senior/architect/expert roles bridging business and technology
   - ✅ "Sales promises real-time analytics to close a $10M deal. Engineering says it requires 6-month platform rebuild. How do you navigate this?"
   - ❌ "Design a payment system from scratch"
-  
 - **Discriminative**: Tests judgment over recall
   - ✅ "When does Conway's Law suggest organizational restructuring before technical refactoring?"
   - ❌ "What is Conway's Law?"
 
 **Success Factors** - Answers should demonstrate:
+
 - Maintaining current understanding (regular business review, prompt documentation updates, adaptive decisions)
 - Clear communication (documented decisions, knowledge sharing, living documentation)
 - Value alignment (trace decisions to business value, measure impact on value propositions, adjust based on feedback)
@@ -211,15 +215,15 @@ Apply critique criteria (Part III). Check submission checklist. Submit when all 
 
 ## Topic Areas: Questions 1-N
 
-| Topic | Question Range | Count | Difficulty Mix |
-|-------|---------------|-------|----------------|
-| Strategic Modeling (Business Model, Domain) | Q1-Q5 | 5 | 1F, 2I, 2A |
-| Value & Risk Analysis | Q6-Q10 | 5 | 1F, 2I, 2A |
-| Documentation & Visualization | Q11-Q15 | 5 | 1F, 2I, 2A |
-| Organizational Dynamics | Q16-Q20 | 5 | 1F, 2I, 2A |
-| Business-Technical Mapping | Q21-Q25 | 5 | 1F, 2I, 2A |
-| Evolution & Adaptation | Q26-Q30 | 5 | 1F, 2I, 2A |
-| **Total** | | **30** | **6F, 12I, 12A** |
+| Topic                                       | Question Range | Count  | Difficulty Mix   |
+| ------------------------------------------- | -------------- | ------ | ---------------- |
+| Strategic Modeling (Business Model, Domain) | Q1-Q5          | 5      | 1F, 2I, 2A       |
+| Value & Risk Analysis                       | Q6-Q10         | 5      | 1F, 2I, 2A       |
+| Documentation & Visualization               | Q11-Q15        | 5      | 1F, 2I, 2A       |
+| Organizational Dynamics                     | Q16-Q20        | 5      | 1F, 2I, 2A       |
+| Business-Technical Mapping                  | Q21-Q25        | 5      | 1F, 2I, 2A       |
+| Evolution & Adaptation                      | Q26-Q30        | 5      | 1F, 2I, 2A       |
+| **Total**                                   |                | **30** | **6F, 12I, 12A** |
 
 **Legend**: F = Foundational, I = Intermediate, A = Advanced
 
@@ -240,13 +244,13 @@ Apply critique criteria (Part III). Check submission checklist. Submit when all 
 
 **Supporting Artifacts** (Select 3+ matching analysis type):
 
-| Artifact Type | Examples | Key Formulas |
-|---------------|----------|--------------|
-| **Strategic** | BMC, Value proposition map, Competitive matrix, Roadmap | `ROI = (Revenue - Investment) / Investment × 100%` |
-| **Risk & Financial** | Risk matrix, Decision tree, Cost-benefit table, TCO | `Risk = Probability × Impact × Exposure`<br>`NPV = Σ(Cash Flow / (1 + r)^n) - Investment` |
-| **Technical** | C4 diagrams, System boundary, Data flow, Component graph | `Availability = (Total Time - Downtime) / Total Time × 100%` |
-| **Organizational** | Team topology, Communication map, Stakeholder diagram | Conway's Law analysis, efficiency metrics |
-| **Evolution** | Migration roadmap, Timeline, Debt assessment, Impact table | `Debt Ratio = Remediation Cost / Dev Cost × 100%` |
+| Artifact Type        | Examples                                                   | Key Formulas                                                                              |
+| -------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Strategic**        | BMC, Value proposition map, Competitive matrix, Roadmap    | `ROI = (Revenue - Investment) / Investment × 100%`                                        |
+| **Risk & Financial** | Risk matrix, Decision tree, Cost-benefit table, TCO        | `Risk = Probability × Impact × Exposure`<br>`NPV = Σ(Cash Flow / (1 + r)^n) - Investment` |
+| **Technical**        | C4 diagrams, System boundary, Data flow, Component graph   | `Availability = (Total Time - Downtime) / Total Time × 100%`                              |
+| **Organizational**   | Team topology, Communication map, Stakeholder diagram      | Conway's Law analysis, efficiency metrics                                                 |
+| **Evolution**        | Migration roadmap, Timeline, Debt assessment, Impact table | `Debt Ratio = Remediation Cost / Dev Cost × 100%`                                         |
 
 ---
 
@@ -319,62 +323,62 @@ Cloud-based diagramming for flowcharts, process maps, org charts, architecture d
 
 ### Authoritative Literature & Case Studies
 
-**L1. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.**  
+**L1. Osterwalder, A., & Pigneur, Y. (2010). _Business Model Generation_. Wiley.**  
 Business Model Canvas framework; 9 building blocks for designing, analyzing, innovating business models. Foundational for business-technical alignment.
 
-**L2. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.**  
+**L2. Evans, E. (2003). _Domain-Driven Design: Tackling Complexity in the Heart of Software_. Addison-Wesley.**  
 DDD patterns and practices; ubiquitous language, bounded contexts, strategic design. Core reference for domain modeling.
 
-**L3. Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.**  
+**L3. Vernon, V. (2013). _Implementing Domain-Driven Design_. Addison-Wesley.**  
 Practical DDD implementation; context mapping, aggregates, event sourcing. Tactical patterns for complex domains.
 
-**L4. Conway, M. E. (1968). "How Do Committees Invent?" *Datamation*, 14(4), 28-31.**  
+**L4. Conway, M. E. (1968). "How Do Committees Invent?" _Datamation_, 14(4), 28-31.**  
 Original Conway's Law paper; organizational structure impacts system design. Foundational for team topology.
 
-**L5. Hohpe, G., & Woolf, B. (2003). *Enterprise Integration Patterns*. Addison-Wesley.**  
+**L5. Hohpe, G., & Woolf, B. (2003). _Enterprise Integration Patterns_. Addison-Wesley.**  
 Integration patterns for distributed systems; messaging, routing, transformation. Reference for system integration.
 
-**L6. Richardson, C. (2018). *Microservices Patterns*. Manning.**  
+**L6. Richardson, C. (2018). _Microservices Patterns_. Manning.**  
 Microservices decomposition, data management, communication patterns. Practical architecture patterns.
 
 ---
 
 ### APA Style Source Citations
 
-**A1. Osterwalder, A., & Pigneur, Y. (2010). *Business model generation: A handbook for visionaries, game changers, and challengers*. Wiley. [EN]**
+**A1. Osterwalder, A., & Pigneur, Y. (2010). _Business model generation: A handbook for visionaries, game changers, and challengers_. Wiley. [EN]**
 
-**A2. Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley Professional. [EN]**
+**A2. Evans, E. (2003). _Domain-driven design: Tackling complexity in the heart of software_. Addison-Wesley Professional. [EN]**
 
-**A3. 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]**  
-(Zhou, A. (2021). *The essence of architecture*. Publishing House of Electronics Industry.)
+**A3. 周爱民. (2021). _架构的本质_. 电子工业出版社. [ZH]**  
+(Zhou, A. (2021). _The essence of architecture_. Publishing House of Electronics Industry.)
 
-**A4. Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley Professional. [EN]**
+**A4. Vernon, V. (2013). _Implementing domain-driven design_. Addison-Wesley Professional. [EN]**
 
-**A5. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28-31. [EN]**
+**A5. Conway, M. E. (1968). How do committees invent? _Datamation_, 14(4), 28-31. [EN]**
 
-**A6. Hohpe, G., & Woolf, B. (2003). *Enterprise integration patterns: Designing, building, and deploying messaging solutions*. Addison-Wesley Professional. [EN]**
+**A6. Hohpe, G., & Woolf, B. (2003). _Enterprise integration patterns: Designing, building, and deploying messaging solutions_. Addison-Wesley Professional. [EN]**
 
-**A7. Richardson, C. (2018). *Microservices patterns: With examples in Java*. Manning Publications. [EN]**
+**A7. Richardson, C. (2018). _Microservices patterns: With examples in Java_. Manning Publications. [EN]**
 
-**A8. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
+**A8. Skelton, M., & Pais, M. (2019). _Team topologies: Organizing business and technology teams for fast flow_. IT Revolution Press. [EN]**
 
-**A9. 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]**  
-(Zhang, Y. (2019). *Domain-driven design in practice*. Publishing House of Electronics Industry.)
+**A9. 张逸. (2019). _领域驱动设计实践_. 电子工业出版社. [ZH]**  
+(Zhang, Y. (2019). _Domain-driven design in practice_. Publishing House of Electronics Industry.)
 
-**A10. Fowler, M. (2002). *Patterns of enterprise application architecture*. Addison-Wesley Professional. [EN]**
+**A10. Fowler, M. (2002). _Patterns of enterprise application architecture_. Addison-Wesley Professional. [EN]**
 
-**A11. Humble, J., & Farley, D. (2010). *Continuous delivery: Reliable software releases through build, test, and deployment automation*. Addison-Wesley Professional. [EN]**
+**A11. Humble, J., & Farley, D. (2010). _Continuous delivery: Reliable software releases through build, test, and deployment automation_. Addison-Wesley Professional. [EN]**
 
-**A12. Kim, G., Humble, J., Debois, P., & Willis, J. (2016). *The DevOps handbook: How to create world-class agility, reliability, and security in technology organizations*. IT Revolution Press. [EN]**
+**A12. Kim, G., Humble, J., Debois, P., & Willis, J. (2016). _The DevOps handbook: How to create world-class agility, reliability, and security in technology organizations_. IT Revolution Press. [EN]**
 
-**A13. 肖然. (2020). *企业级业务架构设计*. 机械工业出版社. [ZH]**  
-(Xiao, R. (2020). *Enterprise business architecture design*. China Machine Press.)
+**A13. 肖然. (2020). _企业级业务架构设计_. 机械工业出版社. [ZH]**  
+(Xiao, R. (2020). _Enterprise business architecture design_. China Machine Press.)
 
-**A14. Wardley, S. (2018). *Wardley maps: Topographical intelligence in business*. Medium. https://medium.com/wardleymaps [EN]**
+**A14. Wardley, S. (2018). _Wardley maps: Topographical intelligence in business_. Medium. https://medium.com/wardleymaps [EN]**
 
-**A15. Brown, S. (2018). *Software architecture for developers* (Vol. 2). Leanpub. [EN]**
+**A15. Brown, S. (2018). _Software architecture for developers_ (Vol. 2). Leanpub. [EN]**
 
-**A16. Newman, S. (2021). *Building microservices: Designing fine-grained systems* (2nd ed.). O'Reilly Media. [EN]**
+**A16. Newman, S. (2021). _Building microservices: Designing fine-grained systems_ (2nd ed.). O'Reilly Media. [EN]**
 
 ---
 
@@ -414,22 +418,22 @@ Execute ALL steps below. Present results in validation report table. Fix any fai
 
 **Validation Report Template:**
 
-| Check | Result | Status |
-|-------|--------|--------|
-| Floors | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
-| Links | Y/X accessible | PASS/FAIL |
-| Cross-refs | Y/X resolved | PASS/FAIL |
-| Word counts | 5/5 compliant | PASS/FAIL |
-| Key Insights | Y/X concrete | PASS/FAIL |
-| Per-topic mins | X/Y topics meet | PASS/FAIL |
-| Biz-Tech mapping | X/Y explicit | PASS/FAIL |
-| Judgment vs Recall | X% judgment-based | PASS/FAIL |
-| Visual coverage | X% have diagram+table+formula | PASS/FAIL |
-| Framework application | X% apply biz frameworks | PASS/FAIL |
+| Check                 | Result                           | Status    |
+| --------------------- | -------------------------------- | --------- |
+| Floors                | G:X T:Y L:Z A:W Q:N (F/I/A)      | PASS/FAIL |
+| Citation coverage     | X% ≥1, Y% ≥2                     | PASS/FAIL |
+| Language dist         | EN:X% ZH:Y% Other:Z%             | PASS/FAIL |
+| Recency               | X% last 3yr                      | PASS/FAIL |
+| Source diversity      | N types, max P%                  | PASS/FAIL |
+| Links                 | Y/X accessible                   | PASS/FAIL |
+| Cross-refs            | Y/X resolved                     | PASS/FAIL |
+| Word counts           | 5/5 compliant                    | PASS/FAIL |
+| Key Insights          | Y/X concrete                     | PASS/FAIL |
+| Per-topic mins        | X/Y topics meet                  | PASS/FAIL |
+| Biz-Tech mapping      | X/Y explicit                     | PASS/FAIL |
+| Judgment vs Recall    | X% judgment-based                | PASS/FAIL |
+| Visual coverage       | X% have diagram+table+formula    | PASS/FAIL |
+| Framework application | X% apply biz frameworks          | PASS/FAIL |
 | Mathematical analysis | X% include quantitative elements | PASS/FAIL |
 
 > **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
@@ -467,38 +471,38 @@ Demonstrates the transition framework: Business Understanding → Value/Risk Mod
 **Organizational Dynamics** [G6]: Conway's Law—add Customer Success, DevOps, SRE teams; architecture must enable their workflows [A8, L4]. Document decisions via ADR [G10].
 
 **Supporting Artifact**:
-
 ```
+
 Transition Framework: Business Understanding → Architectural Decisions
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│ BUSINESS MODEL CANVAS CHANGES                                           │
+│ BUSINESS MODEL CANVAS CHANGES │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ Revenue Streams: Upfront → Recurring                                    │
-│ Customer Relationships: Transactional → Continuous                      │
-│ Key Activities: +Customer Success, +Retention                           │
+│ Revenue Streams: Upfront → Recurring │
+│ Customer Relationships: Transactional → Continuous │
+│ Key Activities: +Customer Success, +Retention │
 └─────────────────────────────────────────────────────────────────────────┘
-                              ↓
+↓
 ┌─────────────────────────────────────────────────────────────────────────┐
-│ VALUE MODEL                    │ RISK MODEL                             │
+│ VALUE MODEL │ RISK MODEL │
 ├────────────────────────────────┼────────────────────────────────────────┤
-│ • Continuous delivery          │ • Business: Churn, downtime revenue    │
-│ • Uptime guarantees            │ • Operational: SLA 99.9%+              │
-│ • Feature velocity             │ • Regulatory: Data residency, SOC2     │
-│ • Multi-tier segments          │                                        │
+│ • Continuous delivery │ • Business: Churn, downtime revenue │
+│ • Uptime guarantees │ • Operational: SLA 99.9%+ │
+│ • Feature velocity │ • Regulatory: Data residency, SOC2 │
+│ • Multi-tier segments │ │
 └────────────────────────────────┴────────────────────────────────────────┘
-                              ↓
+↓
 ┌─────────────────────────────────────────────────────────────────────────┐
-│ ARCHITECTURAL DECISIONS                                                 │
+│ ARCHITECTURAL DECISIONS │
 ├──────────────────────────┬──────────────────────────┬──────────────────┤
-│ Requirement              │ Technical Solution       │ Priority         │
+│ Requirement │ Technical Solution │ Priority │
 ├──────────────────────────┼──────────────────────────┼──────────────────┤
-│ Multi-tenant efficiency  │ Tenant isolation, quotas │ Critical         │
-│ Usage metering           │ Event streaming          │ High             │
-│ Tier management          │ Feature flags            │ High             │
-│ SLA compliance           │ HA/DR, monitoring        │ Critical         │
-│ Data residency           │ Regional deployment      │ High             │
-│ Continuous delivery      │ CI/CD, blue-green        │ High             │
+│ Multi-tenant efficiency │ Tenant isolation, quotas │ Critical │
+│ Usage metering │ Event streaming │ High │
+│ Tier management │ Feature flags │ High │
+│ SLA compliance │ HA/DR, monitoring │ Critical │
+│ Data residency │ Regional deployment │ High │
+│ Continuous delivery │ CI/CD, blue-green │ High │
 └──────────────────────────┴──────────────────────────┴──────────────────┘
 
 Evolution Strategy (Strangler Pattern):
@@ -506,6 +510,8 @@ Phase 1 (M1-3): Multi-tenancy foundation, basic metering
 Phase 2 (M4-6): Feature flags, CI/CD pipeline  
 Phase 3 (M7-9): HA/DR, regional deployment
 Phase 4 (M10-12): Analytics, customer success integrations
+
 ```
 
 ---
+```
