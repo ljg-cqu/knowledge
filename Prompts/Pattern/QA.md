@@ -1,6 +1,6 @@
-# Pattern-Focused Interview Q&A Template
+# Pattern-Based Q&A Generation Template
 
-Generate interview Q&As demonstrating proven, reusable patterns across all domains with empirical evidence, multi-stakeholder value, and clear applicability boundaries.
+Generate Q&As demonstrating proven, reusable patterns with empirical evidence, multi-stakeholder value, and clear boundaries.
 
 ---
 
@@ -8,32 +8,21 @@ Generate interview Q&As demonstrating proven, reusable patterns across all domai
 
 ## Specifications
 
-**Scope**: 25–30 pattern-focused Q&As (20/40/40 Foundational/Intermediate/Advanced), 150–300 words each
+**Scope**: 25–30 pattern-based Q&As (20/40/40 F/I/A), 150–300 words each
 
 **Pattern Coverage**: Regulatory, Business, Market, Technical, Data, Organizational, NFR (10 sub-dimensions), Process, Hybrid patterns
 
-**Per Answer Requirements** (ALL mandatory):
-- Pattern identification with empirical evidence
-- ≥2 reusable contexts (industries/scales/domains)
-- ≥2 stakeholder groups addressed
-- Trade-off analysis (improves X, sacrifices Y)
-- Applicability boundaries (when to use/avoid)
-- Concrete implementation example
-- Effectiveness metrics/case studies
+### Pattern Quality Criteria (7 Mandatory per Answer)
 
-**Per Topic Cluster**: ≥1 diagram + ≥1 concrete example + ≥1 table + ≥1 quantitative metric
+1. **Reusability**: ≥2 contexts + adaptation points
+2. **Proven Effectiveness**: Empirical evidence (company/metrics/adoption)
+3. **Cross-Context Applicability**: Clear boundaries (when applicable)
+4. **Multi-Stakeholder Value**: ≥2 groups addressed
+5. **Functional + NFR Coverage**: Capability + quality attributes
+6. **Trade-off Analysis**: Improves X, sacrifices Y
+7. **Anti-Pattern Awareness**: When NOT to use, failure modes
 
-### Pattern Quality Criteria (7 Mandatory)
-
-1. **Reusability**: ≥2 contexts (industries/scales/domains) + adaptation points
-2. **Proven Effectiveness**: Empirical evidence (Netflix/AWS/Stripe, metrics, adoption rates)
-3. **Cross-Context Applicability**: Clear boundaries (when applies vs doesn't)
-4. **Multi-Stakeholder Value**: ≥2 groups (Developers, Ops, Security, Business, Compliance, End Users)
-5. **Functional + NFR Coverage**: What system does + how well (security, performance, availability, etc.)
-6. **Trade-off Analysis**: Pattern X improves Y but sacrifices Z
-7. **Anti-Pattern Awareness**: Misapplications, failure modes, when NOT to use
-
-### Pattern Domains (11 Categories)
+### Pattern Domains
 
 | Domain | Pattern Examples | Stakeholders |
 |--------|------------------|-------------|
@@ -54,32 +43,9 @@ Generate interview Q&As demonstrating proven, reusable patterns across all domai
 | **NFR-Maintainability** | SOLID, Clean Architecture | Developers, Architects, New Hires |
 | **NFR-Testability** | Test Doubles, Contract Testing | Developers, QA, Operations |
 | **Process** | Agile, Retrospectives, Incident Response | Teams, Managers, Operations |
-
-### Visual Element Standards
-
-**Per Topic Cluster**: Diagram + example + table + metric + reusability evidence + stakeholder impact + effectiveness metrics
-
-#### Diagram Selection by Pattern Domain
-
-| Pattern Domain | Primary Diagram | Standard | Example + Metrics |
-|---------------|-----------------|----------|-------------------|
-| **Regulatory Patterns** | Compliance flowchart, Audit trail diagram | BPMN, Custom | GDPR consent flow + `Compliance Coverage = Addressed Requirements / Total × 100%` |
-| **Business Patterns** | Business model canvas, Value chain | BMC, Porter | Revenue model example + `Customer Lifetime Value = Revenue per Customer × Retention Period` |
-| **Technical Patterns** | Class diagram, Sequence diagram | UML, GoF | Pattern implementation + `Reusability = Reused Components / Total × 100%` |
-| **NFR - Security** | Threat model, Auth flow | STRIDE, OAuth2 | Auth implementation + `Attack Surface = Entry Points × Vulnerabilities` |
-| **NFR - Performance** | Latency breakdown, Caching diagram | Flamegraph, Custom | Optimization code + `Latency = p50/p95/p99`, `Throughput = Requests/sec` |
-| **NFR - Availability** | Failure modes, Redundancy diagram | Fault tree, Custom | Failover code + `Uptime = Available Time / Total Time × 100%`, `MTBF`, `MTTR` |
-| **NFR - Scalability** | Scaling strategy, Sharding diagram | Custom | Scaling code + `Scalability Factor = Throughput(N nodes) / Throughput(1 node)` |
-| **Process Patterns** | Workflow diagram, Decision tree | BPMN, DMN | Process example + `Cycle Time = End Time - Start Time`, `Efficiency = Output / Input × 100%` |
-| **Integration Patterns** | Sequence diagram, API contract | UML, OpenAPI | Integration code + `Response Time = Latency + Processing + Network` |
-| **Data Patterns** | ERD, Data flow, Lineage diagram | ERD, DFD, Data mesh | Data model + `Normalization Level (1NF-5NF)`, `Query Performance = Rows Scanned / Rows Returned` |
-| **Organizational Patterns** | Org structure, Team topology | Org chart, Conway | Team model + `Conway Alignment = Matching Boundaries / Total × 100%`, `Team Autonomy Score` |
-
-**Standards Reference**: BPMN (processes), DMN (decisions), UML (structure/behavior), ArchiMate (enterprise), SysML (requirements), ERD/DFD (data), C4 (software views)
+| **Hybrid** | Cross-domain integration (Regulatory+Technical), Compliance-by-Design | Compliance, Developers, Product |
 
 #### Pattern Catalog (70+ Patterns)
-
-**Quick Reference**: Reusable, proven-effective patterns with empirical evidence and multi-stakeholder value.
 
 | Domain | Pattern | Contexts | Effectiveness Evidence | Key Stakeholders |
 |--------|---------|----------|------------------------|------------------|
@@ -94,31 +60,31 @@ Generate interview Q&As demonstrating proven, reusable patterns across all domai
 | | Land and Expand | Enterprise SaaS, B2B | Slack/Dropbox, 120%+ retention | Sales, Product, Finance |
 | **Technical** | Repository | DDD, Layered arch, Microservices | 60-80% coupling reduction | Developers, Architects, Ops |
 | | Strangler Fig | Legacy modernization, Migration | Amazon/GitHub, 90% risk reduction | Architects, Ops, Business |
-| **Security** | Defense-in-Depth | Enterprise, Cloud, IoT | 90% attack reduction, 95% F500 | Security, Compliance, Ops |
+| **NFR-Security** | Defense-in-Depth | Enterprise, Cloud, IoT | 90% attack reduction, 95% F500 | Security, Compliance, Ops |
 | | Zero-Trust | Remote work, Cloud-native, APIs | Google 7yr/85K, 75% breach impact | Security, Developers, Users |
 | | Secrets Management | Cloud, Microservices, CI/CD | 30M+ Vault, 50% F500 | Security, Developers, Ops |
-| **Performance** | Caching | Web apps, APIs, Databases | 40-60% latency↓, 10x throughput | Users, Developers, Ops |
+| **NFR-Performance** | Caching | Web apps, APIs, Databases | 40-60% latency↓, 10x throughput | Users, Developers, Ops |
 | | Connection Pooling | DB, HTTP, Message queues | 10-100x gain, DB standard | Developers, Ops, Users |
 | | CDN | Static assets, Video, APIs | 50-70% latency↓, 70% top sites | Users, Business, Ops |
-| **Availability** | Circuit Breaker | Microservices, Distributed systems | Netflix 99.99% uptime | Ops, Developers, Users |
+| **NFR-Availability** | Circuit Breaker | Microservices, Distributed systems | Netflix 99.99% uptime | Ops, Developers, Users |
 | | Bulkhead | Thread/Connection pools, Multi-tenant | Netflix/AWS, 80% capacity maintained | Ops, Architects, Business |
 | | Health Check | K8s, Load balancers, Service mesh | 70% MTTR↓, <5s detection | Ops, Developers, Business |
-| **Reliability** | Retry + Backoff | Network, Message processing | 95% recovery, AWS default | Developers, Ops, Users |
+| **NFR-Reliability** | Retry + Backoff | Network, Message processing | 95% recovery, AWS default | Developers, Ops, Users |
 | | Idempotency | Payments, Message queues, APIs | Stripe/PayPal required, 100% consistency | Developers, Ops, Business |
 | | Saga | Microservices, Long transactions | Uber/Airbnb standard | Architects, Developers, Ops |
-| **Scalability** | Horizontal Scaling | Web servers, APIs, Stateless | Netflix/FB, 1000s instances | Ops, Architects, Business |
+| **NFR-Scalability** | Horizontal Scaling | Web servers, APIs, Stateless | Netflix/FB, 1000s instances | Ops, Architects, Business |
 | | DB Sharding | High-traffic DB, Multi-tenant | Instagram 4000, Discord billions | DBAs, Developers, Business |
 | | CQRS | Read-heavy, Event sourcing | 10-100x read scale, Azure/AWS | Architects, Developers, Ops |
-| **Observability** | Distributed Tracing | Microservices, Distributed | Standard cloud-native | Ops, Developers, Business |
-| **Adaptability** | Feature Flags | CD, A/B testing, Canary | FB/Netflix 100+ deploys/day, 90% risk↓ | Developers, Product, Business |
+| **NFR-Observability** | Distributed Tracing | Microservices, Distributed | Standard cloud-native | Ops, Developers, Business |
+| **NFR-Adaptability** | Feature Flags | CD, A/B testing, Canary | FB/Netflix 100+ deploys/day, 90% risk↓ | Developers, Product, Business |
 | | Strategy Pattern | Payments, Pricing, Routing | GoF 1994, 60% duplication↓ | Developers, Business, Architects |
 | | Plugin Architecture | IDEs, Browsers, CMS | VS Code 40K, WordPress 60K | Developers, Third-party, Users |
-| **Extensibility** | Dependency Injection | Enterprise, Frameworks | Spring 50% share, 70% coupling↓ | Developers, Architects, Third-party |
+| **NFR-Extensibility** | Dependency Injection | Enterprise, Frameworks | Spring 50% share, 70% coupling↓ | Developers, Architects, Third-party |
 | | Open-Closed | Libraries, Frameworks, APIs | SOLID 1988, 80% regression bugs↓ | Developers, QA, Business |
 | | Middleware/Pipeline | Web frameworks, Message processing | Express 100K packages | Developers, Third-party, Ops |
-| **Maintainability** | SOLID Principles | OOP, Enterprise apps | Since 2000, 40-60% defects↓, 25% velocity↑ | Developers, Architects, New hires |
+| **NFR-Maintainability** | SOLID Principles | OOP, Enterprise apps | Since 2000, 40-60% defects↓, 25% velocity↑ | Developers, Architects, New hires |
 | | Clean Architecture | DDD, Microservices | Netflix/Amazon, 70% coupling↓ | Developers, Architects, Business |
-| **Testability** | Test Doubles | Unit/Integration testing | 90%+ coverage, 100x faster | Developers, QA, Ops |
+| **NFR-Testability** | Test Doubles | Unit/Integration testing | 90%+ coverage, 100x faster | Developers, QA, Ops |
 | | Contract Testing | Microservices, APIs | Pact/IBM/Atlassian, 95% issues caught | Developers, API consumers, Ops |
 | **Data** | Polyglot Persistence | Microservices, E-commerce | Netflix 3+, LinkedIn 10+, 50-80% latency↓ | Architects, DBAs, Developers |
 | | Event Sourcing | Finance, Collaboration | 100% audit, Banking standard | Compliance, Developers, Business |
@@ -128,56 +94,6 @@ Generate interview Q&As demonstrating proven, reusable patterns across all domai
 | | Team Topologies | Any org, Enterprises | MS/Google/Spotify, 50% load↓, 40% flow↑ | CTOs, Managers, Developers |
 | | DevOps/YBIYRI | Cloud-native, SaaS | Amazon 2006, 60% MTTR↓, 10x deploys | Developers, Ops, Business |
 | **Process** | Retrospective | Agile/Project teams | Scrum core, 15-25% velocity↑, 30% satisfaction↑ | Teams, Managers, Individuals |
-
-#### Visual Quality Standards
-
-**Rendering**: Use Mermaid (GitHub-native); avoid external renderers. Syntax example:
-```mermaid
-flowchart TD
-    A[Start] --> B[Process]
-    B --> C[End]
-```
-
-**Concrete Examples**: Include domain-appropriate examples (code for technical patterns, policy snippets for regulatory, model descriptions for business). Use fenced blocks with appropriate tags:
-```go
-// Technical pattern example
-type Repository interface {
-    Save(ctx context.Context, entity Entity) error
-}
-```
-```yaml
-# Regulatory pattern example - GDPR consent
-consent:
-  purpose: "marketing_emails"
-  granted: true
-  timestamp: "2024-01-15T10:30:00Z"
-  withdrawable: true
-```
-
-**Math**: Inline `$formula$` or block `$$formula$$`. Define variables on first use.
-
-**Common Math Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
-
-**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note, 💻 Code
-
-**Anti-patterns**: Avoid single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
-
-**Combination Patterns**: For comprehensive analysis, combine multiple diagram types:
-- **Full Documentation**: Requirements (Use Case) → Structure (Class/Component) → Behavior (Sequence/Activity) → Deployment
-- **Process Automation**: BPMN Process → DMN Decision Table → ERD Data Model → Integration Diagram
-- **Enterprise Architecture**: Strategy → Current State → Target State → Migration (all ArchiMate viewpoints)
-
-**Quick Reference – Pattern Domain Guide**
-| Need | Recommended Diagram(s) | Example Type | Standard |
-|------|------------------------|--------------|----------|
-| Regulatory compliance | Compliance flow + Audit trail | GDPR consent YAML, Policy docs | BPMN + Custom |
-| Business model design | Business model canvas + Value chain | Revenue model, Partnership structure | BMC + Porter |
-| Revenue optimization | Funnel diagram + Conversion flow | Pricing tiers, Conversion metrics | Custom |
-| API design | Class + Sequence | Interface/Controller code | UML + OpenAPI |
-| Data access | ERD + Class diagram | Repository pattern code | ERD + UML |
-| Process workflow | BPMN + Decision tree | Runbook, Incident response | BPMN + DMN |
-| Team structure | Org chart + Team topology | Communication paths, Boundaries | Conway + Custom |
-| System migration | Strangler fig + Timeline | Migration phases, Rollback plan | Custom |
 
 ### Pattern Selection Matrices
 
@@ -198,50 +114,46 @@ consent:
 | Breach Notification | 72h | Prompt | 60d | Contractual |
 
 **NFR Patterns by System Type**:
-| NFR | High-Traffic API | Financial | Real-Time | Data-Intensive | Microservices |
-|-----|------------------|-----------|-----------|----------------|---------------|
-| Security | Auth + Rate limit | Encrypt + Audit | mTLS + Zero-trust | Encrypt at rest | Service mesh |
-| Performance | CDN + Cache | Connection pool | In-mem cache | Query optimize | Async messaging |
-| Availability | Circuit breaker | Active-active | Redundancy | Read replicas | Health checks |
-| Reliability | Retry + Idempotency | 2PC + Saga | Idempotency | Event sourcing | Saga + Outbox |
-| Scalability | Horizontal + CDN | DB sharding | CQRS + Shard | Partitioning | Independent scale |
+| NFR Sub-Dimension | High-Traffic API | Financial | Real-Time | Data-Intensive | Microservices |
+|-------------------|------------------|-----------|-----------|----------------|---------------|
+| NFR-Security | Auth + Rate limit | Encrypt + Audit | mTLS + Zero-trust | Encrypt at rest | Service mesh |
+| NFR-Performance | CDN + Cache | Connection pool | In-mem cache | Query optimize | Async messaging |
+| NFR-Availability | Circuit breaker | Active-active | Redundancy | Read replicas | Health checks |
+| NFR-Reliability | Retry + Idempotency | 2PC + Saga | Idempotency | Event sourcing | Saga + Outbox |
+| NFR-Scalability | Horizontal + CDN | DB sharding | CQRS + Shard | Partitioning | Independent scale |
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Regulatory frameworks & legal standards; (2) Business models & strategic patterns; (3) Technical patterns & design principles; (4) Process methodologies & organizational patterns; (5) Empirical case studies & effectiveness validation
-- **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] after factual claims, regulatory requirements, business models, technical patterns, process frameworks, proven effectiveness claims, trade-off analyses
+- **Languages**: ~60% EN, ~30% ZH, ~10% other. Tag: [EN]/[ZH]
+- **Source Types**: (1) Regulatory/legal; (2) Business/strategic patterns; (3) Technical patterns; (4) Process/organizational; (5) Empirical validation
+- **Format**: APA 7th with tags
+- **Inline**: [Ref: ID] after pattern claims, requirements, effectiveness, trade-offs
 
 ### Reference Minimum Requirements
 
 | Section | Floor | Content |
 |---------|-------|---------|
-| Glossary | ≥25 | Regulatory: GDPR, CCPA, Consent, Audit Trail; Business: Freemium, Platform, Network Effects, Blue Ocean, Disruptive Innovation; Technical: Repository, Strangler Fig; Data: Polyglot Persistence, Event Sourcing, Data Lake, CQRS; Organizational: Conway's Law, Team Topologies, Two-Pizza Team, DevOps/SRE; NFR: Circuit Breaker, Caching, Retry, Idempotency, Sharding, Zero-Trust, Feature Flags, DI, SOLID, Test Doubles |
-| Tools | ≥10 | Compliance (OneTrust), business (Strategyzer, Blue Ocean tools), patterns (GoF), data (dbt, Databricks, Snowflake), org design (Team Topologies book), process (BPMN.io, Miro), monitoring (Prometheus, Grafana), security (Vault, OWASP ZAP), testing (Pact) |
-| Literature | ≥12 | Regulatory (GDPR, NIST), business (Osterwalder, Porter, Blue Ocean Strategy, Innovator's Dilemma), patterns (GoF, Fowler, POSA, Clean Architecture), data (Kleppmann Data-Intensive, Kimball), org/team (Skelton Team Topologies, Forsgren Accelerate), NFR (Nygard Release It!, Google SRE) |
+| Glossary | ≥25 | Regulatory: GDPR, CCPA, Consent, Audit Trail; Business: Freemium, Platform, Network Effects; Market: Blue Ocean, Disruptive Innovation; Technical: Repository, Strangler Fig; Data: Polyglot Persistence, Event Sourcing, Data Lake, CQRS; Organizational: Conway's Law, Team Topologies, Two-Pizza Team, DevOps/SRE; NFR: Circuit Breaker, Caching, Retry, Idempotency, Sharding, Zero-Trust, Feature Flags, DI, SOLID, Test Doubles |
+| Tools | ≥10 | Compliance (OneTrust), business (Strategyzer, Blue Ocean tools), patterns (GoF, POSA), data (dbt, Databricks, Snowflake), org design (Team Topologies book), process (BPMN.io, Miro), monitoring (Prometheus, Grafana), security (Vault, OWASP ZAP), testing (Pact) |
+| Literature | ≥12 | Regulatory (GDPR, NIST), business (Osterwalder, Porter), market (Blue Ocean Strategy, Innovator's Dilemma), patterns (GoF, Fowler, POSA), data (Kleppmann Data-Intensive, Kimball), org/team (Skelton Team Topologies, Forsgren Accelerate), NFR (Nygard Release It!, Google SRE) |
 | Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
 
 **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
 
 ### Usage Guidelines
 
-1. Follow MECE structure; maintain 20/40/40 difficulty balance
-2. Meet all reference floors; address Regulatory/Business/Technical/Process dimensions
-3. Include ≥1 primary diagram + ≥1 concrete example + ≥1 supporting table + ≥1 quantitative element per topic cluster
-4. Per topic: ≥2 authoritative sources + ≥1 tool/framework reference + ≥1 empirical validation
-5. Document any gaps with remediation plan
+1. MECE structure, 20/40/40 balance, all pattern domains covered
+2. Per cluster: ≥1 Mermaid diagram + example + table + metric; ≥2 sources + tool + validation
+3. All reference floors met; document gaps with remediation
 
 ### Quality Gates
 
-- **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native domains)
-- **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% answers have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, adoption metrics, last update ≤18 months, key integrations
-- **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
-
-> Scaling: For >30 Q&A, increase floors by ~1.5×. Prioritize gates before raising floors.
+- **Recency**: ≥50% last 3yr (≥70% digital/cloud)
+- **Diversity**: ≥3 types, no single >25%
+- **Evidence**: ≥70% ≥1 citation, ≥30% ≥2
+- **Tool Details**: Pricing, adoption, update <18mo
+- **Links**: Accessible/archived URLs
+- **Cross-refs**: All [Ref: ID] resolve
 
 ### Pre-Submission Validation (21 Steps)
 
@@ -255,22 +167,18 @@ consent:
 - Cross-refs: All [Ref: ID] resolve
 
 **Content Quality** (Steps 8-12):
-- Word count: Sample 5 answers, all 150-300 words
-- Key insights: All concrete (boundaries/trade-offs/effectiveness/anti-patterns)
-- Per-topic: ≥2 authoritative + ≥1 tool
-- Pattern mapping: ≥80% trace pattern → implementation
-- Judgment: ≥70% scenario-based vs recall
+- Word count: 5 samples, all 150-300
+- Key insights: All concrete (pattern boundaries/trade-offs/effectiveness/anti-patterns)
+- Per-topic: ≥2 sources + ≥1 tool
+- Pattern mapping: ≥80% pattern → implementation trace
+- Judgment: ≥70% scenario-based (not recall)
 
-**Pattern Quality Criteria** (Steps 13-21):
-- Visual coverage: ≥90% have diagram + example + table + metric
-- Pattern application: ≥80% apply relevant patterns with evidence
-- Quantitative analysis: ≥60% include metrics/formulas
-- Concrete examples: ≥80% domain-appropriate examples
-- **Reusability**: ≥90% list ≥2 contexts
-- **Effectiveness**: ≥90% cite empirical evidence
-- **Stakeholders**: ≥80% address ≥2 groups
-- **Trade-offs**: ≥70% state improves X, sacrifices Y
-- **Boundaries**: ≥80% define when to use vs avoid
+**Pattern Quality** (Steps 13-21):
+- Visual: ≥90% diagram + example + table + metric
+- Application: ≥80% patterns with evidence
+- Quantitative: ≥60% metrics/formulas
+- Examples: ≥80% domain-appropriate
+- **All 7 Pattern Quality Criteria**: Check ≥80% answers meet all criteria (see Part I)
 
 **Validation Report Template**:
 | Check | Result | Status |
@@ -291,162 +199,88 @@ consent:
 | Pattern application | X% w/ evidence | PASS/FAIL |
 | Quantitative | X% w/ metrics | PASS/FAIL |
 | Examples | X% concrete | PASS/FAIL |
-| Reusability | X% ≥2 contexts | PASS/FAIL |
-| Effectiveness | X% empirical | PASS/FAIL |
-| Stakeholders | X% ≥2 groups | PASS/FAIL |
-| Trade-offs | X% explicit | PASS/FAIL |
-| Boundaries | X% defined | PASS/FAIL |
+| Pattern Criteria | X% meet all 7 | PASS/FAIL |
 
 > **MANDATORY**: If ANY FAIL, fix and re-validate until 100% PASS.
 
 ### Submission Checklist
 
-- [ ] All 21 validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
-- [ ] ALL answers demonstrate pattern quality criteria: reusability, proven effectiveness, multi-stakeholder value, trade-offs, applicability boundaries
+- [ ] All 21 validation steps PASS
+- [ ] All reference floors + quality gates met
+- [ ] All answers: 7 pattern quality criteria met (see Part I)
 
 ---
 
 # Part II: Generation Workflow
 
-## Instructions
+## Pattern-Based Generation Steps
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+**Step 1: Pattern Selection** - Select 8-12 clusters from 11 domains, allocate 2-4 Q&As each (25-30 total, 20/40/40 F/I/A). Check coverage.
 
-### Step 1: Topic Planning
-1. Select 8-12 pattern clusters: Regulatory | Business | Market | Technical | Data | Organizational | NFR (10 sub-dims) | Process | Hybrid
-2. Allocate 2-4 Q&As per cluster (total 25-30), 20/40/40 difficulty (F/I/A)
-3. **Check**: Total 25-30, ~20/40/40 ratio, all pattern domains covered
+**Step 2: Pattern References** - Collect ≥25 glossary, ≥10 tools, ≥12 literature (L1-L15 provided), ≥12 APA citations. Check floors, 60/30/10 language, ≥50% recency.
 
-### Step 2: Reference Collection
-1. **Glossary (≥25)**: Pattern terms from all domains (see Reference Requirements table)
-2. **Tools (≥10)**: Pattern-related tools (OneTrust, Strategyzer, GoF, dbt, Vault, Prometheus, Pact, etc.)
-3. **Literature (≥12)**: Pattern books/papers (GoF, Fowler, Osterwalder, Skelton, Nygard, etc.)
-4. **Citations (≥12)**: APA 7th with [EN]/[ZH] tags, assign IDs (G#/T#/L#/A#)
-5. **Check**: All floors met, ~60/30/10% language mix, ≥50% last 3yr, all pattern domains covered
+**Step 3: Pattern Q&As** - Write scenario-based questions. Per answer: ALL 7 quality criteria (Part I) + ≥1 [Ref: ID] + example. Check every 5 Q&As.
 
-### Step 3: Q&A Generation
-1. Write scenario questions ("How would...", "When should..."), 150-300 word answers
-2. Per answer, include ALL 5 pattern quality elements:
-   - Reusability: ≥2 contexts
-   - Effectiveness: Empirical evidence (metrics/cases/adoption)
-   - Stakeholders: ≥2 groups
-   - Trade-offs: Improves X, sacrifices Y
-   - Boundaries: When to use vs avoid
-3. Include: ≥1 [Ref: ID], domain-appropriate example, concrete Key Insight
-4. **Check every 5 Q&As**: Word count, citations, pattern quality elements (all 5), judgment focus
+**Step 4: Pattern Visuals** - Per cluster: Mermaid diagram + example + table + metric (see Supporting Artifacts table). Check alignment.
 
-### Step 4: Visual Artifacts
-1. Per cluster: Primary diagram (Mermaid) + concrete example + table + quantitative metric
-2. Use domain-appropriate format (code/YAML/policy/model per Diagram Selection table)
-3. **Check**: All clusters covered, visuals align with pattern domain
+**Step 5: References** - Populate all sections, resolve [Ref: ID]. Check floors.
 
-### Step 5: References
-Populate Glossary/Tools/Literature/APA. **Check**: All [Ref: ID] resolve, all floors met
+**Step 6: Validation** - Execute 21 steps, fix failures, re-validate to 100% PASS.
 
-### Step 6: Validation
-Execute all 21 validation steps. Fix failures; re-validate until 100% PASS.
-
-### Step 7: Submit
-Verify submission checklist. Submit when all validation steps PASS.
+**Step 7: Submit** - Verify checklist, submit when PASS.
 
 ---
 
 # Part III: Output Structure
 
-### Question Design & Critique
+### Pattern-Based Q&A Design
 
-**Pattern Recognition-to-Application Framework**:
-1. Pattern Recognition → Applicability Evaluation → Implementation Design → Effectiveness Validation
+**Framework**: Pattern Recognition → Applicability → Implementation → Validation
 
-**Question Quality Criteria**:
-- **Clarity**: Single unambiguous ask
-- **Signal**: Tests pattern application, not memorization
-- **Depth**: Enables discussion of trade-offs, applicability, proven effectiveness
-- **Realism**: Scenarios matching senior/expert roles
-- **Discriminative**: Tests judgment over recall
-
-**Answer Success Factors** (ALL required):
-- Pattern literacy (recognize, apply, validate)
-- Reusability (≥2 contexts + adaptation points)
-- Multi-stakeholder thinking (≥2 groups)
-- Trade-off analysis (improves X, sacrifices Y)
-- Implementation tracing (pattern → concrete code/example)
-- Critical thinking (when to use vs avoid, anti-patterns)
+**Focus**: Scenario-based (not recall), pattern application with all 7 quality criteria (Part I)
 
 ---
 
-## Output Format
-
-Use this structure when generating question banks:
+## Output Format Structure
 
 ```markdown
 ## Contents
 
-- [Topic Areas](#topic-areas) - Questions 1-30 Overview
-- [Topic 1: Regulatory Patterns](#topic-1-regulatory-patterns) (Q1-Q3)
-  - Q1: [Foundational] GDPR/CCPA compliance patterns
-  - Q2: [Intermediate] Consent management implementation
-  - Q3: [Advanced] Multi-jurisdiction audit trail design
-- [Topic 2: Business & Market Patterns](#topic-2-business-market-patterns) (Q4-Q6)
-  - Q4: [Foundational] Subscription vs Freemium model selection
-  - Q5: [Intermediate] Platform marketplace network effects
-  - Q6: [Advanced] Blue Ocean strategy application
-- [Topic 3: Technical Patterns](#topic-3-technical-patterns) (Q7-Q8)
-  - Q7: [Foundational] Repository pattern implementation
-  - Q8: [Intermediate] Strangler Fig migration strategy
-- [Topic 4: Data Patterns](#topic-4-data-patterns) (Q9-Q11)
-  - Q9: [Foundational] Polyglot persistence selection
-  - Q10: [Intermediate] Event sourcing for audit
-  - Q11: [Advanced] CQRS scalability design
-- [Topic 5: Organizational & Team Patterns](#topic-5-organizational-team-patterns) (Q12-Q14)
-  - Q12: [Foundational] Conway's Law application
-  - Q13: [Intermediate] Team Topologies design
-  - Q14: [Advanced] DevOps transformation
-- [Topic 6: NFR - Security, Reliability & Observability](#topic-6-nfr-security-reliability-observability) (Q15-Q17)
-  - Q15: [Foundational] Zero-Trust architecture
-  - Q16: [Intermediate] Retry with backoff implementation
-  - Q17: [Advanced] Distributed tracing design
-- [Topic 7: NFR - Performance, Scalability & Availability](#topic-7-nfr-performance-scalability-availability) (Q18-Q20)
-  - Q18: [Foundational] Caching strategy selection
-  - Q19: [Intermediate] Database sharding design
-  - Q20: [Advanced] Circuit breaker + bulkhead patterns
-- [Topic 8: NFR - Adaptability, Flexibility & Extensibility](#topic-8-nfr-adaptability-flexibility-extensibility) (Q21-Q23)
-  - Q21: [Foundational] Feature flags implementation
-  - Q22: [Intermediate] Dependency injection design
-  - Q23: [Advanced] Plugin architecture patterns
-- [Topic 9: NFR - Maintainability & Testability](#topic-9-nfr-maintainability-testability) (Q24-Q26)
-  - Q24: [Foundational] SOLID principles application
-  - Q25: [Intermediate] Clean Architecture layers
-  - Q26: [Advanced] Contract testing strategy
-- [Topic 10: Process Patterns](#topic-10-process-patterns) (Q27-Q28)
-  - Q27: [Foundational] Agile retrospective patterns
-  - Q28: [Intermediate] Incident response workflows
-- [Topic 11: Hybrid Patterns](#topic-11-hybrid-patterns) (Q29-Q30)
-  - Q29: [Intermediate] Regulatory + Technical integration
-  - Q30: [Advanced] Multi-domain pattern orchestration
+- [Topic Areas](#topic-areas) - Q1-30 Overview
+- [Topic 1: Regulatory Patterns](#topic-1) (Q1-Q3)
+- [Topic 2: Business & Market Patterns](#topic-2) (Q4-Q6)
+- [Topic 3: Technical Patterns](#topic-3) (Q7-Q8)
+- [Topic 4: Data Patterns](#topic-4) (Q9-Q11)
+- [Topic 5: Organizational Patterns](#topic-5) (Q12-Q14)
+- [Topic 6: NFR - Security, Reliability & Observability](#topic-6) (Q15-Q17)
+- [Topic 7: NFR - Performance, Scalability & Availability](#topic-7) (Q18-Q20)
+- [Topic 8: NFR - Adaptability, Flexibility & Extensibility](#topic-8) (Q21-Q23)
+- [Topic 9: NFR - Maintainability & Testability](#topic-9) (Q24-Q26)
+- [Topic 10: Process Patterns](#topic-10) (Q27-Q28)
+- [Topic 11: Hybrid Patterns](#topic-11) (Q29-Q30)
 - [Reference Sections](#reference-sections)
-  - [Glossary](#glossary) - Pattern terms (≥25 entries: G1-G30+)
-  - [Tools](#tools) - Pattern implementation tools (≥10 entries: T1-T12+)
-  - [Literature](#literature) - Pattern books & papers (≥12 entries: L1-L14+)
-  - [Citations](#citations) - APA 7th format sources (≥12 entries: A1-A22+)
-- [Validation Report](#validation-report) - 21-step validation results
+  - [Glossary](#glossary) (≥25 entries)
+  - [Tools](#tools) (≥10 entries)
+  - [Literature](#literature) (≥12 entries)
+  - [Citations](#citations) (≥12 entries)
+- [Validation Report](#validation-report) - 21-step results
+```
 
-## Topic Areas: Questions 1-N
+## Topic Areas
 
-| Topic | Range | Count | Mix (F/I/A) | Pattern Examples |
-|-------|-------|-------|-------------|------------------|
+| Pattern Domain | Range | Count | F/I/A | Examples |
+|----------------|-------|-------|-------|----------|
 | Regulatory | Q1-Q3 | 3 | 1/1/1 | GDPR, Consent, Audit |
 | Business & Market | Q4-Q6 | 3 | 1/1/1 | Subscription, Blue Ocean, Land & Expand |
 | Technical | Q7-Q8 | 2 | 1/1/0 | Repository, Strangler Fig |
 | Data | Q9-Q11 | 3 | 1/1/1 | Polyglot, Event Sourcing, CQRS |
 | Organizational | Q12-Q14 | 3 | 1/1/1 | Conway, Team Topologies, DevOps |
-| NFR - Sec/Rel/Obs | Q15-Q17 | 3 | 1/1/1 | Zero-Trust, Retry, Tracing |
-| NFR - Perf/Scale/Avail | Q18-Q20 | 3 | 1/1/1 | Caching, Sharding, Circuit Breaker |
-| NFR - Adapt/Flex/Ext | Q21-Q23 | 3 | 1/1/1 | Feature Flags, DI, Middleware |
-| NFR - Maint/Test | Q24-Q26 | 3 | 1/1/1 | SOLID, Test Doubles |
+| NFR - Security, Reliability & Observability | Q15-Q17 | 3 | 1/1/1 | Zero-Trust, Retry, Tracing |
+| NFR - Performance, Scalability & Availability | Q18-Q20 | 3 | 1/1/1 | Caching, Sharding, Circuit Breaker |
+| NFR - Adaptability, Flexibility & Extensibility | Q21-Q23 | 3 | 1/1/1 | Feature Flags, DI, Middleware |
+| NFR - Maintainability & Testability | Q24-Q26 | 3 | 1/1/1 | SOLID, Clean Arch, Test Doubles |
 | Process | Q27-Q28 | 2 | 1/1/0 | Retrospectives, Incident Response |
-| Hybrid | Q29-Q30 | 2 | 0/1/1 | Cross-domain integration |
+| Hybrid | Q29-Q30 | 2 | 0/1/1 | Multi-domain patterns |
 | **Total** | | **30** | **9/13/8** | |
 
 ---
@@ -455,30 +289,29 @@ Use this structure when generating question banks:
 
 ### Q1: [Question Text]
 
-**Difficulty**: [Foundational/Intermediate/Advanced]  
-**Type**: [Regulatory/Business/Market/Technical/Data/Organizational/NFR/Process/Hybrid Patterns]  
+**Difficulty**: [Foundational/Intermediate/Advanced]
+**Type**: [Regulatory/Business/Market/Technical/Data/Organizational/NFR-Security/NFR-Performance/NFR-Availability/NFR-Reliability/NFR-Scalability/NFR-Observability/NFR-Adaptability/NFR-Extensibility/NFR-Maintainability/NFR-Testability/Process/Hybrid]
 **Domain**: [Specify primary domain and sub-category]
 
-**Key Insight**: [One sentence stating pattern applicability boundaries/trade-offs/proven effectiveness/anti-patterns/context constraints this question exposes]
+**Key Insight**: [Pattern boundaries/trade-offs/effectiveness/anti-patterns exposed]
 
-**Answer**:
+**Answer**: [150-300 words, [Ref: ID] citations, pattern → implementation with evidence]
 
-[150-300 word answer with inline [Ref: ID] citations, explicitly connecting patterns to concrete implementations with empirical evidence]
-
-**Pattern Quality Elements (REQUIRED - ALL 5):**
-
-1. **Reusability**: ≥2 contexts (industries/scales/domains) - "E-commerce, fintech, healthcare..."
-2. **Effectiveness**: Empirical evidence - "Stripe/Square, 95% error reduction, $10B+ processed"
-3. **Stakeholders**: ≥2 groups - Developers (impl), Ops (reliability), Business (cost), Users (experience)
-4. **Trade-offs**: Improves X, sacrifices Y - "Improves availability; Sacrifices consistency, complexity"
-5. **Boundaries**: When to use vs avoid - "Applies: >100 req/sec, distributed; Avoid: CRUD, low traffic"
+**Pattern Quality** (ALL 7 criteria from Part I required):
+1. Reusability: ≥2 contexts - "E-commerce, fintech, healthcare..."
+2. Proven Effectiveness: Evidence - "Stripe/Square, 95% reduction, $10B+"
+3. Cross-Context Applicability: Boundaries - "Applies: >100 req/sec; Avoid: CRUD"
+4. Multi-Stakeholder Value: ≥2 groups - "Developers, Ops, Business, Users"
+5. Functional + NFR Coverage: What + how well
+6. Trade-off Analysis: "Improves availability; Sacrifices consistency"
+7. Anti-Pattern Awareness: When NOT to use
 
 **Concrete Example**:
 ```language
 // Domain-appropriate: code (technical), YAML (regulatory), model (business)
 ```
 
-**Supporting Artifacts** (Select 3+ per domain):
+**Supporting Artifacts** (Reference table for domain-appropriate visuals):
 
 | Domain | Diagrams | Examples | Metrics |
 |--------|----------|----------|---------|
@@ -662,25 +495,28 @@ Comprehensive architectural patterns: Layers, Pipes-and-Filters, Microkernel, Br
 **L7. Beck, K., et al. (2001). *Manifesto for Agile Software Development***  
 Agile principles and process patterns. Values: individuals, working software, collaboration, change response. Foundation for process patterns. https://agilemanifesto.org [EN]
 
-**L8. Christensen, C. M. (1997). *The Innovator's Dilemma*. Harvard Business Review Press.**  
+**L8. Kim, W. C., & Mauborgne, R. (2015). *Blue Ocean Strategy, Expanded Edition: How to Create Uncontested Market Space and Make the Competition Irrelevant*. Harvard Business Review Press.**
+Blue Ocean Strategy framework: value innovation, strategy canvas, four actions framework. Market pattern for creating uncontested market space. Case studies: Cirque du Soleil, Nintendo Wii, Southwest Airlines.
+
+**L9. Christensen, C. M. (1997). *The Innovator's Dilemma*. Harvard Business Review Press.**
 Disruptive innovation pattern: sustaining vs disruptive technologies. Business pattern for market entry and competitive response.
 
-**L9. Nygard, M. T. (2018). *Release It!: Design and Deploy Production-Ready Software* (2nd ed.). Pragmatic Bookshelf.**  
+**L10. Nygard, M. T. (2018). *Release It!: Design and Deploy Production-Ready Software* (2nd ed.). Pragmatic Bookshelf.**
 NFR patterns for production systems: Circuit Breaker, Bulkhead, Timeouts, Handshaking, Steady State. Real-world failures and mitigations. Essential for reliability/availability patterns.
 
-**L10. Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). *Site Reliability Engineering: How Google Runs Production Systems*. O'Reilly.**  
+**L11. Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). *Site Reliability Engineering: How Google Runs Production Systems*. O'Reilly.**
 Google's SRE practices and NFR patterns: SLO/SLI/SLA, error budgets, toil reduction, incident response, capacity planning. Foundation for observability and reliability patterns.
 
-**L11. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.**  
+**L12. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.**
 Scalability and reliability patterns for data systems: replication, partitioning, transactions, consistency models. Trade-offs between consistency, availability, performance.
 
-**L12. Kimball, R., & Ross, M. (2013). *The Data Warehouse Toolkit* (3rd ed.). Wiley.**  
+**L13. Kimball, R., & Ross, M. (2013). *The Data Warehouse Toolkit* (3rd ed.). Wiley.**
 Data warehousing patterns: dimensional modeling, star schema, slowly changing dimensions, fact tables. Industry-standard for analytics data modeling.
 
-**L13. Skelton, M., & Pais, M. (2019). *Team Topologies: Organizing Business and Technology Teams for Fast Flow*. IT Revolution Press.**  
+**L14. Skelton, M., & Pais, M. (2019). *Team Topologies: Organizing Business and Technology Teams for Fast Flow*. IT Revolution Press.**
 Organizational patterns: four team types (stream-aligned, platform, enabling, complicated-subsystem), three interaction modes, Conway's Law application. Reduces cognitive load, improves flow.
 
-**L14. Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.**  
+**L15. Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.**
 Empirical research on high-performing organizations. Organizational patterns: DevOps, continuous delivery, trunk-based development. Data: 4-year study, 30,000+ data points.
 
 ---
@@ -730,7 +566,7 @@ Empirical research on high-performing organizations. Organizational patterns: De
 
 **A20. Kimball, R., & Ross, M. (2013). *The data warehouse toolkit: The definitive guide to dimensional modeling* (3rd ed.). Wiley. [EN]**
 
-**A21. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
+**A21. Kim, W. C., & Mauborgne, R. (2015). *Blue ocean strategy, expanded edition: How to create uncontested market space and make the competition irrelevant*. Harvard Business Review Press. [EN]**
 
 **A22. Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The science of lean software and DevOps: Building and scaling high performing technology organizations*. IT Revolution Press. [EN]**
 
@@ -738,66 +574,6 @@ Empirical research on high-performing organizations. Organizational patterns: De
 
 ## Validation Report
 
-Execute 21-step validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
-
----
-
-## Example Question
-
-Pattern Recognition → Applicability → Implementation → Validation
-
-### Q1: GDPR audit reveals 47% user data lacks consent. Which patterns ensure compliance? Show implementation and metrics.
-
-**Difficulty**: Advanced | **Type**: Hybrid (Regulatory + Technical) | **Domain**: Compliance, Data Governance
-
-**Key Insight**: Combines regulatory patterns (consent, audit trail) with technical patterns (repository, event sourcing) measured by compliance metrics.
-
-**Answer**: Apply 3 patterns [Ref: A1, A6, L1]:
-1. **Consent Management**: Explicit opt-in, granular purposes, withdrawal capability [Ref: G2]
-2. **Double-Entry Audit Trail**: Immutable logs for GDPR Art. 30 compliance [Ref: G3]
-3. **Repository with Consent Check**: Wrap data access with validation layer [Ref: G7]
-
-**Timeline**: Wk1-2 consent registry, Wk3-4 audit trail, Wk5-6 repository refactor, Wk7-8 backfill
-
-**Pattern Quality Elements**:
-1. **Reusability**: GDPR/CCPA/HIPAA, fintech, healthcare, SaaS, e-commerce
-2. **Effectiveness**: 10K+ orgs, 95%+ coverage in 6-8 weeks, Stripe/AWS implementations
-3. **Stakeholders**: Compliance (audit evidence), Developers (implementation), Legal (risk), Users (privacy)
-4. **Trade-offs**: Improves compliance, auditability, user trust; Sacrifices complexity, dev effort, performance
-5. **Boundaries**: Applies: EU/CA data, regulated industries; Avoid: internal tools, non-PII systems
-
-**Concrete Examples**:
-```yaml
-# Consent registry (GDPR)
-user_consent:
-  user_id: "user_123"
-  purposes:
-    - purpose: "marketing"
-      granted: true
-      timestamp: "2024-01-15T10:30:00Z"
-      withdrawable: true
-```
-
-```go
-// Consent-aware repository
-func (r *repo) GetUser(ctx, userID, purpose) (*User, error) {
-    if !r.consentSvc.HasConsent(ctx, userID, purpose) {
-        r.audit.LogDenied(ctx, userID, purpose)
-        return nil, ErrConsentRequired
-    }
-    user, err := r.baseRepo.GetUser(ctx, userID)
-    r.audit.LogAccess(ctx, userID, purpose, "read")
-    return user, err
-}
-```
-
-**Validation Metrics**:
-| Metric | Formula | Current | Target | Weeks |
-|--------|---------|---------|--------|-------|
-| Consent Coverage | Users w/ Consent / Total × 100% | 53% | 100% | 8 |
-| Audit Completeness | Logged / Total × 100% | 68% | 100% | 6 |
-| GDPR Compliance | Addressed / Required × 100% | 72% | 95% | 8 |
-
-**Anti-patterns**: ❌ Implied consent, ❌ Blanket consent, ❌ Mutable logs
+Execute 21-step validation (Part I). Present results in table format. All checks must show PASS before submission.
 
 ---
