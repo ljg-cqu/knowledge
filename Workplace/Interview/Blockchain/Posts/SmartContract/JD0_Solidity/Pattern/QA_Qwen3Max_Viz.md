@@ -1,6 +1,6 @@
 # A Deep Dive into Blockchain Smart Contract Engineering: Paradigms, Security, and Optimization
 
-## The Three Pillars of Blockchain Architecture: EVM, Solana, and Move
+## 1. The Three Pillars of Blockchain Architecture: EVM, Solana, and Move
 
 The blockchain development landscape is defined by three distinct technological pillars, each with unique philosophies, programming languages, and architectural trade-offs.
 
@@ -111,7 +111,7 @@ graph LR
 
 ---
 
-## Gas Optimization: The Art and Science of Transactional Efficiency
+## 2. Gas Optimization: The Art and Science of Transactional Efficiency
 
 Gas optimization transcends mere efficiency—it's critical for user adoption, economic viability, and security. Each platform presents unique gas metering systems and corresponding optimization patterns.
 
@@ -239,7 +239,7 @@ graph TD
 
 ---
 
-## A Multi-Layered Security Imperative: From Protocol Flaws to Platform-Specific Threats
+## 3. A Multi-Layered Security Imperative: From Protocol Flaws to Platform-Specific Threats
 
 Security in smart contract engineering is a multi-layered discipline encompassing:
 - Protocol-level risks inherent to DeFi
@@ -321,7 +321,7 @@ sequenceDiagram
 
 #### Solana Threat Model
 
-**1. Cross-Program Invocation (CPI) Risks**
+**3.1.1 Cross-Program Invocation (CPI) Risks**
 
 **Vulnerability:**
 - Failing to validate target program ID → "confused deputy" attack [[76](https://threesigma.xyz/blog/rust-and-solana/rust-memory-safety-on-solana)]
@@ -335,7 +335,7 @@ require!(
 );
 ```
 
-**2. Account Confusion**
+**3.1.2 Account Confusion**
 
 **Vulnerability:**
 - Not verifying account ownership/mint/type [[63](https://cantina.xyz/blog/securing-solana-a-developers-guide), [76](https://threesigma.xyz/blog/rust-and-solana/rust-memory-safety-on-solana)]
@@ -346,7 +346,7 @@ require!(
 - ✅ Check discriminator fields
 - ✅ Confirm mint addresses
 
-**3. Program Derived Address (PDA) Issues**
+**3.1.3 Program Derived Address (PDA) Issues**
 
 **Risk:**
 - Incorrect derivation/validation grants unauthorized access [[72](https://exvul.com/rust-smart-contract-security-guide-in-solana/), [76](https://threesigma.xyz/blog/rust-and-solana/rust-memory-safety-on-solana)]
@@ -356,7 +356,7 @@ require!(
 - Validate PDA derivation on-chain
 - Never expose seed generation logic
 
-**4. State Desynchronization**
+**3.1.4 State Desynchronization**
 
 **Issue:**
 - Snapshot at instruction start becomes stale after CPI [[63](https://cantina.xyz/blog/securing-solana-a-developers-guide), [76](https://threesigma.xyz/blog/rust-and-solana/rust-memory-safety-on-solana)]
@@ -371,7 +371,7 @@ require!(
 **Key Insight:**
 > While Move prevents reentrancy and double-spending structurally, vulnerabilities shift to cross-module interactions and capability misuse [[56](https://tokenminds.co/blog/blockchain-development/move-programming-languange), [58](https://arxiv.org/html/2508.17964v2)]
 
-**1. Capability Leaks**
+**3.2.1 Capability Leaks**
 
 **Vulnerability Example:**
 - Exposing `ConstructorRef` allows attacker to reclaim NFT ownership [[57](https://aptos.dev/build/smart-contracts/move-security-guidelines)]
@@ -380,7 +380,7 @@ require!(
 - Principle of least privilege
 - Discard sensitive capabilities immediately after use [[57](https://aptos.dev/build/smart-contracts/move-security-guidelines)]
 
-**2. Improper Ability Assignment**
+**3.2.2 Improper Ability Assignment**
 
 **Risk Example:**
 - Giving Token struct `copy` ability → double-spending possible [[57](https://aptos.dev/build/smart-contracts/move-security-guidelines)]
@@ -389,7 +389,7 @@ require!(
 - Carefully audit ability declarations
 - Review cross-module interactions
 
-**3. Emerging Vulnerability Categories**
+**3.2.3 Emerging Vulnerability Categories**
 
 **Detected by MoveScanner [[58](https://arxiv.org/html/2508.17964v2)]:**
 - Resource leakage
