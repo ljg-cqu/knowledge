@@ -6,205 +6,103 @@ Framework for generating high-quality interview question banks focused on compre
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
+## Scope and Content Principles
 
-## Specifications
+**Scope**: 25–30 Q&A pairs for senior/architect/expert-level technical leaders.
 
-### Scope and Structure
+**Answer Length**: 150–300 words covering business-technical alignment, strategic trade-offs, value mapping, organizational constraints.
 
-- **Scope**: 25–30 Q&A pairs for senior/architect/expert level technical leaders
-- **Answer Length**: 150–300 words covering business-technical alignment, strategic trade-offs, value mapping, organizational constraints
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Visual Requirements**: ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
-- **Business Analysis Depth**: Strategic modeling, value/risk analysis, organizational dynamics, architectural translation
+**Difficulty Distribution**: 20/40/40 balance (Foundational/Intermediate/Advanced).
 
-### Content Principles
-
+**Content Principles**:
 - **MECE Coverage**: Four dimensions (Strategic Modeling, Documentation, Visualization, Analysis) × Four perspectives (Strategic, Operational, Organizational, Architectural)
-- **Analysis Required**: Value mapping (propositions → technical features), risk assessment (business/operational/regulatory), constraint analysis, evolution planning, transition from business to architecture
+- **Analysis Required**: Value mapping (propositions → technical features), risk assessment (business/operational/regulatory), constraint analysis, evolution planning, business-technical mapping
 - **Multi-Perspective**: Strategic (business model, market position), Operational (processes, capabilities), Organizational (structure, culture), Architectural (system design, technical debt)
 - **Framework Handling**: Present competing frameworks (Business Model Canvas vs Lean Canvas, Value Stream vs Process Mapping); cite counter-evidence; acknowledge context (B2B vs B2C, enterprise vs startup, regulated vs unregulated)
-- **Practitioner Clarity**: State where field agrees vs disagrees; distinguish universal principles vs context-specific practices; trace architectural decisions to business value
+- **Practitioner Clarity**: State field consensus vs disagreements; distinguish universal principles vs context-specific practices; trace architectural decisions to business value
 
-### Evaluation Dimensions
+## Evaluation Dimensions
+
+Assess answers across four lenses:
 
 - **Business**: Value propositions, revenue models, customer segments, market positioning, competitive dynamics
 - **Strategic**: Business model evolution, growth adaptability, risk mitigation, regulatory landscape, investment priorities
 - **Organizational**: Team structure, communication patterns, capability gaps, cultural alignment, change management
 - **Architectural**: Business-technical mapping, constraint translation, flexibility requirements, scalability drivers, technical debt implications
 
-### Visual Element Standards
+## Terminology and ID Conventions
 
-**Per Topic Cluster Requirements**: Primary diagram + supporting table + quantitative element
+**Standard Terms**:
+- **business-technical mapping**: Tracing business drivers to architectural decisions
+- **topic**: Thematic grouping of 4–6 related Q&A pairs
 
-#### Diagram Selection by Analysis Type
+**Reference ID Format**:
+- **G#**: Glossary term (G1, G2, ...)
+- **T#**: Tool (T1, T2, ...)
+- **L#**: Literature (L1, L2, ...)
+- **A#**: APA-style citation (A1, A2, ...)
+- **In-text**: Use [G1], [T2], [L3], [A4] after claims
+
+## Reference Requirements
+
+| Category | Min Count | Required Fields | ID Prefix | Citation Rules |
+|----------|-----------|-----------------|-----------|----------------|
+| **Glossary** | ≥10 | Term, definition, usage, related concepts, language tag | G# | Include BMC, Value Proposition, Customer Segment, DDD, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, Revenue Stream, System Boundaries |
+| **Tools** | ≥5 | Name, purpose, pricing, adoption metrics, last update (≤18 months), key integrations, URL | T# | Include business modeling (Miro), architecture visualization (ArchiMate, C4), documentation (Confluence), diagramming (LucidChart), strategic planning (Wardley Maps) |
+| **Literature** | ≥6 | Author(s), year, title, publisher, language tag | L# | Include Osterwalder (Business Model), Evans/Vernon (DDD), Conway (organizational design), Hohpe (integration), Richardson (microservices) + ZH sources |
+| **Citations** | ≥12 | APA 7th format with language tags | A# | ~60% EN / ~30% ZH / ~10% other; ≥50% from last 3 years (≥70% for digital transformation/cloud-native) |
+
+**Per Topic**: ≥2 authoritative sources + ≥1 tool reference.
+
+**Quality Gates**:
+- **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
+- **Diversity**: ≥3 source types; no single source >25%
+- **Evidence**: ≥70% answers have ≥1 citation; ≥30% have ≥2 citations
+- **Links**: Validate accessibility; use DOIs/archived URLs
+- **Cross-refs**: All [Ref: ID] resolve to entries
+
+> **Scaling**: For >30 Q&A, increase floors by ~1.5×. Prioritize gates before raising floors.
+
+## Visual Requirements
+
+**Per Topic**: ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element.
+
+**Rendering Standards**:
+- **Diagrams**: Prefer Mermaid (GitHub-native); include captions and legends
+- **Math**: Inline `$formula$` or block `$$formula$$`; define variables on first use
+- **Common Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
+- **Legends**: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note
+
+**Diagram Selection by Analysis Type**:
 
 | Analysis Type | Primary Diagram | Standard | Supporting Elements |
 |---------------|-----------------|----------|---------------------|
 | **Strategic Modeling** | Business Model Canvas, Value Stream Map | BPMN, ArchiMate | ROI: `(Revenue - Investment) / Investment × 100%` |
 | **Value & Risk Analysis** | Risk matrix, Decision tree | DMN | Risk: `Probability × Impact × Exposure` |
-| **Documentation** | C4 Context/Container, Component diagram | UML, C4 | Performance: `Availability = Uptime / Total Time × 100%` |
+| **Documentation** | C4 Context/Container, Component diagram | UML, C4 | Availability: `Uptime / Total Time × 100%` |
 | **Organizational** | Team topology, Conway's Law map | Custom | Communication overhead metrics |
-| **Architecture Translation** | Value→Architecture mapping | UML, DDD | Debt: `Remediation Cost / Dev Cost × 100%` |
+| **Business-Technical Mapping** | Value→Architecture mapping | UML, DDD | Debt: `Remediation Cost / Dev Cost × 100%` |
 | **Evolution** | Migration roadmap, Timeline | Gantt | NPV: `Σ(Cash Flow / (1 + r)^n) - Investment` |
 
-**Standards Reference**: BPMN (processes), DMN (decisions), UML (structure/behavior), ArchiMate (enterprise), SysML (requirements), ERD/DFD (data), C4 (software views)
+**Quick Reference by Need**:
 
-#### Business Frameworks (Apply Relevant Combination)
-
-- **Business Model Canvas**: 9-block analysis → architectural implications
-- **Value Proposition**: Customer segments → technical requirements
-- **SWOT/Porter's Five Forces**: Strategic positioning → architecture priorities
-- **Lean Canvas**: Problem-solution fit → validation strategy
-
-#### Visual Quality Standards
-
-**Rendering**: Prefer Mermaid (GitHub-native). Syntax example:
-```mermaid
-flowchart TD
-    A[Start] --> B[Process]
-    B --> C[End]
-```
-
-**Math**: Inline `$formula$` or block `$$formula$$`. Define variables on first use.
-
-**Common Math Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
-
-**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note
-
-**Anti-patterns**: Avoid single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
-
-**Combination Patterns**: For comprehensive analysis, combine multiple diagram types:
-- **Full Documentation**: Requirements (Use Case) → Structure (Class/Component) → Behavior (Sequence/Activity) → Deployment
-- **Process Automation**: BPMN Process → DMN Decision Table → ERD Data Model → Integration Diagram
-- **Enterprise Architecture**: Strategy → Current State → Target State → Migration (all ArchiMate viewpoints)
-
-**Quick Reference – Diagram Shortcut Guide**
-| Need | Recommended Diagram(s) | Standard |
-|------|-----------------------|----------|
+| Need | Diagram | Standard |
+|------|---------|----------|
 | API design | Class + Sequence | UML |
-| Workflow logic | Activity (UML) / Process (BPMN) | UML / BPMN |
+| Workflow logic | Activity / Process | UML / BPMN |
 | Decision logic | Decision Table + Requirements | DMN / SysML |
-| Business process | Process / Collaboration with Pools & Lanes | BPMN |
+| Business process | Process / Collaboration (Pools & Lanes) | BPMN |
 | Database design | ERD + Data Flow | ERD / DFD |
 | System architecture | Component + Deployment | UML |
 | Enterprise strategy | Strategy + Migration viewpoints | ArchiMate |
 
-### Additional Decision & Cost Tables
+**Anti-patterns**: Single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale.
 
-**Risk‑Based Decision Matrix** (choose tool/approach based on risk level):
-| Risk Factor | Low‑Risk Approach | Medium‑Risk Approach | High‑Risk Approach |
-|------------|-------------------|----------------------|-------------------|
-| Budget Constraints | Open‑source (PlantUML, Archi) | Mixed (Free + Limited paid) | Full commercial suite |
-| Timeline Pressure | Familiar tools only | Quick‑learning tools | Comprehensive training |
-| Integration Needs | Stand‑alone tools | API‑connected tools | Fully integrated platform |
-| Compliance Requirements | Basic standards compliance | Industry‑specific compliance | Regulatory‑grade compliance |
-
-**Cost‑Benefit Analysis Framework** (estimate ROI of tooling):
-| Investment Level | Tool Cost | Training Cost | ROI Timeline | Total Value |
-|----------------|----------|--------------|--------------|------------|
-| Starter | $0‑5K | $1‑2K | 3‑6 months | Quick wins, limited scale |
-| Professional | $10‑50K | $5‑15K | 6‑12 months | Balanced investment, good ROI |
-| Enterprise | $100K+ | $25K+ | 12‑24 months | Long‑term value, high impact |
-
-### Citation Standards
-
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Business frameworks & methodologies; (2) Architecture patterns & practices; (3) Case studies & industry reports; (4) Tools & platforms
-- **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] after factual claims, frameworks, business models, architectural patterns, best practices, trade-off analyses
-
-### Reference Minimum Requirements
-
-| Section | Floor | Content |
-|---------|-------|---------|
-| Glossary | ≥10 | Business Model Canvas, Value Proposition, Customer Segment, DDD, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, Revenue Stream, System Boundaries |
-| Tools | ≥5 | Business modeling (Miro), architecture visualization (ArchiMate, C4), documentation (Confluence), diagramming (LucidChart), strategic planning (Wardley Maps) |
-| Literature | ≥6 | Business strategy (Osterwalder), DDD (Evans, Vernon), organizational design (Conway, Skelton), integration (Hohpe), microservices (Richardson) |
-| Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
-
-**Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
-
-### Usage Guidelines
-
-1. Follow MECE structure; maintain 20/40/40 difficulty balance
-2. Meet all reference floors; address Business/Strategic/Organizational/Architectural dimensions
-3. Include ≥1 primary diagram + ≥1 supporting table + ≥1 quantitative element per topic cluster
-4. Per topic: ≥2 authoritative sources + ≥1 tool reference
-5. Document any gaps with remediation plan
-
-### Quality Gates
-
-- **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native domains)
-- **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% answers have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, adoption metrics, last update ≤18 months, key integrations
-- **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
-
-> Scaling: For >30 Q&A, increase floors by ~1.5×. Prioritize gates before raising floors.
-
-### Pre-Submission Validation
-
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
-
-**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Q&As 25-30 (20/40/40)
-
-**Step 2 – Citations**: ≥70% answers have ≥1; ≥30% have ≥2
-
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-
-**Step 4 – Recency**: ≥50% from last 3 years (≥70% for digital transformation/cloud-native)
-
-**Step 5 – Diversity**: ≥3 source types; no single >25%
-
-**Step 6 – Links**: All accessible or archived
-
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-
-**Step 8 – Word Count**: Sample 5 answers; all 150-300 words
-
-**Step 9 – Key Insights**: All concrete (business-technical misalignment/constraint trade-off/value mapping failure/organizational impedance)
-
-**Step 10 – Per-Topic**: Each has ≥2 authoritative + ≥1 tool
-
-**Step 11 – Business-Technical Mapping**: ≥80% of answers explicitly connect business drivers to architectural decisions with citations
-
-**Step 12 – Judgment**: ≥70% scenario-based ("How would...", "When should...") vs recall ("What is...")
-
-**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + supporting table + quantitative element
-
-**Step 14 – Business Framework Application**: ≥80% answers apply relevant business frameworks (BMC, Value Prop, SWOT, etc.)
-
-**Step 15 – Mathematical Analysis**: ≥60% answers include quantitative formulas or calculations where appropriate
-
-**Validation Report Template:**
-```
-| Check | Result | Status |
-|-------|--------|--------|
-| Floors | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
-| Links | Y/X accessible | PASS/FAIL |
-| Cross-refs | Y/X resolved | PASS/FAIL |
-| Word counts | 5/5 compliant | PASS/FAIL |
-| Key Insights | Y/X concrete | PASS/FAIL |
-| Per-topic mins | X/Y topics meet | PASS/FAIL |
-| Biz-Tech mapping | X/Y explicit | PASS/FAIL |
-| Judgment vs Recall | X% judgment-based | PASS/FAIL |
-| Visual coverage | X% have diagram+table+formula | PASS/FAIL |
-| Framework application | X% apply biz frameworks | PASS/FAIL |
-| Mathematical analysis | X% include quantitative elements | PASS/FAIL |
-```
-
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
-
-### Submission Checklist
-
-- [ ] All 15 validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
+**Business Frameworks** (apply relevant combination):
+- **Business Model Canvas**: 9-block analysis → architectural implications
+- **Value Proposition**: Customer segments → technical requirements
+- **SWOT/Porter's Five Forces**: Strategic positioning → architecture priorities
+- **Lean Canvas**: Problem-solution fit → validation strategy
 
 ---
 
@@ -212,72 +110,69 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 Execute generation workflow with inline quality checks at each step.
 
-## Instructions
+## Step 1: Topic Identification & Planning
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+1. Identify 5–6 topics aligned with framework: Strategic Modeling (Business Model, Domain) | Value & Risk Analysis | Documentation & Visualization | Organizational Dynamics | Business-Technical Mapping | Evolution & Adaptation
+2. Allocate 4–6 Q&As per topic (total 25–30); assign 20/40/40 difficulty (F/I/A)
+3. **Check**: Total = 25–30, ratio ≈20/40/40
 
-### Step 1: Topic Identification & Planning
-1. Identify 5-6 clusters aligned with framework: Strategic Modeling (Business Model, Domain) | Value & Risk Analysis | Documentation & Visualization | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 4-6 Q&As per cluster (total 25-30); assign 20/40/40 difficulty (F/I/A)
-3. **Check**: Total = 25-30, ratio ≈20/40/40
+## Step 2: Reference Collection
 
-### Step 2: Reference Collection
-1. **Glossary (≥10)**: Business Model Canvas, Value Proposition, Customer Segment, Revenue Stream, Domain-Driven Design, Bounded Context, Conway's Law, Technical Debt, Capability Mapping, Living Documentation, ADR, Wardley Mapping, Value Stream Mapping, System Boundaries
-2. **Tools (≥5)**: Miro (business modeling), ArchiMate/C4 Model (architecture visualization), Confluence (documentation), LucidChart (diagramming), Wardley Maps
-3. **Literature (≥6)**: Osterwalder (Business Model), Evans/Vernon (DDD), Conway (organizational design), Hohpe (integration), Richardson (microservices) + ZH sources (周爱民, 张逸, 肖然)
-4. **Citations (≥12)**: Tag language, year, type (1-4); assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
+1. Gather resources per [Reference Requirements](#reference-requirements) table (Part I)
+2. Assign IDs (G#/T#/L#/A#); tag language, year, type
+3. **Check**: Meet all minimum counts, language distribution ~60/30/10%, recency ≥50% last 3yr, ≥3 types
 
-### Step 3: Q&A Generation
-1. Write scenario-based questions ("How would...", "When should..."); draft 150-300 word answers
+## Step 3: Q&A Generation
+
+1. Write scenario-based questions ("How would...", "When should..."); draft 150–300 word answers
 2. Include ≥1 [Ref: ID] per answer; explicitly trace business value → architectural decisions
 3. State concrete Key Insight (misalignment/constraint/value mapping failure/organizational impedance)
-4. **Check**: Every 5 Q&As verify word counts, citations, value-to-architecture tracing, judgment focus
+4. **Check**: Every 5 Q&As verify word counts, citations, business-technical mapping, judgment focus
 
-### Step 4: Visual Artifacts
-1. Per topic cluster, create ≥3 elements: primary diagram + supporting table + quantitative formula
-2. Use Mermaid for diagrams; include captions and legends
+## Step 4: Visual Artifacts
+
+1. Per topic, create ≥3 elements: primary diagram + supporting table + quantitative formula
+2. Follow [Visual Requirements](#visual-requirements) (Part I) for rendering standards
 3. Apply relevant business frameworks (BMC, Value Prop, SWOT) with architectural mapping
-4. **Check**: All clusters covered; visuals align with analysis type (see Diagram Selection table in Part I)
+4. **Check**: All topics covered; visuals align with analysis type (see Diagram Selection table in Part I)
 
-### Step 5: References
-1. Populate Glossary/Tools/Literature/APA with required fields
+## Step 5: References
+
+1. Populate Glossary/Tools/Literature/APA with required fields (see [Reference Requirements](#reference-requirements) in Part I)
 2. **Check**: All [Ref: ID] resolve
 
-### Step 6: Validation
-Execute all 15 steps (Part I). Fix failures; re-validate until all PASS.
+## Step 6: Validation
 
-### Step 7: Final Review
-Apply critique criteria. Check submission checklist. Submit when all PASS.
+Execute all 15 steps from [Validation Checklist](#validation-checklist) (Part III). Fix failures; re-validate until all PASS.
+
+## Step 7: Final Review
+
+Apply critique criteria (Part III). Check submission checklist. Submit when all PASS.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated question banks with quality criteria.
+## Question Design & Critique
 
-### Question Design & Critique
+**Implementation Approach** - Guide candidates through the transition framework:
+1. **Value Mapping**: Identify value propositions → map to technical requirements → prioritize by business impact
+2. **Risk Assessment**: Document business risks → evaluate operational constraints → consider regulatory requirements
+3. **Organizational Factors**: Align with team structure → reflect communication patterns → account for future changes
+4. **Business-Technical Mapping**: Show explicit connection from business drivers to architectural decisions
 
-**Implementation Approach:**
-
-Questions should guide candidates through the transition framework:
-1. **Start with Value Mapping**: Identify value propositions → map to technical requirements → prioritize by business impact
-2. **Assess Risk Factors**: Document business risks → evaluate operational constraints → consider regulatory requirements
-3. **Consider Organizational Factors**: Align with team structure → reflect communication patterns → account for future changes
-4. **Trace to Architecture**: Show explicit connection from business drivers to architectural decisions
-
-**Quality Criteria:**
+**Quality Criteria**:
 
 - **Clarity**: Single unambiguous ask
   - ✅ "How would you translate a shift from one-time licensing to subscription revenue into architectural requirements?"
   - ❌ "Explain business models and microservices architecture"
   
-- **Signal**: Tests business-technical translation, not trivia
+- **Signal**: Tests business-technical mapping, not trivia
   - ✅ "Your CEO wants to enter a regulated market. How does this change your architecture strategy?"
   - ❌ "List the nine components of Business Model Canvas"
   
 - **Depth**: Enables discussion of business constraints, value trade-offs, organizational impacts
-  - ✅ "Choose one: monolith refactor, strangler pattern, or greenfield rewrite for a company pivoting from B2B to B2C. How do you decide?"
+  - ✅ "Choose: monolith refactor, strangler pattern, or greenfield rewrite for a company pivoting from B2B to B2C. How do you decide?"
   - ❌ "Should you use microservices? Yes/no"
   
 - **Realism**: Scenarios matching senior/architect/expert roles bridging business and technology
@@ -287,21 +182,15 @@ Questions should guide candidates through the transition framework:
 - **Discriminative**: Tests judgment over recall
   - ✅ "When does Conway's Law suggest organizational restructuring before technical refactoring?"
   - ❌ "What is Conway's Law?"
-  
-- **Alignment**: Match seniority (Senior: tactical alignment | Architect: strategic translation | Expert: business-technical strategy)
 
-**Success Factors:**
-
-Answers should demonstrate:
+**Success Factors** - Answers should demonstrate:
 - Maintaining current understanding (regular business review, prompt documentation updates, adaptive decisions)
 - Clear communication (documented decisions, knowledge sharing, living documentation)
 - Value alignment (trace decisions to business value, measure impact on value propositions, adjust based on feedback)
 
 ---
 
-## Output Format
-
-Use this structure when generating question banks:
+## Output Structure
 
 ```markdown
 ## Contents
@@ -322,15 +211,13 @@ Use this structure when generating question banks:
 
 ## Topic Areas: Questions 1-N
 
-Overview of coverage and difficulty distribution.
-
 | Topic | Question Range | Count | Difficulty Mix |
 |-------|---------------|-------|----------------|
 | Strategic Modeling (Business Model, Domain) | Q1-Q5 | 5 | 1F, 2I, 2A |
 | Value & Risk Analysis | Q6-Q10 | 5 | 1F, 2I, 2A |
 | Documentation & Visualization | Q11-Q15 | 5 | 1F, 2I, 2A |
 | Organizational Dynamics | Q16-Q20 | 5 | 1F, 2I, 2A |
-| Architectural Translation | Q21-Q25 | 5 | 1F, 2I, 2A |
+| Business-Technical Mapping | Q21-Q25 | 5 | 1F, 2I, 2A |
 | Evolution & Adaptation | Q26-Q30 | 5 | 1F, 2I, 2A |
 | **Total** | | **30** | **6F, 12I, 12A** |
 
@@ -343,7 +230,7 @@ Overview of coverage and difficulty distribution.
 ### Q1: [Question Text]
 
 **Difficulty**: [Foundational/Intermediate/Advanced]  
-**Type**: [Strategic Modeling/Value & Risk Analysis/Documentation & Visualization/Organizational Dynamics/Architectural Translation/Evolution & Adaptation]
+**Type**: [Strategic Modeling/Value & Risk Analysis/Documentation & Visualization/Organizational Dynamics/Business-Technical Mapping/Evolution & Adaptation]
 
 **Key Insight**: [One sentence stating specific business-technical misalignment/constraint trade-off/value mapping failure/organizational impedance this question exposes]
 
@@ -371,10 +258,10 @@ Overview of coverage and difficulty distribution.
 Strategic management template with 9 building blocks: Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure. Used for business model design, validation, innovation. Related: Lean Canvas, Value Proposition Canvas [EN]
 
 **G2. Value Proposition**  
-The bundle of products/services creating value for a specific customer segment; answers "why customers choose you." Maps to technical features and quality attributes (performance, reliability, usability). Used for product-market fit, differentiation, architecture prioritization. Related: Jobs-to-be-Done, Quality Attributes [EN]
+Bundle of products/services creating value for a specific customer segment; answers "why customers choose you." Maps to technical features and quality attributes. Used for product-market fit, differentiation, architecture prioritization. Related: Jobs-to-be-Done, Quality Attributes [EN]
 
 **G3. Customer Segment**  
-Distinct groups of people/organizations an enterprise aims to reach and serve, with common needs, behaviors, or attributes. Maps to system design decisions (interfaces, workflows, data models). Used for market targeting, personalization, resource allocation. Related: Persona, Market Segmentation, ICP [EN]
+Distinct groups of people/organizations an enterprise aims to reach and serve, with common needs, behaviors, or attributes. Maps to system design decisions. Used for market targeting, personalization, resource allocation. Related: Persona, Market Segmentation, ICP [EN]
 
 **G4. Domain-Driven Design (DDD)**  
 Software development approach focusing on complex domain modeling through collaboration between technical and domain experts; emphasizes ubiquitous language, bounded contexts, aggregates. Used for complex business logic, microservices boundaries, team organization. Related: Event Storming, Context Mapping [EN]
@@ -386,30 +273,27 @@ DDD pattern defining explicit boundaries within which a domain model is valid; d
 "Organizations design systems that mirror their communication structure." Used for team topology design, architecture alignment, organizational change planning. Related: Inverse Conway Maneuver, Team Topologies [EN]
 
 **G7. Technical Debt**  
-Implied cost of additional rework caused by choosing quick/limited solutions now instead of better approaches that would take longer; includes code debt, architectural debt, knowledge debt. Used for refactoring prioritization, risk assessment, investment planning. Related: Architectural Erosion, Entropy [EN]
+Implied cost of additional rework caused by choosing quick/limited solutions now instead of better approaches; includes code debt, architectural debt, knowledge debt. Used for refactoring prioritization, risk assessment, investment planning. Related: Architectural Erosion, Entropy [EN]
 
 **G8. Capability Mapping**  
 Technique identifying and organizing business capabilities (what the business does) independent of how it's done; used for strategic planning, gap analysis, transformation roadmaps. Related: Business Capability Model, Value Stream Mapping [EN]
 
-**G9. Process Mapping**  
-Visual documentation of workflows, activities, decision points, and information flows; used for optimization, automation, understanding current state. Related: Value Stream Mapping, BPMN, Swimlane Diagrams [EN]
-
-**G10. Wardley Mapping**  
-Strategic planning technique visualizing components of a value chain positioned by visibility (y-axis) and evolution (x-axis); used for strategic decision-making, identifying opportunities, anticipating change. Related: Value Chain Analysis, Strategic Positioning [EN]
-
-**G11. Living Documentation**  
+**G9. Living Documentation**  
 Documentation that evolves with the system, stays current through automation and continuous updates; captures current state and evolution history. Used for knowledge sharing, onboarding, architectural understanding. Related: Documentation as Code, ADR [EN]
 
-**G12. Architecture Decision Records (ADR)**  
+**G10. Architecture Decision Records (ADR)**  
 Lightweight documentation capturing architectural decisions, context, consequences, and trade-offs; immutable log of choices made. Used for decision transparency, knowledge preservation, future reference. Related: Decision Log, Design Rationale [EN]
 
-**G13. Value Stream Mapping**  
+**G11. Wardley Mapping**  
+Strategic planning technique visualizing components of a value chain positioned by visibility (y-axis) and evolution (x-axis). Used for strategic decision-making, identifying opportunities, anticipating change. Related: Value Chain Analysis, Strategic Positioning [EN]
+
+**G12. Value Stream Mapping**  
 Lean technique visualizing steps in delivering value to customers, identifying waste, bottlenecks, and improvement opportunities. Used for process optimization, lead time reduction, efficiency analysis. Related: Process Mapping, Flow Analysis [EN]
 
-**G14. Revenue Stream**  
+**G13. Revenue Stream**  
 Ways an organization generates income from customer segments (e.g., one-time sale, subscription, usage-based, freemium, licensing). Directly impacts architectural requirements (metering, billing, multi-tenancy). Used for business model design, pricing strategy, technical planning. Related: Monetization Model, Pricing Strategy [EN]
 
-**G15. System Boundaries**  
+**G14. System Boundaries**  
 Explicit definition of what is inside vs outside the system scope; determines interfaces, integration points, and responsibilities. Used for context diagrams, scope management, interface design. Related: Context Diagram, Bounded Context, Integration Points [EN]
 
 ---
@@ -417,7 +301,7 @@ Explicit definition of what is inside vs outside the system scope; determines in
 ### Business & Architecture Tools
 
 **T1. Miro** (Visual Collaboration & Business Modeling)  
-Infinite canvas for Business Model Canvas, Value Proposition Canvas, journey mapping, process flows, architecture diagrams. Freemium to Enterprise. 80M+ users (Dell, Cisco, Deloitte). Updated Q4 2024 (enhanced AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Confluence. Use cases: Business model workshops, domain modeling sessions, architecture design, stakeholder alignment. https://miro.com [EN]
+Infinite canvas for BMC, Value Proposition Canvas, journey mapping, process flows, architecture diagrams. Freemium to Enterprise. 80M+ users (Dell, Cisco, Deloitte). Updated Q4 2024 (enhanced AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Confluence. Use cases: Business model workshops, domain modeling, architecture design, stakeholder alignment. https://miro.com [EN]
 
 **T2. ArchiMate** (Enterprise Architecture Modeling)  
 Open standard for enterprise architecture modeling covering business, application, technology, motivation, implementation layers. Used with tools like Archi (free), Sparx EA, BiZZdesign. Supports capability mapping, process modeling, technology mapping. ISO/IEC/IEEE 42010 compliant. Use cases: Business-IT alignment, impact analysis, transformation planning. https://www.opengroup.org/archimate-forum [EN]
@@ -426,7 +310,7 @@ Open standard for enterprise architecture modeling covering business, applicatio
 Hierarchical set of diagrams (Context, Container, Component, Code) for visualizing software architecture at different abstraction levels. Free, tool-agnostic (Structurizr, PlantUML, Draw.io support). Created by Simon Brown. Use cases: Architecture documentation, stakeholder communication, onboarding. https://c4model.com [EN]
 
 **T4. Confluence** (Documentation & Knowledge Management)  
-Team workspace for documentation, decision records, architecture diagrams, process documentation. Free to Enterprise ($5.75-$11/user/mo). 75K+ companies (Spotify, LinkedIn). Updated Q3 2024 (AI-powered search, summaries). Integrates: Jira, Slack, Miro, Lucidchart, Draw.io. Use cases: Architecture Decision Records (ADRs), living documentation, business context sharing. https://www.atlassian.com/software/confluence [EN]
+Team workspace for documentation, decision records, architecture diagrams, process documentation. Free to Enterprise ($5.75-$11/user/mo). 75K+ companies (Spotify, LinkedIn). Updated Q3 2024 (AI-powered search, summaries). Integrates: Jira, Slack, Miro, Lucidchart, Draw.io. Use cases: ADRs, living documentation, business context sharing. https://www.atlassian.com/software/confluence [EN]
 
 **T5. LucidChart** (Diagramming & Visual Communication)  
 Cloud-based diagramming for flowcharts, process maps, org charts, architecture diagrams, ERDs. Individual ($7.95/mo) to Enterprise. 60M+ users (Google, GE, NBC). Updated Q4 2024 (AI diagram generation). Integrates: Google Workspace, Microsoft 365, Slack, Confluence, Jira. Use cases: Process mapping, capability modeling, architecture visualization, stakeholder presentations. https://www.lucidchart.com [EN]
@@ -461,7 +345,7 @@ Microservices decomposition, data management, communication patterns. Practical 
 
 **A2. Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley Professional. [EN]**
 
-**A3. 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]**
+**A3. 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]**  
 (Zhou, A. (2021). *The essence of architecture*. Publishing House of Electronics Industry.)
 
 **A4. Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley Professional. [EN]**
@@ -474,7 +358,7 @@ Microservices decomposition, data management, communication patterns. Practical 
 
 **A8. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
 
-**A9. 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]**
+**A9. 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]**  
 (Zhang, Y. (2019). *Domain-driven design in practice*. Publishing House of Electronics Industry.)
 
 **A10. Fowler, M. (2002). *Patterns of enterprise application architecture*. Addison-Wesley Professional. [EN]**
@@ -483,7 +367,7 @@ Microservices decomposition, data management, communication patterns. Practical 
 
 **A12. Kim, G., Humble, J., Debois, P., & Willis, J. (2016). *The DevOps handbook: How to create world-class agility, reliability, and security in technology organizations*. IT Revolution Press. [EN]**
 
-**A13. 肖然. (2020). *企业级业务架构设计*. 机械工业出版社. [ZH]**
+**A13. 肖然. (2020). *企业级业务架构设计*. 机械工业出版社. [ZH]**  
 (Xiao, R. (2020). *Enterprise business architecture design*. China Machine Press.)
 
 **A14. Wardley, S. (2018). *Wardley maps: Topographical intelligence in business*. Medium. https://medium.com/wardleymaps [EN]**
@@ -494,9 +378,66 @@ Microservices decomposition, data management, communication patterns. Practical 
 
 ---
 
-## Validation Report
+## Validation Checklist
 
-Execute 12-step validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
+Execute ALL steps below. Present results in validation report table. Fix any failures and re-run validation until all checks pass.
+
+**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Q&As 25-30 (20/40/40)
+
+**Step 2 – Citations**: ≥70% answers have ≥1; ≥30% have ≥2
+
+**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
+
+**Step 4 – Recency**: ≥50% from last 3 years (≥70% for digital transformation/cloud-native)
+
+**Step 5 – Diversity**: ≥3 source types; no single >25%
+
+**Step 6 – Links**: All accessible or archived
+
+**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
+
+**Step 8 – Word Count**: Sample 5 answers; all 150-300 words
+
+**Step 9 – Key Insights**: All concrete (business-technical misalignment/constraint trade-off/value mapping failure/organizational impedance)
+
+**Step 10 – Per-Topic**: Each has ≥2 authoritative + ≥1 tool
+
+**Step 11 – Business-Technical Mapping**: ≥80% of answers explicitly connect business drivers to architectural decisions with citations
+
+**Step 12 – Judgment**: ≥70% scenario-based ("How would...", "When should...") vs recall ("What is...")
+
+**Step 13 – Visual Element Coverage**: ≥90% of answers include primary diagram + supporting table + quantitative element
+
+**Step 14 – Business Framework Application**: ≥80% answers apply relevant business frameworks (BMC, Value Prop, SWOT, etc.)
+
+**Step 15 – Mathematical Analysis**: ≥60% answers include quantitative formulas or calculations where appropriate
+
+**Validation Report Template:**
+
+| Check | Result | Status |
+|-------|--------|--------|
+| Floors | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
+| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Recency | X% last 3yr | PASS/FAIL |
+| Source diversity | N types, max P% | PASS/FAIL |
+| Links | Y/X accessible | PASS/FAIL |
+| Cross-refs | Y/X resolved | PASS/FAIL |
+| Word counts | 5/5 compliant | PASS/FAIL |
+| Key Insights | Y/X concrete | PASS/FAIL |
+| Per-topic mins | X/Y topics meet | PASS/FAIL |
+| Biz-Tech mapping | X/Y explicit | PASS/FAIL |
+| Judgment vs Recall | X% judgment-based | PASS/FAIL |
+| Visual coverage | X% have diagram+table+formula | PASS/FAIL |
+| Framework application | X% apply biz frameworks | PASS/FAIL |
+| Mathematical analysis | X% include quantitative elements | PASS/FAIL |
+
+> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
+
+## Submission Checklist
+
+- [ ] All 15 validation steps PASS (see report table above)
+- [ ] ALL reference floors met + quality gates passed
 
 ---
 
@@ -507,23 +448,23 @@ Demonstrates the transition framework: Business Understanding → Value/Risk Mod
 ### Q1: How would you translate a company's shift from one-time perpetual licensing to subscription-based SaaS revenue into architectural requirements and constraints?
 
 **Difficulty**: Advanced  
-**Type**: Strategic Modeling, Architectural Translation
+**Type**: Strategic Modeling, Business-Technical Mapping
 
 **Key Insight**: Tests ability to trace business model changes through value/risk models to architectural decisions; distinguishes architects who systematically translate business drivers from those treating architecture as isolated technical concern.
 
 **Answer**:
 
-**Strategic Modeling** [Ref: G1]: Business Model Canvas analysis reveals Revenue Streams (upfront → recurring), Customer Relationships (transactional → continuous), Key Activities (+customer success/retention) [Ref: L1, A1].
+**Strategic Modeling** [G1]: Business Model Canvas analysis reveals Revenue Streams (upfront → recurring), Customer Relationships (transactional → continuous), Key Activities (+customer success/retention) [L1, A1].
 
-**Value Model** [Ref: G2]: Value propositions shift to continuous delivery, uptime guarantees, feature velocity. Customer segments expand to include multi-tier (freemium/pro/enterprise). Technical features required: real-time analytics, self-service onboarding, usage-based billing [Ref: A7].
+**Value Model** [G2]: Value propositions shift to continuous delivery, uptime guarantees, feature velocity. Customer segments expand to multi-tier (freemium/pro/enterprise). Technical features required: real-time analytics, self-service onboarding, usage-based billing [A7].
 
-**Risk Model**: Business risks (churn, downtime revenue impact), operational constraints (SLA commitments 99.9%+), regulatory requirements (data residency, SOC2/GDPR compliance) [Ref: A12, A13].
+**Risk Model**: Business risks (churn, downtime revenue impact), operational constraints (SLA commitments 99.9%+), regulatory requirements (data residency, SOC2/GDPR compliance) [A12, A13].
 
-**Architectural Translation** [Ref: A16]: (1) Multi-tenancy for cost efficiency with tenant isolation [Ref: L6]; (2) Usage metering via event streaming [Ref: A6]; (3) Feature flagging for tier management [Ref: A11]; (4) HA/DR for SLA compliance; (5) Regional deployment for data residency.
+**Business-Technical Mapping** [A16]: (1) Multi-tenancy for cost efficiency with tenant isolation [L6]; (2) Usage metering via event streaming [A6]; (3) Feature flagging for tier management [A11]; (4) HA/DR for SLA compliance; (5) Regional deployment for data residency.
 
-**Technical Debt** [Ref: G7]: Legacy assumptions (licensing checks, offline operation, customer-hosted) require migration strategy. Use Strangler pattern [Ref: A10] to extract multi-tenant services incrementally.
+**Technical Debt** [G7]: Legacy assumptions (licensing checks, offline operation, customer-hosted) require migration strategy. Use Strangler pattern [A10] to extract multi-tenant services incrementally.
 
-**Organizational Dynamics** [Ref: G6]: Conway's Law—add Customer Success, DevOps, SRE teams; architecture must enable their workflows [Ref: A8, L4]. Document decisions via ADR [Ref: G12].
+**Organizational Dynamics** [G6]: Conway's Law—add Customer Success, DevOps, SRE teams; architecture must enable their workflows [A8, L4]. Document decisions via ADR [G10].
 
 **Supporting Artifact**:
 
