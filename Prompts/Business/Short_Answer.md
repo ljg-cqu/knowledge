@@ -101,6 +101,7 @@ Execute all 10 validation steps, record pass/fail, remediate gaps, and re-run un
 
 # Part III: Output Format
 
+```markdown
 ## Contents
 
 - [Problem Bank](#problem-bank-problems-1-n)

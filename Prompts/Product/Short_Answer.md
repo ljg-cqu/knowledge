@@ -117,6 +117,7 @@ Execute all validation checks. Present results in validation report. Fix failure
 
 # Part III: Output Format
 
+```markdown
 ## Template Structure
 
 Use this structure for all generated short answer banks.

@@ -288,7 +288,7 @@ Apply critique criteria. Submit when all PASS.
 
 Use this structure when generating question banks:
 
-```
+```markdown
 ## Contents
 
 - [Topic Areas](#topic-areas-questions-1-n)
