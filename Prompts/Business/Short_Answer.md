@@ -1,23 +1,28 @@
 # Short Answer / Calculation - Business Understanding for Software Architecture
 
-Framework for generating high-quality short answer assessments focused on comprehensive business understanding that benefits software architecture decisions.
+Prompt template for producing self-contained, business-to-architecture short answer assessments that senior technical leaders can act on immediately.
 
 ---
 
 # Part I: Specifications
 
+## Quick Reference
+
+- **Audience**: Senior / architect / expert technical leaders
+- **Goal**: 25–40 short answer problems translating business drivers into architecture decisions
+- **Output Focus**: Clear business context, structured reasoning, worked solutions, graded rubrics
+
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 25–40 problems for senior/architect/expert level technical leaders
-- **Structure**: Self-contained; state business context/constraints explicitly
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Types**: Business model analysis (2-3 sentences), value mapping exercises, risk assessments, architectural justifications (2-4 sentences), trade-off calculations
-- **Answers**: Structured responses with business-to-architecture mapping; worked solutions (2–4 steps)
-- **Grading**: Normalize input; apply tolerances for qualitative responses
-- **Partial Credit**: Correct business analysis 40%, value mapping 30%, architectural decisions 30%
-- **Conflict Handling**: Document alternative valid approaches in worked solutions; clarify when multiple frameworks are acceptable
+- **Scope**: Generate 25–40 problems with explicit business constraints and architecture implications.
+- **Structure**: Each problem is self-contained; surface all assumptions, constraints, and required artefacts.
+- **Difficulty Mix**: Preserve a 20/40/40 split across Foundational / Intermediate / Advanced.
+- **Problem Types**: Business model analysis (2–3 sentences), value mapping, risk assessment, architectural justification (2–4 sentences), trade-off calculation.
+- **Expected Answers**: Provide structured reasoning with business-to-architecture mapping plus 2–4 step worked solutions.
+- **Grading Model**: Normalize qualitative inputs; apply tolerances; weight partial credit as Business Analysis 40%, Value Mapping 30%, Architectural Decisions 30%.
+- **Alternative Paths**: Document additional valid approaches and note where multiple frameworks apply.
 
 ### Citation Standards
 
@@ -37,10 +42,19 @@ Framework for generating high-quality short answer assessments focused on compre
 
 ### Quality Gates
 
-- Recency: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
-- Source diversity: ≥3 source types; no single source >25%
-- Evidence coverage: ≥70% problems with ≥1 citation; ≥30% with ≥2 citations
-- Business-Technical Mapping: ≥80% problems require explicit business-to-architecture translation
+- Recency: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native).
+- Source diversity: ≥3 source types; no single source >25%.
+- Evidence coverage: ≥70% problems with ≥1 citation; ≥30% with ≥2 citations.
+- Business-Technical Mapping: ≥80% problems require explicit business-to-architecture translation.
+
+### Success Criteria
+
+| Dimension | Target |
+| --- | --- |
+| Coverage | 25–40 problems, 20/40/40 difficulty ratio |
+| Context Clarity | Every problem states business scenario, constraints, and stakeholder impact |
+| Reasoning Quality | Worked solutions show MECE steps, cite sources, and request self-review |
+| Validation | All ten validation checks executed and reported as PASS |
 
 ### Pre-Submission Validation
 
@@ -60,30 +74,33 @@ Framework for generating high-quality short answer assessments focused on compre
 # Part II: Instructions
 
 ### Step 1: Topic Identification & Planning
-1. Identify 4-6 clusters: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 4-8 problems per cluster (total 25-40); assign 20/40/40 difficulty
-3. **Check**: Total = 25-40, ratio ≈20/40/40
+
+1. Identify 4–6 clusters (e.g., Strategic Modeling, Value & Risk Analysis, Organizational Dynamics, Architectural Translation, Evolution & Adaptation).
+2. Allocate 4–8 problems per cluster; confirm the 20/40/40 difficulty mix.
+3. **Check**: Total problems ∈ [25, 40]; difficulty ratio preserved; clusters cover distinct business perspectives (MECE).
 
 ### Step 2: Reference Collection
-Gather ≥10 glossary, ≥5 tools, ≥6 literature, ≥12 APA citations; tag language, year, type
+Gather ≥10 glossary, ≥5 tools, ≥6 literature, ≥12 APA citations; tag language, year, and source type.
 
 ### Step 3: Problem Generation
-1. Write problems requiring business model analysis, value mapping, risk assessment, architectural justification
-2. Create worked solutions (2-4 steps) showing business-to-architecture translation
-3. Include ≥1 [Ref: ID] per solution
-4. **Check**: Every 5 problems verify: complete solutions, business-technical mapping, citations
+
+1. Draft problems that force business model analysis, value mapping, risk assessment, and architectural justification.
+2. Build 2–4 step worked solutions applying MECE reasoning, explicit business-to-architecture translation, and cited evidence.
+3. Require self-review prompts (reasoning check, validation checklist) within each solution when relevant.
+4. Include ≥1 [Ref: ID] per solution and highlight where multiple citations are required.
+5. **Check**: After every 5 problems confirm solution completeness, explicit mapping, and citation coverage.
 
 ### Step 4: Reference Compilation
-Populate Glossary/Tools/Literature/APA; ensure all [Ref: ID] resolve
+Populate Glossary/Tools/Literature/APA; ensure all [Ref: ID] resolve and links are accessible or archived.
 
 ### Step 5: Validation
-Execute all 10 steps; fix failures; re-validate until all PASS
+
+Execute all 10 validation steps, record pass/fail, remediate gaps, and re-run until all PASS.
 
 ---
 
 # Part III: Output Format
 
-```markdown
 ## Problem Bank (Problems 1–N)
 
 ### Topic 1: Strategic Modeling
@@ -119,6 +136,10 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 - BMC analysis (4 pts): Correct identification of affected blocks
 - Value mapping (3 pts): Link to technical features
 - Architectural requirements (3 pts): Specific, justified requirements
+
+**Self-Review Prompt:** Confirm the solution ties each business driver to a distinct architectural requirement and validates citation coverage (≥1 [Ref: ID]).
+
+**Validation Check:** Count audit, citation coverage, and business-to-architecture mapping marked PASS for this problem.
 
 ---
 

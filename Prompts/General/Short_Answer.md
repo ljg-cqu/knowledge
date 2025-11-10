@@ -1,6 +1,6 @@
 # Short Answer / Calculation
 
-Framework for generating high-quality short answer/calculation assessments with proper structure, citations, and multi-dimensional evaluation.
+Generate senior/architect/expert-level short answer/calculation assessments (25–40 problems) with worked solutions, citations, and validation.
 
 ---
 
@@ -12,124 +12,125 @@ Define quality requirements, standards, and constraints.
 
 ### Scope and Structure
 
-- **Scope**: 25–40 problems for senior/architect/expert level
-- **Structure**: Self-contained; state units/conventions explicitly
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Types**: Throughput, latency, gas costs, consensus performance, conversions, justifications (2–3 sentences)
-- **Answers**: Exact values with units/tolerances; worked solutions (2–4 steps); support LaTeX/KaTeX
-- **Grading**: Normalize input; apply tolerances
-- **Partial Credit**: Correct method 70%, setup only 50%
-- **Conflict Handling**: Document alternative valid methods in worked solutions; clarify when multiple approaches are acceptable
+| Aspect | Requirement |
+|--------|-------------|
+| Scope | 25–40 problems (senior/architect/expert level) |
+| Difficulty | 20% Foundational / 40% Intermediate / 40% Advanced |
+| Problem Types | Throughput, latency, gas costs, consensus, conversions, justifications (2–3 sentences) |
+| Answers | Exact values + units + tolerances (±%); worked solutions (2–4 steps); LaTeX/KaTeX supported |
+| Grading | Normalize input; apply tolerances; Partial credit: 70% (correct method), 50% (setup only) |
+| Conflicts | Document alternative methods; specify when each is acceptable |
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Official docs (language specs, vendor docs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, academic journals, conference papers); (3) Audits/reports (security audits, industry analyses, regulatory guidance); (4) Vetted code (production repos with stable releases)
-- **Format**: APA 7th with language tags
-- **Distribution**: Codebase/libraries (repos, maturity, benchmarks); Literature/Reports
-- **Inline Citation**: Use [Ref: ID] in worked solutions when referencing formulas, standards, conversion factors. Problem statements may include citations for specifications or performance benchmarks.
+| Aspect | Requirement |
+|--------|-------------|
+| Languages | ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH]) |
+| Source Types | (1) Official docs (specs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, journals); (3) Audits/reports; (4) Vetted code (stable releases) |
+| Format | APA 7th + language tags |
+| Inline Citation | Use `[Ref: ID]` in worked solutions for formulas, standards, conversion factors |
 
 ### Reference Minimum Requirements
 
-| Reference Section | Floor Count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Reference Section | Floor | Notes |
+|-------------------|-------|-------|
+| Glossary, Terminology & Acronyms | ≥10 | Core concepts, domain jargon, localized terms |
+| Codebase & Library References | ≥5 | Primary stack, SDKs, tooling |
+| Authoritative Literature & Reports | ≥6 | Standards, peer-reviewed, regulatory/industry analyses |
+| APA Style Source Citations | ≥12 | Language mix (~60% EN / ~30% ZH / ~10% other) |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> **Exception**: If floor count unmet, state shortfall + rationale + sourcing plan.
 
 ### Quality Gates
 
-- Recency: ≥50% of citations from the last 3 years; for fast-moving domains (AI, security), target ≥70% from the last 2 years.
-- Source diversity: Include at least 3 source types (official docs, standards/peer-reviewed, audits/reports); no single source >25% of total citations.
-- Evidence coverage: ≥70% of problems include ≥1 inline citation in worked solution; ≥30% include ≥2 citations tied to distinct claims.
-- Codebase maturity: Each codebase/library entry includes license, last commit ≤12 months, latest stable release, and security audit status (if available).
-- Deduplication: Canonicalize and avoid duplicate entries; prefer persistent links (DOIs, standards bodies, archived URLs).
-- Link validity: Validate that links resolve (or provide archived link) at time of delivery.
-- Cross-reference binding: Use reference IDs and link problem solutions to specific items in the Reference Sections.
+| Gate | Requirement |
+|------|-------------|
+| Recency | ≥50% from last 3 years; ≥70% from last 2 years (AI/security domains) |
+| Source Diversity | ≥3 source types; no single source >25% |
+| Evidence Coverage | ≥70% problems with ≥1 citation; ≥30% with ≥2 distinct citations |
+| Codebase Maturity | License + last commit ≤12 months + stable release + audit status (if available) |
+| Deduplication | Canonicalize entries; prefer persistent links (DOIs, archived URLs) |
+| Link Validity | All links resolve or archived alternative provided |
+| Cross-Reference | All `[Ref: ID]` in solutions resolve to Reference Sections |
 
-> Scaling guidance: For sets >40 problems or regulated domains, increase floor counts by ~1.5× (round up) instead of unlimited growth. Prioritize meeting the Quality Gates first.
+> **Scaling**: For >40 problems or regulated domains, increase floors by 1.5× (round up). Prioritize Quality Gates.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
+Execute ALL steps. Present validation report. Fix failures; re-run until all pass.
 
 **Step 1 – Count Audit**
-- Count: Glossary entries, Codebase entries, Literature entries, APA citations, Problems (total + by difficulty level)
-- Report: `Glossary: X (target ≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Problems: N total (F foundational, I intermediate, A advanced)`
-- Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
+- Count: Glossary, Codebase, Literature, APA citations, Problems (total + by difficulty)
+- Report: `Glossary: X (≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Problems: N (F foundational, I intermediate, A advanced)`
+- Pass: All minimums met AND difficulty ≈20/40/40
 
-**Step 2 – Citation Coverage Scan**
-- For EACH worked solution: Count inline `[Ref: ...]` occurrences
-- Report: `X of Y problems have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
-- Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
+**Step 2 – Citation Coverage**
+- Count `[Ref: ...]` in each worked solution
+- Report: `X of Y problems with ≥1 citation (Z%); W with ≥2 (V%)`
+- Pass: ≥70% with ≥1 AND ≥30% with ≥2
 
-**Step 3 – Language Distribution Check**
-- Count citations with `[EN]`, `[ZH]`, and other language tags
+**Step 3 – Language Distribution**
+- Count `[EN]`, `[ZH]`, other tags
 - Report: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)`
-- Pass if: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
+- Pass: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
 
-**Step 4 – Recency Verification**
-- Extract publication year from EACH citation
-- Report: `X of Y citations (Z%) from 2022-2025 (last 3 years)`
-- Pass if: ≥50% from last 3 years (≥70% for AI/security domains)
+**Step 4 – Recency**
+- Extract publication year from each citation
+- Report: `X of Y (Z%) from 2022-2025`
+- Pass: ≥50% from last 3 years (≥70% for AI/security)
 
-**Step 5 – Source Type Diversity**
-- Classify EACH citation: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
-- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types present: N | Max single source: M citations (P%)`
-- Pass if: ≥3 types present AND no single source >25%
+**Step 5 – Source Diversity**
+- Classify: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
+- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Present: N | Max source: M (P%)`
+- Pass: ≥3 types AND no source >25%
 
 **Step 6 – Link Validation**
-- Test EACH URL or verify archived link exists
-- Report: `Tested X links: Y accessible, Z broken` (list broken URLs)
-- Pass if: All links accessible OR archived alternatives provided
+- Test each URL or verify archived link
+- Report: `Tested X: Y accessible, Z broken` (list broken)
+- Pass: All accessible OR archived alternatives provided
 
 **Step 7 – Cross-Reference Integrity**
-- For EACH `[Ref: ID]` in solutions: Verify ID exists in Reference Sections (G#→Glossary, C#→Codebase, L#→Literature, A#→APA)
-- Report: `Found X inline refs; Y resolve correctly, Z broken` (list broken refs)
-- Pass if: All refs resolve (Z=0)
+- Verify each `[Ref: ID]` exists (G#→Glossary, C#→Codebase, L#→Literature, A#→APA)
+- Report: `Found X refs: Y resolve, Z broken` (list broken)
+- Pass: Z=0
 
 **Step 8 – Solution Completeness**
-- For EACH problem: Verify worked solution (2-4 steps) present with formulas/calculations
-- Report: `X of Y problems have complete solutions; Z incomplete` (list issues)
-- Pass if: All problems have complete solutions (Z=0)
+- Verify worked solution (2-4 steps) with formulas/calculations
+- Report: `X of Y complete; Z incomplete` (list issues)
+- Pass: Z=0
 
 **Step 9 – Tolerance Specification**
-- For EACH numerical problem: Verify tolerance specified (±%)
-- Report: `X of Y numerical problems have tolerances; Z missing` (list issues)
-- Pass if: All numerical problems have tolerances (Z=0)
+- Verify tolerance (±%) for each numerical problem
+- Report: `X of Y with tolerances; Z missing` (list)
+- Pass: Z=0
 
 **Step 10 – Unit Consistency**
-- For ALL numerical problems: Verify units consistent throughout
-- Report: `X of Y problems have consistent units; Z inconsistent` (list issues)
-- Pass if: All problems have consistent units (Z=0)
+- Verify units consistent throughout
+- Report: `X of Y consistent; Z inconsistent` (list)
+- Pass: Z=0
 
-**Step 11 – Conflict Handling Compliance**
-- Identify problems with multiple valid solution methods
-- For EACH: Verify alternative methods documented in worked solutions with clarity on when each is acceptable
-- Report: `X applicable problems; Y comply (Z%)`
-- Pass if: ≥80% comply OR rationale provided
+**Step 11 – Conflict Handling**
+- Identify problems with multiple valid methods
+- Verify alternatives documented with acceptance criteria
+- Report: `X applicable; Y comply (Z%)`
+- Pass: ≥80% OR rationale provided
 
-**Validation Report Template:**
-
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
+> **MANDATORY:** If any check fails, stop → fix → regenerate → re-validate. Proceed only when all pass.
 
 ### Submission Checklist
 
-- [ ] Floors met (Glossary ≥10, Codebase ≥5, Literature ≥6, APA citations ≥12)
-- [ ] Difficulty distribution verified (20/40/40: Foundational/Intermediate/Advanced)
-- [ ] Language distribution verified (~60% EN, ~30% ZH, ~10% other)
-- [ ] Recency: ≥50% citations last 3 years (≥70% for AI/security)
-- [ ] Diversity: ≥3 source types, no single source >25%
-- [ ] Evidence coverage: ≥70% problems with ≥1 citation; ≥30% with ≥2 distinct citations
-- [ ] Problem quality: Worked solutions (2-4 steps), tolerances specified, units present
-- [ ] Codebase maturity noted (license, last update ≤12 months, stable release, audit status)
-- [ ] Links resolve or archived URLs provided
-- [ ] Cross-references present (IDs used in solutions and in Reference Sections)
-- [ ] Alternative answer forms documented
-- [ ] Pre-submission validation completed with passing results
+- [ ] Floors: Glossary ≥10, Codebase ≥5, Literature ≥6, APA ≥12
+- [ ] Difficulty: 20/40/40 (Foundational/Intermediate/Advanced)
+- [ ] Language: ~60% EN, ~30% ZH, ~10% other
+- [ ] Recency: ≥50% last 3yr (≥70% AI/security)
+- [ ] Diversity: ≥3 source types, no source >25%
+- [ ] Coverage: ≥70% with ≥1 citation; ≥30% with ≥2
+- [ ] Quality: Worked solutions (2-4 steps), tolerances, units
+- [ ] Maturity: License, update ≤12mo, stable release, audit status
+- [ ] Links: Resolve or archived
+- [ ] Cross-refs: IDs match solutions ↔ Reference Sections
+- [ ] Alternatives: Answer forms documented
+- [ ] Validation: All 11 steps pass
 
 ---
 
@@ -139,42 +140,42 @@ Execute generation workflow with inline quality checks at each step.
 
 ## Instructions
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+Execute steps sequentially. Perform inline checks before proceeding.
 
 ### Step 1: Topic Identification & Planning
-1. Identify 4-6 topic clusters (e.g., throughput, latency, gas costs, consensus performance)
-2. Allocate 4-7 problems per cluster (total 25-40)
-3. Assign difficulty levels to ensure 20/40/40 balance
-4. **Inline Check**: Verify total problems = 25-40 AND difficulty ratio ≈20/40/40 before proceeding
+1. Identify 4-6 clusters (e.g., throughput, latency, gas costs)
+2. Allocate 4-7 problems/cluster (total 25-40)
+3. Assign difficulty for 20/40/40 balance
+4. **Check**: Total = 25-40 AND ratio ≈20/40/40
 
 ### Step 2: Reference Collection
-1. Gather ≥10 glossary terms, ≥5 codebase/libraries, ≥6 literature sources, ≥12 APA citations
-2. For EACH source: Tag language ([EN], [ZH], etc.), note publication year, classify source type (1-4)
-3. Assign Reference IDs: G1-Gn (Glossary), C1-Cn (Codebase), L1-Ln (Literature), A1-An (APA)
-4. **Inline Check**: Count sources (≥10/5/6/12?), language split (≈60/30/10?), recency (≥50% last 3yr?), diversity (≥3 types?) before proceeding
+1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA
+2. Tag language ([EN], [ZH]), year, type (1-4)
+3. Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
+4. **Check**: Counts (≥10/5/6/12), language (≈60/30/10), recency (≥50% last 3yr), diversity (≥3 types)
 
 ### Step 3: Problem Generation
-1. For EACH problem: Write statement with all given values (units specified), assign difficulty + type
-2. In EACH worked solution: Include ≥1 inline `[Ref: ID]` when referencing formulas, standards, benchmarks
-3. For EACH problem: Provide answer with units, tolerance (±%), worked solution (2-4 steps)
-4. **Inline Check**: After every 5 problems, verify: worked solution complete, tolerance specified, units present, ≥1 citation in solution
+1. Write statement: all values + units, assign difficulty + type
+2. Include ≥1 `[Ref: ID]` in worked solution for formulas/standards/benchmarks
+3. Provide: answer + units + tolerance (±%) + worked solution (2-4 steps)
+4. **Check** (every 5 problems): solution complete, tolerance present, units present, ≥1 citation
 
 ### Step 4: Alternative Forms & Grading
-1. For EACH problem: Document acceptable answer variations (different units, forms, normalizations)
-2. Include grading rubrics with partial credit guidelines (correct method 70%, setup 50%)
-3. **Inline Check**: All problems have rubrics? Alternative forms documented?
+1. Document acceptable variations (units, forms, normalizations)
+2. Include rubrics: partial credit (70% method, 50% setup)
+3. **Check**: All have rubrics + alternatives
 
 ### Step 5: Reference Section Compilation
-1. Populate Glossary, Codebase, Literature, APA sections with collected sources
-2. Include all required information (must-include fields per format)
-3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in solutions resolves to an entry? All sources have required fields?
+1. Populate sections with collected sources
+2. Include all required fields per format
+3. Match IDs to inline citations
+4. **Check**: All `[Ref: ID]` resolve + all sources have required fields
 
 ### Step 6: Pre-Submission Validation
-Execute all 10 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+Execute all 11 validation steps (Part I). Present report. Fix failures; re-validate.
 
 ### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
+Check Submission Checklist (Part I). Submit when all pass.
 
 ---
 
@@ -226,18 +227,20 @@ Template structure for generated problem banks.
 
 ## Reference Sections
 
-Use Reference IDs in your worked solutions to tie claims to sources: `[Ref: G3]` (Glossary entry 3), `[Ref: C1]` (Codebase entry 1), `[Ref: L2]` (Literature entry 2), `[Ref: A7]` (APA citation 7). Inline example: "Using the throughput formula [Ref: L4]: TPS = block_size / block_time [Ref: G8]."
+Use IDs to link solutions to sources: `[Ref: G3]` (Glossary), `[Ref: C1]` (Codebase), `[Ref: L2]` (Literature), `[Ref: A7]` (APA).
+
+**Example**: "Using throughput formula [Ref: L4]: TPS = block_size / block_time [Ref: G8]."
 
 ### Minimum Entry Requirements
 
-| Reference section | Floor count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Reference Section | Floor | Notes |
+|-------------------|-------|-------|
+| Glossary, Terminology & Acronyms | ≥10 | Core concepts, domain jargon, localized terms |
+| Codebase & Library References | ≥5 | Primary stack, SDKs, tooling |
+| Authoritative Literature & Reports | ≥6 | Standards, peer-reviewed, regulatory/industry analyses |
+| APA Style Source Citations | ≥12 | Language mix (~60% EN / ~30% ZH / ~10% other) |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> **Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
 
 ### Glossary, Terminology & Acronyms
 
@@ -257,35 +260,29 @@ Use Reference IDs in your worked solutions to tie claims to sources: `[Ref: G3]`
 
 **C1: [Project/Library Name]** ([lang])
 
-Must include:
-- Stack/Modules: Core SDK or components relevant to problems
-- Maturity: License, last update ≤12 months, latest stable release
-- Benchmarks: Performance data, security audit status, community adoption
+**Must include:**
+- Stack/Modules: Core SDK/components
+- Maturity: License, update ≤12mo, stable release
+- Benchmarks: Performance, audit status, adoption
 
-Recommended:
-- Integration Hooks
-- Reliability/HA indicators
-- Language support matrix
-- Vulnerability disclosures
+**Recommended:**
+- Integration hooks, Reliability/HA, Language support, Vulnerability disclosures
 
-Format: Repository URL (GitHub: owner/repo | License: Type), documentation URL, maturity details.
+**Format**: Repository URL (GitHub: owner/repo | License: Type), docs URL, maturity details.
 
 ### Authoritative Literature & Reports
 
 **L1: [Title]** (Year) ([lang])
 
-Must include:
-- Core Findings: Main formulas, performance benchmarks, or standards referenced in problems
+**Must include:**
+- Core Findings: Formulas, benchmarks, standards
 - Methodology: Sample size, temporal scope
-- Impact: Citations, adoption in industry standards
+- Impact: Citations, industry adoption
 
-Recommended:
-- Limitations/caveats
-- Replication status
-- Follow-up studies
-- Jurisdiction/regional applicability
+**Recommended:**
+- Limitations, replication status, follow-ups, jurisdiction
 
-Format: APA citation with language tag, persistent link (DOI or archived URL).
+**Format**: APA citation + language tag + persistent link (DOI/archived URL).
 
 ### APA Style Source Citations
 

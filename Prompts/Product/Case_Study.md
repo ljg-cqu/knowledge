@@ -1,33 +1,30 @@
-# Case Study / Scenario - Product Manager
+# Case Study Generator - Product Manager
 
-Framework for generating high-quality product case study/scenario assessments with proper structure, citations, and multi-dimensional evaluation.
+Generate product case study assessments with citations and multi-dimensional evaluation.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
-
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 16–22 scenarios for senior/director/VP level Product Managers
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Context**: 200–400 words with market constraints, stakeholders, user data, business metrics
+- **Scenarios**: 16–22 for senior/director/VP Product Managers
+- **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
+- **Context**: 200–400 words (market constraints, stakeholders, user data, business metrics)
 - **Tasks**: 3–4 MECE tasks per scenario
-- **Deliverables**: Product briefs (≤300 words), prioritization matrices, roadmap proposals, stakeholder memos, decision frameworks, go-to-market plans
-- **Trade-offs**: User value vs revenue, short-term vs long-term, build vs buy vs partner, feature breadth vs depth, acquisition vs retention
-- **Grading**: Partial-credit checklists; document product judgment, omissions, alternative approaches
-- **Conflict Handling**: Solutions acknowledge competing frameworks; clarify where PM community agrees vs disagrees on prioritization/strategy approaches
+- **Deliverables**: Product briefs (≤300 words), prioritization matrices, roadmaps, stakeholder memos, decision frameworks, GTM plans
+- **Trade-offs**: User value vs revenue | short-term vs long-term | build vs buy vs partner | feature breadth vs depth | acquisition vs retention
+- **Grading**: Partial-credit rubrics documenting product judgment, omissions, alternatives
+- **Conflicts**: Acknowledge competing frameworks; clarify PM community consensus vs debate
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Product frameworks (RICE, AARRR, JTBD, OKR); (2) Research & data (market analyses, user research, case studies); (3) PM literature (books, articles, documented launches); (4) Tools & platforms (analytics, roadmapping, research tools)
+- **Languages**: 60% EN | 30% ZH | 10% other (tag: [EN], [ZH])
+- **Source Types**: (1) Frameworks (RICE, AARRR, JTBD, OKR) | (2) Research (market analyses, user research) | (3) Literature (books, launches) | (4) Tools (analytics, roadmapping, research)
 - **Format**: APA 7th with language tags
-- **Distribution**: Product Tools/Platforms; PM Literature/Case Studies
-- **Inline Citation**: Use [Ref: ID] in context descriptions and rationales when referencing frameworks, market data, user insights, metrics, best practices. Narrative/connective sentences may remain uncited.
+- **Inline**: [Ref: ID] for frameworks, data, metrics; narrative sentences uncited
 
 ### Reference Minimum Requirements
 
@@ -38,44 +35,36 @@ Define quality requirements, standards, and constraints.
 | Literature | ≥6 | PM frameworks, market analyses, launches, case studies |
 | Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
 
-**Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
+**Exception**: If unmet, state shortfall, rationale, sourcing plan.
 
 ### Quality Gates
 
-- **Recency**: ≥50% citations from last 3 years (≥70% for AI/platform domains)
-- **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% scenarios have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, user base, last update ≤18 months, key integrations
-- **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
+- **Recency**: ≥50% from last 3 years (≥70% for AI/platform)
+- **Diversity**: ≥3 source types; max 25% from single source
+- **Evidence**: ≥70% scenarios with ≥1 citation; ≥30% with ≥2
+- **Tool Details**: Pricing, user base, update ≤18 months, integrations
+- **Links**: Accessible or archived (DOIs preferred)
+- **Cross-refs**: All [Ref: ID] resolve
 
-> Scaling: For >25 scenarios, increase floors by ~1.5×. Prioritize gates before raising floors.
+> **Scaling**: For >25 scenarios, increase floors by 1.5×. Prioritize gates over floors.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in validation report table. Fix failures and re-run until all pass.
+**Execute all 11 steps. Fix failures before proceeding.**
 
-**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Scenarios 16-22 (20/40/40)
-
-**Step 2 – Citations**: ≥70% scenarios have ≥1; ≥30% have ≥2
-
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-
-**Step 4 – Recency**: ≥50% from last 3 years (≥70% for AI/platform)
-
-**Step 5 – Diversity**: ≥3 source types; no single >25%
-
-**Step 6 – Links**: All accessible or archived
-
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-
-**Step 8 – Context Length**: Sample 5 scenarios; all 200-400 words
-
-**Step 9 – MECE Tasks**: All scenarios have non-overlapping, complete tasks
-
-**Step 10 – Rubrics**: All scenarios have complete grading rubrics with point allocations
-
-**Step 11 – Product Focus**: ≥80% scenarios test product judgment vs recall
+| # | Check | Requirement |
+|---|-------|-------------|
+| 1 | Counts | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Scenarios 16-22 (20/40/40) |
+| 2 | Citations | ≥70% scenarios with ≥1; ≥30% with ≥2 |
+| 3 | Language | EN 50-70%, ZH 20-40%, Other 5-15% |
+| 4 | Recency | ≥50% last 3yr (≥70% AI/platform) |
+| 5 | Diversity | ≥3 types; max 25% single source |
+| 6 | Links | All accessible/archived |
+| 7 | Cross-refs | All [Ref: ID] resolve |
+| 8 | Context | Sample 5: all 200-400 words |
+| 9 | MECE | All tasks non-overlapping, complete |
+| 10 | Rubrics | All have grading + points |
+| 11 | Judgment | ≥80% test judgment vs recall |
 
 **Validation Report Template:**
 ```
@@ -94,66 +83,58 @@ Execute ALL steps below. Present results in validation report table. Fix failure
 | Product judgment | X% judgment-based | PASS/FAIL |
 ```
 
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
+> **MANDATORY**: All checks PASS before proceeding. Fix failures immediately.
 
 ### Submission Checklist
 
-- [ ] All 11 validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
+- [ ] All 11 validation steps PASS
+- [ ] Reference floors + quality gates met
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+**Execute sequentially. Verify at each step before proceeding.**
 
-## Instructions
-
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
-
-### Step 1: Topic Identification & Planning
-1. Identify 4-6 PM clusters: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | Go-to-Market
-2. Allocate 3-4 scenarios per cluster (total 16-22)
-3. Assign difficulty levels ensuring 20/40/40 balance
-4. **Check**: Total = 16-22, ratio ≈20/40/40
+### Step 1: Topic Planning
+1. Select 4-6 clusters: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | GTM
+2. Allocate 3-4 scenarios/cluster (total: 16-22)
+3. Assign difficulty: 20% Foundational / 40% Intermediate / 40% Advanced
+4. **Verify**: Total 16-22, ratio 20/40/40
 
 ### Step 2: Reference Collection
 1. **Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
-2. **Tools (≥5)**: Mixpanel/Amplitude (analytics), ProductBoard/Aha! (roadmapping), Dovetail/UserTesting (research), Miro (collaboration)
-3. **Literature (≥6)**: Cagan, Olsen, Torres, Perri, Patton, Klement + ZH sources (俞军, 梁宁, 苏杰)
-4. **Citations (≥12)**: Tag language, year, type (1-4); assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
+2. **Tools (≥5)**: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro)
+3. **Literature (≥6)**: EN (Cagan, Olsen, Torres, Perri, Patton, Klement) + ZH (俞军, 梁宁, 苏杰)
+4. **Citations (≥12)**: Assign IDs (G#/T#/L#/A#); tag language, year, type
+5. **Verify**: Counts met, language 60/30/10%, recency ≥50% (3yr), ≥3 types
 
 ### Step 3: Scenario Generation
-1. For EACH scenario: Write context (200-400 words with market/user/business data)
-2. Include ≥1 [Ref: ID] per context after data, frameworks, metrics
-3. Design 3-4 MECE tasks with rubrics
-4. **Check**: Every 3 scenarios verify lengths, citations, MECE tasks, rubrics
+1. Write context: 200-400 words (market/user/business data)
+2. Add ≥1 [Ref: ID] after data, frameworks, metrics
+3. Design 3-4 MECE tasks + rubrics
+4. **Verify every 3 scenarios**: Length, citations, MECE, rubrics
 
 ### Step 4: Grading Framework
-1. For EACH task: Define expected product thinking, rubrics with partial credit
-2. Document common product judgment gaps and exemplary approaches
-3. **Check**: All tasks have rubrics? Points allocated?
+1. Define: Expected thinking + partial-credit rubrics per task
+2. Document: Common gaps + exemplary approaches
+3. **Verify**: All tasks have rubrics and points
 
 ### Step 5: References
-1. Populate Glossary/Tools/Literature/APA with required fields
-2. **Check**: All [Ref: ID] resolve
+1. Populate: Glossary, Tools, Literature, APA (required fields)
+2. **Verify**: All [Ref: ID] resolve
 
 ### Step 6: Validation
-Execute all 11 steps (Part I). Fix failures; re-validate until all PASS.
+Run 11-step validation (Part I). Fix failures; repeat until PASS.
 
-### Step 7: Final Review
-Check submission checklist. Submit when all PASS.
+### Step 7: Submission
+Verify checklist. Submit when all PASS.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated scenario banks.
-
-## Output Format
-
-Use this structure when generating scenario banks:
+**Use this structure for scenario banks:**
 
 ```markdown
 ## Contents
@@ -180,13 +161,13 @@ Use this structure when generating scenario banks:
 [Scenario description with specific numbers, user feedback, competitive landscape, resource constraints]
 
 **Task 1: Problem Diagnosis & Framework Application (8 pts)**
-Identify the core product challenge and apply an appropriate framework (RICE, JTBD, North Star, etc.) to analyze the situation.
+Identify core challenge; apply appropriate framework (RICE, JTBD, North Star).
 
-**Expected Response:** 
-- Core problem identification (user pain/market gap/strategic misalignment)
-- Framework selection with rationale
-- Application of framework to scenario data
-- Key insights from analysis
+**Expected:** 
+- Problem: user pain/market gap/strategic misalignment
+- Framework selection + rationale
+- Framework application to data
+- Actionable insights
 
 **Grading:**
 - Problem identification: 2 pts (clear root cause vs symptom)
@@ -195,13 +176,13 @@ Identify the core product challenge and apply an appropriate framework (RICE, JT
 - Insights: 1 pt (actionable conclusions)
 
 **Task 2: Prioritization & Decision Matrix (10 pts)**
-Create a decision framework to evaluate options. Consider trade-offs and recommend a path forward.
+Create decision framework; evaluate options; recommend path.
 
-**Expected Response:**
-- Decision criteria relevant to business context
-- Weighted scoring or comparison matrix
-- Evaluation of 2-3 options
-- Clear recommendation with rationale
+**Expected:**
+- Business-relevant criteria
+- Weighted scoring/comparison matrix
+- 2-3 option evaluation
+- Recommendation + rationale
 
 **Grading:**
 - Criteria selection: 3 pts (relevant, measurable)
@@ -210,13 +191,13 @@ Create a decision framework to evaluate options. Consider trade-offs and recomme
 - Recommendation: 2 pts (clear, justified)
 
 **Task 3: Stakeholder Communication (6 pts)**
-Draft a memo (≤300 words) communicating the decision to key stakeholders.
+Draft memo (≤300 words) to stakeholders.
 
-**Expected Response:**
-- Executive summary of situation
-- Recommendation with supporting data
-- Addressed concerns/objections
-- Next steps with timeline
+**Expected:**
+- Situation summary
+- Recommendation + data
+- Addressed concerns
+- Next steps + timeline
 
 **Grading:**
 - Clarity: 2 pts (concise, structured)
@@ -240,39 +221,39 @@ Draft a memo (≤300 words) communicating the decision to key stakeholders.
 
 ## Reference Sections
 
-Assign Reference IDs and reuse them inline in scenario contexts: Glossary (G1…Gn), Tools (T1…Tn), Literature (L1…Ln), APA Citations (A1…An). Example inline: [Ref: G2, T3, A5].
+**IDs**: Glossary (G#), Tools (T#), Literature (L#), APA (A#). **Inline**: [Ref: G2, T3, A5]
 
 ### Glossary, Terminology & Acronyms
 
 **G1. AARRR (Pirate Metrics)**  
-Acquisition → Activation → Retention → Referral → Revenue framework for tracking growth across customer lifecycle. Used for SaaS metrics, funnel optimization. Related: HEART, North Star Metric
+Acquisition → Activation → Retention → Referral → Revenue. Tracks growth across customer lifecycle. Use: SaaS metrics, funnel optimization. Related: HEART, North Star
 
 **G2. RICE Prioritization**  
-Reach × Impact × Confidence ÷ Effort scoring for feature prioritization. Used for roadmap planning, backlog ranking. Related: ICE, Value/Effort Matrix, KANO
+Reach × Impact × Confidence ÷ Effort. Use: roadmap planning, backlog ranking. Related: ICE, Value/Effort, KANO
 
 **G3. Jobs-to-be-Done (JTBD)**  
-Framework for understanding the underlying "job" users hire a product to accomplish (vs demographics). Used for feature ideation, segmentation, competitive analysis. Related: Outcome-driven innovation
+Understand the "job" users hire product to accomplish. Use: ideation, segmentation, competitive analysis. Related: Outcome-driven innovation
 
 **G4. North Star Metric**  
-Single metric capturing core product value; leading indicator of sustainable growth. Used for company alignment, PLG, OKRs. Related: OMTM, Input/Output metrics
+Single metric capturing core value; leading growth indicator. Use: alignment, PLG, OKRs. Related: OMTM, Input/Output metrics
 
 **G5. Product-Market Fit (PMF)**  
-Degree product satisfies market demand; measured when retention flattens and organic growth accelerates. Used for validation, pivot decisions, expansion. Related: Problem-solution fit, MVP
+Degree product satisfies demand; retention flattens, organic growth accelerates. Use: validation, pivots, expansion. Related: Problem-solution fit, MVP
 
 **G6. OKR (Objectives and Key Results)**  
-Goal framework where Objectives = what to achieve, Key Results = how to measure. Used for quarterly planning, cross-functional alignment. Related: KPI, North Star, V2MOM
+Objectives (what) + Key Results (how to measure). Use: quarterly planning, alignment. Related: KPI, North Star, V2MOM
 
 **G7. Continuous Discovery**  
-Regular customer engagement through structured interviews/testing to inform decisions (vs periodic projects). Used for weekly interviews, opportunity trees, assumption testing. Related: Dual-track agile, Build-Measure-Learn
+Regular customer engagement via structured interviews/testing. Use: weekly interviews, opportunity trees, assumption testing. Related: Dual-track agile, Build-Measure-Learn
 
 **G8. Product-Led Growth (PLG)**  
-GTM strategy where product drives acquisition, conversion, expansion (vs sales-led). Used for SaaS freemium, self-serve onboarding, viral loops. Related: PQLs, Time-to-Value, Expansion revenue
+Product drives acquisition, conversion, expansion. Use: freemium, self-serve, viral loops. Related: PQLs, Time-to-Value, Expansion revenue
 
 **G9. Feature Factory**  
-Anti-pattern: shipping features (outputs) vs solving problems (outcomes). Used in transformation discussions, outcome-based PM. Related: Build trap, Empowered teams
+Anti-pattern: outputs vs outcomes. Use: transformation, outcome-based PM. Related: Build trap, Empowered teams
 
 **G10. Opportunity Solution Tree (OST)**  
-Visual framework mapping outcomes → opportunities (needs/pains) → solutions. Used for discovery planning, ideation, assumption mapping. Related: HMW statements, User story mapping
+Maps outcomes → opportunities → solutions. Use: discovery, ideation, assumptions. Related: HMW, User story mapping
 
 [... continue for ≥10 entries ...]
 
@@ -280,20 +261,20 @@ Visual framework mapping outcomes → opportunities (needs/pains) → solutions.
 
 ### Product Tools & Platforms
 
-**T1. Mixpanel** (Product Analytics)  
-Event tracking, funnel/cohort analysis, A/B testing, user segmentation. Freemium to Enterprise. 8K+ companies (Uber, Netflix). Updated Q3 2024 (AI insights). Integrates: Segment, Salesforce, Slack, Jira. PM use: Activation tracking, feature adoption, retention monitoring. https://mixpanel.com
+**T1. Mixpanel** (Analytics)  
+Event tracking, funnels, cohorts, A/B testing, segmentation. Freemium-Enterprise. 8K+ companies (Uber, Netflix). Updated Q3 2024 (AI). Integrates: Segment, Salesforce, Slack, Jira. Use: activation, adoption, retention. https://mixpanel.com
 
-**T2. ProductBoard** (Roadmapping & Prioritization)  
-Feedback aggregation, prioritization matrix (value/effort), roadmap views, customer portal. Essentials $25/maker/mo to Enterprise. 6K+ teams (Microsoft, Zoom). Updated Q4 2024 (AI feedback analysis). Integrates: Jira, Slack, Salesforce, Intercom, Zendesk. PM use: Feedback synthesis, RICE scoring, stakeholder communication. https://www.productboard.com
+**T2. ProductBoard** (Roadmapping)  
+Feedback aggregation, prioritization matrix, roadmap views, customer portal. $25/mo (Essentials)-Enterprise. 6K+ teams (Microsoft, Zoom). Updated Q4 2024 (AI). Integrates: Jira, Slack, Salesforce, Intercom, Zendesk. Use: feedback synthesis, RICE, stakeholder comms. https://www.productboard.com
 
-**T3. Amplitude** (Product Analytics & Experimentation)  
-Behavioral cohorts, retention/funnel analysis, A/B/n testing, predictive analytics. Freemium to Enterprise. 3.2K+ companies (PayPal, Ford). Updated Q3 2024 (AI insights, predictive playbooks). Integrates: Segment, Braze, Optimizely, Salesforce. PM use: North Star tracking, conversion optimization, impact analysis. https://amplitude.com
+**T3. Amplitude** (Analytics & Experimentation)  
+Cohorts, funnels, retention, A/B/n testing, predictive analytics. Freemium-Enterprise. 3.2K+ companies (PayPal, Ford). Updated Q3 2024 (AI, playbooks). Integrates: Segment, Braze, Optimizely, Salesforce. Use: North Star, conversion, impact. https://amplitude.com
 
-**T4. Dovetail** (User Research Repository)  
-Auto transcription, tagging/theming, highlight reels, sentiment analysis, journey visualization. Freemium to Enterprise. 3K+ teams (Atlassian, Canva). Updated Q2 2024 (AI theme detection). Integrates: Zoom, Slack, Notion, Jira, UserTesting. PM use: Interview synthesis, JTBD mapping, discovery insights. https://dovetail.com
+**T4. Dovetail** (Research Repository)  
+Transcription, tagging, theming, highlight reels, sentiment, journey mapping. Freemium-Enterprise. 3K+ teams (Atlassian, Canva). Updated Q2 2024 (AI themes). Integrates: Zoom, Slack, Notion, Jira, UserTesting. Use: interview synthesis, JTBD, discovery. https://dovetail.com
 
-**T5. Miro** (Visual Collaboration)  
-Infinite canvas, templates (story maps, journey maps, matrices), real-time collab, AI assistant. Freemium to Enterprise. 80M+ users (Dell, Cisco). Updated Q4 2024 (enhanced AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Asana. PM use: Story mapping, OST workshops, roadmap planning, retrospectives. https://miro.com
+**T5. Miro** (Collaboration)  
+Infinite canvas, templates (story maps, journeys, matrices), real-time collab, AI. Freemium-Enterprise. 80M+ users (Dell, Cisco). Updated Q4 2024 (AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Asana. Use: story mapping, OST, roadmaps, retros. https://miro.com
 
 [... continue for ≥5 entries ...]
 
@@ -374,46 +355,46 @@ Execute 11-step validation (Part I). Present results in table format upon comple
 
 ### Scenario 1: Enterprise vs Mass Market Feature Conflict
 
-**Difficulty:** Advanced | **Domain:** Product Strategy, Prioritization & Roadmapping
+**Difficulty:** Advanced | **Domain:** Product Strategy, Prioritization
 
 **Context:**
 
-You're the PM for a B2B SaaS productivity tool with 50K SMB users (average $50/month) and 5 enterprise clients ($200K/year each, representing 40% of ARR). The top enterprise clients are requesting a sophisticated custom workflow builder that would take 6 months to build.
+B2B SaaS productivity tool: 50K SMB users ($50/mo avg) + 5 enterprise clients ($200K/yr, 40% ARR). Top enterprise clients request sophisticated custom workflow builder (6mo build).
 
-Your product vision focuses on simplicity and self-serve onboarding for the mass market. User research [Ref: L4] shows SMB users value ease of use and quick time-to-value [Ref: G8]. The custom workflow feature would add significant complexity to the UI and require professional services support.
+Product vision: simplicity, self-serve onboarding for mass market. Research [Ref: L4] shows SMBs value ease + quick time-to-value [Ref: G8]. Custom workflow adds UI complexity, requires professional services.
 
-Data from product analytics [Ref: T1] shows:
-- SMB activation rate: 65% (use core feature within 7 days)
-- SMB retention (90-day): 72%
+Analytics [Ref: T1] data:
+- SMB activation: 65% (core feature within 7d)
+- SMB retention (90d): 72%
 - Enterprise retention: 95%
-- Feature adoption: Top 3 features used by 80%+ of SMB users
+- Top 3 features: 80%+ SMB adoption
 
-Your CEO is concerned about enterprise churn risk. The engineering team says building the custom workflow would delay planned improvements to activation funnel by 2 quarters. Market analysis [Ref: A8] suggests your SMB TAM is 10× larger than enterprise, but enterprise deals are more predictable.
+CEO concerned about enterprise churn. Engineering: custom workflow delays activation improvements by 2Q. Market analysis [Ref: A8]: SMB TAM 10× enterprise, but enterprise more predictable.
 
-Sales argues the custom feature could unlock 10 more enterprise deals (potential $2M ARR). Product analytics [Ref: T3] shows a simplified onboarding flow could improve SMB activation by 15% (estimated +7.5K users, +$450K ARR).
+Sales: custom feature unlocks 10 enterprise deals ($2M ARR potential). Analytics [Ref: T3]: simplified onboarding improves SMB activation 15% (+7.5K users, +$450K ARR).
 
 **Task 1: Problem Diagnosis & Framework Application (8 pts)**
 
-Apply RICE prioritization [Ref: G2] and JTBD framework [Ref: G3] to analyze both options. What is the core strategic tension, and which framework reveals it best?
+Apply RICE [Ref: G2] and JTBD [Ref: G3] to analyze both options. What is the core strategic tension? Which framework reveals it best?
 
-**Expected Response:**
-- Core tension: Short-term revenue protection vs long-term PMF and market expansion
-- RICE analysis comparing both options with actual numbers
-- JTBD discovery: What job are enterprise customers trying to hire the product for?
-- Recognition that this is a strategy decision, not just a prioritization exercise
-- Consideration of opportunity cost and product principles [Ref: L3]
+**Expected:**
+- Strategic tension: short-term revenue vs long-term PMF/expansion
+- RICE analysis (both options, actual numbers)
+- JTBD: What job do enterprise customers need done?
+- Recognition: strategy decision, not just prioritization
+- Opportunity cost + product principles [Ref: L3]
 
 **Grading:**
-- Identifies strategic tension (not tactical): 2 pts
-- Applies RICE with scenario data: 2 pts  
-- Applies JTBD to uncover real needs: 2 pts
-- Recognizes framework limitations: 2 pts
+- Strategic tension (not tactical): 2 pts
+- RICE with data: 2 pts  
+- JTBD to uncover needs: 2 pts
+- Framework limitations: 2 pts
 
 **Task 2: Prioritization & Decision Matrix (10 pts)**
 
-Create a decision framework evaluating: (1) Enterprise custom workflow, (2) SMB activation improvements, (3) Generalized workflow builder, (4) Hybrid approach. Recommend a path with clear rationale.
+Evaluate: (1) Enterprise custom workflow, (2) SMB activation, (3) Generalized builder, (4) Hybrid. Recommend with rationale.
 
-**Expected Response:**
+**Expected:**
 
 | Criterion | Enterprise Custom | SMB Activation | Generalized Builder | Hybrid (Services) | Weight |
 |-----------|-------------------|----------------|---------------------|-------------------|--------|
@@ -428,16 +409,16 @@ Recommendation with rationale addressing CEO concerns and product principles.
 
 **Grading:**
 - Comprehensive criteria: 3 pts (revenue/strategy/PMF/reach/risk)
-- Evaluates all options: 3 pts (not just binary choice)
+- All options evaluated: 3 pts (not binary)
 - Proper weighting: 1 pt
-- Clear recommendation: 2 pts (addresses stakeholder concerns)
-- Considers hybrid/3rd options: 1 pt
+- Clear recommendation: 2 pts (addresses stakeholders)
+- Hybrid/3rd options: 1 pt
 
 **Task 3: Stakeholder Communication (6 pts)**
 
-Draft a memo (≤300 words) to CEO and executive team explaining your recommendation.
+Draft memo (≤300 words) to CEO/exec team.
 
-**Expected Response:**
+**Expected:**
 - Situation: Enterprise request, strategic tension, data summary
 - Recommendation: Specific path forward with timeline
 - Rationale: Decision criteria, scores, why this serves business best
@@ -452,18 +433,18 @@ Draft a memo (≤300 words) to CEO and executive team explaining your recommenda
 - Actionable next steps: 1 pt (clear path forward)
 
 **Common Product Judgment Gaps:**
-- Binary thinking (enterprise vs SMB) instead of exploring 3rd options
-- Using frameworks mechanically without strategic context
-- Ignoring opportunity costs (what we won't build)
-- Failing to quantify impact with available data
-- Not proposing experiments/validation before committing
-- Overlooking execution feasibility and team velocity
-- Missing stakeholder alignment needs
+- Binary thinking vs exploring 3rd options
+- Mechanical framework use without strategic context
+- Ignoring opportunity costs
+- Not quantifying impact with available data
+- No experiments/validation before commitment
+- Overlooking execution feasibility
+- Missing stakeholder alignment
 
 **Exemplary Approaches for Bonus:**
-- Proposes discovery interviews to validate enterprise JTBD before deciding (+2 pts)
-- Suggests A/B test or beta for generalized builder to de-risk (+2 pts)
-- Includes monitoring plan with leading indicators of success/failure (+1 pt)
-- Proactively designs mitigation strategy for enterprise churn risk (+1 pt)
+- Discovery interviews to validate enterprise JTBD: +2 pts
+- A/B test/beta for generalized builder de-risking: +2 pts
+- Monitoring plan with leading indicators: +1 pt
+- Mitigation strategy for enterprise churn: +1 pt
 
 ---

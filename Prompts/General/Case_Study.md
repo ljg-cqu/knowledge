@@ -1,205 +1,157 @@
 # Case Study / Scenario
 
-Framework for generating high-quality case study/scenario assessments with proper structure, citations, and multi-dimensional evaluation.
+Generate case study/scenario assessments with structured citations and multi-dimensional evaluation.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
+## Scope and Structure
 
-## Specifications
-
-### Scope and Structure
-
-- **Scope**: 16–22 scenarios for senior/architect/expert level
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Context**: 200–400 words with constraints, stakeholders, technical details
+- **Scenarios**: 16–22 (senior/architect/expert level)
+- **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
+- **Context**: 200–400 words (constraints, stakeholders, technical details)
 - **Tasks**: 3–4 MECE tasks per scenario
 - **Deliverables**: Issue lists, memos (≤300 words), matrices, communications
-- **Trade-offs**: Privacy vs transparency, throughput vs consistency, cost vs resilience, decentralization
-- **Grading**: Partial-credit checklists; document evidence, omissions, alternatives
-- **Conflict Handling**: Solutions acknowledge competing approaches; clarify where experts agree vs disagree on framework choices
+- **Trade-offs**: Privacy vs transparency, throughput vs consistency, cost vs resilience
+- **Grading**: Partial-credit rubrics; document evidence, omissions, alternatives
+- **Conflict Handling**: Acknowledge competing approaches; clarify consensus vs dissent
 
-### Citation Standards
+## Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Official docs (language specs, vendor docs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, academic journals, conference papers); (3) Audits/reports (security audits, industry analyses, regulatory guidance); (4) Vetted code (production repos with stable releases)
+- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH])
+- **Source Types**: 
+  1. Official docs (specs, vendor docs, RFCs)
+  2. Standards/peer-reviewed (ISO, IEEE, journals, conferences)
+  3. Audits/reports (security, industry, regulatory)
+  4. Vetted code (production repos, stable releases)
 - **Format**: APA 7th with language tags
-- **Distribution**: Codebase/libraries (repos, maturity, benchmarks); Literature/Reports
-- **Inline Citation**: Use [Ref: ID] in context descriptions and rationales when referencing factual claims, metrics, comparisons, trade-offs, and best practices. Narrative/connective sentences may remain uncited.
+- **Inline Citation**: `[Ref: ID]` for factual claims, metrics, comparisons, trade-offs, best practices
 
-### Reference Minimum Requirements
+## Reference Minimums
 
-| Reference Section | Floor Count | Notes |
+| Section | Count | Content |
 | --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Glossary | ≥10 | Core concepts, domain jargon, localized terms |
+| Codebase & Libraries | ≥5 | Stack components, SDKs, tooling |
+| Literature & Reports | ≥6 | Standards, peer-reviewed, regulatory/industry |
+| APA Citations | ≥12 | ~60% EN, ~30% ZH, ~10% other |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> If unable to meet minimums: state shortfall, rationale, and sourcing plan.
 
-### Quality Gates
+## Quality Gates
 
-- Recency: ≥50% of citations from the last 3 years; for fast-moving domains (AI, security), target ≥70% from the last 2 years.
-- Source diversity: Include at least 3 source types (official docs, standards/peer-reviewed, audits/reports); no single source >25% of total citations.
-- Evidence coverage: ≥70% of scenarios include ≥1 inline citation in context; ≥30% include ≥2 citations tied to distinct claims.
-- Codebase maturity: Each codebase/library entry includes license, last commit ≤12 months, latest stable release, and security audit status (if available).
-- Deduplication: Canonicalize and avoid duplicate entries; prefer persistent links (DOIs, standards bodies, archived URLs).
-- Link validity: Validate that links resolve (or provide archived link) at time of delivery.
-- Cross-reference binding: Use reference IDs and link scenarios to specific items in the Reference Sections.
+- **Recency**: ≥50% from last 3 years (≥70% for AI/security)
+- **Diversity**: ≥3 source types; no single source >25%
+- **Evidence**: ≥70% scenarios with ≥1 citation; ≥30% with ≥2 citations
+- **Maturity**: License, last commit ≤12 months, stable release, audit status
+- **Deduplication**: Canonicalize entries; use persistent links (DOIs, archived URLs)
+- **Links**: All URLs resolve or archived alternatives provided
+- **Cross-refs**: Reference IDs link scenarios to Reference Sections
 
-> Scaling guidance: For sets >25 scenarios or regulated domains, increase floor counts by ~1.5× (round up) instead of unlimited growth. Prioritize meeting the Quality Gates first.
+> For >25 scenarios or regulated domains: increase minimums by 1.5× (round up). Prioritize Quality Gates over unlimited growth.
 
-### Pre-Submission Validation
+## Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
+Execute all steps. Fix failures and re-validate until all pass.
 
-**Step 1 – Count Audit**
-- Count: Glossary entries, Codebase entries, Literature entries, APA citations, Scenarios (total + by difficulty level)
-- Report: `Glossary: X (target ≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Scenarios: N total (F foundational, I intermediate, A advanced)`
-- Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
+| Step | Check | Pass Criteria |
+| --- | --- | --- |
+| 1 | Count Audit | All minimums met; difficulty ratio ≈20/40/40 |
+| 2 | Citation Coverage | ≥70% scenarios with ≥1 citation; ≥30% with ≥2 |
+| 3 | Language Distribution | EN ≈50-70%, ZH ≈20-40%, Other ≈5-15% |
+| 4 | Recency | ≥50% from last 3 years (≥70% for AI/security) |
+| 5 | Source Diversity | ≥3 types; no single source >25% |
+| 6 | Link Validation | All URLs accessible or archived |
+| 7 | Cross-Reference | All `[Ref: ID]` resolve to Reference Sections |
+| 8 | Context Length | All contexts 200–400 words |
+| 9 | MECE Tasks | All scenarios have mutually exclusive, exhaustive tasks |
+| 10 | Grading Rubrics | All tasks have complete rubrics with points |
+| 11 | Conflict Handling | ≥80% acknowledge alternatives; clarify consensus vs dissent |
 
-**Step 2 – Citation Coverage Scan**
-- For EACH scenario context: Count inline `[Ref: ...]` occurrences
-- Report: `X of Y scenarios have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
-- Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
-
-**Step 3 – Language Distribution Check**
-- Count citations with `[EN]`, `[ZH]`, and other language tags
-- Report: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)`
-- Pass if: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
-
-**Step 4 – Recency Verification**
-- Extract publication year from EACH citation
-- Report: `X of Y citations (Z%) from 2022-2025 (last 3 years)`
-- Pass if: ≥50% from last 3 years (≥70% for AI/security domains)
-
-**Step 5 – Source Type Diversity**
-- Classify EACH citation: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
-- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types present: N | Max single source: M citations (P%)`
-- Pass if: ≥3 types present AND no single source >25%
-
-**Step 6 – Link Validation**
-- Test EACH URL or verify archived link exists
-- Report: `Tested X links: Y accessible, Z broken` (list broken URLs)
-- Pass if: All links accessible OR archived alternatives provided
-
-**Step 7 – Cross-Reference Integrity**
-- For EACH `[Ref: ID]` in scenarios: Verify ID exists in Reference Sections (G#→Glossary, C#→Codebase, L#→Literature, A#→APA)
-- Report: `Found X inline refs; Y resolve correctly, Z broken` (list broken refs)
-- Pass if: All refs resolve (Z=0)
-
-**Step 8 – Context Length Compliance**
-- Select 5 random scenario contexts; count words
-- Report: `S#: X words | S#: Y words | ...` (flag if <200 or >400)
-- Pass if: All sampled contexts in 200–400 range
-
-**Step 9 – Task MECE Verification**
-- Review EACH scenario's tasks for mutual exclusivity and collective exhaustiveness
-- Report: `X of Y scenarios have MECE tasks; Z have overlaps/gaps` (list issues)
-- Pass if: All scenarios have MECE tasks (Z=0)
-
-**Step 10 – Grading Rubric Completeness**
-- For EACH scenario: Verify all tasks have rubrics with point allocations
-- Report: `X of Y scenarios have complete rubrics; Z missing/incomplete` (list issues)
-- Pass if: All scenarios have complete rubrics (Z=0)
-
-**Step 11 – Conflict Handling Compliance**
-- Identify scenarios with competing frameworks/approaches
-- For EACH: Verify solutions acknowledge alternatives and clarify consensus vs dissent
-- Report: `X applicable scenarios; Y comply (Z%)`
-- Pass if: ≥80% comply OR rationale provided
-
-**Validation Report Template:**
+**Report Format:**
 ```
 | Check | Result | Status |
 |-------|--------|--------|
-| Floors | G:X C:Y L:Z A:W S:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Minimums | G:X C:Y L:Z A:W S:N (F/I/A) | PASS/FAIL |
+| Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Languages | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
 | Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
+| Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
-| Context lengths | 5/5 compliant | PASS/FAIL |
-| MECE tasks | Y/X verified | PASS/FAIL |
-| Grading rubrics | Y/X complete | PASS/FAIL |
+| Lengths | Y/X in 200-400 | PASS/FAIL |
+| MECE | Y/X verified | PASS/FAIL |
+| Rubrics | Y/X complete | PASS/FAIL |
+| Conflicts | Y/X comply | PASS/FAIL |
 ```
 
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
+> If any check fails: stop, fix, regenerate, re-validate. Submit only when all pass.
 
-### Submission Checklist
+## Submission Checklist
 
-- [ ] Floors met (Glossary ≥10, Codebase ≥5, Literature ≥6, APA citations ≥12)
-- [ ] Difficulty distribution verified (20/40/40: Foundational/Intermediate/Advanced)
-- [ ] Language distribution verified (~60% EN, ~30% ZH, ~10% other)
-- [ ] Recency: ≥50% citations last 3 years (≥70% for AI/security)
-- [ ] Diversity: ≥3 source types, no single source >25%
-- [ ] Evidence coverage: ≥70% scenarios with ≥1 citation; ≥30% with ≥2 distinct citations
-- [ ] Scenario quality: Each context 200–400 words, includes relevant citations
-- [ ] Codebase maturity noted (license, last update ≤12 months, stable release, audit status)
-- [ ] Links resolve or archived URLs provided
-- [ ] Cross-references present (IDs used in scenarios and in Reference Sections)
-- [ ] MECE tasks verified for all scenarios
-- [ ] Grading rubrics complete with point allocations
-- [ ] Pre-submission validation completed with passing results
+- [ ] Minimums: G≥10, C≥5, L≥6, APA≥12
+- [ ] Difficulty: 20/40/40 (F/I/A)
+- [ ] Languages: ~60% EN, ~30% ZH, ~10% other
+- [ ] Recency: ≥50% last 3yr (≥70% AI/security)
+- [ ] Diversity: ≥3 types, max 25% single source
+- [ ] Coverage: ≥70% with ≥1 cite; ≥30% with ≥2
+- [ ] Contexts: 200–400 words with citations
+- [ ] Maturity: License, update ≤12mo, release, audit
+- [ ] Links: All resolve or archived
+- [ ] Cross-refs: IDs in scenarios match Reference Sections
+- [ ] MECE: All tasks verified
+- [ ] Rubrics: Complete with points
+- [ ] Validation: All checks pass
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+Execute steps in order with inline checks before proceeding.
 
-## Instructions
+## Steps
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
-
-### Step 1: Topic Identification & Planning
+### 1. Topic Planning
 1. Identify 3-5 domain clusters (e.g., DeFi, Infrastructure, RWA)
 2. Allocate 3-5 scenarios per cluster (total 16-22)
-3. Assign difficulty levels to ensure 20/40/40 balance
-4. **Inline Check**: Verify total scenarios = 16-22 AND difficulty ratio ≈20/40/40 before proceeding
+3. Assign difficulty levels (20/40/40 balance)
+4. **Check**: Total = 16-22; ratio ≈20/40/40
 
-### Step 2: Reference Collection
-1. Gather ≥10 glossary terms, ≥5 codebase/libraries, ≥6 literature sources, ≥12 APA citations
-2. For EACH source: Tag language ([EN], [ZH], etc.), note publication year, classify source type (1-4)
-3. Assign Reference IDs: G1-Gn (Glossary), C1-Cn (Codebase), L1-Ln (Literature), A1-An (APA)
-4. **Inline Check**: Count sources (≥10/5/6/12?), language split (≈60/30/10?), recency (≥50% last 3yr?), diversity (≥3 types?) before proceeding
+### 2. Reference Collection
+1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA
+2. Tag language ([EN], [ZH]), year, type (1-4)
+3. Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
+4. **Check**: Counts ≥10/5/6/12; languages ≈60/30/10; ≥50% last 3yr; ≥3 types
 
-### Step 3: Scenario Generation
-1. For EACH scenario: Write context (200-400 words), assign difficulty + domain
-2. In EACH context: Include ≥1 inline `[Ref: ID]` after factual claims, technical details, constraints
-3. For EACH scenario: Design 3-4 MECE tasks with rubrics and point allocations
-4. **Inline Check**: After every 3 scenarios, verify: context lengths 200-400, ≥1 citation per scenario, MECE tasks, complete rubrics
+### 3. Scenario Generation
+1. Write context (200-400 words), assign difficulty + domain
+2. Include ≥1 `[Ref: ID]` per context
+3. Design 3-4 MECE tasks with rubrics and points
+4. **Check** (every 3 scenarios): Lengths 200-400; ≥1 citation; MECE; complete rubrics
 
-### Step 4: Grading Framework
-1. For EACH task: Define expected responses, grading rubrics with partial credit
-2. Document common omissions and edge cases
-3. **Inline Check**: All tasks have rubrics? Point allocations sum correctly?
+### 4. Grading Framework
+1. Define expected responses with partial credit
+2. Document omissions and edge cases
+3. **Check**: All rubrics complete; points sum correctly
 
-### Step 5: Reference Section Compilation
-1. Populate Glossary, Codebase, Literature, APA sections with collected sources
-2. Include all required information (must-include fields per format)
-3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in scenarios resolves to an entry? All sources have required fields?
+### 5. Reference Compilation
+1. Populate Glossary, Codebase, Literature, APA sections
+2. Include required fields per format
+3. Match Reference IDs to inline citations
+4. **Check**: All `[Ref: ID]` resolve; all fields present
 
-### Step 6: Pre-Submission Validation
-Execute all 10 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+### 6. Validation
+Execute all validation steps. Present report. Fix failures and re-validate.
 
-### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
+### 7. Final Review
+Check Submission Checklist. Submit when all pass.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated scenario banks.
-
-## Output Format
-
-Use this structure when generating scenario banks:
+Use this structure for scenario banks:
 
 ```markdown
 ## Contents
@@ -219,113 +171,81 @@ Use this structure when generating scenario banks:
 
 ### Scenario X: [Title]
 
-**Difficulty:** [Foundational/Intermediate/Advanced] | **Domain:** [DeFi/Infrastructure/RWA]
+**Difficulty:** [Foundational/Intermediate/Advanced] | **Domain:** [Domain]
 
-**Context:** (200–400 words with constraints, stakeholders, technical details; include [Ref: ID] citations)
+**Context:** (200–400 words: constraints, stakeholders, technical details; include `[Ref: ID]`)
 
-**Task 1: Issue Identification (8 pts)**
-[Task description]
+**Task 1: [Task Name] (X pts)**
+[Description]
+- **Expected**: [Key points]
+- **Grading**: [Rubric with partial credit]
 
-**Expected Response:** [Key points]
+**Task 2: [Task Name] (X pts)**
+[Description]
+- **Expected**: [Key points]
+- **Grading**: [Rubric]
 
-**Grading:** [Rubric with partial credit]
-
-**Task 2: Solution Proposal (10 pts)**
-[Task description]
-
-**Expected Response:** [Key points]
-
-**Grading:** [Rubric]
-
-**Task 3: Stakeholder Communication (6 pts)**
-[Task description]
-
-**Expected Response:** [Key points]
-
-**Grading:** [Rubric]
+**Task 3: [Task Name] (X pts)**
+[Description]
+- **Expected**: [Key points]
+- **Grading**: [Rubric]
 
 **Common Omissions:** [List]
-
-**Edge Cases for Bonus:** [Optional additional points]
+**Edge Cases:** [Bonus points]
 
 ---
 
 ## Reference Sections
 
-Assign Reference IDs and reuse them inline in scenario contexts: Glossary (G1…Gn), Codebase (C1…Cn), Literature (L1…Ln), APA Citations (A1…An). Example inline: [Ref: C3, L2].
-
-| Reference section | Floor count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
-
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+Reference IDs: Glossary (G1…Gn), Codebase (C1…Cn), Literature (L1…Ln), APA (A1…An). Use inline: `[Ref: C3, L2]`.
 
 ### Glossary, Terminology & Acronyms
 
-**Format:**
+**Format:** `**Term/Acronym**: Definition [Lang]`
 
-```text
-**Term/Acronym**: Definition [Language Tag]
-```
-
-**Example:**
-
-```text
-**MECE** (Mutually Exclusive, Collectively Exhaustive): Framework ensuring categories don't overlap and cover all possibilities [EN]
-```
+**Example:** `**MECE**: Mutually Exclusive, Collectively Exhaustive—categories don't overlap and cover all possibilities [EN]`
 
 ### Codebase & Library References
 
-**Required Information:**
-- Must include: License, last update (last commit ≤12 months) or latest stable version/date, supported languages, integration surface (API/SDK)
-- Recommended: Performance/Security benchmarks, consistency guarantees, reliability/HA notes, security audit status
+**Required:** License, last update/version (≤12mo), languages, integration (API/SDK)  
+**Recommended:** Benchmarks, consistency, HA/reliability, audit status
 
 **Format:**
-
-```text
-**[Project/Library Name]** (GitHub: owner/repo | License: Type)
-- Description: Brief overview
-- Stack: Technologies used
+```
+**[Name]** (GitHub: owner/repo | License: Type)
+- Description: [Brief overview]
+- Stack: [Technologies]
 - Maturity: Production/Beta/Experimental
-- Performance: Key metrics
-- Security: Audit status, vulnerability notes
+- Performance: [Key metrics]
+- Security: [Audit status, vulnerabilities]
 ```
 
 ### Authoritative Literature & Reports
 
-**Required Information:**
-- Must include: Type, year, key findings, credibility (peer-reviewed/standard/regulatory), jurisdiction
-- Recommended: Methodology/dataset, limitations/assumptions
+**Required:** Type, year, key findings, credibility (peer-reviewed/standard/regulatory), jurisdiction  
+**Recommended:** Methodology/dataset, limitations/assumptions
 
 **Format:**
-
-```text
-**[Title]** (Year) [Language Tag]
-- Authors: Names/Organization
-- Type: Standard/White Paper/Academic Paper/Regulatory Report
-- Key Findings: Summary
-- Credibility: Peer-reviewed/Industry standard/Regulatory authority
-- Jurisdiction: Applicable regions/markets
+```
+**[Title]** (Year) [Lang]
+- Authors: [Names/Organization]
+- Type: Standard/White Paper/Academic/Regulatory
+- Key Findings: [Summary]
+- Credibility: Peer-reviewed/Standard/Regulatory
+- Jurisdiction: [Regions/markets]
 ```
 
 ### APA Style Source Citations
 
-List sources grouped by language (~60% EN, ~30% ZH, ~10% other). Follow APA 7th edition with language tags.
+Group by language (~60% EN, ~30% ZH, ~10% other). Follow APA 7th with language tags.
 
 **Example:**
-
-```text
+```
 Smith, J., & Wang, L. (2024). Blockchain consensus mechanisms: A comparative analysis.
     Journal of Distributed Systems, 15(3), 245-267. https://doi.org/10.xxxx/jds.2024.15.3.245 [EN]
 
-张伟, & 李娜. (2024). 区块链技术在供应链金融中的应用研究.
-    计算机科学, 51(2), 88-95. [ZH]
+张伟, & 李娜. (2024). 区块链技术在供应链金融中的应用研究. 计算机科学, 51(2), 88-95. [ZH]
 
-Nakamoto, S. (2008). Bitcoin: A peer-to-peer electronic cash system.
-    https://bitcoin.org/bitcoin.pdf [EN]
-```
+Nakamoto, S. (2008). Bitcoin: A peer-to-peer electronic cash system. https://bitcoin.org/bitcoin.pdf [EN]
 ```
 

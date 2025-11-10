@@ -1,116 +1,113 @@
-# Case Study / Scenario - Business Understanding for Software Architecture
+# Case Study: Business Understanding for Software Architecture
 
-Framework for generating high-quality case study/scenario assessments focused on comprehensive business understanding that benefits software architecture decisions.
+Framework for generating case study assessments linking business understanding to software architecture decisions.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
-
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 16–22 scenarios for senior/architect/expert level technical leaders
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Context**: 200–400 words with business constraints, stakeholders, market dynamics, organizational factors
-- **Tasks**: 3–4 MECE tasks per scenario covering business-to-architecture transition
-- **Deliverables**: Business model analyses, value mapping matrices, risk assessments, architecture decision memos (≤300 words), stakeholder communications
-- **Trade-offs**: Business value vs technical debt, short-term revenue vs long-term architecture, organizational alignment vs optimal design, market speed vs quality
-- **Grading**: Partial-credit checklists; document business-technical mapping, value alignment, risk mitigation
-- **Conflict Handling**: Solutions acknowledge competing business frameworks (BMC vs Lean Canvas); clarify where practitioners agree vs disagree on approach
+- **Scope**: 16–22 scenarios for senior/architect/expert technical leaders
+- **Difficulty**: 20/40/40 balance (Foundational/Intermediate/Advanced)
+- **Context**: 200–400 words covering business constraints, stakeholders, market dynamics, organizational factors
+- **Tasks**: 3–4 MECE tasks per scenario
+- **Deliverables**: Business model analyses, value mapping matrices, risk assessments, architecture decision memos (≤300 words)
+- **Trade-offs**: Value vs debt, revenue vs architecture, alignment vs design, speed vs quality
+- **Grading**: Partial credit; assess business-technical mapping, value alignment, risk mitigation
+- **Conflict Handling**: Acknowledge competing frameworks (BMC vs Lean Canvas); clarify practitioner disagreements
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Business frameworks & methodologies; (2) Architecture patterns & practices; (3) Case studies & industry reports; (4) Tools & platforms
+- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
+- **Source Types**: (1) Business frameworks; (2) Architecture patterns; (3) Case studies/reports; (4) Tools
 - **Format**: APA 7th with language tags
-- **Distribution**: Business/Architecture tools; Literature/Reports
-- **Inline Citation**: Use [Ref: ID] in context descriptions when referencing business models, frameworks, architectural patterns, trade-offs, and organizational dynamics
+- **Inline Citation**: Use [Ref: ID] for business models, frameworks, patterns, trade-offs, organizational dynamics
 
 ### Reference Minimum Requirements
 
 | Reference Section | Floor Count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Business Model Canvas, Value Proposition, DDD, Conway's Law, Technical Debt, etc. |
-| Business & Architecture Tools | ≥5 entries | Business modeling, architecture visualization, documentation platforms |
-| Authoritative Literature & Reports | ≥6 entries | Business strategy, architecture patterns, organizational design |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+|-------------------|-------------|-------|
+| Glossary, Terminology & Acronyms | ≥10 | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
+| Business & Architecture Tools | ≥5 | Modeling, visualization, documentation platforms |
+| Authoritative Literature & Reports | ≥6 | Business strategy, architecture patterns, organizational design |
+| APA Style Source Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> **Exception**: If floor count not met, state shortfall, rationale, and sourcing plan.
 
 ### Quality Gates
 
-- Recency: ≥50% of citations from the last 3 years; for digital transformation/cloud-native domains, target ≥70% from the last 2 years
-- Source diversity: Include at least 3 source types; no single source >25% of total citations
-- Evidence coverage: ≥70% of scenarios include ≥1 inline citation in context; ≥30% include ≥2 citations tied to distinct claims
-- Tool maturity: Each tool entry includes pricing, adoption metrics, last update ≤18 months, key integrations
-- Deduplication: Canonicalize and avoid duplicate entries; prefer persistent links (DOIs, archived URLs)
-- Link validity: Validate that links resolve (or provide archived link) at time of delivery
-- Cross-reference binding: Use reference IDs and link scenarios to specific items in the Reference Sections
-- Business-Technical Mapping: ≥80% of scenarios explicitly trace business drivers to architectural decisions
+- **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
+- **Source diversity**: ≥3 source types; no single source >25%
+- **Evidence coverage**: ≥70% scenarios with ≥1 citation; ≥30% with ≥2 distinct citations
+- **Tool maturity**: Include pricing, adoption metrics, last update ≤18 months, integrations
+- **Deduplication**: Canonicalize entries; prefer persistent links (DOIs, archived URLs)
+- **Link validity**: Validate links resolve or provide archived alternatives
+- **Cross-reference binding**: Link scenarios to Reference Section items via IDs
+- **Business-Technical Mapping**: ≥80% scenarios explicitly trace business drivers to architecture
 
-> Scaling guidance: For sets >25 scenarios, increase floor counts by ~1.5× (round up). Prioritize meeting the Quality Gates first.
+> **Scaling**: For >25 scenarios, increase floors by 1.5× (round up). Prioritize Quality Gates.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
+Execute all steps. Present results in validation report. Fix failures and re-validate until all pass.
 
 **Step 1 – Count Audit**
-- Count: Glossary entries, Tool entries, Literature entries, APA citations, Scenarios (total + by difficulty level)
-- Report: `Glossary: X (target ≥10) | Tools: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Scenarios: N total (F foundational, I intermediate, A advanced)`
-- Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
+- Count: Glossary, Tools, Literature, APA citations, Scenarios (by difficulty)
+- Report: `Glossary: X (≥10) | Tools: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Scenarios: N (F/I/A)`
+- Pass: All counts ≥ minimums AND difficulty ≈20/40/40
 
 **Step 2 – Citation Coverage Scan**
-- For EACH scenario context: Count inline `[Ref: ...]` occurrences
-- Report: `X of Y scenarios have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
-- Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
+- Count inline `[Ref: ...]` per scenario
+- Report: `X/Y scenarios ≥1 citation (Z%); W/Y ≥2 citations (V%)`
+- Pass: ≥70% with ≥1 AND ≥30% with ≥2
 
 **Step 3 – Language Distribution Check**
-- Count citations with `[EN]`, `[ZH]`, and other language tags
+- Count citations by language tag
 - Report: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)`
-- Pass if: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
+- Pass: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
 
 **Step 4 – Recency Verification**
-- Extract publication year from EACH citation
-- Report: `X of Y citations (Z%) from 2022-2025 (last 3 years)`
-- Pass if: ≥50% from last 3 years (≥70% for digital transformation/cloud-native)
+- Extract publication year per citation
+- Report: `X/Y citations (Z%) from 2022-2025`
+- Pass: ≥50% from last 3 years (≥70% for digital transformation/cloud-native)
 
 **Step 5 – Source Type Diversity**
-- Classify EACH citation: (1) Business frameworks, (2) Architecture patterns, (3) Case studies/reports, (4) Tools
-- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types present: N | Max single source: M citations (P%)`
-- Pass if: ≥3 types present AND no single source >25%
+- Classify citations: (1) Business frameworks, (2) Architecture patterns, (3) Case studies/reports, (4) Tools
+- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types: N | Max source: M (P%)`
+- Pass: ≥3 types AND no source >25%
 
 **Step 6 – Link Validation**
-- Test EACH URL or verify archived link exists
-- Report: `Tested X links: Y accessible, Z broken` (list broken URLs)
-- Pass if: All links accessible OR archived alternatives provided
+- Test URLs or verify archived links
+- Report: `Tested X: Y accessible, Z broken` (list broken)
+- Pass: All accessible OR archived alternatives provided
 
 **Step 7 – Cross-Reference Integrity**
-- For EACH `[Ref: ID]` in scenarios: Verify ID exists in Reference Sections (G#→Glossary, T#→Tools, L#→Literature, A#→APA)
-- Report: `Found X inline refs; Y resolve correctly, Z broken` (list broken refs)
-- Pass if: All refs resolve (Z=0)
+- Verify each `[Ref: ID]` exists in Reference Sections (G#→Glossary, T#→Tools, L#→Literature, A#→APA)
+- Report: `X inline refs: Y resolved, Z broken` (list broken)
+- Pass: All resolved (Z=0)
 
 **Step 8 – Context Length Compliance**
-- Select 5 random scenario contexts; count words
-- Report: `S#: X words | S#: Y words | ...` (flag if <200 or >400)
-- Pass if: All sampled contexts in 200–400 range
+- Sample 5 random scenario contexts; count words
+- Report: `S#: X words | S#: Y words | ...` (flag <200 or >400)
+- Pass: All in 200–400 range
 
 **Step 9 – Task MECE Verification**
-- Review EACH scenario's tasks for mutual exclusivity and collective exhaustiveness
-- Report: `X of Y scenarios have MECE tasks; Z have overlaps/gaps` (list issues)
-- Pass if: All scenarios have MECE tasks (Z=0)
+- Review scenarios for mutually exclusive, collectively exhaustive tasks
+- Report: `X/Y scenarios MECE; Z with overlaps/gaps` (list issues)
+- Pass: All MECE (Z=0)
 
 **Step 10 – Grading Rubric Completeness**
-- For EACH scenario: Verify all tasks have rubrics with point allocations
-- Report: `X of Y scenarios have complete rubrics; Z missing/incomplete` (list issues)
-- Pass if: All scenarios have complete rubrics (Z=0)
+- Verify all tasks have rubrics with point allocations
+- Report: `X/Y scenarios complete; Z missing/incomplete` (list issues)
+- Pass: All complete (Z=0)
 
 **Step 11 – Business-Technical Mapping**
-- For EACH scenario: Verify explicit connection from business drivers to architectural decisions
-- Report: `X of Y scenarios have explicit mapping (Z%)`
-- Pass if: ≥80% have explicit business-to-architecture mapping
+- Verify explicit business-to-architecture connections
+- Report: `X/Y scenarios explicit mapping (Z%)`
+- Pass: ≥80% explicit mapping
 
 **Validation Report Template:**
 ```
@@ -129,83 +126,79 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 | Biz-Tech mapping | X% explicit | PASS/FAIL |
 ```
 
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
+> **MANDATORY**: If ANY check fails, fix issues and re-validate. Proceed only when ALL pass.
 
 ### Submission Checklist
 
-- [ ] Floors met (Glossary ≥10, Tools ≥5, Literature ≥6, APA citations ≥12)
-- [ ] Difficulty distribution verified (20/40/40: Foundational/Intermediate/Advanced)
-- [ ] Language distribution verified (~60% EN, ~30% ZH, ~10% other)
-- [ ] Recency: ≥50% citations last 3 years (≥70% for digital transformation)
-- [ ] Diversity: ≥3 source types, no single source >25%
-- [ ] Evidence coverage: ≥70% scenarios with ≥1 citation; ≥30% with ≥2 distinct citations
-- [ ] Scenario quality: Each context 200–400 words, includes relevant citations
-- [ ] Tool maturity noted (pricing, adoption, last update ≤18 months, integrations)
-- [ ] Links resolve or archived URLs provided
-- [ ] Cross-references present (IDs used in scenarios and in Reference Sections)
-- [ ] MECE tasks verified for all scenarios
-- [ ] Grading rubrics complete with point allocations
-- [ ] Business-technical mapping: ≥80% scenarios explicitly trace business to architecture
-- [ ] Pre-submission validation completed with passing results
+- [ ] Floors: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12
+- [ ] Difficulty: 20/40/40 (Foundational/Intermediate/Advanced)
+- [ ] Languages: ~60% EN, ~30% ZH, ~10% other
+- [ ] Recency: ≥50% last 3 years (≥70% digital transformation)
+- [ ] Diversity: ≥3 source types, no source >25%
+- [ ] Citations: ≥70% scenarios ≥1; ≥30% scenarios ≥2
+- [ ] Context: 200–400 words with citations
+- [ ] Tools: Include pricing, adoption, last update ≤18 months, integrations
+- [ ] Links: Resolve or archived
+- [ ] Cross-references: IDs in scenarios and Reference Sections
+- [ ] Tasks: MECE verified
+- [ ] Rubrics: Complete with point allocations
+- [ ] Mapping: ≥80% explicit business-to-architecture
+- [ ] Validation: All checks passed
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
-
 ## Instructions
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+Execute steps sequentially with inline quality checks.
 
 ### Step 1: Topic Identification & Planning
-1. Identify 3-5 domain clusters aligned with framework: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 3-5 scenarios per cluster (total 16-22)
-3. Assign difficulty levels to ensure 20/40/40 balance
-4. **Inline Check**: Verify total scenarios = 16-22 AND difficulty ratio ≈20/40/40 before proceeding
+1. Identify 3-5 domain clusters: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
+2. Allocate 3-5 scenarios per cluster (16-22 total)
+3. Assign difficulty: 20/40/40 balance
+4. **Check**: Total 16-22 AND ratio ≈20/40/40
 
 ### Step 2: Reference Collection
-1. Gather ≥10 glossary terms (Business Model Canvas, Value Proposition, DDD, Conway's Law, Technical Debt, ADR, etc.)
+1. Gather ≥10 glossary terms (BMC, Value Proposition, DDD, Conway's Law, Technical Debt, ADR)
 2. Gather ≥5 tools (Miro, ArchiMate/C4, Confluence, LucidChart, Wardley Maps)
-3. Gather ≥6 literature sources (Osterwalder, Evans, Vernon, Conway, Hohpe, Richardson + ZH sources)
+3. Gather ≥6 literature (Osterwalder, Evans, Vernon, Conway, Hohpe, Richardson + ZH)
 4. Gather ≥12 APA citations; tag language, year, type
-5. Assign Reference IDs: G1-Gn (Glossary), T1-Tn (Tools), L1-Ln (Literature), A1-An (APA)
-6. **Inline Check**: Count sources (≥10/5/6/12?), language split (≈60/30/10?), recency (≥50% last 3yr?), diversity (≥3 types?) before proceeding
+5. Assign IDs: G1-Gn (Glossary), T1-Tn (Tools), L1-Ln (Literature), A1-An (APA)
+6. **Check**: Counts ≥10/5/6/12, languages ≈60/30/10, recency ≥50% last 3yr, diversity ≥3 types
 
 ### Step 3: Scenario Generation
-1. For EACH scenario: Write context (200-400 words) with business constraints, stakeholders, market dynamics, organizational factors
-2. In EACH context: Include ≥1 inline `[Ref: ID]` after business models, frameworks, constraints, trade-offs
-3. For EACH scenario: Design 3-4 MECE tasks covering business understanding → architecture transition
-4. Ensure tasks require: Business model analysis, value mapping, risk assessment, architectural decisions, stakeholder communication
-5. **Inline Check**: After every 3 scenarios, verify: context lengths 200-400, ≥1 citation per scenario, MECE tasks, business-to-architecture mapping, complete rubrics
+1. Write context (200-400 words): business constraints, stakeholders, market dynamics, organizational factors
+2. Include ≥1 `[Ref: ID]` citation per context
+3. Design 3-4 MECE tasks: business understanding → architecture transition
+4. Tasks require: model analysis, value mapping, risk assessment, decisions, stakeholder communication
+5. **Check** (every 3 scenarios): 200-400 words, ≥1 citation, MECE tasks, business-to-architecture mapping, complete rubrics
 
 ### Step 4: Grading Framework
-1. For EACH task: Define expected responses showing business-to-architecture transition
-2. Create grading rubrics with partial credit for: business analysis (30%), value mapping (25%), architectural decisions (30%), justification (15%)
-3. Document common omissions (missing risk factors, weak value alignment, no organizational considerations)
-4. **Inline Check**: All tasks have rubrics? Point allocations sum correctly? Business-technical mapping criteria present?
+1. Define expected responses: business-to-architecture transition
+2. Create rubrics: business analysis (30%), value mapping (25%), decisions (30%), justification (15%)
+3. Document omissions: missing risks, weak alignment, no organizational considerations
+4. **Check**: Rubrics complete, points sum correctly, mapping criteria present
 
 ### Step 5: Reference Section Compilation
-1. Populate Glossary, Tools, Literature, APA sections with collected sources
-2. Include all required information per format
-3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in scenarios resolves to an entry? All sources have required fields?
+1. Populate sections: Glossary, Tools, Literature, APA
+2. Include required fields per format
+3. Match Reference IDs to inline citations
+4. **Check**: All [Ref: ID] resolve, all sources have required fields
 
 ### Step 6: Pre-Submission Validation
-Execute all 11 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+Execute all 11 validation steps (Part I). Present validation report. Fix failures and re-validate.
 
 ### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
+Verify Submission Checklist (Part I). Submit when all pass.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated scenario banks.
-
 ## Output Format
 
-Use this structure when generating scenario banks:
+Template structure:
 
 ```markdown
 ## Contents

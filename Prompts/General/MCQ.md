@@ -1,115 +1,115 @@
 # Multiple-Choice Questions
 
-Framework for generating high-quality multiple-choice question assessments with proper structure, citations, and multi-dimensional evaluation.
+Framework for generating high-quality MCQ assessments for senior/architect/expert level roles.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
-
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 40–80 MCQs for senior/architect/expert level
-- **Format**: Concise stems (1–2 sentences), 4 options, exactly one correct
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Distractors**: Map to misconceptions or outdated practices; flag rationale alignment
-- **Rationale**: 1–2 sentences with citation when applicable
-- **Grading**: Machine-gradable; no partial credit
-- **Conflict Handling**: For contentious topics, distractors should reflect legitimate competing views; rationale clarifies consensus vs dissent
+- **Quantity**: 40–80 questions
+- **Format**: 1–2 sentence stems, 4 options (exactly one correct)
+- **Difficulty**: 20% Foundational, 40% Intermediate, 40% Advanced
+- **Distractors**: Map to specific misconceptions or outdated practices
+- **Rationale**: 1–2 sentences with inline citations [Ref: ID]
+- **Grading**: Machine-gradable, no partial credit
+- **Contentious topics**: Distractors reflect competing views; rationale clarifies consensus
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Official docs (language specs, vendor docs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, academic journals, conference papers); (3) Audits/reports (security audits, industry analyses, regulatory guidance); (4) Vetted code (production repos with stable releases)
-- **Format**: APA 7th with language tags
-- **Distribution**: Codebase/libraries (repos, maturity, benchmarks); Literature/Reports
-- **Inline Citation**: Use [Ref: ID] in rationales when referencing specifications, standards, research findings. Distractors may reference common misconceptions with citations.
+- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
+- **Source Types**: 
+  1. Official docs (specs, RFCs, vendor docs)
+  2. Standards/peer-reviewed (ISO, IEEE, journals, conferences)
+  3. Audits/reports (security, industry, regulatory)
+  4. Vetted code (stable production repos)
+- **Format**: APA 7th edition with language tags
+- **Inline**: [Ref: ID] in rationales for specs, standards, research
 
-### Reference Minimum Requirements
+### Reference Minimums
 
-| Reference Section | Floor Count | Notes |
+| Section | Minimum | Notes |
 | --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Glossary & Terminology | ≥10 | Core concepts, jargon, acronyms |
+| Codebase & Libraries | ≥5 | SDKs, frameworks, tools |
+| Literature & Reports | ≥6 | Standards, peer-reviewed, audits |
+| APA Citations | ≥12 | 60% EN, 30% ZH, 10% other |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> **Exception**: If minimums not met, state shortfall and sourcing plan.
 
 ### Quality Gates
 
-- Recency: ≥50% of citations from the last 3 years; for fast-moving domains (AI, security), target ≥70% from the last 2 years.
-- Source diversity: Include at least 3 source types (official docs, standards/peer-reviewed, audits/reports); no single source >25% of total citations.
-- Evidence coverage: ≥70% of questions include ≥1 inline citation in rationale; ≥30% include ≥2 citations tied to distinct claims.
-- Codebase maturity: Each codebase/library entry includes license, last commit ≤12 months, latest stable release, and security audit status (if available).
-- Deduplication: Canonicalize and avoid duplicate entries; prefer persistent links (DOIs, standards bodies, archived URLs).
-- Link validity: Validate that links resolve (or provide archived link) at time of delivery.
-- Cross-reference binding: Use reference IDs and link question rationales to specific items in the Reference Sections.
+- **Recency**: ≥50% from last 3 years (≥70% for AI/security)
+- **Source diversity**: ≥3 types; no single source >25%
+- **Evidence coverage**: ≥70% questions with ≥1 citation; ≥30% with ≥2 citations
+- **Codebase maturity**: License, last commit ≤12 months, stable release, audit status
+- **Deduplication**: Use persistent links (DOI, archived URLs); avoid duplicates
+- **Link validity**: All links resolve or provide archived alternative
+- **Cross-references**: All [Ref: ID] link to Reference Sections
 
-> Scaling guidance: For sets >80 questions or regulated domains, increase floor counts by ~1.5× (round up) instead of unlimited growth. Prioritize meeting the Quality Gates first.
+> **Scaling**: For >80 questions or regulated domains, increase minimums by 1.5×.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
+Execute all steps. Present validation report. Fix failures and re-validate until all pass.
 
-**Step 1 – Count Audit**
-- Count: Glossary entries, Codebase entries, Literature entries, APA citations, Questions (total + by difficulty level)
-- Report: `Glossary: X (target ≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Questions: N total (F foundational, I intermediate, A advanced)`
-- Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
+**1. Count Audit**
+- Count: Glossary, Codebase, Literature, APA, Questions (by difficulty)
+- Report: `G:X (≥10) | C:Y (≥5) | L:Z (≥6) | A:W (≥12) | Q:N (F/I/A)`
+- Pass: All minimums met AND difficulty ≈20/40/40
 
-**Step 2 – Citation Coverage Scan**
-- For EACH rationale: Count inline `[Ref: ...]` occurrences
-- Report: `X of Y questions have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
-- Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
+**2. Citation Coverage**
+- Count `[Ref: ...]` per rationale
+- Report: `X/Y questions ≥1 citation (Z%); W/Y ≥2 citations (V%)`
+- Pass: ≥70% with ≥1, ≥30% with ≥2
 
-**Step 3 – Language Distribution Check**
-- Count citations with `[EN]`, `[ZH]`, and other language tags
-- Report: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)`
-- Pass if: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
+**3. Language Distribution**
+- Count language tags: [EN], [ZH], other
+- Report: `EN:X (Y%) | ZH:A (B%) | Other:C (D%)`
+- Pass: EN 50-70%, ZH 20-40%, Other 5-15%
 
-**Step 4 – Recency Verification**
-- Extract publication year from EACH citation
-- Report: `X of Y citations (Z%) from 2022-2025 (last 3 years)`
-- Pass if: ≥50% from last 3 years (≥70% for AI/security domains)
+**4. Recency**
+- Extract year from each citation
+- Report: `X/Y (Z%) from last 3 years`
+- Pass: ≥50% (≥70% for AI/security)
 
-**Step 5 – Source Type Diversity**
-- Classify EACH citation: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
-- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types present: N | Max single source: M citations (P%)`
-- Pass if: ≥3 types present AND no single source >25%
+**5. Source Diversity**
+- Classify: (1) Official, (2) Peer-reviewed, (3) Audits, (4) Code
+- Report: `Type1:X Type2:Y Type3:Z Type4:W | Types:N | Max:M (P%)`
+- Pass: ≥3 types AND max ≤25%
 
-**Step 6 – Link Validation**
-- Test EACH URL or verify archived link exists
-- Report: `Tested X links: Y accessible, Z broken` (list broken URLs)
-- Pass if: All links accessible OR archived alternatives provided
+**6. Link Validation**
+- Test each URL
+- Report: `X links: Y accessible, Z broken` (list broken)
+- Pass: All accessible OR archived provided
 
-**Step 7 – Cross-Reference Integrity**
-- For EACH `[Ref: ID]` in rationales: Verify ID exists in Reference Sections (G#→Glossary, C#→Codebase, L#→Literature, A#→APA)
-- Report: `Found X inline refs; Y resolve correctly, Z broken` (list broken refs)
-- Pass if: All refs resolve (Z=0)
+**7. Cross-Reference Integrity**
+- Verify each [Ref: ID] exists (G#, C#, L#, A#)
+- Report: `X refs: Y resolve, Z broken` (list broken)
+- Pass: Z=0
 
-**Step 8 – Answer Correctness**
-- For EACH question: Verify exactly one correct answer marked
-- Report: `X of Y questions have exactly one correct; Z have multiple/zero correct` (list issues)
-- Pass if: All questions have exactly one correct (Z=0)
+**8. Answer Correctness**
+- Verify exactly one correct per question
+- Report: `X/Y exactly one; Z issues` (list)
+- Pass: Z=0
 
-**Step 9 – Distractor Quality**
-- For EACH question: Verify distractors map to misconceptions/outdated practices (not random)
-- Report: `X of Y questions have quality distractors; Z have weak distractors` (list issues)
-- Pass if: All questions have quality distractors (Z=0)
+**9. Distractor Quality**
+- Verify distractors map to misconceptions
+- Report: `X/Y quality; Z weak` (list)
+- Pass: Z=0
 
-**Step 10 – Option Unambiguity**
-- For EACH question: Verify options are mutually exclusive and unambiguous
-- Report: `X of Y questions have unambiguous options; Z have overlapping/vague options` (list issues)
-- Pass if: All questions have unambiguous options (Z=0)
+**10. Option Clarity**
+- Verify mutually exclusive, unambiguous options
+- Report: `X/Y clear; Z vague` (list)
+- Pass: Z=0
 
-**Step 11 – Conflict Handling Compliance**
-- Identify contentious topics (where experts/frameworks disagree)
-- For EACH: Verify distractors reflect legitimate competing views and rationale clarifies consensus vs dissent
-- Report: `X applicable questions; Y comply (Z%)`
-- Pass if: ≥80% comply OR rationale provided
+**11. Conflict Handling**
+- Identify contentious topics; verify competing views represented
+- Report: `X applicable; Y comply (Z%)`
+- Pass: ≥80% comply
 
 **Validation Report Template:**
 ```
@@ -131,85 +131,75 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 ### Submission Checklist
 
-- [ ] Floors met (Glossary ≥10, Codebase ≥5, Literature ≥6, APA citations ≥12)
-- [ ] Difficulty distribution verified (20/40/40: Foundational/Intermediate/Advanced)
-- [ ] Language distribution verified (~60% EN, ~30% ZH, ~10% other)
-- [ ] Recency: ≥50% citations last 3 years (≥70% for AI/security)
-- [ ] Diversity: ≥3 source types, no single source >25%
-- [ ] Evidence coverage: ≥70% questions with ≥1 citation; ≥30% with ≥2 distinct citations
-- [ ] Question quality: Exactly one correct answer per question, quality distractors, unambiguous options
-- [ ] Codebase maturity noted (license, last update ≤12 months, stable release, audit status)
-- [ ] Links resolve or archived URLs provided
-- [ ] Cross-references present (IDs used in rationales and in Reference Sections)
-- [ ] Rationales complete (1-2 sentences with citations when applicable)
-- [ ] Pre-submission validation completed with passing results
+- [ ] Minimums: G≥10, C≥5, L≥6, A≥12
+- [ ] Difficulty: 20/40/40 (F/I/A)
+- [ ] Languages: 60% EN, 30% ZH, 10% other
+- [ ] Recency: ≥50% last 3yr (≥70% AI/security)
+- [ ] Diversity: ≥3 types, max 25%
+- [ ] Citations: ≥70% questions ≥1, ≥30% ≥2
+- [ ] Questions: One correct, quality distractors, clear options
+- [ ] Codebase: License, update ≤12mo, release, audit
+- [ ] Links: Resolve or archived
+- [ ] Cross-refs: [Ref: ID] used and present
+- [ ] Rationales: 1-2 sentences with citations
+- [ ] Validation: All checks PASS
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+Execute steps sequentially with inline checks before proceeding.
 
-## Instructions
-
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
-
-### Step 1: Topic Identification & Planning
-1. Identify 4-8 topic clusters (e.g., algorithms, security, APIs, concurrency)
+### Step 1: Topic Planning
+1. Identify 4-8 topic clusters
 2. Allocate 5-10 questions per cluster (total 40-80)
-3. Assign difficulty levels to ensure 20/40/40 balance
-4. **Inline Check**: Verify total questions = 40-80 AND difficulty ratio ≈20/40/40 before proceeding
+3. Assign difficulty: 20/40/40 (F/I/A)
+4. **Check**: Total=40-80, ratio≈20/40/40
 
 ### Step 2: Reference Collection
-1. Gather ≥10 glossary terms, ≥5 codebase/libraries, ≥6 literature sources, ≥12 APA citations
-2. For EACH source: Tag language ([EN], [ZH], etc.), note publication year, classify source type (1-4)
-3. Assign Reference IDs: G1-Gn (Glossary), C1-Cn (Codebase), L1-Ln (Literature), A1-An (APA)
-4. **Inline Check**: Count sources (≥10/5/6/12?), language split (≈60/30/10?), recency (≥50% last 3yr?), diversity (≥3 types?) before proceeding
+1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA
+2. Tag each: Language [EN]/[ZH], year, type (1-4)
+3. Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
+4. **Check**: Counts (10/5/6/12), languages (60/30/10), recency (≥50% 3yr), types (≥3)
 
 ### Step 3: Question Generation
-1. For EACH question: Write stem (1-2 sentences), create 4 options (exactly one correct), assign difficulty + language
-2. In EACH rationale: Include ≥1 inline `[Ref: ID]` when referencing specs, standards, research
-3. For EACH distractor: Map to specific misconception or outdated practice
-4. **Inline Check**: After every 10 questions, verify: exactly one correct, quality distractors, ≥1 citation in rationale, options unambiguous
+1. Write: stem (1-2 sentences), 4 options (one correct), difficulty + language
+2. Rationale: ≥1 [Ref: ID] for specs/standards/research
+3. Distractors: Map to specific misconceptions
+4. **Check** (every 10): One correct, quality distractors, ≥1 citation, clear options
 
 ### Step 4: Distractor Documentation
-1. For EACH question: Document why each distractor is incorrect and what misconception it represents
+1. Document: Why incorrect, which misconception
 2. Include common mistake patterns
-3. **Inline Check**: All distractors documented? Misconceptions clearly mapped?
+3. **Check**: All distractors documented, misconceptions mapped
 
-### Step 5: Reference Section Compilation
-1. Populate Glossary, Codebase, Literature, APA sections with collected sources
-2. Include all required information (must-include fields per format)
-3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in rationales resolves to an entry? All sources have required fields?
+### Step 5: Reference Compilation
+1. Populate: Glossary, Codebase, Literature, APA
+2. Include required fields per format
+3. Match Reference IDs to inline citations
+4. **Check**: All [Ref: ID] resolve, all fields present
 
-### Step 6: Pre-Submission Validation
-Execute all 10 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+### Step 6: Validation
+Execute all 11 validation steps (Part I). Present report. Fix failures, re-validate.
 
 ### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
+Verify Submission Checklist (Part I). Submit when all pass.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated question banks.
-
-## Output Format
-
 ```markdown
 ## Contents
 
 - [Question Bank](#question-bank-questions-1-n)
-- [Topic 1: [Topic title]](#topic-1-topic-title)
-  - [Q1: [Question text]](#q1-question-text)
-- [Topic 2: [Topic title]](#topic-2-topic-title)
-  - [Q2: [Question text]](#q2-question-text)
+  - [Topic 1](#topic-1-topic-title)
+  - [Topic 2](#topic-2-topic-title)
 - [Reference Sections](#reference-sections)
-  - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
-  - [Codebase & Library References](#codebase--library-references)
-  - [Authoritative Literature & Reports](#authoritative-literature--reports)
-  - [APA Style Source Citations](#apa-style-source-citations)
+  - [Glossary & Terminology](#glossary-terminology--acronyms)
+  - [Codebase & Libraries](#codebase--library-references)
+  - [Literature & Reports](#authoritative-literature--reports)
+  - [APA Citations](#apa-style-source-citations)
 
 ---
 
@@ -229,26 +219,28 @@ Template structure for generated question banks.
 
 **Answer:** [A/B/C/D]
 
-**Rationale:** [1–2 sentence explanation; include [Ref: ID] citations when referencing specifications, standards, research findings]
+**Rationale:** [1–2 sentences; use [Ref: ID] for specs/standards/research]
 
-**Distractor notes:** [Why other options are incorrect; map each to specific misconception or outdated practice]
+**Distractor notes:** [Why incorrect; map to specific misconception]
 
 ---
 
 ## Reference Sections
 
-Use Reference IDs in your rationales to tie claims to sources: `[Ref: G3]` (Glossary entry 3), `[Ref: C1]` (Codebase entry 1), `[Ref: L2]` (Literature entry 2), `[Ref: A7]` (APA citation 7). Inline example: "The correct answer is B because consensus algorithms require Byzantine fault tolerance [Ref: G2] as specified in the protocol design [Ref: L5]."
+Use [Ref: ID] to cite sources: G# (Glossary), C# (Codebase), L# (Literature), A# (APA).
 
-### Minimum Entry Requirements
+Example: "Answer B is correct because consensus algorithms require Byzantine fault tolerance [Ref: G2] per protocol design [Ref: L5]."
 
-| Reference section | Floor count | Notes |
+### Minimums
+
+| Section | Minimum | Notes |
 | --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
-| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
-| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Glossary & Terminology | ≥10 | Core concepts, jargon, acronyms |
+| Codebase & Libraries | ≥5 | SDKs, frameworks, tools |
+| Literature & Reports | ≥6 | Standards, peer-reviewed, audits |
+| APA Citations | ≥12 | 60% EN, 30% ZH, 10% other |
 
-> **Exception handling:** If a section cannot meet the floor count, explicitly state the shortfall, provide rationale, and outline a plan to source additional materials.
+> **Exception**: If minimums not met, state shortfall and sourcing plan.
 
 ### Glossary, Terminology & Acronyms
 
@@ -266,41 +258,35 @@ Use Reference IDs in your rationales to tie claims to sources: `[Ref: G3]` (Glos
 
 ### Codebase & Library References
 
-**C1: [Project/Library Name]** ([lang])
+**C1: [Name]** ([lang])
 
-Must include:
-- Stack/Modules: Core SDK or components relevant to questions
-- Maturity: License, last update ≤12 months, latest stable release
-- Benchmarks: Performance data, security audit status, community adoption
+Required:
+- Stack: Core SDK/components
+- Maturity: License, update ≤12mo, stable release
+- Benchmarks: Performance, audit, adoption
 
-Recommended:
-- Integration Hooks
-- Reliability/HA indicators
-- Language support matrix
-- Vulnerability disclosures
+Optional:
+- Integration hooks, HA, language support, CVEs
 
-Format: Repository URL (GitHub: owner/repo | License: Type), documentation URL, maturity details.
+Format: Repo URL (GitHub: owner/repo | License), docs, maturity.
 
 ### Authoritative Literature & Reports
 
 **L1: [Title]** (Year) ([lang])
 
-Must include:
-- Core Findings: Main claims, best practices, or standards referenced in questions
-- Methodology: Sample size, temporal scope
-- Impact: Citations, adoption in industry standards
+Required:
+- Findings: Claims, practices, standards
+- Methodology: Sample size, scope
+- Impact: Citations, adoption
 
-Recommended:
-- Limitations/caveats
-- Replication status
-- Follow-up studies
-- Jurisdiction/regional applicability
+Optional:
+- Limitations, replication, follow-ups, jurisdiction
 
-Format: APA citation with language tag, persistent link (DOI or archived URL).
+Format: APA citation with tag, persistent link (DOI/archived).
 
 ### APA Style Source Citations
 
-List sources grouped by language (~60% EN, ~30% ZH, ~10% other). Follow APA 7th edition with language tags.
+Group by language (60% EN, 30% ZH, 10% other). Use APA 7th with tags.
 
 **Example:**
 

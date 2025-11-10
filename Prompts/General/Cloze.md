@@ -1,31 +1,30 @@
 # Cloze / Fill-in-the-Blank
 
-Framework for generating high-quality fill-in-the-blank assessments with proper structure, citations, and multi-dimensional evaluation.
+Generate high-quality fill-in-the-blank assessments with citations and validation.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints.
+Quality requirements, standards, and constraints.
 
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 24–40 items for senior/architect/expert level
-- **Format**: Unambiguous blanks (___); array of acceptable answers
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances
-- **Grading**: Acceptance lists with tolerances; document borderline answers, partial credit
-- **Conflict Handling**: For contested terminology, acceptance lists include valid variants from different schools/regions
+- **Scope**: 24–40 items (senior/architect/expert level)
+- **Format**: Unambiguous blanks (___); acceptable answer array
+- **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
+- **Normalization**: Case-insensitive, trim whitespace/punctuation; specify numeric tolerances
+- **Grading**: Acceptance lists with tolerances; document borderline/partial credit answers
+- **Conflicts**: Include valid variants for contested terminology (across schools/regions)
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Official docs (language specs, vendor docs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, academic journals, conference papers); (3) Audits/reports (security audits, industry analyses, regulatory guidance); (4) Vetted code (production repos with stable releases)
+- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
+- **Source Types**: (1) Official docs (specs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, journals); (3) Audits/reports (security, industry); (4) Vetted code (production repos)
 - **Format**: APA 7th with language tags
-- **Distribution**: Codebase/libraries (repos, maturity, benchmarks); Literature/Reports
-- **Inline Citation**: Use [Ref: ID] in rationales when referencing factual claims, definitions, and technical specifications. Narrative/connective sentences may remain uncited.
+- **Inline**: [Ref: ID] for factual claims, definitions, technical specs; narrative text may remain uncited
 
 ### Reference Minimum Requirements
 
@@ -40,75 +39,75 @@ Define quality requirements, standards, and constraints.
 
 ### Quality Gates
 
-- Recency: ≥50% of citations from the last 3 years; for fast-moving domains (AI, security), target ≥70% from the last 2 years.
-- Source diversity: Include at least 3 source types (official docs, standards/peer-reviewed, audits/reports); no single source >25% of total citations.
-- Evidence coverage: ≥70% of items include ≥1 inline citation in rationale; ≥30% include ≥2 citations tied to distinct claims.
-- Codebase maturity: Each codebase/library entry includes license, last commit ≤12 months, latest stable release, and security audit status (if available).
-- Deduplication: Canonicalize and avoid duplicate entries; prefer persistent links (DOIs, standards bodies, archived URLs).
-- Link validity: Validate that links resolve (or provide archived link) at time of delivery.
-- Cross-reference binding: Use reference IDs and link item rationales to specific items in the Reference Sections.
+- **Recency**: ≥50% citations last 3 years (≥70% last 2 years for AI/security)
+- **Diversity**: ≥3 source types; no single source >25%
+- **Evidence**: ≥70% items with ≥1 citation; ≥30% with ≥2 distinct citations
+- **Maturity**: Each codebase entry includes license, last commit ≤12 months, stable release, audit status (if available)
+- **Deduplication**: Canonicalize entries; prefer persistent links (DOIs, archived URLs)
+- **Validity**: All links resolve or archived alternatives provided
+- **Cross-refs**: Reference IDs link rationales to Reference Sections
 
-> Scaling guidance: For sets >50 items or regulated domains, increase floor counts by ~1.5× (round up) instead of unlimited growth. Prioritize meeting the Quality Gates first.
+> **Scaling**: For >50 items or regulated domains, increase floors by 1.5× (round up). Prioritize Quality Gates.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in a validation report table. Fix any failures and re-run validation until all checks pass.
+Execute ALL steps. Present results in validation report. Fix failures and re-run until all pass.
 
 **Step 1 – Count Audit**
-- Count: Glossary entries, Codebase entries, Literature entries, APA citations, Items (total + by difficulty level)
-- Report: `Glossary: X (target ≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Items: N total (F foundational, I intermediate, A advanced)`
-- Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
+- Count: Glossary, Codebase, Literature, APA citations, Items (total + difficulty)
+- Report: `Glossary: X (≥10) | Codebase: Y (≥5) | Literature: Z (≥6) | APA: W (≥12) | Items: N (F/I/A)`
+- Pass: All minimums met AND difficulty ≈20/40/40
 
-**Step 2 – Citation Coverage Scan**
-- For EACH item rationale: Count inline `[Ref: ...]` occurrences
-- Report: `X of Y items have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
-- Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
+**Step 2 – Citation Coverage**
+- Count inline `[Ref: ...]` per rationale
+- Report: `X/Y items ≥1 citation (Z%); W/Y ≥2 citations (V%)`
+- Pass: ≥70% with ≥1 citation AND ≥30% with ≥2 citations
 
-**Step 3 – Language Distribution Check**
-- Count citations with `[EN]`, `[ZH]`, and other language tags
+**Step 3 – Language Distribution**
+- Count `[EN]`, `[ZH]`, other tags
 - Report: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)`
-- Pass if: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
+- Pass: EN 50-70%, ZH 20-40%, Other 5-15%
 
-**Step 4 – Recency Verification**
-- Extract publication year from EACH citation
-- Report: `X of Y citations (Z%) from 2022-2025 (last 3 years)`
-- Pass if: ≥50% from last 3 years (≥70% for AI/security domains)
+**Step 4 – Recency**
+- Extract publication year per citation
+- Report: `X/Y citations (Z%) from 2022-2025`
+- Pass: ≥50% last 3 years (≥70% for AI/security)
 
-**Step 5 – Source Type Diversity**
-- Classify EACH citation: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
-- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types present: N | Max single source: M citations (P%)`
-- Pass if: ≥3 types present AND no single source >25%
+**Step 5 – Source Diversity**
+- Classify citations: (1) Docs, (2) Standards, (3) Audits, (4) Code
+- Report: `Type 1: X | Type 2: Y | Type 3: Z | Type 4: W | Types: N | Max: M (P%)`
+- Pass: ≥3 types AND no source >25%
 
 **Step 6 – Link Validation**
-- Test EACH URL or verify archived link exists
-- Report: `Tested X links: Y accessible, Z broken` (list broken URLs)
-- Pass if: All links accessible OR archived alternatives provided
+- Test URLs; verify archived alternatives
+- Report: `Tested X: Y accessible, Z broken` (list broken)
+- Pass: All accessible OR archived provided
 
 **Step 7 – Cross-Reference Integrity**
-- For EACH `[Ref: ID]` in rationales: Verify ID exists in Reference Sections (G#→Glossary, C#→Codebase, L#→Literature, A#→APA)
-- Report: `Found X inline refs; Y resolve correctly, Z broken` (list broken refs)
-- Pass if: All refs resolve (Z=0)
+- Verify `[Ref: ID]` exists: G#→Glossary, C#→Codebase, L#→Literature, A#→APA
+- Report: `X refs: Y resolved, Z broken` (list broken)
+- Pass: All resolved (Z=0)
 
 **Step 8 – Answer Completeness**
-- For EACH item: Verify acceptable answers list is non-empty and unambiguous
-- Report: `X of Y items have complete answer lists; Z incomplete` (list issues)
-- Pass if: All items have complete answers (Z=0)
+- Verify non-empty, unambiguous answer lists
+- Report: `X/Y complete; Z incomplete` (list issues)
+- Pass: All complete (Z=0)
 
-**Step 9 – Blank Unambiguity**
-- Review EACH statement for blank placement clarity
-- Report: `X of Y items have unambiguous blanks; Z ambiguous` (list issues)
-- Pass if: All blanks unambiguous (Z=0)
+**Step 9 – Blank Clarity**
+- Review blank placement clarity
+- Report: `X/Y unambiguous; Z ambiguous` (list issues)
+- Pass: All unambiguous (Z=0)
 
-**Step 10 – Normalization Rules**
-- For EACH item: Verify normalization rules (case, whitespace, punctuation, numeric tolerances) specified
-- Report: `X of Y items have normalization rules; Z missing` (list issues)
-- Pass if: All items have rules (Z=0)
+**Step 10 – Normalization**
+- Verify rules specified (case, whitespace, punctuation, numeric tolerances)
+- Report: `X/Y specified; Z missing` (list issues)
+- Pass: All specified (Z=0)
 
-**Step 11 – Conflict Handling Compliance**
-- Identify items with contested terminology (terms with multiple valid variants across schools/regions)
-- For EACH: Verify acceptance lists include ≥2 valid variants
-- Report: `X applicable items; Y comply (Z%)`
-- Pass if: ≥80% comply OR rationale provided
+**Step 11 – Conflict Handling**
+- Identify contested terminology (multiple valid variants)
+- Verify acceptance lists include ≥2 variants
+- Report: `X applicable; Y comply (Z%)`
+- Pass: ≥80% comply OR rationale provided
 
 **Validation Report Template:**
 ```
@@ -126,7 +125,7 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 | Normalization | Y/X specified | PASS/FAIL |
 ```
 
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
+> **MANDATORY:** If ANY check FAILS, fix issues, regenerate, and re-validate. Submit only when ALL PASS.
 
 ### Submission Checklist
 
@@ -146,56 +145,52 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+Generation workflow with inline quality checks.
 
 ## Instructions
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
+Follow sequentially. Execute inline checks before proceeding.
 
 ### Step 1: Topic Identification & Planning
-1. Identify 4-6 topic clusters covering the domain
+1. Identify 4-6 topic clusters
 2. Allocate 4-8 items per cluster (total 24-40)
-3. Assign difficulty levels to ensure 20/40/40 balance
-4. **Inline Check**: Verify total items = 24-40 AND difficulty ratio ≈20/40/40 before proceeding
+3. Assign difficulty levels (20/40/40 balance)
+4. **Check**: Total = 24-40 AND ratio ≈20/40/40
 
 ### Step 2: Reference Collection
-1. Gather ≥10 glossary terms, ≥5 codebase/libraries, ≥6 literature sources, ≥12 APA citations
-2. For EACH source: Tag language ([EN], [ZH], etc.), note publication year, classify source type (1-4)
-3. Assign Reference IDs: G1-Gn (Glossary), C1-Cn (Codebase), L1-Ln (Literature), A1-An (APA)
-4. **Inline Check**: Count sources (≥10/5/6/12?), language split (≈60/30/10?), recency (≥50% last 3yr?), diversity (≥3 types?) before proceeding
+1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA citations
+2. Per source: Tag language, year, type (1-4)
+3. Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
+4. **Check**: Counts ≥10/5/6/12, language ≈60/30/10, recency ≥50% last 3yr, diversity ≥3 types
 
 ### Step 3: Item Generation
-1. For EACH item: Write statement with unambiguous blank, assign difficulty
-2. In EACH rationale: Include ≥1 inline `[Ref: ID]` after factual claims, definitions, technical specifications
-3. For EACH item: Define acceptable answers array and normalization rules
-4. **Inline Check**: After every 6 items, verify: blanks unambiguous, ≥1 citation per rationale, complete answer lists, normalization rules specified
+1. Per item: Write unambiguous blank statement, assign difficulty
+2. Per rationale: Include ≥1 `[Ref: ID]` for factual claims, definitions, specs
+3. Per item: Define answer array and normalization rules
+4. **Check** (every 6 items): Blanks clear, ≥1 citation, complete answers, rules specified
 
 ### Step 4: Grading Framework
-1. For EACH item: Document common incorrect answers and borderline cases
-2. Specify tolerances and partial credit rules
-3. **Inline Check**: All items have grading guidance? Normalization rules comprehensive?
+1. Per item: Document incorrect/borderline answers
+2. Specify tolerances and partial credit
+3. **Check**: All items have grading guidance and comprehensive normalization
 
 ### Step 5: Reference Section Compilation
-1. Populate Glossary, Codebase, Literature, APA sections with collected sources
-2. Include all required information (must-include fields per format)
-3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in rationales resolves to an entry? All sources have required fields?
+1. Populate all reference sections
+2. Include required fields per format
+3. Match Reference IDs to inline citations
+4. **Check**: All [Ref: ID] resolve; all sources complete
 
 ### Step 6: Pre-Submission Validation
-Execute all 10 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+Execute all 11 validation steps (Part I). Present report. Fix failures and re-validate.
 
 ### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
+Check Submission Checklist (Part I). Submit when all pass.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated item banks.
-
-## Output Format
-
-Use this structure when generating item banks:
+Standard template for item banks.
 
 ```markdown
 ## Contents

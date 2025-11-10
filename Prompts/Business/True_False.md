@@ -1,6 +1,6 @@
 # True/False Statements - Business Understanding for Software Architecture
 
-Framework for generating high-quality true/false statement assessments focused on comprehensive business understanding that benefits software architecture decisions.
+Generate high-quality true/false assessments testing business-architecture relationships for senior technical leaders.
 
 ---
 
@@ -10,49 +10,49 @@ Framework for generating high-quality true/false statement assessments focused o
 
 ### Scope and Structure
 
-- **Scope**: 18–32 statements for senior/architect/expert level technical leaders
-- **Format**: Concise declarative (≤2 lines); avoid double negatives
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Rationale**: 1–2 sentences with sources; explicitly connect business concepts to architectural implications
-- **Optional Justification**: 2–3 sentences; answer 70% + rationale 30%
-- **Grading**: Machine-gradable (A/True or B/False)
-- **Conflict Handling**: For context-dependent statements (e.g., "Conway's Law always requires organizational restructuring"), rationale clarifies assumptions and conditions
+- **Scope**: 18–32 statements targeting senior/architect/expert technical leaders
+- **Format**: Declarative, ≤2 lines; no double negatives
+- **Difficulty**: 20% Foundational, 40% Intermediate, 40% Advanced
+- **Rationale**: 1–2 sentences with citations; link business concepts to architectural implications
+- **Optional Justification**: 2–3 sentences (70% answer + 30% rationale)
+- **Grading**: Machine-gradable (True/False)
+- **Context-Dependent Statements**: Rationale clarifies assumptions (e.g., "Conway's Law always requires organizational restructuring")
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Business frameworks & methodologies; (2) Architecture patterns & practices; (3) Case studies & industry reports; (4) Tools & platforms
-- **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] in rationales when referencing frameworks, patterns, research findings
+- **Languages**: 60% EN, 30% ZH, 10% other; tag each [EN]/[ZH]
+- **Source Types**: (1) Business frameworks/methodologies; (2) Architecture patterns/practices; (3) Case studies/reports; (4) Tools/platforms
+- **Format**: APA 7th + language tags
+- **Inline**: [Ref: ID] for frameworks, patterns, findings
 
 ### Reference Minimum Requirements
 
-| Reference Section | Floor Count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Business Model Canvas, Value Proposition, DDD, Conway's Law, Technical Debt, etc. |
-| Business & Architecture Tools | ≥5 entries | Miro, ArchiMate/C4, Confluence, LucidChart, Wardley Maps |
-| Authoritative Literature & Reports | ≥6 entries | Business strategy, architecture patterns, organizational design |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Reference Section | Minimum | Examples |
+|---|---|---|
+| Glossary & Acronyms | ≥10 | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
+| Tools & Platforms | ≥5 | Miro, ArchiMate, C4, Confluence, LucidChart, Wardley Maps |
+| Literature & Reports | ≥6 | Business strategy, architecture patterns, organizational design |
+| APA Citations | ≥12 | 60% EN, 30% ZH, 10% other |
 
 ### Quality Gates
 
-- Recency: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
-- Source diversity: ≥3 source types; no single source >25%
-- Evidence coverage: ≥70% statements with ≥1 citation; ≥30% with ≥2 citations
-- Business-Technical Mapping: ≥70% statements test business-architecture relationships
+- **Recency**: ≥50% citations ≤3 years old (≥70% for digital transformation/cloud topics)
+- **Diversity**: ≥3 source types; no type >25%
+- **Coverage**: ≥70% statements have ≥1 citation; ≥30% have ≥2
+- **Mapping**: ≥70% test business-architecture relationships
 
 ### Pre-Submission Validation
 
-**Step 1 – Count Audit**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Statements 18-32 (20/40/40)
-**Step 2 – Citation Coverage**: ≥70% have ≥1; ≥30% have ≥2
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-**Step 4 – Recency**: ≥50% last 3yr (≥70% for digital transformation)
-**Step 5 – Source Diversity**: ≥3 types; no single >25%
-**Step 6 – Links**: All accessible or archived
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-**Step 8 – Answer Correctness**: All statements have clear True/False answers
-**Step 9 – Rationale Completeness**: All rationales explain business-architecture connection
-**Step 10 – Business-Technical Mapping**: ≥70% test business-architecture relationships
+1. **Count Audit**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Statements 18-32 (20/40/40)
+2. **Citation Coverage**: ≥70% have ≥1; ≥30% have ≥2
+3. **Language Mix**: EN 50-70%, ZH 20-40%, Other 5-15%
+4. **Recency**: ≥50% ≤3yr (≥70% for digital transformation topics)
+5. **Diversity**: ≥3 types; no type >25%
+6. **Links**: All URLs accessible or archived
+7. **Cross-refs**: All [Ref: ID] resolve to G#/T#/L#/A#
+8. **Answers**: All True/False clearly justified
+9. **Rationales**: All explain business-architecture link
+10. **Mapping**: ≥70% test business-architecture relationships
 
 ---
 
@@ -60,22 +60,22 @@ Framework for generating high-quality true/false statement assessments focused o
 
 ### Step 1: Topic Identification & Planning
 1. Identify 4-6 clusters: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 3-6 statements per cluster (total 18-32); assign 20/40/40 difficulty
-3. **Check**: Total = 18-32, ratio ≈20/40/40
+2. Allocate 3-6 statements/cluster (total 18-32); maintain 20/40/40 difficulty
+3. **Verify**: Total count 18-32; ratio approximates 20/40/40
 
 ### Step 2: Reference Collection
-Gather ≥10 glossary, ≥5 tools, ≥6 literature, ≥12 APA citations; tag language, year, type
+Collect ≥10 glossary entries, ≥5 tools, ≥6 literature sources, ≥12 APA citations; tag each with language, year, type
 
 ### Step 3: Statement Generation
-1. Write declarative statements testing business-architecture relationships (not just definitions)
-2. Write rationales with ≥1 [Ref: ID]; explain business-technical connection
-3. **Check**: Every 5 statements verify: clear True/False, complete rationales, business-technical mapping, citations
+1. Write declarative statements testing business-architecture relationships (avoid pure definitions)
+2. Write rationales with ≥1 [Ref: ID]; explain business-technical link
+3. **Verify**: Every 5 statements check: clear answer, complete rationale, business-technical mapping, citations present
 
 ### Step 4: Reference Compilation
-Populate Glossary/Tools/Literature/APA; ensure all [Ref: ID] resolve
+Populate all reference sections (Glossary/Tools/Literature/APA); verify all [Ref: ID] resolve
 
 ### Step 5: Validation
-Execute all 10 steps; fix failures; re-validate until all PASS
+Execute 10 validation checks; fix failures; iterate until 100% pass
 
 ---
 
@@ -92,7 +92,7 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 
 **Answer:** False
 
-**Rationale:** While revenue model changes often drive architectural requirements (e.g., subscription → multi-tenancy) [Ref: G1, A1], some revenue changes are purely business-side (e.g., pricing adjustments, discount structures) and don't necessitate architectural modifications. The impact depends on whether the revenue model change affects technical requirements like metering, billing complexity, or infrastructure sharing [Ref: A7].
+**Rationale:** Revenue model changes often drive architectural requirements (e.g., subscription → multi-tenancy) [Ref: G1, A1], but some changes (pricing adjustments, discount structures) are purely business-side. Impact depends on whether technical requirements change (metering, billing complexity, infrastructure sharing) [Ref: A7].
 
 ---
 
@@ -102,7 +102,7 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 
 **Answer:** False
 
-**Rationale:** Conway's Law states "organizations design systems that mirror their communication structure" [Ref: G4, A5]. This implies architecture reflects existing organizational structure, not vice versa. The Inverse Conway Maneuver deliberately restructures teams before architecture changes to enable desired system design [Ref: A6]. Effective architects consider organizational dynamics during architecture design, not after [Ref: L4].
+**Rationale:** Conway's Law states "organizations design systems mirroring their communication structure" [Ref: G4, A5], meaning architecture reflects existing org structure, not vice versa. The Inverse Conway Maneuver restructures teams before architecture changes to enable desired design [Ref: A6]. Effective architects consider organizational dynamics during—not after—design [Ref: L4].
 
 ---
 
@@ -112,7 +112,7 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 
 **Answer:** False
 
-**Rationale:** Technical debt is the cost of choosing quick solutions over better long-term approaches [Ref: G5]. It can be a strategic choice to accelerate time-to-market or validate business hypotheses [Ref: A10]. Not all technical debt is harmful; some enables business agility and should be managed, not eliminated. The key is conscious debt with repayment plans, not accidental accumulation [Ref: L2].
+**Rationale:** Technical debt—choosing quick solutions over long-term approaches [Ref: G5]—can be strategic for time-to-market or hypothesis validation [Ref: A10]. Not all debt is harmful; some enables agility and should be managed, not eliminated. Key distinction: conscious debt with repayment plans vs. accidental accumulation [Ref: L2].
 
 ---
 

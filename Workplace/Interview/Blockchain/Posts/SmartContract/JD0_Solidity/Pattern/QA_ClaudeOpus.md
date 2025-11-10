@@ -785,3 +785,302 @@ contract TWAPOracle {
 **Answer**: The Multi-Layer Observability Pattern structures monitoring across three layers: on-chain events (contract emissions), off-chain indexing (Graph Protocol, Dune), and real-time alerting (Forta, Tenderly) [Ref: L11]. This pattern enables protocols to detect anomalies within 60 seconds, track user behavior, and maintain compliance audit trails. Implementations by Aave (monitoring $12B TVL), Compound, and Uniswap demonstrate 99% incident detection rate with 5-minute mean time to detection (MTTD) [Ref: T7].
 
 The architecture implements Event Emission Strategy (comprehensive logging), Indexing Pipeline (real-time processing), and Alert Rules (threshold-based and ML-driven). Critical metrics include TVL changes (>5%), unusual
+```markdown
+ gas usage (>20%), and liquidation spikes. This serves developers (debugging), compliance (audit trails), operations (incident response), and analysts (protocol health). The trade-off achieves comprehensive visibility but requires significant infrastructure investment ($10-50K/month) [0].
+
+**Pattern Quality**:
+1. Reusability: All DeFi protocols, NFT platforms, bridges, DAOs
+2. Proven Effectiveness: Aave (99% detection), Compound, Uniswap, all major protocols
+3. Cross-Context Applicability: Applies: production systems; Avoid: testnets, experiments
+4. Multi-Stakeholder Value: Operations, developers, compliance, users
+5. Functional + NFR Coverage: Monitoring + alerting + compliance + debugging
+6. Trade-off Analysis: Achieves <1min detection; Costs $10-50K/month infrastructure
+7. Anti-Pattern Awareness: Not for small protocols, avoid alert fatigue
+
+**Concrete Example**:
+```solidity
+contract ObservableProtocol {
+    event CriticalMetric(
+        string indexed metricType,
+        uint256 indexed value,
+        uint256 threshold,
+        uint256 timestamp
+    );
+    
+    function monitoredAction(uint256 amount) external {
+        // Business logic
+        uint256 tvlChange = calculateTVLChange();
+        
+        // Emit monitoring events
+        if (tvlChange > CRITICAL_THRESHOLD) {
+            emit CriticalMetric("TVL_CHANGE", tvlChange, CRITICAL_THRESHOLD, block.timestamp);
+        }
+        
+        // Additional metrics
+        emit CriticalMetric("GAS_USED", gasleft(), MAX_GAS, block.timestamp);
+    }
+}
+```
+
+---
+
+## Topic 7: NFR - Performance, Scalability & Availability
+
+### Q18: What gas optimization patterns should smart contract engineers implement for high-frequency DeFi operations?
+
+**Difficulty**: Intermediate
+**Type**: NFR-Performance
+**Domain**: Gas Optimization
+
+**Key Insight**: The Storage Packing Pattern combined with batch operations and assembly optimizations reduces gas costs by 40-60% through efficient storage layout and minimal SSTORE operations.
+
+**Answer**: The Storage Packing Pattern optimizes gas consumption by packing multiple variables into single storage slots (32 bytes) and using batch operations to amortize base transaction costs [Ref: L10]. This pattern combines struct packing, uint size optimization (uint128, uint64), and assembly-level optimizations. Implementations by Uniswap V3 (tick storage), Seaport (order fulfillment), and efficient NFT contracts demonstrate 40-60% gas savings, critical when Ethereum gas prices spike to 100+ gwei [0].
+
+The implementation uses three techniques: Storage Layout Optimization (pack structs), Batch Processing (multiple operations per transaction), and Assembly Optimizations (direct memory access). For example, packing two uint128 values in one slot saves 20,000 gas per write. This serves users (lower fees), protocols (competitive advantage), validators (efficient block space), and MEV searchers (profitable opportunities). The trade-off reduces gas costs significantly but increases code complexity and audit difficulty [Ref: G16].
+
+**Pattern Quality**:
+1. Reusability: All smart contracts, especially DeFi, NFTs, high-frequency operations
+2. Proven Effectiveness: Uniswap V3 (60% savings), Seaport, 0xProtocol
+3. Cross-Context Applicability: Applies: mainnet contracts; Less critical: L2s
+4. Multi-Stakeholder Value: Users, protocols, validators, arbitrageurs
+5. Functional + NFR Coverage: Cost optimization + efficiency + competitiveness
+6. Trade-off Analysis: Reduces gas (40-60%); Increases complexity and audit time
+7. Anti-Pattern Awareness: Not for rarely-used contracts, avoid premature optimization
+
+**Concrete Example**:
+```solidity
+contract GasOptimized {
+    // Bad: Uses 3 storage slots (60,000 gas to initialize)
+    // uint256 amount;
+    // uint256 timestamp;
+    // address user;
+    
+    // Good: Uses 2 storage slots (40,000 gas to initialize)
+    struct PackedData {
+        uint128 amount;      // Slot 1: 16 bytes
+        uint64 timestamp;    // Slot 1: 8 bytes  
+        uint64 nonce;        // Slot 1: 8 bytes
+        address user;        // Slot 2: 20 bytes
+        uint96 reserved;     // Slot 2: 12 bytes
+    }
+    
+    mapping(uint256 => PackedData) public data;
+    
+    // Batch operations
+    function batchProcess(uint256[] calldata ids) external {
+        uint256 length = ids.length;
+        for (uint256 i; i < length;) {
+            // Process without checking i < length each time
+            _process(ids[i]);
+            unchecked { ++i; } // Saves gas on overflow check
+        }
+    }
+}
+```
+
+### Q19: How should smart contract engineers implement Layer 2 scaling patterns for DeFi protocols?
+
+**Difficulty**: Intermediate
+**Type**: NFR-Scalability
+**Domain**: Layer 2 Scaling
+
+**Key Insight**: The Hybrid L1/L2 Pattern maintains security-critical operations on L1 while moving high-frequency trading to L2, achieving 100x throughput improvement with 95% cost reduction.
+
+**Answer**: The Hybrid L1/L2 Pattern architects protocols across multiple layers, keeping settlement and high-value operations on Ethereum L1 while executing trades and updates on L2 solutions (Arbitrum, Optimism, zkSync) [Ref: L12]. This pattern uses state channels for frequent interactions, optimistic/ZK rollups for scalability, and periodic L1 checkpointing for security. Implementations like dYdX (processing $1B daily volume on StarkEx), Immutable X (NFT trading), and Loopring demonstrate 100-1000x throughput improvements [1].
+
+The architecture employs L2 Execution Layer (trades, swaps), L1 Settlement Layer (final settlement), and Cross-Layer Messaging (state synchronization). Critical components include fraud proofs (optimistic) or validity proofs (ZK) ensuring L2 security. This serves traders (instant execution), protocols (scalability), users (low fees), and market makers (high-frequency trading). The trade-off achieves massive scalability but introduces 7-day withdrawal delays for optimistic rollups [0].
+
+**Pattern Quality**:
+1. Reusability: DEXs, derivatives, gaming, NFT marketplaces, payment systems
+2. Proven Effectiveness: dYdX ($1B volume), Immutable X, Arbitrum ($3B TVL)
+3. Cross-Context Applicability: Applies: high-frequency operations; Avoid: simple transfers
+4. Multi-Stakeholder Value: Traders, protocols, users, liquidity providers
+5. Functional + NFR Coverage: Scalability + cost reduction + security maintenance
+6. Trade-off Analysis: Improves throughput (100x); Adds withdrawal delays (7 days optimistic)
+7. Anti-Pattern Awareness: Not for infrequent operations, avoid splitting atomic operations
+
+**Concrete Example**:
+```solidity
+// L1 Settlement Contract
+contract L1Settlement {
+    mapping(bytes32 => bool) public processedWithdrawals;
+    
+    function finalizeWithdrawal(
+        bytes32 withdrawalHash,
+        bytes calldata proof
+    ) external {
+        require(!processedWithdrawals[withdrawalHash], "Already processed");
+        require(verifyL2Proof(withdrawalHash, proof), "Invalid proof");
+        
+        processedWithdrawals[withdrawalHash] = true;
+        // Execute withdrawal
+    }
+}
+
+// L2 Trading Contract
+contract L2Trading {
+    function executeTrade(
+        address tokenA,
+        address tokenB,
+        uint256 amount
+    ) external {
+        // Fast execution on L2
+        // Periodic batch settlement to L1
+    }
+}
+```
+
+### Q20: What availability patterns should smart contract engineers implement for mission-critical DeFi infrastructure?
+
+**Difficulty**: Advanced
+**Type**: NFR-Availability
+**Domain**: High Availability
+
+**Key Insight**: The Multi-Chain Redundancy Pattern deploys identical protocols across multiple chains with synchronized state, achieving 99.99% availability through automatic failover.
+
+**Answer**: The Multi-Chain Redundancy Pattern ensures protocol availability by deploying across multiple blockchains (Ethereum, Polygon, BSC, Arbitrum) with cross-chain state synchronization and automatic failover mechanisms [Ref: L11]. This pattern uses bridge contracts for state consistency, health monitoring for chain status, and weighted routing for load distribution. Implementations by Aave (7 chains), Uniswap (10+ chains), and SushiSwap demonstrate 99.99% uptime even during network congestion or outages [0].
+
+The architecture implements Primary-Secondary Replication (one chain leads, others follow), Active-Active Deployment (all chains process transactions), and State Reconciliation (periodic cross-chain sync). Monitoring systems detect chain issues (congestion, halts) and route traffic accordingly. This serves users (continuous access), protocols (resilience), liquidity providers (uninterrupted yields), and institutions (SLA compliance). The trade-off achieves near-perfect availability but increases operational complexity and costs by 3-5x [Ref: G23].
+
+**Pattern Quality**:
+1. Reusability: DeFi protocols, bridges, oracles, critical infrastructure
+2. Proven Effectiveness: Aave (99.99% uptime), Chainlink, major protocols
+3. Cross-Context Applicability: Applies: mission-critical systems; Avoid: simple dApps
+4. Multi-Stakeholder Value: Users, protocols, liquidity providers, institutions
+5. Functional + NFR Coverage: Availability + resilience + disaster recovery
+6. Trade-off Analysis: Achieves 99.99% uptime; Increases costs (3-5x) and complexity
+7. Anti-Pattern Awareness: Not for low-value protocols, avoid without monitoring
+
+**Concrete Example**:
+```solidity
+contract MultiChainProtocol {
+    struct ChainConfig {
+        address bridge;
+        uint256 chainId;
+        bool isActive;
+        uint256 lastHeartbeat;
+    }
+    
+    mapping(uint256 => ChainConfig) public chains;
+    uint256[] public activeChains;
+    
+    function routeTransaction(bytes calldata data) external {
+        uint256 targetChain = selectHealthyChain();
+        require(chains[targetChain].isActive, "No healthy chain");
+        
+        if (targetChain == block.chainid) {
+            // Execute locally
+            _executeLocal(data);
+        } else {
+            // Route through bridge
+            IBridge(chains[targetChain].bridge).forward(data);
+        }
+    }
+    
+    function selectHealthyChain() internal view returns (uint256) {
+        // Select chain with best health score
+        // Factors: congestion, gas price, uptime
+    }
+}
+```
+
+---
+
+## Topic 8: NFR - Adaptability, Flexibility & Extensibility
+
+### Q21: How should smart contract engineers implement upgradeable contract patterns while maintaining user trust?
+
+**Difficulty**: Intermediate
+**Type**: NFR-Adaptability
+**Domain**: Contract Upgradeability
+
+**Key Insight**: The Time-Locked Transparent Upgrade Pattern combines proxy contracts with governance delays and opt-in migrations, balancing flexibility with user protection.
+
+**Answer**: The Time-Locked Transparent Upgrade Pattern implements upgradeable contracts through transparent proxies with mandatory time delays (24-72 hours) and governance approval, giving users time to review changes or exit [Ref: L5]. This pattern uses OpenZeppelin's TransparentUpgradeableProxy, TimelockController for delays, and multi-sig or DAO governance for approval. Successful implementations include Compound (48-hour timelock), Aave (governance-controlled), and MakerDAO, managing billions in TVL while maintaining user trust [Ref: T3].
+
+The architecture employs three components: Proxy Contract (delegates to implementation), Timelock Controller (enforces delay), and Governance Module (proposal/voting). Users can monitor proposed upgrades and withdraw funds before activation if disagreeing. This serves developers (bug fixes), users (exit rights), auditors (review time), and governance (decentralized control). The trade-off enables evolution but delays critical fixes by 24-72 hours [0].
+
+**Pattern Quality**:
+1. Reusability: DeFi protocols, DAOs, token contracts, any long-lived contract
+2. Proven Effectiveness: Compound, Aave, MakerDAO (all major protocols)
+3. Cross-Context Applicability: Applies: protocols with TVL; Avoid: immutable by design
+4. Multi-Stakeholder Value: Developers, users, governance, auditors
+5. Functional + NFR Coverage: Upgradeability + security + transparency + user protection
+6. Trade-off Analysis: Enables fixes/features; Delays emergency response (24-72h)
+7. Anti-Pattern Awareness: Not for trustless protocols, avoid frequent upgrades
+
+**Concrete Example**:
+```solidity
+contract TimeLockUpgrade {
+    uint256 constant TIMELOCK_DURATION = 2 days;
+    
+    struct UpgradeProposal {
+        address newImplementation;
+        uint256 executeTime;
+        bytes32 descriptionHash;
+        bool executed;
+    }
+    
+    mapping(uint256 => UpgradeProposal) public proposals;
+    
+    function proposeUpgrade(
+        address newImplementation,
+        string calldata description
+    ) external onlyGovernance returns (uint256) {
+        uint256 proposalId = uint256(keccak256(abi.encode(newImplementation, block.timestamp)));
+        
+        proposals[proposalId] = UpgradeProposal({
+            newImplementation: newImplementation,
+            executeTime: block.timestamp + TIMELOCK_DURATION,
+            descriptionHash: keccak256(bytes(description)),
+            executed: false
+        });
+        
+        emit UpgradeProposed(proposalId, newImplementation, description);
+        return proposalId;
+    }
+}
+```
+
+### Q22: What patterns enable smart contract protocols to adapt to changing market conditions dynamically?
+
+**Difficulty**: Advanced
+**Type**: NFR-Flexibility
+**Domain**: Dynamic Protocol Adaptation
+
+**Key Insight**: The Adaptive Parameter Pattern uses on-chain governance and algorithmic adjustments to modify protocol parameters based on market conditions, achieving 30% better capital efficiency.
+
+**Answer**: The Adaptive Parameter Pattern enables protocols to adjust critical parameters (fees, collateral ratios, interest rates) through algorithmic controllers and governance mechanisms responding to market conditions [Ref: L2]. This pattern implements PID controllers for smooth adjustments, oracle-based market monitoring, and governance overrides for extreme conditions. Successful implementations include MakerDAO's stability fee adjustments, Aave's dynamic interest rates, and Compound's collateral factors, collectively managing $20B+ while maintaining stability [1].
+
+The system uses Market Monitoring Oracles (price feeds, volatility metrics), Algorithmic Controllers (PID, exponential smoothing), and Governance Safeguards (parameter bounds, emergency pause). Parameters adjust automatically within pre-set ranges, with governance intervention for boundary changes. This serves users (optimal rates), protocols (risk management), liquidity providers (competitive yields), and governance (market responsiveness). The trade-off improves efficiency by 30% but increases complexity and potential for parameter manipulation [Ref: G22].
+
+**Pattern Quality**:
+1. Reusability: Lending protocols, DEXs, synthetic assets, stablecoins
+2. Proven Effectiveness: MakerDAO (DAI stability), Aave ($12B), Compound
+3. Cross-Context Applicability: Applies: market-dependent protocols; Avoid: fixed-rate products
+4. Multi-Stakeholder Value: Users, protocols, LPs, risk managers
+5. Functional + NFR Coverage: Adaptability + risk management + capital efficiency
+6. Trade-off Analysis: Improves efficiency (30%); Adds complexity and governance overhead
+7. Anti-Pattern Awareness: Not for predictable environments, avoid rapid changes
+
+**Concrete Example**:
+```solidity
+contract AdaptiveProtocol {
+    struct MarketParams {
+        uint256 baseRate;
+        uint256 utilization;
+        uint256 optimalUtilization;
+        uint256 slope1;
+        uint256 slope2;
+    }
+    
+    MarketParams public params;
+    
+    function calculateDynamicRate() public view returns (uint256) {
+        uint256 utilization = getUtilization();
+        
+        if (utilization <= params.optimalUtilization) {
+            return params.baseRate + (utilization * params.slope1) / 1e18;
+        } else {
+            uint256 excessUtilization = utilization - params.optimalUtilization;
+            return params.base

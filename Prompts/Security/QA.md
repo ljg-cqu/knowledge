@@ -1,37 +1,38 @@
-# Interview Q&A - Software Safety & Security for Comprehensive Understanding
+# Interview Q&A - Software Safety & Security
 
-Framework for generating high-quality interview question banks focused on software safety and security across all stakeholder perspectives—from technical implementation to operational governance.
+Generate interview question banks covering software safety and security for technical, operational, and management stakeholders.
+
+**Constraints**: 25–30 Q&A pairs | 150–300 words/answer | 20/40/40 difficulty (F/I/A) | MECE coverage | APA 7th citations
 
 ---
 
-# Part I: Specifications
+# Part I: Requirements
 
-Define quality requirements, standards, and constraints.
+## Core Specifications
 
-## Specifications
+### Scope
 
-### Scope and Structure
-
-- **Scope**: 25–30 Q&A pairs for cross-functional stakeholders (engineers, operators, managers, regulators)
-- **Answer Length**: 150–300 words covering safety hazards, security threats, prevention measures, emergency response, compliance requirements
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Visual Requirements**: ≥1 primary diagram + ≥1 example scenario + ≥1 supporting table + ≥1 quantitative metric per topic cluster
-- **Analysis Depth**: Hazard/threat identification, risk assessment, control measures, incident response, regulatory compliance
+- **Count**: 25–30 Q&A pairs
+- **Audience**: Engineers, operators, managers, regulators
+- **Length**: 150–300 words/answer
+- **Difficulty**: 20% Foundational, 40% Intermediate, 40% Advanced
+- **Visuals/Cluster**: ≥1 diagram + ≥1 scenario + ≥1 table + ≥1 metric
+- **Coverage**: Hazard/threat ID, risk assessment, controls, incident response, compliance
 
 ### Content Principles
 
-- **MECE Coverage**: Four dimensions (Safety Assurance, Security Assurance, Operational Resilience, Compliance & Governance) × Four perspectives (Prevention, Detection, Response, Recovery)
-- **Analysis Required**: Hazard/threat identification, risk assessment methodology, control effectiveness, incident management, regulatory alignment, safety-security convergence analysis
-- **Multi-Stakeholder**: Technical (implementation, testing), Operational (monitoring, response), Management (policy, resources), Regulatory (standards, audits)
-- **Framework Handling**: Present competing approaches (Fail-Safe vs Fail-Operational, Zero-Trust vs Perimeter Defense, Proactive vs Reactive Monitoring); cite trade-offs; acknowledge context (criticality, threat landscape, regulatory environment)
-- **Stakeholder Clarity**: Use accessible language for non-technical audiences; distinguish mandatory standards vs best practices; connect requirements to implementation and operational procedures
+- **MECE Structure**: 4 dimensions (Safety, Security, Resilience, Governance) × 4 phases (Prevent, Detect, Respond, Recover)
+- **Analysis**: Hazard/threat ID → risk assessment → control effectiveness → incident mgmt → regulatory alignment
+- **Stakeholders**: Technical (implementation), Operational (monitoring), Management (policy), Regulatory (audits)
+- **Frameworks**: Compare approaches (Fail-Safe vs Fail-Operational, Zero-Trust vs Perimeter); cite trade-offs; specify context
+- **Clarity**: Accessible language; distinguish mandatory vs best practices; trace requirements → controls → procedures
 
 ### Evaluation Dimensions
 
-- **Safety Assurance**: Hazard analysis (FMEA, FTA, HAZOP), fail-safe design, redundancy, fault tolerance, safety instrumented systems, safety certification
-- **Security Assurance**: Threat modeling (STRIDE, PASTA), SAST, DAST, SCA (SBOM), fuzz testing, penetration testing, API/IaC/container scanning, access control, encryption, intrusion detection, security audits
-- **Operational Resilience**: Incident detection, emergency response procedures, business continuity, disaster recovery, system monitoring, anomaly detection
-- **Compliance & Governance**: Regulatory standards (IEC 61508, ISO 26262, ISO 27001), risk management frameworks, audit trails, documentation, training programs
+- **Safety**: FMEA, FTA, HAZOP, fail-safe, redundancy, fault tolerance, SIS, certification
+- **Security**: STRIDE/PASTA, SAST/DAST/SCA, fuzz/pentest, API/IaC/container scan, access control, encryption, IDS, audits
+- **Resilience**: Incident detection, emergency response, BCDR, monitoring, anomaly detection
+- **Governance**: IEC 61508, ISO 26262/27001, risk frameworks, audit trails, documentation, training
 
 ### Quick Orientation — Safety vs Security
 
@@ -59,230 +60,227 @@ flowchart LR
 
 **Per Topic Cluster Requirements**: Primary diagram + example scenario + supporting table + quantitative metric
 
-#### Diagram Selection by Analysis Type
+| Analysis Type | Diagram | Standard | Scenario + Metrics |
+|---------------|---------|----------|--------------------|
+| **Hazard** | Fault tree, Bow-tie | IEC 61025, ISO 31010 | Failure scenario + `Risk = P × S`, `MTBF` |
+| **Threat** | Attack tree, DFD | STRIDE, PASTA | Attack path + `CVSS`, Attack Surface |
+| **Prevention** | Control hierarchy | ISO 12100, NIST CSF | Control impl + Effectiveness % |
+| **Detection** | State machine, Alert flow | SIEM | Logic + Detection %, `MTTD` |
+| **Response** | Incident workflow | NIST SP 800-61, ISO 22301 | Procedure + `MTTR`, `RTO` |
+| **Compliance** | Audit trail, Control map | ISO 27001, IEC 61508 | Evidence + Compliance % |
+| **Security Testing** | Attack chain, Coverage map | NIST SP 800-115, OWASP ASVS | Test plan + Coverage %, Defect Escape % |
 
-| Analysis Type | Primary Diagram | Standard | Example Scenario + Metrics |
-|---------------|-----------------|----------|----------------------------|
-| **Hazard Analysis** | Fault tree, Bow-tie diagram | IEC 61025, ISO 31010 | Failure scenario + `Risk = Likelihood × Severity`, `MTBF = Operating Time / Failures` |
-| **Threat Modeling** | Attack tree, Data flow diagram | STRIDE, PASTA | Attack scenario + `Attack Surface = Entry Points × Vulnerabilities`, `CVSS Score` |
-| **Prevention Measures** | Control hierarchy, Defense-in-depth | ISO 12100, NIST CSF | Control implementation + `Control Effectiveness = Incidents Prevented / Total Threats × 100%` |
-| **Detection & Monitoring** | State machine, Alert flow | Custom, SIEM | Monitoring logic + `Detection Rate = True Positives / Total Incidents × 100%`, `MTTD = Time to Detection` |
-| **Incident Response** | Incident workflow, Recovery process | NIST SP 800-61, ISO 22301 | Response procedure + `MTTR = Time to Recovery`, `RTO = Recovery Time Objective` |
-| **Compliance** | Audit trail, Control mapping | ISO 27001, IEC 61508 | Evidence documentation + `Compliance Rate = Controls Met / Total Controls × 100%` |
-| **Security Testing** | Attack chain, Test coverage map | NIST SP 800-115, OWASP ASVS | Pentest/fuzz plan + `Coverage = Tests Run / Identified Vectors × 100%`, `Defect Escape Rate = Post-Release Findings / Total Findings × 100%` |
+**Standards**: IEC 61508/61511 (functional safety), ISO 26262 (automotive), ISO/SAE 21434 (auto cyber), IEC 62304/ISO 14971 (medical), IEC 62443 (industrial), ISO 27001 (infosec), NIST CSF 2.0, ISO 31000 (risk), ISO 22301 (BCDR)
 
-**Standards Reference**: IEC 61508 (functional safety), IEC 61511 (process industry safety), ISO 26262 (automotive safety), ISO/SAE 21434 (automotive cybersecurity), IEC 62304 (medical device software), ISO 14971 (medical device risk management), IEC 62443 (industrial security), ISO 27001 (information security), NIST CSF 2.0 (cybersecurity framework), ISO 31000 (risk management), ISO 22301 (business continuity)
+### Metrics
 
-#### Metrics Quick Reference
+| Metric | Formula | Target/Notes |
+|--------|---------|------------|
+| Risk | `P × I` | Scale: 0–10 or qualitative |
+| MTBF | `Operating Time / Failures` | Higher = better |
+| MTTR | `Restoration Time / Incidents` | Includes diagnosis + repair + verify |
+| MTTD | `Detection Time / Incidents` | Lower = faster detection |
+| Detection Rate | `TP / Total × 100%` | ≥95% critical systems |
+| False Positive | `False Alarms / Total × 100%` | ≤2% prevent fatigue |
+| CVSS | `Base × Temporal × Environmental` | 0–10; Critical ≥9.0 |
+| Availability | `Uptime / (Up + Down) × 100%` | 99.9% = 8.76h/yr down |
+| Test Coverage | `Tests Run / Vectors × 100%` | Security completeness |
+| Defect Escape | `Post-Release / Total × 100%` | Lower = better quality |
 
-| Metric | Formula | Notes |
-|--------|---------|-------|
-| Risk Score | `Risk = Likelihood × Severity` | Scale: 0-10 or qualitative matrix |
-| MTBF | `MTBF = Total Operating Time / Number of Failures` | Higher = better reliability |
-| MTTR | `MTTR = Total Restoration Time / Number of Incidents` | Includes diagnosis + repair + verification |
-| MTTD | `MTTD = Total Detection Time / Number of Incidents` | Lower = faster threat detection |
-| Detection Rate | `True Positives / Total Incidents × 100%` | Target: ≥95% for critical systems |
-| False Positive Rate | `False Alarms / Total Alerts × 100%` | Target: ≤2% to prevent alert fatigue |
-| CVSS | `Base × Temporal × Environmental` | Range: 0-10 (Critical ≥9.0) |
-| Availability | `Uptime / (Uptime + Downtime) × 100%` | Target: 99.9% (8.76h/yr downtime) |
-| Test Coverage | `Tests Run / Identified Vectors × 100%` | Security testing completeness |
-| Defect Escape Rate | `Post-Release Findings / Total Findings × 100%` | Lower = better quality gate |
+### Safety & Security Frameworks
 
-#### Safety & Security Frameworks (Apply Relevant Combination)
+- **Defense-in-Depth**: Layered controls → no single point of failure
+- **Fail-Safe**: Safe state on failure → graceful degradation
+- **Zero-Trust**: Never trust, always verify → least privilege
+- **Swiss Cheese**: Multiple defenses → compensating controls
+- **Risk-Based**: Prioritize by P × I → continuous assessment
+- **Safety-Security Convergence**: Unified threat landscape → integrated response
 
-- **Defense-in-Depth**: Layered controls → multiple protection barriers → no single point of failure
-- **Fail-Safe Design**: Safe state on failure → hazard elimination → graceful degradation
-- **Zero-Trust Architecture**: Never trust, always verify → least privilege → continuous validation
-- **Swiss Cheese Model**: Multiple defenses → redundancy → compensating controls
-- **Risk-Based Approach**: Prioritize by severity × likelihood → resource optimization → continuous assessment
-- **Safety-Security Convergence**: Unified threat landscape → coordinated governance → integrated response
+### Visual Standards
 
-#### Visual Quality Standards
-
-**Rendering**: Use Mermaid (GitHub-native); avoid external renderers. Syntax example:
+**Diagrams**: Use Mermaid (GitHub-native). Syntax:
 ```mermaid
 flowchart TD
-    A[Start] --> B[Process]
-    B --> C[End]
+    A[Start] --> B[Process] --> C[End]
 ```
 
-**Implementation Examples**: Include practical scenarios with configuration, procedures, or code where applicable (YAML configs, monitoring scripts, incident playbooks). Use fenced code blocks:
-```yaml
-# Safety interlock configuration
+**Scenarios**: Include configs, procedures, code (YAML, scripts, playbooks) in fenced blocks:
+```
 safety_limits:
   temperature_max: 85
-  pressure_max: 150
   shutdown_on_exceed: true
 ```
 
-**Math**: Inline `$formula$` or block `$$formula$$`. Define variables on first use.
+**Math**: Inline `$formula$` or block `$$formula$$`. Define variables first.
 
-**Common Math Symbols**: `∑` (sum), `∏` (product), `∫` (integral), `∂` (rate), `≈` (approx), `≤/≥` (bounds), `≠` (not equal), `∀` (for all)
+**Symbols**: ∑ (sum), ∏ (product), ∫ (integral), ∂ (rate), ≈ (approx), ≤/≥ (bounds), ≠, ∀
 
-**Legends**: Use consistent symbols for clarity: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important Note, 💻 Code
+**Legends**: 💡 Analogy, 📐 Formula, 🔍 Example, ⚠️ Important, 💻 Code
 
-**Anti-patterns**: Avoid single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
+**Avoid**: Single mega-diagram, BPMN for code flow, mixed abstraction levels, >120 nodes, missing rationale
 
-**Combination Patterns**: For comprehensive analysis, combine multiple diagram types:
-- **Full Documentation**: Risk Identification (Hazard/Threat) → Control Architecture → Monitoring & Response → Compliance Evidence
-- **Process Operations**: BPMN Process → Incident Workflow → Control Mapping → Audit Trail
-- **Enterprise Governance**: Risk Appetite → Current Posture → Target Posture → Assurance Roadmap
+### Diagram Patterns
 
-**Quick Reference – Diagram & Scenario Guide**
-| Need | Recommended Diagram(s) | Example Scenario | Standard |
-|------|------------------------|------------------|----------|
-| Hazard identification | Fault tree, FMEA table | Equipment failure cascade | IEC 61025, ISO 31010 |
-| Threat modeling | Attack tree, DFD | Unauthorized access path | STRIDE, PASTA |
-| Access control | Role hierarchy, Permission matrix | Authentication/authorization flow | RBAC, NIST SP 800-53 |
-| Incident response | Workflow, Decision tree | Breach containment procedure | NIST SP 800-61, ISO 22301 |
-| Safety instrumentation | Logic diagram, State machine | Emergency shutdown sequence | IEC 61511, ISA-84 |
-| Security monitoring | Alert flow, Dashboard layout | Intrusion detection workflow | SIEM, SOC procedures |
-| Compliance mapping | Control matrix, Audit trail | Evidence collection process | ISO 27001, IEC 61508 |
+Combine diagrams for comprehensive analysis:
+
+| Need | Diagram | Scenario | Standard |
+|------|---------|----------|----------|
+| Hazard ID | Fault tree, FMEA table | Equipment failure cascade | IEC 61025, ISO 31010 |
+| Threat model | Attack tree, DFD | Unauthorized access path | STRIDE, PASTA |
+| Access control | Role hierarchy, Permission matrix | Auth/authz flow | RBAC, NIST SP 800-53 |
+| Incident response | Workflow, Decision tree | Breach containment | NIST SP 800-61, ISO 22301 |
+| Safety system | Logic diagram, State machine | Emergency shutdown | IEC 61511, ISA-84 |
+| Security monitor | Alert flow, Dashboard | Intrusion detection | SIEM, SOC |
+| Compliance | Control matrix, Audit trail | Evidence collection | ISO 27001, IEC 61508 |
 
 ### Safety & Security Decision Matrices
 
-**Control Strategy Selection Matrix** (choose control approach based on risk context):
-| Risk Context | Fail-Safe Design | Fail-Operational | Redundant Systems | Zero-Trust Security |
-|--------------|------------------|------------------|-------------------|---------------------|
-| Criticality Level | Safety-Critical | Mission-Critical | High-Availability | Security-Critical |
-| Failure Tolerance | Zero | Graceful Degradation | Continued Operation | Zero Unauthorized Access |
-| Cost Constraint | High | Medium | Low | Medium |
-| Recovery Time | Immediate | Minutes | Seconds | Immediate Detection |
-| Regulatory Requirement | IEC 61508 SIL 3-4 | ISO 26262 ASIL C-D | IEC 62443 SL 2-3 | ISO 27001 High |
+**Control Selection Matrix**
 
-**Risk Prioritization Trade‑Off Matrix** (prioritize controls based on system context):
-| System Context | Safety | Security | Availability | Cost | Regulatory Compliance |
-|----------------|--------|----------|--------------|------|----------------------|
-| **Medical Devices** | Critical | Critical | High | Medium | Critical (FDA, IEC 62304) |
-| **Industrial Control** | Critical | High | Critical | Medium | Critical (IEC 62443) |
-| **Autonomous Vehicles** | Critical | Critical | Critical | Low | Critical (ISO 26262) |
-| **Financial Systems** | Medium | Critical | Critical | Medium | Critical (PCI DSS, SOX) |
-| **Critical Infrastructure** | Critical | Critical | Critical | Low | Critical (NERC CIP, NIST) |
+| Risk Context | Fail-Safe | Fail-Operational | Redundant | Zero-Trust |
+|--------------|-----------|------------------|-----------|------------|
+| Criticality | Safety-Critical | Mission-Critical | High-Avail | Security-Critical |
+| Tolerance | Zero | Degradation | Continued Ops | Zero Unauth |
+| Cost | High | Medium | Low | Medium |
+| Recovery | Immediate | Minutes | Seconds | Immediate |
+| Regulatory | IEC 61508 SIL 3-4 | ISO 26262 ASIL C-D | IEC 62443 SL 2-3 | ISO 27001 High |
 
-### Citation Standards
+**Risk Prioritization Matrix**
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Safety & security standards; (2) Risk assessment methodologies; (3) Historical incident analysis & lessons learned; (4) Tools & frameworks
-- **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] after factual claims, standards, risk metrics, control frameworks, incident statistics, regulatory requirements
+| System | Safety | Security | Availability | Cost | Compliance |
+|--------|--------|----------|--------------|------|------------|
+| Medical | Critical | Critical | High | Medium | FDA, IEC 62304 |
+| Industrial Control | Critical | High | Critical | Medium | IEC 62443 |
+| Autonomous Vehicle | Critical | Critical | Critical | Low | ISO 26262 |
+| Financial | Medium | Critical | Critical | Medium | PCI DSS, SOX |
+| Critical Infra | Critical | Critical | Critical | Low | NERC CIP, NIST |
 
-### Reference Minimum Requirements
+### Citations
 
-| Section | Floor | Content |
-|---------|-------|---------|
-| Glossary | ≥10 | FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL (Safety Integrity Level), CIA Triad, Attack Surface, Threat Vector |
-| Tools | ≥5 | Risk assessment (BowTieXP, FMEA tools), threat modeling (Microsoft Threat Modeling Tool), SIEM (Splunk, ELK), vulnerability scanning (Nessus, Qualys), incident management (PagerDuty, ServiceNow) |
-| Literature | ≥10 | Safety standards (IEC 61508, IEC 61511, ISO 26262, ISO/SAE 21434, IEC 62304, ISO 14971), security frameworks (NIST CSF, ISO 27001, IEC 62443, NIST SP 800-82, NIST SP 800-61, NIST SP 800-115, OWASP ASVS), risk management (ISO 31000, FAIR), incident analysis (Stuxnet, breaches, supply chain, ransomware), threat modeling (Shostack), safety engineering (Leveson) + ZH sources (安全工程, 信息安全) |
-| Citations | ≥20 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags); for international standards, EN-heavy distributions are acceptable |
+- **Format**: APA 7th with language tags [EN], [ZH]
+- **Distribution**: ~60% EN, ~30% ZH, ~10% other
+- **Types**: (1) Safety/security standards; (2) Risk methodologies; (3) Incident lessons; (4) Tools/frameworks
+- **Inline**: Use [Ref: ID] after claims, standards, metrics, frameworks, statistics, requirements
 
-**Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
+### Reference Requirements
 
-### Usage Guidelines
+| Section | Minimum | Content |
+|---------|---------|---------|
+| Glossary | ≥10 | FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA, Attack Surface, Threat Vector |
+| Tools | ≥5 | BowTieXP/FMEA (risk), MS Threat Model (threat), Splunk/ELK (SIEM), Nessus/Qualys (vuln scan), PagerDuty/ServiceNow (incident) |
+| Literature | ≥10 | IEC 61508/61511, ISO 26262/27001/31000, ISO/SAE 21434, IEC 62304/62443, ISO 14971, NIST CSF/SP 800-82/61/115, OWASP ASVS, incident analysis (Stuxnet, breaches), Shostack, Leveson + ZH sources |
+| Citations | ≥20 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags); for international standards, EN-heavy acceptable |
 
-1. Follow MECE structure; maintain 20/40/40 difficulty balance
-2. Meet all reference floors; address Safety/Security/Resilience/Compliance dimensions
-3. Include ≥1 primary diagram + ≥1 example scenario + ≥1 supporting table + ≥1 quantitative metric per topic cluster
-4. Per topic: ≥2 authoritative standards/sources + ≥1 tool reference
-5. Document any gaps with remediation plan
+**Exception**: If unmet, state shortfall + rationale + sourcing plan.
+
+### Usage
+
+1. Follow MECE; maintain 20/40/40 difficulty
+2. Meet reference minimums; cover Safety/Security/Resilience/Governance
+3. Per cluster: ≥1 diagram + ≥1 scenario + ≥1 table + ≥1 metric
+4. Per topic: ≥2 standards/sources + ≥1 tool
+5. Document gaps with remediation plan
 
 ### Quality Gates
 
-- **Recency**: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native domains)
-- **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% answers have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, adoption metrics, last update ≤18 months, key integrations
-- **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
-- **Security Testing Coverage**: Security Assurance/Prevention topics include SAST/DAST/SCA; risk‑aligned fuzz or pentest; IaC/container scanning for cloud‑native
+- **Recency**: ≥50% last 3yr (≥70% for digital/cloud domains)
+- **Diversity**: ≥3 source types; no single >25%
+- **Evidence**: ≥70% answers ≥1 citation; ≥30% have ≥2
+- **Tools**: Pricing, adoption, update ≤18mo, integrations
+- **Links**: Validate access; use DOIs/archived URLs
+- **Cross-refs**: All [Ref: ID] resolve
+- **Security Testing**: Include SAST/DAST/SCA; fuzz/pentest; IaC/container scan for cloud
 
-> Scaling: For >30 Q&A, increase floors by ~1.5×. Prioritize gates before raising floors.
+> Scale: For >30 Q&A, increase minimums ×1.5. Prioritize gates before raising floors.
 
-### Pre-Submission Validation
+### Validation
 
-Execute all validation steps (Part I). Fix failures; re-validate until all PASS.
+**Success Criteria**: All checks PASS before submission.
 
-### Step 1: Topic Identification & Planning
-1. Identify 5-6 clusters aligned with framework: Safety Assurance | Security Assurance | Operational Resilience | Compliance & Governance | Prevention Measures | Incident Response
-2. Allocate 4-6 Q&As per cluster (total 25-30); assign 20/40/40 difficulty (F/I/A)
-3. **Check**: Total = 25-30, ratio ≈20/40/40
+Execute validation (Part II). Fix failures; re-validate until all PASS.
 
-### Step 2: Reference Collection
-1. **Glossary (≥10)**: FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA Triad, Attack Surface, Threat Vector
-2. **Tools (≥5)**: BowTieXP/FMEA tools (risk assessment), Microsoft Threat Modeling Tool (threat analysis), Splunk/ELK (SIEM), Nessus/Qualys (vulnerability scanning), PagerDuty/ServiceNow (incident management)
-3. **Literature (≥10)**: IEC 61508/IEC 61511/ISO 26262/ISO/SAE 21434/IEC 62304/ISO 14971 (safety), NIST CSF/ISO 27001/IEC 62443/NIST SP 800-82/NIST SP 800-61 (security), ISO 31000/FAIR (risk), Shostack (threat modeling), Leveson (safety engineering) + ZH sources (安全工程, 信息安全)
-4. **Citations (≥20)**: Tag language, year, type (1-4); assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
+---
 
-### Step 3: Q&A Generation
-1. Write scenario-based questions ("How would...", "When should..."); draft 150-300 word answers accessible to all stakeholders
-2. Include ≥1 [Ref: ID] per answer; explicitly trace safety/security requirements → control implementations
-3. Include practical scenarios (failure cases, attack scenarios, response procedures, control configurations)
-4. State concrete Key Insight (risk trade-offs/control effectiveness/incident impact/regulatory requirements)
-5. **Check**: Every 5 Q&As verify word counts, citations, practical examples, requirement-to-control tracing, judgment focus
+# Part II: Workflow
 
-### Step 4: Visual Artifacts
-1. Per topic cluster, create ≥4 elements: primary diagram + example scenario + supporting table + risk/performance metric
-2. Use Mermaid for diagrams; include captions and legends
-3. Include practical scenarios with configurations (YAML, monitoring scripts, incident playbooks) where applicable
-4. Apply relevant safety/security frameworks (Defense-in-Depth, Fail-Safe, Zero-Trust, Risk-Based) with implementation examples
-5. **Check**: All clusters covered; visuals + scenarios align with analysis type (see Diagram Selection table in Part I)
+## Generation Steps
+
+### Step 1: Topic Planning
+1. Identify 5-6 clusters: Safety | Security | Resilience | Governance | Prevention | Response
+2. Allocate 4-6 Q&As/cluster (total 25-30); assign 20/40/40 difficulty
+3. **Validate**: Total=25-30, ratio≈20/40/40
+
+### Step 2: References
+1. **Glossary (≥10)**: FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA, Attack Surface, Threat Vector
+2. **Tools (≥5)**: BowTieXP/FMEA, MS Threat Model, Splunk/ELK, Nessus/Qualys, PagerDuty/ServiceNow
+3. **Literature (≥10)**: IEC 61508/61511, ISO 26262/27001/31000, ISO/SAE 21434, IEC 62304/62443, ISO 14971, NIST CSF/SP 800-82/61/115, OWASP ASVS, Shostack, Leveson + ZH sources
+4. **Citations (≥20)**: Tag language, year, type; assign IDs (G#/T#/L#/A#)
+5. **Validate**: Counts, ~60/30/10% language, ≥50% last 3yr, ≥3 types
+
+### Step 3: Q&A Creation
+1. Write scenario-based questions ("How would...", "When should..."); 150-300 words, accessible to all
+2. Include ≥1 [Ref: ID]/answer; trace requirements → controls
+3. Add practical scenarios (failures, attacks, responses, configs)
+4. State concrete Key Insight (risk/control/incident/regulatory)
+5. **Validate**: Every 5 Q&As check word count, citations, examples, tracing, judgment
+
+### Step 4: Visuals
+1. Per cluster: ≥4 elements (diagram + scenario + table + metric)
+2. Use Mermaid; add captions/legends
+3. Include configs (YAML, scripts, playbooks)
+4. Apply frameworks (Defense-in-Depth, Fail-Safe, Zero-Trust) with examples
+5. **Validate**: All clusters covered; visuals align with analysis type
 
 ### Step 5: References
-1. Populate Glossary/Tools/Literature/APA with required fields
-2. **Check**: All [Ref: ID] resolve
+1. Populate Glossary/Tools/Literature/APA
+2. **Validate**: All [Ref: ID] resolve
 
 ### Step 6: Validation
-Execute all 16 steps (Part I). Fix failures; re-validate until all PASS.
+Execute all quality gates. Fix failures; re-validate until PASS.
 
-### Step 7: Final Review
-Apply critique criteria. Check submission checklist. Submit when all PASS.
+### Step 7: Review
+Apply critique criteria. Submit when all PASS.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated question banks with quality criteria.
+## Question Design
 
-### Question Design & Critique
+### Risk-to-Controls Framework
 
-**Implementation Approach:**
+1. **Hazard/Threat ID**: Identify risks → assess P × I → prioritize
+2. **Control Requirements**: Define goals → evaluate effectiveness → check compliance
+3. **Control Design**: Prevention → detection → response
+4. **Trace**: Requirements → deployed controls → procedures
 
-Questions should guide stakeholders through the risk-to-controls framework:
-1. **Start with Hazard/Threat Identification**: Identify risks → assess severity × likelihood → prioritize by impact
-2. **Assess Control Requirements**: Define safety/security goals → evaluate control effectiveness → consider regulatory compliance
-3. **Design Control Measures**: Select prevention controls → implement detection mechanisms → plan response procedures
-4. **Trace to Implementation**: Show explicit connection from requirements to deployed controls and operational procedures
+### Quality Criteria
 
-**Quality Criteria:**
+**Clarity**: Single unambiguous ask, accessible to all stakeholders
+- ✅ "How would you assess and mitigate risk of undetected sensor failure in a medical infusion pump?"
+- ❌ "Explain safety and security in medical devices"
 
-- **Clarity**: Single unambiguous ask accessible to cross-functional stakeholders
-  - ✅ "How would you assess and mitigate the risk of an undetected sensor failure in a medical infusion pump?"
-  - ❌ "Explain safety and security in medical devices"
-  
-- **Signal**: Tests risk-to-controls translation, not trivia
-  - ✅ "How would you implement defense-in-depth for an industrial control system? Show the control layers and monitoring approach."
-  - ❌ "List the layers of defense-in-depth"
-  
-- **Depth**: Enables discussion of risk trade-offs, control effectiveness, incident impact
-  - ✅ "Choose one: fail-safe, fail-operational, or redundant systems for an autonomous vehicle braking system. Justify with risk analysis."
-  - ❌ "Should you use redundancy? Yes/no"
-  
-- **Realism**: Scenarios matching stakeholder roles across technical, operational, and management levels
-  - ✅ "Your SCADA system experienced a 10-minute communication outage. How would you determine if it was a safety incident, security breach, or benign failure?"
-  - ❌ "Design a secure control system from scratch"
-  
-- **Discriminative**: Tests judgment over recall
-  - ✅ "When should you choose fail-safe over fail-operational design? Demonstrate both with real-world scenarios."
-  - ❌ "What is fail-safe design?"
-  
-- **Alignment**: Match stakeholder role (Technical: implementation | Operational: procedures | Management: policy | Regulatory: compliance)
+**Signal**: Tests risk-to-controls translation, not trivia
+- ✅ "Implement defense-in-depth for industrial control. Show layers and monitoring."
+- ❌ "List defense-in-depth layers"
 
-**Success Factors:**
+**Depth**: Enables risk/control/incident trade-off discussion
+- ✅ "Choose: fail-safe, fail-operational, or redundant for autonomous braking. Justify with risk analysis."
+- ❌ "Should you use redundancy? Yes/no"
 
-Answers should demonstrate:
-- Risk awareness (hazard/threat identification, likelihood × severity assessment, regulatory requirements)
-- Clear communication (accessible to non-technical stakeholders, visual aids, concrete scenarios)
-- Implementation excellence (trace requirements to controls, measure control effectiveness, document lessons learned from incidents)
+**Realism**: Match stakeholder roles (Technical/Operational/Management/Regulatory)
+- ✅ "SCADA had 10-min outage. How determine if safety incident, security breach, or benign?"
+- ❌ "Design secure control system from scratch"
+
+**Discriminative**: Tests judgment over recall
+- ✅ "When choose fail-safe over fail-operational? Show real-world scenarios."
+- ❌ "What is fail-safe design?"
+
+### Success Factors
+
+- **Risk awareness**: Hazard/threat ID, P × I assessment, regulatory requirements
+- **Clear communication**: Accessible language, visuals, concrete scenarios
+- **Implementation**: Trace requirements → controls, measure effectiveness, document lessons
 
 ---
 
@@ -290,7 +288,7 @@ Answers should demonstrate:
 
 Use this structure when generating question banks:
 
-```markdown
+```
 ## Contents
 
 - [Topic Areas](#topic-areas-questions-1-n)
@@ -339,7 +337,7 @@ Overview of coverage and difficulty distribution.
 [150-300 word answer with inline [Ref: ID] citations accessible to all stakeholders, explicitly connecting safety/security requirements to control implementations]
 
 **Practical Scenario**:
-```yaml
+```
 # Example configuration, procedure, or implementation
 # Can be YAML config, monitoring script, incident playbook, etc.
 ```
@@ -358,7 +356,7 @@ Overview of coverage and difficulty distribution.
 ### Template Stubs (use when needed)
 
 **Incident Playbook (YAML)**
-```yaml
+```
 incident_playbook:
   id: PLAY-001
   scope: [safety, security]
@@ -686,7 +684,7 @@ Defense-in-depth for critical infrastructure SCADA requires multiple control lay
 
 **Safety-Security Convergence**: Safety interlocks provide last line of defense if security controls fail—e.g., pressure relief valves open mechanically if SCADA commands exceed safe limits, independent of network integrity [Ref: G7].
 
-```mermaid
+```
 flowchart TD
     EXT[External Threats] --> FW1[Perimeter Firewall]
     FW1 --> DMZ[DMZ: Historian/HMI]
@@ -705,7 +703,7 @@ flowchart TD
 ```
 
 **Implementation Example** (Network Segmentation Config):
-```yaml
+```
 # Firewall rule template (simplified)
 zones:
   - name: enterprise

@@ -1,133 +1,131 @@
 # Multiple-Choice Questions – Product Manager
 
-Framework for generating high-quality product management MCQ assessments with proper structure, citations, and multi-dimensional evaluation.
+Generate senior-level PM MCQ assessments with citations and multi-dimensional evaluation.
 
 ---
 
 # Part I: Specifications
 
-Define quality requirements, standards, and constraints for PM scenarios.
+Quality requirements, standards, and constraints.
 
 ## Specifications
 
 ### Scope and Structure
 
-- **Scope**: 40–80 MCQs for senior/director/VP level Product Managers
-- **Format**: Concise stems (1–2 sentences), 4 options, exactly one correct
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Distractors**: Map to common PM misconceptions, outdated practices, or competing frameworks; rationale clarifies consensus vs dissent
-- **Rationale**: 1–2 sentences with citation when applicable
-- **Grading**: Machine-gradable; no partial credit
-- **Conflict Handling**: For contentious topics, distractors reflect legitimate competing PM views; rationale clarifies where PM community agrees/disagrees
+- **Scope**: 40–80 MCQs for senior/director/VP PMs
+- **Format**: 1–2 sentence stems, 4 options (one correct)
+- **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
+- **Distractors**: Common misconceptions, outdated practices, competing frameworks
+- **Rationale**: 1–2 sentences with citations
+- **Grading**: Machine-gradable, no partial credit
 
 ### Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH], etc.)
-- **Source Types**: (1) Product frameworks (RICE, AARRR, JTBD, OKR); (2) Research & data (market analyses, user research, case studies); (3) PM literature (books, articles, launches); (4) Tools & platforms (analytics, roadmapping, research tools)
+- **Languages**: 60% EN / 30% ZH / 10% other (tag: [EN], [ZH])
+- **Source Types**: (1) Frameworks (RICE, AARRR, JTBD, OKR); (2) Research/data; (3) Literature; (4) Tools/platforms
 - **Format**: APA 7th with language tags
-- **Distribution**: Product Tools/Platforms; PM Literature/Case Studies
-- **Inline Citation**: Use [Ref: ID] in rationales when referencing frameworks, market data, user insights, metrics, best practices. Distractors may reference common misconceptions with citations.
+- **Inline**: Use [Ref: ID] in rationales for frameworks, data, metrics, best practices
 
 ### Reference Minimum Requirements
 
-| Section | Floor | Content |
-|---------|-------|---------|
-| Glossary | ≥10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST, etc. |
-| Tools | ≥5 | Analytics, roadmapping, research platforms, collaboration |
-| Literature | ≥6 | PM frameworks, market analyses, launches, case studies |
-| Citations | ≥12 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags) |
+| Section | Minimum | Examples |
+|---------|---------|----------|
+| Glossary | 10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST |
+| Tools | 5 | Analytics, roadmapping, research, collaboration |
+| Literature | 6 | Frameworks, analyses, launches, case studies |
+| Citations | 12 | 60% EN / 30% ZH / 10% other (APA 7th) |
 
-**Exception**: If floor unmet, state shortfall + rationale + sourcing plan.
+**Exception**: If unmet, state shortfall + rationale + plan.
 
 ### Quality Gates
 
-- **Recency**: ≥50% citations from last 3 years (≥70% for AI/platform domains)
-- **Diversity**: ≥3 source types; no single source >25%
-- **Evidence**: ≥70% questions have ≥1 citation; ≥30% have ≥2 citations
-- **Tool Details**: Pricing, user base, last update ≤18 months, key integrations
+- **Recency**: 50% from last 3 years (70% for AI/platform)
+- **Diversity**: 3+ source types; no single source >25%
+- **Evidence**: 70% questions have 1+ citation; 30% have 2+ citations
+- **Tool Details**: Pricing, users, update ≤18 months, integrations
 - **Links**: Validate accessibility; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve to entries
+- **Cross-refs**: All [Ref: ID] resolve
 
-> Scaling: For >80 questions, increase floors by ~1.5×. Prioritize gates before raising floors.
+> **Scaling**: >80 questions: increase minimums by 1.5×; prioritize gates over minimums.
 
 ### Pre-Submission Validation
 
-Execute ALL steps below. Present results in validation report table. Fix failures and re-run until all PASS.
+Execute all steps. Present validation report. Fix failures and re-run until all PASS.
 
-**Step 1 – Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Questions 40–80 (20/40/40)
-**Step 2 – Citations**: ≥70% questions have ≥1; ≥30% have ≥2
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-**Step 4 – Recency**: ≥50% from last 3 years (≥70% for AI/platform)
-**Step 5 – Diversity**: ≥3 source types; no single >25%
-**Step 6 – Links**: All accessible or archived
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
+| Step | Check | Target |
+|------|-------|--------|
+| 1 | Counts | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Questions 40–80 (20/40/40) |
+| 2 | Citations | 70% questions have 1+; 30% have 2+ |
+| 3 | Language | EN 50-70%, ZH 20-40%, Other 5-15% |
+| 4 | Recency | 50% from last 3yr (70% for AI/platform) |
+| 5 | Diversity | 3+ source types; no single >25% |
+| 6 | Links | All accessible or archived |
+| 7 | Cross-refs | All [Ref: ID] resolve (G#/T#/L#/A#) |
 
-**Validation Report Template:**
+**Report Template:**
 ```
 | Check | Result | Status |
 |-------|--------|--------|
-| Floors | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Counts | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL |
+| Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Language | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
 | Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
+| Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
 ```
-> **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate, and re-run validation. Only proceed when ALL checks show PASS.
+> **MANDATORY**: Stop if ANY check fails. Fix, regenerate, re-validate. Proceed only when ALL PASS.
 
 ### Submission Checklist
-- [ ] All validation steps PASS (see report table above)
-- [ ] ALL reference floors met + quality gates passed
+- [ ] All validation steps PASS
+- [ ] All minimums met + quality gates passed
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks at each step.
+Generation workflow with quality checks at each step.
 
 ## Instructions
 
-Follow these steps in order. Execute inline quality checks at each step before proceeding.
-
-### Step 1: Topic Identification & Planning
-1. Identify 4–6 PM clusters: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | Go-to-Market
+### Step 1: Topic Planning
+1. Identify 4–6 clusters: Strategy | Discovery | Prioritization | Metrics | Stakeholder | Go-to-Market
 2. Allocate 8–16 MCQs per cluster (total 40–80)
-3. Assign difficulty levels ensuring 20/40/40 balance
-4. **Check**: Total = 40–80, ratio ≈20/40/40
+3. Assign difficulty: 20/40/40 (Foundational/Intermediate/Advanced)
+4. **Check**: Total = 40–80, ratio ≈ 20/40/40
 
 ### Step 2: Reference Collection
-1. **Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
-2. **Tools (≥5)**: Mixpanel/Amplitude (analytics), ProductBoard/Aha! (roadmapping), Dovetail/UserTesting (research), Miro (collaboration)
-3. **Literature (≥6)**: Cagan, Olsen, Torres, Perri, Patton, Klement + ZH sources (俞军, 梁宁, 苏杰)
-4. **Citations (≥12)**: Tag language, year, type (1–4); assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language ~60/30/10%, recency ≥50% last 3yr, ≥3 types
+1. **Glossary (10+)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
+2. **Tools (5+)**: Mixpanel/Amplitude, ProductBoard/Aha!, Dovetail/UserTesting, Miro
+3. **Literature (6+)**: Cagan, Olsen, Torres, Perri, Patton, Klement + ZH (俞军, 梁宁, 苏杰)
+4. **Citations (12+)**: Tag language, year, type; assign IDs (G#/T#/L#/A#)
+5. **Check**: Counts, language 60/30/10%, recency 50%+ last 3yr, 3+ types
 
 ### Step 3: MCQ Generation
-1. For EACH MCQ: Write stem (1–2 sentences, product context, frameworks, metrics)
+1. Write stem (1–2 sentences: context, frameworks, metrics)
 2. Provide 4 options (one correct, three plausible distractors)
-3. Rationale (1–2 sentences, cite [Ref: ID] for frameworks, data, best practices)
-4. **Check**: Every 5 MCQs verify lengths, citations, distractor quality, rationale
+3. Rationale (1–2 sentences with [Ref: ID])
+4. **Check**: Every 5 MCQs verify length, citations, distractor quality
 
-### Step 4: Reference Sections
-1. Populate Glossary/Tools/Literature/APA with required fields
+### Step 4: References
+1. Populate Glossary/Tools/Literature/APA
 2. **Check**: All [Ref: ID] resolve
 
 ### Step 5: Validation
-Execute all steps. Fix failures; re-validate until all PASS.
+Execute all checks. Fix failures; re-validate until all PASS.
 
-### Step 6: Final Review
-Check submission checklist. Submit when all PASS.
+### Step 6: Submit
+Verify checklist. Submit when all PASS.
 
 ---
 
 # Part III: Output Format
 
-Template structure for generated MCQ banks.
+MCQ bank template structure.
 
 ## Output Format
 
-Use this structure when generating MCQ banks:
+Use this structure:
 
 ```markdown
 ## Contents
@@ -146,7 +144,7 @@ Use this structure when generating MCQ banks:
 
 **Difficulty:** [Foundational/Intermediate/Advanced] | **Domain:** [Strategy/Discovery/Prioritization/Metrics/Stakeholder/GTM]
 
-**Stem:** (1–2 sentences, product context, frameworks, metrics)
+**Stem:** (1–2 sentences: context, frameworks, metrics)
 
 A. [Option 1]
 B. [Option 2]
@@ -155,92 +153,92 @@ D. [Option 4]
 
 **Correct Answer:** [A/B/C/D]
 
-**Rationale:** (1–2 sentences, cite [Ref: ID] for frameworks, data, best practices)
+**Rationale:** (1–2 sentences with [Ref: ID])
 
 ---
 
 ## Reference Sections
 
-Assign Reference IDs and reuse them inline in MCQ rationales: Glossary (G1…Gn), Tools (T1…Tn), Literature (L1…Ln), APA Citations (A1…An). Example inline: [Ref: G2, T3, A5].
+Reference IDs: Glossary (G1…Gn), Tools (T1…Tn), Literature (L1…Ln), APA (A1…An). Inline: [Ref: G2, T3, A5].
 
 ### Glossary, Terminology & Acronyms
 
 **G1. AARRR (Pirate Metrics)**  
-Acquisition → Activation → Retention → Referral → Revenue framework for tracking growth across customer lifecycle. Used for SaaS metrics, funnel optimization. Related: HEART, North Star Metric
+Acquisition → Activation → Retention → Referral → Revenue. Tracks growth across customer lifecycle. Use: SaaS metrics, funnel optimization. Related: HEART, North Star
 
 **G2. RICE Prioritization**  
-Reach × Impact × Confidence ÷ Effort scoring for feature prioritization. Used for roadmap planning, backlog ranking. Related: ICE, Value/Effort Matrix, KANO
+Reach × Impact × Confidence ÷ Effort. Feature scoring formula. Use: roadmap planning, backlog ranking. Related: ICE, Value/Effort, KANO
 
 **G3. Jobs-to-be-Done (JTBD)**  
-Framework for understanding the underlying "job" users hire a product to accomplish (vs demographics). Used for feature ideation, segmentation, competitive analysis. Related: Outcome-driven innovation
+Underlying "job" users hire products to accomplish (vs demographics). Use: ideation, segmentation, competitive analysis. Related: Outcome-driven innovation
 
 **G4. North Star Metric**  
-Single metric capturing core product value; leading indicator of sustainable growth. Used for company alignment, PLG, OKRs. Related: OMTM, Input/Output metrics
+Single metric capturing core value; leading indicator of sustainable growth. Use: alignment, PLG, OKRs. Related: OMTM, Input/Output metrics
 
 **G5. Product-Market Fit (PMF)**  
-Degree product satisfies market demand; measured when retention flattens and organic growth accelerates. Used for validation, pivot decisions, expansion. Related: Problem-solution fit, MVP
+Degree product satisfies market demand; retention flattens, organic growth accelerates. Use: validation, pivots, expansion. Related: Problem-solution fit, MVP
 
 **G6. OKR (Objectives and Key Results)**  
-Goal framework where Objectives = what to achieve, Key Results = how to measure. Used for quarterly planning, cross-functional alignment. Related: KPI, North Star, V2MOM
+Objectives = what to achieve; Key Results = how to measure. Use: quarterly planning, alignment. Related: KPI, North Star, V2MOM
 
 **G7. Continuous Discovery**  
-Regular customer engagement through structured interviews/testing to inform decisions (vs periodic projects). Used for weekly interviews, opportunity trees, assumption testing. Related: Dual-track agile, Build-Measure-Learn
+Regular customer engagement via structured interviews/testing (vs periodic projects). Use: weekly interviews, opportunity trees, assumption testing. Related: Dual-track agile, Build-Measure-Learn
 
 **G8. Product-Led Growth (PLG)**  
-GTM strategy where product drives acquisition, conversion, expansion (vs sales-led). Used for SaaS freemium, self-serve onboarding, viral loops. Related: PQLs, Time-to-Value, Expansion revenue
+Product drives acquisition, conversion, expansion (vs sales-led). Use: SaaS freemium, self-serve, viral loops. Related: PQLs, Time-to-Value, Expansion revenue
 
 **G9. Feature Factory**  
-Anti-pattern: shipping features (outputs) vs solving problems (outcomes). Used in transformation discussions, outcome-based PM. Related: Build trap, Empowered teams
+Anti-pattern: shipping features (outputs) vs solving problems (outcomes). Use: transformation, outcome-based PM. Related: Build trap, Empowered teams
 
 **G10. Opportunity Solution Tree (OST)**  
-Visual framework mapping outcomes → opportunities (needs/pains) → solutions. Used for discovery planning, ideation, assumption mapping. Related: HMW statements, User story mapping
+Visual: outcomes → opportunities (needs/pains) → solutions. Use: discovery, ideation, assumption mapping. Related: HMW, User story mapping
 
-[... continue for ≥10 entries ...]
+[... 10+ entries ...]
 
 ---
 
 ### Product Tools & Platforms
 
 **T1. Mixpanel** (Product Analytics)  
-Event tracking, funnel/cohort analysis, A/B testing, user segmentation. Freemium to Enterprise. 8K+ companies (Uber, Netflix). Updated Q3 2024 (AI insights). Integrates: Segment, Salesforce, Slack, Jira. PM use: Activation tracking, feature adoption, retention monitoring. https://mixpanel.com
+Event tracking, funnel/cohort analysis, A/B testing, segmentation. Freemium to Enterprise. 8K+ companies (Uber, Netflix). Updated Q3 2024 (AI insights). Integrates: Segment, Salesforce, Slack, Jira. Use: activation, adoption, retention. https://mixpanel.com
 
-**T2. ProductBoard** (Roadmapping & Prioritization)  
-Feedback aggregation, prioritization matrix (value/effort), roadmap views, customer portal. Essentials $25/maker/mo to Enterprise. 6K+ teams (Microsoft, Zoom). Updated Q4 2024 (AI feedback analysis). Integrates: Jira, Slack, Salesforce, Intercom, Zendesk. PM use: Feedback synthesis, RICE scoring, stakeholder communication. https://www.productboard.com
+**T2. ProductBoard** (Roadmapping)  
+Feedback aggregation, prioritization matrix, roadmap views, portal. $25/maker/mo to Enterprise. 6K+ teams (Microsoft, Zoom). Updated Q4 2024 (AI analysis). Integrates: Jira, Slack, Salesforce, Intercom, Zendesk. Use: synthesis, RICE, stakeholder comms. https://www.productboard.com
 
-**T3. Amplitude** (Product Analytics & Experimentation)  
-Behavioral cohorts, retention/funnel analysis, A/B/n testing, predictive analytics. Freemium to Enterprise. 3.2K+ companies (PayPal, Ford). Updated Q3 2024 (AI insights, predictive playbooks). Integrates: Segment, Braze, Optimizely, Salesforce. PM use: North Star tracking, conversion optimization, impact analysis. https://amplitude.com
+**T3. Amplitude** (Analytics & Experimentation)  
+Cohorts, retention/funnel, A/B/n testing, predictive analytics. Freemium to Enterprise. 3.2K+ companies (PayPal, Ford). Updated Q3 2024 (AI, playbooks). Integrates: Segment, Braze, Optimizely, Salesforce. Use: North Star, conversion, impact. https://amplitude.com
 
-**T4. Dovetail** (User Research Repository)  
-Auto transcription, tagging/theming, highlight reels, sentiment analysis, journey visualization. Freemium to Enterprise. 3K+ teams (Atlassian, Canva). Updated Q2 2024 (AI theme detection). Integrates: Zoom, Slack, Notion, Jira, UserTesting. PM use: Interview synthesis, JTBD mapping, discovery insights. https://dovetail.com
+**T4. Dovetail** (Research Repository)  
+Transcription, tagging/theming, highlights, sentiment, journey viz. Freemium to Enterprise. 3K+ teams (Atlassian, Canva). Updated Q2 2024 (AI themes). Integrates: Zoom, Slack, Notion, Jira, UserTesting. Use: synthesis, JTBD, discovery. https://dovetail.com
 
 **T5. Miro** (Visual Collaboration)  
-Infinite canvas, templates (story maps, journey maps, matrices), real-time collab, AI assistant. Freemium to Enterprise. 80M+ users (Dell, Cisco). Updated Q4 2024 (enhanced AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Asana. PM use: Story mapping, OST workshops, roadmap planning, retrospectives. https://miro.com
+Infinite canvas, templates (story/journey maps, matrices), real-time collab, AI. Freemium to Enterprise. 80M+ users (Dell, Cisco). Updated Q4 2024 (AI). Integrates: Jira, Slack, Teams, Zoom, Figma, Asana. Use: story mapping, OST, roadmaps, retros. https://miro.com
 
-[... continue for ≥5 entries ...]
+[... 5+ entries ...]
 
 ---
 
 ### Authoritative Literature & Case Studies
 
 **L1. Cagan, M. (2017). *Inspired* (2nd ed.). Wiley.**  
-PM framework: discovery vs delivery, empowered teams. Foundational PM principles.
+Discovery vs delivery, empowered teams. Foundational principles.
 
 **L2. Olsen, D. (2015). *The Lean Product Playbook*. Wiley.**  
-6-step process for product-market fit. Strategic planning, validation techniques.
+6-step PMF process. Strategy, validation.
 
 **L3. Perri, M. (2018). *Escaping the Build Trap*. O'Reilly.**  
-Outcomes over outputs, feature factory to outcome-driven culture. Organizational transformation.
+Outcomes over outputs. Feature factory to outcome-driven culture.
 
 **L4. Torres, T. (2021). *Continuous Discovery Habits*. Product Talk LLC.**  
-Weekly customer touchpoints, opportunity solution trees. Discovery process design.
+Weekly touchpoints, opportunity solution trees. Discovery process.
 
 **L5. Patton, J. (2014). *User Story Mapping*. O'Reilly.**  
-Story mapping by user journey (vs flat backlog). Roadmap planning, MVP scoping.
+Mapping by user journey (vs flat backlog). Roadmaps, MVP scoping.
 
 **L6. Klement, A. (2016). *When Coffee and Kale Compete*. Independent.**  
-JTBD: functional/emotional/social jobs. Product positioning, competitive analysis.
+JTBD: functional/emotional/social jobs. Positioning, competitive analysis.
 
-[... continue for ≥6 entries ...]
+[... 6+ entries ...]
 
 ---
 
@@ -281,7 +279,7 @@ JTBD: functional/emotional/social jobs. Product positioning, competitive analysi
 
 **A16. Kim, G. N. (2022). *Product leadership: How top product managers launch awesome products and build successful teams*. O'Reilly Media. [EN]**
 
-[... continue for ≥12 entries with ~60% EN, ~30% ZH, ~10% other ...]
+[... 12+ entries: 60% EN / 30% ZH / 10% other ...]
 ```
 
 ---
@@ -301,6 +299,6 @@ D. OKR
 
 **Correct Answer:** B
 
-**Rationale:** RICE prioritization [Ref: G2, A2] is specifically designed to evaluate features using reach, impact, confidence, and effort, making it ideal for roadmap planning. AARRR is for growth metrics, JTBD for user needs, OKR for goal setting.
+**Rationale:** RICE [Ref: G2, A2] evaluates features using reach, impact, confidence, effort—ideal for roadmap planning. AARRR = growth metrics, JTBD = user needs, OKR = goals.
 
 ---

@@ -1,81 +1,96 @@
-# Cloze / Fill-in-the-Blank - Business Understanding for Software Architecture
+# Cloze / Fill-in-the-Blank — Business Understanding for Software Architecture
 
-Framework for generating high-quality fill-in-the-blank assessments focused on comprehensive business understanding that benefits software architecture decisions.
+Generate cloze assessments mapping business concepts to architectural implications.
 
 ---
 
 # Part I: Specifications
 
-## Specifications
+## Context & Scope
 
-### Scope and Structure
+- **Audience**: Senior/architect/expert technical leaders
+- **Goal**: 24–40 items testing business-to-architecture understanding
+- **Output**: Markdown; items grouped by topic clusters
 
-- **Scope**: 24–40 items for senior/architect/expert level technical leaders
-- **Format**: Unambiguous blanks (___); array of acceptable answers
-- **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
-- **Normalization**: Case-insensitive, trim whitespace, strip punctuation; specify numeric tolerances
-- **Grading**: Acceptance lists with tolerances; document borderline answers, partial credit
-- **Conflict Handling**: For contested terminology (e.g., different BMC interpretations), acceptance lists include valid variants from different schools/regions
+## Structure & Difficulty
 
-### Citation Standards
+- **Format**: Unambiguous blanks (___); acceptance array per item
+- **Difficulty**: 20/40/40 split (Foundational/Intermediate/Advanced)
+- **MECE**: Non-overlapping clusters and items; complete coverage
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
-- **Source Types**: (1) Business frameworks & methodologies; (2) Architecture patterns & practices; (3) Case studies & industry reports; (4) Tools & platforms
+## Grading & Normalization
+
+- **Normalization**: Case-insensitive; trim whitespace; strip punctuation; numeric tolerances specified
+- **Grading**: Acceptance lists; borderline answers documented; partial credit defined where applicable
+- **Conflict Handling**: Contested terminology includes valid variants from different schools/regions
+
+## Citation Standards
+
+- **Languages**: ~60% EN, ~30% ZH, ~10% other (tagged: [EN], [ZH])
+- **Source Types**: Business frameworks, architecture patterns, case studies, tools
 - **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] in rationales when referencing business models, frameworks, definitions, technical specifications
+- **Inline**: [Ref: ID] in rationales; explicit uncertainty flags
 
-### Reference Minimum Requirements
+## Reference Minimum Requirements
 
-| Reference Section | Floor Count | Notes |
-| --- | --- | --- |
-| Glossary, Terminology & Acronyms | ≥10 entries | Business Model Canvas, Value Proposition, DDD, Conway's Law, Technical Debt, etc. |
-| Business & Architecture Tools | ≥5 entries | Miro, ArchiMate/C4, Confluence, LucidChart, Wardley Maps |
-| Authoritative Literature & Reports | ≥6 entries | Business strategy, architecture patterns, organizational design |
-| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
+| Reference Section | Minimum | Examples |
+|---|---|---|
+| Glossary, Terminology & Acronyms | ≥10 | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
+| Business & Architecture Tools | ≥5 | Miro, ArchiMate, C4, Confluence, LucidChart, Wardley Maps |
+| Authoritative Literature & Reports | ≥6 | Business strategy, architecture patterns, organizational design |
+| APA Style Source Citations | ≥12 | Language mix: ~60% EN, ~30% ZH, ~10% other |
 
-### Quality Gates
+## Quality Gates
 
-- Recency: ≥50% citations from last 3 years (≥70% for digital transformation/cloud-native)
-- Source diversity: ≥3 source types; no single source >25%
-- Evidence coverage: ≥70% items with ≥1 citation; ≥30% with ≥2 citations
-- Business-Technical Mapping: ≥70% items test business-to-architecture terminology
+- **Recency**: ≥50% citations ≤3 years old (≥70% for digital transformation/cloud-native)
+- **Diversity**: ≥3 source types; single source ≤25%
+- **Coverage**: ≥70% items have ≥1 citation; ≥30% have ≥2
+- **Mapping**: ≥70% items test business-to-architecture terminology
+- **MECE**: Non-overlapping topics and items; no redundancy
 
-### Pre-Submission Validation
+## Success Criteria
 
-**Step 1 – Count Audit**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Items 24-40 (20/40/40)
-**Step 2 – Citation Coverage**: ≥70% have ≥1; ≥30% have ≥2
-**Step 3 – Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-**Step 4 – Recency**: ≥50% last 3yr (≥70% for digital transformation)
-**Step 5 – Source Diversity**: ≥3 types; no single >25%
-**Step 6 – Links**: All accessible or archived
-**Step 7 – Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-**Step 8 – Answer Completeness**: All items have complete answer lists
-**Step 9 – Blank Unambiguity**: All blanks unambiguous
-**Step 10 – Business-Technical Mapping**: ≥70% test business-architecture terminology
+- **Counts**: 24–40 items; 20/40/40 difficulty; reference minimums met
+- **Quality Gates**: Citations, recency, diversity, coverage satisfied
+- **References**: All [Ref: ID] resolve (G#/T#/L#/A#); links accessible/archived
+- **Items**: Unambiguous blanks; complete acceptance lists
 
 ---
 
 # Part II: Instructions
 
-### Step 1: Topic Identification & Planning
-1. Identify 4-6 clusters: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 4-8 items per cluster (total 24-40); assign 20/40/40 difficulty
-3. **Check**: Total = 24-40, ratio ≈20/40/40
+## Step 1: Topic Identification & Planning
+1. Select 4–6 clusters: Strategic Modeling, Value & Risk Analysis, Organizational Dynamics, Architectural Translation, Evolution & Adaptation
+2. Allocate 4–8 items per cluster (24–40 total); 20/40/40 difficulty split
+3. Verify MECE: non-overlapping clusters, complete coverage
 
-### Step 2: Reference Collection
-Gather ≥10 glossary, ≥5 tools, ≥6 literature, ≥12 APA citations; tag language, year, type
+## Step 2: Reference Collection
+Gather references with language/year/type tags:
+- ≥10 glossary entries
+- ≥5 tools
+- ≥6 literature sources
+- ≥12 APA citations
 
-### Step 3: Item Generation
-1. Write statements with unambiguous blanks testing business-architecture terminology
-2. Create acceptance lists (include synonyms, variants)
-3. Write rationales with ≥1 [Ref: ID]
-4. **Check**: Every 5 items verify: unambiguous blanks, complete acceptance lists, citations
+## Step 3: Item Generation
+1. Write unambiguous blanks targeting business–architecture terminology
+2. Build acceptance lists (synonyms, variants)
+3. Add rationales with ≥1 [Ref: ID]
+4. Review every 5 items: ambiguity, acceptance lists, citations
 
-### Step 4: Reference Compilation
-Populate Glossary/Tools/Literature/APA; ensure all [Ref: ID] resolve
+## Step 4: Reference Compilation
+Populate all sections; verify [Ref: ID] resolution
 
-### Step 5: Validation
-Execute all 10 steps; fix failures; re-validate until all PASS
+## Step 5: Self-Review & Validation
+1. **Counts**: Glossary ≥10; Tools ≥5; Literature ≥6; APA ≥12; Items 24–40 (20/40/40)
+2. **Citation coverage**: ≥70% have ≥1; ≥30% have ≥2
+3. **Language mix**: EN 50–70%, ZH 20–40%, Other 5–15%
+4. **Recency**: ≥50% ≤3y (≥70% for digital transformation)
+5. **Source diversity**: ≥3 types; single ≤25%
+6. **Links**: All accessible/archived
+7. **Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
+8. **Answer completeness**: Complete acceptance lists
+9. **Blank clarity**: All blanks unambiguous
+10. **Mapping**: ≥70% test business–architecture terminology
 
 ---
 
@@ -95,11 +110,11 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 - BMC
 - Business Model Canvas (BMC)
 
-**Rationale:** Business Model Canvas [Ref: G1] provides structured approach to analyze business model changes and their architectural implications [Ref: A1].
+**Rationale:** Business Model Canvas [Ref: G1] provides structured analysis of business model changes and architectural implications [Ref: A1].
 
 ---
 
-#### Item 2: When a company shifts from perpetual licensing to SaaS, the ___ building block change from upfront to recurring most directly drives multi-tenancy requirements.
+#### Item 2: When a company shifts from perpetual licensing to SaaS, the ___ building block changing from upfront to recurring directly drives multi-tenancy requirements.
 
 **Difficulty:** Intermediate
 
@@ -108,7 +123,7 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 - Revenue Stream
 - Revenue
 
-**Rationale:** Revenue model shift to recurring subscription drives cost optimization [Ref: G1], requiring multi-tenancy for shared infrastructure efficiency [Ref: A7].
+**Rationale:** Recurring subscription revenue drives cost optimization [Ref: G1], requiring multi-tenancy for shared infrastructure efficiency [Ref: A7].
 
 ---
 
@@ -116,61 +131,61 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 
 ### Glossary, Terminology & Acronyms
 
-**G1. Business Model Canvas (BMC)**: 9-block template (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure). Maps business model to technical requirements. [EN]
+**G1. Business Model Canvas (BMC)**: 9-block template (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure) mapping business models to technical requirements. [EN]
 
-**G2. Value Proposition**: Bundle of products/services creating value for customer segment. Maps to technical features and quality attributes (performance, reliability, usability). [EN]
+**G2. Value Proposition**: Product/service bundle creating customer value. Maps to technical features and quality attributes (performance, reliability, usability). [EN]
 
-**G3. Domain-Driven Design (DDD)**: Approach focusing on complex domain modeling through technical-domain expert collaboration. Used for microservices boundaries, team organization. [EN]
+**G3. Domain-Driven Design (DDD)**: Complex domain modeling via technical-domain expert collaboration. Defines microservices boundaries and team organization. [EN]
 
-**G4. Conway's Law**: "Organizations design systems mirroring their communication structure." Used for team topology design, architecture alignment. [EN]
+**G4. Conway's Law**: "Organizations design systems mirroring their communication structure." Guides team topology and architecture alignment. [EN]
 
-**G5. Technical Debt**: Cost of rework from choosing quick solutions over better long-term approaches. Used for refactoring prioritization, risk assessment. [EN]
+**G5. Technical Debt**: Rework cost from choosing quick solutions over sustainable approaches. Prioritizes refactoring and risk assessment. [EN]
 
-**G6. Architecture Decision Records (ADR)**: Lightweight documentation of architectural decisions, context, consequences, trade-offs. Used for decision transparency, knowledge preservation. [EN]
+**G6. Architecture Decision Records (ADR)**: Lightweight documentation capturing architectural decisions, context, consequences, trade-offs. Ensures decision transparency and knowledge preservation. [EN]
 
-**G7. Bounded Context**: DDD pattern defining explicit boundaries for domain model validity. Used for microservices decomposition, team autonomy. [EN]
+**G7. Bounded Context**: DDD pattern defining explicit domain model boundaries. Enables microservices decomposition and team autonomy. [EN]
 
-**G8. Capability Mapping**: Identifying business capabilities independent of implementation. Used for strategic planning, gap analysis, transformation roadmaps. [EN]
+**G8. Capability Mapping**: Identifying implementation-independent business capabilities. Supports strategic planning, gap analysis, transformation roadmaps. [EN]
 
-**G9. Living Documentation**: Documentation evolving with system through automation. Used for knowledge sharing, architectural understanding. [EN]
+**G9. Living Documentation**: Self-updating documentation via automation. Facilitates knowledge sharing and architectural understanding. [EN]
 
-**G10. Wardley Mapping**: Strategic planning visualizing components by visibility and evolution. Used for strategic decision-making, anticipating change. [EN]
+**G10. Wardley Mapping**: Strategic planning via component visualization by visibility and evolution. Supports strategic decisions and change anticipation. [EN]
 
-**G11. Customer Segment**: Distinct groups of people/organizations an enterprise aims to reach and serve. Maps to system design decisions (interfaces, workflows, data models). Used for market targeting, personalization. [EN]
+**G11. Customer Segment**: Distinct enterprise target groups. Maps to system design (interfaces, workflows, data models). [EN]
 
-**G12. Revenue Stream**: Ways an organization generates income from customer segments (e.g., subscription, usage-based, freemium). Directly impacts architectural requirements (metering, billing, multi-tenancy). [EN]
+**G12. Revenue Stream**: Income generation methods (subscription, usage-based, freemium). Impacts metering, billing, multi-tenancy. [EN]
 
-**G13. Value Stream Mapping**: Lean technique visualizing steps in delivering value to customers, identifying waste and bottlenecks. Used for process optimization, lead time reduction. [EN]
+**G13. Value Stream Mapping**: Lean technique visualizing value delivery steps, identifying waste and bottlenecks. Optimizes processes and reduces lead time. [EN]
 
-**G14. System Boundaries**: Explicit definition of what is inside vs outside the system scope; determines interfaces and integration points. Used for context diagrams, scope management. [EN]
+**G14. System Boundaries**: Explicit scope definition (inside vs. outside). Determines interfaces and integration points for context diagrams. [EN]
 
-**G15. Process Mapping**: Visual documentation of workflows, activities, decision points, and information flows. Used for optimization, automation, understanding current state. [EN]
+**G15. Process Mapping**: Visual workflow documentation (activities, decision points, information flows). Supports optimization and automation. [EN]
 
 ### Business & Architecture Tools
 
-**T1. Miro**: Visual collaboration for Business Model Canvas, architecture diagrams. Freemium-Enterprise. 80M+ users. Q4 2024 update. https://miro.com [EN]
+**T1. Miro**: Visual collaboration for Business Model Canvas and architecture diagrams. Freemium–Enterprise. 80M+ users. https://miro.com [EN]
 
-**T2. ArchiMate**: Enterprise architecture modeling standard (business, application, technology layers). ISO/IEC/IEEE 42010 compliant. https://www.opengroup.org/archimate-forum [EN]
+**T2. ArchiMate**: Enterprise architecture modeling (business, application, technology layers). ISO/IEC/IEEE 42010 compliant. https://www.opengroup.org/archimate-forum [EN]
 
 **T3. C4 Model**: Hierarchical architecture diagrams (Context, Container, Component, Code). Free, tool-agnostic. https://c4model.com [EN]
 
-**T4. Confluence**: Documentation platform for ADRs, living documentation. Free-Enterprise. 75K+ companies. Q3 2024 update. https://www.atlassian.com/software/confluence [EN]
+**T4. Confluence**: Documentation platform for ADRs and living documentation. Free–Enterprise. 75K+ companies. https://www.atlassian.com/software/confluence [EN]
 
-**T5. LucidChart**: Cloud diagramming for process maps, architecture diagrams. Individual-Enterprise. 60M+ users. Q4 2024 update. https://www.lucidchart.com [EN]
+**T5. LucidChart**: Cloud diagramming for process maps and architecture. Individual–Enterprise. 60M+ users. https://www.lucidchart.com [EN]
 
 ### Authoritative Literature & Case Studies
 
-**L1. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.** BMC framework; business-technical alignment.
+**L1. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.** BMC framework; business–technical alignment.
 
 **L2. Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley.** DDD patterns; domain modeling.
 
 **L3. Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.** Practical DDD; context mapping.
 
-**L4. Conway, M. E. (1968). "How Do Committees Invent?" *Datamation*, 14(4), 28-31.** Conway's Law; organizational impact.
+**L4. Conway, M. E. (1968). "How Do Committees Invent?" *Datamation*, 14(4), 28–31.** Conway's Law; organizational impact.
 
 **L5. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution Press.** Team organization patterns.
 
-**L6. Richardson, C. (2018). *Microservices Patterns*. Manning.** Microservices decomposition, patterns.
+**L6. Richardson, C. (2018). *Microservices Patterns*. Manning.** Microservices decomposition and patterns.
 
 ### APA Style Source Citations
 
@@ -182,7 +197,7 @@ Execute all 10 steps; fix failures; re-validate until all PASS
 
 **A4. Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley Professional. [EN]**
 
-**A5. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28-31. [EN]**
+**A5. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28–31. [EN]**
 
 **A6. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
 
