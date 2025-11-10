@@ -89,6 +89,18 @@ Execute all 11 validation steps; fix failures; repeat until all pass
 # Part III: Output Format
 
 ```markdown
+## Contents
+
+- [Question Bank](#question-bank-questions-1-n)
+  - [Topic 1: Strategic Modeling](#topic-1-strategic-modeling)
+- [Reference Sections](#reference-sections)
+  - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+  - [Business & Architecture Tools](#business--architecture-tools)
+  - [Authoritative Literature & Case Studies](#authoritative-literature--case-studies)
+  - [APA Style Source Citations](#apa-style-source-citations)
+
+---
+
 ## Question Bank (Questions 1–N)
 
 ### Topic 1: Strategic Modeling

@@ -82,6 +82,18 @@ Execute 10 validation checks; fix failures; iterate until 100% pass
 # Part III: Output Format
 
 ```markdown
+## Contents
+
+- [Statement Bank](#statement-bank-statements-1-n)
+  - [Topic 1: Strategic Modeling](#topic-1-strategic-modeling)
+- [Reference Sections](#reference-sections)
+  - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+  - [Business & Architecture Tools](#business--architecture-tools)
+  - [Authoritative Literature & Case Studies](#authoritative-literature--case-studies)
+  - [APA Style Source Citations](#apa-style-source-citations)
+
+---
+
 ## Statement Bank (Statements 1–N)
 
 ### Topic 1: Strategic Modeling

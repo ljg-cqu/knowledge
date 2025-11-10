@@ -97,6 +97,23 @@ Populate all sections; verify [Ref: ID] resolution
 # Part III: Output Format
 
 ```markdown
+## Table of Contents
+
+### [Item Bank](#item-bank-items-1n)
+- [Topic 1: Strategic Modeling](#topic-1-strategic-modeling)
+- [Topic 2: Value & Risk Analysis](#topic-2-value--risk-analysis)
+- [Topic 3: Organizational Dynamics](#topic-3-organizational-dynamics)
+- [Topic 4: Architectural Translation](#topic-4-architectural-translation)
+- [Topic 5: Evolution & Adaptation](#topic-5-evolution--adaptation)
+
+### [Reference Sections](#reference-sections)
+- [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
+- [Business & Architecture Tools](#business--architecture-tools)
+- [Authoritative Literature & Case Studies](#authoritative-literature--case-studies)
+- [APA Style Source Citations](#apa-style-source-citations)
+
+---
+
 ## Item Bank (Items 1–N)
 
 ### Topic 1: Strategic Modeling
