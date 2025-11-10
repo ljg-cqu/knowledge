@@ -187,6 +187,10 @@ Check Submission Checklist (Part I). Submit when all checks pass.
 
 ## Output Format
 
+Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
+
+- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+
 ```markdown
 ## Contents
 

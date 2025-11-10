@@ -101,6 +101,10 @@ Execute all 10 validation steps, record pass/fail, remediate gaps, and re-run un
 
 # Part III: Output Format
 
+Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
+
+- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+
 ```markdown
 ## Contents
 
