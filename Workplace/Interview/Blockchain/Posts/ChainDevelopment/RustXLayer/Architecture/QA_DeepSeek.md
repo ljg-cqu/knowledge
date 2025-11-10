@@ -93,33 +93,32 @@ pub struct EVMExecution {
 - `Interface Stability = Breaking Changes / Total Releases = 15%`
 
 ```mermaid
-componentDiagram
-    direction TB
-    component ConsensusLayer {
-        ConsensusEngine
-        BlockBuilder
-        ForkChoice
-    }
-    component NetworkLayer {
-        PeerManager
-        MessageRouter
-        SyncProtocol
-    }
-    component ExecutionLayer {
-        EVMRuntime
-        StateProcessor
-        GasCalculator
-    }
-    component StorageLayer {
-        StateDB
-        BlockStore
-        TrieDB
-    }
+graph TD
+    subgraph ConsensusLayer
+        CE[ConsensusEngine]
+        BB[BlockBuilder]
+        FC[ForkChoice]
+    end
+    subgraph NetworkLayer
+        PM[PeerManager]
+        MR[MessageRouter]
+        SP[SyncProtocol]
+    end
+    subgraph ExecutionLayer
+        ER[EVMRuntime]
+        ST[StateProcessor]
+        GC[GasCalculator]
+    end
+    subgraph StorageLayer
+        SD[StateDB]
+        BS[BlockStore]
+        TD[TrieDB]
+    end
     
-    ConsensusLayer --> NetworkLayer: broadcasts blocks
-    NetworkLayer --> ConsensusLayer: receives transactions
-    ConsensusLayer --> ExecutionLayer: executes blocks
-    ExecutionLayer --> StorageLayer: reads/writes state
+    CE -->|broadcasts blocks| PM
+    MR -->|receives transactions| CE
+    BB -->|executes blocks| ER
+    ST -->|reads/writes state| SD
 ```
 
 ### Q2: Implement Hexagonal Architecture for EVM execution layer with plugin-based precompiles
