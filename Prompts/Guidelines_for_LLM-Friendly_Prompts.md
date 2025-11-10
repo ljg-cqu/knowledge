@@ -12,3 +12,4 @@ Craft concise, precise prompts for better LLM responses.
 6. Prompt quality: request reasoning, self-review, and validation checks.
 7. Define success: specify measurable, concrete criteria.
 8. Apply MECE: ensure coverage is complete and non-overlapping; avoid redundant or extraneous details.
+9. Request structured output: include a table of contents with links to headings, sections, and lists for easy navigation.
