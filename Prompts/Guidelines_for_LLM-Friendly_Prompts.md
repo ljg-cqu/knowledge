@@ -21,7 +21,7 @@ Optimize prompts for high-quality, precise outputs.
 10. **Credibility & Reliability**: Prioritize authoritative, high-quality, tested sources; avoid low-quality or unproven content.
 11. **Significance**: Prioritize important information; exclude trivial details.
 12. **Logic**: Demand coherent reasoning and sound structure.
-13. **Fairness**: Request balanced perspectives; acknowledge limitations, biases, and counterarguments.
+13. **Fairness**: Request balanced perspectives; acknowledge assumptions, limitations, biases, alternatives, counterarguments, trade-offs, and misconceptions.
 
 ### Format: How to Present
 14. **Concision**: Remove redundancy; include only essential information.
