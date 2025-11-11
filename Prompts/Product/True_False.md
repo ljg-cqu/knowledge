@@ -8,6 +8,13 @@ Generate senior-level PM true/false assessments (18–32 statements) with citati
 
 ## Specifications
 
+### Purpose & Context
+- Audience: senior/director/VP PMs; digital products (B2B/B2C, platform, marketplace, SaaS).
+- Constraints: statements must be evaluable as true/false; ≤2 lines; avoid double negatives.
+- Assumptions: modern product practices; cross-functional collaboration; data-informed.
+- Exclusions: trivial UI facts; company-specific processes.
+- Relevance: focus on high-leverage product decisions.
+
 ### Scope and Structure
 
 - **Scope**: 18–32 statements (senior/director/VP PM level)
@@ -17,6 +24,10 @@ Generate senior-level PM true/false assessments (18–32 statements) with citati
 - **Justification** (optional): 2–3 sentences clarifying context/assumptions
 - **Grading**: Binary (True/False)
 - **Context-dependent claims**: Rationale specifies assumptions/conditions
+- **Clarity & Precision**: Avoid undefined jargon; define terms in Glossary; use consistent terminology.
+- **MECE & Sufficiency**: Clusters and statements are non-overlapping and collectively complete.
+- **Breadth & Depth**: Cover multiple perspectives (B2B/B2C, PLG/SLG, platform/marketplace) with advanced trade-offs.
+- **Significance & Concision**: Prioritize high-value topics; remove trivial or redundant items.
 
 ### Citation Standards
 
@@ -29,12 +40,20 @@ Generate senior-level PM true/false assessments (18–32 statements) with citati
 
 | Section | Min | Content |
 |---------|-----|---------|
-| Glossary | 10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST |
+| Glossary | 10 | RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST |
 | Tools | 5 | Analytics, roadmapping, research, collaboration |
 | Literature | 6 | Frameworks, market analyses, launches, case studies |
 | Citations | 12 | 60% EN / 30% ZH / 10% other (APA 7th + tags) |
 
 **Exception**: If unmet, document shortfall + rationale + plan.
+
+### Quality, Logic, Fairness, Risk/Value
+- **Accuracy & Credibility**: Verify facts; prefer authoritative sources/DOIs; archive links; flag uncertainty with [Uncertain].
+- **Logic**: Use clear Claim → Evidence → Warrant reasoning in rationales.
+- **Fairness**: Acknowledge assumptions, limitations, alternatives, counterarguments, and trade-offs when relevant.
+- **Risk/Value**: Summarize risks, costs, benefits, and suggest mitigations for advanced/strategic claims.
+- **Terminology Consistency**: Align language with Glossary; avoid ambiguous quantifiers.
+- **On-Topic Relevance**: Keep statements strictly within product management scope.
 
 ### Quality Gates
 
@@ -47,6 +66,13 @@ Generate senior-level PM true/false assessments (18–32 statements) with citati
 
 > **Scaling**: For >32 statements, increase floors ×1.5. Prioritize gates first.
 
+### Success Criteria (Measurable)
+- All Pre-Submission checks PASS (incl. guideline compliance).
+- Counts met: G≥10, T≥5, L≥6, A≥12, S=18–32 with 20/40/40 difficulty.
+- Coverage: 4–6 clusters; MECE; breadth across B2B/B2C, PLG/SLG, platform/marketplace.
+- Evidence: ≥70% statements have ≥1 citation; ≥30% have ≥2; sources meet recency/diversity caps.
+- Quality: No double negatives; statements ≤2 lines; rationale ≤2 sentences; on-topic; no trivial items.
+
 ### Pre-Submission Validation
 
 Execute all steps. Fix failures and re-run until all PASS.
@@ -58,6 +84,7 @@ Execute all steps. Fix failures and re-run until all PASS.
 5. **Diversity**: ≥3 types; max 25% single source
 6. **Links**: All accessible/archived
 7. **Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
+8. **Guidelines**: All 21 LLM-friendly guidelines satisfied (see Compliance Map).
 
 **Report Template:**
 ```
@@ -70,12 +97,37 @@ Execute all steps. Fix failures and re-run until all PASS.
 | Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
+| Guidelines | 21/21 satisfied | PASS/FAIL |
 ```
 > **MANDATORY:** Stop on ANY FAIL. Fix, regenerate, re-validate. Proceed only when ALL PASS.
 
 ### Submission Checklist
 - [ ] All validation PASS
 - [ ] All floors + gates met
+
+### LLM-Friendly Guidelines Compliance Map
+For each guideline, where it is enforced:
+- 1. **Context**: Purpose & Context; Scope and Structure.
+- 2. **Clarity**: Scope and Structure (Clarity & Precision); Step 3 checks.
+- 3. **Precision**: Glossary usage; avoid ambiguous quantifiers; Step 3.
+- 4. **Relevance**: Purpose & Context (On-Topic); Step 3.
+- 5. **MECE**: Step 1 planning; Scope (MECE & Sufficiency).
+- 6. **Sufficiency**: Floors + cluster coverage; Success Criteria.
+- 7. **Breadth**: Step 1 contexts (B2B/B2C, PLG/SLG, platform/marketplace).
+- 8. **Depth**: Difficulty 20/40/40; advanced trade-offs.
+- 9. **Significance**: Scope (Significance); Success Criteria (no trivial items).
+- 10. **Concision**: Format constraints; Step 3; Success Criteria.
+- 11. **Accuracy**: Citations; Cross-refs; Pre-Submission checks.
+- 12. **Credibility**: Quality Gates (recency/diversity/DOIs/archives).
+- 13. **Logic**: Quality section (Claim → Evidence → Warrant); Step 3.
+- 14. **Risk/Value**: Quality section; Optional Justification guidance.
+- 15. **Fairness**: Quality section; Justification includes alternatives/trade-offs.
+- 16. **Structure**: Output Format; use lists/tables/diagrams.
+- 17. **Output Format**: TOC + sections + Validation Report.
+- 18. **Evidence**: APA + language tags; [Uncertain] flag when applicable.
+- 19. **Validation**: Pre-Submission + Validation Report.
+- 20. **Practicality**: Tool details; actionable statements for assessment use.
+- 21. **Success Criteria**: Dedicated section; Submission Checklist.
 
 ---
 
@@ -84,30 +136,32 @@ Execute all steps. Fix failures and re-run until all PASS.
 Execute steps sequentially with inline validation.
 
 ### Step 1: Topic Planning
-1. Identify 4–6 clusters: Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM
-2. Allocate 3–7 statements/cluster (total 18–32)
-3. Assign difficulty (20/40/40)
-4. **Check**: Total 18–32, ratio 20/40/40
+1. Identify 4–6 clusters: Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM. Ensure MECE; plan breadth across B2B/B2C, PLG/SLG, platform/marketplace.
+2. Allocate 3–7 statements/cluster (total 18–32). Avoid overlap across clusters and statements.
+3. Assign difficulty (20/40/40) with advanced items including trade-offs and strategic risks.
+4. **Check**: Total 18–32; ratio 20/40/40; cluster coverage; MECE/breadth PASS.
 
 ### Step 2: Reference Collection
 1. **Glossary (10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
 2. **Tools (5)**: Mixpanel/Amplitude, ProductBoard/Aha!, Dovetail/UserTesting, Miro
 3. **Literature (6)**: Cagan, Olsen, Torres, Perri, Patton, Klement + ZH (俞军, 梁宁, 苏杰)
 4. **Citations (12)**: Tag language, year, type; assign IDs (G#/T#/L#/A#)
-5. **Check**: Counts, language 60/30/10%, recency 50% <3yr, 3+ types
+5. **Check**: Counts; language 60/30/10%; recency 50% <3yr; ≥3 source types; DOIs/archives; diversity cap ≤25% per source.
 
 ### Step 3: Statement Generation
 1. Write declarative claim (≤2 lines)
-2. Provide answer (T/F) + rationale (1–2 sentences with [Ref: ID])
-3. Optional justification (2–3 sentences for context/assumptions)
-4. **Check**: Every 5 statements verify length, citations, quality
+2. Provide answer (T/F) + rationale (1–2 sentences with [Ref: ID]) using Claim → Evidence → Warrant.
+3. Optional justification (2–3 sentences) to clarify assumptions, limitations, alternatives, trade-offs, and risks/mitigations.
+4. Avoid ambiguous quantifiers; define any term via Glossary; keep terminology consistent; stay on topic.
+5. If uncertainty remains, explicitly tag [Uncertain] and narrow scope/assumptions.
+6. **Check**: Every 5 statements verify length; citations; clarity; logic; fairness/trade-offs; MECE; on-topic.
 
 ### Step 4: Reference Sections
 1. Populate all sections (G/T/L/A) with required fields
 2. **Check**: All [Ref: ID] resolve
 
 ### Step 5: Validation
-Execute all 7 validation steps. Fix failures; re-run until PASS.
+Execute all 8 validation steps. Fix failures; re-run until PASS.
 
 ### Step 6: Submission
 Verify checklist. Submit when all PASS.
@@ -128,6 +182,7 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
   - [Tools](#product-tools--platforms)
   - [Literature](#authoritative-literature--case-studies)
   - [Citations](#apa-style-source-citations)
+- [Validation Report](#validation-report)
 
 ---
 
@@ -143,7 +198,7 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
 
 **Rationale:** (1–2 sentences, cite [Ref: ID] for frameworks, data, best practices)
 
-**Optional Justification:** (2–3 sentences, clarify context/assumptions)
+**Optional Justification:** (2–3 sentences; clarify assumptions/limitations; alternatives/counterarguments; trade-offs; risk/cost/benefit + mitigation. Tag [Uncertain] if applicable.)
 
 ---
 
@@ -270,6 +325,24 @@ JTBD: functional/emotional/social jobs. Positioning, competitive analysis.
 **A16. Kim, G. N. (2022). *Product leadership: How top product managers launch awesome products and build successful teams*. O'Reilly Media. [EN]**
 
 [... continue for ≥12 entries with ~60% EN, ~30% ZH, ~10% other ...]
+
+---
+
+## Validation Report
+
+Fill the table and link evidence. All metrics must PASS before submission.
+
+```
+| Check | Result | Status |
+|-------|--------|--------|
+| Floors | G:X T:Y L:Z A:W S:N (F/I/A) | PASS/FAIL |
+| Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Language | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Recency | X% last 3yr | PASS/FAIL |
+| Diversity | N types, max P% | PASS/FAIL |
+| Links | Y/X accessible | PASS/FAIL |
+| Cross-refs | Y/X resolved | PASS/FAIL |
+| Guidelines | 21/21 satisfied | PASS/FAIL |
 ```
 
 ---
@@ -286,6 +359,6 @@ JTBD: functional/emotional/social jobs. Positioning, competitive analysis.
 
 **Rationale:** North Star is a leading indicator of sustainable growth, not lagging [Ref: G4, L1, T3].
 
-**Justification:** Best practice: select metrics predicting future value and aligning teams on proactive actions [Ref: L1, G4].
+**Justification:** Best practice: select metrics predicting future value and aligning teams on proactive actions; trade-offs exist between input/output metrics. Risk/Value: high leverage, low risk if paired with guardrail metrics. [Ref: L1, G4].
 
 ---

@@ -8,82 +8,116 @@ Generate high-quality true/false assessments testing business-architecture relat
 
 ## Specifications
 
-### Scope and Structure
+### Context & Objectives
 
-- **Scope**: 18–32 statements targeting senior/architect/expert technical leaders
-- **Format**: Declarative, ≤2 lines; no double negatives
-- **Difficulty**: 20% Foundational, 40% Intermediate, 40% Advanced
-- **Rationale**: 1–2 sentences with citations; link business concepts to architectural implications
-- **Optional Justification**: 2–3 sentences (70% answer + 30% rationale)
-- **Grading**: Machine-gradable (True/False)
-- **Context-Dependent Statements**: Rationale clarifies assumptions (e.g., "Conway's Law always requires organizational restructuring")
+- **Purpose**: Evaluate how well senior technical leaders connect business strategy decisions to architectural responses.
+- **Primary audience**: Architects, staff-plus engineers, and product-aligned technology leaders operating in enterprise or scale-up settings.
+- **Assumptions & constraints**: Participants understand core business strategy frameworks and modern architecture practices; statements must remain actionable for multi-team programs with regulated and cloud-first considerations.
+- **High-level success indicator**: A balanced statement set that is precise, machine-gradable, and defends answers with evidence-based rationales.
 
-### Citation Standards
+### Statement Scope & Structure
 
-- **Languages**: 60% EN, 30% ZH, 10% other; tag each [EN]/[ZH]
-- **Source Types**: (1) Business frameworks/methodologies; (2) Architecture patterns/practices; (3) Case studies/reports; (4) Tools/platforms
-- **Format**: APA 7th + language tags
-- **Inline**: [Ref: ID] for frameworks, patterns, findings
+| Element | Requirement | Notes |
+|---|---|---|
+| Scope | 18–32 statements covering the end-to-end business-to-architecture lifecycle | Clusters must remain mutually exclusive and collectively exhaustive (MECE). |
+| Format | Declarative sentences ≤2 lines; avoid double negatives and ambiguous qualifiers | Each prompt focuses on one claim. |
+| Difficulty mix | 20% foundational, 40% intermediate, 40% advanced | Round to nearest whole statement while maintaining coverage across clusters. |
+| Rationale | 1–2 sentences anchored by citations; explicitly explain the business → architecture linkage | Highlight assumptions when the truth value depends on context. |
+| Optional justification | 2–3 sentences (≈70% answer clarity, ≈30% situational nuance) | Use when extra guidance increases fairness or reduces misinterpretation risk. |
+| Grading | Binary True/False answers with unambiguous rationales | Ensure machine gradability by avoiding context-free contradictions. |
+
+### Difficulty & Coverage Targets
+
+- Allocate statements across 4–6 thematic clusters (e.g., Strategic Modeling, Value & Risk, Organizational Dynamics, Architectural Translation, Evolution & Adaptation, Governance & Compliance).
+- Within each cluster, maintain the global 20/40/40 difficulty distribution to ensure breadth and depth.
+- At least 70% of statements must evaluate direct business-architecture relationships; use the remainder to cover enabling considerations (risk, compliance, organizational readiness).
+
+### Evidence, Citations & Language Mix
+
+- Cite authoritative sources using APA 7th edition and language tags (e.g., **[EN]**, **[ZH]**, **[ES]**); include inline references as `[Ref: ID]` mapping to G#/T#/L#/A#.
+- Maintain language distribution: 60% English, 30% Chinese, 10% other languages (±5%). Provide translations or summaries where clarity may suffer.
+- Use a minimum of three source types: business frameworks/methodologies, architecture practices/patterns, case studies/reports, tools/platform documentation. No single type may exceed 25% of total citations.
+- Ensure ≥50% of citations are ≤3 years old (≥70% for cloud or digital-transformation topics) and flag uncertainties or context-limited claims.
+
+### Quality Criteria Aligned with LLM-Friendly Guidelines
+
+1. **Clarity**: Define terms, avoid jargon without explanation, and restate complex assumptions plainly.
+2. **Precision**: Use specific business scenarios, metrics, or architectural patterns instead of generic language.
+3. **MECE coverage**: Clusters must cover the topic space without overlap; map each statement to exactly one cluster.
+4. **Depth & breadth**: Balance strategic, organizational, technical, and operational perspectives, highlighting both benefits and risks.
+5. **Significance & relevance**: Prioritize statements that test high-impact decisions; exclude trivial operational trivia.
+6. **Fairness & balance**: Acknowledge assumptions, limitations, counterexamples, and trade-offs in rationales.
+7. **Risk/value articulation**: Call out risks, mitigations, and value drivers when truth values depend on them.
+8. **Validation readiness**: Structure answers so automated or manual reviews can quickly confirm evidence, citations, and logic.
 
 ### Reference Minimum Requirements
 
-| Reference Section | Minimum | Examples |
+| Reference Section | Minimum | Purpose |
 |---|---|---|
-| Glossary & Acronyms | ≥10 | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
-| Tools & Platforms | ≥5 | Miro, ArchiMate, C4, Confluence, LucidChart, Wardley Maps |
-| Literature & Reports | ≥6 | Business strategy, architecture patterns, organizational design |
-| APA Citations | ≥12 | 60% EN, 30% ZH, 10% other |
+| Glossary & Acronyms | ≥10 | Anchor terminology and reduce ambiguity for multilingual audiences. |
+| Tools & Platforms | ≥5 | Provide actionable resources for modeling, visualization, and governance. |
+| Literature & Reports | ≥6 | Supply authoritative depth across business, architecture, and organizational design domains. |
+| APA Citations | ≥12 | Guarantee sufficient evidence; enforce language and source-type diversity. |
 
-### Quality Gates
+### Success Criteria
 
-- **Recency**: ≥50% citations ≤3 years old (≥70% for digital transformation/cloud topics)
-- **Diversity**: ≥3 source types; no type >25%
-- **Coverage**: ≥70% statements have ≥1 citation; ≥30% have ≥2
-- **Mapping**: ≥70% test business-architecture relationships
+- Statement bank passes automated count, coverage, and difficulty checks on the first review cycle.
+- ≥70% of statements include ≥1 citation; ≥30% include ≥2 citations spanning different source types.
+- Rationales explicitly connect business moves to architectural consequences and mention risk/value implications when applicable.
+- All cross-references resolve correctly, and URLs are live or archived.
 
-### Pre-Submission Validation
+### Validation Checklist
 
-1. **Count Audit**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Statements 18-32 (20/40/40)
-2. **Citation Coverage**: ≥70% have ≥1; ≥30% have ≥2
-3. **Language Mix**: EN 50-70%, ZH 20-40%, Other 5-15%
-4. **Recency**: ≥50% ≤3yr (≥70% for digital transformation topics)
-5. **Diversity**: ≥3 types; no type >25%
-6. **Links**: All URLs accessible or archived
-7. **Cross-refs**: All [Ref: ID] resolve to G#/T#/L#/A#
-8. **Answers**: All True/False clearly justified
-9. **Rationales**: All explain business-architecture link
-10. **Mapping**: ≥70% test business-architecture relationships
+1. **Coverage audit**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Statements 18–32 with 20/40/40 difficulty.
+2. **Cluster balance**: Each thematic cluster has 3–6 statements and unique focus areas.
+3. **Citation coverage**: ≥70% statements include ≥1 citation; ≥30% include ≥2 from distinct source types.
+4. **Language distribution**: EN 50–70%, ZH 20–40%, Other 5–15%; translations provided when needed.
+5. **Recency check**: ≥50% citations within 3 years; ≥70% for digital/cloud topics.
+6. **Source diversity**: ≥3 source types represented; none exceed 25% of total citations.
+7. **Evidence integrity**: Every `[Ref: ID]` maps to G#/T#/L#/A# entries; URLs are accessible.
+8. **Logic & fairness**: Answers are unambiguous, rationales explain assumptions, and counterpoints are acknowledged.
+9. **Risk/value articulation**: Statements discussing trade-offs explicitly mention risk mitigation or value realization.
+10. **Final self-review**: Run spelling/grammar checks, confirm formatting (headings, tables, code blocks), and document validation results.
 
 ---
 
 # Part II: Instructions
 
-### Step 1: Topic Identification & Planning
-1. Identify 4-6 clusters: Strategic Modeling | Value & Risk Analysis | Organizational Dynamics | Architectural Translation | Evolution & Adaptation
-2. Allocate 3-6 statements/cluster (total 18-32); maintain 20/40/40 difficulty
-3. **Verify**: Total count 18-32; ratio approximates 20/40/40
+### Step 1: Define Clusters & Objectives
+1. Select 4–6 thematic clusters that collectively cover strategic intent, value & risk management, organizational dynamics, architectural translation, evolution, and governance. Document rationale for cluster selection.
+2. Map success criteria to each cluster (e.g., "Strategic Modeling" stresses market shifts → capability changes). Confirm clusters are MECE and align with stakeholder needs.
+3. Draft a coverage plan showing statement counts per cluster and difficulty levels to hit the 20/40/40 target.
 
-### Step 2: Reference Collection
-Collect ≥10 glossary entries, ≥5 tools, ≥6 literature sources, ≥12 APA citations; tag each with language, year, type
+### Step 2: Curate Evidence Base
+1. Build a reference matrix tracking glossary, tools, literature, and APA citations with language tags, publication year, and source type.
+2. Prioritize recent (≤3 years) and authoritative sources; note any gaps requiring targeted research.
+3. Collect contextual data (metrics, case studies, regulatory constraints) that will ground statements in actionable reality.
 
-### Step 3: Statement Generation
-1. Write declarative statements testing business-architecture relationships (avoid pure definitions)
-2. Write rationales with ≥1 [Ref: ID]; explain business-technical link
-3. **Verify**: Every 5 statements check: clear answer, complete rationale, business-technical mapping, citations present
+### Step 3: Craft Statements & Rationales
+1. For each cluster, draft declarative statements linking a business trigger to an architectural consequence. Avoid definitions or trivia.
+2. Assign difficulty levels, verify wording clarity, and ensure statements remain single-claim and machine-gradable.
+3. Write rationales highlighting assumptions, risk/value implications, and at least one `[Ref: ID]`. Use optional justifications when nuance improves fairness.
+4. Every five statements, perform a micro-audit: confirm difficulty mix, citation presence, MECE alignment, and language distribution progress.
 
-### Step 4: Reference Compilation
-Populate all reference sections (Glossary/Tools/Literature/APA); verify all [Ref: ID] resolve
+### Step 4: Assemble Reference Sections
+1. Populate glossary, tools, literature, and APA sections; ensure entries are concise, distinct, and mapped to statement references.
+2. Validate language mix, source diversity, and recency requirements. Add archival links if primary sources are unstable.
+3. Cross-check that every `[Ref: ID]` resolves to an entry and that no citation exceeds the source-type cap.
 
-### Step 5: Validation
-Execute 10 validation checks; fix failures; iterate until 100% pass
+### Step 5: Run Validation & Self-Review
+1. Execute the full validation checklist from Part I; document pass/fail status and remediation actions.
+2. Perform a final edit for clarity, tone, and formatting (headings, tables, code blocks, Mermaid diagrams when included).
+3. Summarize validation results in a short bullet list to accompany delivery, noting any residual risks or reviewer notes.
 
 ---
 
 # Part III: Output Format
 
-Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
+Structure the final deliverable so reviewers can navigate quickly and verify compliance with the specifications.
 
-- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+- Begin with a contents section (`## Contents`) linking to all top-level headings and relevant subsections.
+- Use semantic Markdown (H1–H4), bullet/numbered lists, tables, Mermaid diagrams, and language-tagged code blocks to present information cleanly.
+- Include a short "Validation Summary" section near the end noting checklist results and any flagged risks.
 
 ```markdown
 ## Contents
@@ -95,6 +129,7 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
   - [Business & Architecture Tools](#business--architecture-tools)
   - [Authoritative Literature & Case Studies](#authoritative-literature--case-studies)
   - [APA Style Source Citations](#apa-style-source-citations)
+- [Validation Summary](#validation-summary)
 
 ---
 
@@ -225,4 +260,12 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
 **A15. Kim, G., et al. (2016). *The DevOps handbook*. IT Revolution Press. [EN]**
 
 **A16. Wardley, S. (2018). *Wardley maps: Topographical intelligence in business*. Medium. https://medium.com/wardleymaps [EN]**
+
+---
+
+## Validation Summary
+
+- **Checklist status**: 10/10 checks passed (see Part I for criteria).
+- **Language mix**: EN 60%, ZH 30%, Other 10%.
+- **Recent citations**: 65% ≤3 years old; cloud/digital topics 80%.
 ```

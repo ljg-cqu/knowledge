@@ -1,6 +1,20 @@
 # True/False Statements
 
-Generate high-quality true/false assessments with validated structure, citations, and multi-dimensional evaluation.
+Generate high-quality true/false assessments with validated structure, authoritative citations, and multi-dimensional evaluation.
+
+## Purpose & Scope
+
+**Context**: This template generates senior/architect/expert-level true/false assessments for technical domains (blockchain, AI, software architecture, etc.). Statements test deep understanding through precise claims requiring nuanced evaluation.
+
+**Assumptions**:
+- Target audience: Senior engineers, architects, domain experts
+- Domain: Technical fields with established standards, research, and production codebases
+- Assessment goal: Evaluate conceptual understanding, not memorization
+
+**Constraints**:
+- Statements must be objectively verifiable through authoritative sources
+- Avoid opinion-based or context-dependent claims without explicit qualification
+- Exclude rapidly changing facts (e.g., "Latest version is X.Y.Z") unless dated
 
 ---
 
@@ -10,19 +24,42 @@ Generate high-quality true/false assessments with validated structure, citations
 
 ### Scope and Structure
 
-- **Scope**: 18–32 statements (senior/architect/expert level)
-- **Format**: Declarative (≤2 lines); no double negatives
-- **Difficulty Distribution**: 20/40/40 (Foundational/Intermediate/Advanced)
-- **Rationale**: 1–2 sentences with sources
-- **Grading**: Machine-gradable (A/True or B/False)
-- **Conflict Handling**: Rationale clarifies assumptions and conditions for context-dependent statements
+**Statement Requirements** (MECE Coverage):
+- **Count**: 18–32 statements covering 4-6 topic clusters (ensures comprehensive domain coverage)
+- **Format**: Declarative, unambiguous (≤2 lines); no double negatives, no jargon without definition
+- **Difficulty Distribution**: 20/40/40 (Foundational/Intermediate/Advanced) to balance accessibility and depth
+  - *Foundational*: Core concepts, widely accepted principles
+  - *Intermediate*: Implementation details, trade-offs, common patterns
+  - *Advanced*: Edge cases, performance characteristics, security implications
+- **Answer Format**: Machine-gradable (A/True or B/False)
+- **Rationale**: 1–2 sentences explaining why statement is true/false, with authoritative citations
+- **Conflict Handling**: For context-dependent statements, rationale MUST clarify assumptions, conditions, and boundaries
 
-### Citation Standards
+**Coverage Principles** (MECE):
+- Each topic cluster addresses distinct aspect (mutually exclusive)
+- All critical domain areas covered (collectively exhaustive)
+- No overlap between statements (avoid testing same concept multiple times)
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
-- **Source Types**: (1) Official docs (specs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, journals, conferences); (3) Audits/reports (security audits, industry analyses); (4) Vetted code (production repos, stable releases)
-- **Format**: APA 7th with language tags
-- **Inline Citation**: Use [Ref: ID] in rationales for specifications, standards, research findings
+### Citation Standards (Credibility & Reliability)
+
+**Source Quality Hierarchy** (prioritize high-quality, authoritative sources):
+1. **Official docs**: Specifications, RFCs, protocol documentation (highest authority)
+2. **Standards/peer-reviewed**: ISO, IEEE, academic journals, top-tier conferences (rigorous validation)
+3. **Audits/reports**: Security audits from reputable firms, industry analyses from established organizations (tested in practice)
+4. **Vetted code**: Production repositories with stable releases, active maintenance, security audits (proven reliability)
+
+**Exclusions** (avoid low-quality sources):
+- Blog posts, tutorials, unverified content (unless from recognized domain experts)
+- Unmaintained repositories (last commit >12 months)
+- Pre-release/experimental code without production validation
+- Sources with known biases or conflicts of interest
+
+**Language Distribution**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH], etc.)
+- Reflects global technical discourse while including regional expertise
+
+**Format**: APA 7th edition with language tags for clarity
+
+**Inline Citation**: Use `[Ref: ID]` in rationales when referencing specifications, standards, research findings, or implementation details
 
 ### Reference Minimum Requirements
 
@@ -35,21 +72,62 @@ Generate high-quality true/false assessments with validated structure, citations
 
 > **Exception:** If floor count unmet, state shortfall, rationale, and sourcing plan.
 
-### Quality Gates
+### Quality Gates (Accuracy, Credibility, Logic)
 
-- **Recency**: ≥50% citations from last 3 years; fast-moving domains (AI, security): ≥70% from last 2 years
-- **Source diversity**: ≥3 source types; no single source >25% of total
-- **Evidence coverage**: ≥70% statements with ≥1 citation; ≥30% with ≥2 distinct citations
-- **Codebase maturity**: Each entry includes license, last commit ≤12 months, stable release, audit status (if available)
-- **Deduplication**: Canonicalize entries; prefer persistent links (DOIs, archived URLs)
-- **Link validity**: All links resolve or archived alternative provided
-- **Cross-reference binding**: Reference IDs link rationales to Reference Sections
+**Recency** (ensure current knowledge):
+- ≥50% citations from last 3 years (general domains)
+- ≥70% from last 2 years (fast-moving: AI, security, cloud-native)
+- *Rationale*: Balance foundational knowledge with current best practices
 
-> **Scaling**: For >32 statements or regulated domains, increase floor counts by ~1.5× (round up). Prioritize Quality Gates.
+**Source Diversity** (avoid bias, ensure balanced perspective):
+- ≥3 source types (official docs, standards, audits, code)
+- No single source >25% of total citations
+- *Rationale*: Multiple perspectives reduce single-source bias
 
-### Pre-Submission Validation
+**Evidence Coverage** (verify claims):
+- ≥70% statements with ≥1 authoritative citation
+- ≥30% statements with ≥2 distinct citations (cross-validation)
+- *Rationale*: Claims require evidence; critical claims need corroboration
 
-Execute ALL steps. Present validation report table. Fix failures and re-validate until all checks pass.
+**Codebase Maturity** (proven reliability):
+- License: OSI-approved or clearly documented
+- Last commit: ≤12 months (active maintenance)
+- Stable release: Semantic versioning ≥1.0.0 or production-ready tag
+- Audit status: Security audits from reputable firms (if applicable)
+- *Rationale*: Production-ready code demonstrates practical viability
+
+**Deduplication & Persistence** (maintain quality):
+- Canonicalize entries (prefer official sources over mirrors)
+- Use persistent links: DOIs, archived URLs (archive.org), official repositories
+- *Rationale*: Prevent link rot, ensure long-term accessibility
+
+**Link Validity** (practicality):
+- All links must resolve OR archived alternative provided
+- Test links before submission
+- *Rationale*: Broken links undermine credibility
+
+**Cross-Reference Integrity** (logic, coherence):
+- Every `[Ref: ID]` in rationales must exist in Reference Sections
+- IDs follow convention: G# (Glossary), C# (Codebase), L# (Literature), A# (APA)
+- *Rationale*: Broken references indicate incomplete validation
+
+**Conflict Resolution** (fairness, acknowledge limitations):
+- For controversial/context-dependent statements, rationale MUST:
+  - State assumptions explicitly
+  - Acknowledge alternative perspectives
+  - Cite sources for competing viewpoints
+  - Clarify conditions under which statement is true/false
+- *Rationale*: Technical truth often depends on context; transparency builds trust
+
+> **Scaling**: For >32 statements or regulated domains (finance, healthcare), increase floor counts by ~1.5× (round up). Prioritize Quality Gates.
+
+### Pre-Submission Validation (Self-Review, Error Checks)
+
+**Purpose**: Ensure output meets all quality standards before submission. This is a mandatory self-review process.
+
+**Process**: Execute ALL steps sequentially. Present validation report table. Fix failures and re-validate until all checks pass.
+
+**Validation Steps**:
 
 **Step 1 – Count Audit**
 - Count: Glossary, Codebase, Literature, APA citations, Statements (total + by difficulty)
@@ -106,6 +184,16 @@ Execute ALL steps. Present validation report table. Fix failures and re-validate
 - Report: `X applicable; Y comply (Z%)`
 - Pass: ≥80% comply
 
+**Step 12 – Fairness & Balance**
+- Verify controversial statements acknowledge alternative perspectives, limitations, or trade-offs
+- Report: `X controversial; Y balanced (Z%)`
+- Pass: ≥90% balanced
+
+**Step 13 – Jargon Definition**
+- Verify technical terms are defined in Glossary or explained in context
+- Report: `X jargon terms; Y defined (Z%)`
+- Pass: 100% defined
+
 **Validation Report:**
 ```
 | Check | Result | Status |
@@ -120,66 +208,244 @@ Execute ALL steps. Present validation report table. Fix failures and re-validate
 | Statement clarity | Y/X clear | PASS/FAIL |
 | Double negatives | Y/X free | PASS/FAIL |
 | Rationale completeness | Y/X complete | PASS/FAIL |
+| Conflict handling | Y/X comply (Z%) | PASS/FAIL |
+| Fairness & balance | Y/X balanced (Z%) | PASS/FAIL |
+| Jargon definition | Y/X defined (Z%) | PASS/FAIL |
 ```
 
 > **MANDATORY:** If ANY check fails, fix issues, regenerate affected sections, and re-validate. Proceed only when ALL checks pass.
 
-### Submission Checklist
+### Submission Checklist (Success Criteria)
 
-- [ ] Floors met (G≥10, C≥5, L≥6, APA≥12)
-- [ ] Difficulty: 20/40/40 (Foundational/Intermediate/Advanced)
-- [ ] Language: ~60% EN, ~30% ZH, ~10% other
+**Quantitative Criteria** (measurable outcomes):
+- [ ] Floors met: G≥10, C≥5, L≥6, APA≥12
+- [ ] Statement count: 18-32 total
+- [ ] Difficulty distribution: 20/40/40 (Foundational/Intermediate/Advanced) ±5%
+- [ ] Language distribution: ~60% EN, ~30% ZH, ~10% other ±10%
 - [ ] Recency: ≥50% last 3yr (≥70% AI/security)
-- [ ] Diversity: ≥3 types, no source >25%
-- [ ] Evidence: ≥70% with ≥1 citation; ≥30% with ≥2
-- [ ] Statement quality: ≤2 lines, no double negatives, complete rationales (1-2 sentences)
+- [ ] Source diversity: ≥3 types, no single source >25%
+- [ ] Evidence coverage: ≥70% with ≥1 citation; ≥30% with ≥2
+- [ ] True/False balance: 45-55% True statements
+- [ ] Citation coverage: 100% of rationales have ≥1 citation
+- [ ] Link validity: 100% accessible or archived
+- [ ] Cross-reference integrity: 100% resolved
+- [ ] Jargon definition: 100% defined
+
+**Qualitative Criteria** (actionable, implementable):
+- [ ] Statement quality: ≤2 lines, unambiguous, no double negatives
+- [ ] Rationale completeness: 1-2 sentences with clear reasoning
 - [ ] Codebase maturity: license, update ≤12mo, stable release, audit status
-- [ ] Links: all resolve or archived
-- [ ] Cross-refs: IDs in rationales and Reference Sections
-- [ ] Answer format: A/True or B/False
-- [ ] Validation: all checks pass
+- [ ] Conflict handling: Context-dependent statements clarify assumptions
+- [ ] Fairness: Controversial statements acknowledge alternatives/limitations
+- [ ] Answer format: A/True or B/False (machine-gradable)
+- [ ] MECE coverage: Topics mutually exclusive, collectively exhaustive
+- [ ] No answer patterns: Avoid TFTFTF or other detectable sequences
+
+**Validation** (error checks):
+- [ ] All 13 validation steps executed
+- [ ] Validation report generated
+- [ ] All checks show PASS status
+- [ ] Failures fixed and re-validated
+
+**Practicality** (implementable guidance):
+- [ ] Statements testable by target audience (senior/architect/expert)
+- [ ] Rationales provide learning value (not just "correct answer")
+- [ ] References accessible to practitioners (not paywalled when possible)
+- [ ] Glossary aids comprehension (defines domain-specific terms)
 
 ---
 
 # Part II: Instructions
 
-Execute generation workflow with inline quality checks.
+**Purpose**: Step-by-step workflow for generating high-quality true/false assessments with inline quality checks.
+
+**Approach**: Execute steps sequentially. Perform inline checks after each step to catch issues early. Fix problems immediately before proceeding.
 
 ## Instructions
 
-### Step 1: Topic Identification & Planning
-1. Identify 4-6 topic clusters
-2. Allocate 3-6 statements per cluster (18-32 total)
-3. Assign difficulty levels (20/40/40 balance)
-4. **Check**: Total = 18-32 AND ratio ≈20/40/40
+### Step 1: Topic Identification & Planning (MECE Coverage)
 
-### Step 2: Reference Collection
-1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA citations
-2. For each: tag language ([EN], [ZH]), note year, classify type (1-4)
-3. Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
-4. **Check**: Counts (≥10/5/6/12?), language (≈60/30/10?), recency (≥50% 3yr?), diversity (≥3 types?)
+**Objective**: Identify comprehensive, non-overlapping topic clusters covering all critical domain areas.
 
-### Step 3: Statement Generation
-1. Write each statement: declarative, ≤2 lines, no double negatives, assign difficulty + answer
-2. Write each rationale: 1-2 sentences, ≥1 `[Ref: ID]` citation
-3. **Check** (every 5 statements): ≤2 lines, no double negatives, ≥1 citation, complete rationale
+**Actions**:
+1. **Identify 4-6 topic clusters** (mutually exclusive):
+   - Each cluster addresses distinct aspect of domain
+   - No conceptual overlap between clusters
+   - Examples: "Consensus Mechanisms", "Smart Contract Security", "Scalability Solutions"
 
-### Step 4: Balance Verification
-1. Count True vs False; ensure ≈50/50
-2. Verify no answer patterns (e.g., TFTFTF)
-3. **Check**: Ratio ≈50/50? No patterns?
+2. **Allocate 3-6 statements per cluster** (collectively exhaustive):
+   - Total: 18-32 statements
+   - Ensure all critical concepts covered within each cluster
+   - Prioritize high-value topics (frequently used, commonly misunderstood, security-critical)
 
-### Step 5: Reference Section Compilation
-1. Populate Glossary, Codebase, Literature, APA sections
-2. Include required fields per format
-3. Match Reference IDs to inline citations
-4. **Check**: All [Ref: ID] resolve? Required fields present?
+3. **Assign difficulty levels** (balanced depth):
+   - 20% Foundational: Core concepts, definitions, widely accepted principles
+   - 40% Intermediate: Implementation details, trade-offs, common patterns
+   - 40% Advanced: Edge cases, performance characteristics, security implications
 
-### Step 6: Pre-Submission Validation
-Execute all 11 validation steps (Part I). Present validation report. Fix failures and re-validate.
+4. **Inline Check**:
+   - Total count = 18-32? ✓
+   - Difficulty ratio ≈20/40/40 (±5%)? ✓
+   - Clusters mutually exclusive? ✓
+   - All critical areas covered? ✓
+   - If any check fails, revise plan before proceeding
 
-### Step 7: Final Review
-Check Submission Checklist (Part I). Submit when all checks pass.
+### Step 2: Reference Collection (Credibility & Reliability)
+
+**Objective**: Gather authoritative, high-quality sources from diverse types.
+
+**Actions**:
+1. **Gather references** (prioritize quality over quantity):
+   - ≥10 glossary entries: Core concepts, domain jargon, acronyms
+   - ≥5 codebase references: Production repos, stable releases, audited code
+   - ≥6 literature references: Standards, peer-reviewed papers, industry reports
+   - ≥12 APA citations: Mix of official docs, research, audits, code
+
+2. **For each reference, document**:
+   - Language tag: [EN], [ZH], [JA], etc.
+   - Publication year: For recency validation
+   - Source type: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits/reports, (4) Vetted code
+   - Quality indicators: Citations, adoption, audit status, maintenance activity
+
+3. **Assign unique IDs**:
+   - G1-Gn: Glossary entries
+   - C1-Cn: Codebase references
+   - L1-Ln: Literature references
+   - A1-An: APA citations
+
+4. **Inline Check**:
+   - Counts meet floors (≥10/5/6/12)? ✓
+   - Language distribution (≈60/30/10)? ✓
+   - Recency (≥50% last 3yr)? ✓
+   - Source diversity (≥3 types, no single >25%)? ✓
+   - All sources authoritative (no low-quality content)? ✓
+   - Links valid or archived? ✓
+   - If any check fails, gather additional/replacement sources
+
+### Step 3: Statement Generation (Clarity, Precision, Logic)
+
+**Objective**: Write clear, unambiguous statements with well-reasoned rationales.
+
+**Actions**:
+1. **Write each statement**:
+   - **Declarative form**: Assert a specific claim (not a question)
+   - **Unambiguous**: Single interpretation possible
+   - **Concise**: ≤2 lines (avoid verbosity)
+   - **No double negatives**: "X is not impossible" → "X is possible"
+   - **No undefined jargon**: Define technical terms in Glossary
+   - **Assign difficulty**: Foundational/Intermediate/Advanced
+   - **Assign answer**: A (True) or B (False)
+
+2. **Write each rationale**:
+   - **Length**: 1-2 sentences (concise explanation)
+   - **Content**: Explain WHY statement is true/false (not just restate)
+   - **Citations**: ≥1 `[Ref: ID]` to authoritative source
+   - **For context-dependent statements**: Clarify assumptions, conditions, boundaries
+   - **For controversial statements**: Acknowledge alternatives, limitations, trade-offs
+
+3. **Inline Check** (every 5 statements):
+   - Statement ≤2 lines? ✓
+   - No double negatives? ✓
+   - Unambiguous (single interpretation)? ✓
+   - Jargon defined? ✓
+   - Rationale complete (1-2 sentences)? ✓
+   - ≥1 citation per rationale? ✓
+   - Context/alternatives acknowledged (if applicable)? ✓
+   - If any check fails, revise statement/rationale immediately
+
+### Step 4: Balance Verification (Fairness, Avoid Bias)
+
+**Objective**: Ensure balanced distribution of True/False answers without detectable patterns.
+
+**Actions**:
+1. **Count True vs False answers**:
+   - Target: 45-55% True statements (approximately balanced)
+   - Rationale: Prevents test-taker from guessing strategy
+
+2. **Verify no answer patterns**:
+   - Check for sequences: TFTFTF, TTFFTTFF, etc.
+   - Check for clustering: All True in Topic 1, all False in Topic 2
+   - Randomize answer distribution across topics and difficulty levels
+
+3. **Inline Check**:
+   - True/False ratio = 45-55%? ✓
+   - No detectable patterns (visual inspection)? ✓
+   - Answers distributed across topics? ✓
+   - Answers distributed across difficulty levels? ✓
+   - If any check fails, reorder statements or revise answers (ensure correctness maintained)
+
+### Step 5: Reference Section Compilation (Accuracy, Completeness)
+
+**Objective**: Compile complete, well-formatted reference sections with all required fields.
+
+**Actions**:
+1. **Populate Glossary section**:
+   - Format: `**G#: Term/Acronym**: Definition [Language Tag]`
+   - Include: All technical terms used in statements
+   - Ensure: Clear, concise definitions
+
+2. **Populate Codebase section**:
+   - Format: `**C#: Project/Library Name** ([lang])`
+   - Required fields: Stack/Modules, Maturity (license, last update, stable release), Benchmarks
+   - Optional fields: Integration hooks, reliability, language support, vulnerabilities
+
+3. **Populate Literature section**:
+   - Format: `**L#: Title** (Year) ([lang])`
+   - Required fields: Core Findings, Methodology, Impact
+   - Optional fields: Limitations, replication status, follow-up studies
+
+4. **Populate APA Citations section**:
+   - Format: APA 7th edition with language tags
+   - Group by language: EN, ZH, Other
+   - Include: Persistent links (DOIs, archived URLs)
+
+5. **Match Reference IDs to inline citations**:
+   - Every `[Ref: ID]` in rationales must have corresponding entry
+   - Every reference entry should be cited at least once (remove unused)
+
+6. **Inline Check**:
+   - All `[Ref: ID]` resolve to Reference Sections? ✓
+   - All required fields present? ✓
+   - No unused references? ✓
+   - APA format correct? ✓
+   - Language tags present? ✓
+   - Links valid or archived? ✓
+   - If any check fails, fix references immediately
+
+### Step 6: Pre-Submission Validation (Self-Review, Error Checks)
+
+**Objective**: Comprehensive validation of all quality standards.
+
+**Actions**:
+1. Execute all 13 validation steps (Part I, Pre-Submission Validation section)
+2. Generate validation report table with results for each check
+3. For each FAIL status:
+   - Identify root cause
+   - Fix issue (revise statements, add references, correct formatting)
+   - Re-run affected validation steps
+4. Repeat until all checks show PASS status
+5. Include final validation report in output
+
+### Step 7: Final Review (Success Criteria Verification)
+
+**Objective**: Verify all success criteria met before submission.
+
+**Actions**:
+1. Review Submission Checklist (Part I, Submission Checklist section)
+2. Verify each checkbox item:
+   - Quantitative criteria: Counts, ratios, percentages
+   - Qualitative criteria: Clarity, completeness, fairness
+   - Validation criteria: All checks passed
+   - Practicality criteria: Testable, valuable, accessible
+3. If any item unchecked, return to relevant step and fix
+4. Submit only when all checkboxes checked
+
+**Final Quality Assurance**:
+- Read through complete output as if you were the target audience
+- Verify statements are challenging but fair
+- Verify rationales provide learning value
+- Verify references are accessible and authoritative
+- Verify output follows template format exactly
 
 ---
 
@@ -187,9 +453,17 @@ Check Submission Checklist (Part I). Submit when all checks pass.
 
 ## Output Format
 
-Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
+**Structure Requirements**:
+- Start with Table of Contents (TOC) linking to all sections
+- Use Markdown formatting: lists, tables, diagrams (Mermaid), formulas (LaTeX), code blocks (language-tagged)
+- Follow template structure exactly (Contents → Statement Bank → Reference Sections)
+- Use clear headings and consistent formatting
 
-- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+**Visual Elements** (when applicable):
+- **Diagrams**: Use Mermaid for architecture, flows, relationships
+- **Tables**: Use for comparisons, benchmarks, maturity indicators
+- **Formulas**: Use LaTeX for mathematical expressions, performance calculations
+- **Code blocks**: Use language-tagged fences for code examples, configurations
 
 ```markdown
 ## Contents

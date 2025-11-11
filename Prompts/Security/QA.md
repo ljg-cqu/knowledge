@@ -1,8 +1,26 @@
 # Interview Q&A - Software Safety & Security
 
-Generate interview question banks covering software safety and security for technical, operational, and management stakeholders.
+## Purpose
 
-**Constraints**: 25–30 Q&A pairs | 150–300 words/answer | 20/40/40 difficulty (F/I/A) | MECE coverage | APA 7th citations
+Generate comprehensive, high-quality interview question banks covering software safety and security for technical, operational, and management stakeholders.
+
+## Context & Scope
+
+**Target Audience**: Engineers (implementation), operators (monitoring), managers (policy), regulators (audits)
+
+**Domain Coverage**: Software safety and security across safety-critical and security-critical systems (industrial control, medical devices, automotive, critical infrastructure)
+
+**Constraints**: 
+- 25–30 Q&A pairs total
+- 150–300 words per answer
+- 20/40/40 difficulty distribution (Foundational/Intermediate/Advanced)
+- MECE (Mutually Exclusive, Collectively Exhaustive) coverage across all dimensions
+- APA 7th edition citations with language tags
+
+**Assumptions**: 
+- Readers have basic software engineering knowledge
+- Access to cited standards and tools is available for deep study
+- Implementation examples use common formats (YAML, Mermaid diagrams)
 
 ---
 
@@ -21,18 +39,75 @@ Generate interview question banks covering software safety and security for tech
 
 ### Content Principles
 
-- **MECE Structure**: 4 dimensions (Safety, Security, Resilience, Governance) × 4 phases (Prevent, Detect, Respond, Recover)
-- **Analysis**: Hazard/threat ID → risk assessment → control effectiveness → incident mgmt → regulatory alignment
-- **Stakeholders**: Technical (implementation), Operational (monitoring), Management (policy), Regulatory (audits)
-- **Frameworks**: Compare approaches (Fail-Safe vs Fail-Operational, Zero-Trust vs Perimeter); cite trade-offs; specify context
-- **Clarity**: Accessible language; distinguish mandatory vs best practices; trace requirements → controls → procedures
+**MECE Coverage**:
+- **Dimensions**: Safety, Security, Resilience, Governance (4 mutually exclusive categories)
+- **Lifecycle Phases**: Prevent, Detect, Respond, Recover (4 sequential stages)
+- **Complete Matrix**: 4×4 = 16 topic combinations ensuring comprehensive, non-overlapping coverage
+
+**Analysis Framework**: Sequential risk-to-controls mapping
+1. Hazard/Threat Identification → 
+2. Risk Assessment (Probability × Impact) → 
+3. Control Design & Effectiveness → 
+4. Incident Management → 
+5. Regulatory Compliance Alignment
+
+**Stakeholder Perspectives**: Address all four roles with role-appropriate content
+- **Technical**: Detailed implementation guidance, code examples, configurations
+- **Operational**: Monitoring procedures, metrics, incident playbooks
+- **Management**: Policy decisions, resource allocation, risk trade-offs
+- **Regulatory**: Audit evidence, compliance mapping, documentation requirements
+
+**Framework Comparisons**: For each approach comparison, explicitly state:
+1. **Context**: When to use each approach
+2. **Trade-offs**: Advantages vs. disadvantages
+3. **Decision Criteria**: Cost, criticality, regulatory requirements
+4. **Examples**: Real-world application scenarios
+- Fail-Safe vs. Fail-Operational vs. Redundant systems
+- Zero-Trust vs. Perimeter-based security
+- Proactive vs. Reactive incident response
+
+**Clarity Standards**:
+- Use accessible language understandable to all stakeholder levels
+- Define all technical terms before use (see Glossary)
+- Explicitly distinguish mandatory requirements (regulatory "must") from best practices ("should", "recommended")
+- Provide complete traceability chain: Requirements → Controls → Procedures → Evidence
+- Avoid jargon; when domain-specific terms are necessary, link to glossary definitions
 
 ### Evaluation Dimensions
 
-- **Safety**: FMEA, FTA, HAZOP, fail-safe, redundancy, fault tolerance, SIS, certification
-- **Security**: STRIDE/PASTA, SAST/DAST/SCA, fuzz/pentest, API/IaC/container scan, access control, encryption, IDS, audits
-- **Resilience**: Incident detection, emergency response, BCDR, monitoring, anomaly detection
-- **Governance**: IEC 61508, ISO 26262/27001, risk frameworks, audit trails, documentation, training
+**1. Safety Assurance** (Prevent unintended harm from faults, errors, environmental factors)
+- **Analysis Methods**: FMEA (Failure Mode and Effects Analysis), FTA (Fault Tree Analysis), HAZOP (Hazard and Operability Study)
+- **Design Patterns**: Fail-safe, redundancy (N+1, 2oo3 voting), fault tolerance, graceful degradation
+- **Systems**: SIS (Safety Instrumented Systems), safety interlocks, emergency shutdown
+- **Certification**: SIL (Safety Integrity Levels) 1-4, ASIL (Automotive) A-D, PL (Machinery)
+- **Standards**: IEC 61508, IEC 61511, ISO 26262, IEC 62304
+
+**2. Security Assurance** (Prevent malicious compromise; protect CIA triad)
+- **Threat Modeling**: STRIDE (Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Privilege Escalation), PASTA, Attack Trees
+- **Testing**: 
+  - SAST (Static Application Security Testing): Source/byte code analysis
+  - DAST (Dynamic Application Security Testing): Runtime black-box testing
+  - SCA (Software Composition Analysis): Dependency vulnerability scanning
+  - Fuzz Testing: Automated malformed input generation
+  - Penetration Testing: Adversarial exploitation validation
+  - API Security: OWASP API Top 10 validation
+  - IaC/Container Scanning: Infrastructure and image misconfiguration detection
+- **Controls**: Access control (RBAC, ABAC), encryption (at-rest, in-transit), IDS/IPS, security audits
+- **Standards**: ISO/IEC 27001, NIST CSF 2.0, ISO/SAE 21434, IEC 62443
+
+**3. Resilience & Incident Response** (Detect, respond, recover from adverse events)
+- **Detection**: SIEM correlation, anomaly detection, statistical baselines, threat intelligence
+- **Response**: Emergency procedures, incident playbooks, containment strategies
+- **Recovery**: BCDR (Business Continuity/Disaster Recovery), RTO/RPO targets, backup validation
+- **Monitoring**: Real-time dashboards, alerting, metrics (MTTD, MTTR, detection rate)
+- **Standards**: NIST SP 800-61, ISO 22301
+
+**4. Governance & Compliance** (Organizational frameworks, audits, continuous improvement)
+- **Frameworks**: Risk management (ISO 31000), quality management, safety/security management systems
+- **Standards Compliance**: IEC 61508, ISO 26262, ISO 27001, industry-specific (FDA, NERC CIP, PCI DSS)
+- **Evidence**: Audit trails, documentation, traceability matrices, test reports
+- **Training**: Staff competency, awareness programs, certification
+- **Continuous Improvement**: Lessons learned, post-incident reviews, threat model updates
 
 ### Quick Orientation — Safety vs Security
 
@@ -74,27 +149,91 @@ flowchart LR
 
 ### Metrics
 
-| Metric | Formula | Target/Notes |
-|--------|---------|------------|
-| Risk | `P × I` | Scale: 0–10 or qualitative |
-| MTBF | `Operating Time / Failures` | Higher = better |
-| MTTR | `Restoration Time / Incidents` | Includes diagnosis + repair + verify |
-| MTTD | `Detection Time / Incidents` | Lower = faster detection |
-| Detection Rate | `TP / Total × 100%` | ≥95% critical systems |
-| False Positive | `False Alarms / Total × 100%` | ≤2% prevent fatigue |
-| CVSS | `Base × Temporal × Environmental` | 0–10; Critical ≥9.0 |
-| Availability | `Uptime / (Up + Down) × 100%` | 99.9% = 8.76h/yr down |
-| Test Coverage | `Tests Run / Vectors × 100%` | Security completeness |
-| Defect Escape | `Post-Release / Total × 100%` | Lower = better quality |
+**Purpose**: Quantitative measurement of safety, security, and resilience effectiveness. All metrics should be tracked over time, baselined, and have defined targets.
+
+| Metric | Formula | Variables | Target | Significance | Use Case |
+|--------|---------|-----------|--------|--------------|----------|
+| **Risk Score** | `P × I` | P = Probability (0-1 or Low/Med/High)<br>I = Impact (1-5 or severity scale) | Varies by context; typically Critical if >8 | Prioritizes risk treatment | Risk assessment, control selection |
+| **MTBF** (Mean Time Between Failures) | `Total Operating Time / Number of Failures` | Operating time in hours<br>Failures = system-level incidents | >10,000 hrs for critical systems | Reliability indicator; higher = better | Safety system design, maintenance planning |
+| **MTTR** (Mean Time To Repair/Recovery) | `Total Restoration Time / Number of Incidents` | Restoration time includes diagnosis + repair + verification | <30 min for critical systems<br>Varies by RTO | Recovery speed; lower = better | Incident response, BCDR planning |
+| **MTTD** (Mean Time To Detect) | `Total Detection Time / Number of Incidents` | Detection time from incident start to alert | ≤5 min for critical systems | Exposure window; lower = faster response | SIEM tuning, monitoring effectiveness |
+| **Detection Rate** | `True Positives / (True Positives + False Negatives) × 100%` | TP = Correctly identified threats<br>FN = Missed threats | ≥95% for critical systems<br>≥99% for high-consequence | Security monitoring effectiveness | IDS/IPS tuning, SOC performance |
+| **False Positive Rate** | `False Positives / Total Alerts × 100%` | FP = Incorrect alerts<br>Total = All alerts generated | ≤2% to prevent alert fatigue<br>≤5% acceptable for lower criticality | Alert quality; lower = less noise | SIEM rule refinement, threshold tuning |
+| **CVSS** (Common Vulnerability Scoring System) | `Base × Temporal × Environmental` | Base (0-10): Exploitability + Impact<br>Temporal: Exploit availability<br>Environmental: Local context | Critical ≥9.0<br>High 7.0-8.9<br>Medium 4.0-6.9<br>Low 0.1-3.9 | Vulnerability severity standardization | Patch prioritization, risk assessment |
+| **Availability** | `Uptime / (Uptime + Downtime) × 100%` | Uptime = Operational hours<br>Downtime = Outage hours | 99.9% ("three nines") = 8.76h/yr downtime<br>99.99% = 52.6 min/yr<br>99.999% = 5.26 min/yr | Service continuity | SLA definition, redundancy design |
+| **Test Coverage** | `Test Cases Executed / Total Test Vectors × 100%` | Test cases = Actual tests run<br>Test vectors = All identified scenarios | ≥80% code coverage<br>100% critical path coverage | Assurance completeness | Security testing, safety validation |
+| **Defect Escape Rate** | `Post-Release Defects / Total Defects × 100%` | Post-release = Defects found in production<br>Total = All defects (pre + post-release) | <5% for mature products<br><1% for safety-critical | Quality process effectiveness | Process improvement, testing adequacy |
+
+**Metric Selection Guidance**:
+- **Safety-Critical Systems**: Prioritize MTBF, Availability, SIL compliance metrics
+- **Security-Critical Systems**: Prioritize Detection Rate, MTTD, CVSS, Test Coverage
+- **High-Availability Systems**: Prioritize Availability, MTTR, Redundancy effectiveness
+- **All Systems**: Track Risk Score, Defect Escape Rate for continuous improvement
 
 ### Safety & Security Frameworks
 
-- **Defense-in-Depth**: Layered controls → no single point of failure
-- **Fail-Safe**: Safe state on failure → graceful degradation
-- **Zero-Trust**: Never trust, always verify → least privilege
-- **Swiss Cheese**: Multiple defenses → compensating controls
-- **Risk-Based**: Prioritize by P × I → continuous assessment
-- **Safety-Security Convergence**: Unified threat landscape → integrated response
+**Purpose**: Established architectural patterns and principles for designing safe and secure systems. Understanding when and how to apply each framework is critical for effective risk mitigation.
+
+**1. Defense-in-Depth** (Layered Security)
+- **Principle**: Deploy multiple independent control layers so failure of one layer doesn't compromise entire system
+- **Layers**: Perimeter (firewall) → Network (segmentation) → Host (hardening) → Application (validation) → Data (encryption)
+- **Advantage**: No single point of failure; compensating controls
+- **Disadvantage**: Complexity in management; potential performance impact
+- **Use When**: Security-critical systems requiring high assurance; compliance requirements mandate layered controls
+- **Related**: Swiss Cheese Model (Reason, 1990) - multiple defenses with different failure modes
+- **Standards**: NIST CSF (Protect function), ISO/IEC 27001 (A.13 Communications Security)
+
+**2. Fail-Safe Design** (Safe State on Failure)
+- **Principle**: System automatically enters predefined safe state when failure occurs, preventing harm
+- **Examples**: Deadman switch (releases when operator incapacitated), spring-return valves (default to safe position), railway signals (default to red/stop)
+- **Advantage**: Guarantees safety even with complete system failure; simple, predictable behavior
+- **Disadvantage**: May cause unnecessary shutdowns (availability impact); not suitable for mission-critical continuous operations
+- **Use When**: Safety consequences of failure are catastrophic; system can tolerate temporary shutdown; regulatory requirements mandate safe failure modes
+- **Contrasts With**: Fail-operational (maintains degraded function), fault tolerance (masks failures)
+- **Standards**: IEC 61508 SIL 3-4, IEC 61511 (process safety)
+
+**3. Zero-Trust Architecture** (Never Trust, Always Verify)
+- **Principle**: Assume breach; verify every access request regardless of network location; enforce least privilege and micro-segmentation
+- **Core Elements**: 
+  - Identity verification for every access
+  - Least privilege access (minimal permissions)
+  - Micro-segmentation (limit lateral movement)
+  - Continuous monitoring and validation
+- **Advantage**: Limits blast radius of breaches; effective against insider threats and lateral movement
+- **Disadvantage**: Implementation complexity; potential user friction; requires mature identity infrastructure
+- **Use When**: High-value assets; distributed/cloud environments; insider threat concerns; perimeter security insufficient
+- **Contrasts With**: Perimeter-based security (trust internal network)
+- **Standards**: NIST SP 800-207, BeyondCorp (Google)
+
+**4. Swiss Cheese Model** (Multiple Imperfect Defenses)
+- **Principle**: Layer multiple imperfect defenses (each with "holes") such that holes rarely align, preventing end-to-end compromise
+- **Application**: Combine preventive, detective, and corrective controls with different failure modes
+- **Advantage**: Acknowledges no single control is perfect; realistic defense strategy
+- **Use When**: Complex systems where perfect defense is impractical; need for compensating controls
+- **Related**: Defense-in-depth, but explicitly recognizes imperfections
+
+**5. Risk-Based Approach** (Prioritize by Impact)
+- **Principle**: Allocate resources to highest-priority risks based on Probability × Impact; accept low risks; mitigate high risks
+- **Process**: 
+  1. Identify all hazards/threats
+  2. Assess probability and impact for each
+  3. Calculate risk score (P × I)
+  4. Prioritize controls for highest scores
+  5. Re-assess residual risk after controls
+  6. Continuous monitoring and reassessment
+- **Advantage**: Efficient resource allocation; focuses on actual threats
+- **Disadvantage**: Requires accurate risk assessment; subjective probability estimates; may miss emerging threats
+- **Use When**: Limited resources require prioritization; diverse threat landscape; cost-benefit analysis needed
+- **Standards**: ISO 31000 (Risk Management), NIST CSF (Identify function)
+
+**6. Safety-Security Convergence** (Unified Threat View)
+- **Principle**: Treat safety hazards and security threats as integrated concerns sharing common controls and governance
+- **Rationale**: Security breaches can cause safety incidents (e.g., Stuxnet centrifuge destruction); safety failures can create security vulnerabilities
+- **Integrated Controls**: Access control protects both from unauthorized changes (security) and accidental misoperation (safety); monitoring detects both attacks and failures
+- **Advantage**: Comprehensive protection; avoids conflicting controls; efficient resource use
+- **Disadvantage**: Requires cross-domain expertise; organizational silos resist integration
+- **Use When**: Cyber-physical systems (ICS, medical devices, automotive); regulatory convergence (ISO/SAE 21434)
+- **Standards**: IEC 62443 (industrial cyber-physical), ISO/SAE 21434 (automotive cyber-safety)
 
 ### Visual Standards
 
@@ -164,40 +303,86 @@ Combine diagrams for comprehensive analysis:
 
 ### Reference Requirements
 
-| Section | Minimum | Content |
-|---------|---------|---------|
-| Glossary | ≥10 | FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA, Attack Surface, Threat Vector |
-| Tools | ≥5 | BowTieXP/FMEA (risk), MS Threat Model (threat), Splunk/ELK (SIEM), Nessus/Qualys (vuln scan), PagerDuty/ServiceNow (incident) |
-| Literature | ≥10 | IEC 61508/61511, ISO 26262/27001/31000, ISO/SAE 21434, IEC 62304/62443, ISO 14971, NIST CSF/SP 800-82/61/115, OWASP ASVS, incident analysis (Stuxnet, breaches), Shostack, Leveson + ZH sources |
-| Citations | ≥20 | ~60% EN / ~30% ZH / ~10% other (APA 7th with tags); for international standards, EN-heavy acceptable |
+**Purpose**: Ensure answers are grounded in authoritative, current, and credible sources across multiple languages and source types.
 
-**Exception**: If unmet, state shortfall + rationale + sourcing plan.
+**Minimum Thresholds** (for 25-30 Q&A output):
+
+| Category | Minimum Count | Required Content | Quality Criteria |
+|----------|---------------|------------------|------------------|
+| **Glossary** | ≥10 terms | FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA Triad, Attack Surface, Threat Vector, SAST, DAST, SCA, Fuzz Testing, Penetration Testing, IaC Scanning, API Security | Clear definitions; distinguish similar terms; include formulas/examples where applicable |
+| **Tools** | ≥5 tools | **Risk Assessment**: BowTieXP, FMEA tools<br>**Threat Modeling**: Microsoft Threat Modeling Tool<br>**SIEM**: Splunk, ELK Stack<br>**Vulnerability Scanning**: Nessus, Qualys<br>**Incident Management**: PagerDuty, ServiceNow<br>**Security Testing**: OWASP ZAP (DAST), Semgrep (SAST), Snyk (SCA), AFL++/libFuzzer (fuzz), Burp Suite (API), Trivy (container/IaC) | Include: purpose, pricing model, recent updates (≤18 months), key integrations, adoption metrics |
+| **Literature** | ≥10 sources | **Safety Standards**: IEC 61508, IEC 61511, ISO 26262, IEC 62304, ISO 14971<br>**Security Standards**: ISO/IEC 27001, ISO/SAE 21434, IEC 62443<br>**Risk/Response**: ISO 31000, ISO 22301, NIST CSF 2.0, NIST SP 800-61, NIST SP 800-82, NIST SP 800-115<br>**Testing**: OWASP ASVS<br>**Books**: Leveson (STAMP), Shostack (Threat Modeling)<br>**Incident Analysis**: Stuxnet, major breaches<br>**Chinese Sources**: Functional safety and infosec texts | Cover all four dimensions (Safety/Security/Resilience/Governance); balance standards, methodologies, and practical incident lessons |
+| **Citations** | ≥20 inline | Language distribution: ~60% EN, ~30% ZH, ~10% other (APA 7th with [EN]/[ZH] tags) | Cite after: standards, metrics, frameworks, statistics, requirements, tools, best practices |
+
+**Scaling Rule**: For outputs >30 Q&A, multiply minimum thresholds by 1.5 (e.g., ≥15 glossary terms, ≥8 tools, ≥15 literature sources, ≥30 citations).
+
+**Exception Handling**: If minimums cannot be met, document:
+1. Specific shortfall (e.g., "Only 8 tools identified, target was ≥10")
+2. Rationale (e.g., "Limited open-source IaC scanners with recent updates")
+3. Sourcing plan (e.g., "Will add Checkov and tfsec in next revision")
+
+**Citation Application**: Use [Ref: ID] inline after:
+- Standards or regulatory requirements (e.g., "SIL 2 rated [Ref: A1]")
+- Metrics or quantitative claims (e.g., "MTTR ≤30 min [Ref: A16]")
+- Framework descriptions (e.g., "Defense-in-Depth [Ref: L3]")
+- Best practices (e.g., "Air-gap OT networks [Ref: L9]")
+- Incident lessons (e.g., "Stuxnet demonstrated ICS vulnerabilities [Ref: L13]")
+- Tool recommendations (e.g., "SIEM correlation [Ref: T3]")
 
 ### Usage
 
-1. Follow MECE; maintain 20/40/40 difficulty
-2. Meet reference minimums; cover Safety/Security/Resilience/Governance
-3. Per cluster: ≥1 diagram + ≥1 scenario + ≥1 table + ≥1 metric
-4. Per topic: ≥2 standards/sources + ≥1 tool
-5. Document gaps with remediation plan
+**Step-by-Step Application**:
+
+1. **Structure Coverage**: Follow MECE framework; maintain 20/40/40 difficulty distribution (Foundational/Intermediate/Advanced)
+2. **Reference Completeness**: Meet all minimum thresholds in Reference Requirements section; ensure balanced coverage across Safety/Security/Resilience/Governance dimensions
+3. **Visual Elements**: Per cluster provide ≥1 diagram + ≥1 practical scenario + ≥1 table + ≥1 quantitative metric
+4. **Source Grounding**: Per topic include ≥2 authoritative standards/sources + ≥1 tool with complete information
+5. **Gap Documentation**: Document any unmet requirements with: specific shortfall + rationale + remediation plan
+
+**Quality Assurance**: Execute all quality gates (see Quality Gates section) before submission; iterate until all checks PASS.
 
 ### Quality Gates
 
-- **Recency**: ≥50% last 3yr (≥70% for digital/cloud domains)
-- **Diversity**: ≥3 source types; no single >25%
-- **Evidence**: ≥70% answers ≥1 citation; ≥30% have ≥2
-- **Tools**: Pricing, adoption, update ≤18mo, integrations
-- **Links**: Validate access; use DOIs/archived URLs
-- **Cross-refs**: All [Ref: ID] resolve
-- **Security Testing**: Include SAST/DAST/SCA; fuzz/pentest; IaC/container scan for cloud
+**Purpose**: Ensure all outputs meet high standards for currency, credibility, diversity, and evidence before submission.
 
-> Scale: For >30 Q&A, increase minimums ×1.5. Prioritize gates before raising floors.
+**All checks must PASS. Fix failures and re-validate until 100% compliance.**
+
+| Gate | Criterion | Target | Measurement Method | Significance | Failure Remediation |
+|------|-----------|--------|-------------------|--------------|---------------------|
+| **Recency** | Source publication date | ≥50% published in last 3 years<br>≥70% for digital/cloud domains (rapid evolution) | Count sources by year; calculate percentage of recent sources | Ensures current best practices; avoids obsolete guidance | Update to latest standard editions; replace outdated incident examples |
+| **Diversity** | Source type variety | ≥3 source types (standards, books, tools, incident reports, academic papers)<br>No single type >25% of total | Categorize each source; count per category | Prevents over-reliance on one perspective; balances theory and practice | Add missing categories; reduce dominant type |
+| **Evidence** | Citation density | ≥70% of answers have ≥1 citation<br>≥30% have ≥2 citations | Count answers with citations; calculate percentages | Grounds claims in authoritative sources; enables verification | Add citations to unsupported answers; prioritize high-impact claims |
+| **Tool Practicality** | Tool information completeness | For each tool, include: pricing model, adoption indicators, last update date (≤18 months), key integrations | Review tool entries for completeness | Enables readers to evaluate and adopt tools | Research missing information; replace unmaintained tools |
+| **Link Validity** | URL accessibility | 100% of URLs accessible or archived | Test each URL; use Wayback Machine for broken links | Prevents broken references; ensures long-term usability | Update URLs; use DOIs where available; archive with Wayback Machine |
+| **Cross-Reference Integrity** | Reference resolution | 100% of [Ref: ID] resolve to defined references | Parse all [Ref: ID]; verify each exists in reference sections | Prevents dangling references; maintains traceability | Add missing references; correct IDs; remove unused entries |
+| **Security Testing Coverage** | Modern testing methods | Include all: SAST, DAST, SCA, fuzz testing, penetration testing<br>For cloud/containerized systems add: IaC scanning, container image scanning | Count testing method mentions; verify examples/tools for each | Comprehensive security validation; reflects current practices | Add missing testing methods; include tool examples for each |
+| **Language Balance** | Citation language distribution | ~60% English, ~30% Chinese, ~10% other languages | Tag and count citations by language | Reflects global knowledge; reduces geographic bias | Seek Chinese sources for safety/security topics; balance EN/ZH |
+| **Metric Completeness** | Quantitative measurement | ≥1 metric per topic cluster; all metrics have: formula, variables, target, use case | Count metrics per cluster; verify metric table completeness | Enables measurement; supports continuous improvement | Define missing metrics; complete metric descriptions |
+
+**Validation Workflow**:
+1. Execute all quality gates after completing draft output
+2. Document results in validation table (see Part III template)
+3. For each FAIL, implement remediation actions
+4. Re-validate changed sections
+5. Iterate until all gates show PASS
+6. Submit only when validation table shows 100% compliance
+
+**Prioritization**: If resource constraints prevent fixing all failures, prioritize in order: Cross-Reference Integrity > Link Validity > Evidence > Security Testing Coverage > Recency > Diversity > Tool Practicality > Language Balance > Metric Completeness
 
 ### Validation
 
-**Success Criteria**: All checks PASS before submission.
+**Success Criteria**: All quality gate checks must PASS before submission.
 
-Execute validation (Part II). Fix failures; re-validate until all PASS.
+**Process**: 
+1. Complete draft output following all requirements in Part I and Part II
+2. Execute comprehensive validation using Quality Gates criteria (see Quality Gates section)
+3. For each FAIL result: analyze root cause → implement fix → document change
+4. Re-validate all affected sections after fixes
+5. Iterate steps 3-4 until 100% of quality gates show PASS
+6. Generate validation report table (see Part III Output Format template)
+7. Submit only when validation report confirms full compliance
+
+**Accountability**: The validation report becomes part of the deliverable, demonstrating due diligence and quality assurance.
 
 ---
 
@@ -206,40 +391,328 @@ Execute validation (Part II). Fix failures; re-validate until all PASS.
 ## Generation Steps
 
 ### Step 1: Topic Planning
-1. Identify 5-6 clusters: Safety | Security | Resilience | Governance | Prevention | Response
-2. Allocate 4-6 Q&As/cluster (total 25-30); assign 20/40/40 difficulty
-3. **Validate**: Total=25-30, ratio≈20/40/40
+
+**Objective**: Establish comprehensive, MECE topic coverage with appropriate difficulty distribution.
+
+1. **Identify Topic Clusters** (5-6 clusters recommended):
+   - Suggested clusters aligned with MECE framework:
+     - **Safety Assurance**: Hazard analysis, fail-safe design, redundancy, SIL certification
+     - **Security Assurance**: Threat modeling, security testing (SAST/DAST/SCA/fuzz/pentest), access control, encryption
+     - **Risk Assessment & Management**: FMEA, STRIDE, risk quantification (P×I), control selection
+     - **Prevention & Control Measures**: Defense-in-depth, detection mechanisms, monitoring
+     - **Incident Response & Recovery**: Emergency procedures, BCDR, MTTR/RTO, lessons learned
+     - **Compliance & Governance**: Standards adherence (IEC 61508, ISO 27001, etc.), audits, documentation, training
+   - **Validate**: Clusters are mutually exclusive (no overlap); collectively exhaustive (cover all four dimensions: Safety, Security, Resilience, Governance)
+
+2. **Allocate Questions** (total 25-30 Q&As):
+   - Distribute 4-6 questions per cluster for balanced coverage
+   - Example distribution for 30 questions: 5 per cluster × 6 clusters = 30 total
+   - Ensure coverage spans all lifecycle phases: Prevent, Detect, Respond, Recover
+   - **Validate**: Total count within 25-30 range; roughly equal distribution across clusters
+
+3. **Assign Difficulty Levels** (20/40/40 distribution):
+   - **Foundational (20%)**: Definitions, basic concepts, standard procedures
+     - Target: 5-6 questions for 25-30 total
+     - Example: "What is FMEA and how does it differ from FTA?"
+   - **Intermediate (40%)**: Application, comparison, basic troubleshooting
+     - Target: 10-12 questions for 25-30 total
+     - Example: "Compare fail-safe and fail-operational designs for emergency shutdown systems. When would you choose each?"
+   - **Advanced (40%)**: Complex trade-offs, system design, integration, edge cases
+     - Target: 10-12 questions for 25-30 total
+     - Example: "Design a comprehensive defense-in-depth strategy for a SCADA system. Address safety-security convergence, monitoring, and incident response with specific metrics."
+   - **Validate**: Difficulty distribution approximately 20/40/40 (tolerance: ±5%)
+
+4. **Create Planning Matrix**: Document allocation before proceeding
+   
+   | Cluster | Question Count | Foundational | Intermediate | Advanced |
+   |---------|----------------|--------------|--------------|----------|
+   | Safety Assurance | 5 | 1 | 2 | 2 |
+   | Security Assurance | 5 | 1 | 2 | 2 |
+   | Risk Assessment | 5 | 1 | 2 | 2 |
+   | Prevention/Control | 5 | 1 | 2 | 2 |
+   | Incident Response | 5 | 1 | 2 | 2 |
+   | Compliance/Governance | 5 | 1 | 2 | 2 |
+   | **Total** | **30** | **6 (20%)** | **12 (40%)** | **12 (40%)** |
+
+5. **Final Validation**:
+   - [ ] Total Q&A count: 25-30
+   - [ ] Difficulty ratio: ~20% F / ~40% I / ~40% A (tolerance: ±5%)
+   - [ ] All clusters cover aspects of 4 dimensions (Safety/Security/Resilience/Governance)
+   - [ ] All lifecycle phases represented (Prevent/Detect/Respond/Recover)
 
 ### Step 2: References
-1. **Glossary (≥10)**: FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA, Attack Surface, Threat Vector
-2. **Tools (≥5)**: BowTieXP/FMEA, MS Threat Model, Splunk/ELK, Nessus/Qualys, PagerDuty/ServiceNow
-3. **Literature (≥10)**: IEC 61508/61511, ISO 26262/27001/31000, ISO/SAE 21434, IEC 62304/62443, ISO 14971, NIST CSF/SP 800-82/61/115, OWASP ASVS, Shostack, Leveson + ZH sources
-4. **Citations (≥20)**: Tag language, year, type; assign IDs (G#/T#/L#/A#)
-5. **Validate**: Counts, ~60/30/10% language, ≥50% last 3yr, ≥3 types
+
+**Objective**: Establish comprehensive, credible reference foundation before Q&A creation.
+
+1. **Glossary (≥10 terms)**: Define all technical terms used across questions and answers
+   - Required: FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF, MTTR, MTTD, SIL, CIA Triad, Attack Surface, Threat Vector
+   - Format: Term name, clear definition, related concepts, formulas where applicable
+   - **Validate**: All terms defined; no duplicates; consistent terminology across all Q&As
+
+2. **Tools (≥5 tools with complete information)**: Identify practical tools for each major category
+   - Risk Assessment: BowTieXP, FMEA tools
+   - Threat Modeling: Microsoft Threat Modeling Tool
+   - SIEM: Splunk, ELK Stack  
+   - Vulnerability Scanning: Nessus, Qualys
+   - Incident Management: PagerDuty, ServiceNow
+   - Security Testing: OWASP ZAP (DAST), Semgrep (SAST), Snyk (SCA), AFL++/libFuzzer (fuzz), Burp Suite (API), Trivy (container/IaC)
+   - For each tool document: Purpose, pricing model (free/commercial/freemium), last update date (≤18 months ago), key integrations, adoption metrics
+   - **Validate**: Tool count ≥5; all required information present; no unmaintained tools (>18 months without updates)
+
+3. **Literature (≥10 authoritative sources)**: Balance standards, methodologies, and practical lessons
+   - Safety Standards: IEC 61508, IEC 61511, ISO 26262, IEC 62304, ISO 14971
+   - Security Standards: ISO/IEC 27001, ISO/SAE 21434, IEC 62443
+   - Risk/Response Frameworks: ISO 31000, ISO 22301, NIST CSF 2.0, NIST SP 800-61, NIST SP 800-82, NIST SP 800-115
+   - Testing Standards: OWASP ASVS
+   - Books: Leveson (STAMP methodology), Shostack (Threat Modeling)
+   - Incident Analysis: Stuxnet case study, major breach analyses (Colonial Pipeline, SolarWinds, etc.)
+   - Chinese Sources: Functional safety and information security academic/industry texts
+   - **Validate**: Literature count ≥10; balanced across Safety/Security/Resilience/Governance; includes both prescriptive standards and descriptive incident analyses
+
+4. **Citations (≥20 inline references)**: Assign unique IDs for inline citation
+   - Tag each with language [EN]/[ZH]/[OTHER], publication year, source type (standard/book/tool/incident/paper)
+   - Assign systematic IDs: G# (Glossary), T# (Tool), L# (Literature), A# (APA citation)
+   - Format: APA 7th edition with language tags
+   - **Validate**: Citation count ≥20; language distribution ~60% EN / ~30% ZH / ~10% other; ≥50% published in last 3 years (≥70% for digital/cloud topics); ≥3 source types; no single type >25%
+
+5. **Cross-Reference Integrity**: Before proceeding to Q&A creation, verify all reference IDs are unique and properly formatted
 
 ### Step 3: Q&A Creation
-1. Write scenario-based questions ("How would...", "When should..."); 150-300 words, accessible to all
-2. Include ≥1 [Ref: ID]/answer; trace requirements → controls
-3. Add practical scenarios (failures, attacks, responses, configs)
-4. State concrete Key Insight (risk/control/incident/regulatory)
-5. **Validate**: Every 5 Q&As check word count, citations, examples, tracing, judgment
+
+**Objective**: Generate high-quality, scenario-based questions with comprehensive, well-cited answers.
+
+1. **Question Design**:
+   - Use scenario-based formats: "How would...", "When should...", "Compare and justify..."
+   - Each question must be: Clear (single unambiguous ask), Realistic (match stakeholder context), Discriminative (test judgment over recall)
+   - Target word count: 150-300 words per answer
+   - Ensure accessible language understandable to all stakeholder groups (Technical/Operational/Management/Regulatory)
+   - **Validate**: Questions are unambiguous; appropriate for assigned difficulty level; aligned with topic cluster
+
+2. **Answer Quality**:
+   - Include ≥1 [Ref: ID] citation per answer minimum; aim for ≥2 citations for complex topics
+   - Provide complete traceability chain: Requirements → Controls → Implementation Procedures → Metrics
+   - Use specific technical details; avoid vague generalizations
+   - For framework comparisons, explicitly state: context for use, trade-offs, decision criteria
+   - **Validate**: Word count within 150-300 range; ≥1 citation; technical accuracy; completeness of traceability
+
+3. **Practical Scenarios**: Every answer must include at least one of:
+   - Failure/attack scenario with consequence analysis
+   - Response procedure or incident playbook
+   - Configuration example (YAML, firewall rules, etc.)
+   - Implementation code snippet
+   - **Validate**: Scenario is realistic, detailed, and actionable; directly supports answer content
+
+4. **Key Insight Statement**: For each Q&A, provide one-sentence summary stating:
+   - Specific risk trade-off exposed by this question, OR
+   - Control effectiveness consideration, OR
+   - Incident response impact, OR
+   - Regulatory compliance requirement
+   - **Validate**: Key Insight is concrete (not generic); directly relates to question; provides learning value
+
+5. **Incremental Validation**: After every 5 Q&As created, check:
+   - Word count compliance (150-300 words/answer)
+   - Citation presence (≥1 [Ref: ID] per answer)
+   - Practical example inclusion (scenario/config/code)
+   - Traceability completeness (requirements→controls→procedures)
+   - Judgment testing (not just factual recall)
+   - **Action**: Fix any deficiencies immediately before proceeding to next batch
 
 ### Step 4: Visuals
-1. Per cluster: ≥4 elements (diagram + scenario + table + metric)
-2. Use Mermaid; add captions/legends
-3. Include configs (YAML, scripts, playbooks)
-4. Apply frameworks (Defense-in-Depth, Fail-Safe, Zero-Trust) with examples
-5. **Validate**: All clusters covered; visuals align with analysis type
+
+**Objective**: Provide comprehensive visual and practical elements to support understanding and implementation.
+
+1. **Per-Cluster Visual Requirements**: Each topic cluster must include ≥4 elements:
+   - ≥1 diagram (required)
+   - ≥1 practical scenario (required)
+   - ≥1 table (required)
+   - ≥1 quantitative metric (required)
+   - **Validate**: All four element types present in each cluster; visual types match analysis needs
+
+2. **Diagram Standards**:
+   - Use Mermaid syntax (GitHub-native rendering)
+   - Match diagram type to analysis type (see Visual Element Standards table):
+     - Hazard analysis: Fault tree, Bow-tie
+     - Threat modeling: Attack tree, Data Flow Diagram (DFD)
+     - Prevention: Control hierarchy, Defense-in-depth layers
+     - Detection: State machine, Alert flow
+     - Response: Incident workflow, Decision tree
+     - Compliance: Audit trail, Control mapping
+   - Include clear captions and legends
+   - Avoid: Single mega-diagrams (>120 nodes), mixed abstraction levels, missing rationale
+   - **Validate**: Syntax is valid Mermaid; diagram type appropriate for content; caption/legend present; complexity manageable
+
+3. **Practical Scenarios**: Include executable/deployable artifacts:
+   - Configuration files: YAML, JSON, XML (safety limits, firewall rules, SIEM correlations)
+   - Scripts: Monitoring scripts, validation checks, automation playbooks
+   - Procedures: Incident response playbooks, emergency procedures
+   - Use language-tagged fenced code blocks (```yaml, ```python, etc.)
+   - **Validate**: Code is syntactically correct; comments explain key elements; realistic and actionable
+
+4. **Framework Application**: Demonstrate established frameworks with concrete examples:
+   - Defense-in-Depth: Show specific layers with controls per layer
+   - Fail-Safe: Demonstrate safe-state behavior with failure scenario
+   - Zero-Trust: Illustrate verification checkpoints and least-privilege access
+   - For each framework, state: when to use, advantages, disadvantages, implementation specifics
+   - **Validate**: Framework applied correctly; trade-offs explicitly discussed; implementation details sufficient for replication
+
+5. **Final Visual Validation**: 
+   - All topic clusters have required visual elements
+   - Visual types align with analysis type (hazard/threat/prevention/detection/response/compliance)
+   - Diagrams render correctly in Mermaid
+   - Code examples are syntactically valid
+   - Tables are properly formatted
+   - Metrics include formula, variables, targets
 
 ### Step 5: References
-1. Populate Glossary/Tools/Literature/APA
-2. **Validate**: All [Ref: ID] resolve
+
+**Objective**: Complete all reference sections with full details and ensure cross-reference integrity.
+
+1. **Populate Reference Sections**:
+   - **Glossary**: Complete definitions for all terms (minimum 10, as identified in Step 2)
+     - Format: **Term Name**: Definition. Related concepts. [Language tag]
+     - Include formulas for quantitative terms (MTBF, CVSS, Risk, etc.)
+     - Distinguish similar terms (MTTR vs MTTD, Fail-Safe vs Fail-Operational)
+   
+   - **Tools**: Complete tool descriptions (minimum 5, as identified in Step 2)
+     - Format: **Tool Name** (Category): Description. Pricing: [model]. Last updated: [date]. Integrations: [key systems]. URL. [Language tag]
+     - Ensure last update ≤18 months ago; replace unmaintained tools
+   
+   - **Literature**: Complete literature entries (minimum 10, as identified in Step 2)
+     - Format: **Reference ID. Title. Publication details.**
+     - Cover all four dimensions: Safety, Security, Resilience, Governance
+     - Balance standards, methodologies, tools, and incident analyses
+   
+   - **APA Citations**: Format all citations per APA 7th edition with language tags
+     - Format: **Citation ID. Author(s). (Year). *Title*. Publisher/Journal. DOI/URL [Language tag]**
+     - Verify: ~60% EN, ~30% ZH, ~10% other languages
+
+2. **Cross-Reference Validation**:
+   - Parse all inline [Ref: ID] references in Q&A content
+   - Verify each reference ID exists in one of: Glossary (G#), Tools (T#), Literature (L#), APA Citations (A#)
+   - Check for: Dangling references (cited but not defined), Orphaned entries (defined but never cited)
+   - **Action**: Add missing reference definitions; remove unused entries; correct mismatched IDs
+
+3. **Completeness Check**:
+   - Reference minimums met: ≥10 glossary, ≥5 tools, ≥10 literature, ≥20 citations
+   - Quality gates met: Recency (≥50% last 3yr), Diversity (≥3 types, no single >25%), Language balance (~60/30/10)
+   - All URLs accessible or archived (use Wayback Machine for broken links; prefer DOIs)
+   - **Action**: If any minimums unmet, document shortfall + rationale + sourcing plan per Exception Handling protocol
 
 ### Step 6: Validation
-Execute all quality gates. Fix failures; re-validate until PASS.
+
+**Objective**: Execute comprehensive quality assurance before submission.
+
+**Process**:
+1. **Execute All Quality Gates** (see Quality Gates section for complete criteria):
+   - Recency: Verify ≥50% sources from last 3 years (≥70% for digital/cloud)
+   - Diversity: Confirm ≥3 source types; no single type >25%
+   - Evidence: Check ≥70% answers have ≥1 citation; ≥30% have ≥2
+   - Tool Practicality: Verify all tools have pricing, adoption, update date (≤18mo), integrations
+   - Link Validity: Test all URLs; archive broken links with Wayback Machine
+   - Cross-Reference Integrity: Confirm 100% of [Ref: ID] resolve to defined references
+   - Security Testing Coverage: Verify all methods included (SAST, DAST, SCA, fuzz, pentest; +IaC/container for cloud)
+   - Language Balance: Count citations by language; verify ~60/30/10 EN/ZH/other
+   - Metric Completeness: Check ≥1 metric per cluster; all have formula, variables, target, use case
+
+2. **Document Results**: Create validation table (see Part III template) with:
+   - Gate name | Criterion | Target | Actual | Status (PASS/FAIL) | Remediation (if FAIL)
+
+3. **Remediation Loop**:
+   - For each FAIL: Analyze root cause → Implement fix → Document change
+   - Re-validate affected sections
+   - Update validation table with new results
+   - Repeat until all gates show PASS
+
+4. **Final Checklist**:
+   - [ ] All quality gates show PASS in validation table
+   - [ ] Total Q&A count: 25-30
+   - [ ] Difficulty distribution: ~20% F, ~40% I, ~40% A
+   - [ ] Reference minimums met: ≥10 glossary, ≥5 tools, ≥10 literature, ≥20 citations
+   - [ ] Per cluster: ≥1 diagram, ≥1 scenario, ≥1 table, ≥1 metric
+   - [ ] All diagrams render in Mermaid
+   - [ ] All code examples are syntactically valid
+   - [ ] TOC links to all sections
+
+**Output**: Validation report table showing 100% compliance before proceeding to Step 7.
 
 ### Step 7: Review
-Apply critique criteria. Submit when all PASS.
+
+**Objective**: Final quality review against success criteria before submission.
+
+**Review Criteria** (apply systematically to entire output):
+
+1. **Clarity & Accessibility**:
+   - [ ] All questions are unambiguous with single clear ask
+   - [ ] Language is accessible to all stakeholder levels (Technical/Operational/Management/Regulatory)
+   - [ ] Technical terms defined before use or linked to glossary
+   - [ ] Jargon minimized; where necessary, explained
+
+2. **Precision & Accuracy**:
+   - [ ] Terminology is consistent throughout
+   - [ ] Technical details are specific, not vague
+   - [ ] Metrics include complete formulas with variable definitions
+   - [ ] All factual claims are cited
+
+3. **Relevance & Focus**:
+   - [ ] All content directly supports safety/security question bank purpose
+   - [ ] No tangential information or scope creep
+   - [ ] Examples and scenarios are realistic and applicable
+
+4. **MECE Coverage**:
+   - [ ] All 4 dimensions covered: Safety, Security, Resilience, Governance
+   - [ ] All 4 lifecycle phases addressed: Prevent, Detect, Respond, Recover
+   - [ ] No significant gaps in coverage
+   - [ ] No redundant or overlapping questions
+
+5. **Sufficiency & Depth**:
+   - [ ] Comprehensive coverage of necessary aspects per dimension
+   - [ ] Sufficient detail for implementation (not just high-level concepts)
+   - [ ] Trade-offs and alternatives discussed where relevant
+   - [ ] Practical scenarios enable hands-on application
+
+6. **Concision & Significance**:
+   - [ ] All content is essential; no fluff or filler
+   - [ ] Answers prioritize important information over trivial details
+   - [ ] Word counts within 150-300 range (sufficient but not verbose)
+
+7. **Logic & Structure**:
+   - [ ] Risk-to-controls framework applied consistently
+   - [ ] Traceability chains are complete (requirements→controls→procedures→metrics)
+   - [ ] Framework comparisons include context, trade-offs, decision criteria
+   - [ ] Arguments are coherent and well-reasoned
+
+8. **Credibility & Evidence**:
+   - [ ] All sources are authoritative (standards bodies, established researchers, reputable tools)
+   - [ ] Recent sources prioritized (≥50% last 3 years)
+   - [ ] Multiple source types prevent single-perspective bias
+   - [ ] Citations ground all significant claims
+
+9. **Fairness & Balance**:
+   - [ ] Multiple perspectives presented where appropriate
+   - [ ] Assumptions and limitations explicitly stated
+   - [ ] Alternatives and counterarguments acknowledged
+   - [ ] Bias awareness (geographic, vendor, methodology)
+
+10. **Format & Presentation**:
+    - [ ] TOC links to all major sections
+    - [ ] Visual hierarchy clear (headings, lists, tables)
+    - [ ] Diagrams enhance understanding (not decorative)
+    - [ ] Code blocks are formatted and tagged
+    - [ ] Tables are properly structured
+
+11. **Practicality & Actionability**:
+    - [ ] Guidance is implementable, not just theoretical
+    - [ ] Configuration examples are realistic and adaptable
+    - [ ] Procedures are specific enough to follow
+    - [ ] Tools and standards are accessible
+
+12. **Success Criteria Verification**:
+    - [ ] Questions test judgment and risk-to-controls translation
+    - [ ] Answers demonstrate risk awareness
+    - [ ] Communication is clear with accessible language and visuals
+    - [ ] Implementation traceability is complete and measurable
+
+**Final Action**: Submit only when all review criteria are met AND all quality gates show PASS in validation report.
 
 ---
 
@@ -665,6 +1138,89 @@ Analysis of supply chain compromise via software updates; nation-state APT tacti
 
 Execute full validation (Part I). Present results in table format upon completion. All checks must show PASS before submission.
 
+---
+
+## Example Question
+
+Demonstrates the risk-to-controls framework: Hazard/Threat Identification → Risk Assessment → Control Implementation → Metrics.
+
+### Q1: How would you implement defense-in-depth for a SCADA system controlling a water treatment plant? Show the control layers, monitoring approach, and key risk metrics.
+
+**Difficulty**: Advanced  
+**Type**: Security Assurance, Prevention Measures
+
+**Key Insight**: Tests ability to apply layered security controls, reason about safety-security convergence, and connect requirements to deployed controls with measurable effectiveness.
+
+**Answer**:
+
+Defense-in-depth for critical infrastructure SCADA requires multiple control layers addressing both cyber threats and safety hazards [Ref: A10]. Implementation spans network segmentation, access control, monitoring, and fail-safe mechanisms [Ref: L3, L6].
+
+**Control Architecture**: (1) Network layer: air-gapped OT/IT networks, firewalls with deny-by-default rules, DMZ for historian access; (2) Host layer: hardened OS, application whitelisting, patch management; (3) Application layer: role-based access control (RBAC), command authentication, audit logging; (4) Physical layer: facility access control, tamper detection on PLCs; (5) Safety layer: independent SIL 2-rated interlocks ensuring safe shutdown on anomaly detection [Ref: A1].
+
+**Monitoring Strategy**: Deploy SIEM correlating IT security events with OT process alarms to detect indicators of compromise (e.g., unauthorized configuration changes, communication pattern anomalies, failed authentication attempts). Baseline normal operations using statistical process control; alert on deviations exceeding 3σ thresholds [Ref: T3].
+
+**Safety-Security Convergence**: Safety interlocks provide last line of defense if security controls fail—e.g., pressure relief valves open mechanically if SCADA commands exceed safe limits, independent of network integrity [Ref: G7].
+
+```
+flowchart TD
+    EXT[External Threats] --> FW1[Perimeter Firewall]
+    FW1 --> DMZ[DMZ: Historian/HMI]
+    DMZ --> FW2[Internal Firewall]
+    FW2 --> SCADA[SCADA Server]
+    SCADA --> PLC[PLCs/RTUs]
+    PLC --> PROC[Physical Process]
+    
+    SIEM[SIEM Monitoring] -.-> FW1
+    SIEM -.-> FW2
+    SIEM -.-> SCADA
+    SIEM -.-> PLC
+    
+    SAFETY[Safety Interlocks] -.-> PROC
+    SAFETY -.independent.-> PLC
+```
+
+**Implementation Example** (Network Segmentation Config):
+```
+# Firewall rule template (simplified)
+zones:
+  - name: enterprise
+    trust_level: low
+  - name: dmz
+    trust_level: medium
+  - name: scada
+    trust_level: high
+    
+policies:
+  - from: enterprise
+    to: dmz
+    services: [https]
+    action: allow
+    log: true
+    
+  - from: dmz
+    to: scada
+    services: [modbus_read_only]
+    action: allow
+    authentication: required
+    log: true
+    
+  - from: enterprise
+    to: scada
+    action: deny  # Air gap: no direct access
+    alert: critical
+```
+
+| Metric | Formula | Target | Rationale |
+|--------|---------|--------|------------|
+| Detection Rate | `True Positives / Total Incidents × 100%` | ≥ 95% | Ensures anomalies trigger alerts [Ref: L5] |
+| False Positive Rate | `False Alarms / Total Alerts × 100%` | ≤ 2% | Prevents alert fatigue [Ref: T3] |
+| MTTD (Mean Time To Detect) | Time from incident start to alert | ≤ 5 min | Minimizes exposure window [Ref: G16] |
+| MTTR (Mean Time To Recover) | Time from detection to restoration | ≤ 30 min | Meets RTO for water service continuity [Ref: A16] |
+| Control Effectiveness | `Prevented Attacks / Total Attempts × 100%` | ≥ 99% | Validates defense layers [Ref: G6] |
+
+**Validation**: Conduct annual red team exercises simulating APT scenarios (e.g., spear phishing → lateral movement → PLC manipulation). Measure time-to-detect, time-to-contain, and safety interlock activation. Document lessons learned and update threat model [Ref: A7].
+
+---
 ---
 
 ## Example Question

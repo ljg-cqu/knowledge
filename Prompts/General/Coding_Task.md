@@ -10,10 +10,21 @@ Define quality requirements, standards, and constraints.
 
 ## Specifications
 
+### Foundation: Define the Task
+
+- **Context**: State scope, constraints, and explicit assumptions.
+- **Clarity**: Use clear language; define jargon in the Glossary; avoid undefined terms.
+- **Precision**: Use specific terms; avoid ambiguity; keep terminology consistent across tasks.
+- **Relevance**: Stay on topic; exclude tangential or redundant information.
+
 ### Scope and Structure
 
 - **Scope**: 18–28 tasks for senior/architect/expert level
 - **Difficulty Distribution**: Maintain 20/40/40 balance (Foundational/Intermediate/Advanced)
+- **Topic Design**: Organize topics and task clusters using MECE principles; highlight assumptions and exclusions so coverage remains complete yet non-overlapping
+- **Sufficiency**: Ensure complete coverage of necessary aspects without gaps.
+- **Breadth**: Where appropriate, include multiple perspectives (algorithmic, systems, tooling, testing).
+- **Depth**: Require thorough treatment with sufficient detail for implementation and evaluation.
 - **Problem**: Self-contained with I/O spec, signatures, constraints (time/memory, libs)
 - **Tests**: 6–10 unit tests (3–5 public, 3–5 hidden)
 - **Reference**: Working solution with complexity analysis
@@ -26,7 +37,20 @@ Define quality requirements, standards, and constraints.
 - **Source Types**: (1) Official docs (language specs, vendor docs, RFCs); (2) Standards/peer-reviewed (ISO, IEEE, academic journals, conference papers); (3) Audits/reports (security audits, industry analyses, regulatory guidance); (4) Vetted code (production repos with stable releases)
 - **Format**: APA 7th with language tags
 - **Distribution**: Codebase/libraries (repos, maturity, benchmarks); Literature/Reports
+- **Credibility & Reliability**: Prioritize authoritative, high-quality, tested sources; de-prioritize low-quality or unproven content.
+- **Accuracy & Uncertainty**: Verify factual correctness; when evidence is limited, flag uncertainty directly in the text.
 - **Inline Citation**: Use [Ref: ID] in problem descriptions and reference solutions when referencing algorithms, complexity analysis, and best practices. Code comments may include citations.
+
+### Quality & Reasoning Requirements
+
+- **Significance & Value**: Focus tasks on impactful skills; state why each task matters to stakeholders and expected outcomes
+- **Risk & Mitigation**: Surface solution risks, costs, or failure modes and document mitigation tactics or acceptance criteria
+- **Fairness & Bias**: Call out assumptions, limitations, or potential biases in problem statements, datasets, or evaluation rubrics; offer counterpoints where relevant
+- **Logic & Verification**: Require explicit reasoning chains in solutions (e.g., invariants, proofs, or decision logs) and mandate self-review/validation notes when ambiguity exists
+- **Practicality**: Ensure every deliverable is actionable with clear success criteria and implementation guidance
+- **Concision**: Remove redundancy and tangents; include only essential information necessary for solving and evaluating tasks.
+- **Accuracy & Fact-Checking**: Verify claims against cited sources; cross-check critical facts and metrics.
+- **Terminology Consistency**: Maintain consistent terms throughout; define domain jargon in the Glossary.
 
 ### Reference Minimum Requirements
 
@@ -61,7 +85,7 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Pass if: All counts meet minimums AND difficulty ratio ≈20/40/40
 
 **Step 2 – Citation Coverage Scan**
-- For EACH task (problem + solution): Count inline `[Ref: ...]` occurrences
+- For EACH task (problem + solution): Count inline `[Ref: ID]` occurrences
 - Report: `X of Y tasks have ≥1 citation (Z%); W of Y have ≥2 citations (V%)`
 - Pass if: ≥70% have ≥1 citation AND ≥30% have ≥2 citations
 
@@ -111,6 +135,22 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - Report: `X applicable tasks; Y comply (Z%)`
 - Pass if: ≥80% comply OR rationale provided
 
+**Step 12 – Fairness, Risk & Logic Review**
+- Confirm each task includes significance rationale, risk/mitigation notes, and fairness considerations
+- Verify reasoning chains or validation notes accompany reference solutions
+- Report: `Significance: X/Y | Risk: W/Y | Fairness: V/Y | Reasoning: U/Y`
+- Pass if: All four dimensions achieved for ≥90% of tasks (rounded down permitted) or shortfalls documented with remediation plan
+
+**Step 13 – Practicality & Success Criteria**
+- For EACH task: Verify practical, implementable guidance and explicit success criteria/acceptance conditions are present
+- Report: `Practicality: X/Y | Success criteria: W/Y`
+- Pass if: Both present for ≥90% of tasks or remediation plan provided
+
+**Step 14 – Concision, Relevance, and Terminology**
+- Review for redundant/tangential content; check consistent terminology and precision of language
+- Report: `Concision pass: Yes/No | Relevance pass: Yes/No | Terminology consistent: Yes/No`
+- Pass if: All three checks pass or issues remediated
+
 **Validation Report Template:**
 ```
 | Check | Result | Status |
@@ -125,6 +165,8 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 | Test coverage | Y/X complete | PASS/FAIL |
 | Solutions | Y/X present | PASS/FAIL |
 | Constraints | Y/X specified | PASS/FAIL |
+| Practicality & success criteria | Y/X present | PASS/FAIL |
+| Concision/relevance | Reviewed | PASS/FAIL |
 ```
 
 > **MANDATORY:** If ANY check shows FAIL, stop, fix issues, regenerate affected sections, and re-run full validation. Only proceed to submission when ALL checks show PASS.
@@ -138,10 +180,18 @@ Execute ALL steps below. Present results in a validation report table. Fix any f
 - [ ] Diversity: ≥3 source types, no single source >25%
 - [ ] Evidence coverage: ≥70% tasks with ≥1 citation; ≥30% with ≥2 distinct citations
 - [ ] Task quality: Self-contained problems, complete test suites, reference solutions with complexity analysis
+- [ ] Stakeholder value: Each task documents significance, risks with mitigations, and fairness considerations
+- [ ] Reasoning integrity: Reference solutions include explicit reasoning chains or validation notes
 - [ ] Codebase maturity noted (license, last update ≤12 months, stable release, audit status)
 - [ ] Links resolve or archived URLs provided
 - [ ] Cross-references present (IDs used in tasks and in Reference Sections)
 - [ ] Constraints specified (time/memory/library limits)
+- [ ] Foundations satisfied (context, clarity, precision, relevance)
+- [ ] Assumptions & exclusions included for each task
+- [ ] Success criteria and acceptance tests present for each task
+- [ ] Terminology consistent; jargon defined in Glossary
+- [ ] Concision and relevance reviewed; tangents removed
+- [ ] TOC present and intra-document links resolve
 - [ ] Pre-submission validation completed with passing results
 
 ---
@@ -169,37 +219,34 @@ Follow these steps in order. Execute inline quality checks at each step before p
 ### Step 3: Task Generation
 1. For EACH task: Write self-contained problem with I/O spec, signatures, assign difficulty + language
 2. In EACH problem description: Include ≥1 inline `[Ref: ID]` when referencing algorithms, patterns, complexity requirements
-3. For EACH task: Create 6-10 unit tests (3-5 public, 3-5 hidden descriptions)
-4. **Inline Check**: After every 4 tasks, verify: problems self-contained, ≥1 citation where applicable, test suites complete
+3. Explicitly articulate task significance (why it matters) and fairness considerations (assumptions, biases, counterpoints)
+4. For EACH task: Create 6-10 unit tests (3-5 public, 3-5 hidden descriptions)
+5. **Inline Check**: After every 4 tasks, verify: problems self-contained, ≥1 citation where applicable, fairness notes present, test suites complete
 
 ### Step 4: Reference Solutions
 1. For EACH task: Write working solution with complexity analysis
-2. Document alternative approaches and trade-offs
-3. **Inline Check**: All tasks have solutions? Complexity analysis present? Common mistakes documented?
+2. Document alternative approaches, trade-offs, and associated risk/mitigation notes
+3. Provide explicit reasoning chains or validation notes summarizing how correctness was verified (e.g., invariants, test coverage, proof sketch)
+4. **Inline Check**: All tasks have solutions? Complexity analysis and reasoning notes present? Common mistakes documented?
 
 ### Step 5: Reference Section Compilation
 1. Populate Glossary, Codebase, Literature, APA sections with collected sources
 2. Include all required information (must-include fields per format)
 3. Ensure Reference IDs match inline citations
-4. **Inline Check**: Every [Ref: ID] in tasks resolves to an entry? All sources have required fields?
+4. **Inline Check**: Every [Ref: ID] in tasks resolves to an entry? All sources have required fields? Fairness/risk notes trace back to references where applicable?
 
 ### Step 6: Pre-Submission Validation
-Execute all 10 validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
+Execute all validation steps (see Part I > Pre-Submission Validation). Present validation report table. Fix any FAIL results and re-validate.
 
 ### Step 7: Final Review
-Check Submission Checklist (see Part I). Submit only when all checks pass.
-
----
-
-# Part III: Output Format
-
-Template structure for generated task banks.
+1. Check Submission Checklist (see Part I). Submit only when all checks pass.
+2. Review narrative coherence, clarity, and completeness; confirm no redundant or tangential content remains.
 
 ## Output Format
 
 Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
 
-- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+- Use lists, tables, diagrams, formulas, code blocks; diagrams in Mermaid; code with language-tagged fences.
 
 Use this structure when generating task banks:
 
@@ -236,6 +283,8 @@ Use this structure when generating task banks:
 [Code with signature, docstrings, placeholders]
 ```
 
+**Assumptions & Exclusions:** [Explicit scope boundaries; defined terms; out-of-scope items]
+
 **Public Tests:**
 ```[language]
 [Test cases]
@@ -243,11 +292,19 @@ Use this structure when generating task banks:
 
 **Hidden Tests:** [Description of additional test categories]
 
+**Success Criteria & Acceptance Tests:** [Measurable outcomes and pass/fail conditions]
+
 **Reference Solution:**
 ```[language]
 [Working implementation]
 ```
-**Complexity:** [Time/space] | **Alternatives:** [Other approaches]
+**Complexity:** [Time/space] | **Alternatives:** [Other approaches] | **Reasoning Notes:** [Key invariants/proofs or validation summary]
+
+**Evidence & Uncertainty Notes:** [Flag any uncertain claims; tie assertions to [Ref: ID] where applicable]
+
+**Value & Risk Assessment:** [Why it matters, risks/costs, mitigations or acceptance criteria]
+
+**Fairness & Bias Considerations:** [Assumptions, limitations, counterarguments, inclusivity checks]
 
 **Grading:** [Rubric] | **Common mistakes:** [List] | **Misconceptions:** [List]
 

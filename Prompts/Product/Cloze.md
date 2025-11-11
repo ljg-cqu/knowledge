@@ -8,6 +8,16 @@ Generates high-quality PM fill-in-the-blank assessments with structured citation
 
 ## Specifications
 
+### Foundation: Define the Task
+
+- **Purpose**: Build a product management cloze bank for hiring, calibration, and upskilling.
+- **Audience**: Senior/Director/VP PMs; interviewers; L&D partners.
+- **Context & Constraints**: Domain strictly product management; 24–40 items; language distribution targets; framework variance supported via contested terms.
+- **Assumptions**: Access to credible sources; internet connectivity; no PII; impartiality (no vendor bias).
+- **Clarity**: Use plain language; define jargon via Glossary; avoid undefined acronyms.
+- **Precision**: Use unambiguous blanks; consistent terminology; normalization (case-insensitive, trim, punctuation stripping) and numeric tolerances; explicit acceptable answer arrays.
+- **Relevance**: Keep in-scope to product management; exclude tangential topics.
+
 ### Scope and Structure
 
 - **Scope**: 24–40 items (senior/director/VP level PMs)
@@ -16,6 +26,40 @@ Generates high-quality PM fill-in-the-blank assessments with structured citation
 - **Normalization**: Case-insensitive; trim whitespace; strip punctuation; define numeric tolerances
 - **Grading**: Acceptance lists with tolerances; document borderline cases and partial credit
 - **Contested Terms**: Include valid variants from different PM schools/regions/frameworks
+
+### Coverage: MECE, Breadth, Depth
+
+- **MECE**: Use clusters that are mutually exclusive and collectively exhaustive; prevent overlap between items across clusters.
+- **Sufficiency**: Ensure each cluster covers essential sub-themes (definitions, metrics, frameworks, trade-offs).
+- **Breadth**: Cover Strategy, Discovery & Validation, Prioritization & Roadmapping, Metrics & Growth, Stakeholder Management, Go-to-Market.
+- **Depth**: Use difficulty balance to drive depth; advanced items probe rationale, edge cases, trade-offs.
+
+### Grading Config (Example)
+
+```json
+{
+  "normalization": {
+    "caseInsensitive": true,
+    "trimWhitespace": true,
+    "stripPunctuation": true,
+    "numericTolerance": 0.01
+  },
+  "items": [
+    {
+      "id": "1",
+      "statement": "The framework that scores features by reach, impact, confidence, and effort is called ___.",
+      "acceptableAnswers": ["RICE", "RICE prioritization"],
+      "domain": "Prioritization",
+      "difficulty": "Foundational"
+    }
+  ],
+  "policies": {
+    "significanceFilter": true,
+    "logicStructure": "claim-reason-evidence",
+    "fairness": "include-alternatives-when-contested"
+  }
+}
+```
 
 ### Citation Standards
 
@@ -44,6 +88,12 @@ Generates high-quality PM fill-in-the-blank assessments with structured citation
 - **Links**: Validate accessibility; prefer DOIs/archived URLs
 - **Cross-refs**: All [Ref: ID] resolve
 
+- **Significance**: Exclude trivial items; prioritize high-value content tied to outcomes.
+- **Concision**: Statements ≤200 chars; rationales ≤2 sentences.
+- **Logic**: Rationales follow claim → reason → evidence.
+- **Risk/Value**: Advanced items include trade-offs, risks, costs, and benefits where applicable.
+- **Fairness**: Acknowledge assumptions and viable alternatives for contested terms/frameworks.
+
 > **Scaling**: For >40 items, increase floors ~1.5×; prioritize gates before floors.
 
 ### Pre-Submission Validation
@@ -57,6 +107,13 @@ Execute all steps; present results in validation table; fix failures and re-run 
 5. **Diversity**: ≥3 source types; single <25%
 6. **Links**: All accessible/archived
 7. **Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
+8. **Significance**: 100% items pass significance filter (non-trivial, outcome-relevant).
+9. **Concision**: Statements ≤200 chars and rationales ≤2 sentences (report S/X and R/X).
+10. **Logic**: Rationales follow claim → reason → evidence (spot-check ≥10% or ≥10 items).
+11. **Fairness**: Contested items include assumptions/alternatives; variants present where applicable.
+12. **Risk/Value**: ≥30% of Advanced items include trade-offs or risk/cost/benefit analysis.
+13. **Practicality**: Grader config present; normalization/tolerance validated on sample items.
+14. **Success Criteria**: All floors, gates, and checks PASS; validation report attached.
 
 **Validation Report Template:**
 ```
@@ -69,12 +126,42 @@ Execute all steps; present results in validation table; fix failures and re-run 
 | Source diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
+| Significance | 100% items high-value | PASS/FAIL |
+| Concision | S/X statements ≤200; R/X rationales ≤2 sentences | PASS/FAIL |
+| Logic | Sample N follow claim→reason→evidence | PASS/FAIL |
+| Fairness | Contested items include assumptions/alternatives | PASS/FAIL |
+| Risk/Value | ≥30% advanced items include trade-offs | PASS/FAIL |
+| Practicality | Grader config present; normalization tested | PASS/FAIL |
+| Success criteria | All floors/gates/checks PASS | PASS/FAIL |
 ```
 > **MANDATORY:** Stop on ANY failure; fix, regenerate, re-validate. Proceed only when all PASS.
 
 ### Submission Checklist
 - [ ] All validation steps PASS
 - [ ] All reference floors and quality gates met
+
+### LLM-Friendly Guidelines Compliance
+- **1. Context**: Part I → Foundation
+- **2. Clarity**: Part I → Foundation; Glossary
+- **3. Precision**: Scope & Structure → Normalization/Grading; Acceptable answers
+- **4. Relevance**: Part I → Foundation
+- **5. MECE**: Coverage; Part II → Step 1 Topic Planning
+- **6. Sufficiency**: Reference Floors; Quality Gates
+- **7. Breadth**: Clusters in Coverage/Step 1
+- **8. Depth**: Difficulty balance; Advanced item requirements
+- **9. Significance**: Quality Gates (Significance)
+- **10. Concision**: Quality Gates (Concision) and Validation #9
+- **11. Accuracy**: Citations policy; Cross-refs
+- **12. Credibility**: Diversity/Recency gates; authoritative sources
+- **13. Logic**: Quality Gates (Logic) and Validation #10
+- **14. Risk/Value**: Quality Gates (Risk/Value) and Validation #12
+- **15. Fairness**: Contested Terms; Quality Gates (Fairness) and Validation #11
+- **16. Structure**: Part III → Output Template
+- **17. Output Format**: TOC and formatting rules
+- **18. Evidence**: APA citations and inline [Ref: ID]
+- **19. Validation**: Part I → Pre-Submission Validation
+- **20. Practicality**: Grading Config (Example)
+- **21. Success Criteria**: Submission Checklist; Validation #14
 
 ---
 
@@ -121,7 +208,7 @@ Verify checklist complete; submit when all PASS.
 
 Start the output with a TOC (e.g., '## Contents') linking to all top-level headings and list items.
 
-- Use lists tables diagrams formulas code blocks; diagrams in Mermaid; code with language-tagged fences.
+- Use lists, tables, diagrams, formulas, code blocks; diagrams in Mermaid; code with language-tagged fences.
 
 ```markdown
 ## Contents

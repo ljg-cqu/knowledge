@@ -34,6 +34,26 @@ for senior/architect/expert roles.
   - [Document Structure](#document-structure)
   - [Reference Section Formats](#reference-section-formats)
 
+**Purpose**: Produce discriminative technical interview questions that distinguish experienced practitioners from novices through evidence-based answers, balanced perspectives, and actionable insights.
+
+**Target Audience**: LLMs generating Q&As for technical recruiters, hiring managers, and SMEs conducting senior-level interviews.
+
+## Contents
+
+**Quick Navigation by Use Case**:
+
+- **Getting Started**: [Overview](#overview) → [Terminology](#terminology) → [Execution Workflow](#execution-workflow)
+- **Quality Standards**: [Specifications](#specifications) → [Quality Gates](#quality-gates) → [Validation Procedures](#validation-procedures)
+- **Output Templates**: [Output Format](#output-format) → [Reference Section Formats](#reference-section-formats)
+
+**Full Contents**:
+
+- [Overview](#overview): Scope, Assumptions, Success Criteria, Terminology
+- [Specifications](#specifications): Target Requirements, Content Principles, Evaluation Dimensions, Citation Standards, Reference Requirements, Quality Gates
+- [Execution Workflow](#execution-workflow): 7-Step Process (Planning → Collection → Generation → Artifacts → References → Validation → Review)
+- [Validation Procedures](#validation-procedures): Pre-Submission Validation (11 steps), Validation Tiers
+- [Output Format](#output-format): Question Design Criteria, Document Structure, Reference Section Formats
+
 ---
 
 # Overview
@@ -59,7 +79,8 @@ This framework generates interview Q&As for technical roles (senior/architect/ex
 ## Assumptions
 
 1. User provides topic/domain and target role level
-2. Sufficient credible sources exist (≥20 total) for the specified topic
+2. Sufficient **credible sources** exist (≥20 total) for the specified topic
+   - **Credibility Standard**: Official documentation, peer-reviewed publications, security audits, vetted open-source projects (see Citation Standards § Source Types)
 3. Language mix (EN/ZH/Other) is acceptable to target audience
 4. Output will be reviewed by subject matter experts before production use
 5. Citations are accessible (not behind paywalls or access restrictions)
@@ -77,6 +98,8 @@ This framework succeeds when:
 
 ## Terminology
 
+Define key terms upfront for clarity:
+
 **Symbols**:
 
 - `≥` = minimum threshold (greater than or equal to)
@@ -87,11 +110,10 @@ This framework succeeds when:
 **Key Terms**:
 
 - **Q&A** (singular), **Q&As** (plural): Question and Answer pair
-- **MECE**: Mutually Exclusive, Collectively Exhaustive—categories don't overlap and cover all
-  possibilities
+- **MECE (Mutually Exclusive, Collectively Exhaustive)**: Categories don't overlap and cover all possibilities
 - **Topic Cluster**: Semantic grouping of 4-6 related Q&As covering one technical area
 - **Floor Count / Minimum Required Count**: Minimum number of items required in a category
-- **APA 7th**: American Psychological Association citation format, 7th edition
+- **APA 7th (American Psychological Association, 7th ed.)**: Standard academic citation format; provides consistent attribution structure
 - **DOI**: Digital Object Identifier—persistent link to academic/technical publications
 - **Canonical URL**: Official, authoritative URL; for duplicates, the preferred version
 - **Archived URL**: Permanent snapshot (e.g., via Internet Archive) for link preservation
@@ -143,11 +165,16 @@ This framework succeeds when:
 
 **Fairness & Bias Mitigation**:
 
-- Frame questions neutrally; avoid presupposing "best" practices
-- Acknowledge context-dependency (org size, region, budget, compliance requirements)
-- For contentious topics: Present ≥2 competing viewpoints with counter-evidence
-- Distinguish consensus from assumption-dependent conclusions
-- Avoid vendor favoritism; present architectural choices as trade-off decisions
+- Frame questions neutrally; avoid presupposing "best" practices without context
+- Acknowledge context-dependency: org size, region, budget, compliance, technical constraints
+- For contentious topics (≥2 peer-reviewed sources with conflicting conclusions): Present ≥2 competing viewpoints with counter-evidence
+- Distinguish consensus (broad agreement) from assumption-dependent conclusions ("best for X context")
+- Avoid vendor favoritism; present architectural choices as trade-off decisions with evaluation criteria
+
+**Alternative Approaches** (when applicable):
+
+- When presenting a recommended approach, briefly note ≥1 alternative and selection criteria
+- Example: "Approach A optimizes for latency but increases complexity; Approach B prioritizes simplicity at cost of throughput"
 
 **Significance Prioritization**:
 
@@ -157,60 +184,42 @@ This framework succeeds when:
 
 ## Evaluation Dimensions
 
-| Dimension | Elements |
-|-----------|----------|
-| **Technical** | Performance, security, scalability, reliability |
-| **Business** | Cost, efficiency, impact, market fit |
-| **Strategic** | Regulatory landscape, adoption barriers, competitive dynamics |
-| **Actionable** | Best practices, mitigations, open questions |
+Evaluate each Q&A through multiple lenses to ensure comprehensive coverage:
+
+| Dimension | Elements | Purpose |
+|-----------|----------|----------|
+| **Technical** | Performance, security, scalability, reliability | Engineering soundness |
+| **Business** | Cost, efficiency, impact, market fit | ROI and resource considerations |
+| **Strategic** | Regulatory landscape, adoption barriers, competitive dynamics | Long-term positioning |
+| **Actionable** | Best practices, mitigations, open questions | Practical implementation guidance |
 
 ## Citation Standards
 
-**Language Distribution**:
+- **Languages**: ~60% EN, ~30% ZH, ~10% other ([EN], [ZH] tags)
+- **Source Types**: (1) Official docs; (2) Standards/peer-reviewed; (3) Audits/reports; (4) Vetted code
+- **Format**: APA 7th with language tags
+- **Inline Citation**: `[Ref: ID]` after factual claims, metrics, comparisons, trade-offs, best practices, security/compliance statements, recommendations
 
-- Target: ~60% EN, ~30% ZH, ~10% other
-- Range acceptable: EN 50-70%, ZH 20-40%, Other 5-15%
-- Tag each citation: `[EN]`, `[ZH]`, etc.
+## Reference Minimum Requirements
 
-**Source Types** (prioritized):
+| Reference Section | Floor Count | Notes |
+| --- | --- | --- |
+| Glossary, Terminology & Acronyms | ≥10 entries | Core concepts, domain-specific jargon, localized terminology |
+| Codebase & Library References | ≥5 entries | Primary stack components, SDKs, supporting tooling |
+| Authoritative Literature & Reports | ≥6 entries | Standards, peer-reviewed work, regulatory/industry analyses |
+| APA Style Source Citations | ≥12 total | Language mix (~60% EN / ~30% ZH / ~10% other) |
 
-1. Official documentation (vendor, standard body)
-2. Standards / peer-reviewed publications
-3. Security audits / industry reports
-4. Vetted codebases (open-source with audit history)
+> **Exception**: If floor counts unmet, document shortfall + rationale + sourcing plan.
 
-**Format**: APA 7th edition with language tags
+## Usage Guidelines
 
-**Inline Citation Placement** - Use `[Ref: ID]` after:
-
-- Factual claims (statistics, performance metrics, compatibility)
-- Comparisons and trade-off assertions
-- Best practices and architectural recommendations
-- Security/compliance requirements
-- Failure mode descriptions
-
-**Source Limitations** (acknowledge when present):
-
-- If citing source with limited generalizability, note constraints:
-  "[Study limited to North American enterprises with >1000 employees]"
-- If source reliability uncertain, flag: "[Limited peer review; cross-check recommended]"
-
-## Reference Requirements
-
-| Reference Section | Minimum Count | Notes |
-|-------------------|---------------|-------|
-| Glossary, Terminology & Acronyms | ≥10 | Core concepts, domain jargon, localized terms |
-| Codebase & Library References | ≥5 | Primary stack, SDKs, tooling |
-| Authoritative Literature & Reports | ≥6 | Standards, peer-reviewed, industry analyses |
-| APA Style Source Citations | ≥12 total | Language mix per Citation Standards |
-
-**Practicality Escape Hatches**:
-
-- If topic has <20 total credible sources: Reduce floor counts proportionally; document in
-  Exception note
-- If monolingual domain (e.g., regional regulation): Adjust language distribution; document rationale
-- If conflicting constraints (e.g., only old source for stable standard): Prioritize
-  credibility > recency; flag in Reference Section: `[1998 source; latest available for ISO XYZ]`
+1. Apply MECE principles; maintain 20/40/40 difficulty distribution
+2. Meet floor counts: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 citations
+3. Language mix: ~60% EN, ~30% ZH, ~10% other with tags
+4. Uniform formatting across reference sections
+5. Per topic cluster: ≥1 diagram + ≥1 table, ≥2 authoritative sources + ≥1 codebase reference
+6. Address engineering, business, strategic, operational perspectives
+7. Document shortfalls with rationale + remediation plan
 
 ## Quality Gates
 
@@ -231,6 +240,7 @@ This framework succeeds when:
 | Deduplication | Canonicalize duplicate entries; prefer DOIs > archived URLs > direct URLs |
 | Link Validity | All links resolve OR archived alternatives provided |
 
+> **Scaling**: For >30 Q&As or regulated domains, increase floors by 1.5× (round up). Prioritize Quality Gates over higher floors.
 **Per-Topic Minimums**:
 
 - Each topic cluster: ≥2 authoritative sources (Literature/APA) + ≥1 codebase reference
@@ -238,9 +248,17 @@ This framework succeeds when:
 
 **Scaling Guidance**:
 
-- For >30 Q&As: Increase floor counts by 1.5× (round up)
-- For regulated domains (finance, healthcare, government): Increase floor counts by 1.5×
-- **Priority Rule**: If resource-constrained, satisfy Quality Gates > floor counts
+| Context | Floor Count Multiplier | Rationale |
+|---------|------------------------|----------|
+| >30 Q&As | 1.5× (round up) | Maintain citation density |
+| Regulated domains (finance, healthcare, gov) | 1.5× | Higher compliance/audit requirements |
+| Resource-constrained | 0.8× (minimum) | **Priority Rule**: Quality Gates > floor counts |
+
+**Risk Mitigation**:
+
+- **High-Risk**: Inadequate source diversity or outdated citations → fails credibility checks → rework cost
+- **Mitigation**: Execute Step 2 Checkpoint before proceeding; maintain source diversity tracker
+- **High-Value**: Early validation (Express tier on Step 2 completion) → catch structural issues early
 
 ---
 
@@ -266,15 +284,19 @@ flowchart LR
 
 - Use H2 for step headings: `## Step N: [Title]`
 - Use H3 for checkpoints: `### Checkpoint: [Status]`
-- Use code blocks for validation reports
-- After each cluster: Report progress (Cluster N/M complete, X Q&As generated, Y citations, validation
-  status)
+- Use code blocks or tables for validation reports
+- After each cluster: Report progress
+  - Example: `Cluster 3/5 complete | 15/25 Q&As | 23 citations | Validation: Step 2 pending`
 
-**Reasoning Transparency**:
+**Reasoning Transparency & Self-Review**:
 
 - For each step, state assumptions and constraints encountered
-- If unable to meet requirements, document reasoning immediately
-- Flag uncertainties rather than guessing
+- If unable to meet requirements, document reasoning immediately; propose alternative approaches
+- Flag uncertainties rather than guessing; indicate confidence level (High/Medium/Low) for non-obvious decisions
+- After completing each major section (e.g., a topic cluster), perform a self-review:
+  - Does this content distinguish senior from junior practitioners?
+  - Are claims verifiable via provided citations?
+  - Are trade-offs and limitations explicitly stated?
 
 ## Step 1: Topic Planning
 
@@ -282,10 +304,16 @@ flowchart LR
 
 **Actions**:
 
-1. Identify 4-6 topic clusters based on user-provided domain
+1. Identify 4-6 MECE topic clusters based on user-provided domain (see [Coverage (MECE)](#coverage-mece))
 2. Allocate 4-6 Q&As per cluster (total 25-30)
-3. Assign difficulty to achieve 20% Foundational / 40% Intermediate / 40% Advanced
-4. **Feasibility Check**: Verify topic has ≥20 credible sources available; adjust scope if needed
+3. Assign difficulty to achieve 20% Foundational / 40% Intermediate / 40% Advanced distribution
+4. **Feasibility Check**: Verify topic has ≥20 credible sources available (per [Assumptions](#assumptions)); adjust scope if needed
+
+**Consideration of Alternatives**:
+
+- Alternative structure: Difficulty-first clustering (group by complexity rather than topic)
+- Alternative structure: Scenario-based clustering (real-world case studies)
+- Selection criteria: Topic-first clustering preferred for knowledge domain coverage; scenario-based better for role-playing interviews
 
 **Checkpoint**:
 
@@ -297,13 +325,14 @@ flowchart LR
 
 **Objective**: Gather and categorize references meeting quality and diversity requirements.
 
+**Rationale**: Collecting references early ensures citation availability during Q&A generation, but remain flexible—you may need to add sources as specific questions emerge.
+
 **Actions**:
 
 1. Collect ≥10 glossary terms, ≥5 codebases, ≥6 literature sources, ≥12 APA citations
-2. Tag language ([EN]/[ZH]/Other), note publication year, classify source type (1-4)
+2. Tag language ([EN]/[ZH]/Other), note publication year, classify source type (1-4 per Citation Standards)
 3. Assign Reference IDs: G1-Gn (Glossary), C1-Cn (Codebase), L1-Ln (Literature), A1-An (APA)
-4. If unable to meet floor counts: Document reasoning (insufficient sources, monolingual domain, nascent
-   topic)
+4. If unable to meet floor counts: Document reasoning (insufficient sources, monolingual domain, nascent topic) and adjust targets proportionally
 
 **Checkpoint**:
 
@@ -318,19 +347,18 @@ flowchart LR
 
 **Actions**:
 
-1. Per Q&A: Draft question, assign difficulty + type (Theoretical/Practical/Scenario), write 150-300
-   word answer
-2. Per answer: Include ≥1 `[Ref: ID]` after factual claims, metrics, trade-offs, recommendations
-3. Per answer: State concrete Key Insight (misconception / failure path / trade-off)
-4. Prioritize high-impact concepts; omit trivia and edge cases
-5. Frame questions neutrally; avoid presupposing "best" practices
+1. Per Q&A: Draft question, assign difficulty + type (Theoretical/Practical/Scenario), write 150-300 word answer
+2. Per answer: Include ≥1 `[Ref: ID]` after factual claims, metrics, trade-offs, recommendations (see [Inline Citation Placement](#inline-citation-placement))
+3. Per answer: State concrete Key Insight selecting one of: misconception / failure path / trade-off
+4. Prioritize high-impact concepts (>20% practitioner applicability); omit trivia and edge cases (<5% applicability)
+5. Frame questions neutrally; avoid presupposing "best" practices (see [Fairness & Bias Mitigation](#fairness--bias-mitigation))
 
 **Self-Review** (after every 5 Q&As):
 
-- Verify each question is unambiguous and tests reasoning (not trivia)
-- Verify each answer directly addresses the question
-- Verify Key Insight is specific (not generic like "it depends")
-- Verify word count 150-300, ≥1 citation present
+- Question clarity: Unambiguous, tests reasoning not trivia (see [Question Design Criteria](#question-design-criteria))
+- Answer alignment: Directly addresses the question ask
+- Key Insight concreteness: Specific, not generic ("it depends" fails)
+- Quantitative checks: Word count 150-300, ≥1 citation present
 
 **Checkpoint**:
 
@@ -372,22 +400,19 @@ flowchart LR
 
 **Objective**: Execute validation procedures; fix failures before proceeding.
 
-See [Validation Procedures](#validation-procedures) section for complete validation steps.
+**Tier Selection** (see [Validation Tiers](#validation-tiers) for step details):
 
-Select validation tier based on context:
-
-- **Express** (Steps 1,2,6,7): For small Q&A sets (<20) or time-constrained generation
-- **Standard** (add Steps 3,5,8): Recommended for most use cases
-- **Thorough** (all 11 steps): For regulated domains, >30 Q&As, or production use
+- **Express** (Steps 1,2,6,7): Small Q&A sets (<20), time-constrained, draft generation
+- **Standard** (Steps 1,2,3,5,6,7,8): Recommended for most use cases (20-30 Q&As)
+- **Thorough** (all 11 steps): Regulated domains, >30 Q&As, production deployment
 
 **Checkpoint**:
 
 - Selected validation tier executed ✓
 - All checks in tier pass ✓
-- Validation report generated ✓
+- Validation report generated (see [Validation Report Template](#validation-report-template)) ✓
 
-> **MANDATORY**: If ANY validation check fails, stop, fix, regenerate affected sections, and
-> re-validate. Do NOT proceed until all checks pass.
+> **MANDATORY**: If ANY validation check fails, stop, fix, regenerate affected sections, and re-validate. Do NOT proceed until all checks pass.
 
 ## Step 7: Final Review
 
@@ -395,19 +420,20 @@ Select validation tier based on context:
 
 **Actions**:
 
-1. Review against Question Design Criteria (see Output Format section)
-2. Verify output meets Success Criteria (see Overview section)
-3. Perform semantic coherence check: Sample 3 Q&As; verify answer substance aligns with question and
-   stated difficulty
+1. Review against [Question Design Criteria](#question-design-criteria)
+2. Verify output meets [Success Criteria](#success-criteria)
+3. Semantic coherence: Sample 3 Q&As; verify answer substance aligns with question ask and stated difficulty
 4. Fairness check: For contentious topics, verify balanced treatment without vendor bias
 
-**Checkpoint**:
+**Final Checklist**:
 
-- Questions meet Design Criteria (clarity, signal, depth, realism, discriminative power, alignment) ✓
-- Output meets all Success Criteria ✓
-- Semantic coherence verified ✓
-- Fairness verified for contentious topics ✓
-- Output is production-ready ✓
+| Criterion | Check | Reference |
+|-----------|-------|-----------|
+| Question quality | 8/8 design criteria met | [Question Design Criteria](#question-design-criteria) |
+| Success criteria | 6/6 criteria met | [Success Criteria](#success-criteria) |
+| Semantic coherence | 3/3 sampled Q&As aligned | Self-review above |
+| Fairness | Balanced, no vendor bias | [Fairness & Bias Mitigation](#fairness--bias-mitigation) |
+| Production readiness | Minimal editing needed | All checkpoints passed |
 
 ---
 

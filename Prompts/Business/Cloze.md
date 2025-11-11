@@ -1,6 +1,6 @@
 # Cloze / Fill-in-the-Blank — Business Understanding for Software Architecture
 
-Generate cloze assessments mapping business concepts to architectural implications.
+Generate comprehensive cloze assessments mapping business concepts to architectural implications, with rigorous quality standards and evidence-based rationales.
 
 ---
 
@@ -8,89 +8,325 @@ Generate cloze assessments mapping business concepts to architectural implicatio
 
 ## Context & Scope
 
-- **Audience**: Senior/architect/expert technical leaders
-- **Goal**: 24–40 items testing business-to-architecture understanding
-- **Output**: Markdown; items grouped by topic clusters
+### Purpose
+Create assessment instruments for senior technical leaders, solution architects, and expert practitioners to evaluate their ability to translate business requirements into architectural decisions.
+
+### Scope & Constraints
+- **Target Audience**: Senior/architect/expert technical leaders with 5+ years experience
+- **Assessment Goal**: 24–40 items testing business-to-architecture understanding across 5 core topic clusters
+- **Output Format**: Markdown with structured TOC, inline citations, and complete reference sections
+- **Exclusions**: Basic programming concepts, pure technical implementations without business context
+- **Assumptions**: Readers have foundational knowledge of both business strategy and software architecture
 
 ## Structure & Difficulty
 
-- **Format**: Unambiguous blanks (___); acceptance array per item
-- **Difficulty**: 20/40/40 split (Foundational/Intermediate/Advanced)
-- **MECE**: Non-overlapping clusters and items; complete coverage
+### Format Requirements
+- **Blank Format**: Unambiguous blanks using `___` notation; single clear answer per blank
+- **Acceptance Arrays**: Each item includes comprehensive list of acceptable answers (synonyms, abbreviations, variants)
+- **Normalization Rules**: 
+  - Case-insensitive matching
+  - Whitespace trimming (leading/trailing)
+  - Punctuation stripping (periods, commas, hyphens)
+  - Numeric tolerances specified explicitly (e.g., ±5% for percentages)
+
+### Difficulty Distribution (MECE)
+- **Foundational (20%)**: Industry-standard terminology, widely-adopted frameworks (e.g., Business Model Canvas, Conway's Law)
+- **Intermediate (40%)**: Framework application, pattern recognition, multi-component relationships
+- **Advanced (40%)**: Strategic trade-off analysis, context-specific adaptations, emerging practices
+- **MECE Verification**: Non-overlapping difficulty tiers; each item classified to exactly one tier; complete coverage of topic clusters
 
 ## Grading & Normalization
 
-- **Normalization**: Case-insensitive; trim whitespace; strip punctuation; numeric tolerances specified
-- **Grading**: Acceptance lists; borderline answers documented; partial credit defined where applicable
-- **Conflict Handling**: Contested terminology includes valid variants from different schools/regions
+### Answer Validation
+- **Primary Answers**: Canonical terminology from authoritative sources
+- **Acceptable Variants**: Regional differences (US/UK English), historical terminology, common abbreviations
+- **Borderline Cases**: Document with rationale; include if used by ≥2 authoritative sources within 5 years
+- **Partial Credit**: Not applicable for cloze format (binary correct/incorrect)
+
+### Conflict Resolution
+- **Terminology Conflicts**: Include all variants from recognized schools of thought (e.g., "Bounded Context" vs "Context Boundary")
+- **Regional Variations**: Accept both British and American English spellings
+- **Version Differences**: Specify framework version when terminology changed significantly (e.g., "TOGAF 9.2" vs "TOGAF 10")
 
 ## Citation Standards
 
-- **Languages**: ~60% EN, ~30% ZH, ~10% other (tagged: [EN], [ZH])
-- **Source Types**: Business frameworks, architecture patterns, case studies, tools
-- **Format**: APA 7th with language tags
-- **Inline**: [Ref: ID] in rationales; explicit uncertainty flags
+### Source Composition
+- **Language Distribution**: ~60% English (EN), ~30% Chinese (ZH), ~10% other languages
+- **Source Types**: Business frameworks, architecture patterns, case studies, practitioner tools, academic research
+- **Citation Format**: APA 7th edition with language tags [EN], [ZH], [DE], etc.
+- **Inline References**: [Ref: ID] format in rationales; use G# (glossary), T# (tools), L# (literature), A# (APA citations)
+
+### Quality & Credibility
+- **Authoritative Sources**: Peer-reviewed publications, recognized industry frameworks (TOGAF, ArchiMate), established practitioners (Martin Fowler, Eric Evans)
+- **Uncertainty Handling**: Flag uncertain claims with "[Note: Limited sources]" or "[Emerging practice]"
+- **Source Verification**: All links must be accessible or archived (Wayback Machine, archive.org)
 
 ## Reference Minimum Requirements
 
-| Reference Section | Minimum | Examples |
-|---|---|---|
-| Glossary, Terminology & Acronyms | ≥10 | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
-| Business & Architecture Tools | ≥5 | Miro, ArchiMate, C4, Confluence, LucidChart, Wardley Maps |
-| Authoritative Literature & Reports | ≥6 | Business strategy, architecture patterns, organizational design |
-| APA Style Source Citations | ≥12 | Language mix: ~60% EN, ~30% ZH, ~10% other |
+| Reference Section | Minimum Count | Quality Criteria | Examples |
+|---|---|---|---|
+| Glossary, Terminology & Acronyms | ≥10 | Industry-standard definitions; authoritative sources | BMC, Value Proposition, DDD, Conway's Law, Technical Debt |
+| Business & Architecture Tools | ≥5 | Widely-adopted (10K+ users); actively maintained | Miro, ArchiMate, C4, Confluence, LucidChart, Wardley Maps |
+| Authoritative Literature & Reports | ≥6 | Peer-reviewed or practitioner-recognized | Business strategy, architecture patterns, organizational design |
+| APA Style Source Citations | ≥12 | Language mix: ~60% EN, ~30% ZH, ~10% other | Books, journal articles, conference papers, technical reports |
 
 ## Quality Gates
 
-- **Recency**: ≥50% citations ≤3 years old (≥70% for digital transformation/cloud-native)
-- **Diversity**: ≥3 source types; single source ≤25%
-- **Coverage**: ≥70% items have ≥1 citation; ≥30% have ≥2
-- **Mapping**: ≥70% items test business-to-architecture terminology
-- **MECE**: Non-overlapping topics and items; no redundancy
+### Recency Requirements
+- **Standard Topics**: ≥50% of citations published ≤3 years from current date
+- **Rapidly Evolving Topics**: ≥70% recency for digital transformation, cloud-native, AI/ML architecture, microservices patterns
+- **Classic Works**: Foundational texts (e.g., Domain-Driven Design 2003, Design Patterns 1994) exempt from recency requirements
+
+### Source Diversity
+- **Type Diversity**: ≥3 source types (books, journals, practitioner blogs, tools, frameworks)
+- **Single Source Limit**: No single source accounts for >25% of total citations
+- **Geographic Diversity**: Include sources from ≥3 regions (North America, Europe, Asia)
+
+### Coverage & Mapping
+- **Citation Coverage**: ≥70% of items have ≥1 citation; ≥30% have ≥2 citations
+- **Business-Architecture Mapping**: ≥70% of items test explicit business-to-architecture terminology translation
+- **MECE Compliance**: Zero overlap between topic clusters; all major business-architecture domains covered
 
 ## Success Criteria
 
-- **Counts**: 24–40 items; 20/40/40 difficulty; reference minimums met
-- **Quality Gates**: Citations, recency, diversity, coverage satisfied
-- **References**: All [Ref: ID] resolve (G#/T#/L#/A#); links accessible/archived
-- **Items**: Unambiguous blanks; complete acceptance lists
+### Quantitative Metrics
+- **Item Count**: 24–40 items total
+- **Difficulty Distribution**: 20% foundational, 40% intermediate, 40% advanced (±5% tolerance)
+- **Reference Minimums**: All thresholds met (≥10 glossary, ≥5 tools, ≥6 literature, ≥12 APA)
+
+### Qualitative Metrics
+- **Quality Gates**: All gates satisfied (recency, diversity, coverage, mapping, MECE)
+- **Reference Resolution**: All [Ref: ID] references resolve to valid entries (G#/T#/L#/A#)
+- **Link Accessibility**: 100% of external links accessible or archived
+- **Answer Completeness**: Every item has comprehensive acceptance list with ≥1 primary answer and documented variants
+- **Blank Clarity**: Zero ambiguous blanks; each blank has single, verifiable correct answer set
 
 ---
 
 # Part II: Instructions
 
 ## Step 1: Topic Identification & Planning
-1. Select 4–6 clusters: Strategic Modeling, Value & Risk Analysis, Organizational Dynamics, Architectural Translation, Evolution & Adaptation
-2. Allocate 4–8 items per cluster (24–40 total); 20/40/40 difficulty split
-3. Verify MECE: non-overlapping clusters, complete coverage
+
+### Objective
+Define comprehensive, non-overlapping topic clusters that provide complete coverage of business-to-architecture mapping domains.
+
+### Process
+1. **Select Topic Clusters** (4–6 clusters from the following):
+   - **Strategic Modeling**: Business model analysis, value proposition mapping, capability modeling
+   - **Value & Risk Analysis**: Cost-benefit analysis, technical debt assessment, risk mitigation strategies
+   - **Organizational Dynamics**: Team topologies, Conway's Law applications, organizational alignment
+   - **Architectural Translation**: Business requirements to technical decisions, quality attribute mapping
+   - **Evolution & Adaptation**: Digital transformation, legacy modernization, architectural evolution
+
+2. **Allocate Items Per Cluster**:
+   - Total: 24–40 items across all clusters
+   - Per cluster: 4–8 items (adjust based on cluster count)
+   - Distribution example (6 clusters, 30 items): 5+5+5+5+5+5
+   - Distribution example (4 clusters, 32 items): 8+8+8+8
+
+3. **Apply Difficulty Distribution** (per cluster):
+   - Foundational (20%): 1–2 items per cluster
+   - Intermediate (40%): 2–3 items per cluster
+   - Advanced (40%): 2–3 items per cluster
+
+4. **Verify MECE Compliance**:
+   - **Mutually Exclusive**: No item could reasonably belong to multiple clusters
+   - **Collectively Exhaustive**: All major business-architecture mapping domains covered
+   - **Test Method**: Review each item; confirm single cluster assignment; identify coverage gaps
+
+### Success Criteria
+- [ ] 4–6 distinct topic clusters selected
+- [ ] Clear cluster definitions (scope, exclusions, key concepts)
+- [ ] Item allocation plan totaling 24–40 items
+- [ ] Difficulty distribution meets 20/40/40 target (±5%)
+- [ ] MECE verification completed; no overlaps or gaps identified
+
+---
 
 ## Step 2: Reference Collection
-Gather references with language/year/type tags:
-- ≥10 glossary entries
-- ≥5 tools
-- ≥6 literature sources
-- ≥12 APA citations
+
+### Objective
+Gather authoritative, diverse, recent sources that support item rationales and answer validation.
+
+### Process
+1. **Collect Glossary Entries** (≥10):
+   - Focus: Business-architecture terminology, frameworks, patterns, laws
+   - Sources: Industry standards (ISO, IEEE), authoritative frameworks (TOGAF, ArchiMate), seminal works (DDD, Team Topologies)
+   - Format: Term, definition, architectural implications, language tag
+   - Example: "Business Model Canvas (BMC): 9-block template mapping business models to technical requirements [EN]"
+
+2. **Identify Tools** (≥5):
+   - Criteria: Widely adopted (≥10K users), actively maintained, supports business-architecture workflows
+   - Categories: Modeling tools, diagramming platforms, documentation systems, strategic planning tools
+   - Information: Name, purpose, adoption metrics, URL, language tag
+   - Example: "Miro: Visual collaboration for Business Model Canvas; 80M+ users; https://miro.com [EN]"
+
+3. **Gather Literature Sources** (≥6):
+   - Types: Books, journal articles, conference papers, technical reports, case studies
+   - Focus: Business strategy, architecture patterns, organizational design, domain modeling
+   - Recency: ≥50% published within 3 years (≥70% for rapidly evolving topics)
+   - Diversity: ≥3 source types, ≥3 geographic regions
+
+4. **Compile APA Citations** (≥12):
+   - Format: APA 7th edition with language tags
+   - Distribution: ~60% EN, ~30% ZH, ~10% other
+   - Coverage: Support ≥70% of items with ≥1 citation; ≥30% with ≥2 citations
+   - Verification: All DOIs/URLs accessible or archived
+
+### Tagging Requirements
+For each reference, include:
+- **Language Tag**: [EN], [ZH], [DE], etc.
+- **Year**: Publication year (for recency verification)
+- **Type**: Book, Journal, Conference, Tool, Framework, Blog, Report
+
+### Success Criteria
+- [ ] ≥10 glossary entries collected
+- [ ] ≥5 tools identified with adoption metrics and URLs
+- [ ] ≥6 literature sources gathered
+- [ ] ≥12 APA citations compiled
+- [ ] Language distribution: EN 50–70%, ZH 20–40%, Other 5–15%
+- [ ] Recency requirements met (≥50% ≤3 years)
+- [ ] Source diversity achieved (≥3 types, single source ≤25%)
+
+---
 
 ## Step 3: Item Generation
-1. Write unambiguous blanks targeting business–architecture terminology
-2. Build acceptance lists (synonyms, variants)
-3. Add rationales with ≥1 [Ref: ID]
-4. Review every 5 items: ambiguity, acceptance lists, citations
+
+### Objective
+Create clear, unambiguous cloze items that test business-to-architecture terminology mapping.
+
+### Process
+1. **Draft Items** (cluster by cluster):
+   - **Identify Key Concept**: Select specific business-architecture mapping (e.g., "BMC Revenue Streams → multi-tenancy")
+   - **Write Statement**: Craft sentence with single clear blank targeting precise terminology
+   - **Ensure Clarity**: Blank must have unambiguous answer; context sufficient for expert to determine answer
+   - **Example**: "When a company shifts from perpetual licensing to SaaS, the ___ building block changing from upfront to recurring directly drives multi-tenancy requirements."
+
+2. **Build Acceptance Lists**:
+   - **Primary Answer**: Canonical term from authoritative source (e.g., "Revenue Streams")
+   - **Acceptable Variants**: Synonyms, abbreviations, regional spellings (e.g., "Revenue Stream", "Revenue")
+   - **Borderline Cases**: Document with rationale; include if ≥2 authoritative sources use within 5 years
+   - **Excluded Terms**: List common incorrect answers with explanation (optional, for test design reference)
+
+3. **Write Rationales**:
+   - **Structure**: [Concept explanation] + [Architectural implication] + [Reference citations]
+   - **Citations**: Include ≥1 [Ref: ID] per item; use ≥2 for complex/contested concepts
+   - **Evidence**: Link concept to specific architectural decision or pattern
+   - **Example**: "Recurring subscription revenue drives cost optimization [Ref: G12], requiring multi-tenancy for shared infrastructure efficiency [Ref: A7]."
+
+4. **Incremental Review** (every 5 items):
+   - **Ambiguity Check**: Can blank be filled with multiple valid but different answers? If yes, revise.
+   - **Acceptance Completeness**: Are all reasonable variants included? Check against multiple sources.
+   - **Citation Adequacy**: Does every item have ≥1 [Ref: ID]? Are references appropriate?
+   - **Difficulty Verification**: Does item match assigned difficulty tier? Compare with exemplars.
+
+### Quality Checklist (per item)
+- [ ] Blank is unambiguous (single clear answer set)
+- [ ] Context provides sufficient information for expert to determine answer
+- [ ] Acceptance list includes primary answer + documented variants
+- [ ] Rationale includes ≥1 [Ref: ID] citation
+- [ ] Difficulty tier assigned and verified
+- [ ] Item tests business-to-architecture terminology mapping
+
+### Success Criteria
+- [ ] 24–40 items generated across all clusters
+- [ ] All items have complete acceptance lists
+- [ ] All items have rationales with ≥1 citation
+- [ ] Difficulty distribution: 20/40/40 (±5%)
+- [ ] ≥70% of items test business-architecture mapping
+- [ ] Zero ambiguous blanks identified in review
+
+---
 
 ## Step 4: Reference Compilation
-Populate all sections; verify [Ref: ID] resolution
+
+### Objective
+Populate all reference sections with complete, well-formatted entries; verify all inline citations resolve correctly.
+
+### Process
+1. **Populate Glossary Section**:
+   - Format: **ID. Term**: Definition with architectural implications. [Language Tag]
+   - Order: Alphabetical by term or by reference ID (G1, G2, ...)
+   - Completeness: All G# references used in items must have entries
+
+2. **Populate Tools Section**:
+   - Format: **ID. Tool Name**: Purpose/description. Adoption metrics. URL [Language Tag]
+   - Order: By reference ID (T1, T2, ...) or by category
+   - Verification: All URLs accessible; include Wayback Machine links for unstable URLs
+
+3. **Populate Literature Section**:
+   - Format: **ID. Author(s). (Year). *Title*. Publisher.** Key contribution/focus.
+   - Order: By reference ID (L1, L2, ...) or chronological
+   - Completeness: All L# references used in items must have entries
+
+4. **Populate APA Citations Section**:
+   - Format: **ID. [APA 7th format citation]. [Language Tag]**
+   - Order: By reference ID (A1, A2, ...) or alphabetical by author
+   - Verification: All DOIs/URLs checked; archived if unstable
+
+5. **Cross-Reference Verification**:
+   - Extract all [Ref: ID] from item rationales
+   - Confirm each ID exists in appropriate section (G#→Glossary, T#→Tools, L#→Literature, A#→APA)
+   - Fix broken references (add missing entries or correct IDs)
+
+### Success Criteria
+- [ ] All reference sections populated (Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12)
+- [ ] All entries follow specified format
+- [ ] All inline [Ref: ID] citations resolve to valid entries
+- [ ] All URLs accessible or archived
+- [ ] Language tags present on all entries
+
+---
 
 ## Step 5: Self-Review & Validation
-1. **Counts**: Glossary ≥10; Tools ≥5; Literature ≥6; APA ≥12; Items 24–40 (20/40/40)
-2. **Citation coverage**: ≥70% have ≥1; ≥30% have ≥2
-3. **Language mix**: EN 50–70%, ZH 20–40%, Other 5–15%
-4. **Recency**: ≥50% ≤3y (≥70% for digital transformation)
-5. **Source diversity**: ≥3 types; single ≤25%
-6. **Links**: All accessible/archived
-7. **Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-8. **Answer completeness**: Complete acceptance lists
-9. **Blank clarity**: All blanks unambiguous
-10. **Mapping**: ≥70% test business–architecture terminology
+
+### Objective
+Systematically verify all specifications, quality gates, and success criteria are met before delivering output.
+
+### Validation Checklist
+
+#### 1. Quantitative Requirements
+- [ ] **Glossary Count**: ≥10 entries
+- [ ] **Tools Count**: ≥5 entries
+- [ ] **Literature Count**: ≥6 entries
+- [ ] **APA Citations Count**: ≥12 entries
+- [ ] **Item Count**: 24–40 items total
+- [ ] **Difficulty Distribution**: 20% foundational, 40% intermediate, 40% advanced (±5% tolerance)
+
+#### 2. Citation Quality
+- [ ] **Citation Coverage**: ≥70% of items have ≥1 citation; ≥30% have ≥2 citations
+- [ ] **Language Mix**: EN 50–70%, ZH 20–40%, Other 5–15%
+- [ ] **Recency**: ≥50% of citations ≤3 years old (≥70% for digital transformation/cloud-native topics)
+- [ ] **Source Diversity**: ≥3 source types represented; no single source >25% of total
+
+#### 3. Link & Reference Integrity
+- [ ] **Link Accessibility**: All URLs accessible or archived (Wayback Machine, archive.org)
+- [ ] **Cross-Reference Resolution**: All [Ref: ID] resolve to valid entries (G#/T#/L#/A#)
+- [ ] **Reference Completeness**: No orphaned references (entries without inline usage) or missing references (inline citations without entries)
+
+#### 4. Item Quality
+- [ ] **Answer Completeness**: Every item has comprehensive acceptance list (primary + variants)
+- [ ] **Blank Clarity**: Zero ambiguous blanks; each blank has single verifiable answer set
+- [ ] **Rationale Quality**: All rationales explain business-architecture connection + include ≥1 citation
+
+#### 5. Coverage & Mapping
+- [ ] **Business-Architecture Mapping**: ≥70% of items test explicit business-to-architecture terminology translation
+- [ ] **MECE Compliance**: Zero overlap between topic clusters; all major domains covered
+- [ ] **Topic Distribution**: Items distributed across 4–6 clusters; each cluster has 4–8 items
+
+### Error Correction Process
+For each failed check:
+1. **Identify Root Cause**: Missing content, incorrect calculation, format error, or logic flaw?
+2. **Plan Correction**: Add missing items, revise content, or restructure sections?
+3. **Implement Fix**: Make targeted corrections
+4. **Re-Validate**: Re-run affected checklist items
+5. **Document**: Note corrections made (for learning/improvement)
+
+### Success Criteria
+- [ ] All 5 validation categories pass (100% of checklist items satisfied)
+- [ ] All quality gates met (recency, diversity, coverage, mapping, MECE)
+- [ ] Zero unresolved errors or warnings
+- [ ] Output ready for delivery
 
 ---
 
@@ -109,12 +345,17 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
 - [Topic 3: Organizational Dynamics](#topic-3-organizational-dynamics)
 - [Topic 4: Architectural Translation](#topic-4-architectural-translation)
 - [Topic 5: Evolution & Adaptation](#topic-5-evolution--adaptation)
+- [Topic 6: [Custom Topic]](#topic-6-custom-topic) *(if applicable)*
 
 ### [Reference Sections](#reference-sections)
 - [Glossary, Terminology & Acronyms](#glossary-terminology--acronyms)
 - [Business & Architecture Tools](#business--architecture-tools)
 - [Authoritative Literature & Case Studies](#authoritative-literature--case-studies)
 - [APA Style Source Citations](#apa-style-source-citations)
+
+### [Validation Summary](#validation-summary)
+- [Quantitative Metrics](#quantitative-metrics)
+- [Quality Gates](#quality-gates-verification)
 
 ---
 
@@ -152,89 +393,161 @@ Start the output with a TOC (e.g., '## Contents') linking to all top-level headi
 
 ### Glossary, Terminology & Acronyms
 
-**G1. Business Model Canvas (BMC)**: 9-block template (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure) mapping business models to technical requirements. [EN]
+**G1. [Term/Acronym]**: [Definition with architectural implications]. [Language Tag]
 
-**G2. Value Proposition**: Product/service bundle creating customer value. Maps to technical features and quality attributes (performance, reliability, usability). [EN]
+**G2. [Next term]**: [Definition]. [Language Tag]
 
-**G3. Domain-Driven Design (DDD)**: Complex domain modeling via technical-domain expert collaboration. Defines microservices boundaries and team organization. [EN]
+*[Continue for all ≥10 glossary entries]*
 
-**G4. Conway's Law**: "Organizations design systems mirroring their communication structure." Guides team topology and architecture alignment. [EN]
-
-**G5. Technical Debt**: Rework cost from choosing quick solutions over sustainable approaches. Prioritizes refactoring and risk assessment. [EN]
-
-**G6. Architecture Decision Records (ADR)**: Lightweight documentation capturing architectural decisions, context, consequences, trade-offs. Ensures decision transparency and knowledge preservation. [EN]
-
-**G7. Bounded Context**: DDD pattern defining explicit domain model boundaries. Enables microservices decomposition and team autonomy. [EN]
-
-**G8. Capability Mapping**: Identifying implementation-independent business capabilities. Supports strategic planning, gap analysis, transformation roadmaps. [EN]
-
-**G9. Living Documentation**: Self-updating documentation via automation. Facilitates knowledge sharing and architectural understanding. [EN]
-
-**G10. Wardley Mapping**: Strategic planning via component visualization by visibility and evolution. Supports strategic decisions and change anticipation. [EN]
-
-**G11. Customer Segment**: Distinct enterprise target groups. Maps to system design (interfaces, workflows, data models). [EN]
-
-**G12. Revenue Stream**: Income generation methods (subscription, usage-based, freemium). Impacts metering, billing, multi-tenancy. [EN]
-
-**G13. Value Stream Mapping**: Lean technique visualizing value delivery steps, identifying waste and bottlenecks. Optimizes processes and reduces lead time. [EN]
-
-**G14. System Boundaries**: Explicit scope definition (inside vs. outside). Determines interfaces and integration points for context diagrams. [EN]
-
-**G15. Process Mapping**: Visual workflow documentation (activities, decision points, information flows). Supports optimization and automation. [EN]
+---
 
 ### Business & Architecture Tools
 
-**T1. Miro**: Visual collaboration for Business Model Canvas and architecture diagrams. Freemium–Enterprise. 80M+ users. https://miro.com [EN]
+**T1. [Tool Name]**: [Purpose/description]. [Adoption metrics]. [URL] [Language Tag]
 
-**T2. ArchiMate**: Enterprise architecture modeling (business, application, technology layers). ISO/IEC/IEEE 42010 compliant. https://www.opengroup.org/archimate-forum [EN]
+**T2. [Next tool]**: [Details]. [URL] [Language Tag]
 
-**T3. C4 Model**: Hierarchical architecture diagrams (Context, Container, Component, Code). Free, tool-agnostic. https://c4model.com [EN]
+*[Continue for all ≥5 tools]*
 
-**T4. Confluence**: Documentation platform for ADRs and living documentation. Free–Enterprise. 75K+ companies. https://www.atlassian.com/software/confluence [EN]
-
-**T5. LucidChart**: Cloud diagramming for process maps and architecture. Individual–Enterprise. 60M+ users. https://www.lucidchart.com [EN]
+---
 
 ### Authoritative Literature & Case Studies
 
-**L1. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.** BMC framework; business–technical alignment.
+**L1. [Author(s)]. ([Year]). *[Title]*. [Publisher].** [Key contribution/focus area].
 
-**L2. Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley.** DDD patterns; domain modeling.
+**L2. [Next reference]**: [Details].
 
-**L3. Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley.** Practical DDD; context mapping.
+*[Continue for all ≥6 literature sources]*
 
-**L4. Conway, M. E. (1968). "How Do Committees Invent?" *Datamation*, 14(4), 28–31.** Conway's Law; organizational impact.
-
-**L5. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution Press.** Team organization patterns.
-
-**L6. Richardson, C. (2018). *Microservices Patterns*. Manning.** Microservices decomposition and patterns.
+---
 
 ### APA Style Source Citations
 
-**A1. Osterwalder, A., & Pigneur, Y. (2010). *Business model generation: A handbook for visionaries, game changers, and challengers*. Wiley. [EN]**
+**A1. [Author(s)]. ([Year]). *[Title]*. [Publisher/Journal]. [DOI/URL] [Language Tag]**
 
-**A2. Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley Professional. [EN]**
+**A2. [Next citation]. [Language Tag]**
 
-**A3. 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]**
+*[Continue for all ≥12 APA citations]*
 
-**A4. Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley Professional. [EN]**
+---
 
-**A5. Conway, M. E. (1968). How do committees invent? *Datamation*, 14(4), 28–31. [EN]**
+## Validation Summary
 
-**A6. Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN]**
+### Quantitative Metrics
 
-**A7. Richardson, C. (2018). *Microservices patterns: With examples in Java*. Manning Publications. [EN]**
+| Metric | Target | Actual | Status |
+|---|---|---|---|
+| Total Items | 24–40 | [N] | ✅/❌ |
+| Foundational (20%) | [N items] | [N] | ✅/❌ |
+| Intermediate (40%) | [N items] | [N] | ✅/❌ |
+| Advanced (40%) | [N items] | [N] | ✅/❌ |
+| Glossary Entries | ≥10 | [N] | ✅/❌ |
+| Tools | ≥5 | [N] | ✅/❌ |
+| Literature Sources | ≥6 | [N] | ✅/❌ |
+| APA Citations | ≥12 | [N] | ✅/❌ |
 
-**A8. Hohpe, G., & Woolf, B. (2003). *Enterprise integration patterns*. Addison-Wesley Professional. [EN]**
+### Quality Gates Verification
 
-**A9. 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]**
+| Quality Gate | Target | Actual | Status |
+|---|---|---|---|
+| Citation Coverage (≥1) | ≥70% | [%] | ✅/❌ |
+| Citation Coverage (≥2) | ≥30% | [%] | ✅/❌ |
+| Language Mix (EN) | 50–70% | [%] | ✅/❌ |
+| Language Mix (ZH) | 20–40% | [%] | ✅/❌ |
+| Language Mix (Other) | 5–15% | [%] | ✅/❌ |
+| Recency (≤3 years) | ≥50% | [%] | ✅/❌ |
+| Source Diversity | ≥3 types | [N types] | ✅/❌ |
+| Single Source Limit | ≤25% | [%] | ✅/❌ |
+| Business-Arch Mapping | ≥70% | [%] | ✅/❌ |
+| Link Accessibility | 100% | [%] | ✅/❌ |
+| Reference Resolution | 100% | [%] | ✅/❌ |
+| MECE Compliance | Pass | Pass/Fail | ✅/❌ |
 
-**A10. Fowler, M. (2002). *Patterns of enterprise application architecture*. Addison-Wesley Professional. [EN]**
+**Notes:**
+- [Any deviations from targets with rationale]
+- [Borderline cases or judgment calls made]
+- [Recommendations for future iterations]
 
-**A11. Newman, S. (2021). *Building microservices* (2nd ed.). O'Reilly Media. [EN]**
+---
 
-**A12. 肖然. (2020). *企业级业务架构设计*. 机械工业出版社. [ZH]**
+## Example Items (For Reference)
 
-**A13. Brown, S. (2018). *Software architecture for developers* (Vol. 2). Leanpub. [EN]**
+### Example 1: Foundational Difficulty
+
+#### Item: The ___ framework uses 9 building blocks to map business models to technical requirements.
+
+**Difficulty:** Foundational
+
+**Acceptable Answers:**
+- Business Model Canvas
+- BMC
+- Business Model Canvas (BMC)
+- Osterwalder Business Model Canvas
+
+**Rationale:** Business Model Canvas [Ref: G1] provides structured analysis of business model changes and their architectural implications through 9 core building blocks (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure) [Ref: A1]. This framework enables architects to systematically trace business decisions to technical requirements.
+
+---
+
+### Example 2: Intermediate Difficulty
+
+#### Item: When a company shifts from perpetual licensing to SaaS, the ___ building block changing from upfront to recurring directly drives multi-tenancy architecture requirements.
+
+**Difficulty:** Intermediate
+
+**Acceptable Answers:**
+- Revenue Streams
+- Revenue Stream
+- Revenue
+- Revenue model
+
+**Rationale:** The Revenue Streams building block [Ref: G12] defines how a company generates income. Shifting from upfront perpetual fees to recurring subscription revenue creates cost pressure to maximize infrastructure efficiency [Ref: G1]. This economic constraint drives the architectural decision to implement multi-tenancy, allowing multiple customers to share underlying infrastructure while maintaining data isolation [Ref: A7]. The business model change thus directly mandates specific architectural patterns.
+
+---
+
+### Example 3: Advanced Difficulty
+
+#### Item: According to Conway's Law, when an organization restructures from functional silos to cross-functional product teams, the resulting architecture tends to shift from ___ to microservices.
+
+**Difficulty:** Advanced
+
+**Acceptable Answers:**
+- monolithic architecture
+- monolith
+- monolithic system
+- layered monolith
+- modular monolith
+
+**Rationale:** Conway's Law [Ref: G4] states that "organizations design systems that mirror their communication structures" [Ref: A5]. Functional silos (e.g., separate UI, business logic, database teams) naturally produce layered monolithic architectures where each team owns a horizontal layer [Ref: L4]. Cross-functional product teams, where each team owns a complete vertical slice of functionality, align with microservices architecture where each service represents an independent product capability [Ref: A6]. This demonstrates how organizational restructuring predictably drives architectural evolution, requiring architects to anticipate and plan for such transitions [Ref: L5].
+
+**Note:** "Modular monolith" is accepted as a transitional architecture that often emerges during this organizational shift, though pure microservices is the canonical answer.
+
+---
+
+## Best Practices
+
+### Item Writing
+1. **Precision**: Use exact terminology from authoritative sources; avoid ambiguous synonyms in the statement itself
+2. **Context Sufficiency**: Provide enough context for experts to determine answer without guessing; avoid trick questions
+3. **Single Focus**: Each blank tests one specific concept; avoid compound blanks requiring multiple related answers
+4. **Natural Language**: Write items as complete, grammatically correct sentences; blanks should integrate smoothly
+
+### Acceptance Lists
+1. **Comprehensiveness**: Include all variants found in ≥2 authoritative sources from past 5 years
+2. **Documentation**: Note why borderline terms are included/excluded (for test maintenance)
+3. **User Testing**: Consider how diverse expert populations might phrase the answer (regional, generational, domain differences)
+
+### Rationale Quality
+1. **Explanation Depth**: Sufficient for learners to understand the concept, not just verify the answer
+2. **Architectural Link**: Explicitly state the business-to-architecture connection
+3. **Evidence**: Cite specific sources; avoid unsupported assertions
+4. **Clarity**: Write for international audience; define jargon on first use
+
+### Reference Management
+1. **ID Consistency**: Use consistent ID schemes (G1-G15, T1-T10, L1-L10, A1-A20)
+2. **Alphabetization**: Consider alphabetical ordering within sections for easy lookup
+3. **Maintenance**: Include publication dates and last-accessed dates for URLs (future-proofing)
+4. **Archiving**: Proactively archive web-only sources using Wayback Machine
+```13. Brown, S. (2018). *Software architecture for developers* (Vol. 2). Leanpub. [EN]**
 
 **A14. Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley Professional. [EN]**
 
