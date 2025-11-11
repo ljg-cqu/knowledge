@@ -1,15 +1,5 @@
 # Case Study Generator - Product Manager
 
-<!--
-OPTIMIZATION NOTES:
-Applied 21 LLM-friendly guidelines from Guidelines_for_LLM-Friendly_Prompts.md:
-- Foundation (1-4): Added explicit context, constraints, precise terminology, removed tangents
-- Scope (5-8): MECE structure, comprehensive coverage, multiple perspectives, detailed templates
-- Quality (9-15): Prioritized significance, removed redundancy, verified accuracy, added risk/value analysis
-- Format (16-17): Structured with TOC/anchors, tables, templates, examples
-- Validation (18-21): Evidence flags, self-review checklists, actionable steps, measurable success criteria
--->
-
 Generate product case study assessments with multi-dimensional evaluation, structured reasoning, and evidence-based decision-making for senior/director/VP Product Managers.
 
 ---
@@ -41,7 +31,6 @@ Generate product case study assessments with multi-dimensional evaluation, struc
   - [Reference Sections Template](#reference-sections-template)
   - [Validation Report Template](#validation-report-template)
   - [Example Scenario](#example-scenario)
-- [Appendix: Guideline Compliance Matrix](#appendix-guideline-compliance-matrix)
 
 ---
 
@@ -49,24 +38,11 @@ Generate product case study assessments with multi-dimensional evaluation, struc
 
 ## Purpose and Scope
 
-**Purpose:** Generate realistic, judgment-based product management case scenarios that assess strategic thinking, prioritization, stakeholder management, and decision-making under constraints.
+Generate realistic, judgment-based product management scenarios assessing strategic thinking, prioritization, stakeholder management, and decision-making under constraints for senior/director/VP PM candidates.
 
-**Target Audience:** LLMs generating assessments for senior/director/VP Product Manager candidates.
+**In Scope:** Product strategy, discovery/validation, prioritization/roadmapping, metrics/growth, stakeholder alignment, GTM planning.
 
-**In Scope:**
-- Product strategy and vision alignment
-- Discovery, validation, and user research
-- Prioritization frameworks and roadmapping
-- Metrics, growth, and experimentation
-- Stakeholder communication and alignment
-- Go-to-market planning
-
-**Out of Scope (Non-goals):**
-- Implementation/engineering details
-- Design execution (visual/UX specifications)
-- Sales tactics or marketing campaigns
-- Financial modeling beyond basic business metrics
-- Organizational restructuring
+**Out of Scope:** Implementation details, design execution, sales tactics, complex financial modeling, organizational restructuring.
 
 ---
 
@@ -83,346 +59,185 @@ Generate product case study assessments with multi-dimensional evaluation, struc
 
 ## Goals and Success Metrics
 
-**Primary Goals:**
-1. Generate 16-22 scenarios with 20% Foundational / 40% Intermediate / 40% Advanced distribution
-2. Ensure ≥70% scenarios cite evidence; ≥30% cite multiple sources
-3. Test product judgment (strategy, trade-offs) over framework recall
+Generate 16-22 scenarios (20% Foundational / 40% Intermediate / 40% Advanced) testing product judgment over framework recall.
 
-**Success Metrics:**
-
-| Metric | Target | Measurement |
-|--------|--------|-------------|
-| Scenario count | 16-22 | Count in final bank |
-| Difficulty distribution | 20/40/40% (F/I/A) | Manual classification |
-| Citation coverage | ≥70% with ≥1; ≥30% with ≥2 | Automated [Ref: ID] count |
-| Language diversity | 60% EN / 30% ZH / 10% other | Citation tag analysis |
-| Recency | ≥50% last 3yr (≥70% AI/platform) | Publication year check |
-| Judgment focus | ≥80% require trade-off analysis | Manual review of tasks |
-| Context length | All 200-400 words | Automated word count |
-| MECE task coverage | 100% non-overlapping | Manual review |
+| Metric | Target |
+|--------|--------|
+| Scenario count | 16-22 |
+| Difficulty | 20/40/40% (F/I/A) |
+| Citations | ≥70% with ≥1; ≥30% with ≥2 |
+| Languages | 60% EN / 30% ZH / 10% other |
+| Recency | ≥50% last 3yr (≥70% AI/platform) |
+| Judgment focus | ≥80% require trade-offs |
+| Context length | 200-400 words |
+| MECE tasks | 100% non-overlapping |
 
 ---
 
 ## Assumptions and Constraints
 
-**Assumptions:**
-- Candidates have 3-7 years PM experience
-- Candidates understand common frameworks (RICE, JTBD, AARRR, OKR)
-- Access to internet for research tools and literature [Evidence: URLs must be accessible]
-- Responses evaluated by experienced PM leaders or calibrated graders
+**Assumptions:** Candidates have 3-7 years PM experience; understand frameworks (RICE, JTBD, AARRR, OKR); evaluated by experienced PM leaders.
 
-**Constraints:**
-- **Time:** Each scenario designed for 45-60 min completion
-- **Context length:** 200-400 words per scenario (for LLM context window efficiency)
-- **Deliverable length:** ≤300 words for memos/briefs
-- **Citation access:** All sources must have accessible URLs or DOIs
-- **Language:** Primarily English with Chinese and other language support for frameworks
-- **Data:** Scenarios must use realistic (but synthetic) metrics
+**Constraints:** 45-60 min/scenario; 200-400 word context; ≤300 word deliverables; accessible URLs/DOIs required; realistic synthetic metrics.
 
-**Risk Flags:**
-- [Assumption] Market data may be approximated if exact figures unavailable
-- [Risk] Outdated tools (>18 months) reduce practical relevance
-- [Risk] Single-source bias if >25% references from one author/org
+**Risk Flags:** Market data may be approximated; outdated tools (>18mo) reduce relevance; >25% single-source creates bias.
 
 ---
 
 ## Scenario Structure Requirements
 
-**Each scenario must include:**
+Each scenario must include:
 
-1. **Difficulty Level:** Foundational | Intermediate | Advanced
+1. **Difficulty:** Foundational | Intermediate | Advanced
 2. **Domain:** Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM
-3. **Context (200-400 words):**
-   - Market landscape and competitive dynamics
-   - User segments and behavioral data
-   - Business metrics (ARR, retention, activation, churn)
-   - Stakeholder positions and constraints
-   - Resource limitations (time, budget, team capacity)
-   - ≥1 citation for frameworks, data, or metrics [Ref: ID]
-4. **Tasks (3-4 MECE tasks):**
-   - Each with clear objective and expected output
-   - Point allocation (total 20-30 pts/scenario)
-   - Explicit evaluation criteria
-5. **Grading Rubric:**
-   - Partial-credit breakdown per task
-   - Common gaps documentation
-   - Exemplary approaches with bonus opportunities
-6. **Trade-Offs:**
-   - Must include ≥1 of: User value vs revenue | Short-term vs long-term | Build vs buy vs partner | Feature breadth vs depth | Acquisition vs retention
+3. **Context (200-400 words):** Market landscape, user segments, business metrics, stakeholder positions, constraints, ≥1 citation [Ref: ID]
+4. **Tasks (3-4 MECE):** Clear objectives, expected outputs, point allocation (20-30 pts total), evaluation criteria
+5. **Grading Rubric:** Partial-credit breakdown, common gaps, bonus opportunities
+6. **Trade-Offs (≥1):** User value vs revenue | Short vs long-term | Build vs buy vs partner | Breadth vs depth | Acquisition vs retention
 
 ---
 
 ## Citation and Evidence Standards
 
-**Citation Format:** APA 7th edition with language tags [EN], [ZH], [JP], [ES], etc.
+**Format:** APA 7th with language tags [EN], [ZH], [JP], [ES]. Inline: [Ref: ID].
 
-**Inline Citation:** [Ref: ID] after frameworks, metrics, market data, or research claims
+**Evidence Flags:**
+- `[Evidence: source]` - Verifiable claim
+- `[Assumption: rationale]` - Unverified assumption
+- `[Open Question: validation need]` - Requires research
 
-**Evidence Flags (required when applicable):**
-- `[Evidence: <source>]` - Cited, verifiable claim
-- `[Assumption: <rationale>]` - Reasonable but unverified assumption
-- `[Open Question: <what to validate>]` - Uncertainty requiring research
-
-**Source Types Required:**
-1. **Frameworks:** RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, OST
-2. **Research:** Market analyses, user research studies, competitive intelligence
-3. **Literature:** Books (Cagan, Olsen, Torres, Perri, Patton, Klement), case studies, launches
-4. **Tools:** Analytics (Mixpanel, Amplitude), roadmapping (ProductBoard), research (Dovetail)
+**Source Types:** Frameworks (RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST), research (market/user/competitive), literature (Cagan, Olsen, Torres, Perri, Patton, Klement), tools (Mixpanel, Amplitude, ProductBoard, Dovetail).
 
 ---
 
 ## Reference Requirements
 
-### Minimum Thresholds
-
-| Section | Minimum | Content Examples |
-|---------|---------|------------------|
+| Section | Minimum | Examples |
+|---------|---------|----------|
 | **Glossary** | ≥10 | RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST, Feature Factory, Continuous Discovery |
-| **Tools** | ≥5 | Mixpanel, Amplitude, ProductBoard, Aha!, Dovetail, UserTesting, Miro |
-| **Literature** | ≥6 | Cagan (Inspired), Olsen (Lean Product Playbook), Torres (Continuous Discovery), Perri (Escaping Build Trap), 俞军, 梁宁 |
+| **Tools** | ≥5 | Mixpanel, Amplitude, ProductBoard, Aha!, Dovetail (with pricing, users, update date, integrations) |
+| **Literature** | ≥6 | Cagan, Olsen, Torres, Perri, Patton, Klement, 俞军, 梁宁 |
 | **APA Citations** | ≥12 | ~60% EN / ~30% ZH / ~10% other |
 
-**Exception Handling:** If minimums unmet, document:
-- Actual count vs target
-- Rationale for shortfall
-- Sourcing plan and timeline
-
-**Tool Detail Requirements:**
-- Pricing tier range (Freemium, Starter, Enterprise)
-- User base estimate or notable customers
-- Last major update (≤18 months preferred)
-- Key integrations (APIs, platforms)
+**If minimums unmet:** Document actual vs target, rationale, sourcing plan.
 
 ---
 
 ## Quality Gates
 
-**All must pass before submission:**
+All must pass before submission:
 
-| Gate | Requirement | Rationale |
-|------|-------------|-----------|
-| **Recency** | ≥50% from last 3yr (≥70% for AI/platform topics) | Ensures current best practices |
-| **Diversity** | ≥3 source types; max 25% from single author/org | Reduces bias, broadens perspectives |
-| **Evidence** | ≥70% scenarios with ≥1 citation; ≥30% with ≥2 | Grounds scenarios in reality |
-| **Links** | All URLs accessible or archived (DOIs preferred) | Enables verification |
-| **Cross-refs** | All [Ref: ID] resolve to citations | Maintains referential integrity |
-| **MECE** | Tasks within each scenario non-overlapping, complete | Ensures fair evaluation |
-| **Judgment** | ≥80% scenarios test trade-offs vs recall | Assesses PM competency |
+| Gate | Requirement |
+|------|-------------|
+| **Recency** | ≥50% last 3yr (≥70% AI/platform) |
+| **Diversity** | ≥3 types; max 25% single source |
+| **Evidence** | ≥70% with ≥1 citation; ≥30% with ≥2 |
+| **Links** | All URLs accessible/archived |
+| **Cross-refs** | All [Ref: ID] resolve |
+| **MECE** | Tasks non-overlapping, complete |
+| **Judgment** | ≥80% test trade-offs vs recall |
 
-> **Scaling Rule:** For >25 scenarios, increase floors by 1.5×. Always prioritize quality gates over quantity floors.
+**Scaling:** For >25 scenarios, increase floors by 1.5×.
 
 ---
 
 ## Pre-Submission Validation
 
-**Execute all 11 checks sequentially. Fix failures immediately before proceeding.**
+Execute all 11 checks sequentially. Fix failures before proceeding.
 
-| # | Check | Requirement | Pass Criteria |
-|---|-------|-------------|---------------|
-| 1 | **Counts** | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Scenarios 16-22 | All thresholds met |
-| 2 | **Citations** | ≥70% scenarios with ≥1; ≥30% with ≥2 | Automated count PASS |
-| 3 | **Language** | EN 50-70%, ZH 20-40%, Other 5-15% | Distribution within range |
-| 4 | **Recency** | ≥50% last 3yr (≥70% AI/platform) | Year check PASS |
-| 5 | **Diversity** | ≥3 types; max 25% single source | Source analysis PASS |
-| 6 | **Links** | All accessible or archived | Manual spot-check PASS |
-| 7 | **Cross-refs** | All [Ref: ID] resolve | Automated validation PASS |
-| 8 | **Context** | Sample 5: all 200-400 words | Word count PASS |
-| 9 | **MECE** | All tasks non-overlapping, complete | Manual review PASS |
-| 10 | **Rubrics** | All have grading + points | Completeness check PASS |
-| 11 | **Judgment** | ≥80% test judgment vs recall | Manual classification PASS |
+| # | Check | Requirement |
+|---|-------|-------------|
+| 1 | **Counts** | G≥10, T≥5, L≥6, A≥12, S:16-22 |
+| 2 | **Citations** | ≥70% with ≥1; ≥30% with ≥2 |
+| 3 | **Language** | EN 50-70%, ZH 20-40%, Other 5-15% |
+| 4 | **Recency** | ≥50% last 3yr (≥70% AI/platform) |
+| 5 | **Diversity** | ≥3 types; max 25% single source |
+| 6 | **Links** | All accessible/archived |
+| 7 | **Cross-refs** | All [Ref: ID] resolve |
+| 8 | **Context** | Sample 5: all 200-400 words |
+| 9 | **MECE** | Tasks non-overlapping, complete |
+| 10 | **Rubrics** | All have grading + points |
+| 11 | **Judgment** | ≥80% test judgment vs recall |
 
 ---
 
 ## Submission Checklist
 
-**Before final submission, verify:**
-
-- [ ] All 11 validation checks show PASS
-- [ ] Reference floors met (Glossary ≥10, Tools ≥5, Literature ≥6, Citations ≥12)
-- [ ] Quality gates satisfied (recency, diversity, evidence, links)
-- [ ] Difficulty distribution: 20% Foundational / 40% Intermediate / 40% Advanced
-- [ ] Language distribution: ~60% EN / ~30% ZH / ~10% other
-- [ ] All [Ref: ID] citations resolve
-- [ ] Context lengths 200-400 words
-- [ ] Grading rubrics complete with partial credit
-- [ ] Trade-offs explicitly stated in ≥80% scenarios
-- [ ] TOC with working anchor links
-- [ ] Validation report table completed
+- [ ] All 11 validation checks PASS
+- [ ] Reference floors met (G≥10, T≥5, L≥6, A≥12)
+- [ ] Quality gates satisfied
+- [ ] Difficulty: 20/40/40% (F/I/A)
+- [ ] Languages: ~60/30/10% (EN/ZH/Other)
+- [ ] All [Ref: ID] resolve
+- [ ] Context: 200-400 words
+- [ ] Rubrics complete
+- [ ] Trade-offs in ≥80%
+- [ ] TOC with anchor links
+- [ ] Validation report complete
 
 ---
 
 # Part II: Instructions
 
-**Execute steps sequentially. Verify completion criteria before advancing.**
+Execute steps sequentially. Verify completion criteria before advancing.
 
 ## Step 1: Topic Planning
 
-**Objective:** Define balanced scenario distribution across PM domains.
+Define balanced scenario distribution: Select 4-6 domains (Strategy, Discovery, Prioritization, Metrics, Stakeholder, GTM), allocate 3-4 scenarios per domain (16-22 total), assign difficulty (20/40/40% F/I/A), map trade-off types.
 
-**Actions:**
-1. Select 4-6 clusters from: Product Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | GTM
-2. Allocate 3-4 scenarios per cluster (total: 16-22)
-3. Assign difficulty levels: 20% Foundational / 40% Intermediate / 40% Advanced
-4. Map trade-off types to scenarios (user value vs revenue, short-term vs long-term, build vs buy vs partner, breadth vs depth, acquisition vs retention)
-
-**Verification:**
-- Total count: 16-22 ✓
-- Difficulty ratio: 20/40/40% ✓
-- Each cluster has ≥3 scenarios ✓
-- Trade-offs distributed across scenarios ✓
-
-**Example Allocation:**
-
-| Cluster | Foundational | Intermediate | Advanced | Total |
-|---------|--------------|--------------|----------|-------|
-| Product Strategy | 1 | 2 | 1 | 4 |
-| Discovery & Validation | 0 | 1 | 2 | 3 |
-| Prioritization & Roadmapping | 1 | 1 | 1 | 3 |
-| Metrics & Growth | 0 | 2 | 2 | 4 |
-| Stakeholder Management | 1 | 1 | 1 | 3 |
-| GTM | 1 | 1 | 1 | 3 |
-| **Total** | **4 (20%)** | **8 (40%)** | **8 (40%)** | **20** |
+**Verify:** Count 16-22 ✓ | Difficulty 20/40/40% ✓ | ≥3 per cluster ✓ | Trade-offs distributed ✓
 
 ---
 
 ## Step 2: Reference Collection
 
-**Objective:** Build diverse, credible reference base meeting quality gates.
+Build diverse reference base: Glossary ≥10 (RICE, AARRR, JTBD, North Star, PMF, OKR, PLG, OST), Tools ≥5 (Mixpanel, Amplitude, ProductBoard, Dovetail with pricing/users/updates/integrations), Literature ≥6 (Cagan, Olsen, Torres, Perri, 俞军, 梁宁), APA ≥12 (stable IDs, language tags).
 
-**Actions:**
-1. **Glossary (≥10):** Define PM frameworks with use cases and related concepts
-   - Examples: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
-2. **Tools (≥5):** List with pricing, users, updates, integrations
-   - Analytics: Mixpanel, Amplitude
-   - Roadmapping: ProductBoard, Aha!
-   - Research: Dovetail, UserTesting
-   - Collaboration: Miro, FigJam
-3. **Literature (≥6):** Include EN + ZH + other; mix books + articles + case studies
-   - EN: Cagan, Olsen, Torres, Perri, Patton, Klement
-   - ZH: 俞军, 梁宁, 苏杰
-4. **APA Citations (≥12):** Assign stable IDs (G#, T#, L#, A#); tag language, year, type
-
-**Verification:**
-- Counts met: G≥10, T≥5, L≥6, A≥12 ✓
-- Language: 60/30/10% EN/ZH/Other ✓
-- Recency: ≥50% last 3yr ✓
-- Diversity: ≥3 source types, max 25% single source ✓
-- URLs accessible or archived ✓
+**Verify:** Counts G≥10, T≥5, L≥6, A≥12 ✓ | Languages 60/30/10% ✓ | Recency ≥50% last 3yr ✓ | Diversity ≥3 types, max 25% single ✓ | URLs accessible ✓
 
 ---
 
 ## Step 3: Scenario Generation
 
-**Objective:** Write realistic scenarios with embedded citations and MECE tasks.
+Write context (200-400 words): market landscape, user segments, business metrics, stakeholder positions, constraints, ≥1 [Ref: ID].
 
-**Actions:**
-1. **Write Context (200-400 words):**
-   - Market landscape and competitive position
-   - User segments with behavioral/attitudinal data
-   - Business metrics (ARR, MRR, churn, activation, retention, NPS)
-   - Stakeholder positions and constraints
-   - Resource limitations (time, team, budget)
-   - Add ≥1 [Ref: ID] for frameworks, data, metrics
+Design 3-4 MECE tasks: (1) Problem diagnosis + framework (6-10 pts), (2) Option evaluation + prioritization (8-12 pts), (3) Stakeholder communication (4-8 pts), (4) Validation plan (4-8 pts optional).
 
-2. **Design 3-4 MECE Tasks:**
-   - Task 1: Problem diagnosis + framework application (6-10 pts)
-   - Task 2: Option evaluation + prioritization (8-12 pts)
-   - Task 3: Stakeholder communication (4-8 pts)
-   - Task 4 (optional): Validation/experimentation plan (4-8 pts)
+Create rubrics: expected elements, partial credit, common gaps, bonus approaches.
 
-3. **Create Grading Rubrics:**
-   - Expected elements per task
-   - Point breakdown with partial credit
-   - Common gaps and pitfalls
-   - Exemplary approaches with bonus points
-
-**Verification (every 3 scenarios):**
-- Context length: 200-400 words ✓
-- Citations: ≥1 [Ref: ID] present ✓
-- Tasks: 3-4 MECE, non-overlapping ✓
-- Rubrics: Complete with points ✓
-- Trade-offs: At least one explicit trade-off ✓
+**Verify (every 3):** Context 200-400 words ✓ | ≥1 citation ✓ | 3-4 MECE tasks ✓ | Rubrics complete ✓ | ≥1 trade-off ✓
 
 ---
 
 ## Step 4: Grading Framework
 
-**Objective:** Define clear, consistent evaluation criteria.
+Define per-task rubrics (expected elements, partial credit, 20-30 pts total), document common gaps, define bonus approaches (+1-2 pts).
 
-**Actions:**
-1. **Per-Task Rubrics:**
-   - List expected thinking and deliverable elements
-   - Assign partial-credit points to each element
-   - Total 20-30 points per scenario
-
-2. **Document Common Gaps:**
-   - Typical errors or omissions
-   - Symptoms of poor product judgment
-   - Red flags in reasoning
-
-3. **Define Exemplary Approaches:**
-   - Bonus-worthy additions (risk mitigation, experiments, success metrics)
-   - Advanced techniques showing PM maturity
-   - +1-2 pts per exceptional element
-
-**Verification:**
-- All tasks have rubrics ✓
-- Points sum correctly ✓
-- Gaps documented ✓
-- Bonus opportunities specified ✓
+**Verify:** All rubrics ✓ | Points sum correctly ✓ | Gaps documented ✓ | Bonuses specified ✓
 
 ---
 
 ## Step 5: References
 
-**Objective:** Populate all reference sections with complete, accurate entries.
+Populate sections: Glossary (name, definition, use cases), Tools (category, pricing, users, update, integrations, URL), Literature (author, title, year, publisher, summary), APA Citations (full format with language tags).
 
-**Actions:**
-1. **Glossary:** Framework name, definition, use cases, related concepts
-2. **Tools:** Name, category, pricing, users, update date, integrations, URL
-3. **Literature:** Author, title, year, publisher, summary
-4. **APA Citations:** Full APA 7th format with language tags
-
-**Verification:**
-- All [Ref: ID] in scenarios resolve ✓
-- No orphaned references ✓
-- URLs functional ✓
-- Format consistent ✓
+**Verify:** All [Ref: ID] resolve ✓ | No orphans ✓ | URLs functional ✓ | Format consistent ✓
 
 ---
 
 ## Step 6: Validation
 
-**Objective:** Execute 11-step validation and fix all failures.
+Execute 11 checks from Pre-Submission Validation, document results, fix failures, re-run until all PASS.
 
-**Actions:**
-1. Run checks 1-11 from Pre-Submission Validation table
-2. Document results in Validation Report Template
-3. Fix failures immediately
-4. Re-run validation until all checks PASS
-
-**Verification:**
-- All 11 checks show PASS ✓
-- Validation report completed ✓
-- No outstanding failures ✓
+**Verify:** All 11 PASS ✓ | Report complete ✓ | No failures ✓
 
 ---
 
 ## Step 7: Submission
 
-**Objective:** Final verification and release.
+Complete checklist, generate TOC with anchors, review formatting, final read-through.
 
-**Actions:**
-1. Complete Submission Checklist
-2. Generate TOC with working anchor links
-3. Review formatting (Markdown, tables, code blocks)
-4. Perform final read-through for clarity and precision
-
-**Verification:**
-- Checklist 100% complete ✓
-- TOC links functional ✓
-- No formatting errors ✓
-- Ready for use ✓
+**Verify:** Checklist 100% ✓ | TOC functional ✓ | No format errors ✓ | Ready ✓
 
 ---
 
@@ -430,113 +245,53 @@ Generate product case study assessments with multi-dimensional evaluation, struc
 
 ## Document Structure
 
-**Required Top-Level Sections:**
+**Required Sections:**
+1. **TOC:** Anchor links to all H2/H3
+2. **Scenario Bank:** One H3 per scenario
+3. **References:** Glossary, Tools, Literature, APA Citations
+4. **Validation Report:** Check results table
 
-1. **Contents (TOC):** Anchor links to all H2 and H3 headings
-2. **Scenario Bank (Scenarios 1-N):** One H3 per scenario
-3. **Reference Sections:**
-   - Glossary, Terminology & Acronyms
-   - Product Tools & Platforms
-   - Authoritative Literature & Case Studies
-   - APA Style Source Citations
-4. **Validation Report:** Table with check results
-
-**Formatting Guidelines:**
-- Use GitHub-Flavored Markdown
-- Tables for structured data (criteria, rubrics, allocations)
-- Fenced code blocks with language tags for templates
-- Mermaid diagrams for flows (optional)
-- Bullet lists for clarity and scannability
-- Lines ≤120 chars where feasible
+**Format:** GitHub Markdown, tables for data, fenced code blocks with language tags, bullet lists, lines ≤120 chars.
 
 ---
 
 ## Scenario Template
 
 ```markdown
-### Scenario X: [Descriptive Title]
+### Scenario X: [Title]
 
-**Difficulty:** [Foundational|Intermediate|Advanced] | **Domain:** [Strategy|Discovery|Prioritization|Metrics|Stakeholder|GTM]
+**Difficulty:** [F|I|A] | **Domain:** [Strategy|Discovery|Prioritization|Metrics|Stakeholder|GTM]
 
-**Context:** (200–400 words)
+**Context:** (200-400 words) [Market, users, metrics, stakeholders, constraints, ≥1 [Ref: ID]]
 
-[Market landscape, user segments, business metrics, stakeholder positions, constraints. Include ≥1 [Ref: ID] citation.]
+**Task 1: [Title] (X pts)**
+[Objective]
+**Expected:** Element 1, Element 2, Element 3
+**Grading:** Criterion 1: Y pts, Criterion 2: Z pts
 
-[Example: B2B SaaS with 50K SMB users and 5 enterprise clients. Analytics [Ref: T1] shows 65% activation. CEO concerned about enterprise churn. Engineering: custom workflow delays activation improvements by 2Q. Market analysis [Ref: A8]: SMB TAM 10× enterprise.]
+**Task 2-3:** [Repeat structure]
 
-**Task 1: [Task Title] (X pts)**
+**Common Gaps:** Gap 1, Gap 2, Gap 3
 
-[Clear objective and expected output]
-
-**Expected:**
-- Element 1
-- Element 2
-- Element 3
-
-**Grading:**
-- Criterion 1: Y pts (description)
-- Criterion 2: Z pts (description)
-
-**Task 2: [Task Title] (X pts)**
-
-[Repeat structure]
-
-**Task 3: [Task Title] (X pts)**
-
-[Repeat structure]
-
-**Common Product Judgment Gaps:**
-- Gap 1
-- Gap 2
-- Gap 3
-
-**Exemplary Approaches for Bonus:**
-- Approach 1: +X pts
-- Approach 2: +Y pts
-
----
+**Bonus:** Approach 1: +X pts, Approach 2: +Y pts
 ```
 
 ---
 
 ## Reference Sections Template
 
-### Glossary, Terminology & Acronyms
-
 ```markdown
-**G1. [Framework Name]**  
-[Definition]. [Use cases]. [Related concepts].
+**Glossary:**
+G1. [Framework]: [Definition]. [Use cases]. [Related].
 
-**G2. [Framework Name]**  
-[Repeat]
-```
+**Tools:**
+T1. [Tool] ([Category]): [Description]. [Pricing]. [Users]. Updated [Date]. [URL].
 
-### Product Tools & Platforms
+**Literature:**
+L1. [Author]. ([Year]). *[Title]*. [Publisher]. [Summary].
 
-```markdown
-**T1. [Tool Name]** ([Category])  
-[Description]. [Pricing]. [User base/customers]. Updated [Date]. Integrates: [List]. Use: [Use cases]. [URL]
-
-**T2. [Tool Name]**  
-[Repeat]
-```
-
-### Authoritative Literature & Case Studies
-
-```markdown
-**L1. [Author]. ([Year]). *[Title]*. [Publisher].**  
-[Summary/relevance].
-
-**L2. [Author]**  
-[Repeat]
-```
-
-### APA Style Source Citations
-
-```markdown
-**A1. [Full APA 7th citation]. [Language Tag]**
-
-**A2. [Repeat]**
+**APA Citations:**
+A1. [Full APA 7th]. [Language Tag]
 ```
 
 ---
@@ -544,27 +299,22 @@ Generate product case study assessments with multi-dimensional evaluation, struc
 ## Validation Report Template
 
 ```markdown
-## Validation Report
-
 | Check | Result | Status |
 |-------|--------|--------|
 | Floors | G:X T:Y L:Z A:W S:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
-| Language dist | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
+| Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Languages | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
 | Recency | X% last 3yr | PASS/FAIL |
-| Source diversity | N types, max P% | PASS/FAIL |
+| Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
-| Context lengths | 5/5 compliant | PASS/FAIL |
-| MECE tasks | Y/X verified | PASS/FAIL |
-| Grading rubrics | Y/X complete | PASS/FAIL |
-| Product judgment | X% judgment-based | PASS/FAIL |
+| Context | 5/5 compliant | PASS/FAIL |
+| MECE | Y/X verified | PASS/FAIL |
+| Rubrics | Y/X complete | PASS/FAIL |
+| Judgment | X% judgment-based | PASS/FAIL |
 
-**Status:** [ALL PASS / FAILURES DETECTED]
-
-**Failures (if any):**
-- [Check name]: [Description of failure]
-- [Remediation plan]
+**Status:** [ALL PASS / FAILURES]
+**Failures:** [Check]: [Description] - [Remediation]
 ```
 
 ---
@@ -667,38 +417,4 @@ Draft memo (≤300 words) to CEO and exec team.
 
 ---
 
-# Appendix: Guideline Compliance Matrix
-
-**This scenario bank was optimized using 21 LLM-friendly guidelines:**
-
-| ID | Guideline | Application in Case Study | Status |
-|----|-----------|---------------------------|--------|
-| 1 | Context | Explicit scope, constraints, assumptions, non-goals added | ✓ Met |
-| 2 | Clarity | Glossary defined, jargon explained, consistent terminology | ✓ Met |
-| 3 | Precision | Specific thresholds (counts, percentages, word limits) | ✓ Met |
-| 4 | Relevance | Tangential content removed, all sections support PM evaluation | ✓ Met |
-| 5 | MECE | Sections non-overlapping with clear boundaries | ✓ Met |
-| 6 | Sufficiency | Added user segments, business goals, constraints, dependencies | ✓ Met |
-| 7 | Breadth | Multiple perspectives integrated (user/business/technical) | ✓ Met |
-| 8 | Depth | Detailed templates, example metrics, validation steps | ✓ Met |
-| 9 | Significance | Prioritized critical requirements, demoted nice-to-haves | ✓ Met |
-| 10 | Concision | Removed redundancy, used bullet lists over paragraphs | ✓ Met |
-| 11 | Accuracy | Verified PM frameworks and appropriate metrics | ✓ Met |
-| 12 | Credibility | Evidence flags required, citations to authoritative sources | ✓ Met |
-| 13 | Logic | Coherent reasoning flow (problem → options → evaluation → decision) | ✓ Met |
-| 14 | Risk/Value | Risk-value matrices and mitigation strategies added | ✓ Met |
-| 15 | Fairness | Assumptions, limitations, alternatives explicitly captured | ✓ Met |
-| 16 | Structure | Tables, lists, diagrams, code blocks used throughout | ✓ Met |
-| 17 | Output Format | TOC with anchors, templates, structured deliverables | ✓ Met |
-| 18 | Evidence | Evidence/Assumption/Open Question flags introduced | ✓ Met |
-| 19 | Validation | 11-step validation checklist with self-review | ✓ Met |
-| 20 | Practicality | Time-boxing, resource constraints, actionable steps | ✓ Met |
-| 21 | Success Criteria | Measurable outcomes and pass/fail quality gates defined | ✓ Met |
-
-**Compliance:** 21/21 guidelines met ✓
-
----
-
-**Document Version:** 2.0 (Optimized)  
-**Last Updated:** 2025-11-11  
-**Optimization Reference:** `Guidelines_for_LLM-Friendly_Prompts.md`
+**Last Updated:** 2025-11-11
