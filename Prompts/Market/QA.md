@@ -1,176 +1,213 @@
 # Interview Q&A - Marketing Professional
 
-Generate senior/director/VP Marketing interview Q&A with structured validation, citations, and multi-dimensional evaluation.
+## Task Definition
+
+### Objective
+Generate 25–30 high-quality interview Q&A pairs for senior/director/VP Marketing roles that assess strategic judgment, analytical thinking, and practical execution capabilities.
+
+### Context
+- **Scope**: Real-world marketing challenges across strategy, research, positioning, campaigns, analytics, and growth
+- **Evidence standard**: All answers cite authoritative sources with balanced perspectives and acknowledged limitations
+- **Target audience**: Cross-functional leaders (Product, Sales, Finance) evaluating senior marketing candidates
+
+### Success Criteria
+All criteria must be met:
+- All 15 validation checks PASS
+- ≥70% questions test judgment over recall
+- ≥70% answers include ≥1 citation; ≥30% include ≥2 citations
+- ≥50% answers acknowledge limitations/trade-offs
+- Each topic cluster includes ≥1 diagram + ≥1 table
+
+### Constraints
+- **Word count**: 150–300 words per answer
+- **Coverage**: MECE across 6 marketing domains
+- **Language distribution**: 60% EN / 30% ZH / 10% other (ranges: EN 50–70%, ZH 20–40%, Other 5–15%)
+- **Recency**: ≥50% sources within last 3 years (≥70% for digital/social topics)
+
+### Assumptions
+- Candidate has access to standard marketing tools, public datasets, industry benchmarks
+- Scenarios use realistic but anonymized data
+- No proprietary or confidential information required
 
 ---
 
 ## Scope
 
-**Purpose**: Test senior+ marketing judgment on strategy, research, positioning, campaigns, analytics, and growth.
+### Deliverable
+25–30 Q&A pairs with validated references, artifacts, and evidence. All claims fact-checked and cross-validated.
 
-**Deliverable**: 25–30 Q&A pairs with references, artifacts, and validation evidence.
+### Coverage (MECE)
+1. Market Research & Analysis
+2. Marketing Strategy & Planning
+3. Brand Positioning & Messaging
+4. Customer Segmentation & Targeting
+5. Marketing Channels & Campaign Management
+6. Marketing Metrics & Analytics
 
-**Terminology**:
-- **Floor**: Minimum threshold (≥)
-- **Quality gate**: Stop-and-fix checkpoint
-- **Difficulty**: Foundational (F), Intermediate (I), Advanced (A)
-- **Evaluation dimensions**: Market, Business, Strategic, Operational
-
----
-
-## Specifications
-
-### Q&A Set Requirements
-
-**Scope**: 25–30 Q&A pairs | 20% F / 40% I / 40% A | 150–300 words/answer
-
-**Content coverage (MECE)**:
-- Market Research & Analysis
-- Marketing Strategy & Planning
-- Brand Positioning & Messaging
-- Customer Segmentation & Targeting
-- Marketing Channels & Campaign Management
-- Marketing Metrics & Analytics
-
-**Evaluation dimensions** (analyze from all perspectives):
+### Evaluation Dimensions
+Analyze from all perspectives:
 - **Market**: Insights, competition, trends, opportunities
 - **Business**: Revenue, CAC, LTV, ROI, market share
 - **Strategic**: Brand equity, positioning, competitive advantage, growth
 - **Operational**: Execution, channels, resources, optimization
 
-### Reference Floors
+### Terminology
+- **Floor**: Minimum threshold (≥)
+- **Quality gate**: Stop-and-fix checkpoint requiring immediate resolution
+- **Difficulty**: Foundational (F), Intermediate (I), Advanced (A)
 
-**Counts**:
-- Glossary: ≥10 (STP, 4Ps, AIDA, Marketing Mix, Customer Journey, CAC, LTV, Attribution, Brand Equity, Market Segmentation)
-- Tools: ≥5 (pricing, users, integrations, updated ≤18mo)
-- Literature: ≥6 (include ZH sources: 菲利普·科特勒, 艾·里斯, 杰克·特劳特)
-- APA citations: ≥12 ([EN], [ZH] tags)
-- Artifacts: ≥1 diagram + ≥1 table per topic cluster
+---
 
-**Scaling**: >30 Q&A → increase floors by ~1.5×
+## Requirements
+
+### Q&A Set Specifications
+- **Count**: 25–30 pairs
+- **Difficulty distribution**: 20% F / 40% I / 40% A (±5% tolerance)
+- **Word count**: 150–300 words per answer
+
+### Reference Minimums (Floors)
+| Type | Minimum | Notes |
+|------|---------|-------|
+| Glossary (G#) | ≥10 | STP, 4Ps, AIDA, CAC, LTV, Attribution, Brand Equity, Market Segmentation, MQL, ABM |
+| Tools (T#) | ≥5 | Include pricing, users, integrations, update within 18 months |
+| Literature (L#) | ≥6 | Include EN: Kotler, Ries & Trout, Godin; ZH: 菲利普·科特勒, 艾·里斯, 杰克·特劳特 |
+| APA Citations (A#) | ≥12 | Tag language [EN]/[ZH], assign unique IDs |
+| Artifacts | ≥1 diagram + ≥1 table per topic cluster | Journey maps, positioning maps, funnels, dashboards |
+
+**Scaling**: For >30 Q&A, increase all floors by 1.5×
 
 ### Citation Standards
-
-**Language**: 60% EN / 30% ZH / 10% other (ranges: EN 50–70%, ZH 20–40%, Other 5–15%)
-
-**Types**: (1) Frameworks (2) Research/data (3) Case studies (4) Tools/platforms
-
-**Format**:
-- APA 7th: `Author, A. (Year). *Title*. Publisher. [EN]`
-- Inline: `[Ref: ID]` (IDs: G#/T#/L#/A#)
-- Coverage: ≥70% answers ≥1 citation | ≥30% answers ≥2 citations
-
-### Quality Gates
-
-- **Recency**: ≥50% last 3yr (≥70% digital/social)
-- **Diversity**: ≥3 source types | no source >25%
+- **Format**: APA 7th edition
+  - Books: `Author, A. (Year). *Title* (Edition). Publisher. [EN]`
+  - Articles: `Author, A. (Year). Title. *Journal*, Volume(Issue), Pages. [EN]`
+  - Inline: `[Ref: ID]` where ID = G#/T#/L#/A#
+- **Coverage**: ≥70% answers with ≥1 citation, ≥30% answers with ≥2 citations
+- **Language**: 60/30/10% EN/ZH/Other
+- **Diversity**: ≥3 source types, no single source >25%
 - **Per-topic**: ≥2 authoritative sources + ≥1 tool
-- **Tool details**: pricing, users, update ≤18mo, integrations
-- **Links**: accessible, prefer DOIs/archived URLs
-- **Cross-refs**: all [Ref: ID] resolve
+
+### Quality Standards
+- **Source quality**: Prioritize peer-reviewed research, established frameworks, reputable case studies, proven tools
+- **Factual verification**: Cross-check all claims against authoritative sources
+- **Recency**: ≥50% within last 3 years (≥70% for digital/social)
+- **Link accessibility**: All links accessible or archived; prefer DOIs
+- **Reference integrity**: All [Ref: ID] must resolve
 
 ---
 
 ## Instructions
 
 ### 1. Topic Planning
-1. Select 5–6 clusters from content coverage
-2. Allocate 4–6 Q&A per cluster (total 25–30)
+1. Select 5–6 clusters from MECE coverage
+2. Allocate 4–6 Q&A per cluster (total = 25–30)
 3. Assign difficulty: 20% F / 40% I / 40% A
 
-**Check**: Sum = 25–30, ratio ≈ 20/40/40
+**Checkpoint**: Total Q&A = 25–30, difficulty ratio ≈ 20/40/40 (±5%)
 
 ### 2. Reference Collection
-- **Glossary** (≥10): STP, 4Ps, Marketing Mix, AIDA, Customer Journey, CAC, LTV, Attribution, Brand Equity, Market Segmentation, Funnel Metrics, Content Marketing, Inbound Marketing, ABM, MQL
-- **Tools** (≥5): Google Analytics, HubSpot/Marketo, Salesforce, SEMrush/Ahrefs, Google Ads
-- **Literature** (≥6): Kotler, Ries & Trout, Godin, Sharp, Christensen + ZH: 菲利普·科特勒, 艾·里斯, 杰克·特劳特
-- **APA** (≥12): Tag [EN]/[ZH], assign IDs (G#/T#/L#/A#)
+Collect and verify before Q&A generation:
+- **Glossary** (≥10): Define core terms with usage context
+- **Tools** (≥5): Verify pricing, user count, integrations, update date (≤18mo)
+- **Literature** (≥6): Include both EN and ZH authoritative texts
+- **APA Citations** (≥12): Assign IDs, tag language
 
-**Check**: Floors met | language 60/30/10% | recency ≥50% last 3yr | ≥3 types
+**Checkpoint**: All floors met, language 60/30/10%, ≥50% recency, ≥3 types
 
 ### 3. Q&A Generation
-**Questions**: Scenario-based ("How would you…") | single ask | tests judgment not trivia | enables trade-off discussion | matches seniority
+**Question requirements**:
+- Format: Scenario-based ("How would you…")
+- Structure: Single clear ask
+- Focus: Test judgment and trade-off analysis
+- Level: Match seniority (senior/director/VP)
 
-**Answers**: 150–300 words | ≥1 [Ref: ID] | state **Key Insight** (market opportunity/budget trade-off/channel conflict/measurement challenge)
+**Answer structure** (150–300 words):
+1. **Analysis**: Diagnose using cited frameworks [Ref: ID]
+2. **Reasoning**: Explain approach and considerations [Ref: ID]
+3. **Recommendations**: Actionable steps with trade-offs [Ref: ID]
+4. **Limitations**: Note constraints, alternatives, uncertainty
 
-**Check**: Every 5 Q&A verify counts, citations, insights
+**Checkpoint**: Every 5 Q&A, verify counts, citations, insights, balance
 
 ### 4. Artifacts
-Create ≥1 diagram + ≥1 table per cluster (journey maps, positioning maps, funnel analysis, channel matrices, dashboards)
+Create for each topic cluster:
+- Minimum: ≥1 diagram + ≥1 table
+- Types: Journey maps, positioning maps, funnel analysis, channel matrices, dashboards
 
-**Check**: All clusters have artifacts
+**Checkpoint**: All clusters have required artifacts
 
 ### 5. Reference Sections
-Populate all sections per Output Format Template
+Populate all sections per Output Format:
+- **Glossary**: Define terms with usage context
+- **Tools**: Include pricing, users, integrations, update date
+- **Literature**: Full bibliographic information
+- **APA Citations**: Complete with language tags
 
-**Check**: All [Ref: ID] resolve
+**Checkpoint**: All [Ref: ID] resolve correctly
 
 ### 6. Validation
-Execute 12-step validation. Fix failures; re-validate until all PASS.
+Execute 15-step validation. **Any FAIL requires immediate fix and re-validation.**
 
 ### 7. Final Review
-Verify Question Design Criteria + submission checklist
+1. Verify all Question Design Criteria met
+2. Complete Submission Checklist
+3. Confirm all quality gates passed
 
 ---
 
-## Validation & Quality Gates
+## Validation
 
-**MANDATORY**: All 12 checks must PASS. FAIL → stop, fix, re-validate.
+**MANDATORY**: All 15 checks must PASS. FAIL → stop, fix, re-validate.
 
-### Validation Steps
+### Validation Checklist
 
-1. **Counts**: G≥10, T≥5, L≥6, A≥12 | Q&A 25–30 | Difficulty 20/40/40% (±5%)
-2. **Citation coverage**: ≥70% answers ≥1 | ≥30% answers ≥2
-3. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
-4. **Recency**: ≥50% last 3yr (≥70% digital/social)
-5. **Diversity**: ≥3 types | no source >25%
-6. **Links**: all accessible/archived
-7. **Cross-refs**: all [Ref: ID] resolve
-8. **Word count**: sample 5 answers, all 150–300 words
-9. **Key Insights**: all concrete (opportunity/trade-off/conflict/challenge)
-10. **Per-topic**: ≥2 authoritative + ≥1 tool
-11. **Frameworks**: ≥80% correct with citations + limitations
-12. **Judgment**: ≥70% scenario-based vs recall
-
-### Validation Report Template
-
-```
-| Check                | Result                      | Status     |
-|----------------------|-----------------------------|------------|
-| Floors               | G:X T:Y L:Z A:W Q:N (F/I/A) | PASS/FAIL  |
-| Citation coverage    | X% ≥1, Y% ≥2                | PASS/FAIL  |
-| Language dist        | EN:X% ZH:Y% Other:Z%        | PASS/FAIL  |
-| Recency              | X% last 3yr                 | PASS/FAIL  |
-| Source diversity     | N types, max P%             | PASS/FAIL  |
-| Links                | Y/X accessible              | PASS/FAIL  |
-| Cross-refs           | Y/X resolved                | PASS/FAIL  |
-| Word counts          | 5/5 compliant               | PASS/FAIL  |
-| Key Insights         | Y/X concrete                | PASS/FAIL  |
-| Per-topic mins       | X/Y topics meet             | PASS/FAIL  |
-| Framework usage      | X/Y correct                 | PASS/FAIL  |
-| Judgment vs Recall   | X% judgment-based           | PASS/FAIL  |
-```
+| # | Check | Criteria | Status |
+|---|-------|----------|--------|
+| 1 | **Counts** | G≥10, T≥5, L≥6, A≥12 \| Q&A 25–30 \| Difficulty 20/40/40% (±5%) | PASS/FAIL |
+| 2 | **Citation coverage** | ≥70% answers ≥1 \| ≥30% answers ≥2 | PASS/FAIL |
+| 3 | **Language** | EN 50–70%, ZH 20–40%, Other 5–15% | PASS/FAIL |
+| 4 | **Recency** | ≥50% last 3yr (≥70% digital/social) | PASS/FAIL |
+| 5 | **Diversity** | ≥3 types \| no source >25% | PASS/FAIL |
+| 6 | **Links** | All accessible/archived | PASS/FAIL |
+| 7 | **Cross-refs** | All [Ref: ID] resolve | PASS/FAIL |
+| 8 | **Word count** | Sample 5 answers: all 150–300 words | PASS/FAIL |
+| 9 | **Key Insights** | All concrete (opportunity/trade-off/conflict/challenge) | PASS/FAIL |
+| 10 | **Per-topic** | ≥2 authoritative + ≥1 tool per cluster | PASS/FAIL |
+| 11 | **Frameworks** | ≥80% correct with citations + limitations | PASS/FAIL |
+| 12 | **Judgment** | ≥70% scenario-based vs recall | PASS/FAIL |
+| 13 | **Accuracy** | Sample 5 answers: all factually correct and cross-validated | PASS/FAIL |
+| 14 | **Balance** | ≥50% answers acknowledge limitations/constraints/trade-offs | PASS/FAIL |
+| 15 | **Reasoning** | ≥60% answers include logical explanation | PASS/FAIL |
 
 ### Submission Checklist
 
-- [ ] All 12 validation PASS
+- [ ] All 15 validation PASS
 - [ ] Floors met + gates passed
+- [ ] TOC present and links work
+- [ ] Difficulty mix ≈ 20/40/40 (±5%)
+- [ ] Language distribution within ranges
+- [ ] ≥50% sources within last 3 years
+- [ ] Each cluster includes ≥1 diagram + ≥1 table
+- [ ] All links accessible/archived; DOIs preferred
+- [ ] All [Ref: ID] resolve
+- [ ] Sampled 5 answers: 150–300 words, factually correct, limitations acknowledged
+- [ ] ≥3 source types; no single source >25%
+- [ ] Per-topic minimums met
 
 ---
 
-## Output Format Template
+## Output Format
 
-### Contents Structure
-
+### Contents
 ```markdown
 ## Contents
 - [Topic Areas](#topic-areas-questions-1-n)
-- [Topic 1-6](#topic-titles) → [Q1-Q30](#questions)
+  - [Topic 1-6](#topic-titles) → [Q1-Q30](#questions)
 - [Reference Sections](#reference-sections)
   - [Glossary](#glossary-terminology--acronyms)
   - [Tools](#marketing-tools--platforms)
   - [Literature](#authoritative-literature--case-studies)
   - [APA Citations](#apa-style-source-citations)
+- [Validation Report](#validation-report)
 ```
 
 ---
@@ -180,17 +217,15 @@ Verify Question Design Criteria + submission checklist
 ```markdown
 ## Topic Areas: Questions 1-N
 
-Overview of coverage and difficulty distribution.
-
-| Topic                               | Question Range | Count | Difficulty Mix |
-|-------------------------------------|----------------|-------|----------------|
-| Market Research & Analysis          | Q1-Q5          | 5     | 1F, 2I, 2A     |
-| Marketing Strategy & Planning       | Q6-Q10         | 5     | 1F, 2I, 2A     |
-| Brand Positioning & Messaging       | Q11-Q16        | 6     | 1F, 2I, 3A     |
-| Customer Segmentation & Targeting   | Q17-Q21        | 5     | 1F, 2I, 2A     |
-| Marketing Channels & Campaigns      | Q22-Q25        | 4     | 1F, 2I, 1A     |
-| Marketing Metrics & Analytics       | Q26-Q30        | 5     | 1F, 2I, 2A     |
-| **Total**                           |                | **30**| **6F, 12I, 12A**|
+| Topic | Question Range | Count | Difficulty Mix |
+|-------|----------------|-------|----------------|
+| Market Research & Analysis | Q1-Q5 | 5 | 1F, 2I, 2A |
+| Marketing Strategy & Planning | Q6-Q10 | 5 | 1F, 2I, 2A |
+| Brand Positioning & Messaging | Q11-Q16 | 6 | 1F, 2I, 3A |
+| Customer Segmentation & Targeting | Q17-Q21 | 5 | 1F, 2I, 2A |
+| Marketing Channels & Campaigns | Q22-Q25 | 4 | 1F, 2I, 1A |
+| Marketing Metrics & Analytics | Q26-Q30 | 5 | 1F, 2I, 2A |
+| **Total** | | **30** | **6F, 12I, 12A** |
 
 **Legend**: F = Foundational, I = Intermediate, A = Advanced
 ```
@@ -205,38 +240,45 @@ Overview of coverage and difficulty distribution.
 ### Q1: [Question Text]
 
 **Difficulty**: [Foundational/Intermediate/Advanced]
-**Type**: [Market Research & Analysis/Marketing Strategy & Planning/Brand Positioning & Messaging/Customer Segmentation & Targeting/Marketing Channels & Campaigns/Marketing Metrics & Analytics]
+**Type**: [Marketing Domain]
 
-**Key Insight**: [One sentence stating specific market opportunity/budget trade-off/channel conflict/measurement challenge this question exposes]
+**Key Insight**: [One sentence: specific market opportunity/budget trade-off/channel conflict/measurement challenge]
 
 **Answer**:
 
-[150-300 word answer with inline [Ref: ID] citations]
+[150-300 words structured as:]
 
-**Supporting Artifact** (if applicable):
+**Analysis**: Diagnose situation using cited frameworks [Ref: ID]
 
-[Customer journey map/Positioning map/Funnel analysis/Channel mix matrix/Campaign dashboard]
+**Reasoning**: Explain logical approach and key considerations [Ref: ID]
+
+**Recommendations**: Provide actionable steps with trade-offs acknowledged [Ref: ID]
+
+**Limitations**: Note constraints, alternative approaches, or uncertainty
+
+**Supporting Artifact**:
+
+[Diagram/Table]
 ```
 
 ---
 
 ### Question Design Criteria
 
-- **Clarity**: Single unambiguous ask | ✅ "Allocate $500K across paid search, content, events" | ❌ "Explain SEO best practices"
-- **Signal**: Tests judgment not trivia | ✅ "CAC +40%, CVR -15%. Diagnose" | ❌ "List AIDA stages"
-- **Depth**: Enables trade-off discussion | ✅ "Choose: awareness, demand gen, or retention. How?" | ❌ "Use social media?"
-- **Realism**: Matches seniority | ✅ "CEO wants B2B entry. Reposition B2C brand?" | ❌ "Design Facebook ad"
-- **Discriminative**: Judgment over recall | ✅ "When does multi-touch mislead vs last-click?" | ❌ "What is multi-touch?"
-- **Alignment**: Senior: execution | Director: strategy | VP/CMO: vision/revenue
+| Criterion | Description | Example ✅ | Anti-pattern ❌ |
+|-----------|-------------|-----------|----------------|
+| **Clarity** | Single, unambiguous ask with specific parameters | "Allocate $500K across paid search, content, events" | "Explain SEO best practices" |
+| **Signal** | Tests judgment and analysis, not trivia | "CAC +40%, CVR -15%. Diagnose root cause and recommend actions" | "List the AIDA stages" |
+| **Depth** | Enables discussion of trade-offs and constraints | "Choose between awareness, demand gen, or retention. Justify with budget constraints" | "Should we use social media?" |
+| **Realism** | Matches seniority level and real-world complexity | "CEO wants B2B market entry. How would you reposition the B2C brand?" | "Design a Facebook ad" |
+| **Discrimination** | Separates judgment from recall | "When does multi-touch attribution mislead vs last-click? Give scenarios" | "What is multi-touch attribution?" |
+| **Role alignment** | Match complexity to role | Senior: execution \| Director: strategy \| VP/CMO: vision/revenue | |
 
 ---
 
-### Reference Sections Template
+### Reference Sections
 
-```markdown
-## Reference Sections
-
-### Glossary, Terminology & Acronyms
+#### Glossary, Terminology & Acronyms
 
 **G1. STP (Segmentation, Targeting, Positioning)**
 Framework: divide market → select targets → develop positioning. Use: market entry, launches, competitive strategy. Related: Market Segmentation, Value Proposition, Perceptual Map
@@ -268,11 +310,11 @@ Valuable content (blogs, videos, podcasts, whitepapers, webinars) to attract/ret
 **G10. MQL (Marketing Qualified Lead)**
 Lead meeting sales-readiness criteria. Use: scoring, funnel management, sales-marketing alignment. Related: SQL, Lead Scoring
 
-[... ≥10 entries ...]
+[≥10 entries required]
 
 ---
 
-### Marketing Tools & Platforms
+#### Marketing Tools & Platforms
 
 **T1. Google Analytics** (Web Analytics)
 Traffic, behavior, conversions, attribution, audience. Free to Enterprise (GA360 ~$150K/yr) | 30M+ sites | Q4 2024 (GA4). Integrates: Ads, Search Console, BigQuery, Data Studio. Use: performance, funnels, segmentation. https://analytics.google.com
@@ -289,35 +331,35 @@ Email, mobile, social, ads, journeys, personalization, analytics. Custom (~$400K
 **T5. Hootsuite** (Social Media Management)
 Scheduling, monitoring, analytics, collaboration. Professional $99/mo to Enterprise | 18M+ users | Q4 2024 (AI captions). Integrates: Facebook, Instagram, Twitter, LinkedIn, YouTube, TikTok. Use: publishing, engagement, listening. https://www.hootsuite.com
 
-[... ≥5 entries ...]
+[≥5 entries required with pricing, user count, last update ≤18mo, integrations]
 
 ---
 
-### Authoritative Literature & Case Studies
+#### Authoritative Literature & Case Studies
 
-**L1. Kotler, P., & Keller, K. L. (2016). *Marketing Management* (15th ed.). Pearson.**
+**L1.** Kotler, P., & Keller, K. L. (2016). *Marketing Management* (15th ed.). Pearson.
 Framework: STP, 4Ps, brand equity, customer value. Foundational principles.
 
-**L2. Ries, A., & Trout, J. (2001). *Positioning: The Battle for Your Mind*. McGraw-Hill.**
+**L2.** Ries, A., & Trout, J. (2001). *Positioning: The Battle for Your Mind*. McGraw-Hill.
 Strategy: own category, differentiation, perceptual maps. Classic branding.
 
-**L3. Godin, S. (1999). *Permission Marketing*. Simon & Schuster.**
+**L3.** Godin, S. (1999). *Permission Marketing*. Simon & Schuster.
 Inbound, customer-centric, content strategy. Foundation for digital marketing.
 
-**L4. Sharp, B. (2010). *How Brands Grow*. Oxford University Press.**
+**L4.** Sharp, B. (2010). *How Brands Grow*. Oxford University Press.
 Evidence-based: mental/physical availability, reach over loyalty. Challenges conventional wisdom.
 
-**L5. Christensen, C. M., Hall, T., Dillon, K., & Duncan, D. S. (2016). *Competing Against Luck*. Harper Business.**
+**L5.** Christensen, C. M., Hall, T., Dillon, K., & Duncan, D. S. (2016). *Competing Against Luck*. Harper Business.
 Jobs-to-be-Done framework. Customer motivation insights.
 
-**L6. 菲利普·科特勒 (Kotler, P.). (2016). *营销管理* (第15版). 格致出版社.**
+**L6.** 菲利普·科特勒 (Kotler, P.). (2016). *营销管理* (第15版). 格致出版社.
 Chinese edition of Marketing Management.
 
-[... ≥6 entries ...]
+[≥6 entries required, include both EN and ZH authoritative texts]
 
 ---
 
-### APA Style Source Citations
+#### APA Style Source Citations
 
 **A1.** Kotler, P., & Keller, K. L. (2016). *Marketing management* (15th ed.). Pearson Education. [EN]
 
@@ -343,14 +385,13 @@ Chinese edition of Marketing Management.
 
 **A12.** Davenport, T. H., Harris, J. G., & Kohli, A. K. (2001). How do they know their customers so well? *MIT Sloan Management Review*, 42(2), 63-73. [EN]
 
-[... ≥12 entries with 60% EN / 30% ZH / 10% other ...]
+[≥12 entries required with 60% EN / 30% ZH / 10% other distribution, language tags]
 
 ---
 
 ## Validation Report
 
-Execute 12-step validation. All must PASS before submission.
-```
+Execute 15-step validation. All must PASS before submission.
 
 ---
 
@@ -365,15 +406,13 @@ Execute 12-step validation. All must PASS before submission.
 
 **Answer**:
 
-**Diagnose root causes** [Ref: G4, G5]: 45% CAC increase + LTV decline suggests (1) less-qualified leads, (2) channel saturation, or (3) competitive pressure [Ref: A11]. Decompose CAC by channel and cohort [Ref: T1, T2].
+**Analysis**: The 45% CAC increase coupled with LTV:CAC dropping from 4.5:1 to 2.8:1 indicates unit economics deterioration [Ref: G4, G5]. This suggests three potential root causes: (1) declining lead quality, (2) channel saturation, or (3) increased competitive pressure [Ref: A11]. First, decompose CAC by channel and cohort using analytics platforms [Ref: T1, T2] to identify specific problem areas.
 
-**Analyze attribution** [Ref: G6]: Use multi-touch attribution for true channel contribution [Ref: A12]. Last-click over-credits bottom-funnel; time-decay/position-based reveal assists [Ref: T1]. Compare to blended CAC.
+**Reasoning**: Multi-touch attribution [Ref: G6] reveals true channel contribution better than last-click models, which over-credit bottom-funnel touchpoints while undervaluing awareness and consideration assists [Ref: A12, T1]. Calculate channel-specific LTV:CAC ratios; healthy channels maintain ≥3:1 [Ref: L1]. This analysis distinguishes efficient channels meriting investment from saturated ones requiring optimization or reduction [Ref: A10].
 
-**Evaluate channel health**: Calculate channel-specific LTV:CAC. Healthy ≥3:1 [Ref: L1]. Identify: (1) Efficient channels to scale; (2) Declining channels to optimize/reduce; (3) Testing channels [Ref: A10].
+**Recommendations**: Implement a three-phase rebalancing strategy [Ref: L2]: (1) **Immediate**: Pause or reduce spend on channels with LTV:CAC <2:1; reallocate budget to efficient channels; (2) **Medium-term**: Test emerging channels like partnerships, community, and organic content [Ref: G9]; (3) **Long-term**: Improve conversion rates and increase LTV through retention programs [Ref: T2, T4]. Use Marketing Mix Modeling [Ref: G6] to simulate scenarios before major shifts.
 
-**Rebalance strategy** [Ref: L2]: (1) **Short-term**: Pause/reduce high-CAC; reallocate to efficient channels; (2) **Medium-term**: Test new channels (organic, partnerships, community) [Ref: G9]; (3) **Long-term**: Improve CVR, increase LTV via retention [Ref: T2, T4].
-
-**Framework**: Marketing Mix Modeling [Ref: G6] to simulate scenarios. Document baseline, experiments, results [Ref: T2].
+**Limitations**: Attribution models have inherent biases; no single model captures perfect causality. External factors (market conditions, seasonality, competitive actions) may confound channel performance metrics. Rapid budget shifts risk losing brand momentum and may undervalue long-term brand-building activities not captured by short-term LTV calculations.
 
 **Supporting Artifact**:
 
