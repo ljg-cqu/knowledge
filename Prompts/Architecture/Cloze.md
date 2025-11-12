@@ -1,29 +1,27 @@
 # Cloze: Software Architecture Patterns
 
-Generate comprehensive, well-structured fill-in-the-blank assessments (24–40 items) testing how senior technical professionals (5+ years) understand and apply software architecture patterns, principles, and trade-offs.
+Generate fill-in-the-blank assessments (24–40 items) testing senior professionals (5+ years) on architecture patterns, principles, and trade-offs.
 
-**Output Requirements**: Provide a complete, structured document with Table of Contents, organized item bank, comprehensive references, and validation summary. Follow the exact format specified in Output Structure section.
+**Output**: Complete document with TOC, item bank, references, and validation summary per Output Structure.
 
 ---
 
 ## Task
 
-**Context**: Create unambiguous cloze items with `___` blanks testing architecture terminology, patterns, principles, and trade-offs across 4–6 MECE (Mutually Exclusive, Collectively Exhaustive) topic clusters covering the full domain without overlap.
+**Context**: Create unambiguous cloze items with `___` blanks testing architecture across 4–6 MECE clusters covering full domain without overlap.
 
-**Scope**: 
-- **Breadth**: Cover multiple perspectives including structural, behavioral, quality, data, and integration concerns
-- **Depth**: Provide thorough treatment with sufficient detail including performance characteristics, trade-offs, and context-specific guidance
+**Scope**: Cover structural, behavioral, quality, data, integration, and evolution perspectives with performance, trade-offs, and context guidance.
 
 **Clusters**: Structural Patterns | Behavioral Patterns | Quality Attributes | Data Architecture | Integration Patterns | Architecture Evolution
 
 **Constraints**: 
-- Case-insensitive matching; trim whitespace; strip punctuation
-- Each item: 1 blank = 1 primary answer + variants (synonyms, regional spellings, abbreviations)
-- Rationale format: [Concept] + [Architectural implication with trade-offs/limitations/risks] + [Context guidance on when to use/avoid] + [≥1 citation as [Ref: ID]]
-- Risk/Value assessment: For Advanced items, include performance/cost implications; flag high-risk choices with mitigation strategies
+- Case-insensitive; trim whitespace; strip punctuation
+- 1 blank = 1 primary answer + variants (synonyms, regional spellings, abbreviations)
+- Rationale: [Concept] + [Implication with trade-offs/limitations/risks] + [When to use/avoid] + [≥1 [Ref: ID]]
+- Advanced items: Include performance/cost; flag high-risk with mitigation
 
-**Difficulty** (MECE distribution):
-- Foundational (20%): Industry-standard terms (e.g., Hexagonal, CQRS, DDD, Microservices)
+**Difficulty** (MECE):
+- Foundational (20%): Industry-standard terms (Hexagonal, CQRS, DDD, Microservices)
 - Intermediate (40%): Pattern application, trade-off recognition  
 - Advanced (40%): Performance metrics, context-specific optimizations, limitations
 
@@ -33,86 +31,83 @@ Generate comprehensive, well-structured fill-in-the-blank assessments (24–40 i
 
 ### Content Quality
 
-**Clarity**: Use clear, precise language; define technical terms or acronyms on first use; avoid ambiguous phrasing  
-**Precision**: Use consistent terminology throughout; specify exact metrics/thresholds where applicable  
-**Relevance**: Include only architecture-relevant information; exclude tangential details  
-**Significance**: Prioritize important architectural concepts and high-impact patterns; exclude trivial variations or obscure patterns with limited real-world use  
-**Concision**: Eliminate redundancy; use the most direct phrasing that maintains clarity  
-**Logic**: Ensure coherent reasoning in rationales; structure information logically (concept → implication → trade-offs → citations)
+**Clarity**: Clear, precise language; define technical terms/acronyms on first use; avoid ambiguity  
+**Precision**: Consistent terminology; specify exact metrics/thresholds  
+**Relevance**: Architecture-relevant only; exclude tangential details  
+**Significance**: Important concepts and high-impact patterns; exclude trivial/obscure patterns  
+**Concision**: No redundancy; direct phrasing maintaining clarity  
+**Logic**: Coherent reasoning; logical structure (concept → implication → trade-offs → citations)
 
-### References (4 sections with inline citations [Ref: ID])
+### References (4 sections with inline [Ref: ID])
 
 | Section | Min | Criteria |
 |---------|-----|----------|
-| **Glossary** (G#) | 10 | Architecture terms + pattern implications + related concepts; define acronyms; [Language Tag] |
-| **Tools** (T#) | 5 | ≥10K users; URL + adoption metrics + use cases |
-| **Literature** (L#) | 6 | Books/journals/reports; peer-reviewed or practitioner-recognized; include publication context |
-| **APA Citations** (A#) | 12 | APA 7th + [Language Tag]; ~60% EN, ~30% ZH, ~10% other; prioritize authoritative sources |
+| **Glossary** (G#) | 10 | Terms + implications + related concepts; define acronyms; [Language Tag] |
+| **Tools** (T#) | 5 | ≥10K users; URL + adoption + use cases |
+| **Literature** (L#) | 6 | Books/journals/reports; peer-reviewed or practitioner-recognized |
+| **APA Citations** (A#) | 12 | APA 7th + [Language Tag]; ~60% EN, ~30% ZH, ~10% other; authoritative sources |
 
-### Quality Gates (100% compliance required)
+### Quality Gates (100% compliance)
 
 | Gate | Target |
 |------|--------|
-| Citation Coverage | ≥70% items have ≥1 citation; ≥30% have ≥2 |
-| Recency | ≥50% published ≤3 years (≥70% for cloud-native/microservices) |
-| Source Diversity | ≥3 types; no single source >25%; ≥3 geographic regions; balanced perspectives (enterprise vs. startup contexts) |
-| Pattern-Practice Mapping | ≥70% items test pattern-to-practice application |
-| Trade-off Coverage | ≥50% items explicitly mention trade-offs, limitations, or context constraints in rationale |
-| Link/Reference Integrity | 100% URLs accessible/archived; all [Ref: ID] resolve to G#/T#/L#/A# |
-| MECE | Zero cluster overlap; complete domain coverage |
-| Accuracy | All technical claims verified against authoritative sources; uncertain information flagged |
+| Citation Coverage | ≥70% items ≥1 citation; ≥30% ≥2 citations |
+| Recency | ≥50% ≤3yr (≥70% cloud-native/microservices) |
+| Source Diversity | ≥3 types; ≤25% single source; ≥3 regions; balanced perspectives |
+| Pattern-Practice | ≥70% test pattern-to-practice |
+| Trade-off Coverage | ≥50% mention trade-offs/limitations/constraints |
+| Link Integrity | 100% URLs accessible/archived; all [Ref: ID] resolve |
+| MECE | Zero overlap; complete coverage |
+| Accuracy | All claims verified; uncertainty flagged |
 
 ### Answer Validation
 
-**Primary**: Canonical terms from authoritative sources (prioritize sources with >10K citations or industry-wide adoption)  
-**Variants**: Regional (US/UK English), historical terms, abbreviations, framework-specific names  
-**Borderline Cases**: Include if ≥2 authoritative sources use within 5 years; document rationale and source quality  
-**Conflicts**: When terminology differs across sources:
-  - Include all recognized variants as acceptable answers
-  - Specify framework/tool version if terminology changed significantly
-  - Document conflicting guidance in rationale with context (e.g., "Martin Fowler recommends X for microservices; Evans recommends Y for monoliths")
-**Uncertainty**: Flag uncertain or evolving terminology; cite multiple perspectives; avoid presenting contested claims as definitive
+**Primary**: Canonical terms from authoritative sources (>10K citations or industry-wide adoption)  
+**Variants**: Regional (US/UK), historical, abbreviations, framework-specific  
+**Borderline**: Include if ≥2 authoritative sources within 5yr; document rationale  
+**Conflicts**: Include all recognized variants; specify version if changed; document conflicting guidance with context  
+**Uncertainty**: Flag uncertain/evolving terms; cite multiple perspectives; avoid contested claims as definitive
 
 ---
 
 ## Process
 
-### 1. Plan (MECE topology)
-Select 4–6 clusters ensuring no overlap and complete domain coverage; allocate 4–8 items/cluster; apply 20/40/40 difficulty distribution per cluster. Document reasoning for cluster selection and boundaries.
+### 1. Plan (MECE)
+Select 4–6 clusters (no overlap, complete coverage); 4–8 items/cluster; 20/40/40 difficulty distribution. Document cluster selection reasoning.
 
 ### 2. Collect References
-Gather authoritative, diverse, recent sources meeting minimums and quality gates above. Prioritize peer-reviewed or practitioner-recognized sources; include multiple perspectives (enterprise/startup, different architectural schools); flag any uncertainty or conflicting guidance.
+Gather authoritative, diverse, recent sources meeting minimums and gates. Prioritize peer-reviewed/practitioner-recognized; include multiple perspectives; flag uncertainty/conflicts.
 
 ### 3. Generate Items
-For each item:
-- **Draft**: Single unambiguous blank with sufficient expert context (avoid jargon without definition)
-- **Acceptance List**: Primary + variants from ≥2 authoritative sources (5-year window); document borderline cases
-- **Rationale**: Concept + architectural implication with trade-offs/limitations/context constraints + ≥1 [Ref: ID]
-- **Self-Review** every 5 items: 
-  - Check for ambiguity (multiple interpretations?)
-  - Verify acceptance completeness (missing common synonyms?)
-  - Validate citations (sources credible? claims accurate?)
-  - Confirm difficulty tier (appropriate for target expertise?)
-  - Assess trade-off coverage (limitations acknowledged?)
+Per item:
+- **Draft**: Single unambiguous blank with expert context (define jargon)
+- **Acceptance**: Primary + variants from ≥2 authoritative sources (5yr); document borderline
+- **Rationale**: Concept + implication with trade-offs/limitations/constraints + ≥1 [Ref: ID]
+- **Self-Review** (every 5 items): 
+  - Ambiguity? (multiple interpretations?)
+  - Completeness? (missing synonyms?)
+  - Citations? (credible? accurate?)
+  - Difficulty? (appropriate tier?)
+  - Trade-offs? (limitations acknowledged?)
 
 ### 4. Compile References
-Populate sections with consistent IDs; verify all [Ref: ID] resolve; archive unstable URLs (Wayback Machine). Cross-check factual correctness against multiple sources.
+Populate with consistent IDs; verify [Ref: ID] resolve; archive unstable URLs. Cross-check accuracy.
 
 ### 5. Validate
-Perform comprehensive self-review of 100% checklist compliance before delivery:
-- Run accuracy checks on all technical claims
-- Verify MECE properties (no overlap, complete coverage)
-- Confirm balanced perspectives and trade-off coverage
-- Validate all URLs and reference integrity
-- Document any assumptions, limitations, or deviations in Notes
+100% checklist compliance before delivery:
+- Accuracy checks on all claims
+- MECE verification (no overlap, complete coverage)
+- Balanced perspectives and trade-offs
+- URLs and reference integrity
+- Document assumptions/limitations/deviations in Notes
 
 ---
 
 ## Output Structure
 
-**Format**: Markdown with hierarchical structure (H2 for sections, H3 for subsections, H4 for items)  
-**Navigation**: Include clickable Table of Contents with anchor links to all major sections and subsections  
-**Organization**: Group items by topic cluster; maintain consistent formatting throughout
+**Format**: Markdown (H2 sections, H3 subsections, H4 items)  
+**Navigation**: Clickable TOC with anchor links  
+**Organization**: Group by cluster; consistent formatting
 
 ```markdown
 ## Table of Contents
@@ -135,7 +130,7 @@ Perform comprehensive self-review of 100% checklist compliance before delivery:
 - Hexagonal Architecture
 - Ports and Adapters
 
-**Rationale:** Hexagonal Architecture [Ref: G1] uses ports (interfaces) and adapters (implementations) to isolate the domain core from external dependencies (UI, databases, APIs), enabling independent testing and technology swapping [Ref: A5]. Trade-off: Increased abstraction layers add initial complexity and learning curve.
+**Rationale:** Hexagonal Architecture [Ref: G1] uses ports (interfaces) and adapters (implementations) to isolate domain core from external dependencies (UI, databases, APIs), enabling independent testing and technology swapping [Ref: A5]. Trade-off: Increased abstraction layers add initial complexity and learning curve.
 
 ---
 
@@ -209,35 +204,35 @@ Perform comprehensive self-review of 100% checklist compliance before delivery:
 | MECE | Pass | [Pass/Fail] | ✅/❌ |
 | Accuracy Check | Pass | [Pass/Fail] | ✅/❌ |
 
-**Notes**: [Document any assumptions, limitations, deviations, borderline cases, conflicting guidance, or recommendations]
+**Notes**: [Document assumptions, limitations, deviations, borderline cases, conflicts, or recommendations]
 ```
 
 ---
 
 ## Success Criteria
 
-**Measurable Outcomes**: A successful output must:
-1. Pass 100% of quality gates in Validation Summary (all metrics ✅)
-2. Contain 24–40 items with 20/40/40 difficulty distribution (±5%)
-3. Meet all reference minimums (≥10 Glossary, ≥5 Tools, ≥6 Literature, ≥12 APA)
-4. Achieve ≥70% citation coverage (≥1 citation) and ≥30% (≥2 citations)
-5. Demonstrate ≥50% trade-off coverage in rationales
-6. Show balanced perspectives across different contexts (enterprise/startup, different scales)
-7. Have 100% URL accessibility and reference integrity
-8. Exhibit zero MECE violations (no cluster overlap, complete domain coverage)
+**Measurable Outcomes**: Must:
+1. Pass 100% quality gates (all ✅)
+2. 24–40 items with 20/40/40 distribution (±5%)
+3. Meet reference minimums (≥10 Glossary, ≥5 Tools, ≥6 Literature, ≥12 APA)
+4. ≥70% citation coverage (≥1) and ≥30% (≥2)
+5. ≥50% trade-off coverage in rationales
+6. Balanced perspectives (enterprise/startup, scales)
+7. 100% URL accessibility and reference integrity
+8. Zero MECE violations (no overlap, complete coverage)
 
-**Practical Utility**: Items must be:
-- Unambiguous (single correct interpretation by domain experts)
-- Answerable by target audience (senior professionals with 5+ years experience)
-- Actionable for assessment purposes (clear right/wrong answers with justification)
-- Representative of real-world architectural decision-making
+**Practical Utility**: Items must:
+- Be unambiguous (single interpretation by experts)
+- Be answerable by target audience (senior, 5+ years)
+- Have clear right/wrong answers with justification
+- Represent real-world architectural decisions
 
-**Quality Indicators**: Strong submissions demonstrate:
+**Quality Indicators**: Strong submissions:
 - Precise technical language with defined terms
-- Context-aware trade-offs (when to use/avoid patterns)
+- Context-aware trade-offs (when to use/avoid)
 - Multiple authoritative sources per concept
-- Recent references (≥50% within 3 years)
-- Diverse perspectives without bias toward specific vendors/frameworks
+- Recent references (≥50% within 3yr)
+- Diverse perspectives without vendor/framework bias
 
 ---
 

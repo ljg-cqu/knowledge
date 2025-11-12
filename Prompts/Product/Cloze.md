@@ -1,6 +1,6 @@
 # Cloze – Product Manager
 
-Generate PM fill-in-the-blank assessments for hiring and upskilling senior/director/VP-level PMs.
+Generate PM fill-in-the-blank assessments for senior+ PMs.
 
 ---
 
@@ -8,27 +8,26 @@ Generate PM fill-in-the-blank assessments for hiring and upskilling senior/direc
 
 ## Task Definition
 
-**Scope**: 24–40 PM-focused items; 20/40/40 difficulty split (Foundational/Intermediate/Advanced); ~60% EN, ~30% ZH, ~10% other sources.
+**Scope**: 24–40 items; 20/40/40 difficulty (Foundational/Intermediate/Advanced); ~60% EN, ~30% ZH, ~10% other.
 
-**Constraints**: Product management domain only; unambiguous blanks (___); acceptable answer arrays with normalization (case-insensitive, trim, strip punctuation, numeric ±0.01 tolerance); no PII; no vendor bias.
+**Constraints**: PM domain; unambiguous blanks (___); normalized answers (case-insensitive, trim, strip punctuation, ±0.01 numeric); no PII; no vendor bias.
 
-**Coverage**: MECE clusters across Strategy | Discovery & Validation | Prioritization & Roadmapping | Metrics & Growth | Stakeholder Management | Go-to-Market. Each cluster: definitions, metrics, frameworks, trade-offs. Advanced items: rationale, edge cases, alternatives.
+**Coverage**: MECE across Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM. Include definitions, metrics, frameworks, trade-offs. Advanced: rationale, edge cases, alternatives.
 
-## Quality Requirements
+## Quality & Validation
 
-**Reference Floors**: Glossary ≥10, Tools ≥5, Literature ≥6, Citations ≥12 (APA 7th + language tags [EN]/[ZH])
+**Minimums**: Glossary ≥10, Tools ≥5, Literature ≥6, APA Citations ≥12 (7th ed + [EN]/[ZH])
 
-**Quality Gates**:
+**Gates**:
 - **Recency**: ≥50% last 3yr (≥70% AI/platform)
 - **Diversity**: ≥3 source types; single <25%
-- **Evidence**: ≥70% items cite ≥1 source; ≥30% cite ≥2
-- **Links**: All accessible/archived (prefer DOI)
-- **Cross-refs**: All [Ref: ID] resolve (G#/T#/L#/A#)
-- **Significance**: High-value items only; exclude trivial
+- **Evidence**: ≥70% cite ≥1; ≥30% cite ≥2
+- **Links**: All accessible/archived; prefer DOI
+- **Cross-refs**: All [Ref: G#/T#/L#/A#] resolve
 - **Concision**: Statements ≤200 chars; rationales ≤2 sentences
 - **Logic**: Rationales = claim → reason → evidence
-- **Risk/Value**: ≥30% advanced items include trade-offs/costs/benefits
-- **Fairness**: Contested items show assumptions + alternatives
+- **Risk/Value**: ≥30% advanced show trade-offs
+- **Fairness**: Contested show assumptions + alternatives
 
 **Tool Details**: Pricing, users, update ≤18mo, integrations
 
@@ -36,54 +35,49 @@ Generate PM fill-in-the-blank assessments for hiring and upskilling senior/direc
 ```json
 {
   "normalization": {"caseInsensitive": true, "trimWhitespace": true, "stripPunctuation": true, "numericTolerance": 0.01},
-  "items": [{"id": "1", "statement": "Framework scoring features by reach, impact, confidence, effort is ___.", "acceptableAnswers": ["RICE", "RICE prioritization"], "domain": "Prioritization", "difficulty": "Foundational"}],
-  "policies": {"significanceFilter": true, "logicStructure": "claim-reason-evidence", "fairness": "include-alternatives-when-contested"}
+  "items": [{"id": "1", "statement": "Framework scoring by reach, impact, confidence, effort is ___.", "acceptableAnswers": ["RICE", "RICE prioritization"], "domain": "Prioritization", "difficulty": "Foundational"}]
 }
 ```
 
-## Validation
-
-Run all checks; fix failures; re-run until all PASS.
+**Checklist**: Run all; fix failures; re-run until PASS.
 
 | Check | Requirement | Format |
 |-------|------------|--------|
-| Floors | G≥10, T≥5, L≥6, A≥12, Items 24–40 (20/40/40) | G:X T:Y L:Z A:W I:N (F/I/A) |
-| Citations | ≥70% items ≥1 cite; ≥30% ≥2 cites | X% ≥1, Y% ≥2 |
+| Floors | G≥10, T≥5, L≥6, A≥12, Items 24–40 (20/40/40) | G:X T:Y L:Z A:W I:N |
+| Citations | ≥70% ≥1; ≥30% ≥2 | X% ≥1, Y% ≥2 |
 | Language | EN 50-70%, ZH 20-40%, Other 5-15% | EN:X% ZH:Y% Other:Z% |
 | Recency | ≥50% last 3yr (≥70% AI/platform) | X% last 3yr |
-| Diversity | ≥3 source types; single <25% | N types, max P% |
-| Links | All accessible/archived | Y/X accessible |
-| Cross-refs | All [Ref: ID] resolve | Y/X resolved |
-| Significance | 100% high-value items | PASS/FAIL |
-| Concision | Statements ≤200; rationales ≤2 sent | S/X, R/X |
-| Logic | Claim→reason→evidence (spot ≥10%) | Sample N |
-| Fairness | Contested items show assumptions/alternatives | PASS/FAIL |
-| Risk/Value | ≥30% advanced items include trade-offs | PASS/FAIL |
-| Practicality | Grader config; normalization tested | PASS/FAIL |
+| Diversity | ≥3 types; max <25% | N types, max P% |
+| Links | All accessible/archived | Y/X |
+| Cross-refs | All [Ref: ID] resolve | Y/X |
+| Concision | Stmt ≤200; rationale ≤2 sent | S/X, R/X |
+| Logic | Claim→reason→evidence (≥10% spot) | Sample N |
+| Risk/Value | ≥30% advanced show trade-offs | PASS/FAIL |
+| Fairness | Contested show assumptions/alternatives | PASS/FAIL |
 
-**Stop on ANY failure. Fix, regenerate, re-validate.**
+**Stop on failure. Fix, regenerate, re-validate.**
 
 ---
 
 # Instructions
 
-Execute sequentially; verify before proceeding.
+Execute sequentially; verify at each step.
 
-1. **Plan Topics**: Identify 4–6 clusters (Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM); allocate 4–8 items/cluster; assign 20/40/40 difficulty. **Verify**: 24–40 total.
+1. **Plan**: Identify 4–6 clusters (Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM); allocate 4–8 items/cluster; assign 20/40/40 difficulty. **Verify**: 24–40 total.
 
-2. **Collect References**:
+2. **References**:
    - Glossary ≥10: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST
    - Tools ≥5: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro)
    - Literature ≥6: EN (Cagan, Olsen, Torres, Perri, Patton, Klement); ZH (俞军, 梁宁, 苏杰)
    - Citations ≥12: Assign IDs (G#/T#/L#/A#); tag language/year/type
    
-   **Verify**: Counts met; language 60/30/10%; recency ≥50% last 3yr; ≥3 types.
+   **Verify**: Counts, language 60/30/10%, recency ≥50% last 3yr, ≥3 types.
 
-3. **Generate Items**: Write unambiguous fill-in-the-blank statements; define acceptable answer arrays; add 1–2 sentence rationales citing [Ref: ID]. **Verify** every 5 items: clarity, citations, answer quality.
+3. **Generate**: Write unambiguous blanks; define answer arrays; add 1–2 sentence rationales citing [Ref: ID]. **Verify** every 5: clarity, citations, answers.
 
-4. **Populate References**: Complete Glossary, Tools, Literature, APA sections. **Verify**: All [Ref: ID] resolve.
+4. **Populate**: Complete Glossary, Tools, Literature, APA. **Verify**: All [Ref: ID] resolve.
 
-5. **Validate**: Run validation table; fix failures; re-run until all PASS.
+5. **Validate**: Run checklist; fix failures; re-run until PASS.
 
 6. **Submit**: All checks PASS.
 
@@ -91,7 +85,7 @@ Execute sequentially; verify before proceeding.
 
 # Output Format
 
-Include TOC linking to sections. Use lists, tables, Mermaid diagrams, code blocks.
+Include TOC. Use lists, tables, diagrams, code blocks.
 
 ## Structure
 
@@ -99,24 +93,24 @@ Include TOC linking to sections. Use lists, tables, Mermaid diagrams, code block
 
 **Item X**  
 **Difficulty**: Foundational/Intermediate/Advanced | **Domain**: Strategy/Discovery/Prioritization/Metrics/Stakeholder/GTM  
-**Statement**: Fill-in-the-blank (≤200 chars)  
-**Acceptable Answers**: [Array of valid responses]  
+**Statement**: (≤200 chars)  
+**Acceptable Answers**: [array]  
 **Rationale**: 1–2 sentences citing [Ref: ID]
 
-### Reference Sections
+### References
 
 Assign IDs: G# (Glossary), T# (Tools), L# (Literature), A# (APA). Cite as [Ref: G2, T3, A5].
 
-**Glossary (≥10)**: Term, definition, use cases, related concepts  
-Example: **G2. RICE** – Reach × Impact × Confidence ÷ Effort scoring for feature prioritization. Use: roadmap planning, backlog ranking. Related: ICE, Value/Effort, KANO
+**Glossary (≥10)**: Term, definition, use cases, related  
+Example: **G2. RICE** – Reach × Impact × Confidence ÷ Effort scoring for prioritization. Use: roadmap, backlog. Related: ICE, Value/Effort, KANO
 
 **Tools (≥5)**: Name (Category), features, pricing, users, updated, integrations, PM use, URL  
-Example: **T2. ProductBoard** (Roadmapping) – Features: Feedback aggregation, value/effort matrix, roadmap views. Pricing: $25/maker/mo–Enterprise. Users: 6K+ (Microsoft, Zoom). Updated: Q4 2024. Integrations: Jira, Slack, Salesforce. PM use: RICE scoring, stakeholder comms. https://productboard.com
+Example: **T2. ProductBoard** (Roadmapping) – Feedback aggregation, value/effort matrix, roadmap views. $25/maker/mo–Enterprise. 6K+ (Microsoft, Zoom). Q4 2024. Jira, Slack, Salesforce. RICE scoring, stakeholder comms. https://productboard.com
 
-**Literature (≥6)**: Author. Year. Title. Publisher. Summary (1–2 sentences)  
-Example: **L4. Torres, T. (2021). *Continuous Discovery Habits*. Product Talk LLC.** Weekly customer touchpoints, opportunity solution trees. Discovery process design.
+**Literature (≥6)**: Author. Year. Title. Publisher. Summary (1–2 sent)  
+Example: **L4. Torres, T. (2021). *Continuous Discovery Habits*. Product Talk LLC.** Weekly touchpoints, opportunity trees, discovery process.
 
-**APA (≥12)**: Full APA 7th + language tag [EN]/[ZH]  
+**APA (≥12)**: APA 7th + [EN]/[ZH]  
 Example: **A6. Torres, T. (2021). *Continuous discovery habits: Discover products that create customer value and business value*. Product Talk LLC. [EN]**
 
 ---

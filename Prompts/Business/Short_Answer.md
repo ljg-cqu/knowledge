@@ -1,134 +1,115 @@
 # Short Answer: Business-to-Architecture Translation
 
-Generate 25–40 self-contained assessment problems mapping business requirements to architecture decisions for senior technical leaders.
+Generate 25–40 assessment problems mapping business requirements to architecture decisions for senior technical leaders.
 
 ---
 
-**Context**: Generate 25–40 assessment problems for senior technical leaders evaluating business-to-architecture translation skills.
+## Task Definition
 
-**Scope**: Each problem must include:
-- Business scenario with explicit constraints, assumptions, stakeholder impact
-- Architecture implications and trade-offs
-- Expected answer, worked solution (2–4 MECE steps), grading rubric (10-point scale)
-- Self-contained context (no external dependencies)
+**Audience**: Senior technical leaders (software architecture, business strategy, organizational design expertise)
 
-**Constraints**:
-- Difficulty: 20% Foundational / 40% Intermediate / 40% Advanced
-- Problem types: Business model analysis, value stream mapping, risk assessment, architecture justification, trade-off calculation
-- Citations: ≥1 per solution using [Ref: ID] format
-- Solution structure: MECE reasoning, explicit business-to-architecture mapping
+**Deliverable**: 25–40 problems (20% Foundational / 40% Intermediate / 40% Advanced)
 
-**Assumptions**:
-- Audience has domain expertise in software architecture, business strategy, organizational design
-- Alternative frameworks acceptable (BMC vs. Lean Canvas, DDD vs. functional decomposition) if documented
-- Partial credit awarded for directionally correct incomplete answers
+**Structure per Problem**:
+- Business scenario (constraints, assumptions, stakeholder impact)
+- Expected answer (1–2 sentences/point)
+- Worked solution (2–4 MECE steps, ≥1 [Ref: ID] citation)
+- Grading rubric (10pts: Business 4, Value 3, Architecture 3)
 
-**Success Criteria** (measurable):
-- 100% problems have complete structure (scenario, answer, solution, rubric)
-- ≥80% problems require explicit business-to-architecture translation
-- ≥70% problems cite ≥1 source; ≥30% cite ≥2+ sources
-- All citations meet language mix (50-70% EN, 20-40% ZH, 5-15% other), recency (≥50% last 3 years), diversity (≥3 types), accessibility (100% valid URLs)
-- All 10 validation steps pass before delivery
+**Types**: Business model analysis, value stream mapping, risk assessment, architecture justification, trade-off calculation
 
-**Grading Model** (10 points):
-- Business Analysis: 4 pts (identify drivers, constraints, stakeholder impact)
-- Value Mapping: 3 pts (translate to technical features/quality attributes)
-- Architecture Decisions: 3 pts (justified choices with trade-off analysis)
-- Partial credit: Proportional points for incomplete but correct answers
+**Assumptions**: Alternative frameworks acceptable if documented; partial credit for directionally correct answers
+
+**Success Criteria**:
+- 100% complete structure; ≥80% require business-to-architecture translation
+- Citations: ≥70% problems ≥1 source, ≥30% problems ≥2+ sources
+- Citation quality: 50-70% EN, 20-40% ZH, 5-15% other; ≥50% last 3yr; ≥3 types; 100% valid URLs
+- All 10 validation checks pass
 
 ## Reference Requirements
 
-| Section | Min | Format | Quality Criteria |
-|---------|-----|--------|------------------|
-| **Glossary** | 10 | **G#. Term**: Definition. Context. [Lang] | Define all domain terms (BMC, DDD, Conway's Law, Technical Debt, ADR, etc.) |
-| **Tools** | 5 | **T#. Tool**: Purpose, tier, users, update, URL. [Lang] | Verify URLs; prioritize active tools (Miro, ArchiMate, C4, Confluence, LucidChart) |
-| **Literature** | 6 | **L#. Author, Year, Title, Publisher.** Topics. | Seminal + recent works (Business Model Generation, DDD, Team Topologies, Microservices Patterns) |
-| **APA Citations** | 12 | **A#. Full APA 7th citation. [Lang]** | Follow APA 7th; maintain language mix; verify accessibility |
+| Section | Min | Format | Criteria |
+|---------|-----|--------|----------|
+| **Glossary** | 10 | **G#. Term**: Definition. [Lang] | Domain terms (BMC, DDD, Conway's Law, ADR, etc.) |
+| **Tools** | 5 | **T#. Tool**: Purpose, tier, users, update, URL. [Lang] | Active tools (Miro, ArchiMate, C4, Confluence, LucidChart) |
+| **Literature** | 6 | **L#. Author, Year, Title, Publisher.** Topics. | Seminal + recent (Business Model Generation, DDD, Team Topologies) |
+| **APA** | 12 | **A#. Full APA 7th. [Lang]** | APA 7th; language mix; verified URLs |
 
-**Citation Quality**:
-- Language: 50-70% [EN], 20-40% [ZH], 5-15% other
-- Recency: ≥50% last 3 years (≥70% for digital transformation/cloud-native/AI/ML)
-- Diversity: ≥3 source types (business frameworks, architecture patterns, case studies, tools); no type >25%
-- Credibility: Prioritize peer-reviewed research, established frameworks, authoritative practitioners
-- Accessibility: 100% URLs accessible or archived (Internet Archive)
-- Inline format: [Ref: G#/T#/L#/A#]
+**Citation Quality**: EN 50-70%, ZH 20-40%, other 5-15%; ≥50% last 3yr (≥70% for fast-evolving); ≥3 types, no type >25%; prioritize peer-reviewed/authoritative; 100% accessible URLs
 
 ## Validation (Execute Before Delivery)
 
 | # | Check | Pass Criteria |
 |---|-------|---------------|
-| 1 | Count | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12; Problems 25-40 (20%/40%/40% difficulty) |
-| 2 | Citation Coverage | ≥70% problems cite ≥1 source; ≥30% cite ≥2+ |
+| 1 | Count | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12; Problems 25-40 (20%/40%/40%) |
+| 2 | Citation Coverage | ≥70% problems ≥1 source; ≥30% ≥2+ |
 | 3 | Language Mix | EN 50-70%, ZH 20-40%, Other 5-15% |
-| 4 | Recency | ≥50% last 3 years (≥70% for fast-evolving domains) |
-| 5 | Diversity | ≥3 source types; no type >25% |
-| 6 | URL Access | 100% URLs valid or archived |
-| 7 | Cross-Refs | All [Ref: ID] resolve to valid entries |
-| 8 | Completeness | 100% problems have answer + solution + rubric |
-| 9 | MECE Logic | 100% solutions show business-to-architecture mapping |
-| 10 | Translation | ≥80% problems require explicit business → architecture mapping |
+| 4 | Recency | ≥50% last 3yr (≥70% fast-evolving) |
+| 5 | Diversity | ≥3 types; no type >25% |
+| 6 | URL Access | 100% valid/archived |
+| 7 | Cross-Refs | All [Ref: ID] resolve |
+| 8 | Completeness | 100% have answer + solution + rubric |
+| 9 | MECE Logic | 100% show business-to-architecture mapping |
+| 10 | Translation | ≥80% require explicit business → architecture mapping |
 
-**Remediation**: If any check fails, document gap, fix, re-run failed + subsequent checks (max 3 cycles)
+**Remediation**: Document gap, fix, re-run failed + subsequent checks (max 3 cycles)
 
 ---
 
 ## Execution Steps
 
 ### 1. Plan (MECE Clusters)
-Create 4–6 MECE problem clusters (4–8 problems each) addressing distinct business perspectives:
-- Strategic Modeling: BMC analysis, value proposition, capability mapping
-- Value & Risk: Value stream optimization, risk quantification, cost-benefit
-- Organizational: Conway's Law, team topologies, boundaries
-- Architecture Translation: Requirements → decisions, constraints, trade-offs
-- Evolution: Technical debt, migration, architectural evolution
-- Integration: System boundaries, context mapping, patterns
+Create 4–6 clusters (4–8 problems each):
+- **Strategic Modeling**: BMC, value proposition, capability mapping
+- **Value & Risk**: Value stream, risk quantification, cost-benefit
+- **Organizational**: Conway's Law, team topologies, boundaries
+- **Architecture Translation**: Requirements → decisions, constraints, trade-offs
+- **Evolution**: Technical debt, migration, evolution
+- **Integration**: System boundaries, context mapping, patterns
 
-**Validate**: Total 25–40 problems; 20%/40%/40% difficulty; MECE coverage
+**Validate**: 25–40 total; 20%/40%/40% difficulty; MECE coverage
 
 ### 2. Collect References
-Build reference sections meeting minimum counts and quality criteria:
-- **Glossary** (≥10): Define domain terms (BMC, DDD, Conway's Law, Technical Debt, ADR, etc.)
-- **Tools** (≥5): Document tools with tier, users, URLs (Miro, ArchiMate, C4, Confluence, LucidChart)
-- **Literature** (≥6): Include seminal + recent works (Business Model Generation, DDD, Team Topologies)
-- **APA** (≥12): Follow APA 7th with language tags; maintain language mix
+Build sections meeting minimums and quality criteria:
+- **Glossary** (≥10): Domain terms
+- **Tools** (≥5): Tools with tier, users, URLs
+- **Literature** (≥6): Seminal + recent works
+- **APA** (≥12): APA 7th with language tags
 
-**Validate**: Language mix (50-70% EN, 20-40% ZH, 5-15% other), recency (≥50% last 3 years), diversity (≥3 types, no type >25%), accessibility (100% valid URLs)
+**Validate**: Language mix, recency, diversity, URL accessibility
 
 ### 3. Generate Problems (Batch of 5)
-For each problem:
-- **Statement** (2–4 sentences): Business scenario, stakeholders, constraints, assumptions, question
-- **Expected Answer** (1–2 sentences/point): Concise key mappings
-- **Worked Solution** (2–4 MECE steps): Show business-to-architecture translation; cite ≥1 source [Ref: ID]; include self-review for Intermediate/Advanced
-- **Grading Rubric** (10 pts): Business Analysis (4), Value Mapping (3), Architecture Decisions (3); define partial credit
+Per problem:
+- **Statement** (2–4 sentences): Scenario, stakeholders, constraints, assumptions, question
+- **Expected Answer** (1–2 sentences/point): Key mappings
+- **Worked Solution** (2–4 MECE steps): Business-to-architecture translation; ≥1 [Ref: ID]; self-review for Intermediate/Advanced
+- **Grading Rubric** (10pts): Business (4), Value (3), Architecture (3); partial credit defined
 
-**Validate after each batch**: Complete structure, MECE reasoning, citations resolve, self-review included, ≥80% require business-to-architecture translation
+**Validate after each batch**: Complete structure, MECE reasoning, citations resolve, self-review, ≥80% require translation
 
 ### 4. Finalize References
-- Populate all sections with consistent formatting
-- Cross-validate: All [Ref: ID] resolve to valid entries (G#/T#/L#/A#)
-- Test URLs; archive dead links (Internet Archive)
+- Populate with consistent formatting
+- Cross-validate: All [Ref: ID] resolve
+- Test URLs; archive dead links
 - Audit language mix, recency, diversity
 
 ### 5. Validate & Report
-Execute 10-step validation checklist. If any step fails:
-1. Document gap
-2. Remediate
-3. Re-run failed + subsequent steps (max 3 cycles)
+Execute 10-step checklist. If failed: document, remediate, re-run (max 3 cycles)
 
-Generate validation report:
+Report format:
 ```markdown
 | Step | Item | Status | Notes |
 |------|------|--------|-------|
 | 1 | Count | PASS | Glossary: X, Tools: Y, Literature: Z, APA: W, Problems: N (F/I/A) |
-| 2 | Citation Coverage | PASS | X% ≥1 citation; Y% ≥2 |
+| 2 | Citation Coverage | PASS | X% ≥1; Y% ≥2 |
 | 3 | Language Mix | PASS | EN: X%, ZH: Y%, Other: Z% |
-| 4 | Recency | PASS | X% last 3 years |
+| 4 | Recency | PASS | X% last 3yr |
 | 5 | Diversity | PASS | X types; max Y% |
 | 6 | URL Access | PASS | All valid/archived |
 | 7 | Cross-Refs | PASS | All resolve |
 | 8 | Completeness | PASS | All complete |
-| 9 | MECE Logic | PASS | All map business-to-architecture |
-| 10 | Translation | PASS | X% explicit mapping |
+| 9 | MECE Logic | PASS | All map |
+| 10 | Translation | PASS | X% explicit |
 **Overall**: ✓ ALL PASS
 ```
 
@@ -136,84 +117,77 @@ Generate validation report:
 
 ## Output Format
 
-**Structure**: TOC → Problem Bank (by topic clusters) → Reference Sections → Validation Report
+**Structure**: TOC → Problem Bank (by clusters) → References → Validation Report
 
-**Formatting**:
-- **TOC**: Anchor links to all sections and subsections
-- **Lists**: Bullets (unordered), numbers (sequential)
-- **Tables**: Comparisons, rubrics, references
-- **Diagrams**: Mermaid (no styling/colors)
-- **Code**: Fenced blocks with language tags
-- **Formulas**: LaTeX syntax
-- **Emphasis**: **bold** (key terms), *italics* (emphasis), `code` (technical terms)
+**Formatting**: TOC (anchor links), lists (bullets/numbers), tables, Mermaid diagrams (no styling), fenced code blocks, LaTeX formulas, **bold** (key terms), *italics* (emphasis), `code` (technical)
 
 **Template**:
 ```markdown
 ## Contents
 1. [Problem Bank](#problem-bank)
-   - [Topic 1: Strategic Modeling](#topic-1-strategic-modeling)
-   - [Topic 2: Value & Risk Analysis](#topic-2-value--risk-analysis)
-   - [Topic 3: Organizational Dynamics](#topic-3-organizational-dynamics)
-   - [Topic 4: Architecture Translation](#topic-4-architecture-translation)
-   - [Topic 5: Evolution & Adaptation](#topic-5-evolution--adaptation)
-   - [Topic 6: Integration & Boundaries](#topic-6-integration--boundaries)
-2. [Reference Sections](#reference-sections)
+   - [Strategic Modeling](#topic-1-strategic-modeling)
+   - [Value & Risk](#topic-2-value--risk-analysis)
+   - [Organizational](#topic-3-organizational-dynamics)
+   - [Architecture Translation](#topic-4-architecture-translation)
+   - [Evolution](#topic-5-evolution--adaptation)
+   - [Integration](#topic-6-integration--boundaries)
+2. [References](#reference-sections)
    - [Glossary](#glossary-terminology--acronyms)
    - [Tools](#business--architecture-tools)
    - [Literature](#authoritative-literature--case-studies)
-   - [APA Citations](#apa-style-source-citations)
-3. [Validation Report](#validation-report)
+   - [APA](#apa-style-source-citations)
+3. [Validation](#validation-report)
 ```
 
 ---
 
 ## Example Problem
 
-**Problem**: SaaS company shifts from monthly to annual billing. Analyze Business Model Canvas impact and identify 3 architectural requirements. **[Intermediate]**
+**Problem**: SaaS shifts monthly to annual billing. Analyze BMC impact, identify 3 architectural requirements. **[Intermediate]**
 
 **Expected Answer**:
 1. **BMC**: Revenue Streams (MRR→ARR), Customer Relationships (transactional→commitment), Key Activities (acquisition→retention)
-2. **Architecture**: Subscription management (annual cycles, prorated changes), Revenue recognition (GAAP/IFRS deferred revenue), Customer success (health scoring, renewal prediction)
+2. **Architecture**: Subscription management (annual cycles, prorated changes), Revenue recognition (deferred revenue), Customer success (health scoring, renewal prediction)
 
 **Worked Solution**:
 
 **Step 1 - BMC Analysis** [Ref: G1, A1]:
-- **Revenue Streams**: MRR→ARR; cash flow predictability ↑ → deferred revenue system
+- **Revenue Streams**: MRR→ARR; cash predictability ↑ → deferred revenue system
 - **Customer Relationships**: Transactional→commitment; CLV ↑, retention pressure ↑ → health scoring
 - **Key Activities**: Transaction→retention; retention economics → usage monitoring, renewal prediction
 
-**Step 2 - Value & Segment Mapping** [Ref: G2, G11]:
+**Step 2 - Value & Segment** [Ref: G2, G11]:
 - **Value Prop**: Flexibility→cost savings+predictability → usage dashboards
 - **Segment**: SMB→Enterprise → SSO, audit logs, SLA
 
-**Step 3 - Architecture Translation** [Ref: A7, A10]:
-1. **Subscription Management**: Event-sourced service; upgrades/downgrades, prorated refunds; trade-off: complexity vs. flexibility
+**Step 3 - Architecture** [Ref: A7, A10]:
+1. **Subscription**: Event-sourced service; upgrades/downgrades, prorated refunds; trade-off: complexity vs. flexibility
 2. **Revenue Recognition**: Separate billing/revenue domains [Ref: G3]; amortization, audit trails; trade-off: build vs. buy
 3. **Customer Success**: Analytics pipeline; telemetry, renewal risk; integrations: CRM/support/analytics
 
 **Step 4 - Risks** [Ref: G5]:
-- Technical debt (rushed) → phased rollout, testing
-- Data consistency (multi-system) → event-driven architecture
-- Migration (existing customers) → gradual migration, dual-track
+- Technical debt (rushed) → phased rollout
+- Data consistency (multi-system) → event-driven
+- Migration (existing customers) → gradual, dual-track
 
-**Grading Rubric (10 pts)**:
-- **Business Analysis (4)**: 4=all 3 BMC + impact; 3=2 components; 2=1 component; 0-1=incomplete
-- **Value Mapping (3)**: 3=VP+segment→features; 2=one dimension; 1=mention only; 0=none
+**Grading Rubric (10pts)**:
+- **Business (4)**: 4=all 3 BMC + impact; 3=2 components; 2=1 component; 0-1=incomplete
+- **Value (3)**: 3=VP+segment→features; 2=one dimension; 1=mention; 0=none
 - **Architecture (3)**: 3=all 3 systems + justification; 2=2 systems; 1=list only; 0=missing
-- **Partial credit**: Proportional for directionally correct answers
-- **Alternatives**: Lean Canvas/VP Canvas acceptable (document in rubric)
+- **Partial**: Proportional for directionally correct
+- **Alternatives**: Lean Canvas/VP Canvas acceptable (document)
 
-**Self-Review**: Business driver → distinct requirement? Trade-offs justified? ≥3 citations? MECE?
+**Self-Review**: Business → distinct requirement? Trade-offs justified? ≥3 citations? MECE?
 
 ---
 
 ## Terminology
 
-**G1. Business Model Canvas (BMC)**: 9-block template mapping business to tech (Segments, Value Props, Channels, Relationships, Revenue, Resources, Activities, Partnerships, Costs). [EN]
+**G1. Business Model Canvas (BMC)**: 9-block business template (Segments, Value Props, Channels, Relationships, Revenue, Resources, Activities, Partnerships, Costs). [EN]
 
 **G2. Value Proposition**: Products/services creating customer value. Maps to features, quality attributes. [EN]
 
-**G3. Domain-Driven Design (DDD)**: Domain modeling via expert collaboration. Defines microservices boundaries, team organization. [EN]
+**G3. Domain-Driven Design (DDD)**: Domain modeling via expert collaboration. Defines boundaries, team organization. [EN]
 
 **G4. Conway's Law**: "Systems mirror organizational communication structure." Guides team topology, architecture alignment. [EN]
 

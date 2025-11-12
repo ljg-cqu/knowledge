@@ -1,8 +1,6 @@
 # Coding Task
 
-Generate senior/architect-level coding assessments (18-28 tasks) with MECE coverage, evidence-based design, and comprehensive validation.
-
----
+Generate senior/architect-level coding assessments with MECE coverage, evidence-based design, and validation.
 
 ## Contents
 - [Standards](#standards)
@@ -15,81 +13,79 @@ Generate senior/architect-level coding assessments (18-28 tasks) with MECE cover
 ## Standards
 
 ### Task Structure
-- **Scope**: 18-28 tasks across 4-6 topic clusters (3-5 tasks each)
-- **Difficulty**: 20% Foundational, 40% Intermediate, 40% Advanced
-- **Components**: Self-contained problem (I/O spec, signature, constraints), 6-10 tests (3-5 public, 3-5 hidden), reference solution with complexity analysis, grading rubric (70% correctness, 20% edge cases, 10% style)
-- **Language**: Use specific, consistent terms; define jargon inline or in glossary; avoid ambiguity
-- **Context**: Explicitly state assumptions, scope boundaries, constraints, exclusions
+- **Scope**: 18-28 tasks, 4-6 clusters (3-5 tasks/cluster), 20/40/40 difficulty split (Foundational/Intermediate/Advanced)
+- **Components**: Problem (I/O, signature, constraints), 6-10 tests (3-5 public, 3-5 hidden), solution (complexity, alternatives), rubric (70% correctness, 20% edges, 10% style)
+- **Language**: Specific terms; define jargon inline/glossary; avoid ambiguity
+- **Context**: State assumptions, scope, constraints, exclusions
 
 ### Citations & Evidence
-- **Reference IDs**: G# (Glossary), C# (Codebase), L# (Literature), A# (APA)
-- **Inline Format**: Use `[Ref: ID]` in problems/solutions when citing algorithms, patterns, complexity analysis
-- **Source Types**: (1) Official docs (specs, RFCs), (2) Standards/peer-reviewed (ISO, IEEE, journals), (3) Audits/reports (security, industry), (4) Vetted code (production repos)
-- **Language Mix**: ~60% EN, ~30% ZH, ~10% other (tag each: [EN], [ZH])
-- **Floors**: ≥10 Glossary, ≥5 Codebase, ≥6 Literature, ≥12 APA citations
-- **Quality Gates**:
-  - Recency: ≥50% last 3yr (≥70% for AI/security)
-  - Diversity: ≥3 source types, no single source >25%
-  - Coverage: ≥70% tasks with ≥1 citation, ≥30% with ≥2
-  - Maturity: License, last commit ≤12mo, stable release, audit status
-  - Validity: Test all URLs or provide archived links
-- **Uncertainty**: Flag unverified claims; cross-check facts
+- **IDs**: G# (Glossary), C# (Codebase), L# (Literature), A# (APA); use `[Ref: ID]` inline
+- **Sources**: Official docs, standards/peer-reviewed, audits, vetted code
+- **Mix**: ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
+- **Minimums**: ≥10 G, ≥5 C, ≥6 L, ≥12 A
+- **Quality**:
+  - Recency: ≥50% <3yr (≥70% AI/security)
+  - Diversity: ≥3 types, <25% single source
+  - Coverage: ≥70% tasks ≥1 citation, ≥30% ≥2
+  - Maturity: License, commit ≤12mo, stable, audit
+  - Validity: Test URLs or archive
+- **Uncertainty**: Flag unverified claims
 
 ### Quality Requirements
-- **MECE**: Complete, non-overlapping topic coverage
-- **Significance**: State why each task matters, expected outcomes, stakeholder value
-- **Risk/Value**: Document risks, costs, failure modes, mitigations, acceptance criteria
-- **Fairness**: Acknowledge assumptions, limitations, biases, counterarguments, trade-offs
-- **Logic**: Provide reasoning chains (invariants, proofs, decision logs) in solutions
-- **Alternatives**: Document multiple valid approaches with trade-offs (time vs space, readability vs performance)
-- **Practicality**: Ensure actionable guidance with measurable success criteria
-- **Concision**: Include only essential information; remove redundancy
+- **MECE**: Complete, non-overlapping coverage
+- **Significance**: Why it matters, outcomes, value
+- **Risk/Value**: Risks, costs, failures, mitigations, criteria
+- **Fairness**: Assumptions, limits, biases, alternatives, trade-offs
+- **Logic**: Reasoning (invariants, proofs)
+- **Alternatives**: Multiple approaches + trade-offs
+- **Practicality**: Actionable, measurable criteria
+- **Concision**: Essential only; no redundancy
 
 ---
 
 ## Workflow
 
-Execute steps sequentially with inline checks before proceeding.
+Execute sequentially; check before proceeding.
 
 ### 1. Topic Planning
-1. Identify 4-6 topic clusters; allocate 3-5 tasks each (total 18-28)
-2. Assign difficulty levels: 20/40/40 distribution
-3. **Check**: Total = 18-28? Difficulty ratio ≈20/40/40?
+1. Identify 4-6 clusters, 3-5 tasks/cluster (18-28 total)
+2. Assign 20/40/40 difficulty split
+3. **Check**: Total 18-28? Ratio ≈20/40/40?
 
 ### 2. Reference Collection
-1. Gather: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA sources
-2. For each: Tag language, note year, classify type (1-4), assign ID
-3. **Check**: Counts meet floors? Language ≈60/30/10? Recency ≥50% last 3yr? ≥3 source types?
+1. Gather: ≥10 G, ≥5 C, ≥6 L, ≥12 A
+2. Tag language, year, type, ID
+3. **Check**: Minimums met? Mix ≈60/30/10? Recency ≥50% <3yr? ≥3 types?
 
 ### 3. Task Design
-1. Write self-contained problem (I/O, signature, difficulty, language)
-2. Include ≥1 `[Ref: ID]` when citing algorithms/patterns
-3. State significance, fairness considerations, assumptions/exclusions
+1. Write problem (I/O, signature, difficulty, language)
+2. Include ≥1 `[Ref: ID]` for algorithms/patterns
+3. State significance, fairness, assumptions/exclusions
 4. Create 6-10 tests (3-5 public, 3-5 hidden)
-5. **Check** (every 4 tasks): Self-contained? Citations present? Fairness notes? Complete tests?
+5. **Check** (every 4): Self-contained? Citations? Fairness? Tests complete?
 
 ### 4. Solutions
-1. Write working solution with time/space complexity
-2. Document alternatives, trade-offs, risk mitigations
-3. Provide reasoning (invariants, proof sketch, validation notes)
-4. **Check**: All solutions present? Complexity + reasoning? Alternatives documented?
+1. Write solution with time/space complexity
+2. Document alternatives, trade-offs, mitigations
+3. Provide reasoning (invariants, proofs)
+4. **Check**: Solutions present? Complexity + reasoning? Alternatives?
 
 ### 5. References
-1. Populate Glossary, Codebase, Literature, APA sections
+1. Populate G, C, L, A sections
 2. Include required fields (see [Output Template](#output-template))
-3. Verify IDs match inline citations
-4. **Check**: All `[Ref: ID]` resolve? Required fields present?
+3. Verify IDs match citations
+4. **Check**: All `[Ref: ID]` resolve? Fields present?
 
 ### 6. Final Validation
-Run all validation checks; fix failures and re-validate until all pass (see [Validation](#validation)).
+Run all checks; fix failures; re-validate until pass (see [Validation](#validation)).
 
 ---
 
 ## Output Template
 
-Start with TOC linking to all sections. Use lists, tables, code blocks (with language tags), Mermaid diagrams.
+Start with TOC linking sections. Use lists, tables, code blocks (language-tagged), Mermaid diagrams.
 
-### Task Bank Structure
+### Structure
 
 ```markdown
 ## Contents
@@ -111,62 +107,62 @@ Start with TOC linking to all sections. Use lists, tables, code blocks (with lan
 #### Task 1: [Title]
 **Language:** [python/js/go/rust] | **Difficulty:** [Foundational/Intermediate/Advanced]
 
-**Problem:** [Description with `[Ref: ID]` citations]
+**Problem:** [Description with `[Ref: ID]`]
 
 **Signature:** `function(params)` | **Constraints:** Time O(?), Memory O(?), Libs: [allowed]
 
-**Starter Code:**
+**Starter:**
 ```[lang]
-[Code skeleton]
+[Skeleton]
 ```
 
-**Assumptions & Exclusions:** [Scope boundaries, out-of-scope items]
+**Assumptions/Exclusions:** [Scope, out-of-scope]
 
 **Public Tests:**
 ```[lang]
-[3-5 test cases]
+[3-5 cases]
 ```
 
-**Hidden Tests:** [Description of 3-5 additional test categories]
+**Hidden Tests:** [3-5 categories]
 
-**Success Criteria:** [Measurable outcomes, pass/fail conditions]
+**Success Criteria:** [Measurable outcomes]
 
-**Reference Solution:**
+**Solution:**
 ```[lang]
-[Working implementation]
+[Implementation]
 ```
-**Complexity:** Time O(?), Space O(?) | **Alternatives:** [Other approaches + trade-offs] | **Reasoning:** [Invariants/proofs]
+**Complexity:** Time O(?), Space O(?) | **Alternatives:** [Approaches + trade-offs] | **Reasoning:** [Invariants/proofs]
 
-**Evidence & Uncertainty:** [Tie assertions to `[Ref: ID]`; flag unverified claims]
+**Evidence:** [Tie to `[Ref: ID]`; flag uncertainty]
 
-**Value & Risk:** [Why it matters, risks/costs, mitigations]
+**Value/Risk:** [Importance, risks/costs, mitigations]
 
-**Fairness & Bias:** [Assumptions, limitations, counterarguments]
+**Fairness:** [Assumptions, limits, counterarguments]
 
-**Grading:** Correctness 70%, Edges 20%, Style 10% | **Mistakes:** [Common errors] | **Misconceptions:** [List]
+**Grading:** 70% correctness, 20% edges, 10% style | **Mistakes:** [Common] | **Misconceptions:** [List]
 
 ---
 
 ## References
 
-### Glossary, Terminology & Acronyms
-**G1. Term/Acronym**: Definition [Lang Tag]
+### Glossary
+**G1. Term/Acronym**: Definition [Lang]
 
-### Codebase & Library References
-**C1. [Name]** (GitHub: owner/repo | License: Type) [Lang]
+### Codebase
+**C1. [Name]** (GitHub: owner/repo | License) [Lang]
 - **Description:** Overview
-- **Stack:** Technologies
-- **Maturity:** Production/Beta/Experimental | **Last Update:** YYYY-MM
-- **Performance:** Key metrics | **Security:** Audit status
+- **Stack:** Tech
+- **Maturity:** Production/Beta/Experimental | **Update:** YYYY-MM
+- **Performance:** Metrics | **Security:** Audit
 
-### Authoritative Literature & Reports
+### Literature
 **L1. [Title]** (Year) [Lang]
 - **Authors:** Names/Org | **Type:** Standard/Paper/Report
 - **Findings:** Summary | **Credibility:** Peer-reviewed/Standard/Regulatory
-- **Jurisdiction:** Regions/markets
+- **Jurisdiction:** Regions
 
-### APA Style Source Citations
-Group by language (~60% EN, ~30% ZH, ~10% other). APA 7th + language tags.
+### APA Citations
+Group by language (~60% EN, ~30% ZH, ~10% other). APA 7th + tags.
 
 **A1.** Author, A. (Year). Title. *Journal*, vol(issue), pages. DOI/URL [Lang]
 ```
@@ -175,31 +171,31 @@ Group by language (~60% EN, ~30% ZH, ~10% other). APA 7th + language tags.
 
 ## Validation
 
-Execute all checks; present results in table; fix failures and re-validate until all pass.
+Execute all; present in table; fix; re-validate until pass.
 
-### Validation Checks
-1. **Counts**: Glossary ≥10, Codebase ≥5, Literature ≥6, APA ≥12, Tasks 18-28 (20/40/40 difficulty)
-2. **Citations**: ≥70% tasks with ≥1, ≥30% with ≥2
+### Checks
+1. **Counts**: G≥10, C≥5, L≥6, A≥12, Tasks 18-28 (20/40/40)
+2. **Citations**: ≥70% tasks ≥1, ≥30% ≥2
 3. **Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-4. **Recency**: ≥50% last 3yr (≥70% AI/security)
-5. **Diversity**: ≥3 source types, max 25% single source
-6. **Links**: All URLs accessible or archived
-7. **Cross-refs**: All `[Ref: ID]` resolve to entries
-8. **Tests**: All tasks have 6-10 tests (3-5 public, 3-5 hidden)
-9. **Solutions**: All tasks have solutions with complexity
-10. **Constraints**: All tasks specify time/memory/libs
-11. **Alternatives**: ≥80% multi-approach tasks document trade-offs
-12. **Quality**: ≥90% tasks have significance, risk, fairness, reasoning notes
-13. **Practicality**: ≥90% tasks have success criteria
-14. **Concision**: No redundancy, consistent terminology, relevant content only
+4. **Recency**: ≥50% <3yr (≥70% AI/security)
+5. **Diversity**: ≥3 types, <25% single source
+6. **Links**: URLs accessible/archived
+7. **Cross-refs**: All `[Ref: ID]` resolve
+8. **Tests**: All tasks 6-10 (3-5 public, 3-5 hidden)
+9. **Solutions**: All have complexity
+10. **Constraints**: All specify time/memory/libs
+11. **Alternatives**: ≥80% document trade-offs
+12. **Quality**: ≥90% have significance, risk, fairness, reasoning
+13. **Practicality**: ≥90% have criteria
+14. **Concision**: No redundancy, consistent terms, relevant only
 
-### Report Template
+### Report
 | Check | Result | Status |
 |-------|--------|--------|
 | Counts | G:X C:Y L:Z A:W T:N (F/I/A) | PASS/FAIL |
-| Citation coverage | X% ≥1, Y% ≥2 | PASS/FAIL |
+| Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
 | Language | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| Recency | X% last 3yr | PASS/FAIL |
+| Recency | X% <3yr | PASS/FAIL |
 | Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
@@ -210,6 +206,6 @@ Execute all checks; present results in table; fix failures and re-validate until
 | Practicality | Y/X criteria | PASS/FAIL |
 | Concision | Reviewed | PASS/FAIL |
 
-**MANDATORY**: If any check fails, stop, fix, regenerate, re-validate. Submit only when all pass.
+**MANDATORY**: Fix failures; re-validate until all pass.
 
 
