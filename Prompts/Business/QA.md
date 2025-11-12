@@ -6,20 +6,27 @@ Generate scenario-based interview questions with cited answers assessing how tec
 
 **Task**: Generate 25-30 interview questions (150-300 words each) evaluating senior technical leaders' ability to map business models, value propositions, and constraints to architectural decisions.
 
-**Assessment Coverage** (MECE):
-1. Strategic Modeling: Business model → architectural implications
-2. Value & Risk: ROI, trade-offs, constraints
-3. Documentation: Communication patterns, ADRs
-4. Organization: Team topology, Conway's Law
-5. Translation: Business driver → technical decision
-6. Evolution: Technical debt, migration, roadmaps
+**Scope & Constraints**:
+- **Focus**: Business-to-architecture translation only; excludes algorithmic coding, trivia, junior technical assessments
+- **Depth**: Senior engineer to architect level (5-15 years experience)
+- **Time**: Each question designed for 10-15 minute discussion in interviews
+- **Format**: Text or JSON output; non-interactive assessment tool
+- **Quality bar**: ≥70% citation coverage, ≥80% business-architecture traceability, 100% scenario-based (no recall questions)
 
-**Target Audience**: Senior engineers, architects, technical leads evaluating business-architecture alignment capabilities. Excludes algorithmic skills, factual recall, or junior-level assessments.
+**Assessment Coverage** (MECE - Mutually Exclusive, Collectively Exhaustive):
+1. **Strategic Modeling**: Business model → architectural implications
+2. **Value & Risk**: ROI calculations, trade-offs analysis, constraint mapping
+3. **Documentation**: Communication patterns, Architecture Decision Records (ADRs)
+4. **Organization**: Team topology alignment, Conway's Law implications
+5. **Translation**: Business driver → technical decision with explicit mapping
+6. **Evolution**: Technical debt management, migration strategies, roadmap planning
+
+**Target Audience**: Senior engineers, architects, technical leads evaluating business-architecture alignment capabilities.
 
 **Assumptions**: 
-- LLM understands business frameworks (BMC, Value Proposition, DDD, Conway's Law, Tech Debt, ADR, Wardley/Value Stream Mapping)
-- User provides business context or accepts generic scenarios
-- Output is text/JSON (non-interactive)
+- LLM has knowledge of business frameworks: Business Model Canvas (BMC), Value Proposition Canvas, Domain-Driven Design (DDD), Conway's Law, Technical Debt, ADR, Wardley Mapping, Value Stream Mapping
+- User provides specific business context or explicitly accepts generic scenarios
+- Output format is text/JSON (non-interactive)
 
 ## Required Input
 
@@ -28,20 +35,23 @@ Generate scenario-based interview questions with cited answers assessing how tec
 - Must specify: industry sector, revenue model (B2B/B2C), primary constraints (regulatory/scale/technical)
 
 **Optional Configuration**:
-- `focus_area` (default: all): Limit to specific dimension(s)
-- `complexity` (default: architect): Adjust for senior/architect/expert level
-- `output_format` (default: text): text, json, markdown
-- `confidence_threshold` (default: medium): high (≥2 sources), medium (≥1), low (flag uncertainty)
+- `focus_area` (default: all): Limit to specific dimension(s) from Assessment Coverage
+- `complexity` (default: architect): senior (5-8 yrs) | architect (8-12 yrs) | expert (12+ yrs)
+- `output_format` (default: text): text | json | markdown
+- `confidence_threshold` (default: medium): 
+  - high (≥2 authoritative sources, established consensus)
+  - medium (≥1 source, emerging practice)
+  - low (limited/conflicting sources, flag explicitly)
 
 ## Output Structure
 
-**Text Format**: 25-30 questions, each with:
-- Scenario-based question ("How would you...")
-- Difficulty tag (foundational 20%, intermediate 40%, advanced 40%)
-- 150-300 word answer with inline citations [Ref: ID]
-- Concrete insight (misalignment/trade-off/impedance)
-- Mermaid diagram + table + formula
-- Business→Architecture trace with citations
+**Text Format Requirements**: Generate 25-30 questions, each must include:
+- **Question**: Scenario-based format ("How would you..." or "Given... what would you...") requiring judgment, not recall
+- **Difficulty**: Tag as foundational (20% ±5%) | intermediate (40% ±5%) | advanced (40% ±5%)
+- **Answer**: 150-300 words with inline citations [Ref: ID], covering business analysis → architecture translation → trade-offs
+- **Key Insight**: One concrete, specific insight (e.g., "subscription revenue requires usage metering but legacy assumes one-time delivery") - avoid vague statements
+- **Visual Artifacts**: Mermaid diagram + comparison table + quantitative formula per dimension cluster
+- **Traceability**: Explicit Business→Architecture mapping with citations showing how each business driver translates to technical decision
 
 **JSON Format**:
 ```json
@@ -68,89 +78,99 @@ Generate scenario-based interview questions with cited answers assessing how tec
 
 ## Generation Procedure
 
-**1. Parse Context** (MECE) → Extract:
-- Business model elements: customer segments, value propositions, revenue streams, channels, partnerships
-- Constraints: regulatory (SOC2/GDPR/HIPAA), technical (legacy systems), organizational (team structure), market (competition)
-- Risk factors: business (churn/competition), operational (SLA/scalability), regulatory (compliance)
+Follow these steps sequentially. Each step builds on the previous.
 
-**2. Distribute Questions** → Allocate 25-30 across 6 dimensions (4-6 each):
-- Foundational 20% (±5%): Single framework application (BMC or Value Prop or Conway's Law)
-- Intermediate 40% (±5%): Multi-framework integration (BMC + Risk analysis + org impact)
-- Advanced 40% (±5%): Complex trade-offs with migration paths and quantitative analysis
+**Step 1: Parse Context** (Apply MECE)
 
-**3. Generate Questions** → For each question:
-- **Structure**: "How would you [action] given [business context] considering [constraints]?"
-- **Answer Template**: 
-  1. Business Analysis (50-70 words): Apply framework [Ref: ID] to context
-  2. Architecture Translation (70-100 words): Map business drivers to technical requirements [Ref: ID]
-  3. Trade-offs & Risks (50-80 words): Alternatives, limitations, mitigation [Ref: ID]
-- **Trace**: Explicitly connect business model elements to architecture decisions with citations
-- **Insight**: State concrete misalignment (e.g., "subscription revenue requires usage metering but legacy assumes one-time delivery")
+Extract from `business_context`:
+- **Business model**: customer segments, value propositions, revenue streams, channels, partnerships, resources, activities, relationships, cost structure
+- **Constraints**: Regulatory (SOC2/GDPR/HIPAA/PCI), technical (legacy/platforms), organizational (teams/skills), market (competition/time/budget)
+- **Risks**: Business (churn/competition), operational (SLA/scale), regulatory (compliance/sovereignty)
 
-**4. Create Artifacts** → Per dimension cluster:
-- **Diagram** (Mermaid): Strategic→BMC/Value Stream, Risk→Decision Tree, Documentation→C4, Organization→Team Topology, Translation→Value-Arch Map, Evolution→Migration Roadmap
-- **Table**: Business driver | Technical requirement | Architectural decision | Priority
-- **Formula**: ROI, Risk (P×I×E), Tech Debt %, NPV, Availability %
+**Step 2: Distribute Questions** (Balanced coverage)
 
-**5. Validate Quality**:
+Allocate 25-30 questions:
+- **6 Dimensions**: 4-6 per dimension
+- **3 Difficulty Levels**:
+  - Foundational 20% (±5%): Single framework (BMC only or Conway's Law only)
+  - Intermediate 40% (±5%): Multi-framework (BMC + Risk + organizational)
+  - Advanced 40% (±5%): Complex trade-offs with migration paths, quantitative analysis, multi-constraint optimization
 
-| Criterion | Target | Validation |
-|-----------|--------|------------|
-| Question count | 25-30 | Total within range |
-| Difficulty split | 20%/40%/40% (±5%) | Distribution balanced |
-| Word count | 150-300 per answer | Sample 5 random |
-| Citation rate | ≥70% with ≥1, ≥30% with ≥2 | Check all |
-| Business-arch mapping | ≥80% explicit with cites | Audit trace |
-| Scenario-based | ≥70% judgment vs recall | Question type |
-| Visual coverage | ≥90% with diagram+table+formula | Per cluster |
-| Concrete insights | 100% specific not vague | Review all |
+**Step 3: Generate Each Question** (Consistent structure)
 
-**6. Compile References** → Include:
-- **Glossary** (≥10 terms): BMC (9 blocks: Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure), Value Proposition (customer value bundle), DDD (ubiquitous language, bounded contexts, aggregates), Bounded Context (explicit model boundary), Conway's Law (org structure mirrors system design), Technical Debt (rework cost), ADR (architecture decision log), Wardley Map (value chain by visibility/evolution), Value Stream Map (delivery flow analysis), Customer Segment (distinct user groups)
-- **Tools** (≥5 with pricing/adoption/integrations): Miro (infinite canvas, Free-Enterprise, 80M+ users, Jira/Slack/Figma), ArchiMate (ISO enterprise modeling, Archi free), C4 (4-level diagrams, tool-agnostic), Confluence (collaborative docs, $5.75-$11/user, 75K+ companies), LucidChart (cloud diagramming, $7.95+, 60M+ users)
-- **Literature** (≥6): Osterwalder & Pigneur (BMC), Evans (DDD), Vernon (Implementing DDD), Conway (org structures), Hohpe (integration patterns), Richardson (microservices), Zhou Aimin (架构本质), Zhang Yi (DDD实践), Xiao Ran (业务架构)
-- **Citations** (≥12 APA 7th): Mix EN/ZH, ≥50% <3yr for digital/cloud topics
+- **Question**: "How would you [action] given [context] considering [constraints]?"
+  - Example: "How would you design multi-region deployment given SaaS B2B subscription with GDPR and 99.95% SLA?"
+
+- **Answer** (150-300 words):
+  1. **Business Analysis** (50-70w): Apply framework (BMC/Value Prop/DDD), cite [Ref: ID], identify drivers
+  2. **Architecture Translation** (70-100w): Map driver→requirement→decision with citations, explicit trace
+  3. **Trade-offs & Risks** (50-80w): Alternatives, pros/cons, limitations, mitigations with [Ref: ID]
+
+- **Traceability**: "Business driver X → Technical requirement Y → Architectural decision Z [Ref: ID]"
+
+- **Insight**: One concrete misalignment/trade-off/impedance
+  - ✅ "Subscription revenue requires real-time metering, legacy assumes batch billing"
+  - ❌ "Alignment is important" (vague)
+
+**Step 4: Create Artifacts** (One set per dimension)
+- **Diagram** (Mermaid): Strategic→BMC/Value Stream | Risk→Decision Tree | Documentation→C4 | Organization→Team Topology | Translation→Business-Arch Map | Evolution→Migration Roadmap
+- **Table** (4+ rows): Business driver | Technical requirement | Architectural decision | Priority
+- **Formula** (LaTeX): ROI, Risk (P×I×E), Tech Debt %, NPV, Availability %
+
+**Step 5: Validate Quality**
+
+| Criterion | Target | Method |
+|-----------|--------|--------|
+| Count | 25-30 questions | Total |
+| Difficulty | 20%/40%/40% (±5%) | Distribution |
+| Length | 150-300 words/answer | Sample 5 |
+| Citations | ≥70% (≥1 source), ≥30% (≥2) | All answers |
+| Traceability | ≥80% explicit business→arch | Audit |
+| Scenario | ≥70% judgment (not recall) | Type check |
+| Visuals | ≥90% with diagram+table+formula | Per dimension |
+| Insights | 100% concrete (not vague) | All |
+
+**Step 6: Compile References**
+- **Glossary** (≥10): See Key Terms Reference
+- **Tools** (≥5): Miro, ArchiMate, C4, Confluence, LucidChart (with pricing, adoption, integrations)
+- **Literature** (≥6): Osterwalder, Evans, Vernon, Conway, Hohpe, Richardson, Zhou, Zhang, Xiao
+- **Citations** (≥12 APA 7th): EN/ZH, ≥50% recent (<3yr) for digital/cloud
 
 ## Quality Standards
 
-**MECE Coverage**: 6 dimensions × 4 perspectives (strategic: business model/investment; operational: processes/efficiency; organizational: teams/change; architectural: decisions/patterns) → no overlaps or gaps
+**MECE Coverage**: 6 dimensions × 4 perspectives (strategic, operational, organizational, architectural) = complete, non-overlapping
 
-**Answer Quality**:
-- ✅ Business model analysis with framework [Ref: ID]
-- ✅ Explicit business→architecture trace with citations
-- ✅ Concrete insight (misalignment/trade-off/impedance)
-- ✅ Trade-offs with alternatives and limitations
-- ❌ No recall questions ("What is BMC?")
-- ❌ No vague insights ("alignment is important")
-- ❌ No missing business-architecture connection
+**Answer Requirements**:
+- ✅ Framework analysis [Ref: ID] | Business→arch trace | Concrete insight | Trade-offs with alternatives
+- ❌ Recall questions | Vague insights | Missing connections
 
-**Confidence Levels**:
-- **High** (≥2 sources, established consensus): Cite authoritative sources for factual claims
-- **Medium** (≥1 source, emerging practice): Explain reasoning + assumptions for interpretations
-- **Low** (limited/conflicting sources): Flag explicitly for cutting-edge topics
+**Confidence**:
+- **High** (≥2 sources, consensus): Cite authorities
+- **Medium** (≥1 source, emerging): State reasoning + assumptions  
+- **Low** (limited/conflicting): Flag explicitly
 
-**Citation Format**: Inline [Ref: ID] resolving to APA 7th with [EN]/[ZH] tags
+**Citations**: Inline [Ref: ID] → APA 7th with [EN]/[ZH]
 - Example: [Ref: A1] Osterwalder, A., & Pigneur, Y. (2010). *Business model generation*. Wiley. [EN]
 
 ## Example Output
 
-**Q1: How would you translate a shift from perpetual licensing to subscription SaaS into architectural requirements?**
+**Q1: How would you translate perpetual licensing → subscription SaaS architecturally?**
 
 **Difficulty**: Advanced | **Dimension**: Strategic Modeling + Translation
 
 **Answer** (248 words):
 
-Business Model Canvas analysis reveals critical changes [Ref: A1]: Revenue Streams shift from upfront to recurring (impacting cash flow); Customer Relationships transition from transactional to continuous (requiring ongoing engagement); Key Activities expand to include customer success and retention. Value Propositions must prioritize continuous delivery, uptime guarantees, and feature velocity. Customer Segments expand to multi-tier (freemium/professional/enterprise) requiring differentiation [Ref: A7].
+BMC analysis [Ref: A1]: Revenue Streams (upfront→recurring), Customer Relationships (transactional→continuous), Key Activities (+customer success), Value Propositions (+continuous delivery/uptime/velocity), Customer Segments (→multi-tier) [Ref: A7].
 
-Risk model identifies: business risks (churn, downtime-driven revenue loss), operational risks (SLA 99.9%+ requirements), regulatory risks (data residency, SOC2/GDPR compliance) [Ref: A12].
+Risks [Ref: A12]: Business (churn, downtime revenue loss), operational (SLA 99.9%+), regulatory (data residency, SOC2/GDPR).
 
-Architectural translation maps these to concrete requirements [Ref: A16]: (1) Multi-tenancy with tenant isolation for cost efficiency and security [Ref: A7]; (2) Usage metering via event streaming for billing and analytics [Ref: A6]; (3) Feature flagging for tier-based access control [Ref: A11]; (4) High availability/disaster recovery for SLA compliance; (5) Multi-region deployment for data residency compliance.
+Architecture [Ref: A16]: (1) Multi-tenancy with isolation [Ref: A7], (2) Usage metering via event streaming [Ref: A6], (3) Feature flags for tier control [Ref: A11], (4) HA/DR for SLA, (5) Multi-region for compliance.
 
-Technical debt assessment: Legacy licensing checks, offline-first assumptions, and customer-hosted architecture require migration. Apply Strangler pattern [Ref: A10] for incremental extraction to multi-tenant cloud services.
+Tech debt: Legacy licensing/offline/on-prem → Strangler pattern [Ref: A10] to cloud multi-tenant.
 
-Organizational implications (Conway's Law [Ref: A5]): Add Customer Success, DevOps, and SRE teams; architecture must support their workflows. Document decisions via ADR [Ref: G7] for transparency and knowledge retention.
+Organization (Conway's Law [Ref: A5]): Add Customer Success, DevOps, SRE; document via ADR [Ref: G7].
 
-**Key Insight**: Subscription revenue's continuous value delivery requirement directly conflicts with legacy one-time deployment architecture, necessitating fundamental redesign rather than incremental enhancement.
+**Key Insight**: Subscription's continuous delivery conflicts with legacy one-time deployment—requires redesign, not incremental change.
 
 ```mermaid
 flowchart TD
@@ -177,40 +197,39 @@ flowchart TD
 
 ---
 
-## Edge Cases & Fallbacks
+## Edge Cases
 
 **Missing Context**: 
-- If `business_context` not provided → Request: "Specify: (1) Industry, (2) Business model (B2B/B2C, revenue), (3) Key constraints (regulatory/scale/technical). Proceed with generic SaaS B2B?"
-- If partial context → Proceed with assumptions, document limitations, recommend customization
+- No `business_context` → Request: "Specify: (1) Industry, (2) Model (B2B/B2C, revenue), (3) Constraints. Use generic SaaS B2B?"
+- Partial → Proceed with assumptions, document limits
 
-**Output Adjustments**:
-- Speed priority → Reduce to 15-20 questions, simplify visuals, lower confidence threshold
-- Depth priority → Full 30 questions, comprehensive artifacts, high confidence (≥2 sources)
-- Cost priority → Generic reusable context, skip custom tailoring
-- Quality priority → Custom context, unique questions, expert validation
+**Adjustments**:
+- Speed → 15-20 questions, simple visuals, medium confidence
+- Depth → 30 questions, full artifacts, high confidence
+- Cost → Generic reusable, no customization
+- Quality → Custom, unique, validated
 
-**Validation Failures**: 
-- If <70% citation rate → Add references to under-cited answers
-- If <80% business-architecture mapping → Explicitly trace connections with [Ref: ID]
-- If <70% scenario-based → Rewrite recall questions as judgment scenarios
-- Re-validate after fixes until all criteria pass
+**Validation Failures** (fix then re-validate):
+- <70% citations → Add references
+- <80% traceability → Explicit business→arch with [Ref: ID]
+- <70% scenario → Rewrite recall as judgment
 
 ## Key Terms Reference
 
-**Business Model Canvas (BMC)**: 9-block framework (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure) for designing and analyzing business models. Maps business strategy to operational structure.
+**Business Model Canvas (BMC)**: 9-block framework (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure) mapping strategy to operations.
 
-**Value Proposition**: Bundle of products/services creating customer value. Translates to technical features, quality attributes (performance/security/usability), and architectural priorities.
+**Value Proposition**: Customer value bundle → technical features, quality attributes, architectural priorities.
 
-**Domain-Driven Design (DDD)**: Approach emphasizing ubiquitous language between domain experts and technical teams, bounded contexts as explicit model boundaries, and aggregates for consistency. Guides microservices decomposition and team organization.
+**Domain-Driven Design (DDD)**: Ubiquitous language, bounded contexts, aggregates → guides microservices decomposition and team organization.
 
-**Bounded Context**: Explicit boundary within which a domain model is valid. Different contexts may have different models for same concept. Defines microservice boundaries and integration contracts.
+**Bounded Context**: Explicit model boundary → defines microservice boundaries and integration contracts.
 
-**Conway's Law**: "Organizations design systems mirroring their communication structure." Architectural decisions must account for team topology; organizational changes may require architectural evolution.
+**Conway's Law**: "Organizations design systems mirroring their communication structure" → team topology affects architecture.
 
-**Technical Debt**: Future rework cost from choosing quick solutions over better long-term approaches. Categories: code debt (quality), architectural debt (structure), knowledge debt (documentation). Quantified as % of capacity or cost to resolve.
+**Technical Debt**: Future rework cost from quick solutions. Types: code, architectural, knowledge. Quantified as % capacity or cost.
 
-**Architecture Decision Record (ADR)**: Lightweight, immutable log capturing context, decision, consequences, and trade-offs for each significant architectural choice. Ensures transparency and knowledge preservation.
+**Architecture Decision Record (ADR)**: Immutable log of context, decision, consequences, trade-offs → ensures transparency.
 
-**Wardley Mapping**: Strategic visualization plotting value chain components by visibility (y-axis) and evolutionary stage (x-axis: genesis→custom→product→commodity). Identifies opportunities and change vectors.
+**Wardley Mapping**: Value chain by visibility × evolution stage (genesis→custom→product→commodity) → identifies opportunities.
 
-**Value Stream Mapping**: Lean technique visualizing steps delivering value to customer, highlighting waste and bottlenecks. Optimizes lead time and flow efficiency.
+**Value Stream Mapping**: Lean technique visualizing delivery steps → highlights waste, optimizes lead time.

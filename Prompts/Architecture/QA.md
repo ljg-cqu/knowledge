@@ -2,10 +2,13 @@
 
 Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrating architecture-to-code translation.
 
-**Target Audience**: Senior developers, architects, technical experts  
-**Coverage**: 6 dimensions (structural, behavioral, quality, data, integration, evolution)  
-**Output**: Production-ready code, quantified trade-offs, multiple alternatives, authoritative citations  
-**Success**: Pass 19/19 validation checks
+## Scope & Success Criteria
+
+**Audience**: Senior developers (5+ years), architects, technical experts  
+**Output**: 25-30 Q&As across 6 MECE dimensions with production code, quantified trade-offs, ≥2 alternatives, citations  
+**Success**: 19/19 validation checks PASS
+
+**Assumptions**: Distributed systems (>10K rps, >1TB data), idiomatic Go/Java/Python/TypeScript, cloud-native context, foundational knowledge (layered, MVC, REST)
 
 ---
 
@@ -22,34 +25,26 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 | **Citations** | ≥1 each; ≥2 for complex |
 | **Per Cluster** | Diagram + code + comparison table + metric formula |
 
-## Coverage (6 Dimensions, Mutually Exclusive)
+## Coverage (6 Dimensions, 4-6 Q&As Each)
 
-Cover all dimensions with 4-6 Q&As each:
-
-1. **Structural**: Components, modularity, coupling, boundaries
-2. **Behavioral**: Events, state, orchestration, error handling
-3. **Quality**: Performance, scalability, reliability, security
-4. **Data**: Persistence, caching, consistency, partitioning
-5. **Integration**: APIs, messaging, service communication
-6. **Evolution**: Refactoring, migration, technical debt
+1. **Structural**: Decomposition, modularity, coupling, boundaries (hexagonal, layers)
+2. **Behavioral**: Events, state, orchestration, error handling (saga, circuit breaker)
+3. **Quality**: Performance, scalability, reliability, security (rate limiting, encryption)
+4. **Data**: Persistence, caching, consistency, partitioning (CQRS, sharding)
+5. **Integration**: APIs, messaging, protocols (REST, gRPC, streaming)
+6. **Evolution**: Refactoring, migration, technical debt (strangler fig, feature toggles)
 
 ## Content Standards
 
-**Traceability Chain**:  
-Requirements → Constraints → Pattern → Code → Metrics
+**Traceability**: Requirements → Constraints → Pattern → Code → Metrics
 
-**Quantified Trade-offs**:  
-✅ "CQRS: 10x read scalability, +20-40ms write latency, +30% complexity"  
-❌ "Microservices are complex"
+**Quantified Trade-offs**: ✅ "CQRS: 10x read, +20-40ms write, +30% complexity" ❌ "Microservices are complex"
 
-**Specific Context** (provide thresholds):  
-Team size (<10 vs >50), throughput (<100 vs >10K rps), data (<1TB vs >100TB), stage (greenfield vs legacy)
+**Context Thresholds**: Team (<10 vs >50), Throughput (<100 vs 100-10K vs >10K rps), Data (<1TB vs 1-100TB vs >100TB), Stage (greenfield vs legacy)
 
-**Balanced Perspectives**:  
-≥2 alternatives with comparison; explicit assumptions/limitations; tag consensus level (`[Consensus]`/`[Context-dependent]`/`[Emerging]`)
+**Balanced Perspectives**: ≥2 alternatives with table; explicit assumptions/limitations; tag `[Consensus]`/`[Context-dependent]`/`[Emerging]`
 
-**Precise Language**:  
-Define terms inline; consistent terminology; specific metrics ("<300ms p95", not "fast"); minimal jargon
+**Precise Language**: Define terms inline; consistent terminology; concrete metrics ("<300ms p95" not "fast"); minimal jargon
 
 ## Artifacts
 
@@ -64,23 +59,20 @@ Define terms inline; consistent terminology; specific metrics ("<300ms p95", not
 | Integration | API/Sequence | HTTP/gRPC client | `Latency = Net + Process` |
 | Evolution | Migration roadmap | Strangler Fig pattern | `Risk = Changed / Total × Complexity` |
 
-**Format**:  
-Diagrams (Mermaid, <120 nodes); Code (10-30 lines, idiomatic Go/Java/Python/TypeScript, production-ready); Tables (Markdown, quantitative); Metrics (formula + variables + target)
+**Format**: Diagrams (Mermaid <120 nodes, type matches dimension); Code (10-30 lines, idiomatic, production-ready with error handling); Tables (quantitative, "Use When" column); Metrics (formula + variables + target)
 
-**Common Patterns** (illustrative):  
-Hexagonal (isolation), Event-Driven (async), CQRS (read/write split), Microservices (decomposition), Layered (separation), DDD (bounded contexts)
+**Common Patterns**: Hexagonal, Event-Driven, CQRS, Saga, Circuit Breaker, Bulkhead, Event Sourcing, API Gateway, Message Queue, Strangler Fig, Feature Toggle
 
 ## References
 
-| Component | Minimum | Requirements |
-|-----------|---------|--------------|
-| **Glossary** | ≥10 | Define key terms (e.g., Hexagonal, CQRS, Event Sourcing, DDD, Aggregate, Saga, Circuit Breaker) |
-| **Tools** | ≥5 | URL, update ≤18mo, pricing, adoption metrics |
-| **Literature** | ≥6 | Industry books (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
-| **Citations** | ≥12 | APA 7th, tagged: 60% [EN] / 30% [ZH] / 10% other |
+| Component | Min | Requirements |
+|-----------|-----|--------------|
+| **Glossary** | ≥10 | Terms with relationships (e.g., "Hexagonal: isolation via ports/adapters. Related: DI") |
+| **Tools** | ≥5 | URL (valid), update ≤18mo, pricing, adoption metrics |
+| **Literature** | ≥6 | Authoritative books (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
+| **Citations** | ≥12 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%) |
 
-**Quality Standards**:  
-Recency (≥50% last 3yr, ≥70% for cloud); Diversity (≥3 types, <25% single source); Credibility (peer-reviewed, authoritative); Resolution (100% valid links)
+**Quality**: Recency (≥50% last 3yr, ≥70% cloud); Diversity (≥3 types, <25% single source); Credibility (peer-reviewed, authoritative); 100% valid links
 
 ---
 
@@ -88,90 +80,76 @@ Recency (≥50% last 3yr, ≥70% for cloud); Diversity (≥3 types, <25% single 
 
 ## 1. Plan Structure
 
-**Goal**: MECE coverage of 6 dimensions
+**Actions**: Select 5-6 clusters across 6 dimensions → Allocate 4-6 Q&As/cluster (25-30 total) → Assign 1F/2I/2A per cluster
 
-**Actions**:  
-Select 5-6 clusters → Allocate 4-6 Q&As per cluster (total 25-30) → Assign difficulty (1F/2I/2A per cluster)
-
-**Checks**:  
-Total 25-30; Difficulty 20/40/40% (±5%); All 6 dimensions; No overlap
+**Checks**: Total 25-30; 20/40/40% F/I/A (±5%); all 6 dimensions; no overlap
 
 ## 2. Build References
 
-**Goal**: Authoritative sources
+**Actions**: Glossary (≥10 terms + relationships) → Tools (≥5: URL, update ≤18mo, pricing, adoption) → Literature (≥6 books + relevance) → Citations (≥12 APA 7th [EN]/[ZH])
 
-**Actions**:  
-Create Glossary (≥10 terms, definitions, relationships), Tools (≥5 with URL/update/pricing/adoption), Literature (≥6 books with relevance), Citations (≥12 APA 7th with IDs/tags)
-
-**Checks**:  
-Counts met; Language 60/30/10%; Recency ≥50%; Diversity ≥3 types; URLs valid
+**Checks**: G≥10, T≥5, L≥6, A≥12; 60/30/10% EN/ZH/Other (±10%); ≥50% recency (≥70% cloud); ≥3 types, <25% single; 100% valid URLs
 
 ## 3. Write Q&As
 
-**Goal**: Scenario-based questions (≥70% "How would you..."/"When should you...") with comprehensive answers
+**Questions**: ≥70% judgment-based ("How would you..." / "When should you..." / "Compare..."); avoid pure recall unless foundational
 
-**Each Answer Must Include**:  
-150-300 words; ≥1 citation (≥2 for complex); pattern name → rationale → code → metrics; 10-30 line code snippet (idiomatic, production-ready); quantified trade-off; ≥2 alternatives with assumptions/limitations
+**Each Answer**: 150-300 words; ≥1 citation (≥2 advanced); Pattern → rationale → code → trade-offs → metrics; 10-30 lines production code; quantified trade-offs; ≥2 alternatives + table; explicit assumptions/limitations
 
-**Validate Every 5**:  
-Word count, citations, code syntax, traceability, question type, quantified insights
+**Validate Every 5**: Word count, citations, code syntax, traceability, question type, quantified insights
 
 ## 4. Create Artifacts
 
-**Goal**: 4 artifacts per cluster
+**Per Cluster**: Mermaid diagram (<120 nodes, type matches dimension) + Code (10-30 lines, error handling) + Comparison table (≥2 alternatives: Approach/Pros/Cons/Use When) + Metric formula (formula + variables + target)
 
-**Per Cluster**:  
-Mermaid diagram (<120 nodes); 10-30 line code (with error handling); comparison table; metric formula (with variables/target)
-
-**Checks**:  
-All clusters complete; diagrams render; code compiles; tables formatted; formulas valid
+**Checks**: All clusters 4/4; diagrams render; code compiles; tables formatted; formulas valid
 
 ## 5. Link References
 
-**Goal**: 100% cross-reference resolution
+**Actions**: Populate all sections → Extract `[Ref: ID]` from Q&As → Verify all IDs exist → Remove orphans → Validate URLs
 
-**Actions**:  
-Populate all sections → Extract all `[Ref: ID]` from Q&As → Verify all cited IDs exist → Check for orphans → Validate URLs/distribution/consistency
-
-**Checks**:  
-Minimums met; 100% resolution; 0 broken links; Language distribution correct
+**Checks**: G≥10, T≥5, L≥6, A≥12; 100% `[Ref: ID]` resolved; 0 broken links; 60/30/10% EN/ZH/Other; no orphans
 
 ## 6. Validate (19 Checks)
-
-**Goal**: All checks PASS
 
 | # | Check | Target |
 |---|-------|--------|
 | 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 (20/40/40%) |
-| 2 | Citations | ≥70% Q&As have ≥1; ≥30% have ≥2 |
-| 3 | Language | 60/30/10% (±10%) |
-| 4 | Recency | ≥50% (≥70% cloud) |
+| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 |
+| 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
+| 4 | Recency | ≥50% last 3yr (≥70% cloud) |
 | 5 | Diversity | ≥3 types; <25% single |
 | 6 | Links | 100% valid |
 | 7 | Cross-refs | 100% resolved |
-| 8 | Word count | Sample 5: all 150-300 |
+| 8 | Word count | Sample 5: 150-300 |
 | 9 | Insights | 100% quantified |
-| 10 | Per-topic | All: ≥2 sources + ≥1 tool |
-| 11 | Traceability | ≥80% explicit arch→code |
+| 10 | Per-topic | ≥2 sources + ≥1 tool |
+| 11 | Traceability | ≥80% arch→code |
 | 12 | Question type | ≥70% judgment |
-| 13 | Artifacts | ≥90% have 4/4 |
+| 13 | Artifacts | ≥90% clusters 4/4 |
 | 14 | Patterns | ≥80% use patterns |
-| 15 | Metrics | ≥60% have performance metrics |
+| 15 | Metrics | ≥60% have metrics |
 | 16 | Code | ≥80% have snippets |
 | 17 | Syntax | 100% valid |
 | 18 | Formulas | 100% valid |
-| 19 | Review | Pass clarity/accuracy/completeness/balance/practicality |
+| 19 | Review | 6/6 criteria (see §7) |
 
-**If ANY Fails**: Stop → Document → Fix → Re-validate ALL → Iterate until 19/19 PASS
+**Failure Protocol**: ANY fail → STOP → Document → Fix → Re-validate ALL → Iterate until 19/19 PASS
 
 ## 7. Final Review
 
-**Goal**: Quality assurance
+**6 Criteria (All Must PASS)**:
 
-**Pass All 6**:  
-Clarity (logical structure, consistent terms); Accuracy (verifiable, valid code); Completeness (all dimensions, minimums met, 19/19 PASS); Balance (≥2 alternatives, stated assumptions); Practicality (concrete guidance, production code, measurable); Self-Correction (no redundancy/inconsistency/gaps)
+1. **Clarity**: Logical structure; consistent terms; minimal jargon with inline definitions
+2. **Accuracy**: Facts verifiable; code/diagrams valid; metrics sound
+3. **Completeness**: 6 dimensions (4-6 Q&As each); minimums met; 19/19 PASS
+4. **Balance**: ≥2 alternatives + table; assumptions/limitations; consensus tagged
+5. **Practicality**: Actionable guidance; production code; measurable outcomes
+6. **Self-Correction**: No redundancy/inconsistencies/gaps/orphans
 
-**Submit when**: 19/19 PASS + all 6 criteria met
+**Submit When**: 19/19 PASS + 6/6 criteria
+
+**High-Risk Areas**: Code syntax (validate in compiler), URLs (test all), cross-refs (verify `[Ref: ID]`)
 
 ---
 
@@ -179,26 +157,28 @@ Clarity (logical structure, consistent terms); Accuracy (verifiable, valid code)
 
 ```markdown
 ## Contents
-[TOC with links to: Topic Areas, each Q&A, References sections, Validation Report]
+[TOC: Topic Areas | Q&As | References | Validation]
 
 ## Topic Areas
-| Cluster | Range | Count | Difficulty |
-| Structural | Q1-Q5 | 5 | 1F/2I/2A |
-[6 clusters totaling 25-30 Q&As, 20/40/40% F/I/A]
+| Cluster | Dimension | Range | Count | Difficulty |
+| [Title] | [Type] | Q1-Q5 | 5 | 1F/2I/2A |
+[6 dimensions, 25-30 total, 20/40/40% F/I/A]
+
+---
 
 ## Topic 1: [Title]
 **Overview**: [1-2 sentences]
 
-### Q1: [Question Text]
-**Difficulty**: [F/I/A] | **Type**: [Dimension]
+### Q1: [How/When/Compare question]
+**Difficulty**: [F/I/A] | **Dimension**: [Type]
 
-**Key Insight**: [Quantified trade-off]
+**Key Insight**: [Quantified trade-off in one sentence]
 
-**Answer**: [150-300 words: Context → Pattern → Trade-offs → Code → Metrics] [≥1 citation via [Ref: ID]]
+**Answer**: [150-300 words: Context → Pattern + rationale → Trade-offs → Metrics → Assumptions/Limitations] [≥1 citation [Ref: A1]]
 
-**Implementation**:
+**Implementation** ([Language]):
 ```[language]
-[10-30 lines, production-ready, idiomatic]
+// 10-30 lines: error handling, logging, idiomatic
 ```
 
 **Diagram** (per cluster):
@@ -207,41 +187,43 @@ Clarity (logical structure, consistent terms); Accuracy (verifiable, valid code)
 ```
 
 **Metrics**:
-| Metric | Formula | Target |
+| Metric | Formula | Variables | Target |
+| [Name] | [Expr] | [Defs] | [Threshold] |
 
 **Trade-offs**:
-| Approach | Pros | Cons | Use When |
-[≥2 alternatives with context]
+| Approach | Pros | Cons | Use When | Consensus |
+| [Option] | [Quantified] | [Quantified] | [Context] | [Tag] |
+[≥2 alternatives]
 
 ---
 
 ## References
 
 ### Glossary (≥10)
-**G1. Term** [Tag]  
-Definition. Related: Concepts
+**G1. [Term]** [EN/ZH/Other]  
+[Definition]. **Related**: [Terms]
 
 ### Tools (≥5)
-**T1. Tool** [Tag]  
-Purpose. Updated: [Date ≤18mo]. Pricing. URL
+**T1. [Tool]** [Tag]  
+**Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
 
 ### Literature (≥6)
-**L1. Author(s). (Year). *Title*. Publisher.**  
-Relevance
+**L1. Author(s). (Year). *Title*. Publisher.** [Tag]  
+**Relevance**: [Why]
 
-### Citations (≥12, 60/30/10% EN/ZH/Other)
-**A1. Author(s). (Year). *Title*. Publisher. [Tag]**
+### Citations (≥12, APA 7th, 60/30/10%)
+**A1.** Author(s). (Year). *Title*. Source. [EN]
 
 ---
 
 ## Validation Report
-| Check | Result | Status |
-| 1. Counts | G:X, T:Y, L:Z, A:W, Q:N [F/I/A] | PASS/FAIL |
-[All 19 checks]
+| # | Check | Target | Result | Status |
+| 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 | G:X, T:Y... | PASS/FAIL |
+[All 19]
 
-**Overall**: [19/19 PASS required]  
-**Issues**: [List if any]  
-**Remediation**: [Actions if needed]
+**Overall**: [X/19 PASS - need 19/19]  
+**Issues**: [Failures]  
+**Remediation**: [Actions]
 ```
 
 # Reference Examples
