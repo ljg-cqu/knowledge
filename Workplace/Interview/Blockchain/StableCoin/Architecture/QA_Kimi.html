@@ -1,0 +1,1375 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain Stablecoin Project: USDT Architecture Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Canela:wght@300;400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        .font-canela { font-family: 'Canela', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #0ea5e9;
+            --muted: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-accent { color: var(--accent); }
+        .bg-muted { background-color: var(--muted); }
+        .border-light { border-color: var(--border); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, #e2e8f0 20%, #e2e8f0 80%, transparent 100%);
+            height: 1px;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 280px;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+            z-index: 50;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .content-offset {
+            margin-left: 320px;
+            padding-right: 2rem;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .bento-main {
+            grid-row: 1 / 3;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .content-offset {
+                margin-left: 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            .bento-main {
+                grid-row: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-offset {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        
+        .citation-link:hover {
+            border-bottom-style: solid;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Enhanced mermaid styling for better contrast and unified appearance */
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Class diagram styling for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            fill: #ffffff;
+            stroke: var(--primary);
+            stroke-width: 2px;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Different node colors with good contrast */
+        .mermaid .node:nth-child(4n+1) rect,
+        .mermaid .node:nth-child(4n+1) circle,
+        .mermaid .node:nth-child(4n+1) ellipse,
+        .mermaid .node:nth-child(4n+1) polygon {
+            fill: #ffffff;
+            stroke: var(--primary);
+        }
+        
+        .mermaid .node:nth-child(4n+2) rect,
+        .mermaid .node:nth-child(4n+2) circle,
+        .mermaid .node:nth-child(4n+2) ellipse,
+        .mermaid .node:nth-child(4n+2) polygon {
+            fill: #f0f9ff;
+            stroke: var(--accent);
+        }
+        
+        .mermaid .node:nth-child(4n+3) rect,
+        .mermaid .node:nth-child(4n+3) circle,
+        .mermaid .node:nth-child(4n+3) ellipse,
+        .mermaid .node:nth-child(4n+3) polygon {
+            fill: #f8fafc;
+            stroke: var(--secondary);
+        }
+        
+        .mermaid .node:nth-child(4n+4) rect,
+        .mermaid .node:nth-child(4n+4) circle,
+        .mermaid .node:nth-child(4n+4) ellipse,
+        .mermaid .node:nth-child(4n+4) polygon {
+            fill: #fef3c7;
+            stroke: #f59e0b;
+        }
+        
+        .mermaid .node .label,
+        .mermaid .nodeLabel {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 13px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--secondary);
+            stroke-width: 2px;
+            fill: none;
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* State diagram specific styling */
+        .mermaid .stateGroup .state {
+            fill: #ffffff;
+            stroke: var(--primary);
+            stroke-width: 2px;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .stateGroup text {
+            fill: var(--primary);
+            font-weight: 500;
+            font-size: 12px;
+        }
+        
+        /* Flowchart specific styling */
+        .mermaid .flowchart-link {
+            stroke: var(--secondary);
+            stroke-width: 2px;
+        }
+        
+        .mermaid .marker {
+            fill: var(--secondary);
+            stroke: var(--secondary);
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-white font-inter text-gray-900 leading-relaxed">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <h3 class="font-canela font-bold text-lg text-primary mb-4">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#introduction" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">Introduction</a>
+        </li>
+        <li>
+          <a href="#structural-patterns" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">1. Structural Architecture Patterns</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs">
+            <li>
+              <a href="#issuance-models" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">1.1 Core Issuance Models</a>
+            </li>
+            <li>
+              <a href="#multichain-deployment" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">1.2 Multi-Chain Deployment</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#security-reliability" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">2. Quality Attributes</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs">
+            <li>
+              <a href="#onchain-security" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">2.1 On-Chain Security</a>
+            </li>
+            <li>
+              <a href="#offchain-security" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">2.2 Off-Chain Security</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#integration-patterns" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">3. Integration Patterns</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs">
+            <li>
+              <a href="#crosschain-interop" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">3.1 Cross-Chain Interop</a>
+            </li>
+            <li>
+              <a href="#api-integration" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">3.2 API Integration</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#glossary" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">Glossary</a>
+        </li>
+        <li>
+          <a href="#references" class="block py-1 px-2 rounded hover:bg-gray-100 transition-colors">References</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content-offset">
+      <!-- Hero Section with Bento Layout -->
+      <section class="hero-gradient py-16 px-8 rounded-2xl mb-12">
+        <div class="bento-grid max-w-6xl mx-auto">
+          <!-- Main Title Area -->
+          <div class="bento-main flex flex-col justify-center">
+            <h1 class="font-canela text-4xl md:text-5xl lg:text-6xl font-light text-primary leading-tight mb-6">
+              <em class="italic text-accent">Architectural Analysis</em>
+              <br/>
+              Blockchain Stablecoin Project
+            </h1>
+            <p class="text-lg md:text-xl text-secondary leading-relaxed max-w-2xl">
+              A comprehensive examination of USDT&#39;s on-chain smart contract security
+              and off-chain infrastructure for reserve management and regulatory compliance.
+            </p>
+          </div>
+
+          <!-- Key Statistics -->
+          <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-light">
+            <h3 class="font-canela text-lg font-semibold text-primary mb-4">Market Context</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-secondary">Market Cap</span>
+                <span class="font-semibold">$95B+</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-secondary">Supported Chains</span>
+                <span class="font-semibold">10+</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-secondary">Daily Volume</span>
+                <span class="font-semibold">$50B+</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture Highlights -->
+          <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-light">
+            <h3 class="font-canela text-lg font-semibold text-primary mb-4">Key Patterns</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center">
+                <i class="fas fa-shield-alt text-accent mr-2"></i>
+                Role-Based Access Control
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-network-wired text-accent mr-2"></i>
+                Multi-Chain Deployment
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-pause-circle text-accent mr-2"></i>
+                Circuit Breaker Pattern
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-users text-accent mr-2"></i>
+                Multi-Signature Governance
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section id="introduction" class="mb-16">
+        <div class="max-w-4xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">Introduction</h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg text-secondary leading-relaxed mb-6">
+              A blockchain stablecoin project like USDT represents one of the most sophisticated
+              intersections of traditional finance and decentralized technology. Unlike volatile
+              cryptocurrencies, fiat-backed stablecoins must maintain an unwavering 1:1 peg to
+              real-world currencies while operating across multiple blockchain ecosystems.
+            </p>
+
+            <p class="text-secondary leading-relaxed mb-6">
+              The architectural complexity stems from balancing two competing imperatives:
+              <strong>on-chain smart contract security</strong> and <strong>robust off-chain
+                infrastructure</strong> for reserve management and regulatory compliance. Every
+              architectural decision carries profound implications for security, scalability,
+              and trustworthiness.
+            </p>
+
+            <blockquote class="border-l-4 border-accent pl-6 py-4 bg-muted rounded-r-lg italic text-lg text-primary">
+              &#34;The choice between a centralized single-owner issuance model for efficiency
+              (USDT) or a distributed multi-minter model for enhanced security (USDC) represents
+              one of the most fundamental architectural trade-offs in the stablecoin ecosystem.&#34;
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider mb-12"></div>
+
+      <!-- Section 1: Structural Architecture Patterns -->
+      <section id="structural-patterns" class="mb-16">
+        <div class="max-w-6xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">1. Structural Architecture Patterns</h2>
+
+          <!-- 1.1 Core Issuance Models -->
+          <div id="issuance-models" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">1.1 Core Issuance Models</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <h4 class="font-semibold text-primary mb-4">
+                  <i class="fas fa-building text-accent mr-2"></i>
+                  Single-Owner Model (USDT)
+                </h4>
+                <p class="text-secondary mb-4">
+                  Centralized control through a single administrative entity with
+                  <code class="bg-white px-2 py-1 rounded text-sm">onlyOwner</code> modifier.
+                  Requires multi-signature wallet authorization for minting and burning.
+                </p>
+                <div class="text-sm text-secondary">
+                  <strong>Key Features:</strong>
+                  <ul class="mt-2 space-y-1">
+                    <li>• Centralized efficiency and control</li>
+                    <li>• Simplified auditing and management</li>
+                    <li>• Rapid chain swap capabilities</li>
+                    <li>• Minimum $100,000 transaction threshold</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <h4 class="font-semibold text-primary mb-4">
+                  <i class="fas fa-network-wired text-accent mr-2"></i>
+                  Multi-Minter Model (USDC)
+                </h4>
+                <p class="text-secondary mb-4">
+                  Distributed authority among pre-approved minters with specific quotas.
+                  Uses
+                  <code class="bg-white px-2 py-1 rounded text-sm">onlyMinters</code> modifier
+                  with role-based access control.
+                </p>
+                <div class="text-sm text-secondary">
+                  <strong>Key Features:</strong>
+                  <ul class="mt-2 space-y-1">
+                    <li>• Compartmentalized risk management</li>
+                    <li>• Granular quota control</li>
+                    <li>• Enhanced operational flexibility</li>
+                    <li>• Distributed trust model</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Code Comparison -->
+            <div class="bg-gray-900 rounded-xl p-6 mb-8">
+              <h4 class="font-semibold text-white mb-4">Code Comparison: Access Control Patterns</h4>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                  <h5 class="text-accent mb-2">USDT Single-Owner Pattern</h5>
+                  <pre class="text-green-400 text-sm overflow-x-auto"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract TetherToken is StandardToken, Ownable {
+    function issue(uint256 amount) 
+        public 
+        onlyOwner 
+    {
+        _totalSupply += amount;
+        balances[owner] += amount;
+        emit Issue(amount);
+    }
+}</code></pre>
+                </div>
+                <div>
+                  <h5 class="text-accent mb-2">USDC Multi-Minter Pattern</h5>
+                  <pre class="text-green-400 text-sm overflow-x-auto"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract USDC is ERC20, AccessControl {
+    bytes32 public constant MINTER_ROLE = keccak256(&#34;MINTER_ROLE&#34;);
+    mapping(address =&gt; uint256) public minterAllowed;
+
+    function mint(address to, uint256 amount) 
+        public 
+        onlyRole(MINTER_ROLE) 
+    {
+        require(amount &lt;= minterAllowed[msg.sender]);
+        minterAllowed[msg.sender] -= amount;
+        _mint(to, amount);
+    }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trade-offs Table -->
+            <div class="overflow-x-auto mb-8">
+              <table class="w-full border-collapse border border-light rounded-lg">
+                <thead class="bg-muted">
+                  <tr>
+                    <th class="border border-light p-3 text-left font-semibold">Feature</th>
+                    <th class="border border-light p-3 text-left font-semibold">Single-Owner (USDT)</th>
+                    <th class="border border-light p-3 text-left font-semibold">Multi-Minter (USDC)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="border border-light p-3 font-medium">Trust Model</td>
+                    <td class="border border-light p-3">Centralized trust in single entity</td>
+                    <td class="border border-light p-3">Distributed trust among minters</td>
+                  </tr>
+                  <tr class="bg-muted/50">
+                    <td class="border border-light p-3 font-medium">Security</td>
+                    <td class="border border-light p-3">Single point of failure risk</td>
+                    <td class="border border-light p-3">Compartmentalized risk limited to quotas</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-light p-3 font-medium">Efficiency</td>
+                    <td class="border border-light p-3">High speed and simplified operations</td>
+                    <td class="border border-light p-3">Requires coordination and quota management</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 1.2 Multi-Chain Deployment -->
+          <div id="multichain-deployment" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">1.2 Multi-Chain Deployment Strategy</h3>
+
+            <div class="mb-8">
+              <p class="text-secondary leading-relaxed mb-6">
+                USDT&#39;s deployment across multiple blockchains represents a sophisticated
+                architectural strategy to maximize liquidity while managing the complexities
+                of cross-chain interoperability. Each deployment requires tailored approaches
+                to native token standards and consensus mechanisms.
+              </p>
+
+              <!-- Blockchain Comparison Table -->
+              <div class="overflow-x-auto mb-8">
+                <table class="w-full border-collapse border border-light rounded-lg">
+                  <thead class="bg-muted">
+                    <tr>
+                      <th class="border border-light p-3 text-left font-semibold">Blockchain</th>
+                      <th class="border border-light p-3 text-left font-semibold">Token Standard</th>
+                      <th class="border border-light p-3 text-left font-semibold">Consensus</th>
+                      <th class="border border-light p-3 text-left font-semibold">Key Characteristics</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-sm">
+                    <tr>
+                      <td class="border border-light p-3 font-medium">Bitcoin (Omni)</td>
+                      <td class="border border-light p-3">Omni Layer (Colored Coins)</td>
+                      <td class="border border-light p-3">Proof of Work (PoW)</td>
+                      <td class="border border-light p-3">High security, slow speed (~10 min blocks)</td>
+                    </tr>
+                    <tr class="bg-muted/50">
+                      <td class="border border-light p-3 font-medium">Ethereum</td>
+                      <td class="border border-light p-3">ERC-20</td>
+                      <td class="border border-light p-3">Proof of Stake (PoS)</td>
+                      <td class="border border-light p-3">Rich DeFi ecosystem, high gas fees</td>
+                    </tr>
+                    <tr>
+                      <td class="border border-light p-3 font-medium">Tron</td>
+                      <td class="border border-light p-3">TRC-20</td>
+                      <td class="border border-light p-3">Delegated PoS (DPoS)</td>
+                      <td class="border border-light p-3">Very low fees, high speed (~3s blocks)</td>
+                    </tr>
+                    <tr class="bg-muted/50">
+                      <td class="border border-light p-3 font-medium">Solana</td>
+                      <td class="border border-light p-3">SPL</td>
+                      <td class="border border-light p-3">Proof of History (PoH) + PoS</td>
+                      <td class="border border-light p-3">Extremely low fees, very high speed (~0.4s blocks)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider mb-12"></div>
+
+      <!-- Section 2: Security and Reliability -->
+      <section id="security-reliability" class="mb-16">
+        <div class="max-w-6xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">2. Quality Attributes: Security and Reliability</h2>
+
+          <!-- 2.1 On-Chain Security -->
+          <div id="onchain-security" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">2.1 On-Chain Security Patterns</h3>
+
+            <!-- RBAC Pattern -->
+            <div class="mb-8">
+              <h4 class="font-semibold text-primary mb-4">Role-Based Access Control (RBAC)</h4>
+              <p class="text-secondary mb-6">
+                RBAC enforces the principle of least privilege by defining distinct roles
+                for critical functions. <a href="https://slowmist.medium.com/slowmist-smart-contract-implementation-guidelines-for-stablecoin-issuers-in-hong-kong-0274842fc8a3" class="citation-link">[Source: SlowMist Security Guidelines]</a>
+              </p>
+
+              <div class="bg-gray-900 rounded-xl p-6 mb-6">
+                <pre class="text-green-400 text-sm overflow-x-auto"><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import &#34;@openzeppelin/contracts/access/AccessControl.sol&#34;;
+import &#34;@openzeppelin/contracts/token/ERC20/ERC20.sol&#34;;
+import &#34;@openzeppelin/contracts/security/Pausable.sol&#34;;
+
+contract SecureStablecoin is ERC20, AccessControl, Pausable {
+    bytes32 public constant MINTER_ROLE = keccak256(&#34;MINTER_ROLE&#34;);
+    bytes32 public constant PAUSER_ROLE = keccak256(&#34;PAUSER_ROLE&#34;);
+
+    constructor(string memory name, string memory symbol) 
+        ERC20(name, symbol) 
+    {
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(MINTER_ROLE, msg.sender);
+        _grantRole(PAUSER_ROLE, msg.sender);
+    }
+
+    function mint(address to, uint256 amount) 
+        public 
+        onlyRole(MINTER_ROLE) 
+        whenNotPaused 
+    {
+        _mint(to, amount);
+    }
+
+    function pause() public onlyRole(PAUSER_ROLE) {
+        _pause();
+    }
+}</code></pre>
+              </div>
+
+              <!-- Mermaid Diagram -->
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  classDiagram
+                  class SecureStablecoin {
+                  -MINTER_ROLE: bytes32
+                  -PAUSER_ROLE: bytes32
+                  +mint(to: address, amount: uint256)
+                  +pause()
+                  +unpause()
+                  }
+                  class AccessControl {
+                  &lt;<interface>&gt;
+                  +hasRole(role: bytes32, account: address): bool
+                  +grantRole(role: bytes32, account: address)
+                  +revokeRole(role: bytes32, account: address)
+                  }
+                  class Pausable {
+                  &lt;<interface>&gt;
+                  -_paused: bool
+                  +pause()
+                  +unpause()
+                  +whenNotPaused()
+                  }
+
+                  SecureStablecoin --|&gt; AccessControl
+                  SecureStablecoin --|&gt; Pausable
+                </interface></interface></div>
+              </div>
+            </div>
+
+            <!-- Circuit Breaker Pattern -->
+            <div class="mb-8">
+              <h4 class="font-semibold text-primary mb-4">Circuit Breaker Pattern</h4>
+              <p class="text-secondary mb-6">
+                The circuit breaker pattern provides emergency stop functionality to
+                protect against catastrophic failures. <a href="https://crypto.news/exchanges-must-adopt-circuit-breakers-and-this-is-how/" class="citation-link">[Source: Crypto.News Security Analysis]</a>
+              </p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  stateDiagram-v2
+                  [*] --&gt; Active: Deploy
+                  Active --&gt; Paused: pause() / Automatic Trigger
+                  Paused --&gt; Active: unpause()
+                  Paused --&gt; [*]: Irreversible Shutdown (Optional)
+
+                  Active --&gt; Active: transfer(), mint(), burn()
+                  Paused --&gt; Paused: transfer(), mint(), burn() (all revert)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2.2 Off-Chain Security -->
+          <div id="offchain-security" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">2.2 Off-Chain Security Infrastructure</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-university text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">Reserve Management</h4>
+                <p class="text-sm text-secondary">
+                  Segregated custody with reputable financial institutions,
+                  regular attestations, and bankruptcy-remote structures.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-link text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">Oracle Security</h4>
+                <p class="text-sm text-secondary">
+                  Multi-layered price feeds using decentralized networks,
+                  deviation checks, and TWAP calculations.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-shield-alt text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">API Security</h4>
+                <p class="text-sm text-secondary">
+                  Rate limiting, authentication gateways, and enterprise
+                  integration patterns for institutional adoption.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider mb-12"></div>
+
+      <!-- Section 3: Integration Patterns -->
+      <section id="integration-patterns" class="mb-16">
+        <div class="max-w-6xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">3. Integration Patterns</h2>
+
+          <!-- 3.1 Cross-Chain Interoperability -->
+          <div id="crosschain-interop" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">3.1 Cross-Chain Interoperability</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <h4 class="font-semibold text-primary mb-4">
+                  <i class="fas fa-rocket text-accent mr-2"></i>
+                  Native Issuance
+                </h4>
+                <p class="text-secondary mb-4">
+                  Direct deployment of canonical token contracts on each blockchain,
+                  providing maximum security and issuer control.
+                </p>
+                <div class="text-sm text-secondary space-y-2">
+                  <strong>Advantages:</strong>
+                  <ul class="ml-4 space-y-1">
+                    <li>• Direct issuer control</li>
+                    <li>• No bridge dependencies</li>
+                    <li>• Tailored chain optimization</li>
+                    <li>• Unified reserve backing</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <h4 class="font-semibold text-primary mb-4">
+                  <i class="fas fa-bridge text-accent mr-2"></i>
+                  Bridged Assets
+                </h4>
+                <p class="text-secondary mb-4">
+                  Lock-and-mint mechanisms through third-party bridges,
+                  offering flexibility but introducing additional security risks.
+                </p>
+                <div class="text-sm text-secondary space-y-2">
+                  <strong>Risks:</strong>
+                  <ul class="ml-4 space-y-1">
+                    <li>• Bridge exploit vulnerabilities</li>
+                    <li>• Liquidity fragmentation</li>
+                    <li>• Third-party dependencies</li>
+                    <li>• Complex user experience</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Liquidity Management -->
+            <div class="bg-muted rounded-xl p-6 border border-light mb-8">
+              <h4 class="font-semibold text-primary mb-4">Liquidity Management Across Chains</h4>
+              <p class="text-secondary mb-4">
+                USDT employs two primary strategies for managing cross-chain liquidity:
+                market-driven arbitrage and direct issuer intervention through chain swaps.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg p-4">
+                  <h5 class="font-medium text-primary mb-2">Arbitrage Mechanism</h5>
+                  <p class="text-sm text-secondary">
+                    Sophisticated traders exploit price discrepancies between chains,
+                    naturally rebalancing liquidity through profit-seeking behavior.
+                  </p>
+                </div>
+                <div class="bg-white rounded-lg p-4">
+                  <h5 class="font-medium text-primary mb-2">Chain Swaps</h5>
+                  <p class="text-sm text-secondary">
+                    Issuer directly burns tokens on one chain and mints equivalent
+                    amounts on another to manage liquidity imbalances.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3.2 API Integration -->
+          <div id="api-integration" class="mb-12">
+            <h3 class="font-canela text-2xl font-light text-primary mb-6">3.2 API and Service Integration</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-cloud text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">RESTful APIs</h4>
+                <p class="text-sm text-secondary mb-3">
+                  External-facing interfaces for wallet integration, enterprise adoption,
+                  and developer-friendly interactions.
+                </p>
+                <div class="text-xs text-secondary">
+                  <strong>Use Cases:</strong>
+                  <ul class="mt-1 space-y-1">
+                    <li>• Wallet creation and management</li>
+                    <li>• Balance queries and transfers</li>
+                    <li>• Transaction status notifications</li>
+                    <li>• ERP system integration</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-bolt text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">gRPC Services</h4>
+                <p class="text-sm text-secondary mb-3">
+                  High-performance internal communication using Protocol Buffers
+                  for microservice architectures.
+                </p>
+                <div class="text-xs text-secondary">
+                  <strong>Benefits:</strong>
+                  <ul class="mt-1 space-y-1">
+                    <li>• Binary protocol efficiency</li>
+                    <li>• Strong type safety</li>
+                    <li>• Built-in streaming support</li>
+                    <li>• Automatic code generation</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-muted rounded-xl p-6 border border-light">
+                <i class="fas fa-gateway text-accent text-2xl mb-4"></i>
+                <h4 class="font-semibold text-primary mb-3">API Gateway</h4>
+                <p class="text-sm text-secondary mb-3">
+                  Centralized entry point for authentication, rate limiting,
+                  and cross-cutting concerns.
+                </p>
+                <div class="text-xs text-secondary">
+                  <strong>Features:</strong>
+                  <ul class="mt-1 space-y-1">
+                    <li>• JWT authentication validation</li>
+                    <li>• Request rate limiting</li>
+                    <li>• Logging and monitoring</li>
+                    <li>• Protocol translation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider mb-12"></div>
+
+      <!-- Glossary -->
+      <section id="glossary" class="mb-16">
+        <div class="max-w-4xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">Glossary</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">RBAC</h4>
+                <p class="text-sm text-secondary">
+                  Role-Based Access Control - Security pattern enforcing least privilege
+                  through distinct roles and permissions.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">Circuit Breaker</h4>
+                <p class="text-sm text-secondary">
+                  Emergency stop pattern allowing privileged roles to halt contract
+                  operations during security threats.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">Multi-Sig</h4>
+                <p class="text-sm text-secondary">
+                  Multi-Signature wallet requiring multiple private key signatures
+                  to authorize transactions, following m-of-n schemes.
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">UUPS</h4>
+                <p class="text-sm text-secondary">
+                  Universal Upgradeable Proxy Standard - Efficient upgrade pattern
+                  with embedded logic in implementation contracts.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">TWAP</h4>
+                <p class="text-sm text-secondary">
+                  Time-Weighted Average Price - Oracle pricing mechanism that smooths
+                  volatility by averaging prices over time periods.
+                </p>
+              </div>
+
+              <div class="bg-muted rounded-lg p-4 border border-light">
+                <h4 class="font-semibold text-primary mb-2">Chain Swap</h4>
+                <p class="text-sm text-secondary">
+                  Liquidity management technique where issuers burn tokens on one
+                  chain and mint equivalent amounts on another.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="mb-16">
+        <div class="max-w-4xl">
+          <h2 class="font-canela text-3xl font-light text-primary mb-8">References</h2>
+          <div class="space-y-4 text-sm">
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[1]</span>
+              <a href="https://sarcouncil.com/download-article/SJAS-79-2025-67-73.pdf" class="citation-link ml-2">
+                Stablecoin Architecture Analysis - Saudi Journal of Applied Sciences
+              </a>
+            </div>
+
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[2]</span>
+              <a href="https://console.settlemint.com/documentation/application-kits/asset-tokenization/use-cases/stablecoin" class="citation-link ml-2">
+                SettleMint Stablecoin Implementation Guidelines
+              </a>
+            </div>
+
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[3]</span>
+              <a href="https://medium.com/coinmonks/analyzing-stablecoin-architectures-surveying-fiat-pegged-assets-algorithmic-innovations-and-90b485b65a94" class="citation-link ml-2">
+                Analyzing Stablecoin Architectures - CoinMonks Research
+              </a>
+            </div>
+
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[4]</span>
+              <a href="https://medium.com/@gwrx2005/comparative-analysis-of-stablecoin-issuance-across-ethereum-compatible-solana-and-cosmos-chains-bf5f5f13a2d9" class="citation-link ml-2">
+                Comparative Analysis of Stablecoin Issuance Across Blockchains
+              </a>
+            </div>
+
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[5]</span>
+              <a href="https://hacken.io/discover/stablecoin-security/" class="citation-link ml-2">
+                Stablecoin Security Analysis - Hacken Research
+              </a>
+            </div>
+
+            <div class="bg-muted rounded-lg p-4 border border-light">
+              <span class="font-semibold text-primary">[6]</span>
+              <a href="https://slowmist.medium.com/slowmist-smart-contract-implementation-guidelines-for-stablecoin-issuers-in-hong-kong-0274842fc8a3" class="citation-link ml-2">
+                SlowMist Smart Contract Implementation Guidelines
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#1e293b',
+                lineColor: '#475569',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#e2e8f0',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#e2e8f0'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                useMaxWidth: true,
+                wrap: true
+            },
+            gantt: {
+                useMaxWidth: true
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.toc-fixed a[href^="#"]');
+
+        function highlightActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('bg-accent', 'text-white');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-accent', 'text-white');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        
+        // Initialize mermaid controls after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                initializeMermaidControls();
+            }, 1000);
+        });
+    </script>
+  
+
+</body></html>

@@ -1,367 +1,346 @@
-# Software System Construction Lifecycle Roadmap
+# Software System Construction Lifecycle Interview Q&A Generator
 
-**Scope**: Production-grade distributed systems (>10K rps, >1TB data, multi-team) lifecycle from discovery to evolution  
-**Audience**: Business, PM, Architects, Developers, QA, DevOps, Security, SRE, Operations, Leadership  
-**Version**: 1.0
+Generate 30-35 interview Q&A pairs demonstrating end-to-end lifecycle expertise.
 
+## Scope
 
-## Contents
+**Audience**: Architects (5+ yrs), Engineering Managers, SREs, Technical Leaders
+**Output**: 30-35 Q&As across 8 phases with quantified metrics, RACI, ≥2 alternatives, citations
+**Success**: 21/21 validation PASS
+**Context**: Production distributed systems (>10K rps, >1TB data), 10-100 engineers, cloud-native, regulated (GDPR/SOC 2/HIPAA)
 
-1. [Scope & Success Criteria](#scope--success-criteria)
-2. [Stakeholder Model](#stakeholder-model)
-3. [Lifecycle Phases](#lifecycle-phases)
-4. [Cross-Cutting Dimensions](#cross-cutting-dimensions)
-5. [Deliverables & Templates](#deliverables--templates)
-6. [Diagram–Code–Metric Mapping](#diagramcodemetric-mapping)
-7. [Quantified Criteria & Trade-offs](#quantified-criteria--trade-offs)
-8. [Validation & Completeness](#validation--completeness)
-9. [References](#references)
+---
 
+# Core Requirements
 
-## Scope & Success Criteria
+## Question Specifications
 
-### Context
+| Aspect | Requirement |
+|--------|-------------|
+| **Total** | 30-35 (20% F / 40% I / 40% A difficulty) |
+| **Answer** | 200-400 words: Context → Approach → Stakeholders → Deliverables → Metrics → Trade-offs |
+| **Citations** | ≥1 each (≥2 complex) |
+| **Per Phase** | Diagram + RACI + Criteria + Metrics |
 
-**Assumptions**: Cloud-native distributed systems; polyglot environments (Go, Java, Python, TypeScript); teams of 10–100 engineers; regulated or high-stakes domains requiring audit, compliance, and observability.
+## Coverage (8 Phases, 3-5 Q&As Each)
 
-**Success Definition**: All 8 phases completed with deliverables, acceptance criteria met, stakeholder sign-off, and validation checklist passed.
+1. **Requirements & Discovery**: Problem validation, NFRs, risk assessment, DOR (Q1-Q4)
+2. **Architecture & Design**: Solution design, ADRs, threat modeling, capacity planning (Q5-Q9)
+3. **Development**: Code quality, security, collaboration, CI/CD (Q10-Q13)
+4. **Testing & Quality**: Test strategy, automation, NFR validation, defect management (Q14-Q17)
+5. **Deployment & Release**: Release automation, rollback, DORA metrics, zero downtime (Q18-Q21)
+6. **Operations & Observability**: SLOs, monitoring, incident response, capacity (Q22-Q25)
+7. **Maintenance & Support**: Vulnerability management, performance tuning, license compliance (Q26-Q29)
+8. **Evolution & Governance**: Technical debt, migrations, change management, fitness functions (Q30-Q35)
 
-### Lifecycle Overview
+## Content Standards
 
-| Phase | Focus | Key Deliverables | Entry Criteria | Exit Criteria |
-|-------|-------|------------------|----------------|---------------|
-| 1. Requirements & Discovery | Problem validation | PRD, NFRs, risk register | Business case approved | DOR checklist passed |
-| 2. Architecture & Design | Solution design | SAD, ADRs, threat model | NFRs defined | Design review passed |
-| 3. Development | Code implementation | Working software, CI | Design approved | Lint/test/security pass |
-| 4. Testing & Quality | Quality assurance | Test reports, defects | Dev complete | Quality gates passed |
-| 5. Deployment & Release | Production release | Pipeline, rollback plan | Tests passed | Deployed to prod |
-| 6. Operations & Observability | Live system mgmt | SLOs, dashboards, runbooks | System live | SLOs met |
-| 7. Maintenance & Support | Ongoing health | Patches, tuning, support | In production | Health KPIs green |
-| 8. Evolution & Governance | Continuous improvement | Roadmap, debt register | Feedback loop active | Change mgmt operational |
+**Traceability**: Business goals → NFRs → Design → Code → Tests → Metrics → Feedback
+**Quantified**: Use concrete metrics (✅ "DOR: 100% NFR traceability, p95 <300ms" ❌ "Complete stories")
+**Context**: Team (<10/10-50/>50), Scale (<1K/1K-10K/>10K rps), Data (<1TB/1-100TB/>100TB), Maturity (greenfield/scale-up/legacy)
+**Stakeholders**: 9 roles (BA, PM, Arch, Dev, QA, DevOps, Sec, SRE, Lead); RACI per phase; escalation paths
+**Language**: Define terms inline, consistent terminology, concrete metrics, minimal jargon
 
+## Artifacts
 
-## Stakeholder Model
+**Phase-Deliverable-Metric Mapping**:
 
-### Roles & Responsibilities
+| Phase | Diagram Type | Key Deliverable | Success Metric Formula |
+|-------|-------------|-----------------|------------------------|
+| Requirements | Context map, Event storming | PRD, NFR catalog | `Completeness = Stories with NFR / Total × 100%` |
+| Architecture | C4 (L1-L3), Sequence | SAD, ADRs, threat model | `Coverage = ADRs / Decisions × 100%` |
+| Development | Git flow, Package structure | Working software, CI | `Quality = (1 - Defects/KLOC) × Coverage%` |
+| Testing | Test pyramid, Coverage | Test reports, defects | `Pass Rate = Passed / Total × 100%` |
+| Deployment | Pipeline, Deployment topology | Release pipeline, runbooks | `DORA Lead Time = Commit to Deploy (hours)` |
+| Operations | Service topology, Dashboards | SLOs, runbooks, alerts | `Availability = Uptime / Total × 100%` |
+| Maintenance | Dependency graph, Vuln trends | Patches, performance reports | `Vuln SLA = Resolved ≤SLA / Total × 100%` |
+| Evolution | Migration roadmap, Debt trends | Roadmap, debt register, RFCs | `Debt Reduction = (Debt₀ - Debt₁) / Debt₀ × 100%` |
 
-| Role | Primary Responsibilities |
-|------|--------------------------|
-| **Business Analyst** | Requirements elicitation, domain modeling, acceptance criteria |
-| **Product Manager** | Vision, roadmap, prioritization, stakeholder alignment |
-| **Architect** | Solution design, ADRs, NFR validation, tech strategy |
-| **Developer** | Code implementation, unit tests, code reviews, documentation |
-| **QA/SET** | Test strategy, automation, quality reporting, defect triage |
-| **DevOps/Platform** | CI/CD, infrastructure, deployment automation, tooling |
-| **Security Engineer** | Threat modeling, SAST/DAST, compliance, vulnerability mgmt |
-| **Data Engineer** | Data pipelines, schema, migration, data quality |
-| **Operations/SRE** | SLOs, monitoring, incident response, capacity, on-call |
-| **Leadership** | Governance, resource allocation, risk acceptance, escalation |
-
-### RACI Matrix
-
-| Phase | BA | PM | Arch | Dev | QA | DevOps | Sec | Data | SRE | Lead |
-|-------|----|----|------|-----|----|----|-----|------|-----|------|
-| Requirements & Discovery | R | A | C | I | C | I | C | C | I | A |
-| Architecture & Design | C | C | R/A | C | C | C | C | C | C | A |
-| Development | I | I | C | R/A | C | C | C | R | I | I |
-| Testing & Quality | C | C | C | C | R/A | C | C | C | C | I |
-| Deployment & Release | I | I | C | C | C | R/A | C | C | C | I |
-| Operations & Observability | I | I | C | I | C | C | C | C | R/A | I |
-| Maintenance & Support | I | C | C | C | C | C | R | C | R | I |
-| Evolution & Governance | C | R | R | C | C | C | C | C | C | A |
-
-**Legend**: R=Responsible, A=Accountable, C=Consulted, I=Informed; **Note**: Tailor RACI to team context; get leadership approval.
-
-
-## Lifecycle Phases
-
-### Phase 1: Requirements & Discovery
-
-**Goal**: Validate problem, scope, constraints, and NFRs; achieve shared understanding and DOR.
-
-**Inputs**:
-- Business goals, vision, success metrics
-- Stakeholder list and constraints (budget, timeline, compliance)
-- Market/competitive analysis, user research
-
-**Activities**:
-1. **Elicitation**: Workshops, interviews, user story mapping
-2. **Domain Modeling**: Event storming, bounded contexts, ubiquitous language
-3. **NFR Definition**: Performance, scalability, reliability, security, usability scenarios with quantified thresholds
-4. **Risk Assessment**: Technical, business, compliance risks with probability/impact scoring
-5. **Privacy & Compliance**: Data classification (PII, PHI, PCI), regulatory requirements (GDPR, HIPAA, SOC 2), consent flows
-6. **Draft SLIs/SLOs**: Initial targets based on business requirements
-
-**Deliverables**:
-- **PRD/BRD**: Problem statement, user personas, functional requirements
-- **Use Cases/User Stories**: Gherkin format with acceptance criteria
-- **Domain Model**: Entity relationships, bounded contexts, context map
-- **NFR Catalog**: Measurable scenarios (e.g., "p95 latency < 300ms at 10K rps")
-- **Risk Register**: Risks with scores, owners, mitigation plans
-- **Data Classification Matrix**: Sensitivity levels, retention policies, access controls
-- **DOR Checklist**: Story completeness criteria
-
-**Success Criteria**:
-- 100% stories have NFR traceability
-- All NFRs measurable with thresholds
-- Risks scored (probability × impact) with owners assigned
-- DOR checklist validated and approved by PM/Arch/QA
-- Data classification covers all entities
-
-**Stakeholder Guidance**:
-- Stakeholder pointers: PM prioritize value/effort & align KPIs; BA facilitate & validate; Architect probe feasibility & risks; Security review data classification & compliance gaps
-
-
-### Phase 2: Architecture & Design
-
-**Goal**: Create an executable architecture with clear trade-offs, validating NFRs and enabling parallel development.
-
-**Inputs**:
-- PRD, NFRs, domain model, risk register
-- Technology constraints, team skills, legacy integrations
-
-**Activities**:
-1. **C4 Architecture Diagrams**: Context (L1), Container (L2), Component (L3), Code (L4) views
-2. **Behavioral Modeling**: Sequence diagrams for key flows, state machines for complex entities
-3. **ADRs**: Document decisions with context, options, trade-offs, consequences
-4. **Threat Modeling**: STRIDE analysis, attack trees, mitigation strategies
-5. **Data Modeling**: ERD, schema design, migration strategy, partitioning/sharding decisions
-6. **Performance Budgets**: Latency/throughput targets per service, capacity planning
-7. **Integration Contracts**: API specs (OpenAPI/AsyncAPI), message schemas (JSON Schema/Avro)
-
-**Deliverables**:
-- **Software Architecture Document (SAD)**: Views, principles, constraints, tech stack
-- **ADR Set**: ≥1 per major decision (e.g., database choice, communication pattern, deployment strategy)
-- **Threat Model**: Threats with CVSS scores, mitigations, residual risks
-- **Schema & Migration Plan**: DDL scripts, migration ordering, rollback procedures
-- **API Specifications**: OpenAPI 3.x for REST, AsyncAPI for events, gRPC protobuf definitions
-- **Quality Attribute Scenarios**: Testable NFR scenarios with metrics
-- **Capacity Estimates**: CPU/memory/storage/network per component at target load
-
-**Success Criteria**:
-- ADR coverage for all key decisions
-- Performance budgets set (e.g., "Service A: CPU < 60% at p95 load, latency < 100ms")
-- Threat model complete with no unmitigated High severity findings
-- Design fitness functions defined (automated architecture tests)
-- All integrations have versioned contracts
-- Capacity plan reviewed and approved by SRE
-
-**Stakeholder Guidance**:
-- Stakeholder pointers: Architect balance trade-offs & document assumptions; Developer check implementability & challenge complexity; Security validate mitigations; SRE ensure observability, failure modes, and ≥30% headroom
-
-
-### Phase 3: Development
-
-**Goal**: Produce maintainable, secure, observable code adhering to standards and enabling safe collaboration.
-
-**Success Criteria**:
-- Lint: 0 errors
-- Coverage: ≥80% unit, ≥60% integration
-- Cyclomatic complexity: mean ≤10
-- Security: 0 critical secrets, SAST 0 High findings
-- Code review: 100% PRs reviewed, SLA <24h
-
-
-### Phase 4: Testing & Quality
-
-**Goal**: Assure functional and non-functional quality, validating all requirements and NFRs before production.
-
-**Success Criteria**:
-- Functional tests: ≥95% pass
-- Contract tests: 100% for published APIs
-- Performance: p95 latency ≤ target
-- Security: 0 open Critical/High vulns
-- Accessibility: WCAG AA pass
-
-
-### Phase 5: Deployment & Release
-
-**Goal**: Safe, automated, repeatable releases to production with rollback capability and zero downtime.
-
-**Success Criteria (DORA Metrics)**:
-- **Lead Time**: ≤ 1 day (elite)
-- **Deployment Frequency**: ≥ daily (elite)
-- **Change Failure Rate**: ≤ 15%
-- **MTTR**: ≤ 1 hour
-
-
-### Phase 6: Operations & Observability
-
-**Goal**: Meet SLOs with robust monitoring, incident response, and capacity management.
-
-**Success Criteria**:
-- **Availability**: ≥99.9%
-- **MTTR**: ≤30 min (SEV-1)
-- **Error Budget**: Policy enforced
-- **Backup Success**: ≥99%
-
-
-### Phase 7: Maintenance & Support
-
-**Goal**: Keep the system healthy, secure, and compliant through ongoing care.
-
-**Success Criteria**:
-- **Vulnerability SLA**: Critical ≤7d, High ≤30d
-- **Dependency Freshness**: <6 months behind latest
-- **License Compliance**: 0 unapproved licenses
-- **Performance**: No regressions >10% sustained
-
-
-### Phase 8: Evolution & Governance
-
-**Goal**: Evolve capabilities safely and sustainably with continuous learning and improvement.
-
-**Success Criteria**:
-- **Debt Management**: Debt reduced by ≥10% per quarter
-- **Migration Success**: 0 SEV-1 incidents during migrations
-- **Change Approval**: 100% major changes reviewed by CAB
-- **Governance Compliance**: 100% RFCs for architectural changes
-
-
-## Cross-Cutting Dimensions
-
-| Dimension | Requirements | Design | Development | Testing | Deployment | Operations | Maintenance | Evolution |
-|-----------|--------------|--------|-------------|---------|------------|------------|-------------|-----------|
-| **Structural** | Bounded contexts | C4 diagrams | Package structure | Integration tests | Service topology | Capacity planning | Refactoring | Strangler fig |
-| **Behavioral** | Event storming | Sequence diagrams | Event handlers | Behavior tests | Feature flags | Tracing | Bug fixes | A/B testing |
-| **Quality** | NFR scenarios | Performance budgets | Code quality gates | Load tests | Blue/green deploy | SLO monitoring | Tuning | Fitness functions |
-| **Data** | Data classification | ERD, schema | Migrations | Data quality tests | Schema versioning | Backup/DR | Archival | Partitioning |
-| **Integration** | API requirements | OpenAPI specs | Client SDKs | Contract tests | Versioned APIs | API monitoring | Deprecation | Protocol migration |
-| **Evolution** | Risk assessment | ADRs | Feature flags | Rollback tests | Canary deployment | Incident response | Hotfixes | Continuous improvement |
-
-
-## Deliverables & Templates
-
-### ADR Template
-
-```markdown
-# ADR-001: [Decision Title]
-
-**Status**: Accepted  
-**Date**: 2025-11-12  
-**Context**: [Problem statement, constraints, requirements]
-
-**Decision**: [Chosen solution]
-
-**Alternatives Considered**:
-- [Option 1]: [Brief assessment]
-- [Option 2]: [Brief assessment]
-
-**Consequences**:
-- Pros: [Benefits with metrics]
-- Cons: [Costs/limitations with metrics]
-- Metrics: [Expected performance/cost]
-
-**Related ADRs**: [List]
-```
-
-
-## Diagram–Code–Metric Mapping
-
-```mermaid
-graph TB
-    User[User]
-    Web[Web App<br/>React]
-    API[API Gateway<br/>Go]
-    Product[Product Service<br/>Java]
-    DB[(PostgreSQL)]
-    Cache[(Redis)]
-    
-    User -->|HTTPS| Web
-    Web -->|REST| API
-    API --> Product
-    Product --> DB
-    Product --> Cache
-```
-
-
-## Quantified Criteria & Trade-offs
-
-### Performance Metrics
-
-| Metric | Target | Formula |
-|--------|--------|---------|
-| **Latency (p95)** | <300ms | `percentile(http_request_duration_seconds, 0.95)` |
-| **Throughput** | ≥10K rps | `rate(http_requests_total[5m])` |
-| **Error Rate** | <0.1% | `rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) × 100` |
-
-### Trade-offs: Monolith vs Microservices
-
-| Aspect | Monolith | Microservices |
-|--------|----------|---------------|
-| **Complexity** | Low | High |
-| **Scalability** | Vertical only | Independent horizontal |
-| **Latency** | Faster (in-process) | Slower (network 5-50ms/hop) |
-| **When to Use** | Small teams (<10), <1K rps | Large teams (>50), >10K rps |
-
-
-## Validation & Completeness
-
-| # | Check | Requirement | Status |
-|---|-------|-------------|--------|
-| 1 | **Phases** | All 8 phases documented | ✅ |
-| 2 | **Stakeholders** | RACI matrix complete | ✅ |
-| 3 | **Dimensions** | Cross-cutting dimensions mapped | ✅ |
-| 4 | **Templates** | ≥6 templates provided | ✅ |
-| 5 | **Diagrams** | ≥2 Mermaid diagrams | ✅ |
-| 6 | **Metrics** | Quantified targets defined | ✅ |
-
+**Format**: Mermaid (<120 nodes, phase-appropriate); Deliverables (templates + criteria); Metrics (formula + vars + target + frequency); RACI (matrix + escalation)
+**Patterns**: DDD, ADRs, STRIDE, Performance Budgets, Quality Gates, Blue/Green, SLO/Error Budget, Strangler Fig, Feature Flags
 
 ## References
 
-### Glossary
+| Component | Min | Requirements |
+|-----------|-----|--------------|
+| **Glossary** | ≥15 | Terms + phase mapping (e.g., "DOR: Definition of Ready. Phase: Requirements. Related: NFR, Criteria") |
+| **Tools** | ≥8 | Valid URL, ≤18mo old, phase, pricing, adoption |
+| **Literature** | ≥8 | Authoritative (Bass, Forsgren, Beyer, Skelton, Evans, Richardson, Kleppmann, Humble) |
+| **Citations** | ≥15 | APA 7th, 60%[EN]/30%[ZH]/10%other (±10%) |
 
-**ADR** – Architecture Decision Record. Markdown document capturing decisions with context, options, consequences.
+**Quality**: ≥50% last 3yr (≥70% DevOps/SRE); ≥3 types, <25% single source; peer-reviewed; 100% valid links
 
-**DORA Metrics** – Four key metrics: deployment frequency, lead time, change failure rate, MTTR.
+---
 
-**DOR** – Definition of Ready. Checklist ensuring stories are ready for development.
+# Generation Process
 
-**SLO** – Service Level Objective. Target for SLI (e.g., 99.9% availability).
+## 1. Plan Structure
+**Actions**: Select 3-5 Q&As/phase → Allocate 30-35 total → Assign 20/40/40% F/I/A → Map stakeholders
+**Checks**: 30-35 total; 20/40/40% F/I/A (±5%); 8 phases (3-5 each); 9 roles balanced
 
-**STRIDE** – Threat modeling framework: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.
+## 2. Build References
+**Actions**: Glossary (≥15, phase-mapped) → Tools (≥8, URL/phase/≤18mo/pricing) → Literature (≥8 books) → Citations (≥15 APA 7th)
+**Checks**: G≥15, T≥8, L≥8, A≥15; 60/30/10% EN/ZH/Other (±10%); ≥50% recent (≥70% DevOps/SRE); ≥3 types, <25% single; 100% valid URLs; 8 phases covered
 
-### Tools
+## 3. Write Q&As
+**Questions**: ≥70% scenario-based ("How/When/Compare..."); avoid definitions unless foundational
+**Answers**: 200-400 words; ≥1 citation (≥2 complex); Context → Approach → Stakeholders → Deliverables → Metrics → Trade-offs → Limits; quantified; ≥2 alternatives + table; phase dependencies
+**Validate Every 5**: Word count, citations, stakeholders, quantified, traceability, practicality
 
-- **Mermaid** – Text-based diagrams. https://mermaid.js.org (Updated: 2024-10)
-- **GitHub Actions** – CI/CD platform. https://github.com/features/actions (Updated: 2024-11)
-- **Terraform** – Infrastructure as Code. https://www.terraform.io (Updated: 2024-10)
-- **Prometheus** – Metrics collection. https://prometheus.io (Updated: 2024-10)
-- **Grafana** – Dashboards. https://grafana.com (Updated: 2024-11)
+## 4. Create Artifacts
+**Per Phase**: Mermaid (<120 nodes) + RACI (9 roles) + Criteria (5-10) + Metrics (≥2: formula + vars + target + frequency)
+**Checks**: 8 phases complete; diagrams render; RACI has R/A; criteria measurable; formulas valid
 
-### Literature
+## 5. Link References
+**Actions**: Populate sections → Extract `[Ref: ID]` → Verify IDs → Map tools → Validate URLs → Remove orphans
+**Checks**: G≥15, T≥8, L≥8, A≥15; 100% resolved; 0 broken; 60/30/10%; tools in ≥6 phases; no orphans
 
-**L1. Bass, L., et al. (2021). *Software Architecture in Practice* (4th ed.). Addison-Wesley.**
+## 6. Validate (21 Checks)
 
-**L2. Forsgren, N., et al. (2018). *Accelerate*. IT Revolution.**
+| # | Check | Target |
+|---|-------|--------|
+| 1 | Counts | G≥15, T≥8, L≥8, A≥15, Q=30-35 (20/40/40%) |
+| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 |
+| 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
+| 4 | Recency | ≥50% last 3yr (≥70% DevOps/SRE) |
+| 5 | Diversity | ≥3 types; <25% single |
+| 6 | Links | 100% valid |
+| 7 | Cross-refs | 100% resolved |
+| 8 | Word count | Sample 5: 200-400 |
+| 9 | Quantified | 100% have measurable criteria |
+| 10 | Phase coverage | All 8 phases 3-5 Q&As |
+| 11 | Stakeholders | ≥80% cover ≥3 roles |
+| 12 | RACI | 100% phases have matrix |
+| 13 | Deliverables | ≥90% link to templates |
+| 14 | Metrics | ≥80% have formulas |
+| 15 | Traceability | ≥80% trace to NFRs |
+| 16 | Diagrams | ≥90% phases have diagram |
+| 17 | Trade-offs | ≥70% have ≥2 alternatives |
+| 18 | Dependencies | ≥60% mention phase dependencies |
+| 19 | Scenarios | ≥70% scenario-based |
+| 20 | Tools | ≥8, mapped to ≥6 phases |
+| 21 | Review | 6/6 criteria (see §7) |
 
-**L3. Beyer, B., et al. (2016). *Site Reliability Engineering*. O'Reilly.**
+**Failure**: ANY fail → STOP → Document → Fix → Re-validate ALL → Iterate until 21/21 PASS
 
-**L4. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution.**
+## 7. Final Review (6 Criteria, All PASS)
+1. **Clarity**: Logical lifecycle flow; consistent terms; explicit dependencies
+2. **Accuracy**: Verifiable metrics; realistic RACI; current tools/practices
+3. **Completeness**: 8 phases (3-5 each); minimums met; 21/21 PASS
+4. **Balance**: ≥2 alternatives + table; multi-stakeholder; quantified trade-offs
+5. **Practicality**: Actionable deliverables; measurable criteria; realistic timelines
+6. **Self-Correction**: No gaps, redundancies, inconsistencies, orphans
 
-**L5. Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley.**
+**Submit**: 21/21 PASS + 6/6 criteria
+**High-Risk**: RACI conflicts, metric formulas, phase dependencies, URLs
 
-**L6. Richardson, C. (2018). *Microservices Patterns*. Manning.**
+---
 
-**L7. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.**
+# Output Template
 
+```markdown
+## Contents
+[TOC: Phase Overview | Q&As by Phase | Cross-Cutting | References | Validation]
 
-**Document Version**: 1.0  
-**Last Updated**: 2025-11-12  
-**Maintained By**: Architecture & Platform Teams  
+## Phase Overview
+| Phase | Focus | Q&A Range | Count | Key Stakeholders | Entry Criteria | Exit Criteria |
+| 1. Requirements & Discovery | Problem validation | Q1-Q4 | 4 | BA(R), PM(A), Arch(C) | Business case approved | DOR passed |
+[All 8 phases, 30-35 total, stakeholder distribution]
+
+---
+
+## Phase 1: Requirements & Discovery
+
+**Overview**: [2-3 sentences: goal, challenges, success indicators]
+**Deliverables**: PRD, NFR catalog, risk register, domain model, DOR checklist
+**Stakeholders**: BA (R), PM (A), Architect (C), QA/Security/Data (C)
+
+### Q1: [How/When/Compare scenario question]
+**Difficulty**: [F/I/A] | **Phase**: Requirements & Discovery
+
+**Key Insight**: [Quantified criterion or trade-off in one sentence]
+
+**Answer**: [200-400 words: Context → Approach (roles) → Deliverables (criteria) → Metrics → Trade-offs (alternatives) → Limits] [≥1 citation [Ref: A1]]
+
+**RACI Matrix**:
+| Role | Responsibility | Actions |
+| BA | Responsible | Facilitate workshops, document requirements |
+| PM | Accountable | Approve scope, prioritize, resolve conflicts |
+| Architect | Consulted | Validate feasibility, identify technical risks |
+[All relevant roles for this question]
+
+**Success Criteria**:
+- [ ] 100% stories have NFR traceability
+- [ ] All NFRs measurable with thresholds
+- [ ] Risk register complete (P×I scored)
+- [ ] DOR checklist validated by PM/Arch/QA
+- [ ] Data classification covers all entities
+
+**Metrics**:
+| Metric | Formula | Variables | Target | Frequency |
+| Completeness | `NFR Stories / Total × 100%` | NFR Stories, Total | 100% | Per sprint |
+| Risk Coverage | `Scored Risks / Total × 100%` | Scored, Total | 100% | Weekly |
+
+**Trade-offs**:
+| Approach | Pros | Cons | Use When | Stakeholders |
+| Waterfall Discovery | Comprehensive upfront | Slow, inflexible | Regulated, fixed scope | PM, Legal |
+| Lean Discovery | Fast iteration | Risk of rework | Greenfield, uncertain | PM, Dev |
+[≥2 alternatives with quantified pros/cons]
+
+**Phase Diagram** (per phase):
+```mermaid
+[Diagram type appropriate for phase: Context Map, Event Storming, C4, etc.]
+[<120 nodes, clear labels, phase-specific notation]
+```
+
+---
+
+## Cross-Cutting Dimensions
+**Overview**: Multi-phase concerns requiring coordinated stakeholders
+
+### Structural Evolution
+[Architecture evolution across phases 1-8]
+
+### Quality Assurance
+[Quality from requirements through operations]
+
+### Data Management
+[Data lifecycle from classification through archival]
+
+---
+
+## References
+
+### Glossary (≥15)
+**G1. ADR (Architecture Decision Record)** [EN] – Phase: Architecture
+Markdown doc: context, options, trade-offs, consequences. Enables traceability. **Related**: SAD, Technical Debt
+
+**G2. DOR (Definition of Ready)** [EN] – Phase: Requirements
+Checklist: user stories ready (criteria, NFRs, dependencies clear). **Related**: DoD, NFR
+
+**G3. DORA Metrics** [EN] – Phase: Deployment
+4 metrics: deploy frequency, lead time, failure rate, MTTR. **Related**: DevOps, CI/CD
+
+**G4. SLO (Service Level Objective)** [EN] – Phase: Operations
+Target for SLI (e.g., 99.9% uptime, p95 <300ms). Error budget basis. **Related**: SLI, SLA
+
+**G5. STRIDE** [EN] – Phase: Architecture
+Threat model: Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Privilege Escalation. **Related**: Security
+
+[G6-G15: NFR, RACI, Bounded Context, Event Storming, Blue/Green, Strangler Fig, Feature Toggle, Technical Debt, CAB, RFC]
+
+### Tools (≥8)
+**T1. Mermaid** [EN] – All | Text diagrams (flowchart, C4, ERD) | 2024-10 | Free | 100M+ repos | https://mermaid.js.org
+**T2. GitHub Actions** [EN] – Dev, Deploy | CI/CD automation | 2024-11 | Free/paid | 90M+ users | https://github.com/features/actions
+**T3. Terraform** [EN] – Arch, Deploy, Ops | IaC (multi-cloud) | 2024-10 | Free/Ent | 10K+ orgs | https://www.terraform.io
+**T4. Prometheus** [EN] – Ops | Metrics, PromQL, alerts | 2024-10 | Free | CNCF | https://prometheus.io
+**T5. Grafana** [EN] – Ops | Dashboards, visualization | 2024-11 | Free/Cloud/Ent | 20M+ users | https://grafana.com
+[T6-T8: OpenAPI, SonarQube, Snyk]
+
+### Literature (≥8)
+**L1.** Bass et al. (2021). *Software Architecture in Practice* (4th ed.). [EN] | Ph 2,8: ADRs, evaluation, debt
+**L2.** Forsgren et al. (2018). *Accelerate*. IT Revolution. [EN] | Ph 5,6,8: DORA metrics, performance
+**L3.** Beyer et al. (2016). *Site Reliability Engineering*. O'Reilly. [EN] | Ph 6,7: SLOs, error budgets, incident response
+**L4.** Skelton & Pais (2019). *Team Topologies*. IT Revolution. [EN] | Ph 1,2,8: Conway's Law, cognitive load
+**L5.** Evans (2003). *Domain-Driven Design*. Addison-Wesley. [EN] | Ph 1,2: Bounded contexts, event storming
+**L6.** Richardson (2018). *Microservices Patterns*. Manning. [EN] | Ph 2,3,4: Decomposition, data, observability
+**L7.** Kleppmann (2017). *Designing Data-Intensive Applications*. O'Reilly. [EN] | Ph 2,4,6,7: Replication, consistency
+**L8.** Humble & Farley (2010). *Continuous Delivery*. Addison-Wesley. [EN] | Ph 3,4,5: Pipelines, testing
+
+### Citations (≥15, APA 7th, 60/30/10%)
+**A1.** Bass et al. (2021). *Software architecture in practice* (4th ed.). Addison-Wesley. [EN]
+**A2.** Forsgren et al. (2018). *Accelerate*. IT Revolution. [EN]
+**A3.** Beyer et al. (2016). *Site reliability engineering*. O'Reilly. [EN]
+**A4.** Skelton & Pais (2019). *Team topologies*. IT Revolution. [EN]
+**A5.** Evans (2003). *Domain-driven design*. Addison-Wesley. [EN]
+**A6.** Richardson (2018). *Microservices patterns*. Manning. [EN]
+**A7.** Kleppmann (2017). *Designing data-intensive applications*. O'Reilly. [EN]
+**A8.** Humble & Farley (2010). *Continuous delivery*. Addison-Wesley. [EN]
+**A9.** Newman (2021). *Building microservices* (2nd ed.). O'Reilly. [EN]
+**A10.** 周志明 (2021). *凤凰架构*. 机械工业出版社. [ZH]
+**A11.** Kim et al. (2018). *The unicorn project*. IT Revolution. [EN]
+**A12.** 张逸 (2019). *架构整洁之道实战*. 电子工业出版社. [ZH]
+**A13.** Nygard (2018). *Release it!* (2nd ed.). Pragmatic Bookshelf. [EN]
+**A14.** Vernon (2013). *Implementing domain-driven design*. Addison-Wesley. [EN]
+**A15.** Fowler (2002). *Patterns of enterprise application architecture*. Addison-Wesley. [EN]
+
+---
+
+## Validation Report
+| # | Check | Target | Result | Status |
+| 1 | Counts | G≥15, T≥8, L≥8, A≥15, Q=30-35 | G:X, T:Y, L:Z, A:W, Q:N | PASS/FAIL |
+| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 | X% ≥1, Y% ≥2 | PASS/FAIL |
+| 3 | Language | 60/30/10% EN/ZH/Other (±10%) | EN:X%, ZH:Y%, Other:Z% | PASS/FAIL |
+| 4 | Recency | ≥50% last 3yr (≥70% DevOps/SRE) | X% recent, Y% DevOps | PASS/FAIL |
+| 5 | Diversity | ≥3 types; <25% single | X types, Y% max source | PASS/FAIL |
+| 6 | Links | 100% valid | X% valid | PASS/FAIL |
+| 7 | Cross-refs | 100% resolved | X% resolved | PASS/FAIL |
+| 8 | Word count | Sample 5: 200-400 | [Range] | PASS/FAIL |
+| 9 | Quantified | 100% have measurable criteria | X% quantified | PASS/FAIL |
+| 10 | Phase coverage | All 8 phases 3-5 Q&As | [Distribution] | PASS/FAIL |
+| 11 | Stakeholders | ≥80% cover ≥3 roles | X% multi-role | PASS/FAIL |
+| 12 | RACI | 100% phases have matrix | X/8 complete | PASS/FAIL |
+| 13 | Deliverables | ≥90% link to templates | X% linked | PASS/FAIL |
+| 14 | Metrics | ≥80% have formulas | X% with formulas | PASS/FAIL |
+| 15 | Traceability | ≥80% trace to NFRs | X% traceable | PASS/FAIL |
+| 16 | Diagrams | ≥90% phases have diagram | X/8 complete | PASS/FAIL |
+| 17 | Trade-offs | ≥70% have ≥2 alternatives | X% with ≥2 | PASS/FAIL |
+| 18 | Dependencies | ≥60% mention phase dependencies | X% with deps | PASS/FAIL |
+| 19 | Scenarios | ≥70% scenario-based | X% scenarios | PASS/FAIL |
+| 20 | Tools | ≥8, mapped to ≥6 phases | X tools, Y phases | PASS/FAIL |
+| 21 | Review | 6/6 criteria | X/6 PASS | PASS/FAIL |
+
+**Overall**: [X/21 PASS - need 21/21]
+**Issues**: [Failures]
+**Remediation**: [Actions]
+**Notes**: [Observations]
+```
+
+---
+
+# Example Question Patterns
+
+## Foundational (20%)
+- "Essential deliverables for Requirements & Discovery?"
+- "Define DOR and its role preventing blockers."
+- "DORA framework metrics?"
+
+## Intermediate (40%)
+- "Balance upfront design vs iterative discovery for regulated fintech?"
+- "Establish SLOs: stakeholder inputs, resolve conflicts?"
+- "Compare monolith vs microservices deployment (20 engineers, 5K rps)?"
+
+## Advanced (40%)
+- "Monolith to microservices migration (50 engineers, 100K users, zero downtime): sequencing, coordination, risks, metrics?"
+- "40% test debt, 25% failure rate: 2-quarter remediation (org, tools, metrics, improvements)?"
+- "Platform centralization vs embedded SREs (100 engineers): costs, velocity, criteria?"
+
+---
+
+# Quality Gates
+
+## Phase Completion (Per Phase)
+**Requirements**: [ ] 100% NFR traceability [ ] Measurable NFRs [ ] Risk register (P×I) [ ] DOR validated [ ] Data classified
+**Architecture**: [ ] ADR coverage [ ] Performance budgets [ ] Threat model (no High) [ ] Fitness functions [ ] Capacity plan
+**Development**: [ ] Lint: 0 errors [ ] ≥80% unit, ≥60% integration [ ] Complexity ≤10 [ ] 0 critical secrets, 0 SAST High [ ] 100% PRs <24h
+**Testing**: [ ] ≥95% pass [ ] 100% contract tests [ ] p95 ≤ target [ ] 0 Crit/High vulns [ ] WCAG AA
+**Deployment**: [ ] Lead time ≤1d [ ] Deploy ≥daily [ ] Failure ≤15% [ ] MTTR ≤1h [ ] Rollback <5min
+**Operations**: [ ] ≥99.9% uptime [ ] MTTR ≤30min (SEV-1) [ ] Error budget enforced [ ] ≥99% backup [ ] 100% runbooks
+**Maintenance**: [ ] Vuln: Crit ≤7d, High ≤30d [ ] Deps <6mo [ ] 0 unapproved licenses [ ] Regressions ≤10% [ ] 100% SLA
+**Evolution**: [ ] ≥10% debt reduction/quarter [ ] 0 SEV-1 migrations [ ] 100% CAB approval [ ] 100% RFCs [ ] 100% fitness
+
+## Content Quality (Generation)
+- [ ] Scenario-based (How/When/Compare) [ ] 200-400 words [ ] ≥1 citation (≥2 complex)
+- [ ] Quantified criteria [ ] ≥2 alternatives + table [ ] RACI (R/A clear) [ ] Criteria checklist
+- [ ] ≥2 metric formulas [ ] Appropriate diagram [ ] Tools in ≥6 phases [ ] Valid links
+- [ ] 60/30/10% EN/ZH/Other (±10%) [ ] ≥50% last 3yr (≥70% DevOps/SRE) [ ] No orphans/redundancy
+
+---
+
+**Template Version**: 1.0
+**Last Updated**: 2025-11-13
+**Maintained By**: Career Development Team
 **Review Cadence**: Quarterly
 
 **Change Log**:
-- 2025-11-12: Initial version, comprehensive lifecycle roadmap covering 8 phases
-
-
-## Quick Navigation
-
-- **Just starting?** → [Requirements & Discovery](#phase-1-requirements--discovery)
-- **Designing a system?** → [Architecture & Design](#phase-2-architecture--design)
-- **Building features?** → [Development](#phase-3-development)
-- **Testing?** → [Testing & Quality](#phase-4-testing--quality)
-- **Deploying?** → [Deployment & Release](#phase-5-deployment--release)
-- **Running in prod?** → [Operations & Observability](#phase-6-operations--observability)
-- **Patching/tuning?** → [Maintenance & Support](#phase-7-maintenance--support)
-- **Planning next phase?** → [Evolution & Governance](#phase-8-evolution--governance)
+- 2025-11-13: Initial version, adapted from Software System Construction Lifecycle Roadmap handbook, 8-phase coverage with quantified criteria and stakeholder focus
