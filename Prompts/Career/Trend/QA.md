@@ -1,8 +1,8 @@
-# PM Interview Q&A Generator: Senior+ Level
+# PM Interview Q&A Generator: Origin, History & Trend Focus
 
 **Meta**: Last Updated 2025-01-13 | Status: Draft | Owner: Individual
 
-Generate 25–30 scenario-based PM interview questions with evidence-based answers for senior/director/VP roles (5-15 yrs experience).
+Generate 25–30 origin/history/trend-focused PM interview questions with evidence-based answers for senior/director/VP roles (5-15 yrs experience).
 
 ---
 
@@ -10,24 +10,24 @@ Generate 25–30 scenario-based PM interview questions with evidence-based answe
 
 ### Purpose & Scope
 
-**Purpose**: Assess senior+ PM judgment through multi-dimensional scenarios requiring stakeholder navigation, strategic trade-offs, and evidence-based reasoning.
+**Purpose**: Assess senior+ PM understanding of product management evolution, historical context, and emerging trends through questions requiring temporal reasoning, pattern recognition, and future forecasting.
 
 **Coverage**: 6 competencies (MECE)—Strategy & Vision, Discovery & User Research, Prioritization & Roadmapping, Metrics & Analytics, Stakeholder Management, Go-to-Market & Growth
 
-**Constraints**: 150-300 words/answer | ≥70% with ≥1 citation (≥30% with ≥2) | 100% scenario-based | Difficulty: 20%F/40%I/40%A (±5%)
+**Constraints**: 150-300 words/answer | ≥70% with ≥1 citation (≥30% with ≥2) | 100% origin/history/trend-focused | Difficulty: 20%F/40%I/40%A (±5%)
 
-**Exclusions**: Trivia, greenfield design, junior tasks, technical deep-dives
+**Exclusions**: Current tactical decisions, hypothetical scenarios, technical implementation details
 
-**Assumptions**: LLM knows core PM frameworks (RICE, JTBD, OKR, AARRR, North Star, PMF); 10-15min discussion/question
+**Assumptions**: LLM knows core PM frameworks evolution (RICE origins, JTBD history, OKR adoption timeline, AARRR emergence, North Star evolution, PMF development); 10-15min discussion/question
 
-**Limitations**: Generic scenarios lack industry nuance—customize per context; citation availability varies; quantitative validation supplements (not replaces) qualitative review
+**Limitations**: Historical accuracy requires recent sources; trend predictions have inherent uncertainty; quantitative validation supplements (not replaces) qualitative review
 
 ### Key Terms
 
-- **F/I/A**: Foundational (execution) | Intermediate (strategy/trade-offs) | Advanced (portfolio/vision/P&L)
+- **F/I/A**: Foundational (recent 5yr trends) | Intermediate (10-15yr evolution) | Advanced (20+yr origins/paradigm shifts)
 - **Floor**: Minimum threshold (≥)
 - **Gate**: Mandatory checkpoint—fail stops execution
-- **Dimensions**: Product, Business, Strategic, Operational—answers address ≥2
+- **Temporal Dimensions**: Origin (why created), Evolution (how changed), Current State (what now), Trend (where heading)—answers address ≥2
 
 ---
 
@@ -46,10 +46,10 @@ Generate 25–30 scenario-based PM interview questions with evidence-based answe
 - Go-to-Market & Growth: 4–5
 
 **References** (build before Q&A):
-- Glossary: ≥10 terms
-- Tools: ≥5 (pricing, users, update ≤18mo, ≥3 integrations)
-- Literature: ≥6 books (≥2 ZH: 俞军, 梁宁, 苏杰)
-- Citations: ≥12 (APA 7th + [EN]/[ZH]/[Other] tags)
+- Glossary: ≥10 terms (with origin year/creator)
+- Tools: ≥5 (launch year, adoption timeline, market evolution)
+- Literature: ≥6 books (≥2 ZH: 俞军, 梁宁, 苏杰; prioritize historical/foundational works)
+- Citations: ≥12 (APA 7th + [EN]/[ZH]/[Other] tags; include historical sources, trend reports, industry evolution studies)
 
 **Visuals**: ≥1 diagram + ≥1 table per topic (6+6 minimum)
 
@@ -66,18 +66,18 @@ Generate 25–30 scenario-based PM interview questions with evidence-based answe
 
 **Distribution**: EN 50–70% | ZH 20–40% | Other 5–15%
 
-**Source Types** (≥3, no type >25%): Frameworks (RICE, JTBD, OST), Research/data, Case studies, Tools
+**Source Types** (≥3, no type >25%): Historical analysis, Industry reports/trends, Academic research, Foundational books, Original framework sources
 
 ### Quality Gates (fail ANY = stop, fix, re-validate ALL)
 
-1. **Recency**: ≥50% from last 3yrs (≥70% for AI/ML/platform/data)
+1. **Temporal Balance**: ≥30% historical sources (5+ yrs old) + ≥40% trend sources (last 3yrs) + ≥20% foundational sources (original frameworks/seminal works)
 2. **Source Diversity**: ≥3 types; no type >25%
-3. **Per-Topic Evidence**: Each topic has ≥2 authoritative + ≥1 tool
-4. **Tool Completeness**: Pricing, users, update (≤18mo), ≥3 integrations
+3. **Per-Topic Evidence**: Each topic has ≥1 historical source + ≥1 trend report + ≥1 foundational work
+4. **Timeline Completeness**: Origin year, key evolution milestones, current state, future projections
 5. **Link Validation**: 100% URLs accessible/archived
 6. **Cross-Reference Integrity**: 100% [Ref: ID] resolve; no orphans
 
-**Mitigation**: Recency fail → flag dated info | Diversity fail → expand research | Link fail → use Web Archive or replace
+**Mitigation**: Temporal balance fail → add historical/trend sources | Diversity fail → expand research | Link fail → use Web Archive or replace
 
 ---
 
@@ -92,93 +92,93 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 ### Step 2: Build References (BEFORE Q&A → run Gates 1–6 after)
 
 **Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST + optional (HEART, Value/Effort, KANO, V2MOM, ICE)
-- Format: term, definition (1–2 sentences), use cases, related, limitations
+- Format: term, definition (1–2 sentences), **origin year, creator/source**, evolution milestones, current usage, related, limitations
 - Assign G1, G2...
 
 **Tools (≥5)**: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro, Figma), Feedback (Pendo, Canny)
-- Include: category, pricing, users, update (≤18mo), ≥3 integrations, PM use case, URL
+- Include: category, **launch year**, adoption timeline, market evolution, predecessor tools, competitive shifts, current state, URL
 - Assign T1, T2...
 
 **Literature (≥6)**: 
-- EN: Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*)
+- EN: Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*), **Moore (*Crossing the Chasm*), Christensen (*Innovator's Dilemma*)**
 - ZH (≥2): 俞军 (*俞军产品方法论*), 梁宁 (*产品思维30讲*), 苏杰 (*人人都是产品经理*)
-- Include: author, title, year, summary, frameworks, relevance
+- Include: author, title, year, **historical context**, summary, frameworks introduced, **influence/legacy**, relevance
 - Assign L1, L2...
 
 **Citations (≥12)**: 
-- Convert to APA 7th + tags; verify ≥50% from last 3yrs
-- Classify: frameworks/research/case studies/tools
+- Convert to APA 7th + tags; **verify temporal balance: ≥30% historical + ≥40% trend + ≥20% foundational**
+- Classify: historical analysis/trend reports/academic research/foundational books/original frameworks
 - Assign A1, A2...
-- **Alternative sources**: Gartner, Forrester, Lenny's Newsletter, Product Coalition, HBR, MIT Sloan
+- **Alternative sources**: Gartner (trend), Forrester (wave history), Lenny's Newsletter (evolution), Product Coalition (retrospectives), HBR (case studies), MIT Sloan (academic), **PM journals, conference archives, company blogs (origin stories)**
 
 ### Step 3: Generate Q&A (5 at a time → self-check each batch)
 
 **Question**: 
-- Scenario format: "How would you...", "Walk me through...", "CEO wants X—what do?"
-- Include constraints: time, resources, stakeholder pressure, conflicting data
-- Test ≥2 judgment signals: trade-offs, opportunity cost, stakeholder tension, incomplete info, execution complexity
-- Single ask; **avoid**: "What is X?", "List Y", "Define Z"
+- Origin/History/Trend format: "How did X evolve?", "Why was Y created?", "What trends led to Z?", "Where is W heading?"
+- Include temporal scope: specific timeframes, evolution phases, inflection points, emerging patterns
+- Test ≥2 temporal signals: origin context, evolution drivers, paradigm shifts, trend forecasting, pattern recognition
+- Single ask; **avoid**: current tactical decisions, hypothetical scenarios, "What would you do if..."
 
 **Difficulty**: 
-- F=execution: "Track activation metric?"
-- I=strategy/trade-offs: "Improve churn vs. add features?"
-- A=portfolio/vision/P&L: "Choose: API, mobile, or international expansion?"
+- F=recent trends (5yr): "How has PLG adoption changed since 2020?"
+- I=evolution (10-15yr): "Trace the evolution from waterfall to agile to continuous delivery in PM practice"
+- A=origins/paradigm shifts (20+yr): "Why did PM emerge as distinct from engineering? How has the role fundamentally changed?"
 
 **Answer Structure** (150–300 words):
-1. Key Insight (1 sentence): Specific dilemma/tension
-2. Framework/approach [Ref: G#/A#]
-3. Multi-dimensional analysis (≥2 dimensions)
-4. Concrete steps
-5. Trade-offs (optimize vs. sacrifice; alternatives)
-6. Stakeholder communication
-7. Success criteria
-8. Citations (≥1 [Ref: ID]; flag low confidence)
-9. Artifact (optional): Matrix, journey, dashboard, roadmap
+1. Key Insight (1 sentence): Core temporal pattern/inflection point
+2. Origin Context [Ref: G#/A#]: Why created, initial problem solved, creator/timeframe
+3. Evolution Timeline (≥2 temporal dimensions): Key milestones, paradigm shifts, adoption curve, market forces
+4. Current State: Present usage, maturity level, mainstream adoption
+5. Trend Analysis: Emerging patterns, future projections, successor approaches
+6. Driving Forces: Technology changes, market dynamics, user behavior shifts
+7. Implications: What this means for PM practice today/tomorrow
+8. Citations (≥1 [Ref: ID]; prioritize historical + trend sources)
+9. Artifact (optional): Timeline, evolution diagram, adoption curve, trend projection
 
-**Batch Self-Check**: Scenario-based | Tests ≥2 signals | 150–300 words | Concrete insight | ≥2 dimensions | ≥3/5 have ≥1 cite (≥1/5 has ≥2) | Difficulty matches content
+**Batch Self-Check**: Origin/history/trend-focused | Tests ≥2 temporal signals | 150–300 words | Concrete temporal insight | ≥2 temporal dimensions | ≥3/5 have ≥1 cite (≥1/5 has ≥2) | Difficulty matches timeframe
 
 ### Step 4: Create Visuals (≥1 diagram + ≥1 table per topic; reference from ≥50% answers)
 
-- **Strategy**: Roadmap (now/next/later), competitive 2×2, decision matrix
-- **Discovery**: User journey, research synthesis
-- **Prioritization**: OST, Value/Effort 2×2, RICE table
-- **Metrics**: AARRR funnel, cohort chart, dashboard
-- **Stakeholder**: Power/interest 2×2, engagement matrix
-- **GTM**: Growth loop, channel strategy, launch checklist
+- **Strategy**: Timeline of strategy frameworks (1960s-now), paradigm shift diagram, evolution of PM role
+- **Discovery**: Evolution of research methods timeline, adoption curve comparison
+- **Prioritization**: Framework origin/evolution table, RICE→ICE→WSJF timeline
+- **Metrics**: AARRR emergence (2007), funnel evolution, metric framework timeline
+- **Stakeholder**: Stakeholder management evolution, org structure changes over time
+- **GTM**: PLG adoption curve (2015-2025), GTM model evolution, channel shift timeline
 
-**Best Practices**: Tables for quantitative data; diagrams for workflows; include units/time periods; cite sources
+**Best Practices**: Timelines for evolution; tables for comparative historical data; include specific years/eras; cite historical sources
 
 ### Step 5: Populate References
 
-- **Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
-- **Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
-- **Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥2 ZH)
-- **Citations**: **A#. [Citation] [Lang]** | APA 7th format | Sort by ID
+- **Glossary**: **G#. Term (Acronym)** | Definition | **Origin year, creator** | Evolution milestones | Current usage | Related | Limitations | Alphabetize
+- **Tools**: **T#. Tool (Category)** | Description | **Launch year** | Adoption timeline | Market evolution | Predecessor tools | URL | Group by category
+- **Literature**: **L#. Author, Title, Year** | **Historical context** | Summary (focus/frameworks) | **Influence/legacy** | Relevance | Group by language (EN, then ≥2 ZH)
+- **Citations**: **A#. [Citation] [Lang]** | APA 7th format | **Type (historical/trend/foundational)** | Sort by ID
 
-**Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags
+**Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags | **Temporal balance verified**
 
 ### Step 6: Run 12 Validations (fail ANY = stop, fix, re-run ALL)
 
 1. **Floors**: G≥10, T≥5, L≥6, A≥12, Q=25–30, 20%F/40%I/40%A (±5%)
 2. **Citations**: ≥70% have ≥1; ≥30% have ≥2
 3. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
-4. **Recency**: ≥50% from last 3yrs (≥70% if AI/ML/platform/data)
+4. **Temporal Balance**: ≥30% historical + ≥40% trend + ≥20% foundational sources
 5. **Source Types**: ≥3 types; no type >25%
 6. **Links**: 100% accessible/archived
 7. **Cross-Refs**: 100% [Ref: ID] resolve; no orphans
 8. **Word Count**: Sample 5; 100% within 150–300
-9. **Key Insights**: 100% concrete (specific dilemma/tension)
-10. **Per-Topic Evidence**: 6/6 topics have ≥2 authoritative + ≥1 tool
-11. **Framework Usage**: ≥80% correct + cited + limitations acknowledged
-12. **Judgment Ratio**: ≥70% scenario-based
+9. **Key Insights**: 100% concrete (specific temporal pattern/inflection point)
+10. **Per-Topic Evidence**: 6/6 topics have ≥1 historical + ≥1 trend + ≥1 foundational
+11. **Framework Usage**: ≥80% include origin context + evolution + current state + cited
+12. **Temporal Focus**: ≥70% origin/history/trend-focused
 
 ### Step 7: Final Review
 
-**Questions**: Clarity (single ask) | Signal (judgment not trivia) | Depth (trade-offs) | Realism (senior+ PM) | Discriminative (application over recall) | Alignment (difficulty matches seniority)
+**Questions**: Clarity (single ask) | Signal (temporal understanding not trivia) | Depth (evolution/trends) | Realism (senior+ PM knowledge) | Discriminative (pattern recognition over recall) | Alignment (difficulty matches timeframe)
 
-**Answers** (sample ≥5): ≥2 dimensions | Concrete steps/frameworks with cites | Explicit trade-offs/alternatives | Evidence | Success criteria | Acknowledges limitations/assumptions
+**Answers** (sample ≥5): ≥2 temporal dimensions | Origin/evolution/trend with cites | Explicit driving forces/inflection points | Historical evidence | Future implications | Acknowledges uncertainty/limitations
 
-**Submission**: All 12 validations PASS | All 6 gates passed | TOC with links | No placeholders | Consistent formatting | Balanced perspectives (user-first vs. business-first, data-driven vs. intuition, innovation vs. execution)
+**Submission**: All 12 validations PASS | All 6 gates passed | TOC with links | No placeholders | Consistent formatting | Balanced perspectives (historical accuracy vs. trend projection, technology-driven vs. market-driven, evolution vs. revolution)
 
 ---
 
@@ -189,26 +189,26 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 | 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40% | | PASS/FAIL |
 | 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
 | 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% AI/platform)             | | PASS/FAIL |
+| 4 | Temporal Balance   | __% historical, __% trend, __% found  | ≥30% hist, ≥40% trend, ≥20% found   | | PASS/FAIL |
 | 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
 | 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
 | 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
 | 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
-| 9 | Key Insights       | __/__ concrete                        | 100%                                | | PASS/FAIL |
-| 10| Per-Topic Evidence | __/6 (≥2 auth + ≥1 tool)              | 6/6                                 | | PASS/FAIL |
-| 11| Frameworks         | __/__ correct+cited+limits            | ≥80%                                | | PASS/FAIL |
-| 12| Judgment Ratio     | __% scenario-based                    | ≥70%                                | | PASS/FAIL |
+| 9 | Key Insights       | __/__ concrete temporal               | 100%                                | | PASS/FAIL |
+| 10| Per-Topic Evidence | __/6 (≥1 hist + ≥1 trend + ≥1 found)  | 6/6                                 | | PASS/FAIL |
+| 11| Frameworks         | __/__ origin+evolution+state+cited    | ≥80%                                | | PASS/FAIL |
+| 12| Temporal Focus     | __% origin/history/trend              | ≥70%                                | | PASS/FAIL |
 
 ---
 
 ## V. Question Quality Checklist (≥2 fails = rewrite/replace)
 
-1. **Clarity**: Single ask | ✓ "Prioritize activation vs. churn?" | ✗ "Explain retention + database optimization"
-2. **Signal**: Tests judgment | ✓ "CEO wants AI—approach?" | ✗ "List AARRR stages"
-3. **Depth**: Enables trade-offs | ✓ "Choose: API, mobile, or intl—how decide?" | ✗ "Build mobile app—yes/no?"
-4. **Realism**: Senior+ PM | ✓ "Sales wants 3 custom features ($5M deal). Engineering says derails roadmap. What do?" | ✗ "Design Instagram in 45min"
-5. **Discriminative**: Application not recall | ✓ "When would RICE mislead? How supplement?" | ✗ "What does RICE stand for?"
-6. **Alignment**: Difficulty matches seniority | F: execution | I: strategy/trade-offs | A: portfolio/vision/P&L
+1. **Clarity**: Single temporal ask | ✓ "How did PLG emerge and evolve?" | ✗ "Explain PLG + implement it for our product"
+2. **Signal**: Tests temporal understanding | ✓ "What drove the shift from feature-based to outcome-based roadmaps?" | ✗ "List types of roadmaps"
+3. **Depth**: Enables evolution analysis | ✓ "Trace AARRR from origin to current variations—what changed and why?" | ✗ "Is AARRR still relevant?"
+4. **Realism**: Senior+ PM knowledge | ✓ "Compare how PM roles differed in 2000 vs. 2010 vs. 2020—what paradigm shifts occurred?" | ✗ "What year was PM invented?"
+5. **Discriminative**: Pattern recognition not recall | ✓ "What historical patterns suggest where PM tooling is heading next?" | ✗ "When was Mixpanel founded?"
+6. **Alignment**: Difficulty matches timeframe | F: recent 5yr trends | I: 10-15yr evolution | A: 20+yr origins/paradigm shifts
 
 ---
 
@@ -244,58 +244,53 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Difficulty**: [F/I/A] | **Topic**: [Area]
 
-**Key Insight**: [1 sentence—specific dilemma/tension]
+**Key Insight**: [1 sentence—core temporal pattern/inflection point]
 
-**Answer** (150–300 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
+**Answer** (150–300 words): Origin Context [Ref: G#/A#] | Evolution Timeline (≥2 temporal dimensions) | Current State | Trend Analysis | Driving Forces | Implications | ≥1 [Ref: ID]
 
-**Artifact** *(optional)*: Matrix, journey, dashboard, roadmap
+**Artifact** *(optional)*: Timeline, evolution diagram, adoption curve, trend projection
 
 ### D. Reference Formats
 
-- **Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
-- **Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
-- **Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥2 ZH)
-- **Citations**: **A#. [Citation] [Lang]** | APA 7th format
+- **Glossary**: **G#. Term (Acronym)** | Definition | **Origin year, creator** | Evolution milestones | Current usage | Related | Limitations | Alphabetize
+- **Tools**: **T#. Tool (Category)** | Description | **Launch year** | Adoption timeline | Market evolution | Predecessor tools | URL | Group by category
+- **Literature**: **L#. Author, Title, Year** | **Historical context** | Summary (focus/frameworks) | **Influence/legacy** | Relevance | Group by language (EN, then ≥2 ZH)
+- **Citations**: **A#. [Citation] [Lang]** | APA 7th format | **Type (historical/trend/foundational)**
 
 ---
 
 ## VII. Example
 
-**Q1: How evaluate building feature requested by top 5 enterprise customers (40% revenue) that doesn't align with product vision for mass market?**
+**Q1: Trace the evolution of product prioritization frameworks from the 1990s to today. What drove the major shifts and where is prioritization heading?**
 
-**Difficulty**: A | **Topic**: Strategy
+**Difficulty**: A | **Topic**: Prioritization & Roadmapping
 
-**Key Insight**: Tests revenue protection (enterprise retention) vs. long-term PMF (mass-market scalability); distinguishes PMs navigating executive pressure from those defaulting to pleasing customers or rigid vision adherence.
+**Key Insight**: Prioritization frameworks evolved from engineering-centric (Waterfall/MoSCoW) → value-centric (RICE/WSJF) → outcome-centric (North Star/OST), driven by faster release cycles, data availability, and market competition; distinguishes PMs understanding historical context from those following current trends without foundational knowledge.
 
-**Answer** (248 words):
+**Answer** (268 words):
 
-Use multi-dimensional evaluation [Ref: A1]. **First, discover JTBD** [Ref: A7]—what problem are customers solving? Surface requests often mask deeper needs revealing generalized solutions [Ref: A6].
+**Origin Context** [Ref: A3]: Pre-2000s prioritization was engineering-driven using MoSCoW (1994, Clegg) [Ref: G7] and cost-benefit analysis—reflecting waterfall constraints where changing priorities was expensive [Ref: L5].
 
-**Second, quantify with RICE** [Ref: G2]. Enterprise: Reach (5/$2M), Impact (high retention/low acquisition), Confidence (high), Effort (unknown if custom). Mass-market: Reach (5K+ users), Impact (med/user, high cumulative), Confidence (med), Effort (similar). RICE won't capture strategic value—use decision matrix [Ref: T2].
+**Early Evolution (2000-2010)**: Agile adoption created need for continuous prioritization [Ref: A8]. RICE emerged at Intercom (~2016) [Ref: G2] codifying reach/impact/confidence/effort—shift toward quantification as SaaS enabled faster iteration and A/B testing [Ref: T1]. Kano model (1984, but popularized 2000s) introduced customer satisfaction dimension [Ref: A2].
 
-**Third, assess against North Star** [Ref: G4]. Does this move toward outcomes or become feature factory [Ref: G9]? If generalized ("custom fields" → "flexible schema"), both segments benefit and strengthen PMF [Ref: G5].
+**Middle Period (2010-2018)**: Data explosion drove weighted scoring (WSJF from SAFe 2011) [Ref: G8] and ICE (Sean Ellis ~2008) [Ref: G10]. Prioritization moved from "what can we build?" to "what should we build?" [Ref: L2]. Product-led growth emergence (~2016) [Ref: A9] emphasized activation/retention metrics in prioritization.
 
-**Trade-offs**: (1) Enterprise version: protects $2M but risks fragmentation/debt; (2) Generalized version: serves both but longer timeline/higher uncertainty; (3) Decline: maintains vision but risks churn/competition; (4) Premium tier: monetizes customization but adds operational complexity.
+**Current State (2018-2025)**: Shift toward outcome-based frameworks—North Star (Amplitude 2018) [Ref: G4], Opportunity Solution Trees (Torres 2021) [Ref: G9], RICE variations. Discovery-driven prioritization replaced roadmap-first [Ref: L4]. AI/ML capabilities enabling predictive impact scoring [Ref: A11].
 
-**Alternatives**: Professional services, partner ecosystem, configuration tools [Ref: L3].
+**Trend Analysis**: Moving toward (1) real-time reprioritization using live data; (2) customer outcome proxies over feature delivery; (3) probabilistic frameworks acknowledging uncertainty; (4) AI-assisted prioritization [Ref: A12].
 
-**Stakeholder communication**: Present analysis with recommendation, trade-offs, criteria, precedent implications—product principles matter [Ref: T2].
+**Driving Forces**: Release frequency (yearly → daily), data availability (intuition → metrics), market velocity (first-mover → fast-follower), customer expectations (features → outcomes).
 
-**Success criteria**: If built, measure enterprise retention (+20%), mass-market adoption (≥30% use within 6mo), tech debt (≤10% velocity impact), support costs (flat/declining).
+**Implications**: Future PMs need (1) historical framework knowledge to choose appropriate tools; (2) data literacy for quantitative prioritization; (3) outcome thinking over feature thinking; (4) comfort with continuous reprioritization.
 
-**Limitations**: Assumes enterprise needs are generalizable; may not apply if truly custom.
+**Artifact** (Timeline):
 
-**Artifact**:
+| Era       | Dominant Framework | Driver                    | Cycle Time | Decision Basis |
+|-----------|-------------------|---------------------------|------------|----------------|
+| 1990-2000 | MoSCoW/CBA        | Waterfall constraints     | 12-24mo    | Engineering cost |
+| 2000-2010 | Kano/Value-Effort | Agile adoption            | 3-6mo      | Customer value |
+| 2010-2018 | RICE/WSJF/ICE     | Data availability         | 2-4wk      | Quantified impact |
+| 2018-2025 | North Star/OST    | PLG/Outcomes focus        | Continuous | Customer outcomes |
+| 2025+     | AI-assisted/Real-time | Predictive analytics  | Real-time  | Predicted outcomes |
 
-| Criterion           | Enterprise       | Mass Market      | Weight | E Score | M Score |
-|---------------------|------------------|------------------|--------|---------|---------|
-| Revenue (12mo)      | $2M (retention)  | $500K (acquisition) | 30%  | 9       | 3       |
-| Strategic alignment | Low (custom)     | High (vision)    | 25%    | 2       | 9       |
-| Reach               | 5 customers      | 5K+ users        | 20%    | 1       | 9       |
-| Velocity impact     | High (complex)   | Low (reusable)   | 15%    | 2       | 8       |
-| Competitive moat    | Low (replicable) | High (differentiator) | 10% | 3    | 9       |
-| **Weighted**        |                  |                  |        | **4.8** | **7.1** |
-
-**Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases
-
-**Confidence**: High (established frameworks; common PM dilemma)
+**Confidence**: High (well-documented evolution; strong citation support)

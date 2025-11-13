@@ -1,56 +1,57 @@
 # Performance Engineering Interview Generator
 
-Generate 25-30 interview Q&A pairs testing performance optimization capabilities for high-scale, low-latency systems.
+Generate 25-30 interview Q&A pairs testing performance optimization for high-scale, low-latency systems.
 
-## Requirements
+## Context & Scope
 
-### Context & Scope
-**Domain**: Web services, cloud-native, microservices, distributed systems, real-time applications, data-intensive platforms  
-**Audience**: Performance Engineers, SREs, Backend Developers, Architects, DevOps, Engineering Managers  
-**Constraints**: Production systems (>1K rps [G: RPS]) or high-scale targets (>10K rps, >1TB data, <100ms p99 [G: p99]); measurable SLOs [G: SLO] required  
-**Assumptions**: Basic system design; profiling [G: Profiling]/monitoring tool access; load testing capability  
+**Domain**: Web/cloud/microservices/distributed/real-time/data-intensive systems  
+**Audience**: Performance Engineers, SREs, Backend Devs, Architects, DevOps, Eng Managers  
+**Constraints**: Production >1K rps or targets >10K rps, >1TB data, <100ms p99 [G: p99]; measurable SLOs [G: SLO]  
+**Assumptions**: System design knowledge; profiling [G: Profiling]/monitoring/load testing access  
 **In Scope**: Latency/Throughput/Scalability/Resources optimization; profiling/load testing/caching/monitoring  
-**Out of Scope**: Hardware selection, network topology, vendor comparisons, non-performance concerns (security except DoS, cost except performance ROI)
+**Out of Scope**: Hardware selection, network topology, vendor comparisons, non-performance concerns
 
-### Output Specifications
+## Output Specifications
+
 **Quantity**: 25-30 Q&A pairs (scale references ×1.2 if >30)  
 **Difficulty**: 20% Foundational (5-6), 40% Intermediate (10-12), 40% Advanced (10-12)  
-**Coverage**: MECE [G: MECE] across 4 Dimensions × 4 Phases = 16 cells (≥1 Q&A/cell, see matrix below)  
+**Coverage**: MECE [G: MECE] across 4 Dimensions × 4 Phases = 16 cells (≥1 Q&A/cell)  
 **Answer Format**: 150-300 words with [Ref: ID], Mermaid diagrams, YAML/JSON/code, APA 7th [EN]/[ZH]  
-**Performance Chain**: SLO [G: SLO] → Measure → Bottleneck [G: Bottleneck] → Optimize → Validate → Quantified Impact (required in every answer)  
+**Performance Chain**: SLO → Measure → Bottleneck → Optimize → Validate → Quantified Impact (required in every answer)  
 **Per Cluster (5-6 total)**: ≥1 diagram, ≥1 practical (code/config/script/command), ≥1 metrics table, ≥1 trade-off analysis
 
-### Quality Standards (All Mandatory)
-**Clarity**: Glossary-defined terms [G: Term]; numeric not vague ("p99 <50ms" not "fast"); consistent terminology  
-**Precision**: Specific values ("p95 150ms" not "low latency"); exact [Ref: ID]; quantified thresholds ("2x" not "much")  
-**Accuracy**: Cross-check formulas/benchmarks; flag assumptions explicitly; verify tool versions (≤18mo)  
-**Credibility**: Benchmarks ≤3yr; peer-reviewed or production case studies; authoritative blogs (Netflix, AWS, Google Cloud)  
+## Quality Standards (Mandatory)
+
+**Clarity**: Glossary-defined terms [G: Term]; numeric not vague ("p99 <50ms" not "fast")  
+**Precision**: Specific values ("p95 150ms" not "low latency"); exact [Ref: ID]; quantified thresholds  
+**Accuracy**: Cross-check formulas/benchmarks; flag assumptions; verify tool versions (≤18mo)  
+**Credibility**: Benchmarks ≤3yr; peer-reviewed or production case studies; authoritative sources  
 **Significance**: High-impact only (≥20% gain or critical path); proven bottlenecks with evidence  
 **Concision**: Zero redundancy; tables/diagrams over prose; remove filler  
-**Logic**: Performance chain (SLO→Measure→Bottleneck→Optimize→Validate→Impact); no circular definitions  
-**Risk/Value**: Explicit cost-benefit analysis; ≥2 alternatives with trade-offs; mitigation for high-risk choices  
-**Fairness**: Balanced trade-offs (latency vs throughput, cost vs performance); acknowledge limitations/assumptions/counterarguments
+**Logic**: Performance chain complete; no circular definitions  
+**Risk/Value**: Explicit cost-benefit; ≥2 alternatives with trade-offs; mitigation for high-risk choices  
+**Fairness**: Balanced trade-offs; acknowledge limitations/assumptions/counterarguments
 
 ## Performance Dimensions (4×4 MECE Coverage)
 
 | Dimension | Focus | Methods | Key Metrics [G: ID] | Targets |
 |-----------|-------|---------|---------------------|---------|
-| **Latency** | Minimize response time | Profiling [G: Profiling] (flamegraphs [G: Flamegraph], traces); Caching [G: Cache Hit Rate]; Async; Query optimization; Connection pooling [G: Connection Pooling] | p50/p95/p99 [G: p50/p95/p99], TTFB, LCP | API <100ms p99, Web <2s LCP |
-| **Throughput** | Maximize requests/sec | Load testing [G: Load Testing] (k6, Gatling); Horizontal scaling; Rate limiting; Batch/stream processing | RPS/TPS/QPS [G: RPS/TPS/QPS], bandwidth (MB/s), queue depth | >10K rps, <5% error rate |
-| **Scalability** | Handle growth (users/data/traffic) | Load/stress testing [G: Stress Testing]; Auto-scaling (HPA, VPA); Sharding; Partitioning; Read replicas | Scalability factor (10x traffic), cost/req, resource utilization, USL [G: USL] | Linear to 100s nodes |
+| **Latency** | Minimize response time | Profiling (flamegraphs, traces); Caching; Async; Query optimization; Connection pooling | p50/p95/p99 [G: p50/p95/p99], TTFB, LCP | API <100ms p99, Web <2s LCP |
+| **Throughput** | Maximize requests/sec | Load testing (k6, Gatling); Horizontal scaling; Rate limiting; Batch/stream processing | RPS/TPS/QPS [G: RPS/TPS/QPS], bandwidth (MB/s), queue depth | >10K rps, <5% error rate |
+| **Scalability** | Handle growth (users/data/traffic) | Load/stress testing; Auto-scaling (HPA, VPA); Sharding; Partitioning; Read replicas | Scalability factor (10x traffic), cost/req, resource utilization, USL [G: USL] | Linear to 100s nodes |
 | **Resources** | Optimize CPU/memory/I/O/network/cost | Resource profiling; Right-sizing; Compression; Indexing; Query plans | CPU (%), Memory (GB, %), I/O (IOPS, MB/s), Network (Gbps), Cost ($), Efficiency (req/$) | Based on workload |
 
 ## Visual Standards & Key Formulas
 
 | Analysis Type | Required Diagram (Mermaid) | Formula & Target [G: ID] | When to Use |
 |---------------|----------------------------|--------------------------|-------------|
-| **Profiling** | Flamegraph, Trace waterfall | CPU Time = Σ(function time); Hot Path [G: Hot Path] = max(critical path); Target: >80% time identified | Identify bottlenecks in code/queries |
+| **Profiling** | Flamegraph, Trace waterfall | CPU Time = Σ(function time); Hot Path = max(critical path); Target: >80% time identified | Identify bottlenecks in code/queries |
 | **Bottleneck** | Sequence diagram, Dependency graph | Bottleneck Factor = Component Time / Total Time; Amdahl's Law [G: Amdahl's Law] speedup = 1 / ((1-P) + P/S) | Analyze multi-component latency |
 | **Caching** | Cache flow, Hit/miss diagram | Hit Rate [G: Cache Hit Rate] = Hits / (Hits + Misses) × 100% (≥95%); TTL, eviction rate | Read-heavy (>80%) workloads |
 | **Load Testing** | Performance curve (latency vs load), Stress test | Throughput vs Load; p95/p99 vs Load; Breaking point; Scalability: linear/sub-linear | Validate capacity, find limits |
 | **Optimization** | Before/after comparison | Improvement % = (Baseline - Optimized) / Baseline × 100%; ROI = Gain / Cost | Quantify optimization impact |
 | **Scalability** | Scaling curve, USL model | USL [G: USL]: C(N) = N / (1 + α(N-1) + βN(N-1)); α=contention, β=coherency | Predict scaling limits |
-| **Monitoring** | Dashboard layout, Alert flow | SLI/SLO [G: SLO] tracking; Error budget [G: Error Budget] = 1 - Uptime; Burn rate; MTTD/MTTR | Track production performance |
+| **Monitoring** | Dashboard layout, Alert flow | SLI/SLO tracking; Error budget [G: Error Budget] = 1 - Uptime; Burn rate; MTTD/MTTR | Track production performance |
 
 ## Optimization Patterns (High-Impact, Proven)
 
@@ -66,110 +67,120 @@ Generate 25-30 interview Q&A pairs testing performance optimization capabilities
 ## Question Design Principles
 
 **Test Application, Not Recall**: Require analysis, measurement, trade-off evaluation (not "What is X?")  
-**Real-World Scenarios**: Production systems at scale (≥1K rps) with specific constraints/SLOs [G: SLO]  
-**Breadth & Depth**: Multiple perspectives (profiling [G: Profiling], optimization, validation, cost); implementation-level detail
+**Real-World Scenarios**: Production systems at scale (≥1K rps) with specific constraints/SLOs  
+**Breadth & Depth**: Multiple perspectives (profiling, optimization, validation, cost); implementation-level detail
 
 ### Quality Examples
 
-✅ **Good**: "API p99 [G: p99] latency degraded 50ms→300ms. Use profiling to identify bottleneck [G: Bottleneck] and propose 2 optimizations with expected impact." *(Application: analysis, measurement, quantified impact)*  
-❌ **Poor**: "What is profiling?" *(Recall only)*
+✅ **Good**: "API p99 latency degraded 50ms→300ms. Use profiling to identify bottleneck and propose 2 optimizations with expected impact."  
+❌ **Poor**: "What is profiling?"
 
-✅ **Good**: "Choose caching [G: Cache Hit Rate] strategy (Redis, CDN, in-memory) for product catalog (10M items, 80% read, 1K updates/min). Justify with hit rate analysis." *(Application: context, trade-offs, quantified)*  
-❌ **Poor**: "List caching types." *(No context/trade-offs)*
+✅ **Good**: "Choose caching strategy (Redis, CDN, in-memory) for product catalog (10M items, 80% read, 1K updates/min). Justify with hit rate analysis."  
+❌ **Poor**: "List caching types."
 
 ### Stakeholder-Specific Focus
-**Performance Engineers**: Profiling, optimization strategies, load testing [G: Load Testing], benchmarking, A/B testing  
-**SREs**: SLO [G: SLO]/SLI definition, monitoring, alerting, capacity planning, incident response  
+
+**Performance Engineers**: Profiling, optimization strategies, load testing, benchmarking, A/B testing  
+**SREs**: SLO/SLI definition, monitoring, alerting, capacity planning, incident response  
 **Backend Developers**: Code optimization, query tuning, caching implementation, async patterns  
 **Architects**: System design, scalability patterns, technology selection, cost modeling  
 **DevOps**: Auto-scaling, resource provisioning, CI/CD performance gates, infrastructure optimization  
 **Engineering Managers**: Performance budgets, cost-benefit analysis, team velocity, hiring priorities
 
-### Mandatory Q&A Elements (All Required)
-1. **Performance Chain**: SLO [G: SLO] → Measure → Bottleneck [G: Bottleneck] → Optimize → Validate → Quantified Impact (% improvement, cost delta)  
+## Mandatory Q&A Elements (All Required)
+
+1. **Performance Chain**: SLO → Measure → Bottleneck → Optimize → Validate → Quantified Impact (% improvement, cost delta)  
 2. **Practical Element**: Code/config (YAML/JSON)/load test script/profiling command/query plan (executable, 5-30 lines)  
 3. **Citation**: ≥1 [Ref: ID], ≥2 for Advanced difficulty  
 4. **Key Insight**: One sentence with quantified impact ("X optimization achieved Y% improvement at Z cost")  
 5. **Trade-offs**: Explicit (latency vs throughput, cost vs performance, complexity vs gain) with "when to use/avoid"  
 6. **Alternatives**: ≥2 approaches with cost-benefit comparison (required for Advanced)  
-7. **Validation**: Load testing [G: Load Testing]/profiling [G: Profiling]/A/B testing/production metrics with success criteria  
+7. **Validation**: Load testing/profiling/A/B testing/production metrics with success criteria  
 8. **Risk/Mitigation**: High-risk choices flagged with mitigation strategies (e.g., gradual rollout, rollback plan)
 
 ## Reference Requirements
 
 ### Minimums (Scale ×1.2 if >30 Q&As)
-- **≥10 Glossary [G#]**: p50/p95/p99 [G: p50/p95/p99], Latency/Throughput, RPS/TPS/QPS [G: RPS/TPS/QPS], Flamegraph [G: Flamegraph], Profiling [G: Profiling], Cache Hit Rate [G: Cache Hit Rate], Connection Pooling [G: Connection Pooling], Amdahl's Law [G: Amdahl's Law], USL [G: USL], SLO [G: SLO]/SLI, Hot Path [G: Hot Path], Bottleneck [G: Bottleneck], Load Testing [G: Load Testing], Stress Testing [G: Stress Testing], Error Budget [G: Error Budget], MECE [G: MECE]. Include: Definition, formula (if applicable), target values, distinctions, when to use.  
+
+- **≥10 Glossary [G#]**: p50/p95/p99, Latency/Throughput, RPS/TPS/QPS, Flamegraph, Profiling, Cache Hit Rate, Connection Pooling, Amdahl's Law, USL, SLO/SLI, Hot Path, Bottleneck, Load Testing, Stress Testing, Error Budget, MECE. Include: Definition, formula (if applicable), target values, distinctions, when to use.  
 - **≥5 Tools [T#]**: Profilers (perf, pprof, async-profiler, py-spy), Load testers (k6, Gatling, Locust), APM (Datadog, New Relic, Dynatrace), Caches (Redis, Memcached), Tracing (Jaeger, Zipkin, OpenTelemetry). Include: Purpose, pricing tier, last update (YYYY-MM, ≤18mo preferred), integrations, use cases, limitations, URL.  
 - **≥10 Literature [L#]**: Google SRE Book, Designing Data-Intensive Applications, High Performance MySQL, Systems Performance (Gregg), Art of Capacity Planning, CDN papers, database optimization, scalability case studies (Netflix, Twitter, Discord). Include: Full citation, coverage area, key sections.  
 - **≥20 Citations [A#]**: APA 7th [EN]/[ZH] (~60/30/10%); DOI/permanent URL/authoritative blogs (Netflix Tech, AWS, Google Cloud). Include: Author, year, title, publisher/journal, DOI/URL.
 
-### Quality Gates (All Must PASS)
+## Quality Gates (All Must PASS)
 
-| # | Gate | Requirement | Validation Method | Threshold |
-|---|------|-------------|-------------------|-----------|
-| 1 | **Quantity** | 25-30 Q&A pairs | Count total | Exactly 25-30 |
-| 2 | **MECE Coverage** | ≥1 Q&A per 16 cells (4×4 matrix below) | Fill coverage matrix | 16/16 cells |
-| 3 | **Difficulty** | 20/40/40 (F/I/A) distribution | Count by level | ±5% tolerance |
-| 4 | **Performance Chain** | SLO→Measure→Bottleneck→Optimize→Validate→Impact | Review all answers | 100% complete |
-| 5 | **Practical Elements** | Code/config/script/command (5-30 lines) | Review all answers | 100% have ≥1 |
-| 6 | **Citations** | ≥70% answers ≥1 cite, ≥30% ≥2 cites | Count per answer | Meet thresholds |
-| 7 | **Cross-refs** | All [Ref: ID] resolve to References | Automated check | 100% valid |
-| 8 | **Trade-offs** | Explicit trade-offs + alternatives | Review all answers | 100% acknowledged |
-| 9 | **Risk/Mitigation** | High-risk flagged with mitigation | Review Advanced Q&As | 100% flagged |
-| 10 | **Quantified Impact** | Numeric improvements (%, latency, cost) | Review all answers | 100% quantified |
-| 11 | **Glossary Min** | ≥10 entries [G#] with formulas/targets | Count entries | ≥10 (scale ×1.2 if >30) |
-| 12 | **Tools Min** | ≥5 tools [T#] with purpose/pricing/update | Count tools | ≥5 (scale ×1.2 if >30) |
-| 13 | **Literature Min** | ≥10 sources [L#] with full citations | Count sources | ≥10 (scale ×1.2 if >30) |
-| 14 | **Citations Min** | ≥20 citations [A#] APA 7th [EN]/[ZH] | Count citations | ≥20 (scale ×1.2 if >30) |
-| 15 | **Recency** | ≥50% last 3yr (≥70% tools/benchmarks) | Check publication dates | Meet % thresholds |
-| 16 | **Diversity** | ≥3 source types, none >25% | Count by type | Meet requirements |
-| 17 | **Link Accessibility** | All links accessible or archived (DOI/Wayback) | Verify all URLs | 100% accessible |
-| 18 | **Performance Methods** | Profiling, load testing, caching, optimization, scalability, monitoring covered | Check glossary/tools | All 6 present |
-| 19 | **Clarity** | All acronyms in glossary; no undefined terms | Review all Q&As | 100% defined |
-| 20 | **Self-Review** | Checked against all quality standards | Review checklist | All standards met |
+| # | Gate | Requirement | Threshold |
+|---|------|-------------|-----------|
+| 1 | **Quantity** | 25-30 Q&A pairs | Exactly 25-30 |
+| 2 | **MECE Coverage** | ≥1 Q&A per 16 cells (4×4 matrix) | 16/16 cells |
+| 3 | **Difficulty** | 20/40/40 (F/I/A) distribution | ±5% tolerance |
+| 4 | **Performance Chain** | SLO→Measure→Bottleneck→Optimize→Validate→Impact | 100% complete |
+| 5 | **Practical Elements** | Code/config/script/command (5-30 lines) | 100% have ≥1 |
+| 6 | **Citations** | ≥70% answers ≥1 cite, ≥30% ≥2 cites | Meet thresholds |
+| 7 | **Cross-refs** | All [Ref: ID] resolve to References | 100% valid |
+| 8 | **Trade-offs** | Explicit trade-offs + alternatives | 100% acknowledged |
+| 9 | **Risk/Mitigation** | High-risk flagged with mitigation | 100% flagged |
+| 10 | **Quantified Impact** | Numeric improvements (%, latency, cost) | 100% quantified |
+| 11 | **Glossary Min** | ≥10 entries [G#] with formulas/targets | ≥10 (scale ×1.2 if >30) |
+| 12 | **Tools Min** | ≥5 tools [T#] with purpose/pricing/update | ≥5 (scale ×1.2 if >30) |
+| 13 | **Literature Min** | ≥10 sources [L#] with full citations | ≥10 (scale ×1.2 if >30) |
+| 14 | **Citations Min** | ≥20 citations [A#] APA 7th [EN]/[ZH] | ≥20 (scale ×1.2 if >30) |
+| 15 | **Recency** | ≥50% last 3yr (≥70% tools/benchmarks) | Meet % thresholds |
+| 16 | **Diversity** | ≥3 source types, none >25% | Meet requirements |
+| 17 | **Link Accessibility** | All links accessible or archived (DOI/Wayback) | 100% accessible |
+| 18 | **Performance Methods** | Profiling, load testing, caching, optimization, scalability, monitoring covered | All 6 present |
+| 19 | **Clarity** | All acronyms in glossary; no undefined terms | 100% defined |
+| 20 | **Self-Review** | Checked against all quality standards | All standards met |
 
 ## Workflow (7-Step Process)
 
 ### Step 1: Plan Topics (5-6 Clusters)
-- **Clusters**: Latency Optimization, Throughput Scaling, Database Performance, Caching Strategies, Load Testing & Capacity Planning, Monitoring & SLOs  
-- **Allocation**: 4-6 Q&As/cluster (total 25-30), 20/40/40 (F/I/A) difficulty  
-- **Coverage**: 4×4 matrix (4 Dimensions × 4 Phases); ≥1 Q&A/cell (Gate #2)
+
+**Clusters**: Latency Optimization, Throughput Scaling, Database Performance, Caching Strategies, Load Testing & Capacity Planning, Monitoring & SLOs  
+**Allocation**: 4-6 Q&As/cluster (total 25-30), 20/40/40 (F/I/A) difficulty  
+**Coverage**: 4×4 matrix (4 Dimensions × 4 Phases); ≥1 Q&A/cell
 
 ### Step 2: Build References BEFORE Writing Q&As
-- **Order**: Glossary [G#] (≥10) → Tools [T#] (≥5) → Literature [L#] (≥10) → Citations [A#] (≥20)  
-- **Verify**: Unique IDs, recency (≥50% ≤3yr, Gate #15), diversity (≥3 types, Gate #16), accessibility (Gate #17)
+
+**Order**: Glossary [G#] (≥10) → Tools [T#] (≥5) → Literature [L#] (≥10) → Citations [A#] (≥20)  
+**Verify**: Unique IDs, recency (≥50% ≤3yr), diversity (≥3 types), accessibility
 
 ### Step 3: Write Q&As with Mandatory Elements
-- **Scenario-based**: Production systems at scale with specific SLOs [G: SLO], constraints  
-- **Structure (150-300 words)**: Performance Chain (Gate #4) + Practical (Gate #5) + Citations (Gate #6) + Trade-offs (Gate #8) + Quantified Impact (Gate #10) + Risk/Mitigation (Gate #9 for Advanced)  
-- **Incremental Validation**: Review every 5 Q&As against quality gates
+
+**Scenario-based**: Production systems at scale with specific SLOs, constraints  
+**Structure (150-300 words)**: Performance Chain + Practical + Citations + Trade-offs + Quantified Impact + Risk/Mitigation (for Advanced)  
+**Incremental Validation**: Review every 5 Q&As against quality gates
 
 ### Step 4: Add Visuals (Per Cluster)
-- **Required**: ≥1 Mermaid diagram, ≥1 metrics table (formula+target), ≥1 practical (code/config/script)  
-- **Diagram Types**: Flamegraph (profiling), sequence (request flow), performance curve (load testing), cache flow  
-- **Metrics**: Baseline vs optimized with [Ref: ID], % improvement, cost delta
+
+**Required**: ≥1 Mermaid diagram, ≥1 metrics table (formula+target), ≥1 practical (code/config/script)  
+**Diagram Types**: Flamegraph (profiling), sequence (request flow), performance curve (load testing), cache flow  
+**Metrics**: Baseline vs optimized with [Ref: ID], % improvement, cost delta
 
 ### Step 5: Complete References with Full Details
-- **Glossary [G#]**: Definition, formula, target values, distinctions, when to use  
-- **Tools [T#]**: Purpose, pricing, last update (YYYY-MM, ≤18mo), integrations, limitations, URL  
-- **Literature [L#]**: Full citation (APA 7th), coverage area, key sections  
-- **Citations [A#]**: Author, year, title, publisher/journal, DOI/URL, [EN]/[ZH]  
-- **Cross-check**: 100% [Ref: ID] resolve (Gate #7)
+
+**Glossary [G#]**: Definition, formula, target values, distinctions, when to use  
+**Tools [T#]**: Purpose, pricing, last update (YYYY-MM, ≤18mo), integrations, limitations, URL  
+**Literature [L#]**: Full citation (APA 7th), coverage area, key sections  
+**Citations [A#]**: Author, year, title, publisher/journal, DOI/URL, [EN]/[ZH]  
+**Cross-check**: 100% [Ref: ID] resolve
 
 ### Step 6: Validate Against All 20 Quality Gates
-- **Execute**: Run through Gates #1-#20 systematically  
-- **Document**: Create validation table showing PASS/FAIL with evidence (counts, %, coverage matrix)  
-- **Fix**: Address any FAIL immediately; re-validate
 
-### Step 7: Final Self-Review (Gate #20)
-- **Clarity**: All terms in glossary [G: Term]; numeric not vague (Gate #19)  
-- **Precision**: Specific values; exact [Ref: ID]; quantified thresholds  
-- **MECE**: All 16 cells covered; no redundancy (Gate #2)  
-- **Depth**: Implementation-level detail; executable code/configs  
-- **Concision**: Zero fluff; tables/diagrams over prose  
-- **Risk/Value**: Cost-benefit analysis; ≥2 alternatives with trade-offs  
-- **Structure**: TOC links work; logical flow; visual hierarchy  
-- **Practicality**: Actionable guidance with measurable success criteria
+**Execute**: Run through Gates #1-#20 systematically  
+**Document**: Create validation table showing PASS/FAIL with evidence  
+**Fix**: Address any FAIL immediately; re-validate
+
+### Step 7: Final Self-Review
+
+**Clarity**: All terms in glossary; numeric not vague  
+**Precision**: Specific values; exact [Ref: ID]; quantified thresholds  
+**MECE**: All 16 cells covered; no redundancy  
+**Depth**: Implementation-level detail; executable code/configs  
+**Concision**: Zero fluff; tables/diagrams over prose  
+**Risk/Value**: Cost-benefit analysis; ≥2 alternatives with trade-offs  
+**Structure**: TOC links work; logical flow; visual hierarchy  
+**Practicality**: Actionable guidance with measurable success criteria
 
 ## Output Format
 
@@ -224,7 +235,7 @@ Generate 25-30 interview Q&A pairs testing performance optimization capabilities
 **Key Insight**: [One sentence: "X optimization achieved Y% improvement at Z cost"] [Ref: ID]
 
 **Answer** (150-300 words):  
-[SLO [G: SLO] → Measure → Bottleneck [G: Bottleneck] → Optimize → Validate → Quantified Impact with [Ref: ID]]
+[SLO → Measure → Bottleneck → Optimize → Validate → Quantified Impact with [Ref: ID]]
 
 **Practical Element** (5-30 lines):
 ```yaml

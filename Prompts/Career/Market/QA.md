@@ -1,41 +1,36 @@
 # Interview Q&A Generator: Marketing Leadership
 
-Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Manager/Director/VP Marketing roles using evidence-based frameworks and authoritative sources.
+Generate 25–30 scenario-based Q&A testing judgment for Senior Manager/Director/VP Marketing using evidence-based frameworks.
+
+**Scope**: B2B/B2C, 6 MECE domains, 5–15yr experience, ambiguous multi-variable decisions  
+**Constraints**: Authoritative sources; theory 20–40%/practice 60–80%; citations, limitations, trade-offs  
+**Output**: 25–30 Q&A (150–300w) | 6 domains (4–6 each) | F:I:A=20:40:40% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% <3yr (≥70% digital)
 
 ---
 
-## Task Definition
+## Quality Standards
 
-**Purpose**: Test practical judgment, decision-making, strategic thinking for marketing leadership  
-**Roles**: Senior Marketing Manager, Director, VP Marketing (5–15 years experience)  
-**Scope**: B2B/B2C marketing across 6 MECE domains  
-**Assumptions**: Candidates understand core frameworks; face ambiguous, multi-variable decisions  
-**Constraints**: Authoritative sources; theory 20–40% / practice 60–80%; include citations, limitations, trade-offs
-
-**Output**: 25–30 Q&A (150–300 words) | 6 domains (4–6 Q&A each) | F:I:A = 20:40:40% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% sources <3yr (≥70% digital/social)
+- **Scenario-based**: ≥70% multi-variable constraints, trade-offs, ambiguity
+- **Citations**: ≥70% ≥1 [Ref: ID], ≥30% ≥2; all resolve
+- **Evidence**: ≥80% frameworks cited with sources + limitations
+- **Balance**: ≥50% trade-offs/alternatives/counterarguments/"when NOT"
+- **Reasoning**: ≥60% step-by-step logic with evidence
+- **Insights**: Non-obvious, decision-useful, falsifiable, concrete
 
 ---
 
-## Core Requirements
+## References (Collect BEFORE Q&A)
 
-### Quality Standards
-- **Scenario-based**: ≥70% test judgment with multi-variable constraints, trade-offs, ambiguity
-- **Citations**: ≥70% answers ≥1 [Ref: ID], ≥30% ≥2; all resolve correctly
-- **Evidence-based**: ≥80% frameworks cited with sources + limitations
-- **Balanced**: ≥50% acknowledge trade-offs; include alternatives, counterarguments, "when NOT to use"
-- **Reasoning**: ≥60% include step-by-step logic with evidence
-- **Insights**: Each Q&A has non-obvious, decision-useful, falsifiable, concrete insight
+**G#≥10** (Glossary): STP, CAC, LTV, MQL, SQL, ABM, MTA, MMM, Brand Equity, AIDA, 4Ps, ROAS, ICP, GTM  
+**T#≥5** (Tools): Name, pricing, users, integrations, update ≤18mo, URL  
+**L#≥6** (Literature): EN+ZH authoritative (Kotler, Ries & Trout, Godin, Sharp)  
+**A#≥12** (Citations): APA 7th + DOI + [EN]/[ZH]/[Other]
 
-### References (Collect BEFORE Q&A Generation)
-- **G#≥10** (Glossary): STP, CAC, LTV, MQL, SQL, ABM, MTA, MMM, Brand Equity, AIDA, 4Ps, Segmentation, ROAS, ICP, GTM
-- **T#≥5** (Tools): Name, pricing, users, integrations, update ≤18mo, URL
-- **L#≥6** (Literature): EN+ZH authoritative (Kotler, Ries & Trout, Godin, Sharp)
-- **A#≥12** (Citations): APA 7th + DOI + [EN]/[ZH]/[Other]
-- **Quality tiers**: Academic/Standards > Government > Consultancies > Vendor > Trade > Practitioner
-- **Diversity**: ≥3 types, no source >25%, prefer DOIs, all links accessible
+**Tiers**: Academic/Standards > Government > Consultancies > Vendor > Trade > Practitioner  
+**Diversity**: ≥3 types, no source >25%, prefer DOIs, all accessible  
+**Authority** (≥1): Peer-reviewed | 10+ years senior | Framework originator | Data-backed methodology | Industry standard
 
-### Artifacts
-Per domain: ≥1 diagram + ≥1 table (journey maps, matrices, funnels, decision trees, comparisons, dashboards)
+**Artifacts**: Per domain ≥1 diagram + ≥1 table (journey maps, matrices, funnels, decision trees, comparisons, dashboards)
 
 ---
 
@@ -45,10 +40,10 @@ Per domain: ≥1 diagram + ≥1 table (journey maps, matrices, funnels, decision
 |--------|-------|----------|
 | **Market Research & Analysis** | Market sizing, competitive intel, trends, customer research | TAM/SAM/SOM, SWOT, Porter's Five Forces, conjoint |
 | **Marketing Strategy & Planning** | GTM, positioning, budget allocation, portfolio | STP, BCG matrix, Ansoff matrix, resource allocation |
-| **Brand Positioning & Messaging** | Brand identity, value prop, messaging, differentiation | Brand equity pyramid, perceptual mapping, frameworks |
+| **Brand Positioning & Messaging** | Brand identity, value prop, messaging, differentiation | Brand equity pyramid, perceptual mapping |
 | **Customer Segmentation & Targeting** | Segmentation, personas, targeting, prioritization | RFM, behavioral segmentation, ICP |
 | **Channels & Campaign Management** | Channel selection, campaigns, content, media buying | Funnel, content matrix, media mix modeling |
-| **Marketing Metrics & Analytics** | KPIs, attribution, ROI, dashboards, experimentation | CAC, LTV, ROAS, MTA, MMM, cohort, A/B testing |
+| **Marketing Metrics & Analytics** | KPIs, attribution, ROI, dashboards, experimentation | CAC, LTV, ROAS, MTA, MMM, cohort, A/B |
 
 ---
 
@@ -58,38 +53,26 @@ Per domain: ≥1 diagram + ≥1 table (journey maps, matrices, funnels, decision
 
 ---
 
-## Verification
-
-**Cross-check**: Verify stats/frameworks/claims against ≥2 authoritative sources  
-**Uncertainty**: Flag with qualifiers; cite confidence levels  
-**Conflicts**: Present both perspectives with citations  
-**Outdated**: Note if superseded
-
-**Authoritative criteria** (≥1): Peer-reviewed | 10+ years senior practitioner | Framework originator | Data-backed with methodology | Industry standard  
-**Quality tiers**: Academic/Standards > Gov Stats > Top Consultancies > Vendor Docs > Trade Pubs > Practitioner
-
----
-
 ## Difficulty Levels
 
 | Level | % | Complexity | Frameworks | Theory:Practice | Min Requirements |
 |-------|---|------------|------------|-----------------|------------------|
-| **F** | 20±5 | Single variable, clear constraints | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
-| **I** | 40±5 | 2–3 variables, ambiguous constraints | 2–3, compare trade-offs | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
-| **A** | 40±5 | Multi-variate, conflicting constraints | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
+| **F** | 20±5 | Single variable, clear | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
+| **I** | 40±5 | 2–3 variables, ambiguous | 2–3, compare | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
+| **A** | 40±5 | Multi-variate, conflicting | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
 
 ---
 
 ## Answer Structure
 
-1. **Context** (1–2 sent): Restate scenario and challenge
-2. **Analysis** (2–3 sent): Diagnose root causes [Ref: ID]; state assumptions
+1. **Context** (1–2 sent): Restate scenario, challenge
+2. **Analysis** (2–3 sent): Root causes [Ref: ID]; assumptions
 3. **Reasoning** (3–4 sent): Step-by-step logic [Ref: ID]; cause-effect
 4. **Recommendations** (3–4 sent): Actionable steps, priorities, trade-offs [Ref: ID]
 5. **Implementation** (I/A, 2–3 sent): Sequence, timelines, resources
 6. **Metrics** (I/A, 1–2 sent): Success measures, outcomes, timeframes
-7. **Limitations** (2–3 sent): Constraints, "when NOT to use", risks [Ref: ID]
-8. **Key Insight** (with question): Non-obvious, decision-useful, falsifiable
+7. **Limitations** (2–3 sent): Constraints, "when NOT", risks [Ref: ID]
+8. **Key Insight**: Non-obvious, decision-useful, falsifiable
 
 ---
 
@@ -113,62 +96,59 @@ Per domain: ≥1 diagram + ≥1 table (journey maps, matrices, funnels, decision
 
 **Viewpoints**: Brand vs. Performance | B2B vs. B2C | DTC vs. Marketplace | Global vs. Local | Enterprise vs. SMB | Long vs. Short-term
 
-**Required in answers**: 2+ alternative frameworks [Ref: ID] | "When NOT to use" | Biases/limitations [Ref: ID] | Counterarguments | Quantified trade-offs
+**Required**: 2+ alternative frameworks [Ref: ID] | "When NOT to use" | Biases/limitations [Ref: ID] | Counterarguments | Quantified trade-offs
 
-**Insight quality**: Concrete, non-obvious, decision-useful, falsifiable  
-✅ "Tests efficiency vs. effectiveness; distinguishes strategists from tacticians"  
-❌ "About marketing strategy" (vague, obvious)
+**Insight quality**: ✅ "Tests efficiency vs. effectiveness; distinguishes strategists from tacticians" | ❌ "About marketing strategy" (vague, obvious)
 
 ---
 
 ## Process
 
-### 1. Topic Planning
-Select 5–6 domains | Allocate 4–6 Q&A each (25–30 total) | Assign F:I:A = 20:40:40 (±5pp) | Ensure breadth
-
-### 2. Reference Collection (BEFORE Q&A)
-Collect G#≥10, T#≥5, L#≥6, A#≥12 | Verify language mix, recency, diversity, accessibility | Document fully
-
-### 3. Q&A Generation
-**Questions**: Scenario-based ("How would you...", "You observe..."), single ask, test judgment ≥70%, specific constraints  
-**Answers**: Follow structure | Cite [Ref: ID] | Logic chains | Alternatives + "when NOT to use"  
-**Checkpoint per 5**: Word count, citations, insights, limitations, balance
-
-### 4. Artifacts
-Per domain: ≥1 diagram + ≥1 table (markdown/ASCII)
-
-### 5. References
-G#: Term, definition, use | T#: Name, pricing, users, integrations, update, URL | L#: Author, year, title, topics | A#: APA 7th + DOI + [lang]
-
-### 6. Validation
-Run 18-check list. **ALL PASS required. FAIL → fix → re-validate**
+1. **Topic Planning**: 5–6 domains | 4–6 Q&A each (25–30 total) | F:I:A=20:40:40 (±5pp)
+2. **Reference Collection** (BEFORE Q&A): G#≥10, T#≥5, L#≥6, A#≥12 | Verify mix, recency, diversity, accessibility
+3. **Q&A Generation**:
+   - **Questions**: Scenario-based ("How would you...", "You observe..."), single ask, test judgment ≥70%, specific constraints
+   - **Answers**: Follow structure | Cite [Ref: ID] | Logic chains | Alternatives + "when NOT"
+   - **Checkpoint per 5**: Word count, citations, insights, limitations, balance
+4. **Artifacts**: Per domain ≥1 diagram + ≥1 table
+5. **References**: G#: Term, definition, use | T#: Name, pricing, users, integrations, update, URL | L#: Author, year, title, topics | A#: APA 7th + DOI + [lang]
+6. **Validation**: 18-check ALL PASS | FAIL → fix → re-validate
 
 ---
 
 ## Validation Checklist
 
-| # | Check | Criteria | Purpose |
-|---|-------|----------|---------|
-| 1 | Ref counts | G≥10, T≥5, L≥6, A≥12 | Source sufficiency |
-| 2 | Q&A counts | 25–30, F:I:A 20:40:40 (±5pp) | Scope compliance |
-| 3 | Citations | ≥70% ≥1 [Ref], ≥30% ≥2 | Evidence-based |
-| 4 | Language | EN 50–70%, ZH 20–40%, Other 5–15% | Diverse views |
-| 5 | Recency | ≥50% <3yr (≥70% digital) | Current practices |
-| 6 | Diversity | ≥3 types, no source >25% | Avoid bias |
-| 7 | Links | All functional/archived, prefer DOIs | Verifiable |
-| 8 | Cross-refs | All [Ref: ID] resolve | No broken cites |
-| 9 | Word count | Sample 5: all 150–300 | Consistency |
-| 10 | Insights | All concrete, non-obvious, decision-useful | High-value |
-| 11 | Per-cluster | Each: ≥2 auth + ≥1 tool | Balanced |
-| 12 | Frameworks | ≥80% correct + cited + limitations | Accuracy |
-| 13 | Judgment | ≥70% scenario-based | Decision-making |
-| 14 | Accuracy | Sample 5: cross-validated | Error detection |
-| 15 | Balance | ≥50% trade-offs/limitations/alternatives | Honesty |
-| 16 | Reasoning | ≥60% step-by-step logic | Clear thinking |
-| 17 | Artifacts | Each domain: ≥1 diagram + ≥1 table | Visual support |
-| 18 | TOC | Present with working links | Navigation |
+| # | Check | Criteria |
+|---|-------|----------|
+| 1 | Ref counts | G≥10, T≥5, L≥6, A≥12 |
+| 2 | Q&A counts | 25–30, F:I:A 20:40:40 (±5pp) |
+| 3 | Citations | ≥70% ≥1 [Ref], ≥30% ≥2 |
+| 4 | Language | EN 50–70%, ZH 20–40%, Other 5–15% |
+| 5 | Recency | ≥50% <3yr (≥70% digital) |
+| 6 | Diversity | ≥3 types, no source >25% |
+| 7 | Links | All functional/archived, prefer DOIs |
+| 8 | Cross-refs | All [Ref: ID] resolve |
+| 9 | Word count | Sample 5: all 150–300 |
+| 10 | Insights | All concrete, non-obvious, decision-useful |
+| 11 | Per-domain | Each: ≥2 auth + ≥1 tool |
+| 12 | Frameworks | ≥80% correct + cited + limitations |
+| 13 | Judgment | ≥70% scenario-based |
+| 14 | Accuracy | Sample 5: cross-validated ≥2 sources |
+| 15 | Balance | ≥50% trade-offs/limitations/alternatives |
+| 16 | Reasoning | ≥60% step-by-step logic |
+| 17 | Artifacts | Each domain: ≥1 diagram + ≥1 table |
+| 18 | TOC | Present with working links |
 
 **Final**: ✅ ALL PASS → deliver | ❌ List failures → fix → re-validate
+
+---
+
+## Verification
+
+**Cross-check**: Verify stats/frameworks/claims against ≥2 authoritative sources  
+**Uncertainty**: Flag with qualifiers; cite confidence levels  
+**Conflicts**: Present both perspectives with citations  
+**Outdated**: Note if superseded
 
 ---
 
@@ -186,11 +166,10 @@ Run 18-check list. **ALL PASS required. FAIL → fix → re-validate**
 # Interview Q&A - Marketing Professional
 
 ## Contents
-[TOC with links to: Overview | 6 Domains | References (Glossary, Tools, Literature, Citations) | Validation]
+[TOC: Overview | 6 Domains | References (G, T, L, A) | Validation]
 
 ## Topic Overview
 | Domain | Range | Count | F/I/A |
-[Table showing distribution]
 
 ## Domain 1: [Name]
 ### Q#: [Scenario]
@@ -207,13 +186,11 @@ Run 18-check list. **ALL PASS required. FAIL → fix → re-validate**
 **Limitations**: [Constraints, when NOT, risks] [Ref: ID]
 
 **Artifact**:
-```
 [Diagram/table]
-```
 
 [Repeat for all domains]
 
-## Reference Sections
+## References
 ### Glossary (≥10)
 **G#. Term**: Definition. **Use**: Context.
 
@@ -280,15 +257,3 @@ Plan: M1: Cut Social 40%, Events 100% → $200K
       M2-3: Test Partnerships/Community → $95K
 Outcome: CAC $200 (−23%), LTV:CAC 4.0:1 (+43%), Payback <12mo
 ```
-
----
-
-## Usage
-
-1. Collect refs (G≥10, T≥5, L≥6, A≥12) BEFORE Q&A
-2. Generate 25–30 Q&A across 6 domains, F:I:A 20:40:40
-3. Create ≥1 diagram + ≥1 table per domain
-4. Run 18-check validation—ALL PASS required
-5. Use output structure with TOC, Q&A, references, validation
-
-**Success**: 18 checks pass | Questions test judgment | Answers have citations, reasoning, limitations, alternatives | Insights non-obvious, decision-useful | References authoritative, diverse, current

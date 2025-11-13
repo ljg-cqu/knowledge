@@ -1,23 +1,25 @@
 # Leadership Interview Q&A Generator
 
-Generate 25–30 scenario-based leadership questions (senior+, 5-15 yrs) with evidence-based answers and validation.
+Generate 25–30 scenario-based questions testing senior+ leadership judgment with evidence-based answers, artifacts, and validation.
 
 ## I. Foundation
+
+**Purpose**: Assess senior+ leadership (5-15 yrs) through multi-dimensional scenarios testing people leadership, transformation, strategic execution.
 
 **Scope**: Team development, change management, strategic ambiguity, culture, conflict, org design.  
 **Exclude**: Trivia, theory-only, junior tasks, domain-specific technical.
 
-**Constraints**: 150-300 words/answer; ≥70% have ≥1 citation (≥30% have ≥2); 100% scenario-based.
+**Constraints**: 150-300 words/answer; ≥70% have ≥1 citation (≥30% have ≥2); 100% scenario-based; senior+ only.
 
-**Terminology**:
+**Key Terms**:
 - **Floor**: Minimum threshold
 - **Gate**: Mandatory checkpoint (fail = stop/fix)
 - **Difficulty**: F (execution) | I (strategic/systemic) | A (transformation/culture)
 - **Dimensions**: People | Strategic | Operational | Cultural
 
-**Assumptions**: LLM knows common frameworks (Situational Leadership, Kotter, OKR, GROW, Radical Candor, Team Topologies, 5 Dysfunctions).
+**Assumptions**: LLM knows frameworks (Situational Leadership, Kotter, OKR, GROW, Radical Candor, Team Topologies, 5 Dysfunctions); 10-15min/question.
 
-**Limitations**: Generic scenarios lack industry context; ≥50% citations from last 3yrs; trade-offs must be explicit.
+**Limitations**: Generic scenarios lack industry context; ≥50% citations from last 3yrs required; framework trade-offs must be explicit; quantitative validation needs qualitative review.
 
 ## II. Requirements
 
@@ -77,14 +79,14 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 **Literature (≥6)**: EN—Covey (*7 Habits*), Collins (*Good to Great*), Sinek (*Leaders Eat Last*), Brown (*Dare to Lead*), Kim (*Phoenix Project*), Lencioni (*5 Dysfunctions*) | ZH (≥2)—陈春花 (*管理的常识*), 刘澜 (*领导力沉思录*), 宁向东 (*清华管理课*)  
 **Format**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ZH)
 
-**Citations (≥12)**: APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/cases/tools | Assign A1, A2... | **Alternatives**: HBR, MIT Sloan, McKinsey, Gallup, Gartner HR, DDI  
+**Citations (≥12)**: Convert to APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/cases/tools | Assign A1, A2... | **Alternatives**: HBR, MIT Sloan, McKinsey, Gallup, Gartner HR, DDI Forecast  
 **Format**: **A#. [Full APA Citation] [Lang]** | Sort by ID
 
 **Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags
 
 ### Step 3: Generate Q&A (5 at a time → self-check each batch)
 
-**Question**: Scenario format ("How would you...", "Walk me through...", "Your team faces X—what do?") | Include constraints (time, resources, stakeholder pressure, conflicting priorities) | Test ≥2 judgment signals (trade-offs, people impact, cultural implications, incomplete info, resistance) | Single ask  
+**Question**: Scenario format ("How would you...", "Walk me through...", "Your team faces X—what do?") | Include constraints (time, resources, stakeholder pressure, conflicting priorities, dynamics) | Test ≥2 judgment signals (trade-offs, people impact, cultural implications, incomplete info, resistance) | Single ask  
 **Avoid**: "What is X?", "List Y", "Define Z"
 
 **Difficulty Tags**: F=execution ("Improve 1-on-1s?") | I=strategic ("Restructure underperforming org?") | A=transformation ("Build trust culture in 18mo?")
@@ -112,7 +114,7 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 - **Communication**: Stakeholder matrix, communication plan
 - **Org**: Structure, RACI, team topology
 
-**Best Practices**: Tables for quantitative; diagrams for workflows; include roles/timelines; cite sources
+**Best Practices**: Tables for quantitative data; diagrams for workflows; include roles/timelines; cite sources
 
 ### Step 5: Run 12 Validations (fail ANY = stop, fix, re-run ALL)
 

@@ -198,32 +198,32 @@ See **Step 5** for formats. Summary:
 
 ## VII. Example
 
-**Q1: Architect proposes microservices migration ($800K, 9 months, 5 engineers). PM says roadmap delayed. CFO asks ROI justification. DevOps says operational complexity +40%. How assess total value across lifecycle?**
+**Q1: Architect proposes microservices migration ($800K, 9mo, 5 engineers). PM: roadmap delayed. CFO: ROI justification. DevOps: operational complexity +40%. Assess total value across lifecycle?**
 
-**Difficulty**: A | **Phase**: Design → Development → Operations → Evolution (cross-lifecycle) | **Value Types**: Business, Technical, Organizational, Risk, Strategic | **Stakeholders**: Architect, PM, CFO/Leadership, DevOps/SRE, Developers
+**Difficulty**: A | **Phase**: Design → Development → Operations → Evolution (cross-lifecycle) | **Value Types**: Business, Technical, Organizational, Risk, Strategic | **Stakeholders**: Architect, PM, CFO, DevOps/SRE, Developers
 
-**Key Insight**: Tests comprehensive value assessment across lifecycle phases and stakeholder perspectives, balancing investment cost (negative value) against distributed benefits (positive value across technical/organizational/strategic dimensions) while navigating conflicting stakeholder priorities.
+**Key Insight**: Comprehensive value assessment across lifecycle/stakeholders, balancing investment cost (negative) against distributed benefits (positive: technical/organizational/strategic) while navigating conflicting priorities.
 
-**Answer** (287 words):
+**Answer** (262 words):
 
-Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact framework** [Ref: A8] to assess lifecycle value holistically.
+Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] for lifecycle assessment.
 
-**Multi-value-type analysis**:
-- **Business Value** [Ref: G1]: Direct costs ($800K migration + $120K/yr operational increase [Ref: A5]) vs. benefits (faster feature delivery: 30% velocity improvement after stabilization = ~$400K/yr value [Ref: L4]). NPV (3yr, 10% discount): -$90K → **marginally negative short-term**.
-- **Technical Value** [Ref: G3]: Reduces deployment coupling (monolith: 2-week cycles → microservices: daily deploys [Ref: L6]). Technical debt reduction valued at $200K (measured via CodeScene debt analysis [Ref: T8]). Scalability ROI: independent scaling saves ~$80K/yr infrastructure vs. over-provisioned monolith.
-- **Organizational Value** [Ref: G4]: Team autonomy enables parallel work (5 teams vs. 2 currently), reducing coordination overhead 25% [Ref: L1]. Learning investment: 9 months reduced velocity (-30%) = $270K opportunity cost.
-- **Risk Value** [Ref: G6]: Migration risk (1 SEV-1 likely, $150K impact). Operational risk increases (distributed tracing, observability complexity). Resilience improves (failure isolation: blast radius 20% vs. 100% [Ref: L2]).
-- **Strategic Value** [Ref: G5]: Platform enables API monetization ($500K/yr potential [Ref: A3]). Competitive positioning: time-to-market improvement.
+**Multi-value analysis**:
+- **Business** [Ref: G1]: Costs ($800K migration + $120K/yr ops [Ref: A5]) vs. benefits (30% velocity improvement = ~$400K/yr [Ref: L4]). NPV (3yr, 10%): -$90K → **marginally negative short-term**.
+- **Technical** [Ref: G3]: Reduces coupling (2-week → daily deploys [Ref: L6]). Debt reduction $200K (CodeScene [Ref: T8]). Scalability saves ~$80K/yr infrastructure.
+- **Organizational** [Ref: G4]: Team autonomy (5 teams vs. 2), -25% coordination [Ref: L1]. Learning cost: 9mo reduced velocity (-30%) = $270K opportunity cost.
+- **Risk** [Ref: G6]: Migration risk (1 SEV-1, $150K). Ops risk increases (tracing, observability). Resilience improves (blast radius 20% vs. 100% [Ref: L2]).
+- **Strategic** [Ref: G5]: API monetization ($500K/yr potential [Ref: A3]). Competitive positioning: faster time-to-market.
 
-**Stakeholder perspectives**: CFO sees negative NPV short-term; Architect values technical debt reduction + scalability; PM concerned about roadmap delay (3 quarters); DevOps sees operational burden (+2 FTE); Developers favor autonomy.
+**Stakeholder views**: CFO: negative NPV short-term; Architect: debt reduction+scalability; PM: 3-quarter delay; DevOps: +2 FTE burden; Developers: autonomy.
 
-**Lifecycle value flow**: Design phase creates architecture value [Ref: T7]; Development incurs opportunity cost; Operations realizes efficiency gains (year 2+); Evolution unlocks strategic optionality.
+**Lifecycle flow**: Design creates architecture value [Ref: T7]; Development incurs opportunity cost; Operations realizes efficiency (year 2+); Evolution unlocks strategic optionality.
 
-**Trade-offs**: (1) Migrate now: upfront cost, long-term gain; (2) Delay: compound technical debt, lose competitive position; (3) Hybrid (strangler pattern [Ref: L3]): slower but lower risk.
+**Trade-offs**: (1) Migrate now: upfront cost, long-term gain; (2) Delay: compound debt, lose position; (3) Hybrid (strangler [Ref: L3]): slower, lower risk.
 
-**Value realization**: Track deployment frequency (DORA [Ref: A12]), team velocity, infrastructure costs, incident MTTR over 24 months.
+**Realization**: Track deployment frequency (DORA [Ref: A12]), velocity, infrastructure costs, MTTR over 24mo.
 
-**Limitations**: Velocity improvement estimate uncertain (±15%); assumes team capability building succeeds; API monetization speculative.
+**Limitations**: Velocity estimate uncertain (±15%); assumes team capability success; API monetization speculative.
 
 **Artifact**:
 
@@ -236,13 +236,13 @@ Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact framework** [
 | **Strategic**     | Evolution    | Platform/API value        | $0          | +$200K      | +$500K      | +$580K        |
 | **Total NPV**     |              |                           |             |             |             | **+$830K**    |
 
-**Stakeholder Communication**:
-- **CFO**: 3-year NPV +$830K; breakeven month 18
-- **PM**: Roadmap impact 3 quarters, but 30% faster delivery after
-- **Architect**: Technical debt reduced $200K, scalability gains
-- **DevOps**: +2 FTE needed, but better resilience + observability [Ref: T4]
-- **Developers**: Autonomy + modern stack improve satisfaction
+**Communication**:
+- **CFO**: 3yr NPV +$830K; breakeven mo 18
+- **PM**: 3-quarter impact, 30% faster after
+- **Architect**: Debt -$200K, scalability gains
+- **DevOps**: +2 FTE, better resilience+observability [Ref: T4]
+- **Developers**: Autonomy+modern stack
 
-**Recommendation**: Approve with strangler pattern phased approach; allocate $50K observability tooling; commit 2 DevOps FTE; track value realization quarterly
+**Recommendation**: Approve with strangler pattern; allocate $50K observability; commit 2 DevOps FTE; track quarterly
 
-**Confidence**: Medium (velocity estimates ±15%; strategic value depends on API adoption)
+**Confidence**: Medium (velocity ±15%; strategic value depends on API adoption)

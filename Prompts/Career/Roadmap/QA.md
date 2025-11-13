@@ -1,13 +1,10 @@
 # Software System Construction Lifecycle Interview Q&A Generator
 
-Generate 30-35 interview Q&A pairs demonstrating end-to-end lifecycle expertise.
+Generate 30-35 interview Q&As demonstrating end-to-end lifecycle expertise for Architects (5+ yrs), Engineering Managers, SREs, Technical Leaders.
 
-## Scope
-
-**Audience**: Architects (5+ yrs), Engineering Managers, SREs, Technical Leaders
+**Context**: Production distributed systems (>10K rps, >1TB data), 10-100 engineers, cloud-native, regulated (GDPR/SOC 2/HIPAA)
 **Output**: 30-35 Q&As across 8 phases with quantified metrics, RACI, ≥2 alternatives, citations
 **Success**: 21/21 validation PASS
-**Context**: Production distributed systems (>10K rps, >1TB data), 10-100 engineers, cloud-native, regulated (GDPR/SOC 2/HIPAA)
 
 ---
 
@@ -17,9 +14,9 @@ Generate 30-35 interview Q&A pairs demonstrating end-to-end lifecycle expertise.
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Total** | 30-35 (20% F / 40% I / 40% A difficulty) |
+| **Total** | 30-35 (20% F / 40% I / 40% A) |
 | **Answer** | 200-400 words: Context → Approach → Stakeholders → Deliverables → Metrics → Trade-offs |
-| **Citations** | ≥1 each (≥2 complex) |
+| **Citations** | ≥1 (≥2 for complex) |
 | **Per Phase** | Diagram + RACI + Criteria + Metrics |
 
 ## Coverage (8 Phases, 3-5 Q&As Each)
@@ -36,14 +33,12 @@ Generate 30-35 interview Q&A pairs demonstrating end-to-end lifecycle expertise.
 ## Content Standards
 
 **Traceability**: Business goals → NFRs → Design → Code → Tests → Metrics → Feedback
-**Quantified**: Use concrete metrics (✅ "DOR: 100% NFR traceability, p95 <300ms" ❌ "Complete stories")
+**Quantified**: Concrete metrics (✅ "DOR: 100% NFR traceability, p95 <300ms" ❌ "Complete stories")
 **Context**: Team (<10/10-50/>50), Scale (<1K/1K-10K/>10K rps), Data (<1TB/1-100TB/>100TB), Maturity (greenfield/scale-up/legacy)
 **Stakeholders**: 9 roles (BA, PM, Arch, Dev, QA, DevOps, Sec, SRE, Lead); RACI per phase; escalation paths
 **Language**: Define terms inline, consistent terminology, concrete metrics, minimal jargon
 
 ## Artifacts
-
-**Phase-Deliverable-Metric Mapping**:
 
 | Phase | Diagram Type | Key Deliverable | Success Metric Formula |
 |-------|-------------|-----------------|------------------------|
@@ -107,7 +102,7 @@ Generate 30-35 interview Q&A pairs demonstrating end-to-end lifecycle expertise.
 | 6 | Links | 100% valid |
 | 7 | Cross-refs | 100% resolved |
 | 8 | Word count | Sample 5: 200-400 |
-| 9 | Quantified | 100% have measurable criteria |
+| 9 | Quantified | 100% measurable criteria |
 | 10 | Phase coverage | All 8 phases 3-5 Q&As |
 | 11 | Stakeholders | ≥80% cover ≥3 roles |
 | 12 | RACI | 100% phases have matrix |
@@ -276,7 +271,7 @@ Threat model: Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Privilege 
 | 6 | Links | 100% valid | X% valid | PASS/FAIL |
 | 7 | Cross-refs | 100% resolved | X% resolved | PASS/FAIL |
 | 8 | Word count | Sample 5: 200-400 | [Range] | PASS/FAIL |
-| 9 | Quantified | 100% have measurable criteria | X% quantified | PASS/FAIL |
+| 9 | Quantified | 100% measurable criteria | X% quantified | PASS/FAIL |
 | 10 | Phase coverage | All 8 phases 3-5 Q&As | [Distribution] | PASS/FAIL |
 | 11 | Stakeholders | ≥80% cover ≥3 roles | X% multi-role | PASS/FAIL |
 | 12 | RACI | 100% phases have matrix | X/8 complete | PASS/FAIL |
@@ -319,7 +314,7 @@ Threat model: Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Privilege 
 
 # Quality Gates
 
-## Phase Completion (Per Phase)
+## Phase Completion
 **Requirements**: [ ] 100% NFR traceability [ ] Measurable NFRs [ ] Risk register (P×I) [ ] DOR validated [ ] Data classified
 **Architecture**: [ ] ADR coverage [ ] Performance budgets [ ] Threat model (no High) [ ] Fitness functions [ ] Capacity plan
 **Development**: [ ] Lint: 0 errors [ ] ≥80% unit, ≥60% integration [ ] Complexity ≤10 [ ] 0 critical secrets, 0 SAST High [ ] 100% PRs <24h
@@ -329,7 +324,7 @@ Threat model: Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Privilege 
 **Maintenance**: [ ] Vuln: Crit ≤7d, High ≤30d [ ] Deps <6mo [ ] 0 unapproved licenses [ ] Regressions ≤10% [ ] 100% SLA
 **Evolution**: [ ] ≥10% debt reduction/quarter [ ] 0 SEV-1 migrations [ ] 100% CAB approval [ ] 100% RFCs [ ] 100% fitness
 
-## Content Quality (Generation)
+## Content Quality
 - [ ] Scenario-based (How/When/Compare) [ ] 200-400 words [ ] ≥1 citation (≥2 complex)
 - [ ] Quantified criteria [ ] ≥2 alternatives + table [ ] RACI (R/A clear) [ ] Criteria checklist
 - [ ] ≥2 metric formulas [ ] Appropriate diagram [ ] Tools in ≥6 phases [ ] Valid links
