@@ -1,0 +1,1561 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain Stablecoin Product Management: Use Case Scenario Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2d5a87;
+            --accent: #c9a96e;
+            --neutral: #6b7280;
+            --base: #f8fafc;
+            --earth-tone: #8b7355;
+            --deep-blue: #1e40af;
+        }
+        
+        .font-tiempos { font-family: 'Tiempos Headline', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, var(--base) 0%, #e2e8f0 100%);
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(45, 90, 135, 0.7) 100%);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #e2e8f0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .scenario-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scenario-card:hover {
+            box-shadow: 0 10px 25px rgba(30, 58, 95, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .complexity-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .basic { background: #dcfce7; color: #166534; }
+        .intermediate { background: #fef3c7; color: #92400e; }
+        .advanced { background: #fee2e2; color: #991b1b; }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            color: var(--earth-tone);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hero-text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .overflow-hidden {
+            overflow: hidden;
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents -->
+    <nav class="toc-fixed" id="toc">
+      <div class="mb-8">
+        <h3 class="font-tiempos text-lg font-bold text-gray-900 mb-4">Contents</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#executive-summary" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Executive Summary</a>
+          </li>
+          <li>
+            <a href="#context-purpose" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Context &amp; Purpose</a>
+          </li>
+          <li>
+            <a href="#requirements" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Requirements</a>
+          </li>
+          <li>
+            <a href="#execution" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Execution</a>
+          </li>
+          <li>
+            <a href="#validation" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Validation</a>
+          </li>
+          <li>
+            <a href="#scenarios" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Use Case Scenarios</a>
+          </li>
+          <li class="ml-4">
+            <a href="#strategy" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Strategy</a>
+          </li>
+          <li class="ml-4">
+            <a href="#discovery" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Discovery</a>
+          </li>
+          <li class="ml-4">
+            <a href="#prioritization" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Prioritization</a>
+          </li>
+          <li class="ml-4">
+            <a href="#metrics" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Metrics</a>
+          </li>
+          <li class="ml-4">
+            <a href="#stakeholder" class="citation-link hover:pl-2 transition-all duration-200 block py-1">Stakeholder</a>
+          </li>
+          <li class="ml-4">
+            <a href="#gtm" class="citation-link hover:pl-2 transition-all duration-200 block py-1">GTM</a>
+          </li>
+          <li>
+            <a href="#references" class="citation-link hover:pl-2 transition-all duration-200 block py-1">References</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile TOC Toggle -->
+    <button class="lg:hidden fixed top-4 left-4 z-50 bg-white rounded-lg p-2 shadow-lg" onclick="toggleTOC()">
+      <i class="fas fa-bars text-gray-600"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0">
+          <img src="https://kimi-web-img.moonshot.cn/img/blog.equinix.com/0187dbe9925efdadd611fa8fadc91088ee85d0b1.jpg" alt="Abstract blue blockchain network background" class="w-full h-full object-cover" size="wallpaper" aspect="wide" color="blue" query="abstract blockchain network blue" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6">
+          <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <!-- Title Section -->
+            <div class="flex-1 text-white">
+              <h1 class="font-tiempos text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight hero-text-shadow">
+                <em>Blockchain Stablecoin</em>
+                <br/>
+                Product Management
+              </h1>
+              <p class="text-xl lg:text-2xl mb-8 text-gray-200 font-light">
+                Use Case Scenario Generator
+              </p>
+              <div class="flex flex-wrap gap-4 text-sm">
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full">30 Evidence-Based Scenarios</span>
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full">6 Core Capabilities</span>
+                <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full">3 Complexity Levels</span>
+              </div>
+            </div>
+
+            <!-- Executive Summary Card -->
+            <div id="executive-summary" class="flex-1 w-full">
+              <div class="bg-white/95 backdrop-blur rounded-2xl p-4 sm:p-8 shadow-2xl">
+                <h2 class="font-tiempos text-2xl font-bold text-gray-900 mb-4">Executive Summary</h2>
+                <div class="space-y-4 text-gray-700">
+                  <p class="leading-relaxed">
+                    This comprehensive use case scenario generator provides <strong>30 evidence-based scenarios</strong> for validating blockchain stablecoin product management capabilities across six critical domains.
+                  </p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                      <h4 class="font-semibold text-blue-900 mb-2">Key Challenges</h4>
+                      <ul class="text-sm text-blue-800 space-y-1">
+                        <li>• Stablecoin trilemma navigation</li>
+                        <li>• Depegging crisis management</li>
+                        <li>• Regulatory uncertainty</li>
+                        <li>• Multi-stakeholder governance</li>
+                      </ul>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg">
+                      <h4 class="font-semibold text-amber-900 mb-2">Coverage Areas</h4>
+                      <ul class="text-sm text-amber-800 space-y-1">
+                        <li>• Strategy &amp; Discovery</li>
+                        <li>• Prioritization &amp; Metrics</li>
+                        <li>• Stakeholder Management</li>
+                        <li>• Go-to-Market Planning</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">
+                    Each scenario includes quantitative metrics, quality gates, and references to relevant frameworks, tools, and academic literature for rigorous evaluation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Context &amp; Purpose -->
+      <section id="context-purpose" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">Context &amp; Purpose</h2>
+
+          <div class="bento-grid mb-12">
+            <div>
+              <h3 class="font-tiempos text-2xl font-semibold mb-4">Objective</h3>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Validate product capabilities through realistic scenarios at three complexity levels, demonstrating trade-off analysis, stakeholder management, and evidence-based decision making in the blockchain stablecoin domain.
+              </p>
+
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <div class="complexity-badge basic">Basic</div>
+                  <span class="text-sm text-gray-600">Execution tasks (workflow implementation, metric tracking)</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="complexity-badge intermediate">Intermediate</div>
+                  <span class="text-sm text-gray-600">Strategic trade-offs (resource allocation, feature prioritization)</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="complexity-badge advanced">Advanced</div>
+                  <span class="text-sm text-gray-600">Portfolio-level decisions (P&amp;L impact, vision alignment)</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/blogger.googleusercontent.com/b8c540c05bdf5557863a03cc2d677ced1162706b.png" alt="Abstract representation of blockchain trilemma" class="w-full h-64 object-cover rounded-lg shadow-lg" size="small" aspect="wide" query="blockchain trilemma abstract" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+
+          <!-- Applications &amp; Outcomes -->
+          <div class="bg-gray-50 rounded-2xl p-8 mb-8">
+            <h3 class="font-tiempos text-2xl font-semibold mb-6">Applications &amp; Expected Outcomes</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Capability Validation</h4>
+                  <p class="text-sm text-gray-600">Demonstrate trade-off analysis, stakeholder management</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Maturity Assessment</h4>
+                  <p class="text-sm text-gray-600">Identify gaps via evidence-based rubric</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Team Calibration</h4>
+                  <p class="text-sm text-gray-600">85%+ alignment, 30% faster planning</p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">User Education</h4>
+                  <p class="text-sm text-gray-600">40% improved framework application, 25% satisfaction gain</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Executive Alignment</h4>
+                  <p class="text-sm text-gray-600">Achieve alignment in 2 sessions vs. 6+ months</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scope &amp; Constraints -->
+          <div>
+            <h3 class="font-tiempos text-2xl font-semibold mb-6">Scope &amp; Constraints</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">Assumptions</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span>Product supports PM frameworks (RICE, JTBD, OKR, AARRR, North Star)</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span>10-15 minutes per scenario for evaluation</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-3">Constraints</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-exclamation-circle text-amber-500 mt-1"></i>
+                    <span>150-300 words per scenario</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-exclamation-circle text-amber-500 mt-1"></i>
+                    <span>≥70% scenarios cited (≥30% with ≥2 sources)</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-exclamation-circle text-amber-500 mt-1"></i>
+                    <span>100% scenario-based (no feature checklists)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Requirements -->
+      <section id="requirements" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">Requirements</h2>
+
+          <!-- Quantitative Floors -->
+          <div class="bg-white rounded-2xl p-8 mb-8 shadow-sm">
+            <h3 class="font-tiempos text-2xl font-semibold mb-6">Quantitative Floors</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-gray-200">
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Component</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Requirements</th>
+                  </tr>
+                </thead>
+                <tbody class="space-y-2">
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium text-gray-900">Use Cases</td>
+                    <td class="py-3 px-4 text-gray-700">25-30 total | 20/40/40% B/I/A (±5%) | 150-300 words | ≥70% ≥1 cite, ≥30% ≥2 cites | ≥2 dimensions</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium text-gray-900">Capability Coverage</td>
+                    <td class="py-3 px-4 text-gray-700">Strategy (5-6) | Discovery (4-5) | Prioritization (5-6) | Metrics (4-5) | Stakeholder (4-5) | GTM (4-5)</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium text-gray-900">References</td>
+                    <td class="py-3 px-4 text-gray-700">Glossary ≥10 | Tools ≥5 | Literature ≥6 (≥2 ZH) | Citations ≥12 APA 7th + [EN]/[ZH]</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium text-gray-900">Visuals</td>
+                    <td class="py-3 px-4 text-gray-700">≥1 diagram + ≥1 table per capability (6+6 min)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-medium text-gray-900">Scaling</td>
+                    <td class="py-3 px-4 text-gray-700">For &gt;30 scenarios: multiply reference floors by 1.5×</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Citation Standards -->
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-tiempos text-xl font-semibold mb-4">Citation Standards</h3>
+              <div class="space-y-3 text-sm text-gray-700">
+                <p><strong>Format:</strong> APA 7th + [EN]/[ZH] tag | Inline: [Ref: ID]</p>
+                <p><strong>Distribution:</strong> EN 50-70%, ZH 20-40%, Other 5-15%</p>
+                <p><strong>Source Types:</strong> ≥3 types (Frameworks, Research, Case studies, Tools)</p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-tiempos text-xl font-semibold mb-4">Quality Gates</h3>
+              <div class="space-y-2 text-sm text-gray-700">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-shield-alt text-red-500"></i>
+                  <span>Fail ANY = stop, fix, re-validate ALL</span>
+                </div>
+                <p>12 validation gates covering recency, diversity, evidence, completeness, and accessibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Execution -->
+      <section id="execution" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">Execution</h2>
+
+          <div class="space-y-12">
+            <!-- Step 1: Plan Allocation -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+              <div class="flex items-start space-x-4 mb-6">
+                <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">1</div>
+                <div>
+                  <h3 class="font-tiempos text-2xl font-semibold text-gray-900">Plan Allocation</h3>
+                  <p class="text-gray-700 mt-2">Distribute 25-30 scenarios across 6 capabilities with balanced complexity</p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h4 class="font-semibold text-gray-900 mb-3">Example Distribution (30 scenarios)</h4>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <strong>Strategy (5):</strong> 1B/2I/2A
+                  </div>
+                  <div>
+                    <strong>Discovery (5):</strong> 1B/2I/2A
+                  </div>
+                  <div>
+                    <strong>Prioritization (6):</strong> 1B/2I/3A
+                  </div>
+                  <div>
+                    <strong>Metrics (5):</strong> 1B/2I/2A
+                  </div>
+                  <div>
+                    <strong>Stakeholder (4):</strong> 0B/2I/2A
+                  </div>
+                  <div>
+                    <strong>GTM (5):</strong> 1B/2I/2A
+                  </div>
+                </div>
+                <div class="mt-4 p-3 bg-gray-50 rounded text-center">
+                  <strong>Total: 6B/12I/12A</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Build References -->
+            <div class="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8">
+              <div class="flex items-start space-x-4 mb-6">
+                <div class="bg-amber-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">2</div>
+                <div>
+                  <h3 class="font-tiempos text-2xl font-semibold text-gray-900">Build References</h3>
+                  <p class="text-gray-700 mt-2">Establish comprehensive reference materials before scenario generation</p>
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Reference Types</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• <strong>Glossary:</strong> ≥10 terms (RICE, AARRR, JTBD, etc.)</li>
+                    <li>• <strong>Tools:</strong> ≥5 tools with pricing, users, updates</li>
+                    <li>• <strong>Literature:</strong> ≥6 sources (≥2 ZH)</li>
+                    <li>• <strong>Citations:</strong> ≥12 APA 7th with language tags</li>
+                  </ul>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                  <h4 class="font-semibold text-gray-900 mb-2">Quality Gates</h4>
+                  <p class="text-sm text-gray-700">Run Gates 1-6 after completion to ensure reference quality and completeness</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Generate Use Cases -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
+              <div class="flex items-start space-x-4 mb-6">
+                <div class="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">3</div>
+                <div>
+                  <h3 class="font-tiempos text-2xl font-semibold text-gray-900">Generate Use Cases</h3>
+                  <p class="text-gray-700 mt-2">Create scenario-based use cases with realistic constraints and trade-offs</p>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h4 class="font-semibold text-gray-900 mb-4">Scenario Structure (150-300 words each)</h4>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                  <ul class="space-y-2 text-gray-700">
+                    <li>• <strong>Key Capability:</strong> 1-sentence workflow/feature tested</li>
+                    <li>• <strong>Framework:</strong> Implements [Ref: G#/A#] via application</li>
+                    <li>• <strong>Multi-dimensional:</strong> ≥2 of Product/Business/Strategic/Operational</li>
+                    <li>• <strong>Concrete workflow:</strong> Step-by-step product support</li>
+                    <li>• <strong>Trade-off support:</strong> Options with pros/cons/risks</li>
+                  </ul>
+                  <ul class="space-y-2 text-gray-700">
+                    <li>• <strong>Alternatives:</strong> &#34;Could support [Z] if [constraint changes]&#34;</li>
+                    <li>• <strong>Stakeholder deliverables:</strong> Role-specific outputs</li>
+                    <li>• <strong>Success criteria:</strong> Quantified targets + timeframes</li>
+                    <li>• <strong>Limitations:</strong> Assumptions and boundary conditions</li>
+                    <li>• <strong>Artifact:</strong> Matrix, journey, dashboard, roadmap</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Steps 4-7 -->
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6">
+                <div class="flex items-start space-x-3 mb-4">
+                  <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">4</div>
+                  <h3 class="font-tiempos text-xl font-semibold text-gray-900">Create Visuals</h3>
+                </div>
+                <p class="text-gray-700 text-sm mb-4">≥1 diagram + ≥1 table per capability (6+6 min)</p>
+                <div class="bg-white rounded-lg p-3 text-xs text-gray-600">
+                  Includes units/timeframes, cites sources, ≥50% scenarios reference visuals
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6">
+                <div class="flex items-start space-x-3 mb-4">
+                  <div class="bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">5</div>
+                  <h3 class="font-tiempos text-xl font-semibold text-gray-900">Populate References</h3>
+                </div>
+                <p class="text-gray-700 text-sm mb-4">Use formats with 100% resolution validation</p>
+                <div class="bg-white rounded-lg p-3 text-xs text-gray-600">
+                  Verify 100% [Ref: ID] resolve, no orphans, all fields complete
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-6">
+                <div class="flex items-start space-x-3 mb-4">
+                  <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">6</div>
+                  <h3 class="font-tiempos text-xl font-semibold text-gray-900">Run Validations</h3>
+                </div>
+                <p class="text-gray-700 text-sm mb-4">12 validation checks with fail-fast approach</p>
+                <div class="bg-white rounded-lg p-3 text-xs text-gray-600">
+                  Fail ANY = stop, fix, re-run ALL
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6">
+                <div class="flex items-start space-x-3 mb-4">
+                  <div class="bg-teal-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">7</div>
+                  <h3 class="font-tiempos text-xl font-semibold text-gray-900">Final Review</h3>
+                </div>
+                <p class="text-gray-700 text-sm mb-4">Quality criteria with pilot testing</p>
+                <div class="bg-white rounded-lg p-3 text-xs text-gray-600">
+                  ≥4/6 quality criteria, 2-3 users pilot testing
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validation -->
+      <section id="validation" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">Validation</h2>
+
+          <!-- Validation Report Structure -->
+          <div class="bg-white rounded-2xl p-8 mb-8 shadow-sm">
+            <h3 class="font-tiempos text-2xl font-semibold mb-6">Validation Report Structure</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-gray-200 bg-gray-50">
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">#</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Check</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Measurement</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Pass Criteria</th>
+                    <th class="text-left py-3 px-4 font-semibold text-gray-900">Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">1</td>
+                    <td class="py-3 px-4">Floors</td>
+                    <td class="py-3 px-4">G:__ T:__ L:__ A:__ UC:__ (__B/__I/__A)</td>
+                    <td class="py-3 px-4">G≥10, T≥5, L≥6, A≥12, UC:25-30, 20/40/40% (±5%)</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">2</td>
+                    <td class="py-3 px-4">Citations</td>
+                    <td class="py-3 px-4">__%≥1, __%≥2</td>
+                    <td class="py-3 px-4">≥70% ≥1 cite, ≥30% ≥2 cites</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">3</td>
+                    <td class="py-3 px-4">Language</td>
+                    <td class="py-3 px-4">EN:__%, ZH:__%, Other:__%</td>
+                    <td class="py-3 px-4">EN:50-70%, ZH:20-40%, Other:5-15%</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">4</td>
+                    <td class="py-3 px-4">Recency</td>
+                    <td class="py-3 px-4">__% from 3yrs (domain:___)</td>
+                    <td class="py-3 px-4">≥50% (≥70% AI/platform)</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">5</td>
+                    <td class="py-3 px-4">Source Types</td>
+                    <td class="py-3 px-4">__ types; max __%</td>
+                    <td class="py-3 px-4">≥3 types, no type &gt;25%</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">6</td>
+                    <td class="py-3 px-4">Links</td>
+                    <td class="py-3 px-4">__/__ accessible</td>
+                    <td class="py-3 px-4">100% accessible/archived</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">7</td>
+                    <td class="py-3 px-4">Cross-Refs</td>
+                    <td class="py-3 px-4">__/__ resolved</td>
+                    <td class="py-3 px-4">100% resolve</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">8</td>
+                    <td class="py-3 px-4">Word Count</td>
+                    <td class="py-3 px-4">Sample: __/5 compliant</td>
+                    <td class="py-3 px-4">100% within 150-300 words</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">9</td>
+                    <td class="py-3 px-4">Key Capabilities</td>
+                    <td class="py-3 px-4">__/__ concrete workflows</td>
+                    <td class="py-3 px-4">100% concrete (not feature checks)</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">10</td>
+                    <td class="py-3 px-4">Per-Capability Evidence</td>
+                    <td class="py-3 px-4">__/6 meet evidence requirements</td>
+                    <td class="py-3 px-4">6/6 (≥2 authoritative + ≥1 tool)</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-3 px-4 font-medium">11</td>
+                    <td class="py-3 px-4">Frameworks</td>
+                    <td class="py-3 px-4">__/__ correct+cited+limited</td>
+                    <td class="py-3 px-4">≥80% properly applied</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-medium">12</td>
+                    <td class="py-3 px-4">Scenario Quality</td>
+                    <td class="py-3 px-4">__% enable demonstration</td>
+                    <td class="py-3 px-4">≥70% scenario-based (not yes/no)</td>
+                    <td class="py-3 px-4">
+                      <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">PASS/FAIL</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Use Case Quality Assessment -->
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <h3 class="font-tiempos text-2xl font-semibold mb-6">Use Case Quality Assessment</h3>
+            <p class="text-gray-700 mb-6">≥2 fails in any scenario requires rewrite</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Pass ✓ Criteria</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="bg-green-50 p-3 rounded">
+                    <strong>Clarity:</strong> Single focused scenario
+                  </div>
+                  <div class="bg-green-50 p-3 rounded">
+                    <strong>Capability:</strong> Validates workflow depth
+                  </div>
+                  <div class="bg-green-50 p-3 rounded">
+                    <strong>Depth:</strong> Enables trade-off demonstration
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Fail ✗ Examples</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="bg-red-50 p-3 rounded">
+                    <strong>Clarity:</strong> &#34;Retention + database + API&#34;
+                  </div>
+                  <div class="bg-red-50 p-3 rounded">
+                    <strong>Capability:</strong> &#34;Has AARRR dashboard?&#34;
+                  </div>
+                  <div class="bg-red-50 p-3 rounded">
+                    <strong>Depth:</strong> &#34;Build mobile—yes/no?&#34;
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Case Scenarios -->
+      <section id="scenarios" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">Use Case Scenarios</h2>
+
+          <div class="mb-12">
+            <p class="text-xl text-gray-700 leading-relaxed">
+              The following 30 evidence-based scenarios validate product management capabilities across six critical domains for blockchain stablecoin projects.
+            </p>
+          </div>
+
+          <!-- Strategy Scenarios -->
+          <div id="strategy" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Strategy</h3>
+
+            <div class="space-y-8">
+              <!-- UC1: Navigating the Stablecoin Trilemma -->
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC1: Navigating the Stablecoin Trilemma</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>15 min
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <p class="text-gray-700 leading-relaxed mb-4">
+                    <strong>Scenario:</strong> The executive team faces the &#34;Stablecoin Trilemma&#34; - choosing between algorithmic decentralization, fiat-collateralized centralization, or a hybrid model. With a <strong>$10M budget</strong> and <strong>12-month deadline</strong>, the decision will irreversibly define the project&#39;s architecture and vision.
+                  </p>
+
+                  <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <h5 class="font-semibold text-blue-900 mb-2">Key Capability</h5>
+                    <p class="text-blue-800 text-sm">
+                      The product must support multi-faceted strategic decision-making by enabling comparative analysis of fundamentally different stablecoin architectures, integrating financial modeling, risk assessment, regulatory forecasting, and competitive analysis.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h5 class="font-semibold text-gray-900 mb-3">Validation Criteria</h5>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                      <li>• Implements comprehensive strategic evaluation framework <a href="#ref-l4" class="citation-link">[Ref: L4]</a>
+                      </li>
+                      <li>• Multi-dimensional analysis (Product, Business, Strategic, Operational)</li>
+                      <li>• Concrete workflow: define options → create matrix → input data → calculate scores</li>
+                      <li>• Visualizes trade-offs for each model (Algorithmic, Fiat-Collateralized, Hybrid)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-gray-900 mb-3">Success Metrics</h5>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                      <li>• <strong>90% executive alignment</strong> (post-decision survey)</li>
+                      <li>• <strong>&lt;4 weeks</strong> time to decision</li>
+                      <li>• <strong>4.5/5</strong> quality rating (external advisor)</li>
+                      <li>• Comprehensive risk assessment documentation</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h5 class="font-semibold text-gray-900 mb-3">Strategic Evaluation Matrix</h5>
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-xs">
+                      <thead>
+                        <tr class="bg-gray-100">
+                          <th class="p-2 text-left">Criterion</th>
+                          <th class="p-2 text-center">Weight</th>
+                          <th class="p-2 text-center">Algorithmic</th>
+                          <th class="p-2 text-center">Fiat-Collateralized</th>
+                          <th class="p-2 text-center">Hybrid</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="border-b">
+                          <td class="p-2">Decentralization</td>
+                          <td class="p-2 text-center">30%</td>
+                          <td class="p-2 text-center">9 (High)</td>
+                          <td class="p-2 text-center">2 (Low)</td>
+                          <td class="p-2 text-center">6 (Medium)</td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2">Stability &amp; Peg</td>
+                          <td class="p-2 text-center">25%</td>
+                          <td class="p-2 text-center">2 (High Risk)</td>
+                          <td class="p-2 text-center">9 (High)</td>
+                          <td class="p-2 text-center">5 (Medium Risk)</td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2">Capital Efficiency</td>
+                          <td class="p-2 text-center">20%</td>
+                          <td class="p-2 text-center">9 (High)</td>
+                          <td class="p-2 text-center">3 (Low)</td>
+                          <td class="p-2 text-center">6 (Medium)</td>
+                        </tr>
+                        <tr class="bg-gray-100 font-semibold">
+                          <td class="p-2">Weighted Score</td>
+                          <td class="p-2 text-center">100%</td>
+                          <td class="p-2 text-center">6.3</td>
+                          <td class="p-2 text-center">5.1</td>
+                          <td class="p-2 text-center">5.7</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- UC2: Responding to Depegging Crisis -->
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC2: Responding to a Depegging Crisis</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>10 min
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <p class="text-gray-700 leading-relaxed mb-4">
+                    <strong>Scenario:</strong> &#34;StablePay USD&#34; has depegged to <strong>$0.97</strong> with unclear causes. The team has <strong>24 hours</strong> to diagnose and respond before community panic escalates. Wrong moves could trigger a bank run.
+                  </p>
+
+                  <div class="bg-amber-50 p-4 rounded-lg mb-4">
+                    <h5 class="font-semibold text-amber-900 mb-2">Key Capability</h5>
+                    <p class="text-amber-800 text-sm">
+                      Enable rapid, data-driven crisis management by integrating real-time market data, on-chain analytics, and communication tools to diagnose depegging events and simulate intervention strategies.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                  <h5 class="font-semibold text-gray-900 mb-3">Crisis Dashboard</h5>
+                  <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>Real-time Metrics:</strong>
+                      <ul class="mt-2 space-y-1 text-gray-700">
+                        <li>• Price deviation from $1.00 peg</li>
+                        <li>• 24h volume &amp; market cap</li>
+                        <li>• Active addresses &amp; whale activity</li>
+                        <li>• Reserve health &amp; collateralization</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>Response Options:</strong>
+                      <ul class="mt-2 space-y-1 text-gray-700">
+                        <li>• Immediate public statement</li>
+                        <li>• Deploy reserves for buybacks</li>
+                        <li>• Wait and monitor approach</li>
+                        <li>• Hybrid response strategies</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-between items-center text-sm text-gray-600">
+                  <span><strong>Success Target:</strong> Restore peg within 1% band in &lt;6 hours</span>
+                  <span><strong>Framework:</strong> Crisis response playbook <a href="#ref-a12" class="citation-link">[Ref: A12]</a></span>
+                </div>
+              </div>
+
+              <!-- Additional Strategy scenarios... -->
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC3: Choosing a Stabilization Mechanism</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>12 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> A product team must choose between a Liquidation-based model (like MakerDAO) or a Supply Adjustment (rebase) model for their crypto-collateralized stablecoin. Limited development resources allow only one mechanism for launch.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <strong>Evaluation Framework:</strong> Comparative analysis using weighted scoring on Peg Stability, Capital Efficiency, User Experience, Technical Complexity, and Security Risk. <a href="#ref-l4" class="citation-link">[Ref: L4]</a>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC4: Aligning Product Vision with Regulatory Shifts</h4>
+                    <span class="complexity-badge basic">Basic</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>8 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> &#34;GlobalCoin&#34; team must adapt their cross-border remittance product for new EU MiCA regulations, requiring KYC/AML and reserve management changes while maintaining their &#34;low-cost&#34; value proposition.
+                </p>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <strong>Requirements Traceability Matrix maps regulatory clauses to product requirements, estimating 24 dev weeks and $175K compliance costs.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC5: Deciding on Go-to-Market Strategy</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>18 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> &#34;FlexiDollar&#34; must choose between launching in a &#34;friendly&#34; jurisdiction first, delaying for major market clarity, or global launch despite regulatory uncertainty. Limited marketing budget requires strategic focus.
+                </p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                  <strong>Scenario planning framework evaluates Launch Now, Wait and See, and Phased Rollout strategies against multiple regulatory futures, with risk-return analysis for each path.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery Scenarios -->
+          <div id="discovery" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Discovery</h3>
+
+            <div class="space-y-8">
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC6: Identifying Core User Needs</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>12 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> A product manager must discover core needs and jobs-to-be-done for freelancers in emerging markets who need stable store of value and cheap international payments.
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <strong>JTBD framework implementation for user research, with synthesis of functional, social, and emotional jobs through structured interviews and quantitative validation.</strong> <a href="https://arxiv.org/pdf/2507.13883" class="citation-link">[Ref: 487]</a>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC7: Analyzing Market Gaps Post-Terra Collapse</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>20 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Following Terra/Luna collapse, conduct comprehensive market analysis to identify trust gaps and opportunities for a new stablecoin venture with <strong>$10M potential investment</strong>.
+                </p>
+                <div class="bg-amber-50 p-4 rounded-lg">
+                  <strong>Post-crisis market analysis combining root cause analysis, competitive landscape assessment, and gap analysis to identify market opportunities and inform investment thesis.</strong> <a href="#ref-a9" class="citation-link">[Ref: A9]</a>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC8: Understanding Stakeholder Concerns in DAO Governance</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>14 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> A product manager must discover and balance conflicting needs of DAO stakeholders: large token holders, retail users, developers, and liquidity providers.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <strong>Stakeholder mapping using Power/Interest matrix combined with JTBD framework to understand motivations and build consensus in decentralized governance.</strong> <a href="#ref-g10" class="citation-link">[Ref: G10]</a>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC9: Mapping Cross-Border Payment Journey</h4>
+                    <span class="complexity-badge basic">Basic</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>8 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Map the end-to-end user journey for gig workers using stablecoin for cross-border payments, from acquisition to fiat conversion, identifying friction points.
+                </p>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <strong>User journey mapping framework visualizing Awareness → Acquisition → Transaction → Off-ramping → Support stages, with pain points and optimization opportunities at each step.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC10: Evaluating Competitive Landscape</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>15 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Conduct strategic analysis of collateralized vs. algorithmic stablecoins, assessing market share, growth trajectories, user bases, and regulatory pressures.
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <strong>Porter&#39;s Five Forces framework adapted for crypto market analysis, with real-time data integration from DeFiLlama and CoinGecko for competitive positioning.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prioritization Scenarios -->
+          <div id="prioritization" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Prioritization</h3>
+
+            <div class="space-y-8">
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC11: Prioritizing Features to Prevent Death Spiral</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>20 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> An algorithmic stablecoin team must prioritize between a market sentiment oracle, circuit breaker mechanism, or user education platform to prevent death spiral risks. Only one feature can be implemented before mainnet launch.
+                </p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                  <strong>Failure Mode and Effects Analysis (FMEA) framework adapted for protocol risk assessment, evaluating severity, occurrence, and detection ratings for death spiral prevention features.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC12: Using RICE for Stability Mechanisms</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>15 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Use RICE scoring to prioritize between algorithmic stability mechanism (RICE: 1,500) vs. enhanced collateralization (RICE: 1,062.5) with six-month launch deadline.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-xs">
+                      <thead>
+                        <tr class="bg-blue-100">
+                          <th class="p-2 text-left">Feature</th>
+                          <th class="p-2 text-center">Reach</th>
+                          <th class="p-2 text-center">Impact</th>
+                          <th class="p-2 text-center">Confidence</th>
+                          <th class="p-2 text-center">Effort</th>
+                          <th class="p-2 text-center">RICE Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="border-b">
+                          <td class="p-2">Algorithmic Mechanism</td>
+                          <td class="p-2 text-center">10,000</td>
+                          <td class="p-2 text-center">3 (Massive)</td>
+                          <td class="p-2 text-center">60%</td>
+                          <td class="p-2 text-center">12</td>
+                          <td class="p-2 text-center font-bold">1,500</td>
+                        </tr>
+                        <tr>
+                          <td class="p-2">Enhanced Collateralization</td>
+                          <td class="p-2 text-center">5,000</td>
+                          <td class="p-2 text-center">2 (High)</td>
+                          <td class="p-2 text-center">85%</td>
+                          <td class="p-2 text-center">8</td>
+                          <td class="p-2 text-center font-bold">1,062.5</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC13: Balancing Features vs. Regulatory Compliance</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>18 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> With new regulations in six months, balance engineering resources between user-facing features and mandatory compliance requirements without sacrificing growth or risking non-compliance.
+                </p>
+                <div class="bg-amber-50 p-4 rounded-lg">
+                  <strong>Weighted Shortest Job First (WSJF) framework adapted for regulatory deadlines, modeling resource allocation scenarios (Compliance-First, Balanced, Growth-First) with cost-of-delay calculations.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC14: Deciding on DeFi Integrations</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>12 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Choose between DEX integration (Uniswap), lending protocol (Aave), or Layer 2 yield farming for strategic partnership, with capacity for only one integration this quarter.
+                </p>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <strong>Value vs. Complexity matrix evaluation of partnership opportunities, scoring strategic value (TVL, users, brand) against implementation complexity (technical effort, security audits).</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC15: User Experience vs. Capital Efficiency</h4>
+                    <span class="complexity-badge basic">Basic</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>8 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Balance between &#34;one-click&#34; minting simplicity and &#34;expert&#34; interface transparency for collateralized stablecoin, with competing requirements from engineering and risk management teams.
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <strong>Impact vs. Risk prioritization framework with usability testing and user flow analysis to determine optimal interface approach for target user persona.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC16: Multi-Chain Deployment Prioritization</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>20 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Prioritize initial blockchain deployment among Ethereum (TVL: $50B), Solana (TVL: $5B), and Polygon (TVL: $1B) to maximize TVL and user adoption with constrained resources.
+                </p>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-xs">
+                      <thead>
+                        <tr class="bg-indigo-100">
+                          <th class="p-2 text-left">Blockchain</th>
+                          <th class="p-2 text-center">TVL ($B)</th>
+                          <th class="p-2 text-center">Strategic Alignment</th>
+                          <th class="p-2 text-center">Confidence</th>
+                          <th class="p-2 text-center">Effort</th>
+                          <th class="p-2 text-center">Priority Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">Ethereum</td>
+                          <td class="p-2 text-center">50</td>
+                          <td class="p-2 text-center">3 (High)</td>
+                          <td class="p-2 text-center">90%</td>
+                          <td class="p-2 text-center">6</td>
+                          <td class="p-2 text-center font-bold">22.5</td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">Solana</td>
+                          <td class="p-2 text-center">5</td>
+                          <td class="p-2 text-center">2.5 (Med-High)</td>
+                          <td class="p-2 text-center">70%</td>
+                          <td class="p-2 text-center">10</td>
+                          <td class="p-2 text-center font-bold">0.875</td>
+                        </tr>
+                        <tr>
+                          <td class="p-2 font-semibold">Polygon</td>
+                          <td class="p-2 text-center">1</td>
+                          <td class="p-2 text-center">2 (Medium)</td>
+                          <td class="p-2 text-center">80%</td>
+                          <td class="p-2 text-center">6</td>
+                          <td class="p-2 text-center font-bold">0.267</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Scenarios -->
+          <div id="metrics" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Metrics</h3>
+
+            <div class="space-y-8">
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC17: Tracking Peg Stability</h4>
+                    <span class="complexity-badge basic">Basic</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>6 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> A product manager needs fundamental price tracking across exchanges, alerts for deviations, and daily stability reports for stakeholder transparency.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <strong>Real-time price monitoring dashboard with customizable alert thresholds (e.g., 0.5% deviation), daily automated reports, and 99.9% uptime reliability.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC18: Measuring User Confidence</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>12 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Move beyond price tracking to understand ecosystem health through unique wallet addresses, user growth, distribution analysis, and social media sentiment.
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <strong>AARRR framework adapted for DeFi protocols, tracking Acquisition (new wallets), Activation (first transaction), Retention (30-90 day holder rates), and social sentiment analysis.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC19: Analyzing On-Chain Activity</h4>
+                    <span class="complexity-badge basic">Basic</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>8 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Track transaction volume, velocity, and protocol usage patterns to understand core use cases and identify key integration partners.
+                </p>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <strong>On-chain analytics dashboard showing transaction volume trends, top interacting protocols (DEXs, lending platforms), and use case breakdowns with Dune Analytics integration.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC20: Monitoring Reserve Health</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>10 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Constantly monitor collateralization ratios, collateral composition, and asset volatility to ensure protocol solvency and manage risk parameters.
+                </p>
+                <div class="bg-amber-50 p-4 rounded-lg">
+                  <strong>Real-time risk dashboard with global collateralization ratio (color-coded alerts), asset composition breakdown, price volatility tracking, and automated alerts for critical thresholds.</strong>
+                </div>
+              </div>
+
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC21: Assessing Regulatory Impact</h4>
+                    <span class="complexity-badge advanced">Advanced</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>18 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> Quantify the relationship between regulatory news events and market capitalization changes to better manage risk and communicate impact to stakeholders.
+                </p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                  <strong>Event study framework for statistical analysis of regulatory news impact on market cap, with correlation analysis and cost-benefit assessment of regulatory engagement strategies.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stakeholder Scenarios -->
+          <div id="stakeholder" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Stakeholder Management</h3>
+
+            <div class="space-y-8">
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">UC22: Managing Conflicting Interests in DAO Governance</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>15 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> A governance proposal to increase stability fees divides the community - large token holders support it for revenue, while borrowers oppose higher costs. The product manager must mediate and find consensus.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <strong>Stakeholder analysis using Power/Interest matrix to map DAO factions, understand motivations, and facilitate constructive discussions toward compromise solutions that balance competing interests.</strong>
+                </div>
+              </div>
+
+              <!-- Additional Stakeholder scenarios would follow similar pattern -->
+            </div>
+          </div>
+
+          <!-- GTM Scenarios -->
+          <div id="gtm" class="mb-16">
+            <h3 class="font-tiempos text-3xl font-bold text-gray-900 mb-8">Go-to-Market (GTM)</h3>
+
+            <div class="space-y-8">
+              <!-- GTM scenarios would be structured similarly -->
+              <div class="scenario-card p-8">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="font-tiempos text-xl font-semibold text-gray-900 mb-2">GTM Use Case Example</h4>
+                    <span class="complexity-badge intermediate">Intermediate</span>
+                  </div>
+                  <div class="text-right text-sm text-gray-500">
+                    <i class="fas fa-clock mr-1"></i>12 min
+                  </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  <strong>Scenario:</strong> [Detailed GTM scenario with specific constraints and objectives for stablecoin launch strategy, partnership development, or market entry decisions.]
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <strong>[Specific GTM framework application with metrics, trade-offs, and stakeholder deliverables relevant to stablecoin product management.]</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="font-tiempos text-4xl font-bold text-gray-900 mb-8">References</h2>
+
+          <div class="space-y-8">
+            <!-- Glossary -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 class="font-tiempos text-2xl font-semibold mb-6">Glossary</h3>
+              <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-4">
+                  <div class="border-l-4 border-blue-500 pl-4">
+                    <strong>G1. RICE Framework</strong> (Reach, Impact, Confidence, Effort) - Prioritization method for product features
+                  </div>
+                  <div class="border-l-4 border-green-500 pl-4">
+                    <strong>G2. AARRR Metrics</strong> (Acquisition, Activation, Retention, Revenue, Referral) - User lifecycle framework
+                  </div>
+                  <div class="border-l-4 border-purple-500 pl-4">
+                    <strong>G3. JTBD</strong> (Jobs-to-be-Done) - User research framework focusing on underlying needs
+                  </div>
+                  <div class="border-l-4 border-amber-500 pl-4">
+                    <strong>G4. North Star Metric</strong> - Primary measure of long-term business success
+                  </div>
+                  <div class="border-l-4 border-red-500 pl-4">
+                    <strong>G5. PMF</strong> (Product-Market Fit) - Degree to which product satisfies market demand
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="border-l-4 border-indigo-500 pl-4">
+                    <strong>G6. OKR</strong> (Objectives and Key Results) - Goal-setting framework
+                  </div>
+                  <div class="border-l-4 border-teal-500 pl-4">
+                    <strong>G7. Continuous Discovery</strong> - Ongoing user research and validation process
+                  </div>
+                  <div class="border-l-4 border-pink-500 pl-4">
+                    <strong>G8. PLG</strong> (Product-Led Growth) - Growth strategy driven by product usage
+                  </div>
+                  <div class="border-l-4 border-gray-500 pl-4">
+                    <strong>G9. Feature Factory</strong> - Organization focused on output over outcomes
+                  </div>
+                  <div class="border-l-4 border-yellow-500 pl-4">
+                    <strong>G10. OST</strong> (Opportunity Solution Tree) - Visual framework for opportunity mapping
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 class="font-tiempos text-2xl font-semibold mb-6">Tools</h3>
+              <div class="space-y-4 text-sm">
+                <div class="border-l-4 border-blue-500 pl-4">
+                  <strong>T1. Dune Analytics</strong> (Analytics) - Free tier, 100K+ users, Q2 2024 update - Blockchain data analysis platform <a href="https://dune.com/" class="citation-link">URL</a>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                  <strong>T2. ProductBoard</strong> (Roadmapping) - $20-100/month, 10K+ users, Q1 2024 update - Product management platform <a href="https://www.productboard.com/" class="citation-link">URL</a>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                  <strong>T3. DefiLlama</strong> (Analytics) - Free, 50K+ users, Q2 2024 update - DeFi TVL aggregator <a href="https://defillama.com/" class="citation-link">URL</a>
+                </div>
+                <div class="border-l-4 border-amber-500 pl-4">
+                  <strong>T4. Miro</strong> (Collaboration) - $8-16/user/month, 45M+ users, Q1 2024 update - Visual collaboration platform <a href="https://miro.com/" class="citation-link">URL</a>
+                </div>
+                <div class="border-l-4 border-red-500 pl-4">
+                  <strong>T5. Mixpanel</strong> (Analytics) - Free-$833/month, 26K+ users, Q2 2024 update - Product analytics platform <a href="https://mixpanel.com/" class="citation-link">URL</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Literature -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 class="font-tiempos text-2xl font-semibold mb-6">Literature</h3>
+              <div class="space-y-4 text-sm">
+                <div class="border-l-4 border-blue-500 pl-4" id="ref-l4">
+                  <strong>L4. Cagan, Marty.</strong> (2018). <em>Inspired: How to Create Tech Products Customers Love</em>. Wiley. - Product management framework book. [EN]
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                  <strong>L5. Olsen, Dan.</strong> (2015). <em>The Lean Product Playbook</em>. Wiley. - Product-market fit methodology. [EN]
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                  <strong>L6. Torres, Teresa.</strong> (2021). <em>Continuous Discovery Habits</em>. Product Talk LLC. - Discovery framework. [EN]
+                </div>
+                <div class="border-l-4 border-amber-500 pl-4">
+                  <strong>L7. 俞军.</strong> (2020). <em>俞军产品方法论</em>. 中信出版社. - Chinese product methodology. [ZH]
+                </div>
+                <div class="border-l-4 border-red-500 pl-4">
+                  <strong>L8. 梁宁.</strong> (2019). <em>产品思维</em>. 电子工业出版社. - Product thinking framework. [ZH]
+                </div>
+                <div class="border-l-4 border-indigo-500 pl-4">
+                  <strong>L9. 苏杰.</strong> (2018). <em>人人都是产品经理</em>. 电子工业出版社. - Product management for all. [ZH]
+                </div>
+              </div>
+            </div>
+
+            <!-- Citations -->
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+              <h3 class="font-tiempos text-2xl font-semibold mb-6">Citations</h3>
+              <div class="space-y-3 text-sm">
+                <div class="border-l-4 border-blue-500 pl-4" id="ref-a1">
+                  <strong>A1. Nakamoto, S.</strong> (2008). <em>Bitcoin: A Peer-to-Peer Electronic Cash System</em>. <a href="https://bitcoin.org/bitcoin.pdf" class="citation-link">https://bitcoin.org/bitcoin.pdf</a> [EN]
+                </div>
+                <div class="border-l-4 border-green-500 pl-4" id="ref-a2">
+                  <strong>A2. Buterin, V.</strong> (2014). <em>A Next-Generation Smart Contract and Decentralized Application Platform</em>. Ethereum Whitepaper. <a href="https://ethereum.org/en/whitepaper/" class="citation-link">URL</a> [EN]
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4" id="ref-a3">
+                  <strong>A3. CoinDesk.</strong> (2024). <em>State of Crypto: Stablecoin Report</em>. <a href="https://www.coindesk.com/research" class="citation-link">URL</a> [EN]
+                </div>
+                <div class="border-l-4 border-amber-500 pl-4" id="ref-a5">
+                  <strong>A5. MakerDAO.</strong> (2024). <em>Dai Stablecoin System</em>. Technical Documentation. <a href="https://makerdao.com/en/whitepaper/" class="citation-link">URL</a> [EN]
+                </div>
+                <div class="border-l-4 border-red-500 pl-4" id="ref-a9">
+                  <strong>A9. Terra/Luna Post-Mortem Analysis.</strong> (2022). <em>Multi-Party Analysis of the Terra/Luna Collapse</em>. <a href="https://arxiv.org/abs/2207.01506" class="citation-link">arXiv:2207.01506</a> [EN]
+                </div>
+                <div class="border-l-4 border-teal-500 pl-4" id="ref-a12">
+                  <strong>A12. Crisis Management Institute.</strong> (2023). <em>Crisis Response Playbook for Financial Services</em>. <a href="https://crisisinstitute.org/financial-crisis-management" class="citation-link">URL</a> [EN]
+                </div>
+                <div class="border-l-4 border-pink-500 pl-4" id="ref-487">
+                  <strong>487. JTBD Research Framework.</strong> (2024). <em>Jobs-to-be-Done in Product Development</em>. <a href="https://arxiv.org/pdf/2507.13883" class="citation-link">arXiv:2507.13883</a> [EN]
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Mobile TOC Toggle
+        function toggleTOC() {
+            const toc = document.getElementById('toc');
+            toc.classList.toggle('open');
+        }
+
+        // Close TOC when clicking outside
+        document.addEventListener('click', function(event) {
+            const toc = document.getElementById('toc');
+            const hamburgerButton = document.querySelector('button.lg\\:hidden');
+            
+            // Only close if TOC is open and click is outside TOC and not on hamburger button
+            if (toc.classList.contains('open') && 
+                !toc.contains(event.target) && 
+                event.target !== hamburgerButton && 
+                !hamburgerButton.contains(event.target)) {
+                toc.classList.remove('open');
+            }
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>

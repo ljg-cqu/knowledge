@@ -1,0 +1,3456 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain RWA: Software Architecture for Real-World Assets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            background-color: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --muted: #7f8c8d;
+            --background: #fefefe;
+            --surface: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+            background-color: var(--background);
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Tiempos Headline', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid #e5e7eb;
+            overflow-y: auto;
+            z-index: 50;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-left: 300px;
+            min-height: 100vh;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-visual {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .blockchain-visual {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
+        
+        .block {
+            position: absolute;
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .block-1 { top: 0; left: 50%; transform: translateX(-50%); }
+        .block-2 { top: 25%; right: 0; }
+        .block-3 { bottom: 25%; right: 0; }
+        .block-4 { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .block-5 { top: 25%; left: 0; }
+        .block-6 { bottom: 25%; left: 0; }
+        
+        .connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            transform-origin: left center;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--muted);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-link:hover {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background-color: #f8fafc;
+        }
+        
+        .toc-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .section-header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .qa-container {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .difficulty-foundational {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .difficulty-intermediate {
+            background-color: #f59e0b;
+            color: white;
+        }
+        
+        .difficulty-advanced {
+            background-color: #ef4444;
+            color: white;
+        }
+        
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .quote-highlight {
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            /* Responsive mermaid controls */
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 768px) {
+            .mermaid-container {
+                padding: 15px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 640px) {
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .qa-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="font-serif text-lg font-bold text-gray-900 mb-4">Contents</h3>
+        <div class="space-y-1">
+          <a href="#executive-summary" class="toc-link">Executive Summary</a>
+          <a href="#structural-design" class="toc-link">1. Structural Design &amp; Modularity</a>
+          <a href="#platform-selection" class="toc-link">2. Platform Selection</a>
+          <a href="#token-standards" class="toc-link">3. Token Standards</a>
+          <a href="#quality-attributes" class="toc-link">4. Quality Attributes</a>
+          <a href="#data-management" class="toc-link">5. Data Management</a>
+          <a href="#integration" class="toc-link">6. Integration</a>
+          <a href="#evolution" class="toc-link">7. Evolution Strategies</a>
+        </div>
+      </div>
+
+      <div class="border-t pt-4">
+        <p class="text-xs text-gray-500 mb-2">Navigate sections</p>
+        <button id="toc-toggle" class="md:hidden text-sm bg-blue-600 text-white px-3 py-1 rounded">
+          <i class="fas fa-bars mr-2"></i>Menu
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="px-8 py-12 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div class="max-w-7xl mx-auto">
+          <div class="hero-grid">
+            <div class="hero-text">
+              <h1 class="font-serif text-5xl font-bold text-gray-900 mb-6 leading-tight has-tooltip">
+                Blockchain RWA:
+                <span class="block text-blue-600">Software Architecture for Real-World Assets</span>
+                <span class="tooltip">RWA: Real-World Asset tokenization bridges physical assets with blockchain technology</span>
+              </h1>
+              <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                A comprehensive technical framework for building scalable, secure, and compliant tokenization platforms that bridge traditional finance with decentralized systems.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                  <i class="fas fa-layer-group mr-2"></i>Multi-layer Architecture
+                </span>
+                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  <i class="fas fa-shield-alt mr-2"></i>Enterprise Security
+                </span>
+                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                  <i class="fas fa-balance-scale mr-2"></i>Regulatory Compliance
+                </span>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="blockchain-visual">
+                <div class="block block-1">Core Layer</div>
+                <div class="block block-2">Middleware</div>
+                <div class="block block-3">Application</div>
+                <div class="block block-4">Oracle</div>
+                <div class="block block-5">Smart Contracts</div>
+                <div class="block block-6">Identity</div>
+
+                <!-- Connections -->
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(0deg);"></div>
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(60deg);"></div>
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(120deg);"></div>
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(180deg);"></div>
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(240deg);"></div>
+                <div class="connection" style="top: 50%; left: 50%; width: 100px; transform: translate(-50%, -50%) rotate(300deg);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="px-8 py-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">Executive Summary</h2>
+          </div>
+
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg">
+            <p class="text-lg leading-relaxed">
+              Real-World Asset (RWA) tokenization represents a paradigm shift in how we conceptualize ownership and value transfer. This comprehensive framework addresses the critical technical challenges of building enterprise-grade RWA platforms through a systematic, architecture-first approach.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="space-y-4">
+              <h3 class="font-serif text-xl font-semibold">Key Architectural Insights</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span>Three-layer architecture (Core, Middleware, Application) provides clean separation of concerns</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span>SPV structures create legally enforceable bridges between physical and digital assets</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span>Factory and Proxy patterns enable contract upgradability without state migration</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="font-serif text-xl font-semibold">Critical Success Factors</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <i class="fas fa-shield-alt text-blue-500 mr-3 mt-1"></i>
+                  <span>Formal verification and multi-layer security protocols</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-balance-scale text-blue-500 mr-3 mt-1"></i>
+                  <span>Embedded compliance through ERC-3643 and identity protocols</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-up text-blue-500 mr-3 mt-1"></i>
+                  <span>Scalable Layer 2 solutions and purpose-built RWA chains</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="quote-highlight">
+            &#34;The convergence of traditional finance and decentralized systems requires not just technical innovation, but architectural foresight that anticipates both regulatory evolution and market demands.&#34;
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 1: Structural Design &amp; Modularity -->
+      <section id="structural-design" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">1. Structural Design &amp; Modularity</h2>
+            <p class="text-gray-600 mt-2">Foundational architectural patterns for scalable RWA platforms</p>
+          </div>
+
+          <!-- Q&amp;A 1.1.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-layer-group mr-3 text-blue-600"></i>
+              Decomposing the RWA Stack: Core, Middleware, and Application Layers
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Structural Design</span>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p class="font-medium text-blue-900">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Key Insight: A three-layered architecture provides clear separation of concerns, enhancing modularity and maintainability for complex RWA systems.
+              </p>
+            </div>
+
+            <p class="mb-6">
+              A comprehensive technical framework for a Real-World Asset (RWA) tokenization system decomposes into three primary layers: the <strong>Core Architecture Layer</strong>, the <strong>Middleware Layer</strong>, and the <strong>Application Layer</strong>
+              <a href="https://blog.csdn.net/Ashlee_code/article/details/149018280" class="citation">[270]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-lg mb-3 text-blue-700">
+                  <i class="fas fa-cube mr-2"></i>Core Layer
+                </h4>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Blockchain platform infrastructure</li>
+                  <li>• Smart contract logic</li>
+                  <li>• Immutable data storage</li>
+                </ul>
+              </div>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-lg mb-3 text-green-700">
+                  <i class="fas fa-exchange-alt mr-2"></i>Middleware Layer
+                </h4>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Oracle networks for real-world data</li>
+                  <li>• Identity/compliance modules</li>
+                  <li>• Cross-chain protocols</li>
+                </ul>
+              </div>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-lg mb-3 text-purple-700">
+                  <i class="fas fa-desktop mr-2"></i>Application Layer
+                </h4>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• User interfaces and portals</li>
+                  <li>• API gateways</li>
+                  <li>• Admin backends</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;This three-layered architecture provides a clear separation of concerns, making the complex system of an RWA platform more manageable, scalable, and secure.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 1.1.2 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-bridge mr-3 text-blue-600"></i>
+              The RWA Bridge: Legal Structure (SPV) and On-Chain Representation
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Structural Design</span>
+            </div>
+
+            <p class="mb-6">
+              The &#34;RWA Bridge&#34; creates a secure and legally enforceable link between physical assets and digital tokens through a <strong>Special Purpose Vehicle (SPV)</strong> structure <a href="https://www.linkedin.com/pulse/tokenization-real-estate-via-spvs-chapter2-unpacked-teyoe" class="citation">[376]</a>. The SPV becomes the sole legal owner of the physical asset, providing a &#34;bankruptcy-remote&#34; wrapper that protects token holders.
+            </p>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold mb-4">SPV Implementation Process:</h4>
+              <ol class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium mr-3 mt-0.5">1</span>
+                  <span>Asset due diligence and valuation process</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium mr-3 mt-0.5">2</span>
+                  <span>SPV formation and property title transfer</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium mr-3 mt-0.5">3</span>
+                  <span>Smart contract development and deployment</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-medium mr-3 mt-0.5">4</span>
+                  <span>Token minting and investor whitelisting</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;Physical Asset
+                <br/>Real Estate Property&#34;] --&gt; B[&#34;Legal Transfer&#34;]
+                B --&gt; C[&#34;Special Purpose Vehicle
+                <br/>LLC/Trust Structure&#34;]
+                C --&gt; D[&#34;Smart Contract&#34;]
+                D --&gt; E[&#34;Digital Tokens
+                <br/>ERC-20/ERC-721&#34;]
+                E --&gt; F[&#34;Token Holders&#34;]
+
+                G[&#34;Rental Income&#34;] --&gt; C
+                C --&gt; H[&#34;Smart Contract
+                <br/>Automatic Distribution&#34;]
+                H --&gt; F
+
+                style A fill:#e8f4fd
+                style C fill:#e8f5e8
+                style E fill:#f3e5f5
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-600">
+              The smart contract codifies rules for ownership, transfer, and benefit distribution, creating a direct link between real-world asset performance and digital tokens <a href="https://www.rwa.io/post/spv-for-tokenized-assets-setup-and-governance" class="citation">[374]</a>
+              <a href="https://www.rwa.io/post/using-smart-contracts-for-secure-rwa-transactions" class="citation">[392]</a>.
+            </p>
+          </div>
+
+          <!-- Q&amp;A 1.1.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-cogs mr-3 text-blue-600"></i>
+              Smart Contract Modularity: Factory and Proxy Patterns
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Structural Design</span>
+            </div>
+
+            <p class="mb-6">
+              Two critical design patterns enable modularity and upgradability in RWA systems: the <strong>Factory Pattern</strong> and the <strong>Proxy Pattern</strong>
+              <a href="https://medium.com/@pedrolisboa_10855/design-patterns-in-solidity-practical-examples-and-applications-article-5-of-16-in-the-solidity-a3188da2f828" class="citation">[444]</a>
+              <a href="https://dev.to/adaobilynda/exploring-design-patterns-in-solidity-2782" class="citation">[445]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-lg mb-3 text-blue-700">Factory Pattern</h4>
+                <ul class="text-sm space-y-2 text-gray-700">
+                  <li>• Centralized contract creation logic</li>
+                  <li>• Maintains registry of deployed contracts</li>
+                  <li>• Reduces deployment costs</li>
+                  <li>• Ensures consistency across instances</li>
+                </ul>
+              </div>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-lg mb-3 text-green-700">Proxy Pattern</h4>
+                <ul class="text-sm space-y-2 text-gray-700">
+                  <li>• Separates logic from state</li>
+                  <li>• Enables contract upgrades</li>
+                  <li>• Preserves address and state</li>
+                  <li>• Maintains user trust</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block mb-4">
+              // SPDX-License-Identifier: MIT
+              pragma solidity ^0.8.0;
+
+              // Factory Pattern Implementation
+              contract PropertyFactory {
+                mapping(address =&gt; address[]) public propertyTokens;
+                address[] public allProperties;
+
+                event PropertyCreated(address indexed propertyAddress, address indexed owner);
+
+                function createPropertyToken(
+                  string memory name,
+                  string memory symbol,
+                  address propertyOracle
+                ) external returns (address) {
+                  PropertyToken newProperty = new PropertyToken(name, symbol, propertyOracle);
+                  propertyTokens[msg.sender].push(address(newProperty));
+                  allProperties.push(address(newProperty));
+
+                  emit PropertyCreated(address(newProperty), msg.sender);
+                  return address(newProperty);
+                }
+              }
+
+              // Proxy Pattern Implementation
+              contract PropertyTokenProxy {
+                address public implementation;
+                address public owner;
+
+                constructor(address _implementation) {
+                  implementation = _implementation;
+                  owner = msg.sender;
+                }
+
+                function upgradeTo(address newImplementation) external {
+                  require(msg.sender == owner, &#34;Only owner can upgrade&#34;);
+                  implementation = newImplementation;
+                }
+
+                fallback() external payable {
+                  address _impl = implementation;
+                  require(_impl != address(0), &#34;Invalid implementation&#34;);
+
+                  assembly {
+                    let ptr := mload(0x40)
+                    calldatacopy(ptr, 0, calldatasize())
+                    let result := delegatecall(gas(), _impl, ptr, calldatasize(), 0, 0)
+                    let size := returndatasize()
+                    returndatacopy(ptr, 0, size)
+
+                    switch result
+                    case 0 { revert(ptr, size) }
+                    default { return(ptr, size) }
+                  }
+                }
+              }
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <p class="text-sm text-yellow-800">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <strong>Best Practice:</strong> Combine Factory and Proxy patterns by having the factory deploy proxy-based contracts, enabling both efficient creation and future upgradability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Platform Selection -->
+      <section id="platform-selection" class="px-8 py-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">2. Platform Selection</h2>
+            <p class="text-gray-600 mt-2">Strategic considerations for blockchain infrastructure</p>
+          </div>
+
+          <!-- Q&amp;A 1.2.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-network-wired mr-3 text-blue-600"></i>
+              Architectural Trade-offs: Permissionless vs. Permissioned Networks
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Platform Selection</span>
+            </div>
+
+            <p class="mb-6">
+              The choice between <strong>permissionless</strong> networks like Ethereum and <strong>permissioned</strong> networks like Hyperledger Fabric represents a fundamental architectural decision with profound implications for governance, security, privacy, and regulatory compliance <a href="https://101blockchains.com/hyperledger-vs-corda-r3-vs-ethereum/" class="citation">[33]</a>.
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Ethereum (Permissionless)</th>
+                    <th>Hyperledger Fabric (Permissioned)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">Access Control</td>
+                    <td>Open to anyone; permissionless participation <a href="https://www.hash.tools/116/blockchain-technology/11061/comparative-analysis-of-ethereum-and-hyperledger-for-smart-contracts-in-real-estate" class="citation">[362]</a>
+                    </td>
+                    <td>Restricted to authorized participants; permissioned access <a href="https://www.hash.tools/116/blockchain-technology/11061/comparative-analysis-of-ethereum-and-hyperledger-for-smart-contracts-in-real-estate" class="citation">[362]</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Data Privacy</td>
+                    <td>Transactions are public and transparent <a href="https://www.hash.tools/116/blockchain-technology/11061/comparative-analysis-of-ethereum-and-hyperledger-for-smart-contracts-in-real-estate" class="citation">[362]</a>
+                    </td>
+                    <td>Supports private channels and confidential transactions <a href="https://blockchain.oodles.io/blog/hyperledger-fabric-development-smart-contracts/" class="citation">[341]</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Scalability</td>
+                    <td>Limited by network congestion; can have high fees <a href="https://www.hash.tools/116/blockchain-technology/11061/comparative-analysis-of-ethereum-and-hyperledger-for-smart-contracts-in-real-estate" class="citation">[362]</a>
+                    </td>
+                    <td>High throughput and low latency due to efficient consensus <a href="https://www.hash.tools/116/blockchain-technology/11061/comparative-analysis-of-ethereum-and-hyperledger-for-smart-contracts-in-real-estate" class="citation">[362]</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Governance</td>
+                    <td>Decentralized, community-driven governance</td>
+                    <td>Centralized governance by consortium or organization</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Regulatory Compliance</td>
+                    <td>Challenging due to public nature; requires on-chain compliance logic</td>
+                    <td>Easier to implement KYC/AML and other regulatory controls <a href="https://blockchain.oodles.io/blog/hyperledger-fabric-development-smart-contracts/" class="citation">[341]</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-globe mr-2"></i>Public Chain Benefits
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Global accessibility and transparency</li>
+                  <li>• Censorship resistance</li>
+                  <li>• Broad investor pool</li>
+                  <li>• Established ecosystem</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-building mr-2"></i>Private Chain Advantages
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Enhanced privacy and control</li>
+                  <li>• Better regulatory compliance</li>
+                  <li>• Higher performance</li>
+                  <li>• Lower transaction costs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;The decision between architectural paradigms is highly context-dependent, hinging on careful evaluation of privacy, performance, governance, and target user base requirements.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 1.2.2 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-cogs mr-3 text-blue-600"></i>
+              Consensus Mechanisms: PoS vs. PBFT/Raft and Regulatory Implications
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Platform Selection</span>
+            </div>
+
+            <p class="mb-6">
+              Consensus mechanism choice directly impacts security, performance, and regulatory compliance. <strong>Proof-of-Stake (PoS)</strong> offers decentralization but presents regulatory challenges, while <strong>PBFT/Raft</strong> provides deterministic finality and controlled governance <a href="https://101blockchains.com/hyperledger-vs-corda-r3-vs-ethereum/" class="citation">[33]</a>
+              <a href="https://i6mi6.medium.com/the-ultimate-collection-of-ethereum-solidity-and-smart-contracts-interview-questions-ef610d250012" class="citation">[406]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // Consensus Mechanism Comparison Framework
+              interface IConsensus {
+                function validateBlock() external returns (bool);
+                function getFinalityTime() external view returns (uint256);
+                function getEnergyConsumption() external view returns (uint256);
+              }
+
+              contract PoSConsensus is IConsensus {
+                mapping(address =&gt; uint256) public stakes;
+                uint256 public totalStake;
+
+                function validateBlock() external override returns (bool) {
+                  // Validator selection based on stake weight
+                  address validator = selectValidator();
+                  return validate(validator);
+                }
+
+                function getFinalityTime() external pure override returns (uint256) {
+                  return 12; // ~12 seconds for Ethereum PoS
+                }
+
+                function getEnergyConsumption() external pure override returns (uint256) {
+                  return 1; // Minimal energy consumption
+                }
+              }
+
+              contract PBFTConsensus is IConsensus {
+                mapping(address =&gt; bool) public validators;
+                uint256 public requiredConfirmations = 2/3;
+
+                function validateBlock() external override returns (bool) {
+                  // Requires 2/3 majority from known validators
+                  uint256 confirmations = 0;
+                  for (uint i = 0; i &lt; validators.length; i++) {
+                    if (validators[i] &amp;&amp; confirm(validators[i])) {
+                      confirmations++;
+                    }
+                  }
+                  return confirmations &gt;= (validators.length * requiredConfirmations);
+                }
+
+                function getFinalityTime() external pure override returns (uint256) {
+                  return 1; // ~1 second finality
+                }
+              }
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+              <h4 class="font-semibold text-yellow-800 mb-2">Regulatory Considerations</h4>
+              <p class="text-sm text-yellow-700">
+                Permissioned networks with PBFT/Raft consensus align more closely with traditional finance regulatory frameworks, allowing for central authority intervention when necessary.
+              </p>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;The choice between decentralization and control often centers on whether the real world should adapt to blockchain rules or vice versa—a debate that shapes the entire RWA ecosystem.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 1.2.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-shield-alt mr-3 text-blue-600"></i>
+              Data Privacy and Access Control in Hyperledger Fabric
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Platform Selection</span>
+            </div>
+
+            <p class="mb-6">
+              Hyperledger Fabric provides a robust framework for data privacy through a multi-layered approach combining <strong>Membership Service Providers (MSPs)</strong>, <strong>channels</strong>, and <strong>Access Control Lists (ACLs)</strong>
+              <a href="https://blockchain.oodles.io/blog/hyperledger-fabric-development-smart-contracts/" class="citation">[341]</a>
+              <a href="https://github.com/aditya43/blockchain" class="citation">[344]</a>.
+            </p>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TD
+                A[&#34;Network Participant&#34;] --&gt; B{&#34;MSPs
+                <br/>Identity Verification&#34;}
+                B --&gt; C[&#34;Digital Certificate
+                <br/>X.509&#34;]
+                C --&gt; D{&#34;Channel Access&#34;}
+                D --&gt; E[&#34;Private Subnet
+                <br/>Isolated Communication&#34;]
+                E --&gt; F[&#34;Chaincode Execution&#34;]
+                F --&gt; G{&#34;ACL Check&#34;}
+                G --&gt; H[&#34;Authorized Action
+                <br/>Read/Write/Invoke&#34;]
+
+                I[&#34;Channel 1
+                <br/>Property A&#34;] --&gt; D
+                J[&#34;Channel 2
+                <br/>Property B&#34;] --&gt; D
+                K[&#34;Channel 3
+                <br/>Investor Group&#34;] --&gt; D
+
+                style B fill:#e3f2fd
+                style D fill:#f3e5f5
+                style G fill:#e8f5e8
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-blue-700 mb-2">MSPs</h5>
+                <p class="text-sm text-gray-700">Issue and manage digital identities, forming the basis for all access control decisions</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">Channels</h5>
+                <p class="text-sm text-gray-700">Private subnets for confidential transactions between specific network members</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-purple-700 mb-2">ACLs</h5>
+                <p class="text-sm text-gray-700">Granular control specifying which organizations can perform specific actions</p>
+              </div>
+            </div>
+
+            <div class="code-block mb-4">
+              // Hyperledger Fabric Chaincode with ACL Implementation
+              package main
+
+              import (
+              &#34;fmt&#34;
+              &#34;github.com/hyperledger/fabric-contract-api-go/contractapi&#34;
+              )
+
+              type PropertyContract struct {
+              contractapi.Contract
+              }
+
+              // Only property manager can update rental income
+              func (c *PropertyContract) UpdateRentalIncome(ctx contractapi.TransactionContextInterface, propertyID string, amount uint64) error {
+              // Get client identity
+              clientID, err := ctx.GetClientIdentity().GetID()
+              if err != nil {
+              return fmt.Errorf(&#34;failed to get client identity: %v&#34;, err)
+              }
+
+              // Verify if client has property manager role
+              if !c.hasRole(ctx, clientID, &#34;property_manager&#34;) {
+              return fmt.Errorf(&#34;unauthorized: only property managers can update rental income&#34;)
+              }
+
+              // Update rental income logic here
+              return ctx.GetStub().PutState(propertyID, []byte(fmt.Sprintf(&#34;%d&#34;, amount)))
+              }
+
+              // All token holders can query rental income
+              func (c *PropertyContract) QueryRentalIncome(ctx contractapi.TransactionContextInterface, propertyID string) (uint64, error) {
+              // Get client identity
+              clientID, err := ctx.GetClientIdentity().GetID()
+              if err != nil {
+              return 0, fmt.Errorf(&#34;failed to get client identity: %v&#34;, err)
+              }
+
+              // Verify if client is a token holder
+              if !c.isTokenHolder(ctx, clientID, propertyID) {
+              return 0, fmt.Errorf(&#34;unauthorized: only token holders can query rental income&#34;)
+              }
+
+              // Query logic here
+              return c.getRentalIncome(ctx, propertyID)
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Token Standards -->
+      <section id="token-standards" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">3. Token Standards and Asset Representation</h2>
+            <p class="text-gray-600 mt-2">Standards for representing real-world assets on blockchain</p>
+          </div>
+
+          <!-- Q&amp;A 1.3.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-coins mr-3 text-blue-600"></i>
+              Choosing a Token Standard: ERC-20, ERC-721, ERC-1155, and ERC-3643
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Token Standards</span>
+            </div>
+
+            <p class="mb-6">
+              Token standard selection defines fundamental properties and functionalities of tokenized assets. Each standard serves different asset types and compliance requirements <a href="https://www.prnewswire.com/apac/news-releases/wall-street-bets-on-ethereum-why-rwaltd-chose-erc-3643-302538270.html" class="citation">[430]</a>
+              <a href="https://www.vskills.in/interview-questions/ethereum-blockchain-development-interview-questions" class="citation">[436]</a>.
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Token Standard</th>
+                    <th>Type</th>
+                    <th>Key Features</th>
+                    <th>Best Suited For</th>
+                    <th>Compliance Features</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">ERC-20</td>
+                    <td>Fungible</td>
+                    <td>Interchangeable tokens, widely supported, simple implementation</td>
+                    <td>Stablecoins, fund shares, utility tokens</td>
+                    <td>None (requires external contracts)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">ERC-721</td>
+                    <td>Non-Fungible</td>
+                    <td>Unique, indivisible tokens, proof of ownership</td>
+                    <td>Individual properties, artworks, collectibles</td>
+                    <td>None (requires external contracts)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">ERC-1155</td>
+                    <td>Hybrid</td>
+                    <td>Single contract manages both fungible and non-fungible tokens</td>
+                    <td>Gaming assets, diverse asset platforms</td>
+                    <td>None (requires external contracts)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">ERC-3643</td>
+                    <td>Security Token</td>
+                    <td>Built-in compliance, KYC/AML verification, transfer controls</td>
+                    <td>Security tokens, regulated instruments, institutional RWAs</td>
+                    <td>Extensive (compliance embedded)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">Traditional Standards</h4>
+                <p class="text-sm text-blue-800 mb-3">ERC-20, ERC-721, ERC-1155 provide basic functionality but require external compliance mechanisms.</p>
+                <ul class="text-sm space-y-1 text-blue-700">
+                  <li>• Simple implementation</li>
+                  <li>• Broad ecosystem support</li>
+                  <li>• Limited compliance features</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">ERC-3643 (Security Token)</h4>
+                <p class="text-sm text-green-800 mb-3">Purpose-built for regulated assets with compliance embedded in token logic.</p>
+                <ul class="text-sm space-y-1 text-green-700">
+                  <li>• Built-in KYC/AML</li>
+                  <li>• Transfer restrictions</li>
+                  <li>• Regulatory compliance</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q&amp;A 1.3.2 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-chart-pie mr-3 text-blue-600"></i>
+              Fractional Ownership Models: ERC-3475 and Other Standards
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Token Standards</span>
+            </div>
+
+            <p class="mb-6">
+              <strong>ERC-3475</strong> (Abstract Storage Bonds standard) provides sophisticated models for structured financial products like bonds and debt instruments, using &#34;classes&#34; and &#34;nonces&#34; for hierarchical organization <a href="https://eips.ethereum.org/EIPS/eip-3475" class="citation">[299]</a>.
+            </p>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+              <h4 class="font-semibold mb-4">ERC-3475 Structure:</h4>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  A[&#34;ERC-3475 Contract&#34;] --&gt; B[&#34;Class 1: Senior Debt&#34;]
+                  A --&gt; C[&#34;Class 2: Mezzanine Debt&#34;]
+                  A --&gt; D[&#34;Class 3: Junior Debt&#34;]
+
+                  B --&gt; B1[&#34;Nonce 1: 5-year maturity
+                  <br/>3% coupon&#34;]
+                  B --&gt; B2[&#34;Nonce 2: 10-year maturity
+                  <br/>4% coupon&#34;]
+
+                  C --&gt; C1[&#34;Nonce 1: 7-year maturity
+                  <br/>6% coupon&#34;]
+                  C --&gt; C2[&#34;Nonce 2: 12-year maturity
+                  <br/>7% coupon&#34;]
+
+                  D --&gt; D1[&#34;Nonce 1: Equity conversion
+                  <br/>8% coupon&#34;]
+                  D --&gt; D2[&#34;Nonce 2: Pure equity
+                  <br/>No coupon&#34;]
+
+                  style A fill:#e8f4fd
+                  style B fill:#e8f5e8
+                  style C fill:#fff3e0
+                  style D fill:#fce4ec
+                </div>
+              </div>
+              <ul class="space-y-2 text-sm text-gray-700 mt-4">
+                <li><strong>Classes:</strong> Represent specific bond issuances with unique terms (maturity, coupon rate)</li>
+                <li><strong>Nonces:</strong> Individual bonds or batches within each class with distinct metadata</li>
+                <li><strong>Efficiency:</strong> Multiple issuances within single contract reduces gas costs</li>
+              </ul>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+              <h4 class="font-semibold text-yellow-800 mb-2">ERC-5560 for Physical Assets</h4>
+              <p class="text-sm text-yellow-700">
+                Designed for tokenizing physical assets like gold or real estate, linking each token to verifiable physical units with properties stored on-chain <a href="https://blog.bitium.agency/5-eips-for-rwa-tokenization-77dc5962ed95" class="citation">[302]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q&amp;A 1.3.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-id-card mr-3 text-blue-600"></i>
+              Soulbound Tokens (SBTs) for On-Chain Identity and Credentials
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Token Standards</span>
+            </div>
+
+            <p class="mb-6">
+              <strong>Soulbound Tokens (SBTs)</strong> are non-transferable tokens permanently bound to a specific wallet address, representing unique attributes, achievements, and credentials like university diplomas or professional certifications <a href="https://medium.com/coinmonks/get-started-with-soulbound-token-sbt-blockchain-roadmap-f509780444" class="citation">[288]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // SPDX-License-Identifier: MIT
+              pragma solidity ^0.8.0;
+
+              import &#34;@openzeppelin/contracts/token/ERC721/ERC721.sol&#34;;
+              import &#34;@openzeppelin/contracts/utils/Counters.sol&#34;;
+
+              contract SoulboundToken is ERC721 {
+                using Counters for Counters.Counter;
+                Counters.Counter private _tokenIdCounter;
+
+                mapping(uint256 =&gt; string) private _tokenURIs;
+                mapping(uint256 =&gt; address) private _issuers;
+                mapping(uint256 =&gt; uint256) private _issuanceDates;
+
+                event SBTIssued(uint256 indexed tokenId, address indexed to, address indexed issuer);
+                event SBTRevoked(uint256 indexed tokenId, address indexed issuer);
+
+                constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
+
+                function issueSBT(address to, string memory uri) external returns (uint256) {
+                _tokenIdCounter.increment();
+                uint256 newTokenId = _tokenIdCounter.current();
+
+                _mint(to, newTokenId);
+                _tokenURIs[newTokenId] = uri;
+                _issuers[newTokenId] = msg.sender;
+                _issuanceDates[newTokenId] = block.timestamp;
+
+                emit SBTIssued(newTokenId, to, msg.sender);
+                return newTokenId;
+                }
+
+                function revokeSBT(uint256 tokenId) external {
+                require(_issuers[tokenId] == msg.sender, &#34;Only issuer can revoke&#34;);
+                require(ownerOf(tokenId) != address(0), &#34;Token does not exist&#34;);
+
+                _burn(tokenId);
+                emit SBTRevoked(tokenId, msg.sender);
+                }
+
+                function _beforeTokenTransfer(
+                address from,
+                address to,
+                uint256 tokenId,
+                uint256 batchSize
+                ) internal virtual override {
+                // Prevent transfers - only mint and burn allowed
+                require(from == address(0) || to == address(0), &#34;SBTs are non-transferable&#34;);
+                super._beforeTokenTransfer(from, to, tokenId, batchSize);
+                }
+
+                function getSBTHolder(uint256 tokenId) external view returns (address) {
+                return ownerOf(tokenId);
+                }
+
+                function getSBTInfo(uint256 tokenId) external view returns (
+                address issuer,
+                string memory uri,
+                uint256 issuanceDate
+                ) {
+                return (
+                _issuers[tokenId],
+                _tokenURIs[tokenId],
+                _issuanceDates[tokenId]
+                );
+                }
+              }
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-blue-700 mb-2">Issuance</h5>
+                <p class="text-sm text-gray-700">Trusted entity mints token and sends to user&#39;s wallet</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">Attestation</h5>
+                <p class="text-sm text-gray-700">Public, on-chain declaration of user&#39;s credential</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-red-700 mb-2">Revocation</h5>
+                <p class="text-sm text-gray-700">Issuer can &#34;burn&#34; token to revoke credential if no longer valid</p>
+              </div>
+            </div>
+
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 class="font-semibold text-green-800 mb-2">RWA Applications</h4>
+              <ul class="text-sm space-y-1 text-green-700">
+                <li>• KYC/AML verification systems</li>
+                <li>• Qualified investor status management</li>
+                <li>• Decentralized credit scoring</li>
+                <li>• DAO governance and access rights</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Quality Attributes -->
+      <section id="quality-attributes" class="px-8 py-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">4. Quality Attributes &amp; Performance Optimization</h2>
+            <p class="text-gray-600 mt-2">Ensuring scalability, reliability, and security in RWA platforms</p>
+          </div>
+
+          <!-- Q&amp;A 2.1.2 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-rocket mr-3 text-blue-600"></i>
+              Purpose-Built RWA Chains: Pharos and Plume Network Architectures
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Quality Attributes</span>
+            </div>
+
+            <p class="mb-6">
+              General-purpose blockchains face limitations for RWA tokenization. <strong>Pharos Network</strong> and <strong>Plume</strong> represent purpose-built RWA chains with specialized architectures <a href="https://web3.bitget.com/en/academy/what-is-pharos-network-pharos-a-high-throughput-evm-layer-1-for-real-world-asset-tokenization-and-defi-lLending" class="citation">[127]</a>
+              <a href="https://plume.org/blog/rwa-chain" class="citation">[131]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-tachometer-alt mr-2"></i>Pharos Network
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• High-throughput EVM-compatible L1</li>
+                  <li>• Deep-parallel modular design</li>
+                  <li>• 30,000+ TPS achieved</li>
+                  <li>• zk-based KYC/AML support</li>
+                  <li>• Goal: 50,000+ TPS at scale</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-leaf mr-2"></i>Plume Network
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Purpose-built for RWAs</li>
+                  <li>• Native compliance support</li>
+                  <li>• Proof-of-Representation consensus</li>
+                  <li>• Plume Nexus data highway</li>
+                  <li>• RWA-optimized architecture</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto mb-6">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Plume L1</th>
+                    <th>Ethereum</th>
+                    <th>Solana</th>
+                    <th>Cosmos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium">RWA Focus</td>
+                    <td>Purpose-built for RWAs</td>
+                    <td>General-purpose</td>
+                    <td>High-throughput, lacks RWA focus</td>
+                    <td>Modular, adaptable to RWAs</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Compliance Integration</td>
+                    <td>Native AML/KYC support</td>
+                    <td>Requires external tools</td>
+                    <td>Requires external tools</td>
+                    <td>Requires external tools</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Consensus Model</td>
+                    <td>Proof-of-Representation</td>
+                    <td>Proof-of-Stake</td>
+                    <td>PoH + PoS hybrid</td>
+                    <td>Tendermint BFT</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">Data Integration</td>
+                    <td>Plume Nexus data highway</td>
+                    <td>Limited off-chain solutions</td>
+                    <td>Limited off-chain solutions</td>
+                    <td>IBC and oracles support</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;Purpose-built RWA chains represent a fundamental rethinking of blockchain architecture, offering performance and compliance features impossible on general-purpose platforms.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 2.2.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-clock mr-3 text-blue-600"></i>
+              Reducing Latency in High-Frequency RWA Trading Systems
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Quality Attributes</span>
+            </div>
+
+            <p class="mb-6">
+              Blockchain latency (12-second blocks on Ethereum, 3+ minutes for finality) is unacceptable for high-frequency RWA trading. <strong>Layer 2 scaling solutions</strong> and optimized architectures dramatically reduce latency <a href="https://reports.tiger-research.com/p/ethereums-dominance-in-the-rwa-market-eng" class="citation">[412]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-layer-group mr-2"></i>Layer 2 Solutions
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Optimistic Rollups (Arbitrum, Optimism)</li>
+                  <li>• ZK-Rollups (Polygon zkEVM)</li>
+                  <li>• Transaction processing off-chain</li>
+                  <li>• Compressed proofs submitted to L1</li>
+                  <li>• 100x+ latency reduction</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-server mr-2"></i>Off-Chain Optimizations
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• High-performance message queues (RabbitMQ)</li>
+                  <li>• WebSocket real-time data feeds</li>
+                  <li>• CDN for reduced network hops</li>
+                  <li>• Efficient data serialization</li>
+                  <li>• Asynchronous communication patterns</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;User Request&#34;] --&gt; B[&#34;API Gateway&#34;]
+                B --&gt; C{&#34;Routing Logic&#34;}
+                C --&gt; D[&#34;L2 Rollup
+                <br/>Fast Processing&#34;]
+                C --&gt; E[&#34;L1 Ethereum
+                <br/>Final Settlement&#34;]
+
+                D --&gt; F[&#34;Off-Chain Components&#34;]
+                F --&gt; G[&#34;Message Queues
+                <br/>RabbitMQ&#34;]
+                F --&gt; H[&#34;WebSocket Feeds
+                <br/>Real-time Data&#34;]
+                F --&gt; I[&#34;CDN
+                <br/>Reduced Latency&#34;]
+
+                E --&gt; J[&#34;Blockchain State
+                <br/>Immutable Record&#34;]
+
+                style D fill:#e3f2fd
+                style E fill:#f3e5f5
+                style F fill:#e8f5e8
+              </div>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;The combination of on-chain optimizations and off-chain architectural best practices enables RWA platforms to meet modern financial market performance expectations.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 2.2.2 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-exchange-alt mr-3 text-blue-600"></i>
+              Off-Chain Channels for Faster Token Transfers
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Quality Attributes</span>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p class="font-medium text-blue-900">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Key Insight: Off-chain channels reduce RWA token transfer latency by over 100x compared to on-chain settlement, but introduce channel management complexity.
+              </p>
+            </div>
+
+            <p class="mb-6">
+              Off-chain channels allow parties to conduct numerous transactions off the main blockchain, settling only the final state on-chain. This approach dramatically reduces latency and transaction costs for high-frequency RWA trading <a href="https://arxiv.org/html/2509.12957v1" class="citation">[455]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // SPDX-License-Identifier: MIT
+              pragma solidity ^0.8.0;
+
+              contract HTLC {
+                struct Lock {
+                  address payable sender;
+                  address payable recipient;
+                  uint amount;
+                  bytes32 hashlock;
+                  uint timelock;
+                  bool withdrawn;
+                  bool refunded;
+                }
+
+                mapping (bytes32 =&gt; Lock) public locks;
+
+                event Locked(bytes32 indexed lockId, address indexed sender, address indexed recipient, uint amount, bytes32 hashlock, uint timelock);
+                event Unlocked(bytes32 indexed lockId, bytes32 secret);
+                event Refunded(bytes32 indexed lockId);
+
+                function lock(bytes32 lockId, address payable recipient, bytes32 hashlock, uint timelock) external payable {
+                require(locks[lockId].sender == address(0), &#34;Lock ID already exists&#34;);
+                require(msg.value &gt; 0, &#34;Amount must be greater than 0&#34;);
+                require(timelock &gt; block.timestamp, &#34;Timelock must be in the future&#34;);
+
+                locks[lockId] = Lock({
+                sender: payable(msg.sender),
+                recipient: recipient,
+                amount: msg.value,
+                hashlock: hashlock,
+                timelock: timelock,
+                withdrawn: false,
+                refunded: false
+                });
+
+                emit Locked(lockId, msg.sender, recipient, msg.value, hashlock, timelock);
+                }
+
+                function unlock(bytes32 lockId, bytes32 secret) external {
+                Lock storage l = locks[lockId];
+                require(l.recipient == msg.sender, &#34;Only recipient can unlock&#34;);
+                require(l.withdrawn == false, &#34;Funds already withdrawn&#34;);
+                require(l.refunded == false, &#34;Funds already refunded&#34;);
+                require(sha256(abi.encodePacked(secret)) == l.hashlock, &#34;Invalid secret&#34;);
+                require(block.timestamp &lt;= l.timelock, &#34;Timelock expired&#34;);
+
+                l.withdrawn = true;
+                l.recipient.transfer(l.amount);
+
+                emit Unlocked(lockId, secret);
+                }
+
+                function refund(bytes32 lockId) external {
+                Lock storage l = locks[lockId];
+                require(l.sender == msg.sender, &#34;Only sender can refund&#34;);
+                require(l.withdrawn == false, &#34;Funds already withdrawn&#34;);
+                require(l.refunded == false, &#34;Funds already refunded&#34;);
+                require(block.timestamp &gt; l.timelock, &#34;Timelock not expired&#34;);
+
+                l.refunded = true;
+                l.sender.transfer(l.amount);
+
+                emit Refunded(lockId);
+                }
+              }
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">Performance Gains</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• 100x+ latency reduction</li>
+                  <li>• Near-instant transfers</li>
+                  <li>• Negligible transaction fees</li>
+                </ul>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-yellow-700 mb-2">Trade-offs</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Complex channel management</li>
+                  <li>• Capital lock-up requirements</li>
+                  <li>• Online participant dependency</li>
+                </ul>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-blue-700 mb-2">Best Use Cases</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• High-frequency trading</li>
+                  <li>• Micropayments</li>
+                  <li>• Recurring payments</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q&amp;A 2.2.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-shield-alt mr-3 text-blue-600"></i>
+              Circuit Breaker Pattern for System Stability
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Quality Attributes</span>
+            </div>
+
+            <p class="mb-6">
+              The <strong>Circuit Breaker</strong> pattern prevents cascading failures by monitoring component health and blocking requests when error thresholds are exceeded. Critical for maintaining RWA platform integrity during market volatility <a href="https://www.antiersolutions.com/blogs/the-missing-piece-in-rwa-tokenization-why-every-project-needs-a-compliant-ats-strategy/" class="citation">[95]</a>.
+            </p>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                stateDiagram-v2
+                [*] --&gt; Closed
+                Closed --&gt; Open: Error Threshold Exceeded
+                Open --&gt; HalfOpen: Timeout Period
+                HalfOpen --&gt; Closed: Test Requests Successful
+                HalfOpen --&gt; Open: Test Requests Fail
+
+                state Closed {
+                [*] --&gt; Monitoring
+                Monitoring --&gt; Monitoring: Normal Operation
+                }
+
+                state Open {
+                [*] --&gt; Blocking
+                Blocking --&gt; Blocking: Requests Rejected
+                }
+
+                state HalfOpen {
+                [*] --&gt; Testing
+                Testing --&gt; Testing: Limited Requests Allowed
+                }
+
+                Closed: Normal Operation
+                Closed: Requests Pass Through
+                Closed: Error Monitoring Active
+
+                Open: Failure Detected
+                Open: Requests Blocked
+                Open: Fallback Responses
+
+                HalfOpen: Recovery Testing
+                HalfOpen: Limited Traffic
+                HalfOpen: Automatic Recovery
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">Closed State</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Normal operation</li>
+                  <li>• Requests pass through</li>
+                  <li>• Error monitoring active</li>
+                </ul>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-red-700 mb-2">Open State</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Failure detected</li>
+                  <li>• Requests blocked</li>
+                  <li>• Fallback responses returned</li>
+                </ul>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-yellow-700 mb-2">Half-Open State</h5>
+                <ul class="text-sm space-y-1 text-gray-700">
+                  <li>• Recovery testing</li>
+                  <li>• Limited traffic allowed</li>
+                  <li>• Automatic recovery attempt</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block mb-4">
+              // Circuit Breaker Implementation Example
+              contract CircuitBreaker {
+                enum State { CLOSED, OPEN, HALF_OPEN }
+                State public currentState;
+                uint256 public failureThreshold;
+                uint256 public failureCount;
+                uint256 public lastFailureTime;
+                uint256 public resetTimeout;
+
+                mapping(address =&gt; bool) public authorizedUsers;
+
+                event StateChanged(State newState);
+                event CircuitTripped(uint256 failureCount);
+
+                constructor(uint256 _failureThreshold, uint256 _resetTimeout) {
+                failureThreshold = _failureThreshold;
+                resetTimeout = _resetTimeout;
+                currentState = State.CLOSED;
+                }
+
+                modifier circuitBreakerProtection() {
+                require(isOperationAllowed(), &#34;Operation blocked by circuit breaker&#34;);
+                _;
+                }
+
+                function isOperationAllowed() public view returns (bool) {
+                if (currentState == State.OPEN) {
+                // Check if reset timeout has passed
+                if (block.timestamp &gt;= lastFailureTime + resetTimeout) {
+                return true; // Allow testing in half-open state
+                }
+                return false;
+                }
+                return true;
+                }
+
+                function recordFailure() internal {
+                failureCount++;
+                lastFailureTime = block.timestamp;
+
+                if (failureCount &gt;= failureThreshold &amp;&amp; currentState == State.CLOSED) {
+                tripCircuit();
+                }
+                }
+
+                function tripCircuit() internal {
+                currentState = State.OPEN;
+                emit StateChanged(State.OPEN);
+                emit CircuitTripped(failureCount);
+                }
+
+                function resetCircuit() external {
+                require(currentState == State.OPEN, &#34;Circuit is not open&#34;);
+                require(block.timestamp &gt;= lastFailureTime + resetTimeout, &#34;Reset timeout not reached&#34;);
+
+                currentState = State.HALF_OPEN;
+                emit StateChanged(State.HALF_OPEN);
+                }
+
+                function closeCircuit() external {
+                require(currentState == State.HALF_OPEN, &#34;Circuit is not in half-open state&#34;);
+
+                currentState = State.CLOSED;
+                failureCount = 0;
+                emit StateChanged(State.CLOSED);
+                }
+
+                // Example protected function
+                function transferTokens(address to, uint256 amount) external circuitBreakerProtection returns (bool) {
+                // Token transfer logic here
+                // If failure occurs:
+                // recordFailure();
+                // return false;
+
+                return true; // Success
+                }
+              }
+            </div>
+          </div>
+
+          <!-- Q&amp;A 2.3.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-shield-alt mr-3 text-blue-600"></i>
+              Smart Contract Auditing and Formal Verification Tools
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Quality Attributes</span>
+            </div>
+
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <p class="font-medium text-red-900">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Security is the bedrock of RWA platforms where smart contracts manage significant financial value.
+              </p>
+            </div>
+
+            <p class="mb-6">
+              A multi-faceted security approach combines standard practices with mathematically rigorous methods like <strong>formal verification</strong> to provide mathematical proof of correctness <a href="https://blog.csdn.net/Ashlee_code/article/details/149018280" class="citation">[270]</a>
+              <a href="https://cccf.hrbeu.edu.cn/cn/article/pdf/preview/10.11991/cccf.202506011.pdf" class="citation">[268]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-search mr-2"></i>Standard Security Audits
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Manual and automated code review</li>
+                  <li>• Common vulnerability identification</li>
+                  <li>• Reentrancy attack detection</li>
+                  <li>• Access control validation</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-calculator mr-2"></i>Formal Verification
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Mathematical logic proofs</li>
+                  <li>• Complete specification verification</li>
+                  <li>• KEVM for EVM semantics</li>
+                  <li>• Coq proof assistant</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block mb-6">
+              // Formal Verification Example using KEVM
+              module PROPERTY-TOKEN-SPEC
+              imports EVM
+              imports PROPERTY-TOKEN
+
+              // Define the initial state
+              rule <k> runLemma(#buf(32, OWNER), #buf(32, SPENDER), #buf(32, VALUE)) =&gt; doneLemma(RESULT) </k>
+              <schedule> SCHED </schedule>
+              <callstack> .List </callstack>
+              <program> PGM </program>
+              <jumpdests> JUMPDESTS </jumpdests>
+              <id> ACCT_ID </id>
+              <localmem> LM </localmem>
+              <pc> 0 </pc>
+              <gas> GAS </gas>
+              <caller> CALLER </caller>
+              <callvalue> CALL_VALUE </callvalue>
+              <wordstack> .WordStack </wordstack>
+              <log> .List </log>
+              <refund> REFUND </refund>
+              <gasprice> GPRICE </gasprice>
+              <previoushash> PREV_HASH </previoushash>
+              <difficulty> DIFF </difficulty>
+              <coinbase> COINBASE </coinbase>
+              <gaslimit> GLIMIT </gaslimit>
+              <timestamp> TIME </timestamp>
+              <number> NUMB </number>
+              <mu> MU </mu>
+              <suicide> .Set </suicide>
+              <accessedaccounts> ACCESSED_ACCOUNTS </accessedaccounts>
+              <accessedstorage> ACCESSED_STORAGE </accessedstorage>
+              <touchedaccounts> TOUCHED_ACCOUNTS </touchedaccounts>
+              <createdaccounts> CREATED_ACCOUNTS </createdaccounts>
+              <calldepth> CD </calldepth>
+              <static> STATIC </static>
+              <memoryused> 0 </memoryused>
+              // Ensure the approve function behaves correctly
+              ensures (RESULT == 1 andBool VALUE &lt;=Int BAL) orBool (RESULT == 0 andBool VALUE &gt;Int BAL)
+              where BAL = getBalance(EVM, OWNER, ACCT_ID)
+              endmodule
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h4 class="font-semibold text-yellow-800 mb-2">Formal Verification Tools</h4>
+              <ul class="text-sm space-y-1 text-yellow-700">
+                <li><strong>KEVM:</strong> Complete formal semantics of EVM for bytecode-level verification</li>
+                <li><strong>Coq:</strong> Proof assistant for complex contract specification and verification</li>
+                <li><strong>F*:</strong> Language for writing verifiable programs with formal semantics</li>
+                <li><strong>Event-B:</strong> Method for building models and verifying through refinement steps</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Data Management -->
+      <section id="data-management" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">5. Data Management &amp; Persistence</h2>
+            <p class="text-gray-600 mt-2">Efficient data handling for scalable RWA platforms</p>
+          </div>
+
+          <!-- Q&amp;A 3.2.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-database mr-3 text-blue-600"></i>
+              Optimizing Storage Layout in Solidity for Gas Efficiency
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Data Management</span>
+            </div>
+
+            <p class="mb-6">
+              EVM storage costs are significantly higher than memory or computation. Optimizing storage layout through <strong>variable packing</strong> and careful data type selection is critical for cost-effective RWA platforms <a href="https://ethereum.stackexchange.com/questions/23720/usage-of-memory-storage-and-stack-areas-in-evm" class="citation">[151]</a>
+              <a href="https://www.alchemy.com/docs/smart-contract-storage-layout" class="citation">[149]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // Gas-Optimized Storage Layout Example
+              contract OptimizedPropertyToken {
+                // Inefficient layout - uses 3 storage slots
+                struct PropertyInefficient {
+                  uint256 value; // slot 0
+                  address owner; // slot 1
+                  bool isActive; // slot 2
+                  uint256 tokenId; // slot 3
+                }
+
+                // Efficient layout - packs into 2 storage slots
+                struct PropertyOptimized {
+                  uint128 value; // lower 16 bytes of slot 0
+                  address owner; // upper 20 bytes of slot 0 (fits because address is 20 bytes)
+                  bool isActive; // lower 1 byte of slot 1
+                  uint128 tokenId; // upper 16 bytes of slot 1
+                  uint128 anotherValue; // lower 16 bytes of slot 1
+                }
+
+                // Best practice: Group frequently accessed variables
+                struct PropertyBest {
+                  // Slot 0 - frequently accessed together
+                  uint128 value;
+                  uint128 tokenId;
+
+                  // Slot 1
+                  address owner;
+                  bool isActive;
+                  uint32 lastUpdate;
+                  uint32 propertyType;
+                  // 10 bytes remaining in slot 1
+                }
+
+                // Storage optimization techniques
+                mapping(uint256 =&gt; PropertyBest) public properties;
+
+                function optimizeStorage() external {
+                PropertyBest memory property = PropertyBest({
+                value: 1_000_000,
+                tokenId: 123,
+                owner: msg.sender,
+                isActive: true,
+                lastUpdate: uint32(block.timestamp),
+                propertyType: 1
+                });
+
+                // Store in single SSTORE operation (20,000 gas)
+                properties[0] = property;
+
+                // Reading multiple packed variables can be more efficient
+                PropertyBest storage prop = properties[0];
+                uint256 totalValue = prop.value + prop.tokenId; // Single SLOAD
+                }
+
+                // Use appropriate data types
+                function demonstrateDataTypes() public pure {
+                // Use smallest sufficient type
+                uint8 smallNumber = 100; // 0-255
+                uint16 mediumNumber = 1000; // 0-65535
+                uint64 timestamp = 1672531200; // Unix timestamp
+                uint128 largeValue = 1000000000000000000; // Token amounts
+
+                // Arrays and structs
+                struct Investor {
+                address wallet;
+                uint128 investment;
+                uint32 timestamp;
+                }
+
+                Investor[10] public investors; // Fixed size for efficiency
+                }
+
+                // Initialize storage efficiently
+                function initializeProperty(uint256 propertyId) external {
+                // Set initial values in one operation
+                PropertyBest storage property = properties[propertyId];
+                property.value = 0;
+                property.tokenId = propertyId;
+                property.owner = address(0);
+                property.isActive = false;
+                property.lastUpdate = 0;
+                property.propertyType = 0;
+                }
+              }
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-blue-700 mb-2">Variable Packing</h5>
+                <p class="text-sm text-gray-700">Pack multiple small variables into single 32-byte slots to reduce storage footprint</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">Data Type Selection</h5>
+                <p class="text-sm text-gray-700">Use smallest sufficient types (uint8, uint16) instead of default uint256</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-purple-700 mb-2">Access Patterns</h5>
+                <p class="text-sm text-gray-700">Group frequently accessed variables in same storage slot</p>
+              </div>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h4 class="font-semibold text-yellow-800 mb-2">Gas Cost Considerations</h4>
+              <ul class="text-sm space-y-1 text-yellow-700">
+                <li><strong>SSTORE (zero to non-zero):</strong> 20,000 gas (most expensive operation)</li>
+                <li><strong>SSTORE (non-zero to non-zero):</strong> 5,000 gas</li>
+                <li><strong>SLOAD:</strong> 2,100 gas (first access), 100 gas (subsequent accesses)</li>
+                <li><strong>Memory operations:</strong> Significantly cheaper than storage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Integration -->
+      <section id="integration" class="px-8 py-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">6. Integration &amp; Interoperability</h2>
+            <p class="text-gray-600 mt-2">Connecting blockchain systems with external data and services</p>
+          </div>
+
+          <!-- Q&amp;A 4.1.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-link mr-3 text-blue-600"></i>
+              Integrating Chainlink Price Feeds for Asset Valuation
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Integration</span>
+            </div>
+
+            <p class="mb-6">
+              Decentralized oracle networks like <strong>Chainlink</strong> provide secure, tamper-proof real-world data to smart contracts, essential for accurate RWA valuation, collateral calculation, and automated distributions <a href="https://helalabs.com/blog/the-role-of-chainlink-and-hela-blockchain-in-tokenizing-real-world-assets-rwa/" class="citation">[260]</a>
+              <a href="https://blog.chain.link/fetch-commodity-prices-in-solidity-smart-contracts/" class="citation">[261]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // SPDX-License-Identifier: MIT
+              pragma solidity ^0.8.0;
+
+              import &#34;@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol&#34;;
+              import &#34;@openzeppelin/contracts/token/ERC20/ERC20.sol&#34;;
+
+              contract AAPLToken is ERC20 {
+                AggregatorV3Interface internal aaplPriceFeed;
+                AggregatorV3Interface internal ethPriceFeed;
+                uint256 public constant MIN_HEALTH_FACTOR = 150; // 1.5x collateralization
+
+                constructor() ERC20(&#34;Apple Stock Token&#34;, &#34;AAPL&#34;) {
+                // Price feed addresses (example - use actual mainnet addresses)
+                aaplPriceFeed = AggregatorV3Interface(0x31CE174c651466A5432b61DEcF0DF75026D1a90c);
+                ethPriceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+                }
+
+                function getLatestPrice(AggregatorV3Interface priceFeed) public view returns (int) {
+                (
+                ,
+                int price,
+                ,
+                ,
+
+                ) = priceFeed.latestRoundData();
+                return price;
+                }
+
+                function depositAndMint(uint256 amountToMint) external payable {
+                require(msg.value &gt; 0, &#34;Must deposit ETH&#34;);
+                require(amountToMint &gt; 0, &#34;Must mint AAPL&#34;);
+
+                // Get latest prices
+                int aaplPrice = getLatestPrice(aaplPriceFeed);
+                int ethPrice = getLatestPrice(ethPriceFeed);
+
+                // Calculate values in USD
+                uint256 collateralValueUSD = (uint256(ethPrice) * msg.value) / 1e18;
+                uint256 mintValueUSD = (uint256(aaplPrice) * amountToMint) / 1e18;
+
+                // Calculate health factor
+                uint256 healthFactor = (collateralValueUSD * 100) / mintValueUSD;
+                require(healthFactor &gt;= MIN_HEALTH_FACTOR, &#34;Insufficient collateral&#34;);
+
+                // Mint tokens
+                _mint(msg.sender, amountToMint);
+                }
+
+                function getHealthFactor() external view returns (uint256) {
+                // Calculate current health factor for the protocol
+                int aaplPrice = getLatestPrice(aaplPriceFeed);
+                int ethPrice = getLatestPrice(ethPriceFeed);
+
+                // This would typically calculate based on total collateral and total debt
+                // Simplified example
+                return 200; // 2.0x
+                }
+              }
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-chart-line mr-2"></i>Price Feed Integration
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Chainlink Price Feeds for market data</li>
+                  <li>• Multi-source data aggregation</li>
+                  <li>• Decentralized oracle networks</li>
+                  <li>• Real-time price updates</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-shield-alt mr-2"></i>Security Considerations
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Over-collateralization requirements</li>
+                  <li>• Health factor calculations</li>
+                  <li>• Price deviation monitoring</li>
+                  <li>• Fallback oracle mechanisms</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;The integrity of the entire RWA system hinges on the quality and reliability of oracle data feeds; a compromised oracle could lead to catastrophic financial consequences.&#34;
+            </div>
+          </div>
+
+          <!-- Q&amp;A 4.1.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-shield-alt mr-3 text-blue-600"></i>
+              Oracle Security and Data Reliability Considerations
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Integration</span>
+            </div>
+
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <p class="font-medium text-red-900">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                The &#34;oracle problem&#34; represents a critical attack vector where compromised oracles could feed incorrect data, leading to unfair liquidations or unbacked token minting.
+              </p>
+            </div>
+
+            <p class="mb-6">
+              Robust oracle security requires multiple layers of protection: decentralization, multi-party verification, cryptographic security, and contingency planning <a href="https://www.binance.com/en/square/post/30988909838673" class="citation">[256]</a>
+              <a href="https://www.growthturbine.com/blogs/technology-architecture-of-tokenization-infrastructure" class="citation">[247]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-network-wired mr-2"></i>Decentralization
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Multiple independent data providers</li>
+                  <li>• Outlier detection and aggregation</li>
+                  <li>• No single point of failure</li>
+                  <li>• Chainlink decentralized networks</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-users mr-2"></i>Multi-Party Verification
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Custodian verification</li>
+                  <li>• Auditor attestations</li>
+                  <li>• Bank confirmations</li>
+                  <li>• Web of trust model</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                <h4 class="font-semibold text-purple-900 mb-3">
+                  <i class="fas fa-key mr-2"></i>Cryptographic Security
+                </h4>
+                <ul class="text-sm space-y-2 text-purple-800">
+                  <li>• Merkle root proofs</li>
+                  <li>• Signed timestamps</li>
+                  <li>• Tamper-evident mechanisms</li>
+                  <li>• Cryptographic attestations</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block mb-6">
+              // Multi-Layer Oracle Security Implementation
+              contract SecureOracleAggregator is Ownable {
+                struct OracleData {
+                int256 value;
+                uint256 timestamp;
+                address provider;
+                bytes signature;
+                bool isValid;
+                }
+
+                mapping(address =&gt; bool) public authorizedProviders;
+                mapping(bytes32 =&gt; OracleData[]) public priceData;
+
+                uint256 public requiredConfirmations = 3;
+                uint256 public maxPriceDeviation = 500; // 5% in basis points
+                uint256 public stalePriceDelay = 3600; // 1 hour
+
+                event PriceUpdated(bytes32 indexed asset, int256 price, uint256 timestamp);
+                event ProviderAdded(address indexed provider);
+                event ProviderRemoved(address indexed provider);
+
+                modifier onlyAuthorizedProvider() {
+                require(authorizedProviders[msg.sender], &#34;Unauthorized provider&#34;);
+                _;
+                }
+
+                function addProvider(address provider) external onlyOwner {
+                authorizedProviders[provider] = true;
+                emit ProviderAdded(provider);
+                }
+
+                function removeProvider(address provider) external onlyOwner {
+                authorizedProviders[provider] = false;
+                emit ProviderRemoved(provider);
+                }
+
+                function submitPrice(
+                bytes32 asset,
+                int256 price,
+                uint256 timestamp,
+                bytes memory signature
+                ) external onlyAuthorizedProvider {
+                // Verify signature
+                bytes32 messageHash = keccak256(abi.encodePacked(asset, price, timestamp));
+                bytes32 ethSignedMessageHash = keccak256(
+                abi.encodePacked(&#34;\x19Ethereum Signed Message:\n32&#34;, messageHash)
+                );
+                address signer = recoverSigner(ethSignedMessageHash, signature);
+                require(signer == msg.sender, &#34;Invalid signature&#34;);
+
+                // Store oracle data
+                OracleData memory data = OracleData({
+                value: price,
+                timestamp: timestamp,
+                provider: msg.sender,
+                signature: signature,
+                isValid: true
+                });
+
+                priceData[asset].push(data);
+
+                // If enough providers have submitted, aggregate the price
+                if (priceData[asset].length &gt;= requiredConfirmations) {
+                int256 aggregatedPrice = aggregatePrices(asset);
+                emit PriceUpdated(asset, aggregatedPrice, block.timestamp);
+
+                // Clean up old data
+                cleanupOldData(asset);
+                }
+                }
+
+                function aggregatePrices(bytes32 asset) internal view returns (int256) {
+                OracleData[] memory data = priceData[asset];
+                require(data.length &gt;= requiredConfirmations, &#34;Not enough data points&#34;);
+
+                // Remove outliers and calculate median
+                int256[] memory prices = new int256[](data.length);
+                for (uint i = 0; i &lt; data.length; i++) {
+                prices[i] = data[i].value;
+                }
+
+                // Simple median calculation
+                sortPrices(prices);
+                return prices[prices.length / 2];
+                }
+
+                function getLatestPrice(bytes32 asset) external view returns (int256) {
+                OracleData[] memory data = priceData[asset];
+                require(data.length &gt; 0, &#34;No price data available&#34;);
+
+                int256 latestPrice = data[data.length - 1].value;
+                uint256 latestTimestamp = data[data.length - 1].timestamp;
+
+                // Check for stale price
+                require(block.timestamp &lt;= latestTimestamp + stalePriceDelay, &#34;Price is stale&#34;);
+
+                return latestPrice;
+                }
+
+                // In case of emergency, owner can pause price updates
+                function emergencyPause() external onlyOwner {
+                // Pause all oracle operations
+                // This acts as a circuit breaker for the oracle system
+                }
+
+                // Recovery mechanism for invalid prices
+                function disputePrice(bytes32 asset, uint256 index) external {
+                // Allow challenging of invalid prices
+                // Requires bond and evidence submission
+                }
+              }
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Best Practices</h4>
+              <ul class="text-sm space-y-1 text-blue-700">
+                <li>• Implement fallback and dispute resolution flows</li>
+                <li>• Store oracle attestations for auditability</li>
+                <li>• Use governance mechanisms for emergency pauses</li>
+                <li>• Maintain Service Level Agreements (SLAs)</li>
+                <li>• Regular security assessments and updates</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q&amp;A 4.2.3 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-exchange-alt mr-3 text-blue-600"></i>
+              Message Queues for Asynchronous Communication
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Integration</span>
+            </div>
+
+            <p class="mb-6">
+              <strong>Message queues</strong> like RabbitMQ enable asynchronous, decoupled communication between system components, improving resilience, scalability, and flexibility in complex RWA platforms <a href="https://www.antiersolutions.com/blogs/the-missing-piece-in-rwa-tokenization-why-every-project-needs-a-compliant-ats-strategy/" class="citation">[95]</a>.
+            </p>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;Web App&#34;] --&gt; Q1[&#34;Order Queue
+                <br/>RabbitMQ&#34;]
+                B[&#34;Mobile App&#34;] --&gt; Q1
+                C[&#34;API Gateway&#34;] --&gt; Q1
+
+                Q1 --&gt; D[&#34;Order Matching Engine&#34;]
+                D --&gt; Q2[&#34;Trade Queue
+                <br/>RabbitMQ&#34;]
+
+                Q2 --&gt; E[&#34;Blockchain Interface&#34;]
+                Q2 --&gt; F[&#34;Risk Management&#34;]
+                Q2 --&gt; G[&#34;Notification Service&#34;]
+
+                E --&gt; H[&#34;Ethereum Network&#34;]
+                F --&gt; I[&#34;Risk Database&#34;]
+                G --&gt; J[&#34;Email/SMS&#34;]
+
+                K[&#34;KYC Service&#34;] --&gt; Q3[&#34;Compliance Queue&#34;]
+                Q3 --&gt; L[&#34;Compliance Engine&#34;]
+
+                style Q1 fill:#e3f2fd
+                style Q2 fill:#f3e5f5
+                style Q3 fill:#e8f5e8
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-shield-alt mr-2"></i>Resilience
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Messages accumulate during downtime</li>
+                  <li>• Automatic processing after recovery</li>
+                  <li>• Prevents system-wide failures</li>
+                  <li>• Graceful degradation patterns</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-expand-arrows-alt mr-2"></i>Scalability
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Add more service instances</li>
+                  <li>• Parallel message processing</li>
+                  <li>• Load balancing capabilities</li>
+                  <li>• Horizontal scaling support</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                <h4 class="font-semibold text-purple-900 mb-3">
+                  <i class="fas fa-cogs mr-2"></i>Flexibility
+                </h4>
+                <ul class="text-sm space-y-2 text-purple-800">
+                  <li>• Easy service addition</li>
+                  <li>• Loose coupling between components</li>
+                  <li>• Technology independence</li>
+                  <li>• Legacy system integration</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block mb-4">
+              // RabbitMQ Integration Example (TypeScript/Node.js)
+              import { connect, Connection, Channel } from &#39;amqplib&#39;;
+              import { Web3 } from &#39;web3&#39;;
+
+              class RWAPlatformService {
+                private connection: Connection | null = null;
+                private channel: Channel | null = null;
+                private web3: Web3;
+
+                constructor(private readonly config: ServiceConfig) {
+                this.web3 = new Web3(config.web3Provider);
+                }
+
+                async connectRabbitMQ(): Promise<void> {
+                this.connection = await connect(this.config.rabbitMQUrl);
+                this.channel = await this.connection.createChannel();
+
+                // Declare queues with durability and message acknowledgment
+                await this.channel.assertQueue(&#39;order-processing&#39;, { durable: true });
+                await this.channel.assertQueue(&#39;trade-execution&#39;, { durable: true });
+                await this.channel.assertQueue(&#39;compliance-checks&#39;, { durable: true });
+                await this.channel.assertQueue(&#39;notifications&#39;, { durable: true });
+
+                // Set up prefetch for load balancing
+                await this.channel.prefetch(10);
+                }
+
+                async startOrderConsumer(): Promise<void> {
+                if (!this.channel) throw new Error(&#39;Channel not initialized&#39;);
+
+                await this.channel.consume(&#39;order-processing&#39;, async (msg) =&gt; {
+                if (!msg) return;
+
+                try {
+                const order = JSON.parse(msg.content.toString());
+                const processedOrder = await this.processOrder(order);
+
+                // Publish to next queue
+                await this.channel!.sendToQueue(
+                &#39;trade-execution&#39;,
+                Buffer.from(JSON.stringify(processedOrder)),
+                { persistent: true }
+                );
+
+                // Acknowledge successful processing
+                this.channel!.ack(msg);
+                } catch (error) {
+                console.error(&#39;Order processing failed:&#39;, error);
+                // Requeue with delay or move to dead letter queue
+                this.channel!.nack(msg, false, true);
+                }
+                });
+                }
+
+                async processOrder(order: any): Promise<any> {
+                // Order validation, risk checks, pricing calculations
+                // This could involve database queries, API calls, etc.
+                return {
+                ...order,
+                processedAt: new Date(),
+                status: &#39;validated&#39;,
+                executionPrice: await this.getCurrentPrice(order.asset)
+                };
+                }
+
+                async getCurrentPrice(asset: string): Promise<number> {
+                // Get current market price from oracle or exchange
+                return 100.0; // Simplified
+                }
+
+                async startNotificationConsumer(): Promise<void> {
+                if (!this.channel) throw new Error(&#39;Channel not initialized&#39;);
+
+                await this.channel.consume(&#39;notifications&#39;, async (msg) =&gt; {
+                if (!msg) return;
+
+                try {
+                const notification = JSON.parse(msg.content.toString());
+                await this.sendNotification(notification);
+                this.channel!.ack(msg);
+                } catch (error) {
+                console.error(&#39;Notification failed:&#39;, error);
+                this.channel!.nack(msg, false, false); // Don&#39;t requeue
+                }
+                });
+                }
+
+                async sendNotification(notification: any): Promise<void> {
+                // Send email, SMS, push notification, etc.
+                console.log(&#39;Sending notification:&#39;, notification);
+                }
+
+                async publishBlockchainTransaction(txData: any): Promise<void> {
+                if (!this.channel) throw new Error(&#39;Channel not initialized&#39;);
+
+                await this.channel.sendToQueue(
+                &#39;blockchain-tx&#39;,
+                Buffer.from(JSON.stringify(txData)),
+                { persistent: true }
+                );
+                }
+
+                async close(): Promise<void> {
+                if (this.channel) await this.channel.close();
+                if (this.connection) await this.connection.close();
+                }
+              }
+
+              // Usage example
+              async function main() {
+                const service = new RWAPlatformService({
+                rabbitMQUrl: &#39;amqp://localhost:5672&#39;,
+                web3Provider: &#39;https://mainnet.infura.io/v3/YOUR-PROJECT-ID&#39;
+                });
+
+                try {
+                await service.connectRabbitMQ();
+                await service.startOrderConsumer();
+                await service.startNotificationConsumer();
+
+                // Keep service running
+                process.on(&#39;SIGINT&#39;, async () =&gt; {
+                await service.close();
+                process.exit(0);
+                });
+                } catch (error) {
+                console.error(&#39;Service startup failed:&#39;, error);
+                process.exit(1);
+                }
+              }
+            </void></void></void></void></number></any></void></void></div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Implementation Benefits</h4>
+              <ul class="text-sm space-y-1 text-blue-700">
+                <li>• <strong>Decoupling:</strong> Services communicate without direct dependencies</li>
+                <li>• <strong>Resilience:</strong> System survives partial failures</li>
+                <li>• <strong>Scalability:</strong> Add consumers to handle increased load</li>
+                <li>• <strong>Monitoring:</strong> Queue metrics provide system insights</li>
+                <li>• <strong>Legacy Integration:</strong> Bridge to existing systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Evolution Strategies -->
+      <section id="evolution" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <div class="section-header">
+            <h2 class="font-serif text-3xl font-bold text-gray-900">7. Evolution &amp; Migration Strategies</h2>
+            <p class="text-gray-600 mt-2">Future-proofing RWA platforms through adaptive architecture</p>
+          </div>
+
+          <!-- Q&amp;A 6.1.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-seedling mr-3 text-blue-600"></i>
+              The Strangler Fig Pattern for Migrating Legacy RWA Systems
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <span class="text-sm text-gray-600 ml-2">Evolution</span>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p class="font-medium text-blue-900">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Key Insight: The Strangler Fig pattern enables low-risk, incremental migration by gradually replacing legacy system functionalities with new services.
+              </p>
+            </div>
+
+            <p class="mb-6">
+              The <strong>Strangler Fig pattern</strong> provides a safe, incremental approach to migrating monolithic RWA platforms by building new services around the existing system, gradually replacing functionality until the legacy system can be decommissioned <a href="https://www.thoughtworks.com/en-cn/insights/articles/embracing-strangler-fig-pattern-legacy-modernization-part-one" class="citation">[477]</a>
+              <a href="https://www.future-processing.com/blog/strangler-fig-pattern/" class="citation">[473]</a>.
+            </p>
+
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TD
+                subgraph &#34;Phase 1: Initial Setup&#34;
+                A[&#34;Legacy Monolith&#34;] --&gt; B[&#34;API Gateway / Facade&#34;]
+                C[&#34;Client Apps&#34;] --&gt; B
+                end
+
+                subgraph &#34;Phase 2: First Migration&#34;
+                B --&gt; D[&#34;Legacy Component 1
+                <br/>User Management&#34;]
+                B --&gt; E[&#34;New Microservice 1
+                <br/>Compliance Service&#34;]
+                B --&gt; F[&#34;Legacy Component 2
+                <br/>Trading Engine&#34;]
+                end
+
+                subgraph &#34;Phase 3: Progressive Migration&#34;
+                B --&gt; G[&#34;New Microservice 2
+                <br/>Notification Service&#34;]
+                B --&gt; H[&#34;Legacy Component 3
+                <br/>Reporting&#34;]
+                B --&gt; I[&#34;New Microservice 3
+                <br/>Blockchain Interface&#34;]
+                end
+
+                subgraph &#34;Phase 4: Final State&#34;
+                J[&#34;All New Microservices&#34;]
+                B --&gt; J
+                K[&#34;Legacy System Decommissioned&#34;]
+                end
+
+                style B fill:#f9f,stroke:#333,stroke-width:4px
+                style E fill:#e8f4fd
+                style G fill:#e8f5e8
+                style I fill:#fff3e0
+                style J fill:#fce4ec
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-4 mb-6">
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-blue-700 mb-2">1. Setup</h5>
+                <p class="text-sm text-gray-700">Place facade in front of legacy system, route all traffic through it</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-green-700 mb-2">2. Migrate First</h5>
+                <p class="text-sm text-gray-700">Replace simple, well-bounded functionality (e.g., compliance checks)</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-yellow-700 mb-2">3. Progressively</h5>
+                <p class="text-sm text-gray-700">Continue migrating features, starting with less critical components</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <h5 class="font-semibold text-red-700 mb-2">4. Complete</h5>
+                <p class="text-sm text-gray-700">Decommission legacy system when no traffic remains</p>
+              </div>
+            </div>
+
+            <div class="code-block mb-6">
+              // Strangler Fig Pattern Implementation (Conceptual)
+              // Legacy System Interface
+              class LegacyComplianceService {
+                checkKYC(userId: string): ComplianceResult {
+                // Simulate legacy system call
+                console.log(`[Legacy] Checking KYC for user ${userId}`);
+                return {
+                status: &#39;legacy_check&#39;,
+                userId: userId,
+                verified: false,
+                timestamp: new Date()
+                };
+                }
+              }
+
+              // New Microservice Interface
+              class NewComplianceService {
+                checkKYC(userId: string): ComplianceResult {
+                // New, improved KYC logic with blockchain integration
+                console.log(`[New Microservice] Performing advanced KYC for user ${userId}`);
+
+                // Simulate enhanced checks
+                const verificationResult = this.performAdvancedChecks(userId);
+
+                return {
+                status: &#39;new_check&#39;,
+                userId: userId,
+                verified: verificationResult.passed,
+                riskScore: verificationResult.riskScore,
+                verificationLevel: verificationResult.level,
+                onChainVerification: true,
+                timestamp: new Date()
+                };
+                }
+
+                private performAdvancedChecks(userId: string): VerificationResult {
+                // Enhanced verification logic
+                return {
+                passed: true,
+                riskScore: 25,
+                level: &#39;enhanced&#39;
+                };
+                }
+              }
+
+              // The Strangler Fig Facade / API Gateway
+              class ComplianceGateway {
+                private legacyService: LegacyComplianceService;
+                private newService: NewComplianceService;
+                private useNewService: boolean;
+
+                constructor() {
+                this.legacyService = new LegacyComplianceService();
+                this.newService = new ComplianceService();
+                // Feature toggle to control migration
+                this.useNewService = false;
+                }
+
+                // Method to gradually migrate traffic
+                migrateTraffic(percentage: number): void {
+                if (percentage &gt;= 100) {
+                this.useNewService = true;
+                } else if (percentage &gt; 0) {
+                // Random routing based on percentage
+                this.useNewService = Math.random() * 100 &lt; percentage;
+                } else {
+                this.useNewService = false;
+                }
+                }
+
+                checkKYC(userId: string): ComplianceResult {
+                if (this.useNewService) {
+                console.log(`[Gateway] Routing to NEW compliance service for user ${userId}`);
+                return this.newService.checkKYC(userId);
+                } else {
+                console.log(`[Gateway] Routing to LEGACY compliance service for user ${userId}`);
+                return this.legacyService.checkKYC(userId);
+                }
+                }
+
+                // Feature flag management
+                getMigrationStatus(): { usingNewService: boolean; migrationPercentage: number } {
+                return {
+                usingNewService: this.useNewService,
+                migrationPercentage: this.useNewService ? 100 : 0
+                };
+                }
+              }
+
+              // Usage example showing gradual migration
+              async function demonstrateMigration() {
+                const gateway = new ComplianceGateway();
+
+                // Start with 100% legacy traffic
+                console.log(&#39;Phase 1: 100% Legacy Traffic&#39;);
+                for (let i = 0; i &lt; 5; i++) {
+                const result = gateway.checkKYC(`user_${i}`);
+                console.log(&#39;Result:&#39;, result);
+                }
+
+                // Migrate 50% of traffic to new service
+                console.log(&#39;\nPhase 2: 50% Migration&#39;);
+                gateway.migrateTraffic(50);
+                for (let i = 0; i &lt; 10; i++) {
+                const result = gateway.checkKYC(`user_${i}`);
+                console.log(&#39;Result:&#39;, result);
+                }
+
+                // Complete migration
+                console.log(&#39;\nPhase 3: 100% Migration&#39;);
+                gateway.migrateTraffic(100);
+                for (let i = 0; i &lt; 5; i++) {
+                const result = gateway.checkKYC(`user_${i}`);
+                console.log(&#39;Result:&#39;, result);
+                }
+              }
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Pattern Benefits</h4>
+              <ul class="text-sm space-y-1 text-blue-700">
+                <li><strong>Low Risk:</strong> Issues isolated to specific services</li>
+                <li><strong>Continuous Delivery:</strong> New features without full migration</li>
+                <li><strong>Learning Opportunity:</strong> Team adapts based on real usage</li>
+                <li><strong>Technical Debt Elimination:</strong> Leave behind legacy complexity</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Q&amp;A 6.2.1 -->
+          <div class="qa-container">
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <i class="fas fa-balance-scale mr-3 text-blue-600"></i>
+              Embedding Compliance (KYC/AML) into Smart Contracts
+            </h3>
+
+            <div class="mb-4">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <span class="text-sm text-gray-600 ml-2">Evolution</span>
+            </div>
+
+            <p class="mb-6">
+              <strong>&#34;Compliance by design&#34;</strong> embeds regulatory mechanisms directly into smart contracts, automating KYC/AML checks at the protocol level and providing immutable audit trails for regulators <a href="https://www.rwa.io/post/using-smart-contracts-for-secure-rwa-transactions" class="citation">[417]</a>.
+            </p>
+
+            <div class="code-block mb-6">
+              // ERC-3643 Security Token Standard Implementation
+              contract SecurityToken is ERC20 {
+                string public name;
+                string public symbol;
+                uint8 public decimals;
+
+                IIdentityRegistry public identityRegistry;
+                ICompliance public compliance;
+
+                mapping(address =&gt; bool) public frozen;
+                mapping(address =&gt; uint256) public holderIndices;
+                address[] public tokenHolders;
+
+                event TokensFrozen(address indexed account);
+                event TokensUnfrozen(address indexed account);
+                event ComplianceUpdated(address indexed compliance);
+                event IdentityRegistryUpdated(address indexed identityRegistry);
+
+                constructor(
+                string memory _name,
+                string memory _symbol,
+                uint8 _decimals,
+                address _identityRegistry,
+                address _compliance
+                ) ERC20(_name, _symbol) {
+                name = _name;
+                symbol = _symbol;
+                decimals = _decimals;
+                identityRegistry = IIdentityRegistry(_identityRegistry);
+                compliance = ICompliance(_compliance);
+                }
+
+                function transfer(address recipient, uint256 amount) public override returns (bool) {
+                _transferWithCompliance(_msgSender(), recipient, amount);
+                return true;
+                }
+
+                function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+                _transferWithCompliance(sender, recipient, amount);
+                _approve(sender, _msgSender(), allowance(sender, _msgSender()) - amount);
+                return true;
+                }
+
+                function _transferWithCompliance(address sender, address recipient, uint256 amount) internal {
+                // Check if sender is frozen
+                require(!frozen[sender], &#34;Sender account is frozen&#34;);
+
+                // Verify identities for both sender and recipient
+                require(identityRegistry.isVerified(sender), &#34;Sender identity not verified&#34;);
+                require(identityRegistry.isVerified(recipient), &#34;Recipient identity not verified&#34;);
+
+                // Check compliance rules
+                require(compliance.canTransfer(sender, recipient, amount), &#34;Transfer not compliant&#34;);
+
+                // Update holder list if recipient is new
+                if (balanceOf(recipient) == 0) {
+                tokenHolders.push(recipient);
+                holderIndices[recipient] = tokenHolders.length - 1;
+                }
+
+                // Perform the transfer
+                _transfer(sender, recipient, amount);
+
+                // Update holder list if sender has no more tokens
+                if (balanceOf(sender) == 0) {
+                uint256 index = holderIndices[sender];
+                address lastHolder = tokenHolders[tokenHolders.length - 1];
+                tokenHolders[index] = lastHolder;
+                holderIndices[lastHolder] = index;
+                tokenHolders.pop();
+                delete holderIndices[sender];
+                }
+
+                // Notify compliance module of the transfer
+                compliance.transferred(sender, recipient, amount);
+                }
+
+                function freezeAccount(address account) external onlyOwner {
+                frozen[account] = true;
+                emit TokensFrozen(account);
+                }
+
+                function unfreezeAccount(address account) external onlyOwner {
+                frozen[account] = false;
+                emit TokensUnfrozen(account);
+                }
+
+                function updateCompliance(address _compliance) external onlyOwner {
+                compliance = ICompliance(_compliance);
+                emit ComplianceUpdated(_compliance);
+                }
+
+                function updateIdentityRegistry(address _identityRegistry) external onlyOwner {
+                identityRegistry = IIdentityRegistry(_identityRegistry);
+                emit IdentityRegistryUpdated(_identityRegistry);
+                }
+
+                function getHolderCount() external view returns (uint256) {
+                return tokenHolders.length;
+                }
+
+                function getHolderAtIndex(uint256 index) external view returns (address) {
+                return tokenHolders[index];
+                }
+              }
+
+              // Identity Registry Interface
+              interface IIdentityRegistry {
+                function isVerified(address account) external view returns (bool);
+                function registerIdentity(address account, string memory country, uint16 investorType) external;
+                function revokeIdentity(address account) external;
+              }
+
+              // Compliance Interface
+              interface ICompliance {
+                function canTransfer(address sender, address recipient, uint256 amount) external view returns (bool);
+                function transferred(address sender, address recipient, uint256 amount) external;
+                function setCountryRestriction(string memory country, bool restricted) external;
+                function setInvestorTypeRestriction(uint16 investorType, bool restricted) external;
+              }
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-clock mr-2"></i>Real-time Enforcement
+                </h4>
+                <ul class="text-sm space-y-2 text-blue-800">
+                  <li>• Immediate status changes</li>
+                  <li>• Instant transaction blocking</li>
+                  <li>• Compliance status verification</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h4 class="font-semibold text-green-900 mb-3">
+                  <i class="fas fa-user-shield mr-2"></i>Enhanced Privacy
+                </h4>
+                <ul class="text-sm space-y-2 text-green-800">
+                  <li>• Single verification with trusted party</li>
+                  <li>• Privacy-preserving proofs</li>
+                  <li>• Reduced data sharing</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                <h4 class="font-semibold text-purple-900 mb-3">
+                  <i class="fas fa-dollar-sign mr-2"></i>Cost Efficiency
+                </h4>
+                <ul class="text-sm space-y-2 text-purple-800">
+                  <li>• Automated compliance processes</li>
+                  <li>• Reduced manual reviews</li>
+                  <li>• Lower operational costs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="quote-highlight">
+              &#34;As the RWA market matures, the ability to seamlessly and automatically integrate regulatory compliance into the core protocol will be a key differentiator for successful platforms.&#34;
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="px-8 py-12 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h3 class="font-serif text-2xl font-bold mb-4">Blockchain RWA Architecture Framework</h3>
+          <p class="text-gray-400 mb-8">
+            A comprehensive guide to building enterprise-grade Real-World Asset tokenization platforms
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+              <h4 class="font-semibold mb-2">Key References</h4>
+              <ul class="space-y-1 text-gray-400">
+                <li>Ethereum Documentation</li>
+                <li>Hyperledger Fabric Docs</li>
+                <li>Chainlink Developer Resources</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Standards</h4>
+              <ul class="space-y-1 text-gray-400">
+                <li>ERC-20/ERC-721/ERC-1155</li>
+                <li>ERC-3643 Security Tokens</li>
+                <li>ERC-3475 Structured Products</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Patterns</h4>
+              <ul class="space-y-1 text-gray-400">
+                <li>Strangler Fig Migration</li>
+                <li>Factory &amp; Proxy Contracts</li>
+                <li>Circuit Breaker Pattern</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-700 mt-8 pt-8">
+            <p class="text-gray-500 text-sm">
+              This framework represents current best practices in RWA platform architecture.
+              Technology and regulatory landscapes continue to evolve rapidly.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active TOC link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1a202c',
+                primaryBorderColor: '#3498db',
+                lineColor: '#3498db',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#ffffff',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#ffffff',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                wrap: true,
+                width: 150
+            },
+            gantt: {
+                fontSize: 14,
+                fontFamily: 'Inter, sans-serif'
+            }
+        });
+
+        // Mobile TOC toggle
+        document.getElementById('toc-toggle').addEventListener('click', function() {
+            const toc = document.querySelector('.toc-fixed');
+            toc.classList.toggle('open');
+        });
+
+        // Close TOC when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const toc = document.querySelector('.toc-fixed');
+            const tocToggle = document.getElementById('toc-toggle');
+            if (toc.classList.contains('open') && 
+                !toc.contains(event.target) && 
+                !tocToggle.contains(event.target)) {
+                toc.classList.remove('open');
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        initializeMermaidControls();
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const toc = document.querySelector('.toc-fixed');
+            const tocToggle = document.getElementById('toc-toggle');
+            if (toc.classList.contains('open') && 
+                !toc.contains(event.target) && 
+                event.target !== tocToggle) {
+                toc.classList.remove('open');
+            }
+        });
+    </script>
+  
+
+</body></html>

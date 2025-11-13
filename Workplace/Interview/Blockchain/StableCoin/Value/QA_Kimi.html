@@ -1,0 +1,1891 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Stablecoin Ecosystem: A Multi-Stakeholder Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Canela:wght@300;400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        .font-canela { font-family: 'Canela', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        :root {
+            --primary: #0f766e;
+            --secondary: #64748b;
+            --accent: #0d9488;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 118, 110, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-wrapper {
+            margin-left: 320px;
+            max-width: 900px;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 4rem 0;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            background: rgba(13, 148, 136, 0.1);
+            border-bottom: 1px solid var(--accent);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.05), rgba(13, 148, 136, 0.05));
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid rgba(15, 118, 110, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .bento-item {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .bento-large {
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .bento-small {
+            min-height: 200px;
+        }
+        
+        @media (max-width: 1280px) {
+            .toc-fixed {
+                display: none;
+            }
+            .content-wrapper {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-wrapper {
+                padding: 0 1rem;
+            }
+        }
+        
+        .citation-link {
+            word-wrap: break-word;
+        }
+
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none; /* 防止触摸设备上的默认行为 */
+            -webkit-user-select: none; /* 防止文本选择 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Diagram element styling for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            fill: #ffffff !important;
+            stroke: var(--accent) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node .label,
+        .mermaid .nodeLabel,
+        .mermaid .node text {
+            fill: var(--text-primary) !important;
+            color: var(--text-primary) !important;
+            font-weight: 500 !important;
+            font-size: 13px !important;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--secondary) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: var(--surface) !important;
+            color: var(--text-secondary) !important;
+            border: 1px solid var(--accent) !important;
+            border-radius: 4px !important;
+            padding: 2px 6px !important;
+        }
+        
+        /* Ensure proper text contrast for different node colors */
+        .mermaid .node[class*="default"] rect,
+        .mermaid .node.default rect {
+            fill: #f8fafc !important;
+            stroke: var(--accent) !important;
+        }
+        
+        .mermaid .node[class*="primary"] rect,
+        .mermaid .node.primary rect {
+            fill: var(--accent) !important;
+            stroke: var(--primary) !important;
+        }
+        
+        .mermaid .node[class*="primary"] text,
+        .mermaid .node.primary text {
+            fill: #ffffff !important;
+            color: #ffffff !important;
+        }
+        
+        .mermaid .node[class*="secondary"] rect,
+        .mermaid .node.secondary rect {
+            fill: var(--secondary) !important;
+            stroke: #475569 !important;
+        }
+        
+        .mermaid .node[class*="secondary"] text,
+        .mermaid .node.secondary text {
+            fill: #ffffff !important;
+            color: #ffffff !important;
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <h3 class="font-canela text-lg font-bold text-gray-800 mb-4">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#executive-summary" class="text-gray-600 hover:text-teal-700 transition-colors">Executive Summary</a>
+        </li>
+        <li>
+          <a href="#market-overview" class="text-gray-600 hover:text-teal-700 transition-colors">Market Overview</a>
+        </li>
+        <li>
+          <a href="#stakeholder-perspectives" class="text-gray-600 hover:text-teal-700 transition-colors">Stakeholder Perspectives</a>
+        </li>
+        <li>
+          <a href="#use-cases" class="text-gray-600 hover:text-teal-700 transition-colors">Primary Use Cases</a>
+        </li>
+        <li>
+          <a href="#taxonomy" class="text-gray-600 hover:text-teal-700 transition-colors">Stablecoin Taxonomy</a>
+        </li>
+        <li>
+          <a href="#technical-architecture" class="text-gray-600 hover:text-teal-700 transition-colors">Technical Architecture</a>
+        </li>
+        <li>
+          <a href="#business-models" class="text-gray-600 hover:text-teal-700 transition-colors">Business Models</a>
+        </li>
+        <li>
+          <a href="#regulation" class="text-gray-600 hover:text-teal-700 transition-colors">Global Regulation</a>
+        </li>
+        <li>
+          <a href="#future-outlook" class="text-gray-600 hover:text-teal-700 transition-colors">Future Outlook</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+      <!-- Hero Section -->
+      <section class="relative mb-16">
+        <div class="bento-grid">
+          <div class="bento-item bento-large relative overflow-hidden">
+            <div class="hero-gradient absolute inset-0 opacity-90"></div>
+            <img src="https://kimi-web-img.moonshot.cn/img/blog.equinix.com/0187dbe9925efdadd611fa8fadc91088ee85d0b1.jpg" alt="Abstract blockchain network connections" class="absolute inset-0 w-full h-full object-cover opacity-30" size="wallpaper" aspect="wide" color="blue" query="abstract blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            <div class="relative z-10 p-8 h-full flex flex-col justify-center">
+              <h1 class="font-canela text-4xl md:text-5xl font-bold text-white mb-6 leading-tight break-words">
+                <em>The Stablecoin Ecosystem</em>
+              </h1>
+              <p class="text-xl text-white/90 font-light max-w-2xl break-words">
+                A comprehensive analysis of value, architecture, and regulation in digital asset innovation
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bento-item bento-small p-6">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-teal-700 mb-2">$245B</div>
+                <div class="text-sm text-gray-600">Market Capitalization</div>
+              </div>
+            </div>
+            <div class="bento-item bento-small p-6">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-teal-700 mb-2">90%</div>
+                <div class="text-sm text-gray-600">Institutional Adoption</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Executive Summary: The Stablecoin Value Proposition</h2>
+
+        <div class="highlight-box mb-8">
+          <h3 class="font-canela text-2xl font-semibold mb-4 text-gray-900">Core Function: Bridging Traditional Finance and Digital Assets</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Stablecoins have emerged as a foundational technology in the digital asset ecosystem, designed to address the inherent volatility of cryptocurrencies like Bitcoin and Ethereum. Their primary function is to provide a stable store of value and a reliable medium of exchange by pegging their market value to a stable asset, most commonly a fiat currency such as the U.S. dollar or euro <a href="#ref-85" class="citation-link">[1]</a>.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="stat-card">
+            <i class="fas fa-bolt text-3xl text-teal-600 mb-4"></i>
+            <h4 class="font-semibold text-lg mb-2">Instant Settlement</h4>
+            <p class="text-gray-600 text-sm">24/7 global transactions without banking delays</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-globe text-3xl text-teal-600 mb-4"></i>
+            <h4 class="font-semibold text-lg mb-2">Global Reach</h4>
+            <p class="text-gray-600 text-sm">Borderless payments and remittances</p>
+          </div>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          By combining the price stability of traditional currencies with the technological advantages of blockchain—such as instant settlement, global reach, and programmability—stablecoins serve as a critical bridge between the conventional financial system and the burgeoning world of decentralized finance (DeFi) <a href="#ref-85" class="citation-link">[1]</a>. This bridging function is not merely a technical convenience; it is a transformative capability that unlocks a wide array of use cases, from everyday payments and cross-border remittances to sophisticated financial instruments in DeFi.
+        </p>
+
+        <p class="text-gray-700 leading-relaxed">
+          The ability to transact with a digital dollar on a global, 24/7 network without the delays and high costs of traditional banking rails represents a paradigm shift in how value can be moved and managed <a href="#ref-86" class="citation-link">[2]</a>. The continued evolution and integration into mainstream finance signal a fundamental rethinking of how money itself can be designed and operated in the digital age.
+        </p>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Market Overview -->
+      <section id="market-overview" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Market Overview: A $245 Billion Landscape</h2>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <div class="stat-card">
+            <div class="text-4xl font-bold text-teal-700 mb-2">$245B</div>
+            <div class="text-sm text-gray-600 mb-2">Total Market Cap</div>
+            <div class="text-xs text-gray-500">May 2025</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-4xl font-bold text-teal-700 mb-2">90%</div>
+            <div class="text-sm text-gray-600 mb-2">Market Dominance</div>
+            <div class="text-xs text-gray-500">USDT + USDC</div>
+          </div>
+          <div class="stat-card">
+            <div class="text-4xl font-bold text-teal-700 mb-2">90%</div>
+            <div class="text-sm text-gray-600 mb-2">Institutional Adoption</div>
+            <div class="text-xs text-gray-500">Integrating stablecoins</div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3 class="font-canela text-xl font-semibold mb-4">Institutional Momentum</h3>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            A survey conducted by Fireblocks in March 2025 revealed that <strong>90% of financial institutions are actively integrating stablecoins</strong> into their operations <a href="#ref-89" class="citation-link">[3]</a>. This adoption is not merely experimental; <strong>49% of these institutions are already using stablecoins for live payments</strong>, while another <strong>23% are conducting pilot tests</strong>.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed">
+            Traditional banks, in particular, are prioritizing cross-border payments as a key use case, with <strong>58% utilizing stablecoins specifically for international transfers</strong> <a href="#ref-89" class="citation-link">[3]</a>.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border border-gray-200 mb-8">
+          <h4 class="font-semibold text-lg mb-4">Major Strategic Moves</h4>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <i class="fas fa-arrow-right text-teal-600 mt-1 mr-3"></i>
+              <div>
+                <strong>Stripe&#39;s $1.1 billion acquisition of Bridge</strong> - Largest Web3 acquisition to date <a href="#ref-89" class="citation-link">[3]</a>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-arrow-right text-teal-600 mt-1 mr-3"></i>
+              <div>
+                <strong>Visa and Worldpay partnerships</strong> - Enabling card-based spending and merchant payouts
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed">
+          This institutional embrace is a clear indicator that stablecoins are transitioning from a disruptive technology to a mainstream financial instrument. The sheer scale of this market, dominated by two major players—Tether (USDT) and Circle (USDC)—underscores the immense demand for stable, dollar-denominated digital assets that can operate on blockchain networks.
+        </p>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Stakeholder Perspectives -->
+      <section id="stakeholder-perspectives" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Key Stakeholder Perspectives</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The rise of stablecoins has created a complex and dynamic ecosystem involving a diverse set of stakeholders, each with their own unique perspectives, goals, and concerns. Understanding these varied viewpoints is essential for grasping the full impact and future trajectory of stablecoins.
+        </p>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Investors -->
+          <div class="bg-white rounded-lg p-6 border border-gray-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-chart-line text-2xl text-teal-600 mr-3"></i>
+              <h3 class="font-canela text-xl font-semibold">Investors</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Seeking Stability, Yield, and Regulatory Clarity</p>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Portfolio de-risking without exiting crypto ecosystem</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Yield opportunities through reserve interest</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Monitoring regulatory developments like GENIUS Act</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Developers -->
+          <div class="bg-white rounded-lg p-6 border border-gray-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-code text-2xl text-teal-600 mr-3"></i>
+              <h3 class="font-canela text-xl font-semibold">Developers</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Building on Programmable Money</p>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Embedding stable value in smart contracts</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Building DeFi applications and protocols</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Leveraging ERC-20 standardization</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Regulators -->
+          <div class="bg-white rounded-lg p-6 border border-gray-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-balance-scale text-2xl text-teal-600 mr-3"></i>
+              <h3 class="font-canela text-xl font-semibold">Regulators</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Balancing Innovation with Financial Stability</p>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>De-pegging risk mitigation</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Reserve management transparency requirements</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>AML/CFT compliance enforcement</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- End-Users -->
+          <div class="bg-white rounded-lg p-6 border border-gray-200">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-users text-2xl text-teal-600 mr-3"></i>
+              <h3 class="font-canela text-xl font-semibold">End-Users</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Demanding Low-Cost, Fast, and Accessible Financial Services</p>
+            <ul class="space-y-2 text-gray-700 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Cross-border remittances at 70-80% lower fees</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Financial inclusion in emerging markets</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-circle text-teal-600 text-xs mt-2 mr-2"></i>
+                <span>Wealth preservation against local currency devaluation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Primary Use Cases -->
+      <section id="use-cases" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Primary Use Cases and Value Drivers</h2>
+
+        <!-- Payments &amp; Settlement -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Payments and Settlement</h3>
+
+          <div class="highlight-box mb-6">
+            <p class="text-gray-700 leading-relaxed">
+              Stablecoins are rapidly emerging as a powerful alternative to traditional payment rails, offering significant advantages in speed, cost, and accessibility for both consumer and business transactions. The core value proposition lies in the ability to leverage blockchain technology to settle transactions almost instantaneously, 24/7, without relying on the complex and often slow network of correspondent banks <a href="#ref-86" class="citation-link">[2]</a>.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Traditional vs. Stablecoin Payments</h4>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">SWIFT Transfer Time</span>
+                  <span class="font-semibold text-red-600">3-5 business days</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Stablecoin Settlement</span>
+                  <span class="font-semibold text-green-600">Minutes/seconds</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Traditional Fees</span>
+                  <span class="font-semibold text-red-600">3-6%+</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Stablecoin Fees</span>
+                  <span class="font-semibold text-green-600">0.5-2%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Key Players</h4>
+              <ul class="space-y-3">
+                <li class="flex items-center">
+                  <i class="fas fa-building text-teal-600 mr-3"></i>
+                  <span><strong>TransFi</strong> - Single API integration</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-building text-teal-600 mr-3"></i>
+                  <span><strong>BVNK</strong> - Global payment network</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-building text-teal-600 mr-3"></i>
+                  <span><strong>Due</strong> - Stablecoin-as-a-service</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 class="font-semibold text-lg mb-4">The Role of APIs in Payment Infrastructure</h4>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Application Programming Interfaces (APIs) are the critical enablers that are transforming stablecoins from a niche technology into a scalable and accessible payment infrastructure. By providing a standardized way for different software systems to communicate, APIs allow businesses to integrate stablecoin payment capabilities into their existing platforms without needing to build and maintain complex blockchain infrastructure from scratch <a href="#ref-85" class="citation-link">[4]</a>.
+          </p>
+        </div>
+
+        <!-- Cross-Border Remittances -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Cross-Border Remittances</h3>
+
+          <div class="bg-white rounded-lg p-6 border border-gray-200 mb-6">
+            <h4 class="font-semibold text-lg mb-4">The &#34;Stablecoin Sandwich&#34; Process</h4>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;Local Fiat Currency
+                <br/>Sender&#39;s Country&#34;] --&gt; B[&#34;Stablecoin Purchase
+                <br/>On-Ramp&#34;]
+                B --&gt; C[&#34;Blockchain Transfer
+                <br/>USDC/USDT&#34;]
+                C --&gt; D[&#34;Stablecoin Receipt
+                <br/>Recipient&#39;s Wallet&#34;]
+                D --&gt; E[&#34;Local Fiat Conversion
+                <br/>Off-Ramp&#34;]
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <p class="text-gray-700 leading-relaxed">
+              Cross-border remittances represent one of the most compelling and socially impactful use cases for stablecoins. The traditional remittance market is characterized by high fees, slow transaction times, and a lack of transparency, which disproportionately affects migrant workers and their families in developing countries. Stablecoins offer a direct solution to these pain points by enabling near-instant, low-cost, and transparent transfers of value across borders <a href="#ref-86" class="citation-link">[2]</a>
+              <a href="#ref-87" class="citation-link">[5]</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- DeFi Section -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Decentralized Finance (DeFi)</h3>
+
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Stablecoins are the lifeblood of the Decentralized Finance (DeFi) ecosystem, serving as a foundational building block for a wide array of innovative financial protocols and applications. The inherent volatility of most cryptocurrencies makes them unsuitable for many financial applications, which stablecoins solve by providing a stable unit of account and reliable store of value <a href="#ref-52" class="citation-link">[6]</a>.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Lending &amp; Borrowing Protocols</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Platforms like MakerDAO, Aave, and Compound use stablecoins as both lending assets and collateral.
+              </p>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li>• Predictable yield generation</li>
+                <li>• Stable collateral for loans</li>
+                <li>• Automated liquidation mechanisms</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Derivatives &amp; Complex Instruments</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Stablecoins serve as fundamental collateral for sophisticated financial products.
+              </p>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li>• CFTC initiative for tokenized collateral</li>
+                <li>• Risk management simplification</li>
+                <li>• Cross-margining capabilities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Taxonomy of Stablecoin Designs -->
+      <section id="taxonomy" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Taxonomy of Stablecoin Designs</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          Stablecoins can be broadly categorized into three primary types: fiat-collateralized, crypto-collateralized, and algorithmic. Each category represents a different approach to achieving price stability, balancing trade-offs between decentralization, capital efficiency, and reliance on external systems.
+        </p>
+
+        <!-- Comparison Table -->
+        <div class="overflow-x-auto mb-12">
+          <table class="w-full bg-white rounded-lg border border-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold text-gray-900">Feature</th>
+                <th class="px-6 py-4 text-left font-semibold text-gray-900">Fiat-Collateralized</th>
+                <th class="px-6 py-4 text-left font-semibold text-gray-900">Crypto-Collateralized</th>
+                <th class="px-6 py-4 text-left font-semibold text-gray-900">Algorithmic</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 font-medium text-gray-900">Backing Asset</td>
+                <td class="px-6 py-4 text-gray-700">Fiat currency (e.g., USD, EUR) held in off-chain reserves <a href="#ref-37" class="citation-link">[7]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700">Other cryptocurrencies (e.g., ETH, BTC) held in on-chain smart contracts <a href="#ref-47" class="citation-link">[8]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700">No external collateral; relies on algorithms and economic incentives <a href="#ref-37" class="citation-link">[7]</a>
+                </td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium text-gray-900">Collateralization</td>
+                <td class="px-6 py-4 text-gray-700">1:1 backing with fiat reserves</td>
+                <td class="px-6 py-4 text-gray-700">Over-collateralized (e.g., 150% or higher) to absorb crypto volatility <a href="#ref-45" class="citation-link">[9]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700">Uncollateralized or partially collateralized</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium text-gray-900">Centralization</td>
+                <td class="px-6 py-4 text-gray-700"><strong>High</strong>. Relies on a central issuer to manage reserves <a href="#ref-94" class="citation-link">[10]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700"><strong>Low</strong>. Managed by decentralized autonomous organizations (DAOs) and smart contracts <a href="#ref-52" class="citation-link">[6]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700"><strong>Low</strong>. Aim for full decentralization through autonomous algorithms</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium text-gray-900">Primary Risk</td>
+                <td class="px-6 py-4 text-gray-700"><strong>Counterparty risk</strong>: issuer default, reserve mismanagement, regulatory action <a href="#ref-94" class="citation-link">[10]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700"><strong>Smart contract risk</strong>: code vulnerabilities, oracle manipulation, liquidation cascades <a href="#ref-65" class="citation-link">[11]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700"><strong>Reflexivity risk</strong>: &#34;death spirals&#34; due to loss of market confidence <a href="#ref-30" class="citation-link">[12]</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium text-gray-900">Key Examples</td>
+                <td class="px-6 py-4 text-gray-700">USDC (Circle), USDT (Tether), BUSD (Binance/Paxos) <a href="#ref-91" class="citation-link">[13]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700">DAI (MakerDAO), LUSD (Liquity) <a href="#ref-47" class="citation-link">[8]</a>
+                </td>
+                <td class="px-6 py-4 text-gray-700">TerraUSD (UST) - <em>Collapsed</em>, FRAX (Partially collateralized) <a href="#ref-32" class="citation-link">[14]</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detailed Design Types -->
+        <div class="space-y-12">
+          <!-- Fiat-Collateralized -->
+          <div class="bg-white rounded-lg p-8 border border-gray-200">
+            <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Fiat-Collateralized Stablecoins</h3>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 class="font-semibold text-lg mb-3">Mechanism</h4>
+                <p class="text-gray-700 text-sm mb-4">
+                  For every stablecoin token issued, an equivalent amount of fiat currency is held in reserve by the issuing entity <a href="#ref-37" class="citation-link">[7]</a>. This 1:1 backing ensures that the stablecoin maintains its peg to the underlying fiat currency.
+                </p>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li>• Cash and cash-equivalent assets</li>
+                  <li>• Short-term government securities</li>
+                  <li>• Regulated financial institutions</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-3">Key Players</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="font-medium">USDC (Circle)</div>
+                      <div class="text-sm text-gray-600">U.S.-based, transparent, regulated</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <div>
+                      <div class="font-medium">USDT (Tether)</div>
+                      <div class="text-sm text-gray-600">First and largest, based in El Salvador</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-semibold text-lg mb-3">Centralization and Counterparty Risk</h4>
+              <p class="text-gray-700 text-sm">
+                Despite their stability and widespread use, fiat-collateralized stablecoins are inherently <strong>centralized</strong>, which introduces significant <strong>counterparty risk</strong>. Users must trust the issuing company to honestly manage reserves and maintain the 1:1 backing <a href="#ref-94" class="citation-link">[10]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Crypto-Collateralized -->
+          <div class="bg-white rounded-lg p-8 border border-gray-200">
+            <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Crypto-Collateralized Stablecoins</h3>
+
+            <div class="mb-6">
+              <h4 class="font-semibold text-lg mb-3">Mechanism: Over-Collateralization</h4>
+              <p class="text-gray-700 text-sm mb-4">
+                Unlike fiat-collateralized stablecoins, these are backed by other cryptocurrencies like Ethereum (ETH) or Bitcoin (BTC) <a href="#ref-47" class="citation-link">[8]</a>. Because the collateral itself is volatile, these stablecoins must be <strong>over-collateralized</strong> to maintain their peg.
+              </p>
+
+              <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-teal-700 mb-2">150%+</div>
+                  <div class="text-sm text-gray-600">Collateralization Ratio</div>
+                  <div class="text-xs text-gray-500 mt-1">e.g., $150 worth of ETH to mint $100 of stablecoin</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-semibold text-lg mb-3">Case Study: DAI and MakerDAO</h4>
+              <p class="text-gray-700 text-sm">
+                DAI is the preeminent example of a crypto-collateralized stablecoin, issued by the MakerDAO protocol. Users generate DAI by depositing approved collateral assets into Collateralized Debt Positions (CDPs) <a href="#ref-47" class="citation-link">[8]</a>. The protocol uses oracles to track collateral prices and automatically liquidates positions if values fall below certain thresholds.
+              </p>
+            </div>
+          </div>
+
+          <!-- Algorithmic -->
+          <div class="bg-white rounded-lg p-8 border border-gray-200">
+            <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Algorithmic and Seigniorage-Style Stablecoins</h3>
+
+            <p class="text-gray-700 text-sm mb-6">
+              Algorithmic stablecoins represent the most experimental and decentralized end of the stablecoin spectrum. Unlike collateralized stablecoins, they rely on <strong>algorithms and smart contracts</strong> to automatically manage supply in response to changes in demand <a href="#ref-37" class="citation-link">[7]</a>.
+            </p>
+
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+              <h4 class="font-semibold text-red-800 mb-2">Case Study: Terra/LUNA Collapse</h4>
+              <p class="text-red-700 text-sm">
+                The collapse of TerraUSD (UST) and LUNA in May 2022 serves as a stark warning about algorithmic stablecoin risks. Over $40 billion in market capitalization was wiped out in a &#34;death spiral&#34; triggered by loss of market confidence <a href="#ref-30" class="citation-link">[12]</a>.
+              </p>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-semibold text-lg mb-3">Future Innovations</h4>
+              <p class="text-gray-700 text-sm">
+                Future algorithmic stablecoin development is shifting towards more robust models integrating <strong>artificial intelligence (AI)</strong> and machine learning to enhance stability and responsiveness <a href="#ref-34" class="citation-link">[15]</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Technical Architecture -->
+      <section id="technical-architecture" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Technical Architecture and Security</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The technical architecture of a stablecoin is the foundation upon which its stability, security, and functionality are built. This architecture encompasses the underlying blockchain layer, smart contracts, and critical security measures.
+        </p>
+
+        <!-- Blockchain Layer -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Foundational Blockchain Layer</h3>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="stat-card">
+              <i class="fas fa-layer-group text-3xl text-teal-600 mb-4"></i>
+              <h4 class="font-semibold text-lg mb-2">Ethereum Virtual Machine</h4>
+              <p class="text-gray-600 text-sm">Primary execution environment for smart contracts</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-shield-alt text-3xl text-teal-600 mb-4"></i>
+              <h4 class="font-semibold text-lg mb-2">Proof of Stake</h4>
+              <p class="text-gray-600 text-sm">Consensus mechanism securing the network</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-expand-arrows-alt text-3xl text-teal-600 mb-4"></i>
+              <h4 class="font-semibold text-lg mb-2">Layer-2 Solutions</h4>
+              <p class="text-gray-600 text-sm">Scaling technologies for higher throughput</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h4 class="font-semibold text-lg mb-3">The Blockchain Trilemma</h4>
+            <p class="text-gray-700 text-sm mb-3">
+              The challenge of achieving a balance between <strong>security, scalability, and decentralization</strong> remains a key consideration in stablecoin architecture. Public blockchains prioritize security and decentralization, often at the cost of scalability.
+            </p>
+          </div>
+        </div>
+
+        <!-- Smart Contract Logic -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Smart Contract Logic and Automation</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">CDPs in MakerDAO</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Collateralized Debt Positions (CDPs) are the core mechanism for creating DAI. Users deposit collateral to mint stablecoins <a href="#ref-41" class="citation-link">[16]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-sm">
+                <li>• Automated collateral monitoring</li>
+                <li>• Liquidation triggers at 150% ratio</li>
+                <li>• Smart contract governance</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Supply Management</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Dynamic supply control through automated minting and burning processes based on market demand.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-sm">
+                <li>• Interest rate adjustments</li>
+                <li>• Algorithmic supply expansion</li>
+                <li>• User-driven redemption</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Considerations -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Security Considerations and Vulnerabilities</h3>
+
+          <div class="grid lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg p-6 border border-red-200">
+              <h4 class="font-semibold text-red-800 mb-3 flex items-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Smart Contract Risks
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Code vulnerabilities and exploits represent the most significant threat to decentralized stablecoins <a href="#ref-65" class="citation-link">[11]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Reentrancy attacks</li>
+                <li>• Integer overflows</li>
+                <li>• Logic flaws</li>
+                <li>• Formal verification needs</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-orange-200">
+              <h4 class="font-semibold text-orange-800 mb-3 flex items-center">
+                <i class="fas fa-database mr-2"></i>
+                Oracle Manipulation
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Price feed integrity is critical for collateralized stablecoins. False data can trigger liquidations <a href="#ref-34" class="citation-link">[15]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Chainlink integration</li>
+                <li>• Multiple data sources</li>
+                <li>• AI-powered anomaly detection</li>
+                <li>• Decentralized oracle networks</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-yellow-200">
+              <h4 class="font-semibold text-yellow-800 mb-3 flex items-center">
+                <i class="fas fa-users-cog mr-2"></i>
+                Governance Risks
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Concentration of governance tokens can lead to centralization and potential malicious decisions <a href="#ref-41" class="citation-link">[16]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Whale dominance</li>
+                <li>• Voting power concentration</li>
+                <li>• Protocol parameter control</li>
+                <li>• Treasury management risks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Business Models -->
+      <section id="business-models" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Business Models and Revenue Generation</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The business models of stablecoin issuers and protocols are as diverse as their designs. While the primary goal is price stability, entities must generate revenue to sustain operations, fund development, and reward stakeholders.
+        </p>
+
+        <!-- Reserve Management -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Reserve Management and Yield Generation</h3>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Investment Strategy</h4>
+              <p class="text-gray-700 text-sm mb-4">
+                Stablecoin issuers invest reserves in low-risk, highly liquid assets to generate yield while maintaining redemption capabilities.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-blue-500 rounded mr-3"></div>
+                  <span class="text-sm">U.S. Treasury bills</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded mr-3"></div>
+                  <span class="text-sm">Cash equivalents</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-purple-500 rounded mr-3"></div>
+                  <span class="text-sm">Insured bank deposits</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Revenue Streams</h4>
+              <ul class="space-y-3 text-gray-700 text-sm">
+                <li class="flex items-start">
+                  <i class="fas fa-percentage text-teal-600 mt-1 mr-3"></i>
+                  <span><strong>Interest on reserves</strong> - Primary revenue from government securities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-exchange-alt text-teal-600 mt-1 mr-3"></i>
+                  <span><strong>Issuance/redemption spreads</strong> - Small bid-ask spreads on transactions</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-cogs text-teal-600 mt-1 mr-3"></i>
+                  <span><strong>Service fees</strong> - API access and premium features</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h4 class="font-semibold text-lg mb-3">Transparency and Attestation</h4>
+            <p class="text-gray-700 text-sm">
+              In the wake of past controversies and regulatory pressure, <strong>transparency and attestation of reserves</strong> have become critical components of the business model. Circle with USDC provides monthly attestations from certified public accountants <a href="#ref-94" class="citation-link">[10]</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Strategic Partnerships -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Strategic Partnerships and Ecosystem Integration</h3>
+
+          <div class="grid lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-university text-teal-600 mr-3"></i>
+                Banking Partnerships
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Essential for fiat on/off-ramps and regulatory compliance.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Licensed depository institutions</li>
+                <li>• Payment processors</li>
+                <li>• Custody providers</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-shopping-cart text-teal-600 mr-3"></i>
+                Payment Integration
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Integration with major payment platforms and wallets.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Visa and Mastercard networks</li>
+                <li>• Apple Pay and Google Pay</li>
+                <li>• E-commerce platforms</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-flask text-teal-600 mr-3"></i>
+                Compliance as Service
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                White-label stablecoin solutions for institutions.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Regulatory licensing</li>
+                <li>• Reserve management</li>
+                <li>• Compliance infrastructure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Global Regulation -->
+      <section id="regulation" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">Global Regulatory Landscape and Compliance</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          The regulatory landscape for stablecoins is a rapidly evolving tapestry of international standards, regional frameworks, and national laws. As stablecoins transition from niche crypto-assets to potential pillars of the global financial system, regulators worldwide are grappling with how to balance fostering innovation with mitigating risks.
+        </p>
+
+        <!-- AML/CFT -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Anti-Money Laundering and Countering Financing of Terrorism</h3>
+
+          <div class="highlight-box mb-6">
+            <h4 class="font-semibold text-lg mb-3">The FATF &#34;Travel Rule&#34;</h4>
+            <p class="text-gray-700 text-sm mb-3">
+              A cornerstone of the global AML/CFT framework, the Travel Rule mandates that Virtual Asset Service Providers (VASPs) must collect and share information about the originator and beneficiary of virtual asset transfers exceeding <strong>USD 1,000</strong>
+              <a href="#ref-67" class="citation-link">[17]</a>.
+            </p>
+            <ul class="space-y-1 text-gray-600 text-xs">
+              <li>• Names and account numbers of sender and recipient</li>
+              <li>• Real-time data transmission between VASPs</li>
+              <li>• Enhanced due diligence requirements</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-lg p-6 border border-gray-200 mb-6">
+            <h4 class="font-semibold text-lg mb-3">RegTech Solutions</h4>
+            <p class="text-gray-700 text-sm mb-3">
+              A new industry of Regulatory Technology (RegTech) has emerged, offering sophisticated tools for on-chain monitoring and compliance <a href="#ref-66" class="citation-link">[18]</a>.
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h5 class="font-medium text-gray-900 mb-2">Blockchain Analytics</h5>
+                <ul class="space-y-1 text-gray-600 text-xs">
+                  <li>• Transaction pattern analysis</li>
+                  <li>• Risk scoring algorithms</li>
+                  <li>• Mixing service detection</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-900 mb-2">Compliance Scoring</h5>
+                <ul class="space-y-1 text-gray-600 text-xs">
+                  <li>• AML compliance scores</li>
+                  <li>• Taint tracking for UTXOs</li>
+                  <li>• Off-ramp verification</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regional Frameworks -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Key Regional and National Frameworks</h3>
+
+          <div class="overflow-x-auto mb-8">
+            <table class="w-full bg-white rounded-lg border border-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-900 text-sm">Jurisdiction</th>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-900 text-sm">Key Regulation</th>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-900 text-sm">Primary Regulator</th>
+                  <th class="px-4 py-3 text-left font-semibold text-gray-900 text-sm">Core Requirements</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 text-sm">
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-900">United States</td>
+                  <td class="px-4 py-3 text-gray-700">GENIUS Act (2025) <a href="#ref-72" class="citation-link">[19]</a>
+                  </td>
+                  <td class="px-4 py-3 text-gray-700">OCC, Federal Reserve, FDIC</td>
+                  <td class="px-4 py-3 text-gray-700">Federal licensing as PPSI; 1:1 reserve backing; no interest on stablecoins; user redemption rights <a href="#ref-11" class="citation-link">[20]</a>
+                  </td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-4 py-3 font-medium text-gray-900">European Union</td>
+                  <td class="px-4 py-3 text-gray-700">MiCA Regulation (2024) <a href="#ref-75" class="citation-link">[21]</a>
+                  </td>
+                  <td class="px-4 py-3 text-gray-700">National Competent Authorities</td>
+                  <td class="px-4 py-3 text-gray-700">Authorization as credit/e-money institution; 100% reserve backing; public disclosure; FATF Travel Rule adherence <a href="#ref-69" class="citation-link">[22]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-900">Japan</td>
+                  <td class="px-4 py-3 text-gray-700">Payment Services Act Amendments (2022) <a href="#ref-83" class="citation-link">[23]</a>
+                  </td>
+                  <td class="px-4 py-3 text-gray-700">Financial Services Agency (FSA)</td>
+                  <td class="px-4 py-3 text-gray-700">Licensing for &#34;digital money-type&#34; stablecoins limited to banks, fund transfer providers, trust companies <a href="#ref-81" class="citation-link">[24]</a>
+                  </td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="px-4 py-3 font-medium text-gray-900">Singapore</td>
+                  <td class="px-4 py-3 text-gray-700">SCS Framework (2023) <a href="#ref-77" class="citation-link">[25]</a>
+                  </td>
+                  <td class="px-4 py-3 text-gray-700">Monetary Authority of Singapore (MAS)</td>
+                  <td class="px-4 py-3 text-gray-700">Licensing for SGD/G10 currency pegs; 100% reserve backing; extraterritorial regulation <a href="#ref-77" class="citation-link">[25]</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Asia-Pacific Focus -->
+          <div class="bg-white rounded-lg p-6 border border-gray-200 mb-6">
+            <h4 class="font-semibold text-lg mb-4">Asia-Pacific: A Fragmented but Evolving Landscape</h4>
+            <p class="text-gray-700 text-sm mb-4">
+              The Asia-Pacific region presents a highly diverse regulatory landscape, with different countries pursuing vastly different strategies <a href="#ref-78" class="citation-link">[26]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h5 class="font-medium text-blue-900 mb-2">Japan&#39;s Licensing Regime</h5>
+                <p class="text-blue-700 text-xs">Pioneer in stablecoin regulation with comprehensive legal framework and JPYC development <a href="#ref-83" class="citation-link">[23]</a>.</p>
+              </div>
+              <div class="bg-green-50 rounded-lg p-4">
+                <h5 class="font-medium text-green-900 mb-2">Singapore&#39;s Sandbox Approach</h5>
+                <p class="text-green-700 text-xs">Progressive framework balancing innovation with risk management and extraterritorial oversight <a href="#ref-77" class="citation-link">[25]</a>.</p>
+              </div>
+              <div class="bg-red-50 rounded-lg p-4">
+                <h5 class="font-medium text-red-900 mb-2">China&#39;s CBDC Strategy</h5>
+                <p class="text-red-700 text-xs">State-centric approach with Digital Yuan (e-CNY) and prohibition of private stablecoins <a href="#ref-78" class="citation-link">[26]</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-Border Challenges -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">The Challenge of Cross-Border Regulation</h3>
+
+          <div class="highlight-box mb-6">
+            <h4 class="font-semibold text-lg mb-3">FSB Push for Global Consistency</h4>
+            <p class="text-gray-700 text-sm mb-3">
+              The Financial Stability Board (FSB) has been at the forefront of promoting international regulatory consistency. Their October 2025 peer review revealed significant gaps in stablecoin oversight implementation <a href="#ref-74" class="citation-link">[27]</a>.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Regulatory Arbitrage</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Companies strategically establish operations in jurisdictions with more favorable regulations, creating a &#34;race to the bottom&#34; risk <a href="#ref-77" class="citation-link">[25]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Jurisdictional competition</li>
+                <li>• Licensing requirement variations</li>
+                <li>• Tax policy differences</li>
+                <li>• Compliance cost optimization</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3">Embedded Supervision</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Using blockchain technology itself to automate compliance and oversight functions <a href="#ref-68" class="citation-link">[28]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Smart contract enforcement</li>
+                <li>• Real-time compliance scoring</li>
+                <li>• Automated sanction screening</li>
+                <li>• Reserve requirement verification</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Future Outlook -->
+      <section id="future-outlook" class="mb-16">
+        <h2 class="font-canela text-4xl font-bold text-gray-900 mb-8">User Adoption, Risks, and Future Outlook</h2>
+
+        <!-- Drivers of Adoption -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Drivers of User Adoption</h3>
+
+          <div class="grid lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-rocket text-teal-600 mr-3"></i>
+                Cost &amp; Speed Advantages
+              </h4>
+              <div class="text-center mb-4">
+                <div class="text-3xl font-bold text-green-600 mb-1">70-80%</div>
+                <div class="text-sm text-gray-600">Lower fees vs. traditional remittances</div>
+              </div>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Minutes vs. days settlement</li>
+                <li>• 24/7/365 operation</li>
+                <li>• Bypass correspondent banking</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-mobile-alt text-teal-600 mr-3"></i>
+                Tech Platform Integration
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Major tech platforms are integrating stablecoin payments, significantly lowering barriers to entry <a href="#ref-56" class="citation-link">[29]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Apple Pay integration</li>
+                <li>• E-commerce checkout options</li>
+                <li>• User-friendly wallet interfaces</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <i class="fas fa-globe-africa text-teal-600 mr-3"></i>
+                Emerging Markets Growth
+              </h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Key growth in regions with limited banking access and unstable local currencies <a href="#ref-11" class="citation-link">[20]</a>.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Financial inclusion</li>
+                <li>• Wealth preservation</li>
+                <li>• Remittance corridors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Risks -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">Key Risks for End-Users</h3>
+
+          <div class="grid lg:grid-cols-3 gap-6">
+            <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+              <h4 class="font-semibold text-red-800 mb-3 flex items-center">
+                <i class="fas fa-chart-line-down mr-2"></i>
+                De-pegging Events
+              </h4>
+              <p class="text-red-700 text-sm mb-3">
+                The most significant risk where stablecoins lose their peg to the underlying asset, potentially causing substantial losses.
+              </p>
+              <div class="bg-white rounded p-3">
+                <div class="text-xs font-medium text-red-800 mb-1">Terra/LUNA Example:</div>
+                <div class="text-xs text-red-600">$40B+ market cap lost in May 2022 collapse</div>
+              </div>
+            </div>
+
+            <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+              <h4 class="font-semibold text-orange-800 mb-3 flex items-center">
+                <i class="fas fa-bug mr-2"></i>
+                Technical Failures
+              </h4>
+              <p class="text-orange-700 text-sm mb-3">
+                Smart contract vulnerabilities and protocol exploits can lead to theft of user funds or protocol collapse.
+              </p>
+              <ul class="space-y-1 text-orange-600 text-xs">
+                <li>• Code vulnerabilities</li>
+                <li>• Oracle manipulation</li>
+                <li>• Flash loan attacks</li>
+              </ul>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+              <h4 class="font-semibold text-yellow-800 mb-3 flex items-center">
+                <i class="fas fa-shield-alt mr-2"></i>
+                Consumer Protection Gaps
+              </h4>
+              <p class="text-yellow-700 text-sm mb-3">
+                Unlike traditional bank deposits, stablecoins generally lack deposit insurance and clear recourse mechanisms.
+              </p>
+              <ul class="space-y-1 text-yellow-600 text-xs">
+                <li>• No FDIC insurance</li>
+                <li>• Limited regulatory oversight</li>
+                <li>• Complex legal recourse</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Future Trends -->
+        <div class="mb-12">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-6">The Future of Stablecoins</h3>
+
+          <div class="grid lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <img src="https://kimi-web-img.moonshot.cn/img/media.licdn.com/e555675f3454966c231471791372c97000d66af8" alt="Digital currency technology integration" class="w-full h-32 object-cover rounded-lg mb-4" size="medium" aspect="wide" query="digital currency technology" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <h4 class="font-semibold text-lg mb-3">CBDC Convergence</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                The relationship between Central Bank Digital Currencies (CBDCs) and private stablecoins will shape the future monetary landscape.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Coexistence models</li>
+                <li>• Hybrid approaches</li>
+                <li>• Regulatory integration</li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-gray-200">
+              <img src="https://kimi-web-img.moonshot.cn/img/d2908q01vomqb2.cloudfront.net/00a4e1f0e1f569fdd8fdfc4395f77f23e22f8539.png" alt="Blockchain asset tokenization" class="w-full h-32 object-cover rounded-lg mb-4" size="medium" aspect="wide" query="blockchain asset tokenization" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <h4 class="font-semibold text-lg mb-3">Real-World Asset Tokenization</h4>
+              <p class="text-gray-700 text-sm mb-3">
+                Stablecoins will play a crucial role as the primary medium of exchange for tokenized stocks, bonds, and real estate.
+              </p>
+              <ul class="space-y-1 text-gray-600 text-xs">
+                <li>• Digital securities trading</li>
+                <li>• Fractional ownership</li>
+                <li>• Cross-border investment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h4 class="font-semibold text-lg mb-3">Innovations in Risk Mitigation</h4>
+            <p class="text-gray-700 text-sm mb-3">
+              Past failures are driving innovations in decentralization and risk management, leading to more robust and resilient stablecoin designs.
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <h5 class="font-medium text-gray-900 mb-2">Hybrid Models</h5>
+                <ul class="space-y-1 text-gray-600 text-xs">
+                  <li>• Partial collateralization</li>
+                  <li>• Algorithmic stabilization</li>
+                  <li>• Multi-asset backing</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-medium text-gray-900 mb-2">Enhanced Security</h5>
+                <ul class="space-y-1 text-gray-600 text-xs">
+                  <li>• Formal verification methods</li>
+                  <li>• Bug bounty programs</li>
+                  <li>• Insurance mechanisms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg p-8 border border-teal-200">
+          <h3 class="font-canela text-2xl font-semibold text-gray-900 mb-4">Looking Forward</h3>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            The future of stablecoins is likely to be shaped by the convergence of technological innovation, regulatory development, and evolving market demands. As the technology matures and becomes more integrated into the global financial system, stablecoins have the potential to become a fundamental building block of a new, more efficient, and more inclusive digital economy.
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            Their long-term success will depend on addressing key risks while maintaining the core value propositions that have driven their remarkable growth to date. The journey from niche crypto product to global financial infrastructure is well underway, with stablecoins positioned at the forefront of the digital transformation of money itself.
+          </p>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section class="mb-16">
+        <h2 class="font-canela text-3xl font-bold text-gray-900 mb-8">References</h2>
+        <div class="bg-white rounded-lg p-8 border border-gray-200">
+          <div class="space-y-3 text-sm text-gray-700">
+            <div id="ref-85"><strong>[1]</strong>
+              <a href="https://www.transfi.com/blog/how-to-integrate-stablecoin-payments-into-your-business-with-transfi-single-apis" class="citation-link">The Stablecoin Value Proposition - TransFi Payment Integration</a>
+            </div>
+            <div id="ref-86"><strong>[2]</strong>
+              <a href="https://bvnk.com/blog/blockchain-cross-border-payments" class="citation-link">Blockchain Cross-Border Payments - BVNK Analysis</a>
+            </div>
+            <div id="ref-89"><strong>[3]</strong>
+              <a href="https://paymentsconsulting.com/reshaping-cross-border-payments-with-stablecoins/" class="citation-link">Reshaping Cross-Border Payments with Stablecoins - Payments Consulting</a>
+            </div>
+            <div id="ref-91"><strong>[4]</strong>
+              <a href="https://www.congress.gov/crs_external_products/IF/PDF/IF12984/IF12984.3.pdf" class="citation-link">Congressional Research Service - Stablecoin Market Analysis</a>
+            </div>
+            <div id="ref-87"><strong>[5]</strong>
+              <a href="https://www.opendue.com/api" class="citation-link">OpenDue API - Stablecoin Payment Solutions</a>
+            </div>
+            <div id="ref-52"><strong>[6]</strong>
+              <a href="https://metana.io/blog/makerdao-and-dai-how-stablecoins-power-defi/" class="citation-link">MakerDAO and DAI: How Stablecoins Power DeFi - Metana</a>
+            </div>
+            <div id="ref-37"><strong>[7]</strong>
+              <a href="https://cryptoforinnovation.org/what-is-an-algorithmic-stablecoin/" class="citation-link">What is an Algorithmic Stablecoin? - Crypto for Innovation</a>
+            </div>
+            <div id="ref-47"><strong>[8]</strong>
+              <a href="https://metana.io/blog/makerdao-and-dai-how-stablecoins-power-defi/" class="citation-link">DAI Stablecoin Mechanism - Metana Analysis</a>
+            </div>
+            <div id="ref-45"><strong>[9]</strong>
+              <a href="https://metana.io/blog/what-is-collateralized-debt-position-cdp-in-defi/" class="citation-link">Collateralized Debt Position (CDP) in DeFi - Metana</a>
+            </div>
+            <div id="ref-94"><strong>[10]</strong>
+              <a href="https://www.circle.com/usdc" class="citation-link">USDC Reserve Transparency - Circle</a>
+            </div>
+            <div id="ref-65"><strong>[11]</strong>
+              <a href="https://www.investopedia.com/decentralized-finance-defi-5113835" class="citation-link">Decentralized Finance (DeFi) Risks - Investopedia</a>
+            </div>
+            <div id="ref-30"><strong>[12]</strong>
+              <a href="https://www.richmondfed.org/publications/research/economic_brief/2022/eb_22-24" class="citation-link">Terra/LUNA Collapse Analysis - Richmond Fed</a>
+            </div>
+            <div id="ref-41"><strong>[13]</strong>
+              <a href="https://metana.io/blog/makerdao-and-dai-how-stablecoins-power-defi/" class="citation-link">MakerDAO Protocol Analysis - Metana</a>
+            </div>
+            <div id="ref-32"><strong>[14]</strong>
+              <a href="https://deutschedigitalassets.com/insights/news/when-algorithmic-stablecoins-fail/" class="citation-link">When Algorithmic Stablecoins Fail - Deutsche Digital Assets</a>
+            </div>
+            <div id="ref-34"><strong>[15]</strong>
+              <a href="https://www.linkedin.com/pulse/ai-algorithm-based-stablecoin-development-business-use-garima-singh-bufxf" class="citation-link">AI in Stablecoin Development - LinkedIn</a>
+            </div>
+            <div id="ref-67"><strong>[17]</strong>
+              <a href="https://notabene.id/crypto-travel-rule-101/aml-crypto" class="citation-link">Crypto Travel Rule 101 - Notabene</a>
+            </div>
+            <div id="ref-66"><strong>[18]</strong>
+              <a href="https://www.facctum.com/terms/aml-for-crypto" class="citation-link">AML for Crypto - Facctum</a>
+            </div>
+            <div id="ref-68"><strong>[19]</strong>
+              <a href="https://www.bis.org/publ/bisbull111.pdf" class="citation-link">BIS - Embedded Supervision Proposal</a>
+            </div>
+            <div id="ref-72"><strong>[20]</strong>
+              <a href="https://www.financialprofessionals.org/training-resources/resources/articles/Details/stablecoin-s-role-in-cross-border-payments" class="citation-link">GENIUS Act Analysis - Financial Professionals</a>
+            </div>
+            <div id="ref-75"><strong>[21]</strong>
+              <a href="https://www.mckinsey.com/industries/financial-services/our-insights/the-stable-door-opens-how-tokenized-cash-enables-next-gen-payments" class="citation-link">MiCA Regulation - McKinsey Analysis</a>
+            </div>
+            <div id="ref-69"><strong>[22]</strong>
+              <a href="https://www.eba.europa.eu/sites/default/files/2024-12/25bb6d67-4bd1-4e54-805c-269d9657e7fb/Preventing%20ML%20TF%20in%20the%20EU%27s%20crypto%20assets%20sector.pdf" class="citation-link">EU AML/CFT Framework - EBA</a>
+            </div>
+            <div id="ref-83"><strong>[23]</strong>
+              <a href="https://innovationlaw.jp/en/crypto-regulations-in-japan-2024/" class="citation-link">Japan Crypto Regulations 2024 - Innovation Law</a>
+            </div>
+            <div id="ref-81"><strong>[24]</strong>
+              <a href="https://www.tkilaw.com/en/7053" class="citation-link">Japan Stablecoin Regulations - TKI Law</a>
+            </div>
+            <div id="ref-77"><strong>[25]</strong>
+              <a href="https://www.sooho.io/en/articles/stablecoin-regulations" class="citation-link">Singapore Stablecoin Regulations - Sooho</a>
+            </div>
+            <div id="ref-78"><strong>[26]</strong>
+              <a href="https://www.transfi.com/blog/stablecoin-regulations-2025-what-businesses-must-know" class="citation-link">Stablecoin Regulations 2025 - TransFi</a>
+            </div>
+            <div id="ref-74"><strong>[27]</strong>
+              <a href="https://www.fsb.org/2025/10/fsb-finds-significant-gaps-and-inconsistencies-in-implementation-of-crypto-and-stablecoin-recommendations/" class="citation-link">FSB Crypto Implementation Review</a>
+            </div>
+            <div id="ref-56"><strong>[29]</strong>
+              <a href="https://www.imf.org/en/publications/fandd/issues/2025/09/the-stablecoin-balancing-act-darrell-duffie" class="citation-link">The Stablecoin Balancing Act - IMF Finance &amp; Development</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#0d9488',
+                lineColor: '#64748b',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#f1f5f9',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#f1f5f9',
+                nodeBorder: '#0d9488',
+                clusterBkg: '#f8fafc',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#1e293b',
+                textColor: '#1e293b',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            securityLevel: 'loose'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.toc-fixed a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-teal-700', 'font-semibold');
+                link.classList.add('text-gray-600');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-teal-700', 'font-semibold');
+                }
+            });
+        });
+
+        // Initialize Mermaid controls after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+    </script>
+  
+
+</body></html>
