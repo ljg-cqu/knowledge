@@ -1,0 +1,1718 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Business-Architecture Translation: Interview Assessment for Blockchain Stablecoin Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-light: #14b8a6;
+            --primary-dark: #134e4a;
+            --accent: #b45309;
+            --neutral: #374151;
+            --neutral-light: #6b7280;
+            --surface: #f8fafc;
+            --surface-dark: #f1f5f9;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--neutral);
+            line-height: 1.7;
+        }
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .text-primary { color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .bg-primary { background-color: var(--primary); }
+        .bg-surface { background-color: var(--surface); }
+        .bg-surface-dark { background-color: var(--surface-dark); }
+        .border-primary { border-color: var(--primary); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(15, 118, 110, 0.95) 0%, 
+                rgba(19, 78, 74, 0.9) 50%, 
+                rgba(180, 83, 9, 0.85) 100%);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .bento-main {
+            grid-row: 1 / 3;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-side-top {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .bento-side-bottom {
+            background: rgba(248, 250, 252, 0.95);
+        }
+        
+        .toc-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .toc-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .toc-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(4px);
+        }
+        
+        .toc-nav a.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .toc-section {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            margin: 4rem 0;
+            border-radius: 1px;
+        }
+        
+        .question-card {
+            background: white;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        
+        .insight-highlight {
+            background: linear-gradient(135deg, rgba(180, 83, 9, 0.1) 0%, rgba(15, 118, 110, 0.1) 100%);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .citation-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--primary);
+            transition: all 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .difficulty-foundational {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+        
+        .difficulty-intermediate {
+            background: rgba(251, 146, 60, 0.1);
+            color: #ea580c;
+        }
+        
+        .difficulty-advanced {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-nav.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .bento-main {
+                grid-row: auto;
+            }
+
+            /* Responsive mermaid controls */
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents Navigation -->
+    <nav class="toc-nav">
+      <div class="mb-8">
+        <h2 class="text-white font-serif text-xl font-bold mb-2">Assessment Guide</h2>
+        <p class="text-white opacity-70 text-sm">Business-Architecture Translation</p>
+      </div>
+
+      <div class="toc-section">Overview</div>
+      <a href="#executive-summary" class="toc-link">Executive Summary</a>
+      <a href="#assessment-coverage" class="toc-link">Assessment Coverage</a>
+
+      <div class="toc-section">Strategic Modeling</div>
+      <a href="#bmc-mapping" class="toc-link">BMC to Architecture</a>
+      <a href="#value-prop" class="toc-link">Value Proposition</a>
+      <a href="#multi-constraint" class="toc-link">Multi-Constraint Design</a>
+
+      <div class="toc-section">Value &amp; Risk</div>
+      <a href="#roi-analysis" class="toc-link">ROI Calculation</a>
+      <a href="#risk-assessment" class="toc-link">Risk Framework</a>
+      <a href="#trade-offs" class="toc-link">Trade-off Analysis</a>
+
+      <div class="toc-section">Documentation</div>
+      <a href="#adr-records" class="toc-link">Architecture Decision Records</a>
+      <a href="#comms-patterns" class="toc-link">Communication Patterns</a>
+
+      <div class="toc-section">Organization</div>
+      <a href="#conway-law" class="toc-link">Conway&#39;s Law Alignment</a>
+      <a href="#team-topology" class="toc-link">Team Topology</a>
+
+      <div class="toc-section">Translation</div>
+      <a href="#driver-mapping" class="toc-link">Business Driver Mapping</a>
+      <a href="#wardley-maps" class="toc-link">Wardley Mapping</a>
+
+      <div class="toc-section">Evolution</div>
+      <a href="#tech-debt" class="toc-link">Technical Debt Management</a>
+      <a href="#migration" class="toc-link">Migration Strategy</a>
+
+      <div class="toc-section">References</div>
+      <a href="#citations" class="toc-link">Citations</a>
+      <a href="#glossary" class="toc-link">Glossary</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section with Bento Grid -->
+      <section class="relative min-h-screen bg-surface">
+        <div class="absolute inset-0">
+          <img src="https://kimi-web-img.moonshot.cn/img/blog.equinix.com/0187dbe9925efdadd611fa8fadc91088ee85d0b1.jpg" alt="Abstract blockchain network background" class="w-full h-full object-cover opacity-20" size="wallpaper" aspect="wide" query="abstract blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-8 py-16">
+          <div class="bento-grid max-w-7xl">
+            <!-- Main Hero Content -->
+            <div class="bento-main bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
+              <div class="mb-8">
+                <span class="inline-block px-4 py-2 bg-primary text-white text-sm font-medium rounded-full mb-6">
+                  <i class="fas fa-cube mr-2"></i>Technical Leadership Assessment
+                </span>
+
+                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-neutral mb-6 leading-tight">
+                  <span class="italic text-accent">Business-Architecture</span>
+                  <br/>
+                  Translation
+                </h1>
+
+                <p class="text-lg sm:text-xl text-neutral-light mb-8 leading-relaxed" style="overflow-wrap: break-word;">
+                  A comprehensive interview assessment framework for evaluating senior technical leaders&#39;
+                  ability to translate business strategy into architectural decisions for blockchain stablecoin projects.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-primary mb-2">25-30</div>
+                  <div class="text-sm text-neutral-light">Scenario-based questions</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-accent mb-2">6</div>
+                  <div class="text-sm text-neutral-light">Assessment dimensions</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-primary mb-2">70%+</div>
+                  <div class="text-sm text-neutral-light">Citation coverage</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Executive Summary Card -->
+            <div class="bento-side-top rounded-2xl p-6 shadow-xl" id="executive-summary">
+              <h3 class="font-serif text-xl font-semibold text-neutral mb-4">
+                <i class="fas fa-chart-line text-accent mr-2"></i>Executive Summary
+              </h3>
+              <p class="text-sm text-neutral-light leading-relaxed mb-4">
+                This assessment framework evaluates the critical capability of translating business models,
+                value propositions, and constraints into architectural decisions for stablecoin projects.
+              </p>
+              <div class="space-y-2 text-xs">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span>Strategic modeling with BMC</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                  <span>Multi-constraint optimization</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span>Regulatory compliance mapping</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="bento-side-bottom rounded-2xl p-6 shadow-xl">
+              <h3 class="font-serif text-xl font-semibold text-neutral mb-4">
+                <i class="fas fa-target text-primary mr-2"></i>Assessment Coverage
+              </h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-neutral-light">Senior Engineer</span>
+                  <span class="text-sm font-medium text-primary">5-8 years</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-neutral-light">Architect Level</span>
+                  <span class="text-sm font-medium text-accent">8-12 years</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-neutral-light">Expert Level</span>
+                  <span class="text-sm font-medium text-primary">12+ years</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Assessment Coverage Overview -->
+      <section id="assessment-coverage" class="py-16 bg-white">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <h2 class="font-serif text-3xl font-bold text-neutral mb-12 text-center">
+            <i class="fas fa-layer-group text-primary mr-3"></i>Assessment Dimensions
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-chess text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Strategic Modeling</h3>
+              <p class="text-neutral-light text-sm">Business model to architectural implications using BMC, value proposition translation, and competitive advantage mapping.</p>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-balance-scale text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Value &amp; Risk</h3>
+              <p class="text-neutral-light text-sm">ROI calculations, trade-off analysis, constraint mapping, and risk assessment frameworks.</p>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-file-alt text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Documentation</h3>
+              <p class="text-neutral-light text-sm">Architecture Decision Records (ADRs), communication patterns, and knowledge management.</p>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-users text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Organization</h3>
+              <p class="text-neutral-light text-sm">Team topology alignment, Conway&#39;s Law implications, and organizational design patterns.</p>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-exchange-alt text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Translation</h3>
+              <p class="text-neutral-light text-sm">Business driver to technical decision mapping with explicit traceability.</p>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-project-diagram text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Evolution</h3>
+              <p class="text-neutral-light text-sm">Technical debt management, migration strategies, and architecture roadmapping.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Strategic Modeling Section -->
+      <section id="bmc-mapping" class="py-16 bg-surface">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-sitemap text-primary mr-3"></i>Strategic Modeling: Business Model to Architecture
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Translating business strategy into architectural decisions using the Business Model Canvas framework.
+            </p>
+          </div>
+
+          <!-- Foundational Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="bmc-mapping">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Translating SaaS Payroll Model to Architecture Using BMC</h3>
+              <span class="difficulty-badge difficulty-foundational">Foundational</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                You are the lead architect for CodeXperience, a SaaS platform that helps global companies manage payroll for remote contractors in Turkey. The company has decided to switch from using traditional international bank transfers to a stablecoin-based system, leveraging a third-party provider like TransFi to handle USDT (Tether) payments. How would you use the Business Model Canvas (BMC) framework to translate this strategic shift into concrete architectural decisions for the platform?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  A comprehensive Business Model Canvas (BMC) analysis reveals how the shift to a stablecoin-based payroll system fundamentally reshapes CodeXperience&#39;s architecture <a href="https://vizologi.com/business-strategy-canvas/tether-business-model-canvas/" class="citation-link" target="_blank">[156]</a>. The <strong>Key Partnerships</strong> block is significantly altered; the traditional reliance on banks for international transfers is replaced by a critical dependency on a blockchain payment provider like TransFi and the underlying blockchain infrastructure (e.g., Ethereum, Tron) <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>.
+                </p>
+
+                <p class="mb-4">
+                  The <strong>Key Activities</strong> of the finance team evolve from manual wire transfer initiation to managing digital wallets, monitoring on-chain transactions, and ensuring compliance with new Know Your Customer (KYC) and Anti-Money Laundering (AML) processes required by the payment provider <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>. This requires new internal tools and dashboards for transaction tracking and reporting.
+                </p>
+
+                <p class="mb-4">
+                  The <strong>Cost Structure</strong> is directly impacted, which is a primary driver for this change. While traditional wire transfers incur high, fixed fees and unfavorable foreign exchange (FX) rates, the new model involves different cost components: transaction fees on the blockchain (gas fees), fees charged by the payment provider (TransFi), and the operational cost of managing the new system <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                The shift from traditional banking to stablecoin payments fundamentally alters the company&#39;s cost structure and partnership dependencies. The transition introduces a more complex, variable cost structure tied to blockchain transaction fees and third-party provider pricing, requiring new financial and technical sophistication <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>.
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  subgraph &#34;Business Model Canvas&#34;
+                  A[&#34;Key Partners: TransFi, Blockchain Networks&#34;] --&gt; B[&#34;Key Activities: Wallet Mgmt, On-chain Monitoring, KYC/AML&#34;]
+                  C[&#34;Key Resources: USDT Reserves, API Integration, Security Infrastructure&#34;] --&gt; B
+                  B --&gt; D[&#34;Value Proposition: Low-cost, Fast, Global Payroll&#34;]
+                  D --&gt; E[&#34;Customer Relationships: Automated, Transparent, Self-Service&#34;]
+                  E --&gt; F[&#34;Customer Segments: Remote Contractors in Emerging Markets&#34;]
+                  F --&gt; G[&#34;Channels: Web Portal, Mobile App, API&#34;]
+                  G --&gt; H[&#34;Cost Structure: Gas Fees, Provider Fees, New Ops Overhead&#34;]
+                  I[&#34;Revenue Streams: Not Directly Changed&#34;] --&gt; H
+                  end
+
+                  subgraph &#34;Architecture Translation&#34;
+                  J[&#34;Key Partners&#34;] --&gt; K[&#34;Integration Layer: TransFi API, Multi-Chain Support&#34;]
+                  L[&#34;Key Activities&#34;] --&gt; M[&#34;New Modules: Wallet Service, Transaction Monitor, Compliance Engine&#34;]
+                  N[&#34;Value Proposition&#34;] --&gt; O[&#34;System Features: Real-time Status, Cost Estimator, Batch Payments&#34;]
+                  P[&#34;Cost Structure&#34;] --&gt; Q[&#34;Analytics &amp; Reporting: Gas Fee Tracking, Cost Attribution&#34;]
+                  end
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto mb-8">
+              <table class="w-full border-collapse bg-white rounded-lg shadow-sm">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="p-4 text-left">Business Model Canvas Component</th>
+                    <th class="p-4 text-left">Architectural Implication</th>
+                    <th class="p-4 text-left">Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Key Partners</strong> (TransFi, Blockchain)</td>
+                    <td class="p-4 text-neutral-light">Robust API integration layer with error handling, retry logic, and support for multiple blockchains (e.g., Ethereum, Tron, Polygon) to mitigate single-point-of-failure risk <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>.</td>
+                    <td class="p-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Critical</span></td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Key Activities</strong> (Wallet Management, On-chain Monitoring)</td>
+                    <td class="p-4 text-neutral-light">Development of new internal modules: a secure wallet management service, a real-time transaction monitoring dashboard, and an automated compliance reporting engine.</td>
+                    <td class="p-4"><span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">High</span></td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Value Proposition</strong> (Speed, Cost)</td>
+                    <td class="p-4 text-neutral-light">Implementation of features that deliver on this promise: a real-time payment status tracker for both finance and contractors, an automated batch payment processor, and a pre-transaction cost estimation tool.</td>
+                    <td class="p-4"><span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">High</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Intermediate Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="value-prop">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Value Proposition and Competitive Advantage</h3>
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                Building on the CodeXperience case study, where the company uses USDT for contractor payroll to achieve cost savings and faster settlement <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>, how would you translate this core value proposition into a concrete set of technical features and quality attributes in the system architecture?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  The core value proposition for CodeXperience&#39;s contractors—receiving payments quickly, cheaply, and in a stable currency—must be the guiding principle for the system&#39;s technical design <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>. To translate &#34;speed,&#34; the architecture must prioritize low-latency operations.
+                </p>
+
+                <p class="mb-4">
+                  To deliver on the &#34;cost-effectiveness&#34; promise, the system needs intelligent features. A
+                  <code>Smart Batching Engine</code> could analyze the list of payees and group them by wallet address or preferred blockchain to minimize the total number of transactions and thus the aggregate gas fees. A
+                  <code>Dynamic Fee Estimator</code> would be crucial, allowing the finance team to see the real-time cost of their payroll run.
+                </p>
+
+                <p class="mb-4">
+                  To create a sustainable competitive advantage, the architecture must go beyond simply processing payments. It must build a superior user experience and offer features that traditional payroll systems cannot. The system could offer a
+                  <code>Multi-Chain Wallet Management</code> feature, allowing contractors to receive USDT on their preferred network (e.g., Ethereum for DeFi compatibility, Tron for low fees) <a href="https://www.chaincatcher.com/en/article/2184864" class="citation-link" target="_blank">[141]</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                The core value of cost savings and speed must be architecturally protected and scalable. The architecture must be built not just for the current state but for a future state of higher volume and complexity, requiring continuous optimization and architectural evolution.
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph LR
+                  subgraph &#34;Contractor Pain (Circle)&#34;
+                  A[&#34;High Bank Fees&#34;] --&gt; B[&#34;Slow Settlement (Days)&#34;]
+                  C[&#34;Unfavorable FX Rates&#34;] --&gt; D[&#34;Complex Banking&#34;]
+                  end
+
+                  subgraph &#34;Value Map (Square)&#34;
+                  E[&#34;Product: Stablecoin Payroll System&#34;] --&gt; F[&#34;Gain Creators: Real-time Tracking, Self-Service Portal&#34;]
+                  G[&#34;Pain Relievers: Low Fees, Instant Settlement, Stable Currency&#34;] --&gt; H[&#34;Cost Reduction, Speed, Certainty&#34;]
+                  end
+
+                  subgraph &#34;Technical Features&#34;
+                  I[&#34;Smart Batch Engine&#34;] --&gt; G
+                  J[&#34;Multi-Chain Support&#34;] --&gt; G
+                  K[&#34;Real-time Status API&#34;] --&gt; F
+                  L[&#34;Automated Compliance Reports&#34;] --&gt; F
+                  end
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto mb-8">
+              <table class="w-full border-collapse bg-white rounded-lg shadow-sm">
+                <thead>
+                  <tr class="bg-accent text-white">
+                    <th class="p-4 text-left">Value Proposition Element</th>
+                    <th class="p-4 text-left">Technical Feature/Quality Attribute</th>
+                    <th class="p-4 text-left">Architectural Component</th>
+                    <th class="p-4 text-left">Competitive Advantage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Speed (Instant Settlement)</strong></td>
+                    <td class="p-4 text-neutral-light">Low-latency processing, Real-time status updates</td>
+                    <td class="p-4 text-neutral-light">Asynchronous job queues, WebSocket connections for live updates, Integration with fast blockchains (e.g., Tron) <a href="https://www.chaincatcher.com/en/article/2184864" class="citation-link" target="_blank">[141]</a>.</td>
+                    <td class="p-4">Attracts contractors who need immediate access to funds, a key differentiator in the gig economy.</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Cost (Low Fees)</strong></td>
+                    <td class="p-4 text-neutral-light">Smart batching of transactions, Dynamic fee estimation</td>
+                    <td class="p-4 text-neutral-light">
+                      <code>Batching Engine</code> with optimization algorithms,
+                      <code>Fee Estimator</code> module querying multiple gas price oracles.
+                    </td>
+                    <td class="p-4">Directly increases contractor take-home pay, making the company a more attractive employer.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Advanced Question -->
+          <div class="question-card rounded-xl p-8" id="multi-constraint">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Multi-Constraint Optimization for Global Platform</h3>
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                CodeXperience has been successful and is now expanding to serve clients with contractors in multiple new regions, including the European Union (with its MiCA regulation), the United Kingdom, and several states in the USA. Each of these jurisdictions has different and evolving regulations regarding digital assets, data sovereignty (e.g., GDPR), and financial reporting. How would you design a stablecoin payroll architecture that can accommodate this diverse and complex regulatory landscape without creating a separate, bespoke system for each region?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Designing a stablecoin payroll system for a global, multi-jurisdictional market requires a sophisticated, policy-driven, and modular architecture. A one-size-fits-all approach is untenable due to the conflicting and complex regulatory requirements. The core architectural pattern to employ is a <strong>Microservices Architecture</strong> with a <strong>Strangler Fig</strong> migration strategy for new regions.
+                </p>
+
+                <p class="mb-4">
+                  At the heart of the system would be a <strong>Policy Engine</strong>. This is a centralized service that stores and executes jurisdiction-specific business rules. For example, when processing a payment in the EU, the policy engine would enforce MiCA&#39;s requirements regarding stablecoin white-listing and transaction limits.
+                </p>
+
+                <p class="mb-4">
+                  To address <strong>data sovereignty</strong> requirements like GDPR, the architecture would incorporate a <strong>Multi-Region Deployment</strong> strategy. Data for EU clients and contractors would be stored and processed exclusively in EU-based data centers. The entire system would be built on a foundation of <strong>Domain-Driven Design (DDD)</strong>, with clear bounded contexts for each major domain.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                A one-size-fits-all architecture is untenable; a modular, policy-driven approach is required. Regulatory complexity cannot be managed through a monolithic architecture. By decomposing the system into microservices and centralizing jurisdiction-specific rules, the architecture becomes adaptable and resilient.
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TB
+                  subgraph &#34;Global Load Balancer&#34;
+                  LB[&#34;Directs traffic based on user location&#34;]
+                  end
+
+                  subgraph &#34;EU Region (GDPR, MiCA)&#34;
+                  LB --&gt; EUApp[&#34;EU Application Instance&#34;]
+                  EUApp --&gt; EUPolicy[&#34;EU Policy Engine (MiCA Rules)&#34;]
+                  EUPolicy --&gt; EUPayment[&#34;EU Payment Service&#34;]
+                  EUPayment --&gt; EUDb[(&#34;EU Data Store&#34;)]
+                  EUPayment --&gt; EUNode[&#34;EU Blockchain Node&#34;]
+                  end
+
+                  subgraph &#34;UK Region (FCA Rules)&#34;
+                  LB --&gt; UKApp[&#34;UK Application Instance&#34;]
+                  UKApp --&gt; UKPolicy[&#34;UK Policy Engine (FCA Rules)&#34;]
+                  UKPolicy --&gt; UKPayment[&#34;UK Payment Service&#34;]
+                  UKPayment --&gt; UKDb[(&#34;UK Data Store&#34;)]
+                  UKPayment --&gt; UKNode[&#34;UK Blockchain Node&#34;]
+                  end
+
+                  subgraph &#34;US Region (State-Specific Rules)&#34;
+                  LB --&gt; USApp[&#34;US Application Instance&#34;]
+                  USApp --&gt; USPolicy[&#34;US Policy Engine (State Rules)&#34;]
+                  USPolicy --&gt; USPayment[&#34;US Payment Service&#34;]
+                  USPayment --&gt; USDb[(&#34;US Data Store&#34;)]
+                  USPayment --&gt; USNode[&#34;US Blockchain Node&#34;]
+                  end
+
+                  subgraph &#34;Central Services&#34;
+                  EventStore[(&#34;Global Event Store&#34;)]
+                  EUPayment --&gt; EventStore
+                  UKPayment --&gt; EventStore
+                  USPayment --&gt; EventStore
+                  end
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto mb-8">
+              <table class="w-full border-collapse bg-white rounded-lg shadow-sm">
+                <thead>
+                  <tr class="bg-primary-dark text-white">
+                    <th class="p-4 text-left">Regulatory Constraint</th>
+                    <th class="p-4 text-left">Jurisdiction</th>
+                    <th class="p-4 text-left">Architectural Pattern</th>
+                    <th class="p-4 text-left">Key Technical Components</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>MiCA (Stablecoin White-listing)</strong></td>
+                    <td class="p-4">European Union</td>
+                    <td class="p-4">Policy Engine, Smart Contract Access Control</td>
+                    <td class="p-4 text-neutral-light">A policy engine that checks if a stablecoin is on the EU&#39;s approved list before processing a payment. Smart contracts may also have their own access control lists.</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>GDPR (Data Sovereignty)</strong></td>
+                    <td class="p-4">European Union</td>
+                    <td class="p-4">Multi-Region Deployment, Data Mesh</td>
+                    <td class="p-4 text-neutral-light">All EU user data stored and processed in EU-based data centers. A data routing layer ensures data does not leave the region.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Value &amp; Risk Section -->
+      <section id="roi-analysis" class="py-16 bg-white">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-chart-bar text-primary mr-3"></i>Value &amp; Risk Assessment
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Quantitative analysis of ROI, risk frameworks, and trade-off evaluations for stablecoin architecture decisions.
+            </p>
+          </div>
+
+          <!-- ROI Analysis Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="roi-analysis">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">ROI Calculation and Value Quantification</h3>
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                How would you quantify the return on investment (ROI) for the architectural changes required to implement the stablecoin payroll system at CodeXperience? What metrics would you track, and how would you present the business case to non-technical stakeholders?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Quantifying ROI for the stablecoin payroll system requires both direct cost savings and indirect value creation metrics. The primary financial metric is the reduction in transaction fees: comparing the average cost of traditional international wire transfers ($20-50 per transaction) versus the average cost of a USDT transfer ($0.50-$5.00, depending on the blockchain and gas prices) <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link" target="_blank">[148]</a>.
+                </p>
+
+                <p class="mb-4">
+                  The formula for direct cost savings would be: $$ \text{Direct Savings} = (\text{Avg Wire Fee} - \text{Avg Crypto Fee}) \times \text{Number of Payments} $$
+                </p>
+
+                <p class="mb-4">
+                  Additional metrics include operational efficiency (hours saved by finance team), speed of settlement (cash flow improvement for contractors), and reduced FX costs. A comprehensive dashboard should track these metrics over time, comparing pre- and post-implementation periods.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                ROI calculations must account for both tangible cost savings and intangible benefits like improved contractor satisfaction, faster time-to-market for new features, and competitive differentiation in attracting global talent.
+              </p>
+            </div>
+          </div>
+
+          <!-- Risk Assessment Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="risk-assessment">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Risk Assessment and Mitigation Framework</h3>
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                Identify and assess the key technical, operational, and regulatory risks associated with implementing a stablecoin-based payroll system. How would you prioritize these risks and what architectural patterns would you employ to mitigate them?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  A comprehensive risk assessment for stablecoin payroll systems must consider three primary categories: Technical Risks, Operational Risks, and Regulatory/Compliance Risks. Each category requires specific architectural mitigation strategies.
+                </p>
+
+                <h5 class="font-semibold mb-3 text-primary">Technical Risks:</h5>
+                <ul class="mb-4 list-disc list-inside space-y-2">
+                  <li><strong>Blockchain Network Congestion</strong> - High gas fees or delayed transactions during peak usage</li>
+                  <li><strong>Smart Contract Vulnerabilities</strong> - Security flaws in payment processing contracts</li>
+                  <li><strong>Provider Dependency</strong> - Single point of failure with third-party services</li>
+                </ul>
+
+                <h5 class="font-semibold mb-3 text-primary">Operational Risks:</h5>
+                <ul class="mb-4 list-disc list-inside space-y-2">
+                  <li><strong>Transaction Monitoring</strong> - Difficulty tracking payment status across blockchain networks</li>
+                  <li><strong>Key Management</strong> - Secure storage and management of private keys</li>
+                  <li><strong>System Integration</strong> - Complexity integrating with existing payroll and accounting systems</li>
+                </ul>
+
+                <h5 class="font-semibold mb-3 text-primary">Regulatory Risks:</h5>
+                <ul class="mb-4 list-disc list-inside space-y-2">
+                  <li><strong>Compliance Changes</strong> - Evolving regulations affecting stablecoin usage</li>
+                  <li><strong>Tax Reporting</strong> - Complex tax implications for cross-border crypto payments</li>
+                  <li><strong>Audit Trail</strong> - Maintaining sufficient documentation for financial audits</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                Effective risk mitigation requires a layered defense strategy: technical controls (multi-chain support, circuit breakers), operational procedures (key management, monitoring), and compliance frameworks (policy engines, audit trails). The architecture must be resilient enough to handle both expected and unexpected failure modes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Documentation Section -->
+      <section id="adr-records" class="py-16 bg-surface">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-file-alt text-primary mr-3"></i>Documentation and Communication
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Architecture Decision Records and communication patterns for maintaining architectural knowledge.
+            </p>
+          </div>
+
+          <!-- ADR Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="adr-records">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Architecture Decision Records for Stablecoin Integration</h3>
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                How would you use Architecture Decision Records (ADRs) to document the key technical decisions involved in implementing the stablecoin payroll system? What specific decisions should be documented, and what information should each ADR contain?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Architecture Decision Records (ADRs) are crucial for documenting the rationale behind significant technical decisions in the stablecoin payroll project. Each ADR should follow a consistent template containing: Title, Context, Decision, Consequences, and Status.
+                </p>
+
+                <p class="mb-4">
+                  Key decisions requiring ADRs include:
+                </p>
+                <ul class="mb-4 list-disc list-inside space-y-2">
+                  <li><strong>ADR-001: Stablecoin Provider Selection</strong> - Choosing between providers like TransFi, Circle, or direct blockchain integration</li>
+                  <li><strong>ADR-002: Blockchain Network Selection</strong> - Decision between Ethereum, Tron, Polygon, or multi-chain approach</li>
+                  <li><strong>ADR-003: Wallet Management Strategy</strong> - Custodial vs non-custodial wallet architecture</li>
+                  <li><strong>ADR-004: Batch Processing Architecture</strong> - How to optimize transaction batching for cost efficiency</li>
+                  <li><strong>ADR-005: Compliance Monitoring</strong> - Approach to KYC/AML and regulatory compliance</li>
+                  <li><strong>ADR-006: Fallback Mechanisms</strong> - Handling blockchain network congestion or provider outages</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                ADRs serve as both technical documentation and communication tools. They provide context for future developers, justify decisions to stakeholders, and create an audit trail for compliance purposes. The most valuable ADRs explain not just what was decided, but why certain alternatives were rejected.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Organization Section -->
+      <section id="conway-law" class="py-16 bg-white">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-users text-primary mr-3"></i>Organization and Team Design
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Organizational alignment, Conway&#39;s Law implications, and team topology design for architecture success.
+            </p>
+          </div>
+
+          <!-- Conway's Law Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="conway-law">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Conway&#39;s Law and Team Topology Alignment</h3>
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                How does Conway&#39;s Law apply to the development of the stablecoin payroll system? What organizational structures and team topologies would best support the desired architecture, and how would you address any mismatches between the current organization and the target architecture?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Conway&#39;s Law states that organizations design systems that mirror their communication structures. For the stablecoin payroll project, this means the team topology will directly influence the resulting architecture. A mismatch between current organizational structure and target architecture can lead to friction and suboptimal design.
+                </p>
+
+                <p class="mb-4">
+                  The desired architecture—comprising independent services for payments, compliance, reporting, and integration—suggests an organizational structure based on <strong>service-oriented teams</strong>. Each team would own a complete business capability, from development to deployment to operations.
+                </p>
+
+                <p class="mb-4">
+                  However, many organizations have functionally aligned teams (separate development, operations, security, and compliance departments). This functional alignment can create friction when implementing an architecture that requires close collaboration across these boundaries.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                Successful architecture implementation often requires organizational change. The team topology should evolve to match the desired architecture, not the other way around. This might mean creating cross-functional teams, embedding compliance and security experts within development teams, and establishing clear ownership boundaries that align with service boundaries.
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  subgraph &#34;Target Architecture&#34;
+                  A[&#34;Payment Processing Service&#34;] --&gt; D[&#34;Event Bus&#34;]
+                  B[&#34;Compliance Service&#34;] --&gt; D
+                  C[&#34;Integration Service&#34;] --&gt; D
+                  E[&#34;Reporting Service&#34;] --&gt; D
+                  end
+
+                  subgraph &#34;Organizational Alignment&#34;
+                  F[&#34;Payment Team&#34;] --&gt; A
+                  G[&#34;Compliance Team&#34;] --&gt; B
+                  H[&#34;Integration Team&#34;] --&gt; C
+                  I[&#34;Analytics Team&#34;] --&gt; E
+                  J[&#34;Platform Team&#34;] --&gt; K[&#34;Shared Infrastructure&#34;]
+                  end
+
+                  subgraph &#34;Communication Flows&#34;
+                  F -.-&gt; G
+                  G -.-&gt; H
+                  H -.-&gt; I
+                  I -.-&gt; F
+                  end
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Translation Section -->
+      <section id="driver-mapping" class="py-16 bg-surface">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-exchange-alt text-primary mr-3"></i>Business-to-Architecture Translation
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Explicit mapping from business drivers to technical decisions and implementation patterns.
+            </p>
+          </div>
+
+          <!-- Driver Mapping Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="driver-mapping">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Business Driver to Technical Decision Mapping</h3>
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                Create a traceability matrix that maps specific business drivers from the stablecoin payroll initiative to corresponding technical decisions and architectural components. How do you ensure this traceability is maintained throughout the development lifecycle?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Business-to-architecture traceability ensures that every technical decision can be linked back to a specific business driver, requirement, or constraint. This traceability is maintained through a combination of documentation, tooling, and process.
+                </p>
+
+                <p class="mb-4">
+                  The traceability matrix serves as a living document that evolves with the project. Each business driver is mapped to one or more technical requirements, which are then mapped to specific architectural decisions and implementation components.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                Traceability is not just documentation—it&#39;s a design philosophy. When business drivers are explicitly mapped to technical decisions, teams can make better trade-off decisions and prioritize work based on business value. This traceability also helps manage scope creep and ensures the architecture remains aligned with business objectives throughout its evolution.
+              </p>
+            </div>
+
+            <div class="overflow-x-auto mb-8">
+              <table class="w-full border-collapse bg-white rounded-lg shadow-sm">
+                <thead>
+                  <tr class="bg-primary text-white">
+                    <th class="p-4 text-left">Business Driver</th>
+                    <th class="p-4 text-left">Technical Requirement</th>
+                    <th class="p-4 text-left">Architectural Decision</th>
+                    <th class="p-4 text-left">Implementation Component</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Reduce International Transfer Fees</strong></td>
+                    <td class="p-4 text-neutral-light">Minimize per-transaction costs</td>
+                    <td class="p-4 text-neutral-light">Implement smart batching to group multiple payments</td>
+                    <td class="p-4">
+                      <code>BatchPaymentProcessor</code> with optimization algorithm
+                    </td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="p-4 font-medium"><strong>Accelerate Payment Settlement</strong></td>
+                    <td class="p-4 text-neutral-light">Achieve sub-hour settlement times</td>
+                    <td class="p-4 text-neutral-light">Use fast blockchain networks and async processing</td>
+                    <td class="p-4">Tron network integration with WebSocket status updates</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Evolution Section -->
+      <section id="tech-debt" class="py-16 bg-white">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-3xl font-bold text-neutral mb-6">
+              <i class="fas fa-project-diagram text-primary mr-3"></i>Architecture Evolution
+            </h2>
+            <p class="text-lg text-neutral-light leading-relaxed">
+              Technical debt management, migration strategies, and evolutionary architecture patterns for stablecoin projects.
+            </p>
+          </div>
+
+          <!-- Technical Debt Question -->
+          <div class="question-card rounded-xl p-8 mb-12" id="tech-debt">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="font-serif text-2xl font-semibold text-neutral">Technical Debt Management Strategy</h3>
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-primary">Question:</h4>
+              <p class="text-neutral-light leading-relaxed">
+                How would you identify, track, and manage technical debt in the stablecoin payroll architecture? What types of technical debt are particularly relevant to blockchain-based systems, and how do you balance addressing debt with delivering new features?
+              </p>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="font-semibold text-lg mb-4 text-accent">Analysis &amp; Answer:</h4>
+              <div class="prose max-w-none">
+                <p class="mb-4">
+                  Technical debt in blockchain-based systems manifests differently than in traditional applications. It includes not just code quality issues but also architectural decisions that may become problematic as the technology and regulatory landscape evolves.
+                </p>
+
+                <p class="mb-4">
+                  <strong>Types of technical debt specific to stablecoin systems:</strong>
+                </p>
+                <ul class="mb-4 list-disc list-inside space-y-2">
+                  <li><strong>Chain-Specific Dependencies</strong> - Over-reliance on a single blockchain network</li>
+                  <li><strong>Provider Lock-in</strong> - Tight coupling to a specific stablecoin provider&#39;s API</li>
+                  <li><strong>Smart Contract Debt</strong> - Suboptimal contract design that increases gas costs</li>
+                  <li><strong>Compliance Debt</strong> - Insufficient audit trails or compliance monitoring</li>
+                  <li><strong>Test Coverage Gaps</strong> - Inadequate testing of edge cases in payment flows</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="insight-highlight rounded-lg p-6 mb-8">
+              <h5 class="font-semibold text-lg mb-3 text-accent">
+                <i class="fas fa-lightbulb mr-2"></i>Key Insight
+              </h5>
+              <p class="text-neutral-light">
+                Technical debt in blockchain systems compounds differently than in traditional systems due to the immutable nature of deployed contracts and the rapid evolution of the ecosystem. Proactive debt management, including regular architecture reviews and upgrade paths for smart contracts, is essential for long-term success.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- References Section -->
+      <section id="citations" class="py-16 bg-surface">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <h2 class="font-serif text-3xl font-bold text-neutral mb-12 text-center">
+            <i class="fas fa-book text-primary mr-3"></i>References and Citations
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <h3 class="font-serif text-xl font-semibold mb-4 text-primary">
+                <i class="fas fa-external-link-alt mr-2"></i>External Sources
+              </h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-accent pl-4">
+                  <p class="text-sm font-medium mb-1">[141] ChainCatcher</p>
+                  <a href="https://www.chaincatcher.com/en/article/2184864" class="citation-link text-sm" target="_blank">
+                    Blockchain Network Comparison for USDT Transactions
+                  </a>
+                </div>
+                <div class="border-l-4 border-accent pl-4">
+                  <p class="text-sm font-medium mb-1">[148] TransFi Case Study</p>
+                  <a href="https://www.transfi.com/blog/case-study-a-small-business-in-turkey-switches-to-paying-contractors-in-usdt-via-transfi" class="citation-link text-sm" target="_blank">
+                    Small Business in Turkey Switches to USDT Payments
+                  </a>
+                </div>
+                <div class="border-l-4 border-accent pl-4">
+                  <p class="text-sm font-medium mb-1">[156] Vizologi</p>
+                  <a href="https://vizologi.com/business-strategy-canvas/tether-business-model-canvas/" class="citation-link text-sm" target="_blank">
+                    Tether Business Model Canvas Analysis
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <h3 class="font-serif text-xl font-semibold mb-4 text-primary">
+                <i class="fas fa-graduation-cap mr-2"></i>Academic Frameworks
+              </h3>
+              <div class="space-y-3 text-sm text-neutral-light">
+                <p><strong>Business Model Canvas (BMC)</strong> - Strategic management template for developing new or documenting existing business models</p>
+                <p><strong>Conway&#39;s Law</strong> - Organizations design systems that mirror their communication structures</p>
+                <p><strong>Architecture Decision Records (ADR)</strong> - Documentation for capturing architectural decisions and their rationales</p>
+                <p><strong>Domain-Driven Design (DDD)</strong> - Approach to software development that emphasizes collaboration between technical and domain experts</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 bg-white rounded-xl p-8 shadow-lg" id="glossary">
+            <h3 class="font-serif text-xl font-semibold mb-6 text-primary">
+              <i class="fas fa-book-open mr-2"></i>Glossary of Key Terms
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold mb-3 text-accent">Business &amp; Strategy</h4>
+                <div class="space-y-2 text-sm">
+                  <p><strong>Business Model Canvas (BMC)</strong> - 9-block framework mapping strategy to operations</p>
+                  <p><strong>Value Proposition</strong> - Customer value bundle defining technical features and priorities</p>
+                  <p><strong>Conway&#39;s Law</strong> - Team topology affects system architecture design</p>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-3 text-accent">Technical Architecture</h4>
+                <div class="space-y-2 text-sm">
+                  <p><strong>Domain-Driven Design (DDD)</strong> - Guides microservices decomposition and team organization</p>
+                  <p><strong>Bounded Context</strong> - Explicit model boundary defining microservice boundaries</p>
+                  <p><strong>Technical Debt</strong> - Future rework cost from quick solutions</p>
+                  <p><strong>ADR</strong> - Immutable log of architectural decisions and trade-offs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-primary-dark text-white py-12">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <div class="text-center">
+            <h3 class="font-serif text-2xl font-bold mb-4">Business-Architecture Translation Assessment</h3>
+            <p class="text-white/80 mb-6">
+              A comprehensive framework for evaluating technical leaders&#39; ability to translate business strategy into architectural decisions for stablecoin projects.
+            </p>
+            <div class="flex justify-center space-x-6 text-sm">
+              <span><i class="fas fa-calendar mr-2"></i>2025</span>
+              <span><i class="fas fa-users mr-2"></i>Senior Technical Assessment</span>
+              <span><i class="fas fa-chart-line mr-2"></i>6 Assessment Dimensions</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#0f766e',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#134e4a',
+                lineColor: '#374151',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#14b8a6',
+                background: '#ffffff',
+                mainBkg: '#0f766e',
+                secondBkg: '#14b8a6',
+                tertiaryBkg: '#f8fafc',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#14b8a6',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#ffffff',
+                textColor: '#374151'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            graph: {
+                useMaxWidth: false,
+                htmlLabels: true
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid controls after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle (for responsive design)
+        function toggleMobileMenu() {
+            const tocNav = document.querySelector('.toc-nav');
+            tocNav.classList.toggle('open');
+        }
+
+        // Close TOC when clicking outside
+        document.addEventListener('click', function(event) {
+            const tocNav = document.querySelector('.toc-nav');
+            const hamburgerButton = document.querySelector('.mobile-menu-button');
+            
+            // Check if the click is outside the TOC and not on the hamburger button
+            if (tocNav.classList.contains('open') && 
+                !tocNav.contains(event.target) && 
+                (!hamburgerButton || !hamburgerButton.contains(event.target))) {
+                tocNav.classList.remove('open');
+            }
+        });
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 1024) {
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            menuButton.className = 'mobile-menu-button fixed top-4 left-4 z-50 bg-primary text-white p-3 rounded-lg shadow-lg lg:hidden';
+            menuButton.onclick = toggleMobileMenu;
+            document.body.appendChild(menuButton);
+        }
+    </script>
+  
+
+</body></html>
