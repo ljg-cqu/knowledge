@@ -1,0 +1,584 @@
+# Product Use Case Scenario Generator
+
+Generate 25–30 scenario-based use cases testing product capabilities across key dimensions with evidence-based validation criteria, visual artifacts, and quantitative metrics.
+
+## I. Use Cases & Scenarios
+
+### Use Case 1: Product Capability Validation
+**Scenario**: Your product is expanding from core features to a comprehensive platform and needs validation across 6 capability areas to ensure it can handle complex enterprise scenarios with minimal friction.
+
+**Application**: Generate 30 use case scenarios across 6 dimensions (Strategy Alignment, User Discovery, Feature Prioritization, Analytics, Stakeholder Management, Market Adoption) with complexity mix (20% Basic/40% Intermediate/40% Advanced) to test real-world product performance under constraints.
+
+**Example Scenario**: "Top 5 enterprise customers (40% revenue) request a feature that conflicts with your mass-market product vision. How does the product support evaluation and decision-making?"
+
+**Outcome**: Comprehensive validation revealing how the product navigates trade-offs, stakeholder complexity, and incomplete information—differentiating strategic products from tactical tools.
+
+---
+
+### Use Case 2: Product Maturity Assessment & Roadmap
+**Scenario**: Your product lacks standardized capability benchmarks. Feature prioritization feels arbitrary, and the team doesn't know which capabilities to develop for enterprise readiness.
+
+**Application**: Use the 6 capability areas (Strategy, Discovery, Prioritization, Metrics, Stakeholder, GTM) as maturity framework. Generate scenarios at different complexity levels (Basic/Intermediate/Advanced) to map current product maturity and improvement areas.
+
+**Example Assessment**:
+- **Basic**: Core execution (B-level: "Track activation metrics in dashboard")
+- **Intermediate**: Handle trade-offs (I-level: "Support churn analysis vs. new feature requests?")
+- **Advanced**: Shape portfolio (A-level: "Enable evaluation: API platform, mobile app, or international expansion?")
+
+**Outcome**: Clear maturity rubric with scenario-based evidence for roadmap prioritization and structured product development plans.
+
+---
+
+### Use Case 3: Feature Evaluation Calibration Across Teams
+**Scenario**: Your 5 product teams evaluate features differently—some focus on technical feasibility, others on user requests. Evaluation quality is inconsistent, leading to scattered roadmaps and missed opportunities.
+
+**Application**: Standardize on scenario-based evaluation with multi-dimensional criteria (≥2 dimensions: Product/Business/Strategic/Operational). Use validation framework to ensure consistency across teams.
+
+**Calibration Session**: Review sample scenarios with explicit trade-offs, stakeholder impact, and success criteria. Train teams to evaluate capability signals (not just feature checklists).
+
+**Outcome**: 85%+ team alignment on "build/defer" decisions; reduced planning cycles by 30% through clearer evaluation criteria.
+
+---
+
+### Use Case 4: Product Documentation & User Education
+**Scenario**: Your product documentation covers features (RICE prioritization, JTBD templates, OKR tracking) but users struggle to apply them in messy real-world situations with conflicting data and stakeholder pressure.
+
+**Application**: Use generated use case scenarios as educational content. Each scenario includes framework application [Ref: G#/A#], concrete steps, and explicit trade-offs/alternatives.
+
+**Documentation Structure**:
+1. **Module 1-6**: One capability per module (Strategy, Discovery, etc.)
+2. **Format**: Scenario → Use case walkthrough → Solution approach → Framework deep-dive
+3. **Artifacts**: Provide decision matrices, journey maps, dashboards as templates
+
+**Outcome**: Users demonstrate 40% improvement in framework application during product adoption; user satisfaction increases by 25%.
+
+---
+
+### Use Case 5: Product Strategy Validation & Investment Decisions
+**Scenario**: Your C-suite debates whether product should prioritize enterprise features, PLG capabilities, or international expansion. Product leaders present conflicting recommendations without shared evaluation framework.
+
+**Application**: Generate Advanced-level (portfolio/vision/P&L) scenarios for strategy workshops. Use multi-dimensional analysis (Revenue, Strategic Alignment, Reach, Velocity, Moat) with weighted scoring.
+
+**Example Workshop**: "Product supports 3 growth bets (API platform, mobile app, international). Resources for 1.5 bets. How does product enable decision-making?"
+
+**Outcome**: Executive alignment in 2 sessions (vs. 6+ months of drift); transparent product capabilities for trade-off evaluation; documented framework for consistent strategic decisions.
+
+---
+
+## II. Context & Scope
+
+**Purpose**: Validate product capabilities through multi-dimensional use case scenarios requiring stakeholder management, data-driven decision support, and strategic trade-off evaluation.
+
+**Assumptions**: Product implements frameworks (RICE, JTBD, OKR, AARRR, North Star, PMF, Continuous Discovery, PLG); user provides context or accepts generic scenarios; text/JSON output; 10-15min validation per scenario.
+
+**Constraints**: 150-300 words/criteria (excluding artifacts); ≥70% citation coverage (≥30% with ≥2 cites); 100% scenario-based (no feature lists); enterprise-grade capabilities only.
+
+**Terms**: Use Case (scenario testing product capability), Floor (≥ = minimum threshold), Quality gate (mandatory checkpoint—fail = stop/fix), Complexity (Basic=core execution, Intermediate=trade-offs/strategy, Advanced=portfolio/vision/P&L), Dimensions (Product/Business/Strategic/Operational).
+
+**Scope**: Stakeholder complexity, resource constraints, strategic ambiguity. **Exclude**: Simple feature demos, greenfield design, basic functionality, domain-specific technical implementations.
+
+**Limitations**: Generic scenarios lack industry nuance (customize per industry); citation availability varies (≥50% from last 3yrs); framework application needs contextual judgment (include trade-offs/limitations); quantitative validation focuses on capabilities (add user validation).
+
+## III. Requirements
+
+### Quantitative Floors
+
+**Scenario Context**: You're validating product capabilities across 5-6 key areas for enterprise readiness evaluation. Need enough use case scenarios to cover diverse workflows without redundancy while maintaining validation quality.
+
+**Use Cases**: 25–30 total | 20% Basic/40% Intermediate/40% Advanced (±5%) | 150–300 words | ≥70% have ≥1 cite (≥30% have ≥2) | Each scenario validates ≥2 dimensions
+
+**Capability Coverage (MECE)**: 1. Strategy & Vision Support (5–6) | 2. Discovery & User Research Tools (4–5) | 3. Prioritization & Roadmapping Features (5–6) | 4. Metrics & Analytics Capabilities (4–5) | 5. Stakeholder Management Features (4–5) | 6. Go-to-Market & Growth Support (4–5)
+
+**References** (build before scenarios): Glossary ≥10 terms | Tools ≥5 platforms | Literature ≥6 books (≥2 ZH: 俞军, 梁宁, 苏杰) | Citations ≥12 APA 7th with [EN]/[ZH] tags
+
+**Visuals**: ≥1 diagram + ≥1 table per capability area (6+6 minimum)
+
+**Scaling**: For >30 scenarios, multiply reference floors by 1.5×
+
+**Real-World Example**: A SaaS product team validating enterprise readiness generated 30 scenarios (6 Basic/12 Intermediate/12 Advanced) across 6 capability areas. Each product manager owned 1 area (5 scenarios), validated 3-4 per customer demo, allowing coverage of 7-10 customer profiles before rotation.
+
+### Citation Standards
+
+**Format**: APA 7th + tag: `Author, A. (Year). *Title*. Publisher. [EN]` | Inline: `[Ref: ID]` (G#=Glossary, T#=Tool, L#=Literature, A#=Citation)
+
+**Distribution**: EN 50–70% (target 60%) | ZH 20–40% (target 30%) | Other 5–15% (target 10%)
+
+**Source Types** (≥3): Frameworks (RICE, JTBD, OST), Research/data (studies, benchmarks), Case studies (launches, postmortems), Tools (Mixpanel, ProductBoard, Dovetail)
+
+### Quality Gates (fail ANY = stop, fix, re-validate ALL)
+
+**Scenario Context**: A product team used outdated use case scenarios citing 2018 frameworks. Prospects immediately flagged the content as "not current," damaging product credibility and causing 2 deal losses. Quality gates prevent this.
+
+1. **Recency**: ≥50% from last 3yrs (≥70% for AI/ML/platform/data)
+   - *Example fail*: Citing pre-COVID PLG metrics without remote-work context
+   - *Example pass*: Referencing 2023 Lenny's Newsletter on AI product strategy
+
+2. **Source Diversity**: ≥3 types; no type >25%
+   - *Example fail*: 80% blog posts, 0 tools/books
+   - *Example pass*: Mix of frameworks (RICE), tools (Mixpanel), research (Torres), case studies (Spotify)
+
+3. **Per-Capability Evidence**: Each capability has ≥2 authoritative + ≥1 tool
+   - *Example fail*: Metrics capability with no analytics platform references
+   - *Example pass*: Metrics with Amplitude + Mixpanel + Cagan's *Inspired*
+
+4. **Tool Completeness**: Pricing, user base, update (≤18mo), ≥3 integrations
+   - *Why*: Prospects evaluate tool ecosystem as product maturity signal
+
+5. **Link Validation**: 100% URLs accessible/archived
+   - *Scenario*: Broken links during product demo create credibility issues
+
+6. **Cross-Reference Integrity**: 100% [Ref: ID] resolve; no orphans
+   - *Scenario*: Scenario references [Ref: G5] but glossary only has G1-G4 → credibility loss
+
+**Mitigation**: Recency fail → flag dated info with caveats | Diversity fail → expand research | Link fail → use Web Archive or replace
+
+## IV. Execution
+
+### Step 1: Plan Allocation
+
+**Scenario**: You're validating enterprise-grade product capabilities. The product must support portfolio strategy, roadmap management, and executive decision-making. You need scenarios weighted toward strategic support (Intermediate/Advanced) with some basic execution validation (Basic).
+
+**Action**: Distribute 25–30 across 6 capability areas (20% Basic/40% Intermediate/40% Advanced). Each: 4–6 scenarios with ≥1 Basic, ≥1 Intermediate, ≥1 Advanced.
+
+**Example** (30 scenarios for enterprise product):
+- Strategy Support (5): 1B (metrics tracking) / 2I (roadmap trade-offs) / 2A (portfolio decisions)
+- Discovery Tools (5): 1B (research execution) / 2I (research prioritization) / 2A (research strategy)
+- Prioritization (6): 1B (RICE calculation) / 2I (framework selection) / 3A (competing priorities)
+- Metrics (5): 1B (dashboard setup) / 2I (metric selection) / 2A (North Star strategy)
+- Stakeholder (4): 0B / 2I (conflict management) / 2A (executive alignment)
+- GTM Support (5): 1B (launch checklist) / 2I (channel strategy) / 2A (GTM bets)
+- **Total**: 6B/12I/12A
+
+**Contrast—Mid-Market Product** (more execution-heavy): Would shift to 30% Basic/45% Intermediate/25% Advanced to validate core functionality
+
+### Step 2: Build References (BEFORE scenarios → run Gates 1–6 after)
+
+**Scenario**: A prospect asks "How does your product support feature prioritization?" Sales rep mentions RICE framework but has no reference materials and can't demonstrate limitations or alternatives. Discussion stays surface-level.
+
+**Solution**: Build reference library BEFORE generating use case scenarios so validation criteria include proper citations, framework limitations, and tool context.
+
+**Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST + optional (HEART, Value/Effort, KANO, V2MOM, Dual-track, ICE)
+- **Format**: Term, definition (1–2 sentences), use cases, related, limitations
+- **Example**: `G2. RICE (Prioritization Framework) | Reach × Impact × Confidence ÷ Effort | Use: Feature ranking, roadmap | Related: G8-ICE, G11-Value/Effort | Limitations: Doesn't capture strategic value, tech debt, or competitive timing`
+- Assign G1, G2...
+
+**Tools (≥5)**: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro, Figma), Feedback (Pendo, Canny)
+- **Include**: Category, pricing, users, update (≤18mo), ≥3 integrations, product use case, URL
+- **Why**: Prospects evaluate your product's integration ecosystem; outdated integrations signal weak product maturity
+- Assign T1, T2...
+
+**Literature (≥6)**: EN—Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*) | ZH (≥2)—俞军 (*俞军产品方法论*), 梁宁 (*产品思维30讲*), 苏杰 (*人人都是产品经理*)
+- **Include**: Author, title, year, summary, frameworks, relevance
+- **Why Chinese sources matter**: For global products or China-market expansion, demonstrates cross-cultural framework support
+- Assign L1, L2...
+
+**Citations (≥12)**: Convert to APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/case studies/tools | Assign A1, A2...
+- **Alternatives**: Gartner, Forrester, Lenny's Newsletter, Product Coalition, HBR, MIT Sloan
+- **Scenario**: Prospect mentions "latest PLG trends"—you reference A7 (2024 OpenView PLG Benchmarks) to establish product credibility
+
+### Step 3: Generate Use Cases (5 at a time → self-check each batch)
+
+**Scenario**: You've drafted 5 use cases but realize 3 are feature lists ("Product has RICE", "Product supports AARRR") instead of capability tests. These won't demonstrate enterprise readiness.
+
+**Solution**: Every use case must present a scenario with constraints testing multiple product capabilities.
+
+**Use Case Formula**:
+- **Format**: "How does product support...", "Product enables user to...", "When executive wants X, product provides..."
+- **Include constraints**: Time (Q3 launch), resources (2 engineers), stakeholder pressure (CFO demands ROI), conflicting data (qual says X, quant says Y)
+- **Test ≥2 capability dimensions**: Trade-off analysis, opportunity cost evaluation, stakeholder management, incomplete data handling, execution workflow
+- **Single scenario**: Not "Design X AND solve Y"
+- **Avoid**: "Product has feature X?", "Product supports Y?", "Product includes Z?"
+
+**Complexity Calibration**:
+- **Basic (execution)**: "How does product track activation metrics for a new feature?"
+- **Intermediate (strategy/trade-offs)**: "Churn is 8% (target: 5%) but roadmap is full. How does product support retention vs. new feature prioritization?"
+- **Advanced (portfolio/vision/P&L)**: "CEO allocates $5M for ONE bet: API platform, mobile app, or international. How does product enable decision-making?"
+
+**Validation Criteria** (150–300 words):
+1. **Key Capability** (1 sentence): "Tests revenue protection vs. PMF evaluation; reveals how product supports executive pressure navigation"
+2. **Framework/approach** [Ref: G#/A#]: "Product implements RICE [Ref: G2] with decision matrix tool [Ref: T2]"
+3. **Multi-dimensional** (≥2): Address Product, Business, Strategic, Operational dimensions
+4. **Concrete workflow**: "First, user discovers JTBD. Second, product quantifies with RICE. Third, product assesses North Star"
+5. **Trade-off support**: "Product visualizes Option A optimizing X but sacrificing Y. Option B..."
+6. **Stakeholder features**: "Product generates presentation for CEO with recommendation, criteria, precedent"
+7. **Success metrics**: "Product tracks retention (+20%), adoption (30% in 6mo), velocity (-10% max)"
+8. **Citations** (≥1 [Ref: ID]): Flag if low confidence
+9. **Artifact** (optional): Matrix, journey, dashboard, roadmap
+
+**Batch Self-Check** (per 5):
+- ✓ Scenario-based (not "has feature...")
+- ✓ Tests ≥2 capabilities
+- ✓ 150–300 words
+- ✓ Concrete capability (specific workflow)
+- ✓ ≥2 dimensions
+- ✓ ≥3/5 have ≥1 cite (≥1/5 has ≥2)
+- ✓ Complexity matches content (Basic/Intermediate/Advanced)
+
+### Step 4: Create Visuals (≥1 diagram + ≥1 table per capability; reference from ≥50% scenarios)
+
+**Scenario**: Prospect asks "How does your product visualize that trade-off?" You verbally describe a 2×2 matrix but lose clarity. With a pre-built visual in product, you'd share screen and have a concrete demonstration.
+
+**Purpose**: Visuals serve as product demonstration tools during sales demos, user education artifacts for adoption, and templates users can reference.
+
+**Visual Types by Capability**:
+- **Strategy**: Roadmap (now/next/later), competitive 2×2, decision matrix
+- **Discovery**: User journey, research synthesis, interview script
+- **Prioritization**: OST (Opportunity/Solution/Tree), Value/Effort 2×2, RICE table
+- **Metrics**: AARRR funnel, cohort retention chart, dashboard mockup
+- **Stakeholder**: Power/interest 2×2, engagement matrix, RACI
+- **GTM**: Growth loop diagram, channel strategy table, launch checklist
+
+**Best Practices**:
+- **Tables for quantitative**: Show weighted scoring, comparison matrices
+- **Diagrams for workflows**: Illustrate funnels, journeys, loops
+- **Include units/time**: Not just "Revenue"—"$2M ARR (12mo projection)"
+- **Cite sources**: "Based on [Ref: A7] 2024 PLG Benchmarks"
+- **Reference from ≥50% scenarios**: Don't create orphan visuals
+
+**Example—Prioritization Table** (referenced in UC11-UC16):
+```
+| Feature      | Reach | Impact | Confidence | Effort | RICE Score |
+|--------------|-------|--------|------------|--------|------------|
+| API Platform | 500   | 3      | 80%        | 8      | 150        |
+| Mobile App   | 5000  | 2      | 60%        | 12     | 500        |
+```
+
+### Step 5: Populate References
+
+**Scenario**: During a product demo, a prospect says "Your product mentions RICE limitations but I need to understand them deeper—what are they?" Without a complete glossary, sales team can't demonstrate effectively.
+
+**Solution**: Populate all reference sections with complete metadata so product demonstrations can be conducted with depth.
+
+**Glossary Format**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
+- **Example**: `G2. RICE (Prioritization Framework) | Reach × Impact × Confidence ÷ Effort | Use: Feature ranking, roadmap | Related: G8-ICE, G11-Value/Effort | Limitations: Doesn't capture strategic value, tech debt, competitive timing`
+
+**Tools Format**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | Product integration use case | URL | Group by category
+- **Example**: `T1. Mixpanel (Analytics) | Product analytics for tracking user behavior | From $25/mo | 6000+ companies | Q4 2024 | Segment, Slack, Jira, Salesforce | Track activation, retention, conversion funnels | mixpanel.com`
+- **Why pricing/users matter**: Signals integration maturity; prospects ask "What tools does your product integrate with?"
+
+**Literature Format**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN first, then ≥2 ZH)
+- **Example**: `L1. Cagan, M., *Inspired*, 2017 | Product discovery, continuous validation, empowered teams | Foundational for product-led orgs`
+
+**Citations Format**: **A#. [Citation] [Lang]**
+- Books: `Author, A. (Year). *Title*. Publisher. [EN]`
+- Articles: `Author, A. (Year). Title. *Journal*, Vol(Issue), pages. DOI [EN]`
+- Web: `Author. (Year). *Title*. Site. URL [EN]`
+- ZH: `俞军. (2020). *俞军产品方法论*. 中信出版社. [ZH] (Yu, J. (2020). *Yu Jun's Product Methodology*. CITIC Press.)`
+- Sort by ID
+
+**Final Check**:
+- ✓ 100% [Ref: ID] resolve (no broken references)
+- ✓ No orphans (every reference used in ≥1 answer)
+- ✓ All fields complete (no TBD/placeholder)
+- ✓ All APA citations have [EN]/[ZH] tags
+
+### Step 6: Run 12 Validations (fail ANY = stop, fix, re-run ALL)
+
+**Scenario**: You finish generating 30 use case scenarios but skip validation. During product demos, you discover: (1) 40% lack citations → can't demonstrate framework depth; (2) 5 scenarios are feature lists → prospects validate in 30sec; (3) Links are broken → credibility suffers.
+
+**Consequence**: 2 strong prospects decline citing "product maturity concerns." Cost: $500K pipeline, 3 months delay, damaged product reputation.
+
+**Solution**: Run ALL 12 validations. ANY failure = stop, fix, re-run ALL.
+
+**Validation Checklist**:
+
+1. **Floors**: G≥10, T≥5, L≥6, A≥12, UC=25–30, 20% Basic/40% Intermediate/40% Advanced (±5%)
+   - *Why*: Insufficient scenarios → repetition across demos
+
+2. **Citations**: ≥70% have ≥1; ≥30% have ≥2
+   - *Why*: Low citation → surface-level capability demonstration
+
+3. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
+   - *Why*: Balance global + regional product knowledge
+
+4. **Recency**: ≥50% from last 3yrs (≥70% if AI/ML/platform/data)
+   - *Why*: Dated content → prospects question product sophistication
+
+5. **Source Types**: ≥3 types; no type >25%
+   - *Why*: Single source type (e.g., only blogs) → weak evidence
+
+6. **Links**: 100% accessible/archived
+   - *Why*: Broken links → lost credibility
+
+7. **Cross-Refs**: 100% [Ref: ID] resolve; no orphans
+   - *Why*: Broken refs → confusion during demos
+
+8. **Word Count**: Sample 5; 100% within 150–300
+   - *Why*: Too short → incomplete; too long → demo drag
+
+9. **Key Capabilities**: 100% concrete (specific workflow/feature)
+   - *Why*: Generic capability → can't differentiate from competitors
+
+10. **Per-Capability Evidence**: 6/6 capabilities have ≥2 authoritative + ≥1 tool
+    - *Why*: Missing tools → can't assess integration maturity
+
+11. **Framework Usage**: ≥80% correct + cited + limitations
+    - *Why*: Framework misuse → teaches bad practices
+
+12. **Capability Ratio**: ≥70% scenario-based
+    - *Why*: Feature lists → test existence not capability
+
+### Step 7: Final Review
+
+**Scenario**: You've passed all 12 validations but haven't tested use cases with real sales team. You deploy the scenario set and discover use cases are ambiguous ("What does 'constrained resources' mean?"), lack workflow depth, or favor one product philosophy (data-driven only).
+
+**Solution**: Conduct final holistic review with sample sales/customer success team before deployment.
+
+**Use Case Review Checklist**:
+- **Clarity**: Single scenario ("Prioritize churn vs. features?")
+  - ✗ Ambiguous: "Solve retention AND database issues"
+- **Capability**: Tests workflow not feature existence
+  - ✓ "CEO wants AI—how does product support approach?"
+  - ✗ "Product has AARRR tracking?"
+- **Depth**: Enables trade-off demonstration
+  - ✓ "Choose ONE: API, mobile, intl—how does product enable decision?"
+  - ✗ "Product supports mobile app—yes/no?"
+- **Realism**: Enterprise-grade scenarios
+  - ✓ "Sales wants 3 features ($5M deal). Engineering says derails roadmap. How does product support resolution?"
+  - ✗ "Product designs Instagram in 45min"
+- **Discriminative**: Capability demonstration not feature list
+  - ✓ "When would product's RICE implementation mislead? How does product supplement?"
+  - ✗ "Product includes RICE?"
+- **Alignment**: Complexity matches target market
+  - Basic: core execution | Intermediate: strategy/trade-offs | Advanced: portfolio/vision/P&L
+
+**Validation Criteria Review** (sample ≥5):
+- ✓ ≥2 dimensions (Product, Business, Strategic, Operational)
+- ✓ Concrete workflows/frameworks with citations
+- ✓ Explicit trade-off support ("Product visualizes Option A optimizing X but sacrificing Y")
+- ✓ Evidence-based (not marketing claims)
+- ✓ Success criteria (measurable outcomes)
+- ✓ Acknowledges limitations/assumptions
+
+**Submission Checklist**:
+- ✓ All 12 validations PASS
+- ✓ All floors met (G≥10, T≥5, L≥6, A≥12, UC=25-30)
+- ✓ All 6 quality gates passed
+- ✓ TOC with working links
+- ✓ No placeholders (no "TBD", "TODO")
+- ✓ Consistent formatting (APA 7th, numbering)
+- ✓ **Balanced perspectives**: Support different product philosophies
+  - User-first vs. business-first
+  - Data-driven vs. intuition-led
+  - Innovation vs. execution
+  - Product-led vs. sales-led
+
+**Pilot Test**: Share with 2-3 sales reps → conduct 1 mock demo per rep → gather feedback on clarity, depth, time → iterate before full deployment
+
+## V. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+
+**Scenario**: Your team generates use case scenario sets but lacks a systematic way to verify quality before deployment. Some sets pass informal review but fail during live product demos. You need a standard validation report.
+
+**Purpose**: This table serves as your quality gate checklist. Fill it out AFTER completing Steps 1-7. ANY fail = stop, fix issue, re-run ALL validations from scratch.
+
+**Usage**: Copy this table, fill in measurements, verify against criteria. Share with stakeholders as quality documentation.
+
+| # | Check              | Measurement                           | Criteria                            | Result | Status    |
+|---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
+| 1 | Floors             | G:__ T:__ L:__ A:__ UC:__ (__B/__I/__A)| G≥10, T≥5, L≥6, A≥12, UC:25-30, 20/40/40% | | PASS/FAIL |
+| 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
+| 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
+| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% AI/platform)             | | PASS/FAIL |
+| 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
+| 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
+| 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
+| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
+| 9 | Key Capabilities   | __/__ concrete                        | 100%                                | | PASS/FAIL |
+| 10| Per-Capability Evidence | __/6 (≥2 auth + ≥1 tool)         | 6/6                                 | | PASS/FAIL |
+| 11| Frameworks         | __/__ correct+cited+limits            | ≥80%                                | | PASS/FAIL |
+| 12| Capability Ratio   | __% scenario-based                    | ≥70%                                | | PASS/FAIL |
+
+**Example Filled Report** (Enterprise product validation, 30 use cases):
+| # | Check              | Measurement                           | Result               | Status |
+|---|--------------------|---------------------------------------|----------------------|--------|
+| 1 | Floors             | G:12 T:6 L:7 A:15 UC:30 (6B/12I/12A)  | Meets all floors     | PASS   |
+| 2 | Citations          | 80%≥1, 35%≥2                          | 80%≥70%, 35%≥30%     | PASS   |
+| 3 | Language           | EN:60%, ZH:28%, Other:12%             | Within ranges        | PASS   |
+| 4 | Recency            | 65% from 3yrs (domain: SaaS)          | 65%≥50%              | PASS   |
+| 5 | Source Types       | 4 types; max 22%                      | 4≥3, 22%≤25%         | PASS   |
+| 6 | Links              | 28/28 accessible                      | 100%                 | PASS   |
+
+## VI. Use Case Quality (review each; fails ≥2 = rewrite/replace)
+
+**Scenario**: You deploy 30 use case scenarios. After 5 product demos, you notice: (1) Prospects validate 8 scenarios in <3 minutes (too simple); (2) 4 scenarios get the same generic feature list (not discriminative); (3) 3 scenarios confuse prospects (unclear).
+
+**Solution**: Evaluate EACH use case against 6 criteria. If a use case fails ≥2 criteria, rewrite or replace.
+
+**Quality Criteria with Examples**:
+
+1. **Clarity**: Single, unambiguous scenario
+   - ✓ "Product supports prioritization: activation vs. churn?"
+   - ✗ "Product handles retention + database optimization" (two topics)
+
+2. **Capability**: Tests workflow not feature existence
+   - ✓ "CEO wants AI features—how does product support approach development?"
+   - ✗ "Product has 5 AARRR tracking features?" (feature list)
+
+3. **Depth**: Enables trade-off demonstration
+   - ✓ "Choose ONE: API, mobile, or international. How does product enable decision-making?"
+   - ✗ "Product supports mobile app—yes/no?" (binary)
+
+4. **Realism**: Authentic enterprise-grade scenario
+   - ✓ "Sales wants 3 custom features ($5M deal). Engineering says it derails roadmap. How does product support resolution?"
+   - ✗ "Product designs Instagram interface in 45min" (unrealistic constraint)
+
+5. **Discriminative**: Separates advanced from basic products
+   - ✓ "When would product's RICE implementation mislead? How does product supplement analysis?"
+   - ✗ "Product includes RICE calculator?" (everyone has this)
+
+6. **Alignment**: Complexity matches target market
+   - **Basic (execution)**: "Product sets up activation funnel with Mixpanel integration"
+   - **Intermediate (strategy/trade-offs)**: "Churn is 8% (target: 5%). How does product support features vs. retention prioritization?"
+   - **Advanced (portfolio/vision/P&L)**: "Board allocates $10M. How does product enable portfolio decision: Platform, mobile, or intl?"
+
+**Review Process**:
+1. Score each use case on 6 criteria (PASS/FAIL per criterion)
+2. Flag use cases failing ≥2 criteria
+3. Rewrite flagged use cases or replace with alternatives
+4. Re-validate after changes
+
+## VII. Output Format
+
+**Scenario**: You generate 30 high-quality use case scenarios but deliver them as a flat list in a Google Doc. Sales team struggles to navigate, references are buried, and no one knows which scenarios have been demonstrated.
+
+**Solution**: Structure output with clear TOC, capability grouping, inline references, and validation documentation.
+
+**Purpose**: This format enables:
+- **Sales/CS teams**: Quick capability navigation, reference lookup during demos
+- **Product managers**: Quality verification via validation report
+- **Future users**: Reusability tracking, continuous improvement
+
+### A. TOC (Table of Contents)
+**Include**: 1. Capability Areas Overview | 2. Use Cases by Capability (6 areas) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+
+**Example TOC**:
+```
+1. Use Cases & Scenarios
+2. Context & Scope
+3. Requirements
+4. Execution (Steps 1-7)
+5. Validation Report
+6. Use Case Quality Criteria
+7. Output Format ← you are here
+8. Use Cases by Capability
+   - 8.1 Strategy & Vision Support (UC1-UC5)
+   - 8.2 Discovery & Research Tools (UC6-UC10)
+   - 8.3 Prioritization & Roadmapping Features (UC11-UC16)
+   - 8.4 Metrics & Analytics Capabilities (UC17-UC21)
+   - 8.5 Stakeholder Management Features (UC22-UC25)
+   - 8.6 Go-to-Market & Growth Support (UC26-UC30)
+9. References
+   - 9.1 Glossary (G1-G12)
+   - 9.2 Tools (T1-T6)
+   - 9.3 Literature (L1-L7)
+   - 9.4 Citations (A1-A15)
+10. Validation Report (filled)
+```
+
+### B. Capability Overview
+
+**Scenario**: Your product manager asks "How many prioritization use cases do we have? Are they basic-level or advanced?" Without a summary table, you'd need to count manually.
+
+**Purpose**: One-page overview for stakeholders to understand coverage, complexity distribution, and artifact availability.
+
+**Format**:
+**Total**: [25–30] | **Complexity**: [X]B ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 6 product capabilities (MECE)
+
+| # | Capability     | Range    | Count | Mix      | Artifacts       |
+|---|----------------|----------|-------|----------|-----------------|
+| 1 | Strategy       | UC1–UC5  | 5     | 1B/2I/2A | 1 diagram+table |
+| 2 | Discovery      | UC6–UC10 | 5     | 1B/2I/2A | 1 diagram+table |
+| 3 | Prioritization | UC11–16  | 6     | 1B/2I/3A | 1 diagram+table |
+| 4 | Metrics        | UC17–21  | 5     | 1B/2I/2A | 1 diagram+table |
+| 5 | Stakeholder    | UC22–25  | 4     | 1B/2I/1A | 1 diagram+table |
+| 6 | GTM Support    | UC26–30  | 5     | 1B/2I/2A | 1 diagram+table |
+|   | **Total**      |          | **30**| **6B/12I/12A** | **6+6** |
+
+Legend: B=basic execution | I=intermediate strategy/trade-offs | A=advanced portfolio/vision/P&L
+
+**Usage**: Share this table with sales team for demo planning → each rep selects 1-2 capabilities (5-10 scenarios) → demonstrate 3-4 per prospect
+
+### C. Use Case Format
+
+**Scenario**: During a product demo, the prospect asks for clarification on constraints. You realize the use case lacks specificity ("constrained resources" = what? 2 engineers? $100K budget?). Better use cases include concrete constraints.
+
+**Purpose**: Standardized format ensures every use case has capability description, framework grounding, trade-off analysis, and artifact support.
+
+**Template**:
+
+---
+
+**Capability 1: [Title]**
+
+**UC1: [Full Use Case Scenario with concrete constraints]**
+
+**Complexity**: [Basic/Intermediate/Advanced] | **Capability**: [Area]
+
+**Key Capability**: [1 sentence—specific workflow/feature this use case tests]
+
+**Validation Criteria** (150–300 words):
+1. **Framework**: Product implements [Ref: G#/A#] (cite glossary or citation)
+2. **Multi-dimensional**: Product addresses ≥2 of Product/Business/Strategic/Operational
+3. **Concrete workflow**: "First, product enables X. Second, product supports Y. Third, product provides Z."
+4. **Trade-off support**: "Product visualizes Option A optimizing [X] but sacrificing [Y]. Option B..."
+5. **Alternatives**: "Product could also support [Z] if constraints change"
+6. **Stakeholder features**: "Product generates presentation for [role] with [format]"
+7. **Success criteria**: "Product tracks [metric] (target: [value] in [timeframe])"
+8. **Limitations**: "Assumes [X]; may not apply if [Y]"
+
+**Artifact** *(optional)*: Matrix, journey, dashboard, roadmap
+
+---
+
+**Example** (see Section VIII for full example)
+
+### D. Reference Formats
+
+**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
+
+**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
+
+**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥2 ZH)
+
+**Citations**: **A#. [Citation] [Lang]** | APA 7th format with language tags
+
+## VII. Example
+
+**UC1: How does product support evaluation when top 5 enterprise customers (40% revenue) request a feature that doesn't align with product vision for mass market?**
+
+**Complexity**: Advanced | **Capability**: Strategy Support
+
+**Key Capability**: Tests product's revenue protection analysis (enterprise retention) vs. long-term PMF evaluation (mass-market scalability); distinguishes strategic products supporting executive pressure navigation from those defaulting to simple approval workflows or rigid roadmap tools.
+
+**Validation Criteria** (248 words):
+
+Product enables multi-dimensional evaluation [Ref: A1]. **First, product facilitates JTBD discovery** [Ref: A7]—what problem are customers solving? Product surfaces that requests often mask deeper needs revealing generalized solutions [Ref: A6].
+
+**Second, product quantifies with RICE** [Ref: G2]. Enterprise: Reach (5/$2M), Impact (high retention/low acquisition), Confidence (high), Effort (unknown if custom). Mass-market: Reach (5K+ users), Impact (med/user, high cumulative), Confidence (med), Effort (similar). Product recognizes RICE won't capture strategic value—provides decision matrix tool [Ref: T2].
+
+**Third, product assesses against North Star** [Ref: G4]. Product evaluates whether this moves toward outcomes or becomes feature factory [Ref: G9]. Product identifies if generalized ("custom fields" → "flexible schema"), both segments benefit and strengthen PMF [Ref: G5].
+
+**Trade-off visualization**: Product displays (1) Enterprise version: protects $2M but risks fragmentation/debt; (2) Generalized version: serves both but longer timeline/higher uncertainty; (3) Decline: maintains vision but risks churn/competition; (4) Premium tier: monetizes customization but adds operational complexity.
+
+**Alternative suggestions**: Product recommends professional services, partner ecosystem, configuration tools [Ref: L3].
+
+**Stakeholder features**: Product generates presentation with analysis, recommendation, trade-offs, criteria, precedent implications—product principles matter [Ref: T2].
+
+**Success criteria**: Product tracks enterprise retention (+20%), mass-market adoption (≥30% use within 6mo), tech debt (≤10% velocity impact), support costs (flat/declining).
+
+**Limitations**: Assumes enterprise needs are generalizable; may not apply if truly custom.
+
+**Artifact**:
+
+| Criterion           | Enterprise       | Mass Market      | Weight | E Score | M Score |
+|---------------------|------------------|------------------|--------|---------|---------|
+| Revenue (12mo)      | $2M (retention)  | $500K (acquisition) | 30%  | 9       | 3       |
+| Strategic alignment | Low (custom)     | High (vision)    | 25%    | 2       | 9       |
+| Reach               | 5 customers      | 5K+ users        | 20%    | 1       | 9       |
+| Velocity impact     | High (complex)   | Low (reusable)   | 15%    | 2       | 8       |
+| Competitive moat    | Low (replicable) | High (differentiator) | 10% | 3    | 9       |
+| **Weighted**        |                  |                  |        | **4.8** | **7.1** |
+
+**Recommendation**: Product suggests generalized mass-market feature + enterprise premium services for edge cases
+
+**Confidence**: High (established frameworks; common product management scenario)
