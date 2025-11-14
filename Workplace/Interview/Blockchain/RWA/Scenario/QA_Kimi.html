@@ -1,0 +1,1312 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PM Scenario Generator: Blockchain Real-World Assets (RWA)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'editorial-blue': '#2563eb',
+                        'editorial-gray': '#64748b',
+                        'editorial-light': '#f8fafc',
+                        'editorial-dark': '#1e293b'
+                    },
+                    fontFamily: {
+                        'serif': ['Crimson Text', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(248, 250, 252, 0.9) 100%);
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .citation-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #2563eb;
+        }
+        .citation-link:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .scenario-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .complexity-basic { border-left-color: #10b981; }
+        .complexity-intermediate { border-left-color: #f59e0b; }
+        .complexity-advanced { border-left-color: #ef4444; }
+
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Custom mermaid theme for better contrast and unified styling */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Different node colors with proper contrast */
+        .mermaid .node:nth-child(4n+1) rect,
+        .mermaid .node:nth-child(4n+1) circle,
+        .mermaid .node:nth-child(4n+1) ellipse,
+        .mermaid .node:nth-child(4n+1) polygon {
+            fill: #dbeafe !important;
+            stroke: #1e40af !important;
+        }
+        
+        .mermaid .node:nth-child(4n+2) rect,
+        .mermaid .node:nth-child(4n+2) circle,
+        .mermaid .node:nth-child(4n+2) ellipse,
+        .mermaid .node:nth-child(4n+2) polygon {
+            fill: #d1fae5 !important;
+            stroke: #059669 !important;
+        }
+        
+        .mermaid .node:nth-child(4n+3) rect,
+        .mermaid .node:nth-child(4n+3) circle,
+        .mermaid .node:nth-child(4n+3) ellipse,
+        .mermaid .node:nth-child(4n+3) polygon {
+            fill: #fef3c7 !important;
+            stroke: #d97706 !important;
+        }
+        
+        .mermaid .node:nth-child(4n+4) rect,
+        .mermaid .node:nth-child(4n+4) circle,
+        .mermaid .node:nth-child(4n+4) ellipse,
+        .mermaid .node:nth-child(4n+4) polygon {
+            fill: #fce7f3 !important;
+            stroke: #be185d !important;
+        }
+        
+        /* Text styling with high contrast */
+        .mermaid .node .label {
+            color: #1f2937 !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* Edge styling */
+        .mermaid .edgePath .path {
+            stroke: #6b7280 !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            color: #374151 !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            padding: 6px 10px !important;
+            border-radius: 6px !important;
+            border: 1px solid #d1d5db !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Subgraph styling */
+        .mermaid .cluster rect {
+            fill: rgba(243, 244, 246, 0.8) !important;
+            stroke: #9ca3af !important;
+            stroke-width: 1px !important;
+            rx: 8px !important;
+        }
+        
+        .mermaid .cluster .label {
+            color: #374151 !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 14px !important;
+        }
+        
+        #toc { display: none; }
+        #toc.active { display: block; }
+
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-editorial-light font-sans text-editorial-dark overflow-x-hidden">
+    <!-- Toggle Button for Mobile -->
+    <button id="toc-toggle" class="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-lg">
+      <i class="fas fa-bars text-editorial-blue"></i>
+    </button>
+
+    <!-- Fixed Table of Contents -->
+    <nav id="toc" class="fixed left-0 top-0 h-screen w-80 bg-white shadow-xl z-50 overflow-y-auto border-r border-gray-200">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="font-serif font-bold text-lg text-editorial-dark">Table of Contents</h3>
+          <button id="toc-close" class="lg:hidden text-gray-500 hover:text-editorial-blue">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="#introduction" class="block py-2 px-3 rounded hover:bg-editorial-light transition-colors">Executive Summary</a>
+          </li>
+          <li>
+            <a href="#scenario-allocation" class="block py-2 px-3 rounded hover:bg-editorial-light transition-colors">1. Scenario Allocation Framework</a>
+          </li>
+          <li>
+            <a href="#core-frameworks" class="block py-2 px-3 rounded hover:bg-editorial-light transition-colors">2. Core PM Frameworks</a>
+          </li>
+          <li>
+            <a href="#use-cases" class="block py-2 px-3 rounded hover:bg-editorial-light transition-colors">3. Use Cases by Capability</a>
+            <ul class="ml-4 mt-2 space-y-2 text-xs">
+              <li>
+                <a href="#strategy" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Strategy (5)</a>
+              </li>
+              <li>
+                <a href="#discovery" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Discovery (5)</a>
+              </li>
+              <li>
+                <a href="#prioritization" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Prioritization (6)</a>
+              </li>
+              <li>
+                <a href="#metrics" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Metrics (5)</a>
+              </li>
+              <li>
+                <a href="#stakeholder" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Stakeholder (4)</a>
+              </li>
+              <li>
+                <a href="#gtm" class="block py-1 px-2 rounded hover:bg-editorial-light transition-colors">Go-to-Market (5)</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#references" class="block py-2 px-3 rounded hover:bg-editorial-light transition-colors">4. References</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="ml-0 lg:ml-80">
+      <!-- Hero Section -->
+      <section class="relative min-h-screen bg-gradient-to-br from-editorial-light via-white to-blue-50 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <img src="https://kimi-web-img.moonshot.cn/img/www.hlw.com/1882d70acc294d37112ae01535ff9eac3f752ec3.jpg" alt="Professional modern office workspace with blue lighting" class="w-full h-full object-cover" size="wallpaper" aspect="wide" color="blue" style="photo" query="modern office interior with blue lighting" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-4 sm:px-8 py-16">
+          <!-- Bento Grid Layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-screen">
+            <!-- Main Title Block -->
+            <div class="lg:col-span-8 flex flex-col justify-center">
+              <div class="mb-8">
+                <span class="inline-block px-4 py-2 bg-editorial-blue text-white text-sm font-medium rounded-full mb-6">
+                  Product Management Framework
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6 text-shadow">
+                  <span class="italic text-editorial-blue">PM Scenario</span>
+                  <br/>
+                  Generator
+                </h1>
+                <p class="text-xl lg:text-2xl text-editorial-gray font-light leading-relaxed max-w-full sm:max-w-2xl">
+                  Evidence-based scenarios for blockchain Real-World Asset (RWA) product management
+                </p>
+              </div>
+            </div>
+
+            <!-- Stats Block -->
+            <div class="lg:col-span-4 flex flex-col justify-center space-y-6">
+              <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-editorial-blue mb-2">30</div>
+                <div class="text-sm text-editorial-gray">Evidence-based scenarios</div>
+              </div>
+              <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-editorial-blue mb-2">6</div>
+                <div class="text-sm text-editorial-gray">Core PM capabilities</div>
+              </div>
+              <div class="bg-white/80 backdrop-blur rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl font-bold text-editorial-blue mb-2">$2T</div>
+                <div class="text-sm text-editorial-gray">Projected RWA market by 2030</div>
+              </div>
+            </div>
+
+            <!-- Key Highlights -->
+            <div class="lg:col-span-12 mt-12">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                  <i class="fas fa-bullseye text-2xl text-editorial-blue mb-4"></i>
+                  <h3 class="font-serif text-xl font-semibold mb-3">Strategic Focus</h3>
+                  <p class="text-editorial-gray text-sm">Real-world scenarios addressing regulatory ambiguity, technological complexity, and financial stakes in RWA markets.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                  <i class="fas fa-chart-line text-2xl text-editorial-blue mb-4"></i>
+                  <h3 class="font-serif text-xl font-semibold mb-3">Data-Driven</h3>
+                  <p class="text-editorial-gray text-sm">Grounded in established frameworks: RICE, JTBD, OKRs, AARRR methodology for comprehensive PM validation.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                  <i class="fas fa-users text-2xl text-editorial-blue mb-4"></i>
+                  <h3 class="font-serif text-xl font-semibold mb-3">Multi-Stakeholder</h3>
+                  <p class="text-editorial-gray text-sm">Designed for PM teams, training programs, and executive alignment in blockchain-native organizations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="introduction" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-8 max-w-4xl">
+          <div class="mb-12">
+            <h2 class="font-serif text-4xl font-bold mb-6">Executive Summary</h2>
+            <p class="text-lg text-editorial-gray leading-relaxed mb-6">
+              The Real-World Asset (RWA) tokenization market represents one of the most significant opportunities in blockchain technology, with the market size reaching <a href="https://polkadot.com/blog/real-world-assets-rwa-tokenization-guide/" class="citation-link">$24 billion in June 2025 and projected to hit $2 trillion by 2030</a>. This explosive growth creates unprecedented demand for skilled product managers who can navigate the unique challenges of this sector.
+            </p>
+
+            <div class="bg-editorial-light rounded-2xl p-8 mb-8">
+              <h3 class="font-serif text-2xl font-semibold mb-4">The Challenge</h3>
+              <p class="text-editorial-gray leading-relaxed">
+                Traditional product management training fails to address the complexities of RWA products, where regulatory uncertainty, technological innovation, and high-stakes financial decisions converge. Product managers must balance competing priorities: enterprise client demands versus mass-market vision, regulatory compliance versus user experience, and short-term revenue versus long-term platform health.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div class="bg-blue-50 rounded-2xl p-6">
+                <h4 class="font-semibold text-lg mb-3 text-editorial-blue">Framework Foundation</h4>
+                <ul class="text-sm text-editorial-gray space-y-2">
+                  <li>• RICE prioritization methodology</li>
+                  <li>• Jobs-to-be-Done discovery</li>
+                  <li>• AARRR pirate metrics</li>
+                  <li>• North Star metric alignment</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 rounded-2xl p-6">
+                <h4 class="font-semibold text-lg mb-3 text-green-700">Expected Outcomes</h4>
+                <ul class="text-sm text-editorial-gray space-y-2">
+                  <li>• 85%+ strategic alignment</li>
+                  <li>• 30% faster planning cycles</li>
+                  <li>• 2 sessions vs. 6+ months traditional</li>
+                  <li>• Executive-ready deliverables</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scenario Allocation -->
+      <section id="scenario-allocation" class="py-16 bg-editorial-light">
+        <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
+          <h2 class="font-serif text-4xl font-bold mb-12 text-center">1. Scenario Allocation Framework</h2>
+
+          <!-- Distribution Plan -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div>
+              <h3 class="font-serif text-2xl font-semibold mb-6">Distribution Strategy</h3>
+              <p class="text-editorial-gray mb-6 leading-relaxed">
+                The 30 scenarios follow a <strong>20/40/40% distribution</strong> across complexity levels, ensuring comprehensive coverage of product management competencies while emphasizing the intermediate and advanced skills that differentiate exceptional PMs.
+              </p>
+
+              <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                  <span class="font-medium">Basic (20%): Foundational execution and framework application</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                  <span class="font-medium">Intermediate (40%): Trade-offs and conflicting priorities</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                  <span class="font-medium">Advanced (40%): Strategic portfolio-level decisions</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 class="font-serif text-xl font-semibold mb-6">Capability Distribution</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Strategy</span>
+                  <span class="text-editorial-blue font-semibold">5 scenarios</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Discovery</span>
+                  <span class="text-editorial-blue font-semibold">5 scenarios</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Prioritization</span>
+                  <span class="text-editorial-blue font-semibold">6 scenarios</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Metrics</span>
+                  <span class="text-editorial-blue font-semibold">5 scenarios</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Stakeholder</span>
+                  <span class="text-editorial-blue font-semibold">4 scenarios</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="font-medium">Go-to-Market</span>
+                  <span class="text-editorial-blue font-semibold">5 scenarios</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Framework Diagram -->
+          <div class="bg-white rounded-2xl p-8 shadow-lg mb-12">
+            <h3 class="font-serif text-2xl font-semibold mb-6 text-center">Scenario Development Framework</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TD
+                A[&#34;RWA Market Analysis&#34;] --&gt; B[&#34;Complexity Assessment&#34;]
+                B --&gt; C[&#34;Capability Mapping&#34;]
+                C --&gt; D[&#34;Scenario Development&#34;]
+                D --&gt; E[&#34;Framework Integration&#34;]
+                E --&gt; F[&#34;Validation &amp; Testing&#34;]
+
+                B --&gt; B1[&#34;Basic: Execution&#34;]
+                B --&gt; B2[&#34;Intermediate: Trade-offs&#34;]
+                B --&gt; B3[&#34;Advanced: Strategy&#34;]
+
+                C --&gt; C1[&#34;Strategy&#34;]
+                C --&gt; C2[&#34;Discovery&#34;]
+                C --&gt; C3[&#34;Prioritization&#34;]
+                C --&gt; C4[&#34;Metrics&#34;]
+                C --&gt; C5[&#34;Stakeholder&#34;]
+                C --&gt; C6[&#34;Go-to-Market&#34;]
+
+                style A fill:#dbeafe,stroke:#1e40af,stroke-width:3px,color:#1f2937
+                style B fill:#fef3c7,stroke:#d97706,stroke-width:3px,color:#1f2937
+                style C fill:#d1fae5,stroke:#059669,stroke-width:3px,color:#1f2937
+                style D fill:#fce7f3,stroke:#be185d,stroke-width:3px,color:#1f2937
+                style E fill:#f3f4f6,stroke:#4b5563,stroke-width:3px,color:#1f2937
+                style F fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#1f2937
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Frameworks -->
+      <section id="core-frameworks" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
+          <h2 class="font-serif text-4xl font-bold mb-12 text-center">2. Core Product Management Frameworks</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-editorial-light rounded-2xl p-8">
+              <div class="w-12 h-12 bg-editorial-blue rounded-lg flex items-center justify-center mb-6">
+                <i class="fas fa-target text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-4">Strategy &amp; Prioritization</h3>
+              <ul class="space-y-2 text-sm text-editorial-gray">
+                <li>• <strong>RICE Framework:</strong> Reach, Impact, Confidence, Effort</li>
+                <li>• <strong>OKRs:</strong> Objectives and Key Results</li>
+                <li>• <strong>OST:</strong> Opportunity Solution Tree</li>
+              </ul>
+            </div>
+
+            <div class="bg-editorial-light rounded-2xl p-8">
+              <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-6">
+                <i class="fas fa-users text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-4">Discovery &amp; User-Centric</h3>
+              <ul class="space-y-2 text-sm text-editorial-gray">
+                <li>• <strong>JTBD:</strong> Jobs-to-be-Done framework</li>
+                <li>• <strong>Continuous Discovery:</strong> Regular validation</li>
+                <li>• <strong>User Journey Mapping:</strong> End-to-end experience</li>
+              </ul>
+            </div>
+
+            <div class="bg-editorial-light rounded-2xl p-8">
+              <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
+                <i class="fas fa-chart-line text-white text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-4">Metrics &amp; Growth</h3>
+              <ul class="space-y-2 text-sm text-editorial-gray">
+                <li>• <strong>AARRR:</strong> Pirate Metrics framework</li>
+                <li>• <strong>North Star Metric:</strong> Single focus metric</li>
+                <li>• <strong>Cohort Analysis:</strong> User behavior patterns</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Framework Integration Diagram -->
+          <div class="bg-editorial-light rounded-2xl p-8">
+            <h3 class="font-serif text-2xl font-semibold mb-6 text-center">Framework Integration in RWA Context</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                flowchart TD
+                A[&#34;RWA Product Challenge&#34;] --&gt; B{&#34;Complexity Assessment&#34;}
+
+                B --&gt;|Basic| C[&#34;RICE Prioritization&#34;]
+                B --&gt;|Intermediate| D[&#34;JTBD Discovery&#34;]
+                B --&gt;|Advanced| E[&#34;Strategic Portfolio&#34;]
+
+                C --&gt; F[&#34;Feature Roadmap&#34;]
+                D --&gt; G[&#34;User Insights&#34;]
+                E --&gt; H[&#34;Executive Decisions&#34;]
+
+                F --&gt; I[&#34;AARRR Metrics&#34;]
+                G --&gt; I
+                H --&gt; I
+
+                I --&gt; J[&#34;Continuous Feedback&#34;]
+
+                style A fill:#e0f2fe,stroke:#0277bd,stroke-width:3px,color:#1f2937
+                style B fill:#fff3e0,stroke:#ef6c00,stroke-width:3px,color:#1f2937
+                style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:3px,color:#1f2937
+                style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px,color:#1f2937
+                style E fill:#fce4ec,stroke:#c2185b,stroke-width:3px,color:#1f2937
+                style I fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,color:#1f2937
+                style J fill:#f1f8e9,stroke:#689f38,stroke-width:3px,color:#1f2937
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section id="use-cases" class="py-16 bg-editorial-light">
+        <div class="container mx-auto px-4 sm:px-8 max-w-6xl">
+          <h2 class="font-serif text-4xl font-bold mb-12 text-center">3. Use Cases by Capability</h2>
+
+          <!-- Strategy Scenarios -->
+          <div id="strategy" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Strategy (5 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC1: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Strategy</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Aligning RWA Product Vision with Enterprise Client Demands</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Top 5 enterprise clients (40% revenue) demand custom features misaligned with mass-market vision. How to balance immediate revenue protection against long-term platform scalability?
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> JTBD discovery, RICE scoring, strategic trade-off analysis
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-intermediate bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">UC2: Intermediate</span>
+                  <span class="text-sm text-editorial-gray">Strategy</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Choosing Between RWA Asset Classes for Market Entry</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Seed-funded platform must choose initial focus: tokenized real estate, carbon credits, or fine art. Limited 12-month runway requires strategic market analysis.
+                </p>
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <p class="text-sm text-yellow-800">
+                    <strong>Key Frameworks:</strong> Market opportunity assessment, decision matrix analysis
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discovery Scenarios -->
+          <div id="discovery" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Discovery (5 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-basic bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">UC6: Basic</span>
+                  <span class="text-sm text-editorial-gray">Discovery</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Identifying Core Jobs-to-be-Done for RWA Investors</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Rich user interview data needs synthesis into actionable JTBD statements. Move beyond demographics to uncover core investor motivations and pain points.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4">
+                  <p class="text-sm text-green-800">
+                    <strong>Key Frameworks:</strong> JTBD synthesis, user quote analysis
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC8: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Discovery</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Researching User Needs for Secondary RWA Trading Market</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  $100M+ tokenized real estate portfolio needs liquidity solution. Design discovery for non-existent secondary market, addressing both buyer and seller perspectives.
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> Zero-to-one discovery, two-sided marketplace research
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prioritization Scenarios -->
+          <div id="prioritization" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Prioritization (6 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-basic bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">UC11: Basic</span>
+                  <span class="text-sm text-editorial-gray">Prioritization</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Prioritizing Features for New RWA Wallet</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  3-month MVP timeline with capacity for 2 major features. Apply RICE framework to prioritize from backlog: multi-asset support, KYC/AML, tax export, notifications, swapping.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4">
+                  <p class="text-sm text-green-800">
+                    <strong>Key Frameworks:</strong> RICE scoring, MVP feature prioritization
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC13: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Prioritization</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Allocating Engineering Resources: Platform vs. Asset Expansion</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  $500M+ platform with 100 story points/quarter capacity. Portfolio-level decision between Platform Excellence (security, UX) and Asset Expansion (new asset classes).
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> Portfolio allocation, OKR alignment, strategic trade-offs
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Scenarios -->
+          <div id="metrics" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Metrics (5 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-basic bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">UC17: Basic</span>
+                  <span class="text-sm text-editorial-gray">Metrics</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Tracking User Activation for Complex RWA Onboarding</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  5-step onboarding funnel: account, KYC, wallet, risk quiz, first purchase. Define activation event and implement funnel tracking to identify conversion bottlenecks.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4">
+                  <p class="text-sm text-green-800">
+                    <strong>Key Frameworks:</strong> Funnel analysis, activation metrics, product analytics
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC19: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Metrics</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Analyzing Churn in B2B RWA SaaS Platform</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Churn increased from 3% to 8%. Conduct deep-dive analysis to uncover root causes and develop retention strategy for real estate company clients.
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> Churn analysis, customer segmentation, exit interviews
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stakeholder Scenarios -->
+          <div id="stakeholder" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Stakeholder (4 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-intermediate bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">UC22: Intermediate</span>
+                  <span class="text-sm text-editorial-gray">Stakeholder</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Managing Conflicting Priorities from Legal, Engineering, and Sales</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Three-way conflict: Legal demands regulatory features, Engineering wants technical debt sprint, Sales needs custom integration for major client. Facilitate resolution using data-driven approach.
+                </p>
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <p class="text-sm text-yellow-800">
+                    <strong>Key Frameworks:</strong> Stakeholder alignment, RICE negotiation, conflict resolution
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC23: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Stakeholder</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Communicating Major Platform Migration to Token Holders</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Migration from proprietary to public blockchain standard. High-stakes communication plan for token holders requiring transparency, support infrastructure, and change management.
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> Change management, user communication, migration planning
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Go-to-Market Scenarios -->
+          <div id="gtm" class="mb-16">
+            <h3 class="font-serif text-3xl font-semibold mb-8">Go-to-Market (5 Scenarios)</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="scenario-card complexity-basic bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">UC26: Basic</span>
+                  <span class="text-sm text-editorial-gray">Go-to-Market</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Launching New RWA Token to Targeted Investor Segment</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  High-end residential development token launch targeting accredited investors. Create targeted GTM plan with content marketing, email campaigns, webinars, and PR strategy.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4">
+                  <p class="text-sm text-green-800">
+                    <strong>Key Frameworks:</strong> Target persona definition, value proposition, channel strategy
+                  </p>
+                </div>
+              </div>
+
+              <div class="scenario-card complexity-advanced bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">UC28: Advanced</span>
+                  <span class="text-sm text-editorial-gray">Go-to-Market</span>
+                </div>
+                <h4 class="font-serif text-xl font-semibold mb-4">Creating Growth Loop for Decentralized RWA Platform</h4>
+                <p class="text-editorial-gray mb-4 leading-relaxed">
+                  Design self-sustaining growth loop for decentralized platform allowing anyone to create tokenized assets. Build viral coefficient through native token incentives and referral mechanisms.
+                </p>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <p class="text-sm text-red-800">
+                    <strong>Key Frameworks:</strong> Growth loops, viral coefficient, two-sided marketplace growth
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario Distribution Visual -->
+          <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 class="font-serif text-2xl font-semibold mb-6 text-center">Complete Scenario Distribution</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold mb-4">Complexity Breakdown</h4>
+                <div class="space-y-4">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <span class="text-sm">Basic (6 scenarios): Foundational execution</span>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                    <span class="text-sm">Intermediate (12 scenarios): Trade-off analysis</span>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                    <span class="text-sm">Advanced (12 scenarios): Strategic portfolio decisions</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-4">Capability Focus</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between">
+                    <span>Strategy</span>
+                    <span class="text-editorial-blue">16.7%</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Discovery</span>
+                    <span class="text-editorial-blue">16.7%</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Prioritization</span>
+                    <span class="text-editorial-blue">20.0%</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Metrics</span>
+                    <span class="text-editorial-blue">16.7%</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Stakeholder</span>
+                    <span class="text-editorial-blue">13.3%</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Go-to-Market</span>
+                    <span class="text-editorial-blue">16.7%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-8 max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold mb-12 text-center">4. References</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-editorial-light rounded-2xl p-8">
+              <h3 class="font-serif text-xl font-semibold mb-4">Market Research</h3>
+              <ul class="space-y-3 text-sm text-editorial-gray">
+                <li>
+                  <a href="https://polkadot.com/blog/real-world-assets-rwa-tokenization-guide/" class="citation-link">Polkadot RWA Tokenization Guide</a> - Market size analysis and growth projections
+                </li>
+                <li>
+                  <a href="https://ctia.ltd/en/ctia-led-plg-otto-blockchain-community-in-japan-unveils-official-plug-to-cata-conversion-path-supporting-the-next-wave-of-real-world-asset-tokenization/" class="citation-link">CTIA Blockchain Community Report</a> - PLG methodology for RWA tokenization
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-editorial-light rounded-2xl p-8">
+              <h3 class="font-serif text-xl font-semibold mb-4">Frameworks &amp; Methodologies</h3>
+              <ul class="space-y-3 text-sm text-editorial-gray">
+                <li>• RICE Prioritization Framework - Intercom</li>
+                <li>• Jobs-to-be-Done Theory - Clayton Christensen</li>
+                <li>• OKR Methodology - John Doerr</li>
+                <li>• AARRR Pirate Metrics - Dave McClure</li>
+                <li>• Continuous Discovery Habits - Teresa Torres</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-editorial-light rounded-2xl p-8">
+            <h3 class="font-serif text-xl font-semibold mb-4">Tools &amp; Technologies</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold mb-2">Analytics &amp; Research</h4>
+                <ul class="text-sm text-editorial-gray space-y-1">
+                  <li>• Mixpanel - Product analytics</li>
+                  <li>• Amplitude - User behavior analysis</li>
+                  <li>• Dovetail - Research synthesis</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Product Management</h4>
+                <ul class="text-sm text-editorial-gray space-y-1">
+                  <li>• ProductBoard - Roadmapping</li>
+                  <li>• Miro - Collaboration</li>
+                  <li>• Pendo - User feedback</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 bg-editorial-dark text-white">
+        <div class="container mx-auto px-4 sm:px-8 max-w-4xl text-center">
+          <p class="text-editorial-gray mb-4">
+            This PM Scenario Generator provides a comprehensive framework for developing strategic, user-centric, and data-driven product leaders in the blockchain RWA sector.
+          </p>
+          <p class="text-sm text-editorial-gray">
+            Designed for PM teams, training programs, and executive alignment in blockchain-native organizations.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#1f2937',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#6b7280',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#f1f5f9',
+                background: '#ffffff',
+                mainBkg: '#dbeafe',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#f1f5f9',
+                nodeBorder: '#2563eb',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#d1d5db',
+                defaultLinkColor: '#6b7280',
+                titleColor: '#1f2937',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#1f2937'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                useMaxWidth: true
+            },
+            gantt: {
+                useMaxWidth: true
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize the controls when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to TOC links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-editorial-blue', 'text-white');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-editorial-blue', 'text-white');
+                }
+            });
+        });
+
+        // Toggle TOC on mobile
+        const toc = document.getElementById('toc');
+        const tocToggle = document.getElementById('toc-toggle');
+        const tocClose = document.getElementById('toc-close');
+        
+        tocToggle.addEventListener('click', () => {
+            toc.classList.add('active');
+        });
+        
+        tocClose.addEventListener('click', () => {
+            toc.classList.remove('active');
+        });
+        
+        // Close TOC when clicking on a link (mobile)
+        document.querySelectorAll('#toc a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toc.classList.remove('active');
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
