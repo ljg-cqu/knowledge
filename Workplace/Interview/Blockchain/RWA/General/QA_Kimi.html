@@ -1,0 +1,1737 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain Real-World Assets: A Technical Deep Dive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+            --text: #0f172a;
+            --text-muted: #64748b;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text);
+            background: var(--surface);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .serif { font-family: 'Playfair Display', serif; }
+        .toc-fixed { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 280px; 
+            height: 100vh; 
+            background: white; 
+            border-right: 1px solid var(--border);
+            z-index: 1000; 
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        .main-content { margin-left: 280px; min-height: 100vh; }
+        .toc-link { 
+            display: block; 
+            padding: 0.5rem 0; 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 0.875rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.2s ease;
+        }
+        .toc-link:hover, .toc-link.active { 
+            color: var(--accent); 
+            border-left-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        .toc-link.sub { padding-left: 2rem; font-size: 0.8rem; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        .bento-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        .citation:hover { background: rgba(59, 130, 246, 0.1); }
+        .insight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .pullquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            background: rgba(59, 130, 246, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Override mermaid default styles for better contrast and consistency */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke: var(--primary) !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .node .label {
+            color: var(--text) !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 14px !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--secondary) !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: white !important;
+            color: var(--text) !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500 !important;
+            padding: 4px 8px !important;
+            border-radius: 4px !important;
+            border: 1px solid var(--border) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Enhanced node styling for different types with better contrast */
+        .mermaid .node[class*="default"] rect,
+        .mermaid .node rect {
+            fill: #ffffff !important;
+            stroke: var(--primary) !important;
+        }
+        
+        .mermaid .node[class*="primary"] rect {
+            fill: #dbeafe !important;
+            stroke: var(--accent) !important;
+        }
+        
+        .mermaid .node[class*="secondary"] rect {
+            fill: #f1f5f9 !important;
+            stroke: var(--secondary) !important;
+        }
+        
+        .mermaid .node[class*="success"] rect {
+            fill: #dcfce7 !important;
+            stroke: #16a34a !important;
+        }
+        
+        .mermaid .node[class*="warning"] rect {
+            fill: #fef3c7 !important;
+            stroke: #d97706 !important;
+        }
+        
+        .mermaid .node[class*="danger"] rect {
+            fill: #fee2e2 !important;
+            stroke: #dc2626 !important;
+        }
+        
+        /* Ensure text has sufficient contrast on all backgrounds */
+        .mermaid .node text {
+            fill: var(--text) !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .mermaid .node[class*="primary"] text,
+        .mermaid .node[class*="success"] text,
+        .mermaid .node[class*="warning"] text {
+            fill: #1f2937 !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Timeline specific styling */
+        .mermaid .section0, .mermaid .section1, .mermaid .section2, .mermaid .section3 {
+            fill: #f8fafc !important;
+            stroke: var(--border) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .cScale0 {
+            fill: #dbeafe !important;
+        }
+        
+        .mermaid .cScale1 {
+            fill: #dcfce7 !important;
+        }
+        
+        .mermaid .cScale2 {
+            fill: #fef3c7 !important;
+        }
+        
+        .mermaid .cScale3 {
+            fill: #fce7f3 !important;
+        }
+        
+        /* Timeline task styling */
+        .mermaid .task {
+            fill: #ffffff !important;
+            stroke: var(--primary) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .taskText {
+            fill: var(--text) !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+        }
+        
+        /* Decision node styling */
+        .mermaid .node[class*="decision"] polygon {
+            fill: #fef3c7 !important;
+            stroke: #d97706 !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node[class*="decision"] text {
+            fill: #92400e !important;
+            font-weight: 700 !important;
+        }
+        
+@media (max-width: 1024px) {
+    .toc-fixed { display: none; }
+    .main-content { margin-left: 0; }
+    .hero-grid { grid-template-columns: 1fr; }
+    
+    /* Responsive mermaid controls */
+    .mermaid-control-btn:not(.reset-zoom) {
+        display: none;
+    }
+    .mermaid-controls {
+        top: auto;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Additional responsive styles for small screens */
+@media (max-width: 768px) {
+    .hero-grid {
+        padding: 1rem;
+    }
+    
+    .bento-card {
+        padding: 1.5rem;
+    }
+    
+    .hero-grid h1 {
+        font-size: 2.25rem;
+        line-height: 1.2;
+    }
+    
+    .hero-grid .text-xl {
+        font-size: 1rem;
+    }
+    
+    .hero-grid .flex {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .hero-grid .flex > span {
+        font-size: 0.875rem;
+    }
+    
+    img {
+        height: auto;
+    }
+}
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-6">
+        <h3 class="serif text-lg font-semibold text-gray-900 mb-4">Contents</h3>
+      </div>
+      <div class="space-y-1">
+        <a href="#introduction" class="toc-link">Introduction</a>
+        <a href="#rwa-fundamentals" class="toc-link">RWA Fundamentals</a>
+        <a href="#tokenization-standards" class="toc-link">Tokenization Standards</a>
+        <a href="#oracles-data" class="toc-link">Oracles &amp; Data Integration</a>
+        <a href="#regulatory-compliance" class="toc-link">Regulatory Compliance</a>
+        <a href="#cross-chain" class="toc-link">Cross-Chain Interoperability</a>
+        <a href="#industry-applications" class="toc-link">Industry Applications</a>
+        <a href="#executive-summary" class="toc-link">Executive Summary</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="introduction" class="bg-gradient-to-br from-slate-50 to-blue-50 py-16 px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="hero-grid">
+            <div class="space-y-8">
+              <div class="space-y-4">
+                <h1 class="serif text-5xl font-bold text-gray-900 leading-tight">
+                  Blockchain Real-World Assets:
+                  <br/>
+                  <em class="text-blue-600">A Technical Deep Dive</em>
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                  Exploring the intersection of traditional finance and blockchain technology through tokenization, compliance frameworks, and cross-chain interoperability.
+                </p>
+              </div>
+
+              <!-- Key Statistics Grid -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-white/50">
+                  <div class="text-2xl font-bold text-blue-600">$24B</div>
+                  <div class="text-sm text-gray-600">Total RWA Market Cap</div>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-white/50">
+                  <div class="text-2xl font-bold text-blue-600">5x</div>
+                  <div class="text-sm text-gray-600">Growth Since 2022</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <img src="https://kimi-web-img.moonshot.cn/img/assets.coingecko.com/3fb8a5c421b3c55c882fbf8f89313fe34962cae6.webp" alt="Digital tokens representing real-world assets" class="w-full h-80 object-cover rounded-lg shadow-lg" size="medium" aspect="wide" query="blockchain real world assets" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="py-16 px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-8">Executive Summary</h2>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="bento-card">
+              <i class="fas fa-chart-line text-2xl text-blue-600 mb-4"></i>
+              <h3 class="font-semibold text-gray-900 mb-2">Market Growth</h3>
+              <p class="text-sm text-gray-600">RWA market expanded from $5B in 2022 to $24B in 2025, with projections reaching $2T by 2030.</p>
+            </div>
+            <div class="bento-card">
+              <i class="fas fa-shield-alt text-2xl text-green-600 mb-4"></i>
+              <h3 class="font-semibold text-gray-900 mb-2">Institutional Adoption</h3>
+              <p class="text-sm text-gray-600">Major players like BlackRock&#39;s BUIDL fund captured 44% market share in tokenized treasuries.</p>
+            </div>
+            <div class="bento-card">
+              <i class="fas fa-cogs text-2xl text-purple-600 mb-4"></i>
+              <h3 class="font-semibold text-gray-900 mb-2">Technical Evolution</h3>
+              <p class="text-sm text-gray-600">Advanced standards like ERC-3643 and cross-chain interoperability driving mainstream adoption.</p>
+            </div>
+          </div>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 leading-relaxed">
+              The tokenization of Real-World Assets represents a fundamental shift in how we conceptualize ownership and value transfer in the digital age. By bridging traditional finance with blockchain technology, RWAs unlock unprecedented liquidity, accessibility, and efficiency for assets ranging from government bonds to real estate. This comprehensive analysis explores the technical foundations, regulatory frameworks, and market dynamics shaping this transformative sector.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RWA Fundamentals -->
+      <section id="rwa-fundamentals" class="py-16 px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">RWA Fundamentals and Market Context</h2>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="space-y-6">
+              <h3 class="serif text-2xl font-semibold text-gray-900">Defining Real-World Assets</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Real-World Assets (RWAs) represent the process of converting tangible, off-chain assets into digital tokens on a blockchain <a href="https://www.coingecko.com/learn/what-are-real-world-assets-exploring-rwa-protocols" class="citation">[36]</a>. This transformation creates digital representations of ownership for physical items like real estate, commodities, and fine art, or financial instruments like company shares and government bonds <a href="https://polkadot.com/blog/real-world-assets-rwa-tokenization-guide/" class="citation">[38]</a>.
+              </p>
+
+              <div class="insight-box">
+                <h4 class="font-semibold text-gray-900 mb-2">Key Insight: Substance Over Form</h4>
+                <p class="text-gray-700">
+                  Regulatory classification follows the principle of &#34;substance over form&#34; - tokens representing ownership stakes or profit promises are likely securities, regardless of their technological packaging <a href="https://www.antiersolutions.com/blogs/legal-and-regulatory-frameworks-for-rwa-tokenization-a-roadmap-for-compliant-platforms/" class="citation">[29]</a>.
+                </p>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed">
+                The tokenization process involves several critical steps: asset selection and evaluation, legal structuring through Special Purpose Vehicles (SPVs), custody arrangements, and compliant token issuance subject to KYC/AML checks <a href="https://safeheron.com/blog/rwa-in-blockchain-beginners-guide-tokenized-real-world-assets/" class="citation">[27]</a>.
+              </p>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/lh7-us.googleusercontent.com/2903f7a8a9e9ce29fb2619dadb8e09a1e4a02ad9" alt="Tokenization process converting physical assets to digital tokens" class="w-full h-64 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" query="asset tokenization process" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-4">RWA Market Categories (mid-2025)</h4>
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-gray-200">
+                      <th class="text-left py-2">Category</th>
+                      <th class="text-right py-2">Market Cap/Value</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-gray-600">
+                    <tr class="border-b border-gray-100">
+                      <td class="py-2">Fiat-Backed Stablecoins</td>
+                      <td class="text-right font-semibold">$224.9B</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                      <td class="py-2">Tokenized US Treasuries</td>
+                      <td class="text-right font-semibold">$5.6B</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                      <td class="py-2">Private Credit</td>
+                      <td class="text-right font-semibold">$558.3M</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2">Commodity-Backed Tokens</td>
+                      <td class="text-right font-semibold">$1.9B</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="pullquote serif">
+            &#34;The fundamental goal of RWA tokenization is to bridge the gap between traditional finance and the digital economy, enabling real-world assets to benefit from blockchain&#39;s inherent properties of transparency, immutability, and programmability.&#34;
+          </div>
+
+          <!-- Market Growth Visualization -->
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Market Growth Trajectory</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                timeline
+                title &#34;RWA Market Evolution&#34;
+                2022 : &#34;$5B Market Cap&#34;
+                : &#34;Early experimentation phase&#34;
+                2023 : &#34;Institutional interest grows&#34;
+                : &#34;BlackRock enters tokenized treasuries&#34;
+                2024 : &#34;Regulatory clarity improves&#34;
+                : &#34;EU MiCA regulation framework&#34;
+                2025 : &#34;$24B Market Cap&#34;
+                : &#34;Major ecosystem players established&#34;
+                2030 : &#34;$2T Projected Value&#34;
+                : &#34;Mainstream adoption expected&#34;
+              </div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-8">
+            <div class="space-y-4">
+              <h3 class="font-semibold text-gray-900">Fractional Ownership</h3>
+              <p class="text-gray-700 text-sm">
+                Democratizes access to high-value investments by dividing assets into smaller, affordable digital tokens <a href="https://www.buzko.legal/content-eng/legal-guide-to-real-world-assets-rwa-tokenization" class="citation">[28]</a>.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-semibold text-gray-900">Enhanced Liquidity</h3>
+              <p class="text-gray-700 text-sm">
+                Creates efficient secondary markets for traditionally illiquid assets, enabling 24/7 trading with faster settlement <a href="https://safeheron.com/blog/rwa-in-blockchain-beginners-guide-tokenized-real-world-assets/" class="citation">[27]</a>.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-semibold text-gray-900">Global Accessibility</h3>
+              <p class="text-gray-700 text-sm">
+                Breaks down geographical and institutional barriers, allowing anyone with internet access to participate <a href="https://www.osl.com/hk-en/academy/article/rwa-the-new-star-of-digital-assets-redefining-the-ipo-model" class="citation">[30]</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tokenization Standards -->
+      <section id="tokenization-standards" class="py-16 px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">Tokenization Standards and Protocols</h2>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="space-y-8">
+              <h3 class="serif text-2xl font-semibold text-gray-900">Foundational Standards</h3>
+
+              <div class="space-y-6">
+                <div class="border-l-4 border-blue-500 pl-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">ERC-20: Fungible Assets</h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    The de facto standard for fungible tokens like stablecoins and tokenized equities. Offers high interoperability but lacks built-in compliance features <a href="https://polkadot.com/blog/real-world-assets-rwa-tokenization-guide/" class="citation">[38]</a>.
+                  </p>
+                  <div class="bg-gray-50 p-3 rounded text-xs font-mono">
+                    function transfer(address to, uint256 value) public returns (bool)
+                  </div>
+                </div>
+
+                <div class="border-l-4 border-green-500 pl-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">ERC-721: Non-Fungible Assets</h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    Enables unique asset representation for real estate, art, and collectibles. Each token has distinct properties and ownership history <a href="https://polkadot.com/blog/real-world-assets-rwa-tokenization-guide/" class="citation">[38]</a>.
+                  </p>
+                </div>
+
+                <div class="border-l-4 border-purple-500 pl-6">
+                  <h4 class="font-semibold text-gray-900 mb-2">ERC-1155: Hybrid Tokens</h4>
+                  <p class="text-gray-700 text-sm">
+                    Multi-token standard supporting both fungible and non-fungible tokens within single contracts, enabling complex asset portfolios.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.antiersolutions.com/0bbe88402b38bcf074a157eb6da24d1feec423df.jpg" alt="Blockchain token standards comparison" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" size="medium" aspect="wide" query="blockchain token standards" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-gray-900 mb-4">Compliance-Focused Standards</h4>
+                <div class="space-y-4">
+                  <div>
+                    <h5 class="font-medium text-gray-900">ERC-3643 (T-REX)</h5>
+                    <p class="text-sm text-gray-700">
+                      Permissioned tokens with built-in KYC/AML compliance and transfer restrictions <a href="https://tokeny.com/rwa-and-depin-the-future-of-assets-and-infrastructure/" class="citation">[39]</a>.
+                    </p>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-gray-900">ERC-1400</h5>
+                    <p class="text-sm text-gray-700">
+                      Security token standard with partial fungibility and document management features.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-lg mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Token Standard Selection Framework</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                flowchart TD
+                A[&#34;Asset Type&#34;] --&gt; B{&#34;Regulated Security?&#34;}
+                B --&gt;|&#34;Yes&#34;| C[&#34;ERC-3643
+                <br/>ERC-1400&#34;]
+                B --&gt;|&#34;No&#34;| D{&#34;Fungible?&#34;}
+                D --&gt;|&#34;Yes&#34;| E[&#34;ERC-20
+                <br/>ERC-1155&#34;]
+                D --&gt;|&#34;No&#34;| F[&#34;ERC-721
+                <br/>ERC-1155&#34;]
+
+                style A fill:#e0f2fe,stroke:#1e40af,stroke-width:2px,color:#0f172a
+                style C fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#0f172a
+                style E fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a
+                style F fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a
+                style B fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style D fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <h4 class="font-semibold text-gray-900 mb-2">Key Trade-off: Transferability vs. Compliance</h4>
+            <p class="text-gray-700">
+              Permissionless standards like ERC-20 maximize liquidity but cannot enforce regulatory requirements. Compliance-focused standards like ERC-3643 embed transfer restrictions, creating permissioned ecosystems that meet securities laws but limit accessibility <a href="https://tokeny.com/rwa-and-depin-the-future-of-assets-and-infrastructure/" class="citation">[39]</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Oracles and Data Integration -->
+      <section id="oracles-data" class="py-16 px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">Oracles and Data Integration</h2>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="space-y-8">
+              <h3 class="serif text-2xl font-semibold text-gray-900">The Oracle Problem</h3>
+
+              <p class="text-gray-700 leading-relaxed">
+                Oracles serve as the critical bridge between isolated blockchain smart contracts and dynamic off-chain reality <a href="https://www.rwa.io/post/rwa-oracles-data-sources-and-risks" class="citation">[46]</a>. Without reliable data feeds, tokenized assets would be static digital representations with no meaningful connection to their physical counterparts.
+              </p>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-4">Oracle Functions</h4>
+                <ul class="space-y-3 text-sm text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-database text-blue-500 mt-1 mr-3"></i>
+                    <span><strong>Data Fetching:</strong> Connecting to external sources like Bloomberg, Refinitiv, or IoT sensors</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                    <span><strong>Verification:</strong> Aggregating multiple sources and using consensus mechanisms</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-paper-plane text-purple-500 mt-1 mr-3"></i>
+                    <span><strong>Delivery:</strong> Secure transmission to smart contracts for automated actions</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/cdn.hackernoon.com/23d76a69f9fdf06eca7c61b627e556b476d7628c.jpeg" alt="Blockchain oracle system" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" size="medium" aspect="wide" query="blockchain oracle system" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 class="font-semibold text-gray-900 mb-2">Price Feeds</h4>
+                  <p class="text-sm text-gray-700">
+                    Continuous valuation updates for collateral management, trading, and derivatives <a href="https://www.rwa.io/post/rwa-oracles-data-sources-and-risks" class="citation">[46]</a>.
+                  </p>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h4 class="font-semibold text-gray-900 mb-2">Event Verification</h4>
+                  <p class="text-sm text-gray-700">
+                    Discrete event detection like coupon payments, defaults, or ownership transfers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Oracle Security Architecture</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TD
+                A[&#34;Data Sources
+                <br/>Bloomberg, Refinitiv
+                <br/>IoT Sensors&#34;] --&gt; B[&#34;Decentralized Oracle Network&#34;]
+                B --&gt; C{&#34;Consensus Mechanism&#34;}
+                C --&gt; D[&#34;Data Aggregation&#34;]
+                D --&gt; E[&#34;Cryptographic Proof&#34;]
+                E --&gt; F[&#34;Smart Contract Delivery&#34;]
+
+                B --&gt; G[&#34;Node Reputation&#34;]
+                B --&gt; H[&#34;Stake Slashing&#34;]
+                G --&gt; I[&#34;Malicious Node Detection&#34;]
+                H --&gt; I
+
+                style A fill:#dbeafe,stroke:#1e40af,stroke-width:2px,color:#0f172a
+                style B fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a
+                style C fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a
+                style D fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#0f172a
+                style E fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px,color:#0f172a
+                style F fill:#f0fdf4,stroke:#16a34a,stroke-width:3px,color:#0f172a
+                style G fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style H fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style I fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#0f172a
+              </div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Mitigation Strategies</h3>
+              <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                  <div class="bg-blue-100 p-2 rounded-full">
+                    <i class="fas fa-network-wired text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">Decentralized Networks</h4>
+                    <p class="text-sm text-gray-600">Multiple independent nodes reduce single points of failure</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                  <div class="bg-green-100 p-2 rounded-full">
+                    <i class="fas fa-shield-alt text-green-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900">Stake Slashing</h4>
+                    <p class="text-sm text-gray-600">Economic incentives for honest behavior through collateral</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Advanced Applications</h3>
+              <div class="space-y-4">
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Zero-Knowledge Proofs</h4>
+                  <p class="text-sm text-gray-700">
+                    Verify sensitive information like KYC status without revealing underlying data <a href="https://blockapex.io/critical-role-of-oracles-in-rwa-tokenization/" class="citation">[48]</a>.
+                  </p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Dynamic NFTs</h4>
+                  <p class="text-sm text-gray-700">
+                    Real-time metadata updates reflecting asset performance and status changes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Regulatory Compliance -->
+      <section id="regulatory-compliance" class="py-16 px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">Regulatory Compliance and Legal Frameworks</h2>
+
+          <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <div class="space-y-4">
+              <h3 class="serif text-xl font-semibold text-gray-900">Global Regulatory Landscape</h3>
+              <p class="text-gray-700 text-sm leading-relaxed">
+                Navigating securities laws is the most significant challenge for RWA tokenization. Regulators apply &#34;substance over form&#34; principles, classifying tokens based on economic reality rather than technological representation <a href="https://www.antiersolutions.com/blogs/legal-and-regulatory-frameworks-for-rwa-tokenization-a-roadmap-for-compliant-platforms/" class="citation">[29]</a>.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="serif text-xl font-semibold text-gray-900">Key Regulatory Frameworks</h3>
+              <div class="space-y-3">
+                <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                  <h4 class="font-medium text-gray-900 text-sm">United States</h4>
+                  <p class="text-xs text-gray-700">Howey Test for security classification, Regulation D exemptions</p>
+                </div>
+                <div class="bg-green-50 p-3 rounded border border-green-200">
+                  <h4 class="font-medium text-gray-900 text-sm">European Union</h4>
+                  <p class="text-xs text-gray-700">MiCA regulation, DLT Pilot Regime, passporting provisions <a href="https://legalnodes.com/article/rwa-tokenization-in-the-eu-most-suitable-jurisdictions-and-regulatory-frameworks-for-2025-and-beyond" class="citation">[26]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="serif text-xl font-semibold text-gray-900">Compliance Requirements</h3>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-user-check text-blue-500"></i>
+                  <span class="text-sm text-gray-700">KYC/AML verification</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-ban text-red-500"></i>
+                  <span class="text-sm text-gray-700">Sanctions screening</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-file-contract text-green-500"></i>
+                  <span class="text-sm text-gray-700">Regulatory disclosures</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-lg mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Legal Structures for RWA Tokenization</h3>
+            <div class="grid lg:grid-cols-2 gap-8">
+              <div class="space-y-4">
+                <h4 class="font-semibold text-gray-900">Special Purpose Vehicles (SPVs)</h4>
+                <p class="text-gray-700 text-sm">
+                  Legal entities created to hold underlying assets and issue tokens representing claims against them. Provides asset isolation and clear legal linkage <a href="https://www.buzko.legal/content-eng/legal-guide-to-real-world-assets-rwa-tokenization" class="citation">[28]</a>.
+                </p>
+                <div class="bg-white p-4 rounded border">
+                  <h5 class="font-medium text-gray-900 mb-2 text-sm">Advantages</h5>
+                  <ul class="text-xs text-gray-600 space-y-1">
+                    <li>• Legal separation from issuer</li>
+                    <li>• Simplified asset management</li>
+                    <li>• Bankruptcy remote structure</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <h4 class="font-semibold text-gray-900">Jurisdictional Considerations</h4>
+                <p class="text-gray-700 text-sm">
+                  Different jurisdictions offer varying regulatory environments for RWA tokenization <a href="https://legalnodes.com/article/rwa-tokenization-in-the-eu-most-suitable-jurisdictions-and-regulatory-frameworks-for-2025-and-beyond" class="citation">[26]</a>.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-blue-50 p-3 rounded border border-blue-200">
+                    <h5 class="font-medium text-gray-900 text-sm">Luxembourg</h5>
+                    <p class="text-xs text-gray-700">Premier jurisdiction for fund-based tokenization, DLT-recognized securities register</p>
+                  </div>
+                  <div class="bg-green-50 p-3 rounded border border-green-200">
+                    <h5 class="font-medium text-gray-900 text-sm">Germany</h5>
+                    <p class="text-xs text-gray-700">Electronic Securities Act (eWpG) for DLT-based securities</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-box">
+            <h4 class="font-semibold text-gray-900 mb-2">Technical Implementation of Compliance</h4>
+            <p class="text-gray-700">
+              Modern RWA implementations embed compliance directly into smart contracts through whitelisting mechanisms. The ERC-3643 standard integrates decentralized identity (DID) frameworks like ONCHAINID, allowing real-time verification of investor credentials and automated transfer restrictions <a href="https://tokeny.com/rwa-and-depin-the-future-of-assets-and-infrastructure/" class="citation">[39]</a>.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8 mt-12">
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-4">MiCA Regulation Impact</h4>
+              <p class="text-sm text-gray-700 mb-4">
+                The EU&#39;s Markets in Crypto-Assets regulation establishes comprehensive framework for crypto-assets not covered by existing financial services legislation <a href="https://legalnodes.com/article/rwa-tokenization-in-the-eu-most-suitable-jurisdictions-and-regulatory-frameworks-for-2025-and-beyond" class="citation">[26]</a>.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-600">Asset-Referenced Tokens</span>
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">ARTs</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-600">E-Money Tokens</span>
+                  <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">EMTs</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-600">Other Crypto-Assets</span>
+                  <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">General</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h4 class="font-semibold text-gray-900 mb-4">Technical Compliance Features</h4>
+              <div class="space-y-4">
+                <div>
+                  <h5 class="font-medium text-gray-900 text-sm">Whitelisting</h5>
+                  <p class="text-xs text-gray-600">Authorized address lists for compliant transfers</p>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-900 text-sm">Transfer Restrictions</h5>
+                  <p class="text-xs text-gray-600">Automated compliance checks before execution</p>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-900 text-sm">Dynamic Updates</h5>
+                  <p class="text-xs text-gray-600">Real-time compliance status modifications</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cross-Chain Interoperability -->
+      <section id="cross-chain" class="py-16 px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">Cross-Chain Interoperability</h2>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="space-y-8">
+              <h3 class="serif text-2xl font-semibold text-gray-900">The Multi-Chain Imperative</h3>
+
+              <p class="text-gray-700 leading-relaxed">
+                The blockchain ecosystem is fundamentally multi-chain, with diverse networks offering unique characteristics. Cross-chain interoperability enables RWAs to access liquidity and leverage specific features across chains <a href="https://www.blockchainappfactory.com/blog/how-to-launch-cross-chain-rwa-lending-platform/" class="citation">[34]</a>.
+              </p>
+
+              <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-4">Cross-Chain Benefits</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start space-x-3">
+                    <i class="fas fa-water text-blue-500 mt-1"></i>
+                    <div>
+                      <h5 class="font-medium text-gray-900 text-sm">Liquidity Aggregation</h5>
+                      <p class="text-xs text-gray-600">Access diverse liquidity pools across chains</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+                    <div>
+                      <h5 class="font-medium text-gray-900 text-sm">Feature Optimization</h5>
+                      <p class="text-xs text-gray-600">Leverage specific chain capabilities</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <i class="fas fa-users text-green-500 mt-1"></i>
+                    <div>
+                      <h5 class="font-medium text-gray-900 text-sm">Market Reach</h5>
+                      <p class="text-xs text-gray-600">Connect with different user bases</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/blaize.tech/baba14da0ffb97b5c6db226a4517edd1e7a6783d.webp" alt="Blockchain cross-chain interoperability" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" size="medium" aspect="wide" query="blockchain cross chain interoperability" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h4 class="font-semibold text-gray-900 mb-4">Bridge Security Models</h4>
+                <div class="space-y-4">
+                  <div>
+                    <h5 class="font-medium text-gray-900 text-sm">Trusted Bridges</h5>
+                    <p class="text-xs text-gray-700">Central authority custody, simpler but introduces single points of failure</p>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-gray-900 text-sm">Trustless Bridges</h5>
+                    <p class="text-xs text-gray-700">Cryptographic proofs and decentralized consensus, more secure but complex</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Cross-Chain Mechanisms</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;Source Chain
+                <br/>Asset Locking&#34;] --&gt; B[&#34;Bridge Protocol&#34;]
+                B --&gt; C[&#34;Destination Chain
+                <br/>Wrapped Token Minting&#34;]
+
+                B --&gt; D[&#34;SPV Proofs&#34;]
+                B --&gt; E[&#34;HTLC Contracts&#34;]
+                B --&gt; F[&#34;State Channels&#34;]
+
+                style A fill:#dbeafe,stroke:#1e40af,stroke-width:2px,color:#0f172a
+                style B fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a
+                style C fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a
+                style D fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style E fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style F fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+              </div>
+            </div>
+          </div>
+
+          <div class="pullquote serif">
+            &#34;The future of the RWA market is multi-chain. Cross-chain interoperability is the bridge that will connect different blockchain worlds, enabling assets to move freely while maintaining integrity and ownership across networks.&#34;
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8 mt-12">
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Security Challenges</h3>
+              <div class="space-y-4">
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Validator Takeover</h4>
+                  <p class="text-sm text-gray-700">Attackers gaining control of bridge validators to steal locked assets</p>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Smart Contract Vulnerabilities</h4>
+                  <p class="text-sm text-gray-700">Bugs in bridge code allowing unauthorized fund drainage</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Double-Spending Risk</h4>
+                  <p class="text-sm text-gray-700">Compromised bridges allowing simultaneous asset use across chains</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Advanced Solutions</h3>
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 class="font-medium text-gray-900 mb-2">SPV Proofs</h4>
+                  <p class="text-sm text-gray-700">Compact cryptographic proofs enabling efficient cross-chain verification without full blockchain download <a href="https://arxiv.org/html/2509.12957v1" class="citation">[31]</a>
+                  </p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Off-Chain Channels</h4>
+                  <p class="text-sm text-gray-700">State channels enabling fast, low-cost cross-chain interactions with periodic blockchain settlement</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                  <h4 class="font-medium text-gray-900 mb-2">xRWA Framework</h4>
+                  <p class="text-sm text-gray-700">Cross-channel settlement without channel closure, significantly reducing gas costs <a href="https://www.themoonlight.io/zh/review/xrwa-a-cross-chain-framework-for-interoperability-of-real-world-assets" class="citation">[32]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industry Applications -->
+      <section id="industry-applications" class="py-16 px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12">Industry-Specific Applications</h2>
+
+          <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <!-- Financial Assets -->
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+              <div class="bg-blue-100 p-3 rounded-full w-fit mb-4">
+                <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Financial Assets</h3>
+              <div class="space-y-3 text-sm text-gray-700">
+                <div>
+                  <h4 class="font-medium">Tokenized Treasuries</h4>
+                  <p class="text-xs">BlackRock&#39;s BUIDL fund with 44% market share, $7.3B total value <a href="https://yellow.com/research/tokenized-us-treasuries-hit-dollar73b-in-2025-complete-guide-to-digital-treasury-bonds" class="citation">[7]</a>
+                  </p>
+                </div>
+                <div>
+                  <h4 class="font-medium">Structured Credit</h4>
+                  <p class="text-xs">Securitization of mortgages and loans with enhanced transparency</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">Equities &amp; Commodities</h4>
+                  <p class="text-xs">24/7 trading with fractional ownership and global accessibility</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Real Estate &amp; Art -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+              <div class="bg-green-100 p-3 rounded-full w-fit mb-4">
+                <i class="fas fa-home text-green-600 text-xl"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Real Estate &amp; Art</h3>
+              <div class="space-y-3 text-sm text-gray-700">
+                <div>
+                  <h4 class="font-medium">Fractional Property</h4>
+                  <p class="text-xs">Democratized access to high-value real estate through SPV structures</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">Art Tokenization</h4>
+                  <p class="text-xs">NFT-based ownership with provenance tracking and fractional investment</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">Collectibles</h4>
+                  <p class="text-xs">Secure certificates of ownership with transparent transaction history</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Supply Chain &amp; IP -->
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+              <div class="bg-purple-100 p-3 rounded-full w-fit mb-4">
+                <i class="fas fa-boxes text-purple-600 text-xl"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Supply Chain &amp; IP</h3>
+              <div class="space-y-3 text-sm text-gray-700">
+                <div>
+                  <h4 class="font-medium">Provenance Tracking</h4>
+                  <p class="text-xs">Immutable records of product journey from origin to consumer</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">Authenticity Verification</h4>
+                  <p class="text-xs">Combat counterfeiting with blockchain-backed certification</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">IP Monetization</h4>
+                  <p class="text-xs">Automated licensing and royalty distribution through smart contracts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Study: Tokenized Treasuries -->
+          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200 mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">Case Study: Tokenized US Treasuries</h3>
+            <div class="grid lg:grid-cols-2 gap-8">
+              <div class="space-y-6">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.coindesk.com/6f86ecb37cad81120e1734b8a7cbd82458ad6c8e" alt="US Treasury bonds as digital tokens on blockchain" class="w-full h-48 object-cover rounded-lg shadow-md" size="medium" aspect="wide" style="photo" query="tokenized US Treasury bonds" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 class="font-semibold text-gray-900 mb-2">Market Growth</h4>
+                  <div class="text-2xl font-bold text-blue-600 mb-1">$7.3B</div>
+                  <p class="text-sm text-gray-700">Total value in 2025, up from $100M in 2023</p>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <h4 class="font-semibold text-gray-900">Key Players &amp; Market Share</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                      <div class="w-3 h-3 bg-blue-500 rounded"></div>
+                      <span class="text-sm text-gray-900">BlackRock BUIDL</span>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-900">44%</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                      <div class="w-3 h-3 bg-green-500 rounded"></div>
+                      <span class="text-sm text-gray-900">Franklin Templeton</span>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-900">28%</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                      <div class="w-3 h-3 bg-purple-500 rounded"></div>
+                      <span class="text-sm text-gray-900">Other Players</span>
+                    </div>
+                    <span class="text-sm font-semibold text-gray-900">28%</span>
+                  </div>
+                </div>
+
+                <div class="mt-6 space-y-3">
+                  <h4 class="font-semibold text-gray-900">Technical Architecture</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Underlying Treasuries held by regulated custodians</li>
+                    <li>• Transfer agents like Securitize LLC for token issuance</li>
+                    <li>• Daily yield accrual with monthly distribution</li>
+                    <li>• KYC/AML compliance through whitelisting</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Supply Chain Innovation -->
+          <div class="bg-gray-50 p-8 rounded-lg mb-12">
+            <h3 class="serif text-xl font-semibold text-gray-900 mb-6">Supply Chain Tokenization Framework</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                flowchart TD
+                A[&#34;Product Creation&#34;] --&gt; B[&#34;NFT Minting&#34;]
+                B --&gt; C[&#34;IoT Sensor Data&#34;]
+                C --&gt; D[&#34;Oracle Integration&#34;]
+                D --&gt; E[&#34;Blockchain Recording&#34;]
+                E --&gt; F[&#34;Supply Chain Tracking&#34;]
+                F --&gt; G[&#34;Consumer Verification&#34;]
+
+                H[&#34;Manufacturer&#34;] --&gt; A
+                I[&#34;Shipping&#34;] --&gt; C
+                J[&#34;Retail&#34;] --&gt; F
+                K[&#34;End User&#34;] --&gt; G
+
+                style A fill:#e0f2fe,stroke:#1e40af,stroke-width:2px,color:#0f172a
+                style B fill:#f3e8ff,stroke:#7c3aed,stroke-width:2px,color:#0f172a
+                style C fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#0f172a
+                style D fill:#fce7f3,stroke:#be185d,stroke-width:2px,color:#0f172a
+                style E fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#0f172a
+                style F fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0f172a
+                style G fill:#f0fdf4,stroke:#16a34a,stroke-width:3px,color:#0f172a
+                style H fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style I fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style J fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+                style K fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a
+              </div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Emerging Opportunities</h3>
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Fractionalized Real Estate</h4>
+                  <p class="text-sm text-gray-700">
+                    Democratized access to commercial properties through tokenized ownership, enabling small investors to participate in institutional-grade assets.
+                  </p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Dynamic Art NFTs</h4>
+                  <p class="text-sm text-gray-700">
+                    Artwork metadata that updates based on exhibition history, conservation status, and market valuation through oracle integration.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="font-semibold text-gray-900">Implementation Challenges</h3>
+              <div class="space-y-4">
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Regulatory Uncertainty</h4>
+                  <p class="text-sm text-gray-700">
+                    Evolving legal frameworks require careful navigation, especially for cross-border applications.
+                  </p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Technical Complexity</h4>
+                  <p class="text-sm text-gray-700">
+                    Integration of oracles, compliance mechanisms, and cross-chain functionality requires sophisticated architecture.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12 px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid lg:grid-cols-3 gap-8">
+            <div>
+              <h3 class="serif text-xl font-semibold mb-4">Key Takeaways</h3>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• $24B market with 5x growth since 2022</li>
+                <li>• Institutional adoption accelerating</li>
+                <li>• Regulatory frameworks maturing</li>
+                <li>• Cross-chain interoperability critical</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="serif text-xl font-semibold mb-4">Technical Foundations</h3>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• ERC-3643 compliance standard</li>
+                <li>• Decentralized oracle networks</li>
+                <li>• SPV cross-chain verification</li>
+                <li>• Smart contract automation</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="serif text-xl font-semibold mb-4">Future Outlook</h3>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• $2T projected market by 2030</li>
+                <li>• Mainstream institutional adoption</li>
+                <li>• Multi-chain ecosystem maturity</li>
+                <li>• Regulatory harmonization</li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+            <p>Technical analysis based on industry research and regulatory frameworks as of 2025</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with enhanced theme
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#0f172a',
+                primaryBorderColor: '#1e293b',
+                lineColor: '#475569',
+                secondaryColor: '#f1f5f9',
+                tertiaryColor: '#f8fafc',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f1f5f9',
+                tertiaryBkg: '#f8fafc',
+                primaryBorderColor: '#1e293b',
+                primaryTextColor: '#0f172a',
+                secondaryTextColor: '#0f172a',
+                tertiaryTextColor: '#0f172a',
+                lineColor: '#475569',
+                textColor: '#0f172a',
+                nodeBkg: '#ffffff',
+                nodeTextColor: '#0f172a',
+                clusterBkg: '#f8fafc',
+                clusterTextColor: '#0f172a',
+                defaultLinkColor: '#475569',
+                titleColor: '#0f172a',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#0f172a',
+                // Ensure high contrast for different node types
+                cScale0: '#dbeafe',
+                cScale1: '#dcfce7', 
+                cScale2: '#fef3c7',
+                cScale3: '#fce7f3',
+                cScale4: '#f3e8ff',
+                cScale5: '#ccfbf1',
+                cScale6: '#fed7d7',
+                cScale7: '#e0e7ff',
+                // Timeline colors
+                section0: '#f8fafc',
+                section1: '#f1f5f9',
+                section2: '#e2e8f0',
+                section3: '#cbd5e1',
+                // Task colors
+                taskBkgColor: '#ffffff',
+                taskTextColor: '#0f172a',
+                taskTextLightColor: '#0f172a',
+                taskTextOutsideColor: '#0f172a',
+                taskTextClickableColor: '#3b82f6',
+                activeTaskBkgColor: '#dbeafe',
+                activeTaskBorderColor: '#1e40af',
+                gridColor: '#e2e8f0'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80
+            },
+            timeline: {
+                useMaxWidth: true,
+                padding: 20
+            },
+            gantt: {
+                useMaxWidth: true,
+                padding: 20
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid controls after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+
+        // Table of Contents functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Smooth scrolling
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+            
+            // Active section highlighting
+            function updateActiveSection() {
+                let current = '';
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        current = section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveSection);
+            updateActiveSection(); // Initial call
+        });
+
+        // Citation hover effects
+        document.querySelectorAll('.citation').forEach(citation => {
+            citation.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-1px)';
+                this.style.boxShadow = '0 2px 4px rgba(59, 130, 246, 0.2)';
+            });
+            
+            citation.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+  
+
+</body></html>

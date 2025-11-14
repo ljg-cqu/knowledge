@@ -1,0 +1,2041 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Human Understanding in the Age of Blockchain RWA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Canela:wght@300;400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #1e3a2e;
+            --secondary: #8b7355;
+            --accent: #d4af37;
+            --neutral: #f5f3f0;
+            --text: #2c2c2c;
+        }
+        
+        .font-canela { font-family: 'Canela', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e5e0 100%);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 46, 0.9) 0%, 
+                rgba(139, 115, 85, 0.8) 50%, 
+                rgba(212, 175, 55, 0.7) 100%);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 280px;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+        }
+        
+        .content-offset {
+            margin-left: 320px;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        
+        .citation-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid var(--accent);
+        }
+        
+        .dimension-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 243, 240, 0.9) 100%);
+            border: 1px solid rgba(139, 115, 85, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .dimension-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 46, 0.1);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .bento-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(139, 115, 85, 0.1);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .content-offset {
+                margin-left: 0;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mermaid-container {
+                padding: 15px;
+            }
+
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="font-inter">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed rounded-lg p-6 shadow-lg">
+      <h3 class="font-canela text-lg font-bold text-primary mb-4">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#executive-summary" class="text-secondary hover:text-accent transition-colors">Executive Summary</a>
+        </li>
+        <li>
+          <a href="#overview" class="text-secondary hover:text-accent transition-colors">Overview</a>
+        </li>
+        <li>
+          <a href="#psychological-foundations" class="text-secondary hover:text-accent transition-colors">Psychological Foundations</a>
+        </li>
+        <li>
+          <a href="#behavioral-patterns" class="text-secondary hover:text-accent transition-colors">Behavioral Patterns</a>
+        </li>
+        <li>
+          <a href="#identity-diversity" class="text-secondary hover:text-accent transition-colors">Identity &amp; Diversity</a>
+        </li>
+        <li>
+          <a href="#values-beliefs" class="text-secondary hover:text-accent transition-colors">Values &amp; Beliefs</a>
+        </li>
+        <li>
+          <a href="#cognitive-emotional" class="text-secondary hover:text-accent transition-colors">Cognitive &amp; Emotional</a>
+        </li>
+        <li>
+          <a href="#social-relational" class="text-secondary hover:text-accent transition-colors">Social &amp; Relational</a>
+        </li>
+        <li>
+          <a href="#development-growth" class="text-secondary hover:text-accent transition-colors">Development &amp; Growth</a>
+        </li>
+        <li>
+          <a href="#health-wellbeing" class="text-secondary hover:text-accent transition-colors">Health &amp; Well-being</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-offset">
+      <!-- Hero Section -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="https://fixedplaceholder" alt="Abstract neural network with golden connections representing human psychology and blockchain technology" class="w-full h-full object-cover opacity-30" size="wallpaper" aspect="wide" query="abstract neural network blockchain gold" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          <div class="hero-gradient absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-16">
+          <div class="bento-grid">
+            <div class="bento-item">
+              <h1 class="font-canela text-4xl sm:text-5xl md:text-6xl font-light text-primary leading-tight mb-6">
+                <em class="italic">Human Understanding</em>
+                <br/>
+                in the Age of
+                <br/>
+                <span class="text-secondary">Blockchain RWA</span>
+              </h1>
+              <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-8">
+                Navigating the psychological landscape of technological transformation through eight essential dimensions of human nature.
+              </p>
+              <div class="flex items-center space-x-6 text-sm text-gray-600">
+                <span class="flex items-center">
+                  <i class="fas fa-brain mr-2 text-accent"></i>
+                  Evidence-Based
+                </span>
+                <span class="flex items-center">
+                  <i class="fas fa-users mr-2 text-accent"></i>
+                  People-Centered
+                </span>
+                <span class="flex items-center">
+                  <i class="fas fa-chart-line mr-2 text-accent"></i>
+                  Research-Driven
+                </span>
+              </div>
+            </div>
+
+            <div id="executive-summary" class="bento-item bg-gradient-to-br from-primary/5 to-secondary/5">
+              <h2 class="font-canela text-2xl font-bold text-primary mb-4">Executive Summary</h2>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                This comprehensive Q&amp;A series explores the intersection of human psychology and blockchain Real-World Assets (RWA), providing critical insights for HR professionals, managers, and leaders navigating technological transformation.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Dimensions Covered:</span>
+                  <span class="font-semibold">8</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Application Contexts:</span>
+                  <span class="font-semibold">10</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Evidence-Based:</span>
+                  <span class="font-semibold text-accent">100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview Section -->
+      <section id="overview" class="py-16 px-4 sm:px-6 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="font-canela text-4xl font-light text-primary mb-8">Overview</h2>
+
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="dimension-card rounded-lg p-6">
+              <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-compass text-accent text-xl"></i>
+              </div>
+              <h3 class="font-canela text-xl font-semibold text-primary mb-3">Scope</h3>
+              <p class="text-gray-700 text-sm">
+                Eight fundamental dimensions of human nature applied across ten real-world contexts, from workplace transformation to personal development.
+              </p>
+            </div>
+
+            <div class="dimension-card rounded-lg p-6">
+              <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-users text-secondary text-xl"></i>
+              </div>
+              <h3 class="font-canela text-xl font-semibold text-primary mb-3">Audience</h3>
+              <p class="text-gray-700 text-sm">
+                HR professionals, managers, leaders, coaches, counselors, educators, and researchers navigating blockchain RWA implementation.
+              </p>
+            </div>
+
+            <div class="dimension-card rounded-lg p-6">
+              <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-trophy text-primary text-xl"></i>
+              </div>
+              <h3 class="font-canela text-xl font-semibold text-primary mb-3">Success Metrics</h3>
+              <p class="text-gray-700 text-sm">
+                23-point validation checklist with 6-criteria final review, ensuring comprehensive, evidence-based, and practically applicable insights.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white/70 rounded-xl p-8 border border-secondary/10">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">The Eight Human Dimensions</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-brain text-primary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Psychological Foundations</h4>
+                <p class="text-xs text-gray-600">Cognition, perception, learning, memory</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-sync-alt text-secondary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Behavioral Patterns</h4>
+                <p class="text-xs text-gray-600">Habits, routines, change mechanisms</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-users-cog text-accent text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Identity &amp; Diversity</h4>
+                <p class="text-xs text-gray-600">Personal identity, intersectionality</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-balance-scale text-primary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Values &amp; Beliefs</h4>
+                <p class="text-xs text-gray-600">Ethics, morals, worldviews</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-lightbulb text-secondary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Cognitive &amp; Emotional</h4>
+                <p class="text-xs text-gray-600">Intelligence, biases, EQ</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-handshake text-accent text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Social &amp; Relational</h4>
+                <p class="text-xs text-gray-600">Attachment, communication, trust</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-seedling text-primary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Development &amp; Growth</h4>
+                <p class="text-xs text-gray-600">Life stages, learning, self-actualization</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-heartbeat text-secondary text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Health &amp; Well-being</h4>
+                <p class="text-xs text-gray-600">Mental health, resilience, flourishing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Psychological Foundations -->
+      <section id="psychological-foundations" class="py-16 px-4 sm:px-6 md:px-8 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-brain text-primary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Psychological Foundations</h2>
+              <p class="text-gray-600">Understanding cognitive architecture and personality in blockchain adoption</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Key Question: How does the Big Five personality model predict responses to blockchain-based change?</h3>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6 mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Key Insight:</strong> A study of 654 cryptocurrency investors found that higher neuroticism and impulsivity, along with lower extraversion, agreeableness, and conscientiousness, were associated with problematic investment behaviors, suggesting these traits may also predict maladaptive responses to high-stress technological changes like RWA adoption <a href="https://www.psychiatria-danubina.com/UserDocsImages/pdf/dnb_vol35_no3/dnb_vol35_no3_386.pdf" class="citation-link" target="_blank">[87]</a>.
+              </p>
+            </div>
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+              <p class="mb-6">
+                The transition to a blockchain-based Real-World Asset (RWA) system represents a significant organizational change, and the Big Five personality model (OCEAN) offers a robust framework for predicting individual employee responses. Research into high-stress financial environments, such as cryptocurrency trading, provides valuable insights that can be extrapolated to the RWA adoption context.
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-8 my-8">
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">High-Risk Personality Profiles</h4>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                      <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i>
+                      <div><strong>High Neuroticism:</strong> Anxiety, moodiness, emotional instability leading to resistance and stress</div>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i>
+                      <div><strong>Low Conscientiousness:</strong> Poor organization, lack of diligence in following new protocols</div>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i>
+                      <div><strong>Low Agreeableness:</strong> Reduced cooperation and trust in collaborative blockchain systems</div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">Adaptive Personality Profiles</h4>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                      <div><strong>High Conscientiousness:</strong> Methodical approach to learning and mastering new systems</div>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                      <div><strong>High Extraversion:</strong> Active engagement in training and collaborative efforts</div>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                      <div><strong>Low Neuroticism:</strong> Emotional stability and resilience during volatile transitions</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-semibold text-primary mb-4">Personality-Change Response Model</h4>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="\u653e\u5927">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="\u7f29\u5c0f">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="\u91cd\u7f6e">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="\u5168\u5c4f\u67e5\u770b">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  A[Blockchain RWA Implementation] --&gt; B{Employee Response}
+                  B --&gt; C[Adaptive Response]
+                  B --&gt; D[Maladaptive Response]
+
+                  subgraph Predictive Traits (BFI)
+                  E[High Conscientiousness] --&gt; C
+                  F[High Extraversion] --&gt; C
+                  G[High Agreeableness] --&gt; C
+                  H[Low Neuroticism] --&gt; C
+                  I[High Neuroticism] --&gt; D
+                  J[Low Conscientiousness] --&gt; D
+                  K[Low Agreeableness] --&gt; D
+                  L[Low Extraversion] --&gt; D
+                  end
+
+                  C --&gt; M[Successful Adoption]
+                  D --&gt; N[Resistance &amp; Stress]
+
+                  style I fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style J fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style K fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style L fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style E fill:#ccffcc,stroke:#333,stroke-width:2px
+                  style F fill:#ccffcc,stroke:#333,stroke-width:2px
+                  style G fill:#ccffcc,stroke:#333,stroke-width:2px
+                  style H fill:#ccffcc,stroke:#333,stroke-width:2px
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg p-6 mt-6">
+              <h4 class="font-semibold text-primary mb-3">Assessment: Change Readiness Score</h4>
+              <div class="grid md:grid-cols-4 gap-4 text-sm">
+                <div class="text-center">
+                  <div class="font-semibold">Formula</div>
+                  <div class="text-gray-600">(C + E + A) - N</div>
+                </div>
+                <div class="text-center">
+                  <div class="font-semibold">Range</div>
+                  <div class="text-gray-600">-15 to +15</div>
+                </div>
+                <div class="text-center">
+                  <div class="font-semibold">Interpretation</div>
+                  <div class="text-gray-600">Higher = Greater Adaptability</div>
+                </div>
+                <div class="text-center">
+                  <div class="font-semibold">Validation</div>
+                  <div class="text-gray-600">Based on BFI correlational data</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-3">Trait-Centric View</h4>
+              <p class="text-sm text-gray-700 mb-3">N=654 crypto investors show clear personality-risk correlations</p>
+              <div class="text-xs text-gray-600">
+                <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded mr-2">Universal</span>
+                Predicts resistance patterns
+              </div>
+            </div>
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-3">Interactionist View</h4>
+              <p class="text-sm text-gray-700 mb-3">Personality effects moderated by organizational communication</p>
+              <div class="text-xs text-gray-600">
+                <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Context</span>
+                Supportive environments buffer risks
+              </div>
+            </div>
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-3">Situational Strength Theory</h4>
+              <p class="text-sm text-gray-700 mb-3">Clear rules reduce personality impact on behavior</p>
+              <div class="text-xs text-gray-600">
+                <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded mr-2">Emerging</span>
+                Structured implementation helps
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Behavioral Patterns -->
+      <section id="behavioral-patterns" class="py-16 px-4 sm:px-6 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-sync-alt text-secondary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Behavioral Patterns</h2>
+              <p class="text-gray-600">Understanding habit formation and change management in RWA adoption</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">The Habit Loop in RWA Implementation</h3>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-bell text-red-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Cue</h4>
+                <p class="text-sm text-gray-600">Trigger for behavior</p>
+                <div class="mt-2 text-xs text-gray-500">
+                  <strong>Examples:</strong>
+                  <br/>
+                  \u2022 Login prompt
+                  <br/>
+                  \u2022 Transaction notification
+                  <br/>
+                  \u2022 Daily report
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-cogs text-blue-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Routine</h4>
+                <p class="text-sm text-gray-600">The behavior itself</p>
+                <div class="mt-2 text-xs text-gray-500">
+                  <strong>Examples:</strong>
+                  <br/>
+                  \u2022 Platform navigation
+                  <br/>
+                  \u2022 Security protocols
+                  <br/>
+                  \u2022 Data verification
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-trophy text-green-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Reward</h4>
+                <p class="text-sm text-gray-600">Reinforcing benefit</p>
+                <div class="mt-2 text-xs text-gray-500">
+                  <strong>Examples:</strong>
+                  <br/>
+                  \u2022 Transaction completion
+                  <br/>
+                  \u2022 Efficiency gains
+                  <br/>
+                  \u2022 Recognition
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Key Finding:</strong> Research suggests that 40-45% of daily actions are habits, and changing them requires rewiring the habit loop, which takes an average of 66 days. Understanding this cycle is crucial for designing effective RWA adoption strategies.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Stages of Change (TTM)</h4>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-3 text-sm font-semibold">1</div>
+                  <div>
+                    <div class="font-medium">Precontemplation</div>
+                    <div class="text-xs text-gray-600">Unaware of need for change</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center mr-3 text-sm font-semibold">2</div>
+                  <div>
+                    <div class="font-medium">Contemplation</div>
+                    <div class="text-xs text-gray-600">Considering change</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-orange-200 rounded-full flex items-center justify-center mr-3 text-sm font-semibold">3</div>
+                  <div>
+                    <div class="font-medium">Preparation</div>
+                    <div class="text-xs text-gray-600">Planning for action</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center mr-3 text-sm font-semibold">4</div>
+                  <div>
+                    <div class="font-medium">Action</div>
+                    <div class="text-xs text-gray-600">Implementing change</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center mr-3 text-sm font-semibold">5</div>
+                  <div>
+                    <div class="font-medium">Maintenance</div>
+                    <div class="text-xs text-gray-600">Sustaining new behavior</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Behavioral Reinforcement Strategies</h4>
+              <div class="space-y-4">
+                <div>
+                  <h5 class="font-medium text-secondary mb-2">Positive Reinforcement</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>\u2022 Token-based rewards for protocol adherence</li>
+                    <li>\u2022 Recognition for security best practices</li>
+                    <li>\u2022 Gamification of learning achievements</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-medium text-secondary mb-2">Negative Reinforcement</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>\u2022 Remove friction from compliant processes</li>
+                    <li>\u2022 Simplify workflows for correct behavior</li>
+                    <li>\u2022 Eliminate barriers to proper usage</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-medium text-secondary mb-2">Punishment Avoidance</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>\u2022 Clear consequences for security violations</li>
+                    <li>\u2022 Transparent risk communication</li>
+                    <li>\u2022 Automated compliance checks</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Identity &amp; Diversity -->
+      <section id="identity-diversity" class="py-16 px-4 sm:px-6 md:px-8 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-users-cog text-accent text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Identity &amp; Diversity</h2>
+              <p class="text-gray-600">Navigating personal and collective identity in decentralized systems</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">The Intersection of Tokenization and Professional Identity</h3>
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+              <p class="mb-6">
+                The tokenization of Real-World Assets fundamentally reshapes concepts of ownership, professionalism, and self-concept. When employees interact with blockchain systems, their traditional understandings of possession, authority, and achievement are challenged by new paradigms of digital ownership and decentralized governance.
+              </p>
+
+              <p class="mb-6">
+                This transformation is particularly significant for diverse populations, as intersectionality\u2014the overlapping of social identities including race, gender, class, and age\u2014creates unique experiences of technological change. Research shows that different demographic groups may have varying levels of access, comfort, and trust in blockchain systems, requiring careful management to ensure equitable adoption.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Identity Challenges in RWA Adoption</h4>
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Ownership Redefinition</div>
+                      <div class="text-sm text-gray-600">From physical to digital, from centralized to distributed</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Professional Authority</div>
+                      <div class="text-sm text-gray-600">Traditional hierarchies challenged by smart contracts</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Achievement Recognition</div>
+                      <div class="text-sm text-gray-600">New metrics for success and contribution</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Diversity Inclusion Strategies</h4>
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Cultural Sensitivity Training</div>
+                      <div class="text-sm text-gray-600">Address different comfort levels with technology</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Inclusive Design</div>
+                      <div class="text-sm text-gray-600">Consider accessibility and cultural contexts</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium">Diverse Leadership</div>
+                      <div class="text-sm text-gray-600">Ensure representation in implementation decisions</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-accent/5 to-secondary/5 rounded-xl p-8">
+            <h4 class="font-canela text-xl font-semibold text-primary mb-4">Intersectionality Framework for RWA Implementation</h4>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Kimberl� Crenshaw&#39;s intersectionality theory provides a critical lens for understanding how different social identities overlap and create unique experiences in blockchain adoption. This framework helps organizations identify and address potential disparities in access, comfort, and outcomes across diverse employee populations.
+            </p>
+            <div class="grid md:grid-cols-4 gap-4">
+              <div class="text-center p-4 bg-white/70 rounded-lg">
+                <i class="fas fa-venus-mars text-primary text-2xl mb-2"></i>
+                <div class="font-semibold text-primary">Gender</div>
+                <div class="text-xs text-gray-600 mt-1">Different comfort levels and experiences</div>
+              </div>
+              <div class="text-center p-4 bg-white/70 rounded-lg">
+                <i class="fas fa-globe text-secondary text-2xl mb-2"></i>
+                <div class="font-semibold text-primary">Race &amp; Ethnicity</div>
+                <div class="text-xs text-gray-600 mt-1">Cultural attitudes toward digital assets</div>
+              </div>
+              <div class="text-center p-4 bg-white/70 rounded-lg">
+                <i class="fas fa-birthday-cake text-accent text-2xl mb-2"></i>
+                <div class="font-semibold text-primary">Age</div>
+                <div class="text-xs text-gray-600 mt-1">Generational differences in tech adoption</div>
+              </div>
+              <div class="text-center p-4 bg-white/70 rounded-lg">
+                <i class="fas fa-dollar-sign text-primary text-2xl mb-2"></i>
+                <div class="font-semibold text-primary">Socioeconomic</div>
+                <div class="text-xs text-gray-600 mt-1">Access to resources and education</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Values &amp; Beliefs -->
+      <section id="values-beliefs" class="py-16 px-4 sm:px-6 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-balance-scale text-primary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Values &amp; Beliefs</h2>
+              <p class="text-gray-600">Ethical frameworks and moral considerations in blockchain systems</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Ethical Dilemmas in Smart Contract Implementation</h3>
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+              <p class="mb-6">
+                The implementation of blockchain Real-World Assets introduces profound ethical challenges that test organizational and individual value systems. Smart contracts, while promoting transparency and efficiency, also raise critical questions about autonomy, privacy, and the role of human judgment in automated systems.
+              </p>
+
+              <p class="mb-6">
+                Research by Schwartz identifies ten universal values that are often in tension during blockchain implementation: self-direction, stimulation, hedonism, achievement, power, security, conformity, tradition, benevolence, and universalism. The immutable nature of blockchain can conflict with values like flexibility and privacy while aligning with security and fairness.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                <h4 class="font-semibold text-red-800 mb-4">Value Conflicts</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start">
+                    <i class="fas fa-times-circle text-red-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-red-800">Transparency vs. Privacy</div>
+                      <div class="text-sm text-red-700">Immutable records vs. personal data protection</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-times-circle text-red-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-red-800">Autonomy vs. Automation</div>
+                      <div class="text-sm text-red-700">Human discretion vs. smart contract execution</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-times-circle text-red-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-red-800">Fairness vs. Efficiency</div>
+                      <div class="text-sm text-red-700">Equal treatment vs. optimal outcomes</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h4 class="font-semibold text-green-800 mb-4">Value Alignments</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-green-800">Security &amp; Trust</div>
+                      <div class="text-sm text-green-700">Immutable records enhance reliability</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-green-800">Accountability</div>
+                      <div class="text-sm text-green-700">Transparent audit trails</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-check-circle text-green-600 mr-3 mt-1"></i>
+                    <div>
+                      <div class="font-medium text-green-800">Universal Access</div>
+                      <div class="text-sm text-green-700">Decentralization promotes inclusion</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-8">
+            <h4 class="font-canela text-xl font-semibold text-primary mb-6">Kohlberg&#39;s Moral Development Stages Applied to Blockchain Ethics</h4>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-yellow-800">1-2</span>
+                </div>
+                <h5 class="font-semibold text-primary mb-2">Pre-Conventional</h5>
+                <p class="text-sm text-gray-700">Obedience and self-interest</p>
+                <div class="mt-3 text-xs text-gray-600">
+                  <strong>Blockchain Application:</strong>
+                  <br/>
+                  Compliance for personal gain
+                  <br/>
+                  Avoidance of punishment
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-blue-800">3-4</span>
+                </div>
+                <h5 class="font-semibold text-primary mb-2">Conventional</h5>
+                <p class="text-sm text-gray-700">Social order and authority</p>
+                <div class="mt-3 text-xs text-gray-600">
+                  <strong>Blockchain Application:</strong>
+                  <br/>
+                  Following organizational rules
+                  <br/>
+                  Maintaining reputation
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-xl font-bold text-purple-800">5-6</span>
+                </div>
+                <h5 class="font-semibold text-primary mb-2">Post-Conventional</h5>
+                <p class="text-sm text-gray-700">Universal principles</p>
+                <div class="mt-3 text-xs text-gray-600">
+                  <strong>Blockchain Application:</strong>
+                  <br/>
+                  Ethical decision-making
+                  <br/>
+                  Social responsibility
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cognitive &amp; Emotional -->
+      <section id="cognitive-emotional" class="py-16 px-4 sm:px-6 md:px-8 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-lightbulb text-secondary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Cognitive &amp; Emotional</h2>
+              <p class="text-gray-600">Understanding biases, intelligence, and emotional regulation in RWA environments</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Cognitive Biases in Volatile RWA Markets</h3>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6 mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Key Research:</strong> A scoping review of 13 studies involving 11,177 participants found that cognitive biases like overconfidence, confirmation bias, and the disposition effect are prevalent among traders, leading to irrational decisions such as holding onto losing investments and selling winning ones too early <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11826850/" class="citation-link" target="_blank">[100]</a>.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Primary Cognitive Biases</h4>
+                <div class="space-y-4">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Loss Aversion</h5>
+                    <p class="text-sm text-red-700 mb-2">Feeling losses 2x more powerfully than equivalent gains</p>
+                    <div class="text-xs text-red-600">Manifests as: Holding losing assets too long, fear-driven decisions</div>
+                  </div>
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">FOMO (Fear of Missing Out)</h5>
+                    <p class="text-sm text-red-700 mb-2">Compulsive action driven by social comparison</p>
+                    <div class="text-xs text-red-600">Manifests as: Impulsive investments, herd behavior</div>
+                  </div>
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Confirmation Bias</h5>
+                    <p class="text-sm text-red-700 mb-2">Seeking information that validates pre-existing beliefs</p>
+                    <div class="text-xs text-red-600">Manifests as: Echo chambers, ignoring contradictory evidence</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Mitigation Strategies</h4>
+                <div class="space-y-4">
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h5 class="font-medium text-green-800 mb-2">Structured Decision-Making</h5>
+                    <p class="text-sm text-green-700 mb-2">Pre-defined criteria and cooling-off periods</p>
+                    <div class="text-xs text-green-600">Requires: Objective protocols, mandatory review periods</div>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h5 class="font-medium text-green-800 mb-2">Diverse Information Sources</h5>
+                    <p class="text-sm text-green-700 mb-2">Actively seek contradictory perspectives</p>
+                    <div class="text-xs text-green-600">Requires: Devil&#39;s advocates, external audits</div>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h5 class="font-medium text-green-800 mb-2">Emotional Intelligence Training</h5>
+                    <p class="text-sm text-green-700 mb-2">Recognize and regulate emotional responses</p>
+                    <div class="text-xs text-green-600">Requires: EQ assessments, mindfulness practices</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-semibold text-primary mb-4">Dual-Process Theory: System 1 vs System 2</h4>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="\u653e\u5927">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="\u7f29\u5c0f">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="\u91cd\u7f6e">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="\u5168\u5c4f\u67e5\u770b">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph LR
+                  A[Volatile RWA Market Event] --&gt; B{Cognitive Appraisal}
+                  B --&gt; C[Emotional Response]
+                  B --&gt; D[Rational Analysis]
+
+                  subgraph Biases
+                  E[Loss Aversion] --&gt; C
+                  F[FOMO] --&gt; C
+                  G[Overconfidence] --&gt; C
+                  H[Confirmation Bias] --&gt; C
+                  end
+
+                  C --&gt; I[Impulsive Decision]
+                  D --&gt; J[Strategic Decision]
+
+                  I --&gt; K[Suboptimal Outcome]
+                  J --&gt; L[Optimal Outcome]
+
+                  style C fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style D fill:#ccffcc,stroke:#333,stroke-width:2px
+                  style I fill:#ffcccc,stroke:#333,stroke-width:2px
+                  style K fill:#ffcccc,stroke:#333,stroke-width:2px
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-secondary/5 to-accent/5 rounded-xl p-8">
+            <h4 class="font-canela text-xl font-semibold text-primary mb-4">Emotional Intelligence in High-Pressure Teams</h4>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              In blockchain environments, emotional intelligence becomes a critical strategic asset. LinkedIn research co-authored by blockchain experts <a href="https://www.linkedin.com/advice/0/what-do-you-emotional-intelligence-lacking-your-blockchain-2dcmf" class="citation-link" target="_blank">[97]</a> indicates that a deficiency in EQ within blockchain teams directly leads to decreased productivity and toxic work environments.
+            </p>
+
+            <div class="grid md:grid-cols-4 gap-4">
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <i class="fas fa-eye text-primary text-2xl mb-2"></i>
+                <h5 class="font-semibold text-primary mb-1">Self-Awareness</h5>
+                <p class="text-xs text-gray-600">Recognizing stress triggers and emotional responses</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <i class="fas fa-compress text-secondary text-2xl mb-2"></i>
+                <h5 class="font-semibold text-primary mb-1">Self-Regulation</h5>
+                <p class="text-xs text-gray-600">Managing impulses and staying calm under pressure</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <i class="fas fa-heart text-accent text-2xl mb-2"></i>
+                <h5 class="font-semibold text-primary mb-1">Empathy</h5>
+                <p class="text-xs text-gray-600">Understanding colleagues&#39; perspectives and pressures</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <i class="fas fa-users text-primary text-2xl mb-2"></i>
+                <h5 class="font-semibold text-primary mb-1">Social Skills</h5>
+                <p class="text-xs text-gray-600">Building relationships and resolving conflicts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social &amp; Relational -->
+      <section id="social-relational" class="py-16 px-4 sm:px-6 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-handshake text-primary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Social &amp; Relational</h2>
+              <p class="text-gray-600">Building trust and communication in decentralized systems</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Trust Dynamics in Decentralized Organizations</h3>
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+              <p class="mb-6">
+                The shift to Decentralized Ledger Technology fundamentally alters traditional trust relationships between managers and employees. In blockchain-enabled organizations, trust moves from being based on personal relationships and hierarchical authority to being grounded in transparent protocols, immutable records, and cryptographic verification.
+              </p>
+
+              <p class="mb-6">
+                Research on attachment styles suggests that individuals with different relational patterns may adapt differently to this new paradigm. Secure attachment styles may find comfort in the consistency of smart contracts, while anxious or avoidant styles may struggle with the perceived impersonality of decentralized systems.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Protocol-Based Trust</h4>
+                <p class="text-sm text-gray-600">Trust in immutable code and transparent rules rather than personal relationships</p>
+                <div class="mt-3 text-xs text-gray-500">
+                  <strong>Applications:</strong>
+                  <br/>
+                  \u2022 Smart contract verification
+                  <br/>
+                  \u2022 Transparent governance
+                  <br/>
+                  \u2022 Immutable audit trails
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-eye text-blue-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Transparency-Based Trust</h4>
+                <p class="text-sm text-gray-600">Confidence through complete visibility of actions and outcomes</p>
+                <div class="mt-3 text-xs text-gray-500">
+                  <strong>Applications:</strong>
+                  <br/>
+                  \u2022 Open record-keeping
+                  <br/>
+                  \u2022 Public performance metrics
+                  <br/>
+                  \u2022 Shared dashboards
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-key text-purple-600 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Cryptographic Trust</h4>
+                <p class="text-sm text-gray-600">Mathematical certainty through digital signatures and verification</p>
+                <div class="mt-3 text-xs text-gray-500">
+                  <strong>Applications:</strong>
+                  <br/>
+                  \u2022 Digital signatures
+                  <br/>
+                  \u2022 Zero-knowledge proofs
+                  <br/>
+                  \u2022 Multi-sig authorization
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6">
+              <h5 class="font-semibold text-primary mb-3">Communication Strategies for Building Trust</h5>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h6 class="font-medium text-secondary mb-2">Uncertainty Mitigation</h6>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>\u2022 Transparent decision-making processes</li>
+                    <li>\u2022 Regular protocol updates and explanations</li>
+                    <li>\u2022 Clear documentation of system changes</li>
+                  </ul>
+                </div>
+                <div>
+                  <h6 class="font-medium text-secondary mb-2">Consensus Building</h6>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>\u2022 Participatory governance mechanisms</li>
+                    <li>\u2022 Multi-stakeholder voting systems</li>
+                    <li>\u2022 Transparent proposal and feedback cycles</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Attachment Styles in Decentralized Teams</h4>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">60%</div>
+                  <div>
+                    <div class="font-medium text-green-800">Secure Attachment</div>
+                    <div class="text-sm text-gray-600">Comfortable with protocol-based trust, adapts well to transparency</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">20%</div>
+                  <div>
+                    <div class="font-medium text-yellow-800">Anxious Attachment</div>
+                    <div class="text-sm text-gray-600">May struggle with impersonal protocols, needs reassurance</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-orange-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">15%</div>
+                  <div>
+                    <div class="font-medium text-orange-800">Avoidant Attachment</div>
+                    <div class="text-sm text-gray-600">May resist collaborative aspects, prefers independence</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 bg-red-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">5%</div>
+                  <div>
+                    <div class="font-medium text-red-800">Disorganized Attachment</div>
+                    <div class="text-sm text-gray-600">May show inconsistent adaptation patterns</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Building Psychological Safety</h4>
+              <div class="space-y-4">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h5 class="font-medium text-blue-800 mb-2">Open Communication Channels</h5>
+                  <p class="text-sm text-blue-700">Multiple pathways for feedback and questions</p>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h5 class="font-medium text-green-800 mb-2">Error Learning Culture</h5>
+                  <p class="text-sm text-green-700">View mistakes as learning opportunities</p>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h5 class="font-medium text-purple-800 mb-2">Inclusive Decision-Making</h5>
+                  <p class="text-sm text-purple-700">Broad participation in governance processes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development &amp; Growth -->
+      <section id="development-growth" class="py-16 px-4 sm:px-6 md:px-8 bg-white/50">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-seedling text-accent text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Development &amp; Growth</h2>
+              <p class="text-gray-600">Learning, adaptation, and self-actualization in blockchain environments</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Cultivating Growth Mindset for Continuous Learning</h3>
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+              <p class="mb-6">
+                Carol Dweck&#39;s research on growth mindset provides a crucial framework for understanding how employees can adapt to the continuous learning demands of blockchain Real-World Asset systems. A growth mindset\u2014the belief that abilities and intelligence can be developed through dedication and hard work\u2014is essential for thriving in rapidly evolving technological environments.
+              </p>
+
+              <p class="mb-6">
+                In the context of RWA adoption, employees with a growth mindset view challenges as opportunities to learn rather than threats to their competence. They are more likely to persist through difficulties, seek feedback, and ultimately master complex blockchain systems.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Fixed vs. Growth Mindset</h4>
+                <div class="space-y-4">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Fixed Mindset</h5>
+                    <ul class="text-sm text-red-700 space-y-1">
+                      <li>\u2022 &#34;Blockchain is too complex for me&#34;</li>
+                      <li>\u2022 Fear of failure and looking incompetent</li>
+                      <li>\u2022 Avoids challenges and gives up easily</li>
+                      <li>\u2022 Sees effort as fruitless</li>
+                    </ul>
+                  </div>
+                  <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <h5 class="font-medium text-green-800 mb-2">Growth Mindset</h5>
+                    <ul class="text-sm text-green-700 space-y-1">
+                      <li>\u2022 &#34;I can learn blockchain step by step&#34;</li>
+                      <li>\u2022 Views mistakes as learning opportunities</li>
+                      <li>\u2022 Embraces challenges and persists</li>
+                      <li>\u2022 Understands effort leads to mastery</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Development Stages for RWA Skills</h4>
+                <div class="space-y-3">
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">1</div>
+                    <div>
+                      <div class="font-medium">Novice</div>
+                      <div class="text-sm text-gray-600">Basic understanding, needs structure</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">2</div>
+                    <div>
+                      <div class="font-medium">Advanced Beginner</div>
+                      <div class="text-sm text-gray-600">Grasping concepts, some independence</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 bg-orange-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">3</div>
+                    <div>
+                      <div class="font-medium">Competent</div>
+                      <div class="text-sm text-gray-600">Works independently, plans tasks</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">4</div>
+                    <div>
+                      <div class="font-medium">Proficient</div>
+                      <div class="text-sm text-gray-600">Sees big picture, mentors others</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <div class="w-8 h-8 bg-purple-200 rounded-full flex items-center justify-center mr-3 text-sm font-bold">5</div>
+                    <div>
+                      <div class="font-medium">Expert</div>
+                      <div class="text-sm text-gray-600">Intuitive understanding, innovates</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6 mt-8">
+              <h5 class="font-semibold text-primary mb-3">Maslow&#39;s Hierarchy Applied to RWA Development</h5>
+              <div class="grid md:grid-cols-5 gap-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-home text-red-600"></i>
+                  </div>
+                  <h6 class="font-medium text-primary text-sm">Physiological</h6>
+                  <p class="text-xs text-gray-600">Basic job security</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-shield-alt text-orange-600"></i>
+                  </div>
+                  <h6 class="font-medium text-primary text-sm">Safety</h6>
+                  <p class="text-xs text-gray-600">System reliability</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-users text-yellow-600"></i>
+                  </div>
+                  <h6 class="font-medium text-primary text-sm">Belonging</h6>
+                  <p class="text-xs text-gray-600">Team collaboration</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-trophy text-green-600"></i>
+                  </div>
+                  <h6 class="font-medium text-primary text-sm">Esteem</h6>
+                  <p class="text-xs text-gray-600">Mastery recognition</p>
+                </div>
+                <div class="text-center">
+                  <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-star text-purple-600"></i>
+                  </div>
+                  <h6 class="font-medium text-primary text-sm">Self-Actualization</h6>
+                  <p class="text-xs text-gray-600">Innovation contribution</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Learning Organization Principles</h4>
+              <div class="space-y-3 text-sm">
+                <div class="flex items-start">
+                  <i class="fas fa-book text-blue-500 mr-2 mt-1"></i>
+                  <div>Personal Mastery - Individual skill development</div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-users text-green-500 mr-2 mt-1"></i>
+                  <div>Shared Vision - Collective understanding of RWA goals</div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-lightbulb text-yellow-500 mr-2 mt-1"></i>
+                  <div>Mental Models - Challenging assumptions about work</div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-sync-alt text-purple-500 mr-2 mt-1"></i>
+                  <div>Team Learning - Collaborative RWA exploration</div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-chart-line text-red-500 mr-2 mt-1"></i>
+                  <div>Systems Thinking - Understanding interconnected impacts</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Skill Acquisition Timeline</h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm">Basic Navigation</span>
+                  <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">2-4 weeks</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm">Security Protocols</span>
+                  <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">4-8 weeks</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm">Advanced Features</span>
+                  <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">3-6 months</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm">Innovation Contribution</span>
+                  <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">6-12 months</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Motivation Strategies</h4>
+              <div class="space-y-3 text-sm">
+                <div class="p-2 bg-green-50 rounded">Mastery experiences - Small wins</div>
+                <div class="p-2 bg-blue-50 rounded">Vicarious learning - Peer modeling</div>
+                <div class="p-2 bg-yellow-50 rounded">Verbal persuasion - Encouragement</div>
+                <div class="p-2 bg-purple-50 rounded">Emotional regulation - Stress management</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Health &amp; Well-being -->
+      <section id="health-wellbeing" class="py-16 px-4 sm:px-6 md:px-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+              <i class="fas fa-heartbeat text-secondary text-xl"></i>
+            </div>
+            <div>
+              <h2 class="font-canela text-4xl font-light text-primary">Health &amp; Well-being</h2>
+              <p class="text-gray-600">Mental health, stress management, and flourishing in RWA environments</p>
+            </div>
+          </div>
+
+          <div class="bg-white/90 rounded-xl p-8 shadow-sm border border-secondary/10 mb-8">
+            <h3 class="font-canela text-2xl font-semibold text-primary mb-6">Psychological Stressors in RWA Environments</h3>
+
+            <div class="bg-accent/5 border-l-4 border-accent p-6 mb-8">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Critical Research:</strong> A scoping review of 13 studies with 11,177 participants identified that cryptocurrency trading, which mirrors the high-risk nature of RWA environments, is linked to significant psychological distress, including anxiety, depression, and addiction-like behaviors, driven by market volatility and social media influence <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11826850/" class="citation-link" target="_blank">[100]</a>.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Primary Psychological Stressors</h4>
+                <div class="space-y-4">
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Market Volatility</h5>
+                    <p class="text-sm text-red-700 mb-2">24/7 nature creates constant uncertainty</p>
+                    <div class="text-xs text-red-600">Impacts: Chronic anxiety, compulsive monitoring, sleep disruption</div>
+                  </div>
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Social Media &amp; FOMO</h5>
+                    <p class="text-sm text-red-700 mb-2">Hype and herd behavior amplification</p>
+                    <div class="text-xs text-red-600">Impacts: Impulsivity, regret, social comparison stress</div>
+                  </div>
+                  <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 class="font-medium text-red-800 mb-2">Financial Loss Risk</h5>
+                    <p class="text-sm text-red-700 mb-2">Potential for significant financial impact</p>
+                    <div class="text-xs text-red-600">Impacts: Hopelessness, low self-worth, depression</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Physical Health Manifestations</h4>
+                <div class="space-y-4">
+                  <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <h5 class="font-medium text-orange-800 mb-2">Sleep Disturbances</h5>
+                    <p class="text-sm text-orange-700 mb-2">Late-night market monitoring</p>
+                    <div class="text-xs text-orange-600">Consequences: Fatigue, reduced cognitive function <a href="https://kevinmd.com/2025/09/crypto-tradings-impact-on-mental-and-physical-health.html" class="citation-link" target="_blank">[102]</a>
+                    </div>
+                  </div>
+                  <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <h5 class="font-medium text-orange-800 mb-2">Cardiovascular Stress</h5>
+                    <p class="text-sm text-orange-700 mb-2">Chronic anxiety impacts heart health</p>
+                    <div class="text-xs text-orange-600">Consequences: Increased risk of hypertension, palpitations</div>
+                  </div>
+                  <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <h5 class="font-medium text-orange-800 mb-2">Addiction-like Behaviors</h5>
+                    <p class="text-sm text-orange-700 mb-2">Compulsive checking and trading</p>
+                    <div class="text-xs text-orange-600">Consequences: Neglect of work and personal life <a href="https://faspsych.com/blog/bitcoin-addiction-the-mental-health-risks-of-overinvesting-in-crypto/" class="citation-link" target="_blank">[101]</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-semibold text-primary mb-4">Stress Response Model</h4>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="\u653e\u5927">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="\u7f29\u5c0f">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="\u91cd\u7f6e">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="\u5168\u5c4f\u67e5\u770b">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph LR
+                  A[Blockchain RWA Environment] --&gt; B{Primary Psychological Stressors}
+                  B --&gt; C[Market Volatility]
+                  B --&gt; D[Social Media &amp; FOMO]
+                  B --&gt; E[Financial Loss Risk]
+                  B --&gt; F[Technological Complexity]
+
+                  C --&gt; G[Chronic Anxiety &amp; Stress]
+                  D --&gt; H[Impulsivity &amp; Regret]
+                  E --&gt; I[Depression &amp; Hopelessness]
+                  F --&gt; J[Cognitive Load &amp; Inadequacy]
+
+                  G --&gt; K[Negative Mental Health Outcomes]
+                  H --&gt; K
+                  I --&gt; K
+                  J --&gt; K
+
+                  style K fill:#ffcccc,stroke:#333,stroke-width:2px
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-8 mb-8">
+            <h4 class="font-canela text-xl font-semibold text-primary mb-6">PERMA Well-being Model for RWA Environments</h4>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Martin Seligman&#39;s PERMA model provides a framework for promoting flourishing and resilience among employees in blockchain RWA environments. Each element offers specific strategies for counteracting the negative impacts of high-stress digital work.
+            </p>
+
+            <div class="grid md:grid-cols-5 gap-4">
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-xl font-bold text-yellow-800">P</span>
+                </div>
+                <h5 class="font-semibold text-primary text-sm mb-1">Positive Emotion</h5>
+                <p class="text-xs text-gray-600">Gratitude practices, celebrating small wins</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-xl font-bold text-blue-800">E</span>
+                </div>
+                <h5 class="font-semibold text-primary text-sm mb-1">Engagement</h5>
+                <p class="text-xs text-gray-600">Flow states, skill-challenge balance</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-xl font-bold text-green-800">R</span>
+                </div>
+                <h5 class="font-semibold text-primary text-sm mb-1">Relationships</h5>
+                <p class="text-xs text-gray-600">Supportive team connections</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-xl font-bold text-purple-800">M</span>
+                </div>
+                <h5 class="font-semibold text-primary text-sm mb-1">Meaning</h5>
+                <p class="text-xs text-gray-600">Purpose beyond financial gains</p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 text-center">
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <span class="text-xl font-bold text-orange-800">A</span>
+                </div>
+                <h5 class="font-semibold text-primary text-sm mb-1">Accomplishment</h5>
+                <p class="text-xs text-gray-600">Skill development achievements</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Digital Burnout Prevention</h4>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <i class="fas fa-clock text-blue-500 mr-3 mt-1"></i>
+                  <div>
+                    <div class="font-medium">Boundary Setting</div>
+                    <div class="text-sm text-gray-600">Designated &#34;no-market-monitoring&#34; hours</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-bell-slash text-green-500 mr-3 mt-1"></i>
+                  <div>
+                    <div class="font-medium">Notification Management</div>
+                    <div class="text-sm text-gray-600">Turn off non-essential alerts</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-bed text-purple-500 mr-3 mt-1"></i>
+                  <div>
+                    <div class="font-medium">Sleep Hygiene</div>
+                    <div class="text-sm text-gray-600">Maintain regular sleep schedules</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white/90 rounded-lg p-6 border border-secondary/10">
+              <h4 class="font-semibold text-primary mb-4">Addiction Recognition and Support</h4>
+              <div class="space-y-4">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                  <h5 class="font-medium text-red-800 text-sm mb-1">Warning Signs</h5>
+                  <ul class="text-xs text-red-700">
+                    <li>\u2022 Compulsive checking and trading</li>
+                    <li>\u2022 Neglecting responsibilities</li>
+                    <li>\u2022 &#34;Chasing losses&#34; behavior</li>
+                  </ul>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-3">
+                  <h5 class="font-medium text-green-800 text-sm mb-1">Support Resources</h5>
+                  <ul class="text-xs text-green-700">
+                    <li>\u2022 Mental health counseling</li>
+                    <li>\u2022 Financial wellness education</li>
+                    <li>\u2022 Peer support groups</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <h5 class="font-medium text-blue-800 text-sm mb-1">Recovery Strategies</h5>
+                  <ul class="text-xs text-blue-700">
+                    <li>\u2022 Digital detox periods</li>
+                    <li>\u2022 Professional intervention</li>
+                    <li>\u2022 Structured accountability</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 px-4 sm:px-6 md:px-8 bg-primary/5 border-t border-secondary/10">
+        <div class="max-w-6xl mx-auto text-center">
+          <p class="text-gray-600 mb-4">
+            This comprehensive analysis synthesizes current research on human psychology and blockchain Real-World Asset implementation,
+            providing evidence-based guidance for HR professionals, managers, and leaders navigating technological transformation.
+          </p>
+          <div class="flex justify-center space-x-6 text-sm text-gray-500">
+            <span class="flex items-center">
+              <i class="fas fa-calendar mr-2"></i>
+              November 2025
+            </span>
+            <span class="flex items-center">
+              <i class="fas fa-book mr-2"></i>
+              Evidence-Based Research
+            </span>
+            <span class="flex items-center">
+              <i class="fas fa-users mr-2"></i>
+              HR &amp; Leadership Focus
+            </span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Mermaid Script -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        // Initialize Mermaid with custom configuration
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                // High contrast colors for better visibility
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e3a2e',
+                primaryBorderColor: '#8b7355',
+                lineColor: '#2c2c2c',
+                secondaryColor: '#f5f3f0',
+                tertiaryColor: '#e8e5e0',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8f9fa',
+                tertiaryBkg: '#e9ecef',
+                
+                // Node colors with high contrast
+                cScale0: '#ffffff',
+                cScale1: '#f8f9fa',
+                cScale2: '#e9ecef',
+                cScale3: '#dee2e6',
+                cScale4: '#ced4da',
+                
+                // Text colors for different contexts
+                textColor: '#1e3a2e',
+                darkTextColor: '#1e3a2e',
+                
+                // Edge styling
+                edgeLabelBackground: '#ffffff',
+                
+                // Specific node type colors for better contrast
+                fillType0: '#ffffff',
+                fillType1: '#f8f9fa',
+                fillType2: '#e9ecef',
+                fillType3: '#dee2e6',
+                fillType4: '#ced4da',
+                fillType5: '#adb5bd',
+                fillType6: '#6c757d',
+                fillType7: '#495057'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 14,
+            securityLevel: 'loose'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // \u89e6\u6478\u76f8\u5173\u72b6\u6001
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // \u5982\u679c\u662f\u89e6\u6478\u8bbe\u5907\uff0c\u5ffd\u7565\u9f20\u6807\u4e8b\u4ef6
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // \u83b7\u53d6\u4e24\u70b9\u4e4b\u95f4\u7684\u8ddd\u79bb
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - \u89e6\u6478\u4e8b\u4ef6\u5904\u7406
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // \u5355\u6307\u62d6\u52a8
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // \u53cc\u6307\u7f29\u653e
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // \u5355\u6307\u62d6\u52a8
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // \u53cc\u6307\u7f29\u653e
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // \u91cd\u7f6e\u72b6\u6001
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // \u5ef6\u8fdf\u91cd\u7f6eisTouch\uff0c\u907f\u514d\u9f20\u6807\u4e8b\u4ef6\u7acb\u5373\u89e6\u53d1
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // \u4ece\u53cc\u6307\u53d8\u4e3a\u5355\u6307\uff0c\u5207\u6362\u4e3a\u62d6\u52a8\u6a21\u5f0f
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        initializeMermaidControls();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const tocLink = document.querySelector(`a[href="#${id}"]`);
+                
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.toc-fixed a').forEach(link => {
+                        link.classList.remove('text-accent', 'font-semibold');
+                        link.classList.add('text-secondary');
+                    });
+                    if (tocLink) {
+                        tocLink.classList.remove('text-secondary');
+                        tocLink.classList.add('text-accent', 'font-semibold');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+  
+
+</body></html>
