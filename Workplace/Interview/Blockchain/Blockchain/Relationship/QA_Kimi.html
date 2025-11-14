@@ -1,0 +1,1303 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Blockchain Relationship Analysis: A Comprehensive Interview Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --accent: #3b82f6;
+            --muted: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .bento-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+        }
+        
+        .question-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        
+        .citation-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric-item {
+            background: var(--muted);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .matrix-table th,
+        .matrix-table td {
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .matrix-table th {
+            background: var(--muted);
+            font-weight: 600;
+        }
+        
+        .matrix-table tr:nth-child(even) {
+            background: rgba(248, 250, 252, 0.5);
+        }
+        
+        /* Mermaid diagram styles */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none; /* 防止触摸设备上的默认行为 */
+            -webkit-user-select: none; /* 防止文本选择 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* Responsive styles for small screens */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .hero-grid {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            .bento-card {
+                padding: 1.5rem;
+            }
+            .bento-card h1 {
+                font-size: 2.25rem;
+                line-height: 1.2;
+            }
+            .bento-card p {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            .mermaid-container {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            .matrix-table {
+                font-size: 0.8rem;
+            }
+            .matrix-table th, .matrix-table td {
+                padding: 0.5rem;
+            }
+            .question-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-gray-50">
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="serif text-xl font-bold text-gray-900 mb-4">Contents</h3>
+      </div>
+
+      <ul class="space-y-3 text-sm">
+        <li>
+          <a class="block py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors" href="#coverage-matrix">Coverage Matrix</a>
+        </li>
+        <li>
+          <a class="block py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors" href="#topic-clusters">Topic Clusters</a>
+        </li>
+        <li>
+          <a class="block py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors" href="#requirements-discovery">Requirements &amp; Discovery</a>
+          <ul class="ml-4 mt-2 space-y-2 text-xs">
+            <li>
+              <a class="block py-1 px-2 rounded hover:bg-gray-100" href="#q1-stakeholder-mapping">Stakeholder Mapping</a>
+            </li>
+            <li>
+              <a class="block py-1 px-2 rounded hover:bg-gray-100" href="#q2-market-demands">Market Demands</a>
+            </li>
+            <li>
+              <a class="block py-1 px-2 rounded hover:bg-gray-100" href="#q3-regulatory-constraints">Regulatory Constraints</a>
+            </li>
+            <li>
+              <a class="block py-1 px-2 rounded hover:bg-gray-100" href="#q4-dependency-analysis">Dependency Analysis</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="block py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors" href="#architecture-design">Architecture &amp; Design</a>
+          <ul class="ml-4 mt-2 space-y-2 text-xs">
+            <li>
+              <a class="block py-1 px-2 rounded hover:bg-gray-100" href="#q5-layer-decomposition">Layer Decomposition</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-8 py-16">
+          <div class="hero-grid">
+            <div class="space-y-6">
+              <div class="bento-card">
+                <h1 class="serif text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                  <em>Blockchain Relationship Analysis</em>
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                  A comprehensive framework for analyzing complex technical, business, and regulatory relationships across the blockchain development lifecycle
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-network-wired text-2xl text-blue-600 mr-3"></i>
+                  <h3 class="serif text-lg font-semibold">8 Lifecycle Phases</h3>
+                </div>
+                <p class="text-sm text-gray-600">From requirements to governance, covering the complete development journey</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-sitemap text-2xl text-purple-600 mr-3"></i>
+                  <h3 class="serif text-lg font-semibold">7 Relationship Types</h3>
+                </div>
+                <p class="text-sm text-gray-600">Structural, behavioral, dependency, business, regulatory, integration, and emergent</p>
+              </div>
+
+              <div class="bento-card">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-chart-line text-2xl text-green-600 mr-3"></i>
+                  <h3 class="serif text-lg font-semibold">Quantified Metrics</h3>
+                </div>
+                <p class="text-sm text-gray-600">Coupling coefficients, cardinality ratios, and network centrality measures</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coverage Matrix -->
+      <section class="bg-white py-16" id="coverage-matrix">
+        <div class="container mx-auto px-8">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-8">Coverage Matrix: Lifecycle Phases and Relationship Types</h2>
+
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            The following matrix outlines the comprehensive coverage of relationship analysis across the software development lifecycle for blockchain systems. Each cell represents a specific combination of a lifecycle phase and a relationship type, ensuring a thorough exploration of the interconnectedness within and between these domains.
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Structural</th>
+                  <th>Behavioral/Temporal</th>
+                  <th>Dependency/Coupling</th>
+                  <th>Business/Market</th>
+                  <th>Regulatory/Compliance</th>
+                  <th>Integration/Interface</th>
+                  <th>Emergent/Network</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Requirements &amp; Discovery</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">4-5</td>
+                </tr>
+                <tr>
+                  <td><strong>Architecture &amp; Design</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">4-5</td>
+                </tr>
+                <tr>
+                  <td><strong>Development</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">4-5</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing &amp; Quality</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">5-6</td>
+                </tr>
+                <tr>
+                  <td><strong>Deployment &amp; Release</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">4-5</td>
+                </tr>
+                <tr>
+                  <td><strong>Operations &amp; Observability</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">4-5</td>
+                </tr>
+                <tr>
+                  <td><strong>Maintenance &amp; Support</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">3-4</td>
+                </tr>
+                <tr>
+                  <td><strong>Evolution &amp; Governance</strong></td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center">✓</td>
+                  <td class="text-center font-semibold">3-4</td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td><strong>Total</strong></td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold">≥4</td>
+                  <td class="text-center font-bold text-lg">30-35</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Topic Clusters -->
+      <section class="bg-gray-50 py-16" id="topic-clusters">
+        <div class="container mx-auto px-8">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-8">Topic Clusters: Lifecycle-Aligned Q&amp;A</h2>
+
+          <p class="text-lg text-gray-600 mb-12 leading-relaxed">
+            This section presents detailed interview questions and answers organized by the eight lifecycle phases. Each question explores specific relationship types, using precise verbs and quantified metrics to ensure clarity and rigor in analyzing the complex interactions within blockchain systems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Requirements &amp; Discovery -->
+      <section class="bg-white py-16" id="requirements-discovery">
+        <div class="container mx-auto px-8">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-12">Topic 1: Requirements &amp; Discovery</h2>
+
+          <!-- Q1: Stakeholder Mapping -->
+          <div class="question-card" id="q1-stakeholder-mapping">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex-1">
+                <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Q1: Mapping Stakeholder Requirements to Blockchain Features</h3>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Difficulty: Intermediate</span>
+                  <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Phase: Requirements &amp; Discovery</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Roles: Business Analyst, Product Manager</span>
+                  <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Relationship Types: Business/Market, Structural, Dependency/Coupling</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Insight:</strong> The success of a blockchain project hinges on a clear, quantifiable mapping of high-level business requirements to specific, implementable technical features, where each feature&#39;s value is directly traceable to a market-driven need or regulatory mandate. <a class="citation-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13147" target="_blank">[50]</a>
+              </p>
+            </div>
+
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                In the requirements and discovery phase, the primary task is to establish a robust traceability matrix that links stakeholder needs to concrete blockchain system features. This process begins by identifying core business requirements, which often fall into categories such as curbing illegal practices, improving sustainability, increasing operational efficiency, enhancing supply-chain coordination, and sensing market trends <a class="citation-link" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/poms.13147" target="_blank">[50]</a>.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                For instance, in a supply chain traceability system, a key business requirement might be to &#34;curb illegal cobalt mining.&#34; This high-level goal <strong>constrains</strong> the system design and <strong>demands</strong> specific features. A corresponding blockchain feature could be an &#34;immutable provenance tracking&#34; module. The relationship here is that the business requirement <strong>owns</strong> the feature, and the feature <strong>contributes to</strong> fulfilling the requirement. This relationship can be quantified by metrics such as the percentage reduction in compliance violations (e.g., a target of 90% reduction in illegal sourcing incidents) or an increase in supply chain transparency score.
+              </p>
+
+              <div class="my-8">
+                <h4 class="font-semibold text-lg mb-4">Traceability Matrix</h4>
+                <table class="matrix-table">
+                  <thead>
+                    <tr>
+                      <th>Business Requirement</th>
+                      <th>Blockchain Feature</th>
+                      <th>Technical Component</th>
+                      <th>Success Metric</th>
+                      <th>Dependency Strength (Ca/Ce)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Curb Illegal Practices</td>
+                      <td>Immutable Provenance Tracking</td>
+                      <td>Smart Contract Layer</td>
+                      <td>90% reduction in violations</td>
+                      <td>Ca=15, Ce=3</td>
+                    </tr>
+                    <tr>
+                      <td>Improve Sustainability</td>
+                      <td>Carbon Footprint Logging</td>
+                      <td>Data Layer (Off-chain)</td>
+                      <td>20% reduction in emissions</td>
+                      <td>Ca=8, Ce=5</td>
+                    </tr>
+                    <tr>
+                      <td>Increase Efficiency</td>
+                      <td>Automated Settlement</td>
+                      <td>Smart Contract Layer</td>
+                      <td>50% faster payment cycles</td>
+                      <td>Ca=12, Ce=4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed">
+                Further decomposition reveals dependencies: the &#34;immutable provenance tracking&#34; feature <strong>depends on</strong> the &#34;smart contract execution&#34; layer, which in turn <strong>depends on</strong> the &#34;consensus mechanism&#34; (e.g., Proof-of-Authority for a private network). This creates a dependency chain: Business Goal → System Feature → Technical Component. The strength of this dependency can be measured using coupling metrics. For example, the &#34;provenance tracking&#34; module might have a high afferent coupling (Ca), as many other parts of the system rely on it, making it a stable and critical component. Conversely, its efferent coupling (Ce) might be lower, indicating it relies on a few core, stable lower-level components. This structural analysis helps architects and product managers prioritize features based on their impact and stability within the system.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q2: Market Demands -->
+          <div class="question-card" id="q2-market-demands">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex-1">
+                <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Q2: Analyzing Market Demands for Blockchain Capabilities</h3>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Difficulty: Advanced</span>
+                  <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Phase: Requirements &amp; Discovery</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Roles: Product Manager, Leadership</span>
+                  <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Relationship Types: Business/Market, Emergent/Network</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Insight:</strong> The rapid growth of the blockchain-for-supply-chain market, projected to expand at a 31.6% CAGR to $55.31 billion by 2035, creates a powerful network effect where increasing adoption by major players like IBM and Microsoft <strong>amplifies</strong> market demand and <strong>shapes</strong> the competitive landscape, forcing new entrants to build interoperable and scalable solutions. <a class="citation-link" href="https://www.researchnester.com/reports/blockchain-for-supply-chain-traceability-market/6531" target="_blank">[49]</a>
+              </p>
+            </div>
+
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Analyzing market demands requires understanding the dynamic relationship between market growth, key players, and technological capabilities. The global blockchain for supply chain traceability market, valued at $3.55 billion in 2025, is driven by a compound annual growth rate (CAGR) of over 31.6% <a class="citation-link" href="https://www.researchnester.com/reports/blockchain-for-supply-chain-traceability-market/6531" target="_blank">[49]</a>.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                This explosive growth <strong>influences</strong> the types of capabilities that are in high demand. For example, the market&#39;s expansion is fueled by a rising need for transparency and accountability, which <strong>drives</strong> demand for platforms that offer end-to-end traceability. This is not just a linear relationship; it creates a network effect.
+              </p>
+
+              <div class="my-8">
+                <h4 class="font-semibold text-lg mb-4">Network Effect Diagram</h4>
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid">
+                    graph TD
+                    A[Market Growth
+                    <br/>(31.6% CAGR)] --&gt; B{Increased Adoption
+                    <br/>by Key Players};
+                    B --&gt; C[Enhanced Credibility
+                    <br/>&amp; Standardization];
+                    C --&gt; D[Further Market Growth];
+                    D --&gt; A;
+                    B -- Constrains --&gt; E[New Entrants];
+                    E -- Forces --&gt; F[Niche Specialization
+                    <br/>or Interoperability];
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed">
+                As major technology providers like IBM, Microsoft, and SAP enter and expand their blockchain offerings, they <strong>shape</strong> the market&#39;s expectations and standards. Their participation <strong>reinforces</strong> the credibility of the technology, which in turn <strong>attracts</strong> more enterprises to adopt it, further accelerating market growth. This creates a reinforcing feedback loop: Market Growth → Increased Adoption by Key Players → Enhanced Credibility and Standardization → Further Market Growth. The market share data is telling: North America currently holds a 44.5% share, indicating a mature and highly competitive environment where specific capabilities like cloud-based deployment (projected 74.20% share by 2035) are becoming standard expectations rather than differentiators.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q3: Regulatory Constraints -->
+          <div class="question-card" id="q3-regulatory-constraints">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex-1">
+                <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Q3: Regulatory Constraints on Blockchain Requirements</h3>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Difficulty: Advanced</span>
+                  <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Phase: Requirements &amp; Discovery</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Roles: Business Analyst, Security, Leadership</span>
+                  <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Relationship Types: Regulatory/Compliance, Dependency/Coupling, Structural</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Insight:</strong> The immutable nature of blockchain <strong>conflicts with</strong> the GDPR&#39;s &#34;Right to be Forgotten,&#34; creating a fundamental structural tension that requires architectural solutions like off-chain storage or encryption to achieve compliance, thereby introducing new dependencies and coupling between on-chain and off-chain components. <a class="citation-link" href="https://fenix.tecnico.ulisboa.pt/downloadFile/1970719973968637/98668-dissertation.pdf" target="_blank">[46]</a>
+              </p>
+            </div>
+
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Regulatory frameworks, particularly the General Data Protection Regulation (GDPR), impose significant constraints on the requirements and architecture of blockchain systems that handle personal data. The core conflict arises from the principle of immutability, a foundational characteristic of most blockchains, which is in direct opposition to GDPR&#39;s Article 17, the &#34;Right to be Forgotten&#34; <a class="citation-link" href="https://fenix.tecnico.ulisboa.pt/downloadFile/1970719973968637/98668-dissertation.pdf" target="_blank">[46]</a>.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                This regulation <strong>mandates</strong> that data subjects have the right to have their personal data erased. This requirement <strong>governs</strong> the design of any blockchain system processing EU citizens&#39; data. A system that stores personal data directly on-chain cannot comply with this mandate, creating a critical compliance risk.
+              </p>
+
+              <div class="my-8">
+                <h4 class="font-semibold text-lg mb-4">Compliance Architecture Diagram</h4>
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid">
+                    graph LR
+                    A[User Request] --&gt; B{Smart Contract};
+                    B -- &#34;depends on (hash)&#34; --&gt; C[Off-chain Database/IPFS];
+                    B -- &#34;conflicts with&#34; --&gt; D[Immutable Blockchain Ledger];
+                    C -- &#34;enables compliance with&#34; --&gt; E[GDPR: Right to Erasure];
+                    C -- &#34;enables compliance with&#34; --&gt; F[GDPR: Right to Rectification];
+                    style D fill:#ffcccc
+                    style E fill:#ccffcc
+                    style F fill:#ccffcc
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed">
+                To resolve this, architects must introduce a structural modification. A common solution is to <strong>decompose</strong> the data layer, storing personal data off-chain (e.g., in a traditional database or a distributed file system like IPFS) and only recording a hash or a reference to that data on the blockchain. This architectural pattern <strong>enables</strong> compliance but <strong>introduces</strong> a new, critical dependency. The on-chain logic (e.g., a smart contract) <strong>depends on</strong> the availability and integrity of the off-chain storage. This creates a coupling point between the blockchain and the external system. The strength of this coupling must be carefully managed, with robust failover mechanisms and strong service-level agreements (SLAs) to ensure system resilience.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q4: Dependency Analysis -->
+          <div class="question-card" id="q4-dependency-analysis">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex-1">
+                <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Q4: Dependency Analysis of Blockchain Requirements</h3>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">Difficulty: Intermediate</span>
+                  <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Phase: Requirements &amp; Discovery</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Roles: Architect, Developer</span>
+                  <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Relationship Types: Dependency/Coupling, Structural</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Insight:</strong> The choice of a consensus mechanism, such as Proof-of-Work (PoW) or Proof-of-Stake (PoS), is a foundational requirement that <strong>constrains</strong> all other architectural decisions, creating a high-dependency, high-coupling relationship with performance, scalability, and energy consumption characteristics of the entire system. <a class="citation-link" href="https://www.mdpi.com/2673-4591/9/1/11" target="_blank">[51]</a>
+              </p>
+            </div>
+
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                During the requirements phase, the selection of core protocols like the consensus mechanism creates a cascade of dependencies that define the system&#39;s architecture. A requirement for a highly secure, decentralized network might lead to the selection of Proof-of-Work (PoW) as the consensus mechanism. This single requirement <strong>mandates</strong> specific downstream architectural components and <strong>constrains</strong> the system&#39;s performance and resource consumption.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                For instance, PoW <strong>requires</strong> a network of miners with significant computational power, which in turn <strong>demands</strong> a robust hardware/infrastructure layer <a class="citation-link" href="https://www.cyfrin.io/blog/blockchain-architecture-layers-what-is-it" target="_blank">[34]</a>. This creates a strong dependency chain: Requirement (High Security) → Consensus Mechanism (PoW) → Hardware Layer (Mining Rigs). The coupling here is tight; changing the consensus mechanism later would be a monumental task, akin to rebuilding the engine of a moving car.
+              </p>
+
+              <div class="my-8">
+                <h4 class="font-semibold text-lg mb-4">Dependency Matrix (DSM)</h4>
+                <table class="matrix-table">
+                  <thead>
+                    <tr>
+                      <th>Requirement/Component</th>
+                      <th>High Security</th>
+                      <th>PoW Consensus</th>
+                      <th>High Throughput</th>
+                      <th>Energy Efficiency</th>
+                      <th>Decentralization</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>PoW Consensus</strong></td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center">-</td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center bg-green-50">X</td>
+                    </tr>
+                    <tr>
+                      <td><strong>PoS Consensus</strong></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Mining Hardware</strong></td>
+                      <td class="text-center"></td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                      <td><strong>High TPS</strong></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Low Energy Use</strong></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center"></td>
+                      <td class="text-center bg-green-50">X</td>
+                      <td class="text-center"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed">
+                This choice also <strong>influences</strong> other non-functional requirements. PoW&#39;s energy-intensive nature <strong>conflicts with</strong> a potential business requirement for sustainability, creating a trade-off that must be resolved. Alternatively, a requirement for high transaction throughput and energy efficiency might lead to the selection of a Delegated Proof-of-Stake (DPoS) mechanism. This choice <strong>enables</strong> faster transaction finality but <strong>introduces</strong> a different set of dependencies, such as a smaller, more centralized set of validator nodes. This architectural decision <strong>impacts</strong> the network&#39;s decentralization and censorship resistance, which may <strong>conflict with</strong> other regulatory or philosophical requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture &amp; Design -->
+      <section class="bg-gray-50 py-16" id="architecture-design">
+        <div class="container mx-auto px-8">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-12">Topic 2: Architecture &amp; Design</h2>
+
+          <!-- Q5: Layer Decomposition -->
+          <div class="question-card" id="q5-layer-decomposition">
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex-1">
+                <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Q5: Decomposing Blockchain Architecture into Layers</h3>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">Difficulty: Intermediate</span>
+                  <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Phase: Architecture &amp; Design</span>
+                  <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Roles: Architect, Developer</span>
+                  <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Relationship Types: Structural, Dependency/Coupling, Integration/Interface</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Insight:</strong> The layered architecture of a blockchain system, with its hierarchical dependencies and clear separation of concerns, is a critical design decision that directly impacts its modularity, scalability, and security. <a class="citation-link" href="https://hacken.io/discover/blockchain-architecture-layers/" target="_blank">[133]</a>
+              </p>
+            </div>
+
+            <div class="prose max-w-none">
+              <p class="text-gray-700 leading-relaxed mb-4">
+                The architecture of a blockchain system is most effectively understood through a layered decomposition, which provides a clear structural hierarchy and defines the relationships of dependency and integration between its core components. This approach is analogous to the layered models used in other complex systems, such as the OSI model for networking, and it is essential for managing the complexity of a blockchain platform.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                A common decomposition identifies four primary layers, each with a distinct responsibility. The <strong>Data Layer</strong> <strong>contains</strong> the core data structure—the blockchain itself—which is a cryptographically linked chain of blocks. This layer is foundational, as it <strong>stores</strong> the immutable ledger of all transactions and is responsible for data integrity. The <strong>Network Layer</strong> <strong>manages</strong> the peer-to-peer communication between nodes. It <strong>propagates</strong> transactions and blocks across the network and is responsible for maintaining the network&#39;s connectivity and resilience. The <strong>Consensus Layer</strong> <strong>implements</strong> the algorithm that ensures all nodes in the network agree on the state of the blockchain. This layer is critical for the system&#39;s security and consistency, as it <strong>prevents</strong> double-spending and ensures that all participants have a consistent view of the ledger. Finally, the <strong>Application Layer</strong> <strong>hosts</strong> the smart contracts and decentralized applications (dApps) that provide the system&#39;s end-user functionality. This layer is the most visible to users and is responsible for translating user actions into blockchain transactions <a class="citation-link" href="https://hacken.io/discover/blockchain-architecture-layers/" target="_blank">[133]</a>.
+              </p>
+
+              <div class="my-8">
+                <h4 class="font-semibold text-lg mb-4">Layered Architecture Diagram</h4>
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid">
+                    graph TD
+                    A[Application Layer
+                    <br/>Smart Contracts, dApps] --&gt; B[Consensus Layer
+                    <br/>PoW, PoS, DPoS];
+                    B --&gt; C[Network Layer
+                    <br/>P2P Communication];
+                    C --&gt; D[Data Layer
+                    <br/>Blockchain, Transactions];
+                    D --&gt; E[Hardware Layer
+                    <br/>Nodes, Storage];
+
+                    style A fill:#dbeafe
+                    style B fill:#f0f9ff
+                    style C fill:#ecfdf5
+                    style D fill:#fef3c7
+                    style E fill:#fce7f3
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                The relationships between these layers are primarily hierarchical, with the Application Layer at the top and the Data Layer at the bottom. Each layer <strong>depends on</strong> the layers below it. For example, a smart contract in the Application Layer <strong>calls</strong> functions in the Consensus Layer to validate a transaction, which in turn <strong>relies on</strong> the Network Layer to propagate the transaction to other nodes, which finally <strong>stores</strong> the data in the Data Layer. This dependency chain creates a clear separation of concerns, making the system more modular and easier to maintain.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed">
+                The quality of these relationships can be measured using architectural metrics. A well-designed system will have low coupling between layers, meaning that a change in one layer does not require changes in the others. This can be quantified by measuring the number of interfaces between layers or the complexity of the data that passes between them. For example, a simple, well-defined API between the Application and Consensus layers is a sign of good design. High cohesion within each layer is also critical, meaning that the components within a layer are closely related and work together to achieve a single, well-defined goal. This layered approach is not just an academic exercise; it has practical implications for the system&#39;s scalability, as it allows for the independent scaling of different layers, and for its security, as it provides clear boundaries for access control and threat modeling.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-8">
+          <div class="text-center">
+            <h3 class="serif text-2xl font-bold mb-4">Blockchain Relationship Analysis</h3>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              A comprehensive framework for understanding the complex interactions between technical, business, and regulatory factors in blockchain system design.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500">
+            <p> 2025 Blockchain Relationship Analysis Framework. Designed for technical professionals and system architects.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+        // Initialize Mermaid with enhanced theme and contrast
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                // Primary colors with good contrast
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#64748b',
+                lineColor: '#64748b',
+                
+                // Secondary colors
+                secondaryColor: '#f8fafc',
+                secondaryTextColor: '#334155',
+                secondaryBorderColor: '#94a3b8',
+                
+                // Tertiary colors
+                tertiaryColor: '#ffffff',
+                tertiaryTextColor: '#475569',
+                tertiaryBorderColor: '#cbd5e1',
+                
+                // Background colors
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#f1f5f9',
+                
+                // Node specific colors for better contrast
+                cScale0: '#dbeafe',
+                cScale1: '#f0f9ff', 
+                cScale2: '#ecfdf5',
+                cScale3: '#fef3c7',
+                cScale4: '#fce7f3',
+                cScale5: '#f3e8ff',
+                
+                // Text colors for different scales
+                cScale0Text: '#1e293b',
+                cScale1Text: '#1e293b',
+                cScale2Text: '#1e293b', 
+                cScale3Text: '#1e293b',
+                cScale4Text: '#1e293b',
+                cScale5Text: '#1e293b',
+                
+                // Edge label colors
+                edgeLabelBackground: '#ffffff',
+                
+                // Font settings
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                
+                // Additional contrast improvements
+                nodeBorder: '#64748b',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#cbd5e1',
+                defaultLinkColor: '#64748b',
+                titleColor: '#1e293b',
+                edgeLabelColor: '#1e293b',
+                
+                // Actor colors (for sequence diagrams)
+                actorBkg: '#ffffff',
+                actorBorder: '#64748b',
+                actorTextColor: '#1e293b',
+                actorLineColor: '#64748b',
+                
+                // Signal colors
+                signalColor: '#1e293b',
+                signalTextColor: '#1e293b'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            sequence: {
+                useMaxWidth: false,
+                wrap: true
+            },
+            gantt: {
+                useMaxWidth: false
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Call the function to initialize mermaid controls
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.toc-fixed a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-blue-100', 'text-blue-800', 'font-semibold');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-blue-100', 'text-blue-800', 'font-semibold');
+                }
+            });
+        });
+    </script>
+
+  
+
+</body></html>

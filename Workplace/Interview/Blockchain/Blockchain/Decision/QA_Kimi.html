@@ -1,0 +1,1420 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain Decision-Making: A Comprehensive Guide for Leaders and Architects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --accent: #0ea5e9;
+            --muted: #f1f5f9;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--secondary);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(14, 165, 233, 0.05);
+        }
+        
+        .toc-link.level-2 {
+            padding-left: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23cbd5e1" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .decision-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .decision-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Additional mermaid styling for better contrast and consistency */
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Enhanced mermaid node styling for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke-width: 2px !important;
+        }
+
+        .mermaid .node text {
+            font-weight: 500 !important;
+            font-size: 13px !important;
+        }
+
+        /* Custom colors for better contrast */
+        .mermaid .node[style*="fill:#e3f2fd"] text,
+        .mermaid .node[style*="fill:#16a34a"] text,
+        .mermaid .node[style*="fill:#dc2626"] text,
+        .mermaid .node[style*="fill:#fbbf24"] text,
+        .mermaid .node[style*="fill:#bbf7d0"] text,
+        .mermaid .node[style*="fill:#fecaca"] text,
+        .mermaid .node[style*="fill:#fef3c7"] text {
+            fill: #1e293b !important;
+            font-weight: 600 !important;
+        }
+
+        /* Specific styling for different node types */
+        .mermaid .node[style*="fill:#e3f2fd"] rect,
+        .mermaid .node[style*="fill:#e3f2fd"] polygon {
+            stroke: #0ea5e9 !important;
+            stroke-width: 2px !important;
+        }
+
+        .mermaid .node[style*="fill:#16a34a"] rect,
+        .mermaid .node[style*="fill:#16a34a"] polygon {
+            stroke: #15803d !important;
+            stroke-width: 2px !important;
+        }
+
+        .mermaid .node[style*="fill:#dc2626"] rect,
+        .mermaid .node[style*="fill:#dc2626"] polygon {
+            stroke: #b91c1c !important;
+            stroke-width: 2px !important;
+        }
+
+        .mermaid .node[style*="fill:#fbbf24"] rect,
+        .mermaid .node[style*="fill:#fbbf24"] polygon {
+            stroke: #f59e0b !important;
+            stroke-width: 2px !important;
+        }
+
+        .decision-matrix {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        .decision-matrix table {
+            min-width: 800px;
+            font-size: 0.875rem;
+        }
+        
+        .decision-matrix th,
+        .decision-matrix td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        .decision-matrix th {
+            background: var(--muted);
+            font-weight: 600;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .tag-consensus { background: #bbf7d0; color: #166534; }
+        .tag-context { background: #fef3c7; color: #92400e; }
+        .tag-emerging { background: #e0e7ff; color: #3730a3; }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                min-height: auto;
+            }
+
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                padding: 0 1rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-visual {
+                height: 300px;
+            }
+            .decision-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-gray-50">
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="font-bold text-lg serif">Contents</h3>
+        <button id="toc-close" class="lg:hidden text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <a href="#hero" class="toc-link">Introduction</a>
+      <a href="#strategic" class="toc-link">1. Strategic Decisions</a>
+      <a href="#q1" class="toc-link level-2">Platform Selection MCDM</a>
+      <a href="#technical" class="toc-link">2. Technical Decisions</a>
+      <a href="#q4" class="toc-link level-2">Consensus Algorithm Selection</a>
+      <a href="#implementation" class="toc-link">Implementation Framework</a>
+      <a href="#monitoring" class="toc-link">Monitoring &amp; Adaptation</a>
+      <a href="#glossary" class="toc-link">Glossary</a>
+      <a href="#references" class="toc-link">References</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="bg-white border-b">
+        <div class="hero-grid p-8">
+          <div class="hero-text">
+            <h1 class="text-5xl font-bold serif text-gray-900 mb-6 leading-tight">
+              <em class="text-blue-600">Blockchain Decision-Making:</em>
+              <br/>
+              A Comprehensive Guide for Leaders and Architects
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+              Navigating the complex landscape of blockchain technology through systematic,
+              quantifiable decision-making frameworks that balance technical excellence
+              with strategic business objectives.
+            </p>
+            <div class="flex items-center space-x-6 text-sm text-gray-500">
+              <span><i class="fas fa-users mr-2"></i>Decision Makers &amp; Architects</span>
+              <span><i class="fas fa-clock mr-2"></i>Multi-stage Process</span>
+              <span><i class="fas fa-chart-line mr-2"></i>Quantitative Analysis</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="https://kimi-web-img.moonshot.cn/img/f1000research-files.f1000.com/c894ce3d5dcf84f904b495e62becaddb4e327f1b.gif" alt="Abstract blockchain decision-making network diagram" class="w-full h-full object-cover opacity-80" size="medium" aspect="wide" query="abstract blockchain decision making network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section class="px-8 py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold serif mb-8">Executive Summary</h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Blockchain technology represents a paradigm shift in how organizations approach
+              data management, transaction processing, and trust mechanisms. However, the
+              complexity of blockchain ecosystems—encompassing diverse platforms, consensus
+              mechanisms, and regulatory frameworks—demands a structured, systematic
+              approach to decision-making.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              This comprehensive guide presents a <strong>nine-stage decision process</strong>
+              that enables leaders and architects to navigate blockchain implementation
+              challenges through quantifiable criteria, stakeholder alignment, and
+              risk-aware implementation strategies.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Strategic Decisions -->
+      <section id="strategic" class="px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">1. Strategic Decisions: Platform Selection and Market Entry</h2>
+
+          <div id="q1" class="decision-card">
+            <h3 class="text-2xl font-semibold mb-4">Q1: How should an enterprise compare Ethereum, Hyperledger Fabric, and eBPF-based Blockbench using a multi-criteria decision matrix (MCDM) for blockchain platform selection?</h3>
+
+            <div class="flex items-center space-x-4 mb-6 text-sm text-gray-600">
+              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Advanced</span>
+              <span>Strategic + Technical</span>
+              <span>Lifecycle: Requirements, Architecture, Operations, Evolution</span>
+            </div>
+
+            <div class="prose max-w-none mb-8">
+              <p class="mb-4">
+                An enterprise must adopt a systematic and quantifiable approach to select a blockchain platform,
+                as the decision has long-term strategic and technical implications. The use of a
+                <strong>Multi-Criteria Decision-Making (MCDM)</strong> framework, such as the Analytic Hierarchy
+                Process (AHP) combined with TOPSIS, provides a robust methodology for this complex evaluation
+                <a href="#ref-27" class="citation">[27]</a>.
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Decision Framework</h4>
+              <p class="mb-4">
+                The process begins with framing the core problem: identifying a platform that aligns with the
+                organization&#39;s specific business case, technical requirements, and regulatory environment.
+                The diversity of available platforms makes a structured comparison essential for mitigating risks
+                and ensuring successful implementation.
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Constraint Analysis</h4>
+              <p class="mb-4">
+                Constraints are categorized into eight key areas: technical, resource, business, organizational,
+                regulatory, operational, ecosystem, and lifecycle <a href="#ref-27" class="citation">[27]</a>.
+                Technical constraints include transaction throughput, latency, and scalability. Resource constraints
+                encompass budget, team size, and implementation timeline.
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Stakeholder Engagement</h4>
+              <p class="mb-4">
+                Key stakeholders include the CTO, enterprise architect, development team, security team,
+                finance team, and product managers. Each has different concerns: CTO focuses on strategic
+                implications, developers on tooling availability, security on compliance, and finance on
+                total cost of ownership.
+              </p>
+            </div>
+
+            <!-- Decision Flow Diagram -->
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TB
+                subgraph &#34;1-3: Frame &amp; Analyze&#34;
+                Problem[Framing] --&gt; Constraints[Constraints
+                <br/>8 Categories]
+                Constraints --&gt; Stakeholders[Stakeholders
+                <br/>10 Roles]
+                end
+                subgraph &#34;4-6: Evaluate&#34;
+                Stakeholders --&gt; Alternatives[Alternatives
+                <br/>≥3]
+                Alternatives --&gt; TradeOffs[Trade-Offs
+                <br/>≥4 Dims]
+                TradeOffs --&gt; Risks[Risks
+                <br/>P×I]
+                end
+                subgraph &#34;7-9: Execute &amp; Learn&#34;
+                Risks --&gt; Decision[Decision &amp; ADR]
+                Decision --&gt; Implement[Implementation]
+                Implement --&gt; Monitor[Monitoring]
+                end
+                Monitor --&gt;|Adapt| Alternatives
+              </div>
+            </div>
+
+            <!-- Decision Matrix -->
+            <div class="decision-matrix">
+              <h4 class="text-xl font-semibold mb-4">Platform Comparison Matrix</h4>
+              <table class="w-full">
+                <thead>
+                  <tr>
+                    <th>Alternative</th>
+                    <th>Technical</th>
+                    <th>Resource</th>
+                    <th>Business</th>
+                    <th>Operational</th>
+                    <th>Regulatory</th>
+                    <th>Risk</th>
+                    <th>When to Choose</th>
+                    <th>Tag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Ethereum</strong></td>
+                    <td>High decentralization, mature ecosystem, smart contract flexibility</td>
+                    <td>High transaction fees, energy costs, scalability limitations</td>
+                    <td>Strong brand recognition, large developer pool</td>
+                    <td>Proven track record, extensive tooling</td>
+                    <td>Public, transparent, but privacy concerns</td>
+                    <td>High energy use, potential for congestion</td>
+                    <td>Applications requiring high decentralization and public verifiability</td>
+                    <td><span class="tag tag-context">Context-dependent</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hyperledger Fabric</strong></td>
+                    <td>Permissioned, high performance, pluggable consensus</td>
+                    <td>Lower operational costs, enterprise support</td>
+                    <td>Enterprise-focused, strong vendor support</td>
+                    <td>Complex setup, requires specialized expertise</td>
+                    <td>Designed for privacy and compliance</td>
+                    <td>Vendor lock-in, less decentralized</td>
+                    <td>Private/Consortium networks, enterprise applications with privacy needs</td>
+                    <td><span class="tag tag-consensus">Consensus</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Blockbench</strong></td>
+                    <td>Benchmarking tool, not a platform</td>
+                    <td>Requires integration with other platforms</td>
+                    <td>Niche use case, for performance evaluation</td>
+                    <td>Requires technical expertise to operate</td>
+                    <td>N/A</td>
+                    <td>Dependent on underlying platforms</td>
+                    <td>Performance evaluation and comparison of different blockchain platforms</td>
+                    <td><span class="tag tag-emerging">Emerging</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="prose max-w-none">
+              <h4 class="text-xl font-semibold mt-6 mb-3">Quantified Trade-offs</h4>
+              <p class="mb-4">
+                The evaluation uses seven key criteria from research by Gupta et al. (2024):
+                transaction fees, security, transaction speed, interoperability, scalability,
+                energy requirements, and smart contracts <a href="#ref-27" class="citation">[27]</a>.
+                Each criterion is weighted based on organizational priorities using AHP.
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Risk Assessment</h4>
+              <p class="mb-4">
+                Key risks include platform scalability limitations, security vulnerabilities,
+                regulatory non-compliance, vendor lock-in, and high operational costs.
+                Each risk is evaluated for probability and impact, with mitigation
+                strategies assigned to specific owners.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Decisions -->
+      <section id="technical" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">2. Technical Decisions: Architecture and Consensus Mechanisms</h2>
+
+          <div id="q4" class="decision-card">
+            <h3 class="text-2xl font-semibold mb-4">Q4: How should a global payments platform compare Proof of Work, Proof of Stake, Delegated Proof of Stake, Practical Byzantine Fault Tolerance, and Proof of Authority for consensus algorithm selection?</h3>
+
+            <div class="flex items-center space-x-4 mb-6 text-sm text-gray-600">
+              <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full">Advanced</span>
+              <span>Technical</span>
+              <span>Lifecycle: Architecture, Development, Operations</span>
+            </div>
+
+            <div class="prose max-w-none mb-8">
+              <p class="mb-4">
+                The selection of a consensus algorithm is a foundational technical decision for a global payments platform,
+                directly impacting its scalability, security, energy footprint, and regulatory compliance. The primary
+                challenge lies in navigating the inherent trade-offs between decentralization, security, and performance,
+                often referred to as the &#34;blockchain trilemma.&#34;
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Constraint Analysis</h4>
+              <p class="mb-4">
+                <strong>Technical:</strong> Target &gt;10,000 TPS, &lt;5s finality, 99.99% uptime
+                  <br/>
+                  <strong>Resource:</strong> Budget $2M initial, $500K/month operational, 12-month timeline
+                  <br/>
+                  <strong>Regulatory:</strong> Must comply with MiCA in the EU <a href="#ref-827" class="citation">[827]</a>,
+                  PCI DSS for card data security <a href="#ref-820" class="citation">[820]</a>
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Stakeholder Conflicts</h4>
+              <p class="mb-4">
+                The <strong>Architect</strong> prioritizes high throughput (favors DPoS, PoA) while the
+                <strong>Security Lead</strong> prefers maximum security (favors PoW). The <strong>Compliance Officer</strong>
+                acts as tie-breaker based on regulatory viability, particularly regarding energy consumption under MiCA <a href="#ref-829" class="citation">[829]</a>.
+              </p>
+            </div>
+
+            <!-- Consensus Decision Flow -->
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TB
+                subgraph &#34;Consensus Evaluation Process&#34;
+                Start[Start: Global Payments Requirements] --&gt; Criteria[Define Evaluation Criteria
+                <br/>Performance, Security, Cost, Regulatory]
+                Criteria --&gt; Options[Generate Options
+                <br/>PoW, PoS, DPoS, PBFT, PoA]
+                Options --&gt; Analysis[Quantitative Analysis
+                <br/>TPS, Energy, Latency, Compliance]
+                Analysis --&gt; TradeOffs[Evaluate Trade-offs
+                <br/>Decentralization vs Performance]
+                TradeOffs --&gt; Risk[Assess Risks
+                <br/>Regulatory, Security, Operational]
+                Risk --&gt; Decision[Make Decision
+                <br/>Hybrid PoS + Layer 2]
+                Decision --&gt; Implement[Implement
+                <br/>Phased Rollout]
+                Implement --&gt; Monitor[Monitor
+                <br/>Performance Metrics]
+                Monitor --&gt; Adapt[Adapt
+                <br/>Based on Results]
+                Adapt --&gt; Options
+                end
+              </div>
+            </div>
+
+            <!-- Consensus Comparison Matrix -->
+            <div class="decision-matrix">
+              <h4 class="text-xl font-semibold mb-4">Consensus Algorithm Comparison</h4>
+              <table class="w-full">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Performance</th>
+                    <th>Energy Efficiency</th>
+                    <th>Security</th>
+                    <th>Decentralization</th>
+                    <th>Regulatory Viability</th>
+                    <th>When to Choose</th>
+                    <th>Tag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Proof of Work</strong></td>
+                    <td>Low (7 TPS)</td>
+                    <td>Very Poor</td>
+                    <td>Very High</td>
+                    <td>Very High</td>
+                    <td>Poor (High Energy)</td>
+                    <td>Niche, security-maximalist use cases</td>
+                    <td><span class="tag tag-emerging">Emerging</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Proof of Stake</strong></td>
+                    <td>Medium (15 TPS)</td>
+                    <td>Good</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Good (Low Energy)</td>
+                    <td>General-purpose, public networks</td>
+                    <td><span class="tag tag-consensus">Consensus</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Delegated PoS</strong></td>
+                    <td>High (2000+ TPS)</td>
+                    <td>Very Good</td>
+                    <td>Medium</td>
+                    <td>Medium</td>
+                    <td>Medium (Centralization)</td>
+                    <td>High-throughput, permissioned networks</td>
+                    <td><span class="tag tag-context">Context-dependent</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>PBFT</strong></td>
+                    <td>High (5000+ TPS)</td>
+                    <td>Medium</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Good (Permissioned)</td>
+                    <td>Small, trusted consortiums</td>
+                    <td><span class="tag tag-context">Context-dependent</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Proof of Authority</strong></td>
+                    <td>High (1000+ TPS)</td>
+                    <td>Very Good</td>
+                    <td>Medium</td>
+                    <td>Very Low</td>
+                    <td>Medium (Centralization)</td>
+                    <td>Private, enterprise networks</td>
+                    <td><span class="tag tag-context">Context-dependent</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hybrid (PoS + L2)</strong></td>
+                    <td>Very High</td>
+                    <td>Good</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Good</td>
+                    <td>Complex, high-performance dApps</td>
+                    <td><span class="tag tag-consensus">Consensus</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="prose max-w-none">
+              <h4 class="text-xl font-semibold mt-6 mb-3">Hybrid Decision Rationale</h4>
+              <p class="mb-4">
+                A <strong>hybrid approach</strong> is selected: <strong>PoS as the base layer</strong>
+                for its balance of security, energy efficiency, and regulatory viability, combined with a
+                <strong>Layer 2 scaling solution</strong> using DPoS for rapid transaction processing.
+                This two-tiered architecture meets performance requirements while maintaining regulatory compliance.
+              </p>
+
+              <h4 class="text-xl font-semibold mt-6 mb-3">Implementation Phases</h4>
+              <p class="mb-4">
+                <strong>Phase 1 (Months 1-4):</strong> Set up PoS-based mainnet, develop core smart contracts
+                <br/>
+                <strong>Phase 2 (Months 5-8):</strong> Develop and deploy Layer 2 scaling solution
+                <br/>
+                <strong>Phase 3 (Months 9-12):</strong> Integrate with banking partners, security audits, pilot launch
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Implementation Framework -->
+      <section id="implementation" class="px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">Implementation Framework</h2>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="decision-card">
+              <h3 class="text-xl font-semibold mb-4">Phased Rollout Strategy</h3>
+              <p class="text-gray-700 mb-4">
+                Implementation follows an iterative, risk-aware approach starting with pilot projects
+                that validate core assumptions before wider deployment. Each phase includes specific
+                success criteria and rollback procedures.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li><strong>Pilot Phase:</strong> Small-scale deployment with limited users</li>
+                <li><strong>Validation Phase:</strong> Performance and security testing</li>
+                <li><strong>Expansion Phase:</strong> Gradual user base increase</li>
+                <li><strong>Production Phase:</strong> Full deployment with monitoring</li>
+              </ul>
+            </div>
+
+            <div class="decision-card">
+              <h3 class="text-xl font-semibold mb-4">Risk Mitigation Framework</h3>
+              <p class="text-gray-700 mb-4">
+                Comprehensive risk management addresses technical, regulatory, and operational
+                challenges through proactive identification and mitigation strategies.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li><strong>Technical Risks:</strong> Scalability limitations, security vulnerabilities</li>
+                <li><strong>Regulatory Risks:</strong> Compliance failures, legal challenges</li>
+                <li><strong>Operational Risks:</strong> System downtime, performance degradation</li>
+                <li><strong>Strategic Risks:</strong> Platform obsolescence, vendor lock-in</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="decision-card">
+            <h3 class="text-2xl font-semibold mb-4">ADR Template for Blockchain Decisions</h3>
+            <div class="bg-gray-50 p-6 rounded-lg font-mono text-sm">
+              <pre># ADR-2024-001: Blockchain Platform Selection
+**Status**: Accepted  
+**Date**: 2024-11-14  
+**Type**: Strategic/Technical
+
+**Context**: Enterprise needs a blockchain platform for supply chain management.
+The system must handle high transaction volumes and comply with regulations.
+
+**Alternatives**: 
+1. Ethereum (Public) - Mature ecosystem but high fees
+2. Hyperledger Fabric (Permissioned) - Enterprise features
+3. R3 Corda (Permissioned) - Financial focus
+
+**Decision**: Hyperledger Fabric selected for enterprise features,
+high TPS capability, and strong permissioned model.
+
+**Consequences**: 
+* **Positive**: High TPS, enterprise features, good for supply chain
+* **Negative**: Less decentralized than public blockchains
+* **Mitigation**: Hybrid approach with public anchoring
+
+**Metrics**: 
+* Target TPS: &gt;1000
+* Target Latency: &lt;10s
+* Uptime: &gt;99.9%
+* Compliance: SOC 2, GDPR</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Monitoring &amp; Adaptation -->
+      <section id="monitoring" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">Monitoring &amp; Adaptation</h2>
+
+          <div class="decision-card">
+            <h3 class="text-2xl font-semibold mb-4">Performance Metrics Dashboard</h3>
+            <p class="text-gray-700 mb-6">
+              Continuous monitoring ensures the blockchain implementation meets performance,
+              cost, and compliance targets while providing data for iterative improvements.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-blue-900 mb-2">Technical Performance</h4>
+                <ul class="text-sm text-blue-800 space-y-1">
+                  <li>• Transactions Per Second (TPS)</li>
+                  <li>• Transaction latency (p95)</li>
+                  <li>• Network uptime percentage</li>
+                  <li>• Block propagation time</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-green-900 mb-2">Economic Metrics</h4>
+                <ul class="text-sm text-green-800 space-y-1">
+                  <li>• Cost per transaction</li>
+                  <li>• Total operational costs</li>
+                  <li>• Energy consumption</li>
+                  <li>• ROI calculations</li>
+                </ul>
+              </div>
+
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-purple-900 mb-2">Compliance &amp; Risk</h4>
+                <ul class="text-sm text-purple-800 space-y-1">
+                  <li>• Security audit results</li>
+                  <li>• Compliance violations</li>
+                  <li>• Incident response time</li>
+                  <li>• Risk assessment scores</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Monitoring Feedback Loop -->
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                subgraph &#34;Continuous Monitoring Loop&#34;
+                Deploy[Deploy
+                <br/>Blockchain Solution] --&gt; Monitor[Monitor
+                <br/>Performance Metrics]
+                Monitor --&gt; Analyze[Analyze
+                <br/>Data &amp; Trends]
+                Analyze --&gt; Decide[Decide
+                <br/>Adaptation Strategy]
+                Decide --&gt; Implement[Implement
+                <br/>Changes]
+                Implement --&gt; Monitor
+                end
+
+                subgraph &#34;Key Metrics Tracked&#34;
+                Monitor --&gt; Technical[Technical
+                <br/>TPS, Latency, Uptime]
+                Monitor --&gt; Economic[Economic
+                <br/>Cost, ROI, Efficiency]
+                Monitor --&gt; Compliance[Compliance
+                <br/>Security, Audit Results]
+                Monitor --&gt; User[User
+                <br/>Adoption, Satisfaction]
+                end
+
+                subgraph &#34;Adaptation Actions&#34;
+                Decide --&gt; Optimize[Optimize
+                <br/>Performance]
+                Decide --&gt; Scale[Scale
+                <br/>Infrastructure]
+                Decide --&gt; Upgrade[Upgrade
+                <br/>Protocol]
+                Decide --&gt; Pivot[Pivot
+                <br/>Strategy]
+                end
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Glossary -->
+      <section id="glossary" class="px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">Glossary</h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold mb-4">Core Concepts</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-blue-500 pl-4">
+                  <h4 class="font-semibold">Multi-Criteria Decision-Making (MCDM)</h4>
+                  <p class="text-sm text-gray-600">A sub-discipline of operations research that evaluates multiple conflicting criteria in decision making. Related: AHP, TOPSIS.</p>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                  <h4 class="font-semibold">Blockchain</h4>
+                  <p class="text-sm text-gray-600">A distributed, immutable, and cryptographically secure digital ledger that records transactions across a network of computers.</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                  <h4 class="font-semibold">Smart Contract</h4>
+                  <p class="text-sm text-gray-600">A self-executing contract with the terms of the agreement directly written into code, automatically enforcing and executing when predefined conditions are met.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold mb-4">Consensus Mechanisms</h3>
+              <div class="space-y-4">
+                <div class="border-l-4 border-red-500 pl-4">
+                  <h4 class="font-semibold">Proof of Work (PoW)</h4>
+                  <p class="text-sm text-gray-600">A consensus mechanism requiring participants to solve computationally intensive puzzles to validate transactions and create new blocks.</p>
+                </div>
+                <div class="border-l-4 border-yellow-500 pl-4">
+                  <h4 class="font-semibold">Proof of Stake (PoS)</h4>
+                  <p class="text-sm text-gray-600">A consensus mechanism where validators are chosen to create new blocks based on the amount of cryptocurrency they hold and are willing to &#34;stake&#34; as collateral.</p>
+                </div>
+                <div class="border-l-4 border-indigo-500 pl-4">
+                  <h4 class="font-semibold">Delegated Proof of Stake (DPoS)</h4>
+                  <p class="text-sm text-gray-600">A consensus mechanism where token holders vote for a small number of delegates who are responsible for validating transactions and maintaining the network.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="px-8 py-12 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold serif mb-8">References</h2>
+
+          <div class="space-y-6">
+            <div class="decision-card">
+              <h3 class="text-xl font-semibold mb-4">Academic Sources</h3>
+              <ul class="space-y-3 text-sm">
+                <li id="ref-27">
+                  <strong>[27]</strong> IEEE Xplore. (2025, September 7). Evaluating Blockchain Platforms Using an Integrated Multi-Criteria Decision-Making Approach: AHP and TOPSIS Methods.
+                  <a href="https://ieeexplore.ieee.org/document/10903124/" class="citation" target="_blank">https://ieeexplore.ieee.org/document/10903124/</a>
+                </li>
+                <li id="ref-224">
+                  <strong>[224]</strong> Lu, W., Wu, L., &amp; Xue, F. (2022). Blockchain technology for projects: a multi-criteria decision matrix. <em>Project Management Journal</em>, 53(1), 84-99.
+                  <a href="https://frankxue.com/pdf/lu22matrix.pdf" class="citation" target="_blank">https://frankxue.com/pdf/lu22matrix.pdf</a>
+                </li>
+                <li id="ref-186">
+                  <strong>[186]</strong> Bhol, S. G., &amp; Kumar, S. S. (2024). Evaluating Blockchain Platforms Using an Integrated Multi-Criteria Decision-Making Approach: AHP and TOPSIS Methods. In <em>TENCON 2024 - 2024 IEEE Region 10 Conference (TENCON)</em>.
+                  <a href="https://ieeexplore.ieee.org/document/10903124/" class="citation" target="_blank">https://ieeexplore.ieee.org/document/10903124/</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="decision-card">
+              <h3 class="text-xl font-semibold mb-4">Industry &amp; Regulatory Sources</h3>
+              <ul class="space-y-3 text-sm">
+                <li id="ref-827">
+                  <strong>[827]</strong> SC.com. (2024). MiCA: A bank&#39;s blueprint for digital assets success.
+                  <a href="https://www.sc.com/en/news/corporate-investment-banking/mica-a-banks-blueprint-for-digital-assets-success/" class="citation" target="_blank">https://www.sc.com/en/news/corporate-investment-banking/mica-a-banks-blueprint-for-digital-assets-success/</a>
+                </li>
+                <li id="ref-820">
+                  <strong>[820]</strong> The Paypers. (2024). Protecting the global payments ecosystem: Updates from PCI Security Standards Council.
+                  <a href="https://thepaypers.com/payments/interviews/protecting-the-global-payments-ecosystem-updates-from-pci-security-standards-council" class="citation" target="_blank">https://thepaypers.com/payments/interviews/protecting-the-global-payments-ecosystem-updates-from-pci-security-standards-council</a>
+                </li>
+                <li id="ref-829">
+                  <strong>[829]</strong> InnReg. (2024). MiCA Regulation Guide.
+                  <a href="https://www.innreg.com/blog/mica-regulation-guide" class="citation" target="_blank">https://www.innreg.com/blog/mica-regulation-guide</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="px-8 py-12 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto text-center">
+          <p class="text-gray-400">
+            This comprehensive guide provides a systematic approach to blockchain decision-making,
+            combining academic rigor with practical implementation strategies for leaders and architects.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Mobile TOC Toggle -->
+    <button id="toc-toggle" class="lg:hidden fixed top-4 left-4 z-50 bg-white p-3 rounded-lg shadow-lg">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <script>
+        // Initialize Mermaid with custom theme and configuration
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                // Primary colors with good contrast
+                primaryColor: '#e3f2fd',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#0ea5e9',
+                
+                // Secondary colors
+                secondaryColor: '#f1f5f9',
+                secondaryTextColor: '#1e293b',
+                secondaryBorderColor: '#64748b',
+                
+                // Tertiary colors
+                tertiaryColor: '#fef3c7',
+                tertiaryTextColor: '#1e293b',
+                tertiaryBorderColor: '#f59e0b',
+                
+                // Background and lines
+                background: '#ffffff',
+                mainBkg: '#e3f2fd',
+                secondBkg: '#f1f5f9',
+                tertiaryBkg: '#fef3c7',
+                
+                // Lines and edges
+                lineColor: '#64748b',
+                edgeLabelBackground: '#ffffff',
+                
+                // Node-specific colors with high contrast
+                cScale0: '#e3f2fd',  // Light blue
+                cScale1: '#16a34a',  // Green
+                cScale2: '#dc2626',  // Red
+                cScale3: '#fbbf24',  // Yellow
+                cScale4: '#8b5cf6',  // Purple
+                cScale5: '#ec4899',  // Pink
+                cScale6: '#06b6d4',  // Cyan
+                cScale7: '#f97316',  // Orange
+                
+                // Text colors for different backgrounds
+                c0: '#1e293b',
+                c1: '#ffffff',
+                c2: '#ffffff',
+                c3: '#1e293b',
+                c4: '#ffffff',
+                c5: '#ffffff',
+                c6: '#1e293b',
+                c7: '#ffffff'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 14
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        initializeMermaidControls();
+        
+        // Table of Contents functionality
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('section[id]');
+        const tocToggle = document.getElementById('toc-toggle');
+        const tocClose = document.getElementById('toc-close');
+        const tocFixed = document.querySelector('.toc-fixed');
+        
+        // Smooth scrolling for TOC links
+        tocLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Close mobile TOC
+                if (window.innerWidth < 1024) {
+                    tocFixed.classList.remove('open');
+                }
+            });
+        });
+
+        // Toggle mobile TOC
+        tocToggle?.addEventListener('click', () => {
+            tocFixed.classList.toggle('open');
+        });
+
+        tocClose?.addEventListener('click', () => {
+            tocFixed.classList.remove('open');
+        });
+
+        // Close TOC when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024 && 
+                tocFixed.classList.contains('open') &&
+                !tocFixed.contains(e.target) && 
+                e.target !== tocToggle) {
+                tocFixed.classList.remove('open');
+            }
+        });
+
+        // Update active TOC link on scroll
+        function updateActiveTocLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveTocLink);
+        updateActiveTocLink(); // Initial call
+
+        // Function to initialize mermaid controls
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+                const mermaidElement = container.querySelector('.mermaid');
+                let scale = 1;
+                let isDragging = false;
+                let startX, startY, translateX = 0, translateY = 0;
+
+                // 触摸相关状态
+                let isTouch = false;
+                let touchStartTime = 0;
+                let initialDistance = 0;
+                let initialScale = 1;
+                let isPinching = false;
+
+                // Zoom controls
+                const zoomInBtn = container.querySelector('.zoom-in');
+                const zoomOutBtn = container.querySelector('.zoom-out');
+                const resetBtn = container.querySelector('.reset-zoom');
+                const fullscreenBtn = container.querySelector('.fullscreen');
+
+                function updateTransform() {
+                    mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                    if (scale > 1) {
+                        container.classList.add('zoomed');
+                    } else {
+                        container.classList.remove('zoomed');
+                    }
+
+                    mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+                }
+
+                if (zoomInBtn) {
+                    zoomInBtn.addEventListener('click', () => {
+                        scale = Math.min(scale * 1.25, 4);
+                        updateTransform();
+                    });
+                }
+
+                if (zoomOutBtn) {
+                    zoomOutBtn.addEventListener('click', () => {
+                        scale = Math.max(scale / 1.25, 0.3);
+                        if (scale <= 1) {
+                            translateX = 0;
+                            translateY = 0;
+                        }
+                        updateTransform();
+                    });
+                }
+
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        scale = 1;
+                        translateX = 0;
+                        translateY = 0;
+                        updateTransform();
+                    });
+                }
+
+                if (fullscreenBtn) {
+                    fullscreenBtn.addEventListener('click', () => {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
+                        }
+                    });
+                }
+
+                // Mouse Events
+                mermaidElement.addEventListener('mousedown', (e) => {
+                    if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                    isDragging = true;
+                    startX = e.clientX - translateX;
+                    startY = e.clientY - translateY;
+                    mermaidElement.style.cursor = 'grabbing';
+                    updateTransform();
+                    e.preventDefault();
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (isDragging && !isTouch) {
+                        translateX = e.clientX - startX;
+                        translateY = e.clientY - startY;
+                        updateTransform();
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (isDragging && !isTouch) {
+                        isDragging = false;
+                        mermaidElement.style.cursor = 'grab';
+                        updateTransform();
+                    }
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    if (isDragging && !isTouch) {
+                        isDragging = false;
+                        mermaidElement.style.cursor = 'grab';
+                        updateTransform();
+                    }
+                });
+
+                // 获取两点之间的距离
+                function getTouchDistance(touch1, touch2) {
+                    return Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                }
+
+                // Touch Events - 触摸事件处理
+                mermaidElement.addEventListener('touchstart', (e) => {
+                    isTouch = true;
+                    touchStartTime = Date.now();
+
+                    if (e.touches.length === 1) {
+                        // 单指拖动
+                        isPinching = false;
+                        isDragging = true;
+
+                        const touch = e.touches[0];
+                        startX = touch.clientX - translateX;
+                        startY = touch.clientY - translateY;
+
+                    } else if (e.touches.length === 2) {
+                        // 双指缩放
+                        isPinching = true;
+                        isDragging = false;
+
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        initialDistance = getTouchDistance(touch1, touch2);
+                        initialScale = scale;
+                    }
+
+                    e.preventDefault();
+                }, { passive: false });
+
+                mermaidElement.addEventListener('touchmove', (e) => {
+                    if (e.touches.length === 1 && isDragging && !isPinching) {
+                        // 单指拖动
+                        const touch = e.touches[0];
+                        translateX = touch.clientX - startX;
+                        translateY = touch.clientY - startY;
+                        updateTransform();
+
+                    } else if (e.touches.length === 2 && isPinching) {
+                        // 双指缩放
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        const currentDistance = getTouchDistance(touch1, touch2);
+
+                        if (initialDistance > 0) {
+                            const newScale = Math.min(Math.max(
+                                initialScale * (currentDistance / initialDistance),
+                                0.3
+                            ), 4);
+                            scale = newScale;
+                            updateTransform();
+                        }
+                    }
+
+                    e.preventDefault();
+                }, { passive: false });
+
+                mermaidElement.addEventListener('touchend', (e) => {
+                    // 重置状态
+                    if (e.touches.length === 0) {
+                        isDragging = false;
+                        isPinching = false;
+                        initialDistance = 0;
+
+                        // 延迟重置isTouch，避免鼠标事件立即触发
+                        setTimeout(() => {
+                            isTouch = false;
+                        }, 100);
+                    } else if (e.touches.length === 1 && isPinching) {
+                        // 从双指变为单指，切换为拖动模式
+                        isPinching = false;
+                        isDragging = true;
+
+                        const touch = e.touches[0];
+                        startX = touch.clientX - translateX;
+                        startY = touch.clientY - translateY;
+                    }
+
+                    updateTransform();
+                });
+
+                mermaidElement.addEventListener('touchcancel', (e) => {
+                    isDragging = false;
+                    isPinching = false;
+                    initialDistance = 0;
+
+                    setTimeout(() => {
+                        isTouch = false;
+                    }, 100);
+
+                    updateTransform();
+                });
+
+                // Enhanced wheel zoom with better center point handling
+                container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const rect = container.getBoundingClientRect();
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                    const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                    // Adjust translation to zoom towards center
+                    if (newScale !== scale) {
+                        const scaleDiff = newScale / scale;
+                        translateX = translateX * scaleDiff;
+                        translateY = translateY * scaleDiff;
+                        scale = newScale;
+
+                        if (scale <= 1) {
+                            translateX = 0;
+                            translateY = 0;
+                        }
+
+                        updateTransform();
+                    }
+                });
+
+                // Initialize display
+                updateTransform();
+            });
+        }
+    </script>
+  
+
+</body></html>
