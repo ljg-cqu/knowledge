@@ -1139,4 +1139,3 @@ Securities tokenization requires institutional-grade security; 60-70% of timelin
 
 **T3. Fireblocks** (Digital Asset Custody) – Institutional custody, treasury management, crypto infrastructure. Launch: 2019. Features: MPC wallet, DeFi access, policy engine, insurance coverage ($5B+). Pricing: Custom (typically $5K-$50K/month based on AUM/volume). Adoption: 1,500+ institutions, $4T+ transferred. URL: https://fireblocks.com
 
-**T4. SecuritizeEOFMARKER
