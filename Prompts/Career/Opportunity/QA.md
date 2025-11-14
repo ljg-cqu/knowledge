@@ -73,20 +73,15 @@
 
 ---
 
-## Answer Structure (200-400 words)
+## Answer Structure (200-400w)
 
-1. **Context** (2 sent): Opportunity type, domain, lifecycle phase, stakeholder(s)
-2. **Opportunity Analysis** (3-4 sent): Market evidence [Ref: ID], size/growth/urgency, strategic fit, competitive landscape
-3. **SWOT or Risk Assessment** (4-5 sent):  
-   - **Strengths**: Internal capabilities enabling capture [Ref: ID]  
-   - **Weaknesses**: Internal gaps/risks [Ref: ID]  
-   - **Opportunities**: External drivers/catalysts with metrics (TAM, CAGR, adoption rate) [Ref: ID]  
-   - **Threats**: External risks/constraints (competition, regulation, technology shifts) [Ref: ID]  
-   OR **Risk Matrix**: Probability × Impact scores for top 3-5 risks
-4. **Strategic Reasoning** (3-4 sent): Why now, why us, differentiation [Ref: ID]; validation evidence; decision criteria
-5. **Action Plan** (I/A, 3-4 sent): Phased approach (explore/validate/pilot/scale), stakeholder alignment, resource needs, timeline
-6. **Success Metrics** (I/A, 2-3 sent): Quantified KPIs (market share, revenue, adoption, ROI, risk mitigation), validation checkpoints, go/no-go gates
-7. **Constraints & "When NOT"** (2-3 sent): Budget/skill/market/regulatory constraints [Ref: ID]; scenarios to avoid; exit criteria
+1. **Context** (2 sent): Opportunity type, domain, phase, stakeholder(s)
+2. **Analysis** (3-4 sent): Market evidence [Ref: ID], size/growth, strategic fit, competitive landscape
+3. **SWOT or Risk Matrix** (4-5 sent): Strengths/Weaknesses (internal), Opportunities/Threats (external) with metrics (TAM, CAGR, adoption) [Ref: ID] OR Probability × Impact for top 3-5 risks
+4. **Reasoning** (3-4 sent): Why now, why us, differentiation [Ref: ID]; validation; decision criteria
+5. **Action Plan** (I/A, 3-4 sent): Phased (explore/validate/pilot/scale), stakeholder alignment, resources, timeline
+6. **Metrics** (I/A, 2-3 sent): KPIs (market share, revenue, ROI, risk), validation gates, go/no-go
+7. **"When NOT"** (2-3 sent): Constraints [Ref: ID] (budget/skill/market/regulatory); scenarios to avoid; exit criteria
 8. **Key Insight**: Strategic, quantified, decision-critical, falsifiable
 
 ---
@@ -173,83 +168,73 @@
 
 ## Contents
 1. [Coverage Matrix](#coverage-matrix) - Domains × Phases × Stakeholders
-2. [Q&As by Domain](#qas-by-domain) - 30-35 questions with SWOT/Risk analysis
-3. [References](#references) - Glossary (≥18), Tools (≥8), Frameworks (≥8), Literature (≥10), Citations (≥18)
-4. [Validation Report](#validation-report) - 24 checks + 6 final criteria
+2. [Q&As by Domain](#qas-by-domain) - 30-35 Q&As with SWOT/Risk
+3. [References](#references) - G≥18, T≥8, F≥8, L≥10, A≥18
+4. [Validation Report](#validation-report) - 24/24 PASS + 6/6 criteria
 
 ## Coverage Matrix
 
-| Domain | Lifecycle Phases Covered | Stakeholders | Q&A Range | Count | F/I/A |
-|--------|--------------------------|--------------|-----------|-------|-------|
+| Domain | Phases | Stakeholders | Q# | Count | F/I/A |
+|--------|--------|--------------|-------|-------|-------|
 | Technology & Innovation | 1,2,3,7 | Arch, Dev, SRE | Q1-Q6 | 6 | 1/2/3 |
 | Business & Market | 1,4,8 | PM, BA, Lead | Q7-Q11 | 5 | 1/2/2 |
 | Regulatory & Compliance | 2,6,8 | Sec, Lead, Arch | Q12-Q16 | 5 | 1/2/2 |
 | Industry & Domain | 1,3,5 | BA, PM, DevOps | Q17-Q22 | 6 | 1/3/2 |
 | Ecosystem & Partnerships | 2,6,8 | Arch, Data, Lead | Q23-Q27 | 5 | 1/2/2 |
 | Business Model Innovation | 1,4,8 | PM, Lead, Dev | Q28-Q33 | 6 | 1/2/3 |
-| **Total** | **All 8 phases** | **≥8/10 roles** | **Q1-Q33** | **33** | **6/13/14** |
+| **Total** | **All 8** | **≥8/10 roles** | **Q1-Q33** | **33** | **6/13/14** |
 
-**Phase Legend**: 1=Requirements & Discovery, 2=Architecture & Design, 3=Development, 4=Testing & Quality, 5=Deployment & Release, 6=Operations & Observability, 7=Maintenance & Support, 8=Evolution & Governance
+**Phases**: 1=Discovery, 2=Design, 3=Dev, 4=Test, 5=Deploy, 6=Ops, 7=Maintain, 8=Evolve
 
 ## Q&As by Domain
 
 ### Domain 1: Technology & Innovation
 
 #### Q1: [Question with explicit phase and stakeholder]
-**Difficulty**: [F/I/A] | **Phase**: [#: Name] | **Stakeholder(s)**: [Role(s)] | **Domain**: Technology & Innovation  
+**Difficulty**: [F/I/A] | **Phase**: [#: Name] | **Stakeholder(s)**: [Role(s)] | **Domain**: [Domain]
 **Key Insight**: [Strategic, quantified, decision-critical, falsifiable]
 
-**Answer** (200-400w):  
-**Context**: [Opportunity type, domain, phase, stakeholder]  
-**Opportunity Analysis**: [Market evidence, size/growth, strategic fit] [Ref: ID]  
-**SWOT Analysis**:  
-- **Strengths**: [Internal capabilities] [Ref: ID]  
-- **Weaknesses**: [Internal gaps/risks] [Ref: ID]  
-- **Opportunities**: [External drivers with metrics: TAM, CAGR, adoption] [Ref: ID]  
-- **Threats**: [External risks: competition, regulation, tech shifts] [Ref: ID]  
-**Strategic Reasoning**: [Why now, why us, differentiation, validation] [Ref: ID]  
-**Action Plan** (I/A): [Phased approach, stakeholder alignment, resources, timeline]  
-**Success Metrics** (I/A): [KPIs: market share, revenue, ROI, risk scores, validation gates]  
-**Constraints & "When NOT"**: [Budget/skill/market/regulatory limits, scenarios to avoid] [Ref: ID]  
+**Answer** (200-400w):
+**Context**: [Type, domain, phase, stakeholder] | **Analysis**: [Market evidence, size/growth, fit] [Ref: ID] | **SWOT/Risk**: Strengths/Weaknesses [Ref: ID], Opportunities/Threats with metrics [Ref: ID] OR Probability × Impact | **Reasoning**: [Why now, why us, differentiation] [Ref: ID] | **Action Plan** (I/A): [Phased, stakeholders, resources, timeline] | **Metrics** (I/A): [KPIs, gates] | **"When NOT"**: [Constraints, scenarios to avoid] [Ref: ID]
 
-**Artifact**:
-[SWOT matrix / risk heat map / opportunity canvas / decision tree / market sizing table]
+**Artifact**: [SWOT matrix / risk heat map / decision tree / market sizing]
 
-[Repeat for Q2-Q33 across all 6 domains]
+[Repeat Q2-Q33 across 6 domains]
 
 ## References
 
 ### Glossary (≥18)
-**G1. TAM/SAM/SOM** [EN] – Total/Serviceable/Serviceable Obtainable Market. **Formula**: TAM = Total users × ARPU. **Use**: Market sizing, opportunity prioritization. **Stakeholder**: PM, BA, Leadership.
+**G1. TAM/SAM/SOM** [EN] – Total/Serviceable/Serviceable Obtainable Market. Formula: TAM = Total users × ARPU. Use: Market sizing. Stakeholder: PM, BA, Leadership.
 
-[Continue G2-G18: PMF, Chasm, Blue Ocean, Disruptive Innovation, Network Effects, Platform Economics, Regulatory Arbitrage, TRL, SWOT, Porter's Five Forces, Risk Matrix, Technology Adoption Curve, Market Maturity, Ecosystem Value, CAGR, Early Adopters, Laggards, etc.]
+[G2-G18: PMF, Chasm, Blue Ocean, Disruptive Innovation, Network Effects, Platform Economics, Regulatory Arbitrage, TRL, SWOT, Porter's Five Forces, Risk Matrix, Technology Adoption, Market Maturity, Ecosystem Value, CAGR, etc.]
 
 ### Tools (≥8, ≥4 types)
-**T1. Gartner Hype Cycle / Magic Quadrant** [Market Research] – Technology maturity and vendor evaluation. **Lifecycle Phase**: 1,2,8 (Discovery, Design, Evolution). **Stakeholder**: Architect, Leadership. **Pricing**: $15K-50K/yr (enterprise). **Update**: Quarterly. **URL**: https://www.gartner.com
+**T1. Gartner Hype Cycle / Magic Quadrant** [Market Research] – Tech maturity, vendor eval. Phase: 1,2,8. Stakeholder: Arch, Leadership. Pricing: $15K-50K/yr. Update: Quarterly. URL: https://www.gartner.com
 
-[Continue T2-T8: IDC, Forrester, CB Insights (trend analysis), Crunchbase (market data), SWOT tools, risk assessment tools, opportunity scoring frameworks, validation platforms]
+[T2-T8: IDC, Forrester, CB Insights, Crunchbase, SWOT tools, risk assessment, opportunity scoring, validation platforms]
 
 ### Frameworks (≥8)
-**F1. SWOT Analysis** – Strengths, Weaknesses (internal), Opportunities, Threats (external). **Originator**: Albert Humphrey (1960s). **Use**: Strategic planning, opportunity assessment. **Literature**: [Ref: L3].
+**F1. SWOT** – Strengths/Weaknesses (internal), Opportunities/Threats (external). Originator: Humphrey (1960s). Use: Strategic planning, opportunity assessment. Ref: [L3]
 
-[Continue F2-F8: PESTLE, Porter's Five Forces, Blue Ocean Strategy, Disruptive Innovation, TAM/SAM/SOM, Technology Adoption Lifecycle, Business Model Canvas, Risk Matrix (Probability × Impact), Decision Trees]
+[F2-F8: PESTLE, Porter's Five Forces, Blue Ocean, Disruptive Innovation, TAM/SAM/SOM, Technology Adoption, BMC, Risk Matrix, Decision Trees]
 
 ### Literature (≥10)
-**L1. Christensen, C. (1997). *The Innovator's Dilemma*. Harvard Business Review Press.** [EN] – Disruptive innovation framework, lower-end disruption vs. new-market disruption, sustaining vs. disruptive technologies.
+**L1. Christensen, C. (1997). *The Innovator's Dilemma*. Harvard Business Review Press.** [EN] – Disruptive innovation, lower-end vs new-market disruption.
 
-[Continue L2-L10: Kim & Mauborgne *Blue Ocean Strategy*, Moore *Crossing the Chasm*, Osterwalder *Business Model Generation*, Porter *Competitive Strategy*, Rogers *Diffusion of Innovations*, 克里斯坦森《创新者的窘境》, 金伟灿《蓝海战略》, etc.]
+[L2-L10: Kim/Mauborgne *Blue Ocean Strategy*, Moore *Crossing the Chasm*, Osterwalder *Business Model Generation*, Porter *Competitive Strategy*, Rogers *Diffusion of Innovations*, 克里斯坦森《创新者的窘境》, etc.]
 
 ### Citations (≥18, APA 7th)
-**A1.** Ziegler, A., et al. (2024). *Productivity assessment of neural code completion*. GitHub Research. https://doi.org/... [EN] – **Metric**: 55% faster task completion, 35-40% productivity gain.
+**A1.** Ziegler, A., et al. (2024). *Productivity assessment of neural code completion*. GitHub Research. https://doi.org/... [EN] – 55% faster, 35-40% productivity gain.
 
-[Continue A2-A18: Market reports (Gartner, IDC, Forrester), academic papers (disruptive innovation, blue ocean, network effects), regulatory docs (EU AI Act, GDPR), industry studies, Chinese literature, etc.]
+[A2-A18: Market reports (Gartner, IDC, Forrester), academic papers, regulatory docs (EU AI Act, GDPR), industry studies, Chinese lit, etc.]
 
 ## Validation Report
 
-| # | Check | Target | Result | Status | Notes |
-[All 24 checks from Validation Checklist]
+| # | Check | Target | Result | Status |
+|---|-------|--------|--------|---------|
+[24 checks: Ref counts, Q&A counts, Citations, Language, Recency, Diversity, Links, Cross-refs, Word count, Insights, Domain/Phase/Stakeholder coverage, Question type, SWOT/Risk, Quantification, Artifacts, Decision support, "When NOT", Validation approach, Empirical data, Framework coverage, Final Review]
 
-**Overall**: X/24 PASS • **Final Criteria**: X/6 PASS • **Issues**: [List] • **Status**: ✅ APPROVED / ❌ REJECTED
+**Overall**: X/24 PASS | **Final**: X/6 PASS | **Status**: ✅ APPROVED / ❌ REJECTED
 ```
 
 ---
