@@ -319,3 +319,58 @@ graph TD
 
 ---
 
+
+## Topic 2: Decision-Making in RWA Platforms
+**Overview**: Consensus-driven decision frameworks for architectural choices, regulatory trade-offs, and blockchain protocol selection in RWA ecosystems. | **Phase**: 2, 8 | **Stakeholders**: Arch, PM, Lead, Compliance, DAO
+
+### Q6: How do you facilitate requirements gathering and consensus-building when multiple asset originators (real estate, commodities, bonds) have conflicting tokenization requirements?
+**Difficulty**: Fundamental | **Dimension**: Decision-Making + Stakeholder | **Phase**: 1 (Requirements & Discovery) | **Stakeholders**: BA(R), PM(A), Arch(C), Originator(C)
+
+**Key**: Weighted prioritization framework with Impact Mapping achieves 80% stakeholder satisfaction while reducing scope creep by 60% [Ref: L8, G11].
+
+**Answer**: Multi-asset RWA platforms face conflicting requirements: real estate needs fractional ownership + rental distributions, commodities require warehouse receipt tracking, bonds need coupon payment schedules. Strategy: Use Impact Mapping [Ref: L8] combined with weighted prioritization to build consensus across asset classes while maintaining platform coherence.
+
+Process: (1) Stakeholder workshops (2-3 days): map each asset class to platform capabilities (smart contract templates, oracle integrations, compliance modules); (2) Identify common requirements (KYC/AML, transfer restrictions, ownership tracking) vs. asset-specific needs (rental distributions vs. coupon payments vs. commodity delivery); (3) Weighted prioritization: score requirements by Business Value (1-5), Technical Complexity (1-5), Regulatory Risk (1-5), calculate Priority Score = (Value × 2 - Complexity - Risk); (4) RAPID framework for decision: PM Recommends roadmap, CTO provides Input, CEO Approves, Arch Decides technical approach, all stakeholders Perform implementation.
+
+Metrics: **Stakeholder Satisfaction = Avg satisfaction score (1-5)** target ≥4.0; **Scope Creep = (Final Features - Planned Features) / Planned Features × 100%** target <10%; **Requirements Coverage = Asset Classes Supported / Total Originator Asset Classes × 100%** target ≥70%.
+
+Trade-offs: Comprehensive workshops cost $15K-30K and 2-3 weeks but reduce scope creep 60% and rework costs ($50K-200K).
+
+**Framework**:
+```mermaid
+graph TD
+    A[Asset Originators] --> B[Requirements Gathering]
+    B --> C[Impact Mapping Workshop]
+    C --> D[Common Requirements]
+    C --> E[Asset-Specific Requirements]
+    D --> F[Core Platform Capabilities]
+    E --> G[Extensibility Layer]
+    F --> H[Weighted Prioritization]
+    G --> H
+    H --> I[Priority Score Calculation]
+    I --> J[RAPID Decision Framework]
+    J --> K[Product Roadmap]
+    
+    style C fill:#74b9ff
+    style I fill:#ffeaa7
+    style K fill:#55efc4
+```
+
+**Metrics**:
+| Metric | Formula | Variables | Target | Source |
+|--------|---------|-----------|--------|--------|
+| Stakeholder Satisfaction | Avg satisfaction score (1-5) | Survey after roadmap finalization | ≥4.0/5.0 | Stakeholder surveys |
+| Scope Creep | ((Final - Planned) / Planned) × 100% | Final: delivered features; Planned: initial scope | <10% | Project tracker [Ref: T5] |
+| Requirements Coverage | (Supported / Total Asset Classes) × 100% | Supported: asset classes on platform; Total: originator needs | ≥70% | Product specs |
+
+**Trade-offs**:
+| Approach | Pros (Quantified) | Cons (Quantified) | When | Tag |
+|----------|-------------------|-------------------|------|-----|
+| Impact Mapping + RAPID | 80% stakeholder satisfaction; 60% ↓ scope creep; clear accountability | $15K-30K workshops; 2-3 weeks; requires stakeholder availability | Multi-asset platforms; >3 originators; regulatory complexity | [Consensus] |
+| Agile User Story Mapping | 50% ↑ flexibility; iterative refinement | 30-40% ↑ rework due to late changes; stakeholder fatigue | Single asset class; early-stage R&D; unclear requirements | [Context] |
+| Executive Fiat | 90% ↓ decision time; clear direction | 40-60% stakeholder dissatisfaction; 80% ↑ scope creep risk | Crisis mode; tight deadlines; single dominant stakeholder | [Emerging] |
+
+**Lifecycle**: Foundational in Requirements (1), informs Architecture (2), drives Development (3) roadmap, validated in Testing (4), reviewed in Evolution (8).  
+**Stakeholder**: BA facilitates requirements gathering; PM drives prioritization; Arch provides technical feasibility; Originators contribute domain expertise; CEO/CTO approve strategic direction.
+
+---

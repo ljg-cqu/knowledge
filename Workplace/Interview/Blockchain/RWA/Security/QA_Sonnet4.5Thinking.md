@@ -2856,3 +2856,849 @@ testing_requirements:
 
 ---
 
+
+### Q13: Implement blockchain-specific monitoring using Forta Network for real-time exploit detection on RWA smart contracts. Show bot configuration and alert rules.
+
+**Difficulty**: Advanced | **Type**: Security | **Phase**: Detect
+
+**Key Insight**: Traditional monitoring tools miss blockchain-specific attacks (flash loans, reentrancy, front-running)—Forta Network provides specialized detection bots that analyze transaction call data, state changes, and mempool activity to detect exploits in real-time.
+
+**Answer** (281 words):
+
+Blockchain attacks happen in seconds to minutes, requiring specialized detection beyond traditional SIEM [Ref: A74]. Forta Network enables real-time monitoring of smart contract interactions using detection bots that analyze every transaction and block [Ref: T12, A75].
+
+**Forta Architecture**:
+
+```yaml
+forta_configuration:
+  network: "Ethereum Mainnet"
+  contracts_monitored:
+    - rwa_token: "0x..."
+    - minting_controller: "0x..."
+    - compliance_module: "0x..."
+    - oracle_aggregator: "0x..."
+    - timelock_controller: "0x..."
+  
+  detection_bots:
+    high_value_transfer:
+      bot_id: "0x1a..."
+      name: "RWA Large Transfer Detector"
+      language: "TypeScript"
+      triggers:
+        - event: "Transfer"
+          condition: "amount > $100,000 USD equivalent"
+      severity: "medium"
+      alert_destination: ["Slack #security", "PagerDuty"]
+      
+      code: |
+        import { Finding, HandleTransaction, TransactionEvent, FindingSeverity } from 'forta-agent'
+        
+        const RWA_TOKEN_ADDRESS = "0x..."
+        const LARGE_TRANSFER_THRESHOLD = ethers.utils.parseEther("100000")
+        
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          const transferEvents = txEvent.filterLog(
+            'Transfer(address,address,uint256)',
+            RWA_TOKEN_ADDRESS
+          )
+          
+          for (const event of transferEvents) {
+            const amount = event.args.value
+            if (amount.gte(LARGE_TRANSFER_THRESHOLD)) {
+              findings.push(
+                Finding.fromObject({
+                  name: "Large RWA Token Transfer",
+                  description: `Transfer of ${ethers.utils.formatEther(amount)} tokens`,
+                  alertId: "RWA-LARGE-TRANSFER",
+                  severity: FindingSeverity.Medium,
+                  type: FindingType.Info,
+                  metadata: {
+                    from: event.args.from,
+                    to: event.args.to,
+                    amount: amount.toString(),
+                    txHash: txEvent.hash
+                  }
+                })
+              )
+            }
+          }
+          
+          return findings
+        }
+    
+    unauthorized_minting:
+      bot_id: "0x2b..."
+      name: "RWA Unauthorized Mint Detector"
+      triggers:
+        - event: "TokensMinted"
+          condition: "Minter not in approved list OR exceeds daily limit"
+      severity: "critical"
+      alert_destination: ["PagerDuty critical", "SMS to CISO"]
+      
+      code: |
+        const APPROVED_MINTERS = ["0xMinter1", "0xMinter2", "0xMinter3"]
+        const DAILY_MINT_LIMIT = ethers.utils.parseEther("10000000")
+        
+        let dailyMintTotal = ethers.BigNumber.from(0)
+        let lastResetTimestamp = 0
+        
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          // Reset daily counter
+          const currentDay = Math.floor(txEvent.timestamp / 86400)
+          const lastResetDay = Math.floor(lastResetTimestamp / 86400)
+          if (currentDay > lastResetDay) {
+            dailyMintTotal = ethers.BigNumber.from(0)
+            lastResetTimestamp = txEvent.timestamp
+          }
+          
+          const mintEvents = txEvent.filterLog(
+            'TokensMinted(address,address,uint256)',
+            RWA_TOKEN_ADDRESS
+          )
+          
+          for (const event of mintEvents) {
+            const minter = event.args.minter
+            const amount = event.args.amount
+            
+            // Check if minter is approved
+            if (!APPROVED_MINTERS.includes(minter.toLowerCase())) {
+              findings.push(
+                Finding.fromObject({
+                  name: "Unauthorized Minting Attempt",
+                  description: `Minting by unapproved address ${minter}`,
+                  alertId: "RWA-UNAUTHORIZED-MINT",
+                  severity: FindingSeverity.Critical,
+                  type: FindingType.Exploit,
+                  metadata: {
+                    minter,
+                    amount: amount.toString(),
+                    txHash: txEvent.hash,
+                    action: "Contract should be paused immediately"
+                  }
+                })
+              )
+            }
+            
+            // Check daily limit
+            dailyMintTotal = dailyMintTotal.add(amount)
+            if (dailyMintTotal.gt(DAILY_MINT_LIMIT)) {
+              findings.push(
+                Finding.fromObject({
+                  name: "Daily Mint Limit Exceeded",
+                  description: `Daily minting exceeded limit: ${ethers.utils.formatEther(dailyMintTotal)}`,
+                  alertId: "RWA-MINT-LIMIT-EXCEEDED",
+                  severity: FindingSeverity.High,
+                  type: FindingType.Suspicious,
+                  metadata: {
+                    dailyTotal: dailyMintTotal.toString(),
+                    limit: DAILY_MINT_LIMIT.toString(),
+                    txHash: txEvent.hash
+                  }
+                })
+              )
+            }
+          }
+          
+          return findings
+        }
+    
+    reentrancy_detection:
+      bot_id: "0x3c..."
+      name: "RWA Reentrancy Detector"
+      triggers:
+        - pattern: "Multiple calls to same contract in single transaction"
+      severity: "critical"
+      
+      code: |
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          const traces = txEvent.traces
+          const contractCalls: {[address: string]: number} = {}
+          
+          for (const trace of traces) {
+            if (trace.to && RWA_CONTRACTS.includes(trace.to.toLowerCase())) {
+              contractCalls[trace.to] = (contractCalls[trace.to] || 0) + 1
+            }
+          }
+          
+          for (const [contract, callCount] of Object.entries(contractCalls)) {
+            if (callCount > 2) {
+              findings.push(
+                Finding.fromObject({
+                  name: "Potential Reentrancy Attack",
+                  description: `Contract ${contract} called ${callCount} times in single transaction`,
+                  alertId: "RWA-REENTRANCY",
+                  severity: FindingSeverity.Critical,
+                  type: FindingType.Exploit,
+                  metadata: {
+                    contract,
+                    callCount: callCount.toString(),
+                    txHash: txEvent.hash,
+                    action: "Investigate immediately, consider pausing contract"
+                  }
+                })
+              )
+            }
+          }
+          
+          return findings
+        }
+    
+    flash_loan_usage:
+      bot_id: "0x4d..."
+      name: "RWA Flash Loan Detector"
+      triggers:
+        - pattern: "Flash loan taken + RWA token interaction"
+      severity: "high"
+      
+      code: |
+        const FLASH_LOAN_PROVIDERS = [
+          "0xAave", "0xdYdX", "0xUniswap", "0xBalancer"
+        ]
+        
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          let flashLoanDetected = false
+          let rwaInteraction = false
+          
+          for (const log of txEvent.logs) {
+            if (FLASH_LOAN_PROVIDERS.includes(log.address.toLowerCase())) {
+              const flashLoanSignatures = [
+                'FlashLoan(address,address,uint256,uint256)',
+                'Borrow(address,uint256,uint256,uint256)'
+              ]
+              if (flashLoanSignatures.some(sig => log.topics[0] === ethers.utils.id(sig))) {
+                flashLoanDetected = true
+              }
+            }
+            
+            if (RWA_CONTRACTS.includes(log.address.toLowerCase())) {
+              rwaInteraction = true
+            }
+          }
+          
+          if (flashLoanDetected && rwaInteraction) {
+            findings.push(
+              Finding.fromObject({
+                name: "Flash Loan + RWA Interaction",
+                description: "Transaction uses flash loan and interacts with RWA contracts",
+                alertId: "RWA-FLASH-LOAN",
+                severity: FindingSeverity.High,
+                type: FindingType.Suspicious,
+                metadata: {
+                  txHash: txEvent.hash,
+                  warning: "Flash loans can manipulate prices and exploit lending protocols",
+                  action: "Manual review required"
+                }
+              })
+            )
+          }
+          
+          return findings
+        }
+    
+    oracle_manipulation:
+      bot_id: "0x5e..."
+      name: "RWA Oracle Manipulation Detector"
+      triggers:
+        - event: "PriceUpdated"
+          condition: "Price change >10% from previous OR deviation from external sources"
+      severity: "critical"
+      
+      code: |
+        import axios from 'axios'
+        
+        let lastPrice = ethers.BigNumber.from(0)
+        
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          const priceEvents = txEvent.filterLog(
+            'PriceUpdated(uint256,uint256)',
+            ORACLE_CONTRACT
+          )
+          
+          for (const event of priceEvents) {
+            const newPrice = event.args.price
+            
+            if (lastPrice.gt(0)) {
+              const percentChange = newPrice.sub(lastPrice).mul(10000).div(lastPrice).toNumber() / 100
+              
+              if (Math.abs(percentChange) > 10) {
+                findings.push(
+                  Finding.fromObject({
+                    name: "Large Oracle Price Change",
+                    description: `Price changed by ${percentChange.toFixed(2)}%`,
+                    alertId: "RWA-ORACLE-LARGE-CHANGE",
+                    severity: FindingSeverity.High,
+                    type: FindingType.Suspicious,
+                    metadata: {
+                      oldPrice: lastPrice.toString(),
+                      newPrice: newPrice.toString(),
+                      percentChange: percentChange.toFixed(2),
+                      txHash: txEvent.hash
+                    }
+                  })
+                )
+              }
+            }
+            
+            // Compare with external sources (Zillow, etc.)
+            try {
+              const externalPrice = await fetchExternalPrice()
+              const deviation = Math.abs(newPrice.sub(externalPrice).mul(10000).div(externalPrice).toNumber() / 100)
+              
+              if (deviation > 5) {
+                findings.push(
+                  Finding.fromObject({
+                    name: "Oracle Price Deviation from Market",
+                    description: `On-chain price deviates ${deviation.toFixed(2)}% from external sources`,
+                    alertId: "RWA-ORACLE-DEVIATION",
+                    severity: FindingSeverity.Critical,
+                    type: FindingType.Exploit,
+                    metadata: {
+                      onChainPrice: newPrice.toString(),
+                      externalPrice: externalPrice.toString(),
+                      deviation: deviation.toFixed(2),
+                      action: "Trigger circuit breaker"
+                    }
+                  })
+                )
+              }
+            } catch (error) {
+              console.error("Failed to fetch external price", error)
+            }
+            
+            lastPrice = newPrice
+          }
+          
+          return findings
+        }
+    
+    admin_key_usage:
+      bot_id: "0x6f..."
+      name: "RWA Admin Action Monitor"
+      triggers:
+        - transaction: "From admin addresses"
+      severity: "medium"
+      
+      code: |
+        const ADMIN_ADDRESSES = [
+          "0xAdmin1", "0xAdmin2", "0xMultisig"
+        ]
+        
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          if (ADMIN_ADDRESSES.includes(txEvent.from.toLowerCase())) {
+            findings.push(
+              Finding.fromObject({
+                name: "Admin Address Transaction",
+                description: `Admin ${txEvent.from} executed transaction`,
+                alertId: "RWA-ADMIN-ACTIVITY",
+                severity: FindingSeverity.Medium,
+                type: FindingType.Info,
+                metadata: {
+                  admin: txEvent.from,
+                  to: txEvent.to,
+                  functionCalled: txEvent.transaction.data.substring(0, 10),
+                  txHash: txEvent.hash,
+                  action: "Verify this action was authorized"
+                }
+              })
+            )
+          }
+          
+          return findings
+        }
+    
+    contract_upgrade:
+      bot_id: "0x7g..."
+      name: "RWA Contract Upgrade Monitor"
+      triggers:
+        - event: "Upgraded"
+          severity: "high"
+      
+      code: |
+        const handleTransaction: HandleTransaction = async (txEvent: TransactionEvent) => {
+          const findings: Finding[] = []
+          
+          const upgradeEvents = txEvent.filterLog(
+            'Upgraded(address)',
+            RWA_CONTRACTS
+          )
+          
+          for (const event of upgradeEvents) {
+            const newImplementation = event.args.implementation
+            
+            findings.push(
+              Finding.fromObject({
+                name: "Contract Upgraded",
+                description: `RWA contract upgraded to new implementation`,
+                alertId: "RWA-CONTRACT-UPGRADED",
+                severity: FindingSeverity.High,
+                type: FindingType.Info,
+                metadata: {
+                  contract: event.address,
+                  newImplementation,
+                  txHash: txEvent.hash,
+                  action: "Verify upgrade was scheduled via timelock and audited"
+                }
+              })
+            )
+          }
+          
+          return findings
+        }
+  
+  alert_routing:
+    critical:
+      destinations: ["PagerDuty", "SMS", "Slack #critical"]
+      escalation: {delay: 900, if_not_acknowledged: true}
+      auto_actions: ["Pause contract via guardian multi-sig", "Notify CISO"]
+    
+    high:
+      destinations: ["PagerDuty", "Slack #security"]
+      escalation: {delay: 3600}
+      auto_actions: ["Create incident ticket", "Notify security team"]
+    
+    medium:
+      destinations: ["Slack #security", "Email"]
+      escalation: {delay: 14400}
+      auto_actions: ["Log to SIEM", "Create tracking ticket"]
+    
+    low:
+      destinations: ["Email digest"]
+      escalation: null
+      auto_actions: ["Log only"]
+  
+  deployment:
+    method: "Docker container"
+    hosting: "Forta Network (decentralized)"
+    cost: "$100-500/month depending on transaction volume"
+    uptime_sla: "99.9%"
+```
+
+**Metrics**:
+
+| Metric | Formula | Target | Rationale [Ref] |
+|--------|---------|--------|-----------------|
+| Bot Uptime | Bot Running Time / Total Time | ≥99.9% | Continuous monitoring [T12] |
+| Alert Latency | Alert Time - Event Time | ≤30 seconds | Real-time detection [A74] |
+| False Positive Rate | FP Alerts / Total Alerts | ≤5% | Actionable alerts [A75] |
+| Coverage | Monitored Functions / Critical Functions | 100% | Complete protection [L30] |
+| Bot Response Time | Processing Time / Transaction | ≤1 second | Scalability [T12] |
+
+**Trade-offs**:
+- **Forta Network** ($100-500/month) provides decentralized monitoring vs. centralized SIEM but requires custom bot development [Ref: T12]
+- **Real-time detection** (30s latency) catches exploits fast but generates more alerts vs. batch processing [Ref: A74]
+- **Custom bots** provide precise detection for RWA-specific risks but require ongoing maintenance [Ref: A75]
+- **Auto-pause on critical** alerts prevents exploits but may false-positive legitimate transactions; require guardian multi-sig [Ref: L30]
+
+**Validation**:
+1. **Bot testing**: Simulate attacks on testnet, verify bots detect and alert [Ref: A74]
+2. **Performance testing**: Measure bot processing time under high transaction volume [Ref: T12]
+3. **Alert review**: Monthly analysis of alert accuracy, tune thresholds [Ref: A75]
+4. **Integration testing**: Verify alerts trigger PagerDuty, Slack, SIEM correctly [Ref: L30]
+
+---
+
+## Topic 5: Incident Response
+
+### Q17: Design a comprehensive incident response plan for RWA platform covering smart contract exploits, data breaches, and regulatory incidents. Show playbooks and timelines.
+
+**Difficulty**: Advanced | **Type**: Security | **Phase**: Respond
+
+**Key Insight**: RWA incident response differs from traditional IT because (1) blockchain transactions are irreversible, (2) securities regulations require prompt disclosure, (3) investor funds are at risk requiring rapid containment—plans must balance speed (pause contracts) with governance (multi-sig authorization).
+
+**Answer** (295 words):
+
+Incident response for RWA platforms must address unique blockchain constraints: immutability (can't roll back), regulatory obligations (material events require disclosure), and 24/7 operations [Ref: L31, A76]. NIST 800-61 provides framework: Preparation → Detection → Containment → Eradication → Recovery → Lessons Learned [Ref: G36].
+
+**Incident Response Plan**:
+
+```yaml
+incident_response_framework:
+  team_structure:
+    incident_commander:
+      role: "CTO or VP Engineering"
+      responsibilities: ["Overall coordination", "Stakeholder communication", "Go/no-go decisions"]
+      authority: "Can authorize emergency actions including contract pause"
+      availability: "24/7 on-call rotation"
+    
+    technical_lead:
+      role: "Lead Smart Contract Engineer"
+      responsibilities: ["Technical analysis", "Containment execution", "Remediation implementation"]
+      skills: ["Solidity", "Blockchain forensics", "Security incident response"]
+    
+    security_analyst:
+      role: "Security Engineer or SOC Analyst"
+      responsibilities: ["Evidence collection", "Forensic analysis", "SIEM investigation"]
+      tools: ["Splunk", "Forta", "Chainalysis", "Etherscan"]
+    
+    legal_counsel:
+      role: "General Counsel or External Securities Lawyer"
+      responsibilities: ["Regulatory assessment", "Disclosure obligations", "Litigation risk"]
+      availability: "On-call for critical incidents"
+    
+    compliance_officer:
+      role: "Chief Compliance Officer"
+      responsibilities: ["SAR filing", "Regulatory notifications", "AML investigation"]
+      regulatory_contacts: ["SEC", "FINRA", "FinCEN", "State regulators"]
+    
+    communications:
+      role: "Communications Lead or CEO"
+      responsibilities: ["Investor communication", "Media relations", "Public disclosure"]
+      channels: ["Website", "Email", "Social media", "Press release"]
+  
+  severity_classification:
+    p1_critical:
+      definition: "Active exploit, significant funds at risk, or critical system down"
+      examples: ["Smart contract exploit draining funds", "Private key compromise", "Exchange halt trading"]
+      response_time: "<15 minutes"
+      escalation: "CISO + CEO immediately"
+      disclosure: "Material event - file 8-K within 4 business days (SEC)"
+    
+    p2_high:
+      definition: "Security breach contained, data exposed, or major functionality impaired"
+      examples: ["PII data breach", "Oracle manipulation detected", "Website DDoS"]
+      response_time: "<1 hour"
+      escalation: "CISO within 1 hour"
+      disclosure: "Depends on severity - legal counsel assessment"
+    
+    p3_medium:
+      definition: "Minor security issue, limited impact, workaround available"
+      examples: ["Non-critical bug discovered", "Single user account compromised", "Failed deployment"]
+      response_time: "<4 hours"
+      escalation: "Incident commander"
+      disclosure: "Generally not required unless cumulative impact"
+    
+    p4_low:
+      definition: "Informational or minimal impact"
+      examples: ["False positive alert", "Minor configuration issue"]
+      response_time: "<24 hours"
+      escalation: "Team lead"
+      disclosure: "Not required"
+
+incident_playbooks:
+  playbook_1_smart_contract_exploit:
+    scenario: "Attacker exploiting smart contract vulnerability to drain funds or mint unauthorized tokens"
+    
+    detection_signals:
+      - "Forta bot alert: unusual transaction pattern"
+      - "SIEM alert: rapid balance changes"
+      - "User report: suspicious activity"
+      - "Social media: hack claims"
+    
+    response_phases:
+      preparation:
+        - multi_sig_setup: "Guardian council 2-of-3 can pause contracts"
+        - contact_list: "All responders with phone numbers, test quarterly"
+        - pause_procedure: "Documented, tested, <15 min execution"
+        - insurance_policy: "$10M smart contract exploit coverage"
+        - legal_retainer: "24/7 securities counsel available"
+      
+      detection_containment:
+        timeline: "0-30 minutes"
+        actions:
+          - t0_min: "Alert received, incident commander paged"
+          - t5_min: "War room convened (Zoom + Slack #incident)"
+          - t10_min: "Technical analysis: confirm exploit, identify affected contracts/functions"
+          - t15_min: "GO/NO-GO decision: Pause contract if critical"
+          - t15_min: "Execute pause via guardian multi-sig (2-of-3)"
+          - t20_min: "Verify pause effective (all transactions revert)"
+          - t25_min: "Block attacker addresses (if applicable)"
+          - t30_min: "Assess damage: funds lost, tokens minted, users affected"
+        
+        containment_actions:
+          pause_contract:
+            method: "Call pause() function with PAUSER_ROLE multi-sig"
+            signers: ["Guardian1 (YubiKey)", "Guardian2 (YubiKey)", "Guardian3 (YubiKey)"]
+            requirement: "2-of-3"
+            max_pause_duration: "48 hours (after which requires admin approval to extend)"
+          
+          freeze_addresses:
+            method: "Call freezeAddress(attacker) if freeze capability exists"
+            authorization: "Compliance officer + legal counsel"
+            rationale: "Prevent further unauthorized transfers"
+          
+          snapshot_state:
+            method: "Record block number and contract state for rollback planning"
+            tools: ["Etherscan", "Tenderly", "The Graph"]
+            purpose: "Determine which transactions to potentially reverse"
+      
+      analysis_eradication:
+        timeline: "30 min - 24 hours"
+        actions:
+          - forensics: "Identify vulnerability root cause (reentrancy, access control, oracle manipulation, etc.)"
+          - code_review: "Review exploit transaction call data and state changes"
+          - impact_assessment: "Calculate funds lost, users affected, legal exposure"
+          - fix_development: "Develop and test patch"
+          - audit_fix: "Emergency audit of fix by retained security firm (target: 24 hours)"
+          - legal_assessment: "Determine disclosure obligations, litigation risk"
+        
+        decision_tree:
+          can_recover_funds:
+            yes:
+              - approach: "Negotiate with attacker (white hat incentive) OR court order to freeze at exchanges"
+              - example: "Poly Network returned $600M after negotiation"
+            no:
+              - approach: "Deploy fix, use insurance/treasury to make investors whole"
+          
+          fix_complexity:
+            simple:
+              - timeline: "24-48 hours"
+              - process: "Deploy fix via timelock (compressed timeline with guardian approval)"
+            complex:
+              - timeline: "1-2 weeks"
+              - process: "Full audit, testnet deployment, governance vote"
+      
+      recovery:
+        timeline: "1-7 days"
+        actions:
+          - deploy_fix: "Upgrade contract with vulnerability patched"
+          - unpause: "Resume operations after fix verified on testnet"
+          - reimburse_users: "Use insurance proceeds or treasury to compensate affected users"
+          - resume_trading: "Coordinate with exchanges to resume trading"
+          - enhanced_monitoring: "Deploy additional Forta bots, increase SIEM sensitivity"
+        
+        communication_plan:
+          immediate:
+            - timestamp: "T+1 hour"
+            - audience: "All users, investors"
+            - channel: "Email, website banner, Twitter"
+            - message: "Incident detected, operations paused, funds are safe, investigation underway"
+          
+          status_updates:
+            - frequency: "Every 4 hours until resolved"
+            - content: "Progress update, ETA for resolution, action required from users (if any)"
+          
+          resolution:
+            - timestamp: "When fix deployed and operations resumed"
+            - content: "Detailed incident report, root cause, remediation, lessons learned"
+            - transparency: "Full disclosure of vulnerability (after fix deployed)"
+          
+          regulatory:
+            - sec_8k: "File within 4 business days if material event"
+            - finra: "Notify if affects trading or investor accounts"
+            - state_regulators: "Per state securities laws if offering registered"
+      
+      post_incident:
+        timeline: "7-30 days"
+        actions:
+          - root_cause_analysis: "5 Whys, fishbone diagram, contributing factors"
+          - lessons_learned: "What went well, what didn't, improvements"
+          - process_updates: "Update runbooks, playbooks, contact lists"
+          - control_enhancements: "Additional security controls to prevent recurrence"
+          - insurance_claim: "File claim for recovery costs, user reimbursement"
+          - board_report: "Present to board: incident, response, improvements"
+        
+        metrics_to_track:
+          - time_to_detect: "How long from exploit to alert?"
+          - time_to_contain: "How long from alert to pause?"
+          - time_to_recover: "How long from pause to resume?"
+          - funds_recovered: "What percentage of losses recovered?"
+          - user_impact: "How many users affected, how compensated?"
+  
+  playbook_2_data_breach:
+    scenario: "Unauthorized access to KYC data, investor PII, or transaction history"
+    
+    detection_signals:
+      - "SIEM alert: unusual database queries"
+      - "Failed authentication spike"
+      - "Data exfiltration detected"
+      - "Whistleblower report"
+    
+    response_phases:
+      containment:
+        timeline: "0-2 hours"
+        actions:
+          - t0: "Alert received, security team paged"
+          - t30_min: "Isolate affected systems (network segmentation, revoke credentials)"
+          - t1_hour: "Identify compromised data (users table, kyc_documents, etc.)"
+          - t2_hour: "Block attacker access, preserve forensics (disk images, logs)"
+      
+      notification:
+        timeline: "24-72 hours"
+        obligations:
+          gdpr:
+            - requirement: "Notify supervisory authority within 72 hours"
+            - content: "Nature of breach, data categories, number of affected, measures taken"
+            - contact: "EU Data Protection Supervisor"
+          
+          ccpa:
+            - requirement: "Notify California AG if >500 CA residents affected"
+            - timeline: "Without unreasonable delay"
+          
+          individuals:
+            - requirement: "Notify affected users without undue delay"
+            - content: "What data, when, what steps taken, what users should do"
+            - method: "Email (primary) + website notice"
+            - offer: "Credit monitoring service for 12 months (if SSN/financial data compromised)"
+        
+        actions:
+          - identify_affected: "Query database for users whose data was accessed"
+          - draft_notification: "Legal counsel reviews"
+          - send_notifications: "Email via transactional service (SendGrid/AWS SES)"
+          - offer_support: "Dedicated helpline, credit monitoring"
+      
+      remediation:
+        - patch_vulnerability: "Fix security flaw that enabled breach"
+        - enhance_security: "Implement additional controls (MFA, encryption, access logging)"
+        - third_party_forensics: "Hire forensics firm (Mandiant, CrowdStrike)"
+        - law_enforcement: "File IC3 report, cooperate with FBI if financial fraud"
+      
+      regulatory:
+        - sec_notification: "If material impact on operations"
+        - state_attorney_general: "Per state breach notification laws"
+        - ftc: "If violates FTC consent decree (if applicable)"
+  
+  playbook_3_private_key_compromise:
+    scenario: "Admin, minting, or treasury private key compromised via phishing, malware, or insider threat"
+    
+    containment:
+      timeline: "<30 minutes"
+      actions:
+        - immediate_pause: "Pause all contracts (guardian 2-of-3)"
+        - revoke_key: "Revoke compromised key's permissions on-chain"
+        - activate_backup: "Switch to backup HSM or Shamir-reconstructed key"
+        - monitor_attacker: "Track any transactions from compromised key"
+        - freeze_addresses: "Freeze any addresses that received unauthorized transfers"
+    
+    recovery:
+      - key_rotation: "Generate new keys in HSM, update smart contracts"
+      - forensics: "Determine how key was compromised (phishing, malware, insider)"
+        - phishing: "Security awareness training, hardware 2FA enforcement"
+        - malware: "Reimage all systems, enhanced endpoint detection"
+        - insider: "Terminate employment, criminal prosecution"
+      - insurance_claim: "File key compromise coverage claim"
+      - user_communication: "Notify all users, explain steps taken, reassure funds safe"
+    
+    timeline:
+      - t0: "Compromise detected"
+      - t15_min: "Pause contract"
+      - t30_min: "Revoke old key, activate backup"
+      - t1_hour: "Generate new keys"
+      - t4_hour: "Update contracts with new keys"
+      - t24_hour: "Resume operations with enhanced monitoring"
+  
+  playbook_4_oracle_manipulation:
+    scenario: "Price oracle reports manipulated data causing incorrect valuations or liquidations"
+    
+    detection:
+      - "Forta alert: oracle price deviation >5% from external sources"
+      - "User reports: incorrect property valuations displayed"
+      - "SIEM: unusual oracle update pattern"
+    
+    containment:
+      - circuit_breaker: "Automatically triggered if deviation >15%"
+      - manual_override: "Emergency council injects corrected price (2-of-3 multi-sig)"
+      - pause_dependent_functions: "Halt minting, redemptions that depend on oracle price"
+    
+    investigation:
+      - verify_manipulation: "Compare oracle price to Zillow, NCREIF, CoStar"
+      - identify_cause: "Compromised data source? Validator collusion? API compromise?"
+      - affected_transactions: "Identify any liquidations or mints based on bad data"
+    
+    remediation:
+      - switch_oracle: "Migrate to backup oracle provider"
+      - reverse_transactions: "If feasible, reverse incorrect liquidations (may require governance vote + legal approval)"
+      - compensate_users: "Use treasury to compensate unfairly liquidated users"
+      - enhance_validation: "Add more data sources, tighten deviation thresholds"
+  
+  playbook_5_regulatory_enforcement:
+    scenario: "SEC, FINRA, or state regulator issues cease and desist, Wells Notice, or subpoena"
+    
+    immediate_actions:
+      - preserve_evidence: "Litigation hold on all documents, communications, systems"
+      - legal_counsel: "Engage securities defense attorney immediately"
+      - assess_claims: "Understand regulator's allegations, legal basis"
+      - cooperate: "Respond to information requests promptly and fully"
+    
+    strategic_response:
+      wells_notice:
+        - timeline: "30 days to respond (typically can extend)"
+        - actions: ["Hire white collar defense firm", "Prepare Wells submission arguing why enforcement not warranted", "Negotiate settlement if appropriate"]
+      
+      subpoena:
+        - timeline: "Per subpoena (often 14-30 days)"
+        - actions: ["Retain counsel", "Collect responsive documents", "Prepare privilege log", "Produce documents"]
+      
+      cease_and_desist:
+        - timeline: "Immediate compliance usually required"
+        - actions: ["Halt violative activity", "Consult counsel", "Negotiate consent order", "Implement remedial measures"]
+    
+    business_continuity:
+      - fail_safe_mechanisms: "Redemption trustee can process redemptions even if platform ordered to cease operations"
+      - user_communication: "Transparent explanation of situation, rights, options"
+      - asset_protection: "Ensure SPV bankruptcy remoteness maintained"
+
+communication_protocols:
+  internal:
+    war_room: "Zoom (primary) + Slack #incident"
+    frequency: "Every 30 min during active incident, then every 4 hours"
+    attendees: "Incident commander, technical lead, security, legal, compliance, communications"
+  
+  external_stakeholders:
+    investors:
+      - channel: "Email (primary), website banner, Twitter"
+      - frequency: "Initial notification <1 hour, updates every 4 hours, resolution summary"
+      - content: "What happened, impact, actions taken, next steps, contact info"
+    
+    regulators:
+      - timing: "Promptly as required by law (e.g., SEC 8-K within 4 business days)"
+      - method: "EDGAR filing, direct notification to regulator contact"
+      - content: "Material facts, impact on investors, remedial measures"
+    
+    media:
+      - approach: "Proactive if incident public, reactive otherwise"
+      - spokesperson: "CEO or designated communications lead only"
+      - message: "Stick to facts, avoid speculation, emphasize investor protection"
+    
+    exchanges:
+      - timing: "Immediately if affects trading"
+      - content: "Incident details, expected resolution timeline, halt/resume trading recommendation"
+    
+    insurance:
+      - timing: "Within policy requirements (typically 24-72 hours)"
+      - content: "Notice of claim, preliminary loss estimate, incident details"
+    
+    law_enforcement:
+      - when: "If criminal activity suspected (theft, fraud, hacking)"
+      - who: "FBI IC3, local law enforcement, Interpol if international"
+      - what: "Incident details, evidence, cooperation with investigation"
+```
+
+**Metrics**:
+
+| Metric | Formula | Target | Rationale [Ref] |
+|--------|---------|--------|-----------------|
+| Time to Detect | Alert Time - Incident Start | ≤5 min | Minimize exposure [L31] |
+| Time to Contain | Containment - Detection | ≤15 min (P1) | Limit damage [A76] |
+| Time to Recover | Operations Resumed - Incident Start | ≤24 hours | Business continuity [G36] |
+| Incident Commander Response | Acknowledgment Time | ≤15 min | Availability [L32] |
+| Playbook Adherence | Steps Followed / Total Steps | ≥90% | Process compliance [A77] |
+| Post-Incident Review Completion | Reports / Incidents | 100% | Continuous improvement [G37] |
+
+**Trade-offs**:
+- **Immediate pause** (guardian 2-of-3) stops exploits but halts legitimate operations; tolerate false positives for security [Ref: L31]
+- **Public disclosure** (full transparency) builds trust but may aid attackers; delay details until fix deployed [Ref: A76]
+- **48-hour pause limit** prevents indefinite shutdown but may be insufficient for complex incidents; governance can extend [Ref: G36]
+- **Insurance coverage** ($10M) provides recovery funds but costs $200-500K/year; essential for RWA [Ref: A78]
+
+**Validation**:
+1. **Tabletop exercises**: Quarterly simulation of each playbook with all responders [Ref: L32]
+2. **Contact validation**: Monthly verification of 24/7 contact information [Ref: A77]
+3. **Pause drill**: Semi-annual live test of contract pause procedure (on testnet) [Ref: G37]
+4. **Regulatory review**: Annual legal counsel review of disclosure obligations [Ref: A79]
+
+---
+
+(Continuing with remaining Q&As due to length...)
+
