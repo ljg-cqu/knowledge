@@ -1,0 +1,1325 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The Rise and Real-World Impact of Blockchain Stablecoins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --accent-dark: #1d4ed8;
+            --neutral: #f8fafc;
+            --base-100: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background-color: var(--neutral);
+            overflow-x: hidden;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--base-100);
+            border-right: 1px solid #e2e8f0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .hero-title {
+            grid-column: 1 / -1;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-style: italic;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-visual {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 1rem;
+            padding: 3rem;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .toc-item {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--secondary);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-item:hover {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        
+        .toc-item.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 4rem 0;
+        }
+        
+        .stat-card {
+            background: var(--base-100);
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* Mermaid theme customization for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            fill: #ffffff;
+            stroke: #3b82f6;
+            stroke-width: 2px;
+        }
+        
+        .mermaid .node .label {
+            color: #1e293b;
+            font-weight: 500;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: #64748b;
+            stroke-width: 2px;
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        
+        /* Different node colors with high contrast */
+        .mermaid .node.primary rect,
+        .mermaid .node.primary circle,
+        .mermaid .node.primary ellipse,
+        .mermaid .node.primary polygon {
+            fill: #3b82f6;
+            stroke: #1d4ed8;
+        }
+        
+        .mermaid .node.primary .label {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .mermaid .node.secondary rect,
+        .mermaid .node.secondary circle,
+        .mermaid .node.secondary ellipse,
+        .mermaid .node.secondary polygon {
+            fill: #10b981;
+            stroke: #047857;
+        }
+        
+        .mermaid .node.secondary .label {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .mermaid .node.tertiary rect,
+        .mermaid .node.tertiary circle,
+        .mermaid .node.tertiary ellipse,
+        .mermaid .node.tertiary polygon {
+            fill: #f59e0b;
+            stroke: #d97706;
+        }
+        
+        .mermaid .node.tertiary .label {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        /* Timeline specific styling */
+        .mermaid .section0 {
+            fill: #eff6ff;
+        }
+        
+        .mermaid .section1 {
+            fill: #f0fdf4;
+        }
+        
+        .mermaid .section2 {
+            fill: #fef3c7;
+        }
+        
+        .mermaid .section3 {
+            fill: #fdf2f8;
+        }
+        
+    @media (max-width: 1024px) {
+        .toc-fixed {
+            display: none;
+        }
+        .main-content {
+            margin-left: 0;
+        }
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        .hero-grid {
+            gap: 1rem;
+        }
+        .hero-visual {
+            padding: 1.5rem;
+        }
+        .hero-visual .text-4xl {
+            font-size: 1.5rem;
+        }
+        .hero-visual .text-xl {
+            font-size: 1rem;
+        }
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="font-serif text-lg font-semibold text-gray-900 mb-4">Table of Contents</h3>
+        <div class="space-y-1">
+          <a href="#executive-summary" class="toc-item text-sm">Executive Summary</a>
+          <a href="#fiat-collateralized" class="toc-item text-sm">Fiat-Collateralized</a>
+          <a href="#crypto-collateralized" class="toc-item text-sm">Crypto-Collateralized</a>
+          <a href="#algorithmic" class="toc-item text-sm">Algorithmic &amp; Hybrid</a>
+          <a href="#comparative-analysis" class="toc-item text-sm">Comparative Analysis</a>
+          <a href="#challenges" class="toc-item text-sm">Challenges &amp; Future</a>
+        </div>
+      </div>
+
+      <div class="border-t pt-4">
+        <h4 class="font-medium text-sm text-gray-900 mb-3">Key Metrics</h4>
+        <div class="space-y-2 text-xs text-gray-600">
+          <div class="flex justify-between">
+            <span>Market Cap</span>
+            <span class="font-medium">$255B+</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Annual Volume</span>
+            <span class="font-medium">$4T+</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Dominance</span>
+            <span class="font-medium">USDT+USDC: 93%</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-slate-50 to-blue-50 py-16 px-8">
+        <div class="container mx-auto max-w-6xl">
+          <div class="hero-grid">
+            <h1 class="hero-title font-serif">
+              The Rise and Real-World Impact of Blockchain Stablecoins
+            </h1>
+
+            <div class="hero-visual">
+              <div class="relative z-10">
+                <div class="text-4xl font-bold mb-4">$4 Trillion+</div>
+                <div class="text-xl mb-6">Annual transaction volume in 2025</div>
+                <div class="text-sm opacity-90">
+                  Stablecoins have become a critical bridge between traditional finance and the digital asset ecosystem, revolutionizing cross-border payments and powering the DeFi economy.
+                </div>
+              </div>
+              <img src="https://kimi-web-img.moonshot.cn/img/blog.equinix.com/0187dbe9925efdadd611fa8fadc91088ee85d0b1.jpg" alt="Abstract blockchain network" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-lg" size="wallpaper" aspect="wide" query="abstract blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+
+            <div class="space-y-6">
+              <div class="stat-card">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-chart-line text-blue-500 text-xl mr-3"></i>
+                  <h3 class="font-semibold text-gray-900">Market Growth</h3>
+                </div>
+                <div class="text-2xl font-bold text-blue-600 mb-2">103% Growth</div>
+                <div class="text-sm text-gray-600">Market cap doubled from $125B to $255B in under 2 years</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-globe text-green-500 text-xl mr-3"></i>
+                  <h3 class="font-semibold text-gray-900">Global Adoption</h3>
+                </div>
+                <div class="text-2xl font-bold text-green-600 mb-2">83% Increase</div>
+                <div class="text-sm text-gray-600">Transaction volume growth year-over-year</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="py-16 px-8 bg-white">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Executive Summary: Stablecoins as a Financial Paradigm Shift</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-6 font-medium">
+              Stablecoins are a category of digital assets designed to maintain a stable value relative to a reference asset, most commonly a fiat currency like the U.S. dollar <a href="#362" class="citation">[362]</a>. Unlike volatile cryptocurrencies such as Bitcoin or Ethereum, stablecoins aim to combine the programmability and efficiency of blockchain technology with the price stability of traditional money.
+            </p>
+
+            <div class="highlight-box">
+              <h3 class="font-semibold text-gray-900 mb-3">Primary Use Cases</h3>
+              <ul class="space-y-2">
+                <li><strong>Cross-border payments:</strong> Offering faster and cheaper alternatives to traditional banking</li>
+                <li><strong>DeFi liquidity layer:</strong> Serving as foundational infrastructure for decentralized finance</li>
+                <li><strong>Value storage:</strong> Providing stability in regions with volatile local currencies</li>
+              </ul>
+            </div>
+
+            <p>
+              The fundamental value proposition lies in facilitating fast, low-cost, and transparent transactions on a global scale. Traditional financial rails like SWIFT are often slow, expensive, and opaque, particularly for cross-border settlements. Stablecoins operating on public blockchains enable near-instantaneous settlement 24/7, reducing transaction costs to a fraction of a percent <a href="#370" class="citation">[370]</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Three Models Overview -->
+      <section class="py-16 px-8 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+          <h2 class="font-serif text-3xl font-bold text-center mb-12">The Three Fundamental Models</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-university text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Fiat-Collateralized</h3>
+              <p class="text-gray-600 mb-4">Backed 1:1 by reserves of fiat currency. Simple, robust, and highly stable but centralized.</p>
+              <div class="text-sm text-gray-500">
+                <strong>Examples:</strong> USDT, USDC
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-cube text-green-600 text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Crypto-Collateralized</h3>
+              <p class="text-gray-600 mb-4">Backed by other cryptocurrencies in smart contracts. Decentralized but capital-inefficient.</p>
+              <div class="text-sm text-gray-500">
+                <strong>Examples:</strong> DAI, sUSD
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <i class="fas fa-code text-purple-600 text-xl"></i>
+              </div>
+              <h3 class="font-serif text-xl font-semibold mb-3">Algorithmic</h3>
+              <p class="text-gray-600 mb-4">Use code to manage supply and demand. Highly scalable but historically unstable.</p>
+              <div class="text-sm text-gray-500">
+                <strong>Examples:</strong> FRAX, AMPL
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fiat-Collateralized Section -->
+      <section id="fiat-collateralized" class="py-16 px-8 bg-white">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Fiat-Collateralized Stablecoins: The Gateway to Digital Dollars</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-8">
+              Fiat-collateralized stablecoins represent the most prevalent and widely adopted category of stable digital assets. Their fundamental design principle is a direct, one-to-one peg to traditional fiat currency, most commonly the U.S. dollar.
+            </p>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Core Mechanism: 1:1 Fiat Currency Backing</h3>
+
+            <p>
+              The operational foundation is the commitment to a <strong>1:1 reserve ratio</strong>. For every stablecoin issued, the central entity holds one unit of the corresponding fiat currency in a bank account or highly liquid assets like Treasury bills <a href="#380" class="citation">[380]</a>.
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 my-8">
+              <h4 class="font-semibold text-gray-900 mb-3">How the Peg is Maintained</h4>
+              <ol class="space-y-2">
+                <li><strong>Arbitrage Mechanism:</strong> If price drops below $1, arbitrageurs buy cheap and redeem for $1</li>
+                <li><strong>Minting Process:</strong> Users send fiat to issuer, who mints equivalent stablecoins</li>
+                <li><strong>Redemption Process:</strong> Users return stablecoins, issuer burns tokens and returns fiat</li>
+              </ol>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Case Study: USDC vs USDT</h3>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+              <div class="bg-gray-50 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-4">USD Coin (USDC)</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li>• Issued by Circle (Centre consortium)</li>
+                  <li>• Monthly attestations from Grant Thornton</li>
+                  <li>• Reserves in cash and short-term U.S. Treasuries</li>
+                  <li>• Preferred by institutions for transparency</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-6">
+                <h4 class="font-semibold text-gray-900 mb-4">Tether (USDT)</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li>• First major stablecoin (2014)</li>
+                  <li>• ~90% market share by volume <a href="#410" class="citation">[410]</a>
+                  </li>
+                  <li>• Deep exchange integration</li>
+                  <li>• Faced transparency scrutiny</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Crypto-Collateralized Section -->
+      <section id="crypto-collateralized" class="py-16 px-8 bg-gray-50">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Crypto-Collateralized Stablecoins: Decentralization Through Over-Collateralization</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-8">
+              Crypto-collateralized stablecoins represent a significant step towards the decentralized ethos of blockchain. Unlike fiat-backed counterparts, these are collateralized by other cryptocurrencies locked in smart contracts, eliminating the need for trusted central custodians.
+            </p>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Core Mechanism: Smart Contracts and On-Chain Collateral</h3>
+
+            <p>
+              The fundamental mechanism uses smart contracts to create <strong>Collateralized Debt Positions (CDPs)</strong> or &#34;Vaults.&#34; Users deposit cryptocurrencies like ETH into Vaults to generate stablecoins like DAI <a href="#361" class="citation">[361]</a>.
+            </p>
+
+            <div class="highlight-box">
+              <h4 class="font-semibold text-gray-900 mb-3">The Principle of Over-Collateralization</h4>
+              <p class="mb-3">
+                To account for crypto volatility, users must deposit collateral worth significantly more than the stablecoins they mint. For example, <strong>$150 worth of ETH to borrow $100 worth of DAI</strong> (150% collateralization ratio).
+              </p>
+              <p class="text-sm text-gray-600">
+                This buffer protects the system from price drops but makes the model capital-inefficient compared to fiat-backed alternatives.
+              </p>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Case Study: DAI and the MakerDAO Protocol</h3>
+
+            <p>
+              DAI is the flagship crypto-collateralized stablecoin, created by the MakerDAO protocol. Unlike centralized stablecoins, DAI is generated by a decentralized network of users interacting with smart contracts governed by MKR token holders <a href="#202" class="citation">[202]</a>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+              <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h4 class="font-semibold text-gray-900 mb-4">Multi-Collateral System</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li>• Accepts ETH, wrapped BTC, USDC</li>
+                  <li>• Tokenized real-world assets (Treasury bonds)</li>
+                  <li>• Unique risk parameters for each collateral type</li>
+                  <li>• Enhanced resilience through diversification</li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h4 class="font-semibold text-gray-900 mb-4">Advanced Stability Mechanisms</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li>• <strong>PSM (Peg Stability Module):</strong> 1:1 swaps with USDC</li>
+                  <li>• <strong>DAI Savings Rate:</strong> Monetary policy lever</li>
+                  <li>• Automated liquidation processes</li>
+                  <li>• Decentralized governance by MKR holders</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Algorithmic Section -->
+      <section id="algorithmic" class="py-16 px-8 bg-white">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Algorithmic and Hybrid Stablecoins: The Frontier of Monetary Innovation</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-8">
+              Algorithmic and hybrid stablecoins represent the most ambitious and experimental frontier in digital currency, aiming to achieve price stability not through traditional collateral but via sophisticated, code-driven monetary policies.
+            </p>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Pure Algorithmic Models: Code as Central Bank</h3>
+
+            <p>
+              Pure algorithmic stablecoins rely entirely on software and economic incentives to maintain value. They have no collateral reserves and instead use pre-programmed rules to adjust token supply based on market conditions <a href="#269" class="citation">[269]</a>.
+            </p>
+
+            <div class="bg-red-50 border-l-4 border-red-400 p-6 my-8">
+              <h4 class="font-semibold text-red-800 mb-3">⚠️ The Terra/Luna Collapse: A Cautionary Tale</h4>
+              <p class="text-red-700 text-sm mb-3">
+                The May 2022 collapse of TerraUSD (UST) demonstrated the extreme risks of uncollateralized algorithmic models. The $18 billion stablecoin entered a death spiral, wiping out approximately <strong>$200 billion in market value</strong>
+                <a href="#281" class="citation">[281]</a>.
+              </p>
+              <p class="text-red-600 text-xs">
+                Lesson: Pure algorithmic models are vulnerable to loss of market confidence and can experience catastrophic failure.
+              </p>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Hybrid Models: A New Generation</h3>
+
+            <p>
+              In response to pure algorithmic failures, hybrid models have emerged, blending algorithmic mechanisms with partial collateralization. These models maintain fractional reserves while using algorithms for capital efficiency and stability <a href="#269" class="citation">[269]</a>.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-green-400 p-6 my-8">
+              <h4 class="font-semibold text-green-800 mb-3">✅ Case Study: Frax (FRAX)</h4>
+              <p class="text-green-700 text-sm mb-3">
+                Frax pioneered the fractional-algorithmic model with a dynamic collateral ratio that adjusts based on market conditions. After community voting in 2023, it transitioned to a <strong>100% collateralization model</strong>, prioritizing stability over algorithmic dynamics <a href="#273" class="citation">[273]</a>.
+              </p>
+              <p class="text-green-600 text-xs">
+                Success: Deep integration across DeFi ecosystem while maintaining stability
+              </p>
+            </div>
+
+            <!-- Algorithmic Model Flow Diagram -->
+            <h4 class="font-serif text-xl font-semibold mt-10 mb-6">Algorithmic Stablecoin Stability Mechanism</h4>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                flowchart TD
+                A[&#34;Market Price Deviation&#34;] --&gt; B{&#34;Price Above Peg?&#34;}
+                B --&gt;|Yes| C[&#34;Algorithm Increases Supply&#34;]
+                B --&gt;|No| D[&#34;Price Below Peg?&#34;]
+                D --&gt;|Yes| E[&#34;Algorithm Decreases Supply&#34;]
+                D --&gt;|No| F[&#34;Maintain Current Supply&#34;]
+
+                C --&gt; G[&#34;Mint New Tokens&#34;]
+                E --&gt; H[&#34;Burn Tokens or Incentivize Holding&#34;]
+
+                G --&gt; I[&#34;Increase Market Supply&#34;]
+                H --&gt; J[&#34;Reduce Market Supply&#34;]
+
+                I --&gt; K[&#34;Price Returns Toward Peg&#34;]
+                J --&gt; K
+
+                K --&gt; L[&#34;Market Confidence Maintained?&#34;]
+                L --&gt;|No| M[&#34;Enter Death Spiral Risk&#34;]
+                L --&gt;|Yes| N[&#34;System Stabilizes&#34;]
+
+                style A fill:#e0f2fe
+                style K fill:#e8f5e8
+                style M fill:#ffebee
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Comparative Analysis -->
+      <section id="comparative-analysis" class="py-16 px-8 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Comparative Analysis: A Three-Way Trade-Off</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-8">
+              The stablecoin landscape represents a fundamental trilemma between three competing objectives: <strong>price stability, decentralization, and capital efficiency</strong>. No single model has yet achieved a perfect balance.
+            </p>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+              <div class="overflow-x-auto">
+                <table class="w-full">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-6 py-4 text-left font-semibold text-gray-900">Stablecoin Model</th>
+                      <th class="px-6 py-4 text-center font-semibold text-gray-900">Stability</th>
+                      <th class="px-6 py-4 text-center font-semibold text-gray-900">Decentralization</th>
+                      <th class="px-6 py-4 text-center font-semibold text-gray-900">Capital Efficiency</th>
+                      <th class="px-6 py-4 text-left font-semibold text-gray-900">Primary Mechanism</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 font-medium text-gray-900">Fiat-Backed (USDC, USDT)</td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">High</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Low</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">High</span>
+                      </td>
+                      <td class="px-6 py-4 text-gray-600">1:1 off-chain fiat reserves</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                      <td class="px-6 py-4 font-medium text-gray-900">Crypto-Backed (DAI)</td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Medium</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">High</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Low</span>
+                      </td>
+                      <td class="px-6 py-4 text-gray-600">On-chain over-collateralization</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 font-medium text-gray-900">Algorithmic (FRAX, AMPL)</td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">Low-Medium</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">High</span>
+                      </td>
+                      <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">High</span>
+                      </td>
+                      <td class="px-6 py-4 text-gray-600">Algorithmic supply adjustments</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Use Case Suitability</h3>
+
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="bg-white rounded-lg p-6">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <i class="fas fa-credit-card text-blue-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-3">Payments &amp; Remittances</h4>
+                <p class="text-sm text-gray-600 mb-3">
+                  <strong>Fiat-backed advantage:</strong> Price stability and ease of use are paramount for everyday transactions.
+                </p>
+                <div class="text-xs text-gray-500">
+                  ✓ Predictable value
+                  <br/>
+                  ✓ Widespread acceptance
+                  <br/>
+                  ✓ Low cost
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg p-6">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <i class="fas fa-chart-network text-green-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-3">DeFi &amp; Trading</h4>
+                <p class="text-sm text-gray-600 mb-3">
+                  <strong>Crypto-backed advantage:</strong> Decentralization and censorship resistance align with DeFi principles.
+                </p>
+                <div class="text-xs text-gray-500">
+                  ✓ Decentralized governance
+                  <br/>
+                  ✓ On-chain transparency
+                  <br/>
+                  ✓ Composability
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg p-6">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <i class="fas fa-flask text-purple-600"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-3">Experimental Applications</h4>
+                <p class="text-sm text-gray-600 mb-3">
+                  <strong>Algorithmic frontier:</strong> High capital efficiency enables innovative financial instruments.
+                </p>
+                <div class="text-xs text-gray-500">
+                  ✓ Scalable supply
+                  <br/>
+                  ✓ Programmable features
+                  <br/>
+                  ✓ Rapid iteration
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Challenges and Future -->
+      <section id="challenges" class="py-16 px-8 bg-white">
+        <div class="container mx-auto max-w-4xl">
+          <h2 class="font-serif text-4xl font-bold text-gray-900 mb-8">Challenges and the Future of Stablecoin Adoption</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-700 mb-8">
+              The rapid growth of stablecoins has brought significant challenges including regulatory scrutiny, technological risks, and competition from Central Bank Digital Currencies (CBDCs). Their future depends on navigating these complex issues.
+            </p>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Regulatory Landscape</h3>
+
+            <p>
+              Major jurisdictions are developing comprehensive frameworks. The EU&#39;s <strong>MiCA regulation</strong> and U.S. <strong>GENIUS Act</strong> provide foundational structures, focusing on reserve requirements, consumer protection, and issuer accountability <a href="#294" class="citation">[294]</a>.
+            </p>
+
+            <!-- Stablecoin Evolution Timeline -->
+            <h4 class="font-serif text-xl font-semibold mt-10 mb-6">Evolution of Stablecoin Regulation and Technology</h4>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                timeline
+                title &#34;Stablecoin Evolution Timeline&#34;
+
+                2014 : &#34;Tether Launch&#34;
+                : &#34;First stablecoin concept&#34;
+
+                2017 : &#34;DAI Launch&#34;
+                : &#34;Decentralized collateralized model&#34;
+
+                2019 : &#34;Ampleforth Launch&#34;
+                : &#34;Pure algorithmic experiments&#34;
+
+                2020 : &#34;Frax Launch&#34;
+                : &#34;Hybrid fractional-algorithmic model&#34;
+
+                2022 : &#34;Terra/Luna Collapse&#34;
+                : &#34;$200B wipeout, regulatory wake-up call&#34;
+
+                2024 : &#34;EU MiCA Regulation&#34;
+                : &#34;Comprehensive regulatory framework&#34;
+
+                2025 : &#34;US GENIUS Act&#34;
+                : &#34;Federal stablecoin legislation&#34;
+              </div>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">Key Risks and Vulnerabilities</h3>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+              <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                <h4 class="font-semibold text-red-800 mb-3">Centralization &amp; Custodial Risks</h4>
+                <ul class="space-y-2 text-sm text-red-700">
+                  <li>• Silvergate Bank collapse affecting crypto firms</li>
+                  <li>• USDC de-pegging during SVB crisis ($3.3B exposure)</li>
+                  <li>• Single points of failure in issuer models</li>
+                </ul>
+              </div>
+              <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                <h4 class="font-semibold text-orange-800 mb-3">Smart Contract &amp; Oracle Risks</h4>
+                <ul class="space-y-2 text-sm text-orange-700">
+                  <li>• Code vulnerabilities and exploits</li>
+                  <li>• Oracle manipulation risks</li>
+                  <li>• Complex liquidation mechanisms</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="font-serif text-2xl font-semibold mt-12 mb-6">The CBDC Factor</h3>
+
+            <p>
+              The relationship between stablecoins and Central Bank Digital Currencies is complex, marked by both competition and potential coexistence. While some view CBDCs as direct competitors, others see them as complementary, with stablecoins offering private-sector innovation alongside public digital currencies <a href="#296" class="citation">[296]</a>.
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 my-8">
+              <h4 class="font-semibold text-blue-800 mb-3">Future Outlook</h4>
+              <p class="text-blue-700 text-sm mb-3">
+                Major payment networks like Visa and Mastercard are actively integrating stablecoins, potentially solving the &#34;last mile&#34; problem of crypto-to-goods conversion. This institutional adoption signals stablecoins&#39; transition from niche technology to mainstream financial infrastructure.
+              </p>
+              <p class="text-blue-600 text-xs">
+                Success factors: Regulatory clarity, technological maturity, and institutional trust
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12 px-8">
+        <div class="container mx-auto max-w-4xl">
+          <div class="text-center">
+            <h3 class="font-serif text-2xl font-semibold mb-4">The Future of Digital Money</h3>
+            <p class="text-gray-300 mb-6">
+              Stablecoins represent a fundamental innovation in monetary technology, bridging traditional finance with the possibilities of blockchain. Their evolution continues to shape the future of global commerce and financial inclusion.
+            </p>
+            <div class="text-sm text-gray-400">
+              This analysis is based on publicly available data and research as of November 2025
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with custom configuration
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#ffffff',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#3b82f6',
+                lineColor: '#64748b',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#e2e8f0',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#e2e8f0',
+                nodeBorder: '#3b82f6',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#e2e8f0',
+                defaultLinkColor: '#64748b',
+                titleColor: '#1e293b',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#1e293b',
+                // Timeline specific colors
+                cScale0: '#3b82f6',
+                cScale1: '#10b981',
+                cScale2: '#f59e0b',
+                cScale3: '#ef4444',
+                // Section colors with better contrast
+                section0: '#eff6ff',
+                section1: '#f0fdf4',
+                section2: '#fef3c7',
+                section3: '#fdf2f8'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            timeline: {
+                useMaxWidth: true,
+                padding: 20
+            },
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 14
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+                const mermaidElement = container.querySelector('.mermaid');
+                let scale = 1;
+                let isDragging = false;
+                let startX, startY, translateX = 0, translateY = 0;
+
+                // 触摸相关状态
+                let isTouch = false;
+                let touchStartTime = 0;
+                let initialDistance = 0;
+                let initialScale = 1;
+                let isPinching = false;
+
+                // Zoom controls
+                const zoomInBtn = container.querySelector('.zoom-in');
+                const zoomOutBtn = container.querySelector('.zoom-out');
+                const resetBtn = container.querySelector('.reset-zoom');
+                const fullscreenBtn = container.querySelector('.fullscreen');
+
+                function updateTransform() {
+                    mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                    if (scale > 1) {
+                        container.classList.add('zoomed');
+                    } else {
+                        container.classList.remove('zoomed');
+                    }
+
+                    mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+                }
+
+                if (zoomInBtn) {
+                    zoomInBtn.addEventListener('click', () => {
+                        scale = Math.min(scale * 1.25, 4);
+                        updateTransform();
+                    });
+                }
+
+                if (zoomOutBtn) {
+                    zoomOutBtn.addEventListener('click', () => {
+                        scale = Math.max(scale / 1.25, 0.3);
+                        if (scale <= 1) {
+                            translateX = 0;
+                            translateY = 0;
+                        }
+                        updateTransform();
+                    });
+                }
+
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        scale = 1;
+                        translateX = 0;
+                        translateY = 0;
+                        updateTransform();
+                    });
+                }
+
+                if (fullscreenBtn) {
+                    fullscreenBtn.addEventListener('click', () => {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
+                        }
+                    });
+                }
+
+                // Mouse Events
+                mermaidElement.addEventListener('mousedown', (e) => {
+                    if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                    isDragging = true;
+                    startX = e.clientX - translateX;
+                    startY = e.clientY - translateY;
+                    mermaidElement.style.cursor = 'grabbing';
+                    updateTransform();
+                    e.preventDefault();
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (isDragging && !isTouch) {
+                        translateX = e.clientX - startX;
+                        translateY = e.clientY - startY;
+                        updateTransform();
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (isDragging && !isTouch) {
+                        isDragging = false;
+                        mermaidElement.style.cursor = 'grab';
+                        updateTransform();
+                    }
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    if (isDragging && !isTouch) {
+                        isDragging = false;
+                        mermaidElement.style.cursor = 'grab';
+                        updateTransform();
+                    }
+                });
+
+                // 获取两点之间的距离
+                function getTouchDistance(touch1, touch2) {
+                    return Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                }
+
+                // Touch Events - 触摸事件处理
+                mermaidElement.addEventListener('touchstart', (e) => {
+                    isTouch = true;
+                    touchStartTime = Date.now();
+
+                    if (e.touches.length === 1) {
+                        // 单指拖动
+                        isPinching = false;
+                        isDragging = true;
+
+                        const touch = e.touches[0];
+                        startX = touch.clientX - translateX;
+                        startY = touch.clientY - translateY;
+
+                    } else if (e.touches.length === 2) {
+                        // 双指缩放
+                        isPinching = true;
+                        isDragging = false;
+
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        initialDistance = getTouchDistance(touch1, touch2);
+                        initialScale = scale;
+                    }
+
+                    e.preventDefault();
+                }, { passive: false });
+
+                mermaidElement.addEventListener('touchmove', (e) => {
+                    if (e.touches.length === 1 && isDragging && !isPinching) {
+                        // 单指拖动
+                        const touch = e.touches[0];
+                        translateX = touch.clientX - startX;
+                        translateY = touch.clientY - startY;
+                        updateTransform();
+
+                    } else if (e.touches.length === 2 && isPinching) {
+                        // 双指缩放
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        const currentDistance = getTouchDistance(touch1, touch2);
+
+                        if (initialDistance > 0) {
+                            const newScale = Math.min(Math.max(
+                                initialScale * (currentDistance / initialDistance),
+                                0.3
+                            ), 4);
+                            scale = newScale;
+                            updateTransform();
+                        }
+                    }
+
+                    e.preventDefault();
+                }, { passive: false });
+
+                mermaidElement.addEventListener('touchend', (e) => {
+                    // 重置状态
+                    if (e.touches.length === 0) {
+                        isDragging = false;
+                        isPinching = false;
+                        initialDistance = 0;
+
+                        // 延迟重置isTouch，避免鼠标事件立即触发
+                        setTimeout(() => {
+                            isTouch = false;
+                        }, 100);
+                    } else if (e.touches.length === 1 && isPinching) {
+                        // 从双指变为单指，切换为拖动模式
+                        isPinching = false;
+                        isDragging = true;
+
+                        const touch = e.touches[0];
+                        startX = touch.clientX - translateX;
+                        startY = touch.clientY - translateY;
+                    }
+
+                    updateTransform();
+                });
+
+                mermaidElement.addEventListener('touchcancel', (e) => {
+                    isDragging = false;
+                    isPinching = false;
+                    initialDistance = 0;
+
+                    setTimeout(() => {
+                        isTouch = false;
+                    }, 100);
+
+                    updateTransform();
+                });
+
+                // Enhanced wheel zoom with better center point handling
+                container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const rect = container.getBoundingClientRect();
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                    const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                    // Adjust translation to zoom towards center
+                    if (newScale !== scale) {
+                        const scaleDiff = newScale / scale;
+                        translateX = translateX * scaleDiff;
+                        translateY = translateY * scaleDiff;
+                        scale = newScale;
+
+                        if (scale <= 1) {
+                            translateX = 0;
+                            translateY = 0;
+                        }
+
+                        updateTransform();
+                    }
+                });
+
+                // Initialize display
+                updateTransform();
+            });
+        }
+
+        // Initialize the controls
+        initializeMermaidControls();
+
+        // Table of Contents functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocItems = document.querySelectorAll('.toc-item');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Smooth scrolling for TOC links
+            tocItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Active section highlighting
+            function updateActiveSection() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                tocItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === '#' + current) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveSection);
+            updateActiveSection(); // Initial call
+        });
+
+        // Citation click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const citations = document.querySelectorAll('.citation');
+            
+            citations.forEach(citation => {
+                citation.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const citationNumber = this.textContent.match(/\[(\d+)\]/);
+                    
+                    if (citationNumber) {
+                        alert(`Citation ${citationNumber[0]}: This would link to the full reference in a production environment.`);
+                    }
+                });
+            });
+        });
+    </script>
+  
+
+</body></html>

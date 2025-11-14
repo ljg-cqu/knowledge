@@ -1,0 +1,1722 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>The RWA Revolution: A Comprehensive Guide to the Tokenization Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #64748b;
+            --accent: #0f172a;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            z-index: 50;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2rem;
+            height: 70vh;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-title {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-visual {
+            background: var(--surface);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-stats {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: rgba(30, 64, 175, 0.05);
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 4rem;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .subsection-heading {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.5rem 0;
+            color: var(--text-primary);
+        }
+        
+        .chart-container {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .citation {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(59, 130, 246, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--surface);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(30, 64, 175, 0.02);
+        }
+        
+        .pullquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            background: rgba(30, 64, 175, 0.02);
+            padding: 2rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        /* Mermaid diagram styles */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none; /* \u9632\u6b62\u89e6\u6478\u8bbe\u5907\u4e0a\u7684\u9ed8\u8ba4\u884c\u4e3a */
+            -webkit-user-select: none; /* \u9632\u6b62\u6587\u672c\u9009\u62e9 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* Responsive design for mermaid controls */
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* Responsive adjustments for small screens */
+        @media (max-width: 768px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                width: 250px;
+                z-index: 50;
+            }
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+                padding: 1rem;
+            }
+            .mermaid-container {
+                padding: 15px;
+            }
+            /* Hero title adjustments */
+            .hero-title h1 {
+                font-size: 2.5rem;
+            }
+            .hero-title {
+                padding: 2rem;
+            }
+        }
+        
+        /* Prevent horizontal overflow */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Asset class grid */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .asset-card {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .asset-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .asset-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        /* Adjustments for very small screens */
+        @media (max-width: 640px) {
+            .hero-title h1 {
+                font-size: 1.8rem;
+            }
+            .hero-title {
+                padding: 1.5rem;
+            }
+            .hero-visual img {
+                height: auto;
+            }
+            .asset-grid {
+                grid-template-columns: 1fr;
+            }
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Mobile Menu Toggle Button -->
+    <button id="mobile-menu-toggle" class="fixed top-4 left-4 z-50 p-2 bg-primary text-white rounded-md shadow-md md:hidden">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Contents</h2>
+      </div>
+
+      <div class="space-y-1 text-sm">
+        <a href="#introduction" class="toc-link">Introduction</a>
+        <a href="#rwa-landscape" class="toc-link">The RWA Landscape</a>
+        <div class="ml-4 space-y-1">
+          <a href="#defining-rwas" class="toc-link text-xs">Defining RWAs</a>
+          <a href="#asset-classes" class="toc-link text-xs">Key Asset Classes</a>
+          <a href="#tokenization-process" class="toc-link text-xs">Tokenization Process</a>
+          <a href="#market-trends" class="toc-link text-xs">Market Trends</a>
+        </div>
+        <a href="#blockchain-comparison" class="toc-link">Blockchain Platform Comparison</a>
+        <div class="ml-4 space-y-1">
+          <a href="#selection-criteria" class="toc-link text-xs">Selection Criteria</a>
+          <a href="#ethereum" class="toc-link text-xs">Ethereum</a>
+          <a href="#hyperledger" class="toc-link text-xs">Hyperledger Fabric</a>
+          <a href="#corda" class="toc-link text-xs">R3 Corda</a>
+          <a href="#comparative-analysis" class="toc-link text-xs">Comparative Analysis</a>
+        </div>
+        <a href="#regulatory-landscape" class="toc-link">Regulatory Landscape</a>
+        <div class="ml-4 space-y-1">
+          <a href="#us-regulations" class="toc-link text-xs">United States</a>
+          <a href="#eu-regulations" class="toc-link text-xs">European Union</a>
+          <a href="#other-jurisdictions" class="toc-link text-xs">Other Key Jurisdictions</a>
+        </div>
+        <a href="#future-outlook" class="toc-link">Future Outlook</a>
+        <div class="ml-4 space-y-1">
+          <a href="#key-challenges" class="toc-link text-xs">Key Challenges</a>
+          <a href="#opportunities" class="toc-link text-xs">Emerging Opportunities</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="px-8 py-12">
+        <div class="hero-grid">
+          <div class="hero-title">
+            <div class="relative z-10 text-center break-words">
+              <h1 class="serif text-5xl font-bold mb-4 leading-tight">
+                <em>The RWA Revolution</em>
+              </h1>
+              <p class="text-xl font-light opacity-90">A Comprehensive Guide to the Tokenization Ecosystem</p>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="https://kimi-web-img.moonshot.cn/img/png.pngtree.com/86018b4b2062ee81803c503fb67398443369edbd.jpg" alt="Abstract 3D visualization of interconnected digital blocks representing blockchain network" class="w-full h-full object-cover" size="large" aspect="wide" query="blockchain network abstract 3d visualization" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          </div>
+
+          <div class="hero-stats">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Market Snapshot</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Global Market Size (Mar 2025)</span>
+                <span class="font-bold text-lg text-primary">$17.88B</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Growth from 2024</span>
+                <span class="font-bold text-lg text-green-600">+78.8%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Firms Investing by 2026</span>
+                <span class="font-bold text-lg text-primary">76%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section id="introduction" class="px-8 py-12 max-w-6xl">
+        <div class="highlight-box">
+          <p class="text-lg leading-relaxed">
+            Real-World Asset (RWA) tokenization represents a fundamental structural shift in the recording and transfer of ownership, value, and access. This comprehensive guide explores the rapidly maturing ecosystem that is bridging traditional finance with decentralized systems, creating new opportunities for liquidity, transparency, and global accessibility.
+          </p>
+        </div>
+
+        <div class="mt-8">
+          <img src="https://kimi-web-img.moonshot.cn/img/unicsoft.com/18fb7ca50f7a5b4a14463d4359ffdf2ef14aae64.png" alt="Conceptual art of physical assets transforming into digital tokens" class="w-full h-64 object-cover rounded-lg shadow-lg" size="medium" aspect="wide" query="physical assets transforming into digital tokens conceptual art" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+        </div>
+      </section>
+
+      <!-- The RWA Landscape -->
+      <section id="rwa-landscape" class="px-8 py-12 max-w-6xl">
+        <h2 class="serif section-heading">The RWA Landscape: From Concept to Market Reality</h2>
+
+        <div id="defining-rwas" class="mb-12">
+          <h3 class="subsection-heading serif">Defining Real-World Assets (RWAs)</h3>
+
+          <p class="mb-6">
+            Real-World Asset (RWA) tokenization is the process of creating digital representations of physical or intangible assets\u2014such as real estate, commodities, and financial instruments\u2014on a blockchain. This technology enhances liquidity, transparency, and accessibility by enabling fractional ownership and 24/7 global trading <a href="#ref-59" class="citation">[59]</a>.
+          </p>
+
+          <div class="pullquote">
+            &#34;The process converts legal or economic claims on tangible or intangible assets into programmable, traceable digital units on a blockchain, removing geographic and bureaucratic friction.&#34;
+          </div>
+
+          <p class="mb-6">
+            The global RWA tokenization market has experienced significant growth, surging to <strong>US $17.88 billion by March 2025</strong>, up from US $10 billion in 2024 <a href="#ref-132" class="citation">[132]</a>. This rapid expansion is a testament to the increasing recognition of the value and potential of tokenization among investors, institutions, and regulators.
+          </p>
+        </div>
+
+        <div id="asset-classes" class="mb-12">
+          <h3 class="subsection-heading serif">Key Asset Classes in the RWA Ecosystem</h3>
+
+          <p class="mb-8">
+            The RWA ecosystem encompasses a wide array of asset classes, each presenting unique opportunities and challenges for tokenization <a href="#ref-63" class="citation">[63]</a>. The tokenization of these assets aims to enhance liquidity, enable fractional ownership, and increase transparency, making traditionally illiquid markets more accessible and efficient <a href="#ref-73" class="citation">[73]</a>.
+          </p>
+
+          <div class="asset-grid">
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-building text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Real Estate</h4>
+              <p class="text-gray-600 mb-4">
+                Residential, commercial properties, and land registry. Platforms like <strong>RealT</strong> and <strong>Landshare</strong> are pioneering this space by tokenizing U.S. properties <a href="#ref-69" class="citation">[69]</a>
+                <a href="#ref-70" class="citation">[70]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">High Value \u2022 Long-term \u2022 Stable Income</div>
+            </div>
+
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-chart-line text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Financial Instruments</h4>
+              <p class="text-gray-600 mb-4">
+                Equities, bonds, and private credit. Platforms like <strong>Securitize</strong> and <strong>Polymath</strong> offer end-to-end solutions for tokenized securities <a href="#ref-70" class="citation">[70]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">High Liquidity \u2022 Regulated \u2022 24/7 Trading</div>
+            </div>
+
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-coins text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Commodities</h4>
+              <p class="text-gray-600 mb-4">
+                Precious metals, energy, and agricultural products. <strong>Agrotoken</strong> enables farmers to tokenize their harvest and exchange digital assets for money or services <a href="#ref-55" class="citation">[55]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">Tangible \u2022 Global Demand \u2022 Supply Chain Integration</div>
+            </div>
+
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-palette text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Other Tangible Assets</h4>
+              <p class="text-gray-600 mb-4">
+                Art, intellectual property, and collectibles. Platforms like <strong>Maecenas</strong> democratize access to art by offering tokenized shares of famous paintings <a href="#ref-60" class="citation">[60]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">Unique \u2022 Cultural Value \u2022 Limited Supply</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tokenization-process" class="mb-12">
+          <h3 class="subsection-heading serif">The Tokenization Process: A Step-by-Step Overview</h3>
+
+          <p class="mb-6">
+            The process of tokenizing a real-world asset is a complex, multi-stage endeavor that transforms a physical or intangible asset into a tradable digital representation on a blockchain <a href="#ref-68" class="citation">[68]</a>. This process involves a series of carefully orchestrated steps, from the initial selection and valuation of the asset to the final issuance and distribution of the tokens <a href="#ref-55" class="citation">[55]</a>.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="\u653e\u5927">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="\u7f29\u5c0f">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="\u91cd\u7f6e">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="\u5168\u5c4f\u67e5\u770b">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TD
+              A[&#34;Asset Selection &amp; Valuation&#34;] --&gt; B[&#34;Legal &amp; Regulatory Structuring&#34;]
+              B --&gt; C[&#34;Smart Contract &amp; Token Design&#34;]
+              C --&gt; D[&#34;Token Issuance &amp; Distribution&#34;]
+              D --&gt; E[&#34;Ongoing Management &amp; Governance&#34;]
+
+              A --&gt; A1[&#34;Market Value Assessment&#34;]
+              A --&gt; A2[&#34;Liquidity Analysis&#34;]
+              A --&gt; A3[&#34;Demand Evaluation&#34;]
+
+              B --&gt; B1[&#34;Securities Law Compliance&#34;]
+              B --&gt; B2[&#34;KYC/AML Requirements&#34;]
+              B --&gt; B3[&#34;Investor Rights Definition&#34;]
+
+              C --&gt; C1[&#34;ERC-20/ERC-721 Selection&#34;]
+              C --&gt; C2[&#34;Compliance Rules Integration&#34;]
+              C --&gt; C3[&#34;Token Rights Definition&#34;]
+
+              D --&gt; D1[&#34;Token Generation Event&#34;]
+              D --&gt; D2[&#34;Investor KYC/AML&#34;]
+              D --&gt; D3[&#34;Secondary Trading Setup&#34;]
+
+              E --&gt; E1[&#34;Asset Management&#34;]
+              E --&gt; E2[&#34;Income Distribution&#34;]
+              E --&gt; E3[&#34;Regulatory Compliance&#34;]
+
+              classDef processBox fill:#1e40af,stroke:#ffffff,stroke-width:2px,color:#ffffff
+              classDef detailBox fill:#f8fafc,stroke:#64748b,stroke-width:1px,color:#0f172a
+
+              class A,B,C,D,E processBox
+              class A1,A2,A3,B1,B2,B3,C1,C2,C3,D1,D2,D3,E1,E2,E3 detailBox
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3">Asset Selection Criteria</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Market value and liquidity assessment</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Legal and regulatory status review</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Income generation potential</li>
+                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Target investor interest analysis</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3">Token Standards</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center"><i class="fas fa-cog text-blue-500 mr-2"></i><strong>ERC-20:</strong> Fungible tokens for fractional ownership</li>
+                <li class="flex items-center"><i class="fas fa-cog text-blue-500 mr-2"></i><strong>ERC-721:</strong> Non-fungible tokens for unique assets</li>
+                <li class="flex items-center"><i class="fas fa-cog text-blue-500 mr-2"></i><strong>ERC-3643:</strong> Compliant tokens with KYC/AML integration</li>
+                <li class="flex items-center"><i class="fas fa-cog text-blue-500 mr-2"></i><strong>ERC-1400:</strong> Security tokens with transfer restrictions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="market-trends" class="mb-12">
+          <h3 class="subsection-heading serif">Market Trends and Institutional Adoption</h3>
+
+          <p class="mb-6">
+            The RWA tokenization market is experiencing a period of rapid growth and evolution, driven by a confluence of technological innovation, regulatory clarity, and increasing institutional interest <a href="#ref-59" class="citation">[59]</a>. What was once a niche concept explored by crypto-native startups has now become a strategic priority for global financial institutions.
+          </p>
+
+          <div class="pullquote">
+            &#34;A recent survey revealed that 76% of firms intend to invest in tokenized assets by 2026, signaling strong institutional confidence in the RWA ecosystem.&#34;
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div class="text-center p-6 bg-blue-50 rounded-lg">
+              <div class="text-3xl font-bold text-blue-600 mb-2">$17.88B</div>
+              <div class="text-gray-600">Global Market Size (Mar 2025)</div>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-lg">
+              <div class="text-3xl font-bold text-green-600 mb-2">78.8%</div>
+              <div class="text-gray-600">Growth from 2024</div>
+            </div>
+            <div class="text-center p-6 bg-purple-50 rounded-lg">
+              <div class="text-3xl font-bold text-purple-600 mb-2">76%</div>
+              <div class="text-gray-600">Firms Investing by 2026</div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h4 class="text-xl font-bold mb-4">Institutional Players Leading the Charge</h4>
+            <div class="space-y-4">
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-university text-blue-600"></i>
+                </div>
+                <div>
+                  <div class="font-bold">JPMorgan</div>
+                  <div class="text-sm text-gray-600">Onyx Digital Assets platform - billions in tokenized collateral settled</div>
+                </div>
+              </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-chart-pie text-green-600"></i>
+                </div>
+                <div>
+                  <div class="font-bold">BlackRock</div>
+                  <div class="text-sm text-gray-600">BUIDL tokenized Treasury fund on public blockchain infrastructure</div>
+                </div>
+              </div>
+              <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-coins text-purple-600"></i>
+                </div>
+                <div>
+                  <div class="font-bold">Franklin Templeton</div>
+                  <div class="text-sm text-gray-600">Actively developing tokenization platforms and products</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blockchain Platform Comparison -->
+      <section id="blockchain-comparison" class="px-8 py-12 max-w-6xl">
+        <h2 class="serif section-heading">Choosing the Right Blockchain: A Platform Comparison for RWA Tokenization</h2>
+
+        <div id="selection-criteria" class="mb-12">
+          <h3 class="subsection-heading serif">Key Selection Criteria for RWA Platforms</h3>
+
+          <p class="mb-8">
+            Choosing a blockchain for RWA tokenization is a multifaceted strategic decision that requires balancing technical capabilities with stringent business and legal requirements. The ideal platform must serve as a robust bridge between the physical asset and its digital representation <a href="#ref-6" class="citation">[6]</a>.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-shield-alt text-blue-500 mr-2"></i>
+                Regulatory Compliance
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 KYC/AML support</li>
+                <li>\u2022 Identity management</li>
+                <li>\u2022 Transfer restrictions</li>
+                <li>\u2022 Compliance controls</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-tachometer-alt text-green-500 mr-2"></i>
+                Scalability &amp; Performance
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 Transaction throughput</li>
+                <li>\u2022 Network congestion handling</li>
+                <li>\u2022 Transaction costs</li>
+                <li>\u2022 Layer-2 solutions</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-lock text-purple-500 mr-2"></i>
+                Security &amp; Privacy
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 Consensus mechanism</li>
+                <li>\u2022 Access controls</li>
+                <li>\u2022 Data confidentiality</li>
+                <li>\u2022 Network resilience</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-code text-orange-500 mr-2"></i>
+                Smart Contract Flexibility
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 Token standards support</li>
+                <li>\u2022 Programming languages</li>
+                <li>\u2022 Complex logic encoding</li>
+                <li>\u2022 Governance automation</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-network-wired text-red-500 mr-2"></i>
+                Interoperability
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 Cross-chain compatibility</li>
+                <li>\u2022 Traditional system integration</li>
+                <li>\u2022 Liquidity access</li>
+                <li>\u2022 Ecosystem maturity</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4 class="font-bold text-lg mb-3 flex items-center">
+                <i class="fas fa-users text-teal-500 mr-2"></i>
+                Ecosystem Maturity
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>\u2022 Developer community size</li>
+                <li>\u2022 Tooling availability</li>
+                <li>\u2022 Institutional adoption</li>
+                <li>\u2022 DeFi integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="ethereum" class="mb-12">
+          <h3 class="subsection-heading serif">Ethereum: The DeFi-Native Pioneer</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <p class="mb-6">
+                Ethereum stands as the foundational platform for the modern tokenization movement, having pioneered the concept of programmable money and assets through its robust smart contract functionality. Its first-mover advantage has cultivated the largest and most mature ecosystem in the blockchain space <a href="#ref-6" class="citation">[6]</a>.
+              </p>
+
+              <div class="highlight-box">
+                <h4 class="font-bold text-lg mb-3">Core Strengths</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start"><i class="fas fa-star text-yellow-500 mr-2 mt-1"></i><strong>Ecosystem Maturity:</strong> Largest developer community and most extensive tooling</li>
+                  <li class="flex items-start"><i class="fas fa-star text-yellow-500 mr-2 mt-1"></i><strong>DeFi Integration:</strong> Unparalleled access to liquidity and financial primitives</li>
+                  <li class="flex items-start"><i class="fas fa-star text-yellow-500 mr-2 mt-1"></i><strong>Token Standards:</strong> ERC-20, ERC-721, ERC-1400, ERC-3643</li>
+                  <li class="flex items-start"><i class="fas fa-star text-yellow-500 mr-2 mt-1"></i><strong>Programmability:</strong> Complex smart contract capabilities</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/s3.remitano.com/daa70561f824f5aed1446796b5eb57faf59683e8.png" alt="Ethereum blockchain network with smart contracts" class="w-full h-64 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" color="blue" style="photo" query="ethereum blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="highlight-box">
+                <h4 class="font-bold text-lg mb-3">Challenges</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i><strong>Scalability:</strong> 15-30 TPS on mainnet</li>
+                  <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i><strong>High Gas Fees:</strong> Prohibitive during network congestion</li>
+                  <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i><strong>Public Transparency:</strong> All data visible on-chain</li>
+                  <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mr-2 mt-1"></i><strong>Layer-2 Dependency:</strong> Required for cost-effective scaling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="hyperledger" class="mb-12">
+          <h3 class="subsection-heading serif">Hyperledger Fabric: The Enterprise-Grade Solution</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/repository-images.githubusercontent.com/df0e67275835514006f54a4d45d4913a48ac74c3" alt="Hyperledger Fabric enterprise blockchain network" class="w-full h-64 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" style="photo" query="Hyperledger Fabric blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <p class="mb-6">
+                Hyperledger Fabric is a permissioned blockchain platform designed specifically for enterprise use cases. Unlike public blockchains, Fabric operates as a private or consortium network where access is controlled and participants are known <a href="#ref-126" class="citation">[126]</a>.
+              </p>
+            </div>
+
+            <div>
+              <div class="highlight-box">
+                <h4 class="font-bold text-lg mb-3">Key Features</h4>
+                <ul class="space-y-3">
+                  <li class="flex items-start">
+                    <i class="fas fa-users-cog text-blue-500 mr-2 mt-1"></i>
+                    <div>
+                      <strong>Permissioned Architecture:</strong> All participants are identified and authenticated, essential for KYC/AML compliance
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-lock text-blue-500 mr-2 mt-1"></i>
+                    <div>
+                      <strong>Channel Technology:</strong> Private sub-networks where transactions are shared only among authorized participants
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-cogs text-blue-500 mr-2 mt-1"></i>
+                    <div>
+                      <strong>Modular Design:</strong> Pluggable consensus mechanisms and support for multiple programming languages (Go, Java, Node.js)
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-shield-alt text-blue-500 mr-2 mt-1"></i>
+                    <div>
+                      <strong>Enterprise Integration:</strong> Seamless integration with existing enterprise systems and workflows
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="corda" class="mb-12">
+          <h3 class="subsection-heading serif">R3 Corda: The Financial Market Specialist</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <p class="mb-6">
+                R3 Corda is a distributed ledger technology (DLT) platform that was purpose-built from the ground up to serve the specific needs of the financial services industry. Unlike traditional blockchains that broadcast data to all participants, Corda employs a unique point-to-point architecture <a href="#ref-125" class="citation">[125]</a>.
+              </p>
+
+              <div class="highlight-box">
+                <h4 class="font-bold text-lg mb-3">Unique Architecture</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start"><i class="fas fa-arrow-right text-purple-500 mr-2 mt-1"></i><strong>Point-to-Point:</strong> Data shared only between transaction parties</li>
+                  <li class="flex items-start"><i class="fas fa-arrow-right text-purple-500 mr-2 mt-1"></i><strong>Notary Service:</strong> Prevents double-spending without broadcasting</li>
+                  <li class="flex items-start"><i class="fas fa-arrow-right text-purple-500 mr-2 mt-1"></i><strong>Legal Prose Integration:</strong> Smart contracts linked to legal documents</li>
+                  <li class="flex items-start"><i class="fas fa-arrow-right text-purple-500 mr-2 mt-1"></i><strong>High Performance:</strong> &gt;1,000 TPS processing capability</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/miro.medium.com/b9aec75ce57dbfd86783010d731c5ffc28a01a4e.png" alt="R3 Corda financial blockchain network with point-to-point architecture" class="w-full h-64 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" style="photo" query="R3 Corda blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <div class="highlight-box">
+                <h4 class="font-bold text-lg mb-3">Optimal Use Cases</h4>
+                <ul class="space-y-2">
+                  <li>\u2022 Syndicated loans and private credit</li>
+                  <li>\u2022 Trade finance and letters of credit</li>
+                  <li>\u2022 Complex financial instruments</li>
+                  <li>\u2022 Real estate tokenization and title management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="comparative-analysis" class="mb-12">
+          <h3 class="subsection-heading serif">Comparative Analysis of Blockchain Platforms</h3>
+
+          <div class="overflow-x-auto">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Ethereum</th>
+                  <th>Hyperledger Fabric</th>
+                  <th>R3 Corda</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold">Network Type</td>
+                  <td>Public, Permissionless</td>
+                  <td>Private/Consortium, Permissioned</td>
+                  <td>Private/Consortium, Permissioned</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Primary Use Case</td>
+                  <td>Open RWA markets, DeFi integration</td>
+                  <td>Enterprise asset registries, supply chain</td>
+                  <td>Financial instruments, syndicated loans</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Transaction Throughput</td>
+                  <td>~15-30 TPS (L1); Higher on L2s</td>
+                  <td>Configurable, typically &gt;10 TPS</td>
+                  <td>&gt;1,000 TPS</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Transaction Cost</td>
+                  <td>High and variable (Gas Fees)</td>
+                  <td>Low and predictable</td>
+                  <td>Low and predictable</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Privacy Model</td>
+                  <td>Transparent (all data public)</td>
+                  <td>Private Channels</td>
+                  <td>Point-to-point</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Smart Contract Language</td>
+                  <td>Solidity, Vyper</td>
+                  <td>Go, Java, Node.js</td>
+                  <td>JVM-based (Kotlin)</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Primary Strength</td>
+                  <td>Ecosystem, liquidity, programmability</td>
+                  <td>Privacy, control, enterprise integration</td>
+                  <td>Legal enforceability, financial workflow</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Primary Weakness</td>
+                  <td>Scalability, high costs</td>
+                  <td>Limited public accessibility</td>
+                  <td>Specialized ecosystem</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm text-gray-600 mt-4">
+            <em>Table based on data from sources <a href="#ref-89" class="citation">[89]</a>, <a href="#ref-92" class="citation">[92]</a>, <a href="#ref-95" class="citation">[95]</a>, <a href="#ref-106" class="citation">[106]</a>, <a href="#ref-114" class="citation">[114]</a>, <a href="#ref-121" class="citation">[121]</a>, and <a href="#ref-124" class="citation">[124]</a>.</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Regulatory Landscape -->
+      <section id="regulatory-landscape" class="px-8 py-12 max-w-6xl">
+        <h2 class="serif section-heading">Navigating the Regulatory Maze: A Global Perspective</h2>
+
+        <div id="us-regulations" class="mb-12">
+          <h3 class="subsection-heading serif">The United States: A Patchwork of Existing Laws</h3>
+
+          <p class="mb-6">
+            In the United States, the regulation of RWA tokenization is not governed by a single, comprehensive statute. Instead, it falls under a patchwork of existing federal and state laws, primarily those related to securities, commodities, and money transmission <a href="#ref-15" class="citation">[15]</a>.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-xl font-bold mb-4">SEC and the Howey Test</h4>
+              <p class="mb-4">
+                The U.S. Securities and Exchange Commission (SEC) uses the <strong>Howey Test</strong> to determine whether a tokenized asset qualifies as an &#34;investment contract&#34; and therefore a security. The test defines an investment contract as a transaction where:
+              </p>
+              <ul class="space-y-2 mb-4">
+                <li class="flex items-start"><i class="fas fa-circle text-blue-500 mr-2 mt-2 text-xs"></i>A person invests money</li>
+                <li class="flex items-start"><i class="fas fa-circle text-blue-500 mr-2 mt-2 text-xs"></i>In a common enterprise</li>
+                <li class="flex items-start"><i class="fas fa-circle text-blue-500 mr-2 mt-2 text-xs"></i>With expectation of profits</li>
+                <li class="flex items-start"><i class="fas fa-circle text-blue-500 mr-2 mt-2 text-xs"></i>Derived from efforts of others</li>
+              </ul>
+
+              <h4 class="text-xl font-bold mb-4">CFTC Jurisdiction</h4>
+              <p class="mb-4">
+                The <strong>Commodity Futures Trading Commission (CFTC)</strong> has jurisdiction over tokenized assets linked to commodities like gold, oil, or agricultural products, taking a generally more permissive approach than the SEC.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold mb-4">Compliance Pathways</h4>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-blue-50 rounded-lg">
+                  <h5 class="font-bold text-blue-800 mb-2">Regulation D (Reg D)</h5>
+                  <p class="text-sm">Raise unlimited capital from accredited investors without SEC registration</p>
+                </div>
+
+                <div class="p-4 bg-green-50 rounded-lg">
+                  <h5 class="font-bold text-green-800 mb-2">Regulation S (Reg S)</h5>
+                  <p class="text-sm">Exemption for offerings conducted entirely outside the United States</p>
+                </div>
+
+                <div class="p-4 bg-purple-50 rounded-lg">
+                  <h5 class="font-bold text-purple-800 mb-2">Regulation A+ (Reg A+)</h5>
+                  <p class="text-sm">Raise up to $75M from both accredited and non-accredited investors</p>
+                </div>
+              </div>
+
+              <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h5 class="font-bold text-yellow-800 mb-2">Additional Requirements</h5>
+                <ul class="text-sm space-y-1">
+                  <li>\u2022 AML/KYC compliance</li>
+                  <li>\u2022 State-level money transmission laws</li>
+                  <li>\u2022 Consumer protection regulations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="eu-regulations" class="mb-12">
+          <h3 class="subsection-heading serif">The European Union: A Unified Framework Emerges</h3>
+
+          <p class="mb-6">
+            In contrast to the fragmented U.S. approach, the European Union is creating a unified regulatory framework centered around the <strong>Markets in Crypto-Assets (MiCA) regulation</strong> and the <strong>DLT Pilot Regime</strong>
+            <a href="#ref-62" class="citation">[62]</a>.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/ppc.land/4614e6a093b84de3e26474c0d3f45b93174fa8e7.webp" alt="European Union building with digital technology overlay" class="w-full h-48 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" style="photo" query="European Union building digital transformation" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <h4 class="text-xl font-bold mb-4">MiCA Regulation (2024)</h4>
+              <p class="mb-4">
+                A comprehensive framework covering crypto-assets not regulated under existing EU financial services law, introducing licensing for crypto-asset service providers (CASPs).
+              </p>
+
+              <h5 class="font-bold mb-2">Key Token Categories:</h5>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-coins text-blue-500 mr-2 mt-1"></i>
+                  <div>
+                    <strong>Asset-Referenced Tokens (ARTs):</strong> Backed by baskets of assets
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-money-bill-wave text-green-500 mr-2 mt-1"></i>
+                  <div>
+                    <strong>Electronic Money Tokens (EMTs):</strong> Fiat-backed payment tokens
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold mb-4">DLT Pilot Regime</h4>
+              <p class="mb-4">
+                A controlled environment for testing DLT market infrastructures, allowing for the creation of DLT trading venues and settlement systems with tailored rules.
+              </p>
+
+              <h4 class="text-xl font-bold mb-4">Member State Leadership</h4>
+              <div class="space-y-4">
+                <div class="p-4 bg-red-50 rounded-lg">
+                  <h5 class="font-bold text-red-800 mb-2">Germany</h5>
+                  <p class="text-sm">Electronic securities law for blockchain-based debt instruments</p>
+                </div>
+
+                <div class="p-4 bg-blue-50 rounded-lg">
+                  <h5 class="font-bold text-blue-800 mb-2">France</h5>
+                  <p class="text-sm">AMF regulatory framework and active tokenized market support</p>
+                </div>
+
+                <div class="p-4 bg-teal-50 rounded-lg">
+                  <h5 class="font-bold text-teal-800 mb-2">Luxembourg</h5>
+                  <p class="text-sm">Proactive regulatory environment and financial center initiatives</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="other-jurisdictions" class="mb-12">
+          <h3 class="subsection-heading serif">Other Key Jurisdictions</h3>
+
+          <div class="asset-grid">
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-mountain text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Switzerland</h4>
+              <p class="text-gray-600 mb-4">
+                The &#34;Crypto Nation&#34; with FINMA&#39;s clear framework based on &#34;same risks, same rules&#34; principle. DLT trading facilities licensing available <a href="#ref-62" class="citation">[62]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">Progressive \u2022 Clear Framework \u2022 Financial Innovation</div>
+            </div>
+
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-lion text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">Singapore</h4>
+              <p class="text-gray-600 mb-4">
+                Pro-innovation approach with regulatory sandbox for testing new financial products. Strong financial infrastructure and strategic location <a href="#ref-62" class="citation">[62]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">Sandbox \u2022 Strategic Hub \u2022 Innovation-Friendly</div>
+            </div>
+
+            <div class="asset-card">
+              <div class="asset-icon">
+                <i class="fas fa-sun text-xl"></i>
+              </div>
+              <h4 class="text-xl font-bold mb-3">United Arab Emirates</h4>
+              <p class="text-gray-600 mb-4">
+                Rapidly emerging hub with ADGM and DIFC free zones offering comprehensive frameworks for digital assets and DLT Foundations <a href="#ref-62" class="citation">[62]</a>.
+              </p>
+              <div class="text-sm text-primary font-semibold">Growing Hub \u2022 Free Zones \u2022 Government Support</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future Outlook -->
+      <section id="future-outlook" class="px-8 py-12 max-w-6xl">
+        <h2 class="serif section-heading">The Future of the RWA Ecosystem: Challenges and Opportunities</h2>
+
+        <div id="key-challenges" class="mb-12">
+          <h3 class="subsection-heading serif">Overcoming Key Hurdles</h3>
+
+          <p class="mb-8">
+            Despite the rapid growth and increasing institutional interest in RWA tokenization, the ecosystem still faces significant challenges that must be addressed to ensure its long-term success. These hurdles range from legal and technical issues to market adoption and education.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.debutinfotech.com/97810855f9210dcc0f5b0584979d4d6e993150ec" alt="Abstract representation of legal and technical challenges in digital asset tokenization" class="w-full h-48 object-cover rounded-lg shadow-lg mb-6" size="small" aspect="wide" query="blockchain legal technical challenges abstract" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <h4 class="text-xl font-bold mb-4">Legal &amp; Technical Challenges</h4>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
+                  <h5 class="font-bold text-red-800 mb-2">Legal Enforceability</h5>
+                  <p class="text-sm">Ensuring clear legal connection between tokens and real-world assets, often requiring Special Purpose Vehicles (SPVs)</p>
+                </div>
+
+                <div class="p-4 bg-orange-50 border-l-4 border-orange-400 rounded-r-lg">
+                  <h5 class="font-bold text-orange-800 mb-2">Custody Solutions</h5>
+                  <p class="text-sm">Establishing robust custody for both digital tokens and underlying physical assets</p>
+                </div>
+
+                <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                  <h5 class="font-bold text-yellow-800 mb-2">Cross-Chain Interoperability</h5>
+                  <p class="text-sm">Enabling seamless transfer of assets between different blockchain platforms</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-xl font-bold mb-4">Market &amp; Adoption Challenges</h4>
+
+              <div class="space-y-4">
+                <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                  <h5 class="font-bold text-blue-800 mb-2">Market Education</h5>
+                  <p class="text-sm">Addressing misinformation and building trust through education and successful use case demonstrations</p>
+                </div>
+
+                <div class="p-4 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                  <h5 class="font-bold text-green-800 mb-2">Standardization</h5>
+                  <p class="text-sm">Developing common standards for tokenized assets across different platforms and jurisdictions</p>
+                </div>
+
+                <div class="p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r-lg">
+                  <h5 class="font-bold text-purple-800 mb-2">Institutional Integration</h5>
+                  <p class="text-sm">Integrating with existing financial infrastructure and regulatory frameworks</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="opportunities" class="mb-12">
+          <h3 class="subsection-heading serif">Emerging Opportunities and Innovations</h3>
+
+          <p class="mb-8">
+            The RWA ecosystem is brimming with exciting opportunities and innovations that have the potential to reshape the future of finance. From the rise of tokenized treasuries to integration with Central Bank Digital Currencies (CBDCs), the RWA space is at the forefront of financial innovation.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-xl font-bold mb-4">Tokenized Treasuries &amp; Money Market Funds</h4>
+              <p class="mb-4">
+                Major financial institutions like BlackRock and Franklin Templeton are offering tokenized exposure to U.S. government bonds, providing the benefits of blockchain technology with the stability of traditional instruments.
+              </p>
+
+              <div class="pullquote text-sm">
+                &#34;The growth of tokenized treasuries is a clear sign of increasing institutional adoption, expected to be a major driver of ecosystem growth.&#34;
+              </div>
+
+              <h4 class="text-xl font-bold mb-4 mt-6">CBDC Integration</h4>
+              <p class="mb-4">
+                Integration with Central Bank Digital Currencies could provide instant settlement for tokenized asset transactions, backed by central bank credibility.
+              </p>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/pub.mdpi-res.com/908051caac172785e2b269551f115d3655557f58.png" alt="Abstract visualization of future financial system with blockchain and digital currencies" class="w-full h-48 object-cover rounded-lg shadow-lg mb-6" size="medium" aspect="wide" query="future financial system blockchain digital currencies abstract" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+
+              <h4 class="text-xl font-bold mb-4">DAO Governance</h4>
+              <p class="mb-4">
+                Decentralized Autonomous Organizations (DAOs) provide democratic and transparent asset governance, allowing token holders to participate in decision-making processes.
+              </p>
+
+              <h4 class="text-xl font-bold mb-4 mt-6">On-Chain Financial System</h4>
+              <p class="mb-4">
+                The ultimate vision: a new financial system that is more efficient, transparent, and inclusive, with trillions in currently illiquid assets unlocked for global markets.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="\u653e\u5927">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="\u7f29\u5c0f">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="\u91cd\u7f6e">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="\u5168\u5c4f\u67e5\u770b">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                A[&#34;Current Financial System&#34;] --&gt; B[&#34;RWA Tokenization&#34;]
+                B --&gt; C[&#34;Enhanced Liquidity&#34;]
+                B --&gt; D[&#34;24/7 Global Markets&#34;]
+                B --&gt; E[&#34;Fractional Ownership&#34;]
+
+                C --&gt; F[&#34;Efficient Capital Allocation&#34;]
+                D --&gt; G[&#34;Increased Market Access&#34;]
+                E --&gt; H[&#34;Democratized Investment&#34;]
+
+                F --&gt; I[&#34;New Financial System&#34;]
+                G --&gt; I
+                H --&gt; I
+
+                I --&gt; J[&#34;Greater Financial Inclusion&#34;]
+                I --&gt; K[&#34;Reduced Intermediation&#34;]
+                I --&gt; L[&#34;Improved Transparency&#34;]
+
+                classDef startBox fill:#e2e8f0,stroke:#64748b,stroke-width:2px,color:#0f172a
+                classDef processBox fill:#1e40af,stroke:#ffffff,stroke-width:2px,color:#ffffff
+                classDef benefitBox fill:#22c55e,stroke:#ffffff,stroke-width:2px,color:#ffffff
+                classDef futureBox fill:#f59e0b,stroke:#ffffff,stroke-width:2px,color:#ffffff
+                classDef outcomeBox fill:#dc2626,stroke:#ffffff,stroke-width:2px,color:#ffffff
+
+                class A startBox
+                class B processBox
+                class C,D,E benefitBox
+                class F,G,H futureBox
+                class I,J,K,L outcomeBox
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section class="px-8 py-12 max-w-6xl border-t border-gray-200">
+        <h3 class="text-2xl font-bold mb-8">References</h3>
+        <div class="text-sm space-y-3 text-gray-600">
+          <div id="ref-6">[6] <a href="https://www.solulab.com/top-blockchains-for-rwa-tokenization/" class="citation">SoluLab - Top Blockchains for RWA Tokenization</a>
+          </div>
+          <div id="ref-15">[15] <a href="https://www.fenwick.com/insights/publications/tokenized-real-world-assets-pathways-to-sec-registration" class="citation">Fenwick - Tokenized Real-World Assets: Pathways to SEC Registration</a>
+          </div>
+          <div id="ref-54">[54] <a href="https://www.rwaltz.com/blog/tokenization-of-land-registry-over-blockchain-revolutionizing-real-estate-transactions" class="citation">RWaltz - Tokenization of Land Registry</a>
+          </div>
+          <div id="ref-55">[55] <a href="https://4irelabs.com/articles/real-world-asset-tokenization/" class="citation">4IRE Labs - Real World Asset Tokenization</a>
+          </div>
+          <div id="ref-56">[56] <a href="https://www.solulab.com/real-world-asset-tokenization-guide/" class="citation">SoluLab - Real World Asset Tokenization Guide</a>
+          </div>
+          <div id="ref-57">[57] <a href="https://www.quytech.com/blog/guide-to-real-world-asset-tokenization/" class="citation">Quytech - Guide to Real-World Asset Tokenization</a>
+          </div>
+          <div id="ref-58">[58] <a href="https://www.calibraint.com/blog/rwa-tokenization-platform-development" class="citation">Calibraint - RWA Tokenization Platform Development</a>
+          </div>
+          <div id="ref-59">[59] <a href="https://www.virwa.ae/academy/what-is-rwa-tokenization-2025" class="citation">VIRWA - What is RWA Tokenization 2025</a>
+          </div>
+          <div id="ref-60">[60] <a href="https://www.linkedin.com/pulse/whats-tokenization-real-assets-why-booming-europe-petr-anderle-zqabe" class="citation">LinkedIn - Tokenization of Real Assets in Europe</a>
+          </div>
+          <div id="ref-62">[62] <a href="https://legalnodes.com/article/rwa-tokenization-in-the-eu-most-suitable-jurisdictions-and-regulatory-frameworks-for-2025-and-beyond" class="citation">Legal Nodes - RWA Tokenization in the EU</a>
+          </div>
+          <div id="ref-63">[63] <a href="https://webisoft.com/articles/real-world-assets-rwa-tokenization-guide/" class="citation">Webisoft - Real World Assets RWA Tokenization Guide</a>
+          </div>
+          <div id="ref-65">[65] <a href="https://phemex.com/blogs/rwa-tokenization-future-of-finance" class="citation">Phemex - RWA Tokenization: Future of Finance</a>
+          </div>
+          <div id="ref-67">[67] <a href="https://www.raininfotech.com/rwa-tokenization-vs-traditional-asset/" class="citation">Rain Infotech - RWA Tokenization vs Traditional Asset</a>
+          </div>
+          <div id="ref-68">[68] <a href="https://arxiv.org/html/2503.01111v1" class="citation">ArXiv - RWA Tokenization Research</a>
+          </div>
+          <div id="ref-69">[69] <a href="https://www.linkedin.com/pulse/top-10-blockchains-developing-rwa-tokenization-platforms-stafeeka-r-hankf" class="citation">LinkedIn - Top 10 Blockchains for RWA Tokenization</a>
+          </div>
+          <div id="ref-70">[70] <a href="https://www.antiersolutions.com/blogs/top-12-rwa-tokenization-platforms-and-companies-in-2025/" class="citation">Antier Solutions - Top RWA Tokenization Platforms 2025</a>
+          </div>
+          <div id="ref-73">[73] <a href="https://metalamp.io/rwa" class="citation">Metalamp - RWA Analysis</a>
+          </div>
+          <div id="ref-89">[89] <a href="https://webisoft.com/articles/how-to-choose-blockchain-for-rwa-tokenization/" class="citation">Webisoft - How to Choose Blockchain for RWA Tokenization</a>
+          </div>
+          <div id="ref-92">[92] <a href="https://shamlatech.com/best-blockchain-asset-tokenization-platforms/" class="citation">Shamla Tech - Best Blockchain Asset Tokenization Platforms</a>
+          </div>
+          <div id="ref-95">[95] <a href="https://www.binance.com/en/square/post/18733764553114" class="citation">Binance - RWA Tokenization Analysis</a>
+          </div>
+          <div id="ref-106">[106] <a href="https://www.quytech.com/blog/guide-to-real-world-asset-tokenization/" class="citation">Quytech - Guide to Real-World Asset Tokenization</a>
+          </div>
+          <div id="ref-114">[114] <a href="https://www.technoloader.com/blog/top-blockchains-for-rwa-tokenization-platform-development/" class="citation">Technoloader - Top Blockchains for RWA Tokenization</a>
+          </div>
+          <div id="ref-120">[120] <a href="https://www.calibraint.com/blog/rwa-tokenization-platform-development" class="citation">Calibraint - RWA Tokenization Platform Development</a>
+          </div>
+          <div id="ref-121">[121] <a href="https://www.lcx.com/blockchain-platform-comparison-a-deep-dive-into-the-top-networks/" class="citation">LCX - Blockchain Platform Comparison</a>
+          </div>
+          <div id="ref-122">[122] <a href="https://r3.com/r3-labs/corda/" class="citation">R3 - Corda Labs</a>
+          </div>
+          <div id="ref-123">[123] <a href="https://www.antiersolutions.com/blogs/top-companies-leading-the-tech-and-compliance-front-for-rwa-tokenization/" class="citation">Antier Solutions - Companies Leading RWA Tokenization</a>
+          </div>
+          <div id="ref-124">[124] <a href="https://www.mercycorps.org/sites/default/files/2019-11/Block%20by%20Block%20-%20DL%20Comparative%20Analysis_0.pdf" class="citation">Mercy Corps - Block by Block: DL Comparative Analysis</a>
+          </div>
+          <div id="ref-125">[125] <a href="https://101blockchains.com/hyperledger-vs-corda-r3-vs-ethereum/" class="citation">101 Blockchains - Hyperledger vs Corda vs Ethereum</a>
+          </div>
+          <div id="ref-126">[126] <a href="https://gbaglobal.org/blog/2022/04/27/best-comparison-of-ethereum-hyperledger-fabric-and-corda/" class="citation">GBA Global - Comparison of Ethereum, Hyperledger Fabric and Corda</a>
+          </div>
+          <div id="ref-132">[132] <a href="https://www.debutinfotech.com/blog/ethereum-vs-solana-comparison-in-real-world-asset-tokenization" class="citation">Debut Infotech - Ethereum vs Solana for RWA Tokenization</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#1e40af',
+                primaryTextColor: '#0f172a',
+                primaryBorderColor: '#64748b',
+                lineColor: '#64748b',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#e2e8f0',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#e2e8f0',
+                // Ensure good contrast for different node types
+                cScale0: '#1e40af',
+                cScale1: '#22c55e', 
+                cScale2: '#f59e0b',
+                cScale3: '#dc2626',
+                cScale4: '#64748b',
+                cScale5: '#f8fafc',
+                // Text colors for contrast
+                cScaleLabel0: '#ffffff',
+                cScaleLabel1: '#ffffff',
+                cScaleLabel2: '#ffffff',
+                cScaleLabel3: '#ffffff',
+                cScaleLabel4: '#ffffff',
+                cScaleLabel5: '#0f172a'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            sequence: {
+                useMaxWidth: false,
+                wrap: true
+            },
+            gantt: {
+                useMaxWidth: false
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // \u89e6\u6478\u76f8\u5173\u72b6\u6001
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // \u5982\u679c\u662f\u89e6\u6478\u8bbe\u5907\uff0c\u5ffd\u7565\u9f20\u6807\u4e8b\u4ef6
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // \u83b7\u53d6\u4e24\u70b9\u4e4b\u95f4\u7684\u8ddd\u79bb
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - \u89e6\u6478\u4e8b\u4ef6\u5904\u7406
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // \u5355\u6307\u62d6\u52a8
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // \u53cc\u6307\u7f29\u653e
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // \u5355\u6307\u62d6\u52a8
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // \u53cc\u6307\u7f29\u653e
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // \u91cd\u7f6e\u72b6\u6001
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // \u5ef6\u8fdf\u91cd\u7f6eisTouch\uff0c\u907f\u514d\u9f20\u6807\u4e8b\u4ef6\u7acb\u5373\u89e6\u53d1
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // \u4ece\u53cc\u6307\u53d8\u4e3a\u5355\u6307\uff0c\u5207\u6362\u4e3a\u62d6\u52a8\u6a21\u5f0f
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid controls after diagrams are rendered
+        setTimeout(initializeMermaidControls, 1000);
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const tocFixed = document.querySelector('.toc-fixed');
+        
+        if (mobileMenuToggle && tocFixed) {
+            mobileMenuToggle.addEventListener('click', function() {
+                tocFixed.classList.toggle('open');
+            });
+            
+            // Close TOC when clicking on a link (mobile)
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        tocFixed.classList.remove('open');
+                    }
+                });
+            });
+        }
+
+        // Table of Contents Active Link
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('[id]');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
+
+        // Smooth scrolling for TOC links
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
