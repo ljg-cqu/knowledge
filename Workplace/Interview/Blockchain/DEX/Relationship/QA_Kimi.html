@@ -1,0 +1,2256 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Relationship Analysis: Production-Grade Blockchain DEX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --sage: #9CAF88;
+            --clay: #B5A082;
+            --teal: #2C5F5D;
+            --navy: #1E3A3A;
+            --stone: #F5F3F0;
+            --charcoal: #2D3748;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--stone) 0%, #FEFEFE 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--teal), var(--sage));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .toc-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #E2E8F0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sage), transparent);
+            margin: 3rem 0;
+        }
+        
+        .citation-link {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            border-bottom-color: var(--teal);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .bento-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(156, 175, 136, 0.2);
+        }
+        
+        .hero-title {
+            grid-column: 1 / -1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 58, 0.9) 0%, 
+                rgba(44, 95, 93, 0.8) 50%, 
+                rgba(156, 175, 136, 0.6) 100%);
+            mix-blend-mode: multiply;
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            color: white;
+        }
+        
+        .stakeholder-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--teal);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .relationship-matrix {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .matrix-header {
+            background: var(--navy);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .matrix-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .matrix-cell {
+            padding: 0.75rem 1rem;
+            border-right: 1px solid #E2E8F0;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .toc-sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title h1 {
+                font-size: 2.5rem;
+            }
+            .hero-title p {
+                font-size: 1.1rem;
+            }
+            .hero-title {
+                padding: 1.5rem !important;
+            }
+            .metrics-table-container {
+                overflow-x: auto;
+            }
+            .bento-item {
+                padding: 1.5rem;
+            }
+            .bento-grid {
+                gap: 1rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents Sidebar -->
+    <nav class="toc-sidebar">
+      <div class="px-6">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4 serif">Contents</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#executive-summary" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Executive Summary</a>
+          </li>
+          <li>
+            <a href="#introduction" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Introduction</a>
+          </li>
+          <li>
+            <a href="#relationship-analysis" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Relationship Analysis Framework</a>
+          </li>
+          <li>
+            <a href="#lifecycle-coverage" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Lifecycle Coverage Matrix</a>
+          </li>
+
+          <!-- Lifecycle Phases -->
+          <li class="ml-4">
+            <a href="#requirements-discovery" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">1. Requirements &amp; Discovery</a>
+          </li>
+          <li class="ml-4">
+            <a href="#architecture-design" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">2. Architecture &amp; Design</a>
+          </li>
+          <li class="ml-4">
+            <a href="#development" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">3. Development</a>
+          </li>
+          <li class="ml-4">
+            <a href="#testing-quality" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">4. Testing &amp; Quality</a>
+          </li>
+          <li class="ml-4">
+            <a href="#deployment-release" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">5. Deployment &amp; Release</a>
+          </li>
+          <li class="ml-4">
+            <a href="#operations-observability" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">6. Operations &amp; Observability</a>
+          </li>
+          <li class="ml-4">
+            <a href="#maintenance-support" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">7. Maintenance &amp; Support</a>
+          </li>
+          <li class="ml-4">
+            <a href="#evolution-governance" class="block py-1 text-gray-500 hover:text-teal-600 transition-colors">8. Evolution &amp; Governance</a>
+          </li>
+
+          <li>
+            <a href="#stakeholder-analysis" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Stakeholder Analysis</a>
+          </li>
+          <li>
+            <a href="#conclusion" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">Conclusion</a>
+          </li>
+          <li>
+            <a href="#references" class="block py-1 text-gray-600 hover:text-teal-600 transition-colors">References</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="bento-grid max-w-7xl mx-auto px-4 md:px-8 py-16">
+        <div class="bento-item hero-title">
+          <div class="hero-overlay"></div>
+          <div class="hero-text">
+            <h1 class="text-5xl md:text-6xl font-bold serif mb-6 leading-tight">
+              <span class="italic">Relationship Analysis:</span>
+              <br/>
+              Production-Grade
+              <br/>
+              <span class="text-gradient">Blockchain DEX</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-200 font-light">
+              A comprehensive analysis of stakeholder relationships across the software lifecycle
+            </p>
+            <div class="flex items-center space-x-6 text-sm text-gray-300">
+              <span><i class="fas fa-users mr-2"></i>Multi-stakeholder Analysis</span>
+              <span><i class="fas fa-cogs mr-2"></i>Full Lifecycle Coverage</span>
+              <span><i class="fas fa-chart-network mr-2"></i>Network Relationship Mapping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-item">
+          <h3 class="text-xl font-semibold mb-4 serif text-gray-800">Key Metrics</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Relationship Types Analyzed</span>
+              <span class="font-bold text-teal-600">7</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Lifecycle Phases</span>
+              <span class="font-bold text-teal-600">8</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Stakeholder Roles</span>
+              <span class="font-bold text-teal-600">10</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Performance Targets</span>
+              <span class="font-bold text-teal-600">&gt;10K RPS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-item">
+          <h3 class="text-xl font-semibold mb-4 serif text-gray-800">Core Relationships</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-teal-500 rounded-full"></div>
+              <span>Market Demands → System Capabilities</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-sage-500 rounded-full"></div>
+              <span>Regulatory Constraints ↔ Technical Controls</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-clay-500 rounded-full"></div>
+              <span>Core Components ↔ Peripheral Services</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-navy-500 rounded-full"></div>
+              <span>Governance Proposals → Protocol Evolution</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="max-w-6xl mx-auto px-8 py-16">
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h2 class="text-3xl font-bold serif mb-6 text-gray-800">Executive Summary</h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+              This report provides a comprehensive relationship analysis for a production-grade blockchain Decentralized Exchange (DEX), covering the entire software lifecycle from initial requirements to long-term evolution. The analysis decomposes the complex system into its constituent parts and examines the intricate web of relationships between technical components, business objectives, market dynamics, and regulatory constraints.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 my-8">
+              <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="text-lg font-semibold mb-4 serif">Key Findings</h3>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                    <span>DEX success is fundamentally coupled to reliable, low-latency data feeds from multiple blockchains</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                    <span>Regulatory frameworks mandate specific security controls that constrain architectural design</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-check-circle text-teal-500 mt-1"></i>
+                    <span>Core-peripheral component separation enhances security while enabling rapid innovation</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="text-lg font-semibold mb-4 serif">Critical Relationships</h3>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-link text-sage-500 mt-1"></i>
+                    <span>Market demand for best execution price drives DEX aggregator architecture</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-link text-sage-500 mt-1"></i>
+                    <span>Initial investment enables liquidity bootstrapping, influencing market share potential</span>
+                  </li>
+                  <li class="flex items-start space-x-2">
+                    <i class="fas fa-link text-sage-500 mt-1"></i>
+                    <span>Governance structure determines protocol&#39;s ability to adapt to market changes</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="text-gray-600">
+              The analysis is structured through interview scenarios designed to test deep understanding of these relationships from multiple stakeholder perspectives, using precise relationship verbs, quantified metrics, and visual diagrams to provide a clear framework for designing, building, and operating a successful DEX.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider max-w-6xl mx-auto"></div>
+
+      <!-- Introduction -->
+      <section id="introduction" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">Introduction</h2>
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-gray-600 mb-8">
+            The development and operation of a production-grade blockchain Decentralized Exchange (DEX) represent one of the most complex undertakings in modern software engineering. Unlike traditional centralized systems, a DEX must navigate the intricate relationships between technical architecture, market dynamics, regulatory compliance, and stakeholder governance—all while maintaining the core principles of decentralization and user sovereignty.
+          </p>
+
+          <div class="bg-gradient-to-r from-teal-50 to-sage-50 rounded-xl p-8 my-8">
+            <h3 class="text-2xl font-semibold serif mb-4 text-gray-800">The Challenge of Complexity</h3>
+            <p class="text-gray-700 mb-4">
+              A production DEX must handle thousands of transactions per second while ensuring atomic settlement, maintain complex liquidity relationships across multiple asset pairs, and provide a seamless user experience—all in an environment where a single vulnerability could result in millions of dollars in losses.
+            </p>
+            <p class="text-gray-700">
+              The relationships between these various dimensions are not merely technical considerations but fundamental business risks that must be understood, quantified, and managed throughout the entire software lifecycle.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 my-8">
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+              <i class="fas fa-network-wired text-3xl text-teal-500 mb-4"></i>
+              <h4 class="font-semibold mb-2">Network Complexity</h4>
+              <p class="text-sm text-gray-600">Multi-layer relationships between users, liquidity providers, and trading venues</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+              <i class="fas fa-balance-scale text-3xl text-sage-500 mb-4"></i>
+              <h4 class="font-semibold mb-2">Regulatory Balance</h4>
+              <p class="text-sm text-gray-600">Compliance requirements vs. decentralization principles</p>
+            </div>
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+              <i class="fas fa-cogs text-3xl text-clay-500 mb-4"></i>
+              <h4 class="font-semibold mb-2">Technical Integration</h4>
+              <p class="text-sm text-gray-600">On-chain vs. off-chain component relationships</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Relationship Analysis Framework -->
+      <section id="relationship-analysis" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">Relationship Analysis Framework</h2>
+
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold serif mb-6 text-gray-800">Seven Types of Relationships</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-teal-500">
+              <h4 class="font-semibold mb-2">Structural</h4>
+              <p class="text-sm text-gray-600 mb-3">Composition, aggregation, inheritance hierarchies</p>
+              <div class="text-xs text-teal-600">Verbs: composes, contains, owns, encapsulates</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-sage-500">
+              <h4 class="font-semibold mb-2">Behavioral/Temporal</h4>
+              <p class="text-sm text-gray-600 mb-3">Event flows, state transitions, timing dependencies</p>
+              <div class="text-xs text-sage-600">Verbs: triggers, follows, precedes, synchronizes</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-clay-500">
+              <h4 class="font-semibold mb-2">Dependency/Coupling</h4>
+              <p class="text-sm text-gray-600 mb-3">Module interconnections, interface contracts</p>
+              <div class="text-xs text-clay-600">Verbs: depends on, requires, relies on, couples to</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-navy-500">
+              <h4 class="font-semibold mb-2">Business/Market</h4>
+              <p class="text-sm text-gray-600 mb-3">Revenue attribution, competitive positioning</p>
+              <div class="text-xs text-navy-600">Verbs: contributes to, enables, drives, influences</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-red-400">
+              <h4 class="font-semibold mb-2">Regulatory/Compliance</h4>
+              <p class="text-sm text-gray-600 mb-3">Legal mandates, risk thresholds, audit trails</p>
+              <div class="text-xs text-red-600">Verbs: governs, mandates, requires, restricts</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-purple-400">
+              <h4 class="font-semibold mb-2">Integration/Interface</h4>
+              <p class="text-sm text-gray-600 mb-3">API contracts, protocol compatibility, data flows</p>
+              <div class="text-xs text-purple-600">Verbs: exposes, consumes, integrates with, transforms</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-2xl font-semibold serif mb-6 text-gray-800">Analysis Methodology</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-semibold mb-3">Structural Foundation</h4>
+              <p class="text-gray-600 mb-4">Every analysis begins with structural organization before examining behavioral or integration aspects:</p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>• Decomposition of complex systems into components</li>
+                <li>• Layering and modularization strategies</li>
+                <li>• Hierarchy establishment and boundary definition</li>
+                <li>• Dependency flow analysis between modules</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3">Quantified Relationships</h4>
+              <p class="text-gray-600 mb-4">All relationships are measured using appropriate metrics:</p>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li>• Coupling coefficients (0-1 scale)</li>
+                <li>• Cardinality relationships (1:1, 1:N, M:N)</li>
+                <li>• Afferent/efferent coupling metrics (Ca/Ce)</li>
+                <li>• Network centrality and clustering coefficients</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lifecycle Coverage Matrix -->
+      <section id="lifecycle-coverage" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">Lifecycle Coverage Matrix</h2>
+
+        <div class="relationship-matrix mb-8">
+          <div class="matrix-header">Relationship Types × Lifecycle Phases Coverage</div>
+          <div class="matrix-row bg-gray-50 font-semibold">
+            <div class="matrix-cell">Phase</div>
+            <div class="matrix-cell">Structural</div>
+            <div class="matrix-cell">Dependency</div>
+            <div class="matrix-cell">Business</div>
+            <div class="matrix-cell">Regulatory</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell font-semibold">Requirements &amp; Discovery</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row bg-gray-50">
+            <div class="matrix-cell font-semibold">Architecture &amp; Design</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell font-semibold">Development</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row bg-gray-50">
+            <div class="matrix-cell font-semibold">Testing &amp; Quality</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell font-semibold">Deployment &amp; Release</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row bg-gray-50">
+            <div class="matrix-cell font-semibold">Operations &amp; Observability</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row">
+            <div class="matrix-cell font-semibold">Maintenance &amp; Support</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+          <div class="matrix-row bg-gray-50">
+            <div class="matrix-cell font-semibold">Evolution &amp; Governance</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+            <div class="matrix-cell">✓</div>
+          </div>
+        </div>
+
+        <p class="text-gray-600 text-center">
+          Each cell represents comprehensive analysis of relationship types across all lifecycle phases, ensuring complete coverage of the DEX ecosystem.
+        </p>
+      </section>
+
+      <!-- Requirements &amp; Discovery -->
+      <section id="requirements-discovery" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">1. Requirements &amp; Discovery</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Business Analyst Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Market Demands → System Capabilities Mapping</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> A Business Analyst must map sophisticated DeFi traders&#39; demand for best execution prices across multiple blockchains (Ethereum, Solana, BSC) to system capabilities, considering &gt;10K rps quote requests and &gt;1TB daily market data requirements.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> The demand for &#34;best execution price&#34; <strong>drives</strong> the DEX aggregator architecture, which <strong>depends on</strong> reliable, low-latency data feeds from multiple blockchains. This creates a <strong>tight coupling</strong> (coupling coefficient ≈ 0.8) between the system&#39;s success and external data providers.
+          </p>
+
+          <div class="bg-gray-50 rounded-lg p-4 mb-4">
+            <h4 class="font-semibold mb-2">Relationship Flow:</h4>
+            <div class="flex items-center space-x-4 text-sm">
+              <span class="bg-teal-100 px-3 py-1 rounded">Market Demand</span>
+              <i class="fas fa-arrow-right text-teal-500"></i>
+              <span class="bg-sage-100 px-3 py-1 rounded">Aggregator Feature</span>
+              <i class="fas fa-arrow-right text-sage-500"></i>
+              <span class="bg-clay-100 px-3 py-1 rounded">Routing Engine</span>
+              <i class="fas fa-arrow-right text-clay-500"></i>
+              <span class="bg-navy-100 px-3 py-1 rounded">Data Infrastructure</span>
+            </div>
+          </div>
+
+          <div class="metrics-table-container">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-2">Market Demand</th>
+                  <th class="text-left py-2">System Capability</th>
+                  <th class="text-left py-2">Relationship</th>
+                  <th class="text-left py-2">Metric</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">Best Execution Price</td>
+                  <td class="py-2">DEX Aggregator</td>
+                  <td class="py-2 text-teal-600">drives</td>
+                  <td class="py-2">
+                    &lt; 0.1% price slippage</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2">&gt;10K rps Quotes</td>
+                  <td class="py-2">Off-Chain Engine</td>
+                  <td class="py-2 text-sage-600">constrains</td>
+                  <td class="py-2">
+                    &lt; 100ms latency</td>
+                </tr>
+                <tr>
+                  <td class="py-2">&gt;1TB Daily Data</td>
+                  <td class="py-2">Data Pipeline</td>
+                  <td class="py-2 text-clay-600">requires</td>
+                  <td class="py-2">&gt;1TB/day throughput</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Product Manager Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Market Performance → Feature Strategy Alignment</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> How do relationships between market indicators (TVL, volume), competitive features from Raydium and Orca, and proposed features influence revenue projections and roadmap prioritization for a Solana DEX?
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Market volatility <strong>demands</strong> features supporting rapid, low-cost trading. Competitive landscape <strong>constrains</strong> feature dependencies—Raydium&#39;s hybrid model and Orca&#39;s user-friendliness establish baseline user expectations. A concentrated liquidity feature <strong>enables</strong> 20% capital efficiency gains, potentially attracting 15% more high-volume traders for 30% fee revenue increase.
+          </p>
+
+          <div class="bg-gradient-to-r from-teal-50 to-sage-50 rounded-lg p-4 mb-4">
+            <h4 class="font-semibold mb-2">Feature Impact Cascade:</h4>
+            <div class="text-sm space-y-2">
+              <div><strong>Input:</strong> Market volatility → <strong>Driver:</strong> Demand for low-cost trading</div>
+              <div><strong>Constraint:</strong> Raydium/Orca standards → <strong>Requirement:</strong> Match or differentiate features</div>
+              <div><strong>Output:</strong> Concentrated liquidity → <strong>Impact:</strong> +30% fee revenue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Security Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Regulatory Frameworks → Security Controls Mapping</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Analyze relationships between SEC guidelines, EU&#39;s MiCA, operational risks (smart contract vulnerabilities, MEV), and technical security controls.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> SEC securities classification <strong>mandates</strong> compliance controls. MiCA <strong>requires</strong> KYC/AML procedures. EEA DeFi Risk Assessment Guidelines <strong>correlate</strong> smart contract vulnerabilities with regulatory demands for operational resilience. MEV risks <strong>mandate</strong> mitigation strategies like private mempools.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TB
+              subgraph &#34;Regulatory Layer&#34;
+              SEC[&#34;SEC Guidelines&#34;]
+              MICA[&#34;EU MiCA&#34;]
+              end
+              subgraph &#34;Risk Layer&#34;
+              SmartContract[&#34;Smart Contract Vulnerabilities&#34;]
+              MEVRisk[&#34;MEV Attacks&#34;]
+              DataPrivacy[&#34;Data Privacy Breaches&#34;]
+              end
+              subgraph &#34;Control Layer&#34;
+              FormalVerification[&#34;Formal Verification&#34;]
+              PrivateMempool[&#34;Private Mempools&#34;]
+              Encryption[&#34;Data Encryption&#34;]
+              end
+              subgraph &#34;DEX Components&#34;
+              Wallet[&#34;Wallet Integration&#34;]
+              TradingEngine[&#34;Trading Engine&#34;]
+              ComplianceModule[&#34;Compliance Module&#34;]
+              end
+
+              SEC --&gt; SmartContract
+              SEC --&gt; MEVRisk
+              MICA --&gt; DataPrivacy
+              MICA --&gt; ComplianceModule
+
+              SmartContract --&gt; FormalVerification
+              MEVRisk --&gt; PrivateMempool
+              DataPrivacy --&gt; Encryption
+
+              FormalVerification --&gt; TradingEngine
+              PrivateMempool --&gt; TradingEngine
+              Encryption --&gt; Wallet
+
+              style RegulatoryLayer fill:#ffebee,stroke:#c62828,stroke-width:2px
+              style RiskLayer fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+              style ControlLayer fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+              style DEXComponents fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture &amp; Design -->
+      <section id="architecture-design" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">2. Architecture &amp; Design</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Architect Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Core-Peripheral Component Decomposition</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Decompose a DEX into core and peripheral architectural layers, analyzing structural relationships and dependency flows using Uniswap V2 as reference.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> The architecture <strong>decomposes</strong> into a <strong>Core Layer</strong> (immutable, security-critical) and a <strong>Peripheral Layer</strong> (flexible, user-facing). The <strong>Factory</strong> contract <strong>creates</strong> and <strong>tracks</strong> <strong>Pair</strong> contracts, which <strong>encapsulate</strong> AMM logic and liquidity. The <strong>Router</strong> contract in the peripheral layer <strong>abstracts over</strong> complexity and <strong>depends on</strong> the core layer, creating unidirectional dependency that enables flexibility while constraining risk.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TB
+              subgraph &#34;Peripheral Layer (Helper/Interface)&#34;
+              UI[User Interface]
+              Router[UniswapV2Router]
+              SDK[Software Development Kit]
+              end
+              subgraph &#34;Core Layer (Immutable/Security-Critical)&#34;
+              Factory[UniswapV2Factory]
+              Pair1[UniswapV2Pair (Token A/B)]
+              Pair2[UniswapV2Pair (Token C/D)]
+              TokenA[ERC20 Token A]
+              TokenB[ERC20 Token B]
+              end
+
+              UI -- &#34;calls functions on&#34; --&gt; Router
+              Router -- &#34;interacts with&#34; --&gt; Factory
+              Router -- &#34;executes trades on&#34; --&gt; Pair1
+              Factory -- &#34;creates&#34; --&gt; Pair1
+              Factory -- &#34;creates&#34; --&gt; Pair2
+              Pair1 -- &#34;holds reserves of&#34; --&gt; TokenA
+              Pair1 -- &#34;holds reserves of&#34; --&gt; TokenB
+
+              style CoreLayer fill:#ffebee,stroke:#c62828,stroke-width:2px
+              style PeripheralLayer fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Developer Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Smart Contract Inheritance Hierarchy</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> How would you use inheritance and modular design to create flexible and secure smart contract architecture?
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> <strong>Pair</strong> contract <strong>inherits from</strong> ERC20 for LP tokens and <strong>encapsulates</strong> AMM logic. <strong>Factory</strong> <strong>creates</strong> new <strong>Pair</strong> contracts. <strong>Router</strong> <strong>interacts with</strong> <strong>Pair</strong> through <strong>IPair</strong> interface, creating <strong>decoupling</strong> that enables upgradeability without affecting core liquidity. This <strong>composition and delegation</strong> pattern reduces risk of introducing bugs into critical financial logic.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              classDiagram
+              class IERC20 {
+              &lt;<interface>&gt;
+              +transfer()
+              +approve()
+              }
+              class IPair {
+              &lt;<interface>&gt;
+              +swap()
+              +mint()
+              +burn()
+              }
+              class ERC20 {
+              +transfer()
+              +approve()
+              }
+              class UniswapV2Pair {
+              +swap()
+              +mint()
+              +burn()
+              +getReserves()
+              }
+              class UniswapV2Factory {
+              +createPair()
+              }
+              class UniswapV2Router {
+              +swapExactTokensForTokens()
+              +addLiquidity()
+              }
+
+              IERC20 &lt;|-- ERC20
+              ERC20 &lt;|-- UniswapV2Pair
+              IPair &lt;|.. UniswapV2Pair
+              UniswapV2Factory --&gt; UniswapV2Pair : creates
+              UniswapV2Router --&gt; IPair : uses
+              UniswapV2Router --&gt; UniswapV2Factory : uses
+            </interface></interface></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development -->
+      <section id="development" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">3. Development</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Developer Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Core Trading Logic Implementation</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Implement core trading logic and analyze relationships between smart contracts that facilitate token swaps while ensuring security.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> <strong>Pair</strong> contract <strong>encapsulates</strong> liquidity and AMM logic, <strong>inherits from</strong> ERC20 for LP tokens. <strong>Factory</strong> <strong>creates</strong> new <strong>Pair</strong> contracts. <strong>Router</strong> <strong>orchestrates</strong> swaps by <strong>calling</strong> <strong>Pair</strong> functions, which <strong>transfers</strong> tokens and <strong>updates</strong> reserves using <strong>checks-effects-interactions</strong> pattern to prevent reentrancy. Security relies on strict state update ordering.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              sequenceDiagram
+              participant User
+              participant Router
+              participant Pair
+              participant TokenA
+              participant TokenB
+
+              User-&gt;&gt;Router: swapExactTokensForTokens(amountIn, amountOutMin, path, to)
+              Router-&gt;&gt;TokenA: transferFrom(User, Pair, amountIn)
+              TokenA-&gt;&gt;Pair: transfer tokens
+              Router-&gt;&gt;Pair: swap(amountOutMin, to)
+              Pair-&gt;&gt;Pair: update reserves (state change)
+              Pair-&gt;&gt;TokenB: transfer(to, amountOut)
+              TokenB-&gt;&gt;User: receive tokens
+              Pair--&gt;&gt;Router: emit Swap event
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Developer Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Web3 Library Integration</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Analyze relationships between frontend UI, Web3 library (Ethers.js), user wallet (MetaMask), and DEX smart contracts.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Frontend <strong>depends on</strong> Web3 library to <strong>simplify</strong> blockchain interaction. Library <strong>mediates</strong> communication with wallet through <strong>Signer</strong> object that <strong>represents</strong> user identity. For trades, frontend <strong>calls</strong> view functions for quotes, then <strong>creates</strong> transaction objects passed to <strong>Signer</strong> for user signature. Wallet <strong>broadcasts</strong> signed transactions. Library <strong>listens</strong> for confirmation and <strong>notifies</strong> frontend. Critical dependency chain: UI → Library → Wallet → Contracts.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-4">
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Connection Flow:</h4>
+              <ol class="text-sm space-y-1">
+                <li>1. User clicks &#34;Connect Wallet&#34;</li>
+                <li>2. Frontend <strong>calls</strong> library function</li>
+                <li>3. Library <strong>prompts</strong> wallet connection</li>
+                <li>4. User <strong>approves</strong> in wallet UI</li>
+                <li>5. Library <strong>instantiates</strong> Signer object</li>
+              </ol>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4">
+              <h4 class="font-semibold mb-2">Trading Flow:</h4>
+              <ol class="text-sm space-y-1">
+                <li>1. Frontend <strong>calls</strong> view functions for quotes</li>
+                <li>2. User confirms trade parameters</li>
+                <li>3. Frontend <strong>creates</strong> transaction object</li>
+                <li>4. <strong>Signer</strong> <strong>requests</strong> user signature</li>
+                <li>5. Wallet <strong>broadcasts</strong> signed transaction</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testing &amp; Quality -->
+      <section id="testing-quality" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">4. Testing &amp; Quality</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">QA/SET Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Smart Contract Security Testing</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Design comprehensive test suite for smart contract vulnerabilities, analyzing relationships between common DeFi vulnerabilities, DEX components, and test cases.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Test suite must <strong>map</strong> specific vulnerabilities to <strong>target components</strong> with <strong>simulated attack vectors</strong>. For <strong>reentrancy</strong>, malicious contract <strong>calls</strong> withdraw function then <strong>re-enters</strong> before initial execution completes. Test <strong>validates</strong> checks-effects-interactions pattern implementation. For <strong>flash loan attacks</strong>, test <strong>simulates</strong> large loan to <strong>manipulate</strong> price, then <strong>verifies</strong> TWAP oracle resistance. Each test has <strong>direct relationship</strong> with vulnerability and component.
+          </p>
+
+          <div class="relationship-matrix">
+            <div class="matrix-header">Vulnerability-Test Mapping Matrix</div>
+            <div class="matrix-row bg-gray-50 font-semibold">
+              <div class="matrix-cell">Vulnerability</div>
+              <div class="matrix-cell">Target Component</div>
+              <div class="matrix-cell">Attack Simulation</div>
+              <div class="matrix-cell">Expected Control</div>
+              <div class="matrix-cell">Validation</div>
+            </div>
+            <div class="matrix-row">
+              <div class="matrix-cell">Reentrancy</div>
+              <div class="matrix-cell">Liquidity Pool</div>
+              <div class="matrix-cell">Malicious contract re-entering withdraw function</div>
+              <div class="matrix-cell">Checks-Effects-Interactions</div>
+              <div class="matrix-cell">Transaction reverts, state consistent</div>
+            </div>
+            <div class="matrix-row bg-gray-50">
+              <div class="matrix-cell">Flash Loan Attack</div>
+              <div class="matrix-cell">AMM Pricing Logic</div>
+              <div class="matrix-cell">Large trade to manipulate price</div>
+              <div class="matrix-cell">Time-Weighted Average Price (TWAP)</div>
+              <div class="matrix-cell">Manipulated price not used</div>
+            </div>
+            <div class="matrix-row">
+              <div class="matrix-cell">Sandwich Attack</div>
+              <div class="matrix-cell">Swap Function</div>
+              <div class="matrix-cell">Frontrun and backrun large trade</div>
+              <div class="matrix-cell">User-defined slippage tolerance</div>
+              <div class="matrix-cell">Victim&#39;s trade fails or no profit</div>
+            </div>
+            <div class="matrix-row bg-gray-50">
+              <div class="matrix-cell">Integer Overflow</div>
+              <div class="matrix-cell">AMM Calculations</div>
+              <div class="matrix-cell">Extremely large input values</div>
+              <div class="matrix-cell">SafeMath Libraries (Solidity 0.8+)</div>
+              <div class="matrix-cell">Transaction reverts on overflow</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Security Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Threat Modeling and Penetration Testing</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Outline comprehensive threat modeling and penetration testing strategy for mainnet launch, analyzing relationships between attack vectors, DEX components, and security controls.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Systematic threat modeling <strong>decomposes</strong> DEX into components: UI, Wallet Connection, Smart Contracts, Oracle System, Admin/Upgradeability. IEEE research identifies 20 potential attack vectors <strong>categorized</strong> by target. <strong>Smart contract vulnerabilities</strong> like reentrancy <strong>enable</strong> fund drainage. <strong>Oracle manipulation</strong> <strong>depends on</strong> price feed integrity. <strong>Testing priorities</strong> <strong>derive from</strong> threat severity and component criticality, creating <strong>risk-based validation strategy</strong>.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph LR
+              subgraph &#34;DEX System&#34;
+              User[User]
+              UI[Frontend]
+              Wallet[Wallet]
+              SC[Smart Contracts]
+              Oracle[Price Oracle]
+              LP[Liquidity Pools]
+              end
+              subgraph &#34;Threats&#34;
+              S1[Spoofing Identity]
+              T1[Tampering with Data]
+              R1[Repudiation]
+              I1[Information Disclosure]
+              D1[Denial of Service]
+              E1[Elevation of Privilege]
+              end
+              subgraph &#34;Attack Vectors&#34;
+              AV1[Phishing]
+              AV2[Oracle Manipulation]
+              AV3[Reentrancy]
+              AV4[Front-Running]
+              end
+
+              User -- &#34;Target of&#34; --&gt; S1
+              UI -- &#34;Vulnerable to&#34; --&gt; AV1
+              Oracle -- &#34;Target of&#34; --&gt; AV2
+              SC -- &#34;Vulnerable to&#34; --&gt; AV3
+              SC -- &#34;Vulnerable to&#34; --&gt; AV4
+
+              S1 -- &#34;Leads to&#34; --&gt; T1
+              AV2 -- &#34;Leads to&#34; --&gt; T1
+              AV3 -- &#34;Leads to&#34; --&gt; E1
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deployment &amp; Release -->
+      <section id="deployment-release" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">5. Deployment &amp; Release</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">DevOps Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Hybrid Infrastructure Orchestration</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Design infrastructure orchestration strategy for &gt;100,000 RPS hybrid cloud/on-premise model, analyzing relationships between DEX components, infrastructure providers, and deployment pipeline.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> System <strong>decomposes</strong> into Frontend (CDN deployment), API Gateway/Backend (Kubernetes), and Blockchain Node Cluster (hybrid model). Predictive AI Autoscaler <strong>monitors</strong> real-time metrics, <strong>analyzes</strong> patterns, <strong>proactively scales</strong> infrastructure. CI/CD pipeline <strong>automates</strong> build/test/deploy and <strong>integrates</strong> with orchestration for rolling updates. PancakeSwap case study shows 70% cost reduction and 62.5x faster response times through intelligent automation.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TB
+              subgraph &#34;Global Users&#34;
+              U1[User 1]
+              U2[User 2]
+              end
+              subgraph &#34;Cloud (Public)&#34;
+              CDN[CDN (Frontend)]
+              K8s[Kubernetes Cluster]
+              API[API Gateway &amp; Services]
+              CloudNodes[Read-Only Nodes]
+              end
+              subgraph &#34;Private Cloud / On-Premise&#34;
+              CoreNodes[Core Node Cluster<br/>(Validators/Full Nodes)]
+              end
+              subgraph &#34;Orchestration &amp; Management&#34;
+              Autoscaler[Predictive AI Autoscaler]
+              CI_CD[CI/CD Pipeline]
+              end
+
+              U1 --&gt; CDN
+              U2 --&gt; CDN
+              CDN --&gt; K8s
+              K8s --&gt; API
+              API --&gt; CloudNodes
+              API --&gt; CoreNodes
+              Autoscaler -- &#34;controls scaling of&#34; --&gt; K8s
+              Autoscaler -- &#34;controls scaling of&#34; --&gt; CloudNodes
+              CI_CD -- &#34;deploys to&#34; --&gt; K8s
+              CI_CD -- &#34;deploys to&#34; --&gt; CoreNodes
+
+              style CoreNodes fill:#ffebee,stroke:#c62828,stroke-width:2px
+              style Autoscaler fill:#e8f5e8,stroke:#2e7d32,stroke-dasharray: 5 5
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">SRE Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Deployment Strategies Comparison</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Compare canary releases and blue-green deployments, analyzing relationships between strategies, monitoring systems, and user experience.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> <strong>Canary release</strong> <strong>exposes</strong> new version to small user subset while monitoring key metrics (error rates, latency, business KPIs). If healthy, traffic <strong>is gradually shifted</strong>. <strong>Creates dependency</strong> on sophisticated monitoring and feature flag systems. User experience has <strong>controlled exposure</strong>. Resource-efficient but slow rollback. <strong>Blue-green deployment</strong> <strong>maintains</strong> two identical environments, <strong>switches</strong> traffic via load balancer. Enables <strong>instantaneous rollback</strong> but <strong>doubles resource consumption</strong>. Choice <strong>depends on</strong> risk tolerance, resource availability, service criticality.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 rounded-lg p-4">
+              <h4 class="font-semibold mb-3">Canary Release</h4>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span>Resource Usage:</span>
+                  <span class="text-blue-600 font-semibold">Low</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Rollback Speed:</span>
+                  <span class="text-orange-600 font-semibold">Slow</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Risk Exposure:</span>
+                  <span class="text-yellow-600 font-semibold">Limited</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Complexity:</span>
+                  <span class="text-red-600 font-semibold">High</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-green-50 rounded-lg p-4">
+              <h4 class="font-semibold mb-3">Blue-Green Deployment</h4>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span>Resource Usage:</span>
+                  <span class="text-red-600 font-semibold">High</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Rollback Speed:</span>
+                  <span class="text-green-600 font-semibold">Fast</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Risk Exposure:</span>
+                  <span class="text-green-600 font-semibold">None</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Complexity:</span>
+                  <span class="text-yellow-600 font-semibold">Medium</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Operations &amp; Observability -->
+      <section id="operations-observability" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">6. Operations &amp; Observability</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">SRE Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Observability Dashboard Hierarchy</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Build comprehensive observability dashboard analyzing relationships between infrastructure, application, and business metrics for different stakeholders.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Dashboard hierarchy <strong>reflects</strong> system layers. <strong>Executive Dashboard</strong> <strong>displays</strong> business KPIs: TVL, trading volume, active users. <strong>Operational Dashboard</strong> <strong>decomposes</strong> these into technical components: API latency, error rates, resource utilization. Relationship is <strong>causality</strong>: infrastructure metric spikes <strong>explain</strong> business KPI drops. <strong>Diagnostic Dashboard</strong> provides deep technical details: distributed traces, logs, contract events. This structure <strong>enables</strong> efficient troubleshooting path from business problem to technical root cause.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TD
+              subgraph &#34;Executive Dashboard&#34;
+              KPI1[Business KPIs: TVL, Volume, Users]
+              end
+              subgraph &#34;Operational Dashboard&#34;
+              KPI2[Application KPIs: API Latency, Success Rate]
+              KPI3[Infrastructure KPIs: CPU, Memory, RPS]
+              end
+              subgraph &#34;Diagnostic Dashboard&#34;
+              KPI4[Technical Metrics: Traces, Logs, Events]
+              end
+
+              KPI1 -- &#34;drills down to&#34; --&gt; KPI2
+              KPI2 -- &#34;drills down to&#34; --&gt; KPI3
+              KPI3 -- &#34;drills down to&#34; --&gt; KPI4
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Architect Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Performance Degradation Analysis</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Analyze emergent network effects causing performance degradation during high market volatility, examining relationships between network congestion, consensus mechanisms, and node performance.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Performance degradation <strong>emerges from</strong> confluence of factors. <strong>Network congestion</strong> <strong>triggers</strong> fee bidding wars, <strong>increasing</strong> costs and <strong>creating</strong> negative feedback loops. <strong>Consensus mechanism</strong> <strong>constrains</strong> maximum throughput (PoW: ~7 TPS, PoS: ~30 TPS). <strong>Slowest nodes</strong> <strong>become bottlenecks</strong> in fully connected network, creating <strong>cascading effects</strong> that reduce overall system throughput. This represents <strong>weakest link problem</strong> where system performance is constrained by slowest performing component.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph LR
+              A[High Market Volatility] --&gt; B(More Transactions Submitted);
+              B --&gt; C(Network Congestion);
+              C --&gt; D(Higher Transaction Fees);
+              D --&gt; E(Failed/Slow Transactions);
+              E --&gt; F(Lower User Confidence);
+              F --&gt; B;
+              C --&gt; G(Increased Load on Nodes);
+              G --&gt; H(Slowest Node Becomes Bottleneck);
+              H --&gt; I(Slower Block Propagation);
+              I --&gt; C;
+              H --&gt; J(Reduced Overall Throughput);
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Maintenance &amp; Support -->
+      <section id="maintenance-support" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">7. Maintenance &amp; Support</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">SRE Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Incident Response &amp; Troubleshooting</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Develop incident response framework for DEX-facing smart contract exploits, analyzing relationships between on-chain events, off-chain monitoring systems, and human response workflows.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Smart contract <strong>emits</strong> events that <strong>trigger</strong> off-chain monitoring systems. These systems <strong>correlate</strong> multiple signals (unusual transaction volumes, failed transactions) to <strong>detect</strong> potential exploits. Automated alerts <strong>notify</strong> on-call responders through multiple channels. Human response workflow <strong>depends on</strong> pre-defined runbooks that <strong>map</strong> specific alerts to response procedures. Decision to <strong>pause</strong> contract functionality through emergency multi-sig <strong>requires</strong> coordination between technical, legal, and leadership stakeholders. Post-incident analysis <strong>feeds back</strong> into system improvements, creating continuous learning loop.
+          </p>
+
+          <div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6">
+            <h4 class="font-semibold mb-3">Critical Response Path:</h4>
+            <div class="grid md:grid-cols-4 gap-4 text-sm">
+              <div class="text-center">
+                <div class="bg-red-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-exclamation-triangle text-red-600"></i>
+                </div>
+                <div class="font-semibold">Detection</div>
+                <div class="text-gray-600">On-chain events trigger alerts</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-bell text-orange-600"></i>
+                </div>
+                <div class="font-semibold">Notification</div>
+                <div class="text-gray-600">Multi-channel alerting</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-yellow-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-shield-alt text-yellow-600"></i>
+                </div>
+                <div class="font-semibold">Response</div>
+                <div class="text-gray-600">Emergency procedures activation</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-green-100 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-sync-alt text-green-600"></i>
+                </div>
+                <div class="font-semibold">Recovery</div>
+                <div class="text-gray-600">System restoration and learning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Developer Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Technical Debt Management</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Analyze relationships between technical debt in smart contract layer, need for architectural refactoring, and DAO governance process required for major changes.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Technical debt <strong>quantified</strong> through gas cost analysis, feature complexity, and security risk assessment. Technical need <strong>translated</strong> into business case demonstrating financial impact (e.g., 15% gas reduction → increased trading volume → higher fee revenue). Governance proposal <strong>acts as interface</strong> between technical team and community, requiring detailed problem explanation, solution, costs, and benefits. Community debate and voting process <strong>filters</strong> changes, ensuring broad support but potentially slowing technical evolution. Balance between architectural health and community priorities <strong>requires</strong> strong communication and consensus-building skills.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-3">Technical Debt Impact:</h4>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-arrow-up text-red-500"></i>
+                  <span>Higher gas costs (+20-30%)</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-clock text-orange-500"></i>
+                  <span>Slower feature development</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                  <span>Increased security risks</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-chart-line-down text-gray-500"></i>
+                  <span>Reduced competitiveness</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3">Governance Process Steps:</h4>
+              <ol class="space-y-2 text-sm text-gray-600">
+                <li>1. <strong>Quantify</strong> technical debt impact</li>
+                <li>2. <strong>Translate</strong> to business case</li>
+                <li>3. <strong>Author</strong> governance proposal</li>
+                <li>4. <strong>Defend</strong> proposal in community debate</li>
+                <li>5. <strong>Navigate</strong> voting process</li>
+                <li>6. <strong>Implement</strong> approved changes</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Evolution &amp; Governance -->
+      <section id="evolution-governance" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">8. Evolution &amp; Governance</h2>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Leadership Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">DAO Governance and Protocol Evolution</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> Analyze relationships between core development team, token holder community, and governance proposals in DAO-governed DEX.
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Core team power <strong>derives from</strong> ability to propose and advocate for changes community will approve. Relationship based on <strong>influence and persuasion</strong> rather than authority. Governance token distribution <strong>determines</strong> decision-making decentralization. Concentrated distribution <strong>creates plutocracy risk</strong> while diverse distribution <strong>fosters resilient governance</strong>. Proposal process <strong>constrains</strong> rapid response capability but <strong>ensures</strong> broad community support for changes. Leadership role transformed from direct control to consensus-building and community management.
+          </p>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph LR
+              subgraph &#34;Governance Ecosystem&#34;
+              CoreTeam[Core Dev Team]
+              Whales[Large Token Holders]
+              Community[Community Members]
+              Prop[Governance Proposal]
+              Treasury[Protocol Treasury]
+              end
+
+              CoreTeam -- &#34;proposes &amp; advocates&#34; --&gt; Prop
+              Whales -- &#34;votes with high influence&#34; --&gt; Prop
+              Community -- &#34;votes with collective influence&#34; --&gt; Prop
+              Prop -- &#34;if passed, directs&#34; --&gt; CoreTeam
+              Prop -- &#34;if passed, allocates funds from&#34; --&gt; Treasury
+              CoreTeam -- &#34;builds features for&#34; --&gt; Community
+              Community -- &#34;provides feedback to&#34; --&gt; CoreTeam
+            </div>
+          </div>
+        </div>
+
+        <div class="stakeholder-card">
+          <h3 class="text-xl font-semibold serif mb-2 text-gray-800">Architect Perspective</h3>
+          <div class="text-sm text-gray-500 mb-4">Long-term Architecture Evolution</div>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Q:</strong> How would you guide long-term architectural evolution considering emerging technologies (Layer 2 solutions, cross-chain protocols) and their relationships with existing DEX infrastructure?
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            <strong>Analysis:</strong> Emerging technologies <strong>introduce</strong> new integration points while <strong>maintaining</strong> backward compatibility. Layer 2 solutions <strong>decouple</strong> execution from Layer 1 security but <strong>require</strong> new dependency management and security assumptions. Cross-chain protocols <strong>enable</strong> multi-chain liquidity aggregation but <strong>introduce</strong> complex interoperability challenges. Governance process must <strong>adapt</strong> to evaluate and approve integration of new technologies. Architecture must <strong>evolve</strong> to support new features while maintaining security and performance guarantees. Migration strategies must <strong>balance</strong> innovation with user experience continuity.
+          </p>
+
+          <div class="bg-gradient-to-r from-teal-50 via-sage-50 to-clay-50 rounded-lg p-6">
+            <h4 class="font-semibold mb-3">Technology Evolution Path:</h4>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="text-center">
+                <div class="bg-teal-100 rounded-lg p-4 mb-2">
+                  <i class="fas fa-layer-group text-2xl text-teal-600 mb-2"></i>
+                  <div class="font-semibold">Layer 2 Integration</div>
+                </div>
+                <div class="text-xs text-gray-600">Decoupled execution, reduced costs</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-sage-100 rounded-lg p-4 mb-2">
+                  <i class="fas fa-network-wired text-2xl text-sage-600 mb-2"></i>
+                  <div class="font-semibold">Cross-Chain Protocols</div>
+                </div>
+                <div class="text-xs text-gray-600">Multi-chain liquidity aggregation</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-clay-100 rounded-lg p-4 mb-2">
+                  <i class="fas fa-cogs text-2xl text-clay-600 mb-2"></i>
+                  <div class="font-semibold">Governance Evolution</div>
+                </div>
+                <div class="text-xs text-gray-600">Adaptive decision-making processes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stakeholder Analysis -->
+      <section id="stakeholder-analysis" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">Stakeholder Analysis</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-teal-500">
+            <h4 class="font-semibold mb-3 text-gray-800">Business Analyst</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Market Requirements Mapping</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• Market demands → System capabilities</div>
+              <div>• Stakeholder needs → Technical requirements</div>
+              <div>• Business goals → Architecture constraints</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-sage-500">
+            <h4 class="font-semibold mb-3 text-gray-800">Product Manager</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Market Strategy &amp; Features</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• Competitive landscape → Feature prioritization</div>
+              <div>• Revenue models → User experience</div>
+              <div>• Market trends → Roadmap decisions</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-clay-500">
+            <h4 class="font-semibold mb-3 text-gray-800">System Architect</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Technical Architecture</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• Performance requirements → Design patterns</div>
+              <div>• Security needs → Component boundaries</div>
+              <div>• Scalability targets → Infrastructure choices</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-navy-500">
+            <h4 class="font-semibold mb-3 text-gray-800">Developer</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Implementation</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• Smart contract interfaces → Integration points</div>
+              <div>• Code dependencies → Deployment pipelines</div>
+              <div>• Testing frameworks → Quality assurance</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-red-400">
+            <h4 class="font-semibold mb-3 text-gray-800">Security Engineer</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Risk Management</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• Threat vectors → Mitigation controls</div>
+              <div>• Vulnerabilities → Testing strategies</div>
+              <div>• Compliance requirements → Security architecture</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md border-l-4 border-purple-400">
+            <h4 class="font-semibold mb-3 text-gray-800">SRE/DevOps</h4>
+            <div class="text-sm text-gray-600 mb-3">Focus: Operations &amp; Reliability</div>
+            <div class="space-y-2 text-xs">
+              <div><strong>Key Relationships:</strong></div>
+              <div>• System metrics → Performance optimization</div>
+              <div>• Deployment pipelines → Release management</div>
+              <div>• Monitoring systems → Incident response</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-gray-50 to-white rounded-xl p-8">
+          <h3 class="text-2xl font-semibold serif mb-6 text-gray-800">Cross-Stakeholder Dependencies</h3>
+
+          <div class="mermaid-container">
+            <div class="mermaid-controls">
+              <button class="mermaid-control-btn zoom-in" title="放大">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="mermaid-control-btn zoom-out" title="缩小">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button class="mermaid-control-btn reset-zoom" title="重置">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+              <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+            <div class="mermaid">
+              graph TB
+              subgraph &#34;Business Stakeholders&#34;
+              BA[Business Analyst]
+              PM[Product Manager]
+              Leadership[Leadership]
+              end
+              subgraph &#34;Technical Stakeholders&#34;
+              Architect[System Architect]
+              Developer[Developer]
+              Security[Security Engineer]
+              end
+              subgraph &#34;Operations Stakeholders&#34;
+              SRE[SRE/DevOps]
+              DataEngineer[Data Engineer]
+              end
+
+              BA -- &#34;defines requirements for&#34; --&gt; Architect
+              PM -- &#34;prioritizes features for&#34; --&gt; Developer
+              Security -- &#34;implements controls for&#34; --&gt; Developer
+              Architect -- &#34;designs infrastructure for&#34; --&gt; SRE
+              Leadership -- &#34;allocates resources for&#34; --&gt; SRE
+              DataEngineer -- &#34;provides analytics for&#34; --&gt; PM
+              Developer -- &#34;deploys through&#34; --&gt; SRE
+              Security -- &#34;monitors through&#34; --&gt; SRE
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="conclusion" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">Conclusion</h2>
+
+        <div class="bg-gradient-to-br from-teal-50 via-sage-50 to-clay-50 rounded-2xl p-8 mb-8">
+          <h3 class="text-2xl font-semibold serif mb-6 text-gray-800">Key Insights</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-semibold mb-3 text-teal-700">Relationship Patterns</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-link text-teal-500 mt-1 text-sm"></i>
+                  <span>DEX success is fundamentally coupled to reliable, low-latency data feeds from multiple blockchains</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-link text-teal-500 mt-1 text-sm"></i>
+                  <span>Regulatory frameworks mandate specific security controls that constrain architectural design</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-link text-teal-500 mt-1 text-sm"></i>
+                  <span>Core-peripheral component separation enhances security while enabling rapid innovation</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3 text-sage-700">Multi-stakeholder Dynamics</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-users text-sage-500 mt-1 text-sm"></i>
+                  <span>Market demands drive technical architecture through transitive relationship chains</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-users text-sage-500 mt-1 text-sm"></i>
+                  <span>Governance structure determines protocol&#39;s ability to adapt to market changes</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <i class="fas fa-users text-sage-500 mt-1 text-sm"></i>
+                  <span>Technical debt management requires translation to business cases for community approval</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-gray-600 mb-6">
+            This comprehensive relationship analysis reveals that a production-grade blockchain DEX is not merely a collection of smart contracts and infrastructure, but a complex ecosystem where technical, business, regulatory, and human factors are deeply interconnected. Success requires understanding and managing these relationships across the entire software lifecycle.
+          </p>
+
+          <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 mb-8">
+            <h3 class="text-2xl font-semibold serif mb-4 text-gray-800">Implementation Recommendations</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold mb-3 text-gray-800">Structural Foundation</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li>• Prioritize core-peripheral component separation</li>
+                  <li>• Establish clear dependency boundaries</li>
+                  <li>• Implement quantified relationship metrics</li>
+                  <li>• Design for evolution and extensibility</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-3 text-gray-800">Multi-stakeholder Coordination</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li>• Create shared understanding of relationship networks</li>
+                  <li>• Establish cross-functional communication channels</li>
+                  <li>• Develop governance processes that balance speed and consensus</li>
+                  <li>• Build integrated observability across all layers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 text-lg">
+            The framework presented here provides a structured approach to analyzing, documenting, and managing the complex web of relationships that define a successful DEX. By understanding these relationships—from the structural organization of components to the emergent behaviors of the entire system—teams can make informed decisions that balance technical excellence with business objectives, regulatory compliance, and user needs.
+          </p>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="max-w-6xl mx-auto px-8 py-16">
+        <h2 class="text-4xl font-bold serif mb-8 text-gray-800">References</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Academic &amp; Industry Sources</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://www.blockpit.io/blog/what-is-a-dex" class="citation-link font-semibold" target="_blank">[6] Blockpit - What is a DEX</a>
+                <div class="text-gray-600 mt-1">Comprehensive overview of decentralized exchanges and their core functionality.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://zerion.io/blog/best-solana-dexes-a-comprehensive-guide/" class="citation-link font-semibold" target="_blank">[69] Zerion - Best Solana DEXes</a>
+                <div class="text-gray-600 mt-1">Analysis of Solana DEX ecosystem and competitive landscape.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://doc.confluxnetwork.org/zh-CN/docs/general/protocols/defi/uniswap-v2" class="citation-link font-semibold" target="_blank">[16] Conflux Network - Uniswap V2</a>
+                <div class="text-gray-600 mt-1">Technical documentation of Uniswap V2 architecture and smart contract relationships.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://entethalliance.org/specs/drafts/defi-risks/20230116/" class="citation-link font-semibold" target="_blank">[61] EEA - DeFi Risk Assessment</a>
+                <div class="text-gray-600 mt-1">Enterprise Ethereum Alliance guidelines for DeFi risk management and security controls.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://arxiv.org/html/2506.00500v1" class="citation-link font-semibold" target="_blank">[38] Arxiv - ZK Rollup Performance Analysis</a>
+                <div class="text-gray-600 mt-1">Academic research on ZK Rollup performance metrics and transaction throughput.</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold mb-4 text-gray-800">Technical Standards &amp; Research</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://ieeexplore.ieee.org/iel8/10912072/10912519/10912624.pdf" class="citation-link font-semibold" target="_blank">[43] IEEE - DEX Attack Vectors</a>
+                <div class="text-gray-600 mt-1">Comprehensive analysis of potential attack vectors in DEX ecosystems.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://dysnix.com/pancakeswap-dysnix-case-study" class="citation-link font-semibold" target="_blank">[71] Dysnix - PancakeSwap Case Study</a>
+                <div class="text-gray-600 mt-1">Infrastructure optimization case study for high-traffic DEX operations.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://solana.com/solana-whitepaper.pdf" class="citation-link font-semibold" target="_blank">[91] Solana - Whitepaper</a>
+                <div class="text-gray-600 mt-1">Technical specifications for high-performance blockchain architecture.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://build.avax.network/academy/avalanche-fundamentals/02-avalanche-consensus-intro/04-tps-vs-ttf" class="citation-link font-semibold" target="_blank">[90] Avalanche - TPS vs TTF Analysis</a>
+                <div class="text-gray-600 mt-1">Comparative analysis of blockchain throughput and finality metrics.</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <a href="https://shardeum.org/blog/latency-throughput-blockchain/" class="citation-link font-semibold" target="_blank">[94] Shardeum - Blockchain Performance</a>
+                <div class="text-gray-600 mt-1">Analysis of blockchain performance degradation under high load conditions.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-gray-100 rounded-lg p-6">
+          <h4 class="font-semibold mb-3">Additional Resources &amp; Documentation</h4>
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div>
+              <div class="font-semibold text-gray-700 mb-2">Technical Standards</div>
+              <ul class="space-y-1 text-gray-600">
+                <li>• UML Diagramming Standards</li>
+                <li>• ERD Modeling Conventions</li>
+                <li>• C4 Model Architecture</li>
+                <li>• Dependency Structure Matrix</li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700 mb-2">Industry Frameworks</div>
+              <ul class="space-y-1 text-gray-600">
+                <li>• TOGAF Enterprise Architecture</li>
+                <li>• ArchiMate Modeling Language</li>
+                <li>• DDD Bounded Contexts</li>
+                <li>• Conway&#39;s Law Applications</li>
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold text-gray-700 mb-2">Research Areas</div>
+              <ul class="space-y-1 text-gray-600">
+                <li>• Network Analysis &amp; Graph Theory</li>
+                <li>• Complex Systems Thinking</li>
+                <li>• Game Theory Applications</li>
+                <li>• Tokenomics &amp; Incentive Design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-8 text-center">
+          <div class="text-2xl font-bold serif mb-4">Relationship Analysis Framework</div>
+          <div class="text-gray-400 mb-6">Comprehensive analysis of stakeholder relationships in production-grade blockchain DEX development</div>
+          <div class="text-sm text-gray-500">
+            Analysis based on industry best practices, academic research, and real-world case studies
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with enhanced configuration
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#2C5F5D',
+                primaryTextColor: '#1E3A3A',
+                primaryBorderColor: '#2C5F5D',
+                lineColor: '#9CAF88',
+                secondaryColor: '#F5F3F0',
+                tertiaryColor: '#B5A082',
+                background: '#FFFFFF',
+                mainBkg: '#FFFFFF',
+                secondBkg: '#F5F3F0',
+                tertiaryBkg: '#FFFFFF',
+                // Enhanced contrast colors for different node types
+                primaryBorderColor: '#2C5F5D',
+                primaryTextColor: '#1E3A3A',
+                secondaryBorderColor: '#9CAF88',
+                secondaryTextColor: '#2D3748',
+                tertiaryBorderColor: '#B5A082',
+                tertiaryTextColor: '#2D3748',
+                // Specific colors for different diagram types
+                nodeBorder: '#2C5F5D',
+                clusterBkg: '#F5F3F0',
+                clusterBorder: '#9CAF88',
+                defaultLinkColor: '#2C5F5D',
+                titleColor: '#1E3A3A',
+                edgeLabelBackground: '#FFFFFF',
+                // Actor colors for sequence diagrams
+                actorBorder: '#2C5F5D',
+                actorBkg: '#FFFFFF',
+                actorTextColor: '#1E3A3A',
+                actorLineColor: '#2C5F5D',
+                signalColor: '#1E3A3A',
+                signalTextColor: '#1E3A3A',
+                // Class diagram colors
+                classText: '#1E3A3A',
+                classBorder: '#2C5F5D',
+                classBoxBorder: '#9CAF88',
+                classBoxBkg: '#FFFFFF'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            sequence: {
+                useMaxWidth: true,
+                wrap: true,
+                padding: 20
+            },
+            gantt: {
+                useMaxWidth: true,
+                padding: 20
+            },
+            // Ensure proper sizing
+            maxTextSize: 90000,
+            maxEdges: 200
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid controls
+            initializeMermaidControls();
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle (if needed)
+            const mobileMenuToggle = document.createElement('button');
+            mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuToggle.className = 'fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-lg lg:hidden';
+            const sidebar = document.querySelector('.toc-sidebar');
+            mobileMenuToggle.onclick = () => {
+                sidebar.classList.toggle('open');
+            };
+            document.body.appendChild(mobileMenuToggle);
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && sidebar.classList.contains('open')) {
+                    const isClickInsideSidebar = sidebar.contains(event.target);
+                    const isClickOnMenuButton = mobileMenuToggle.contains(event.target);
+                    if (!isClickInsideSidebar && !isClickOnMenuButton) {
+                        sidebar.classList.remove('open');
+                    }
+                }
+            });
+
+            // Highlight current section in TOC
+            const observerOptions = {
+                rootMargin: '-20% 0px -60% 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const tocLink = document.querySelector(`a[href="#${id}"]`);
+                    if (tocLink) {
+                        if (entry.isIntersecting) {
+                            document.querySelectorAll('.toc-sidebar a').forEach(link => {
+                                link.classList.remove('text-teal-600', 'font-semibold');
+                                link.classList.add('text-gray-600');
+                            });
+                            tocLink.classList.remove('text-gray-600');
+                            tocLink.classList.add('text-teal-600', 'font-semibold');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('section[id]').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Export functionality for diagrams (placeholder)
+        function exportDiagram(diagramId, format) {
+            console.log(`Exporting diagram ${diagramId} as ${format}`);
+            // Implementation would depend on specific diagram library integration
+        }
+    </script>
+  
+
+</body></html>

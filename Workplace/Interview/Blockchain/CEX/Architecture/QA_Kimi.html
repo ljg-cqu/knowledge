@@ -1,0 +1,1996 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain CEX Architecture: Domain-Driven Design for High-Performance Trading Platforms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --sage: #87a96b;
+            --terracotta: #c65d07;
+            --charcoal: #2d3748;
+            --warm-white: #fefcf8;
+            --stone: #8b8680;
+            --accent-green: #059669;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--sage), var(--terracotta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(254, 252, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #e2e8f0;
+            z-index: 50;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .citation-link {
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .citation-link:hover {
+            border-bottom-color: var(--terracotta);
+        }
+        
+        .insight-card {
+            background: linear-gradient(135deg, rgba(135, 169, 107, 0.1), rgba(198, 93, 7, 0.05));
+            border-left: 4px solid var(--sage);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toc-fixed {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        
+        .metric-formula {
+            background: rgba(135, 169, 107, 0.1);
+            border: 1px solid var(--sage);
+            border-radius: 6px;
+        }
+        
+        .trade-off-table {
+            background: rgba(198, 93, 7, 0.05);
+            border: 1px solid rgba(198, 93, 7, 0.2);
+            border-radius: 8px;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 280px;
+            right: 0;
+            height: 4px;
+            background: rgba(135, 169, 107, 0.2);
+            z-index: 40;
+        }
+        
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        .toc-link {
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover {
+            color: var(--terracotta);
+            transform: translateX(4px);
+        }
+        
+        .toc-link.active {
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.mobile-open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .scroll-indicator {
+                left: 0;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button id="mobileMenuToggle" class="fixed top-4 left-4 z-50 lg:hidden bg-white shadow-lg rounded-lg p-3">
+      <i class="fas fa-bars text-gray-700"></i>
+    </button>
+
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="serif text-lg font-semibold text-gray-800 mb-4">Contents</h3>
+        <div class="space-y-2 text-sm">
+          <a href="#introduction" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Introduction</a>
+          <a href="#structural-architecture" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Structural Architecture</a>
+          <a href="#bounded-contexts" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Bounded Contexts</a>
+          <a href="#hexagonal-architecture" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Hexagonal Architecture</a>
+          <a href="#layered-architecture" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Layered Architecture</a>
+          <a href="#quality-attributes" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Quality Attributes</a>
+          <a href="#low-latency-matching" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Low-Latency Matching</a>
+          <a href="#high-throughput" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">High Throughput</a>
+          <a href="#data-structures" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Data Structures</a>
+          <a href="#data-management" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Data Management</a>
+          <a href="#sql-vs-nosql" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">SQL vs NoSQL</a>
+          <a href="#integration" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Integration &amp; APIs</a>
+          <a href="#rest-api" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">RESTful API</a>
+          <a href="#api-gateway" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">API Gateway vs Service Mesh</a>
+          <a href="#blockchain-integration" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Blockchain Integration</a>
+          <a href="#evolution" class="toc-link block py-1 text-gray-600 hover:text-orange-600">Evolution &amp; Migration</a>
+          <a href="#strangler-fig" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Strangler Fig Pattern</a>
+          <a href="#deployment" class="toc-link block py-1 text-gray-600 hover:text-orange-600 pl-4">Deployment Strategies</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="absolute inset-0 hero-gradient opacity-10"></div>
+
+        <div class="relative z-10 container mx-auto px-4 md:px-8 py-16">
+          <div class="bento-grid">
+            <!-- Main Hero Content -->
+            <div class="space-y-8">
+              <div class="space-y-6">
+                <h1 class="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                  <span class="italic text-gradient">Blockchain CEX Architecture</span>
+                  <br/>
+                  Domain-Driven Design for High-Performance Trading Platforms
+                </h1>
+
+                <p class="text-base sm:text-xl text-gray-600 leading-relaxed max-w-3xl">
+                  A comprehensive architectural blueprint for building scalable, secure, and high-performance centralized cryptocurrency exchanges using domain-driven decomposition and modern distributed systems patterns.
+                </p>
+              </div>
+
+              <!-- Key Metrics Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 sm:mt-12">
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg">
+                  <div class="text-2xl sm:text-3xl font-bold text-green-600">10K+</div>
+                  <div class="text-gray-600">TPS Throughput Target</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg">
+                  <div class="text-2xl sm:text-3xl font-bold text-orange-600">&lt;300ms</div>
+                  <div class="text-gray-600">P95 Latency Target</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Element -->
+            <div class="relative mt-8 sm:mt-0">
+              <img src="https://kimi-web-img.moonshot.cn/img/cdn.prod.website-files.com/64f7cbb727ff620a2bdf89b864519d1a0d94fc0c.jpeg" alt="Abstract interconnected nodes representing cryptocurrency exchange architecture" class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-2xl" size="medium" aspect="wide" query="cryptocurrency exchange system architecture abstract" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+            </div>
+          </div>
+
+          <!-- Key Insights Overview -->
+          <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="insight-card rounded-xl p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-cubes text-green-600 text-2xl mr-3"></i>
+                <h3 class="serif text-lg font-semibold">Domain-Driven Decomposition</h3>
+              </div>
+              <p class="text-gray-700">Decompose CEX into distinct bounded contexts: User Management, Trading Engine, Wallet Management, Market Data, Risk Management, and Clearing &amp; Settlement.</p>
+            </div>
+
+            <div class="insight-card rounded-xl p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-rocket text-orange-600 text-2xl mr-3"></i>
+                <h3 class="serif text-lg font-semibold">Performance Optimization</h3>
+              </div>
+              <p class="text-gray-700">Achieve microsecond-level latency with lock-free algorithms, efficient data structures, and kernel-bypass networking technologies.</p>
+            </div>
+
+            <div class="insight-card rounded-xl p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-shield-alt text-green-600 text-2xl mr-3"></i>
+                <h3 class="serif text-lg font-semibold">Security &amp; Resilience</h3>
+              </div>
+              <p class="text-gray-700">Implement circuit breakers, bulkhead patterns, and secure password storage with Argon2 for high-security cryptocurrency custody.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section id="introduction" class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-8 text-gray-900">Architectural Foundation</h2>
+
+            <div class="prose prose-lg max-w-none">
+              <p class="text-xl text-gray-700 leading-relaxed mb-8">
+                The architecture of a Centralized Cryptocurrency Exchange (CEX) represents one of the most sophisticated challenges in modern distributed systems design. Unlike traditional financial exchanges, CEX platforms must handle extreme performance requirements while maintaining the highest security standards for digital asset custody.
+              </p>
+
+              <div class="bg-gray-50 rounded-xl p-8 mb-12">
+                <h3 class="serif text-2xl font-semibold mb-6 text-gray-900">Core Architectural Principles</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-3">Domain-Driven Design</h4>
+                    <p class="text-gray-700">Decompose the system into bounded contexts with clear boundaries, ubiquitous language, and independent evolution paths.</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-orange-700 mb-3">Performance-First Architecture</h4>
+                    <p class="text-gray-700">Design for microsecond-level latency with lock-free algorithms, efficient data structures, and hardware-aware optimization.</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-3">Security by Design</h4>
+                    <p class="text-gray-700">Implement defense-in-depth with secure password hashing, rate limiting, and cold/hot wallet segregation for asset custody.</p>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-orange-700 mb-3">Evolutionary Architecture</h4>
+                    <p class="text-gray-700">Enable gradual migration using strangler fig patterns, feature toggles, and canary releases for controlled evolution.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Structural Architecture -->
+      <section id="structural-architecture" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-12 text-gray-900 text-center">Structural Architecture &amp; Decomposition</h2>
+
+            <!-- Bounded Contexts -->
+            <div id="bounded-contexts" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Identifying Bounded Contexts</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  The foundational step in architecting a robust CEX is decomposing the system into well-defined bounded contexts using Domain-Driven Design principles. This collaborative process between architects and domain experts identifies distinct domains with their own ubiquitous language, models, and invariants.
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                  <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-500">
+                    <h4 class="font-semibold text-green-800 mb-3 flex items-center">
+                      <i class="fas fa-users mr-2"></i>
+                      User Management
+                    </h4>
+                    <p class="text-gray-700 text-sm">Handles registration, KYC/AML compliance, authentication, and authorization with complex regulatory requirements.</p>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-6 border-l-4 border-orange-500">
+                    <h4 class="font-semibold text-orange-800 mb-3 flex items-center">
+                      <i class="fas fa-chart-line mr-2"></i>
+                      Trading Engine
+                    </h4>
+                    <p class="text-gray-700 text-sm">Core order book management, order matching, and trade execution with extreme performance requirements.</p>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6 border-l-4 border-green-500">
+                    <h4 class="font-semibold text-green-800 mb-3 flex items-center">
+                      <i class="fas fa-wallet mr-2"></i>
+                      Wallet Management
+                    </h4>
+                    <p class="text-gray-700 text-sm">Custody of user assets, handling deposits, withdrawals, and internal transfers with blockchain network interactions.</p>
+                  </div>
+
+                  <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
+                      <i class="fas fa-database mr-2"></i>
+                      Market Data
+                    </h4>
+                    <p class="text-gray-700 text-sm">Real-time and historical price feeds, trade history, and order book snapshots for internal and external clients.</p>
+                  </div>
+
+                  <div class="bg-red-50 rounded-lg p-6 border-l-4 border-red-500">
+                    <h4 class="font-semibold text-red-800 mb-3 flex items-center">
+                      <i class="fas fa-shield-alt mr-2"></i>
+                      Risk Management
+                    </h4>
+                    <p class="text-gray-700 text-sm">Fraud detection, position monitoring, and trading limits to mitigate financial and operational risks.</p>
+                  </div>
+
+                  <div class="bg-purple-50 rounded-lg p-6 border-l-4 border-purple-500">
+                    <h4 class="font-semibold text-purple-800 mb-3 flex items-center">
+                      <i class="fas fa-exchange-alt mr-2"></i>
+                      Clearing &amp; Settlement
+                    </h4>
+                    <p class="text-gray-700 text-sm">Final transfer of assets post-trade, calculating fees and updating balances with accuracy guarantees.</p>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-6">
+                  <h4 class="font-semibold text-blue-800 mb-3">Event-Driven Communication</h4>
+                  <p class="text-gray-700">
+                    Communication between contexts is mediated by domain events. When a trade executes in the Trading Engine, it publishes a
+                    <code class="bg-blue-100 px-2 py-1 rounded">TradeExecuted</code> event consumed by Wallet Management and Clearing &amp; Settlement contexts to update balances and initiate settlement.
+                    <a href="https://github.com/denyspoltorak/metapatterns/wiki/Hexagonal-Architecture" class="citation-link" target="_blank">[51]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hexagonal Architecture -->
+            <div id="hexagonal-architecture" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Hexagonal Architecture for Trading Engine</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                  <div class="md:w-1/2">
+                    <p class="text-lg text-gray-700 mb-6">
+                      The Trading Engine employs Hexagonal Architecture to isolate core business logic from external concerns. This pattern, also known as Ports and Adapters, ensures the order matching algorithm and order book management are decoupled from databases, message queues, and user interfaces.
+                      <a href="https://medium.com/@priyanshu011109/hexagonal-architecture-clean-code-through-ports-adapters-57fab0712078" class="citation-link" target="_blank">[52]</a>
+                    </p>
+
+                    <div class="space-y-4">
+                      <div class="flex items-start">
+                        <i class="fas fa-circle text-green-500 text-xs mt-2 mr-3"></i>
+                        <div>
+                          <h4 class="font-semibold text-gray-800">Ports</h4>
+                          <p class="text-gray-600 text-sm">Interfaces defining core domain needs: OrderRepositoryPort, TradePublisherPort</p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start">
+                        <i class="fas fa-circle text-orange-500 text-xs mt-2 mr-3"></i>
+                        <div>
+                          <h4 class="font-semibold text-gray-800">Adapters</h4>
+                          <p class="text-gray-600 text-sm">Technology-specific implementations: RedisOrderRepositoryAdapter, KafkaTradePublisherAdapter</p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start">
+                        <i class="fas fa-circle text-blue-500 text-xs mt-2 mr-3"></i>
+                        <div>
+                          <h4 class="font-semibold text-gray-800">Core Benefits</h4>
+                          <p class="text-gray-600 text-sm">Enhanced testability, technology independence, and simplified maintenance</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="md:w-1/2">
+                    <div class="mermaid-container">
+                      <div class="mermaid-controls">
+                        <button class="mermaid-control-btn zoom-in" title="放大">
+                          <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="mermaid-control-btn zoom-out" title="缩小">
+                          <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="mermaid-control-btn reset-zoom" title="重置">
+                          <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                          <i class="fas fa-expand"></i>
+                        </button>
+                      </div>
+                      <div class="mermaid" id="hexagonal-diagram">
+                        graph TB
+                        subgraph &#34;External Systems&#34;
+                        A[&#34;REST API&#34;]
+                        B[&#34;WebSocket&#34;]
+                        C[&#34;Kafka&#34;]
+                        D[&#34;Redis&#34;]
+                        E[&#34;PostgreSQL&#34;]
+                        end
+
+                        subgraph &#34;Adapters Layer&#34;
+                        A1[&#34;REST Adapter&#34;]
+                        B1[&#34;WebSocket Adapter&#34;]
+                        C1[&#34;Kafka Publisher Adapter&#34;]
+                        D1[&#34;Redis Repository Adapter&#34;]
+                        E1[&#34;PostgreSQL Repository Adapter&#34;]
+                        end
+
+                        subgraph &#34;Ports Layer&#34;
+                        F[&#34;OrderBookPort&#34;]
+                        G[&#34;TradePublisherPort&#34;]
+                        H[&#34;OrderRepositoryPort&#34;]
+                        end
+
+                        subgraph &#34;Core Domain&#34;
+                        I[&#34;Order Matching Engine&#34;]
+                        J[&#34;Order Book Management&#34;]
+                        K[&#34;Trade Execution Rules&#34;]
+                        end
+
+                        A --&gt; A1
+                        B --&gt; B1
+                        C --&gt; C1
+                        D --&gt; D1
+                        E --&gt; E1
+
+                        A1 --&gt; F
+                        B1 --&gt; F
+                        C1 --&gt; G
+                        D1 --&gt; H
+                        E1 --&gt; H
+
+                        F --&gt; I
+                        F --&gt; J
+                        G --&gt; K
+                        H --&gt; I
+                        H --&gt; J
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Layered Architecture -->
+            <div id="layered-architecture" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Layered Architecture for User Management</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  While the Trading Engine demands performance-centric architecture, User Management benefits from traditional Layered Architecture. This pattern organizes the application into horizontal layers with specific responsibilities, providing clear separation of concerns and maintainability.
+                  <a href="https://github.com/denyspoltorak/metapatterns/wiki/Hexagonal-Architecture" class="citation-link" target="_blank">[51]</a>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
+                      <i class="fas fa-desktop mr-2"></i>
+                      Presentation Layer
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-1">
+                      <li>• HTTP request handling</li>
+                      <li>• REST API controllers</li>
+                      <li>• Input validation</li>
+                      <li>• Response formatting</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-3 flex items-center">
+                      <i class="fas fa-cogs mr-2"></i>
+                      Business Logic Layer
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-1">
+                      <li>• Application Service orchestration</li>
+                      <li>• KYC/AML compliance rules</li>
+                      <li>• Authentication logic</li>
+                      <li>• Use case coordination</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-orange-800 mb-3 flex items-center">
+                      <i class="fas fa-database mr-2"></i>
+                      Data Access Layer
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-1">
+                      <li>• Repository interfaces</li>
+                      <li>• Database persistence</li>
+                      <li>• Query optimization</li>
+                      <li>• Transaction management</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="code-block p-6">
+                  <pre class="text-sm"><code>// Java Spring Boot example
+@RestController
+@RequestMapping(&#34;/api/users&#34;)
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @PostMapping(&#34;/register&#34;)
+    public ResponseEntity&lt;User&gt; registerUser(
+        @Valid @RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(userService.registerUser(request));
+    }
+}
+
+@Service
+@Transactional
+public class UserService {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private KycService kycService;
+    
+    public User registerUser(RegisterRequest request) {
+        validateRegistration(request);
+        User user = createUserFromRequest(request);
+        user = userRepository.save(user);
+        kycService.initiateVerification(user);
+        return user;
+    }
+}
+
+@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    Optional&lt;User&gt; findByEmail(String email);
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quality Attributes -->
+      <section id="quality-attributes" class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-12 text-gray-900 text-center">Quality Attributes &amp; Performance Optimization</h2>
+
+            <!-- Low-Latency Matching -->
+            <div id="low-latency-matching" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Achieving Low-Latency Order Matching</h3>
+
+              <div class="bg-gray-50 rounded-xl shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  Achieving low-latency order matching requires a holistic approach encompassing hardware, networking, and software design. The core principle is minimizing time between order submission and execution confirmation, targeting microsecond-level latencies.
+                  <a href="https://github.com/joaquinbejar/OrderBook-rs" class="citation-link" target="_blank">[43]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-4 flex items-center">
+                      <i class="fas fa-server mr-2"></i>
+                      Hardware Optimization
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-bolt text-yellow-500 mr-3 mt-1"></i>
+                        <span>High-performance servers with fast CPUs and large RAM</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-network-wired text-blue-500 mr-3 mt-1"></i>
+                        <span>Kernel-bypass networking with DPDK or RDMA</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-building text-purple-500 mr-3 mt-1"></i>
+                        <span>Co-location with liquidity providers and institutional clients</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-orange-700 mb-4 flex items-center">
+                      <i class="fas fa-code mr-2"></i>
+                      Software Optimization
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-memory text-green-500 mr-3 mt-1"></i>
+                        <span>Keep entire order book in memory, eliminate database reads</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-sync text-blue-500 mr-3 mt-1"></i>
+                        <span>Asynchronous persistence with write-ahead logs or Kafka</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-file-alt text-orange-500 mr-3 mt-1"></i>
+                        <span>Binary serialization with Protocol Buffers or SBE</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+                  <h4 class="font-semibold text-blue-800 mb-3">Extreme Performance Example</h4>
+                  <p class="text-gray-700">
+                    The XAV matching engine demonstrates extreme optimization using FPGA-based pre-filters and hybrid compressed state transition tables to achieve 75 Gbps throughput, showcasing the lengths to which systems can be optimized for performance.
+                    <a href="https://arxiv.org/pdf/2403.16533" class="citation-link" target="_blank">[42]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- High Throughput -->
+            <div id="high-throughput" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Optimizing for High Throughput (&gt;10K TPS)</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  While low latency focuses on individual transaction speed, high throughput addresses overall system capacity. The goal is processing tens of thousands of transactions per second without performance degradation, requiring careful architectural trade-offs.
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-3 flex items-center">
+                      <i class="fas fa-expand-arrows-alt mr-2"></i>
+                      Horizontal Scalability
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-2">
+                      <li>• Docker containerization</li>
+                      <li>• Kubernetes orchestration</li>
+                      <li>• Auto-scaling based on metrics</li>
+                      <li>• Stateless service design</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-3 flex items-center">
+                      <i class="fas fa-stream mr-2"></i>
+                      Asynchronous Processing
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-2">
+                      <li>• Non-blocking I/O</li>
+                      <li>• Apache Kafka message queues</li>
+                      <li>• Event-driven architecture</li>
+                      <li>• Traffic smoothing during spikes</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-orange-800 mb-3 flex items-center">
+                      <i class="fas fa-database mr-2"></i>
+                      Data Layer Optimization
+                    </h4>
+                    <ul class="text-gray-700 text-sm space-y-2">
+                      <li>• Read replicas for query distribution</li>
+                      <li>• Redis caching strategies</li>
+                      <li>• High-performance databases</li>
+                      <li>• Efficient indexing schemes</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="metric-formula p-6">
+                  <h4 class="font-semibold text-gray-800 mb-4">Throughput Calculation</h4>
+                  <div class="grid md:grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div class="text-lg font-bold text-green-600">TPS =</div>
+                      <div class="text-sm text-gray-600">Transactions per Second</div>
+                    </div>
+                    <div>
+                      <div class="text-lg font-bold text-blue-600">Transactions</div>
+                      <div class="text-sm text-gray-600">Total processed</div>
+                    </div>
+                    <div>
+                      <div class="text-lg font-bold text-orange-600">Time (seconds)</div>
+                      <div class="text-sm text-gray-600">Measurement window</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Structures -->
+            <div id="data-structures" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Data Structures for High-Frequency Trading</h3>
+
+              <div class="bg-gray-50 rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  The choice of data structures critically determines performance in high-frequency trading environments. The Limit Order Book (LOB) must support extremely fast insertion, cancellation, and matching operations with lock-free concurrency control.
+                  <a href="https://www.sciencedirect.com/science/article/pii/S2352711022000875" class="citation-link" target="_blank">[44]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                      <i class="fas fa-tree text-green-500 mr-2"></i>
+                      Limit Order Book Structure
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-arrow-up text-red-500 mr-3 mt-1"></i>
+                        <span><strong>Bids:</strong> Max-heap for highest buy prices (O(1) access)</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-arrow-down text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Asks:</strong> Min-heap for lowest sell prices (O(1) access)</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-list text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Price Levels:</strong> FIFO queues for time-priority ordering</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                      <i class="fas fa-cogs text-orange-500 mr-2"></i>
+                      Performance Optimizations
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-lock-open text-purple-500 mr-3 mt-1"></i>
+                        <span><strong>Lock-free algorithms:</strong> Atomic operations for concurrent access</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-recycle text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Object pools:</strong> Pre-allocated object reuse to avoid GC pauses</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-layer-group text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Skip lists:</strong> Alternative to balanced trees with simpler concurrency</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="code-block p-6">
+                  <pre class="text-sm"><code>// Java implementation of PriceLevel for O(1) cancellation
+public class PriceLevel {
+    private final double price;
+    private final Map&lt;Long, Order&gt; ordersById;
+    private final Queue&lt;Order&gt; fifoQueue;
+    
+    public PriceLevel(double price) {
+        this.price = price;
+        this.ordersById = new HashMap&lt;&gt;();
+        this.fifoQueue = new LinkedList&lt;&gt;();
+    }
+    
+    public void addOrder(Order order) {
+        ordersById.put(order.getId(), order);
+        fifoQueue.add(order);
+    }
+    
+    public boolean cancelOrder(long orderId) {
+        Order order = ordersById.remove(orderId);
+        if (order != null) {
+            order.setCancelled(true);
+            return true;
+        }
+        return false;
+    }
+    
+    public Order getNextOrder() {
+        while (!fifoQueue.isEmpty()) {
+            Order order = fifoQueue.peek();
+            if (order.isCancelled()) {
+                fifoQueue.poll();
+                continue;
+            }
+            return order;
+        }
+        return null;
+    }
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data Management -->
+      <section id="data-management" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-12 text-gray-900 text-center">Data Management &amp; Persistence</h2>
+
+            <div id="sql-vs-nosql" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Choosing Between SQL and NoSQL Databases</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-8">
+                  The choice between SQL and NoSQL databases is not binary but strategic, based on specific component requirements. A polyglot persistence strategy leverages the strengths of each technology for optimal performance and reliability.
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a>
+                </p>
+
+                <div class="trade-off-table p-6 mb-8">
+                  <h4 class="font-semibold text-gray-800 mb-6">Database Selection Framework</h4>
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                      <thead>
+                        <tr class="border-b-2 border-gray-200">
+                          <th class="text-left py-3 px-4 font-semibold text-gray-800">Context</th>
+                          <th class="text-left py-3 px-4 font-semibold text-gray-800">Database Choice</th>
+                          <th class="text-left py-3 px-4 font-semibold text-gray-800">Rationale</th>
+                          <th class="text-left py-3 px-4 font-semibold text-gray-800">Example</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-gray-200">
+                        <tr>
+                          <td class="py-3 px-4">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                              User Management
+                            </span>
+                          </td>
+                          <td class="py-3 px-4 font-medium text-blue-600">SQL (PostgreSQL)</td>
+                          <td class="py-3 px-4 text-gray-700">ACID transactions, complex queries, data integrity</td>
+                          <td class="py-3 px-4 text-gray-700">User accounts, KYC/AML data</td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 px-4">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                              Trading Engine
+                            </span>
+                          </td>
+                          <td class="py-3 px-4 font-medium text-red-600">NoSQL (Redis)</td>
+                          <td class="py-3 px-4 text-gray-700">In-memory performance, sorted sets for order books</td>
+                          <td class="py-3 px-4 text-gray-700">Order book, price levels</td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 px-4">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                              Market Data
+                            </span>
+                          </td>
+                          <td class="py-3 px-4 font-medium text-purple-600">Time-series (InfluxDB)</td>
+                          <td class="py-3 px-4 text-gray-700">Time-based queries, high-volume ingestion</td>
+                          <td class="py-3 px-4 text-gray-700">Trade history, price ticks</td>
+                        </tr>
+                        <tr>
+                          <td class="py-3 px-4">
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                              Session Data
+                            </span>
+                          </td>
+                          <td class="py-3 px-4 font-medium text-green-600">Document (MongoDB)</td>
+                          <td class="py-3 px-4 text-gray-700">Flexible schema, session management</td>
+                          <td class="py-3 px-4 text-gray-700">User sessions, chat messages</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-4 flex items-center">
+                      <i class="fas fa-database mr-2"></i>
+                      SQL Advantages
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                      <li>• ACID transaction guarantees</li>
+                      <li>• Complex join queries</li>
+                      <li>• Strong consistency model</li>
+                      <li>• Mature ecosystem and tools</li>
+                      <li>• Data integrity constraints</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-4 flex items-center">
+                      <i class="fas fa-leaf mr-2"></i>
+                      NoSQL Advantages
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                      <li>• Horizontal scalability</li>
+                      <li>• Flexible data models</li>
+                      <li>• High write throughput</li>
+                      <li>• Specialized query patterns</li>
+                      <li>• Low-latency access patterns</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integration &amp; APIs -->
+      <section id="integration" class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-12 text-gray-900 text-center">Integration &amp; Communication</h2>
+
+            <!-- REST API -->
+            <div id="rest-api" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">RESTful API Design for Core Services</h3>
+
+              <div class="bg-gray-50 rounded-xl shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  RESTful APIs provide a solid foundation for public-facing CEX services, using standard HTTP methods and stateless communication. This approach simplifies client implementation and improves scalability through uniform interfaces.
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h4 class="font-semibold text-green-700 mb-4 flex items-center">
+                      <i class="fas fa-check-circle mr-2"></i>
+                      RESTful Best Practices
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-hashtag text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Versioning:</strong> /api/v1/ prefix for backward compatibility</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-tag text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Clear naming:</strong> Consistent resource naming conventions</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-orange-500 mr-3 mt-1"></i>
+                        <span><strong>Authentication:</strong> API keys or OAuth 2.0 with rate limiting</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-file-alt text-purple-500 mr-3 mt-1"></i>
+                        <span><strong>Documentation:</strong> OpenAPI/Swagger for comprehensive specs</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-blue-700 mb-4 flex items-center">
+                      <i class="fas fa-code mr-2"></i>
+                      Example Endpoints
+                    </h4>
+                    <div class="space-y-3">
+                      <div class="bg-white rounded p-3 border-l-4 border-green-500">
+                        <code class="text-sm text-green-600">GET /api/v1/orders</code>
+                        <div class="text-xs text-gray-600 mt-1">Retrieve user&#39;s orders</div>
+                      </div>
+                      <div class="bg-white rounded p-3 border-l-4 border-blue-500">
+                        <code class="text-sm text-blue-600">POST /api/v1/orders</code>
+                        <div class="text-xs text-gray-600 mt-1">Create new order</div>
+                      </div>
+                      <div class="bg-white rounded p-3 border-l-4 border-orange-500">
+                        <code class="text-sm text-orange-600">GET /api/v1/market/ticker</code>
+                        <div class="text-xs text-gray-600 mt-1">Get market ticker data</div>
+                      </div>
+                      <div class="bg-white rounded p-3 border-l-4 border-purple-500">
+                        <code class="text-sm text-purple-600">GET /api/v1/trades/history</code>
+                        <div class="text-xs text-gray-600 mt-1">Retrieve trade history</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 rounded-lg p-6">
+                  <h4 class="font-semibold text-yellow-800 mb-3 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    REST Limitations &amp; Complements
+                  </h4>
+                  <p class="text-gray-700">
+                    While excellent for CRUD operations, REST is inefficient for real-time data delivery due to polling overhead. WebSockets complement REST by providing persistent connections for streaming market data, order book updates, and trade notifications.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- API Gateway vs Service Mesh -->
+            <div id="api-gateway" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">API Gateway vs. Service Mesh</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  In microservices-based CEX architecture, managing communication across different traffic types requires distinct patterns. API Gateway handles external client requests (north-south traffic) while Service Mesh manages internal service-to-service communication (east-west traffic).
+                  <a href="https://www.digitalapi.ai/blogs/api-gateway-vs-service-mesh-whats-the-difference" class="citation-link" target="_blank">[57]</a>
+                  <a href="https://www.solo.io/topics/istio/service-mesh-vs-api-gateway" class="citation-link" target="_blank">[59]</a>
+                  <a href="https://talent500.com/blog/api-gateway-vs-service-mesh-practical-differences-for-devops-pros/" class="citation-link" target="_blank">[60]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-4 flex items-center">
+                      <i class="fas fa-door-open mr-2"></i>
+                      API Gateway (North-South)
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-shield text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Authentication &amp; Authorization:</strong> Unified security layer</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-tachometer-alt text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Rate Limiting:</strong> Protect services from abuse</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-route text-orange-500 mr-3 mt-1"></i>
+                        <span><strong>Request Routing:</strong> Intelligent traffic distribution</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-language text-purple-500 mr-3 mt-1"></i>
+                        <span><strong>Protocol Translation:</strong> REST to gRPC conversion</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-4 flex items-center">
+                      <i class="fas fa-network-wired mr-2"></i>
+                      Service Mesh (East-West)
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-search text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Service Discovery:</strong> Automatic service location</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-balance-scale text-orange-500 mr-3 mt-1"></i>
+                        <span><strong>Load Balancing:</strong> Intelligent traffic distribution</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-red-500 mr-3 mt-1"></i>
+                        <span><strong>mTLS Encryption:</strong> Mutual authentication</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
+                        <span><strong>Circuit Breaking:</strong> Failure isolation</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid" id="api-mesh-diagram">
+                    graph TB
+                    subgraph &#34;External Clients&#34;
+                    A[&#34;Web Browsers&#34;]
+                    B[&#34;Mobile Apps&#34;]
+                    C[&#34;Trading Bots&#34;]
+                    end
+
+                    subgraph &#34;API Gateway&#34;
+                    D[&#34;Authentication&#34;]
+                    E[&#34;Rate Limiting&#34;]
+                    F[&#34;Request Routing&#34;]
+                    end
+
+                    subgraph &#34;Service Mesh&#34;
+                    G[&#34;User Service&#34;]
+                    H[&#34;Trading Engine&#34;]
+                    I[&#34;Wallet Service&#34;]
+                    J[&#34;Market Data Service&#34;]
+                    end
+
+                    subgraph &#34;Infrastructure&#34;
+                    K[&#34;Load Balancer&#34;]
+                    L[&#34;Service Registry&#34;]
+                    M[&#34;Certificate Authority&#34;]
+                    end
+
+                    A --&gt; K
+                    B --&gt; K
+                    C --&gt; K
+
+                    K --&gt; D
+                    D --&gt; E
+                    E --&gt; F
+
+                    F --&gt; G
+                    F --&gt; H
+                    F --&gt; I
+                    F --&gt; J
+
+                    G -.-&gt; L
+                    H -.-&gt; L
+                    I -.-&gt; L
+                    J -.-&gt; L
+
+                    G -.-&gt; M
+                    H -.-&gt; M
+                    I -.-&gt; M
+                    J -.-&gt; M
+
+                    G -.-&gt; H
+                    H -.-&gt; I
+                    I -.-&gt; J
+                    J -.-&gt; G
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blockchain Integration -->
+            <div id="blockchain-integration" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Integrating with Blockchain Nodes</h3>
+
+              <div class="bg-gray-50 rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  Blockchain integration enables cryptocurrency deposits and withdrawals by running full nodes for each supported network. This infrastructure layer communicates via JSON-RPC APIs to validate transactions and manage asset movements securely.
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold text-green-700 mb-4 flex items-center">
+                      <i class="fas fa-cogs mr-2"></i>
+                      Core Responsibilities
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-qrcode text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Address Generation:</strong> Create unique deposit addresses for users</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-eye text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Transaction Monitoring:</strong> Track deposits and confirmations</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-paper-plane text-orange-500 mr-3 mt-1"></i>
+                        <span><strong>Withdrawal Broadcasting:</strong> Sign and broadcast transactions</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check-double text-purple-500 mr-3 mt-1"></i>
+                        <span><strong>Confirmation Tracking:</strong> Monitor transaction finality</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-700 mb-4 flex items-center">
+                      <i class="fas fa-shield-alt mr-2"></i>
+                      Security Requirements
+                    </h4>
+                    <ul class="space-y-3 text-gray-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-key text-red-500 mr-3 mt-1"></i>
+                        <span><strong>HSM Integration:</strong> Hardware Security Module for key management</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-users text-blue-500 mr-3 mt-1"></i>
+                        <span><strong>Multi-signature:</strong> Multiple authorization for high-value transactions</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-firewall text-orange-500 mr-3 mt-1"></i>
+                        <span><strong>Network Isolation:</strong> Protection from public internet access</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-server text-green-500 mr-3 mt-1"></i>
+                        <span><strong>Node Pooling:</strong> Load balancing and failover across multiple nodes</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-6">
+                  <h4 class="font-semibold text-blue-800 mb-3">Blockchain Variability Management</h4>
+                  <p class="text-gray-700 mb-4">
+                    Each blockchain has unique characteristics requiring abstraction layers to provide consistent interfaces to the exchange&#39;s core systems.
+                  </p>
+                  <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-orange-600">Bitcoin</strong>
+                      <div class="text-gray-600">~10 min block time, UTXO model, conservative upgrades</div>
+                    </div>
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-blue-600">Ethereum</strong>
+                      <div class="text-gray-600">~12 sec block time, account model, smart contracts</div>
+                    </div>
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-purple-600">Others</strong>
+                      <div class="text-gray-600">Solana, Polkadot, various consensus mechanisms</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Evolution &amp; Migration -->
+      <section id="evolution" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="serif text-4xl font-bold mb-12 text-gray-900 text-center">Evolution &amp; Migration</h2>
+
+            <!-- Strangler Fig Pattern -->
+            <div id="strangler-fig" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Applying the Strangler Fig Pattern</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 mb-6">
+                  The Strangler Fig Pattern provides a safe, incremental approach to migrating legacy CEX systems to modern architectures. Instead of risky &#34;big bang&#34; rewrites, this pattern gradually creates a new system around the old one, progressively replacing functionality while maintaining continuous operation.
+                  <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig" class="citation-link" target="_blank">[71]</a>
+                  <a href="https://microservices.io/post/refactoring/2023/06/21/strangler-fig-application-pattern-incremental-modernization-to-services.md.html" class="citation-link" target="_blank">[74]</a>
+                </p>
+
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                  <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">1</div>
+                    <h4 class="font-semibold text-blue-800 mb-3">Facade Setup</h4>
+                    <p class="text-gray-700 text-sm">Place proxy in front of legacy system, initially routing all requests to old implementation</p>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">2</div>
+                    <h4 class="font-semibold text-green-800 mb-3">New Services</h4>
+                    <p class="text-gray-700 text-sm">Build new microservices for specific functionalities, running in parallel with legacy system</p>
+                  </div>
+
+                  <div class="bg-orange-50 rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">3</div>
+                    <h4 class="font-semibold text-orange-800 mb-3">Gradual Routing</h4>
+                    <p class="text-gray-700 text-sm">Update facade to route specific requests to new services instead of legacy system</p>
+                  </div>
+
+                  <div class="bg-red-50 rounded-lg p-6 text-center">
+                    <div class="text-3xl font-bold text-red-600 mb-2">4</div>
+                    <h4 class="font-semibold text-red-800 mb-3">Decommission</h4>
+                    <p class="text-gray-700 text-sm">Legacy system becomes obsolete and can be safely decommissioned</p>
+                  </div>
+                </div>
+
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid" id="strangler-diagram">
+                    graph TB
+                    subgraph &#34;Phase 1: Initial State&#34;
+                    A[&#34;Client Requests&#34;]
+                    B[&#34;Legacy Monolith&#34;]
+                    A --&gt; B
+                    end
+
+                    subgraph &#34;Phase 2: Add Facade&#34;
+                    C[&#34;Client Requests&#34;]
+                    D[&#34;API Gateway/Facade&#34;]
+                    E[&#34;Legacy Monolith&#34;]
+                    C --&gt; D
+                    D --&gt; E
+                    end
+
+                    subgraph &#34;Phase 3: New Services&#34;
+                    F[&#34;Client Requests&#34;]
+                    G[&#34;API Gateway&#34;]
+                    H[&#34;Legacy Monolith&#34;]
+                    I[&#34;New User Service&#34;]
+                    J[&#34;New Trading Service&#34;]
+                    F --&gt; G
+                    G --&gt;|&#34;User routes&#34;| I
+                    G --&gt;|&#34;Trading routes&#34;| J
+                    G --&gt;|&#34;Other routes&#34;| H
+                    end
+
+                    subgraph &#34;Phase 4: Complete Migration&#34;
+                    K[&#34;Client Requests&#34;]
+                    L[&#34;API Gateway&#34;]
+                    M[&#34;User Service&#34;]
+                    N[&#34;Trading Service&#34;]
+                    O[&#34;Wallet Service&#34;]
+                    P[&#34;Market Data Service&#34;]
+                    K --&gt; L
+                    L --&gt; M
+                    L --&gt; N
+                    L --&gt; O
+                    L --&gt; P
+                    end
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deployment Strategies -->
+            <div id="deployment" class="mb-16">
+              <h3 class="serif text-2xl font-semibold mb-8 text-gray-900">Deployment and Release Strategies</h3>
+
+              <div class="bg-white rounded-xl shadow-lg p-8">
+                <p class="text-lg text-gray-700 mb-8">
+                  Advanced deployment strategies minimize risk and enable rapid, confident releases in high-stakes CEX environments. Canary releases and feature toggles provide granular control over feature rollouts and system evolution.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div class="bg-blue-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-4 flex items-center">
+                      <i class="fas fa-bird mr-2"></i>
+                      Canary Releases
+                    </h4>
+                    <p class="text-gray-700 mb-4 text-sm">
+                      Gradually roll out new versions to small user subsets, monitoring performance before full deployment.
+                    </p>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                        <span><strong>1% → 10% → 50% → 100%</strong> progressive rollout</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-blue-500 rounded-full mr-2"></div>
+                        <span><strong>Metrics monitoring:</strong> Latency, error rates, business KPIs</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                        <span><strong>Automated rollback:</strong> Quick reversal if issues detected</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-green-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-800 mb-4 flex items-center">
+                      <i class="fas fa-toggle-on mr-2"></i>
+                      Feature Toggles
+                    </h4>
+                    <p class="text-gray-700 mb-4 text-sm">
+                      Control feature activation at runtime without new deployments, decoupling release from deployment.
+                    </p>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-purple-500 rounded-full mr-2"></div>
+                        <span><strong>Gradual rollouts:</strong> Target specific user segments</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-orange-500 rounded-full mr-2"></div>
+                        <span><strong>A/B testing:</strong> Compare feature variations</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-4 h-4 bg-gray-500 rounded-full mr-2"></div>
+                        <span><strong>Emergency killswitch:</strong> Instant feature disablement</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-purple-50 rounded-lg p-6">
+                  <h4 class="font-semibold text-purple-800 mb-3">Implementation Tools &amp; Platforms</h4>
+                  <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-blue-600">Service Mesh</strong>
+                      <div class="text-gray-600">Istio, Linkerd for traffic management</div>
+                    </div>
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-green-600">Feature Flags</strong>
+                      <div class="text-gray-600">LaunchDarkly, Unleash, Flagsmith</div>
+                    </div>
+                    <div class="bg-white rounded p-3">
+                      <strong class="text-orange-600">Monitoring</strong>
+                      <div class="text-gray-600">Prometheus, Grafana, Datadog</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="container mx-auto px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="serif text-4xl font-bold mb-8">Architectural Excellence in CEX Design</h2>
+            <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+              Building a world-class centralized cryptocurrency exchange requires mastery of domain-driven decomposition, performance optimization, security engineering, and evolutionary architecture. The patterns and practices outlined provide a comprehensive foundation for creating platforms that can scale to millions of users while maintaining the highest standards of security and reliability.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <i class="fas fa-rocket text-green-400 text-3xl mb-4"></i>
+                <h3 class="font-semibold mb-2">Performance First</h3>
+                <p class="text-gray-300 text-sm">Microsecond-level latency with lock-free algorithms and hardware-aware optimization</p>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <i class="fas fa-shield-alt text-blue-400 text-3xl mb-4"></i>
+                <h3 class="font-semibold mb-2">Security by Design</h3>
+                <p class="text-gray-300 text-sm">Defense-in-depth with secure hashing, rate limiting, and cold/hot wallet segregation</p>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                <i class="fas fa-cogs text-orange-400 text-3xl mb-4"></i>
+                <h3 class="font-semibold mb-2">Evolutionary Architecture</h3>
+                <p class="text-gray-300 text-sm">Strangler fig pattern and feature toggles for controlled system evolution</p>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <p class="text-lg text-gray-300 italic">
+                &#34;The architecture of a CEX represents the intersection of high-frequency trading systems, secure banking infrastructure, and modern distributed systems design.&#34;
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer with Citations -->
+      <footer class="bg-gray-100 py-12">
+        <div class="container mx-auto px-8">
+          <div class="max-w-4xl mx-auto">
+            <h3 class="serif text-xl font-semibold mb-6 text-gray-800">References</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div class="space-y-2">
+                <p>
+                  <a href="https://arxiv.org/pdf/2403.16533" class="citation-link" target="_blank">[42]</a> XAV Matching Engine FPGA Optimization
+                </p>
+                <p>
+                  <a href="https://github.com/joaquinbejar/OrderBook-rs" class="citation-link" target="_blank">[43]</a> OrderBook-rs Implementation
+                </p>
+                <p>
+                  <a href="https://medium.com/@amitava.webwork/designing-low-latency-high-performance-order-matching-engine-a07bd58594f4" class="citation-link" target="_blank">[45]</a> Low-Latency Order Matching Design
+                </p>
+                <p>
+                  <a href="https://www.sciencedirect.com/science/article/pii/S2352711022000875" class="citation-link" target="_blank">[44]</a> CoinTossX Engine Architecture
+                </p>
+                <p>
+                  <a href="https://www.mdpi.com/2076-3417/13/20/11533" class="citation-link" target="_blank">[56]</a> Applied Sciences - CEX Architecture Study
+                </p>
+                <p>
+                  <a href="https://medium.com/@priyanshu011109/hexagonal-architecture-clean-code-through-ports-adapters-57fab0712078" class="citation-link" target="_blank">[52]</a> Hexagonal Architecture Implementation
+                </p>
+              </div>
+              <div class="space-y-2">
+                <p>
+                  <a href="https://github.com/denyspoltorak/metapatterns/wiki/Hexagonal-Architecture" class="citation-link" target="_blank">[51]</a> Hexagonal Architecture Patterns
+                </p>
+                <p>
+                  <a href="https://www.digitalapi.ai/blogs/api-gateway-vs-service-mesh-whats-the-difference" class="citation-link" target="_blank">[57]</a> API Gateway vs Service Mesh
+                </p>
+                <p>
+                  <a href="https://www.solo.io/topics/istio/service-mesh-vs-api-gateway" class="citation-link" target="_blank">[59]</a> Service Mesh Architecture
+                </p>
+                <p>
+                  <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig" class="citation-link" target="_blank">[71]</a> Strangler Fig Pattern
+                </p>
+                <p>
+                  <a href="https://microservices.io/post/refactoring/2023/06/21/strangler-fig-application-pattern-incremental-modernization-to-services.md.html" class="citation-link" target="_blank">[74]</a> Incremental Modernization
+                </p>
+                <p>
+                  <a href="https://dev.to/nikita_rykhlov/go-tools-password-hashing-with-argon2-instead-of-bcrypt-38aj" class="citation-link" target="_blank">[66]</a> Argon2 Password Hashing
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid with enhanced configuration
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#87a96b',
+                primaryTextColor: '#2d3748',
+                primaryBorderColor: '#87a96b',
+                lineColor: '#8b8680',
+                secondaryColor: '#c65d07',
+                tertiaryColor: '#059669',
+                background: '#fefcf8',
+                mainBkg: '#fefcf8',
+                secondBkg: '#f7fafc',
+                tertiaryBkg: '#edf2f7',
+                cScale0: '#87a96b',
+                cScale1: '#c65d07',
+                cScale2: '#059669',
+                cScale3: '#8b8680',
+                cScale4: '#2d3748',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            securityLevel: 'loose'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Call the function to initialize
+        initializeMermaidControls();
+
+        // Scroll progress indicator
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+        }
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active TOC link highlighting
+        function updateActiveTocLink() {
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    currentSection = section.id;
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const tocFixed = document.querySelector('.toc-fixed');
+        
+        function toggleMobileMenu() {
+            tocFixed.classList.toggle('mobile-open');
+        }
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideToc = tocFixed.contains(event.target);
+            const isClickOnMenuButton = mobileMenuToggle && mobileMenuToggle.contains(event.target);
+            
+            if (window.innerWidth <= 768 && 
+                tocFixed.classList.contains('mobile-open') && 
+                !isClickInsideToc && 
+                !isClickOnMenuButton) {
+                tocFixed.classList.remove('mobile-open');
+            }
+        });
+
+        // Handle window resize to remove mobile-open class on large screens
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                tocFixed.classList.remove('mobile-open');
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // Initialize event listeners
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            updateActiveTocLink();
+        });
+
+        window.addEventListener('load', () => {
+            updateScrollProgress();
+            updateActiveTocLink();
+        });
+    </script>
+  
+
+</body></html>
