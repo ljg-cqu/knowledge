@@ -8,9 +8,9 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 **MECE Position**: Covers all functions (technical, commercial, product, financial, strategic) during **formation stage only** (pre-seed → Series A), software and non-software industries. Formation-stage decisions require cross-functional integration.
 
-**For Established Organizations**: Not for ongoing operational optimization in mature organizations—use specialized prompts (Product & Market Intelligence, Technical Operations, Commercial Operations, Financial & Economic, Strategic & Innovation).
+**For Established Organizations**: Not for ongoing operational optimization in mature organizations—use specialized prompts (ProdMarket.md, TechOps.md, CommOps.md, FinEcon.md, StratIntel.md, OpsSupply.md, PeopleWF.md).
 
-**Freshness Guarantee** (category-adaptive thresholds):
+**Freshness** (category-adaptive thresholds):
 - **HV** (Market/Competition/Partnerships): ≥85% <1mo (≥30% in 1-3d), ≥95% <2mo, 100% ≤4mo
 - **MV** (Funding/VC/Business Models/Talent/Macro): ≥70% <2mo (≥20% in 1-3d), ≥90% <3mo, 100% ≤6mo
 - **LT** (Regulatory/Compliance): ≥50% <3mo, ≥75% <6mo, 100% ≤12mo (≤20% at 12-18mo if enduring impact)

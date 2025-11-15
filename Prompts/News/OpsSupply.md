@@ -8,7 +8,7 @@ Generate 15–20 Q&As analyzing recent industry news, transforming it into actio
 
 **Exclusions**: Product/market strategy, sales/marketing execution, corporate finance/capital structure, early-stage company formation, long-horizon corporate strategy beyond operations.
 
-**Freshness Thresholds** (category-adaptive):
+**Freshness** (category-adaptive):
 - **HV** (Disruptions, Logistics, Supplier Risk): ≥75% <1mo (≥25% in 1–7d), ≥90% <2mo, 100% ≤4mo  
 - **MV** (Process/Lean, Technology, Inventory/Demand): ≥65% <2mo (≥20% in 1–14d), ≥85% <3mo, 100% ≤6mo  
 - **LT** (Safety/Regulatory, Sustainability/Resilience): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo  

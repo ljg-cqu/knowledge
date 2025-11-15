@@ -43,14 +43,14 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 
 | File | Org Stage | Function | Time Horizon | Update Freq | Scope |
 |------|-----------|----------|--------------|-------------|-------|
-| **Startup & Formation** | Formation (pre-PMF) | All (cross-functional) | Short (1-6mo) | Bi-weekly | Business formation, fundraising, market entry, competitive positioning, founding team |
-| **Technical Operations** | Growth/Scale (post-PMF) | Technical | Immediate (0-2mo) | Bi-weekly | Engineering, infrastructure, security, development lifecycle, technical debt |
-| **Commercial Operations** | Growth/Scale (post-PMF) | Commercial | Immediate-Short (0-2mo) | Bi-weekly | Sales, marketing, customer success, revenue operations, GTM execution |
-| **Product & Market Intelligence** | Growth/Scale (post-PMF) | Product | Immediate-Medium (0-6mo) | Bi-weekly | Product strategy, competitive features, pricing, UX trends, customer research, positioning |
-| **Financial & Economic** | Growth/Scale (post-PMF) | Financial | Short-Medium (1-6mo) | Monthly | Corporate finance, treasury, capital markets, M&A, macroeconomic trends |
-| **Strategic Intelligence** | Growth/Scale (post-PMF) | Strategic | Long (6mo-10yr) | Monthly | R&D, policy/regulatory, ESG, market research, consumer trends, cross-industry signals |
-| **Operations & Supply Chain** | Growth/Scale (post-PMF) | Operations | Immediate-Medium (0-12mo) | Monthly | Manufacturing, production, logistics, procurement, inventory, facilities, safety, resilience |
-| **People & Workforce Intelligence** | Growth/Scale (post-PMF) | People/Workforce | Short-Medium (1-24mo) | Monthly | Talent markets, skills, compensation & benefits, labor law, culture, engagement, wellbeing |
+| **Startup.md** | Formation (pre-PMF) | All (cross-functional) | Short (1-6mo) | Bi-weekly | Business formation, fundraising, market entry, competitive positioning, founding team |
+| **TechOps.md** | Growth/Scale (post-PMF) | Technical | Immediate (0-2mo) | Bi-weekly | Engineering, infrastructure, security, development lifecycle, technical debt |
+| **CommOps.md** | Growth/Scale (post-PMF) | Commercial | Immediate-Short (0-2mo) | Bi-weekly | Sales, marketing, customer success, revenue operations, GTM execution |
+| **ProdMarket.md** | Growth/Scale (post-PMF) | Product | Immediate-Medium (0-6mo) | Bi-weekly | Product strategy, competitive features, pricing, UX trends, customer research, positioning |
+| **FinEcon.md** | Growth/Scale (post-PMF) | Financial | Short-Medium (1-6mo) | Monthly | Corporate finance, treasury, capital markets, M&A, macroeconomic trends |
+| **StratIntel.md** | Growth/Scale (post-PMF) | Strategic | Long (6mo-10yr) | Monthly | R&D, policy/regulatory, ESG, market research, consumer trends, cross-industry signals |
+| **OpsSupply.md** | Growth/Scale (post-PMF) | Operations | Immediate-Medium (0-12mo) | Monthly | Manufacturing, production, logistics, procurement, inventory, facilities, safety, resilience |
+| **PeopleWF.md** | Growth/Scale (post-PMF) | People/Workforce | Short-Medium (1-24mo) | Monthly | Talent markets, skills, compensation & benefits, labor law, culture, engagement, wellbeing |
 
 ## MECE Compliance Verification
 
@@ -128,19 +128,19 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 | **UX Researcher/Designer** | Product & Market Intelligence | - |
 | **Pricing Strategist** | Product & Market Intelligence | Financial & Economic (capital) |
 | **Competitive Intelligence** | Product & Market Intelligence | Startup & Formation (market entry) |
-| **CTO/VP Engineering** | Technical Operations | Strategic & Innovation (R&D) |
+| **CTO/VP Engineering** | Technical Operations | Strategic Intelligence (R&D) |
 | **Architect** | Technical Operations | - |
 | **DevOps/SRE** | Technical Operations | - |
 | **Security Engineer** | Technical Operations | - |
 | **CRO/VP Sales** | Commercial Operations | Financial & Economic (pricing) |
-| **VP Marketing** | Commercial Operations | Strategic & Innovation (consumer trends) |
+| **VP Marketing** | Commercial Operations | Strategic Intelligence (consumer trends) |
 | **VP Customer Success** | Commercial Operations | Product & Market Intelligence (customer research) |
 | **RevOps** | Commercial Operations | Financial & Economic (metrics) |
 | **CFO** | Financial & Economic | All (financial impact) |
 | **Treasurer** | Financial & Economic | - |
 | **Corporate Development** | Financial & Economic | Strategic Intelligence |
 | **Chief Strategy Officer** | Strategic Intelligence | Financial & Economic (M&A) |
-| **Chief Innovation Officer** | Strategic Intelligence | Technical Operations (R&D) |
+| **Chief Innovation Officer** | Strategic Intelligence | Technical Operations (tech R&D) |
 | **Chief Sustainability Officer** | Strategic Intelligence | - |
 | **Investor (Angel/VC/PE)** | Startup & Formation | Financial & Economic (markets) |
 | **COO / VP Operations** | Operations & Supply Chain | Technical Operations, Strategic Intelligence |
@@ -163,65 +163,71 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 ## Usage Guide
 
 ### For Formation-Stage Organizations (Pre-seed → Series A):
-**Use**: `[prom] Startup & Formation Intelligence News.md`  
+**Use**: `Startup.md`  
 **Rationale**: Cross-functional integration required during formation
 
 ### For Post-PMF Organizations:
 
 **Technical Decisions** (stack, infrastructure, security):  
-→ `[prom] Technical Operations News.md`
+→ `TechOps.md`
 
 **Product Decisions** (features, pricing, UX, competitive intelligence):  
-→ `[prom] Product & Market Intelligence News.md`
+→ `ProdMarket.md`
 
 **Commercial Execution** (sales, marketing, customer success):  
-→ `[prom] Commercial Operations News.md`
+→ `CommOps.md`
 
 **Financial Decisions** (capital structure, treasury, M&A):  
-→ `[prom] Financial & Economic News.md`
+→ `FinEcon.md`
 
 **Strategic Planning** (R&D, policy, ESG, long-term):  
-→ `[prom] Strategic Intelligence News.md`
+→ `StratIntel.md`
+
+**Operations & Supply Chain** (manufacturing, logistics, procurement):  
+→ `OpsSupply.md`
+
+**People & Workforce** (talent, compensation, labor, culture):  
+→ `PeopleWF.md`
 
 ### For Comprehensive Industry Understanding:
 
 **Use all 8 files** (MECE-compliant complete coverage):
-1. **Startup & Formation** – Formation dynamics, early-stage competitive intelligence
-2. **Technical Operations** – Engineering trends, infrastructure evolution, security landscape
-3. **Product & Market Intelligence** – Product strategy, competitive features, pricing intelligence, UX trends
-4. **Commercial Operations** – GTM best practices, revenue benchmarks, customer dynamics
-5. **Financial & Economic** – Market conditions, M&A trends, capital availability
-6. **Strategic Intelligence** – Long-term trends, regulatory shifts, innovation signals
-7. **Operations & Supply Chain** – Manufacturing, logistics, supplier risk, inventory, quality & safety
-8. **People & Workforce Intelligence** – Talent markets, skills, comp & benefits, labor law, culture, wellbeing
+1. **Startup.md** – Formation dynamics, early-stage competitive intelligence
+2. **TechOps.md** – Engineering trends, infrastructure evolution, security landscape
+3. **ProdMarket.md** – Product strategy, competitive features, pricing intelligence, UX trends
+4. **CommOps.md** – GTM best practices, revenue benchmarks, customer dynamics
+5. **FinEcon.md** – Market conditions, M&A trends, capital availability
+6. **StratIntel.md** – Long-term trends, regulatory shifts, innovation signals
+7. **OpsSupply.md** – Manufacturing, logistics, supplier risk, inventory, quality & safety
+8. **PeopleWF.md** – Talent markets, skills, comp & benefits, labor law, culture, wellbeing
 
 ### Decision Tree: Which File(s) to Use?
 
 ```
 Are you a formation-stage company (pre-PMF, pre-Series A)?
-├─ YES → Startup & Formation News (covers all functions)
+├─ YES → Startup.md (covers all functions)
 └─ NO (post-PMF) → Choose by decision type:
    │
    ├─ Technical stack, infrastructure, security?
-   │  → Technical Operations News
+   │  → TechOps.md
    │
    ├─ Product features, pricing, UX, competitive features?
-   │  → Product & Market Intelligence News
+   │  → ProdMarket.md
    │
    ├─ Sales/marketing execution, customer success, RevOps?
-   │  → Commercial Operations News
+   │  → CommOps.md
    │
    ├─ Capital structure, treasury, M&A, macro economy?
-   │  → Financial & Economic News
+   │  → FinEcon.md
    │
    ├─ Operations & supply chain (manufacturing, logistics, suppliers, inventory)?
-   │  → Operations & Supply Chain News
+   │  → OpsSupply.md
    │
    ├─ People & workforce (hiring, skills, comp & benefits, labor law, culture, wellbeing)?
-   │  → People & Workforce Intelligence News
+   │  → PeopleWF.md
    │
    └─ Long-term strategy, R&D, policy, ESG?
-      → Strategic Intelligence News
+      → StratIntel.md
 ```
 
 ## Boundary Clarifications

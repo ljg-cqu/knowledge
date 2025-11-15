@@ -8,7 +8,7 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 **Excludes**: Technical implementation, product strategy/pricing research, corporate finance, long-term strategy, early-stage startups.
 
-**Freshness** (HV: Sales/Marketing/Competitive | MV: CS/GTM Tools):
+**Freshness** (category-adaptive):
 - HV: ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
 - MV: ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
 - Overall: ≥75% <2mo, ≥90% <4mo, 100% ≤6mo | Valid: 2wks

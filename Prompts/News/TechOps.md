@@ -6,9 +6,9 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 **Scope**: Technical stack, infrastructure, security, development lifecycle, technical debt, engineering practices. Covers digital/physical systems at scale (software platforms, industrial, logistics, services).
 
-**MECE Position**: Technical/engineering function only. Excludes product/market strategy, commercial GTM, corporate finance/treasury, long-term strategy/policy, early-stage formation.
+**MECE Position**: Technical/engineering function only. Excludes product/market strategy (ProdMarket.md), commercial GTM (CommOps.md), corporate finance/treasury (FinEcon.md), long-term strategy/policy (StratIntel.md), early-stage formation (Startup.md).
 
-**Freshness Guarantee**:
+**Freshness**:
 - **HV** (Tech/Ecosystem/Security): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
 - **MV** (Standards/Eng Practices): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
 - **LT** (Regulatory): ≥50% <3mo, ≥75% <6mo, 100% ≤12mo (≤20% at 12-18mo if enduring)

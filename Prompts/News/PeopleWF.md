@@ -8,7 +8,7 @@ Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 
 
 **Exclusions**: Technical/operational decisions, product/GTM strategy, corporate finance, capital markets, early-stage venture formation, long-horizon corporate strategy beyond workforce.
 
-**Freshness Thresholds** (category-adaptive):
+**Freshness** (category-adaptive):
 - **HV** (Talent/Skills/Disruptions): ≥75% <1mo (≥25% in 1–7d), ≥90% <2mo, 100% ≤4mo  
 - **MV** (Comp/Benefits/Policy/Labor): ≥65% <2mo (≥20% in 1–14d), ≥85% <3mo, 100% ≤6mo  
 - **LT** (Culture/Engagement/Wellbeing/DEI): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo (≤20% at 18–24mo if enduring)  
