@@ -34,15 +34,15 @@ graph TB
     I --> R[Seafood: 44/50<br/>Highest impact]
     J --> S[Supply Chain: 37<br/>Wins cross-industry]
     
-    style K fill:#e1f5ff
-    style L fill:#ccffcc
-    style M fill:#ffe1e1
-    style N fill:#fff5cc
-    style O fill:#e1ffe1
-    style P fill:#ffe1ff
-    style Q fill:#ffe1e1
-    style R fill:#e1fff5
-    style S fill:#f5e1ff
+    style K fill:#1976D2
+    style L fill:#2E7D32
+    style M fill:#C62828
+    style N fill:#F57C00
+    style O fill:#90EE90
+    style P fill:#DDA0DD
+    style Q fill:#C62828
+    style R fill:#7FDBCA
+    style S fill:#D8BFD8
 ```
 
 **Key Findings Summary**:
@@ -109,9 +109,9 @@ graph LR
     J --> K[Finality]
     K --> L[Data Availability]
     
-    style A fill:#e1f5ff
-    style E fill:#ffe1e1
-    style I fill:#e1ffe1
+    style A fill:#1976D2
+    style E fill:#C62828
+    style I fill:#90EE90
 ```
 
 | **Flow Type** | **Path** |
@@ -170,13 +170,13 @@ graph TD
     D3 --> D4[Borrower]
     end
     
-    style T2 fill:#ffcccc
-    style T3 fill:#ffcccc
-    style T4 fill:#ffcccc
-    style T5 fill:#ffcccc
-    style T6 fill:#ffcccc
-    style D2 fill:#ccffcc
-    style D3 fill:#ccffcc
+    style T2 fill:#ff9999
+    style T3 fill:#ff9999
+    style T4 fill:#ff9999
+    style T5 fill:#ff9999
+    style T6 fill:#ff9999
+    style D2 fill:#2E7D32
+    style D3 fill:#2E7D32
 ```
 
 | **Model** | **Intermediaries** | **Spread** | **Annual Cost (US)** |
@@ -249,10 +249,10 @@ graph TD
     C3 -->|Auto-release| C4[Funds Released]
     end
     
-    style I2 fill:#e1f5ff
-    style P2 fill:#ffe1e1
-    style P3 fill:#ffe1e1
-    style C2 fill:#e1ffe1
+    style I2 fill:#1976D2
+    style P2 fill:#C62828
+    style P3 fill:#C62828
+    style C2 fill:#90EE90
 ```
 
 **Multi-stakeholder perspectives**:
@@ -314,9 +314,9 @@ graph LR
     C -.->|5-10% Royalty| A
     E -.->|5-10% Royalty| A
     
-    style A fill:#ccffcc
-    style H fill:#ffcccc
-    style G fill:#cce5ff
+    style A fill:#2E7D32
+    style H fill:#ff9999
+    style G fill:#99CCFF
 ```
 
 **Multi-stakeholder views**:
@@ -591,8 +591,8 @@ graph TB
     R3[🥉 Gaming: 27]
     end
     
-    style R1 fill:#ffd700
-    style R2 fill:#c0c0c0
+    style R1 fill:#FFD700
+    style R2 fill:#A9A9A9
     style R3 fill:#cd7f32
 ```
 
@@ -633,8 +633,8 @@ graph LR
     B2 --> B3[Receiver Bank]
     end
     
-    style T3 fill:#ffcccc
-    style B2 fill:#ccffcc
+    style T3 fill:#ff9999
+    style B2 fill:#2E7D32
 ```
 
 | **Metric** | **Traditional** | **Blockchain** | **Improvement** |
@@ -707,9 +707,9 @@ graph TD
     P3 --> P4[Reader]
     end
     
-    style M1 fill:#ffcccc
-    style A1 fill:#ffcccc
-    style P1 fill:#ffcccc
+    style M1 fill:#ff9999
+    style A1 fill:#ff9999
+    style P1 fill:#ff9999
 ```
 
 **Blockchain transformation**:
@@ -731,9 +731,9 @@ graph LR
     PB2 -->|Per-article| PB3[Reader]
     end
     
-    style MB1 fill:#ccffcc
-    style AB1 fill:#ccffcc
-    style PB1 fill:#ccffcc
+    style MB1 fill:#2E7D32
+    style AB1 fill:#2E7D32
+    style PB1 fill:#2E7D32
 ```
 
 | **Industry** | **Traditional Creator Share** | **Blockchain Potential** | **Value Shift** |
@@ -1105,8 +1105,8 @@ graph LR
     E[Console: 25 - Platform resistance] -->|IP-driven only| F[Limited scope]
     
     style A fill:#90EE90
-    style C fill:#FFE4B5
-    style E fill:#FFB6C1
+    style C fill:#FFB84D
+    style E fill:#FF8FAB
 ```
 
 **Trade-offs**:
@@ -1354,7 +1354,7 @@ graph TD
     J[Differential Privacy] -.->|Noise| F
     K[Federated Learning] -.->|No raw data| F
     
-    style C fill:#87CEEB
+    style C fill:#5DADE2
     style D fill:#90EE90
     style H fill:#FFD700
 ```
@@ -1444,7 +1444,7 @@ graph LR
     K[Satellite Imagery] -.->|Verification| C
     
     style C fill:#90EE90
-    style D fill:#87CEEB
+    style D fill:#5DADE2
     style G fill:#FFD700
 ```
 
@@ -1558,7 +1558,7 @@ graph TB
     end
     
     style A fill:#4ecdc4
-    style B fill:#ffe66d
+    style B fill:#FFD700
     style C fill:#ff6b6b
 ```
 
@@ -1689,7 +1689,7 @@ graph TD
     D -->|High local value| G[Efficiency gains only]
     
     style B fill:#ff6b6b
-    style C fill:#ffd93d
+    style C fill:#FFB84D
     style D fill:#6bcf7f
 ```
 
@@ -1741,12 +1741,12 @@ graph TD
     S3[Blockchain: T+0] -->|90% reduction| S4[Instant Settlement]
     end
     
-    style R2 fill:#ffcccc
-    style T2 fill:#ffcccc
-    style S2 fill:#ffcccc
-    style R4 fill:#ccffcc
-    style T4 fill:#ccffcc
-    style S4 fill:#ccffcc
+    style R2 fill:#ff9999
+    style T2 fill:#ff9999
+    style S2 fill:#ff9999
+    style R4 fill:#2E7D32
+    style T4 fill:#2E7D32
+    style S4 fill:#2E7D32
 ```
 
 | **Market** | **Current Bottleneck** | **Processing Time** | **Blockchain Solution** | **Improvement** |
@@ -1793,8 +1793,8 @@ graph LR
     C[🥉 Remittances: 25<br/>$40B fee reduction]
     end
     
-    style A fill:#ffd700
-    style B fill:#c0c0c0
+    style A fill:#FFD700
+    style B fill:#A9A9A9
     style C fill:#cd7f32
 ```
 
@@ -1904,8 +1904,8 @@ graph TD
     D --> G[15% → 30% creator share<br/>$30B value shift]
     
     style B fill:#90EE90
-    style C fill:#FFE4B5
-    style D fill:#FFB6C1
+    style C fill:#FFB84D
+    style D fill:#FF8FAB
 ```
 
 **Success metrics by 2027**:

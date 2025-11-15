@@ -16,6 +16,16 @@ graph LR
     F --> I[Competitive Advantage]
     G --> I
     H --> I
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style D fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style E fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style F fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style G fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style H fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style I fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 By providing a shared, tamper-proof ledger, blockchain enhances trust and enables seamless tracking of transactions and data throughout complex supply chains. This technology is increasingly being embraced by organizations seeking a competitive advantage, influencing how businesses optimize strategies and make critical decisions.
@@ -66,6 +76,21 @@ graph TD
     K --> N
     L --> N
     M --> N
+    
+    style A fill:#E3F2FD,stroke:#2196F3,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#FFF9C4,stroke:#F57C00,color:#000
+    style F fill:#FFF9C4,stroke:#F57C00,color:#000
+    style G fill:#FFF9C4,stroke:#F57C00,color:#000
+    style H fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style I fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style J fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style K fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style L fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style M fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style N fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 #### 3. Blockchain's Impact Across Core Industry Value Chains
@@ -103,6 +128,14 @@ graph LR
     G -.->|Immutable Records| C
     G -.->|Immutable Records| D
     G -.->|Immutable Records| E
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E3F2FD,stroke:#2196F3,color:#000
+    style D fill:#E3F2FD,stroke:#2196F3,color:#000
+    style E fill:#FFEBEE,stroke:#F44336,color:#000
+    style F fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style G fill:#E8F5E9,stroke:#4CAF50,color:#000
 ```
 
 **Key Industry Case Studies:**
@@ -152,6 +185,20 @@ graph TD
     K --> L
     
     L --> M[Competitive Advantage]
+    
+    style A fill:#E3F2FD,stroke:#2196F3,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#FFF9C4,stroke:#F57C00,color:#000
+    style F fill:#FFF9C4,stroke:#F57C00,color:#000
+    style G fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style H fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style I fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style J fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style K fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style L fill:#E3F2FD,stroke:#2196F3,color:#000
+    style M fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 **FinTech Blockchain Implementations:**
@@ -199,6 +246,14 @@ graph LR
     
     F[Regulatory Bodies] -.->|Compliance Monitoring| E
     G[Privacy Protection] -.->|Data Encryption| E
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E3F2FD,stroke:#2196F3,color:#000
+    style D fill:#FFEBEE,stroke:#F44336,color:#000
+    style E fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style F fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style G fill:#F3E5F5,stroke:#9C27B0,color:#000
 ```
 
 **Healthcare Pain Points vs. Blockchain Solutions:**
@@ -244,6 +299,16 @@ graph TD
     B -->|Audit Trail| H[Compliance]
     
     I[All Stakeholders] -.->|Transparent Access| B
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style C fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style D fill:#E3F2FD,stroke:#2196F3,color:#000
+    style E fill:#FFEBEE,stroke:#F44336,color:#000
+    style F fill:#E3F2FD,stroke:#2196F3,color:#000
+    style G fill:#E3F2FD,stroke:#2196F3,color:#000
+    style H fill:#E3F2FD,stroke:#2196F3,color:#000
+    style I fill:#FFF9C4,stroke:#F57C00,color:#000
 ```
 
 **Market Growth Projection:**
@@ -293,6 +358,13 @@ graph LR
     F -.->|Secure Payments| C
     F -.->|IoT Tracking| D
     F -.->|Authenticity Proof| E
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E3F2FD,stroke:#2196F3,color:#000
+    style D fill:#E3F2FD,stroke:#2196F3,color:#000
+    style E fill:#FFEBEE,stroke:#F44336,color:#000
+    style F fill:#E8F5E9,stroke:#4CAF50,color:#000
 ```
 
 **E-Commerce Pain Points & Solutions:**
@@ -353,6 +425,14 @@ graph TD
     G -.->|Compliance| C
     G -.->|Security Monitoring| D
     G -.->|Value Extraction| E
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E3F2FD,stroke:#2196F3,color:#000
+    style D fill:#E3F2FD,stroke:#2196F3,color:#000
+    style E fill:#FFEBEE,stroke:#F44336,color:#000
+    style F fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style G fill:#F3E5F5,stroke:#9C27B0,color:#000
 ```
 
 **B2B SaaS Challenges & Blockchain Solutions:**
@@ -388,6 +468,14 @@ graph LR
     D --> G
     E --> G
     F --> G
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E3F2FD,stroke:#2196F3,color:#000
+    style C fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style D fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style E fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style F fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style G fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 **Key Applications:**
@@ -433,6 +521,19 @@ graph TD
     I --> L
     J --> L
     K --> L
+    
+    style A fill:#E3F2FD,stroke:#2196F3,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#FFF9C4,stroke:#F57C00,color:#000
+    style F fill:#FFF9C4,stroke:#F57C00,color:#000
+    style G fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style H fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style I fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style J fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style K fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style L fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 **Opportunity Matrix:**
@@ -476,6 +577,21 @@ graph TD
     K --> N
     L --> N
     M --> N
+    
+    style A fill:#FFEBEE,stroke:#F44336,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#E3F2FD,stroke:#2196F3,color:#000
+    style F fill:#E3F2FD,stroke:#2196F3,color:#000
+    style G fill:#E3F2FD,stroke:#2196F3,color:#000
+    style H fill:#E3F2FD,stroke:#2196F3,color:#000
+    style I fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style J fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style K fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style L fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style M fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style N fill:#FFCDD2,stroke:#C62828,color:#000
 ```
 
 **Challenge Assessment Table:**
@@ -524,6 +640,19 @@ graph TD
     I --> L
     J --> L
     K --> L
+    
+    style A fill:#E3F2FD,stroke:#2196F3,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#FFF9C4,stroke:#F57C00,color:#000
+    style F fill:#FFF9C4,stroke:#F57C00,color:#000
+    style G fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style H fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style I fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style J fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style K fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style L fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 **Emerging Technology Convergence:**
@@ -550,6 +679,16 @@ graph LR
     G[Automated Intelligence] -.->|Future| B
     H[Decentralized Ecosystems] -.->|Future| B
     I[BaaS Platforms] -.->|Future| B
+    
+    style A fill:#FFF9C4,stroke:#F57C00,color:#000
+    style B fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style C fill:#FFEBEE,stroke:#F44336,color:#000
+    style D fill:#FFEBEE,stroke:#F44336,color:#000
+    style E fill:#FFEBEE,stroke:#F44336,color:#000
+    style F fill:#E3F2FD,stroke:#2196F3,color:#000
+    style G fill:#E3F2FD,stroke:#2196F3,color:#000
+    style H fill:#E3F2FD,stroke:#2196F3,color:#000
+    style I fill:#E3F2FD,stroke:#2196F3,color:#000
 ```
 
 **Key Future Capabilities:**
@@ -625,6 +764,26 @@ graph TD
     P --> S
     Q --> S
     R --> S
+    
+    style A fill:#E3F2FD,stroke:#2196F3,color:#000
+    style B fill:#FFF9C4,stroke:#F57C00,color:#000
+    style C fill:#FFF9C4,stroke:#F57C00,color:#000
+    style D fill:#FFF9C4,stroke:#F57C00,color:#000
+    style E fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style F fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style G fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style H fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style I fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style J fill:#E8F5E9,stroke:#4CAF50,color:#000
+    style K fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style L fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style M fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style N fill:#F3E5F5,stroke:#9C27B0,color:#000
+    style O fill:#E1BEE7,stroke:#7B1FA2,color:#000
+    style P fill:#E1BEE7,stroke:#7B1FA2,color:#000
+    style Q fill:#E1BEE7,stroke:#7B1FA2,color:#000
+    style R fill:#E1BEE7,stroke:#7B1FA2,color:#000
+    style S fill:#FFEBEE,stroke:#F44336,color:#000
 ```
 
 **Executive Summary:**

@@ -64,15 +64,15 @@ graph TB
     X1 -.analyzes.-> I1
     X1 -.analyzes.-> E1
     
-    style A1 fill:#4CAF50
-    style A2 fill:#4CAF50
-    style A5 fill:#4CAF50
+    style A1 fill:#81C784
+    style A2 fill:#81C784
+    style A5 fill:#81C784
     style I1 fill:#64B5F6
     style I2 fill:#64B5F6
     style I3 fill:#64B5F6
     style I4 fill:#64B5F6
-    style E1 fill:#FFC107
-    style X1 fill:#FF6B6B
+    style E1 fill:#FFB74D
+    style X1 fill:#EF9A9A
 ```
 
 **Detailed Coverage Matrix**:
@@ -126,9 +126,9 @@ graph LR
     T1 --> T2
     M1 --> S1
     
-    style S1 fill:#4CAF50
-    style S2 fill:#4CAF50
-    style S3 fill:#4CAF50
+    style S1 fill:#81C784
+    style S2 fill:#81C784
+    style S3 fill:#81C784
     style T1 fill:#64B5F6
 ```
 
@@ -195,8 +195,8 @@ graph LR
     A -.drops.-> E[Borrow Rates Spike]
     E --> F[User Exodus]
     
-    style D fill:#ff6b6b
-    style F fill:#ff6b6b
+    style D fill:#EF9A9A
+    style F fill:#EF9A9A
 ```
 
 - **Type**: Two-sided (borrowers ↔ lenders)
@@ -228,8 +228,8 @@ graph TB
     A4 --> A2
     end
     
-    style C3 fill:#4CAF50
-    style C4 fill:#FFC107
+    style C3 fill:#81C784
+    style C4 fill:#FFB74D
 ```
 
 **Stakeholder Views**:
@@ -293,9 +293,9 @@ graph LR
     G --> H[Worse Spreads]
     H --> I[Trader Migration]
     
-    style F fill:#ff6b6b
-    style G fill:#ff6b6b
-    style I fill:#ff6b6b
+    style F fill:#EF9A9A
+    style G fill:#EF9A9A
+    style I fill:#EF9A9A
 ```
 
 **Historical Case**: Sushiswap 2021 - 15% fee switch triggered 20-30% LP exodus [Ref: A18]
@@ -403,9 +403,9 @@ graph TB
     P3A --> L3[75% gross margin]
     P3A --> L3B[24-month payback]
     
-    style L1 fill:#ff6b6b
-    style L2 fill:#ff6b6b
-    style L3B fill:#FFC107
+    style L1 fill:#EF9A9A
+    style L2 fill:#EF9A9A
+    style L3B fill:#FFB74D
 ```
 
 **Switching Cost Analysis** [Ref: G6, L3]:
@@ -545,9 +545,9 @@ graph TB
     D2 -.competition.-> C[50+ New L2s]
     end
     
-    style L1_1 fill:#ff6b6b
-    style L2_2 fill:#4CAF50
-    style C fill:#FFC107
+    style L1_1 fill:#EF9A9A
+    style L2_2 fill:#81C784
+    style C fill:#FFB74D
 ```
 
 **Competitive Moat Analysis** [Ref: G3, L10, A9]:
@@ -616,10 +616,10 @@ graph TB
     P2 -.funding gap.-> G2[Need $30-40M Alternative]
     end
     
-    style P1 fill:#4CAF50
-    style G2 fill:#ff6b6b
+    style P1 fill:#81C784
+    style G2 fill:#EF9A9A
     style U2 fill:#64B5F6
-    style TH2 fill:#FFC107
+    style TH2 fill:#FFB74D
 ```
 
 **Power Dynamics & Competitive Pressure** [Ref: G6, A94]:
@@ -729,10 +729,10 @@ graph TB
     N1 --> S1
     B1 --> S1
     
-    style S1 fill:#4CAF50
+    style S1 fill:#81C784
     style N1 fill:#64B5F6
-    style B1 fill:#FFC107
-    style O1 fill:#FF6B6B
+    style B1 fill:#FFB74D
+    style O1 fill:#EF9A9A
 ```
 
 **Analysis Framework Application Matrix**:
@@ -1247,12 +1247,12 @@ graph TB
     M1 --> V4
     I3 --> M3
     
-    style V1 fill:#FFC107
-    style V2 fill:#4CAF50
+    style V1 fill:#FFB74D
+    style V2 fill:#81C784
     style V3 fill:#64B5F6
-    style V4 fill:#FF6B6B
-    style I1 fill:#FF6B6B
-    style M4 fill:#ff6b6b
+    style V4 fill:#EF9A9A
+    style I1 fill:#EF9A9A
+    style M4 fill:#EF9A9A
 ```
 
 **Critical Value Chain Findings**:
@@ -1285,11 +1285,11 @@ graph LR
     E[Enterprise] --> EF[Hybrid Architecture + Consortium Governance]
     C[Cross-Chain] --> CF[Security-First + Gradual Decentralization]
     
-    style DF fill:#4CAF50
-    style NF fill:#4CAF50
-    style LF fill:#4CAF50
-    style EF fill:#4CAF50
-    style CF fill:#4CAF50
+    style DF fill:#81C784
+    style NF fill:#81C784
+    style LF fill:#81C784
+    style EF fill:#81C784
+    style CF fill:#81C784
 ```
 
 ---

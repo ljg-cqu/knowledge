@@ -24,7 +24,7 @@ graph TD
     
     style A fill:#9cf,stroke:#333,stroke-width:3px
     style B fill:#f96,stroke:#333,stroke-width:2px
-    style C fill:#fc9,stroke:#333,stroke-width:2px
+    style C fill:#fa6,stroke:#333,stroke-width:2px
 ```
 
 **Detailed Industry Breakdown:**
@@ -75,7 +75,7 @@ graph LR
     E[L2 Token] -.->|Bypassed| C
     
     style C fill:#f99,stroke:#333,stroke-width:3px
-    style E fill:#ccc,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style E fill:#bbb,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
 ```
 
 **Value Pool Distribution ($500M+ L2 Market):**
@@ -135,7 +135,7 @@ graph TD
     end
     
     style C1 fill:#f99,stroke:#333,stroke-width:2px
-    style C2 fill:#9f9,stroke:#333,stroke-width:2px
+    style C2 fill:#6c6,stroke:#333,stroke-width:2px
 ```
 
 **Comparative Analysis Table:**
@@ -232,8 +232,8 @@ graph TD
     D -->|+3% Difference| E
     
     style B fill:#f99,stroke:#333,stroke-width:2px
-    style C fill:#fbb,stroke:#333,stroke-width:2px
-    style E fill:#9f9,stroke:#333,stroke-width:1px
+    style C fill:#f88,stroke:#333,stroke-width:2px
+    style E fill:#6c6,stroke:#333,stroke-width:1px
 ```
 
 **Power Dynamics Matrix:**
@@ -521,7 +521,7 @@ graph TD
     F -->|Invisible backend| D
     
     style E fill:#f99,stroke:#333,stroke-width:2px
-    style F fill:#9f9,stroke:#333,stroke-width:2px
+    style F fill:#6c6,stroke:#333,stroke-width:2px
 ```
 
 **JTBD Mapping:**
@@ -692,7 +692,7 @@ graph TD
     
     style B1 fill:#f99,stroke:#333,stroke-width:2px
     style C1 fill:#f99,stroke:#333,stroke-width:2px
-    style B2 fill:#9f9,stroke:#333,stroke-width:2px
+    style B2 fill:#6c6,stroke:#333,stroke-width:2px
 ```
 
 **Bottleneck Analysis:**
@@ -823,9 +823,9 @@ graph TD
     E -->|Diluted Rewards| F[Creators Get Less]
     E -->|Bot Profit| G[Bot Operators Extract Value]
     
-    style C fill:#9f9,stroke:#333,stroke-width:2px
+    style C fill:#6c6,stroke:#333,stroke-width:2px
     style D fill:#f99,stroke:#333,stroke-width:3px
-    style F fill:#fbb,stroke:#333,stroke-width:2px
+    style F fill:#f88,stroke:#333,stroke-width:2px
 ```
 
 **Current vs. Ideal State:**
@@ -1189,8 +1189,8 @@ graph LR
     D --> D1[Front-run mints<br>Snipe underpriced NFTs<br>Distort markets]
     
     style B fill:#f99,stroke:#333,stroke-width:2px
-    style C fill:#fc9,stroke:#333,stroke-width:2px
-    style D fill:#fbb,stroke:#333,stroke-width:2px
+    style C fill:#fa6,stroke:#333,stroke-width:2px
+    style D fill:#f88,stroke:#333,stroke-width:2px
 ```
 
 **Industry-Specific Analysis:**
@@ -1219,9 +1219,9 @@ graph TD
     D --> D2[MEV redistribution<br>To token holders]
     D --> D3[Auction MEV rights<br>Fund public goods]
     
-    style B fill:#fc9,stroke:#333,stroke-width:2px
+    style B fill:#fa6,stroke:#333,stroke-width:2px
     style C fill:#9cf,stroke:#333,stroke-width:2px
-    style D fill:#9f9,stroke:#333,stroke-width:2px
+    style D fill:#6c6,stroke:#333,stroke-width:2px
 ```
 
 **Mitigation Approaches:**
@@ -1271,7 +1271,7 @@ graph TD
     
     style B fill:#f96,stroke:#333,stroke-width:2px
     style C fill:#f96,stroke:#333,stroke-width:2px
-    style D fill:#9f9,stroke:#333,stroke-width:2px
+    style D fill:#6c6,stroke:#333,stroke-width:2px
     style E fill:#9cf,stroke:#333,stroke-width:2px
 ```
 
@@ -1301,8 +1301,8 @@ graph LR
     E --> G[Central Bank: Aggregate Only]
     F --> G
     
-    style C fill:#9f9,stroke:#333,stroke-width:2px
-    style D fill:#fc9,stroke:#333,stroke-width:2px
+    style C fill:#6c6,stroke:#333,stroke-width:2px
+    style D fill:#fa6,stroke:#333,stroke-width:2px
     style G fill:#9cf,stroke:#333,stroke-width:2px
 ```
 
@@ -1407,7 +1407,7 @@ graph TD
 
     style Physical World fill:#f9f,stroke:#333,stroke-width:2px
     style Digital Bridge fill:#bbf,stroke:#333,stroke-width:2px
-    style On-Chain Logic fill:#9f9,stroke:#333,stroke-width:2px
+    style On-Chain Logic fill:#6c6,stroke:#333,stroke-width:2px
     style Outcomes fill:#f96,stroke:#333,stroke-width:2px
 ```
 *This diagram shows the universal flow: 1) A real-world event occurs. 2) It is verified and bridged to the digital world (the critical Oracle step). 3) A smart contract executes pre-defined logic. 4) Outcomes are recorded and executed (payouts, ownership changes).*
@@ -1428,7 +1428,7 @@ graph LR
     E -- Depends on --> B;
 
     style B fill:#f99,stroke:#333,stroke-width:3px
-    style D fill:#9f9,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
+    style D fill:#6c6,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
 ```
 *Annotation:*
 -   **Sequencer (Bold Red)**: High Power. Captures most fees. Centralizing force.

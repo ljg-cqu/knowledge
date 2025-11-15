@@ -160,13 +160,13 @@ graph TB
     CLOUD -.-> BC
     
     style BC fill:#339af0,stroke:#1971c2,stroke-width:4px,color:#fff
-    style SAAS fill:#51cf66,stroke:#2f9e44
-    style ECOM fill:#ff6b6b,stroke:#c92a2a
-    style FIN fill:#ffd43b,stroke:#fab005
-    style HC fill:#748ffc,stroke:#4c6ef5
-    style MFG fill:#ff8787,stroke:#fa5252
-    style MED fill:#ffa94d,stroke:#fd7e14
-    style LOG fill:#74c0fc,stroke:#339af0
+    style SAAS fill:#51cf66,stroke:#2f9e44,color:#000
+    style ECOM fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style FIN fill:#ffd43b,stroke:#fab005,color:#000
+    style HC fill:#748ffc,stroke:#4c6ef5,color:#fff
+    style MFG fill:#ff8787,stroke:#fa5252,color:#000
+    style MED fill:#ffa94d,stroke:#fd7e14,color:#000
+    style LOG fill:#74c0fc,stroke:#339af0,color:#000
 ```
 
 **Key Performance Indicators Across Industries:**
@@ -261,9 +261,9 @@ flowchart LR
     B --> G[Infrastructure Costs ↑]
     G --> H[Finance Concerns]
     
-    style B fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px
-    style D fill:#ffd43b,stroke:#fab005
-    style E fill:#ffd43b,stroke:#fab005
+    style B fill:#ff6b6b,stroke:#c92a2a,stroke-width:3px,color:#fff
+    style D fill:#ffd43b,stroke:#fab005,color:#000
+    style E fill:#ffd43b,stroke:#fab005,color:#000
 ```
 
 **Answer**: The primary challenge involves operational bottlenecks limiting transaction throughput, which must be balanced against finance's concerns regarding cloud and blockchain infrastructure costs. Applying Value Pool Analysis helps identify profit concentrations across platform participants, including platform owners, Independent Software Vendors (ISVs), and enterprise users, by quantifying revenue shares, margin profiles, and cost allocations. 
@@ -340,9 +340,9 @@ graph TD
     F[High Fees 30%] -.->|Resistance| A
     F -.->|Multi-homing Risk| G[Vendor Defection]
     
-    style E fill:#51cf66,stroke:#2f9e44
-    style F fill:#ff6b6b,stroke:#c92a2a
-    style G fill:#ffd43b,stroke:#fab005
+    style E fill:#51cf66,stroke:#2f9e44,color:#000
+    style F fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style G fill:#ffd43b,stroke:#fab005,color:#000
 ```
 
 **Power Dynamics Map:**
@@ -741,10 +741,10 @@ graph TB
     
     D1 --> |Regulatory Compliance| D2
     
-    style A1 fill:#339af0,stroke:#1971c2
-    style B1 fill:#51cf66,stroke:#2f9e44
-    style C1 fill:#ff6b6b,stroke:#c92a2a
-    style D1 fill:#ffd43b,stroke:#fab005
+    style A1 fill:#339af0,stroke:#1971c2,color:#fff
+    style B1 fill:#51cf66,stroke:#2f9e44,color:#000
+    style C1 fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style D1 fill:#ffd43b,stroke:#fab005,color:#000
 ```
 
 **Common Value Chain Challenges & Blockchain Solutions:**
@@ -783,9 +783,9 @@ graph LR
     D --> D4[Disruption]
     
     style A fill:#339af0,stroke:#1971c2,color:#fff
-    style B fill:#51cf66,stroke:#2f9e44
-    style C fill:#ff6b6b,stroke:#c92a2a
-    style D fill:#ffd43b,stroke:#fab005
+    style B fill:#51cf66,stroke:#2f9e44,color:#000
+    style C fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style D fill:#ffd43b,stroke:#fab005,color:#000
 ```
 
 | **Concept** | **Definition** | **Key Measurements** | **Primary Stakeholders** | **Industries** | **Limitations** |
@@ -823,9 +823,9 @@ flowchart TD
     D1 --> E
     
     style A fill:#339af0,stroke:#1971c2,color:#fff
-    style B fill:#51cf66,stroke:#2f9e44
-    style C fill:#ff6b6b,stroke:#c92a2a
-    style D fill:#ffd43b,stroke:#fab005
+    style B fill:#51cf66,stroke:#2f9e44,color:#000
+    style C fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style D fill:#ffd43b,stroke:#fab005,color:#000
 ```
 
 #### B. Tools

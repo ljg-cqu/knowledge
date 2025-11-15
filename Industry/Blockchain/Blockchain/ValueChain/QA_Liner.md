@@ -89,7 +89,7 @@ graph LR
     DATA -.-> Q28
     LEAD -.-> Q28
     
-    style Q28 fill:#6bcf7f
+    style Q28 fill:#45b86f
 ```
 
 **Stakeholder Distribution**: Each Q&A addresses ≥2 stakeholders; cross-industry questions address all 9
@@ -131,10 +131,10 @@ graph TB
     BOTTLE --> OPP
     TREND --> DISRUPT
     
-    style CURR fill:#95e1d3
-    style POOL fill:#6bcf7f
-    style TRADE fill:#ffd93d
-    style TREND fill:#ff9a76
+    style CURR fill:#4dd4ac
+    style POOL fill:#45b86f
+    style TRADE fill:#f0c808
+    style TREND fill:#ff8c5a
 ```
 
 #### Analysis Types Distribution Across Industries
@@ -206,9 +206,9 @@ graph TB
     
     EXIT -.->|Threatens| MOAT[Competitive Moat Erosion]
     
-    style LP fill:#ff6b6b
-    style TH fill:#ffd93d
-    style TR fill:#6bcf7f
+    style LP fill:#e85555
+    style TH fill:#f0c808
+    style TR fill:#45b86f
 ```
 
 **Ref**: [G6], [A11]
@@ -226,10 +226,10 @@ graph LR
     DROP[TVL ↓ 8%/mo] -.->|Causes| SPIKE[Borrow Rates Spike]
     SPIKE -.->|Triggers| EXODUS[User Exodus]
     
-    style CHURN fill:#ff6b6b
-    style DROP fill:#ff6b6b
-    style SPIKE fill:#ff6b6b
-    style EXODUS fill:#ff6b6b
+    style CHURN fill:#e85555
+    style DROP fill:#e85555
+    style SPIKE fill:#e85555
+    style EXODUS fill:#e85555
 ```
 
 **Type**: Two-sided (borrowers ↔ lenders)  
@@ -270,9 +270,9 @@ graph TB
         REPAY -.-> POOLS
     end
     
-    style FEE_SPLIT fill:#ffd93d
-    style LPs_CAP fill:#6bcf7f
-    style TREASURY_CAP fill:#ff6b6b
+    style FEE_SPLIT fill:#f0c808
+    style LPs_CAP fill:#45b86f
+    style TREASURY_CAP fill:#e85555
 ```
 
 #### Stakeholder Views
@@ -347,11 +347,11 @@ graph TB
     
     SWITCH -.->|Breaks| LIQ
     
-    style SWITCH fill:#ffd93d
-    style EXODUS fill:#ff6b6b
-    style WORSE fill:#ff6b6b
-    style MIGRATE fill:#ff6b6b
-    style DEATH fill:#ff0000
+    style SWITCH fill:#f0c808
+    style EXODUS fill:#e85555
+    style WORSE fill:#e85555
+    style MIGRATE fill:#e85555
+    style DEATH fill:#cc0000
 ```
 
 **Risk Reference**: 15% fee switch historically triggers 20-30% LP exodus (Sushiswap 2021 case study)  
@@ -492,12 +492,12 @@ graph TB
         VOLUME -->|Net to Users| USERS[$4.745B<br/>after $255M fees]
     end
     
-    style PLAT_POT fill:#ffd93d
-    style PLAT_ACT fill:#6bcf7f
-    style ROYAL_POT fill:#ffd93d
-    style ROYAL_ACT fill:#6bcf7f
-    style COMPETE fill:#ff6b6b
-    style BYPASS fill:#ff6b6b
+    style PLAT_POT fill:#f0c808
+    style PLAT_ACT fill:#45b86f
+    style ROYAL_POT fill:#f0c808
+    style ROYAL_ACT fill:#45b86f
+    style COMPETE fill:#e85555
+    style BYPASS fill:#e85555
 ```
 
 **Value Pool Breakdown**:
@@ -628,11 +628,11 @@ graph TB
         BUNDLE -.->|Conflict| SECONDARY[Secondary Suffers from High Fees]
     end
     
-    style SUCCESS fill:#6bcf7f
-    style CREATORS fill:#6bcf7f
-    style COMMOD fill:#ff6b6b
-    style BLUR fill:#ff6b6b
-    style BUNDLE fill:#ffd93d
+    style SUCCESS fill:#45b86f
+    style CREATORS fill:#45b86f
+    style COMMOD fill:#e85555
+    style BLUR fill:#e85555
+    style BUNDLE fill:#f0c808
 ```
 
 **Critical Divergence**: Primary benefits from integration; secondary suffers from high fees
@@ -728,10 +728,10 @@ graph TB
         COMPETE -->|Compresses| MARGIN[L2 Margins: $0.085/tx → $0.02/tx]
     end
     
-    style EIP fill:#ffd93d
-    style FRAG fill:#ff6b6b
-    style DIL fill:#ff6b6b
-    style MARGIN fill:#ff0000
+    style EIP fill:#f0c808
+    style FRAG fill:#e85555
+    style DIL fill:#e85555
+    style MARGIN fill:#cc0000
 ```
 
 **Current Moats**:
@@ -807,10 +807,10 @@ graph TB
     DECENT --> DECENT_PRO[✓ Fully decentralized<br/>✓ Sustainable long-term]
     DECENT --> DECENT_CON[✗ 12-24mo technical build<br/>✗ Complex implementation]
     
-    style FULL fill:#ffd93d
-    style PARTIAL fill:#6bcf7f
-    style DELAY fill:#ff6b6b
-    style DECENT fill:#95e1d3
+    style FULL fill:#f0c808
+    style PARTIAL fill:#45b86f
+    style DELAY fill:#e85555
+    style DECENT fill:#4dd4ac
 ```
 
 **Ref**: [A36], [A168]
@@ -849,9 +849,9 @@ graph LR
         DEV_EXP -.->|Slows| ECO_GROWTH[Ecosystem Growth]
     end
     
-    style REDIST fill:#6bcf7f
-    style COMPLEX fill:#ffd93d
-    style ECO_GROWTH fill:#ff6b6b
+    style REDIST fill:#45b86f
+    style COMPLEX fill:#f0c808
+    style ECO_GROWTH fill:#e85555
 ```
 
 **Ref**: [G4]
@@ -954,10 +954,10 @@ graph TB
         ACCURACY -.->|Protects| TVL[$100B TVL]
     end
     
-    style NODES fill:#6bcf7f
-    style FEE_POOL fill:#ffd93d
-    style PROTOCOL fill:#ff6b6b
-    style COLLATERAL fill:#95e1d3
+    style NODES fill:#45b86f
+    style FEE_POOL fill:#f0c808
+    style PROTOCOL fill:#e85555
+    style COLLATERAL fill:#4dd4ac
 ```
 
 **Ref**: [T5], [A103]
@@ -1000,9 +1000,9 @@ graph LR
         SECURITY -.->|Threatens| TVL_RISK[$100B TVL at Risk]
     end
     
-    style REDUCE fill:#ff6b6b
-    style EXIT fill:#ff6b6b
-    style TVL_RISK fill:#ff0000
+    style REDUCE fill:#e85555
+    style EXIT fill:#e85555
+    style TVL_RISK fill:#cc0000
 ```
 
 **Bottleneck**: $10M protocol revenue insufficient for $100B TVL security responsibility
@@ -1074,9 +1074,9 @@ graph TB
     DEFI -.->|Protocol Fees| PROTO
     PROTO -.->|Gas Fees| MINERS
     
-    style USERS fill:#ff6b6b
-    style MINERS fill:#6bcf7f
-    style PROTO fill:#ffd93d
+    style USERS fill:#e85555
+    style MINERS fill:#45b86f
+    style PROTO fill:#f0c808
 ```
 
 #### Core Glossary Terms
@@ -1157,10 +1157,10 @@ graph TB
     TOKEN --> DECENT
     VC --> DISINT
     
-    style VC fill:#ff6b6b
-    style TOKEN fill:#ffd93d
-    style MOAT fill:#6bcf7f
-    style BOTTLE fill:#95e1d3
+    style VC fill:#e85555
+    style TOKEN fill:#f0c808
+    style MOAT fill:#45b86f
+    style BOTTLE fill:#4dd4ac
 ```
 
 ---
@@ -1201,11 +1201,11 @@ graph LR
     TOKEN --> REV
     DEFI --> TVL
     
-    style CHAIN fill:#95e1d3
-    style DUNE fill:#6bcf7f
-    style NANSEN fill:#6bcf7f
-    style TOKEN fill:#6bcf7f
-    style DEFI fill:#6bcf7f
+    style CHAIN fill:#4dd4ac
+    style DUNE fill:#45b86f
+    style NANSEN fill:#45b86f
+    style TOKEN fill:#45b86f
+    style DEFI fill:#45b86f
 ```
 
 #### Tools Comparison Matrix
@@ -1273,9 +1273,9 @@ graph TB
     EVANS --> LIANG
     CAT --> YU
     
-    style PORTER fill:#95e1d3
-    style CAT fill:#6bcf7f
-    style ZENG fill:#ffd93d
+    style PORTER fill:#4dd4ac
+    style CAT fill:#45b86f
+    style ZENG fill:#f0c808
 ```
 
 #### Literature by Category
@@ -1784,10 +1784,10 @@ graph LR
     C --> ZH
     C --> OT
     
-    style Q fill:#6bcf7f
-    style C fill:#6bcf7f
-    style W fill:#95e1d3
-    style EN fill:#ffd93d
+    style Q fill:#45b86f
+    style C fill:#45b86f
+    style W fill:#4dd4ac
+    style EN fill:#f0c808
 ```
 
 #### Citation Quality Breakdown

@@ -59,14 +59,14 @@ graph TB
     G -->|Enterprise Adoption| E
     H -->|Distribute Value| C
     
-    style A fill:#e1f5ff
-    style B fill:#ffe1f5
-    style C fill:#f5ffe1
-    style D fill:#ffe1e1
-    style E fill:#e1ffe1
-    style F fill:#f5e1ff
-    style G fill:#fff5e1
-    style H fill:#e1f5f5
+    style A fill:#99d6ff
+    style B fill:#ffb3e6
+    style C fill:#d4ff99
+    style D fill:#ffb3b3
+    style E fill:#99ff99
+    style F fill:#e6b3ff
+    style G fill:#ffe699
+    style H fill:#99e6e6
 ```
 
 ### Miners and Validators
@@ -247,9 +247,9 @@ flowchart LR
     G[Regulators] -.->|Rules| C
     H[Researchers] -.->|Innovation| B
     
-    style A fill:#d4edda
+    style A fill:#90d7a0
     style B fill:#cce5ff
-    style C fill:#fff3cd
+    style C fill:#ffe066
     style D fill:#f8d7da
     style E fill:#d1ecf1
 ```
@@ -468,9 +468,9 @@ graph LR
     F --> L
     G --> L
     
-    style A fill:#fff3cd
+    style A fill:#ffe066
     style B fill:#cce5ff
-    style C fill:#d4edda
+    style C fill:#90d7a0
     style L fill:#d1ecf1
 ```
 
@@ -527,9 +527,9 @@ graph TB
     N[Token Holders] --> O[Staking Rewards]
     N --> P[Governance Rights]
     
-    style A fill:#d4edda
+    style A fill:#90d7a0
     style F fill:#cce5ff
-    style G fill:#fff3cd
+    style G fill:#ffe066
     style H fill:#f8d7da
     style N fill:#d1ecf1
 ```
@@ -604,7 +604,7 @@ graph TD
     E --> E3[Hardware Waste]
     
     style A fill:#ffcccc
-    style B fill:#fff3cd
+    style B fill:#ffe066
     style C fill:#f8d7da
     style D fill:#d1ecf1
     style E fill:#cce5ff
@@ -732,9 +732,9 @@ graph TD
     G -->|Enhance| H[Security]
     H -->|Increases| B
     
-    style A fill:#d4edda
+    style A fill:#90d7a0
     style B fill:#cce5ff
-    style C fill:#fff3cd
+    style C fill:#ffe066
     style D fill:#f8d7da
     style E fill:#d1ecf1
 ```
@@ -810,9 +810,9 @@ graph LR
     E --> E2[Universal Wallets]
     E --> E3[Multi-Chain DApps]
     
-    style A fill:#d4edda
+    style A fill:#90d7a0
     style B fill:#cce5ff
-    style C fill:#fff3cd
+    style C fill:#ffe066
     style D fill:#f8d7da
     style E fill:#d1ecf1
 ```
@@ -946,8 +946,8 @@ graph LR
     I[GPS Trackers] -.->|Location| B
     
     style B fill:#cce5ff
-    style F fill:#fff3cd
-    style G fill:#d4edda
+    style F fill:#ffe066
+    style G fill:#90d7a0
 ```
 
 **Value Chain Analysis:**
@@ -1010,8 +1010,8 @@ graph TD
     J[Sustainability Verifier] -.->|Certifications| F
     
     style F fill:#cce5ff
-    style I fill:#d4edda
-    style J fill:#fff3cd
+    style I fill:#90d7a0
+    style J fill:#ffe066
 ```
 
 **New Participants:**
@@ -1139,8 +1139,8 @@ graph TD
     I[Privacy] -.->|Protected| A
     
     style B fill:#cce5ff
-    style C fill:#fff3cd
-    style I fill:#d4edda
+    style C fill:#ffe066
+    style I fill:#90d7a0
 ```
 
 **2. Smart Contract Compliance Rules:**
@@ -1209,7 +1209,7 @@ graph TD
     J -->|Impact| N[Emergency Measures]
     N -->|Options| O[Token Sale / Dilution]
     
-    style B fill:#fff3cd
+    style B fill:#ffe066
     style D fill:#f8d7da
     style F fill:#ffcccc
     style M fill:#ff9999
@@ -1295,9 +1295,9 @@ graph LR
     D --> D2[Treasury diversification]
     D --> D3[Strategic partnerships]
     
-    style A fill:#d4edda
+    style A fill:#90d7a0
     style B fill:#cce5ff
-    style C fill:#fff3cd
+    style C fill:#ffe066
     style D fill:#d1ecf1
 ```
 
@@ -1421,8 +1421,8 @@ graph TD
     L --> P[Rewards]
     
     style A fill:#cce5ff
-    style G fill:#fff3cd
-    style L fill:#d4edda
+    style G fill:#ffe066
+    style L fill:#90d7a0
 ```
 
 **Block Production Timeline:**
@@ -1500,8 +1500,8 @@ graph TB
     M --> N
     
     style A fill:#cce5ff
-    style E fill:#d4edda
-    style I fill:#fff3cd
+    style E fill:#90d7a0
+    style I fill:#ffe066
     style L fill:#f8d7da
 ```
 
