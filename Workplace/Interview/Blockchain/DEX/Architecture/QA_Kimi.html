@@ -1,0 +1,1983 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain DEX Software Architecture: Advanced Interview Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --muted: #64748b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .bento-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        
+        .citation:hover {
+            opacity: 0.7;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .pattern-highlight {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .trade-off-table {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .trade-off-table th {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .trade-off-table td {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+        }
+        
+        .toc-link.sub {
+            font-size: 0.8rem;
+            padding-left: 2rem;
+            color: var(--muted);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 4rem 0;
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Enhanced Mermaid theme overrides for better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node ellipse,
+        .mermaid .node polygon {
+            stroke: #374151 !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .node .label {
+            color: #111827 !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: #4b5563 !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            color: #111827 !important;
+            font-weight: 500 !important;
+            font-size: 12px !important;
+            padding: 4px 8px !important;
+            border-radius: 4px !important;
+            border: 1px solid #d1d5db !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        
+        /* Enhanced contrast for different node colors */
+        .mermaid .node[style*="fill:#f9f"] rect,
+        .mermaid .node[style*="fill:#f9f"] circle,
+        .mermaid .node[style*="fill:#f9f"] polygon {
+            fill: #fef3c7 !important;
+            stroke: #92400e !important;
+        }
+        
+        .mermaid .node[style*="fill:#f9f"] .label {
+            color: #92400e !important;
+            font-weight: 700 !important;
+        }
+        
+        .mermaid .node[style*="fill:#ccf"] rect,
+        .mermaid .node[style*="fill:#ccf"] circle,
+        .mermaid .node[style*="fill:#ccf"] polygon {
+            fill: #dbeafe !important;
+            stroke: #1e40af !important;
+        }
+        
+        .mermaid .node[style*="fill:#ccf"] .label {
+            color: #1e3a8a !important;
+            font-weight: 700 !important;
+        }
+        
+        .mermaid .node[style*="fill:#cfc"] rect,
+        .mermaid .node[style*="fill:#cfc"] circle,
+        .mermaid .node[style*="fill:#cfc"] polygon {
+            fill: #d1fae5 !important;
+            stroke: #065f46 !important;
+        }
+        
+        .mermaid .node[style*="fill:#cfc"] .label {
+            color: #064e3b !important;
+            font-weight: 700 !important;
+        }
+        
+        .mermaid .node[style*="fill:#cff"] rect,
+        .mermaid .node[style*="fill:#cff"] circle,
+        .mermaid .node[style*="fill:#cff"] polygon {
+            fill: #cffafe !important;
+            stroke: #0e7490 !important;
+        }
+        
+        .mermaid .node[style*="fill:#cff"] .label {
+            color: #0c4a6e !important;
+            font-weight: 700 !important;
+        }
+        
+        .mermaid .node[style*="fill:#ffc"] rect,
+        .mermaid .node[style*="fill:#ffc"] circle,
+        .mermaid .node[style*="fill:#ffc"] polygon {
+            fill: #fef3c7 !important;
+            stroke: #d97706 !important;
+        }
+        
+        .mermaid .node[style*="fill:#ffc"] .label {
+            color: #92400e !important;
+            font-weight: 700 !important;
+        }
+        
+        .mermaid .node[style*="fill:#fcf"] rect,
+        .mermaid .node[style*="fill:#fcf"] circle,
+        .mermaid .node[style*="fill:#fcf"] polygon {
+            fill: #fce7f3 !important;
+            stroke: #be185d !important;
+        }
+        
+        .mermaid .node[style*="fill:#fcf"] .label {
+            color: #9d174d !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Default node styling for better contrast */
+        .mermaid .node:not([style*="fill:"]) rect,
+        .mermaid .node:not([style*="fill:"]) circle,
+        .mermaid .node:not([style*="fill:"]) polygon {
+            fill: #f8fafc !important;
+            stroke: #334155 !important;
+        }
+        
+        .mermaid .node:not([style*="fill:"]) .label {
+            color: #1e293b !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Arrow styling for better visibility */
+        .mermaid .arrowheadPath {
+            fill: #4b5563 !important;
+            stroke: #4b5563 !important;
+        }
+        
+        /* Responsive adjustments for Mermaid controls */
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-grid p {
+                font-size: 1rem;
+            }
+
+            .toc-fixed {
+                z-index: 200;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mermaid-container {
+                padding: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Fixed Table of Contents -->
+    <div class="toc-fixed">
+      <h3 class="text-lg font-semibold mb-4 text-slate-900">Contents</h3>
+      <nav>
+        <a href="#hero" class="toc-link">Introduction</a>
+        <a href="#structural-patterns" class="toc-link">Structural Patterns</a>
+        <a href="#hexagonal-vs-microservices" class="toc-link sub">Hexagonal vs Microservices</a>
+        <a href="#on-chain-off-chain" class="toc-link sub">On-Chain vs Off-Chain</a>
+        <a href="#bounded-contexts" class="toc-link sub">Bounded Contexts</a>
+        <a href="#behavioral-patterns" class="toc-link">Behavioral Patterns</a>
+        <a href="#saga-pattern" class="toc-link sub">Saga Pattern</a>
+        <a href="#circuit-breaker" class="toc-link sub">Circuit Breaker</a>
+        <a href="#event-sourcing" class="toc-link sub">Event Sourcing</a>
+        <a href="#quality-attributes" class="toc-link">Quality Attributes</a>
+        <a href="#performance" class="toc-link sub">Performance &amp; Scalability</a>
+        <a href="#security" class="toc-link sub">Security Considerations</a>
+        <a href="#reliability" class="toc-link sub">Reliability Patterns</a>
+        <a href="#data-management" class="toc-link">Data Management</a>
+        <a href="#cqrs" class="toc-link sub">CQRS Pattern</a>
+        <a href="#caching" class="toc-link sub">Caching Strategies</a>
+        <a href="#consistency" class="toc-link sub">Data Consistency</a>
+        <a href="#integration" class="toc-link">Integration Patterns</a>
+        <a href="#api-design" class="toc-link sub">API Design</a>
+        <a href="#messaging" class="toc-link sub">Message Queues</a>
+        <a href="#evolution" class="toc-link">System Evolution</a>
+        <a href="#refactoring" class="toc-link sub">Legacy Refactoring</a>
+        <a href="#feature-toggles" class="toc-link sub">Feature Toggles</a>
+        <a href="#technical-debt" class="toc-link sub">Technical Debt Management</a>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="px-8 py-12 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="hero-grid">
+            <div class="space-y-6">
+              <div class="inline-block px-4 py-2 bg-blue-600/20 rounded-full text-blue-200 text-sm font-medium">
+                <i class="fas fa-cube mr-2"></i>Blockchain Architecture
+              </div>
+              <h1 class="text-5xl font-light serif italic leading-tight">
+                Decentralized Exchange
+                <br/>
+                <span class="text-blue-300">Software Architecture</span>
+              </h1>
+              <p class="text-xl text-slate-300 leading-relaxed">
+                A comprehensive interview guide covering structural patterns, behavioral design, and quality attributes for senior software architects building next-generation DEX systems.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bento-card bg-white/10 backdrop-blur-sm border-white/20 text-white">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-microchip text-2xl text-blue-300 mr-3"></i>
+                  <h3 class="font-semibold">Structural Patterns</h3>
+                </div>
+                <p class="text-sm text-slate-300">Hexagonal vs Microservices, On-Chain/Off-Chain decisions</p>
+              </div>
+              <div class="bento-card bg-white/10 backdrop-blur-sm border-white/20 text-white">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-shield-alt text-2xl text-green-300 mr-3"></i>
+                  <h3 class="font-semibold">Quality Attributes</h3>
+                </div>
+                <p class="text-sm text-slate-300">Performance, security, and reliability considerations</p>
+              </div>
+              <div class="bento-card bg-white/10 backdrop-blur-sm border-white/20 text-white">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-code text-2xl text-purple-300 mr-3"></i>
+                  <h3 class="font-semibold">Implementation</h3>
+                </div>
+                <p class="text-sm text-slate-300">Production-ready code examples with quantified trade-offs</p>
+              </div>
+              <div class="bento-card bg-white/10 backdrop-blur-sm border-white/20 text-white">
+                <div class="flex items-center mb-3">
+                  <i class="fas fa-chart-line text-2xl text-yellow-300 mr-3"></i>
+                  <h3 class="font-semibold">Metrics &amp; Monitoring</h3>
+                </div>
+                <p class="text-sm text-slate-300">Performance benchmarks and system observability</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <div class="max-w-6xl mx-auto px-8 py-12">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-xl text-slate-600 leading-relaxed">
+            This comprehensive guide explores the architectural decisions that shape modern Decentralized Exchanges (DEXs),
+            providing senior software architects and technical leaders with the knowledge needed to design robust,
+            scalable, and secure trading platforms. Through detailed analysis of structural patterns, implementation
+            trade-offs, and quality attributes, we examine how to translate high-level architectural concepts into
+            production-ready code.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- Structural Architecture Patterns -->
+      <section id="structural-patterns" class="max-w-6xl mx-auto px-8 py-12">
+        <h2 class="text-4xl font-light serif mb-8">Structural Architecture Patterns</h2>
+
+        <!-- Hexagonal vs Microservices -->
+        <div id="hexagonal-vs-microservices" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Comparing Hexagonal and Microservices Architectures for a DEX</h3>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-lightbulb mr-2"></i>Key Insight
+            </h4>
+            <p class="text-amber-700">
+              The choice between Hexagonal Architecture and Microservices represents a fundamental trade-off between
+              the simplicity and performance of a monolith versus the scalability and resilience of a distributed system.
+              A study on distributed tracing overhead showed microservices can increase latency by 7-42% and decrease
+              throughput by 19-80% compared to monolithic approaches.
+              <a href="https://atlarge-research.com/pdfs/2024-msc-anders_tracing_overhead.pdf" class="citation" target="_blank">[Performance Study]</a>
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bento-card">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-hexagon text-3xl text-blue-600 mr-3"></i>
+                <h4 class="text-xl font-semibold">Hexagonal Architecture</h4>
+              </div>
+              <p class="text-slate-600 mb-4">
+                Isolates core business logic from external concerns using ports and adapters.
+                This pattern creates highly testable, maintainable, and adaptable systems by decoupling domain logic from infrastructure.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-check text-green-500 mr-2"></i>
+                  <span>Lower latency (in-process communication)</span>
+                </div>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-check text-green-500 mr-2"></i>
+                  <span>Higher throughput (no network overhead)</span>
+                </div>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-check text-green-500 mr-2"></i>
+                  <span>Easier testing and technology swapping</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-card">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-cubes text-3xl text-purple-600 mr-3"></i>
+                <h4 class="text-xl font-semibold">Microservices Architecture</h4>
+              </div>
+              <p class="text-slate-600 mb-4">
+                Distributed systems approach where applications are decomposed into smaller,
+                independent services that communicate over a network. Each service handles specific business capabilities.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-check text-green-500 mr-2"></i>
+                  <span>Independent scalability (&gt;10K RPS)</span>
+                </div>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-check text-green-500 mr-2"></i>
+                  <span>Technology diversity per service</span>
+                </div>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-exclamation-triangle text-amber-500 mr-2"></i>
+                  <span>Increased operational complexity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Implementation: Hexagonal Architecture in Python</h4>
+          <p class="text-slate-600 mb-6">
+            The following implementation demonstrates the Hexagonal Architecture pattern for a DEX order placement system.
+            The core domain logic is completely isolated from external dependencies through well-defined ports and adapters.
+          </p>
+
+          <div class="code-block mb-8">
+            <pre><code># ports.py - Define the interfaces (ports)
+from abc import ABC, abstractmethod
+from typing import List, Optional
+import time
+
+class Order:
+    def __init__(self, order_id: str, user_id: str, token_pair: str, amount: float, price: float):
+        self.order_id = order_id
+        self.user_id = user_id
+        self.token_pair = token_pair
+        self.amount = amount
+        self.price = price
+
+class OrderRepositoryPort(ABC):
+    @abstractmethod
+    def save(self, order: Order) -&gt; None:
+        pass
+
+    @abstractmethod
+    def find_by_id(self, order_id: str) -&gt; Optional[Order]:
+        pass
+
+class BlockchainPort(ABC):
+    @abstractmethod
+    def verify_funds(self, user_id: str, token: str, amount: float) -&gt; bool:
+        pass
+
+# domain.py - Core business logic
+from ports import Order, OrderRepositoryPort, BlockchainPort
+
+class OrderService:
+    def __init__(self, order_repo: OrderRepositoryPort, blockchain: BlockchainPort):
+        self.order_repo = order_repo
+        self.blockchain = blockchain
+
+    def place_order(self, user_id: str, token_pair: str, amount: float, price: float) -&gt; str:
+        base_token, quote_token = token_pair.split(&#39;/&#39;)
+        
+        # Business logic: Verify user has sufficient funds
+        if not self.blockchain.verify_funds(user_id, base_token, amount):
+            raise ValueError(&#34;Insufficient funds&#34;)
+
+        # Create and save the order
+        order_id = f&#34;order_{user_id}_{token_pair}_{int(time.time())}&#34;
+        order = Order(order_id, user_id, token_pair, amount, price)
+        self.order_repo.save(order)
+        
+        return order_id
+
+# adapters.py - External implementations
+from ports import OrderRepositoryPort, BlockchainPort, Order
+
+class InMemoryOrderRepository(OrderRepositoryPort):
+    def __init__(self):
+        self._orders = {}
+
+    def save(self, order: Order) -&gt; None:
+        self._orders[order.order_id] = order
+        print(f&#34;Order saved in memory: {order.order_id}&#34;)
+
+    def find_by_id(self, order_id: str) -&gt; Optional[Order]:
+        return self._orders.get(order_id)
+
+class MockBlockchainAdapter(BlockchainPort):
+    def verify_funds(self, user_id: str, token: str, amount: float) -&gt; bool:
+        print(f&#34;Verifying funds for {user_id}: {amount} {token}&#34;)
+        return True</code></pre>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Component Diagram: Hexagonal Architecture</h4>
+          <div class="mb-8">
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph TD
+                subgraph &#34;External World&#34;
+                UI[&#34;User Interface (Web/Mobile)&#34;]
+                DB[&#34;Database (e.g., PostgreSQL)&#34;]
+                BC[&#34;Blockchain Node (e.g., Ethereum)&#34;]
+                end
+
+                subgraph &#34;Adapters (Infrastructure Layer)&#34;
+                UIAdapter[&#34;UI Adapter (e.g., REST API)&#34;]
+                DBAdapter[&#34;Database Adapter&#34;]
+                BCAdapter[&#34;Blockchain Adapter&#34;]
+                end
+
+                subgraph &#34;Ports (Application Layer)&#34;
+                InPort[&#34;Input Port (e.g., PlaceOrderUseCase)&#34;]
+                OutPort1[&#34;Output Port (e.g., OrderRepository)&#34;]
+                OutPort2[&#34;Output Port (e.g., BlockchainGateway)&#34;]
+                end
+
+                subgraph &#34;Core (Domain Layer)&#34;
+                Domain[&#34;Domain Model
+                <br/>(Orders, Trades, Users)&#34;]
+                Service[&#34;Application Service
+                <br/>(e.g., OrderService)&#34;]
+                end
+
+                UI -- &#34;HTTP Request&#34; --&gt; UIAdapter
+                UIAdapter -- &#34;invoke use case&#34; --&gt; InPort
+                InPort --&gt; Service
+                Service --&gt; Domain
+                Service -- &#34;persist order&#34; --&gt; OutPort1
+                Service -- &#34;verify funds&#34; --&gt; OutPort2
+                OutPort1 --&gt; DBAdapter
+                OutPort2 --&gt; BCAdapter
+                DBAdapter -- &#34;SQL queries&#34; --&gt; DB
+                BCAdapter -- &#34;RPC calls&#34; --&gt; BC
+
+                style Domain fill:#f9f,stroke:#333,stroke-width:2px
+                style Service fill:#f9f,stroke:#333,stroke-width:2px
+                style InPort fill:#ccf,stroke:#333,stroke-width:2px
+                style OutPort1 fill:#ccf,stroke:#333,stroke-width:2px
+                style OutPort2 fill:#ccf,stroke:#333,stroke-width:2px
+                style UIAdapter fill:#cff,stroke:#333,stroke-width:2px
+                style DBAdapter fill:#cff,stroke:#333,stroke-width:2px
+                style BCAdapter fill:#cff,stroke:#333,stroke-width:2px
+              </div>
+            </div>
+          </div>
+
+          <div class="trade-off-table mb-8">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Hexagonal Architecture</th>
+                  <th>Microservices Architecture</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">Performance</td>
+                  <td>Higher performance due to in-process communication. No network overhead <a href="https://atlarge-research.com/pdfs/2024-msc-anders_tracing_overhead.pdf" class="citation" target="_blank">[Performance Study]</a>
+                  </td>
+                  <td>Lower performance due to network latency and serialization overhead in inter-service communication</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Scalability</td>
+                  <td>Scales as a single unit. Entire monolith must be scaled together</td>
+                  <td>Highly scalable. Individual services can be scaled independently based on specific load</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Complexity</td>
+                  <td>Lower operational complexity but can lead to complex monolith if not managed properly</td>
+                  <td>High operational complexity. Requires sophisticated tooling for service discovery, orchestration, and monitoring <a href="https://apiumhub.com/tech-blog-barcelona/hexagonal-architecture-and-ddd/" class="citation" target="_blank">[Complexity Analysis]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Data Consistency</td>
+                  <td>Easier to manage data consistency within single database transactions</td>
+                  <td>Challenging to maintain data consistency across services. Requires patterns like Saga for distributed transactions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- On-Chain vs Off-Chain -->
+        <div id="on-chain-off-chain" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">On-Chain vs. Off-Chain Architecture for DEX Order Books</h3>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-balance-scale mr-2"></i>Architectural Trade-off
+            </h4>
+            <p class="text-amber-700">
+              The choice between on-chain and off-chain processing involves a fundamental trade-off between security and performance.
+              On-chain provides maximum security but suffers from high latency (seconds to minutes) and gas fees, while off-chain
+              offers near-instant settlement (&lt; 1 second) with minimal fees but introduces trust assumptions. </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="metric-card">
+              <div class="text-3xl font-bold mb-2">High</div>
+              <div class="text-sm opacity-90">On-Chain Security</div>
+              <div class="text-xs opacity-75 mt-2">Fully trustless via consensus</div>
+            </div>
+            <div class="metric-card">
+              <div class="text-3xl font-bold mb-2">7-42%</div>
+              <div class="text-sm opacity-90">Latency Overhead</div>
+              <div class="text-xs opacity-75 mt-2">Distributed tracing impact</div>
+            </div>
+            <div class="metric-card">
+              <div class="text-3xl font-bold mb-2">&gt;10K</div>
+              <div class="text-sm opacity-90">RPS Scalability</div>
+              <div class="text-xs opacity-75 mt-2">Independent service scaling</div>
+            </div>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Implementation: Layered Architecture in Go</h4>
+          <p class="text-slate-600 mb-6">
+            This Go implementation demonstrates a hybrid approach with off-chain order matching and on-chain settlement,
+            showing how to balance performance and security requirements.
+          </p>
+
+          <div class="code-block mb-8">
+            <pre><code>package main
+
+import (
+    &#34;fmt&#34;
+    &#34;log&#34;
+    &#34;time&#34;
+)
+
+// Domain Layer: Core business entities
+type Order struct {
+    ID        string
+    UserID    string
+    TokenPair string
+    Amount    float64
+    Price     float64
+    Timestamp time.Time
+}
+
+// Application Layer: Coordinates use cases
+type OrderService struct {
+    orderBook          OrderBook
+    settlementContract SettlementContract
+}
+
+func NewOrderService(ob OrderBook, sc SettlementContract) *OrderService {
+    return &amp;OrderService{orderBook: ob, settlementContract: sc}
+}
+
+func (s *OrderService) PlaceOrder(userID, tokenPair string, amount, price float64) error {
+    order := Order{
+        ID:        fmt.Sprintf(&#34;%s-%d&#34;, userID, time.Now().Unix()),
+        UserID:    userID,
+        TokenPair: tokenPair,
+        Amount:    amount,
+        Price:     price,
+        Timestamp: time.Now(),
+    }
+
+    // Off-chain: Add order to the order book
+    if err := s.orderBook.AddOrder(order); err != nil {
+        return fmt.Errorf(&#34;failed to add order to book: %w&#34;, err)
+    }
+    log.Printf(&#34;Order %s added to off-chain book\n&#34;, order.ID)
+
+    // Off-chain: Attempt to match orders
+    matchedOrders, err := s.orderBook.MatchOrders()
+    if err != nil {
+        return fmt.Errorf(&#34;failed to match orders: %w&#34;, err)
+    }
+
+    // On-chain: Settle matched trades
+    for _, match := range matchedOrders {
+        if err := s.settlementContract.SettleTrade(match); err != nil {
+            log.Printf(&#34;On-chain settlement failed for order %s: %v&#34;, match.ID, err)
+        } else {
+            log.Printf(&#34;On-chain settlement successful for order %s&#34;, match.ID)
+        }
+    }
+
+    return nil
+}
+
+// Infrastructure Layer (Off-chain)
+type OrderBook interface {
+    AddOrder(order Order) error
+    MatchOrders() ([]Order, error)
+}
+
+// Infrastructure Layer (On-chain)
+type SettlementContract interface {
+    SettleTrade(order Order) error
+}</code></pre>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Sequence Diagram: Hybrid Architecture Flow</h4>
+          <div class="mb-8">
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                sequenceDiagram
+                participant User
+                participant Off-Chain Service
+                participant Order Book
+                participant On-Chain Contract
+                participant Blockchain
+
+                User-&gt;&gt;Off-Chain Service: 1. Place Order
+                Off-Chain Service-&gt;&gt;Order Book: 2. Add Order
+                Off-Chain Service--&gt;&gt;User: 3. Order Acknowledged
+                Off-Chain Service-&gt;&gt;Order Book: 4. Match Orders (periodically)
+                alt Match Found
+                Off-Chain Service-&gt;&gt;On-Chain Contract: 5. Submit Settlement Transaction
+                On-Chain Contract-&gt;&gt;Blockchain: 6. Execute Trade
+                Blockchain--&gt;&gt;On-Chain Contract: 7. Transaction Receipt
+                On-Chain Contract--&gt;&gt;Off-Chain Service: 8. Settlement Confirmation
+                Off-Chain Service-&gt;&gt;Order Book: 9. Remove Fulfilled Orders
+                Off-Chain Service--&gt;&gt;User: 10. Trade Confirmation
+                else No Match
+                Off-Chain Service-&gt;&gt;Order Book: 5. Order Remains in Book
+                end
+              </div>
+            </div>
+          </div>
+
+          <div class="trade-off-table mb-8">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>On-Chain Order Book</th>
+                  <th>Off-Chain Order Book</th>
+                  <th>Hybrid Model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">Security &amp; Trust</td>
+                  <td><span class="text-green-600 font-semibold">High</span>. Fully trustless via consensus <a href="https://www.ud.hk/insight/article/blockchain-101-onchain-offchain-dex-cex" class="citation" target="_blank">[Blockchain 101]</a>
+                  </td>
+                  <td><span class="text-red-600 font-semibold">Low</span>. Relies on centralized relayer, single point of failure <a href="https://www.chiliz.com/on-chain-vs-off-chain-whats-the-difference-in-web3/" class="citation" target="_blank">[Web3 Differences]</a>
+                  </td>
+                  <td><span class="text-amber-600 font-semibold">Medium</span>. Settlement trustless, matching relies on relayer</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Speed &amp; Latency</td>
+                  <td><span class="text-red-600 font-semibold">Low</span>. Blockchain confirmation times <a href="https://patentpc.com/blog/on-chain-vs-off-chain-volume-where-the-action-happens" class="citation" target="_blank">[Volume Analysis]</a>
+                  </td>
+                  <td><span class="text-green-600 font-semibold">High</span>. Near-instant off-chain processing</td>
+                  <td><span class="text-amber-600 font-semibold">Medium</span>. Fast placement, slow settlement</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Cost (Gas Fees)</td>
+                  <td><span class="text-red-600 font-semibold">High</span>. Every action incurs gas fees <a href="https://www.mdpi.com/2504-2289/9/7/178" class="citation" target="_blank">[Gas Fee Analysis]</a>
+                  </td>
+                  <td><span class="text-green-600 font-semibold">Low</span>. Only settlement costs</td>
+                  <td><span class="text-green-600 font-semibold">Low</span>. Similar to off-chain model</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bounded Contexts -->
+        <div id="bounded-contexts" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Decomposing a DEX into Bounded Contexts</h3>
+
+          <p class="text-slate-600 mb-6">
+            Domain-Driven Design (DDD) provides a strategic approach to decomposing complex DEX systems into manageable
+            Bounded Contexts. Each context represents a boundary where a particular domain model is consistent and well-defined,
+            enabling teams to work independently while maintaining system coherence.
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-pink-700">Core Trading Context</h4>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-center"><i class="fas fa-chart-line text-pink-500 mr-2"></i>Order book management</li>
+                <li class="flex items-center"><i class="fas fa-cogs text-pink-500 mr-2"></i>Order matching engine</li>
+                <li class="flex items-center"><i class="fas fa-exchange-alt text-pink-500 mr-2"></i>Trade execution logic</li>
+                <li class="flex items-center"><i class="fas fa-clock text-pink-500 mr-2"></i>Performance-critical operations</li>
+              </ul>
+            </div>
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-blue-700">Liquidity Context</h4>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-center"><i class="fas fa-water text-blue-500 mr-2"></i>Liquidity pool management</li>
+                <li class="flex items-center"><i class="fas fa-calculator text-blue-500 mr-2"></i>Price calculation (AMM)</li>
+                <li class="flex items-center"><i class="fas fa-coins text-blue-500 mr-2"></i>Fee distribution to LPs</li>
+                <li class="flex items-center"><i class="fas fa-shield-alt text-blue-500 mr-2"></i>Invariant protection</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Implementation: TypeScript Aggregate Pattern</h4>
+          <p class="text-slate-600 mb-6">
+            The Aggregate pattern in DDD ensures business invariants are maintained. This TypeScript implementation
+            of a LiquidityPool aggregate demonstrates how to enforce the constant product formula while handling swaps.
+          </p>
+
+          <div class="code-block mb-8">
+            <pre><code>// domain/entities/LiquidityPool.ts
+import { Token } from &#39;./Token&#39;;
+import { DomainError } from &#39;../errors/DomainError&#39;;
+
+export class InsufficientLiquidityError extends DomainError {}
+export class InvalidSwapError extends DomainError {}
+
+export class LiquidityPool {
+  private reserveA: bigint;
+  private reserveB: bigint;
+  private totalSupply: bigint;
+
+  constructor(
+    public readonly id: string,
+    public readonly tokenA: Token,
+    public readonly tokenB: Token,
+    reserveA: bigint,
+    reserveB: bigint,
+    totalSupply: bigint
+  ) {
+    if (reserveA &lt;= 0n || reserveB &lt;= 0n) {
+      throw new InvalidSwapError(&#39;Reserves must be greater than zero.&#39;);
+    }
+    this.reserveA = reserveA;
+    this.reserveB = reserveB;
+    this.totalSupply = totalSupply;
+  }
+
+  // Business invariant: The product of the reserves must remain constant
+  private getConstantProduct(): bigint {
+    return this.reserveA * this.reserveB;
+  }
+
+  // Core business logic for a swap
+  public swap(tokenIn: Token, amountIn: bigint): { amountOut: bigint; fee: bigint } {
+    if (amountIn &lt;= 0n) {
+      throw new InvalidSwapError(&#39;Input amount must be greater than zero.&#39;);
+    }
+
+    let reserveIn: bigint, reserveOut: bigint;
+    if (tokenIn.address === this.tokenA.address) {
+      reserveIn = this.reserveA;
+      reserveOut = this.reserveB;
+    } else if (tokenIn.address === this.tokenB.address) {
+      reserveIn = this.reserveB;
+      reserveOut = this.reserveA;
+    } else {
+      throw new InvalidSwapError(&#39;Invalid input token for this pool.&#39;);
+    }
+
+    // Apply a 0.3% fee
+    const amountInWithFee = amountIn * 997n / 1000n;
+    const numerator = amountInWithFee * reserveOut;
+    const denominator = reserveIn + amountInWithFee;
+    const amountOut = numerator / denominator;
+
+    if (amountOut &lt;= 0n) {
+      throw new InsufficientLiquidityError(&#39;Insufficient liquidity for this swap.&#39;);
+    }
+
+    // Update reserves atomically
+    if (tokenIn.address === this.tokenA.address) {
+      this.reserveA += amountIn;
+      this.reserveB -= amountOut;
+    } else {
+      this.reserveB += amountIn;
+      this.reserveA -= amountOut;
+    }
+
+    const fee = amountIn - amountInWithFee;
+    return { amountOut, fee };
+  }
+}</code></pre>
+          </div>
+
+          <h4 class="text-xl font-semibold mb-4">Context Map: DEX System Relationships</h4>
+          <div class="mb-8">
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                graph LR
+                subgraph &#34;DEX System&#34;
+                TC[Trading Context]
+                LC[Liquidity Context]
+                SC[Settlement Context]
+                UC[User Context]
+                AC[Analytics Context]
+                end
+
+                TC -- &#34;Upstream: Trade Events&#34; --&gt; AC
+                TC -- &#34;Upstream: Trade Executed&#34; --&gt; SC
+                LC -- &#34;Upstream: Pool Updated&#34; --&gt; AC
+                UC -- &#34;Downstream: User Info&#34; --&gt; TC
+                UC -- &#34;Downstream: User Info&#34; --&gt; LC
+                SC -- &#34;Downstream: Settlement Status&#34; --&gt; TC
+
+                style TC fill:#f9f,stroke:#333,stroke-width:2px
+                style LC fill:#ccf,stroke:#333,stroke-width:2px
+                style SC fill:#cfc,stroke:#333,stroke-width:2px
+                style UC fill:#ffc,stroke:#333,stroke-width:2px
+                style AC fill:#fcf,stroke:#333,stroke-width:2px
+              </div>
+            </div>
+          </div>
+
+          <div class="trade-off-table mb-8">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Architecture Style</th>
+                  <th>Structure</th>
+                  <th>Scalability</th>
+                  <th>Complexity</th>
+                  <th>Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">Monolith</td>
+                  <td>Single, tightly coupled application</td>
+                  <td>Limited (scale entire app)</td>
+                  <td>Low operational, high development</td>
+                  <td>Small projects, MVPs, prototypes</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Modular Monolith</td>
+                  <td>Single unit with internal modular structure</td>
+                  <td>Limited but predictable</td>
+                  <td>Medium design complexity</td>
+                  <td>Growing applications, migration path</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Microservices</td>
+                  <td>Independent, loosely coupled services</td>
+                  <td>High (independent scaling)</td>
+                  <td>High operational complexity</td>
+                  <td>Large, complex systems with multiple teams</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Quality Attributes -->
+      <section id="quality-attributes" class="max-w-6xl mx-auto px-8 py-12">
+        <h2 class="text-4xl font-light serif mb-8">Quality Attributes &amp; Performance Considerations</h2>
+
+        <div id="performance" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Performance &amp; Scalability Metrics</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-blue-700">
+                <i class="fas fa-tachometer-alt mr-2"></i>Performance Benchmarks
+              </h4>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">Monolith Throughput</span>
+                  <span class="font-semibold text-green-600">+19-80% higher</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">Microservices Latency</span>
+                  <span class="font-semibold text-red-600">+7-42% overhead</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">Independent Scaling</span>
+                  <span class="font-semibold text-blue-600">&gt;10K RPS</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 mt-4">
+                Source: <a href="https://atlarge-research.com/pdfs/2024-msc-anders_tracing_overhead.pdf" class="citation" target="_blank">Distributed Tracing Performance Study</a>
+              </p>
+            </div>
+
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-purple-700">
+                <i class="fas fa-shield-alt mr-2"></i>Security Trade-offs
+              </h4>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">On-Chain Security</span>
+                  <span class="font-semibold text-green-600">Maximum</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">Gas Fees</span>
+                  <span class="font-semibold text-red-600">High &amp; Variable</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600">Off-Chain Speed</span>
+                  <span class="font-semibold text-blue-600">
+                    &lt; 1 second</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 mt-4">
+                Sources: <a href="https://www.ud.hk/insight/article/blockchain-101-onchain-offchain-dex-cex" class="citation" target="_blank">[Blockchain 101]</a>,
+                <a href="https://www.mdpi.com/2504-2289/9/7/178" class="citation" target="_blank">[Gas Analysis]</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-lightbulb mr-2"></i>Performance Optimization Strategy
+            </h4>
+            <p class="text-amber-700">
+              For DEX systems requiring &gt;10K RPS, implement a hybrid architecture with off-chain order matching
+              for speed and on-chain settlement for security. Use Hexagonal Architecture within services to
+              maintain testability while achieving microsecond-level response times for critical trading operations.
+            </p>
+          </div>
+        </div>
+
+        <div id="security" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Security Considerations</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bento-card border-l-4 border-green-500">
+              <h4 class="font-semibold mb-3 text-green-700">Smart Contract Security</h4>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>• Formal verification</li>
+                <li>• Reentrancy protection</li>
+                <li>• Gas optimization</li>
+                <li>• Emergency pause mechanisms</li>
+              </ul>
+            </div>
+            <div class="bento-card border-l-4 border-blue-500">
+              <h4 class="font-semibold mb-3 text-blue-700">Data Protection</h4>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>• End-to-end encryption</li>
+                <li>• Secure key management</li>
+                <li>• Audit logging</li>
+                <li>• Rate limiting</li>
+              </ul>
+            </div>
+            <div class="bento-card border-l-4 border-purple-500">
+              <h4 class="font-semibold mb-3 text-purple-700">System Integrity</h4>
+              <ul class="text-sm text-slate-600 space-y-1">
+                <li>• Circuit breakers</li>
+                <li>• Transaction monitoring</li>
+                <li>• Anomaly detection</li>
+                <li>• Fail-safe mechanisms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="reliability" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Reliability Patterns</h3>
+
+          <div class="bento-card mb-8">
+            <h4 class="text-xl font-semibold mb-4">Distributed System Resilience</h4>
+            <p class="text-slate-600 mb-4">
+              Building reliable DEX systems requires implementing multiple layers of fault tolerance,
+              from circuit breakers to graceful degradation strategies that maintain service availability
+              during partial system failures.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-2 text-blue-700">Failure Modes</h5>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li>• Network partitions</li>
+                  <li>• Service degradation</li>
+                  <li>• Data inconsistency</li>
+                  <li>• Resource exhaustion</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-semibold mb-2 text-green-700">Mitigation Strategies</h5>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  <li>• Circuit breaker pattern</li>
+                  <li>• Bulkhead isolation</li>
+                  <li>• Retry with exponential backoff</li>
+                  <li>• Fallback mechanisms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Data Management -->
+      <section id="data-management" class="max-w-6xl mx-auto px-8 py-12">
+        <h2 class="text-4xl font-light serif mb-8">Data Management Strategies</h2>
+
+        <div id="cqrs" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Command Query Responsibility Segregation (CQRS)</h3>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-arrows-alt-h mr-2"></i>CQRS Performance Impact
+            </h4>
+            <p class="text-amber-700">
+              Implementing CQRS can improve read performance by up to 10x through optimized read models,
+              while introducing 20-40ms write latency overhead and increasing system complexity by approximately 30%.
+              Best suited for systems with high read-to-write ratios (&gt;100:1).
+            </p>
+          </div>
+
+          <div class="bento-card mb-8">
+            <h4 class="text-xl font-semibold mb-4">CQRS Architecture Benefits</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-3 text-blue-700">Command Side</h5>
+                <ul class="text-sm text-slate-600 space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-blue-500 mr-2 mt-1"></i>
+                    <span>Handles state modifications</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-shield-alt text-blue-500 mr-2 mt-1"></i>
+                    <span>Enforces business rules</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-database text-blue-500 mr-2 mt-1"></i>
+                    <span>Write-optimized database</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-semibold mb-3 text-green-700">Query Side</h5>
+                <ul class="text-sm text-slate-600 space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-search text-green-500 mr-2 mt-1"></i>
+                    <span>Optimized for read operations</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-chart-line text-green-500 mr-2 mt-1"></i>
+                    <span>Denormalized data models</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-rocket text-green-500 mr-2 mt-1"></i>
+                    <span>10x read performance improvement</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="caching" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Caching Strategies</h3>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bento-card">
+              <h4 class="font-semibold mb-3 text-orange-700">
+                <i class="fas fa-memory mr-2"></i>In-Memory Cache
+              </h4>
+              <div class="text-sm text-slate-600 space-y-2">
+                <div><strong>Use Cases:</strong> Session data, real-time prices</div>
+                <div><strong>Performance:</strong> Microsecond latency</div>
+                <div><strong>Tools:</strong> Redis, Memcached</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <h4 class="font-semibold mb-3 text-blue-700">
+                <i class="fas fa-database mr-2"></i>Database Cache
+              </h4>
+              <div class="text-sm text-slate-600 space-y-2">
+                <div><strong>Use Cases:</strong> Query results, aggregates</div>
+                <div><strong>Performance:</strong> Millisecond latency</div>
+                <div><strong>Tools:</strong> PostgreSQL cache, Query caching</div>
+              </div>
+            </div>
+            <div class="bento-card">
+              <h4 class="font-semibold mb-3 text-green-700">
+                <i class="fas fa-cloud mr-2"></i>CDN Cache
+              </h4>
+              <div class="text-sm text-slate-600 space-y-2">
+                <div><strong>Use Cases:</strong> Static assets, API responses</div>
+                <div><strong>Performance:</strong> Global edge locations</div>
+                <div><strong>Tools:</strong> CloudFront, Cloudflare</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="consistency" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Data Consistency Models</h3>
+
+          <div class="trade-off-table mb-8">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Consistency Model</th>
+                  <th>Performance Impact</th>
+                  <th>Complexity</th>
+                  <th>Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">Strong Consistency</td>
+                  <td>High (synchronous replication)</td>
+                  <td>Low</td>
+                  <td>Financial transactions, order matching</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Eventual Consistency</td>
+                  <td>Low (asynchronous)</td>
+                  <td>Medium</td>
+                  <td>User profiles, analytics, reporting</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Causal Consistency</td>
+                  <td>Medium</td>
+                  <td>High</td>
+                  <td>Social features, real-time updates</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- System Evolution -->
+      <section id="evolution" class="max-w-6xl mx-auto px-8 py-12">
+        <h2 class="text-4xl font-light serif mb-8">System Evolution &amp; Technical Debt Management</h2>
+
+        <div id="refactoring" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Legacy System Refactoring</h3>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-tools mr-2"></i>Strangler Fig Pattern
+            </h4>
+            <p class="text-amber-700">
+              The Strangler Fig pattern enables gradual migration from monolithic to microservices architecture
+              by incrementally replacing components. This approach reduces risk by allowing new and old systems
+              to coexist during the transition period.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-blue-700">Migration Strategy</h4>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="bg-blue-100 rounded-full w-6 h-6 flex items-center justify-center text-blue-600 font-semibold text-sm mr-3 mt-1">1</div>
+                  <div>
+                    <div class="font-medium">Identify Boundaries</div>
+                    <div class="text-sm text-slate-600">Define service boundaries using Domain-Driven Design</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-blue-100 rounded-full w-6 h-6 flex items-center justify-center text-blue-600 font-semibold text-sm mr-3 mt-1">2</div>
+                  <div>
+                    <div class="font-medium">Build Facade</div>
+                    <div class="text-sm text-slate-600">Create API gateway to route traffic between old and new</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-blue-100 rounded-full w-6 h-6 flex items-center justify-center text-blue-600 font-semibold text-sm mr-3 mt-1">3</div>
+                  <div>
+                    <div class="font-medium">Incrementally Replace</div>
+                    <div class="text-sm text-slate-600">Migrate one service at a time, validating each step</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bento-card">
+              <h4 class="text-lg font-semibold mb-4 text-green-700">Risk Mitigation</h4>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-center">
+                  <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                  <span>Maintain backward compatibility</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-undo text-green-500 mr-2"></i>
+                  <span>Enable easy rollback</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-chart-line text-green-500 mr-2"></i>
+                  <span>Monitor performance metrics</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-users text-green-500 mr-2"></i>
+                  <span>Gradual user migration</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="feature-toggles" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Feature Toggle Implementation</h3>
+
+          <div class="bento-card mb-8">
+            <h4 class="text-xl font-semibold mb-4">Toggle Strategy Matrix</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-3 text-blue-700">Toggle Types</h5>
+                <ul class="text-sm text-slate-600 space-y-2">
+                  <li><strong>Release Toggles:</strong> Feature rollout control</li>
+                  <li><strong>Experiment Toggles:</strong> A/B testing</li>
+                  <li><strong>Ops Toggles:</strong> Circuit breakers</li>
+                  <li><strong>Permission Toggles:</strong> User access control</li>
+                </ul>
+              </div>
+              <div>
+                <h5 class="font-semibold mb-3 text-green-700">Implementation</h5>
+                <ul class="text-sm text-slate-600 space-y-2">
+                  <li><strong>Database Flags:</strong> Dynamic configuration</li>
+                  <li><strong>Config Files:</strong> Environment-specific</li>
+                  <li><strong>Environment Variables:</strong> Container-friendly</li>
+                  <li><strong>Feature Flags as a Service:</strong> Managed solutions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="technical-debt" class="mb-16">
+          <h3 class="text-2xl font-semibold mb-6">Technical Debt Management</h3>
+
+          <div class="trade-off-table mb-8">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Debt Type</th>
+                  <th>Impact</th>
+                  <th>Remediation Strategy</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-medium">Code Complexity</td>
+                  <td>High maintenance cost</td>
+                  <td>Refactoring sprints, automated tests</td>
+                  <td><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">High</span></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Outdated Dependencies</td>
+                  <td>Security vulnerabilities</td>
+                  <td>Regular updates, dependency monitoring</td>
+                  <td><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">High</span></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Performance Bottlenecks</td>
+                  <td>User experience degradation</td>
+                  <td>Profiling, optimization, scaling</td>
+                  <td><span class="bg-amber-100 text-amber-800 px-2 py-1 rounded text-xs">Medium</span></td>
+                </tr>
+                <tr>
+                  <td class="font-medium">Documentation Gaps</td>
+                  <td>Knowledge transfer issues</td>
+                  <td>Documentation sprints, code comments</td>
+                  <td><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Low</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pattern-highlight mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-chart-line mr-2"></i>Technical Debt Monitoring
+            </h4>
+            <p class="text-amber-700">
+              Implement automated metrics to track technical debt accumulation, including cyclomatic complexity,
+              code duplication percentage, and dependency age. Set thresholds for intervention and allocate
+              15-20% of development capacity to debt reduction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="max-w-6xl mx-auto px-8 py-12 bg-gradient-to-br from-slate-900 to-blue-900 text-white">
+        <div class="text-center space-y-8">
+          <h2 class="text-4xl font-light serif italic">Building the Future of Decentralized Exchanges</h2>
+          <p class="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            The architectural decisions explored in this guide represent the foundation for building
+            high-performance, secure, and scalable DEX platforms. From the fundamental choice between
+            monolithic and distributed architectures to the nuanced implementation of domain-driven design
+            patterns, each decision carries quantifiable trade-offs that shape the system&#39;s behavior under load.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <i class="fas fa-cogs text-3xl text-blue-300 mb-4"></i>
+              <h3 class="font-semibold mb-2">Structural Excellence</h3>
+              <p class="text-sm text-slate-300">Hexagonal and microservices patterns that scale</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <i class="fas fa-shield-alt text-3xl text-green-300 mb-4"></i>
+              <h3 class="font-semibold mb-2">Security First</h3>
+              <p class="text-sm text-slate-300">On-chain settlement with off-chain performance</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+              <i class="fas fa-rocket text-3xl text-purple-300 mb-4"></i>
+              <h3 class="font-semibold mb-2">Performance Optimized</h3>
+              <p class="text-sm text-slate-300">Quantified trade-offs for informed decisions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+        // Initialize Mermaid with enhanced theme
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#f8fafc',
+                primaryTextColor: '#111827',
+                primaryBorderColor: '#374151',
+                lineColor: '#4b5563',
+                secondaryColor: '#e2e8f0',
+                tertiaryColor: '#f1f5f9',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f8fafc',
+                tertiaryBkg: '#f1f5f9',
+                nodeBorder: '#374151',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#d1d5db',
+                defaultLinkColor: '#4b5563',
+                titleColor: '#111827',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#111827'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 25,
+                useMaxWidth: false,
+                useWidth: 1200,
+                nodeSpacing: 60,
+                rankSpacing: 100,
+                diagramPadding: 30
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 20,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35,
+                mirrorActors: true,
+                bottomMarginAdj: 1,
+                useMaxWidth: false,
+                rightAngles: false,
+                showSequenceNumbers: false
+            },
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize controls after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid controls
+            initializeMermaidControls();
+            
+            // Smooth scrolling for TOC links
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Highlight current section in TOC
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id], div[id]');
+                const tocLinks = document.querySelectorAll('.toc-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Code block syntax highlighting and copy functionality
+            document.querySelectorAll('.code-block').forEach(block => {
+                const copyButton = document.createElement('button');
+                copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                copyButton.className = 'absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-2';
+                copyButton.style.position = 'absolute';
+                copyButton.style.top = '1rem';
+                copyButton.style.right = '1rem';
+                copyButton.style.background = 'rgba(255, 255, 255, 0.1)';
+                copyButton.style.border = 'none';
+                copyButton.style.borderRadius = '4px';
+                copyButton.style.cursor = 'pointer';
+                copyButton.style.fontSize = '14px';
+                copyButton.style.transition = 'all 0.2s ease';
+                
+                block.style.position = 'relative';
+                block.appendChild(copyButton);
+
+                copyButton.addEventListener('click', function() {
+                    const code = block.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                        copyButton.style.color = '#10b981';
+                        setTimeout(() => {
+                            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                            copyButton.style.color = '#94a3b8';
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+  
+
+</body></html>

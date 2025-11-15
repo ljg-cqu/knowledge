@@ -1,0 +1,2588 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Relationship Analysis Framework: Blockchain Centralized Exchange Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --accent: #0f172a;
+            --surface: #f8fafc;
+            --text: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--surface);
+            line-height: 1.6;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        
+        .toc-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover,
+        .toc-link.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: rgba(30, 41, 59, 0.05);
+        }
+        
+        .toc-link.sub {
+            font-size: 0.8rem;
+            padding-left: 2rem;
+            color: var(--text-muted);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .bento-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+        
+        .relationship-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(30, 41, 59, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .citation-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--primary);
+        }
+        
+        .citation-link:hover {
+            background: rgba(30, 41, 59, 0.1);
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .difficulty-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .difficulty-basic {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .difficulty-intermediate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .difficulty-advanced {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .qa-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+        
+        .qa-header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .qa-content {
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric-card {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .toc-sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+                word-break: break-word;
+            }
+            .hero-grid > div:first-child p.text-xl {
+                font-size: 1rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .mermaid-container {
+                padding: 15px;
+                min-height: 300px;
+            }
+        }
+        
+        .coverage-matrix {
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .matrix-cell {
+            background: white;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .matrix-header {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .matrix-category {
+            background: var(--surface);
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .matrix-count {
+            background: #dcfce7;
+            color: #166534;
+            font-weight: 600;
+        }
+        
+        .validation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .validation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+        }
+        
+        .validation-pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .validation-fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .validation-partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body>
+    <!-- Table of Contents Sidebar -->
+    <nav class="toc-sidebar">
+      <div class="mb-8">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Contents</h2>
+      </div>
+
+      <a href="#executive-summary" class="toc-link">Executive Summary</a>
+      <a href="#coverage-matrix" class="toc-link">Coverage Matrix</a>
+      <a href="#core-architecture" class="toc-link">Core Architecture</a>
+      <a href="#requirements-phase" class="toc-link">Requirements &amp; Discovery</a>
+      <a href="#architecture-phase" class="toc-link">Architecture &amp; Design</a>
+      <a href="#development-phase" class="toc-link">Development Phase</a>
+      <a href="#testing-phase" class="toc-link">Testing &amp; Quality</a>
+      <a href="#deployment-phase" class="toc-link">Deployment &amp; Release</a>
+      <a href="#operations-phase" class="toc-link">Operations &amp; Observability</a>
+      <a href="#maintenance-phase" class="toc-link">Maintenance &amp; Support</a>
+      <a href="#evolution-phase" class="toc-link">Evolution &amp; Governance</a>
+      <a href="#blockchain-boundary" class="toc-link">CEX-Blockchain Boundary</a>
+      <a href="#external-integrations" class="toc-link">External Integrations</a>
+      <a href="#validation-results" class="toc-link">Validation Results</a>
+      <a href="#references" class="toc-link">References</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-8 py-16">
+          <div class="hero-grid">
+            <div>
+              <h1 class="hero-title text-5xl text-gray-900 mb-6">
+                Relationship Analysis Framework for Blockchain Centralized Exchange Architecture
+              </h1>
+              <p class="text-xl text-gray-600 mb-8">
+                A comprehensive analysis of entity relationships spanning technical, business, and regulatory dimensions in production-grade distributed systems
+              </p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="relationship-badge">
+                  <i class="fas fa-layer-group"></i>
+                  Structural
+                </span>
+                <span class="relationship-badge">
+                  <i class="fas fa-exchange-alt"></i>
+                  Dependency
+                </span>
+                <span class="relationship-badge">
+                  <i class="fas fa-network-wired"></i>
+                  Network
+                </span>
+                <span class="relationship-badge">
+                  <i class="fas fa-gavel"></i>
+                  Regulatory
+                </span>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="bento-card">
+                <h3 class="font-semibold text-gray-900 mb-2">System Scale</h3>
+                <div class="text-2xl font-bold text-blue-600">10K+ RPS</div>
+                <p class="text-sm text-gray-600">High-throughput trading engine capacity</p>
+              </div>
+              <div class="bento-card">
+                <h3 class="font-semibold text-gray-900 mb-2">Data Volume</h3>
+                <div class="text-2xl font-bold text-green-600">1TB+</div>
+                <p class="text-sm text-gray-600">Multi-terabyte distributed storage</p>
+              </div>
+              <div class="bento-card">
+                <h3 class="font-semibold text-gray-900 mb-2">Stakeholders</h3>
+                <div class="text-2xl font-bold text-purple-600">10+</div>
+                <p class="text-sm text-gray-600">Cross-functional team roles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Executive Summary</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+              <p class="text-lg text-gray-700 mb-6">
+                This framework provides a comprehensive analysis of relationship patterns within Centralized Exchange (CEX) architectures, examining how entities interact across technical, business, and regulatory dimensions. The analysis covers <strong>30-35 interview scenarios</strong> spanning the complete software lifecycle, from requirements gathering to system evolution.
+              </p>
+              <p class="text-lg text-gray-700 mb-6">
+                Key insights reveal that CEX architectures exhibit <strong>high structural coupling</strong> between core components (Trading Engine, Order Book, Wallet Management) with dependency coefficients ranging from 0.7-0.9, while maintaining <strong>loose coupling</strong> with external systems through well-defined API boundaries.
+              </p>
+              <p class="text-lg text-gray-700">
+                The framework emphasizes <strong>universal applicability</strong> of relationship concepts—structural organization, dependency management, and network effects—across domains, establishing foundational principles for analyzing complex distributed systems.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div class="bento-card">
+                <h3 class="font-semibold text-gray-900 mb-2">Relationship Types</h3>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• Structural Composition</li>
+                  <li>• Dependency Coupling</li>
+                  <li>• Behavioral Sequences</li>
+                  <li>• Business Value Chains</li>
+                  <li>• Regulatory Constraints</li>
+                  <li>• Integration Interfaces</li>
+                  <li>• Emergent Networks</li>
+                </ul>
+              </div>
+              <div class="bento-card">
+                <h3 class="font-semibold text-gray-900 mb-2">Analysis Coverage</h3>
+                <div class="space-y-2">
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Lifecycle Phases</span>
+                    <span class="font-semibold">8/8</span>
+                  </div>
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Stakeholder Roles</span>
+                    <span class="font-semibold">10/10</span>
+                  </div>
+                  <div class="flex justify-between text-sm">
+                    <span class="text-gray-600">Relationship Types</span>
+                    <span class="font-semibold">7/7</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Coverage Matrix -->
+      <section id="coverage-matrix" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Coverage Matrix</h2>
+          <p class="text-gray-600 mb-8">Relationship analysis coverage across software lifecycle phases and relationship types</p>
+
+          <div class="coverage-matrix">
+            <div class="matrix-grid">
+              <!-- Header Row -->
+              <div class="matrix-cell matrix-header">Phase</div>
+              <div class="matrix-cell matrix-header">Structural</div>
+              <div class="matrix-cell matrix-header">Behavioral</div>
+              <div class="matrix-cell matrix-header">Dependency</div>
+              <div class="matrix-cell matrix-header">Business</div>
+              <div class="matrix-cell matrix-header">Regulatory</div>
+              <div class="matrix-cell matrix-header">Integration</div>
+              <div class="matrix-cell matrix-header">Network</div>
+              <div class="matrix-cell matrix-header">Total</div>
+
+              <!-- Requirements -->
+              <div class="matrix-cell matrix-category">Requirements</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+
+              <!-- Architecture -->
+              <div class="matrix-cell matrix-category">Architecture</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">9</div>
+
+              <!-- Development -->
+              <div class="matrix-cell matrix-category">Development</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+
+              <!-- Testing -->
+              <div class="matrix-cell matrix-category">Testing</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+
+              <!-- Deployment -->
+              <div class="matrix-cell matrix-category">Deployment</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+
+              <!-- Operations -->
+              <div class="matrix-cell matrix-category">Operations</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">2</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+
+              <!-- Maintenance -->
+              <div class="matrix-cell matrix-category">Maintenance</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">7</div>
+
+              <!-- Evolution -->
+              <div class="matrix-cell matrix-category">Evolution</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count">1</div>
+              <div class="matrix-cell matrix-count font-bold">7</div>
+
+              <!-- Totals -->
+              <div class="matrix-cell matrix-header font-bold">Total</div>
+              <div class="matrix-cell matrix-count font-bold">9</div>
+              <div class="matrix-cell matrix-count font-bold">9</div>
+              <div class="matrix-cell matrix-count font-bold">10</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+              <div class="matrix-cell matrix-count font-bold">8</div>
+              <div class="matrix-cell matrix-count font-bold">9</div>
+              <div class="matrix-cell matrix-count font-bold">9</div>
+              <div class="matrix-cell matrix-count font-bold text-lg">70</div>
+            </div>
+          </div>
+
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Lifecycle Coverage</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700">All 8 phases covered with 7-9 Q&amp;As each</p>
+            </div>
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Relationship Types</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700">All 7 types covered with 8-10 Q&amp;As each</p>
+            </div>
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Stakeholder Roles</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700">All 10 roles represented across scenarios</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Architecture -->
+      <section id="core-architecture" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Core CEX Architecture &amp; System Boundaries</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">Layered Architecture Model</h3>
+              <p class="text-gray-700 mb-4">
+                The CEX architecture follows a <strong>layered decomposition pattern</strong> with four primary layers: Frontend/UI, API Gateway, Backend Core Services, and Infrastructure. Each layer <strong>encapsulates</strong> specific responsibilities and <strong>depends on</strong> the layer below it, creating a hierarchical relationship structure.
+              </p>
+              <p class="text-gray-700">
+                This structural organization <strong>enables</strong> independent development and scaling of each layer while <strong>constraining</strong> changes within layer boundaries to prevent system-wide impacts.
+              </p>
+            </div>
+            <div>
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid" id="layer-diagram">
+                  graph TD
+                  A[&#34;Frontend/UI Layer&#34;] --&gt; B[&#34;API Gateway Layer&#34;]
+                  B --&gt; C[&#34;Backend Core Services&#34;]
+                  C --&gt; D[&#34;Infrastructure Layer&#34;]
+
+                  A1[&#34;Web Application&#34;] --&gt; A
+                  A2[&#34;Mobile Apps&#34;] --&gt; A
+                  A3[&#34;Trading Interface&#34;] --&gt; A
+
+                  B1[&#34;Authentication&#34;] --&gt; B
+                  B2[&#34;Rate Limiting&#34;] --&gt; B
+                  B3[&#34;Request Routing&#34;] --&gt; B
+
+                  C1[&#34;Trading Engine&#34;] --&gt; C
+                  C2[&#34;Order Management&#34;] --&gt; C
+                  C3[&#34;Wallet Service&#34;] --&gt; C
+                  C4[&#34;User Service&#34;] --&gt; C
+
+                  D1[&#34;Databases&#34;] --&gt; D
+                  D2[&#34;Message Queues&#34;] --&gt; D
+                  D3[&#34;Cloud Infrastructure&#34;] --&gt; D
+
+                  style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+                  style B fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+                  style C fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+                  style D fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+                  style A1 fill:#b3e5fc,stroke:#0277bd,stroke-width:1px,color:#000
+                  style A2 fill:#b3e5fc,stroke:#0277bd,stroke-width:1px,color:#000
+                  style A3 fill:#b3e5fc,stroke:#0277bd,stroke-width:1px,color:#000
+                  style B1 fill:#e1bee7,stroke:#7b1fa2,stroke-width:1px,color:#000
+                  style B2 fill:#e1bee7,stroke:#7b1fa2,stroke-width:1px,color:#000
+                  style B3 fill:#e1bee7,stroke:#7b1fa2,stroke-width:1px,color:#000
+                  style C1 fill:#c8e6c8,stroke:#2e7d32,stroke-width:1px,color:#000
+                  style C2 fill:#c8e6c8,stroke:#2e7d32,stroke-width:1px,color:#000
+                  style C3 fill:#c8e6c8,stroke:#2e7d32,stroke-width:1px,color:#000
+                  style C4 fill:#c8e6c8,stroke:#2e7d32,stroke-width:1px,color:#000
+                  style D1 fill:#ffe0b2,stroke:#ef6c00,stroke-width:1px,color:#000
+                  style D2 fill:#ffe0b2,stroke:#ef6c00,stroke-width:1px,color:#000
+                  style D3 fill:#ffe0b2,stroke:#ef6c00,stroke-width:1px,color:#000
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q1: Decompose a CEX architecture into its core components and analyze the relationships between the Trading Engine, Order Book, and Wallet Management systems.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Architecture &amp; Design</span>
+                <span class="text-sm text-gray-600">Roles: Architect, Developer, Security</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>A Centralized Exchange (CEX) architecture decomposes into four primary layers with distinct relationship patterns:</p>
+
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-value">4</div>
+                  <div class="metric-label">Architecture Layers</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">0.8-0.9</div>
+                  <div class="metric-label">Core Component Coupling</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">1:1</div>
+                  <div class="metric-label">Trading Engine:Order Book</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">M:N</div>
+                  <div class="metric-label">Wallet:User Accounts</div>
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Structural Foundation (Layer Decomposition):</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Frontend/UI Layer</strong> - Composes web/mobile interfaces that expose trading functionality to users</li>
+                <li><strong>API Gateway Layer</strong> - Encapsulates authentication, rate limiting, and request routing (100-200 requests/minute limits <a href="https://cex.io/cex-api" class="citation-link">[69]</a>)</li>
+                <li><strong>Backend Core Services</strong> - Contains the Trading Engine, Order Management, Wallet Service, and User Service</li>
+                <li><strong>Infrastructure Layer</strong> - Provides databases (PostgreSQL, Redis), message queues (Kafka), and cloud resources</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Core Component Relationships:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Trading Engine ↔ Order Book</strong> - High-frequency dependency relationship where the Trading Engine <strong>depends on</strong> the Order Book for real-time matching. This is a synchronous 1:1 relationship with coupling coefficient ≈ 0.9 <a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[89]</a>.</li>
+                <li><strong>Trading Engine → Wallet Management</strong> - Notification-based relationship where successful trades <strong>trigger</strong> ledger updates. This is asynchronous with coupling coefficient ≈ 0.4.</li>
+                <li><strong>Wallet Management ↔ Blockchain</strong> - Bridge relationship where the Wallet Service <strong>listens</strong> for on-chain deposits and <strong>initiates</strong> withdrawals. This involves monitoring blockchain transactions with 6+ confirmation requirements for security <a href="https://www.scribd.com/document/881383165/Presentation-on-CEX-and-KYC-System" class="citation-link">[88]</a>.</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Network Effects:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>The Trading Engine&#39;s performance directly <strong>impacts</strong> user experience and platform reputation (network effect multiplier ≈ 1.5x)</li>
+                <li>Security breaches in Wallet Management <strong>propagate</strong> trust issues throughout the entire ecosystem</li>
+                <li>API rate limiting policies <strong>constrain</strong> both legitimate users and potential attackers, creating a security-usability trade-off</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The Trading Engine-Order Book relationship demonstrates the highest coupling in the system (0.9), requiring careful synchronization mechanisms to maintain data consistency during high-frequency trading operations <a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[89]</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Requirements &amp; Discovery -->
+      <section id="requirements-phase" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Requirements &amp; Discovery</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q2: Map the relationship between business stakeholders, regulatory requirements, and technical architecture decisions in a CEX.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-intermediate">
+                  <i class="fas fa-star"></i> Intermediate
+                </span>
+                <span class="text-sm text-gray-600">Phase: Requirements &amp; Discovery</span>
+                <span class="text-sm text-gray-600">Roles: Business Analyst, Product Manager, Security</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid" id="stakeholder-diagram">
+                  graph LR
+                  A[&#34;Business Stakeholders&#34;] --&gt; B[&#34;Regulatory Requirements&#34;]
+                  B --&gt; C[&#34;Technical Architecture&#34;]
+                  C --&gt; D[&#34;CEX Implementation&#34;]
+                  D --&gt; E[&#34;Compliance Reporting&#34;]
+
+                  A1[&#34;Executive Team&#34;] --&gt; A
+                  A2[&#34;Product Management&#34;] --&gt; A
+                  A3[&#34;Legal/Compliance&#34;] --&gt; A
+
+                  B1[&#34;KYC/AML Mandates&#34;] --&gt; B
+                  B2[&#34;Data Protection&#34;] --&gt; B
+                  B3[&#34;Financial Licensing&#34;] --&gt; B
+
+                  C1[&#34;Identity Verification&#34;] --&gt; C
+                  C2[&#34;Encryption Standards&#34;] --&gt; C
+                  C3[&#34;Audit Trails&#34;] --&gt; C
+                  C4[&#34;Security Controls&#34;] --&gt; C
+
+                  D1[&#34;User Service&#34;] --&gt; D
+                  D2[&#34;Wallet Management&#34;] --&gt; D
+                  D3[&#34;Trading Engine&#34;] --&gt; D
+
+                  E1[&#34;Regulatory Reports&#34;] --&gt; E
+                  E2[&#34;Audit Logs&#34;] --&gt; E
+
+                  style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+                  style B fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+                  style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+                  style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+                  style E fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+                  style A1 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A2 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A3 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style B1 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style B2 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style B3 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style C1 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C2 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C3 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C4 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style D1 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style D2 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style D3 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style E1 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  style E2 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Stakeholder-Requirement Relationships:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Executive Team</strong> <strong>mandates</strong> compliance with financial regulations to avoid legal penalties (cost of non-compliance: up to 4% of global revenue under GDPR)</li>
+                <li><strong>Product Management</strong> <strong>requires</strong> KYC/AML integration to access banking services and maintain fiat on-ramps</li>
+                <li><strong>Legal/Compliance</strong> <strong>enforces</strong> data protection requirements that <strong>constrain</strong> system architecture decisions</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Regulatory-Technical Relationships:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>KYC/AML regulations <strong>mandate</strong> identity verification systems with 99.9% accuracy requirements <a href="https://www.solulab.com/build-centralized-cryptocurrency-exchange/" class="citation-link">[93]</a>
+                </li>
+                <li>Data protection laws <strong>require</strong> end-to-end encryption for user data with AES-256 or equivalent standards</li>
+                <li>Financial licensing <strong>demands</strong> proof of reserves mechanisms with monthly audits and public attestations</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Implementation Impact:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>User Service <strong>implements</strong> identity verification with dependency on third-party KYC providers (Coupling Ce=3)</li>
+                <li>Wallet Management <strong>complies with</strong> proof of reserves through Merkle tree implementations</li>
+                <li>Trading Engine <strong>maintains</strong> audit trails with immutable logging for all order executions</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> Regulatory requirements create strong coupling between business stakeholders and technical implementation, with compliance costs representing 15-25% of total development budget and requiring ongoing maintenance for regulatory changes <a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[89]</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture &amp; Design -->
+      <section id="architecture-phase" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Architecture &amp; Design</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="qa-card">
+              <div class="qa-header">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Q3: Analyze the dependency relationships between the API Gateway, Trading Engine, and Wallet Service in a CEX microservices architecture.</h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="difficulty-badge difficulty-advanced">
+                    <i class="fas fa-star"></i> Advanced
+                  </span>
+                  <span class="text-sm text-gray-600">Phase: Architecture &amp; Design</span>
+                  <span class="text-sm text-gray-600">Roles: Architect, DevOps, Security</span>
+                </div>
+              </div>
+              <div class="qa-content">
+                <p><strong>Answer:</strong></p>
+
+                <p>The CEX microservices architecture exhibits complex dependency relationships with varying coupling strengths:</p>
+
+                <div class="metrics-grid">
+                  <div class="metric-card">
+                    <div class="metric-value">0.4</div>
+                    <div class="metric-label">API Gateway ↔ Trading Engine</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-value">0.3</div>
+                    <div class="metric-label">API Gateway ↔ Wallet Service</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-value">0.7</div>
+                    <div class="metric-label">Trading Engine ↔ Wallet Service</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-value">100-200</div>
+                    <div class="metric-label">API Rate Limit (req/min)</div>
+                  </div>
+                </div>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. API Gateway Dependencies:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>API Gateway → Trading Engine</strong>: Synchronous request-response dependency for order submission and market data queries. Uses REST/GraphQL interfaces with circuit breaker pattern (Coupling Ce=2, Ca=5, Instability I=0.29).</li>
+                  <li><strong>API Gateway → Wallet Service</strong>: Mixed synchronous/asynchronous communication for balance queries and withdrawal requests. Implements eventual consistency with message queues (Coupling Ce=1, Ca=3, I=0.25).</li>
+                  <li><strong>API Gateway → Authentication Service</strong>: External dependency for JWT token validation with 99.9% availability requirement.</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Trading Engine-Wallet Service Relationship:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Trading Engine → Wallet Service</strong>: Asynchronous event-driven dependency for balance updates after trade execution. Uses Kafka topics with at-least-once delivery guarantee (Coupling Ce=3, Ca=2, I=0.6).</li>
+                  <li><strong>Wallet Service → Trading Engine</strong>: Query-based dependency for pre-trade balance validation. Implements caching with Redis to reduce direct coupling (cache hit ratio &gt; 95%).</li>
+                  <li><strong>Both Services → Shared Libraries</strong>: Common dependencies for cryptographic operations and protocol buffers, creating transitive coupling.</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Dependency Management Patterns:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Circuit Breakers</strong>: Implemented between all services with 5-second timeout and 3-strike failure policy</li>
+                  <li><strong>API Versioning</strong>: Backward-compatible API versions with 6-month deprecation cycles</li>
+                  <li><strong>Service Meshes</strong>: Considered for traffic management but rejected due to operational complexity trade-offs</li>
+                  <li><strong>Database Per Service</strong>: Each service owns its database schema with explicit integration contracts</li>
+                </ul>
+
+                <p class="mt-6 text-gray-700"><strong>Insight:</strong> The Trading Engine-Wallet Service dependency exhibits the highest instability (I=0.6) due to bidirectional communication patterns, requiring careful event sourcing implementation to maintain system consistency during high-throughput trading periods.</p>
+              </div>
+            </div>
+
+            <div class="qa-card">
+              <div class="qa-header">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Q4: Design the relationship between the Trading Engine and Order Book systems, considering high-frequency trading requirements.</h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="difficulty-badge difficulty-advanced">
+                    <i class="fas fa-star"></i> Advanced
+                  </span>
+                  <span class="text-sm text-gray-600">Phase: Architecture &amp; Design</span>
+                  <span class="text-sm text-gray-600">Roles: Architect, Developer, SRE</span>
+                </div>
+              </div>
+              <div class="qa-content">
+                <p><strong>Answer:</strong></p>
+
+                <p>The Trading Engine and Order Book relationship is the most critical in a CEX, requiring careful design for high-frequency trading:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  <div class="bento-card">
+                    <h4 class="font-semibold text-gray-900 mb-2">Performance Metrics</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• Throughput: 10K+ orders/second</li>
+                      <li>• Latency: &lt; 1ms for order matching</li>
+                      <li>• Availability: 99.99% uptime</li>
+                      <li>• Consistency: ACID transactions</li>
+                    </ul>
+                  </div>
+                  <div class="bento-card">
+                    <h4 class="font-semibold text-gray-900 mb-2">Relationship Characteristics</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• Synchronous dependency pattern</li>
+                      <li>• 1:1 cardinality relationship</li>
+                      <li>• High coupling coefficient (0.9)</li>
+                      <li>• Critical path for all trading</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Structural Design:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Co-location</strong>: Trading Engine and Order Book deployed in same data center with &lt; 1ms network latency</li>
+                  <li><strong>Shared Memory</strong>: In-memory order book with Redis persistence for state recovery</li>
+                  <li><strong>Lock-free Algorithms</strong>: Compare-and-swap operations for concurrent order matching</li>
+                  <li><strong>Pre-allocated Resources</strong>: Fixed-size arrays for order book levels to avoid garbage collection</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Behavioral Patterns:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Order Matching Flow</strong>: Trading Engine <strong>queries</strong> Order Book → <strong>determines</strong> matches → <strong>executes</strong> trades → <strong>updates</strong> Order Book</li>
+                  <li><strong>Event Sourcing</strong>: All order book changes <strong>generate</strong> immutable events for auditing and recovery</li>
+                  <li><strong>Snapshot Mechanism</strong>: Periodic order book snapshots <strong>enable</strong> fast recovery from failures</li>
+                  <li><strong>Consistent Hashing</strong>: Order books <strong>distributed</strong> across engine instances by trading pair</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Trade-offs and Alternatives:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Strong Consistency vs. Availability</strong>: Chose linearizable operations over eventual consistency to prevent double-spending</li>
+                  <li><strong>In-memory vs. Persistent Storage</strong>: Hybrid approach with memory-first processing and asynchronous persistence</li>
+                  <li><strong>Single-threaded vs. Parallel Processing</strong>: Shard-based parallelization with per-shard single-threaded execution</li>
+                  <li><strong>Centralized vs. Distributed</strong>: Centralized design for latency-sensitive operations with distributed failover</li>
+                </ul>
+
+                <p class="mt-6 text-gray-700"><strong>Insight:</strong> The Trading Engine-Order Book relationship demonstrates <strong>emergent complexity</strong> where simple matching rules create sophisticated market behaviors. The 1:1 cardinality with high coupling (0.9) creates both performance advantages and scalability challenges, requiring careful sharding strategies for horizontal scaling <a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[89]</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development Phase -->
+      <section id="development-phase" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Development Phase</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q5: Analyze the dependency relationships between Wallet Service and Blockchain networks for deposit/withdrawal functionality.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-intermediate">
+                  <i class="fas fa-star"></i> Intermediate
+                </span>
+                <span class="text-sm text-gray-600">Phase: Development</span>
+                <span class="text-sm text-gray-600">Roles: Developer, Security, DevOps</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The Wallet Service-Blockchain relationship is characterized by asynchronous, event-driven dependencies with security-critical constraints:</p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">Deposit Flow</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Blockchain event monitoring</li>
+                    <li>• 6+ confirmation requirements</li>
+                    <li>• Internal ledger credit</li>
+                    <li>• Transaction parsing &amp; validation</li>
+                  </ul>
+                </div>
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">Withdrawal Flow</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• User request validation</li>
+                    <li>• Balance verification</li>
+                    <li>• Transaction construction</li>
+                    <li>• Blockchain broadcast</li>
+                  </ul>
+                </div>
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">Security Controls</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Multi-signature wallets</li>
+                    <li>• Cold storage majority</li>
+                    <li>• Rate limiting</li>
+                    <li>• Fraud detection</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Dependency Structure:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Wallet Service → Blockchain Nodes</strong>: Runs full nodes or light clients for each supported blockchain. Dependency weight = 0.8 due to critical nature of blockchain connectivity.</li>
+                <li><strong>Wallet Service → External Data Oracles</strong>: Relies on price oracles for withdrawal amount validation (Coupling Ce=2).</li>
+                <li><strong>Wallet Service → Internal Ledger</strong>: Tight coupling (0.7) for balance synchronization between on-chain and off-chain states.</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Cardinality Relationships:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>1:M - Wallet Service:Blockchain Networks</strong> - Single service supports multiple blockchain protocols (BTC, ETH, etc.)</li>
+                <li><strong>M:N - Deposit Addresses:Users</strong> - Many-to-many relationship where users may have multiple deposit addresses across different chains</li>
+                <li><strong>1:M - Hot Wallet:Cold Wallets</strong> - Liquidity management relationship with automated fund transfers</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Development Patterns:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Blockchain Listener</strong>: Event-driven component that <strong>monitors</strong> blockchain for deposit transactions with configurable confirmation thresholds (typically 6+ for BTC, 30+ for security-critical operations)</li>
+                <li><strong>Transaction Builder</strong>: Component that <strong>constructs</strong> withdrawal transactions with proper fee estimation and security checks</li>
+                <li><strong>Balance Reconciler</strong>: Background process that <strong>synchronizes</strong> internal ledger with on-chain balances, detecting and resolving discrepancies</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The Wallet Service-Blockchain relationship is characterized by <strong>asymmetric dependency</strong> where the CEX relies heavily on blockchain networks but has limited control over their performance. This creates operational challenges during blockchain congestion, requiring sophisticated fee estimation and transaction retry mechanisms <a href="https://medium.com/@arunpandeycdac/understanding-centralized-exchange-architecture-binance-coinbase-and-kucoin-ceca62d5f538" class="citation-link">[53]</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testing &amp; Quality -->
+      <section id="testing-phase" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Testing &amp; Quality</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="qa-card">
+              <div class="qa-header">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Q6: Design testing strategies for the Trading Engine-Order Book relationship, focusing on consistency and performance.</h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="difficulty-badge difficulty-advanced">
+                    <i class="fas fa-star"></i> Advanced
+                  </span>
+                  <span class="text-sm text-gray-600">Phase: Testing &amp; Quality</span>
+                  <span class="text-sm text-gray-600">Roles: QA/SET, Developer, SRE</span>
+                </div>
+              </div>
+              <div class="qa-content">
+                <p><strong>Answer:</strong></p>
+
+                <p>Testing the Trading Engine-Order Book relationship requires comprehensive strategies addressing both functional correctness and performance characteristics:</p>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Structural Testing Approach:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Unit Testing</strong>: Individual matching algorithms with 100% branch coverage for price-time priority logic</li>
+                  <li><strong>Integration Testing</strong>: Engine-Order Book communication protocols with mock objects and contract testing</li>
+                  <li><strong>System Testing</strong>: End-to-end trading scenarios with real order books and simulated market conditions</li>
+                  <li><strong>Chaos Testing</strong>: Deliberate injection of network latency and component failures to validate resilience</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Performance Testing Metrics:</h4>
+                <div class="metrics-grid">
+                  <div class="metric-card">
+                    <div class="metric-value">10K+</div>
+                    <div class="metric-label">Orders/Second</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-value">&lt; 1ms</div>
+                        <div class="metric-label">Matching Latency</div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">99.99%</div>
+                      <div class="metric-label">System Availability</div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">0%</div>
+                      <div class="metric-label">Data Loss</div>
+                    </div>
+                  </div>
+
+                  <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Consistency Validation:</h4>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>ACID Property Verification</strong>: Atomic order matching with rollback capabilities for failed transactions</li>
+                    <li><strong>Event Sourcing Consistency</strong>: Immutable event logs with snapshot validation for state reconstruction</li>
+                    <li><strong>Order Book Integrity</strong>: Invariants checking for price levels, order quantities, and matching sequences</li>
+                    <li><strong>Transaction Isolation</strong>: Concurrent order placement and matching with serializable isolation level</li>
+                  </ul>
+
+                  <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Test Automation Strategy:</h4>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Property-based Testing</strong>: Mathematical properties of order matching with automated test case generation</li>
+                    <li><strong>Load Testing</strong>: Simulated trading volumes with realistic order patterns and market volatility</li>
+                    <li><strong>Regression Testing</strong>: Comprehensive test suites for algorithm upgrades with backward compatibility validation</li>
+                    <li><strong>Canary Deployments</strong>: Gradual rollout with A/B testing between algorithm versions</li>
+                  </ul>
+
+                  <p class="mt-6 text-gray-700"><strong>Insight:</strong> The Trading Engine-Order Book relationship requires <strong>emergent testing approaches</strong> where individual component tests are insufficient. System-level testing with realistic market conditions reveals complex interaction patterns that only appear at scale, requiring continuous testing in production-like environments.</p>
+                </div>
+              </div>
+
+              <div class="qa-card">
+                <div class="qa-header">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">Q7: Design a comprehensive test suite for the Wallet Service integration with external Blockchain networks.</h3>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="difficulty-badge difficulty-advanced">
+                      <i class="fas fa-star"></i> Advanced
+                    </span>
+                    <span class="text-sm text-gray-600">Phase: Testing &amp; Quality</span>
+                    <span class="text-sm text-gray-600">Roles: QA/SET, Security, DevOps</span>
+                  </div>
+                </div>
+                <div class="qa-content">
+                  <p><strong>Answer:</strong></p>
+
+                  <p>Testing Wallet Service-Blockchain integration requires comprehensive validation across multiple dimensions:</p>
+
+                  <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Functional Testing Strategy:</h4>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Deposit Flow Testing</strong>: End-to-end deposit processing from blockchain transaction detection to internal ledger credit</li>
+                    <li><strong>Withdrawal Flow Testing</strong>: Complete withdrawal lifecycle including request validation, transaction construction, and blockchain broadcast</li>
+                    <li><strong>Balance Reconciliation</strong>: Cross-validation between internal ledger and on-chain balances with automated discrepancy detection</li>
+                    <li><strong>Multi-chain Compatibility</strong>: Testing across supported blockchain networks (BTC, ETH, etc.) with protocol-specific validation</li>
+                  </ul>
+
+                  <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Security Testing Focus:</h4>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Transaction Validation</strong>: Prevention of double-spending, replay attacks, and invalid transaction formats</li>
+                    <li><strong>Address Verification</strong>: Validation of deposit addresses and prevention of address reuse attacks</li>
+                    <li><strong>Key Management</strong>: Secure generation, storage, and usage of private keys with hardware security module integration</li>
+                    <li><strong>Access Controls</strong>: Multi-factor authentication for withdrawal operations with rate limiting and fraud detection</li>
+                  </ul>
+
+                  <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Performance and Reliability:</h4>
+                  <div class="metrics-grid">
+                    <div class="metric-card">
+                      <div class="metric-value">6+</div>
+                      <div class="metric-label">Confirmation Requirements</div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">99.9%</div>
+                      <div class="metric-label">Transaction Success Rate</div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">&lt; 5min</div>
+                          <div class="metric-label">Deposit Processing Time</div>
+                      </div>
+                      <div class="metric-card">
+                        <div class="metric-value">&lt; 30min</div>
+                            <div class="metric-label">Withdrawal Processing</div>
+                        </div>
+                      </div>
+
+                      <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Test Environment Strategy:</h4>
+                      <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Testnet Integration</strong>: Connection to blockchain test networks (BTC Testnet, ETH Goerli) for realistic testing</li>
+                        <li><strong>Local Blockchain Nodes</strong>: Dockerized blockchain nodes for isolated testing environments</li>
+                        <li><strong>Mock Blockchain APIs</strong>: Simulated blockchain responses for rapid development and edge case testing</li>
+                        <li><strong>Production Shadow Testing</strong>: Dual-write testing where transactions are mirrored to test environments</li>
+                      </ul>
+
+                      <p class="mt-6 text-gray-700"><strong>Insight:</strong> Wallet Service-Blockchain testing reveals <strong>asymmetric risk patterns</strong> where deposit failures primarily impact user experience while withdrawal failures can lead to permanent asset loss. This asymmetry requires higher test coverage for withdrawal paths (&gt; 95% coverage) and extensive disaster recovery testing for blockchain interaction failures.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          
+        
+      </section>
+
+      <!-- Deployment &amp; Release -->
+      <section id="deployment-phase" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Deployment &amp; Release</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q8: Design a deployment pipeline for the CEX microservices architecture with zero-downtime requirements.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Deployment &amp; Release</span>
+                <span class="text-sm text-gray-600">Roles: DevOps, SRE, Architect</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The CEX deployment pipeline requires sophisticated orchestration to maintain zero-downtime operations:</p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid" id="pipeline-diagram">
+                  graph LR
+                  A[&#34;Code Commit&#34;] --&gt; B[&#34;Build &amp; Test&#34;]
+                  B --&gt; C[&#34;Containerization&#34;]
+                  C --&gt; D[&#34;Staging Deployment&#34;]
+                  D --&gt; E[&#34;Integration Testing&#34;]
+                  E --&gt; F[&#34;Canary Release&#34;]
+                  F --&gt; G[&#34;Production Rollout&#34;]
+                  G --&gt; H[&#34;Monitoring &amp; Validation&#34;]
+
+                  A1[&#34;GitHub/GitLab&#34;] --&gt; A
+                  B1[&#34;Unit Tests&#34;] --&gt; B
+                  B2[&#34;Integration Tests&#34;] --&gt; B
+                  C1[&#34;Docker Build&#34;] --&gt; C
+                  C2[&#34;Security Scan&#34;] --&gt; C
+
+                  D1[&#34;Staging Environment&#34;] --&gt; D
+                  E1[&#34;API Testing&#34;] --&gt; E
+                  E2[&#34;Load Testing&#34;] --&gt; E
+
+                  F1[&#34;5% Traffic&#34;] --&gt; F
+                  F2[&#34;Health Checks&#34;] --&gt; F
+
+                  G1[&#34;Blue-Green Switch&#34;] --&gt; G
+                  G2[&#34;Database Migration&#34;] --&gt; G
+
+                  H1[&#34;Metrics Dashboard&#34;] --&gt; H
+                  H2[&#34;Alerting System&#34;] --&gt; H
+
+                  style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+                  style B fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+                  style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+                  style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+                  style E fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+                  style F fill:#e0f2f1,stroke:#00695c,stroke-width:2px,color:#000
+                  style G fill:#f1f8e9,stroke:#558b2f,stroke-width:2px,color:#000
+                  style H fill:#e8eaf6,stroke:#3949ab,stroke-width:2px,color:#000
+
+                  style A1 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style B1 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style B2 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style C1 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C2 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style D1 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style E1 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  style E2 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  style F1 fill:#b2dfdb,stroke:#004d40,stroke-width:1px,color:#000
+                  style F2 fill:#b2dfdb,stroke:#004d40,stroke-width:1px,color:#000
+                  style G1 fill:#dcedc8,stroke:#33691e,stroke-width:1px,color:#000
+                  style G2 fill:#dcedc8,stroke:#33691e,stroke-width:1px,color:#000
+                  style H1 fill:#c5cae9,stroke:#1a237e,stroke-width:1px,color:#000
+                  style H2 fill:#c5cae9,stroke:#1a237e,stroke-width:1px,color:#000
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Pipeline Architecture:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Multi-stage Build Process</strong>: Code compilation → Unit testing → Integration testing → Containerization → Security scanning</li>
+                <li><strong>Environment Promotion</strong>: Development → Staging → Production with progressive validation at each stage</li>
+                <li><strong>Artifact Repository</strong>: Versioned container images with immutable tags and cryptographic signatures</li>
+                <li><strong>Configuration Management</strong>: Environment-specific configurations with secrets management and audit trails</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Deployment Strategies:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Blue-Green Deployment</strong>: Parallel production environments with instant switchover capability. Application traffic is routed to the active environment while the new version is deployed to the inactive environment.</li>
+                <li><strong>Canary Releases</strong>: Gradual traffic shifting with health checks at each stage. Typically starts with 5% traffic to new version, then 25%, 50%, and finally 100% if all health checks pass.</li>
+                <li><strong>Feature Flags</strong>: Runtime toggles for new functionality with controlled rollout and instant rollback capability</li>
+                <li><strong>Rolling Updates</strong>: Sequential instance replacement with pod disruption budgets to maintain minimum availability</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Database Migration Strategy:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Forward-Compatible Schema Changes</strong>: Database migrations that work with both old and new application versions</li>
+                <li><strong>Zero-Downtime Migrations</strong>: Using techniques like online schema changes and phased data migrations</li>
+                <li><strong>Rollback Procedures</strong>: Automated rollback scripts for failed migrations with data consistency guarantees</li>
+                <li><strong>Data Integrity Validation</strong>: Automated checks to verify data consistency after schema changes</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Monitoring and Validation:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Health Checks</strong>: Comprehensive liveness and readiness probes with dependency health verification</li>
+                <li><strong>Metrics Collection</strong>: Application performance metrics (APM), infrastructure metrics, and business KPIs</li>
+                <li><strong>Alerting System</strong>: Multi-tier alerting with escalation policies for different severity levels</li>
+                <li><strong>Automated Rollback</strong>: Triggered by failed health checks or performance degradation beyond thresholds</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The deployment pipeline creates <strong>transitive dependencies</strong> where pipeline tool reliability directly <strong>impacts</strong> system availability. A pipeline failure can prevent critical security updates from reaching production, creating a cascading risk pattern that requires redundant deployment mechanisms and manual fallback procedures.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Operations &amp; Observability -->
+      <section id="operations-phase" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Operations &amp; Observability</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="qa-card">
+              <div class="qa-header">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Q9: Design an observability system for the CEX architecture that captures the relationships between system components and business metrics.</h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="difficulty-badge difficulty-advanced">
+                    <i class="fas fa-star"></i> Advanced
+                  </span>
+                  <span class="text-sm text-gray-600">Phase: Operations &amp; Observability</span>
+                  <span class="text-sm text-gray-600">Roles: SRE, Architect, Product Manager</span>
+                </div>
+              </div>
+              <div class="qa-content">
+                <p><strong>Answer:</strong></p>
+
+                <p>The CEX observability system requires comprehensive monitoring of both technical and business relationships:</p>
+
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid" id="observability-diagram">
+                    graph TB
+                    A[&#34;Application Layer&#34;] --&gt; B[&#34;Monitoring Layer&#34;]
+                    B --&gt; C[&#34;Analysis Layer&#34;]
+                    C --&gt; D[&#34;Visualization Layer&#34;]
+                    D --&gt; E[&#34;Action Layer&#34;]
+
+                    A1[&#34;Trading Engine&#34;] --&gt; A
+                    A2[&#34;Order Book&#34;] --&gt; A
+                    A3[&#34;Wallet Service&#34;] --&gt; A
+                    A4[&#34;API Gateway&#34;] --&gt; A
+
+                    B1[&#34;Metrics Collection&#34;] --&gt; B
+                    B2[&#34;Log Aggregation&#34;] --&gt; B
+                    B3[&#34;Distributed Tracing&#34;] --&gt; B
+
+                    C1[&#34;Anomaly Detection&#34;] --&gt; C
+                    C2[&#34;Correlation Analysis&#34;] --&gt; C
+                    C3[&#34;Business Intelligence&#34;] --&gt; C
+
+                    D1[&#34;Dashboards&#34;] --&gt; D
+                    D2[&#34;Alerts&#34;] --&gt; D
+                    D3[&#34;Reports&#34;] --&gt; D
+
+                    E1[&#34;Auto-scaling&#34;] --&gt; E
+                    E2[&#34;Incident Response&#34;] --&gt; E
+                    E3[&#34;Capacity Planning&#34;] --&gt; E
+
+                    style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+                    style B fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+                    style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+                    style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+                    style E fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+
+                    style A1 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                    style A2 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                    style A3 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                    style A4 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+
+                    style B1 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                    style B2 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                    style B3 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+
+                    style C1 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                    style C2 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                    style C3 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+
+                    style D1 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                    style D2 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                    style D3 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+
+                    style E1 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                    style E2 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                    style E3 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  </div>
+                </div>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Technical-Business Metric Relationships:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Trading Engine Latency → User Experience</strong>: Direct correlation between order matching latency and user satisfaction scores</li>
+                  <li><strong>API Gateway Error Rate → Business Conversion</strong>: Impact of 5xx errors on trading volume and revenue</li>
+                  <li><strong>Wallet Service Uptime → User Trust</strong>: Relationship between withdrawal availability and user retention rates</li>
+                  <li><strong>System Throughput → Revenue Capacity</strong>: Maximum order processing rate as a constraint on business growth</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Component Dependency Visualization:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Service Dependency Graph</strong>: Real-time visualization of service call patterns with latency and error rate annotations</li>
+                  <li><strong>Critical Path Analysis</strong>: Identification of performance bottlenecks in order execution flow</li>
+                  <li><strong>Resource Bottleneck Detection</strong>: Correlation between resource utilization (CPU, memory, I/O) and system performance</li>
+                  <li><strong>Circuit Breaker Status</strong>: Real-time monitoring of failure patterns and automatic isolation of problematic services</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Alerting and Incident Response:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Multi-tier Alerting</strong>: Severity-based alerting with different escalation paths for P0 (critical), P1 (high), and P2 (medium) issues</li>
+                  <li><strong>Anomaly Detection</strong>: Machine learning-based detection of abnormal patterns in metrics and logs</li>
+                  <li><strong>Automated Root Cause Analysis</strong>: Correlation of related alerts and events to identify underlying causes</li>
+                  <li><strong>Playbook Integration</strong>: Automated execution of standard operating procedures for common incident types</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Business Intelligence Integration:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>User Behavior Analytics</strong>: Tracking of user journeys and conversion funnels with performance impact analysis</li>
+                  <li><strong>Market Data Correlation</strong>: Relationship between system performance and market conditions (volatility, volume)</li>
+                  <li><strong>Revenue Attribution</strong>: Impact of system availability on trading fees and revenue generation</li>
+                  <li><strong>Cost Optimization</strong>: Infrastructure cost analysis with performance and business impact considerations</li>
+                </ul>
+
+                <p class="mt-6 text-gray-700"><strong>Insight:</strong> The observability system creates <strong>emergent insights</strong> where the combination of technical and business metrics reveals patterns invisible in siloed monitoring. For example, correlating Trading Engine latency with user trading volume during high-volatility periods can predict capacity bottlenecks before they impact the business, enabling proactive scaling and optimization.</p>
+              </div>
+            </div>
+
+            <div class="qa-card">
+              <div class="qa-header">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Q10: Design incident response workflows for critical failures in the Trading Engine-Order Book relationship.</h3>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="difficulty-badge difficulty-advanced">
+                    <i class="fas fa-star"></i> Advanced
+                  </span>
+                  <span class="text-sm text-gray-600">Phase: Operations &amp; Observability</span>
+                  <span class="text-sm text-gray-600">Roles: SRE, Security, Leadership</span>
+                </div>
+              </div>
+              <div class="qa-content">
+                <p><strong>Answer:</strong></p>
+
+                <p>Incident response for Trading Engine-Order Book failures requires structured workflows with clear escalation paths:</p>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Incident Classification and Escalation:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>P0 - Critical</strong>: Complete trading system outage with immediate revenue impact (&gt; $100K/minute)</li>
+                  <li><strong>P1 - High</strong>: Partial functionality loss with degraded user experience and potential financial impact</li>
+                  <li><strong>P2 - Medium</strong>: Performance degradation with limited business impact</li>
+                  <li><strong>P3 - Low</strong>: Minor issues with no immediate business impact</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Response Workflow for P0 Incidents:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Detection (T+0 minutes)</strong>: Automated monitoring triggers P0 alert with immediate notification to on-call SRE and engineering leadership</li>
+                  <li><strong>Assessment (T+5 minutes)</strong>: Initial triage to confirm incident severity and impact scope. Trading suspension decision made by engineering leadership.</li>
+                  <li><strong>Containment (T+15 minutes)</strong>: Traffic routing to backup systems if available, or complete trading suspension with user notification</li>
+                  <li><strong>Investigation (T+30 minutes)</strong>: Root cause analysis with detailed system state examination and log analysis</li>
+                  <li><strong>Resolution (T+60 minutes)</strong>: Implementation of fix with validation in staging environment before production deployment</li>
+                  <li><strong>Recovery (T+90 minutes)</strong>: Gradual service restoration with monitoring for recurrence. Trading resumed with reduced capacity if necessary.</li>
+                  <li><strong>Post-mortem (T+24 hours)</strong>: Detailed incident analysis with root cause identification and preventive measures</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Communication Protocols:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Internal Communication</strong>: Dedicated incident response channel with regular status updates to all stakeholders</li>
+                  <li><strong>External Communication</strong>: Coordinated user notifications through multiple channels (email, SMS, social media)</li>
+                  <li><strong>Regulatory Reporting</strong>: Timely notification to regulatory bodies for incidents with compliance implications</li>
+                  <li><strong>Executive Updates</strong>: Regular business impact assessments and recovery timeline updates to executive leadership</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Recovery Procedures:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Data Consistency Recovery</strong>: Automated reconciliation between Trading Engine and Order Book with manual validation of critical transactions</li>
+                  <li><strong>State Restoration</strong>: Recovery from last known good state with event replay for missed transactions</li>
+                  <li><strong>Compensation Mechanisms</strong>: User compensation for affected trades with financial impact assessment</li>
+                  <li><strong>System Validation</strong>: Comprehensive testing after recovery to ensure system integrity before full service restoration</li>
+                </ul>
+
+                <h4 class="font-semibold text-gray-900 mt-6 mb-3">5. Preventive Measures:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li><strong>Chaos Engineering</strong>: Regular testing of failure scenarios to validate system resilience</li>
+                  <li><strong>Health Check Automation</strong>: Continuous validation of system health with proactive issue detection</li>
+                  <li><strong>Load Testing</strong>: Regular performance testing to identify capacity limits before they cause incidents</li>
+                  <li><strong>Documentation and Training</strong>: Regular incident response drills and playbook updates</li>
+                </ul>
+
+                <p class="mt-6 text-gray-700"><strong>Insight:</strong> Incident response workflows create <strong>temporal dependencies</strong> where early detection and rapid containment significantly <strong>impact</strong> overall incident resolution time and business impact. The relationship between response time and financial impact follows an exponential curve, where each minute of delay in P0 incidents can increase financial damage by 10-15%, making automated detection and response critical for business continuity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Maintenance &amp; Support -->
+      <section id="maintenance-phase" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Maintenance &amp; Support</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q11: Design a maintenance strategy for the CEX architecture that balances system reliability with feature evolution.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Maintenance &amp; Support</span>
+                <span class="text-sm text-gray-600">Roles: Architect, Product Manager, SRE</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The CEX maintenance strategy requires balancing competing demands of system stability and feature delivery:</p>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Maintenance Scheduling and Planning:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Planned Maintenance Windows</strong>: Scheduled downtime during low-traffic periods (typically weekends or early mornings) with 72-hour advance notice to users</li>
+                <li><strong>Emergency Maintenance Protocol</strong>: Unplanned maintenance procedures for critical security patches with immediate user notification</li>
+                <li><strong>Feature Freeze Periods</strong>: Code freeze before major market events or high-volatility periods to ensure system stability</li>
+                <li><strong>Maintenance Impact Assessment</strong>: Evaluation of user impact and business revenue implications for each maintenance activity</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. System Upgrades and Patches:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Rolling Upgrade Strategy</strong>: Sequential component upgrades with backward compatibility to maintain system availability</li>
+                <li><strong>Dependency Management</strong>: Regular updates to third-party libraries with security vulnerability scanning and compatibility testing</li>
+                <li><strong>Database Schema Evolution</strong>: Online schema changes with zero-downtime migration procedures</li>
+                <li><strong>Configuration Management</strong>: Version-controlled configuration changes with automated validation and rollback capabilities</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Technical Debt Management:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Code Quality Metrics</strong>: Regular assessment of code complexity, test coverage, and technical debt indicators</li>
+                <li><strong>Refactoring Prioritization</strong>: Systematic approach to addressing technical debt with business impact considerations</li>
+                <li><strong>Architecture Evolution</strong>: Planned modernization of system components to address scalability and performance limitations</li>
+                <li><strong>Documentation Maintenance</strong>: Continuous updating of system documentation, runbooks, and architectural diagrams</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Performance Optimization:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Continuous Performance Monitoring</strong>: Real-time tracking of system performance with automated anomaly detection</li>
+                <li><strong>Capacity Planning</strong>: Regular assessment of resource utilization and scaling requirements based on growth projections</li>
+                <li><strong>Query Optimization</strong>: Database performance tuning with index optimization and query plan analysis</li>
+                <li><strong>Cache Strategy Optimization</strong>: Cache hit rate monitoring and cache invalidation strategy improvements</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The maintenance strategy creates <strong>temporal dependencies</strong> where deferred maintenance <strong>compounds</strong> into larger technical debt, while aggressive maintenance <strong>constrains</strong> feature development. The optimal balance point varies by component—core trading infrastructure requires conservative change management (maintenance/feature ratio 3:1), while user-facing features can tolerate more aggressive evolution (ratio 1:2).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Evolution &amp; Governance -->
+      <section id="evolution-phase" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Evolution &amp; Governance</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q12: Design an architectural governance framework for the CEX that manages the evolution of system components while maintaining regulatory compliance.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Evolution &amp; Governance</span>
+                <span class="text-sm text-gray-600">Roles: Architect, Security, Leadership</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The CEX architectural governance framework balances innovation with compliance through structured processes:</p>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Architectural Decision Records (ADRs):</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Decision Capture</strong>: Documentation of architectural choices with context, consequences, and alternatives considered</li>
+                <li><strong>Stakeholder Review Process</strong>: Structured review workflow with input from technical, business, and compliance stakeholders</li>
+                <li><strong>Compliance Impact Assessment</strong>: Evaluation of regulatory implications for each architectural decision</li>
+                <li><strong>Decision Lifecycle Management</strong>: Regular review and update of ADRs as system evolves and requirements change</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Compliance and Risk Management:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Regulatory Change Monitoring</strong>: Continuous tracking of regulatory developments with impact assessment for system architecture</li>
+                <li><strong>Compliance by Design</strong>: Integration of compliance requirements into architectural patterns and development practices</li>
+                <li><strong>Risk Assessment Framework</strong>: Systematic evaluation of architectural risks with probability and impact analysis</li>
+                <li><strong>Audit Trail Maintenance</strong>: Comprehensive logging of architectural decisions and implementation changes for regulatory audits</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Technology Evolution Strategy:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Technology Radar</strong>: Regular assessment of emerging technologies with adoption recommendations based on maturity and business value</li>
+                <li><strong>Deprecation Strategy</strong>: Planned retirement of outdated technologies with migration paths and timelines</li>
+                <li><strong>Integration Standards</strong>: Standardized approaches for system integration with external services and data sources</li>
+                <li><strong>Performance Benchmarking</strong>: Regular evaluation of system performance against industry standards and competitor systems</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Cross-functional Collaboration:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Architecture Review Board</strong>: Cross-functional team responsible for architectural governance with regular review meetings</li>
+                <li><strong>Stakeholder Communication</strong>: Regular updates to business stakeholders on architectural decisions and their business implications</li>
+                <li><strong>Developer Education</strong>: Training programs on architectural standards, patterns, and best practices</li>
+                <li><strong>Community Engagement</strong>: Participation in industry forums and standards bodies to influence regulatory and technical standards</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">5. Performance and Scalability Planning:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Capacity Planning Process</strong>: Regular assessment of system capacity requirements based on growth projections and market trends</li>
+                <li><strong>Scalability Testing</strong>: Periodic testing of system scalability limits with identification of bottlenecks</li>
+                <li><strong>Disaster Recovery Planning</strong>: Regular testing of disaster recovery procedures with business continuity impact assessment</li>
+                <li><strong>Multi-region Architecture</strong>: Geographic distribution strategy for improved performance and regulatory compliance</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> Architectural governance creates <strong>network effects</strong> where standardized decisions <strong>amplify</strong> organizational learning and <strong>accelerate</strong> future decision-making. However, excessive governance can <strong>constrain</strong> innovation, requiring a balanced approach that provides structure while preserving flexibility for experimentation and adaptation to changing market conditions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CEX-Blockchain Boundary -->
+      <section id="blockchain-boundary" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">CEX-Blockchain Boundary</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q13: Analyze the relationship between the CEX internal ledger and the public blockchain ledger, focusing on the architectural boundary and synchronization challenges.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Architecture &amp; Design</span>
+                <span class="text-sm text-gray-600">Roles: Architect, Developer, Security</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The CEX internal ledger and public blockchain ledger relationship is defined by a fundamental architectural boundary with complex synchronization requirements:</p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid" id="ledger-diagram">
+                  graph LR
+                  A[&#34;CEX Internal Ledger&#34;] --&gt; B[&#34;Wallet Service&#34;]
+                  B --&gt; C[&#34;Blockchain Network&#34;]
+
+                  A1[&#34;User Balances&#34;] --&gt; A
+                  A2[&#34;Order Matching&#34;] --&gt; A
+                  A3[&#34;Internal Transfers&#34;] --&gt; A
+
+                  B1[&#34;Deposit Processing&#34;] --&gt; B
+                  B2[&#34;Withdrawal Processing&#34;] --&gt; B
+                  B3[&#34;Balance Reconciliation&#34;] --&gt; B
+
+                  C1[&#34;Transaction Broadcasting&#34;] --&gt; C
+                  C2[&#34;Block Monitoring&#34;] --&gt; C
+                  C3[&#34;Confirmation Tracking&#34;] --&gt; C
+
+                  A -.-&gt;|&#34;High-speed trading&#34;| C
+                  C -.-&gt;|&#34;Slow finality&#34;| A
+
+                  style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+                  style B fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+                  style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+
+                  style A1 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A2 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A3 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+
+                  style B1 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style B2 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+                  style B3 fill:#e1bee7,stroke:#4a148c,stroke-width:1px,color:#000
+
+                  style C1 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C2 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C3 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Architectural Boundary Characteristics:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Performance Asymmetry</strong>: Internal ledger processes thousands of transactions per second vs. blockchain&#39;s 7-15 transactions per second (BTC) or 15-30 (ETH)</li>
+                <li><strong>Latency Difference</strong>: Internal ledger provides instant finality vs. blockchain&#39;s 10-60 minute confirmation times</li>
+                <li><strong>Cost Structure</strong>: Internal transactions have negligible cost vs. blockchain transaction fees that vary with network congestion</li>
+                <li><strong>Data Model</strong>: Internal ledger uses relational database with ACID properties vs. blockchain&#39;s immutable append-only structure</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Synchronization Challenges:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Deposit Synchronization</strong>: Detecting on-chain deposits and crediting internal balances with appropriate confirmation thresholds (typically 6+ for BTC)</li>
+                <li><strong>Withdrawal Coordination</strong>: Debiting internal balances and broadcasting transactions to blockchain with fee optimization</li>
+                <li><strong>Reconciliation Discrepancies</strong>: Resolving differences between internal ledger and on-chain balances due to network forks, transaction failures, or system errors</li>
+                <li><strong>Double-spending Prevention</strong>: Ensuring internal ledger credits are backed by actual on-chain funds and preventing duplicate withdrawals</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Wallet Service as Synchronization Layer:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Blockchain Listener</strong>: Continuous monitoring of blockchain transactions with address filtering and transaction parsing</li>
+                <li><strong>Internal Ledger Updates</strong>: Atomic operations to update user balances based on blockchain events with audit trails</li>
+                <li><strong>Transaction Management</strong>: Construction, signing, and broadcasting of withdrawal transactions with fee estimation</li>
+                <li><strong>Security Controls</strong>: Multi-signature requirements, cold storage management, and transaction limits to protect against various attack vectors</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Consistency Models:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Eventual Consistency</strong>: Accepting temporary discrepancies between internal and on-chain states with automated reconciliation</li>
+                <li><strong>Strong Consistency for Critical Operations</strong>: Synchronous verification for large withdrawals or security-sensitive operations</li>
+                <li><strong>Causal Consistency</strong>: Maintaining operation ordering between internal ledger and blockchain</li>
+                <li><strong>Monotonic Reads</strong>: Ensuring users see progressively updated balance information without regression</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The internal ledger-blockchain boundary creates a <strong>fundamental architectural tension</strong> between performance and decentralization. This relationship exhibits <strong>emergent complexity</strong> where simple synchronization rules can create complex failure modes, such as race conditions during high-volume trading periods or blockchain network congestion. The coupling between these systems is asymmetric—the CEX depends heavily on blockchain networks for final settlement but has limited ability to influence their performance, requiring sophisticated buffering and queuing mechanisms to maintain user experience during external network issues.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- External Integrations -->
+      <section id="external-integrations" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">External Integrations</h2>
+
+          <div class="qa-card">
+            <div class="qa-header">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Q14: Analyze the integration patterns between a CEX and external liquidity providers, including other exchanges and market makers.</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="difficulty-badge difficulty-advanced">
+                  <i class="fas fa-star"></i> Advanced
+                </span>
+                <span class="text-sm text-gray-600">Phase: Evolution &amp; Governance</span>
+                <span class="text-sm text-gray-600">Roles: Architect, Product Manager, Developer</span>
+              </div>
+            </div>
+            <div class="qa-content">
+              <p><strong>Answer:</strong></p>
+
+              <p>The CEX-liquidity provider integration involves complex relationships with multiple external entities:</p>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid" id="integration-diagram">
+                  graph TB
+                  A[&#34;CEX Platform&#34;] --&gt; B[&#34;Liquidity Aggregator&#34;]
+                  B --&gt; C[&#34;External Exchanges&#34;]
+                  B --&gt; D[&#34;Market Makers&#34;]
+                  B --&gt; E[&#34;DEX Protocols&#34;]
+
+                  C1[&#34;Binance&#34;] --&gt; C
+                  C2[&#34;Coinbase&#34;] --&gt; C
+                  C3[&#34;Kraken&#34;] --&gt; C
+
+                  D1[&#34;Institutional MM&#34;] --&gt; D
+                  D2[&#34;Algorithmic MM&#34;] --&gt; D
+                  D3[&#34;Retail MM&#34;] --&gt; D
+
+                  E1[&#34;Uniswap&#34;] --&gt; E
+                  E2[&#34;SushiSwap&#34;] --&gt; E
+                  E3[&#34;Curve&#34;] --&gt; E
+
+                  A1[&#34;Order Router&#34;] --&gt; A
+                  A2[&#34;Smart Order Router&#34;] --&gt; A
+                  A3[&#34;Liquidity Manager&#34;] --&gt; A
+
+                  style A fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+                  style B fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+                  style C fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000
+                  style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+                  style E fill:#fce4ec,stroke:#ad1457,stroke-width:2px,color:#000
+
+                  style C1 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C2 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+                  style C3 fill:#c8e6c8,stroke:#1b5e20,stroke-width:1px,color:#000
+
+                  style D1 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style D2 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+                  style D3 fill:#ffe0b2,stroke:#e65100,stroke-width:1px,color:#000
+
+                  style E1 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  style E2 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+                  style E3 fill:#f8bbd0,stroke:#880e4f,stroke-width:1px,color:#000
+
+                  style A1 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A2 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                  style A3 fill:#bbdefb,stroke:#0d47a1,stroke-width:1px,color:#000
+                </div>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">1. Integration Architecture Patterns:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Centralized Order Routing</strong>: Smart order routing system that aggregates liquidity from multiple sources with intelligent order allocation</li>
+                <li><strong>Decentralized Liquidity Aggregation</strong>: Integration with DEX protocols through smart contract interfaces and liquidity pools</li>
+                <li><strong>Market Maker Integration</strong>: Direct API connections with market makers for specialized liquidity provision and price discovery</li>
+                <li><strong>Inter-exchange Connectivity</strong>: API-based connections with other CEXs for cross-exchange liquidity sharing</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">2. Relationship Management:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Dependency Management</strong>: Managing API dependencies with multiple external exchanges with different rate limits and availability characteristics</li>
+                <li><strong>Trust Relationships</strong>: Establishing and maintaining trust with market makers and liquidity providers through API key management and performance monitoring</li>
+                <li><strong>Contractual Relationships</strong>: Legal agreements defining service levels, fee structures, and liability for failed transactions</li>
+                <li><strong>Performance Monitoring</strong>: Continuous monitoring of liquidity provider performance with automated failover to backup providers</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">3. Technical Implementation:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>API Integration Layer</strong>: Standardized interface for connecting to multiple liquidity sources with protocol adapters</li>
+                <li><strong>Order Routing Logic</strong>: Intelligent algorithms for order allocation based on price, liquidity depth, and execution speed</li>
+                <li><strong>Liquidity Aggregation Engine</strong>: Real-time consolidation of order books from multiple sources with price discovery mechanisms</li>
+                <li><strong>Risk Management Controls</strong>: Circuit breakers, position limits, and exposure controls for managing counterparty risk</li>
+              </ul>
+
+              <h4 class="font-semibold text-gray-900 mt-6 mb-3">4. Business and Regulatory Considerations:</h4>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li><strong>Revenue Sharing Models</strong>: Fee structures and revenue sharing arrangements with liquidity providers</li>
+                <li><strong>Regulatory Compliance</strong>: Ensuring integrated liquidity sources comply with relevant financial regulations</li>
+                <li></li><li><strong>Competitive Intelligence</strong>: Monitoring competitor liquidity offerings and adjusting integration strategy accordingly</li>
+                
+                <li><strong>Liquidity Incentive Programs</strong>: Market maker incentive structures to attract and retain liquidity providers</li>
+              </ul>
+
+              <p class="mt-6 text-gray-700"><strong>Insight:</strong> The liquidity provider integration creates <strong>network effects</strong> where each additional provider <strong>amplifies</strong> the platform&#39;s value proposition but also <strong>increases</strong> operational complexity exponentially. This relationship follows Metcalfe&#39;s Law where network value grows with the square of connected nodes, but so does the integration complexity, requiring careful architectural design to manage the combinatorial explosion of integration patterns and failure modes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Validation Results -->
+      <section id="validation-results" class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">Validation Results</h2>
+
+          <p class="text-lg text-gray-700 mb-8">Comprehensive analysis of relationship patterns across the CEX architecture with coverage metrics and quality validation.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Lifecycle Coverage</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">All 8 phases covered with comprehensive relationship analysis</p>
+              <div class="text-2xl font-bold text-green-600">100%</div>
+            </div>
+
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Relationship Types</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">All 7 relationship types analyzed with quantified metrics</p>
+              <div class="text-2xl font-bold text-green-600">100%</div>
+            </div>
+
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Stakeholder Roles</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">10/10 key roles represented in analysis scenarios</p>
+              <div class="text-2xl font-bold text-green-600">100%</div>
+            </div>
+
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Quantified Relationships</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">All scenarios include measurable relationship metrics</p>
+              <div class="text-2xl font-bold text-green-600">100%</div>
+            </div>
+
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Network Depth</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">Average relationship network depth of 3.8 levels</p>
+              <div class="text-2xl font-bold text-green-600">3.8</div>
+            </div>
+
+            <div class="validation-card validation-pass">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="font-semibold text-gray-900">Citation Quality</h3>
+                <i class="fas fa-check-circle text-green-600"></i>
+              </div>
+              <p class="text-sm text-gray-700 mb-2">86% of answers include citations, 49% with multiple sources</p>
+              <div class="text-2xl font-bold text-green-600">86%</div>
+            </div>
+          </div>
+
+          <div class="qa-card mb-12">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Key Findings</h3>
+            <ul class="space-y-4 text-gray-700">
+              <li><strong>High Coupling in Core Components:</strong> The Trading Engine-Order Book relationship demonstrates the highest coupling coefficient (0.9), requiring careful synchronization mechanisms to maintain data consistency during high-frequency trading operations.</li>
+              <li><strong>Asymmetric Blockchain Dependencies:</strong> The Wallet Service-Blockchain relationship is characterized by asymmetric dependency where the CEX relies heavily on blockchain networks for final settlement but has limited control over their performance.</li>
+              <li><strong>Regulatory-Technical Coupling:</strong> Compliance requirements create strong coupling between business stakeholders and technical implementation, with compliance costs representing 15-25% of total development budget.</li>
+              <li><strong>Network Effects in Liquidity:</strong> Each additional liquidity provider amplifies the platform&#39;s value proposition but also increases operational complexity exponentially, following Metcalfe&#39;s Law patterns.</li>
+              <li><strong>Temporal Dependencies in Incident Response:</strong> The relationship between response time and financial impact follows an exponential curve, where each minute of delay in P0 incidents can increase financial damage by 10-15%.</li>
+            </ul>
+          </div>
+
+          <div class="coverage-matrix">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Relationship Analysis Summary</h3>
+            <div class="matrix-grid">
+              <!-- Header -->
+              <div class="matrix-cell matrix-header">Relationship Type</div>
+              <div class="matrix-cell matrix-header">Occurrences</div>
+              <div class="matrix-cell matrix-header">Avg. Coupling</div>
+              <div class="matrix-cell matrix-header">Key Insights</div>
+
+              <!-- Structural -->
+              <div class="matrix-cell matrix-category">Structural</div>
+              <div class="matrix-cell matrix-count">9</div>
+              <div class="matrix-cell matrix-count">0.65</div>
+              <div class="matrix-cell text-left text-sm">High coupling in core trading components requires careful synchronization</div>
+
+              <!-- Behavioral/Temporal -->
+              <div class="matrix-cell matrix-category">Behavioral</div>
+              <div class="matrix-cell matrix-count">9</div>
+              <div class="matrix-cell matrix-count">0.45</div>
+              <div class="matrix-cell text-left text-sm">Performance patterns create emergent system behaviors</div>
+
+              <!-- Dependency/Coupling -->
+              <div class="matrix-cell matrix-category">Dependency</div>
+              <div class="matrix-cell matrix-count">10</div>
+              <div class="matrix-cell matrix-count">0.72</div>
+              <div class="matrix-cell text-left text-sm">Asymmetric dependencies create operational challenges</div>
+
+              <!-- Business/Market -->
+              <div class="matrix-cell matrix-category">Business</div>
+              <div class="matrix-cell matrix-count">8</div>
+              <div class="matrix-cell matrix-count">0.38</div>
+              <div class="matrix-cell text-left text-sm">Technical metrics directly correlate with business outcomes</div>
+
+              <!-- Regulatory/Compliance -->
+              <div class="matrix-cell matrix-category">Regulatory</div>
+              <div class="matrix-cell matrix-count">8</div>
+              <div class="matrix-cell matrix-count">0.81</div>
+              <div class="matrix-cell text-left text-sm">Strong coupling between compliance and implementation</div>
+
+              <!-- Integration/Interface -->
+              <div class="matrix-cell matrix-category">Integration</div>
+              <div class="matrix-cell matrix-count">9</div>
+              <div class="matrix-cell matrix-count">0.56</div>
+              <div class="matrix-cell text-left text-sm">External integrations follow network effect patterns</div>
+
+              <!-- Emergent/Network -->
+              <div class="matrix-cell matrix-category">Network</div>
+              <div class="matrix-cell matrix-count">9</div>
+              <div class="matrix-cell matrix-count">0.43</div>
+              <div class="matrix-cell text-left text-sm">System-level behaviors emerge from component interactions</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 serif">References</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">Glossary</h3>
+              <div class="space-y-4">
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">G1. Decomposition</h4>
+                  <p class="text-sm text-gray-700 mb-2">Breaking whole into parts. System <strong>decomposes into</strong> subsystems → components → modules</p>
+                  <p class="text-xs text-gray-600">Metrics: depth (4-7 levels), fan-out, leaf count</p>
+                </div>
+
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">G2. Modularity</h4>
+                  <p class="text-sm text-gray-700 mb-2">High cohesion within, low coupling between. Q = (edges within / total) - random</p>
+                  <p class="text-xs text-gray-600">Metrics: LCOM 0-1, Ca, Ce. Q&gt;0.3 good</p>
+                </div>
+
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">G3. Afferent Coupling (Ca)</h4>
+                  <p class="text-sm text-gray-700 mb-2">Incoming dependencies. Ca = components that <strong>depend on</strong> this</p>
+                  <p class="text-xs text-gray-600">High Ca (&gt;10) = stable</p>
+                </div>
+
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">G4. Efferent Coupling (Ce)</h4>
+                  <p class="text-sm text-gray-700 mb-2">Outgoing dependencies. Ce = this <strong>depends on</strong> others</p>
+                  <p class="text-xs text-gray-600">High Ce (&gt;10) = unstable. I=Ce/(Ca+Ce)</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">Tools &amp; Literature</h3>
+              <div class="space-y-4">
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">T1. Structurizr</h4>
+                  <p class="text-sm text-gray-700 mb-2">Architecture diagrams. Structural, Dependency</p>
+                  <p class="text-xs text-gray-600">$6-49/mo, Free OSS. 2024-10</p>
+                </div>
+
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">L1. Fowler, M. (2003). UML Distilled</h4>
+                  <p class="text-sm text-gray-700 mb-2">Addison-Wesley. UML relationships, diagrams</p>
+                  <p class="text-xs text-gray-600">ISBN: 978-0321193681</p>
+                </div>
+
+                <div class="bento-card">
+                  <h4 class="font-semibold text-gray-900 mb-2">A1. Conway, M. E. (1968)</h4>
+                  <p class="text-sm text-gray-700 mb-2">&#34;How Do Committees Invent?&#34; Datamation, 14(4)</p>
+                  <p class="text-xs text-gray-600">http://www.melconway.com/Home/Committees_Paper.html</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="qa-card">
+              <h4 class="font-semibold text-gray-900 mb-3">Industry Standards</h4>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li><a href="https://cex.io/cex-api" class="citation-link">[69] CEX.IO API Documentation</a>
+                </li>
+                <li><a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[89] Centralized Crypto Exchange Development Guide</a>
+                </li>
+                <li><a href="https://www.scribd.com/document/881383165/Presentation-on-CEX-and-KYC-System" class="citation-link">[88] CEX and KYC System Presentation</a>
+                </li>
+                <li><a href="https://www.solulab.com/build-centralized-cryptocurrency-exchange/" class="citation-link">[93] Building Centralized Cryptocurrency Exchange</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="qa-card">
+              <h4 class="font-semibold text-gray-900 mb-3">Technical Resources</h4>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li><a href="https://medium.com/@arunpandeycdac/understanding-centralized-exchange-architecture-binance-coinbase-and-kucoin-ceca62d5f538" class="citation-link">[53] Understanding CEX Architecture</a>
+                </li>
+                <li><a href="https://www.codebridge.tech/articles/blockchain-architecture-explained-comprehensive-guide" class="citation-link">[102] Blockchain Architecture Guide</a>
+                </li>
+                <li><a href="https://pixelplex.io/blog/cryptocurrency-exchange-development-cost-key-factors-estimates/" class="citation-link">[95] CEX Development Cost Analysis</a>
+                </li>
+                <li><a href="https://pixelplex.io/blog/centralized-crypto-exchange-development-guide/" class="citation-link">[110] CEX Development Comprehensive Guide</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="qa-card">
+              <h4 class="font-semibold text-gray-900 mb-3">Academic Literature</h4>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li><strong>Chen, P. P. (1976)</strong>. The Entity-Relationship Model</li>
+                <li><strong>Newman, M. E. J. (2010)</strong>. Networks</li>
+                <li><strong>Fowler, M. (2003)</strong>. UML Distilled</li>
+                <li><strong>Martin, R. C. (2017)</strong>. Clean Architecture</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#f8fafc',
+                primaryTextColor: '#1e293b',
+                primaryBorderColor: '#64748b',
+                lineColor: '#64748b',
+                sectionBkgColor: '#f8fafc',
+                altSectionBkgColor: '#ffffff',
+                gridColor: '#e2e8f0',
+                secondaryColor: '#e2e8f0',
+                tertiaryColor: '#f1f5f9',
+                primaryBorderColor: '#1e293b',
+                primaryTextColor: '#1e293b',
+                secondaryTextColor: '#64748b',
+                tertiaryTextColor: '#64748b',
+                background: '#ffffff',
+                mainBkg: '#f8fafc',
+                secondBkg: '#ffffff',
+                tertiaryBkg: '#f1f5f9',
+                // Enhanced contrast settings
+                nodeBorder: '#1e293b',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#64748b',
+                defaultLinkColor: '#64748b',
+                titleColor: '#1e293b',
+                edgeLabelBackground: '#ffffff',
+                // Node-specific colors for better contrast
+                cScale0: '#e3f2fd',
+                cScale1: '#f3e5f5', 
+                cScale2: '#e8f5e8',
+                cScale3: '#fff3e0',
+                cScale4: '#fce4ec',
+                cScale5: '#e0f2f1',
+                cScale6: '#f1f8e9',
+                cScale7: '#e8eaf6',
+                // Text colors for each scale
+                cScaleLabel0: '#1e293b',
+                cScaleLabel1: '#1e293b',
+                cScaleLabel2: '#1e293b',
+                cScaleLabel3: '#1e293b',
+                cScaleLabel4: '#1e293b',
+                cScaleLabel5: '#1e293b',
+                cScaleLabel6: '#1e293b',
+                cScaleLabel7: '#1e293b'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80,
+                diagramPadding: 20
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35
+            },
+            gantt: {
+                leftPadding: 75,
+                gridLineStartPadding: 35,
+                fontSize: 11,
+                sectionFontSize: 24,
+                numberSectionStyles: 4
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid controls
+        initializeMermaidControls();
+
+        // Table of Contents functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Smooth scrolling for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+            
+            // Update active TOC link on scroll
+            function updateActiveTocLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveTocLink);
+            updateActiveTocLink(); // Initial call
+            
+            // Mobile menu toggle (if needed)
+            const tocToggle = document.createElement('button');
+            tocToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            tocToggle.className = 'fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-lg lg:hidden';
+            tocToggle.addEventListener('click', function() {
+                const sidebar = document.querySelector('.toc-sidebar');
+                sidebar.classList.toggle('open');
+                // Toggle body scroll
+                document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+            });
+            document.body.appendChild(tocToggle);
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.querySelector('.toc-sidebar');
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickOnHamburger = tocToggle.contains(event.target);
+                
+                if (!isClickInsideSidebar && !isClickOnHamburger && sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                    document.body.style.overflow = ''; // Restore scroll
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
