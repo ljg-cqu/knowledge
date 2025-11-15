@@ -1,0 +1,803 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Comprehensive Value Chain Analysis: AI, Manufacturing &amp; Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --muted: #64748b;
+            --background: #f8fafc;
+            --surface: #ffffff;
+        }
+        
+        .font-tiempos { font-family: 'Tiempos Headline', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(71, 85, 105, 0.9) 50%, rgba(59, 130, 246, 0.8) 100%);
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            height: 60vh;
+        }
+        
+        .bento-main {
+            grid-row: 1 / 3;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-side-1 {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        
+        .bento-side-2 {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 280px;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .content-offset {
+            margin-left: 320px;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        
+        .citation-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid var(--accent);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .content-offset {
+                margin-left: 0;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                height: auto;
+            }
+            .bento-main {
+                grid-row: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                gap: 1rem;
+            }
+            
+            .bento-main .overlay-content h1 {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+            
+            .bento-main .overlay-content p {
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+            
+            .bento-main .overlay-content .text-xl {
+                font-size: 0.9rem;
+            }
+            
+            .bento-main {
+                height: auto;
+                min-height: 300px;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-gray-50 font-inter text-gray-800">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed rounded-lg shadow-lg p-6">
+      <h3 class="font-tiempos font-bold text-lg mb-4 text-gray-900">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#executive-summary" class="text-gray-600 hover:text-blue-600 transition-colors">Executive Summary</a>
+        </li>
+        <li>
+          <a href="#ai-value-chain" class="text-gray-600 hover:text-blue-600 transition-colors">AI Value Chain Analysis</a>
+        </li>
+        <li>
+          <a href="#ai-vs-manufacturing" class="text-gray-600 hover:text-blue-600 transition-colors">AI vs. Manufacturing</a>
+        </li>
+        <li>
+          <a href="#ai-vs-healthcare" class="text-gray-600 hover:text-blue-600 transition-colors">AI vs. Healthcare</a>
+        </li>
+        <li>
+          <a href="#framework-questions" class="text-gray-600 hover:text-blue-600 transition-colors">VCA Questions Framework</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content-offset">
+      <!-- Hero Section with Bento Grid -->
+      <section class="min-h-screen bg-white">
+        <div class="container mx-auto px-8 pt-8 pb-16">
+          <div class="bento-grid mb-12">
+            <!-- Main Hero Content -->
+            <div class="bento-main rounded-2xl overflow-hidden relative">
+              <img src="https://kimi-web-img.moonshot.cn/img/plus.unsplash.com/5ddddd013cd74680d736f17479edfb152473c919" alt="Abstract digital representation of interconnected nodes" class="w-full h-full object-cover" size="wallpaper" aspect="wide" query="abstract interconnected nodes" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="hero-gradient absolute inset-0"></div>
+              <div class="absolute inset-0 flex items-center justify-center p-8">
+                <div class="text-center text-white max-w-3xl">
+                  <h1 class="font-tiempos text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <em>The Architecture of</em>
+                    <br/>
+                    <span class="text-blue-300">Modern Value Creation</span>
+                  </h1>
+                  <p class="text-xl md:text-2xl font-light opacity-90 leading-relaxed">
+                    A comprehensive analysis of value chain dynamics across artificial intelligence, manufacturing, and healthcare industries
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Panel 1 -->
+            <div class="bento-side-1 rounded-2xl p-8 flex flex-col justify-center">
+              <div class="text-center">
+                <div class="text-4xl font-bold text-gray-900 mb-2">3</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wide mb-4">Industries Analyzed</div>
+                <div class="flex justify-center space-x-4 text-2xl text-gray-700">
+                  <i class="fas fa-robot"></i>
+                  <i class="fas fa-industry"></i>
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Panel 2 -->
+            <div class="bento-side-2 rounded-2xl p-8 flex flex-col justify-center">
+              <div class="text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">27</div>
+                <div class="text-sm text-gray-600 uppercase tracking-wide mb-4">Key Questions</div>
+                <div class="text-xs text-gray-500 leading-relaxed">
+                  Comprehensive framework for value chain analysis across diverse sectors
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Executive Summary -->
+          <div id="executive-summary" class="bg-white rounded-2xl shadow-lg p-12 border border-gray-100">
+            <h2 class="font-tiempos text-3xl font-bold mb-8 text-gray-900">Executive Summary</h2>
+            <div class="prose prose-lg max-w-none">
+              <p class="text-xl leading-relaxed text-gray-700 mb-6">
+                Value Chain Analysis (VCA) provides a strategic framework for understanding the complex, multi-stage processes that transform inputs into valuable products and services. This comprehensive report examines how VCA manifests across three distinct industries: artificial intelligence, surgical mask manufacturing, and healthcare.
+              </p>
+
+              <div class="grid md:grid-cols-3 gap-8 my-8">
+                <div class="bg-blue-50 p-6 rounded-xl">
+                  <div class="text-blue-600 text-2xl mb-3">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg mb-2">AI Value Chain</h3>
+                  <p class="text-sm text-gray-600">Knowledge-intensive, iterative process transforming data into intelligence with <strong>fewer than 15% of projects</strong> achieving measurable business value.</p>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-xl">
+                  <div class="text-green-600 text-2xl mb-3">
+                    <i class="fas fa-cogs"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg mb-2">Manufacturing</h3>
+                  <p class="text-sm text-gray-600">Capital-intensive production with high-speed automation, producing over <strong>200 masks per minute</strong> with stringent quality control.</p>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-xl">
+                  <div class="text-red-600 text-2xl mb-3">
+                    <i class="fas fa-stethoscope"></i>
+                  </div>
+                  <h3 class="font-semibold text-lg mb-2">Healthcare</h3>
+                  <p class="text-sm text-gray-600">Complex stakeholder network with heavy regulation, where <strong>patient outcomes</strong> drive value creation across seven distinct stages.</p>
+                </div>
+              </div>
+
+              <p class="text-lg leading-relaxed text-gray-700">
+                The analysis reveals fundamental differences in value creation approaches—from AI&#39;s algorithmic innovation to manufacturing&#39;s production efficiency and healthcare&#39;s patient-centered care delivery. Each industry presents unique challenges, cost structures, and scalability dynamics that require tailored VCA frameworks for strategic optimization.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Value Chain Analysis -->
+      <section id="ai-value-chain" class="py-16 bg-white">
+        <div class="container mx-auto px-8">
+          <h2 class="font-tiempos text-4xl font-bold mb-12 text-center text-gray-900">
+            Value Chain Analysis in Artificial Intelligence
+          </h2>
+
+          <!-- Five-Layer Model -->
+          <div class="bg-gray-50 rounded-2xl p-12 mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">The Five-Layer AI Value Chain Model</h3>
+            <div class="grid md:grid-cols-5 gap-6">
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="text-blue-600 text-2xl mb-4">
+                  <i class="fas fa-chess-king"></i>
+                </div>
+                <h4 class="font-semibold mb-3">Strategic Alignment</h4>
+                <p class="text-sm text-gray-600">Matching AI capabilities with business vision and objectives</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="text-green-600 text-2xl mb-4">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h4 class="font-semibold mb-3">Data Enablement</h4>
+                <p class="text-sm text-gray-600">Supplying trustworthy, high-quality data at scale</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="text-purple-600 text-2xl mb-4">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h4 class="font-semibold mb-3">AI Development</h4>
+                <p class="text-sm text-gray-600">Creating models that solve specific business problems</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="text-orange-600 text-2xl mb-4">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <h4 class="font-semibold mb-3">AI Business Application</h4>
+                <p class="text-sm text-gray-600">Deploying models into real-world environments</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="text-red-600 text-2xl mb-4">
+                  <i class="fas fa-server"></i>
+                </div>
+                <h4 class="font-semibold mb-3">AI Foundations</h4>
+                <p class="text-sm text-gray-600">Hardware, cloud platforms, and security infrastructure</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Value Creation Stats -->
+          <div class="bg-blue-50 rounded-2xl p-8 mb-16">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div class="text-4xl font-bold text-blue-600 mb-2">59</div>
+                <div class="text-sm text-gray-600 mb-2">Zettabytes of data</div>
+                <div class="text-xs text-gray-500">Created in 2023</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-blue-600 mb-2">&lt;15%</div>
+                <div class="text-sm text-gray-600 mb-2">Success Rate</div>
+                <div class="text-xs text-gray-500">AI projects delivering business value</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-blue-600 mb-2">Multi-</div>
+                <div class="text-sm text-gray-600 mb-2">Layered Structure</div>
+                <div class="text-xs text-gray-500">Iterative feedback loops</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Infrastructure Stage -->
+          <div class="mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">Infrastructure Stage: Hardware and Data Management</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="text-lg font-semibold mb-4 text-gray-800">Key Activities</h4>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                    <span>Systematic collection and aggregation of raw data from diverse sources</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                    <span>Provisioning and maintenance of high-performance computing infrastructure</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                    <span>Management of cloud computing platforms and data centers</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-lg font-semibold mb-4 text-gray-800">Value Outputs</h4>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-green-500 mt-1 mr-3"></i>
+                    <span>Clean, well-structured, and accessible datasets for model training</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-green-500 mt-1 mr-3"></i>
+                    <span>Robust, scalable, and secure infrastructure for AI workloads</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-green-500 mt-1 mr-3"></i>
+                    <span>Accelerated AI development lifecycle and enhanced capabilities</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI vs Manufacturing Comparison -->
+      <section id="ai-vs-manufacturing" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-8">
+          <h2 class="font-tiempos text-4xl font-bold mb-12 text-center text-gray-900">
+            Comparative Analysis: AI vs. Manufacturing
+          </h2>
+
+          <!-- Comparison Table -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
+            <div class="px-8 py-6 bg-gray-800 text-white">
+              <h3 class="font-tiempos text-xl font-bold">Value Chain Comparison: AI vs. Surgical Mask Manufacturing</h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold text-gray-900">Value Chain Stage</th>
+                    <th class="px-6 py-4 text-left font-semibold text-gray-900">Artificial Intelligence (AI) Industry</th>
+                    <th class="px-6 py-4 text-left font-semibold text-gray-900">Surgical Mask Manufacturing Industry</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-gray-900">Infrastructure &amp; Inbound Logistics</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Data acquisition, cleaning, labeling. Procurement of high-performance computing hardware, cloud storage.
+                      <br/>
+                      <strong>Inputs:</strong> Raw data, algorithms, capital for hardware investment.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Sourcing and procurement of raw materials: non-woven polypropylene fabric, melt-blown fabric, nose bridge strips.
+                      <br/>
+                      <strong>Inputs:</strong> Physical raw materials, transportation and logistics.
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-gray-900">Operations &amp; Production</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Model design, training, and optimization. Selecting algorithms and iteratively refining performance.
+                      <br/>
+                      <strong>Inputs:</strong> Labeled data, computational power, skilled data scientists.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Automated processes of cutting, folding, welding (ultrasonic), and assembling mask components.
+                      <br/>
+                      <strong>Inputs:</strong> Raw materials, automated production lines, machine operators.
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-gray-900">Outbound Logistics &amp; Distribution</td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Deployment of AI models via APIs, cloud platforms, or integration into products.
+                      <br/>
+                      <strong>Inputs:</strong> Trained AI models, software distribution channels.
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-700">
+                      <strong>Activities:</strong> Packaging of finished masks, warehousing, and distribution through global networks.
+                      <br/>
+                      <strong>Inputs:</strong> Finished masks, logistics and transportation networks.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Key Differences -->
+          <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 class="font-tiempos text-xl font-bold mb-6 text-gray-900">
+                <i class="fas fa-brain text-blue-600 mr-3"></i>
+                Knowledge-Intensive vs. Capital-Intensive
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-blue-600 mb-2">AI Industry</h4>
+                  <p class="text-sm text-gray-700">Driven by human intellect and data. Primary activities performed by highly skilled data scientists and engineers. Value embedded in software and proprietary models.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-green-600 mb-2">Manufacturing</h4>
+                  <p class="text-sm text-gray-700">Requires substantial upfront investment in specialized machinery. Value created through physical transformation of raw materials. Dominated by equipment capabilities.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 class="font-tiempos text-xl font-bold mb-6 text-gray-900">
+                <i class="fas fa-chart-line text-purple-600 mr-3"></i>
+                Scalability Dynamics
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-blue-600 mb-2">AI Scalability</h4>
+                  <p class="text-sm text-gray-700">Once developed, marginal cost of deployment approaches zero. Massive scaling potential with low incremental costs. Computational resources and customer support as primary constraints.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-green-600 mb-2">Manufacturing Scalability</h4>
+                  <p class="text-sm text-gray-700">High marginal costs tied to physical inputs. Scaling requires significant capital investment in new machinery and factory space. Production limited by physical constraints.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manufacturing Stats -->
+          <div class="bg-green-50 rounded-2xl p-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div class="text-4xl font-bold text-green-600 mb-2">200+</div>
+                <div class="text-sm text-gray-600 mb-2">Masks per minute</div>
+                <div class="text-xs text-gray-500">Production speed capacity</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-green-600 mb-2">50%</div>
+                <div class="text-sm text-gray-600 mb-2">China&#39;s production share</div>
+                <div class="text-xs text-gray-500">Pre-pandemic global supply</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-green-600 mb-2">10x</div>
+                <div class="text-sm text-gray-600 mb-2">Demand surge</div>
+                <div class="text-xs text-gray-500">During COVID-19 pandemic</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI vs Healthcare Comparison -->
+      <section id="ai-vs-healthcare" class="py-16 bg-white">
+        <div class="container mx-auto px-8">
+          <h2 class="font-tiempos text-4xl font-bold mb-12 text-center text-gray-900">
+            Comparative Analysis: AI vs. Healthcare
+          </h2>
+
+          <!-- Healthcare Value Chain Overview -->
+          <div class="bg-blue-50 rounded-2xl p-12 mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">The Seven-Step Health Product Value Chain</h3>
+            <div class="grid md:grid-cols-7 gap-4">
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-flask text-blue-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">R&amp;D</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-clipboard-check text-green-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Regulatory Approval</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-industry text-purple-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Manufacturing</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-shopping-cart text-orange-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Procurement</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-truck text-red-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Distribution</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-user-md text-teal-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Clinical Use</div>
+              </div>
+              <div class="text-center">
+                <div class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <i class="fas fa-heart text-pink-600 text-xl"></i>
+                </div>
+                <div class="text-xs font-semibold">Patient Outcome</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Impact on Healthcare -->
+          <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-12 mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">AI&#39;s Transformative Impact on Healthcare</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="text-blue-600 text-2xl mb-4">
+                  <i class="fas fa-microscope"></i>
+                </div>
+                <h4 class="font-semibold mb-3">Enhancing Diagnostics</h4>
+                <p class="text-sm text-gray-700">AI-powered diagnostic tools analyze medical images with accuracy surpassing human capabilities, enabling earlier disease detection and reducing misdiagnosis risk.</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="text-green-600 text-2xl mb-4">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h4 class="font-semibold mb-3">Health Information Management</h4>
+                <p class="text-sm text-gray-700">Natural language processing extracts key information from clinical notes, improving record accuracy and making patient information readily available.</p>
+              </div>
+
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="text-purple-600 text-2xl mb-4">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h4 class="font-semibold mb-3">Patient Outcomes</h4>
+                <p class="text-sm text-gray-700">Personalized healthcare through wearable devices and mobile apps that monitor health in real-time, empowering patients to manage their conditions.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Contrasts -->
+          <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 class="font-tiempos text-xl font-bold mb-6 text-gray-900">
+                <i class="fas fa-balance-scale text-blue-600 mr-3"></i>
+                Regulatory Environments
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-blue-600 mb-2">AI Industry</h4>
+                  <p class="text-sm text-gray-700">Evolving and fragmented regulatory landscape with focus on data privacy (GDPR), algorithmic transparency, and ethical AI. Standards still being developed for many applications.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-red-600 mb-2">Healthcare</h4>
+                  <p class="text-sm text-gray-700">Highly stringent and well-established regulatory framework focused on patient safety and product efficacy. Compliance with FDA, EMA standards mandatory for market access.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 class="font-tiempos text-xl font-bold mb-6 text-gray-900">
+                <i class="fas fa-dollar-sign text-green-600 mr-3"></i>
+                Cost Structures
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-blue-600 mb-2">AI Cost Profile</h4>
+                  <p class="text-sm text-gray-700">High upfront investment in R&amp;D and talent, with low marginal costs for scaling software solutions. High fixed costs but low variable costs enable rapid scalability.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-red-600 mb-2">Healthcare Cost Profile</h4>
+                  <p class="text-sm text-gray-700">High capital investment in facilities and technology, with significant ongoing costs for skilled labor, supplies, and regulatory compliance. High fixed and variable costs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Framework Questions -->
+      <section id="framework-questions" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-8">
+          <h2 class="font-tiempos text-4xl font-bold mb-12 text-center text-gray-900">
+            Value Chain Analysis Questions Framework
+          </h2>
+
+          <!-- AI Industry Questions -->
+          <div class="mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">
+              <i class="fas fa-robot text-blue-600 mr-3"></i>
+              AI Industry Value Chain Questions
+            </h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Infrastructure and Data Management</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-blue-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q1: What are the primary cost drivers in the infrastructure stage of the AI value chain?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">The primary cost drivers are capital expenditure on high-performance computing hardware (GPUs and TPUs), energy consumption for data centers, and costs associated with data acquisition and storage. Optimization strategies include leveraging cloud computing to reduce upfront capital investment and implementing energy-efficient hardware systems.</p>
+                  </div>
+                  <div class="border-l-4 border-blue-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q2: How does data quality impact value creation potential?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">High-quality, diverse, and representative datasets are essential for training robust and accurate AI models. Companies with access to unique or proprietary data sources can build significant competitive advantages, while poor-quality or biased data can lead to inaccurate outcomes and reputational damage.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Model Development and Operations</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-green-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q4: How can companies differentiate their AI models in competitive markets?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Differentiation strategies include developing proprietary algorithms or novel model architectures, leveraging unique datasets not readily available to competitors, focusing on superior user experience, and building strong brand reputation for reliability and ethical AI practices.</p>
+                  </div>
+                  <div class="border-l-4 border-green-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q6: How can companies ensure AI model quality and reliability?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Ensuring quality requires rigorous approaches including using representative data for training and validation, implementing robust testing procedures, establishing clear performance metrics, investing in model monitoring, and adopting explainable AI techniques for transparency.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manufacturing Questions -->
+          <div class="mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">
+              <i class="fas fa-industry text-green-600 mr-3"></i>
+              Manufacturing Value Chain Questions
+            </h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Inbound Logistics and Procurement</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-green-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q10: How can manufacturers optimize inbound logistics?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Optimization strategies include negotiating favorable supplier terms, implementing just-in-time inventory management, optimizing transportation routes, investing in warehouse management systems, and building strong supplier relationships to reduce disruption risks.</p>
+                  </div>
+                  <div class="border-l-4 border-green-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q12: How can companies mitigate supply chain risks?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Risk mitigation approaches include multi-sourcing strategies, maintaining safety stock of critical materials, developing comprehensive risk management plans, building strong supplier relationships, and investing in supply chain visibility tools for proactive response.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Production and Operations Management</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-purple-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q13: What are the main sources of waste in manufacturing?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Main waste sources categorized by TIMWOOD: Transportation, Inventory, Motion, Waiting, Overproduction, Over-processing, and Defects. Lean manufacturing principles can eliminate these through optimized layouts, JIT systems, balanced production lines, and quality control measures.</p>
+                  </div>
+                  <div class="border-l-4 border-purple-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q14: How can technology improve manufacturing efficiency?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Technology improvements include automation and robotics for repetitive tasks, Manufacturing Execution Systems for real-time visibility, and Industrial Internet of Things for predictive maintenance and reduced downtime.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Healthcare Questions -->
+          <div class="mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">
+              <i class="fas fa-heartbeat text-red-600 mr-3"></i>
+              Healthcare Value Chain Questions
+            </h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">R&amp;D, Regulatory, and Procurement</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-red-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q17: What are the primary challenges in healthcare R&amp;D?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Primary challenges include high costs and long duration of drug development, high risk of failure in clinical trials, complex regulatory approval processes, and ensuring new products are accessible and affordable globally.</p>
+                  </div>
+                  <div class="border-l-4 border-red-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q19: What is the role of Group Purchasing Organizations?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">GPOs leverage collective purchasing power of member healthcare providers to negotiate better prices and terms with suppliers, reducing costs and ensuring reliable supply of essential products while providing value-added services.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Clinical Services and Patient Care</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-teal-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q21: What are the key factors in delivering high-quality patient care?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Key factors include ensuring patient safety, providing evidence-based treatment, focusing on patient experience through clear communication, respecting patient preferences, ensuring continuity of care, and maintaining a culture of continuous quality improvement.</p>
+                  </div>
+                  <div class="border-l-4 border-teal-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q22: How can technology enhance patient care?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">Technology enhances care through telehealth platforms for remote access, wearable devices for chronic condition management, AI-powered diagnostic tools for improved accuracy, and automated systems for appointment management.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cross-Industry Comparative Questions -->
+          <div class="mb-16">
+            <h3 class="font-tiempos text-2xl font-bold mb-8 text-gray-900">
+              <i class="fas fa-chart-bar text-purple-600 mr-3"></i>
+              Cross-Industry Comparative Questions
+            </h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-xl p-8 shadow-lg">
+                <h4 class="font-semibold text-lg mb-4 text-gray-800">Contrasting Value Drivers and Cost Structures</h4>
+                <div class="space-y-6">
+                  <div class="border-l-4 border-purple-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q25: How do primary value drivers compare across industries?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">AI: Innovation in algorithms and data access. Manufacturing: Production efficiency and cost control. Healthcare: Effective care delivery improving patient outcomes. Each reflects the industry&#39;s core value proposition and competitive dynamics.</p>
+                  </div>
+                  <div class="border-l-4 border-indigo-500 pl-6">
+                    <p class="font-medium text-gray-900 mb-2">Q28: How is AI disrupting traditional value chains?</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">In manufacturing: Predictive maintenance and quality control. In healthcare: Enhanced diagnostics and personalized treatment. AI enables optimization, automation, and new capabilities across both sectors while creating integration challenges.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Framework Summary -->
+          <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-12 text-white text-center">
+            <h3 class="font-tiempos text-2xl font-bold mb-6">Comprehensive Analysis Framework</h3>
+            <p class="text-lg opacity-90 mb-8">
+              This framework of 25-30 value chain analysis questions provides a systematic approach for analyzing strategic dynamics across AI, manufacturing, and healthcare industries.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div class="text-3xl font-bold mb-2">3</div>
+                <div class="text-sm opacity-80">Core Industries</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold mb-2">30</div>
+                <div class="text-sm opacity-80">Analysis Questions</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold mb-2">∞</div>
+                <div class="text-sm opacity-80">Strategic Insights</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-8 text-center">
+          <p class="text-gray-400">
+            This comprehensive value chain analysis provides strategic insights for understanding industry dynamics across artificial intelligence, manufacturing, and healthcare sectors.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
