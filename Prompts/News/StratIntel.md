@@ -293,115 +293,39 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 **R#. APA 7th [Tag]**: Author. YYYY, Mon DD. *Title*. Pub. URL [Tag]
 ```
 
-## VII. Example
+## VII. Example (format demo—use actual recent news)
 
-**Note**: This example demonstrates strategic intelligence analysis format. Replace with actual recent news for your domain/industry.
+### Q1: Nature solid-state 3x (Oct '24): EV + R&D?
 
-### Q1: What are the strategic implications of Nature's solid-state battery breakthrough (October 2024) achieving 3x energy density for long-term EV strategy and R&D roadmap?
+**H**: Long, Medium | **Roles**: [CRO, CSO, CEO; CSustO, CorpDev, Board] | **Cats**: R✓ ESG✓ X✓ | **Dec**: Y
 
-**Horizon**: Long-term (3-5yr), Medium-term (18-36mo)
+**News**: *Nature* 10/15/24: 450 Wh/kg (3x→150), sulfide, 1K cycles, TRL 4-5. MIT/Toyota, $50M DOE+$1B. 600mi→trucking/aviation.
 
-**Stakeholder Roles**: [Primary: Chief Research Officer, Chief Strategy Officer, CEO] [Secondary: Chief Sustainability Officer, VP Corporate Development, Board Member]
+**Impact**: **M (18-36mo)**: R&D+IP. Patents +45% (Toyota 1.2K, Samsung 900, QS 600). $200M pilot→$2B NPV '29. **L (3-5yr)**: Transform. 600mi→TAM 15M→60M '30 (40% CAGR). Carbon -30%. Share +5-10%($15B), ESG B→AA.
 
-**News Categories**: Research & Innovation ✓ | ESG & Sustainability ✓ | Cross-Industry Developments ✓
+**Stakeholders**: **CRO**: R&D pivot, $200M/3yr, partnerships/IP. **CSO**: M&A (QS $1-2B), JV, competitive. **CEO+Board**: $500M invest, pivot '28-30, investor comms.
 
-**Decision Required**: Yes
+**Decision**: **Invest** R&D+commercialization; **Monitor** Toyota '27, Samsung '29. | **Rat**: *Nature* TRL 4-5→5-7yr='29-31. 3x=transform. +5-10%($15B), ESG lead. Risk: scale/comp. | **Alts**: (1) Delay TRL 6-7—less risk, lose 2-3yr+$15B; (2) License—less CapEx, cede margin 25% vs 40%. | **Success**: Pilot '27 (TRL 7, 400+ Wh/kg), 200+ patents '26, supplies '26, 600mi '30, ESG B→A '29.
 
-**Answer** (372 words):
+**Action**: **S (6-18mo)**: CRO $50M MIT/Stanford 20 PhDs→TRL 5 Q4'25 | CSO analysis→M&A list Q2'25 | Policy $25M DOE Q3'25. **M (18-36mo)**: CRO $150M pilot 10 MWh→Q2'27 | CSO M&A/JV $500M-1B→Q4'26 | CSustO ESG -30%→TCFD Q1'26. **L (3-5yr)**: CEO $500M CapEx 10 GWh '30 (200K/yr) | CSO 600mi '30, 10%($30B) | CSustO A/AA '29. | **$/Res**: $700M ($200M R&D, $150M pilot, $350M mfg) | 150 FTEs | 3 unis, 2 suppliers, 1 M&A/JV.
 
-**News Summary**:
-*Nature* published peer-reviewed research on October 15, 2024, demonstrating solid-state lithium-metal batteries achieving 450 Wh/kg energy density—3x conventional lithium-ion (150 Wh/kg)—with 1,000 charge cycles at room temperature [Ref: A1][a1]. The breakthrough from MIT and Toyota Research Institute uses sulfide electrolytes and addresses dendrite formation, the primary commercialization barrier [Ref: N1][n1]. Technology readiness level (TRL) assessed at 4-5: lab validation complete, pilot production 2-3 years away, mass manufacturing 5-7 years [Ref: I1][i1]. Research funded by $50M DOE grant and Toyota's $1B solid-state battery program [Ref: A1][a1], [Ref: P1][p1]. Cross-industry impact: EV range could reach 600+ miles (vs. 300 today), enabling long-haul trucking and aviation decarbonization [Ref: I2][i2].
+**Proj**: *Gartner* $14B '30 (55% CAGR from $1B '24), 75% EVs. *McKinsey* 600mi=40% share '32 vs 5% 300mi. | **Scenarios**: Best (30%): TRL 9 '28, 15%($45B), AAA, $3B NPV. Base (50%): '30, 10%($30B), A, $2B. Worst (20%): '32+, Toyota first, 5%($15B), -$200M.
 
-**Strategic Impact**:
-**Medium-term (18-36mo)**: Accelerate R&D partnerships and IP positioning. Solid-state patents filed increased 45% in 2024 vs. 2023, with Toyota (1,200 patents), Samsung (900), and QuantumScape (600) leading [Ref: I3][i3]. Early movers securing supply chains for sulfide materials (lithium sulfide, tin sulfide) gain 2-3 year advantage. **Quantified**: $200M R&D investment required for pilot line; potential $2B NPV if commercial by 2029 [Ref: I1][i1].
+**Artifacts**: Horizon timeline (TRL '25-'30, launches) | TAM/SAM '24-'32 (CAGR, S-curves) | 2×2 (Tech risk vs Market opp)
 
-**Long-term (3-5yr)**: Transformational impact on EV strategy, fleet electrification, and ESG targets. 600+ mile range eliminates charging anxiety, expanding addressable market (TAM) from 15M annual EV sales (2024) to 60M by 2030 (40% CAGR) [Ref: I2][i2]. Carbon intensity reduction: 600-mile EV lifecycle emissions 30% lower than 300-mile equivalent due to fewer batteries needed [Ref: E1][e1]. **Quantified**: Market share gains of 5-10% (=$15B annual revenue) for first movers; ESG score improvement from MSCI B to AA [Ref: E2][e2].
-
-**Stakeholders**:
-**Chief Research Officer**: Lead R&D strategy shift from incremental lithium-ion to solid-state. Allocate $200M over 3 years for partnerships (universities, startups), pilot lines, and IP acquisition. Authority: R&D budget reallocation, partnership approvals.
-
-**Chief Strategy Officer**: Evaluate M&A targets (QuantumScape, Solid Power valuation $1-2B) and JV opportunities with material suppliers. Assess competitive positioning vs. Toyota/Samsung solid-state timelines. Authority: Corporate development initiatives, strategic planning.
-
-**CEO + Board**: Approve transformational $500M investment (R&D + CapEx) and strategic pivot from liquid to solid-state by 2028-2030. Communicate long-term vision to investors; manage short-term earnings pressure from increased R&D spend. Authority: Capital allocation, strategic direction.
-
-**Decision**:
-**Recommendation**: **Invest** in medium-term R&D partnerships and long-term commercialization, while **monitoring** competitive solid-state timelines (Toyota targets 2027, Samsung 2029).
-
-**Rationale**: Technology breakthrough validated in *Nature* (peer-reviewed) at TRL 4-5 suggests 5-7 year commercialization path—aligns with 2029-2031 product cycles. 3x energy density is transformational (600+ mile range), not incremental. First movers gain 5-10% market share ($15B revenue) and ESG leadership. Risk: Technology may not scale; competitors (Toyota) may commercialize first.
-
-**Alternatives**: 
-1. **Delay** investment until TRL 6-7 (pilot production proven)—reduces technology risk but loses 2-3 year first-mover advantage and $15B revenue opportunity.
-2. **Pivot** to licensing strategy (acquire IP, outsource manufacturing)—reduces CapEx but cedes margin (25% vs. 40% vertical integration).
-
-**Success Criteria**: 
-- Pilot production by 2027 (TRL 7) demonstrating 400+ Wh/kg at scale
-- Patent portfolio of 200+ solid-state claims by 2026
-- Material supply agreements (lithium sulfide, sulfide electrolytes) by 2026
-- Product roadmap with 600-mile EV by 2030
-- MSCI ESG rating improvement from B to A by 2029
-
-**Action Plan**:
-
-**Short-term (6-18mo)**:
-- CRO: Launch $50M solid-state research program (Q1 2025) partnering with MIT, Stanford, national labs. Hire 20 battery PhDs. Deliverable: TRL 5 validation by Q4 2025.
-- CSO: Conduct competitive landscape analysis (Toyota, Samsung, QuantumScape timelines, IP strength). Deliverable: M&A target list by Q2 2025.
-- Head of Policy: Secure DOE/IRA funding match ($25M) for solid-state R&D. Deliverable: Grant awarded by Q3 2025.
-
-**Medium-term (18-36mo)**:
-- CRO: Build $150M pilot production line (TRL 6-7) for 10 MWh capacity. Partner with material suppliers (lithium sulfide). Deliverable: Pilot line operational by Q2 2027.
-- CSO: Evaluate M&A (QuantumScape, Solid Power) or JV (Toyota, Samsung). Investment $500M-$1B. Deliverable: Partnership/acquisition by Q4 2026.
-- CSustO: Update ESG roadmap with solid-state carbon intensity projections (30% reduction). Deliverable: TCFD disclosure by Q1 2026.
-
-**Long-term (3-5yr)**:
-- CEO + Board: Approve $500M CapEx for solid-state manufacturing (2028-2030). Target: 10 GWh capacity by 2030 (200K EVs/year).
-- CSO: Launch 600-mile EV flagship model by 2030. Market share target: 10% (=$30B revenue).
-- CSustO: Achieve MSCI ESG rating A/AA by 2029 through solid-state lifecycle emissions advantage.
-
-**Budget/Resources**: Total $700M (2025-2030): $200M R&D, $150M pilot, $350M manufacturing. Headcount: 150 FTEs (engineers, scientists, supply chain). Partnerships: 3 universities, 2 material suppliers, 1 M&A/JV.
-
-**Projections**:
-*Gartner* projects solid-state battery market reaching $14B by 2030 (55% CAGR from $1B in 2024), with EVs comprising 75% of demand [Ref: I1][i1]. *McKinsey* forecasts 600-mile range EVs capturing 40% of market share by 2032, up from 5% for 300-mile today [Ref: I2][i2]. 
-
-**Scenarios**:
-- **Best case** (30% probability): Technology scales to TRL 9 by 2028, first mover achieves 15% market share ($45B revenue), MSCI ESG AAA. Impact: $3B NPV.
-- **Base case** (50% probability): Commercialization by 2030, 10% market share ($30B revenue), MSCI ESG A. Impact: $2B NPV.
-- **Worst case** (20% probability): Manufacturing challenges delay to 2032+, competitors (Toyota) commercialize first, 5% market share ($15B revenue). Impact: -$200M NPV (R&D costs exceed returns).
-
-**Artifacts**: 
-- **Horizon Timeline**: Solid-state roadmap (TRL progression 2025-2030, product launch milestones)
-- **Market Projection**: TAM/SAM growth 2024-2032 (CAGR scenarios, adoption curves)
-- **Decision Matrix**: 2×2 (Technology risk vs. Market opportunity)
-
-<!-- Link Definitions -->
-[a1]: https://www.nature.com/articles/s41586-024-xxxxx
-[n1]: https://techcrunch.com/2024/10/15/mit-toyota-solid-state-breakthrough
-[i1]: https://www.gartner.com/reports/solid-state-battery-forecast-2030
-[i2]: https://www.mckinsey.com/industries/automotive/ev-range-market-impact-2032
-[i3]: https://www.strategy-analytics.com/solid-state-patent-analysis-2024
-[p1]: https://www.energy.gov/articles/doe-announces-50m-solid-state-battery-funding
-[e1]: https://www.sustainability-reports.org/solid-state-lifecycle-carbon-2024
-[e2]: https://www.msci.com/esg-ratings-methodology-transportation
+[a1]: https://nature.com/s41586-024-x | [n1]: https://techcrunch.com/mit-toyota | [i1]: https://gartner.com/solid-state-2030 | [i2]: https://mckinsey.com/ev-range-2032 | [i3]: https://strategy-analytics.com/patents-2024 | [p1]: https://energy.gov/50m-funding | [e1]: https://sustainability-reports.org/lifecycle-2024 | [e2]: https://msci.com/esg-transport
 
 ---
-```
 
-## VIII. Strategic Intelligence Focus Areas
+## VIII. Focus Areas
 
-This prompt complements the existing news prompts:
-
-| Focus Area | Startup News | Tech Ops News | Strategic Intelligence |
-|------------|--------------|---------------|----------------------|
-| **Time Horizon** | 0-18mo (fundraising cycles) | 0-6mo (sprint/quarter) | 6mo-10yr (strategic planning) |
-| **Audience** | Founders, investors, early-stage | Eng, product, operations | C-suite, strategy, research |
+| Area | Startup | Tech Ops | Strategic Intel |
+|------|---------|----------|-----------------|
+| **Horizon** | 0-18mo (fundraising) | 0-6mo (sprint/Q) | 6mo-10yr (strategy) |
+| **Audience** | Founders, VCs | Eng, product, ops | C-suite, strategy, research |
 | **Decisions** | Enter/fund/pivot/pass | Adopt/investigate/defer | Invest/monitor/pivot/prepare |
-| **Key Metrics** | Valuation, burn rate, TAM | Cost, time, risk, performance | Market share, CAGR, ESG, NPV |
-| **News Types** | Funding, competition, VC trends | Tools, frameworks, security | Research, policy, consumer, ESG |
-| **Strategic Value** | Market entry timing | Operational efficiency | Long-term positioning |
+| **Metrics** | Valuation, burn, TAM | Cost, time, risk, perf | Share, CAGR, ESG, NPV |
+| **News** | Funding, comp, VC | Tools, frameworks, sec | Research, policy, consumer, ESG |
+| **Value** | Entry timing | Ops efficiency | Long-term positioning |
 
-**Use Strategic Intelligence for**:
-- Multi-year R&D roadmaps informed by research breakthroughs
-- Consumer trend analysis for product strategy (5-10yr)
-- Policy foresight for regulatory compliance (1-3yr leads)
-- ESG strategy aligned with emerging mandates (2-5yr)
-- Cross-industry insights for adjacency moves
-- Market sizing for long-term investment decisions
+**Use for**: R&D roadmaps (research) | Consumer trends (5-10yr) | Policy foresight (1-3yr) | ESG strategy (2-5yr) | Cross-industry adjacency | Market sizing

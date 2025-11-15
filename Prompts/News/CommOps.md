@@ -111,23 +111,21 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 ### Step 4: Visuals (≥10 diagrams + ≥5 tables)
 
-Funnels, conversion cascades, journeys, attribution models, cohorts, matrices, benchmarks, process flows, health scoring, segmentation
+Types: funnels, conversion cascades, journeys, attribution models, cohorts, matrices, benchmarks, process flows, health scoring, segmentation
 
 ### Step 5: Final Checks
 
-- 100% [Ref: ID] resolve, news per freshness, fields complete
-- Decision + rationale + alternatives + criteria + timeline
-- ≥9/13 roles, specific actions, cross-role coordination
+100% [Ref: ID] resolve | News per freshness | Fields complete | Decision+rationale+alts+criteria+timeline | ≥9/13 roles | Specific actions | Cross-role coordination
 
-### Step 6: Validate (fail ANY = stop)
+### Step 6: Validate (STOP if ANY fail)
 
-**Quantitative**: G≥18 (100% coverage, ≥60% analogies/formulas), N≥12, P≥8, M≥6, R≥6, C≥4, A≥20, Q=18-22 | 7 stages (2-3 Q each) | Categories per floors | ≥9/13 roles | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | News/Benchmarks 50-70%, Docs 20-30% | 5 samples 100% 200-350w | ≥60% ref, ≥10D, ≥5T | 100% decision + metrics | 100% timeline | Freshness met
+**Quantitative**: G≥18 (100% coverage, ≥60% analogies/formulas) | N≥12 | P≥8 | M≥6 | R≥6 | C≥4 | A≥20 | Q=18-22 | 7 stages (2-3 Q each) | Categories per minimums | ≥9/13 roles | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | News/Benchmarks 50-70%, Docs 20-30% | 5 samples 200-350w | ≥60% ref, ≥10D, ≥5T | 100% decision+metrics+timeline | Freshness met
 
-**Qualitative**: 0% hype, 100% ≥2 stages + roles + quantified, 100% decision + alts, ≥5 source types (max 35%), per-stage ≥1 news + benchmark, 100% valid URLs, 100% resolve, 100% measurable, 100% concrete, 0% abstract, projections attributed+confident+timed
+**Qualitative**: 0% hype | 100% ≥2 stages+roles+quantified+decision+alts | ≥5 source types (max 35%/type) | Per-stage ≥1 news+benchmark | 100% URLs valid+resolve+measurable+concrete | 0% abstract | Projections: attributed+confident+timed
 
 ### Step 7: Submit
 
-**Checklist**: All validations PASS | Floors met | Glossary complete (100%, ≥60% analogies/formulas) | TOC | 0 placeholders | ≥10D+≥5T | 100% ≥1 news | 100% impact | 100% decision | 100% timeline | Categories per thresholds | ≥9/13 roles | Freshness met | 0% speculation | Projections attributed | URLs valid | Generation + expiration (+ 2wks) | Search queries documented
+**Checklist**: All validations PASS | Minimums met | Glossary 100%+≥60% analogies/formulas | TOC | 0 placeholders | ≥10D+≥5T | 100% news+impact+decision+timeline | Categories per minimums | ≥9/13 roles | Freshness met | 0% speculation | Projections attributed | URLs valid | Generation+expiration (+2wks) | Search queries documented
 
 ## IV. Validation Report
 
@@ -159,14 +157,14 @@ Funnels, conversion cascades, journeys, attribution models, cohorts, matrices, b
 
 ## V. Question Quality (≥3 fails = rewrite)
 
-**Criteria**: News-driven, lifecycle-specific, multi-stakeholder, multi-category, decision-focused, quantified, cross-stage aware, timely, alternative-aware, evidence-based, actionable, forward-looking
+**Criteria**: News-driven | Lifecycle-specific | Multi-stakeholder | Multi-category | Decision-focused | Quantified | Cross-stage aware | Timely | Alternative-aware | Evidence-based | Actionable | Forward-looking
 
 **Good**:
 - "Gong Labs Q3: 12% pipeline velocity with AI reviews—Sales & RevOps implications?"
 - "G2 Winter: competitor → Leader—response for Enablement & Marketing?"
 - "SaaS Capital: NRR 108% vs our 95%—CS & Product retention tactics?"
 
-**Bad**: "How does sales work?", "What is NPS?", "Should we use Salesforce?"
+**Bad**: "How does sales work?" | "What is NPS?" | "Should we use Salesforce?"
 
 ## VI. Output Format
 
@@ -190,13 +188,13 @@ Funnels, conversion cascades, journeys, attribution models, cohorts, matrices, b
 
 **Domain**: [Market] | **Period**: [Q3-Q4 2024] | **Coverage**: [# items, 6 categories]
 
-**News**: Sales ([#]: top + dates) | Marketing ([#]) | CS ([#]) | RevOps ([#]) | Competitive ([#]) | Tools ([#])
+**News**: Sales ([#]: top+dates) | Marketing ([#]) | CS ([#]) | RevOps ([#]) | Competitive ([#]) | Tools ([#])
 
-**Insights**: [News] ([Date]): [Impact] → [Decision] → [Timeline] (2-3 high-impact)
+**Insights** (2-3 high-impact): [News] ([Date]): [Impact] → [Decision] → [Timeline]
 
 **Dashboard**: [Table: Stage | News | Action | Revenue Impact | Timeline]
 
-**Roles**: [10-12] | **Refs**: G=[#] N=[#] P=[#] M=[#] R=[#] C=[#] A=[#]
+**Roles**: [10-12] | **Refs**: G[#] N[#] P[#] M[#] R[#] C[#] A[#]
 ```
 
 ### Q&A Format
@@ -210,11 +208,11 @@ Funnels, conversion cascades, journeys, attribution models, cohorts, matrices, b
 
 **Impact** (~90w): **Stages** (≥2) | **Quantified**: Revenue [$] | Pipeline [$] | Conversion [%] | Retention [%]
 
-**Stakeholders** (~60w): **[Role 1]**: [Concerns, actions, authority] | **[Role 2]**: [Concerns, actions, authority]
+**Stakeholders** (~60w): **[Role 1]**: [Concerns | Actions | Authority] | **[Role 2]**: [Concerns | Actions | Authority]
 
 **Decision** (~70w): **Rec**: [A/T/S/D/Av] | **Rationale**: [Why] | **Alts**: [1-2] | **Success**: [Metrics]
 
-**Action** (~50w): **Immed**: [+owner] | **Short**: [+owner]
+**Action** (~50w): **Immed**: [Action+owner] | **Short**: [Action+owner]
 
 **Projections** (opt): [Source] projects [outcome] by [time] [confidence]. Impact: [ranges] [Ref: R#][r#]
 
@@ -226,7 +224,7 @@ Funnels, conversion cascades, journeys, attribution models, cohorts, matrices, b
 
 ### References
 
-**G#. Term**: Definition | Analogy/Formula | Context | Why it matters | Example
+**G#. Term**: Definition | Analogy/Formula | Context | Revenue relevance | Example
 
 **N#. Title** (Source, MM/DD): Summary | Cat | Impact | Roles | URL
 
