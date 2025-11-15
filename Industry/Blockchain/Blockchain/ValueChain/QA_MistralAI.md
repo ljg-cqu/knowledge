@@ -50,24 +50,52 @@ graph TB
         H[Economic Models & Governance]
     end
     
-    A -->|Secure Network| E
-    B -->|Build Protocols| E
-    C -->|Provide Capital| B
-    D -->|Set Rules| G
-    E -->|Drive Adoption| A
-    F -->|Innovate| B
-    G -->|Enterprise Adoption| E
-    H -->|Distribute Value| C
+    C -->|Capital| B
+    B -->|Protocols| A
+    A -->|Security| E
+    E -->|Transaction Fees| A
+    E -->|Gas Fees| B
+    A -->|Block Rewards| C
+    B -->|Token Grants| F
+    F -->|Innovation| B
     
-    style A fill:#99d6ff
-    style B fill:#ffb3e6
-    style C fill:#d4ff99
-    style D fill:#ffb3b3
-    style E fill:#99ff99
-    style F fill:#e6b3ff
-    style G fill:#ffe699
-    style H fill:#99e6e6
+    C -->|Research Funding| F
+    E -->|Adoption Data| H
+    H -->|Incentive Design| A
+    H -->|Governance Rights| C
+    G -->|Integration Revenue| B
+    G -->|Platform Fees| E
+    E -->|Services| G
+    
+    D -.->|Compliance Rules| A
+    D -.->|Securities Law| C
+    D -.->|Data Privacy| G
+    D -.->|AML/KYC| E
+    G -.->|Lobbying| D
+    C -.->|Regulatory Engagement| D
+    
+    E -->|Network Effects| C
+    G -->|Enterprise Adoption| E
+    
 ```
+
+**Key Value Chain Characteristics:**
+
+| Flow Type | Description | Closed Loop Status |
+|-----------|-------------|-------------------|
+| **Capital Cycle** | Investors → Developers → Miners → Block Rewards → Investors | ✅ Complete |
+| **Fee Flows** | Users → Transaction Fees → Miners/Developers | ✅ Complete |
+| **Innovation Cycle** | Investors/Developers → Researchers → Innovation → Protocols | ✅ Complete |
+| **Governance Loop** | Users → Adoption Data → Economic Models → Governance Rights → Token Holders | ✅ Complete |
+| **Enterprise Value** | Corporations ↔ Users ↔ Developers (revenue + services) | ✅ Complete |
+| **Regulatory Impact** | Regulators ↔ All Stakeholders (compliance + engagement) | ✅ Complete |
+
+**Critical Improvements Over Linear Models:**
+- Transaction fees return value to miners who secure the network investors funded
+- Research funding creates innovation that feeds back into protocol development
+- Governance mechanisms distribute decision rights based on participation
+- Regulatory relationships are bidirectional (compliance + lobbying)
+- Enterprise adoption drives user growth which increases network effects for investors
 
 ### Miners and Validators
 
@@ -247,11 +275,6 @@ flowchart LR
     G[Regulators] -.->|Rules| C
     H[Researchers] -.->|Innovation| B
     
-    style A fill:#90d7a0
-    style B fill:#cce5ff
-    style C fill:#ffe066
-    style D fill:#f8d7da
-    style E fill:#d1ecf1
 ```
 
 ### Ethereum Staking Economics
@@ -301,10 +324,6 @@ graph TD
     L --> O[User Participation]
     L --> P[Conflict Resolution]
     
-    style I fill:#ffcccc
-    style J fill:#ffcccc
-    style K fill:#ffcccc
-    style L fill:#ccffcc
 ```
 
 ### Power Dynamics
@@ -468,10 +487,6 @@ graph LR
     F --> L
     G --> L
     
-    style A fill:#ffe066
-    style B fill:#cce5ff
-    style C fill:#90d7a0
-    style L fill:#d1ecf1
 ```
 
 **RWA Growth Drivers:**
@@ -527,11 +542,6 @@ graph TB
     N[Token Holders] --> O[Staking Rewards]
     N --> P[Governance Rights]
     
-    style A fill:#90d7a0
-    style F fill:#cce5ff
-    style G fill:#ffe066
-    style H fill:#f8d7da
-    style N fill:#d1ecf1
 ```
 
 ### Ethereum Staking Ecosystem
@@ -603,11 +613,6 @@ graph TD
     E --> E2[Carbon Emissions]
     E --> E3[Hardware Waste]
     
-    style A fill:#ffcccc
-    style B fill:#ffe066
-    style C fill:#f8d7da
-    style D fill:#d1ecf1
-    style E fill:#cce5ff
 ```
 
 ### Scalability and Interoperability
@@ -732,11 +737,6 @@ graph TD
     G -->|Enhance| H[Security]
     H -->|Increases| B
     
-    style A fill:#90d7a0
-    style B fill:#cce5ff
-    style C fill:#ffe066
-    style D fill:#f8d7da
-    style E fill:#d1ecf1
 ```
 
 ### Network Structure and Governance
@@ -810,11 +810,6 @@ graph LR
     E --> E2[Universal Wallets]
     E --> E3[Multi-Chain DApps]
     
-    style A fill:#90d7a0
-    style B fill:#cce5ff
-    style C fill:#ffe066
-    style D fill:#f8d7da
-    style E fill:#d1ecf1
 ```
 
 **Disruptive Technologies:**
@@ -945,9 +940,6 @@ graph LR
     H[IoT Sensors] -.->|Temperature| B
     I[GPS Trackers] -.->|Location| B
     
-    style B fill:#cce5ff
-    style F fill:#ffe066
-    style G fill:#90d7a0
 ```
 
 **Value Chain Analysis:**
@@ -1009,9 +1001,6 @@ graph TD
     
     J[Sustainability Verifier] -.->|Certifications| F
     
-    style F fill:#cce5ff
-    style I fill:#90d7a0
-    style J fill:#ffe066
 ```
 
 **New Participants:**
@@ -1138,9 +1127,6 @@ graph TD
     H[Regulator] -.->|Audit| C
     I[Privacy] -.->|Protected| A
     
-    style B fill:#cce5ff
-    style C fill:#ffe066
-    style I fill:#90d7a0
 ```
 
 **2. Smart Contract Compliance Rules:**
@@ -1209,10 +1195,6 @@ graph TD
     J -->|Impact| N[Emergency Measures]
     N -->|Options| O[Token Sale / Dilution]
     
-    style B fill:#ffe066
-    style D fill:#f8d7da
-    style F fill:#ffcccc
-    style M fill:#ff9999
 ```
 
 **Current State:**
@@ -1295,10 +1277,6 @@ graph LR
     D --> D2[Treasury diversification]
     D --> D3[Strategic partnerships]
     
-    style A fill:#90d7a0
-    style B fill:#cce5ff
-    style C fill:#ffe066
-    style D fill:#d1ecf1
 ```
 
 **Compromise Details:**
@@ -1420,9 +1398,6 @@ graph TD
     L --> O[Validator]
     L --> P[Rewards]
     
-    style A fill:#cce5ff
-    style G fill:#ffe066
-    style L fill:#90d7a0
 ```
 
 **Block Production Timeline:**
@@ -1499,10 +1474,6 @@ graph TB
     L --> N
     M --> N
     
-    style A fill:#cce5ff
-    style E fill:#90d7a0
-    style I fill:#ffe066
-    style L fill:#f8d7da
 ```
 
 ---
