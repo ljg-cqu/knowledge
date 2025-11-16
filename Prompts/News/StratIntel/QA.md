@@ -1,6 +1,6 @@
 # Strategic Intelligence & Market Research News Q&A Generator
 
-Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons, 11 stakeholder roles—transforming news into actionable strategic intelligence.
+Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons, 11 stakeholder roles—transforming news into actionable strategic intelligence.
 
 **Target**: 2-3 days | Monthly | Focus: Research/Innovation, Policy/ESG/Social, Consumer Trends
 
@@ -43,9 +43,9 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 
 ## II. Requirements
 
-**Q&A**: 15-20 | 3-4/horizon | 250-400w | 100% news (≥1/freshness) | ≥80% ≥1 cite, ≥35% ≥2 | ≥2 cats + impact + decision
+**Q&A**: 10-12 | 2-3/horizon | 250-400w | 100% news (≥1/freshness) | ≥80% ≥1 cite, ≥35% ≥2 | ≥2 cats + impact + decision
 
-**Horizons** (5, 3-4 Q each):
+**Horizons** (5, 2-3 Q each):
 1. **Immediate** (0-6mo): Tactical response
 2. **Short** (6-18mo): Annual planning, budgets
 3. **Medium** (18-36mo): Multi-year strategy, investments
@@ -59,11 +59,11 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 **Stakeholders** (≥8/11): CEO, CSO, CRO, CIO, CSustO, VP Corp Dev, VP Market Research, CMO, Head Policy, Board, Advisor
 
 **References** (build first):
-- G≥20 (100% terms/acronyms, analogies/formulas)
-- N≥12 (news per freshness), A≥8 (academic), C≥6 (consumer), P≥5 (policy), E≥5 (ESG), I≥8 (industry), S≥4 (social), X≥4 (cross-industry)
-- R≥25 (APA 7th)
+- G≥15 (100% terms/acronyms, analogies/formulas)
+- N≥10 (news per freshness), A≥6 (academic), C≥4 (consumer), P≥4 (policy), E≥4 (ESG), I≥6 (industry), S≥3 (social), X≥3 (cross-industry)
+- R≥20 (APA 7th)
 
-**Visuals**: ≥8 diagrams + ≥4 tables
+**Visuals**: ≥5 diagrams + ≥3 tables
 
 **Quality Gates** (fail ANY → stop, fix, re-run):
 1. **News**: 100% ≥1/freshness; 0% hype
@@ -81,7 +81,7 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 
 1. **Domain**: Industry/market/sector + period
 
-2. **Search** (≥35-45 candidates, tiered):
+2. **Search** (≥25-30 candidates, tiered):
 
    **T1 - Recent** (HV 1-7d, MV 1-14d):
    - Research: `"[Domain] breakthrough|research|paper|patent"` + 1-7d
@@ -112,12 +112,12 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
    - LT: <6mo ≥50%, 6-12mo ≥30%, 12-18mo ≤15%, 18-24mo ≤5%
    - Overall: <1mo ≥35%, 1-3mo ≥35%, 3-6mo ≥20%, 6-12mo ≥8%, 12-18mo ≤2%
 
-3. **Curate** (≥25: Research ≥7, Consumer ≥8, Policy ≥4, ESG ≥5, Analysis ≥8, Cultural ≥3, Cross ≥4):
+3. **Curate** (≥18: Research ≥5, Consumer ≥5, Policy ≥3, ESG ≥3, Analysis ≥5, Cultural ≥2, Cross ≥3):
    - ✅ Age/source/≥2 relevance/no hype/strategic/specific
 
 4. **Verify**: Count cats/age; if fails → Step 2
 
-5. **Allocate**: 15-20 Q across 5 horizons, 7 cats (≥2/Q), 11 roles (≥8 total)
+5. **Allocate**: 10-12 Q across 5 horizons, 7 cats (≥2/Q), 11 roles (≥8 total)
 
 6. **Refresh**: Quarterly
 
@@ -127,7 +127,7 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 
 **Citation**: `[Ref: A1][a1]` then `[a1]: URL` at end
 
-**Floors**: G≥20 (100% terms/acronyms, analogies/formulas), N≥12 (freshness, URLs+dates), A≥8, C≥6, P≥5, E≥5, I≥8, S≥4, X≥4, R≥25
+**Floors**: G≥15 (100% terms/acronyms, analogies/formulas), N≥10 (freshness, URLs+dates), A≥6, C≥4, P≥4, E≥4, I≥6, S≥3, X≥3, R≥20
 
 **Glossary**: Cover ALL terms (TAM/CAGR/NPS/ESG/TCFD/TRL/IRR/NPV, metrics, concepts). Plain language + analogies ("S-curve = lifecycle—slow, rapid, plateau") + formulas ("CAGR = (End/Start)^(1/years)-1") + context + examples
 
@@ -172,28 +172,28 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve | Age/freshness | APA | Floors (G≥20 100% terms+analogies/formulas, N≥12 7cats, A≥8, C≥6, P≥5, E≥5, I≥8, S≥4, X≥4, R≥25 40-55% research, 25-35% news, 15-20% primary)
+**Refs**: 100% resolve | Age/freshness | APA | Floors (G≥15 100% terms+analogies/formulas, N≥10 7cats, A≥6, C≥4, P≥4, E≥4, I≥6, S≥3, X≥3, R≥20 40-55% research, 25-35% news, 15-20% primary)
 **Decision**: 100% + rationale + alts + criteria + timeline + metrics (share/R&D/risk/ESG/NPS)
 **Stakeholders**: ≥8/11 | Initiatives+authority | C-suite for transformational
 
 ### Step 6: Validations (fail ANY → stop, fix, re-run ALL)
 
-**Quant**: Floors | Glossary (100% terms, ≥60% analogies/formulas) | 5 horizons (3-4 Q) | Cats % | ≥8/11 roles | Cites (100% ≥1 news, ≥80% ≥1, ≥35% ≥2) | Dist (40-55/25-35/15-20%) | 5 samples 250-400w | Visuals (≥60% ref, ≥8D+≥4T) | Decision 100% | Timeline 100% | **Age/freshness**
+**Quant**: Floors | Glossary (100% terms, ≥60% analogies/formulas) | 5 horizons (2-3 Q) | Cats % | ≥8/11 roles | Cites (100% ≥1 news, ≥80% ≥1, ≥35% ≥2) | Dist (40-55/25-35/15-20%) | 5 samples 250-400w | Visuals (≥60% ref, ≥5D+≥3T) | Decision 100% | Timeline 100% | **Age/freshness**
 
 **Qual**: News (freshness, 0% hype) | Impact (100% ≥2h+≥2r+quant) | Decision (100%+alts+crit) | Source (≥5 types, ≤35%) | Per-horizon (≥1 news+≥1 research) | Links/refs (100% valid/resolve) | Quant (100% measurable) | Strategic (100%, 0% tactical) | Anti-hype (100% evidence) | Projections (100% attr+scenarios+conf+time) | Search doc
 
 ### Step 7: Submit
 
-**Checklist** (all YES): Validations PASS | Floors | **Glossary (100% terms, ≥60% analogies/formulas)** | TOC (5h, Q ranges) | 0 placeholders | ≥8D+≥4T | 100% ≥1 news/freshness | 100% impact (≥2h+≥2r+quant+metrics) | 100% decision+rationale+metrics | 100% timeline | 7 cats % | ≥8/11 roles | **Freshness met** | 0% speculation | Projections attr+scenarios | URLs | **Dates (gen+exp=+4wks)** | Search doc
+**Checklist** (all YES): Validations PASS | Floors | **Glossary (100% terms, ≥60% analogies/formulas)** | TOC (5h, Q ranges) | 0 placeholders | ≥5D+≥3T | 100% ≥1 news/freshness | 100% impact (≥2h+≥2r+quant+metrics) | 100% decision+rationale+metrics | 100% timeline | 7 cats % | ≥8/11 roles | **Freshness met** | 0% speculation | Projections attr+scenarios | URLs | **Dates (gen+exp=+4wks)** | Search doc
 
 ## IV. Validation Report
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
 | 1 | **Freshness** | HV/MV/LT/Overall % | Per header | | P/F |
-| 2 | **Floors** | G N A C P E I S X R Q | ≥20,≥12,≥8,≥6,≥5,≥5,≥8,≥4,≥4,≥25,15-20 | | P/F |
+| 2 | **Floors** | G N A C P E I S X R Q | ≥15,≥10,≥6,≥4,≥4,≥4,≥6,≥3,≥3,≥20,10-12 | | P/F |
 | 2a | **Glossary** | % terms; % analogies/formulas | 100%; ≥60% | | P/F |
-| 3 | **Horizons** | __/5 (3-4 Q ea); Q __ | 5/5; 15-20 | | P/F |
+| 3 | **Horizons** | __/5 (2-3 Q ea); Q __ | 5/5; 10-12 | | P/F |
 | 4 | **Cats %** | R/C/P/E/A/Cu/X | ≥70/85/45/60/95/40/50 | | P/F |
 | 5 | **Roles** | __/11 | ≥8 | | P/F |
 | 6 | **Impact** | % ≥2h+≥2r+quant | 100% | | P/F |
@@ -204,13 +204,13 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 | 11 | **Diversity** | Types; max % | ≥5; ≤35% | | P/F |
 | 12 | **Per-Horizon** | __/5 ≥1news+≥1research | 5/5 | | P/F |
 | 13 | **Words** | 5 samples % 250-400w | 100% | | P/F |
-| 14 | **Visuals** | % ref; D; T | ≥60%; ≥8; ≥4 | | P/F |
+| 14 | **Visuals** | % ref; D; T | ≥60%; ≥5; ≥3 | | P/F |
 | 15 | **Quant** | % measurable+proj | 100% | | P/F |
 | 16 | **Links** | % valid | 100% | | P/F |
 | 17 | **Refs** | % resolve | 100% | | P/F |
 | 18 | **Strategic** | % strategic; % tactical | 100%; 0% | | P/F |
 | 19 | **Proj** | % attr; scenarios; conf; time | 100%; 100%; 100%; 100% | | P/F |
-| 20 | **Search** | Queries/Whitelist/Candidates/Accept% | Y/Y/≥35/50-70% | | P/F |
+| 20 | **Search** | Queries/Whitelist/Candidates/Accept% | Y/Y/≥25/50-70% | | P/F |
 | | **Meta** | Start/End/Expires/Refresh | __/__/+4wks/Y/N | | INFO |
 | | **Age** | <1mo/1-3mo/3-6mo/6-12mo/12-18mo % | Per header | | INFO |
 | | **OVERALL** | All | All PASS | | P/F |
@@ -233,8 +233,8 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 ## Contents
 1. Executive Summary (Overview | Insights | Dashboard)
 2. Horizon Coverage (5h × 7cats matrix)
-3. Qs by Horizon: Immediate (Q1-4) | Short (5-8) | Medium (9-12) | Long (13-16) | Transformational (17-20)
-4. Refs: G (G1-25+) | N (N1-15+) | A (A1-10+) | C (C1-8+) | P (P1-6+) | E (E1-6+) | I (I1-10+) | S (S1-5+) | X (X1-5+) | R (R1-30+)
+3. Qs by Horizon: Immediate (Q1-2) | Short (3-5) | Medium (6-8) | Long (9-10) | Transformational (11-12)
+4. Refs: G (G1-15+) | N (N1-10+) | A (A1-6+) | C (C1-4+) | P (P1-4+) | E (E1-4+) | I (I1-6+) | S (S1-3+) | X (X1-3+) | R (R1-20+)
 5. Validation (20 checks)
 ```
 
@@ -252,12 +252,12 @@ Generate 15–20 Q&As from recent industry news across 7 categories, 5 horizons,
 
 | # | Horizon | Range | Count | Cats | News | Roles | Artifacts |
 |---|---------|-------|-------|------|------|-------|-----------|
-| 1 | Immediate | Q1-4 | 3-4 | P,E,C | [Top] | CSO,CMO,Policy | 2D+1T |
-| 2 | Short | Q5-8 | 3-4 | C,A,R | [Top] | CSO,CMO,CRO | 2D+1T |
-| 3 | Medium | Q9-12 | 3-4 | R,A,P,E | [Top] | CSO,CRO,CIO,CSustO | 2D+1T |
-| 4 | Long | Q13-16 | 3-4 | R,X,E | [Top] | CEO,CRO,CIO,Board | 2D+1T |
-| 5 | Transform | Q17-20 | 3-4 | X,R,Cu | [Top] | CEO,Board,Advisor | 2D+1T |
-| | **Total** | | **15-20** | **7** | **15+** | **≥8/11** | **≥8D+≥4T** |
+| 1 | Immediate | Q1-2 | 2-3 | P,E,C | [Top] | CSO,CMO,Policy | 1D+1T |
+| 2 | Short | Q3-5 | 2-3 | C,A,R | [Top] | CSO,CMO,CRO | 1D+1T |
+| 3 | Medium | Q6-8 | 2-3 | R,A,P,E | [Top] | CSO,CRO,CIO,CSustO | 1D+1T |
+| 4 | Long | Q9-10 | 2 | R,X,E | [Top] | CEO,CRO,CIO,Board | 1D |
+| 5 | Transform | Q11-12 | 2 | X,R,Cu | [Top] | CEO,Board,Advisor | 1D |
+| | **Total** | | **10-12** | **7** | **10+** | **≥8/11** | **≥5D+≥3T** |
 
 ### D. Q&A
 

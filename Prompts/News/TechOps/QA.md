@@ -1,8 +1,8 @@
 # Technical Operations News Intelligence Q&A Generator
 
-Generate 20–25 Q&As transforming news into actionable technical intelligence across 6 categories, 8 lifecycle phases, 12 stakeholder roles.
+Generate 10–12 Q&As transforming news into actionable technical intelligence across 6 categories, 8 lifecycle phases, 12 stakeholder roles.
 
-**Target**: Bi-weekly (1-2 days output) | High-velocity (Tech/Security/Ecosystem) + Long-tail (Regulatory/Standards)
+**Target**: Weekly (1 day output) | High-velocity (Tech/Security/Ecosystem) + Long-tail (Regulatory/Standards)
 
 **Scope**: Technical stack, infrastructure, security, development lifecycle, technical debt, engineering practices. Covers digital/physical systems at scale (software platforms, industrial, logistics, services).
 
@@ -36,9 +36,9 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 ## II. Requirements
 
-**Q&A**: 20-25 | 2-4/phase | 200-350w | 100% news-driven | ≥85% ≥1 cite, ≥40% ≥2 cites | Each: ≥2 categories + impact + decision
+**Q&A**: 10-12 | 1-2/phase | 200-350w | 100% news-driven | ≥85% ≥1 cite, ≥40% ≥2 cites | Each: ≥2 categories + impact + decision
 
-**Lifecycle** (8, 2-4 Q each): (1) Req & Discovery, (2) Arch & Design, (3) Dev, (4) Test & Quality, (5) Deploy & Release, (6) Ops & Observability, (7) Maintenance, (8) Evolution & Governance
+**Lifecycle** (8, 1-2 Q each): (1) Req & Discovery, (2) Arch & Design, (3) Dev, (4) Test & Quality, (5) Deploy & Release, (6) Ops & Observability, (7) Maintenance, (8) Evolution & Governance
 
 **Coverage**: Tech Releases 80% | Infra/Cloud 75% | Security 60% | Ecosystem 95% | Standards/Regs 45% | Eng Practices 40%
 
@@ -46,9 +46,9 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 **Stakeholders** (≥8/12): Tech Lead, Architect, Backend/Frontend Dev, DevOps, SRE, Security Eng, Data Eng, QA, Platform Eng, Eng Manager, CTO/VP Eng
 
-**References** (build first): G≥20 (100% terms/acronyms, analogies/formulas), N≥12, T≥10, S≥6, R≥6, V≥3 (vendor events), A≥22 (APA)
+**References** (build first): G≥10 (100% terms/acronyms, analogies/formulas), N≥6, T≥5, S≥3, R≥3, O≥2 (org events), A≥12 (APA)
 
-**Visuals**: ≥12 diagrams + ≥6 tables (avg 1.5D+0.75T/phase)
+**Visuals**: ≥6 diagrams + ≥3 tables (avg 0.75D+0.4T/phase)
 
 **Quality Gates** (fail ANY = stop, fix, re-validate):
 1. **News**: 100% cite ≥1 fresh item; 0% marketing/rumors
@@ -64,7 +64,7 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 1. **Domain**: Industry/ecosystem + date
 
-2. **Search** (≥40-50 candidates, tiered):
+2. **Search** (≥20-25 candidates, tiered):
    - **T1 (1-3d)**: Tech/Sec/Ecosystem releases, CVEs, integrations, org events (hiring/layoffs/financing/leadership)
    - **T2 (7-14d)**: HV backfill if T1 insufficient
    - **T3 (2-4wks)**: HV <1mo; Reg/Standards 3-6mo
@@ -73,11 +73,11 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
    **Tools**: Perplexity ("past week"), ChatGPT ("recent"), Google (`after:YYYY-MM-DD`), HN (>50 pts)
 
-3. **Curate** (≥28): ✅Fresh ✅Whitelist ✅≥2 relevance ✅Details (dates/versions/numbers) ✅0% marketing
+3. **Curate** (≥15): ✅Fresh ✅Whitelist ✅≥2 relevance ✅Details (dates/versions/numbers) ✅0% marketing
 
 4. **Verify**: Age distribution per freshness guarantee; re-search if fails
 
-5. **Allocate**: 20-25 Q × 8 phases × 6 categories × 12 roles
+5. **Allocate**: 10-12 Q × 8 phases × 6 categories × 12 roles
 
 ### Step 2: Build References (before Q&A)
 
@@ -85,7 +85,7 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 **Citations**: `[Ref: N1][n1]` → Define `[n1]: URL` at answer end
 
-**Floors**: G≥18 (100% terms/acronyms/metrics), N≥10, T≥6, S≥4, R≥4, O≥3, A≥15
+**Floors**: G≥10 (100% terms/acronyms/metrics), N≥6, T≥5, S≥3, R≥3, O≥2, A≥12
 
 **Glossary**: ALL terms/acronyms (SRE, CVE, p95, ROI) + plain definitions + analogies ("Logical replication = copying doc while editing original") + formulas (ROI = (Gain-Cost)/Cost×100%) + context + examples
 
@@ -111,7 +111,7 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 **Self-Check**: Fresh | ≥2 phases | ≥2 roles | A/I/D/A | 200-350w | Quantified | Artifact | Timeline | 0% hype | Projections sourced | 100% terms in glossary
 
-### Step 4: Visuals (≥8 diagrams + ≥4 tables, ≥60% referenced)
+### Step 4: Visuals (≥6 diagrams + ≥3 tables, ≥60% referenced)
 
 **Types**: Impact matrices, decision trees, timelines, stakeholder tables, comparisons, risk/cost tables
 
@@ -119,7 +119,7 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve | Fresh | Complete | G≥20 (100% terms+analogies) | N≥12 | R≥5 | O≥3 | A≥18 (45-65% news, 15-25% reports)
+**Refs**: 100% resolve | Fresh | Complete | G≥10 (100% terms+analogies) | N≥6 | R≥3 | O≥2 | A≥12 (45-65% news, 15-25% reports)
 
 **Decision**: 100% A/I/D/A + rationale + alternatives + criteria + timeline
 
@@ -127,22 +127,22 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-**Quantitative**: Floors (G≥20, N≥12, T≥6, S≥4, R≥5, O≥3, A≥18, Q=20-25) | Glossary (100% terms, ≥60% analogies/formulas) | 8 phases (2-4Q) | Coverage (Tech 80%, Infra 75%, Sec 60%, Eco 95%, Std/Reg 45%, Eng 40%) | ≥9/14 roles | Cites (100% ≥1 news, ≥85% ≥1, ≥40% ≥2) | Dist (News 45-65%, Reports 15-25%, Docs 15-25%) | Words (5 samples, 100% 200-350) | Visuals (≥60% ref, ≥8D, ≥4T) | Decision 100% | Timeline 100% | Fresh per guarantee
+**Quantitative**: Floors (G≥10, N≥6, T≥5, S≥3, R≥3, O≥2, A≥12, Q=10-12) | Glossary (100% terms, ≥60% analogies/formulas) | 8 phases (1-2Q) | Coverage (Tech 80%, Infra 75%, Sec 60%, Eco 95%, Std/Reg 45%, Eng 40%) | ≥9/14 roles | Cites (100% ≥1 news, ≥85% ≥1, ≥40% ≥2) | Dist (News 45-65%, Reports 15-25%, Docs 15-25%) | Words (3 samples, 100% 200-350) | Visuals (≥60% ref, ≥6D, ≥3T) | Decision 100% | Timeline 100% | Fresh per guarantee
 
 **Qualitative**: Fresh (0% marketing) | Impact (100% ≥2 phases+roles+quantified) | Decision (100% A/I/D/A+alts+criteria) | Diversity (≥5 types, max 35%) | Per-phase (≥1 news+analysis) | Links (100% valid) | Refs (100% resolve) | Quantified (100%) | Actionable (100%) | Evidence (100%) | Projections (100% sourced+confident+timed) | Search doc
 
 ### Step 7: Submit
 
-**Checklist** (all YES): 20 validations PASS | Floors met | Glossary complete (100% terms, ≥60% analogies) | TOC (8 phases) | 0 placeholders | ≥8D+≥4T | 100% fresh news | 100% impact | 100% decision | 100% timeline | Coverage per thresholds | ≥9/14 roles | Fresh guarantee met | 100% evidence | URLs valid | Dates (gen+expire=+2wks) | Search doc
+**Checklist** (all YES): 20 validations PASS | Floors met | Glossary complete (100% terms, ≥60% analogies) | TOC (8 phases) | 0 placeholders | ≥6D+≥3T | 100% fresh news | 100% impact | 100% decision | 100% timeline | Coverage per thresholds | ≥9/14 roles | Fresh guarantee met | 100% evidence | URLs valid | Dates (gen+expire=+2wks) | Search doc
 
 ## IV. Validation Report
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
 | 1 | **Freshness** | HV: _% <1mo (1-3d: _%), _% <2mo \| MV: _% <2mo \| LT: _% <3mo \| Overall: _% <2mo | Per guarantee | | P/F |
-| 2 | **Floors** | G:_ N:_ T:_ S:_ R:_ O:_ A:_ Q:_ | ≥20,≥12,≥6,≥4,≥5,≥3,≥18,20-25 | | P/F |
+| 2 | **Floors** | G:_ N:_ T:_ S:_ R:_ O:_ A:_ Q:_ | ≥10,≥6,≥5,≥3,≥3,≥2,≥12,10-12 | | P/F |
 | 2a | **Glossary** | _% terms; _% analogies; _% unfamiliar | 100%; ≥60%; 100% | | P/F |
-| 3 | **Lifecycle** | _/8 phases (2-4Q); total _ | 8/8; 20-25 | | P/F |
+| 3 | **Lifecycle** | _/8 phases (1-2Q); total _ | 8/8; 10-12 | | P/F |
 | 4 | **Coverage** | Tech _%, Infra _%, Sec _%, Eco _%, Std _%, Eng _% | 80,75,60,95,45,40 | | P/F |
 | 5 | **Stakeholders** | _/14 roles | ≥9 | | P/F |
 | 6 | **Impact** | _% ≥2 phases+roles+quantified | 100% | | P/F |
@@ -152,14 +152,14 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 | 10 | **Distribution** | News _%, Reports _%, Docs _% | 45-65, 15-25, 15-25 | | P/F |
 | 11 | **Diversity** | Types _; max _ | ≥5; ≤35% | | P/F |
 | 12 | **Per-Phase** | _/8 ≥1 news+analysis | 8/8 | | P/F |
-| 13 | **Words** | 5 samples: _% in 200-350w | 100% | | P/F |
-| 14 | **Visuals** | _% ref; _D; _T | ≥60%; ≥8; ≥4 | | P/F |
+| 13 | **Words** | 3 samples: _% in 200-350w | 100% | | P/F |
+| 14 | **Visuals** | _% ref; _D; _T | ≥60%; ≥6; ≥3 | | P/F |
 | 15 | **Quantified** | _% measurable | 100% | | P/F |
 | 16 | **Links** | _% valid | 100% | | P/F |
 | 17 | **Cross-Refs** | _% resolve | 100% | | P/F |
 | 18 | **Actionable** | _% concrete; _% abstract | 100%; 0% | | P/F |
 | 19 | **Projections** | If used: _% sourced; _% confident; _% timed | 100% each | | P/F |
-| 20 | **Search** | Queries/Whitelist: Y/N; Candidates _; Accept _% | Y/Y; ≥40; 50-70% | | P/F |
+| 20 | **Search** | Queries/Whitelist: Y/N; Candidates _; Accept _% | Y/Y; ≥20; 50-70% | | P/F |
 | | **Meta** | Start:_ End:_ Expires:[+2wks] | | INFO |
 | | **Age Dist** | <1mo _% (1-3d _%) \| HV _%, MV _%, LT _% | Per guarantee | | INFO |
 | | **OVERALL** | All checks | All PASS | | P/F |
@@ -180,7 +180,7 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 ## Contents
 1. Executive Summary (Overview | Insights | Dashboard)
 2. Phase Matrix (8×6 categories)
-3. Q by Phase: Req (Q1-Q4) | Arch (Q5-Q8) | Dev (Q9-Q12) | Test (Q13-Q16) | Deploy (Q17-Q20) | Ops (Q21-Q24) | Maint (Q25-Q28) | Evol (Q29-Q32)
+3. Q by Phase: Req (Q1-Q2) | Arch (Q3-Q4) | Dev (Q5-Q6) | Test (Q7-Q8) | Deploy (Q9-Q10) | Ops (Q11-Q12) | Maint (Q13-Q14) | Evol (Q15-Q16)
 4. References: G | N | T | S | R | O | A
 5. Validation (20 checks)
 ```
@@ -199,15 +199,15 @@ Generate 20–25 Q&As transforming news into actionable technical intelligence a
 
 | # | Phase | Range | Count | Categories | News | Roles | Artifacts |
 |---|-------|-------|-------|------------|------|-------|-----------|
-| 1 | Req & Disc | Q1-Q4 | 2-4 | Std, Eco | [Top] | TL, Arch | 2D+1T |
-| 2 | Arch & Design | Q5-Q8 | 2-4 | Tech, Infra, Eco | [Top] | Arch, SRE | 2D+1T |
-| 3 | Dev | Q9-Q12 | 2-4 | Tech, Eng | [Top] | Dev, DevOps | 2D+1T |
-| 4 | Test & QA | Q13-Q16 | 2-4 | Tech, Sec | [Top] | QA, Dev | 2D+1T |
-| 5 | Deploy | Q17-Q20 | 2-4 | Tech, Eco | [Top] | DevOps, SRE | 2D+1T |
-| 6 | Ops & Obs | Q21-Q24 | 2-4 | Infra, Tech | [Top] | SRE, PE | 2D+1T |
-| 7 | Maint | Q25-Q28 | 2-4 | Sec, Tech | [Top] | Dev, SecEng | 2D+1T |
-| 8 | Evol & Gov | Q29-Q32 | 2-4 | Eco, Std, Eng | [Top] | Arch, EM | 2D+1T |
-| | **Total** | | **20-25** | **All 6** | **15+** | **≥9/14** | **≥12D+≥6T** |
+| 1 | Req & Disc | Q1-Q2 | 1-2 | Std, Eco | [Top] | TL, Arch | 1D+0.5T |
+| 2 | Arch & Design | Q3-Q4 | 1-2 | Tech, Infra, Eco | [Top] | Arch, SRE | 1D+0.5T |
+| 3 | Dev | Q5-Q6 | 1-2 | Tech, Eng | [Top] | Dev, DevOps | 1D+0.5T |
+| 4 | Test & QA | Q7-Q8 | 1-2 | Tech, Sec | [Top] | QA, Dev | 1D+0.5T |
+| 5 | Deploy | Q9-Q10 | 1-2 | Tech, Eco | [Top] | DevOps, SRE | 1D+0.5T |
+| 6 | Ops & Obs | Q11-Q12 | 1-2 | Infra, Tech | [Top] | SRE, PE | 1D+0.5T |
+| 7 | Maint | Q13-Q14 | 1-2 | Sec, Tech | [Top] | Dev, SecEng | 1D+0.5T |
+| 8 | Evol & Gov | Q15-Q16 | 1-2 | Eco, Std, Eng | [Top] | Arch, EM | 1D+0.5T |
+| | **Total** | | **10-12** | **All 6** | **8+** | **≥9/14** | **≥6D+≥3T** |
 
 Legend: TL=Tech Lead, EM=Eng Manager, PE=Platform Eng, SecEng=Security Eng, D=Diagrams, T=Tables
 

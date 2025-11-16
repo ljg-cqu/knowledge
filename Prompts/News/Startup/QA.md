@@ -1,6 +1,6 @@
 # Startup & Formation Intelligence Q&A Generator
 
-Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business lifecycle phases, 12 stakeholder roles—transforming news into actionable intelligence for founders, investors, market entrants.
+Generate 8–12 Q&As analyzing industry news across 7 categories, 6 business lifecycle phases, 12 stakeholder roles—transforming news into actionable intelligence for founders, investors, market entrants.
 
 **Target**: 1-2 days | Bi-weekly | Funding/Market (medium-velocity) + Regulatory/Macro (long-tail)
 
@@ -50,9 +50,9 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 ### Quantitative Floors
 
-**Q&A**: 18-22 total | 3-4 per phase | 200-350w | 100% news-driven | ≥85% ≥1 cite, ≥40% ≥2 cites | Each covers ≥2 categories + impact + decision
+**Q&A**: 8-12 total | 1-2 per phase | 200-350w | 100% news-driven | ≥85% ≥1 cite, ≥40% ≥2 cites | Each covers ≥2 categories + impact + decision
 
-**Business Lifecycle Phases** (6, 3-4 Q each): (1) Market Research & Validation, (2) Incorporation & Legal Setup, (3) Fundraising (Pre-seed → Series A+), (4) Product-Market Fit, (5) GTM & Growth, (6) Scaling & Expansion
+**Business Lifecycle Phases** (6, 1-2 Q each): (1) Market Research & Validation, (2) Incorporation & Legal Setup, (3) Fundraising (Pre-seed → Series A+), (4) Product-Market Fit, (5) GTM & Growth, (6) Scaling & Expansion
 
 **Category Coverage**: Market 85%, Funding 70% (≥30% specific fundraising rounds/valuations/exits), Business/GTM 65%, Regulatory 40%, Partnerships 75%, Talent 45% (≥20% org dynamics: hiring/layoffs/exec moves), Macro 50%
 
@@ -60,9 +60,9 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 **Stakeholders** (≥9/12): Founder/CEO, Co-founder, CFO, Investor (Angel/VC/PE), Board Member, Advisor, VP Sales, VP Marketing, Product Lead, Legal/Compliance, HR/Talent Lead, Finance/Controller
 
-**References** (build before Q&A): G≥15 (100% business terms/acronyms/concepts with analogies/formulas), N≥10, M≥6, F≥6, R≥5, O≥5 (org dynamics), A≥18 (APA 7th+tag)
+**References** (build before Q&A): G≥10 (100% business terms/acronyms/concepts with analogies/formulas), N≥8, M≥4, F≥4, R≥3, O≥3 (org dynamics), A≥12 (APA 7th+tag)
 
-**Visuals**: ≥10 diagrams + ≥5 tables
+**Visuals**: ≥6 diagrams + ≥3 tables
 
 ### Quality Gates (fail ANY = stop, fix, re-validate ALL)
 
@@ -81,7 +81,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 1. **Identify Domain**: Industry/market + date (e.g., "Fintech Q3-Q4 2024")
 
-2. **Web Search** (≥35-45 candidates, tiered):
+2. **Web Search** (≥20-25 candidates, tiered):
 
    **Tier 1 - Daily/Breaking** (1-3 days, search first):
    - Market: `"[Domain] market entry|expansion|launch|competitor"` + past 1-3d
@@ -128,7 +128,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
    - LT (Regulatory): <3mo ≥50%, 3-6mo ≥25%, 6-12mo ≤20%, 12-18mo ≤5%
    - Overall: <1mo ≥50%, 1-2mo ≥25%, 2-4mo ≥12%, 4-6mo ≥8%, 6-12mo ≤4%, 12-18mo ≤1%
 
-3. **Curate & Validate** (≥24: Market ≥7, Funding ≥5, Business/GTM ≥4, Reg ≥3, Partnerships ≥4, Talent ≥3, Macro ≥3, Org Dynamics ≥5):
+3. **Curate & Validate** (≥16: Market ≥5, Funding ≥3, Business/GTM ≥3, Reg ≥2, Partnerships ≥3, Talent ≥2, Macro ≥2, Org Dynamics ≥3):
    - ✅ Age per freshness guarantee
    - ✅ Source from whitelist OR verified primary
    - ✅ Meets ≥2 relevance criteria
@@ -137,7 +137,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 4. **Verify Distribution**: Count by category/age; if fails freshness guarantee, return to Step 2 earlier tiers
 
-5. **Allocate**: 18-22 Q across 6 phases (3-4 each), 7 categories (≥2 per Q), 12 roles (≥9 total)
+5. **Allocate**: 8-12 Q across 6 phases (1-2 each), 7 categories (≥2 per Q), 12 roles (≥9 total)
 
 6. **Refresh**: Not required (bi-weekly cadence keeps news fresh)
 
@@ -147,7 +147,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 **Citation Style**: Markdown reference-style links: `[Ref: N1][n1]` in text, define `[n1]: URL` at answer end.
 
-**Floors**: G≥15 (100% business terms/acronyms/metrics/concepts), N≥10 (100% URLs+dates), M≥6, F≥6, R≥5, O≥5, A≥18
+**Floors**: G≥10 (100% business terms/acronyms/metrics/concepts), N≥8 (100% URLs+dates), M≥4, F≥4, R≥3, O≥3, A≥12
 
 **Glossary Requirements**:
 - **Coverage**: ALL business terms/acronyms (TAM, LTV, CAC, ARR, MRR, ACV, etc.), metrics (burn rate, runway, valuation multiples), concepts (PLG, land-and-expand, down round, bridge financing, etc.). Prioritize specialized/VC/legal terms.
@@ -171,7 +171,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 ### Step 3: Generate Q&A (batch 4-5, self-check each)
 
-**Before Starting**: Review glossary (G1-G15+). Track ALL business terms/acronyms/metrics/concepts used. After each batch, verify 100% defined with analogies/formulas. Add missing immediately.
+**Before Starting**: Review glossary (G1-G10+). Track ALL business terms/acronyms/metrics/concepts used. After each batch, verify 100% defined with analogies/formulas. Add missing immediately.
 
 **Question Patterns**: "[News] implications for [Phase] and [Roles]?" | "Market entry given [News]?" | "[Funding News]: What it means for [Phase]?" | "[News A] vs [News B] across [Segments]?" | "[Trend] + [Projection]: prepare for [Impact]?" | "Should [Founder/Investor] [Enter/Wait/Pass] given [News]?"
 
@@ -189,7 +189,9 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 **Batch Self-Check**: News age ✓ | ≥2 phases | ≥2 roles | Decision clear | 200-350w | Quantified | ≥3/5 ≥2 cites | Artifact | Timeline | 0% hype | 100% actionable | Projections attributed+confident+timed | **All terms in glossary with analogies/formulas**
 
-### Step 4: Create Visuals (≥10 diagrams + ≥5 tables, ≥60% referenced)
+### Step 4: Create Visuals (≥6 diagrams + ≥3 tables, ≥60% referenced)
+
+### Step 4: Create Visuals (≥6 diagrams + ≥3 tables, ≥60% referenced)
 
 **Types**: Market maps, competitive positioning, funding timelines, TAM/SAM/SOM funnels, decision trees, stakeholder tables, burn rate scenarios, valuation comparisons, GTM channel matrices, roadmaps
 
@@ -197,7 +199,7 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 ### Step 5: Final Checks
 
-**References**: 100% [Ref: ID] resolve | All news age ✓ | Fields complete | APA tags | G≥15 (100% terms with analogies/formulas) | N≥10 (7 cats) | M≥6 | F≥6 | R≥5 | O≥5 | A≥18 (45-65% news, 20-30% reports)
+**References**: 100% [Ref: ID] resolve | All news age ✓ | Fields complete | APA tags | G≥10 (100% terms with analogies/formulas) | N≥8 (7 cats) | M≥4 | F≥4 | R≥3 | O≥3 | A≥12 (45-65% news, 20-30% reports)
 
 **Decision**: 100% decision + rationale + alts + success criteria + timeline + metrics
 
@@ -205,13 +207,13 @@ Generate 18–22 Q&As analyzing industry news across 7 categories, 6 business li
 
 ### Step 6: Run Validations (fail ANY = stop, fix, re-run ALL)
 
-**Quantitative**: Floors (G≥15, N≥10, M≥6, F≥6, R≥5, O≥5, A≥18, Q=18-22) | Glossary (100% terms, ≥60% analogies/formulas) | 6 phases (3-4 Q each) | Categories (Market 85%, Funding 70% ≥30% rounds, Business 65%, Reg 40%, Partnerships 75%, Talent 45% ≥20% org dynamics, Macro 50%) | Stakeholders ≥9/12 | Citations (100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2) | Distribution (News 45-65%, Reports 20-30%, Docs 10-20%) | Words (5 samples, 100% 200-350) | Visuals (≥60% ref, ≥10 diagrams, ≥5 tables) | Decision 100% + metrics | Timeline 100% | **News age ✓**
+**Quantitative**: Floors (G≥10, N≥8, M≥4, F≥4, R≥3, O≥3, A≥12, Q=8-12) | Glossary (100% terms, ≥60% analogies/formulas) | 6 phases (1-2 Q each) | Categories (Market 85%, Funding 70% ≥30% rounds, Business 65%, Reg 40%, Partnerships 75%, Talent 45% ≥20% org dynamics, Macro 50%) | Stakeholders ≥9/12 | Citations (100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2) | Distribution (News 45-65%, Reports 20-30%, Docs 10-20%) | Words (5 samples, 100% 200-350) | Visuals (≥60% ref, ≥6 diagrams, ≥3 tables) | Decision 100% + metrics | Timeline 100% | **News age ✓**
 
 **Qualitative**: News (freshness ✓, 0% marketing) | Impact (100% ≥2 phases + ≥2 roles + quantified) | Decision (100% + alts + criteria) | Source diversity (≥5 types, max 35%) | Per-phase (≥1 news + ≥1 analysis) | Links (100% valid) | Cross-refs (100% resolve) | Quantification (100%) | Actionability (100% concrete, 0% abstract) | Anti-hype (0% marketing, 100% evidence) | Projections (100% attributed, confidence+time) | Web search doc (queries, sources, count)
 
 ### Step 7: Submit
 
-**Final Checklist** (all YES): All validations PASS | Floors met | **Glossary complete (100% terms, ≥60% analogies/formulas)** | TOC complete (6 phases, Q ranges) | 0 placeholders | ≥10 diagrams + ≥5 tables | 100% cite ≥1 news | 100% impact (≥2 phases, ≥2 roles, quantified) | 100% decision + rationale + metrics | 100% timeline | 7 categories per thresholds (Funding 70% ≥30% rounds, Talent 45% ≥20% org dynamics) | ≥9/12 roles | **Freshness met** | 0% speculation, 100% evidence | Projections attributed+confident+timed | URLs valid | Balanced | **Gen + expiration dates (start + 2wks)** | Search queries + sources documented
+**Final Checklist** (all YES): All validations PASS | Floors met | **Glossary complete (100% terms, ≥60% analogies/formulas)** | TOC complete (6 phases, Q ranges) | 0 placeholders | ≥6 diagrams + ≥3 tables | 100% cite ≥1 news | 100% impact (≥2 phases, ≥2 roles, quantified) | 100% decision + rationale + metrics | 100% timeline | 7 categories per thresholds (Funding 70% ≥30% rounds, Talent 45% ≥20% org dynamics) | ≥9/12 roles | **Freshness met** | 0% speculation, 100% evidence | Projections attributed+confident+timed | URLs valid | Balanced | **Gen + expiration dates (start + 2wks)** | Search queries + sources documented
 
 ## IV. Validation Report
 
@@ -220,9 +222,9 @@ Use Step 6 validation criteria. Fill table:
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
 | 1 | **News Freshness** | HV: __% <1mo (1-3d: __%), __% <2mo, __% ≤4mo \| MV: __% <2mo (1-3d: __%), __% <3mo, __% ≤6mo \| LT: __% <3mo, __% <6mo, __% ≤12mo \| Overall: __% <2mo, __% <4mo, __% <6mo, __% ≤12mo | Per freshness guarantee (see header) | | PASS/FAIL |
-| 2 | **Reference Floors** | G:__ N:__ M:__ F:__ R:__ O:__ A:__ Q:__ | ≥15, ≥10, ≥6, ≥6, ≥5, ≥5, ≥18, 18-22 | | PASS/FAIL |
+| 2 | **Reference Floors** | G:__ N:__ M:__ F:__ R:__ O:__ A:__ Q:__ | ≥10, ≥8, ≥4, ≥4, ≥3, ≥3, ≥12, 8-12 | | PASS/FAIL |
 | 2a | **Glossary Coverage** | __% business/funding terms/acronyms/concepts defined; __% with analogies/formulas; __% unfamiliar terms covered | 100%; ≥60%; 100% | | PASS/FAIL |
-| 3 | **Lifecycle Coverage** | Phases __/6 (3-4 Q each); total Q __ | 6/6; 18-22 | | PASS/FAIL |
+| 3 | **Lifecycle Coverage** | Phases __/6 (1-2 Q each); total Q __ | 6/6; 8-12 | | PASS/FAIL |
 | 4 | **Category Coverage** | Market __%, Funding __%, Business __%, Reg __%, Partnerships __%, Talent __%, Macro __% | ≥85%, ≥70%, ≥65%, ≥40%, ≥75%, ≥45%, ≥50% | | PASS/FAIL |
 | 5 | **Stakeholder Coverage** | Roles __/12 | ≥9 | | PASS/FAIL |
 | 6 | **Impact** | __% specify ≥2 phases + ≥2 roles + quantified | 100% | | PASS/FAIL |
@@ -233,13 +235,13 @@ Use Step 6 validation criteria. Fill table:
 | 11 | **Source Diversity** | Types __; max %/type __ | ≥5; ≤35% | | PASS/FAIL |
 | 12 | **Per-Phase Evidence** | __/6 phases ≥1 news + ≥1 market/funding analysis | 6/6 | | PASS/FAIL |
 | 13 | **Word Count** | 5 samples: __% in 200-350w | 100% | | PASS/FAIL |
-| 14 | **Visuals** | __% ref artifacts; diagrams __; tables __ | ≥60%; ≥10; ≥5 | | PASS/FAIL |
+| 14 | **Visuals** | __% ref artifacts; diagrams __; tables __ | ≥60%; ≥6; ≥3 | | PASS/FAIL |
 | 15 | **Quantification** | __% measurable impact | 100% | | PASS/FAIL |
 | 16 | **Links** | __% URLs valid | 100% | | PASS/FAIL |
 | 17 | **Cross-Refs** | __% [Ref: ID] resolve | 100% | | PASS/FAIL |
 | 18 | **Actionability** | __% concrete; __% abstract | 100%; 0% | | PASS/FAIL |
 | 19 | **Projections** | If used: __% attributed; __% confident; __% timed; __% scenarios | 100%; 100%; 100%; 100% | | PASS/FAIL |
-| 20 | **Search Quality** | Queries: Y/N \| Whitelist: Y/N \| Candidates: __ \| Accept: __% | Y; Y; ≥35; 50-70% | | PASS/FAIL |
+| 20 | **Search Quality** | Queries: Y/N \| Whitelist: Y/N \| Candidates: __ \| Accept: __% | Y; Y; ≥20; 50-70% | | PASS/FAIL |
 | | **Metadata** | Start: __ \| End: __ \| Expires: [+2wks] \| Refresh: Y/N (__) | | INFO |
 | | **Age Distribution** | <1mo __% (1-3d __%, 4-14d __%, 15-30d __%) \| 1-2mo __% \| 2-4mo __% \| 4-6mo __% \| 6-12mo __% \| 12-18mo __% \| By category: HV __%, MV __%, LT __% | Per freshness guarantee (see header) | | INFO |
 | | **OVERALL** | All checks | All PASS | | PASS/FAIL |
@@ -267,8 +269,8 @@ Use Step 6 validation criteria. Fill table:
 ## Contents
 1. Executive Summary (Overview | Insights | Dashboard)
 2. Phase Coverage (6 phases × 7 categories matrix)
-3. Questions by Phase: Market Research (Q1-Q4) | Incorporation (Q5-Q7) | Fundraising (Q8-Q11) | PMF (Q12-Q15) | GTM (Q16-Q19) | Scaling (Q20-Q22)
-4. References: G (G1-G20+) | N (N1-N12+) | M (M1-M8+) | F (F1-F8+) | R (R1-R6+) | O (O1-O7+) | A (A1-A20+)
+3. Questions by Phase: Market Research (Q1-Q2) | Incorporation (Q3-Q4) | Fundraising (Q5-Q6) | PMF (Q7-Q8) | GTM (Q9-Q10) | Scaling (Q11-Q12)
+4. References: G (G1-G10+) | N (N1-N8+) | M (M1-M4+) | F (F1-F4+) | R (R1-R3+) | O (O1-O3+) | A (A1-A12+)
 5. Validation Report (20 checks)
 ```
 
@@ -292,13 +294,13 @@ Use Step 6 validation criteria. Fill table:
 
 | # | Phase | Range | Count | Categories | News | Roles | Artifacts |
 |---|-------|-------|-------|------------|------|-------|-----------|
-| 1 | Market Research | Q1-Q4 | 3-4 | Market, Competition, Reg, Macro | [Top] | Founder, Advisor, Investor | 2D+1T |
-| 2 | Incorporation | Q5-Q7 | 3-4 | Reg, Legal, Funding | [Top] | Founder, Legal, Advisor | 2D+1T |
-| 3 | Fundraising | Q8-Q11 | 3-4 | Funding, VC, Macro | [Top] | Founder, CFO, Investor | 2D+1T |
-| 4 | Product-Market Fit | Q12-Q15 | 3-4 | Market, Business/GTM, Talent | [Top] | Founder, Product, VP Sales | 2D+1T |
-| 5 | GTM & Growth | Q16-Q19 | 3-4 | Business/GTM, Partnerships, Market | [Top] | VP Sales, VP Marketing, Founder | 2D+1T |
-| 6 | Scaling | Q20-Q22 | 3-4 | Talent, Partnerships, Macro, Funding | [Top] | CEO, CFO, Board, VP Sales | 2D+1T |
-| | **Total** | | **18-22** | **All 7** | **12+** | **≥9/12** | **≥10D+≥5T** |
+| 1 | Market Research | Q1-Q2 | 1-2 | Market, Competition, Reg, Macro | [Top] | Founder, Advisor, Investor | 2D+1T |
+| 2 | Incorporation | Q3-Q4 | 1-2 | Reg, Legal, Funding | [Top] | Founder, Legal, Advisor | 2D+1T |
+| 3 | Fundraising | Q5-Q6 | 1-2 | Funding, VC, Macro | [Top] | Founder, CFO, Investor | 2D+1T |
+| 4 | Product-Market Fit | Q7-Q8 | 1-2 | Market, Business/GTM, Talent | [Top] | Founder, Product, VP Sales | 2D+1T |
+| 5 | GTM & Growth | Q9-Q10 | 1-2 | Business/GTM, Partnerships, Market | [Top] | VP Sales, VP Marketing, Founder | 2D+1T |
+| 6 | Scaling | Q11-Q12 | 1-2 | Talent, Partnerships, Macro, Funding | [Top] | CEO, CFO, Board, VP Sales | 2D+1T |
+| | **Total** | | **8-12** | **All 7** | **8+** | **≥9/12** | **≥6D+≥3T** |
 
 Legend: D=Diagrams, T=Tables
 
@@ -336,27 +338,27 @@ Legend: D=Diagrams, T=Tables
 ```markdown
 ## 4. References
 
-### 4.1 Glossary (G1-G20+)
+### 4.1 Glossary (G1-G10+)
 **G#. Term (Acronym)**: Plain-language def | Analogy/Formula | Startup context | Why it matters | Example
 
 **Example**:
 - **G1. TAM (Total Addressable Market)**: Total revenue opportunity at 100% market share.
 - **G2. LTV (Lifetime Value)**: Total revenue expected from a customer over their relationship.
 
-### 4.2 News (N1-N12+)
+### 4.2 News (N1-N8+)
 **N#. Title** (Source, MM/DD/YYYY): Summary | Cat | Impact (phases, metrics) | Roles | URL
 
-### 4.3 Market Reports (M1-M8+)
+### 4.3 Market Reports (M1-M4+)
 **M#. Title** (Firm, Date): Sizing (TAM/SAM/SOM) | Growth rate | Landscape | Trends | Relevance | URL
 
-### 4.4 Funding Sources (F1-F8+)
+### 4.4 Funding Sources (F1-F4+)
 **F#. Company Funding** (Source, Date): Round (Seed/Series A/B/C) | Amount | Valuation | Lead investor | Use | Impact | URL
 
-### 4.5 Research/Analysis (R1-R6+)
+### 4.5 Research/Analysis (R1-R3+)
 **R#. Title** (Firm, Date): Findings | Projections | Implications | Confidence | Relevance | URL
 
-### 4.6 Organizational Dynamics (O1-O7+)
+### 4.6 Organizational Dynamics (O1-O3+)
 **O#. Company Event Type** (Source, MM/DD/YYYY): Event (Hiring/Layoff/Financing/Leadership/Exit) | Company | Details | Context | Implication | Impact | URL
 
-### 4.7 Citations (A1-A20+)
+### 4.7 Citations (A1-A12+)
 **A#. APA 7th [Tag]**: Author/Org. YYYY, Mon DD. *Title*. Pub/Firm. URL [News/Market Report/Funding/Research/Org]

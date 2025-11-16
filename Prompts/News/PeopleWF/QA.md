@@ -1,12 +1,14 @@
 # People & Workforce Intelligence News Q&A Generator
 
-Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 11 stakeholder roles.
+Generate **10–14 Q&As** from recent news across 6 categories, 6 lifecycle stages, 11 stakeholder roles.
 
-**Target**: Monthly brief | 1–2 days | Velocity-optimized: Talent Markets/Skills (high) + Policy/Labor/Comp (medium) + Culture/Wellbeing (long-tail)
+**Target**: Monthly brief | 1–2 days | **Minimal essential intelligence** | Velocity-optimized: Talent Markets/Skills (high) + Policy/Labor/Comp (medium) + Culture/Wellbeing (long-tail)
 
 **Scope**: Talent markets, hiring, recruiting, skills, education, compensation, benefits, workforce policy, labor law, engagement, culture, DEI, wellbeing.
 
 **Exclusions**: Technical/operational decisions, product/GTM strategy, corporate finance, capital markets, early-stage venture formation, long-horizon corporate strategy beyond workforce.
+
+**Size Optimization**: 15 Q&As × 250w = ~3,750 words | Avoid info overload | Focus on immediate/short-term actions | Minimal essential intelligence for informed decisions
 
 **Freshness** (category-adaptive):
 - **HV** (Talent/Skills/Disruptions): ≥75% <1mo (≥25% in 1–7d), ≥90% <2mo, 100% ≤4mo  
@@ -40,15 +42,23 @@ Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 
 5. **People Significance**: Shifts talent, skills, comp, or culture risk  
 6. **Quantified Impact**: Measurable hiring time, acceptance rate, attrition, engagement, comp cost, or wellbeing
 
-**Answer Format** (250–400w): ≥1 news item + summary + impact (≥2 stages, ≥2 roles, quantified) + decision (Invest/Adopt/Adjust/Monitor/Avoid) + timeline (immediate/short/medium) + optional projections.
+**Answer Format** (**250w target**, max 300w): ≥1 news item + summary + impact (≥2 stages, ≥2 roles, quantified) + decision (Invest/Adopt/Adjust/Monitor/Avoid) + timeline (immediate/short, prioritize medium only if strategic) + projections only if decision-critical.
 
 ---
 
 ## II. Requirements
 
-**Output**: 15–20 Q&As | 2–4 per lifecycle stage | 250–400w each | 100% news-driven (≥1 item/Q) | ≥80% Q&As ≥1 citation, ≥35% ≥2 citations | Each Q covers ≥2 categories + impact + decision
+**Output**: **10–14 Q&As** | 1–2 per lifecycle stage | **250w target** (max 300w) | 100% news-driven (≥1 item/Q) | ≥80% Q&As ≥1 citation, ≥35% ≥2 citations | Each Q covers ≥2 categories + impact + decision
 
-**Lifecycle Stages** (6, 2–4 Q each):  
+**Category Distribution** (velocity-weighted):
+- Talent Markets & Hiring: 3 Q&As (80% floor)
+- Skills & Education: 2 Q&As (70% floor)  
+- Compensation & Benefits: 2 Q&As (65% floor)
+- Culture & DEI: 2 Q&As (70% floor)
+- Policy & Labor: 2 Q&As (60% floor)
+- Wellbeing: 1 Q&A (60% floor)
+
+**Lifecycle Stages** (6, 1–2 Q each):  
 1. **Attract & Brand**: Employer brand, EVP, market presence  
 2. **Hire & Onboard**: Recruiting, selection, onboarding  
 3. **Develop & Grow**: Learning, skills, career paths  
@@ -56,15 +66,13 @@ Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 
 5. **Reward & Retain**: Comp, benefits, recognition, retention  
 6. **Transition & Exit**: Restructuring, exits, alumni, knowledge transfer
 
-**Category Coverage**: Talent/Hiring 80% | Skills/Education 70% | Comp/Benefits 65% | Policy/Labor 60% | Culture/DEI 70% | Wellbeing 60%
-
-**Decision Framework** (100%): Impact (≥2 stages, ≥2 roles, quantified) + Decision (Invest/Adopt/Adjust/Monitor/Avoid + rationale + alternatives) + Action (immediate/short/medium)
+**Decision Framework** (100%): Impact (≥2 stages, ≥2 roles, quantified) + Decision (Invest/Adopt/Adjust/Monitor/Avoid + rationale + alternatives) + Action (immediate/short, medium only if strategic)
 
 **Stakeholders** (≥8/11): CHRO, VP People, HRBP, TA Lead, L&D Lead, C&B Lead, ER/Labor Lead, DEI Lead, People Analytics Lead, BU Leader, Line Manager
 
-**References** (build before Q&A): G≥18 (terms/acronyms/metrics) | N≥12 (news) | B≥6 (benchmarks) | L≥5 (law/policy) | R≥6 (research) | A≥20 (APA citations)
+**References** (minimums, avoid over-citing): G≥12 (terms/acronyms/metrics) | N≥8 (news) | B≥4 (benchmarks) | L≥3 (law/policy) | R≥4 (research) | A≥12 (APA citations)
 
-**Visuals**: ≥8 diagrams + ≥4 tables
+**Visuals** (minimums, high-density): ≥6 diagrams + ≥3 tables (focus on pay bands, benchmarks, risk matrices)
 
 **Quality Gates** (fail ANY = stop, fix, re-validate ALL):
 1. **News**: 100% cite ≥1 item | 0% rumors/hype  
@@ -84,7 +92,7 @@ Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 
 
 1. **Domain**: Industry + geography + workforce theme (e.g., "Global Tech Talent Q1 2025", "EU Manufacturing Skills Q3–Q4 2025")
 
-2. **Web Search** (≥30–40 candidates, tiered):
+2. **Web Search** (≥20–30 candidates, tiered for efficiency):
 
    **T1 – Talent/Hiring (1–7d)**: `"[Domain] hiring|job openings|talent shortage|skills gap"` | `"[Domain] layoffs|restructuring|RIF"`
 
@@ -94,7 +102,7 @@ Generate 15–20 Q&As from recent news across 6 categories, 6 lifecycle stages, 
 
    **Sources**: HR/People (SHRM, CIPD, HBR, MIT Sloan, Gartner HR, Deloitte/Bain/BCG) | Comp (Radford, Mercer, WTW, local surveys) | Labor/Policy (ILO, OECD, labor depts, unions, employer assocs) | Research (Gallup, Pew, McKinsey Global Institute, HR/IO journals)
 
-3. **Curate** (≥20 items): Meets freshness + relevance | Quantitative details (wage %, attrition %, engagement, time-to-hire) | Excludes marketing fluff
+3. **Curate** (≥15–20 items): Meets freshness + relevance | Quantitative details (wage %, attrition %, engagement, time-to-hire) | Excludes marketing fluff | Focus on high-impact news
 
 4. **Verify**: Category & age coverage | Refine if thresholds unmet
 
@@ -114,13 +122,13 @@ Trigger only if major labor law or large workforce event (cross-industry strike,
 
 **Question Patterns**: "[Talent News]: implications for [Stages]/[Roles]?" | "[Comp Benchmark]+[Inflation]: pay strategy for [Segment]?" | "[Law Change]: policy/risk response for [Region]?" | "[Engagement/DEI]: culture/leadership actions for [Business]?"
 
-**Answer Structure** (250–400w):
-1. **News** (~60w): What, when, who, why, category `[Ref: N#][n#]`  
-2. **Impact** (~110w): ≥2 stages + quantified metrics  
-3. **Stakeholders** (~70w): ≥2 roles + concerns + actions + authority  
-4. **Decision** (~90w): Invest/Adopt/Adjust/Monitor/Avoid + rationale + 1–2 alternatives + success criteria  
-5. **Action** (~60w): Immediate (0–2wks), short (2wks–2mo), medium (2–6mo) + owners  
-6. **Projections** (~40w, optional): Scenario forecast + ranges + confidence
+**Answer Structure** (**250w target**, max 300w):
+1. **News** (~50w): What, when, who, why, category `[Ref: N#][n#]`  
+2. **Impact** (~90w): ≥2 stages + quantified metrics  
+3. **Stakeholders** (~60w): ≥2 roles + concerns + actions + authority  
+4. **Decision** (~70w): Invest/Adopt/Adjust/Monitor/Avoid + rationale + 1–2 alternatives + success criteria  
+5. **Action** (~40w): Immediate (0–2wks), short (2wks–2mo), medium only if strategic + owners  
+6. **Projections** (optional, only if decision-critical): Scenario forecast + ranges + confidence
 
 **Self-check**: Freshness | ≥2 stages | ≥2 roles | Decision | Quantified | Citations | Concrete actions
 
@@ -141,3 +149,7 @@ Trigger only if major labor law or large workforce event (cross-industry strike,
 ## IV. Validation Report Template
 
 **Checks**: News Freshness | Reference Floors | Lifecycle Coverage | Category Coverage | Stakeholder Coverage | Impact Quantification | Decision Quality | Timelines | Citations | Source Diversity | Visual Coverage | Overall Status
+
+---
+
+**Optimization Result**: 15 Q&As @ 250w = ~3,750 words of minimal essential intelligence | Meets 100% of requirements at minimum viable scope | Avoids info overload while enabling informed decisions

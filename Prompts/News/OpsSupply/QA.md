@@ -1,6 +1,6 @@
 # Operations & Supply Chain News Intelligence Q&A
 
-Generate 15–20 Q&As analyzing recent industry news, transforming it into actionable intelligence for operations and supply chain teams.
+Generate 10–14 Q&As analyzing recent industry news, transforming it into actionable intelligence for operations and supply chain teams.
 
 **Target**: Monthly brief | 1–2 days execution
 
@@ -58,7 +58,7 @@ COO, VP Operations, VP Supply Chain, Plant/Factory Manager, Logistics Director, 
 
 ### Quantitative Floors
 
-- **Q&A**: 15–20 total | 2–4 per cycle | 250–400 words | 100% news-driven  
+- **Q&A**: 10–14 total | 1–2 per cycle | 250–400 words | 100% news-driven  
 - **Citations**: ≥80% Q&As have ≥1; ≥35% have ≥2  
 - **Coverage**: Each Q&A ≥2 categories + operations impact + decision
 
@@ -76,15 +76,15 @@ Impact (≥2 cycles, ≥2 roles, quantified metrics) + Decision (Adjust/Mitigate
 **Stakeholder Coverage**: ≥8/11 roles
 
 **References** (build before Q&A):  
-- **G**≥18: Operations/supply chain glossary  
-- **N**≥12: News items (per freshness thresholds)  
-- **L**≥6: Logistics benchmarks, freight indices, capacity reports  
-- **M**≥6: Manufacturing, OEE, lean, 6σ sources  
-- **S**≥5: Safety/regulatory standards  
-- **R**≥6: Research/analysis  
-- **A**≥20: APA 7th citations
+- **G**≥12: Operations/supply chain glossary  
+- **N**≥8: News items (per freshness thresholds)  
+- **L**≥4: Logistics benchmarks, freight indices, capacity reports  
+- **M**≥4: Manufacturing, OEE, lean, 6σ sources  
+- **S**≥3: Safety/regulatory standards  
+- **R**≥4: Research/analysis  
+- **A**≥12: APA 7th citations
 
-**Visuals**: ≥8 diagrams + ≥4 tables
+**Visuals**: ≥6 diagrams + ≥3 tables
 
 ### Quality Gates (fail ANY = stop, fix, re-validate ALL)
 
@@ -105,7 +105,7 @@ Impact (≥2 cycles, ≥2 roles, quantified metrics) + Decision (Adjust/Mitigate
 
 1. **Identify Domain**: Industry + operations focus (e.g., "Global Automotive Supply Chain Q1 2025").
 
-2. **Web Search** (≥30–40 candidates, tiered):
+2. **Web Search** (≥20–30 candidates, tiered):
 
    **Tier 1 – Disruptions/Incidents (1–7d)**  
    - `"[Domain] port congestion|shipment delay|backlog|trade disruption"`  
@@ -128,7 +128,7 @@ Impact (≥2 cycles, ≥2 roles, quantified metrics) + Decision (Adjust/Mitigate
    - **Regulatory**: OSHA, EPA, EU directives, local regulators  
    - **Research**: Gartner, SCM World, APICS, academic journals
 
-3. **Curate & Validate** (≥20 items)  
+3. **Curate & Validate** (≥14 items)  
    - Meets freshness/relevance criteria  
    - Includes quantitative details (lead times, capacity %, costs, incident rates)  
    - Avoids marketing without operational substance

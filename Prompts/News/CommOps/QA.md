@@ -1,6 +1,6 @@
 # Commercial Operations News Intelligence Q&A Generator
 
-Transform commercial news into 18-22 actionable Q&As for revenue teams.
+Transform commercial news into 10-14 actionable Q&As for revenue teams.
 
 **Target**: Bi-weekly | 24-40h | High-Value (HV): Sales/Marketing | Medium-Value (MV): CS/Market Trends
 
@@ -39,9 +39,9 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 ### Minimums
 
-**Q&A**: 18-22 (2-3/stage, 200-350w, 100% news-driven, ≥85% cite ≥1, ≥40% cite ≥2, each covers ≥2 categories + impact + decision)
+**Q&A**: 10-14 (1-2/stage, 200-350w, 100% news-driven, ≥85% cite ≥1, ≥40% cite ≥2, each covers ≥2 categories + impact + decision)
 
-**7 Stages** (2-3 Q each): Market Research & Segmentation | Lead Gen & Demand | Lead Qual & Nurturing | Sales & Closing | Onboarding & Activation | Retention & Expansion | Analytics & Optimization
+**7 Stages** (1-2 Q each): Market Research & Segmentation | Lead Gen & Demand | Lead Qual & Nurturing | Sales & Closing | Onboarding & Activation | Retention & Expansion | Analytics & Optimization
 
 **Category %**: Sales 85 | Marketing 80 | CS 70 | RevOps 65 | Competitive 75 | Tools 60
 
@@ -49,9 +49,9 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 **Stakeholders** (≥9/13): CRO | VP Sales/Marketing/CS | Sales/Marketing/CS Ops | RevOps Analyst | SDR/BDR/AE/CSM/Demand Gen/Enablement Leads
 
-**References**: G≥18 (100% terms+acronyms+metrics, analogies+formulas) | N≥12 (per freshness) | P≥8 | M≥6 | R≥6 | C≥4 | A≥20
+**References**: G≥12 (100% terms+acronyms+metrics, analogies+formulas) | N≥8 (per freshness) | P≥5 | M≥4 | R≥4 | C≥3 | A≥12
 
-**Visuals**: ≥10 diagrams + ≥5 tables
+**Visuals**: ≥6 diagrams + ≥3 tables
 
 ### Quality Gates (STOP if ANY fail)
 
@@ -70,18 +70,18 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 1. **Domain**: Industry/vertical + period (e.g., "B2B SaaS GTM Q4 2024")
 
-2. **Web Search** (≥35-45 candidates):
+2. **Web Search** (≥20-30 candidates):
    - **Tier 1 (1-3d)**: `"[Domain] {sales performance|pipeline|quota|win rate|marketing|CAC|conversion|campaign|churn|retention|NPS|expansion|competitive|win/loss|market share}"` + 1-3d | `"{Salesforce|HubSpot|Gong|Gainsight} update"` + 1-3d
    - **Tier 2 (7-14d)**: Same queries + 7-14d
    - **Tier 3 (2-4wks)**: HV <1mo, MV 2-3mo
    - **Whitelist**: SaaStr, Sales Hacker, Winning by Design, MarketingProfs, Gainsight, RevOps Co-op, G2, Gartner, Forrester
    - **Target**: HV <1mo ≥85% (1-3d ≥30%) | MV <2mo ≥70% (1-3d ≥20%)
 
-3. **Curate** (≥24): Sales ≥7, Marketing ≥6, CS ≥5, RevOps ≥4, Competitive ≥5, Tools ≥4. Filter: freshness, whitelist, ≥2 relevance criteria, no hype, specific details.
+3. **Curate** (≥14): Sales ≥4, Marketing ≥4, CS ≥3, RevOps ≥3, Competitive ≥3, Tools ≥3. Filter: freshness, whitelist, ≥2 relevance criteria, no hype, specific details.
 
 4. **Verify** distribution → if fail, return Step 2
 
-5. **Allocate** 18-22 Q across 7 stages, 6 categories, 13 roles
+5. **Allocate** 10-14 Q across 7 stages, 6 categories, 13 roles
 
 ### Step 2: Build References (before Q&A)
 
@@ -109,7 +109,7 @@ Transform commercial news into 18-22 actionable Q&As for revenue teams.
 
 **Self-Check**: Freshness ✓ | ≥2 stages/roles ✓ | Decision ✓ | 200-350w ✓ | Quantified ✓ | ≥3/5 cite ≥2 ✓ | Artifact ✓ | Timeline ✓ | 0% hype ✓ | 100% actionable ✓ | Glossary complete ✓
 
-### Step 4: Visuals (≥10 diagrams + ≥5 tables)
+### Step 4: Visuals (≥6 diagrams + ≥3 tables)
 
 Types: funnels, conversion cascades, journeys, attribution models, cohorts, matrices, benchmarks, process flows, health scoring, segmentation
 
@@ -119,22 +119,22 @@ Types: funnels, conversion cascades, journeys, attribution models, cohorts, matr
 
 ### Step 6: Validate (STOP if ANY fail)
 
-**Quantitative**: G≥18 (100% coverage, ≥60% analogies/formulas) | N≥12 | P≥8 | M≥6 | R≥6 | C≥4 | A≥20 | Q=18-22 | 7 stages (2-3 Q each) | Categories per minimums | ≥9/13 roles | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | News/Benchmarks 50-70%, Docs 20-30% | 5 samples 200-350w | ≥60% ref, ≥10D, ≥5T | 100% decision+metrics+timeline | Freshness met
+**Quantitative**: G≥12 (100% coverage, ≥60% analogies/formulas) | N≥8 | P≥5 | M≥4 | R≥4 | C≥3 | A≥12 | Q=10-14 | 7 stages (1-2 Q each) | Categories per minimums | ≥9/13 roles | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | News/Benchmarks 50-70%, Docs 20-30% | 5 samples 200-350w | ≥60% ref, ≥6D, ≥3T | 100% decision+metrics+timeline | Freshness met
 
 **Qualitative**: 0% hype | 100% ≥2 stages+roles+quantified+decision+alts | ≥5 source types (max 35%/type) | Per-stage ≥1 news+benchmark | 100% URLs valid+resolve+measurable+concrete | 0% abstract | Projections: attributed+confident+timed
 
 ### Step 7: Submit
 
-**Checklist**: All validations PASS | Minimums met | Glossary 100%+≥60% analogies/formulas | TOC | 0 placeholders | ≥10D+≥5T | 100% news+impact+decision+timeline | Categories per minimums | ≥9/13 roles | Freshness met | 0% speculation | Projections attributed | URLs valid | Generation+expiration (+2wks) | Search queries documented
+**Checklist**: All validations PASS | Minimums met | Glossary 100%+≥60% analogies/formulas | TOC | 0 placeholders | ≥6D+≥3T | 100% news+impact+decision+timeline | Categories per minimums | ≥9/13 roles | Freshness met | 0% speculation | Projections attributed | URLs valid | Generation+expiration (+2wks) | Search queries documented
 
 ## IV. Validation Report
 
 | # | Check | Criteria | Status |
 |---|-------|----------|--------|
 | 1 | News Freshness | Per header guarantee | PASS/FAIL |
-| 2 | Reference Floors | G≥18, N≥12, P≥8, M≥6, R≥6, C≥4, A≥20, Q=18-22 | PASS/FAIL |
+| 2 | Reference Floors | G≥12, N≥8, P≥5, M≥4, R≥4, C≥3, A≥12, Q=10-14 | PASS/FAIL |
 | 2a | Glossary | 100% terms, ≥60% analogies/formulas | PASS/FAIL |
-| 3 | Lifecycle | 7/7 stages, 2-3 Q each | PASS/FAIL |
+| 3 | Lifecycle | 7/7 stages, 1-2 Q each | PASS/FAIL |
 | 4 | Categories | Sales ≥85%, Marketing ≥80%, CS ≥70%, RevOps ≥65%, Competitive ≥75%, Tools ≥60% | PASS/FAIL |
 | 5 | Stakeholders | ≥9/13 | PASS/FAIL |
 | 6 | Impact | 100% ≥2 stages + roles + quantified | PASS/FAIL |
@@ -145,13 +145,13 @@ Types: funnels, conversion cascades, journeys, attribution models, cohorts, matr
 | 11 | Diversity | ≥5 types, ≤35%/type | PASS/FAIL |
 | 12 | Per-Stage | 7/7 ≥1 news + benchmark | PASS/FAIL |
 | 13 | Words | 100% in 200-350w | PASS/FAIL |
-| 14 | Visuals | ≥60% ref, ≥10D, ≥5T | PASS/FAIL |
+| 14 | Visuals | ≥60% ref, ≥6D, ≥3T | PASS/FAIL |
 | 15 | Quantification | 100% measurable | PASS/FAIL |
 | 16 | Links | 100% valid | PASS/FAIL |
 | 17 | Cross-Refs | 100% resolve | PASS/FAIL |
 | 18 | Actionability | 100% concrete, 0% abstract | PASS/FAIL |
 | 19 | Projections | 100% attributed/confident/timed/scenarios | PASS/FAIL |
-| 20 | Search | Queries Y, Whitelist Y, ≥35 candidates, 50-70% accept | PASS/FAIL |
+| 20 | Search | Queries Y, Whitelist Y, ≥20 candidates, 50-70% accept | PASS/FAIL |
 | | Metadata | Start, End, Expires (+2wks), Refresh Y/N | INFO |
 | | OVERALL | All PASS | PASS/FAIL |
 
@@ -176,7 +176,7 @@ Types: funnels, conversion cascades, journeys, attribution models, cohorts, matr
 ## Contents
 1. Executive Summary (Overview | Insights | Dashboard)
 2. Stage Coverage (7×6 matrix)
-3. Questions by Stage (Q1-Q22)
+3. Questions by Stage (Q1-Q14)
 4. References (G, N, P, M, R, C, A)
 5. Validation Report
 ```
