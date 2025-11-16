@@ -1,6 +1,6 @@
 # Mechanism-Focused PM Interview Q&A Generator
 
-Generate 25–30 mechanism-analysis questions testing senior+ PM (5-15 yrs) causal reasoning and systemic thinking.
+Generate 18 mechanism-analysis questions testing senior+ PM (5-15 yrs) causal reasoning and systemic thinking.
 
 ## I. Foundation
 
@@ -20,7 +20,7 @@ Generate 25–30 mechanism-analysis questions testing senior+ PM (5-15 yrs) caus
 
 ## II. Requirements & Gates
 
-**Floors**: Q&A: 25–30 (20%F/40%I/40%A±5%) | 150–300 words | ≥2 causal/feedback each | Citations: ≥70%≥1, ≥30%≥2 | Mechanisms (MECE): Growth(5–6), Retention(4–5), Monetization(4–5), User Behavior(5–6), Market(4–5), System(4–5) | Refs: G≥10, T≥5, L≥6(≥2 ZH), A≥12 | Visuals: ≥1 diagram+table/type (12 min) | Scaling: >30 Q&A→1.5× refs
+**Floors**: QQ&A: 25–30 (20%F/40%I/40%A±5%)A: 18 (20%F/40%I/40%A±5%) | 150–300 words | ≥2 causal/feedback each | Citations: ≥70%≥1, ≥30%≥2 | Mechanisms (MECE): Growth(3), Retention(3), Monetization(3), User Behavior(3), Market(3), System(3) | Refs: G≥10, T≥5, L≥6(≥2 ZH), A≥12 | Visuals: ≥1 diagram+table/type (12 min) | 
 
 **Citations**: APA 7th+tag: `Author, A. (Year). *Title*. Publisher. [EN]` | Inline: `[Ref: G#/T#/L#/A#]` | Lang: EN 50–70%, ZH 20–40%, Other 5–15% | Types: ≥3 (Frameworks/Research/Cases/Tools); no type >25%
 
@@ -35,8 +35,8 @@ Generate 25–30 mechanism-analysis questions testing senior+ PM (5-15 yrs) caus
 ## III. Execution
 
 ### Step 1: Plan
-Distribute 25–30 across 6 types (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F, ≥1I, ≥1A.
-**Example (30)**: Growth(5), Retention(5), Monetization(5), User Behavior(6), Market(4), System(5) = 6F/12I/12A
+Distribute 18 across 6 types (20%F/40%I/40%A). Each: 3 QEach: 4–6 Q&A with ≥1F, ≥1I, ≥1A.A with 1F, 1I, 1A.
+**Example (18)**: Growth(3), Retention(3), Monetization(3), User Behavior(3), Market(3), System(3) = 4F/7I/7A
 
 ### Step 2: Build References (run Gates 1–6 after)
 
@@ -93,7 +93,7 @@ Distribute 25–30 across 6 types (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F, 
 
 | # | Check | Criteria | Measure |
 |---|-------|----------|---------|
-| 1 | Floors | G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40%±5 | Count |
+| 1 | Floors | G≥10, T≥5, L≥6, A≥12, Q:18, 20/40/40%±5 | Count |
 | 2 | Citations | ≥70%≥1, ≥30%≥2 | Calc % |
 | 3 | Lang | EN:50-70%, ZH:20-40%, Other:5-15% | Calc % |
 | 4 | Recency | ≥50% <3yrs (≥70% AI/platform) | Check dates |
@@ -131,17 +131,17 @@ Fail ≥2 = rewrite.
 
 **TOC**: 1. Overview | 2. Q&A by Type (6) | 3. Refs (G/T/L/A) | 4. Validation
 
-**Overview**: Total: [25–30] | Difficulty: [X]F([Y]%)/[X]I([Y]%)/[X]A([Y]%) | Coverage: 6 types (MECE)
+**Overview**: Total: [18] | Difficulty: [X]F([Y]%)/[X]I([Y]%)/[X]A([Y]%) | Coverage: 6 types (MECE)
 
 | # | Type | Range | Count | Mix | Artifacts |
 |---|------|-------|-------|-----|-----------|
-| 1 | Growth | Q1–5 | 5 | 1F/2I/2A | 1 diagram+table |
-| 2 | Retention | Q6–10 | 5 | 1F/2I/2A | 1 diagram+table |
-| 3 | Monetization | Q11–15 | 5 | 1F/2I/2A | 1 diagram+table |
-| 4 | User Behavior | Q16–21 | 6 | 1F/2I/3A | 1 diagram+table |
-| 5 | Market | Q22–25 | 4 | 1F/2I/1A | 1 diagram+table |
-| 6 | System | Q26–30 | 5 | 1F/2I/2A | 1 diagram+table |
-| | **Total** | | **30** | **6F/12I/12A** | **12** |
+| 1 | Growth | Q1–3 | 3 | 1F/1I/1A | 1 diagram+table |
+| 2 | Retention | Q4–6 | 3 | 1F/1I/1A | 1 diagram+table |
+| 3 | Monetization | Q7–9 | 3 | 1F/1I/1A | 1 diagram+table |
+| 4 | User Behavior | Q10–12 | 3 | 1F/1I/1A | 1 diagram+table |
+| 5 | Market | Q13–15 | 3 | 1F/1I/1A | 1 diagram+table |
+| 6 | System | Q16–18 | 3 | 1F/1I/1A | 1 diagram+table |
+| | **Total** | | **18** | **6F/6I/6A** | **12** |
 
 **Q&A**: **Type [#]: [Title]** | **Q[#]**: [Question] | **Difficulty**: [F/I/A] | **Type**: [Area] | **Key Insight**: [1 sent—core causal/feedback] | **Answer** (150–300): Mech [Ref: G#/A#] | ≥2 causal | Flow (input→process→output→feedback) | Quantitative (rates/coef/thresholds) | +/- loops | Leading/lagging | ≥1 [Ref: ID] | Limits/assumptions | **Artifact**: Diagram/chart/flow
 

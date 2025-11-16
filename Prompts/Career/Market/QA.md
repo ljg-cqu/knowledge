@@ -1,10 +1,10 @@
 # Interview Q&A Generator: Marketing Leadership
 
-Generate 25–30 scenario-based Q&A testing judgment for Senior Manager/Director/VP Marketing using evidence-based frameworks.
+Generate 12–15 scenario-based Q&A testing judgment for Senior Manager/Director/VP Marketing using evidence-based frameworks.
 
 **Scope**: B2B/B2C, 6 MECE domains, 5–15yr experience, ambiguous multi-variable decisions  
 **Constraints**: Authoritative sources; theory 20–40%/practice 60–80%; citations, limitations, trade-offs  
-**Output**: 25–30 Q&A (150–300w) | 6 domains (4–6 each) | F:I:A=20:40:40% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% <3yr (≥70% digital)
+**Output**: 12–15 Q&A (150–300w) | 6 domains (2–3 each) | F:I:A=17:42:42% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% <3yr (≥70% digital)
 
 ---
 
@@ -57,9 +57,9 @@ Generate 25–30 scenario-based Q&A testing judgment for Senior Manager/Director
 
 | Level | % | Complexity | Frameworks | Theory:Practice | Min Requirements |
 |-------|---|------------|------------|-----------------|------------------|
-| **F** | 20±5 | Single variable, clear | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
-| **I** | 40±5 | 2–3 variables, ambiguous | 2–3, compare | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
-| **A** | 40±5 | Multi-variate, conflicting | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
+| **F** | 17±5 | Single variable, clear | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
+| **I** | 42±5 | 2–3 variables, ambiguous | 2–3, compare | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
+| **A** | 42±5 | Multi-variate, conflicting | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
 
 ---
 
@@ -104,12 +104,12 @@ Generate 25–30 scenario-based Q&A testing judgment for Senior Manager/Director
 
 ## Process
 
-1. **Topic Planning**: 5–6 domains | 4–6 Q&A each (25–30 total) | F:I:A=20:40:40 (±5pp)
+1. **Topic Planning**: 6 domains | 2–3 Q&A each (12–15 total) | F:I:A=17:42:42 (±5pp) | Prioritize high-impact scenarios
 2. **Reference Collection** (BEFORE Q&A): G#≥10, T#≥5, L#≥6, A#≥12 | Verify mix, recency, diversity, accessibility
 3. **Q&A Generation**:
    - **Questions**: Scenario-based ("How would you...", "You observe..."), single ask, test judgment ≥70%, specific constraints
    - **Answers**: Follow structure | Cite [Ref: ID] | Logic chains | Alternatives + "when NOT"
-   - **Checkpoint per 5**: Word count, citations, insights, limitations, balance
+   - **Checkpoint per 3**: Word count, citations, insights, limitations, balance
 4. **Artifacts**: Per domain ≥1 diagram + ≥1 table
 5. **References**: G#: Term, definition, use | T#: Name, pricing, users, integrations, update, URL | L#: Author, year, title, topics | A#: APA 7th + DOI + [lang]
 6. **Validation**: 18-check ALL PASS | FAIL → fix → re-validate
@@ -121,7 +121,7 @@ Generate 25–30 scenario-based Q&A testing judgment for Senior Manager/Director
 | # | Check | Criteria |
 |---|-------|----------|
 | 1 | Ref counts | G≥10, T≥5, L≥6, A≥12 |
-| 2 | Q&A counts | 25–30, F:I:A 20:40:40 (±5pp) |
+| 2 | Q&A counts | 12–15, F:I:A 17:42:42 (±5pp) |
 | 3 | Citations | ≥70% ≥1 [Ref], ≥30% ≥2 |
 | 4 | Language | EN 50–70%, ZH 20–40%, Other 5–15% |
 | 5 | Recency | ≥50% <3yr (≥70% digital) |

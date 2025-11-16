@@ -1,6 +1,8 @@
 # Causality Analysis Interview Generator
 
-Generate 30-35 interview Q&A pairs testing causal reasoning across the software lifecycle, covering technical, business, market, and regulatory dimensions. Trace multi-level causal chains from root causes to ultimate outcomes.
+Generate **24 Q&As** (minimum viable) testing causal reasoning across the software lifecycle, covering technical, business, market, and regulatory dimensions. Trace multi-level causal chains from root causes to ultimate outcomes.
+
+**Formula**: 8 phases × 3 Q&As = absolute minimum for MECE coverage without blind spots
 
 ## Requirements
 
@@ -11,7 +13,7 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 
 ### Output Specifications
 **Format**: 150-350 words/answer with Mermaid diagrams, cause-effect matrices, quantified impacts, APA 7th [EN]/[ZH]
-**Quantity**: 30-35 Q&As; Difficulty: 20% F (6-7), 40% I (12-14), 40% A (12-14)
+**Quantity**: 24 Q&As; Difficulty: 20% F (5), 40% I (10), 40% A (9)
 **Coverage**: MECE across 8 Lifecycle × 5 Causality Dimensions (≥1 Q&A per major combo)
   - **Lifecycle**: Requirements, Architecture, Development, Testing, Deployment, Operations, Maintenance, Evolution
   - **Dimensions**: Technical, Business/Market, Regulatory, Cross-Domain, Emergent
@@ -127,11 +129,12 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 
 ## References & Quality
 
-### Reference Minimums (scale for 30-35 Q&As)
-- **≥25 Glossary**: Root Cause, Causal Chain, Causal Strength, Correlation vs Causation, Confounding/Mediating/Moderating Variables, Feedback Loops, CLD, Necessity/Sufficiency, Counterfactual, INUS Condition, Path Analysis, SEM, Granger Causality, Instrumental Variable, β, R², Interaction Effect, Time Lag, Compound Effect, Tipping Point, Conway's Law, Network Effect, Technical Debt (with formulas/quantification)
-- **≥12 Tools**: Diagramming (Lucidchart, Mermaid, Vensim, InsightMaker), Statistical (R, Python DoWhy/CausalML, SPSS), RCA (Sologic, TapRooT), Mapping (Miro, ImpactMapper), BI (Tableau, Looker), A/B (Optimizely, LaunchDarkly). Include: purpose, price, update ≤18mo, dimension support
-- **≥18 Literature**: Causality (Pearl 2009, Book of Why 2018), Systems (Senge 1990, Meadows 2008, Sterman 2000), Inference (Angrist & Pischke 2009, Imbens & Rubin 2015), RCA (Ohno 1988, Ishikawa 1985), Decision (Kahneman 2011, Klein 2007), Software (Goldratt 1984, Adzic 2012, Kim 2013, Richardson 2018, Kleppmann 2017), Org (Conway 1968, Team Topologies 2019)
-- **≥35 Citations**: APA 7th [EN]/[ZH]; DOI/URL; academic + case studies + empirical
+### Reference Minimums
+
+- **≥20 Glossary**: Core causality terms with formulas/quantification (Root Cause, Causal Chain, Causal Strength, Correlation vs Causation, Confounding/Mediating/Moderating Variables, Feedback Loops, CLD, Necessity/Sufficiency, Counterfactual, β, R², Interaction Effect, Time Lag, Compound Effect, Tipping Point, Conway's Law, Network Effect, Technical Debt)
+- **≥10 Tools**: Essential diagramming (Mermaid, Vensim), statistical (DoWhy, SPSS), RCA (TapRooT), mapping (Miro), BI (Tableau). Include: purpose, price, update ≤18mo, dimension support
+- **≥15 Literature**: Key causality (Pearl 2009), systems (Senge 1990, Meadows 2008), decision (Kahneman 2011), software (Goldratt 1984, Kleppmann 2017), org (Conway 1968)
+- **≥25 Citations**: APA 7th [EN]/[ZH]; DOI/URL; balanced academic + case studies + empirical
 
 ### Quality Gates (all must PASS)
 
@@ -152,16 +155,17 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 | **Diversity** | ≥4 source types (academic papers, books, case studies, empirical research), none >35% | Count by type |
 | **Temporal Causality** | ≥40% Q&As analyze time-delayed effects, compound impacts, or accumulation | Review Q&As |
 | **Stakeholder Perspectives** | ≥60% Q&As show ≥2 stakeholder viewpoints on the same causal chain | Review Q&As |
-| **Causality Tools** | ≥12 modern tools with purpose, pricing, update date, causality dimension support | Check tools section |
+| **Causality Tools** | ≥10 modern tools with purpose, pricing, update date, dimension support | Check tools section |
 | **Link Accessibility** | 100% links accessible or archived (DOI/Wayback) | Verify all links |
 
 ## Workflow
 
 ### 1. Plan & Build References
-**Topic Clusters** (8 lifecycle, 30-35 Q&As, ≥3/phase, 20/40/40 F/I/A):
-1. Requirements (4-5), 2. Architecture (4-5), 3. Development (4-5), 4. Testing (5-6), 5. Deployment (4-5), 6. Operations (4-5), 7. Maintenance (3-4), 8. Evolution (3-4)
+**Topic Clusters** (8 lifecycle, 24 Q&As, ≥3/phase, 20/40/40 F/I/A):
 
-**References BEFORE Q&As**: Glossary (≥25) → Tools (≥12) → Literature (≥18) → Citations (≥35). Use IDs: G#, T#, L#, A#. Verify: unique, recent (≥60% <5yr theory, ≥80% tools ≤18mo), diverse (≥4 types), accessible
+Requirements (3), Architecture (3), Development (3), Testing (3), Deployment (3), Operations (3), Maintenance (3), Evolution (3)
+
+**References BEFORE Q&As**: Glossary (≥20) → Tools (≥10) → Literature (≥15) → Citations (≥25). Use IDs: G#, T#, L#, A#. Verify: unique, recent (≥60% <5yr theory, ≥80% tools ≤18mo), diverse (≥4 types), accessible
 
 ### 2. Write Q&As
 **Per answer (150-350 words)**: Include all 10 mandatory elements (see above). **Visuals per cluster**: ≥1 diagram, ≥1 matrix, ≥1 impact table, ≥1 counterfactual. **Check every 5 Q&As**: Verify gates, dimensions covered, chain depth ≥4 levels, 100% quantified
@@ -176,25 +180,25 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 
 ```markdown
 ## Contents
-- [Coverage Matrix](#coverage-matrix): 8 phases × 5 causality dimensions = 40 cells, ≥3 Q&As per phase, ≥4 per dimension, 30-35 total
+- [Coverage Matrix](#coverage-matrix): 8 phases × 5 causality dimensions = 40 cells, 3 Q&As per phase, ≥4 per dimension, 24 total
 - [Topic Clusters](#topic-clusters): 8 lifecycle-aligned (Requirements & Discovery → Evolution & Governance)
-- [Q&A by Cluster](#qa-sections): 30-35 Q&As with mandatory 10 elements
-- [References](#references): G# (≥25), T# (≥12), L# (≥18), A# (≥35)
+- [Q&A by Cluster](#qa-sections): 24 Q&As with mandatory 10 elements
+- [References](#references): G# (≥20), T# (≥10), L# (≥15), A# (≥25)
 - [Validation](#validation-results): 17 gates, all PASS
 
 ## Coverage Matrix
 
 | Phase | Technical/System/Ecosystem | Business/Market | Regulatory/Compliance | Cross-Domain | Emergent | Total |
 |-------|---------------------------|----------------|----------------------|--------------|----------|-------|
-| Requirements & Discovery | ✓ | ✓ | ✓ | ✓ | ✓ | 4-5 |
-| Architecture & Design | ✓ | ✓ | ✓ | ✓ | ✓ | 4-5 |
-| Development | ✓ | ✓ | ✓ | ✓ | ✓ | 4-5 |
-| Testing & Quality | ✓ | ✓ | ✓ | ✓ | ✓ | 5-6 |
-| Deployment & Release | ✓ | ✓ | ✓ | ✓ | ✓ | 4-5 |
-| Operations & Observability | ✓ | ✓ | ✓ | ✓ | ✓ | 4-5 |
-| Maintenance & Support | ✓ | ✓ | ✓ | ✓ | ✓ | 3-4 |
-| Evolution & Governance | ✓ | ✓ | ✓ | ✓ | ✓ | 3-4 |
-| **Total** | **≥4** | **≥4** | **≥4** | **≥4** | **≥4** | **30-35** |
+| Requirements & Discovery | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Architecture & Design | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Development | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Testing & Quality | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Deployment & Release | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Operations & Observability | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Maintenance & Support | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| Evolution & Governance | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
+| **Total** | **≥4** | **≥4** | **≥4** | **≥4** | **≥4** | **24** |
 
 ## Topic 1: [Cluster Name - Lifecycle Phase]
 
@@ -209,7 +213,7 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 
 ## References
 
-### Glossary (≥25)
+### Glossary (≥20)
 **G#. Term**: Definition. Causal relationships. Formula/Quantification. Use case. Distinctions. [EN/ZH]
 
 **Examples**:
@@ -217,7 +221,7 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 **G2. Causal Strength**: Effect magnitude. β (regression), r (correlation), R² (variance). Formula: β = ΔY/ΔX. β=0.8 (strong), 0.5 (medium), 0.2 (weak). [EN]
 **G3. Confounding Variable**: Factor causing spurious X-Y association. Z→X and Z→Y creates false X→Y. Control: randomization, stratification, regression. vs. Mediating (X→Z→Y). [EN]
 
-### Tools (≥12)
+### Tools (≥10)
 **T#. Name** (Category): Purpose. Dimensions. Price. Updated. Integrations. Pros/Cons. URL. [EN/ZH]
 
 **Examples**:
@@ -225,7 +229,7 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 **T2. DoWhy** (Inference): Causal reasoning, counterfactuals. Technical, Business. Apache 2.0. 2024-09. Pandas, NumPy. Pros: MS-backed, ML integration. Cons: Stats knowledge needed. https://github.com/py-why/dowhy [EN]
 **T3. Miro** (Mapping): Collaborative visualization. Business, Cross-domain. $8-16/user/mo. 2024-11. Jira, Slack. Pros: Easy collab. Cons: Not analytical. https://miro.com [EN]
 
-### Literature (≥18)
+### Literature (≥15)
 **L#. Author(s). (Year). *Title*. Publisher.** Frameworks. Key chapters. [EN/ZH]
 
 **Examples**:
@@ -233,7 +237,7 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 **L2. Senge, P. (1990). *The Fifth Discipline*. Doubleday.** Systems thinking, feedback loops, CLD. Ch 4-6. [EN]
 **L3. Kahneman, D. (2011). *Thinking, Fast and Slow*. FSG.** Causal reasoning biases, pre-mortem. Ch 19, 24. [EN]
 
-### Citations (≥35)
+### Citations (≥25)
 **A#. Author. (Year). *Title*. Source. Focus. DOI/URL. [EN/ZH]**
 
 **Examples**:
@@ -245,23 +249,23 @@ Generate 30-35 interview Q&A pairs testing causal reasoning across the software 
 
 | Gate | Requirement | Status | Evidence |
 |------|-------------|--------|----------|
-| Lifecycle | 8 phases, ≥3 each | ✅ PASS | Req=4, Arch=5, Dev=4, Test=6, Deploy=4, Ops=5, Maint=3, Evol=4 |
+| Lifecycle | 8 phases, 3 each | ✅ PASS | Req=3, Arch=3, Dev=3, Test=3, Deploy=3, Ops=3, Maint=3, Evol=3 |
 | Stakeholder | ≥8/10 roles, ≥2 each | ✅ PASS | BA=3, PM=4, Arch=5, Dev=4, QA=4, DevOps=3, Sec=2, Data=3, SRE=4, Lead=3 |
-| Causality Dimensions | 5 dimensions, ≥4 each | ✅ PASS | Technical=8, Business=7, Regulatory=5, Cross-Domain=6, Emergent=5 |
-| Difficulty | 20/40/40 ±5% | ✅ PASS | 7F/14I/14A = 20%/40%/40% |
-| Causal Chain Depth | ≥4 levels, 100% | ✅ PASS | 35/35 = 100%, avg depth 5.2 levels |
-| Quantified Relationships | 100% have %, β, R² | ✅ PASS | 35/35 = 100% quantified |
-| Multi-Factor Analysis | ≥70% analyze ≥2 factors | ✅ PASS | 27/35 = 77% multi-factor |
-| Counterfactual Scenarios | ≥50% have what-if analysis | ✅ PASS | 19/35 = 54% counterfactual |
-| Trade-offs & Alternatives | 100% acknowledge | ✅ PASS | 35/35 = 100% |
+| Causality Dimensions | 5 dimensions, ≥4 each | ✅ PASS | Technical=5, Business=5, Regulatory=4, Cross-Domain=5, Emergent=5 |
+| Difficulty | 20/40/40 ±5% | ✅ PASS | 5F/10I/9A = 21%/42%/37% |
+| Causal Chain Depth | ≥4 levels, 100% | ✅ PASS | 24/24 = 100%, avg depth 5.2 levels |
+| Quantified Relationships | 100% have %, β, R² | ✅ PASS | 24/24 = 100% quantified |
+| Multi-Factor Analysis | ≥70% analyze ≥2 factors | ✅ PASS | 17/24 = 71% multi-factor |
+| Counterfactual Scenarios | ≥50% have what-if analysis | ✅ PASS | 12/24 = 50% counterfactual |
+| Trade-offs & Alternatives | 100% acknowledge | ✅ PASS | 24/24 = 100% |
 | Citations | ≥75% ≥1, ≥40% ≥2, ≥20% academic | ✅ PASS | 83% ≥1, 46% ≥2, 26% academic |
-| Cross-refs | 100% [Ref: ID] resolve | ✅ PASS | G1-G27, T1-T14, L1-L20, A1-A38 |
+| Cross-refs | 100% [Ref: ID] resolve | ✅ PASS | G1-G20, T1-T10, L1-L15, A1-A25 |
 | Recency | ≥60% <5yr, ≥80% tools ≤18mo | ✅ PASS | 71% <5yr, 93% tools ≤18mo |
 | Diversity | ≥4 types, none >35% | ✅ PASS | Academic 32%, Books 28%, Case studies 24%, Empirical 16% |
-| Temporal Causality | ≥40% analyze time-delayed | ✅ PASS | 15/35 = 43% temporal |
-| Stakeholder Perspectives | ≥60% show ≥2 viewpoints | ✅ PASS | 23/35 = 66% multi-stakeholder |
-| Causality Tools | ≥12 with dimension support | ✅ PASS | 14: CLD=3, Statistical=4, RCA=2, Mapping=2, BI=2, A/B=1 |
-| Links | 100% accessible/archived | ✅ PASS | 52/52 verified |
+| Temporal Causality | ≥40% analyze time-delayed | ✅ PASS | 10/24 = 42% temporal |
+| Stakeholder Perspectives | ≥60% show ≥2 viewpoints | ✅ PASS | 15/24 = 63% multi-stakeholder |
+| Causality Tools | ≥10 with dimension support | ✅ PASS | 10: CLD=2, Statistical=3, RCA=2, Mapping=2, BI=1 |
+| Links | 100% accessible/archived | ✅ PASS | All verified |
 ```
 
 ## Example Format

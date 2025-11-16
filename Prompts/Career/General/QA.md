@@ -2,17 +2,19 @@
 
 ## Purpose & Scope
 
-Generate 25-30 discriminative technical interview Q&As for senior/architect/expert roles with evidence-based, multi-dimensional analysis.
+Generate 12-15 discriminative technical interview Q&As for senior/architect/expert roles with evidence-based, high-impact analysis.
+
+**Design Philosophy**: Maximum signal, minimum noise - focus on high-impact discriminative questions (>20% applicability) over comprehensive coverage
 
 **Scope**: User-specified technical domain | Senior-level assessment | Multi-source validation
-**Constraints**: 25-30 Q&As | 150-300 words/answer | Multi-language sources
-**Assumptions**: Specific domain provided | ≥20 credible sources exist | Target: 5+ years experience
+**Constraints**: 12-15 Q&As | 150-300 words/answer | Multi-language sources
+**Assumptions**: Specific domain provided | ≥10 credible sources exist | Target: 5+ years experience
 
 ## Key Definitions
 
 - **≥** = min | **→** = implies | **✓/✗** = pass/fail
 - **MECE**: Mutually Exclusive, Collectively Exhaustive
-- **Cluster**: 4-6 related Q&As per technical area
+- **Cluster**: 3-5 related Q&As per high-impact technical area
 - **Difficulty**: Foundational (0-3yr), Intermediate (3-7yr), Advanced (7+yr)
 - **Roles**: Senior (5+yr, mentors), Architect (system design), Expert (thought leader)
 - **Contentious**: ≥2 peer-reviewed sources with conflicting conclusions
@@ -21,11 +23,11 @@ Generate 25-30 discriminative technical interview Q&As for senior/architect/expe
 
 ## Core Requirements
 
-**Target**: 25-30 Q&As | 150-300 words/answer | 20/40/40% difficulty split
-**Citations**: ≥12 APA (~60% EN, ~30% ZH, ~10% other) | ≥70% answers cited
-**References**: ≥10 glossary | ≥5 codebases | ≥6 literature
+**Target**: 12-15 Q&As | 150-300 words/answer | 20/40/40% difficulty split
+**Citations**: ≥6 APA (~60% EN, ~30% ZH, ~10% other) | ≥70% answers cited
+**References**: ≥5 glossary | ≥3 codebases | ≥3 literature
 **Quality**: ≥50% <3yr (≥70% AI/security) | ≥3 types | Max 25% single source
-**Per Cluster**: ≥1 diagram + ≥1 table | ≥2 authoritative + ≥1 codebase
+**Per Cluster**: ≥1 diagram or table | ≥2 authoritative + ≥1 codebase
 
 ## Content Principles
 
@@ -39,13 +41,13 @@ Generate 25-30 discriminative technical interview Q&As for senior/architect/expe
 ## Execution Workflow
 
 ### 1. Topic Planning
-- Identify 4-6 MECE clusters; allocate 4-6 Q&As each (total 25-30)
+- Identify 3-4 high-impact clusters; allocate 3-5 Q&As each (total 12-15)
 - Assign difficulty: 20% Foundational / 40% Intermediate / 40% Advanced
-- Verify ≥20 credible sources exist; adjust scope if insufficient
-**Checkpoint**: 25-30 total ✓ | 20/40/40 ratio ✓ | Sources sufficient ✓
+- Verify ≥10 credible sources exist; adjust scope if insufficient
+**Checkpoint**: 12-15 total ✓ | 20/40/40 ratio ✓ | Sources sufficient ✓
 
 ### 2. Reference Collection
-- Collect: ≥10 glossary, ≥5 codebases, ≥6 literature, ≥12 APA
+- Collect: ≥5 glossary, ≥3 codebases, ≥3 literature, ≥6 APA
 - Tag: Language ([EN]/[ZH]/Other), year, type (1-4)
 - Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
 **Checkpoint**: Floors met ✓ | EN 50-70%, ZH 20-40%, Other 5-15% ✓ | ≥50% <3yr ✓ | ≥3 types, max 25% ✓
@@ -60,9 +62,9 @@ Generate 25-30 discriminative technical interview Q&As for senior/architect/expe
 **Checkpoint**: 150-300 words ✓ | ≥70% have ≥1 citation, ≥30% have ≥2 ✓ | Insights concrete ✓
 
 ### 4. Supporting Artifacts
-- Create ≥1 diagram + ≥1 table per cluster
+- Create ≥1 diagram or table per cluster
 - Illustrate concepts, comparisons, workflows
-**Checkpoint**: Each cluster has ≥1 diagram + ≥1 table ✓
+**Checkpoint**: Each cluster has ≥1 diagram or table ✓
 
 ### 5. Reference Compilation
 - Populate all sections with complete fields
@@ -73,9 +75,9 @@ Generate 25-30 discriminative technical interview Q&As for senior/architect/expe
 ### 6. Validation
 
 **Validation Tiers**:
-- **Express** (Steps 1,2,6,7): <20 Q&As, time-constrained, drafts
-- **Standard** (Steps 1,2,3,5,6,7,8): 20-30 Q&As (recommended)
-- **Thorough** (All 11): Regulated domains, >30 Q&As, production
+- **Express** (Steps 1,2,6,7): <10 Q&As, time-constrained, drafts
+- **Standard** (Steps 1,2,3,5,6,7,8): 12-15 Q&As (recommended)
+- **Thorough** (All 11): Regulated domains, >15 Q&As, production
 
 **11-Step Checklist**:
 1. **Count Audit**: Floors + 20/40/40 ratio
@@ -200,8 +202,8 @@ Smith, J., & Wang, L. (2024). Blockchain consensus: Comparative analysis.
 ## Scaling & Exceptions
 
 **Scaling**:
-- **Large** (>30 Q&As/regulated): 1.5× floors (round up)
-- **Constrained** (limited time/sources): 0.8× minimum
+- **Large** (>15 Q&As/regulated): 1.5× floors (round up)
+- **Constrained** (limited time/sources): 0.6× minimum (8-10 Q&As)
 
 **Priority**: Quality > floor counts. Reduce scope over compromising quality.
 
@@ -213,7 +215,7 @@ Smith, J., & Wang, L. (2024). Blockchain consensus: Comparative analysis.
 
 ## Progress Reporting
 
-**Template**: `Cluster 3/5 | 15/25 Q&As | 23 citations | Validation: Step 2 pending`
+**Template**: `Cluster 2/3 | 8/12 Q&As | 12 citations | Validation: Step 2 pending`
 
 **Transparency**:
 - State assumptions/constraints upfront

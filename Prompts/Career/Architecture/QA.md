@@ -1,12 +1,13 @@
 # Software Architecture Interview Q&A Generator
 
-Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrating architecture-to-code translation.
+Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrating architecture-to-code translation.
 
 ## Scope & Success Criteria
 
 **Audience**: Senior developers (5+ years), architects, technical experts  
-**Output**: 25-30 Q&As across 6 MECE dimensions with production code, quantified trade-offs, ≥2 alternatives, citations  
-**Success**: 19/19 validation checks PASS
+**Output**: 12-15 Q&As across 6 MECE dimensions with production code, quantified trade-offs, ≥2 alternatives, citations  
+**Success**: 19/19 validation checks PASS  
+**Philosophy**: Minimal viable coverage for informed decisions; time-optimized (50% reduction from 25-30)
 
 **Assumptions**: Distributed systems (>10K rps, >1TB data), idiomatic Go/Java/Python/TypeScript, cloud-native context, foundational knowledge (layered, MVC, REST)
 
@@ -18,14 +19,14 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Total Count** | 25-30 |
-| **Difficulty Mix** | 20% Foundational (core concepts) / 40% Intermediate (trade-offs) / 40% Advanced (optimization) |
+| **Total Count** | 12-15 |
+| **Difficulty Mix** | 50% Foundational (core concepts) / 50% Advanced (optimization + trade-offs) |
 | **Answer Length** | 150-300 words (code excluded) |
 | **Components** | Pattern → rationale → code → trade-offs → metrics |
-| **Citations** | ≥1 each; ≥2 for complex |
-| **Per Cluster** | Diagram + code + comparison table + metric formula |
+| **Citations** | ≥1 each; ≥2 for advanced |
+| **Per Dimension** | 1 diagram + 1 code example (shared across 2 Q&As) |
 
-## Coverage (6 Dimensions, 4-6 Q&As Each)
+## Coverage (6 Dimensions, 2-2.5 Q&As Each)
 
 1. **Structural**: Decomposition, modularity, coupling, boundaries (hexagonal, layers)
 2. **Behavioral**: Events, state, orchestration, error handling (saga, circuit breaker)
@@ -67,10 +68,10 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 | Component | Min | Requirements |
 |-----------|-----|--------------|
-| **Glossary** | ≥10 | Terms with relationships (e.g., "Hexagonal: isolation via ports/adapters. Related: DI") |
-| **Tools** | ≥5 | URL (valid), update ≤18mo, pricing, adoption metrics |
-| **Literature** | ≥6 | Authoritative books (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
-| **Citations** | ≥12 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%) |
+| **Glossary** | ≥5 | Terms with relationships (e.g., "Hexagonal: isolation via ports/adapters. Related: DI") |
+| **Tools** | ≥3 | URL (valid), update ≤18mo, pricing, adoption metrics |
+| **Literature** | ≥3 | Authoritative books (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
+| **Citations** | ≥8 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%) |
 
 **Quality**: Recency (≥50% last 3yr, ≥70% cloud); Diversity (≥3 types, <25% single source); Credibility (peer-reviewed, authoritative); 100% valid links
 
@@ -80,19 +81,19 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## 1. Plan Structure
 
-**Actions**: Select 5-6 clusters across 6 dimensions → Allocate 4-6 Q&As/cluster (25-30 total) → Assign 1F/2I/2A per cluster
+**Actions**: Select 6 dimensions → Allocate 2-2.5 Q&As/dimension (12-15 total) → Assign 1F + 1A per dimension (skip intermediate)
 
-**Checks**: Total 25-30; 20/40/40% F/I/A (±5%); all 6 dimensions; no overlap
+**Checks**: Total 12-15; 50/50% F/A (±5%); all 6 dimensions; no overlap
 
 ## 2. Build References
 
-**Actions**: Glossary (≥10 terms + relationships) → Tools (≥5: URL, update ≤18mo, pricing, adoption) → Literature (≥6 books + relevance) → Citations (≥12 APA 7th [EN]/[ZH])
+**Actions**: Glossary (≥5 terms + relationships) → Tools (≥3: URL, update ≤18mo, pricing, adoption) → Literature (≥3 books + relevance) → Citations (≥8 APA 7th [EN]/[ZH])
 
-**Checks**: G≥10, T≥5, L≥6, A≥12; 60/30/10% EN/ZH/Other (±10%); ≥50% recency (≥70% cloud); ≥3 types, <25% single; 100% valid URLs
+**Checks**: G≥5, T≥3, L≥3, A≥8; 60/30/10% EN/ZH/Other (±10%); ≥50% recency (≥70% cloud); ≥3 types, <25% single; 100% valid URLs
 
 ## 3. Write Q&As
 
-**Questions**: ≥70% judgment-based ("How would you..." / "When should you..." / "Compare..."); avoid pure recall unless foundational
+**Questions**: ≥80% judgment-based ("How would you..." / "When should you..." / "Compare..."); foundational only if critical for dimension understanding
 
 **Each Answer**: 150-300 words; ≥1 citation (≥2 advanced); Pattern → rationale → code → trade-offs → metrics; 10-30 lines production code; quantified trade-offs; ≥2 alternatives + table; explicit assumptions/limitations
 
@@ -100,22 +101,22 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## 4. Create Artifacts
 
-**Per Cluster**: Mermaid diagram (<120 nodes, type matches dimension) + Code (10-30 lines, error handling) + Comparison table (≥2 alternatives: Approach/Pros/Cons/Use When) + Metric formula (formula + variables + target)
+**Per Dimension**: Mermaid diagram (<120 nodes, type matches dimension) + Code (10-30 lines, error handling) + Comparison table (≥2 alternatives: Approach/Pros/Cons/Use When) + Metric formula (formula + variables + target)
 
-**Checks**: All clusters 4/4; diagrams render; code compiles; tables formatted; formulas valid
+**Checks**: All 6 dimensions 4/4; diagrams render; code compiles; tables formatted; formulas valid
 
 ## 5. Link References
 
 **Actions**: Populate all sections → Extract `[Ref: ID]` from Q&As → Verify all IDs exist → Remove orphans → Validate URLs
 
-**Checks**: G≥10, T≥5, L≥6, A≥12; 100% `[Ref: ID]` resolved; 0 broken links; 60/30/10% EN/ZH/Other; no orphans
+**Checks**: G≥5, T≥3, L≥3, A≥8; 100% `[Ref: ID]` resolved; 0 broken links; 60/30/10% EN/ZH/Other; no orphans
 
 ## 6. Validate (19 Checks)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 (20/40/40%) |
-| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 |
+| 1 | Counts | G≥5, T≥3, L≥3, A≥8, Q=12-15 (50/50%) |
+| 2 | Citations | ≥70% Q&As ≥1; ≥50% ≥2 |
 | 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
 | 4 | Recency | ≥50% last 3yr (≥70% cloud) |
 | 5 | Diversity | ≥3 types; <25% single |
@@ -125,11 +126,11 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 | 9 | Insights | 100% quantified |
 | 10 | Per-topic | ≥2 sources + ≥1 tool |
 | 11 | Traceability | ≥80% arch→code |
-| 12 | Question type | ≥70% judgment |
-| 13 | Artifacts | ≥90% clusters 4/4 |
+| 12 | Question type | ≥80% judgment |
+| 13 | Artifacts | 100% dimensions 4/4 |
 | 14 | Patterns | ≥80% use patterns |
-| 15 | Metrics | ≥60% have metrics |
-| 16 | Code | ≥80% have snippets |
+| 15 | Metrics | ≥70% have metrics |
+| 16 | Code | ≥90% have snippets |
 | 17 | Syntax | 100% valid |
 | 18 | Formulas | 100% valid |
 | 19 | Review | 6/6 criteria (see §7) |
@@ -142,7 +143,7 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 1. **Clarity**: Logical structure; consistent terms; minimal jargon with inline definitions
 2. **Accuracy**: Facts verifiable; code/diagrams valid; metrics sound
-3. **Completeness**: 6 dimensions (4-6 Q&As each); minimums met; 19/19 PASS
+3. **Completeness**: 6 dimensions (2-2.5 Q&As each); minimums met; 19/19 PASS
 4. **Balance**: ≥2 alternatives + table; assumptions/limitations; consensus tagged
 5. **Practicality**: Actionable guidance; production code; measurable outcomes
 6. **Self-Correction**: No redundancy/inconsistencies/gaps/orphans
@@ -161,8 +162,8 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## Topic Areas
 | Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1-Q5 | 5 | 1F/2I/2A |
-[6 dimensions, 25-30 total, 20/40/40% F/I/A]
+| [Title] | [Type] | Q1-Q2 | 2-2.5 | 1F/1A |
+[6 dimensions, 12-15 total, 50/50% F/A]
 
 ---
 
@@ -170,7 +171,7 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 **Overview**: [1-2 sentences]
 
 ### Q1: [How/When/Compare question]
-**Difficulty**: [F/I/A] | **Dimension**: [Type]
+**Difficulty**: [F/A] | **Dimension**: [Type]
 
 **Key Insight**: [Quantified trade-off in one sentence]
 
@@ -181,7 +182,7 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 // 10-30 lines: error handling, logging, idiomatic
 ```
 
-**Diagram** (per cluster):
+**Diagram** (per dimension):
 ```mermaid
 [Type matching dimension, <120 nodes]
 ```
@@ -199,26 +200,26 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## References
 
-### Glossary (≥10)
+### Glossary (≥5)
 **G1. [Term]** [EN/ZH/Other]  
 [Definition]. **Related**: [Terms]
 
-### Tools (≥5)
+### Tools (≥3)
 **T1. [Tool]** [Tag]  
 **Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
 
-### Literature (≥6)
+### Literature (≥3)
 **L1. Author(s). (Year). *Title*. Publisher.** [Tag]  
 **Relevance**: [Why]
 
-### Citations (≥12, APA 7th, 60/30/10%)
+### Citations (≥8, APA 7th, 60/30/10%)
 **A1.** Author(s). (Year). *Title*. Source. [EN]
 
 ---
 
 ## Validation Report
 | # | Check | Target | Result | Status |
-| 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 | G:X, T:Y... | PASS/FAIL |
+| 1 | Counts | G≥5, T≥3, L≥3, A≥8, Q=12-15 | G:X, T:Y... | PASS/FAIL |
 [All 19]
 
 **Overall**: [X/19 PASS - need 19/19]  
@@ -232,39 +233,25 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 **G1. Hexagonal** [EN] – Isolates core via ports/adapters. Enables testability, tech independence. Related: DI  
 **G2. CQRS** [EN] – Separates commands (writes) from queries (reads). Optimizes scalability. Related: Event Sourcing  
 **G3. Event Sourcing** [EN] – Stores state as event log. Enables audit, temporal queries. Related: CQRS  
-**G4. DDD** [EN] – Domain modeling via ubiquitous language, bounded contexts, aggregates. Related: Bounded Context  
-**G5. Bounded Context** [EN] – Explicit model boundary for consistency. Drives decomposition. Related: Context Map  
-**G6. Aggregate** [EN] – Consistency boundary (root + entities/VOs). Enforces invariants. Related: Repository  
-**G7. Repository** [EN] – Data access abstraction for aggregates. Related: Aggregate  
-**G8. Domain Event** [EN] – Immutable fact. Enables decoupling, eventual consistency. Related: Event Sourcing  
-**G9. Saga** [EN] – Coordinates long transactions with compensations. Related: Distributed TX  
-**G10. Circuit Breaker** [EN] – Prevents cascading failures. Opens on error threshold. Related: Bulkhead
+**G4. Saga** [EN] – Coordinates long transactions with compensations. Related: Distributed TX  
+**G5. Circuit Breaker** [EN] – Prevents cascading failures. Opens on error threshold. Related: Bulkhead
 
 ## Tools
 **T1. Mermaid** [EN] – Text-based diagrams (flowchart, sequence, class, ER). GitHub-native. Updated: 2024-10. Free/OSS. https://mermaid.js.org  
 **T2. OpenAPI** [EN] – REST API spec. Codegen, contract testing. Updated: 2024-09. Free/OSS. https://www.openapis.org  
-**T3. JSON Schema** [EN] – JSON validation, docs, codegen. Updated: 2024-08. Free/OSS. https://json-schema.org  
-**T4. Kubernetes** [EN] – Container orchestration. Declarative YAML. Updated: 2024-10. Free/OSS. https://kubernetes.io  
-**T5. ADR** [EN] – Markdown decision log. Traceability. Updated: 2024-06. Free/OSS. https://adr.github.io
+**T3. Kubernetes** [EN] – Container orchestration. Declarative YAML. Updated: 2024-10. Free/OSS. https://kubernetes.io
 
 ## Literature
 **L1. Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley.** – Strategic/tactical modeling, ubiquitous language, bounded contexts  
-**L2. Vernon, V. (2013). *Implementing DDD*. Addison-Wesley.** – Practical context mapping, aggregates, event sourcing  
-**L3. Richardson, C. (2018). *Microservices Patterns*. Manning.** – Decomposition, data, communication patterns with trade-offs  
-**L4. Newman, S. (2021). *Building Microservices* (2nd). O'Reilly.** – Service boundaries, deployment, testing, security  
-**L5. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.** – Distributed systems: replication, partitioning, transactions  
-**L6. Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley.** – Repository, Unit of Work, Service Layer
+**L2. Richardson, C. (2018). *Microservices Patterns*. Manning.** – Decomposition, data, communication patterns with trade-offs  
+**L3. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.** – Distributed systems: replication, partitioning, transactions
 
 ## Citations
 **A1.** Evans, E. (2003). *Domain-driven design*. Addison-Wesley. [EN]  
 **A2.** Richardson, C. (2018). *Microservices patterns*. Manning. [EN]  
 **A3.** 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]  
 **A4.** Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley. [EN]  
-**A5.** Fowler, M. (2002). *Patterns of enterprise application architecture*. Addison-Wesley. [EN]  
-**A6.** Newman, S. (2021). *Building microservices* (2nd). O'Reilly. [EN]  
-**A7.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]  
-**A8.** Hohpe, G., & Woolf, B. (2003). *Enterprise integration patterns*. Addison-Wesley. [EN]  
-**A9.** 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]  
-**A10.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]  
-**A11.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley. [EN]  
-**A12.** Kim, G., et al. (2016). *The DevOps handbook*. IT Revolution. [EN]
+**A5.** Newman, S. (2021). *Building microservices* (2nd). O'Reilly. [EN]  
+**A6.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]  
+**A7.** 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]  
+**A8.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]
