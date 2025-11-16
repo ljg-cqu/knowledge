@@ -1,5 +1,7 @@
 # English Pronunciation Q&A Generation Framework
 
+**When:** Decision-critical pronunciation work (exam prep, high-stakes speaking assessments, curriculum design) where high-quality, citation-based Q&As are needed within 4-6 hours.
+
 ## Scope & Requirements
 
 Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA (General American), RP (Received Pronunciation), and other accents (Indian, Australian, Canadian) with IPA-based phonetic analysis.
@@ -7,6 +9,7 @@ Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA
 **Targets**: 30-40 Q&As | 150-300 words/answer | 25/40/35% Basic/Intermediate/Advanced split
 **Citations**: ≥15 refs total (≥8 dictionaries, ≥6 academic, ≥5 guides, ≥3 corpora) | ≥70% Q&As cited | ≥40% recent (<5yr) | ≥3 accent types | Max 20% single source
 **Per Cluster**: 5-7 Q&As | ≥1 IPA table + ≥1 diagram | ≥2 dictionaries + ≥1 academic ref
+**Timebox**: 4-6 hours to generate the full set; 60-90 minutes for a representative learner session.
 
 **Definitions**: MECE (Mutually Exclusive, Collectively Exhaustive) | IPA (International Phonetic Alphabet) | ≥ (minimum) | ✓/✗ (pass/fail)
 
@@ -15,9 +18,10 @@ Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA
 **Coverage**: MECE across vowels, consonants, stress, intonation, connected speech, rhythm, accent comparison
 **Depth**: Articulatory descriptions, common errors, minimal pairs, regional variations, perception vs production
 **Breadth**: Phonetics (articulation), phonology (patterns), perception, production, sociolinguistics (accents)
-**Significance**: High-frequency patterns (>20%); exclude rare allophones (<5%), archaic pronunciations, obscure dialects
+**Significance / Essential Only**: Focus on high-frequency patterns (>20% of everyday speech); exclude rare allophones (<5%), archaic pronunciations, obscure dialects, and long theoretical digressions that do not change teaching or learning decisions
 **Accuracy**: Cross-reference IPA from multiple authoritative dictionaries (Cambridge, Oxford, Merriam-Webster)
 **Neutrality**: Present GA/RP/other as equal variants, not hierarchies; distinguish standard from prestige
+**Exclusions**: No general history of English, full phonological theory, or speculative trends without data; prioritize patterns that materially affect learner outcomes
 
 ## Workflow
 
@@ -32,15 +36,15 @@ Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA
 **Required**: Cambridge, Oxford, Longman, Merriam-Webster dictionaries + ≥1 specialized accent dictionary
 
 ### 3. Generate Q&As
-- Write 150-300 words: IPA transcriptions, articulatory descriptions, minimal pairs, common errors, accent comparisons
+- Write 150-300 words: IPA transcriptions, articulatory descriptions, minimal pairs, accent comparisons
 - Cite ≥1 `[Ref: ID]` for IPA/phonetic claims/accent differences | State concrete Key Insight
-- Frame neutrally; prioritize high-frequency patterns (>20%) | Self-review every 5 Q&As
+- Frame neutrally; prioritize high-frequency patterns (>20%) | Self-review every 5 Q&As: verify claims against sources and flag assumptions or low-confidence areas
 
 ### 4. Create Artifacts
 - Per cluster: ≥1 IPA table (vowel charts, consonant inventories, GA vs RP, minimal pairs) + ≥1 diagram (vocal tract, stress patterns, intonation contours)
 
 ### 5. Compile References
-- Complete all fields with edition/year (dictionaries), DOIs (academic) | Verify all `[Ref: ID]` resolve
+- Complete all fields with edition/year (dictionaries), DOIs (academic) | Verify all `[Ref: ID]` resolve | Mark any unsupported claims as `[Assumption]` and keep them <10% of total content
 
 ### 6. Validate
 
@@ -74,6 +78,8 @@ Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA
 | **Signal** | Tests understanding/articulation, not memorization |
 | **Significance** | High-frequency (>20%); avoids rare (<5%) |
 | **Depth** | Enables discussion of errors, L1 interference, perception vs production |
+| **Trade-offs** | Compares ≥2 accents or practice strategies and makes explicit when each is preferable |
+| **Balance** | Includes contexts where advice changes and avoids over-general "always"/"never" claims |
 | **Realism** | Real-world scenarios; practical application |
 | **Discriminative** | Distinguishes B1 vs B2 vs C1 levels |
 | **Alignment** | Matches learner level |
@@ -93,11 +99,11 @@ Generate 30-40 discriminative pronunciation Q&As for B2-C2 learners comparing GA
 **Answer** (150-300 words):
 - IPA: /phonemic/, [phonetic] with ˈprimary ˌsecondary stress
 - Articulatory descriptions (place, manner, voicing)
-- GA vs RP comparison
-- Minimal pairs/examples
-- Common errors
-- Perception vs production tips
-- Inline citations [Ref: ID]
+- GA vs RP comparison plus at least one other relevant accent where useful
+- Minimal pairs/examples with quantified frequency or exam impact where possible
+- Common errors and when they are acceptable vs meaning-changing
+- Perception vs production tips and ≥2 practice options with clear trade-offs
+- Inline citations [Ref: ID]; flag any assumptions or low-confidence areas
 
 **Key Insight:** [Error Pattern | L1 Interference | Accent Difference]
 

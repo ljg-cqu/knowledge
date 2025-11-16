@@ -2,12 +2,19 @@
 
 Generate 30–50 pronunciation problems with IPA transcriptions, accent comparisons, phonetic analysis, and citations.
 
+Use this when you need exam-style, decision-critical pronunciation practice for intermediate–advanced adult learners of English phonetics/phonology, where accuracy and accent coverage materially affect assessment or learning decisions.
+
 ## Requirements
+
+- **Context**: Intermediate–advanced adult learners; English pronunciation/phonetics short-answer problems.
+- **Scale & timeline**: 30–50 problems per set, usable as a 1–2 week unit in a course or exam prep.
+- **Constraints**: Accent-balanced, citation-backed, IPA-heavy; answers must stay within short-answer scope (no long essays).
 
 | Parameter | Specification |
 |-----------|---------------|
 | **Scope** | 30–50 problems; difficulty 20/40/40 (foundational/intermediate/advanced) |
 | **Types** | IPA transcription, minimal pairs, stress, accent comparison, connected speech, phoneme ID, suprasegmentals |
+| **Focus** | Non-trivial, decision-relevant contrasts (meaning/comprehension/exam-impact); avoid purely mechanical or trivial dictionary lookups |
 | **Answers** | IPA + audio description + 2–4 step phonetic analysis; allow accent variation |
 | **Sources** | ~60% EN, ~30% ZH, ~10% other; APA 7th; textbooks + peer-reviewed + dictionaries |
 | **Grading** | Accept accent variants; partial credit: 70% (phonemes), 50% (placement) |
@@ -42,6 +49,7 @@ Generate 30–50 pronunciation problems with IPA transcriptions, accent comparis
 ### 1. Plan Topics
 - 5–7 clusters: Vowels, Consonants, Suprasegmentals, Connected Speech, Accent Comparison, Problematic Sounds, Phonological Rules
 - 5–9 problems/cluster → 30–50 total; difficulty 20/40/40; balance: ≥40% GA, ≥30% RP, ≥20% other
+- Prefer high-impact patterns (meaning-changing minimal pairs, common learner confusions, assessment-critical contrasts); exclude pure history, abstract theory, and ultra-rare edge cases (<5% frequency) unless they materially affect grading or comprehension.
 - **Verify**: Total 30–50, difficulty ≈20/40/40, accent distribution met
 
 ### 2. Collect References
@@ -63,6 +71,7 @@ Generate 30–50 pronunciation problems with IPA transcriptions, accent comparis
 - Populate: Glossary, Resources, Literature, APA
 - Include: accent coverage, IPA version, audio, update frequency; verify `[Ref: ID]` resolve
 - Check: APA 7th + language tags + DOIs/archived URLs + accent tags
+- Do not invent references; if no authoritative source exists for a pattern, soften claims or tag it explicitly as `[Assumption]` with a brief rationale.
 
 ### 6. Validate (ALL 14 steps)
 
@@ -80,6 +89,8 @@ Generate 30–50 pronunciation problems with IPA transcriptions, accent comparis
 12. **Articulatory Descriptions**: `X of Y have descriptions; Z missing` → Z=0
 13. **Accent Variants**: `X of Y include variants; Z missing` → ≥80% variants
 14. **Learner Errors**: `X of Y document errors; Z missing` → ≥70% L1 interference
+
+During checks 1–14, explicitly self-review phonetic claims against cited sources, flag any assumptions or unresolved conflicts (e.g., dictionary vs corpus vs audio), and, where needed, mark them as `[Assumption]` in the problems instead of silently inventing rules or variants.
 
 **MANDATORY**: If fail → fix → regenerate → re-validate. Proceed only when all pass.
 
@@ -133,7 +144,7 @@ TOC linking to sections and problems (P1, P2, ...). Group by phonetic category.
 **Regional Variants**: [By region/register]
 **Acoustics**: [Formants, duration, pitch when relevant]
 **L1 Interference**: [Expected errors by L1]
-**Alternatives**: [Valid variants, registers]
+**Alternatives & Trade-offs**: [≥2 valid variants or teaching approaches with pros/cons and when each is appropriate; include at least one case where the pattern/solution should NOT be generalized]
 **Grading**: [Rubric + partial credit] | **Common Errors**: [List + reasoning]
 ```
 

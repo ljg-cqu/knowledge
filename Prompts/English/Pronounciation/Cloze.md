@@ -1,12 +1,15 @@
 # Cloze / Fill-in-the-Blank Prompt
 
-Generate 30–50 cloze items for **English Pronunciation** covering phonetics, accent variations (American, British, Indian, Australian), and pronunciation patterns.
+**When:** You need a decision-critical cloze item bank for **English pronunciation** (placement, diagnostic, or exam prep) where item quality, fairness, and recency materially affect learning or assessment decisions.
+
+**Result:** 30–50 validated items with a quantified difficulty mix, multi-accent coverage, and evidence-based rationales you can reuse across courses.
 
 ## Scope
 
-- **Audience**: Intermediate-advanced learners, teachers, accent coaches
-- **Excluded**: Regional dialects (Southern American, Cockney), singing/theatrical speech, historical evolution
-- **Focus**: Standard accents (General American, RP, General Indian/Australian)
+- **Audience**: Intermediate–advanced (CEFR B2–C1) learners, teachers, accent coaches using IPA-based training
+- **Excluded**: Regional dialects (e.g., Southern American, Cockney), singing/theatrical speech, historical evolution, low-stakes drill-only banks
+- **Focus**: Standard accents (General American, RP, General Indian/Australian) in conversational and academic contexts
+- **Constraints**: Text-only items ≤25 words, single blank per sentence (except clearly marked advanced cases), no audio generation in this prompt
 
 ## Success Criteria
 
@@ -18,6 +21,8 @@ Generate 30–50 cloze items for **English Pronunciation** covering phonetics, a
 - **Diversity**: ≥3 types; single<30%
 - **Validation**: 13 checks PASS
 - **Accent Coverage**: ≥8 AmE vs BrE; ≥4 other (IndE/AusE/CanE)
+
+- **Content Focus**: High-impact phonetic patterns (confusable sounds, stress, connected speech); exclude trivia/history/theory unless needed for fairness or to correct high-cost misconceptions
 
 ---
 
@@ -42,7 +47,7 @@ Generate 30–50 cloze items for **English Pronunciation** covering phonetics, a
 - Incorrect: common errors
 - Borderline: edge cases
 
-**6. Rationale**: Evidence-based with ≥1 [Ref: ID] (≥30% items ≥2 distinct types); include definitions, significance, limitations, trade-offs
+**6. Rationale**: Evidence-based with ≥1 [Ref: ID] (≥30% items ≥2 distinct types); include definitions, significance, limitations, alternatives/trade-offs, and clearly flagged assumptions vs evidence
 
 **7. Fairness**:
 - Regional: accent variations
@@ -84,6 +89,7 @@ Generate 30–50 cloze items for **English Pronunciation** covering phonetics, a
 - Define 5-8 MECE clusters: IPA symbols, vowel/consonant sounds, stress/intonation, accent comparisons (AmE/BrE/IndE/AusE), connected speech, pronunciation errors
 - Allocate 4-10 items/cluster (30-50 total), difficulty 20%/45%/35%
 - Document: audience, prerequisites (basic phonetics), exclusions (dialectal sub-varieties), contested areas
+- Prioritize high-frequency, high-confusion patterns; drop edge-case items (<5% usage) unless they carry high pedagogical risk or are required for fairness
 
 **Check**: Items=30-50, distribution≈20%/45%/35% (±5%), MECE clusters, documented assumptions
 
@@ -241,11 +247,12 @@ Execute sequentially. If ANY fails, fix and re-validate ALL.
 - **Precision**: Specific terms; consistent usage; complete arrays
 - **MECE**: Mutually exclusive, collectively exhaustive clusters
 - **Significance**: Prioritize high-value; flag high-risk
+- **Trade-offs**: Where multiple pronunciations or item designs are plausible, compare ≥2 options with costs/benefits
 - **Concision**: Essential only; no redundancy
 - **Accuracy**: Evidence-based with authoritative citations
 - **Logic**: Coherent sequencing; foundational→advanced
-- **Fairness**: Balanced; acknowledge assumptions, limitations, alternatives
-- **Evidence**: Inline citations; ≥70% cited
+- **Fairness**: Balanced; acknowledge assumptions, limitations, alternatives, and when NOT to test via cloze
+- **Evidence**: Inline citations; ≥70% cited; flag low-evidence or speculative claims
 - **Validation**: 13-step protocol; all PASS
 
 ---

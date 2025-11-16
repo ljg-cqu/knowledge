@@ -1,6 +1,8 @@
 # Case Study: English Pronunciation
 
-Generate evidence-based pronunciation assessments comparing American and British accents (plus Indian, Australian variants).
+Generate evidence-based pronunciation assessment scenarios comparing General American (GA), Received Pronunciation (RP), and selected World Englishes (e.g., Indian, Australian).
+
+Use when designing decision-critical pronunciation materials (placement tests, high-stakes courses) where redesigning later would cost >40h and affect ≥2 stakeholders (teachers, learners, test designers) within a 0–6 month horizon.
 
 ---
 
@@ -8,20 +10,24 @@ Generate evidence-based pronunciation assessments comparing American and British
 
 ## Scope
 
-- **Purpose**: Evaluate pronunciation using evidence-backed phonetic reasoning
-- **Context**: 200–400 words per scenario (learner L1, target accent, challenges, resources)
-- **Structure**: 18–22 scenarios across 5 clusters (vowels, consonants, suprasegmentals, connected speech, accent comparison); 3–5 scenarios per cluster
-- **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
-- **Tasks**: 3–4 MECE tasks each (IPA transcription, production, perception, comparison)
-- **Deliverables**: Transcriptions, ≤300-word guides, minimal pair charts, accent matrices, remediation plans
+ - **Purpose**: Evaluate pronunciation using evidence-backed phonetic reasoning
+ - **Usage Conditions**: Decision-critical assessment design (placement, curriculum, exam rubrics) for the next 0–6 months; ≥2 stakeholders (test designers, teachers, learners); non-trivial reversal cost (>40h).
+ - **Context**: 200–400 words per scenario (learner L1, target accent, challenges, resources)
+ - **Structure**: 18–22 scenarios across 5 clusters (vowels, consonants, suprasegmentals, connected speech, accent comparison); 3–5 scenarios per cluster
+ - **Difficulty**: 20% Foundational / 40% Intermediate / 40% Advanced
+ - **Tasks**: 3–4 MECE tasks each (IPA transcription, production, perception, comparison)
+ - **Deliverables**: Transcriptions, ≤300-word guides, minimal pair charts, accent matrices, remediation plans
 
 ## Quality
 
-- **Coverage**: All phonemes (24 consonants, 20+ vowels), suprasegmentals, connected speech; GA/RP comparison mandatory
-- **Content**: Phonetically significant only; acoustic data, formant measurements, minimal pairs from peer-reviewed research
-- **Accuracy**: IPA verified against 2+ authoritative dictionaries; acoustic data from peer-reviewed sources
-- **Logic**: Articulatory descriptions consistent with acoustic evidence; acknowledge variation
-- **Pedagogy**: High-frequency words, L2 error patterns, intelligibility impact, actionable cues, practice drills, self-assessment
+ - **Coverage**: All phonemes (24 consonants, 20+ vowels), suprasegmentals, connected speech; GA/RP comparison mandatory
+ - **Content**: Phonetically significant only; acoustic data, formant measurements, minimal pairs from peer-reviewed research
+ - **Essential Only**: Focus on features that materially affect intelligibility or assessment decisions; omit trivia, exhaustive word lists, and unsourced speculation.
+ - **Accuracy**: IPA verified against 2+ authoritative dictionaries; acoustic data from peer-reviewed sources
+ - **Logic**: Articulatory descriptions consistent with acoustic evidence; acknowledge variation
+ - **Pedagogy**: High-frequency words, L2 error patterns, intelligibility impact, actionable cues, practice drills, self-assessment
+ - **Trade-offs**: For key design choices (accent target, segmental vs suprasegmental focus, technology use), present ≥2 viable options with concise pros/cons and a justified recommendation.
+ - **Balance**: Explicitly note when not to pursue accent change if intelligibility is adequate; highlight World Englishes and learner identity to avoid bias toward a single prestige norm.
 
 ## Citations
 
@@ -32,6 +38,8 @@ Generate evidence-based pronunciation assessments comparing American and British
 **Format**: APA 7th; inline `[Ref: ID]`; 80% EN, 15% ZH, 5% other
 
 **Evidence**: ≥80% scenarios cite ≥1 source; ≥40% cite ≥2
+
+**Assumptions**: Where evidence is limited or controversial, mark claims explicitly as hypotheses and keep them minimal.
 
 **Quality**: ≥40% sources last 5yr (≥60% for pedagogy); IPA verified with 2+ dictionaries; all `[Ref: ID]` resolve
 
@@ -48,6 +56,7 @@ Run all checks; remediate failures until PASS.
 | Diversity | ≥3 types; single ≤25% |
 | IPA Accuracy | All verified 2+ sources |
 | Cross-refs | All `[Ref: ID]` resolve |
+| Self-review | All phonetic/teaching claims cross-checked vs sources; assumptions flagged as such |
 | Context | All 200-400 words |
 | MECE | Tasks exclusive, exhaustive |
 | Rubrics | Complete, sum correct |
@@ -55,6 +64,14 @@ Run all checks; remediate failures until PASS.
 | L2 Focus | All specify error + remediation |
 
 Report format: `Check | Result | PASS/FAIL`. FAIL halts submission.
+
+## Quick Check (30s)
+
+**Before:** ☑ Context (L1, accent, stakes, timeline) ☑ Quantified counts (scenarios, words, error rates) ☑ Citations plan ☑ Essential-only scope
+
+☑ Validation plan ☑ ≥2 alternatives for key choices (accent, remediation, tools) ☑ Balanced GA/RP/World Englishes ☑ Structured output (Contents → Scenario bank → Pedagogical synthesis → References)
+
+**Output:** Accurate | Precise | Cited | Actionable | L2-focused | Balanced (GA/RP/World Englishes) | Recent (last 5–10 years for pedagogy)
 
 ---
 
@@ -95,7 +112,7 @@ Execute sequentially; check before advancing.
 
 ### 7. Validation
 1. Run checklist; document report
-2. Self-review accuracy, coverage, L2 value
+2. Self-review accuracy, coverage, L2 value; verify claims and flag assumptions/limitations.
 3. **Check**: All PASS
 
 ### 8. Final
@@ -163,9 +180,9 @@ Include `## Contents` with links. Use IPA, tables, minimal pairs, formant diagra
 
 ### Accent Choice
 - **Intelligibility**: Core shared features
-- **GA vs RP**: Preference, location, resources
-- **World Englishes**: Non-native norms valid
-- **Sociolinguistic**: Prestige, context, identity
+- **GA vs RP**: Preference, location, resources, trade-offs in intelligibility/perception
+- **World Englishes**: Non-native norms valid; highlight regional and identity considerations
+- **Sociolinguistic**: Prestige, context, identity; specify when not to pursue accent change if it harms identity or offers little intelligibility gain
 
 ### Tech Tools
 - **Apps**: English Pronunciation, Sounds, ELSA Speak

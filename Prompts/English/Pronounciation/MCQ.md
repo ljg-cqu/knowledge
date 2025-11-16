@@ -1,9 +1,9 @@
 # English Pronunciation MCQ Generator
-
-Generate 50-100 expert-level MCQs on English pronunciation: phonetics, phonology, accent variations (American, British, Indian, Australian).
-
+Generate 50-100 expert-level MCQs on English pronunciation (phonetics, phonology, accent variation across American, British, Indian, Australian English) for advanced EFL learners, linguistics students, and teacher training.
+Use the set for 60–90 minute assessments or practice sessions, with a target solving time of 45–90 seconds per item and suitability for computer-based testing and spaced review.
+ 
 ---
-
+ 
 ## I. Configuration
 
 **Subject**: English Pronunciation
@@ -39,7 +39,7 @@ citation_style: APA7
 - **Quality**: Significance, learner relevance, accent neutrality
 
 ### Topic Coverage (MECE Clusters)
-Balanced question distribution across:
+Balanced question distribution across decision-critical topics for intelligibility and assessment. Prioritise clusters 1–3, 5, 7, 8, 10, 12; treat cluster 11 as optional advanced.
 
 1. **Vowel Sounds** (15-20)
    - Monophthongs, diphthongs, triphthongs
@@ -88,13 +88,14 @@ Balanced question distribution across:
     - American vs British transcription
     - Stress/intonation marking
 
-11. **Historical Sound Changes** (3-5, advanced)
-    - Great Vowel Shift legacy
-    - American-British divergence, ongoing changes
+11. **Historical Sound Changes** (0-3, optional advanced)
+    - Great Vowel Shift legacy and its impact on modern spelling–sound mismatches
+    - American-British divergence, ongoing changes (include only if course or exam explicitly covers historical change)
 
 12. **Pronunciation & Intelligibility** (3-5)
     - Critical vs non-critical features
     - Accent prestige/bias, World Englishes
+    - When "native-like" pronunciation is not required; intelligibility and fairness across accents
 
 ### References (Minimums)
 | Type | Count | Purpose |
@@ -126,6 +127,8 @@ Balanced question distribution across:
 
 ## III. Execution Steps
 
+- **Target effort**: 4–6 hours total (≈0–1h planning, 1–2h references, 2–3h questions & distractors, 0.5–1h validation and submission).
+
 ### 1. Planning
 - **Identify** 8-12 MECE clusters
 - **Allocate** questions per cluster ranges
@@ -145,9 +148,10 @@ Balanced question distribution across:
 - **Write**: Stem + 4 options (one correct)
 - **Tag**: Difficulty, accent focus, topic cluster
 - **Include IPA**: Use proper notation
-- **Rationale**: ≥1 `[Ref: ID]`
+- **Rationale**: 1–2 sentences with ≥1 `[Ref: ID]` from authoritative sources where possible.
+- **Flag assumptions**: If no strong source exists, explicitly mark the explanation as an assumption, set `confidence ≤0.7`, and suggest follow-up verification.
 - **Distractors**: Map to errors (L1 interference, spelling pronunciation, accent confusion)
-- **Verify** (every 10): One correct? IPA accurate? Quality distractors? ≥1 citation? Accent-neutral?
+- **Verify** (every 10): One correct? IPA accurate? Quality distractors? ≥1 citation or explicit assumption? Accent-neutral?
 
 ### 4. Distractor Documentation
 - **Document**: Why incorrect + misconception (spelling pronunciation, L1 interference, accent confusion)
@@ -164,6 +168,7 @@ Balanced question distribution across:
 - **Generate** report
 - **Fix** failures; **re-validate** until ALL PASS
 - **Attach** final ALL PASS report
+- **Review claims**: Verify key accent and regional-variation claims against the reference list; flag any remaining assumptions in the report.
 
 ### 7. Submit
 - **Review**: IPA accuracy, accent balance, learner relevance, no bias
@@ -289,7 +294,7 @@ Wells, J. C. (1982). Accents of English (Vols. 1-3). Cambridge University Press.
 | **9. Distractors** | All mapped to learner misconceptions | `Y/X quality (list weak)` |
 | **10. Options** | All unambiguous | `Y/X clear (list vague)` |
 | **11. IPA Accuracy** | All IPA notation verified against standard charts | `Y/X accurate (list errors)` |
-| **12. Accent Neutrality** | No accent bias; American/British both valid | `Y/X neutral (list biased)` |
+| **12. Accent Neutrality** | No accent bias; American, British, and other major accents treated as legitimate; no unjustified prestige claims | `Y/X neutral (list biased)` |
 | **13. Quality** | Significance/Learner Relevance/Accent Neutrality/Logic ≥90% each | `S:X/Y LR:W/Y AN:V/Y Logic:U/Y` |
 
 **Report Template**:

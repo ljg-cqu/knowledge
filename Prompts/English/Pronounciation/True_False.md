@@ -1,10 +1,14 @@
-# True/False Statements
+# True/False Statements: English Pronunciation
 
-Generate 24-40 intermediate/advanced true/false statements on English pronunciation with authoritative evidence.
+**When:** You need 24-40 intermediate/advanced, exam-quality true/false statements on English pronunciation for decision-critical uses (placement, certification, or high-stakes assessment) and must minimize ambiguity and myths. **Result:** ↓30-50% ambiguous items, ↓40-60% unsourced claims, ↑60-80% learning value.
+
+**Task:** Generate 24-40 intermediate/advanced true/false statements on English pronunciation with authoritative evidence.
 
 **Domain**: English pronunciation (AmE, BrE, Indian, other major accents) — phonetics, phonology, suprasegmentals, accent features.
 
 **Requirements**: Objectively verifiable via authoritative linguistic sources. Accent comparisons require clear context and reference points.
+
+**Exclusions (Essential-Only)**: Exclude unsourced opinions, generic study tips, detailed historical phonology that does not affect current pronunciation, edge cases affecting <5% of speakers, and stereotypes or value judgments about accents.
 
 ---
 
@@ -60,10 +64,10 @@ Generate 24-40 intermediate/advanced true/false statements on English pronunciat
 - Assign: Difficulty + Answer (A=True / B=False)
 
 **Rationale** (1-2 sentences):
-- Explain WHY (phonetic principle, not just description)
-- Cite ≥1 `[Ref: ID]` (≥2 for accent comparisons/contested claims)
-- Specify register/regional variation/phonological environment when context-dependent
-- Acknowledge accent variation/sociolinguistic factors/evolving norms when controversial
+- Explain WHY (phonetic principle, not just description) and what the most plausible alternative analysis or misconception would claim.
+- Cite ≥1 `[Ref: ID]` (≥2 for accent comparisons/contested claims) and flag any remaining assumptions or uncertainty.
+- Specify register/regional variation/phonological environment when context-dependent so readers know where the claim does and does not hold.
+- Acknowledge accent variation/sociolinguistic factors/evolving norms when controversial, and state when the statement would be false (boundaries/conditions).
 
 **Verify every 5**: ≤2 lines? No double negatives? Unambiguous? Accent context clear? IPA defined? Rationale cited?
 
@@ -123,12 +127,13 @@ Execute sequentially, fix failures, re-validate until all PASS:
 ### 7. Final Check
 
 - [ ] All 13 checks PASS
-- [ ] Statements challenging yet fair
-- [ ] Rationales provide learning value
-- [ ] References accessible
-- [ ] True/False balance 45-55%
-- [ ] No answer patterns
-- [ ] Output follows format exactly
+- [ ] Context (accent coverage, learner level, stakes) and difficulty mix explicitly stated
+- [ ] Quantities and floors (S, G, AC, L, APA) satisfied and reported
+- [ ] Statements challenging yet fair (target 70-85% accuracy for intended learners)
+- [ ] Rationales provide learning value, cite sources, and flag assumptions/uncertainty where needed
+- [ ] True/False balance 45-55% with no obvious answer patterns
+- [ ] Controversial or nuanced claims include alternatives, counterexamples, and boundaries (when the statement would not hold)
+- [ ] References accessible; output follows format exactly
 
 ---
 
