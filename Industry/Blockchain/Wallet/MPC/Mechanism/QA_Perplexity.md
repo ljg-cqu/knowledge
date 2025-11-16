@@ -53,6 +53,17 @@ Adoption ─(+)→ Infrastructure ─(+)→ Interoperability
 Breaks: Complexity | Cold Start | Fragmentation
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  A[Adoption ↑] --> B[Infrastructure Investment]
+  B --> C[Interoperability & Cross-Chain Support]
+  C --> D[Developer Integrations]
+  D --> E[Utility & UX]
+  E --> A
+  A -. Breaks .- F[Complexity · Cold Start · Fragmentation]
+```
+
 | Stage | Users | CAC ($) | Activation (%) | Viral K | Growth Rate |
 |-------|-------|---------|----------------|---------|-------------|
 | Initial | 0-1K | 50-80 | 45 | 0.1 | 15%/mo |
@@ -99,6 +110,16 @@ K=0.0 |_╱________________________
 Phase 1: Sub-viral | Phase 2: Self-sustaining | Phase 3: Saturation
       
 Drivers: Network Density (+) | Composability (+) | Market Saturation (-)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  P1["1K–5K users\nK = 0.2–0.4\nSub-viral"] --> P2["5K–30K users\nK = 0.8–1.2\nSelf-sustaining"]
+  P2 --> P3["30K–100K users\nK = 0.3–0.6\nSaturation"]
+  P1 -->|Paid acquisition heavy| P2
+  P2 -->|DAO & team invites| P3
+  P3 -->|Market saturation & weaker invites| P3
 ```
 
 | User Range | K-Factor | Invite/User | Conversion (%) | Cycle Time (days) | Growth Regime |
@@ -154,6 +175,26 @@ Institutional MPC DeFi Flywheel
                         Protocol Incentives
                                    
 Balancing Loops: Regulatory Risk (-) | Market Saturation (-)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  subgraph Security_Flywheel
+    S1[Compliance-grade MPC] --> S2[Institutional Onboarding]
+    S2 --> S3[Cross-institution Liquidity]
+    S3 --> S4[Reputation & Case Studies]
+    S4 --> S1
+  end
+
+  subgraph DeFi_Flywheel
+    D1[DeFi Protocol Partnerships] --> D2[Institutional Capital Deployment]
+    D2 --> D3[Yield Generation]
+    D3 --> D4[Protocol Incentives]
+    D4 --> D1
+  end
+
+  S3 -. Liquidity & trust .- D2
 ```
 
 | Flywheel Component | Leading Metric | Target (Month 12) | Target (Month 24) |
@@ -216,6 +257,18 @@ Share Distribution ─→ Periodic Refresh ─→ Cross-Party Coordination
 Break Points: Security Incident | Regulatory Shift | 10× Innovation
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  A[Initial Share Distribution] --> B[Periodic Share Refresh]
+  B --> C[Cross-Party Coordination]
+  C --> D[State History & Dependencies]
+  D --> E[Integration & Compliance Lock-in]
+  E --> F[Higher Switching Costs]
+  F --> G[Higher Retention]
+  F -. Break points .- H[Security Incident / Regulatory Shift / 10× Innovation]
+```
+
 | Refresh Cycles | Switching Cost Index | 12-Mo Retention (%) | Avg. Time to Switch (days) |
 |----------------|---------------------|--------------------|-----------------------------|
 | 0-1 | 25 | 58 | 7 |
@@ -267,6 +320,17 @@ Retention
 Phase 1: Friction Drop | Phase 2: Habit Form | Phase 3: Lock-In
      
 Key Events: First Yield (Mo 2) | 3+ Protocols (Mo 6) | >$10K TVL (Mo 9)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  P1["0–2 months\nOnboarding drop"] --> P2["3–6 months\nHabit formation"]
+  P2 --> P3["7–12 months\nCapital lock-in"]
+
+  P1 -->|High setup friction & value latency| P2
+  P2 -->|First yields, compounding & mining| P3
+  P3 -->|High TVL, gas & tax frictions| P3
 ```
 
 | Month | Retention (%) | Avg. TVL ($) | Protocols/User | Check Frequency/Week | Churn Driver |
@@ -334,6 +398,15 @@ Baseline: 55% Mo-3 Retention
             └→ Expected Lift: +5pp (→75%)
             
 Total Lift: +20pp (36% improvement)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  B0[Baseline Mo-3 retention 55%] --> W1[Wave 1: Activation\n+8 percentage points]
+  W1 --> W2[Wave 2: Value Acceleration\n+7 percentage points]
+  W2 --> W3[Wave 3: Complexity Reduction\n+5 percentage points]
+  W3 --> B1[Target Mo-3 retention 75%]
 ```
 
 | Intervention Wave | Churn Target | Retention Baseline | Expected Lift | Leading Indicator | Target Metric |
@@ -408,6 +481,18 @@ CAC = S&M Spend / New Customers
 LTV/CAC = $96.43 / $27 = 3.57:1 ✓ (Healthy)
 
 Payback = 9.9 months ✓ (<12mo benchmark)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+flowchart TD
+  ARPU["ARPU = 4.50 USD per month"] --> GM["Gross margin = 75%"]
+  GM --> CHURN["Churn = 3.5% per month"]
+  CHURN --> LTV["LTV = 96.43 USD"]
+
+  CAC["CAC = 33.33 USD (27 blended)"] --> RATIO["LTV/CAC about 3x"]
+  LTV --> RATIO
+  RATIO --> PAYBACK["Payback ~ 10 months"]
 ```
 
 | Metric | Baseline | With Viral Growth | Optimized (DeFi Focus) |
@@ -490,6 +575,18 @@ ARPU ($)
    - Yield optimization (+)
    - Transaction velocity (+)
    - Network effects (+)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  N1[1 protocol\nARPU $3.20] --> N2[2–3 protocols\nARPU $6.50]
+  N2 --> N3[4–7 protocols\nARPU $11.80]
+  N3 --> N4[10+ protocols\nARPU $18.50]
+
+  N1 -->|+Cross-chain transactions| N2
+  N2 -->|+DeFi yield & commissions| N3
+  N3 -->|+Premium features & automation| N4
 ```
 
 | Protocols | ARPU ($/mo) | Tx Volume ($/mo) | Revenue Sources | Growth vs. n=1 |
@@ -578,6 +675,17 @@ Month 19-24:  ↓ 8% of Pro convert
 Total 24-Month Revenue: $78,919 ($78.92/user)
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  F[Free Tier\n~70% users] -->|3+ protocols or $10K+ TVL| P[Pro Tier $9/mo\n~22% users]
+  P -->|$100K+ TVL or API needs| R[Premium $49/mo\n~1.8% users]
+
+  F -->|Tx fees| Rev1[Baseline revenue]
+  P -->|Subs + fees| Rev2[Growth revenue]
+  R -->|High ARPU| Rev3[Upside revenue]
+```
+
 | Tier | Users (%) | Monthly Price | Tx Fees | Total Rev/User/Mo | Cumulative 24-Mo Rev | Conversion Trigger |
 |------|-----------|---------------|---------|-------------------|----------------------|--------------------|
 | Free | 70% | $0 | $1.80 | $1.80 | $43,200 | Baseline |
@@ -659,6 +767,20 @@ Fogg Behavior Model: MPC Wallet Adoption
 Intervention: Simplify setup (45min → <10min) → Ability +3.5 points
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  M0[Motivation 8/10] --> P0[Pre-optimization]
+  A0[Ability 3.5/10] --> P0
+  T0[Trigger 6.5/10] --> P0
+  P0 --> B0[Below activation threshold, no adoption]
+
+  M1[Motivation 8/10] --> P1[Post-optimization]
+  A1[Ability 7/10] --> P1
+  T1[Trigger 7.5/10] --> P1
+  P1 --> B1[Above activation threshold, adoption]
+```
+
 | Component | Current Score | Barrier | Optimization | Target Score | Impact |
 |-----------|---------------|---------|--------------|--------------|--------|
 | Motivation | 8/10 | Low (security-conscious users) | Educational campaigns | 8.5/10 | +5% activation |
@@ -726,6 +848,16 @@ Trigger (Internal) → Action (Daily Monitor) → Variable Reward (Variable Yiel
    FOMO/Boredom  →  Check/Rebalance  →   $X Earned Today   →  10+ Protocols + API
    
 Habit Strength: 18% → 42% → 67% (habituated users by stage)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  E[Exploration 0-2m] --> G[Engagement 2-4m]
+  G --> H[Habit 4-6m+]
+
+  E -->|External triggers & first deposit| G
+  G -->|Capital, refresh cycles, configs| H
 ```
 
 | Stage | Months | Trigger Type | Action Frequency | Variable Reward | Investment Level | Habit % |
@@ -817,6 +949,17 @@ Synergy Effect → +0pp (independent)
 Total: +20pp
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  B[Baseline DAU 15%] --> A2[A2: Notifs + Streaks]
+  A2 --> B2[B2: One-tap + Simplified UI]
+  B2 --> C[Combined A2+B2: DAU 35%]
+
+  A2 -->|+12pp from motivation| C
+  B2 -->|+8pp from ability| C
+```
+
 | Intervention | Mechanism | FBM Component | Expected DAU Lift | Test Weeks | Success Metric |
 |--------------|-----------|---------------|-------------------|------------|----------------|
 | Gamified Notifications | Variable rewards, social comparison | Motivation (+) | +8pp | 1-4 | Notif open rate >45% |
@@ -895,6 +1038,22 @@ Moat Drivers:
 - SDK integrations (Gaming)
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  M[MPC Wallet Market] --> I[Institutional DeFi]
+  M --> R[Retail Web3]
+  M --> G[Gaming / Metaverse]
+
+  I --> IF[Fireblocks ~45%]
+  I --> IB[BitGo ~30%]
+
+  R --> RB[Binance Web3 ~35%]
+  R --> RZ[ZenGo ~28%]
+
+  G --> GP[Particle Network ~40%]
+```
+
 | Segment | Leader | Market Share | Key Moat | Switching Cost | Network Density |
 |---------|--------|--------------|----------|----------------|-----------------|
 | Institutional DeFi | Fireblocks | 45% | Compliance + Audits | Very High (50hrs) | Dense (100+ protocols) |
@@ -963,6 +1122,16 @@ Critical Threshold: ~10K users
 - Protocol partnerships favor dense providers
 - Viral growth accelerates (K>0.5)
 - Switching costs increase 3×
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  P1[0–5K users\nFeature competition] --> P2[5K–15K users\nTransition]
+  P2 --> P3[15K+ users\nNetwork-effects moat]
+
+  P1 -->|Speed, UX, security| P2
+  P2 -->|Integrations & liquidity| P3
 ```
 
 | Density Phase | Users | Primary Moat | Switching Cost | CAC ($) | Churn (%) | Market Concentration |
@@ -1058,6 +1227,18 @@ Month 25+: MAINSTREAM ASSAULT
 Mechanism: Niche Dominance → Network Bridge → Mainstream Expansion
 ```
 
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  W0[Wedge ID 0–3m] --> B1[Beachhead 4–12m]
+  B1 --> E1[Expansion 13–24m]
+  E1 --> M1[Mainstream 25–36m]
+
+  W0 -->|Pick privacy DeFi or DAOs| B1
+  B1 -->|Penetrate micro-segment| E1
+  E1 -->|Add adjacencies & SDK| M1
+```
+
 | Phase | Months | Target Segment | User Goal | Market Share | Key Strategy | Success Metric |
 |-------|--------|----------------|-----------|--------------|--------------|----------------|
 | Wedge ID | 0-3 | Privacy DeFi | N/A | 0% | Pain point research | Segment size >5K |
@@ -1123,6 +1304,20 @@ Participants ─(+)→ Coordination Complexity ─(-)→ Success Rate
        └────────────(-)─────── Churn ←(-)─────────┘
        
 Equilibrium: 15-30 participants/cohort (balance R+ vs. B-)
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  A[Adoption] --> B[Revenue]
+  B --> C[Fast DKG]
+  C --> D[Better UX]
+  D --> A
+
+  A --> E[More nodes]
+  E --> F[Higher cost]
+  F --> G[Latency]
+  G --> H[Slower adoption]
 ```
 
 | Network Scale | DKG Participants | Latency (min) | Coordination Success (%) | Activation Rate (%) | Growth State |
@@ -1204,6 +1399,16 @@ Phase 2: Network Effects (35%/mo peak)
 Phase 3: Saturation (8%/mo declining)
 
 Inflection Point: Month 18, 10K users
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph LR
+  S1[Phase 1\n0–2.5K users] --> S2[Phase 2\n2.5K–50K users]
+  S2 --> S3[Phase 3\n50K–500K users]
+
+  S1 -->|Innovation diffusion & chasm| S2
+  S2 -->|Network effects & flywheel| S3
 ```
 
 | Phase | Users | Months | Growth Rate/Mo | Primary Mechanism | Churn | Key Metric |
@@ -1306,6 +1511,21 @@ Output: Signed Transaction
 Metrics: Latency, Success Rate, Security Events
 
 Optimization: Minimize Latency subject to Security ≥99.5%
+```
+
+**Visual Aid (Mermaid)**
+```mermaid
+graph TD
+  TX[Incoming transaction] --> RS[Risk Scoring Engine]
+  RS --> TSel[Select t/n & participants]
+  TSel --> Sig[Threshold signing]
+  Sig --> Out[Signed transaction]
+
+  Out --> LM[Latency Monitoring]
+  LM -->|p95 too high| AdjN[Adjust n downward]
+
+  Out --> SI[Security Incidents]
+  SI -->|exploit detected| AdjT[Increase t/n for protocol]
 ```
 
 | Risk Tier | Score | t/n (%) | Participants (n) | Avg. Latency (ms) | Security (Byzantine FT %) | Tx Volume (%) |

@@ -47,6 +47,25 @@ Nodes Join → Capacity↑ → Performance↑
      Security Threshold↑
 ```
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    A[New Nodes Join] --> B[Capacity ↑]
+    B --> C[Performance ↑ / Cost ↓]
+    C --> D[More Use Cases]
+    D --> A
+    D --> E[Enterprise Adoption]
+    E --> F[Higher Security Threshold]
+    F --> A
+```
+
+**Supporting Table: MPC Network Growth Regimes**
+| Stage   | Node Count | Growth Pattern                         | Viral Coefficient (K) |
+|---------|------------|----------------------------------------|------------------------|
+| Early   | <100       | Mostly linear (~1.2x monthly)         | 0.8–1.0                |
+| Tipping | ≥100       | Exponential (~2.8x monthly)           | 1.0–1.3                |
+| Mature  | ≥500       | Slower exponential, coordination overhead limits growth | 1.3–1.6 |
+
 ---
 
 **Q2: Analyze why cross-chain bridges create compounding growth effects in blockchain MPC ecosystems.**
@@ -77,6 +96,27 @@ Cross-chain bridges in MPC systems create compounding growth through interconnec
 | 1 | 15% | 1.0x | Low |
 | 3 | 45% | 3.2x | Medium |
 | 5+ | 85% | 8.5x | High |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    A[More Bridges Deployed] --> B[Liquidity Aggregation]
+    B --> C[Reduced Fragmentation]
+    C --> D[Higher Capital Efficiency]
+    D --> E[More DeFi Protocols]
+    E --> F[Increased Bridge Usage]
+    F --> A
+```
+
+**Supporting Diagram (Mermaid): Bridge Connectivity Across Chains**
+```mermaid
+graph TD
+    C1[Chain 1] --- B1((MPC Bridge))
+    C2[Chain 2] --- B1
+    C3[Chain 3] --- B1
+    C4[Chain 4] --- B1
+    B1 --> L[Aggregated Liquidity Pool]
+```
 
 ---
 
@@ -128,6 +168,24 @@ User Needs Security → Invites 3+ Guardians
     Social Proof ← Network Growth
 ```
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    U[User Needs Security] --> G[Invites Guardians]
+    G --> R[Guardians Earn Rewards]
+    R --> S[Higher Guardian Engagement]
+    S --> N[Network Security ↑]
+    N --> P[Social Proof Badge]
+    P --> U
+```
+
+**Supporting Table: Viral Growth Over Time**
+| Phase  | Timeline   | Feature Focus                  | Approx. Viral Coefficient K |
+|--------|------------|--------------------------------|-----------------------------|
+| Phase 1 | Month 1-2 | Basic guardian system         | ~0.5                        |
+| Phase 2 | Month 3-4 | Add incentives for guardians  | ~0.9                        |
+| Phase 3 | Month 5-6 | Social proof & gamification   | ~1.3                        |
+
 ### Retention Mechanisms (Q4-6)
 
 **Q4: How do threshold signature schemes in MPC wallets create retention through switching costs?**
@@ -162,6 +220,16 @@ Threshold signature schemes in MPC wallets create powerful retention mechanisms 
 | 3 | Medium | 73% | Medium |
 | 5 | High | 85% | Low |
 | 7+ | Very High | 79% | Medium |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    A[More Guardians] --> B[Higher Setup Friction]
+    A --> C[Higher Perceived Security]
+    C --> D[Retention ↑]
+    B --> E[Coordination Overhead]
+    E --> F[Churn Risk]
+```
 
 ---
 
@@ -201,6 +269,24 @@ Security Need → Recovery Drill → Guardian Interaction
        ↑                              ↓
    Investment ← Reciprocal Duty ←────┘
 ```
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    T[Security Trigger] --> D[Recovery Drill]
+    D --> I[Guardian Interaction]
+    I --> V[Variable Reward]
+    V --> H[Habit Loop Strengthens]
+    I --> R[Reciprocal Duty]
+    R --> T
+```
+
+**Supporting Table: Habit Strength Progression**
+| Phase           | Time Window       | Behavior Pattern             | Approx. Response Rate |
+|-----------------|-------------------|------------------------------|-----------------------|
+| Initial Habit   | Weeks 1-4         | Conscious participation      | ~40%                  |
+| Routine Stage   | Weeks 5-12        | Emerging routine             | ~65%                  |
+| Automatic Habit | Week 13 and later | Largely automatic engagement | ~88%                  |
 
 ---
 
@@ -247,6 +333,23 @@ The retention mechanism design exploits MPC's distributed trust to create "Digit
 | Time-locked | Extreme | +31% | $1,200 |
 | Generational | Maximum | +42% | $2,500+ |
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    U[User Stores Memories] --> M[Memories Sharded via MPC]
+    M --> G[Guardians Hold Shares]
+    G --> E[Emotional Investment]
+    E --> R[Retention ↑ / Switching Cost ↑]
+    R --> U
+```
+
+**Supporting Table: Emotional Lock-in Building Blocks**
+ | Element          | Role in System                            | Retention Effect                 |
+ |------------------|--------------------------------------------|----------------------------------|
+ | Memory Sharding  | Distributes encrypted memories to guardians| Increases perceived safety       |
+ | Time-Locked Reveals | Schedules future messages and events   | Strengthens long-term commitment |
+ | Generational Bonds | Involves future guardians (e.g., children)| Extends retention across generations |
+
 ### Monetization Mechanisms (Q7-9)
 
 **Q7: How does MPC enable new monetization through distributed computation markets?**
@@ -283,6 +386,27 @@ Earnings ← Utilization↑ ← Volume↑
 Staking Rewards
 ```
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    P[More Providers] --> S[Supply ↑]
+    S --> PR[Price ↓]
+    PR --> D[Demand ↑]
+    D --> V[Computation Volume ↑]
+    V --> U[Utilization ↑]
+    U --> E[Earnings ↑]
+    E --> P
+```
+ 
+**Supporting Table: Computation Market Economics (Illustrative)**
+| Metric                     | Typical Value/Range          | Notes                                      |
+|----------------------------|------------------------------|--------------------------------------------|
+| Computation Fee            | $0.001–0.01 / MPC operation  | Scales with complexity                     |
+| Average Node Revenue       | ~$120/month                  | At ~70% utilization                        |
+| Average Node Cost          | ~$35/month                   | Electricity + bandwidth                    |
+| Break-even Utilization     | ~25%                         | Below this, nodes are typically unprofitable |
+| Staking Yield              | ~8–12% APY                   | For providers who stake tokens             |
+
 ---
 
 **Q8: Analyze why MPC-based data clean rooms create superior monetization compared to traditional approaches.**
@@ -318,6 +442,15 @@ MPC data clean rooms revolutionize data monetization by enabling multi-party ana
 | 3 | $180K | 3.6x | 58% |
 | 4 | $420K | 8.4x | 67% |
 | 5+ | $800K+ | 16x+ | 74% |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    A[More Data Parties] --> B[Richer Combined Dataset]
+    B --> C[More Valuable Insights]
+    C --> D[Higher Joint Revenue]
+    D --> A
+```
 
 ---
 
@@ -371,6 +504,19 @@ Validators Stake → Secure Network → Attract Users
 Developers Build → Increase Utility → Token Demand↑
 ```
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    U[Users Pay Fees] --> V[Validator Rewards]
+    U --> DV[Developer Treasury]
+    U --> B[Token Burn]
+    V --> SN[Secure Network]
+    SN --> A[Attract More Users]
+    DV --> F[Feature Development]
+    F --> UT[Network Utility ↑]
+    UT --> A
+```
+
 ### User Behavior Mechanisms (Q10-12)
 
 **Q10: How does MPC's complexity barrier influence user onboarding behavior and adoption patterns?**
@@ -407,6 +553,15 @@ MPC's complexity creates a self-selecting user funnel where technical sophistica
 | Early Adopters | High | 18% | $1,800 | 3.7 |
 | Early Majority | Medium | 4% | $650 | 1.2 |
 | Late Majority | Low | <1% | $120 | 0.3 |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph TD
+    A[Awareness 100%] --> B[Interest 31%]
+    B --> C[Trial 8%]
+    C --> D[Activation 5%]
+    D --> E[Retention 4.2%]
+```
 
 ---
 
@@ -446,6 +601,18 @@ Responsibility↓ ← Risk Taking↑
 Attentiveness↓ → Actual Risk↑
          ↓
 Social Proof → Behavior Reinforcement
+```
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    T[Trust Distributed Across Guardians] --> PS[Perceived Security ↑]
+    PS --> RT[Risk Taking ↑]
+    T --> DR[Diffused Responsibility]
+    DR --> AT[Attentiveness ↓]
+    AT --> AR[Actual Risk ↑]
+    RT --> AR
+    AR --> SP[Security Drills / Interventions]
 ```
 
 ---
@@ -503,6 +670,15 @@ If fatigue_score > 0.7: Reduce request frequency
 | 16 | 23% | 38% | 54% | 71% |
 | 24 | 11% | 24% | 41% | 62% |
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    F[Guardian Fatigue] --> L1[Layer 1: Variable Rewards]
+    L1 --> L2[Layer 2: Social Dynamics]
+    L2 --> L3[Layer 3: Progressive Challenges]
+    L3 --> E[Extended Engagement Half-life]
+```
+
 ### Market Mechanisms (Q13-15)
 
 **Q13: How do MPC platforms create winner-take-all market dynamics through network effects?**
@@ -534,6 +710,18 @@ Node Growth → Security↑ → Enterprise Adoption
 Rewards↑ ← Computation Demand ← Use Cases↑
       ↑                           ↓
 Market Share↑ ← Network Effects ← Liquidity↑
+```
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    N[More Nodes] --> S[Security ↑]
+    S --> EA[Enterprise Adoption]
+    EA --> CD[Computation Demand ↑]
+    CD --> R[Rewards ↑]
+    R --> N
+    EA --> L[Liquidity ↑]
+    L --> MS[Market Share ↑]
 ```
 
 ---
@@ -578,6 +766,15 @@ Interoperability standards in MPC paradoxically increase market fragmentation by
 | DeFi | 5-6 | 35% | Speed/cost | Low |
 | Enterprise | 2-3 | 55% | Compliance | High |
 | Privacy | 4-5 | 30% | Security | Medium |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph TD
+    S[Interoperability Standards] --> G[General Platforms]
+    S --> D[DeFi-Optimized]
+    S --> E[Enterprise-Focused]
+    S --> P[Privacy-Maximalist]
+```
 
 ---
 
@@ -642,6 +839,16 @@ Beachhead (DeFi) → Vertical Dominance → Adjacent Markets
    References → Developer Community → Platform Power
 ```
 
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    B[Beachhead: DeFi] --> V[Vertical Dominance]
+    V --> H[Horizontal Expansion]
+    B --> C[Low Cost / Fast Shipping]
+    V --> NE[Vertical Network Effects]
+    H --> PP[Platform Power]
+```
+
 ### System Mechanisms (Q16-18)
 
 **Q16: How do feedback loops in MPC consensus mechanisms affect system stability?**
@@ -681,6 +888,16 @@ MPC consensus mechanisms exhibit non-linear stability characteristics due to int
 | 30-100 | Metastable | Medium-High | Medium | Low |
 | 100-500 | Stable | Medium | High | High |
 | >500 | Degrading | Low | High | Medium |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    V[Validator Count] --> S[Security Level]
+    V --> Rw[Individual Rewards]
+    S --> ST[System Stability]
+    Rw --> P[Validator Participation]
+    P --> V
+```
 
 ---
 
@@ -730,6 +947,19 @@ Fault Detection → Isolation → Redundancy Increase
    Classification → Quarantine → Recomputation
         ↓            ↓              ↓
    BFT Consensus → Ejection → Topology Reconfiguration
+```
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    FD[Fault Detection] --> IS[Isolation]
+    IS --> RI[Redundancy ↑]
+    RI --> CL[Classification]
+    CL --> Q[Quarantine]
+    Q --> RC[Recomputation]
+    RC --> BFT[BFT Consensus Maintained]
+    BFT --> EJ[Ejection of Bad Nodes]
+    EJ --> TR[Topology Reconfiguration]
 ```
 
 ---
@@ -790,6 +1020,16 @@ ations [Ref: A112].
 | Eclipse | 89% | 5 blocks | 5-8 | 86% |
 | Grinding | 92% | 1 block | 2-4 | 93% |
 | Novel/Unknown | 73% | 8 blocks | 10-15 | 67% |
+
+**Visual Summary (Mermaid)**:
+```mermaid
+graph LR
+    A[Attack Attempt] --> D[Detection]
+    D --> R[Dynamic Response]
+    R --> H[Self-Healing]
+    H --> U[System Updated]
+    U --> A
+```
 
 ## III. References
 
