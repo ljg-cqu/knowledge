@@ -1,0 +1,1038 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blockchain MPC Mechanisms: Strategic &amp; Technical Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Crimson Pro', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'slate': {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        },
+                        'teal': {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 2rem 1.5rem;
+        }
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        .citation-link {
+            color: #0d9488;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #0d9488;
+        }
+        .citation-link:hover {
+            background-color: #f0fdfa;
+            border-bottom: 1px solid #0d9488;
+        }
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        .section-divider {
+            background: linear-gradient(90deg, #0d9488 0%, #14b8a6 50%, #5eead4 100%);
+            height: 3px;
+            border-radius: 2px;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            height: 60vh;
+        }
+        .bento-main {
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-side-1 {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            border-radius: 1rem;
+            color: white;
+        }
+        .bento-side-2 {
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            border-radius: 1rem;
+            color: white;
+        }
+        .network-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: radial-gradient(circle at 20% 30%, #14b8a6 2px, transparent 2px),
+                              radial-gradient(circle at 80% 70%, #5eead4 1px, transparent 1px),
+                              radial-gradient(circle at 40% 80%, #14b8a6 1.5px, transparent 1.5px);
+            background-size: 50px 50px, 30px 30px, 70px 70px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                height: auto;
+            }
+            .bento-main {
+                grid-row: 1;
+            }
+            .hero-gradient .font-serif.text-5xl {
+                font-size: 2.5rem;
+            }
+            .hero-gradient .text-xl {
+                font-size: 1rem;
+            }
+            .prose p {
+                word-wrap: break-word;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-slate-50 text-slate-800 font-sans">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="font-serif text-lg font-semibold text-slate-800 mb-4">Table of Contents</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#overview" class="block py-1 px-2 rounded hover:bg-teal-100 text-slate-600 hover:text-teal-700 transition-colors">1. Overview</a>
+          </li>
+          <li>
+            <a href="#qa-mechanisms" class="block py-1 px-2 rounded hover:bg-teal-100 text-slate-600 hover:text-teal-700 transition-colors">2. Q&amp;A by Mechanism Type</a>
+            <ul class="ml-4 mt-1 space-y-1">
+              <li>
+                <a href="#growth-mechanisms" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.1 Growth Mechanisms</a>
+              </li>
+              <li>
+                <a href="#retention-mechanisms" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.2 Retention Mechanisms</a>
+              </li>
+              <li>
+                <a href="#monetization-mechanisms" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.3 Monetization Mechanisms</a>
+              </li>
+              <li>
+                <a href="#user-behavior" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.4 User Behavior</a>
+              </li>
+              <li>
+                <a href="#market-dynamics" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.5 Market Dynamics</a>
+              </li>
+              <li>
+                <a href="#system-interaction" class="block py-1 px-2 rounded hover:bg-teal-50 text-slate-500 hover:text-teal-600 transition-colors text-xs">2.6 System Interaction</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#technical-deep-dive" class="block py-1 px-2 rounded hover:bg-teal-100 text-slate-600 hover:text-teal-700 transition-colors">3. Technical Deep Dive</a>
+          </li>
+          <li>
+            <a href="#strategic-analysis" class="block py-1 px-2 rounded hover:bg-teal-100 text-slate-600 hover:text-teal-700 transition-colors">4. Strategic Analysis</a>
+          </li>
+        </ul>
+      </div>
+      <div class="border-t border-slate-200 pt-4">
+        <p class="text-xs text-slate-500 mb-2">Key Insights</p>
+        <div class="space-y-1">
+          <div class="px-2 py-1 bg-teal-50 rounded text-xs text-teal-700">Distributed Security</div>
+          <div class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">On-Chain Efficiency</div>
+          <div class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">User Trust</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section with Bento Layout -->
+      <header class="hero-gradient text-white relative overflow-hidden">
+        <div class="network-visual"></div>
+        <div class="container mx-auto px-6 py-16">
+          <div class="bento-grid">
+            <!-- Main Content Area -->
+            <div class="bento-main flex items-center justify-center relative">
+              <div class="text-center z-10 p-8">
+                <h1 class="font-serif text-5xl lg:text-6xl font-light italic mb-6 text-shadow leading-tight">
+                  Blockchain MPC Mechanisms
+                </h1>
+                <p class="text-xl lg:text-2xl font-light mb-8 text-teal-100 max-w-3xl mx-auto leading-relaxed">
+                  A Strategic and Technical Analysis for Product Leaders
+                </p>
+                <div class="flex justify-center space-x-6 text-sm">
+                  <span class="flex items-center">
+                    <i class="fas fa-shield-alt mr-2 text-teal-300"></i>
+                    Distributed Security
+                  </span>
+                  <span class="flex items-center">
+                    <i class="fas fa-network-wired mr-2 text-teal-300"></i>
+                    Scalable Architecture
+                  </span>
+                  <span class="flex items-center">
+                    <i class="fas fa-users mr-2 text-teal-300"></i>
+                    User Trust
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Panel 1 -->
+            <div class="bento-side-1 p-6 flex flex-col justify-center">
+              <h3 class="font-serif text-xl font-semibold mb-3">Executive Summary</h3>
+              <p class="text-sm leading-relaxed opacity-90">
+                MPC represents a paradigm shift in digital asset security, eliminating single points of failure while maintaining on-chain compatibility and privacy.
+              </p>
+            </div>
+
+            <!-- Side Panel 2 -->
+            <div class="bento-side-2 p-6 flex flex-col justify-center">
+              <h3 class="font-serif text-xl font-semibold mb-3">Key Applications</h3>
+              <ul class="text-sm space-y-2 opacity-90">
+                <li class="flex items-center">
+                  <i class="fas fa-university mr-2"></i>
+                  Digital Asset Custody
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-coins mr-2"></i>
+                  DeFi Protocols
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-exchange-alt mr-2"></i>
+                  Cross-Chain Bridges
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Overview Section -->
+      <section id="overview" class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <div class="section-divider mb-12"></div>
+
+          <h2 class="font-serif text-3xl font-semibold mb-8 text-slate-800">Overview: The Strategic Imperative of MPC</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <h3 class="font-serif text-xl font-medium mb-4 text-slate-700">Executive Summary: Key Findings and Strategic Implications</h3>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              This report provides a comprehensive analysis of Multi-Party Computation (MPC) mechanisms within the blockchain ecosystem, targeting a strategic audience of product managers, developers, and executives. The analysis reveals that MPC, particularly through its application in Threshold Signature Schemes (TSS), represents a paradigm shift in how digital assets are secured and managed, moving beyond the limitations of traditional single-key and multi-signature (Multi-Sig) wallets.
+            </p>
+
+            <div class="bg-slate-50 border-l-4 border-teal-500 p-6 my-8">
+              <p class="text-slate-700 font-medium italic">
+                &#34;MPC&#39;s ability to distribute cryptographic key shares across multiple parties without ever reconstructing the full private key offers a superior security model that eliminates single points of failure while maintaining on-chain compatibility and privacy.&#34;
+              </p>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed mb-6">
+              This has profound strategic implications for key sectors like digital asset custody and decentralized finance (DeFi). For custody providers, MPC enables scalable, institution-grade security that is both more resilient and operationally efficient than Hardware Security Modules (HSMs). For DeFi, it unlocks new possibilities for private, complex, and cross-chain transactions, fostering innovation and user trust.
+            </p>
+
+            <h3 class="font-serif text-xl font-medium mb-4 text-slate-700 mt-8">Core Thesis: How MPC Reshapes Security, Scalability, and User Trust</h3>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              The central thesis of this document is that <strong>Multi-Party Computation (MPC) is not merely an incremental improvement in blockchain security but a fundamental re-architecture of trust and control that directly addresses the core challenges of scalability and user adoption</strong>. By enabling a distributed network of parties to jointly compute a cryptographic signature without any single party ever holding the complete private key, MPC fundamentally reshapes the security landscape.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Q&amp;A Mechanisms Section -->
+      <section id="qa-mechanisms" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <div class="section-divider mb-12"></div>
+
+          <h2 class="font-serif text-3xl font-semibold mb-12 text-slate-800">Q&amp;A by Mechanism Type</h2>
+
+          <!-- Growth Mechanisms -->
+          <div id="growth-mechanisms" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Growth Mechanisms</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q1: Understanding the Growth Flywheel of MPC-Based DeFi Protocols
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Growth</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Explain the core components of a growth flywheel for a decentralized finance (DeFi) protocol that leverages Multi-Party Computation (MPC) for enhanced privacy and security. How do these components interact to create a self-reinforcing growth loop?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    The growth flywheel for an MPC-based DeFi protocol is powered by a reinforcing loop where enhanced security and privacy drive user adoption, which in turn attracts more liquidity and developers, further strengthening the protocol&#39;s value proposition. The cycle begins with the <strong>Input</strong> of a user seeking to engage in DeFi activities with a higher degree of privacy and security than what is offered by standard, transparent protocols.
+                    <a href="#ref-g1" class="citation-link">[Ref: G1]</a>
+                  </p>
+                </div>
+                <div class="mt-6 p-4 bg-teal-50 rounded-lg">
+                  <h5 class="font-medium text-teal-800 mb-2">Key Insight</h5>
+                  <p class="text-teal-700 text-sm">MPC&#39;s privacy and security features are not just technical enhancements; they are the core drivers of a powerful growth engine that differentiates the protocol in a crowded market.</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q2: Analyzing the Network Effects of Cross-Chain Bridges Using MPC
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mr-2">Difficulty: I</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Growth</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  How do Multi-Party Computation (MPC) mechanisms influence the network effects of cross-chain bridges? Analyze the causal relationship between MPC&#39;s security model and the bridge&#39;s ability to attract and retain liquidity.
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    MPC mechanisms fundamentally alter the network effects of cross-chain bridges by shifting the security model from a trusted-third-party to a cryptographically secured, decentralized model. This shift has a profound causal impact on liquidity attraction and retention.
+                    <a href="#ref-a1" class="citation-link">[Ref: A1]</a>
+                  </p>
+                </div>
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                  <div class="p-4 bg-red-50 rounded-lg">
+                    <h5 class="font-medium text-red-800 mb-2">Traditional Bridge (-)</h5>
+                    <p class="text-red-700 text-sm">High counterparty risk creates a balancing loop that limits liquidity</p>
+                  </div>
+                  <div class="p-4 bg-green-50 rounded-lg">
+                    <h5 class="font-medium text-green-800 mb-2">MPC-Based Bridge (+)</h5>
+                    <p class="text-green-700 text-sm">Enhanced security creates a reinforcing loop that attracts liquidity</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Retention Mechanisms -->
+          <div id="retention-mechanisms" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Retention Mechanisms</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q4: How MPC Wallets Enhance User Retention Through Improved Security and UX
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Retention</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Explain the mechanism by which MPC wallets improve user retention by simultaneously enhancing security and user experience (UX). How does this differ from the retention dynamics of traditional single-key or Multi-Sig wallets?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    MPC wallets enhance user retention through a dual mechanism that addresses the two primary pain points of digital asset management: security anxiety and operational friction. The core of this mechanism is the decoupling of security from a single, fragile private key.
+                    <a href="#ref-g7" class="citation-link">[Ref: G7]</a>
+                  </p>
+                </div>
+                <div class="mt-6">
+                  <img src="https://kimi-web-img.moonshot.cn/img/custodydocs-en.chainup.com/e407be3b4e491de7331413570dbf83eebf07d2e3.png" alt="MPC wallet user interface with security and user experience features" class="w-full rounded-lg shadow-sm" size="medium" aspect="wide" style="photo" query="MPC wallet interface design" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q5: Why Do MPC-Based Custody Solutions Drive Higher Institutional Retention Than Traditional HSMs?
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mr-2">Difficulty: I</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Retention</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Analyze the causal factors that lead to higher institutional client retention for MPC-based custody solutions compared to traditional Hardware Security Module (HSM)-based models. What are the key feedback loops at play?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    MPC-based custody solutions drive higher institutional retention than HSMs primarily by offering superior operational flexibility, scalability, and resilience, which are critical for dynamic institutional needs. The causal chain begins with the fundamental architectural difference.
+                    <a href="#ref-a2" class="citation-link">[Ref: A2]</a>
+                  </p>
+                </div>
+                <div class="mt-6 p-4 bg-slate-50 rounded-lg">
+                  <h5 class="font-medium text-slate-800 mb-3">Comparative Analysis</h5>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-600">Operational Flexibility</span>
+                      <div class="flex space-x-1">
+                        <div class="w-4 h-4 bg-teal-500 rounded"></div>
+                        <div class="w-4 h-4 bg-teal-500 rounded"></div>
+                        <div class="w-4 h-4 bg-teal-500 rounded"></div>
+                        <div class="w-4 h-4 bg-teal-500 rounded"></div>
+                        <div class="w-4 h-4 bg-gray-200 rounded"></div>
+                        <span class="text-xs text-slate-500 ml-2">MPC</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-600">Physical Security</span>
+                      <div class="flex space-x-1">
+                        <div class="w-4 h-4 bg-slate-500 rounded"></div>
+                        <div class="w-4 h-4 bg-slate-500 rounded"></div>
+                        <div class="w-4 h-4 bg-slate-500 rounded"></div>
+                        <div class="w-4 h-4 bg-slate-500 rounded"></div>
+                        <div class="w-4 h-4 bg-slate-500 rounded"></div>
+                        <span class="text-xs text-slate-500 ml-2">HSM</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monetization Mechanisms -->
+          <div id="monetization-mechanisms" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Monetization Mechanisms</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q7: The Unit Economics of MPC-as-a-Service for Blockchain Infrastructure Providers
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Monetization</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Explain the unit economics of an MPC-as-a-Service (MPCaaS) model for a blockchain infrastructure provider. What are the key cost and revenue drivers?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    The unit economics of an MPC-as-a-Service (MPCaaS) model are defined by the relationship between the cost of providing the service per customer and the revenue generated from that customer. The <strong>Input</strong> is a customer who requires secure key management. The <strong>Process</strong> involves running MPC nodes, managing distributed key shares, and executing signature generation.
+                    <a href="#ref-t1" class="citation-link">[Ref: T1]</a>
+                  </p>
+                </div>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="p-4 bg-green-50 rounded-lg">
+                    <h5 class="font-medium text-green-800 mb-3">Revenue Drivers</h5>
+                    <ul class="text-green-700 text-sm space-y-1">
+                      <li>\u2022 Recurring subscription fees</li>
+                      <li>\u2022 Transaction volume pricing</li>
+                      <li>\u2022 Premium feature charges</li>
+                      <li>\u2022 Custom governance policies</li>
+                    </ul>
+                  </div>
+                  <div class="p-4 bg-red-50 rounded-lg">
+                    <h5 class="font-medium text-red-800 mb-3">Cost Drivers</h5>
+                    <ul class="text-red-700 text-sm space-y-1">
+                      <li>\u2022 R&amp;D and protocol development</li>
+                      <li>\u2022 Computational resources</li>
+                      <li>\u2022 Communication overhead</li>
+                      <li>\u2022 Operational infrastructure</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Behavior Mechanisms -->
+          <div id="user-behavior" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">User Behavior Mechanisms</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q10: Explaining the User Journey and Trust Dynamics When Interacting with an MPC Wallet
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: User Behavior</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Map the user journey for a first-time user of an MPC wallet, focusing on the key moments that build or erode trust. How do the underlying MPC mechanisms influence this journey?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    The user journey for an MPC wallet is a critical path where trust is built through a combination of education, transparent security, and a seamless user experience. The journey begins with the <strong>Discovery and Consideration</strong> phase, where the user researches the MPC wallet and encounters marketing messages that emphasize &#34;no single point of failure.&#34;
+                    <a href="#ref-l1" class="citation-link">[Ref: L1]</a>
+                  </p>
+                </div>
+                <div class="mt-6">
+                  <div class="flex items-center justify-between bg-slate-50 p-4 rounded-lg">
+                    <div class="text-center">
+                      <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold mb-2">1</div>
+                      <p class="text-xs text-slate-600">Discovery</p>
+                    </div>
+                    <div class="flex-1 h-px bg-slate-300 mx-2"></div>
+                    <div class="text-center">
+                      <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold mb-2">2</div>
+                      <p class="text-xs text-slate-600">Onboarding</p>
+                    </div>
+                    <div class="flex-1 h-px bg-slate-300 mx-2"></div>
+                    <div class="text-center">
+                      <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold mb-2">3</div>
+                      <p class="text-xs text-slate-600">Primary Use</p>
+                    </div>
+                    <div class="flex-1 h-px bg-slate-300 mx-2"></div>
+                    <div class="text-center">
+                      <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-semibold mb-2">4</div>
+                      <p class="text-xs text-slate-600">Recovery</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Market Dynamics -->
+          <div id="market-dynamics" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Market Dynamics</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q13: The Competitive Landscape of Digital Asset Custody: MPC vs. Multi-Sig vs. HSM
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: Market</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Map the competitive landscape for digital asset custody, comparing Multi-Party Computation (MPC), Multi-Signature (Multi-Sig), and Hardware Security Modules (HSMs). What are the key trade-offs for each technology?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    The competitive landscape for digital asset custody is defined by a three-way race between Multi-Party Computation (MPC), Multi-Signature (Multi-Sig), and Hardware Security Modules (HSMs), with each technology offering a different balance of security, operational flexibility, and on-chain characteristics.
+                    <a href="#ref-a3" class="citation-link">[Ref: A3]</a>
+                  </p>
+                </div>
+                <div class="mt-8 overflow-x-auto">
+                  <table class="w-full border-collapse border border-slate-300 text-sm">
+                    <thead>
+                      <tr class="bg-slate-100">
+                        <th class="border border-slate-300 p-3 text-left font-medium">Feature</th>
+                        <th class="border border-slate-300 p-3 text-left font-medium text-teal-700">MPC (Threshold Signatures)</th>
+                        <th class="border border-slate-300 p-3 text-left font-medium">Multi-Signature (Multi-Sig)</th>
+                        <th class="border border-slate-300 p-3 text-left font-medium">Hardware Security Module (HSM)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-slate-300 p-3 font-medium">Security Model</td>
+                        <td class="border border-slate-300 p-3">Distributed key shares; no single point of failure.</td>
+                        <td class="border border-slate-300 p-3">Multiple independent keys; no single point of failure.</td>
+                        <td class="border border-slate-300 p-3">Single key in a physically secure, tamper-proof device.</td>
+                      </tr>
+                      <tr class="bg-slate-50">
+                        <td class="border border-slate-300 p-3 font-medium">On-Chain Footprint</td>
+                        <td class="border border-slate-300 p-3"><strong>Single, standard signature.</strong> Low transaction size and cost.</td>
+                        <td class="border border-slate-300 p-3"><strong>Multiple signatures and public keys.</strong> Larger transaction size and higher cost.</td>
+                        <td class="border border-slate-300 p-3">N/A (key is used to sign, but the signature is standard).</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-slate-300 p-3 font-medium">On-Chain Privacy</td>
+                        <td class="border border-slate-300 p-3"><strong>High.</strong> The distributed nature of signing is hidden.</td>
+                        <td class="border border-slate-300 p-3"><strong>Low.</strong> The number of signers and their public keys are exposed.</td>
+                        <td class="border border-slate-300 p-3">N/A</td>
+                      </tr>
+                      <tr class="bg-slate-50">
+                        <td class="border border-slate-300 p-3 font-medium">Operational Flexibility</td>
+                        <td class="border border-slate-300 p-3"><strong>High.</strong> Policy changes and key management can be automated and done remotely.</td>
+                        <td class="border border-slate-300 p-3"><strong>Medium.</strong> Policy is often fixed in a smart contract; changing it can be complex.</td>
+                        <td class="border border-slate-300 p-3"><strong>Low.</strong> Requires physical access for many operations.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="text-xs text-slate-500 mt-2 italic">Table 1: A comparative analysis of MPC, Multi-Sig, and HSM technologies for digital asset custody.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Interaction -->
+          <div id="system-interaction" class="mb-16">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">System Interaction Mechanisms</h3>
+
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+                <h4 class="font-serif text-lg font-medium mb-4 text-slate-800">
+                  Q16: How Threshold ECDSA Protocols Function Within Ethereum&#39;s Transaction Verification System
+                </h4>
+                <div class="mb-4">
+                  <span class="inline-block bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded mr-2">Difficulty: F</span>
+                  <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-1 rounded">Type: System</span>
+                </div>
+                <p class="text-slate-600 italic mb-4">
+                  Explain how a Threshold ECDSA protocol interacts with the Ethereum Virtual Machine (EVM) during transaction verification. What are the key system-level interactions?
+                </p>
+                <div class="prose prose-slate max-w-none">
+                  <p class="text-slate-700 leading-relaxed">
+                    A Threshold ECDSA protocol interacts with the Ethereum Virtual Machine (EVM) in a seamless and transparent manner, leveraging the existing transaction verification system without requiring any modifications to the EVM itself. The <strong>Input</strong> is a transaction initiated from an MPC wallet, which needs to be signed. The <strong>Process</strong> of signing occurs entirely off-chain.
+                    <a href="#ref-a4" class="citation-link">[Ref: A4]</a>
+                  </p>
+                </div>
+                <div class="mt-6">
+                  <div class="bg-slate-50 p-6 rounded-lg">
+                    <h5 class="font-medium text-slate-800 mb-3">System Interaction Flow</h5>
+                    <div class="space-y-3 text-sm">
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs mr-3">1</div>
+                        <span class="text-slate-700">Off-chain MPC signing process generates standard ECDSA signature (r, s)</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs mr-3">2</div>
+                        <span class="text-slate-700">Transaction with signature is broadcast to Ethereum network</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs mr-3">3</div>
+                        <span class="text-slate-700">EVM&#39;s ECRECOVER precompiled contract verifies signature</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white text-xs mr-3">4</div>
+                        <span class="text-slate-700">Standard verification process completes without special handling</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Deep Dive Section -->
+      <section id="technical-deep-dive" class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <div class="section-divider mb-12"></div>
+
+          <h2 class="font-serif text-3xl font-semibold mb-12 text-slate-800">Technical Deep Dive: Core MPC Cryptographic Protocols</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Threshold Signature Schemes (TSS)</h3>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700">Threshold ECDSA: The Foundation for Bitcoin and Ethereum</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Threshold Elliptic Curve Digital Signature Algorithm (ECDSA) is a foundational cryptographic protocol that enables a group of n participants to collectively manage a single private key and produce valid digital signatures without any single party ever having access to the complete key. This is achieved by distributing the private key into n shares, such that any subset of t+1 participants can collaborate to sign a message, while any group of t or fewer participants cannot.
+              <a href="#ref-5" class="citation-link">[Ref: 5]</a>
+            </p>
+
+            <div class="bg-slate-50 border-l-4 border-teal-500 p-6 my-8">
+              <p class="text-slate-700 font-medium">
+                The core innovation of Threshold ECDSA lies in its ability to perform the necessary cryptographic operations\u2014specifically the inversion of a secret value (k^-1) and the multiplication of secret shares (x*k)\u2014in a distributed manner.
+              </p>
+            </div>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700 mt-8">FROST: A Two-Round Threshold Schnorr Signature Scheme</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              FROST (Flexible Round-Optimized Schnorr Threshold) is a state-of-the-art threshold signature scheme designed specifically for the Schnorr signature algorithm, which is gaining prominence due to its inclusion in Bitcoin via the Taproot upgrade. Unlike Threshold ECDSA, which requires complex and communication-heavy protocols, FROST leverages the linear structure of Schnorr signatures to achieve significant improvements in efficiency and simplicity.
+              <a href="#ref-3" class="citation-link">[Ref: 3]</a>
+            </p>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700 mt-8">BLS Signatures: Advantages for Aggregation and Consensus</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              BLS (Boneh-Lynn-Shacham) signatures represent another powerful class of threshold signature schemes, distinguished by their unique algebraic properties that enable efficient signature aggregation. Unlike ECDSA and Schnorr signatures, BLS signatures are based on pairing-based cryptography, specifically using bilinear maps on elliptic curves.
+              <a href="#ref-142" class="citation-link">[Ref: 142]</a>
+            </p>
+
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700 mt-12">Multi-Party Computation (MPC) Protocols</h3>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700">Distributed Key Generation (DKG) and Proactive Security</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Distributed Key Generation (DKG) is a fundamental protocol within the broader field of Multi-Party Computation (MPC) and serves as the critical first step in setting up any threshold signature scheme. The primary goal of DKG is to enable a group of n participants to collaboratively generate a public-private key pair in a distributed manner, such that no single participant ever learns the complete private key.
+              <a href="#ref-155" class="citation-link">[Ref: 155]</a>
+            </p>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700 mt-8">Verifiable Secret Sharing (VSS) and its Role in MPC</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              Verifiable Secret Sharing (VSS) is a cryptographic protocol that is a cornerstone of secure Multi-Party Computation (MPC) and, by extension, threshold signature schemes. It is an extension of the classic Shamir&#39;s Secret Sharing scheme, which allows a dealer to distribute a secret among n participants such that any t+1 of them can reconstruct the secret, but t or fewer cannot.
+              <a href="#ref-155" class="citation-link">[Ref: 155]</a>
+              <a href="#ref-156" class="citation-link">[Ref: 156]</a>
+            </p>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700 mt-8">The Role of Paillier Encryption in Threshold ECDSA Schemes</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              The Paillier cryptosystem, a form of public-key cryptography, plays a pivotal and specialized role in the implementation of many state-of-the-art Threshold ECDSA schemes, such as the GG20 protocol and its variants. Its primary utility stems from its <strong>homomorphic properties</strong>, specifically its ability to perform addition on encrypted plaintexts.
+              <a href="#ref-154" class="citation-link">[Ref: 154]</a>
+              <a href="#ref-155" class="citation-link">[Ref: 155]</a>
+            </p>
+
+            <div class="bg-slate-50 p-6 rounded-lg my-8">
+              <h5 class="font-medium text-slate-800 mb-3">Paillier Cryptosystem Applications</h5>
+              <ul class="text-slate-700 text-sm space-y-2">
+                <li>\u2022 <strong>Homomorphic Addition:</strong> Enables computations on encrypted data without revealing underlying secrets</li>
+                <li>\u2022 <strong>MtA Conversion:</strong> Multiplicative-to-Additive share conversion for secure distributed multiplication</li>
+                <li>\u2022 <strong>Security Foundation:</strong> Based on Decisional Composite Residuosity Assumption (DCRA)</li>
+              </ul>
+            </div>
+
+            <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700 mt-12">Signature Generation and Verification</h3>
+
+            <h4 class="font-serif text-xl font-medium mb-4 text-slate-700">How MPC Signatures Appear Indistinguishable from Standard Signatures On-Chain</h4>
+            <p class="text-slate-600 leading-relaxed mb-6">
+              A fundamental and highly desirable property of many modern threshold signature schemes, particularly those based on Schnorr (like FROST) and BLS signatures, is that the signatures they produce are <strong>indistinguishable</strong> from signatures generated by a standard, single-party cryptographic library.
+              <a href="#ref-3" class="citation-link">[Ref: 3]</a>
+              <a href="#ref-98" class="citation-link">[Ref: 98]</a>
+              <a href="#ref-142" class="citation-link">[Ref: 142]</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Strategic Analysis Section -->
+      <section id="strategic-analysis" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <div class="section-divider mb-12"></div>
+
+          <h2 class="font-serif text-3xl font-semibold mb-12 text-slate-800">Strategic Analysis: MPC Applications and Comparative Advantages</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Digital Asset Custody -->
+            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+              <h3 class="font-serif text-xl font-medium mb-6 text-slate-800">Digital Asset Custody</h3>
+
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-medium text-slate-700 mb-3">Eliminating Single Points of Failure</h4>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    The primary strategic advantage of MPC in digital asset custody is its fundamental ability to eliminate single points of failure through distributed key shares. By cryptographically splitting the private key into multiple encrypted shares, MPC ensures that no single party ever possesses the complete private key.
+                    <a href="#ref-73" class="citation-link">[Ref: 73]</a>
+                    <a href="#ref-72" class="citation-link">[Ref: 72]</a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-medium text-slate-700 mb-3">Scalability and Operational Efficiency</h4>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    For institutional clients, MPC offers significant advantages through blockchain agnosticism, flexible policy management, and key refresh capabilities. A single MPC infrastructure can support multiple blockchains, simplifying operations and reducing technical overhead.
+                    <a href="#ref-42" class="citation-link">[Ref: 42]</a>
+                    <a href="#ref-35" class="citation-link">[Ref: 35]</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Decentralized Finance -->
+            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+              <h3 class="font-serif text-xl font-medium mb-6 text-slate-800">Decentralized Finance (DeFi)</h3>
+
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-medium text-slate-700 mb-3">Enhancing Privacy and Reducing Fees</h4>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    MPC enables private transactions by obscuring transaction details from public mempools, preventing front-running and toxic MEV. The single-signature output also significantly reduces transaction fees compared to multi-signature alternatives.
+                    <a href="#ref-3" class="citation-link">[Ref: 3]</a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-medium text-slate-700 mb-3">Enabling Complex Financial Instruments</h4>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    MPC facilitates the creation of private derivatives markets, asset management funds, and decentralized credit scoring systems, enabling more sophisticated DeFi applications that require confidentiality and distributed trust.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cross-Chain Interoperability -->
+          <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200 mb-12">
+            <h3 class="font-serif text-xl font-medium mb-6 text-slate-800">Cross-Chain Interoperability and Bridge Security</h3>
+
+            <div class="prose prose-slate max-w-none">
+              <p class="text-slate-600 leading-relaxed mb-6">
+                Cross-chain interoperability is one of the most critical and challenging problems in the blockchain space, and Multi-Party Computation (MPC) offers a compelling solution for building more secure and trust-minimized bridges. Traditional cross-chain bridges often rely on a small, trusted set of validators, creating significant centralization risk. MPC-based bridges mitigate this risk by distributing signing authority across a larger, more decentralized network of nodes.
+                <a href="#ref-1" class="citation-link">[Ref: 1]</a>
+                <a href="#ref-2" class="citation-link">[Ref: 2]</a>
+              </p>
+
+              <div class="bg-slate-50 p-6 rounded-lg">
+                <h4 class="font-medium text-slate-800 mb-3">MPC Bridge Security Advantages</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <i class="fas fa-shield-alt text-white"></i>
+                    </div>
+                    <h5 class="font-medium text-slate-700 text-sm mb-1">Distributed Security</h5>
+                    <p class="text-slate-600 text-xs">No single point of failure across multiple nodes</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <i class="fas fa-users text-white"></i>
+                    </div>
+                    <h5 class="font-medium text-slate-700 text-sm mb-1">Trust Minimization</h5>
+                    <p class="text-slate-600 text-xs">Reduced reliance on centralized validator sets</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <i class="fas fa-exchange-alt text-white"></i>
+                    </div>
+                    <h5 class="font-medium text-slate-700 text-sm mb-1">Operational Efficiency</h5>
+                    <p class="text-slate-600 text-xs">Faster and more flexible cross-chain transactions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparison with Alternative Techniques -->
+          <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Comparison with Alternative Cryptographic Techniques</h3>
+
+          <div class="space-y-8">
+            <!-- MPC vs Multi-Sig -->
+            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+              <h4 class="font-serif text-xl font-medium mb-6 text-slate-800">MPC vs. Multi-Signature: On-Chain Footprint and Privacy</h4>
+
+              <div class="prose prose-slate max-w-none">
+                <p class="text-slate-600 leading-relaxed mb-6">
+                  The most fundamental difference between MPC and Multi-Signature schemes lies in the nature of the cryptographic output. A multi-signature wallet requires multiple distinct private keys and produces multiple distinct signatures on-chain, while an MPC wallet splits a single private key and produces a single, standard signature indistinguishable from a traditional single-key wallet.
+                  <a href="#ref-98" class="citation-link">[Ref: 98]</a>
+                  <a href="#ref-100" class="citation-link">[Ref: 100]</a>
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-50 rounded-lg">
+                  <h5 class="font-medium text-slate-800 mb-3">Multi-Signature Limitations</h5>
+                  <ul class="text-slate-700 text-sm space-y-2">
+                    <li>\u2022 Reveals governance structure on-chain</li>
+                    <li>\u2022 Larger transaction size and higher fees</li>
+                    <li>\u2022 Requires smart contract support</li>
+                    <li>\u2022 Limited compatibility with some dApps</li>
+                  </ul>
+                </div>
+                <div class="p-4 bg-teal-50 rounded-lg">
+                  <h5 class="font-medium text-teal-800 mb-3">MPC Advantages</h5>
+                  <ul class="text-teal-700 text-sm space-y-2">
+                    <li>\u2022 Complete privacy of signing process</li>
+                    <li>\u2022 Constant transaction size and cost</li>
+                    <li>\u2022 Universal blockchain compatibility</li>
+                    <li>\u2022 Seamless integration with existing infrastructure</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- MPC vs HSMs -->
+            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
+              <h4 class="font-serif text-xl font-medium mb-6 text-slate-800">MPC vs. Hardware Security Modules: Flexibility vs. Physical Security</h4>
+
+              <div class="prose prose-slate max-w-none">
+                <p class="text-slate-600 leading-relaxed mb-6">
+                  The comparison between MPC and Hardware Security Modules (HSMs) represents a trade-off between cryptographic flexibility and physical security. HSMs provide tamper-resistant hardware protection but represent a single point of failure, while MPC offers distributed security with greater operational flexibility.
+                  <a href="#ref-76" class="citation-link">[Ref: 76]</a>
+                  <a href="#ref-75" class="citation-link">[Ref: 75]</a>
+                  <a href="#ref-73" class="citation-link">[Ref: 73]</a>
+                </p>
+              </div>
+
+              <div class="bg-slate-50 p-6 rounded-lg">
+                <h5 class="font-medium text-slate-800 mb-4">Strategic Trade-off Analysis</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h6 class="font-medium text-slate-700 mb-2">HSMs</h6>
+                    <ul class="text-slate-600 text-sm space-y-1">
+                      <li>\u2022 <strong>Strength:</strong> Physical tamper resistance</li>
+                      <li>\u2022 <strong>Weakness:</strong> Single point of failure</li>
+                      <li>\u2022 <strong>Limitation:</strong> Requires physical access</li>
+                      <li>\u2022 <strong>Best for:</strong> Long-term cold storage</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h6 class="font-medium text-slate-700 mb-2">MPC</h6>
+                    <ul class="text-slate-600 text-sm space-y-1">
+                      <li>\u2022 <strong>Strength:</strong> Distributed security model</li>
+                      <li>\u2022 <strong>Advantage:</strong> Operational flexibility</li>
+                      <li>\u2022 <strong>Benefit:</strong> Remote management capability</li>
+                      <li>\u2022 <strong>Best for:</strong> Active trading and DeFi</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References Section -->
+      <section class="py-16 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6 max-w-4xl">
+          <h2 class="font-serif text-2xl font-medium mb-8 text-slate-800">References</h2>
+
+          <div class="space-y-4 text-sm">
+            <div id="ref-104" class="p-4 bg-slate-50 rounded">
+              <strong>[104]</strong> Threshold ECDSA Implementation Guide.
+              <a href="https://eprint.iacr.org/2025/910.pdf" class="citation-link" target="_blank">https://eprint.iacr.org/2025/910.pdf</a>
+            </div>
+
+            <div id="ref-142" class="p-4 bg-slate-50 rounded">
+              <strong>[142]</strong> NIST Threshold BLS Signature Scheme Presentation.
+              <a href="https://csrc.nist.gov/csrc/media/presentations/2025/stppa8-threshold-bls/images-media/stppa8-tbls.pdf" class="citation-link" target="_blank">https://csrc.nist.gov/csrc/media/presentations/2025/stppa8-threshold-bls/images-media/stppa8-tbls.pdf</a>
+            </div>
+
+            <div id="ref-72" class="p-4 bg-slate-50 rounded">
+              <strong>[72]</strong> Multi-Party Computation in Blockchain: What are MPC Wallets?
+              <a href="https://hashlock.com/blog/multi-party-computation-in-blockchain-what-are-mpc-wallets" class="citation-link" target="_blank">https://hashlock.com/blog/multi-party-computation-in-blockchain-what-are-mpc-wallets</a>
+            </div>
+
+            <div id="ref-73" class="p-4 bg-slate-50 rounded">
+              <strong>[73]</strong> Fireblocks MPC Solution Overview.
+              <a href="https://www.fireblocks.com/what-is-mpc" class="citation-link" target="_blank">https://www.fireblocks.com/what-is-mpc</a>
+            </div>
+
+            <div id="ref-42" class="p-4 bg-slate-50 rounded">
+              <strong>[42]</strong> Cube Exchange: MPC Multi-Party Computation.
+              <a href="https://www.cube.exchange/zh-cn/what-is/mpc-multi-party-computation" class="citation-link" target="_blank">https://www.cube.exchange/zh-cn/what-is/mpc-multi-party-computation</a>
+            </div>
+
+            <div id="ref-3" class="p-4 bg-slate-50 rounded">
+              <strong>[3]</strong> FROST: Flexible Round-Optimized Schnorr Threshold Signatures.
+              <a href="https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/2024/2252865" class="citation-link" target="_blank">https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/2024/2252865</a>
+            </div>
+
+            <div id="ref-76" class="p-4 bg-slate-50 rounded">
+              <strong>[76]</strong> Key Differences Between HSM, MPC, and Multi-Sig Wallets.
+              <a href="https://www.liminalcustody.com/blog/key-differences-between-hsm-mpc-and-multi-sig-wallets-explained/" class="citation-link" target="_blank">https://www.liminalcustody.com/blog/key-differences-between-hsm-mpc-and-multi-sig-wallets-explained/</a>
+            </div>
+
+            <div id="ref-98" class="p-4 bg-slate-50 rounded">
+              <strong>[98]</strong> Multi-Party Computation 101.
+              <a href="https://juliawu.medium.com/multi-party-computation-mpc-101-67ea58778b0" class="citation-link" target="_blank">https://juliawu.medium.com/multi-party-computation-mpc-101-67ea58778b0</a>
+            </div>
+
+            <div id="ref-1" class="p-4 bg-slate-50 rounded">
+              <strong>[1]</strong> Internet Computer: Threshold ECDSA Signatures.
+              <a href="https://internetcomputer.org/docs/building-apps/network-features/signatures/t-ecdsa" class="citation-link" target="_blank">https://internetcomputer.org/docs/building-apps/network-features/signatures/t-ecdsa</a>
+            </div>
+
+            <div id="ref-2" class="p-4 bg-slate-50 rounded">
+              <strong>[2]</strong> MIT Research: Secure Cross-Chain Bridges.
+              <a href="https://dspace.mit.edu/bitstream/handle/1721.1/155455/3634737.3637657.pdf?sequence=1&amp;isAllowed=y" class="citation-link" target="_blank">https://dspace.mit.edu/bitstream/handle/1721.1/155455/3634737.3637657.pdf?sequence=1&amp;isAllowed=y</a>
+            </div>
+
+            <div id="ref-155" class="p-4 bg-slate-50 rounded">
+              <strong>[155]</strong> NDSS Symposium: Proactive Security in Distributed Systems.
+              <a href="https://www.ndss-symposium.org/wp-content/uploads/2023-817-paper.pdf" class="citation-link" target="_blank">https://www.ndss-symposium.org/wp-content/uploads/2023-817-paper.pdf</a>
+            </div>
+
+            <div id="ref-154" class="p-4 bg-slate-50 rounded">
+              <strong>[154]</strong> Paillier Cryptosystem in Threshold ECDSA.
+              <a href="https://hackmd.io/@omershlo/Hy1jbo6JY" class="citation-link" target="_blank">https://hackmd.io/@omershlo/Hy1jbo6JY</a>
+            </div>
+
+            <div id="ref-5" class="p-4 bg-slate-50 rounded">
+              <strong>[5]</strong> Threshold Signatures Implementation.
+              <a href="https://github.com/ing-bank/threshold-signatures" class="citation-link" target="_blank">https://github.com/ing-bank/threshold-signatures</a>
+            </div>
+
+            <div id="ref-141" class="p-4 bg-slate-50 rounded">
+              <strong>[141]</strong> Security Proofs for Threshold Signature Schemes.
+              <a href="https://eprint.iacr.org/2024/1920.pdf" class="citation-link" target="_blank">https://eprint.iacr.org/2024/1920.pdf</a>
+            </div>
+
+            <div id="ref-156" class="p-4 bg-slate-50 rounded">
+              <strong>[156]</strong> Advanced Threshold Signature Research.
+              <a href="https://eprint.iacr.org/2025/910.pdf" class="citation-link" target="_blank">https://eprint.iacr.org/2025/910.pdf</a>
+            </div>
+          </div>
+
+          <!-- Internal References -->
+          <div class="mt-12 pt-8 border-t border-slate-200">
+            <h3 class="font-serif text-lg font-medium mb-6 text-slate-700">Internal References</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div id="ref-g1" class="p-3 bg-slate-50 rounded">
+                <strong>[G1]</strong> Growth Loops - Refer to Section 2.1.1
+              </div>
+              <div id="ref-a1" class="p-3 bg-slate-50 rounded">
+                <strong>[A1]</strong> Network Effects Analysis - Refer to Section 2.1.2
+              </div>
+              <div id="ref-g7" class="p-3 bg-slate-50 rounded">
+                <strong>[G7]</strong> Balancing Feedback Loops - Refer to Section 2.4.1
+              </div>
+              <div id="ref-a2" class="p-3 bg-slate-50 rounded">
+                <strong>[A2]</strong> Institutional Retention Factors - Refer to Section 2.2.2
+              </div>
+              <div id="ref-t1" class="p-3 bg-slate-50 rounded">
+                <strong>[T1]</strong> MPCaaS Economics - Refer to Section 2.3.1
+              </div>
+              <div id="ref-l1" class="p-3 bg-slate-50 rounded">
+                <strong>[L1]</strong> User Journey Mapping - Refer to Section 2.4.1
+              </div>
+              <div id="ref-a3" class="p-3 bg-slate-50 rounded">
+                <strong>[A3]</strong> Competitive Landscape Analysis - Refer to Section 2.5.1
+              </div>
+              <div id="ref-a4" class="p-3 bg-slate-50 rounded">
+                <strong>[A4]</strong> EVM Integration - Refer to Section 2.6.1
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
