@@ -1,128 +1,104 @@
-# Relationship Analysis Interview Generator
+# Relationship Analysis Q&A Generator (Minimal Viable)
 
-Generate 30-35 interview Q&A pairs testing comprehensive relationship analysis across software lifecycle, covering technical, business, market, and regulatory dimensions with precise relationship verbs and quantified metrics.
+Generate **6-12 decision-critical relationship analysis Q&As** for informed architecture & team alignment decisions. Minimal viable template with time constraints: focus on coupling metrics, team structure alignment, and integration complexity that blocks decisions or creates material risk.
 
 ## Requirements
 
 ### Context & Scope
 - **Domain**: Production-grade distributed systems (>10K rps, >1TB data, multi-team)
-- **Audience**: BA, PM, Architect, Developer, QA/SET, DevOps, Security, Data Engineer, SRE, Leadership
-- **Focus**: Comprehensive relationship analysis (7 types) across technical ↔ business ↔ market ↔ regulatory with precise verbs
+- **Audience**: Architect, Developer, DevOps/SRE, Leadership, PM (5 core roles)
+- **Focus**: Decision-critical relationship analysis only (blocks architecture/team alignment decisions or creates material risk)
+- **Effort**: 3-4h per generation cycle
 
 **Core Principles**:
-1. **Universal Applicability**: Relationship concepts (entities, cardinality, coupling, hierarchies) apply to ANY domain—not just software (business processes, organizational structures, market ecosystems, regulatory frameworks)
-2. **Structural Foundation First**: Master structural organization (decomposition, composition, layering, modularity, hierarchies) before analyzing dependencies, behaviors, or integrations
+1. **Pareto Principle**: Focus on 20% of relationship patterns that drive 80% of architecture/team decisions
+2. **Decision-First**: Every Q&A must block a decision or create material risk (coupling, team misalignment, integration bottleneck)
+3. **Time-Constrained**: Minimal reference overhead, streamlined validation, 3-4h effort
 
 ### Output Specifications
-- **Format**: 150-350 words, Mermaid diagrams, metrics tables, APA 7th [EN]/[ZH]
-- **Quantity**: 30-35 Q&As; Difficulty: 20/40/40 (F/I/A)
-- **Coverage**: MECE 8 Lifecycle × 7 Types (≥1 Q&A per major combo)
-  - **Lifecycle**: Requirements, Architecture, Development, Testing, Deployment, Operations, Maintenance, Evolution
-  - **Types**: Structural, Behavioral/Temporal, Dependency/Coupling, Business/Market, Regulatory/Compliance, Integration/Interface, Emergent/Network
-- **Traceability**: Entity → Direct → Transitive → Network (quantified)
-- **Per Cluster**: ≥1 diagram, ≥1 DSM, ≥1 network, ≥1 constraint analysis
+- **Format**: 120-200 words, Mermaid diagrams, metrics tables, APA 7th [EN]/[ZH]
+- **Quantity**: 6-12 Q&As; Difficulty: 25% F / 50% I / 25% A
+- **Coverage**: 3-4 decision-critical dimensions × 3-4 lifecycle phases
+  - **Dimensions**: Structural Coupling, Team Alignment (Conway's Law), Dependency Risk, Integration Complexity
+  - **Phases**: Architecture & Design, Development, Deployment & Operations, Evolution & Governance
+- **Traceability**: News → Decision Criticality → Coupling Metrics → Action
+- **Per Q&A**: ≥1 diagram, ≥1 metrics table, quantified impact
 
 ### Content Standards
-- **Precision**: Precise verbs (depends on, constrains, enables), quantified strength (coupling 0-1, cardinality 1:1/1:N/M:N)
+- **Precision**: Precise verbs (depends on, constrains, enables, aligns), quantified strength (coupling 0-1, Ca/Ce/Instability)
 - **Credibility**: Industry case studies, academic papers; sources ≤3yr
-- **Balance**: Bi-directional, positive/negative, direct/transitive relationships
-- **Logic**: Multi-level networks with quantified metrics
-- **Concision**: Diagrams/matrices over text
+- **Quantification**: All relationships must have metrics (coupling coefficient, team alignment score, MTTR impact, deployment frequency)
+- **Concision**: 120-200w answers, diagrams/matrices over text
 
-## Relationship Analysis Framework
+## Decision Criticality Framework (NEW)
 
-### Lifecycle × Relationship Coverage (MECE Required)
+**Include Q&A if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts architecture refactoring, team restructuring, or integration strategy
+- **Creates Risk**: Material threat (coupling bottleneck, team misalignment, integration complexity blocking deployment)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Architect + DevOps, Developer + Leadership, etc.)
+- **Requires Action**: 1-6mo action window (not speculative)
+- **Quantified Impact**: Coupling metrics (Ca/Ce/I), deployment frequency %, MTTR impact, team velocity %
 
-Ensure ≥1 Q&A covers each phase-type combination. Example relationships by phase:
+**Exclude if**: Niche/legacy patterns, orthogonal/nice-to-have, already covered, speculative
 
-| Phase | Example Verbs | Key Focus |
-|-------|--------------|-----------|
-| **Requirements** | owns, constrains, demands, governs, triggers, depends on | Stakeholder-requirement, market-feature, regulation-constraint |
-| **Architecture** | composes, depends on, exposes, maps to, enforces, flows through | Component-system, service-database, capability-service, layer-responsibility |
-| **Development** | inherits from, imports, calls, couples to, contributes to, facilitates | Class-base, module-dependency, feature-revenue, code-framework |
-| **Testing** | covers, validates, depends on, measures, verifies, balances | Test-code, quality-retention, contract-API, strategy-confidence |
-| **Deployment** | stages, orchestrates, requires, enables, gates, switches | Environment-progression, release-migration, approval-production, strategy-risk |
-| **Operations** | displays, notifies, depends on, defines, complies with, integrates | Dashboard-metrics, SLO-experience, service-monitoring, platform-signals |
-| **Maintenance** | fixes, resolves, depends on, erodes, mandates, maintains | Patch-vulnerability, support-logging, cost-margin, compatibility-clients |
-| **Evolution** | evolves, replaces, depends on, enables, mandates, shapes | Architecture-target, platform-adoption, governance-standards, Conway's Law-structure |
+## Decision-Critical Relationship Dimensions (4)
 
-### Relationship Type Reference
+| Dimension | Decision Trigger | Example News | Metrics |
+|-----------|------------------|--------------|---------|
+| **Structural Coupling** | Coupling >0.7 or Ca/Ce imbalance | Microservices: 50 services, avg Ce=8, I=0.8 (unstable). Refactor? | Ca, Ce, Instability I=Ce/(Ca+Ce) |
+| **Team Alignment (Conway's Law)** | Team structure ≠ system architecture | 12 teams, 8 services. Misalignment → 40% slower deploys. Reorganize? | Team-service mapping, deployment frequency, MTTR |
+| **Dependency Risk** | Critical path dependencies or circular deps | Payment **depends on** Stripe (external), 3 internal services. SLA risk? | Dependency depth, critical path, cycle detection |
+| **Integration Complexity** | API coupling >10 or protocol mismatch | 20 microservices, 150+ API integrations. Contract testing coverage 60%. Improve? | API count, integration complexity, contract coverage % |
 
-| Relationship Type | Relationship Verbs (Precise) | Key Metrics (Quantified) | Analysis Frameworks | Diagram Types |
-|-------------------|------------------------------|--------------------------|---------------------|---------------|
-| **Structural** | composes, contains, owns, encapsulates, aggregates, inherits from, implements, extends, part of, consists of, decomposes into, layers on, modules within, boundaries between, abstracts over | Coupling coefficient (0-1), Cohesion metric (LCOM 0-1), Depth of inheritance (0-N), Component count, Modularity index, Abstraction level (0-N layers), Decomposition depth, Boundary clarity | UML Class Diagrams, Component Diagrams, Package Diagrams, C4 Model (4-level abstraction), Domain Models, Decomposition Trees, Layer Diagrams | Class diagrams, component diagrams, package diagrams, ERD, decomposition trees, layer diagrams, module boundaries |
-| **Behavioral/Temporal** | triggers, follows, precedes, flows through, transitions to, executes before/after, synchronizes with, awaits, propagates, cascades | Event frequency (events/sec), Latency (ms), Throughput (ops/sec), State transition probability, Sequence depth (steps) | UML Sequence Diagrams, State Machines, Activity Diagrams, BPMN, Event Storming | Sequence diagrams, state machines, activity diagrams, event flows |
-| **Dependency/Coupling** | depends on, requires, relies on, couples to, binds to, calls, invokes, uses, references, imports | Dependency weight (0-1), Afferent coupling (Ca), Efferent coupling (Ce), Instability (I=Ce/(Ca+Ce)), Distance from main sequence | Dependency Structure Matrix (DSM), Dependency Graphs, Call Graphs, Impact Analysis | Dependency graphs, DSM matrices, call trees, coupling matrices |
-| **Business/Market** | contributes to, enables, supports, drives, influences, shapes, determines, constrains, competes with, complements | Revenue attribution ($), Customer lifetime value (CLV), Market share (%), Competitive advantage index, ROI (%), Time-to-market (days) | Business Model Canvas, Value Proposition Canvas, Value Stream Mapping, Porter's Five Forces, Wardley Maps | Business capability maps, value streams, customer journey maps, positioning matrices |
-| **Regulatory/Compliance** | governs, mandates, requires, forbids, permits, restricts, enforces, validates, complies with, certifies | Compliance coverage (%), Violation risk score (CVSS), Audit finding count, Regulatory cost ($), Certification status, Policy enforcement (%) | GDPR, HIPAA, PCI-DSS, SOC2, ISO 27001, NIST Framework, Compliance Matrices, Risk Registers | Compliance matrices, risk heat maps, audit trails, policy hierarchies, control mappings |
-| **Integration/Interface** | exposes, consumes, integrates with, transforms, adapts, translates, routes, proxies, mediates, orchestrates | API call volume (requests/sec), Integration complexity (interface count), Protocol compatibility (%), Latency overhead (ms), Transformation cost (CPU%) | API Design (REST, GraphQL, gRPC), Integration Patterns, ESB, Service Mesh, Contract Testing | API diagrams, integration architecture, data flow diagrams, protocol layers, contracts |
-| **Emergent/Network** | emerges from, amplifies, reinforces, balances, competes with, influences, shapes, evolves, distributes, accumulates | Network density (edges/nodes), Centrality (betweenness, degree, closeness), Clustering coefficient, Emergence score, Network effect multiplier | Network Analysis, Graph Theory, Systems Thinking, Conway's Law, Complexity Theory, Agent-Based Modeling | Network graphs, force-directed layouts, centrality heat maps, feedback loops, system dynamics |
+## Visuals & Metrics (Minimal Viable)
 
-## Visuals & Metrics
+**Per Q&A**: ≥1 diagram (DSM/Dependency graph/Component diagram) + ≥1 metrics table (coupling/alignment/complexity quantified)
 
-Use diagrams and metrics from Relationship Type Reference (Section 2.2). Key diagram types: Class/Component/ERD (structural), Sequence/State (behavioral), DSM/Dependency graph (coupling), Value stream/Journey map (business), Compliance matrix (regulatory), API/Integration (interface), Network graph (emergent).
+**Key Diagram Types**:
+- **Structural Coupling**: DSM (Dependency Structure Matrix), Component diagram
+- **Team Alignment**: Team-service mapping, org chart overlay
+- **Dependency Risk**: Dependency graph, critical path diagram
+- **Integration Complexity**: API diagram, contract testing matrix
 
-## Relationship Analysis Frameworks & Approaches
+## Q&A Design (Minimal Viable)
 
-| Framework | When to Use | Pros | Cons | Trade-offs | References |
-|-----------|-------------|------|------|------------|------------|
-| **UML** | OO design, structural/behavioral modeling | Standard notation, broad tool support, precise | Steep learning curve, over-formal | Precision vs. agility | Fowler (2003), Booch (2005) |
-| **C4 Model** | Architecture documentation, 4 abstraction levels | 4 zoom levels, simple, Mermaid support | Less behavioral, newer | Simplicity vs. completeness | Brown (2018), Structurizr |
-| **ERD** | Universal modeling, ANY domain, cardinality (1:1/1:N/M:N) | Industry standard, applies anywhere, clear semantics | Less behavioral, notation variants | Universal vs. domain-specific | Chen (1976), Simsion (2005) |
-| **DSM** | Dependency analysis, refactoring, cycles | Quantifies coupling (Ca/Ce), detects cycles | Scales poorly >50, less intuitive | Precision vs. visual clarity | Steward (1981), Lattix |
-| **DDD** | Complex domains, bounded contexts | Maps business to code, context boundaries | High investment, domain experts needed | Alignment vs. speed | Evans (2003), Vernon (2013) |
-| **Network Analysis** | Complexity, centrality, emergent patterns | Quantifies structure, detects communities | Requires graph data, O(n²) | Rigor vs. intuition | Newman (2010), Gephi, Neo4j |
-| **RACI** | Stakeholder responsibilities, role clarity | Simple 4-category, clarifies ownership | Static, maintenance overhead | Clarity vs. flexibility | PMI PMBOK, ITIL |
-| **Capability Mapping** | Enterprise architecture, business-IT alignment | Links business-tech, identifies redundancy | Abstract, evolves slowly | Strategic vs. tactical | TOGAF, ArchiMate |
-| **Value Stream** | Process optimization, waste identification | Visualizes flow, quantifies waste | Linear view, process-centric | Process vs. system view | Rother (1999), Lean |
+**Principles**: Decision-critical (blocks architecture/team decision), quantified (coupling metrics, team velocity impact), scenario-based (real-world system contexts)
 
-## Question Design
+**Example Q&A Candidates** (6-12 total):
 
-**Principles**: Test relationship analysis (not recall); real-world scenarios; map multi-type relationships; span all 7 types; use precise verbs
+| Dimension | Phase | Decision Trigger | Q&A Example |
+|-----------|-------|------------------|------------|
+| **Structural Coupling** | Architecture & Design | Coupling I >0.7 | Microservices: 50 services, avg Ce=8, I=0.8. Refactor to reduce coupling? [Blocks architecture decision] |
+| **Team Alignment** | Development | Team-service mismatch | 12 teams, 8 services. Misalignment → 40% slower deploys. Reorganize teams? [Blocks org decision] |
+| **Dependency Risk** | Deployment & Ops | Critical path or circular deps | Payment depends on Stripe (external). 3 internal services. SLA risk? [Creates risk] |
+| **Integration Complexity** | Development | API coupling >10 or contract coverage <70% | 20 microservices, 150+ APIs. Contract testing 60%. Improve? [Blocks integration strategy] |
 
-**Good vs. Poor Examples**:
+**Mandatory Elements per Q&A** (streamlined):
+1. **Scenario context**: System scale, team structure, current state (quantified)
+2. **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
+3. **Coupling metrics**: Ca, Ce, Instability, or team alignment score
+4. **Precise verbs**: depends on, constrains, enables, aligns, couples to
+5. **Visuals**: ≥1 diagram (DSM/dependency graph/team map) + ≥1 metrics table
+6. **Trade-offs**: ≥2 alternatives with rationale
+7. **Citation**: ≥1 [Ref: ID]
 
-| ✅ Good | ❌ Poor | Why |
-|---------|---------|-----|
-| "E-commerce: (1) Decompose 4 layers; (2) 8 bounded contexts; (3) Analyze coupling: Order **depends on** Payment (0.8), Payment **couples to** Stripe (Ce=3, Ca=1, I=0.75). Show layer, decomposition, DSM." | "What is coupling?" | Tests analysis with structure-first + quantified metrics vs. recall |
-| "Payment **exposes** API (500 rps); GDPR **mandates** encryption; Encryption **increases** latency 30ms; **conflicts with** SLO. Map all types, quantify." | "How does payment work?" | Multi-type relationships with precise verbs + metrics vs. vague |
-| "Microservices (20): Calculate API Gateway centrality (0.85); Conway's Law **aligns** teams; density=0.3. Use force-directed graph." | "What is microservices?" | Network analysis with quantified metrics vs. definition |
-| "Auth **enables** login, **implements** OAuth2, **complies with** SOC2, **exposes** /auth; Ce=8 **constrains** deployment; downtime **costs** $10K/hr. Show DSM, capability, compliance." | "Explain OAuth2" | Cross-viewpoint (tech+business+regulatory) vs. single dimension |
+## Stakeholder Coverage (5 Core Roles)
 
-### Stakeholder Context by Role
+| Role | Focus | Expected Detail |
+|------|-------|-----------------|
+| **Architect** | Coupling metrics, refactoring strategy, DSM analysis | Ca/Ce/Instability, dependency cycles, component boundaries |
+| **Developer** | Code coupling, module dependencies, integration patterns | Dependency trees, coupling coefficients, interface design |
+| **DevOps/SRE** | Team alignment, deployment frequency, MTTR impact | Team-service mapping, deployment pipeline, incident response |
+| **Leadership** | Org structure, team velocity, strategic alignment | Conway's Law alignment, team productivity, roadmap impact |
+| **PM** | Feature coupling, integration complexity, time-to-market | API dependencies, contract testing, release coordination |
 
-| Role | Relationship Analysis Focus | Expected Detail |
-|------|----------------------------|----------------|
-| **Business Analyst** | Business capability **maps to** system feature; Requirement **constrains** solution; Stakeholder **owns** acceptance criteria; Use case **depends on** data entities | Capability mapping (business function → feature → component), requirement traceability matrix, stakeholder-requirement-component network, domain model with entity relationships (1:1, 1:N, M:N) |
-| **Product Manager** | Feature **contributes to** revenue; Customer segment **demands** capability; Market competitor **influences** pricing; Product vision **shapes** roadmap priority | Value stream mapping (customer need → feature → outcome), impact mapping (goal → actor → impact → deliverable), competitive positioning matrix, OKR-feature-metric linkage, Wardley maps |
-| **Architect** | Component **composes** system; Service **depends on** database (coupling metrics); API **exposes** interface; Layer **encapsulates** responsibility; Conway's Law **aligns** teams to modules | C4 diagrams (Context/Container/Component/Code), dependency graphs with coupling metrics (Ca, Ce, Instability), ADRs documenting relationship trade-offs, DSM matrix for refactoring analysis |
-| **Developer** | Class **inherits from** base; Module **imports** dependency; Function **calls** API; Code **couples to** framework (coupling coefficient); Implementation **relies on** library | UML class diagrams with inheritance/composition/aggregation, call graphs, dependency trees, coupling/cohesion metrics (LCOM, Ca, Ce), interface-implementation relationships |
-| **QA/SET** | Test **covers** code (coverage %); Test suite **depends on** fixture; Contract test **validates** API; Quality gate **enforces** threshold; Flaky test **undermines** confidence | Test coverage matrix (requirement → test → code), test dependency graph, contract specifications (provider-consumer), quality metric relationships (coverage → defect density) |
-| **DevOps** | Pipeline **orchestrates** stages; Environment **stages** deployment; Service **relies on** infrastructure; Feature flag **controls** rollout; Blue-green **switches** traffic | CI/CD pipeline diagram (trigger → stage → artifact), infrastructure dependency graph (service → container → VM → region), deployment topology, feature flag architecture |
-| **Security** | Threat **exploits** vulnerability; Control **mitigates** risk; Policy **enforces** standard; Compliance **mandates** audit; Attack **propagates** through trust boundary | Threat models (STRIDE), attack trees (goal → sub-goal → vector), risk matrices (threat → vulnerability → impact), compliance mapping (regulation → control → evidence) |
-| **Data Engineer** | Entity **relates to** entity (cardinality 1:1, 1:N, M:N—applicable to ANY domain: business entities, organizational entities, market entities, not just database); Pipeline **transforms** data; Schema **defines** structure; Migration **evolves** schema; Partition **distributes** data | ERD for universal entity modeling (business, market, technical, organizational), data flow diagrams (source → transformation → sink), schema evolution diagrams, data lineage graphs (source → derived field → dashboard) |
-| **SRE** | Service **depends on** monitoring; Alert **notifies** on-call; SLO **defines** reliability; Dashboard **displays** metrics; Incident **escalates** to leadership | Service dependency graph with SLO annotations, monitoring-alert-runbook linkage, incident response RACI, observability platform integration diagram (metrics → traces → logs) |
-| **Leadership** | Team **owns** service (Conway's Law); Investment **enables** capability; Platform **supports** product line; Governance **enforces** standard; Ecosystem **influences** technology choice | Organizational chart mapped to system architecture, RACI matrices, capability-investment roadmap, governance structure (policy → standard → implementation), strategic dependency analysis |
+## References & Quality (Minimal Viable)
 
-**Mandatory Elements per Q&A**:
-1. **Structural foundation FIRST**: Decomposition → Layering → Modularity → Hierarchies (essential before analyzing other relationships)
-2. **Relationship network**: Entity → Direct (precise verbs) → Transitive → Network effects (quantified)
-3. **Visuals**: Structural diagrams, relationship diagrams (class/component/ERD/network), DSM, metrics table
-4. **Context**: Phase, role, ≥3 relationship types (structural FIRST + ≥2 others)
-5. **Citation**: ≥1 [Ref: ID]
-6. **Insight**: Key finding on coupling metrics, bi-directional, or network effects (1 sentence)
-7. **Trade-offs**: Structural alternatives (tight vs loose, hierarchical vs flat, direct vs mediated)
-8. **Metrics**: Quantified (coupling 0-1, Ca/Ce/I, cardinality 1:1/1:N/M:N, centrality, modularity Q)
-9. **Precise verbs**: All relationships use domain-specific verbs (see Relationship Type Reference)
-10. **Stakeholder perspectives**: Role-specific analysis (≥2 viewpoints)
-
-## References & Quality
-
-### Reference Minimums
-- **≥30 Glossary**: Structural (Decomposition, Modularity, Layering, Hierarchy); Coupling/Cohesion (Ca, Ce, LCOM, Instability I=Ce/(Ca+Ce)); Relationships (Cardinality 1:1/1:N/M:N, Dependency, Association, Inheritance); Network (Density, Centrality, Clustering); Others (Conway's Law, Network Effect, Transitive). All with formulas/quantification
-- **≥15 Tools**: Modeling (PlantUML, Mermaid, Structurizr), Analysis (Lattix, Structure101, NDepend), Dependency (Gephi, NetworkX, Neo4j), Business (Miro, draw.io), Compliance (GRC, Archer). Include: purpose, price, update ≤18mo, type support
-- **≥20 Literature**: UML (Fowler 2003), Architecture (Bass 2021, Brown C4 2018), DDD (Evans 2003), Data (Chen ERD 1976, Simsion 2005), Coupling (Martin 2017), Network (Newman 2010, Barabási 2016), Systems (Senge 1990), Business (TOGAF, Osterwalder BMC 2010), Teams (Conway 1968, Skelton Team Topologies 2019), Integration (Hohpe 2003)
-- **≥40 Citations**: APA 7th [EN]/[ZH], DOI/URL, academic + standards (UML, ArchiMate, TOGAF) + case studies
+### Reference Minimums (60% reduction)
+- **≥12 Glossary**: Ca, Ce, Instability, Coupling, Cohesion, Cardinality, Dependency, Conway's Law, DSM, Team Alignment, Coupling Coefficient, Network Density
+- **≥6 Tools**: Structurizr (C4), Lattix (DSM), Mermaid (diagrams), PlantUML (UML), Gephi (network), draw.io (architecture)
+- **≥6 Literature**: Fowler (2003), Martin (2017), Newman (2010), Conway (1968), Evans (2003), Brown (2018)
+- **≥8 Citations**: APA 7th [EN]/[ZH], all decision-critical, ≤3yr old
 
 ### Quality Gates (all must PASS)
 
@@ -231,41 +207,40 @@ Use diagrams and metrics from Relationship Type Reference (Section 2.2). Key dia
 **A2. Chen, P. P. (1976). "The Entity-Relationship Model." *ACM TODS*, 1(1), 9-36.** DOI: 10.1145/320434.320440 [EN]
 **A3. Newman, M. E. J. (2010). *Networks*. Oxford.** Network analysis, centrality. ISBN: 978-0199206650 [EN]
 
-## Validation Results
+### Validation Checks (12 streamlined)
 
-| Gate | Requirement | Status | Evidence |
-|------|-------------|--------|----------|
-| Lifecycle | 8 phases, ≥3 each | ✅ PASS | Req=4, Arch=5, Dev=4, Test=6, Deploy=4, Ops=5, Maint=3, Evol=4 |
-| Stakeholder | ≥8/10 roles, ≥2 each | ✅ PASS | BA=3, PM=4, Arch=5, Dev=4, QA=4, DevOps=3, Sec=2, Data=3, SRE=4, Lead=3 |
-| Relationship Types | 7 types, ≥4 each | ✅ PASS | Structural=8, Behavioral=7, Dependency=9, Business=6, Regulatory=5, Integration=7, Emergent=6 |
-| Difficulty | 20/40/40 ±5% | ✅ PASS | 7F/14I/14A = 20%/40%/40% |
-| Relationship Network Depth | ≥3 levels, 100% | ✅ PASS | 35/35 = 100%, avg depth 3.8 levels |
-| Quantified Relationships | 100% have metrics | ✅ PASS | 35/35 = 100% (coupling/cardinality/centrality metrics) |
-| Multi-Type Analysis | ≥70% analyze ≥3 types | ✅ PASS | 28/35 = 80% multi-type |
-| Precise Verbs | 100% use precise verbs | ✅ PASS | 35/35 = 100% (depends on, composes, exposes, mandates, etc.) |
-| Bi-directional | ≥50% identify bi-directional | ✅ PASS | 19/35 = 54% bi-directional |
-| Trade-offs | 100% acknowledge | ✅ PASS | 35/35 = 100% (tight vs loose coupling, hierarchical vs flat) |
-| Visual Diagrams | 100% include ≥1 diagram | ✅ PASS | 35/35 = 100% (class/component/ERD/network/DSM) |
-| Citations | ≥75% ≥1, ≥40% ≥2, ≥25% standards | ✅ PASS | 86% ≥1, 49% ≥2, 29% standards (UML/ArchiMate/TOGAF) |
-| Cross-refs | 100% [Ref: ID] resolve | ✅ PASS | G1-G32, T1-T17, L1-L22, A1-A43 |
-| Recency | ≥70% <5yr, ≥85% tools ≤18mo | ✅ PASS | 77% <5yr, 88% tools ≤18mo |
-| Diversity | ≥5 types, none >30% | ✅ PASS | Academic 24%, Books 22%, Standards 20%, Tools 18%, Case studies 16% |
-| Cross-Viewpoint | ≥60% analyze ≥2 viewpoints | ✅ PASS | 24/35 = 69% multi-viewpoint |
-| Coupling/Cohesion Metrics | ≥50% include metrics | ✅ PASS | 21/35 = 60% (Ca/Ce/Instability/LCOM/centrality) |
-| Relationship Tools | ≥15 with type support | ✅ PASS | 17: Modeling=5, Analysis=4, Dependency=4, Business=2, Compliance=2 |
-| Links | 100% accessible/archived | ✅ PASS | 58/58 verified |
-```
+| Check | Requirement | Pass Criteria |
+|-------|-------------|---------------|
+| **Q&A Count** | 6-12 total | Count = 6-12 |
+| **Difficulty Mix** | 25% F / 50% I / 25% A | Distribution within ±5% |
+| **Decision Criticality** | 100% satisfy ≥1 criterion | All Q&As have [Blocks/Risk/Roles/Action/Quantified] |
+| **Dimensions Covered** | All 4 decision-critical | Structural, Team Alignment, Dependency, Integration |
+| **Phases Covered** | ≥3-4 lifecycle phases | Architecture, Development, Deployment, Evolution |
+| **Stakeholder Coverage** | ≥5 core roles | Architect, Developer, DevOps/SRE, Leadership, PM |
+| **Coupling Metrics** | 100% quantified | All Q&As have Ca/Ce/I or team alignment score |
+| **Visuals** | ≥1 diagram + ≥1 table per Q&A | DSM, dependency graph, team map, or API diagram |
+| **Citations** | ≥75% have ≥1 cite, ≥50% ≤3yr | All decision-critical, APA 7th [EN]/[ZH] |
+| **Word Count** | 120-200w per Q&A | Streamlined, no bloat |
+| **References** | G≥12, T≥6, L≥6, A≥8 | Minimal viable, all used in Q&As |
+| **Final Review** | No redundancy, clear traceability | Scenario → Criticality → Metrics → Decision |
 
-## Example Format
+## Example Q&A Format (Minimal Viable)
 
-**Q: [Scenario with scale/context - describe system with specific components and relationships]**
+**Q: [Scenario + decision question]**
+- **Difficulty**: [F/I/A]
+- **Phase**: [Architecture/Development/Deployment/Evolution]
+- **Dimension**: [Structural Coupling / Team Alignment / Dependency Risk / Integration Complexity]
+- **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-**Difficulty**: [F/I/A] | **Phase**: [Phase] | **Roles**: [Role(s)] | **Types**: [≥3 from 7] | **Insight**: [1 sentence: coupling/bi-directional/network effects] [Ref: ID]
-
-**Answer** (150-350 words): [Context] → [Structure FIRST: decomposition/layering/modularity] → [Relationship network: Entity → Direct (precise verbs) → Transitive → Network (quantified)] → [Multi-type: structural + ≥2 others] → [Trade-offs] [Ref: ID]
+**Answer** (120-200 words):
+1. **Scenario** (~25w): System context, scale, team structure, current state
+2. **Analysis** (~50w): Coupling metrics, team alignment, deployment frequency impact
+3. **Stakeholders** (~35w): ≥2 roles, their concerns, implications
+4. **Decision** (~50w): Refactor/Align/Invest/Monitor + rationale + success criteria
+5. **Trade-offs** (~20w): ≥2 alternatives with pros/cons
 
 **Visuals**:
-- **Structural + Relationship Diagram**: Mermaid (class/component/ERD/network) with precise verbs
-- **Dependency Matrix (DSM)**: Components, Ca/Ce/Instability
-- **Metrics Table**: Component, Type, Verb, Cardinality, Coupling, Centrality
-- **Cross-Viewpoint**: ≥2 stakeholder perspectives
+- **Diagram**: DSM, Dependency graph, Team-service map, or API diagram (Mermaid <80 nodes)
+- **Metrics Table**: Component/Team, Metric (Ca/Ce/I or alignment %), Value, Threshold, Status
+
+**Citation**: [Ref: ID] (≥1, ≤3yr old)

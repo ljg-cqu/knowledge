@@ -1,58 +1,54 @@
 ---
-Last Updated: 2025-01-13
-Status: Final
+Last Updated: 2025-01-16
+Status: Optimized (Minimal Viable)
 Owner: Career Development Team
 ---
 
-# Stakeholder Management Interview Q&A Generator
+# Stakeholder Management Q&A Generator
 
-**Purpose**: Generate 25-30 interview Q&As demonstrating stakeholder management expertise across full software lifecycle.
+Generate **6-12 decision-critical stakeholder management Q&As** for informed decision-making with limited time.
 
-## Scope & Success Criteria
+**Scope**: Stakeholder identification, analysis, communication, engagement, expectation management, governance
+**Output**: Decision-critical Q&As with multi-viewpoint analysis, quantified metrics, ≥2 alternatives, diagrams, citations
+**Success**: 12/12 validation PASS | ≥5 core stakeholder roles | 3-4 decision-critical dimensions × ≥4/8 phases
+**Cadence**: On-demand | Effort: 3-4 hours | Validity: Evergreen (refresh annually or when context changes)
 
-**Audience**: Engineering Managers, Directors, VPs, CTOs, Product Leaders, Program Managers, Architects  
-**Output**: 25-30 Q&As × (6 dimensions × 8 lifecycle phases × 15 stakeholder types)  
-**Success**: 21/21 validation checks PASS  
-**Context**: Production distributed systems (>10K rps, >1TB data); 10-100 engineers; cloud-native; regulated domains
+**Audience**: Engineering Managers, Directors, VPs, CTOs, Product Leaders, Program Managers  
+**Context**: Production distributed systems; 10-100 engineers; cloud-native; regulated domains
 
-**8 Lifecycle Phases** (Requirements → Design → Development → Testing → Deployment → Operations → Maintenance → Governance):
-1. **Requirements & Discovery**: Needs analysis, feasibility, scope
-2. **Architecture & Design**: System design, security, compliance review
-3. **Development**: Coding, CI, progress communication
-4. **Testing & Quality**: QA, UAT (User Acceptance Testing), defect resolution
-5. **Deployment & Release**: Automation, rollback, change control
-6. **Operations & Observability**: Monitoring, incident response, SLA (Service Level Agreement) management
-7. **Maintenance & Support**: Bug fixes, security patches, escalation
-8. **Evolution & Governance**: Enhancement, compliance, sunset planning
+---
 
-**15 Stakeholder Types** (4 categories):  
-- Technical: Dev, Arch, QA, Ops, Sec, Data
-- Business: PM, BA, Exec, Sales, CS
-- Regulatory: Comp, Legal, Audit
-- External: User
+# Decision Criticality Framework (NEW)
+
+**Include Q&A if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts stakeholder strategy, engagement roadmap, or escalation process
+- **Creates Risk**: Material threat (misalignment, escalation failure, compliance breach, team conflict)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Manager + PM, Manager + Exec, Manager + Compliance)
+- **Requires Action**: 1-6mo action window (not speculative)
+- **Quantified Impact**: Alignment %, escalation time, decision speed, conflict resolution rate
+
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Vendor marketing
 
 ---
 
 # Core Requirements
 
-## Question Specifications
+## Question Specifications (Minimal Viable)
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Count** | 25-30 (20% Foundational / 40% Intermediate / 40% Advanced) |
-| **Length** | 200-350 words (Context → Strategy → Framework → Metrics → Trade-offs) |
-| **Citations** | ≥1 per Q&A; ≥2 for advanced |
-| **Artifacts** | Diagram + framework + comparison table + metric formula per cluster |
-| **Coverage** | All 8 phases ≥2 Q&As; all 15 types ≥1 Q&A (tech/biz/reg each ≥2) |
+| **Count** | 6-12 (25% Foundational / 50% Intermediate / 25% Advanced) |
+| **Length** | 120-200 words (News → Impact → Stakeholders → Decision → Action) |
+| **Citations** | ≥1 per Q&A (≥2 for advanced) |
+| **Artifacts** | ≥1 diagram + ≥1 table per Q&A (compressed) |
+| **Coverage** | 3-4 decision-critical dimensions; ≥4/8 phases; ≥5 core stakeholder roles |
 
-## 6 Dimensions (4-6 Q&As Each)
+## 3-4 Decision-Critical Dimensions (1-3 Q&As Each)
 
-1. **Stakeholder Identification & Analysis**: Power-Interest Grid, RACI (Responsible/Accountable/Consulted/Informed), Salience Model
-2. **Communication & Engagement**: Communication plans, escalation paths, reporting cadence, feedback loops
-3. **Expectation Management**: Requirements negotiation, priority alignment, MoSCoW, trade-off communication
-4. **Cross-Functional Collaboration**: Tech-business alignment, regulatory coordination, user advocacy
-5. **Conflict Resolution & Negotiation**: Thomas-Kilmann modes, interest-based negotiation, competing priorities
-6. **Governance & Compliance**: Regulatory stakeholders, audit trails, compliance tracking, Change Control Board
+1. **Stakeholder Identification & Analysis**: Power-Interest Grid, RACI, Salience Model (Blocks decision)
+2. **Communication & Engagement**: Escalation paths, reporting cadence, alignment (Creates risk)
+3. **Expectation Management**: Priority alignment, trade-off communication, conflict avoidance (Affects ≥2 roles)
+4. **Governance & Compliance** (Optional): Regulatory stakeholders, audit trails, compliance tracking (Quantified impact)
 
 ## Content Standards
 
@@ -70,262 +66,245 @@ Owner: Career Development Team
 
 **Precise Language**: Define jargon inline (e.g., "RACI: assigns Responsible/Accountable/Consulted/Informed roles"); consistent terminology; concrete metrics ("Satisfaction ≥4.0/5.0" not "good")
 
-## Artifacts per Cluster
+## Artifacts per Q&A (Compressed)
 
-| Dimension | Diagram | Framework | Metric |
-|-----------|---------|-----------|--------|
-| Identification & Analysis | Power-Interest Grid, Stakeholder Map | Mendelow Matrix, Salience Model | `Coverage = Identified/Total × 100%` |
-| Communication & Engagement | Communication Matrix, Engagement Plan | RACI, Communication Plan | `Response Rate = Responses/Requests × 100%` |
-| Expectation Management | Requirements Matrix, Priority Grid | MoSCoW, Kano Model | `Satisfaction = Met/Total × 100%` |
-| Cross-Functional Collaboration | Interaction Diagram, RACI Chart | Cross-Functional Team Model | `Collaboration = Cross-func/Total` |
-| Conflict Resolution | Conflict Map, Escalation Path | Thomas-Kilmann, Interest-Based Negotiation | `Resolution = Resolved/Total × 100%` |
-| Governance & Compliance | Compliance Matrix, Audit Trail | SOC2, ISO 27001, GDPR | `Compliance = Passed/Total × 100%` |
+| Dimension | Diagram | Metric |
+|-----------|---------|--------|
+| Identification & Analysis | Power-Interest Grid | `Identified/Total × 100%` |
+| Communication & Engagement | Escalation Path | `Response Time (hours)` |
+| Expectation Management | Priority Grid | `Satisfaction ≥4.0/5.0` |
+| Governance & Compliance | Compliance Matrix | `Passed/Total × 100%` |
 
-**Format**: Mermaid diagrams (<120 nodes) · Frameworks (established + citations) · Tables (quantitative "When to Use") · Metrics (formula + variables + target + source)
+**Format**: Mermaid diagram (<80 nodes) + 1 metric table per Q&A · Frameworks cited · Quantified thresholds
 
-## Lifecycle-Stakeholder Coverage Matrix
+## Decision-Critical Phase Coverage (Minimal Viable)
 
-| Phase | Key Questions | Primary Stakeholders (RACI) | Focus |
-|-------|---------------|----------------------------|-------|
-| 1. Requirements & Discovery | Who? Needs? Priorities? Conflicts? | PM (R), BA (R), Exec (A), User (C), Sales (C) | Identification, needs, expectations |
-| 2. Architecture & Design | Approvals? Compliance? Risk? | Arch (R/A), Sec (C), Comp (C), Legal (C), Exec (I) | Technical-regulatory alignment |
-| 3. Development | Visibility? Blockers? Trade-offs? | Dev (R), Arch (C), PM (A), Exec (I) | Transparency, escalation |
-| 4. Testing & Quality | Criteria? UAT? Defect priorities? | QA (R/A), PM (C), User (C), BA (C) | Quality, user feedback, acceptance |
-| 5. Deployment & Release | Approval? Rollback? Notification? | Ops (R/A), Sec (C), Comp (C), Exec (I), User (I) | Change control, risk, communication |
-| 6. Operations & Observability | SLA? Incidents? Escalation? | Ops (R/A), PM (I), Exec (I), CS (C), User (I) | Performance, incident management |
-| 7. Maintenance & Support | Priorities? Escalation? Patches? | Ops (R), CS (R), Sec (C), Comp (C), User (I) | Support, security communication |
-| 8. Evolution & Governance | Roadmap? Compliance? Sunset? | PM (R), Arch (R), Exec (A), Comp (C), Legal (C), Audit (C) | Strategy, compliance, governance |
+| Phase | Decision Criticality | Q&A Count |
+|-------|---------------------|-----------|
+| 1. Requirements & Discovery | Blocks stakeholder alignment | 1-2 |
+| 3. Development | Creates escalation risk | 1-2 |
+| 5. Deployment & Release | Blocks change control | 1-2 |
+| 8. Evolution & Governance | Affects compliance | 1-2 |
 
-**Requirement**: Each phase ≥2 Q&As; Each type ≥1 Q&A (tech/biz/reg each ≥2); Explicit phase-stakeholder linkage in answers
+**Requirement**: ≥4/8 phases covered; ≥5 core stakeholder roles (Manager, PM, Exec, Ops, Compliance)
 
-## References
+## References (Proportional 60% Reduction)
 
 | Component | Min | Requirements |
 |-----------|-----|--------------|
-| **Glossary** | ≥12 | Terms + relationships (e.g., "Power-Interest Grid: 2×2 matrix. Related: Mendelow, Salience") |
-| **Tools** | ≥6 | Valid URL, updated ≤18mo, pricing, adoption |
-| **Literature** | ≥8 | Authoritative (PMBOK, Freeman, Bourne, Fisher, Schein, Adizes, Mitchell, Lencioni) |
-| **Citations** | ≥15 | APA 7th, 60% EN / 30% ZH / 10% other (±10%) |
+| **Glossary** | ≥8 | Only terms used in Q&As (Power-Interest Grid, RACI, Salience, Escalation Path) |
+| **Tools** | ≥4 | Decision-critical only (Miro, Jira, Slack, Confluence) |
+| **Literature** | ≥5 | Canonical (PMBOK, Freeman, Bourne, Fisher, Schein) |
+| **Citations** | ≥6 | APA 7th, 60% EN / 30% ZH / 10% other |
 
-**Quality**: ≥50% last 5yr (≥60% stakeholder-specific) · ≥3 types · <25% single source · Peer-reviewed/authoritative · 100% valid links
+**Quality**: ≥50% last 5yr · ≥2 types · 100% valid links · All decision-critical
 
 ---
 
 # Generation Process
 
-## Step 1: Plan Structure
+## Step 1: News Curation (Tiered Search)
 
-Select 5-6 clusters across 6 dimensions → Allocate 4-6 Q&As/cluster (25-30 total) → Assign 1F/2I/2A per cluster → Map to 8 phases + 15 types
+**Tier 1 - High-Velocity** (past 7-14 days, ≥50% of candidates):
+- Stakeholder alignment failures, escalation patterns, team conflicts
+- Org changes affecting stakeholder dynamics
 
-**Verify**: Total 25-30 · 20/40/40% F/I/A (±5%) · All 6 dimensions · All 8 phases ≥2 Q&As · All 15 types ≥1 Q&A (tech/biz/reg each ≥2) · No overlap
+**Tier 2 - Medium-Velocity** (past 2-4 weeks, ≥30% of candidates):
+- Compliance/regulatory stakeholder changes
+- Process improvements
 
-## Step 2: Build References
+**Tier 3 - Backfill** (past 4-8 weeks, ≤20% of candidates):
+- Only if Tier 1+2 insufficient
 
-Create Glossary (≥12 terms + relationships) → Tools (≥6: URL, update ≤18mo, pricing, adoption) → Literature (≥8) → Citations (≥15 APA 7th)
+**Target**: ≥10-15 candidates → 6-12 Q&As (60% reduction)
 
-**Verify**: G≥12, T≥6, L≥8, A≥15 · 60/30/10% EN/ZH/Other (±10%) · ≥50% last 5yr (≥60% stakeholder) · ≥3 types, <25% single source · 100% valid URLs
+## Step 2: Build References (Minimal)
+
+Create Glossary (≥8 terms) → Tools (≥4) → Literature (≥5) → Citations (≥6 APA 7th)
+
+**Verify**: G≥8, T≥4, L≥5, A≥6 · 60/30/10% EN/ZH/Other · ≥50% last 5yr · 100% valid URLs
 
 ## Step 3: Write Q&As
 
-**Questions**: ≥70% judgment-based ("How would you..." / "When should you..." / "Compare approaches...")
+**Answer Structure** (120-200 words): News (~25w) → Impact (~50w) → Stakeholders (~35w) → Decision (~50w) → Action (~20w)
 
-**Answer Structure** (200-350 words): Context → Strategy → Framework → Metrics → Trade-offs · ≥1 citation (≥2 advanced) · Quantified trade-offs · ≥2 alternatives + table · Explicit assumptions/limitations · Phase + type linkage
-
-**Validate Every 5**: Word count · Citations · Traceability · Question type · Quantified insights · Phase/type coverage
+**Validate Every 3**: Word count · Citations · Decision criticality · Quantified impact
 
 ## Step 4: Create Artifacts
 
-**Per Cluster**: Mermaid diagram (<120 nodes) + Framework (cited) + Comparison table (≥2 approaches: Approach/Pros/Cons/Use When) + Metric formula (formula + variables + target + source)
+**Per Q&A**: Mermaid diagram (<80 nodes) + 1 metric table
 
-**Verify**: All clusters 4/4 · Diagrams render · Frameworks cited · Tables formatted · Formulas valid
+**Verify**: All Q&As 2/2 · Diagrams render · Tables formatted
 
 ## Step 5: Link References
 
-Populate sections → Extract `[Ref: ID]` → Verify IDs exist → Remove orphans → Validate URLs
+Extract `[Ref: ID]` → Verify IDs exist → Validate URLs
 
-**Verify**: G≥12, T≥6, L≥8, A≥15 · 100% `[Ref: ID]` resolved · 0 broken links · 60/30/10% EN/ZH/Other · No orphans
+**Verify**: 100% `[Ref: ID]` resolved · 0 broken links
 
-## Step 6: Validate (21 Checks)
+## Step 6: Validate (12 Checks - Streamlined)
 
 | # | Check | Target | Critical |
 |---|-------|--------|----------|
-| 1 | Counts | G≥12, T≥6, L≥8, A≥15, Q=25-30 (20/40/40%) | ✓ |
-| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 | ✓ |
-| 3 | Language | 60/30/10% EN/ZH/Other (±10%) | |
-| 4 | Recency | ≥50% last 5yr (≥60% stakeholder) | |
-| 5 | Diversity | ≥3 types; <25% single | ✓ |
-| 6 | Links | 100% valid | ✓ |
-| 7 | Cross-refs | 100% resolved | ✓ |
-| 8 | Word count | Sample 5: 200-350 | ✓ |
-| 9 | Insights | 100% quantified | ✓ |
-| 10 | Per-topic | ≥2 sources + ≥1 tool | |
-| 11 | Traceability | ≥80% need→strategy→metrics | ✓ |
-| 12 | Question type | ≥70% judgment | ✓ |
-| 13 | Artifacts | ≥90% clusters 4/4 | |
-| 14 | Frameworks | ≥80% use frameworks | ✓ |
-| 15 | Metrics | ≥60% have metrics | |
-| 16 | Diagrams | ≥80% have diagrams | |
-| 17 | Syntax | 100% valid | ✓ |
-| 18 | Formulas | 100% valid | ✓ |
-| 19 | Lifecycle | All 8 phases ≥2 Q&As | ✓ |
-| 20 | Stakeholder Types | All 15 types ≥1; tech/biz/reg each ≥2 | ✓ |
-| 21 | Review | 6/6 criteria (see §7) | ✓ |
+| 1 | Counts | G≥8, T≥4, L≥5, A≥6, Q=6-12 (25/50/25%) | ✓ |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion | ✓ |
+| 3 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 | ✓ |
+| 4 | Recency | ≥50% last 5yr | |
+| 5 | Links | 100% valid | ✓ |
+| 6 | Cross-refs | 100% resolved | ✓ |
+| 7 | Word count | All Q&As 120-200w | ✓ |
+| 8 | Quantified Impact | 100% have metrics | ✓ |
+| 9 | Artifacts | 100% Q&As 2/2 | ✓ |
+| 10 | Phase Coverage | ≥4/8 phases | ✓ |
+| 11 | Stakeholder Roles | ≥5 core roles | ✓ |
+| 12 | Final Review | All 3 criteria PASS | ✓ |
 
-**Failure Protocol**: ANY fail → STOP → Document → Fix → Re-validate ALL → Iterate until 21/21 PASS
+**Failure Protocol**: ANY fail → Document → Fix → Re-validate → Iterate until 12/12 PASS
 
-## Step 7: Final Review (6 Criteria, All Must PASS)
+## Step 7: Final Review (3 Criteria, All Must PASS)
 
-1. **Clarity**: Logical structure · Consistent terms · Jargon defined inline
-2. **Accuracy**: Facts verifiable · Frameworks cited · Metrics sound · Phase/type mappings correct
-3. **Completeness**: 6 dimensions (4-6 Q&As each) · 8 phases ≥2 Q&As · 15 types ≥1 Q&A (tech/biz/reg each ≥2) · Minimums met · 21/21 PASS
-4. **Balance**: ≥2 alternatives + table · Assumptions/limitations · Consensus tagged
-5. **Practicality**: Actionable guidance · Established frameworks · Measurable outcomes
-6. **Self-Correction**: No redundancy/inconsistencies/gaps/orphans
+1. **Decision-Critical**: Every Q&A blocks decision or creates material risk
+2. **Actionable**: Clear go/no-go criteria · Quantified thresholds · 1-6mo timeline
+3. **Minimal**: No redundancy · No niche/legacy · No vendor marketing
 
-**Submit When**: 21/21 PASS + 6/6 criteria
+**Submit When**: 12/12 PASS + 3/3 criteria
 
-**High-Risk Areas**: Phase-type coverage matrix · URLs · Cross-refs
+**High-Risk Areas**: Decision criticality · Quantified impact · Phase coverage
 
 ---
 
-# Output Template
+# Output Template (Minimal Viable)
 
 ```markdown
 ## Contents
-[TOC: Topic Areas | Q&As | Phase-Stakeholder Matrix | References | Validation]
+[TOC: Decision-Critical Q&As | Phase-Stakeholder Matrix | References | Validation]
 
-## Topic Areas
-| Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1-Q5 | 5 | 1F/2I/2A |
+## Decision-Critical Q&As (6-12 Total)
 
-[6 dimensions · 25-30 total · 20/40/40% F/I/A]
+| Dimension | Q# | Decision Criticality | Phase | Stakeholders |
+|-----------|----|--------------------|-------|--------------|
+| [Type] | Q1 | [Blocks/Risk/Roles/Action/Quantified] | [1-8] | [Roles] |
 
-## Lifecycle-Stakeholder Coverage
-| Phase | Q# | Stakeholder Types | Category |
-| 1. Requirements & Discovery | Q1, Q5 | PM, BA, Exec, User, Sales | Business, External |
-| 2. Architecture & Design | Q2, Q8 | Arch, Sec, Comp, Legal, Exec | Technical, Regulatory |
-| 3. Development | Q3, Q9 | Dev, Arch, PM, Exec | Technical, Business |
-| 4. Testing & Quality | Q4, Q10 | QA, PM, User, BA | Technical, Business, External |
-| 5. Deployment & Release | Q6, Q11 | Ops, Sec, Comp, Exec, User | Technical, Regulatory |
-| 6. Operations & Observability | Q7, Q12 | Ops, PM, Exec, CS, User | Technical, Business, External |
-| 7. Maintenance & Support | Q13, Q14 | Ops, CS, Sec, Comp, User | Technical, Regulatory, External |
-| 8. Evolution & Governance | Q15, Q16 | PM, Arch, Exec, Comp, Legal, Audit | All |
+[3-4 dimensions · 6-12 total · 25/50/25% F/I/A]
 
-[All 8 phases ≥2 Q&As · All 15 types ≥1 Q&A · Tech/biz/reg each ≥2]
+## Phase-Stakeholder Coverage (Minimal)
+
+| Phase | Q# | Stakeholder Types | Decision Criticality |
+|-------|----|--------------------|---------------------|
+| 1. Requirements & Discovery | Q1 | Manager, PM, Exec | Blocks alignment |
+| 3. Development | Q2 | Manager, Dev, Exec | Creates escalation risk |
+| 5. Deployment & Release | Q3 | Manager, Ops, Exec | Blocks change control |
+| 8. Evolution & Governance | Q4 | Manager, Exec, Compliance | Affects compliance |
+
+[≥4/8 phases · ≥5 core stakeholder roles]
 
 ---
 
-## Topic 1: [Title]
-**Overview**: [1-2 sentences]  
-**Lifecycle Phase**: [Phase 1-8] | **Stakeholder Types**: [Types]
+## Q1: [Stakeholder Management Question]
 
-### Q1: [How/When/Compare question]
-**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [1-8] | **Stakeholder Types**: [Types]
+**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [1-8] | **Decision Criticality**: [Criterion]
 
-**Key Insight**: [Quantified trade-off, 1 sentence]
+**Context**: [Scenario, challenge, or decision point] [Ref: A1]
 
-**Answer**: [200-350 words: Context → Strategy → Framework → Metrics → Trade-offs] [≥1 citation [Ref: A1]]
+**Impact**: [≥2 phases affected, quantified] [Ref: A2]
 
-**Framework**:
-```mermaid
-[Power-Interest Grid / Stakeholder Map / Communication Matrix / RACI Chart, <120 nodes]
-```
+**Stakeholders**: [≥2 roles, concerns, actions] [Ref: A3]
+
+**Decision**: [Go/No-Go criteria, quantified thresholds, 1-6mo timeline] [Ref: A4]
+
+**Approach**: [Recommended strategy, immediate 0-2wk, short-term 2wk-2mo, owner]
+
+**Diagram**:
+\`\`\`mermaid
+[Power-Interest Grid / Escalation Path / Priority Grid, <80 nodes]
+\`\`\`
 
 **Metrics**:
-| Metric | Formula | Variables | Target | Source |
-| [Name] | [Expr] | [Defs] | [Threshold] | [Where] |
-
-**Trade-offs**:
-| Approach | Pros (Quantified) | Cons (Quantified) | Use When | Consensus |
-| [Option] | [Metrics] | [Metrics] | [Context] | [Tag] |
-
-[≥2 alternatives]
-
-**Lifecycle Integration**: [Impact on phases]  
-**Stakeholder Impact**: [Impact on types]
+| Metric | Formula | Target | Source |
+|--------|---------|--------|--------|
+| [Name] | [Expr] | [Threshold] | [Where] |
 
 ---
 
 ## References
 
-### Glossary (≥12)
-**G1. [Term]** [EN/ZH/Other] – [Definition]. **Related**: [Terms]. **Lifecycle**: [Phases]
+### Glossary (≥8)
+**G1. [Term]** [EN/ZH/Other] – [Definition]. **Related**: [Terms].
 
-### Tools (≥6)
-**T1. [Tool]** [Tag] – **Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
+### Tools (≥4)
+**T1. [Tool]** – **Purpose**: [Desc]. **URL**: [Link]
 
-### Literature (≥8)
-**L1. Author(s). (Year). *Title*. Publisher.** [Tag] – **Relevance**: [Why]
+### Literature (≥5)
+**L1. Author(s). (Year). *Title*. Publisher.** – **Relevance**: [Why]
 
-### Citations (≥15, APA 7th, 60/30/10%)
+### Citations (≥6, APA 7th, 60/30/10%)
 **A1.** Author(s). (Year). *Title*. Source. [EN]
 
 ---
 
 ## Validation Report
+
 | # | Check | Target | Result | Status |
-| 1 | Counts | G≥12, T≥6, L≥8, A≥15, Q=25-30 | G:X, T:Y... | PASS/FAIL |
-| 19 | Lifecycle | All 8 phases ≥2 Q&As | Phase 1: Q1,Q5... | PASS/FAIL |
-| 20 | Stakeholder Types | All 15 types ≥1; tech/biz/reg each ≥2 | Dev: Q1... | PASS/FAIL |
+|----|-------|--------|--------|--------|
+| 1 | Counts | G≥8, T≥4, L≥5, A≥6, Q=6-12 | G:X, T:Y... | PASS/FAIL |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion | All Q&As... | PASS/FAIL |
+| 12 | Final Review | 3/3 criteria PASS | [List] | PASS/FAIL |
 
-[All 21 checks]
-
-**Overall**: [X/21 PASS - need 21/21] | **Issues**: [List] | **Remediation**: [Actions]
+**Overall**: [X/12 PASS - need 12/12] | **Issues**: [List] | **Remediation**: [Actions]
 ```
 
-# Reference Examples
+# Reference Examples (Minimal Viable - Decision-Critical Only)
 
-## Glossary
-**G1. Power-Interest Grid** [EN] – 2×2 matrix mapping stakeholder power vs interest. Quadrants: Manage Closely (high/high), Keep Satisfied (high/low), Keep Informed (low/high), Monitor (low/low). **Related**: Mendelow Matrix, Salience Model. **Lifecycle**: All  
-**G2. Mendelow Matrix** [EN] – Alternative name for Power-Interest Grid. **Related**: Power-Interest Grid, Salience Model. **Lifecycle**: Requirements, Governance  
-**G3. Salience Model** [EN] – Three-attribute stakeholder prioritization: power, legitimacy, urgency. **Related**: Power-Interest Grid. **Lifecycle**: All  
-**G4. RACI Matrix** [EN] – Responsibility assignment: Responsible (does), Accountable (approves), Consulted (input), Informed (updated). **Related**: Decision Rights, Communication Plan. **Lifecycle**: All  
-**G5. Stakeholder Register** [EN] – Document listing all stakeholders with identification, assessment, classification. PMBOK artifact. **Related**: Power-Interest Grid, Communication Plan. **Lifecycle**: All  
-**G6. Communication Plan** [EN] – Structured approach defining what, when, how, who for stakeholder communication. **Related**: RACI, Engagement Plan. **Lifecycle**: All  
-**G7. MoSCoW Prioritization** [EN] – Must/Should/Could/Won't have. Requirements prioritization. **Lifecycle**: Requirements, Evolution  
-**G8. Kano Model** [EN] – Customer satisfaction framework: basic, performance, excitement features. **Lifecycle**: Requirements, Testing  
-**G9. Thomas-Kilmann Conflict Modes** [EN] – Five styles: competing, collaborating, compromising, avoiding, accommodating. **Lifecycle**: All  
-**G10. Interest-Based Negotiation** [EN] – Focus on interests vs positions. Fisher & Ury's "Getting to Yes". **Related**: Thomas-Kilmann. **Lifecycle**: Requirements, Conflict Resolution  
-**G11. PMBOK Stakeholder Management** [EN] – PMI framework: identify, plan, manage, monitor stakeholder engagement. **Related**: Stakeholder Register. **Lifecycle**: All  
-**G12. Escalation Path** [EN] – Structured escalation process: triggers, levels, timeframes, decision-makers. **Related**: RACI, Communication Plan. **Lifecycle**: All  
-**G13. SLA (Service Level Agreement)** [EN] – Commitment defining service expectations, metrics, responsibilities. **Related**: OLA, UC. **Lifecycle**: Operations, Support  
-**G14. Change Control Board** [EN] – Governance body approving/rejecting changes. Stakeholders from tech, business, compliance. **Lifecycle**: Deployment, Governance
+## Glossary (≥8 Terms)
 
-## Tools
-**T1. Stakeholder Circle** [EN] – Stakeholder engagement, visualization, prioritization. **Updated**: 2024-06. **Pricing**: Custom. **Adoption**: PM practitioners. **URL**: https://stakeholder-management.com  
-**T2. Ardoq** [EN] – Enterprise architecture, stakeholder mapping, impact analysis. **Updated**: 2024-10. **Pricing**: Custom. **Adoption**: 300+ enterprises. **URL**: https://ardoq.com  
-**T3. Miro** [EN] – Collaborative whiteboard for power-interest grids, RACI matrices. **Updated**: 2024-11. **Pricing**: Free-$16/user/mo. **Adoption**: 50M+ users. **URL**: https://miro.com  
-**T4. ServiceNow** [EN] – IT service management, change control, stakeholder workflows. **Updated**: 2024-11. **Pricing**: Custom. **Adoption**: 7K+ enterprises. **URL**: https://servicenow.com  
-**T5. Jira Align** [EN] – Enterprise agile planning, stakeholder visibility, roadmap communication. **Updated**: 2024-10. **Pricing**: Custom. **Adoption**: Atlassian ecosystem. **URL**: https://atlassian.com/jira/align  
-**T6. OneSky** [EN] – Compliance management, regulatory stakeholder tracking, audit trails. **Updated**: 2024-09. **Pricing**: Custom. **Adoption**: Regulated industries. **URL**: https://oneskyapp.com  
-**T7. Confluence** [EN] – Stakeholder documentation, communication plans, meeting notes. **Updated**: 2024-11. **Pricing**: Free-$10/user/mo. **Adoption**: 60K+ organizations. **URL**: https://atlassian.com/confluence
+**G1. Power-Interest Grid** [EN] – 2×2 matrix mapping stakeholder power vs interest. Quadrants: Manage Closely (high/high), Keep Satisfied (high/low), Keep Informed (low/high), Monitor (low/low). **Related**: Salience Model.
 
-## Literature
-**L1. Project Management Institute. (2021). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)* (7th ed.). PMI.** – Stakeholder engagement processes, frameworks  
-**L2. Freeman, R. E. (2010). *Strategic Management: A Stakeholder Approach*. Cambridge University Press.** – Foundational stakeholder theory  
-**L3. Bourne, L. (2016). *Stakeholder Relationship Management*. Routledge.** – Salience model, engagement maturity  
-**L4. Fisher, R., Ury, W., & Patton, B. (2011). *Getting to Yes* (3rd ed.). Penguin.** – Interest-based negotiation, conflict resolution  
-**L5. Schein, E. H. (2016). *Organizational Culture and Leadership* (5th ed.). Wiley.** – Cultural stakeholders, change management  
-**L6. Adizes, I. (2004). *Managing Corporate Lifecycles*. Adizes Institute.** – Lifecycle stakeholders, growth stages  
-**L7. Mitchell, R. K., Agle, B. R., & Wood, D. J. (1997). Toward a theory of stakeholder identification. *Academy of Management Review*.** – Salience model research  
-**L8. Lencioni, P. (2002). *The Five Dysfunctions of a Team*. Jossey-Bass.** – Trust, conflict resolution  
-**L9. 陈春花. (2019). *管理的常识*. 机械工业出版社.** – Chinese management perspective  
-**L10. PMI. (2017). *Pulse of the Profession: Success Rates Rise*. PMI.** – Stakeholder engagement correlation with success
+**G2. Salience Model** [EN] – Three-attribute stakeholder prioritization: power, legitimacy, urgency. **Related**: Power-Interest Grid.
 
-## Citations
-**A1.** Project Management Institute. (2021). *A guide to the project management body of knowledge (PMBOK guide)* (7th ed.). PMI. [EN]  
-**A2.** Freeman, R. E. (2010). *Strategic management: A stakeholder approach*. Cambridge University Press. [EN]  
-**A3.** Bourne, L. (2016). *Stakeholder relationship management*. Routledge. [EN]  
-**A4.** Fisher, R., Ury, W., & Patton, B. (2011). *Getting to yes* (3rd ed.). Penguin. [EN]  
-**A5.** Schein, E. H. (2016). *Organizational culture and leadership* (5th ed.). Wiley. [EN]  
-**A6.** Adizes, I. (2004). *Managing corporate lifecycles*. Adizes Institute. [EN]  
-**A7.** Mitchell, R. K., Agle, B. R., & Wood, D. J. (1997). Toward a theory of stakeholder identification. *Academy of Management Review*, 22(4), 853-886. [EN]  
-**A8.** Lencioni, P. (2002). *The five dysfunctions of a team*. Jossey-Bass. [EN]  
-**A9.** 陈春花. (2019). *管理的常识*. 机械工业出版社. [ZH]  
-**A10.** PMI. (2017). *Pulse of the profession: Success rates rise*. PMI. [EN]  
-**A11.** 项目管理协会. (2018). *干系人管理实践指南*. 电子工业出版社. [ZH]  
-**A12.** Mendelow, A. (1991). Stakeholder mapping. *Proceedings of the 2nd International Conference on Information Systems*, 407-418. [EN]  
-**A13.** Savage, G. T., et al. (1991). Strategies for assessing and managing organizational stakeholders. *Academy of Management Perspectives*, 5(2), 61-75. [EN]  
-**A14.** 许正. (2020). *利益相关者管理*. 清华大学出版社. [ZH]  
-**A15.** Eskerod, P., & Jepsen, A. L. (2016). *Project stakeholder management*. Routledge. [EN]  
-**A16.** Frooman, J. (1999). Stakeholder influence strategies. *Academy of Management Review*, 24(2), 191-205. [EN]
+**G3. RACI Matrix** [EN] – Responsibility assignment: Responsible (does), Accountable (approves), Consulted (input), Informed (updated). **Related**: Escalation Path.
+
+**G4. Escalation Path** [EN] – Structured escalation process: triggers, levels, timeframes, decision-makers. **Related**: RACI, Communication Plan.
+
+**G5. Communication Plan** [EN] – Structured approach defining what, when, how, who for stakeholder communication. **Related**: RACI.
+
+**G6. MoSCoW Prioritization** [EN] – Must/Should/Could/Won't have. Requirements prioritization framework.
+
+**G7. Change Control Board** [EN] – Governance body approving/rejecting changes. Stakeholders from tech, business, compliance.
+
+**G8. SLA (Service Level Agreement)** [EN] – Commitment defining service expectations, metrics, responsibilities.
+
+## Tools (≥4 Tools - Decision-Critical Only)
+
+**T1. Miro** [EN] – Collaborative whiteboard for power-interest grids, RACI matrices. **Updated**: 2024-11. **Pricing**: Free-$16/user/mo. **Adoption**: 50M+ users. **URL**: https://miro.com
+
+**T2. Jira** [EN] – Project tracking, escalation workflows, stakeholder visibility. **Updated**: 2024-11. **Pricing**: Free-$7/user/mo. **Adoption**: 100K+ organizations. **URL**: https://atlassian.com/jira
+
+**T3. Slack** [EN] – Communication, escalation notifications, stakeholder engagement. **Updated**: 2024-11. **Pricing**: Free-$12.50/user/mo. **Adoption**: 750K+ organizations. **URL**: https://slack.com
+
+**T4. Confluence** [EN] – Stakeholder documentation, communication plans, decision records. **Updated**: 2024-11. **Pricing**: Free-$10/user/mo. **Adoption**: 60K+ organizations. **URL**: https://atlassian.com/confluence
+
+## Literature (≥5 Canonical References)
+
+**L1. Project Management Institute. (2021). *A Guide to the Project Management Body of Knowledge (PMBOK Guide)* (7th ed.). PMI.** – Stakeholder engagement processes, frameworks
+
+**L2. Freeman, R. E. (2010). *Strategic Management: A Stakeholder Approach*. Cambridge University Press.** – Foundational stakeholder theory
+
+**L3. Bourne, L. (2016). *Stakeholder Relationship Management*. Routledge.** – Salience model, engagement maturity
+
+**L4. Fisher, R., Ury, W., & Patton, B. (2011). *Getting to Yes* (3rd ed.). Penguin.** – Interest-based negotiation, conflict resolution
+
+**L5. Schein, E. H. (2016). *Organizational Culture and Leadership* (5th ed.). Wiley.** – Cultural stakeholders, change management
+
+## Citations (≥6 APA 7th - Decision-Critical Only)
+
+**A1.** Project Management Institute. (2021). *A guide to the project management body of knowledge (PMBOK guide)* (7th ed.). PMI. [EN]
+
+**A2.** Freeman, R. E. (2010). *Strategic management: A stakeholder approach*. Cambridge University Press. [EN]
+
+**A3.** Bourne, L. (2016). *Stakeholder relationship management*. Routledge. [EN]
+
+**A4.** Fisher, R., Ury, W., & Patton, B. (2011). *Getting to yes* (3rd ed.). Penguin. [EN]
+
+**A5.** Schein, E. H. (2016). *Organizational culture and leadership* (5th ed.). Wiley. [EN]
+
+**A6.** 陈春花. (2019). *管理的常识*. 机械工业出版社. [ZH]

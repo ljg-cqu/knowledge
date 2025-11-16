@@ -1,12 +1,14 @@
-# PM Scenario Generator
+# PM Scenario Generator (Minimal Viable)
 
-**Purpose**: Generate 25–30 evidence-based PM scenarios to validate capabilities across 6 domains (Strategy, Discovery, Prioritization, Metrics, Stakeholder, GTM) at 3 complexity levels.
+**Purpose**: Generate 6–8 decision-critical PM scenarios to validate PM capabilities under time pressure with limited resources.
 
-**Context**: For PM teams, training, executive alignment. Assumes PM framework knowledge (RICE, JTBD, OKR, AARRR).
+**Context**: For PM teams, training, capability validation, executive alignment. Assumes PM framework knowledge (RICE, JTBD, OKR, AARRR).
 
-**Constraints**: 150–300 words/scenario; ≥70% cited; realistic conflicts (priorities, resources, stakeholder pressure); 10–15min/scenario.
+**Constraints**: 150–250 words/scenario; ≥70% cited; decision-critical conflicts only (revenue impact, strategic pivot, market risk); 5–10min/scenario.
 
-**Terms**: **B/I/A** = Basic (execution) / Intermediate (trade-offs) / Advanced (portfolio/P&L/vision) | **MECE** = Mutually Exclusive, Collectively Exhaustive | **RICE** = Reach, Impact, Confidence, Effort | **JTBD** = Jobs-To-Be-Done | **PMF** = Product-Market Fit | **North Star** = Key value metric
+**Cadence**: Per training cycle | 4–6h effort | Reusable across sessions
+
+**Terms**: **B/I/A** = Basic (execution) / Intermediate (trade-offs) / Advanced (portfolio/P&L/vision) | **MECE** = Mutually Exclusive, Collectively Exhaustive | **RICE** = Reach, Impact, Confidence, Effort | **JTBD** = Jobs-To-Be-Done | **PMF** = Product-Market Fit | **North Star** = Key value metric | **Decision Criticality** = Blocks decision, Creates risk, Affects ≥2 stakeholders, Actively evolving
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -17,20 +19,20 @@
 
 ## Requirements
 
-### Quantitative Floors
+### Quantitative Floors (60% reduction)
 
 | Component | Requirements |
 |-----------|--------------|
-| **Scenarios** | 25–30 \| 20/40/40% B/I/A (±5%) \| 150–300 words \| ≥70% ≥1 cite, ≥30% ≥2 cites |
-| **Capabilities** (MECE) | Strategy (5–6) \| Discovery (4–5) \| Prioritization (5–6) \| Metrics (4–5) \| Stakeholder (4–5) \| GTM (4–5) |
-| **References** | Glossary ≥10 \| Tools ≥5 \| Literature ≥6 (≥2 Chinese) \| Citations ≥12 APA 7th + [EN]/[ZH] |
-| **Visuals** | ≥1 diagram + ≥1 table per capability |
-| **Scaling** | >30 scenarios: multiply floors by 1.5× |
+| **Scenarios** | 6–8 \| 25/50/25% B/I/A (±5%) \| 150–250 words \| ≥70% ≥1 cite, ≥30% ≥2 cites |
+| **Capabilities** (Decision-Critical) | Strategy & Prioritization (2–3) \| Metrics & Decision-Making (2–3) \| Stakeholder Alignment (1–2) \| (Optional) GTM (1) |
+| **References** | Glossary ≥8 \| Tools ≥3 \| Literature ≥4 (≥1 Chinese) \| Citations ≥8 APA 7th + [EN]/[ZH] |
+| **Visuals** | ≥1 diagram + ≥1 table per capability (total: ≥3 diagrams + ≥3 tables) |
+| **Scaling** | >8 scenarios: multiply floors by 1.25× |
 
-**Outcomes**: Capability validation, maturity assessment (85%+ alignment, 30% faster planning), executive alignment (2 sessions vs. 6+ months).
+**Outcomes**: Capability validation (85%+ alignment, 30% faster planning), maturity assessment, executive alignment (1 session vs. 6+ months).
 
-**Scope**: Multi-stakeholder conflicts, resource limits, strategic ambiguity, data interpretation, trade-offs.  
-**Excluded**: Feature checklists, greenfield design, implementation details.
+**Scope**: Decision-blocking conflicts (revenue >$1M, strategic pivot, market risk), multi-stakeholder impact, resource constraints, data ambiguity.  
+**Excluded**: Feature checklists, greenfield design, implementation details, niche scenarios (<5% adoption).
 
 **Limitations**: Generic scenarios lack domain context (customize for industry); framework misapplication risk (include limitations); depth over speed trade-off.
 
@@ -39,14 +41,31 @@
 **Format**: APA 7th + [EN]/[ZH] | **Inline**: `[Ref: ID]` where ID = G#(Glossary), T#(Tool), L#(Literature), A#(Citation)  
 **Distribution**: EN 50–70%, ZH 20–40%, Other 5–15% | **Types** (≥3): Frameworks, Research, Case studies, Tools
 
+### Decision Criticality Framework (NEW)
+
+**Include scenario if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts roadmap prioritization, go/no-go, or strategic pivot (revenue >$1M, market entry, product pivot)
+- **Creates Risk**: Material competitive threat, churn signal (>5% monthly), or strategic misalignment
+- **Affects ≥2 Stakeholders**: Multi-team impact (PM + Exec, PM + Eng, PM + Sales, etc.)
+- **Actively Evolving**: Product/market/org dynamics changing in past 3–6 months
+- **Quantified Impact**: Revenue $, pipeline $, adoption %, retention %, or market share
+
+**Exclude scenario if**:
+- Niche/legacy (<5% adoption)
+- Orthogonal/nice-to-have (training only, no decision impact)
+- Already covered in existing scenarios
+- Speculative or hypothetical (no current market signal)
+
+**Target**: 100% of scenarios satisfy ≥1 criterion
+
 ### Quality Gates (ANY fail = stop, fix, re-validate ALL)
 
 | Gate | Pass Criteria | Mitigation |
 |------|---------------|------------|
+| **Decision Criticality** | 100% satisfy ≥1 criterion | Remove non-critical scenarios |
 | **Recency** | ≥50% last 3yrs (≥70% AI/platform) | Flag outdated with caveats |
 | **Diversity** | ≥3 source types; no type >25% | Expand research |
 | **Per-Capability** | Each: ≥2 authoritative + ≥1 tool | Add missing sources |
-| **Tool Detail** | Pricing, users, update ≤18mo, ≥3 integrations | Update or replace |
 | **Links** | 100% accessible/archived | Use Web Archive |
 | **Cross-Refs** | 100% resolve; no orphans | Fix broken references |
 
@@ -54,78 +73,78 @@
 
 ### Step 1: Plan Allocation
 
-Distribute 25–30 scenarios (20/40/40% B/I/A). Each capability: 4–6 scenarios with ≥1B, ≥1I, ≥1A.
+Distribute 6–8 decision-critical scenarios (25/50/25% B/I/A). Each capability: 1–2 scenarios with ≥1B or ≥1I, ≥1A.
 
-**Example** (30): Strategy (5): 1B/2I/2A | Discovery (5): 1B/2I/2A | Prioritization (6): 1B/2I/3A | Metrics (5): 1B/2I/2A | Stakeholder (4): 0B/2I/2A | GTM (5): 1B/2I/2A = **6B/12I/12A**
+**Example** (8): Strategy & Prioritization (3): 1B/1I/1A | Metrics & Decision-Making (3): 0B/1I/2A | Stakeholder Alignment (2): 0B/1I/1A = **1B/3I/4A**
 
-### Step 2: Build References (BEFORE scenarios)
+**Decision Criticality Check**: Verify each scenario satisfies ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Quantified)
+
+### Step 2: Build References (BEFORE scenarios) — 60% reduction
 
 | Type | Floor | Core Elements |
 |------|-------|---------------|
-| **Glossary** | ≥10 | RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST<br>**Format**: G#. Term \| Definition \| Use cases \| Related \| Limitations |
-| **Tools** | ≥5 | Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard), Research (Dovetail), Collaboration (Miro), Feedback (Pendo)<br>**Format**: T#. Tool \| Category \| Pricing \| Users \| Update (Q# YYYY) \| Integrations (≥3) \| URL |
-| **Literature** | ≥6 (≥2 ZH) | EN: Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*) \| ZH: 俞军, 梁宁, 苏杰<br>**Format**: L#. Author, Title, Year \| Summary \| Frameworks \| Relevance |
-| **Citations** | ≥12 | APA 7th + [EN]/[ZH] \| ≥50% last 3yrs<br>**Format**: A#. APA + language tag |
+| **Glossary** | ≥8 | RICE, JTBD, North Star, PMF, OKR, Continuous Discovery, Feature Factory, Churn<br>**Format**: G#. Term \| Definition \| Use cases \| Related \| Limitations |
+| **Tools** | ≥3 | Analytics (Mixpanel or Amplitude), Roadmapping (ProductBoard), Research (UserTesting)<br>**Format**: T#. Tool \| Category \| Pricing \| Users \| Update (Q# YYYY) \| Integrations (≥3) \| URL |
+| **Literature** | ≥4 (≥1 ZH) | EN: Cagan (*Inspired*), Torres (*Continuous Discovery*) \| ZH: 俞军<br>**Format**: L#. Author, Title, Year \| Summary \| Frameworks \| Relevance |
+| **Citations** | ≥8 | APA 7th + [EN]/[ZH] \| ≥50% last 3yrs<br>**Format**: A#. APA + language tag |
 
 **Run Gates 1–6 after completion**
 
-### Step 3: Generate Scenarios (batch 5 → self-check)
+### Step 3: Generate Scenarios (batch 2–3 → self-check)
 
-**Format**: "How does product support...", "Product enables...", "When [role] needs X, product provides..."  
-**Include**: Time constraints, resource limits, stakeholder pressure, conflicting data  
+**Format**: "When [role] faces [decision-blocking conflict], how does product enable decision?" | "Market signal: [quantified risk], how prioritize?"  
+**Include**: Revenue impact (>$1M), stakeholder conflict (≥2 roles), strategic ambiguity, time pressure  
 **Test**: ≥2 dimensions (Product/Business/Strategic/Operational)  
-**Avoid**: Feature checks ("Has X?", "Supports Y?")
+**Avoid**: Feature checks ("Has X?", "Supports Y?"), niche scenarios, training-only scenarios
 
-**Complexity Examples**:
-- **B**: "How does product track activation metrics for new feature?"
-- **I**: "Churn 8% (target: 5%) but roadmap full. How support retention vs. new features?"
+**Decision-Critical Examples**:
+- **B**: "Top 5 customers (40% revenue) request feature misaligned with mass-market vision. Prioritize?"
+- **I**: "Churn 8% (target: 5%), roadmap full, sales wants 3 features. How prioritize?"
 - **A**: "CEO allocates $5M for ONE bet: API platform, mobile app, or international. How enable decision?"
 
-**Structure** (150–300 words):
-1. **Key Capability**: 1-sentence workflow/feature tested
-2. **Framework** [Ref: G#/A#]: Cite relevant frameworks
+**Structure** (150–250 words):
+1. **Decision Context**: 1-sentence decision-blocking conflict (revenue/strategic/risk)
+2. **Framework** [Ref: G#/A#]: Cite relevant frameworks (RICE, JTBD, North Star)
 3. **Multi-dimensional**: ≥2 of Product/Business/Strategic/Operational
-4. **Concrete workflow**: Step-by-step product support
-5. **Trade-off analysis**: Options with pros/cons/risks
-6. **Stakeholder deliverables**: Role-specific outputs
-7. **Success metrics**: Quantified targets + timeframes
+4. **Workflow**: Step-by-step product support (3–4 steps)
+5. **Trade-off analysis**: ≥2 options with pros/cons/risks
+6. **Stakeholder impact**: ≥2 roles, their positions, deliverables
+7. **Success metrics**: Quantified targets (revenue $, adoption %, retention %) + 6–12mo timeframe
 8. **Limitations**: Assumptions and boundaries
-9. **Artifact** (optional): Matrix, journey, dashboard, roadmap
+9. **Decision Criticality** [NEW]: Which criterion satisfied (Blocks/Risk/Stakeholders/Evolving/Quantified)
 
-**Self-Check** (per 5): ✓ Scenario-based \| ✓ ≥2 dimensions \| ✓ 150–300 words \| ✓ ≥3/5 ≥1 cite, ≥1/5 ≥2 cites \| ✓ Complexity matches depth
+**Self-Check** (per 2–3): ✓ Decision-critical \| ✓ ≥2 dimensions \| ✓ 150–250 words \| ✓ ≥1 cite \| ✓ Quantified impact \| ✓ Complexity matches depth
 
-### Step 4: Create Visuals (≥1 diagram + ≥1 table per capability)
+### Step 4: Create Visuals (≥1 diagram + ≥1 table per capability) — Compressed
 
 | Capability | Diagram | Table |
 |------------|---------|-------|
-| **Strategy** | Roadmap (now/next/later), competitive 2×2 | Decision matrix |
-| **Discovery** | User journey, research synthesis | Interview guide |
-| **Prioritization** | OST, Value/Effort 2×2 | RICE scorecard |
-| **Metrics** | AARRR funnel, cohort retention | Dashboard mockup |
-| **Stakeholder** | Power/Interest 2×2 | Engagement plan, RACI |
-| **GTM** | Growth loop | Channel strategy, launch plan |
+| **Strategy & Prioritization** | Roadmap (now/next/later) OR Value/Effort 2×2 | Decision matrix (≥2 options × ≥5 dimensions) |
+| **Metrics & Decision-Making** | AARRR funnel OR cohort retention curve | Impact metrics (baseline, target, 6–12mo) |
+| **Stakeholder Alignment** | Power/Interest 2×2 | Engagement plan (role, position, action) |
+| **(Optional) GTM** | Growth loop | Channel strategy |
 
-**Requirements**: Include units/timeframes; cite sources; ≥50% scenarios reference visuals
+**Requirements**: Include units/timeframes; cite sources; ≥70% scenarios reference visuals; total ≥3 diagrams + ≥3 tables
 
 ### Step 5: Populate References
 
 Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphans \| ✓ All fields complete \| ✓ [EN]/[ZH] tags
 
-### Step 6: Run 12-Point Validation
+### Step 6: Run 12-Point Validation (Streamlined)
 
 **Checklist** (ANY fail = stop, fix, re-run ALL):
-1. **Floors**: G≥10, T≥5, L≥6, A≥12, UC=25–30, 20/40/40% (±5%)
-2. **Citations**: ≥70% ≥1 cite; ≥30% ≥2 cites
-3. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
-4. **Recency**: ≥50% from 3yrs (≥70% AI/platform)
-5. **Diversity**: ≥3 types; no type >25%
-6. **Links**: 100% accessible/archived
-7. **Cross-Refs**: 100% resolve; no orphans
-8. **Word Count**: Sample 5; 100% within 150–300
-9. **Key Capabilities**: 100% concrete workflows (not features)
-10. **Per-Capability**: 6/6 meet ≥2 authoritative + ≥1 tool
-11. **Frameworks**: ≥80% correctly cited with limitations
-12. **Scenario Quality**: ≥70% enable demonstration (not yes/no)
+1. **Floors**: G≥8, T≥3, L≥4, A≥8, UC=6–8, 25/50/25% (±5%)
+2. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Quantified)
+3. **Citations**: ≥70% ≥1 cite; ≥30% ≥2 cites
+4. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
+5. **Recency**: ≥50% from 3yrs (≥70% AI/platform)
+6. **Diversity**: ≥3 types; no type >25%
+7. **Links**: 100% accessible/archived
+8. **Cross-Refs**: 100% resolve; no orphans
+9. **Word Count**: Sample 3; 100% within 150–250
+10. **Workflows**: 100% concrete (not feature checks); ≥2 dimensions
+11. **Per-Capability**: 3/3 meet ≥2 authoritative + ≥1 tool
+12. **Scenario Quality**: ≥70% enable decision-making (not yes/no)
 
 ### Step 7: Quality Review
 
@@ -144,24 +163,24 @@ Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphan
 
 **Pilot**: 2–3 users → 1 demo each → feedback → iterate
 
-## Validation
+## Validation (Streamlined)
 
 ### Report (ANY fail = stop, fix, re-run ALL)
 
 | # | Check | Measurement | Pass Criteria | Result | Status |
 |---|-------|-------------|---------------|--------|--------|
-| 1 | Floors | G:__ T:__ L:__ A:__ UC:__ (__B/__I/__A) | G≥10, T≥5, L≥6, A≥12, UC:25-30, 20/40/40% (±5%) | | PASS/FAIL |
-| 2 | Citations | __%≥1, __%≥2 | ≥70% ≥1, ≥30% ≥2 | | PASS/FAIL |
-| 3 | Language | EN:__%, ZH:__%, Other:__% | EN:50-70%, ZH:20-40%, Other:5-15% | | PASS/FAIL |
-| 4 | Recency | __% from 3yrs | ≥50% (≥70% AI/platform) | | PASS/FAIL |
-| 5 | Diversity | __ types; max __% | ≥3 types, no type >25% | | PASS/FAIL |
-| 6 | Links | __/__ accessible | 100% | | PASS/FAIL |
-| 7 | Cross-Refs | __/__ resolved | 100% | | PASS/FAIL |
-| 8 | Word Count | __/5 compliant | 100% within 150-300 | | PASS/FAIL |
-| 9 | Workflows | __/__ concrete | 100% concrete (not feature checks) | | PASS/FAIL |
-| 10 | Per-Capability | __/6 meet evidence | 6/6 (≥2 authoritative + ≥1 tool) | | PASS/FAIL |
-| 11 | Frameworks | __/__ correct+cited | ≥80% | | PASS/FAIL |
-| 12 | Quality | __% enable demo | ≥70% scenario-based | | PASS/FAIL |
+| 1 | Floors | G:__ T:__ L:__ A:__ UC:__ (__B/__I/__A) | G≥8, T≥3, L≥4, A≥8, UC:6-8, 25/50/25% (±5%) | | PASS/FAIL |
+| 2 | Decision Criticality | __/__ satisfy ≥1 criterion | 100% (Blocks/Risk/Stakeholders/Evolving/Quantified) | | PASS/FAIL |
+| 3 | Citations | __%≥1, __%≥2 | ≥70% ≥1, ≥30% ≥2 | | PASS/FAIL |
+| 4 | Language | EN:__%, ZH:__%, Other:__% | EN:50-70%, ZH:20-40%, Other:5-15% | | PASS/FAIL |
+| 5 | Recency | __% from 3yrs | ≥50% (≥70% AI/platform) | | PASS/FAIL |
+| 6 | Diversity | __ types; max __% | ≥3 types, no type >25% | | PASS/FAIL |
+| 7 | Links | __/__ accessible | 100% | | PASS/FAIL |
+| 8 | Cross-Refs | __/__ resolved | 100% | | PASS/FAIL |
+| 9 | Word Count | __/3 compliant | 100% within 150-250 | | PASS/FAIL |
+| 10 | Workflows | __/__ concrete | 100% concrete (not feature checks); ≥2 dimensions | | PASS/FAIL |
+| 11 | Per-Capability | __/3 meet evidence | 3/3 (≥2 authoritative + ≥1 tool) | | PASS/FAIL |
+| 12 | Quality | __% enable decision | ≥70% enable decision-making (not yes/no) | | PASS/FAIL |
 
 ### Quality Examples (≥2 fails = rewrite)
 
@@ -172,49 +191,46 @@ Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphan
 5. **Discriminative**: ✓ "When does RICE mislead?" ✗ "Includes RICE calculator?"
 6. **Alignment**: B (execution) \| I (strategy/trade-offs) \| A (portfolio/P&L/vision)
 
-## Output Format
+## Output Format (Streamlined)
 
 ### Document Structure
 
-**TOC**: Context → Requirements → Execution (Steps 1-7) → Validation → Use Cases by Capability (8.1 Strategy | 8.2 Discovery | 8.3 Prioritization | 8.4 Metrics | 8.5 Stakeholder | 8.6 GTM) → References (9.1 Glossary | 9.2 Tools | 9.3 Literature | 9.4 Citations) → Validation Report
+**TOC**: Context → Requirements → Execution (Steps 1-7) → Validation → Use Cases by Capability (8.1 Strategy & Prioritization | 8.2 Metrics & Decision-Making | 8.3 Stakeholder Alignment | 8.4 GTM optional) → References (9.1 Glossary | 9.2 Tools | 9.3 Literature | 9.4 Citations) → Validation Report
 
-### Capability Overview
+### Capability Overview (Decision-Critical)
 
-**Total**: [25–30] | **Distribution**: [X]B ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%)
+**Total**: [6–8] | **Distribution**: [X]B ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%)
 
 | # | Capability | Range | Count | Mix | Artifacts |
 |---|------------|-------|-------|-----|-----------|
-| 1 | Strategy | UC1–5 | 5 | 1B/2I/2A | 1 diagram+table |
-| 2 | Discovery | UC6–10 | 5 | 1B/2I/2A | 1 diagram+table |
-| 3 | Prioritization | UC11–16 | 6 | 1B/2I/3A | 1 diagram+table |
-| 4 | Metrics | UC17–21 | 5 | 1B/2I/2A | 1 diagram+table |
-| 5 | Stakeholder | UC22–25 | 4 | 0B/2I/2A | 1 diagram+table |
-| 6 | GTM | UC26–30 | 5 | 1B/2I/2A | 1 diagram+table |
-| | **Total** | | **30** | **6B/12I/12A** | **6+6** |
+| 1 | Strategy & Prioritization | UC1–3 | 3 | 1B/1I/1A | 1 diagram+table |
+| 2 | Metrics & Decision-Making | UC4–6 | 3 | 0B/1I/2A | 1 diagram+table |
+| 3 | Stakeholder Alignment | UC7–8 | 2 | 0B/1I/1A | 1 diagram+table |
+| | **Total** | | **8** | **1B/3I/4A** | **3+3** |
 
-**Usage**: Select 1–2 capabilities (5–10 scenarios) → demonstrate 3–4 per session
+**Usage**: Select 1 capability (2–3 scenarios) → demonstrate 1–2 per session (5–10 min/scenario)
 
-### Use Case Template
+### Use Case Template (Decision-Critical)
 
 ---
 
-**UC#: [Scenario with constraints, competing priorities, stakeholder pressure]**
+**UC#: [Decision-blocking conflict: revenue/strategic/risk impact]**
 
-**Complexity**: [B/I/A] | **Capability**: [Domain]
+**Complexity**: [B/I/A] | **Capability**: [Domain] | **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Quantified]
 
-**Key Capability**: [1 sentence—specific workflow tested]
+**Key Capability**: [1 sentence—decision-blocking conflict tested]
 
-**Validation** (150–300 words):
-1. **Framework**: Implements [Ref: G#/A#] via [application]
-2. **Multi-dimensional**: ≥2 of Product/Business/Strategic/Operational
-3. **Workflow**: "First, [action]. Second, [action]. Third, [action]."
-4. **Trade-offs**: "Option A: [pros]/[cons]/[risks]. Option B: [pros]/[cons]/[risks]."
-5. **Alternatives**: "Could support [Z] if [constraint changes]"
-6. **Deliverables**: "Generates [artifact] for [role] with [elements]"
-7. **Success**: "[Metric] (baseline: [X], target: [Y] in [timeframe])"
+**Validation** (150–250 words):
+1. **Decision Context**: [Quantified conflict: revenue >$1M, churn >5%, market risk]
+2. **Framework**: Implements [Ref: G#/A#] via [application]
+3. **Multi-dimensional**: ≥2 of Product/Business/Strategic/Operational
+4. **Workflow**: "First, [action]. Second, [action]. Third, [action]." (3–4 steps)
+5. **Trade-offs**: "Option A: [pros]/[cons]/[risks]. Option B: [pros]/[cons]/[risks]." (≥2 options)
+6. **Stakeholder Impact**: ≥2 roles, positions, deliverables
+7. **Success Metrics**: "[Metric] (baseline: [X], target: [Y] in 6–12mo)" (quantified)
 8. **Limitations**: "Assumes [X]; may not apply if [Y]"
 
-**Artifact** *(optional)*: [Type with structure]
+**Artifact**: [Type with structure] | **Decision Criticality Justification**: [Why this scenario is decision-critical]
 
 ---
 
@@ -233,31 +249,37 @@ Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphan
 - **Web**: `Organization. (Year, Month Day). *Title*. Site. URL [EN]`
 - **Chinese**: `俞军. (2020). *俞军产品方法论*. 中信出版社. [ZH]`
 
-## Example
+## Example (Decision-Critical)
 
-**UC1: How does product support decision when top 5 enterprise customers (40% revenue) request feature misaligned with mass-market vision?**
+**UC1: Top 5 enterprise customers (40% revenue) request feature misaligned with mass-market vision. Prioritize?**
 
-**Complexity**: Advanced | **Capability**: Strategy
+**Complexity**: Advanced | **Capability**: Strategy & Prioritization | **Decision Criticality**: [Blocks/Risk/Stakeholders/Quantified]
 
-**Key Capability**: Tests revenue protection vs. long-term PMF; distinguishes strategic decision support from roadmap tools.
+**Key Capability**: Tests revenue protection vs. long-term PMF under stakeholder pressure; distinguishes strategic decision support from roadmap tools.
 
-**Validation** (248 words):
+**Validation** (210 words):
 
-Enables multi-dimensional evaluation [Ref: A1]. **First, facilitates JTBD discovery** [Ref: A7]—identifies problems customers solve. Surfaces that requests mask deeper needs, revealing generalized solutions [Ref: A6].
+**Decision Context**: Enterprise revenue $2M (40% total), churn risk if declined, mass-market vision at risk if customized. Blocks roadmap prioritization & strategic pivot.
 
-**Second, quantifies with RICE** [Ref: G2]. Enterprise: Reach (5/$2M), Impact (high retention/low acquisition), Confidence (high), Effort (unknown if custom). Mass-market: Reach (5K+ users), Impact (med/user, high cumulative), Confidence (med), Effort (similar). Recognizes RICE won't capture strategic value—provides decision matrix [Ref: T2].
+**Framework**: RICE + JTBD + North Star [Ref: G2, G7, G4]. RICE quantifies reach/impact/confidence/effort. JTBD reveals underlying customer needs (may differ from feature request). North Star ensures alignment with long-term outcomes [Ref: A1, A6].
 
-**Third, assesses against North Star** [Ref: G4]. Evaluates whether this moves toward outcomes or becomes feature factory [Ref: G9]. Identifies if generalized ("custom fields" → "flexible schema"), both segments benefit and strengthen PMF [Ref: G5].
+**Multi-dimensional Analysis**:
+- **Product**: Custom feature vs. generalized solution
+- **Business**: Revenue protection ($2M) vs. acquisition growth (5K+ users)
+- **Strategic**: Feature factory risk vs. PMF strengthening
+- **Operational**: Tech debt (custom) vs. velocity (reusable)
 
-**Trade-off visualization**: Displays (1) Enterprise version: protects $2M but risks fragmentation/debt; (2) Generalized: serves both but longer timeline/higher uncertainty; (3) Decline: maintains vision but risks churn/competition; (4) Premium tier: monetizes customization but adds operational complexity.
+**Workflow**: (1) Conduct JTBD interviews with enterprise to uncover underlying problem. (2) Evaluate RICE: Enterprise (Reach:5/$2M, Impact:high, Confidence:high, Effort:unknown) vs. Mass-market (Reach:5K+, Impact:med/user, Confidence:med, Effort:similar). (3) Assess North Star impact: Does generalized solution strengthen or dilute vision?
 
-**Alternative suggestions**: Recommends professional services, partner ecosystem, configuration tools [Ref: L3].
+**Trade-offs**: (A) Generalized feature: serves both segments, strengthens PMF, longer timeline, higher uncertainty. (B) Enterprise custom: protects $2M, risks fragmentation/debt, alienates mass-market. (C) Premium tier: monetizes customization, adds operational complexity. (D) Decline: maintains vision, risks churn/competition.
 
-**Stakeholder features**: Generates presentation with analysis, recommendation, trade-offs, criteria, precedent implications—product principles matter [Ref: T2].
+**Stakeholders**: CEO (revenue/strategy), VP Eng (velocity/debt), VP Sales (customer retention), PM (roadmap/vision).
 
-**Success criteria**: Tracks enterprise retention (+20%), mass-market adoption (≥30% in 6mo), tech debt (≤10% velocity impact), support costs (flat/declining).
+**Success Metrics**: Enterprise retention (+20%), mass-market adoption (≥30% in 6mo), tech debt (≤10% velocity), support costs (flat/declining).
 
 **Limitations**: Assumes enterprise needs generalizable; may not apply if truly custom.
+
+**Decision Criticality Justification**: Blocks roadmap prioritization (revenue >$1M at risk), affects ≥2 stakeholders (CEO + VP Eng + VP Sales), creates strategic risk (PMF dilution), quantified impact ($2M retention vs. $500K acquisition).
 
 **Artifact**:
 
@@ -270,6 +292,4 @@ Enables multi-dimensional evaluation [Ref: A1]. **First, facilitates JTBD discov
 | Competitive moat | Low (replicable) | High (differentiator) | 10% | 3 | 9 |
 | **Weighted** | | | | **4.8** | **7.1** |
 
-**Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases
-
-**Confidence**: High (established frameworks; common PM scenario)
+**Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases (decision: prioritize mass-market, offer professional services to enterprise)

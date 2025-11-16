@@ -1,30 +1,41 @@
-# Regulatory Compliance Interview Q&A Generator
+# Regulatory Compliance Q&A Generator (Minimal Viable)
 
 ## Purpose
 
-Generate 25-30 senior-level Q&As mapping regulatory obligations → technical implementation, testing domain expertise and cross-functional coordination.
+Generate **4-6 decision-critical regulatory Q&As** for informed decision-making with limited time. Scenario-based, not news-driven.
 
-**Target**: Senior engineers, compliance officers, architects  
+**Target**: Legal, Compliance, Security, Architecture (core roles)  
 **Scope**: Privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), standards (ISO 27001/27701, SOC2, NIST CSF)  
-**Stakeholders**: Legal, Compliance, Security, Architecture, Product, Executive, Audit  
-**Constraints**: 150-300 words, evidence-based [Ref: ID], actionable (tools/metrics/frameworks)
+**Cadence**: On-demand | **4-6h effort** | Validity: Evergreen (refresh annually or when regulations change)  
+**Constraints**: 150-250 words, scenario-based, quantified impact, actionable decision/trade-offs
 
 ---
 
 ## Specifications
 
-### Coverage (MECE)
+### Decision Criticality Framework (NEW)
 
-**Distribution**: 25-30 Q&As, 20% Foundational / 40% Intermediate / 40% Advanced, 6 clusters × 4-6 Q&As, ≥4 stakeholders per cluster
+**Include if ≥1 criterion satisfied:**
+- **Blocks Decision**: Directly impacts compliance strategy, audit readiness, or regulatory pivot
+- **Creates Risk**: Material threat (breach, audit failure, regulatory fine >$100K, compliance deadline <6mo)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Legal + Compliance, Security + Architecture)
+- **Requires Action**: 1-6mo action window (not speculative)
+- **Quantified Impact**: Fine $, audit days, remediation hours, deadline (days to compliance)
 
-| Cluster | Focus | Stakeholders |
-|---------|-------|--------------|
-| **Compliance Modeling** | Framework mapping, gap analysis, control matrices | Legal, Compliance, Architecture |
-| **Risk & Threat** | Threat modeling, risk quantification, attack vectors | Security, Executive, Architecture |
-| **Privacy Engineering** | Data rights, consent, minimization, pseudonymization | Legal, Compliance, Product, Architecture |
-| **Audit & Evidence** | Audit trails, evidence collection, certification | Compliance, Audit, Security |
-| **Security Architecture** | Encryption, access control, data sovereignty, Zero Trust | Security, Architecture, Executive |
-| **Remediation** | Gap closure, roadmaps, budget, cross-functional coordination | All 7 |
+**Exclude if**: Niche/legacy regulations (<5% adoption), orthogonal/nice-to-have, already covered, vendor marketing
+
+---
+
+### Coverage (Decision-Critical Only)
+
+**Distribution**: 4-6 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, 3-4 clusters × 1-2 Q&As each, ≥2 stakeholders per Q&A
+
+| Cluster | Focus | Decision Trigger | Stakeholders |
+|---------|-------|------------------|--------------|
+| **Compliance Modeling** | Framework mapping, audit readiness, gap analysis | New regulation deadline, failed audit, compliance debt >$500K | Legal, Compliance |
+| **Privacy Engineering** | Data rights, consent, minimization, pseudonymization | Consent rate <80%, data breach, DPIA required | Legal, Compliance, Security |
+| **Audit & Evidence** | Audit trails, evidence collection, certification | SOC2/ISO audit in <6mo, evidence gaps, control failures | Compliance, Security |
+| **Remediation** | Gap closure, roadmaps, budget, cross-functional coordination | Remediation cost >$300K, deadline <6mo, multi-team impact | All 4 core roles |
 
 ### Content Requirements
 
@@ -48,44 +59,36 @@ Generate 25-30 senior-level Q&As mapping regulatory obligations → technical im
 **Standards**: BPMN (process), UML (structure), C4 (software), ERD/DFD (data), ArchiMate (enterprise)  
 **Avoid**: Mega-diagrams (>120 nodes), mixed abstraction, missing rationale
 
-### Quality Gates
+### Validation Checks (Streamlined, 12 checks)
 
-**Minimums**: G≥18, T≥6, L≥8, A≥12, Q=25-30 (20/40/40 mix)
+**Minimums**: G≥10, T≥4, L≥6, A≥8, Q=4-6 (25/50/25 mix)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Floors | G≥18, T≥6, L≥8, A≥12, Q=25-30 (20/40/40) |
-| 2 | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
-| 3 | Language | EN 50-70%, ZH 20-40%, Other 5-15% |
-| 4 | Recency | ≥50% last 3yr (≥80% privacy) |
-| 5 | Diversity | ≥3 types, max 25% single |
-| 6 | Links | 100% accessible, prefer official |
-| 7 | Cross-refs | All [Ref: ID] resolve |
-| 8 | Word count | Sample 5, all 150-300 |
-| 9 | Insights | Concrete gap/violation/failure |
-| 10 | Reg-tech | ≥80% explicit mapping |
-| 11 | Judgment | ≥70% scenario-based |
-| 12 | Visuals | ≥90% diagram + table + metric |
-| 13 | Frameworks | ≥80% apply standards |
-| 14 | Metrics | ≥60% quantitative |
-| 15 | Cross-functional | ≥50% ≥3 stakeholders |
-| 16 | Per-cluster | ≥2 reg + ≥1 tool |
+| 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-6 (25/50/25) |
+| 2 | **Decision Criticality** | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
+| 3 | **Freshness** | ≥75% <2mo, ≥90% <4mo, 100% ≤12mo |
+| 4 | **Citations** | ≥70% with ≥1, ≥30% with ≥2+ |
+| 5 | **Language** | EN 60-80%, ZH 15-30%, Other 5-10% |
+| 6 | **Links** | 100% accessible, prefer official |
+| 7 | **Word Count** | All 150-250w (news-driven, concise) |
+| 8 | **Impact** | Quantified: fine $, audit days, deadline, remediation hours |
+| 9 | **Decision** | Clear go/no-go, adopt/defer/skip, rationale |
+| 10 | **Visuals** | ≥2 diagrams + ≥1 table per cluster (60% reduction) |
+| 11 | **Cross-refs** | All [Ref: ID] resolve |
+| 12 | **Final Review** | News-driven, decision-critical, actionable, no speculation |
 
-**Balance**: Acknowledge assumptions, limitations, alternatives, trade-offs (security vs usability, cost vs risk), counterarguments, high-risk mitigations
-
-### Validation Checklist
-
-Execute all 16 checks, fix failures, iterate until 100% pass.
+**Balance**: Acknowledge trade-offs (security vs cost, compliance vs usability), constraints, alternatives
 
 ---
 
-## Workflow
+## Workflow (Minimal Viable)
 
-1. **Plan**: 5-6 MECE clusters, 4-6 Q&As each, 25-30 total, 20/40/40 mix
-2. **Collect**: G≥18, T≥6, L≥8, A≥12, assign IDs, tag languages, validate links
-3. **Generate**: Scenario-based, 150-300 words, trace obligations→UX, cite [Ref: ID], concrete insight
-4. **Visuals**: Per cluster: Mermaid diagram + table + metric with formula
-5. **Validate**: Execute 16 checks, fix, iterate
+1. **News Discovery** (1-2h): Tiered search (past 1-3d, 7-14d, 2-6mo), ≥10-15 candidates, decision-critical filter
+2. **Build References** (30-45min): G≥10, T≥4, L≥6, A≥8, assign IDs, tag languages, validate links
+3. **Generate Q&As** (2-3h): Batch 2-3, news-driven, 150-250w, quantified impact, cite [Ref: ID]
+4. **Visuals** (30-45min): ≥2 diagrams + ≥1 table per cluster (Mermaid, <80 nodes)
+5. **Validate** (30-45min): Execute 12 checks, fix, iterate until 100% pass
 
 ---
 
@@ -108,47 +111,47 @@ Execute all 16 checks, fix failures, iterate until 100% pass.
 
 ## Output Format
 
-### Question Quality
+### Question Quality (News-Driven)
 
-**Approach**: Regulatory Mapping → Risk & Threat → Audit & Evidence → Stakeholder Coordination → Implementation Trace
+**Approach**: News Trigger → Regulatory Mapping → Risk Assessment → Stakeholder Impact → Decision & Action
 
 | Principle | Good ✅ | Bad ❌ |
 |-----------|---------|---------|
-| **Clarity** | "Translate GDPR Art. 17 into SaaS architecture for multi-tenant healthcare" | "Explain GDPR" |
-| **Signal** | "SOC2 Type II in 6mo. Architecture changes?" | "List NIST CSF functions" |
-| **Depth** | "Encryption for HIPAA PHI. Balance security, performance, cost?" | "Encrypt data?" |
-| **Realism** | "30-day deletion vs 7-year audit logs. Navigate conflict?" | "Design payment system" |
-| **Discriminative** | "When does data residency justify abandoning cloud cost optimization?" | "What is data residency?" |
-| **Role Alignment** | Match to Senior IC/Arch/Sec/Compliance/Legal/Product/Executive | Generic |
+| **News-Driven** | "GDPR Art. 17 enforcement action (Jan 2025). Deletion architecture?" | "Explain GDPR Art. 17" |
+| **Signal** | "SOC2 audit in 4mo. Evidence gaps?" | "List SOC2 controls" |
+| **Quantified** | "HIPAA fine $1.5M, 6-year retention conflict. Remediation $300K, 3mo?" | "Encrypt data?" |
+| **Actionable** | "Consent rate 60%. Privacy-by-Design roadmap: 2mo, $150K, 3 phases?" | "Design privacy" |
+| **Decision-Critical** | "Compliance debt $500K, deadline 6mo. Prioritize: GDPR/HIPAA/PCI?" | "What is compliance?" |
+| **Role Alignment** | Multi-stakeholder (Legal + Compliance, Security + Architecture) | Generic |
 
-### Template
+### Template (News-Tracking)
 
 ```markdown
 ## Contents
-- [Topic Areas](#topic-areas) - Topic | Range | Count | Mix
-- [Topics 1-6](#topics) - Q&As + artifacts
+- [Cluster Overview](#clusters) - Cluster | Decision Trigger | Q&A Count
+- [Q&As 1-6](#qa) - News + Impact + Decision + Action
 - [References](#references) - Glossary, Tools, Literature, Citations
 
-## Topic Areas
-| Topic | Range | Count | Mix (F/I/A) |
-| Compliance Modeling | Q1-Q5 | 5 | 1/2/2 |
+## Cluster Overview
+| Cluster | Decision Trigger | Q&A Count | Criticality |
+| Compliance Modeling | New deadline, failed audit, debt >$500K | 1-2 | Blocks/Risk |
 | ... | ... | ... | ... |
 
-## Q[N]: [Scenario-Based Question]
-**Difficulty**: [F/I/A] | **Type**: [Topic] | **Insight**: [Gap/violation/failure]
+## Q[N]: [News-Triggered Question]
+**Difficulty**: [F/I/A] | **Cluster**: [Topic] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-**Answer** (150-300 words):
-[P1: Regulatory Mapping - regulations, articles, requirements [Ref: ID]]
-[P2: Technical Implementation - architecture, controls, tools [Ref: ID]]
-[P3: Risk Analysis - risks, impact, mitigations [Ref: ID]]
-[P4: Stakeholder Coordination - RACI, flows, trade-offs [Ref: ID]]
-[P5: Outcome - metrics, evidence, criteria]
+**Answer** (150-250 words):
+[P1: News (~25w) - What, when, why, regulation, articles [Ref: ID]]
+[P2: Impact (~50w) - Quantified: fine $, audit days, deadline, remediation hours [Ref: ID]]
+[P3: Stakeholders (~35w) - ≥2 roles, concerns, actions [Ref: ID]]
+[P4: Decision (~50w) - Go/no-go, adopt/defer/skip, rationale, success targets [Ref: ID]]
+[P5: Action (~20w) - Immediate (0-2wk), Short (2wk-2mo), owner]
 
 **Artifacts**:
 ```mermaid
-[Diagram]
+[Diagram: <80 nodes, decision flow or control matrix]
 ```
-| Col1 | Col2 | Col3 |
+| Control | Requirement | Status | Owner |
 **Metrics**: Formula = Result
 ```
 
@@ -156,7 +159,7 @@ Execute all 16 checks, fix failures, iterate until 100% pass.
 
 ## References
 
-### Glossary (≥18)
+### Glossary (≥10, decision-critical only)
 
 **Privacy Laws**: GDPR (EU 2016/679: principles, rights, €20M/4% penalties, Art. 3 scope) | CCPA/CPRA (CA: access, deletion, opt-out, $2.5K-$7.5K/violation) | PIPL (China: localization, transfers, ¥50M/5%) | LGPD (Brazil: processing, rights, ANPD, 2%)
 
@@ -178,7 +181,7 @@ Execute all 16 checks, fix failures, iterate until 100% pass.
 **Tools**: OneTrust DataGuidance, TrustArc, IAPP  
 **Legal**: LexisNexis, Westlaw, Official Gazettes
 
-### Tools (≥6)
+### Tools (≥4, decision-critical only)
 
 **T1. OneTrust**: Privacy/GRC (data mapping, consent, DSR, cookies, vendor). GDPR, CCPA/CPRA, PIPL, LGPD, HIPAA, SOC2, ISO 27001. https://www.onetrust.com [EN]
 
@@ -188,67 +191,47 @@ Execute all 16 checks, fix failures, iterate until 100% pass.
 
 **T4. Splunk**: SIEM (logs, threats, incidents, reporting). GDPR Art. 32, HIPAA §164.312(b), PCI-DSS Req 10. https://www.splunk.com [EN]
 
-**T5. Nessus**: Vulnerability scanner (75K+ plugins, compliance checks). PCI-DSS ASV, NIST, CIS. https://www.tenable.com/products/nessus [EN]
+### Literature (≥6, canonical only)
 
-**T6. TrustArc**: Privacy platform (assessments, consent, DSR, cookies). 100+ laws. https://trustarc.com [EN]
+**L1.** EU. (2016). GDPR (2016/679). 99 articles, €20M/4%. [EN]
+**L2.** NIST. (2024). CSF 2.0 (CSWP 29). 6 functions, 23 categories, 108 subcategories. [EN]
+**L3.** ISO/IEC. (2022). ISO 27001:2022. 93 controls, 4 themes. [EN]
+**L4.** PCI SSC. (2022). PCI-DSS v4.0. 12 reqs, Mar 2024. [EN]
+**L5.** HHS. (2013). HIPAA Security Rule (45 CFR 164.C). Admin, physical, technical. [EN]
+**L6.** AICPA. (2017). SOC2 TSC. 5 principles, Type I/II. [EN]
 
-**T7. Drata**: Compliance automation (evidence, monitoring, audit). SOC2, ISO 27001, HIPAA, GDPR. https://drata.com [EN]
+### Citations (≥8, APA 7th, decision-critical only)
 
-### Literature (≥8)
-
-**L1.** EU. (2016). GDPR (2016/679). 99 articles, €20M/4%. [EN]  
-**L2.** NIST. (2020). SP 800-53 Rev.5. 1100+ controls, 20 families. [EN]  
-**L3.** ISO/IEC. (2022). ISO 27001:2022. 93 controls, 4 themes. [EN]  
-**L4.** PCI SSC. (2022). PCI-DSS v4.0. 12 reqs, Mar 2024. [EN]  
-**L5.** HHS. (2013). HIPAA Security Rule (45 CFR 164.C). Admin, physical, technical. [EN]  
-**L6.** AICPA. (2017). SOC2 TSC. 5 principles, Type I/II. [EN]  
-**L7.** NIST. (2024). CSF 2.0 (CSWP 29). 6 functions, 23 categories, 108 subcategories. [EN]  
-**L8.** OWASP. (2021). Top 10:2021. Injection, broken access, crypto failures. [EN]  
-**L9.** TC260. (2020). GB/T 35273-2020. Personal info security. [ZH]  
-**L10.** Cavoukian, A. (2011). Privacy by Design. 7 principles. [EN]
-
-### Citations (≥12, APA 7th)
-
-**A1.** EU. (2016). GDPR (2016/679). https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]  
-**A2.** NIST. (2020). SP 800-53 Rev.5. https://doi.org/10.6028/NIST.SP.800-53r5 [EN]  
-**A3.** ISO/IEC. (2022). ISO 27001:2022. [EN]  
-**A4.** PCI SSC. (2022). PCI-DSS v4.0. https://www.pcisecuritystandards.org [EN]  
-**A5.** HHS. (2013). HIPAA Security (45 CFR 164). https://www.hhs.gov/hipaa [EN]  
-**A6.** AICPA. (2017). SOC2 TSC. [EN]  
-**A7.** NIST. (2024). CSF 2.0 (CSWP 29). https://doi.org/10.6028/NIST.CSWP.29 [EN]  
-**A8.** OWASP. (2021). Top 10:2021. https://owasp.org/Top10/ [EN]  
-**A9.** TC260. (2020). GB/T 35273-2020. [ZH]  
-**A10.** Cavoukian, A. (2011). Privacy by Design. https://www.ipc.on.ca/wp-content/uploads/Resources/7foundationalprinciples.pdf [EN]  
-**A11.** Rose et al. (2020). NIST SP 800-207 Zero Trust. https://doi.org/10.6028/NIST.SP.800-207 [EN]  
-**A12.** CIS. (2021). CIS Controls v8. https://www.cisecurity.org/controls/v8 [EN]  
-**A13.** CAC. (2021). Data Security Law. [ZH]  
-**A14.** EDPB. (2020). Guidelines 4/2019 Art. 25. https://edpb.europa.eu [EN]  
-**A15.** Shostack, A. (2014). Threat Modeling. Wiley. [EN]  
-**A16.** Howard & LeBlanc. (2003). Writing Secure Code. Microsoft Press. [EN]  
-**A17.** CPPA. (2023). CPRA Regs. https://cppa.ca.gov [EN]  
-**A18.** EU Commission. (2023). EU-US Data Privacy Framework. https://commission.europa.eu [EN]
+**A1.** EU. (2016). GDPR (2016/679). https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]
+**A2.** NIST. (2024). CSF 2.0 (CSWP 29). https://doi.org/10.6028/NIST.CSWP.29 [EN]
+**A3.** ISO/IEC. (2022). ISO 27001:2022. [EN]
+**A4.** PCI SSC. (2022). PCI-DSS v4.0. https://www.pcisecuritystandards.org [EN]
+**A5.** HHS. (2013). HIPAA Security (45 CFR 164). https://www.hhs.gov/hipaa [EN]
+**A6.** AICPA. (2017). SOC2 TSC. [EN]
+**A7.** Rose et al. (2020). NIST SP 800-207 Zero Trust. https://doi.org/10.6028/NIST.SP.800-207 [EN]
+**A8.** EDPB. (2020). Guidelines 4/2019 Art. 25. https://edpb.europa.eu [EN]
 
 ---
 
 ## Example
 
-### Q1: Translate GDPR right to erasure (Art. 17) into architecture for multi-tenant healthcare SaaS (HIPAA compliant)?
+### Q1: Multi-tenant healthcare SaaS: GDPR Art. 17 (erasure) vs HIPAA §164.530(j) (6yr retention). Architecture?
 
-**Difficulty**: Advanced | **Type**: Compliance, Privacy, Architecture | **Insight**: GDPR deletion vs HIPAA 6yr retention conflict
+**Difficulty**: Advanced | **Cluster**: Compliance Modeling, Privacy Engineering | **Criticality**: Blocks/Risk/Roles/Action/Quantified
 
-**Answer** (280 words):
+**Answer** (200-250 words):
 
-**Regulatory Mapping**: GDPR Art. 17 mandates erasure "without delay" [A1]. HIPAA §164.530(j) requires 6yr PHI retention [A5]. **Resolution**: GDPR Art. 17(3)(b) exempts erasure for "legal obligations" [A1, A14], allowing HIPAA to supersede.
+**Scenario**: SaaS processes EU patient data (GDPR) + US PHI (HIPAA). Customer requests erasure (Art. 17). Legal conflict: GDPR mandates erasure "without delay"; HIPAA requires 6yr retention. Remediation cost: $300K, 3mo timeline. Fine risk: €20M (GDPR) vs $1.5M (HIPAA).
 
-**Privacy Architecture**: **Pseudonymization** [A10, A14]: separate PII (name, email) from PHI (medical records). Erasure deletes PII, retains pseudonymized PHI. OneTrust [T1] inventory classifies PII/PHI, documents legal bases (Art. 30 ROPA [A1]), maps flows.
+**Regulatory Mapping**: GDPR Art. 17(3)(b) exempts erasure for "legal obligations" [A1, A8]. HIPAA §164.530(j) qualifies as legal obligation. Resolution: Erase PII, retain pseudonymized PHI 6yr.
 
-**Risk Model**: **Legal**: €20M GDPR vs $1.5M HIPAA fines. **Technical**: incomplete deletion (backups, logs), propagation delays, audit proof [A15]. **Sovereignty**: EU residency vs US HIPAA jurisdiction [A18].
+**Impact**: Quantified: €20M GDPR fine vs $1.5M HIPAA fine. Remediation: $300K (pseudonymization, multi-region), 3mo. Affects: Legal, Compliance, Security, Architecture.
 
-**Architectural Controls**: (1) Lifecycle: retention policies, deletion workflows, tamper-evident audit [A7, T4]; (2) Multi-region: EU/US isolation; (3) Crypto-erasure: key destruction proof [A11]; (4) Audit: immutable logs (who/what/when/where) for DPA; (5) Minimization: automated PII purging [A1, A14].
+**Stakeholders**: Legal (interpret 17(3)(b), DPA negotiations) | Compliance (evidence collection, audit readiness) | Security (encryption, key management) | Architecture (pseudonymization design, multi-region).
 
-**Implementation**: PostgreSQL RLS (tenant isolation), event sourcing (audit), Kafka (propagation), Vault (keys), Terraform (IaC) [A16, T2].
+**Decision**: Adopt pseudonymization strategy: separate PII (name, email) from PHI (medical records). OneTrust [T1] maps flows, documents legal bases (Art. 30 ROPA). Go/no-go: Remediation cost <$500K, timeline <6mo.
 
-**Stakeholder RACI**: Legal (A: interpret 17(3)(b), DPAs) | Compliance (C: evidence [T1, T3]) | Security (R: encryption, keys [T4, A11]) | Architecture (R: pseudonymization, multi-region [A11]) | Product (R: deletion API, UX) | Executive (A: $600K initial, $150K/yr, €700K residual risk).
+**Trade-offs**: Pseudonymization adds latency (~50ms) but ensures compliance. Alternative: Crypto-erasure (key destruction) faster but riskier for audit proof.
 
 **Artifacts**:
 

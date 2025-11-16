@@ -1,10 +1,11 @@
-# System Analysis Q&A Generator
+# System Analysis Q&A Generator (Minimal Viable)
 
-Generate 30-35 system analysis Q&As covering 8 lifecycle phases × 5 viewpoints × 5 perspectives.
+Generate **4-6 decision-critical system analysis Q&As** for informed decision-making with limited time.
 
-**Scope**: Production-grade systems (>10K rps, >1TB data, multi-team, distributed, regulated)  
-**Output**: Q&As with multi-viewpoint analysis, quantified metrics, ≥2 alternatives, diagrams, citations  
-**Success**: 24/24 validation PASS | All 10 stakeholder roles | All 8 phases × 5 viewpoints × 5 perspectives
+**Scope**: Production-grade systems (>10K rps, >1TB data, multi-team, distributed, regulated)
+**Output**: Decision-critical Q&As with multi-viewpoint analysis, quantified metrics, ≥2 alternatives, diagrams, citations
+**Success**: 12/12 validation PASS | ≥5 core stakeholder roles | 4-6 decision-critical phases × viewpoints × perspectives
+**Cadence**: Bi-weekly | Effort: 4-6 hours | Expires: 2 weeks from generation
 
 ---
 
@@ -14,29 +15,40 @@ Generate 30-35 system analysis Q&As covering 8 lifecycle phases × 5 viewpoints 
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Total Count** | 30-35 |
-| **Difficulty Mix** | 20% Foundational (concepts) / 40% Intermediate (analysis) / 40% Advanced (synthesis) |
-| **Answer Length** | 200-350 words (diagrams/tables excluded) |
-| **Components** | Context → analysis framework → viewpoints → perspectives → metrics → trade-offs |
+| **Total Count** | **4-6** (60% reduction) |
+| **Difficulty Mix** | 25% Foundational / 50% Intermediate / 25% Advanced |
+| **Answer Length** | 150-250 words (diagrams/tables excluded) |
+| **Components** | Context → analysis framework → ≥3 viewpoints → ≥3 perspectives → quantified metrics → trade-offs |
 | **Citations** | ≥1 each; ≥2 for complex; ≥3 for regulatory/business |
-| **Per Cluster** | Analysis framework diagram + viewpoint matrix + perspective metrics + comparison table |
+| **Per Q&A** | Analysis framework diagram + viewpoint matrix + perspective metrics + comparison table |
 
-## Coverage Framework
+## Coverage Framework (Decision-Critical Only)
 
-**8 Lifecycle Phases**: Requirements & Discovery | Architecture & Design | Development | Testing & Quality | Deployment & Release | Operations & Observability | Maintenance & Support | Evolution & Governance
+**4-5 Lifecycle Phases** (decision-critical): Architecture & Design | Development | Deployment & Release | Operations & Observability | Evolution & Governance (skip Requirements, Testing, Maintenance unless decision-critical)
 
 **5 Viewpoints (MECE)**: Technical | Ecosystem | Business/Market | Regulatory/Compliance | Operational
 
 **5 Perspectives**: Performance | Security | Reliability | Decentralization | Transparency
 
+## Decision Criticality Framework (NEW)
+
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts architecture go/no-go, infrastructure investment, or strategic pivot
+- **Creates Risk**: Material threat (performance degradation, security breach, compliance violation, cost overrun >10%)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Architect + DevOps, Dev + SRE, etc.)
+- **Requires Action**: 1-6mo action window (not speculative)
+- **Quantified Impact**: Latency ms, throughput rps, cost %, availability %, compliance score
+
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered
+
 ## Content Standards
 
-**Flow**: Stakeholder needs → Viewpoints → Perspectives → Metrics → Recommendations  
-**Coverage**: ≥3 viewpoints + ≥3 perspectives per Q&A  
-**Quantification**: Concrete metrics required (✅ "5x velocity, +40-60% cost, +20-50ms latency" ❌ "enables scalability")  
-**Context**: Team size (<10/10-50/>50) | Scale (<100/100-10K/>10K rps; <1TB/1-100TB/>100TB) | Lifecycle (greenfield/modernization/scaling/compliance) | Maturity (POC/MVP/production/mission-critical)  
-**Stakeholders**: Primary + secondary specified (BA/PM/Arch/Dev/QA/DevOps/Security/Data/SRE/Leadership)  
-**Balance**: ≥2 alternatives with matrix; assumptions/limitations/risks explicit; tag `[Consensus]`/`[Context-dependent]`/`[Emerging]`/`[Controversial]`  
+**Flow**: Stakeholder needs → Viewpoints → Perspectives → Metrics → Recommendations
+**Coverage**: ≥3 viewpoints + ≥3 perspectives per Q&A
+**Quantification**: Concrete metrics required (✅ "5x velocity, +40-60% cost, +20-50ms latency" ❌ "enables scalability")
+**Context**: Team size (<10/10-50/>50) | Scale (<100/100-10K/>10K rps; <1TB/1-100TB/>100TB) | Lifecycle (greenfield/modernization/scaling/compliance) | Maturity (POC/MVP/production/mission-critical)
+**Stakeholders**: ≥5 core roles (Architect, Developer, DevOps/SRE, Security, Leadership)
+**Balance**: ≥2 alternatives with matrix; assumptions/limitations/risks explicit; tag `[Consensus]`/`[Context-dependent]`/`[Emerging]`/`[Controversial]`
 **Precision**: Inline definitions; consistent taxonomy; evidence-based claims with citations
 
 ## Artifacts & Analysis Tools
@@ -72,17 +84,17 @@ Generate 30-35 system analysis Q&As covering 8 lifecycle phases × 5 viewpoints 
 
 **Format**: Mermaid diagrams (<120 nodes) | Quantitative tables with "Use When"/"Stakeholder Impact" | Formulas with targets | Framework name + application context
 
-## References
+## References (Proportional 60% Reduction)
 
 | Component | Min | Requirements |
-|-----------|-----|--------------|
-| **Glossary** | ≥25 | Multi-domain terms (Technical 30%, Business 25%, Ecosystem 15%, Regulatory 15%, Operational 15%) with relationships |
-| **Tools** | ≥12 | ≥2 per viewpoint category (Technical/Business/Ecosystem/Regulatory/Operational); URL valid, update ≤18mo, pricing, adoption |
-| **Frameworks** | ≥8 | Analysis frameworks across viewpoints (SWOT, BMC, STRIDE, ATAM, Porter's, Blue Ocean, DORA, etc.) |
-| **Literature** | ≥12 | Multi-domain coverage: Technical (Evans, Fowler, Richardson, Kleppmann), Business (Osterwalder, Kim/Mauborgne, Christensen), Regulatory (GDPR guides, SOC 2), Operational (Forsgren, Beyer) |
-| **Citations** | ≥20 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%); ≥30% business/regulatory |
+|-----------|-----|-------------|
+| **Glossary** | ≥10 | Only terms used in Q&As (Technical 30%, Business 25%, Ecosystem 15%, Regulatory 15%, Operational 15%) |
+| **Tools** | ≥6 | ≥1 per viewpoint category (Technical/Business/Ecosystem/Regulatory/Operational); URL valid, update ≤18mo |
+| **Frameworks** | ≥5 | Decision-critical frameworks (STRIDE, ATAM, C4, DORA, Blue Ocean) |
+| **Literature** | ≥6 | Canonical references only (Evans, Fowler, Forsgren, Osterwalder, Kim/Mauborgne, GDPR) |
+| **Citations** | ≥8 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%); ≥30% business/regulatory |
 
-**Quality**: ≥50% last 3yr | ≥70% modern systems | ≥5 types (books/papers/standards/frameworks/reports) | <20% single source | ≥40% non-technical | All viewpoints/perspectives/phases covered | 100% valid links
+**Quality**: ≥50% last 3yr | ≥70% modern systems | ≥4 types (books/papers/standards/frameworks) | <20% single source | ≥40% non-technical | All 4-5 decision-critical phases covered | 100% valid links
 
 ---
 
@@ -90,29 +102,29 @@ Generate 30-35 system analysis Q&As covering 8 lifecycle phases × 5 viewpoints 
 
 ## 1. Plan Structure
 
-Select 7-8 topic clusters (4-5 Q&As each, 30-35 total) covering all 8 phases. Assign difficulty (1F/2I/2A per cluster = 20/40/40% overall). Map primary/secondary stakeholders per Q&A.
+Select 1-2 topic clusters (2-3 Q&As each, 4-6 total) covering 4-5 decision-critical phases. Assign difficulty (1F/2I/1A per cluster = 25/50/25% overall). Map ≥5 core stakeholders per Q&A. Apply Decision Criticality Framework.
 
-**Verify**: 30-35 Q&As | 20/40/40% F/I/A (±5%) | All 8 phases (≥3 Q&As major) | All 5 viewpoints (≥20% each) | All 5 perspectives (≥60% Q&As cover ≥3) | All 10 stakeholders (≥2 Q&As per role as primary) | No gaps/redundancy
+**Verify**: 4-6 Q&As | 25/50/25% F/I/A (±5%) | 4-5 decision-critical phases (≥1 Q&A each) | All 5 viewpoints (≥20% each) | All 5 perspectives (≥60% Q&As cover ≥3) | ≥5 core stakeholders (≥1 Q&A per role as primary) | 100% decision-critical
 
 ## 2. Build References
 
-Create: Glossary ≥25 (Tech 30%, Biz 25%, Eco 15%, Reg 15%, Ops 15%, with relationships) | Tools ≥12 (≥2/viewpoint, URL/date/pricing/adoption) | Frameworks ≥8 (SWOT/BMC/STRIDE/ATAM/Porter's/Blue Ocean/DORA) | Literature ≥12 (multi-domain) | Citations ≥20 (APA 7th, 60/30/10% EN/ZH/Other, ≥30% biz/reg)
+Create: Glossary ≥10 (Tech 30%, Biz 25%, Eco 15%, Reg 15%, Ops 15%) | Tools ≥6 (≥1/viewpoint, URL/date) | Frameworks ≥5 (STRIDE/ATAM/C4/DORA/Blue Ocean) | Literature ≥6 (canonical only) | Citations ≥8 (APA 7th, 60/30/10% EN/ZH/Other, ≥30% biz/reg)
 
-**Verify**: G≥25, T≥12, F≥8, L≥12, A≥20 | 60/30/10% lang (±10%) | All 5 viewpoints | ≥50% last 3yr, ≥70% modern, ≥30% biz/market | ≥5 types, <20% single source, ≥40% non-tech | 100% valid URLs
+**Verify**: G≥10, T≥6, F≥5, L≥6, A≥8 | 60/30/10% lang (±10%) | All 5 viewpoints | ≥50% last 3yr, ≥70% modern, ≥30% biz/market | ≥4 types, <20% single source, ≥40% non-tech | 100% valid URLs
 
 ## 3. Write Q&As
 
-**Structure** (≥70% analysis-based): Lifecycle phase + stakeholder(s) + viewpoint(s) + perspective(s) context
+**Structure** (100% decision-critical): Lifecycle phase + stakeholder(s) + viewpoint(s) + perspective(s) context + Decision Criticality justification
 
-**Each Answer** (200-350 words): Context (needs/phase/system) → Framework (which viewpoints & why) → Multi-viewpoint assessment (≥3 of: Technical/Business/Ecosystem/Regulatory/Operational with quantified metrics) → Multi-perspective evaluation (≥3 of: Performance/Security/Reliability/Decentralization/Transparency) → Comparison matrix (≥2 alternatives: Approach/Technical/Business/Regulatory/Operational/Use When/Stakeholder Impact) → Recommendations (context-specific, thresholds, criteria) → Risks/Limitations (assumptions/trade-offs/boundaries) → Citations (≥1 foundational, ≥2 intermediate, ≥3 advanced/biz/reg)
+**Each Answer** (150-250 words): Context (needs/phase/system) → Framework (which viewpoints & why) → Multi-viewpoint assessment (≥3 of: Technical/Business/Ecosystem/Regulatory/Operational with quantified metrics) → Multi-perspective evaluation (≥3 of: Performance/Security/Reliability/Decentralization/Transparency) → Comparison matrix (≥2 alternatives: Approach/Technical/Business/Regulatory/Operational/Use When/Stakeholder Impact) → Recommendations (context-specific, thresholds, criteria) → Risks/Limitations (assumptions/trade-offs/boundaries) → Citations (≥1 foundational, ≥2 intermediate, ≥3 advanced/biz/reg)
 
-**Validate Every 5**: 200-350 words | ≥3 viewpoints | ≥3 perspectives with metrics | Primary+secondary stakeholders | Citations formatted | Comparison table ≥2 alternatives | Quantified insights
+**Validate Every Q&A**: 150-250 words | ≥3 viewpoints | ≥3 perspectives with metrics | ≥5 core stakeholders | Citations formatted | Comparison table ≥2 alternatives | Quantified insights | Decision Criticality justified
 
 ## 4. Create Artifacts
 
-**Per Cluster** (4/4 required): Framework diagram (Mermaid <120 nodes, matches phase/viewpoint: BMC/C4/Data flow/Integration map) | Viewpoint matrix (Technical/Ecosystem/Business/Regulatory/Operational columns) | Perspective metrics (≥3: metric/formula/variables/baseline/target/measurement) | Comparison matrix (≥2 alternatives: Approach/Technical/Business/Regulatory/Operational/Use When/Stakeholder Impact)
+**Per Q&A** (4/4 required): Framework diagram (Mermaid <120 nodes, matches phase/viewpoint: BMC/C4/Data flow/Integration map) | Viewpoint matrix (Technical/Ecosystem/Business/Regulatory/Operational columns) | Perspective metrics (≥3: metric/formula/variables/baseline/target/measurement) | Comparison matrix (≥2 alternatives: Approach/Technical/Business/Regulatory/Operational/Use When/Stakeholder Impact)
 
-**Verify**: All clusters 4/4 artifacts | Diagrams render | Tables formatted | Metrics complete | Stakeholder impact included | All linked to Q&As
+**Verify**: All Q&As 4/4 artifacts | Diagrams render | Tables formatted | Metrics complete | Stakeholder impact included | All linked to Q&As
 
 ## 5. Link References
 
@@ -120,47 +132,35 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 
 **Verify**: G≥25, T≥12, F≥8, L≥12, A≥20 | 100% `[Ref: ID]` resolved | 0 broken URLs | 60/30/10% lang (±10%) | All 5 viewpoints | No orphans
 
-## 6. Validate (24 Checks)
+## 6. Validate (12 Streamlined Checks)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Counts | G≥25, T≥12, F≥8, L≥12, A≥20, Q=30-35 (20/40/40%) |
-| 2 | Citations | ≥70% Q&As ≥1; ≥40% ≥2; ≥20% ≥3 |
-| 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
-| 4 | Recency | ≥50% last 3yr; ≥70% modern; ≥30% business |
-| 5 | Diversity | ≥5 types; <20% single; ≥40% non-technical |
+| 1 | Counts | G≥10, T≥6, F≥5, L≥6, A≥8, Q=4-6 (25/50/25%) |
+| 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) |
+| 3 | Citations | ≥70% Q&As ≥1; ≥40% ≥2; ≥20% ≥3 |
+| 4 | Language | 60/30/10% EN/ZH/Other (±10%) |
+| 5 | Recency | ≥50% last 3yr; ≥70% modern; ≥30% business |
 | 6 | Links | 100% valid URLs |
-| 7 | Cross-refs | 100% resolved |
-| 8 | Word count | Sample 5: 200-350 |
-| 9 | Insights | 100% quantified (no generic claims) |
-| 10 | Lifecycle coverage | All 8 phases (≥3 Q&As major phases) |
-| 11 | Viewpoint coverage | All 5 viewpoints (≥20% each) |
-| 12 | Perspective coverage | All 5 perspectives; ≥60% Q&As cover ≥3 |
-| 13 | Stakeholder coverage | All 10 roles (≥2 Q&As per role as primary) |
-| 14 | Multi-viewpoint | ≥80% Q&As cover ≥3 viewpoints |
-| 15 | Multi-perspective | ≥60% Q&As evaluate ≥3 perspectives with metrics |
-| 16 | Question type | ≥70% analysis-based |
-| 17 | Artifacts | 100% clusters have 4/4 artifacts |
-| 18 | Viewpoint matrix | ≥90% have multi-viewpoint assessment |
-| 19 | Perspective metrics | ≥80% have ≥3 perspective metrics with formulas |
-| 20 | Comparison matrix | 100% have ≥2 alternatives with stakeholder impact |
-| 21 | Stakeholder specified | 100% specify primary + secondary stakeholders |
-| 22 | Domain coverage | All viewpoints in references; all perspectives addressed |
-| 23 | Framework usage | ≥70% Q&As apply analysis frameworks |
-| 24 | Review | 6/6 criteria (see §7) |
+| 7 | Word count | All Q&As: 150-250 words |
+| 8 | Insights | 100% quantified (no generic claims) |
+| 9 | Lifecycle coverage | 4-5 decision-critical phases (≥1 Q&A each) |
+| 10 | Viewpoint/Perspective | All 5 viewpoints + all 5 perspectives; ≥60% Q&As cover ≥3 each |
+| 11 | Stakeholder coverage | ≥5 core roles (≥1 Q&A per role as primary) |
+| 12 | Artifacts & Review | 100% Q&As have 4/4 artifacts; 6/6 review criteria PASS |
 
-**Protocol**: ANY fail → STOP → Fix → Re-validate ALL 24 → Iterate until 24/24 PASS
+**Protocol**: ANY fail → STOP → Fix → Re-validate ALL 12 → Iterate until 12/12 PASS
 
 ## 7. Final Review (6/6 Required)
 
 1. **Clarity**: Logical structure | Consistent multi-domain terminology | Inline definitions | Clear stakeholder context
 2. **Accuracy**: Verifiable facts with citations | Diagrams render | Valid formulas | Correct framework applications
-3. **Completeness**: All 8 phases + 5 viewpoints + 5 perspectives + 10 stakeholders | G≥25, T≥12, F≥8, L≥12, A≥20, Q=30-35 | 24/24 PASS
+3. **Completeness**: 4-5 decision-critical phases + 5 viewpoints + 5 perspectives + ≥5 core stakeholders | G≥10, T≥6, F≥5, L≥6, A≥8, Q=4-6 | 12/12 PASS
 4. **Balance**: ≥3 viewpoints/perspectives per Q&A | ≥2 alternatives + stakeholder impact | Explicit assumptions/limitations/risks | Tagged consensus
 5. **Practicality**: Actionable guidance | Stakeholder-specific recommendations | Measurable outcomes with thresholds | Context-specific criteria
-6. **Rigor**: Multi-domain integration | Quantified trade-offs across viewpoints | Explicit boundaries | Stakeholder impact assessment
+6. **Decision-Criticality**: Every Q&A blocks decision or creates material risk | Quantified impact | 1-6mo action window | Multi-stakeholder (≥2 roles)
 
-**Submit When**: 24/24 PASS + 6/6 criteria | **High-Risk**: Multi-domain coverage | Stakeholder specification | Metrics validity | URLs | Cross-refs | Framework usage
+**Submit When**: 12/12 PASS + 6/6 criteria | **High-Risk**: Decision Criticality | Stakeholder specification | Metrics validity | URLs | Cross-refs | Framework usage
 
 ---
 
@@ -172,8 +172,8 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 
 ## Topic Areas
 | Cluster | Lifecycle Phase | Viewpoint(s) | Perspective(s) | Range | Count | Difficulty |
-| [Title] | [Phase] | [Primary + Secondary] | [≥3 Perspectives] | Q1-Q4 | 4 | 1F/1I/2A |
-[7-8 clusters, 30-35 total, all 8 phases, all 5 viewpoints, all 5 perspectives, 20/40/40% F/I/A]
+| [Title] | [Phase] | [Primary + Secondary] | [≥3 Perspectives] | Q1-Q3 | 3 | 1F/1I/1A |
+[1-2 clusters, 4-6 total, 4-5 decision-critical phases, all 5 viewpoints, all 5 perspectives, 25/50/25% F/I/A]
 
 ---
 
@@ -185,9 +185,11 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 ### Q1: [Analysis-based question with multi-viewpoint context]
 **Difficulty**: [F/I/A] | **Phase**: [Lifecycle] | **Stakeholder**: [Primary Role]
 
+**Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified] – [Justification]
+
 **Key Insight**: [Multi-viewpoint quantified insight in one sentence]
 
-**Answer** (200-350 words):
+**Answer** (150-250 words):
 
 **Context**: [Needs/system/phase constraints]
 
@@ -232,44 +234,54 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 
 ---
 
-## References
+## References (Minimal Viable)
 
-### Glossary (≥25, Multi-Domain)
-**G1. [Term]** [EN/ZH/Other] – [Viewpoint: Technical/Business/Ecosystem/Regulatory/Operational]  
+### Glossary (≥10, Multi-Domain)
+**G1. [Term]** [EN/ZH/Other] – [Viewpoint: Technical/Business/Ecosystem/Regulatory/Operational]
 [Definition]. **Related**: [Terms]. **Used in**: [Lifecycle phases]
 
-### Tools (≥12, All Viewpoints)
-**T1. [Tool]** [Tag] – [Viewpoint]  
-**Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
+### Tools (≥6, Decision-Critical Only)
+**T1. [Tool]** [Tag] – [Viewpoint]
+**Purpose**: [Desc]. **Updated**: [YYYY-MM]. **URL**: [Link]
 
-### Frameworks (≥8, Analysis Methods)
-**F1. [Framework Name]** [Tag] – [Viewpoint]  
+### Frameworks (≥5, Decision-Critical Analysis Methods)
+**F1. [Framework Name]** [Tag] – [Viewpoint]
 **Purpose**: [When to use]. **Key Elements**: [Components]. **Output**: [What it produces]. **Source**: [Official URL]
 
-### Literature (≥12, Multi-Domain)
-**L1. Author(s). (Year). *Title*. Publisher.** [Tag] – [Domain: Technical/Business/Regulatory/Operational]  
+### Literature (≥6, Canonical References Only)
+**L1. Author(s). (Year). *Title*. Publisher.** [Tag] – [Domain: Technical/Business/Regulatory/Operational]
 **Relevance**: [Why]. **Key Concepts**: [Main ideas]
 
-### Citations (≥20, APA 7th, 60/30/10%, ≥30% business/regulatory)
+### Citations (≥8, APA 7th, 60/30/10%, ≥30% business/regulatory)
 **A1.** Author(s). (Year). *Title*. Source. [EN/ZH/Other]
 
 ---
 
-## Validation Report
+## Validation Report (12 Streamlined Checks)
 | # | Check | Target | Result | Status |
-| 1 | Counts | G≥25, T≥12, F≥8, L≥12, A≥20, Q=30-35 | G:X, T:Y, F:Z... | PASS/FAIL |
-| 2 | Citations | ≥70% ≥1; ≥40% ≥2; ≥20% ≥3 | X% / Y% / Z% | PASS/FAIL |
-[All 24 checks]
+| 1 | Counts | G≥10, T≥6, F≥5, L≥6, A≥8, Q=4-6 (25/50/25%) | G:X, T:Y, F:Z... | PASS/FAIL |
+| 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion | X/4-6 | PASS/FAIL |
+| 3 | Citations | ≥70% ≥1; ≥40% ≥2; ≥20% ≥3 | X% / Y% / Z% | PASS/FAIL |
+| 4 | Language | 60/30/10% EN/ZH/Other (±10%) | X% / Y% / Z% | PASS/FAIL |
+| 5 | Recency | ≥50% last 3yr; ≥70% modern; ≥30% business | X% / Y% / Z% | PASS/FAIL |
+| 6 | Links | 100% valid URLs | X/Y | PASS/FAIL |
+| 7 | Word count | All Q&As: 150-250 words | X-Y avg | PASS/FAIL |
+| 8 | Insights | 100% quantified (no generic claims) | X/4-6 | PASS/FAIL |
+| 9 | Lifecycle coverage | 4-5 decision-critical phases (≥1 Q&A each) | X/4-5 | PASS/FAIL |
+| 10 | Viewpoint/Perspective | All 5 viewpoints + all 5 perspectives; ≥60% Q&As cover ≥3 each | X% / Y% | PASS/FAIL |
+| 11 | Stakeholder coverage | ≥5 core roles (≥1 Q&A per role as primary) | X/5 | PASS/FAIL |
+| 12 | Artifacts & Review | 100% Q&As have 4/4 artifacts; 6/6 review criteria PASS | X/4-6 | PASS/FAIL |
 
-**Overall**: [X/24 PASS - need 24/24]  
-**Issues**: [List all failures]  
+**Overall**: [X/12 PASS - need 12/12]
+**Issues**: [List all failures]
 **Remediation**: [Specific actions to fix each failure]
 
 **Coverage Summary**:
-- Lifecycle phases: [8/8 covered]
+- Lifecycle phases: [4-5/4-5 decision-critical covered]
 - Viewpoints: Technical X%, Business Y%, Ecosystem Z%, Regulatory W%, Operational V%
 - Perspectives: Performance X%, Security Y%, Reliability Z%, Decentralization W%, Transparency V%
-- Stakeholders: [10/10 roles with ≥2 Q&As each as primary]
+- Stakeholders: [≥5/5 core roles with ≥1 Q&A each as primary]
+- Decision Criticality: [100% satisfy ≥1 criterion]
 ```
 
 # Reference Examples
