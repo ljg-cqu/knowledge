@@ -1,37 +1,51 @@
-# Leadership Interview Q&A Generator
+# Leadership News Tracking Q&A Generator (Minimal Viable)
 
-Generate 25–30 scenario-based leadership questions (senior+, 5-15 yrs) with evidence-based answers and validation.
+Generate 6–12 decision-critical leadership Q&As (senior+, 5-15 yrs) for informed decisions with limited time.
 
 ## I. Foundation
 
-**Scope**: Team development, change management, strategic ambiguity, culture, conflict, org design.  
-**Exclude**: Trivia, theory-only, junior tasks, domain-specific technical.
+**Scope**: Decision-critical leadership scenarios only—blocks decisions or creates material risk.  
+**Exclude**: Trivia, theory-only, junior tasks, niche/legacy, nice-to-have trends, speculation.
 
-**Constraints**: 150-300 words/answer; ≥70% have ≥1 citation (≥30% have ≥2); 100% scenario-based.
+**Constraints**: 150–250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; 100% decision-critical.
 
 **Terminology**:
 - **Floor**: Minimum threshold
 - **Gate**: Mandatory checkpoint (fail = stop/fix)
 - **Difficulty**: F (execution) | I (strategic/systemic) | A (transformation/culture)
-- **Dimensions**: People | Strategic | Operational | Cultural
+- **Decision Criticality**: [Blocks/Risk/Roles/Evolving/Adoption] ← **NEW (mandatory)**
 
-**Assumptions**: LLM knows common frameworks (Situational Leadership, Kotter, OKR, GROW, Radical Candor, Team Topologies, 5 Dysfunctions).
+**Assumptions**: LLM knows core frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
 
-**Limitations**: Generic scenarios lack industry context; ≥50% citations from last 3yrs; trade-offs must be explicit.
+**Limitations**: Scenarios lack industry context; ≥50% citations from last 3yrs; trade-offs must be explicit; decision-critical focus only.
 
 ## II. Requirements
 
-### Quantitative Floors
+### Quantitative Floors (60% Reduction)
 
-**Q&A**: 25–30 total | 20%F/40%I/40%A (±5%) | 150–300 words | ≥70% have ≥1 cite (≥30% have ≥2) | ≥2 dimensions/answer
+**Q&A**: 6–12 total | 25%F/50%I/25%A (±5%) | 150–250 words | ≥70% have ≥1 cite | ≥2 dimensions/answer | **100% decision-critical**
 
-**Topics (MECE)**: Vision & Strategy (4–5) | People Leadership (5–6) | Change Management (4–5) | Team & Culture (5–6) | Communication (4–5) | Org Design (4–5)
+**Topics (Decision-Critical Only)**: 3–4 topics × 1–3 Q&As each
+- Strategic Leadership (1–2): Blocks decision, Affects ≥2 stakeholders
+- People & Retention (1–2): Creates risk, Actively evolving (remote/hybrid/AI)
+- Change & Ambiguity (1–2): Blocks decision, High adoption barrier
+- Culture & Trust (1–2): Creates risk, Affects ≥2 stakeholders
+- *(Optional)* Communication or Org Design (if decision-critical)
 
-**References** (build before Q&A): Glossary ≥10 | Tools ≥5 | Literature ≥6 (≥2 ZH: 陈春花, 刘澜, 宁向东) | Citations ≥12 APA 7th + [EN]/[ZH] tags
+**References** (proportional 60% reduction): Glossary ≥8 | Tools ≥3 | Literature ≥4 (≥1 ZH) | Citations ≥6 APA 7th + [EN]/[ZH] tags
 
-**Visuals**: ≥1 diagram + ≥1 table/topic (6+6 minimum)
+**Visuals** (60% reduction): ≥2 diagrams + ≥1 table total (vs. 6+6 for full template)
 
-**Scaling**: >30 Q&A → multiply reference floors by 1.5×
+### Decision Criticality Framework (NEW—MANDATORY)
+
+**Include Q&A if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot (e.g., "Restructure org?" "Promote/exit key leader?")
+- **Creates Risk**: Material threat (team morale, retention, compliance, performance) with quantified impact
+- **Affects ≥2 Stakeholders**: Multi-team impact (CEO + Board, VP + Team Leads, etc.)
+- **Actively Evolving**: Leadership dynamics changing in past 6–12 months (remote/hybrid, AI, generational shifts, market disruption)
+- **High Adoption Barrier**: >40h to learn/implement; blocks velocity or compliance
+
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative/rumors
 
 ### Citation Standards
 
@@ -49,87 +63,87 @@ Generate 25–30 scenario-based leadership questions (senior+, 5-15 yrs) with ev
 
 ### Quality Gates (fail ANY = stop, fix, re-validate ALL)
 
-1. **Recency**: ≥50% from last 3yrs (≥70% for remote/hybrid/AI leadership)
-2. **Diversity**: ≥3 source types; no type >25%
-3. **Per-Topic**: Each has ≥2 authoritative + ≥1 tool
-4. **Tool Completeness**: Pricing, users, update (≤18mo), ≥3 integrations
-5. **Links**: 100% accessible/archived
-6. **Cross-Refs**: 100% [Ref: ID] resolve; no orphans
+1. **Decision Criticality**: 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Roles/Evolving/Adoption)
+2. **Recency**: ≥50% from last 3yrs (≥70% for remote/hybrid/AI leadership)
+3. **Diversity**: ≥2 source types; no type >50%
+4. **Links**: 100% accessible/archived
+5. **Cross-Refs**: 100% [Ref: ID] resolve; no orphans
 
-**Mitigation**: Recency fail → flag with caveats | Diversity fail → expand research | Link fail → Web Archive/replace
+**Mitigation**: Decision Criticality fail → rewrite/replace | Recency fail → flag with caveats | Link fail → Web Archive/replace
 
-## III. Execution
+## III. Execution (Streamlined for 6–12 Q&As)
 
-### Step 1: Plan Allocation
+### Step 1: Plan Allocation (Decision-Critical Only)
 
-Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with ≥1F, ≥1I, ≥1A.
+Distribute 6–12 across 3–4 decision-critical topics (25%F/50%I/25%A).
 
-**Example** (30): Vision (5), People (6), Change (5), Culture (5), Comm (4), Org (5) = 6F/12I/12A
+**Example** (10): Strategic Leadership (2), People & Retention (2), Change & Ambiguity (3), Culture & Trust (3) = 2–3F/5I/2–3A
 
-### Step 2: Build References (BEFORE Q&A → run Gates 1–6 after)
+**Justification Required**: Each Q&A must state which criterion it satisfies: [Blocks/Risk/Roles/Evolving/Adoption]
 
-**Glossary (≥10)**: Situational Leadership, GROW, Servant Leadership, Transformational Leadership, Radical Candor, Psychological Safety, Team Topologies, 5 Dysfunctions, Kotter's 8-Steps, OKR + optional (RACI, Span of Control, Conway's Law, Growth Mindset, 1-on-1s)  
-**Format**: **G#. Term (Acronym)** | Definition (1–2 sentences) | Use cases | Related | Limitations | Alphabetize
+### Step 2: Build References (BEFORE Q&A → run Gates 1–5 after)
 
-**Tools (≥5)**: Performance (15Five, Lattice), Engagement (Culture Amp, Officevibe), Feedback (360 tools, Reflektive), Development (LinkedIn Learning, Degreed), Collaboration (Miro, Slack)  
-**Format**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | Use case | URL | Group by category
+**Glossary (≥8)**: Radical Candor, Psychological Safety, Situational Leadership, Kotter's 8-Steps, Transformational Leadership, GROW, Team Topologies, 5 Dysfunctions  
+**Format**: **G#. Term (Acronym)** | Definition (1–2 sentences) | Use cases | Limitations | Alphabetize
 
-**Literature (≥6)**: EN—Covey (*7 Habits*), Collins (*Good to Great*), Sinek (*Leaders Eat Last*), Brown (*Dare to Lead*), Kim (*Phoenix Project*), Lencioni (*5 Dysfunctions*) | ZH (≥2)—陈春花 (*管理的常识*), 刘澜 (*领导力沉思录*), 宁向东 (*清华管理课*)  
-**Format**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ZH)
+**Tools (≥3)**: Engagement (Culture Amp), Feedback (15Five), Collaboration (Miro)  
+**Format**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥2) | Use case | URL
 
-**Citations (≥12)**: APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/cases/tools | Assign A1, A2... | **Alternatives**: HBR, MIT Sloan, McKinsey, Gallup, Gartner HR, DDI  
+**Literature (≥4)**: EN—Brown (*Dare to Lead*), Sinek (*Leaders Eat Last*) | ZH (≥1)—陈春花 (*管理的常识*)  
+**Format**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language
+
+**Citations (≥6)**: APA 7th + tags | Verify ≥50% from last 3yrs | Assign A1, A2... | **Alternatives**: HBR, McKinsey, Gallup  
 **Format**: **A#. [Full APA Citation] [Lang]** | Sort by ID
 
 **Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags
 
-### Step 3: Generate Q&A (5 at a time → self-check each batch)
+### Step 3: Generate Q&A (2–3 at a time → self-check each batch)
 
-**Question**: Scenario format ("How would you...", "Walk me through...", "Your team faces X—what do?") | Include constraints (time, resources, stakeholder pressure, conflicting priorities) | Test ≥2 judgment signals (trade-offs, people impact, cultural implications, incomplete info, resistance) | Single ask  
+**Question**: Scenario format ("How would you...", "Walk me through...", "Your team faces X—what do?") | Include constraints (time, resources, stakeholder pressure) | Test ≥2 judgment signals (trade-offs, people impact, incomplete info) | Single ask  
 **Avoid**: "What is X?", "List Y", "Define Z"
 
-**Difficulty Tags**: F=execution ("Improve 1-on-1s?") | I=strategic ("Restructure underperforming org?") | A=transformation ("Build trust culture in 18mo?")
+**Difficulty Tags**: F=execution | I=strategic/systemic | A=transformation/culture
 
-**Answer Structure** (150–300 words):
+**Decision Criticality Tag** (MANDATORY): [Blocks/Risk/Roles/Evolving/Adoption] + 1-sentence justification
+
+**Answer Structure** (150–250 words):
 1. **Key Insight** (1 sentence): Specific leadership dilemma/tension
 2. **Framework/approach** [Ref: G#/A#]
 3. **Multi-dimensional** (≥2: People/Strategic/Operational/Cultural)
-4. **Concrete steps**
-5. **Trade-offs** (optimize vs. sacrifice; alternatives)
+4. **Concrete steps** (3–5 bullets)
+5. **Trade-offs** (≥2 alternatives)
 6. **People/stakeholder impact**
 7. **Success criteria**
-8. **Citations** (≥1 [Ref: ID]; flag if low confidence)
-9. **Artifact** (optional): Org chart, matrix, roadmap, plan
+8. **Citations** (≥1 [Ref: ID])
 
-**Batch Self-Check** (per 5): Scenario-based ✓ | Tests ≥2 signals ✓ | 150–300 words ✓ | Concrete insight ✓ | ≥2 dimensions ✓ | ≥3/5 have ≥1 cite (≥1/5 has ≥2) ✓ | Difficulty matches content ✓
+**Batch Self-Check** (per 2–3): Scenario-based ✓ | Tests ≥2 signals ✓ | 150–250 words ✓ | Decision-critical ✓ | ≥2 dimensions ✓ | ≥1 cite ✓ | Difficulty matches content ✓
 
-### Step 4: Create Visuals (≥1 diagram + ≥1 table/topic; reference from ≥50% answers)
+### Step 4: Create Visuals (Compressed—≥2 diagrams + ≥1 table total)
 
-**By Topic**:
-- **Vision**: Strategic roadmap, vision cascade, SWOT
-- **People**: Development matrix, 9-box, succession plan
-- **Change**: Kotter timeline, stakeholder map, impact matrix
-- **Culture**: Values assessment, behavior matrix, engagement dashboard
-- **Communication**: Stakeholder matrix, communication plan
-- **Org**: Structure, RACI, team topology
+**Minimal Viable** (60% reduction):
+- **Strategic Leadership**: Decision tree or roadmap (1 diagram)
+- **People & Retention**: Development matrix or 9-box (1 diagram)
+- **Change & Ambiguity**: Kotter timeline or stakeholder map (1 table)
+- **Culture & Trust**: Values/behavior matrix (1 table)
 
-**Best Practices**: Tables for quantitative; diagrams for workflows; include roles/timelines; cite sources
+**Best Practices**: Mermaid for workflows; tables for matrices; include roles/timelines; cite sources
 
 ### Step 5: Run 12 Validations (fail ANY = stop, fix, re-run ALL)
 
-| # | Check              | Criteria                            | Measurement |
-|---|--------------------|-------------------------------------|-------------|
-| 1 | Floors             | G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40% (±5%) | Count all |
-| 2 | Citations          | ≥70% have ≥1; ≥30% have ≥2          | % by question |
-| 3 | Language           | EN:50-70%, ZH:20-40%, Other:5-15%   | % by citation |
-| 4 | Recency            | ≥50% from last 3yrs (≥70% remote/hybrid) | % by date |
-| 5 | Source Types       | ≥3 types; no type >25%              | Count types |
-| 6 | Links              | 100% accessible/archived            | Test all URLs |
-| 7 | Cross-Refs         | 100% [Ref: ID] resolve; no orphans  | Check all refs |
-| 8 | Word Count         | 100% within 150-300                 | Sample 5+ |
-| 9 | Key Insights       | 100% concrete (specific dilemma/tension) | Review all |
-| 10| Per-Topic Evidence | 6/6 have ≥2 authoritative + ≥1 tool | Per-topic check |
-| 11| Frameworks         | ≥80% correct + cited + limitations  | Review usage |
-| 12| Judgment Ratio     | ≥70% scenario-based                 | % testing judgment |
+| # | Check                  | Criteria                                    | Measurement |
+|----|------------------------|---------------------------------------------|-------------|
+| 1  | Floors                 | G≥8, T≥3, L≥4, A≥6, Q:6-12, 25/50/25% (±5%) | Count all |
+| 2  | Decision Criticality   | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Evolving/Adoption] | Review all |
+| 3  | Citations              | ≥70% have ≥1 cite                           | % by question |
+| 4  | Language               | EN:50-70%, ZH:20-40%, Other:5-15%           | % by citation |
+| 5  | Recency                | ≥50% from last 3yrs (≥70% remote/hybrid)    | % by date |
+| 6  | Diversity              | ≥2 source types; no type >50%               | Count types |
+| 7  | Links                  | 100% accessible/archived                    | Test all URLs |
+| 8  | Cross-Refs             | 100% [Ref: ID] resolve; no orphans          | Check all refs |
+| 9  | Word Count             | 100% within 150-250                         | Sample all |
+| 10 | Key Insights           | 100% concrete (specific dilemma/tension)    | Review all |
+| 11 | Frameworks             | ≥80% correct + cited                        | Review usage |
+| 12 | Judgment Ratio         | ≥70% scenario-based                         | % testing judgment |
 
 ### Step 6: Final Review
 
@@ -139,26 +153,24 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 
 **Submission**: All 12 validations PASS | All floors met | All gates passed | TOC with links | No placeholders | Consistent formatting | Balanced perspectives (directive vs. empowering, transformation vs. stability, people-first vs. results-first, inclusive vs. decisive)
 
-## IV. Output Format
+## IV. Output Format (Minimal Viable)
 
 ### A. TOC
-1. Topic Overview | 2. Questions by Topic (6 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Topic Overview | 2. Questions by Topic (3–4 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
 
 ### B. Topic Overview
 
-**Total**: [25–30] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 6 leadership competencies (MECE)
+**Total**: [6–12] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3–4 decision-critical leadership areas
 
-| # | Topic                    | Range  | Count | Mix      | Artifacts       |
-|---|--------------------------|--------|-------|----------|-----------------|
-| 1 | Vision & Strategy        | Q1–Q5  | 5     | 1F/2I/2A | 1 diagram+table |
-| 2 | People Leadership        | Q6–Q11 | 6     | 1F/2I/3A | 1 diagram+table |
-| 3 | Change Management        | Q12–16 | 5     | 1F/2I/2A | 1 diagram+table |
-| 4 | Team Building & Culture  | Q17–21 | 5     | 1F/2I/2A | 1 diagram+table |
-| 5 | Communication/Influence  | Q22–25 | 4     | 1F/2I/1A | 1 diagram+table |
-| 6 | Org Design & Operations  | Q26–30 | 5     | 1F/2I/2A | 1 diagram+table |
-|   | **Total**                |        | **30**| **6F/12I/12A** | **6+6** |
+| # | Topic                   | Range   | Count | Mix        | Artifacts |
+|---|-------------------------|---------|-------|------------|-----------|
+| 1 | Strategic Leadership    | Q1–Q2   | 1–2   | 0–1F/1–2I/0–1A | 1 diagram |
+| 2 | People & Retention      | Q3–Q4   | 1–2   | 0–1F/1–2I/0–1A | 1 diagram |
+| 3 | Change & Ambiguity      | Q5–Q7   | 2–3   | 1F/1–2I/1A | 1 table |
+| 4 | Culture & Trust         | Q8–Q10  | 2–3   | 0–1F/1–2I/1–2A | 1 table |
+|   | **Total**               |         | **6–12** | **2–3F/5I/2–3A** | **≥2 diagrams + ≥1 table** |
 
-Legend: F=execution | I=strategic/systemic | A=transformation/culture
+Legend: F=execution | I=strategic/systemic | A=transformation/culture | **Decision-Critical Only**
 
 ### C. Q&A Format
 
@@ -166,23 +178,25 @@ Legend: F=execution | I=strategic/systemic | A=transformation/culture
 
 **Q1: [Full Question]**
 
-**Difficulty**: [F/I/A] | **Topic**: [Area]
+**Difficulty**: [F/I/A] | **Topic**: [Area] | **Decision Criticality**: [Blocks/Risk/Roles/Evolving/Adoption]
+
+**Criticality Justification**: [1 sentence—why this Q&A is decision-critical]
 
 **Key Insight**: [1 sentence—specific leadership dilemma/tension]
 
-**Answer** (150–300 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | People/stakeholder impact | Success criteria | ≥1 [Ref: ID]
+**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps (3–5 bullets) | Trade-offs/alternatives | People/stakeholder impact | Success criteria | ≥1 [Ref: ID]
 
-**Artifact** *(optional)*: Org chart, matrix, roadmap, plan
+**Artifact** *(optional)*: Diagram, matrix, or roadmap
 
-### D. Reference Sections
+### D. Reference Sections (Minimal Viable—60% Reduction)
 
-**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
+**Glossary (≥8)**: **G#. Term (Acronym)** | Definition (1–2 sentences) | Use cases | Limitations | Alphabetize
 
-**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | Use case | URL | Group by category
+**Tools (≥3)**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥2) | Use case | URL
 
-**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ZH)
+**Literature (≥4)**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ZH)
 
-**Citations**: **A#. [Full APA Citation] [Lang]** | Sort by ID
+**Citations (≥6)**: **A#. [Full APA Citation] [Lang]** | Sort by ID
 
 ## V. Quality Criteria
 
@@ -195,28 +209,30 @@ Legend: F=execution | I=strategic/systemic | A=transformation/culture
 5. **Discriminative**: Application not recall | ✓ "When would Situational Leadership fail? How adapt?" | ✗ "What is Situational Leadership?"
 6. **Alignment**: Difficulty matches seniority | F: execution | I: strategic/systemic | A: transformation/culture
 
-## VI. Validation Report Template
+## VI. Validation Report Template (Minimal Viable)
 
-| # | Check              | Measurement                           | Criteria                            | Result | Status    |
-|---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40% | | PASS/FAIL |
-| 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
-| 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% remote/hybrid)           | | PASS/FAIL |
-| 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
-| 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
-| 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
-| 9 | Key Insights       | __/__ concrete                        | 100%                                | | PASS/FAIL |
-| 10| Per-Topic Evidence | __/6 (≥2 auth + ≥1 tool)              | 6/6                                 | | PASS/FAIL |
-| 11| Frameworks         | __/__ correct+cited+limits            | ≥80%                                | | PASS/FAIL |
-| 12| Judgment Ratio     | __% scenario-based                    | ≥70%                                | | PASS/FAIL |
+| # | Check                  | Measurement                         | Criteria                                    | Result | Status    |
+|----|------------------------|-------------------------------------|---------------------------------------------|--------|-----------|
+| 1  | Floors                 | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A) | G≥8, T≥3, L≥4, A≥6, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 2  | Decision Criticality   | __/__ satisfy ≥1 criterion          | 100% [Blocks/Risk/Roles/Evolving/Adoption]  | | PASS/FAIL |
+| 3  | Citations              | __%≥1                               | ≥70%≥1                                      | | PASS/FAIL |
+| 4  | Language               | EN:__%, ZH:__%, Other:__%           | EN:50-70%, ZH:20-40%, Other:5-15%           | | PASS/FAIL |
+| 5  | Recency                | __% from 3yrs (domain: ___)         | ≥50% (≥70% remote/hybrid)                   | | PASS/FAIL |
+| 6  | Diversity              | __ types; max __%                   | ≥2 types, max 50%                           | | PASS/FAIL |
+| 7  | Links                  | __/__ accessible                    | 100%                                        | | PASS/FAIL |
+| 8  | Cross-Refs             | __/__ resolved                      | 100%                                        | | PASS/FAIL |
+| 9  | Word Count             | __ sampled: __ compliant            | 100% (150-250)                              | | PASS/FAIL |
+| 10 | Key Insights           | __/__ concrete                      | 100%                                        | | PASS/FAIL |
+| 11 | Frameworks             | __/__ correct+cited                 | ≥80%                                        | | PASS/FAIL |
+| 12 | Judgment Ratio         | __% scenario-based                  | ≥70%                                        | | PASS/FAIL |
 
-## VII. Example
+## VII. Example (Decision-Critical Leadership Q&A)
 
 **Q1: How would you lead a team through a major reorganization where 40% of roles are being eliminated, including some of your direct reports, while maintaining productivity and morale?**
 
-**Difficulty**: A | **Topic**: Change Management & People Leadership
+**Difficulty**: A | **Topic**: Change Management & People Leadership | **Decision Criticality**: [Blocks/Risk]
+
+**Criticality Justification**: Blocks decision on communication strategy & retention approach; creates material risk (key talent loss, morale collapse, compliance issues).
 
 **Key Insight**: Tests balancing empathy (supporting impacted) with accountability (maintaining performance) and transparency (honest communication) vs. confidentiality (legal/HR constraints); distinguishes leaders navigating ambiguity from those avoiding difficult conversations or over-indexing on results vs. relationships.
 

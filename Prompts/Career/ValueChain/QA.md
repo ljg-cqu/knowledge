@@ -1,33 +1,42 @@
-# Value Chain Analysis Q&A Generator
+# Value Chain Analysis Q&A Generator (Minimal Viable)
 
-Generate 25–30 scenario-based questions testing value chain analysis across industry ecosystems with multi-stakeholder perspectives, evidence-based answers, and visual artifacts.
+Generate 4–6 decision-critical scenario-based questions testing value chain analysis for informed strategic decisions with limited time.
 
 ## I. Context
 
-**Purpose**: Assess value chain analysis capabilities across industry ecosystems (Participants → Flows → Opportunities → Disruption) for 9+ stakeholders (Business Strategy, Product, PM, BD/Sales, Operations, Finance, Data, Marketing, Leadership).
+**Purpose**: Assess value chain analysis capabilities for decision-critical scenarios only (Participants → Flows → Opportunities → Disruption) that block decisions or create material risk.
 
-**Terms**: Floor=minimum threshold (≥) | Gate=fail-stop checkpoint | Difficulty: F=execution | I=strategy/trade-offs | A=portfolio/ecosystem | Chain Types: B2B SaaS, E-Commerce, FinTech, Healthcare, Manufacturing | Analysis Types: Current State, Pain+Power, Change+Trends, Value Pool, Bottleneck, Network Effects
+**Target Audience**: Strategy, Product, Finance, Operations leaders making go/no-go, pricing, market entry, or business model decisions.
 
-**Scope**: Full chain analysis (participants/flows/economics/power dynamics), short/long-term trends, all perspectives. **Exclude**: Single-node/stakeholder focus, trivia, recall-only.
+**Decision Criticality Framework** (NEW):
+- **Include if ≥1 criterion satisfied**:
+  - Blocks Decision: Directly impacts go/no-go, market entry, business model pivot, pricing strategy, competitive positioning
+  - Creates Risk: Material threat (margin compression >10%, disintermediation, power shift, network collapse, revenue loss >$5M)
+  - Affects ≥2 Stakeholders: Multi-team impact (Strategy + Finance, Product + Operations, BD + Compliance)
+  - Requires Action: 1–6mo action window (not speculative)
+  - Quantified Impact: Value pool %, margin pressure, market size, disruption timeline, competitive threat
+- **Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
 
-**Assumptions**: LLM knows frameworks (Value Pool, Theory of Constraints, Switching Costs, Network Effects, JTBD, Value Stream Mapping); 10-15min per question.
+**Scope**: Decision-critical value chain scenarios only (full chain analysis: participants/flows/economics/power dynamics). **Exclude**: Single-node focus, trivia, recall-only, academic exercises.
+
+**Assumptions**: LLM knows core frameworks (Value Pool, Theory of Constraints, Switching Costs, Network Effects); 5–10min per question.
 
 **Limitations**: Scenarios require industry customization; economics context-dependent; power dynamics vary by market.
 
-## II. Requirements
+## II. Requirements (Minimal Viable)
 
 ### Floors (Minimum Thresholds)
 
 | Category | Requirement |
 |----------|-------------|
-| **Q&A** | 25–30 \| 20%F/40%I/40%A (±5%) \| 150–300 words/answer \| Each: ≥2 analysis types+stakeholders |
-| **Topics (MECE)** | Current State/Pain+Power/Change+Trends/Value Pool/Bottleneck/Network Effects/Opportunities/Disruption (3–4 each) \| Cross-Industry (4–5) |
-| **Citations** | ≥70% have ≥1; ≥30% have ≥2 \| EN 50–70%, ZH 20–40%, Other 5–15% |
-| **Analysis Types** | Each industry: ≥4 of 6 |
-| **Stakeholders** | ≥8 total; each Q&A ≥2 |
-| **References** | Glossary ≥15 \| Tools ≥8 \| Literature ≥8 (≥2 ZH: 曾鸣/梁宁/俞军) \| Citations ≥15 APA 7th |
-| **Visuals** | Per industry: ≥1 diagram+table (8+8 min) \| Cross-industry: ≥2 chain flow diagrams |
-| **Scaling** | >30 Q&A: multiply reference floors by 1.5× |
+| **Q&A** | 4–6 \| 25%F/50%I/25%A \| 120–200 words/answer \| Each: ≥2 analysis types+≥2 stakeholders |
+| **Topics (Decision-Critical)** | Value Pool/Power Dynamics (1–2) \| Disruption/Network Effects (1–2) \| Margin Compression/Bottleneck (1–2) |
+| **Citations** | ≥70% have ≥1 \| EN 60%, ZH 30%, Other 10% |
+| **Analysis Types** | Each Q&A: ≥2 of 6 (Value Pool, Power, Bottleneck, Network, Trends, JTBD) |
+| **Stakeholders** | ≥4 core roles (Strategy, Finance, Product, Operations); each Q&A ≥2 |
+| **References** | Glossary ≥8 \| Tools ≥4 \| Literature ≥4 (≥1 ZH) \| Citations ≥8 APA 7th |
+| **Visuals** | ≥1 diagram + ≥1 table per Q&A (compressed: value pool table, power map, flow diagram) |
+| **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Action/Quantified) |
 
 ### Gates (Fail-Stop)
 
@@ -35,106 +44,101 @@ Generate 25–30 scenario-based questions testing value chain analysis across in
 
 | # | Gate | Criteria | Mitigation |
 |---|------|----------|------------|
-| 1 | **Recency** | ≥50% from last 3yrs (≥70% platform/marketplace) | Flag outdated with caveats |
-| 2 | **Source Diversity** | ≥3 types; no type >25% | Expand research |
-| 3 | **Per-Topic Evidence** | Each: ≥2 authoritative+1 tool | Add missing |
-| 4 | **Tool Completeness** | Industry examples, economics, update (≤18mo), ≥3 use cases | Complete/replace |
-| 5 | **Link Validation** | 100% URLs accessible/archived | Archive/replace |
-| 6 | **Cross-Reference** | 100% [Ref: ID] resolve; no orphans | Fix broken |
+| 1 | **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Action/Quantified) | Rewrite/replace non-critical |
+| 2 | **Recency** | ≥70% from last 3yrs | Flag outdated with caveats |
+| 3 | **Source Diversity** | ≥2 types; no type >50% | Expand research |
+| 4 | **Link Validation** | 100% URLs accessible/archived | Archive/replace |
+| 5 | **Cross-Reference** | 100% [Ref: ID] resolve; no orphans | Fix broken |
+| 6 | **Quantification** | Each Q&A has ≥1 quantified metric (%, $, timeline) | Add estimates/Fermi |
 
-## III. Execution
+## III. Execution (Streamlined)
 
-### Step 1: Plan Allocation
+### Step 1: Plan Allocation (Decision-Critical Only)
 
-Distribute 25–30 Q&A across 9 topics (20%F/40%I/40%A ±5%). Mix difficulties; ensure ≥8 stakeholders; each Q&A ≥2 analysis types.
+Identify 4–6 decision-critical scenarios across 2–3 industries/domains (25%F/50%I/25%A). Each Q&A must satisfy ≥1 Decision Criticality criterion.
 
-**Example** (28): 8 analysis areas × 3 + Cross-Industry × 4 = 6F/11I/11A
+**Example** (6):
+- Q1–Q2: Value Pool/Power Dynamics (SaaS marketplace, E-commerce) → 1F/1I
+- Q3–Q4: Disruption/Network Effects (FinTech, Platform) → 1I/1A
+- Q5–Q6: Margin Compression/Bottleneck (Healthcare, Manufacturing) → 1F/1I/1A
 
 ### Step 2: Build References (BEFORE Q&A, then run Gates 1–6)
 
 | Type | Count | Required | ID |
 |------|-------|----------|-----|
-| **Glossary** | ≥15 | Term, definition, measurement, stakeholder, industry, limitations | G1... |
-| **Tools** | ≥8 | Category, industry examples, economics, update (≤18mo), ≥3 use cases, metrics, stakeholders, chain phase, URL | T1... |
-| **Literature** | ≥8 (≥2 ZH) | Author, title, year, summary, frameworks, industry | L1... |
-| **Citations** | ≥15 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
+| **Glossary** | ≥8 | Term, definition, measurement, stakeholder | G1... |
+| **Tools** | ≥4 | Category, use cases, URL (decision-critical only) | T1... |
+| **Literature** | ≥4 (≥1 ZH) | Author, title, year, summary, frameworks | L1... |
+| **Citations** | ≥8 | APA 7th+[EN]/[ZH]/[Other]; ≥70% from last 3yrs | A1... |
 
-**Examples**: Glossary—Value Pool, Network Effects, Switching Costs, JTBD, Theory of Constraints, Value Stream Mapping | Tools—Gartner, Forrester, CB Insights, Crunchbase, PitchBook | Literature—Porter, Christensen, Thiel, Reinertsen (EN); 曾鸣, 梁宁, 俞军 (ZH)
+**Examples**: Glossary—Value Pool, Network Effects, Switching Costs, Power Dynamics | Tools—Gartner, CB Insights, Crunchbase | Literature—Porter (EN); 曾鸣 (ZH)
 
-### Step 3: Generate Q&A (5 at a time, self-check)
+### Step 3: Generate Q&A (2–3 at a time, self-check)
 
-**Question**: Value chain scenario with stakeholder tensions, power dynamics conflicts (participant/flow/opportunity tensions) | Test ≥2 signals: chain mapping, pain identification, economics, power dynamics, disruption analysis | **Avoid** recall ("What is Value Pool?") | **Difficulty**: F=execution | I=strategy | A=ecosystem
+**Question**: Decision-critical value chain scenario with stakeholder tensions, power dynamics, or disruption risk | Test ≥2 signals: chain mapping, economics, power dynamics, disruption | **Avoid** recall | **Difficulty**: F=execution | I=strategy | A=ecosystem
 
-**Answer** (150–300 words—ALL required):
-1. **Key Insight** (1 sentence): Chain tension
+**Answer** (120–200 words—ALL required):
+1. **Key Insight** (1 sentence): Chain tension + decision impact
 2. **Framework** [Ref: G#/A#]
-3. **Multi-Analysis** (≥2): Current State/Pain+Power/Trends/Value Pool/Bottleneck/Network+quantification
-4. **Multi-Stakeholder** (≥2): Perspective/economics
-5. **Chain Flows**: Information/Product/Capital
-6. **Quantification**: Economics, market size, impact
-7. **Steps**: Map, analyze, prioritize, strategize
-8. **Trade-offs**: Power shifts, disintermediation risks
-9. **Communication**: Per stakeholder
-10. **Success Criteria**: Metrics, timeframes
-11. **Limitations**: Data gaps, assumptions, context
-12. **Citations**: ≥1 [Ref: ID]
-13. **Artifact** *(optional)*: Chain map/value pool/opportunity matrix
+3. **Multi-Analysis** (≥2): Value Pool + Power/Bottleneck/Network/Trends
+4. **Multi-Stakeholder** (≥2): Perspective + economics
+5. **Chain Flows**: Info/Product/Capital (brief)
+6. **Quantification**: ≥1 metric (%, $, timeline)
+7. **Decision**: Go/No-Go + rationale
+8. **Trade-offs**: ≥2 alternatives
+9. **Citations**: ≥1 [Ref: ID]
+10. **Artifact**: Value pool table OR power map OR flow diagram
 
-**Batch Check** (per 5): Scenario | ≥2 analysis signals | 150–300 words | ≥2 analysis types | ≥2 stakeholders | Chain aware | ≥3/5 have ≥1 cite (≥1/5 has ≥2)
+**Batch Check** (per 2–3): Decision Criticality criterion | ≥2 analysis signals | 120–200 words | ≥2 analysis types | ≥2 stakeholders | Quantified | ≥1 cite
 
-### Step 4: Create Visuals (≥1 diagram+table per industry)
+### Step 4: Create Visuals (≥1 diagram + ≥1 table per Q&A)
 
-**By Industry**: B2B SaaS—Chain map, value pool, power dynamics | E-Commerce—Marketplace flow, unit economics, CAC/LTV | FinTech—Regulatory layers, trust barriers, switching costs | Healthcare—Payer-provider, data flow, outcome metrics | Manufacturing—Supply chain, bottleneck, inventory | Cross-Industry—Value pool comparison, network effects, disruption patterns (≥2)
+**Compressed Artifacts**:
+- **Value Pool Table**: Participant | Revenue | Margin | Profit | % of Pool | Power
+- **Power Map**: Diagram showing pricing control, switching costs, information asymmetry
+- **Flow Diagram**: Info/Product/Capital flows with friction points annotated
+- **Decision Matrix**: ≥2 alternatives × ≥3 criteria (impact, feasibility, risk)
 
-**Practices**: Tables for quantitative (economics, margins, market size) | Diagrams for flows | Include units/periods/currencies | Show participants+flows | Indicate power dynamics | Cite sources
+**Practices**: Quantitative in tables | Flows in diagrams | Include units/currencies | Show participants+power | Cite sources
 
-### Step 5: Populate References
+### Step 5: Populate References (Streamlined)
 
 | Type | Format |
 |------|--------|
-| **Glossary** | **G#. Term** \| Definition \| Measurement \| Stakeholder \| Industry \| Limitations (alphabetize) |
-| **Tools** | **T#. Tool** \| Description \| Industry Examples \| Economics \| Update (Q# YYYY) \| Use Cases (≥3) \| Metrics \| Stakeholder \| Chain Phase \| URL (group by category) |
-| **Literature** | **L#. Author, Title, Year** \| Summary (value chain, frameworks) \| Industry \| Stakeholder (group: EN, ZH) |
+| **Glossary** | **G#. Term** \| Definition \| Measurement (alphabetize) |
+| **Tools** | **T#. Tool** \| Description \| Use Cases (≥2) \| URL |
+| **Literature** | **L#. Author, Title, Year** \| Summary (frameworks) |
 | **Citations** | **A#. [APA 7th] [Lang]** (sort by ID) |
 
-**Validation**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA tagged
+**Validation**: 100% [Ref: ID] resolve | No orphans | All APA tagged
 
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL 15)
+### Step 6: Validate (fail ANY = stop, fix, re-run ALL 6)
 
 See **Section IV** for complete checklist. Key:
-- **Floors**: G≥15, T≥8, L≥8, A≥15, Q=25–30, 20%F/40%I/40%A (±5%)
-- **Citations**: ≥70% have ≥1; ≥30% have ≥2 | EN 50–70%, ZH 20–40%, Other 5–15%
-- **Quality**: 100% word count 150–300 | 100% chain-concrete | ≥80% frameworks cited+limits | ≥90% scenario
-- **Coverage**: Each industry ≥4 analysis types | ≥8 stakeholders, each Q&A ≥2 | ≥70% cross-participant | 8/8 industries have ≥2 authoritative+1 tool
-- **Integrity**: 100% links accessible | 100% [Ref: ID] resolve, no orphans
+- **Floors**: G≥8, T≥4, L≥4, A≥8, Q=4–6, 25%F/50%I/25%A
+- **Citations**: ≥70% have ≥1 | EN 60%, ZH 30%, Other 10%
+- **Quality**: 100% word count 120–200 | 100% chain-concrete | ≥80% frameworks cited | 100% decision-critical
+- **Coverage**: ≥4 core stakeholders (Strategy/Finance/Product/Ops), each Q&A ≥2 | ≥2 analysis types per Q&A
+- **Integrity**: 100% links accessible | 100% [Ref: ID] resolve, no orphans | 100% quantified
 
 ### Step 7: Final Review
 
-**Questions**: Clarity (single ask) | Chain focus | Depth (trade-offs) | Realism (stakeholder tension) | Industry aware | Discriminative (judgment>recall) | Aligned difficulty
+**Questions**: Clarity (single ask) | Chain focus | Decision impact | Realism (stakeholder tension) | Discriminative (judgment>recall)
 
-**Answers** (sample ≥5): ≥2 analysis types | ≥2 stakeholders | Chain flows | Quantification | Frameworks+cites | Trade-offs/alternatives | Power dynamics | Success criteria | Limitations/assumptions/uncertainties
+**Answers** (all): ≥2 analysis types | ≥2 stakeholders | Quantification | Frameworks+cites | Trade-offs | Decision criteria
 
-**Submit**: All 15 validations PASS | All 6 gates PASS | TOC with links | No placeholders | Balanced perspectives (participants/flows/economics, current/future, power/opportunity)
+**Submit**: All 6 validations PASS | All 6 gates PASS | TOC with links | No placeholders
 
-## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+## IV. Validation Report (Streamlined; fill all; ANY fail = stop, fix, re-run ALL 6)
 
-| # | Check              | Measurement                           | Criteria                            | Result | Status    |
-|---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥15, T≥8, L≥8, A≥15, Q:25-30, 20/40/40% | | PASS/FAIL |
-| 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
-| 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% platform/marketplace)    | | PASS/FAIL |
-| 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
-| 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
-| 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
-| 9 | Key Insights       | __/__ chain-concrete                  | 100% (specific chain tension)       | | PASS/FAIL |
-| 10| Per-Industry Evidence | __/8 (≥2 auth + ≥1 tool)           | 8/8 industries                      | | PASS/FAIL |
-| 11| Frameworks         | __/__ chain+cited+limits              | ≥80% chain-focused                  | | PASS/FAIL |
-| 12| Chain Analysis     | __% scenario+chain                    | ≥90% chain scenario-based           | | PASS/FAIL |
-| 13| Analysis Types     | Each industry: __/6 types             | Each industry ≥4                    | | PASS/FAIL |
-| 14| Stakeholder Cov    | __/8 stakeholders; Q&A: __/__ ≥2      | ≥8 total; each Q&A ≥2               | | PASS/FAIL |
-| 15| Chain Integration  | __% cross-participant flow            | ≥70% multi-participant or flow      | | PASS/FAIL |
+| # | Check              | Measurement                    | Criteria                            | Result | Status    |
+|---|--------------------|--------------------------------|-------------------------------------|--------|-----------|
+| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A) | G≥8, T≥4, L≥4, A≥8, Q:4-6, 25/50/25% | | PASS/FAIL |
+| 2 | Decision Criticality | __/__ satisfy ≥1 criterion     | 100% (Blocks/Risk/Stakeholders/Action/Quantified) | | PASS/FAIL |
+| 3 | Citations          | __%≥1                          | ≥70%≥1 \| EN 60%, ZH 30%, Other 10% | | PASS/FAIL |
+| 4 | Recency            | __% from 3yrs                  | ≥70%                                | | PASS/FAIL |
+| 5 | Links              | __/__ accessible               | 100%                                | | PASS/FAIL |
+| 6 | Quantification     | __/__ have ≥1 metric           | 100% (%, $, timeline)               | | PASS/FAIL |
 
 ## V. Question Quality (≥2 failures = rewrite/replace)
 
@@ -150,50 +154,44 @@ See **Section IV** for complete checklist. Key:
 | 8 | **Flows+Economics**: Capture dynamics | "Info flow breaks at handoff ($500K cost). Capital flow shifts power. Full chain assessment?" | "What's the value pool?" |
 | 9 | **Aligned Difficulty**: Match | F=mapping \| I=power/trade-offs \| A=ecosystem/disruption | Mismatch |
 
-## VI. Output Structure
+## VI. Output Structure (Minimal Viable)
 
 ### A. Table of Contents
-1. Industry Ecosystems Overview | 2. Q&A by Industry (8+cross-industry) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Decision-Critical Overview | 2. Q&A by Decision Type (4–6) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
 
-### B. Industry Ecosystems Overview
+### B. Decision-Critical Overview
 
-**Summary**: [25–30] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 8 industries+cross-industry (MECE) | 6 analysis types | 9+ stakeholders
+**Summary**: [4–6] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 2–3 industries (decision-critical only) | ≥2 analysis types per Q&A | ≥4 core stakeholders
 
-| # | Industry | Range | Count | Mix | Analysis Types | Stakeholders | Artifacts |
-|---|----------|-------|-------|-----|----------------|--------------|-----------|
-| 1 | B2B SaaS | Q1–Q3 | 3 | 1F/1I/1A | Current/Power/Pool/Network | Strategy/PM/Sales/Finance | 1 diagram+table |
-| 2 | E-Commerce | Q4–Q6 | 3 | 0F/1I/2A | Current/Pain/Trends/Bottleneck | Ops/Finance/Marketing | 1 diagram+table |
-| 3 | FinTech | Q7–Q9 | 3 | 1F/1I/1A | Power/Trends/Pool/Network | Finance/Compliance/Product | 1 diagram+table |
-| 4 | Healthcare | Q10–12 | 3 | 1F/1I/1A | Current/Pain/Pool/Trends | Ops/Strategy/Data | 1 diagram+table |
-| 5 | Manufacturing | Q13–15 | 3 | 1F/1I/1A | Bottleneck/Current/Trends | Ops/Finance/Strategy | 1 diagram+table |
-| 6 | Media/Content | Q16–18 | 3 | 0F/1I/2A | Power/Network/Trends | Marketing/Product/Finance | 1 diagram+table |
-| 7 | Logistics | Q19–21 | 3 | 1F/1I/1A | Bottleneck/Current/Pain | Ops/Data/Finance | 1 diagram+table |
-| 8 | Platform/Marketplace | Q22–24 | 3 | 0F/2I/1A | Network/Power/Pool | Strategy/Product/BD | 1 diagram+table |
-| 9 | Cross-Industry | Q25–28 | 4 | 1F/2I/1A | All 6 | All 9 | 2 diagrams+2 tables |
-| | **Total** | | **28** | **6F/11I/11A** | **All 6** | **All 9** | **10+10** |
+| # | Decision Type | Range | Count | Mix | Analysis Types | Stakeholders | Artifacts |
+|---|---------------|-------|-------|-----|----------------|--------------|-----------|
+| 1 | Value Pool/Power | Q1–Q2 | 2 | 1F/1I | Value Pool + Power Dynamics | Strategy/Finance/Product | 1 table+1 diagram |
+| 2 | Disruption/Network | Q3–Q4 | 2 | 1I/1A | Network Effects + Trends | Product/Operations/Strategy | 1 diagram+1 table |
+| 3 | Margin/Bottleneck | Q5–Q6 | 2 | 1F/1I/1A | Bottleneck + Economics | Finance/Operations/Product | 1 table+1 diagram |
+| | **Total** | | **6** | **2F/3I/1A** | **≥2 per Q&A** | **≥4 core** | **6+6** |
 
 **Legend**: F=execution | I=strategy/trade-offs | A=ecosystem/disruption
 
-### C. Q&A Template
+### C. Q&A Template (Minimal Viable)
 
-**Industry X: [Industry Name]**
+**Decision Type: [Value Pool/Power | Disruption/Network | Margin/Bottleneck]**
 
-**QX: [Value Chain Scenario Question]**
+**QX: [Decision-Critical Value Chain Scenario]**
 
-**Difficulty**: [F/I/A] | **Industry**: [Industry] | **Analysis Types**: [≥2] | **Stakeholders**: [≥2]
+**Difficulty**: [F/I/A] | **Decision Criticality**: [Blocks/Risk/Stakeholders/Action/Quantified] | **Analysis Types**: [≥2] | **Stakeholders**: [≥2]
 
-**Key Insight**: [1 sentence chain tension]
+**Key Insight**: [1 sentence: chain tension + decision impact]
 
-**Answer** (150–300 words): Framework [Ref: G#/A#] | Multi-analysis (≥2 types+quantification) | Multi-stakeholder (≥2 roles) | Chain flows (info/product/capital) | Quantification (economics, market size, impact) | Steps | Trade-offs (power shifts, disintermediation risks) | Communication | Success criteria | Limitations (data gaps, assumptions) | ≥1 [Ref: ID]
+**Answer** (120–200 words): Framework [Ref: G#/A#] | Multi-analysis (≥2 types) | Multi-stakeholder (≥2 roles) | Chain flows (brief) | Quantification (≥1 metric: %, $, timeline) | Decision (go/no-go) | Trade-offs (≥2 alternatives) | ≥1 [Ref: ID]
 
-**Artifact** *(optional)*: Chain map/value pool/opportunity matrix/flow diagram
+**Artifact**: Value pool table OR power map OR flow diagram
 
-### D. References Template
+### D. References Template (Minimal Viable)
 
 See **Step 5** for formats. Summary:
-- **Glossary**: **G#. Term** | Definition | Measurement | Stakeholder | Industry | Limitations (alphabetize)
-- **Tools**: **T#. Tool** | Description | Industry Examples | Economics | Update | Use Cases | Metrics | Stakeholder | Chain Phase | URL (group by category)
-- **Literature**: **L#. Author, Title, Year** | Summary | Industry | Stakeholder (group: EN, ZH)
+- **Glossary**: **G#. Term** | Definition | Measurement (alphabetize)
+- **Tools**: **T#. Tool** | Description | Use Cases (≥2) | URL
+- **Literature**: **L#. Author, Title, Year** | Summary (frameworks)
 - **Citations**: **A#. [APA 7th] [Lang]** (sort by ID)
 
 ## VII. Example
@@ -244,149 +242,53 @@ Apply **Value Pool Analysis** [Ref: G2] + **Network Effects** [Ref: G4] + **Theo
 
 **Confidence**: Medium (margin estimates ±20%; vendor behavior depends on close rate improvement success)
 
-## VIII. Analysis Components
+## VII. Quick Reference: Decision-Critical Frameworks
 
-### A. Participant Template
+### Value Pool Analysis
+**Method**: Revenue/node → Margins/node → Profit pool (Revenue×Margin) → Visualize (stacked bar)
+**Q**: Where profit concentrated? Vulnerable nodes? Fair distribution?
 
-**Format**: Name | Role | Function (value add) | Scale (size/volume/share) | Economics (revenue model/margin/cost) | Dependencies (up/downstream) | Alternatives
+### Power Dynamics
+**Indicators**: Pricing control | Switching costs | Information asymmetry | Network benefits | Regulatory barriers | Brand loyalty
+**Visualization**: High=bold | Medium=normal | Low=thin | Arrows=influence
 
-**Example**: AWS | Cloud Infrastructure | Compute/storage/network | $90B, 32% share | Pay-as-you-go, 25–30% margin | Up: data centers/hardware; Down: SaaS/enterprises | On-premise/colo/edge
+### Bottleneck (Theory of Constraints)
+**Method**: Cycle time/node → Longest/highest failure → Throughput capacity → Demand/capacity mismatch → Cost (lost revenue/churn)
+**Application**: Identify → Exploit → Subordinate → Elevate → Repeat
 
-### B. Flow Template (3 types)
-
-| Flow | What | Speed/Format/Quality | Friction (lost/distorted/delayed) | Decisions Dependent |
-|------|------|---------------------|-----------------------------------|---------------------|
-| **Information** | Data between nodes | Fast/slow? Format? Quality? | Where breaks? | What relies? |
-| **Product/Service** | Offerings move | Delivery? Speed? | Quality control/failure/constraint? | Inventory/capacity? |
-| **Capital** | Money flow | Payment terms/timing? | Who captures? Margin pressure? | Value distribution? |
-
-**Output**: Diagram (volume/speed/friction annotated)
-
-### C. Pain Inventory Template
-
-**Format**: ID | Node | Category (Efficiency/Quality/Cost/Experience/Risk) | Description | Impact (quantified) | Workaround | Cost | Stakeholders
-
-**Example**: P1 | Marketing→Sales | Efficiency+Experience | 60% MQLs rejected | 30hr/wk wasted, ROI unclear | Weekly meetings, manual scoring | $150K/yr + friction | Marketing/Sales/Leadership
-
-### D. Power Map
-
-**Indicators**: Pricing (who sets?) | Switching (how hard?) | Information (who knows?) | Network (scale benefits?) | Regulatory (barriers?) | Brand (loyalty?)
-
-**Visualization**: High=bold/large/thick | Medium=normal | Low=thin/small/dashed | Arrows=influence direction
-
-**Example**: High: Apple (iOS, 30% fee) | Medium: App devs (multi-platform) | Low: End users (price-takers)
-
-### E. Opportunity Types + Template
-
-**Types**: Efficiency (↓cost/time/waste) | Quality (↑reliability/accuracy) | Experience (simplify/delight) | Disintermediation (remove nodes) | Aggregation (consolidate) | Platformization (marketplace) | Verticalization (integrate) | Unbundling (separate)
-
-**Format**: Opportunity | Type | Target Pain | Market (TAM/SAM/SOM) | Impact (quantified) | Feasibility | Moat | Competition | Strategic Fit | Priority
-
-**Example**: AI Lead Scoring | Efficiency+Quality | P1 (MQL reject) | $2B automation | 60%→30% reject, 40% faster cycle | Medium (ML+data) | High (proprietary data/network) | 6sense/Demandbase | High (AI strategy) | P1
-
-## IX. Industry Templates
-
-### A. B2B SaaS
-
-**Chain**: Tech Foundation (Cloud/API) → Platform/Infrastructure → ISV/App → Reseller/Channel → Implementation/Integration → Customer (Champion→Buyer→Users) → Customer Success → Renewal/Expansion
-
-**Analysis**: PLG vs Sales-Led | Channel conflict | Implementation partner power | Customer LTV | Churn drivers
-
-### B. E-Commerce/Marketplace
-
-**Chain**: Supplier/Manufacturer → Inventory/Fulfillment → Platform → Payment → Logistics/Delivery → Customer → Returns/Support
-
-**Analysis**: Take rate+unit economics | 1P vs 3P | Logistics costs | CAC | Supplier alignment
-
-### C. Financial Services
-
-**Chain**: Capital Provider → Financial Institution → Distribution → Advisor/Intermediary → Customer → Servicing/Operations → Regulatory/Compliance
-
-**Analysis**: Regulatory barriers/moats | Distribution economics | Trust/brand | Tech modernization | Fintech disruption
-
-### D. Healthcare
-
-**Chain**: R&D → Manufacturing → Distributor → Provider (Hospital/Clinic) → Payer (Insurance) → Patient → Post-Care/Outcomes
-
-**Analysis**: Payer-provider dynamics | Regulatory complexity | Patient experience vs economics | Data interoperability | Value-based care
-
-### E. Manufacturing/Supply
-
-**Chain**: Raw Materials → Component Suppliers → Manufacturer → Distributor/Wholesaler → Retailer → Customer → Service/Warranty
-
-**Analysis**: Inventory optimization | Lead times+bullwhip | Quality control | Supplier relationship | D2C opportunities
-
-## X. Advanced Techniques
-
-### A. Value Pool Analysis
-
-**Method**: 1) Estimate industry revenue | 2) Calculate revenue/node | 3) Estimate margins/node | 4) Calculate profit pool (Revenue×Margin) | 5) Visualize (stacked bar)
-
-**Q**: Where profit concentrated? High-value nodes vulnerable? Margins compressed why? Value distribution fair?
-
-**Example**: $100B industry, $25B profit | Platform: $30B, 40%, $12B (48%) | Implementation: $25B, 15%, $3.75B (15%) → Platform captures 48% profit on 30% revenue (moat); implementation low margin (automation opportunity)
-
-### B. Bottleneck (Theory of Constraints)
-
-**Method**: 1) Map cycle time/node | 2) Identify longest/highest failure | 3) Calculate throughput capacity | 4) Find demand/capacity mismatch | 5) Estimate cost (lost revenue/churn)
-
-**Application**: Identify (limit?), Exploit (max capacity), Subordinate (align pace), Elevate (expand), Repeat (next)
-
-**Example**: Sales Engineering | Capacity: 10 SEs×4 evals/mo=40 deals/mo | Demand: 60 opps/mo | Cost: 20 lost×$150K ACV×30% win=$900K/mo | Solution: +5 SEs ($750K/yr) → $10M/yr gain
-
-### C. Switching Cost Types + Analysis
-
-**Types**: Financial (fees/setup/discounts lost) | Procedural (time/effort/learning) | Relational (relationship/trust/knowledge) | Contractual (legal/terms) | Technical (integration/migration/compatibility) | Risk (uncertainty/track record)
-
-**Framework**: From→To | Cost components (amount/time/severity) | Total cost+risk | Annual savings | Payback period → Decision
-
-**Example**: Salesforce→HubSpot | Migration $50K+Integration $150K+Training $30K+Productivity $200K+Risk $700K=$1.13M | Savings $120K/yr | Payback 9.4yr → unlikely unless forced | **Insight**: High switching=incumbent moat OR 10× better/free migration opportunity
-
-### D. JTBD Mapping
-
-**Method**: 1) Per participant: identify functional/emotional/social jobs | 2) Map performance vs desired | 3) Find underserved/overserved | 4) Find no-solution jobs
-
-**Template**: Participant | Functional (what accomplish?) | Emotional (how feel?) | Social (how seen?) | Underserved (poor/none) | Overserved (too many)
-
-**Example**: B2B Marketing Manager | Functional: leads/ROI/campaigns | Emotional: confidence/respect | Social: strategic not tactical | Underserved: attribution (poor), pipeline prediction (none), sales alignment (manual) | Overserved: social automation, email design → **Opportunity**: Pipeline Intelligence Platform
-
-### E. Network Effects
-
+### Network Effects
 **Types**: Direct (users→value) | Indirect (users→complements) | Data (usage→product) | Marketplace (buyers↔sellers) | Platform (developers→features)
+**Q**: Which nodes benefit? Min viable network? Defensible?
 
-**Q**: Which nodes benefit? Min viable network? Defensible? Engineer into product?
+## VIII. Common Pitfalls
 
-**Example**: Job Board | Type: Marketplace (2-sided) | Dynamic: seekers→employers→listings→seekers | Tipping: ~10M users before monetize | Defensibility: Medium (data+brand, multi-homing) | Winner: No (room for differentiation) → **Strategy**: Rapid acquisition to critical mass, then monetize; sequential geography
+| Pitfall | Mitigation |
+|---------|-----------|
+| **Incomplete Participants** | Interview ("Who else?"), follow money, check associations |
+| **Static Analysis** | Always map today + 5yr, track tech/regulatory/social trends |
+| **Activity ≠ Value** | Ask "remove node→what breaks?", calculate value vs cost |
+| **Single Stakeholder** | Systematic multi-perspective, interview all types |
+| **No Quantification** | Estimate (rough OK), use Fermi, mark assumptions |
+| **Ignore Coordination** | Map handoffs, delays, misaligned incentives |
 
-## XI. Pitfalls + Mitigations
+---
 
-| Pitfall | Symptom | Impact | Mitigation | Example |
-|---------|---------|--------|------------|---------|
-| **A. Incomplete Participants** | Missing behind-scenes players | Misunderstand power/miss risks | Interview ("Who else?"), follow money, check LinkedIn/associations | Miss system integrators (60% enterprise deals) |
-| **B. Static Analysis** | Current only, no trends | Miss disruption/declining opps | Always Layer 3, map today+5yr, track tech adoption/regulatory/social | Taxi 2010 without smartphones → miss Uber/Lyft |
-| **C. Activity≠Value** | All steps "add value" uncritically | Miss disintermediation | Ask "remove node→what breaks?", calculate value vs cost, interview downstream, find low-margin commodity | Distributor 15% markup for automatable logistics |
-| **D. Single Stakeholder** | Only one view (often own company) | Miss pain/power, build unwanted solutions | Systematic multi-perspective, interview/survey types, map pain per participant, consider B2B2C | Build for end user, ignore admin/IT → low enterprise adoption |
-| **E. No Quantification** | Qualitative only, no numbers | Can't prioritize/build case | Estimate (rough OK), Fermi, proxies, mark assumptions | "Slow" → "60d cycle, 40% longer, $500K/qtr delayed revenue" |
-| **F. Ignore Coordination** | Node efficiency, miss handoff friction | Optimize parts, system slow | Map handoffs, time delays, identify misaligned incentives, calculate overhead | Manufacturing -20% time, no logistics coordination → inventory piles |
+## IX. Summary: Minimal Viable ValueChain/QA.md
 
-## XII. Validation Checklist
+**Goal**: 4–6 decision-critical Q&As for informed value chain decisions with limited time.
 
-| Category | Criteria |
-|----------|----------|
-| **Core Analysis** | ☑ All participants mapped \| ☑ 3 flows documented (info/product/capital) \| ☑ Economics estimated/node (revenue/margin/cost) \| ☑ Pain identified (severity+cost) \| ☑ Power mapped (switching costs) \| ☑ Tech+market trends researched \| ☑ 5yr state projected |
-| **Cognitive Levels** | ☑ Remember: draw from memory \| ☑ Understand: explain logic \| ☑ Apply: ≥10 opportunities \| ☑ Analyze: compare+trade-offs \| ☑ Evaluate: rank with criteria \| ☑ Create: 1–2 novel models |
-| **Quantification** | ☑ Industry size (revenue/volume) \| ☑ Value pool (profit distribution) \| ☑ Pain quantified (cost/time/frequency) \| ☑ Opportunity sized (TAM/SAM/SOM) \| ☑ Unit economics modeled \| ☑ Break-even+payback calculated |
-| **Validation** | ☑ ≥3 sources cross-referenced \| ☑ ≥5 participants interviewed \| ☑ Hypotheses tested (experiments) \| ☑ Expert reviewed \| ☑ Assumptions documented \| ☑ Confidence assessed/finding |
-| **Deliverables** | ☑ Exec summary (1–2pg) \| ☑ Chain map (visual) \| ☑ Node analysis doc \| ☑ Opportunity portfolio+recommendations \| ☑ Roadmap \| ☑ Presentation deck |
+**Key Metrics**:
+- **Q&A Count**: 4–6 (vs. 25–30 original) = **75–80% reduction**
+- **Effort**: 4–6 hours (vs. 8–12 original) = **50% time savings**
+- **References**: G≥8, T≥4, L≥4, A≥8 (vs. G≥15, T≥8, L≥8, A≥15)
+- **Validation Checks**: 6 (vs. 15 original) = **60% streamlined**
+- **Decision Criticality**: 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Action/Quantified)
 
-## XIII. Additional Example: B2B Marketing Chain
+**Decision-Critical Scenarios**:
+1. **Value Pool/Power Dynamics** (Q1–Q2): Blocks pricing/go-to-market decisions
+2. **Disruption/Network Effects** (Q3–Q4): Creates competitive risk, identifies moat threats
+3. **Margin Compression/Bottleneck** (Q5–Q6): Blocks resource allocation, identifies cost opportunities
 
-**Layer 1: Current** | **Chain**: Marketing (content/campaigns) → Website/Ads → Lead Capture → MQL Scoring → SDR → SQL → AE → Opp → Closed Won → CS | **Info Flow**: Campaign perf/engagement/behavior → BANT/score/history → Qual notes/pain/budget → Deal/decision-makers | Friction: incomplete CRM, no outcome visibility | **Capital**: Marketing spend → leads ($150/MQL) | Sales time → revenue ($600/SQL, $12K/win) | Customer pays | Friction: 6–18mo attribution delay, unclear ROI
+**Execution**: Plan (1h) → References (1h) → Q&A (2–3h) → Visuals (30min) → Validate (30min)
 
-**Layer 2: Pain+Power** | **P1 (High)**: 60% MQLs rejected | Causes: outdated scoring/ICP/timing | Cost: 30hr/wk+$150K/yr+friction | **P2 (High)**: Attribution blindness | Causes: no visibility/multi-touch | Cost: $500K/yr opportunity | **P3 (Med)**: Manual scoring misses intent | Cost: 15% vs 25% SQL conversion → $1M ARR gap | **Power**: High=Sales (reject/revenue control) | Med=Marketing (budget/brand) | Low=SDRs (squeezed)
-
-**Layer 3: Change** | **Tech**: AI/ML scoring (6sense/Demandbase), intent data, automation (HubSpot/Marketo), ABM | **Market**: MQL→pipeline/revenue metrics, PLG, privacy (GDPR/CCPA), ROI pressure | **5yr**: AI Intent Engine → auto-route with context → personalized → AI optimizes spend | MQL/SQL friction eliminated
-
-**Cognitive** | **1. Remember**: drew chain | **2. Understand**: MQL=handoff (Marketing volume, Sales quality); static rules miss intent | **3. Apply**: 3 opps (AI scoring, CRM integration, ABM) | **4. Analyze**: AI (high impact, complex) vs CRM (med impact, quick) vs ABM ($200K/yr, risky) | **5. Evaluate**: CRM first (trust), then AI (ROI, 18mo payback), defer ABM (immature) | **6. Create**: Revenue Intelligence Platform (intent+AI+attribution+account) | Eliminate MQL/SQL, measure on pipeline | $2B TAM
-
-**Top Opportunity: AI Lead Scoring** | Replace rules with ML+intent | **Market**: TAM $8B automation, SAM $2B (>$50M revenue), SOM $100M (Y3, 5%) | **Target**: B2B SaaS $50M–$500M, 10+ reps, MQL quality issues | **Value**: 60%→30% reject (2× efficiency), 15%→25% SQL (1.67× pipeline), 30% faster response, full attribution | **Model**: SaaS $3K–$15K/mo (volume+data) | **Competition**: 6sense ($200M ARR), Demandbase ($120M); differentiate: attribution, CRM, price; risk: crowded, 9–12mo cycles | **GTM**: Mid-market (underserved), PLG trial, enterprise ABM | **Economics**: CAC $25K (6mo, $50K AER, 50%), LTV $150K (3yr, 70% margin), 6:1, 6mo payback | **Risks**: CRM hygiene (cleaning service), privacy (first-party), ML (API partners) | **Rec**: MVP with 5 partners (6mo), validate 2× improvement, Series A
+**Result**: Minimal viable, decision-focused value chain analysis template enabling informed strategic decisions without information overload.

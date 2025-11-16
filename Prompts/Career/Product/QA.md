@@ -1,14 +1,14 @@
-# PM Interview Q&A Generator
+# PM Interview Q&A Generator (Optimized)
 
-Generate 25–30 scenario-based interview questions testing senior/director/VP-level PM judgment with evidence-based answers, visual artifacts, and quantitative validation.
+Generate **6-12 decision-critical scenario-based interview questions** testing senior/director/VP-level PM judgment. Focus: techniques that block decisions or create material risk (revenue >$1M, strategic pivot, churn >5%).
 
-## I. Context & Scope
+## I. Context & Scope (60% Reduction)
 
-**Purpose**: Assess senior+ PM judgment (5-15 yrs) through multi-dimensional scenarios requiring stakeholder navigation and strategic trade-offs.
+**Purpose**: Assess senior+ PM judgment (5-15 yrs) through decision-critical scenarios requiring stakeholder navigation and strategic trade-offs.
 
-**Assumptions**: LLM knows frameworks (RICE, JTBD, OKR, AARRR, North Star, PMF, Continuous Discovery, PLG); user provides context or accepts generic scenarios; text/JSON output; 10-15min discussion per question.
+**Assumptions**: LLM knows frameworks (RICE, JTBD, OKR, North Star, PMF); user provides context or accepts generic scenarios; text/JSON output; 10-15min discussion per question.
 
-**Constraints**: 150-300 words/answer (excluding artifacts); ≥70% citation coverage (≥30% with ≥2 cites); 100% scenario-based (no recall); senior+ level only.
+**Constraints**: 150-250 words/answer (excluding artifacts); ≥70% citation coverage; 100% decision-critical scenarios; senior+ level only.
 
 **Terms**: Q&A (scenario question–answer testing judgment), Floor (≥ = minimum threshold), Quality gate (mandatory checkpoint—fail = stop/fix), Difficulty (F=execution, I=strategy/trade-offs, A=portfolio/vision/P&L), Dimensions (Product/Business/Strategic/Operational).
 
@@ -18,17 +18,26 @@ Generate 25–30 scenario-based interview questions testing senior/director/VP-l
 
 ## II. Requirements
 
-### Quantitative Floors
+## Decision Criticality Framework (NEW - MANDATORY)
 
-**Q&A**: 25–30 total | 20%F/40%I/40%A (±5%) | 150–300 words | ≥70% have ≥1 cite (≥30% have ≥2) | Each answer addresses ≥2 dimensions
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts roadmap prioritization, go/no-go, or strategic pivot (revenue >$1M)
+- **Creates Risk**: Material competitive threat, churn signal (>5% monthly), or strategic misalignment
+- **Affects ≥2 Stakeholders**: Multi-team impact (PM + Exec, PM + Eng, PM + Sales, etc.)
+- **Actively Evolving**: Product/market/org dynamics changing in past 3–6 months
+- **Quantified Impact**: Revenue $, pipeline $, adoption %, retention %, or market share
 
-**Topic Coverage (MECE)**: 1. Strategy & Vision (5–6) | 2. Discovery & User Research (4–5) | 3. Prioritization & Roadmapping (5–6) | 4. Metrics & Analytics (4–5) | 5. Stakeholder Management (4–5) | 6. Go-to-Market & Growth (4–5)
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
 
-**References** (build before Q&A): Glossary ≥10 terms | Tools ≥5 platforms | Literature ≥6 books (≥2 ZH: 俞军, 梁宁, 苏杰) | Citations ≥12 APA 7th with [EN]/[ZH] tags
+### Quantitative Floors (60% Reduction)
 
-**Visuals**: ≥1 diagram + ≥1 table per topic (6+6 minimum)
+**Q&A**: **6-12 total** | 25%F/50%I/25%A | 150–250 words | ≥70% have ≥1 cite | Each answer addresses ≥2 dimensions
 
-**Scaling**: For >30 Q&A, multiply reference floors by 1.5×
+**Topic Coverage (Decision-Critical)**: 1. Strategy & Prioritization (2–3) | 2. Metrics & Decision-Making (2–3) | 3. Stakeholder Alignment (1–2) | *(Optional) GTM (1)*
+
+**References** (build before Q&A): Glossary ≥8 terms | Tools ≥3 platforms | Literature ≥4 books (≥1 ZH) | Citations ≥6 APA 7th with [EN]/[ZH] tags
+
+**Visuals**: ≥1 diagram + ≥1 table per topic (compressed)
 
 ### Citation Standards
 
@@ -103,18 +112,18 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 
 **Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags
 
-### Step 6: Run 12 Validations (fail ANY = stop, fix, re-run ALL)
+### Step 6: Run 12 Streamlined Validations (fail ANY = stop, fix, re-run ALL)
 
-1. **Floors**: G≥10, T≥5, L≥6, A≥12, Q=25–30, 20%F/40%I/40%A (±5%)
-2. **Citations**: ≥70% have ≥1; ≥30% have ≥2
-3. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
-4. **Recency**: ≥50% from last 3yrs (≥70% if AI/ML/platform/data)
-5. **Source Types**: ≥3 types; no type >25%
+1. **Floors**: G≥8, T≥3, L≥4, A≥6, Q=6–12, 25%F/50%I/25%A
+2. **Citations**: ≥70% have ≥1 cite
+3. **Decision Criticality** (NEW): 100% satisfy ≥1 criterion [Blocks/Risk/Stakeholders/Evolving/Quantified]
+4. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
+5. **Recency**: ≥50% from last 3yrs
 6. **Links**: 100% accessible/archived
 7. **Cross-Refs**: 100% [Ref: ID] resolve; no orphans
-8. **Word Count**: Sample 5; 100% within 150–300
+8. **Word Count**: Sample 3; 100% within 150–250
 9. **Key Insights**: 100% concrete (specific dilemma/tension)
-10. **Per-Topic Evidence**: 6/6 topics have ≥2 authoritative + ≥1 tool
+10. **Topic Coverage**: 3-4 decision-critical topics covered
 11. **Framework Usage**: ≥80% correct + cited + limitations
 12. **Judgment Ratio**: ≥70% scenario-based
 
@@ -126,20 +135,20 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 
 **Submission**: All 12 validations PASS | All floors met | All 6 gates passed | TOC with links | No placeholders | Consistent formatting | Balanced perspectives (test different PM philosophies: user-first vs. business-first, data-driven vs. intuition, innovation vs. execution)
 
-## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+## IV. Validation Report (12 Checks - Streamlined)
 
 | # | Check              | Measurement                           | Criteria                            | Result | Status    |
 |---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40% | | PASS/FAIL |
-| 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
-| 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% AI/platform)             | | PASS/FAIL |
-| 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
+| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥8, T≥3, L≥4, A≥6, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 2 | Citations          | __%≥1                                 | ≥70%≥1                              | | PASS/FAIL |
+| 3 | Decision Criticality (NEW) | __/__ satisfy ≥1 criterion    | 100% [Blocks/Risk/Stakeholders/Evolving/Quantified] | | PASS/FAIL |
+| 4 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
+| 5 | Recency            | __% from 3yrs                         | ≥50%                                | | PASS/FAIL |
 | 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
 | 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
+| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-250)                      | | PASS/FAIL |
 | 9 | Key Insights       | __/__ concrete                        | 100%                                | | PASS/FAIL |
-| 10| Per-Topic Evidence | __/6 (≥2 auth + ≥1 tool)              | 6/6                                 | | PASS/FAIL |
+| 10| Topic Coverage     | __/3-4 decision-critical topics       | 3-4 covered                         | | PASS/FAIL |
 | 11| Frameworks         | __/__ correct+cited+limits            | ≥80%                                | | PASS/FAIL |
 | 12| Judgment Ratio     | __% scenario-based                    | ≥70%                                | | PASS/FAIL |
 
@@ -157,18 +166,16 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 ### A. TOC
 1. Topic Areas Overview | 2. Questions by Topic (6 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
 
-### B. Topic Overview
-**Total**: [25–30] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 6 PM competencies (MECE)
+### B. Topic Overview (Optimized)
+**Total**: [6–12] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies
 
-| # | Topic          | Range  | Count | Mix      | Artifacts       |
-|---|----------------|--------|-------|----------|-----------------|
-| 1 | Strategy       | Q1–Q5  | 5     | 1F/2I/2A | 1 diagram+table |
-| 2 | Discovery      | Q6–Q10 | 5     | 1F/2I/2A | 1 diagram+table |
-| 3 | Prioritization | Q11–16 | 6     | 1F/2I/3A | 1 diagram+table |
-| 4 | Metrics        | Q17–21 | 5     | 1F/2I/2A | 1 diagram+table |
-| 5 | Stakeholder    | Q22–25 | 4     | 1F/2I/1A | 1 diagram+table |
-| 6 | GTM            | Q26–30 | 5     | 1F/2I/2A | 1 diagram+table |
-|   | **Total**      |        | **30**| **6F/12I/12A** | **6+6** |
+| # | Topic          | Range  | Count | Mix      | Artifacts       | Decision Criticality |
+|---|----------------|--------|-------|----------|-----------------|----------------------|
+| 1 | Strategy & Prioritization | Q1–Q3  | 2–3   | 1F/1I/1A | 1 diagram+table | Blocks decision |
+| 2 | Metrics & Decision-Making | Q4–Q6  | 2–3   | 1F/1I/1A | 1 diagram+table | Creates risk |
+| 3 | Stakeholder Alignment | Q7–Q8  | 1–2   | 1F/1I | 1 diagram+table | Affects ≥2 roles |
+| 4 | GTM (Optional) | Q9–Q12 | 1     | 1I/1A | 1 diagram+table | Actively evolving |
+|   | **Total**      |        | **6–12**| **2F/3I/2A** | **compressed** | 100% decision-critical |
 
 Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
@@ -180,9 +187,11 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Difficulty**: [F/I/A] | **Topic**: [Area]
 
+**Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Quantified] - [Justification]
+
 **Key Insight**: [1 sentence—specific dilemma/tension]
 
-**Answer** (150–300 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
+**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
 
 **Artifact** *(optional)*: Matrix, journey, dashboard, roadmap
 

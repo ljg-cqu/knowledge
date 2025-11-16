@@ -1,10 +1,10 @@
-# Interview Q&A Generator: Trading & Investment
+# Interview Q&A Generator: Trading & Investment (Minimal Viable)
 
-**Purpose**: Generate 25–30 scenario-based Q&A pairs testing judgment, decision-making, risk management for Trader/Senior Trader/Portfolio Manager roles (3–15 years experience)
+**Purpose**: Generate 6–12 decision-critical scenario-based Q&A pairs testing judgment, risk management, position sizing for Trader/Senior Trader/Portfolio Manager roles (3–15 years experience)
 
-**Scope**: Multi-asset trading across 6 MECE domains | Theory 20–40% / Practice 60–80%  
-**Output**: 25–30 Q&A (150–300w) | F:I:A = 20:40:40% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% sources <3yr  
-**Requirements**: Authoritative sources | Citations | Limitations | Trade-offs | ≥70% scenario-based with multi-variable constraints
+**Scope**: Decision-critical trading across 3–4 MECE domains | Theory 20–40% / Practice 60–80%  
+**Output**: 6–12 Q&A (120–200w) | F:I:A = 20:40:40% (±5pp) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥50% sources <3yr  
+**Requirements**: Decision Criticality Framework (mandatory) | Authoritative sources | Citations | Limitations | Trade-offs | ≥70% scenario-based with multi-variable constraints | 60% reduction across all dimensions
 
 ---
 
@@ -14,7 +14,7 @@
 
 **Citations**: ≥70% ≥1 [Ref: ID], ≥30% ≥2 | All resolve | APA 7th + DOI + [lang]
 
-**References** (collect BEFORE): **G#≥10** (Glossary: Sharpe, VaR, Greeks, Alpha, Beta, Drawdown, Kelly, Sortino, Vol Skew, Carry, Momentum, Mean Reversion, PnL Attribution, Portfolio Optimization, Factor Models) | **T#≥5** (Tools: name, pricing, users, integrations, update ≤18mo, URL) | **L#≥6** (Literature: Hull, Taleb, Lo, Chan, Jansen, López de Prado) | **A#≥12** (Citations)
+**References** (collect BEFORE): **G#≥6** (Glossary: Sharpe, VaR, Greeks, Alpha, Beta, Drawdown, Kelly, Sortino) | **T#≥3** (Tools: name, pricing, users, integrations, update ≤18mo, URL) | **L#≥4** (Literature: Hull, Taleb, Lo, Chan) | **A#≥6** (Citations)
 
 **Source Tiers**: Academic/Standards > Central Banks/Exchanges > Consultancies > Vendor > Trade > Practitioner | ≥3 types, none >25%, prefer DOIs, all accessible
 
@@ -22,22 +22,33 @@
 
 ---
 
-## Trading Domains (MECE)
+## Decision Criticality Framework (NEW - MANDATORY)
 
-| Domain | Scope | Examples |
-|--------|-------|----------|
-| **Market Analysis & Instruments** | Asset classes, market structure, instruments, analysis | Equities, FX, commodities, derivatives, order types, microstructure |
-| **Trading Strategy & Execution** | Strategy development, backtesting, execution, alpha | Momentum, mean reversion, arbitrage, algorithms, slippage |
-| **Risk Management & Position Sizing** | Risk metrics, sizing, hedging, construction | VaR, Sharpe, drawdown, Kelly, diversification, Greeks |
-| **Portfolio Management & Optimization** | Theory, allocation, rebalancing, factors | MPT, Black-Litterman, risk parity, multi-asset, factors |
-| **Trading Operations & Technology** | Infrastructure, data, automation, regulations | OMS, data feeds, latency, compliance, reporting |
-| **Performance & Attribution** | PnL analysis, attribution, benchmarking | Sharpe/Sortino, alpha/beta decomposition, metrics |
+**Include if ≥1 criterion satisfied**:
+1. **Blocks Decision**: Directly impacts position sizing, risk limits, strategy pivot, or portfolio rebalancing go/no-go
+2. **Creates Risk**: Material threat (VaR breach, drawdown spike, correlation breakdown, tail loss >25%)
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (Trader + Risk Manager, Portfolio Manager + CRO)
+4. **Requires Action**: 1–6mo action window (not speculative)
+5. **Quantified Impact**: Sharpe change, VaR %, DD %, correlation shift, PnL impact $
+
+**Exclude if**: Niche/legacy strategies (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
 
 ---
 
-## Terminology
+## Trading Domains (MECE - Decision-Critical Only: 3-4)
 
-**Sharpe**: (Return - RiskFree) / StdDev; ≥1 good, ≥2 excellent | **VaR**: Max loss at confidence level | **Greeks**: Delta, Gamma, Vega, Theta, Rho | **Alpha**: Excess vs. benchmark | **Beta**: Market correlation | **Drawdown**: Peak-to-trough decline | **Kelly**: f* = (p×b - q) / b | **Sortino**: Penalizes downside only | **Vol Skew**: Implied vol smile | **Carry**: Holding return minus funding | **Momentum**: Trend-following | **Mean Reversion**: Contrarian | **PnL Attribution**: Decompose by source | **Portfolio Optimization**: Mean-variance, risk parity | **Factor Models**: Fama-French, momentum, value, quality
+| Domain | Scope | Decision Criticality | Examples |
+|--------|-------|---------------------|----------|
+| **Risk Management & Position Sizing** | Risk metrics, sizing, hedging, construction | Blocks decision, Creates risk | VaR breach, Sharpe target, drawdown limits, Kelly sizing, Greeks |
+| **Trading Strategy & Execution** | Strategy development, execution, alpha generation | Blocks decision, Affects roles | Momentum vs. mean reversion, execution slippage, alpha capture |
+| **Portfolio Management & Optimization** | Allocation, rebalancing, correlation management | Creates risk, Quantified impact | Risk parity, correlation breakdown, diversification failure, rebalancing |
+| **Performance & Attribution** (Optional) | PnL analysis, attribution, benchmarking | Affects roles, Requires action | Sharpe/Sortino decomposition, alpha/beta attribution, metrics |
+
+---
+
+## Terminology (Decision-Critical Only)
+
+**Sharpe**: (Return - RiskFree) / StdDev; ≥1 good, ≥2 excellent | **VaR**: Max loss at confidence level | **Greeks**: Delta, Gamma, Vega, Theta | **Drawdown**: Peak-to-trough decline | **Kelly**: f* = (p×b - q) / b | **Sortino**: Penalizes downside only
 
 ---
 
@@ -51,16 +62,14 @@
 
 ---
 
-## Answer Structure
+## Answer Structure (120–200w, Streamlined)
 
-1. **Context** (1–2 sent): Restate scenario/challenge
-2. **Analysis** (2–3 sent): Root causes [Ref: ID]; assumptions
-3. **Reasoning** (3–4 sent): Step-by-step logic [Ref: ID]; cause-effect
-4. **Recommendations** (3–4 sent): Actions, priorities, trade-offs [Ref: ID]
-5. **Implementation** (I/A, 2–3 sent): Sequence, timelines, resources
-6. **Metrics** (I/A, 1–2 sent): Success measures, outcomes, timeframes
-7. **Limitations** (2–3 sent): Constraints, "when NOT", risks [Ref: ID]
-8. **Key Insight**: Non-obvious, decision-useful, falsifiable
+1. **Context** (~20w): Restate scenario/challenge, decision point
+2. **Analysis** (~30w): Root causes [Ref: ID], frameworks, multi-variable assessment
+3. **Reasoning** (~40w): Step-by-step logic [Ref: ID], cause-effect, quantified impact
+4. **Recommendations** (~40w): Actions, priorities, trade-offs, alternatives [Ref: ID]
+5. **Limitations** (~20w): Constraints, "when NOT", risks [Ref: ID]
+6. **Key Insight**: Non-obvious, decision-useful, falsifiable, quantified
 
 ---
 
@@ -119,28 +128,22 @@ Run checklist. **ALL PASS required. FAIL → fix → re-validate**
 
 ---
 
-## Validation Checklist
+## Validation Checklist (12 Streamlined Checks)
 
 | # | Check | Criteria | Purpose |
 |---|-------|----------|---------|
-| 1 | Ref counts | G≥10, T≥5, L≥6, A≥12 | Sufficiency |
-| 2 | Q&A counts | 25–30, F:I:A 20:40:40 (±5pp) | Scope |
-| 3 | Citations | ≥70% ≥1, ≥30% ≥2 | Evidence |
-| 4 | Language | EN 50–70%, ZH 20–40%, Other 5–15% | Diversity |
-| 5 | Recency | ≥50% <3yr (≥70% quant) | Currency |
-| 6 | Diversity | ≥3 types, none >25% | Bias prevention |
+| 1 | Ref counts | G≥6, T≥3, L≥4, A≥6 | Sufficiency |
+| 2 | Q&A counts | 6–12, F:I:A 20:40:40 (±5pp) | Scope |
+| 3 | Decision Criticality | 100% satisfy ≥1 criterion | Mandatory |
+| 4 | Citations | ≥70% ≥1, ≥30% ≥2 | Evidence |
+| 5 | Language | EN 50–70%, ZH 20–40%, Other 5–15% | Diversity |
+| 6 | Recency | ≥50% <3yr (≥70% quant) | Currency |
 | 7 | Links | All functional, prefer DOIs | Verifiability |
-| 8 | Cross-refs | All [Ref: ID] resolve | No broken cites |
-| 9 | Word count | Sample 5: all 150–300 | Consistency |
-| 10 | Insights | All concrete, non-obvious, decision-useful | Value |
-| 11 | Per-domain | Each: ≥2 auth + ≥1 tool | Balance |
-| 12 | Frameworks | ≥80% correct + cited + limitations | Accuracy |
-| 13 | Judgment | ≥70% scenario-based | Decision-making |
-| 14 | Accuracy | Sample 5: cross-validate | Error detection |
-| 15 | Balance | ≥50% trade-offs/limitations/alternatives | Honesty |
-| 16 | Reasoning | ≥60% step-by-step | Clarity |
-| 17 | Artifacts | Each domain: ≥1 diagram + ≥1 table | Visual support |
-| 18 | TOC | Present with working links | Navigation |
+| 8 | Word count | Sample 5: all 120–200w | Consistency |
+| 9 | Insights | All concrete, non-obvious, decision-useful | Value |
+| 10 | Frameworks | ≥80% correct + cited + limitations | Accuracy |
+| 11 | Artifacts | Each domain: ≥1 diagram + ≥1 table | Visual support |
+| 12 | Overall | All checks PASS, Decision Criticality justified | Final review |
 
 **Final**: ✅ ALL PASS → deliver | ❌ List failures → fix → re-validate
 
@@ -165,63 +168,61 @@ Run checklist. **ALL PASS required. FAIL → fix → re-validate**
 
 ---
 
-## Output Structure
+## Output Structure (Minimal Viable)
 
 ```markdown
-# Interview Q&A - Trading Professional
+# Interview Q&A - Trading Professional (Minimal Viable)
 
 ## Contents
-[TOC: Overview | 6 Domains | References (Glossary, Tools, Literature, Citations) | Validation]
+[TOC: Overview | 3-4 Domains | References (Glossary, Tools, Literature, Citations) | Validation]
 
 ## Topic Overview
-| Domain | Range | Count | F/I/A |
-[Distribution table]
+| Domain | Range | Count | F/I/A | Decision Criticality |
+[Distribution table with criticality column]
 
 ## Domain 1: [Name]
 ### Q#: [Scenario]
-**Difficulty**: [F/I/A] | **Domain**: [Name]  
-**Key Insight**: [Non-obvious, decision-useful, falsifiable]
+**Difficulty**: [F/I/A] | **Domain**: [Name] | **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
+**Key Insight**: [Non-obvious, decision-useful, falsifiable, quantified]
 
-**Answer** (150–300w):  
-**Context**: [Challenge]  
-**Analysis**: [Root causes] [Ref: ID]  
-**Reasoning**: [Steps] [Ref: ID]  
-**Recommendations**: [Actions] [Ref: ID]  
-**Implementation** (I/A): [Plan]  
-**Metrics** (I/A): [Targets]  
+**Answer** (120–200w):
+**Context**: [Challenge, decision point]
+**Analysis**: [Root causes, frameworks] [Ref: ID]
+**Reasoning**: [Steps, quantified impact] [Ref: ID]
+**Recommendations**: [Actions, trade-offs, alternatives] [Ref: ID]
 **Limitations**: [Constraints, when NOT, risks] [Ref: ID]
 
 **Artifact**:
 [Diagram/table]
 
-[Repeat for all domains]
+[Repeat for 6-12 Q&As across 3-4 domains]
 
 ## Reference Sections
-### Glossary (≥10)
+### Glossary (≥6)
 **G#. Term**: Definition. **Use**: Context.
 
-### Tools (≥5)
+### Tools (≥3)
 **T#. Name**: Desc. **Pricing**: $X. **Users**: Nm+. **Integrations**: [List]. **Update**: Q# YYYY. **URL**: [link]
 
-### Literature (≥6)
+### Literature (≥4)
 **L#.** Author (Year). *Title*. Publisher. [Topics]
 
-### Citations (≥12)
+### Citations (≥6)
 **A#.** Full APA 7th. DOI. [EN/ZH/Other]
 
 ## Validation Report
-[18-row table: # | Check | Criteria | Status | Notes]  
+[12-row table: # | Check | Criteria | Status | Notes]
 **Final**: ✅ ALL PASS or ❌ [failures]
 ```
 
 ---
 
-## Complete Example
+## Complete Example (Decision-Critical)
 
 **Q**: How manage position when VaR breached 3 days running, volatility +40%, correlation to SPX rising 0.3→0.7?
 
-**Difficulty**: A | **Domain**: Risk Management, Portfolio Management  
-**Key Insight**: Tests crisis risk response; distinguishes systematic risk managers from reactive traders.
+**Difficulty**: A | **Domain**: Risk Management & Position Sizing | **Decision Criticality**: Blocks decision (risk limits), Creates risk (tail loss)
+**Key Insight**: Tests crisis risk response; distinguishes systematic risk managers from reactive traders. Quantified: VaR breach protocol, correlation impact on diversification, 3-phase mitigation timeline.
 
 **Answer** (285w):  
 **Context**: VaR 3× breach + vol +40% + correlation 0.3→0.7 signals regime shift—diversification breakdown, elevated tail risk [Ref: G2, G6, A5].

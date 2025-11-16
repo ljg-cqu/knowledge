@@ -1,6 +1,6 @@
-# UX Interview Q&A Generator
+# UX Interview Q&A Generator (Minimal Viable)
 
-Generate 25-30 evidence-based Q&As validating senior UX capabilities across 6 dimensions with artifacts, quantified trade-offs, validation.
+Generate 6-12 decision-critical Q&As for informed UX decisions with limited time. Focus: blocks decision or creates material risk.
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -22,25 +22,34 @@ Generate 25-30 evidence-based Q&As validating senior UX capabilities across 6 di
 
 **Scope**: Multi-platform, accessibility, systems, research | **Exclude**: Junior concepts, single-platform, pure theory | **Limitation**: Generic scenarios lack domain nuance
 
-### Floors
+### Floors (Minimal Viable - 60% Reduction)
 
 | Component | Requirements |
 |-----------|-------------|
-| **Q&As** | 25-30 \| 20/40/40% F/I/A (±5%) \| 150-300 words \| ≥70% ≥1 cite, ≥30% ≥2 \| ≥70% judgment |
-| **Dimensions** | 1. Research (4-6) \| 2. IA (4-6) \| 3. Visual (4-6) \| 4. Interaction (4-6) \| 5. Accessibility (4-6) \| 6. Systems (4-6) |
-| **References** | G≥10 \| T≥5 \| L≥6 \| A≥12 APA 7th [EN]/[ZH] |
-| **Artifacts** | ≥1 diagram+spec+table+metric/dimension (24 min) |
+| **Q&As** | 6-12 \| 25% F / 50% I / 25% A \| 120-200 words \| ≥70% ≥1 cite \| 100% decision-critical |
+| **Dimensions** | 3-4 decision-critical only: Design Systems (≥2) \| Accessibility (≥1) \| Research/IA (≥1) \| Interaction (≥1) |
+| **References** | G≥8 \| T≥4 \| L≥5 \| A≥6 APA 7th [EN]/[ZH] |
+| **Artifacts** | ≥1 diagram + ≥1 table per Q&A (compressed) |
 
 **Legend**: F=Foundational, I=Intermediate, A=Advanced | G=Glossary, T=Tool, L=Literature, A=Citation
 
-### Dimensions (MECE)
+### Decision-Critical Dimensions (3-4 Only)
 
-1. **Research**: User research, usability testing, analytics, A/B testing
-2. **IA**: Navigation, taxonomies, mental models, card sorting
-3. **Visual**: Layout, typography, color, tokens, grids
-4. **Interaction**: Flows, states, feedback, microinteractions
-5. **Accessibility**: WCAG, ARIA, screen readers, i18n
-6. **Systems**: Libraries, atomic design, governance, versioning
+1. **Design Systems** (≥2 Q&As): Governance, token management, multi-platform consistency, adoption strategy
+   - **Blocks Decision**: System fragmentation, design-dev misalignment, scaling bottleneck
+   - **Creates Risk**: Inconsistent UX, maintenance debt, team velocity ↓
+
+2. **Accessibility & Compliance** (≥1 Q&A): WCAG compliance, audit readiness, inclusive design
+   - **Blocks Decision**: Compliance strategy, legal/regulatory risk mitigation
+   - **Creates Risk**: Accessibility lawsuit, regulatory breach, user exclusion
+
+3. **Research & IA** (≥1 Q&A): User research strategy, information architecture, findability
+   - **Blocks Decision**: Product pivot, navigation restructure, research investment
+   - **Creates Risk**: User research gap, findability failure, scope creep
+
+4. **Interaction & Feedback** (≥1 Q&A): State management, error handling, feedback loops
+   - **Blocks Decision**: Interaction pattern standardization, error recovery strategy
+   - **Creates Risk**: Inconsistent UX, user confusion, support burden
 
 ### Citations
 
@@ -59,56 +68,63 @@ Generate 25-30 evidence-based Q&As validating senior UX capabilities across 6 di
 | 5 | 100% URLs accessible/archived | Archive/replace |
 | 6 | 100% [Ref:ID] resolve | Fix refs |
 
-## Execution
+## Execution (Streamlined)
 
-### Step 1: Allocate
+### Step 1: Allocate (Decision-Critical Only)
 
-Distribute 25-30 across 6 dimensions (20/40/40% F/I/A). Each: 4-6 Q&As with ≥1F, ≥1I, ≥1A.
+Distribute 6-12 across 3-4 decision-critical dimensions (25/50/25% F/I/A).
 
-**Example** (30): Research (5): 1F/2I/2A | IA (5): 1F/2I/2A | Visual (6): 1F/2I/3A | Interaction (5): 1F/2I/2A | Accessibility (4): 0F/2I/2A | Systems (5): 1F/2I/2A = **6F/12I/12A**
+**Example** (9): Design Systems (3): 1F/1I/1A | Accessibility (2): 0F/1I/1A | Research/IA (2): 1F/1I/0A | Interaction (2): 0F/1I/1A = **2F/4I/3A**
 
-### Step 2: Build References (run Gates 1-6 after)
+**Decision Criticality Check**: Every Q&A must satisfy ≥1 criterion:
+- Blocks Decision (architecture, strategy, compliance)
+- Creates Risk (legal, user experience, team velocity)
+- Affects ≥2 Stakeholders (Designer + Engineer, Designer + PM, etc.)
+- Requires Action (1-6mo timeline)
 
-**Glossary (≥10)**: Progressive Disclosure, IA, Affordance, Cognitive Load, Design Tokens, Atomic Design, Heuristic Evaluation, Card Sorting, SUS, WCAG
-- **Format**: `G#. Term [Lang] | Definition | Related: [Terms] | Use: [Cases]`
+### Step 2: Build References (Minimal Viable - 60% Reduction)
 
-**Tools (≥5)**: Design (Figma, Sketch), Analytics (Hotjar, Mixpanel), Research (Optimal Workshop, UserTesting), Dev (Storybook, Chromatic), Accessibility (Axe, WAVE)
-- **Format**: `T#. Tool (Category) [Lang] | Desc | Pricing | Updated: Q# YYYY | Integrations (≥3) | Use | URL`
+**Glossary (≥8)**: Design Tokens, Atomic Design, WCAG, ARIA, Design System, Accessibility, Usability, Information Architecture
+- **Format**: `G#. Term [Lang] | Definition | Use: [Cases]`
 
-**Literature (≥6)**: EN—Norman, Krug, Cooper, Gothelf, Knapp, Nielsen | ZH (≥2)—刘津/李月, 俞军
-- **Format**: `L#. Author, Title, Year [Lang] | Summary | Relevance`
+**Tools (≥4)**: Figma (Design), Axe DevTools (Accessibility), Storybook (System docs), Hotjar (Research)
+- **Format**: `T#. Tool (Category) [Lang] | Desc | Use | URL`
 
-**Citations (≥12)**: APA 7th + tags | ≥50% from 3yrs | Types: research/tools/frameworks/cases
+**Literature (≥5)**: EN—Norman, Krug, Cooper, Gothelf | ZH—刘津/李月
+- **Format**: `L#. Author, Title, Year [Lang] | Relevance`
 
-### Step 3: Generate Q&As (5 at a time → self-check)
+**Citations (≥6)**: APA 7th + tags | ≥50% from 3yrs | Decision-critical only
 
-**Question**: "How/When/Compare..." + constraints (team: solo/<5/>20 | users: <1K/1K-100K/>1M | platforms: 1/2-3/>3 | time/budget) | **Avoid**: "What is...", "Define..."
+### Step 3: Generate Q&As (Decision-Critical Only)
 
-**Complexity**:
-- **F**: "Calculate SUS score from user testing"
-- **I**: "60% findability (target: 80%). IA restructure vs. search enhancement?"
-- **A**: "15 teams, web/mobile/voice. Govern token updates without breaking products?"
+**Question Format**: "How/When/Compare..." + decision context + constraints | **Avoid**: "What is...", "Define..."
 
-**Answer** (150-300 words): Context → Pattern [Ref:G#/A#] + rationale → Artifact (dimensions/states/interactions/tokens) → Quantified trade-offs (table) → Alternatives (≥2, "Use When") → Metrics (formula+target) → Limitations
+**Decision-Critical Examples**:
+- **F**: "Design token naming: flat vs. hierarchical? Multi-platform consistency impact?"
+- **I**: "Design system adoption at 40% (target: 70%). Governance vs. flexibility trade-off?"
+- **A**: "10 teams, 5 products, inconsistent patterns. System governance strategy without blocking velocity?"
 
-**Self-Check**: ✓ Judgment | ✓ 150-300w | ✓ Artifact | ✓ Quantified | ✓ ≥2 alternatives+table | ✓ ≥3/5 ≥1 cite (≥1/5 ≥2) | ✓ Complexity matches
+**Answer** (120-200 words): Context → Decision Criticality → Trade-offs (table: ≥2 alternatives) → Metrics (quantified) → Stakeholder Impact → Limitations
 
-### Step 4: Artifacts (≥1 diagram+spec+table+metric/dimension)
+**Self-Check**: ✓ Decision-Critical (≥1 criterion) | ✓ 120-200w | ✓ Artifact | ✓ Quantified | ✓ ≥1 cite | ✓ Complexity matches
 
-**Diagrams**: Research (journey, funnel) | IA (sitemap, flow) | Visual (wireframe, tokens) | Interaction (state, flow) | Accessibility (ARIA, keyboard) | Systems (library, schema) | **Format**: Mermaid <120 nodes, annotated, cited
+### Step 4: Artifacts (Compressed - 1 Diagram + 1 Table per Q&A)
 
-**Spec**: Component | Dimensions (px/rem) | States (default/hover/active/disabled/loading) | Tokens (color/spacing/typography) | Accessibility (ARIA/keyboard/focus) | Responsive
+**Diagrams** (Mermaid <80 nodes): Design System governance flow | Accessibility audit checklist | Research decision tree | Interaction state machine
 
-**Metrics**:
+**Trade-offs Table** (per Q&A):
+| Approach | Pros | Cons | Use When | Consensus |
+|----------|------|------|----------|-----------|
+| Option A | +% | -% | Scenario | Recommendation |
+| Option B | +% | -% | Scenario | Recommendation |
 
+**Metrics** (Decision-Critical Only):
 | Dimension | Metric | Formula | Target |
 |-----------|--------|---------|--------|
-| Research | SUS | `(Σ(Q1-Q10)-5)×2.5` | ≥70 |
-| IA | Findability | `Found≤3 clicks/Total×100%` | >80% |
-| Visual | Contrast | `(L1+0.05)/(L2+0.05)` | ≥4.5:1 |
+| Design Systems | Adoption | `Using/Total Teams×100%` | >70% 6mo |
+| Accessibility | WCAG Compliance | `Passed/Total×100%` | 100% AA |
+| Research | Findability | `Found≤3 clicks/Total×100%` | >80% |
 | Interaction | Task Success | `Completed/Attempted×100%` | >90% |
-| Accessibility | WCAG | `Passed/Total×100%` | 100% AA |
-| Systems | Adoption | `Using/Total Teams×100%` | >70% 6mo |
 
 ### Step 5: Populate References
 
@@ -120,79 +136,62 @@ Distribute 25-30 across 6 dimensions (20/40/40% F/I/A). Each: 4-6 Q&As with ≥1
 
 **Check**: ✓ 100% [Ref:ID] resolve | ✓ No orphans | ✓ Complete | ✓ [Lang] tags
 
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
-
-**19 Checks**:
+### Step 6: Validate (Streamlined - 12 Checks)
 
 | # | Criteria | Target |
 |---|----------|--------|
-| 1 | Floors | G≥10, T≥5, L≥6, A≥12, Q=25-30, 20/40/40% ±5% |
-| 2 | Citations | ≥70% ≥1 cite; ≥30% ≥2 |
-| 3 | Language | EN 60±10%, ZH 30±10%, Other 10±5% |
+| 1 | Floors | G≥8, T≥4, L≥5, A≥6, Q=6-12, 25/50/25% |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Action) |
+| 3 | Citations | ≥70% ≥1 cite; decision-critical only |
 | 4 | Recency | ≥50% from 3yrs (≥70% digital) |
-| 5 | Types | ≥3; max 25%/type |
-| 6 | Links | 100% accessible/archived |
-| 7 | Cross-Refs | 100% resolve |
-| 8 | Words | Sample 5; 100% in 150-300 |
-| 9 | Quantified | 100% have metrics/% |
-| 10 | Evidence | 6/6 dimensions ≥2 auth+≥1 tool |
-| 11 | Traceability | ≥80% design→spec annotated |
-| 12 | Judgment | ≥70% judgment-based |
-| 13 | Artifacts | ≥90% dimensions have 4 types |
-| 14 | Patterns | ≥80% reference patterns |
-| 15 | Metrics | ≥60% have success metrics |
-| 16 | Specs | ≥80% have artifacts |
-| 17 | Production | 100% specs ready |
-| 18 | Formulas | 100% mathematically valid |
-| 19 | Review | 6/6 criteria (below) |
+| 5 | Links | 100% accessible/archived |
+| 6 | Cross-Refs | 100% resolve |
+| 7 | Words | Sample 5; 100% in 120-200 |
+| 8 | Quantified | 100% have metrics/% |
+| 9 | Artifacts | ≥90% have ≥1 diagram + ≥1 table |
+| 10 | Dimensions | 3-4 decision-critical covered; ≥2 Design Systems |
+| 11 | Stakeholders | ≥3 core roles represented (Designer, Engineer, PM) |
+| 12 | Final Review | Clarity | Accuracy | Completeness | Actionability | No redundancy |
 
-**Review (#19)**: 1) Clarity (structure, terminology, traceability) | 2) Accuracy (verifiable, valid) | 3) Completeness (6 dimensions, floors, no placeholders) | 4) Balance (≥2 alternatives, assumptions, limitations) | 5) Practicality (actionable, measurable) | 6) Self-Correction (no redundancy/gaps/orphans)
+**Submit**: ✓ 12/12 | ✓ Floors | ✓ No placeholders | ✓ Decision-critical justified
 
-**Q&A Quality** (sample ≥5): Clarity (single focus) | Judgment (decision-making) | Depth (trade-offs) | Realism (production context) | Discriminative (separates levels)
-
-**Submit**: ✓ 19/19 | ✓ Floors | ✓ 6 gates | ✓ TOC links | ✓ No placeholders | **Pilot**: 2-3 designers, 1 mock/person, iterate
-
-## Output Format
+## Output Format (Minimal Viable)
 
 ### A. TOC
 
-1. Requirements | 2. Execution (Steps 1-6) | 3. Q&As (3.1 Research | 3.2 IA | 3.3 Visual | 3.4 Interaction | 3.5 Accessibility | 3.6 Systems) | 4. References (4.1 Glossary | 4.2 Tools | 4.3 Literature | 4.4 Citations) | 5. Validation
+1. Requirements | 2. Execution (Steps 1-6) | 3. Q&As (3.1 Design Systems | 3.2 Accessibility | 3.3 Research/IA | 3.4 Interaction) | 4. References (4.1 Glossary | 4.2 Tools | 4.3 Literature | 4.4 Citations) | 5. Validation
 
 ### B. Overview
 
-**Total**: [25-30] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%)
+**Total**: 6-12 | **Difficulty**: 2F (25%) / 4I (50%) / 3A (25%)
 
-| # | Dimension | Range | Mix | Artifacts |
-|---|-----------|-------|-----|-----------|
-| 1 | Research | Q1-5 | 1F/2I/2A | diagram+spec+table+metric |
-| 2 | IA | Q6-10 | 1F/2I/2A | diagram+spec+table+metric |
-| 3 | Visual | Q11-16 | 1F/2I/3A | diagram+spec+table+metric |
-| 4 | Interaction | Q17-21 | 1F/2I/2A | diagram+spec+table+metric |
-| 5 | Accessibility | Q22-25 | 0F/2I/2A | diagram+spec+table+metric |
-| 6 | Systems | Q26-30 | 1F/2I/2A | diagram+spec+table+metric |
-| | **Total** | **30** | **6F/12I/12A** | **24 min** |
+| # | Dimension | Q Range | Mix | Artifacts |
+|---|-----------|---------|-----|-----------|
+| 1 | Design Systems | Q1-3 | 1F/1I/1A | diagram+table |
+| 2 | Accessibility | Q4-5 | 0F/1I/1A | diagram+table |
+| 3 | Research/IA | Q6-7 | 1F/1I/0A | diagram+table |
+| 4 | Interaction | Q8-9 | 0F/1I/1A | diagram+table |
+| | **Total** | **6-9** | **2F/4I/3A** | **8 min** |
 
-**Usage**: Select 1-2 dimensions (5-10 Q&As), demonstrate 3-4/candidate, adjust by role
+**Usage**: All Q&As decision-critical; use for informed decisions on UX strategy, system governance, accessibility compliance
 
-### C. Q&A Template
+### C. Q&A Template (Minimal Viable)
 
-**Q#: [How/When/Compare + constraints]** | **Difficulty**: [F/I/A] | **Insight**: [Quantified trade-off]
+**Q#: [How/When/Compare + decision context]** | **Difficulty**: [F/I/A] | **Decision Criticality**: [Blocks/Risk/Stakeholders/Action]
 
-**Answer** (150-300 words): Context → Pattern [Ref:G#/A#]+rationale → Artifact → Trade-offs → Alternatives (≥2, "Use When") → Metrics → Limitations
+**Answer** (120-200 words): Context → Decision Criticality → Trade-offs (table) → Metrics (quantified) → Stakeholder Impact → Limitations
 
-**Spec**:
-```
-Component: [Name] | Dimensions: [px/rem+breakpoints] | States: default/hover/active/disabled/loading
-Tokens: color-X, spacing-Y, font-Z | Accessibility: ARIA/keyboard/focus | Interactions: [Triggers]
-```
+**Trade-offs Table**:
+| Approach | Pros | Cons | Use When | Consensus |
+|----------|------|------|----------|-----------|
+| Option A | +% | -% | Scenario | Recommendation |
+| Option B | +% | -% | Scenario | Recommendation |
 
-**Diagram**: `mermaid` (flowchart/journey/sequence/stateDiagram, <120 nodes)
+**Diagram**: Mermaid <80 nodes (governance flow, audit checklist, decision tree, or state machine)
 
-**Metrics**: | Metric | Formula | Variables | Target |
+**Metrics**: | Metric | Formula | Target |
 
-**Trade-offs**: | Approach | Pros (+%) | Cons (-%) | Use When | Consensus |
-
-**Limitations**: [Assumptions, edge cases, boundaries]
+**Stakeholders**: Designer, Engineer, PM (≥2 roles affected)
 
 ---
 
@@ -203,45 +202,35 @@ Tokens: color-X, spacing-Y, font-Z | Accessibility: ARIA/keyboard/focus | Intera
 **L**: `L#. Author, Title, Year [Lang] | Summary | Relevance` (EN, ZH)  
 **A**: `A#. [APA 7th] [Lang]`
 
-## Reference Examples
+## Reference Examples (Minimal Viable)
 
-### Glossary (≥10)
-**G1. Progressive Disclosure** [EN] | Reveals info incrementally to reduce cognitive load | **Related**: G4 | **Use**: Forms, dashboards  
-**G2. IA** [EN] | Structural design of info environments for findability | **Related**: G8 | **Use**: Sitemaps, navigation  
-**G3. Affordance** [EN] | Visual cues suggesting how to interact | **Related**: Visual Design | **Use**: Buttons, interactive elements  
-**G4. Cognitive Load** [EN] | Mental effort to process info; minimize to improve UX | **Related**: G1 | **Use**: Forms, dashboards  
-**G5. Design Tokens** [EN] | Centralized design values (color/spacing/typography) | **Related**: G6 | **Use**: Multi-platform consistency  
-**G6. Atomic Design** [EN] | Component hierarchy (atoms→molecules→organisms→templates→pages) | **Related**: G5 | **Use**: System architecture  
-**G7. Heuristic Evaluation** [EN] | Usability inspection via Nielsen's 10 principles | **Related**: Testing | **Use**: Expert review, audits  
-**G8. Card Sorting** [EN] | Users group content to inform IA | **Related**: G2 | **Use**: Navigation, taxonomy  
-**G9. SUS** [EN] | 10-item usability questionnaire; 0-100 score | **Related**: Metrics | **Use**: Benchmark  
-**G10. WCAG** [EN] | Accessibility guidelines; POUR principles | **Related**: ARIA | **Use**: Compliance
+### Glossary (≥8)
+**G1. Design Tokens** [EN] | Centralized design values (color/spacing/typography) for multi-platform consistency | **Use**: Design Systems  
+**G2. Atomic Design** [EN] | Component hierarchy (atoms→molecules→organisms) for system architecture | **Use**: Design Systems  
+**G3. WCAG** [EN] | Accessibility guidelines; POUR principles (Perceivable, Operable, Understandable, Robust) | **Use**: Compliance  
+**G4. ARIA** [EN] | Accessible Rich Internet Applications; semantic markup for screen readers | **Use**: Accessibility  
+**G5. Design System** [EN] | Centralized library of components, patterns, tokens, and governance | **Use**: Multi-platform consistency  
+**G6. Accessibility** [EN] | Inclusive design ensuring usability for all users, including those with disabilities | **Use**: Compliance, legal  
+**G7. Usability** [EN] | Effectiveness, efficiency, satisfaction in achieving user goals | **Use**: Research, testing  
+**G8. Information Architecture** [EN] | Structural design of information environments for findability | **Use**: Navigation, taxonomy
 
-### Tools (≥5)
-**T1. Figma** [EN] | Collaborative design for UI/UX, components, prototypes | **Pricing**: Freemium | **Updated**: Q4 2024 | **Integrations**: Slack, Jira, Storybook | **Use**: Interface design | **URL**: https://figma.com  
-**T2. Hotjar** [EN] | Behavior analytics: heatmaps, recordings, surveys | **Pricing**: Freemium | **Updated**: Q3 2024 | **Integrations**: GA, Optimizely, Slack | **Use**: Research, analytics | **URL**: https://hotjar.com  
-**T3. Optimal Workshop** [EN] | IA tools: card sorting, tree testing | **Pricing**: Paid | **Updated**: Q3 2024 | **Integrations**: UserTesting, Miro, Notion | **Use**: IA research | **URL**: https://optimalworkshop.com  
-**T4. Axe DevTools** [EN] | WCAG testing; browser extension, CLI | **Pricing**: Freemium | **Updated**: Q4 2024 | **Integrations**: Chrome, VSCode, Jira | **Use**: Accessibility audits | **URL**: https://deque.com/axe  
-**T5. Storybook** [EN] | Component docs, isolated dev environment | **Pricing**: Free/OSS | **Updated**: Q4 2024 | **Integrations**: React, Vue, Figma | **Use**: System docs | **URL**: https://storybook.js.org
+### Tools (≥4)
+**T1. Figma** [EN] | Collaborative design for UI/UX, components, prototypes | **Updated**: Q4 2024 | **Use**: Interface design | **URL**: https://figma.com  
+**T2. Axe DevTools** [EN] | WCAG testing; browser extension, CLI | **Updated**: Q4 2024 | **Use**: Accessibility audits | **URL**: https://deque.com/axe  
+**T3. Storybook** [EN] | Component docs, isolated dev environment | **Updated**: Q4 2024 | **Use**: System docs | **URL**: https://storybook.js.org  
+**T4. Hotjar** [EN] | Behavior analytics: heatmaps, recordings, surveys | **Updated**: Q3 2024 | **Use**: Research, analytics | **URL**: https://hotjar.com
 
-### Literature (≥6)
-**L1. Norman, D. (2013). *Design of Everyday Things*. Basic Books.** [EN] | Affordances, signifiers, models | **Relevance**: Core UX principles  
+### Literature (≥5)
+**L1. Norman, D. (2013). *Design of Everyday Things*. Basic Books.** [EN] | Affordances, signifiers, mental models | **Relevance**: Core UX principles  
 **L2. Krug, S. (2014). *Don't Make Me Think*. New Riders.** [EN] | Navigation, clarity, testing | **Relevance**: Applied web usability  
 **L3. Cooper, A., et al. (2014). *About Face*. Wiley.** [EN] | Goal-directed design, personas, patterns | **Relevance**: Interaction framework  
 **L4. Gothelf, J., & Seiden, J. (2021). *Lean UX*. O'Reilly.** [EN] | Collaborative, hypothesis-driven, MVP | **Relevance**: Agile UX  
-**L5. Knapp, J., et al. (2016). *Sprint*. Simon & Schuster.** [EN] | Design sprints, prototyping, validation | **Relevance**: Fast iteration  
-**L6. Nielsen, J., & Loranger, H. (2006). *Prioritizing Web Usability*. New Riders.** [EN] | Heuristics, testing, best practices | **Relevance**: Evidence-based usability
+**L5. 刘津, & 李月. (2017). *用户体验要素*. 机械工业出版社.** [ZH] | UX fundamentals, user research, design thinking | **Relevance**: Applied UX methodology
 
-### Citations (≥12, APA 7th, 60/30/10%)
+### Citations (≥6, APA 7th, Decision-Critical Only)
 **A1.** Norman, D. (2013). *The design of everyday things*. Basic Books. [EN]  
 **A2.** Krug, S. (2014). *Don't make me think*. New Riders. [EN]  
-**A3.** 刘津, & 李月. (2017). *用户体验要素*. 机械工业出版社. [ZH]  
-**A4.** Cooper, A., et al. (2014). *About face*. Wiley. [EN]  
-**A5.** Gothelf, J., & Seiden, J. (2021). *Lean UX*. O'Reilly. [EN]  
-**A6.** Nielsen, J., & Loranger, H. (2006). *Prioritizing web usability*. New Riders. [EN]  
-**A7.** Knapp, J., et al. (2016). *Sprint*. Simon & Schuster. [EN]  
-**A8.** Rosenfeld, L., et al. (2015). *Information architecture*. O'Reilly. [EN]  
-**A9.** 俞军. (2019). *俞军产品方法论*. 中信出版社. [ZH]  
-**A10.** Frost, B. (2016). *Atomic design*. Brad Frost. [EN]  
-**A11.** Lidwell, W., et al. (2010). *Universal principles of design*. Rockport. [EN]  
-**A12.** 张溪梦. (2021). *用户增长方法论*. 机械工业出版社. [ZH]
+**A3.** Cooper, A., et al. (2014). *About face*. Wiley. [EN]  
+**A4.** Gothelf, J., & Seiden, J. (2021). *Lean UX*. O'Reilly. [EN]  
+**A5.** 刘津, & 李月. (2017). *用户体验要素*. 机械工业出版社. [ZH]  
+**A6.** Frost, B. (2016). *Atomic design*. Brad Frost. [EN]

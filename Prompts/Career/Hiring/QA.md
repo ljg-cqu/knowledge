@@ -1,233 +1,157 @@
-# PM Interview Q&A: Scenario-Based Assessment Framework
+# PM Hiring Q&A: Minimal Viable Decision-Critical Scenarios
 
-Generate scenario-based questions testing senior+ PM judgment for hiring, development, calibration, training, and strategy alignment.
+Generate 6-8 decision-critical scenario-based questions for hiring senior+ PMs with limited interview time.
 
----
+**Cadence**: Per hiring cycle | **4-6h effort** | **Validity**: Evergreen (refresh annually or when market changes)
 
-## Use Case 1: Hiring Senior+ PMs
+**Scope**: Decision-critical hiring scenarios only—strategic judgment, prioritization, metrics, stakeholder alignment. For senior+ PM hiring.
 
-**Challenge**: Behavioral interviews produce polished storytellers, not strategic thinkers.
-
-**Solution**: 30 scenario-based questions (6 competencies × 5 questions; 20%F/40%I/40%A difficulty).
-
-**Example**: "Top 5 enterprise customers (40% revenue) request feature conflicting with mass-market vision. Evaluate and decide."
-
-**Interview Structure**:
-- 1 topic/interviewer (5 questions)
-- 3-4 questions/candidate
-- 7-10 candidates/rotation
-
-**Outcomes**:
-- 85%+ hire/no-hire agreement
-- 30% faster time-to-hire
-- Framework application vs. memorization signal in 10-15 min
+**Exclusions**: Development/training scenarios, calibration frameworks, strategy workshops (separate workflows).
 
 ---
 
-## Use Case 2: Competency Assessment & Development
+## I. Decision Criticality Framework (NEW - MANDATORY)
 
-**Challenge**: Arbitrary promotions, unclear leveling criteria ("What do I need for L6?").
+**Include if ≥1 criterion satisfied**:
+1. **Blocks Hire/No-Hire**: Directly tests judgment gaps (framework application, quantification, trade-offs, multi-dimensional thinking)
+2. **Creates Risk**: Bad hire = $500K+ cost (misalignment, weak judgment, execution gaps, team impact)
+3. **Affects ≥2 Stakeholders**: Multi-functional impact (PM + Eng, PM + Sales, PM + Exec)
+4. **Actively Evolving**: Market/product dynamics changing (AI, pricing, retention, GTM)
+5. **High Adoption Barrier**: >40h to master (strategic thinking, portfolio decisions, stakeholder management)
 
-**Solution**: 6-competency model mapped to F/I/A difficulty levels.
-
-**Leveling**:
-- **L4 (IC)**: F-level execution ("Track activation metrics")
-- **L5 (Senior)**: I-level trade-offs ("Churn 8% vs. target 5%: features or retention?")
-- **L6 (Director)**: A-level portfolio ("$5M for ONE: API, mobile, or international?")
-
-**Process**:
-1. 2-3 scenarios/competency
-2. Evaluate analysis depth, framework application, trade-offs
-3. Map to F/I/A
-4. Develop next-level scenarios
-
-**Outcomes**:
-- Specific gap articulation
-- Individualized development plans
-- 90%+ promotions backed by scenario evidence
+**Exclude if**: Niche scenarios, nice-to-have skills, already covered, speculative.
 
 ---
 
-## Use Case 3: Interview Calibration
+## II. Framework
 
-**Challenge**: Inconsistent interviewing (brain teasers vs. past projects), regrettable hires, false rejections.
+**Stakeholders** (≥3 core):
+- Hiring Manager, Engineering Lead, Executive Sponsor
 
-**Solution**: Standardized scenarios + calibrated evaluation criteria.
+**Topics** (3 decision-critical only):
+1. **Strategy & Prioritization** (1-2 Q): Blocks go/no-go decisions
+2. **Metrics & Analytics** (1-2 Q): Creates risk (wrong measurement = wrong decisions)
+3. **Stakeholder Alignment** (1-2 Q): Affects multi-functional impact
 
-**Calibration Session** (2 hours):
-1. Review 5 Q&As with reference answers
-2. Mock interview (same question)
-3. Compare extracted signals
-4. Define "strong answer" per competency
-5. Document evaluation guide
+**Difficulty Mix**: 25% Foundational / 50% Intermediate / 25% Advanced
 
-**Example Criteria**:
-```
-Q: "Churn 8% vs. target 5%: features or retention?"
-
-Strong (Hire):
-- Quantifies: "8% churn = $2M ARR loss"
-- Tests: "Segment-specific?"
-- Trade-offs: "Features = acquisition, but..."
-- Measurement: "Cohort retention weekly"
-
-Weak (No Hire):
-- Generic frameworks ("RICE...")
-- No quantification
-- Single-dimension
-- No success criteria
-```
-
-**Outcomes**:
-- 85%+ interviewer agreement
-- 30% faster interview-to-offer
-- Consistent candidate feedback
+**Interview Time**: 6-8 Q&As × 10-15 min = **60-120 min total** (vs. 5+ hours for 30 Q&As)
 
 ---
 
-## Use Case 4: Training Program
+## III. Decision-Critical Hiring Q&A Examples (6-8 Candidates)
 
-**Challenge**: Framework memorization (RICE, JTBD, OKR, AARRR) without application ("I know we should use RICE, but...").
-
-**Solution**: Case study curriculum with scenarios, group work, expert answers.
-
-**Structure** (6 modules × 2 hours):
-1. Strategy & Vision (5-6 scenarios)
-2. Discovery & Research (4-5 scenarios)
-3. Prioritization & Roadmap (5-6 scenarios)
-4. Metrics & Analytics (4-5 scenarios)
-5. Stakeholder Management (4-5 scenarios)
-6. GTM & Growth (4-5 scenarios)
-
-**Module Format**:
-1. Scenario (5 min): Present dilemma
-2. Group work (20 min): 3-4 PMs solve
-3. Shareout (15 min): Present approaches
-4. Expert answer (10 min): Reference with citations
-5. Deep-dive (30 min): Limitations, alternatives, application context
-6. Artifact review (10 min): Templates (matrices, dashboards, maps)
-
-**Example** (Prioritization):
-- **Scenario**: "CEO wants AI (6 months). Sales needs Q2. What do?"
-- **Deep-Dive**: "When does RICE mislead? How supplement?"
-
-**Outcomes**:
-- 40% better framework application in reviews
-- 25% higher stakeholder satisfaction
-- PMs choose context-appropriate tools
+| # | Topic | Scenario | Decision Criticality | Time |
+|---|-------|----------|---------------------|------|
+| Q1 | Strategy | "Top 5 customers (40% revenue) request feature conflicting with mass-market vision. Evaluate and decide." | Blocks hire (strategic judgment) | 12 min |
+| Q2 | Prioritization | "CEO wants AI (6mo), Sales needs Q2 feature, Eng capacity for 1.5. What do?" | Creates risk (wrong bet) | 12 min |
+| Q3 | Metrics | "Churn 8% vs. target 5%. Features or retention? How measure success?" | Affects alignment (stakeholder impact) | 10 min |
+| Q4 | Portfolio | "$5M for ONE: API, mobile, or international? Framework and rationale?" | Blocks hire (A-level judgment) | 15 min |
+| Q5 | Prioritization | "3 features: high revenue (6mo), high reach (3mo), high strategic fit (12mo). Rank and justify." | Creates risk (execution) | 12 min |
+| Q6 | Metrics | "Product adoption 40% → 70% target. Metrics to track? Trade-offs?" | Affects alignment (measurement) | 10 min |
+| Q7 | Stakeholder | "Eng says 'impossible', Sales says 'critical', Exec says 'strategic'. How navigate?" | Creates risk (misalignment) | 12 min |
+| Q8 | Strategy | "Market shifts: competitor launches, pricing pressure, retention drops 5%. Pivot or persist?" | Blocks hire (strategic pivot) | 15 min |
 
 ---
 
-## Use Case 5: Executive Strategy Alignment
+## IV. Answer Structure (150-250 words)
 
-**Challenge**: 6+ months of strategy debate (enterprise, PLG, international) without resolution.
-
-**Solution**: A-level scenarios with multi-dimensional weighted scoring.
-
-**Workshop** (Half-day):
-
-**Part 1: Scenario** (30 min)
-- Present choice: "3 bets (API, mobile, international). Resources for 1.5. How decide?"
-- Context: Metrics, market, competition
-
-**Part 2: Score** (30 min)
-- Each exec scores: Revenue, Strategic Fit, Reach, Velocity, Moat, Risk
-
-**Part 3: Discuss** (90 min)
-- Surface scoring differences
-- Debate weights ("Revenue 30% or 20%?")
-- Test assumptions ("Why 6 months?")
-
-**Part 4: Decide** (30 min)
-- Finalize scores
-- Document rationale + criteria
-
-**Example Matrix**:
-```
-| Criterion      | Wgt | API | Mobile | Intl |
-|----------------|-----|-----|--------|------|
-| Revenue (12mo) | 30% | 7   | 5      | 4    |
-| Strategic Fit  | 25% | 9   | 6      | 7    |
-| Reach          | 20% | 6   | 8      | 9    |
-| Velocity       | 15% | 5   | 4      | 3    |
-| Moat           | 10% | 8   | 5      | 6    |
-| **Score**      |     |**7.2**|**5.9**|**6.1**|
-
-→ API (1.0) + Mobile (0.5)
-```
-
-**Outcomes**:
-- 2 sessions vs. 6+ months
-- Transparent criteria
-- Documented precedent for future decisions
+**Per Q&A**:
+1. **Scenario Context** (~30w): Decision point, challenge, stakeholders
+2. **Framework Application** (~40w): How candidate approaches (RICE, AARRR, OKR, etc.)
+3. **Multi-Dimensional Analysis** (~50w): ≥2 dimensions (Product/Business/Strategic/Operational)
+4. **Trade-Offs** (~40w): ≥2 alternatives with pros/cons
+5. **Quantified Metrics** (~30w): Success criteria, measurement approach
+6. **Stakeholder Impact** (~20w): ≥2 roles, communication strategy
+7. **Hiring Signal** (~15w): What strong answer reveals (judgment, rigor, communication)
 
 ---
 
-## Quick Start
+## V. Hiring Evaluation Criteria
 
-**Hiring** (UC 1, 3):
-1. Generate 30 questions (6F/12I/12A × 6 topics)
-2. Calibrate hiring managers
-3. Deploy: 1 topic/interviewer, 3-4 questions/candidate
+**Strong (Hire)**:
+- Quantifies impact ("8% churn = $2M ARR loss")
+- Tests assumptions ("Segment-specific? Cohort analysis?")
+- Identifies trade-offs ("Features = acquisition, but retention risk...")
+- Defines success metrics ("Weekly cohort retention, CAC payback")
+- Considers stakeholders ("Eng feasibility, Sales urgency, Exec strategy")
+- Applies frameworks appropriately (RICE, AARRR, OKR, etc.)
 
-**Development** (UC 2, 4):
-1. Generate 30 F/I/A questions
-2. Assess via scenarios (not stories)
-3. Plan: "Practice 5 I-level Discovery"
-
-**Strategy** (UC 5):
-1. Generate 5-8 A-level questions
-2. Adapt for executive workshop
-3. Use decision matrices
-
----
-
-## Specifications
-
-**Format**: 100% scenario-based (no recall/trivia)
-
-**Difficulty**:
-- **F**: Execution ("Track activation in Mixpanel")
-- **I**: Trade-offs ("Churn vs. features?")
-- **A**: Portfolio/P&L ("ONE bet: API, mobile, or international?")
-
-**Answers**: 150-300 words, ≥2 dimensions (Product/Business/Strategic/Operational), frameworks, trade-offs, success criteria
-
-**Topics** (MECE):
-1. Strategy & Vision (5-6Q)
-2. Discovery & Research (4-5Q)
-3. Prioritization & Roadmap (5-6Q)
-4. Metrics & Analytics (4-5Q)
-5. Stakeholder Management (4-5Q)
-6. GTM & Growth (4-5Q)
-
-**References**: Glossary (≥10), Tools (≥5), Literature (≥6 books: ≥2 Chinese [俞军, 梁宁, 苏杰]), Citations (≥12, APA 7th)
-
-**Validation**: 12-point gate (fail → stop, fix, re-validate)
+**Weak (No Hire)**:
+- Generic frameworks without context
+- No quantification or data
+- Single-dimensional thinking
+- No success criteria or measurement
+- Ignores stakeholder concerns
+- Memorized answers without reasoning
 
 ---
 
-## Outcomes
+## VI. References
 
-| Use Case | Before | After | Evidence |
-|----------|--------|-------|----------|
-| **Hiring** | Storytellers, weak judgment | Strategic thinkers (10-15 min) | 85%+ agreement |
-| **Development** | "What for L6?" | "Practice A-level scenarios" | Gap mapping |
-| **Calibration** | Brain teasers, past work | Standardized scenarios | 30% faster hire |
-| **Training** | Framework recall | Framework application | 40% better reviews |
-| **Strategy** | 6+ months debate | 2 sessions alignment | Documented criteria |
+**Glossary** (≥8):
+- RICE, AARRR, OKR, Cohort Analysis, CAC/LTV, Churn, TAM, Prioritization
 
----
+**Tools** (≥3):
+- Mixpanel (analytics), Miro (collaboration), Jira (roadmap)
 
-## Workflow
+**Literature** (≥4):
+- Cagan (Inspired), Torres (Lean Product Playbook), 俞军 (Product Thinking), Gothelf (Lean UX)
 
-1. Identify use case
-2. Define specs (25-30Q, difficulty mix: 20/40/40 for senior+)
-3. Generate Q&A with citations
-4. Validate (12-point gate)
-5. Calibrate interviewers/facilitators
-6. Iterate: feedback → retire weak Q → add contexts
+**Citations** (≥6, APA 7th):
+- All decision-critical, ≤2yr old
 
 ---
 
-**Source**: PM Interview Q&A Generator framework for hiring, development, calibration, training, strategy alignment.
+## VII. Validation (12 Checks)
+
+1. ✅ **Decision Criticality**: 100% of Q&As satisfy ≥1 criterion
+2. ✅ **Difficulty Mix**: 25%F / 50%I / 25%A
+3. ✅ **Framework Application**: Every Q&A tests framework use (not memorization)
+4. ✅ **Trade-Offs**: ≥2 alternatives per Q&A
+5. ✅ **Quantification**: ≥1 metric/number per Q&A
+6. ✅ **Stakeholder Coverage**: ≥2 roles per Q&A
+7. ✅ **Citations**: ≥6 total, all decision-critical
+8. ✅ **Word Count**: 150-250w per Q&A
+9. ✅ **Hiring Signals**: Clear strong/weak answer distinction
+10. ✅ **Interview Time**: 6-8 Q&As × 10-15 min = 60-120 min
+11. ✅ **Topic Coverage**: Strategy (1-2), Metrics (1-2), Stakeholder (1-2)
+12. ✅ **Final Review**: All Q&As decision-critical, no nice-to-haves
+
+---
+
+## VIII. Workflow (Minimal Viable)
+
+1. **Scenario Selection** (30-45 min): Identify 6-8 decision-critical hiring scenarios
+2. **Build References** (30-45 min): G≥8, T≥3, L≥4, A≥6
+3. **Generate Q&As** (2-3h): Batch 2-3, scenario-based, 150-250w, quantified impact
+4. **Define Evaluation** (30-45 min): Strong/weak answer criteria per Q&A
+5. **Validate** (30-45 min): Execute 12 checks, fix, iterate
+
+**Total Effort**: 4-6 hours (vs. 8-12 for full template)
+
+---
+
+## IX. Outcomes
+
+| Metric | Before | After | Evidence |
+|--------|--------|-------|----------|
+| **Interview Time** | 5+ hours (30 Q&As) | 60-120 min (6-8 Q&As) | 60-75% reduction |
+| **Hire/No-Hire Agreement** | 70% | 85%+ | Standardized scenarios |
+| **Time-to-Hire** | 3-4 weeks | 2-3 weeks | 30% faster |
+| **Regrettable Turnover** | 15-20% | <10% | Better judgment signal |
+| **Framework Application** | Memorization | Applied thinking | Scenario-based testing |
+
+---
+
+## X. Quick Start
+
+1. Generate 6-8 Q&As using Decision Criticality Framework
+2. Validate against 12 checks
+3. Define strong/weak answer criteria
+4. Calibrate hiring managers (1-2h session)
+5. Deploy: 1-2 Q&As per candidate, 60-120 min total
+
+---
+
+**Source**: Minimal Viable PM Hiring Q&A Generator—decision-critical scenarios for informed hiring decisions with limited time.

@@ -1,10 +1,11 @@
-# Reverse Engineering Interview Q&A Generator
+# Reverse Engineering Decision-Critical Q&A Generator
 
-Generate 25-30 interview Q&As for senior reverse engineering roles (5+ yrs) demonstrating systematic analysis and tool proficiency across binary analysis (x86/x64/ARM), scripting (Python/IDA/Ghidra), and common formats (PE/ELF/Mach-O).
+Generate 6-12 decision-critical Q&As for reverse engineering professionals (3+ yrs) enabling informed decisions on analysis strategy, tool selection, and vulnerability discovery—minimal viable knowledge base for time-constrained practitioners.
 
-**Output**: 25-30 Q&As across 6 MECE dimensions with scripts, quantified trade-offs, ≥2 tool alternatives, citations  
-**Success**: 19/19 validation PASS (see §6)  
-**Assumptions**: Foundational assembly, debugger/disassembler knowledge
+**Output**: 6-12 Q&As across 4-5 decision-critical dimensions with scripts, quantified trade-offs, ≥2 tool alternatives, citations  
+**Success**: 12/12 validation PASS (see §6)  
+**Assumptions**: Foundational assembly, debugger/disassembler knowledge  
+**Decision Criticality Framework**: Include if blocks decision, creates risk, affects ≥2 stakeholders, actively evolving, or >40h adoption barrier
 
 ---
 
@@ -14,20 +15,21 @@ Generate 25-30 interview Q&As for senior reverse engineering roles (5+ yrs) demo
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Count** | 25-30 (20% F / 40% I / 40% A) |
-| **Length** | 150-300 words (script excluded) |
+| **Count** | 6-12 (25% F / 50% I / 25% A) |
+| **Length** | 150-250 words (script excluded) |
 | **Structure** | Technique → rationale → script → trade-offs → metrics |
 | **Citations** | ≥1 (≥2 advanced) |
 | **Per Cluster** | Diagram + script + table + metric |
 
-## Coverage (6 Dimensions, 4-6 Q&As/Each)
+## Coverage (4-5 Decision-Critical Dimensions, 1-3 Q&As/Each)
 
-1. **Static**: Binary structure, function ID, CFG, data flow (IDA Pro, Ghidra, Binary Ninja)
-2. **Dynamic**: Debug, trace, instrument, monitor (GDB, x64dbg, Frida, DynamoRIO)
-3. **Code Recovery**: Decompile, reconstruct, symbol/type inference (Hex-Rays, RetDec, Ghidra)
-4. **Protocol**: Network/file formats, API reversing (Wireshark, 010 Editor, Burp Suite)
-5. **Obfuscation**: Packers, VM protectors, anti-debug/tamper (UPX, VMProtect, Themida)
-6. **Vulnerability**: Fuzzing, symbolic exec, taint analysis (AFL++, angr, radare2)
+1. **Static Analysis** (1-2 Q): Function ID, CFG, data flow analysis—blocks analysis strategy (IDA Pro, Ghidra, Binary Ninja)
+2. **Dynamic Analysis** (1-2 Q): Instrumentation, tracing, runtime monitoring—blocks runtime understanding (Frida, GDB, x64dbg)
+3. **Code Recovery** (1-2 Q): Decompilation accuracy, symbol inference—blocks vulnerability discovery (Hex-Rays, RetDec, Ghidra)
+4. **Vulnerability Discovery** (1-2 Q): Fuzzing, symbolic execution, taint analysis—blocks security decisions (AFL++, angr, radare2)
+5. **Obfuscation Handling** (1-2 Q): Unpacking, VM protection, anti-debug—blocks analysis feasibility (UPX, VMProtect, Themida)
+
+**Skip**: Protocol Analysis (nice-to-have unless decision-critical to your role)
 
 ## Standards
 
@@ -54,14 +56,14 @@ Generate 25-30 interview Q&As for senior reverse engineering roles (5+ yrs) demo
 
 **Techniques**: Signature matching, string/constant analysis, xref tracing, API hooks, memory dump, shellcode extract, CFG flatten reversal, opaque predicate removal, dead code elimination, taint analysis
 
-## References
+## References (Proportional 60% Reduction)
 
 | Type | Min | Requirements |
 |------|-----|--------------|
-| **Glossary** | ≥10 | Terms + relationships |
-| **Tools** | ≥5 | URL, update ≤18mo, pricing, adoption |
-| **Literature** | ≥6 | Authoritative (Eilam, Eagle, Sikorski, Kaspersky, Dang, Erickson) |
-| **Citations** | ≥12 | APA 7th, 60/30/10% EN/ZH/Other (±10%) |
+| **Glossary** | ≥8 | Only terms used in Q&As + relationships |
+| **Tools** | ≥3 | Decision-critical only; URL, update ≤18mo, pricing, adoption |
+| **Literature** | ≥4 | Canonical references (Eilam, Eagle, Sikorski, Dang) |
+| **Citations** | ≥6 | APA 7th, 60/30/10% EN/ZH/Other (±10%) |
 
 **Quality**: ≥50% last 3yr (≥70% modern tools), ≥3 types (<25% single), peer-reviewed/authoritative, 100% valid links
 
@@ -71,21 +73,21 @@ Generate 25-30 interview Q&As for senior reverse engineering roles (5+ yrs) demo
 
 ## 1. Plan
 
-Select 5-6 clusters across 6 dimensions → Allocate 4-6 Q&As/cluster (25-30 total) → Assign 1F/2I/2A per cluster
+Select 4-5 decision-critical dimensions → Allocate 1-3 Q&As/dimension (6-12 total) → Assign 1-2F/2-3I/1-2A per dimension
 
-**Check**: 25-30 total; 20/40/40% F/I/A (±5%); 6 dimensions; no overlap
+**Check**: 6-12 total; 25/50/25% F/I/A (±5%); 4-5 dimensions; decision-critical only; no overlap
 
 ## 2. References
 
-Glossary (≥10 + relations) → Tools (≥5: URL, ≤18mo, pricing, adoption) → Lit (≥6 books + relevance) → Cites (≥12 APA [EN]/[ZH])
+Glossary (≥8 + relations) → Tools (≥3: URL, ≤18mo, pricing, adoption) → Lit (≥4 books + relevance) → Cites (≥6 APA [EN]/[ZH])
 
-**Check**: G≥10, T≥5, L≥6, A≥12; 60/30/10% (±10%); ≥50% recent (≥70% tools); ≥3 types <25% single; 100% valid URLs
+**Check**: G≥8, T≥3, L≥4, A≥6; 60/30/10% (±10%); ≥50% recent (≥70% tools); ≥3 types <25% single; 100% valid URLs
 
 ## 3. Write
 
 **Questions**: ≥70% judgment ("How/When/Compare"); avoid recall unless foundational
 
-**Answers**: 150-300 words, ≥1 cite (≥2 adv), technique→rationale→script→trade-offs→metrics, 10-30 line script, ≥2 alternatives + table, assumptions/limits
+**Answers**: 150-250 words, ≥1 cite (≥2 adv), technique→rationale→script→trade-offs→metrics, 10-30 line script, ≥2 alternatives + table, assumptions/limits
 
 **Validate per 5**: Count, cites, syntax, traceability, type, quantified
 
@@ -99,44 +101,37 @@ Per cluster: Diagram (<120 nodes matching dimension) + Script (10-30 lines, erro
 
 Populate sections → Extract `[Ref: ID]` → Verify IDs → Remove orphans → Validate URLs
 
-**Check**: G≥10, T≥5, L≥6, A≥12; 100% resolved; 0 broken; 60/30/10%; no orphans
+**Check**: G≥8, T≥3, L≥4, A≥6; 100% resolved; 0 broken; 60/30/10%; no orphans
 
-## 6. Validate (19 Checks)
+## 6. Validate (12 Checks - Streamlined)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 (20/40/40%) |
-| 2 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 |
-| 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
-| 4 | Recency | ≥50% last 3yr (≥70% modern tools) |
-| 5 | Diversity | ≥3 types; <25% single |
-| 6 | Links | 100% valid |
-| 7 | Cross-refs | 100% resolved |
-| 8 | Word count | Sample 5: 150-300 |
-| 9 | Insights | 100% quantified |
-| 10 | Per-topic | ≥2 sources + ≥1 tool |
-| 11 | Traceability | ≥80% technique→script |
-| 12 | Question type | ≥70% judgment |
-| 13 | Artifacts | ≥90% clusters 4/4 |
-| 14 | Techniques | ≥80% use techniques |
-| 15 | Metrics | ≥60% have metrics |
-| 16 | Scripts | ≥80% have snippets |
-| 17 | Syntax | 100% valid |
-| 18 | Formulas | 100% valid |
-| 19 | Review | 6/6 criteria (see §7) |
+| 1 | Counts | G≥8, T≥3, L≥4, A≥6, Q=6-12 (25/50/25%) |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption) |
+| 3 | Citations | ≥70% Q&As ≥1; ≥30% ≥2 |
+| 4 | Language | 60/30/10% EN/ZH/Other (±10%) |
+| 5 | Recency | ≥50% last 3yr (≥70% modern tools) |
+| 6 | Diversity | ≥3 types; <25% single |
+| 7 | Links | 100% valid |
+| 8 | Word count | Sample 5: 150-250 |
+| 9 | Quantified Insights | ≥80% have metrics |
+| 10 | Traceability | ≥80% technique→script |
+| 11 | Artifacts | ≥90% clusters 4/4 |
+| 12 | Review | 6/6 criteria (see §7) |
 
-**Failure**: ANY fail → STOP → Document → Fix → Re-validate ALL → 19/19 PASS
+**Failure**: ANY fail → STOP → Document → Fix → Re-validate ALL → 12/12 PASS
 
 ## 7. Review (6 Criteria PASS)
 
-1. **Clarity**: Logical, consistent terms, inline defs
+1. **Clarity**: Logical, consistent terms, inline defs, decision-critical focus
 2. **Accuracy**: Verifiable facts, valid scripts/diagrams/metrics
-3. **Completeness**: 6 dimensions (4-6 Q&As), minimums, 19/19 PASS
-4. **Balance**: ≥2 alternatives + table, assumptions/limits, tagged
-5. **Practicality**: Actionable, working scripts, measurable
-6. **Self-Check**: No redundancy/gaps/orphans
+3. **Completeness**: 4-5 dimensions (1-3 Q&As each), minimums, 12/12 PASS
+4. **Balance**: ≥2 alternatives + table, assumptions/limits, tagged, decision-critical only
+5. **Practicality**: Actionable, working scripts, measurable, blocks decision or creates risk
+6. **Self-Check**: No redundancy/gaps/orphans, decision criticality justified
 
-**Submit**: 19/19 + 6/6 PASS
+**Submit**: 12/12 + 6/6 PASS
 
 **High-Risk**: Script syntax (validate), URLs (test), xrefs (verify `[Ref: ID]`)
 
@@ -149,9 +144,9 @@ Populate sections → Extract `[Ref: ID]` → Verify IDs → Remove orphans → 
 [TOC: Topic Areas | Q&As | References | Validation]
 
 ## Topic Areas
-| Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1-Q5 | 5 | 1F/2I/2A |
-[6 dimensions, 25-30 total, 20/40/40%]
+| Cluster | Dimension | Range | Count | Difficulty | Decision Criticality |
+| [Title] | [Type] | Q1-Q3 | 1-3 | 1F/2I or 2I/1A | [Blocks/Risk/Stakeholders/Evolving/Adoption] |
+[4-5 dimensions, 6-12 total, 25/50/25%]
 
 ---
 
@@ -159,10 +154,10 @@ Populate sections → Extract `[Ref: ID]` → Verify IDs → Remove orphans → 
 **Overview**: [1-2 sentences]
 
 ### Q1: [How/When/Compare question]
-**Difficulty**: [F/I/A] | **Dimension**: [Type]  
+**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Adoption]
 **Insight**: [Quantified trade-off]
 
-**Answer** (150-300w): [Context → Technique+rationale → Trade-offs → Metrics → Assumptions/Limits] [≥1 cite [Ref: A1]]
+**Answer** (150-250w): [Context → Technique+rationale → Trade-offs → Metrics → Assumptions/Limits] [≥1 cite [Ref: A1]]
 
 **Script** ([Tool]):
 ```[lang]
@@ -186,67 +181,56 @@ Populate sections → Extract `[Ref: ID]` → Verify IDs → Remove orphans → 
 
 ## References
 
-### Glossary (≥10)
+### Glossary (≥8)
 **G1. [Term]** [EN/ZH/Other] – [Definition]. **Related**: [Terms]
 
-### Tools (≥5)
+### Tools (≥3)
 **T1. [Tool]** [Tag] – [Desc]. Updated: [YYYY-MM]. Pricing: [Type]. Adoption: [Metrics]. [URL]
 
-### Literature (≥6)
+### Literature (≥4)
 **L1. Author(s). (Year). *Title*. Publisher.** [Tag] – Relevance: [Why]
 
-### Citations (≥12, APA 7th, 60/30/10%)
+### Citations (≥6, APA 7th, 60/30/10%)
 **A1.** Author(s). (Year). *Title*. Source. [EN]
 
 ---
 
 ## Validation
 | # | Check | Target | Result | Status |
-| 1 | Counts | G≥10, T≥5, L≥6, A≥12, Q=25-30 | G:X, T:Y | PASS/FAIL |
-[All 19]
+| 1 | Counts | G≥8, T≥3, L≥4, A≥6, Q=6-12 | G:X, T:Y | PASS/FAIL |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion | % | PASS/FAIL |
+[All 12]
 
-**Overall**: [X/19 - need 19/19] | **Issues**: [Failures] | **Actions**: [Remediation]
+**Overall**: [X/12 - need 12/12] | **Issues**: [Failures] | **Actions**: [Remediation]
 ```
 
 # Reference Examples
 
-## Glossary
+## Glossary (≥8 Decision-Critical Terms)
 **G1. Static Analysis** [EN] – Examining code/binary without execution. Reveals structure, logic. Related: Disassembly  
 **G2. Dynamic Analysis** [EN] – Observing behavior during execution. Captures runtime state. Related: Debugging  
 **G3. Disassembly** [EN] – Converting machine code to assembly. First step in analysis. Related: Static Analysis  
 **G4. Decompilation** [EN] – Recovering high-level code from binary. Improves readability. Related: Hex-Rays  
 **G5. Control Flow Graph (CFG)** [EN] – Visual representation of execution paths. Reveals branching logic. Related: Basic Block  
-**G6. Basic Block** [EN] – Sequence of instructions with single entry/exit. CFG building unit. Related: CFG  
-**G7. Instrumentation** [EN] – Injecting monitoring code at runtime. Enables dynamic tracing. Related: Frida  
-**G8. Hooking** [EN] – Intercepting function calls/system calls. Modifies behavior. Related: API Hooking  
-**G9. Obfuscation** [EN] – Deliberate code/data obscuring. Hinders analysis. Related: Packer  
-**G10. Packer** [EN] – Compresses/encrypts binary. Runtime unpacking required. Related: UPX
+**G6. Instrumentation** [EN] – Injecting monitoring code at runtime. Enables dynamic tracing. Related: Frida  
+**G7. Obfuscation** [EN] – Deliberate code/data obscuring. Hinders analysis. Related: Packer  
+**G8. Packer** [EN] – Compresses/encrypts binary. Runtime unpacking required. Related: UPX
 
-## Tools
-**T1. IDA Pro** [EN] – Disassembler/debugger, Hex-Rays, IDAPython. 2024-10. Commercial ($$$). https://hex-rays.com  
-**T2. Ghidra** [EN] – NSA RE framework, decompiler, scripting. 2024-11. Free/OSS. https://ghidra-sre.org  
-**T3. Binary Ninja** [EN] – Disassembler, MLIL/HLIL, Python API. 2024-10. Commercial ($$). https://binary.ninja  
-**T4. Frida** [EN] – Dynamic instrumentation, JS API, cross-platform. 2024-11. Free/OSS. https://frida.re  
-**T5. radare2** [EN] – Unix-like RE, CLI, r2pipe, plugins. 2024-11. Free/OSS. https://rada.re
+## Tools (≥3 Decision-Critical)
+**T1. Ghidra** [EN] – NSA RE framework, decompiler, scripting. 2024-11. Free/OSS. https://ghidra-sre.org  
+**T2. Frida** [EN] – Dynamic instrumentation, JS API, cross-platform. 2024-11. Free/OSS. https://frida.re  
+**T3. radare2** [EN] – Unix-like RE, CLI, r2pipe, plugins. 2024-11. Free/OSS. https://rada.re
 
-## Literature
+## Literature (≥4 Canonical)
 **L1. Eilam, E. (2005). *Reversing*. Wiley.** – Foundation, x86, anti-debug  
-**L2. Eagle, C. (2011). *The IDA Pro Book* (2nd). No Starch.** – IDA mastery, IDAPython  
-**L3. Sikorski, M., & Honig, A. (2012). *Practical Malware Analysis*. No Starch.** – Static/dynamic, behavior  
-**L4. Kaspersky, G. (2003). *The Art of Disassembling*. A-LIST.** – x86 patterns, compiler  
-**L5. Dang, B., et al. (2014). *Practical Reverse Engineering*. Wiley.** – Windows, x64/ARM, kernel  
-**L6. Erickson, J. (2008). *Hacking: The Art of Exploitation* (2nd). No Starch.** – Exploitation, shellcode
+**L2. Sikorski, M., & Honig, A. (2012). *Practical Malware Analysis*. No Starch.** – Static/dynamic, behavior  
+**L3. Dang, B., et al. (2014). *Practical Reverse Engineering*. Wiley.** – Windows, x64/ARM, kernel  
+**L4. Erickson, J. (2008). *Hacking: The Art of Exploitation* (2nd). No Starch.** – Exploitation, shellcode
 
-## Citations
+## Citations (≥6, APA 7th, 60/30/10% EN/ZH/Other)
 **A1.** Eilam, E. (2005). *Reversing: Secrets of reverse engineering*. Wiley. [EN]  
-**A2.** Eagle, C. (2011). *The IDA Pro book* (2nd). No Starch Press. [EN]  
+**A2.** Sikorski, M., & Honig, A. (2012). *Practical malware analysis*. No Starch Press. [EN]  
 **A3.** 段钢. (2013). *加密与解密* (4th). 电子工业出版社. [ZH]  
-**A4.** Sikorski, M., & Honig, A. (2012). *Practical malware analysis*. No Starch Press. [EN]  
-**A5.** Kaspersky, G. (2003). *The art of disassembling*. A-LIST. [EN]  
-**A6.** Dang, B., et al. (2014). *Practical reverse engineering*. Wiley. [EN]  
-**A7.** Erickson, J. (2008). *Hacking: The art of exploitation* (2nd). No Starch Press. [EN]  
-**A8.** Ligh, M., et al. (2014). *The art of memory forensics*. Wiley. [EN]  
-**A9.** 看雪学院. (2019). *软件保护及分析技术*. 电子工业出版社. [ZH]  
-**A10.** Ange, A., et al. (2012). *The shellcoder's handbook* (2nd). Wiley. [EN]  
-**A11.** Yosifovich, P., et al. (2017). *Windows internals* (7th, Part 1). Microsoft Press. [EN]  
-**A12.** Bratus, S., et al. (2011). *Exploit programming*. Syngress. [EN]
+**A4.** Dang, B., et al. (2014). *Practical reverse engineering*. Wiley. [EN]  
+**A5.** Erickson, J. (2008). *Hacking: The art of exploitation* (2nd). No Starch Press. [EN]  
+**A6.** 看雪学院. (2019). *软件保护及分析技术*. 电子工业出版社. [ZH]

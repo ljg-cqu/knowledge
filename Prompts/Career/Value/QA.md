@@ -1,33 +1,46 @@
-# Value Assessment Q&A Generator
+# Value Assessment Q&A Generator (Minimal Viable)
 
-Generate 25–30 scenario-based questions testing value judgment across system lifecycle with multi-stakeholder perspectives, evidence-based answers, and visual artifacts.
+Generate **6–12 decision-critical Q&As** for informed value decisions with limited time. Minimal viable value assessment: blocks decisions or creates material risk.
 
 ## I. Context
 
-**Purpose**: Assess value creation/measurement/optimization across lifecycle (Requirements → Evolution) for 9+ stakeholders (Business/BA, PM, Architect, Developer, QA, DevOps, Security, Data, SRE, Leadership).
+**Purpose**: Assess decision-critical value creation/measurement/optimization across lifecycle for ≥5 core stakeholders (PM, Architect, Developer, SRE, Leadership).
 
 **Terms**: Floor=minimum threshold (≥) | Gate=fail-stop checkpoint | Difficulty: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Value Types: Business, User, Technical, Organizational, Strategic, Risk
 
-**Scope**: Short/long-term, tangible/intangible, all perspectives. **Exclude**: Single-phase/stakeholder focus, trivia, recall-only.
+**Scope**: Decision-critical scenarios only (blocks decision or creates material risk). **Exclude**: Niche/legacy, orthogonal/nice-to-have, already covered, speculative.
 
-**Assumptions**: LLM knows frameworks (NPV, ROI, TCO, Value Stream Mapping, WSJF, Kano); 10-15min per question.
+**Cadence**: On-demand | **Effort**: 4–6h per cycle | **Validity**: Evergreen (refresh annually or when business context changes)
+
+**Assumptions**: LLM knows frameworks (NPV, ROI, TCO, Value Stream Mapping, WSJF); 10–15min per question.
 
 **Limitations**: Scenarios require customization; measurement context-dependent; stakeholder priorities conflict.
 
 ## II. Requirements
 
+### Decision Criticality Framework (NEW - MANDATORY)
+
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts investment go/no-go, resource allocation, or strategic pivot (e.g., $1M+ investment, team scaling, tech stack change)
+- **Creates Risk**: Material threat (financial loss >10%, opportunity cost, strategic misalignment, velocity impact >20%)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (CFO + Architect, PM + DevOps, etc.)
+- **Requires Action**: 1–6mo action window (not speculative)
+- **Quantified Impact**: NPV $, ROI %, velocity %, cost/benefit ratio, adoption %
+
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
+
 ### Floors (Minimum Thresholds)
 
 | Category | Requirement |
 |----------|-------------|
-| **Q&A** | 25–30 \| 20%F/40%I/40%A (±5%) \| 150–300 words/answer \| Each: ≥2 value types+stakeholders |
-| **Topics (MECE)** | Requirements/Design/Development/Testing/Deployment/Operations/Maintenance/Evolution (3–4 each) \| Cross-Lifecycle (4–5) |
+| **Q&A** | **6–12** \| 25%F/50%I/25%A \| 150–250 words/answer \| Each: ≥2 value types+stakeholders |
+| **Lifecycle Phases** | 3–4 decision-critical only (Design, Development, Deployment, Operations) |
 | **Citations** | ≥70% have ≥1; ≥30% have ≥2 \| EN 50–70%, ZH 20–40%, Other 5–15% |
-| **Value Types** | Each phase: ≥4 of 6 |
-| **Stakeholders** | ≥8 total; each Q&A ≥2 |
-| **References** | Glossary ≥15 \| Tools ≥8 \| Literature ≥8 (≥2 ZH: 俞军/梁宁/苏杰) \| Citations ≥15 APA 7th |
-| **Visuals** | Per phase: ≥1 diagram+table (8+8 min) \| Cross-lifecycle: ≥2 value flow diagrams |
-| **Scaling** | >30 Q&A: multiply reference floors by 1.5× |
+| **Value Types** | Each Q&A: ≥2 of 6 |
+| **Stakeholders** | ≥5 core roles (PM, Architect, Developer, SRE, Leadership); each Q&A ≥2 |
+| **References** | Glossary ≥8 \| Tools ≥4 \| Literature ≥5 (≥1 ZH) \| Citations ≥8 APA 7th |
+| **Visuals** | ≥1 diagram+table per Q&A (compressed) |
+| **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion |
 
 ### Gates (Fail-Stop)
 
@@ -35,144 +48,137 @@ Generate 25–30 scenario-based questions testing value judgment across system l
 
 | # | Gate | Criteria | Mitigation |
 |---|------|----------|------------|
-| 1 | **Recency** | ≥50% from last 3yrs (≥70% AI/ML/platform) | Flag outdated with caveats |
-| 2 | **Source Diversity** | ≥3 types; no type >25% | Expand research |
-| 3 | **Per-Topic Evidence** | Each: ≥2 authoritative+1 tool | Add missing |
-| 4 | **Tool Completeness** | Pricing, users, update (≤18mo), ≥3 integrations | Complete/replace |
-| 5 | **Link Validation** | 100% URLs accessible/archived | Archive/replace |
-| 6 | **Cross-Reference** | 100% [Ref: ID] resolve; no orphans | Fix broken |
+| 1 | **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion | Rewrite/replace non-critical |
+| 2 | **Recency** | ≥50% from last 3yrs | Flag outdated with caveats |
+| 3 | **Source Diversity** | ≥3 types; no type >40% | Expand research |
+| 4 | **Link Validation** | 100% URLs accessible/archived | Archive/replace |
+| 5 | **Cross-Reference** | 100% [Ref: ID] resolve; no orphans | Fix broken |
+| 6 | **Quantified Impact** | 100% Q&As have quantified metrics | Add metrics |
 
 ## III. Execution
 
 ### Step 1: Plan Allocation
 
-Distribute 25–30 Q&A across 9 topics (20%F/40%I/40%A ±5%). Mix difficulties; ensure ≥8 stakeholders; each Q&A ≥2 value types.
+Distribute **6–12 Q&As** across 3–4 decision-critical lifecycle phases (25%F/50%I/25%A). Ensure ≥5 core stakeholders; each Q&A ≥2 value types + ≥1 Decision Criticality criterion.
 
-**Example** (28): 8 phases × 3 + Cross-Lifecycle × 4 = 6F/11I/11A
+**Example** (8): Design (2) + Development (2) + Deployment (2) + Operations (2) = 2F/4I/2A
 
 ### Step 2: Build References (BEFORE Q&A, then run Gates 1–6)
 
 | Type | Count | Required | ID |
 |------|-------|----------|-----|
-| **Glossary** | ≥15 | Term, definition, measurement, stakeholder, lifecycle, limitations | G1... |
-| **Tools** | ≥8 | Category, pricing, users, update (≤18mo), ≥3 integrations, metrics, stakeholders, lifecycle, URL | T1... |
-| **Literature** | ≥8 (≥2 ZH) | Author, title, year, summary, frameworks, lifecycle | L1... |
-| **Citations** | ≥15 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
+| **Glossary** | ≥8 | Term, definition, measurement, stakeholder, lifecycle | G1... |
+| **Tools** | ≥4 | Category, pricing, users, update (≤18mo), metrics, stakeholders, URL | T1... |
+| **Literature** | ≥5 (≥1 ZH) | Author, title, year, summary, frameworks, lifecycle | L1... |
+| **Citations** | ≥8 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
 
-**Examples**: Glossary—NPV, ROI, TCO, WSJF, Technical Debt, Value Stream Mapping | Tools—Pendo, Aha!, SonarQube, CodeScene, Kubecost | Literature—Reinertsen, Kim, Cagan, Forsgren (EN); 俞军, 梁宁, 苏杰 (ZH)
+**Examples**: Glossary—NPV, ROI, TCO, WSJF, Technical Debt, Value Stream Mapping, Kano Model, Opportunity Cost | Tools—Pendo, Aha!, SonarQube, Kubecost | Literature—Reinertsen, Kim, Cagan (EN); 俞军 (ZH)
 
-### Step 3: Generate Q&A (5 at a time, self-check)
+### Step 3: Generate Q&A (2–3 at a time, self-check)
 
-**Question**: Value scenario with stakeholder tensions, conflicts (business/technical, short/long-term) | Test ≥2 signals: quantification, trade-offs, alignment, negative value, lifecycle optimization | **Avoid** recall ("What is ROI?") | **Difficulty**: F=execution | I=strategy | A=portfolio
+**Question**: Decision-critical value scenario with stakeholder tensions (business/technical, short/long-term) | Test ≥2 signals: quantification, trade-offs, alignment, negative value | **Avoid** recall ("What is ROI?") | **Difficulty**: F=execution | I=strategy | A=portfolio | **MANDATORY**: Justify Decision Criticality criterion
 
-**Answer** (150–300 words—ALL required):
-1. **Key Insight** (1 sentence): Value tension
+**Answer** (150–250 words—streamlined):
+1. **Key Insight** (1 sentence): Value tension + decision criticality
 2. **Framework** [Ref: G#/A#]
-3. **Multi-Value** (≥2): Business/User/Technical/Org/Strategic/Risk+quantification
-4. **Multi-Stakeholder** (≥2): Perception/measurement
-5. **Lifecycle**: Creation/realization/decay
-6. **Quantification**: Metrics, methods, sources
-7. **Steps**: Assess, measure, track, optimize
-8. **Trade-offs**: Positive/negative, alternatives
-9. **Communication**: Per stakeholder
-10. **Success Criteria**: Metrics, timeframes
-11. **Limitations**: Uncertainty, leakage, delay
-12. **Citations**: ≥1 [Ref: ID]
-13. **Artifact** *(optional)*: Value stream/matrix/calculation
+3. **Multi-Value** (≥2): Business/User/Technical/Org/Strategic/Risk + quantification
+4. **Multi-Stakeholder** (≥2): Perception/measurement/concerns
+5. **Lifecycle**: Creation/realization/decay (brief)
+6. **Quantification**: Metrics, methods, sources (quantified)
+7. **Trade-offs**: Positive/negative, alternatives (≥2)
+8. **Decision Criteria**: Go/no-go thresholds, success targets
+9. **Citations**: ≥1 [Ref: ID]
+10. **Artifact** *(optional)*: Value matrix/calculation
 
-**Batch Check** (per 5): Scenario | ≥2 value signals | 150–300 words | ≥2 value types | ≥2 stakeholders | Lifecycle aware | ≥3/5 have ≥1 cite (≥1/5 has ≥2)
+**Batch Check** (per 2–3): Decision Criticality criterion | ≥2 value signals | 150–250 words | ≥2 value types | ≥2 stakeholders | Quantified | ≥1 cite
 
-### Step 4: Create Visuals (≥1 diagram+table per phase)
+### Step 4: Create Visuals (≥1 diagram+table per Q&A)
 
-**By Phase**: Requirements—Value canvas, stakeholder matrix, ROI | Design—Architecture value, debt cost, NFR | Development—Quality trend, delivery, velocity/value | Testing—Quality ROI, defect cost, coverage | Deployment—Frequency/value, release, rollback cost | Operations—SLO impact, incident cost, efficiency | Maintenance—Cost/value, debt ROI, patch | Evolution—Innovation portfolio, migration, capability | Cross-Lifecycle—Value stream, cumulative, stakeholder flow, cost/value (≥2)
+**By Phase** (decision-critical only):
+- **Design**: Architecture value vs. cost, debt impact, trade-off matrix
+- **Development**: Quality/velocity trade-off, cost/benefit, stakeholder impact
+- **Deployment**: Frequency/value, cost/benefit, risk matrix
+- **Operations**: SLO impact, incident cost, efficiency gains
 
-**Practices**: Tables for quantitative (ROI, NPV, cost/benefit) | Diagrams for flows | Include units/periods/currencies | Show positive+negative | Indicate confidence | Cite sources
+**Practices**: Tables for quantitative (NPV, ROI, cost/benefit) | Diagrams for flows/trade-offs | Include units/currencies | Show positive+negative | Indicate confidence | Cite sources
 
 ### Step 5: Populate References
 
 | Type | Format |
 |------|--------|
-| **Glossary** | **G#. Term** \| Definition \| Measurement \| Stakeholder \| Lifecycle \| Limitations (alphabetize) |
-| **Tools** | **T#. Tool** \| Description \| Pricing \| Users \| Update (Q# YYYY) \| Integrations (≥3) \| Metrics \| Stakeholder \| Lifecycle \| URL (group by category) |
-| **Literature** | **L#. Author, Title, Year** \| Summary (value, frameworks) \| Lifecycle \| Stakeholder (group: EN, ZH) |
+| **Glossary** | **G#. Term** \| Definition \| Measurement \| Stakeholder \| Lifecycle (alphabetize) |
+| **Tools** | **T#. Tool** \| Description \| Pricing \| Users \| Update (Q# YYYY) \| Metrics \| URL (group by category) |
+| **Literature** | **L#. Author, Title, Year** \| Summary (value, frameworks) \| Lifecycle (group: EN, ZH) |
 | **Citations** | **A#. [APA 7th] [Lang]** (sort by ID) |
 
 **Validation**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA tagged
 
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL 15)
+### Step 6: Validate (fail ANY = stop, fix, re-run ALL 12)
 
 See **Section IV** for complete checklist. Key:
-- **Floors**: G≥15, T≥8, L≥8, A≥15, Q=25–30, 20%F/40%I/40%A (±5%)
+- **Floors**: G≥8, T≥4, L≥5, A≥8, Q=6–12, 25%F/50%I/25%A
+- **Decision Criticality**: 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified]
 - **Citations**: ≥70% have ≥1; ≥30% have ≥2 | EN 50–70%, ZH 20–40%, Other 5–15%
-- **Quality**: 100% word count 150–300 | 100% value-concrete | ≥80% frameworks value+cited+limits | ≥90% scenario
-- **Coverage**: Each phase ≥4 value types | ≥8 stakeholders, each Q&A ≥2 | ≥70% cross-phase | 8/8 phases have ≥2 authoritative+1 tool
+- **Quality**: 100% word count 150–250 | 100% value-concrete + quantified | ≥90% scenario-based
+- **Coverage**: ≥5 core stakeholders, each Q&A ≥2 | ≥2 value types per Q&A | 3–4 phases covered
 - **Integrity**: 100% links accessible | 100% [Ref: ID] resolve, no orphans
 
 ### Step 7: Final Review
 
-**Questions**: Clarity (single ask) | Value focus | Depth (trade-offs) | Realism (stakeholder tension) | Lifecycle aware | Discriminative (judgment>recall) | Aligned difficulty
+**Questions**: Clarity (single ask) | Value focus | Depth (trade-offs) | Realism (stakeholder tension) | Decision-critical (blocks decision or creates risk) | Discriminative (judgment>recall) | Aligned difficulty
 
-**Answers** (sample ≥5): ≥2 value types | ≥2 stakeholders | Lifecycle | Quantification | Frameworks+cites | Trade-offs/alternatives | Positive+negative | Realization criteria | Limitations/assumptions/uncertainties
+**Answers** (sample ≥3): ≥2 value types | ≥2 stakeholders | Quantification | Frameworks+cites | Trade-offs/alternatives | Positive+negative | Decision criteria | Limitations/assumptions
 
-**Submit**: All 15 validations PASS | All 6 gates PASS | TOC with links | No placeholders | Balanced perspectives (short/long, business/user/technical, tangible/intangible, creation/risk)
+**Submit**: All 12 validations PASS | All 6 gates PASS | TOC with links | No placeholders | Decision Criticality justified for each Q&A
 
-## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL 12)
 
 | # | Check              | Measurement                           | Criteria                            | Result | Status    |
 |---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥15, T≥8, L≥8, A≥15, Q:25-30, 20/40/40% | | PASS/FAIL |
-| 2 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
-| 3 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 4 | Recency            | __% from 3yrs (domain: ___)           | ≥50% (≥70% AI/platform)             | | PASS/FAIL |
-| 5 | Source Types       | __ types; max __%                     | ≥3 types, max 25%                   | | PASS/FAIL |
+| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥8, T≥4, L≥5, A≥8, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 2 | Decision Criticality| __/__ satisfy ≥1 criterion            | 100% [Blocks/Risk/Roles/Action/Quantified] | | PASS/FAIL |
+| 3 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
+| 4 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
+| 5 | Recency            | __% from 3yrs                         | ≥50%                                | | PASS/FAIL |
 | 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
 | 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-300)                      | | PASS/FAIL |
-| 9 | Key Insights       | __/__ value-concrete                  | 100% (specific value tension)       | | PASS/FAIL |
-| 10| Per-Phase Evidence | __/8 (≥2 auth + ≥1 tool)              | 8/8 phases                          | | PASS/FAIL |
-| 11| Frameworks         | __/__ value+cited+limits              | ≥80% value-focused                  | | PASS/FAIL |
-| 12| Value Judgment     | __% scenario+value                    | ≥90% value scenario-based           | | PASS/FAIL |
-| 13| Value Types        | Each phase: __/6 types                | Each phase ≥4                       | | PASS/FAIL |
-| 14| Stakeholder Cov    | __/8 stakeholders; Q&A: __/__ ≥2      | ≥8 total; each Q&A ≥2               | | PASS/FAIL |
-| 15| Lifecycle Integ    | __% cross-phase value                 | ≥70% multi-phase or flow            | | PASS/FAIL |
+| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-250)                      | | PASS/FAIL |
+| 9 | Key Insights       | __/__ value-concrete + quantified     | 100% (specific value tension)       | | PASS/FAIL |
+| 10| Frameworks         | __/__ value+cited                     | ≥80% value-focused                  | | PASS/FAIL |
+| 11| Value Judgment     | __% scenario+value                    | ≥90% value scenario-based           | | PASS/FAIL |
+| 12| Stakeholder Cov    | __/5 core roles; Q&A: __/__ ≥2        | ≥5 total; each Q&A ≥2               | | PASS/FAIL |
 
 ## V. Question Quality (≥2 failures = rewrite/replace)
 
 | # | Criterion | ✓ Pass | ✗ Fail |
 |---|-----------|--------|--------|
-| 1 | **Clarity**: Single value ask | "Quantify: refactoring vs. features?" | "Explain debt + list types" |
-| 2 | **Value Signal**: Tests judgment | "Microservices ($500K, 6mo)—assess business/tech/org value?" | "List microservices benefits" |
-| 3 | **Depth**: Enables trade-offs | "Allocate $2M: product/debt/platform? Justify across stakeholders" | "Should we invest in platform?" |
-| 4 | **Realism**: Stakeholder tension | "Sales wants customization ($5M). Arch: 30% debt. PM: Q4 launch. Assess?" | "Calculate ROI" |
-| 5 | **Discriminative**: Judgment>recall | "When does NPV mislead platform value? Supplement with flow metrics?" | "What is NPV?" |
-| 6 | **Lifecycle**: Phase/cross-phase | "Design decisions create value how? Trace to deployment/operations" | "What happens in design?" |
-| 7 | **Multi-Stakeholder**: ≥2 views | "QA: 30% coverage inadequate. Dev: features urgent. Leadership: value impact?" | "How do PMs measure value?" |
-| 8 | **Positive+Negative**: Gains+costs | "Feature adds $2M revenue but 40% velocity drop. Full assessment?" | "What's the ROI?" |
-| 9 | **Aligned Difficulty**: Match | F=measurement \| I=trade-offs \| A=portfolio/P&L | Mismatch |
+| 1 | **Clarity**: Single value ask | "Microservices ($500K, 6mo)—assess business/tech/org value?" | "Explain value types" |
+| 2 | **Decision Criticality**: Blocks/Risk | "$2M investment blocks roadmap. Allocate: product/debt/platform?" | "Should we invest in platform?" |
+| 3 | **Quantification**: Metrics | "Feature: +$2M revenue, -40% velocity. NPV? Payback? Risk?" | "Calculate ROI" |
+| 4 | **Realism**: Stakeholder tension | "Sales: $5M customization. Arch: 30% debt. PM: Q4 launch. Assess?" | "What's the value?" |
+| 5 | **Trade-offs**: ≥2 alternatives | "Migrate now (upfront cost, long-term gain) vs. delay (compound debt) vs. hybrid?" | "List pros/cons" |
+| 6 | **Lifecycle**: Phase/cross-phase | "Design creates value → realized in ops (year 2+). Timeline? Risks?" | "What happens in design?" |
+| 7 | **Multi-Stakeholder**: ≥2 views | "CFO: NPV negative. Arch: debt reduction. PM: delay. DevOps: +2 FTE. Decision?" | "How do PMs measure value?" |
+| 8 | **Aligned Difficulty**: Match | F=measurement \| I=trade-offs \| A=portfolio/P&L | Mismatch |
 
 ## VI. Output Structure
 
 ### A. Table of Contents
-1. Lifecycle Phases Overview | 2. Q&A by Phase (8+cross-lifecycle) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Lifecycle Phases Overview | 2. Q&A by Phase (3–4 phases) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
 
 ### B. Lifecycle Phases Overview
 
-**Summary**: [25–30] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 8 phases+cross-lifecycle (MECE) | 6 value types | 9+ stakeholders
+**Summary**: [6–12] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 3–4 decision-critical phases | ≥2 value types per Q&A | ≥5 core stakeholders
 
 | # | Phase | Range | Count | Mix | Value Types | Stakeholders | Artifacts |
 |---|-------|-------|-------|-----|-------------|--------------|-----------|
-| 1 | Requirements | Q1–Q3 | 3 | 1F/1I/1A | Bus/User/Str/Risk | BA/PM/Arch/Lead | 1 diagram+table |
-| 2 | Design | Q4–Q6 | 3 | 0F/1I/2A | Tech/Org/Str/Risk | Arch/Dev/SRE | 1 diagram+table |
-| 3 | Development | Q7–Q9 | 3 | 1F/1I/1A | Tech/Org/Risk | Dev/Arch/QA | 1 diagram+table |
-| 4 | Testing | Q10–12 | 3 | 1F/1I/1A | Tech/Bus/User | QA/Dev/PM | 1 diagram+table |
-| 5 | Deployment | Q13–15 | 3 | 1F/1I/1A | Org/Risk/Bus | DevOps/SRE/Arch | 1 diagram+table |
-| 6 | Operations | Q16–18 | 3 | 0F/1I/2A | User/Bus/Risk | SRE/DevOps/PM | 1 diagram+table |
-| 7 | Maintenance | Q19–21 | 3 | 1F/1I/1A | Tech/Risk/Bus | Dev/Sec/SRE | 1 diagram+table |
-| 8 | Evolution | Q22–24 | 3 | 0F/2I/1A | Str/Bus/Org | Arch/PM/Lead | 1 diagram+table |
-| 9 | Cross-Lifecycle | Q25–28 | 4 | 1F/2I/1A | All 6 | All 9 | 2 diagrams+2 tables |
-| | **Total** | | **28** | **6F/11I/11A** | **All 6** | **All 9** | **10+10** |
+| 1 | Design | Q1–Q3 | 2–3 | 0–1F/1–2I/1–2A | Tech/Org/Str/Risk | Arch/Dev/SRE | 1 diagram+table |
+| 2 | Development | Q4–Q6 | 2–3 | 1F/1–2I/1A | Tech/Org/Risk | Dev/Arch/PM | 1 diagram+table |
+| 3 | Deployment | Q7–Q9 | 2–3 | 1F/1I/1A | Org/Risk/Bus | DevOps/SRE/Arch | 1 diagram+table |
+| 4 | Operations | Q10–Q12 | 2–3 | 0–1F/1–2I/1A | User/Bus/Risk | SRE/DevOps/PM | 1 diagram+table |
+| | **Total** | | **8–12** | **2–4F/4–8I/2–4A** | **≥2 per Q&A** | **≥5 core** | **4–8 total** |
 
-**Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic
+**Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic | Risk=Risk
 
 ### C. Q&A Template
 
@@ -180,22 +186,27 @@ See **Section IV** for complete checklist. Key:
 
 **QX: [Value Scenario Question]**
 
-**Difficulty**: [F/I/A] | **Phase**: [Phase] | **Value Types**: [≥2] | **Stakeholders**: [≥2]
+**Difficulty**: [F/I/A] | **Phase**: [Phase] | **Value Types**: [≥2] | **Stakeholders**: [≥2] | **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-**Key Insight**: [1 sentence value tension]
+**Key Insight**: [1 sentence value tension + decision criticality]
 
-**Answer** (150–300 words): Framework [Ref: G#/A#] | Multi-value (≥2 types+quantification) | Multi-stakeholder (≥2 roles) | Lifecycle | Quantification (metrics, methods, sources) | Steps | Trade-offs (positive/negative, alternatives) | Communication | Realization criteria | Limitations (uncertainty, leakage) | ≥1 [Ref: ID]
+**Answer** (150–250 words): Framework [Ref: G#/A#] | Multi-value (≥2 types+quantification) | Multi-stakeholder (≥2 roles) | Lifecycle (brief) | Quantification (metrics, methods, sources) | Trade-offs (≥2 alternatives) | Decision criteria (go/no-go) | ≥1 [Ref: ID]
 
-**Artifact** *(optional)*: Value stream/matrix/calculation/table
+**Artifact** *(optional)*: Value matrix/calculation/table
 
 ### D. References Template
 
 See **Step 5** for formats. Summary:
-- **Glossary**: **G#. Term** | Definition | Measurement | Stakeholder | Lifecycle | Limitations (alphabetize)
-- **Tools**: **T#. Tool** | Description | Pricing | Users | Update | Integrations | Metrics | Stakeholder | Lifecycle | URL (group by category)
-- **Literature**: **L#. Author, Title, Year** | Summary | Lifecycle | Stakeholder (group: EN, ZH)
+- **Glossary**: **G#. Term** | Definition | Measurement | Stakeholder | Lifecycle (alphabetize)
+- **Tools**: **T#. Tool** | Description | Pricing | Users | Update | Metrics | URL (group by category)
+- **Literature**: **L#. Author, Title, Year** | Summary | Lifecycle (group: EN, ZH)
 - **Citations**: **A#. [APA 7th] [Lang]** (sort by ID)
 
+|---|-----------|--------|--------|
+| 1 | **Clarity**: Single value ask | "Microservices ($500K, 6mo)—assess business/tech/org value?" | "Explain value types" |
+| 2 | **Decision Criticality**: Blocks/Risk | "$2M investment blocks roadmap. Allocate: product/debt/platform?" | "Should we invest in platform?" |
+| 3 | **Quantification**: Metrics | "Feature: +$2M revenue, -40% velocity. NPV? Payback? Risk?" | "Calculate ROI" |
+| 4 | **Realism**: Stakeholder tension | "Sales: $5M customization. Arch: 30% debt. PM: Q4 launch. Assess?" | "What's the value?" |
 ## VII. Example
 
 **Q1: Architect proposes microservices migration ($800K, 9mo, 5 engineers). PM: roadmap delayed. CFO: ROI justification. DevOps: operational complexity +40%. Assess total value across lifecycle?**

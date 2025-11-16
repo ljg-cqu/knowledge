@@ -1,389 +1,283 @@
-# Emerging Concept/Technology Deep-Dive Q&A Generator
+# Emerging Concept/Technology Intelligence Q&A (Minimal Viable)
 
-Generate 30–35 comprehensive Q&As exploring emerging concepts (≤5 years OR recent paradigm shift) driving industrial change across 8 lifecycle phases, 10 stakeholder roles, and 6 analytical angles with evidence-based answers, visual artifacts, and quantitative validation.
+Generate **6–12 decision-critical Q&As** from emerging concepts (≤5 years OR recent paradigm shift)—minimal viable tracking for informed decisions with limited time.
 
-**Scope**: Emerging tech with ≥30% YoY growth OR ≥3 major vendor investments (18 months). **Exclude**: Established tech >10 years, declining/deprecated solutions.
+**Cadence**: Bi-weekly brief | 4-6h effort | **Expires**: 2 weeks from generation
 
-## I. Context & Scope
+**Scope**: Decision-critical emerging tech only—adoption disruptions, competitive threats, regulatory shifts, ecosystem changes. For mature tech organizations.
 
-**Purpose**: Build comprehensive understanding across 8 lifecycle phases (Requirements & Discovery → Evolution & Governance), 10 stakeholder roles (BA, PM, Architect, Dev, QA, DevOps, Security, Data Eng, SRE, Leadership), and 6 analytical angles (Technical, Design/Patterns, Business/Market, Economic, Regulatory, Ecosystem).
+**Exclusions**: Academic research, vendor marketing, hype without evidence, rumors, stale news (>6mo for HV, >12mo for LT).
 
-**Industrial Dynamics**: Market shifts, adoption curves, competitive disruption, technology transitions. Examples: AI/LLM platforms (GPT-4, Claude), platform engineering (Backstage, Port), FinOps, vector databases (Pinecone, Weaviate), threshold cryptography (DKLS23, CGGMP21), WebAssembly on edge.
+## I. Framework
 
-**Newness Criteria** (concept must meet ≥2):
-1. **Technology Age**: Core technology ≤5 years old OR major paradigm shift in last 3 years
-2. **Market Adoption**: Currently in Early Adopters → Early Majority phase (Gartner: Innovation Trigger → Peak of Inflated Expectations)
-3. **Industry Momentum**: ≥30% YoY growth in adoption OR ≥3 major vendor investments in last 18 months
-4. **Competitive Disruption**: Displacing established solutions OR creating new market categories
-5. **Standards Evolution**: Active standardization (draft RFC, emerging industry consortiums) OR protocol wars ongoing
-6. **Regulatory Attention**: New compliance frameworks emerging OR regulatory bodies issuing guidance
+**Freshness** (category-adaptive):
+- **High-Velocity** (Tech disruption, adoption shifts): ≥75% <1mo (≥25% in 1–7d), ≥95% <2mo, 100% ≤4mo  
+- **Medium-Velocity** (Ecosystem, standards): ≥65% <2mo (≥20% in 1–14d), ≥90% <3mo, 100% ≤6mo  
+- **Long-Tail** (Regulatory, compliance): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo  
+- **Overall**: ≥70% <2mo, ≥90% <4mo, 100% ≤12mo  
+- **Validity**: 2 weeks; re-validate if used beyond 1 month
 
-**Assumptions**: LLM has access to latest technical specs, industry frameworks, business models, regulatory standards; user provides specific emerging concept/technology/ecosystem; output includes text, diagrams, tables, formulas; designed for deep conceptual understanding + practical adoption guidance.
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts adoption go/no-go, architecture pivot, or resource allocation
+2. **Creates Risk**: Material threat (vendor lock-in, skill gap, regulatory breach, cost shock >20%)
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (Architect + DevOps, PM + Developer, etc.)
+4. **Requires Action**: 1-6mo action window (not speculative)
+5. **Quantified Impact**: Adoption %, cost delta, velocity gain, or market disruption signal
 
-**Constraints**: 200-400 words/answer (excluding artifacts); ≥80% have ≥1 cite (≥40% have ≥2); 100% concept-exploration (no trivia); all answers include ≥5 precise verb relationships (enables/depends/extends/replaces/complements/constrains/transforms/governs/monitors/orchestrates) AND industrial momentum (adoption %, vendor count, market size).
+**Stakeholders** (5 core):  
+Architect, Developer, DevOps/SRE, PM/Leadership, Security.
 
-**Key Terms**: Emerging (≤5yr OR paradigm shift) | Industrial Dynamics (market forces, adoption trends, disruption) | Lifecycle Phase (1 of 8) | Stakeholder (1 of 10) | Analytical Angle (1 of 6) | Floor (≥ threshold) | Quality Gate (fail=stop/fix)
+**Lifecycle Phases** (4-5, decision-critical):  
+1. **Architecture & Design**: Adoption feasibility, integration risk, tech debt implications
+2. **Development**: Skill gap, productivity impact, learning curve
+3. **Deployment & Release**: Operational complexity, rollback risk, deployment patterns
+4. **Operations & Observability**: Operational overhead, cost, monitoring/observability gaps
+5. **Evolution & Governance**: Migration strategy, vendor lock-in, long-term viability
 
-**Include**: Technical architecture, design patterns, business models, economic analysis, regulatory compliance, ecosystem positioning, lifecycle implications, stakeholder perspectives, trade-offs, quantitative metrics, adoption/vendor/market data, competitive positioning, maturity assessment.
+**Analytical Angles** (3-4, decision-critical):
+- **Technical**: Architecture, protocols, performance, integration feasibility
+- **Business/Market**: Use cases, competitive positioning, adoption trends, market size
+- **Economic**: Cost, ROI, TCO, vendor pricing, market dynamics
+- **Regulatory** (optional): Compliance, standards, audit trails, data residency
 
-**Exclude**: Superficial overviews, marketing hype, unsubstantiated claims, vague relationships, established tech (>10yr), legacy patterns, declining/deprecated tech.
+**News Categories** (each Q covers ≥1):
+1. **Adoption & Market Disruption**: Adoption rate shifts, market share changes, vendor consolidation, competitive threats
+2. **Technology & Ecosystem**: Protocol evolution, standards adoption, integration patterns, vendor landscape
+3. **Regulatory & Compliance**: New compliance frameworks, standards changes, audit requirements
+4. **Cost & Economics**: Pricing shifts, TCO changes, ROI data, market dynamics
 
-**Limitations**: Aggressive recency required (≥70% <18mo); adoption data may be incomplete; regulatory frameworks lag; economic models speculative for early-stage tech; momentum metrics may reflect hype cycles.
+**News Relevance Criteria** (must meet ≥1 Decision Criticality criterion):
+1. **Recency** (MANDATORY—per freshness thresholds)  
+2. **Decision Impact**: Blocks adoption, architecture, or resource decision  
+3. **Risk Materiality**: Vendor lock-in, skill gap, regulatory risk, cost shock >20%  
+4. **Stakeholder Breadth**: Relevant to ≥2 core roles  
+5. **Quantified Impact**: Adoption %, cost delta, velocity %, market share shift
 
 ## II. Requirements
 
-### Quantitative Floors
+**Q&A**: 6–12 total | 1-2/phase | 150–250w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-**Q&A**: 30–35 total | Balanced across 8 lifecycle phases (3-5 per phase) | 200–400 words | ≥80% have ≥1 cite (≥40% have ≥2) | Each answer addresses ≥3 angles (Technical + Business/Economic + Regulatory/Ecosystem)
+**Lifecycle Phases** (4-5, 1-2 Q each): Architecture & Design, Development, Deployment & Release, Operations & Observability, Evolution & Governance (skip if no decision-critical news)
 
-**Lifecycle Phase Coverage (8 phases × 6 analytical angles = 48 perspectives, select 30-35)**:
-1. **Requirements & Discovery** (4–5 Q): Problem validation, domain modeling, NFR definition, risk assessment, compliance, stakeholder alignment
-2. **Architecture & Design** (4–5 Q): Solution design, pattern selection, trade-off analysis, threat modeling, capacity planning, integration contracts
-3. **Development** (4 Q): Implementation approaches, code organization, security practices, observability instrumentation, collaboration patterns
-4. **Testing & Quality** (3–4 Q): Testing strategies, quality gates, performance validation, security testing, contract testing
-5. **Deployment & Release** (3–4 Q): Release strategies, automation, rollback mechanisms, deployment patterns, release governance
-6. **Operations & Observability** (4 Q): SLO management, monitoring strategies, incident response, capacity management, cost optimization
-7. **Maintenance & Support** (3–4 Q): Technical debt, vulnerability management, performance tuning, license compliance, support escalation
-8. **Evolution & Governance** (4–5 Q): Migration strategies, governance frameworks, continuous improvement, ecosystem evolution, change management
+**Analytical Angles** (each Q covers ≥2): Technical, Business/Market, Economic, Regulatory (optional)
 
-**Analytical Angle Distribution (each Q covers ≥3 angles)**:
-- **Technical**: Architecture, protocols, algorithms, infrastructure (100% coverage)
-- **Design/Patterns**: GoF, architectural patterns, anti-patterns, best practices (≥80% coverage)
-- **Business/Market**: Use cases, market positioning, competitive analysis, value propositions (≥80% coverage)
-- **Economic Models**: Pricing, cost structure, ROI, TCO, market dynamics (≥70% coverage)
-- **Regulatory Framework**: Compliance, standards, certifications, audit trails (≥60% coverage)
-- **Ecosystem/Integration**: Dependencies, protocols, interoperability, vendor landscape (100% coverage)
+**Stakeholder Coverage**: ≥5/5 core roles explicitly addressed
 
-**Stakeholder Coverage (≥8 of 10 roles explicitly addressed)**:
-Business Analyst, Product Manager, Architect, Developer, QA/SET, DevOps, Security Engineer, Data Engineer, SRE, Leadership
+**References** (proportional 60% reduction):
+- **Glossary**: ≥8 (only terms used in Q&As)
+- **Tools**: ≥4 (decision-critical only)
+- **Standards**: ≥2 (canonical only)
+- **Literature**: ≥5 (canonical references only, ≥70% <18mo)
+- **Citations**: ≥6 (APA 7th+tag, all decision-critical)
 
-**Verb Relationship Density**: ≥5 precise verb relationships per answer clarifying concept interactions
+**Visuals**: ≥2 diagrams + ≥1 table (60% reduction from original)
 
-**References** (build before Q&A, emphasize <18mo sources): 
-- **Glossary**: ≥25 (tech, business, regulatory, ecosystem) - NEW terminology only
-- **Tools**: ≥10 (≤3yr old OR recent major version) - version, pricing, adoption, update date (≤18mo), ecosystem integrations (≥3)
-- **Standards**: ≥5 (RFC, ISO, IEEE, NIST) - draft/emerging preferred; include version, adoption status, compliance requirements
-- **Literature**: ≥12 (≥70% from <18mo; ≥2 trend reports from <6mo)
-- **Citations**: ≥20 APA 7th+tag ([EN]/[ZH]/[Standard]) - prioritize: conference papers, vendor announcements, adoption surveys, funding, analyst reports
+**Validation**: 12 checks (streamlined)
+- Freshness, Floors, Glossary, Phases, Categories, Roles, Decision Criticality (NEW), Impact, Decision, Citations, Words, Visuals
 
-**Visuals**: ≥2 diagrams + ≥1 table per phase (16+8 total)
+## III. Execution (Minimal Viable)
 
-**Scaling**: >35 Q&A → multiply floors by 1.5×
+**Step 1: News Discovery & Curation** (1-2h)
+- Tiered search: Tier 1 (past 1-7d, ≥25%), Tier 2 (past 1-2wk, ≥50%), Tier 3 (past 2-6mo, ≤20%)
+- Apply Decision Criticality Framework: Blocks decision? Creates risk? Affects ≥2 roles? Requires action (1-6mo)? Quantified impact?
+- Select 6-12 decision-critical items across 4 categories
 
-**Citation Format**: APA 7th + tag | Inline: `[Ref: G#/T#/S#/L#/A#]` | Distribution: EN 50-70%, ZH 15-30%, Standards 10-25% | Source types (≥5): Technical specs, research/academic, industry analysis, implementation guides, case studies, tools/platforms
+**Step 2: Build References** (30-45 min)
+- Minimal: G≥8, T≥4, S≥2, L≥5, A≥6 (only terms/tools/standards used in Q&As)
+- Format: G# (term, definition, context) | T# (tool, version, pricing, adoption, date, URL) | S# (standard, org, version, adoption) | L# (author, title, year, summary) | A# (APA 7th+tag)
 
-### Quality Gates (fail ANY = stop, fix, re-validate ALL)
+**Step 3: Generate Q&As** (2-3h)
+- Batch 2-3 Q&As, self-check each
+- Answer structure (150-250w): News (~25w) + Impact (~50w, quantified) + Stakeholders (~35w, ≥2 roles) + Decision (~50w, go/no-go) + Action (~20w, 0-2wk + 2wk-2mo)
+- Each Q must satisfy ≥1 Decision Criticality criterion
 
-1. **Emerging Validation**: ≥2 of 6 Newness Criteria + 0% established (>10yr) / deprecated tech
-2. **Evidence**: ≥60% answers have quantified adoption metrics + ≥70% sources <18mo (flag >3yr)
-3. **Source Quality**: ≥5 types, max 30% per type; each phase has ≥2 tech + ≥1 biz + ≥1 reg refs; each angle has ≥3 sources
-4. **Precision**: 100% use specific verbs (not "works with"); 100% URLs accessible; 100% [Ref: ID] resolve
-5. **Coverage**: ≥8 of 10 stakeholder roles; tools/standards have version + date ≤18mo + adoption metrics
+**Step 4: Create Visuals** (30-45 min)
+- ≥2 diagrams (decision tree, adoption curve, risk matrix) + ≥1 table (impact assessment, comparison)
+- Mermaid format, <80 nodes per diagram
 
-**Mitigation**: Newness fail → reject/pivot | Recency fail → flag dated + add alternatives | Diversity fail → expand research | Link/ref fail → archive/replace | Established tech → find emerging alternative
+**Step 5: Validate** (30-45 min)
+- 12 checks: Freshness, Floors, Glossary, Phases, Categories, Roles, Decision Criticality, Impact, Decision, Citations, Words, Visuals
+- Fail ANY = stop, fix, re-run
 
-## III. Execution
+**Step 6: Submit**
+- All 12 checks PASS | All floors met | No placeholders | 100% decision-critical | ≥70% <2mo freshness
 
-### Step 1: Concept Analysis & Allocation
-
-1. **Validate Emerging/New Status**: Verify concept meets ≥2 of 6 Newness Criteria (see Context & Scope). **REJECT established technologies without recent paradigm shift**.
-
-2. **Assess Industrial Dynamics**: Adoption curve position (Innovators/Early Adopters/Early Majority), market growth (YoY %, funding, vendor count), competitive landscape (leaders/challengers/disruptors), hype vs reality (Gartner Hype Cycle), technology transition (what's displaced, migration patterns).
-
-3. **Identify Core Concept**: Specify emerging tech with newness rationale.
-
-   **✓ Good**: "AI Code Gen (2022-24: Copilot, Cursor, 55% productivity, $100M+ funding)" | "Platform Engineering (2023-24: Backstage, 400% star growth)" | "Vector DBs for RAG (2022-24: Pinecone, 300% adoption)"
-   
-   **✗ Bad**: "Kubernetes" (2014, mainstream 2019 - established unless focusing on 2024 evolution) | "REST APIs" (2000 - mature) | "Docker" (2013 - mature)
-
-4. **Allocate Questions**: Distribute 30-35 Q across 8 lifecycle phases (3-5 per phase), 6 analytical angles (≥3 per Q), 10 stakeholder roles (≥8 total).
-
-   **Example** (35 Q for "Platform Engineering 2023-24"): Requirements (5) | Architecture (5) | Dev (4) | Test (4) | Deploy (4) | Ops (5) | Maintenance (4) | Evolution (4)
-
-### Step 2: Build References (before Q&A)
-
-**Format**: G# (term, definition, context, use cases, verb relationships, limitations) | T# (tool, category, version, pricing, adoption, date ≤18mo, integrations ≥3, stakeholders, URL) | S# (standard ID, org, version, scope, adoption, compliance, verification) | L# (author, title, year, summary, frameworks, relevance, insights) | A# (APA 7th+tag, by type)
-
-**Categories**: 
-- **Glossary** (≥25): Technical, design patterns, business/market, economic, regulatory, ecosystem
-- **Tools** (≥10): Platforms/frameworks, dev tools, testing, deployment, monitoring, security
-- **Standards** (≥5): Technical (RFCs, IEEE, ISO), security (NIST, CIS, OWASP), industry, compliance (SOC 2, GDPR, HIPAA)
-- **Literature** (≥12): Architecture (≥3), patterns (≥2), business (≥2), research papers (≥3, ≥60% <2yr), industry reports (≥2)
-- **Citations** (≥20): Technical specs, academic research, industry analysis, case studies, standards docs
-
-### Step 3: Generate Q&A (5 at a time → self-check each batch)
-
-**Question Format**: 
-- **Lifecycle-Focused**: "How does [Concept] impact [Lifecycle Phase] for [Stakeholder Role]?"
-- **Angle-Specific**: "What [Technical/Business/Regulatory] considerations apply when [Action] with [Concept]?"
-- **Comparative**: "Compare [Concept A] vs [Concept B] for [Use Case] across [Angles]"
-- **Evolution**: "How should [Organization] evolve from [Old Approach] to [Concept] considering [Constraints]?"
-- **Integration**: "Explain how [Concept X] **[verb]** [Concept Y] in [Domain] ecosystem"
-
-**Avoid**: Superficial "What is X?", marketing "List benefits", trivia "Who invented", vague "How does X work?" without context
-
-**Answer Structure** (200-400 words):
-
-1. **Concept + Industrial Context** (2-3 sentences): Core concept, newness rationale (when emerged, paradigm shift), adoption status (Innovators/Early Adopters/Early Majority), market momentum (YoY growth %, vendor count, market size), competitive landscape (leaders/challengers), technology transition (what's displaced)
-
-2. **Lifecycle + Analytical Angles** (≥3 angles): Technical (architecture, protocols, performance), Design (patterns, anti-patterns), Business/Market (use cases, competitive positioning, value proposition), Economic (cost, ROI, TCO, funding), Regulatory (standards, compliance, audit), Ecosystem (dependencies, integrations, vendors)
-
-3. **Relationships + Stakeholders**: ≥5 verb relationships (enables/depends/extends/replaces/complements/constrains/transforms/governs) + ≥2 stakeholder implications (BA, PM, Architect, Dev, QA, DevOps, Security, Data Eng, SRE, Leadership)
-
-4. **Trade-offs**: What's optimized vs sacrificed, 2-3 alternatives (emerging + established) with context-dependent criteria, maturity trade-off (benefits vs stability risks)
-
-5. **Metrics + Success**: Performance/cost/adoption numbers with sources, measurable outcomes, validation methods
-
-6. **References + Artifacts**: ≥2 [Ref: G#/T#/S#/L#/A#] (prioritize <18mo) + 1-2 artifacts (diagram, table, matrix)
-
-**Batch Self-Check** (per 5): 
-- Lifecycle phase specified | ≥3 analytical angles covered | ≥5 verb relationships with precision | ≥2 stakeholder roles addressed | 200-400 words | Quantitative metrics included | ≥3/5 have ≥2 cites | Artifact included | Trade-offs explicit | No marketing hype
-
-### Step 4: Create Visuals (≥16 diagrams + ≥8 tables; reference from ≥60% answers)
-
-**By Phase**: Requirements (domain model, event storming) | Architecture (C4, sequence, deployment) | Dev (component, CI/CD) | Test (pyramid, quality gates) | Deploy (blue/green, canary, rollback) | Ops (monitoring, tracing, SLO) | Maintenance (tech debt, vulnerabilities) | Evolution (migration, governance)
-
-**By Angle**: Technical (benchmarks, protocol comparison) | Design (pattern matrix, anti-patterns) | Business (competitive analysis, use cases) | Economic (cost comparison, TCO, ROI) | Regulatory (compliance matrix) | Ecosystem (integration matrix, vendor comparison)
-
-**Format**: Mermaid for diagrams; tables for quantitative comparisons with units/sources; show trade-offs visually (2×2 matrices)
-
-### Step 5: Final Checks
-
-**References**: Populate per Step 2 format; verify 100% [Ref: ID] resolve, no orphans, all fields complete, APA tags present, version/date ≤18mo
-
-### Step 6: Run Validations (fail ANY = stop, fix, re-run ALL)
-
-**Quantitative**: Floors (G≥25, T≥10, S≥5, L≥12, A≥20, Q=30-35) | Lifecycle (8 phases, 3-5 Q each) | Angles (Tech+Eco 100%, Design+Biz ≥80%, Econ ≥70%, Reg ≥60%) | Stakeholders (≥8 of 10) | Verbs (≥5 per answer, 0% vague) | Citations (≥80% have ≥1, ≥40% have ≥2) | Lang (EN 50-70%, ZH 15-30%, Std 10-25%) | Word count (sample 7, 100% in 200-400) | Visuals (≥60% referenced, ≥16 diagrams + ≥8 tables)
-
-**Qualitative**: Emerging (meets ≥2 of 6 criteria, 0% established >10yr/deprecated) | Industrial dynamics (≥60% have adoption metrics) | Recency (≥70% <18mo, flag >3yr) | Source diversity (≥5 types, max 30%) | Per-phase evidence (each has ≥2 tech + ≥1 biz + ≥1 reg) | Links (100% accessible) | Cross-refs (100% resolve) | Metrics (100% have quantified data) | Trade-offs (100% explicit) | Currency (tools/standards ≤18mo) | Anti-hype (0% marketing, 100% evidence-based)
-
-### Step 7: Submit
-
-**Checklist**: All validations PASS | All floors met | TOC with 8 phases | No placeholders/TBDs | Mermaid diagrams + comparison tables | Balanced perspectives (tech + business + industrial dynamics + regulatory) | Verb relationships complete | Aggressive recency (≥70% <18mo) | No marketing hype | 100% evidence-based
-
-## IV. Validation Report
-
-Use Step 6 validation criteria. Fill table:
+## IV. Validation Report (12 Checks)
 
 | Check | Measurement | Criteria | Result | Status |
 |-------|-------------|----------|--------|--------|
-| Emerging | Meets __ of 6 criteria; 0% established/deprecated | ≥2; 0% | | PASS/FAIL |
-| Industrial Dynamics | __% have adoption metrics | ≥60% | | PASS/FAIL |
-| Floors | G:__ T:__ S:__ L:__ A:__ Q:__ | ≥25, ≥10, ≥5, ≥12, ≥20, 30-35 | | PASS/FAIL |
-| Coverage | Phases __/8 (3-5 each); Angles Tech/Eco 100%, Des/Biz ≥80%, Eco ≥70%, Reg ≥60%; Stakeholders __/10 | 8/8; 100%/≥80%/≥70%/≥60%; ≥8 | | PASS/FAIL |
-| Citations & Sources | __% ≥1, __% ≥2; Lang EN __%, ZH __%, Std __%; Recency __% <18mo; Types __; Per-phase 8/8 | ≥80%/≥40%; 50-70%/15-30%/10-25%; ≥70%; ≥5; 8/8 | | PASS/FAIL |
-| Precision | Verbs avg __; Links __%; Cross-refs __%; Word count (sample 7) __% | ≥5, 0% vague; 100%; 100%; 100% (200-400) | | PASS/FAIL |
-| Content Quality | Metrics __%; Visuals __% (≥16 dia + ≥8 tab); Trade-offs __%; Currency __%; Anti-hype __% | 100%; ≥60%; 100%; ≤18mo; 0% marketing | | PASS/FAIL |
+| Freshness | __% <2mo; __% <4mo; __% ≤12mo | ≥70%; ≥90%; 100% | | PASS/FAIL |
+| Floors | G:__ T:__ S:__ L:__ A:__ Q:__ | ≥8, ≥4, ≥2, ≥5, ≥6, 6-12 | | PASS/FAIL |
+| Glossary | Only terms used in Q&As | ≥8 | | PASS/FAIL |
+| Phases | __/5 covered; 1-2 Q each | ≥4/5 | | PASS/FAIL |
+| Categories | __/4 covered; ≥1 per Q | ≥3/4 | | PASS/FAIL |
+| Roles | __/5 core roles addressed | ≥5/5 | | PASS/FAIL |
+| Decision Criticality | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| Impact | __% have quantified metrics | 100% | | PASS/FAIL |
+| Decision | __% have go/no-go criteria | 100% | | PASS/FAIL |
+| Citations | __% ≥1 cite; __% ≥2 cites | ≥85%; ≥30% | | PASS/FAIL |
+| Words | Sample 5: __% in 150-250w | 100% | | PASS/FAIL |
+| Visuals | __% referenced; ≥__ diagrams + ≥__ tables | ≥60%; ≥2 + ≥1 | | PASS/FAIL |
 
-## V. Question Quality (review each; fails ≥3 = rewrite/replace)
+## V. Question Quality (Minimal Viable)
 
-**Criteria** (fails ≥3 = rewrite):
-1. Emerging focus (meets ≥2 Newness Criteria) | 2. Industrial dynamics explicit (adoption/market context) | 3. Lifecycle specific | 4. Analytical depth (≥3 angles) | 5. Stakeholder context (≥2 roles) | 6. Precise verbs (enables/depends/extends/etc) | 7. Exploration not trivia | 8. Quantitative focus | 9. Trade-off explicit | 10. Objective (no marketing) | 11. No established tech (>10yr)
+**Criteria** (fails ≥2 = rewrite):
+1. Decision Criticality (≥1 criterion met) | 2. Recency (≥70% <2mo) | 3. Quantified impact | 4. Stakeholder context (≥2 roles) | 5. Go/no-go decision | 6. Objective (no marketing hype)
 
-**✓ Good**: "How does AI code gen (Cursor 2024) transform Dev phase?" | "What drives 300% YoY vector DB adoption for RAG (Pinecone 2023-24)?" | "Compare platform engineering (Backstage vs Port 2024): architecture, cost, adoption"
+**✓ Good**: "AI code gen adoption (Cursor 2024: 55% velocity gain) impacts Dev hiring. Skill gap strategy?" | "Vector DB market shift (300% YoY, Pinecone $100M funding) threatens legacy DB vendors. Adoption go/no-go?"
 
-**✗ Bad**: "How does Kubernetes work?" (established) | "What is a vector database?" (no industrial context) | "What is platform engineering?" (no depth)
+**✗ Bad**: "What is emerging tech?" (no decision) | "How does Kubernetes work?" (established) | "List benefits of X" (marketing hype)
 
-## VI. Output Format
+## VI. Output Format (Minimal Viable)
 
 ### A. TOC Structure
 
 ```markdown
-# [Concept/Ecosystem Name] - Comprehensive Deep-Dive Q&A
+# [Emerging Tech Name] - Minimal Viable Intelligence Brief
 
 ## Contents
 1. Executive Summary
-2. Lifecycle Phase Coverage Overview
-3. Questions by Lifecycle Phase (8 sections)
-   - 3.1 Requirements & Discovery (Q1-Q4/5)
-   - 3.2 Architecture & Design (Q5/6-Q9/10)
-   - 3.3 Development (Q10/11-Q13/14)
-   - 3.4 Testing & Quality (Q14/15-Q17/18)
-   - 3.5 Deployment & Release (Q18/19-Q21/22)
-   - 3.6 Operations & Observability (Q22/23-Q26)
-   - 3.7 Maintenance & Support (Q27-Q30)
-   - 3.8 Evolution & Governance (Q31-Q35)
-4. References
-   - 4.1 Glossary (G1-G25+)
-   - 4.2 Tools & Platforms (T1-T10+)
-   - 4.3 Standards & Specifications (S1-S5+)
-   - 4.4 Literature (L1-L12+)
-   - 4.5 Citations (A1-A20+)
-5. Validation Report (18 checks)
+2. Decision-Critical Q&As by Lifecycle Phase (4-5 sections)
+   - Architecture & Design (Q1-Q2)
+   - Development (Q3)
+   - Deployment & Release (Q4)
+   - Operations & Observability (Q5)
+   - Evolution & Governance (Q6-Q12)
+3. References
+   - Glossary (G1-G8)
+   - Tools (T1-T4)
+   - Standards (S1-S2)
+   - Literature (L1-L5)
+   - Citations (A1-A6)
+4. Validation Report (12 checks)
 ```
 
-### B. Executive Summary (NEW)
+### B. Executive Summary
 
 ```markdown
 ## Executive Summary
 
-**Concept**: [Name and brief description]
+**Concept**: [Name, adoption status, market momentum]
 
-**Scope**: [What's covered and what's excluded]
+**Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-**Lifecycle Coverage**: [Which of 8 phases addressed]
+**Lifecycle Coverage**: Architecture & Design | Development | Deployment | Operations | Evolution
 
-**Analytical Angles**: Technical ✓ | Design/Patterns ✓ | Business/Market ✓ | Economic Models ✓ | Regulatory ✓ | Ecosystem ✓
-
-**Stakeholder Roles**: [List 8-10 roles explicitly addressed]
+**Stakeholder Roles**: Architect | Developer | DevOps/SRE | PM/Leadership | Security
 
 **Key Insights**:
 - Technical: [1-sentence key finding]
-- Business: [1-sentence key finding]
-- Economic: [1-sentence key finding with quantification]
+- Business: [1-sentence key finding with quantification]
+- Risk: [1-sentence key finding]
 
-**Reference Summary**: G=[#] terms | T=[#] tools | S=[#] standards | L=[#] literature | A=[#] citations
+**Reference Summary**: G=8 | T=4 | S=2 | L=5 | A=6
 ```
 
-### C. Lifecycle Phase Overview Table
-
-| # | Lifecycle Phase | Range | Count | Primary Angles | Stakeholders | Artifacts |
-|---|-----------------|-------|-------|----------------|--------------|-----------|
-| 1 | Requirements & Discovery | Q1–Q4/5 | 4-5 | Tech, Biz, Reg | BA, PM, Architect | 2 diagrams + 1 table |
-| 2 | Architecture & Design | Q5/6–Q9/10 | 4-5 | Tech, Design, Eco | Architect, Developer, Security | 2 diagrams + 1 table |
-| 3 | Development | Q10/11–Q13/14 | 4 | Tech, Design | Developer, DevOps | 2 diagrams + 1 table |
-| 4 | Testing & Quality | Q14/15–Q17/18 | 3-4 | Tech, Design | QA, Developer | 2 diagrams + 1 table |
-| 5 | Deployment & Release | Q18/19–Q21/22 | 3-4 | Tech, Eco | DevOps, SRE | 2 diagrams + 1 table |
-| 6 | Operations & Observability | Q22/23–Q26 | 4 | Tech, Econ | SRE, Leadership | 2 diagrams + 1 table |
-| 7 | Maintenance & Support | Q27–Q30 | 3-4 | Tech, Econ, Reg | Developer, Security, Data Eng | 2 diagrams + 1 table |
-| 8 | Evolution & Governance | Q31–Q35 | 4-5 | Biz, Econ, Eco | PM, Architect, Leadership | 2 diagrams + 1 table |
-| | **Total** | | **30-35** | **All 6 angles** | **≥8 of 10 roles** | **≥16 + ≥8** |
-
-Legend: Tech=Technical, Design=Design/Patterns, Biz=Business/Market, Econ=Economic Models, Reg=Regulatory, Eco=Ecosystem/Integration
-
-### D. Q&A Format
-
-Each Q&A follows Answer Structure from Step 3:
+### C. Q&A Format
 
 ```markdown
-### Q1: [Question with Phase + Stakeholder + Angles]
+### Q1: [Question: Decision + Concept + Stakeholder]
 
-**Lifecycle Phase**: [Phase] | **Stakeholder Roles**: [Primary] [Secondary] | **Analytical Angles**: [✓ checkmarks]
+**Lifecycle Phase**: [Phase] | **Stakeholder Roles**: [≥2] | **Angles**: Technical ✓ | Business ✓ | Economic ✓
 
-**Answer** (200-400 words): Use 6-part structure from Step 3 (Concept+Industrial Context, Lifecycle+Angles, Relationships+Stakeholders, Trade-offs, Metrics+Success, References+Artifacts)
+**Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
----
+**Answer** (150-250 words):
+- News (~25w): What, when, why, adoption/market context
+- Impact (~50w): ≥2 lifecycle phases, quantified metrics
+- Stakeholders (~35w): ≥2 roles, concerns, actions
+- Decision (~50w): Go/no-go criteria, rationale
+- Action (~20w): Immediate (0-2wk), Short (2wk-2mo), Owner
+
+**Artifacts**: [1 diagram + 1 table]
+
+**References**: [Ref: G#/T#/S#/L#/A#]
 ```
 
-### E. Reference Formats
-
-Use formats from Step 2:
+### D. Reference Formats
 
 ```markdown
-## 4. References
+## References
 
-**G#. Term (Acronym)**: Definition | Context | Use cases | Related concepts | Verb relationships | Limitations | Category [Alphabetize within categories]
+**G#. Term**: Definition | Context | Use cases | Limitations
 
-**T#. Tool (Category)**: Description | Version | Pricing | Adoption | Update (MM/YYYY) | Integrations (≥3) | Users | Tech requirements | URL [Group by category]
+**T#. Tool**: Description | Version | Pricing | Adoption | Date | URL
 
-**S#. Standard ID (Org)**: Title | Version | Date | Scope | Adoption status | Compliance | Verification | Related | URL [Group by type]
+**S#. Standard**: Title | Version | Adoption status | Compliance | URL
 
-**L#. Author(s). Year. *Title*. Publisher**: Summary | Frameworks | Insights | Relevance | Citations | Type [Group by type, chronological]
+**L#. Author. Year. *Title*. Publisher**: Summary | Relevance
 
-**A#. APA 7th Citation [Tag]**: Books: `Author. Year. *Title* (ed.). Publisher. [EN]` | Papers: `Author. Year. Title. *Journal*, Vol(Issue), pages. DOI [EN]` | Standards: `Org. Year. *ID: Title*. URL [Standard]` | Web: `Author/Org. Year, Month Day. *Title*. Site. URL [EN]` | Chinese: `作者. Year. *标题*. 出版社. [ZH]` [Sort by ID, tag by type]
+**A#. APA 7th [Tag]**: Full citation
 ```
 
-## VII. Example
+## VII. Example (Minimal Viable)
 
-**Note**: This Kubernetes example demonstrates the format/structure. For actual emerging tech (meets ≥2 Newness Criteria), see Good Examples in Step 1.
+### Q1: AI code generation adoption (Copilot/Cursor 2024: 55% velocity gain) impacts Developer hiring and skill requirements. What's the adoption go/no-go decision for your team?
 
-### Q1: How does adopting Kubernetes impact the Architecture & Design phase for platform teams building multi-tenant SaaS, considering technical architecture, cost model, and operational complexity?
+**Lifecycle Phase**: Development
 
-**Lifecycle Phase**: Architecture & Design
+**Stakeholder Roles**: Developer | PM/Leadership
 
-**Stakeholder Roles**: [Primary: Architect, DevOps] [Secondary: Developer, SRE, Leadership]
+**Angles**: Technical ✓ | Business ✓ | Economic ✓
 
-**Analytical Angles**: Technical ✓ | Design/Patterns ✓ | Economic Models ✓
+**Decision Criticality**: Blocks hiring strategy | Creates skill gap risk | Affects ≥2 roles | Requires action (1-6mo) | Quantified: 55% velocity gain
 
-**Answer** (385 words):
+**Answer** (220 words):
 
-**Concept Definition**: Kubernetes is a container orchestration platform that **automates** deployment, scaling, and management of containerized applications [Ref: G1]. It **extends** traditional infrastructure with declarative configuration, self-healing, and horizontal scaling [Ref: T1, S1].
+**News**: Copilot/Cursor adoption surged 2023-24 with 55% velocity gains reported across 100K+ developers. GitHub reports 40% of new code generated by Copilot (2024). Adoption curve: Early Majority phase [Ref: A1, A2].
 
-**Phase Context**: In Architecture & Design, Kubernetes adoption **transforms** the architecture blueprint from static infrastructure diagrams to dynamic, API-driven resource definitions. Architects must define cluster topology, networking models (CNI), storage classes (CSI), and security boundaries before development begins [Ref: L1, A1].
+**Impact**: 
+- **Development**: Skill gap emerges—junior devs may skip fundamentals; code review burden increases 30-40% [Ref: L1]. Productivity gain: 2-3h/day per developer (~$50K/year value per FTE).
+- **Architecture**: Requires code review automation, quality gates, security scanning integration [Ref: T1, T2].
+- **Operations**: Observability gaps: LLM-generated code may lack instrumentation; monitoring complexity increases [Ref: A3].
 
-**Technical Perspective**: Kubernetes **enables** microservices by providing service discovery, load balancing (via Services), and traffic management (via Ingress) [Ref: G2, T2]. It **depends on** container runtimes (containerd, CRI-O) and **integrates with** CI/CD pipelines [Ref: T3]. For multi-tenancy, namespace isolation **constrains** resource usage via ResourceQuotas and LimitRanges, while NetworkPolicies **govern** inter-service communication [Ref: S2, A2]. Performance: p95 latency overhead ~5-10ms vs bare metal; 10K+ pods per cluster feasible with proper tuning [Ref: A3].
+**Stakeholders**:
+- **Developer**: Skill gap risk (fundamentals), learning curve (tool mastery), code quality concerns
+- **PM/Leadership**: Hiring strategy shift (fewer juniors?), productivity ROI ($50K/dev/year), vendor lock-in (GitHub/Anthropic)
 
-**Design/Patterns Perspective**: Apply **Sidecar pattern** for cross-cutting concerns (logging, metrics via Istio/Linkerd), **Ambassador pattern** for API gateways, and **Adapter pattern** for legacy integration [Ref: L2]. **Anti-patterns**: Treating Kubernetes as VM orchestrator, monolithic deployments, stateful sets without understanding operational complexity [Ref: A4].
+**Decision Criteria** (Go/No-Go):
+- **GO if**: Velocity gain ≥40%, code quality maintained (defect rate <+5%), team consensus >70%
+- **NO-GO if**: Vendor lock-in unacceptable, security/IP concerns, junior dev pipeline critical
 
-**Economic Models**: Managed Kubernetes (EKS/GKE/AKS) costs $0.10/hour cluster + $0.048/hour per node (~$1,750/month for 3-node HA cluster) vs self-hosted requiring 2-3 FTE ops ($200K-300K/year) [Ref: A5]. Break-even: 5-7 clusters favor managed; <3 clusters may justify self-hosted if expertise exists. Cost optimization: node auto-scaling saves 30-40%, spot instances reduce compute by 60-70% [Ref: T4, A6].
-
-**Verb Relationships**:
-- Kubernetes **enables** horizontal scaling by **managing** pod replicas across nodes
-- Kubernetes **depends on** container images and **requires** image registries
-- Kubernetes **extends** cloud-native patterns with **standardized** APIs (CRI, CNI, CSI)
-- Kubernetes **replaces** manual orchestration scripts with **declarative** manifests
-- Kubernetes **complements** service meshes by **providing** networking substrate
-
-**Stakeholder Implications**:
-- **Architect**: Must design for eventual consistency, embrace immutable infrastructure, define multi-tenancy boundaries with RBAC [Ref: S3]
-- **DevOps**: Shifts from server provisioning to cluster management; requires GitOps expertise (ArgoCD, Flux) [Ref: T5]
-
-**Trade-offs & Alternatives**:
-
-| Aspect | Kubernetes | Serverless (Lambda/Cloud Run) | VMs + Config Mgmt (Ansible) |
-|--------|------------|-------------------------------|----------------------------|
-| Ops Complexity | High (learning curve 6-12mo) | Low (managed, pay-per-use) | Medium (legacy, well-known) |
-| Cost at 10 services | $1,750/mo + labor | $500-2K/mo (depends on traffic) | $800/mo VMs + 1 FTE ops |
-| Latency | 5-10ms overhead | Cold start 100-1000ms | Lowest (~1ms overhead) |
-| Multi-tenancy | Native (namespaces) | Per-function isolation | Manual (security groups) |
-| Best When | Microservices, ≥5 services, frequent deploys | Event-driven, sporadic traffic, <1min execution | Stateful legacy, regulatory constraints |
-
-**Quantitative Metrics**: 
-- Deployment frequency: 10-100x faster (manual 2-4h → automated 5-15min) [Ref: A7]
-- Resource utilization: 40-60% improvement via bin-packing vs static VMs [Ref: A8]
-- MTTR: 30-50% reduction via self-healing, rolling updates [Ref: L3]
-
-**Success Criteria**:
-- Cluster bootstrapped with GitOps; all infrastructure as code (IaC validation: 100% drift-free)
-- Multi-tenancy model validated: namespace isolation, resource quotas enforced
-- Cost model validated: ≤$3K/month for first year at projected 20-service load
-- Team competency: ≥3 engineers CKA-certified within 3 months
-
-**References**: [Ref: G1, G2] [Ref: T1, T2, T3, T4, T5] [Ref: S1, S2, S3] [Ref: L1, L2, L3] [Ref: A1, A2, A3, A4, A5, A6, A7, A8]
+**Action**:
+- **Immediate (0-2wk)**: Pilot with 2-3 senior devs, measure baseline velocity/quality
+- **Short (2wk-2mo)**: Expand to team, implement code review SLA, security scanning, observability instrumentation
+- **Owner**: Engineering Lead + Security
 
 **Artifacts**:
 
 ```mermaid
-graph TB
-    subgraph "Kubernetes Cluster"
-        Ingress[Ingress Controller<br/>nginx/Traefik]
-        subgraph "Namespace: Tenant-A"
-            SvcA[Service A<br/>3 replicas]
-            SvcB[Service B<br/>2 replicas]
-        end
-        subgraph "Namespace: Tenant-B"
-            SvcC[Service C<br/>3 replicas]
-        end
-        PV[(Persistent Volume<br/>CSI: EBS/GCE PD)]
-    end
-    
-    User -->|HTTPS| Ingress
-    Ingress --> SvcA
-    Ingress --> SvcC
-    SvcA --> SvcB
-    SvcB --> PV
+graph LR
+    A["Adoption Decision<br/>(Go/No-Go)"]
+    A -->|GO| B["Pilot Phase<br/>(2-3 devs, 2wk)"]
+    B -->|Success| C["Rollout<br/>(Full team)"]
+    B -->|Failure| D["Defer/Skip"]
+    A -->|NO-GO| D
+    C -->|Monitor| E["Measure ROI<br/>(Velocity, Quality)"]
 ```
 
-**Cost Comparison Table**:
+| Dimension | AI Code Gen | Traditional Dev | Trade-off |
+|-----------|------------|-----------------|-----------|
+| Velocity | +55% (2-3h/day saved) | Baseline | Productivity gain |
+| Code Quality | Requires review automation | Manual review | Quality risk if not mitigated |
+| Skill Gap | Junior devs may skip fundamentals | Structured learning | Training investment needed |
+| Cost | $15-20/mo per dev | $0 | ROI: 2-3 months |
+| Vendor Lock-in | GitHub/Anthropic | None | Strategic risk |
 
-| Scenario | Managed K8s (EKS) | Self-Hosted K8s | Serverless (Lambda) | VMs + Ansible |
-|----------|-------------------|-----------------|---------------------|---------------|
-| Initial Setup | $0 (AWS-managed) | $50K (consulting) | $0 (AWS-managed) | $20K (automation) |
-| Monthly Cost (10 svc) | $1,750 + compute | $800 compute + 2 FTE | $800-2K (traffic-based) | $800 + 1 FTE |
-| Scaling Cost (100 svc) | $1,750 + compute (linear) | $800 + 3 FTE (ops burden) | $8K-20K (traffic-based) | $8K + 3-4 FTE |
-| TCO (3 years, 50 svc) | $90K infra + $360K labor | $60K infra + $600K labor | $180K-500K (traffic) | $180K infra + $450K labor |
-| Recommendation | **Best for 10-100 services** | Avoid unless regulatory | Best for <10 services | Legacy migration only |
+**References**: [Ref: A1, A2, L1, T1, T2, A3]
 
 ---
 
-**Referenced Materials (subset for example)**:
+**G1. AI Code Generation**: LLM-powered tools (Copilot, Cursor) that auto-complete code. **Enables** faster development, **depends on** LLM accuracy, **creates** skill gap risk. Limitations: Security/IP concerns, vendor lock-in.
 
-**G1. Kubernetes (K8s)** – Container orchestration platform automating deployment, scaling, and management. **Enables** microservices, **depends on** container runtime, **extends** IaaS with declarative APIs. Limitations: Steep learning curve, operational complexity.
+**T1. GitHub Copilot**: AI code completion. Version: 2024. Pricing: $10/mo individual, $19/mo business. Adoption: 1M+ users. Updated: 2024-11. URL: https://github.com/features/copilot
 
-**T1. Kubernetes v1.28 (Container Orchestration)** – Open-source, free (OSS). 100K+ GitHub stars. Updated: 2024-08. Integrations: Helm, Istio, Prometheus. Primary users: DevOps, SRE, Architects. https://kubernetes.io
+**T2. Cursor IDE**: AI-native editor. Version: 0.30+. Pricing: Free + $20/mo Pro. Adoption: 100K+ users. Updated: 2024-11. URL: https://www.cursor.com
 
-**S1. CRI (CNCF)** – Container Runtime Interface standard enabling pluggable runtimes. Version: 1.0. Status: Widespread. Compliance: Must implement CRI gRPC API. https://github.com/kubernetes/cri-api
+**L1. GitHub. (2024). *State of AI in Software Development*. GitHub Blog.** – 40% of new code generated by Copilot; 55% velocity gains reported.
 
-**L1. Hightower, K., et al. (2022). *Kubernetes: Up and Running* (3rd ed.). O'Reilly.** – Comprehensive guide covering architecture, patterns, and operations. Frameworks: Deployments, StatefulSets, DaemonSets. Relevance: Foundation for design decisions.
+**A1. GitHub. (2024, Nov). Copilot Adoption Report. https://github.com/features/copilot [EN]**
 
-**A1. CNCF. (2023). *Cloud Native Computing Foundation Annual Survey 2023*. https://www.cncf.io/reports/cncf-annual-survey-2023 [EN]** – 96% of organizations use or evaluate Kubernetes; 5.6M developers globally.
+**A2. Anthropic. (2024, Oct). Claude 3.5 Sonnet Performance Benchmarks. https://www.anthropic.com [EN]**
+
+**A3. GitHub. (2024). Code Review Best Practices with AI. https://github.com/docs [EN]**

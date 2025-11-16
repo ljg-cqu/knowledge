@@ -1,15 +1,21 @@
-# Interview Q&A Generator: Finance Leadership
+# Finance Q&A Generator: Decision-Critical Scenarios (Minimal Viable)
 
-Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Manager/Director/VP Finance roles using evidence-based frameworks and authoritative sources.
+Generate **6–12 decision-critical Q&A pairs** for informed financial decision-making with limited time.
+
+**Cadence**: On-demand | **Effort**: 4–6h | **Validity**: Evergreen (refresh annually or when financial context changes)
+
+**Scope**: Decision-critical finance scenarios only—capital allocation, risk management, valuation, financial planning. For finance leaders (5–15yrs experience) facing ambiguous, multi-variable decisions.
+
+**Exclusions**: Academic theory, niche instruments (<5% adoption), vendor marketing, speculation.
 
 ---
 
 ## Scope & Constraints
 
-**Purpose**: Test practical judgment, decision-making, strategic thinking for finance leadership (5–15yrs experience)  
-**Output**: 25–30 Q&A (150–300w) | 6 MECE (Mutually Exclusive, Collectively Exhaustive) domains (4–6 Q&A each) | Difficulty F:I:A = 20:40:40% (±5pp)  
-**Sources**: English 50–70%, Chinese 20–40%, Other 5–15% | ≥50% published within 3yrs (≥70% for markets/fintech topics) | Theory-to-practice ratio 20–40% / 60–80%  
-**Assumptions**: Candidates know core frameworks; face ambiguous, multi-variable decisions requiring trade-off analysis
+**Purpose**: Test practical judgment on decisions that **block go/no-go, create material risk, or affect ≥2 stakeholders**  
+**Output**: 6–12 Q&A (150–250w) | 3–4 MECE decision-critical domains (1–3 Q&A each) | Difficulty F:I:A = 25:50:25% (±5pp)  
+**Sources**: English 60–70%, Chinese 20–30%, Other 5–10% | ≥50% published within 3yrs (≥70% for rates/markets topics) | Theory-to-practice ratio 20–40% / 60–80%  
+**Assumptions**: Candidates know core frameworks; face ambiguous, multi-variable decisions requiring trade-off analysis + quantified impact
 
 ---
 
@@ -24,28 +30,35 @@ Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Ma
 - **Insights**: Each Q&A has non-obvious, decision-useful, falsifiable, concrete insight
 - **Uncertainty**: Flag conflicts/uncertainty with qualifiers; cite confidence levels
 
+**Decision Criticality Framework** (NEW - MANDATORY)
+- **Include if ≥1 criterion satisfied**:
+  - **Blocks Decision**: Directly impacts capital allocation, M&A go/no-go, risk posture, or strategic pivot
+  - **Creates Material Risk**: Quantified threat (>5% variance, regulatory breach, liquidity crisis, credit downgrade)
+  - **Affects ≥2 Stakeholders**: CFO + Treasurer, Controller + Risk Officer, CEO + Board
+  - **Requires Action**: 1–6mo action window (not speculative)
+  - **Quantified Impact**: Revenue $, WACC bps, NPV $, risk metrics (VaR, Duration), or compliance deadline
+- **Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
+
 **Reference requirements (collect BEFORE Q&A):**
-- **G#≥10** (Glossary): CAPM, WACC, NPV, IRR, Sharpe Ratio, Beta, DCF, EBITDA, FCF, Alpha, VaR, Duration, Convexity, ROIC, EV/EBITDA
-- **T#≥5** (Tools): Name, pricing, users, integrations, update ≤18mo, URL
-- **L#≥6** (Literature): English+Chinese authoritative (Graham, Damodaran, Bodie/Kane/Marcus, Fabozzi, CFA Institute)
-- **A#≥12** (Citations): APA 7th + DOI + [EN]/[ZH]/[Other]
-- **Quality tiers**: Academic/Standards > Central Banks/Regulators > Rating Agencies > Asset Managers > Trade Publications > Practitioner Blogs
+- **G#≥8** (Glossary): CAPM, WACC, NPV, IRR, DCF, ROIC, VaR, Duration (only decision-critical terms)
+- **T#≥4** (Tools): Excel/Python, Bloomberg, Refinitiv, Scenario modeling tool
+- **L#≥5** (Literature): Damodaran, Graham, CFA Institute, Fabozzi, 1 Chinese reference
+- **A#≥8** (Citations): APA 7th + DOI + [EN]/[ZH]/[Other] (60% reduction, all decision-critical)
+- **Quality tiers**: Academic/Standards > Central Banks/Regulators > Rating Agencies > Asset Managers
 - **Diversity**: ≥3 types, no source >25%, prefer DOIs, all accessible
 
-**Artifacts:** ≥1 diagram + ≥1 table per domain
+**Artifacts:** ≥1 diagram + ≥1 table per domain (compressed)
 
 ---
 
-## Finance Domains (MECE)
+## Finance Domains (Decision-Critical Only)
 
-| Domain | Scope | Examples |
-|--------|-------|----------|
-| **Investment Strategy & Asset Allocation** | Portfolio construction, allocation, rebalancing, factor investing | Modern Portfolio Theory, Strategic/Tactical Asset Allocation, Risk Parity, Factor Models |
-| **Equity & Fixed Income Analysis** | Valuation, credit analysis, duration, security selection | DCF, Comparables, Credit Ratings, Yield Curve Analysis, Duration/Convexity |
-| **Risk Management & Hedging** | Risk measurement, mitigation, derivatives, portfolio protection | VaR, Stress Testing, Options/Futures, Greeks, Tail Risk Hedging |
-| **Corporate Finance & Valuation** | Capital structure, M&A, project evaluation, cost of capital | WACC, NPV/IRR, LBO Models, Accretion/Dilution, ROIC |
-| **Financial Planning & Analysis** | Budgeting, forecasting, performance metrics, scenario analysis | 3-Statement Models, Variance Analysis, KPIs, Rolling Forecasts |
-| **Financial Markets & Trading** | Market structure, trading strategies, liquidity, execution | Market Microstructure, Algorithmic Trading, Transaction Cost Analysis, Alpha Generation |
+| Domain | Scope | Decision Criticality | Examples |
+|--------|-------|---------------------|----------|
+| **Capital Allocation & Valuation** | M&A, capex, divestment, cost of capital, project evaluation | Blocks M&A go/no-go, capex decisions, strategic pivot | WACC changes, NPV sensitivity, DCF assumptions, LBO models |
+| **Risk Management & Hedging** | Risk measurement, mitigation, portfolio protection, liquidity | Creates material risk (>5% variance, credit downgrade, liquidity crisis) | VaR thresholds, rate/FX hedging, tail risk, stress testing |
+| **Financial Planning & Variance** | Budgeting, forecasting, performance metrics, escalation triggers | Blocks budget/forecast decisions, triggers escalation | Forecast accuracy, variance >10%, cash flow stress, KPI targets |
+| **Corporate Finance & Capital Structure** | Debt/equity decisions, refinancing, covenant compliance | Affects ≥2 stakeholders (CFO + Treasurer, CEO + Board) | Interest rate changes, debt covenants, refinancing windows, credit ratings |
 
 ---
 
@@ -73,22 +86,20 @@ Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Ma
 
 | Level | % | Complexity | Frameworks | Theory:Practice | Min Requirements |
 |-------|---|------------|------------|-----------------|------------------|
-| **F** | 20±5 | Single variable, clear constraints | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
-| **I** | 40±5 | 2–3 variables, ambiguous constraints | 2–3, compare trade-offs | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
-| **A** | 40±5 | Multi-variate, conflicting constraints | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
+| **F** | 25±5 | Single variable, clear constraints | 1–2 standard | 60:40 | 2-step logic, 1 framework, 1 limitation, 1 citation |
+| **I** | 50±5 | 2–3 variables, ambiguous constraints | 2–3, compare trade-offs | 40:60 | 3-step logic, 2 frameworks, trade-offs, 2 limitations, 2+ citations |
+| **A** | 25±5 | Multi-variate, conflicting constraints | 3+, critique/adapt | 20:80 | 4–5 step logic, 3+ frameworks, alternatives, roadmap, 3+ limitations, 3+ citations |
 
 ---
 
-## Answer Structure
+## Answer Structure (150–250w, streamlined)
 
-1. **Context** (1–2 sent): Restate scenario and challenge
-2. **Analysis** (2–3 sent): Diagnose root causes [Ref: ID]; state assumptions
-3. **Reasoning** (3–4 sent): Step-by-step logic [Ref: ID]; cause-effect
-4. **Recommendations** (3–4 sent): Actionable steps, priorities, trade-offs [Ref: ID]
-5. **Implementation** (I/A, 2–3 sent): Sequence, timelines, resources
-6. **Metrics** (I/A, 1–2 sent): Success measures, outcomes, timeframes
-7. **Limitations** (2–3 sent): Constraints, "when NOT to use", risks [Ref: ID]
-8. **Key Insight** (with question): Non-obvious, decision-useful, falsifiable
+1. **Context** (~25w): Restate scenario, decision point, challenge
+2. **Analysis** (~40w): Root causes, frameworks [Ref: ID], assumptions, quantified impact
+3. **Reasoning** (~50w): Step-by-step logic [Ref: ID], trade-offs, alternatives
+4. **Recommendations** (~50w): Actionable steps, priorities, decision criteria [Ref: ID]
+5. **Limitations** (~20w): Constraints, "when NOT to use", risks [Ref: ID]
+6. **Key Insight**: Non-obvious, decision-useful, falsifiable, quantified
 
 ---
 
@@ -108,38 +119,32 @@ Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Ma
 
 ---
 
-## Process
+## Process (Minimal Viable, 4–6h)
 
-1. **Reference Collection**: Collect G#≥10, T#≥5, L#≥6, A#≥12 BEFORE Q&A; verify language mix, recency, diversity
-2. **Topic Planning**: Select 6 domains | Allocate 4–6 Q&A each (25–30 total) | Assign F:I:A = 20:40:40 (±5pp)
-3. **Q&A Generation**: Scenario-based questions ("How would you...", "You observe..."), single ask, ≥70% test judgment | Follow answer structure | Cite [Ref: ID] | Include alternatives + "when NOT to use" | Checkpoint per 5 Q&A
-4. **Artifacts**: Create ≥1 diagram + ≥1 table per domain
-5. **Validation**: Run 18-check list—ALL PASS required; FAIL → fix → re-validate
+1. **Reference Collection** (1–1.5h): Collect G#≥8, T#≥4, L#≥5, A#≥8 BEFORE Q&A; verify language mix, recency, diversity
+2. **Topic Planning** (30min): Select 3–4 decision-critical domains | Allocate 1–3 Q&A each (6–12 total) | Assign F:I:A = 25:50:25 (±5pp)
+3. **Q&A Generation** (2–2.5h): Scenario-based questions ("How would you...", "You observe..."), single ask, ≥70% test judgment | Follow answer structure | Cite [Ref: ID] | Include alternatives + "when NOT to use" | Quantify impact | Checkpoint per 3 Q&A
+4. **Artifacts** (30–45min): Create ≥1 diagram + ≥1 table per domain (compressed)
+5. **Validation** (30–45min): Run 12-check list—ALL PASS required; FAIL → fix → re-validate
 
 ---
 
-## Validation Checklist
+## Validation Checklist (12 Streamlined Checks)
 
 | # | Check | Criteria | Purpose |
 |---|-------|----------|---------|
-| 1 | Ref counts | G≥10, T≥5, L≥6, A≥12 | Source sufficiency |
-| 2 | Q&A counts | 25–30, F:I:A 20:40:40 (±5pp) | Scope compliance |
-| 3 | Citations | ≥70% ≥1 [Ref], ≥30% ≥2 | Evidence-based |
-| 4 | Language | EN 50–70%, ZH 20–40%, Other 5–15% | Diverse views |
-| 5 | Recency | ≥50% <3yr (≥70% digital) | Current practices |
-| 6 | Diversity | ≥3 types, no source >25% | Avoid bias |
+| 1 | **Decision Criticality** | 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) | Core requirement |
+| 2 | Ref counts | G≥8, T≥4, L≥5, A≥8 | Source sufficiency |
+| 3 | Q&A counts | 6–12 total, 3–4 domains, F:I:A 25:50:25 (±5pp) | Scope compliance |
+| 4 | Citations | ≥70% ≥1 [Ref], ≥30% ≥2 | Evidence-based |
+| 5 | Language | EN 60–70%, ZH 20–30%, Other 5–10% | Diverse views |
+| 6 | Recency | ≥50% <3yr (≥70% for rates/markets) | Current practices |
 | 7 | Links | All functional/archived, prefer DOIs | Verifiable |
-| 8 | Cross-refs | All [Ref: ID] resolve | No broken cites |
-| 9 | Word count | Sample 5: all 150–300 | Consistency |
-| 10 | Insights | All concrete, non-obvious, decision-useful | High-value |
-| 11 | Per-cluster | Each: ≥2 auth + ≥1 tool | Balanced |
-| 12 | Frameworks | ≥80% correct + cited + limitations | Accuracy |
-| 13 | Judgment | ≥70% scenario-based | Decision-making |
-| 14 | Accuracy | Sample 5: cross-validated | Error detection |
-| 15 | Balance | ≥50% trade-offs/limitations/alternatives | Honesty |
-| 16 | Reasoning | ≥60% step-by-step logic | Clear thinking |
-| 17 | Artifacts | Each domain: ≥1 diagram + ≥1 table | Visual support |
-| 18 | TOC | Present with working links | Navigation |
+| 8 | Word count | Sample 5: all 150–250w | Consistency |
+| 9 | Quantified Impact | All Q&As include metrics ($, %, bps, timeframe) | Decision-critical |
+| 10 | Trade-offs | ≥50% include alternatives, "when NOT to use" | Balanced |
+| 11 | Artifacts | Each domain: ≥1 diagram + ≥1 table | Visual support |
+| 12 | Final Review | All checks pass, TOC working, no broken cites | Readiness |
 
 **Final**: ✅ ALL PASS → deliver | ❌ List failures → fix → re-validate
 
@@ -155,31 +160,32 @@ Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Ma
 
 ---
 
-## Output Structure
+## Output Structure (Minimal Viable)
 
 ```markdown
-# Interview Q&A - Finance Professional
+# Finance Q&A - Decision-Critical Scenarios
 
 ## Contents
-[TOC with links to: Overview | 6 Domains | References (Glossary, Tools, Literature, Citations) | Validation]
+[TOC with links to: Overview | 3–4 Domains | References | Validation]
 
 ## Topic Overview
-| Domain | Range | Count | F/I/A |
-[Table showing distribution]
+| Domain | Range | Count | F/I/A | Decision Criticality |
+| **Capital Allocation & Valuation** | Q1–Q3 | 1–3 | 25/50/25 | Blocks M&A, capex, strategic pivot |
+| **Risk Management & Hedging** | Q4–Q6 | 1–3 | 25/50/25 | Creates material risk (>5% variance) |
+| **Financial Planning & Variance** | Q7–Q9 | 1–3 | 25/50/25 | Blocks budget/forecast decisions |
+| **Corporate Finance & Capital Structure** | Q10–Q12 | 1–3 | 25/50/25 | Affects ≥2 stakeholders |
 
 ## Domain 1: [Name]
 ### Q#: [Scenario]
-**Difficulty**: [F/I/A] | **Domain**: [Name]  
-**Key Insight**: [Non-obvious, decision-useful, falsifiable]
+**Difficulty**: [F/I/A] | **Domain**: [Name] | **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-**Answer** (150–300w):  
-**Context**: [Challenge]  
-**Analysis**: [Root causes] [Ref: ID]  
-**Reasoning**: [Steps] [Ref: ID]  
-**Recommendations**: [Actions] [Ref: ID]  
-**Implementation** (I/A): [Plan]  
-**Metrics** (I/A): [Targets]  
+**Answer** (150–250w):
+**Context**: [Challenge, decision point]
+**Analysis**: [Root causes, frameworks] [Ref: ID]
+**Reasoning**: [Steps, trade-offs] [Ref: ID]
+**Recommendations**: [Actions, decision criteria] [Ref: ID]
 **Limitations**: [Constraints, when NOT, risks] [Ref: ID]
+**Key Insight**: [Non-obvious, quantified, falsifiable]
 
 **Artifact**:
 ```
@@ -189,31 +195,33 @@ Generate 25–30 scenario-based Q&A pairs testing judgment for Senior Analyst/Ma
 [Repeat for all domains]
 
 ## Reference Sections
-### Glossary (≥10)
+### Glossary (≥8)
 **G#. Term**: Definition. **Use**: Context.
 
-### Tools (≥5)
-**T#. Name**: Desc. **Pricing**: $X. **Users**: $Xbn+ AUM. **Integrations**: [List]. **Update**: Q# YYYY. **URL**: [link]
+### Tools (≥4)
+**T#. Name**: Desc. **Pricing**: $X. **Users**: AUM/Users. **Update**: Q# YYYY. **URL**: [link]
 
-### Literature (≥6)
+### Literature (≥5)
 **L#.** Author (Year). *Title*. Publisher. [Topics]
 
-### Citations (≥12)
+### Citations (≥8)
 **A#.** Full APA 7th. DOI. [EN/ZH/Other]
 
 ## Validation Report
-[18-row table: # | Check | Criteria | Status | Notes]  
+[12-row table: # | Check | Criteria | Status | Notes]
 **Final**: ✅ ALL PASS or ❌ [failures]
 ```
 
 ---
 
-## Usage Summary
+## Usage Summary (Minimal Viable)
 
-1. Collect refs (G≥10, T≥5, L≥6, A≥12) BEFORE Q&A
-2. Generate 25–30 Q&A across 6 domains, F:I:A 20:40:40
-3. Create ≥1 diagram + ≥1 table per domain
-4. Run 18-check validation—ALL PASS required
-5. Use output structure with TOC, Q&A, references, validation
+1. **Collect refs** (1–1.5h): G≥8, T≥4, L≥5, A≥8 BEFORE Q&A; verify language mix, recency
+2. **Generate 6–12 Q&A** (2–2.5h): 3–4 decision-critical domains, F:I:A 25:50:25 | Quantify impact | Include trade-offs
+3. **Create artifacts** (30–45min): ≥1 diagram + ≥1 table per domain
+4. **Run 12-check validation** (30–45min): Decision Criticality (100%), Quantified Impact (100%), Citations, Trade-offs—ALL PASS required
+5. **Use output structure**: TOC, Q&A with Decision Criticality field, references, validation
 
-**Success Criteria**: 18 checks pass | Questions test judgment | Answers have citations, reasoning, limitations, alternatives | Insights non-obvious, decision-useful | References authoritative, diverse, current
+**Success Criteria**: 12 checks pass | 100% decision-critical | Questions test judgment on go/no-go decisions | Answers quantified + cited + trade-offs | Insights non-obvious, falsifiable | References authoritative, current, diverse
+
+**Effort**: 4–6h total | **Validity**: Evergreen (refresh annually or when financial context changes)

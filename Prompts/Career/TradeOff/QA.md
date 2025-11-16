@@ -1,10 +1,10 @@
-# Trade-Off Driven Software Architecture Interview Q&A Generator
+# Trade-Off Driven Software Architecture Q&A Generator
 
-Generate 25-30 senior/architect Q&As demonstrating trade-off analysis across constraints, stakeholders, lifecycle.
+Generate 6-12 decision-critical Q&As demonstrating trade-off analysis for informed decisions with limited time.
 
 **Context**: Distributed systems (>10K rps, >1TB data), cloud-native, multi-stakeholder, full SDLC  
 **Audience**: Senior devs (5+ years), architects, experts  
-**Success**: 35/35 validation PASS
+**Success**: 12/12 validation PASS | **Effort**: 4-6 hours | **Validity**: Evergreen (refresh annually or when architecture context changes)
 
 ## Core Principle
 
@@ -18,48 +18,48 @@ Decision = trade-off (optimize X at Y's expense), constraint-bounded, stakeholde
 
 | Aspect | Target |
 |--------|--------|
-| **Count** | 25-30 Q&As @ 20/40/40% F/I/A |
-| **Length** | 150-300 words (excl. code) |
-| **Structure** | Pattern → rationale → code → trade-offs → metrics |
-| **Citations** | ≥1/Q&A (≥2 adv); ≥12 total |
-| **Per Cluster** | Diagram + code + table + metrics |
+| **Count** | 6-12 Q&As @ 25% F / 50% I / 25% A |
+| **Length** | 150-250 words (excl. code) |
+| **Structure** | Scenario → insight → constraints → trade-offs → decision → metrics |
+| **Citations** | ≥1/Q&A; ≥8 total |
+| **Per Cluster** | ≥1 diagram + ≥1 table |
 
-## 6 Core Dimensions (MECE, 4-6 Q&As each)
+## Decision Criticality Framework (NEW - MANDATORY)
 
-1. **Structural**: Modularity vs simplicity, coupling vs autonomy, boundaries vs integration
-2. **Behavioral**: Consistency vs availability, sync vs async, orchestration vs choreography
-3. **Quality**: Performance vs maintainability, scalability vs cost, security vs usability
-4. **Data**: Normalization vs denormalization, consistency models, storage vs query
-5. **Integration**: REST vs gRPC, vendor lock-in vs managed services, custom vs third-party
-6. **Evolution**: Big bang vs incremental, compatibility vs debt, velocity vs quality
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Directly impacts architecture go/no-go, team scaling, or strategic pivot
+- **Creates Risk**: Material threat (performance regression, cost overrun >10%, compliance breach, team bottleneck)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Architect + SRE, PM + Dev, etc.)
+- **Requires Action**: 1-6mo action window (not speculative)
+- **Quantified Impact**: Latency ms, throughput rps, cost $, complexity %, team size
 
-## 10 Stakeholder Roles
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
+
+## 3-4 Decision-Critical Dimensions (MECE, 2-3 Q&As each)
+
+1. **Structural**: Modularity vs simplicity (team scaling, deployment frequency)
+2. **Behavioral**: Consistency vs availability (data correctness, system resilience)
+3. **Quality**: Performance vs maintainability (SLO compliance, team velocity)
+4. **(Optional) Data**: Normalization vs denormalization (query performance, storage cost)
+
+## ≥5 Core Stakeholder Roles (≥60% multi-stakeholder)
 
 | Role | Concerns | Priorities | Metrics |
 |------|----------|------------|---------|
-| **BA** | Requirements, domain | Completeness vs simplicity | Traceability, accuracy |
-| **PM** | Time-to-market, features | Speed vs quality | Release frequency, NPS |
 | **Architect** | System quality, coherence | Flexibility vs simplicity | NFR achievement, debt |
-| **Developer** | Maintainability | Abstraction vs explicitness | Build time, complexity |
-| **QA** | Quality, coverage | Automation vs manual | Escape rate, coverage |
-| **DevOps** | Deployment, pipeline | Automation vs flexibility | Frequency, MTTR, success |
-| **Security** | Risk, compliance | Security vs usability | Vulnerability count |
-| **Data** | Quality, schema | Normalization vs performance | Query performance |
+| **Developer** | Maintainability, velocity | Abstraction vs explicitness | Build time, complexity |
 | **SRE** | Reliability, observability | Availability vs cost | SLO, MTTR |
-| **Leadership** | ROI, risk, strategy | Cost vs capability | Revenue, TTM |
+| **PM** | Time-to-market, features | Speed vs quality | Release frequency, NPS |
+| **Security** | Risk, compliance | Security vs usability | Vulnerability count |
 
-## 8 Lifecycle Phases
+## 3-4 Decision-Critical Lifecycle Phases
 
 | Phase | Trade-Offs | Constraints | Authority |
 |-------|------------|-------------|-----------|
-| **Requirements** | Scope vs time | Resource, Business, Org | PM, BA, Lead |
-| **Design** | Flexibility vs simplicity | Technical, Org, Ecosystem | Arch, Sec, Data |
+| **Design** | Flexibility vs simplicity | Technical, Org, Ecosystem | Arch, Sec |
 | **Development** | Velocity vs quality | Resource, Technical | Dev, Arch |
-| **Testing** | Coverage vs speed | Resource, Operational | QA, Dev, Ops |
-| **Deployment** | Speed vs safety | Operational, Resource | Ops, SRE, Lead |
+| **Deployment** | Speed vs safety | Operational, Resource | SRE, Lead |
 | **Operations** | Availability vs cost | Operational, Technical | SRE, Ops |
-| **Maintenance** | Stability vs velocity | Regulatory, Operational | SRE, Sec, PM |
-| **Evolution** | Big bang vs incremental | Business, Org, Lifecycle | Arch, PM, Lead |
 
 ## 8 Constraint Categories (All Must Be Covered)
 
@@ -92,19 +92,18 @@ Decision = trade-off (optimize X at Y's expense), constraint-bounded, stakeholde
 
 **Precise**: Define jargon inline (CAP—Consistency/Availability/Partition), concrete ("<300ms p95" not "fast")
 
-## Required Per Q&A
+## Required Per Q&A (Minimal Viable)
 
-1. ≥3 forces
-2. 8 constraint impacts
-3. Quantified (+40% perf, +60% cost, +30% complexity)
-4. Stakeholder alignment/conflict
-5. Lifecycle ripples
-6. Context thresholds
-7. Mitigation
+1. ≥3 forces (quantified)
+2. ≥4 constraint impacts (technical, resource, business, operational)
+3. Quantified trade-off (+40% perf, +60% cost, +30% complexity)
+4. Stakeholder alignment/conflict (≥2 roles)
+5. Decision criteria (go/no-go thresholds)
+6. Mitigation strategy
 
-## Required Per Cluster
+## Required Per Cluster (Compressed)
 
-Diagram (<120 nodes) + Code (10-30 lines) + Table (≥3 alternatives) + Metrics (formula, vars, target, constraint)
+≥1 diagram (<80 nodes) + ≥1 table (≥3 alternatives, ≥6 columns)
 
 ## Essential Trade-Off Patterns (Ensure Coverage)
 
@@ -122,72 +121,80 @@ Diagram (<120 nodes) + Code (10-30 lines) + Table (≥3 alternatives) + Metrics 
 
 **Cross-Cutting**: Build vs Buy (core vs commodity, <3 vs >20 eng), Automation vs Manual (>100 vs <10 deploys/mo), Standardization vs Autonomy (>50 vs <10 eng)
 
-## References
+## References (Proportional 60% Reduction)
 
 | Component | Min | Requirements |
 |-----------|-----|--------------|
-| **Glossary** | ≥20 | Terms + relations; 8 constraints + 10 stakeholders |
-| **Tools** | ≥5 | URL, update ≤18mo, pricing |
-| **Literature** | ≥6 | Authoritative (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
-| **Citations** | ≥12 | APA 7th; 60/30/10% EN/ZH/other (±10%) |
+| **Glossary** | ≥10 | Decision-critical terms only (3-4 dimensions + 5 core stakeholders) |
+| **Tools** | ≥3 | URL, update ≤18mo, decision-critical only |
+| **Literature** | ≥4 | Canonical references only (Fowler, Evans, Vernon, Richardson, Kleppmann) |
+| **Citations** | ≥8 | APA 7th; 60/30/10% EN/ZH/other (±10%) |
 
-**Quality**: Recency (≥50% last 3yr), Diversity (≥3 types, <25% single), 100% valid links
+**Quality**: Recency (≥50% last 3yr), Diversity (≥2 types), 100% valid links
 
 ---
 
 # Generation Process
 
-## 1. Plan Structure
+## 1. Plan Structure (Streamlined)
 
-1. Select 5-6 clusters across 6 dimensions (central trade-off)
-2. Allocate 4-6 Q&As/cluster (25-30 total, 1F/2I/2A each)
-3. Map patterns, 8 constraints, 10 stakeholders, 8 phases (full coverage)
+1. Select 3-4 decision-critical clusters (Structural, Behavioral, Quality, ±Data)
+2. Allocate 2-3 Q&As/cluster (6-12 total, 25% F / 50% I / 25% A)
+3. Map patterns, ≥4 constraints, ≥5 core stakeholders, 3-4 phases (decision-critical only)
 4. Define thresholds (≥70% Q&As)
 
-**Example**: "Modularity vs Simplicity vs Performance" (Structural), "Consistency vs Availability vs Scale" (Behavioral)
+**Example**: "Modularity vs Simplicity" (Structural, team scaling), "Consistency vs Availability" (Behavioral, data correctness)
 
-**Checks**: 25-30 total; 20/40/40% F/I/A; ≥3 forces; full coverage; ≥70% thresholds
+**Checks**: 6-12 total; 25/50/25% F/I/A; ≥3 forces; decision-critical coverage; ≥70% thresholds
 
-## 2. Build References
+## 2. Build References (Compressed)
 
-Glossary (≥20, include 8 constraints + 10 stakeholders) → Tools (≥5) → Literature (≥6) → Citations (≥12, 60/30/10% EN/ZH/Other)
+Glossary (≥10) → Tools (≥3) → Literature (≥4) → Citations (≥8, 60/30/10% EN/ZH/Other)
 
-## 3. Write Q&As
+## 3. Write Q&As (Streamlined)
 
 **Questions**: ≥70% judgment ("How would you..." / "When..." / "Compare..."); multi-dimensional constraints
 
-**Answer**: Header (difficulty, dimension, phase, stakeholders) → Insight (quantified, 1 sentence) → Constraints (≥4, interactions) → Body (150-300 words: rationale, trade-offs, conflicts, ripples, thresholds, mitigation) → Citations (≥1, ≥2 adv) → Code (10-30 lines) → Metrics → Trade-offs (≥3 alt, ≥8 cols) → Stakeholder Matrix (≥3 roles)
+**Answer**: Header (difficulty, dimension, phase, stakeholders) → Insight (quantified, 1 sentence) → Constraints (≥4, interactions) → Body (150-250 words: rationale, trade-offs, conflicts, decision criteria, mitigation) → Citations (≥1) → Trade-offs (≥3 alt, ≥6 cols) → Stakeholder Matrix (≥2 roles)
 
-**Validate Every 5**: Count, citations, syntax, traceability, type, quantification, ≥3 forces, ≥4 dims, ≥4 constraints, conflicts, ripples, thresholds
+**Validate Every 3**: Count, citations, syntax, traceability, quantification, ≥3 forces, ≥4 constraints, conflicts, decision criteria
 
-## 4. Create Artifacts
-Per Cluster: Diagram (<120 nodes) + Code (10-30 lines) + Table (≥3 alt) + Metrics
+## 4. Create Artifacts (Compressed)
+Per Cluster: ≥1 Diagram (<80 nodes) + ≥1 Table (≥3 alt, ≥6 cols)
 
 ## 5. Link References
 Populate → Extract → Verify → Remove orphans → Validate URLs
 
-## 6. Validate (35 Checks)
+## 6. Validate (12 Checks - Streamlined)
 
-**Baseline (1-19)**: Counts (G≥20, T≥5, L≥6, A≥12, Q=25-30 @20/40/40%) | Citations (≥70% ≥1; ≥30% ≥2) | Language (60/30/10%) | Recency (≥50% 3yr) | Diversity (≥3 types, <25% single) | Links (100%) | Cross-refs (100%) | Words (150-300) | Quantified (100%) | Per-topic (≥2 sources + ≥1 tool) | Traceability (≥80%) | Judgment (≥70%) | Artifacts (≥90% 4/4) | Patterns (≥80%) | Metrics (≥60%) | Code (≥80%) | Syntax (100%) | Formulas (100%) | Review (10/10)
+**Essential (1-12)**:
+1. Counts (G≥10, T≥3, L≥4, A≥8, Q=6-12 @25/50/25%)
+2. Citations (≥100% ≥1; ≥50% ≥2)
+3. Language (60/30/10%)
+4. Recency (≥50% 3yr)
+5. Links (100%)
+6. Words (150-250)
+7. Quantified (100%)
+8. Decision Criticality (100% satisfy ≥1 criterion)
+9. Forces (100% ≥3)
+10. Constraints (100% ≥4; ≥4 overall)
+11. Conflicts (≥80%)
+12. Mitigation (≥70%)
 
-**Trade-Off (20-35)**: Forces (100% ≥3) | Dimensions (100% ≥4) | Tables (100% ≥3 alt, ≥8 cols) | Thresholds (≥70%) | Constraints (100% ≥4; all 8 overall) | Interactions (≥80%) | Stakeholders (100% ≥3; all 10 overall) | Conflicts (≥80%) | Alignment (≥80%) | Lifecycle (all 8) | Ripples (≥60% ≥2) | Mitigation (≥70%) | Hardware (≥40%) | Business (≥30%) | Ecosystem (≥30%) | Quantified (100%)
+**Fail Protocol**: ANY fail → STOP → Fix → Re-validate ALL → 12/12 PASS
 
-**Fail Protocol**: ANY fail → STOP → Fix → Re-validate ALL → 35/35 PASS
-
-## 7. Final Review (10 Criteria—All PASS)
+## 7. Final Review (8 Criteria—All PASS)
 
 1. **Clarity**: Logical, consistent, jargon defined
-2. **Accuracy**: Verifiable facts, valid code/diagrams, sound metrics
-3. **Completeness**: 6 dims (4-6 each), 8 constraints, 10 stakeholders, 8 phases, 35/35 PASS
-4. **Trade-Off Centrality**: 100% ≥3 forces, multi-dimensional
+2. **Accuracy**: Verifiable facts, valid diagrams, sound metrics
+3. **Completeness**: 3-4 dims (2-3 each), ≥4 constraints, ≥5 stakeholders, 3-4 phases, 12/12 PASS
+4. **Trade-Off Centrality**: 100% ≥3 forces, multi-dimensional, decision-critical
 5. **Quantification**: 100% quantified ≥4 dims, numerical
-6. **Stakeholder Multi-Perspective**: ≥3 views, conflicts, alignment; all 10 covered
-7. **Lifecycle Integration**: ≥60% ≥2 ripples
-8. **Context Sensitivity**: ≥70% thresholds
-9. **Practicality**: Actionable, production code, measurable, mitigation
-10. **Self-Correction**: No redundancy/gaps/orphans
+6. **Stakeholder Multi-Perspective**: ≥2 views, conflicts, alignment; ≥5 core roles covered
+7. **Decision Criteria**: ≥70% thresholds, go/no-go defined
+8. **Practicality**: Actionable, measurable, mitigation
 
-**Submit**: 35/35 + 10/10 | **High-Risk**: Syntax, URLs, cross-refs
+**Submit**: 12/12 + 8/8 | **High-Risk**: Decision Criticality, URLs, quantification
 
 ---
 
@@ -199,69 +206,61 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 
 ## Topic Areas
 | Cluster | Dimension | Count | Difficulty | Trade-Offs | Constraints |
-[6 dims, 25-30 total, 20/40/40% F/I/A]
+[3-4 dims, 6-12 total, 25/50/25% F/I/A]
 
 ---
 
 ## Topic 1: [Title]
-**Overview**: [1-2 sentences]  
+**Overview**: [1-2 sentences]
 **Core Trade-Off**: [Tension]
 
 ### Q1: [Question]
-**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [Phase(s)] | **Stakeholders**: [≥3]
+**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [Phase(s)] | **Stakeholders**: [≥2]
 
 **Insight**: [Quantified, ≥3 forces with numbers]
 
 **Constraints**: [≥4 categories, interactions]
 
-**Answer**: [150-300 words: rationale, trade-offs, conflicts, ripples, thresholds, mitigation] [≥1 cite]
-
-**Implementation** ([Lang]):
-```[lang]
-// 10-30 lines
-```
+**Answer**: [150-250 words: rationale, trade-offs, conflicts, decision criteria, mitigation] [≥1 cite]
 
 **Diagram** (per cluster):
 ```mermaid
-[<120 nodes]
+[<80 nodes]
 ```
 
-**Metrics**:
-| Metric | Formula | Variables | Target | Constraint | Justification |
-
 **Trade-offs** (≥3 alt):
-| Approach | Pros | Cons | Use When | HW | Budget | Business | Complexity | Risk | Lifecycle | Tag |
+| Approach | Pros | Cons | Use When | Technical | Business | Complexity | Risk | Tag |
 
-**Stakeholder Matrix** (≥3):
-| Stakeholder | Concern | Priority | Criteria | Position | Alignment |
+**Stakeholder Matrix** (≥2):
+| Stakeholder | Concern | Priority | Position | Alignment |
 
 ---
 
 ## References
 
-### Glossary (≥20)
+### Glossary (≥10)
 **G1. [Term]** [Lang]: [Definition]. **Related**: [Terms]
 
-### Tools (≥5)
+### Tools (≥3)
 **T1. [Tool]** [Tag]: [Purpose]. Updated: [YYYY-MM]. [URL]
 
-### Literature (≥6)
+### Literature (≥4)
 **L1. Author(s). (Year). *Title*. Publisher.** [Tag]
 
-### Citations (≥12, APA 7th, 60/30/10%)
+### Citations (≥8, APA 7th, 60/30/10%)
 **A1.** Author(s). (Year). *Title*. Source. [Lang]
 
 ---
 
 ## Validation
 | # | Check | Target | Result | Status |
-[35 checks]
+[12 checks]
 
-**Overall**: [X/35 PASS]  
-**Issues**: [Failures]  
+**Overall**: [X/12 PASS]
+**Issues**: [Failures]
 **Fix**: [Actions]
 
-**Coverage**: 8 Constraints: [counts] | 10 Stakeholders: [counts] | 8 Phases: [counts]
+**Coverage**: ≥4 Constraints: [counts] | ≥5 Stakeholders: [counts] | 3-4 Phases: [counts]
 ```
 
 # Reference Example: Complete Q&A
