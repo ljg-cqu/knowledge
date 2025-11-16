@@ -1,103 +1,107 @@
-# Financial & Economic News Intelligence Q&A Generator
+# Financial & Economic News Intelligence Q&A Generator (Minimal Viable)
 
-Generate 10–14 Q&As transforming recent financial/economic news into actionable intelligence across 6 categories, 6 planning cycles, 11 stakeholder roles.
+Generate 4–6 decision-critical Q&As from recent financial/economic news—minimal viable tracking for informed decisions with limited time.
 
-## Scope & Constraints
+**Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
 
-**Domain**: Corporate finance, treasury, capital markets, M&A, macro trends, compliance. Organizations with structured financial planning (all sizes, all industries).
+**Freshness** (all news must meet these age thresholds):
+- **High-Velocity** (Capital Markets, Macro): ≥85% <1mo (≥30% 1-7d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (M&A, Treasury, Reporting): ≥70% <2mo (≥20% 1-7d), ≥90% <3mo, 100% ≤6mo
+- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
 
-**Exclude**: Technical operations, commercial/sales execution, product strategy, early-stage fundraising, marketing, unverified rumors, stale news (HV >4mo, MV >6mo).
+**Scope**: Decision-critical financial news only—rate changes, M&A deals, macro shifts, treasury/FX moves, compliance deadlines. For CFO/FP&A/Treasury teams.
 
-**Freshness** (category-adaptive):
-- **HV** (Capital Markets, Macro): ≥75% <1mo (≥25% 1-7d), ≥90% <2mo, 100% ≤4mo
-- **MV** (M&A, Treasury, Reporting): ≥65% <2mo (≥15% 1-14d), ≥85% <3mo, 100% ≤6mo
-- **Overall**: ≥70% <2mo, ≥85% <4mo, 100% ≤6mo
-- **Validity**: Expires 4 weeks; re-validate if >2mo
+**Exclude**: Technical operations, commercial/sales execution, product strategy, early-stage fundraising, marketing, unverified rumors, stale news, nice-to-have trends.
 
-**Categories** (6, each Q covers ≥2):
-1. **Capital Markets/Rates**: Rate changes (Fed/ECB/BoE/BoJ), equity (IPO/valuations), credit (spreads/covenants), capital raising (debt/equity terms), yields (LIBOR/SOFR)
-2. **Macro Trends**: Indicators (GDP/CPI/unemployment/PMI), recession signals, sector trends, commodities, trade policy, regional divergence
-3. **M&A/Corp Dev**: Transactions/valuations, consolidation, divestitures, deal structures, multiples, partnerships, CVC
-4. **Treasury/FX**: Currency volatility, FX hedging, cash/working capital, debt refinancing, credit facilities, liquidity stress, counterparty risk
-5. **Reporting/Compliance**: Standards (ASC 606/842, IFRS), SEC disclosure, tax law, SOX, audit governance, revenue recognition
-6. **IR/Capital Structure**: Activism, earnings guidance, allocation (dividends/buybacks/M&A), ratings, convertible debt, secondaries
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts capital allocation, debt/equity structure, M&A go/no-go, liquidity crisis
+2. **Creates Risk**: Material threat to financial stability, regulatory compliance, credit rating, cash flow
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (CFO + Treasurer, CFO + Corp Dev, etc.)
+4. **Requires Action**: 1-6mo action window (not speculative)
+5. **Quantified Impact**: WACC %, liquidity $, valuation multiple, tax $, cash flow $, IRR
 
-**News Relevance** (≥2 required, Recency mandatory):
-1. Recency per freshness guarantee
-2. Planning Cycle Impact (≥2 cycles)
-3. Stakeholder Breadth (≥3 roles)
-4. Decision Urgency (1-6mo)
-5. Financial Significance (capital/liquidity/assumptions shift)
-6. Quantified Impact (measurable financial metrics)
+**Categories** (3-4, each Q covers ≥1):
+1. **Capital Markets/Rates**: Rate changes (Fed/ECB/BoE/BoJ), equity valuations, credit spreads affecting WACC/refinancing
+2. **Macro Trends**: Indicators (GDP/CPI/unemployment), recession signals, sector trends affecting assumptions
+3. **M&A/Corp Dev**: Transactions, valuations, multiples affecting strategy
+4. **Treasury/FX** (optional): Currency volatility, liquidity stress, debt refinancing affecting cash position
 
-**Answer Format** (250-400w): News summary (age per guarantee) → Financial impact (≥2 cycles, ≥2 roles, quantified) → Decision (Execute/Hedge/Defer/Monitor/Avoid) → Action timeline (immediate/short/medium) → Optional projections (source, confidence, scenarios).
+**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 cycles, ≥2 roles) + decision (Execute/Hedge/Defer/Monitor/Avoid + rationale) + timeline (immediate/short). Projections only if sourced.
 
-## Requirements
+## II. Requirements
 
-### Floors
+**Q&A**: 4-6 total | 1-2/cycle | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-**Q&A**: 10-14 | 1-2/cycle | 250-400w | 100% news-driven (≥1 per freshness) | ≥80% ≥1 cite, ≥35% ≥2 cites | ≥2 categories + impact + decision
+**Cycles** (3-4, 1-2 Q each): Capital Allocation, Liquidity/Cash, M&A/Corp Dev, Risk/Compliance (skip Annual Budgeting, Quarterly Forecasting unless decision-critical)
 
-**Cycles** (6, 1-2 Q each): (1) Annual Budgeting, (2) Quarterly Forecasting, (3) Capital Allocation, (4) Liquidity/Cash, (5) M&A/Corp Dev, (6) Risk/Compliance
+**Category Coverage** (min): Capital Markets/Rates ≥50%, Macro ≥40%, M&A ≥40%, Treasury/FX ≥25% (optional)
 
-**Category Coverage**: Capital Markets/Rates 80%, Macro 70%, M&A 60%, Treasury/FX 75%, Compliance 55%, IR/Capital 65%
+**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Decision** (100%): Impact (≥2 cycles, ≥2 roles, quantified: WACC/liquidity/valuation/tax/cash flow) + Decision (Execute/Hedge/Defer/Monitor/Avoid + rationale + alternatives) + Action (immediate/short/medium)
+**Stakeholders** (≥5/11): CFO, VP Finance, Treasurer, Corp Dev, FP&A (core roles only)
 
-**Stakeholders** (≥8/11): CFO, VP Finance, Treasurer, Controller, Corp Dev, IR, FP&A, Tax Director, M&A Analyst, Risk Officer, Board Finance
+**References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), M≥2-3 (M&A), T≥2 (Treasury), R≥2 (research), A≥6 (APA 7th+tag)
 
-**References** (build before Q&A): G≥12 (100% terms/acronyms with formulas), N≥8, E≥5, M≥4, F≥4, R≥4, A≥12 (APA 7th)
+**Visuals**: ≥2 diagrams + ≥1 table
 
-**Visuals**: ≥6 diagrams + ≥3 tables
+**Quality Gates** (fail ANY = stop):
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
+2. **News**: 100% cite ≥1 per freshness; 0% rumors/speculation
+3. **Impact**: 100% ≥2 cycles + ≥2 roles + quantified (WACC%, liquidity$, valuation multiple, tax$, cash flow$, IRR)
+4. **Decision**: 100% decision + rationale + timeline
+5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
+6. **Actionability**: 100% concrete; 0% abstract
 
-### Quality Gates (fail ANY = stop, fix, re-validate ALL)
+## III. Execution
 
-1. **News**: 100% cite ≥1 per freshness; 0% rumors
-2. **Impact**: 100% ≥2 cycles + ≥2 roles + quantified
-3. **Decision**: 100% with rationale + timeline + criteria + metrics (NPV/IRR/payback/WACC)
-4. **Sources**: ≥5 types, max 35%/type; ≥1 news + ≥1 analysis/cycle; 100% URLs valid
-5. **Coverage**: ≥8/11 roles; categories per floors
-6. **Actionability**: 100% concrete + timelines + owners; 0% abstract
+### Step 1: News Discovery & Curation (Minimal)
 
-## Execution
+**Record generation date (YYYY-MM-DD)**—calculate all news ages from this.
 
-### Step 1: News Discovery
+1. **Domain**: Financial/economic sector + period (e.g., "Tech Finance Q4 2024")
 
-**Record generation date (YYYY-MM-DD)**—all ages from this date.
+2. **Search** (≥10-15 candidates, tiered):
 
-1. **Domain**: Industry/sector + period (e.g., "Enterprise Tech Finance Q3-Q4 2024")
+   **Tier 1** (1-7d, search first): `"Fed|ECB rate decision"`, `"interest rates|yield curve"`, `"GDP|CPI|unemployment"`, `"[Sector] acquisition|merger"` + 1-7d
+   
+   **Tier 2** (7-14d if insufficient): Same + 7-14d
 
-2. **Search** (≥20-30 candidates, tiered):
-   - **T1 (1-7d)**: Rates, markets, macro, FX, M&A queries
-   - **T2 (7-14d)**: HV categories if T1 insufficient
-   - **T3 (2-4wk/2-3mo)**: HV/MV backfill if T1+T2 insufficient
+   **Sources** (whitelist, prioritize):
+   - **Capital Markets**: Fed/ECB/BoE/BoJ, WSJ, Bloomberg, FT, Reuters
+   - **Macro**: BLS, BEA, ISM, central bank reports
+   - **M&A**: MergerMarket, PitchBook, company announcements
+   - **Treasury/FX**: Bloomberg FX, Treasury Today, central bank reports
+   - **Research**: McKinsey, BCG, Bain, S&P, Moody's, Fitch
+   - **Avoid**: PR fluff, rumors, speculation, clickbait
 
-   **Queries**: `"Fed|ECB rate decision"`, `"interest rates|yield curve"`, `"GDP|CPI|unemployment"`, `"USD|EUR currency volatility"`, `"[Domain] acquisition|merger"`
+   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Bloomberg Terminal
 
-   **Sources**: Central banks (Fed/ECB/BoE/BoJ, BIS), Economic data (BLS/BEA/ISM), Capital markets (WSJ/Bloomberg/FT/Reuters), M&A (MergerMarket/PitchBook), Financial news (WSJ/FT/Bloomberg), Accounting/Tax (FASB/IRS/Deloitte/PwC), Treasury/FX (Treasury Today/Bloomberg FX), IR (NIRI), Research (McKinsey/BCG/Bain), Credit (S&P/Moody's/Fitch), Regulatory (SEC/FASB/IASB). **Avoid**: Promotional, rumors, clickbait.
+3. **Curate** (≥10-15 candidates: Capital Markets ≥4, Macro ≥3, M&A ≥2, Treasury ≥2):
+   - ✅ Age per freshness
+   - ✅ Whitelist OR primary source
+   - ✅ Satisfies ≥1 Decision Criticality criterion
+   - ✅ Specific details (dates, names, numbers, metrics)
+   - ✅ Not rumors/speculation
+   - ✅ Relevant to ≥2 roles
 
-   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:YYYY-MM-DD`), Bloomberg Terminal, Fed Watch
+4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-   **Age Target**: HV <1mo ≥75% (1-7d ≥25%), MV <2mo ≥65% (1-14d ≥15%), Overall <2mo ≥70%
+5. **Allocate**: 4-6 Q × 3-4 cycles (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
 
-3. **Curate** (≥14: Capital Markets ≥4, Macro ≥3, M&A ≥3, Treasury ≥3, Compliance ≥2, IR ≥2):
-   - ✅ Age per freshness | ✅ Whitelist OR primary source | ✅ ≥2 relevance criteria | ✅ 0% rumors | ✅ Specific details
+### Step 2: Build References (Minimal)
 
-4. **Verify**: Count by category/age; if fails, return to T1-T3
+**Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | M# (M&A, companies, valuation, URL) | T# (treasury, instrument, terms, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
-5. **Allocate**: 10-14 Q across 6 cycles (1-2 each), 6 categories (≥2/Q), 11 roles (≥8 total)
+**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
 
-6. **Cadence**: Monthly refresh
+**Floors**: G≥8 (100% terms used), N≥4-5, M≥2-3, T≥2, R≥2, A≥6
 
-### Step 2: Build References (before Q&A)
-
-**Format**: G# (term, def+analogy/formula, context) | N# (news, source, date, category, impact, URL, justification if HV >1mo/MV >3mo) | E# (indicator, source, date, reading, trend, implication, URL) | M# (deal, companies, valuation, multiple, URL) | F# (instrument, terms, pricing, use, URL) | R# (research, firm, date, findings, URL) | A# (APA 7th)
-
-**Citation**: `[Ref: N1][n1]` in text, `[n1]: URL` at end
-
-**Floors**: G≥12 (100% terms/acronyms/metrics), N≥8 (100% URLs+dates), E≥5, M≥4, F≥4, R≥4, A≥12
-
-**Glossary** (100% coverage): ALL terms (EBITDA/DCF/WACC/IRR/NPV/EPS/LIBOR/SOFR/ASC 606), metrics (debt/equity, coverage ratios), concepts (yield curve inversion, covenant-lite, convertible notes, accretive/dilutive) | Plain language, real-world analogies, formulas with calculations, decision context, concrete examples
+**Glossary** (only terms used in Q&As):
+- **Coverage**: Only terms/acronyms used (WACC, IRR, NPV, EBITDA, DCF, etc.)
+- **Clarity**: Plain language, avoid jargon
+- **Analogies**: 1-2 real-world comparisons per term
+- **Context**: Why it matters for decisions
+- **Examples**: Real numbers
 
 ### Step 2.5: Opportunistic Refresh (optional, default: skip)
 
@@ -105,159 +109,131 @@ Generate 10–14 Q&As transforming recent financial/economic news into actionabl
 
 **Actions**: Quick search → Add 1-2 "BREAKING" → Adjust 1-2 Qs → Document
 
-### Step 3: Generate Q&A (batch 3-4, self-check each)
+### Step 3: Generate Q&A (batch 2-3, self-check each)
 
-**Pre-check**: Review glossary (G1-G12+). Track ALL terms. Verify 100% defined with formulas. Add missing immediately.
+**Before**: Review glossary. Track ALL terms used.
 
-**Question Patterns**: "[Rate News] implications for [Cycle] and [Roles]?" | "[Macro News]: impact on [Planning]?" | "[M&A Deal]: valuation lessons for [Corp Dev]?" | "[FX News]+[Projection]: hedging strategies?"
+**Patterns**: "[Rate News] implications for [Cycle]+[Roles]?" | "[Macro News]: impact on [Planning]?" | "[M&A Deal]: valuation implications?" | "[FX News]: hedging strategy?"
 
-**Avoid**: Generic "What is X?", commercial/GTM, technical, speculation, stale news
+**Avoid**: Generic questions, speculation, stale news, unattributed claims
 
-**Answer** (250-400w):
-1. **News** (~60w): What, when, who, why, category + `[Ref: N#][n#], [E#][e#]`
-2. **Impact** (~110w): ≥2 cycles + quantified (WACC %, liquidity $, valuation multiple, tax $, cash flow $, IRR)
-3. **Stakeholders** (~70w): ≥2 roles + concerns + actions + authority (CFO for strategic)
-4. **Decision** (~90w): Execute/Hedge/Defer/Monitor/Avoid + rationale + 1-2 alternatives + criteria (NPV, IRR, payback, WACC, debt/equity targets)
-5. **Action** (~60w): Immediate (0-2wk), Short (2wk-2mo), Medium (2-6mo) + owner + deliverable
-6. **Projections** (opt ~40w): "[Source] projects [outcome] by [time] with [confidence]. Scenarios: best/base/worst [ranges]" + `[Ref: R#][r#]`
-7. **Links**: Define at end: `[n1]: URL`, `[e1]: URL`
-8. **Artifacts**: 1-2 diagrams/tables
+**Structure** (120-200w):
+1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
+2. **Impact** (~50w): ≥2 cycles + quantified (WACC%, liquidity$, valuation multiple, tax$, cash flow$, IRR)
+3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
+4. **Decision** (~50w): Execute/Hedge/Defer/Monitor/Avoid + rationale + criteria
+5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
+6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age ✓ | ≥2 cycles ✓ | ≥2 roles ✓ | Decision ✓ | 250-400w ✓ | Quantified ✓ | ≥2/4 ≥2 cites ✓ | Artifact ✓ | Timeline ✓ | 0% speculation ✓ | 100% actionable ✓ | Projections attributed+scenarios+timed ✓ | **Terms in glossary+formulas ✓**
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% speculation | 100% actionable | All terms in glossary
 
-### Step 4: Create Visuals (≥6 diagrams + ≥3 tables, ≥60% referenced)
+### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
-**Types**: WACC/DCF models, capital structure, M&A valuations, scenario analyses (best/base/worst), liquidity waterfalls, covenant tracking, FX exposure, tax optimization, economic trends
+**Types**: WACC/DCF models, M&A valuations, scenario analyses (best/base/worst), liquidity waterfalls, decision trees
 
-**Format**: Mermaid (trees/waterfalls), Markdown tables (calculations, scenarios, indicators, multiples)
+**Format**: Mermaid (flows), Markdown tables (data)
 
 ### Step 5: Final Checks
 
-**References**: 100% [Ref: ID] resolve | News age ✓ | Fields complete | APA tags | G≥12 (100% terms+formulas) | N≥8 (6 cats) | E≥5 | M≥4 | F≥4 | R≥4 | A≥12 (40-60% news/economic, 25-35% research)
+**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | M≥2-3 | T≥2 | R≥2 | A≥6
 
-**Decision**: 100% decision + rationale + alternatives + criteria + timeline + metrics (NPV/IRR/WACC/payback)
+**Decision**: 100% decision + rationale + criteria + timeline
 
-**Stakeholders**: ≥8/11 roles | Actions + authority | Cross-role | CFO/Board for strategic
+**Stakeholders**: ≥5 roles | Actions + authority
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-**Quantitative**: Floors ✓ (G≥12, N≥8, E≥5, M≥4, F≥4, R≥4, A≥12, Q=10-14) | Glossary (100% terms, ≥60% formulas) | 6 cycles (1-2 Q each) | Categories (Markets 80%, Macro 70%, M&A 60%, Treasury 75%, Compliance 55%, IR 65%) | Stakeholders ≥8/11 | Citations (100% ≥1 news, ≥80% ≥1 cite, ≥35% ≥2) | Distribution (News 40-60%, Research 25-35%, Other 15-25%) | Words (5 samples 250-400) | Visuals (≥60% ref, ≥6 diagrams, ≥3 tables) | Decision 100% (+ metrics) | Timeline 100% | **Age per freshness**
+**Quantitative**: Floors met | Glossary 100% | 3-4 cycles | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
-**Qualitative**: News (per freshness, 0% speculation) | Impact (100% ≥2 cycles + ≥2 roles + quantified) | Decision (100% Execute/Hedge/Defer/Monitor/Avoid + alts + criteria) | Source diversity (≥5 types, max 35%) | Per-cycle (≥1 news + ≥1 analysis) | Links (100% valid) | Cross-refs (100% resolve) | Quantified (100% measurable) | Actionable (100% concrete, 0% abstract) | Anti-speculation (0% rumors, 100% verified) | Projections (100% attributed + scenarios + confidence + time) | Search doc (queries, sources, count)
+**Qualitative**: News per freshness, 0% speculation | Decision Criticality 100% | Impact 100% ≥2 cycles+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-cycle ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
 
 ### Step 7: Submit
 
-**Checklist** (all YES): Validations PASS | Floors met | **Glossary complete (100% terms, ≥60% formulas, 100% reader-friendly)** | TOC (6 cycles, Q ranges) | 0 placeholders | ≥6 diagrams + ≥3 tables | 100% cite ≥1 news | 100% impact (≥2 cycles, ≥2 roles, quantified + metrics) | 100% decision (+ rationale + metrics) | 100% timeline | Categories per thresholds | ≥8/11 roles | **Freshness met** | 0% speculation, 100% verified | Projections attributed+scenarios+confident+timed | URLs valid | **Dates (generation + expiration [+4wks])** | Search queries + sources documented
+**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
 
-## Validation Report
-
-Use Step 6 criteria. Fill table:
+## IV. Validation Report (Minimal)
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
-| 1 | **Freshness** | HV: __% <1mo (1-7d: __%), __% <2mo, __% ≤4mo \| MV: __% <2mo (1-14d: __%), __% <3mo, __% ≤6mo \| Overall: __% <2mo, __% <4mo, __% ≤6mo | Per guarantee | | PASS/FAIL |
-| 2 | **Floors** | G:__ N:__ E:__ M:__ F:__ R:__ A:__ Q:__ | ≥12, ≥8, ≥5, ≥4, ≥4, ≥4, ≥12, 10-14 | | PASS/FAIL |
-| 2a | **Glossary** | __% terms defined; __% with formulas; __% unfamiliar covered | 100%; ≥60%; 100% | | PASS/FAIL |
-| 3 | **Cycles** | Cycles __/6 (1-2 Q each); total Q __ | 6/6; 10-14 | | PASS/FAIL |
-| 4 | **Categories** | Markets __%, Macro __%, M&A __%, Treasury __%, Compliance __%, IR __% | ≥80%, ≥70%, ≥60%, ≥75%, ≥55%, ≥65% | | PASS/FAIL |
-| 5 | **Stakeholders** | Roles __/11 | ≥8 | | PASS/FAIL |
-| 6 | **Impact** | __% ≥2 cycles + ≥2 roles + quantified | 100% | | PASS/FAIL |
-| 7 | **Decision** | __% decision + rationale + alts + criteria + metrics | 100% | | PASS/FAIL |
-| 8 | **Timelines** | __% immediate/short/medium + owners | 100% | | PASS/FAIL |
-| 9 | **Citations** | __% ≥1 news; __% ≥1 cite; __% ≥2 cites | 100%; ≥80%; ≥35% | | PASS/FAIL |
-| 10 | **Distribution** | News __%, Research __%, Other __% | 40-60%, 25-35%, 15-25% | | PASS/FAIL |
-| 11 | **Diversity** | Types __; max %/type __ | ≥5; ≤35% | | PASS/FAIL |
-| 12 | **Per-Cycle** | __/6 cycles ≥1 news + ≥1 analysis | 6/6 | | PASS/FAIL |
-| 13 | **Words** | 5 samples: __% 250-400w | 100% | | PASS/FAIL |
-| 14 | **Visuals** | __% ref; diagrams __; tables __ | ≥60%; ≥6; ≥3 | | PASS/FAIL |
-| 15 | **Quantified** | __% measurable financial impact | 100% | | PASS/FAIL |
-| 16 | **Links** | __% URLs valid | 100% | | PASS/FAIL |
-| 17 | **Cross-Refs** | __% [Ref: ID] resolve | 100% | | PASS/FAIL |
-| 18 | **Actionable** | __% concrete; __% abstract | 100%; 0% | | PASS/FAIL |
-| 19 | **Projections** | If used: __% attributed; __% scenarios; __% confident; __% timed | 100%; 100%; 100%; 100% | | PASS/FAIL |
-| 20 | **Search** | Queries: Y/N \| Whitelist: Y/N \| Candidates: __ \| Accept: __% | Y; Y; ≥20; 55-75% | | PASS/FAIL |
-| | **Metadata** | Start: __ \| End: __ \| Expires: [+4wks] \| Refresh: Y/N (__) | | INFO |
-| | **Age Dist** | <1mo __% (1-7d __%, 8-21d __%, 22-30d __%) \| 1-2mo __% \| 2-4mo __% \| 4-6mo __% \| HV __%, MV __% | Per guarantee | | INFO |
+| 1 | **Freshness** | HV: __%<1mo (1-7d:__%), __%<2mo \| MV: __%<2mo (1-7d:__%) \| Overall: __%<2mo | Per header | | PASS/FAIL |
+| 2 | **Floors** | G:__ N:__ M:__ T:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥2-3,≥2,≥2,≥6,4-6 | | PASS/FAIL |
+| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | **Cycles** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
+| 5 | **Categories** | Markets__% Macro__% M&A__% Treasury__% | ≥50,40,40,25% | | PASS/FAIL |
+| 6 | **Roles** | __/11 | ≥5 | | PASS/FAIL |
+| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | **Impact** | __% ≥2cycles+2roles+quantified | 100% | | PASS/FAIL |
+| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
+| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
+| | **Age Dist** | <1mo__%(1-7d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |
 | | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
-## Question Quality (fails ≥3/11 = rewrite)
+## V. Question Quality (≥2 fails of 7 = rewrite)
 
-**Criteria**: News-driven (per freshness) | Cycle-specific (1-2 cycles, clear impact) | Multi-stakeholder (≥2 roles) | Multi-category (≥2 types) | Decision-focused | Quantified impact | Cross-cycle aware | Timely urgency | Alternative-aware (1-2 strategies) | Evidence-based | Actionable | Forward-looking (projections+scenarios)
+**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Cycle-specific (1-2 cycles) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
 
-**✓ Good**: 
-- "Fed 50bps rate cut (Sept 2024): debt refinancing and capital structure implications?"
-- "USD/EUR volatility +15% (Q4 2024): FX hedging for international revenue?"
-- "Salesforce acquires Slack $27.7B (12x revenue): M&A valuation benchmarks for SaaS?"
-- "Inflation 3.2% vs Fed 2% target (Nov 2024): budgeting and cost structure impact?"
-- "ASC 842 deadline (2025): compliance readiness for Controller?"
+**✓ Good**: "Fed 50bps rate cut (Sept 2024): refinancing implications?" | "USD/EUR volatility +15% (Q4 2024): hedging strategy?" | "Salesforce acquires Slack $27.7B (12x revenue): valuation benchmark?" | "Inflation 3.2% vs 2% target (Nov 2024): budgeting impact?" | "ASC 842 deadline (2025): compliance readiness?"
 
-**✗ Bad**: "How does WACC work?" (no news) | "What is M&A?" (overview) | "Should we raise debt?" (no trigger) | "Gong pipeline velocity" (commercial ops)
+**✗ Bad**: "How does WACC work?" (no news) | "What is M&A?" (overview) | "Should we raise debt?" (no trigger) | "Gong pipeline velocity" (commercial ops) | "Fed announced rate decision" (no decision)
 
-## Output Format
+## VI. Output Format (Minimal)
 
 ### A. TOC
+
 ```markdown
 # [Domain] Financial & Economic Intelligence Q&A ([Period])
 
 ## Contents
-1. Executive Summary (Overview | Insights | Dashboard)
-2. Cycle Coverage (6 cycles × 6 categories matrix)
-3. Questions by Cycle: Annual Planning (Q1-Q2) | Quarterly Forecast (Q3-Q4) | Capital Allocation (Q5-Q7) | Liquidity (Q8-Q9) | M&A/Corp Dev (Q10-Q11) | Risk/Compliance (Q12-Q14)
-4. References: G (G1-G12+) | N (N1-N8+) | E (E1-E5+) | M (M1-M4+) | F (F1-F4+) | R (R1-R4+) | A (A1-A12+)
-5. Validation Report (20 checks)
+1. Executive Summary (Insights | Dashboard)
+2. Cycle Coverage (3-4 cycles)
+3. Questions by Cycle: Capital Allocation (Q1-Q2) | Liquidity (Q3-Q4) | M&A/Corp Dev (Q5-Q6) | Risk/Compliance (Q7-Q8)
+4. References: G (G1-G8) | N (N1-N5) | M (M1-M3) | T (T1-T2) | R (R1-R2) | A (A1-A6)
+5. Validation (12 checks)
 ```
 
 ### B. Executive Summary
+
 ```markdown
 ## Executive Summary
 
-**Domain**: [Industry/Sector] | **Period**: [Q3-Q4 2024] | **Coverage**: [# items, 6 categories]
+**Domain**: [Sector] | **Period**: [Q3-Q4'24] | **Coverage**: [# items, 3-4 cats]
 
-**News**: Capital Markets ([#]: top 2-3+dates) | Macro ([#]: top 2) | M&A ([#]: top 1-2) | Treasury ([#]: top 1-2) | Compliance ([#]: top 1) | IR ([#]: top 1)
+**Insights**: 1. [News] ([Date]): [Impact] → [Decision] → [Timeline] (2 high-impact)
 
-**Insights**: 1. [News] ([Date]): [Impact] → [Decision] → [Timeline] (repeat 2-3 high-impact)
+**Dashboard**: [Table: Cycle | News | Decision | Timeline]
 
-**Dashboard**: [Table: Cycle | News | Action | Impact | Timeline]
-
-**Roles**: [9-10+counts] | **Refs**: G=[#] N=[#] E=[#] M=[#] F=[#] R=[#] A=[#]
+**Roles**: [5+ roles] | **Refs**: G=[#] N=[#] M=[#] T=[#] R=[#] A=[#]
 ```
 
 ### C. Cycle Overview
-| # | Cycle | Range | Count | Categories | News | Roles | Artifacts |
-|---|-------|-------|-------|------------|------|-------|-----------|
-| 1 | Annual Planning | Q1-Q2 | 1-2 | Macro, Compliance, IR | [Top] | CFO, FP&A, Board | 1D+1T |
-| 2 | Quarterly Forecast | Q3-Q4 | 1-2 | Macro, Markets, M&A | [Top] | CFO, FP&A, Controller | 1D+1T |
-| 3 | Capital Allocation | Q5-Q7 | 1-2 | Markets, M&A, IR | [Top] | CFO, Corp Dev, Board | 1D+1T |
-| 4 | Liquidity | Q8-Q9 | 1-2 | Treasury/FX, Markets | [Top] | CFO, Treasurer, Risk | 1D+1T |
-| 5 | M&A/Corp Dev | Q10-Q11 | 1-2 | M&A, Markets, Macro | [Top] | CFO, Corp Dev, M&A Analyst | 1D+1T |
-| 6 | Risk/Compliance | Q12-Q14 | 1-2 | Compliance, Treasury, Macro | [Top] | CFO, Controller, Tax, Risk | 1D+1T |
-| | **Total** | | **10-14** | **All 6** | **8+** | **≥8/11** | **≥6D+≥3T** |
 
-Legend: D=Diagrams, T=Tables
+| # | Cycle | Count | Categories | News | Roles |
+|---|-------|-------|------------|------|-------|
+| 1 | Capital Allocation | 1-2 | Markets, M&A | [Top] | CFO, Corp Dev |
+| 2 | Liquidity | 1-2 | Treasury/FX, Markets | [Top] | CFO, Treasurer |
+| 3 | M&A/Corp Dev | 1-2 | M&A, Macro | [Top] | CFO, Corp Dev |
+| 4 | Risk/Compliance | 1-2 | Macro, Treasury | [Top] | CFO, FP&A |
+| | **Total** | **4-6** | **3-4** | **4+** | **≥5** |
 
-### D. Q&A Format
+### D. Q&A Template
+
 ```markdown
-### Q#: [News Question + Cycle + Roles + Decision]
+### Q#: [News Question + Cycle + Roles]
 
-**Cycle**: [Cycle] | **Roles**: [Primary, Secondary] | **Cats**: [✓✓] | **Decision**: Y
+**Cycle**: [Cycle] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
 
-**News** (~60w): What, when, who, why, category [Ref: N#][n#], [E#][e#]
+**News** (~25w): What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~110w): **Cycles** (≥2) | **Quantified**: WACC [%] | Liquidity [$] | Valuation [Multiple/EV] | Tax [$] | Cash Flow [$] | IRR [%] | NPV [$] | Payback [mo]
+**Impact** (~50w): **Cycles** (≥2) | **Quantified**: WACC% | Liquidity$ | Valuation multiple | Tax$ | Cash flow$ | IRR
 
-**Stakeholders** (~70w): **[Role 1]**: Concerns, actions, authority | **[Role 2]**: Concerns, actions, authority
+**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~90w): **Rec**: Execute/Hedge/Defer/Monitor/Avoid | **Rationale**: [Why] | **Alts**: [1-2 options] | **Success**: [NPV, IRR, payback, WACC target, debt/equity, liquidity threshold]
+**Decision** (~50w): **Rec**: Execute/Hedge/Defer/Monitor/Avoid | **Rationale**: Why | **Success**: Targets
 
-**Action** (~60w): **Immed (0-2wk)**: [Actions+owner] | **Short (2wk-2mo)**: [Actions+owner] | **Medium (2-6mo)**: [Actions+owner]
+**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
 
-**Projections** (opt ~40w): [Source] projects [outcome] by [time] with [confidence]. Scenarios: Best [+X%], Base [Y%], Worst [-Z%] [Ref: R#][r#]
-
-**Artifacts**: [Type: WACC calc, DCF model, scenario analysis, liquidity waterfall, covenant tracker, FX exposure map]
-
-<!-- Link Definitions -->
-[n1]: https://source-url-for-n1
-[e1]: https://source-url-for-e1
-[r1]: https://source-url-for-r1
-
+[n1]: URL
 ---

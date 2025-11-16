@@ -1,10 +1,10 @@
 # Strategic Opportunity Analysis Q&A Generator
 
-**Mission**: Generate 30-35 Q&As identifying, evaluating, capturing strategic opportunities across 6 domains (Technology, Business/Market, Regulatory, Industry, Ecosystem, Business Model) × 8 lifecycle phases × 10 stakeholder roles with quantified impact, SWOT/risk analysis, go/no-go criteria.
+**Mission**: Generate 6-12 decision-critical Q&As identifying, evaluating, capturing strategic opportunities that block decisions or create material risk. Focus: minimal viable news tracking with time constraints.
 
 **Context**: Production systems (>10K rps, >1TB data), regulated industries, emerging tech, market shifts  
-**Output**: 30-35 Q&A (200-400w) | F:I:A=20:40:40% (±5pp) | EN 50-70%, ZH 20-40%, Other 5-15% | ≥50% refs <2yr  
-**Success**: 24/24 validation PASS + actionable insights
+**Output**: 6-12 Q&A (200-350w) | F:I:A=25:50:25% (±5pp) | EN 60-70%, ZH 20-30%, Other 5-10% | ≥50% refs <2yr
+**Success**: 12/12 validation PASS + decision-critical insights
 
 ---
 
@@ -19,17 +19,17 @@
 
 ---
 
-## References (Collect BEFORE Q&A)
+## References (Minimal Viable Set)
 
-**G#≥18**: TAM/SAM/SOM, PMF, Chasm, Blue Ocean, Disruptive Innovation, Technology Adoption Curve, Network Effects, Platform Economics, Regulatory Arbitrage, Ecosystem Value, TRL, Market Maturity, SWOT, Porter's Five Forces, Risk Matrix  
-**T#≥8**: Tools with pricing, users, phase, URL (trend analysis, market research, opportunity scoring, risk assessment)  
-**F#≥8**: SWOT, PESTLE, Porter's, Blue Ocean, Disruptive Innovation, TAM/SAM/SOM, Technology Adoption, BMC, Risk Matrix, Decision Trees  
-**L#≥10**: Authoritative (Christensen, Kim/Mauborgne, Moore, Osterwalder, Porter, Rogers); EN+ZH  
-**A#≥18**: APA 7th + DOI + [EN]/[ZH]/[Other]; ≥50% with empirical data
+**G#≥10**: TAM/SAM/SOM, PMF, Blue Ocean, Disruptive Innovation, Technology Adoption, Network Effects, TRL, SWOT, Porter's Five Forces, Risk Matrix
+**T#≥5**: Tools with pricing, users, phase, URL (market research, opportunity scoring, risk assessment, trend analysis)
+**F#≥5**: SWOT, Porter's Five Forces, Blue Ocean, Disruptive Innovation, Risk Matrix
+**L#≥6**: Authoritative (Christensen, Kim/Mauborgne, Moore, Osterwalder, Porter); EN+ZH
+**A#≥10**: APA 7th + DOI + [EN]/[ZH]/[Other]; ≥60% with empirical data
 
-**Quality**: ≥4 types, <20% single source, peer-reviewed + market data preferred  
-**Authority**: ≥1 of: Peer-reviewed, Industry analyst (Gartner/Forrester/IDC), Framework originator, Market data, Regulatory  
-**Artifacts**: Per domain ≥1 diagram + ≥1 table (SWOT, risk heat maps, adoption curves, decision trees, market sizing, Porter's, Blue Ocean canvas)
+**Quality**: ≥3 types, <25% single source, peer-reviewed + market data preferred
+**Authority**: ≥1 of: Industry analyst (Gartner/Forrester/IDC), Framework originator, Market data, Regulatory
+**Artifacts**: Per domain ≥1 diagram + ≥1 table (SWOT, risk matrix, decision tree)
 
 ---
 
@@ -63,42 +63,48 @@
 
 ---
 
-## Difficulty Levels
+## Difficulty Levels (Decision-Critical Only)
 
 | Level | % | Complexity | Frameworks | Analysis | Min Requirements |
 |-------|---|------------|------------|----------|------------------|
-| **F** | 20±5 | Single opportunity domain, clear metrics | 1-2 standard (SWOT/TAM) | Basic SWOT or risk assessment | 2-step analysis, 1 framework, quantified impact, 1 risk/constraint, 1 citation |
-| **I** | 40±5 | 2-3 domains, trade-offs, multi-stakeholder | 2-3, compare (SWOT + Porter's/Blue Ocean) | Multi-angle SWOT, risk matrix, decision criteria | 3-4 step analysis, 2 frameworks, quantified ROI/risk, trade-offs, 2 stakeholders, 2+ citations |
-| **A** | 40±5 | Cross-domain, conflicting signals, strategic pivots | 3+, synthesize (SWOT + Porter's + Blue Ocean + TAM) | Comprehensive SWOT + risk matrix + scenario analysis + validation plan | 5-6 step analysis, 3+ frameworks, multi-scenario modeling, validation roadmap, go/no-go criteria, 3+ stakeholders, 3+ citations |
+| **F** | 25±5 | Single domain, clear decision criteria | 1-2 (SWOT or Risk Matrix) | Basic SWOT or risk assessment | 2-step analysis, 1 framework, quantified impact, 1 constraint, 1 citation |
+| **I** | 50±5 | 2 domains, trade-offs, multi-stakeholder | 2 (SWOT + Porter's or Blue Ocean) | SWOT + risk matrix, decision criteria | 3-4 step analysis, 2 frameworks, quantified impact, trade-offs, 2 stakeholders, 2 citations |
+| **A** | 25±5 | Cross-domain, conflicting signals, strategic pivot | 2-3 (SWOT + Porter's + Blue Ocean) | SWOT + risk matrix + validation roadmap | 4-5 step analysis, 2-3 frameworks, scenario analysis, go/no-go criteria, 2+ stakeholders, 2+ citations |
 
 ---
 
-## Answer Structure (200-400w)
+## Answer Structure (200-350w, Minimal Viable)
 
-1. **Context** (2 sent): Opportunity type, domain, phase, stakeholder(s)
-2. **Analysis** (3-4 sent): Market evidence [Ref: ID], size/growth, strategic fit, competitive landscape
-3. **SWOT or Risk Matrix** (4-5 sent): Strengths/Weaknesses (internal), Opportunities/Threats (external) with metrics (TAM, CAGR, adoption) [Ref: ID] OR Probability × Impact for top 3-5 risks
-4. **Reasoning** (3-4 sent): Why now, why us, differentiation [Ref: ID]; validation; decision criteria
-5. **Action Plan** (I/A, 3-4 sent): Phased (explore/validate/pilot/scale), stakeholder alignment, resources, timeline
-6. **Metrics** (I/A, 2-3 sent): KPIs (market share, revenue, ROI, risk), validation gates, go/no-go
-7. **"When NOT"** (2-3 sent): Constraints [Ref: ID] (budget/skill/market/regulatory); scenarios to avoid; exit criteria
-8. **Key Insight**: Strategic, quantified, decision-critical, falsifiable
+1. **Context** (1-2 sent): Opportunity type, domain, phase, stakeholder(s)
+2. **Market Evidence** (2-3 sent): Size/growth, TAM, CAGR [Ref: ID]
+3. **SWOT or Risk Matrix** (3-4 sent): Key strengths/weaknesses, opportunities/threats with quantified metrics [Ref: ID]
+4. **Decision Criteria** (2-3 sent): Why now, why us, go/no-go thresholds [Ref: ID]
+5. **Action Plan** (2-3 sent): Phased validation (explore/pilot/scale), timeline, success gates
+6. **"When NOT"** (1-2 sent): Constraints, scenarios to avoid [Ref: ID]
+7. **Key Insight**: Strategic, quantified, decision-critical, falsifiable
 
 ---
 
-## Examples
+## Minimal Viable Example
 
-### F (20%): Identify + Assess
-**Q**: [Phase 1: Requirements & Discovery | Stakeholder: Business Analyst, PM] How assess if generative AI adoption presents a strategic opportunity for requirements elicitation automation?  
-**A** (~220w): **Context**: Technology opportunity, requirements phase, BA/PM roles. **Analysis**: Generative AI (GPT-4, Claude) shows 35-40% productivity gains in documentation tasks [Ref: A1]. TAM for requirements tools: $4.2B (2024), 18% CAGR [Ref: A12]. **SWOT**: *Strengths*: Existing LLM subscriptions, technical team. *Weaknesses*: No prompt engineering expertise, unstructured legacy requirements. *Opportunities*: Automate user story generation, acceptance criteria drafting, domain modeling—saves 5-8h/week per BA [Ref: A2]. Early mover advantage. *Threats*: Hallucination risks (15-25% error rate) [Ref: A3], data privacy for sensitive domains, team resistance. **Reasoning**: Market validated (GitHub Copilot 55% faster [Ref: A1]), low-risk pilot (3-month, 2 BAs, non-critical projects). **Metrics**: Cycle time reduction ≥30%, quality (defect escape ≤5%). **When NOT**: Highly regulated (FDA, aviation) until governance mature; <5 BAs (ROI <12mo). **Insight**: Tests ability to balance productivity gains against quality/risk trade-offs—foundational for AI-First transformation.
+**Q**: [Phase 2: Design | Stakeholders: Architect, Security] EU AI Act (2026) requires explainability for AI systems. Evaluate opportunity to adopt AI governance framework now vs. reactive compliance approach.
 
-### I (40%): Multi-Angle Analysis
-**Q**: [Phase 2: Architecture & Design | Stakeholders: Architect, Security, SRE] API gateway market consolidating around 3 vendors. Evaluate opportunity to adopt managed service vs. self-hosted OSS, considering performance (p95 <100ms), cost ($50K/yr budget), and compliance (SOC 2, GDPR).  
-**A** (~280w): **Context**: Technology + business opportunity, design phase, multi-stakeholder (Arch, Sec, SRE). **Analysis**: API gateway TAM $2.1B, 22% CAGR [Ref: A8]. Managed services (Kong, Apigee, AWS API Gateway) growing 35% YoY vs OSS (Envoy, Traefik) 12% [Ref: A9]. **SWOT**: *Strengths*: Cloud-native infra, $50K budget, SRE team (5). *Weaknesses*: No Envoy expertise, compliance gaps (audit trail). *Opportunities*: (1) Managed: SLA 99.95%, compliance built-in, saves 15-20 SRE hours/month [Ref: A10]. (2) OSS: 40-60% lower TCO, customization, no vendor lock-in. *Threats*: Vendor pricing increases (20-30% annually [Ref: A11]), OSS maintenance burden (2-3 SRE FTEs), performance variance (p95 50-150ms for OSS vs. 30-80ms managed [Ref: A9]). **Porter's Five Forces**: High supplier power (3 vendors), low switching cost (API standard). **Reasoning**: Compliance critical (SOC 2 audit Q2)—managed reduces risk. Performance: AWS API Gateway p95 60ms @ $0.90/M requests [Ref: A10] fits budget + SLA. **Action Plan**: Q1: Managed pilot (AWS); Q2: Compliance audit; Q3: Re-evaluate OSS if budget increases. **Metrics**: p95 ≤90ms, cost ≤$50K, audit pass, MTTR ≤30min. **When NOT**: If cost >$100K (OSS wins) or need custom protocols (gRPC-Web). **Insight**: Tests multi-criteria optimization (performance, cost, compliance, risk)—balancing technical and business constraints.
+**Difficulty**: I | **Phase**: 2 (Design) | **Stakeholder(s)**: Architect, Security | **Domain**: Regulatory & Compliance  
+**Decision Criticality**: Creates risk (regulatory fines €35M or 7% revenue), Actively evolving (EU AI Act 2026 deadline)  
+**Key Insight**: Proactive governance (now) costs $200K but avoids €35M fines; reactive compliance (2025) costs $500K with 6-month crunch.
 
-### A (40%): Strategic Synthesis + Validation Roadmap
-**Q**: [Phase 8: Evolution & Governance | Stakeholders: Leadership, Architect, PM, DevOps] Platform team observes: (1) Microservices sprawl (250+ services, 15 teams), (2) AI coding tools (Copilot) increasing velocity 40% but tech debt +25% [Ref: A1, A15], (3) New EU AI Act requiring explainability by 2026 [Ref: A16]. Three proposals: (A) Platform engineering (backstage, golden paths), (B) Consolidate to domain-driven services (50-80 services), (C) AI governance framework. Budget: $2M, 12 months. Recommend strategy.  
-**A** (~390w): **Context**: Cross-domain opportunity (Technology + Regulatory + Organizational), evolution phase, multi-stakeholder strategic decision. **Multi-Framework Analysis**: (1) **Blue Ocean**: Platform engineering creates uncontested space—eliminates cognitive load (73% dev time on toil [Ref: A13]) via self-service. (2) **Disruptive Innovation**: AI coding without governance risks "technical bankruptcy"—fast but fragile [Ref: A15]. (3) **Porter's Five Forces**: Internal rivalry (team autonomy vs. standards)—consolidation reduces complexity but limits agility. **SWOT**: *Strengths*: $2M budget, 15 teams, AI adoption momentum. *Weaknesses*: No platform eng expertise, sprawl legacy (250 services), compliance gaps. *Opportunities*: (A) Platform: 30-40% velocity gain, 50% onboarding time reduction [Ref: A14], Golden paths enforce AI governance. (B) Consolidation: -60% services, -40% operational cost [Ref: L6], but 18-24mo migration. (C) AI governance: EU compliance, explainability, but no velocity/cost benefit. *Threats*: EU fines (€35M or 7% revenue [Ref: A16]), AI technical debt compounds (code quality -15% annually [Ref: A15]), talent attrition (toil burnout). **Risk Matrix**: (A) Medium prob/High impact = HIGH PRIORITY; (B) Low prob/High impact = DEFER; (C) High prob/Medium impact = MEDIUM PRIORITY. **Strategic Reasoning**: Platform + AI governance (hybrid A+C) captures 3 opportunities: (1) Velocity via golden paths, (2) Compliance via governance gates, (3) Quality via automated checks. **Phased Plan**: Q1-Q2: Platform pilot (3 teams, Backstage [Ref: T5], AI governance templates); Q3: Expand to 8 teams, measure velocity/quality/compliance; Q4-Q3: Full rollout, consolidation roadmap (domain-driven design [Ref: L5]). **Metrics**: Velocity +25%, tech debt neutral, compliance 100%, ROI 18mo. **When NOT**: <10 teams (over-engineering), <6mo to EU deadline (compliance-only), high team turnover (platform adoption fails). **Validation Gates**: (1) Q2: Pilot velocity +20%, quality stable—GO. (2) Q3: 8-team adoption ≥80%—GO to full rollout. (3) Any: Compliance gap—STOP, prioritize governance. **Insight**: Tests ability to synthesize conflicting signals (velocity vs. quality vs. compliance), balance innovation and risk, design multi-phase validation—executive-level strategic thinking.
+**Answer** (280w):
+**Context**: Regulatory opportunity, design phase, multi-stakeholder (Arch, Sec). **Market Evidence**: EU AI Act effective 2026 [Ref: A1]. Regulatory fines: €35M or 7% revenue [Ref: A1]. Compliance cost: Proactive $200K (2024-2025), Reactive $500K (2025-2026 crunch) [Ref: A2].
+
+**SWOT**: *Strengths*: Existing AI governance team (2 FTEs), cloud-native infra. *Weaknesses*: No explainability frameworks deployed, legacy models (50+ in production). *Opportunities*: Proactive governance: Build explainability framework (LIME, SHAP), audit trail system, governance gates—enables competitive advantage (trust marketing). *Threats*: Reactive compliance: 6-month crunch (2025), 3x cost, talent burnout, model retraining delays, reputational damage if fined.
+
+**Decision Criteria**: Go/No-Go: (1) Proactive if >10 AI models in production (YES: 50+). (2) Proactive if regulatory deadline <18mo (YES: 24mo). (3) Proactive if cost <€5M (YES: $200K). **Why now**: 24-month runway allows phased implementation; waiting risks 2025 crunch. **Why us**: Competitive advantage—early movers gain trust/market share.
+
+**Action Plan**: Q1-Q2 2024: Pilot governance framework (5 models, LIME/SHAP); Q3-Q4: Scale to 30 models, audit trail; 2025: Full compliance (50 models), certification. Timeline: 12 months. Success gates: Q2 pilot PASS (explainability ≥80%), Q4 audit trail live.
+
+**"When NOT"**: <5 AI models (ROI negative). <12mo to deadline (defer to reactive). Budget <$100K (insufficient for framework).
+
+**Artifact**: Risk matrix (Proactive vs Reactive) + Compliance roadmap (Q1-2025)
 
 ---
 
@@ -112,43 +118,43 @@
 
 ---
 
-## Process
+## Process (Minimal Viable)
 
-1. **Plan Coverage**: 6 domains × 8 phases (each domain ≥3 phases, ≥4 Q&As; each phase ≥2 Q&As) | 10 stakeholders (≥8 covered, ≥50% multi-stakeholder) | F:I:A=20:40:40% (±5pp)
-2. **Collect References**: G≥18, T≥8, F≥8, L≥10, A≥18 | Validate: ≥4 types, <20% single source, ≥50% <2yr
-3. **Generate Q&A**: ≥70% scenario [Phase | Stakeholder] | 200-400w, 8-part structure | F: ≥1 ref; I/A: ≥2 refs | 100% SWOT or Risk Matrix | Checkpoint every 5
-4. **Create Artifacts**: Per domain ≥1 diagram + ≥1 table (SWOT, risk maps, adoption curves, market sizing, decision trees)
+1. **Plan Coverage**: 3-4 decision-critical domains × 4-5 phases | ≥5 stakeholder roles (≥60% multi-stakeholder) | F:I:A=25:50:25% (±5pp)
+2. **Collect References**: G≥10, T≥5, F≥5, L≥6, A≥10 | Validate: ≥3 types, <25% single source, ≥50% <2yr
+3. **Generate Q&A**: ≥70% scenario [Phase | Stakeholder] | 200-350w, 7-part structure | All: ≥1 ref; I/A: ≥2 refs | 100% SWOT or Risk Matrix
+4. **Create Artifacts**: Per domain ≥1 diagram + ≥1 table (SWOT, risk matrix, decision tree)
 5. **Verify**: 100% [Ref: ID] resolve, 0 broken links, cross-check metrics ≥2 sources
-6. **Validate**: 24/24 PASS → SUBMIT | ANY fail → STOP → Fix → Re-validate ALL
+6. **Validate**: 12/12 PASS → SUBMIT | ANY fail → STOP → Fix → Re-validate ALL
 
 ---
 
-## Validation Checklist (24 Checks)
+## Validation Checklist (12 Checks - Minimal Viable)
 
-| # | Check | Criteria | # | Check | Criteria |
-|---|-------|----------|---|-------|----------|
-| 1 | Ref counts | G≥18, T≥8, F≥8, L≥10, A≥18 | 13 | Stakeholder coverage | ≥8/10 roles, ≥50% multi-stakeholder |
-| 2 | Q&A counts | 30-35, F:I:A 20:40:40 (±5pp) | 14 | Question type | ≥70% scenario with [Phase \| Stakeholder] |
-| 3 | Citations | ≥80% ≥1; ≥40% ≥2 | 15 | SWOT/Risk coverage | 100% include SWOT or Risk Matrix |
-| 4 | Language | EN 50-70%, ZH 20-40%, Other 5-15% | 16 | Quantification | ≥70% with market/impact/risk metrics |
-| 5 | Recency | ≥50% <2yr (tools/data) | 17 | Artifacts | Each domain: ≥1 diagram + ≥1 table |
-| 6 | Diversity | ≥4 types, <20% single source | 18 | Decision support | ≥80% with go/no-go criteria |
-| 7 | Links | 100% valid (functional/archived) | 19 | "When NOT" | ≥60% explicit constraints/exit criteria |
-| 8 | Cross-refs | 100% [Ref: ID] resolve | 20 | Validation approach | ≥60% with pilot/POC/market test plan |
-| 9 | Word count | Sample 5: all 200-400 | 21 | Empirical data | ≥50% citations with market/productivity metrics |
-| 10 | Insights | All strategic, quantified, decision-critical | 22 | Lifecycle coverage | All 8 phases, no phase <2 Q&As |
-| 11 | Domain coverage | All 6 domains, no domain <4 Q&As | 23 | Framework coverage | All F# frameworks used ≥1 time |
-| 12 | Accuracy | Sample 5: cross-validated ≥2 sources | 24 | **Final Review** | **6 criteria below** |
+| # | Check | Criteria |
+|---|-------|----------|
+| 1 | Ref counts | G≥10, T≥5, F≥5, L≥6, A≥10 |
+| 2 | Q&A counts | 6-12, F:I:A 25:50:25 (±5pp) |
+| 3 | Citations | ≥80% ≥1 ref; ≥50% ≥2 refs; all resolve |
+| 4 | Language | EN 60-70%, ZH 20-30%, Other 5-10% |
+| 5 | Recency | ≥50% <2yr (tools/data) |
+| 6 | Decision Criticality | 100% satisfy ≥1 criterion: Blocks decision, Creates risk, Affects ≥2 stakeholders, Actively evolving |
+| 7 | SWOT/Risk coverage | 100% include SWOT or Risk Matrix with quantified metrics |
+| 8 | Quantification | ≥70% with market/impact/risk metrics |
+| 9 | Artifacts | Each domain: ≥1 diagram + ≥1 table (SWOT, risk matrix, decision tree) |
+| 10 | "When NOT" | ≥70% explicit constraints/scenarios to avoid |
+| 11 | Actionability | ≥80% with go/no-go criteria + validation gates |
+| 12 | **Final Review** | **All 6 criteria below PASS** |
 
 **Final Review Criteria (All Must PASS)**:
-1. **Clarity**: Explicit phase/stakeholder/domain, consistent terminology, logical structure
-2. **Strategic Value**: Non-obvious opportunities, quantified impact, decision-critical insights
-3. **Completeness**: All coverage targets met (phases, stakeholders, domains), minimums achieved, 24/24 PASS
-4. **Balance**: ≥2 approaches, SWOT/risk assessment, threats/constraints, "when NOT"
-5. **Actionability**: Clear go/no-go criteria, phased action plans, validation roadmaps, success metrics
-6. **Evidence-Based**: All claims cited, empirical data, cross-validated, realistic assumptions
+1. **Decision-Critical**: Every Q&A blocks a decision or creates material risk
+2. **Clarity**: Explicit phase/stakeholder/domain, consistent terminology
+3. **Quantified**: All opportunities sized (TAM, CAGR, ROI, risk score)
+4. **Actionable**: Clear go/no-go thresholds, validation roadmap, success gates
+5. **Evidence-Based**: All claims cited, ≥2 sources for key metrics
+6. **Minimal Viable**: No redundancy, 6-12 Q&As sufficient for informed action
 
-**Submit When**: 24/24 PASS + 6/6 criteria | **Failure**: ANY fail → STOP → Fix → Re-validate ALL
+**Submit When**: 12/12 PASS + 6/6 criteria | **Failure**: ANY fail → STOP → Fix → Re-validate ALL
 
 ---
 
@@ -161,45 +167,57 @@
 
 ---
 
-## Output Structure
+## Output Structure (Minimal Viable)
 
 ```markdown
-# Strategic Opportunity Analysis Q&A
+# Strategic Opportunity Analysis Q&A (Decision-Critical)
 
 ## Contents
-1. [Coverage Matrix](#coverage-matrix) - Domains × Phases × Stakeholders
-2. [Q&As by Domain](#qas-by-domain) - 30-35 Q&As with SWOT/Risk
-3. [References](#references) - G≥18, T≥8, F≥8, L≥10, A≥18
-4. [Validation Report](#validation-report) - 24/24 PASS + 6/6 criteria
+1. [Decision Criticality Framework](#decision-criticality-framework) - Inclusion criteria
+2. [Coverage Matrix](#coverage-matrix) - Domains × Phases × Stakeholders
+3. [Q&As by Domain](#qas-by-domain) - 6-12 Q&As with SWOT/Risk
+4. [References](#references) - G≥10, T≥5, F≥5, L≥6, A≥10
+5. [Validation Report](#validation-report) - 12/12 PASS + 6/6 criteria
+
+## Decision Criticality Framework
+
+**Include Q&A if ≥1 criterion is satisfied**:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot
+- **Creates Risk**: Identifies material threat (financial, regulatory, operational, reputational)
+- **Affects ≥2 Stakeholders**: Multi-team impact (e.g., Arch + SRE, PM + Security)
+- **Actively Evolving**: Market/tech/regulatory changes in past 3-6 months
+
+**Exclude Q&A if**:
+- Niche/legacy (<5% adoption or impact)
+- Orthogonal/nice-to-have (no decision impact)
+- Already covered by another Q&A
 
 ## Coverage Matrix
 
-| Domain | Phases | Stakeholders | Q# | Count | F/I/A |
-|--------|--------|--------------|-------|-------|-------|
-| Technology & Innovation | 1,2,3,7 | Arch, Dev, SRE | Q1-Q6 | 6 | 1/2/3 |
-| Business & Market | 1,4,8 | PM, BA, Lead | Q7-Q11 | 5 | 1/2/2 |
-| Regulatory & Compliance | 2,6,8 | Sec, Lead, Arch | Q12-Q16 | 5 | 1/2/2 |
-| Industry & Domain | 1,3,5 | BA, PM, DevOps | Q17-Q22 | 6 | 1/3/2 |
-| Ecosystem & Partnerships | 2,6,8 | Arch, Data, Lead | Q23-Q27 | 5 | 1/2/2 |
-| Business Model Innovation | 1,4,8 | PM, Lead, Dev | Q28-Q33 | 6 | 1/2/3 |
-| **Total** | **All 8** | **≥8/10 roles** | **Q1-Q33** | **33** | **6/13/14** |
+| Domain | Phases | Stakeholders | Q# | Count | F/I/A | Decision Criticality |
+|--------|--------|--------------|-------|-------|-------|----------------------|
+| Technology & Innovation | 1,2,3 | Arch, Dev, SRE | Q1-Q3 | 3 | 1/1/1 | Blocks decision, Actively evolving |
+| Business & Market | 1,8 | PM, Lead | Q4-Q5 | 2 | 1/1 | Blocks decision, Affects 2+ stakeholders |
+| Regulatory & Compliance | 2,8 | Sec, Lead | Q6-Q7 | 2 | 1/1 | Creates risk, Actively evolving |
+| **Total** | **4-5** | **≥5 roles** | **Q1-Q12** | **6-12** | **3/3/2-6** | **100% ≥1 criterion** |
 
-**Phases**: 1=Discovery, 2=Design, 3=Dev, 4=Test, 5=Deploy, 6=Ops, 7=Maintain, 8=Evolve
+**Phases**: 1=Discovery, 2=Design, 3=Dev, 8=Evolve (focus on decision-critical phases)
 
 ## Q&As by Domain
 
 ### Domain 1: Technology & Innovation
 
 #### Q1: [Question with explicit phase and stakeholder]
-**Difficulty**: [F/I/A] | **Phase**: [#: Name] | **Stakeholder(s)**: [Role(s)] | **Domain**: [Domain]
+**Difficulty**: [F/I/A] | **Phase**: [#: Name] | **Stakeholder(s)**: [Role(s)] | **Domain**: [Domain]  
+**Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving]  
 **Key Insight**: [Strategic, quantified, decision-critical, falsifiable]
 
-**Answer** (200-400w):
-**Context**: [Type, domain, phase, stakeholder] | **Analysis**: [Market evidence, size/growth, fit] [Ref: ID] | **SWOT/Risk**: Strengths/Weaknesses [Ref: ID], Opportunities/Threats with metrics [Ref: ID] OR Probability × Impact | **Reasoning**: [Why now, why us, differentiation] [Ref: ID] | **Action Plan** (I/A): [Phased, stakeholders, resources, timeline] | **Metrics** (I/A): [KPIs, gates] | **"When NOT"**: [Constraints, scenarios to avoid] [Ref: ID]
+**Answer** (200-350w):
+**Context**: [Type, domain, phase, stakeholder] | **Market Evidence**: [Size/growth, TAM, CAGR] [Ref: ID] | **SWOT/Risk**: Key strengths/weaknesses, opportunities/threats with metrics [Ref: ID] | **Decision Criteria**: [Why now, why us, go/no-go thresholds] [Ref: ID] | **Action Plan**: [Phased validation, timeline, success gates] | **"When NOT"**: [Constraints, scenarios to avoid] [Ref: ID]
 
-**Artifact**: [SWOT matrix / risk heat map / decision tree / market sizing]
+**Artifact**: [SWOT matrix / risk heat map / decision tree]
 
-[Repeat Q2-Q33 across 6 domains]
+[Repeat Q2-Q12 across 3-4 decision-critical domains]
 
 ## References
 

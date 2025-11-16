@@ -1,14 +1,14 @@
-# Ecosystem Understanding Q&A Generator
+# Ecosystem Understanding Q&A Generator (Decision-Critical)
 
-Generate 30–40 questions enabling newcomers to gain holistic ecosystem understanding through technical/business/regulatory viewpoints, lifecycle phases, and stakeholder perspectives.
+Generate 6–12 decision-critical questions enabling informed ecosystem decisions through essential technical/business/regulatory viewpoints—minimal viable tracking with time constraints.
 
 ## I. Context & Scope
 
-**Purpose**: Comprehensive ecosystem understanding: value chains, interaction patterns, stakeholder roles, technical architectures, business models, regulatory frameworks.
+**Purpose**: Decision-critical ecosystem understanding: core value chains, integration patterns, stakeholder roles, regulatory constraints blocking decisions.
 
-**Scope**: Ecosystem structure, value flows, integration patterns, multi-stakeholder views, lifecycle, market dynamics, compliance | **Exclude**: Generic programming, isolated tutorials, overly technical details, interview scenarios
+**Scope**: Ecosystem structure, value flows, integration patterns, multi-stakeholder views, regulatory compliance | **Exclude**: Generic programming, isolated tutorials, overly technical details, interview scenarios, nice-to-have trends
 
-**Constraints**: 200-400 words/answer | ≥80% have ≥1 cite (≥40% have ≥2) | 100% ecosystem-focused | Newcomer-appropriate
+**Constraints**: 150-250 words/answer | ≥80% have ≥1 cite (≥50% have ≥2) | 100% ecosystem-focused | Decision-critical only
 
 **Key Terms**: Ecosystem (interconnected parties/systems), Viewpoint (technical/business/regulatory/operational), Integration Pattern (interaction/communication), Stakeholder (10 roles: Business/PM/Architect/Developer/QA/DevOps/Security/Data/SRE/Leadership), Floor (≥ = minimum), Quality gate (mandatory—fail = stop/fix)
 
@@ -16,76 +16,85 @@ Generate 30–40 questions enabling newcomers to gain holistic ecosystem underst
 
 ### Quantitative Floors
 
-**Q&A**: 30–40 total | 30%Foundational/40%Integration/30%Advanced (±5%) | 200–400 words | ≥80% have ≥1 cite (≥40% have ≥2) | Each answer addresses ≥2 viewpoints
+**Q&A**: 6–12 total | 25%Foundational/50%Integration/25%Advanced (±5%) | 150–250 words | ≥80% have ≥1 cite (≥50% have ≥2) | Each answer addresses ≥2 viewpoints
 
-**Topic Coverage (MECE)**: 
-1. **Ecosystem Structure** (5–6): Parties, organizations, systems, platforms, roles
-2. **Value Chains & Business** (5–6): Value creation/capture/delivery, revenue models, economic flows
-3. **Integration Patterns** (6–7): Protocols, data flows, APIs, interoperability
-4. **Technical Architecture** (5–6): Tech stacks, patterns, scalability, reliability
-5. **Regulatory & Compliance** (4–5): Legal requirements, standards, governance, risk
-6. **Market Dynamics** (4–5): Structure, competitive forces, trends, evolution
-7. **Lifecycle & Stakeholders** (3–4): Cross-cutting views across 8 phases, 10 roles
+**Topic Coverage (Decision-Critical Only)**:
+1. **Ecosystem Structure** (1–2): Core parties, roles, value flows blocking decisions
+2. **Value Chains & Business** (1–2): Revenue models, economic viability
+3. **Integration Patterns** (1–2): APIs, protocols, interoperability constraints
+4. **Technical Architecture** (1–2): Tech stacks, scalability, reliability requirements
+5. **Regulatory & Compliance** (1–2): Legal requirements, governance, risk constraints
 
-**References** (build before Q&A): G≥15 | S≥6 | T≥8 | L≥10 (≥30% domain-specific) | A≥20 APA 7th+tags [EN]/[ZH]/[Standard]
+**References** (Minimal Viable): G≥8 | S≥4 | T≥5 | L≥6 (canonical only) | A≥10 APA 7th+tags [EN]/[ZH]/[Standard]
 
-**Visuals**: ≥1 diagram + ≥1 table per topic (7+7) | ≥2 Mermaid diagrams | **Scaling**: >40 Q&A → 1.5× references
+**Visuals**: ≥1 diagram + ≥1 table per topic (5+5) | ≥2 Mermaid diagrams
 
 ### Citation Standards
 
 **Format**: `Author, A. (Year). *Title*. Publisher. [EN]` | `Organization. (Year). *Standard*. [Standard]` | Inline: `[Ref: ID]` (G/S/T/L/A)
 
-**Distribution**: EN 50–70% | ZH/domain 20–40% | Standards 10–20% | **Source Types** (≥4): Standards/protocols, Research/whitepapers, Case studies, Platforms/tools, Market analysis
+**Distribution**: EN 60–70% | ZH/domain 20–30% | Standards 10–15% | **Source Types** (≥3): Standards/protocols, Research/whitepapers, Case studies
+
+### Decision Criticality Framework
+
+**Include Q&A if ≥1 criterion is satisfied**:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic direction
+- **Creates Risk**: Identifies material threat (financial, regulatory, operational, technical)
+- **Affects ≥3 Stakeholders**: Cross-functional impact (e.g., Arch + Dev + Ops)
+- **Actively Evolving**: Ecosystem/tech/regulatory changes in past 3-6 months
+- **High Adoption Barrier**: >40h learning curve or integration effort
+
+**Exclude Q&A if**:
+- Niche/legacy (<5% adoption or impact)
+- Orthogonal/nice-to-have (no decision impact)
+- Already covered by another Q&A
 
 ### Quality Requirements
 
-**Gates** (integrated into validation): Recency (≥50% <3yrs, ≥70% for emerging) | Source diversity (≥4 types, none >30%) | Per-topic evidence (≥2 authoritative + ≥1 standard + ≥1 example) | Platform completeness (docs URL, maturity, update ≤18mo, integrations) | Links (100% accessible) | Cross-refs (100% resolve) | Viewpoint coverage (≥2 per Q&A) | Stakeholder representation (≥60% Q&As)
-
-**Mitigation**: Dated info → flag with caveats | Diversity fail → expand research | Dead links → Web Archive/replace | Insufficient viewpoints → enhance multi-perspective analysis
+**Gates** (integrated into validation): Recency (≥50% <2yrs) | Source diversity (≥3 types, none >40%) | Per-topic evidence (≥2 authoritative + ≥1 standard) | Links (100% accessible) | Cross-refs (100% resolve) | Viewpoint coverage (≥2 per Q&A) | Decision Criticality (100% satisfy ≥1 criterion)
 
 ## III. Execution
 
-### Step 1: Plan Allocation
+### Step 1: Plan Allocation (Decision-Critical Only)
 
-Distribute 30–40 across 7 dimensions (30/40/30% F/I/A). Example (35 total): Structure(5):2F/2I/1A | Value/Business(6):2F/2I/2A | Integration(7):2F/3I/2A | Architecture(6):2F/2I/2A | Regulatory(5):2F/2I/1A | Market(4):1F/2I/1A | Lifecycle(3):0F/1I/2A → Total:11F/14I/11A
+Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Example (10 total): Structure(2):1F/1I | Value/Business(2):1F/1I | Integration(2):0F/1I/1A | Architecture(2):1F/0I/1A | Regulatory(2):1F/0I/1A → Total:4F/3I/3A
 
-**Complexity**: F=foundational (core concepts, components, patterns) | I=integration (interactions, cross-cutting, trade-offs) | A=advanced (strategic, evolution, deep analysis)
+**Complexity**: F=foundational (core concepts, core parties, essential patterns) | I=integration (interactions, trade-offs, constraints) | A=advanced (strategic implications, evolution)
 
-### Step 2: Build References (BEFORE Q&A → run Gates 1–8 after)
+### Step 2: Build References (Minimal Viable - BEFORE Q&A)
 
-**Glossary (≥15)**: Cover parties/components, interaction patterns, business models, technical/regulatory/market concepts | Format: term, definition (1-2 sentences), context, related terms, limitations | Assign G1, G2...
+**Glossary (≥8)**: Only terms used in Q&As—parties/components, interaction patterns, business models, technical/regulatory concepts | Format: term, definition (1-2 sentences), context, examples | Assign G1, G2...
 
-**Standards/Protocols (≥6)**: Industry standards, RFCs, specs (OAuth, OpenAPI, FHIR, PCI DSS, ISO 27001, GDPR) | Include: issuing body, purpose, adoption, version, URL | Assign S1, S2...
+**Standards/Protocols (≥4)**: Decision-critical standards only (OAuth, OpenAPI, GDPR, PCI DSS, ISO 27001) | Include: issuing body, purpose, adoption, URL | Assign S1, S2...
 
-**Tools/Platforms (≥8)**: Key platforms/infrastructure/tools by category (core, integration, monitoring, dev, compliance) | Include: description, maturity/adoption, update (≤18mo), integrations, docs URL | Assign T1, T2...
+**Tools/Platforms (≥5)**: Decision-critical platforms/infrastructure only | Include: description, maturity/adoption, update (≤18mo), docs URL | Assign T1, T2...
 
-**Literature (≥10)**: Ecosystem books/whitepapers/research (≥30% domain-specific) | Include: author, title, year, summary, relevance | Sources: academic papers, industry whitepapers (CNCF, IEEE, W3C), market reports (Gartner, Forrester), case studies | Assign L1, L2...
+**Literature (≥6)**: Canonical ecosystem references only (no niche/legacy) | Include: author, title, year, summary, relevance | Assign L1, L2...
 
-**Citations (≥20)**: APA 7th + tags | ≥50% <3yrs | Classify: standards/research/case studies/tools/market | Assign A1, A2...
+**Citations (≥10)**: APA 7th + tags | ≥50% <2yrs | Classify: standards/research/case studies | Assign A1, A2...
 
-### Step 3: Generate Q&A (5 at a time → self-check each batch)
+### Step 3: Generate Q&A (Batch 2-3, self-check each)
 
-**Question**: Ecosystem understanding ("How X integrates with Y?", "Z's role in value chain?", "How regulatory affects architecture?") | Multi-viewpoint (technical/business/regulatory) | Tests ≥2 aspects (structure/interactions/flows/constraints) | Clear, specific | **Avoid**: Trivia, isolated tutorials, overly narrow details
+**Question**: Decision-critical ecosystem understanding ("What blocks this decision?", "How X integrates with Y?", "What regulatory constraint applies?") | Multi-viewpoint (technical/business/regulatory) | Tests ≥2 aspects (structure/interactions/constraints) | Clear, specific | **Avoid**: Trivia, isolated tutorials, nice-to-have trends
 
-**Answer** (200–400 words):
-1. **Key Insight** (1-2 sentences): Core concept/pattern/relationship in ecosystem
-2. **Ecosystem Context** [Ref: G#/S#/A#]: Position, standards/protocols
-3. **Multi-Viewpoint** (≥2): Technical (architecture, protocols, integration) | Business (value flows, revenue, economics) | Regulatory (compliance, governance, risk) | Operational (lifecycle, stakeholder roles)
+**Answer** (150–250 words):
+1. **Key Insight** (1-2 sentences): Core decision-critical concept/pattern
+2. **Ecosystem Context** [Ref: G#/S#/A#]: Position, standards/protocols, decision impact
+3. **Multi-Viewpoint** (≥2): Technical (architecture, protocols, constraints) | Business (value flows, economics, viability) | Regulatory (compliance, governance, risk)
 4. **Interaction Patterns**: Integration, communication, value exchange
 5. **Real-World Examples** [Ref: A#]: Implementations, case studies
-6. **Trade-offs & Constraints**: Design choices, limitations, alternatives
-7. **Stakeholder Perspectives**: How BA/PM/Architect/Developer/Security view this
-8. **Evolution & Trends**: Changes, future directions
-9. **Citations**: ≥1 [Ref: ID] (≥2 for I/A)
-10. **Artifact** (encouraged): Diagram/sequence/matrix
+6. **Trade-offs & Constraints**: Design choices, limitations, decision criteria
+7. **Stakeholder Perspectives**: How Architect/Developer/Security/PM view this
+8. **Citations**: ≥1 [Ref: ID] (≥2 for I/A)
+9. **Artifact** (encouraged): Diagram/sequence/matrix
 
-**Batch Self-Check** (per 5): Ecosystem-focused | ≥2 viewpoints | 200–400 words | Clear context | ≥2 aspects | ≥4/5 have ≥1 cite (≥2/5 have ≥2) | Complexity aligned | Stakeholder perspective
+**Batch Self-Check** (per 2-3): Decision-critical ✓ | ≥2 viewpoints | 150–250 words | Clear context | ≥2 aspects | ≥1 cite | Complexity aligned | Stakeholder perspective
 
-### Step 4: Create Visuals (≥1 diagram + ≥1 table per topic; reference from ≥60% answers)
+### Step 4: Create Visuals (Minimal - ≥1 diagram + ≥1 table per topic)
 
-**By Topic**: Structure (component/party/layered diagram) | Value Chains (flow/canvas/revenue) | Integration (sequence/API/data flow) | Architecture (C4/deployment/comparison/patterns) | Regulatory (compliance matrix/governance/risk) | Market (competitive landscape/evolution/adoption) | Lifecycle (RACI/deliverables/stakeholders)
+**By Topic** (5 decision-critical): Structure (component/party diagram) | Value Chains (flow/revenue) | Integration (sequence/API flow) | Architecture (C4/comparison) | Regulatory (compliance matrix)
 
-**Best Practices**: Mermaid for architecture/sequence/flow (≥2 total) | Tables for comparisons/matrices/quantitative | Include legends/scale/time | Cite sources [Ref: ID] | Keep readable (<20 nodes) | Show directionality (arrows, protocols) | Label integration points (APIs, protocols, formats)
+**Best Practices**: Mermaid for architecture/sequence/flow (≥2 total) | Tables for comparisons/matrices | Include legends | Cite sources [Ref: ID] | Keep readable (<15 nodes) | Show directionality | Label integration points
 
 ### Step 5: Populate References
 
@@ -101,115 +110,106 @@ Distribute 30–40 across 7 dimensions (30/40/30% F/I/A). Example (35 total): St
 
 **Check**: 100% refs resolve | No orphans | All fields complete | Tags present | URLs active | Docs linked
 
-### Step 6: Run 15 Validations (fail ANY = stop, fix, re-run ALL)
+### Step 6: Run 12 Validations (Minimal - fail ANY = stop, fix, re-run ALL)
 
-1. **Floors**: G≥15, S≥6, T≥8, L≥10, A≥20, Q=30–40, 30/40/30% F/I/A (±5%)
-2. **Citations**: ≥80%≥1; ≥40%≥2
-3. **Language/Type**: EN 50–70%, ZH 20–40%, Std 10–20%
-4. **Recency**: ≥50% <3yrs (≥70% emerging)
-5. **Source Types**: ≥4 types; none >30%
+1. **Floors**: G≥8, S≥4, T≥5, L≥6, A≥10, Q=6–12, 25/50/25% F/I/A (±5%)
+2. **Citations**: ≥80%≥1; ≥50%≥2
+3. **Language/Type**: EN 60–70%, ZH 20–30%, Std 10–15%
+4. **Recency**: ≥50% <2yrs
+5. **Source Types**: ≥3 types; none >40%
 6. **Links**: 100% accessible
 7. **Cross-Refs**: 100% resolve; no orphans
-8. **Word Count**: Sample 5; 100% in 200–400
-9. **Key Insights**: 100% concrete ecosystem context
-10. **Per-Topic Evidence**: 7/7 have ≥2 authoritative + ≥1 standard + ≥1 example
-11. **Viewpoint Coverage**: ≥80% address ≥2 viewpoints
-12. **Stakeholder Rep**: ≥60% mention stakeholders
-13. **Integration Patterns**: ≥50% include interactions
-14. **Visual Coverage**: ≥2 Mermaid; ≥7 diagrams; ≥7 tables
-15. **Ecosystem Focus**: 100% ecosystem-related (not generic)
+8. **Word Count**: Sample 5; 100% in 150–250
+9. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+10. **Viewpoint Coverage**: ≥80% address ≥2 viewpoints
+11. **Visual Coverage**: ≥2 Mermaid; ≥5 diagrams; ≥5 tables
+12. **Ecosystem Focus**: 100% ecosystem-related + decision-critical
 
-### Step 7: Final Review
+### Step 7: Final Review (Minimal)
 
-**Questions**: Clear, specific | Ecosystem-relevant | Interaction depth | Newcomer-friendly | Multi-viewpoint | Complexity aligned
+**Questions**: Clear, specific | Decision-critical | Multi-viewpoint | Complexity aligned | Satisfies ≥1 criticality criterion
 
-**Answers** (sample ≥5): ≥2 viewpoints | Context with cites | Patterns explained | Real examples | Stakeholder views | Trade-offs | Evolution/trends
+**Answers** (sample ≥3): ≥2 viewpoints | Context with cites | Real examples | Stakeholder views | Trade-offs | Decision criteria
 
-**Visuals**: ≥2 Mermaid | ≥7 diagrams | ≥7 tables | Legends/labels | Cited | Readable
+**Visuals**: ≥2 Mermaid | ≥5 diagrams | ≥5 tables | Legends/labels | Cited | Readable
 
-**Submission**: All validations PASS | All floors met | TOC linked | No placeholders | Consistent format | Balanced viewpoints | Clear lifecycle/stakeholder integration
+**Submission**: All validations PASS | All floors met | TOC linked | No placeholders | Consistent format | Decision-critical coverage
 
-## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+## IV. Validation Report (Minimal - fill all; ANY fail = stop, fix, re-run ALL)
 
 | # | Check           | Measurement                     | Criteria                          | Result | Status    |
 |---|-----------------|---------------------------------|-----------------------------------|--------|-----------|
-| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥15, S≥6, T≥8, L≥10, A≥20, Q:30-40, 30/40/30% | | PASS/FAIL |
-| 2 | Citations       | __%≥1, __%≥2                    | ≥80%≥1, ≥40%≥2                    | | PASS/FAIL |
-| 3 | Lang/Type       | EN:__%, ZH:__%, Std:__%         | EN:50-70%, ZH:20-40%, Std:10-20%  | | PASS/FAIL |
-| 4 | Recency         | __% <3yrs (ecosystem: ___)      | ≥50% (≥70% emerging)              | | PASS/FAIL |
-| 5 | Source Types    | __ types; max __%               | ≥4 types, max 30%                 | | PASS/FAIL |
+| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥8, S≥4, T≥5, L≥6, A≥10, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 2 | Citations       | __%≥1, __%≥2                    | ≥80%≥1, ≥50%≥2                    | | PASS/FAIL |
+| 3 | Lang/Type       | EN:__%, ZH:__%, Std:__%         | EN:60-70%, ZH:20-30%, Std:10-15%  | | PASS/FAIL |
+| 4 | Recency         | __% <2yrs                       | ≥50%                              | | PASS/FAIL |
+| 5 | Source Types    | __ types; max __%               | ≥3 types, max 40%                 | | PASS/FAIL |
 | 6 | Links           | __/__ accessible                | 100%                              | | PASS/FAIL |
 | 7 | Cross-Refs      | __/__ resolved                  | 100%                              | | PASS/FAIL |
-| 8 | Word Count      | __ sampled: __ compliant        | 100% (200-400)                    | | PASS/FAIL |
-| 9 | Key Insights    | __/__ with context              | 100%                              | | PASS/FAIL |
-| 10| Topic Evidence  | __/7 (≥2 auth+≥1 std+≥1 ex)     | 7/7                               | | PASS/FAIL |
-| 11| Viewpoints      | __%≥2                           | ≥80%                              | | PASS/FAIL |
-| 12| Stakeholders    | __%                             | ≥60%                              | | PASS/FAIL |
-| 13| Integration     | __%                             | ≥50%                              | | PASS/FAIL |
-| 14| Visuals         | M:__, D:__, T:__                | ≥2, ≥7, ≥7                        | | PASS/FAIL |
-| 15| Ecosystem Focus | __/__                           | 100%                              | | PASS/FAIL |
+| 8 | Word Count      | __ sampled: __ compliant        | 100% (150-250)                    | | PASS/FAIL |
+| 9 | Decision Crit.  | __% satisfy ≥1 criterion        | 100%                              | | PASS/FAIL |
+| 10| Viewpoints      | __%≥2                           | ≥80%                              | | PASS/FAIL |
+| 11| Visuals         | M:__, D:__, T:__                | ≥2, ≥5, ≥5                        | | PASS/FAIL |
+| 12| Ecosystem Focus | __/__                           | 100% + decision-critical          | | PASS/FAIL |
 
 ## V. Question Quality (review each; ≥2 fails = rewrite)
 
-1. **Clarity**: Specific ask | ✓ "How processors integrate with platforms?" | ✗ "Explain payments, security, APIs"
-2. **Ecosystem Relevance**: Tests understanding | ✓ "Identity providers' role in SaaS?" | ✗ "What is OAuth?"
-3. **Depth**: Enables interaction analysis | ✓ "GDPR's effect on EU-US data flows?" | ✗ "Is GDPR important?"
-4. **Accessibility**: Newcomer-friendly | ✓ "Main healthcare parties and info exchange?" | ✗ "Implement HL7 FHIR"
-5. **Multi-viewpoint**: Not single perspective | ✓ "Regulatory impact on architecture?" | ✗ "Stripe's database?"
+1. **Clarity**: Specific ask | ✓ "How do payment processors integrate with platforms?" | ✗ "Explain payments, security, APIs"
+2. **Decision-Critical**: Blocks decision or creates risk | ✓ "What regulatory constraints block this architecture?" | ✗ "What is OAuth?"
+3. **Depth**: Enables interaction analysis | ✓ "How does GDPR affect EU-US data flows?" | ✗ "Is GDPR important?"
+4. **Multi-viewpoint**: ≥2 perspectives | ✓ "How does regulatory impact architecture?" | ✗ "What is Stripe's database?"
+5. **Stakeholder Impact**: ≥2 roles affected | ✓ "What integration patterns affect Architect and DevOps?" | ✗ "Explain APIs"
 6. **Alignment**: Complexity matches content | F: foundational | I: integration | A: strategic
 
-## VI. Output Format
+## VI. Output Format (Minimal Viable)
 
 ### A. TOC
-1. Topic Areas | 2. Questions by Topic (7 dimensions) | 3. References (G/S/T/L/A) | 4. Validation Report
+1. Decision Criticality Framework | 2. Topic Areas | 3. Questions by Topic (5 dimensions) | 4. References (G/S/T/L/A) | 5. Validation Report
 
 ### B. Topic Overview
-**Total**: [30–40] | **Complexity**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 7 dimensions (MECE)
+**Total**: [6–12] | **Complexity**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 5 decision-critical dimensions
 
-| # | Topic                  | Range   | Count | Mix      | Artifacts |
-|---|------------------------|---------|-------|----------|-----------|
-| 1 | Ecosystem Structure    | Q1–Q5   | 5     | 2F/2I/1A | 1D+1T     |
-| 2 | Value Chains/Business  | Q6–Q11  | 6     | 2F/2I/2A | 1D+1T     |
-| 3 | Integration Patterns   | Q12–Q18 | 7     | 2F/3I/2A | 1D+1T     |
-| 4 | Technical Architecture | Q19–Q24 | 6     | 2F/2I/2A | 1D+1T     |
-| 5 | Regulatory/Compliance  | Q25–Q29 | 5     | 2F/2I/1A | 1D+1T     |
-| 6 | Market Dynamics        | Q30–Q33 | 4     | 1F/2I/1A | 1D+1T     |
-| 7 | Lifecycle/Stakeholders | Q34–Q36 | 3     | 0F/1I/2A | 1D+1T     |
-|   | **Total**              |         | **36**| **11F/14I/11A** | **7+7** |
+| # | Topic                  | Range   | Count | Mix      | Artifacts | Decision Criticality |
+|---|------------------------|---------|-------|----------|-----------|----------------------|
+| 1 | Ecosystem Structure    | Q1–Q2   | 2     | 1F/1I    | 1D+1T     | Blocks decision, Affects 3+ roles |
+| 2 | Value Chains/Business  | Q3–Q4   | 2     | 1F/1I    | 1D+1T     | Blocks decision, Creates risk |
+| 3 | Integration Patterns   | Q5–Q6   | 2     | 0F/1I/1A | 1D+1T     | Affects 3+ roles, Actively evolving |
+| 4 | Technical Architecture | Q7–Q8   | 2     | 1F/0I/1A | 1D+1T     | Blocks decision, High adoption barrier |
+| 5 | Regulatory/Compliance  | Q9–Q12  | 2     | 1F/0I/1A | 1D+1T     | Creates risk, Actively evolving |
+|   | **Total**              |         | **6–12**| **4F/3I/3A** | **5+5** | **100% ≥1 criterion** |
 
 Legend: F=foundational | I=integration | A=advanced | D=diagram | T=table
 
-### C. Q&A Format
+### C. Q&A Format (Minimal Viable)
 
 **Topic 1: [Dimension Title]**
 
 **Q1: [Question]**
 
-**Complexity**: [F/I/A] | **Topic**: [Dimension] | **Viewpoints**: [Tech/Business/Regulatory/Operational]
+**Complexity**: [F/I/A] | **Topic**: [Dimension] | **Viewpoints**: [Tech/Business/Regulatory] | **Decision Criticality**: [Criterion]
 
-**Key Insight** (1-2 sentences): [Core concept/pattern/relationship]
+**Key Insight** (1-2 sentences): [Core decision-critical concept/pattern]
 
-**Answer** (200–400 words): 
-- **Context** [Ref: G#/S#/A#]: Position, standards/protocols
-- **Multi-Viewpoint** (≥2): Technical (architecture, protocols) | Business (value, revenue, economics) | Regulatory (compliance, governance, risk) | Operational (lifecycle, stakeholders)
+**Answer** (150–250 words):
+- **Context** [Ref: G#/S#/A#]: Position, standards/protocols, decision impact
+- **Multi-Viewpoint** (≥2): Technical (architecture, protocols, constraints) | Business (value flows, economics, viability) | Regulatory (compliance, governance, risk)
 - **Interaction Patterns**: Integration, communication, value exchange
 - **Real-World Examples** [Ref: A#]: Implementations, case studies
-- **Trade-offs & Constraints**: Choices, limitations, alternatives
-- **Stakeholder Perspectives**: How BA/PM/Architect/Developer/Security view this
-- **Evolution & Trends**: Changes, future
+- **Trade-offs & Constraints**: Design choices, limitations, decision criteria
+- **Stakeholder Perspectives**: How Architect/Developer/Security/PM view this
 - **Citations**: ≥1 [Ref: ID] (≥2 for I/A)
 
 **Artifact** *(encouraged)*: Diagram (Mermaid), sequence, matrix
 
-### D. Reference Formats
+### D. Reference Formats (Minimal Viable)
 
-**Glossary**: **G#. Term (Acronym)** | Definition | Context | Related terms | Examples | Limitations | Alphabetize
+**Glossary**: **G#. Term (Acronym)** | Definition | Context | Examples | Alphabetize (only terms used in Q&As)
 
-**Standards/Protocols**: **S#. Name (Body)** | Purpose | Scope | Version | Adoption | URL | Relevance | Group by category
+**Standards/Protocols**: **S#. Name (Body)** | Purpose | Adoption | URL | Group by category (decision-critical only)
 
-**Tools/Platforms**: **T#. Name (Category)** | Description | Maturity/adoption | Update (Q# YYYY) | Integrations | Docs URL | Role | Group by category
+**Tools/Platforms**: **T#. Name (Category)** | Description | Maturity/adoption | Docs URL | Group by category (decision-critical only)
 
-**Literature**: **L#. Author, Title, Year** | Summary | Relevance | Type | Group by type, alphabetize
+**Literature**: **L#. Author, Title, Year** | Summary | Relevance | Type | Group by type, alphabetize (canonical only)
 
 **Citations**: **A#. [Citation] [Tag]** | Books: `Author, A. (Year). *Title*. Publisher. [EN]` | Papers: `Author, A. (Year). Title. *Journal*, Vol(Issue), pages. DOI [EN]` | Standards: `Org. (Year). *Standard*. URL [Standard]` | Web: `Author/Org. (Year). *Title*. Site. URL [EN/Report]` | ZH: `作者. (Year). *标题*. 出版社. [ZH]` | Sort by ID
 

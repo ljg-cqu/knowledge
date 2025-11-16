@@ -1,307 +1,247 @@
-# Software Quality Management Interview Generator
+# Software Quality Management Q&A Generator (Minimal Viable)
 
-Generate 30-35 interview Q&A pairs for quality engineering across the software lifecycle.
+Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viable tracking for informed decisions with limited time.
 
-## Requirements
+**Cadence**: Bi-weekly | 3-4h effort | **Expires**: 2 weeks from generation
 
-### Context
-**Domain**: Production distributed systems (>10K rps, >1TB data, multi-team)
-**Audience**: BA, PM, Architect, Developer, QA/SET, DevOps, Security, Data Engineer, SRE, Leadership
-**Constraints**: Cloud-native; quality built-in; modern practices (CI/CD, test automation, observability)
+**Freshness** (all news must meet these age thresholds):
+- **High-Velocity** (Testing, CI/CD, Observability): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (Code Quality, Process): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
+- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
 
-### Output
-**Format**: 150-300 words/answer + Mermaid + YAML/JSON + code + APA 7th [EN]/[ZH]
-**Quantity**: 30-35 Q&As; Difficulty: 20/40/40 (F/I/A)
-**Coverage**: MECE across 8 Lifecycle × 5 Quality Dimensions (≥1 Q&A per cell)
-  - **Lifecycle**: Requirements, Design, Development, Testing, Deployment, Operations, Maintenance, Evolution
-  - **Dimensions**: Functional, Code, Testing, Process, Product Quality
-**Per Cluster**: ≥1 diagram + example + metrics table + quality gate
-**Chain**: Quality Goal → Practice → Metric → Validation → Outcome
+**Scope**: Decision-critical quality topics only—testing frameworks, automation tools, quality standards, defect patterns, observability breakthroughs. For production systems (>10K rps, >1TB data).
 
-### Standards
-**Clarity**: Define terms; use specific values ("≥80% coverage" not "high quality")
-**Precision**: Numeric thresholds ("p95 <300ms"); exact citations
-**Accuracy**: Verify formulas/metrics; flag uncertainties; use industry benchmarks
-**Credibility**: Standards (DORA, Google SRE); tools ≤18mo old
-**Balance**: Trade-offs, limitations, alternatives, ROI
-**Significance**: High-impact practices; proven at scale
-**Concision**: No redundancy; use visuals to reduce text
-**Logic**: Clear chain: Goal→Practice→Metric→Validation→Outcome
+**Exclude**: Academic research, niche tools (<5% adoption), vendor marketing, implementation tactics, nice-to-have trends, speculation.
 
-## Quality Dimensions
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts testing strategy, quality gates, or automation roadmap
+2. **Creates Risk**: Material quality threat (defect escape, compliance, performance regression)
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (QA + DevOps, Dev + SRE, etc.)
+4. **Requires Action**: 1-6mo action window (not speculative)
+5. **Quantified Impact**: Defect reduction %, test speed improvement, coverage gain, or MTTR reduction
 
-### Lifecycle × Quality Matrix
+**Categories** (3-4, each Q covers ≥1):
+1. **Testing & Automation**: Test frameworks, automation tools, coverage strategies, defect patterns
+2. **Code Quality & Analysis**: Static analysis, complexity metrics, refactoring tools, tech debt
+3. **CI/CD & Quality Gates**: Pipeline tools, deployment safety, quality gates, fail-fast strategies
+4. **Observability & Reliability** (optional): Monitoring, alerting, SLO/SLA, incident response
 
-| Phase | Functional Quality | Code Quality | Testing Quality | Process Quality | Product Quality |
-|-------|-------------------|--------------|-----------------|-----------------|-----------------|
-| **Requirements** | Acceptance criteria, DOR | N/A | Test strategy | Story completeness, NFRs | UX scenarios |
-| **Design** | Quality scenarios | Patterns, SOLID | Test pyramid | ADR, review | Performance budgets |
-| **Development** | Unit tests, behavior | Lint, complexity | TDD/BDD, coverage | Code review, pairing | Tech debt |
-| **Testing** | Functional, E2E | SAST | Automation, contracts | Defect triage | Performance, load |
-| **Deployment** | Smoke, canary | DAST, SCA | Rollback testing | Blue/green, flags | DORA metrics |
-| **Operations** | SLO, error rates | Runtime analysis | Chaos testing | Incidents, postmortems | SLA, MTTR |
-| **Maintenance** | Regression | Refactoring | Regression suite | Patch, hotfix | Optimization |
-| **Evolution** | Feature validation | Fitness functions | Test improvement | Change mgmt, RFC | Tech debt reduction |
+**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 phases, ≥2 roles) + decision (Adopt/Prioritize/Monitor/Defer/Skip + rationale) + timeline (immediate/short). Projections only if sourced.
 
-### Dimension Details
+## II. Requirements
 
-| Dimension | Focus | Practices | Metrics | Standards |
-|-----------|-------|-----------|---------|----------|
-| **Functional** | Correctness, behavior | Acceptance, BDD, exploratory | Defect density, coverage, acceptance rate | ISO 25010, IEEE 829 |
-| **Code** | Maintainability, structure | Review, static analysis, refactoring | Complexity ≤10, duplication <3%, MI ≥65 | SOLID, SonarQube |
-| **Testing** | Coverage, effectiveness | Automation, TDD, contracts, mutation | Coverage ≥80%, mutation ≥70%, flakiness <2% | Test Pyramid, Google |
-| **Process** | Efficiency, collaboration | CI/CD, review SLA, DoD | Review <24h, build ≥95%, deploy frequency | DORA, ISO 12207 |
-| **Product** | Performance, security | Load, security, accessibility | p95 latency, error <0.1%, WCAG, vulns | ISO 25010, OWASP |
+**Q&A**: 6-8 total | 1-2/phase | 120-200w | 100% topic-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-## Visuals & Metrics
+**Phases** (3-4, 1-2 Q each): Development, Testing, Deployment, Operations (skip Requirements, Design, Maintenance, Evolution unless decision-critical)
 
-### Quality Analysis Diagrams
+**Category Coverage** (min): Testing ≥50%, Code Quality ≥40%, CI/CD ≥40%, Observability ≥25% (optional)
 
-| Analysis Type | Diagram (Mermaid) | Metrics (formula, target) | When to Use |
-|---------------|-------------------|---------------------------|-------------|
-| **Requirements** | Story map, criteria flow | Coverage = Tested/Total ≥95%; Ambiguity <5% | Requirements |
-| **Design** | C4, Sequence | ADR coverage ≥90%; Review completion | Design |
-| **Code** | Package, Dependency | Complexity mean ≤10, max ≤15; Duplication <3%; MI ≥65 | Development |
-| **Testing** | Pyramid, Coverage map | Unit ≥80%; Integration ≥60%; E2E 100% | Testing |
-| **CI/CD** | Pipeline flow, Gates | Build <10min; Success ≥95%; Deploy daily+ | Deployment |
-| **Observability** | Dashboard, Alert flow | MTTR <30min; Alert precision ≥80% | Operations |
-| **Defect Mgmt** | Lifecycle, Fishbone | Density <2/KLOC; Escape <5%; Fix <48h | All phases |
-| **Trends** | Burndown, Metrics trend | Improvement ≥10%/qtr; Debt decreasing; Velocity ±15% | Evolution |
+**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-## Quality Frameworks & Approaches
+**Stakeholders** (≥5/10): Developer, QA/SET, DevOps, SRE, Architect (core roles only)
 
-| Framework | Use Case | Pros | Cons | Trade-off | References |
-|-----------|----------|------|------|-----------|------------|
-| **Test Pyramid** | Balanced strategy | Fast, cost-effective | Discipline required | Unit vs. E2E; Speed vs. realism | Google, Fowler |
-| **Shift-Left** | High velocity | 10-100x cheaper fixes | Upfront investment | Proactive vs. reactive | DORA, DevOps |
-| **TDD/BDD** | Complex logic | Design, coverage, docs | Slower initial dev | Upfront vs. long-term | Beck, North |
-| **Continuous** | CI/CD, frequent | Automated, rapid feedback | Infrastructure cost | Automation vs. manual | DevOps, SRE |
-| **Risk-Based** | Limited resources | Focus high-risk, ROI | May miss edge cases | Coverage vs. priority | ISO 29119, ISTQB |
-| **Exploratory** | New features, UX | Creativity, real scenarios | Non-repeatable, skill-dependent | Manual vs. automated | Bach, Bolton |
-| **Mutation** | Critical code | Validates test quality | Slow, resource-heavy | Quality vs. speed | Stryker, PIT |
+**References** (build before Q&A): G≥8 (100% terms used), T≥2-3 (testing tools), C≥2 (code quality), O≥2 (observability), S≥4-5 (sources/studies), A≥6 (APA 7th+tag)
 
-## Question Design
+**Visuals**: ≥2 diagrams + ≥1 table
 
-### Principles
-- **Application over recall**: Analysis, trade-offs, practical implementation
-- **Real-world scenarios**: 8 lifecycle phases × 10 stakeholder roles
-- **Breadth & depth**: Multiple dimensions; actionable detail
-- **Cross-phase integration**: E.g., design → testing → operations
+**Quality Gates** (fail ANY = stop):
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
+2. **Topic Relevance**: 100% cite ≥1 source; 0% marketing/speculation
+3. **Impact**: 100% ≥2 phases + ≥2 roles + quantified
+4. **Decision**: 100% decision + rationale + timeline
+5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
+6. **Actionability**: 100% concrete; 0% abstract
 
-### Good vs. Poor
-✅ "Design test strategy for microservices (10+ services) with pyramid, coverage, CI/CD"  
-❌ "What is test pyramid?" (recall only)
+## III. Execution
 
-✅ "Code review SLA is 72h (target <24h). Root cause + improvements + metrics"  
-❌ "List code review best practices" (no context)
+### Step 1: Topic Discovery & Curation (Minimal)
 
-✅ "Error rate: 0.05%→0.3%. Investigation + rollback criteria + postmortem"  
-❌ "What is MTTR?" (vague)
+**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
 
-✅ "CI/CD quality gates: unit, integration, security, performance. Thresholds + handling"  
-❌ "What are quality gates?" (no implementation)
+2. **Search** (≥12-15 candidates, tiered):
 
-### Stakeholder Context by Role
+   **Tier 1** (Recent, search first): `"[Testing|QA|CI/CD|Code Quality] framework|tool|release|standard"` (recent sources)
 
-| Role | Focus | Detail |
-|------|-------|--------|
-| **BA** | Requirements, acceptance, testability | Gherkin, DOR, traceability |
-| **PM** | Metrics, trade-offs, communication | ROI, trends, prioritization |
-| **Architect** | NFR, fitness functions | ADRs, budgets, scenarios |
-| **Developer** | Code quality, TDD, refactoring | Code, lint, tests |
-| **QA/SET** | Strategy, automation, defects | Plans, frameworks, dashboards |
-| **DevOps** | Gates, deployment, reliability | Configs, checks, rollback |
-| **Security** | SAST/DAST/SCA, vulns | Configs, scans, SLAs |
-| **Data Eng** | Data quality, migration | Checks, test data |
-| **SRE** | SLO/SLA, monitoring, incidents | SLI, alerts, runbooks |
-| **Leadership** | Strategy, resources, risk | Trends, efficiency, ROI |
+   **Tier 2** (Established if insufficient): Same (established sources)
 
-### Mandatory Elements
-1. **Chain**: Goal→Practice→Implementation→Metric→Validation→Outcome
-2. **Practical**: Code/test/config/pipeline/checklist
-3. **Context**: Phase + role
-4. **Citation**: ≥1 [Ref: ID]
-5. **Insight**: One sentence on trade-off/effectiveness/challenge
-6. **Trade-offs**: Cost vs. benefit; speed vs. thoroughness
-7. **Metrics**: Quantified targets with formulas
+   **Sources** (whitelist, prioritize):
+   - **Testing**: Google Testing Blog, Selenium/Playwright releases, TestCafe, Cypress, Playwright docs
+   - **Code Quality**: SonarQube releases, Snyk, OWASP reports, GitHub Copilot quality studies
+   - **CI/CD**: GitHub Actions, GitLab CI, CircleCI releases, DORA reports, deployment safety studies
+   - **Observability**: Prometheus, Grafana, Datadog, New Relic releases, SRE best practices
+   - **Avoid**: PR fluff, rumors, listicles, vendor marketing, academic papers, niche tools
 
-## References & Quality
+   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), GitHub releases
 
-### Minimums (30-35 Q&As)
-- **≥15 Glossary**: Test Pyramid, TDD, BDD, Coverage, Complexity, Tech Debt, Defect Density, DORA, SLO/SLI/SLA, Mutation, Contract Testing, Shift-Left, Quality Gate, DoD, Flakiness, MI (formulas, thresholds)
-- **≥8 Tools**: JUnit/pytest, Selenium/Playwright, JMeter/k6, Postman, SonarQube, ESLint/Pylint, GitHub Actions/GitLab CI, Prometheus/Grafana (purpose, license, update ≤18mo)
-- **≥12 Literature**: Google Testing Blog, xUnit Patterns, Clean Code, Refactoring, Legacy Code, Accelerate, Continuous Delivery, SRE, ISO 25010/29119, IEEE 829
-- **≥25 Citations**: APA 7th [EN]/[ZH] (~60/30/10%); DOI/URL; DORA/SO reports
+3. **Curate** (≥12-15 candidates: Testing ≥5, Code Quality ≥3, CI/CD ≥3, Observability ≥2):
+   - ✅ From authoritative sources
+   - ✅ Whitelist OR primary source
+   - ✅ Satisfies ≥1 Decision Criticality criterion
+   - ✅ Specific details (names, numbers, metrics)
+   - ✅ Not marketing/speculation
 
-### Quality Gates (all must PASS)
+4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-| Gate | Requirement | Check |
-|------|-------------|-------|
-| **Lifecycle** | 8 phases, ≥3 Q&As each | Count by phase |
-| **Stakeholder** | ≥8/10 roles, ≥2 Q&As each | Count by role |
-| **Dimensions** | 5 dimensions, ≥5 Q&As each | Count by dimension |
-| **Difficulty** | 20/40/40 (F/I/A) ±5% | Count by level |
-| **Practical** | 100% have code/config/test | Review all |
-| **Metrics** | 100% have targets + formulas | Review all |
-| **Trade-offs** | 100% acknowledge trade-offs/limits | Review all |
-| **Citations** | ≥70% ≥1 cite, ≥30% ≥2 cites | Count |
-| **Cross-refs** | 100% [Ref: ID] resolve | Auto-check |
-| **Recency** | ≥60% <3yr, ≥80% tools ≤18mo | Check dates |
-| **Diversity** | ≥3 types, none >30% | Count types |
-| **Testing** | Unit, integration, E2E, perf, sec | Check glossary |
-| **Tools** | ≥8 with purpose, license, date | Check section |
-| **Links** | 100% accessible/archived | Verify |
+5. **Allocate**: 6-8 Q × 3-4 phases (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
 
-## Workflow
+### Step 2: Build References (Minimal)
 
-### 1. Plan (6-8 clusters)
-1. Requirements (4-5): DOR, criteria, strategy, NFRs
-2. Design (4-5): Attributes, ADRs, budgets
-3. Development (4-5): TDD, review, analysis
-4. Testing (5-6): Pyramid, coverage, automation
-5. CI/CD (4-5): Gates, pipeline, validation
-6. Operations (4-5): SLOs, observability, MTTR
-7. Maintenance (3-4): Regression, tuning, defects
-8. Evolution (3-4): Tech debt, fitness, metrics
+**Format**: G# (term, def+analogy, context) | T# (tool, purpose, URL) | C# (code quality, metric, URL) | O# (observability, metric, URL) | S# (source, topic, URL) | A# (APA 7th+tag)
 
-**Total**: 30-35 Q&As; 20/40/40 (F/I/A); 8 phases × 5 dimensions; ≥8/10 roles
+**Citation**: Markdown reference links: `[Ref: S1][s1]` in text, `[s1]: URL` at answer end
 
-### 2. Build References FIRST
-**Order**: Glossary (≥15) → Tools (≥8) → Literature (≥12) → Citations (≥25)  
-**IDs**: G#, T#, L#, A#  
-**Verify**: Unique, complete, ≥60% <3yr, diverse, accessible
+**Floors**: G≥8 (100% terms used), S≥4-5, T≥2-3, C≥2, O≥2, A≥6
 
-### 3. Write Q&As (150-300 words)
-**Structure**: Context → Chain (Goal→Practice→Metric→Outcome) → Practical → Metrics → Citation → Trade-offs → Insight  
-**Validate**: Check every 5 Q&As against gates
+**Glossary** (only terms used in Q&As):
+- **Coverage**: Only terms/acronyms used (TDD, BDD, Coverage, MTTR, SLO, etc.)
+- **Clarity**: Plain language, avoid jargon
+- **Analogies**: 1-2 real-world comparisons per term
+- **Context**: Why it matters for decisions
+- **Examples**: Real numbers
 
-### 4. Add Visuals
-**Per cluster**: ≥1 diagram + code + metrics table + config  
-**Types**: Pyramid, pipeline, dashboard, lifecycle, fitness
+**Source Entry**: **Title** (Source): Summary | Cat | URL | Decision Criticality criterion
 
-### 5. Complete References
-**Glossary**: Definition, formula, threshold, distinctions  
-**Tools**: Purpose, license, date (YYYY-MM), integrations  
-**Literature**: APA 7th, coverage, key sections  
-**Citations**: Author, year, DOI/URL, [EN]/[ZH]
+### Step 2.5: Opportunistic Refresh (optional, skip default)
 
-### 6. Validate
-**Execute**: All 14 gates; document PASS with evidence
+**Trigger**: Major development affecting ≥2 Q&As (rare)
 
-### 7. Review
-**Check**: Clarity, precision, completeness, depth, credibility, balance, actionability, structure
+**Action**: Quick search → Add 1-2 items → Adjust 1-2 Qs → Document
 
-## Output Format
+### Step 3: Generate Q&A (batch 2-3, self-check each)
+
+**Before**: Review glossary. Track ALL terms used.
+
+**Patterns**: "[Topic] implications for [Phase]+[Roles]?" | "[Tool]: adoption strategy?" | "[Defect Pattern]: response?" | "[Standard] vs [Current]: prioritize?"
+
+**Avoid**: Generic questions, hype, unattributed claims, outdated topics, speculation
+
+**Structure** (120-200w):
+1. **Topic** (~25w): What, context, why, cat `[Ref: S#][s#]`
+2. **Impact** (~50w): **Phases** (≥2) | **Quantified**: Defect %, speed gain, coverage %, MTTR reduction
+3. **Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+4. **Decision** (~50w): **Rec**: Adopt/Prioritize/Monitor/Defer/Skip | **Rationale**: Why | **Success**: Targets
+5. **Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
+6. **Links**: Define at end: `[n1]: URL`
+
+**Self-Check**: Source OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+
+### Step 4: Visuals (≥2 diagrams + ≥1 table)
+
+**Types**: Test pyramids, pipeline flows, quality gates, decision trees, metrics dashboards
+
+**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
+
+**Refs**: 100% resolve | Complete | G≥8 (100% terms used) | S≥4-5 | T≥2-3 | C≥2 | O≥2 | A≥6
+
+**Decision**: 100% decision + rationale + criteria + timeline
+
+**Stakeholders**: ≥5 roles | Actions + authority
+
+### Step 5: Validate (fail ANY = stop, fix, re-run ALL)
+
+**Quantitative**: Floors met | Glossary 100% | 3-4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100%
+
+**Qualitative**: Topic relevance, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 topic+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+
+### Step 6: Submit
+
+**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
+
+## IV. Validation Report (Minimal)
+
+| # | Check | Measurement | Criteria | Result | Status |
+|---|-------|-------------|----------|--------|--------|
+| 1 | **Source Quality** | Primary sources: __% | ≥70% | | PASS/FAIL |
+| 2 | **Floors** | G:__ S:__ T:__ C:__ O:__ A:__ Q:__ | ≥8,≥4-5,≥2-3,≥2,≥2,≥6,6-8 | | PASS/FAIL |
+| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;6-8 | | PASS/FAIL |
+| 5 | **Categories** | Test__% Code__% CI/CD__% Obs__% | ≥50,40,40,25% | | PASS/FAIL |
+| 6 | **Roles** | __/10 | ≥5 | | PASS/FAIL |
+| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
+| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
+| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
+| | **Source Dist** | Primary__% Secondary__% Tertiary__% | Balanced | | INFO |
+| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
+
+## V. Question Quality (≥2 fails of 7 = rewrite)
+
+**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
+
+**✓ Good**: "Playwright: test automation adoption?" | "SonarQube: code quality strategy?" | "GitHub Actions cost implications: CI/CD response?" | "Defect escape patterns: testing roadmap?"
+
+**✗ Bad**: "What is test pyramid?" (generic) | "How to write tests?" (overview) | "Adopt AI testing?" (no context) | "Python 3.13" (tech ops) | "Competitor launched feature" (no decision)
+
+## VI. Output Format (Minimal)
+
+### A. TOC
 
 ```markdown
+# Quality Engineering Q&A ([Period])
+
 ## Contents
-- [Coverage Matrix](#matrix): 8 phases × 5 dimensions (3+ Q&As each)
-- [Topic Clusters](#clusters): 8 clusters (30-35 Q&As)
-- [References](#refs): Glossary (≥15), Tools (≥8), Literature (≥12), Citations (≥25)
-- [Validation](#validation): 14 gates
-
-## Topic N: [Cluster]
-
-### QN: [Scenario Question]
-**Difficulty**: [F/I/A] | **Phase**: [Phase] | **Role**: [Role] | **Dimension**: [Dimension]  
-**Insight**: [One sentence on trade-off/effectiveness/challenge]
-
-**Answer** (150-300 words):  
-[Context] → [Chain: Goal→Practice→Metric→Outcome] → [[Ref: ID]] → [Trade-offs]
-
-**Practical**:
-```[lang]
-[Code/config/test/pipeline]
+1. Executive Summary (Insights | Dashboard)
+2. Phase Coverage (3-4 phases)
+3. Questions by Phase: Development (Q1-Q2) | Testing (Q3-Q4) | Deployment (Q5-Q6) | Operations (Q7-Q8)
+4. References: G (G1-G8) | S (S1-S5) | T (T1-T3) | C (C1-C2) | O (O1-O2) | A (A1-A6)
+5. Validation (12 checks)
 ```
 
-**Visual**:
-```mermaid
-[Diagram]
+### B. Executive Summary
+
+**Domain**: Quality Engineering | **Period**: [Q3-Q4'24] | **Coverage**: [# items, 3-4 cats]
+
+**Insights**: 1. [Topic] ([Source]): [Impact] → [Decision] → [Timeline] (2 high-impact)
+
+**Dashboard**: [Table: Phase | Topic | Decision | Timeline]
+
+**Roles**: [5+ roles] | **Refs**: G=[#] S=[#] T=[#] C=[#] O=[#] A=[#]
+
+### C. Phase Overview
+
+| # | Phase | Count | Categories | Topic | Roles |
+|---|-------|-------|------------|-------|-------|
+| 1 | Development | 1-2 | Code Quality, Testing | [Top] | Dev, Architect |
+| 2 | Testing | 1-2 | Testing, CI/CD | [Top] | QA/SET, Dev |
+| 3 | Deployment | 1-2 | CI/CD, Observability | [Top] | DevOps, SRE |
+| 4 | Operations | 1-2 | Observability, Code Quality | [Top] | SRE, DevOps |
+| | **Total** | **6-8** | **3-4** | **4+** | **≥5** |
+
+### D. Q&A Template
+
+```markdown
+### Q#: [Topic Question + Phase + Roles]
+
+**Phase**: [Phase] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
+
+**Topic** (~25w): What, context, why, cat [Ref: S#][s#]
+
+**Impact** (~50w): **Phases** (≥2) | **Quantified**: Defect %, Speed gain, Coverage %, MTTR reduction
+
+**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+
+**Decision** (~50w): **Rec**: Adopt/Prioritize/Monitor/Defer/Skip | **Rationale**: Why | **Success**: Targets
+
+**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
+
+[s1]: URL
+---
 ```
 
-**Metrics**:
-| Metric | Formula | Target | Rationale [Ref] |
-|--------|---------|--------|-----------------|
-| ... | ... | ... | ... |
+### E. Reference Formats
 
-**Trade-offs**:
-- **A vs. B**: [Impact]
-- **When A**: [Context]
-- **When B**: [Context]
+**G#. Term (Acronym)**: Definition | Analogy | Context | Example
 
-## References
-**G#. Term**: Def, formula, threshold, distinctions [EN/ZH]  
-**T#. Tool** (Cat): Purpose, license, date (YYYY-MM), integrations [EN/ZH]  
-**L#. Author. (Year). *Title*.** Coverage, key sections [EN/ZH]  
-**A#. Author. (Year). *Title*.** DOI/URL [EN/ZH]
+**S#. Title** (Source): Summary | Cat | URL
 
-## Validation
-| Gate | Status | Evidence |
-|------|--------|----------|
-| All 14 gates | ✅ PASS | [Counts, %] |
-```
+**T#. Tool** (Category): Purpose | URL
 
-## Example Q&A (CI/CD Gates)
+**C#. Code Quality Metric** (Source): Details | URL
 
-**Q: Design comprehensive quality gates for a CI/CD pipeline serving a microservices architecture (15 services, 50+ developers). Include unit/integration/E2E tests, code quality checks, security scans, and performance benchmarks. Define thresholds and failure handling.**
+**O#. Observability Metric** (Source): Details | URL
 
-**Difficulty**: Advanced  
-**Lifecycle Phase**: Deployment & Release  
-**Stakeholder Roles**: DevOps Engineer, QA/SET, Developer, SRE  
-**Quality Dimension**: Testing Quality + Process Quality + Product Quality  
-**Key Insight**: Effective quality gates balance thoroughness with speed; gates should fail fast on critical issues while providing actionable feedback to accelerate remediation [Ref: A5].
+**A#. APA 7th [Tag]**: Author/Org. YYYY, Mon DD. *Title*. Pub. URL [Tag]
 
-**Answer** (275 words):  
-Multi-stage pipeline with fail-fast [Ref: L8]: (1) Pre-commit: lint, unit (<2min), (2) Commit: tests, quality, security, contracts (<5min), (3) Acceptance: integration, E2E, performance (<15min), (4) Production: full security, compliance (<10min).
-
-**Thresholds** [A5, L7]: Coverage ≥80% unit, ≥60% integration; Complexity ≤15, duplication <3%, MI ≥65; Security 0 Critical/High; p95 ≤300ms (+10%); Contracts 100%.
-
-**Trade-offs**: Strict (block warnings) vs. Lenient (warn only) vs. Balanced (block critical). Elite DORA: balanced approach, >1 deploy/day, <15% failure [A5]. Monitor: FP <5%, FN <1%, MTTR <2h [L8].
-
-**Practical** (GitHub Actions excerpt):
-```yaml
-jobs:
-  fast-checks:
-    steps:
-      - name: Unit Tests + Coverage
-        run: |
-          npm test --coverage
-          COVERAGE=$(jq '.total.lines.pct' coverage/coverage-summary.json)
-          [ $COVERAGE -lt 80 ] && exit 1
-      - name: SonarQube
-        uses: SonarSource/sonarqube-scan-action@v2
-  integration-tests:
-    needs: fast-checks
-    steps:
-      - run: npm run test:integration
-  acceptance:
-    needs: integration-tests
-    steps:
-      - run: npm run test:e2e --spec critical-paths/**
-      - run: k6 run perf-tests/load.js  # p95 ≤330ms
-```
-
-**Visual**:
-```mermaid
-flowchart LR
-    A[Commit] --> B[Lint/Unit]
-    B --> C[Quality/Security]
-    C --> D[Integration]
-    D --> E[E2E/Perf]
-    E --> F{Pass?}
-    F -->|Yes| G[Deploy]
-    F -->|No| H[Block]
-```
-
-**Metrics**:
-| Metric | Formula | Target | Ref |
-|--------|---------|--------|-----|
-| Pipeline Duration | End-Start | <30min | A5 |
-| Success Rate | Success/Total | ≥95% | L8 |
-| False Positive | FP/Alerts | <5% | A12 |
-| Defect Escape | ProdDefects/Total | <5% | L7 |
-
-**Trade-offs**:
-- **Comprehensive vs. Fast**: 30min + <1% escape vs. <10min + 3-5% escape
-- **When Comprehensive**: Regulated, financial, healthcare
-- **When Fast**: Rapid iteration, canary + rollback

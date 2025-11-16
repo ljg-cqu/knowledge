@@ -1,67 +1,63 @@
-# Decision Process Understanding Q&A Generator
+# Decision Process Understanding Q&A Generator (Minimal Viable)
 
-Generate 30-35 Q&As demonstrating comprehensive decision-making processes across industry/domain/system contexts.
+Generate 6-12 decision-critical Q&As identifying decisions that block action or create material risk.
 
-**Context**: Industry/domain/system decisions (strategic, technical, business, operational) across full lifecycle  
-**Audience**: Decision makers, leaders, architects, managers, specialists  
-**Success**: 45/45 validation PASS + 14/14 review criteria
+**Context**: Decision-critical scenarios (strategic, technical, business, operational) with time constraints  
+**Audience**: Decision makers, leaders, architects, managers  
+**Success**: 12/12 validation PASS + 6/6 review criteria
 
 ## Core Principle
 
-**Decision = systematic 9-stage process**: Frame problem → Analyze constraints (8 categories) → Engage stakeholders (10 roles) → Generate alternatives (≥3) → Quantify trade-offs (≥4 dimensions) → Assess risks → Document (ADR) → Implement → Monitor → Adapt
+**Decision Criticality Framework**: Include Q&A if ≥1 criterion:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot
+- **Creates Risk**: Identifies material threat (financial, regulatory, operational, reputational)
+- **Affects ≥2 Stakeholders**: Multi-team impact (e.g., Architect + SRE, PM + Security)
+- **Actively Evolving**: Market/tech/regulatory changes in past 3-6 months
+- **High Adoption Barrier**: >40h effort or >$100K investment
+
+**Exclude**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered
 
 ## Decision Framework
 
-### 8 Decision Types (All Must Be Covered, 3-5 Q&As each)
+### 4-5 Decision-Critical Types (Focus on High-Impact)
 
-1. **Strategic**: Market entry/exit, platform selection, build vs buy, technology bets, partnerships, M&A
-2. **Technical**: Architecture, tech stack, design patterns, infrastructure, data storage, integration
-3. **Business/Market**: Pricing, revenue, positioning, segments, competitive response
-4. **Operational**: Deployment, incident response, capacity, SLA/SLO, support, DR
-5. **Organizational**: Team structure, process, governance, hiring, culture
-6. **Data**: Schema, consistency, partitioning, retention, privacy, quality
-7. **Security/Compliance**: Auth/authz, encryption, compliance, vulnerability mgmt, audit
-8. **Evolution**: Migration, tech debt, modernization, versioning, deprecation
+1. **Strategic**: Market entry/exit, platform selection, build vs buy, technology bets
+2. **Technical**: Architecture, tech stack, infrastructure, data storage
+3. **Business/Market**: Pricing, revenue, competitive response
+4. **Regulatory/Compliance**: Data protection, compliance, audit
+5. **Operational** (optional): Deployment, SLA/SLO, incident response
 
-### 9 Decision Process Stages
+### 6 Decision Process Stages (Minimal Viable)
 
 | Stage | Activities | Outputs | Focus Roles |
-|-------|------------|---------|-------------|
-| **1. Framing** | Identify need, scope, urgency, impact | Problem statement, success criteria | All validate |
-| **2. Constraints** | Analyze 8 categories, thresholds | Constraint catalog (Technical/Resource/Business/Org/Regulatory/Operational/Ecosystem/Lifecycle) | Tech/Resource/Reg leads |
-| **3. Stakeholders** | Elicit concerns/priorities from 10 roles | Stakeholder matrix, conflicts | PM/Arch facilitate |
-| **4. Alternatives** | Brainstorm ≥3 options, research patterns | Alternative catalog | Arch/Dev/Data |
-| **5. Trade-Offs** | Quantify ≥4 dimensions | Trade-off table, metrics | All evaluate |
-| **6. Risks** | Probability/impact/mitigation | Risk register | Security/SRE/Lead |
-| **7. Decision** | Select, document ADR | ADR with context/alternatives/consequences | Arch/Lead |
-| **8. Implement** | Execute, monitor, adjust | Plan, milestones | Dev/DevOps/QA |
-| **9. Monitor** | Track metrics, validate, iterate | Dashboard, retrospectives | SRE/Ops, all adapt |
+|-------|------------|---------|-------------||
+| **1. Framing** | Identify need, scope, urgency | Problem statement, success criteria | All validate |
+| **2. Constraints** | Analyze ≥3 categories, thresholds | Constraint catalog | Tech/Resource/Reg leads |
+| **3. Stakeholders** | Elicit concerns from ≥2 roles | Stakeholder matrix | PM/Arch facilitate |
+| **4. Alternatives** | Brainstorm ≥2 options | Alternative catalog | Arch/Dev |
+| **5. Trade-Offs** | Quantify ≥3 dimensions | Trade-off table | All evaluate |
+| **6. Decision & ADR** | Select, document, implement | ADR with context/consequences | Arch/Lead |
 
-### 10 Stakeholder Roles
+### 6-7 Core Stakeholder Roles
 
 | Role | Concerns | Trade-Off Priorities | Key Metrics |
-|------|----------|----------------------|-------------|
-| **BA** | Requirements, domain | Completeness vs simplicity | Traceability, accuracy |
+|------|----------|----------------------|-------------||
 | **PM** | Time-to-market, features | Speed vs quality | Release frequency, NPS |
 | **Architect** | System quality, coherence | Flexibility vs simplicity | NFR achievement, debt |
 | **Developer** | Maintainability | Abstraction vs explicitness | Build time, complexity |
-| **QA** | Quality, coverage | Automation vs manual | Escape rate, coverage |
-| **DevOps** | Deployment, pipeline | Automation vs flexibility | Frequency, MTTR, success |
+| **DevOps** | Deployment, pipeline | Automation vs flexibility | Frequency, MTTR |
 | **Security** | Risk, compliance | Security vs usability | Vulnerability count |
-| **Data** | Quality, schema | Normalization vs performance | Query performance |
 | **SRE** | Reliability, observability | Availability vs cost | SLO, MTTR |
 | **Leadership** | ROI, risk, strategy | Cost vs capability | Revenue, TTM |
 
-### 8 Constraint Categories (All Must Be Covered)
+### 5-6 Decision-Critical Constraint Categories
 
-1. **Technical**: Hardware (CPU/RAM/storage/network), Platform, Legacy, Stack
-2. **Resource**: Time (deadlines), Budget (infra/licensing/headcount), Team (size/skills)
-3. **Business/Market**: Revenue model, Market (competition/segments), Continuity, Strategy
-4. **Organizational**: Stakeholder priorities, Process (CAB/ARB), Governance (ADR), Culture
-5. **Regulatory/Compliance**: Data protection (GDPR/HIPAA/PCI), Standards (SOC 2/ISO), Audit
-6. **Operational**: Availability (RTO/RPO), Observability, Support (SLA), Capacity
-7. **Ecosystem**: Vendor lock-in, OSS (health/license), Partners (APIs), Standards, Talent
-8. **Lifecycle**: Per-phase constraints (specs, debt, CI/CD, tests, rollback, incidents, CVE, migration)
+1. **Technical**: Hardware (CPU/RAM/storage), Platform, Legacy, Stack
+2. **Resource**: Time (deadlines), Budget (infra/licensing), Team (size/skills)
+3. **Business/Market**: Revenue model, Competition, Strategy
+4. **Regulatory/Compliance**: Data protection (GDPR/HIPAA/PCI), Standards (SOC 2), Audit
+5. **Operational**: Availability (RTO/RPO), SLA/SLO, Capacity
+6. **Ecosystem** (optional): Vendor lock-in, OSS health, Partners
 
 ## Content Standards
 
@@ -80,29 +76,25 @@ Generate 30-35 Q&As demonstrating comprehensive decision-making processes across
 
 **Traceability**: Requirements → Constraints → Pattern → Code → Metrics
 
-## Required Per Q&A
+## Required Per Q&A (Minimal Viable)
 
-1. **Decision Type**: Explicit (Strategic/Technical/Business/Operational/Organizational/Data/Security/Evolution)
-2. **Process**: ≥5 of 9 stages
-3. **Constraints**: ≥4 of 8 categories quantified
-4. **Stakeholders**: ≥3 roles with concerns/priorities/positions
-5. **Alternatives**: ≥3 options evaluated
-6. **Trade-Offs**: Quantified across ≥4 dimensions (+X% perf, +Y% cost, +Z% complexity)
-7. **Risks**: Probability/impact/mitigation
-8. **Lifecycle**: ≥2 of 8 phases
-9. **Thresholds**: Context decision boundaries
-10. **ADR**: Context/alternatives/consequences
-11. **Length**: 200-350 words (excl. diagrams/tables)
-12. **Citations**: ≥1 (≥2 advanced)
+1. **Decision Type**: Explicit (Strategic/Technical/Business/Regulatory/Operational)
+2. **Decision Criticality**: ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+3. **Process**: ≥4 of 6 stages
+4. **Constraints**: ≥3 of 5 categories quantified
+5. **Stakeholders**: ≥2 roles with concerns/positions
+6. **Alternatives**: ≥2 options evaluated
+7. **Trade-Offs**: Quantified across ≥3 dimensions
+8. **Risks**: Probability/impact/mitigation for top 2-3 risks
+9. **ADR**: Context/alternatives/consequences
+10. **Length**: 200-350 words (excl. diagrams/tables)
+11. **Citations**: ≥1 (≥2 for advanced)
 
-## Required Per Cluster (3-5 Q&As)
+## Required Per Cluster (2-3 Q&As)
 
-1. **Decision Flow Diagram** (Mermaid, <120 nodes, 9-stage process)
-2. **Decision Matrix** (≥3 alternatives × ≥8 dimensions: Technical/Resource/Business/Operational/Regulatory/Risk/Stakeholder/"When to Choose"/Tag)
-3. **Risk Matrix** (≥4 risks: Risk/Probability/Impact/Severity/Mitigation/Owner)
-4. **Stakeholder Matrix** (≥3: Stakeholder/Concern/Priority/Criteria/Position/Conflict/Alignment)
-5. **Metrics Dashboard** (≥5: Metric/Formula/Variables/Target/Constraint Impact/Frequency)
-6. **ADR Template** (Status/Date/Context/Alternatives/Decision/Consequences/Metrics)
+1. **Decision Flow Diagram** (Mermaid, <80 nodes, 6-stage process)
+2. **Decision Matrix** (≥2 alternatives × ≥5 dimensions: Technical/Resource/Business/Regulatory/Risk)
+3. **Risk Matrix** (≥2 risks: Risk/Probability/Impact/Mitigation)
 
 ### Visual Standards
 
@@ -112,175 +104,149 @@ Generate 30-35 Q&As demonstrating comprehensive decision-making processes across
 
 **Anti-Patterns**: ❌ Text-only (no diagrams) ❌ <3 alternatives ❌ <6 dimensions ❌ Vague terms ❌ Missing conflict visualization ❌ No risk matrix for high-stakes
 
-## References
+## References (Minimal Viable)
 
 | Component | Min | Requirements |
-|-----------|-----|--------------|
-| **Glossary** | ≥30 | 8 decision types + 9 stages + 8 constraints + 10 stakeholders + visual elements |
-| **Tools** | ≥10 | Decision support, ADR, risk, stakeholder mapping, Mermaid; URL, update ≤18mo |
-| **Literature** | ≥10 | Decision-making (Kahneman, Hammond), Architecture (Fowler, Evans), Business (Porter, Christensen), Leadership (Drucker) |
-| **Citations** | ≥15 | APA 7th; 60/30/10% EN/ZH/other (±10%); ≥50% last 3yr; ≥4 types; <25% single source; 100% valid links |
+|-----------|-----|--------------||
+| **Glossary** | ≥10 | Only terms used in Q&As (decision types, stages, constraints, stakeholders) |
+| **Tools** | ≥5 | Decision support, ADR, Mermaid; URL, update ≤18mo |
+| **Literature** | ≥6 | Decision-making (Kahneman, Hammond), Architecture (Fowler), Business (Porter) |
+| **Citations** | ≥10 | APA 7th; 60/30/10% EN/ZH/other; ≥50% last 3yr; ≥3 types; <25% single source; 100% valid links |
 
 ---
 
 # Generation Process
 
-## 1. Plan (30-35 Q&As @ 15/40/45% F/I/A)
+## 1. Plan (6-12 Q&As @ 25/50/25% F/I/A)
 
-- Select 7-8 clusters across 8 decision types
-- Allocate 3-5 Q&As/cluster
-- Map decision patterns, 8 constraints, 10 stakeholders, 8 lifecycle phases
-- Ensure all 9 stages covered, ≥70% with thresholds
+- Select 3-4 clusters across 4-5 decision types
+- Allocate 2-3 Q&As/cluster
+- Map decision patterns, ≥3 constraints, ≥5 stakeholders, 4-5 lifecycle phases
+- Ensure ≥70% satisfy Decision Criticality Framework
 
 ## 2. Build References
 
-Glossary (≥30) → Tools (≥10) → Literature (≥10) → Citations (≥15, 60/30/10%)
+Glossary (≥10) → Tools (≥5) → Literature (≥6) → Citations (≥10, 60/30/10%)
 
 ## 3. Write Q&As
 
-**Questions**: ≥80% decision scenarios ("How would you decide..." / "Compare decision approaches...")
+**Questions**: 100% decision scenarios ("How would you decide..." / "Compare decision approaches...")
 
-**Answer Structure**: Header (difficulty, type, phases, stakeholders) → Framing → Constraints (≥4) → Stakeholders (≥3, conflicts) → Alternatives (≥3) → Trade-Offs (≥4 dimensions) → Risks → ADR → Implementation → Monitoring → Citations (≥1)
+**Answer Structure**: Header (difficulty, type, criticality, phases, stakeholders) → Framing → Constraints (≥3) → Stakeholders (≥2, positions) → Alternatives (≥2) → Trade-Offs (≥3 dimensions) → Risks → ADR → Citations (≥1)
 
-**Validate Every 5**: Count, type, stages (≥5), constraints (≥4), stakeholders (≥3), alternatives (≥3), quantification, risks, ADR, lifecycle, thresholds
+**Validate Every 3**: Count, type, criticality, stages (≥4), constraints (≥3), stakeholders (≥2), alternatives (≥2), quantification, risks, ADR
 
 ## 4. Create Artifacts Per Cluster
 
-Flow diagram + Decision matrix + Risk matrix + Stakeholder matrix + Metrics + ADR template
+Flow diagram + Decision matrix + Risk matrix (3 artifacts per 2-3 Q&As)
 
 ## 5. Link References
 
 Populate → Extract → Verify → Remove orphans → Validate URLs
 
-## 6. Validate (45 Checks—All PASS or STOP)
+## 6. Validate (12 Checks—All PASS or STOP)
 
-**Baseline (1-20)**: Counts (G≥30, T≥10, L≥10, A≥15, Q=30-35) | Citations (≥70% ≥1; ≥40% ≥2) | Language (60/30/10%) | Recency (≥50% 3yr) | Diversity (≥4 types, <25% single) | Links (100%) | Cross-refs (100%) | Words (200-350) | Quantified (100%) | Per-topic (≥2 sources + ≥1 tool) | Traceability (≥85%) | Judgment (≥80%) | Artifacts (≥90% 6/6) | Patterns (≥85%) | Metrics (≥65%) | Syntax (100%) | Formulas (100%) | Review (14/14)
+**Counts**: G≥10, T≥5, L≥6, A≥10, Q=6-12 | **Citations**: ≥80% ≥1; ≥50% ≥2 | **Language**: 60/30/10% | **Recency**: ≥50% <3yr | **Decision Criticality**: 100% satisfy ≥1 criterion | **Stages**: 100% ≥4 of 6 | **Constraints**: 100% ≥3 of 5 | **Stakeholders**: 100% ≥2 roles | **Alternatives**: 100% ≥2 | **Trade-Offs**: 100% ≥3 dims | **Artifacts**: 100% 3/3 per cluster | **Quantified**: 100% measurable
 
-**Decision Process (21-35)**: Types (100% explicit; all 8) | Stages (100% ≥5; all 9) | Framing (≥80%) | Constraints (100% ≥4; all 8) | Constraint Interactions (≥85%) | Stakeholders (100% ≥3; all 10) | Conflicts (≥85%) | Alignment (≥85%) | Alternatives (100% ≥3) | Trade-Offs (100% ≥4 dims) | Risks (≥80%) | ADR (≥90%) | Implementation (≥70%) | Monitoring (≥65%) | Lifecycle (all 8)
+**Fail Protocol**: ANY fail → STOP → Fix → Re-validate ALL → 12/12 PASS
 
-**Context (36-40)**: Thresholds (≥70%) | Hardware (≥40%) | Business (≥40%) | Regulatory (≥30%) | Ecosystem (≥30%) | Quantified Impact (100%)
+## 7. Final Review (6 Criteria—All PASS)
 
-**Visual (41-45)**: Flow Diagrams (100%, <120 nodes, 9-stage) | Decision Matrix (100% ≥3×≥8) | Risk Matrix (≥80% ≥4) | Stakeholder Matrix (≥85%) | Diagram Quality (≥90% valid Mermaid, color, subgraphs, <120 nodes)
-
-**Fail Protocol**: ANY fail → STOP → Fix → Re-validate ALL → 45/45 PASS
-
-## 7. Final Review (14 Criteria—All PASS)
-
-1. **Clarity**: Logical flow, consistent terminology, jargon defined inline
-2. **Accuracy**: Verifiable facts, valid diagrams/ADRs, sound metrics
-3. **Completeness**: 8 types (3-5 each), 9 stages, 8 constraints, 10 stakeholders, 8 phases, 45/45 PASS
-4. **Process Centrality**: 100% follow ≥5 of 9 stages
-5. **Process Coverage**: All 9 stages across Q&As
-6. **Multi-Type**: All 8 decision types
-7. **Quantification**: 100% with ≥4 dimensions
-8. **Multi-Perspective**: ≥3 views, conflicts/alignment explicit, all 10 roles
-9. **Lifecycle Integration**: ≥2 phases/Q&A, all 8 overall
-10. **Context Sensitivity**: ≥70% thresholds
-11. **Practicality**: Actionable ADRs, measurable metrics, realistic
-12. **Self-Correction**: No redundancy/gaps/orphans
-13. **Visual Comprehension**: 100% clusters have 6 artifacts
-14. **Diagram Quality**: ≥90% valid Mermaid, color coding, subgraphs, edges, decision points, loops
+1. **Decision-Critical**: Every Q&A satisfies ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+2. **Clarity**: Logical flow, consistent terminology, jargon defined inline
+3. **Quantified**: 100% with ≥3 dimensions (cost, time, risk, quality, complexity)
+4. **Actionable**: Clear go/no-go thresholds, ADRs, measurable metrics
+5. **Evidence-Based**: All claims cited, ≥2 sources for key metrics
+6. **Minimal Viable**: No redundancy, 6-12 Q&As sufficient for informed action
 
 ---
 
-# Output Template
+# Output Template (Minimal Viable)
 
 ```markdown
 ## Contents
-[TOC: Areas | Q&As | References | Validation]
+1. Decision Criticality Framework
+2. Coverage Matrix
+3. Q&As by Cluster
+4. References
+5. Validation Report
 
-## Topic Areas
-| Cluster | Decision Type | Count | Difficulty | Key Decisions | Primary Constraints |
-[8 types, 30-35 total, 15/40/45% F/I/A]
+## Decision Criticality Framework
+
+**Include Q&A if ≥1 criterion is satisfied**:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot
+- **Creates Risk**: Identifies material threat (financial, regulatory, operational, reputational)
+- **Affects ≥2 Stakeholders**: Multi-team impact (e.g., Architect + SRE, PM + Security)
+- **Actively Evolving**: Market/tech/regulatory changes in past 3-6 months
+- **High Adoption Barrier**: >40h effort or >$100K investment
+
+**Exclude Q&A if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered
+
+## Coverage Matrix
+| Cluster | Decision Type | Count | Difficulty | Key Decisions | Criticality |
+[4-5 types, 6-12 total, 25/50/25% F/I/A]
 
 ---
 
-## Topic 1: [Decision Type] Decisions—[Theme]
+## Cluster 1: [Decision Type] Decisions—[Theme]
 **Overview**: [1-2 sentences]  
 **Core Challenge**: [Central decision problem]
-
 ### Q1: [Decision Scenario Question]
-**Difficulty**: [F/I/A] | **Type**: [Type] | **Lifecycle**: [≥2 phases] | **Stakeholders**: [≥3 roles]
+**Difficulty**: [F/I/A] | **Type**: [Type] | **Criticality**: [Blocks/Risk/Stakeholders/Evolving/Adoption] | **Phases**: [≥2] | **Stakeholders**: [≥2 roles]
 
-**Answer** (200-350 words): [Framing → Constraints (≥4) → Stakeholders (≥3, conflicts) → Alternatives (≥3) → Trade-Offs (≥4 dimensions, quantified) → Risks (probability/impact/mitigation) → Decision & ADR → Implementation → Monitoring (metrics)] [≥1 cite]
+**Answer** (200-350 words): [Framing → Constraints (≥3) → Stakeholders (≥2, positions) → Alternatives (≥2) → Trade-Offs (≥3 dimensions, quantified) → Risks (probability/impact/mitigation) → Decision & ADR] [≥1 cite]
 
 **Decision Flow** (per cluster):
 ```mermaid
 graph TB
-    subgraph "1-3: Frame & Analyze"
-        Problem[Framing] --> Constraints[Constraints<br/>8 Categories]
-        Constraints --> Stakeholders[Stakeholders<br/>10 Roles]
+    subgraph "1. Framing"
+        Problem[Framing] --> SuccessCriteria[Success Criteria]
     end
-    subgraph "4-6: Evaluate"
+    subgraph "2. Constraints"
+        SuccessCriteria --> Constraints[Constraints<br/>5 Categories]
+    end
+    subgraph "3. Stakeholders"
+        Constraints --> Stakeholders[Stakeholders<br/>6 Roles]
+    end
+    subgraph "4. Alternatives"
         Stakeholders --> Alternatives[Alternatives<br/>≥3]
+    end
+    subgraph "5. Trade-Offs"
         Alternatives --> TradeOffs[Trade-Offs<br/>≥4 Dims]
-        TradeOffs --> Risks[Risks<br/>P×I]
     end
-    subgraph "7-9: Execute & Learn"
-        Risks --> Decision[Decision & ADR]
-        Decision --> Implement[Implementation]
-        Implement --> Monitor[Monitoring]
+    subgraph "6. Decision & ADR"
+        TradeOffs --> Decision[Decision & ADR]
     end
-    Monitor -->|Adapt| Alternatives
-```
-
-**Decision Matrix** (≥3 alternatives × ≥8 dimensions):
-| Alternative | Technical | Resource | Business | Operational | Regulatory | Risk | Stakeholder | When to Choose | Tag |
-
-**Risk Matrix** (≥4 risks):
-| Risk | Probability | Impact | Severity | Mitigation | Owner |
-
-**Stakeholder Matrix** (≥3):
-| Stakeholder | Concern | Priority | Criteria | Position | Conflict | Alignment Strategy |
-
-**Metrics Dashboard** (≥5):
-| Metric | Formula | Variables | Target | Constraint Impact | Frequency |
-
-**ADR Template**:
-```markdown
-# ADR-XXX: [Title]
-**Status**: Proposed/Accepted/Superseded  
-**Date**: YYYY-MM-DD  
-**Type**: [Type]
-
-**Context**: [Problem, constraints, stakeholders]
-**Alternatives**: [≥3 evaluated]
-**Decision**: [Selected]
-**Consequences**: [Pros/cons/risks/mitigation]
-**Metrics**: [Success criteria, monitoring]
+    Decision -->|Implement| Implementation
+    Implementation -->|Monitor| Monitoring
 ```
 
 ---
 
-## References
-
-### Glossary (≥30)
-**G1. [Term]** [Lang]: [Definition]. **Related**: [Terms]
-
-### Tools (≥10)
-**T1. [Tool]** [Tag]: [Purpose]. Updated: [YYYY-MM]. [URL]
-
-### Literature (≥10)
-**L1. Author(s). (Year). *Title*. Publisher.** [Tag]
-
-### Citations (≥15, APA 7th, 60/30/10%)
-**A1.** Author(s). (Year). *Title*. Source. [Lang]
-
----
-
-## Validation
+## Validation (12 Checks)
 | # | Check | Target | Result | Status |
-[45 checks]
+| 1 | Ref counts | G≥10, T≥5, L≥6, A≥10 | | PASS/FAIL |
+| 2 | Q&A counts | 6-12, F:I:A 25:50:25 | | PASS/FAIL |
+| 3 | Citations | ≥80% ≥1; ≥50% ≥2 | | PASS/FAIL |
+| 4 | Language | EN 60-70%, ZH 20-30%, Other 5-10% | | PASS/FAIL |
+| 5 | Recency | ≥50% <3yr | | PASS/FAIL |
+| 6 | Decision Criticality | 100% satisfy ≥1 criterion | | PASS/FAIL |
+| 7 | Stages | 100% ≥4 of 6 | | PASS/FAIL |
+| 8 | Constraints | 100% ≥3 of 5 | | PASS/FAIL |
+| 9 | Stakeholders | 100% ≥2 roles | | PASS/FAIL |
+| 10 | Alternatives | 100% ≥2 options | | PASS/FAIL |
+| 11 | Artifacts | 100% 3/3 per cluster | | PASS/FAIL |
+| 12 | Quantified | 100% measurable | | PASS/FAIL |
 
-**Overall**: [X/45 PASS]  
-**Coverage**: 8 Types: [counts] | 9 Stages: [counts] | 8 Constraints: [counts] | 10 Stakeholders: [counts] | 8 Phases: [counts]
+**Overall**: [X/12 PASS]  
+**Coverage**: 4-5 Types: [counts] | 6 Stages: [counts] | 5 Constraints: [counts] | ≥5 Stakeholders: [counts]
 ```
 
-# Concise Example
+# Minimal Viable Example
 
 ### Q: How would you decide cloud platform strategy (AWS vs Azure vs GCP vs Multi-Cloud) for a fintech startup expanding multi-region with regulatory constraints?
 
-**Difficulty**: Advanced | **Type**: Strategic + Technical | **Lifecycle**: Requirements, Architecture, Operations, Evolution | **Stakeholders**: CTO, Architect, DevOps, Security, Finance, PM
+**Difficulty**: Advanced | **Type**: Strategic + Technical | **Criticality**: Blocks decision (multi-region expansion), Creates risk (vendor lock-in, compliance) | **Phases**: Architecture, Operations | **Stakeholders**: CTO, Architect, DevOps, Security
 
 **Answer** (320 words): Fintech expanding $20M→$100M ARR (5x, 18mo), 50→200 eng, 8 regions (US/EU/APAC), needs PCI/GDPR compliance. Current AWS single-region shows limits; board raises vendor lock-in.
 

@@ -1,14 +1,21 @@
 # People & Workforce Intelligence News Q&A Generator
 
-Generate **10–14 Q&As** from recent news across 6 categories, 6 lifecycle stages, 11 stakeholder roles.
+Generate **6–8 decision-critical Q&As** from recent news—minimal viable workforce intelligence for informed decisions with limited time.
 
-**Target**: Monthly brief | 1–2 days | **Minimal essential intelligence** | Velocity-optimized: Talent Markets/Skills (high) + Policy/Labor/Comp (medium) + Culture/Wellbeing (long-tail)
+**Target**: Monthly brief | 4–6h effort | **Decision-critical only** | Velocity-optimized: Talent Markets/Skills (high) + Compensation/Policy (medium) + Culture (long-tail)
 
-**Scope**: Talent markets, hiring, recruiting, skills, education, compensation, benefits, workforce policy, labor law, engagement, culture, DEI, wellbeing.
+**Scope**: Decision-critical workforce news only—talent shortages, hiring trends, compensation shifts, policy changes, retention risks, engagement signals.
 
-**Exclusions**: Technical/operational decisions, product/GTM strategy, corporate finance, capital markets, early-stage venture formation, long-horizon corporate strategy beyond workforce.
+**Exclusions**: Technical/operational HR decisions, product/GTM strategy, corporate finance, capital markets, nice-to-have trends, rumors, marketing fluff, stale news.
 
-**Size Optimization**: 15 Q&As × 250w = ~3,750 words | Avoid info overload | Focus on immediate/short-term actions | Minimal essential intelligence for informed decisions
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts hiring strategy, comp structure, retention, or policy compliance
+2. **Creates Risk**: Material threat (attrition spike, compliance violation, talent loss, burnout)
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (CHRO + TA Lead, VP People + L&D, etc.)
+4. **Requires Action**: 1–6mo action window (not speculative)
+5. **Quantified Impact**: Hiring time %, acceptance rate %, attrition %, engagement %, comp cost %, or wellbeing signal
+
+**Size Optimization**: 6–8 Q&As × 200w = ~1,200–1,600 words | Avoid info overload | Focus on immediate/short-term actions | Minimal essential intelligence for informed decisions
 
 **Freshness** (category-adaptive):
 - **HV** (Talent/Skills/Disruptions): ≥75% <1mo (≥25% in 1–7d), ≥90% <2mo, 100% ≤4mo  
@@ -48,108 +55,156 @@ Generate **10–14 Q&As** from recent news across 6 categories, 6 lifecycle stag
 
 ## II. Requirements
 
-**Output**: **10–14 Q&As** | 1–2 per lifecycle stage | **250w target** (max 300w) | 100% news-driven (≥1 item/Q) | ≥80% Q&As ≥1 citation, ≥35% ≥2 citations | Each Q covers ≥2 categories + impact + decision
+**Output**: **6–8 Q&As** | 1–2 per lifecycle stage | **200w target** (max 250w) | 100% news-driven (≥1 item/Q) | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-**Category Distribution** (velocity-weighted):
-- Talent Markets & Hiring: 3 Q&As (80% floor)
-- Skills & Education: 2 Q&As (70% floor)  
-- Compensation & Benefits: 2 Q&As (65% floor)
-- Culture & DEI: 2 Q&As (70% floor)
-- Policy & Labor: 2 Q&As (60% floor)
-- Wellbeing: 1 Q&A (60% floor)
+**Category Distribution** (velocity-weighted, min coverage):
+- Talent Markets & Hiring: 2–3 Q&As (≥50% floor)
+- Skills & Education: 1 Q&A (≥40% floor)  
+- Compensation & Benefits: 1–2 Q&As (≥40% floor)
+- Policy & Labor: 1–2 Q&As (≥40% floor)
+- Culture & Wellbeing: 1 Q&A (≥30% floor)
 
-**Lifecycle Stages** (6, 1–2 Q each):  
-1. **Attract & Brand**: Employer brand, EVP, market presence  
-2. **Hire & Onboard**: Recruiting, selection, onboarding  
-3. **Develop & Grow**: Learning, skills, career paths  
-4. **Engage & Perform**: Engagement, feedback, performance  
-5. **Reward & Retain**: Comp, benefits, recognition, retention  
-6. **Transition & Exit**: Restructuring, exits, alumni, knowledge transfer
+**Lifecycle Stages** (4–5, 1–2 Q each):  
+1. **Attract & Brand**: Employer brand, market presence, talent availability  
+2. **Hire & Onboard**: Recruiting, hiring trends, selection  
+3. **Develop & Grow**: Skills, learning, career paths  
+4. **Reward & Retain**: Comp, benefits, retention, engagement  
+5. (Optional) **Transition & Exit**: Restructuring, exits, policy impact
 
-**Decision Framework** (100%): Impact (≥2 stages, ≥2 roles, quantified) + Decision (Invest/Adopt/Adjust/Monitor/Avoid + rationale + alternatives) + Action (immediate/short, medium only if strategic)
+**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥8/11): CHRO, VP People, HRBP, TA Lead, L&D Lead, C&B Lead, ER/Labor Lead, DEI Lead, People Analytics Lead, BU Leader, Line Manager
+**Stakeholders** (≥5/11 core roles): CHRO, VP People, TA Lead, L&D Lead, C&B Lead (core roles only)
 
-**References** (minimums, avoid over-citing): G≥12 (terms/acronyms/metrics) | N≥8 (news) | B≥4 (benchmarks) | L≥3 (law/policy) | R≥4 (research) | A≥12 (APA citations)
+**References** (build before Q&A, minimize): G≥8 (100% terms used) | N≥5–6 (per freshness) | B≥2–3 (benchmarks) | L≥2 (law/policy) | R≥2 (research) | A≥6 (APA citations)
 
-**Visuals** (minimums, high-density): ≥6 diagrams + ≥3 tables (focus on pay bands, benchmarks, risk matrices)
+**Visuals** (minimums): ≥2 diagrams + ≥1 table (focus on pay bands, benchmarks, or risk matrices)
 
 **Quality Gates** (fail ANY = stop, fix, re-validate ALL):
-1. **News**: 100% cite ≥1 item | 0% rumors/hype  
-2. **Impact**: 100% ≥2 stages + ≥2 roles + quantified  
-3. **Decision**: 100% decision + rationale + alternatives + success criteria  
-4. **Sources**: ≥5 types | max 35%/type | per stage ≥1 news + ≥1 benchmark | 100% URLs valid  
-5. **Coverage**: ≥8/11 roles | category floors met  
-6. **Actionability**: 100% concrete steps + timelines | 0% abstract
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
+2. **News**: 100% cite ≥1 item per freshness | 0% rumors/hype
+3. **Impact**: 100% ≥2 stages + ≥2 roles + quantified
+4. **Decision**: 100% decision + rationale + timeline
+5. **Sources**: ≥3 types | max 50%/type | 100% URLs valid
+6. **Actionability**: 100% concrete steps | 0% abstract
 
 ---
 
 ## III. Execution
 
-### Step 1: News Discovery & Curation
+### Step 1: News Discovery & Curation (Minimal)
 
-**Record generation date (YYYY-MM-DD)**.
+**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
 
 1. **Domain**: Industry + geography + workforce theme (e.g., "Global Tech Talent Q1 2025", "EU Manufacturing Skills Q3–Q4 2025")
 
-2. **Web Search** (≥20–30 candidates, tiered for efficiency):
+2. **Web Search** (≥10–15 candidates, tiered for efficiency):
 
-   **T1 – Talent/Hiring (1–7d)**: `"[Domain] hiring|job openings|talent shortage|skills gap"` | `"[Domain] layoffs|restructuring|RIF"`
+   **T1 – Talent/Hiring (1–7d, search first)**: `"[Domain] hiring|talent shortage|layoffs"` + 1–7d
 
-   **T2 – Comp/Benefits/Policy (7–30d)**: `"salary survey|compensation report|pay benchmark"` | `"[Country] labor law|remote work|union strike"`
+   **T2 – Comp/Policy (7–30d if insufficient)**: `"salary survey|pay benchmark|labor law"` + 7–30d
 
-   **T3 – Culture/DEI/Wellbeing (1–6mo)**: Engagement trends, burnout/mental health, DEI outcomes, representation, wellbeing results
+   **Sources** (whitelist, prioritize):
+   - **Talent**: SHRM, HBR, LinkedIn News, Gartner HR, TechCrunch (tech hiring)
+   - **Compensation**: Radford, Mercer, PayScale, company blogs, surveys
+   - **Policy/Labor**: ILO, OECD, labor depts, unions, employer assocs
+   - **Research**: Gallup, Pew, McKinsey Global Institute, HR journals
+   - **Avoid**: PR fluff, rumors, listicles, speculation
 
-   **Sources**: HR/People (SHRM, CIPD, HBR, MIT Sloan, Gartner HR, Deloitte/Bain/BCG) | Comp (Radford, Mercer, WTW, local surveys) | Labor/Policy (ILO, OECD, labor depts, unions, employer assocs) | Research (Gallup, Pew, McKinsey Global Institute, HR/IO journals)
+   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), LinkedIn News
 
-3. **Curate** (≥15–20 items): Meets freshness + relevance | Quantitative details (wage %, attrition %, engagement, time-to-hire) | Excludes marketing fluff | Focus on high-impact news
+3. **Curate** (≥10–15 candidates: Talent ≥4, Comp ≥2, Policy ≥2, Research ≥2):
+   - ✅ Age per freshness
+   - ✅ Whitelist OR primary source
+   - ✅ Satisfies ≥1 Decision Criticality criterion
+   - ✅ Specific details (dates, names, numbers, metrics)
+   - ✅ Not marketing/rumors
 
-4. **Verify**: Category & age coverage | Refine if thresholds unmet
+4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-5. **Allocate**: Map to stages, categories, roles
+5. **Allocate**: 6–8 Q × 4–5 stages (1–2 each) × 4–5 categories (≥1/Q) × ≥5 roles
 
-### Step 2: Build References
+### Step 2: Build References (Minimal)
 
-**Format**: G# (glossary) | N# (news) | B# (benchmarks) | L# (law/policy) | R# (research) | A# (APA citation)
+**Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | B# (benchmark, model, URL) | L# (law/policy, details, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
-Use Markdown refs: `[Ref: N1][n1]` + `[n1]: URL` at end
+**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
 
-### Step 2.5: Opportunistic Refresh (optional)
+**Floors**: G≥8 (100% terms used) | N≥5–6 | B≥2–3 | L≥2 | R≥2 | A≥6
+
+**Glossary** (only terms used in Q&As):
+- **Coverage**: Only terms/acronyms used (CHRO, TAM, NPS, attrition, etc.)
+- **Clarity**: Plain language, avoid jargon
+- **Analogies**: 1–2 real-world comparisons per term
+- **Context**: Why it matters for decisions
+- **Examples**: Real numbers
+
+### Step 2.5: Opportunistic Refresh (optional, skip default)
 
 Trigger only if major labor law or large workforce event (cross-industry strike, immigration policy, global health guidance) emerges in 24–72h affecting ≥3 Q&As
 
-### Step 3: Generate Q&A (batch 3–4, self-check)
+**Action**: Quick search → Add 1–2 "BREAKING" items → Adjust 1–2 Qs → Document
 
-**Question Patterns**: "[Talent News]: implications for [Stages]/[Roles]?" | "[Comp Benchmark]+[Inflation]: pay strategy for [Segment]?" | "[Law Change]: policy/risk response for [Region]?" | "[Engagement/DEI]: culture/leadership actions for [Business]?"
+### Step 3: Generate Q&A (batch 2–3, self-check each)
 
-**Answer Structure** (**250w target**, max 300w):
-1. **News** (~50w): What, when, who, why, category `[Ref: N#][n#]`  
-2. **Impact** (~90w): ≥2 stages + quantified metrics  
-3. **Stakeholders** (~60w): ≥2 roles + concerns + actions + authority  
-4. **Decision** (~70w): Invest/Adopt/Adjust/Monitor/Avoid + rationale + 1–2 alternatives + success criteria  
-5. **Action** (~40w): Immediate (0–2wks), short (2wks–2mo), medium only if strategic + owners  
-6. **Projections** (optional, only if decision-critical): Scenario forecast + ranges + confidence
+**Before**: Review glossary. Track ALL terms used.
 
-**Self-check**: Freshness | ≥2 stages | ≥2 roles | Decision | Quantified | Citations | Concrete actions
+**Patterns**: "[Talent News]: implications for [Stages]+[Roles]?" | "[Comp Benchmark]: pay strategy?" | "[Law Change]: policy response?" | "[Engagement Trend]: culture action?"
 
-### Step 4: Create Visuals
+**Avoid**: Generic questions, hype, unattributed claims, stale news, speculation
 
-**Diagrams**: Lifecycle flows, recruiting funnels, development paths  
-**Tables**: Pay bands, benchmarks, attrition/engagement stats  
-**Matrices**: Risk/impact (labor law), culture/responsibility, initiative prioritization
+**Structure** (200w target, max 250w):
+1. **News** (~30w): What, when, why, category `[Ref: N#][n#]`
+2. **Impact** (~70w): ≥2 stages + quantified (hiring time %, acceptance rate %, attrition %, comp cost %, engagement signal)
+3. **Stakeholders** (~40w): ≥2 roles + concerns + actions
+4. **Decision** (~40w): Invest/Adopt/Adjust/Monitor/Avoid + rationale + success criteria
+5. **Action** (~20w): Immediate (0–2wk), Short (2wk–2mo) + owner
 
-### Step 5–7: Final Validation & Submit
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 stages | ≥2 roles | Decision clear | 200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
 
-- Validate floors: G, N, B, L, R, A, Q counts  
-- Check: Category/role coverage, metrics, timelines, link integrity  
-- Fill validation table: Checks, measurement, criteria, status
+### Step 4: Visuals (≥2 diagrams + ≥1 table)
+
+**Types**: Lifecycle flows, recruiting funnels, pay band comparisons, risk matrices, attrition/engagement trends
+
+**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
+
+**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥5–6 | B≥2–3 | L≥2 | R≥2 | A≥6
+
+**Decision**: 100% decision + rationale + criteria + timeline
+
+**Stakeholders**: ≥5 roles | Actions + authority
+
+### Step 5: Validate (fail ANY = stop, fix, re-run ALL)
+
+**Quantitative**: Floors met | Glossary 100% | 4–5 stages | Categories per % | ≥5 roles | Citations OK | 5 word samples 200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 stages+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-stage ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+
+### Step 6: Submit
+
+**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+4wk)** | Search documented
 
 ---
 
-## IV. Validation Report Template
+## IV. Validation Report (Minimal)
 
-**Checks**: News Freshness | Reference Floors | Lifecycle Coverage | Category Coverage | Stakeholder Coverage | Impact Quantification | Decision Quality | Timelines | Citations | Source Diversity | Visual Coverage | Overall Status
+| # | Check | Measurement | Criteria | Result | Status |
+|---|-------|-------------|----------|--------|--------|
+| 1 | **Freshness** | HV: __%<1mo (1–7d:__%), __%<2mo \| MV: __%<2mo (1–14d:__%) \| Overall: __%<2mo | Per header | | PASS/FAIL |
+| 2 | **Floors** | G:__ N:__ B:__ L:__ R:__ A:__ Q:__ | ≥8,≥5–6,≥2–3,≥2,≥2,≥6,6–8 | | PASS/FAIL |
+| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | **Stages** | __/4–5 (1–2Q each); total__ | 4–5/4–5;6–8 | | PASS/FAIL |
+| 5 | **Categories** | Talent__% Comp__% Policy__% Skills__% Culture__% | ≥50,≥40,≥40,≥40,≥30% | | PASS/FAIL |
+| 6 | **Roles** | __/11 | ≥5 | | PASS/FAIL |
+| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | **Impact** | __% ≥2stages+2roles+quantified | 100% | | PASS/FAIL |
+| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%200w | 100% | | PASS/FAIL |
+| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
+| | **Age Dist** | <1mo__%(1–7d__%) 1–2mo__% 2–4mo__% | Per header | | INFO |
+| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
 ---
 
-**Optimization Result**: 15 Q&As @ 250w = ~3,750 words of minimal essential intelligence | Meets 100% of requirements at minimum viable scope | Avoids info overload while enabling informed decisions
+**Optimization Result**: 6–8 Q&As @ 200w = ~1,200–1,600 words of minimal essential intelligence | Meets 100% of requirements at minimum viable scope | Avoids info overload while enabling informed decisions | 4–6h effort | Expires in 4 weeks

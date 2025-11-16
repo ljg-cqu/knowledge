@@ -1,14 +1,14 @@
 # Software Development Best Practices Interview Q&A Generator
 
-Generate 30-35 Q&As on industry best practices across full lifecycle, all stakeholders, core viewpoints.
+**Mission**: Generate 8-12 critical Q&As on decision-blocking best practices for informed decision-making with limited time. **Focus**: Minimal viable tracking—only practices that block decisions, create risk, or affect ≥3 stakeholders.
 
 ## Context
 
 **Audience**: BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead  
-**Scope**: 8 phases × 10 categories × 10 stakeholders × 6 viewpoints  
-**Output**: 30-35 Q&As (15/50/35% F/I/A) | Quantified benefits | References (G≥25, T≥10, L≥10, C≥15)  
+**Scope**: 8 phases × 10 categories × 10 stakeholders × 6 viewpoints (selective coverage)  
+**Output**: 8-12 Q&As (25/50/25% F/I/A) | Quantified benefits | References (G≥10, T≥6, L≥6, C≥8)  
 **Assumptions**: Production systems (>10K rps, >1TB data), cloud-native, multi-team (10-100 engineers), regulated  
-**Success**: 28/28 checks PASS
+**Success**: 15/15 checks PASS (streamlined validation)
 
 ## Coverage
 
@@ -33,6 +33,20 @@ Generate 30-35 Q&As on industry best practices across full lifecycle, all stakeh
 
 **6 Viewpoints** (all): Technical (code, arch, testing), Business (ROI, time-to-market), Regulatory (GDPR/HIPAA/PCI-DSS), Operational (SLOs, monitoring, DR), Data (schema, quality, governance), Security (threat model, zero-trust)
 
+## Decision Criticality Framework
+
+**Include Q&A if ANY apply**:
+- **Blocks Decision**: Standard/tool/pattern choice prevents progress (e.g., TDD adoption, CI/CD strategy, SLO targets)
+- **Creates Risk**: Compliance, security, performance SLA impact if ignored (e.g., Zero-Trust, data governance, observability)
+- **Affects ≥3 Stakeholders**: Multi-role coordination needed (e.g., architecture decisions, deployment strategy, incident response)
+- **Actively Evolving**: Standard/tool/method changed in past 12 months (e.g., new OWASP guidance, observability tooling)
+- **High Adoption Barrier**: Learning curve or integration complexity >40 hours (e.g., chaos engineering, advanced SRE patterns)
+
+**Exclude if**:
+- Niche/legacy (adoption <5% in target domain)
+- Orthogonal to core workflow (nice-to-have, not critical)
+- Covered by existing Q&A (no new decision point)
+
 ## Content Standards
 
 **Q&A Structure** (150-350 words): Header (Difficulty+Phase+Category+Stakeholders+Viewpoints) | Key Insight (quantified) | Best Practice (source) | Body (Problem→Practice→Implementation→Benefits→Metrics→Anti-patterns→Context) | Implementation (10-30 lines) | Metrics (criteria+formula+benchmarks+targets) | Comparison (≥2 approaches) | Anti-patterns (≥2) | Citations (≥1, ≥2 for advanced)
@@ -43,28 +57,31 @@ Generate 30-35 Q&As on industry best practices across full lifecycle, all stakeh
 
 | Type | Min | Requirements |
 |------|-----|--------------|
-| Glossary | 25 | Term+definition+related; cover 10 categories, 8 phases, 6 viewpoints |
-| Tools | 10 | URL, updated ≤18mo, pricing, phase |
-| Literature | 10 | DORA/SRE/OWASP/Clean Code/Agile/DDD/Microservices/Team Topologies |
-| Citations | 15 | APA 7th, 60/30/10% EN/ZH/Other, ≥60% ≤3yr, 100% URLs |
+| Glossary | 10 | Only terms used in Q&As; cover decision-critical categories and phases |
+| Tools | 6 | URL, updated ≤18mo, pricing, phase, productivity metric if available |
+| Literature | 6 | Canonical references only (DORA/SRE/OWASP/Clean Code/Agile/Team Topologies) |
+| Citations | 8 | APA 7th, 60/30/10% EN/ZH/Other (±10%), ≥60% ≤3yr, 100% URLs |
+
+**Quality Gates**: ≥60% tools last 2yr, ≥50% methods last 3yr; 100% valid URLs; peer-reviewed or authoritative sources
 
 ## Generation Process
 
-**1. Plan**: Allocate 30-35 Q&As (15/50/35% F/I/A) across 8 phases (3-5 each); map 10 categories+10 stakeholders+6 viewpoints; verify MECE
+**1. Plan (8-12 Q&As)**: Allocate 1-2 Q&As per phase, prioritize by **Decision Criticality** (blocks decision, creates risk, affects ≥3 stakeholders, actively evolving); difficulty 25/50/25% F/I/A; verify all 6 viewpoints covered, ≥8 stakeholders
 
-**2. References**: Build G≥25 (categories+phases+viewpoints+stakeholders), T≥10 (URL+updated+pricing), L≥10 (standards+books), C≥15 (APA 7th, 60/30/10%, ≥60% ≤3yr)
+**2. References** (G≥10, T≥6, L≥6, C≥8): Build glossary with only decision-critical terms; tools with productivity metrics; canonical literature only; citations 60/30/10% EN/ZH/Other
 
-**3. Write Q&As** (validate every 5): ≥70% judgment questions; check words 150-350, citations, syntax, evidence-based, quantified, categories ≥3, stakeholders ≥2, viewpoints ≥2, anti-patterns ≥2, benchmarks ≥60%
+**3. Write Q&As** (validate every 3): ≥70% judgment questions; check words 150-350, citations ≥1 (≥2 advanced), evidence-based, quantified, decision criticality justified, stakeholders ≥2, viewpoints ≥2, anti-patterns ≥2
 
-**4. Artifacts**: Per phase - Mermaid (<120 nodes), implementation, metrics, comparison, anti-patterns; verify [Ref: ID] + URLs
+**4. Artifacts**: Per Q&A - Mermaid diagram (<120 nodes) + implementation + metrics table + comparison; verify [Ref: ID] + URLs
 
-**5. Validate** (28/28 PASS):
+**5. Validate** (15/15 PASS—Streamlined):
 
-- **Counts**: G≥25, T≥10, L≥10, C≥15, Q=30-35 (15/50/35%)
-- **Quality**: Citations ≥70%, EN/ZH/Other 60/30/10%, Recency ≥60%, URLs 100%, Standards ≥80%
+- **Counts**: G≥10, T≥6, L≥6, C≥8, Q=8-12 (25/50/25%)
+- **Quality**: Citations ≥70%, EN/ZH/Other 60/30/10%, Recency ≥60%, URLs 100%
 - **Content**: Words 150-350, Evidence 100%, Quantified 100%, Judgment ≥70%, Anti-patterns ≥2, Artifacts ≥90%
-- **Coverage**: Phases 8 (3-5 each), Categories 10 (≥3/Q&A, ≥80%), Stakeholders 10 (≥2/Q&A, each ≥3), Viewpoints 6 (Tech ≥30%, Biz ≥20%, Reg ≥15%, Ops ≥20%, Data ≥10%, Sec ≥15%)
-- **Criteria**: Clarity, Accuracy, Completeness, Balance, Actionability, Evidence-Based, Best-Practice-Awareness, Industry-Alignment
+- **Coverage**: Phases ≥6/8, Categories ≥7/10, Stakeholders ≥8/10 (≥2/Q&A), Viewpoints ≥5/6
+- **Decision Criticality**: 100% justified (blocks/risk/stakeholders/evolving)
+- **Criteria**: Clarity, Accuracy, Actionability, Evidence-Based, Best-Practice-Awareness, Industry-Alignment
 
 **Failure**: ANY fail → Fix → Re-validate ALL
 
@@ -74,6 +91,7 @@ Generate 30-35 Q&As on industry best practices across full lifecycle, all stakeh
 ```
 **Q**: [Judgment question: How/When/Why/Compare...]
 **Difficulty**: F/I/A | **Phase**: [Phase] | **Category**: [≥1] | **Stakeholders**: [≥2] | **Viewpoints**: [≥2]
+**Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving] – [Justification]
 **Key Insight**: [Quantified benefit, 1 sentence]
 **Best Practice**: [Name | Source]
 **Answer** (150-350 words): Problem → Practice → Implementation → Benefits → Metrics → Anti-patterns → Context [Ref: X]
@@ -86,11 +104,12 @@ Generate 30-35 Q&As on industry best practices across full lifecycle, all stakeh
 
 **Validation Template**:
 ```
-Counts: G:X/25 T:X/10 L:X/10 C:X/15 Q:X/30-35 (F:X% I:X% A:X%)
+Counts: G:X/10 T:X/6 L:X/6 C:X/8 Q:X/8-12 (F:X% I:X% A:X%)
 Quality: Cites X% Lang EN:X% ZH:X% Recent X% URLs X% Standards X%
 Content: Words X% Evidence X% Quantified X% Judgment X% Anti-patterns X% Artifacts X%
-Coverage: Phases X/8, Categories X/10 (≥3/Q&A: X%), Stakeholders X/10 (≥2/Q&A: X%, each ≥3: X%), Viewpoints Tech X% Biz X% Reg X% Ops X% Data X% Sec X%
-Status: X/28 PASS X/8 MET | Issues: [List] | Fix: [Actions]
+Coverage: Phases X/8, Categories X/10, Stakeholders X/10 (≥2/Q&A: X%), Viewpoints X/6
+Decision Criticality: X/X justified (Blocks/Risk/Stakeholders/Evolving)
+Status: X/15 PASS | Issues: [List] | Fix: [Actions]
 ```
 
 ## Example
@@ -98,6 +117,8 @@ Status: X/28 PASS X/8 MET | Issues: [List] | Fix: [Actions]
 ### Q: How should teams adopt TDD to improve code quality and reduce defects?
 
 **Difficulty**: I | **Phase**: Development | **Category**: Technical, Quality | **Stakeholders**: Dev, QA, Arch, Lead | **Viewpoints**: Technical, Business
+
+**Decision Criticality**: **Blocks Decision** – TDD adoption blocks code quality strategy; affects ≥3 stakeholders (Dev, QA, Arch, Lead); actively evolving (XP/Agile standard, 60% adoption FAANG)
 
 **Key Insight**: TDD: 40-60% defect reduction, 2-10x maintenance cost reduction over 2yr (Microsoft 2009).
 

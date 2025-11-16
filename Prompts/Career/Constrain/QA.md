@@ -1,56 +1,50 @@
-# Constraint-Aware Architecture Interview Q&A Generator
+# Constraint-Aware Architecture Q&A Generator (Minimal Viable)
 
-Generate 25-30 Q&As for senior/architect roles with constraint analysis across 8 categories, 10 stakeholder roles, 8 SDLC phases.
+Generate 6-12 decision-critical Q&As for architects with constraint analysis—minimal viable set for informed decisions with time constraints.
 
 ## Context & Success Criteria
 
-**Audience**: Senior devs (5+ years), architects  
-**Scope**: 6 dimensions × 8 constraint categories × 10 stakeholders × 8 SDLC phases  
-**Output**: 25-30 Q&As (20/40/40% F/I/A) | Production code | Quantified trade-offs (≥2) | Citations  
-**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native  
-**Validation**: 25/25 checks PASS | 8/8 criteria met
+**Audience**: Architects (5+ years), senior engineers
+**Scope**: 3-4 decision-critical dimensions × 4-5 constraint categories × ≥5 core stakeholders × 4-5 SDLC phases
+**Output**: 6-12 Q&As (25/50/25% F/I/A) | Quantified trade-offs (≥2) | Citations
+**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native
+**Validation**: 12/12 checks PASS | 6/6 criteria met
 
 ---
 
 # Coverage Requirements
 
-## 6 Dimensions (4-6 Q&As each)
-1. **Structural**: Decomposition, modularity, coupling, boundaries
-2. **Behavioral**: Events, state, orchestration, error handling
-3. **Quality**: Performance, scalability, reliability, security
-4. **Data**: Persistence, caching, consistency, partitioning
-5. **Integration**: APIs, messaging, protocols
-6. **Evolution**: Refactoring, migration, technical debt
+## 3-4 Decision-Critical Dimensions (2-3 Q&As each)
+1. **Structural & Quality**: Decomposition, modularity, performance, scalability, reliability
+2. **Data & Consistency**: Persistence, caching, consistency, partitioning
+3. **Integration & Evolution**: APIs, messaging, refactoring, migration, technical debt
+4. *(Optional) Behavioral*: Events, state, orchestration, error handling
 
-## 8 Constraint Categories (≥3/Q&A, all 8 overall)
+## 4-5 Decision-Critical Constraint Categories (≥2/Q&A, all covered)
 
-| Category | Examples |
-|----------|----------|
-| **Technical** | CPU/mem/storage/network, platform, legacy APIs, versions |
-| **Resource** | Deadlines, budget ($X/mo), team size/skills |
-| **Business** | Pricing, CAC/LTV, market share, competitive SLAs |
-| **Organizational** | Stakeholder roles, workflows, standards, risk appetite |
-| **Compliance** | GDPR, HIPAA, PCI-DSS, SOC 2, audit logs, data residency |
-| **Operational** | SLOs, RTO/RPO, downtime windows, 30% headroom |
-| **Ecosystem** | Cloud lock-in, SaaS limits, OSS health, talent |
-| **Lifecycle** | Requirements→Design→Dev→Testing→Deploy→Ops→Maintenance→Evolution |
+| Category | Examples | Decision Criticality |
+|----------|----------|---------------------|
+| **Technical** | CPU/mem/storage/network, platform, legacy APIs, versions | Blocks architecture, adoption barrier |
+| **Resource** | Deadlines, budget ($X/mo), team size/skills | Blocks feasibility, timeline risk |
+| **Business** | Pricing, CAC/LTV, market share, competitive SLAs | Blocks roadmap, revenue impact |
+| **Compliance** | GDPR, HIPAA, PCI-DSS, SOC 2, audit logs, data residency | Creates regulatory risk |
+| **Operational** | SLOs, RTO/RPO, downtime windows, 30% headroom | Blocks reliability decisions |
 
-## 10 Stakeholders (≥2/Q&A, all 10 overall)
-BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead
+## 5 Core Stakeholders (≥2/Q&A, all 5 covered)
+Architect, Developer, DevOps/SRE, Security, Leadership
 
 ---
 
 # Content Standards
 
-## Q&A Structure (150-300 words)
-1. **Header**: Difficulty | Dimension | Phase | Stakeholders
+## Q&A Structure (150-250 words, Minimal Viable)
+1. **Header**: Difficulty | Dimension | Phase | Stakeholders | Decision Criticality
 2. **Key Insight**: Quantified trade-off (1 sentence)
-3. **Constraints**: ≥3 categories with magnitudes
-4. **Body**: Context → Pattern → Trade-offs → Metrics → Assumptions → Stakeholder impact
-5. **Code**: 10-30 lines with error handling + optimizations
-6. **Metrics**: Formula | Variables | Target | Constraint impact
-7. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Business | Tag)
-8. **Citations**: ≥1 (≥2 for advanced)
+3. **Constraints**: ≥2 decision-critical categories with magnitudes
+4. **Body**: Context → Pattern → Trade-offs → Metrics → Stakeholder impact
+5. **Code**: 10-20 lines with error handling (optional for F)
+6. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Tag)
+7. **Citations**: ≥1 (≥2 for I/A)
 
 ## Quality Standards
 - **Traceability**: Requirements → Constraints → Pattern → Code → Metrics
@@ -60,45 +54,45 @@ BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead
 - **Precise Language**: Define terms inline; consistent terminology; concrete metrics ("<300ms p95"); minimal jargon
 - **Common Patterns**: Hexagonal, Event-Driven, CQRS, Saga, Circuit Breaker, Event Sourcing, Sharding, Strangler Fig
 
-## References (G≥20 | T≥5 | L≥6 | C≥12)
+## References (Minimal Viable Set)
 
 | Type | Min | Requirements |
 |------|-----|--------------|
-| **Glossary** | 20 | Terms + relationships; cover all 8 categories + 10 stakeholders |
-| **Tools** | 5 | Valid URL, updated ≤18mo, pricing |
-| **Literature** | 6 | Fowler, Evans, Vernon, Richardson, Newman, Kleppmann |
-| **Citations** | 12 | APA 7th; 60% EN/30% ZH/10% other; ≥50% last 3yr; 100% valid URLs |
+| **Glossary** | 10 | Only terms used in Q&As; cover decision-critical categories |
+| **Tools** | 4 | Valid URL, updated ≤18mo, pricing, decision-critical only |
+| **Literature** | 5 | Canonical sources: Fowler, Evans, Vernon, Richardson, Newman |
+| **Citations** | 8 | APA 7th; 60% EN/30% ZH/10% other; ≥50% last 3yr; 100% valid URLs |
 
 ---
 
 # Generation Process
 
-## 1. Plan
-- Allocate 25-30 Q&As across 6 dimensions (20/40/40% F/I/A)
-- Map 8 constraints + 10 stakeholders + 8 phases
-- Verify MECE: no gaps/overlap
+## 1. Plan (Minimal Viable)
+- Allocate 6-12 Q&As across 3-4 dimensions (25/50/25% F/I/A)
+- Map 4-5 decision-critical constraints + 5 core stakeholders + 4-5 phases
+- Verify decision criticality: all Q&As block decisions or create risk
 
-## 2. Build References
-- Glossary: 8 categories + 10 stakeholders + relationships
-- Tools: URL, updated ≤18mo, pricing
-- Literature: Authoritative sources
+## 2. Build References (Minimal)
+- Glossary: Only terms used in Q&As; decision-critical categories
+- Tools: URL, updated ≤18mo, pricing, decision-critical only
+- Literature: Canonical sources only
 - Citations: APA 7th, 60/30/10% EN/ZH/Other, ≥50% last 3yr, valid URLs
 
-## 3. Write Q&As (Validate Every 5)
+## 3. Write Q&As (Validate Every 3)
 - **Questions**: ≥70% judgment ("How/When/Compare..."); multi-dimensional constraints
-- **Checkpoints**: Words 150-300 | Citations | Syntax | Traceability | Quantified | Constraints (≥3/Q&A) | Stakeholders (≥2/Q&A) | Phases | Hardware ≥40%
+- **Checkpoints**: Words 150-250 | Citations | Syntax | Traceability | Quantified | Constraints (≥2/Q&A) | Stakeholders (≥2/Q&A) | Decision Criticality ✓
 
 ## 4. Artifacts & Links
-- Per cluster: Mermaid (<120 nodes) + code + metrics + trade-offs
+- Per Q&A: Mermaid diagram + code (optional for F) + trade-offs table
 - Verify [Ref: ID] resolved, 100% valid URLs
 
-## 5. Final Validation (25/25 PASS)
+## 5. Final Validation (12/12 PASS)
 
-**Counts**: G≥20 | T≥5 | L≥6 | C≥12 | Q=25-30 (20/40/40%)  
-**Quality**: Citations ≥70% | EN 60%/ZH 30%/Other 10% | Recency ≥50% | URLs 100% | Cross-refs 100%  
-**Content**: Words 150-300 | Quantified 100% | Judgment ≥70% | Traceability ≥80% | Artifacts ≥90% | Syntax 100%  
-**Coverage**: Constraints (≥80% Q&As ≥3) | Stakeholders all 10 | Phases all 8 | Hardware ≥40% | Business ≥30% | Ecosystem ≥30%  
-**Criteria**: Clarity | Accuracy | Completeness | Balance | Practicality | Self-Correction | Constraint-Awareness | Stakeholder-Awareness
+**Counts**: G≥10 | T≥4 | L≥5 | C≥8 | Q=6-12 (25/50/25%)
+**Quality**: Citations ≥80% | EN 60%/ZH 30%/Other 10% | Recency ≥50% | URLs 100% | Cross-refs 100%
+**Content**: Words 150-250 | Quantified 100% | Judgment ≥70% | Traceability ≥80% | Artifacts ≥80% | Syntax 100%
+**Coverage**: Decision Criticality 100% | Constraints (≥80% Q&As ≥2) | Stakeholders all 5 | Phases 4-5 | Business ≥30%
+**Criteria**: Decision-Critical | Clarity | Accuracy | Balance | Practicality | Constraint-Awareness
 
 **Failure**: ANY fail → Fix → Re-validate ALL
 
@@ -106,45 +100,46 @@ BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead
 
 # Templates
 
-## Q&A
+## Q&A (Minimal Viable)
 ```
 **Q**: [Judgment question with multi-dimensional constraints]
-**Difficulty**: F/I/A | **Dimension**: [1-6] | **Phase**: [SDLC] | **Stakeholders**: [≥2]
+**Difficulty**: F/I/A | **Dimension**: [1-3] | **Phase**: [SDLC] | **Stakeholders**: [≥2]
+**Decision Criticality**: [Blocks/Risk/Roles/Evolving]
 **Key Insight**: [Quantified trade-off, 1 sentence]
-**Constraints**: [≥3 categories with magnitudes]
-**Answer** (150-300 words): [Context → Pattern → Trade-offs → Metrics → Assumptions → Impact] [Ref: X]
-**Code** (10-30 lines): [Language + error handling + optimizations]
-**Metrics**: [Formula | Variables | Target | Constraint impact]
-**Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
+**Constraints**: [≥2 decision-critical categories with magnitudes]
+**Answer** (150-250 words): [Context → Pattern → Trade-offs → Metrics → Impact] [Ref: X]
+**Code** (10-20 lines, optional for F): [Language + error handling]
+**Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Tag |
 **Stakeholders**: [≥2 with concerns]
 ```
 
-## References
-- **Glossary** (≥20): Term [EN/ZH] → Definition + Related
-- **Tools** (≥5): Name → Purpose | Updated | Pricing | URL
-- **Literature** (≥6): Author (Year). Title. Publisher
-- **Citations** (≥12): APA 7th, 60/30/10% EN/ZH/Other
+## References (Minimal Viable)
+- **Glossary** (≥10): Term [EN/ZH] → Definition + Context (only terms used in Q&As)
+- **Tools** (≥4): Name → Purpose | Updated | Pricing | URL
+- **Literature** (≥5): Author (Year). Title. Publisher (canonical only)
+- **Citations** (≥8): APA 7th, 60/30/10% EN/ZH/Other
 
-## Validation Report
+## Validation Report (Minimal Viable)
 ```
-**Counts**: G:X/20 | T:X/5 | L:X/6 | C:X/12 | Q:X/25-30 (F:X% I:X% A:X%)
+**Counts**: G:X/10 | T:X/4 | L:X/5 | C:X/8 | Q:X/6-12 (F:X% I:X% A:X%)
 **Quality**: Cites X% | Lang EN:X% ZH:X% | Recent X% | URLs X% | Links X%
 **Content**: Words X% | Quantified X% | Judgment X% | Trace X% | Artifacts X% | Syntax X%
-**Coverage**: Constraints X% | Stakeholders X% | Phases X% | HW X% | Biz X% | Eco X%
-**Status**: X/25 PASS | X/8 MET | **Issues**: [List] | **Fix**: [Actions]
+**Coverage**: Decision Criticality X% | Constraints X% | Stakeholders X% | Phases X%
+**Status**: X/12 PASS | X/6 MET | **Issues**: [List] | **Fix**: [Actions]
 ```
 
 # Example
 
 ## Q: Design high-throughput order processing for regulated healthcare marketplace under hardware/compliance constraints?
 
-**Difficulty**: A | **Dimension**: Structural+Data | **Phase**: Design, Dev, Ops | **Stakeholders**: Arch, Dev, Sec, Data, SRE, Lead
+**Difficulty**: A | **Dimension**: Structural & Quality | **Phase**: Design, Dev | **Stakeholders**: Arch, Dev, Sec, Lead
+**Decision Criticality**: Blocks architecture (15K rps requirement), Creates risk (HIPAA compliance)
 
 **Key Insight**: Event-driven CQRS achieves 15K rps on 4-core (+180% vs monolith), +35ms write latency, +40% ops complexity, HIPAA-compliant.
 
-**Constraints**: **Technical**: 4-core, 16GB, 500 IOPS | **Resource**: $8K/mo, 8 devs, 1 SRE, 4mo | **Business**: $500K/mo, 15% share, <200ms SLA | **Compliance**: HIPAA, SOC 2 | **Operational**: 99.9% | **Ecosystem**: AWS, Kafka OSS, SOAP legacy
+**Constraints**: **Technical**: 4-core, 16GB, 500 IOPS | **Resource**: $8K/mo, 4mo | **Compliance**: HIPAA, SOC 2
 
-**Answer** (280 words): CQRS with event sourcing: commands → append-only store (HIPAA audit), queries → materialized views (cached). Independent scaling (3 write, 6 read) within $8K/mo, <200ms latency [Ref: A2, A7]. Stack: Kafka OSS (PHI encrypted TLS 1.3), PostgreSQL (events), Redis (reads). Legacy SOAP via anti-corruption layer + circuit breaker. Trade-offs: +35ms write (vs 2s baseline), +40% ops (team Kafka experience), +60% storage ($2.4K/mo). Impact: +$150K/mo capacity, 4mo feasible [Ref: A4]. Metrics: p95 write 180ms, reads 25ms, CPU 65%, $7.8K/mo. Stakeholder alignment: Sec (encrypted), SRE (runbooks), PM (timeline), Lead (ROI). Limits: 5GB/day growth → partition at 18mo; <500ms eventual consistency unsuitable for real-time inventory.
+**Answer** (220 words): CQRS with event sourcing: commands → append-only store (HIPAA audit), queries → materialized views (cached). Independent scaling (3 write, 6 read) within $8K/mo, <200ms latency [Ref: A2]. Stack: Kafka OSS (PHI encrypted TLS 1.3), PostgreSQL (events), Redis (reads). Legacy SOAP via anti-corruption layer + circuit breaker. Trade-offs: +35ms write (vs 2s baseline), +40% ops (team Kafka experience). Impact: +$150K/mo capacity, 4mo feasible [Ref: A4]. Metrics: p95 write 180ms, reads 25ms, CPU 65%, $7.8K/mo. Stakeholder alignment: Sec (encrypted), Lead (ROI). Limits: 5GB/day growth → partition at 18mo.
 
 **Code** (Go):
 ```go
@@ -175,53 +170,37 @@ func (h *OrderHandler) ProcessCommand(ctx context.Context, cmd OrderCommand) err
 
 **Stakeholders**: **PM**: 4mo, parity | **Arch**: Balances throughput/complexity/team | **Dev**: Kafka XP mitigates ops | **Sec**: TLS 1.3 HIPAA | **SRE**: Circuit breaker + 30% headroom | **Lead**: ROI 18mo
 
-## Glossary
-**G1. Hexagonal** [EN] – Core isolation via ports/adapters. Related: DI  
-**G2. CQRS** [EN] – Separates commands/queries. Related: Event Sourcing  
-**G3. Event Sourcing** [EN] – State as event log. Audit, temporal queries. Related: CQRS  
-**G4. DDD** [EN] – Domain modeling: language, contexts, aggregates. Related: Bounded Context  
-**G5. Bounded Context** [EN] – Model boundary for consistency. Related: Context Map  
-**G6. Aggregate** [EN] – Consistency boundary (root + entities/VOs). Related: Repository  
-**G7. Repository** [EN] – Data access abstraction for aggregates  
-**G8. Domain Event** [EN] – Immutable fact. Decoupling, eventual consistency. Related: Event Sourcing  
-**G9. Saga** [EN] – Long transactions with compensations. Related: Distributed TX  
-**G10. Circuit Breaker** [EN] – Prevents cascading failures. Related: Bulkhead  
-**G11. Technical Constraint** [EN] – CPU/mem/storage/network/platform/legacy/versions. Related: Performance Budget  
-**G12. Resource Constraint** [EN] – Time/budget/team limits. Deadlines, costs, skills. Related: Scope  
-**G13. Business Constraint** [EN] – Revenue, competitive, continuity. Pricing, CAC/LTV, share, features. Related: Product  
-**G14. Organizational Constraint** [EN] – Stakeholder/process/governance. Workflows, standards, risk. Related: RACI  
-**G15. Compliance Constraint** [EN] – Legal/regulatory. GDPR, HIPAA, PCI-DSS, SOC 2, residency, audit. Related: Security  
-**G16. Operational Constraint** [EN] – Runtime limits. SLOs, RTO/RPO, downtime, headroom. Related: SRE  
-**G17. Ecosystem Constraint** [EN] – Vendor/OSS/partner dependencies. Lock-in, API limits, OSS health, talent. Related: Vendor  
-**G18. Lifecycle Constraint** [EN] – Phase-specific SDLC limits. Requirements→Evolution. Related: SDLC  
-**G19. Stakeholder** [EN] – Role: BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead. Related: RACI  
-**G20. Lifecycle Phase** [EN] – 8 phases: Requirements→Design→Dev→Test→Deploy→Ops→Maintenance→Evolution. Related: SDLC
+## Glossary (Minimal Viable - Only Terms Used in Q&As)
+**G1. CQRS** [EN] – Separates commands/queries. Related: Event Sourcing
+**G2. Event Sourcing** [EN] – State as event log. Audit, temporal queries. Related: CQRS
+**G3. Circuit Breaker** [EN] – Prevents cascading failures. Related: Bulkhead
+**G4. Technical Constraint** [EN] – CPU/mem/storage/network/platform/legacy/versions. Related: Performance Budget
+**G5. Resource Constraint** [EN] – Time/budget/team limits. Deadlines, costs, skills. Related: Scope
+**G6. Business Constraint** [EN] – Revenue, competitive, continuity. Pricing, CAC/LTV, share, features. Related: Product
+**G7. Compliance Constraint** [EN] – Legal/regulatory. GDPR, HIPAA, PCI-DSS, SOC 2, residency, audit. Related: Security
+**G8. Operational Constraint** [EN] – Runtime limits. SLOs, RTO/RPO, downtime, headroom. Related: SRE
+**G9. Trade-off** [EN] – Quantified choice between ≥2 approaches with explicit pros/cons. Related: Decision
+**G10. Decision Criticality** [EN] – Criterion for Q&A inclusion: Blocks decision, Creates risk, Affects stakeholders, Actively evolving. Related: Priority
 
-## Tools
-**T1. Mermaid** – Text diagrams. GitHub-native. 2024-10. Free. https://mermaid.js.org  
-**T2. OpenAPI** – REST spec. Codegen, testing. 2024-09. Free. https://www.openapis.org  
-**T3. JSON Schema** – JSON validation. 2024-08. Free. https://json-schema.org  
-**T4. Kubernetes** – Container orchestration. 2024-10. Free. https://kubernetes.io  
-**T5. ADR** – Decision log. Traceability. 2024-06. Free. https://adr.github.io
+## Tools (Minimal Viable - Decision-Critical Only)
+**T1. Mermaid** – Text diagrams. GitHub-native. 2024-10. Free. https://mermaid.js.org
+**T2. ADR** – Decision log. Traceability. 2024-06. Free. https://adr.github.io
+**T3. OpenAPI** – REST spec. Codegen, testing. 2024-09. Free. https://www.openapis.org
+**T4. Kubernetes** – Container orchestration. 2024-10. Free. https://kubernetes.io
 
-## Literature
-**L1.** Evans (2003). *Domain-Driven Design*. Addison-Wesley – Strategic/tactical modeling  
-**L2.** Vernon (2013). *Implementing DDD*. Addison-Wesley – Context mapping, aggregates  
-**L3.** Richardson (2018). *Microservices Patterns*. Manning – Decomposition, trade-offs  
-**L4.** Newman (2021). *Building Microservices* (2nd). O'Reilly – Boundaries, deployment  
-**L5.** Kleppmann (2017). *Data-Intensive Apps*. O'Reilly – Replication, partitioning  
-**L6.** Fowler (2002). *Enterprise Architecture*. Addison-Wesley – Repository, Service Layer
+## Literature (Minimal Viable - Canonical Only)
+**L1.** Evans (2003). *Domain-Driven Design*. Addison-Wesley – Strategic/tactical modeling
+**L2.** Richardson (2018). *Microservices Patterns*. Manning – Decomposition, trade-offs
+**L3.** Kleppmann (2017). *Data-Intensive Apps*. O'Reilly – Replication, partitioning
+**L4.** Newman (2021). *Building Microservices* (2nd). O'Reilly – Boundaries, deployment
+**L5.** Fowler (2002). *Enterprise Architecture*. Addison-Wesley – Repository, Service Layer
 
-## Citations
-**A1.** Evans (2003). *Domain-driven design*. Addison-Wesley [EN]  
-**A2.** Richardson (2018). *Microservices patterns*. Manning [EN]  
-**A3.** 周爱民 (2021). *架构的本质*. 电子工业 [ZH]  
-**A4.** Vernon (2013). *Implementing DDD*. Addison-Wesley [EN]  
-**A5.** Fowler (2002). *Enterprise architecture*. Addison-Wesley [EN]  
-**A6.** Newman (2021). *Building microservices*. O'Reilly [EN]  
-**A7.** Kleppmann (2017). *Data-intensive apps*. O'Reilly [EN]  
-**A8.** Hohpe & Woolf (2003). *Integration patterns*. Addison-Wesley [EN]  
-**A9.** 张逸 (2019). *领域驱动实践*. 电子工业 [ZH]  
-**A10.** Skelton & Pais (2019). *Team topologies*. IT Revolution [EN]  
-**A11.** Humble & Farley (2010). *Continuous delivery*. Addison-Wesley [EN]  
-**A12.** Kim et al. (2016). *DevOps handbook*. IT Revolution [EN]
+## Citations (Minimal Viable)
+**A1.** Evans (2003). *Domain-driven design*. Addison-Wesley [EN]
+**A2.** Richardson (2018). *Microservices patterns*. Manning [EN]
+**A3.** Kleppmann (2017). *Data-intensive apps*. O'Reilly [EN]
+**A4.** Vernon (2013). *Implementing DDD*. Addison-Wesley [EN]
+**A5.** Newman (2021). *Building microservices*. O'Reilly [EN]
+**A6.** Fowler (2002). *Enterprise architecture*. Addison-Wesley [EN]
+**A7.** 周爱民 (2021). *架构的本质*. 电子工业 [ZH]
+**A8.** 张逸 (2019). *领域驱动实践*. 电子工业 [ZH]

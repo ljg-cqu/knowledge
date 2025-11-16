@@ -1,10 +1,10 @@
-# Strategic Intelligence & Market Research News Q&A Generator
+# Strategic Intelligence & Market Research News Q&A Generator (Minimal Viable)
 
-Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons, 11 stakeholder roles—transforming news into actionable strategic intelligence.
+Generate 6–8 decision-critical Q&As from recent industry news—minimal viable tracking for strategic decisions with limited time.
 
-**Target**: 2-3 days | Monthly | Focus: Research/Innovation, Policy/ESG/Social, Consumer Trends
+**Cadence**: Monthly | 4-6h effort | **Expires**: 4 weeks from generation
 
-**Scope**: Strategic planning, R&D, market research, policy/regulatory impact, ESG, cultural trends, cross-industry insights. Excludes tactical features, daily operations, sales execution, routine finance, early-stage venture formation.
+**Scope**: Decision-critical strategic news only—research breakthroughs, policy/regulatory shifts, market trends, ESG mandates affecting strategy. Excludes tactical features, daily operations, sales execution, routine finance, speculation.
 
 **Freshness** (category-adaptive):
 - **HV** (Research/Innovation/Consumer/Analysis): ≥80% <2mo (≥25% 1-7d), ≥95% <3mo, 100% ≤6mo
@@ -15,20 +15,20 @@ Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons,
 
 ## I. Context & Scope
 
-**Audience**: C-suite, strategy teams, corporate dev, research leaders, policy advisors, ESG officers, market researchers.
+**Audience**: C-suite, strategy teams, corporate dev, research leaders (core roles only).
 
-**Include**: Research breakthroughs, consumer trends, policy/trade, ESG mandates, industry benchmarks, cultural shifts, cross-industry convergence.
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts R&D investment, M&A, strategic pivot, or market entry
+2. **Creates Risk**: Material threat to competitive position, regulatory compliance, or ESG standing
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (CEO + CSO, CRO + CIO, etc.)
+4. **Requires Action**: 3-24mo action window (not speculative)
+5. **Quantified Impact**: TAM/CAGR, funding $, policy $, ESG targets, market share
 
-**Exclude**: Tactical features, daily ops, marketing hype, speculation, trivial updates, stale news (>6mo HV, >18mo LT).
-
-**Categories** (7, each Q ≥2):
-1. **Research & Innovation**: Papers, breakthroughs, patents, roadmaps, funding, university partnerships
-2. **Consumer & Market**: Sentiment, adoption, demographics, purchasing, generational shifts, loyalty
-3. **Policy & Government**: Contracts, trade, tax, infrastructure, geopolitics, elections
-4. **ESG & Sustainability**: Regulations, carbon pricing, diversity, climate targets, reporting (GRI/SASB/TCFD)
-5. **Industry Analysis**: Market sizing, TAM/SAM, CAGR, benchmarks, M&A, analyst reports (Gartner/Forrester/IDC)
-6. **Cultural & Social**: Movements, workforce (remote/gig/skills), education, trust, health trends
-7. **Cross-Industry**: Adjacent disruptions, tech spillover, business model innovation, regulatory precedents, talent/capital flows
+**Categories** (4, each Q covers ≥1):
+1. **Research & Innovation**: Breakthroughs, patents, funding, TRL progression affecting R&D roadmap
+2. **Policy & Regulatory**: Legislation, trade, tax, compliance affecting operations/strategy
+3. **Market & Consumer**: Adoption trends, TAM shifts, generational changes affecting positioning
+4. **Industry Analysis**: M&A, consolidation, benchmarks, analyst reports affecting competitive strategy
 
 **Relevance** (≥2 required, Recency mandatory):
 1. **Recency** (mandatory per freshness)
@@ -39,99 +39,84 @@ Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons,
 6. **Quantified**: Market/consumer/policy/ESG/funding metrics
 7. **Trend Significance**: Confirms/refutes thesis, shifts trajectory
 
-**Answer** (250-400w): News (age per freshness) + summary + impact (≥2 horizons, ≥2 roles, quantified) + decision (Invest/Monitor/Pivot/Prepare/Delay/Ignore) + timeline + projections (source, confidence, scenarios).
+**Answer Structure** (200-300w): News (what, when, why) + impact (quantified, ≥2 horizons, ≥2 roles) + decision (Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale) + timeline (S/M/L). Projections only if sourced.
 
 ## II. Requirements
 
-**Q&A**: 10-12 | 2-3/horizon | 250-400w | 100% news (≥1/freshness) | ≥80% ≥1 cite, ≥35% ≥2 | ≥2 cats + impact + decision
+**Q&A**: 6-8 total | 1-2/horizon | 200-300w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-**Horizons** (5, 2-3 Q each):
-1. **Immediate** (0-6mo): Tactical response
-2. **Short** (6-18mo): Annual planning, budgets
-3. **Medium** (18-36mo): Multi-year strategy, investments
-4. **Long** (3-5yr): Transformation, repositioning, R&D
-5. **Transformational** (5-10yr): Industry restructuring, moonshots
+**Horizons** (3-4, 1-2 Q each): Short (6-18mo), Medium (18-36mo), Long (3-5yr), (Optional: Transformational 5-10yr if decision-critical)
 
-**Category %**: Research 70, Consumer 85, Policy 45, ESG 60, Analysis 95, Cultural 40, Cross-Industry 50
+**Category Coverage** (min): Research ≥40%, Policy ≥30%, Market ≥30%, Industry ≥25% (optional)
 
-**Decision** (100%): Impact (≥2 horizons, ≥2 roles, quantified) + Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale + alternatives + criteria + action (S/M/L, milestones)
+**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥8/11): CEO, CSO, CRO, CIO, CSustO, VP Corp Dev, VP Market Research, CMO, Head Policy, Board, Advisor
+**Stakeholders** (≥5/11): CEO, CSO, CRO, CIO, VP Corp Dev (core roles only)
 
-**References** (build first):
-- G≥15 (100% terms/acronyms, analogies/formulas)
-- N≥10 (news per freshness), A≥6 (academic), C≥4 (consumer), P≥4 (policy), E≥4 (ESG), I≥6 (industry), S≥3 (social), X≥3 (cross-industry)
-- R≥20 (APA 7th)
+**References** (build before Q&A): G≥10 (100% terms used), N≥5-6 (per freshness), A≥3 (academic), P≥2 (policy), I≥3 (industry), R≥10 (APA 7th+tag)
 
-**Visuals**: ≥5 diagrams + ≥3 tables
+**Visuals**: ≥2 diagrams + ≥1 table
 
-**Quality Gates** (fail ANY → stop, fix, re-run):
-1. **News**: 100% ≥1/freshness; 0% hype
-2. **Impact**: 100% ≥2 horizons + ≥2 roles + quantified (TAM/CAGR/budgets/segments/targets)
-3. **Decision**: 100% + rationale + timeline + criteria + metrics (share/R&D/risk/ESG/NPS)
-4. **Sources**: ≥5 types, ≤35%/type; per horizon ≥1 news + ≥1 analysis; 100% URLs valid, refs resolve
-5. **Coverage**: ≥8/11 roles; cats per floors
-6. **Actionable**: 100% concrete; 0% platitudes
+**Quality Gates** (fail ANY = stop):
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
+2. **News**: 100% cite ≥1 per freshness; 0% hype/speculation
+3. **Impact**: 100% ≥2 horizons + ≥2 roles + quantified (TAM/CAGR/$, policy $, market share)
+4. **Decision**: 100% decision + rationale + timeline
+5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
+6. **Actionable**: 100% concrete; 0% abstract
 
 ## III. Execution
 
-### Step 1: News Discovery
+### Step 1: News Discovery & Curation (Minimal)
 
-**Record date (YYYY-MM-DD)—all ages from this.**
+**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
 
 1. **Domain**: Industry/market/sector + period
 
-2. **Search** (≥25-30 candidates, tiered):
+2. **Search** (≥12-15 candidates, tiered):
 
-   **T1 - Recent** (HV 1-7d, MV 1-14d):
-   - Research: `"[Domain] breakthrough|research|paper|patent"` + 1-7d
-   - Consumer: `"[Domain] consumer trend|adoption|survey"` + 1-7d
-   - Policy: `"[Domain] policy|legislation|trade|contract"` + 1-14d
-   - ESG: `"[Domain] ESG|sustainability|carbon|net-zero"` + 1-14d
-   - Analysis: `"[Domain] forecast|Gartner|Forrester|IDC"` + 1-7d
+   **Tier 1** (1-7d, search first): `"[Domain] breakthrough|research|policy|M&A|market"` + 1-7d
 
-   **T2 - Medium** (HV 2-4wk, MV 1-3mo, LT 3-6mo if T1 insufficient)
-   **T3 - Backfill** (HV 2-6mo, MV 3-9mo, LT 6-18mo if T1+T2 insufficient; LT needs enduring justification)
+   **Tier 2** (7-30d if insufficient): Same + 7-30d
 
-   **Sources**:
-   - **Research**: arXiv, Scholar, Nature, Science, IEEE, universities, NSF, NIH, DOE
-   - **Consumer**: Pew, Nielsen, McKinsey, Deloitte, Statista, eMarketer, YouGov, Ipsos
-   - **Policy**: Congress.gov, Federal Register, GAO, OECD, WTO, IMF, think tanks (Brookings, CSIS)
-   - **ESG**: CDP, TCFD, SASB, GRI, SBTi, MSCI, Sustainalytics, UNFCCC
-   - **Industry**: Gartner, Forrester, IDC, McKinsey, BCG, Bain, PwC, associations
-   - **Cultural**: Gallup, Pew Social, Census, BLS, World Values, WGSN
-   - **Cross**: CB Insights, HBR, MIT Sloan, Stanford Social Innovation
-   - **News**: FT, Economist, WSJ, Bloomberg, Nature/Science News
-   - **Avoid**: Marketing, PR wires, social, clickbait
+   **Tier 3** (1-3mo if still insufficient): Same + 1-3mo
 
-   **Tools**: Perplexity/ChatGPT Search ("past month"), Scholar (`after:YYYY-MM-DD`), Google (`after:` + site:gov/edu)
+   **Sources** (whitelist, prioritize):
+   - **Research**: arXiv, Nature, Science, IEEE, universities, NSF
+   - **Policy**: Congress.gov, Federal Register, OECD, WTO, think tanks (Brookings, CSIS)
+   - **Market**: Pew, McKinsey, Gartner, Forrester, IDC, analyst reports
+   - **Industry**: CB Insights, HBR, Bloomberg, FT, Economist
+   - **Avoid**: Marketing, PR fluff, rumors, speculation, clickbait
 
-   **Age Target**:
-   - HV: <2mo ≥80% (1-7d ≥25%, 8-30d ≥35%, 1-2mo ≥20%), 2-3mo ≥15%, 3-6mo ≤5%
-   - MV: <3mo ≥65% (1-14d ≥15%, 15d-2mo ≥30%, 2-3mo ≥20%), 3-6mo ≥25%, 6-9mo ≤10%
-   - LT: <6mo ≥50%, 6-12mo ≥30%, 12-18mo ≤15%, 18-24mo ≤5%
-   - Overall: <1mo ≥35%, 1-3mo ≥35%, 3-6mo ≥20%, 6-12mo ≥8%, 12-18mo ≤2%
+   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Scholar
 
-3. **Curate** (≥18: Research ≥5, Consumer ≥5, Policy ≥3, ESG ≥3, Analysis ≥5, Cultural ≥2, Cross ≥3):
-   - ✅ Age/source/≥2 relevance/no hype/strategic/specific
+3. **Curate** (≥12-15 candidates: Research ≥4, Policy ≥3, Market ≥3, Industry ≥2):
+   - ✅ Age per freshness
+   - ✅ Whitelist OR primary source
+   - ✅ Satisfies ≥1 Decision Criticality criterion
+   - ✅ Specific details (dates, names, numbers, metrics)
+   - ✅ Not marketing/rumors
 
-4. **Verify**: Count cats/age; if fails → Step 2
+4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-5. **Allocate**: 10-12 Q across 5 horizons, 7 cats (≥2/Q), 11 roles (≥8 total)
+5. **Allocate**: 6-8 Q × 3-4 horizons (1-2 each) × 4 categories (≥1/Q) × ≥5 roles
 
-6. **Refresh**: Quarterly
+### Step 2: Build References (Minimal)
 
-### Step 2: Build References
+**Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | A# (academic) | P# (policy) | I# (industry) | R# (APA 7th+tag)
 
-**Format**: G# (term, def+analogy/formula, context) | N# (news, source, date, cat, impact, URL) | A# (academic) | C# (consumer) | P# (policy) | E# (ESG) | I# (industry) | S# (social) | X# (cross) | R# (APA+tag)
+**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
 
-**Citation**: `[Ref: A1][a1]` then `[a1]: URL` at end
+**Floors**: G≥10 (100% terms used), N≥5-6, A≥3, P≥2, I≥3, R≥10
 
-**Floors**: G≥15 (100% terms/acronyms, analogies/formulas), N≥10 (freshness, URLs+dates), A≥6, C≥4, P≥4, E≥4, I≥6, S≥3, X≥3, R≥20
+**Glossary** (only terms used in Q&As):
+- **Coverage**: Only terms/acronyms used (TAM, CAGR, TRL, IRR, NPV, etc.)
+- **Clarity**: Plain language, avoid jargon
+- **Analogies**: 1-2 real-world comparisons per term
+- **Context**: Why it matters for decisions
+- **Examples**: Real numbers
 
-**Glossary**: Cover ALL terms (TAM/CAGR/NPS/ESG/TCFD/TRL/IRR/NPV, metrics, concepts). Plain language + analogies ("S-curve = lifecycle—slow, rapid, plateau") + formulas ("CAGR = (End/Start)^(1/years)-1") + context + examples
-
-**News**: Title (Source, MM/DD/YYYY) | Summary | Cat | Age | Impact (horizons, roles) | URL | Justify if HV >2mo/LT >12mo
+**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
 
 ### Step 2.5: Refresh (optional)
 
@@ -139,91 +124,77 @@ Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons,
 **Action**: Quick search → 1-3 items ("BREAKING") → Adjust 1-2 Qs
 **Default**: Skip (monthly sufficient)
 
-### Step 3: Generate Q&A
+### Step 3: Generate Q&A (batch 2-3, self-check each)
 
-**Before**: Review glossary. Track ALL terms; verify 100% in glossary after each batch. Add missing.
+**Before**: Review glossary. Track ALL terms used.
 
-**Question Patterns**: 
-- "[Research] → [R&D] across [Horizons]?"
-- "[Consumer] + [Market]: positioning for [Industry]?"
-- "[Policy] → [Initiative] + [Horizon]?"
-- "[ESG] vs [Position]: prepare [Regulation]?"
-- "[Cross-Industry] → [Domain]: [Adjacent]?"
-- "[Cultural] + [Demo]: strategy [Segment]?"
+**Patterns**: "[Research] → [R&D] investment?" | "[Policy] → [Compliance] timeline?" | "[Market] shift → [Positioning]?" | "[M&A] → [Competitive] strategy?"
 
-**Avoid**: Tactical, daily ops, speculation, hype, superficial, stale
+**Avoid**: Tactical, daily ops, speculation, hype, unattributed claims, stale news
 
-**Structure** (250-400w):
-1. **News** (~60w): What/when/who/why/cat/significance `[Ref: N#][n#]`
-2. **Impact** (~110w): ≥2 horizons + quantified (CAGR/TAM/budgets/segments/targets/funding)
-3. **Stakeholders** (~70w): ≥2 roles + concerns + initiatives + authority
-4. **Decision** (~90w): Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale + alts + criteria
-5. **Action** (~60w): S/M/L (6-18mo/18-36mo/3-5yr) + owner + milestone + budget
-6. **Projections** (~40w opt): "[Source] projects [X] by [Y] ([confidence]). Scenarios: best/base/worst `[I#][i#]`"
-7. **Links**: Define at end: `[n1]: URL`
-8. **Artifacts**: 1-2 diagrams/tables
+**Structure** (200-300w):
+1. **News** (~40w): What, when, why, cat `[Ref: N#][n#]`
+2. **Impact** (~80w): ≥2 horizons + quantified (CAGR/TAM/$, policy $, market share, funding)
+3. **Stakeholders** (~50w): ≥2 roles + concerns + actions
+4. **Decision** (~70w): Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale + criteria
+5. **Action** (~30w): S/M/L (6-18mo/18-36mo/3-5yr) + owner
+6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age/freshness | ≥2 horizons | ≥2 roles | Decision | 250-400w | Quantified | ≥2/4 ≥2 cites | Artifact | Timeline | 0% hype | 100% strategic | Projections (attr+scenarios+conf+time) | **All terms in glossary**
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 horizons | ≥2 roles | Decision clear | 200-300w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
 
-### Step 4: Visuals
+### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
-**Types**: 2×2 matrices, horizon timelines, TAM/CAGR, S-curves, regulatory/ESG roadmaps, demographics, convergence maps
-**Format**: Mermaid, MD tables
+**Types**: Horizon timelines, TAM/CAGR curves, 2×2 matrices, decision trees, policy roadmaps
+
+**Format**: Mermaid, Markdown tables
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve | Age/freshness | APA | Floors (G≥15 100% terms+analogies/formulas, N≥10 7cats, A≥6, C≥4, P≥4, E≥4, I≥6, S≥3, X≥3, R≥20 40-55% research, 25-35% news, 15-20% primary)
-**Decision**: 100% + rationale + alts + criteria + timeline + metrics (share/R&D/risk/ESG/NPS)
-**Stakeholders**: ≥8/11 | Initiatives+authority | C-suite for transformational
+**Refs**: 100% resolve | Age OK | Complete | G≥10 (100% terms used) | N≥5-6 | A≥3 | P≥2 | I≥3 | R≥10
 
-### Step 6: Validations (fail ANY → stop, fix, re-run ALL)
+**Decision**: 100% decision + rationale + criteria + timeline
 
-**Quant**: Floors | Glossary (100% terms, ≥60% analogies/formulas) | 5 horizons (2-3 Q) | Cats % | ≥8/11 roles | Cites (100% ≥1 news, ≥80% ≥1, ≥35% ≥2) | Dist (40-55/25-35/15-20%) | 5 samples 250-400w | Visuals (≥60% ref, ≥5D+≥3T) | Decision 100% | Timeline 100% | **Age/freshness**
+**Stakeholders**: ≥5 roles | Actions + authority
 
-**Qual**: News (freshness, 0% hype) | Impact (100% ≥2h+≥2r+quant) | Decision (100%+alts+crit) | Source (≥5 types, ≤35%) | Per-horizon (≥1 news+≥1 research) | Links/refs (100% valid/resolve) | Quant (100% measurable) | Strategic (100%, 0% tactical) | Anti-hype (100% evidence) | Projections (100% attr+scenarios+conf+time) | Search doc
+### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
+
+**Quantitative**: Floors met | Glossary 100% | 3-4 horizons | Categories per % | ≥5 roles | Citations OK | 5 word samples 200-300w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 horizons+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-horizon ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
 
 ### Step 7: Submit
 
-**Checklist** (all YES): Validations PASS | Floors | **Glossary (100% terms, ≥60% analogies/formulas)** | TOC (5h, Q ranges) | 0 placeholders | ≥5D+≥3T | 100% ≥1 news/freshness | 100% impact (≥2h+≥2r+quant+metrics) | 100% decision+rationale+metrics | 100% timeline | 7 cats % | ≥8/11 roles | **Freshness met** | 0% speculation | Projections attr+scenarios | URLs | **Dates (gen+exp=+4wks)** | Search doc
+**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+4wks)** | Search documented
 
-## IV. Validation Report
+## IV. Validation Report (Minimal)
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
-| 1 | **Freshness** | HV/MV/LT/Overall % | Per header | | P/F |
-| 2 | **Floors** | G N A C P E I S X R Q | ≥15,≥10,≥6,≥4,≥4,≥4,≥6,≥3,≥3,≥20,10-12 | | P/F |
-| 2a | **Glossary** | % terms; % analogies/formulas | 100%; ≥60% | | P/F |
-| 3 | **Horizons** | __/5 (2-3 Q ea); Q __ | 5/5; 10-12 | | P/F |
-| 4 | **Cats %** | R/C/P/E/A/Cu/X | ≥70/85/45/60/95/40/50 | | P/F |
-| 5 | **Roles** | __/11 | ≥8 | | P/F |
-| 6 | **Impact** | % ≥2h+≥2r+quant | 100% | | P/F |
-| 7 | **Decision** | % +rat+alt+crit | 100% | | P/F |
-| 8 | **Timeline** | % S/M/L+owner+milestone | 100% | | P/F |
-| 9 | **Cites** | % ≥1news; ≥1; ≥2 | 100%; ≥80%; ≥35% | | P/F |
-| 10 | **Dist** | Research/News/Primary % | 40-55/25-35/15-20 | | P/F |
-| 11 | **Diversity** | Types; max % | ≥5; ≤35% | | P/F |
-| 12 | **Per-Horizon** | __/5 ≥1news+≥1research | 5/5 | | P/F |
-| 13 | **Words** | 5 samples % 250-400w | 100% | | P/F |
-| 14 | **Visuals** | % ref; D; T | ≥60%; ≥5; ≥3 | | P/F |
-| 15 | **Quant** | % measurable+proj | 100% | | P/F |
-| 16 | **Links** | % valid | 100% | | P/F |
-| 17 | **Refs** | % resolve | 100% | | P/F |
-| 18 | **Strategic** | % strategic; % tactical | 100%; 0% | | P/F |
-| 19 | **Proj** | % attr; scenarios; conf; time | 100%; 100%; 100%; 100% | | P/F |
-| 20 | **Search** | Queries/Whitelist/Candidates/Accept% | Y/Y/≥25/50-70% | | P/F |
-| | **Meta** | Start/End/Expires/Refresh | __/__/+4wks/Y/N | | INFO |
-| | **Age** | <1mo/1-3mo/3-6mo/6-12mo/12-18mo % | Per header | | INFO |
-| | **OVERALL** | All | All PASS | | P/F |
+| 1 | **Freshness** | HV: __%<2mo (1-7d:__%), __%<3mo \| MV: __%<3mo (1-14d:__%) \| Overall: __%<3mo | Per header | | PASS/FAIL |
+| 2 | **Floors** | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ | ≥10,≥5-6,≥3,≥2,≥3,≥10,6-8 | | PASS/FAIL |
+| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | **Horizons** | __/3-4 (1-2Q each); total__ | 3-4/3-4;6-8 | | PASS/FAIL |
+| 5 | **Categories** | Res__% Pol__% Mkt__% Ind__% | ≥40,30,30,25% | | PASS/FAIL |
+| 6 | **Roles** | __/11 | ≥5 | | PASS/FAIL |
+| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | **Impact** | __% ≥2h+≥2r+quantified | 100% | | PASS/FAIL |
+| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%200-300w | 100% | | PASS/FAIL |
+| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
+| | **Age Dist** | <1mo__%(1-7d__%) 1-3mo__% 3-6mo__% | Per header | | INFO |
+| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥3 fails → rewrite)
+## V. Question Quality (≥2 fails of 7 = rewrite)
 
-**Criteria**: News (freshness) | Horizon (1-2h, impact) | Multi-stakeholder (≥2) | Multi-cat (≥2) | Decision | Quant (CAGR/TAM/budgets) | Cross-horizon | Urgency | Alts (1-2) | Evidence | Actionable | Forward (proj+scenarios)
+**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 horizons) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
 
-**✓**: "Nature solid-state 3x (Oct '24): EV + R&D?" | "Pew Gen Z 78% sustainable (Q3 '24): brand positioning?" | "CBAM $120B 2026-34: steel/cement decarbonization?" | "Gartner AI $900B 35% CAGR '27: enterprise strategy?"
+**✓ Good**: "Nature solid-state 3x (Oct '24): R&D investment?" | "CBAM $120B 2026-34: supply chain strategy?" | "Gartner AI $900B 35% CAGR: competitive positioning?" | "M&A consolidation (Nov '24): acquisition target?"
 
-**✗**: "How ESG?" (no news) | "What CAGR?" (overview) | "Invest AI?" (generic) | "Latest launch" (tactical)
+**✗ Bad**: "How does ESG work?" (no news) | "What is CAGR?" (overview) | "Invest in AI?" (no trigger) | "Latest research" (no decision) | "Competitor launched feature" (tactical)
 
-## VI. Output Format
+## VI. Output Format (Minimal)
 
 ### A. TOC
 
@@ -231,101 +202,101 @@ Generate 10–12 Q&As from recent industry news across 7 categories, 5 horizons,
 # [Domain] Strategic Intelligence Q&A ([Period])
 
 ## Contents
-1. Executive Summary (Overview | Insights | Dashboard)
-2. Horizon Coverage (5h × 7cats matrix)
-3. Qs by Horizon: Immediate (Q1-2) | Short (3-5) | Medium (6-8) | Long (9-10) | Transformational (11-12)
-4. Refs: G (G1-15+) | N (N1-10+) | A (A1-6+) | C (C1-4+) | P (P1-4+) | E (E1-4+) | I (I1-6+) | S (S1-3+) | X (X1-3+) | R (R1-20+)
-5. Validation (20 checks)
+1. Executive Summary (Insights | Dashboard)
+2. Horizon Coverage (3-4 horizons)
+3. Questions by Horizon: Short (Q1-Q2) | Medium (Q3-Q4) | Long (Q5-Q6) | Transformational (Q7-Q8)
+4. References: G (G1-G10) | N (N1-N6) | A (A1-A3) | P (P1-P2) | I (I1-I3) | R (R1-R10)
+5. Validation (12 checks)
 ```
 
 ### B. Executive Summary
 
 ```markdown
-**Domain**: [Industry] | **Period**: [Q3-Q4 2024] | **Coverage**: [# items, 7 cats]
-**News**: Research ([#]: top 2-3+dates) | Consumer ([#]) | Policy ([#]) | ESG ([#]) | Analysis ([#]) | Cultural ([#]) | Cross ([#])
-**Insights**: [News] ([Date]): [Impact] → [Decision] → [Horizon+Timeline] (3-4 high-impact)
-**Dashboard**: [Table: Horizon | News | Initiative | Timeline | Budget]
-**Roles**: [9-11+counts] | **Refs**: G=[#] N=[#] A=[#] C=[#] P=[#] E=[#] I=[#] S=[#] X=[#] R=[#]
+**Domain**: [Industry] | **Period**: [Q3-Q4'24] | **Coverage**: [# items, 4 cats]
+
+**Insights**: 1. [News] ([Date]): [Impact] → [Decision] → [Timeline] (2 high-impact)
+
+**Dashboard**: [Table: Horizon | News | Decision | Timeline]
+
+**Roles**: [5+ roles] | **Refs**: G=[#] N=[#] A=[#] P=[#] I=[#] R=[#]
 ```
 
-### C. Horizon Table
+### C. Horizon Overview
 
-| # | Horizon | Range | Count | Cats | News | Roles | Artifacts |
-|---|---------|-------|-------|------|------|-------|-----------|
-| 1 | Immediate | Q1-2 | 2-3 | P,E,C | [Top] | CSO,CMO,Policy | 1D+1T |
-| 2 | Short | Q3-5 | 2-3 | C,A,R | [Top] | CSO,CMO,CRO | 1D+1T |
-| 3 | Medium | Q6-8 | 2-3 | R,A,P,E | [Top] | CSO,CRO,CIO,CSustO | 1D+1T |
-| 4 | Long | Q9-10 | 2 | R,X,E | [Top] | CEO,CRO,CIO,Board | 1D |
-| 5 | Transform | Q11-12 | 2 | X,R,Cu | [Top] | CEO,Board,Advisor | 1D |
-| | **Total** | | **10-12** | **7** | **10+** | **≥8/11** | **≥5D+≥3T** |
+| # | Horizon | Count | Categories | News | Roles |
+|---|---------|-------|------------|------|-------|
+| 1 | Short | 1-2 | Research, Policy | [Top] | CEO, CSO |
+| 2 | Medium | 1-2 | Market, Industry | [Top] | CSO, CRO, CIO |
+| 3 | Long | 1-2 | Research, Industry | [Top] | CEO, CRO, Board |
+| 4 | Transform | 1-2 | Policy, Market | [Top] | CEO, Board |
+| | **Total** | **6-8** | **4** | **6+** | **≥5** |
 
-### D. Q&A
+### D. Q&A Template
 
 ```markdown
-### Q#: [News + Horizon + Roles + Decision]
+### Q#: [News Question + Horizon + Roles]
 
-**Horizon**: [H] | **Roles**: [1°, 2°] | **Cats**: [✓✓] | **Decision**: Y
+**Horizon**: [H] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
 
-**News** (~60w): What/when/who/why/cat/significance [Ref: N#][n#]
-**Impact** (~110w): **Horizons** (≥2) | **Quant**: TAM/CAGR/$/segments/targets/funding/position
-**Stakeholders** (~70w): **[R1]**: Concerns, initiatives, authority | **[R2]**: ...
-**Decision** (~90w): **Rec**: I/M/Pv/Pr/D/Ig | **Rat**: [Why] | **Alts**: [1-2] | **Success**: [Metrics]
-**Action** (~60w): **S (6-18mo)**: [Init+owner+milestone] | **M (18-36mo)**: ... | **L (3-5yr)**: ... | **$/Res**: [FTEs, partners]
-**Proj** (~40w opt): [Source] projects [X] by [Y] ([conf]). Scenarios: Best [+X%], Base [Y%], Worst [-Z%] [I#][i#]
-**Artifacts**: [Type]
+**News** (~40w): What, when, why, cat [Ref: N#][n#]
+
+**Impact** (~80w): **Horizons** (≥2) | **Quantified**: CAGR/TAM/$, policy $, market share, funding
+
+**Stakeholders** (~50w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+
+**Decision** (~70w): **Rec**: Invest/Monitor/Pivot/Prepare/Delay/Ignore | **Rationale**: Why | **Success**: Targets
+
+**Action** (~30w): **S (6-18mo)**: Actions+owner | **M (18-36mo)**: Same | **L (3-5yr)**: Same
 
 [n1]: URL
 ---
 ```
 
-### E. Refs
+### E. Reference Formats
 
 ```markdown
-**G#. Term**: Def | Analogy/Formula | Context | Example
-**N#. Title** (Source, MM/DD/YY): Summary | Cat | Impact | Roles | URL
-**A#. Paper** (Date): Findings | Method | Implications | TRL | Funding | URL
-**C#. Study** (Firm, Date): Method (n, demos) | Findings | Segments | Trends | URL
-**P#. Legislation** (Date): Summary | Budget | Impact | Timeline | URL
-**E#. Report** (Org, Date): Targets | Timeline | Framework | Implications | URL
-**I#. Report** (Firm, Date): TAM/SAM | CAGR | Competitive | Scenarios | URL
-**S#. Survey** (Org, Date): Findings | Demographics | Generations | Trajectory | URL
-**X#. Report** (Date): Adjacent | Spillover | Precedents | Innovation | URL
-**R#. APA 7th [Tag]**: Author. YYYY, Mon DD. *Title*. Pub. URL [Tag]
+**G#. Term (Acronym)**: Definition | Analogy | Context | Example
+
+**N#. Title** (Source, MM/DD): Summary | Cat | URL
+
+**A#. Paper** (Date): Findings | URL
+
+**P#. Legislation** (Date): Summary | Impact | URL
+
+**I#. Report** (Firm, Date): TAM/CAGR | Competitive | URL
+
+**R#. APA 7th [Tag]**: Author/Org. YYYY, Mon DD. *Title*. Pub. URL [Tag]
 ```
 
 ## VII. Example (format demo—use actual recent news)
 
-### Q1: Nature solid-state 3x (Oct '24): EV + R&D?
+### Q1: Nature solid-state 3x (Oct '24): R&D investment?
 
-**H**: Long, Medium | **Roles**: [CRO, CSO, CEO; CSustO, CorpDev, Board] | **Cats**: R✓ ESG✓ X✓ | **Dec**: Y
+**Horizon**: Long, Medium | **Roles**: [CRO, CSO, CEO] | **Cats**: [Research] | **Decision Criticality**: [Blocks R&D investment]
 
-**News**: *Nature* 10/15/24: 450 Wh/kg (3x→150), sulfide, 1K cycles, TRL 4-5. MIT/Toyota, $50M DOE+$1B. 600mi→trucking/aviation.
+**News**: *Nature* 10/15/24: 450 Wh/kg (3x current), sulfide, 1K cycles, TRL 4-5. MIT/Toyota partnership, $50M DOE + $1B private. 600mi range → trucking/aviation TAM.
 
-**Impact**: **M (18-36mo)**: R&D+IP. Patents +45% (Toyota 1.2K, Samsung 900, QS 600). $200M pilot→$2B NPV '29. **L (3-5yr)**: Transform. 600mi→TAM 15M→60M '30 (40% CAGR). Carbon -30%. Share +5-10%($15B), ESG B→AA.
+**Impact**: **M (18-36mo)**: R&D pivot + IP. Patents +45% (Toyota 1.2K, Samsung 900). $200M pilot → $2B NPV by '29. **L (3-5yr)**: Market transformation. 600mi TAM: 15M→60M units (40% CAGR). Carbon -30%. Market share +5-10% ($15B), ESG rating B→A.
 
-**Stakeholders**: **CRO**: R&D pivot, $200M/3yr, partnerships/IP. **CSO**: M&A (QS $1-2B), JV, competitive. **CEO+Board**: $500M invest, pivot '28-30, investor comms.
+**Stakeholders**: **CRO**: R&D pivot decision, $200M/3yr, partnerships. **CSO**: M&A evaluation (QS $1-2B), JV strategy. **CEO**: $500M investment decision, pivot timeline '28-30.
 
-**Decision**: **Invest** R&D+commercialization; **Monitor** Toyota '27, Samsung '29. | **Rat**: *Nature* TRL 4-5→5-7yr='29-31. 3x=transform. +5-10%($15B), ESG lead. Risk: scale/comp. | **Alts**: (1) Delay TRL 6-7—less risk, lose 2-3yr+$15B; (2) License—less CapEx, cede margin 25% vs 40%. | **Success**: Pilot '27 (TRL 7, 400+ Wh/kg), 200+ patents '26, supplies '26, 600mi '30, ESG B→A '29.
+**Decision**: **Invest** R&D + commercialization; **Monitor** Toyota '27, Samsung '29. | **Rationale**: Nature TRL 4-5 → 5-7yr timeline = '29-31. 3x improvement = transformational. +5-10% share ($15B NPV). ESG leadership. Risk: scaling, competition. | **Success Criteria**: Pilot TRL 7 by '27, 200+ patents by '26, 600mi production by '30, ESG A rating by '29.
 
-**Action**: **S (6-18mo)**: CRO $50M MIT/Stanford 20 PhDs→TRL 5 Q4'25 | CSO analysis→M&A list Q2'25 | Policy $25M DOE Q3'25. **M (18-36mo)**: CRO $150M pilot 10 MWh→Q2'27 | CSO M&A/JV $500M-1B→Q4'26 | CSustO ESG -30%→TCFD Q1'26. **L (3-5yr)**: CEO $500M CapEx 10 GWh '30 (200K/yr) | CSO 600mi '30, 10%($30B) | CSustO A/AA '29. | **$/Res**: $700M ($200M R&D, $150M pilot, $350M mfg) | 150 FTEs | 3 unis, 2 suppliers, 1 M&A/JV.
+**Action**: **S (6-18mo)**: CRO: $50M MIT/Stanford R&D (20 PhDs) → TRL 5 Q4'25 | CSO: M&A analysis → target list Q2'25. **M (18-36mo)**: CRO: $150M pilot (10 MWh) → Q2'27 | CSO: M&A/JV ($500M-1B) → Q4'26. **L (3-5yr)**: CEO: $500M CapEx (10 GWh mfg) → 200K units/yr.
 
-**Proj**: *Gartner* $14B '30 (55% CAGR from $1B '24), 75% EVs. *McKinsey* 600mi=40% share '32 vs 5% 300mi. | **Scenarios**: Best (30%): TRL 9 '28, 15%($45B), AAA, $3B NPV. Base (50%): '30, 10%($30B), A, $2B. Worst (20%): '32+, Toyota first, 5%($15B), -$200M.
-
-**Artifacts**: Horizon timeline (TRL '25-'30, launches) | TAM/SAM '24-'32 (CAGR, S-curves) | 2×2 (Tech risk vs Market opp)
-
-[a1]: https://nature.com/s41586-024-x | [n1]: https://techcrunch.com/mit-toyota | [i1]: https://gartner.com/solid-state-2030 | [i2]: https://mckinsey.com/ev-range-2032 | [i3]: https://strategy-analytics.com/patents-2024 | [p1]: https://energy.gov/50m-funding | [e1]: https://sustainability-reports.org/lifecycle-2024 | [e2]: https://msci.com/esg-transport
+[n1]: https://nature.com/s41586-024-x | [a1]: https://techcrunch.com/mit-toyota | [i1]: https://gartner.com/solid-state-2030
 
 ---
 
 ## VIII. Focus Areas
 
-| Area | Startup | Tech Ops | Strategic Intel |
-|------|---------|----------|-----------------|
-| **Horizon** | 0-18mo (fundraising) | 0-6mo (sprint/Q) | 6mo-10yr (strategy) |
-| **Audience** | Founders, VCs | Eng, product, ops | C-suite, strategy, research |
-| **Decisions** | Enter/fund/pivot/pass | Adopt/investigate/defer | Invest/monitor/pivot/prepare |
-| **Metrics** | Valuation, burn, TAM | Cost, time, risk, perf | Share, CAGR, ESG, NPV |
-| **News** | Funding, comp, VC | Tools, frameworks, sec | Research, policy, consumer, ESG |
-| **Value** | Entry timing | Ops efficiency | Long-term positioning |
+| Area | Strategic Intel |
+|------|-----------------|
+| **Horizon** | 6mo-10yr (strategy) |
+| **Audience** | C-suite, strategy, research |
+| **Decisions** | Invest/Monitor/Pivot/Prepare |
+| **Metrics** | Market share, CAGR, ESG, NPV |
+| **News** | Research, policy, market, industry |
+| **Value** | Long-term positioning |
 
-**Use for**: R&D roadmaps (research) | Consumer trends (5-10yr) | Policy foresight (1-3yr) | ESG strategy (2-5yr) | Cross-industry adjacency | Market sizing
+**Use for**: R&D roadmaps | Market sizing | Policy foresight | ESG strategy | Cross-industry adjacency | Competitive positioning

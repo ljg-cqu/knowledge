@@ -1,239 +1,254 @@
-# Commercial Operations News Intelligence Q&A Generator
+# Commercial Operations News Intelligence Q&A Generator (Minimal Viable)
 
-Transform commercial news into 10-14 actionable Q&As for revenue teams.
+Generate 4–6 decision-critical Q&As from recent commercial news—minimal viable tracking for informed decisions with limited time.
 
-**Target**: Bi-weekly | 24-40h | High-Value (HV): Sales/Marketing | Medium-Value (MV): CS/Market Trends
+**Target**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
 
-**Scope**: Sales execution, marketing ops, customer success, RevOps, GTM, competitive intel. Orgs with product-market fit.
+**Freshness** (all news must meet these age thresholds):
+- **High-Velocity** (Sales, Marketing): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (CS, RevOps, Competitive): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
+- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
 
-**Excludes**: Technical implementation, product strategy/pricing research, corporate finance, long-term strategy, early-stage startups.
+**Scope**: Decision-critical commercial news only—sales execution, marketing ops, customer success, RevOps, GTM, competitive intel. For post-PMF organizations.
 
-**Freshness** (category-adaptive):
-- HV: ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
-- MV: ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
-- Overall: ≥75% <2mo, ≥90% <4mo, 100% ≤6mo | Valid: 2wks
+**Exclude**: Technical implementation, product strategy/pricing research, corporate finance (except GTM pricing), long-term strategy, rumors, marketing fluff, stale news, nice-to-have trends.
 
-## I. Context & Scope
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts quota strategy, GTM pivot, or revenue model
+2. **Creates Risk**: Material competitive threat, churn signal, or CAC/LTV pressure
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (Sales + RevOps, Marketing + CS, etc.)
+4. **Requires Action**: 1-6mo action window (not speculative)
+5. **Quantified Impact**: Revenue $, pipeline $, conversion %, retention %, or efficiency gain
 
-**Audience**: CRO, VP Sales/Marketing/CS, RevOps at established orgs. Focus: pipeline, campaigns, retention, analytics, competitive intel, GTM tools.
+**Categories** (3-4, each Q covers ≥1):
+1. **Sales Performance & Pipeline**: Win rates, quota attainment, pipeline velocity, sales cycle changes
+2. **Marketing Performance & Attribution**: CAC, conversion rates, campaign effectiveness, attribution model shifts
+3. **Customer Success & Retention**: Churn, NRR, expansion, retention tactics affecting revenue
+4. **Revenue Operations & Analytics** (optional): RevOps tools, analytics platforms, data infrastructure affecting decisions
 
-**6 News Categories** (each Q covers ≥2):
-1. Sales Performance & Pipeline
-2. Marketing Performance & Attribution
-3. Customer Success & Retention
-4. Revenue Operations & Analytics
-5. Competitive Win/Loss & Intelligence
-6. GTM Tools & Customer Insights
-
-**Relevance** (≥2 required, including #1):
-1. **Recency** (per freshness guarantee) [MANDATORY]
-2. Lifecycle Impact (≥2 stages/cross-stage)
-3. Stakeholder Breadth (≥3 roles/multi-role)
-4. Decision Urgency (1-6mo action/revenue ops impact)
-5. Commercial Significance (shifts practices/strategies/models)
-6. Quantified Impact (measurable revenue/pipeline/conversion/retention/efficiency)
-
-**Answer** (200-350w): ≥1 news, summary, impact (≥2 stages/roles, quantified), decision (Adopt/Test/Scale/Defer/Avoid), timeline, projections (optional).
+**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 stages, ≥2 roles) + decision (Adopt/Test/Scale/Defer/Avoid + rationale) + timeline (immediate/short). Projections only if sourced.
 
 ## II. Requirements
 
 ### Minimums
 
-**Q&A**: 10-14 (1-2/stage, 200-350w, 100% news-driven, ≥85% cite ≥1, ≥40% cite ≥2, each covers ≥2 categories + impact + decision)
+**Q&A**: 4-6 total | 1-2/stage | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
-**7 Stages** (1-2 Q each): Market Research & Segmentation | Lead Gen & Demand | Lead Qual & Nurturing | Sales & Closing | Onboarding & Activation | Retention & Expansion | Analytics & Optimization
+**Stages** (3-4, 1-2 Q each): Lead Gen & Demand, Sales & Closing, Retention & Expansion, Analytics & Optimization (skip Market Research, Lead Qual, Onboarding unless decision-critical)
 
-**Category %**: Sales 85 | Marketing 80 | CS 70 | RevOps 65 | Competitive 75 | Tools 60
+**Category Coverage** (min): Sales ≥50%, Marketing ≥40%, CS ≥40%, RevOps ≥25% (optional)
 
-**Decision** (100%): Impact (≥2 stages/roles, quantified) + Decision (A/T/S/D/Av + rationale + alts) + Action (immediate/short)
+**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥9/13): CRO | VP Sales/Marketing/CS | Sales/Marketing/CS Ops | RevOps Analyst | SDR/BDR/AE/CSM/Demand Gen/Enablement Leads
+**Stakeholders** (≥5/13): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst (core roles only)
 
-**References**: G≥12 (100% terms+acronyms+metrics, analogies+formulas) | N≥8 (per freshness) | P≥5 | M≥4 | R≥4 | C≥3 | A≥12
+**References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), P≥2 (platforms), M≥1-2 (methodologies), R≥2 (reports), A≥6 (APA 7th+tag)
 
-**Visuals**: ≥6 diagrams + ≥3 tables
+**Visuals**: ≥2 diagrams + ≥1 table
 
-### Quality Gates (STOP if ANY fail)
-
-1. **News**: 100% cite ≥1 per freshness | 0% hype
-2. **Impact**: 100% ≥2 stages+roles+quantified
-3. **Decision**: 100% A/T/S/D/Av+rationale+timeline+criteria+ROI
-4. **Sources**: ≥5 types, max 35%/type | per stage ≥1 news+benchmark | 100% URLs valid
-5. **Coverage**: ≥9/13 roles | categories per minimums
-6. **Actionability**: 100% concrete+timelines | 0% abstract
+**Quality Gates** (fail ANY = stop):
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
+2. **News**: 100% cite ≥1 per freshness; 0% marketing/rumors
+3. **Impact**: 100% ≥2 stages + ≥2 roles + quantified
+4. **Decision**: 100% decision + rationale + timeline
+5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
+6. **Actionability**: 100% concrete; 0% abstract
 
 ## III. Execution
 
-### Step 1: News Discovery
+### Step 1: News Discovery & Curation (Minimal)
 
-**Record generation date (YYYY-MM-DD).**
+**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
 
 1. **Domain**: Industry/vertical + period (e.g., "B2B SaaS GTM Q4 2024")
 
-2. **Web Search** (≥20-30 candidates):
-   - **Tier 1 (1-3d)**: `"[Domain] {sales performance|pipeline|quota|win rate|marketing|CAC|conversion|campaign|churn|retention|NPS|expansion|competitive|win/loss|market share}"` + 1-3d | `"{Salesforce|HubSpot|Gong|Gainsight} update"` + 1-3d
-   - **Tier 2 (7-14d)**: Same queries + 7-14d
-   - **Tier 3 (2-4wks)**: HV <1mo, MV 2-3mo
-   - **Whitelist**: SaaStr, Sales Hacker, Winning by Design, MarketingProfs, Gainsight, RevOps Co-op, G2, Gartner, Forrester
-   - **Target**: HV <1mo ≥85% (1-3d ≥30%) | MV <2mo ≥70% (1-3d ≥20%)
+2. **Search** (≥10-15 candidates, tiered):
 
-3. **Curate** (≥14): Sales ≥4, Marketing ≥4, CS ≥3, RevOps ≥3, Competitive ≥3, Tools ≥3. Filter: freshness, whitelist, ≥2 relevance criteria, no hype, specific details.
+   **Tier 1** (1-3d, search first): `"[Domain] {sales performance|pipeline|quota|win rate|marketing|CAC|conversion|campaign|churn|retention|NPS|expansion|competitive|win/loss|market share}"` + 1-3d
 
-4. **Verify** distribution → if fail, return Step 2
+   **Tier 2** (7-14d if insufficient): Same + 7-14d
 
-5. **Allocate** 10-14 Q across 7 stages, 6 categories, 13 roles
+   **Sources** (whitelist, prioritize):
+   - **Sales/Marketing**: SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot
+   - **CS/RevOps**: Gainsight, RevOps Co-op, Winning by Design
+   - **Competitive**: G2, Gartner, Forrester, competitor changelogs
+   - **Avoid**: PR fluff, rumors, listicles, speculation
 
-### Step 2: Build References (before Q&A)
+   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Product Hunt
 
-**Format**: G#, N#, P#, M#, R#, C#, A# | Markdown links: `[Ref: N1][n1]` → `[n1]: URL`
+3. **Curate** (≥10-15 candidates: Sales ≥4, Marketing ≥3, CS ≥2, RevOps ≥2, Competitive ≥2):
+   - ✅ Age per freshness
+   - ✅ Whitelist OR primary source
+   - ✅ Satisfies ≥1 Decision Criticality criterion
+   - ✅ Specific details (dates, names, numbers, metrics)
+   - ✅ Not marketing/rumors
 
-**Glossary** (G≥18, 100% coverage): ALL commercial terms/acronyms/metrics (MQL, SQL, CAC, LTV, NPS, GRR, NRR, pipeline velocity). Include: definition (plain language), analogy, formula if applicable, revenue context.
+4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-**News**: Title (Source, MM/DD/YYYY): Summary | Category | Age | Impact | Stakeholders | URL | Justification if HV >1mo OR MV >3mo
+5. **Allocate**: 4-6 Q × 3-4 stages (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
 
-### Step 3: Generate Q&A (batch 4-5)
+### Step 2: Build References (Minimal)
 
-**Track terms—verify 100% in glossary after each batch.**
+**Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | P# (platform, model, URL) | M# (methodology, application, URL) | R# (report, findings, URL) | A# (APA 7th+tag)
+
+**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+
+**Floors**: G≥8 (100% terms used), N≥4-5, P≥2, M≥1-2, R≥2, A≥6
+
+**Glossary** (only terms used in Q&As):
+- **Coverage**: Only terms/acronyms used (MQL, SQL, CAC, LTV, NPS, GRR, NRR, pipeline velocity)
+- **Clarity**: Plain language, avoid jargon
+- **Analogies**: 1-2 real-world comparisons per term
+- **Context**: Why it matters for decisions
+- **Examples**: Real numbers
+
+**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
+
+### Step 2.5: Opportunistic Refresh (optional, skip default)
+
+**Only for breaking news in last 24-48 hours affecting ≥3 questions.**
+
+**Action**: Quick search → Add 1-2 "BREAKING" items → Adjust 1-2 Qs → Document
+
+### Step 3: Generate Q&A (batch 2-3, self-check each)
+
+**Before**: Review glossary. Track ALL terms used.
 
 **Patterns**: "[News] implications for [Stage]+[Roles]?" | "[Metric] improvement per [News]?" | "[Tool Update] impact on [Process]?"
 
-**Structure** (200-350w):
-1. **News** (~50w): What/when/who/why/category + `[Ref: N#][n#]`
-2. **Impact** (~90w): ≥2 stages, quantified (revenue/pipeline/conversion/retention)
-3. **Stakeholders** (~60w): ≥2 roles, concerns, actions, authority
-4. **Decision** (~70w): A/T/S/D/Av, rationale, alts, criteria (revenue lift/ROI)
-5. **Action** (~50w): Immediate (0-2wks), Short (2wks-2mo), owner
-6. **Projections** (opt ~30w): Source, outcome, time, confidence, ranges
-7. **Links**: `[n1]: URL`
-8. **Artifacts**: 1-2 diagrams/tables
+**Avoid**: Generic questions, hype, unattributed claims, stale news, speculation
 
-**Self-Check**: Freshness ✓ | ≥2 stages/roles ✓ | Decision ✓ | 200-350w ✓ | Quantified ✓ | ≥3/5 cite ≥2 ✓ | Artifact ✓ | Timeline ✓ | 0% hype ✓ | 100% actionable ✓ | Glossary complete ✓
+**Structure** (120-200w):
+1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
+2. **Impact** (~50w): ≥2 stages + quantified (revenue $, pipeline $, conversion %, retention %)
+3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
+4. **Decision** (~50w): Adopt/Test/Scale/Defer/Avoid + rationale + criteria
+5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
 
-### Step 4: Visuals (≥6 diagrams + ≥3 tables)
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 stages | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
 
-Types: funnels, conversion cascades, journeys, attribution models, cohorts, matrices, benchmarks, process flows, health scoring, segmentation
+### Step 4: Visuals (≥2 diagrams + ≥1 table)
+
+**Types**: Conversion funnels, sales pipelines, retention cohorts, 2×2 matrices, benchmarks
+
+**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
 
 ### Step 5: Final Checks
 
-100% [Ref: ID] resolve | News per freshness | Fields complete | Decision+rationale+alts+criteria+timeline | ≥9/13 roles | Specific actions | Cross-role coordination
+**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | P≥2 | M≥1-2 | R≥2 | A≥6
 
-### Step 6: Validate (STOP if ANY fail)
+**Decision**: 100% decision + rationale + criteria + timeline
 
-**Quantitative**: G≥12 (100% coverage, ≥60% analogies/formulas) | N≥8 | P≥5 | M≥4 | R≥4 | C≥3 | A≥12 | Q=10-14 | 7 stages (1-2 Q each) | Categories per minimums | ≥9/13 roles | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | News/Benchmarks 50-70%, Docs 20-30% | 5 samples 200-350w | ≥60% ref, ≥6D, ≥3T | 100% decision+metrics+timeline | Freshness met
+**Stakeholders**: ≥5 roles | Actions + authority
 
-**Qualitative**: 0% hype | 100% ≥2 stages+roles+quantified+decision+alts | ≥5 source types (max 35%/type) | Per-stage ≥1 news+benchmark | 100% URLs valid+resolve+measurable+concrete | 0% abstract | Projections: attributed+confident+timed
+### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
+
+**Quantitative**: Floors met | Glossary 100% | 3-4 stages | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 stages+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-stage ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
 
 ### Step 7: Submit
 
-**Checklist**: All validations PASS | Minimums met | Glossary 100%+≥60% analogies/formulas | TOC | 0 placeholders | ≥6D+≥3T | 100% news+impact+decision+timeline | Categories per minimums | ≥9/13 roles | Freshness met | 0% speculation | Projections attributed | URLs valid | Generation+expiration (+2wks) | Search queries documented
+**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
 
-## IV. Validation Report
+## IV. Validation Report (Minimal)
 
-| # | Check | Criteria | Status |
-|---|-------|----------|--------|
-| 1 | News Freshness | Per header guarantee | PASS/FAIL |
-| 2 | Reference Floors | G≥12, N≥8, P≥5, M≥4, R≥4, C≥3, A≥12, Q=10-14 | PASS/FAIL |
-| 2a | Glossary | 100% terms, ≥60% analogies/formulas | PASS/FAIL |
-| 3 | Lifecycle | 7/7 stages, 1-2 Q each | PASS/FAIL |
-| 4 | Categories | Sales ≥85%, Marketing ≥80%, CS ≥70%, RevOps ≥65%, Competitive ≥75%, Tools ≥60% | PASS/FAIL |
-| 5 | Stakeholders | ≥9/13 | PASS/FAIL |
-| 6 | Impact | 100% ≥2 stages + roles + quantified | PASS/FAIL |
-| 7 | Decision | 100% decision + rationale + alts + criteria | PASS/FAIL |
-| 8 | Timelines | 100% immediate/short + owners | PASS/FAIL |
-| 9 | Citations | 100% ≥1 news, ≥85% ≥1 cite, ≥40% ≥2 | PASS/FAIL |
-| 10 | Distribution | News 50-70%, Docs 20-30%, Other 10-20% | PASS/FAIL |
-| 11 | Diversity | ≥5 types, ≤35%/type | PASS/FAIL |
-| 12 | Per-Stage | 7/7 ≥1 news + benchmark | PASS/FAIL |
-| 13 | Words | 100% in 200-350w | PASS/FAIL |
-| 14 | Visuals | ≥60% ref, ≥6D, ≥3T | PASS/FAIL |
-| 15 | Quantification | 100% measurable | PASS/FAIL |
-| 16 | Links | 100% valid | PASS/FAIL |
-| 17 | Cross-Refs | 100% resolve | PASS/FAIL |
-| 18 | Actionability | 100% concrete, 0% abstract | PASS/FAIL |
-| 19 | Projections | 100% attributed/confident/timed/scenarios | PASS/FAIL |
-| 20 | Search | Queries Y, Whitelist Y, ≥20 candidates, 50-70% accept | PASS/FAIL |
-| | Metadata | Start, End, Expires (+2wks), Refresh Y/N | INFO |
-| | OVERALL | All PASS | PASS/FAIL |
+| # | Check | Measurement | Criteria | Result | Status |
+|---|-------|-------------|----------|--------|--------|
+| 1 | **Freshness** | HV: __%<1mo (1-3d:__%), __%<2mo \| MV: __%<2mo (1-3d:__%) \| Overall: __%<2mo | Per header | | PASS/FAIL |
+| 2 | **Floors** | G:__ N:__ P:__ M:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥2,≥1-2,≥2,≥6,4-6 | | PASS/FAIL |
+| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | **Stages** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
+| 5 | **Categories** | Sales__% Market__% CS__% RevOps__% | ≥50,40,40,25% | | PASS/FAIL |
+| 6 | **Roles** | __/13 | ≥5 | | PASS/FAIL |
+| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | **Impact** | __% ≥2stages+2roles+quantified | 100% | | PASS/FAIL |
+| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
+| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
+| | **Age Dist** | <1mo__%(1-3d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |
+| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥3 fails = rewrite)
+## V. Question Quality (≥2 fails of 7 = rewrite)
 
-**Criteria**: News-driven | Lifecycle-specific | Multi-stakeholder | Multi-category | Decision-focused | Quantified | Cross-stage aware | Timely | Alternative-aware | Evidence-based | Actionable | Forward-looking
+**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 stages) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
 
-**Good**:
-- "Gong Labs Q3: 12% pipeline velocity with AI reviews—Sales & RevOps implications?"
-- "G2 Winter: competitor → Leader—response for Enablement & Marketing?"
-- "SaaS Capital: NRR 108% vs our 95%—CS & Product retention tactics?"
+**✓ Good**: "Gong Labs Q3: 12% pipeline velocity—Sales & RevOps response?" | "SaaS Capital: NRR 108% vs our 95%—CS retention tactics?" | "HubSpot pricing ↑15% (Nov'24): GTM strategy?" | "Competitor CAC ↓20% (Oct'24): our response?"
 
-**Bad**: "How does sales work?" | "What is NPS?" | "Should we use Salesforce?"
+**✗ Bad**: "How does sales work?" (no news) | "What is NPS?" (overview) | "Should we use Salesforce?" (no trigger) | "Competitor launched feature" (no decision)
 
-## VI. Output Format
+## VI. Output Format (Minimal)
 
-### TOC
+### A. TOC
 
 ```markdown
 # [Domain] Commercial Operations Intelligence ([Period])
 
 ## Contents
-1. Executive Summary (Overview | Insights | Dashboard)
-2. Stage Coverage (7×6 matrix)
-3. Questions by Stage (Q1-Q14)
-4. References (G, N, P, M, R, C, A)
-5. Validation Report
+1. Executive Summary (Insights | Dashboard)
+2. Stage Coverage (3-4 stages)
+3. Questions by Stage: Lead Gen (Q1-Q2) | Sales (Q3-Q4) | Retention (Q5-Q6) | Analytics (Q7-Q8)
+4. References: G (G1-G8) | N (N1-N5) | P (P1-P2) | M (M1-M2) | R (R1-R2) | A (A1-A6)
+5. Validation (12 checks)
 ```
 
-### Executive Summary
+### B. Executive Summary
 
 ```markdown
 ## Executive Summary
 
-**Domain**: [Market] | **Period**: [Q3-Q4 2024] | **Coverage**: [# items, 6 categories]
+**Domain**: [Category] | **Period**: [Q3-Q4'24] | **Coverage**: [# items, 3-4 cats]
 
-**News**: Sales ([#]: top+dates) | Marketing ([#]) | CS ([#]) | RevOps ([#]) | Competitive ([#]) | Tools ([#])
+**Insights**: 1. [News] ([Date]): [Impact] → [Decision] → [Timeline] (2 high-impact)
 
-**Insights** (2-3 high-impact): [News] ([Date]): [Impact] → [Decision] → [Timeline]
+**Dashboard**: [Table: Stage | News | Decision | Timeline]
 
-**Dashboard**: [Table: Stage | News | Action | Revenue Impact | Timeline]
-
-**Roles**: [10-12] | **Refs**: G[#] N[#] P[#] M[#] R[#] C[#] A[#]
+**Roles**: [5+ roles] | **Refs**: G=[#] N=[#] P=[#] M=[#] R=[#] A=[#]
 ```
 
-### Q&A Format
+### C. Stage Overview
+
+| # | Stage | Count | Categories | News | Roles |
+|---|-------|-------|------------|------|-------|
+| 1 | Lead Gen & Demand | 1-2 | Sales, Marketing | [Top] | VP Marketing, Demand Gen |
+| 2 | Sales & Closing | 1-2 | Sales, Competitive | [Top] | VP Sales, AE |
+| 3 | Retention & Expansion | 1-2 | CS, RevOps | [Top] | VP CS, CSM |
+| 4 | Analytics & Optimization | 1-2 | RevOps, Marketing | [Top] | RevOps Analyst, CRO |
+| | **Total** | **4-6** | **3-4** | **4+** | **≥5** |
+
+### D. Q&A Template
 
 ```markdown
-### Q#: [Question + Stage + Roles]
+### Q#: [News Question + Stage + Roles]
 
-**Stage**: [X] | **Roles**: [Y, Z] | **Cats**: [✓✓] | **Decision**: Y
+**Stage**: [Stage] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
 
-**News** (~50w): [Summary] [Ref: N#][n#]
+**News** (~25w): What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~90w): **Stages** (≥2) | **Quantified**: Revenue [$] | Pipeline [$] | Conversion [%] | Retention [%]
+**Impact** (~50w): **Stages** (≥2) | **Quantified**: Revenue $ | Pipeline $ | Conversion % | Retention %
 
-**Stakeholders** (~60w): **[Role 1]**: [Concerns | Actions | Authority] | **[Role 2]**: [Concerns | Actions | Authority]
+**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~70w): **Rec**: [A/T/S/D/Av] | **Rationale**: [Why] | **Alts**: [1-2] | **Success**: [Metrics]
+**Decision** (~50w): **Rec**: Adopt/Test/Scale/Defer/Avoid | **Rationale**: Why | **Success**: Targets
 
-**Action** (~50w): **Immed**: [Action+owner] | **Short**: [Action+owner]
-
-**Projections** (opt): [Source] projects [outcome] by [time] [confidence]. Impact: [ranges] [Ref: R#][r#]
-
-**Artifacts**: [Type]
+**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
 
 [n1]: URL
-[r1]: URL
+---
 ```
 
-### References
+### E. Reference Formats
 
-**G#. Term**: Definition | Analogy/Formula | Context | Revenue relevance | Example
+**G#. Term (Acronym)**: Definition | Analogy | Context | Example
 
-**N#. Title** (Source, MM/DD): Summary | Cat | Impact | Roles | URL
+**N#. Title** (Source, MM/DD): Summary | Cat | URL
 
-**P#. Platform**: Description | Features | Pricing | Adoption | URL
+**P#. Platform** (Source, Date): Model | URL
 
-**M#. Methodology**: Description | Application | Benefits | URL
+**M#. Methodology** (Source, Date): Application | URL
 
-**R#. Report** (Firm, Date): Findings | Benchmarks | Implications | URL
+**R#. Title** (Firm, Date): Findings | URL
 
-**C#. Competitive** (Date): Event | Context | Position | Response | URL
-
-**A#. APA 7th [Tag]**: Citation
+**A#. APA 7th [Tag]**: Author/Org. YYYY, Mon DD. *Title*. Pub. URL [Tag]

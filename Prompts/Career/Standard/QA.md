@@ -1,151 +1,151 @@
-# Industrial Standards Interview Q&A Generator
+# Industrial Standards Interview Q&A Generator (Optimized)
 
-## Overview
+**Mission**: Generate 12-15 decision-critical Q&As on standards enabling informed decision-making with limited time. **Optimization Goal**: 60% reduction (30-35→12-15) focusing on decision-blocking, risk-creating, cross-functional impact scenarios only.
 
-**Goal**: Generate 30-35 senior-level Q&As on standards (technical, business, regulatory) across software lifecycle  
-**Format**: 150-350 words, scenario-based, [Ref: ID] citations, actionable tools/metrics  
-**Mix**: 20% Foundational / 40% Intermediate / 40% Advanced  
-**Stakeholders (≥8/10)**: Business Analyst, PM, Architect, Developer, QA/SET, DevOps, Security, Data Engineer, SRE, Leadership  
-**Lifecycle (8)**: Requirements & Discovery → Architecture & Design → Development → Testing & Quality → Deployment & Release → Operations & Observability → Maintenance & Support → Evolution & Governance
+**Context**: Production systems (>10K rps, >1TB data), multi-team (10-100 engineers), regulated environments
+**Success**: 12/12 validation PASS, decision criticality justified for every Q&A, ≥80% cross-functional impact
 
 ---
 
-## Coverage (8 Clusters × 3-5 Q&As, ≥3 Stakeholders Each)
+## Decision Criticality Framework
 
-| Cluster | Standards & Key Examples | Stakeholders | Phases |
-|---------|-------------------------|--------------|--------|
-| **Technical** | API (OpenAPI 3.x, gRPC, GraphQL, AsyncAPI), Data (JSON, XML, Protobuf, Avro), Protocols (HTTP/2/3, MQTT, AMQP) | Architect, Developer, DevOps, Data Engineer | Architecture & Design, Development |
-| **Business/Market** | Industry (ISO 20022 FinTech, HL7 FHIR Healthcare, GS1), Quality (Six Sigma, CMMI, ISO 9001), Process (Scrum, SAFe, ITIL, COBIT) | Business Analyst, PM, Leadership | Requirements, Evolution |
-| **Regulatory** | Privacy (GDPR, CCPA, PIPL, LGPD), Sector (HIPAA, PCI-DSS, SOX), Certs (ISO 27001/27701, SOC2, FedRAMP, NIST CSF) | Security, Legal, Compliance | Requirements, Architecture, Operations |
-| **Data** | Schemas (JSON Schema, Avro, Protobuf), Governance (DAMA-DMBOK, DCAM), Quality (ISO 8000), Metadata (Dublin Core, DCAT) | Data Engineer, Architect | Architecture, Development, Maintenance |
-| **Infrastructure** | Cloud (CNCF, CloudEvents), Containers (OCI, CNI, CSI), Orchestration (Kubernetes, SMI), IaC (Terraform, CloudFormation, Pulumi, OPA) | DevOps, SRE, Security | Deployment, Operations |
-| **Quality** | Testing (ISO 29119, ISTQB, TMMi), Accessibility (WCAG 2.1/2.2, Section 508), Performance (Web Vitals, RAIL), Security (OWASP ASVS/MASVS) | QA/SET, Developer, Security | Testing, Deployment |
-| **Integration** | Auth (OAuth2.1, OIDC, SAML 2.0), Messaging (AMQP 1.0, MQTT 5.0, Kafka), Events (CloudEvents 1.0, AsyncAPI 3.0) | Architect, Developer, Security | Architecture, Development, Operations |
-| **Evolution** | Versioning (SemVer, CalVer), Deprecation (RFC 8594), ADR frameworks, compatibility matrices, migration playbooks | Architect, PM, Developer | Evolution, Maintenance |
+**Include Q&A if ANY apply**:
+- **Blocks Decision**: Standard/protocol selection prevents architecture/deployment progress
+- **Creates Risk**: Compliance, security, performance SLA impact if ignored
+- **Affects ≥3 Stakeholders**: Multi-role coordination needed (Architect + Developer + DevOps, etc.)
+- **Actively Evolving**: Standard changed in past 12-18 months (e.g., OAuth 2.1, PCI-DSS v4.0, WCAG 2.2)
+- **High Adoption Barrier**: Learning/migration cost >40 hours
 
-**Focus**: Framework comparisons (by phase, sector, size, maturity), trade-off analysis, version conflicts, adoption challenges; exclude deprecated standards
+**Exclude if**: Niche/legacy (<5% adoption), orthogonal to core workflow, already covered
 
-### Visual Standards (Per Cluster: ≥1 Diagram + ≥1 Table + ≥1 Metric)
+## Coverage (6 Decision-Critical Clusters × 2 Q&As, ≥3 Stakeholders Each)
 
-| Analysis Type | Diagram | Metric Formula | Standard |
-|---------------|---------|----------------|----------|
-| Technical Standards | API spec, Protocol flow, Data format comparison | `(API Endpoints with OpenAPI / Total) × 100%` | OpenAPI 3.x, gRPC, GraphQL, AsyncAPI |
-| Business/Market | Process flow, Maturity model, Standard adoption curve | `(CMMI Level × Capability %) / Target` | BPMN 2.0, CMMI, Six Sigma, ITIL |
-| Regulatory | Control matrix, Gap analysis, Compliance mapping | `(Implemented Controls / Required) × 100%` | NIST SP 800-53, ISO 27001, GDPR |
-| Data Standards | Schema evolution, Data lineage, Quality scorecard | `(Valid Records / Total Records) × 100%` | JSON Schema, Avro, ISO 8000, DAMA-DMBOK |
-| Infrastructure | Deployment topology, Cloud architecture, Stack diagram | `(CNCF Conformant / Total Components) × 100%` | Kubernetes, OCI, CNCF, CloudEvents |
-| Quality Standards | Test pyramid, Coverage matrix, Accessibility tree | `(WCAG Criteria Pass / Total) × 100%` | ISO 29119, WCAG 2.1, ISTQB, OWASP ASVS |
-| Integration | Sequence diagram, Auth flow, Message routing | `(Standards-Compliant Integrations / Total) × 100%` | OAuth2, OIDC, AMQP, MQTT, AsyncAPI |
-| Evolution | Version timeline, Deprecation roadmap, Migration path | `(Migrated Systems / Total) × 100%` | SemVer, ADR, RFC 8594 |
+| Cluster | Decision-Critical Standards | Stakeholders | Phases | Criticality |
+|---------|---------------------------|--------------|--------|-------------|
+| **Technical** | API protocol (OpenAPI 3.x vs gRPC vs GraphQL), Data format (JSON vs Protobuf vs Avro) | Architect, Developer, DevOps | Architecture & Design, Development | Blocks architecture |
+| **Regulatory** | Privacy (GDPR, CCPA, PIPL), Sector (HIPAA, PCI-DSS v4.0, SOX) | Security, PM, Leadership | Requirements, Architecture | Creates compliance risk |
+| **Infrastructure** | Cloud standard (CNCF, OCI), IaC (Terraform vs CloudFormation vs Pulumi) | DevOps, SRE, Architect | Deployment, Operations | Blocks deployment |
+| **Quality** | Testing standard (ISO 29119, ISTQB), Accessibility (WCAG 2.2) | QA, Developer, Security | Testing, Deployment | Affects SLA/compliance |
+| **Integration** | Auth standard (OAuth 2.1 vs OIDC vs SAML), Messaging (AMQP vs MQTT vs Kafka) | Architect, Developer, Security | Architecture, Operations | Blocks SSO/real-time |
+| **Evolution** | Versioning (SemVer vs CalVer), Deprecation strategy (RFC 8594) | Architect, PM, Developer | Evolution, Maintenance | Affects migration cost |
 
-**Rendering**: Mermaid diagrams, inline `$formula$`, block `$$formula$$`  
-**Standards**: BPMN (process), UML (structure), C4 (software), ERD/DFD (data), ArchiMate (enterprise)  
-**Avoid**: Mega-diagrams (>120 nodes), mixed abstraction, missing rationale
+**Focus**: Decision-blocking trade-offs, version conflicts, adoption challenges; exclude deprecated/niche standards
 
-### Quality Gates
+### Visual Standards (Per Cluster: 1 Diagram + 1 Comparison Table + 1 Metrics Table)
 
-**Minimums**: G≥30, T≥10, L≥12, A≥18, Q=30-35 (20/40/40 mix), 8 lifecycle phases covered, ≥8/10 stakeholder roles
+| Cluster | Diagram Type | Comparison Metrics | Decision Metric |
+|---------|--------------|-------------------|------------------|
+| **Technical** | Protocol/format comparison matrix | Latency, Throughput, Ecosystem, Learning Curve | `(Selected Standard Adoption / 12mo) × 100%` |
+| **Regulatory** | Compliance mapping (controls vs requirements) | Coverage, Audit Effort, Cost, Timeline | `(Implemented Controls / Required) × 100%` |
+| **Infrastructure** | Deployment topology (cloud/IaC/orchestration) | Maturity, Vendor Lock-in, Cost, Tooling | `(CNCF Conformant / Total) × 100%` |
+| **Quality** | Test pyramid + accessibility coverage | Automation, Coverage, Compliance, Effort | `(WCAG Criteria Pass / Total) × 100%` |
+| **Integration** | Auth flow + messaging topology | Security, Latency, Complexity, Adoption | `(Standards-Compliant / Total) × 100%` |
+| **Evolution** | Version timeline + deprecation roadmap | Migration Cost, Timeline, Risk, Support | `(Migrated Systems / Total) × 100%` |
+
+**Rendering**: Mermaid diagrams (<120 nodes), inline `$formula$`, block `$$formula$$`
+**Standards**: BPMN (process), UML (structure), C4 (architecture), sequence (integration)
+**Avoid**: Mega-diagrams, mixed abstraction, missing decision rationale
+
+### Quality Gates (Streamlined: 12 Checks)
+
+**Minimums**: G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25 mix), 6 lifecycle phases covered, ≥7/10 stakeholder roles, **100% decision criticality justified**
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Floors | G≥30, T≥10, L≥12, A≥18, Q=30-35 (20/40/40) |
-| 2 | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
-| 3 | Language | EN 50-70%, ZH 20-40%, Other 5-15% |
-| 4 | Recency | ≥60% last 3yr (≥80% technical standards) |
-| 5 | Diversity | ≥4 types (technical/business/regulatory/quality), max 30% single |
-| 6 | Links | 100% accessible, prefer official specs/RFCs/standards bodies |
-| 7 | Cross-refs | All [Ref: ID] resolve |
-| 8 | Word count | Sample 5, all 150-350 |
-| 9 | Insights | Concrete standard selection trade-offs, version conflicts, adoption challenges |
-| 10 | Standard-tech mapping | ≥80% explicit standard → implementation mapping |
-| 11 | Judgment | ≥70% scenario-based standard selection |
-| 12 | Visuals | ≥90% diagram + table + metric |
-| 13 | Frameworks | ≥80% apply standards with version numbers |
-| 14 | Metrics | ≥60% quantitative adoption/compliance metrics |
-| 15 | Cross-functional | ≥60% ≥3 stakeholders |
-| 16 | Per-cluster | ≥2 standards + ≥1 tool + version info |
-| 17 | Lifecycle coverage | All 8 phases represented |
-| 18 | Stakeholder coverage | ≥8/10 roles addressed |
-| 19 | Standard categories | All 8 clusters covered |
-| 20 | Trade-off analysis | ≥70% include explicit trade-offs |
+| 1 | Floors | G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25) |
+| 2 | Decision Criticality | 100% justified (blocks/risk/stakeholders/evolving) |
+| 3 | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
+| 4 | Recency | ≥70% last 2yr (≥85% technical standards) |
+| 5 | Links | 100% accessible, official specs/RFCs/standards bodies |
+| 6 | Word count | All 150-350 |
+| 7 | Insights | Trade-offs, version conflicts, adoption barriers |
+| 8 | Visuals | ≥90% (1 diagram + 1 comparison table + 1 metrics table per cluster) |
+| 9 | Metrics | 100% quantitative with formula |
+| 10 | Cross-functional | 100% ≥3 stakeholders per Q&A |
+| 11 | Lifecycle coverage | ≥5/6 phases represented |
+| 12 | Cluster coverage | All 6 decision-critical clusters covered |
 
-**Balance**: Acknowledge assumptions, limitations, alternatives, trade-offs, counterarguments, risk mitigations
+**Balance**: Acknowledge assumptions, trade-offs, alternatives, risk mitigations
 
 ---
 
 ## Workflow
 
-1. **Plan**: 8 clusters × 3-5 Q&As = 30-35 total (20/40/40 mix), map to 8 lifecycle phases + 10 stakeholder roles
-2. **Collect**: G≥30, T≥10, L≥12, A≥18, validate links (official specs/RFCs/standards bodies), include version numbers
-3. **Generate**: 150-350 words, trace standard→selection→implementation→validation, cite [Ref: ID], lifecycle context
-4. **Visuals**: Per cluster: Mermaid diagram + comparison table + metric with formula
-5. **Validate**: Execute 20 checks, iterate until 100% pass
+1. **Plan**: 6 clusters × 2 Q&As = 12 total (25/50/25 mix), prioritize by **Decision Criticality** (blocks/risk/stakeholders/evolving), map to 6 lifecycle phases + ≥7 stakeholder roles
+2. **Collect**: G≥15, T≥6, L≥8, A≥12, validate links (official specs/RFCs/standards bodies), include version numbers, recency ≥70%
+3. **Generate**: 150-350 words, trace decision→standard→trade-offs→implementation, cite [Ref: ID], justify criticality
+4. **Visuals**: Per cluster: Mermaid diagram + comparison table + metrics table with formula
+5. **Validate**: Execute 12 checks, iterate until 100% pass
 
 ---
 
 ## Output Format
 
-### Question Quality (G1-4: Context, Clarity, Precision, Relevance)
+### Question Quality (Decision-Critical Focus)
 
-**Approach**: Standard Selection → Context Analysis → Trade-off Evaluation → Implementation Mapping → Validation Strategy → Lifecycle Integration
+**Approach**: Decision → Criticality → Standard Selection → Trade-offs → Implementation → Metrics
 
 | Principle | Good ✅ | Bad ❌ |
-|-----------|---------|---------|
-| **Clarity** | "Select OpenAPI 3.1 vs gRPC vs GraphQL for real-time trading platform. 10K rps, <50ms latency, browser + mobile clients" | "Compare API standards" |
-| **Signal** | "Migrate 50 microservices from REST to event-driven (CloudEvents + AsyncAPI 3.0). Plan backward compatibility during 6-month transition" | "Explain CloudEvents" |
-| **Depth** | "ISO 27001 + SOC2 Type II for FinTech SaaS. Optimize audit overlap, evidence reuse, and certification timeline" | "List ISO 27001 controls" |
-| **Realism** | "WCAG 2.2 AA compliance breaks performance budgets (LCP +800ms). Balance accessibility vs Core Web Vitals" | "Make site accessible" |
-| **Discriminative** | "When does adopting Avro over JSON Schema justify migration cost for 200TB data + 80 services?" | "What is Avro?" |
-| **Role Alignment** | Match to lifecycle phase + stakeholder role (Architect/Developer/QA/DevOps/PM/Data Engineer/Security/SRE/Leadership) | Generic |
-| **Lifecycle Context** | "During Architecture & Design phase, select..." "For Operations & Observability, implement..." | No phase context |
-| **Standard Versioning** | "OAuth 2.1 (RFC 9207) vs OIDC Core 1.0 vs SAML 2.0" with version numbers | "Use OAuth" without versions |
+|-----------|---------|----------|
+| **Decision Blocking** | "Select API protocol (OpenAPI 3.1 vs gRPC vs GraphQL) for 50K rps trading platform. Blocks architecture decision." | "Compare API standards" |
+| **Risk Creation** | "Adopt OAuth 2.1 (RFC 9207) vs OIDC for SSO. Security risk if outdated protocol chosen." | "Explain OAuth" |
+| **Cross-Functional** | "GDPR + CCPA compliance affects PM (timeline), Architect (design), Security (controls), DevOps (audit logging)" | "What is GDPR?" |
+| **Actively Evolving** | "PCI-DSS v4.0 (Mar 2024) vs v3.2.1: 12 requirements changed, affects 3+ teams" | "List PCI-DSS controls" |
+| **Adoption Barrier** | "Terraform vs CloudFormation vs Pulumi: 40-80hr learning curve, affects deployment strategy" | "What is IaC?" |
+| **Quantified** | "Avro vs JSON Schema: 60% smaller payloads, 3x faster serialization, justifies 200TB migration cost" | "Avro is faster" |
+| **Versioning** | "OAuth 2.1 (RFC 9207, 2023) vs OIDC 1.0 (2014) vs SAML 2.0 (2005)" with dates | "Use OAuth" |
+| **Criticality Tag** | `[Blocks Architecture]` `[Creates Risk]` `[Affects 4 Stakeholders]` `[Evolving 2024]` | No tag |
 
 ### Template
 
 ```markdown
 ## Contents
-- [Topic Areas](#topic-areas) - Topic | Range | Count | Mix | Lifecycle Phase
-- [Topics 1-8](#topics) - Q&As + artifacts
+- [Topic Areas](#topic-areas) - Topic | Range | Count | Mix | Criticality
+- [Q&As 1-15](#qas) - Decision-critical Q&As + artifacts
 - [References](#references) - Glossary, Tools, Literature, Citations
 - [Validation Report](#validation-report)
 
 ## Topic Areas
-| Topic | Range | Count | Mix (F/I/A) | Lifecycle Phases |
-| Technical Standards | Q1-Q4 | 4 | 1/1/2 | Architecture & Design, Development |
-| Business/Market Standards | Q5-Q8 | 4 | 1/2/1 | Requirements & Discovery, Evolution & Governance |
-| ... | ... | ... | ... | ... |
+| Topic | Range | Count | Mix (F/I/A) | Criticality |
+| Technical Standards | Q1-Q2 | 2 | 0/1/1 | Blocks architecture |
+| Regulatory Standards | Q3-Q4 | 2 | 0/1/1 | Creates compliance risk |
+| Infrastructure Standards | Q5-Q6 | 2 | 0/1/1 | Blocks deployment |
+| Quality Standards | Q7-Q8 | 2 | 0/1/1 | Affects SLA/compliance |
+| Integration Standards | Q9-Q10 | 2 | 0/1/1 | Blocks SSO/real-time |
+| Evolution Standards | Q11-Q12 | 2 | 0/1/1 | Affects migration cost |
+| [Optional Q13-Q15] | Q13-Q15 | 3 | 1/1/1 | Cross-cutting decisions |
 
-## Q[N]: [Scenario-Based Question with Context]
-**Difficulty**: [F/I/A] | **Type**: [Cluster] | **Lifecycle**: [Phase] | **Stakeholders**: [Roles] | **Insight**: [Trade-off/Selection challenge/Version conflict]
+## Q[N]: [Decision-Critical Question]
+**Difficulty**: [F/I/A] | **Type**: [Cluster] | **Lifecycle**: [Phase] | **Stakeholders**: [≥3 Roles] | **Criticality**: [Blocks/Risk/Stakeholders/Evolving]
 
 **Answer** (150-350 words):
-[P1: Standard Selection - candidate standards with versions, applicability context [Ref: ID]]
-[P2: Trade-off Analysis - compare alternatives across dimensions (performance, adoption, tooling, learning curve) [Ref: ID]]
-[P3: Implementation Strategy - architecture/code/config changes, migration approach, tools [Ref: ID]]
-[P4: Validation Approach - conformance testing, metrics, monitoring [Ref: ID]]
-[P5: Stakeholder Coordination - RACI, approval flows, training needs [Ref: ID]]
-[P6: Lifecycle Integration - how standard fits into phase, dependencies on other phases, handoffs]
+[P1: Decision Context - why this decision matters, stakeholders affected [Ref: ID]]
+[P2: Standard Candidates - versions, applicability, trade-offs [Ref: ID]]
+[P3: Trade-off Analysis - performance, adoption, tooling, learning curve [Ref: ID]]
+[P4: Implementation - architecture/config changes, migration approach, tools [Ref: ID]]
+[P5: Validation - conformance testing, metrics, monitoring [Ref: ID]]
+[P6: Risks & Mitigations - adoption barriers, lock-in, obsolescence [Ref: ID]]
 
 **Artifacts**:
 ```mermaid
-[Diagram: comparison matrix, adoption roadmap, or integration flow]
+[Diagram: comparison matrix, topology, or flow]
 ```
 
-| Standard | Version | Pros | Cons | Use Cases |
-|----------|---------|------|------|
-| [Comparison Table] |||||
+| Standard | Version | Pros | Cons | When to Use |
+|----------|---------|------|------|-------------|
+| [Comparison Table] ||||||
 
 **Metrics**: 
-- Adoption: `(Compliant Components / Total) × 100%`
-- Migration: `(Migrated Services / Total) × 100%`
-- Quality: [Domain-specific metric with formula]
+- Decision: `[Metric 1 with formula]`
+- Adoption: `[Metric 2 with formula]`
+- Risk: `[Metric 3 with formula]`
 ```
 
 ---
 
 ## References
 
-### Glossary (≥30)
+### Glossary (≥15)
 
 **API**: OpenAPI 3.x (REST spec: 50M APIs) | gRPC (HTTP/2+Protobuf: 7-10x faster) | GraphQL (single endpoint, client-driven) | AsyncAPI 3.0 (event specs)  
 **Data Formats**: JSON (RFC 8259, ubiquitous) | XML (verbose, legacy) | Protobuf (3-10x smaller, 20-100x faster) | Avro (schema evolution, Hadoop)  
@@ -181,7 +181,7 @@
 **Testing & Quality**: ISTQB, TMMi Foundation, OWASP, NIST (Cybersecurity), IEEE Computer Society  
 **Tools & Adoption**: State of API Report, Stack Overflow Survey, ThoughtWorks Tech Radar, CNCF Annual Survey, Gartner/Forrester reports
 
-### Tools (≥10)
+### Tools (≥6)
 
 **T1.** Swagger/OpenAPI (API spec: 50M+ downloads, Free/Enterprise) https://swagger.io  
 **T2.** Postman (API platform: 25M+ users, Free/$12/$29) https://postman.com  
@@ -189,17 +189,9 @@
 **T4.** Buf (Protobuf: linting, breaking changes, 10K+ orgs, Free/Enterprise) https://buf.build  
 **T5.** Terraform (IaC: 3000+ providers, 100M+ resources, OSS/Cloud$20) https://terraform.io  
 **T6.** Kubernetes (orchestration: 5.6M+ devs, 90% enterprise, OSS) https://kubernetes.io  
-**T7.** axe DevTools (WCAG 2.1/2.2: 57% auto-detect, Free/$995) https://deque.com/axe  
-**T8.** Lighthouse CI (Web Vitals: Google, OSS) https://github.com/GoogleChrome/lighthouse-ci  
-**T9.** SonarQube (code quality: 25+ langs, 7M+ instances, Community/€150) https://sonarqube.org  
-**T10.** OneTrust (Privacy GRC: GDPR/CCPA/PIPL, 14K+ customers, Enterprise) https://onetrust.com  
-**T11.** Vanta (compliance: SOC2/ISO 27001, 7K+ customers, 80% faster, $3.6K/yr+) https://vanta.com  
-**T12.** Confluent Schema Registry (Avro/Protobuf/JSON, Kafka, Free/$0.13/hr) https://confluent.io  
-**T13.** Backstage (dev portal: Spotify/CNCF, 2K+ orgs, OSS) https://backstage.io  
-**T14.** Spectral (API linting: OpenAPI/AsyncAPI, 100K+ downloads, OSS/Pro) https://stoplight.io/spectral  
-**T15.** Datahub (data catalog: LinkedIn/200+ cos, OSS/Cloud) https://datahubproject.io
+**T7.** axe DevTools (WCAG 2.1/2.2: 57% auto-detect, Free/$995) https://deque.com/axe
 
-### Literature (≥12)
+### Literature (≥8)
 
 **L1.** OpenAPI Initiative (2021). OpenAPI 3.1.0 (50K+ tools) [EN]  
 **L2.** Fielding, R. et al. (2022). RFC 9110 HTTP Semantics (IETF, 400+ pages) [EN]  
@@ -208,17 +200,9 @@
 **L5.** Nadareishvili, I. et al. (2016). *Microservice Architecture*. O'Reilly [EN]  
 **L6.** DAMA (2017). *DMBOK2* (11 areas, 600+ pages) [EN]  
 **L7.** Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly [EN]  
-**L8.** ISO/IEC (2022). ISO 27001:2022 (93 controls) [EN]  
-**L9.** NIST (2024). CSF 2.0 CSWP 29 (6 functions, 108 subcategories) [EN]  
-**L10.** CNCF (2023). Cloud Native Landscape (200+ projects) [EN]  
-**L11.** W3C (2023). WCAG 2.2 (9 new criteria, Oct 2023) [EN]  
-**L12.** OWASP (2021). ASVS 4.0 (3 levels, 286 requirements) [EN]  
-**L13.** Burns, B. et al. (2019). *Kubernetes: Up and Running* (2nd ed.). O'Reilly [EN]  
-**L14.** Nygard, M. (2018). *Release It!* (2nd ed.). Pragmatic [EN]  
-**L15.** Humble, J. & Farley, D. (2010). *Continuous Delivery*. Addison-Wesley [EN]  
-**L16.** 国家市场监督管理总局 (2020). GB/T 35273-2020 [ZH]
+**L8.** ISO/IEC (2022). ISO 27001:2022 (93 controls) [EN]
 
-### Citations (≥18)
+### Citations (≥12)
 
 **A1.** OpenAPI 3.1.0: https://spec.openapis.org/oas/v3.1.0 [EN]  
 **A2.** RFC 9110 HTTP: https://rfc-editor.org/rfc/rfc9110 [EN]  
@@ -232,28 +216,16 @@
 **A10.** HL7 FHIR R5: https://hl7.org/fhir/R5/ [EN]  
 **A11.** CMMI v2.0: https://cmmiinstitute.com [EN]  
 **A12.** ISO 9001:2015: https://iso.org/standard/62085.html [EN]  
-**A13.** GDPR: https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]  
-**A14.** CPRA: https://cppa.ca.gov [EN]  
-**A15.** PCI DSS v4.0: https://pcisecuritystandards.org [EN]  
-**A16.** ISO 27001:2022 [EN]  
-**A17.** NIST CSF 2.0: https://doi.org/10.6028/NIST.CSWP.29 [EN]  
-**A18.** DAMA-DMBOK2 (2017). Technics Publications [EN]  
-**A19.** ISO/IEC 25012:2008 [EN]  
-**A20.** CloudEvents v1.0.2: https://github.com/cloudevents/spec [EN]  
-**A21.** OCI Image v1.0: https://github.com/opencontainers/image-spec [EN]  
-**A22.** Kubernetes v1.28: https://kubernetes.io/docs/ [EN]  
-**A23.** WCAG 2.2: https://w3.org/TR/WCAG22/ [EN]  
-**A24.** WAI-ARIA 1.2: https://w3.org/TR/wai-aria-1.2/ [EN]  
-**A25.** Web Vitals: https://web.dev/vitals/ [EN]  
-**A26.** OWASP ASVS 4.0: https://owasp.org/www-project-application-security-verification-standard/ [EN]  
-**A27.** RFC 8693 OAuth: https://rfc-editor.org/rfc/rfc8693 [EN]  
-**A28.** OIDC Core 1.0: https://openid.net/specs/openid-connect-core-1_0.html [EN]  
-**A29.** AMQP 1.0: https://amqp.org/specification/1.0 [EN]  
-**A30.** MQTT 5.0: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html [EN]  
-**A31.** SemVer 2.0: https://semver.org [EN]  
-**A32.** RFC 8594 Sunset: https://rfc-editor.org/rfc/rfc8594 [EN]  
-**A33.** ADR (Nygard 2011): https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions [EN]  
-**A34.** GB/T 35273-2020: https://gb688.cn/bzgk/gb/newGbInfo?hcno=4FFAA51D63BA21B9EE40C51DD3CC40BE [ZH]
+**A13.** GDPR: https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]
+**A14.** PCI DSS v4.0: https://pcisecuritystandards.org [EN]
+**A15.** ISO 27001:2022: https://iso.org/standard/27001 [EN]
+**A16.** OAuth 2.1 (RFC 9207): https://rfc-editor.org/rfc/rfc9207 [EN]
+**A17.** OIDC Core 1.0: https://openid.net/specs/openid-connect-core-1_0.html [EN]
+**A18.** WCAG 2.2: https://w3.org/TR/WCAG22/ [EN]
+**A19.** SemVer 2.0: https://semver.org [EN]
+**A20.** RFC 8594 Sunset: https://rfc-editor.org/rfc/rfc8594 [EN]
+**A21.** Terraform: https://terraform.io [EN]
+**A22.** Kubernetes: https://kubernetes.io [EN]
 
 ---
 

@@ -1,22 +1,36 @@
-# Software Safety & Security Interview Generator
+# Software Safety & Security Q&A Generator (Minimal Viable)
 
-Generate 25-30 interview Q&A pairs testing risk-to-controls translation for safety-critical and security-critical systems.
+Generate 6-12 decision-critical security Q&As for informed decisions with limited time.
 
 ## Requirements
 
 ### Context & Scope
-**Domain**: ICS/SCADA, medical devices, automotive, critical infrastructure (energy, water, transportation)
-**Audience**: Engineers (implementation), operators (monitoring), managers (policy), regulators (compliance/audit)
-**Constraints**: Cyber-physical systems only; safety-security convergence required
-**Assumptions**: Basic risk management knowledge; standard access (definitions provided)
+**Domain**: Critical infrastructure security (ICS/SCADA, energy, water, healthcare, automotive)
+**Audience**: Security engineers, DevOps/SRE, architects, security leaders
+**Scope**: Decision-critical security scenarios only—0-days, breaches, compliance changes, emerging threats
+**Cadence**: Bi-weekly | 3-4h effort | **Expires**: 2 weeks from generation
+
+**Freshness** (all news must meet these age thresholds):
+- **High-Velocity** (0-days, breaches, attacks): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (Compliance, standards): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
+- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
+
+**Exclude**: Technical implementation details, vendor marketing, long-term R&D, rumors, speculative scenarios
+
+**Decision Criticality Framework** (include if ≥1 criterion met):
+1. **Blocks Decision**: Directly impacts incident response, security posture, or compliance strategy
+2. **Creates Risk**: Material threat (0-day, breach pattern, regulatory change affecting operations)
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (Security + DevOps, Security + Leadership, etc.)
+4. **Requires Action**: 1-6mo action window (not speculative)
+5. **Quantified Impact**: CVSS score, breach count, affected systems, compliance deadline
 
 ### Output Specifications
-**Format**: 150-300 words/answer with Mermaid diagrams, YAML/JSON configs, code snippets, APA 7th [EN]/[ZH]
-**Quantity**: 25-30 Q&A pairs
-**Difficulty**: 20% Foundational (5-6), 40% Intermediate (10-12), 40% Advanced (10-12)
-**Coverage**: MECE across Safety/Security/Resilience/Governance × Prevent/Detect/Respond/Recover = 16 cells (≥1 Q&A per cell)
-**Traceability**: Requirements → Controls → Procedures → Evidence → Metrics (explicit chain required)
-**Per Cluster**: ≥1 diagram, ≥1 scenario, ≥1 table, ≥1 metric
+**Format**: 120-200 words/answer with Mermaid diagrams, YAML configs, APA 7th [EN]/[ZH]
+**Quantity**: 6-12 Q&A pairs
+**Difficulty**: 25% Foundational (1-2), 50% Intermediate (3-6), 25% Advanced (1-3)
+**Coverage**: Decision-critical security dimensions only (3-4 of 4)
+**Traceability**: Scenario → Risk → Control → Action → Metric (explicit chain required)
+**Per Q&A**: ≥1 diagram or table, ≥1 practical config/playbook, ≥1 metric
 
 ### Quality Standards
 **Clarity**: Define all terms/acronyms in glossary; no ambiguity (e.g., "appropriate" → "SIL 2-rated"); consistent terminology
@@ -28,256 +42,255 @@ Generate 25-30 interview Q&A pairs testing risk-to-controls translation for safe
 **Concision**: No redundancy/filler; use tables/diagrams to reduce text
 **Logic**: Coherent reasoning (Hazard→Risk→Control→Validation); no circular definitions
 
-## Dimensions
+## Decision-Critical Dimensions
 
-| Dimension | Focus | Methods | Standards |
-|-----------|-------|---------|-----------|
-| **Safety** | Prevent unintended harm from faults/errors | FMEA, FTA, HAZOP; Fail-safe, redundancy; SIS, interlocks; SIL 1-4, ASIL A-D | IEC 61508/61511, ISO 26262, IEC 62304 |
-| **Security** | Prevent malicious compromise | STRIDE, Attack Trees; SAST/DAST/SCA/Fuzz/Pentest/IaC; RBAC, encryption, IDS/IPS | ISO 27001, NIST CSF 2.0, ISO/SAE 21434, IEC 62443 |
-| **Resilience** | Detect, respond, recover | SIEM, anomaly detection; Emergency playbooks; BCDR, RTO/RPO; MTTD, MTTR | NIST SP 800-61, ISO 22301 |
-| **Governance** | Frameworks, audits, improvement | Risk management (ISO 31000); Audit trails, traceability; Training; Lessons learned | IEC 61508, ISO 26262, ISO 27001, FDA, NERC CIP, PCI DSS |
+| Dimension | Focus | Decision Trigger | Standards |
+|-----------|-------|------------------|-----------|
+| **Threat Detection** | Identify 0-days, breaches, attack patterns | CVSS ≥9.0, breach affecting >1000 systems, active exploitation | NIST CSF 2.0, ISO 27001, IEC 62443 |
+| **Incident Response** | Rapid containment & recovery | MTTD/MTTR targets, RTO/RPO impact, business continuity | NIST SP 800-61, ISO 22301 |
+| **Compliance & Governance** | Regulatory changes, audit findings | New compliance deadline, failed control, certification impact | ISO 27001, NERC CIP, PCI DSS, HIPAA |
+| **Risk & Control** | Emerging threats, control gaps | New attack vector affecting your infrastructure, control effectiveness <80% | ISO 31000, NIST CSF 2.0 |
 
-## Visuals & Metrics
+## Decision-Critical Metrics
 
-| Analysis | Diagram (Mermaid) | Metrics (formula, target) |
-|----------|-------------------|---------------------------|
-| **Hazard** | Fault tree, Bow-tie | Risk = P × I (Critical >8); MTBF = Uptime / Failures (>10k hrs) |
-| **Threat** | Attack tree, DFD (STRIDE) | CVSS: Base × Temporal × Environmental (Critical ≥9.0); Attack Surface |
-| **Prevention** | Control hierarchy, Defense-in-depth | Control Effectiveness (≥80%); Detection Rate = TP/(TP+FN) (≥95%) |
-| **Detection** | Alert flow, State machine | MTTD = Detection Time / Incidents (≤5 min); FP Rate (≤2%) |
-| **Response** | Incident workflow (NIST 800-61) | MTTR = Restoration Time / Incidents (<30 min); RTO/RPO targets |
-| **Compliance** | Audit trail, Control mapping | Compliance % (100%); Defect Escape = Post-Release / Total (<5%) |
-| **Testing** | Coverage map (OWASP ASVS) | Test Coverage = Tests / Vectors (≥80% code, 100% critical) |
+| Dimension | Diagram (Mermaid) | Key Metrics (formula, target) |
+|-----------|-------------------|-------------------------------|
+| **Threat Detection** | Attack tree, CVSS heat map | CVSS ≥9.0; Affected systems; Active exploitation (Y/N) |
+| **Incident Response** | Incident workflow (NIST 800-61) | MTTD ≤5 min; MTTR <30 min; Detection Rate ≥95% |
+| **Compliance** | Control mapping, audit trail | Compliance % (100%); Deadline (days); Impact (systems affected) |
+| **Risk & Control** | Risk matrix, control effectiveness | Control Effectiveness ≥80%; False Positive Rate ≤2%; RTO/RPO targets |
 
-## Frameworks
+## Decision-Critical Frameworks
 
-| Framework | When to Use | Advantage | Disadvantage | Trade-offs | Standards |
-|-----------|-------------|-----------|--------------|------------|-----------|
-| **Defense-in-Depth** | Security-critical; compliance | No single point of failure; compensating controls | Complexity; performance impact | Security vs. simplicity; Cost vs. coverage | NIST CSF, ISO 27001 A.13 |
-| **Fail-Safe** | Catastrophic consequences; tolerates shutdown | Guarantees safety on failure; simple | Availability impact; false shutdowns | Safety vs. availability; False alarms vs. missed hazards | IEC 61508 SIL 3-4, IEC 61511 |
-| **Zero-Trust** | High-value assets; distributed/cloud; insider threats | Limits blast radius; stops lateral movement | Complexity; user friction | Security vs. usability; Performance vs. verification | NIST SP 800-207 |
-| **Risk-Based** | Limited resources; diverse threats; cost-benefit | Efficient allocation; P×I focus | Requires accurate assessment; misses emerging threats | Cost efficiency vs. coverage; Known vs. unknown risks | ISO 31000, NIST CSF |
-| **Safety-Security Convergence** | Cyber-physical (ICS, medical, automotive) | Comprehensive; avoids conflicting controls | Cross-domain expertise; org silos | Unified governance vs. specialized controls; Hardening vs. certification | IEC 62443, ISO/SAE 21434 |
+| Framework | When to Use | Decision Impact | Standards |
+|-----------|-------------|-----------------|-----------|
+| **Incident Response (NIST 800-61)** | Breach/0-day detected | MTTD/MTTR targets, containment strategy, RTO/RPO | NIST SP 800-61 |
+| **Risk-Based Prioritization** | Multiple threats; limited resources | Allocate resources to P×I >8 threats first | ISO 31000, NIST CSF 2.0 |
+| **Zero-Trust Architecture** | Insider threats, distributed systems | Reduce blast radius, enforce least privilege | NIST SP 800-207 |
+| **Defense-in-Depth** | Compliance requirement, critical infrastructure | Multiple control layers, compensating controls | NIST CSF, ISO 27001 A.13 |
 
-## Question Design
+## Decision-Critical Q&A Design
 
 ### Principles
-**Test application, not recall**: Require analysis and trade-off evaluation
-**Relevance**: Real-world scenarios from specified domains
-**Breadth & Depth**: Multiple perspectives (technical, operational, managerial, regulatory); implementation-level detail
+**Decision-critical only**: Every Q&A must block a decision or create material risk
+**Scenario-driven**: Triggered by security events (0-days, breaches, compliance changes)
+**Actionable**: Concrete next steps (0-2wk, 2wk-2mo) with clear owner
+**Quantified**: Specific metrics (CVSS, affected systems, deadline, impact)
 
 ### Good vs. Poor
 
-✅ "How assess/mitigate undetected sensor failure in medical infusion pump? Show risk analysis and controls."  
-❌ "What is FMEA?" (recall only)
+✅ "CVE-2024-XXXXX (CVSS 9.8) affects 50K+ ICS systems. Patch timeline & detection strategy?"
+❌ "What is vulnerability management?" (no news trigger)
 
-✅ "Choose fail-safe, fail-operational, or redundant for autonomous braking. Justify with P×I analysis."  
-❌ "List redundancy types." (no context/trade-offs)
+✅ "New NERC CIP compliance deadline (Jan 2025). Audit gap analysis & remediation roadmap?"
+❌ "List NERC CIP requirements." (no decision)
 
-✅ "Water treatment SCADA detected unauthorized PLC reprogramming. Design incident response with MTTD/MTTR targets."  
+✅ "[Breach] 10K healthcare records exposed via unpatched RCE. Incident response playbook & MTTD/MTTR targets?"
 ❌ "What is incident response?" (vague, no scenario)
 
 ### Stakeholder Context
-**Engineers**: Configs, code, testing, technical trade-offs, tool selection
-**Operators**: Monitoring procedures, alert thresholds, response playbooks, metric interpretation
-**Managers**: Policy, resource allocation, cost-benefit, compliance strategy
-**Regulators**: Audit evidence, traceability matrices, compliance docs, regulatory interpretations
+**Security Engineers**: Detection configs, response playbooks, technical trade-offs
+**DevOps/SRE**: Patching strategy, deployment windows, RTO/RPO impact
+**Architects**: Control architecture, defense-in-depth, risk prioritization
+**Security Leaders**: Compliance strategy, resource allocation, board reporting
+**Compliance Officers**: Audit evidence, deadline tracking, certification impact
 
 ### Mandatory Q&A Elements
-1. **Risk-to-controls chain**: Hazard/Threat → P×I → Control → Procedure → Metric
-2. **Practical element**: YAML config, script, playbook, test procedure, or compliance checklist
-3. **Citation**: ≥1 [Ref: ID]
-4. **Key insight**: One sentence on critical trade-off/control effectiveness/incident impact/regulatory requirement
-5. **Trade-off acknowledgment**: Limitations, alternatives, or costs
-6. **Validation approach**: Testing, monitoring, or audit method
+1. **News trigger**: Recent security event (0-day, breach, compliance change) with date & source
+2. **Risk-to-action chain**: Threat/Compliance → Risk (CVSS/Impact) → Control → Action → Metric
+3. **Practical element**: YAML config, playbook, or compliance checklist
+4. **Citation**: ≥1 [Ref: ID] with freshness
+5. **Key insight**: One sentence on decision impact/control effectiveness/compliance deadline
+6. **Timeline**: Immediate (0-2wk), Short-term (2wk-2mo) with owner
 
-## References & Quality
+## References & Quality (Minimal Viable)
 
-### Minimums (for 25-30 Q&A; scale 1.5× if >30)
-- **≥10 Glossary**: FMEA, FTA, HAZOP, STRIDE, CVSS, Defense-in-Depth, Fail-Safe, Redundancy, Zero-Trust, MTBF/MTTR/MTTD, SIL, CIA, Attack Surface, SAST/DAST/SCA/Fuzz/Pentest/IaC (formulas, distinctions)
-- **≥5 Tools**: BowTieXP, MS TMT, Splunk/ELK, Nessus/Qualys, PagerDuty, ZAP, Semgrep, Snyk, AFL++, Burp, Trivy (purpose, pricing, last update ≤18mo, integrations, limitations)
-- **≥10 Literature**: IEC 61508/61511, ISO 26262/27001/31000/22301, ISO/SAE 21434, IEC 62443/62304, ISO 14971, NIST CSF 2.0/SP 800-61/82/115, OWASP ASVS, Leveson, Shostack, Stuxnet, breach analyses
-- **≥20 Citations**: APA 7th [EN]/[ZH] (~60/30/10%); DOI or permanent URL
+### Minimums (for 6-12 Q&A)
+- **≥8 Glossary** (only terms used): CVSS, MTTD/MTTR, Zero-Trust, Defense-in-Depth, RTO/RPO, Incident Response, Control Effectiveness, Attack Surface
+- **≥3 Tools**: Splunk/ELK (SIEM), Nessus/Qualys (vulnerability scanning), PagerDuty (incident response)
+- **≥6 Literature**: NIST SP 800-61 (incident response), NIST CSF 2.0, ISO 27001, IEC 62443 (ICS security), NERC CIP, PCI DSS
+- **≥6 Citations**: APA 7th [EN]/[ZH] (~60/30/10%); DOI or permanent URL; all ≤2yr old
 
 ### Quality Gates (all must PASS)
 
 | Gate | Requirement | Validation |
 |------|-------------|------------|
-| **Recency** | ≥50% last 3yr (≥70% digital/cloud) | Check publication dates |
-| **Diversity** | ≥3 source types, none >25% | Count by type |
-| **Evidence** | ≥70% answers ≥1 cite, ≥30% ≥2 cites | Count per answer |
+| **Decision Criticality** | 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) | Review each Q&A |
+| **Freshness** | ≥75% <2mo, ≥90% <4mo, 100% ≤9mo | Check scenario dates |
+| **Scenario-Driven** | 100% triggered by security event (0-day/breach/compliance) | Verify trigger |
+| **Citations** | ≥85% answers ≥1 cite, ≥30% ≥2 cites | Count per answer |
 | **Cross-refs** | 100% [Ref: ID] resolve | Automated check |
-| **Testing Coverage** | SAST, DAST, SCA, fuzz, pentest (+IaC/container for cloud) | Check glossary/tools |
-| **Link Accessibility** | 100% accessible or archived (DOI/Wayback) | Verify all links |
-| **MECE Coverage** | ≥1 Q&A per 16 cells (4×4 matrix) | Coverage matrix |
-| **Difficulty Distribution** | 20/40/40 (F/I/A) ±5% | Count by level |
-| **Practical Elements** | 100% Q&As have ≥1 practical | Review all |
-| **Balance** | 100% Q&As acknowledge trade-offs/limitations/alternatives | Review all |
+| **Difficulty** | 25/50/25 (F/I/A) ±5% | Count by level |
+| **Practical Elements** | 100% Q&As have ≥1 practical (config/playbook/checklist) | Review all |
+| **Quantified** | 100% include specific metrics (CVSS/deadline/systems/impact) | Review all |
+| **Timeline** | 100% include immediate (0-2wk) + short-term (2wk-2mo) | Review all |
+| **Stakeholders** | ≥5/5 core roles represented | Count roles |
+| **Coverage** | ≥3-4 decision-critical dimensions covered | Check matrix |
+| **Actionability** | 100% concrete; 0% abstract/speculative | Review all |
 
-## Workflow
+## Workflow (Minimal Viable)
 
-### 1. Plan Topics (5-6 clusters)
-**Clusters**: Safety Assurance, Security Assurance, Risk Assessment, Prevention/Control, Incident Response, Compliance
-**Allocation**: 4-6 Q&As/cluster (total 25-30)
-**Difficulty**: 20/40/40 (F/I/A) across clusters
-**Coverage**: 4×4 matrix (Safety/Security/Resilience/Governance × Prevent/Detect/Respond/Recover); ≥1 Q&A/cell
+### 1. Scenario Discovery & Curation (Minimal)
+**Record generation date (YYYY-MM-DD)—calculate all scenario ages from this.**
 
-### 2. Build References BEFORE Q&As
-**Order**: Glossary (≥10) → Tools (≥5) → Literature (≥10) → Citations (≥20)
-**IDs**: G# (glossary), T# (tools), L# (literature), A# (academic/standards)
-**Verify**: Unique IDs, completeness, recency, diversity, accessibility
+**Identify** (≥10-15 candidates, tiered):
+- **Tier 1** (Recent, 1-3d): Active 0-days, breaches, critical incidents
+- **Tier 2** (Recent, 7-14d): Emerging threats, attack patterns
+- **Tier 3** (Compliance, 2-6mo): Regulatory changes, audit findings
 
-### 3. Write Q&As
-**Approach**: Scenario-based, test risk-to-controls translation
-**Structure per answer (150-300 words)**:
-  - ≥1 [Ref: ID]
-  - Risk chain: Hazard/Threat → P×I → Control → Procedure → Metric
-  - Practical element: YAML/script/playbook/test
-  - Key insight (one sentence)
-  - Trade-offs
-  - Validation
-**Validation**: Review every 5 Q&As against quality gates
+**Sources** (whitelist):
+- **Threat Intel**: CISA, NVD, Shodan, Censys, GreyNoise
+- **Breaches**: Have I Been Pwned, Bleeping Computer, Dark Reading, SecurityWeek
+- **Compliance**: NIST, NERC, PCI Security Council, ISO, regulatory bodies
+- **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Reddit r/cybersecurity
 
-### 4. Add Visuals
-**Per cluster**: ≥1 diagram (fault tree/attack tree/workflow), ≥1 table, ≥1 metric (formula+target), ≥1 scenario (YAML/playbook)
-**Diagram matching**: Fault tree→hazards, attack tree→threats, flowchart→processes, bow-tie→barriers
-**Metrics**: Formula, target, rationale with [Ref: ID]
+**Curate** (≥10-15 candidates):
+- ✅ Satisfies ≥1 Decision Criticality criterion
+- ✅ Specific details (CVSS, affected systems, deadline, impact)
+- ✅ Not marketing/rumors/speculation
 
-### 5. Complete References
-**Populate**: Full details (formulas, pricing, DOI, URLs)
-**Cross-check**: 100% [Ref: ID] resolve; verify minimums
-**Balance**: Recency (≥50% last 3yr), diversity (≥3 types, none >25%), language (~60/30/10 EN/ZH/other)
+### 2. Build References (Minimal)
+**Format**: G# (term, def) | T# (tool, purpose) | L# (standard/framework) | A# (APA 7th+tag)
 
-### 6. Validate
-**Execute**: All quality gates from table
-**Verify**: 25-30 Q&As, 20/40/40 difficulty, MECE (16 cells), testing methods (SAST/DAST/SCA/fuzz/pentest+IaC)
-**Document**: Validation table showing PASS on all gates with evidence
+**Floors**: G≥8, T≥3, L≥6, A≥6
 
-### 7. Review
-**Final checks**: Clarity (no undefined jargon), precision (specific values), MECE (all 16 cells, no redundancy), depth (implementation-level), concision (no fluff), credibility (authoritative sources), balance (trade-offs acknowledged), structure (TOC links work), practicality (actionable), success criteria (measurable)
+### 3. Generate Q&A (batch 2-3, self-check each)
+**Structure** (120-200w):
+1. **Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: S#]
+2. **Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
+3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
+4. **Decision** (~50w): Immediate (0-2wk) + Short-term (2wk-2mo) + owner
+5. **Practical** (~30w): YAML config, playbook, or checklist
 
-## Output Format
+**Self-Check**: Decision Criticality ✓ | Freshness OK | ≥2 roles | Quantified | ≥1 cite | 120-200w | Actionable | All terms in glossary
+
+### 4. Visuals (≥2 diagrams + ≥1 table)
+**Types**: Attack tree, incident workflow, risk matrix, control mapping
+
+### 5. Validate
+**Execute**: All 12 quality gates from table
+**Verify**: 6-12 Q&As, 25/50/25 difficulty, ≥3-4 dimensions, ≥5 roles
+
+### 6. Submit
+**Checklist**: Validations PASS | Floors met | Glossary complete | TOC complete | 0 placeholders | Visuals OK | Citations OK | Freshness OK | Dates (gen + expire=gen+2wk)
+
+## Output Format (Minimal Viable)
 
 ```markdown
 ## Contents
-- [Topic Areas](#topic-areas) (4×4 coverage matrix)
-- [Q&A by Cluster](#qa-sections)
+- [Executive Summary](#executive-summary)
+- [Decision-Critical Dimensions](#dimensions)
+- [Q&A by Dimension](#qa-sections)
 - [References](#references): Glossary, Tools, Literature, Citations
 - [Validation Results](#validation-results)
 
-## Topic Areas
-[4×4 matrix: Safety/Security/Resilience/Governance × Prevent/Detect/Respond/Recover]
+## Executive Summary
+**Domain**: [Security domain] | **Period**: [YYYY-MM-DD] | **Coverage**: [# items, 3-4 dimensions]
 
-## Topic 1: [Name]
-### Q1: [Question]
-**Difficulty**: [F/I/A] | **Type**: [Safety/Security/Resilience/Governance] | **Phase**: [Prevent/Detect/Respond/Recover]
-**Key Insight**: [One sentence: trade-off/control/impact/regulation]
+**Key Decisions**: 1. [Scenario] ([Date]): [Impact] → [Decision] → [Timeline] (2 high-impact)
 
-**Answer**: [150-300 words, [Ref: ID], risk chain: Hazard/Threat→P×I→Control→Procedure→Metric, trade-offs, alternatives]
+**Dashboard**: [Table: Dimension | Scenario | Decision | Timeline]
 
-**Practical**: [YAML/script/playbook/test]
-**Visual**: [Mermaid diagram]
-**Table**: [Risk register/evidence/metrics with formulas+targets]
-**Trade-offs**: [Limitations, alternatives, costs]
-**Validation**: [Verification method]
+**Roles**: [5 core roles] | **Refs**: G=[#] T=[#] L=[#] A=[#]
 
+## Decision-Critical Dimensions
+| # | Dimension | Count | Scenarios | Roles |
+|---|-----------|-------|-----------|-------|
+| 1 | Threat Detection | 1-3 | 0-days, breaches | Security Eng, DevOps |
+| 2 | Incident Response | 1-3 | Active incidents | Security Eng, SRE |
+| 3 | Compliance & Governance | 1-3 | Regulatory changes | Security Lead, Compliance |
+| 4 | Risk & Control | 1-3 | Control gaps, emerging threats | Architect, Security Lead |
+| | **Total** | **6-12** | **4+** | **≥5** |
+
+## Q&A Template
+
+### Q#: [Scenario Question + Dimension + Roles]
+
+**Dimension**: [Dimension] | **Roles**: [Primary, Secondary] | **Decision Criticality**: [Criterion]
+
+**Scenario** (~25w): What, when, why, CVSS/impact [Ref: S#]
+
+**Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
+
+**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+
+**Decision** (~50w): **Rec**: Immediate (0-2wk) + Short-term (2wk-2mo) | **Owner**: [Role]
+
+**Practical**: [YAML config / Playbook / Checklist]
+
+[n1]: URL
 ---
 
 ## References
 
 ### Glossary
-**G#. Term**: Definition. Formula. Distinctions. When to use. [EN/ZH]
+**G#. Term**: Definition | Context | Example
 
 ### Tools
-**T#. ToolName** (Category): Purpose. Pricing. Last update (YYYY-MM). Integrations. Limitations. URL. [EN/ZH]
+**T#. ToolName**: Purpose | URL
 
 ### Literature
-**L#. Title. Publisher. Year. Version.** Description. Coverage area. Key sections.
+**L#. Title. Org/Publisher. Year.** Description.
 
 ### Citations
-**A#. Author(s). (Year). *Title*. Publisher/Journal. DOI/URL. [EN/ZH]**
+**A#. Author(s). (Year). *Title*. Pub. URL [Tag]**
 
-## Validation Results
-[Table: all gates PASS with evidence (counts, percentages, coverage matrix)]
+## Validation Results (12 checks)
+[Table: all gates PASS with evidence]
 ```
 
-## Example (SCADA Defense-in-Depth)
+## Example (CVE-2024-XXXXX 0-Day Response)
 
-**Q: Implement defense-in-depth for SCADA controlling water treatment. Show control layers, monitoring, and metrics.**
+**Q: CVE-2024-XXXXX (CVSS 9.8) affects 50K+ ICS systems. Detection & response strategy?**
 
-**Difficulty**: Advanced | **Type**: Security Assurance | **Phase**: Prevent, Detect
-**Key Insight**: Defense-in-depth provides compensating controls but increases complexity and may conflict with safety (e.g., authentication delays vs. emergency shutdown speed).
+**Dimension**: Threat Detection | **Roles**: Security Engineer, DevOps/SRE | **Decision Criticality**: Blocks incident response, creates material risk
 
-Defense-in-depth for critical infrastructure SCADA requires multiple control layers addressing cyber threats while maintaining safety [Ref: A10]. Implementation spans network segmentation, access control, monitoring, and fail-safe mechanisms [Ref: L3, L6].
+**Scenario** (~25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation reported in 3 critical infrastructure sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: S1]
 
-**Risk Analysis**: Threat: Remote code execution on PLC. P=0.3/year (ICS-CERT), I=10/10 (loss of life). Risk = 3 > 2 (unacceptable). Required: ≥3 independent control layers [Ref: G7].
+**Risk** (~40w): **Threat**: Remote code execution on PLC → loss of control → operational shutdown. **Impact**: CVSS 9.8 (critical). **Affected**: 2K healthcare systems, 5K energy systems. **Timeline**: Patch available 2024-11-20 (5-day window). **Control**: Detection (MTTD ≤5 min), isolation (MTTR <30 min), patching (7-day window).
 
-**Control Architecture**: (1) **Network**: Air-gapped OT/IT; firewalls (deny-all); DMZ with unidirectional gateway; (2) **Host**: Hardened OS (CIS), app whitelisting (signed only), 30-day patching; (3) **Application**: RBAC (least privilege), command auth (two-person rule), tamper-proof audit logs; (4) **Physical**: Biometric access, PLC tamper detection; (5) **Safety**: SIL 2 interlocks (mechanical, network-independent) [Ref: A1, L8].
+**Stakeholders** (~35w): **Security Engineer**: Detection rules (network signatures, behavioral), SIEM tuning, false positive management. **DevOps/SRE**: Patch deployment plan, rollback strategy, RTO/RPO impact (30 min max downtime). **SRE**: Monitoring (asset inventory, patch status), alerting (detection + patch compliance).
 
-**Monitoring**: SIEM correlates IT/OT events detecting unauthorized config changes, anomalies, failed auth. Baseline with statistical process control; alert on 3σ [Ref: T3].
+**Decision** (~50w): **Rec**: Immediate (0-2wk): Deploy detection rules + inventory scan. Short-term (2wk-2mo): Patch all systems, validate detection effectiveness. **Owner**: Security Engineer (detection), DevOps (patching). **Success**: 100% detection rate, 100% patched within 30 days, 0 exploitation incidents.
 
-**Safety-Security Convergence**: Interlocks provide last defense—mechanical pressure relief valves open if SCADA exceeds limits, independent of network [Ref: G7].
-
-**Trade-offs**: 
-- Auth delays (1-2s) conflict with emergency response (<500ms); bypass for safety-critical commands [Ref: L6]
-- Air-gapping limits remote monitoring; unidirectional gateway for read-only export [Ref: A10]
-- Complexity increases maintenance; requires specialized training [Ref: L3]
-
-**Validation**: Annual red team (phishing→lateral movement→PLC manipulation). Measure: detection rate (≥95%), MTTD (≤5 min), containment, interlock activation. Document lessons per NIST 800-61 [Ref: A7, L5].
-
-```mermaid
-flowchart TD
-    EXT[External Threats] --> FW1[Perimeter FW<br/>Deny-all]
-    FW1 --> DMZ[DMZ<br/>Unidirectional GW]
-    DMZ --> FW2[Internal FW<br/>Modbus RO]
-    FW2 --> SCADA[SCADA<br/>RBAC, 2-person]
-    SCADA --> PLC[PLCs<br/>App whitelist]
-    PLC --> PROC[Water Treatment]
-    SIEM[SIEM<br/>3σ detection] -.monitors.-> FW1 & FW2 & SCADA & PLC
-    SAFETY[Safety Interlocks SIL 2<br/>Mechanical] -.last defense.-> PROC
-    
-    style SAFETY fill:#f9f,stroke:#333,stroke-width:4px
-    style SIEM fill:#bbf,stroke:#333,stroke-width:2px
-```
-
-**Practical Config**:
+**Practical** (YAML):
 ```yaml
-network_zones:
-  - {name: enterprise, trust: low, protocols: [https]}
-  - {name: dmz, trust: medium, protocols: [https, modbus_tcp_ro]}
-  - {name: scada, trust: high, protocols: [modbus_tcp, opc_ua]}
-
-firewall_policies:
-  - {id: 1, from: enterprise, to: dmz, services: [https:443], action: allow, log: true, rate_limit: 100/min}
-  - {id: 2, from: dmz, to: scada, services: [modbus:502], action: allow, auth: required, read_only: true, alert_write: critical}
-  - {id: 3, from: enterprise, to: scada, action: deny, alert: critical, notify: [soc, ciso]}
-
-rbac_roles:
-  - {role: operator, perms: [read_sensors, read_alarms, ack_alarms], 2fa: true}
-  - {role: engineer, perms: [modify_setpoints, test_mode], 2fa: true, approval: [supervisor], timeout: 300s}
-  - {role: emergency, perms: [shutdown], bypass_auth: true, audit: immutable}
-
-monitoring:
-  - {id: siem_001, detect: unauthorized_plc_prog, baseline: spc, threshold: 3σ, mttd: 5min, severity: critical}
-  - {id: siem_002, detect: failed_auth, threshold: 3/5min, action: [alert, lockout], mttd: 1min}
-
-safety_interlocks:
-  - {id: sil2_pressure, type: mechanical, independence: network_independent, trigger: pressure>80psi, reliability: 99.9%, test: 30days}
+detection_rules:
+  - name: CVE-2024-XXXXX-RCE
+    signature: "S7COMM|unauthorized_function_code_0x44"
+    threshold: 1
+    action: [alert, block, isolate]
+    mttd: 5min
+patch_plan:
+  - phase: 1 (critical: healthcare, energy)
+    systems: 7000
+    window: 2024-11-20 to 2024-11-27
+    rollback: 24h
+  - phase: 2 (other)
+    systems: 43000
+    window: 2024-11-27 to 2024-12-15
 ```
 
 **Metrics**:
+| Metric | Target | Owner |
+|--------|--------|-------|
+| Detection Rate | ≥95% | Security Eng |
+| MTTD | ≤5 min | SIEM |
+| Patch Compliance | 100% by 2024-12-15 | DevOps |
+| MTTR (if exploited) | <30 min | SRE |
 
-| Metric | Formula | Target | Rationale [Ref] |
-|--------|---------|--------|-----------------|
-| Detection Rate | TP/(TP+FN) | ≥95% | SIEM effectiveness [L5] |
-| False Positive Rate | FP/(FP+TN) | ≤2% | Prevent fatigue [T3] |
-| MTTD | Σ(Detection Time) / Incidents | ≤5 min | Minimize exposure [G16] |
-| MTTR | Σ(Restoration Time) / Incidents | ≤30 min | Meet RTO [A16] |
-| Control Effectiveness | Blocked / Total Attacks | ≥99% | Validate layers [G6] |
-| Interlock Reliability | Successful / Total Demands | ≥99.9% | SIL 2 per IEC 61508 [L8] |
-
-**Alternatives**:
-- **Zero-Trust**: More granular but higher complexity/latency (may violate PLC real-time requirements) [Ref: L9]
-- **Risk-Based**: Lower cost but requires threat intelligence (challenging for OT) [Ref: A11]
+```mermaid
+flowchart TD
+    CVE["CVE-2024-XXXXX<br/>CVSS 9.8<br/>50K+ systems"] --> DETECT["Detection<br/>MTTD ≤5 min<br/>Signature + Behavioral"]
+    DETECT --> ISOLATE["Isolation<br/>MTTR <30 min<br/>Network + Host"]
+    ISOLATE --> PATCH["Patch<br/>7-day window<br/>Phased rollout"]
+    PATCH --> VALIDATE["Validation<br/>100% compliance<br/>Detection effectiveness"]
+    
+    style CVE fill:#f99,stroke:#333,stroke-width:2px
+    style DETECT fill:#9f9,stroke:#333,stroke-width:2px
+    style ISOLATE fill:#99f,stroke:#333,stroke-width:2px
+    style PATCH fill:#ff9,stroke:#333,stroke-width:2px
+    style VALIDATE fill:#9ff,stroke:#333,stroke-width:2px
+```
 
 ---

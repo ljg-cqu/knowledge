@@ -1,41 +1,52 @@
-# Enterprise Risk Assessment Framework
+# Enterprise Risk Assessment Framework (Minimal Viable)
 
-Evidence-based risk assessment: 5 dimensions × 8 lifecycle phases with quantitative validation.
+Decision-critical risk tracking: 6-12 risks × 3-4 dimensions × 4-5 lifecycle phases with quantitative validation.
 
-## I. Context
+**Mission**: Generate 6-12 decision-critical risks identifying, assessing, mitigating threats that block decisions or create material risk. Focus: minimal viable news tracking with time constraints.
 
-**Purpose**: Systematic risk ID, assessment, mitigation for BA, PM, Architect, Dev, QA, DevOps, Security, Data, SRE, Leadership.
+**Context**: Production systems (>10K rps, >1TB data), regulated industries, multi-team  
+**Output**: 6-12 risks (200-350w) | ≥80% mitigated | ≥70% quantified | EN 60-70%, ZH 20-30%, Other 5-10% | ≥50% refs <2yr  
+**Success**: 12/12 validation PASS + decision-critical insights
 
-**Assumptions**: Production-grade distributed systems (>10K rps, >1TB data, multi-team); cloud-native; regulated.
+## I. Decision Criticality Framework
 
-**Constraints**: 200-400 words/risk; ≥80% mitigated; scenario-based; quantitative scoring.
+**Include risk if ≥1 criterion satisfied**:
+1. **Blocks Decision**: Directly impacts go/no-go, resource allocation, strategic pivot, release gate
+2. **Creates Material Risk**: Identifies threat with quantified impact (financial, regulatory, operational, reputational)
+3. **Affects ≥2 Stakeholders**: Multi-team impact (e.g., DevOps + SRE, Security + Compliance, Architect + PM)
+4. **Actively Evolving**: Market/tech/regulatory changes in past 3-6 months
+5. **High Adoption Barrier**: >40h effort; blocks velocity or compliance
 
-**Terms**: Risk (event impacting objectives), P/I (1-5), Risk Score (P×I: 1-25), Mitigation (prevent/detect/correct), Residual (post-mitigation).
-
-**Scope**: Technical debt, market, compliance, vendors, finance, security, ops. **Exclude**: Force majeure, unproven risks.
+**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Force majeure, Unproven
 
 ## II. Requirements
 
 ### Coverage Floors
 
-**Total**: 40–60 risks | 200–400 words each | ≥80% mitigated | ≥60% quantified
+**Total**: 6–12 risks | 200–350 words each | ≥80% mitigated | ≥70% quantified
 
-**Dimensions (MECE)**:
-1. **Technical** (8–12): Architecture, infra, code, security, data, performance, integration, ops
-2. **Business/Market** (8–12): Competition, timing, PMF, pricing, adoption, revenue, partnerships
-3. **Regulatory/Legal** (6–10): Compliance (GDPR, HIPAA, SOC 2), licensing, privacy, IP, audit
-4. **Ecosystem** (6–10): Vendor lock-in, dependencies, platform changes, supply chain
-5. **Financial** (6–10): Budget, TCO, opportunity cost, funding, burn rate, ROI
+**Dimensions (MECE, 3-4 decision-critical)**:
+1. **Technical** (2–4): Architecture, infra, security, data, performance, integration, ops
+2. **Regulatory/Legal** (1–3): Compliance (GDPR, HIPAA, SOC 2), privacy, audit, licensing
+3. **Business/Market** (1–3): Competition, timing, adoption, revenue, partnerships
+4. **Financial** (1–2): Budget, TCO, burn rate, ROI (optional if material)
 
-**Lifecycle**: Each phase (Requirements → Evolution) ≥3 risks across ≥3 dimensions
+**Lifecycle (4-5 decision-critical phases)**:
+- Phase 1: Requirements & Discovery
+- Phase 2: Architecture & Design
+- Phase 3: Development & Testing
+- Phase 4: Deployment & Operations
+- Phase 5: Evolution & Governance (optional if decision-critical)
 
-**Stakeholder**: Each role owns ≥2 risks
+**Stakeholder**: ≥5 core roles (≥60% multi-stakeholder)
+- Architect, Developer, SRE, PM, Security, Leadership
 
-**References** (build first): Glossary ≥15 | Frameworks ≥8 | Tools ≥8 | Literature ≥10 (≥3 risk mgmt) | Citations ≥20 APA 7th [EN]/[ZH]
+**References** (build first, proportional 60-75% reduction): 
+- Glossary ≥10 | Frameworks ≥5 | Tools ≥5 | Literature ≥6 (≥2 risk mgmt) | Citations ≥10 APA 7th [EN]/[ZH]
 
-**Visuals**: ≥1 matrix + ≥1 roadmap/dimension | ≥1 heat map
+**Visuals**: ≥1 matrix + ≥1 roadmap | ≥1 heat map
 
-**Scaling**: >60 risks → multiply floors by 1.5×
+**Scaling**: >12 risks → multiply floors by 1.5×
 
 ### Citations
 
@@ -47,93 +58,90 @@ Evidence-based risk assessment: 5 dimensions × 8 lifecycle phases with quantita
 
 ### Quality Gates (fail ANY = stop, fix, re-run ALL)
 
-1. **Recency**: ≥60% from 3yrs (≥80% cyber/cloud/fintech/health)
-2. **Diversity**: ≥4 source types; none >30%
-3. **Dimension**: Each has ≥3 sources + ≥2 frameworks + ≥1 tool
-4. **Phase**: Each has ≥3 risks with evidence-based mitigation
-5. **Ownership**: 100% have owner + escalation; each stakeholder owns ≥2
-6. **Scoring**: ≥80% have P/I + financial/time estimates
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+2. **Recency**: ≥60% from 3yrs (≥80% cyber/cloud/fintech/health)
+3. **Dimension**: Each has ≥2 sources + ≥1 framework + ≥1 tool
+4. **Phase**: Each has ≥2 risks with evidence-based mitigation
+5. **Ownership**: 100% have owner + escalation; ≥60% multi-stakeholder
+6. **Scoring**: 100% have P/I + financial/time estimates
 7. **Mitigation**: ≥80% high-severity (≥15) have 3-tier mitigation
-8. **Tools**: Features, integrations, compliance documented
-9. **Links**: 100% accessible/archived
-10. **Cross-Refs**: 100% resolve; no orphans
-11. **Dependencies**: Cross-risk mapped
-12. **Residual**: All mitigations include residual assessment
+8. **Links**: 100% accessible
+9. **Cross-Refs**: 100% resolve; no orphans
+10. **Dependencies**: ≥30% documented
+11. **Residual**: All mitigations include residual assessment
+12. **Quantification**: ≥70% quantified (financial, time, metrics)
 
-**Fixes**: Recency → flag dated | Diversity → expand domains | Scoring → use benchmarks | Dependencies → create graph
+**Fixes**: Decision Criticality → filter non-critical | Recency → flag dated | Scoring → use benchmarks | Dependencies → create graph
 
 ## III. Execution
 
-### 1. Plan Allocation
+### 1. Plan Allocation (Minimal)
 
-Distribute 40–60 risks: 5–7/dimension, 3–8/phase.
+Distribute 6–12 risks: 2–4/dimension, 1–3/phase.
 
-**Severity Target**: Critical (≥20): 10–15% | High (15–19): 25–30% | Med (10–14): 40–45% | Low (5–9): 15–20%
+**Severity Target**: Critical (≥20): 15–25% | High (15–19): 40–50% | Med (10–14): 25–35% | Low (5–9): ≤10%
 
-### 2. Build References (run Gates after)
+### 2. Build References (Minimal, run Gates after)
 
-**Glossary (≥15)**: Risk, Threat, Vulnerability, Impact, Probability, Mitigation, Residual, Appetite, Tolerance, SLA, SLO, SLI, MTTR, MTBF, RTO, RPO, CVSS, CVE, STRIDE, DREAD, FAIR, ISO 31000, NIST CSF, COBIT, TCO, ROI | **Format**: term, definition, formula, context, related | Assign G1-G#
+**Glossary (≥10)**: Risk, Threat, Vulnerability, Impact, Probability, Mitigation, Residual, Appetite, Tolerance, RTO, RPO, MTTR, CVSS, STRIDE, FAIR | **Format**: term, definition, context | Assign G1-G#
 
-**Frameworks (≥8)**: ISO 31000, FAIR, NIST CSF, STRIDE, DREAD, COBIT, TOGAF, OWASP Top 10, CIS, DORA | **Format**: purpose, components, application, limits | Assign F1-F#
+**Frameworks (≥5)**: ISO 31000, FAIR, NIST CSF, STRIDE, OWASP Top 10 | **Format**: purpose, application, limits | Assign F1-F#
 
-**Tools (≥8)**: Risk (ServiceNow GRC, Archer, LogicGate, RiskLens), Security (Snyk, SonarQube, Checkmarx, Wiz), Monitor (Prometheus, Grafana, Datadog, New Relic), Compliance (Vanta, Drata, OneTrust), Incident (PagerDuty, Opsgenie) | **Format**: category, features, pricing, integrations (≥3), compliance, update, URL | Assign T1-T#
+**Tools (≥5)**: Risk (ServiceNow GRC, Archer), Security (Snyk, SonarQube), Monitor (Prometheus, Grafana), Compliance (Vanta, Drata), Incident (PagerDuty) | **Format**: category, features, pricing, integrations (≥2), URL | Assign T1-T#
 
-**Literature (≥10)**: EN—*SRE* (Beyer), *Security Engineering* (Anderson), *Release It!* (Nygard), *Phoenix Project* (Kim), *Accelerate* (Forsgren), ISO 31000:2018, NIST 800-30 | ZH (≥3)—风险管理, 信息安全, 合规 | **Format**: author, title, year, concepts, applicability | Assign L1-L#
+**Literature (≥6)**: EN—*SRE* (Beyer), *Security Engineering* (Anderson), *Release It!* (Nygard), *Accelerate* (Forsgren), ISO 31000:2018 | ZH (≥1)—风险管理 | **Format**: author, title, year, applicability | Assign L1-L#
 
-**Citations (≥20)**: APA 7th + [EN]/[ZH] | ≥60% from 3yrs | Types: frameworks/standards/research/cases/tools | Assign C1-C# | **Alternatives**: Gartner, Forrester, SANS, OWASP, NIST, Verizon DBIR
+**Citations (≥10)**: APA 7th + [EN]/[ZH] | ≥60% from 3yrs | Types: frameworks/standards/research/cases | Assign C1-C# | **Alternatives**: Gartner, Forrester, NIST, Verizon DBIR
 
-### 3. Generate Risks (batch 5–10, self-check each)
+### 3. Generate Risks (batch 2–3, self-check each)
 
 **ID**: [Dimension]-[Phase]-[SpecificRisk]
 
-**Components** (200–400 words):
-1. **Statement** (1–2 sentences): Event + consequence
+**Components** (200–350 words, minimal viable):
+1. **Statement** (1–2 sent): Event + consequence
 2. **Phase**: When manifests
-3. **Dimension**: Primary (+ secondary if applicable)
-4. **Probability** (1–5): 1=Rare (<10%), 2=Unlikely (10–25%), 3=Possible (25–50%), 4=Likely (50–75%), 5=Certain (>75%) [Ref: F#]
-5. **Impact** (1–5): 1=Negligible, 2=Minor, 3=Moderate, 4=Major, 5=Catastrophic (financial, time, reputation) [Ref: F#]
-6. **Score**: P × I (1–25)
-7. **Stakeholders**: Owner, affected, escalation
-8. **Root Causes**: Tech/process/org [Ref: G#/C#]
-9. **Triggers**: Leading indicators, monitoring [Ref: T#]
-10. **Dependencies**: Related risks, cascading
+3. **Dimension**: Primary
+4. **Decision Criticality**: [Criterion met: Blocks/Risk/Stakeholders/Evolving/Adoption]
+5. **Probability** (1–5): Score + justification [Ref: F#]
+6. **Impact** (1–5): Score + financial/time/reputation [Ref: F#]
+7. **Score**: P × I (1–25) | Severity
+8. **Stakeholders**: Owner, affected, escalation (≥2 roles)
+9. **Root Causes**: Tech/process/org [Ref: G#/C#]
+10. **Triggers**: Leading indicators, monitoring [Ref: T#]
 11. **Mitigation**:
-    - **Prevent**: Reduce P (actions, owner, timeline, cost, tools [Ref: T#])
-    - **Detect**: Monitor/alert (dashboards, SLA, tools [Ref: T#])
-    - **Correct**: Response (rollback, DR, RTO/RPO, runbook, tools [Ref: T#])
+    - **Prevent**: Actions, owner, timeline, cost [Ref: T#]
+    - **Detect**: Monitoring, SLA [Ref: T#]
+    - **Correct**: Response, RTO/RPO, runbook [Ref: T#]
 12. **Residual**: Post-mitigation P/I, score, acceptance
-13. **Metrics**: KPIs for validation
-14. **Citations**: ≥2 [Ref] for high, ≥1 for med/low
-15. **Artifact** (Crit/High): Matrix, roadmap, tree, runbook
+13. **Metrics**: KPIs
+14. **Citations**: ≥1 [Ref] (≥2 for high)
+15. **Artifact** (Crit/High): Matrix, roadmap, or runbook
 
 **Batch Check**:
-- Scenario-based, phase-contextualized
-- 200–400 words
-- P/I scored with justification
+- Decision-critical (≥1 criterion)
+- Phase-contextualized
+- 200–350 words
+- P/I scored + justified
 - Owner assigned
 - ≥80% mitigated (3-tier for high)
-- ≥80% cited
-- Financial/time for high
+- ≥70% quantified
 - Residual calculated
 
-### 4. Create Visuals
+### 4. Create Visuals (Minimal)
 
-**Risk Matrix** (5×5/dimension): P (Y) × I (X) | Zones: Green (1–6), Yellow (8–12), Orange (15–16), Red (≥20) | Label IDs
+**Risk Matrix** (5×5): P (Y) × I (X) | Zones: Green (1–6), Yellow (8–12), Orange (15–16), Red (≥20) | Label IDs
 
-**Roadmap** (per dimension): Gantt—prevent/detect/correct with owners, milestones, dependencies | Sections: Quick Wins, Strategic, Backlog
+**Roadmap** (per dimension): Gantt—prevent/detect/correct with owners, milestones | Sections: Quick Wins, Strategic
 
-**Heat Map**: 8 phases (cols) × 5 dimensions (rows) | Intensity = aggregated score | Include count/cell
+**Heat Map**: 4-5 phases (cols) × 3-4 dimensions (rows) | Intensity = aggregated score | Include count/cell
 
-**Domain Artifacts**:
-- **Technical**: STRIDE model, dependency graph, failure tree
-- **Business**: Competitive landscape, timing, adoption funnel
-- **Regulatory**: Compliance matrix, audit timeline, PII data flow
-- **Ecosystem**: Vendor map, integration matrix, platform alignment
-- **Financial**: OpEx/CapEx, burn rate, ROI sensitivity
+**Domain Artifacts** (decision-critical only):
+- **Technical**: STRIDE model or dependency graph
+- **Regulatory**: Compliance matrix or audit timeline
+- **Business**: Competitive landscape or adoption funnel
+- **Financial**: OpEx/CapEx or burn rate (if material)
 
-**Dependency Graph**: Network—cascading risks
-
-**Standards**: Consistent colors | Severity scores | Mitigation status | Citations | Legends + timestamps
+**Standards**: Consistent colors | Severity scores | Mitigation status | Citations | Timestamps
 
 ### 5. Populate References
 
@@ -151,24 +159,18 @@ Distribute 40–60 risks: 5–7/dimension, 3–8/phase.
 
 ### 6. Validate (fail ANY = stop, fix, re-run ALL)
 
-1. **Floors**: G≥15, F≥8, T≥8, L≥10, C≥20, Risks=40–60
-2. **Dimensions**: 5/5 ≥5 risks; 8–12/dimension (±2)
-3. **Phases**: 8/8 ≥3 risks across ≥3 dimensions
-4. **Severity**: Crit 10–15%, High 25–30%, Med 40–45%, Low 15–20%
-5. **Ownership**: 100% owner+escalation; each stakeholder ≥2
-6. **Mitigation**: ≥80% have strategy; ≥80% high (≥15) 3-tier
-7. **Scoring**: 100% P/I justified; ≥60% estimated
-8. **Residual**: 100% mitigated have residual
-9. **Citations**: ≥80% ≥1; ≥60% high ≥2
-10. **Language**: EN 50–70%, ZH 20–40%, Other 5–15%
-11. **Recency**: ≥60% from 3yrs (≥80% cyber/cloud/fintech/health)
-12. **Diversity**: ≥4 types; max 30%
-13. **Links**: 100% accessible
-14. **Cross-Refs**: 100% resolve
-15. **Word Count**: Sample 10; 100% in 200–400
-16. **Framework**: ≥80% correctly apply+cite+limits
-17. **Dependencies**: Graph complete; ≥30% documented
-18. **Artifacts**: Crit/High 100%, Med ≥50%
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+2. **Floors**: G≥10, F≥5, T≥5, L≥6, C≥10, Risks=6–12
+3. **Dimensions**: 3-4/3-4 ≥2 risks; 2–4/dimension
+4. **Phases**: 4-5/4-5 ≥1 risk across ≥2 dimensions
+5. **Severity**: Crit 15–25%, High 40–50%, Med 25–35%, Low ≤10%
+6. **Ownership**: 100% owner+escalation; ≥60% multi-stakeholder
+7. **Mitigation**: ≥80% have strategy; ≥80% high (≥15) 3-tier
+8. **Scoring**: 100% P/I justified; ≥70% quantified
+9. **Citations**: ≥80% ≥1; ≥50% high ≥2
+10. **Recency**: ≥60% from 3yrs (≥80% cyber/cloud/fintech/health)
+11. **Links**: 100% accessible
+12. **Artifacts**: Crit/High 100%, Med ≥50%
 
 ### 7. Review
 
@@ -205,28 +207,22 @@ Distribute 40–60 risks: 5–7/dimension, 3–8/phase.
 - Heat maps timestamped
 - Executive summary: top 10 + priorities
 
-## IV. Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
+## IV. Validation Report (Minimal, fill all; ANY fail = stop, fix, re-run ALL)
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
-| 1 | Floors | G:__ F:__ T:__ L:__ C:__ Risks:__ | G≥15, F≥8, T≥8, L≥10, C≥20, 40-60 | | PASS/FAIL |
-| 2 | Dimensions | Tech:__ Biz:__ Reg:__ Eco:__ Fin:__ | Each: 8-12 (±2) | | PASS/FAIL |
-| 3 | Phases | __/8 ≥3 risks ≥3 dimensions | 8/8 | | PASS/FAIL |
-| 4 | Severity | Crit:__% High:__% Med:__% Low:__% | C:10-15%, H:25-30%, M:40-45%, L:15-20% | | PASS/FAIL |
-| 5 | Ownership | __/__ owner+escalation | 100%; each ≥2 | | PASS/FAIL |
-| 6 | Mitigation | __%strategy; __%high 3-tier | ≥80% strategy; ≥80% high 3-tier | | PASS/FAIL |
-| 7 | Scoring | __%P/I; __%estimates | 100% P/I; ≥60% estimates | | PASS/FAIL |
-| 8 | Residual | __/__ have residual | 100% | | PASS/FAIL |
-| 9 | Citations | __%≥1, __%high≥2 | ≥80%≥1, ≥60%high≥2 | | PASS/FAIL |
-| 10| Language | EN:__%, ZH:__%, Other:__% | EN:50-70%, ZH:20-40%, Other:5-15% | | PASS/FAIL |
-| 11| Recency | __% from 3yrs (domain:__) | ≥60% (≥80% cyber/cloud/fintech/health) | | PASS/FAIL |
-| 12| Diversity | __types; max__% | ≥4; max 30% | | PASS/FAIL |
-| 13| Links | __/__ accessible | 100% | | PASS/FAIL |
-| 14| Cross-Refs | __/__ resolved | 100% | | PASS/FAIL |
-| 15| Words | __sampled: __compliant | 100% (200-400) | | PASS/FAIL |
-| 16| Framework | __/__correct+cited+limits | ≥80% | | PASS/FAIL |
-| 17| Dependencies | __%documented | ≥30% | | PASS/FAIL |
-| 18| Artifacts | Crit/High:__%Med:__% | C/H:100%, M:≥50% | | PASS/FAIL |
+| 1 | Decision Criticality | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 2 | Floors | G:__ F:__ T:__ L:__ C:__ Risks:__ | G≥10, F≥5, T≥5, L≥6, C≥10, 6-12 | | PASS/FAIL |
+| 3 | Dimensions | Tech:__ Reg:__ Biz:__ Fin:__ | 3-4/3-4; 2-4 each | | PASS/FAIL |
+| 4 | Phases | __/4-5 ≥1 risk ≥2 dimensions | 4-5/4-5 | | PASS/FAIL |
+| 5 | Severity | Crit:__% High:__% Med:__% Low:__% | C:15-25%, H:40-50%, M:25-35%, L:≤10% | | PASS/FAIL |
+| 6 | Ownership | __/__ owner+escalation; __%multi | 100%; ≥60% | | PASS/FAIL |
+| 7 | Mitigation | __%strategy; __%high 3-tier | ≥80% strategy; ≥80% high 3-tier | | PASS/FAIL |
+| 8 | Scoring | 100% P/I; __%quantified | 100% P/I; ≥70% quantified | | PASS/FAIL |
+| 9 | Citations | __%≥1, __%high≥2 | ≥80%≥1, ≥50%high≥2 | | PASS/FAIL |
+| 10| Recency | __% from 3yrs (domain:__) | ≥60% (≥80% cyber/cloud/fintech/health) | | PASS/FAIL |
+| 11| Links | __/__ accessible | 100% | | PASS/FAIL |
+| 12| Artifacts | Crit/High:__%Med:__% | C/H:100%, M:≥50% | | PASS/FAIL |
 
 ## V. Quality Standards
 
@@ -246,48 +242,46 @@ Distribute 40–60 risks: 5–7/dimension, 3–8/phase.
 
 8. **Categorization**: Correct dimension | ✓ Technical: Architecture coupling → deployment fail | ✗ Budget overrun as technical (→ Financial)
 
-## VI. Output Format
+## VI. Output Format (Minimal)
 
 ### A. TOC
-1. Executive Summary (Top 10 + priorities) | 2. Taxonomy (5×8 matrix) | 3. Register | 4. Roadmap | 5. References | 6. Validation | 7. Appendices (Heat maps, graph, RACI)
+1. Executive Summary (Top risks + priorities) | 2. Taxonomy (3-4×4-5 matrix) | 3. Register | 4. Roadmap | 5. References | 6. Validation | 7. Appendices (Heat map, RACI)
 
-### B. Taxonomy Overview
-**Total**: [40–60] | **Severity**: Crit [X] ([Y]%) / High [X] ([Y]%) / Med [X] ([Y]%) / Low [X] ([Y]%) | **Coverage**: 5 dimensions × 8 phases
+### B. Taxonomy Overview (Minimal)
+**Total**: [6–12] | **Severity**: Crit [X] ([Y]%) / High [X] ([Y]%) / Med [X] ([Y]%) / Low [X] ([Y]%) | **Coverage**: 3-4 dimensions × 4-5 phases
 
 | # | Dimension | Count | Mix (C/H/M/L) | Artifacts |
 |---|-----------|-------|---------------|-----------|
-| 1 | Technical | 8–12 | 2C/3H/4M/2L | Matrix + Threat model + Roadmap |
-| 2 | Business/Market | 8–12 | 1C/3H/5M/2L | Matrix + Competitive + Roadmap |
-| 3 | Regulatory/Legal | 6–10 | 1C/2H/4M/1L | Matrix + Compliance + Roadmap |
-| 4 | Ecosystem | 6–10 | 1C/2H/4M/2L | Matrix + Dependency map + Roadmap |
-| 5 | Financial | 6–10 | 1C/3H/3M/2L | Matrix + Cost sensitivity + Roadmap |
-| | **Total** | **50** | **7C/13H/20M/9L** | **5 matrices + 5 roadmaps + heat map + graph** |
+| 1 | Technical | 2–4 | 1C/1-2H/1M/0L | Matrix + Threat model |
+| 2 | Regulatory/Legal | 1–3 | 0-1C/1H/1-2M/0L | Matrix + Compliance |
+| 3 | Business/Market | 1–3 | 0-1C/1H/1-2M/0L | Matrix + Competitive |
+| 4 | Financial | 1–2 | 0C/0-1H/1M/0L | Matrix + Cost (if material) |
+| | **Total** | **6–12** | **1-2C/3-5H/3-5M/0L** | **3-4 matrices + 1 roadmap + heat map** |
 
 Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–9)
 
-### C. Phase Distribution
+### C. Phase Distribution (Minimal)
 
-| Phase | Tech | Biz | Reg | Eco | Fin | **Total** | **Top** |
-|-------|------|-----|-----|-----|-----|-----------|---------|
-| 1. Requirements | 2 | 3 | 2 | 1 | 2 | **10** | 20 (C) |
-| 2. Architecture | 2 | 1 | 2 | 2 | 1 | **8** | 18 (H) |
-| 3. Development | 2 | 1 | 1 | 2 | 1 | **7** | 16 (H) |
-| 4. Testing | 1 | 1 | 1 | 1 | 1 | **5** | 15 (H) |
-| 5. Deployment | 1 | 1 | 1 | 1 | 1 | **5** | 20 (C) |
-| 6. Operations | 1 | 1 | 0 | 0 | 1 | **3** | 16 (H) |
-| 7. Maintenance | 1 | 1 | 1 | 0 | 1 | **4** | 12 (M) |
-| 8. Evolution | 0 | 1 | 0 | 1 | 0 | **2** | 12 (M) |
-| **Total** | **10** | **10** | **8** | **8** | **8** | **50** | - |
+| Phase | Tech | Reg | Biz | Fin | **Total** | **Top** |
+|-------|------|-----|-----|-----|-----------|---------|
+| 1. Requirements & Discovery | 1 | 1 | 1 | 0 | **3** | 18-20 (H-C) |
+| 2. Architecture & Design | 1 | 0-1 | 0-1 | 0 | **1-3** | 16-18 (H) |
+| 3. Development & Testing | 1 | 0 | 0-1 | 0 | **1-2** | 12-16 (M-H) |
+| 4. Deployment & Operations | 1 | 0-1 | 0 | 0-1 | **1-3** | 15-20 (H-C) |
+| 5. Evolution & Governance | 0 | 0 | 0 | 0 | **0-1** | 12 (M) |
+| **Total** | **2-4** | **1-3** | **1-3** | **1-2** | **6–12** | - |
 
-### D. Risk Entry Format
+### D. Risk Entry Format (Minimal)
 
-**Dimension**: [Technical/Business/Regulatory/Ecosystem/Financial]
+**Dimension**: [Technical/Regulatory/Business/Financial]
 
 **RISK-[ID]: [Dimension]-[Phase]-[SpecificRisk]**
 
 **Statement**: [Event + consequence, 1–2 sentences]
 
-**Phase**: [Requirements/Design/Development/Testing/Deployment/Operations/Maintenance/Evolution]
+**Phase**: [Requirements & Discovery/Architecture & Design/Development & Testing/Deployment & Operations/Evolution & Governance]
+
+**Decision Criticality**: [Criterion: Blocks/Risk/Stakeholders/Evolving/Adoption]
 
 **Probability** (1–5): [Score] | [Justification with data] [Ref: F#/C#]
 
@@ -297,7 +291,7 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 **Stakeholders**:
 - **Owner**: [Role with authority]
-- **Affected**: [Teams]
+- **Affected**: [≥2 teams]
 - **Escalation**: [Conditions → Role]
 
 **Root Causes**: [Tech/process/org] [Ref: G#/C#]
@@ -314,7 +308,7 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
    - Actions: [Steps]
    - Owner: [Role]
    - Timeline: [Duration]
-   - Cost: [$X or hours]
+   - Cost: [$X]
    - Tools: [Ref: T#]
 
 2. **Detect**:
@@ -337,9 +331,9 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 **Metrics**: [KPIs]
 
-**Citations**: [Ref: C#, ...] (≥2 Crit/High, ≥1 Med/Low)
+**Citations**: [Ref: C#, ...] (≥1 Crit/High, ≥1 Med/Low)
 
-**Artifact** *(Crit/High)*: [Matrix, timeline, tree, runbook]
+**Artifact** *(Crit/High)*: [Matrix, roadmap, or runbook]
 
 ---
 
@@ -421,7 +415,7 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 **Citations**: **C#. [Citation] [Lang]** | APA 7th
 
-## VII. Template
+## VII. Template (Minimal)
 
 ```markdown
 # Enterprise Risk Assessment: [Project/System]
@@ -435,74 +429,73 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 ## Executive Summary
 
-### Top 10 Risks
+### Top Risks (6-12)
 
 | Rank | ID | Name | Score | Dimension | Phase | Owner | Priority |
 |------|----|------|-------|-----------|-------|-------|----------|
-| 1 | RISK-T-DEP-01 | Deployment rollback failure | 20 (C) | Technical | Deployment | DevOps | Immediate |
-| 2 | RISK-B-REQ-01 | Market timing misalignment | 18 (H) | Business | Requirements | PM | High |
+| 1 | RISK-T-REQ-01 | [Risk name] | 20 (C) | Technical | Requirements | [Role] | Immediate |
+| 2 | RISK-R-REQ-01 | [Risk name] | 18 (H) | Regulatory | Requirements | [Role] | High |
 | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Mitigation Priorities
 
-**Immediate (Wk 1-4)**: [Critical]  
-**High (Mo 2-3)**: [High-severity]  
-**Strategic (Q2-4)**: [Med systemic]  
-**Backlog**: [Low, monitor]
+**Immediate (Wk 1-4)**: [Critical risks]  
+**High (Mo 2-3)**: [High-severity risks]  
+**Strategic (Q2-4)**: [Med systemic risks]
 
 ---
 
 ## Taxonomy
 
-[5×8 matrix: dimension × phase with counts + heat map]
+[3-4×4-5 matrix: dimension × phase with counts + heat map]
 
 ---
 
 ## Register
 
-### Technical Risks
+### Technical Risks (2-4)
 
-**RISK-T-DEV-01: Technical-Development-UntestedDatabaseMigration**
+**RISK-T-[ID]: [Dimension]-[Phase]-[SpecificRisk]**
 
 [Full entry per Section VI.D]
 
 ---
 
-[Continue for all 40-60 risks by dimension]
+[Continue for all 6-12 risks by dimension]
 
 ---
 
 ## References
 
-### Glossary
+### Glossary (≥10)
 
-**G1. Risk Score** | P × I (1–25) | Risk prioritization | Related: P, I, Severity | Limits: Subjective without historical data
+**G1. Risk Score** | P × I (1–25) | Risk prioritization | Related: P, I, Severity
 
-[≥15 terms]
+[≥10 terms]
 
-### Frameworks
+### Frameworks (≥5)
 
-**F1. ISO 31000:2018** | Enterprise risk mgmt | Principles, framework, process | Apply across phases | Generic—needs context | ISO (2018)
+**F1. ISO 31000:2018** | Enterprise risk mgmt | Principles, framework, process | Apply across phases
 
-[≥8 frameworks]
+[≥5 frameworks]
 
-### Tools
+### Tools (≥5)
 
-[≥8 with specs]
+[≥5 with specs]
 
-### Literature
+### Literature (≥6)
 
-[≥10 with ≥3 risk mgmt]
+[≥6 with ≥2 risk mgmt]
 
-### Citations
+### Citations (≥10)
 
-[≥20 APA 7th + tags]
+[≥10 APA 7th + tags]
 
 ---
 
 ## Validation
 
-[Completed 18-validation table from Section IV]
+[Completed 12-validation table from Section IV]
 
 ---
 
@@ -510,21 +503,17 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 ### A. Risk Matrices
 
-[5×5 grids/dimension]
+[3-4 matrices, 1 per dimension]
 
 ### B. Heat Map
 
-[8 phases × 5 dimensions, color-coded]
+[4-5 phases × 3-4 dimensions, color-coded]
 
 ### C. Roadmap
 
-[Gantt: activities with owners, timelines, dependencies]
+[Gantt: prevent/detect/correct with owners, timelines]
 
-### D. Dependency Graph
-
-[Network: cascading risks]
-
-### E. RACI
+### D. RACI
 
 [Risk ownership across roles]
 
@@ -532,23 +521,21 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 ---
 
-## VIII. Submission Checklist
+## VIII. Submission Checklist (Minimal)
 
-✅ 18 validations PASS  
-✅ Executive summary: top 10  
-✅ Taxonomy complete  
-✅ 40-60 risks with 15 components  
+✅ 12 validations PASS  
+✅ Executive summary: top risks  
+✅ Taxonomy complete (3-4×4-5)  
+✅ 6-12 risks with 15 components  
 ✅ Crit/High have artifacts  
 ✅ All have owner + escalation  
 ✅ High-severity have 3-tier mitigation  
 ✅ Roadmap with timeline + costs  
-✅ References: G≥15, F≥8, T≥8, L≥10, C≥20  
+✅ References: G≥10, F≥5, T≥5, L≥6, C≥10  
 ✅ Citations: APA 7th + tags  
-✅ Heat maps + dependency graph  
-✅ RACI complete  
+✅ Heat map + RACI  
 ✅ No placeholders  
 ✅ Consistent format  
-✅ Balanced coverage  
-✅ Exportable (CSV/JSON)  
-✅ Heat maps timestamped  
+✅ Balanced coverage (3-4 dimensions × 4-5 phases)  
+✅ Decision Criticality 100% justified  
 ✅ Reviewed by ≥3 stakeholder roles

@@ -1,16 +1,17 @@
-# Human Understanding Q&A Generator
+# Human Understanding Q&A Generator (Minimal Viable)
 
-Generate 25-30 evidence-based Q&As on human nature, psychology, behavior for people management.
+Generate 6-12 decision-critical Q&As on human nature, psychology, behavior for informed people management decisions.
 
-**Scope**: Psychology, behavior, individual differences, cultural diversity, life stages  
+**Mission**: Generate decision-critical Q&As on human behavior/psychology for informed people management decisions—research-backed insights only, no pseudoscience.
+
+**Scope**: Psychology, behavior, individual differences, cultural diversity (decision-critical only)  
 **Constraints**: Research-backed; peer-reviewed priority; no pseudoscience; culturally sensitive  
-**Assumptions**: Universal patterns exist; individual/cultural variation significant; context matters  
-**Audience**: HR, managers, coaches, counselors, educators, leaders, researchers  
-**Success**: 23/23 validation + 6/6 review + ≥80% research-backed + 100% URLs valid
+**Audience**: HR, managers, coaches, leaders (core roles only)  
+**Success**: 12/12 validation + 6/6 review + ≥80% research-backed + 100% URLs valid
 
-**Coverage (MECE)**: 8 Dimensions × 10 Contexts = Complete, non-overlapping  
-**Dimensions (8)**: Psychological Foundations | Behavioral Patterns | Identity & Diversity | Values & Beliefs | Cognitive & Emotional | Social & Relational | Development & Growth | Health & Well-being  
-**Contexts (10)**: Workplace | Education | Healthcare | Family | Community | Personal Development | Leadership | Counseling | Research | Daily Life
+**Coverage**: 3-4 Decision-Critical Dimensions × 3-4 Core Contexts  
+**Dimensions (3-4 of 8)**: Behavioral Patterns | Cognitive & Emotional | Social & Relational | Health & Well-being  
+**Contexts (3-4 of 10)**: Workplace | Leadership | Personal Development | Daily Life
 
 ---
 
@@ -20,25 +21,21 @@ Generate 25-30 evidence-based Q&As on human nature, psychology, behavior for peo
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Count** | 25-30 Q&As; 8 dimensions ≥2 each; 10 contexts ≥2 each |
-| **Difficulty** | 20% F / 40% I / 40% A |
-| **Structure** | 200-350 words: Context → Psychology → Theory → Application → Considerations |
+| **Count** | 6-12 Q&As; 3-4 dimensions ≥1 each; 3-4 contexts ≥1 each |
+| **Difficulty** | 25% F / 50% I / 25% A |
+| **Structure** | 150-250 words: Context → Psychology → Theory → Application → Decision Criteria |
 | **Citations** | ≥1/Q&A; ≥2 advanced; peer-reviewed priority |
-| **Artifacts** | Mermaid diagram + theory + table + assessment formula |
-| **Coverage** | All 8×10 mapped; MECE principle |
+| **Artifacts** | Mermaid diagram + theory + assessment (compressed) |
+| **Coverage** | Decision-critical only; 3-4×3-4 mapped |
 
-## 8 Human Dimensions
+## Decision-Critical Dimensions (3-4 of 8)
 
-| # | Dimension | Core Topics | Min |
-|---|-----------|-------------|-----|
-| 1 | **Psychological Foundations** | Cognition, perception, consciousness, learning, memory, attention | ≥2 |
-| 2 | **Behavioral Patterns** | Habits, routines, change, conditioning, reinforcement, actions | ≥2 |
-| 3 | **Identity & Diversity** | Gender, race, ethnicity, age, orientation, disability, religion, SES, intersectionality | ≥2 |
-| 4 | **Values & Beliefs** | Values, ethics, morals, spirituality, worldviews, meaning, purpose, authenticity | ≥2 |
-| 5 | **Cognitive & Emotional** | Intelligence, EQ, emotional regulation, biases, decision-making, affect | ≥2 |
-| 6 | **Social & Relational** | Attachment, communication, conflict, empathy, social skills, influence, trust | ≥2 |
-| 7 | **Development & Growth** | Life stages, maturation, learning, skill acquisition, self-actualization | ≥2 |
-| 8 | **Health & Well-being** | Physical/mental/emotional health, stress, resilience, flourishing, balance | ≥2 |
+| # | Dimension | Core Topics | Decision Criticality | Min |
+|---|-----------|-------------|----------------------|-----|
+| 2 | **Behavioral Patterns** | Habits, routines, change, conditioning, reinforcement, actions | Blocks team velocity, affects culture | 1-2 |
+| 5 | **Cognitive & Emotional** | Intelligence, EQ, emotional regulation, biases, decision-making, affect | Blocks hiring, team dynamics, leadership | 1-2 |
+| 6 | **Social & Relational** | Attachment, communication, conflict, empathy, social skills, influence, trust | Affects collaboration, retention, culture | 1-2 |
+| 8 | **Health & Well-being** | Physical/mental/emotional health, stress, resilience, flourishing, balance | Creates risk (burnout, attrition), retention | 1-2 |
 
 ## Content Standards
 
@@ -67,29 +64,25 @@ Generate 25-30 evidence-based Q&As on human nature, psychology, behavior for peo
 
 **Frameworks**: Big Five/OCEAN, MBTI, Maslow, SDT, EQ (Goleman), Attachment (Bowlby), Hofstede, Schwartz, Kohlberg, Erikson, Social Identity, Growth Mindset (Dweck), PERMA (Seligman)
 
-## Dimensions-Context Coverage
+## Decision-Critical Contexts (3-4 of 10)
 
-| Dimension | Primary Contexts |
-|-----------|------------------|
-| 1. Psychological Foundations | Education, Research, Healthcare, Personal Development |
-| 2. Behavioral Patterns | Workplace, Personal Development, Healthcare, Family |
-| 3. Identity & Diversity | All contexts (intersectional) |
-| 4. Values & Beliefs | Leadership, Counseling, Family, Community |
-| 5. Cognitive & Emotional | Workplace, Education, Leadership, Healthcare |
-| 6. Social & Relational | All contexts (interaction fundamental) |
-| 7. Development & Growth | Education, Personal Development, Family, Counseling |
-| 8. Health & Well-being | Healthcare, Workplace, Family, Daily Life |
+| Context | Dimensions | Decision Impact |
+|---------|-----------|-----------------|
+| **Workplace** | Behavioral, Cognitive & Emotional, Social & Relational | Velocity, hiring, culture, retention |
+| **Leadership** | Cognitive & Emotional, Social & Relational, Health & Well-being | Decision quality, team dynamics, burnout |
+| **Personal Development** | Behavioral Patterns, Health & Well-being | Self-awareness, resilience, growth |
+| **Daily Life** | Health & Well-being, Behavioral Patterns | Stress management, habits, flourishing |
 
-**Requirement**: Each dimension ≥2 Q&As; each context ≥2 Q&As; explicit link in answers
+**Requirement**: Each dimension ≥1 Q&A; each context ≥1 Q&A; explicit link in answers
 
-## References
+## References (Minimal Viable)
 
 | Component | Min | Spec |
 |-----------|-----|------|
-| **Glossary** | ≥15 | Terms + relationships + dimension links |
-| **Tools** | ≥8 | Assessments, URL, ≤24mo update, validation, adoption |
-| **Literature** | ≥10 | Authoritative (Maslow, Rogers, Goleman, Dweck, Kahneman, Seligman, Brown, etc.) |
-| **Citations** | ≥18 | APA 7th, 60/30/10% EN/ZH/Other, peer-reviewed priority |
+| **Glossary** | ≥8 | Only terms used in Q&As + relationships + dimension links |
+| **Tools** | ≥4 | Assessments, URL, ≤24mo update, validation |
+| **Literature** | ≥6 | Canonical (Goleman, Dweck, Kahneman, Seligman, Bowlby, Brown) |
+| **Citations** | ≥10 | APA 7th, 60/30/10% EN/ZH/Other, peer-reviewed priority |
 
 **Quality**: ≥50% <10yr; ≥3 types; <25% single source; 100% valid URLs; peer-reviewed priority
 
@@ -97,92 +90,95 @@ Generate 25-30 evidence-based Q&As on human nature, psychology, behavior for peo
 
 # Generation Workflow
 
-## Step 1: Plan Coverage
+## Step 1: Plan Coverage (Decision-Critical)
 
-**Action**: Design 25-30 Q&As; 8 dimensions ≥2 each; 10 contexts ≥2 each; 20/40/40% F/I/A  
-**Verify**: Count, difficulty ratio, coverage, no overlap
+**Action**: Design 6-12 Q&As; 3-4 dimensions ≥1 each; 3-4 contexts ≥1 each; 25/50/25% F/I/A; 100% satisfy ≥1 decision criticality criterion
+**Verify**: Count, difficulty ratio, decision criticality, no overlap
 
-## Step 2: Establish References
+## Step 2: Establish References (Minimal)
 
-**Action**: Create before Q&As  
-- **Glossary** (≥15): Terms + relationships + dimension links + inline definitions  
-- **Tools** (≥8): Validated assessments, URLs (≤24mo), reliability/validity, adoption  
-- **Literature** (≥10): Authoritative (Maslow, Rogers, Goleman, Dweck, Kahneman, Seligman, Brown)  
-- **Citations** (≥18): APA 7th, 60/30/10% EN/ZH/Other, peer-reviewed priority
+**Action**: Create before Q&As
+- **Glossary** (≥8): Only terms used in Q&As + relationships + dimension links
+- **Tools** (≥4): Validated assessments, URLs (≤24mo), reliability/validity
+- **Literature** (≥6): Canonical (Goleman, Dweck, Kahneman, Seligman, Bowlby, Brown)
+- **Citations** (≥10): APA 7th, 60/30/10% EN/ZH/Other, peer-reviewed priority
 
-**Verify**: Counts; ≥50% <10yr; ≥3 types; <25% single source; 100% valid URLs
+**Verify**: Counts; ≥50% <10yr; ≥3 types; <25% single source; 100% valid URLs; research-backed
 
-## Step 3: Generate Q&As
+## Step 3: Generate Q&As (Decision-Critical)
 
-**Structure**: ≥70% understanding (How/Why/Compare/Explain); 200-350 words: Context → Psychology → Theory → Application → Considerations  
-**Requirements**: ≥1 citation (≥2 advanced); research-backed; ≥2 perspectives + table; individual differences; dimension-context link  
-**Check (Every 5)**: Word count, citations, research basis, difficulty, evidence, coverage
+**Structure**: ≥70% understanding (How/Why/Compare/Explain); 150-250 words: Context → Psychology → Theory → Application → Decision Criteria
+**Requirements**: ≥1 citation (≥2 advanced); peer-reviewed priority; ≥2 perspectives; individual differences; dimension-context link; decision criticality justification
+**Check (Every 3)**: Word count, citations, evidence quality, difficulty, research basis, decision criticality
 
-## Step 4: Add Artifacts
+## Step 4: Add Artifacts (Compressed)
 
-**Per Dimension**: Model (Mermaid <120 nodes) + theory (cited) + table + assessment (formula + scoring + interpretation + validation)  
-**Verify**: 4 artifacts; Mermaid renders; theories cited; formulas valid; research-backed
+**Per Dimension**: Model (Mermaid <80 nodes) + theory (cited) + assessment (formula + scoring)
+**Verify**: 3 artifacts; Mermaid renders; theories cited; formulas valid; research-backed
 
 ## Step 5: Link References
 
 **Action**: Populate → Extract [Ref: ID] → Verify existence → Remove orphans → Validate URLs  
 **Verify**: Counts correct; 100% cross-refs; 0 broken links; 60/30/10% ratio; no orphans
 
-## Step 6: Validate (23 Checks)
+## Step 6: Validate (12 Checks - Minimal Viable)
 
-| # | Check | Target | # | Check | Target |
-|---|-------|--------|---|-------|--------|
-| 1 | Counts | G≥15, T≥8, L≥10, A≥18, Q=25-30 | 13 | Artifacts | ≥90% 4/4 |
-| 2 | Citations | ≥70% ≥1; ≥30% ≥2 | 14 | Theories | ≥80% used |
-| 3 | Language | 60/30/10% EN/ZH/Other | 15 | Assessments | ≥60% have |
-| 4 | Recency | ≥50% <10yr | 16 | Models | ≥80% have |
-| 5 | Diversity | ≥3 types; <25% single | 17 | Syntax | 100% valid |
-| 6 | Links | 100% valid | 18 | Formulas | 100% valid |
-| 7 | Cross-refs | 100% resolved | 19 | Dimensions | 8×≥2 |
-| 8 | Word count | Sample 5: 200-350 | 20 | Contexts | 10×≥2 |
-| 9 | Evidence | ≥80% research | 21 | Review | 6/6 |
-| 10 | Per-topic | ≥2 sources + ≥1 assessment | 22 | Indiv diffs | ≥70% |
-| 11 | Traceability | ≥80% theory→app | 23 | Peer-reviewed | ≥50% |
-| 12 | Question type | ≥70% understanding | | | |
+| # | Check | Criteria |
+|---|-------|----------|
+| 1 | Ref counts | G≥8, T≥4, L≥6, A≥10, Q=6-12 |
+| 2 | Citations | ≥80% ≥1; ≥50% ≥2 |
+| 3 | Language | 60/30/10% EN/ZH/Other |
+| 4 | Recency | ≥50% <10yr |
+| 5 | Decision Criticality | 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Evolving) |
+| 6 | Artifacts | ≥90% have 3/3 (model, theory, assessment) |
+| 7 | Word count | Sample 5: 150-250w |
+| 8 | Evidence | ≥80% research-backed |
+| 9 | Dimensions | 3-4 dimensions, ≥1 Q each |
+| 10 | Contexts | 3-4 contexts, ≥1 Q each |
+| 11 | Traceability | ≥80% theory→app |
+| 12 | Question type | ≥70% understanding |
 
-**Critical**: ANY fail → STOP → Fix → Re-validate ALL 23 → Iterate until 23/23 PASS
+**Critical**: ANY fail → STOP → Fix → Re-validate ALL 12 → Iterate until 12/12 PASS
 
 ## Step 7: Final Review (6 Criteria)
 
-1. **Clarity**: Logical flow; consistent terms; inline definitions; no unexplained jargon
-2. **Accuracy**: Verifiable research; theories attributed; validated tools; correct mappings
-3. **Completeness**: All 8×≥2; all 10×≥2; refs met (G≥15, T≥8, L≥10, A≥18); 23/23 PASS
-4. **Balance**: ≥2 perspectives + tables; individual differences; assumptions/limitations/biases; [Universal]/[Context]/[Emerging] tags
+1. **Decision-Critical**: Every Q&A blocks a decision or creates material risk
+2. **Clarity**: Logical flow; consistent terms; inline definitions; no unexplained jargon
+3. **Accuracy**: Verifiable research; theories attributed; validated tools; correct mappings
+4. **Completeness**: 3-4 dimensions ≥1 each; 3-4 contexts ≥1 each; refs met (G≥8, T≥4, L≥6, A≥10); 12/12 PASS
 5. **Practicality**: Actionable; implementable; boundaries stated; flag expert when needed; respects diversity
 6. **Correctness**: No redundancy; no inconsistencies; no gaps; no orphans; culturally sensitive; on-topic
 
-**Submit**: 23/23 + 6/6 PASS  
-**High-Risk**: Dimension-context completeness, cultural sensitivity, research validity, URL validity, cross-refs, clinical claims
+**Submit**: 12/12 + 6/6 PASS
+**High-Risk**: Decision criticality justification, cultural sensitivity, research validity, URL validity, cross-refs
 
 ---
 
 # Output Template
 
 ```markdown
-# [Topic] Q&A - Human Understanding
+# Human Psychology & Behavior Q&A (Decision-Critical)
 
 ## Contents
-1. Overview - Scope, audience, success
-2. Topic Areas - 8 dimensions, Q&A ranges, difficulty
-3. Coverage Matrix - 8×10 mapping
-4. Q&As - 25-30 questions, answers, artifacts
-5. References - Glossary (≥15), Tools (≥8), Literature (≥10), Citations (≥18)
-6. Validation - 23 checks + 6 review
+1. Overview - Scope, audience, success criteria
+2. Topic Areas - 3-4 decision-critical dimensions, Q&A ranges, difficulty mix
+3. Coverage Matrix - 3-4 dimensions × 3-4 contexts mapping
+4. Q&As - 6-12 decision-critical questions, research-backed answers, artifacts
+5. References - Glossary (≥8), Tools (≥4), Literature (≥6), Citations (≥10)
+6. Validation - 12 checks + 6 review criteria
 
 ## Topic Areas
-| # | Dimension | Range | Count | F/I/A |
-| 1-8 | [Name] | Q1-Q5 | 3-4 | 1F/1-2I/1-2A |
+| # | Dimension | Range | Count | F/I/A | Decision Criticality |
+| 2 | Behavioral Patterns | Q1-Q3 | 1-2 | 1F/1I | Blocks velocity, affects culture |
+| 5 | Cognitive & Emotional | Q4-Q6 | 1-2 | 1I/1A | Blocks hiring, team dynamics |
+| 6 | Social & Relational | Q7-Q9 | 1-2 | 1F/1I | Affects collaboration, retention |
+| 8 | Health & Well-being | Q10-Q12 | 1-2 | 1I/1A | Creates risk (burnout, attrition) |
 
-**Total**: 25-30 | **Distribution**: 20/40/40% | **Coverage**: 8×≥2, 10×≥2
+**Total**: 6-12 | **Distribution**: 25/50/25% | **Coverage**: 3-4×3-4, 100% decision-critical
 
 ## Coverage Matrix
-| Dimension | Q# | Contexts |
-[8×≥2, 10×≥2]
+| Dimension | Q# | Contexts | Decision Criticality |
+[3-4×3-4, all ≥1 criterion]
 
 ---
 
@@ -192,59 +188,60 @@ Generate 25-30 evidence-based Q&As on human nature, psychology, behavior for peo
 **Theories**: [2-3 key]
 
 ### Q1: [How/Why/Compare/Explain...] (Understanding)
-**Meta**: [F/I/A] | Dim: [#] | Contexts: [list]  
+**Meta**: [F/I/A] | Dim: [#] | Contexts: [list] | **Decision Criticality**: [Criterion]
 **Key Insight**: [Quantified finding with N, effect size]
 
-**Answer** (200-350 words):
-[Context] → [Psychology] → [Theory + citation] → [Application] → [Considerations: boundaries, indiv diffs, risks]
+**Answer** (150-250 words):
+[Context] → [Psychology] → [Theory + citation] → [Application] → [Decision Criteria: go/no-go thresholds, when to apply]
 
 **Model**:
 ```mermaid
-[Visual <120 nodes: flowchart/graph/sequence]
+[Visual <80 nodes: flowchart/graph/sequence]
 ```
 
 **Assessment**:
-| Measure | Formula | Range | Interpretation | Validation |
-[Psychometric properties]
+| Measure | Formula | Range | Interpretation |
+[Psychometric properties, compressed]
 
 **Perspectives** (≥2):
-| View | Evidence (N, p) | Context | Limits | Applicable | Tag |
+| View | Evidence (N, p) | Context | Applicable |
 [Acknowledge assumptions, biases, alternatives]
 
-**Risk/Value**: [High-risk flag | Benefits | Mitigation]  
-**Dimension Link**: [Theory connection]  
+**Risk/Value**: [High-risk flag | Benefits | Mitigation]
+**Dimension Link**: [Theory connection]
 **Boundaries**: [Age/Culture/Dev ranges]
+**Decision Criticality Justification**: [Why this Q&A blocks decision or creates risk]
 
 ---
 
 ## References
 
-### Glossary (≥15)
+### Glossary (≥8, only terms used)
 **G[ID]. [Term]** [EN/ZH] – [Definition]. **Related**: [IDs]. **Dim**: [#]
 
-### Tools (≥8)
-**T[ID]. [Name]** [Status] – **Purpose**: [measures]. **Validation**: [α, validity]. **Updated**: [YYYY-MM]. **Adoption**: [stats]. **URL**: [link]
+### Tools (≥4)
+**T[ID]. [Name]** – **Purpose**: [measures]. **Validation**: [α, validity]. **Updated**: [YYYY-MM]. **URL**: [link]
 
-### Literature (≥10)
+### Literature (≥6, canonical)
 **L[ID]. Author. (Year). *Title*. Publisher.** [Lang] – [Contribution]
 
-### Citations (≥18, APA 7th)
+### Citations (≥10, APA 7th)
 **A[ID].** Author. (Year). Title. *Journal*, Vol(Issue), pages. [Lang] [Type]
 
 ---
 
-## Validation (23+6)
+## Validation (12+6)
 
 | # | Check | Target | Result | Status |
-| 1-23 | [from Step 6] | [targets] | [actuals] | [PASS/FAIL] |
+| 1-12 | [from Step 6] | [targets] | [actuals] | [PASS/FAIL] |
 
 | # | Review | Assessment | Status |
-| 1-6 | [Clarity, Accuracy, Completeness, Balance, Practicality, Correctness] | [evidence] | [PASS/FAIL] |
+| 1-6 | [Decision-Critical, Clarity, Accuracy, Completeness, Practicality, Correctness] | [evidence] | [PASS/FAIL] |
 
-**Status**: [X/23] + [Y/6] = [PASS/FAIL]  
-**Issues**: [failures + root causes]  
-**Remediation**: [fixes]  
-**Cert**: Ready when 23/23 + 6/6
+**Status**: [X/12] + [Y/6] = [PASS/FAIL]
+**Issues**: [failures + root causes]
+**Remediation**: [fixes]
+**Cert**: Ready when 12/12 + 6/6
 ```
 
 # Reference Examples

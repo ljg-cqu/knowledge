@@ -1,78 +1,84 @@
-# Project Management Interview Q&A Generator
+# Project Management Q&A (Decision-Critical)
 
-Generate 25–30 scenario-based questions testing senior+ (5-15 yrs) project management judgment with evidence-based answers and visual artifacts.
+Generate 6–12 decision-critical Q&As for project management scenarios—minimal viable set for informed decisions with limited time.
 
 ## I. Context
 
-**Purpose**: Assess senior/director/VP judgment through multi-dimensional scenarios requiring stakeholder navigation and strategic trade-offs.
+**Purpose**: Address only decision-critical management scenarios (constraints, risks, stakeholder dynamics) that block decisions or create material risk.
 
-**Scope**: Stakeholder tension, resource constraints, strategic ambiguity, schedule pressure, budget limitations. **Exclude**: Trivia, theory, junior tasks, domain-specific technical questions.
+**Scope**: Portfolio prioritization, budget variance, stakeholder escalation, risk materialization, resource bottlenecks, schedule slips, scope creep, team morale. **Exclude**: Trivia, theory, generic best practices, niche/legacy practices (<5% adoption).
 
-**Terms**: Floor (≥ minimum threshold), Gate (mandatory checkpoint—fail = stop/fix), Difficulty (F=execution, I=strategy/trade-offs, A=portfolio/program/organization), Dimensions (Planning/Execution/Risk/Stakeholder).
+**Terms**: Decision Criticality (≥1 criterion: Blocks decision, Creates risk, Affects ≥2 stakeholders, Actively evolving, High adoption barrier >40h), Minimal Viable (6-12 Q&As sufficient for informed judgment), Pareto Principle (20% of scenarios drive 80% of PM decisions).
 
-**Assumptions**: LLM knows PM frameworks (PMBOK, PRINCE2, Agile, CPM, EVM, Risk, Change, Portfolio Management); user provides context or accepts generic scenarios; 10-15min discussion/question.
+**Assumptions**: LLM knows PM frameworks (PMBOK, PRINCE2, Agile, EVM, Risk, Change, Portfolio); user provides context; 5-10min per question.
 
-**Constraints**: 150-300 words/answer (excluding artifacts); ≥70% have ≥1 citation (≥30% have ≥2); 100% scenario-based; senior+ only.
+**Constraints**: 150-250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; decision-critical only.
 
-**Limitations**: Generic scenarios lack industry nuance; ≥50% citations from last 3yrs; include framework trade-offs/limitations; add qualitative review to quantitative validation.
+**Limitations**: Generic scenarios lack industry nuance; ≥50% citations from last 2yrs; include framework trade-offs; add qualitative review.
 
-## II. Requirements
+## II. Requirements (Minimal Viable)
 
-**Q&A**: 25–30 total | 20%F/40%I/40%A (±5%) | 150–300 words | ≥70% have ≥1 citation (≥30% have ≥2) | ≥2 dimensions/answer
+**Q&A**: 6–12 total | 25%F/50%I/25%A (±5%) | 150–250 words | ≥70% have ≥1 citation (≥40% have ≥2) | Decision-critical only
 
-**Topics (MECE)**: 1. Planning & Scheduling (5–6) | 2. Resource & Budget (4–5) | 3. Risk & Issue (5–6) | 4. Stakeholder & Communication (4–5) | 5. Team Leadership (4–5) | 6. Portfolio & Program (4–5)
+**Topics (Decision-Critical)**: 1. Portfolio & Prioritization (1–2) | 2. Budget & Variance (1–2) | 3. Risk & Escalation (1–2) | 4. Stakeholder Dynamics (1–2) | 5. Resource Constraints (1–2) | 6. Team & Morale (1–2)
 
-**References** (build before Q&A): Glossary ≥10 | Tools ≥5 | Literature ≥6 (≥2 ZH) | Citations ≥12 APA 7th + [EN]/[ZH] tags | >30 Q&A: multiply by 1.5×
+**Decision Criticality Framework**: Include if ≥1 criterion met:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot
+- **Creates Risk**: Material threat (financial, operational, reputational, schedule)
+- **Affects ≥2 Stakeholders**: Multi-team impact (e.g., PM + Exec, Dev Lead + Finance)
+- **Actively Evolving**: Management/org dynamics changing in past 3-6 months
+- **High Adoption Barrier**: >40h to implement/learn
 
-**Visuals**: ≥1 diagram + ≥1 table per topic (≥12 total)
+**References** (build before Q&A): Glossary ≥8 | Tools ≥4 | Literature ≥4 (≥1 ZH) | Citations ≥8 APA 7th + [EN]/[ZH] tags
 
-**Citations**: APA 7th + tag | Inline: `[Ref: ID]` (G#=Glossary, T#=Tool, L#=Literature, A#=Citation) | EN 50–70%, ZH 20–40%, Other 5–15% | ≥3 source types (frameworks/research/case studies/tools)
+**Visuals**: ≥1 diagram + ≥1 table per topic (≥6 total)
+
+**Citations**: APA 7th + tag | Inline: `[Ref: ID]` (G#=Glossary, T#=Tool, L#=Literature, A#=Citation) | EN 60–70%, ZH 20–30%, Other 5–10% | ≥2 source types (frameworks/research/case studies)
 
 **Quality Gates** (fail any = stop/fix/re-validate all):
-1. Recency: ≥50% from last 3yrs (≥70% for AI/ML/platform/data)
-2. Source diversity: ≥3 types, no type >25%
-3. Per-topic evidence: ≥2 authoritative + ≥1 tool each
-4. Tool completeness: Pricing, user base, update (≤18mo), ≥3 integrations
-5. Link validation: 100% URLs accessible/archived
-6. Cross-reference integrity: 100% [Ref: ID] resolve, no orphans
+1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+2. **Recency**: ≥50% from last 2yrs (decision-critical only)
+3. **Source diversity**: ≥2 types, no type >50%
+4. **Per-topic evidence**: ≥1 authoritative + ≥1 tool each
+5. **Link validation**: 100% URLs accessible/archived
+6. **Cross-reference integrity**: 100% [Ref: ID] resolve, no orphans
 
-## III. Execution
+## III. Execution (Minimal Viable)
 
 ### Step 1: Plan Allocation
-Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with ≥1F, ≥1I, ≥1A.
+Distribute 6–12 across 6 topics (25%F/50%I/25%A). Each topic: 1–2 Q&A, all decision-critical.
 
 ### Step 2: Build References (before Q&A → run Gates 1–6 after)
-**Glossary (≥10)**: PM frameworks (CPM, EVM, WBS, RACI, Agile, Scrum, Kanban, Risk Matrix, Change Control, Stakeholder Analysis) | Format: term, definition (1–2 sentences), use cases, related, limitations | Assign G1, G2...
+**Glossary (≥8)**: PM frameworks (EVM, RACI, Risk Matrix, Change Control, Stakeholder Analysis, Portfolio, Prioritization, Escalation) | Format: term, definition (1–2 sentences), use cases, limitations | Assign G1, G2...
 
-**Tools (≥5)**: Scheduling (MS Project, Primavera), Collaboration (Jira, Asana, Monday), Risk (RiskWatch), Portfolio (PPM Pro), Communication (Slack, Teams) | Include: category, pricing, users, update (≤18mo), ≥3 integrations, PM use case, URL | Assign T1, T2...
+**Tools (≥4)**: Scheduling (MS Project, Jira), Collaboration (Asana, Slack) | Include: category, pricing, users, PM use case, URL | Assign T1, T2...
 
-**Literature (≥6)**: EN—PMI (*PMBOK Guide*), Kerzner (*Project Management*), Wysocki (*Effective PM*) | ZH (≥2)—PM-focused Chinese titles | Include: author, title, year, summary, frameworks, relevance | Assign L1, L2...
+**Literature (≥4)**: EN—PMI (*PMBOK Guide*), Kerzner (*Project Management*) | ZH (≥1)—PM-focused Chinese title | Include: author, title, year, summary, frameworks | Assign L1, L2...
 
-**Citations (≥12)**: APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/case studies/tools | Assign A1, A2...
+**Citations (≥8)**: APA 7th + tags | Verify ≥50% from last 2yrs | Classify: frameworks/research/case studies | Assign A1, A2...
 
-### Step 3: Generate Q&A (5 at a time → self-check)
-**Question**: Scenario format ("How would you...", "Walk me through...", "CEO wants X—what do?") | Include constraints (time, resources, stakeholder pressure, conflicting data) | Test ≥2 judgment signals (trade-offs, opportunity cost, stakeholder tension, incomplete info, execution complexity) | Single ask | **Avoid**: "What is X?", "List Y", "Define Z"
+### Step 3: Generate Q&A (2–3 at a time → self-check)
+**Question**: Scenario format ("How would you...", "Walk me through...", "CEO wants X—what do?") | Include constraints (time, resources, stakeholder pressure) | Test ≥2 judgment signals (trade-offs, stakeholder tension, incomplete info) | Single ask | **Avoid**: "What is X?", "List Y", "Define Z"
 
-**Answer** (150–300 words):
+**Answer** (150–250 words):
 1. Key insight (1 sentence): Specific dilemma/tension
 2. Framework/approach [Ref: G#/A#]
 3. Multi-dimensional (≥2 dimensions)
 4. Concrete steps
 5. Trade-offs + alternatives
 6. Stakeholder communication
-7. Success criteria
-8. Citations (≥1 [Ref: ID])
-9. Artifact (optional): Matrix, Gantt, dashboard, RACI
+7. Citations (≥1 [Ref: ID])
+8. Artifact (optional): Matrix, decision tree, dashboard
 
-**Batch Check** (per 5): Scenario-based | ≥2 signals | 150–300 words | Concrete insight | ≥2 dimensions | ≥3/5 have ≥1 citation (≥1/5 has ≥2) | Difficulty matches content
+**Batch Check** (per 2–3): Scenario-based | Decision-critical ✓ | 150–250 words | Concrete insight | ≥2 dimensions | ≥2/3 have ≥1 citation | Difficulty matches content
 
 ### Step 4: Create Visuals (≥1 diagram + ≥1 table per topic)
-**Planning**: Gantt chart, network diagram, decision matrix | **Resources**: Resource histogram, budget variance | **Risk**: Risk matrix, impact/probability chart | **Stakeholder**: Power/interest grid, RACI matrix | **Execution**: Milestone tracker, burndown chart | **Portfolio**: Portfolio roadmap, prioritization matrix
+**Portfolio**: Decision matrix, prioritization grid | **Budget**: Budget variance chart, EVM dashboard | **Risk**: Risk matrix, impact/probability chart | **Stakeholder**: Power/interest grid, RACI matrix | **Resource**: Resource histogram, bottleneck chart | **Team**: Morale/velocity trend, escalation tree
 
 ### Step 5: Populate References
-**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
+**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Limitations | Alphabetize
 
-**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
+**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | PM use case | URL | Group by category
 
 **Literature**: **L#. Author, Title, Year** | Summary | Relevance | Group by language (EN, then ZH)
 
@@ -81,18 +87,18 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 **Check**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA have tags
 
 ### Step 6: Run 12 Validations (fail any = stop/fix/re-run all)
-1. Floors: G≥10, T≥5, L≥6, A≥12, Q=25–30, 20%F/40%I/40%A (±5%)
-2. Citations: ≥70% have ≥1, ≥30% have ≥2
-3. Language: EN 50–70%, ZH 20–40%, Other 5–15%
-4. Recency: ≥50% from last 3yrs (≥70% if AI/ML/platform/data)
-5. Source types: ≥3 types, no type >25%
-6. Links: 100% accessible/archived
-7. Cross-refs: 100% [Ref: ID] resolve, no orphans
-8. Word count: Sample 5, 100% within 150–300
-9. Key insights: 100% concrete (specific dilemma/tension)
-10. Per-topic evidence: 6/6 topics have ≥2 authoritative + ≥1 tool
-11. Framework usage: ≥80% correct + cited + limitations
-12. Judgment ratio: ≥70% scenario-based
+1. Floors: G≥8, T≥4, L≥4, A≥8, Q=6–12, 25%F/50%I/25%A (±5%)
+2. Decision Criticality: 100% satisfy ≥1 criterion
+3. Citations: ≥70% have ≥1, ≥40% have ≥2
+4. Language: EN 60–70%, ZH 20–30%, Other 5–10%
+5. Recency: ≥50% from last 2yrs
+6. Source types: ≥2 types, no type >50%
+7. Links: 100% accessible/archived
+8. Cross-refs: 100% [Ref: ID] resolve, no orphans
+9. Word count: Sample 5, 100% within 150–250
+10. Key insights: 100% concrete (specific dilemma/tension)
+11. Per-topic evidence: 6/6 topics have ≥1 authoritative + ≥1 tool
+12. Judgment ratio: ≥70% scenario-based + decision-critical
 
 ### Step 7: Final Review
 **Questions**: Clarity (single ask) | Signal (judgment not trivia) | Depth (trade-offs) | Realism (senior+ PM) | Discriminative (application over recall) | Alignment (difficulty matches seniority)
@@ -101,22 +107,22 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 
 **Submission**: All 12 validations PASS | All floors met | All 6 gates passed | TOC with links | No placeholders | Consistent formatting | Balanced perspectives
 
-## IV. Validation Report (fail any = stop/fix/re-run all)
+## IV. Validation Report (Minimal Viable - fail any = stop/fix/re-run all)
 
 | # | Check | Criteria | Result | Status |
 |---|-------|----------|--------|--------|
-| 1 | Floors | G≥10, T≥5, L≥6, A≥12, Q:25-30, 20/40/40%F/I/A (±5%) | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A) | PASS/FAIL |
-| 2 | Citations | ≥70% have ≥1, ≥30% have ≥2 | __%≥1, __%≥2 | PASS/FAIL |
-| 3 | Language | EN:50-70%, ZH:20-40%, Other:5-15% | EN:__%, ZH:__%, Other:__% | PASS/FAIL |
-| 4 | Recency | ≥50% from 3yrs (≥70% AI/platform) | __% from 3yrs (domain: ___) | PASS/FAIL |
-| 5 | Source Types | ≥3 types, max 25% | __ types; max __% | PASS/FAIL |
-| 6 | Links | 100% accessible/archived | __/__ accessible | PASS/FAIL |
-| 7 | Cross-Refs | 100% [Ref: ID] resolve, no orphans | __/__ resolved | PASS/FAIL |
-| 8 | Word Count | 100% within 150-300 | __ sampled: __ compliant | PASS/FAIL |
-| 9 | Key Insights | 100% concrete (dilemma/tension) | __/__ concrete | PASS/FAIL |
-| 10 | Per-Topic Evidence | 6/6 have ≥2 authoritative + ≥1 tool | __/6 | PASS/FAIL |
-| 11 | Frameworks | ≥80% correct + cited + limitations | __/__ correct+cited+limits | PASS/FAIL |
-| 12 | Judgment Ratio | ≥70% scenario-based | __%scenario-based | PASS/FAIL |
+| 1 | Floors | G≥8, T≥4, L≥4, A≥8, Q:6-12, 25/50/25%F/I/A (±5%) | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A) | PASS/FAIL |
+| 2 | Decision Criticality | 100% satisfy ≥1 criterion | __/__ satisfy | PASS/FAIL |
+| 3 | Citations | ≥70% have ≥1, ≥40% have ≥2 | __%≥1, __%≥2 | PASS/FAIL |
+| 4 | Language | EN:60-70%, ZH:20-30%, Other:5-10% | EN:__%, ZH:__%, Other:__% | PASS/FAIL |
+| 5 | Recency | ≥50% from 2yrs | __% from 2yrs | PASS/FAIL |
+| 6 | Source Types | ≥2 types, max 50% | __ types; max __% | PASS/FAIL |
+| 7 | Links | 100% accessible/archived | __/__ accessible | PASS/FAIL |
+| 8 | Cross-Refs | 100% [Ref: ID] resolve, no orphans | __/__ resolved | PASS/FAIL |
+| 9 | Word Count | 100% within 150-250 | __ sampled: __ compliant | PASS/FAIL |
+| 10 | Key Insights | 100% concrete (dilemma/tension) | __/__ concrete | PASS/FAIL |
+| 11 | Per-Topic Evidence | 6/6 have ≥1 authoritative + ≥1 tool | __/6 | PASS/FAIL |
+| 12 | Judgment Ratio | ≥70% scenario-based + decision-critical | __%scenario-based | PASS/FAIL |
 
 ## V. Question Quality (fails ≥2 = rewrite/replace)
 
@@ -127,63 +133,70 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each topic: 4–6 Q&A with 
 5. **Discriminative**: Application not recall | ✓ "When would CPM mislead? How supplement?" | ✗ "What is Critical Path Method?"
 6. **Alignment**: Difficulty matches seniority | F: execution | I: strategy/trade-offs | A: portfolio/program/organization
 
-## VI. Output Format
+## VI. Output Format (Minimal Viable)
 
 ### A. TOC
-1. Topic Overview | 2. Q&A by Topic (6 topics) | 3. References (Glossary/Tools/Literature/Citations) | 4. Validation Report
+1. Decision Criticality Framework | 2. Topic Overview | 3. Q&A by Topic (6 topics) | 4. References (Glossary/Tools/Literature/Citations) | 5. Validation Report
 
-### B. Topic Overview
-| # | Topic | Range | Count | Mix | Artifacts |
-|---|-------|-------|-------|-----|-----------|
-| 1 | Planning & Scheduling | Q1–Q5 | 5 | 1F/2I/2A | 1 diagram+table |
-| 2 | Resource & Budget | Q6–Q10 | 5 | 1F/2I/2A | 1 diagram+table |
-| 3 | Risk & Issue | Q11–16 | 6 | 1F/2I/3A | 1 diagram+table |
-| 4 | Stakeholder & Comm | Q17–21 | 5 | 1F/2I/2A | 1 diagram+table |
-| 5 | Team Leadership | Q22–25 | 4 | 1F/2I/1A | 1 diagram+table |
-| 6 | Portfolio & Program | Q26–30 | 5 | 1F/2I/2A | 1 diagram+table |
-| | **Total** | | **30** | **6F/12I/12A** | **12** |
+### B. Decision Criticality Framework
+**Include if ≥1 criterion met**:
+- **Blocks Decision**: Directly impacts go/no-go, resource allocation, or strategic pivot
+- **Creates Risk**: Material threat (financial, operational, reputational, schedule)
+- **Affects ≥2 Stakeholders**: Multi-team impact (e.g., PM + Exec, Dev Lead + Finance)
+- **Actively Evolving**: Management/org dynamics changing in past 3-6 months
+- **High Adoption Barrier**: >40h to implement/learn
+
+### C. Topic Overview
+| # | Topic | Range | Count | Mix | Artifacts | Decision Criticality |
+|---|-------|-------|-------|-----|-----------|----------------------|
+| 1 | Portfolio & Prioritization | Q1–Q2 | 1–2 | F/I or I/A | 1 diagram+table | Blocks decision, Affects stakeholders |
+| 2 | Budget & Variance | Q3–Q4 | 1–2 | F/I or I/A | 1 diagram+table | Creates risk, Actively evolving |
+| 3 | Risk & Escalation | Q5–Q6 | 1–2 | F/I or I/A | 1 diagram+table | Blocks decision, Creates risk |
+| 4 | Stakeholder Dynamics | Q7–Q8 | 1–2 | F/I or I/A | 1 diagram+table | Affects stakeholders, Actively evolving |
+| 5 | Resource Constraints | Q9–Q10 | 1–2 | F/I or I/A | 1 diagram+table | Blocks decision, Creates risk |
+| 6 | Team & Morale | Q11–Q12 | 1–2 | F/I or I/A | 1 diagram+table | Affects stakeholders, Adoption barrier |
+| | **Total** | | **6–12** | **3F/3–6I/2–3A** | **6** | **100% ≥1 criterion** |
 
 Legend: F=execution | I=strategy/trade-offs | A=portfolio/program/organization
 
-### C. Q&A Format
+### D. Q&A Format
 **Q#: [Scenario question]**
-**Difficulty**: [F/I/A] | **Topic**: [Area] | **Key Insight**: [1 sentence—dilemma/tension]
-**Answer** (150–300 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
-**Artifact** *(optional)*: Matrix/Gantt/dashboard/RACI
+**Difficulty**: [F/I/A] | **Topic**: [Area] | **Decision Criticality**: [Criterion] | **Key Insight**: [1 sentence—dilemma/tension]
+**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | ≥1 [Ref: ID]
+**Artifact** *(optional)*: Matrix/decision tree/dashboard
 
-### D. Reference Formats
-**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations
-**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations | PM use case | URL
+### E. Reference Formats
+**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Limitations
+**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | PM use case | URL
 **Literature**: **L#. Author, Title, Year** | Summary | Relevance
 **Citations**: **A#. [Citation] [Lang]** | APA 7th format
 
-## VII. Example
+## VII. Minimal Viable Example
 
-**Q1: Major client demands feature mid-project that requires 30% budget increase and 2-month delay. Contract renewal ($5M) depends on delivery. Project already 15% over budget. What do?**
+**Q1: Major client demands feature mid-project requiring 30% budget increase and 2-month delay. Contract renewal ($5M) depends on delivery. Project already 15% over budget. What do?**
 
-**Difficulty**: A | **Topic**: Portfolio & Program
+**Difficulty**: I | **Topic**: Portfolio & Prioritization | **Decision Criticality**: Blocks decision (go/no-go), Affects stakeholders (Exec, PM, Client)
 
-**Key Insight**: Tests portfolio-level judgment balancing strategic revenue, scope/budget control, and stakeholder expectations under executive pressure.
+**Key Insight**: Tests judgment balancing strategic revenue, scope/budget control, and stakeholder expectations under executive pressure.
 
-**Answer** (247 words):
+**Answer** (220 words):
 
-Use multi-dimensional impact analysis [Ref: A1]. **First, quantify trade-offs** using decision matrix [Ref: G2]. Baseline vs. 3 scenarios: (1) Accept change (+$1.5M/+2mo): secures $5M but sets precedent, impacts other projects; (2) Negotiate scope reduction: delivers core capability, preserves timeline/budget; (3) Decline: risks $5M revenue, preserves portfolio integrity.
+**Framework**: Use multi-dimensional impact analysis [Ref: A1]. **Quantify trade-offs** using decision matrix [Ref: G2]. Baseline vs. 3 scenarios: (1) Accept (+$1.5M/+2mo): secures $5M but sets precedent; (2) Negotiate scope: delivers core, preserves timeline/budget; (3) Decline: risks $5M, preserves portfolio.
 
-**Second, assess portfolio impact** [Ref: G6]. Are other projects resource-constrained? Does delay cascade? Use portfolio roadmap [Ref: T3] to model ripple effects. If 30% increase means deferring 2 other initiatives, calculate opportunity cost [Ref: A4].
+**Portfolio impact** [Ref: G6]: Does delay cascade? Use portfolio roadmap to model ripple effects. If 30% increase defers 2 other initiatives, calculate opportunity cost [Ref: A4].
 
-**Third, evaluate with EVM** [Ref: G3]. Current CPI=0.87 (15% over). Adding scope worsens performance baseline. Will this become pattern? Use Risk Matrix [Ref: G8] to assess: client satisfaction (high impact/high probability) vs. portfolio health (high impact/medium probability).
+**EVM assessment** [Ref: G3]: Current CPI=0.87 (15% over). Adding scope worsens baseline. Use Risk Matrix [Ref: G8]: client satisfaction (high/high) vs. portfolio health (high/medium).
 
-**Trade-offs**: (1) Accept: revenue secured but precedent/portfolio impact; (2) Negotiate: balanced but requires skilled stakeholder management; (3) Decline: maintains control but revenue risk; (4) Phase delivery: spreads cost/timeline but adds complexity [Ref: L2].
+**Trade-offs**: Accept (revenue secured, precedent risk) | Negotiate (balanced, requires stakeholder skill) | Decline (control maintained, revenue risk).
 
-**Stakeholder communication**: Present analysis to steering committee with recommendation, quantified impacts, risk mitigation. Escalate decision—program-level authority required [Ref: A5].
+**Stakeholder communication**: Present analysis to steering committee with quantified impacts and risk mitigation. Escalate—program-level authority required [Ref: A5].
 
-**Success criteria**: Revenue retained, portfolio velocity maintained (±10%), precedent managed (change control enforced), stakeholder satisfaction (CSAT ≥80%).
+**Success criteria**: Revenue retained, portfolio velocity ±10%, precedent managed, CSAT ≥80%.
 
 **Artifact**:
 
-| Scenario | Revenue Risk | Budget Impact | Schedule Impact | Portfolio Impact | Risk Score | Recommendation |
-|----------|--------------|---------------|-----------------|------------------|------------|----------------|
-| Accept Change | Low ($5M secured) | High (+30%) | High (+2mo) | High (cascades) | 7.5/10 | No |
-| Negotiate Scope | Medium ($5M likely) | Low (±5%) | Low (±2wk) | Low (minimal) | 4.2/10 | **Yes** |
-| Decline | High ($5M at risk) | None | None | None | 8.5/10 | No |
-| Phase Delivery | Medium ($5M partial) | Medium (+15%) | Medium (+1mo) | Medium (partial) | 6.0/10 | Maybe |
+| Scenario | Revenue Risk | Budget Impact | Portfolio Impact | Risk Score | Recommendation |
+|----------|--------------|---------------|-----------------|------------|----------------|
+| Accept Change | Low ($5M secured) | High (+30%) | High (cascades) | 7.5/10 | No |
+| Negotiate Scope | Medium ($5M likely) | Low (±5%) | Low (minimal) | 4.2/10 | **Yes** |
+| Decline | High ($5M at risk) | None | None | 8.5/10 | No |
