@@ -22,49 +22,47 @@
 
 **Difficulty**: F | **Type**: Growth
 
-**Key Insight**: MPC platforms exhibit quadratic network effects where value increases exponentially as more parties join, creating a self-reinforcing growth loop through enhanced security and computation capabilities.
+**Key Insight**: Blockchain MPC platforms can exhibit strong network effects: as more independent operators, applications, and chains join, shared security assurances, tooling, and connectivity make the platform increasingly attractive to new participants.
 
-**Answer** (248 words):
+**Answer** (~220 words):
 
-The growth mechanism in blockchain MPC platforms operates through a multi-layered network effect [Ref: G1]. As more participants join the network, the computational power and security guarantees increase non-linearly, creating a powerful growth flywheel [Ref: A1].
+The growth mechanism in blockchain MPC platforms is largely driven by network effects [Ref: G1]. As more independent nodes or operators participate, the platform gains a larger pool of potential signers or computation providers. This enables threshold committees that are more geographically and organizationally diverse, improving resilience against single-entity compromise and outages [Ref: A1].
 
-**Primary Growth Loop**: New nodes join → increased computational capacity → better performance/lower costs → attracts more use cases → more nodes needed → cycle repeats [Ref: G2]. This creates a positive feedback loop where each additional participant increases the value for all existing participants.
+On the demand side, as more wallets, custodians, DeFi protocols, and cross-chain bridges build on the same MPC infrastructure, new integrators immediately benefit from existing support: audited protocols, chain connectivity, operational runbooks, and monitoring tooling [Ref: G2]. This reduces integration cost and time-to-market, which in turn attracts additional projects and end users.
 
-**Quantitative Dynamics**: Networks with <100 nodes show linear growth (1.2x monthly), but crossing 100 nodes triggers exponential growth (2.8x monthly) due to threshold effects [Ref: A2]. The viral coefficient K typically ranges from 0.8 (early stage) to 1.6 (mature networks), with K>1.0 indicating sustainable viral growth [Ref: G3].
+These direct (more participants → more security and availability options) and indirect (more applications → more end users) network effects reinforce each other and create a growth flywheel [Ref: G3]. A richer ecosystem also justifies ongoing investment in performance optimizations, new protocol support, and security audits, further increasing the platform’s attractiveness.
 
-**Security Amplification**: Each new node increases the minimum corruption threshold from t/n to (t+1)/(n+1), where t is the number of malicious nodes tolerated. This improved security attracts enterprise users, who bring more nodes, further strengthening security [Ref: L1].
+However, the network effect is not unbounded. As the number of parties involved in a given MPC committee or coordination layer increases, so do latency, communication overhead, and governance complexity. Practical deployments therefore typically keep individual signing committees relatively small (for example, a few to a few dozen parties) while allowing many such committees to exist on top of the same shared MPC platform [Ref: L1].
 
-**Break Points**: Growth stalls when: (1) Coordination overhead exceeds benefits (typically >1000 nodes), (2) Regulatory uncertainty creates adoption friction, (3) Competing protocols fragment the network [Ref: A3].
-
-**Leading Metrics**: Node growth rate, transaction throughput increase, developer activity (GitHub commits), partnership announcements.
+**Leading Metrics**: Number of independent operators, number of integrations and supported chains, transaction volume, and developer activity (e.g., GitHub commits, protocol upgrades).
 
 **Artifact**:
 ```
-Nodes Join → Capacity↑ → Performance↑
-     ↑                          ↓
-     ← Enterprise Adoption ← Use Cases↑
-           ↓
-     Security Threshold↑
+More Participants → Capacity↑ → Performance / Features↑
+         ↑                            ↓
+         ← Enterprise Adoption ← More Integrations↑
+                   ↓
+         Security / Resilience↑
 ```
 
 **Visual Summary (Mermaid)**:
 ```mermaid
 graph LR
-    A[New Nodes Join] --> B[Capacity ↑]
-    B --> C[Performance ↑ / Cost ↓]
-    C --> D[More Use Cases]
+    A[More Operators / Apps Join] --> B[Capacity & Supported Use Cases ↑]
+    B --> C[Better Performance / Tooling]
+    C --> D[More Integrations & End Users]
     D --> A
-    D --> E[Enterprise Adoption]
-    E --> F[Higher Security Threshold]
+    D --> E[Stronger Track Record & Trust]
+    E --> F[Perceived Security / Resilience ↑]
     F --> A
 ```
 
-**Supporting Table: MPC Network Growth Regimes**
-| Stage   | Node Count | Growth Pattern                         | Viral Coefficient (K) |
-|---------|------------|----------------------------------------|------------------------|
-| Early   | <100       | Mostly linear (~1.2x monthly)         | 0.8–1.0                |
-| Tipping | ≥100       | Exponential (~2.8x monthly)           | 1.0–1.3                |
-| Mature  | ≥500       | Slower exponential, coordination overhead limits growth | 1.3–1.6 |
+**Supporting Table: Example MPC Network Maturity Stages**
+| Stage     | Ecosystem Characteristics                                  | Growth Pattern (Illustrative)            |
+|-----------|-------------------------------------------------------------|-----------------------------------------|
+| Early     | Few operators and integrations; limited tooling             | Growth mainly from new pilot projects   |
+| Expansion | Growing set of operators, chains, and production use cases | Faster adoption as reuse increases      |
+| Mature    | Many use cases and strong tooling; heavier coordination    | Growth slows as coordination costs rise |
 
 ---
 
