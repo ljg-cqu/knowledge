@@ -20,11 +20,16 @@
 
 ## Quick Checklist (30s)
 
-☑ Format (type/format/purpose/constraints) ☑ Generate (Mermaid/ASCII) or link (verified, NO hallucinations) ☑ Official sources (docs/repos) ☑ WCAG 2.1 AA (alt/captions/transcripts) ☑ Essential only (decision-critical) ☑ Structure (context/metadata/alt/takeaway)
+ - ☑ Format (type/format/purpose/constraints)
+ - ☑ Generate (Mermaid/ASCII) or link (verified, NO hallucinations)
+ - ☑ Official sources (docs/repos)
+ - ☑ WCAG 2.1 AA (alt/captions/transcripts)
+ - ☑ Essential only (decision-critical)
+ - ☑ Structure (context/metadata/alt/takeaway)
 
----
+ ---
 
-## Exclude (Copy to prompt)
+ ## Exclude (Copy to prompt)
 
 ```
 Exclude: decorative, hallucinated URLs, redundant (unless >40% gain), no alt text, image generation, unverified sources, platform-locked, marketing, concept art.

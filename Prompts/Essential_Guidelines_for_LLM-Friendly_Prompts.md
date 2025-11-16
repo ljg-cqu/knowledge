@@ -1,8 +1,13 @@
-# Guidelines for LLM-Friendly Prompts: Essential Only
+# Essential Guidelines for LLM-Friendly Prompts
 
-**Time is precious.** Generate ONLY if: **Decision-Critical** (blocks decision | risk >5% | 0-6mo | ≥2 stakeholders | reversal >40h) + **High-Quality** (accurate | precise | cited | actionable | complete) + **Minimal** (necessary | non-redundant | <2h). **Result**: ↓60-75% content, 100% decision capability, ↓30-60% hallucinations, ↑60-80% quality, ↑50-70% overall.
+**Time is precious.** Use this file ONLY when ALL are true:
+- **Decision-critical**: blocks a real decision, risk >5%, horizon 0-6mo, ≥2 stakeholders, reversal >40h.
+- **High-quality**: requires accurate, precise, cited, actionable, and complete answers.
+- **Minimal**: asks only what is necessary and non-redundant; total prompt+review time <2h.
 
-**Priority**: P0 (0-2wk) > P1 (2-6wk) > P2 (2-6mo) | Skip >6mo
+**Priority**: P0 (0-2wk) > P1 (2-6wk) > P2 (2-6mo); skip >6mo decisions.
+
+**Result**: ↓60-75% content, 100% decision capability, ↓30-60% hallucinations, ↑60-80% quality, ↑50-70% overall.
 
 ---
 
