@@ -2,7 +2,7 @@
 
 **Purpose:** Improve LLM output quality for decision-critical prompts (fewer hallucinations, better decision support).
 
-**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -14,7 +14,7 @@
 
 **3. Precision** [↓40-50% ambiguity in specifications]: The prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
 
-**4. Relevance** [↓30-40% noise]: The prompt requests focus on decision-critical aspects only. ❌ Bad: "Explain database history and current options" ✅ Optimized: "Compare SQL vs NoSQL for e-commerce use case: focus on transaction requirements, scale characteristics, query patterns. Exclude history."
+**4. Relevance** [↓30-40% noise]: The prompt requests focus on decision-critical aspects only. ❌ Bad: "Explain database history and current options" ✅ Optimized: "Compare SQL vs NoSQL for e-commerce use case: focus on transaction requirements, scale characteristics, query patterns. Exclude history unless regulatory context is decision-critical."
 
 ### Scope: What to Cover
 
@@ -64,6 +64,6 @@
 
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
 
-**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
+**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact or low severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, domain, constraints, stakeholders, budget
 
 **Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE+Sufficiency) | ↑30-45% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
