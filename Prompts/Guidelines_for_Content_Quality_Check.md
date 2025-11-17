@@ -10,9 +10,9 @@
 
 **1. Context** [↓30-40% clarification]: State scope, constraints, assumptions, scale, timeline, stakeholders, resources. ❌ Title only. ✅ Problem, scope, scale, timeline, stakeholders, constraints.
 
-**2. Clarity** [↓25-35% ambiguity]: Define key terms and critical relationships. ❌ Unexplained jargon/specialized terms. ✅ Key terms defined, relationships explained.
+**2. Clarity** [↓25-35% ambiguity]: Define key terms and critical relationships; use diagrams for complex relationships. ❌ Unexplained jargon/specialized terms. ✅ Key terms defined, relationships explained; diagrams for architectures/workflows/dependencies.
 
-**3. Precision** [↓40-50% specification ambiguity]: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "scalable", "soon"). ✅ Specific, measurable criteria (numbers, ranges, thresholds).
+**3. Precision** [↓40-50% specification ambiguity]: Use exact metrics, formulas, units; formulas eliminate ambiguity in calculations. ❌ Vague qualifiers ("fast", "scalable", "soon"). ✅ Specific, measurable criteria (numbers, ranges, thresholds); formulas for calculations/algorithms.
 
 **4. Relevance** [↓30-40% noise]: Focus on decision-critical information; move non-essential details to appendices. ❌ Extensive background without connection to decisions. ✅ Information directly supports decisions/actions; background brief or linked.
 
@@ -44,7 +44,7 @@
 
 ### Format
 
-**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables for easy scanning. ❌ Long, unstructured text blocks. ✅ Clear headings, bullet lists, comparison tables, visual aids.
+**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams for easy scanning. ❌ Long, unstructured text blocks. ✅ Clear headings, bullet lists, comparison tables; diagrams (flowcharts, decision trees, architecture diagrams) for complex structures.
 
 **17. Consistency** [↑35-45% readability]: Follow consistent hierarchy and conventions. ❌ Mixed heading levels, inconsistent formatting. ✅ Predictable structure following conventions (H1 title, H2 sections, bullets, tables).
 
@@ -54,7 +54,7 @@
 
 **19. Verification** [↓25-35% errors]: Perform structured self-review. ❌ Finalized without verification. ✅ Verify calculations, check contradictions/inconsistencies, validate examples, confirm assumptions, flag unknowns.
 
-**20. Practicality** [↑50-60% implementation speed]: Include concrete steps and examples. ❌ Generic/abstract recommendations only. ✅ Actionable steps, examples, commands, formulas, checklists, decision trees.
+**20. Practicality** [↑50-60% implementation speed]: Include concrete steps, examples, formulas, diagrams. ❌ Generic/abstract recommendations only. ✅ Actionable steps, examples, commands; formulas for calculations; diagrams/checklists/decision trees for procedures.
 
 **21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes and validation methods. ❌ Vague criteria ("better performance"). ✅ Specific, measurable targets (baseline, targets, measurement methods, validation approach).
 
