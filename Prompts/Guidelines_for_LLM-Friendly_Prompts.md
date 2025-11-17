@@ -1,8 +1,8 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Apply these guidelines when creating decision-critical prompts for LLMs. Following them produces higher-quality LLM outputs with fewer hallucinations and better decision support.
+**Purpose:** Improve LLM output quality for decision-critical prompts (fewer hallucinations, better decision support).
 
-**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -10,15 +10,15 @@
 
 **1. Context** [↓30-40% hallucinations]: The prompt requests scope, constraints, assumptions, scale, timeline, domain, stakeholders. ❌ Bad: "Design system" ✅ Optimized: "Design payment system: 1M users, PCI-DSS compliance, 6mo timeline, fintech startup context, stakeholders: PM+Arch+Security+Legal, budget $500K"
 
-**2. Clarity** [↓25-35% definition ambiguity]: The prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
+**2. Clarity** [↓25-35% ambiguity in definitions]: The prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
 
-**3. Precision** [↓40-50% specification ambiguity]: The prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
+**3. Precision** [↓40-50% ambiguity in specifications]: The prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
 
 **4. Relevance** [↓30-40% noise]: The prompt requests focus on decision-critical aspects only. ❌ Bad: "Explain database history and current options" ✅ Optimized: "Compare SQL vs NoSQL for e-commerce use case: focus on transaction requirements, scale characteristics, query patterns. Exclude history."
 
 ### Scope: What to Cover
 
-**5. MECE** [↑40-50% completeness]: The prompt requests complete coverage with no gaps/overlaps. ❌ Bad: "Explain security: authentication and encryption" ✅ Optimized: "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps."
+**5. MECE** [↑40-50% completeness]: The prompt requests complete coverage with no gaps/overlaps. ❌ Bad: "Explain security: authentication and encryption" ✅ Optimized: "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps/overlaps."
 
 **6. Sufficiency** [↑35-45% comprehensiveness]: The prompt requests all necessary aspects. ❌ Bad: "Design API: define endpoints" ✅ Optimized: "Design API covering: endpoints, authentication, rate limiting, versioning strategy, error handling, pagination, caching headers, documentation requirements"
 
@@ -64,6 +64,6 @@
 
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
 
-**Exclude:** History (unless regulatory), pure theory (unless ≥40h adoption cost), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
+**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
 
-**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE+Sufficiency) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
+**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE+Sufficiency) | ↑30-45% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
