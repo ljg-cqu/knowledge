@@ -1,19 +1,3 @@
-
-1. Analyze the job description to identify key technical and business requirements for the blockchain security cryptography development engineer and blockchain architect roles, focusing on multi-chain MPC integration.
-2. Research the fundamental concepts and applications of MPC (Multi-Party Computation) in blockchain technology, including key generation, key sharding management, signature collaboration protocols, and recovery processes.
-3. Investigate the specific algorithms mentioned in the job description (GG18, GG20, FROST, Threshold ECDSA, Threshold EdDSA) and their engineering implementations and optimizations.
-4. Examine the security, performance, and stability requirements for transaction signature processes in mobile, web, and backend service environments.
-5. Explore the integration of security strategies such as risk control, device verification, and multi-factor authentication into the wallet signature process.
-6. Assess the need for encapsulating underlying cryptographic capabilities into SDKs/APIs to empower internal products and external partners.
-7. Study the infrastructure requirements for wallet-related functions like account abstraction (AA), session keys, social recovery, and limit/approval flows.
-8. Analyze the transaction structures and signature standards of major public chains (Ethereum, EVM L2, BTC, Solana) to ensure compatibility.
-9. Evaluate the programming language requirements (Rust, Go, C++) and the ability to write maintainable, testable, and reusable modules.
-10. Assess the cryptographic and security background needed, including understanding of public-key cryptography principles (ECDSA, Ed25519, elliptic curves, hash commitments, zero-knowledge proofs).
-11. Investigate the practical understanding and experience required in multi-party computation, threshold signatures, key sharding, and eliminating single-point trust risks.
-12. Examine the lifecycle of on-chain transactions, including construction, signing, broadcasting, on-chain, and tracking.
-13. Familiarize with the transaction structures and RPC interactions of at least one major chain (Ethereum, BTC, Solana).
-14. Develop a comprehensive understanding of security-sensitive system development experience, including wallets, risk control, payments, asset custody, KMS, and HSM.
-15. Analyze the attack surfaces and abuse scenarios in blockchain security to inform the development of robust security strategies.
 # 多链MPC（多方计算）钱包生态系统深度理解问答体系
 
 > - MPC钱包通过将私钥分片分布在多方之间，最大程度降低单点故障风险，显著增强区块链交易的安全性。
