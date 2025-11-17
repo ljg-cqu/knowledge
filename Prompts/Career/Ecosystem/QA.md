@@ -4,7 +4,7 @@
 
 **Scope**: Generate 6–12 decision-critical Q&A pairs enabling informed ecosystem decisions through technical/business/regulatory viewpoints.
 
-**Constraints**: 4K-8K token limits; 150-250 words/answer; ≥80% have ≥1 cite (≥50% have ≥2); 100% ecosystem-focused; decision-critical only.
+**Constraints**: 150-250 words/answer; ≥80% have ≥1 cite (≥50% have ≥2); 100% ecosystem-focused; decision-critical only.
 
 **Assumptions**: Multi-party ecosystems; cloud-native; regulatory compliance required; stakeholders include Business/PM/Architect/Developer/QA/DevOps/Security/Data/SRE/Leadership.
 
@@ -297,7 +297,7 @@ sequenceDiagram
 
 **Trade-offs:**
 - **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
-- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Depth vs. Breadth**: Detailed context may be too long for some uses
 - **Precision vs. Accessibility**: Technical specificity may reduce readability
 
 **Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping

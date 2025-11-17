@@ -1,9 +1,9 @@
-# Quality Engineering Q&A Generator (Minimal Viable)
+# Quality Engineering Q&A Generator
 
 **Context:**
 - **Problem:** Quality engineering decisions often lack timely, decision-critical information, leading to suboptimal choices in testing strategies, automation, and quality gates.
 - **Scope:** Generate 6-8 Q&As on quality engineering topics for production systems (>10K rps, >1TB data), focusing on testing frameworks, automation tools, quality standards, defect patterns, observability breakthroughs.
-- **Constraints:** Bi-weekly cadence, 3-4h effort, expires 2 weeks from generation; token limits ~4K-8K.
+- **Constraints:** Bi-weekly cadence, 3-4h effort, expires 2 weeks from generation.
 - **Assumptions:** Users have basic QA knowledge; LLMs have domain expertise; sources are authoritative.
 - **Scale:** 6-8 Q&As covering 3-4 phases, 3-4 categories, ≥5 roles.
 - **Timeline:** Bi-weekly generation; immediate use; benefits accumulate over time.

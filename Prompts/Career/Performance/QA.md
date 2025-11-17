@@ -4,11 +4,11 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ## Context & Scope
 
-**Problem**: Inconsistent performance advice leading to suboptimal decisions, hallucinations in optimization strategies, incomplete analysis of bottlenecks.  
-**Scope**: Decision-critical performance engineering topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. For production systems (>1K rps).  
-**Constraints**: 4K-8K token limits; assumes basic performance knowledge; focus on production-ready solutions.  
+**Problem**: Inconsistent performance advice leading to suboptimal decisions, hallucinations in optimization strategies, incomplete analysis of bottlenecks.
+**Scope**: Decision-critical performance engineering topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. For production systems (>1K rps).
+**Constraints**: Assumes basic performance knowledge; focus on production-ready solutions.
 **Assumptions**: Users have access to profiling tools; systems are cloud-native; metrics are available via APM.  
-**Scale**: Individual engineers to 50+ teams; 100-10K token prompts; 6-12 Q&A outputs.  
+**Scale**: Individual engineers to 50+ teams; prompts ranging from brief questions to detailed scenarios; 6-12 Q&A outputs.  
 **Timeline**: Immediate use; 30-60s check; benefits accumulate over bi-weekly cycles.  
 **Stakeholders**: Performance Engineers (profiling/optimization), SREs (SLO/monitoring), Backend Developers (code tuning), Architects (design patterns), DevOps (infrastructure).  
 **Resources**: Any LLM (ChatGPT, Claude, Gemini); no cost; access to profiling tools (perf, pprof).  

@@ -51,7 +51,7 @@ To ensure high-quality, hallucination-free output with improved decision quality
 
 **Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native | Timeline: 30-60min generation
 
-**Constraints**: Token limits (4K-8K); assumes basic architecture knowledge
+**Constraints**: Assumes basic architecture knowledge
 
 **Stakeholders**: Architects, Developers, SRE, Security, Leadership
 
@@ -268,7 +268,7 @@ func (h *OrderHandler) ProcessCommand(ctx context.Context, cmd OrderCommand) err
 
 **Trade-offs**:
 - **Rigor vs. Speed**: Detailed validation increases upfront time but reduces iteration
-- **Depth vs. Breadth**: Implementation details may exceed token limits
+- **Depth vs. Breadth**: Implementation details may be too long for some uses
 - **Precision vs. Accessibility**: Technical specificity may reduce readability
 
 **Limitations**: Metrics lack external validation; single framework (no alternatives compared); observational only

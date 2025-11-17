@@ -8,11 +8,11 @@ Generate **6–12 decision-critical Q&As** for informed value decisions with lim
 
 **Scope**: Decision-critical scenarios only (blocks decision or creates material risk ≥$100K impact or 20% velocity change). **Exclude**: Niche/legacy (<5% adoption), orthogonal/nice-to-have, already covered, speculative. Focus on software engineering career contexts (design, development, deployment, operations phases).
 
-**Constraints**: 4K-8K token limit; assumes basic LLM knowledge of value frameworks; 10-15min per Q&A generation; output must be self-contained without external references.
+**Constraints**: Assumes basic LLM knowledge of value frameworks; 10-15min per Q&A generation; output must be self-contained without external references.
 
 **Assumptions**: LLM familiar with NPV, ROI, TCO, Value Stream Mapping, WSJF, Kano Model; stakeholders have conflicting priorities; measurements are context-dependent.
 
-**Scale**: Individual to 50+ team decisions; 100-500 token Q&A outputs; 6-12 Q&A sets.
+**Scale**: Individual to 50+ team decisions; short to medium-length Q&A outputs; 6-12 Q&A sets.
 
 **Timeline**: On-demand generation; 4-6h total effort; validity evergreen (refresh annually or on business changes).
 
@@ -287,7 +287,7 @@ Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] f
 
 **Trade-offs**:
 - **Rigor vs. Speed**: Comprehensive Q&A increases upfront time but reduces decision errors (↓30-40% poor decisions).
-- **Depth vs. Breadth**: Detailed value analysis may exceed token limits; prioritize high-impact dimensions.
+- **Depth vs. Breadth**: Detailed value analysis may be too long for some uses; prioritize high-impact dimensions.
 - **Precision vs. Accessibility**: Technical metrics/formulas improve accuracy but may reduce readability.
 
 **Skip for**: Exploratory questions, low-stakes (<$100K impact), rapid response (<1h), simple queries, prototyping.

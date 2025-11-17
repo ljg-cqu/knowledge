@@ -5,7 +5,7 @@
 - **Scope**: 8-12 Q&As (2 Fundamental/4 Intermediate/2-6 Advanced; 150-250 words each); ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations; 20-30 decision-critical patterns across 4-6 domains
 - **Constraints**: GitHub Flavored Markdown ≤120 characters/line; prioritize Tier 1-2 sources; use RFC 2119 terminology; inline citations [Ref: ID]
 - **Assumptions**: Users have basic technical knowledge; LLMs have access to current industry knowledge; patterns are decision-critical per framework
-- **Scale**: Individual to team use; 100-500 token prompts; 20-30 patterns per domain
+- **Scale**: Individual to team use; prompts of varying length; 20-30 patterns per domain
 - **Timeline**: Immediate generation; 30-60s validation; benefits accumulate over multiple uses
 - **Stakeholders**: Architects, developers, business stakeholders (core roles only); technical writers, PMs
 - **Resources**: Any LLM (ChatGPT, Claude, Gemini); no cost; access to web for verification

@@ -4,7 +4,8 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 **Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous strategic choices leading to delayed deployments or scalability issues.
 **Scope**: Architectural evolution, technology adoption, strategic pivots in production distributed systems.
-**Constraints**: 4K-8K token limit; assumes basic engineering knowledge; focus on decision-critical aspects only.
+
+**Constraints**: Assumes basic engineering knowledge; focus on decision-critical aspects only.
 **Assumptions**: Teams have access to standard tools (Mermaid, GitHub); stakeholders can provide context; decisions impact >5% of roadmap.
 **Scale**: Systems >10K rps, >1TB data; teams 10-100 engineers; cloud-native, regulated (GDPR/SOC 2/HIPAA).
 **Timeline**: Quarterly roadmap cycles; 4-6h generation time; benefits accumulate over cycles.

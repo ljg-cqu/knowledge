@@ -5,7 +5,7 @@
 **Context**:
 - **Problem**: Interview candidates struggle with protocol selection decisions in high-stakes environments, leading to poor architecture choices, security risks, and operational failures. Need focused Q&As that simulate real decision-making under time pressure.
 - **Scope**: Generate 12-15 decision-critical Q&As covering 6 protocol clusters (API, Data, Messaging, Auth, Network, Evolution) for senior-level interviews.
-- **Constraints**: Q&A length 150-350 words; focus on decision-blocking scenarios only; token limit ~8K for generation; must include quantitative metrics and citations.
+- **Constraints**: Q&A length 150-350 words; focus on decision-blocking scenarios only; must include quantitative metrics and citations.
 - **Assumptions**: Candidates have basic protocol knowledge; LLMs can access current standards; interviews last 45-60 minutes; decision criticality trumps breadth.
 - **Scale**: Production systems (10K-100K rps, 1TB-10PB data), multi-team orgs (50-500 engineers), regulated industries (finance, healthcare, government).
 - **Timeline**: Q&A generation in <30 minutes; interview preparation 2-4 weeks; protocol adoption decisions 3-12 months.

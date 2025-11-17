@@ -10,7 +10,7 @@ Generate 20–30 comprehensive case study analyses covering both successful and 
 
 **Scope**: Public documented cases across 8 lifecycle phases, 10 stakeholder roles, 6 viewpoints (technical/business/regulatory/operational/data/security) | **Exclude**: Hypotheticals, unverified claims, marketing, superficial analyses
 
-**Constraints:** 4K-8K token limits; must use public documented sources with accessible URLs; no proprietary or unverified information; focus on measurable outcomes.
+**Constraints:** Must use public documented sources with accessible URLs; no proprietary or unverified information; focus on measurable outcomes.
 
 **Assumptions:** LLMs have domain knowledge of software engineering; users will iterate on outputs; sources are publicly accessible and verifiable; case studies should be balanced between success and failure.
 

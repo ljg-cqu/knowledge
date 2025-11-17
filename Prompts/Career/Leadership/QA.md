@@ -3,9 +3,9 @@
 **Context:**
 - **Problem**: Senior leaders (5-15 yrs experience) need decision-critical Q&As to make informed decisions with limited time, reducing hallucinations (↓30-60%) and improving decision quality (↑60-80%) in high-stakes scenarios.
 - **Scope**: Decision-critical leadership scenarios only—blocks decisions or creates material risk. Focus on strategic, people, change, and culture topics.
-- **Constraints**: 150–250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; 100% decision-critical; 4K-8K token limits.
+- **Constraints**: 150–250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; 100% decision-critical.
 - **Assumptions**: LLM knows core frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety); users have basic leadership familiarity; metrics empirical (not controlled).
-- **Scale**: 6-12 Q&As across 3-4 topics; individual to 50+ team applications; 100-10K token prompts.
+- **Scale**: 6-12 Q&As across 3-4 topics; individual to 50+ team applications; prompts from short to very long.
 - **Timeline**: Immediate generation (30-60s check); benefits accumulate over multiple uses.
 - **Stakeholders**: Senior leaders, executives, HR directors, technical writers.
 - **Resources**: Any LLM (ChatGPT, Claude, Gemini); internet access for citations; no cost.
@@ -305,7 +305,7 @@ Use Kotter's change framework [Ref: G4] with Radical Candor [Ref: G1]. **Phase 1
 
 **Trade-offs:**
 - **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
-- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Depth vs. Breadth**: Detailed context may be too long for some uses
 - **Precision vs. Accessibility**: Technical specificity may reduce readability
 
 **Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping

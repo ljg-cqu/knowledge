@@ -6,7 +6,7 @@
 
 **Scope**: Senior+ PM roles (5-15 yrs experience); decision-critical scenarios only (revenue >$1M impact, strategic pivots, churn >5%); stakeholder navigation and trade-offs; 100% scenario-based questions.
 
-**Constraints**: 150-250 words/answer (excluding artifacts); ≥70% citation coverage; 100% decision-critical scenarios; senior+ level only; 4K-8K token limit.
+**Constraints**: 150-250 words/answer (excluding artifacts); ≥70% citation coverage; 100% decision-critical scenarios; senior+ level only.
 
 **Assumptions**: LLM knows frameworks (RICE, JTBD, OKR, North Star, PMF); user provides industry context or accepts generic; text/JSON output; 10-15min discussion per question.
 
@@ -309,7 +309,7 @@ Use multi-dimensional evaluation [Ref: A1]. **First, discover JTBD** [Ref: A7]�
 ☑ Risk/Value: Compares alternatives with trade-offs  
 ☑ Evidence: Structured citations with APA 7th format  
 ⚠ Success Criteria: Qualitative metrics; lacks A/B testing validation  
-⚠ Limitations: Trade-offs between rigor/speed; depth/breadth for token limits
+⚠ Limitations: Trade-offs between rigor/speed and between depth and breadth for longer answers
 
 **Gaps**: No alternative framework comparison; metrics lack peer-reviewed validation; no measurable effectiveness criteria
 

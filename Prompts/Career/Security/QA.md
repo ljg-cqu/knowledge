@@ -7,7 +7,7 @@
 **Context:**
 - **Problem:** Hallucinations in security advice, incomplete analysis, outdated information leading to poor decisions in critical infrastructure
 - **Scope:** Decision-critical security scenarios only (0-days, breaches, compliance changes, emerging threats); excludes technical implementation details, vendor marketing, long-term R&D, rumors, speculative scenarios
-- **Constraints:** 4K-8K token limits for LLM responses; bi-weekly generation cycle; freshness thresholds (≥75% <2mo, ≥90% <4mo, 100% ≤9mo)
+- **Constraints:** Bi-weekly generation cycle; freshness thresholds (≥75% <2mo, ≥90% <4mo, 100% ≤9mo)
 - **Assumptions:** Users have basic security knowledge; LLMs have access to recent threat intel; decision-criticality framework applied
 - **Scale:** 6-12 Q&A pairs per generation; covers ≥3 of 4 decision-critical dimensions
 - **Timeline:** Bi-weekly cadence; 3-4h effort; expires 2 weeks from generation
@@ -81,7 +81,7 @@
 
 **Trade-offs:**
 - **Rigor vs. Speed**: Comprehensive Q&A generation increases upfront time but reduces iteration and decision errors
-- **Depth vs. Breadth**: Detailed scenarios may exceed token limits but ensure actionable outputs
+- **Depth vs. Breadth**: Detailed scenarios may be too long for some uses but ensure actionable outputs
 - **Precision vs. Accessibility**: Technical specificity may reduce readability for non-experts
 
 **Alternatives Comparison:**

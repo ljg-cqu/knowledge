@@ -4,7 +4,7 @@
 
 **Scope**: Generate 12-15 decision-critical Q&A pairs for senior/architect/expert roles, focusing on architecture-to-code translation in distributed systems.
 
-**Constraints**: 4K-8K token limits; assume basic Go/Java/Python/TypeScript knowledge; focus on production-ready code.
+**Constraints**: Assume basic Go/Java/Python/TypeScript knowledge; focus on production-ready code.
 
 **Assumptions**: Distributed systems (>10K rps, >1TB data); cloud-native context; idiomatic code patterns; foundational knowledge (layered, MVC, REST).
 
@@ -306,7 +306,7 @@ flowchart TD
 
 **Trade-offs:**
 - **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
-- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Depth vs. Breadth**: Detailed context may be too long for some uses
 - **Precision vs. Accessibility**: Technical specificity may reduce readability
 
 **Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping

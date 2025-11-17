@@ -71,11 +71,3 @@
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
 ☐ Structure | ☐ Consistency | ☐ TOC  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
-
-## Limitations
-
-**Trade-offs:** Rigor vs. speed, depth vs. breadth, precision vs. accessibility.
-
-**Skip comprehensive review for:** Informal notes, brainstorms, rapid prototypes, exploratory work, time-constrained situations, low-stakes content.
-
-**Move to appendices:** Extensive background, pure theory (unless central), low-impact edge cases, formal proofs (unless required), unsupported speculation.

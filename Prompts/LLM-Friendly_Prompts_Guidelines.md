@@ -4,23 +4,6 @@
 
 **Application:** Apply comprehensively if ≥1: blocks decision, >5% impact, 1-6mo timeline, ≥2 stakeholders, ≥40h adoption cost. Otherwise apply selectively.
 
-**Context:**
-- **Problem:** Hallucinations, incomplete analysis, ambiguous recommendations
-- **Scope:** Technical decisions, system design, code generation, knowledge work
-- **Constraints:** 4K-8K token limits; assumes basic LLM familiarity
-- **Assumptions:** Users iterate; LLMs have domain knowledge; metrics empirical (not controlled)
-- **Scale:** Individual to 50+ teams; 100-10K token prompts
-- **Timeline:** Immediate use; 30-60s check; benefits accumulate
-- **Stakeholders:** Engineers, architects, PMs, technical writers
-- **Resources:** Any LLM (ChatGPT, Claude, Gemini); no cost
-
-**Key Terms:**
-- **Hallucination**: Factually incorrect/unverifiable information
-- **Decision-critical**: >5% impact or blocks key actions
-- **MECE**: Mutually Exclusive, Collectively Exhaustive
-- **Self-contained**: Complete context without external references
-- **Impact metrics**: Estimated improvement (↑/↓) from empirical observations
-
 ## Guidelines
 
 ### Foundation: Define the Task
@@ -113,10 +96,10 @@
 
 **Rationale:** Reduces factual errors and outdated info.
 
-**13. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources.
+**13. Credibility** [↓50-60% hallucinations]: Cite recent (2024+) primary sources.
 
 - ❌ "What are best practices?"
-- ✅ "Cite: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+). Include URLs."
+- ✅ "Cite: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2025). Include URLs."
 
 **Rationale:** Credible sources reduce hallucinations; improve trust.
 
@@ -157,30 +140,34 @@
 
 **Rationale:** Enables predictable navigation; reduces cognitive load.
 
+**19. TOC**: Include table of contents for long documents (>3 pages or >5 sections). ❌ No navigation aid. ✅ TOC with section links.
+
+**Rationale:** Improves navigation for complex content; reduces time to find information.
+
 ### Validation: Ensure Correctness
 
-**19. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, uncertainty flags.
+**20. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, uncertainty flags.
 
 - ❌ "What do studies show?"
 - ✅ "Cite: [1] Google SRE Book (2023) p.42 'MTTR <1h'. [2] AWS re:Invent 2024 [URL, timestamp]. Flag: 'cache hit rate estimated (no empirical data)'."
 
 **Rationale:** Enables fact-checking; builds trust.
 
-**20. Verification** [↓25-35% errors]: Self-review and error checking.
+**21. Verification** [↓25-35% errors]: Self-review and error checking.
 
 - ❌ "Provide recommendation"
 - ✅ "Self-review: verify calculations, check contradictions, validate terminology, test code, cross-reference claims, flag uncertainties"
 
 **Rationale:** Catches errors; improves reliability.
 
-**21. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands.
+**22. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands.
 
 - ❌ "Suggest monitoring improvements"
 - ✅ "Monitoring setup: tools (Prometheus, Grafana), commands ('helm install prometheus'), queries ('rate(http_requests_total[5m])'), dashboards, common issues"
 
 **Rationale:** Accelerates implementation; reduces trial-and-error.
 
-**22. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets.
+**23. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets.
 
 - ❌ "How to achieve better performance?"
 - ✅ "Metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo (current: $8K/mo), timeline 3mo. Specify tools."
@@ -196,42 +183,5 @@
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
 ☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency  
+☐ Structure | ☐ Consistency | ☐ TOC  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
-
-## Quality Attributes
-
-**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
-
-## Limitations and Trade-offs
-
-**Trade-offs:**
-- **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
-- **Depth vs. Breadth**: Detailed context may exceed token limits
-- **Precision vs. Accessibility**: Technical specificity may reduce readability
-
-**Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping
-
-**Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5%), formal proofs, unsupported trends, generic advice, speculation, cross-references
-
-**Impact Metric Limitations:**
-- **Source**: ~50 sessions (GPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective, no A/B testing
-- **Baseline**: Unstructured conversational prompts
-- **Uncertainty**: High (±20-40%); directional only, not precise
-- **Use cautiously**: Apply based on principles, not solely metrics
-
-**Estimated Ranges:**
-↓30-60% hallucinations | ↓25-50% ambiguity | ↑60-80% decision quality | ↑35-50% completeness | ↑30-45% scannability | ↑50-60% implementation speed
-
-## Document Verification
-
-**Self-assessment:**
-☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
-⚠ Credibility: Impact metrics lack external citations  
-⚠ Risk/Value: Single framework (no alternatives compared)  
-⚠ Evidence: Observational metrics, not peer-reviewed  
-⚠ Success Criteria: Qualitative only
-
-**Gaps:** No alternative framework comparison; metrics lack rigorous validation; no measurable effectiveness criteria
-
-**Future:** A/B testing, framework comparison, success criteria, user feedback
