@@ -20,12 +20,12 @@
 
 **Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Recent | Relevant | Verified
 
-**Exclude:** Logos and other decorative media, redundant formats, <720p, autoplay, unverified links, proprietary formats with no fallback, missing alt text/captions/transcripts, images >500KB unoptimized, videos >20MB unoptimized. **Always:** Format, resolution, accessibility, fallback, source, license
+**Exclude:** Logos and other decorative media, redundant formats, videos <720p, autoplay, unverified links, proprietary formats with no fallback, missing alt text/captions/transcripts, images >500KB unoptimized, videos >20MB unoptimized. **Always:** Format, resolution, accessibility, fallback, source, license
 
 **LLM capability matrix:** Text-only (link+describe) | Multimodal (create+link+verify) | Vision (analyze+annotate+validate) | Audio (transcribe+synthesize)
 
 **WCAG 2.1 AA:** Meaningful alt text, captions (±50ms sync), full transcript, keyboard navigation (tab order), contrast ≥4.5:1, skip links, no autoplay
 
-**Impact:** 1+2 ↓40–70% quality issues/rework | 3 ↓60–80% bad links | 4 ↑30–40% accessibility | 5 ↓40–60% wasted time | 6 ↑35–50% integration speed
+**Impact:** 1+2 ↓40–50% quality issues, ↓50–70% rework | 3 ↓60–80% bad links | 4 ↑30–40% accessibility | 5 ↓40–60% wasted time | 6 ↑35–50% integration speed
 
 **Test Description:** Define a test that validates format+quality specs, create/link decision, credible+verified sources (HTTP 200), WCAG 2.1 AA accessibility (alt text, captions, transcripts)+fallback, decision-critical significance only (no decorative media), and text-media consistency/integration for all multimedia.

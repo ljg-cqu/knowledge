@@ -2,7 +2,7 @@
 
 **Purpose:** Improve LLM output quality, especially for decision-critical prompts (fewer hallucinations, better decision support).
 
-**When to apply:** Apply all guidelines for decision-critical prompts (meet ≥1 of: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h), and selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Apply all guidelines for decision-critical prompts that meet ≥1 of the following: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h. Apply them selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -18,7 +18,7 @@
 
 ### Scope: What to Cover
 
-**5. MECE** [↑40-50% completeness]: The prompt requests complete coverage with no gaps/overlaps. ❌ Bad: "Explain security: authentication and encryption" ✅ Optimized: "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps/overlaps."
+**5. MECE** [↑40-50% completeness]: The prompt requests complete coverage with no gaps or overlaps. ❌ Bad: "Explain security: authentication and encryption" ✅ Optimized: "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps or overlaps."
 
 **6. Sufficiency** [↑35-45% comprehensiveness]: The prompt requests all necessary aspects. ❌ Bad: "Design API: define endpoints" ✅ Optimized: "Design API covering: endpoints, authentication, rate limiting, versioning strategy, error handling, pagination, caching headers, documentation requirements"
 
@@ -40,13 +40,13 @@
 
 **14. Risk/Value** [↑60-80% decision quality]: The prompt requests ≥2 alternatives with costs/benefits/risks. ❌ Bad: "Recommend Kubernetes setup" ✅ Optimized: "Compare 3 options with costs/risks: (1) K8s self-managed ($2K/mo, ops team needed), (2) Managed K8s ($500/mo, vendor lock-in), (3) VMs ($200/mo, limited scale). Include migration paths."
 
-**15. Fairness** [↓40-50% bias]: The prompt requests balanced view with counterarguments and limitations. ❌ Bad: "Why should we use GraphQL?" ✅ Optimized: "Compare GraphQL vs REST: pros (flexible queries), cons (complexity, caching challenges), when NOT to use (simple CRUD, public API). Include counterarguments."
+**15. Fairness** [↓40-50% bias]: The prompt requests a balanced view with counterarguments and limitations. ❌ Bad: "Why should we use GraphQL?" ✅ Optimized: "Compare GraphQL vs REST: pros (flexible queries), cons (complexity, caching challenges), when NOT to use (simple CRUD, public API). Include counterarguments."
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% scannability & actionability]: The prompt requests structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting"
+**16. Structure** [↑30-40% scannability & actionability]: The prompt requests a structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting"
 
-**17. Format** [↑35-45% readability]: The prompt requests exact output structure with hierarchy. ❌ Bad: "Provide analysis" ✅ Optimized: "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → #### Comparison Table → ##### Recommendation → ###### Timeline with milestones"
+**17. Format** [↑35-45% readability]: The prompt requests an exact output structure and hierarchy. ❌ Bad: "Provide analysis" ✅ Optimized: "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → #### Comparison Table → ##### Recommendation → ###### Timeline with milestones"
 
 ### Validation: Ensure Correctness
 
