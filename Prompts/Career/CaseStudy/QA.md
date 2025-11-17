@@ -1,10 +1,10 @@
 # Case Study Q&A Generator
 
-Generate 7 comprehensive case study Q&A pairs covering success and failure across the software lifecycle (8 phases), focusing on technical, business, regulatory, operational, data, and security viewpoints.
+Generate 5 comprehensive case study Q&A pairs covering success and failure across the software lifecycle (8 phases), focusing on technical, business, regulatory, operational, data, and security viewpoints.
 
 ## I. Context & Scope
 
-**Problem:** Insufficient real-world case studies; reliance on hypotheticals leads to hallucinations; analyses lack depth and multi-viewpoint insights.
+**Problem:** Reliance on hypotheticals leads to hallucinations and shallow analyses.
 
 **Purpose:** Extract actionable lessons from documented successes/failures via multi-viewpoint analysis for pattern recognition and decision-making.
 
@@ -26,13 +26,13 @@ Generate 7 comprehensive case study Q&A pairs covering success and failure acros
 
 ### Quantitative Floors
 
-**Q&A Pairs**: 7 | 50/50 success/failure | 30/40/30 Simple/Moderate/Complex | 200-400 words per answer | ≥90% ≥2 cites (≥50% ≥3) | ≥85% ≥3 viewpoints
+**Q&A Pairs**: 5 | 50/50 success/failure | 30/40/30 Simple/Moderate/Complex | 200-400 words per answer | ≥90% ≥2 cites (≥50% ≥3) | ≥85% ≥3 viewpoints
 
-**7 Categories (MECE)**: Architecture & Design (1) | Business & Market (1) | Regulatory & Compliance (1) | Operational Excellence (1) | Security & Privacy (1) | Data & AI (1) | Organizational & Team (1)
+**5 Categories (MECE)**: Architecture & Design | Business & Market | Security & Privacy | Data & AI | Organizational & Team
 
-**References**: G≥5 | S≥3 | T≥3 | L≥4 (≥40% domain-specific) | A≥8 (APA 7th+tags)
+**References**: G≥10 | S≥5 | T≥5 | L≥8 (≥40% domain-specific) | A≥15 (APA 7th+tags)
 
-**Visuals**: ≥1 diagram +1 table per category | ≥2 per Q&A pair | ≥3 Mermaid total
+**Visuals**: ≥1 diagram +1 table per category | ≥1 per Q&A pair | ≥2 Mermaid total
 
 ### Citation & Quality Standards
 
@@ -46,13 +46,13 @@ Generate 7 comprehensive case study Q&A pairs covering success and failure acros
 
 ### Step 1: Plan Allocation
 
-Distribute 7 Q&A pairs across 7 categories: 30/40/30 Simple/Moderate/Complex, 50/50 success/failure. Each category ≥1 success and ≥1 failure.
+Distribute 5 Q&A pairs across 5 categories: 30/40/30 Simple/Moderate/Complex, 50/50 success/failure. Categories balanced across outcomes.
 
 **Complexity**: Simple (1-2 phases, <3 stakeholders) | Moderate (3-5 phases, 3-6) | Complex (6-8 phases, >6).
 
 ### Step 2: Build References (Before Cases)
 
-G≥5 (patterns), S≥3 (standards), T≥3 (tools), L≥4 (literature, ≥40% domain-specific), A≥8 (citations, ≥60% <3yrs).
+G≥10 (patterns), S≥5 (standards), T≥5 (tools), L≥8 (literature, ≥40% domain-specific), A≥15 (citations, ≥60% <3yrs).
 
 ### Step 3: Generate Q&A Pairs
 
@@ -62,11 +62,11 @@ Structure per Section V.C (200–400 words per answer).
 
 Check: Documented, balanced, ≥3 viewpoints, word count, lifecycle, quantitative, citations, ≥1 artifact, complexity, actionable.
 
-### Step 4: Create Visuals (≥1 diagram+1 table/category; ≥2 per Q&A pair)
+### Step 4: Create Visuals (≥1 diagram+1 table/category; ≥1 per Q&A pair)
 
 Types: Timeline (Gantt), Architecture, Metrics (table), Decision Matrix, Impact Map, Root Cause Tree.
 
-Best: ≥3 Mermaid, cite refs, <25 nodes, show causality.
+Best: ≥2 Mermaid, cite refs, <25 nodes, show causality.
 
 ### Step 5: Populate References
 
@@ -86,7 +86,7 @@ Submit: All pass, TOC linked, no placeholders, consistent, URLs verified.
 
 | # | Check           | Measurement                     | Criteria                          | Result | Status    |
 |---|-----------------|---------------------------------|-----------------------------------|--------|-----------|
-| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q&A Pairs:__ (__S/__M/__C) (__Suc/__Fail)| G≥5, S≥3, T≥3, L≥4, A≥8, Q&A Pairs:7, 30/40/30%, 50/50 | | PASS/FAIL |
+| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q&A Pairs:__ (__S/__M/__C) (__Suc/__Fail)| G≥10, S≥5, T≥5, L≥8, A≥15, Q&A Pairs:5, 30/40/30%, 50/50 | | PASS/FAIL |
 | 2 | Citations       | __%≥2, __%≥3                    | ≥90%≥2, ≥50%≥3                    | | PASS/FAIL |
 | 3 | Lang/Type       | EN:__%, ZH:__%, Std:__%, Post:__% | EN:50-70%, ZH:15-30%, Std:10-20%, Post:15-25% | | PASS/FAIL |
 | 4 | Recency         | __% <3yrs                       | ≥60%                              | | PASS/FAIL |
@@ -95,35 +95,33 @@ Submit: All pass, TOC linked, no placeholders, consistent, URLs verified.
 | 7 | Links           | __/__ accessible                | 100%                              | | PASS/FAIL |
 | 8 | Cross-Refs      | __/__ resolved                  | 100%                              | | PASS/FAIL |
 | 9 | Word Count      | __ sampled: __ compliant        | 100% (200-400)                    | | PASS/FAIL |
-| 10| Success/Failure | __/7 categories balanced        | Each: ≥1 success AND ≥1 failure   | | PASS/FAIL |
-| 11| Category Evidence| __/7 (≥1 auth+≥1 post+≥1 metric)| 7/7                               | | PASS/FAIL |
+| 10| Success/Failure | __/5 categories balanced        | Overall 50/50 success/failure     | | PASS/FAIL |
+| 11| Category Evidence| __/5 (≥1 auth+≥1 post+≥1 metric)| 5/5                               | | PASS/FAIL |
 | 12| Viewpoints      | __%≥3                           | ≥85%                              | | PASS/FAIL |
 | 13| Stakeholders    | __%≥3 roles                     | ≥70%                              | | PASS/FAIL |
 | 14| Lifecycle       | __%≥1 phase; __%≥3 phases       | ≥80%; ≥50%                        | | PASS/FAIL |
 | 15| Quantitative    | __% with metrics                | ≥90%                              | | PASS/FAIL |
 | 16| Root Cause      | Failures:__/__ Successes:__/__  | 100% both                         | | PASS/FAIL |
 | 17| Lessons         | __/__ with patterns+actions     | 100%                              | | PASS/FAIL |
-| 18| Visuals         | M:__, D:__, T:__, Artifacts:__  | ≥3, ≥5, ≥5, ≥1/case               | | PASS/FAIL |
-| 19| Authenticity    | __/__ real-world public         | 100%                              | | PASS/FAIL |
+| 18| Visuals         | M:__, D:__, T:__, Artifacts:__  | ≥2, ≥5, ≥5, ≥1/case               | | PASS/FAIL |
+| 19| Authenticity    | __/__ real-world public         | 5/5                               | | PASS/FAIL |
 
 ## V. Output Format
 
 ### A. TOC
-1. Category Overview | 2. Q&A Pairs by Category (7 categories) | 3. References (G/S/T/L/A) | 4. Validation Report
+1. Category Overview | 2. Q&A Pairs by Category (5 categories) | 3. References (G/S/T/L/A) | 4. Validation Report
 
 ### B. Category Overview
-**Total**: 7 Q&A pairs (example) | **Complexity**: 2 Simple (29%) / 3 Moderate (43%) / 2 Complex (29%) | **Balance**: 4 success (57%) / 3 failure (43%) | **Coverage**: 7 categories (MECE)
+**Total**: 5 Q&A pairs | **Complexity**: 2 Simple (40%) / 2 Moderate (40%) / 1 Complex (20%) | **Balance**: 3 success (60%) / 2 failure (40%) | **Coverage**: 5 categories (MECE)
 
 | # | Category               | Q&A Pairs | Count | Mix      | Success/Fail | Artifacts |
 |---|------------------------|-----------|-------|----------|--------------|-----------|
-| 1 | Architecture & Design  | Q1-Q2     | 2     | 0S/1M/1C | 1 Suc/1 Fail | 1D+1T     |
-| 2 | Business & Market      | Q3-Q4     | 2     | 1S/1M/0C | 1 Suc/1 Fail | 1D+1T     |
-| 3 | Regulatory & Compliance| Q5-Q6     | 2     | 1S/0M/1C | 1 Suc/1 Fail | 1D+1T     |
-| 4 | Operational Excellence | Q7        | 1     | 0S/1M/0C | 1 Suc/0 Fail | 1D+1T     |
-| 5 | Security & Privacy     | Q8        | 1     | 0S/0M/1C | 0 Suc/1 Fail | 1D+1T     |
-| 6 | Data & AI              | Q9        | 1     | 1S/0M/0C | 1 Suc/0 Fail | 1D+1T     |
-| 7 | Organizational & Team  | Q10       | 1     | 0S/1M/0C | 0 Suc/1 Fail | 1D+1T     |
-|   | **Total**              |           | **7**| **2S/3M/2C** | **4/3** | **7+7** |
+| 1 | Architecture & Design  | Q1        | 1     | 0S/1M/0C | 1 Suc/0 Fail | 1D+1T     |
+| 2 | Business & Market      | Q2        | 1     | 1S/0M/0C | 1 Suc/0 Fail | 1D+1T     |
+| 3 | Security & Privacy     | Q3        | 1     | 0S/0M/1C | 0 Suc/1 Fail | 1D+1T     |
+| 4 | Data & AI              | Q4        | 1     | 0S/1M/0C | 1 Suc/0 Fail | 1D+1T     |
+| 5 | Organizational & Team  | Q5        | 1     | 1S/0M/0C | 0 Suc/1 Fail | 1D+1T     |
+|   | **Total**              |           | **5**| **2S/2M/1C** | **3/2** | **5+5** |
 
 Legend: S=Simple | M=Moderate | C=Complex | Suc=Success | Fail=Failure | D=diagram | T=table
 
