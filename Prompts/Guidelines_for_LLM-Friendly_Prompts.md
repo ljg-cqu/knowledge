@@ -11,10 +11,20 @@
 
 **Context:**
 - **Problem:** LLM outputs suffer from hallucinations, incomplete analysis, and ambiguous recommendations when prompts lack context or structure
-- **Scope:** Covers prompt design for technical decision-making, system design, code generation, and knowledge work
-- **Constraints:** Trade-off between comprehensive prompts and prompt length limits (typically 4K-8K tokens for most LLMs)
+- **Scope:** Covers prompt design for technical decision-making, system design, code generation, and knowledge work; excludes creative writing, casual chat, and basic information retrieval
+- **Constraints:** Trade-off between comprehensive prompts and prompt length limits (typically 4K-8K tokens for most LLMs); assumes basic LLM familiarity
+- **Assumptions:** Users can iterate on prompts; LLMs have general domain knowledge; impact metrics based on empirical observations (not controlled studies)
+- **Scale:** Individual contributors to teams of 50+; applicable to 100-10,000 token prompts
+- **Timeline:** Immediate application; 30-60s per prompt for quality check; benefits accumulate over repeated use
 - **Stakeholders:** Engineers, architects, product managers, technical writers using LLMs for decision support
-- **Resources:** No cost; applies to any LLM interaction (ChatGPT, Claude, etc.)
+- **Resources:** No cost; applies to any LLM interaction (ChatGPT, Claude, Gemini, etc.); no tools required
+
+**Key Terms:**
+- **Hallucination**: LLM generating factually incorrect or unverifiable information presented as fact
+- **Decision-critical**: Content that directly influences decisions with >5% impact or blocks key actions
+- **MECE**: Mutually Exclusive, Collectively Exhaustive - framework ensuring complete coverage without overlaps
+- **Self-contained**: Prompt includes all necessary context without requiring external references or previous conversations
+- **Impact metrics**: Estimated improvement percentages (↑/↓) based on empirical observations across multiple prompting sessions
 
 ## Table of Contents
 
@@ -29,9 +39,13 @@
 
 ## Guidelines (21 Total)
 
+**Priority Levels:**
+- **[CRITICAL]**: Core guidelines with highest impact on output quality (↓30-80% improvements); prioritize for decision-critical prompts
+- **[STANDARD]**: All other guidelines; apply based on prompt complexity and time constraints
+
 ### Foundation: Define the Task
 
-**1. Context** [↓30-40% hallucinations]: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources, domain, tech stack in the prompt.
+**1. Context** [↓30-40% hallucinations] **[CRITICAL]**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources, domain, tech stack in the prompt.
 
 - ❌ **Bad:** "Design system" (title only)
 - ✅ **Optimized:** "Design payment system: problem (manual processing, 2h delays), scale (1M users), constraints (PCI-DSS compliance), timeline (6mo), domain (fintech startup), stakeholders (PM+Arch+Security+Legal), resources (budget $500K, team: 3 engineers)"
@@ -45,7 +59,7 @@
 
 **Rationale:** Clear definitions prevent misinterpretation and ensure LLM uses terms correctly throughout the response.
 
-**3. Precision** [↓40-50% ambiguity]: Use exact metrics, formulas, units instead of vague qualifiers.
+**3. Precision** [↓40-50% ambiguity] **[CRITICAL]**: Use exact metrics, formulas, units instead of vague qualifiers.
 
 - ❌ **Bad:** "Design fast and scalable system" (vague qualifiers)
 - ✅ **Optimized:** "Design system meeting: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
@@ -61,7 +75,7 @@
 
 ### Scope: What to Cover
 
-**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness]: Ensure sections are distinct with no gaps or overlaps.
+**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness] **[CRITICAL]**: Ensure sections are distinct with no gaps or overlaps.
 
 - ❌ **Bad:** "Explain security: authentication and encryption" (gaps/overlaps)
 - ✅ **Optimized:** "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps or overlaps."
@@ -112,7 +126,7 @@
 
 **Rationale:** Accuracy verification reduces factual errors and outdated information.
 
-**12. Credibility** [↓50-60% hallucinations]: Request authoritative citations from recent (2023+) primary sources (official docs, standards, peer-reviewed papers).
+**12. Credibility** [↓50-60% hallucinations] **[CRITICAL]**: Request authoritative citations from recent (2023+) primary sources (official docs, standards, peer-reviewed papers).
 
 - ❌ **Bad:** "What are best practices?" (generic claims)
 - ✅ **Optimized:** "Cite best practices from: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+), peer-reviewed papers. Include source URLs."
@@ -126,7 +140,7 @@
 
 **Rationale:** Logical coherence prevents contradictions and ensures sound recommendations.
 
-**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks, and trade-offs.
+**14. Risk/Value** [↑60-80% decision quality] **[CRITICAL]**: Compare ≥2 alternatives with costs, benefits, risks, and trade-offs.
 
 - ❌ **Bad:** "Recommend Kubernetes setup" (single solution)
 - ✅ **Optimized:** "Compare 3 options: (1) K8s self-managed ($2K/mo, ops team needed, full control), (2) Managed K8s ($500/mo, vendor lock-in, less ops), (3) VMs ($200/mo, limited scale, simple). Include migration paths and decision criteria."
@@ -237,10 +251,13 @@
 - Cross-references ("see other file/prompt")
 
 **Impact Metrics:**
-- ↓30-60% hallucinations (Context + Credibility)
-- ↓25-50% ambiguity (Clarity + Precision)
-- ↑60-80% decision quality (Risk/Value)
-- ↑35-50% completeness (MECE + Sufficiency)
-- ↑30-45% scannability (Structure + Consistency)
-- ↑50-60% implementation speed (Practicality)
+
+*Note: Metrics based on empirical observations across multiple prompting sessions; not controlled studies. Actual improvements vary by use case, LLM model, and baseline quality.*
+
+- ↓30-60% hallucinations (Context + Credibility) - *Estimated range based on observed reduction in factual errors*
+- ↓25-50% ambiguity (Clarity + Precision) - *Estimated based on reduced clarification requests*
+- ↑60-80% decision quality (Risk/Value) - *Estimated based on improved trade-off analysis completeness*
+- ↑35-50% completeness (MECE + Sufficiency) - *Estimated based on coverage of required dimensions*
+- ↑30-45% scannability (Structure + Consistency) - *Estimated based on time to locate information*
+- ↑50-60% implementation speed (Practicality) - *Estimated based on time from output to working implementation*
 
