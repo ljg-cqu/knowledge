@@ -1,6 +1,6 @@
-# Industrial Standards Interview Q&A Generator (Optimized)
+# Protocol Standards Interview Q&A Generator (Optimized)
 
-**Mission**: Generate 12-15 decision-critical Q&As on standards enabling informed decision-making with limited time. **Optimization Goal**: 60% reduction (30-35→12-15) focusing on decision-blocking, risk-creating, cross-functional impact scenarios only.
+**Mission**: Generate 12-15 decision-critical Q&As on protocols enabling informed decision-making with limited time. **Optimization Goal**: 60% reduction (30-35→12-15) focusing on decision-blocking, risk-creating, cross-functional impact scenarios only.
 
 **Context**: Production systems (>10K rps, >1TB data), multi-team (10-100 engineers), regulated environments
 **Success**: 12/12 validation PASS, decision criticality justified for every Q&A, ≥80% cross-functional impact
@@ -10,37 +10,37 @@
 ## Decision Criticality Framework
 
 **Include Q&A if ANY apply**:
-- **Blocks Decision**: Standard/protocol selection prevents architecture/deployment progress
-- **Creates Risk**: Compliance, security, performance SLA impact if ignored
+- **Blocks Decision**: Protocol selection prevents architecture/deployment progress
+- **Creates Risk**: Security, performance, interoperability impact if ignored
 - **Affects ≥3 Stakeholders**: Multi-role coordination needed (Architect + Developer + DevOps, etc.)
-- **Actively Evolving**: Standard changed in past 12-18 months (e.g., OAuth 2.1, PCI-DSS v4.0, WCAG 2.2)
+- **Actively Evolving**: Protocol changed in past 12-18 months (e.g., HTTP/3, OAuth 2.1, MQTT 5.0)
 - **High Adoption Barrier**: Learning/migration cost >40 hours
 
 **Exclude if**: Niche/legacy (<5% adoption), orthogonal to core workflow, already covered
 
-## Coverage (6 Decision-Critical Clusters × 2 Q&As, ≥3 Stakeholders Each)
+## Coverage (6 Decision-Critical Protocol Clusters × 2 Q&As, ≥3 Stakeholders Each)
 
-| Cluster | Decision-Critical Standards | Stakeholders | Phases | Criticality |
-|---------|---------------------------|--------------|--------|-------------|
-| **Technical** | API protocol (OpenAPI 3.x vs gRPC vs GraphQL), Data format (JSON vs Protobuf vs Avro) | Architect, Developer, DevOps | Architecture & Design, Development | Blocks architecture |
-| **Regulatory** | Privacy (GDPR, CCPA, PIPL), Sector (HIPAA, PCI-DSS v4.0, SOX) | Security, PM, Leadership | Requirements, Architecture | Creates compliance risk |
-| **Infrastructure** | Cloud standard (CNCF, OCI), IaC (Terraform vs CloudFormation vs Pulumi) | DevOps, SRE, Architect | Deployment, Operations | Blocks deployment |
-| **Quality** | Testing standard (ISO 29119, ISTQB), Accessibility (WCAG 2.2) | QA, Developer, Security | Testing, Deployment | Affects SLA/compliance |
-| **Integration** | Auth standard (OAuth 2.1 vs OIDC vs SAML), Messaging (AMQP vs MQTT vs Kafka) | Architect, Developer, Security | Architecture, Operations | Blocks SSO/real-time |
-| **Evolution** | Versioning (SemVer vs CalVer), Deprecation strategy (RFC 8594) | Architect, PM, Developer | Evolution, Maintenance | Affects migration cost |
+| Cluster | Decision-Critical Protocols | Stakeholders | Phases | Criticality |
+|---------|-----------------------------|--------------|--------|-------------|
+| **API Protocols** | REST/OpenAPI vs gRPC vs GraphQL | Architect, Developer, DevOps | Architecture & Design, Development | Blocks architecture |
+| **Data Protocols** | JSON vs Protobuf vs Avro | Architect, Developer, SRE | Architecture, Operations | Blocks data flow |
+| **Messaging Protocols** | AMQP vs MQTT vs Kafka | Architect, Developer, Security | Architecture, Operations | Blocks real-time |
+| **Auth Protocols** | OAuth 2.1 vs OIDC vs SAML | Architect, Developer, Security | Architecture, Operations | Blocks SSO |
+| **Network Protocols** | HTTP/2 vs HTTP/3 vs QUIC | DevOps, SRE, Architect | Deployment, Operations | Blocks performance |
+| **Evolution Protocols** | Versioning (SemVer vs CalVer), Deprecation (RFC 8594) | Architect, PM, Developer | Evolution, Maintenance | Affects migration |
 
-**Focus**: Decision-blocking trade-offs, version conflicts, adoption challenges; exclude deprecated/niche standards
+**Focus**: Decision-blocking trade-offs, version conflicts, adoption challenges; exclude deprecated/niche protocols
 
-### Visual Standards (Per Cluster: 1 Diagram + 1 Comparison Table + 1 Metrics Table)
+### Visual Protocols (Per Cluster: 1 Diagram + 1 Comparison Table + 1 Metrics Table)
 
 | Cluster | Diagram Type | Comparison Metrics | Decision Metric |
 |---------|--------------|-------------------|------------------|
-| **Technical** | Protocol/format comparison matrix | Latency, Throughput, Ecosystem, Learning Curve | `(Selected Standard Adoption / 12mo) × 100%` |
-| **Regulatory** | Compliance mapping (controls vs requirements) | Coverage, Audit Effort, Cost, Timeline | `(Implemented Controls / Required) × 100%` |
-| **Infrastructure** | Deployment topology (cloud/IaC/orchestration) | Maturity, Vendor Lock-in, Cost, Tooling | `(CNCF Conformant / Total) × 100%` |
-| **Quality** | Test pyramid + accessibility coverage | Automation, Coverage, Compliance, Effort | `(WCAG Criteria Pass / Total) × 100%` |
-| **Integration** | Auth flow + messaging topology | Security, Latency, Complexity, Adoption | `(Standards-Compliant / Total) × 100%` |
-| **Evolution** | Version timeline + deprecation roadmap | Migration Cost, Timeline, Risk, Support | `(Migrated Systems / Total) × 100%` |
+| **API Protocols** | Protocol comparison matrix | Latency, Throughput, Ecosystem, Learning Curve | `(Selected Protocol Adoption / 12mo) × 100%` |
+| **Data Protocols** | Serialization format matrix | Size, Speed, Compatibility, Tooling | `(Schema Evolution Support / Total) × 100%` |
+| **Messaging Protocols** | Message flow topology | Reliability, Scalability, Complexity, Adoption | `(QoS Levels Supported / Required) × 100%` |
+| **Auth Protocols** | Authentication flow | Security, Complexity, Adoption, Migration | `(SSO Compatibility / Total) × 100%` |
+| **Network Protocols** | Network stack diagram | Performance, Adoption, Security, Overhead | `(HTTP/3 Adoption / Total) × 100%` |
+| **Evolution Protocols** | Version lifecycle roadmap | Migration Cost, Timeline, Risk, Support | `(Migrated Protocols / Total) × 100%` |
 
 **Rendering**: Mermaid diagrams (<120 nodes), inline `$formula$`, block `$$formula$$`
 **Standards**: BPMN (process), UML (structure), C4 (architecture), sequence (integration)
@@ -87,12 +87,12 @@
 
 | Principle | Good ✅ | Bad ❌ |
 |-----------|---------|----------|
-| **Decision Blocking** | "Select API protocol (OpenAPI 3.1 vs gRPC vs GraphQL) for 50K rps trading platform. Blocks architecture decision." | "Compare API standards" |
+| **Decision Blocking** | "Select API protocol (OpenAPI 3.1 vs gRPC vs GraphQL) for 50K rps trading platform. Blocks architecture decision." | "Compare API protocols" |
 | **Risk Creation** | "Adopt OAuth 2.1 (RFC 9207) vs OIDC for SSO. Security risk if outdated protocol chosen." | "Explain OAuth" |
-| **Cross-Functional** | "GDPR + CCPA compliance affects PM (timeline), Architect (design), Security (controls), DevOps (audit logging)" | "What is GDPR?" |
-| **Actively Evolving** | "PCI-DSS v4.0 (Mar 2024) vs v3.2.1: 12 requirements changed, affects 3+ teams" | "List PCI-DSS controls" |
-| **Adoption Barrier** | "Terraform vs CloudFormation vs Pulumi: 40-80hr learning curve, affects deployment strategy" | "What is IaC?" |
-| **Quantified** | "Avro vs JSON Schema: 60% smaller payloads, 3x faster serialization, justifies 200TB migration cost" | "Avro is faster" |
+| **Cross-Functional** | "HTTP/3 vs HTTP/2 affects Architect (design), DevOps (deployment), SRE (performance monitoring)" | "What is HTTP/3?" |
+| **Actively Evolving** | "MQTT 5.0 (2021) vs 3.1.1: new features for IoT, affects 3+ teams" | "List MQTT features" |
+| **Adoption Barrier** | "gRPC vs REST: 40-80hr learning curve for Protobuf, affects development velocity" | "What is gRPC?" |
+| **Quantified** | "Avro vs JSON: 60% smaller payloads, 3x faster serialization, justifies 200TB migration cost" | "Avro is faster" |
 | **Versioning** | "OAuth 2.1 (RFC 9207, 2023) vs OIDC 1.0 (2014) vs SAML 2.0 (2005)" with dates | "Use OAuth" |
 | **Criticality Tag** | `[Blocks Architecture]` `[Creates Risk]` `[Affects 4 Stakeholders]` `[Evolving 2024]` | No tag |
 
@@ -107,12 +107,12 @@
 
 ## Topic Areas
 | Topic | Range | Count | Mix (F/I/A) | Criticality |
-| Technical Standards | Q1-Q2 | 2 | 0/1/1 | Blocks architecture |
-| Regulatory Standards | Q3-Q4 | 2 | 0/1/1 | Creates compliance risk |
-| Infrastructure Standards | Q5-Q6 | 2 | 0/1/1 | Blocks deployment |
-| Quality Standards | Q7-Q8 | 2 | 0/1/1 | Affects SLA/compliance |
-| Integration Standards | Q9-Q10 | 2 | 0/1/1 | Blocks SSO/real-time |
-| Evolution Standards | Q11-Q12 | 2 | 0/1/1 | Affects migration cost |
+| API Protocols | Q1-Q2 | 2 | 0/1/1 | Blocks architecture |
+| Data Protocols | Q3-Q4 | 2 | 0/1/1 | Blocks data flow |
+| Messaging Protocols | Q5-Q6 | 2 | 0/1/1 | Blocks real-time |
+| Auth Protocols | Q7-Q8 | 2 | 0/1/1 | Blocks SSO |
+| Network Protocols | Q9-Q10 | 2 | 0/1/1 | Blocks performance |
+| Evolution Protocols | Q11-Q12 | 2 | 0/1/1 | Affects migration |
 | [Optional Q13-Q15] | Q13-Q15 | 3 | 1/1/1 | Cross-cutting decisions |
 
 ## Q[N]: [Decision-Critical Question]
@@ -231,9 +231,9 @@
 
 ## Example
 
-### Q1: Select API protocol standard for real-time trading platform: OpenAPI 3.1 REST vs gRPC vs GraphQL. Requirements: 50K orders/s peak, <10ms p99 latency, web + mobile + algo traders, regulatory audit trails (PCI-DSS Req 10). Lifecycle phase: Architecture & Design.
+### Q1: Select API protocol for real-time trading platform: OpenAPI 3.1 REST vs gRPC vs GraphQL. Requirements: 50K orders/s peak, <10ms p99 latency, web + mobile + algo traders, regulatory audit trails (PCI-DSS Req 10). Lifecycle phase: Architecture & Design.
 
-**Difficulty**: Advanced | **Type**: Technical Standards + Regulatory | **Lifecycle**: Architecture & Design | **Stakeholders**: Architect, Developer, QA/SET, Security, SRE | **Criticality**: [Blocks Decision][Creates Risk][Affects ≥3 Stakeholders]
+**Difficulty**: Advanced | **Type**: API Protocols | **Lifecycle**: Architecture & Design | **Stakeholders**: Architect, Developer, QA/SET, Security, SRE | **Criticality**: [Blocks Decision][Creates Risk][Affects ≥3 Stakeholders]
 
 **Answer** (340 words):
 
