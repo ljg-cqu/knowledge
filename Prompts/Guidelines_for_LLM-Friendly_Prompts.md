@@ -2,7 +2,7 @@
 
 **Purpose:** Improve LLM output quality, especially for decision-critical prompts (fewer hallucinations, better decision support).
 
-**When to apply:** Apply all guidelines for prompts that are decision-critical (meet ≥1 of: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h), and selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Apply all guidelines for prompts that are decision-critical (meet ≥1 of: blocks a decision, risk >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h), and selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -34,7 +34,7 @@
 
 **11. Accuracy** [↓20-30% factual errors]: The prompt requests fact verification. ❌ Bad: "Recommend libraries" ✅ Optimized: "Recommend libraries with verification: check current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs, cross-reference claims"
 
-**12. Credibility** [↓50-60% hallucinations from unverified claims]: The prompt requests authoritative citations from primary sources (official docs, standards, peer-reviewed papers). ❌ Bad: "What are best practices?" ✅ Optimized: "Cite best practices from: AWS Well-Architected Framework, Google SRE Book, OWASP Top 10 (2023+), peer-reviewed academic papers."
+**12. Credibility** [↓50-60% hallucinations from unverified claims]: The prompt requests authoritative citations from recent (2023+) primary sources when possible (official docs, standards, peer-reviewed papers). ❌ Bad: "What are best practices?" ✅ Optimized: "Cite best practices from: AWS Well-Architected Framework, Google SRE Book, OWASP Top 10 (2023+), peer-reviewed academic papers."
 
 **13. Logic** [↓30-40% reasoning errors]: The prompt requests coherent reasoning without contradictions. ❌ Bad: "Explain why microservices simplify architecture" ✅ Optimized: "Explain microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10."
 
@@ -62,6 +62,6 @@
 
 **Before sending your prompt (mandatory for decision-critical prompts, recommended for others):** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
-**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact or low severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, domain, constraints, stakeholders, budget
+**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact or low severity, proofs, trends without data, generic advice, speculation. **Always specify:** Key context: scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget
 
 **Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE+Sufficiency) | ↑30-45% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
