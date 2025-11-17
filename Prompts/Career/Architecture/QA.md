@@ -4,7 +4,7 @@
 
 **Scope**: Generate 12-15 decision-critical Q&A pairs for senior/architect/expert roles, focusing on architecture-to-code translation in distributed systems.
 
-**Constraints**: Assume basic Go/Java/Python/TypeScript knowledge; focus on production-ready code.
+**Constraints**: Assume basic Go/Java/Python/TypeScript/Rust/Solidity knowledge; focus on production-ready code.
 
 **Assumptions**: Distributed systems (>10K rps, >1TB data); cloud-native context; idiomatic code patterns; foundational knowledge (layered, MVC, REST).
 
@@ -23,7 +23,7 @@
 **Success**: 19/19 validation checks PASS; p95 decision quality ↑60-80%  
 **Philosophy**: Minimal viable coverage for informed decisions; time-optimized (50% reduction from 25-30)
 
-**Assumptions**: Distributed systems (>10K rps, >1TB data), idiomatic Go/Java/Python/TypeScript, cloud-native context, foundational knowledge (layered, MVC, REST)
+**Assumptions**: Distributed systems (>10K rps, >1TB data), idiomatic Go/Java/Python/TypeScript/Rust/Solidity, cloud-native context, foundational knowledge (layered, MVC, REST)
 
 ---
 

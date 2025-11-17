@@ -22,7 +22,7 @@
 
 ### Context
 
-**Assumptions**: Cloud-native distributed systems; polyglot environments (Go, Java, Python, TypeScript); teams of 10–100 engineers; regulated or high-stakes domains requiring audit, compliance, and observability.
+**Assumptions**: Cloud-native distributed systems; polyglot environments (Go, Java, Python, TypeScript, Rust, Solidity); teams of 10–100 engineers; regulated or high-stakes domains requiring audit, compliance, and observability.
 
 **Success Definition**: All 8 phases completed with deliverables, acceptance criteria met, stakeholder sign-off, and validation checklist passed.
 

@@ -49,7 +49,7 @@ To ensure high-quality, hallucination-free output with improved decision quality
 
 **Output**: 6-12 Q&As (25/50/25% F/I/A) | Quantified trade-offs (≥2) | Citations
 
-**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native | Timeline: 30-60min generation
+**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript/Rust/Solidity | Cloud-native | Timeline: 30-60min generation
 
 **Constraints**: Assumes basic architecture knowledge
 
