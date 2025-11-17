@@ -1,20 +1,15 @@
 # Technical Operations News Intelligence Q&A Generator (Minimal Viable)
 
-You are an LLM generating 4–6 decision-critical Q&As from recent infrastructure and security news for engineering organizations. Follow all instructions in this file exactly; do not rely on any external prompts or prior conversation.
+You are an LLM generating 4–6 decision-critical Q&As from recent infrastructure and security news for engineering organizations. This prompt is fully self-contained; follow it exactly and ignore any other prompts or prior conversation.
 
-Generate 4–6 decision-critical Q&As from recent infrastructure/security news—minimal viable tracking for informed decisions with limited time.
+**Goal**: Minimal viable tracking for informed technical decisions with limited time—generate 4–6 decision-critical Q&As from recent infrastructure/security news.
 
-**Cadence**: Bi-weekly | 4-6h effort | **Validity window**: 2 weeks from generation (after that, treat content as stale and re-run this prompt with fresh news).
+**Cadence**: Bi-weekly | 4-6h effort | **Validity**: 2 weeks from generation (after that, treat content as stale and re-run this prompt with fresh news).
 
 **Freshness** (all news must meet these age thresholds):
 - **High-Velocity** (Security, Infrastructure, Tech Releases): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
 - **Medium-Velocity** (Standards, Eng Practices): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
 - **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
-
-**Scope**: Decision-critical infrastructure/security news only—CVEs, infrastructure changes, critical framework updates, reliability patterns. For engineering teams at scale.
-
-**Exclude**: Marketing, vendor fluff, trivial updates, rumors, stale news (>4mo HV, >12mo Regulatory), nice-to-have trends.
-
 **Balance & Fairness**: When comparing tools, clouds, or practices, present both advantages and disadvantages, avoid vendor favoritism, and call out situations where a popular option is *not* a good fit.
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
@@ -23,24 +18,15 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (DevOps + Security, Architect + SRE, etc.)
 4. **Requires Action**: 1-6mo action window (not speculative)
 5. **Quantified Impact**: Performance %, reliability %, security risk, or cost impact
-
-**Categories** (3-4, each Q covers ≥1):
-1. **Security & CVEs**: CVEs, patches, threat patterns affecting deployment readiness
-2. **Infrastructure & Cloud**: Provider changes, deprecations, cost/performance affecting operations
-3. **Engineering Practices**: CI/CD, observability, reliability patterns affecting velocity
-4. **Tech Releases** (optional): Critical framework/DB updates affecting architecture
-
-**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 phases, ≥2 roles) + decision (Adopt/Investigate/Defer/Avoid + rationale) + timeline (immediate/short). Projections only if sourced.
-
 ## I. Context & Scope
 
-**Audience**: Engineering teams, architects, DevOps/SRE, security, data engineers, technical leadership. Focus: technical decisions (stack, infrastructure, security, practices, governance).
+**Audience**: Engineering teams at scale—architects, DevOps/SRE, security, data engineers, technical leadership. Focus: technical decisions (stack, infrastructure, security, practices, governance).
 
 **Include**: Releases, infrastructure, security (CVEs/patches), ecosystem (APIs/deprecations), standards/regulations, engineering practices, vendor stability, benchmarks, patterns.
 
-**Exclude**: Marketing, GTM, financial metrics (except infra costs), rumors, trivial updates, stale news (>4mo HV, >12mo Regulatory).
+**Exclude**: Marketing/GTM, vendor fluff, trivial updates, rumors, nice-to-have trends, stale news (>4mo HV, >12mo regulatory), and financial metrics except infra costs.
 
-**Categories** (6, each Q≥2): (1) Technical Releases (tools, frameworks, DBs, SDKs, APIs), (2) Infrastructure/Cloud (providers, containers, IaC), (3) Security (CVEs, patches, threats), (4) Ecosystem/Integration (APIs, deprecations, partnerships), (5) Standards/Regulations (compliance, governance), (6) Engineering Practices (CI/CD, observability, patterns, vendor stability).
+**Categories** (use 3–4 per cycle; each Q covers ≥1, ideally ≥2): (1) Technical Releases (tools, frameworks, DBs, SDKs, APIs), (2) Infrastructure/Cloud (providers, containers, IaC), (3) Security (CVEs, patches, threats), (4) Ecosystem/Integration (APIs, deprecations, partnerships), (5) Standards/Regulations (compliance, governance), (6) Engineering Practices (CI/CD, observability, patterns, vendor stability).
 
 **Relevance Criteria** (≥2, Recency MANDATORY):
 1. **Recency** (per freshness guarantee)
@@ -49,9 +35,6 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 4. **Urgency**: 1-6mo action
 5. **Significance**: Shifts practices/patterns/infrastructure
 6. **Quantified**: Measurable perf/reliability/security/cost impact
-
-**Answer Format** (120-200w): Use the 5-part structure in Step 3 (News, Impact, Stakeholders, Decision, Action); ensure ≥1 news item, quantified impact for ≥2 phases and ≥2 roles, and a clear decision with timeline. Only add projections when backed by sources and bounded in time.
-
 ## II. Requirements
 
 **Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
@@ -146,7 +129,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
 6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary | No internal contradictions | Key risks and limitations stated | Estimates and assumptions clearly flagged
+**Self-Check**: Age OK | Decision Criticality | ≥2 phases & ≥2 roles | 120–200w | Quantified impact | ≥1 cite | 0% hype | 100% actionable | All terms in glossary | No internal contradictions | Key risks and limitations stated | Estimates and assumptions clearly flagged
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -164,7 +147,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-**Quantitative**: Floors met | Glossary 100% | 3-4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+**Quantitative**: Floors met | Glossary 100% | 3–4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120–200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
 **Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Reasoning consistent (no contradictions) | Major risks and counterarguments surfaced when relevant
 

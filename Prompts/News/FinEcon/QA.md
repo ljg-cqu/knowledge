@@ -4,12 +4,12 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 ## I. Context & Scope
 
-- **Cadence & Effort**: Bi-weekly cycle, 4–6h analyst effort. Each run produces 4–6 Q&As. Output is valid for 2 weeks from the generation date; always state both dates.
-- **Domain**: Financial and economic developments that materially affect corporate finance decisions (capital structure, liquidity, M&A, risk/compliance).
-- **Stakeholders**: CFO, VP Finance, Treasurer, Corporate Development, FP&A (core roles). Write answers so they are understandable and actionable for these roles.
-- **Scale & Timeline**: Organization-level decisions with a 1–6 month action window. Ignore intraday trading signals and very long-term (>6 month) speculation unless they clearly block a near-term decision.
-- **Assumptions**: Readers know basic finance concepts (e.g., WACC, IRR, NPV) but need concise, decision-ready synthesis, not tutorials.
-- **Constraints**: Output must be scannable in ≤30 minutes by senior leaders; avoid redundancy and generic explanations.
+- **Cadence**: Bi-weekly; 4–6h analyst time; 4–6 Q&As per run; valid 2 weeks from generation (state gen and expiry dates).
+- **Domain**: Financial/economic news materially affecting corporate finance (capital structure, liquidity, M&A, risk/compliance).
+- **Stakeholders**: CFO, VP Finance, Treasurer, Corp Dev, FP&A; answers must be understandable and actionable for them.
+- **Horizon**: Org-level decisions within a 1–6 month window; ignore intraday moves and >6 month speculation unless they block near-term decisions.
+- **Reader**: Assumes familiarity with core finance (WACC, IRR, NPV); provide decision-ready synthesis, not tutorials.
+- **Format**: Scannable in ≤30 minutes by senior leaders; avoid redundancy and generic explanations.
 
 **Freshness** (all news must meet these age thresholds):
 - **High-Velocity** (Capital Markets, Macro): ≥85% <1mo (≥30% 1–7d), ≥95% <2mo, 100% ≤4mo
@@ -61,7 +61,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 ## III. Execution
 
-### Step 1: News Discovery & Curation (Minimal)
+### Step 1: News Discovery & Curation
 
 **Record generation date (YYYY-MM-DD)**—calculate all news ages from this.
 
@@ -82,20 +82,14 @@ Use this specification as a single, self-contained prompt for an LLM to generate
    - **Avoid**: PR fluff, rumors, speculation, clickbait
 
    **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Bloomberg Terminal
-
-3. **Curate** (≥10-15 candidates: Capital Markets ≥4, Macro ≥3, M&A ≥2, Treasury ≥2):
-   - ✅ Age per freshness
-   - ✅ Whitelist OR primary source
-   - ✅ Satisfies ≥1 Decision Criticality criterion
-   - ✅ Specific details (dates, names, numbers, metrics)
-   - ✅ Not rumors/speculation
-   - ✅ Relevant to ≥2 roles
-
+ 
+3. **Curate** (≥10–15 candidates: Capital Markets ≥4, Macro ≥3, M&A ≥2, Treasury ≥2): Age per freshness | Whitelist or primary source | ≥1 Decision Criticality criterion | Specific dates/names/numbers/metrics | No rumors/speculation | Relevant to ≥2 roles.
+ 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
 5. **Allocate**: 4-6 Q × 3-4 cycles (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
 
-### Step 2: Build References (Minimal)
+### Step 2: Build References
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | M# (M&A, companies, valuation, URL) | T# (treasury, instrument, terms, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
@@ -105,18 +99,13 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 **Floors**: G≥8 (100% terms used), N≥4-5, M≥2-3, T≥2, R≥2, A≥6
 
-**Glossary** (only terms used in Q&As):
-- **Coverage**: Only terms/acronyms used (WACC, IRR, NPV, EBITDA, DCF, etc.)
-- **Clarity**: Plain language, avoid jargon
-- **Analogies**: 1-2 real-world comparisons per term
-- **Context**: Why it matters for decisions
-- **Examples**: Real numbers
+**Glossary** (only terms used in Q&As): Coverage (only terms/acronyms used, e.g., WACC, IRR, NPV, EBITDA, DCF) | Clarity (plain language, no jargon) | Analogies (1–2 real-world comparisons per term) | Context (why it matters for decisions) | Examples (real numbers).
+ 
+### Step 2.5: Opportunistic Refresh (optional)
 
-### Step 2.5: Opportunistic Refresh (optional, default: skip)
+**Trigger**: Major policy move (e.g., Fed >50bps, tax law, crisis) or >$1B M&A in the last 24–48h affecting ≥3 Qs.
 
-**Trigger**: Major policy (Fed >50bps, tax law, crisis) OR M&A (>$1B, consolidation) in 24-48h affecting ≥3 Qs
-
-**Actions**: Quick search → Add 1-2 "BREAKING" → Adjust 1-2 Qs → Document
+**Action**: Run a quick search, add 1–2 "BREAKING" items, adjust 1–2 Qs, and document changes.
 
 ### Step 3: Generate Q&A (batch 2-3, self-check each)
 
@@ -134,7 +123,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 5. **Action** (~20w): Immediate (0-2wk) and Short (2wk-2mo) actions + owner for each; specify concrete steps, not generalities.
 6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision & alternatives clear | 120–200w (no redundancy) | Quantified metrics consistent with sources | ≥1 cite (prefer ≥2 for high-impact items) | 0% speculation | 100% actionable steps | Reasoning coherent (no contradictions) | Limitations and assumptions stated | All terms covered in glossary
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision & alternatives clear | 120–200w (no redundancy) | Metrics consistent with sources | ≥1 cite (≥2 for high-impact) | 0% speculation | 100% actionable | Reasoning coherent (no contradictions) | Limitations/assumptions stated | All terms covered in glossary
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -150,13 +139,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 **Stakeholders**: ≥5 roles | Actions + authority
 
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
-
-**Quantitative**: Floors met | Glossary 100% | 3-4 cycles | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
-
-**Qualitative**: News per freshness, 0% speculation | Decision Criticality 100% | Impact 100% ≥2 cycles+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-cycle ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
-
-### Step 7: Submit
+### Step 6: Submit
 
 **Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
 

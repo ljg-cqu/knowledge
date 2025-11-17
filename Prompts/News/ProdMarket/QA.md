@@ -1,11 +1,11 @@
 # Product & Market Intelligence News Q&A Generator (Minimal Viable)
 
-Use this template as a single, self-contained prompt for an LLM (with web search and Markdown output) to generate 4–6 decision-critical Q&As, visuals, and a validation report from recent product and market news in one run.
+Use this template as a single, self-contained LLM prompt (with web search and Markdown output) to generate 4–6 decision-critical Q&As, visuals, and a validation report from recent product and market news in one run.
 
-**How to use with an LLM**:
-1. Before running, fill in the contextual placeholders in the Output Format section (`[Domain]`, `[Period]`, roles, and generation date) and decide your product, stage, region, target segment, key competitors, and priorities for this period.
-2. Paste this entire prompt into the LLM and provide those context values.
-3. Instruct the LLM to strictly follow all requirements, execution steps, and the output format to produce Q&As, references, visuals, and the validation report.
+**How to use**:
+1. Fill contextual placeholders in the Output Format (`[Domain]`, `[Period]`, roles, generation date) and decide product, stage, region, target segment, key competitors, and priorities for this period.
+2. Paste this entire prompt into the LLM with those context values.
+3. Tell the LLM to strictly follow all requirements, execution steps, and the output format to produce Q&As, references, visuals, and the validation report.
 
 **Cadence & Effort**: Bi-weekly | 4–6h equivalent analysis effort | **Validity**: Results are valid for 2 weeks from the generation date.
 
@@ -19,12 +19,12 @@ Use this template as a single, self-contained prompt for an LLM (with web search
 **Exclude**: Technical implementation, sales execution, corporate finance (except pricing), long-term R&D, rumors, marketing fluff, stale news, nice-to-have trends.
 
 **Context Inputs (set before running)**:
-- Your product and business model (e.g., B2B SaaS, consumer app) and main value proposition.
-- Target customers and regions (segments, ICPs, markets you care about in this period).
-- Company stage and scale (e.g., post-PMF, revenue or user band, team size).
-- Competitive set (3–7 key competitors you track for this domain).
-- Strategic priorities for this period (e.g., retention, expansion, pricing, new segments).
-- Constraints and risk tolerance (time, budget, regulatory or contractual limits).
+- Product, business model, and main value proposition (e.g., B2B SaaS, consumer app).
+- Target customers/segments and regions (ICPs, markets for this period).
+- Company stage and scale (post-PMF, revenue or user band, team size).
+- Competitive set (3–7 key competitors).
+- Strategic priorities (e.g., retention, expansion, pricing, new segments).
+- Key constraints and risk tolerance (time, budget, regulatory/contract limits).
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts roadmap prioritization, go/no-go, or strategic pivot
@@ -73,32 +73,23 @@ Use this template as a single, self-contained prompt for an LLM (with web search
 
 1. **Domain**: Define industry/product category + date (e.g., "B2B SaaS Q4 2024")
 
-2. **Search** (≥10-15 candidates, tiered):
+2. **Search** (≥10–15 candidates, tiered):
+   - **Tier 1 (1–3d, search first)**: `"[Competitor/Domain] launched|pricing|strategy"` + 1–3d.
+   - **Tier 2 (7–14d, if Tier 1 insufficient)**: Same query + 7–14d.
+   - **Sources (whitelist, prioritize)**: Competitive (Product Hunt, TechCrunch, competitor changelogs); Pricing (ProfitWell, competitor sites, Archive.org); Strategy (Lenny's Newsletter, a16z, company blogs); Research (Pendo, Amplitude, UserTesting reports). Avoid PR fluff, rumors, listicles, speculation.
+   - **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Product Hunt.
 
-   **Tier 1** (1-3d, search first): `"[Competitor/Domain] launched|pricing|strategy"` + 1-3d
-   
-   **Tier 2** (7-14d if insufficient): Same + 7-14d
-
-   **Sources** (whitelist, prioritize):
-   - **Competitive**: Product Hunt, TechCrunch, competitor changelogs
-   - **Pricing**: ProfitWell, competitor sites, Archive.org
-   - **Strategy**: Lenny's Newsletter, a16z, company blogs
-   - **Research**: Pendo, Amplitude, UserTesting reports
-   - **Avoid**: PR fluff, rumors, listicles, speculation
-
-   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Product Hunt
-
-3. **Curate** (≥10-15 candidates: Competitive ≥4, Pricing ≥2, Strategy ≥2, Research ≥2):
-   - ✅ Age per freshness
-   - ✅ Whitelist OR primary source
-   - ✅ Satisfies ≥1 Decision Criticality criterion
-   - ✅ Specific details (dates, names, numbers, metrics)
-   - ✅ Not marketing/rumors
-   - ✅ High expected impact on your roadmap, pricing, or positioning (drop marginal items even if fresh)
+3. **Curate** (≥10–15 candidates: Competitive ≥4, Pricing ≥2, Strategy ≥2, Research ≥2):
+   - Meets freshness thresholds.
+   - From whitelist or primary source.
+   - Satisfies ≥1 Decision Criticality criterion.
+   - Includes specific details (dates, names, numbers, metrics).
+   - Not marketing/rumors.
+   - High impact on roadmap, pricing, or positioning (drop marginal items even if fresh).
 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-5. **Allocate**: 4–6 Q × 3–4 phases (1–2 each) × 3–4 categories (≥1/Q) × ≥5 roles, avoiding duplicate questions about the same news unless a split by phase is clearly needed
+5. **Allocate**: 4–6 Q × 3–4 phases (1–2 each) × 3–4 categories (≥1/Q) × ≥5 roles; avoid duplicate questions about the same news unless you split by phase.
 
 ### Step 2: Build References (Minimal)
 
@@ -111,11 +102,8 @@ Use this template as a single, self-contained prompt for an LLM (with web search
 **Floors**: G≥8 (100% terms used), N≥4-5, C≥2-3, P≥2, R≥2, A≥6
 
 **Glossary** (only terms used in Q&As):
-- **Coverage**: Only terms/acronyms used (NPS, MAU, ICP, JTBD, etc.)
-- **Clarity**: Plain language, avoid jargon
-- **Analogies**: 1-2 real-world comparisons per term
-- **Context**: Why it matters for decisions
-- **Examples**: Real numbers
+- Only terms/acronyms used (NPS, MAU, ICP, JTBD, etc.), in plain language (no jargon).
+- For each term, include 1–2 real-world analogies, why it matters for decisions, and at least one numeric example.
 
 **News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
 
@@ -157,7 +145,7 @@ Use this template as a single, self-contained prompt for an LLM (with web search
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | C≥2-3 | P≥2 | R≥2 | A≥6
+**Refs**: 100% resolve, age OK, complete; floors met (G≥8, N≥4–5, C≥2–3, P≥2, R≥2, A≥6).
 
 **Decision**: 100% decision + rationale + criteria + timeline
 

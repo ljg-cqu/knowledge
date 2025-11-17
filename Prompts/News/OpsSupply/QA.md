@@ -1,12 +1,12 @@
 # Operations & Supply Chain News Intelligence Q&A (Minimal Viable)
 
-Act as an expert operations & supply chain analyst for mature organizations. Using only this prompt and your own access to current news and web search, generate 4–6 decision-critical Q&As from recent industry news for senior operations leaders with limited reading time. Treat this prompt as fully self-contained; do not rely on other files or previous conversation.
+Act as an operations & supply chain analyst. Using only this prompt and web search, generate 4–6 decision-critical Q&As from recent industry news for senior operations leaders with limited reading time. This prompt is fully self-contained; do not rely on other files or previous conversation.
 
-**Cadence**: Monthly brief | 4-6h analyst-equivalent effort | **Expires**: 4 weeks from generation (re-validate if used later)
+**Cadence**: Monthly brief | 4–6h analyst-equivalent effort | **Expires**: 4 weeks from generation (re-validate if used after 4 weeks)
 
-**Scope**: Decision-critical operations news only—supply disruptions, supplier risk, cost shocks, regulatory/safety changes, capacity constraints. For mature operations organizations.
+**Scope**: Decision-critical operations news only (supply disruptions, supplier risk, cost shocks, regulatory/safety changes, capacity constraints) in mature organizations.
 
-**Exclusions**: Long-term R&D, vendor marketing, nice-to-have process improvements, rumors, stale news (>4mo for HV, >6mo for MV).
+**Exclusions**: Long-term R&D, vendor marketing, incremental process improvements, rumors, stale news (>4mo HV, >6mo MV).
 
 **Freshness** (category-adaptive):
 - **High-Velocity** (Disruptions, Logistics, Supplier Risk): ≥75% <1mo (≥25% in 1–7d), ≥95% <2mo, 100% ≤4mo  
@@ -45,12 +45,7 @@ COO, VP Supply Chain, Plant/Factory Manager, Head of Procurement, Quality & Safe
 
 4. **Quality, Safety & Compliance**: Product recalls, safety incidents, regulatory changes (OSHA, ISO), new standards, process safety
 
-**News Relevance Criteria** (must meet ≥1 Decision Criticality criterion):
-1. **Recency** (MANDATORY—per freshness thresholds)  
-2. **Decision Impact**: Blocks sourcing, capacity, supplier, or resilience decision  
-3. **Risk Materiality**: Supply disruption, safety breach, regulatory risk, cost shock >5%  
-4. **Stakeholder Breadth**: Relevant to ≥2 core roles  
-5. **Quantified Impact**: Lead time %, capacity %, cost/unit, incident rates, service level %
+**News Relevance Criteria**: Must meet freshness thresholds and ≥1 Decision Criticality criterion; prioritize items that block sourcing/capacity/supplier/resilience decisions, create material supply/safety/regulatory/cost (>5%) risk, affect ≥2 core roles, and have quantified impact (lead time %, capacity %, cost/unit, incident rates, service level %).
 
 ---
 
@@ -161,24 +156,17 @@ Trigger only if **major disruption** (port/canal blockage, tier-1 supplier failu
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
-**Types**: Supply chain risk heatmap, decision trees, capacity vs demand table, impact matrix
+**Types**: Supply chain risk heatmap, decision trees, capacity vs demand table, impact matrix, using Mermaid for flows and Markdown tables/2×2 matrices for data.
 
-**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
+**Checks**: All links resolve; ages follow freshness; floors from Step 2 are met; each Q&A shows a clear decision with rationale, criteria, timeline, and ≥4 roles with actions and authority.
 
-**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | L≥2 | M≥2 | S≥2 | R≥2 | A≥6
+### Step 5: Self-Review & Validate (fail ANY = stop, correct, then re-check before final output)
 
-**Decision**: 100% decision + rationale + criteria + timeline
+**Quantitative**: Floors met; glossary 100%; 4 cycles covered; category % targets met; ≥4 roles; citations OK; 5 Q&A samples within 200–300w; visuals present; decisions and timelines included; ages within freshness rules.
 
-**Stakeholders**: ≥4 roles | Actions + authority
+**Qualitative**: News meets freshness thresholds with 0% hype; Decision Criticality 100%; each Q&A covers ≥2 cycles and ≥2 roles with quantified impact; sources span ≥3 types with valid links; per-cycle ≥1 news+analysis; content is 100% quantified, actionable, and evidence-based; search steps documented.
 
-### Step 5: Self-Review & Validate (fail ANY = stop, correct all Q&As, then re-check every item before final output)
-
-**Quantitative**: Floors met | Glossary 100% | 4 cycles | Categories per % | ≥4 roles | Citations OK | 5 word samples 200-300w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
-
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 cycles+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-cycle ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
-
-
-**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+4wk)** | Search documented
+**Checklist** (all YES): All validations PASS; floors met; glossary complete (100% terms, ≥50% analogies); TOC complete; no placeholders; visuals and citations OK; impact, decision, timeline, categories, and roles OK; freshness OK; URLs valid; dates recorded (generation + expire=gen+4wk); search documented.
 
 ---
 

@@ -148,7 +148,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 4. **Decision** (~50w): Compare at least two options (e.g., Adopt vs Test vs Defer/Avoid) with rationale, risks, trade-offs, and when each is appropriate; note key uncertainties
 5. **Action** (~20w): Immediate (0-2wk) and Short (2wk-2mo) actions + owner + 1–3 success metrics and how they will be measured
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 stages | ≥2 roles | ≥2 options compared | risks & limitations stated | Decision clear | 120–200w | Quantified with units & baselines | ≥1 cite | citations recent where possible | 0% hype | 100% actionable | All terms in glossary | No contradictions across answers | Uncertainties flagged
+**Self-Check**: Freshness & Decision Criticality ✓ | ≥2 stages & roles | ≥2 options with risks/limits | clear decision & timeline | 120–200w | quantified with units & baselines | ≥1 recent cite | 0% hype, 100% actionable | all terms in glossary | no contradictions across answers | uncertainties flagged
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -158,11 +158,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | P≥2 | M≥1-2 | R≥2 | A≥6
-
-**Decision**: 100% decision + rationale + criteria + timeline
-
-**Stakeholders**: ≥5 roles | Actions + authority
+**Final**: Refs resolved, age OK, floors met (G≥8 with 100% terms, N≥4–5, P≥2, M≥1–2, R≥2, A≥6), every Q has a decision (with rationale, criteria, timeline), and ≥5 roles have clear actions and authority.
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
