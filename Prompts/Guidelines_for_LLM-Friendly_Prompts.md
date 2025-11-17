@@ -1,8 +1,8 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Apply these guidelines when creating decision-critical prompts for LLMs. Optimized prompts following these guidelines produce higher-quality LLM outputs with fewer hallucinations and better decision support.
+**Purpose:** Apply these guidelines when creating decision-critical prompts for LLMs. Following them produces higher-quality LLM outputs with fewer hallucinations and better decision support.
 
-**When to apply:** Decision-critical prompts (blocks decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost >40h) requiring high-quality LLM outputs. **Result:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -50,7 +50,7 @@
 
 ### Validation: Ensure Correctness
 
-**18. Evidence** [↑40-50% trust]: Building on Credibility (12), ensure prompt requests structured citations with source details and explicit uncertainty flags. ❌ Bad: "What do studies show?" ✅ Optimized: "Cite sources in format: [1] Google SRE Book (2023) p.42 states 'MTTR <1h'. [2] AWS re:Invent 2023 [video URL]. Flag uncertainties: 'cache hit rate estimated (no empirical data)'."
+**18. Evidence** [↑40-50% trust]: Building on Credibility (12), ensure prompt requests structured citations with source details, recency, and explicit uncertainty flags. ❌ Bad: "What do studies show?" ✅ Optimized: "Cite sources in format: [1] Google SRE Book (2023) p.42 states 'MTTR <1h'. [2] AWS re:Invent 2023 [video URL]. Flag uncertainties: 'cache hit rate estimated (no empirical data)'."
 
 **19. Validation** [↓25-35% errors]: Ensure prompt requests self-review and error checking. ❌ Bad: "Provide recommendation" ✅ Optimized: "After generating response, self-review: verify calculations, check for contradictions, test code examples, validate assumptions against sources, flag any uncertainties"
 
@@ -64,6 +64,6 @@
 
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
 
-**Exclude:** History (unless regulatory), pure theory (unless >40h adoption cost), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
+**Exclude:** History (unless regulatory), pure theory (unless ≥40h adoption cost), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
 
-**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
+**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE+Sufficiency) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
