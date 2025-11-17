@@ -1,25 +1,25 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Reduce hallucinations (↓30-60%), improve decision support (↑60-80%). Self-contained prompts with complete context and clear instructions.
+**Purpose:** Reduce hallucinations (↓30-60%), improve decision quality (↑60-80%). Self-contained prompts with complete context.
 
-**Application:** Apply comprehensively if meeting ≥1 criterion: blocks decision, >5% impact risk, 1-6mo action window, ≥2 stakeholders, ≥40h adoption cost. Apply selectively otherwise.
+**Application:** Apply comprehensively if ≥1: blocks decision, >5% impact, 1-6mo timeline, ≥2 stakeholders, ≥40h adoption cost. Otherwise apply selectively.
 
 **Context:**
-- **Problem:** Hallucinations, incomplete analysis, ambiguous recommendations from unstructured prompts
-- **Scope:** Technical decisions, system design, code generation, knowledge work (excludes creative writing, casual chat, basic retrieval)
-- **Constraints:** Prompt length limits (4K-8K tokens typical); assumes basic LLM familiarity
-- **Assumptions:** Users iterate prompts; LLMs have domain knowledge; metrics from empirical observations (not controlled studies)
-- **Scale:** Individual contributors to 50+ teams; 100-10,000 token prompts
-- **Timeline:** Immediate use; 30-60s quality check; benefits accumulate
+- **Problem:** Hallucinations, incomplete analysis, ambiguous recommendations
+- **Scope:** Technical decisions, system design, code generation, knowledge work
+- **Constraints:** 4K-8K token limits; assumes basic LLM familiarity
+- **Assumptions:** Users iterate; LLMs have domain knowledge; metrics empirical (not controlled)
+- **Scale:** Individual to 50+ teams; 100-10K token prompts
+- **Timeline:** Immediate use; 30-60s check; benefits accumulate
 - **Stakeholders:** Engineers, architects, PMs, technical writers
-- **Resources:** No cost; any LLM (ChatGPT, Claude, Gemini); no tools required
+- **Resources:** Any LLM (ChatGPT, Claude, Gemini); no cost
 
 **Key Terms:**
-- **Hallucination**: Factually incorrect or unverifiable information presented as fact
-- **Decision-critical**: Content influencing decisions with >5% impact or blocking key actions
-- **MECE**: Mutually Exclusive, Collectively Exhaustive - complete coverage without overlaps
-- **Self-contained**: All necessary context included without external references or previous conversations
-- **Impact metrics**: Estimated improvement (↑/↓) based on empirical observations
+- **Hallucination**: Factually incorrect/unverifiable information
+- **Decision-critical**: >5% impact or blocks key actions
+- **MECE**: Mutually Exclusive, Collectively Exhaustive
+- **Self-contained**: Complete context without external references
+- **Impact metrics**: Estimated improvement (↑/↓) from empirical observations
 
 ## Guidelines
 
@@ -30,16 +30,16 @@
 - ❌ "Design system"
 - ✅ "Design payment system: problem (manual processing, 2h delays), scale (1M users), constraints (PCI-DSS), timeline (6mo), stakeholders (PM+Arch+Security+Legal), resources ($500K, 3 engineers)"
 
-**Rationale:** Grounds responses in specific requirements vs. generic assumptions.
+**Rationale:** Grounds responses in specific requirements.
 
 **2. Clarity** [↓25-35% ambiguity]: Define key terms and relationships; use diagrams for complex concepts.
 
 - ❌ "Use eventual consistency"
 - ✅ "Define: Eventual consistency (async sync, stale reads <1s) vs strong consistency (immediate sync, higher latency). Include sequence diagram."
 
-**Rationale:** Prevents misinterpretation; ensures consistent term usage.
+**Rationale:** Prevents misinterpretation; ensures consistent terminology.
 
-**3. Precision** [↓40-50% ambiguity]: Use exact metrics, formulas, units instead of vague qualifiers.
+**3. Precision** [↓40-50% ambiguity]: Use exact metrics, formulas, units.
 
 - ❌ "Design fast and scalable system"
 - ✅ "Design system: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
@@ -51,7 +51,7 @@
 - ❌ "Explain database history and current options"
 - ✅ "Compare SQL vs NoSQL for e-commerce: transaction requirements, scale, query patterns. Exclude history. Move extensive comparisons to appendix."
 
-**Rationale:** Improves signal-to-noise ratio; reduces output length.
+**Rationale:** Improves signal-to-noise; reduces output length.
 
 ### Scope: What to Cover
 
@@ -67,7 +67,7 @@
 - ❌ "Design API: define endpoints"
 - ✅ "Design API: endpoints, authentication, rate limiting, versioning, error handling, pagination, caching headers, documentation"
 
-**Rationale:** Prevents follow-up questions; ensures actionable outputs.
+**Rationale:** Prevents follow-ups; ensures actionable outputs.
 
 **7. Breadth** [↑30-40% perspective diversity]: Include relevant stakeholder perspectives.
 
@@ -85,49 +85,49 @@
 
 ### Quality: Ensure Excellence
 
-**9. Significance** [↓40-60% reading time]: Focus on high-impact items only; deemphasize low-impact details.
+**9. Significance** [↓40-60% reading time]: Focus on high-impact items; deemphasize low-impact details.
 
 - ❌ "List all HTTP error codes and handling"
 - ✅ "Critical HTTP errors: 429 (rate limit), 503 (overload), 401/403 (auth), 500 (system alert). Exclude: 404, client errors <5% occurrence"
 
-**Rationale:** Reduces cognitive load; focuses on decision-critical information.
+**Rationale:** Reduces cognitive load; focuses on decision-critical info.
 
-**10. Concision** [↓35-45% word count]: Eliminate redundancy; state each concept once, then reference.
+**10. Concision** [↓35-45% word count]: Eliminate redundancy; state each concept once.
 
 - ❌ "Explain why we should consider using caching and how caching can improve performance"
 - ✅ "Caching strategy: Redis for sessions (TTL 30min), CDN for static assets (TTL 1d). No explanatory text."
 
 **Rationale:** Saves time; improves scannability.
 
-**11. Accuracy** [↓20-30% factual errors]: Verify facts against authoritative sources.
+**11. Accuracy** [↓20-30% errors]: Verify facts against authoritative sources.
 
 - ❌ "Recommend libraries"
 - ✅ "Recommend libraries: verify current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs"
 
-**Rationale:** Reduces factual errors and outdated information.
+**Rationale:** Reduces factual errors and outdated info.
 
-**12. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources (official docs, standards, peer-reviewed papers).
+**12. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources.
 
 - ❌ "What are best practices?"
-- ✅ "Cite best practices: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+). Include URLs."
+- ✅ "Cite: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+). Include URLs."
 
 **Rationale:** Credible sources reduce hallucinations; improve trust.
 
-**13. Logic** [↓30-40% reasoning errors]: Provide coherent arguments with explicit trade-offs and reasoning.
+**13. Logic** [↓30-40% reasoning errors]: Provide coherent arguments with explicit trade-offs.
 
 - ❌ "Explain why microservices simplify architecture"
 - ✅ "Microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10. Include reasoning."
 
 **Rationale:** Prevents contradictions; ensures sound recommendations.
 
-**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks, trade-offs.
+**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks.
 
 - ❌ "Recommend Kubernetes setup"
 - ✅ "Compare: (1) K8s self-managed ($2K/mo, ops team, full control), (2) Managed K8s ($500/mo, vendor lock-in, less ops), (3) VMs ($200/mo, limited scale). Include migration paths."
 
 **Rationale:** Enables informed decisions; reveals hidden costs.
 
-**15. Fairness** [↓40-50% bias]: Provide balanced view with counterarguments, limitations, when NOT to use.
+**15. Fairness** [↓40-50% bias]: Provide balanced view with counterarguments, limitations.
 
 - ❌ "Why should we use GraphQL?"
 - ✅ "GraphQL vs REST: pros (flexible queries, reduced over-fetching), cons (complexity, caching challenges), when NOT to use (simple CRUD, public API, small team)"
@@ -136,14 +136,14 @@
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams.
+**16. Structure** [↑30-40% scannability]: Use headings, lists, tables, diagrams.
 
 - ❌ "Explain the solution"
 - ✅ "Format: ## TOC → ### H2 sections → Bullet lists → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting → Math blocks"
 
 **Rationale:** Improves scannability; easier to locate and act upon.
 
-**17. Consistency** [↑35-45% readability]: Use consistent hierarchy and formatting conventions.
+**17. Consistency** [↑35-45% readability]: Use consistent hierarchy and formatting.
 
 - ❌ "Provide analysis"
 - ✅ "Structure: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → ### Comparison → ### Recommendation → ### Timeline. H2 for main, H3 for subsections."
@@ -152,7 +152,7 @@
 
 ### Validation: Ensure Correctness
 
-**18. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, page numbers, uncertainty flags.
+**18. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, uncertainty flags.
 
 - ❌ "What do studies show?"
 - ✅ "Cite: [1] Google SRE Book (2023) p.42 'MTTR <1h'. [2] AWS re:Invent 2024 [URL, timestamp]. Flag: 'cache hit rate estimated (no empirical data)'."
@@ -164,16 +164,16 @@
 - ❌ "Provide recommendation"
 - ✅ "Self-review: verify calculations, check contradictions, validate terminology, test code, cross-reference claims, flag uncertainties"
 
-**Rationale:** Catches errors before delivery; improves reliability.
+**Rationale:** Catches errors; improves reliability.
 
-**20. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands, troubleshooting.
+**20. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands.
 
 - ❌ "Suggest monitoring improvements"
 - ✅ "Monitoring setup: tools (Prometheus, Grafana), commands ('helm install prometheus'), queries ('rate(http_requests_total[5m])'), dashboards, common issues"
 
 **Rationale:** Accelerates implementation; reduces trial-and-error.
 
-**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets, measurement methods.
+**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets.
 
 - ❌ "How to achieve better performance?"
 - ✅ "Metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo (current: $8K/mo), timeline 3mo. Specify tools."
@@ -184,7 +184,7 @@
 
 **Before sending (mandatory for decision-critical):**
 
-☐ **Self-contained**: All context included; no cross-file refs  
+☐ **Self-contained**: Complete context; no cross-file refs  
 ☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
 ☐ Significance | ☐ Concision | ☐ Accuracy | ☐ Credibility  
@@ -203,14 +203,14 @@
 - **Depth vs. Breadth**: Detailed context may exceed token limits
 - **Precision vs. Accessibility**: Technical specificity may reduce readability
 
-**When to skip / Exclude:**
-- **Skip for**: Exploratory questions, brainstorming, low-stakes (<5% impact), rapid response, simple queries, prototyping
-- **Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5% occurrence), formal proofs, unsupported trends, generic advice, speculation, cross-references
+**Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping
 
-**Impact Metrics - Limitations:**
-- **Source**: ~50 sessions (ChatGPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective assessment, no A/B testing
+**Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5%), formal proofs, unsupported trends, generic advice, speculation, cross-references
+
+**Impact Metric Limitations:**
+- **Source**: ~50 sessions (GPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective, no A/B testing
 - **Baseline**: Unstructured conversational prompts
-- **Uncertainty**: High (±20-40%); directional indicators only, not precise measurements
+- **Uncertainty**: High (±20-40%); directional only, not precise
 - **Use cautiously**: Apply based on principles, not solely metrics
 
 **Estimated Ranges:**
@@ -220,10 +220,10 @@
 
 **Self-assessment:**
 ☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
-⚠ Credibility: Impact metrics lack external citations (limitations documented)  
-⚠ Risk/Value: Single framework (alternatives not compared)  
-⚠ Evidence: Observational metrics, not peer-reviewed (uncertainty flagged)  
-⚠ Success Criteria: Qualitative only (no quantitative baselines)
+⚠ Credibility: Impact metrics lack external citations  
+⚠ Risk/Value: Single framework (no alternatives compared)  
+⚠ Evidence: Observational metrics, not peer-reviewed  
+⚠ Success Criteria: Qualitative only
 
 **Gaps:** No alternative framework comparison; metrics lack rigorous validation; no measurable effectiveness criteria
 
