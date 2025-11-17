@@ -61,18 +61,18 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-8 (25/50/25) |
-| 2 | **Decision Criticality** | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
-| 3 | **Freshness** | ≥70% sources updated in last 10 years; justify older sources |
-| 4 | **Citations** | ≥70% with ≥1, ≥30% with ≥2+ |
-| 5 | **Language** | Primarily EN; ZH optional. Consistent within entries |
-| 6 | **Links** | 100% accessible, prefer official |
-| 7 | **Word Count** | 150-250 words per Q&A (scenario-based, concise) |
-| 8 | **Impact** | Quantified: fine $, audit days, deadline, remediation hours |
-| 9 | **Decision** | Clear go/no-go, adopt/defer/skip, rationale |
-| 10 | **Visuals** | ≥1 diagram + ≥1 table + ≥1 metric per cluster |
-| 11 | **Cross-refs** | All [Ref: ID] resolve |
-| 12 | **Final Review** | Scenario-based, decision-critical, actionable, no speculation |
+| 1 | **References** | Sufficient G, T, L, A; 4-8 Q&As (balanced difficulty) |
+| 2 | **Decision Criticality** | All satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
+| 3 | **Freshness** | Mostly recent sources; justify older |
+| 4 | **Citations** | Adequate citations per Q&A |
+| 5 | **Language** | Consistent within entries |
+| 6 | **Links** | Valid, prefer official |
+| 7 | **Word Count** | 150-250 words per Q&A |
+| 8 | **Impact** | Quantified metrics |
+| 9 | **Decision** | Clear rationale |
+| 10 | **Visuals** | ≥1 diagram + table + metric per cluster |
+| 11 | **Cross-refs** | All resolve |
+| 12 | **Final Review** | Scenario-based, actionable, no speculation |
 
 **Balance**: Acknowledge trade-offs (security vs cost, compliance vs usability), constraints, alternatives
 
@@ -80,11 +80,11 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 ## Workflow
 
-1. **Scenario Discovery** (1-2h): Identify ≥10-15 decision-critical scenarios from regulatory changes, audits, risk registers, or conflicts; apply Decision Criticality filter
-2. **Build References** (30-45min): G≥10, T≥4, L≥6, A≥8, assign IDs, tag languages, validate links
-3. **Generate Q&As** (2-3h): Batch 2-3, scenario-based, 150-250w, quantified impact, cite [Ref: ID]
-4. **Visuals** (30-45min): ≥1 diagram + ≥1 table + ≥1 metric per cluster (Mermaid, <80 nodes)
-5. **Validate** (30-45min): Execute 12 checks, fix, iterate until 100% pass
+1. **Scenario Discovery**: Identify ≥10-15 decision-critical scenarios from regulatory changes, audits, risk registers, or conflicts; apply Decision Criticality filter
+2. **Build References**: Adequate references (G, T, L, A), assign IDs, tag languages, validate links
+3. **Generate Q&As**: Batch 2-3, scenario-based, 150-250w, quantified impact, cite [Ref: ID]
+4. **Visuals**: ≥1 diagram + ≥1 table + ≥1 metric per cluster (Mermaid, <80 nodes)
+5. **Validate**: Execute key checks, fix, iterate until pass
 
 ---
 
@@ -125,7 +125,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 ```markdown
 ## Contents
 - [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
-- [Q&As 1-8](#qas-1-8) - Scenario + Impact + Decision + Action
+- [Q&As 1-8](#qas-1-8) - Scenario + Regulatory Mapping + Impact + Stakeholders + Decision + Trade-offs + Artifacts
 - [References](#references) - Glossary, Tools, Literature, Citations
 
 ## Cluster Overview
@@ -139,17 +139,27 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 **Difficulty**: [F/I/A] | **Cluster**: [Topic] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
 **Answer** (150-250 words):
-[P1: Scenario (~25w) - What, who, why, regulation, context [Ref: ID]]
-[P2: Impact (~50w) - Quantified: fine $, audit days, deadline, remediation hours [Ref: ID]]
-[P3: Stakeholders (~35w) - ≥2 roles, concerns, actions [Ref: ID]]
-[P4: Decision (~50w) - Go/no-go, adopt/defer/skip, rationale, success targets [Ref: ID]]
-[P5: Action (~20w) - Immediate (0-2wk), Short (2wk-2mo), owner]
+
+**Scenario**: [What, who, why, regulation, context [Ref: ID]]
+
+**Regulatory Mapping**: [Mapping, conflicts, resolution [Ref: ID]]
+
+**Impact**: [Quantified: fine $, audit days, deadline, remediation hours [Ref: ID]]
+
+**Stakeholders**: [≥2 roles, concerns, actions [Ref: ID]]
+
+**Decision**: [Go/no-go, adopt/defer/skip, rationale, success targets [Ref: ID]]
+
+**Trade-offs**: [Acknowledge trade-offs, alternatives]
 
 **Artifacts**:
+
 ```mermaid
 [Diagram: <80 nodes, decision flow or control matrix]
 ```
-| Control | Requirement | Status | Owner |
+
+| Regulation | Requirement | Control | Evidence | Owner |
+
 **Metrics**: Formula = Result
 ```
 

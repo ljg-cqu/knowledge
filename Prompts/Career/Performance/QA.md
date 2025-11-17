@@ -2,7 +2,7 @@
 
 Generate 2-4 decision-critical Q&As for performance engineering—minimal viable tracking for informed decisions with limited time.
 
-## Context & Scope
+## Scope & Requirements
 
 **Problem**: Inconsistent performance advice leading to suboptimal decisions, hallucinations in optimization strategies, incomplete bottleneck analysis.
 **Scope**: Decision-critical topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. Applicable to systems with measurable SLOs, from low-volume to high-scale.
@@ -15,8 +15,6 @@ Generate 2-4 decision-critical Q&As for performance engineering—minimal viable
 **Domain**: Web/cloud/microservices/distributed/real-time/data-intensive systems.
 **Exclude**: Hardware selection, network topology, vendor comparisons, non-performance concerns.
 **Cadence**: Bi-weekly | 1-2h effort | Expires: 2 weeks.
-
-## Requirements
 
 **Quantity**: 2-4 Q&A pairs.
 **Difficulty**: 25% Foundational, 50% Intermediate, 25% Advanced.
@@ -34,6 +32,16 @@ Generate 2-4 decision-critical Q&As for performance engineering—minimal viable
 **Concision**: Minimize redundancy; prefer tables/diagrams over prose.
 **Risk/Value**: Explicit cost-benefit; ≥1 alternative with trade-offs; mitigation for high-risk.
 **Fairness**: Balanced trade-offs; acknowledge limitations/assumptions.
+
+**Design Principles**: Decision-critical (blocks decisions or creates risk), real-world (production-like scenarios with constraints/SLOs), actionable (concrete next steps), evidence-based (proven patterns/benchmarks).
+
+Examples:
+- Good: "80% latency in DB queries. Pooling vs caching for 4K rps?"
+- Poor: "What is profiling?"
+
+Stakeholder Focus: Profiling/optimization (Engineers), SLO/monitoring (SREs), Code tuning (Developers), Design patterns (Architects), Infrastructure (DevOps).
+
+**Mandatory Elements**: Scenario context with constraints/SLOs/bottleneck [Ref: ID]; ≥1 decision criticality criterion; complete performance chain; practical code/config (5-30 lines); ≥1 citation; key insight with quantified impact; explicit trade-offs; ≥1 alternative; risk/mitigation strategies.
 
 ## Key Elements
 
@@ -66,17 +74,7 @@ Generate 2-4 decision-critical Q&As for performance engineering—minimal viable
 | Load Testing | Performance curve | Throughput vs Load; Breaking point | Capacity validation |
 | Optimization | Before/after | Improvement % = (Baseline - Optimized)/Baseline × 100% | Impact quantification |
 
-## Q&A Guidelines
 
-**Design Principles**: Decision-critical (blocks decisions or creates risk), real-world (production-like scenarios with constraints/SLOs), actionable (concrete next steps), evidence-based (proven patterns/benchmarks).
-
-Examples:
-- Good: "80% latency in DB queries. Pooling vs caching for 4K rps?"
-- Poor: "What is profiling?"
-
-Stakeholder Focus: Profiling/optimization (Engineers), SLO/monitoring (SREs), Code tuning (Developers), Design patterns (Architects), Infrastructure (DevOps).
-
-**Mandatory Elements**: Scenario context with constraints/SLOs/bottleneck [Ref: ID]; ≥1 decision criticality criterion; complete performance chain; practical code/config (5-30 lines); ≥1 citation; key insight with quantified impact; explicit trade-offs; ≥1 alternative; risk/mitigation strategies.
 
 ## Reference Requirements
 
@@ -175,17 +173,3 @@ Domain/Audience/Constraints/In Scope/Out of Scope.
 | ... | ... | PASS | ... |
 ```
 
-## Example Validation
-| # | Gate | Status | Evidence |
-| 1 | Decision Criticality | PASS | All satisfy ≥1 |
-| 2 | Quantity | PASS | 2-4 Q&As |
-| 3 | Difficulty | PASS | 25/50/25 F/I/A |
-| 4 | Performance Chain | PASS | Complete |
-| 5 | Practical Elements | PASS | ≥1 per Q&A |
-| 6 | Citations | PASS | ≥1 per answer |
-| 7 | Trade-offs | PASS | Explicit + ≥1 alternative |
-| 8 | Quantified Impact | PASS | Numeric |
-| 9 | Reference Floors | PASS | G≥4, T≥2, L≥3, A≥5 |
-| 10 | Clarity | PASS | All terms defined |
-
-**Summary**: All gates PASS.

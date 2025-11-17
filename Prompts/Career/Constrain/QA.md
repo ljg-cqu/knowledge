@@ -1,16 +1,16 @@
 # Constraint-Aware Architecture Q&A Generator
 
-Generate 6-12 decision-critical Q&As for architects with constraint analysis—minimal viable set for informed decisions under time constraints.
+Generate decision-critical Q&As for architects on constraint analysis to enable informed decisions under time constraints.
 
 ## Essentials
 
-Each Q&A must:
-1. Provide complete context: problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
-2. Explicit constraints: ≥2 categories with magnitudes.
-3. Quantified trade-offs: ≥2 alternatives with concrete metrics, costs, risks; state assumptions.
-4. Map to SDLC phases and ≥2 stakeholders with concerns.
-5. Use structured, concise format (150-250 words); avoid repetition.
-6. Include ≥1 citation (≥2 for I/A); verify calculations, terminology, links.
+Each Q&A must include:
+- Complete context: problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
+- ≥2 explicit constraints with magnitudes.
+- Quantified trade-offs: ≥2 alternatives with metrics, costs, risks; state assumptions.
+- Mapping to SDLC phases and ≥2 stakeholders with concerns.
+- Structured, concise format; avoid repetition.
+- ≥1 citation (≥2 for I/A); verify accuracy.
 
 ## Context & Success Criteria
 
@@ -20,13 +20,13 @@ Each Q&A must:
 
 **Scope**: 3-4 dimensions × 4-5 constraint categories × 5 stakeholders × 4-5 SDLC phases.
 
-**Output**: 6-12 Q&As (25/50/25% F/I/A) with ≥2 quantified alternatives each.
+**Output**: Q&As (balanced F/I/A) with ≥2 quantified alternatives each.
 
 **Assumptions**: Basic architecture knowledge.
 
 **Stakeholders**: Architect, Developer, DevOps/SRE, Security, Leadership.
 
-**Success Criteria**: 100% decision-critical Q&As with quantified trade-offs, ≥2 alternatives, full stakeholder coverage.
+**Success Criteria**: All Q&As decision-critical with quantified trade-offs, ≥2 alternatives, full stakeholder coverage.
 
 ## Key Terms
 - **F/I/A**: Foundation/Intermediate/Advanced.
@@ -37,7 +37,7 @@ Each Q&A must:
 
 ## Coverage Requirements
 
-### Dimensions (2-3 Q&As each)
+### Dimensions
 1. **Structural & Quality**: Decomposition, modularity, performance, scalability, reliability.
 2. **Data & Consistency**: Persistence, caching, consistency, partitioning.
 3. **Integration & Evolution**: APIs, messaging, refactoring, migration, technical debt.
@@ -52,12 +52,12 @@ Each Q&A must:
 
 ## Content Standards
 
-### Q&A Structure (150-250 words)
+### Q&A Structure
 1. **Header**: Difficulty | Dimension | Phase | Stakeholders | Decision Criticality.
 2. **Key Insight**: Quantified trade-off (1 sentence).
 3. **Constraints**: ≥2 categories with magnitudes.
 4. **Body**: Context → Pattern → Trade-offs → Metrics → Impact.
-5. **Code**: Optional 10-20 lines with error handling if clarifies.
+5. **Code**: Optional snippet with error handling if clarifies.
 6. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Business | Tag).
 7. **Citations**: ≥1 (≥2 for I/A).
 
@@ -70,36 +70,32 @@ Each Q&A must:
 - **Common Patterns**: Hexagonal, Event-Driven, CQRS, Saga, Circuit Breaker, Event Sourcing, Sharding, Strangler Fig.
 
 ### References
-- **Glossary**: ≥10 terms from Q&As.
-- **Tools**: ≥4 with valid URLs, pricing; decision-critical.
-- **Literature**: ≥5 canonical sources.
-- **Citations**: ≥8 in APA 7th; mix languages; prefer recent; 100% valid URLs.
+- **Glossary**: Key terms from Q&As.
+- **Tools**: Relevant tools with URLs, pricing.
+- **Literature**: Canonical sources.
+- **Citations**: APA 7th; mix languages; prefer recent; valid URLs.
 
 ## Generation Process
 
 ### 1. Plan
-- Allocate 6-12 Q&As across 3-4 dimensions (25/50/25% F/I/A).
-- Map 4-5 constraint categories, 5 stakeholders, 4-5 SDLC phases.
-- Ensure all Q&As are decision-critical.
+- Allocate Q&As across dimensions (balanced F/I/A).
+- Map constraint categories, stakeholders, SDLC phases.
+- Ensure decision-critical focus.
 
 ### 2. Build References
-- Glossary: ≥10 terms from Q&As.
-- Tools: ≥4 with valid URLs, pricing.
-- Literature: ≥5 canonical sources.
-- Citations: ≥8 in APA 7th; mix languages; prefer recent; valid URLs.
+- Glossary: Key terms.
+- Tools: Relevant with URLs, pricing.
+- Literature: Canonical sources.
+- Citations: APA 7th; mix languages; recent; valid URLs.
 
-### 3. Write Q&As (Validate Every 3)
-- Questions: ≥70% judgment-based with multi-dimensional constraints.
-- Checkpoints: Concise | Citations | Syntax | Traceability | Quantified trade-offs | ≥2 constraints | ≥2 stakeholders | Decision criticality.
-- Artifacts: ≥80% with diagram/table; add code if clarifies.
+### 3. Write Q&As
+- Questions: Judgment-based with multi-dimensional constraints.
+- Checkpoints: Concise, cited, syntactically correct, traceable, quantified trade-offs, ≥2 constraints, ≥2 stakeholders, decision-critical.
+- Artifacts: Diagrams/tables; code if clarifies.
 
-### 4. Final Validation
-- **Counts**: G≥10 | T≥4 | L≥5 | C≥8 | Q=6-12 (25/50/25% F/I/A).
-- **Quality**: 100% citations (I/A ≥2) | Mix languages | Prefer recent | 100% URLs.
-- **Content**: Concise | 100% quantified | ≥70% judgment | ≥80% traceable/artifacts | 100% syntax.
-- **Coverage**: 100% critical | ≥80% ≥2 constraints | All 5 stakeholders | 4-5 phases | ≥30% business.
-- **Criteria**: Decision-critical, clear, accurate, balanced, practical, constraint-aware.
-- Fix failures and re-validate.
+### 4. Validate
+- Ensure quantified trade-offs, citations, balance, coverage.
+- Fix issues and re-validate.
 
 ## Templates
 
@@ -111,24 +107,24 @@ Each Q&A must:
 **Key Insight**: [Quantified trade-off, 1 sentence]
 **Constraints**: [≥2 categories with magnitudes]
 **Answer**: [Context → Pattern → Trade-offs → Metrics → Impact] [Ref: X]
-**Code** (optional): [10-20 lines with error handling if clarifies]
+**Code** (optional): [Snippet with error handling if clarifies]
 **Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
 **Stakeholders**: [≥2 with concerns]
 ```
 
 ### References
-- **Glossary** (≥10): Term → Definition.
-- **Tools** (≥4): Name → Purpose | Updated | Pricing | URL.
-- **Literature** (≥5): Author (Year). Title. Publisher.
-- **Citations** (≥8): APA 7th; mix languages.
+- **Glossary**: Term → Definition.
+- **Tools**: Name → Purpose | Updated | Pricing | URL.
+- **Literature**: Author (Year). Title. Publisher.
+- **Citations**: APA 7th; mix languages.
 
 ### Validation Report
 ```
-**Counts**: G:X/10 | T:X/4 | L:X/5 | C:X/8 | Q:X/6-12 (F:X% I:X% A:X%)
-**Quality**: Cites X% (100%, I/A ≥2) | Lang EN:X% ZH:X% Other:X% | Recent X% | URLs X%
+**Counts**: G:X | T:X | L:X | C:X | Q:X (F:X% I:X% A:X%)
+**Quality**: Cites X% (I/A ≥2) | Lang EN:X% ZH:X% Other:X% | Recent X% | URLs X%
 **Content**: Concise X% | Quantified X% | Judgment X% | Trace X% | Artifacts X% | Syntax X%
 **Coverage**: Critical X% | Constraints X% | Stakeholders X% | Phases X% | Business X%
-**Status**: X/12 PASS | **Issues**: [List] | **Fix**: [Actions]
+**Status**: X PASS | **Issues**: [List] | **Fix**: [Actions]
 ```
 
 ## Example Q&A
@@ -143,7 +139,7 @@ Each Q&A must:
 
 **Constraints**: **Technical**: 8-core CPU, 99.9% uptime | **Resource**: $10K/mo budget, 3-month timeline
 
-**Answer** (180 words): Use microservices with API gateway for independent scaling. Commands via REST, events via message queue. Trade-offs: +20ms latency vs monolithic 50ms, +30% ops cost. Metrics: throughput 10K req/s, cost $9.5K/mo. Stakeholders: Dev (modularity), SRE (monitoring).
+**Answer**: Use microservices with API gateway for independent scaling. Commands via REST, events via message queue. Trade-offs: +20ms latency vs monolithic 50ms, +30% ops cost. Metrics: throughput 10K req/s, cost $9.5K/mo. Stakeholders: Dev (modularity), SRE (monitoring).
 
 **Trade-offs**:
 | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
@@ -153,22 +149,22 @@ Each Q&A must:
 
 ## References
 
-### Glossary (≥10)
-**G1. CQRS** – Separates commands/queries.
-**G2. Event Sourcing** – State as event log.
-... (additional terms as needed)
+### Glossary
+**CQRS** – Separates commands/queries.
+**Event Sourcing** – State as event log.
+... (additional terms)
 
-### Tools (≥4)
-**T1. Mermaid** – Text diagrams. Free. https://mermaid.js.org
-**T2. ADR** – Decision records. Free. https://adr.github.io
+### Tools
+**Mermaid** – Text diagrams. Free. https://mermaid.js.org
+**ADR** – Decision records. Free. https://adr.github.io
 ... (additional tools)
 
-### Literature (≥5)
-**L1.** Evans (2003). *Domain-Driven Design*. Addison-Wesley
-**L2.** Richardson (2018). *Microservices Patterns*. Manning
+### Literature
+Evans (2003). *Domain-Driven Design*. Addison-Wesley
+Richardson (2018). *Microservices Patterns*. Manning
 ... (additional sources)
 
-### Citations (≥8)
-**A1.** Evans (2003). *Domain-driven design*. Addison-Wesley [EN]
-**A2.** Richardson (2018). *Microservices patterns*. Manning [EN]
+### Citations
+Evans (2003). *Domain-driven design*. Addison-Wesley [EN]
+Richardson (2018). *Microservices patterns*. Manning [EN]
 ... (additional citations)

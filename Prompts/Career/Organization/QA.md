@@ -4,11 +4,11 @@ Generate 4-8 decision-critical Q&As for organizational scenarios blocking decisi
 
 ## LLM-Friendly Prompts Guidelines
 
-Ensure high-quality output: state context/constraints, define terms, use precise metrics, focus on relevance, structure clearly, cite recent sources, compare trade-offs, and include practical steps.
+Ensure quality: define terms, use metrics, cite sources, compare trade-offs, include steps.
 
 ## Scope
 
-**Audience**: Managers, leaders, HR professionals in organizations with teams of 10-100 members.
+**Audience**: Managers, leaders, HR professionals.
 **Purpose**: Generate decision-critical Q&As for interviews, training, or analysis (3-4h effort, evergreen).
 
 **Lifecycle (5 phases)**: Requirements & Discovery → Development → Deployment → Operations → Evolution
@@ -88,7 +88,7 @@ Ensure high-quality output: state context/constraints, define terms, use precise
 
 | Dimension | Range | Count | Difficulty | Decision Criticality |
 |-----------|-------|-------|------------|---------------------|
-| [Title] | Q1-Q3 | 1-2 | F/I/A mix (across all Q&As) | [Blocks/Risk/Roles/Action/Quantified] |
+| [Title] | Q1-Q2 | 1-2 | F/I/A mix (across all Q&As) | [Blocks/Risk/Roles/Action/Quantified] |
 
 ## Lifecycle-Stakeholder Coverage (Decision-Critical Only)
 
@@ -97,7 +97,7 @@ Ensure high-quality output: state context/constraints, define terms, use precise
 | 2. Development | Q2 | Manager, Architect, Team Lead | Team scaling, onboarding velocity |
 | 3. Deployment | Q3 | Manager, Team Lead, Director | On-call burnout, SRE retention |
 | 4. Operations | Q4 | Manager, Director, CHRO | Attrition signals, engagement scores |
-| 5. Evolution | Q7-Q8 | Director, CHRO, VP Eng | Compliance/policy changes |
+| 5. Evolution | Q5 | Director, CHRO, VP Eng | Compliance/policy changes |
 
 ---
 
@@ -142,10 +142,10 @@ Ensure high-quality output: state context/constraints, define terms, use precise
 
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
-| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=6-12 | G:X, T:Y... | PASS/FAIL |
+| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=4-8 | G:X, T:Y... | PASS/FAIL |
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion | [Justifications] | PASS/FAIL |
 | 3 | Citations | ≥75% ≥1 citation | [Count] | PASS/FAIL |
-| 4 | Language | 60/30/10% EN/ZH/Other | [Distribution] | PASS/FAIL |
+| 4 | Language | Flexible distribution | [Distribution] | PASS/FAIL |
 | 5 | Links | 100% valid URLs | [Count] | PASS/FAIL |
 | 6 | Word count | All 150-250w | [Sample] | PASS/FAIL |
 | 7 | Quantified Impact | 100% have quantified metrics (%,$, or timeline) | [Count] | PASS/FAIL |

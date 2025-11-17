@@ -3,7 +3,7 @@
 Generate 8-15 decision-critical Q&As on cross-functional collaboration for senior interviews. Each must impact decisions, risk, stakeholders, or require near-term action.
 
 **Audience**: Engineering Managers, Directors, VPs, CTOs, Architects, Tech Leads, Product Managers
-**Context**: Medium to large teams, potentially distributed/remote
+**Context**: Teams of various sizes, potentially distributed/remote
 **Success Criteria**: Actionable insights with frameworks and metrics
 
 ---
@@ -175,8 +175,4 @@ Include Q&A if it blocks decisions (roadmap, release, resourcing), creates risk 
 **A3.** Kim, G., et al. (2016). *DevOps handbook*. IT Revolution.  
 **A4.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution.  
 **A5.** Patton, J. (2014). *User story mapping*. O'Reilly.  
-**A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley.  
-  
-  
-  
-
+**A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley.

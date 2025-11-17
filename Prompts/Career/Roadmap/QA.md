@@ -1,16 +1,16 @@
 # Software Roadmap & Evolution Q&A Generator
 
-Generate 4-6 decision-critical Q&As for informed roadmap decisions.
+Generate 3 decision-critical Q&As for informed roadmap decisions.
 
 **Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous choices leading to delays or scalability issues.
 **Scope**: Architectural evolution, technology adoption, strategic pivots in production distributed systems.
 
 **Constraints**: Basic software engineering knowledge required; focus on decision-critical aspects.
-**Assumptions**: Stakeholders provide context; decisions materially affect roadmap.
+**Assumptions**: Decisions materially affect roadmap.
 **Context**: Typical production systems; adapt scale/constraints.
-**Timeline**: Adapt to roadmap cycles; benefits accumulate.
+**Timeline**: Adapt to roadmap cycles.
 **Stakeholders**: Architect, Dev Lead, SRE, Engineering Manager, DevOps.
-**Resources**: Prefer no-cost tools like Mermaid, GitHub, Prometheus.
+**Resources**: Tools like Mermaid, GitHub, Prometheus.
 
 **Key Terms**:
 - **Decision-Critical**: Satisfies ≥1 criterion (see Content Standards).
@@ -18,7 +18,7 @@ Generate 4-6 decision-critical Q&As for informed roadmap decisions.
 - **ADR**: Record documenting choices/consequences.
 - **Difficulty Levels**: F (Foundation), I (Intermediate), A (Advanced).
 
-**Purpose and Output**: Analyze evolution, tech decisions, shifts affecting roadmap. Generate 3-4 Q&As across 3 phases with quantified impact, criteria, trade-offs.
+**Purpose and Output**: Analyze evolution, tech decisions, shifts affecting roadmap. Generate 3 Q&As across 3 phases with quantified impact, criteria, trade-offs.
 **Success**: All validation checks pass; 100% decision-critical.
 
 ---
@@ -70,18 +70,18 @@ Generate 4-6 decision-critical Q&As for informed roadmap decisions.
 
 | Component | Min | Requirements |
 |-----------|-----|--------------|
-| **Glossary** | ≥6 | Terms + phase mapping (only decision-critical terms used in Q&As) |
+| **Glossary** | ≥4 | Terms + phase mapping (only decision-critical terms used in Q&As) |
 | **Tools** | ≥3 | Actively maintained, valid URL, decision-critical only (ADR, roadmap, metrics tools) |
-| **References** | ≥4 | APA 7th; aim for ≥2 languages (e.g., EN + ZH); all decision-critical |
+| **References** | ≥4 | APA 7th; prefer recent sources; all decision-critical |
 
-**Quality**: ≥50% published in last 10 years; mix of architecture/DevOps/SRE sources; ≥3 resource types; <50% from any single source; 100% valid links
+**Quality**: Prefer recent publications; mix of architecture/DevOps/SRE sources; ≥3 resource types; <50% from any single source; 100% valid links
 
 ---
 
 # Generation Process
 
 1. **Plan Structure**: Identify decision-critical topics, select 1 Q&A per phase (total 3), assign difficulty levels, map stakeholders.
-2. **Build References**: Create glossary (≥6 terms), tools (≥3), references (≥4, APA 7th, multi-language).
+2. **Build References**: Create glossary (≥4 terms), tools (≥3), references (≥4, APA 7th).
 3. **Write Q&As**: Craft decision-focused questions and 100-200 word answers with citations, quantified impact, alternatives.
 4. **Create Artifacts**: Generate Mermaid diagrams and metrics per phase; add decision matrices for trade-offs.
 5. **Link References**: Populate and validate all references.
@@ -119,7 +119,7 @@ Generate 4-6 decision-critical Q&As for informed roadmap decisions.
 
 ## References
 
-### Glossary (≥6)
+### Glossary (≥4)
 **G1. ADR (Architecture Decision Record)** [EN] – Phase: Architecture & Design
 Markdown doc: context, options, trade-offs, consequences. Enables traceability. **Related**: Technical Debt, Decision Matrix
 
@@ -160,11 +160,11 @@ Runtime toggles: enable/disable features without deployment. **Related**: CI/CD,
 ## Validation Report
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
-| 1 | Counts | G≥6, T≥3, R≥4, Q=3 (1/1/1) | G:X, T:Y, R:Z, Q:N | PASS/FAIL |
+| 1 | Counts | G≥4, T≥3, R≥4, Q=3 (1/1/1) | G:X, T:Y, R:Z, Q:N | PASS/FAIL |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion | X% decision-critical | PASS/FAIL |
 | 3 | Citations | 100% Q&As ≥1 citation | X% cited | PASS/FAIL |
-| 4 | Language | Aim for ≥2 languages (e.g., EN + ZH); avoid relying on a single language | EN:X%, ZH:Y%, Other:Z% | PASS/FAIL |
-| 5 | Recency & Mix | ≥50% published in last 10 years; mix of architecture/DevOps/SRE sources | X% recent, Y% DevOps/SRE | PASS/FAIL |
+| 4 | Language | Use clear, consistent terminology | [Check] | PASS/FAIL |
+| 5 | Recency & Mix | Prefer recent sources; mix of architecture/DevOps/SRE sources | X% recent, Y% DevOps/SRE | PASS/FAIL |
 | 6 | Links | 100% valid | X% valid | PASS/FAIL |
 | 7 | Word count | All Q&As: 100-200 words | [Range] | PASS/FAIL |
 | 8 | Quantified Impact | 100% have measurable metrics + targets | X% quantified | PASS/FAIL |

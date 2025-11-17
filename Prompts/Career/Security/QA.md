@@ -12,7 +12,7 @@
 - **MECE**: Mutually Exclusive, Collectively Exhaustive.
 - **Self-contained**: Each Q&A contains complete context without external dependencies.
 
-## Requirements
+## Guidelines
 
 **Domain**: Decision-critical software and infrastructure security, especially critical infrastructure.
 **Audience**: Security engineers, DevOps/SRE, architects, security leaders, compliance officers.
@@ -28,10 +28,10 @@
 5. **Quantified Impact**: Measurable effects (CVSS, systems affected, etc.).
 
 **Output Specifications**
-- **Format**: 100-150 words per answer; include diagrams, configs, citations.
-- **Quantity**: 3-5 Q&A pairs.
-- **Difficulty**: Mix of foundational (25%), intermediate (50%), advanced (25%).
-- **Coverage**: At least 3 of 5 decision-critical dimensions.
+- **Format**: Include diagrams, configs, citations.
+- **Quantity**: 3-7 Q&A pairs.
+- **Difficulty**: Mix of foundational, intermediate, advanced.
+- **Coverage**: At least 3 decision-critical dimensions.
 - **Traceability**: Scenario → Risk → Control → Action → Metric.
 - **Visuals & Practicality**: ≥1 diagram + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.
 
@@ -113,7 +113,7 @@
 ## Workflow
 
 1. **Discover Scenarios**: Identify recent threats, breaches, compliance changes from reliable sources.
-2. **Generate Q&As**: Create 3-5 pairs with required elements, ensure quality.
+2. **Generate Q&As**: Create 3-7 pairs with required elements, ensure quality.
 3. **Add Visuals**: Include ≥1 diagram and ≥1 table.
 4. **Validate**: Check for decision-criticality, citations, practicality, and timelines.
 
@@ -130,29 +130,24 @@
 
 **Dimension**: Threat Detection | **Roles**: Security Engineer, DevOps/SRE | **Decision Criticality**: Blocks incident response, creates material risk
 
-**Scenario** (25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation in 3 critical sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: A1]
+**Scenario**: CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation in 3 critical sectors. 50K+ systems vulnerable globally. [Ref: A1]
 
-**Risk** (40w): **Threat**: Remote code execution on PLC → loss of control → operational shutdown. **Impact**: CVSS 9.8 (critical). **Affected**: 2K healthcare, 5K energy systems. **Timeline**: Patch available 2024-11-20 (5-day window). **Control**: Detection (MTTD ≤5 min), isolation (MTTR <30 min), patching (7-day window).
+**Risk**: Remote code execution on PLC → loss of control → operational shutdown. Impact: CVSS 9.8. Affected: 2K healthcare, 5K energy systems. Patch available 2024-11-20.
 
-**Stakeholders** (35w): **Security Engineer**: Detection rules (network signatures, behavioral), SIEM tuning, false positive management. **DevOps/SRE**: Patch deployment plan, rollback strategy, RTO/RPO impact (30 min max downtime). **SRE**: Monitoring (asset inventory, patch status), alerting (detection + patch compliance).
+**Stakeholders**: Security Engineer (detection rules), DevOps/SRE (patch deployment), SRE (monitoring).
 
-**Decision** (50w): **Rec**: Immediate (0-2wk): Deploy detection rules + inventory scan. Short-term (2wk-2mo): Patch all systems, validate detection effectiveness. **Owner**: Security Engineer (detection), DevOps (patching). **Success**: 100% detection rate, 100% patched within 30 days, 0 exploitation incidents.
+**Decision**: Immediate: Deploy detection rules + inventory scan. Short-term: Patch all systems. Owners: Security Engineer (detection), DevOps (patching). Success: 100% detection rate, 100% patched within 30 days.
 
 **Practical** (YAML):
 ```yaml
 detection_rules:
   - name: CVE-2024-XXXXX-RCE
     signature: "S7COMM|unauthorized_function_code_0x44"
-    threshold: 1
     action: [alert, block, isolate]
-    mttd: 5min
 patch_plan:
-  - phase: 1 (critical: healthcare, energy)
-    systems: 7000
+  - phase: 1 (critical)
     window: 2024-11-20 to 2024-11-27
-    rollback: 24h
   - phase: 2 (other)
-    systems: 43000
     window: 2024-11-27 to 2024-12-15
 ```
 
@@ -160,22 +155,14 @@ patch_plan:
 | Metric | Target | Owner |
 |--------|--------|-------|
 | Detection Rate | ≥95% | Security Eng |
-| MTTD | ≤5 min | SIEM |
 | Patch Compliance | 100% by 2024-12-15 | DevOps |
-| MTTR (if exploited) | <30 min | SRE |
 
 ```mermaid
 flowchart TD
-    CVE["CVE-2024-XXXXX<br/>CVSS 9.8<br/>50K+ systems"] --> DETECT["Detection<br/>MTTD ≤5 min<br/>Signature + Behavioral"]
-    DETECT --> ISOLATE["Isolation<br/>MTTR <30 min<br/>Network + Host"]
-    ISOLATE --> PATCH["Patch<br/>7-day window<br/>Phased rollout"]
-    PATCH --> VALIDATE["Validation<br/>100% compliance<br/>Detection effectiveness"]
-    
-    style CVE fill:#f99,stroke:#333,stroke-width:2px
-    style DETECT fill:#9f9,stroke:#333,stroke-width:2px
-    style ISOLATE fill:#99f,stroke:#333,stroke-width:2px
-    style PATCH fill:#ff9,stroke:#333,stroke-width:2px
-    style VALIDATE fill:#9ff,stroke:#333,stroke-width:2px
+    CVE["CVE-2024-XXXXX<br/>CVSS 9.8"] --> DETECT["Detection<br/>MTTD ≤5 min"]
+    DETECT --> ISOLATE["Isolation<br/>MTTR <30 min"]
+    ISOLATE --> PATCH["Patch<br/>Phased rollout"]
+    PATCH --> VALIDATE["Validation<br/>100% compliance"]
 ```
 
 ---

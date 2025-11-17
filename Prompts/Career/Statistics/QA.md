@@ -15,7 +15,7 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 
 ## Structure
 
-**Q&A Pairs**: 3–5, balanced across difficulty and topics (Inference, Design, Regression, Applied).
+**Q&A Pairs**: 3–5, balanced across difficulty and topics (Inference, Experimental Design, Modeling, Interpretation).
 
 **Topics Coverage**: Inference, experimental design, modeling, interpretation.
 

@@ -1,10 +1,8 @@
 # Ecosystem Understanding Q&A Generator
 
-**Problem**: Incomplete ecosystem understanding leads to failed integrations, compliance issues, and missed opportunities. Hallucinations reduce decision quality by 30-60%.
+**Problem**: Incomplete ecosystem understanding leads to failed integrations, compliance issues, and missed opportunities. Hallucinations can reduce decision quality.
 
-**Scope**: Generate decision-critical Q&A pairs for informed ecosystem decisions across technical, business, and regulatory viewpoints.
-
-**Context**: Business, technical, and regulatory ecosystems. Stakeholders: PM, Architect, Developer, QA, DevOps, Security, Data, SRE, Leadership.
+**Scope & Context**: Generate decision-critical Q&A pairs for informed ecosystem decisions across technical, business, and regulatory viewpoints. Ecosystems: business, technical, regulatory. Stakeholders: PM, Architect, Developer, QA, DevOps, Security, Data, SRE, Leadership.
 
 **Resources**: LLM, curated references, web access to authoritative sources.
 
@@ -13,7 +11,7 @@
 ## Requirements
 
 ### Guidelines
-- **Q&A Pairs**: 8-12, balanced across foundational, integration, advanced complexity.
+- **Q&A Pairs**: 10, balanced across foundational, integration, advanced complexity.
 - **Answers**: Concise, 150-300 words, with ≥2 viewpoints (technical/business/regulatory) and ≥1 citation (≥2 for complex topics).
 - **Coverage**: 5 dimensions - Ecosystem Structure, Value Chains & Business, Integration Patterns, Technical Architecture, Regulatory & Compliance.
 - **References**: APA 7th format with [EN]/[ZH]/[Standard] tags; mix of standards, research, case studies; prioritize recent sources.
@@ -24,17 +22,17 @@ Include topics that:
 - Block decisions (go/no-go, resources, strategy).
 - Create significant risk (financial/regulatory/operational/technical).
 - Affect ≥3 stakeholders.
-- Evolve rapidly (changes in 3-6 months).
-- Have high adoption barriers (>40h effort).
+- Evolve rapidly.
+- Have high adoption barriers.
 
-Exclude niche/legacy topics (<5% adoption), nice-to-haves, or already covered areas.
+Exclude niche/legacy topics, nice-to-haves, or already covered areas.
 
 ## Execution Steps
 
 1. **Plan**: Distribute Q&A across dimensions with balanced complexity.
 2. **Research**: Build glossary, standards, tools, literature, citations (≥50% recent).
 3. **Generate**: Create clear, specific questions; provide comprehensive answers with viewpoints and citations.
-4. **Visualize**: Add ≥3 diagrams (≥2 Mermaid) and ≥3 tables.
+4. **Visualize**: Add diagrams and tables as per topic distribution.
 5. **Reference**: Format and ensure accessibility.
 6. **Validate**: Check coverage, citations, criticality, viewpoints, visuals.
 
@@ -98,4 +96,4 @@ Legend: F=foundational, I=integration, A=advanced, D=diagram, T=table
 - Skip for low-stakes queries.
 - Exclude historical/theoretical/speculative content.
 
-**Impact**: Based on ~50 sessions (2024-2025); directional (±20-40%); prioritize principles over metrics.
+**Impact**: Based on ~50 sessions (2024-2025); directional; prioritize principles over metrics.

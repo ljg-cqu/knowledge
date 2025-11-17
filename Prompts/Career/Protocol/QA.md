@@ -3,71 +3,55 @@
 **Mission**: Generate 10 decision-critical Q&As on protocols for senior interviews, focusing on scenarios that block decisions, create risks, or require cross-functional coordination.
 
 **Context**:
-- **Problem**: Candidates need practice in protocol decisions under time pressure.
-- **Scope**: 10 Q&As across 5 protocol clusters.
-- **Assumptions**: Intermediate protocol knowledge; access to standards; 45-60 min interviews.
-- **Stakeholders**: Architects, Developers, DevOps, Security, SRE.
-- **Resources**: IETF RFCs, ISO standards, industry reports, tools like Postman/Buf.
+- Problem: Candidates need practice in protocol decisions under time pressure.
+- Scope: 10 Q&As across 5 protocol clusters.
+- Assumptions: Intermediate protocol knowledge; access to standards; 45-60 min interviews.
+- Stakeholders: Architects, Developers, DevOps, Security, SRE.
+- Resources: IETF RFCs, ISO standards, industry reports, tools like Postman/Buf.
 
 **Key Terms**:
-- **MECE Clusters**: 5 distinct categories covering major protocol decisions.
-- **Decision Criticality**: Scenarios blocking progress, creating risks, or affecting ≥3 stakeholders.
+- MECE Clusters: 5 distinct categories covering major protocol decisions.
+- Decision Criticality: Scenarios blocking progress, creating risks, or affecting ≥3 stakeholders.
 
 **Success**: All Q&As pass validation with justified criticality and ≥3 stakeholders.
 
----
-
-## Decision Criticality Framework
+## Decision Framework
 
 **Include Q&A if ANY apply**:
-- **Blocks Decision**: Prevents progress in architecture/deployment.
-- **Creates Risk**: Impacts security, performance, or interoperability.
-- **Affects ≥3 Stakeholders**: Requires multi-role coordination.
-- **Actively Evolving**: Significant changes in past 18 months.
-- **High Adoption Barrier**: High learning/migration costs.
+- Blocks Decision: Prevents progress in architecture/deployment.
+- Creates Risk: Impacts security, performance, or interoperability.
+- Affects ≥3 Stakeholders: Requires multi-role coordination.
+- Actively Evolving: Significant changes in past 18 months.
+- High Adoption Barrier: High learning/migration costs.
 
 **Exclude**: Niche/legacy protocols, orthogonal topics, duplicates.
+
+**Quality Gates**:
+- Critical: Decision Criticality (100% justified), Cross-functional (≥3 stakeholders per Q&A), Cluster Coverage (all 5 clusters).
+- High: Metrics (quantitative with formulas), Visuals (diagram + table + metrics per cluster), Citations (≥1 per Q&A, recent sources).
+- Medium: Insights (trade-offs and barriers covered), Balance (assumptions, alternatives, mitigations).
 
 ## Coverage (5 Clusters × 2 Q&As Each)
 
 | Cluster | Protocols | Stakeholders | Phases | Criticality | Diagram | Key Metrics |
 |---------|-----------|--------------|--------|-------------|---------|-------------|
-| **API** | REST/OpenAPI vs gRPC vs GraphQL | Architect, Developer, DevOps | Arch/Dev | Blocks arch | Comparison matrix | Latency, Throughput, Adoption |
-| **Data** | JSON vs Protobuf vs Avro | Architect, Developer, SRE | Arch/Ops | Blocks data | Format matrix | Size, Speed, Schema evolution |
-| **Messaging** | AMQP vs MQTT vs Kafka | Architect, Developer, Security | Arch/Ops | Blocks real-time | Flow topology | Reliability, Scalability, QoS |
-| **Auth** | OAuth 2.1 vs OIDC vs SAML | Architect, Developer, Security | Arch/Ops | Blocks SSO | Auth flow | Security, Complexity, SSO compat |
-| **Network** | HTTP/2 vs HTTP/3 vs QUIC | DevOps, SRE, Architect | Deploy/Ops | Blocks perf | Stack diagram | Performance, Adoption, Overhead |
+| API | REST/OpenAPI vs gRPC vs GraphQL | Architect, Developer, DevOps | Architecture/Development | Blocks architecture | Comparison matrix | Latency, Throughput, Adoption |
+| Data | JSON vs Protobuf vs Avro | Architect, Developer, SRE | Architecture/Operations | Blocks data | Format matrix | Size, Speed, Schema evolution |
+| Messaging | AMQP vs MQTT vs Kafka | Architect, Developer, Security | Architecture/Operations | Blocks real-time | Flow topology | Reliability, Scalability, QoS |
+| Auth | OAuth 2.1 vs OIDC vs SAML | Architect, Developer, Security | Architecture/Operations | Blocks SSO | Auth flow | Security, Complexity, SSO compat |
+| Network | HTTP/2 vs HTTP/3 vs QUIC | DevOps, SRE, Architect | Deployment/Operations | Blocks performance | Stack diagram | Performance, Adoption, Overhead |
 
 **Focus**: Trade-offs, version conflicts, adoption barriers. Exclude niche/legacy.
 
 **Visuals**: Mermaid diagrams (<120 nodes), comparison tables, metrics with formulas.
 
-### Quality Gates
-
-| Priority | Check | Target |
-|----------|-------|--------|
-| Critical | Decision Criticality | 100% justified |
-| Critical | Cross-functional | ≥3 stakeholders per Q&A |
-| Critical | Cluster Coverage | All 5 clusters |
-| High | Metrics | Quantitative with formulas |
-| High | Visuals | Diagram + table + metrics per cluster |
-| High | Citations | ≥1 per Q&A, recent sources |
-| Medium | Insights | Trade-offs and barriers covered |
-| Medium | Balance | Assumptions, alternatives, mitigations |
-
-**Balance**: Include trade-offs, risks, and alternatives.
-
----
-
 ## Workflow
 
-1. **Plan**: Select 2 Q&As per cluster, prioritize criticality, ensure ≥3 stakeholders.
-2. **Collect**: Gather ≥15 glossary terms, ≥6 tools, ≥8 literature, ≥12 citations; validate sources.
-3. **Generate**: Write 120-300 word answers with trade-offs, implementation, metrics; cite sources.
-4. **Visuals**: Add Mermaid diagram, comparison table, metrics per cluster.
-5. **Validate**: Check against quality gates, iterate for 100% pass.
-
----
+1. Plan: Select 2 Q&As per cluster, prioritize criticality, ensure ≥3 stakeholders.
+2. Collect: Gather ≥15 glossary terms, ≥6 tools, ≥8 literature, ≥12 citations; validate sources.
+3. Generate: Write 120-300 word answers with trade-offs, implementation, metrics; cite sources.
+4. Visuals: Add Mermaid diagram, comparison table, metrics per cluster.
+5. Validate: Check against quality gates, iterate for 100% pass.
 
 ## Output Format
 
@@ -77,12 +61,12 @@
 
 | Principle | Good ✅ | Bad ❌ |
 |-----------|---------|----------|
-| **Decision Blocking** | "Select API protocol for 50K rps platform. Blocks architecture." | "Compare API protocols" |
-| **Risk Creation** | "Adopt OAuth 2.1 vs OIDC for SSO. Security risk if outdated." | "Explain OAuth" |
-| **Cross-Functional** | "HTTP/3 vs HTTP/2 affects Architect, DevOps, SRE" | "What is HTTP/3?" |
-| **Quantified** | "Avro vs JSON: 60% smaller, 3x faster, justifies cost" | "Avro is faster" |
-| **Versioning** | "OAuth 2.1 (2023) vs OIDC 1.0 (2014)" | "Use OAuth" |
-| **Criticality Tag** | `[Blocks Arch]` `[Risk]` `[3+ Stakeholders]` | No tag |
+| Decision Blocking | "Select API protocol for 50K rps platform. Blocks architecture." | "Compare API protocols" |
+| Risk Creation | "Adopt OAuth 2.1 vs OIDC for SSO. Security risk if outdated." | "Explain OAuth" |
+| Cross-Functional | "HTTP/3 vs HTTP/2 affects Architect, DevOps, SRE" | "What is HTTP/3?" |
+| Quantified | "Avro vs JSON: 60% smaller, 3x faster, justifies cost" | "Avro is faster" |
+| Versioning | "OAuth 2.1 (2023) vs OIDC 1.0 (2014)" | "Use OAuth" |
+| Criticality Tag | `[Blocks Decision]` `[Creates Risk]` `[Affects ≥3 Stakeholders]` | No tag |
 
 ### Template
 
@@ -118,16 +102,14 @@
 - [Formula 2]
 ```
 
----
-
 ## References
 
 ### Glossary
-- **API**: OpenAPI 3.x, gRPC, GraphQL
-- **Data**: JSON, Protobuf, Avro
-- **Messaging**: HTTP/2/3, MQTT, AMQP
-- **Auth**: OAuth 2.1, OIDC, SAML
-- **Regulatory**: GDPR, PCI-DSS
+- API: OpenAPI 3.x, gRPC, GraphQL
+- Data: JSON, Protobuf, Avro
+- Messaging: HTTP/2/3, MQTT, AMQP
+- Auth: OAuth 2.1, OIDC, SAML
+- Regulatory: GDPR, PCI-DSS
 
 ### Tools
 - Swagger: https://swagger.io
@@ -147,8 +129,6 @@
 - Protobuf: https://protobuf.dev
 - OAuth 2.1: https://rfc-editor.org/rfc/rfc9207
 - GDPR: https://eur-lex.europa.eu/eli/reg/2016/679/oj
-
----
 
 ## Example
 

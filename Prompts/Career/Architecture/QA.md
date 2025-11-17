@@ -1,69 +1,65 @@
 # Software Architecture Interview Q&A Generator
 
-**Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality by 30-60% due to hallucinations.
+**Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality due to hallucinations.
 
-**Scope**: Generate 6 Q&A pairs for senior/architect roles, focusing on architecture-to-code translation.
+**Scope**: Generate 5 Q&A pairs for senior/architect roles, focusing on architecture-to-code translation.
 
-**Constraints**: Production-ready, idiomatic code in mainstream languages (Go, Java, Python, TypeScript, Rust).
+**Constraints**: Idiomatic code in common languages.
 
-**Assumptions**: General software architecture knowledge (layered, MVC, REST).
+**Assumptions**: Familiarity with software architecture concepts.
 
-**Audience**: Senior developers (5+ years), architects, technical experts.
+**Audience**: Senior developers, architects.
 
-**Output**: 6 Q&As across 6 dimensions with code, quantified trade-offs, ≥2 alternatives, citations.
+**Output**: 5 Q&As across 5 dimensions with code, quantified trade-offs, ≥2 alternatives, citations.
 
-**Success**: All validation checks pass; improves decision quality.
+**Success**: All validation checks pass.
 
 ---
 
-## Core Requirements
+## Requirements
 
-### Question Specifications
-- **Total Count**: 6 (1 per dimension)
-- **Difficulty Mix**: 50% Foundational / 50% Advanced
+### Specifications
+- **Count**: 5 (1 per dimension)
+- **Difficulty**: 50% Foundational / 50% Advanced
 - **Answer Length**: 150-300 words (code excluded)
-- **Components**: Pattern → rationale → code → trade-offs → metrics
+- **Components**: Pattern, rationale, code, trade-offs, metrics
 - **Citations**: ≥1 each; ≥2 for advanced
 
-### Coverage (6 Dimensions, 1 Q&A Each)
-1. **Structural**: Decomposition, modularity, coupling (hexagonal, layers)
-2. **Behavioral**: Events, state, orchestration (saga, circuit breaker)
-3. **Quality**: Performance, scalability, reliability (rate limiting, encryption)
-4. **Data**: Persistence, caching, consistency (CQRS, sharding)
-5. **Integration**: APIs, messaging, protocols (REST, gRPC)
-6. **Evolution**: Refactoring, migration (strangler fig, feature toggles)
+### Dimensions (5, 1 Q&A Each)
+1. **Structural**: Decomposition, modularity (hexagonal, layers)
+2. **Behavioral**: Events, orchestration (saga, circuit breaker)
+3. **Quality**: Performance, scalability (rate limiting, encryption)
+4. **Data**: Persistence, consistency (CQRS, sharding)
+5. **Integration**: APIs, protocols (REST, gRPC)
 
-### Content Standards
-- **Quantified Trade-offs**: e.g., "CQRS: 10x read, +20-40ms write, +30% complexity"
-- **Balanced Perspectives**: ≥2 alternatives with table; explicit assumptions/limitations; tag `[Consensus]`/`[Context-dependent]`/`[Emerging]`
-- **Precise Language**: Define terms inline; concrete metrics; minimal jargon
+### Standards
+- **Trade-offs**: Quantified, e.g., "CQRS: 10x read, +20-40ms write"
+- **Perspectives**: ≥2 alternatives with table; assumptions/limitations; tags `[Consensus]`/`[Context-dependent]`
+- **Language**: Define terms; concrete metrics; minimal jargon
 
 ### Artifacts
-- **Diagram**: Mermaid (<120 nodes, type matches dimension)
-- **Code**: 10-30 lines, idiomatic, production-ready with error handling
+- **Diagram**: Mermaid (<120 nodes)
+- **Code**: 10-30 lines, production-ready
 - **Table**: ≥2 alternatives (Approach/Pros/Cons/Use When/Consensus)
 - **Metric**: Formula + variables + target
 
 ### References
-- **Glossary**: ≥5 terms with relationships
-- **Tools**: ≥3 (URL valid, update ≤18mo, pricing, adoption)
-- **Literature**: ≥3 authoritative books
-- **Citations**: ≥6 APA 7th, balanced languages (≥2 represented)
-
-**Quality**: ≥50% last 3yr; ≥3 types; credible sources; 100% valid links
+- **Glossary**: ≥5 terms
+- **Tools**: ≥3 (valid URLs, recent updates)
+- **Literature**: ≥3 books
+- **Citations**: ≥6 APA 7th, ≥2 languages
 
 ---
 
-## Generation Process
+## Process
 
-1. **Plan Structure**: Select 6 dimensions → 1 Q&A each → 50/50 F/A mix
-2. **Build References**: Glossary, tools, literature, citations meeting thresholds
-3. **Write Q&As**: Judgment-based questions; answers with pattern, code, trade-offs, metrics, citations
-4. **Create Artifacts**: Diagram, code, table, metric per dimension
-5. **Link References**: Populate sections, verify cross-refs, validate URLs
-6. **Validate**: Check counts, citations, language, recency, diversity, links, cross-refs, word count, insights, traceability, question type, artifacts, patterns, metrics, code, syntax, formulas, review criteria
+1. Select 5 dimensions, 50/50 difficulty mix
+2. Build references meeting thresholds
+3. Write Q&As with required components
+4. Create artifacts per dimension
+5. Validate counts, citations, recency, links
 
-**Failure Protocol**: Any fail → Document → Fix → Re-validate until all pass
+**Failure**: Fix and re-validate until pass
 
 ---
 
@@ -71,103 +67,68 @@
 
 ```markdown
 ## Contents
-[TOC: Topic Areas | Q&As | References | Validation]
+[TOC]
 
 ## Topic Areas
-| Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1 | 1 | F/A 50/50 |
-[6 dimensions, 6 total]
+| Dimension | Count | Difficulty |
+| [Type] | 1 | F/A |
+[5 total]
 
 ---
 
 ## Topic 1: [Title]
 **Overview**: [1-2 sentences]
 
-### Q1: [How/When/Compare question]
+### Q1: [Question]
 **Difficulty**: [F/A] | **Dimension**: [Type]
 
-**Key Insight**: [Quantified trade-off in one sentence]
+**Key Insight**: [Quantified trade-off]
 
-**Answer**: [150-300 words: Context → Pattern + rationale → Trade-offs → Metrics → Assumptions/Limitations] [≥1 citation [Ref: A1]]
+**Answer**: [150-300 words: Context, pattern, trade-offs, metrics] [Citation]
 
 **Implementation** ([Language]):
 ```[language]
-// 10-30 lines: error handling, logging, idiomatic
+// Code
 ```
 
 **Diagram**:
 ```mermaid
-[Type matching dimension, <120 nodes]
+[Diagram]
 ```
 
 **Metrics**:
 | Metric | Formula | Variables | Target |
-| [Name] | [Expr] | [Defs] | [Threshold] |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
-| [Option] | [Quantified] | [Quantified] | [Context] | [Tag] |
-[≥2 alternatives]
+[≥2 rows]
 
 ---
 
 ## References
 
 ### Glossary (≥5)
-**G1. [Term]** [EN/ZH/Other]  
-[Definition]. **Related**: [Terms]
+**G1. [Term]** – [Definition]. Related: [Terms]
 
 ### Tools (≥3)
-**T1. [Tool]** [Tag]  
-**Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
+**T1. [Tool]** – [Purpose]. Updated: [Date]. URL: [Link]
 
 ### Literature (≥3)
-**L1. Author(s). (Year). *Title*. Publisher.** [Tag]  
-**Relevance**: [Why]
+**L1. Author. (Year). *Title*.** – [Relevance]
 
-### Citations (≥8, APA 7th, mixed)
-**A1.** Author(s). (Year). *Title*. Source. [EN]
+### Citations (≥6)
+**A1.** Author. (Year). *Title*. [Language]
 
 ---
 
-## Validation Report
-| Check | Target | Result | Status |
-| Counts | G≥5, T≥3, L≥3, A≥6, Q=6, F/A=50/50 | [Results] | PASS/FAIL |
-[All checks]
+## Validation
+| Check | Target | Status |
+| Counts | G≥5, T≥3, L≥3, A≥6, Q=5 | PASS/FAIL |
 
-**Overall**: [Pass rate]  
-**Issues**: [Failures]  
-**Remediation**: [Actions]
+**Overall**: [Pass rate]
 ```
 
-## Reference Examples
-
-### Glossary
-**G1. Hexagonal** [EN] – Isolates core via ports/adapters. Enables testability, tech independence. Related: DI  
-**G2. CQRS** [EN] – Separates commands from queries. Optimizes scalability. Related: Event Sourcing  
-**G3. Event Sourcing** [EN] – Stores state as event log. Enables audit, temporal queries. Related: CQRS  
-**G4. Saga** [EN] – Coordinates long transactions with compensations. Related: Distributed TX  
-**G5. Circuit Breaker** [EN] – Prevents cascading failures. Opens on error threshold. Related: Bulkhead
-
-### Tools
-**T1. Mermaid** [EN] – Text-based diagrams. Updated: 2024-10. Free/OSS. https://mermaid.js.org  
-**T2. OpenAPI** [EN] – REST API spec. Updated: 2024-09. Free/OSS. https://www.openapis.org  
-**T3. Kubernetes** [EN] – Container orchestration. Updated: 2024-10. Free/OSS. https://kubernetes.io
-
-### Literature
-**L1. Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley.** – Strategic/tactical modeling  
-**L2. Richardson, C. (2018). *Microservices Patterns*. Manning.** – Decomposition, communication patterns  
-**L3. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.** – Distributed systems
-
-### Citations
-**A1.** Evans, E. (2003). *Domain-driven design*. Addison-Wesley. [EN]  
-**A2.** Richardson, C. (2018). *Microservices patterns*. Manning. [EN]  
-**A3.** 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]  
-**A4.** Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley. [EN]  
-**A5.** Newman, S. (2021). *Building microservices*. O'Reilly. [EN]  
-**A6.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]
-
 ## Limitations
-- **Trade-offs**: Rigor vs. speed; depth vs. breadth; precision vs. accessibility
-- **Skip for**: Exploratory questions, low-stakes decisions, rapid response
-- **Exclude**: Historical background, pure theory, niche cases, speculation
+- Trade-offs: Rigor vs. speed
+- Skip for: Low-stakes decisions
+- Exclude: Pure theory, speculation

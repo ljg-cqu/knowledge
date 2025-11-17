@@ -1,7 +1,7 @@
 # Pattern-Based Q&A Generation Template
 
 ## Overview
-Generate 8-12 decision-critical Q&As for career development patterns across 4-6 MECE domains. Ensure concise answers, ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations, and 20-30 patterns.
+Generate 8-12 decision-critical Q&As for career development patterns across 4-6 MECE domains. Ensure concise answers with ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations.
 
 **Key Terms**:
 - **F/I/A**: Fundamental/Intermediate/Advanced
@@ -13,8 +13,8 @@ Generate 8-12 decision-critical Q&As for career development patterns across 4-6 
 - **Q&As**: 8-12 total (2F/4I/2-6A; concise)
 - **References**: ≥12 glossary, ≥6 tools, ≥6 literature, ≥8 citations
 - **Domains**: 4-6 decision-critical (MECE)
-- **Patterns**: 20-30 across domains
-- **Validation**: All 12 steps pass; 100% patterns meet ≥1 criticality criterion; critical claims cited with Tier 1-2 sources; MECE domains; accessible links
+- **Patterns**: 8-12 across domains
+- **Validation**: All criteria pass; 100% patterns meet ≥1 criticality criterion; critical claims cited with Tier 1-2 sources; MECE domains; accessible links
 
 ## Decision Criticality Framework
 **Include if ≥1 criterion**:
@@ -86,19 +86,19 @@ Select 4-6:
 | Process | Agile, Incident Response | Teams, Managers |
 | Hybrid | Regulatory+Technical | Compliance, Devs |
 
-## Validation (12 Steps)
-1. Reference counts: Glossary ≥12, Tools ≥6, Literature ≥6, Citations ≥8; Q&As 8-12
-2. Citation coverage: ≥80% ≥1 citation, ≥50% ≥2
-3. Languages: Mix EN/ZH/other
-4. Recency: ≥50% <3yr; accessible links
-5. Word count: Sample 5 Q&As ~150-250 words
-6. Criticality: 100% meet ≥1 criterion
-7. Insights: Boundaries/trade-offs/anti-patterns
-8. Per-topic: ≥1 source + ≥1 tool
-9. Visuals: ≥70% with diagram/table/metric
-10. Evidence: ≥80% empirical
-11. Quantitative: ≥70% with metrics
-12. Examples: ≥80% domain-appropriate
+## Validation Criteria
+- Reference counts: Glossary ≥12, Tools ≥6, Literature ≥6, Citations ≥8; Q&As 8-12
+- Citation coverage: ≥80% ≥1 citation, ≥50% ≥2
+- Languages: Mix EN/ZH/other
+- Recency: ≥50% <3yr; accessible links
+- Word count: Sample 5 Q&As ~150-250 words
+- Criticality: 100% meet ≥1 criterion
+- Insights: Boundaries/trade-offs/anti-patterns
+- Per-topic: ≥1 source + ≥1 tool
+- Visuals: ≥70% with diagram/table/metric
+- Evidence: ≥80% empirical
+- Quantitative: ≥70% with metrics
+- Examples: ≥80% domain-appropriate
 
 ## Workflow
 1. Plan: Select domains/Q&As; verify MECE/criticality
@@ -139,7 +139,7 @@ Select 4-6:
 | Hybrid | Cross-domain map | Compliance flow | Risk score |
 
 ## Pattern Catalog
-Select/adapt for 20-30 patterns.
+Select/adapt 8-12 patterns.
 
 | Domain | Pattern | Contexts | Evidence | Stakeholders | Criticality |
 |--------|---------|----------|----------|--------------|-------------|

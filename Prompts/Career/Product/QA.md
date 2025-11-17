@@ -10,7 +10,7 @@ owner: ljg-cqu
 
 **Constraints**: Answers 150-250 words; 70% with citations; 100% decision-critical; senior level.
 
-**Assumptions**: Industry context generic or provided; text output; 10-15min per question.
+**Assumptions**: Industry context generic or provided; text output.
 
 **Limitations**: Generic scenarios lack nuance; citations vary in recency; frameworks need context.
 
@@ -24,13 +24,10 @@ owner: ljg-cqu
 
 ## Guidelines
 
-### Decision Criticality
-Scenarios meet ≥1 criterion above.
-
 ### Quantitative Guidelines
-- Q&A: 8-10 total, balanced difficulty, 150-250 words/answer, 70% with ≥1 citation, each ≥2 dimensions.
-- Topics: Strategy & Prioritization (2-3), Metrics & Decision-Making (2-3), Stakeholder Alignment (1-2), optional GTM (1).
-- References: Glossary ≥8 terms, Tools ≥3, Literature ≥4 (≥1 ZH), Citations ≥6 APA 7th.
+- Q&A: 5-7 total, balanced difficulty, 150-250 words/answer, 70% with ≥1 citation, each ≥2 dimensions.
+- Topics: Strategy & Prioritization (2), Metrics & Decision-Making (2), Stakeholder Alignment (1), optional GTM (1).
+- References: Glossary ≥6 terms, Tools ≥3, Literature ≥3 (≥1 ZH), Citations ≥5 APA 7th.
 - Visuals: ≥1 diagram + table per topic.
 
 ### Citation Standards
@@ -39,7 +36,7 @@ Scenarios meet ≥1 criterion above.
 - Types: ≥3 (frameworks, research, case studies, tools).
 
 ### Process
-1. Plan: Select 8-10 Q&A across topics, balanced difficulty.
+1. Plan: Select 5-7 Q&A across topics, balanced difficulty.
 2. Build References: Create glossary, tools, literature, citations. Check quality gates.
 3. Generate Q&A: Scenario questions testing judgment. Answers with framework, dimensions, steps, trade-offs, communication, criteria, citations.
 4. Create Visuals: ≥1 per topic, reference in answers.
@@ -59,7 +56,6 @@ Fail any = stop/fix:
 ## Success Criteria
 - Interview Quality: 80% elicit judgment (baseline 50% trivia).
 - Hiring Accuracy: 70% show senior judgment in 6mo (baseline 40%).
-- Time: 30s check, 10-15min discussion.
 - Citations: 70% answers with ≥1 citation.
 - Impact: 100% ≥$1M revenue/strategic.
 
@@ -80,15 +76,15 @@ Review each; rewrite if fails ≥2:
 1. Topic Areas Overview | 2. Questions by Topic (3-4 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report.
 
 ### B. Topic Overview
-**Total**: [8-10] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies.
+**Total**: [5-7] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies.
 
 | Topic          | Range  | Count | Mix      | Artifacts       | Decision Criticality |
 |----------------|--------|-------|----------|-----------------|----------------------|
-| Strategy & Prioritization | Q1-Q3  | 2-3   | 1F/1I/1A | 1 diagram+table | Blocks decision |
-| Metrics & Decision-Making | Q4-Q6  | 2-3   | 1F/1I/1A | 1 diagram+table | Creates risk |
-| Stakeholder Alignment | Q7-Q8  | 1-2   | 1F/1I | 1 diagram+table | Affects ≥2 roles |
-| GTM (Optional) | Q9-Q10 | 1     | 1I or 1A | 1 diagram+table | Actively evolving |
-|   | **Total**      |        | **8-10**| **balanced mix** | **compressed** | 100% decision-critical |
+| Strategy & Prioritization | Q1-Q2  | 2   | 1F/1I | 1 diagram+table | Blocks decision |
+| Metrics & Decision-Making | Q3-Q4  | 2   | 1F/1I | 1 diagram+table | Creates risk |
+| Stakeholder Alignment | Q5  | 1   | 1I | 1 diagram+table | Affects ≥2 roles |
+| GTM (Optional) | Q6-Q7 | 1-2     | 1I or 1A | 1 diagram+table | Actively evolving |
+|   | **Total**      |        | **5-7**| **balanced mix** | **compressed** | 100% decision-critical |
 
 Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L.
 
