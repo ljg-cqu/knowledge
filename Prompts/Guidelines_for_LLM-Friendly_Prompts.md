@@ -2,7 +2,7 @@
 
 **Purpose:** Apply these guidelines when creating prompts for LLMs. Optimized prompts following these guidelines produce higher-quality LLM outputs with fewer hallucinations and better decision support.
 
-**When to apply:** Decision-critical prompts (blocks decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost >40h) requiring high-quality LLM outputs. **Result:** ↓30-60% hallucinations, ↑60-80% decision quality in generated content.
+**When to apply:** Decision-critical prompts (blocks decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost >40h) requiring high-quality LLM outputs. **Result:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
@@ -60,10 +60,10 @@
 
 ## Quick Check (30s)
 
-**Before sending your prompt:** ☑ Context ☑ Clarity ☑ Precision ☑ Relevance ☑ MECE ☑ Sufficiency ☑ Breadth ☑ Depth ☑ Significance ☑ Concision ☑ Accuracy ☑ Credibility ☑ Logic ☑ Risk/Value ☑ Fairness ☑ Structure ☑ Format ☑ Evidence ☑ Validation ☑ Practicality ☑ Success Criteria
+**Before sending your prompt:** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
 
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
 
-**Exclude:** History (unless regulatory), pure theory (unless >40h adoption cost), edge cases <5% impact and low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
+**Exclude:** History (unless regulatory), pure theory (unless >40h adoption cost), edge cases <5% impact or low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
 
-**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity definition+Precision quantification) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
+**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)

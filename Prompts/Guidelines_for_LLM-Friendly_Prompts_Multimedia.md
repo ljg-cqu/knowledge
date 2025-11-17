@@ -12,13 +12,13 @@
 
 **5. Significance & Optimization** [↓40-60% wasted time]: Decision-critical only, eliminate redundancy, optimize delivery. ❌ "Visuals all pages" | ✅ "Error screenshots, arch diagrams, perf charts ONLY. Exclude: logos, decorative. SVG diagrams, WebP+PNG fallback, lazy load, images <500KB, videos <20MB"
 
-**6. Integration & Validation** [↑35-50% integration speed]: Structure, text-media consistency, validation, success metrics. ❌ "Add chart" | ✅ "Text: 'Latency <100ms (Fig 2)'. Fig 2: 500ms→100ms with cache. Test: URLs 200, alt descriptive, captions ±50ms sync, screen reader, mobile, broken links. WCAG 2.1 AA: 100% alt+captions, LCP <3s, mobile >90"
+**6. Integration & Validation** [↑35-50% integration speed]: Structure, text-media consistency, validation, success metrics. ❌ "Add chart" | ✅ "Text: "Latency <100ms (Fig 2)". Fig 2: 500ms→100ms with cache. Test: URLs 200, alt descriptive, captions ±50ms sync, screen reader, mobile, broken links. WCAG 2.1 AA: 100% alt+captions, LCP <3s, mobile >90"
 
 ## 30-Second Quick Reference
 
-☑ Create/link clarity ☑ Format+quality specs ☑ Verified sources ☑ Alt text+captions ☑ Decision-critical only ☑ Text-media consistency
+☑ Format+quality specs ☑ Create/link clarity ☑ Verified sources ☑ Alt text+captions ☑ Decision-critical only ☑ Text-media consistency
 
-**Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Relevant | Verified | Recent
+**Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Recent | Relevant | Verified
 
 **Exclude:** Decorative (unless brand), redundant formats, <720p, autoplay, unverified links, proprietary no-fallback, missing alt/captions, >50MB unoptimized. **Always:** Format, resolution, accessibility, fallback, source, license
 
