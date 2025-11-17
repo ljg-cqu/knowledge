@@ -2,24 +2,24 @@
 
 Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal time investment.
 
-**Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous strategic choices leading to delayed deployments or scalability issues.
+**Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous choices leading to delays or scalability issues.
 **Scope**: Architectural evolution, technology adoption, strategic pivots in production distributed systems.
 
-**Constraints**: Assumes basic engineering knowledge; focus on decision-critical aspects only.
-**Assumptions**: Teams have access to standard tools (Mermaid, GitHub); stakeholders can provide context; decisions impact >5% of roadmap.
-**Scale**: Systems >10K rps, >1TB data; teams 10-100 engineers; cloud-native, regulated (GDPR/SOC 2/HIPAA).
-**Timeline**: Quarterly roadmap cycles; 4-6h generation time; benefits accumulate over cycles.
-**Stakeholders**: Architect (designs), Dev Lead (implements), SRE (operates), Engineering Manager (coordinates), DevOps (deploys).
-**Resources**: Mermaid for diagrams, GitHub for ADRs, Prometheus for metrics; no cost tools preferred.
+**Constraints**: Engineering knowledge assumed; focus on decision-critical aspects.
+**Assumptions**: Stakeholders provide context; decisions materially affect roadmap.
+**Context**: Typical production systems; adapt scale/constraints.
+**Timeline**: Adapt to roadmap cycles; typical effort 4-6h; benefits accumulate.
+**Stakeholders**: Architect, Dev Lead, SRE, Engineering Manager, DevOps.
+**Resources**: Mermaid, GitHub, Prometheus; prefer no-cost.
 
 **Key Terms**:
-- **Decision-Critical**: Impacts roadmap, creates risk, affects ≥2 stakeholders, actively evolving, quantified.
-- **Q&A**: Question-Answer pair with context, impact, stakeholders, decision, action.
-- **ADR**: Architecture Decision Record documenting choices and consequences.
+- **Decision-Critical**: Satisfies ≥1 criterion (see Content Standards).
+- **Q&A**: Pair with context, impact, stakeholders, decision, action.
+- **ADR**: Record documenting choices/consequences.
 
-**Purpose**: Analyze architectural evolution, tech decisions, and strategic shifts affecting system roadmap
-**Output**: 6-8 Q&As across 3-4 decision-critical phases with quantified impact, decision criteria, trade-offs
-**Success**: 12/12 validation PASS | Decision Criticality: 100% satisfy ≥1 criterion
+**Purpose**: Analyze evolution, tech decisions, shifts affecting roadmap.
+**Output**: 6-8 Q&As across 3-4 phases with quantified impact, criteria, trade-offs.
+**Success**: 12/12 validation PASS; 100% decision-critical.
 
 ---
 
@@ -32,7 +32,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | **Total** | 6-8 (25% F / 50% I / 25% A) |
 | **Answer** | 150-250 words: Context/Trigger → Impact → Stakeholders → Decision → Action |
 | **Citations** | ≥1 per Q&A |
-| **Per Phase** | Diagram + Decision matrix + Metrics |
+| **Artifacts** | Per phase: diagram + metrics; decision matrix for major trade-offs |
 | **Decision Criticality** | 100% satisfy ≥1 criterion: Blocks/Risk/Roles/Evolving/Quantified |
 
 ## Coverage (3-4 Decision-Critical Phases, 1-2 Q&As Each)
@@ -52,7 +52,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 - **Quantified Impact**: Adoption %, performance gain, cost reduction, velocity improvement
 
 **Quantified**: Concrete metrics (✅ "Monolith→microservices: 40% deployment time ↓, 3-month roadmap" ❌ "Scale better")
-**Context**: Team scale (10-50/50-100), System scale (10K/100K rps), Data (1-100TB), Maturity (scale-up/legacy)
+**Context**: State concrete scales (for example, team 10-100 engineers, 100–100K rps, 1–100TB data, scale-up or legacy); adjust ranges to match your system
 **Stakeholders**: ≥5 core roles (Architect, Dev Lead, SRE, DevOps, Engineering Manager); decision makers explicit
 **Language**: Define terms inline, consistent terminology, concrete metrics, minimal jargon
 
@@ -65,7 +65,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | Operations & Scalability | Service topology, SLO dashboard | Capacity plan, runbooks | `Reliability = Uptime / Target × 100%` |
 | Evolution & Governance | Migration roadmap, Debt trends | Roadmap, debt register | `Debt Reduction = (Debt₀ - Debt₁) / Debt₀ × 100%` |
 
-**Format**: Mermaid (<80 nodes, decision-focused); Decision matrix (alternatives × criteria); Metrics (formula + target + frequency)
+**Format**: Mermaid (<80 nodes, decision-focused); decision matrix when comparing options; metrics (formula + target + frequency)
 **Patterns**: ADRs, STRIDE (threat modeling), SLO/Error Budget, Strangler Fig, Feature Flags, Blue/Green
 
 ## References
@@ -73,11 +73,11 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | Component | Min | Requirements |
 |-----------|-----|--------------|
 | **Glossary** | ≥8 | Terms + phase mapping (only decision-critical terms used in Q&As) |
-| **Tools** | ≥5 | Valid URL, ≤18mo old, decision-critical only (ADR, roadmap, metrics tools) |
+| **Tools** | ≥5 | Actively maintained, valid URL, decision-critical only (ADR, roadmap, metrics tools) |
 | **Literature** | ≥6 | Canonical references (Bass, Forsgren, Beyer, Skelton, Kleppmann, Richardson) |
-| **Citations** | ≥8 | APA 7th, 60%[EN]/30%[ZH]/10%other (±10%), all decision-critical |
+| **Citations** | ≥8 | APA 7th; aim for ≥2 languages (e.g., EN + ZH); all decision-critical |
 
-**Quality**: ≥50% last 3yr (≥70% DevOps/SRE); ≥3 types, <25% single source; peer-reviewed; 100% valid links
+**Quality**: ≥50% published in last 10 years; mix of architecture/DevOps/SRE sources; ≥3 resource types; <50% from any single source; 100% valid links
 
 ---
 
@@ -88,8 +88,8 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 **Checks**: 6-8 total; 25/50/25% F/I/A (±5%); 3-4 phases (1-2 each); ≥5 core roles; 100% decision-critical
 
 ## 2. Build References
-**Actions**: Glossary (≥8, decision-critical only) → Tools (≥5, URL/phase/≤18mo) → Literature (≥6 canonical) → Citations (≥8 APA 7th)
-**Checks**: G≥8, T≥5, L≥6, A≥8; 60/30/10% EN/ZH/Other (±10%); ≥50% recent (≥70% DevOps/SRE); ≥3 types, <25% single; 100% valid URLs
+**Actions**: Glossary (≥8, decision-critical only) → Tools (≥5, URL/phase, actively maintained) → Literature (≥6 canonical) → Citations (≥8 APA 7th)
+**Checks**: G≥8, T≥5, L≥6, A≥8; aim for ≥2 languages (e.g., EN + ZH); ≥50% published in last 10 years; mix of architecture/DevOps/SRE sources; ≥3 resource types; <50% from any single source; 100% valid URLs
 
 ## 3. Write Q&As
 **Questions**: Decision-focused ("How to decide on...", "When to migrate...", "Compare..."); scenario-based
@@ -97,12 +97,12 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 **Validate Every 2**: Word count, citations, decision criticality, quantified impact, stakeholder clarity
 
 ## 4. Create Artifacts
-**Per Phase**: Mermaid (<80 nodes, decision-focused) + Decision matrix (≥2 alternatives × ≥5 criteria) + Metrics (≥2: formula + target + frequency)
-**Checks**: 3-4 phases complete; diagrams render; decision matrix clear; criteria measurable; formulas valid
+**Per Phase**: Mermaid diagram (<80 nodes, decision-focused) + Metrics (≥2: formula + target + frequency); add a decision matrix (≥2 alternatives × ≥5 criteria) for major trade-off decisions
+**Checks**: 3-4 phases complete; diagrams render; metrics clear; any decision matrices have measurable criteria and valid formulas
 
 ## 5. Link References
 **Actions**: Populate sections → Extract `[Ref: ID]` → Verify IDs → Validate URLs → Remove orphans
-**Checks**: G≥8, T≥5, L≥6, A≥8; 100% resolved; 0 broken; 60/30/10%; no orphans
+**Checks**: G≥8, T≥5, L≥6, A≥8; 100% resolved; 0 broken; language mix per References; no orphans
 
 ## 6. Validate (12 Checks)
 
@@ -111,14 +111,14 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | 1 | Counts | G≥8, T≥5, L≥6, A≥8, Q=6-8 (25/50/25%) |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion: Blocks/Risk/Roles/Evolving/Quantified |
 | 3 | Citations | 100% Q&As ≥1 citation |
-| 4 | Language | 60/30/10% EN/ZH/Other (±10%) |
-| 5 | Recency | ≥50% last 3yr (≥70% DevOps/SRE) |
+| 4 | Language | Aim for ≥2 languages (e.g., EN + ZH); avoid relying on a single language |
+| 5 | Recency & Mix | ≥50% published in last 10 years; mix of architecture, DevOps, and SRE sources |
 | 6 | Links | 100% valid |
 | 7 | Word count | All Q&As: 150-250 words |
 | 8 | Quantified Impact | 100% have measurable metrics + targets |
 | 9 | Phase coverage | All 3-4 phases covered (1-2 Q&As each) |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles |
-| 11 | Decision Matrix | ≥80% have ≥2 alternatives × ≥5 criteria |
+| 11 | Decision Matrices | Major trade-off decisions use a matrix (≥2 alternatives × ≥5 criteria) |
 | 12 | Artifacts | ≥90% phases have diagram + metrics |
 
 **Failure**: ANY fail → STOP → Document → Fix → Re-validate ALL → Iterate until 12/12 PASS
@@ -131,20 +131,6 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 **Submit**: 12/12 PASS + 4/4 criteria
 **High-Risk**: Decision criticality justification, metric formulas, stakeholder clarity, URLs
-
----
-
-## Quick Check (30s)
-
-**Before generating:**
-
-☐ **Self-contained**: Complete context; no cross-file refs  
-☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
-☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
-☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
-☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency  
-☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ---
 
@@ -199,16 +185,6 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 ---
 
-## Cross-Cutting Decision Criteria
-
-**Blocks Decision**: Directly impacts architecture roadmap, tech stack choice, strategic pivot
-**Creates Risk**: Material threat (technical debt, scalability limit, compliance gap)
-**Affects ≥2 Stakeholders**: Multi-team impact (Architect + SRE, Dev Lead + DevOps)
-**Actively Evolving**: Tech/market/regulatory changes in past 3-6 months
-**Quantified Impact**: Adoption %, performance gain, cost reduction, velocity improvement
-
----
-
 ## References
 
 ### Glossary (≥8)
@@ -251,7 +227,7 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 **L5.** Richardson (2018). *Microservices Patterns*. Manning. [EN] | Decomposition, migration patterns
 **L6.** Kleppmann (2017). *Designing Data-Intensive Applications*. O'Reilly. [EN] | Scalability, consistency, replication
 
-### Citations (≥8, APA 7th, 60/30/10%)
+### Citations (≥8, APA 7th, multi-language mix)
 **A1.** Bass et al. (2021). *Software architecture in practice* (4th ed.). Addison-Wesley. [EN]
 **A2.** Forsgren et al. (2018). *Accelerate*. IT Revolution. [EN]
 **A3.** Beyer et al. (2016). *Site reliability engineering*. O'Reilly. [EN]
@@ -270,14 +246,14 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 | 1 | Counts | G≥8, T≥5, L≥6, A≥8, Q=6-8 (25/50/25%) | G:X, T:Y, L:Z, A:W, Q:N | PASS/FAIL |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion | X% decision-critical | PASS/FAIL |
 | 3 | Citations | 100% Q&As ≥1 citation | X% cited | PASS/FAIL |
-| 4 | Language | 60/30/10% EN/ZH/Other (±10%) | EN:X%, ZH:Y%, Other:Z% | PASS/FAIL |
-| 5 | Recency | ≥50% last 3yr (≥70% DevOps/SRE) | X% recent, Y% DevOps | PASS/FAIL |
+| 4 | Language | Aim for ≥2 languages (e.g., EN + ZH); avoid relying on a single language | EN:X%, ZH:Y%, Other:Z% | PASS/FAIL |
+| 5 | Recency & Mix | ≥50% published in last 10 years; mix of architecture/DevOps/SRE sources | X% recent, Y% DevOps/SRE | PASS/FAIL |
 | 6 | Links | 100% valid | X% valid | PASS/FAIL |
 | 7 | Word count | All Q&As: 150-250 words | [Range] | PASS/FAIL |
 | 8 | Quantified Impact | 100% have measurable metrics + targets | X% quantified | PASS/FAIL |
 | 9 | Phase coverage | All 3-4 phases covered (1-2 Q&As each) | [Distribution] | PASS/FAIL |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles | X% multi-role | PASS/FAIL |
-| 11 | Decision Matrix | ≥80% have ≥2 alternatives × ≥5 criteria | X% with matrix | PASS/FAIL |
+| 11 | Decision Matrices | Major trade-off decisions use a matrix (≥2 alternatives × ≥5 criteria) | X% with matrix | PASS/FAIL |
 | 12 | Artifacts | ≥90% phases have diagram + metrics | X/4 complete | PASS/FAIL |
 
 **Overall**: [X/12 PASS - need 12/12]
@@ -288,53 +264,9 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 
 ---
 
-# Example Question Patterns (Decision-Critical Roadmap Triggers)
-
-## Foundational (25%)
-- "What are the key decision criteria for adopting a new architecture pattern?"
-- "How to quantify technical debt and prioritize remediation?"
-
-## Intermediate (50%)
-- "Monolith→microservices: adoption barriers, performance impact, 3-month roadmap?"
-- "SLO change from 99.9% to 99.99%: infrastructure investment, team impact, go/no-go criteria?"
-- "Compare CQRS vs event sourcing for scaling: complexity, adoption barrier, team expertise?"
-
-## Advanced (25%)
-- "Strangler Fig migration (legacy→modern, 50 engineers, zero downtime): sequencing, risks, metrics, 6-month roadmap?"
-- "Technical debt at 40% of velocity: 2-quarter remediation strategy (org, tools, metrics, success targets)?"
-
----
-
-# Quality Gates (Decision-Critical Only)
-
-## Decision-Critical Roadmap Gates
-**Architecture & Design**: [ ] ≥2 ADRs per decision [ ] Decision matrix (≥2 alternatives) [ ] Adoption barrier quantified [ ] Performance impact estimated
-**Development & Quality**: [ ] Testing strategy evolution documented [ ] CI/CD improvement metrics [ ] Team expertise assessment [ ] Rollback plan clear
-**Operations & Scalability**: [ ] SLO targets explicit [ ] Capacity plan quantified [ ] Reliability metrics baseline [ ] Error budget defined
-**Evolution & Governance**: [ ] Technical debt quantified (effort) [ ] Migration roadmap (phases, timeline) [ ] Risk assessment (P×I) [ ] Success criteria measurable
-
-## Content Quality (Decision-Focused)
-- [ ] Context clear (what scenario/constraint prompted this decision?) [ ] 150-250 words [ ] ≥1 citation
-- [ ] Quantified impact (%, $, time) [ ] ≥2 alternatives + decision matrix [ ] Decision criteria explicit [ ] Action timeline clear
-- [ ] Stakeholder roles clear (R/A/C) [ ] Diagram + metrics table [ ] Valid links [ ] 60/30/10% EN/ZH/Other (±10%)
-
----
-
 **Template Version**: 2.0 (Minimal Viable)
 **Last Updated**: 2025-11-16
 **Maintained By**: Career Development Team
 **Review Cadence**: Quarterly (roadmap cycles)
 
-**Change Log**:
-- 2025-11-16: Optimized to minimal viable decision-critical Q&As: 30-35 Q&As → 6-8; 8 phases → 3-4; 21 checks → 12; Decision Criticality Framework added; 50-80% reduction across major dimensions
-- 2025-11-13: Initial version, adapted from Software System Construction Lifecycle Roadmap handbook, 8-phase coverage with quantified criteria and stakeholder focus
 
-**Optimization Summary**:
-- **Q&A Count**: 30-35 → **6-8** (75-80% reduction)
-- **Phases**: 8 → **3-4** (decision-critical only)
-- **Answer Length**: 200-400w → **150-250w**
-- **References**: G≥15/T≥8/L≥8/A≥15 → **G≥8/T≥5/L≥6/A≥8** (50% reduction)
-- **Validation**: 21 checks → **12 checks** (streamlined)
-- **Effort**: 12-16h → **4-6h** per cycle
-- **Focus**: Interview prep → **Decision-critical roadmap analysis**
-- **Decision Criticality**: 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Roles/Evolving/Quantified)

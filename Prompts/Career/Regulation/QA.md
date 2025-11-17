@@ -2,25 +2,21 @@
 
 ## Purpose
 
-Generate **4-6 decision-critical regulatory Q&As** for informed decision-making with limited time. Scenario-based, not news-driven.
+Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Scenario-based, focusing on privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), and standards (ISO 27001/27701, SOC2, NIST CSF).
 
-**Context:**
-- **Problem:** Hallucinations in regulatory advice, incomplete analysis, ambiguous recommendations leading to compliance failures, fines, or audit issues.
-- **Scope:** Privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), standards (ISO 27001/27701, SOC2, NIST CSF).
-- **Constraints:** 150-250 words per Q&A, scenario-based, quantified impact (fine $, audit days, remediation hours), actionable decisions/trade-offs.
-- **Assumptions:** Users have basic regulatory knowledge; LLMs access current regulations; evergreen content with annual refresh.
-- **Scale:** 4-6 Q&As, 3-4 clusters × 1-2 Q&As each, ≥2 stakeholders per Q&A.
-- **Timeline:** 4-6h effort; validity evergreen (refresh annually or when regulations change).
-- **Stakeholders:** Legal, Compliance, Security, Architecture (core roles).
-- **Resources:** Official regulatory sources (EUR-Lex, NIST), compliance tools (OneTrust, Vanta), literature (GDPR, ISO 27001).
+**Constraints:** Approximately 150-250 words per Q&A, quantified impact, actionable decisions.
 
-**Target**: Legal, Compliance, Security, Architecture (core roles)
+**Assumptions:** Outputs must be cross-checked against official sources; refresh annually when regulations, guidance, or supervisory practices change.
+
+**Stakeholders:** Legal, Compliance, Security, Architecture.
+
+**Resources:** Official sources (EUR-Lex, NIST), tools (OneTrust, Vanta), literature (GDPR, ISO 27001).
 
 ---
 
 ## Specifications
 
-### Decision Criticality Framework (NEW)
+### Decision Criticality Framework
 
 **Include if ≥1 criterion satisfied:**
 - **Blocks Decision**: Directly impacts compliance strategy, audit readiness, or regulatory pivot
@@ -31,11 +27,9 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 **Exclude if**: Niche/legacy regulations (<5% adoption), orthogonal/nice-to-have, already covered, vendor marketing
 
----
-
 ### Coverage (Decision-Critical Only)
 
-**Distribution**: 4-6 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, 3-4 clusters × 1-2 Q&As each, ≥2 stakeholders per Q&A
+**Distribution**: 4-8 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, distributed across 4 clusters (1-2 per cluster), ≥2 stakeholders per Q&A
 
 | Cluster | Focus | Decision Trigger | Stakeholders |
 |---------|-------|------------------|--------------|
@@ -52,33 +46,28 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 ### Visual Standards (Per Cluster: ≥1 Diagram + ≥1 Table + ≥1 Metric)
 
-| Analysis Type | Diagram | Metric Formula | Standard |
-|---------------|---------|----------------|----------|
+| Cluster | Diagram | Metric Formula | Standard |
+|---------|---------|----------------|----------|
 | Compliance Modeling | Control matrix, Gap analysis | `(Implemented / Required) × 100%` | NIST SP 800-53, ISO 27001 |
-| Risk & Threat | Threat model, Risk matrix | `Likelihood × Impact × Asset Value` | STRIDE, DREAD, NIST SP 800-30 |
-| Privacy | Data flow, Consent flow | `(Explicit Consents / Total Users) × 100%` | GDPR Art. 25, Privacy-by-Design |
-| Audit | Audit trail, Evidence mapping | `(Auditable Events / Critical Events) × 100%` | SOC2 CC4.1, ISO 19011 |
-| Architecture | Reg→Control, Security arch | `Cost Avoided / (Initial + Ongoing) × 100%` | C4, UML, ArchiMate |
+| Privacy Engineering | Data flow, Consent flow | `(Explicit Consents / Total Users) × 100%` | GDPR Art. 25, Privacy-by-Design |
+| Audit & Evidence | Audit trail, Evidence mapping | `(Auditable Events / Critical Events) × 100%` | SOC2 CC4.1, ISO 19011 |
 | Remediation | Roadmap, Gantt | `Initial + Ongoing + Penalty Risk` | NIST CSF |
-| Coordination | RACI, Decision flow | `(Aligned / Total) × 100%` | RACI, DACI |
 
 **Rendering**: Mermaid diagrams, inline `$formula$`, block `$$formula$$`  
 **Standards**: BPMN (process), UML (structure), C4 (software), ERD/DFD (data), ArchiMate (enterprise)  
 **Avoid**: Mega-diagrams (>120 nodes), mixed abstraction, missing rationale
 
-### Validation Checks (Streamlined, 12 checks)
-
-**Minimums**: G≥10, T≥4, L≥6, A≥8, Q=4-6 (25/50/25 mix)
+### Validation Checks (12 checks)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-6 (25/50/25) |
+| 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-8 (25/50/25) |
 | 2 | **Decision Criticality** | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
-| 3 | **Freshness** | ≥70% updated in last 5 years, 100% ≤10 years; refresh when regulations or guidance change |
+| 3 | **Freshness** | ≥70% of sources published or updated in the last 10 years; explicitly justify older sources and confirm they are still in force |
 | 4 | **Citations** | ≥70% with ≥1, ≥30% with ≥2+ |
-| 5 | **Language** | EN 60-80%, ZH 15-30%, Other 5-10% |
+| 5 | **Language** | Primarily EN; ZH optional. Keep each note internally consistent and avoid mixing languages within a single entry |
 | 6 | **Links** | 100% accessible, prefer official |
-| 7 | **Word Count** | All 150-250w (scenario-based, concise) |
+| 7 | **Word Count** | All approximately 150-250 words (scenario-based, concise) |
 | 8 | **Impact** | Quantified: fine $, audit days, deadline, remediation hours |
 | 9 | **Decision** | Clear go/no-go, adopt/defer/skip, rationale |
 | 10 | **Visuals** | ≥1 diagram + ≥1 table + ≥1 metric per cluster (matches Visual Standards) |
@@ -86,20 +75,6 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 | 12 | **Final Review** | Scenario-based, decision-critical, actionable, no speculation |
 
 **Balance**: Acknowledge trade-offs (security vs cost, compliance vs usability), constraints, alternatives
-
----
-
-## Quick Check (30s)
-
-**Before generating Q&As (mandatory for decision-critical scenarios):**
-
-☐ **Self-contained**: Complete context; no external refs  
-☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
-☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
-☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
-☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency  
-☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ---
 
@@ -149,8 +124,8 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 ```markdown
 ## Contents
-- [Cluster Overview](#clusters) - Cluster | Decision Trigger | Q&A Count
-- [Q&As 1-6](#qa) - Scenario + Impact + Decision + Action
+- [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
+- [Q&As 1-6](#qas-1-6) - Scenario + Impact + Decision + Action
 - [References](#references) - Glossary, Tools, Literature, Citations
 
 ## Cluster Overview
@@ -158,7 +133,9 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 | Compliance Modeling | New deadline, failed audit, debt >$500K | 1-2 | Blocks/Risk |
 | ... | ... | ... | ... |
 
-## Q[N]: [Scenario-Based Question]
+## Q&As 1-6
+
+### Q[N]: [Scenario-Based Question]
 **Difficulty**: [F/I/A] | **Cluster**: [Topic] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
 **Answer** (150-250 words):
@@ -232,22 +209,7 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 **A7.** Rose et al. (2020). NIST SP 800-207 Zero Trust. https://doi.org/10.6028/NIST.SP.800-207 [EN]
 **A8.** EDPB. (2020). Guidelines 4/2019 Art. 25. https://edpb.europa.eu [EN]
 
----
 
-## Document Verification
-
-**Self-assessment:**
-☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality
-⚠ Credibility: Citations include official sources but some may need recency checks
-⚠ Risk/Value: Trade-offs discussed but could compare more frameworks
-⚠ Evidence: Citations provided but flag uncertainties in regulatory interpretations
-⚠ Success Criteria: Qualitative targets; add measurable baselines
-
-**Gaps:** No alternative Q&A frameworks compared; metrics lack empirical validation; no user feedback criteria
-
-**Future:** A/B testing with different Q&A structures, framework comparison, success metrics, stakeholder feedback
-
----
 
 ## Example
 

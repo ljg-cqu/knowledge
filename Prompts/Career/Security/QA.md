@@ -1,107 +1,63 @@
-# Software Safety & Security Q&A Generator (Minimal Viable)
+# Software Safety & Security Q&A Generator
 
-**Purpose:** Generate 6-12 decision-critical security Q&As to reduce hallucinations (↓30-60%), improve decision quality (↑60-80%). Self-contained prompts with complete context for critical infrastructure security decisions.
+**Purpose:** Generate decision-critical security Q&As to reduce hallucinations and improve decision quality for software and infrastructure security, particularly in critical infrastructure.
 
-**Application:** Apply comprehensively for decision-critical scenarios (≥1 criterion: blocks decision, creates risk, affects ≥2 roles, requires action, quantified impact). Otherwise apply selectively.
+**Application:** Use for scenarios that block decisions, create risks, affect multiple roles, require action, or have quantified impact. Apply selectively for high-stakes situations.
 
 **Context:**
-- **Problem:** Hallucinations in security advice, incomplete analysis, outdated information leading to poor decisions in critical infrastructure
-- **Scope:** Decision-critical security scenarios only (0-days, breaches, compliance changes, emerging threats); excludes technical implementation details, vendor marketing, long-term R&D, rumors, speculative scenarios
-- **Constraints:** Bi-weekly generation cycle; freshness thresholds (≥75% <2mo, ≥90% <4mo, 100% ≤9mo)
-- **Assumptions:** Users have basic security knowledge; LLMs have access to recent threat intel; decision-criticality framework applied
-- **Scale:** 6-12 Q&A pairs per generation; covers ≥3 of 4 decision-critical dimensions
-- **Timeline:** Bi-weekly cadence; 3-4h effort; expires 2 weeks from generation
-- **Stakeholders:** Security engineers, DevOps/SRE, architects, security leaders, compliance officers
-- **Resources:** Threat intel (CISA, NVD, Shodan); breaches (Have I Been Pwned, Bleeping Computer); compliance (NIST, NERC, ISO); tools (Perplexity, ChatGPT, Google)
+- **Problem:** Hallucinations, incomplete analysis, and outdated information lead to poor security decisions.
+- **Use when:** Generating Q&As for recent threats like 0-days, breaches, compliance changes, or emerging risks.
+- **Assumptions:** Access to current threat intelligence.
 
 **Key Terms:**
-- **Hallucination**: Factually incorrect/unverifiable security information
-- **Decision-critical**: >5% impact or blocks key security actions
-- **MECE**: Mutually Exclusive, Collectively Exhaustive (dimensions cover all without gaps/overlaps)
-- **Self-contained**: Complete context without external references
-- **Impact metrics**: Estimated improvement (↑/↓) from empirical observations
+- **Hallucination**: Incorrect or unverifiable security information.
+- **Decision-critical**: Impacts >5% or blocks key actions.
+- **MECE**: Mutually Exclusive, Collectively Exhaustive.
+- **Self-contained**: Each Q&A contains complete context without external dependencies.
+- **Impact metrics**: Estimated improvements based on observations.
 
 ## Requirements
 
 ### Context & Scope
-**Domain**: Critical infrastructure security (ICS/SCADA, energy, water, healthcare, automotive)
-**Audience**: Security engineers, DevOps/SRE, architects, security leaders
-**Scope**: Decision-critical security scenarios only—0-days, breaches, compliance changes, emerging threats
-**Cadence**: Bi-weekly | 3-4h effort | **Expires**: 2 weeks from generation
+**Domain**: Decision-critical software and infrastructure security, especially critical infrastructure.
+**Audience**: Security engineers, DevOps/SRE, architects, security leaders, compliance officers.
+**Scope**: Focus on decision-critical scenarios like 0-days, breaches, compliance changes, emerging threats. Exclude marketing, speculation, or low-impact topics.
+**Cadence**: Generate regularly; expires 2 weeks after creation.
 
-**Freshness** (all news must meet these age thresholds):
-- **High-Velocity** (0-days, breaches, attacks): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
-- **Medium-Velocity** (Compliance, standards): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
-- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
+**Freshness**: Prioritize recent information (<2 months for threats, <6 months for compliance).
 
-**Exclude**: Technical implementation details, vendor marketing, long-term R&D, rumors, speculative scenarios
-
-**Decision Criticality Framework** (include if ≥1 criterion met):
-1. **Blocks Decision**: Directly impacts incident response, security posture, or compliance strategy
-2. **Creates Risk**: Material threat (0-day, breach pattern, regulatory change affecting operations)
-3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (Security + DevOps, Security + Leadership, etc.)
-4. **Requires Action**: 1-6mo action window (not speculative)
-5. **Quantified Impact**: CVSS score, breach count, affected systems, compliance deadline
+**Decision Criticality** (≥1 criterion required):
+1. **Blocks Decision**: Impacts response, posture, or strategy.
+2. **Creates Risk**: Material threat or change.
+3. **Affects ≥2 Roles**: Multi-stakeholder impact.
+4. **Requires Action**: Within 1-6 months.
+5. **Quantified Impact**: Measurable effects (CVSS, systems affected, etc.).
 
 ### Output Specifications
-**Format**: 120-200 words/answer with Mermaid diagrams, YAML configs, APA 7th [EN]/[ZH]
-**Quantity**: 6-12 Q&A pairs
-**Difficulty**: 25% Foundational (1-2), 50% Intermediate (3-6), 25% Advanced (1-3)
-**Coverage**: Decision-critical security dimensions only (≥3 of 4)
-**Traceability**: Scenario → Risk → Control → Action → Metric (explicit chain required)
-**Per Q&A**: ≥1 diagram or table, ≥1 practical config/playbook, ≥1 metric
+**Format**: 120-200 words per answer; include diagrams, configs, citations.
+**Quantity**: 5-10 Q&A pairs.
+**Difficulty**: Mix of foundational (25%), intermediate (50%), advanced (25%).
+**Coverage**: At least 3 of 4 decision-critical dimensions.
+**Traceability**: Scenario → Risk → Control → Action → Metric.
+**Visuals & Practicality**: ≥2 diagrams + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.
 
 ### Quality Standards
-**Clarity**: Define all terms/acronyms in glossary; no ambiguity (e.g., "appropriate" → "SIL 2-rated"); consistent terminology
-**Precision**: Specific values ("SIL 2" not "high safety"); exact citations ("IEC 61508-1:2010 Clause 7.4"); numeric thresholds ("≥95%" not "high")
-**Accuracy**: Cross-check formulas, metrics, standards; flag uncertainties explicitly
-**Credibility**: Standards ≤5yr old, peer-reviewed research, official specs only; no blogs/tutorials
-**Balance**: Acknowledge trade-offs, limitations, alternatives, cost-benefit
-**Significance**: Prioritize P×I >8; proven attack vectors/failure modes only
-**Concision**: No redundancy/filler; use tables/diagrams to reduce text
-**Logic**: Coherent reasoning (Hazard→Risk→Control→Validation); no circular definitions
-
-### Quick Check (30s)
-
-**Before generating Q&A (mandatory for decision-critical):**
-
-☐ **Self-contained**: Complete context; no cross-file refs
-☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance
-☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth
-☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility
-☐ Logic | ☐ Risk/Value | ☐ Fairness
-☐ Structure | ☐ Consistency
-☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
-
-### Quality Attributes
-
-**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
+**Clarity**: Define terms; consistent language.
+**Precision**: Specific values, citations, thresholds.
+**Accuracy**: Verify facts; note uncertainties.
+**Credibility**: Use current standards and primary sources.
+**Balance**: Consider trade-offs.
+**Significance**: Focus on high-impact (P×I >8).
+**Concision**: Avoid redundancy.
+**Logic**: Coherent reasoning.
 
 ### Limitations and Trade-offs
-
-**Trade-offs:**
-- **Rigor vs. Speed**: Comprehensive Q&A generation increases upfront time but reduces iteration and decision errors
-- **Depth vs. Breadth**: Detailed scenarios may be too long for some uses but ensure actionable outputs
-- **Precision vs. Accessibility**: Technical specificity may reduce readability for non-experts
-
-**Alternatives Comparison:**
-- **Unstructured Prompts**: Lower upfront time (↓50%), but higher hallucinations (↑50% errors), lower decision quality (↓40% effectiveness). Suitable for low-stakes brainstorming. Cost: Minimal.
-- **This Framework**: Higher rigor, reduced hallucinations (↓30-60%), improved decision quality (↑60-80%). Best for critical infrastructure security. Cost: 3-4h effort.
-- **Automated Tools (e.g., AI security scanners)**: Faster generation (↑70% speed), but less tailored, potential for outdated info (↑20% errors). Cost: $100-500/mo.
-
-**Skip for**: Exploratory questions, brainstorming, low-stakes (<5% impact), rapid response, simple queries, prototyping
-
-**Exclude from Q&A**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5%), formal proofs, unsupported trends, generic advice, speculation, cross-references
-
-**Impact Metric Limitations:**
-- **Source**: Observational from security Q&A generation sessions; subjective, no A/B testing
-- **Baseline**: Unstructured conversational prompts
-- **Uncertainty**: High (±20-40%); directional only, not precise
-- **Use cautiously**: Apply based on principles, not solely metrics
-- **Citations**: [1] Reducing Hallucinations and Trade-Offs in Responses in Generative AI Chatbots. NIH. 2024. https://pmc.ncbi.nlm.nih.gov/articles/PMC12425422 [Hallucinations]; [2] DecoPrompt: Decoding Prompts Reduces Hallucinations. arXiv. 2024. https://arxiv.org/html/2411.07457v1 [Hallucinations]; [3] Large language models improve clinical decision making. PMC. 2024. https://pmc.ncbi.nlm.nih.gov/articles/PMC11605890 [Decision Quality]; [4] STRUX: An LLM for Decision-Making with Structured Explanations. arXiv. 2024. https://arxiv.org/abs/2410.12583 [Decision Quality]
-
-**Estimated Ranges:**
-↓30-60% hallucinations | ↓25-50% ambiguity | ↑60-80% decision quality | ↑35-50% completeness | ↑30-45% scannability | ↑50-60% implementation speed
+**Trade-offs**: Balance rigor with speed.
+**Alternatives**: Unstructured prompts (faster but error-prone); automated tools (quick but may be outdated).
+**Skip for**: Low-stakes or exploratory scenarios.
+**Exclude**: Historical, theoretical, or speculative content.
+**Impact Metrics**: Estimated reductions in hallucinations (30-60%) and improvements in decision quality (60-80%), with uncertainty.
+**Citations**: Use APA 7th format with tags; reference primary sources.
 
 ## Decision-Critical Dimensions
 
@@ -130,110 +86,52 @@
 | **Zero-Trust Architecture** | Insider threats, distributed systems | Reduce blast radius, enforce least privilege | NIST SP 800-207 |
 | **Defense-in-Depth** | Compliance requirement, critical infrastructure | Multiple control layers, compensating controls | NIST CSF 2.0, ISO 27001 A.13 |
 
-## Decision-Critical Q&A Design
+## Q&A Design
 
 ### Principles
-**Decision-critical only**: Every Q&A must block a decision or create material risk
-**Scenario-driven**: Triggered by security events (0-days, breaches, compliance changes)
-**Actionable**: Concrete next steps (0-2wk, 2wk-2mo) with clear owner
-**Quantified**: Specific metrics (CVSS, affected systems, deadline, impact)
+- **Decision-critical only**: Each Q&A must address a blocking decision or material risk.
+- **Scenario-driven**: Based on recent security events like 0-days, breaches, or compliance changes.
+- **Actionable**: Provide concrete steps with timelines and owners.
+- **Quantified**: Include specific metrics.
 
-### Good vs. Poor
-
-✅ "CVE-2024-XXXXX (CVSS 9.8) affects 50K+ ICS systems. Patch timeline & detection strategy?"
-❌ "What is vulnerability management?" (no news trigger)
-
-✅ "New NERC CIP compliance deadline (Jan 2025). Audit gap analysis & remediation roadmap?"
-❌ "List NERC CIP requirements." (no decision)
-
-✅ "[Breach] 10K healthcare records exposed via unpatched RCE. Incident response playbook & MTTD/MTTR targets?"
-❌ "What is incident response?" (vague, no scenario)
+### Examples
+- Good: "CVE-2024-XXXXX (CVSS 9.8) affects 50K+ ICS systems. Patch timeline & detection strategy?"
+- Poor: "What is vulnerability management?" (lacks specific trigger)
 
 ### Stakeholder Context
-**Security Engineers**: Detection configs, response playbooks, technical trade-offs
-**DevOps/SRE**: Patching strategy, deployment windows, RTO/RPO impact
-**Architects**: Control architecture, defense-in-depth, risk prioritization
-**Security Leaders**: Compliance strategy, resource allocation, board reporting
-**Compliance Officers**: Audit evidence, deadline tracking, certification impact
+- **Security Engineers**: Detection configs, response playbooks.
+- **DevOps/SRE**: Patching, deployment, RTO/RPO.
+- **Architects**: Control architecture, prioritization.
+- **Security Leaders**: Compliance, resource allocation.
+- **Compliance Officers**: Audit evidence, deadlines.
 
-### Mandatory Q&A Elements
-1. **News trigger**: Recent security event (0-day, breach, compliance change) with date & source
-2. **Risk-to-action chain**: Threat/Compliance → Risk (CVSS/Impact) → Control → Action → Metric
-3. **Practical element**: YAML config, playbook, or compliance checklist
-4. **Citation**: ≥1 [Ref: ID] with freshness
-5. **Key insight**: One sentence on decision impact/control effectiveness/compliance deadline
-6. **Timeline**: Immediate (0-2wk), Short-term (2wk-2mo) with owner
+### Mandatory Elements
+1. **Trigger**: Recent event with date and source.
+2. **Risk Chain**: Threat → Risk → Control → Action → Metric.
+3. **Practical**: Config, playbook, or checklist.
+4. **Citation**: At least one reference.
+5. **Insight**: Key decision impact.
+6. **Timeline**: Immediate (0-2wk) and short-term (2wk-2mo) actions with owners.
 
-## References & Quality (Minimal Viable)
+## References & Quality
 
-### Minimums (for 6-12 Q&A)
-- **≥8 Glossary** (only terms used): CVSS, MTTD/MTTR, Zero-Trust, Defense-in-Depth, RTO/RPO, Incident Response, Control Effectiveness, Attack Surface
-- **≥3 Tools**: Splunk/ELK (SIEM), Nessus/Qualys (vulnerability scanning), PagerDuty (incident response)
-- **≥6 Literature**: NIST SP 800-61 (incident response), NIST CSF 2.0, ISO 27001, IEC 62443 (ICS security), NERC CIP, PCI DSS
-- **≥6 Citations**: APA 7th [EN]/[ZH] (~60/30/10%); DOI or permanent URL; all ≤2yr old
+### Minimums
+- **Glossary**: ≥8 terms (e.g., CVSS, MTTD/MTTR, Zero-Trust).
+- **Tools**: ≥3 (e.g., SIEM like Splunk, vulnerability scanners).
+- **Literature**: ≥6 standards (e.g., NIST SP 800-61, ISO 27001).
+- **Citations**: ≥6 in APA 7th format, recent where possible.
 
-### Quality Gates (all must PASS)
+### Quality Checks
+- Ensure decision-criticality, freshness, scenario-driven, citations, practicality, quantification, timelines, stakeholder coverage, and actionability.
+- Cover ≥3 dimensions, balance difficulty levels.
 
-| Gate | Requirement | Validation |
-|------|-------------|------------|
-| **Decision Criticality** | 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) | Review each Q&A |
-| **Freshness** | ≥75% <2mo, ≥90% <4mo, 100% ≤9mo | Check scenario dates |
-| **Scenario-Driven** | 100% triggered by security event (0-day/breach/compliance) | Verify trigger |
-| **Citations** | ≥85% answers ≥1 cite, ≥30% ≥2 cites | Count per answer |
-| **Cross-refs** | 100% [Ref: ID] resolve | Automated check |
-| **Difficulty** | 25/50/25 (F/I/A) ±5% | Count by level |
-| **Practical Elements** | 100% Q&As have ≥1 practical (config/playbook/checklist) | Review all |
-| **Quantified** | 100% include specific metrics (CVSS/deadline/systems/impact) | Review all |
-| **Timeline** | 100% include immediate (0-2wk) + short-term (2wk-2mo) | Review all |
-| **Stakeholders** | ≥5/5 core roles represented | Count roles |
-| **Coverage** | ≥3 of 4 decision-critical dimensions covered | Check matrix |
-| **Actionability** | 100% concrete; 0% abstract/speculative | Review all |
+## Workflow
 
-## Workflow (Minimal Viable)
-
-### 1. Scenario Discovery & Curation (Minimal)
-**Record generation date (YYYY-MM-DD)—calculate all scenario ages from this.**
-
-**Identify** (≥10-15 candidates, tiered):
-- **Tier 1** (Recent, 1-3d): Active 0-days, breaches, critical incidents
-- **Tier 2** (Recent, 7-14d): Emerging threats, attack patterns
-- **Tier 3** (Compliance, 2-6mo): Regulatory changes, audit findings
-
-**Sources** (whitelist):
-- **Threat Intel**: CISA, NVD, Shodan, Censys, GreyNoise
-- **Breaches**: Have I Been Pwned, Bleeping Computer, Dark Reading, SecurityWeek
-- **Compliance**: NIST, NERC, PCI Security Council, ISO, regulatory bodies
-- **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Reddit r/cybersecurity
-
-**Curate** (≥10-15 candidates):
-- ✅ Satisfies ≥1 Decision Criticality criterion
-- ✅ Specific details (CVSS, affected systems, deadline, impact)
-- ✅ Not marketing/rumors/speculation
-
-### 2. Build References (Minimal)
-**Format**: G# (term, def) | T# (tool, purpose) | L# (standard/framework) | A# (APA 7th+tag)
-
-**Floors**: G≥8, T≥3, L≥6, A≥6
-
-### 3. Generate Q&A (batch 2-3, self-check each)
-**Structure** (120-200w):
-1. **Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: A#]
-2. **Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Immediate (0-2wk) + Short-term (2wk-2mo) + owner
-5. **Practical** (~30w): YAML config, playbook, or checklist
-
-**Self-Check**: Decision Criticality ✓ | Freshness OK | ≥2 roles | Quantified | ≥1 cite | 120-200w | Actionable | All terms in glossary
-
-### 4. Visuals (≥2 diagrams + ≥1 table)
-**Types**: Attack tree, incident workflow, risk matrix, control mapping
-
-### 5. Validate
-**Execute**: All 12 quality gates from table
-**Verify**: 6-12 Q&As, 25/50/25 difficulty, ≥3 of 4 dimensions, ≥5 roles
-
-### 6. Submit
-**Checklist**: Validations PASS | Floors met | Glossary complete | TOC complete | 0 placeholders | Visuals OK | Citations OK | Freshness OK | Dates (gen + expire=gen+2wk)
+1. **Discover Scenarios**: Identify recent threats, breaches, compliance changes from reliable sources. Curate based on criticality and specifics.
+2. **Build References**: Compile glossary, tools, literature, citations.
+3. **Generate Q&As**: Create 5-10 pairs with required elements, self-check for quality.
+4. **Add Visuals**: Include ≥2 diagrams and ≥1 table.
+5. **Validate & Finalize**: Ensure all checks pass, add dates.
 
 ## Output Format (Minimal Viable)
 
@@ -261,7 +159,7 @@
 | 2 | Incident Response | 0-3 | Active incidents | Security Eng, SRE |
 | 3 | Compliance & Governance | 0-3 | Regulatory changes | Security Lead, Compliance |
 | 4 | Risk & Control | 0-3 | Control gaps, emerging threats | Architect, Security Lead |
-| | **Total** | **6-12** | **4+** | **≥5** |
+| | **Total** | **5-10** | **4+** | **≥5** |
 
 ## Q&A Template
 
@@ -296,8 +194,8 @@
 ### Citations
 **A#. Author(s). (Year). *Title*. Pub. URL [Tag]**
 
-## Validation Results (12 checks)
-[Table: all gates PASS with evidence]
+## Validation Results
+Summary of quality checks passed.
 ```
 
 ## Measurable Success Criteria
@@ -306,19 +204,6 @@
 - Generation time <4h per batch (measured by workflow duration)
 - Coverage of ≥3 decision-critical dimensions per batch (measured by content analysis)
 - Stakeholder role representation ≥80% (measured by role count in Q&A)
-
-## Document Verification
-
-**Self-assessment:**
-☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality
-☑ Credibility: Added external citations for impact metrics
-☑ Risk/Value: Added alternatives comparison
-☑ Evidence: Added structured citations with sources
-☑ Success Criteria: Added measurable outcomes
-
-**Gaps:** Metrics lack rigorous validation (A/B testing)
-
-**Future:** A/B testing, user feedback
 
 ## Example (CVE-2024-XXXXX 0-Day Response)
 

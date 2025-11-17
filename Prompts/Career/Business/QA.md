@@ -1,169 +1,94 @@
 # Business-Architecture Translation: Minimal Viable Assessment
 
-Generate 6-12 decision-critical interview questions assessing how technical leaders translate business strategy into architectural decisions.
-
 ## Objective
 
-**Task**: Generate **6-12 decision-critical interview questions** (150-250 words each) evaluating senior technical leaders' ability to map business models, value propositions, and constraints to architectural decisions that **block decisions or create material risk**.
+Generate 6-12 decision-critical interview questions evaluating senior technical leaders' ability to translate business models into architectural decisions.
 
-**Scope & Constraints**:
-- **Focus**: Business-to-architecture translation only; decision-critical scenarios only
-- **Depth**: Senior engineer to architect level (5-15 years experience)
-- **Time**: Each question designed for 10-15 minute discussion; 60% reduction in total content
-- **Format**: Text or JSON output; non-interactive assessment tool
-- **Quality bar**: ≥70% citation coverage, ≥80% business-architecture traceability, 100% decision-critical (no nice-to-have scenarios)
+**Scope**:
+- Focus: Business-to-architecture translation in critical scenarios
+- Depth: Senior engineer to architect level (5-15 years experience)
+- Time: 10-15 minutes per question discussion
 
-**Decision Criticality Framework** (MANDATORY - every Q&A must satisfy ≥1 criterion):
-- **Blocks Decision**: Directly impacts business model translation, go/no-go, strategic pivot (revenue model, market entry, migration strategy)
-- **Creates Risk**: Material threat (compliance breach, SLA failure, churn >5%, migration failure, tech debt >30% capacity)
-- **Affects ≥2 Stakeholders**: Multi-team impact (Architect + PM, Architect + Finance, Architect + Security)
-- **Actively Evolving**: Business/tech/regulatory changes in past 3-6 months
-- **High Adoption Barrier**: >40h effort or >$100K investment
+**Decision Criticality** (every Q&A must satisfy ≥1):
+- Blocks decisions (revenue model, market entry, migration)
+- Creates material risk (compliance, SLA failure, high churn, tech debt)
+- Affects ≥2 stakeholders (multi-team impact)
+- Actively evolving (recent business/tech changes)
+- High adoption barrier (>40h effort or >$100K investment)
 
-**Assessment Coverage** (3-4 decision-critical dimensions):
-1. **Strategic Modeling**: Business model → architectural implications (blocks decision)
-2. **Value & Risk**: ROI calculations, trade-offs analysis, constraint mapping (creates risk)
-3. **Organization**: Team topology alignment, Conway's Law implications (affects stakeholders)
-4. **(Optional) Evolution**: Technical debt management, migration strategies (actively evolving)
+**Assessment Dimensions** (cover 3-4 unless focused):
+1. Strategic Modeling: Business model → architecture
+2. Value & Risk: ROI, trade-offs, constraints
+3. Organization: Team structure, Conway's Law
+4. Evolution: Technical debt, migrations
 
-**Target Audience**: Senior engineers, architects, technical leads evaluating business-architecture alignment capabilities for informed decision-making.
+**Target Audience**: Senior engineers, architects, technical leads.
 
-**Assumptions**: 
-- LLM has knowledge of business frameworks: Business Model Canvas (BMC), Value Proposition Canvas, Domain-Driven Design (DDD), Conway's Law, Technical Debt, ADR
-- User provides specific business context or explicitly accepts generic scenarios
-- Output format is text/JSON (non-interactive)
+**Assumptions**:
+- Basic familiarity with common frameworks (BMC, DDD, etc.)
+- User provides context or accepts generic scenarios
 
-## Required Input
+## Input
 
-**`business_context`** (string): Industry, business model, key constraints
-- Example: "SaaS B2B, subscription revenue, healthcare regulatory compliance, legacy migration"
-- Must specify: industry sector, revenue model (B2B/B2C), primary constraints (regulatory/scale/technical)
+**Required**: `business_context` (string): Industry, business model, key constraints
+- Example: "SaaS B2B, subscription revenue, healthcare compliance, legacy migration"
 
-**Optional Configuration**:
-- `focus_area` (default: all): Limit to specific dimension(s) from Assessment Coverage
-- `complexity` (default: architect): senior (5-8 yrs) | architect (8-12 yrs) | expert (12+ yrs)
-- `output_format` (default: text): text | json | markdown
-- `confidence_threshold` (default: medium): 
-  - high (≥2 authoritative sources, established consensus)
-  - medium (≥1 source, emerging practice)
-  - low (limited/conflicting sources, flag explicitly)
+**Optional**:
+- `focus_area` (default: all)
+- `complexity` (default: architect): senior | architect | expert
+- `output_format` (default: text): text | json
+- `confidence_threshold` (default: medium): high | medium | low
 
 ## Output Structure
 
-**Text Format Requirements**: Generate **6-12 decision-critical questions**, each must include:
-- **Question**: Scenario-based format ("How would you..." or "Given... what would you...") requiring judgment, not recall
-- **Difficulty**: Tag as foundational (25%) | intermediate (50%) | advanced (25%)
-- **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Adoption] - must satisfy ≥1 criterion
-- **Answer**: 150-250 words with inline citations [Ref: ID], covering business analysis → architecture translation → trade-offs
-- **Key Insight**: One concrete, specific insight (e.g., "subscription revenue requires usage metering but legacy assumes one-time delivery")
-- **Visual Artifacts**: For ≥90% of questions, provide a Mermaid diagram + comparison table per associated dimension (compressed)
-- **Traceability**: Explicit Business→Architecture mapping with citations
+**Text Format**:
+- **Question**: Scenario-based requiring judgment
+- **Difficulty**: foundational | intermediate | advanced
+- **Decision Criticality**: Satisfies ≥1 criterion
+- **Answer**: 150-250 words with citations; business analysis → architecture → trade-offs
+- **Key Insight**: One concrete insight
+- **Artifacts**: Optional Mermaid diagram and table
+- **Traceability**: Business→Architecture mapping
 
-**JSON Format**:
+**JSON Format** (optional):
 ```json
 {
   "questions": [{
     "id": "Q1",
     "difficulty": "foundational|intermediate|advanced",
-    "dimension": "strategic_modeling|value_risk|organization|evolution",
-    "decision_criticality": "Blocks|Risk|Stakeholders|Evolving|Adoption",
-    "criticality_justification": "Directly impacts revenue model translation; affects Architect + PM + Finance",
+    "decision_criticality": "Blocks|Risk|...",
     "question": "How would you...",
-    "answer": "150-250 words with [Ref: ID]",
-    "key_insight": "Concrete misalignment/trade-off/impedance",
+    "answer": "150-250 words",
+    "key_insight": "Insight",
     "artifacts": {"diagram": "mermaid", "table": "markdown"},
-    "citations": ["Ref: A1", "Ref: G3"],
-    "confidence": "medium|high"
-  }],
-  "validation": {
-    "total": "6-12",
-    "difficulty_distribution": {"foundational": "25%", "intermediate": "50%", "advanced": "25%"},
-    "decision_criticality": "100% satisfy ≥1 criterion",
-    "citation_coverage": "≥70%",
-    "business_architecture_mapping": "≥80%"
-  }
+    "citations": ["Ref: A1"],
+    "confidence": "high|medium|low"
+  }]
 }
 ```
 
 ## Generation Procedure
 
-Follow these steps sequentially. Each step builds on the previous.
+1. Parse context: Extract business model, constraints, risks.
 
-**Step 1: Parse Context** (Apply MECE)
+2. Distribute: 1-3 questions per dimension; mix difficulties; ensure all decision-critical.
 
-Extract from `business_context`:
-- **Business model**: customer segments, value propositions, revenue streams, channels, partnerships, resources, activities, relationships, cost structure
-- **Constraints**: Regulatory (SOC2/GDPR/HIPAA/PCI), technical (legacy/platforms), organizational (teams/skills), market (competition/time/budget)
-- **Risks**: Business (churn/competition), operational (SLA/scale), regulatory (compliance/sovereignty)
+3. Generate each Q&A:
+   - Question: Scenario-based
+   - Answer: Business analysis → architecture → trade-offs
+   - Insight: Concrete point
+   - Artifacts: Optional diagram/table
 
-**Step 2: Distribute Questions** (Decision-critical only)
+4. Validate: Check count, criticality, citations, traceability.
 
-Allocate **6-12 decision-critical questions**:
-- **3-4 Dimensions**: 1-3 per dimension (Strategic Modeling, Value & Risk, Organization, Evolution)
-- **3 Difficulty Levels**:
-  - Foundational 25%: Single framework (BMC only or Conway's Law only) - blocks decision
-  - Intermediate 50%: Multi-framework (BMC + Risk + organizational) - creates risk or affects stakeholders
-  - Advanced 25%: Complex trade-offs with migration paths, quantitative analysis - actively evolving or high adoption barrier
-- **Decision Criticality**: 100% satisfy ≥1 criterion
-
-**Step 3: Generate Each Question** (Consistent structure)
-
-- **Question**: "How would you [action] given [context] considering [constraints]?"
-  - Example: "How would you design multi-region deployment given SaaS B2B subscription with GDPR and 99.95% SLA?"
-
-- **Answer** (150-250 words, streamlined):
-  1. **Business Analysis** (40-50w): Apply framework (BMC/Value Prop/DDD), cite [Ref: ID], identify drivers
-  2. **Architecture Translation** (60-80w): Map driver→requirement→decision with citations, explicit trace
-  3. **Trade-offs** (40-60w): Alternatives, pros/cons, mitigations with [Ref: ID]
-
-- **Traceability**: "Business driver X → Technical requirement Y → Architectural decision Z [Ref: ID]"
-
-- **Insight**: One concrete misalignment/trade-off/impedance
-  - ✅ "Subscription revenue requires real-time metering, legacy assumes batch billing"
-  - ❌ "Alignment is important" (vague)
-
-**Step 4: Create Artifacts** (Compressed per dimension)
-- **Diagram** (Mermaid, <80 nodes): Strategic→BMC | Risk→Decision Tree | Organization→Team Topology | Evolution→Migration Roadmap
-- **Table** (3-4 rows): Business driver | Technical requirement | Architectural decision
-- **Formula** (optional): ROI or Risk (P×I) only if decision-critical
-
-**Step 5: Validate Quality** (12 streamlined checks)
-
-| Criterion | Target | Method |
-|-----------|--------|--------|
-| Count | 6-12 questions | Total |
-| Difficulty | 25%/50%/25% | Distribution |
-| Decision Criticality | 100% satisfy ≥1 criterion | All Q&As |
-| Length | 150-250 words/answer | Sample all |
-| Citations | ≥70% (≥1 source) | All answers |
-| Traceability | ≥80% explicit business→arch | Audit |
-| Scenario | 100% judgment (not recall) | Type check |
-| Visuals | ≥90% with diagram+table | Per dimension |
-| Insights | 100% concrete (not vague) | All |
-| Confidence | ≥80% medium/high | All Q&As |
-| Stakeholders | ≥2 roles per Q&A | Coverage |
-| Dimensions | ≥3/4 covered | Coverage |
-
-**Step 6: Compile References** (60% reduction)
-- **Glossary** (≥8): Only terms used in Q&As (BMC, Value Prop, DDD, Conway's Law, Tech Debt, ADR, Wardley, Value Stream)
-- **Tools** (≥3): Miro, ArchiMate, C4 (decision-critical only)
-- **Literature** (≥4): Vaughan Broderick (2023), Oliveira (2023), Hohpe (2003), Richardson (2018) (recent and canonical)
-- **Citations** (≥8 APA 7th): EN/ZH, all decision-critical
+5. Compile references: ≥8 citations in APA format.
 
 ## Quality Standards
 
-**Decision Criticality Framework**: 100% of Q&As satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
-
-**Answer Requirements**:
-- ✅ Framework analysis [Ref: ID] | Business→arch trace | Concrete insight | Trade-offs with alternatives
-- ❌ Nice-to-have scenarios | Vague insights | Missing connections | Non-decision-critical content
-
-**Confidence**:
-- **High** (≥2 sources, consensus): Cite authorities
-- **Medium** (≥1 source, emerging): State reasoning + assumptions  
-
-**Citations**: Inline [Ref: ID] → APA 7th with [EN]/[ZH]
-- Example: [Ref: A1] Osterwalder, A., & Pigneur, Y. (2010). *Business model generation*. Wiley. [EN]
+- All Q&A must be decision-critical
+- Answers include business analysis, architecture translation, trade-offs
+- Citations: Inline [Ref: ID] to APA references
+- Confidence: Flag low confidence
 
 ## Example Output
 
@@ -173,20 +98,20 @@ Allocate **6-12 decision-critical questions**:
 
 **Answer** (220 words):
 
-BMC analysis [Ref: A1]: Revenue Streams shift from upfront→recurring; Customer Relationships become continuous; Key Activities add customer success; Value Propositions emphasize continuous delivery/uptime.
+BMC analysis [Ref: A1]: Revenue shifts upfront→recurring; relationships continuous; activities add customer success; value propositions emphasize delivery/uptime.
 
-Architecture translation [Ref: A7]: (1) Multi-tenancy with isolation, (2) Usage metering via event streaming [Ref: A6], (3) Feature flags for tier control, (4) HA/DR for SLA 99.9%+, (5) Multi-region for compliance.
+Architecture [Ref: A7]: Multi-tenancy, usage metering via event streaming [Ref: A6], feature flags, HA/DR for SLA, multi-region compliance.
 
-Risks [Ref: A12]: Business (churn, downtime revenue loss), operational (SLA compliance), regulatory (data residency, SOC2/GDPR).
+Risks [Ref: A12]: Churn, downtime loss, SLA/regulatory compliance.
 
-Organization (Conway's Law [Ref: A5]): Add Customer Success, DevOps, SRE teams; document decisions via ADR [Ref: G7].
+Organization (Conway's Law [Ref: A5]): Add Customer Success, DevOps, SRE; document via ADR [Ref: G7].
 
-**Key Insight**: Subscription's continuous delivery requirement fundamentally conflicts with legacy one-time deployment model—requires architectural redesign, not incremental change.
+**Key Insight**: Subscription's continuous delivery conflicts with legacy one-time model—requires redesign, not incremental change.
 
 ```mermaid
 flowchart TD
-    A[BMC: Revenue Model] --> B[Continuous Delivery]
-    A --> C[SLA + Compliance Risk]
+    A[BMC: Revenue] --> B[Continuous Delivery]
+    A --> C[SLA + Compliance]
     B --> D[Multi-tenancy + Metering]
     C --> D
     D --> E[Strangler Migration]
@@ -194,49 +119,28 @@ flowchart TD
 
 | Business Driver | Technical Requirement | Architectural Decision |
 |----------------|----------------------|------------------------|
-| Recurring revenue | Usage tracking + billing | Event streaming + billing API |
-| Multi-tier segments | Feature differentiation | Feature flags + quota engine |
+| Recurring revenue | Usage tracking | Event streaming + billing API |
+| Multi-tier | Feature differentiation | Feature flags + quota |
 | SLA 99.9%+ | High availability | HA/DR + monitoring |
-| Data residency | Regional compliance | Multi-region deployment |
+| Data residency | Regional compliance | Multi-region |
 
-**Citations**: [Ref: A1] Vaughan Broderick (2023). Business Model Canvas Innovation. https://vaughanbroderick.com/business-model-canvas-innovation [EN]; [Ref: A5] Oliveira (2023). Conway's Law and Team Topologies. https://medium.com/@lukasooliveira/conways-law-and-team-topologies-what-your-team-structure-says-about-your-software-d1d404f290a5 [EN]; [Ref: A6] Hohpe (2003). Enterprise Integration Patterns. Addison-Wesley [EN]; [Ref: A7] Richardson (2018). Microservices Patterns. Manning [EN]; [Ref: A12] Kim et al. (2016). The DevOps Handbook. IT Revolution Press [EN]; [Ref: G7] Nygard (2011). Release It! Pragmatic Bookshelf [EN]
+**Citations**: [Ref: A1] Vaughan Broderick (2023) [EN]; [Ref: A5] Oliveira (2023) [EN]; [Ref: A6] Hohpe (2003) [EN]; [Ref: A7] Richardson (2018) [EN]; [Ref: A12] Kim et al. (2016) [EN]; [Ref: G7] Nygard (2011) [EN]
 
 **Confidence**: High | **Stakeholders**: Architect, PM, Finance
 
----
-
 ## Edge Cases
 
-**Missing Context**: 
-- No `business_context` → Request: "Specify: (1) Industry, (2) Model (B2B/B2C, revenue), (3) Constraints. Use generic SaaS B2B?"
-- Partial → Proceed with assumptions, document limits
+- Missing context: Use generic scenarios
+- Adjustments: 6-8 for speed, up to 12 for depth
+- Validation issues: Add citations, ensure criticality
 
-**Adjustments**:
-- Speed → 6-8 questions, simple visuals, medium confidence
-- Depth → 12 questions, full artifacts, high confidence
-- Cost → Generic reusable, no customization
-- Quality → Custom, unique, validated
+## Key Terms (8)
 
-**Validation Failures** (fix then re-validate):
-- <70% citations → Add references
-- <80% traceability → Explicit business→arch with [Ref: ID]
-- Any recall-style questions → Rewrite as judgment-based, scenario-driven prompts
-- <100% decision-critical → Remove nice-to-have Q&As
-
-## Key Terms Reference (8 decision-critical terms)
-
-**Business Model Canvas (BMC)**: 9-block framework mapping strategy to operations (Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure).
-
-**Value Proposition**: Customer value bundle → technical features, quality attributes, architectural priorities.
-
-**Domain-Driven Design (DDD)**: Ubiquitous language, bounded contexts, aggregates → guides microservices decomposition and team organization.
-
-**Conway's Law**: "Organizations design systems mirroring their communication structure" → team topology affects architecture.
-
-**Technical Debt**: Future rework cost from quick solutions. Types: code, architectural, knowledge. Quantified as % capacity or cost.
-
-**Architecture Decision Record (ADR)**: Immutable log of context, decision, consequences, trade-offs → ensures transparency.
-
-**Wardley Mapping**: Value chain by visibility × evolution stage (genesis→custom→product→commodity) → identifies opportunities.
-
-**Value Stream Mapping**: Lean technique visualizing delivery steps → highlights waste, optimizes lead time.
+- **Business Model Canvas (BMC)**: 9-block framework for strategy to operations
+- **Value Proposition**: Customer value → technical features/attributes
+- **Domain-Driven Design (DDD)**: Ubiquitous language, bounded contexts → microservices/team organization
+- **Conway's Law**: Organizations mirror communication structure in systems
+- **Technical Debt**: Future rework cost; quantified as % capacity
+- **Architecture Decision Record (ADR)**: Log of context, decision, consequences
+- **Wardley Mapping**: Value chain by visibility/evolution → opportunities
+- **Value Stream Mapping**: Visualizes delivery steps → waste reduction

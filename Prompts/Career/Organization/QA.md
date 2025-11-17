@@ -4,54 +4,38 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 ## LLM-Friendly Prompts Guidelines
 
-To ensure high-quality, hallucination-free output with improved decision quality, follow these guidelines when generating the Q&As:
+To ensure high-quality, low-hallucination output and better decisions, keep each prompt:
 
-1. **Context**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
-2. **Clarity**: Define key terms and relationships; use diagrams for complex concepts.
-3. **Precision**: Use exact metrics, formulas, units; use math blocks for complex formulas.
-4. **Relevance**: Focus on essential information; move non-critical details to appendices.
-5. **MECE**: Ensure sections are distinct with no gaps or overlaps.
-6. **Sufficiency**: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes).
-7. **Breadth**: Include relevant stakeholder perspectives.
-8. **Depth**: Request implementation-level detail for high-impact areas.
-9. **Significance**: Focus on high-impact items; deemphasize low-impact details.
-10. **Priority**: Order by importance; label priority levels explicitly (critical/important/optional).
-11. **Conciseness**: Eliminate redundancy; state each concept once.
-12. **Accuracy**: Verify facts against authoritative sources.
-13. **Credibility**: Cite recent (2023+) primary sources.
-14. **Logic**: Provide coherent arguments with explicit trade-offs.
-15. **Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks.
-16. **Fairness**: Provide balanced view with counterarguments, limitations.
-17. **Structure**: Use headings, lists, tables, diagrams.
-18. **Consistency**: Use consistent hierarchy and formatting.
-19. **Evidence**: Provide structured citations with source details, recency, uncertainty flags.
-20. **Verification**: Self-review and error checking.
-21. **Practicality**: Provide concrete steps, examples, tools, commands.
-22. **Success Criteria**: Define measurable outcomes with baselines, targets.
+1. **Context & Constraints**: State problem, goals, scope, assumptions, scale, timeline, stakeholders, and resources.
+2. **Clarity & Terminology**: Define key terms and relationships; avoid ambiguous wording.
+3. **Precision & Metrics**: Use exact numbers, units, and thresholds; use math/code blocks only when needed.
+4. **Relevance & Focus**: Include only information needed for the decision; drop side topics.
+5. **Structure**: Use headings, lists, tables, or diagrams so the model can mirror the structure.
+6. **Evidence & Citations**: Ask for and provide citations to recent primary sources (ideally <2 years old) when facts matter.
+7. **Trade-offs & Risks**: Request comparison of ≥2 options with benefits, costs, risks, and clear assumptions/limits.
+8. **Practicality & Review**: Ask for concrete steps and success metrics, then self-review and correct obvious issues before use.
 
 ## Scope
 
-**Audience**: Engineering Managers, Directors, VPs, CTOs, Team Leads, CHRO/People Leaders
-**Context**: Production distributed systems (>10K rps, >1TB data); teams 10-100 engineers; cloud-native; regulated
+**Audience**: Engineering Managers, Team Leads, Directors/VPs/CTOs, Architects, CHRO/People Leaders
+**Context**: Technology organizations, particularly those with engineering teams of 10-100 members.
 **Purpose**: Generate decision-critical organizational Q&As for interview prep, training, or scenario analysis (3-4h effort, evergreen validity)
-**Success**: 12/12 validation PASS
 
-**Lifecycle (4-5, decision-critical only)**: Requirements & Discovery → Development → Deployment → Operations → Evolution
+**Lifecycle (5 phases)**: Requirements & Discovery → Development → Deployment → Operations → Evolution
 
-**Stakeholders (≥5 core roles)**: Engineering Manager, Director/VP, Architect, Team Lead, CHRO/People Lead
+**Stakeholders (≥5 core roles)**: Engineering Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead
 
 ## Requirements
+**Q&A Specs**: 6-12 Q&As with balanced difficulty (roughly 25% foundational, 50% intermediate, 25% advanced); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; aim for ≥1 citation and artifacts per Q&A.
 
-**Q&A Specs**: 6-12 total; 25% F / 50% I / 25% A difficulty; 150-250 words; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation; each Q&A: ≥1 diagram + ≥1 table
-
-**Decision Criticality Framework** (NEW, MANDATORY):
+**Decision Criticality Framework** (MANDATORY):
 - **Include if ≥1 criterion satisfied**:
   - **Blocks Decision**: Directly impacts org restructuring, hiring strategy, team scaling, or resource allocation
   - **Creates Risk**: Material threat (attrition spike, burnout, skill gaps, compliance breach, retention risk)
   - **Affects ≥2 Core Roles**: Multi-stakeholder impact (Manager + Director, CHRO + VP Eng, Team Lead + Architect)
   - **Requires Action**: 1-6mo action window (not speculative)
   - **Quantified Impact**: Turnover %, retention %, hiring velocity %, team velocity %, engagement score, or compliance deadline
-- **Exclude if**: Academic research, niche practices (<5% adoption), vendor marketing, rumors, stale news
+- **Exclude if**: Academic research, vendor marketing, or speculative/non-actionable content.
 
 **Dimensions (3-4, 1-2 Q&As each, decision-critical only)**:
 1. **Team Structure & Scaling**: Org restructuring, headcount planning, team topology changes, cognitive load
@@ -59,7 +43,7 @@ To ensure high-quality, hallucination-free output with improved decision quality
 3. **Culture & Capability**: Burnout/psychological safety threats, training/development shifts, engagement signals
 4. **(Optional) Compliance & Policy**: Labor law changes, remote work policy shifts, equity/diversity regulations
 
-**Coverage**: All 4-5 lifecycle phases ≥1 Q&A; ≥5 core stakeholder roles represented; ≥60% multi-stakeholder impact
+**Coverage**: All 5 lifecycle phases ≥1 Q&A; ≥5 core stakeholder roles represented; ≥60% multi-stakeholder impact
 
 **Standards**:
 - **Traceability**: Scenario → Decision Criticality → Impact → Decision → Timeline → Metrics
@@ -72,51 +56,43 @@ To ensure high-quality, hallucination-free output with improved decision quality
 
 | Artifact | Format | Requirements |
 |----------|--------|--------------|
-| **Diagram** (≥1 per Q&A) | Mermaid (<80 nodes) | Org topology, decision tree, impact flow, or timeline |
-| **Table** (≥1 per Q&A) | Markdown | Impact matrix, decision criteria, or metrics comparison |
+| **Diagram** | Mermaid (<80 nodes) | Aim for ≥1 per Q&A (validation: ≥90% of Q&As). Org topology, decision tree, impact flow, or timeline. |
+| **Table** | Markdown | Aim for ≥1 per Q&A (validation: ≥90% of Q&As). Impact matrix, decision criteria, or metrics comparison. |
 | **Removed** | N/A | Framework, Trade-offs (integrated into answer) |
 
-## Lifecycle-Stakeholder Coverage (Decision-Critical Only)
 
-| Phase | Decision-Critical Scenarios | Core Stakeholders |
-|-------|------------------------|-------------------|
-| 1. Requirements & Discovery | Org restructuring, hiring strategy, skill gap analysis | Manager, Director, CHRO |
-| 2. Development | Team scaling, onboarding velocity, team topology changes | Manager, Architect, Team Lead |
-| 3. Deployment | On-call burnout, incident response staffing, SRE retention | Manager, Team Lead, Director |
-| 4. Operations | Attrition signals, psychological safety threats, engagement scores | Manager, Director, CHRO |
-| 5. Evolution | Compliance/policy changes, remote work policy, equity regulations | Director, CHRO, VP Eng |
 
-## References (Proportional 60% Reduction)
+## References (Minimal Viable)
 
 | Type | Min | Requirements |
 |------|-----|--------------|
 | **Glossary** | ≥8 | Only terms used in Q&As (org/hiring/team/culture terms) |
-| **Tools** | ≥4 | Decision-critical only (ATS, engagement, org planning); URL valid, updated ≤18mo |
+| **Tools** | ≥4 | Decision-critical only (ATS, engagement, org planning); URL valid, updated <2yr |
 | **Literature** | ≥5 | Canonical references only (Skelton, Lencioni, Kim, Edmondson, +1) |
-| **Citations** | ≥8 | APA 7th; 60% EN / 30% ZH / 10% other; ≥70% <2yr old; 100% valid URLs |
+| **Citations** | ≥8 | APA 7th; align with language, freshness, and link targets in Validation |
 
 ## Generation Process (Minimal Viable, 3-4h)
 
-1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (6-12 total) → 25% F / 50% I / 25% A → map to 4-5 phases + ≥5 stakeholders → verify Decision Criticality Framework
-2. **References**: Glossary (≥8) + Tools (≥4) + Literature (≥5) + Citations (≥8) → verify quality + freshness (≥70% <2yr)
-3. **Write**: Scenario-driven Q&As → 150-250 words → Scenario → Impact → Stakeholders → Decision → Action → ≥1 citation → Decision Criticality justification → validate every 3
-4. **Artifacts**: Per Q&A: ≥1 diagram (Mermaid <80 nodes) + ≥1 table → verify all present
+1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (6-12 total) → balanced difficulty mix → map to 5 lifecycle phases + ≥5 stakeholders → verify Decision Criticality Framework
+2. **References**: Glossary (≥8) + Tools (≥4) + Literature (≥5) + Citations (≥8) → verify quality, language mix, freshness, and links per Validation
+3. **Write**: Scenario-driven Q&As → 150-250 words → Scenario → Impact → Stakeholders → Decision → Action → aim for ≥1 citation per Q&A → add Decision Criticality justification → validate every 3.
+4. **Artifacts**: Per Q&A: ≥1 diagram (Mermaid <80 nodes) + ≥1 table → verify coverage meets targets (≥90% of Q&As have both).
 5. **Link**: Populate sections → verify all [Ref: ID] resolved → remove orphans → validate URLs
-6. **Validate**: 12 checks → ANY fail = STOP → fix → re-validate → iterate until 12/12 PASS
+6. **Validate**: Run 12 checks; fix failures and re-validate until 12/12 PASS.
 
-## Validation (12 Checks, Streamlined)
+## Validation (12 Checks)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=6-12 (25% F / 50% I / 25% A) |
+| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=6-12 (balanced difficulty mix) |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion; justification present |
-| 3 | Citations | ≥75% Q&As ≥1 citation; ≥70% <2yr old |
+| 3 | Citations | ≥75% Q&As ≥1 citation |
 | 4 | Language | 60% EN / 30% ZH / 10% other (±10%) |
 | 5 | Links | 100% valid URLs |
 | 6 | Word count | All Q&As: 150-250 words |
 | 7 | Quantified Impact | 100% Q&As have quantified metrics (%, $, timeline) |
 | 8 | Artifacts | ≥90% Q&As have ≥1 diagram + ≥1 table |
-| 9 | Lifecycle Coverage | All 4-5 phases ≥1 Q&A |
+| 9 | Lifecycle Coverage | All 5 phases ≥1 Q&A |
 | 10 | Stakeholder Coverage | ≥5 core roles represented; ≥60% multi-stakeholder |
 | 11 | Freshness | ≥70% citations <2yr old |
 | 12 | Final Review | Clarity, Accuracy, Completeness, Actionability, Decision-Critical Fit |
@@ -191,13 +167,13 @@ To ensure high-quality, hallucination-free output with improved decision quality
 |---|-------|--------|--------|--------|
 | 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=6-12 | G:X, T:Y... | PASS/FAIL |
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion | [Justifications] | PASS/FAIL |
-| 3 | Citations | ≥75% ≥1; ≥70% <2yr | [Count/Age] | PASS/FAIL |
+| 3 | Citations | ≥75% ≥1 citation | [Count] | PASS/FAIL |
 | 4 | Language | 60/30/10% EN/ZH/Other | [Distribution] | PASS/FAIL |
 | 5 | Links | 100% valid URLs | [Count] | PASS/FAIL |
 | 6 | Word count | All 150-250w | [Sample] | PASS/FAIL |
 | 7 | Quantified Impact | 100% have quantified metrics (%,$, or timeline) | [Count] | PASS/FAIL |
 | 8 | Artifacts | ≥90% have diagram+table | [Count] | PASS/FAIL |
-| 9 | Lifecycle | All 4-5 phases ≥1 Q | [Coverage] | PASS/FAIL |
+| 9 | Lifecycle | All 5 phases ≥1 Q | [Coverage] | PASS/FAIL |
 | 10 | Stakeholders | ≥5 roles; ≥60% multi | [Coverage] | PASS/FAIL |
 | 11 | Freshness | ≥70% citations <2yr old | [Distribution] | PASS/FAIL |
 | 12 | Final Review | Clarity, Accuracy, Completeness, Actionability | [Notes] | PASS/FAIL |

@@ -6,9 +6,9 @@ Generate **6–12 decision-critical Q&As** for informed value decisions with lim
 
 **Problem**: Hallucinations in value assessments lead to poor decisions (e.g., over-investing in low-ROI projects, underestimating technical debt). Need structured, evidence-based Q&A to evaluate value across business, user, technical, organizational, strategic, and risk dimensions.
 
-**Scope**: Decision-critical scenarios only (blocks decision or creates material risk ≥$100K impact or 20% velocity change). **Exclude**: Niche/legacy (<5% adoption), orthogonal/nice-to-have, already covered, speculative. Focus on software engineering career contexts (design, development, deployment, operations phases).
+**Scope**: Decision-critical scenarios only—cases that materially block a decision or create risk (e.g., ≥$100K impact or ≥20% velocity change; adjust thresholds to your context). Focus on software engineering career contexts (design, development, deployment, operations phases).
 
-**Constraints**: Assumes basic LLM knowledge of value frameworks; 10-15min per Q&A generation; output must be self-contained without external references.
+**Constraints**: Assumes basic LLM knowledge of value frameworks; plan ~10–15min per Q&A; prompts and outputs must be self-contained (no “see other file/answer”).
 
 **Assumptions**: LLM familiar with NPV, ROI, TCO, Value Stream Mapping, WSJF, Kano Model; stakeholders have conflicting priorities; measurements are context-dependent.
 
@@ -18,50 +18,40 @@ Generate **6–12 decision-critical Q&As** for informed value decisions with lim
 
 **Stakeholders**: PM (business value), Architect (technical), Developer (implementation), SRE/DevOps (operations), Leadership/CFO (portfolio).
 
-**Resources**: Any LLM (GPT-4, Claude, Gemini); no cost; requires access to cited sources.
+**Resources**: Any capable LLM (e.g., GPT-4, Claude, Gemini); online access helpful for checking cited sources.
 
 **Terms**:
 - **Floor**: Minimum threshold (≥) for quality gates.
 - **Gate**: Fail-stop checkpoint requiring 100% compliance.
 - **Difficulty**: F=execution (measurement), I=strategy (trade-offs), A=portfolio/P&L (allocation).
 - **Value Types** (MECE): Business (revenue/cost), User (experience), Technical (architecture/debt), Organizational (team/process), Strategic (positioning), Risk (threats/mitigation).
-- **Decision Criticality**: ≥1 criterion: Blocks decision ($1M+ investment), Creates risk (>10% loss), Affects ≥2 roles, Requires action (1-6mo), Quantified impact (NPV/ROI).
+- **Decision Criticality**: Scenario that meets ≥1 criterion from the Decision Criticality Framework (Section II).
 
 **Limitations**: Stakeholder conflicts require balancing; measurements vary by context; speculative scenarios excluded; requires customization for specific domains.
 
-## Quick Check (30s - Mandatory for Decision-Critical)
-
-☐ **Self-contained**: Complete context; no cross-file refs  
-☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
-☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
-☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
-☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency  
-☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
-
 ## II. Requirements
 
-### Decision Criticality Framework (NEW - MANDATORY)
+### Decision Criticality Framework (MANDATORY)
 
-**Include if ≥1 criterion satisfied**:
-- **Blocks Decision**: Directly impacts investment go/no-go, resource allocation, or strategic pivot (e.g., $1M+ investment, team scaling, tech stack change)
-- **Creates Risk**: Material threat (financial loss >10%, opportunity cost, strategic misalignment, velocity impact >20%)
-- **Affects ≥2 Core Roles**: Multi-stakeholder impact (CFO + Architect, PM + DevOps, etc.)
-- **Requires Action**: 1–6mo action window (not speculative)
-- **Quantified Impact**: NPV $, ROI %, velocity %, cost/benefit ratio, adoption %
+**Include if ≥1 criterion is satisfied**:
+- **Blocks Decision**: Directly impacts investment go/no-go, resource allocation, or strategic/roadmap pivot.
+- **Creates Risk**: Material threat (e.g., financial loss >10%, major opportunity cost, strategic misalignment, or velocity impact >20%).
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (CFO + Architect, PM + DevOps, etc.).
+- **Requires Action**: 1–6mo action window (not speculative).
+- **Quantified Impact**: Clear metrics (NPV $, ROI %, velocity %, cost/benefit ratio, adoption %).
 
-**Exclude if**: Niche/legacy (<5% adoption), Orthogonal/nice-to-have, Already covered, Speculative
+**Exclude if**: Niche/legacy (<5% adoption), orthogonal/nice-to-have, already covered, speculative.
 
 ### Floors (Minimum Thresholds)
 
 | Category | Requirement |
 |----------|-------------|
-| **Q&A** | **6–12** \| 25%F/50%I/25%A \| 150–250 words/answer \| Each: ≥2 value types+stakeholders |
+| **Q&A** | **4–8** \| 25%F/50%I/25%A \| 100–200 words/answer \| Each: ≥2 value types+stakeholders |
 | **Lifecycle Phases** | 3–4 decision-critical only (Design, Development, Deployment, Operations) |
-| **Citations** | ≥70% have ≥1; ≥30% have ≥2 \| EN 50–70%, ZH 20–40%, Other 5–15% |
+| **Citations** | ≥50% have ≥1; ≥20% have ≥2 \| EN 40–60%, ZH 20–40%, Other 10–20% |
 | **Value Types** | Each Q&A: ≥2 of 6 |
-| **Stakeholders** | ≥5 core roles (PM, Architect, Developer, SRE, Leadership); each Q&A ≥2 |
-| **References** | Glossary ≥8 \| Tools ≥4 \| Literature ≥5 (≥1 ZH) \| Citations ≥8 APA 7th |
+| **Stakeholders** | ≥4 core roles (PM, Architect, Developer, SRE); each Q&A ≥2 |
+| **References** | Glossary ≥4 \| Tools ≥2 \| Literature ≥3 (≥1 ZH) \| Citations ≥4 APA 7th |
 | **Visuals** | ≥1 diagram+table per Q&A (compressed) |
 | **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion |
 
@@ -72,7 +62,7 @@ Generate **6–12 decision-critical Q&As** for informed value decisions with lim
 | # | Gate | Criteria | Mitigation |
 |---|------|----------|------------|
 | 1 | **Decision Criticality** | 100% of Q&As satisfy ≥1 criterion | Rewrite/replace non-critical |
-| 2 | **Recency** | ≥50% from last 3yrs | Flag outdated with caveats |
+| 2 | **Recency** | ≥50% of references from last 3yrs | Flag outdated with caveats |
 | 3 | **Source Diversity** | ≥3 types; no type >40% | Expand research |
 | 4 | **Link Validation** | 100% URLs accessible/archived | Archive/replace |
 | 5 | **Cross-Reference** | 100% [Ref: ID] resolve; no orphans | Fix broken |
@@ -90,22 +80,22 @@ Distribute **6–12 Q&As** across 3–4 decision-critical lifecycle phases (25%F
 
 | Type | Count | Required | ID |
 |------|-------|----------|-----|
-| **Glossary** | ≥8 | Term, definition, measurement, stakeholder, lifecycle | G1... |
-| **Tools** | ≥4 | Category, pricing, users, update (≤18mo), metrics, stakeholders, URL | T1... |
-| **Literature** | ≥5 (≥1 ZH) | Author, title, year, summary, frameworks, lifecycle | L1... |
-| **Citations** | ≥8 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
+| **Glossary** | ≥4 | Term, definition, measurement, stakeholder, lifecycle | G1... |
+| **Tools** | ≥2 | Category, pricing, users, update (≤18mo), metrics, stakeholders, URL | T1... |
+| **Literature** | ≥3 (≥1 ZH) | Author, title, year, summary, frameworks, lifecycle | L1... |
+| **Citations** | ≥4 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
 
 **Examples**:
-- **Glossary**: NPV (Net Present Value: future cash flows discounted to present), ROI (Return on Investment: (gain-cost)/cost × 100%), TCO (Total Cost of Ownership: acquisition + operation + maintenance), WSJF (Weighted Shortest Job First: cost of delay / job duration), Technical Debt (accumulated maintenance cost), Value Stream Mapping (process flow analysis), Kano Model (feature satisfaction), Opportunity Cost (value of best alternative forgone).
-- **Tools**: Pendo (product analytics, $50K/yr, 10K users, Q2 2024), Aha! (roadmapping, $59/user/mo, 5K users, Q1 2024), SonarQube (code quality, free/open-source, 1M users, Q3 2024), Kubecost (cloud cost monitoring, $5K/yr, 500 users, Q4 2023).
-- **Literature**: Reinertsen, D. (2009). The Principles of Product Development Flow. Celeritas Publishing. [EN, value flow]; Kim, M. (2018). The Phoenix Project. IT Revolution Press. [EN, DevOps value]; Cagan, M. (2018). Inspired. SVPG Press. [EN, product value]; 俞军. (2018). 俞军产品方法论. 中信出版社. [ZH, product strategy].
-- **Citations**: Cite recent (2023+) primary sources: AWS Well-Architected Framework (2024, https://aws.amazon.com/architecture/well-architected/), OWASP Top 10 (2023, https://owasp.org/www-project-top-ten/), Google SRE Book (2023, https://sre.google/sre-book/table-of-contents/).
+- **Glossary**: NPV (Net Present Value: future cash flows discounted to present), ROI (Return on Investment: (gain-cost)/cost × 100%), TCO (Total Cost of Ownership: acquisition + operation + maintenance), WSJF (Weighted Shortest Job First: cost of delay / job duration).
+- **Tools**: Pendo (product analytics, $50K/yr, 10K users, Q2 2024), SonarQube (code quality, free/open-source, 1M users, Q3 2024).
+- **Literature**: Reinertsen, D. (2009). The Principles of Product Development Flow. Celeritas Publishing. [EN, value flow]; Kim, M. (2018). The Phoenix Project. IT Revolution Press. [EN, DevOps value]; 俞军. (2018). 俞军产品方法论. 中信出版社. [ZH, product strategy].
+- **Citations**: Cite recent primary sources, e.g., AWS Well-Architected Framework (https://aws.amazon.com/architecture/well-architected/), OWASP Top 10 (https://owasp.org/www-project-top-ten/).
 
 ### Step 3: Generate Q&A (2–3 at a time, self-check)
 
 **Question**: Decision-critical value scenario with stakeholder tensions (business/technical, short/long-term) | Test ≥2 signals: quantification, trade-offs, alignment, negative value | **Avoid** recall ("What is ROI?") | **Difficulty**: F=execution | I=strategy | A=portfolio | **MANDATORY**: Justify Decision Criticality criterion
 
-**Answer** (150–250 words—streamlined):
+**Answer** (100–200 words—streamlined):
 1. **Key Insight** (1 sentence): Value tension + decision criticality
 2. **Framework** [Ref: G#/A#]
 3. **Multi-Value** (≥2): Business/User/Technical/Org/Strategic/Risk + quantification
@@ -117,7 +107,7 @@ Distribute **6–12 Q&As** across 3–4 decision-critical lifecycle phases (25%F
 9. **Citations**: ≥1 [Ref: ID]
 10. **Artifact** *(optional)*: Value matrix/calculation
 
-**Batch Check** (per 2–3): Decision Criticality criterion | ≥2 value signals | 150–250 words | ≥2 value types | ≥2 stakeholders | Quantified | ≥1 cite
+**Batch Check** (per 2–3): Decision Criticality criterion | ≥2 value signals | 100–200 words | ≥2 value types | ≥2 stakeholders | Quantified | ≥1 cite
 
 ### Step 4: Create Visuals (≥1 diagram+table per Q&A)
 
@@ -138,16 +128,16 @@ Distribute **6–12 Q&As** across 3–4 decision-critical lifecycle phases (25%F
 | **Literature** | **L#. Author, Title, Year** \| Summary (value, frameworks) \| Lifecycle (group: EN, ZH) |
 | **Citations** | **A#. [APA 7th] [Lang]** (sort by ID) |
 
-**Validation**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA tagged
+**Validation**: 100% [Ref: ID] resolve | No orphans | All fields complete | All APA tagged | G≥4, T≥2, L≥3, A≥4
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL 12)
 
 See **Section IV** for complete checklist. Key:
-- **Floors**: G≥8, T≥4, L≥5, A≥8, Q=6–12, 25%F/50%I/25%A
+- **Floors**: G≥4, T≥2, L≥3, A≥4, Q=4–8, 25%F/50%I/25%A
 - **Decision Criticality**: 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified]
-- **Citations**: ≥70% have ≥1; ≥30% have ≥2 | EN 50–70%, ZH 20–40%, Other 5–15%
-- **Quality**: 100% word count 150–250 | 100% value-concrete + quantified | ≥90% scenario-based
-- **Coverage**: ≥5 core stakeholders, each Q&A ≥2 | ≥2 value types per Q&A | 3–4 phases covered
+- **Citations**: ≥50% have ≥1; ≥20% have ≥2 | EN 40–60%, ZH 20–40%, Other 10–20%
+- **Quality**: 100% word count 100–200 | 100% value-concrete + quantified | ≥90% scenario-based
+- **Coverage**: ≥4 core stakeholders, each Q&A ≥2 | ≥2 value types per Q&A | 3–4 phases covered
 - **Integrity**: 100% links accessible | 100% [Ref: ID] resolve, no orphans
 
 ### Step 7: Final Review
@@ -162,18 +152,18 @@ See **Section IV** for complete checklist. Key:
 
 | # | Check              | Measurement                           | Criteria                            | Result | Status    |
 |---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥8, T≥4, L≥5, A≥8, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥4, T≥2, L≥3, A≥4, Q:4-8, 25/50/25% | | PASS/FAIL |
 | 2 | Decision Criticality| __/__ satisfy ≥1 criterion            | 100% [Blocks/Risk/Roles/Action/Quantified] | | PASS/FAIL |
-| 3 | Citations          | __%≥1, __%≥2                          | ≥70%≥1, ≥30%≥2                      | | PASS/FAIL |
-| 4 | Language           | EN:__%, ZH:__%, Other:__%             | EN:50-70%, ZH:20-40%, Other:5-15%   | | PASS/FAIL |
-| 5 | Recency            | __% from 3yrs                         | ≥50%                                | | PASS/FAIL |
+| 3 | Citations          | __%≥1, __%≥2                          | ≥50%≥1, ≥20%≥2                      | | PASS/FAIL |
+| 4 | Language           | EN:__%, ZH:__%, Other:__%             | EN:40-60%, ZH:20-40%, Other:10-20%   | | PASS/FAIL |
+| 5 | Recency            | __% of references from last 3yrs      | ≥50%                                | | PASS/FAIL |
 | 6 | Links              | __/__ accessible                      | 100%                                | | PASS/FAIL |
 | 7 | Cross-Refs         | __/__ resolved                        | 100%                                | | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant              | 100% (150-250)                      | | PASS/FAIL |
+| 8 | Word Count         | __ sampled: __ compliant              | 100% (100-200)                      | | PASS/FAIL |
 | 9 | Key Insights       | __/__ value-concrete + quantified     | 100% (specific value tension)       | | PASS/FAIL |
 | 10| Frameworks         | __/__ value+cited                     | ≥80% value-focused                  | | PASS/FAIL |
 | 11| Value Judgment     | __% scenario+value                    | ≥90% value scenario-based           | | PASS/FAIL |
-| 12| Stakeholder Cov    | __/5 core roles; Q&A: __/__ ≥2        | ≥5 total; each Q&A ≥2               | | PASS/FAIL |
+| 12| Stakeholder Cov    | __/4 core roles; Q&A: __/__ ≥2        | ≥4 total; each Q&A ≥2               | | PASS/FAIL |
 
 ## V. Question Quality (≥2 failures = rewrite/replace)
 
@@ -195,7 +185,7 @@ See **Section IV** for complete checklist. Key:
 
 ### B. Lifecycle Phases Overview
 
-**Summary**: [6–12] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 3–4 decision-critical phases | ≥2 value types per Q&A | ≥5 core stakeholders
+**Summary**: [4–8] total | [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | 3–4 decision-critical phases | ≥2 value types per Q&A | ≥4 core stakeholders
 
 | # | Phase | Range | Count | Mix | Value Types | Stakeholders | Artifacts |
 |---|-------|-------|-------|-----|-------------|--------------|-----------|
@@ -203,7 +193,7 @@ See **Section IV** for complete checklist. Key:
 | 2 | Development | Q4–Q6 | 2–3 | 1F/1–2I/1A | Tech/Org/Risk | Dev/Arch/PM | 1 diagram+table |
 | 3 | Deployment | Q7–Q9 | 2–3 | 1F/1I/1A | Org/Risk/Bus | DevOps/SRE/Arch | 1 diagram+table |
 | 4 | Operations | Q10–Q12 | 2–3 | 0–1F/1–2I/1A | User/Bus/Risk | SRE/DevOps/PM | 1 diagram+table |
-| | **Total** | | **6–12** | **≈25%F/50%I/25%A** | **≥2 per Q&A** | **≥5 core** | **≥1 per Q&A** |
+| | **Total** | | **4–8** | **≈25%F/50%I/25%A** | **≥2 per Q&A** | **≥4 core** | **≥1 per Q&A** |
 
 **Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic | Risk=Risk
 
@@ -217,7 +207,7 @@ See **Section IV** for complete checklist. Key:
 
 **Key Insight**: [1 sentence value tension + decision criticality]
 
-**Answer** (150–250 words): Framework [Ref: G#/A#] | Multi-value (≥2 types+quantification) | Multi-stakeholder (≥2 roles) | Lifecycle (brief) | Quantification (metrics, methods, sources) | Trade-offs (≥2 alternatives) | Decision criteria (go/no-go) | ≥1 [Ref: ID]
+**Answer** (100–200 words): Framework [Ref: G#/A#] | Multi-value (≥2 types+quantification) | Multi-stakeholder (≥2 roles) | Lifecycle (brief) | Quantification (metrics, methods, sources) | Trade-offs (≥2 alternatives) | Decision criteria (go/no-go) | ≥1 [Ref: ID]
 
 **Artifact** *(optional)*: Value matrix/calculation/table
 
@@ -237,25 +227,25 @@ See **Step 5** for formats. Summary:
 
 **Key Insight**: Comprehensive value assessment across lifecycle/stakeholders, balancing investment cost (negative) against distributed benefits (positive: technical/organizational/strategic) while navigating conflicting priorities.
 
-**Answer** (~250 words):
+**Answer** (~150 words):
 Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] for lifecycle assessment.
 
 **Multi-value analysis**:
-- **Business** [Ref: G1]: Costs ($800K migration + $120K/yr ops [Ref: A5]) vs. benefits (30% velocity improvement = ~$400K/yr [Ref: L4]). NPV (3yr, 10%): -$90K → **marginally negative short-term**.
-- **Technical** [Ref: G3]: Reduces coupling (2-week → daily deploys [Ref: L6]). Debt reduction $200K (CodeScene [Ref: T8]). Scalability saves ~$80K/yr infrastructure.
-- **Organizational** [Ref: G4]: Team autonomy (5 teams vs. 2), -25% coordination [Ref: L1]. Learning cost: 9mo reduced velocity (-30%) = $270K opportunity cost.
-- **Risk** [Ref: G6]: Migration risk (1 SEV-1, $150K). Ops risk increases (tracing, observability). Resilience improves (blast radius 20% vs. 100% [Ref: L2]).
-- **Strategic** [Ref: G5]: API monetization ($500K/yr potential [Ref: A3]). Competitive positioning: faster time-to-market.
+- **Business** [Ref: G1]: Costs $800K + $120K/yr ops vs. 30% velocity gain $400K/yr. NPV (3yr, 10%): -$90K.
+- **Technical** [Ref: G3]: Reduces coupling, debt -$200K, scalability +$80K/yr.
+- **Organizational** [Ref: G4]: Team autonomy, -25% coordination, but -30% velocity $270K cost.
+- **Risk** [Ref: G6]: Migration risk $150K, ops risk up, resilience improves.
+- **Strategic** [Ref: G5]: API potential $500K/yr, faster time-to-market.
 
-**Stakeholder views**: CFO: negative NPV short-term; Architect: debt reduction+scalability; PM: 3-quarter delay; DevOps: +2 FTE burden; Developers: autonomy.
+**Stakeholder views**: CFO: negative NPV; Architect: debt reduction; PM: delay; DevOps: +2 FTE; Developers: autonomy.
 
-**Lifecycle flow**: Design creates architecture value [Ref: T7]; Development incurs opportunity cost; Operations realizes efficiency (year 2+); Evolution unlocks strategic optionality.
+**Lifecycle**: Design → architecture value; Development → opportunity cost; Operations → efficiency; Evolution → strategic gains.
 
-**Trade-offs**: (1) Migrate now: upfront cost, long-term gain; (2) Delay: compound debt, lose position; (3) Hybrid (strangler [Ref: L3]): slower, lower risk.
+**Trade-offs**: Migrate now (cost/gain), delay (debt), hybrid (slower/lower risk).
 
-**Realization**: Track deployment frequency (DORA [Ref: A12]), velocity, infrastructure costs, MTTR over 24mo.
+**Realization**: Track DORA metrics, costs, MTTR.
 
-**Limitations**: Velocity estimate uncertain (±15%); assumes team capability success; API monetization speculative.
+**Limitations**: ±15% velocity uncertainty; assumes capability; speculative API value.
 
 **Artifact**:
 
@@ -281,7 +271,7 @@ Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] f
 
 ## Quality Attributes
 
-**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
+**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (last 3yrs) | **Testable**
 
 ## Limitations and Trade-offs
 
@@ -294,4 +284,4 @@ Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] f
 
 **Exclude from Q&A**: Historical background (unless regulatory), pure theory, edge cases (<5%), unsupported trends, speculation, cross-references.
 
-**Impact Metric Limitations**: Empirical observations from 50+ value assessments (2023-2024); directional only (±20-30%); apply principles over metrics.
+**Impact Metric Limitations**: Directional estimates only (±20–30%); treat metrics as heuristics and apply principles over exact numbers.

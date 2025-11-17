@@ -1,141 +1,74 @@
 # Pattern-Based Q&A Generation Template
 
-**Context**:
-- **Problem**: Generate decision-critical Q&A content for career development patterns with time constraints and minimal viable coverage
+## Context
+- **Problem**: Generate decision-critical Q&A content for career development patterns
 - **Scope**: 8-12 Q&As (2 Fundamental/4 Intermediate/2-6 Advanced; 150-250 words each); ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations; 20-30 decision-critical patterns across 4-6 domains
-- **Constraints**: GitHub Flavored Markdown ≤120 characters/line; prioritize Tier 1-2 sources; use RFC 2119 terminology; inline citations [Ref: ID]
-- **Assumptions**: Users have basic technical knowledge; LLMs have access to current industry knowledge; patterns are decision-critical per framework
-- **Scale**: Individual to team use; prompts of varying length; 20-30 patterns per domain
-- **Timeline**: Immediate generation; 30-60s validation; benefits accumulate over multiple uses
-- **Stakeholders**: Architects, developers, business stakeholders (core roles only); technical writers, PMs
-- **Resources**: Any LLM (ChatGPT, Claude, Gemini); no cost; access to web for verification
+- **Constraints**: Use readable Markdown formatting; prioritize Tier 1-2 sources; use RFC 2119 terminology; inline citations [Ref: ID]
+- **Assumptions**: Patterns are decision-critical; access to current industry knowledge
+- **Scale**: Individual and team use
+- **Stakeholders**: Architects, developers, business stakeholders; technical writers, PMs
+- **Resources**: LLM and reliable references for verification
 
 **Success Criteria**: All 12 validation steps PASS; 100% patterns meet ≥1 Decision Criticality criterion; 100% critical claims cited with Tier 1-2 sources; MECE domains verified; all links accessible/archived.
 
 **Key Terms**:
-- **F/I/A**: Fundamental (basic concepts), Intermediate (applied knowledge), Advanced (expert-level patterns)
-- **MECE**: Mutually Exclusive, Collectively Exhaustive - categories are distinct with no gaps or overlaps
-- **RFC 2119**: MUST (mandatory), SHOULD (strong recommendation), MAY (optional)
+- **F/I/A**: Fundamental (basic), Intermediate (applied), Advanced (expert-level)
+- **MECE**: Mutually Exclusive, Collectively Exhaustive
+- **RFC 2119**: MUST (mandatory), SHOULD (recommended), MAY (optional)
 - **Decision Criticality**: Patterns that block decisions, create risk, affect ≥2 roles, are evolving, or have high adoption barriers
-- **Tier Sources**: 1 (peer-reviewed/standards), 2 (vendor docs/frameworks), 3 (org blogs/analysts), 4 (expert blogs/conferences), 5 (forums)
 
----
-
-## Mandatory Outputs (Minimal Viable)
-
+## Mandatory Outputs
 - 8-12 Q&As: 2F/4I/2-6A (150-250 words each)
 - References: ≥12 glossary, ≥6 tools, ≥6 literature, ≥8 citations
-- 20-30 decision-critical patterns across 4-6 domains
+- 4-6 Decision-Critical Domains (MECE)
 - All 12 validation steps PASS
 - 100% patterns satisfy ≥1 Decision Criticality criterion
 
-**4-6 Decision-Critical Domains** (MECE), chosen from the catalog below (e.g. Regulatory, Business, Technical, Data, Organizational, NFR)
-
-**RFC 2119**: MUST (mandatory), SHOULD (strong recommendation), MAY (optional)
-
----
-
-## Decision Criticality Framework (NEW)
-
+## Decision Criticality Framework
 **Include Q&A if ≥1 criterion satisfied**:
-- **Blocks Decision**: Directly impacts architecture choice, technology selection, or strategic pivot
-- **Creates Risk**: Identifies material threat (performance, reliability, security, compliance)
-- **Affects ≥2 Core Roles**: Multi-stakeholder impact (Architect + DevOps, Dev + Security, etc.)
-- **Actively Evolving**: Pattern adoption/best practices changing in past 12-18 months
-- **High Adoption Barrier**: >40h learning/implementation cost; blocks velocity if ignored
+- **Blocks Decision**: Impacts architecture, technology, business model, market position, or strategic pivot
+- **Creates Risk**: Material threat (performance, reliability, security, compliance)
+- **Affects ≥2 Core Roles**: Multi-stakeholder impact (e.g., Architect + DevOps)
+- **Actively Evolving**: Adoption/best practices changing in past 12-18 months
+- **High Adoption Barrier**: >40h learning/implementation effort; blocks velocity if ignored
 
 **Exclude Q&A if**:
 - Niche/legacy (<5% adoption or impact)
 - Orthogonal/nice-to-have (no decision impact)
 - Already covered by another Q&A
 
----
-
-## Pattern Quality Criteria (Streamlined)
-
+## Content Guidelines
+### Pattern Quality Criteria
 1. **Reusability**: ≥2 contexts, adaptation points
-2. **Proven Effectiveness**: ≥1 company, ≥1 quantified metric, [Ref: ID]
-3. **Applicability Boundaries**: "Applies when" + "Avoid when"
-4. **Multi-Stakeholder Value**: ≥2 groups, value, concerns
+2. **Effectiveness**: ≥1 company, ≥1 quantified metric [Ref: ID]
+3. **Boundaries**: "Applies when" + "Avoid when"
+4. **Stakeholders**: ≥2 groups, value, concerns
 5. **Trade-offs**: ≥1 benefit, ≥1 cost ("improves X at expense of Y")
 6. **Anti-Patterns**: ≥1 failure mode, mitigations
 
-## Answer Structure (5-Step Template, Minimal Viable)
-
+### Answer Structure (5-Step Template)
 1. **Claim**: State pattern/principle
 2. **Rationale**: Explain mechanism, causality, why now
 3. **Evidence**: Cite empirical data [Ref: ID]
 4. **Implications**: Consequences across ≥2 stakeholders
 5. **Trade-offs & Boundaries**: Benefits vs. costs, "Applies when" + "Avoid when"
 
-*Rationale: Ensures logic, evidence, decision-critical boundaries, actionability*
-
-## Evidence Standards
-
-### Source Tiers (Prioritize 1-2, G12: Credibility)
-
+### Evidence Standards
+**Source Tiers** (prioritize 1-2):
 1. Peer-reviewed, standards (ISO/NIST/IETF), regulations (GDPR/CCPA), formal specs
 2. Vendor docs (AWS/Azure/GCP), authoritative books (O'Reilly), frameworks
 3. Org blogs (Netflix, Fowler), analyst reports (Gartner/Forrester)
 4. Expert blogs, conference talks, OSS docs
 5. Forums (Stack Overflow, Reddit)
 
-### Citation Requirements (G11: Accuracy, G18: Evidence)
-
-- **Critical**: ≥1 Tier 1-2; SHOULD have ≥2 independent sources
+**Citation Requirements**:
+- **Critical**: ≥1 Tier 1-2; SHOULD ≥2 independent sources
 - **Supporting**: ≥1 citation for non-obvious statements
 - **Recency**: <3yr (fast-moving), <10yr (stable)
-- **Languages**: ~60% EN, ~30% ZH, ~10% other
+- **Languages**: Mix EN/ZH/other when available
 - **Format**: Author/Org. (Year). _Title_. URL/DOI. [Lang]. Inline: [Ref: ID]
 
-## Pattern Domains (MECE, G5)
-
-Full domain catalog (superset). For each run, select 4-6 decision-critical domains, consistent with **Scope**.
-
-| Domain | Examples | Stakeholders |
-|--------|----------|--------------|
-| **Regulatory** | Audit trails, Consent, Data residency | Compliance, Legal, Devs |
-| **Business** | Subscription, Freemium, Platform | Execs, Product, Finance |
-| **Market** | Blue Ocean, Disruptive Innovation, Land & Expand | Execs, Marketing, Product |
-| **Technical** | GoF, Repository, Strangler Fig | Devs, Architects |
-| **Data** | Polyglot Persistence, Event Sourcing, CQRS | Data Eng, DBAs, Architects |
-| **Organizational** | Conway's Law, Team Topologies, DevOps | Managers, Execs, Leads |
-| **NFR-Security** | Zero-Trust, Defense-in-Depth, Secrets Mgmt | Security, Compliance |
-| **NFR-Performance** | Caching, Connection Pooling, CDN | Devs, Ops |
-| **NFR-Availability** | Circuit Breaker, Bulkhead, Health Checks | Ops, Business |
-| **NFR-Reliability** | Retry+Backoff, Idempotency, Saga | Devs, Ops |
-| **NFR-Scalability** | Horizontal Scaling, Sharding, CQRS | Architects, Ops |
-| **NFR-Observability** | Distributed Tracing, Metrics, Logging | Ops, Devs |
-| **NFR-Adaptability** | Feature Flags, Strategy, Plugin Arch | Devs, Product |
-| **NFR-Extensibility** | DI, Open-Closed, Middleware | Devs, Architects |
-| **NFR-Maintainability** | SOLID, Clean Architecture | Devs, Architects |
-| **NFR-Testability** | Test Doubles, Contract Testing | Devs, QA |
-| **Process** | Agile, Retrospectives, Incident Response | Teams, Managers |
-| **Hybrid** | Regulatory+Technical, Compliance-by-Design | Compliance, Devs |
-
-## 12-Step Validation (Minimal Viable)
-
-### References (1-4)
-1. Counts: Glossary ≥12, Tools ≥6, Literature ≥6, Citations ≥8; Q&As 8-12 (2/4/2-6)
-2. Citation Coverage: ≥80% answers ≥1, ≥50% ≥2
-3. Languages: EN 60-70%, ZH 20-30%, Other 5-10%
-4. Recency: ≥50% <3yr; Links all accessible/archived
-
-### Content (5-8)
-5. Word Count: 5 samples 150-250
-6. Decision Criticality: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Evolving/Barrier)
-7. Insights: Concrete (boundaries/trade-offs/anti-patterns)
-8. Per-Topic: ≥1 source + ≥1 tool
-
-### Patterns (9-12)
-9. Visuals: ≥70% with diagram+table+metric
-10. Evidence: ≥80% empirical proof
-11. Quantitative: ≥70% with metrics
-12. Examples: ≥80% domain-appropriate
-
-## Best Practices (Minimal Viable)
-
-**Required**:
+### Best Practices
 - Apply 5-step template
 - Justify Decision Criticality (≥1 criterion)
 - Cite critical claims (Tier 1-2, ≥1 source)
@@ -144,158 +77,113 @@ Full domain catalog (superset). For each run, select 4-6 decision-critical domai
 - Trade-offs ("X at expense of Y")
 - Concrete examples (code/diagram)
 - RFC 2119 terms
-- Lines ≤120 chars
 - Prioritize high-value, high-impact patterns
 
 **Prohibited**:
-- Vague language without clarification
+- Vague language
 - Tier 5 for critical claims
 - Omitting failure modes/anti-patterns
-- Presenting as universally applicable
+- Universally applicable claims
 - Dead links
 - Unsubstantiated claims
 - Non-decision-critical patterns
 
----
+## Pattern Domains (MECE)
+Select 4-6 decision-critical domains.
 
-## Workflow (Minimal Viable)
+| Domain | Examples | Stakeholders |
+|--------|----------|--------------|
+| Regulatory | Audit trails, Consent, Data residency | Compliance, Legal, Devs |
+| Business | Subscription, Freemium, Platform | Execs, Product, Finance |
+| Market | Blue Ocean, Disruptive Innovation | Execs, Marketing, Product |
+| Technical | GoF, Repository, Strangler Fig | Devs, Architects |
+| Data | Polyglot Persistence, Event Sourcing, CQRS | Data Eng, DBAs, Architects |
+| Organizational | Conway's Law, Team Topologies, DevOps | Managers, Execs, Leads |
+| Non-Functional Requirements | Security (Zero-Trust), Performance (Caching), Availability (Circuit Breaker), Reliability (Retry), Scalability (Sharding), Observability (Tracing), Adaptability (Feature Flags), Extensibility (DI), Maintainability (SOLID), Testability (Test Doubles) | Devs, Ops, Architects, Security |
+| Process | Agile, Retrospectives, Incident Response | Teams, Managers |
+| Hybrid | Regulatory+Technical, Compliance-by-Design | Compliance, Devs |
 
-### A. Plan
-**Tasks**: 1) Apply Decision Criticality Framework 2) Select 4-6 decision-critical domains 3) Allocate 8-12 Q&As (2F/4I/2-6A) 4) Verify MECE+Decision Criticality
-**Gate**: ✓ 4-6 domains, ✓ 8-12 allocated, ✓ 100% meet ≥1 criterion
+## 12-Step Validation
+1. **References Counts**: Glossary ≥12, Tools ≥6, Literature ≥6, Citations ≥8; Q&As 8-12 (2/4/2-6)
+2. **Citation Coverage**: ≥80% answers ≥1 citation, ≥50% ≥2
+3. **Languages**: Reasonable mix EN/ZH/other
+4. **Recency**: ≥50% <3yr; all links accessible/archived
+5. **Word Count**: Random sample of 5 Q&As: 150-250 words each
+6. **Decision Criticality**: 100% satisfy ≥1 criterion
+7. **Insights**: Concrete boundaries/trade-offs/anti-patterns
+8. **Per-Topic**: ≥1 source + ≥1 tool
+9. **Visuals**: ≥70% with diagram+table+metric
+10. **Evidence**: ≥80% empirical proof
+11. **Quantitative**: ≥70% with metrics
+12. **Examples**: ≥80% domain-appropriate
 
-### B. Draft
-**Tasks**: 1) References ≥12/6/6/8 (~60/30/10 langs, ≥50% <3yr, Tier 1-2) 2) 8-12 Q&As (5-step, Decision Criticality, [Ref: ID], ≥2 stakeholders, validate every 3) 3) Visuals per domain
-**Gate**: ✓ 8-12 Q&As (150-250), ✓ References, ✓ Langs ~60/30/10, ✓ Recency ≥50% <3yr, ✓ Citations ≥80%
+## Workflow
+1. **Plan**: Apply Decision Criticality Framework; select 4-6 domains; allocate 8-12 Q&As; verify MECE and criticality.
+2. **Draft**: Gather references (≥12/6/6/8, ≥50% <3yr); write Q&As (5-step, cited, ≥2 stakeholders); add visuals.
+3. **Validate**: Run 12-step checks; fix until all PASS.
+4. **Finalize**: Verify constraints, citations, MECE; self-review.
 
-### C. Validate
-**Tasks**: 1) Run 12 checks 2) Document failures 3) Fix+re-validate until 100% PASS
-**Gate**: ✓ 12 PASS, ✓ No broken links, ✓ No placeholders, ✓ 100% Decision Criticality
-
-### D. Finalize
-**Tasks**: 1) Verify constraints 2) 100% critical claims cited 3) MECE boundaries 4) Self-review
-**Gate**: ✓ Constraints, ✓ 100% cited, ✓ Checklist, ✓ Self-review
-
----
-
-## Output Structure (Minimal Viable)
-
-### TOC (Minimal Viable)
+## Output Structure
+### TOC
 ```markdown
 ## Contents
 - [Decision Criticality Framework](#decision-criticality-framework)
 - [Topic Areas](#topic-areas) - Q1-12 (8-12 total)
 - [Topic 1: Domain](#topic-1) (Q1-QX) [F/I/A]
-- [References](#references): [Glossary](#glossary) | [Tools](#tools) | [Literature](#literature) | [Citations](#citations)
+- [References](#references): Glossary | Tools | Literature | Citations
 - [Validation Report](#validation-report)
 ```
 
-### Template (Minimal Viable)
-```markdown
-# [Title]
+### Template Outline
+- **Title**
+- **Contents** [TOC]
+- **Context** [2-3 sentences on scope, constraints, assumptions, audience]
+- **Decision Criticality Framework** [Criteria for inclusion]
+- **Topic Areas** [Table of domains, Q# ranges, levels, criticality]
+- **Topics** [Per domain: Q&As with level, domain, criticality, key insight, 150-250 word answer (5-step), criteria met, example, artifacts]
+- **References** [Glossary ≥12, Tools ≥6, Literature ≥6, Citations ≥8]
+- **Validation Report** [12 steps PASS/FAIL with metrics]
 
-## Contents
-[TOC]
-
-## Context
-[Scope, constraints, assumptions, audience - 2-3 sentences]
-
-## Decision Criticality Framework
-[Include Q&A if ≥1 criterion: Blocks/Risk/Roles/Evolving/Barrier]
-
-## Topic Areas
-[Table: domains, Q# ranges, F/I/A - MECE, Decision Criticality]
-
-## Topic 1: [Domain]
-
-### Q1: [Question]
-**Level**: [F/I/A] | **Domain**: [Type] | **Decision Criticality**: [Criterion]
-**Key Insight**: [Strategic, quantified, decision-critical]
-
-**Answer** (150-250): [5-step + [Ref: ID]]
-
-**Criteria Met**:
-1. **Reusability**: ≥2 contexts
-2. **Effectiveness**: Company+metric+[Ref: ID]
-3. **Boundaries**: "Applies/Avoid when"
-4. **Stakeholders**: ≥2 groups, value
-5. **Trade-offs**: Benefits vs. costs
-6. **Anti-Patterns**: Failures+mitigations
-
-**Example**: [Code/diagram]
-**Artifacts**: [Mermaid+table+metric]
-
-[Repeat Q2-Q12]
-
-## References (Minimal Viable)
-
-### Glossary (≥12)
-[Alphabetical, definitions, [Lang] - only terms used in Q&As]
-
-### Tools (≥6)
-[Features, pricing, adoption, verified <18mo, URL]
-
-### Literature (≥6)
-[APA 7th, [Lang] - canonical references only]
-
-### Citations (≥8)
-[APA 7th, [Lang], match [Ref: ID]]
-
-## Validation Report
-[12 steps: PASS/FAIL + metrics]
-```
-
-### Artifacts by Domain (Decision-Critical Only)
-
+### Artifacts by Domain
 | Domain | Diagrams | Examples | Metrics |
 |--------|----------|----------|---------|
-| **Regulatory** | Compliance flow | GDPR YAML | Compliance % |
-| **Business** | Canvas | Revenue models | CLV, CAC |
-| **Technical** | Sequence/Component | Pattern code | Coupling % |
-| **Data** | ERD, Flow | DDL/SQL | Normalization, Perf |
-| **Organizational** | Team topology | Team structure | Alignment % |
-| **NFR-Security** | Threat model | Security config | Vulnerabilities |
-| **NFR-Performance** | Latency breakdown | Flamegraph | p50/p95/p99 |
-| **NFR-Availability** | Failure tree | Health checks | Uptime %, MTTR |
-| **NFR-Reliability** | Retry flow | Idempotency keys | Recovery % |
-| **NFR-Observability** | Tracing | Distributed traces | MTTD |
-| **NFR-Scalability** | Scaling strategy | Horizontal scaling | Factor |
-| **NFR-Adaptability** | Feature flags | Toggle code | Lead Time |
-| **NFR-Extensibility** | Extension map | Plugin registry | #extensions |
-| **NFR-Maintainability** | Layered diagram | Refactoring diff | Churn, complexity |
-| **NFR-Testability** | Test pyramid | Contract tests | Coverage, flaky % |
-| **Market** | Market map | Blue Ocean canvas | Share, growth % |
-| **Process** | Workflow | Kanban board | Cycle time |
-| **Hybrid** | Cross-domain map | Compliance-by-design flow | Risk score |
+| Regulatory | Compliance flow | GDPR YAML | Compliance % |
+| Business | Canvas | Revenue models | CLV, CAC |
+| Technical | Sequence/Component | Pattern code | Coupling % |
+| Data | ERD, Flow | DDL/SQL | Normalization, Perf |
+| Organizational | Team topology | Team structure | Alignment % |
+| NFR-Security | Threat model | Security config | Vulnerabilities |
+| NFR-Performance | Latency breakdown | Flamegraph | p50/p95/p99 |
+| NFR-Availability | Failure tree | Health checks | Uptime %, MTTR |
+| NFR-Reliability | Retry flow | Idempotency keys | Recovery % |
+| NFR-Observability | Tracing | Distributed traces | MTTD |
+| NFR-Scalability | Scaling strategy | Horizontal scaling | Factor |
+| NFR-Adaptability | Feature flags | Toggle code | Lead Time |
+| NFR-Extensibility | Extension map | Plugin registry | #extensions |
+| NFR-Maintainability | Layered diagram | Refactoring diff | Churn, complexity |
+| NFR-Testability | Test pyramid | Contract tests | Coverage, flaky % |
+| Market | Market map | Blue Ocean canvas | Share, growth % |
+| Process | Workflow | Kanban board | Cycle time |
+| Hybrid | Cross-domain map | Compliance-by-design flow | Risk score |
 
-## Decision-Critical Pattern Catalog (Target: 20-30 patterns)
-
-Example subset shown below. Extend or adapt to reach 20-30 decision-critical patterns in your final output.
+## Decision-Critical Pattern Catalog
+Select/adapt to reach 20-30 patterns.
 
 | Domain | Pattern | Contexts | Evidence | Stakeholders | Decision Criticality |
 |--------|---------|----------|----------|--------------|----------------------|
-| **Regulatory** | Double-Entry Audit | Financial, Healthcare, Blockchain | SOX, all major banks | Compliance, Devs, Auditors | Blocks decision (audit compliance) |
-| | Consent Mgmt | GDPR, CCPA, Marketing | 10K+ orgs, 85% risk↓ | Legal, Users, Devs | Creates risk (fines €20M+) |
-| **Business** | Subscription | SaaS, Media, Retail | $1.5T, 5-7x valuations | Finance, Product, Customers | Blocks decision (revenue model) |
-| | Platform | Airbnb, AWS, App Store | 7/10 top, 70% margins | Business, Producers, Consumers | Blocks decision (market strategy) |
-| **Technical** | Repository | DDD, Layered | 60-80% coupling↓ | Devs, Architects, Ops | Blocks decision (architecture) |
-| | Strangler Fig | Legacy modernization | Amazon/GitHub, 90% risk↓ | Architects, Ops, Business | Blocks decision (migration) |
-| **Data** | Polyglot Persistence | Microservices, E-commerce | Netflix 3+, LinkedIn 10+, 50-80% latency↓ | Architects, DBAs, Devs | Blocks decision (data strategy) |
-| | Event Sourcing | Finance, Collaboration | 100% audit, Banking standard | Compliance, Devs, Business | Creates risk (audit compliance) |
-| **Organizational** | Conway's Law | Any org | 50+ years, 40% coordination↓ | Execs, Architects, Managers | Blocks decision (org structure) |
-| | Team Topologies | Any org | MS/Google/Spotify, 50% load↓, 40% flow↑ | CTOs, Managers, Devs | Affects ≥2 roles (velocity impact) |
-| | DevOps/YBIYRI | Cloud-native, SaaS | Amazon 2006, 60% MTTR↓, 10x deploys | Devs, Ops, Business | Blocks decision (deployment strategy) |
-| **NFR-Security** | Zero-Trust | Remote, Cloud-native | Google 7yr/85K, 75% breach↓ | Security, Devs, Users | Creates risk (breach, compliance) |
-| | Secrets Mgmt | Cloud, Microservices | 30M+ Vault, 50% F500 | Security, Devs, Ops | Blocks decision (security posture) |
-| **NFR-Reliability** | Retry+Backoff | Network, Messages | 95% recovery, AWS default | Devs, Ops, Users | Blocks decision (resilience SLA) |
-| | Idempotency | Payments, Queues, APIs | Stripe/PayPal, 100% consistency | Devs, Ops, Business | Blocks decision (data consistency) |
-| **NFR-Observability** | Distributed Tracing | Microservices | Cloud-native standard | Ops, Devs, Business | Creates risk (incident response) |
-| **NFR-Scalability** | Horizontal Scaling | Web, APIs | Netflix/FB, 1000s instances | Ops, Architects, Business | Blocks decision (performance SLA) |
-| | Sharding | High-traffic DB | Instagram 4000, Discord billions | DBAs, Devs, Business | Blocks decision (data scaling) |
-| **NFR-Adaptability** | Feature Flags | CD, A/B | FB/Netflix 100+/day, 90% risk↓ | Devs, Product, Business | Blocks decision (deployment velocity) |
+| Regulatory | Double-Entry Audit | Financial, Healthcare | SOX compliance | Compliance, Devs | Blocks decision |
+| | Consent Mgmt | GDPR, CCPA | 10K+ orgs, 85% risk↓ | Legal, Users, Devs | Creates risk |
+| Business | Subscription | SaaS, Retail | $1.5T market | Finance, Product | Blocks decision |
+| Technical | Repository | DDD | 60-80% coupling↓ | Devs, Architects | Blocks decision |
+| Data | Event Sourcing | Finance | 100% audit | Compliance, Devs | Creates risk |
+| Organizational | Conway's Law | Any org | 40% coordination↓ | Execs, Managers | Blocks decision |
+| | DevOps | Cloud-native | 60% MTTR↓ | Devs, Ops | Blocks decision |
+| NFR-Security | Zero-Trust | Remote work | 75% breach↓ | Security, Devs | Creates risk |
+| NFR-Reliability | Retry+Backoff | Networks | 95% recovery | Devs, Ops | Blocks decision |
+| NFR-Scalability | Horizontal Scaling | Web apps | 1000s instances | Ops, Architects | Blocks decision |
+| NFR-Adaptability | Feature Flags | CD, A/B | 90% risk↓ | Devs, Product | Blocks decision |
 
-## Final Checklist (Minimal Viable)
-
+## Final Checklist
 **Validation**:
 - [ ] 12 steps PASS + metrics
 - [ ] 100% meet Decision Criticality Framework
@@ -315,13 +203,12 @@ Example subset shown below. Extend or adapt to reach 20-30 decision-critical pat
 - [ ] TOC complete
 - [ ] 5-step template
 - [ ] RFC 2119 correct
-- [ ] GFM ≤120 char/line
+- [ ] Readable formatting
 - [ ] No placeholders
 - [ ] Decision Criticality justified for each Q&A
 
 ## Quick Check (30s)
-
-**Before generating Q&A (mandatory for decision-critical content):**
+**Before generating Q&A:**
 
 ☐ **Self-contained**: Complete context; no cross-file refs
 ☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance
@@ -330,5 +217,3 @@ Example subset shown below. Extend or adapt to reach 20-30 decision-critical pat
 ☐ Logic | ☐ Risk/Value | ☐ Fairness
 ☐ Structure | ☐ Consistency
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
-
----
