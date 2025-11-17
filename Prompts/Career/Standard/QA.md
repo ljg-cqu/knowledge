@@ -48,12 +48,12 @@
 
 ### Quality Gates (Streamlined: 12 Checks)
 
-**Minimums**: G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25 mix), 6 lifecycle phases covered, ≥7/10 stakeholder roles, **100% decision criticality justified**
+**Minimums**: G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25 mix), ≥5 lifecycle phases represented, ≥7/10 stakeholder roles, **100% decision criticality justified**
 
 | # | Check | Target |
 |---|-------|--------|
 | 1 | Floors | G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25) |
-| 2 | Decision Criticality | 100% justified (blocks/risk/stakeholders/evolving) |
+| 2 | Decision Criticality | 100% justified (blocks/risk/stakeholders/evolving/adoption) |
 | 3 | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
 | 4 | Recency | ≥70% last 2yr (≥85% technical standards) |
 | 5 | Links | 100% accessible, official specs/RFCs/standards bodies |
@@ -116,7 +116,7 @@
 | [Optional Q13-Q15] | Q13-Q15 | 3 | 1/1/1 | Cross-cutting decisions |
 
 ## Q[N]: [Decision-Critical Question]
-**Difficulty**: [F/I/A] | **Type**: [Cluster] | **Lifecycle**: [Phase] | **Stakeholders**: [≥3 Roles] | **Criticality**: [Blocks/Risk/Stakeholders/Evolving]
+**Difficulty**: [F/I/A] | **Type**: [Cluster] | **Lifecycle**: [Phase] | **Stakeholders**: [≥3 Roles] | **Criticality**: [Blocks/Risk/Stakeholders/Evolving/Adoption]
 
 **Answer** (150-350 words):
 [P1: Decision Context - why this decision matters, stakeholders affected [Ref: ID]]
@@ -231,9 +231,9 @@
 
 ## Example
 
-### Q1: Select API protocol standard for real-time trading platform: OpenAPI 3.1 REST vs gRPC vs GraphQL. Requirements: 50K orders/s peak, <10ms p99 latency, web + mobile + algo traders, regulatory audit trails (MiFID II). Lifecycle phase: Architecture & Design.
+### Q1: Select API protocol standard for real-time trading platform: OpenAPI 3.1 REST vs gRPC vs GraphQL. Requirements: 50K orders/s peak, <10ms p99 latency, web + mobile + algo traders, regulatory audit trails (PCI-DSS Req 10). Lifecycle phase: Architecture & Design.
 
-**Difficulty**: Advanced | **Type**: Technical Standards + Regulatory | **Lifecycle**: Architecture & Design | **Stakeholders**: Architect, Developer, QA/SET, Security, SRE | **Insight**: Performance vs ecosystem trade-offs, regulatory audit requirements, client diversity constraints
+**Difficulty**: Advanced | **Type**: Technical Standards + Regulatory | **Lifecycle**: Architecture & Design | **Stakeholders**: Architect, Developer, QA/SET, Security, SRE | **Criticality**: [Blocks Decision][Creates Risk][Affects ≥3 Stakeholders]
 
 **Answer** (340 words):
 
@@ -241,7 +241,7 @@
 
 **P2: Trade-off Analysis** - Performance: gRPC wins (binary, multiplexing, <5ms p99 at 100K rps benchmarks [L5]). Ecosystem: REST dominates (50M+ developers, every language/tool supports). Developer experience: GraphQL reduces iterations (self-documenting schema, Playground). Browser clients: REST/GraphQL native, gRPC needs proxy (+3ms latency). Mobile: gRPC ideal (battery, bandwidth). Algo traders: gRPC preferred (low-latency, code generation [T4]). Regulatory: all support audit (OpenAPI + AsyncAPI [A5] for async events, gRPC interceptors, GraphQL resolvers).
 
-**P3: Implementation Strategy** - **Hybrid architecture**: (1) gRPC for algo trader APIs (Protobuf schema [A7], Buf [T4] for breaking change detection); (2) GraphQL gateway for web/mobile (Apollo Federation, REST fallback); (3) OpenAPI 3.1 for audit/compliance APIs (Swagger UI [T1], regulatory visibility); (4) AsyncAPI 3.0 [A5] for market data streaming (WebSocket + CloudEvents [A20]). Migration: 6 months, backward compatibility via API gateway (Kong/Envoy with protocol translation). Cost: $400K implementation, $80K/yr maintenance.
+**P3: Implementation Strategy** - **Hybrid architecture**: (1) gRPC for algo trader APIs (Protobuf schema [A7], Buf [T4] for breaking change detection); (2) GraphQL gateway for web/mobile (Apollo Federation, REST fallback); (3) OpenAPI 3.1 for audit/compliance APIs (Swagger UI [T1], regulatory visibility); (4) AsyncAPI 3.0 [A5] for market data streaming (WebSocket + CloudEvents 1.0). Migration: 6 months, backward compatibility via API gateway (Kong/Envoy with protocol translation). Cost: $400K implementation, $80K/yr maintenance.
 
 **P4: Validation Approach** - Conformance: Buf lint [T4] for Protobuf, Spectral for OpenAPI/AsyncAPI, contract testing with Postman [T2]. Performance: k6 load testing (50K orders/s, p99 <10ms SLO), distributed tracing (OpenTelemetry + Jaeger). Regulatory: automated audit log validation (PCI-DSS Req 10 [A14]), quarterly compliance scans.
 

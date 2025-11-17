@@ -104,10 +104,10 @@
 ## Process
 
 ### 1. Reference Collection (BEFORE Q&A)
-Collect G#≥10, T#≥5, L#≥6, A#≥12 | Verify language mix, recency, diversity, accessibility
+Collect G#≥6, T#≥3, L#≥4, A#≥6 | Verify language mix, recency, diversity, accessibility
 
 ### 2. Topic Planning
-Select 5–6 domains | Allocate 4–6 Q&A each (25–30 total) | F:I:A = 20:40:40 (±5pp)
+Select 3–4 domains | Allocate 2–3 Q&A each (6–12 total) | F:I:A = 20:40:40 (±5pp)
 
 ### 3. Q&A Generation
 **Questions**: Scenario-based ("How would you...", "You observe..."), single ask, test judgment ≥70%, specific constraints  

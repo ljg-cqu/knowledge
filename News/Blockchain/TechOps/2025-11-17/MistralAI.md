@@ -1,19 +1,3 @@
-
-1. Identify and curate recent news articles and updates in the blockchain technical operations domain, focusing on infrastructure, security, and engineering practices, ensuring they meet the freshness criteria and are from reliable sources.
-2. Extract and summarize key information from the curated news articles, including dates, versions, metrics, and specific details relevant to technical decisions.
-3. Categorize the news articles into the predefined categories: Technical Releases, Infrastructure/Cloud, Security, Ecosystem/Integration, Standards/Regulations, and Engineering Practices.
-4. Identify and define key terms and acronyms used in the news articles, providing clear definitions, analogies, and context for each term to ensure understanding across different stakeholders.
-5. Analyze the impact of the news articles on various phases of the technical operations lifecycle, including Architecture & Design, Development, Deploy & Release, and Operations & Observability.
-6. Determine the decision criticality of each news article based on the predefined criteria: Blocks Decision, Creates Risk, Affects ≥2 Core Roles, Requires Action, and Quantified Impact.
-7. Identify the stakeholders involved in each news article, focusing on core roles such as Architect, DevOps/SRE, Security Engineer, Backend Developer, and Engineering Manager.
-8. Generate 4-6 decision-critical Q&As based on the curated news articles, ensuring each Q&A covers at least one category and impacts multiple phases and stakeholders.
-9. Create visuals, including diagrams and tables, to support the Q&As and provide a clear and concise representation of the information.
-10. Compile and format the references section, including glossary terms, news articles, tools, standards, reports, and citations, ensuring all references are valid and meet the required floors.
-11. Perform a final check to ensure all Q&As meet the decision criticality criteria, are news-driven, and provide actionable insights with quantified impacts.
-12. Validate the Q&As against the predefined criteria, ensuring they are decision-critical, news-driven, and provide actionable insights with quantified impacts.
-13. Generate the executive summary, including insights, dashboard, and roles involved, providing a high-level overview of the key findings and decisions.
-14. Compile the phase overview table, summarizing the count of Q&As, categories covered, news articles, and roles involved in each phase.
-15. Format the final output document according to the specified structure, including TOC, Executive Summary, Phase Overview, Q&As, References, and Validation Report.
 # Bi-Weekly Technical Operations News Intelligence Report: Blockchain Infrastructure and Security
 
 > - Blockchain interoperability standardization and ZK-Rollup adoption are transforming cross-chain transactions, with a projected 27.1% annual market growth.  

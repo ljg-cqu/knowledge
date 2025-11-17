@@ -1,5 +1,5 @@
 ---
-Last Updated: 2025-01-16
+Last Updated: 2025-11-17
 Status: Optimized (Minimal Viable)
 Owner: Career Development Team
 ---
@@ -183,7 +183,7 @@ Extract `[Ref: ID]` → Verify IDs exist → Validate URLs
 
 | Dimension | Q# | Decision Criticality | Phase | Stakeholders |
 |-----------|----|--------------------|-------|--------------|
-| [Type] | Q1 | [Blocks/Risk/Roles/Action/Quantified] | [1-8] | [Roles] |
+| [Dimension] | Q1 | [Blocks/Risk/Roles/Action/Quantified] | [1-8] | [Roles] |
 
 [3-4 dimensions · 6-12 total · 25/50/25% F/I/A]
 
@@ -202,7 +202,7 @@ Extract `[Ref: ID]` → Verify IDs exist → Validate URLs
 
 ## Q1: [Stakeholder Management Question]
 
-**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [1-8] | **Decision Criticality**: [Criterion]
+**Difficulty**: [F/I/A] | **Dimension**: [Dimension] | **Phase**: [1-8] | **Decision Criticality**: [Criterion] | **Tag**: [Consensus/Context-dependent/Emerging]
 
 **Context**: [Scenario, challenge, or decision point] [Ref: A1]
 
@@ -254,6 +254,8 @@ Extract `[Ref: ID]` → Verify IDs exist → Validate URLs
 ```
 
 # Reference Examples (Minimal Viable - Decision-Critical Only)
+
+Note: These examples illustrate format and content only; actual generated references must satisfy all floors and language/recency requirements defined above.
 
 ## Glossary (≥8 Terms)
 
