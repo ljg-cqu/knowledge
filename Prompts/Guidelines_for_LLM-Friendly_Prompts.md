@@ -12,7 +12,7 @@
 
 **2. Clarity** [↓25-35% ambiguity in definitions]: The prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
 
-**3. Precision** [↓40-50% ambiguity in specifications]: The prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
+**3. Precision** [↓40-50% ambiguity in specifications]: The prompt requests quantified requirements with exact metrics, formulas, and units where relevant. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
 
 **4. Relevance** [↓30-40% noise]: The prompt requests focus on decision-critical aspects only. ❌ Bad: "Explain database history and current options" ✅ Optimized: "Compare SQL vs NoSQL for e-commerce use case: focus on transaction requirements, scale characteristics, query patterns. Exclude history unless regulatory context is decision-critical."
 
@@ -44,7 +44,7 @@
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% scannability & actionability]: The prompt requests a structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting"
+**16. Structure** [↑30-40% scannability & actionability]: The prompt requests a structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting → Math blocks or inline formulas when needed"
 
 **17. Format** [↑35-45% readability]: The prompt requests an exact output structure and hierarchy. ❌ Bad: "Provide analysis" ✅ Optimized: "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → #### Comparison Table → ##### Recommendation → ###### Timeline with milestones"
 
