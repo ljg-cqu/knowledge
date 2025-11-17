@@ -3,12 +3,15 @@
 Generate 4–6 decision-critical Q&As from recent industry news—minimal viable tracking for informed decisions with limited time.
 
 **Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
+**How to use with an LLM**: When you call an LLM, provide (a) your domain and geography, (b) time period for news, (c) startup stage, size, and runway, (d) decision horizon and key constraints, and (e) primary roles who will use this brief. Instruct the LLM to execute Sections I–VI in order and return a single Markdown report following the Output Format.
+
+**Self-contained usage**: Treat this file as a complete prompt. Do not rely on "see previous answer" or other external files; instead, include all necessary context in your call and let the LLM follow these steps.
 
 **Scope**: Decision-critical startup news only—funding environment, market entry barriers, competitive threats, business model viability, talent/execution risk, macro/regulatory shocks. For founders, investors, early-stage companies.
 
 **MECE Position**: Formation stage only (pre-seed → Series A). Covers decision-blocking scenarios across market, funding, business model, regulatory, talent dimensions.
 
-**For Established Organizations**: Not for ongoing operational optimization in mature organizations—use specialized prompts (ProdMarket.md, TechOps.md, CommOps.md, FinEcon.md, StratIntel.md, OpsSupply.md, PeopleWF.md).
+**For Established Organizations**: Not for ongoing operational optimization in mature organizations; for those contexts, create separate prompts focused on mature product, technology operations, finance, strategy, supply chain, or workforce topics. This template stays focused on formation-stage startup decisions.
 
 **Freshness** (category-adaptive thresholds):
 - **HV** (Market/Competition/Partnerships): ≥85% <1mo (≥30% in 1-3d), ≥95% <2mo, 100% ≤4mo
@@ -24,6 +27,13 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 **Target Audience**: Founders, investors, early-stage companies, corporate innovation teams entering new markets.
 
 **Scope**: Market entry barriers/opportunities, competitive landscape, fundraising environment (VC sentiment, valuations, terms), business model innovation, GTM strategies, regulatory barriers, TAM/SAM drivers, ecosystem readiness, macro trends affecting startups.
+
+**Input you MUST provide before generation (context)**:
+- Domain/industry and geography (e.g., "B2B SaaS in US/EU")
+- Time period for news (e.g., "Q3–Q4 2024")
+- Startup stage and scale (pre-seed/seed/Series A; team size; ARR; current runway)
+- Decision horizon and constraints (e.g., "12–18 month runway target", "max burn $X/month", "fundraising window 6–9 months")
+- Primary roles who will use the brief (at least 2 of: Founder/CEO, CFO, Investor, VP Sales, Product Lead)
 
 **Exclude**: Technical implementation details, infrastructure decisions, operational tooling, marketing hype, unverified rumors, trivial updates, stale news per freshness guarantee.
 
@@ -44,11 +54,11 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 5. **Strategic Significance**: Shifts market landscape, fundraising environment, or competitive positioning
 6. **Quantified Impact**: Measurable market size, funding amounts, valuation changes, CAC, burn rate
 
-**Answer Requirements** (200-350w): ≥1 news item + summary + impact (≥2 phases, ≥2 roles, quantified) + decision (Enter/Pursue/Build/Wait/Defer/Pass/Avoid) + action timeline + optional evidence-backed projections (source, confidence, timeframe, ranges, scenarios).
+**Answer Requirements** (120-200w): ≥1 news item + summary + impact (≥2 phases, ≥2 roles, quantified with baselines/targets where possible) + comparison of ≥2 options + explicit recommendation + action timeline + at least one key assumption, risk, or counterargument + optional evidence-backed projections (source, confidence, timeframe, ranges, scenarios).
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision | Q set MECE: each Q has a distinct primary phase+category focus with minimal overlap
 
 **Business Lifecycle Phases** (3-4, 1-2 Q each): Market Research & Validation, Fundraising (Pre-seed → Series A), Product-Market Fit, GTM & Growth (skip Incorporation, Scaling unless decision-critical)
 
@@ -57,6 +67,8 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
 **Stakeholders** (≥5/12): Founder/CEO, CFO, Investor (Angel/VC/PE), VP Sales, Product Lead (core roles only)
+
+**Quality**: Focus on decision-critical, high-impact items only; avoid generic startup how-to content; keep answers concise and implementation-oriented (what to do, by whom, by when, and with which metrics).
 
 **References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), M≥2-3 (market), F≥2-3 (funding), R≥2 (research), O≥1-2 (org dynamics), A≥6 (APA 7th+tag)
 
@@ -101,7 +113,7 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
    - ✅ Specific details (dates, amounts, valuations)
    - ✅ Not marketing/rumors
 
-4. **Verify**: Check decision criticality; if fail, retry earlier tiers
+4. **Verify**: Check decision criticality AND basic factual accuracy (cross-check key numbers such as round size, valuation, and dates against at least one secondary source when available); if fail, retry earlier tiers
 
 5. **Allocate**: 4-6 Q × 3-4 phases (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
 
@@ -142,13 +154,14 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 **Structure** (120-200w):
 1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~50w): ≥2 phases + quantified (market size $, funding $, burn rate, runway, valuation, TAM/SAM)
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Enter/Pursue/Build/Wait/Defer/Pass/Avoid + rationale + criteria
-5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
+2. **Impact** (~50w): ≥2 phases + quantified (market size $, funding $, burn rate, runway, valuation, TAM/SAM) with explicit baseline vs target or scenario ranges where sources allow
+3. **Stakeholders** (~35w): **[Role 1]**: Concerns + 1-2 concrete actions | **[Role 2]**: Same
+4. **Decision** (~50w): **Alternatives**: compare ≥2 realistic options (e.g., Enter now vs Wait 6-12mo vs Pass) with costs/risks/benefits | **Rec**: choose one | **Success**: define 2-3 measurable targets (e.g., runway ≥X months, burn multiple ≤Y, probability of next round ≥Z%)
+5. **Action** (~20w): **Immed (0-2wk)**: 1-3 specific tasks + owner | **Short (2wk-2mo)**: 1-3 tasks + owner
 6. **Links**: Define at end: `[n1]: URL`
+7. **Assumptions & Risks** (~20w): Explicitly state critical assumptions, at least one material risk or counterargument (when this recommendation is weak or fails), and when this decision should be revisited or reversed
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+**Self-Check (LLM)**: Before returning each answer, ensure: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Alternatives compared | Metrics include targets | Assumptions & risks stated | Logic and numbers consistent | 120-200w | ≥1 cite | 0% hype | 100% actionable | All terms appear in glossary
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -160,7 +173,7 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 **Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | M≥2-3 | F≥2-3 | R≥2 | O≥1-2 | A≥6
 
-**Decision**: 100% decision + rationale + criteria + timeline
+**Decision**: 100% decision + rationale + criteria + timeline + 2-3 explicit success metrics and how they will be measured
 
 **Stakeholders**: ≥5 roles | Actions + authority
 
@@ -196,7 +209,7 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 ## V. Question Quality (≥2 fails of 7 = rewrite)
 
-**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
+**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact with explicit targets | Comparative (≥2 alternatives with trade-offs) | Assumptions & risks explicit | Timely | Actionable
 
 **✓ Good**: "Series A funding down 35% (Nov 2024): impact on burn rate?" | "Competitor $50M raise (Oct 2024): market entry strategy?" | "Fed rate 5.5% (Dec 2024): runway implications?" | "Down round trend (Q3 2024): bridge or cut burn?"
 

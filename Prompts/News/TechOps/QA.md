@@ -1,8 +1,10 @@
 # Technical Operations News Intelligence Q&A Generator (Minimal Viable)
 
+You are an LLM generating 4–6 decision-critical Q&As from recent infrastructure and security news for engineering organizations. Follow all instructions in this file exactly; do not rely on any external prompts or prior conversation.
+
 Generate 4–6 decision-critical Q&As from recent infrastructure/security news—minimal viable tracking for informed decisions with limited time.
 
-**Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
+**Cadence**: Bi-weekly | 4-6h effort | **Validity window**: 2 weeks from generation (after that, treat content as stale and re-run this prompt with fresh news).
 
 **Freshness** (all news must meet these age thresholds):
 - **High-Velocity** (Security, Infrastructure, Tech Releases): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
@@ -12,6 +14,8 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 **Scope**: Decision-critical infrastructure/security news only—CVEs, infrastructure changes, critical framework updates, reliability patterns. For engineering teams at scale.
 
 **Exclude**: Marketing, vendor fluff, trivial updates, rumors, stale news (>4mo HV, >12mo Regulatory), nice-to-have trends.
+
+**Balance & Fairness**: When comparing tools, clouds, or practices, present both advantages and disadvantages, avoid vendor favoritism, and call out situations where a popular option is *not* a good fit.
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts infrastructure choices, security posture, or deployment strategy
@@ -46,7 +50,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 5. **Significance**: Shifts practices/patterns/infrastructure
 6. **Quantified**: Measurable perf/reliability/security/cost impact
 
-**Answer Format** (200-350w): ≥1 news + summary + impact (≥2 phases, ≥2 roles, quantified) + decision (A/I/D/A) + timeline + optional projections (sourced, confident, timed).
+**Answer Format** (120-200w): Use the 5-part structure in Step 3 (News, Impact, Stakeholders, Decision, Action); ensure ≥1 news item, quantified impact for ≥2 phases and ≥2 roles, and a clear decision with timeline. Only add projections when backed by sources and bounded in time.
 
 ## II. Requirements
 
@@ -71,6 +75,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 4. **Decision**: 100% decision + rationale + timeline
 5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
 6. **Actionability**: 100% concrete; 0% abstract
+7. **Coverage (MECE across Q&As)**: Questions must each focus on a distinct decision; avoid repeating essentially the same scenario or impact in multiple Q&As.
 
 ## III. Execution
 
@@ -121,6 +126,8 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 - **Context**: Why it matters for decisions
 - **Examples**: Real numbers
 
+**Evidence & Accuracy**: Prefer primary or official sources (security advisories, vendor documentation, standards, major reports). When recommending tools, versions, or configurations, check they are current and compatible; if information is uncertain or based on estimates, label it explicitly.
+
 **News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
 
 ### Step 3: Generate Q&A (batch 2-3, self-check each)
@@ -135,11 +142,11 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
 2. **Impact** (~50w): ≥2 phases + quantified (perf %, reliability %, security risk, cost $)
 3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Adopt/Investigate/Defer/Avoid + rationale + criteria
+4. **Decision** (~50w): State the recommended choice (Adopt/Investigate/Defer/Avoid), briefly compare it with at least one viable alternative when appropriate, and explain trade-offs, risks, and criteria for revisiting the decision.
 5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
 6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary | No internal contradictions | Key risks and limitations stated | Estimates and assumptions clearly flagged
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -159,7 +166,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 
 **Quantitative**: Floors met | Glossary 100% | 3-4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Reasoning consistent (no contradictions) | Major risks and counterarguments surfaced when relevant
 
 ### Step 7: Submit
 
@@ -194,6 +201,8 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 **✗ Bad**: "How does CVE work?" (no news) | "What is SRE?" (overview) | "Should we use Kubernetes?" (no trigger) | "AWS released feature" (no decision)
 
 ## VI. Output Format (Minimal)
+
+**Final Output Requirement**: When answering this prompt, produce a single Markdown document that follows the structure in this section (TOC → Executive Summary → Phase Overview → Q&As → References → Validation Report). Do **not** include your planning notes, self-check list, or explanations of how you used this template.
 
 ### A. TOC
 
@@ -244,7 +253,7 @@ Generate 4–6 decision-critical Q&As from recent infrastructure/security news�
 
 **Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~50w): **Rec**: Adopt/Investigate/Defer/Avoid | **Rationale**: Why | **Success**: Targets
+**Decision** (~50w): **Rec**: Adopt/Investigate/Defer/Avoid | **Rationale**: Why (include 1–2 key trade-offs vs alternatives) | **Success**: Concrete, measurable targets and how they will be checked
 
 **Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
 

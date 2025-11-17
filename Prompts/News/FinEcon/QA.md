@@ -1,17 +1,24 @@
 # Financial & Economic News Intelligence Q&A Generator (Minimal Viable)
 
-Generate 4–6 decision-critical Q&As from recent financial/economic news—minimal viable tracking for informed decisions with limited time.
+Use this specification as a single, self-contained prompt for an LLM to generate 4–6 decision-critical Q&As from recent financial and economic news. The goal is to support fast, high-quality capital allocation and risk decisions for finance leadership.
 
-**Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
+## I. Context & Scope
+
+- **Cadence & Effort**: Bi-weekly cycle, 4–6h analyst effort. Each run produces 4–6 Q&As. Output is valid for 2 weeks from the generation date; always state both dates.
+- **Domain**: Financial and economic developments that materially affect corporate finance decisions (capital structure, liquidity, M&A, risk/compliance).
+- **Stakeholders**: CFO, VP Finance, Treasurer, Corporate Development, FP&A (core roles). Write answers so they are understandable and actionable for these roles.
+- **Scale & Timeline**: Organization-level decisions with a 1–6 month action window. Ignore intraday trading signals and very long-term (>6 month) speculation unless they clearly block a near-term decision.
+- **Assumptions**: Readers know basic finance concepts (e.g., WACC, IRR, NPV) but need concise, decision-ready synthesis, not tutorials.
+- **Constraints**: Output must be scannable in ≤30 minutes by senior leaders; avoid redundancy and generic explanations.
 
 **Freshness** (all news must meet these age thresholds):
-- **High-Velocity** (Capital Markets, Macro): ≥85% <1mo (≥30% 1-7d), ≥95% <2mo, 100% ≤4mo
-- **Medium-Velocity** (M&A, Treasury, Reporting): ≥70% <2mo (≥20% 1-7d), ≥90% <3mo, 100% ≤6mo
+- **High-Velocity** (Capital Markets, Macro): ≥85% <1mo (≥30% 1–7d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (M&A, Treasury, Reporting): ≥70% <2mo (≥20% 1–7d), ≥90% <3mo, 100% ≤6mo
 - **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
 
-**Scope**: Decision-critical financial news only—rate changes, M&A deals, macro shifts, treasury/FX moves, compliance deadlines. For CFO/FP&A/Treasury teams.
+**Scope**: Include only decision-critical financial news—rate changes, M&A deals, macro shifts, treasury/FX moves, and compliance deadlines that satisfy the Decision Criticality Framework.
 
-**Exclude**: Technical operations, commercial/sales execution, product strategy, early-stage fundraising, marketing, unverified rumors, stale news, nice-to-have trends.
+**Exclude**: Technical operations, commercial/sales execution, product strategy, early-stage fundraising, marketing, unverified rumors, stale news, nice-to-have trends, and educational overviews that are not tied to a specific news trigger.
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts capital allocation, debt/equity structure, M&A go/no-go, liquidity crisis
@@ -92,7 +99,9 @@ Generate 4–6 decision-critical Q&As from recent financial/economic news—mini
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | M# (M&A, companies, valuation, URL) | T# (treasury, instrument, terms, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
-**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end.
+
+**Verification**: Prefer primary or authoritative sources (central banks, regulators, audited filings, leading research). Record publication date for each source, double-check all quoted figures against the source, and explicitly label any estimates, assumptions, or ranges.
 
 **Floors**: G≥8 (100% terms used), N≥4-5, M≥2-3, T≥2, R≥2, A≥6
 
@@ -119,13 +128,13 @@ Generate 4–6 decision-critical Q&As from recent financial/economic news—mini
 
 **Structure** (120-200w):
 1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~50w): ≥2 cycles + quantified (WACC%, liquidity$, valuation multiple, tax$, cash flow$, IRR)
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Execute/Hedge/Defer/Monitor/Avoid + rationale + criteria
-5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
+2. **Impact** (~50w): ≥2 cycles + quantified (WACC%, liquidity$, valuation multiple, tax$, cash flow$, IRR). Make causal links explicit (how the news moves each metric).
+3. **Stakeholders** (~35w): ≥2 roles + concerns + actions; highlight where perspectives or incentives differ.
+4. **Decision & Alternatives** (~50w): Compare at least two realistic options (e.g., Execute now vs Defer/Hedge/Monitor), summarizing benefits, costs, and risks for each. Then state the recommended option with clear criteria and success metrics.
+5. **Action** (~20w): Immediate (0-2wk) and Short (2wk-2mo) actions + owner for each; specify concrete steps, not generalities.
 6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% speculation | 100% actionable | All terms in glossary
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision & alternatives clear | 120–200w (no redundancy) | Quantified metrics consistent with sources | ≥1 cite (prefer ≥2 for high-impact items) | 0% speculation | 100% actionable steps | Reasoning coherent (no contradictions) | Limitations and assumptions stated | All terms covered in glossary
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -227,13 +236,13 @@ Generate 4–6 decision-critical Q&As from recent financial/economic news—mini
 
 **News** (~25w): What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~50w): **Cycles** (≥2) | **Quantified**: WACC% | Liquidity$ | Valuation multiple | Tax$ | Cash flow$ | IRR
+**Impact** (~50w): **Cycles** (≥2) | **Quantified**: WACC% | Liquidity$ | Valuation multiple | Tax$ | Cash flow$ | IRR. Make causal links explicit.
 
-**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same; note any tension between roles.
 
-**Decision** (~50w): **Rec**: Execute/Hedge/Defer/Monitor/Avoid | **Rationale**: Why | **Success**: Targets
+**Decision & Alternatives** (~50w): **Options**: Briefly contrast at least two options (e.g., Execute now vs Defer/Hedge/Monitor), including benefits, costs, and risks. **Rec**: State recommended option and why. **Success**: Quantified targets (e.g., WACC change, liquidity buffer, covenant headroom).
 
-**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
+**Action** (~20w): **Immed (0-2wk)**: Concrete steps + owner | **Short (2wk-2mo)**: Concrete steps + owner
 
 [n1]: URL
 ---

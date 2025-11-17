@@ -1,8 +1,8 @@
 # Operations & Supply Chain News Intelligence Q&A (Minimal Viable)
 
-Generate 4–6 decision-critical Q&As from recent industry news—minimal viable tracking for informed decisions with limited time.
+Act as an expert operations & supply chain analyst for mature organizations. Using only this prompt and your own access to current news and web search, generate 4–6 decision-critical Q&As from recent industry news for senior operations leaders with limited reading time. Treat this prompt as fully self-contained; do not rely on other files or previous conversation.
 
-**Cadence**: Monthly brief | 4-6h effort | **Expires**: 4 weeks from generation
+**Cadence**: Monthly brief | 4-6h analyst-equivalent effort | **Expires**: 4 weeks from generation (re-validate if used later)
 
 **Scope**: Decision-critical operations news only—supply disruptions, supplier risk, cost shocks, regulatory/safety changes, capacity constraints. For mature operations organizations.
 
@@ -111,6 +111,7 @@ COO, VP Supply Chain, Plant/Factory Manager, Head of Procurement, Quality & Safe
    - ✅ Satisfies ≥1 Decision Criticality criterion
    - ✅ Specific details (dates, names, numbers, metrics)
    - ✅ Not marketing/rumors
+   - ✅ For critical metrics (e.g., % cost shock, lead time, incident rates), cross-check against ≥2 credible sources when possible; if figures conflict or are only approximate, explicitly flag the uncertainty in the Q&A.
 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
@@ -147,13 +148,14 @@ Trigger only if **major disruption** (port/canal blockage, tier-1 supplier failu
 
 **Avoid**: Generic questions, hype, unattributed claims, stale news, speculation
 
-**Structure** (200–300w):
-1. **News** (~40w): What, when, why, category `[Ref: N#][n#]`
-2. **Impact** (~80w): ≥2 cycles + quantified (lead time %, capacity %, cost/unit, incident rates, service level %)
-3. **Stakeholders** (~50w): ≥2 roles + concerns + actions
-4. **Decision** (~70w): Adjust/Mitigate/Invest/Monitor/Exit + rationale + criteria
-5. **Action** (~40w): Immediate (0-2wk), Short (2wk-2mo) + owner
-6. **Links**: Define at end: `[n1]: URL`
+**Structure** (200–300w per Q&A, Markdown):
+1. `### Qn: [Decision-focused question]`
+2. `#### News` (~40w): What happened, when, why it matters, and category; include `[Ref: N#][n#]`.
+3. `#### Impact` (~80w): Explain consequences across ≥2 operations cycles with quantified effects (lead time %, capacity %, cost/unit, incident rates, service level %, etc.).
+4. `#### Stakeholders` (~50w): Describe how ≥2 core roles are affected (concerns, trade-offs, required actions).
+5. `#### Options & Decision` (~70w): Compare ≥2 realistic options (e.g., adjust, mitigate, invest, monitor, exit) with benefits, costs, and risks; state a clear recommended decision, when it applies, and its main limitations.
+6. `#### Actions & Success Measures` (~40w): Specify immediate (0-2wk) and short-term (2wk-2mo) actions with owners and 1–3 measurable indicators to track (e.g., target lead time, service level %, cost/unit) and how they will be monitored.
+7. `#### References`: Define Markdown reference links at the end of the document: `[Ref: N1][n1]` in text, `[n1]: URL` at bottom.
 
 **Self-Check**: Age OK | Decision Criticality ✓ | ≥2 cycles | ≥2 roles | Decision clear | 200-300w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
 
@@ -169,13 +171,12 @@ Trigger only if **major disruption** (port/canal blockage, tier-1 supplier failu
 
 **Stakeholders**: ≥4 roles | Actions + authority
 
-### Step 5: Validate (fail ANY = stop, fix, re-run ALL)
+### Step 5: Self-Review & Validate (fail ANY = stop, correct all Q&As, then re-check every item before final output)
 
 **Quantitative**: Floors met | Glossary 100% | 4 cycles | Categories per % | ≥4 roles | Citations OK | 5 word samples 200-300w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
 **Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 cycles+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-cycle ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
 
-### Step 6: Submit
 
 **Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+4wk)** | Search documented
 

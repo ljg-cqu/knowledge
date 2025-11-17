@@ -13,6 +13,31 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 - **Overall**: ≥65% <3mo, ≥80% <6mo, ≥90% <9mo, 100% ≤18mo
 - **Validity**: 4 weeks; re-validate if >2mo
 
+## How the LLM should use this file
+
+- **Role**: Act as a strategic intelligence and market research analyst for a post-PMF organization.
+- **Inputs (fill before running)**:
+  - Domain and segment (e.g., EV batteries in NA/EU, global AI infra, consumer fintech in APAC).
+  - Period under review (e.g., last 4 weeks, Q4 2025).
+  - Organization profile: size, stage, regions, main products, current strategic bets.
+  - Baseline strategic metrics: R&D spend %, core TAM and current share, growth rates, ESG ratings/targets, key regulatory exposures.
+  - Existing strategy hypotheses or theses to test (e.g., "solid-state by 2030", "carbon price stays < $X").
+  - Stakeholders and their goals: CEO, CSO, CRO, CIO, VP Corp Dev, Chief Sustainability Officer, others as relevant.
+  - Constraints: capital envelope, risk appetite, regulatory boundaries, execution capacity.
+- **Objective**: Using only the instructions in this file (no other prompt files), produce:
+  - An executive summary and horizon coverage overview.
+  - 6–8 Q&As that satisfy all requirements below.
+  - Glossary and reference sections (G, N, A, P, I, R) with citations.
+  - At least 2 diagram descriptions and 1 table in Markdown.
+  - A completed validation report with quantitative and qualitative checks.
+- **Output expectations**:
+  - Respect the word counts, horizons, category floors, and freshness thresholds.
+  - Focus only on strategically meaningful news that meets the decision criticality framework.
+  - Prefer concrete numbers, formulas, and thresholds over vague language.
+  - Cover multiple stakeholder viewpoints and explicitly describe trade-offs, risks, and limitations.
+  - Provide clear recommendations, action paths, and success metrics that can be monitored.
+  - Use structured Markdown (headings, bullets, tables, diagrams, reference links) for high scanability.
+
 ## I. Context & Scope
 
 **Audience**: C-suite, strategy teams, corporate dev, research leaders (core roles only).
@@ -39,7 +64,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 6. **Quantified**: Market/consumer/policy/ESG/funding metrics
 7. **Trend Significance**: Confirms/refutes thesis, shifts trajectory
 
-**Answer Structure** (200-300w): News (what, when, why) + impact (quantified, ≥2 horizons, ≥2 roles) + decision (Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale) + timeline (S/M/L). Projections only if sourced.
+**Answer Structure** (200-300w): Begin with 1–2 sentences summarizing the news (what happened, when, why it matters, category, and at least one citation). Then explain the strategic impact across at least two time horizons and two stakeholder groups, using quantified metrics (TAM, CAGR, funding $, policy $, ESG targets, market share, NPV/IRR where relevant). Next compare at least two decision paths (for example Invest vs Monitor vs Pivot/Prepare/Delay/Ignore), outlining benefits, costs, risks, conditions where each path is preferred, and key uncertainties or assumptions. Close with concrete next steps for S/M/L horizons, named owners, and 2–3 measurable success criteria with baselines, targets, and how they will be monitored. Clearly distinguish sourced figures from rough estimates.
 
 ## II. Requirements
 
@@ -91,11 +116,11 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
    **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Scholar
 
 3. **Curate** (≥12-15 candidates: Research ≥4, Policy ≥3, Market ≥3, Industry ≥2):
-   - ✅ Age per freshness
-   - ✅ Whitelist OR primary source
-   - ✅ Satisfies ≥1 Decision Criticality criterion
-   - ✅ Specific details (dates, names, numbers, metrics)
-   - ✅ Not marketing/rumors
+   - Age per freshness
+   - Whitelist OR primary source
+   - Satisfies ≥1 Decision Criticality criterion
+   - Specific details (dates, names, numbers, metrics)
+   - Not marketing/rumors
 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
@@ -105,7 +130,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | A# (academic) | P# (policy) | I# (industry) | R# (APA 7th+tag)
 
-**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+**Citation**: Use Markdown reference links such as `[Ref: N1 – Source, 2025][n1]` in the answer body and `[n1]: URL` at the end. Prefer authoritative and recent sources (official policy portals, leading journals, central banks, major analyst firms). When older or secondary material is used, label it explicitly and avoid treating it as decisive. For every important numeric claim (for example CAGR, TAM, policy budgets, ESG scores, market share), attach at least one supporting reference where feasible and flag approximations or back-of-envelope estimates.
 
 **Floors**: G≥10 (100% terms used), N≥5-6, A≥3, P≥2, I≥3, R≥10
 
@@ -133,14 +158,14 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 **Avoid**: Tactical, daily ops, speculation, hype, unattributed claims, stale news
 
 **Structure** (200-300w):
-1. **News** (~40w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~80w): ≥2 horizons + quantified (CAGR/TAM/$, policy $, market share, funding)
-3. **Stakeholders** (~50w): ≥2 roles + concerns + actions
-4. **Decision** (~70w): Invest/Monitor/Pivot/Prepare/Delay/Ignore + rationale + criteria
-5. **Action** (~30w): S/M/L (6-18mo/18-36mo/3-5yr) + owner
-6. **Links**: Define at end: `[n1]: URL`
+1. **News** (~40w): What, when, why, category, and at least one reference tag (for example `[Ref: N1][n1]`).
+2. **Impact** (~80w): At least two horizons plus quantified effects (CAGR/TAM/$, policy $, market share, funding, ESG scores, NPV/IRR where relevant) with units and baselines.
+3. **Stakeholders** (~50w): At least two roles (for example CEO, CSO, CRO, CIO, VP Corp Dev, CSO/ESG) with specific concerns, trade-offs, and candidate actions.
+4. **Decision** (~70w): Compare at least two options (Invest/Monitor/Pivot/Prepare/Delay/Ignore) and make the reasoning explicit: benefits, costs, risks, and conditions where each option is appropriate, noting key uncertainties and limitations.
+5. **Action** (~30w): S/M/L (6–18mo/18–36mo/3–5yr) next steps, owners, and 2–3 success metrics with target values and measurement approach.
+6. **Links**: Define all reference links at the end of the answer, for example `[n1]: URL`.
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 horizons | ≥2 roles | Decision clear | 200-300w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+**Self-Check**: Age OK | Decision criticality satisfied | ≥2 horizons | ≥2 roles | ≥2 options compared | Risks, trade-offs, and limitations stated | Reasoning coherent and non-contradictory | 200–300w | Metrics quantified with units and baselines | ≥1 citation (prefer recent) | Reference links present and valid | 0% hype | 100% actionable | All terms covered in glossary | Calculations and percentages cross-checked | Uncertainties and assumptions explicitly flagged
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -158,9 +183,9 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-**Quantitative**: Floors met | Glossary 100% | 3-4 horizons | Categories per % | ≥5 roles | Citations OK | 5 word samples 200-300w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+**Quantitative**: Floors met | Glossary covers 100% of terms | 3–4 horizons represented | Category percentage targets respected | ≥5 roles used across Q&As | Citations present for all news items | Sample of 5 answers within 200–300 words | Visuals count (diagrams and tables) satisfied | Every Q&A includes a decision and timeline | **All items meet freshness rules**
 
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 horizons+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-horizon ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+**Qualitative**: News items meet freshness thresholds and avoid hype | Every Q&A meets decision criticality criteria | Impacts cover ≥2 horizons and ≥2 roles and are quantified | Decisions compare alternatives with rationale and criteria | Sources span at least three types | Each horizon has at least one news+analysis pair | Links resolve correctly | Quantification is consistent and plausible | Recommendations are concrete and implementable | Evidence is explicitly cited and uncertainty is labelled | Search process is documented | Final pass checks calculations, terminology consistency, reasoning coherence, and success metrics
 
 ### Step 7: Submit
 
@@ -300,3 +325,18 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 | **Value** | Long-term positioning |
 
 **Use for**: R&D roadmaps | Market sizing | Policy foresight | ESG strategy | Cross-industry adjacency | Competitive positioning
+
+## IX. Quick Prompt Checklist (before running)
+
+Use this as a final 30–60 second sanity check before asking an LLM to generate Q&As with this file:
+
+- **Self-contained**: All necessary instructions, definitions, and expectations are present in this single prompt; no reliance on other files or prior answers.
+- **Context filled**: Domain, period, organization profile, baseline metrics, existing theses, stakeholders, and constraints are specified.
+- **Precise & relevant**: The focus is on a small set of strategically important news items, each with clear metrics (TAM/CAGR/$, policy $, ESG scores, market share) and a 3–24 month+ decision window.
+- **Complete but MECE**: Horizons (3–4), categories (Research/Policy/Market/Industry), and core roles are all covered with minimal overlap.
+- **Multi-perspective & deep**: Each question touches at least two horizons and two roles, with enough detail for implementation (owners, timing, resources).
+- **High-signal & concise**: Answers are constrained to 200–300 words, focus on the highest-impact points, and avoid background history unless directly decision-relevant.
+- **Evidence-driven**: Sources are authoritative and recent; numeric claims are backed by citations or clearly marked as estimates; uncertainties and limitations are surfaced.
+- **Balanced decisions**: At least two options are compared per question with benefits, costs, and risks; counterpoints and downside scenarios are acknowledged.
+- **Structured output**: Executive summary, horizon overview, Q&As, references, visuals, and validation report are all requested in clear Markdown structure.
+- **Actionable & testable**: For each decision, there are concrete S/M/L actions, owners, and measurable success criteria with baselines and targets.

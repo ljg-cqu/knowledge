@@ -1,8 +1,13 @@
 # Product & Market Intelligence News Q&A Generator (Minimal Viable)
 
-Generate 4–6 decision-critical Q&As from recent industry news—minimal viable tracking for informed decisions with limited time.
+Use this template as a single, self-contained prompt for an LLM (with web search and Markdown output) to generate 4–6 decision-critical Q&As, visuals, and a validation report from recent product and market news in one run.
 
-**Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
+**How to use with an LLM**:
+1. Before running, fill in the contextual placeholders in the Output Format section (`[Domain]`, `[Period]`, roles, and generation date) and decide your product, stage, region, target segment, key competitors, and priorities for this period.
+2. Paste this entire prompt into the LLM and provide those context values.
+3. Instruct the LLM to strictly follow all requirements, execution steps, and the output format to produce Q&As, references, visuals, and the validation report.
+
+**Cadence & Effort**: Bi-weekly | 4–6h equivalent analysis effort | **Validity**: Results are valid for 2 weeks from the generation date.
 
 **Freshness** (all news must meet these age thresholds):
 - **High-Velocity** (Competitive, Pricing): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
@@ -12,6 +17,14 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 **Scope**: Decision-critical product news only—competitive features, pricing shifts, strategic pivots, customer research. For post-PMF organizations.
 
 **Exclude**: Technical implementation, sales execution, corporate finance (except pricing), long-term R&D, rumors, marketing fluff, stale news, nice-to-have trends.
+
+**Context Inputs (set before running)**:
+- Your product and business model (e.g., B2B SaaS, consumer app) and main value proposition.
+- Target customers and regions (segments, ICPs, markets you care about in this period).
+- Company stage and scale (e.g., post-PMF, revenue or user band, team size).
+- Competitive set (3–7 key competitors you track for this domain).
+- Strategic priorities for this period (e.g., retention, expansion, pricing, new segments).
+- Constraints and risk tolerance (time, budget, regulatory or contractual limits).
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts roadmap prioritization, go/no-go, or strategic pivot
@@ -30,7 +43,7 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision | No generic theory or intros—focus only on decision and concrete actions
 
 **Phases** (3-4, 1-2 Q each): Discovery, Design, Launch, Growth (skip Maturity, Expansion, Sunsetting unless decision-critical)
 
@@ -81,16 +94,19 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
    - ✅ Satisfies ≥1 Decision Criticality criterion
    - ✅ Specific details (dates, names, numbers, metrics)
    - ✅ Not marketing/rumors
+   - ✅ High expected impact on your roadmap, pricing, or positioning (drop marginal items even if fresh)
 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
-5. **Allocate**: 4-6 Q × 3-4 phases (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
+5. **Allocate**: 4–6 Q × 3–4 phases (1–2 each) × 3–4 categories (≥1/Q) × ≥5 roles, avoiding duplicate questions about the same news unless a split by phase is clearly needed
 
 ### Step 2: Build References (Minimal)
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | C# (competitive, feature, URL) | P# (pricing, model, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
 **Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+
+**Quality**: Prefer primary or official sources (pricing pages, product announcements, release notes, research reports). When you rely on summaries or commentary, cross-check at least one primary or high-credibility source, and mention any uncertainty or ranges in the Q&A if figures differ.
 
 **Floors**: G≥8 (100% terms used), N≥4-5, C≥2-3, P≥2, R≥2, A≥6
 
@@ -125,7 +141,13 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
 6. **Links**: Define at end: `[n1]: URL`
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+**Self-Check** (for each Q&A):
+- Age within freshness thresholds and Decision Criticality satisfied
+- Covers ≥2 phases and ≥2 roles with quantified impact
+- Balanced view (pros, cons, and explicit uncertainties; no hype or untested claims)
+- Decision and rationale consistent with the described impact and stakeholder concerns
+- Word count 120-200, ≥1 citation from credible sources, links valid
+- 100% actionable next steps; all domain terms are present in the glossary and clearly defined
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -139,13 +161,15 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 **Decision**: 100% decision + rationale + criteria + timeline
 
+**Coverage & Non-Overlap**: Q&As collectively cover the curated, high-impact news items without redundant overlap; any excluded item is intentionally out of scope (e.g., low impact, speculative, or outside this product/segment).
+
 **Stakeholders**: ≥5 roles | Actions + authority
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
 **Quantitative**: Floors met | Glossary 100% | 3-4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Logic consistent (no contradictions, circular reasoning, or unjustified jumps)
 
 ### Step 7: Submit
 
@@ -180,6 +204,8 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 **✗ Bad**: "How does PMF work?" (no news) | "What is NPS?" (overview) | "Build AI features?" (no trigger) | "Kubernetes 1.30" (tech ops) | "Competitor launched feature" (no decision)
 
 ## VI. Output Format (Minimal)
+
+LLM: Structure your entire output exactly using the following subsections and Markdown headings, in this order.
 
 ### A. TOC
 
@@ -223,13 +249,13 @@ Generate 4–6 decision-critical Q&As from recent industry news—minimal viable
 
 **News** (~25w): What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~50w): **Phases** (≥2) | **Quantified**: Adoption% | Pricing$ | Market% | Churn signal
+**Impact** (~50w): **Phases** (≥2) | **Quantified**: Use concrete numbers with baselines where possible (adoption %, pricing $, market %, churn signal)
 
 **Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~50w): **Rec**: Build/Prioritize/Monitor/Defer/Ignore | **Rationale**: Why | **Success**: Targets
+**Decision** (~50w): Briefly compare at least 2 plausible responses, then **Rec**: Build/Prioritize/Monitor/Defer/Ignore | **Rationale**: Why | **Success**: Measurable targets and thresholds (e.g., adoption %, churn %, revenue or margin impact, NPS)
 
-**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
+**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same; include concrete experiments or tools where relevant (e.g., price tests, in-product experiments, surveys)
 
 [n1]: URL
 ---

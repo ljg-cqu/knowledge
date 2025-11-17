@@ -13,6 +13,29 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **Exclude**: Technical implementation, product strategy/pricing research, corporate finance (except GTM pricing), long-term strategy, rumors, marketing fluff, stale news, nice-to-have trends.
 
+**How the LLM should use this file**
+
+ - **Role**: Act as a Commercial Operations news intelligence analyst for a post-PMF company.
+ - **Inputs (fill before running)**:
+   - Domain and vertical (e.g., B2B SaaS, fintech, region).
+   - Period (e.g., last 2 weeks, Q4 2024).
+   - Company context: size, stage, regions, primary GTM motions, main products, average contract value.
+   - Baseline metrics: recent pipeline $, win rate, CAC, LTV, GRR/NRR, churn, key conversion rates.
+   - Stakeholders and their goals: CRO, VP Sales, VP Marketing, VP CS, RevOps analyst, others as relevant.
+   - Constraints: budget, hiring limits, regulatory or contractual boundaries.
+ - **Objective**: Using only the instructions in this file (no other prompt files), produce:
+   - An executive summary.
+   - A stage coverage overview.
+   - 4–6 Q&As that satisfy all requirements below.
+   - Glossary and reference sections (G, N, P, M, R, A) with citations.
+   - At least 2 diagram descriptions and 1 table in Markdown.
+   - A completed validation report.
+ - **Output expectations**:
+   - Respect word counts and freshness thresholds.
+   - Focus on high-impact news that meets the decision criticality framework.
+   - Prefer concrete numbers, formulas, and thresholds over vague language.
+   - Cover multiple stakeholder viewpoints and explicitly describe trade-offs, risks, and limitations.
+
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts quota strategy, GTM pivot, or revenue model
 2. **Creates Risk**: Material competitive threat, churn signal, or CAC/LTV pressure
@@ -26,7 +49,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 3. **Customer Success & Retention**: Churn, NRR, expansion, retention tactics affecting revenue
 4. **Revenue Operations & Analytics** (optional): RevOps tools, analytics platforms, data infrastructure affecting decisions
 
-**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 stages, ≥2 roles) + decision (Adopt/Test/Scale/Defer/Avoid + rationale) + timeline (immediate/short). Projections only if sourced.
+**Answer Structure** (120–200 words): News (what, when, why) + impact (quantified, ≥2 stages, ≥2 roles) + decision options (compare at least two choices such as Adopt/Test/Scale/Defer/Avoid with rationale, risks, trade-offs, and limitations) + timeline (immediate/short) + success metrics (baseline vs target and how to measure). Projections only if backed by citations and clearly flagged as estimates.
 
 ## II. Requirements
 
@@ -77,11 +100,11 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
    **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Product Hunt
 
 3. **Curate** (≥10-15 candidates: Sales ≥4, Marketing ≥3, CS ≥2, RevOps ≥2, Competitive ≥2):
-   - ✅ Age per freshness
-   - ✅ Whitelist OR primary source
-   - ✅ Satisfies ≥1 Decision Criticality criterion
-   - ✅ Specific details (dates, names, numbers, metrics)
-   - ✅ Not marketing/rumors
+   - Age per freshness
+   - Whitelist OR primary source
+   - Satisfies ≥1 Decision Criticality criterion
+   - Specific details (dates, names, numbers, metrics)
+   - Not marketing/rumors
 
 4. **Verify**: Check decision criticality; if fail, retry earlier tiers
 
@@ -91,7 +114,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | P# (platform, model, URL) | M# (methodology, application, URL) | R# (report, findings, URL) | A# (APA 7th+tag)
 
-**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+**Citation**: Use Markdown reference links with source name and year, for example `[Ref: N1 – Gong, 2024][n1]` in text and `[n1]: URL` at the end. Prefer sources from the last 12 months where possible, and explicitly mark older or uncertain information.
 
 **Floors**: G≥8 (100% terms used), N≥4-5, P≥2, M≥1-2, R≥2, A≥6
 
@@ -120,12 +143,12 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **Structure** (120-200w):
 1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~50w): ≥2 stages + quantified (revenue $, pipeline $, conversion %, retention %)
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Adopt/Test/Scale/Defer/Avoid + rationale + criteria
-5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
+2. **Impact** (~50w): ≥2 stages + quantified (revenue $, pipeline $, conversion %, retention %, include baseline vs target when possible)
+3. **Stakeholders** (~35w): ≥2 roles + concerns + actions; call out where perspectives, incentives, or constraints differ
+4. **Decision** (~50w): Compare at least two options (e.g., Adopt vs Test vs Defer/Avoid) with rationale, risks, trade-offs, and when each is appropriate; note key uncertainties
+5. **Action** (~20w): Immediate (0-2wk) and Short (2wk-2mo) actions + owner + 1–3 success metrics and how they will be measured
 
-**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 stages | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
+**Self-Check**: Age OK | Decision Criticality ✓ | ≥2 stages | ≥2 roles | ≥2 options compared | risks & limitations stated | Decision clear | 120–200w | Quantified with units & baselines | ≥1 cite | citations recent where possible | 0% hype | 100% actionable | All terms in glossary | No contradictions across answers | Uncertainties flagged
 
 ### Step 4: Visuals (≥2 diagrams + ≥1 table)
 
@@ -145,7 +168,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **Quantitative**: Floors met | Glossary 100% | 3-4 stages | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
 
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 stages+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-stage ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented
+**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 stages+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-stage ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Self-review of calculations, terminology, contradictions, and success metrics completed
 
 ### Step 7: Submit
 
