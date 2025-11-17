@@ -48,15 +48,17 @@
 
 **17. Consistency**: Follow consistent hierarchy and conventions. ❌ Mixed formatting. ✅ Predictable structure (H1 title, H2 sections).
 
+**18. TOC**: Include table of contents for long documents (>3 pages or >5 sections). ❌ No navigation aid. ✅ TOC with section links.
+
 ### Validation
 
-**18. Evidence**: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, section); uncertainty flagged.
+**19. Evidence**: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, section); uncertainty flagged.
 
-**19. Verification**: Perform structured self-review. ❌ No verification. ✅ Facts verified, contradictions checked, unknowns flagged.
+**20. Verification**: Perform structured self-review. ❌ No verification. ✅ Facts verified, contradictions checked, unknowns flagged.
 
-**20. Practicality**: Include concrete steps, examples, tools. ❌ Abstract recommendations. ✅ Specific steps, examples, tools.
+**21. Practicality**: Include concrete steps, examples, tools. ❌ Abstract recommendations. ✅ Specific steps, examples, tools.
 
-**21. Success Criteria**: Define measurable outcomes. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, target, measurement).
+**22. Success Criteria**: Define measurable outcomes. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, target, measurement).
 
 ## Quick Check
 
@@ -65,7 +67,7 @@
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
 ☐ Significance | ☐ Concision | ☐ Accuracy | ☐ Credibility  
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency  
+☐ Structure | ☐ Consistency | ☐ TOC  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ## Limitations
