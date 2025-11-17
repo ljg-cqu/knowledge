@@ -1,64 +1,62 @@
 # Content Quality Check Guidelines
 
-**Purpose:** Ensure content enables action with minimal clarification.
+**Purpose:** Ensure content communicates clearly and comprehensively with minimal need for clarification.
 
-**Application:** Use comprehensively when content is decision-critical, high-impact, time-sensitive, multi-stakeholder, or effort-intensive. Otherwise apply selectively.
-
-**Note:** Percentage impacts are approximate estimates based on typical improvements.
+**Application:** Apply comprehensively for high-impact, decision-critical, time-sensitive, multi-stakeholder, or effort-intensive content. Otherwise apply selectively.
 
 ## Guidelines
 
 ### Foundation
 
-**1. Context** [↓30-40% clarification]: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources. ❌ Title only. ✅ All context elements present.
+**1. Context**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources. ❌ Title only. ✅ Complete context.
 
-**2. Clarity** [↓25-35% ambiguity]: Define key terms and critical relationships; use diagrams for complex structures. ❌ Unexplained jargon/specialized terms. ✅ Key terms defined; diagrams for complex relationships/processes.
+**2. Clarity**: Define key terms and relationships; use diagrams for complexity. ❌ Unexplained jargon. ✅ Defined terms; diagrams.
 
-**3. Precision** [↓40-50% specification ambiguity]: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "scalable", "soon"). ✅ Specific, measurable criteria (numbers, ranges, thresholds); explicit methods for processes.
+**3. Precision**: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "soon"). ✅ Specific criteria (numbers, ranges, thresholds).
 
-**4. Relevance** [↓30-40% noise]: Focus on decision-critical information; move non-essential details to appendices/references. ❌ Extensive background without connection to decisions. ✅ Information directly supports decisions/actions; background brief or linked.
+**4. Relevance**: Focus on essential information; move non-critical details to appendices. ❌ Unconnected background. ✅ Information supports purpose.
 
 ### Scope
 
-**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness]: Apply MECE principle to sections. ❌ Gaps/overlaps in coverage. ✅ Distinct, non-overlapping sections covering all relevant aspects.
+**5. MECE** (Mutually Exclusive, Collectively Exhaustive): Ensure sections are distinct and comprehensive. ❌ Gaps/overlaps. ✅ Complete, non-overlapping coverage.
 
-**6. Sufficiency** [↑35-45% comprehensiveness]: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes). ❌ Partial understanding/action only. ✅ All dimensions addressed.
+**6. Sufficiency**: Cover all dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes). ❌ Partial coverage. ✅ All dimensions addressed.
 
-**7. Breadth** [↑30-40% perspective diversity]: Reflect relevant stakeholder perspectives. ❌ Single viewpoint only. ✅ Multiple stakeholder concerns addressed.
+**7. Breadth**: Include relevant perspectives. ❌ Single viewpoint. ✅ Multiple perspectives.
 
-**8. Depth** [↑25-35% thoroughness]: Include sufficient detail for high-impact areas. ❌ Principles without supporting detail. ✅ Actionable specifics (options, trade-offs, parameters, examples).
+**8. Depth**: Provide sufficient detail for high-impact areas. ❌ Principles without detail. ✅ Specifics (options, trade-offs, examples).
 
 ### Quality
 
-**9. Significance** [↓40-60% reading time]: Highlight critical information; deemphasize low-impact details. ❌ Exhaustive lists of low-relevance items. ✅ Focus on critical elements; link to comprehensive references.
+**9. Significance**: Highlight critical information; deemphasize low-impact details. ❌ Exhaustive low-relevance lists. ✅ Critical elements with references.
 
-**10. Concision** [↓35-45% word count]: Eliminate redundancy. ❌ Concepts repeated across sections. ✅ Each concept stated once, then referenced; details/examples in later sections.
+**10. Concision**: Eliminate redundancy. ❌ Repeated concepts. ✅ Each concept stated once, then referenced.
 
-**11. Accuracy** [↓20-30% factual errors]: Verify facts against authoritative sources. ❌ Unverified/outdated information. ✅ Facts verified; version-specific/time-sensitive information flagged.
+**11. Accuracy**: Verify facts against authoritative sources. ❌ Unverified claims. ✅ Verified facts; time-sensitive info flagged.
 
-**12. Credibility** [↑50-60% trust]: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (official documentation, reputable sources, recognized standards).
+**12. Credibility**: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (source, standard, documentation).
 
-**13. Logic** [↓30-40% reasoning errors]: Present coherent arguments with explicit trade-offs. ❌ One-sided claims without context/limitations. ✅ Balanced analysis with clear reasoning, trade-offs, conditions.
+**13. Logic**: Present coherent arguments with explicit trade-offs. ❌ One-sided claims. ✅ Balanced analysis with reasoning.
 
-**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks, selection criteria. ❌ Single solution, no alternatives. ✅ Multiple options with explicit costs, benefits, risks, conditions.
+**14. Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks. ❌ Single solution. ✅ Multiple options with trade-offs.
 
-**15. Fairness** [↓40-50% bias]: Present balanced views, counterarguments, limitations. ❌ One approach without downsides. ✅ Multiple perspectives, limitations, counterarguments; specify when NOT recommended.
+**15. Fairness**: Present balanced views and limitations. ❌ Single approach without downsides. ✅ Multiple perspectives; specify when NOT recommended.
 
 ### Format
 
-**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams. ❌ Long, unstructured text blocks. ✅ Clear headings, bullet lists, comparison tables; diagrams for complex structures.
+**16. Structure**: Use clear headings, lists, tables, diagrams. ❌ Unstructured blocks. ✅ Organized headings, lists, tables, diagrams.
 
-**17. Consistency** [↑35-45% readability]: Follow consistent hierarchy and conventions. ❌ Mixed heading levels, inconsistent formatting. ✅ Predictable structure following conventions (H1 title, H2 sections, bullets, tables).
+**17. Consistency**: Follow consistent hierarchy and conventions. ❌ Mixed formatting. ✅ Predictable structure (H1 title, H2 sections).
 
 ### Validation
 
-**18. Evidence** [↑40-50% trust]: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, page/section); estimates, assumptions, uncertainty flagged.
+**18. Evidence**: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, section); uncertainty flagged.
 
-**19. Verification** [↓25-35% errors]: Perform structured self-review. ❌ Finalized without verification. ✅ Facts verified, contradictions/inconsistencies checked, examples validated, assumptions confirmed, unknowns flagged.
+**19. Verification**: Perform structured self-review. ❌ No verification. ✅ Facts verified, contradictions checked, unknowns flagged.
 
-**20. Practicality** [↑50-60% implementation speed]: Include concrete steps, examples, tools. ❌ Generic/abstract recommendations. ✅ Actionable steps, specific examples, practical tools/aids.
+**20. Practicality**: Include concrete steps, examples, tools. ❌ Abstract recommendations. ✅ Specific steps, examples, tools.
 
-**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes and validation methods. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, targets, measurement/validation methods).
+**21. Success Criteria**: Define measurable outcomes. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, target, measurement).
 
 ## Quick Check
 
@@ -72,22 +70,8 @@
 
 ## Limitations
 
-**Trade-offs:**
-- Rigor vs. speed: Comprehensive application takes time; selective application prioritizes velocity
-- Depth vs. breadth: Detailed analysis may delay broader coverage
-- Precision vs. accessibility: Specificity may reduce readability for non-expert audiences
+**Trade-offs:** Rigor vs. speed, depth vs. breadth, precision vs. accessibility.
 
-**When NOT to apply comprehensively:**
-- Informal notes, brainstorms, personal documentation
-- Rapid prototypes, exploratory work, disposable drafts
-- Time-constrained situations where speed outweighs thoroughness
-- Low-stakes content with minimal impact
-- Contexts where audience prefers brevity over completeness
+**Skip comprehensive review for:** Informal notes, brainstorms, rapid prototypes, exploratory work, time-constrained situations, low-stakes content.
 
-**Exclude or move to references:**
-- Extensive background/history
-- Pure theory (unless central to purpose)
-- Low-impact edge cases
-- Formal proofs (unless required)
-- Unsupported speculation
-- References without context/link
+**Move to appendices:** Extensive background, pure theory (unless central), low-impact edge cases, formal proofs (unless required), unsupported speculation.
