@@ -61,9 +61,7 @@
 ## Quick Check (30s)
 
 **Before sending your prompt (mandatory for decision-critical prompts, recommended for others):** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
-
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
-
 **Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact or low severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, domain, constraints, stakeholders, budget
 
 **Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE+Sufficiency) | ↑30-45% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
