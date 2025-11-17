@@ -1,11 +1,11 @@
-# Leadership Decision-Critical Q&A Generator (Minimal Viable)
+# Leadership Decision-Critical Q&A Generator
 
 **Context**:
 - **Problem**: Senior leaders (5-15 yrs experience) need decision-critical Q&As for high-stakes scenarios, reducing hallucinations (↓30-60%) and improving decision quality (↑60-80%).
 - **Scope**: Decision-critical scenarios only—blocks decisions or creates material risk. Focus: strategic, people, change, culture.
 - **Constraints**: Scenario-based Q&As; see Requirements for details.
-- **Assumptions**: Assume basic familiarity with core leadership frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
-- **Scale**: 8 Q&As across 3-4 topics.
+- **Assumptions**: Builds on common leadership frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
+- **Scale**: 8 Q&As across 4 topics.
 - **Resources**: Any LLM; internet for citations.
 
 **Exclude/Skip**:
@@ -21,12 +21,9 @@
 
 ### Quantitative Floors
 - **Q&A**: 8 total | 25%F/50%I/25%A (±5%) | ≥70% with ≥1 citation | ≥2 dimensions/answer | 100% decision-critical.
-- **Topics**: 3–4 decision-critical topics × 1–3 Q&As: Strategic Leadership (1–2), People & Retention (1–2), Change & Ambiguity (2–3), Culture & Trust (2–3).
+- **Topics**: 4 topics × 2 Q&As: Strategic Leadership, People & Retention, Change & Ambiguity, Culture & Trust.
 - **References**: Glossary ≥8 | Tools ≥3 | Literature ≥4 (≥1 ZH) | Citations ≥6 (APA 7th + [EN]/[ZH] tags).
 - **Visuals**: ≥2 diagrams + ≥1 table.
-
-### Decision Criticality Framework (MANDATORY)
-Include if ≥1 criterion: Blocks Decision, Creates Risk, Affects ≥2 Stakeholders, Actively Evolving, High Adoption Barrier (>40h). Exclude low-stakes or non-critical.
 
 ### Citation Standards
 - Format: Inline `[Ref: ID]` (G#/T#/L#/A#).
@@ -44,7 +41,7 @@ Mitigation: Rewrite for fails; archive links.
 ## Execution
 
 ### Step 1: Plan Allocation
-Distribute 8 Q&As across 3–4 topics (25%F/50%I/25%A). Justify each Q&A's criticality: [Blocks/Risk/Roles/Evolving/Adoption].
+Distribute 8 Q&As across 4 topics (25%F/50%I/25%A). Justify each Q&A's criticality: [Blocks/Risk/Roles/Evolving/Adoption].
 
 ### Step 2: Build References
 - **Glossary (≥8)**: G#. Term | Definition | Use cases | Limitations (alphabetize).
@@ -74,14 +71,14 @@ Spot-check ≥5 Q&As/answers for quality. Ensure balanced perspectives; all vali
 1. Topic Overview | 2. Q&As by Topic | 3. References | 4. Validation Report
 
 ### Topic Overview
-Total: [6–12] | Difficulty: [XF/Y%] / [XI/Y%] / [XA/Y%] | Coverage: 3–4 areas
+Total: 8 | Difficulty: 2F/4I/2A | Coverage: 4 areas
 
 | Topic | Q Range | Count | Mix | Artifacts |
 |-------|---------|-------|-----|-----------|
-| Strategic Leadership | Q1–Q2 | 1–2 | 0–1F/1–2I/0–1A | 1 diagram |
-| People & Retention | Q3–Q4 | 1–2 | 0–1F/1–2I/0–1A | 1 diagram |
-| Change & Ambiguity | Q5–Q7 | 2–3 | 1F/1–2I/1A | 1 table |
-| Culture & Trust | Q8–Q10 | 2–3 | 0–1F/1–2I/1–2A | 1 table |
+| Strategic Leadership | Q1–Q2 | 2 | 1F/1I/0A | 1 diagram |
+| People & Retention | Q3–Q4 | 2 | 0F/1I/1A | 1 diagram |
+| Change & Ambiguity | Q5–Q6 | 2 | 1F/1I/0A | 1 table |
+| Culture & Trust | Q7–Q8 | 2 | 0F/1I/1A | 1 table |
 
 ### Q&A Format
 **Topic: [Title]**
@@ -118,7 +115,7 @@ Total: [6–12] | Difficulty: [XF/Y%] / [XI/Y%] / [XA/Y%] | Coverage: 3–4 area
 
 | # | Check | Measurement | Criteria | Result | Status |
 |----|-------|-------------|----------|--------|--------|
-| 1 | Floors | G/T/L/A/Q (F/I/A) | G≥8, T≥3, L≥4, A≥6, Q:6-12, 25/50/25% | | PASS/FAIL |
+| 1 | Floors | G/T/L/A/Q (F/I/A) | G≥8, T≥3, L≥4, A≥6, Q:8, 25/50/25% | | PASS/FAIL |
 | 2 | Criticality | __/__ ≥1 criterion | 100% | | PASS/FAIL |
 | 3 | Citations | __% ≥1 | ≥70% | | PASS/FAIL |
 | 4 | Language | EN/ZH/Other % | EN:50-70%, ZH:20-40%, Other:5-15% | | PASS/FAIL |

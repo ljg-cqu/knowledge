@@ -1,10 +1,10 @@
 # Cross-Functional Collaboration Interview Q&A Generator
 
-Generate 8-12 decision-critical Q&As on cross-functional collaboration for senior/leadership interviews. Each Q&A must block decisions, create material risk, affect multiple stakeholders, or require near-term action.
+Generate 8-15 decision-critical Q&As on cross-functional collaboration for senior interviews. Each must impact decisions, risk, stakeholders, or require near-term action.
 
 **Audience**: Engineering Managers, Directors, VPs, CTOs, Architects, Tech Leads, Product Managers
-**Context**: Distributed systems, medium to large teams, remote/multi-timezone, cloud-native environments
-**Success Criteria**: All validation checks pass with decision-critical insights
+**Context**: Medium to large teams, potentially distributed/remote
+**Success Criteria**: Actionable insights with frameworks and metrics
 
 ---
 
@@ -14,96 +14,78 @@ Generate 8-12 decision-critical Q&As on cross-functional collaboration for senio
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Count** | 8-12 (2-3 per dimension) |
-| **Difficulty** | ~25% Fundamental / ~50% Intermediate / ~25% Advanced |
+| **Count** | 8-15 (balanced across dimensions) |
+| **Difficulty** | Mix of fundamental, intermediate, advanced |
 | **Answer Length** | 100-250 words: Context → Strategy → Framework → Metrics → Trade-offs |
-| **Citations** | ≥1 (≥2 for complex topics) |
-| **Artifacts** | Diagram + framework + table + metric per dimension/cluster |
-| **Coverage** | 5-6 phases (≥1 each); 6-8 stakeholders (≥1 each); explicit lifecycle links; 100% decision-critical |
+| **Citations** | ≥1 per Q&A |
+| **Artifacts** | Diagram, framework, table, metric per dimension |
+| **Coverage** | Multiple phases and stakeholders; all decision-critical |
 
-## 4 Decision-Critical Dimensions
+## Decision-Critical Dimensions
+
+Include Q&A if it blocks decisions (roadmap, release, resourcing), creates risk (delivery, quality, compliance), affects multiple stakeholders, or requires action within 1-6 months. Exclude niche, optional, redundant, or marketing-focused.
 
 | Dimension | Criticality | Topics |
 |-----------|-------------|--------|
-| **Decision-Making** | Blocks decisions | RFC/ADR, consensus, conflict resolution, escalation |
-| **Communication** | Creates risk | Async-first, documentation, API contracts, runbooks |
-| **Knowledge Transfer** | Affects velocity | Code review SLA, pair/mob programming, onboarding, tech debt |
-| **Coordination** | Blocks releases | Dependency management, integration handoffs, deployment approval |
-
-## Decision Criticality Framework
-
-Include a Q&A if ≥1 of the following is true:
-
-- Blocks a key decision (roadmap, release, resourcing).
-- Creates material risk (delivery, quality, compliance, trust).
-- Affects ≥2 stakeholder roles.
-- Requires action in 1–6 months (not speculative).
-
-Exclude a Q&A if it is niche/legacy, orthogonal/nice-to-have, already covered, or primarily marketing.
+| **Decision-Making** | Blocks decisions | RFC/ADR, consensus, conflict resolution |
+| **Communication** | Creates risk | Async communication, documentation, contracts |
+| **Knowledge Transfer** | Affects velocity | Code reviews, pairing, onboarding |
+| **Coordination** | Blocks releases | Dependencies, handoffs, approvals |
 
 ## Content Standards
 
 - **Traceability**: Need → Strategy → Pattern → Mechanism → Metrics
-- **Quantification**: Use specific numbers (e.g., "40% ↓ meetings, +2h focus time")
-- **Context Awareness**: Consider team size, distribution, timezones, and sync preferences
-- **Balance**: ≥2 approaches with pros/cons table, assumptions, and tags ([Consensus]/[Context]/[Emerging])
-- **Precision**: Define jargon inline (e.g., "RFC: Request for Comments"); use concrete metrics
+- **Quantification**: Use specific numbers (e.g., "40% fewer meetings")
+- **Context Awareness**: Consider team size, distribution, timezones
+- **Balance**: ≥2 approaches with pros/cons table
+- **Precision**: Define jargon; use concrete metrics
 
 ## Artifacts
 
 | Cluster | Diagram | Framework | Metric |
 |-----------|---------|-----------|--------|
-| Communication | Flow, C4 | DACI, Charter | `Async Ratio = Async/Total × 100%` |
-| Decision-Making | Tree, RACI | RFC/ADR, RAPID, Cynefin | `Velocity = Days RFC→Approval` |
-| Knowledge Transfer | Map, Path | Docs-as-Code, Second Brain | `Coverage = Documented/Total APIs × 100%` |
-| Coordination | Dependency, Interaction | Team Topologies, Contract Test | `Integration Time = Avg Hours` |
-| Stakeholder | Stakeholder, Value Stream | Matrix, Impact Mapping | `Satisfaction = NPS/CSAT` |
-| Distributed/Remote | Timezone, Workflow | Remote Playbook, Async Manifesto | `Overlap = Common Hours/24 × 100%` |
+| Communication | Flow | DACI, Charter | Async Ratio (%) |
+| Decision-Making | Tree | RFC/ADR, RAPID | Approval Velocity (days) |
+| Knowledge Transfer | Map | Docs-as-Code | Documentation Coverage (%) |
+| Coordination | Dependency | Team Topologies | Integration Time (hours) |
 
-**Format**: One Mermaid diagram + cited framework + quantitative table (≥2 approaches: Approach/Pros/Cons/When) + metric (formula/vars/target/source) per dimension/cluster.
+**Format**: Mermaid diagram + framework + table (≥2 approaches: Pros/Cons/When) + metric per dimension.
 
-**Frameworks**: RACI/DACI/RAPID, RFC/ADR, Docs-as-Code, Team Topologies, Comms Charter, Stakeholder Matrix, Cynefin, Async Manifesto, Code Review, Pair/Mob, Impact/Wardley Map, C4, Contract Testing
+**Frameworks**: RACI/DACI/RAPID, RFC/ADR, Docs-as-Code, Team Topologies, Cynefin, Async Manifesto
 
 ## Lifecycle-Stakeholder Coverage
 
-| Phase | Focus | RACI |
-|-------|-------|------|
-| 1. Requirements & Discovery | Alignment, communication, decisions, docs | BA(R), PM(A), Arch(C) |
-| 2. Architecture & Design | RFC/ADR, review, contracts, alignment | Arch(R/A), Dev(C), Sec(C), SRE(C) |
-| 3. Development | Review SLA, pair/mob, knowledge, dependencies | Dev(R/A), QA(C) |
-| 4. Testing & Quality | Ownership, Dev-QA handoffs, triage, feedback | QA(R/A), Dev(C) |
-| 5. Deployment & Release | Coordination, rollback, approvals, notifications | DevOps(R/A), SRE(C) |
-| 6. Operations & Observability | Incidents, on-call, postmortems, escalations | SRE(R/A), DevOps(C) |
-| 7. Maintenance & Support | Knowledge transfer, runbooks, security, docs | SRE(R), Sec(R), Data(C) |
-| 8. Evolution & Governance | RFC, roadmap, deprecation, stakeholder engagement | PM(R), Arch(R), Lead(A) |
+| Phase | Focus | Key Stakeholders |
+|-------|-------|------------------|
+| Requirements | Alignment, decisions | PM, BA, Architect |
+| Design | RFC, contracts | Architect, Dev, Security |
+| Development | Reviews, knowledge | Dev, QA |
+| Testing | Handoffs, feedback | QA, Dev |
+| Deployment | Coordination, approvals | DevOps, SRE |
+| Operations | Incidents, escalations | SRE, DevOps |
+| Maintenance | Runbooks, docs | SRE, Security |
+| Governance | Roadmap, engagement | PM, Architect, Lead |
 
-**Requirements**: Cover 5-6 phases (≥1 each); 6-8 stakeholders (≥1 each); explicit lifecycle links
+**Requirements**: Cover ≥5 phases and ≥6 stakeholders
 
-## References (Minimal Viable)
+## References
 
 | Component | Minimum | Specifications |
 |-----------|---------|---------------|
-| **Glossary** | ≥6 | Only terms used in Q&As + relations + lifecycle phases |
-| **Tools** | ≥3 | URL, updated ≤18 months, adoption (decision-critical only) |
-| **Literature** | ≥4 | Canonical + recent sources on collaboration |
-| **Citations** | ≥6 | APA 7th edition, balanced language distribution |
+| **Glossary** | ≥6 | Terms used + relations + phases |
+| **Tools** | ≥3 | Current tools with adoption metrics |
+| **Literature** | ≥4 | Canonical + recent sources |
+| **Citations** | ≥6 | APA 7th, diverse sources |
 
-**Quality**: ≥50% sources <5 years old (≥60% collaboration-focused); ≥3 source types; <25% single-author; 100% valid URLs
+**Quality**: ≥50% sources <5 years old; valid URLs
 
 ---
 
 # Generation Process
 
-## 1. Plan and Gather References
-Ensure 8-12 Q&As across 4 dimensions with ~25/50/25% difficulty distribution, covering 5-6 phases and 6-8 stakeholders, all decision-critical. Compile references meeting minimum counts (G≥6, T≥3, L≥4, A≥6) and quality criteria.
-
-## 2. Create Q&As and Artifacts
-Create Q&As with 100-250 word answers following Context → Strategy → Framework → Metrics → Trade-offs structure. Include ≥1 citation, quantification, ≥2 approaches with table, and lifecycle/stakeholder links. Provide artifacts per cluster.
-
-## 3. Validate and Finalize
-Verify all reference links resolve. Run validation checks for counts, citations, recency, criticality, frameworks, metrics, artifacts, lifecycle, and stakeholders. Ensure no redundancy and all are decision-critical.
-
-**Failure Handling**: Fix any failures and re-validate.
+1. **Plan and Gather**: Ensure 8-15 Q&As across dimensions, balanced difficulty, covering ≥5 phases/≥6 stakeholders. Compile references meeting minimums and quality criteria.
+2. **Create Q&As**: Write answers with structure, citations, quantification, approaches table, lifecycle links. Provide artifacts per dimension.
+3. **Validate**: Verify counts, citations, recency, criticality, frameworks, metrics, artifacts, coverage. Fix issues.
 
 ---
 
@@ -111,103 +93,89 @@ Verify all reference links resolve. Run validation checks for counts, citations,
 
 ```markdown
 ## Contents
-[TOC: Topic Areas | Q&As | Lifecycle-Stakeholder | References | Validation]
+[TOC]
 
 ## Topic Areas
-| Cluster | Dimension | Criticality | Range | Count | Difficulty |
-[4 dimensions, 8-12 total, 25/50/25% distribution]
+| Dimension | Count | Difficulty |
+[Balanced across 4 dimensions]
 
-## Lifecycle-Stakeholder Coverage
-| Phase | Q# | Stakeholders | Criticality |
-[5-6 phases ≥1 each, 6-8 stakeholders ≥1 each, 100% decision-critical]
+## Coverage
+| Phase | Stakeholders | Criticality |
+[Multiple phases/stakeholders]
 
----
-
-## Topic 1: [Title]
-**Overview**: [1-2 sentences] | **Phase**: [1-8] | **Stakeholders**: [RACI]
-
+## Q&A Section
 ### Q1: [Question]
-**Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [1-8] | **Stakeholders**: [Roles]  
-**Criticality**: [Blocks/Risk/Stakeholders/Evolving] | **Justification**: [Why decision-critical]
+**Difficulty**: [Level] | **Dimension**: [Type] | **Phase**: [Phase] | **Stakeholders**: [Roles]  
+**Criticality**: [Reason]
 
-**Key Trade-off**: [Quantified]
+**Answer**: [100-250 words: Context → Strategy → Framework → Metrics → Trade-offs] [Citations]
 
-**Answer**: [120-200 words: Context → Strategy → Framework → Metrics → Trade-offs] [≥1 citation]
-
-**Framework**:
+**Diagram**:
 ```mermaid
-[Diagram, <120 nodes]
+[Diagram]
 ```
 
-**Metrics**: | Metric | Formula | Variables | Target | Source |
+**Framework**: [Name/Description]
 
-**Trade-offs**: | Approach | Pros (Quantified) | Cons (Quantified) | When | Tag | [≥2]
+**Metrics**: | Metric | Formula | Target |
 
-**Lifecycle**: [Integration] | **Stakeholder**: [Impact]
+**Trade-offs**: | Approach | Pros | Cons | When |
 
----
+**Links**: [Lifecycle/Stakeholder impact]
 
 ## References
 
-### Glossary (≥6)
-**G1. [Term]** [EN/ZH] – [Definition]. **Related**: [Terms]. **Lifecycle**: [Phases]
+### Glossary
+**G1. [Term]** – [Definition]. Related: [Terms]. Phases: [Phases]
 
-### Tools (≥3)
-**T1. [Tool]** [Tag] – **Purpose**: [Desc]. **Updated**: [YYYY-MM]. **Pricing**: [Type]. **Adoption**: [Metrics]. **URL**: [Link]
+### Tools
+**T1. [Tool]** – Purpose: [Desc]. Adoption: [Metrics]. URL: [Link]
 
-### Literature (≥4)
-**L1. Author(s). (Year). *Title*. Publisher.** [Tag] – **Relevance**: [Why]
+### Literature
+**L1. Author(s). (Year). *Title*.** – Relevance: [Why]
 
-### Citations (≥6, APA 7th)
-**A1.** Author(s). (Year). *Title*. Source. [EN]
+### Citations
+**A1.** Author(s). (Year). *Title*. Source.
 
----
-
-## Validation Report
-| Check | Target | Result | Status |
-|-------|--------|--------|--------|
-| Reference counts | G≥6, T≥3, L≥4, A≥6 | | PASS/FAIL |
-| Q&A counts | 8-12, ~25/50/25% difficulty | | PASS/FAIL |
-| Citations | ≥80% ≥1 ref; ≥50% ≥2 refs; all resolve | | PASS/FAIL |
-| Recency | ≥50% <5yr (≥60% collab) | | PASS/FAIL |
-| Criticality | 100% meet ≥1 criterion | | PASS/FAIL |
-| Frameworks | ≥80% use named frameworks | | PASS/FAIL |
-| Metrics | ≥70% quantified | | PASS/FAIL |
-| Artifacts | ≥90% complete | | PASS/FAIL |
-| Coverage | 5-6 phases, 6-8 stakeholders ≥1 each | | PASS/FAIL |
-
-**Overall**: [X/9] | **Issues**: [List] | **Remediation**: [Actions]
+## Validation
+| Check | Target | Status |
+|-------|--------|--------|
+| Counts | 8-15 Q&As, balanced | PASS/FAIL |
+| Citations | ≥1 per Q&A, resolve | PASS/FAIL |
+| Recency | ≥50% <5yr | PASS/FAIL |
+| Criticality | All meet criteria | PASS/FAIL |
+| Artifacts | Complete per dimension | PASS/FAIL |
+| Coverage | ≥5 phases, ≥6 stakeholders | PASS/FAIL |
 ```
 
 # Reference Examples
 
-## Glossary (≥6 - Decision-Critical Only)
-**G1. RFC** [EN] – Structured proposal for decisions. Related: ADR, Consensus. Lifecycle: All  
-**G2. ADR** [EN] – Doc capturing arch decisions, context, consequences. Related: RFC. Lifecycle: Arch, Evolution  
-**G3. RACI** [EN] – Responsible, Accountable, Consulted, Informed. Related: DACI, RAPID. Lifecycle: All  
-**G4. Async-First** [EN] – Prioritize async. 40% ↓ meetings. Related: Remote-First. Lifecycle: All  
-**G5. Code Review SLA** [EN] – Review <24h. Related: PR. Lifecycle: Dev  
-**G6. Blameless Postmortem** [EN] – Incident review on systems. Related: Psych Safety. Lifecycle: Ops, Maint
+## Glossary
+**G1. RFC** – Structured proposal for decisions. Related: ADR. Phases: All  
+**G2. ADR** – Document capturing decisions. Related: RFC. Phases: Design, Governance  
+**G3. RACI** – Roles: Responsible, Accountable, Consulted, Informed. Related: DACI. Phases: All  
+**G4. Async-First** – Prioritize async comms. Related: Remote. Phases: All  
+**G5. Code Review SLA** – Time limit for reviews. Related: PR. Phases: Development  
+**G6. Blameless Postmortem** – Incident analysis. Related: Safety. Phases: Operations
 
-## Tools (≥3 - Decision-Critical Only)
-**T1. Confluence** [EN] – Docs, knowledge base. Updated 2024-11. Adoption: 75K+ cos. https://atlassian.com/software/confluence  
-**T2. Linear** [EN] – Issues, roadmaps. Updated 2024-11. Adoption: 10K+ cos. https://linear.app  
-**T3. GitHub** [EN] – Code, PR, review. Updated 2024-11. Adoption: 100M+ devs. https://github.com
+## Tools
+**T1. Confluence** – Knowledge base. Adoption: 75K+ orgs. https://atlassian.com/software/confluence  
+**T2. Linear** – Issue tracking. Adoption: 10K+ orgs. https://linear.app  
+**T3. GitHub** – Code collaboration. Adoption: 100M+ users. https://github.com
 
-## Literature (≥4 - Canonical + Recent)
-**L1. Brooks, F. (1975). *Mythical Man-Month*. Addison-Wesley.** – Comm complexity, coord  
-**L2. DeMarco, T., & Lister, T. (2013). *Peopleware*. Addison-Wesley.** – Team dynamics, comm  
-**L3. Kim, G., et al. (2016). *DevOps Handbook*. IT Revolution.** – Cross-func collab, feedback  
-**L4. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution.** – Interaction modes, contracts
+## Literature
+**L1. Brooks, F. (1975). *Mythical Man-Month*.** – Communication complexity  
+**L2. DeMarco & Lister. (2013). *Peopleware*.** – Team dynamics  
+**L3. Kim et al. (2016). *DevOps Handbook*.** – Cross-functional collaboration  
+**L4. Skelton & Pais. (2019). *Team Topologies*.** – Team structures
 
-## Citations (≥6, APA 7th)
-**A1.** Brooks, F. (1975). *Mythical man-month*. Addison-Wesley. [EN]  
-**A2.** DeMarco, T., & Lister, T. (2013). *Peopleware*. Addison-Wesley. [EN]  
-**A3.** Kim, G., et al. (2016). *DevOps handbook*. IT Revolution. [EN]  
-**A4.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]  
-**A5.** Patton, J. (2014). *User story mapping*. O'Reilly. [EN]  
-**A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley. [EN]  
-  
+## Citations
+**A1.** Brooks, F. (1975). *Mythical man-month*. Addison-Wesley.  
+**A2.** DeMarco, T., & Lister, T. (2013). *Peopleware*. Addison-Wesley.  
+**A3.** Kim, G., et al. (2016). *DevOps handbook*. IT Revolution.  
+**A4.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution.  
+**A5.** Patton, J. (2014). *User story mapping*. O'Reilly.  
+**A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley.  
   
   
   

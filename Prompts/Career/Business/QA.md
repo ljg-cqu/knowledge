@@ -2,12 +2,12 @@
 
 ## Objective
 
-Generate 6-12 decision-critical interview questions evaluating senior technical leaders' ability to translate business models into architectural decisions.
+Generate 4-8 decision-critical interview questions evaluating senior technical leaders' ability to translate business models into architectural decisions.
 
 **Scope**:
 - Focus: Business-to-architecture translation in critical scenarios
 - Depth: Senior engineer to architect level (5-15 years experience)
-- Time: 10-15 minutes per question discussion
+- Time: 5-10 minutes per question discussion
 
 **Decision Criticality** (every Q&A must satisfy ≥1):
 - Blocks decisions (revenue model, market entry, migration)
@@ -21,8 +21,6 @@ Generate 6-12 decision-critical interview questions evaluating senior technical 
 2. Value & Risk: ROI, trade-offs, constraints
 3. Organization: Team structure, Conway's Law
 4. Evolution: Technical debt, migrations
-
-**Target Audience**: Senior engineers, architects, technical leads.
 
 **Assumptions**:
 - Basic familiarity with common frameworks (BMC, DDD, etc.)
@@ -44,7 +42,8 @@ Generate 6-12 decision-critical interview questions evaluating senior technical 
 **Text Format**:
 - **Question**: Scenario-based requiring judgment
 - **Difficulty**: foundational | intermediate | advanced
-- **Decision Criticality**: Satisfies ≥1 criterion
+- **Dimension**: Strategic Modeling | Value & Risk | Organization | Evolution
+- **Decision Criticality**: Specify criteria satisfied (e.g., Blocks decisions)
 - **Answer**: 150-250 words with citations; business analysis → architecture → trade-offs
 - **Key Insight**: One concrete insight
 - **Artifacts**: Optional Mermaid diagram and table
@@ -56,22 +55,24 @@ Generate 6-12 decision-critical interview questions evaluating senior technical 
   "questions": [{
     "id": "Q1",
     "difficulty": "foundational|intermediate|advanced",
-    "decision_criticality": "Blocks|Risk|...",
+    "dimension": "Strategic Modeling|Value & Risk|Organization|Evolution",
+    "decision_criticality": "Criteria satisfied (e.g., Blocks decisions)",
     "question": "How would you...",
     "answer": "150-250 words",
     "key_insight": "Insight",
     "artifacts": {"diagram": "mermaid", "table": "markdown"},
+    "traceability": "Business→Architecture mapping",
     "citations": ["Ref: A1"],
     "confidence": "high|medium|low"
   }]
 }
 ```
 
-## Generation Procedure
+## Procedure & Standards
 
 1. Parse context: Extract business model, constraints, risks.
 
-2. Distribute: 1-3 questions per dimension; mix difficulties; ensure all decision-critical.
+2. Distribute: 1-2 questions per dimension; mix difficulties; ensure all decision-critical.
 
 3. Generate each Q&A:
    - Question: Scenario-based
@@ -79,16 +80,9 @@ Generate 6-12 decision-critical interview questions evaluating senior technical 
    - Insight: Concrete point
    - Artifacts: Optional diagram/table
 
-4. Validate: Check count, criticality, citations, traceability.
+4. Validate: Check count, criticality, citations, traceability; ensure answers include business analysis, architecture translation, trade-offs; flag low confidence.
 
-5. Compile references: ≥8 citations in APA format.
-
-## Quality Standards
-
-- All Q&A must be decision-critical
-- Answers include business analysis, architecture translation, trade-offs
-- Citations: Inline [Ref: ID] to APA references
-- Confidence: Flag low confidence
+5. Compile references: 6-8 citations in APA format.
 
 ## Example Output
 
@@ -124,6 +118,8 @@ flowchart TD
 | SLA 99.9%+ | High availability | HA/DR + monitoring |
 | Data residency | Regional compliance | Multi-region |
 
+**Traceability**: Business model (BMC) → architectural patterns (multi-tenancy, metering, compliance)
+
 **Citations**: [Ref: A1] Vaughan Broderick (2023) [EN]; [Ref: A5] Oliveira (2023) [EN]; [Ref: A6] Hohpe (2003) [EN]; [Ref: A7] Richardson (2018) [EN]; [Ref: A12] Kim et al. (2016) [EN]; [Ref: G7] Nygard (2011) [EN]
 
 **Confidence**: High | **Stakeholders**: Architect, PM, Finance
@@ -131,16 +127,16 @@ flowchart TD
 ## Edge Cases
 
 - Missing context: Use generic scenarios
-- Adjustments: 6-8 for speed, up to 12 for depth
+- Adjustments: 4-6 for speed, up to 8 for depth
 - Validation issues: Add citations, ensure criticality
 
 ## Key Terms (8)
 
-- **Business Model Canvas (BMC)**: 9-block framework for strategy to operations
-- **Value Proposition**: Customer value → technical features/attributes
-- **Domain-Driven Design (DDD)**: Ubiquitous language, bounded contexts → microservices/team organization
-- **Conway's Law**: Organizations mirror communication structure in systems
-- **Technical Debt**: Future rework cost; quantified as % capacity
-- **Architecture Decision Record (ADR)**: Log of context, decision, consequences
-- **Wardley Mapping**: Value chain by visibility/evolution → opportunities
-- **Value Stream Mapping**: Visualizes delivery steps → waste reduction
+- **Business Model Canvas (BMC)**: 9-block framework mapping strategy to operations
+- **Value Proposition**: Customer value delivered via technical features/attributes
+- **Domain-Driven Design (DDD)**: Uses ubiquitous language and bounded contexts for microservices/team organization
+- **Conway's Law**: Organization structure mirrors system communication patterns
+- **Technical Debt**: Accumulated future rework cost, often quantified as % capacity
+- **Architecture Decision Record (ADR)**: Document logging context, decision, and consequences
+- **Wardley Mapping**: Maps value chain by visibility/evolution to identify opportunities
+- **Value Stream Mapping**: Visualizes delivery process steps to identify waste

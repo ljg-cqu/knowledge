@@ -183,5 +183,5 @@
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
 ☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
-☐ Structure | ☐ Consistency | ☐ TOC  
+☐ Structure | ☐ Consistency | ☐ TOC
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria

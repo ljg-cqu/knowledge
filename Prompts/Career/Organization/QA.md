@@ -1,103 +1,80 @@
 # Organization & Team Building Q&A Generator
 
-Generate 6-12 decision-critical organizational Q&As for informed decision-making with limited time. Focus: minimal viable Q&A generation for org/talent/culture scenarios that block decisions or create material risk.
+Generate 4-8 decision-critical Q&As for organizational scenarios blocking decisions or creating risk.
 
 ## LLM-Friendly Prompts Guidelines
 
-To ensure high-quality, low-hallucination output and better decisions, keep each prompt:
-
-1. **Context & Constraints**: State problem, goals, scope, assumptions, scale, timeline, stakeholders, and resources.
-2. **Clarity & Terminology**: Define key terms and relationships; avoid ambiguous wording.
-3. **Precision & Metrics**: Use exact numbers, units, and thresholds; use math/code blocks only when needed.
-4. **Relevance & Focus**: Include only information needed for the decision; drop side topics.
-5. **Structure**: Use headings, lists, tables, or diagrams so the model can mirror the structure.
-6. **Evidence & Citations**: Ask for and provide citations to recent primary sources (ideally <2 years old) when facts matter.
-7. **Trade-offs & Risks**: Request comparison of ≥2 options with benefits, costs, risks, and clear assumptions/limits.
-8. **Practicality & Review**: Ask for concrete steps and success metrics, then self-review and correct obvious issues before use.
+Ensure high-quality output: state context/constraints, define terms, use precise metrics, focus on relevance, structure clearly, cite recent sources, compare trade-offs, and include practical steps.
 
 ## Scope
 
-**Audience**: Engineering Managers, Team Leads, Directors/VPs/CTOs, Architects, CHRO/People Leaders
-**Context**: Technology organizations, particularly those with engineering teams of 10-100 members.
-**Purpose**: Generate decision-critical organizational Q&As for interview prep, training, or scenario analysis (3-4h effort, evergreen validity)
+**Audience**: Managers, leaders, HR professionals in organizations with teams of 10-100 members.
+**Purpose**: Generate decision-critical Q&As for interviews, training, or analysis (3-4h effort, evergreen).
 
 **Lifecycle (5 phases)**: Requirements & Discovery → Development → Deployment → Operations → Evolution
 
-**Stakeholders (≥5 core roles)**: Engineering Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead
+**Stakeholders (≥5 core roles)**: Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead
 
 ## Requirements
-**Q&A Specs**: 6-12 Q&As with balanced difficulty (roughly 25% foundational, 50% intermediate, 25% advanced); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; aim for ≥1 citation and artifacts per Q&A.
+**Q&A Specs**: 4-8 Q&As (25% foundational, 50% intermediate, 25% advanced); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation and artifact per Q&A.
 
 **Decision Criticality Framework** (MANDATORY):
-- **Include if ≥1 criterion satisfied**:
-  - **Blocks Decision**: Directly impacts org restructuring, hiring strategy, team scaling, or resource allocation
-  - **Creates Risk**: Material threat (attrition spike, burnout, skill gaps, compliance breach, retention risk)
-  - **Affects ≥2 Core Roles**: Multi-stakeholder impact (Manager + Director, CHRO + VP Eng, Team Lead + Architect)
-  - **Requires Action**: 1-6mo action window (not speculative)
-  - **Quantified Impact**: Turnover %, retention %, hiring velocity %, team velocity %, engagement score, or compliance deadline
-- **Exclude if**: Academic research, vendor marketing, or speculative/non-actionable content.
+- Include if ≥1 criterion: Blocks Decision (org restructuring, hiring, scaling), Creates Risk (attrition, burnout, gaps), Affects ≥2 Roles, Requires Action (1-6mo), Quantified Impact (turnover %, retention %, etc.).
+- Exclude: Academic, marketing, or speculative content.
 
-**Dimensions (3-4, 1-2 Q&As each, decision-critical only)**:
-1. **Team Structure & Scaling**: Org restructuring, headcount planning, team topology changes, cognitive load
-2. **Talent & Retention**: Hiring market shifts, compensation trends, attrition signals, skill gaps
-3. **Culture & Capability**: Burnout/psychological safety threats, training/development shifts, engagement signals
-4. **(Optional) Compliance & Policy**: Labor law changes, remote work policy shifts, equity/diversity regulations
+**Dimensions (3-4, 1-2 Q&As each)**:
+1. **Team Structure & Scaling**: Restructuring, headcount, topology, cognitive load
+2. **Talent & Retention**: Hiring shifts, compensation, attrition, skill gaps
+3. **Culture & Capability**: Burnout, safety, training, engagement
+4. **(Optional) Compliance & Policy**: Law changes, remote work, diversity
 
-**Coverage**: All 5 lifecycle phases ≥1 Q&A; ≥5 core stakeholder roles represented; ≥60% multi-stakeholder impact
+**Coverage**: All 5 phases ≥1 Q&A; ≥5 roles represented; ≥60% multi-stakeholder.
 
-**Standards**:
-- **Traceability**: Scenario → Decision Criticality → Impact → Decision → Timeline → Metrics
-- **Quantified**: "Attrition ↑ 8%→15% YoY, hiring velocity ↓40%"
-- **Decision-Critical**: Every Q&A must satisfy ≥1 criticality criterion; justify inclusion
-- **Precision**: Define jargon inline; cite sources; concrete metrics with thresholds
-- **Scenario-Based**: Focus on decision-critical situations, not time-bound news
+**Standards**: Traceable, quantified, decision-critical (justify), precise (define jargon, cite), scenario-based.
 
-## Artifacts (Per Q&A, Minimal Viable)
+## Artifacts (Per Q&A)
 
 | Artifact | Format | Requirements |
 |----------|--------|--------------|
-| **Diagram** | Mermaid (<80 nodes) | Aim for ≥1 per Q&A (validation: ≥90% of Q&As). Org topology, decision tree, impact flow, or timeline. |
-| **Table** | Markdown | Aim for ≥1 per Q&A (validation: ≥90% of Q&As). Impact matrix, decision criteria, or metrics comparison. |
-| **Removed** | N/A | Framework, Trade-offs (integrated into answer) |
+| **Diagram** | Mermaid (<80 nodes) | ≥1 per Q&A (≥90% coverage): topology, decision tree, flow, timeline. |
+| **Table** | Markdown | ≥1 per Q&A (≥90% coverage): impact matrix, criteria, metrics. |
 
-
-
-## References (Minimal Viable)
+## References
 
 | Type | Min | Requirements |
 |------|-----|--------------|
-| **Glossary** | ≥8 | Only terms used in Q&As (org/hiring/team/culture terms) |
-| **Tools** | ≥4 | Decision-critical only (ATS, engagement, org planning); URL valid, updated <2yr |
-| **Literature** | ≥5 | Canonical references only (Skelton, Lencioni, Kim, Edmondson, +1) |
-| **Citations** | ≥8 | APA 7th; align with language, freshness, and link targets in Validation |
+| **Glossary** | ≥8 | Terms used in Q&As (org/hiring/team/culture) |
+| **Tools** | ≥4 | Decision-critical (ATS, engagement, planning); valid URLs, <2yr old |
+| **Literature** | ≥5 | Canonical (Skelton, Lencioni, Kim, Edmondson, +1) |
+| **Citations** | ≥8 | APA 7th; ≥70% <2yr old |
 
-## Generation Process (Minimal Viable, 3-4h)
+## Generation Process (3-4h)
 
-1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (6-12 total) → balanced difficulty mix → map to 5 lifecycle phases + ≥5 stakeholders → verify Decision Criticality Framework
-2. **References**: Glossary (≥8) + Tools (≥4) + Literature (≥5) + Citations (≥8) → verify quality, language mix, freshness, and links per Validation
-3. **Write**: Scenario-driven Q&As → 150-250 words → Scenario → Impact → Stakeholders → Decision → Action → aim for ≥1 citation per Q&A → add Decision Criticality justification → validate every 3.
-4. **Artifacts**: Per Q&A: ≥1 diagram (Mermaid <80 nodes) + ≥1 table → verify coverage meets targets (≥90% of Q&As have both).
-5. **Link**: Populate sections → verify all [Ref: ID] resolved → remove orphans → validate URLs
-6. **Validate**: Run 12 checks; fix failures and re-validate until 12/12 PASS.
+1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (4-8 total) → balanced difficulty → map to phases/roles → verify criticality.
+2. **References**: Collect glossary/tools/literature/citations → verify quality/freshness/links.
+3. **Write**: Scenario-driven Q&As → 150-250 words → structure → ≥1 citation → justify criticality → validate.
+4. **Artifacts**: ≥1 diagram + table per Q&A → verify coverage.
+5. **Link**: Populate sections → resolve refs → validate URLs.
+6. **Validate**: Run 12 checks; fix until all pass.
 
 ## Validation (12 Checks)
 
 | # | Check | Target |
 |---|-------|--------|
-| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=6-12 (balanced difficulty mix) |
-| 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion; justification present |
+| 1 | Counts | G≥8, T≥4, L≥5, A≥8, Q=4-8 (balanced) |
+| 2 | Criticality | 100% satisfy ≥1 criterion; justifications |
 | 3 | Citations | ≥75% Q&As ≥1 citation |
-| 4 | Language | 60% EN / 30% ZH / 10% other (±10%) |
+| 4 | Language | Flexible distribution (e.g., 60% EN/30% ZH/10% other) |
 | 5 | Links | 100% valid URLs |
-| 6 | Word count | All Q&As: 150-250 words |
-| 7 | Quantified Impact | 100% Q&As have quantified metrics (%, $, timeline) |
-| 8 | Artifacts | ≥90% Q&As have ≥1 diagram + ≥1 table |
-| 9 | Lifecycle Coverage | All 5 phases ≥1 Q&A |
-| 10 | Stakeholder Coverage | ≥5 core roles represented; ≥60% multi-stakeholder |
-| 11 | Freshness | ≥70% citations <2yr old |
-| 12 | Final Review | Clarity, Accuracy, Completeness, Actionability, Decision-Critical Fit |
+| 6 | Word count | All 150-250 words |
+| 7 | Quantified | 100% have metrics (%, $, timeline) |
+| 8 | Artifacts | ≥90% have diagram + table |
+| 9 | Lifecycle | All 5 phases ≥1 Q&A |
+| 10 | Stakeholders | ≥5 roles; ≥60% multi |
+| 11 | Freshness | ≥70% citations <2yr |
+| 12 | Review | Clarity, accuracy, completeness, actionability |
 
-**Submit When**: 12/12 PASS
+**Submit When**: All 12 pass.
 
 ---
 
@@ -120,7 +97,7 @@ To ensure high-quality, low-hallucination output and better decisions, keep each
 | 2. Development | Q2 | Manager, Architect, Team Lead | Team scaling, onboarding velocity |
 | 3. Deployment | Q3 | Manager, Team Lead, Director | On-call burnout, SRE retention |
 | 4. Operations | Q4 | Manager, Director, CHRO | Attrition signals, engagement scores |
-| 5. Evolution | Q5-Q6 | Director, CHRO, VP Eng | Compliance/policy changes |
+| 5. Evolution | Q7-Q8 | Director, CHRO, VP Eng | Compliance/policy changes |
 
 ---
 
@@ -181,37 +158,4 @@ To ensure high-quality, low-hallucination output and better decisions, keep each
 **Overall**: [X/12 PASS] | **Issues**: [Failures] | **Remediation**: [Actions]
 ```
 
-# Reference Examples
 
-## Glossary (Decision-Critical Only, ≥8)
-**G1. Team Topologies** [EN] – Four team types optimizing flow/cognitive load. **Related**: Conway's Law.
-**G2. Conway's Law** [EN] – Org structure mirrors system design. **Related**: Team Topologies.
-**G3. Two-Pizza Team** [EN] – Team size 7±2 maximizes autonomy, minimizes coordination.
-**G4. RACI Matrix** [EN] – Responsibility assignment: Responsible, Accountable, Consulted, Informed.
-**G5. Psychological Safety** [EN] – Team climate enabling risk-taking without fear.
-**G6. Attrition Rate** [EN] – % of employees leaving annually. Benchmark: <10% healthy, >20% critical.
-**G7. Cognitive Load** [EN] – Mental effort for team operation. Minimized by clear boundaries.
-**G8. Onboarding Velocity** [EN] – Time to productivity for new hires. Metric: days to first commit/PR.
-
-## Tools (Decision-Critical Only, ≥4)
-**T1. Lattice** [EN] – Engagement surveys, attrition tracking, retention analytics. **Updated**: 2024-10. https://lattice.com
-**T2. Lever** [EN] – ATS, hiring velocity, offer acceptance rate tracking. **Updated**: 2024-11. https://lever.co
-**T3. Culture Amp** [EN] – Engagement scores, psychological safety surveys, burnout detection. **Updated**: 2024-10. https://cultureamp.com
-**T4. Greenhouse** [EN] – Hiring metrics, time-to-hire, diversity tracking. **Updated**: 2024-11. https://greenhouse.io
-
-## Literature (Canonical Only, ≥5)
-**L1. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution.** – Team types, cognitive load, org scaling
-**L2. Edmondson, A. (2018). *The Fearless Organization*. Wiley.** – Psychological safety, attrition, retention
-**L3. Lencioni, P. (2002). *The Five Dysfunctions of a Team*. Jossey-Bass.** – Team dynamics, trust, accountability
-**L4. Fournier, C. (2017). *The Manager's Path*. O'Reilly.** – Leadership ladder, team scaling, burnout prevention
-**L5. Kim, G., et al. (2016). *The DevOps Handbook*. IT Revolution.** – Org culture, on-call burnout, retention
-
-## Citations (≥8, APA 7th, ≥70% <2yr)
-**A1.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]
-**A2.** Edmondson, A. (2018). *The fearless organization*. Wiley. [EN]
-**A3.** Lencioni, P. (2002). *The five dysfunctions of a team*. Jossey-Bass. [EN]
-**A4.** Fournier, C. (2017). *The manager's path*. O'Reilly. [EN]
-**A5.** Kim, G., et al. (2016). *The DevOps handbook*. IT Revolution. [EN]
-**A6.** Forsgren, N., et al. (2018). *Accelerate*. IT Revolution. [EN]
-**A7.** DeMarco, T., & Lister, T. (2013). *Peopleware* (3rd). Addison-Wesley. [EN]
-**A8.** 张一鸣. (2022). *团队协作的五大障碍*. 机械工业出版社. [ZH]

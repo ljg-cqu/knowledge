@@ -1,12 +1,12 @@
-# Regulatory Compliance Q&A Generator (Minimal Viable)
+# Regulatory Compliance Q&A Generator
 
 ## Purpose
 
 Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Scenario-based, focusing on privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), and standards (ISO 27001/27701, SOC2, NIST CSF).
 
-**Constraints:** Approximately 150-250 words per Q&A, quantified impact, actionable decisions.
+**Constraints:** 150-250 words per Q&A, quantified impact, actionable decisions.
 
-**Assumptions:** Outputs must be cross-checked against official sources; refresh annually when regulations, guidance, or supervisory practices change.
+**Assumptions:** Cross-check against official sources; update as regulations evolve.
 
 **Stakeholders:** Legal, Compliance, Security, Architecture.
 
@@ -19,21 +19,21 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 ### Decision Criticality Framework
 
 **Include if ≥1 criterion satisfied:**
-- **Blocks Decision**: Directly impacts compliance strategy, audit readiness, or regulatory pivot
-- **Creates Risk**: Material threat (breach, audit failure, regulatory fine >$100K, compliance deadline <6mo)
+- **Blocks Decision**: Impacts compliance strategy, audit readiness, or regulatory pivot
+- **Creates Risk**: Material threat (breach, audit failure, fine >$100K, deadline <6mo)
 - **Affects ≥2 Core Roles**: Multi-stakeholder impact (Legal + Compliance, Security + Architecture)
 - **Requires Action**: 1-6mo action window (not speculative)
-- **Quantified Impact**: Fine $, audit days, remediation hours, deadline (days to compliance)
+- **Quantified Impact**: Fine $, audit days, remediation hours, deadline
 
 **Exclude if**: Niche/legacy regulations (<5% adoption), orthogonal/nice-to-have, already covered, vendor marketing
 
 ### Coverage (Decision-Critical Only)
 
-**Distribution**: 4-8 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, distributed across 4 clusters (1-2 per cluster), ≥2 stakeholders per Q&A
+**Distribution**: 4-8 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, across 4 clusters (1-2 per cluster), ≥2 stakeholders per Q&A
 
 | Cluster | Focus | Decision Trigger | Stakeholders |
 |---------|-------|------------------|--------------|
-| **Compliance Modeling** | Framework mapping, audit readiness, gap analysis | New regulation deadline, failed audit, compliance debt >$500K | Legal, Compliance |
+| **Compliance Modeling** | Framework mapping, audit readiness, gap analysis | New deadline, failed audit, debt >$500K | Legal, Compliance |
 | **Privacy Engineering** | Data rights, consent, minimization, pseudonymization | Consent rate <80%, data breach, DPIA required | Legal, Compliance, Security |
 | **Audit & Evidence** | Audit trails, evidence collection, certification | SOC2/ISO audit in <6mo, evidence gaps, control failures | Compliance, Security |
 | **Remediation** | Gap closure, roadmaps, budget, cross-functional coordination | Remediation cost >$300K, deadline <6mo, multi-team impact | All 4 core roles |
@@ -57,20 +57,20 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 **Standards**: BPMN (process), UML (structure), C4 (software), ERD/DFD (data), ArchiMate (enterprise)  
 **Avoid**: Mega-diagrams (>120 nodes), mixed abstraction, missing rationale
 
-### Validation Checks (12 checks)
+### Validation Checks
 
 | # | Check | Target |
 |---|-------|--------|
 | 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-8 (25/50/25) |
 | 2 | **Decision Criticality** | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
-| 3 | **Freshness** | ≥70% of sources published or updated in the last 10 years; explicitly justify older sources and confirm they are still in force |
+| 3 | **Freshness** | ≥70% sources updated in last 10 years; justify older sources |
 | 4 | **Citations** | ≥70% with ≥1, ≥30% with ≥2+ |
-| 5 | **Language** | Primarily EN; ZH optional. Keep each note internally consistent and avoid mixing languages within a single entry |
+| 5 | **Language** | Primarily EN; ZH optional. Consistent within entries |
 | 6 | **Links** | 100% accessible, prefer official |
-| 7 | **Word Count** | All approximately 150-250 words (scenario-based, concise) |
+| 7 | **Word Count** | 150-250 words per Q&A (scenario-based, concise) |
 | 8 | **Impact** | Quantified: fine $, audit days, deadline, remediation hours |
 | 9 | **Decision** | Clear go/no-go, adopt/defer/skip, rationale |
-| 10 | **Visuals** | ≥1 diagram + ≥1 table + ≥1 metric per cluster (matches Visual Standards) |
+| 10 | **Visuals** | ≥1 diagram + ≥1 table + ≥1 metric per cluster |
 | 11 | **Cross-refs** | All [Ref: ID] resolve |
 | 12 | **Final Review** | Scenario-based, decision-critical, actionable, no speculation |
 
@@ -78,9 +78,9 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 ---
 
-## Workflow (Minimal Viable)
+## Workflow
 
-1. **Scenario Discovery** (1-2h): Identify ≥10-15 decision-critical regulatory scenarios from recent regulatory changes, audits, risk registers, or architectural conflicts; apply Decision Criticality filter
+1. **Scenario Discovery** (1-2h): Identify ≥10-15 decision-critical scenarios from regulatory changes, audits, risk registers, or conflicts; apply Decision Criticality filter
 2. **Build References** (30-45min): G≥10, T≥4, L≥6, A≥8, assign IDs, tag languages, validate links
 3. **Generate Q&As** (2-3h): Batch 2-3, scenario-based, 150-250w, quantified impact, cite [Ref: ID]
 4. **Visuals** (30-45min): ≥1 diagram + ≥1 table + ≥1 metric per cluster (Mermaid, <80 nodes)
@@ -125,7 +125,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 ```markdown
 ## Contents
 - [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
-- [Q&As 1-6](#qas-1-6) - Scenario + Impact + Decision + Action
+- [Q&As 1-8](#qas-1-8) - Scenario + Impact + Decision + Action
 - [References](#references) - Glossary, Tools, Literature, Citations
 
 ## Cluster Overview
@@ -133,7 +133,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 | Compliance Modeling | New deadline, failed audit, debt >$500K | 1-2 | Blocks/Risk |
 | ... | ... | ... | ... |
 
-## Q&As 1-6
+## Q&As 1-8
 
 ### Q[N]: [Scenario-Based Question]
 **Difficulty**: [F/I/A] | **Cluster**: [Topic] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified]
@@ -157,7 +157,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 ## References
 
-### Glossary (≥10, decision-critical only)
+### Glossary (Decision-Critical Only)
 
 **Privacy Laws**: GDPR (EU 2016/679: principles, rights, €20M/4% penalties, Art. 3 scope) | CCPA/CPRA (CA: access, deletion, opt-out, $2.5K-$7.5K/violation) | PIPL (China: localization, transfers, ¥50M/5%) | LGPD (Brazil: processing, rights, ANPD, 2%)
 
@@ -179,7 +179,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 **Tools**: OneTrust DataGuidance, TrustArc, IAPP  
 **Legal**: LexisNexis, Westlaw, Official Gazettes
 
-### Tools (≥4, decision-critical only)
+### Tools (Decision-Critical Only)
 
 **T1. OneTrust**: Privacy/GRC (data mapping, consent, DSR, cookies, vendor). GDPR, CCPA/CPRA, PIPL, LGPD, HIPAA, SOC2, ISO 27001. https://www.onetrust.com [EN]
 
@@ -189,7 +189,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 **T4. Splunk**: SIEM (logs, threats, incidents, reporting). GDPR Art. 32, HIPAA §164.312(b), PCI-DSS Req 10. https://www.splunk.com [EN]
 
-### Literature (≥6, canonical only)
+### Literature (Canonical Only)
 
 **L1.** EU. (2016). GDPR (2016/679). 99 articles, €20M/4%. [EN]
 **L2.** NIST. (2024). CSF 2.0 (CSWP 29). 6 functions, 23 categories, 108 subcategories. [EN]
@@ -198,7 +198,7 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 **L5.** HHS. (2013). HIPAA Security Rule (45 CFR 164.C). Admin, physical, technical. [EN]
 **L6.** AICPA. (2017). SOC2 TSC. 5 principles, Type I/II. [EN]
 
-### Citations (≥8, APA 7th, decision-critical only)
+### Citations (APA 7th, Decision-Critical Only)
 
 **A1.** EU. (2016). GDPR (2016/679). https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]
 **A2.** NIST. (2024). CSF 2.0 (CSWP 29). https://doi.org/10.6028/NIST.CSWP.29 [EN]

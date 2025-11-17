@@ -1,6 +1,6 @@
-# Case Study Deep Analysis Generator
+# Case Study Q&A Generator
 
-Generate 20–30 comprehensive case study analyses covering success and failure across the software lifecycle (8 phases), focusing on technical, business, regulatory, operational, data, and security viewpoints.
+Generate 7 comprehensive case study Q&A pairs covering success and failure across the software lifecycle (8 phases), focusing on technical, business, regulatory, operational, data, and security viewpoints.
 
 ## I. Context & Scope
 
@@ -14,9 +14,7 @@ Generate 20–30 comprehensive case study analyses covering success and failure 
 
 **Assumptions:** LLMs possess software engineering knowledge; outputs will be iterated.
 
-**Scale:** 20-30 cases in 7 categories; 50/50 success/failure; 30/40/30 simple/moderate/complex.
-
-**Timeline:** Generate immediately; review outputs promptly; refine iteratively.
+**Scale:** 5 Q&A pairs in 5 categories; 50/50 success/failure; 30/40/30 simple/moderate/complex.
 
 **Stakeholders:** BA, PM, Architect, Dev, QA, DevOps, Security, Data, SRE, Leadership.
 
@@ -24,60 +22,51 @@ Generate 20–30 comprehensive case study analyses covering success and failure 
 
 **Key Terms:** Success (achieved goals/outcomes), Failure (missed/incidents), Lifecycle (Req→Design→Dev→Test→Deploy→Ops→Maint→Evol), Stakeholders (as above), Pattern (reusable lesson), Anti-Pattern (failure mode).
 
-**Relationships Diagram**:
-```mermaid
-graph TD
-    A[Lifecycle] --> B[Req] --> C[Design] --> D[Dev] --> E[Test] --> F[Deploy] --> G[Ops] --> H[Maint] --> I[Evol]
-    J[Viewpoints] --> K[Tech] --> L[Biz] --> M[Reg] --> N[Ops] --> O[Data] --> P[Sec]
-    Q[Stakeholders] --> R[BA] --> S[PM] --> T[Arch] --> U[Dev] --> V[QA] --> W[DevOps] --> X[SRE] --> Y[Sec] --> Z[Data] --> AA[Lead]
-    A --> J --> Q
-```
-
 ## II. Requirements
 
 ### Quantitative Floors
 
-**Cases**: 20–30 | 50/50 success/failure (±10%) | 30/40/30 Simple/Moderate/Complex (±5%) | 400-700 words | ≥90% ≥2 cites (≥50% ≥3) | ≥85% ≥3 viewpoints
+**Q&A Pairs**: 7 | 50/50 success/failure | 30/40/30 Simple/Moderate/Complex | 200-400 words per answer | ≥90% ≥2 cites (≥50% ≥3) | ≥85% ≥3 viewpoints
 
-**7 Categories (MECE)**: Architecture & Design (4-5) | Business & Market (3-4) | Regulatory & Compliance (3-4) | Operational Excellence (3-4) | Security & Privacy (3-4) | Data & AI (2-3) | Organizational & Team (2-3)
+**7 Categories (MECE)**: Architecture & Design (1) | Business & Market (1) | Regulatory & Compliance (1) | Operational Excellence (1) | Security & Privacy (1) | Data & AI (1) | Organizational & Team (1)
 
-**References**: G≥20 | S≥8 | T≥10 | L≥15 (≥40% domain-specific) | A≥30 (APA 7th+tags) | Scale proportionally for >25 cases.
+**References**: G≥5 | S≥3 | T≥3 | L≥4 (≥40% domain-specific) | A≥8 (APA 7th+tags)
 
-**Visuals**: ≥2/case | ≥1 diagram+1 table/category | ≥4 Mermaid
+**Visuals**: ≥1 diagram +1 table per category | ≥2 per Q&A pair | ≥3 Mermaid total
 
 ### Citation & Quality Standards
 
 **Format**: Books: `Author. (Year). *Title*. Publisher. [EN]` | Standards: `Org. (Year). *Standard*. [Standard]` | Postmortems: `Company. (Year). *Title*. URL [Postmortem]` | Inline: `[Ref: ID]`
 
-**Distribution**: EN 50-70% | ZH 15-30% | Std 10-20% | Postmortem 15-25% | ≥5 source types (none >25%)
+**Distribution**: EN 50-70% | ZH 15-30% | Std 10-20% | Postmortem 15-25% | ≥4 source types (none >25%)
 
-**Quality Gates**: ≥60% <3yrs | 100% real-world+accessible URLs | 100% cross-refs resolve | Per-category: ≥2 auth+≥1 post+≥1 metric | Cases: ≥85% ≥3 viewpoints | ≥70% ≥3 stakeholders | ≥80% map to phases
+**Quality Gates**: ≥60% <3yrs | 100% real-world+accessible URLs | 100% cross-refs resolve | Per-category: ≥1 auth+≥1 post+≥1 metric | Cases: ≥85% ≥3 viewpoints | ≥70% ≥3 stakeholders | ≥80% map to phases
 
 ## III. Execution
 
 ### Step 1: Plan Allocation
 
-Distribute 20–30 cases across 7 categories: 30/40/30 Simple/Moderate/Complex, 50/50 success/failure. Each category ≥1 success and ≥1 failure.
+Distribute 7 Q&A pairs across 7 categories: 30/40/30 Simple/Moderate/Complex, 50/50 success/failure. Each category ≥1 success and ≥1 failure.
 
 **Complexity**: Simple (1-2 phases, <3 stakeholders) | Moderate (3-5 phases, 3-6) | Complex (6-8 phases, >6).
 
 ### Step 2: Build References (Before Cases)
 
-G≥20 (patterns), S≥8 (standards), T≥10 (tools), L≥15 (literature, ≥40% domain-specific), A≥30 (citations, ≥60% <3yrs).
+G≥5 (patterns), S≥3 (standards), T≥3 (tools), L≥4 (literature, ≥40% domain-specific), A≥8 (citations, ≥60% <3yrs).
 
-### Step 3: Generate Case Studies (3 at a time)
+### Step 3: Generate Q&A Pairs
 
 Select public documented cases; balance outcomes; multi-phase/stakeholder; quantitative. Avoid hypotheticals.
 
-Structure per Section VI.C (400–700 words).
+Structure per Section V.C (200–400 words per answer).
 
-Check: Documented, balanced, ≥3 viewpoints, word count, lifecycle, quantitative, citations, ≥2 artifacts, complexity, actionable.
+Check: Documented, balanced, ≥3 viewpoints, word count, lifecycle, quantitative, citations, ≥1 artifact, complexity, actionable.
 
-### Step 4: Create Visuals (≥2/case; ≥1 diagram+1 table/category)
+### Step 4: Create Visuals (≥1 diagram+1 table/category; ≥2 per Q&A pair)
 
 Types: Timeline (Gantt), Architecture, Metrics (table), Decision Matrix, Impact Map, Root Cause Tree.
 
-Best: ≥4 Mermaid, cite refs, <25 nodes, show causality.
+Best: ≥3 Mermaid, cite refs, <25 nodes, show causality.
 
 ### Step 5: Populate References
 
@@ -89,7 +78,7 @@ See Section IV table.
 
 ### Step 7: Final Review
 
-Sample ≥5 cases: Verified, balanced, ≥3 viewpoints, mapped, quantitative, root causes, patterns, actionable, ≥2 artifacts, ≥2 cites.
+Sample ≥2 Q&A pairs: Verified, balanced, ≥3 viewpoints, mapped, quantitative, root causes, patterns, actionable, ≥1 artifact, ≥2 cites.
 
 Submit: All pass, TOC linked, no placeholders, consistent, URLs verified.
 
@@ -97,92 +86,78 @@ Submit: All pass, TOC linked, no placeholders, consistent, URLs verified.
 
 | # | Check           | Measurement                     | Criteria                          | Result | Status    |
 |---|-----------------|---------------------------------|-----------------------------------|--------|-----------|
-| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Cases:__ (__S/__M/__C) (__Suc/__Fail)| G≥20, S≥8, T≥10, L≥15, A≥30, Cases:20-30, 30/40/30%, 50/50 | | PASS/FAIL |
+| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q&A Pairs:__ (__S/__M/__C) (__Suc/__Fail)| G≥5, S≥3, T≥3, L≥4, A≥8, Q&A Pairs:7, 30/40/30%, 50/50 | | PASS/FAIL |
 | 2 | Citations       | __%≥2, __%≥3                    | ≥90%≥2, ≥50%≥3                    | | PASS/FAIL |
 | 3 | Lang/Type       | EN:__%, ZH:__%, Std:__%, Post:__% | EN:50-70%, ZH:15-30%, Std:10-20%, Post:15-25% | | PASS/FAIL |
 | 4 | Recency         | __% <3yrs                       | ≥60%                              | | PASS/FAIL |
-| 5 | Source Types    | __ types; max __%               | ≥5 types, max 25%                 | | PASS/FAIL |
+| 5 | Source Types    | __ types; max __%               | ≥4 types, max 25%                 | | PASS/FAIL |
 | 6 | Real-World      | __/__ documented with URL       | 100%                              | | PASS/FAIL |
 | 7 | Links           | __/__ accessible                | 100%                              | | PASS/FAIL |
 | 8 | Cross-Refs      | __/__ resolved                  | 100%                              | | PASS/FAIL |
-| 9 | Word Count      | __ sampled: __ compliant        | 100% (400-700)                    | | PASS/FAIL |
+| 9 | Word Count      | __ sampled: __ compliant        | 100% (200-400)                    | | PASS/FAIL |
 | 10| Success/Failure | __/7 categories balanced        | Each: ≥1 success AND ≥1 failure   | | PASS/FAIL |
-| 11| Category Evidence| __/7 (≥2 auth+≥1 post+≥1 metric)| 7/7                               | | PASS/FAIL |
+| 11| Category Evidence| __/7 (≥1 auth+≥1 post+≥1 metric)| 7/7                               | | PASS/FAIL |
 | 12| Viewpoints      | __%≥3                           | ≥85%                              | | PASS/FAIL |
 | 13| Stakeholders    | __%≥3 roles                     | ≥70%                              | | PASS/FAIL |
 | 14| Lifecycle       | __%≥1 phase; __%≥3 phases       | ≥80%; ≥50%                        | | PASS/FAIL |
 | 15| Quantitative    | __% with metrics                | ≥90%                              | | PASS/FAIL |
 | 16| Root Cause      | Failures:__/__ Successes:__/__  | 100% both                         | | PASS/FAIL |
 | 17| Lessons         | __/__ with patterns+actions     | 100%                              | | PASS/FAIL |
-| 18| Visuals         | M:__, D:__, T:__, Artifacts:__  | ≥4, ≥7, ≥7, ≥2/case               | | PASS/FAIL |
+| 18| Visuals         | M:__, D:__, T:__, Artifacts:__  | ≥3, ≥5, ≥5, ≥1/case               | | PASS/FAIL |
 | 19| Authenticity    | __/__ real-world public         | 100%                              | | PASS/FAIL |
 
-## V. Quality Checklist (≥3 fails = rewrite)
-
-1. Verified: Public docs ✓ | Hypothetical ✗
-2. Balanced: Both outcomes per category ✓ | One-sided ✗
-3. Multi-View: ≥3 viewpoints ✓ | Single ✗
-4. Lifecycle: Phase-mapped ✓ | Vague ✗
-5. Quantitative: Measurable metrics ✓ | Vague ✗
-6. Causal: Clear chain ✓ | Ambiguous ✗
-7. Actionable: Transferable practices ✓ | Generic ✗
-8. Stakeholders: Multi-role impact ✓ | General ✗
-9. Complexity: Aligned with definition ✓ | Mismatched ✗
-
-## VI. Output Format
+## V. Output Format
 
 ### A. TOC
-1. Category Overview | 2. Case Studies by Category (7 categories) | 3. References (G/S/T/L/A) | 4. Validation Report
+1. Category Overview | 2. Q&A Pairs by Category (7 categories) | 3. References (G/S/T/L/A) | 4. Validation Report
 
 ### B. Category Overview
-**Total**: 24 cases (example) | **Complexity**: 7 Simple (29%) / 9 Moderate (37.5%) / 8 Complex (33%) | **Balance**: 13 success (54%) / 11 failure (46%) | **Coverage**: 7 categories (MECE)
+**Total**: 7 Q&A pairs (example) | **Complexity**: 2 Simple (29%) / 3 Moderate (43%) / 2 Complex (29%) | **Balance**: 4 success (57%) / 3 failure (43%) | **Coverage**: 7 categories (MECE)
 
-| # | Category               | Range   | Count | Mix      | Success/Fail | Artifacts |
-|---|------------------------|---------|-------|----------|--------------|-----------|
-| 1 | Architecture & Design  | C1–C4   | 4     | 1S/1M/2C | 2 Suc/2 Fail | 1D+1T     |
-| 2 | Business & Market      | C5–C8   | 4     | 1S/2M/1C | 2 Suc/2 Fail | 1D+1T     |
-| 3 | Regulatory & Compliance| C9–C11  | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
-| 4 | Operational Excellence | C12–C15 | 4     | 1S/2M/1C | 2 Suc/2 Fail | 1D+1T     |
-| 5 | Security & Privacy     | C16–C18 | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
-| 6 | Data & AI              | C19–C21 | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
-| 7 | Organizational & Team  | C22–C24 | 3     | 1S/1M/1C | 1 Suc/2 Fail | 1D+1T     |
-|   | **Total**              |         | **24**| **7S/9M/8C** | **13/11** | **7+7** |
+| # | Category               | Q&A Pairs | Count | Mix      | Success/Fail | Artifacts |
+|---|------------------------|-----------|-------|----------|--------------|-----------|
+| 1 | Architecture & Design  | Q1-Q2     | 2     | 0S/1M/1C | 1 Suc/1 Fail | 1D+1T     |
+| 2 | Business & Market      | Q3-Q4     | 2     | 1S/1M/0C | 1 Suc/1 Fail | 1D+1T     |
+| 3 | Regulatory & Compliance| Q5-Q6     | 2     | 1S/0M/1C | 1 Suc/1 Fail | 1D+1T     |
+| 4 | Operational Excellence | Q7        | 1     | 0S/1M/0C | 1 Suc/0 Fail | 1D+1T     |
+| 5 | Security & Privacy     | Q8        | 1     | 0S/0M/1C | 0 Suc/1 Fail | 1D+1T     |
+| 6 | Data & AI              | Q9        | 1     | 1S/0M/0C | 1 Suc/0 Fail | 1D+1T     |
+| 7 | Organizational & Team  | Q10       | 1     | 0S/1M/0C | 0 Suc/1 Fail | 1D+1T     |
+|   | **Total**              |           | **7**| **2S/3M/2C** | **4/3** | **7+7** |
 
 Legend: S=Simple | M=Moderate | C=Complex | Suc=Success | Fail=Failure | D=diagram | T=table
 
-### C. Case Study Format
+### C. Q&A Pair Format
 
-**Case Study #: [Company/Project] – [Success/Failure]**
+**Q&A Pair #: [Category] – [Success/Failure]**
 
 **Classification**: [Outcome] | [Category] | [Complexity] | [Year] | **Phases**: [List]
 
-**1. Context** (100-150w) [Ref: A#]: Domain, scale, stack, timeline, goals, constraints.
+**Question**: [Concise, judgment-based question on case study lessons]
 
-**2. Lifecycle** (50-80w): Phases → right/wrong, transitions, decisions.
+**Key Insight**: [Quantified trade-off in one sentence]
 
-**3. Multi-Viewpoint** (≥3; 150-250w):
-- **Technical** [G#/T#]: Arch, choices, scaling, debt, modes.
-- **Business** [A#]: Revenue, market, ROI, costs.
-- **Regulatory** [S#/A#]: Compliance, audits, legal.
-- **Operational** [L#]: Deploy, response, monitoring.
-- **Data** [T#]: Quality, pipelines, backup.
-- **Security** [S#/L#]: Threats, breach, detection.
+**Answer** (200-400w) [Ref: A#]: Context → Multi-viewpoint analysis → Quantitative metrics → Root causes/enablers → Lessons → Recommendations → Assumptions/limitations.
 
-**4. Stakeholders** (50-80w): Impact on roles, decision makers, dynamics.
+**Metrics**:
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| [Name] | [Value] | [Value] | [Quantified] |
 
-**5. Quantitative** (40-60w) [Ref: A#]: Metrics before/after.
+**Trade-offs**:
+| Approach | Pros | Cons | Use When | Consensus |
+|----------|------|------|----------|-----------|
+| [Option 1] | [Quantified] | [Quantified] | [Context] | [Tag] |
+| [Option 2] | [Quantified] | [Quantified] | [Context] | [Tag] |
 
-**6. Root Causes/Enablers** (50-80w): Success enablers/markers; Failure cause/contributing/preventability.
+**Diagram**:
+```mermaid
+[Type matching category, <25 nodes]
+```
 
-**7. Lessons** (80-120w) [Ref: G#]: Patterns, practices, signs, trade-offs.
+**Citations**: ≥2 (≥3 for Moderate/Complex)
 
-**8. Recommendations** (50-80w): Technical, process, org, detection, prevention.
-
-**9. Citations**: ≥2 (≥3 for Moderate/Complex)
-
-**10. Artifacts** (≥2): Timeline (Gantt), Arch, Metrics (table), etc.
-
-**11. URL**: [Link]
+**URL**: [Link]
 
 ### D. Reference Formats
 
@@ -196,68 +171,35 @@ Legend: S=Simple | M=Moderate | C=Complex | Suc=Success | Fail=Failure | D=diagr
 
 **A#. [Citation] [Tag]**: Formats as above. Sort by ID.
 
-## VII. Example Case Study
+## VII. Example Q&A Pair
 
 **Category: Operational Excellence**
 
-**Case Study 12: GitLab Database Incident – Failure**
+**Q&A Pair 7: GitLab Database Incident – Failure**
 
 **Classification**: Failure | Operational Excellence | Moderate | 2017 | **Phases**: Operations, Maintenance
 
-**1. Context** (100w) [Ref: A1]: DevOps SaaS platform. Scale: 100K users, 5M projects, 300GB DB, 150 engineers. Stack: Rails, PostgreSQL, Azure/AWS. Timeline: Jan 31, 2017, 18h outage. Goals: Migrate Azure→AWS, fix replication lag. Constraints: Zero-downtime, small SRE team.
+**Question**: How can teams prevent catastrophic data loss during cloud migrations by improving backup strategies?
 
-**2. Lifecycle** (50w): Operations: Spam→load→lag→intervention→deletion→6h data loss. Maintenance: All backups failed.
+**Key Insight**: Implementing automated backup verification reduces data loss risk by 80%, cutting MTTR from 18 hours to under 2 hours.
 
-**3. Multi-Viewpoint** (150w):
-- **Technical** [G1,T1]: 6h lag from spam; 5 failed backups; accidental `rm -rf` on prod DB; old PG version, poor monitoring.
-- **Operational** [L1]: Fatigue from 18h on-call; no runbooks; public livestream; 18h MTTR, 6h data loss.
-- **Business** [A2]: Rep risk mitigated by transparency; no major churn; reinforced open brand.
+**Answer** (250w) [Ref: A1]: In the GitLab incident, a high-traffic DevOps platform migrated from Azure to AWS, facing replication lag from spam attacks. The SRE team, fatigued from 18-hour shifts, accidentally deleted the production database with `rm -rf`, and all backups failed due to lack of verification. Technically, old PostgreSQL versions and poor monitoring exacerbated issues; operationally, no runbooks led to chaos; business-wise, transparency maintained reputation despite 100K users affected. Quantitatively, downtime hit 18 hours with 6 hours of data loss, but post-recovery lag dropped to <1 minute and backups became 5/5 reliable. Root causes included untested backups and human error under stress. Lessons emphasize automated verification, restricted commands, and blameless reviews. Recommendations: Tech—immutable backups with alerts; Process—8-hour shifts and drills; Org—transparency culture. Assumptions: Cloud migrations require robust testing; limitations apply to small teams without dedicated SREs.
 
-**4. Stakeholders** (50w): SRE: Burden/confidence loss. Eng: Paused dev. Leadership: Apology/transparency. Customers: Loss/downtime but praised transparency.
+**Metrics**:
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| Data Loss | 0 | 6 hours | -6 hours |
+| Backup Success Rate | 0/5 | 5/5 | +100% |
+| MTTR | N/A | 18 hours → <2 hours | -89% |
+| Replication Lag | 6+ hours | <1 min | -99.7% |
 
-**5. Quantitative** (40w) [Ref: A1]: Downtime 18h, data loss 6h, lag 6h→<1min, backups 0/5→5/5, 100K users affected, minimal churn.
+**Trade-offs**:
+| Approach | Pros | Cons | Use When | Consensus |
+|----------|------|------|----------|-----------|
+| Automated Backup Verification | +80% reliability, -90% MTTR | +15% setup cost, +5% maintenance | High-stakes migrations | [Consensus] |
+| Manual Verification | Lower cost | +70% human error risk, slower | Small teams, low volume | [Context-dependent] |
 
-**6. Root Causes** (50w): Failed backup verification + human error under fatigue. Contributing: Spam load, no testing, missing safeguards, poor observability, silent failures. Preventable with regular tests and safeguards.
-
-**7. Lessons** (80w) [G1-G4]: Avoid untested backups, single points, fatigue, missing safeguards. Adopt transparency, automated verification, restricted commands.
-
-**8. Recommendations** (50w): Tech: Auto backup tests, confirm destructive cmds, immutable backups, lag alerts. Process: Drills, 8h shifts, runbooks. Org: Blameless reviews, transparency.
-
-**9. Citations**: [A1,L1,G1-G3,T1] (6)
-
-**10. Artifacts**:
-
-**Timeline** (Mermaid Gantt):
-```mermaid
-gantt
-    title GitLab Database Incident Timeline (Jan 31-Feb 1, 2017)
-    dateFormat HH:mm
-    section Crisis
-    Spam Attack Begins           :crit, 00:00, 6h
-    Replication Lag Grows        :crit, 00:00, 18h
-    Manual Intervention Attempted:crit, 18:00, 1h
-    Accidental DB Deletion       :milestone, 19:00, 0h
-    section Recovery
-    Assess Backup Options        :active, 19:00, 2h
-    LVM Snapshots Failed         :crit, 20:00, 1h
-    pg_dump Failed               :crit, 21:00, 1h
-    Azure Snapshots Wrong DB     :crit, 22:00, 1h
-    S3 WAL-E Failed              :crit, 23:00, 1h
-    Restore Old Snapshot         :active, 00:00, 6h
-    Rebuild Indexes              :active, 06:00, 8h
-    Production Online            :milestone, 14:00, 0h
-```
-
-**Metrics Dashboard**:
-| Metric | Before Incident | During Incident | After Recovery | Target |
-|--------|----------------|-----------------|----------------|--------|
-| Uptime | 99.95% | 0% (18h) | 99.95% | 99.95% |
-| Replication Lag | 6+ hours | N/A | <1 min | <5 min |
-| Data Loss | 0 | 6 hours | 0 | 0 |
-| Backup Success | 0/5 working | 0/5 | 5/5 tested | 5/5 |
-| MTTR | N/A | 18 hours | <2h (tested) | <1h |
-
-**Root Cause Tree**:
+**Diagram**:
 ```mermaid
 flowchart TD
     A[18h Downtime + 6h Data Loss] --> B[Accidental Production DB Deletion]
@@ -287,8 +229,6 @@ flowchart TD
     style M fill:#ff6b6b
 ```
 
-**11. Documentation URL**: https://about.gitlab.com/blog/2017/02/01/gitlab-dot-com-database-incident/ [Postmortem]
+**Citations**: [A1,L1,G1-G3,T1] (6)
 
----
-
-**Key Takeaways from Example**: Real-world verified case with public documentation, multi-viewpoint analysis, clear quantitative outcomes, root cause analysis, actionable recommendations, and multiple artifacts (timeline, metrics, root cause diagram).
+**URL**: https://about.gitlab.com/blog/2017/02/01/gitlab-dot-com-database-incident/ [Postmortem]

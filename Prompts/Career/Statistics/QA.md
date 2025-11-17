@@ -6,35 +6,34 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 
 **Purpose**: Develop reasoning through application and interpretation.
 
-**Assumptions**: Basic statistical knowledge; domain-agnostic datasets.
+**Assumptions**: Basic statistical knowledge.
 
 **Key Elements**:
-- Difficulty levels: Foundational (concepts), Intermediate (application), Advanced (design/inference).
+- Difficulty: Foundational (concepts), Intermediate (application), Advanced (design/inference).
 - Dimensions: Mathematical, Applied, Interpretive, Computational.
 - Criticality: Scenarios blocking decisions, creating risks, or affecting stakeholders.
 
 ## Structure
 
-**Q&A Pairs**: 3–5 total, balanced across difficulty levels and topics (Inference, Design, Regression, Applied).
+**Q&A Pairs**: 3–5, balanced across difficulty and topics (Inference, Design, Regression, Applied).
 
-**Topics Coverage**: Ensure variety in inference, experimental design, modeling, and interpretation.
+**Topics Coverage**: Inference, experimental design, modeling, interpretation.
 
-**References**: Include glossary of key terms, tools, textbooks, and citations (APA format with language tags).
+**References**: Glossary of key terms, tools, textbooks, citations (APA format).
 
 **Visuals**: Diagrams and tables to illustrate concepts and processes.
 
 ## Generation Process
 
-1. **Plan**: Select scenarios with real-world implications, varying difficulty.
-2. **Questions**: Scenario-based with constraints; focus on reasoning signals (assumptions, choices, interpretations).
+1. **Plan**: Select real-world scenarios with varying difficulty.
+2. **Questions**: Scenario-based; focus on assumptions, choices, interpretations.
 3. **Answers**: 150–250 words; include framework, steps, examples, trade-offs, pitfalls; cite references.
-4. **Artifacts**: Include visuals like plots, tables, or flowcharts.
+4. **Artifacts**: Include plots, tables, or flowcharts.
 5. **Validation**: Ensure application focus, concrete insights, explicit assumptions.
 
 ## Output Format
 
 ### Overview
-- Total Q&A: 3–5
 - Difficulty mix: Balanced F/I/A
 - Topics: 4 areas covered
 
@@ -59,9 +58,9 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 - **Citations**: Evidence-based sources.
 
 ### Evaluation
-Include practice questions, checklists, and guides for assessment.
+Include practice questions, checklists, guides for assessment.
 
-## Example
+## Example (Illustrative)
 
 **Q1: Clinical trial n=45: treatment μ=12 (SD=8) vs. control μ=8 (SD=7). t-test p=0.04, d=0.53. Power assumed d=0.8, n=40. Interpret and suggest analyses.**
 

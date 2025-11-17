@@ -1,16 +1,16 @@
 # Software Architecture Interview Q&A Generator
 
-**Problem**: Candidates struggle to translate architecture concepts to practical code, leading to poor hiring decisions. Hallucinations reduce decision quality by 30-60%.
+**Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality by 30-60% due to hallucinations.
 
-**Scope**: Generate 12 Q&A pairs for senior/architect roles, focusing on architecture-to-code translation.
+**Scope**: Generate 6 Q&A pairs for senior/architect roles, focusing on architecture-to-code translation.
 
-**Constraints**: Use production-ready, idiomatic code in mainstream languages (Go, Java, Python, TypeScript, Rust).
+**Constraints**: Production-ready, idiomatic code in mainstream languages (Go, Java, Python, TypeScript, Rust).
 
-**Assumptions**: General software architecture knowledge; layered architectures, MVC, REST.
+**Assumptions**: General software architecture knowledge (layered, MVC, REST).
 
 **Audience**: Senior developers (5+ years), architects, technical experts.
 
-**Output**: 12 Q&As across 6 dimensions with code, quantified trade-offs, ≥2 alternatives, citations.
+**Output**: 6 Q&As across 6 dimensions with code, quantified trade-offs, ≥2 alternatives, citations.
 
 **Success**: All validation checks pass; improves decision quality.
 
@@ -19,13 +19,13 @@
 ## Core Requirements
 
 ### Question Specifications
-- **Total Count**: 12 (2 per dimension)
+- **Total Count**: 6 (1 per dimension)
 - **Difficulty Mix**: 50% Foundational / 50% Advanced
 - **Answer Length**: 150-300 words (code excluded)
 - **Components**: Pattern → rationale → code → trade-offs → metrics
 - **Citations**: ≥1 each; ≥2 for advanced
 
-### Coverage (6 Dimensions, 2 Q&As Each)
+### Coverage (6 Dimensions, 1 Q&A Each)
 1. **Structural**: Decomposition, modularity, coupling (hexagonal, layers)
 2. **Behavioral**: Events, state, orchestration (saga, circuit breaker)
 3. **Quality**: Performance, scalability, reliability (rate limiting, encryption)
@@ -44,13 +44,11 @@
 - **Table**: ≥2 alternatives (Approach/Pros/Cons/Use When/Consensus)
 - **Metric**: Formula + variables + target
 
-**Common Patterns**: Hexagonal, Event-Driven, CQRS, Saga, Circuit Breaker, Bulkhead, Event Sourcing, API Gateway, Message Queue, Strangler Fig, Feature Toggle
-
 ### References
 - **Glossary**: ≥5 terms with relationships
 - **Tools**: ≥3 (URL valid, update ≤18mo, pricing, adoption)
 - **Literature**: ≥3 authoritative books
-- **Citations**: ≥8 APA 7th, balanced languages (≥2 represented)
+- **Citations**: ≥6 APA 7th, balanced languages (≥2 represented)
 
 **Quality**: ≥50% last 3yr; ≥3 types; credible sources; 100% valid links
 
@@ -58,7 +56,7 @@
 
 ## Generation Process
 
-1. **Plan Structure**: Select 6 dimensions → 2 Q&As each → 50/50 F/A mix
+1. **Plan Structure**: Select 6 dimensions → 1 Q&A each → 50/50 F/A mix
 2. **Build References**: Glossary, tools, literature, citations meeting thresholds
 3. **Write Q&As**: Judgment-based questions; answers with pattern, code, trade-offs, metrics, citations
 4. **Create Artifacts**: Diagram, code, table, metric per dimension
@@ -77,8 +75,8 @@
 
 ## Topic Areas
 | Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1-Q2 | 2 | F/A 50/50 |
-[6 dimensions, 12 total]
+| [Title] | [Type] | Q1 | 1 | F/A 50/50 |
+[6 dimensions, 6 total]
 
 ---
 
@@ -134,7 +132,7 @@
 
 ## Validation Report
 | Check | Target | Result | Status |
-| Counts | G≥5, T≥3, L≥3, A≥8, Q=12, F/A=50/50 | [Results] | PASS/FAIL |
+| Counts | G≥5, T≥3, L≥3, A≥6, Q=6, F/A=50/50 | [Results] | PASS/FAIL |
 [All checks]
 
 **Overall**: [Pass rate]  
@@ -167,9 +165,7 @@
 **A3.** 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]  
 **A4.** Vernon, V. (2013). *Implementing domain-driven design*. Addison-Wesley. [EN]  
 **A5.** Newman, S. (2021). *Building microservices*. O'Reilly. [EN]  
-**A6.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]  
-**A7.** 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]  
-**A8.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]
+**A6.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]
 
 ## Limitations
 - **Trade-offs**: Rigor vs. speed; depth vs. breadth; precision vs. accessibility

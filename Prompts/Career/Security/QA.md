@@ -4,60 +4,53 @@
 
 **Application:** Use for scenarios that block decisions, create risks, affect multiple roles, require action, or have quantified impact. Apply selectively for high-stakes situations.
 
-**Context:**
-- **Problem:** Hallucinations, incomplete analysis, and outdated information lead to poor security decisions.
-- **Use when:** Generating Q&As for recent threats like 0-days, breaches, compliance changes, or emerging risks.
-- **Assumptions:** Access to current threat intelligence.
+**Problem:** Hallucinations, incomplete analysis, and outdated information lead to poor security decisions.
 
 **Key Terms:**
 - **Hallucination**: Incorrect or unverifiable security information.
 - **Decision-critical**: Impacts >5% or blocks key actions.
 - **MECE**: Mutually Exclusive, Collectively Exhaustive.
 - **Self-contained**: Each Q&A contains complete context without external dependencies.
-- **Impact metrics**: Estimated improvements based on observations.
 
 ## Requirements
 
-### Context & Scope
 **Domain**: Decision-critical software and infrastructure security, especially critical infrastructure.
 **Audience**: Security engineers, DevOps/SRE, architects, security leaders, compliance officers.
 **Scope**: Focus on decision-critical scenarios like 0-days, breaches, compliance changes, emerging threats. Exclude marketing, speculation, or low-impact topics.
-**Cadence**: Generate regularly; expires 2 weeks after creation.
 
 **Freshness**: Prioritize recent information (<2 months for threats, <6 months for compliance).
 
-**Decision Criticality** (≥1 criterion required):
+**Decision Criticality** (at least 3 of 5 dimensions required):
 1. **Blocks Decision**: Impacts response, posture, or strategy.
 2. **Creates Risk**: Material threat or change.
 3. **Affects ≥2 Roles**: Multi-stakeholder impact.
 4. **Requires Action**: Within 1-6 months.
 5. **Quantified Impact**: Measurable effects (CVSS, systems affected, etc.).
 
-### Output Specifications
-**Format**: 120-200 words per answer; include diagrams, configs, citations.
-**Quantity**: 5-10 Q&A pairs.
-**Difficulty**: Mix of foundational (25%), intermediate (50%), advanced (25%).
-**Coverage**: At least 3 of 4 decision-critical dimensions.
-**Traceability**: Scenario → Risk → Control → Action → Metric.
-**Visuals & Practicality**: ≥2 diagrams + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.
+**Output Specifications**
+- **Format**: 100-150 words per answer; include diagrams, configs, citations.
+- **Quantity**: 3-5 Q&A pairs.
+- **Difficulty**: Mix of foundational (25%), intermediate (50%), advanced (25%).
+- **Coverage**: At least 3 of 5 decision-critical dimensions.
+- **Traceability**: Scenario → Risk → Control → Action → Metric.
+- **Visuals & Practicality**: ≥1 diagram + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.
 
-### Quality Standards
-**Clarity**: Define terms; consistent language.
-**Precision**: Specific values, citations, thresholds.
-**Accuracy**: Verify facts; note uncertainties.
-**Credibility**: Use current standards and primary sources.
-**Balance**: Consider trade-offs.
-**Significance**: Focus on high-impact (P×I >8).
-**Concision**: Avoid redundancy.
-**Logic**: Coherent reasoning.
+**Quality Standards**
+- **Clarity**: Define terms; consistent language.
+- **Precision**: Specific values, citations, thresholds.
+- **Accuracy**: Verify facts; note uncertainties.
+- **Credibility**: Use current standards and primary sources.
+- **Balance**: Consider trade-offs.
+- **Significance**: Focus on high-impact (P×I >8).
+- **Concision**: Avoid redundancy.
+- **Logic**: Coherent reasoning.
 
-### Limitations and Trade-offs
-**Trade-offs**: Balance rigor with speed.
-**Alternatives**: Unstructured prompts (faster but error-prone); automated tools (quick but may be outdated).
-**Skip for**: Low-stakes or exploratory scenarios.
-**Exclude**: Historical, theoretical, or speculative content.
-**Impact Metrics**: Estimated reductions in hallucinations (30-60%) and improvements in decision quality (60-80%), with uncertainty.
-**Citations**: Use APA 7th format with tags; reference primary sources.
+**Limitations and Trade-offs**
+- **Trade-offs**: Balance rigor with speed.
+- **Alternatives**: Unstructured prompts (faster but error-prone); automated tools (quick but may be outdated).
+- **Skip for**: Low-stakes or exploratory scenarios.
+- **Exclude**: Historical, theoretical, or speculative content.
+- **Citations**: Use APA 7th format with tags; reference primary sources.
 
 ## Decision-Critical Dimensions
 
@@ -115,88 +108,14 @@
 
 ## References & Quality
 
-### Minimums
-- **Glossary**: ≥8 terms (e.g., CVSS, MTTD/MTTR, Zero-Trust).
-- **Tools**: ≥3 (e.g., SIEM like Splunk, vulnerability scanners).
-- **Literature**: ≥6 standards (e.g., NIST SP 800-61, ISO 27001).
-- **Citations**: ≥6 in APA 7th format, recent where possible.
-
-### Quality Checks
-- Ensure decision-criticality, freshness, scenario-driven, citations, practicality, quantification, timelines, stakeholder coverage, and actionability.
-- Cover ≥3 dimensions, balance difficulty levels.
+**Quality Checks**: Ensure decision-criticality, freshness, scenario-driven, citations, practicality, quantification, timelines, stakeholder coverage, and actionability. Cover ≥3 dimensions, balance difficulty levels.
 
 ## Workflow
 
-1. **Discover Scenarios**: Identify recent threats, breaches, compliance changes from reliable sources. Curate based on criticality and specifics.
-2. **Build References**: Compile glossary, tools, literature, citations.
-3. **Generate Q&As**: Create 5-10 pairs with required elements, self-check for quality.
-4. **Add Visuals**: Include ≥2 diagrams and ≥1 table.
-5. **Validate & Finalize**: Ensure all checks pass, add dates.
-
-## Output Format (Minimal Viable)
-
-```markdown
-## Contents
-- [Executive Summary](#executive-summary)
-- [Decision-Critical Dimensions](#decision-critical-dimensions)
-- [Q&A Template](#qa-template)
-- [References](#references): Glossary, Tools, Literature, Citations
-- [Validation Results](#validation-results-12-checks)
-
-## Executive Summary
-**Domain**: [Security domain] | **Period**: [YYYY-MM-DD] | **Coverage**: [# items, 3-4 dimensions]
-
-**Key Decisions**: 1. [Scenario] ([Date]): [Impact] → [Decision] → [Timeline] (2 high-impact)
-
-**Dashboard**: [Table: Dimension | Scenario | Decision | Timeline]
-
-**Roles**: [5 core roles] | **Refs**: G=[#] T=[#] L=[#] A=[#]
-
-## Decision-Critical Dimensions
-| # | Dimension | Count | Scenarios | Roles |
-|---|-----------|-------|-----------|-------|
-| 1 | Threat Detection | 0-3 | 0-days, breaches | Security Eng, DevOps |
-| 2 | Incident Response | 0-3 | Active incidents | Security Eng, SRE |
-| 3 | Compliance & Governance | 0-3 | Regulatory changes | Security Lead, Compliance |
-| 4 | Risk & Control | 0-3 | Control gaps, emerging threats | Architect, Security Lead |
-| | **Total** | **5-10** | **4+** | **≥5** |
-
-## Q&A Template
-
-### Q#: [Scenario Question + Dimension + Roles]
-
-**Dimension**: [Dimension] | **Roles**: [Primary, Secondary] | **Decision Criticality**: [Criterion]
-
-**Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: A#]
-
-**Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
-
-**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
-
-**Decision** (~50w): **Rec**: Immediate (0-2wk) + Short-term (2wk-2mo) | **Owner**: [Role]
-
-**Practical**: [YAML config / Playbook / Checklist]
-
-[n1]: URL
----
-
-## References
-
-### Glossary
-**G#. Term**: Definition | Context | Example
-
-### Tools
-**T#. ToolName**: Purpose | URL
-
-### Literature
-**L#. Title. Org/Publisher. Year.** Description.
-
-### Citations
-**A#. Author(s). (Year). *Title*. Pub. URL [Tag]**
-
-## Validation Results
-Summary of quality checks passed.
-```
+1. **Discover Scenarios**: Identify recent threats, breaches, compliance changes from reliable sources.
+2. **Generate Q&As**: Create 3-5 pairs with required elements, ensure quality.
+3. **Add Visuals**: Include ≥1 diagram and ≥1 table.
+4. **Validate**: Check for decision-criticality, citations, practicality, and timelines.
 
 ## Measurable Success Criteria
 - Hallucination rate <10% in generated Q&A (measured by expert review of 50+ samples)
@@ -211,13 +130,13 @@ Summary of quality checks passed.
 
 **Dimension**: Threat Detection | **Roles**: Security Engineer, DevOps/SRE | **Decision Criticality**: Blocks incident response, creates material risk
 
-**Scenario** (~25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation reported in 3 critical infrastructure sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: A1]
+**Scenario** (25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation in 3 critical sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: A1]
 
-**Risk** (~40w): **Threat**: Remote code execution on PLC → loss of control → operational shutdown. **Impact**: CVSS 9.8 (critical). **Affected**: 2K healthcare systems, 5K energy systems. **Timeline**: Patch available 2024-11-20 (5-day window). **Control**: Detection (MTTD ≤5 min), isolation (MTTR <30 min), patching (7-day window).
+**Risk** (40w): **Threat**: Remote code execution on PLC → loss of control → operational shutdown. **Impact**: CVSS 9.8 (critical). **Affected**: 2K healthcare, 5K energy systems. **Timeline**: Patch available 2024-11-20 (5-day window). **Control**: Detection (MTTD ≤5 min), isolation (MTTR <30 min), patching (7-day window).
 
-**Stakeholders** (~35w): **Security Engineer**: Detection rules (network signatures, behavioral), SIEM tuning, false positive management. **DevOps/SRE**: Patch deployment plan, rollback strategy, RTO/RPO impact (30 min max downtime). **SRE**: Monitoring (asset inventory, patch status), alerting (detection + patch compliance).
+**Stakeholders** (35w): **Security Engineer**: Detection rules (network signatures, behavioral), SIEM tuning, false positive management. **DevOps/SRE**: Patch deployment plan, rollback strategy, RTO/RPO impact (30 min max downtime). **SRE**: Monitoring (asset inventory, patch status), alerting (detection + patch compliance).
 
-**Decision** (~50w): **Rec**: Immediate (0-2wk): Deploy detection rules + inventory scan. Short-term (2wk-2mo): Patch all systems, validate detection effectiveness. **Owner**: Security Engineer (detection), DevOps (patching). **Success**: 100% detection rate, 100% patched within 30 days, 0 exploitation incidents.
+**Decision** (50w): **Rec**: Immediate (0-2wk): Deploy detection rules + inventory scan. Short-term (2wk-2mo): Patch all systems, validate detection effectiveness. **Owner**: Security Engineer (detection), DevOps (patching). **Success**: 100% detection rate, 100% patched within 30 days, 0 exploitation incidents.
 
 **Practical** (YAML):
 ```yaml

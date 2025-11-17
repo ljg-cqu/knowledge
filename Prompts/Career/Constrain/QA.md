@@ -2,25 +2,25 @@
 
 Generate 6-12 decision-critical Q&As for architects with constraint analysis—minimal viable set for informed decisions under time constraints.
 
-## LLM Prompt Essentials
+## Essentials
 
-Ensure each Q&A:
-1. Starts with complete context: problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
-2. Makes constraints explicit: name categories with magnitudes; aim for ≥2 categories per Q&A.
-3. Quantifies trade-offs: compare ≥2 alternatives with concrete metrics, costs, risks; state assumptions.
-4. Surfaces stakeholders and phases: map to SDLC phases and ≥2 stakeholders with concerns.
-5. Uses structured, concise format: follow template; keep answers concise (typically 150-250 words); avoid repetition.
-6. Includes citations and self-checks: cite ≥1 source per Q&A (≥2 for I/A); verify calculations, terminology, links.
+Each Q&A must:
+1. Provide complete context: problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
+2. Explicit constraints: ≥2 categories with magnitudes.
+3. Quantified trade-offs: ≥2 alternatives with concrete metrics, costs, risks; state assumptions.
+4. Map to SDLC phases and ≥2 stakeholders with concerns.
+5. Use structured, concise format (150-250 words); avoid repetition.
+6. Include ≥1 citation (≥2 for I/A); verify calculations, terminology, links.
 
 ## Context & Success Criteria
 
-**Problem**: Architects face time-constrained decisions with multiple constraints, risking suboptimal outcomes without structured analysis.
+**Problem**: Time-constrained decisions with multiple constraints risk suboptimal outcomes without structured analysis.
 
 **Audience**: Architects (5+ years), senior engineers.
 
-**Scope**: 3-4 decision-critical dimensions × 4-5 constraint categories × 5 stakeholders × 4-5 SDLC phases.
+**Scope**: 3-4 dimensions × 4-5 constraint categories × 5 stakeholders × 4-5 SDLC phases.
 
-**Output**: 6-12 Q&As (25/50/25% F/I/A) with quantified trade-offs (≥2 alternatives each) and citations.
+**Output**: 6-12 Q&As (25/50/25% F/I/A) with ≥2 quantified alternatives each.
 
 **Assumptions**: Basic architecture knowledge.
 
@@ -29,38 +29,35 @@ Ensure each Q&A:
 **Success Criteria**: 100% decision-critical Q&As with quantified trade-offs, ≥2 alternatives, full stakeholder coverage.
 
 ## Key Terms
-- **F/I/A**: Foundation/Intermediate/Advanced difficulty.
+- **F/I/A**: Foundation/Intermediate/Advanced.
 - **SDLC Phases**: Design, Development, Testing, Deployment, Operations.
 - **Decision-Critical**: Blocks decisions, creates risk, affects stakeholders, or reflects evolving constraints (>5% impact).
-- **Quantified Trade-offs**: Explicit comparisons with metrics (e.g., +35ms latency, +40% ops complexity).
+- **Quantified Trade-offs**: Explicit comparisons (e.g., +35ms latency, +40% ops complexity).
 - **MECE**: Mutually Exclusive, Collectively Exhaustive.
 
 ## Coverage Requirements
 
-### 3-4 Decision-Critical Dimensions (2-3 Q&As each)
+### Dimensions (2-3 Q&As each)
 1. **Structural & Quality**: Decomposition, modularity, performance, scalability, reliability.
 2. **Data & Consistency**: Persistence, caching, consistency, partitioning.
 3. **Integration & Evolution**: APIs, messaging, refactoring, migration, technical debt.
 4. **(Optional) Behavioral**: Events, state, orchestration, error handling.
 
-### 4-5 Constraint Categories (≥2 per Q&A; cover all overall)
+### Constraint Categories (≥2 per Q&A)
 - **Technical**: Hardware, platform, legacy.
 - **Resource**: Deadlines, budget, team skills.
 - **Business**: Pricing, market share, competition.
 - **Compliance**: Regulations, data residency.
 - **Operational**: SLOs, RTO/RPO, downtime.
 
-### 5 Stakeholders (≥2 per Q&A; cover all)
-Architect, Developer, DevOps/SRE, Security, Leadership.
-
 ## Content Standards
 
-### Q&A Structure (Concise, typically 150-250 words)
+### Q&A Structure (150-250 words)
 1. **Header**: Difficulty | Dimension | Phase | Stakeholders | Decision Criticality.
 2. **Key Insight**: Quantified trade-off (1 sentence).
-3. **Constraints**: ≥1 category with magnitudes (aim ≥2).
+3. **Constraints**: ≥2 categories with magnitudes.
 4. **Body**: Context → Pattern → Trade-offs → Metrics → Impact.
-5. **Code**: Optional 10-20 lines with error handling if clarifies constraints.
+5. **Code**: Optional 10-20 lines with error handling if clarifies.
 6. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Business | Tag).
 7. **Citations**: ≥1 (≥2 for I/A).
 
@@ -73,40 +70,36 @@ Architect, Developer, DevOps/SRE, Security, Leadership.
 - **Common Patterns**: Hexagonal, Event-Driven, CQRS, Saga, Circuit Breaker, Event Sourcing, Sharding, Strangler Fig.
 
 ### References
-- **Glossary**: ≥10 terms from Q&As; cover categories.
-- **Tools**: ≥4 with valid URLs (<18mo old), pricing; decision-critical only.
+- **Glossary**: ≥10 terms from Q&As.
+- **Tools**: ≥4 with valid URLs, pricing; decision-critical.
 - **Literature**: ≥5 canonical sources.
-- **Citations**: ≥8 in APA 7th; mix EN/ZH/Other (≥2 languages); ≥50% <3yr old; 100% valid URLs.
+- **Citations**: ≥8 in APA 7th; mix languages; prefer recent; 100% valid URLs.
 
----
-
-# Generation Process
+## Generation Process
 
 ### 1. Plan
 - Allocate 6-12 Q&As across 3-4 dimensions (25/50/25% F/I/A).
 - Map 4-5 constraint categories, 5 stakeholders, 4-5 SDLC phases.
-- Ensure decision criticality: all Q&As meet ≥1 criterion (blocks decision, creates risk, affects stakeholders, evolving constraints).
+- Ensure all Q&As are decision-critical.
 
 ### 2. Build References
-- Glossary: ≥10 terms from Q&As; cover categories.
-- Tools: ≥4 with valid URLs (<18mo), pricing; decision-critical.
+- Glossary: ≥10 terms from Q&As.
+- Tools: ≥4 with valid URLs, pricing.
 - Literature: ≥5 canonical sources.
-- Citations: ≥8 in APA 7th; mix EN/ZH/Other (≥2 languages); ≥50% <3yr; valid URLs.
+- Citations: ≥8 in APA 7th; mix languages; prefer recent; valid URLs.
 
 ### 3. Write Q&As (Validate Every 3)
 - Questions: ≥70% judgment-based with multi-dimensional constraints.
-- Checkpoints: Concise answers | Citations | Syntax | Traceability | Quantified trade-offs | ≥2 constraints | ≥2 stakeholders | Decision criticality.
-- Artifacts: ≥80% with diagram/table; add code if clarifies constraints.
+- Checkpoints: Concise | Citations | Syntax | Traceability | Quantified trade-offs | ≥2 constraints | ≥2 stakeholders | Decision criticality.
+- Artifacts: ≥80% with diagram/table; add code if clarifies.
 
-### 4. Final Validation (All Pass)
+### 4. Final Validation
 - **Counts**: G≥10 | T≥4 | L≥5 | C≥8 | Q=6-12 (25/50/25% F/I/A).
-- **Quality**: 100% citations (I/A ≥2) | ≥2 languages | ≥50% recent | 100% URLs.
+- **Quality**: 100% citations (I/A ≥2) | Mix languages | Prefer recent | 100% URLs.
 - **Content**: Concise | 100% quantified | ≥70% judgment | ≥80% traceable/artifacts | 100% syntax.
 - **Coverage**: 100% critical | ≥80% ≥2 constraints | All 5 stakeholders | 4-5 phases | ≥30% business.
 - **Criteria**: Decision-critical, clear, accurate, balanced, practical, constraint-aware.
 - Fix failures and re-validate.
-
----
 
 ## Templates
 
@@ -116,9 +109,9 @@ Architect, Developer, DevOps/SRE, Security, Leadership.
 **Difficulty**: F/I/A | **Dimension**: [1-3] | **Phase**: [SDLC] | **Stakeholders**: [≥2]
 **Decision Criticality**: [Blocks/Risk/Roles/Evolving]
 **Key Insight**: [Quantified trade-off, 1 sentence]
-**Constraints**: [Categories with magnitudes (≥2)]
-**Answer** (concise): [Context → Pattern → Trade-offs → Metrics → Impact] [Ref: X]
-**Code** (optional; 10-20 lines if clarifies): [Language + error handling]
+**Constraints**: [≥2 categories with magnitudes]
+**Answer**: [Context → Pattern → Trade-offs → Metrics → Impact] [Ref: X]
+**Code** (optional): [10-20 lines with error handling if clarifies]
 **Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
 **Stakeholders**: [≥2 with concerns]
 ```
@@ -127,7 +120,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership.
 - **Glossary** (≥10): Term → Definition.
 - **Tools** (≥4): Name → Purpose | Updated | Pricing | URL.
 - **Literature** (≥5): Author (Year). Title. Publisher.
-- **Citations** (≥8): APA 7th; mix EN/ZH/Other (≥2 languages).
+- **Citations** (≥8): APA 7th; mix languages.
 
 ### Validation Report
 ```

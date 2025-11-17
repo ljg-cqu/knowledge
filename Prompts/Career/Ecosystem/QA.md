@@ -1,63 +1,42 @@
-# Ecosystem Understanding Q&A Generator (Decision-Critical)
+# Ecosystem Understanding Q&A Generator
 
-**Problem**: Ecosystem decisions suffer from incomplete understanding, leading to failed integrations, compliance violations, and missed opportunities. Hallucinations reduce decision quality by 30-60%.
+**Problem**: Incomplete ecosystem understanding leads to failed integrations, compliance issues, and missed opportunities. Hallucinations reduce decision quality by 30-60%.
 
-**Scope**: Generate 10 decision-critical Q&A pairs enabling informed ecosystem decisions through technical/business/regulatory viewpoints.
+**Scope**: Generate decision-critical Q&A pairs for informed ecosystem decisions across technical, business, and regulatory viewpoints.
 
-**Context**: Various ecosystems including business, technical, and regulatory contexts. Stakeholders: Business, PM, Architect, Developer, QA, DevOps, Security, Data, SRE, Leadership.
+**Context**: Business, technical, and regulatory ecosystems. Stakeholders: PM, Architect, Developer, QA, DevOps, Security, Data, SRE, Leadership.
 
-**Resources**: LLM, curated ecosystem references, and (ideally) web access to authoritative sources.
+**Resources**: LLM, curated references, web access to authoritative sources.
 
-**Timeline**: Single focused session for generation and validation.
+**Timeline**: Single session for generation and validation.
 
 ## Requirements
 
-### Quantitative Floors
-- **Q&A**: 10 total (approximately 25% Foundational, 50% Integration, 25% Advanced)
-- **Word Count**: Comprehensive but concise answers (typically 150-250 words)
-- **Citations**: Most answers with ≥1 citation; integration/advanced with ≥2
-- **Viewpoints**: Most answers with ≥2 viewpoints
-- **Topic Coverage**: All 5 dimensions covered, with 2 Q&As per dimension.
-  1. Ecosystem Structure: Core parties, roles, value flows
-  2. Value Chains & Business: Revenue models, economic viability
-  3. Integration Patterns: APIs, protocols, interoperability
-  4. Technical Architecture: Tech stacks, scalability, reliability
-  5. Regulatory & Compliance: Legal requirements, governance, risk
-- **References**: Sufficient references in each category (APA 7th + tags [EN]/[ZH]/[Standard])
-- **Visuals**: Include relevant diagrams (preferably Mermaid) and tables
+### Guidelines
+- **Q&A Pairs**: 8-12, balanced across foundational, integration, advanced complexity.
+- **Answers**: Concise, 150-300 words, with ≥2 viewpoints (technical/business/regulatory) and ≥1 citation (≥2 for complex topics).
+- **Coverage**: 5 dimensions - Ecosystem Structure, Value Chains & Business, Integration Patterns, Technical Architecture, Regulatory & Compliance.
+- **References**: APA 7th format with [EN]/[ZH]/[Standard] tags; mix of standards, research, case studies; prioritize recent sources.
+- **Visuals**: Include diagrams (preferably Mermaid) and tables.
 
-### Citation Standards
-- **Format**: `Author, A. (Year). *Title*. Publisher. [EN]` | `Org. (Year). *Standard*. [Standard]` | Inline: `[Ref: ID]`
-- **Distribution**: Primarily EN, with some ZH and Standards
-- **Source Types**: Mix of standards, research, and case studies
-- **Recency**: Recent sources where possible
+### Decision Criticality
+Include topics that:
+- Block decisions (go/no-go, resources, strategy).
+- Create significant risk (financial/regulatory/operational/technical).
+- Affect ≥3 stakeholders.
+- Evolve rapidly (changes in 3-6 months).
+- Have high adoption barriers (>40h effort).
 
-### Decision Criticality Framework
-**Include if ≥1 criterion**:
-- Blocks decision (go/no-go, resources, strategy)
-- Creates risk (financial/regulatory/operational/technical)
-- Affects ≥3 stakeholders
-- Actively evolving (changes in 3-6 months)
-- High adoption barrier (>40h effort)
-
-**Exclude if**:
-- Niche/legacy (<5% adoption)
-- Nice-to-have (no decision impact)
-- Already covered
+Exclude niche/legacy topics (<5% adoption), nice-to-haves, or already covered areas.
 
 ## Execution Steps
 
-1. **Plan Allocation**: Distribute across 5 dimensions (25/50/25% F/I/A). Complexity: F=foundational, I=integration, A=advanced.
-
-2. **Build References**: Glossary (terms used), Standards/Protocols (decision-critical), Tools/Platforms (key infrastructure), Literature (canonical), Citations (APA 7th, ≥50% recent).
-
-3. **Generate Q&A**: Batch 2-3, self-check each. Questions: Clear, specific, decision-critical, multi-viewpoint. Answers: 150–250 words; for most questions include ≥2 viewpoints (mandatory for I/A), with citations (≥1; ≥2 for I/A).
-
-4. **Create Visuals**: Create ≥3 diagrams (≥2 Mermaid) and ≥3 tables overall; distribute across topics.
-
-5. **Populate References**: Format as specified, ensure resolution.
-
-6. **Validate**: Check floors, citations, recency, criticality, viewpoints, visuals, ecosystem focus. Fail any = fix and re-run.
+1. **Plan**: Distribute Q&A across dimensions with balanced complexity.
+2. **Research**: Build glossary, standards, tools, literature, citations (≥50% recent).
+3. **Generate**: Create clear, specific questions; provide comprehensive answers with viewpoints and citations.
+4. **Visualize**: Add ≥3 diagrams (≥2 Mermaid) and ≥3 tables.
+5. **Reference**: Format and ensure accessibility.
+6. **Validate**: Check coverage, citations, criticality, viewpoints, visuals.
 
 ## Output Format
 
@@ -69,15 +48,15 @@
 5. Validation Report
 
 ### Topic Overview
-**Total**: 10 | **Complexity**: 2F (20%) / 5I (50%) / 3A (30%) | **Coverage**: 5 dimensions
+**Total**: [Count] | **Complexity**: [Distribution] | **Coverage**: 5 dimensions
 
 | # | Topic | Range | Count | Mix | Artifacts | Decision Criticality |
 |---|-------|-------|-------|-----|-----------|----------------------|
-| 1 | Ecosystem Structure | Q1–Q2 | 2 | 1F/1I | 1D+1T | Blocks decision, Affects 3+ roles |
-| 2 | Value Chains & Business | Q3–Q4 | 2 | 0F/2I | 1D+1T | Blocks decision, Creates risk |
-| 3 | Integration Patterns | Q5–Q6 | 2 | 0F/1I/1A | 1D+1T | Affects 3+ roles, Actively evolving |
-| 4 | Technical Architecture | Q7–Q8 | 2 | 1F/0I/1A | 1D+1T | Blocks decision, High adoption barrier |
-| 5 | Regulatory & Compliance | Q9–Q10 | 2 | 0F/1I/1A | 1D+1T | Creates risk, Actively evolving |
+| 1 | Ecosystem Structure | Q1–Q2 | 2 | [Mix] | 1D+1T | [Criteria] |
+| 2 | Value Chains & Business | Q3–Q4 | 2 | [Mix] | 1D+1T | [Criteria] |
+| 3 | Integration Patterns | Q5–Q6 | 2 | [Mix] | 1D+1T | [Criteria] |
+| 4 | Technical Architecture | Q7–Q8 | 2 | [Mix] | 1D+1T | [Criteria] |
+| 5 | Regulatory & Compliance | Q9–Q10 | 2 | [Mix] | 1D+1T | [Criteria] |
 
 Legend: F=foundational, I=integration, A=advanced, D=diagram, T=table
 
@@ -88,37 +67,35 @@ Legend: F=foundational, I=integration, A=advanced, D=diagram, T=table
 
 **Complexity**: [F/I/A] | **Topic**: [Dimension] | **Viewpoints**: [Tech/Business/Regulatory] | **Decision Criticality**: [Criterion]
 
-**Key Insight** (1-2 sentences): [Core concept/pattern]
+**Key Insight**: [1-2 sentences]
 
-**Answer** (150–250 words):
-- **Context** [Ref: ID]: Position, standards, impact
-- **Multi-Viewpoint** (≥2): Technical/Business/Regulatory details
-- **Interaction Patterns**: Integration, communication, exchange
-- **Real-World Examples** [Ref: ID]: Implementations, cases
-- **Trade-offs & Constraints**: Choices, limitations, criteria
-- **Stakeholder Perspectives**: Views from roles
-- **Citations**: ≥1 [Ref: ID] (≥2 for I/A)
+**Answer** (150–300 words):
+- **Context**: Position, standards, impact [Ref: ID]
+- **Viewpoints**: Technical/Business/Regulatory details
+- **Patterns**: Integration, communication, exchange
+- **Examples**: Implementations, cases [Ref: ID]
+- **Trade-offs**: Choices, limitations, criteria
+- **Perspectives**: Stakeholder views
+- **Citations**: ≥1 [Ref: ID]
 
 **Artifact**: Diagram (Mermaid), sequence, matrix
 
 ### Reference Formats
-- **Glossary**: G#. Term | Definition | Context | Examples | Alphabetize
-- **Standards/Protocols**: S#. Name (Body) | Purpose | Adoption | URL | Group by category
-- **Tools/Platforms**: T#. Name (Category) | Description | Maturity | Docs URL | Group by category
-- **Literature**: L#. Author, Title, Year | Summary | Relevance | Type | Group by type
-- **Citations**: A#. [Citation] [Tag] | APA formats | Sort by ID
-
-
+- **Glossary**: G#. Term | Definition | Context | Examples (alphabetized)
+- **Standards/Protocols**: S#. Name (Body) | Purpose | Adoption | URL (grouped by category)
+- **Tools/Platforms**: T#. Name (Category) | Description | Maturity | Docs URL (grouped by category)
+- **Literature**: L#. Author, Title, Year | Summary | Relevance | Type (grouped by type)
+- **Citations**: A#. [Citation] [Tag] (APA format, sorted by ID)
 
 ## Quality Checks
-- **Question Quality**: Clarity, criticality, depth, viewpoints, impact, alignment
-- **Quick Check & Attributes**: Self-contained, MECE, concise, accurate, precise, cited/evidenced, complete, actionable/practical, relevant, balanced, recent, testable/verifiable, logically structured, consistent
+- **Questions**: Clear, critical, deep, multi-viewpoint, impactful, aligned.
+- **Attributes**: Self-contained, MECE, concise, accurate, cited, complete, actionable, relevant, balanced, recent, verifiable, structured, consistent.
 
 ## Limitations
-- Rigorous guidelines may slow initial generation
-- Depth may exceed some needs
-- Technical precision may reduce accessibility
-- Skip for exploratory/low-stakes queries
-- Exclude historical/theoretical/edge cases/speculation
+- Rigorous guidelines may slow generation.
+- Depth may exceed needs.
+- Technical focus may reduce accessibility.
+- Skip for low-stakes queries.
+- Exclude historical/theoretical/speculative content.
 
-**Impact Metrics**: Based on ~50 sessions (2024-2025); directional (±20-40%); use principles over metrics
+**Impact**: Based on ~50 sessions (2024-2025); directional (±20-40%); prioritize principles over metrics.

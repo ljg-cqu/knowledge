@@ -6,113 +6,91 @@ owner: ljg-cqu
 
 # PM Interview Q&A Generator
 
-**Purpose**: Generate 8-10 scenario-based questions for senior PM interviews, focusing on judgment under uncertainty to improve hiring decisions.
+**Purpose**: Generate scenario-based questions for senior PM interviews, focusing on judgment in decision-critical scenarios (e.g., >$1M impact, strategic pivots, >5% churn). Emphasize stakeholder navigation, trade-offs, strategic ambiguity. Exclude trivia, design, junior tasks, technical questions.
 
-**Scope**: Senior+ PM roles; decision-critical scenarios (revenue >$1M impact, strategic pivots, churn >5%); stakeholder navigation and trade-offs; 100% scenario-based.
+**Constraints**: Answers 150-250 words; 70% with citations; 100% decision-critical; senior level.
 
-**Constraints**: 150-250 words/answer; ≥70% answers with citations; 100% decision-critical; senior+ level.
+**Assumptions**: Industry context generic or provided; text output; 10-15min per question.
 
-**Assumptions**: Industry context provided or generic accepted; text output; ≈10-15min discussion per question.
-
-**Focus**: Stakeholder tension, resource constraints, strategic ambiguity. **Exclude**: Trivia, greenfield design, junior tasks, technical questions.
-
-**Limitations**: Generic scenarios may lack industry nuance; citations vary in recency; frameworks need contextual application.
+**Limitations**: Generic scenarios lack nuance; citations vary in recency; frameworks need context.
 
 **Terms**:
-- **Q&A**: Scenario question-answer pair testing judgment.
-- **Floor**: Minimum threshold (meeting ≥ value = pass).
+- **Q&A**: Scenario pair testing judgment.
+- **Floor**: Minimum threshold (≥ value = pass).
 - **Quality Gate**: Mandatory checkpoint (fail = stop/fix).
 - **Difficulty**: F=execution, I=strategy/trade-offs, A=portfolio/vision/P&L.
-- **Dimensions**: Different lenses (e.g., metrics, users, stakeholders, risk, time).
-- **Decision-Critical**: Scenario meeting ≥1 criterion: blocks decisions, creates risk, affects ≥2 stakeholders, actively evolving, quantified impact.
+- **Dimensions**: Lenses (metrics, users, stakeholders, risk, time).
+- **Decision-Critical**: Meets ≥1: blocks decisions (>1M impact), creates risk (>5% churn), affects ≥2 stakeholders, actively evolving, quantified impact.
 
-## Requirements
+## Guidelines
 
-### Decision Criticality Framework
+### Decision Criticality
+Scenarios meet ≥1 criterion above.
 
-Include scenarios meeting ≥1 criterion:
-- Blocks decisions (roadmap prioritization, go/no-go, strategic pivot with >$1M revenue impact)
-- Creates risk (competitive threat, >5% churn, strategic misalignment)
-- Affects ≥2 stakeholders (multi-team impact)
-- Actively evolving (dynamics changing in past 3-6 months)
-- Quantified impact (revenue, adoption, retention metrics)
-
-### Quantitative Floors
-
-- Q&A: 8-10 total, balanced mix (more intermediate difficulty), 150-250 words/answer, ≥70% with ≥1 citation, each answer covers ≥2 dimensions.
+### Quantitative Guidelines
+- Q&A: 8-10 total, balanced difficulty, 150-250 words/answer, 70% with ≥1 citation, each ≥2 dimensions.
 - Topics: Strategy & Prioritization (2-3), Metrics & Decision-Making (2-3), Stakeholder Alignment (1-2), optional GTM (1).
-- References: Glossary ≥8 terms, Tools ≥3, Literature ≥4 (≥1 ZH), Citations ≥6 APA 7th with language tags.
+- References: Glossary ≥8 terms, Tools ≥3, Literature ≥4 (≥1 ZH), Citations ≥6 APA 7th.
 - Visuals: ≥1 diagram + table per topic.
 
 ### Citation Standards
-
-- Format: APA 7th + language tag (e.g., [EN]). Inline: [Ref: ID] (G#=Glossary, T#=Tool, L#=Literature, A#=Citation).
-- Distribution: Aim for ~50-70% EN, 20-40% ZH, 5-15% other (flexible as long as multi-language and relevant).
+- Format: APA 7th + language tag. Inline: [Ref: ID].
+- Distribution: 50-70% EN, 20-40% ZH, 5-15% other.
 - Types: ≥3 (frameworks, research, case studies, tools).
 
+### Process
+1. Plan: Select 8-10 Q&A across topics, balanced difficulty.
+2. Build References: Create glossary, tools, literature, citations. Check quality gates.
+3. Generate Q&A: Scenario questions testing judgment. Answers with framework, dimensions, steps, trade-offs, communication, criteria, citations.
+4. Create Visuals: ≥1 per topic, reference in answers.
+5. Populate References: Format as specified.
+6. Validate: Check floors, citations, criticality.
+7. Final Review: Ensure clarity, realism, balance.
+
 ### Quality Gates
-
-Fail any = stop, fix, re-validate:
-1. Recency: At least ~40% of references from the last 5 years; prefer newer sources for fast-moving domains (e.g., AI/ML/data).
-2. Diversity: ≥3 citation types; no single type dominates (>50%).
+Fail any = stop/fix:
+1. Recency: 40% references from last 5 years.
+2. Diversity: ≥3 citation types.
 3. Evidence: Each topic ≥2 authoritative + ≥1 tool.
-4. Tools: Where available, include pricing model, indicative users, recent update, and key integrations.
-5. References: Links accessible/archived.
-6. Cross-refs & coherence: 100% [Ref: ID] resolve (no orphans), and Q&A set, references, visuals, and example stay consistent with this PM interview template's purpose.
-
-## Execution
-
-1. **Plan Allocation**: Select 8-10 Q&A across 3-4 topics (Strategy & Prioritization 2-3, Metrics & Decision-Making 2-3, Stakeholder Alignment 1-2, optional GTM 1). Aim for balanced difficulty mix (more intermediate).
-
-2. **Build References**: Create Glossary (≥8 terms), Tools (≥3), Literature (≥4, ≥1 ZH), Citations (≥6 APA 7th). Run Quality Gates 1-5 now (run 6 after cross-refs and Q&A are in place).
-
-3. **Generate Q&A**: Create scenario questions testing ≥2 judgment signals. Answers: 150-250 words, key insight, framework [Ref], ≥2 dimensions, steps, trade-offs, communication, criteria, citations. Self-check batches.
-
-4. **Create Visuals**: ≥1 diagram + table per topic. Reference in ≥50% answers.
-
-5. **Populate References**: Format as specified. Ensure 100% cross-refs resolve.
-
-6. **Validate**: Run checks (floors, citations, criticality, language, recency, links, cross-refs, word count, insights, coverage, frameworks, judgment). Fail any = fix.
-
-7. **Final Review**: Ensure questions are clear, realistic, discriminative. Answers balanced with trade-offs. All validations pass.
+4. Tools: Include pricing, users, updates, integrations.
+5. References: Accessible links.
+6. Cross-refs: 100% resolve, consistent.
 
 ## Success Criteria
-
-- Interview Quality: ≥80% elicit judgment (baseline 50% trivia)
-- Hiring Accuracy: ≥70% show senior judgment in 6mo (baseline 40%)
-- Time: 30s check, 10-15min discussion
-- Citations: ≥70% of answers with ≥1 citation
-- Impact: 100% ≥$1M revenue/strategic
+- Interview Quality: 80% elicit judgment (baseline 50% trivia).
+- Hiring Accuracy: 70% show senior judgment in 6mo (baseline 40%).
+- Time: 30s check, 10-15min discussion.
+- Citations: 70% answers with ≥1 citation.
+- Impact: 100% ≥$1M revenue/strategic.
 
 Target: Reduce hiring risk by 60% via structured evaluations.
 
 ## Question Quality
-
 Review each; rewrite if fails ≥2:
-1. Clarity: Single ask (e.g., "Prioritize activation vs. churn?")
-2. Signal: Tests judgment (scenario-based)
-3. Depth: Enables trade-offs (alternatives)
-4. Realism: Senior PM (complex constraints)
-5. Discriminative: Application over recall ("When can RICE mislead?" vs. "What is RICE?")
-6. Alignment: Difficulty fits seniority (F execution, I trade-offs, A vision/P&L)
+1. Clarity: Single ask (e.g., "Prioritize activation vs. churn?").
+2. Signal: Tests judgment (scenario-based).
+3. Depth: Enables trade-offs (alternatives).
+4. Realism: Senior PM (complex constraints).
+5. Discriminative: Application over recall ("When can RICE mislead?" vs. "What is RICE?").
+6. Alignment: Difficulty fits seniority (F execution, I trade-offs, A vision/P&L).
 
 ## Output Format
 
 ### A. TOC
-1. Topic Areas Overview | 2. Questions by Topic (3–4 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Topic Areas Overview | 2. Questions by Topic (3-4 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report.
 
-### B. Topic Overview (Optimized)
-**Total**: [8–10] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies
+### B. Topic Overview
+**Total**: [8-10] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies.
 
 | Topic          | Range  | Count | Mix      | Artifacts       | Decision Criticality |
 |----------------|--------|-------|----------|-----------------|----------------------|
-| Strategy & Prioritization | Q1–Q3  | 2–3   | 1F/1I/1A | 1 diagram+table | Blocks decision |
-| Metrics & Decision-Making | Q4–Q6  | 2–3   | 1F/1I/1A | 1 diagram+table | Creates risk |
-| Stakeholder Alignment | Q7–Q8  | 1–2   | 1F/1I | 1 diagram+table | Affects ≥2 roles |
-| GTM (Optional) | Q9–Q10 | 1     | 1I or 1A | 1 diagram+table | Actively evolving |
-|   | **Total**      |        | **8–10**| **balanced mix** | **compressed** | 100% decision-critical |
+| Strategy & Prioritization | Q1-Q3  | 2-3   | 1F/1I/1A | 1 diagram+table | Blocks decision |
+| Metrics & Decision-Making | Q4-Q6  | 2-3   | 1F/1I/1A | 1 diagram+table | Creates risk |
+| Stakeholder Alignment | Q7-Q8  | 1-2   | 1F/1I | 1 diagram+table | Affects ≥2 roles |
+| GTM (Optional) | Q9-Q10 | 1     | 1I or 1A | 1 diagram+table | Actively evolving |
+|   | **Total**      |        | **8-10**| **balanced mix** | **compressed** | 100% decision-critical |
 
-Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
+Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L.
 
 ### C. Q&A Format
 
@@ -126,19 +104,19 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Key Insight**: [1 sentence—specific dilemma/tension]
 
-**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
+**Answer** (150-250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps | Trade-offs/alternatives | Stakeholder communication | Success criteria | ≥1 [Ref: ID]
 
-**Artifact** *(optional)*: Matrix, journey, dashboard, roadmap
+**Artifact** *(optional)*: Matrix, journey, dashboard, roadmap.
 
 ### D. Reference Formats
 
-**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize
+**Glossary**: **G#. Term (Acronym)** | Definition | Use cases | Related | Limitations | Alphabetize.
 
-**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (key ones) | PM use case | URL | Group by category
+**Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (key ones) | PM use case | URL | Group by category.
 
-**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥1 ZH)
+**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥1 ZH).
 
-**Citations**: **A#. [Citation] [Lang]** | APA 7th format with language tags
+**Citations**: **A#. [Citation] [Lang]** | APA 7th format with language tags.
 
 ## Example
 
@@ -177,6 +155,6 @@ Use multi-dimensional evaluation [Ref: A1]. **First, discover JTBD** [Ref: A7]�
 | Competitive moat    | Low (replicable) | High (differentiator) | 10% | 3    | 9       |
 | **Weighted**        |                  |                  |        | **4.8** | **7.1** |
 
-**Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases
+**Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases.
 
-**Confidence**: High (established frameworks; common PM dilemma)
+**Confidence**: High (established frameworks; common PM dilemma).

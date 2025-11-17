@@ -1,6 +1,6 @@
 # Performance Engineering Q&A Generator (Minimal Viable)
 
-Generate 4-8 decision-critical Q&As for performance engineering—minimal viable tracking for informed decisions with limited time.
+Generate 2-4 decision-critical Q&As for performance engineering—minimal viable tracking for informed decisions with limited time.
 
 ## Context & Scope
 
@@ -14,16 +14,16 @@ Generate 4-8 decision-critical Q&As for performance engineering—minimal viable
 **Resources**: Any capable LLM plus standard profiling tools.
 **Domain**: Web/cloud/microservices/distributed/real-time/data-intensive systems.
 **Exclude**: Hardware selection, network topology, vendor comparisons, non-performance concerns.
-**Cadence**: Bi-weekly | 4-6h effort | Expires: 2 weeks.
+**Cadence**: Bi-weekly | 1-2h effort | Expires: 2 weeks.
 
 ## Requirements
 
-**Quantity**: 4-8 Q&A pairs.
+**Quantity**: 2-4 Q&A pairs.
 **Difficulty**: 25% Foundational, 50% Intermediate, 25% Advanced.
-**Coverage**: 4 dimensions × 4 phases (Measure/Analyze/Optimize/Validate; ≥1 Q&A per phase).
+**Coverage**: Balance across 4 dimensions (Latency, Throughput, Scalability, Resources) and 4 phases (Measure/Analyze/Optimize/Validate).
 **Answer Format**: 150-250 words prose (excluding code/diagrams), with [Ref: ID]; include Mermaid diagrams, YAML/JSON/code as needed; APA 7th citations [EN]/[ZH].
-**Performance Chain**: SLO → Measure → Analyze (Bottleneck) → Optimize → Validate → Quantified Impact (required in every answer).
-**Per Cluster (2-3 total)**: ≥1 diagram, ≥1 practical element, ≥1 metrics table.
+**Performance Chain**: SLO → Measure → Analyze (Bottleneck) → Optimize → Validate → Quantified Impact (required).
+**Per Cluster (1-2 total)**: ≥1 diagram, ≥1 practical element, ≥1 metrics table.
 
 **Decision Criticality**: Satisfy ≥1 of: Blocks decision, Creates risk, Affects ≥2 roles, Requires action (1-6mo), Quantified impact.
 **Clarity**: Glossary-defined terms [G: Term]; numeric specifics ("p99 <50ms" not "fast").
@@ -76,44 +76,33 @@ Examples:
 
 Stakeholder Focus: Profiling/optimization (Engineers), SLO/monitoring (SREs), Code tuning (Developers), Design patterns (Architects), Infrastructure (DevOps).
 
-**Mandatory Elements**:
-1. Scenario Context: System constraints, SLOs, bottleneck [Ref: ID].
-2. Decision Criticality: ≥1 criterion satisfied.
-3. Performance Chain: SLO → Measure → Analyze (Bottleneck) → Optimize → Validate → Quantified Impact.
-4. Practical: Code/config/script/command (5-30 lines).
-5. Citation: ≥1 [Ref: ID].
-6. Key Insight: One sentence with quantified impact.
-7. Trade-offs: Explicit with when to use/avoid.
-8. Alternatives: ≥1 with comparison.
-9. Risk/Mitigation: Flagged with strategies.
+**Mandatory Elements**: Scenario context with constraints/SLOs/bottleneck [Ref: ID]; ≥1 decision criticality criterion; complete performance chain; practical code/config (5-30 lines); ≥1 citation; key insight with quantified impact; explicit trade-offs; ≥1 alternative; risk/mitigation strategies.
 
 ## Reference Requirements
 
-- ≥8 Glossary [G#]: Definitions, formulas, targets, usage.
-- ≥3 Tools [T#]: Purpose, pricing, last update, integrations, URL (prefer ≤18mo).
-- ≥6 Literature [L#]: Citations, coverage, key sections.
-- ≥10 Citations [A#]: APA 7th [EN]/[ZH]; DOI/URLs.
+- ≥4 Glossary [G#]: Definitions, formulas, targets, usage.
+- ≥2 Tools [T#]: Purpose, pricing, last update, integrations, URL (prefer ≤18mo).
+- ≥3 Literature [L#]: Citations, coverage, key sections.
+- ≥5 Citations [A#]: APA 7th [EN]/[ZH]; DOI/URLs.
 
 ## Quality Gates
 
 | # | Gate | Requirement | Threshold |
 |---|------|-------------|-----------|
 | 1 | Decision Criticality | ≥1 criterion | 100% |
-| 2 | Quantity | 4-8 Q&As | 4-8 |
-| 3 | Difficulty | 25/50/25 F/I/A | ±5% |
+| 2 | Quantity | 2-4 Q&As | 2-4 |
+| 3 | Difficulty | 25/50/25 F/I/A | ±10% |
 | 4 | Performance Chain | Complete | 100% |
 | 5 | Practical Elements | ≥1 per Q&A | 100% |
-| 6 | Citations | ≥1 per answer; ≥30% ≥2 | 100%/≥30% |
-| 7 | Cross-refs | All resolve | 100% |
-| 8 | Trade-offs | Explicit + ≥1 alternative | 100% |
-| 9 | Quantified Impact | Numeric | 100% |
-| 10 | Reference Floors | G≥8, T≥3, L≥6, A≥10 | Met |
-| 11 | Recency | ≥50% ≤3yr; ≥70% tools | Met |
-| 12 | Clarity | All terms defined | 100% |
+| 6 | Citations | ≥1 per answer | 100% |
+| 7 | Trade-offs | Explicit + ≥1 alternative | 100% |
+| 8 | Quantified Impact | Numeric | 100% |
+| 9 | Reference Floors | G≥4, T≥2, L≥3, A≥5 | Met |
+| 10 | Clarity | All terms defined | 100% |
 
 ## Workflow
 
-1. Plan Topics: 2-3 clusters (e.g., Latency, Throughput); plan 4-8 Q&As total (≈2-4 per cluster); 25/50/25 difficulty.
+1. Plan Topics: 1-2 clusters (e.g., Latency, Throughput); plan 2-4 Q&As total (≈1-2 per cluster); 25/50/25 difficulty.
 2. Build References: Glossary → Tools → Literature → Citations; verify recency/diversity.
 3. Write Q&As: Scenario-driven; 150-250 words; include all elements; validate incrementally.
 4. Add Visuals: ≥1 diagram, metrics table, practical per cluster.
@@ -127,9 +116,9 @@ Stakeholder Focus: Profiling/optimization (Engineers), SLO/monitoring (SREs), Co
 
 ## Contents
 1. Executive Summary: 2-3 insights; dashboard.
-2. Q&A by Cluster (4-8 total, 2-3 clusters).
-3. References (≥8 G, ≥3 T, ≥6 L, ≥10 A).
-4. Validation Results (12 gates).
+2. Q&A by Cluster (2-4 total, 1-2 clusters).
+3. References (≥4 G, ≥2 T, ≥3 L, ≥5 A).
+4. Validation Results (10 gates).
 
 ## Context & Coverage
 Domain/Audience/Constraints/In Scope/Out of Scope.
@@ -189,16 +178,14 @@ Domain/Audience/Constraints/In Scope/Out of Scope.
 ## Example Validation
 | # | Gate | Status | Evidence |
 | 1 | Decision Criticality | PASS | All satisfy ≥1 |
-| 2 | Quantity | PASS | 4-8 Q&As |
+| 2 | Quantity | PASS | 2-4 Q&As |
 | 3 | Difficulty | PASS | 25/50/25 F/I/A |
 | 4 | Performance Chain | PASS | Complete |
 | 5 | Practical Elements | PASS | ≥1 per Q&A |
-| 6 | Citations | PASS | ≥1 per answer; ≥30% ≥2 |
-| 7 | Cross-refs | PASS | All resolve |
-| 8 | Trade-offs | PASS | Explicit + ≥1 alternative |
-| 9 | Quantified Impact | PASS | Numeric |
-| 10 | Reference Floors | PASS | G≥8, T≥3, L≥6, A≥10 |
-| 11 | Recency | PASS | ≥50% ≤3yr; ≥70% tools |
-| 12 | Clarity | PASS | All terms defined |
+| 6 | Citations | PASS | ≥1 per answer |
+| 7 | Trade-offs | PASS | Explicit + ≥1 alternative |
+| 8 | Quantified Impact | PASS | Numeric |
+| 9 | Reference Floors | PASS | G≥4, T≥2, L≥3, A≥5 |
+| 10 | Clarity | PASS | All terms defined |
 
 **Summary**: All gates PASS.
