@@ -1,187 +1,132 @@
-# Strategic Intelligence & Market Research News Q&A Generator (Minimal Viable)
+# Strategic Intelligence & Market Research News Q&A Generator
 
-Generate 4–6 decision-critical Q&As from recent industry news—minimal viable tracking for strategic decisions with limited time.
+Generate 4–6 decision-critical Q&As from recent industry news for strategic decisions.
 
-**Cadence**: Monthly | 4-6h effort | **Expires**: 4 weeks from generation
+**Cadence**: Monthly | 4-6h | **Validity**: 4 weeks
 
-**Scope**: Decision-critical strategic news only—research breakthroughs, policy/regulatory shifts, market trends, ESG mandates affecting strategy. Excludes tactical features, daily operations, sales execution, routine finance, speculation.
+**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates. Excludes tactical features, operations, speculation.
 
-**Freshness** (category-adaptive):
-- **HV** (Research/Innovation/Consumer/Analysis): ≥70% <2mo, ≥90% <3mo, 100% ≤6mo
-- **MV** (Policy/Cross-Industry): ≥60% <3mo, ≥80% <6mo, 100% ≤9mo
-- **LT** (ESG/Cultural): ≥50% <6mo, ≥70% <12mo, 100% ≤18mo
-- **Overall**: ≥60% <3mo, ≥75% <6mo, ≥85% <9mo, 100% ≤18mo
-- **Validity**: 4 weeks; re-validate if used beyond 4 weeks
+**Freshness**:
+- **HV** (Research/Innovation): ≥70% <2mo, 100% ≤6mo
+- **MV** (Policy/Cross-Industry): ≥60% <3mo, 100% ≤9mo
+- **LT** (ESG/Cultural): ≥50% <6mo, 100% ≤18mo
+- **Overall**: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo
 
-## How the LLM should use this file
+## How to Use
 
-- **Role**: Act as a strategic intelligence and market research analyst for a post-PMF organization.
-- **Inputs (fill before running)**:
-  - Domain and segment (e.g., EV batteries in NA/EU).
-  - Period under review (e.g., last 4 weeks).
-  - Organization profile: size, stage, regions, main products, current strategic bets.
-  - Baseline strategic metrics: R&D spend %, core TAM and current share, growth rates, ESG ratings/targets, key regulatory exposures.
-  - Existing strategy hypotheses or theses to test (e.g., "solid-state by 2030").
-  - Stakeholders and their goals (11 core roles; add others as relevant): CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Head of Strategy, Head of Market Research, Head of ESG, Board.
-  - Constraints: capital envelope, risk appetite, regulatory boundaries, execution capacity.
-- **Objective**: Using only this file, produce:
-  - Executive summary and horizon coverage overview.
-  - 4–6 Q&As that satisfy all requirements below.
-  - Glossary and reference sections (G, N, A, P, I, R) with citations.
-  - At least 1 diagram and 1 table in Markdown.
-  - Completed validation report with quantitative and qualitative checks.
-- **Output expectations**:
-  - Respect word counts, horizons, category floors, and freshness thresholds.
-  - Focus on strategically meaningful news meeting decision criticality.
-  - Prefer concrete numbers over vague language.
-  - Cover multiple stakeholder viewpoints, trade-offs, risks, limitations.
-  - Provide clear recommendations, action paths, success metrics.
-  - Use structured Markdown for scanability.
+**Inputs**:
+- Domain, segment, period (e.g., EV batteries NA/EU, Q3-Q4'24)
+- Org profile: size, stage, regions, products, strategic bets
+- Baseline metrics: R&D spend %, TAM, share, growth, ESG, regulatory exposures
+- Strategy hypotheses to test
+- Stakeholders: CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Head of Strategy, Head of Market Research, Head of ESG, Board
+- Constraints: capital, risk appetite, regulatory, capacity
+
+**Output**:
+- Executive summary with horizon coverage
+- 4–6 Q&As satisfying requirements
+- References (G, N, A, P, I, R) with citations
+- ≥1 diagram, ≥1 table
+- Validation report
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2/horizon | 150-250w | 100% news-driven | 100% ≥1 cite | ≥1 category + impact + decision
+**Q&A**: 4-6 total | 1-2/horizon | 150-250w | 100% news-driven | ≥1 cite | ≥1 category + impact + decision
 
-**Horizons** (3-4, 1-2 Q each): Short (6-18mo), Medium (18-36mo), Long (3-5yr), (Optional: Transformational 5-10yr if decision-critical)
+**Horizons** (3-4 covered, 1-2 Q each): Short (6-18mo), Medium (18-36mo), Long (3-5yr), Transformational (5-10yr, optional)
 
-**Category Coverage** (min): Research ≥40%, Policy ≥30%, Market ≥30%, Industry ≥25%
+**Category Balance**: Each Q tagged with ≥1 category (Research, Policy, Market, Industry). Across all Q&As: Research ≥1, Policy ≥1, Market ≥1, Industry ≥1
 
-**Decision Criticality** (100%): Each Q satisfies ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
+**Decision Criticality** (100%): Each Q satisfies ≥1 criterion: Blocks investment/pivot | Material risk/opportunity | Multi-stakeholder tension | Requires action within horizon | Quantifiable impact
 
-**Stakeholders** (≥4/11): CEO, CSO, CRO, CIO, CFO, VP Corp Dev (core roles only)
+**Stakeholders** (≥4 addressed): CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Head of Strategy, Head of Market Research, Head of ESG, Board
 
-**References** (build before Q&A): G≥5 (100% terms used), N≥3-4 (per freshness), A≥2 (academic), P≥1 (policy), I≥2 (industry), R≥5 (APA 7th+tag)
+**References**: G≥5 (terms used), N≥3-4 (news per freshness), A≥2 (academic), P≥1 (policy), I≥2 (industry), R≥5 (consolidated APA 7th)
 
 **Visuals**: ≥1 diagram + ≥1 table
 
 **Quality Gates** (fail ANY = stop):
-1. **Decision Criticality**: 100% satisfy ≥1 criterion
-2. **News**: 100% cite ≥1 per freshness; 0% hype/speculation
-3. **Impact**: 100% ≥2 horizons + ≥2 roles + quantified (TAM/CAGR/$, policy $, market share)
-4. **Decision**: 100% decision + rationale + criteria + timeline
-5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
-6. **Actionable**: 100% concrete; 0% abstract
+1. **Criticality**: 100% satisfy ≥1 criterion
+2. **Evidence**: 100% cite ≥1 source per freshness; 0% speculation
+3. **Impact**: 100% quantified (TAM/CAGR/$, share, etc.) + ≥2 horizons + ≥2 roles
+4. **Decision**: 100% recommendation + rationale + success metrics + timeline
+5. **Sources**: ≥3 types, max 50%/type, 100% URLs valid
+6. **Action**: 100% concrete next steps with owners; 0% abstract
 
 ## III. Execution
 
-### Step 1: News Discovery & Curation
+### Step 1: News Discovery
 
 **Record generation date (YYYY-MM-DD)—calculate ages from this.**
 
-1. **Domain**: Industry/market/sector + period
+**Search** (≥8-10 candidates, tiered by recency):
+- Tier 1 (1-7d), Tier 2 (7-30d), Tier 3 (1-3mo)
+- Query: `"[Domain] breakthrough|research|policy|M&A|market"`
+- **Sources**: arXiv, Nature, Science, IEEE (Research) | Congress.gov, Federal Register, OECD (Policy) | McKinsey, Gartner, Forrester (Market) | CB Insights, Bloomberg, FT (Industry)
+- Avoid: Marketing, rumors, speculation
 
-2. **Search** (≥8-10 candidates, tiered):
-
-   **Tier 1** (1-7d): `"[Domain] breakthrough|research|policy|M&A|market"` + 1-7d
-
-   **Tier 2** (7-30d if insufficient): Same + 7-30d
-
-   **Tier 3** (1-3mo if still insufficient): Same + 1-3mo
-
-   **Sources** (whitelist):
-   - **Research**: arXiv, Nature, Science, IEEE, universities
-   - **Policy**: Congress.gov, Federal Register, OECD, WTO, think tanks
-   - **Market**: McKinsey, Gartner, Forrester, IDC
-   - **Industry**: CB Insights, Bloomberg, FT
-   - **Avoid**: Marketing, rumors, speculation
-
-   **Tools**: Perplexity, ChatGPT, Google, Scholar
-
-3. **Curate** (≥8-10 candidates: Research ≥3, Policy ≥2, Market ≥2, Industry ≥1):
-   - Age per freshness
-   - Whitelist OR primary source
-   - Satisfies ≥1 Decision Criticality criterion
-   - Specific details (dates, names, numbers)
-   - Not marketing/rumors
-
-4. **Verify**: Check decision criticality; retry if fail
-
-5. **Allocate**: 4-6 Q × 3-4 horizons (1-2 each) × 4 categories × ≥4 roles
+**Curate** (≥8 candidates: Research ≥3, Policy ≥2, Market ≥2, Industry ≥1):
+- Age per freshness rules
+- Whitelist OR primary source
+- Satisfies ≥1 Decision Criticality criterion
+- Specific details (dates, numbers)
 
 ### Step 2: Build References
 
-**Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | A# (academic) | P# (policy) | I# (industry) | R# (APA 7th+tag)
+**G# (Glossary)**: Term (Acronym) | Definition + analogy | Context | Example (only terms actually used)
 
-**Citation**: Use Markdown links `[Ref: N1][n1]` and `[n1]: URL`. Prefer authoritative recent sources. Flag approximations.
+**N# (News)**: Title (Source, MM/DD) | Summary | Cat | URL | Criticality
 
-**Floors**: G≥5 (100% terms used), N≥3-4, A≥2, P≥1, I≥2, R≥5
+**A/P/I# (Academic/Policy/Industry)**: Title (Date) | Findings/Impact | URL
 
-**Glossary** (only terms used):
-- Coverage: Only used terms (TAM, CAGR, etc.)
-- Clarity: Plain language
-- Analogies: 1-2 comparisons
-- Context: Why matters for decisions
-- Examples: Real numbers
+**R# (Consolidated)**: APA 7th format with [Tag]
 
-**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality
+**Citation**: Use `[Ref: N1][n1]` and `[n1]: URL`
 
 ### Step 3: Generate Q&A
 
-**Patterns**: "[Research] → [R&D] investment?" | "[Policy] → [Compliance] timeline?" | "[Market] shift → [Positioning]?"
-
-**Avoid**: Tactical, speculation, hype, stale news
+**Pattern**: "[News trigger] → [Strategic decision]?" (e.g., "Nature solid-state 3x (Oct '24): R&D investment?")
 
 **Structure** (150-250w):
-1. **News** (~30w): What, when, why, cat [Ref: N#][n#]
-2. **Impact** (~60w): ≥2 horizons + quantified effects (CAGR/TAM/$, etc.)
+1. **News** (~30w): What, when, why [Ref: N#][n#]
+2. **Impact** (~60w): ≥2 horizons + quantified (CAGR/TAM/$)
 3. **Stakeholders** (~40w): ≥2 roles with concerns, actions
-4. **Decision** (~50w): Compare ≥2 options; rationale, benefits, costs, risks
-5. **Action** (~20w): S/M/L next steps, owners, 2-3 success metrics
+4. **Decision** (~50w): Recommendation | Rationale | Success metrics
+5. **Action** (~20w): S/M/L steps, owners, metrics
 6. **Links**: [n1]: URL
 
-**Self-Check**: Age OK | Decision criticality | ≥2 horizons | ≥2 roles | ≥2 options | Risks stated | 150-250w | Quantified | ≥1 citation | Links valid | 0% hype | Actionable | Terms in glossary | Uncertainties flagged
+### Step 4: Visuals
 
-### Step 4: Visuals (≥1 diagram + ≥1 table)
+Create ≥1 diagram (Mermaid: timeline/matrix) + ≥1 table (Markdown)
 
-**Types**: Horizon timelines, TAM/CAGR curves, 2×2 matrices
+### Step 5: Validate
 
-**Format**: Mermaid, Markdown tables
+**Check all**: Floors met | Glossary 100% used terms | 3-4 horizons | Categories balanced | ≥4 roles | Word count 150-250w | Quantified impact | Citations valid | Decisions concrete | Freshness rules met | 0 speculation
 
-### Step 5: Final Checks
+Submit only if ALL quality gates pass.
 
-**Refs**: 100% resolve | Age OK | Complete | Floors met
+## IV. Validation Checklist
 
-**Decision**: 100% decision + rationale + criteria + timeline
+| # | Check | Criteria | Result | Status |
+|---|-------|----------|--------|--------|
+| 1 | **Freshness** | Overall: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo | __% <3mo | PASS/FAIL |
+| 2 | **Floors** | G≥5, N≥3-4, A≥2, P≥1, I≥2, R≥5, Q=4-6 | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ | PASS/FAIL |
+| 3 | **Glossary** | 100% terms used | __%terms | PASS/FAIL |
+| 4 | **Horizons** | 3-4 covered (1-2Q each) | __/3-4 | PASS/FAIL |
+| 5 | **Categories** | Each ≥1: Res, Pol, Mkt, Ind | R:__ P:__ M:__ I:__ | PASS/FAIL |
+| 6 | **Roles** | ≥4 addressed | __/11 | PASS/FAIL |
+| 7 | **Criticality** | 100% satisfy ≥1 criterion | __%  | PASS/FAIL |
+| 8 | **Impact** | 100% ≥2h+≥2r+quantified | __% | PASS/FAIL |
+| 9 | **Decision** | 100% recommendation+rationale+metrics | __% | PASS/FAIL |
+| 10 | **Citations** | 100% ≥1cite, 100% URLs valid | __% | PASS/FAIL |
+| 11 | **Word Count** | 100% within 150-250w | __% | PASS/FAIL |
+| 12 | **Visuals** | ≥1 diagram + ≥1 table | diag:__ tab:__ | PASS/FAIL |
+| | **Meta** | Generated: __ | Expires: [+4wk] | INFO |
+| | **OVERALL** | All checks PASS | | PASS/FAIL |
 
-**Stakeholders**: ≥4 roles | Actions
-
-### Step 6: Validate (fail ANY = stop, fix, re-run)
-
-**Quantitative**: Floors met | Glossary 100% terms | 3-4 horizons | Category targets | ≥4 roles | Citations present | Sample within 150-250w | Visuals count | Decisions and timelines | Freshness rules
-
-**Qualitative**: News meets freshness, no hype | Q&As meet criteria | Impacts quantified | Decisions compare options | Sources ≥3 types | Links resolve | Quantification plausible | Recommendations concrete | Evidence cited | Uncertainties labelled | Search documented | Checks: calculations, terminology, coherence, metrics
-
-### Step 7: Submit
-
-**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | Freshness OK | Evidence 100% | URLs valid | Dates (gen + expire=gen+4wks) | Search documented
-
-## IV. Validation Report
-
-| # | Check | Measurement | Criteria | Result | Status |
-|---|-------|-------------|----------|--------|--------|
-| 1 | **Freshness** | HV: __%<2mo, __%<3mo \| MV: __%<3mo \| Overall: __%<3mo | Per header | | PASS/FAIL |
-| 2 | **Floors** | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ | ≥5,≥3-4,≥2,≥1,≥2,≥5,4-6 | | PASS/FAIL |
-| 3 | **Glossary** | __%terms | 100% | | PASS/FAIL |
-| 4 | **Horizons** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
-| 5 | **Categories** | Res__% Pol__% Mkt__% Ind__% | ≥40,30,30,25% | | PASS/FAIL |
-| 6 | **Roles** | __/11 | ≥4 | | PASS/FAIL |
-| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
-| 8 | **Impact** | __% ≥2h+≥2r+quantified | 100% | | PASS/FAIL |
-| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
-| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
-| 11 | **Words** | 3 samples: __%150-250w | 100% | | PASS/FAIL |
-| 12 | **Visuals** | diag__; tab__ | ≥1;≥1 | | PASS/FAIL |
-| | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
-| | **Age Dist** | <1mo__% 1-3mo__% 3-6mo__% 6-9mo__% 9-18mo__% | Per header | | INFO |
-| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
-
-## V. Question Quality (≥2 fails of 7 = rewrite)
-
-**Criteria**: News-driven | Decision-critical | Lifecycle-specific | Multi-stakeholder | Quantified impact | Timely | Actionable
-
-**✓ Good**: "Nature solid-state 3x (Oct '24): R&D investment?" | "CBAM $120B 2026-34: supply chain strategy?" | "Gartner AI $900B 35% CAGR: competitive positioning?"
-
-**✗ Bad**: "How does ESG work?" (no news) | "Invest in AI?" (no trigger) | "Competitor launched feature" (tactical)
+**Question Quality**:
+- **✓ Good**: "Nature solid-state 3x (Oct '24): R&D investment?" | "CBAM $120B 2026-34: supply chain strategy?"
+- **✗ Bad**: "How does ESG work?" (no news) | "Invest in AI?" (no trigger) | "Competitor feature launch" (tactical)
 
 ## VI. Output Format
 
