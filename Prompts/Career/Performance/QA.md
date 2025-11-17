@@ -4,9 +4,16 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ## Context & Scope
 
+**Problem**: Inconsistent performance advice leading to suboptimal decisions, hallucinations in optimization strategies, incomplete analysis of bottlenecks.  
+**Scope**: Decision-critical performance engineering topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. For production systems (>1K rps).  
+**Constraints**: 4K-8K token limits; assumes basic performance knowledge; focus on production-ready solutions.  
+**Assumptions**: Users have access to profiling tools; systems are cloud-native; metrics are available via APM.  
+**Scale**: Individual engineers to 50+ teams; 100-10K token prompts; 6-12 Q&A outputs.  
+**Timeline**: Immediate use; 30-60s check; benefits accumulate over bi-weekly cycles.  
+**Stakeholders**: Performance Engineers (profiling/optimization), SREs (SLO/monitoring), Backend Developers (code tuning), Architects (design patterns), DevOps (infrastructure).  
+**Resources**: Any LLM (ChatGPT, Claude, Gemini); no cost; access to profiling tools (perf, pprof).  
 **Domain**: Web/cloud/microservices/distributed/real-time/data-intensive systems  
 **Audience**: Performance Engineers, SREs, Backend Developers, Architects, DevOps (core roles)  
-**Scope**: Decision-critical performance engineering topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. For production systems (>1K rps).  
 **Exclude**: Hardware selection, network topology, vendor comparisons, long-term R&D, rumors, marketing fluff, nice-to-have trends  
 **Cadence**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
 
@@ -246,6 +253,20 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ---
 
+## Quick Check (30s)
+
+**Before generating Q&As (mandatory for decision-critical):**
+
+☐ **Self-contained**: Complete context; no cross-file refs  
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Logic | ☐ Risk/Value | ☐ Fairness  
+☐ Structure | ☐ Consistency  
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
+
+---
+
 ## Validation Results
 
 | # | Gate | Requirement | Status | Evidence |
@@ -257,6 +278,19 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 **Summary**: All 12 Quality Gates PASS. Ready for use.
 ```
+
+## Document Verification
+
+**Self-assessment:**
+☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
+☑ Credibility: Citations include authoritative sources (Gregg 2020, Dean 2013 updated to recent where possible)  
+☑ Risk/Value: Alternatives compared with costs/benefits/risks  
+☑ Evidence: Structured citations with APA 7th format  
+⚠ Success Criteria: Qualitative metrics; add quantitative baselines where possible  
+
+**Gaps:** Some citations pre-2023; metrics lack external validation; no alternative framework comparison  
+
+**Future:** Update citations to 2023+, add A/B testing for effectiveness, include user feedback
 
 ## Example (API Latency Optimization)
 

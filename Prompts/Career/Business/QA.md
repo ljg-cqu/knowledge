@@ -104,7 +104,7 @@ Allocate **6-12 decision-critical questions**:
   - Foundational 25%: Single framework (BMC only or Conway's Law only) - blocks decision
   - Intermediate 50%: Multi-framework (BMC + Risk + organizational) - creates risk or affects stakeholders
   - Advanced 25%: Complex trade-offs with migration paths, quantitative analysis - actively evolving or high adoption barrier
-- **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
+- **Decision Criticality**: 100% satisfy ≥1 criterion
 
 **Step 3: Generate Each Question** (Consistent structure)
 
@@ -147,7 +147,7 @@ Allocate **6-12 decision-critical questions**:
 **Step 6: Compile References** (60% reduction)
 - **Glossary** (≥8): Only terms used in Q&As (BMC, Value Prop, DDD, Conway's Law, Tech Debt, ADR, Wardley, Value Stream)
 - **Tools** (≥3): Miro, ArchiMate, C4 (decision-critical only)
-- **Literature** (≥4): Osterwalder, Evans, Conway, Richardson (canonical only)
+- **Literature** (≥4): Vaughan Broderick (2023), Oliveira (2023), Hohpe (2003), Richardson (2018) (recent and canonical)
 - **Citations** (≥8 APA 7th): EN/ZH, all decision-critical
 
 ## Quality Standards
@@ -199,7 +199,7 @@ flowchart TD
 | SLA 99.9%+ | High availability | HA/DR + monitoring |
 | Data residency | Regional compliance | Multi-region deployment |
 
-**Citations**: [Ref: A1] Osterwalder, [Ref: A5] Conway, [Ref: A6] Hohpe, [Ref: A7] Richardson, [Ref: A12] Kim, [Ref: G7] ADR
+**Citations**: [Ref: A1] Vaughan Broderick (2023). Business Model Canvas Innovation. https://vaughanbroderick.com/business-model-canvas-innovation [EN]; [Ref: A5] Oliveira (2023). Conway's Law and Team Topologies. https://medium.com/@lukasooliveira/conways-law-and-team-topologies-what-your-team-structure-says-about-your-software-d1d404f290a5 [EN]; [Ref: A6] Hohpe (2003). Enterprise Integration Patterns. Addison-Wesley [EN]; [Ref: A7] Richardson (2018). Microservices Patterns. Manning [EN]; [Ref: A12] Kim et al. (2016). The DevOps Handbook. IT Revolution Press [EN]; [Ref: G7] Nygard (2011). Release It! Pragmatic Bookshelf [EN]
 
 **Confidence**: High | **Stakeholders**: Architect, PM, Finance
 

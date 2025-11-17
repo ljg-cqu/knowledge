@@ -1,6 +1,22 @@
 # Ecosystem Understanding Q&A Generator (Decision-Critical)
 
-Generate 6–12 decision-critical questions enabling informed ecosystem decisions through essential technical/business/regulatory viewpoints—minimal viable tracking with time constraints.
+**Problem**: Ecosystem decisions suffer from incomplete understanding, leading to failed integrations, compliance violations, and missed opportunities. Hallucinations reduce decision quality by 30-60%.
+
+**Scope**: Generate 6–12 decision-critical Q&A pairs enabling informed ecosystem decisions through technical/business/regulatory viewpoints.
+
+**Constraints**: 4K-8K token limits; 150-250 words/answer; ≥80% have ≥1 cite (≥50% have ≥2); 100% ecosystem-focused; decision-critical only.
+
+**Assumptions**: Multi-party ecosystems; cloud-native; regulatory compliance required; stakeholders include Business/PM/Architect/Developer/QA/DevOps/Security/Data/SRE/Leadership.
+
+**Scale**: 6–12 Q&As; 5 dimensions; team size 10-100; throughput 1K-100K rps; data 100GB-1PB. Throughput scaling formula: `Effective_rps = base_rps × (team_size / 10) × (data_TB / 100)` (approximate scaling model).
+
+**Timeline**: Immediate generation; 30-60s validation; benefits accumulate over decision cycles.
+
+**Stakeholders**: Architects, PMs, security leads, business analysts, compliance officers.
+
+**Resources**: LLM with web access; authoritative sources.
+
+**Success Criteria**: 100% decision-critical Q&As (baseline: 80%), ≥80% answers with ≥2 viewpoints (baseline: 60%), p95 generation time <60s (baseline: 90s), citation coverage ≥80% (baseline: 60%), ecosystem focus 100% (baseline: 80%)
 
 ## I. Context & Scope
 
@@ -124,6 +140,22 @@ Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Examp
 11. **Visual Coverage**: ≥2 Mermaid; ≥5 diagrams; ≥5 tables
 12. **Ecosystem Focus**: 100% ecosystem-related + decision-critical
 
+**Execution Process Diagram**:
+```mermaid
+flowchart TD
+    A[Plan Allocation] --> B[Build References]
+    B --> C[Generate Q&A]
+    C --> D[Create Visuals]
+    D --> E[Populate References]
+    E --> F[Run 12 Validations]
+    F --> G{Fail ANY?}
+    G -->|Yes| H[Document Issues]
+    H --> I[Fix Issues]
+    I --> F
+    G -->|No| J[Final Review]
+    J --> K[Submit]
+```
+
 ### Step 7: Final Review (Minimal)
 
 **Questions**: Clear, specific | Decision-critical | Multi-viewpoint | Complexity aligned | Satisfies ≥1 criticality criterion
@@ -235,4 +267,45 @@ sequenceDiagram
     M->>C: Show success/failure
 ```
 
+**Trade-offs**:
+
+| Approach | Pros | Cons | Technical | Business | Regulatory | Tag |
+|----------|------|------|-----------|----------|-------------|-----|
+| Payment Processor Integration | Secure tokenization, global reach, fast integration | Transaction fees 1.5-3.5%, vendor lock-in | REST APIs, webhooks, PCI DSS | Revenue share, reduced compliance burden | PCI DSS compliance, SCA | [Consensus] |
+| Direct Bank Integration | Lower fees, full control | Complex setup, slower integration, higher compliance | Custom APIs, direct connections | Higher margins | Full compliance responsibility | [Context] |
+| Crypto Rails | Lower fees, borderless | Volatility, regulatory uncertainty | Blockchain APIs, wallets | New revenue streams | Emerging regulations | [Emerging] |
+
 **Confidence**: High [Ref: S1, S3, S4, A3, A5]
+
+## Quick Check (30s)
+
+**Before submitting (mandatory for decision-critical):**
+
+☐ **Self-contained**: Complete context; no cross-file refs
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility
+☐ Logic | ☐ Risk/Value | ☐ Fairness
+☐ Structure | ☐ Consistency
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
+
+## Quality Attributes
+
+**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
+
+## Limitations and Trade-offs
+
+**Trade-offs:**
+- **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
+- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Precision vs. Accessibility**: Technical specificity may reduce readability
+
+**Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping
+
+**Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5%), formal proofs, unsupported trends, generic advice, speculation, cross-references
+
+**Impact Metric Limitations:**
+- **Source**: ~50 sessions (GPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective, no A/B testing
+- **Baseline**: Unstructured conversational prompts
+- **Uncertainty**: High (±20-40%); directional only, not precise
+- **Use cautiously**: Apply based on principles, not solely metrics

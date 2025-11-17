@@ -1,12 +1,26 @@
 # Software Architecture Interview Q&A Generator
 
-Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrating architecture-to-code translation.
+**Problem**: Interview candidates fail to demonstrate practical architecture-to-code translation, leading to poor hiring decisions and mismatched roles. Hallucinations in responses reduce decision quality by 30-60%.
+
+**Scope**: Generate 12-15 decision-critical Q&A pairs for senior/architect/expert roles, focusing on architecture-to-code translation in distributed systems.
+
+**Constraints**: 4K-8K token limits; assume basic Go/Java/Python/TypeScript knowledge; focus on production-ready code.
+
+**Assumptions**: Distributed systems (>10K rps, >1TB data); cloud-native context; idiomatic code patterns; foundational knowledge (layered, MVC, REST).
+
+**Scale**: 12-15 Q&As; 6 dimensions; team size 5-50 engineers; throughput 100-10K rps; data 1-100TB.
+
+**Timeline**: Immediate generation; 30-60s validation; benefits accumulate over interview cycles.
+
+**Stakeholders**: Interviewers (architects, leads), candidates (senior devs), hiring managers, technical writers.
+
+**Resources**: LLM with coding capabilities; no external tools required.
 
 ## Scope & Success Criteria
 
 **Audience**: Senior developers (5+ years), architects, technical experts  
 **Output**: 12-15 Q&As across 6 MECE dimensions with production code, quantified trade-offs, ≥2 alternatives, citations  
-**Success**: 19/19 validation checks PASS  
+**Success**: 19/19 validation checks PASS; p95 decision quality ↑60-80%  
 **Philosophy**: Minimal viable coverage for informed decisions; time-optimized (50% reduction from 25-30)
 
 **Assumptions**: Distributed systems (>10K rps, >1TB data), idiomatic Go/Java/Python/TypeScript, cloud-native context, foundational knowledge (layered, MVC, REST)
@@ -137,6 +151,22 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 **Failure Protocol**: ANY fail → STOP → Document → Fix → Re-validate ALL → Iterate until 19/19 PASS
 
+**Generation Process Diagram**:
+```mermaid
+flowchart TD
+    A[Plan Structure] --> B[Build References]
+    B --> C[Write Q&As]
+    C --> D[Create Artifacts]
+    D --> E[Link References]
+    E --> F[Validate 19 Checks]
+    F --> G{Fail ANY?}
+    G -->|Yes| H[Document Issues]
+    H --> I[Fix Issues]
+    I --> F
+    G -->|No| J[Final Review]
+    J --> K[Submit]
+```
+
 ## 7. Final Review
 
 **6 Criteria (All Must PASS)**:
@@ -255,3 +285,36 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 **A6.** Kleppmann, M. (2017). *Designing data-intensive applications*. O'Reilly. [EN]  
 **A7.** 张逸. (2019). *领域驱动设计实践*. 电子工业出版社. [ZH]  
 **A8.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution. [EN]
+
+## Quick Check (30s)
+
+**Before submitting (mandatory for decision-critical):**
+
+☐ **Self-contained**: Complete context; no cross-file refs  
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Logic | ☐ Risk/Value | ☐ Fairness  
+☐ Structure | ☐ Consistency  
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
+
+## Quality Attributes
+
+**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
+
+## Limitations and Trade-offs
+
+**Trade-offs:**
+- **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
+- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Precision vs. Accessibility**: Technical specificity may reduce readability
+
+**Skip for**: Exploratory questions, brainstorming, low-stakes (<5%), rapid response, simple queries, prototyping
+
+**Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5%), formal proofs, unsupported trends, generic advice, speculation, cross-references
+
+**Impact Metric Limitations:**
+- **Source**: ~50 sessions (GPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective, no A/B testing
+- **Baseline**: Unstructured conversational prompts
+- **Uncertainty**: High (±20-40%); directional only, not precise
+- **Use cautiously**: Apply based on principles, not solely metrics

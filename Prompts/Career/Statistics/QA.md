@@ -8,6 +8,16 @@ Generate **4–6 decision-critical scenario-based questions** testing statistica
 
 **Exclusions**: Pure proofs, cookbook procedures, syntax trivia, niche methods (<5% adoption), nice-to-have theory.
 
+**Context:**
+- **Problem:** Lack of decision-critical statistical reasoning in scenarios impacting methodological choices, validity conclusions, and multi-stakeholder decisions.
+- **Scope:** Generate 4-6 Q&A on inference & hypothesis testing, experimental design & causal inference, regression & modeling, applied statistics & interpretation.
+- **Constraints:** 150-250 words/answer, ≥70% with ≥1 citation, 100% application-based, progressive difficulty.
+- **Assumptions:** LLM expertise in hypothesis testing, regression, experimental design, Bayesian/causal inference; generic datasets; 15-25 min/question.
+- **Scale:** 4-6 Q&A, 25% foundational/50% intermediate/25% advanced.
+- **Timeline:** 4-6h effort per cycle, evergreen (refresh annually or when standards change).
+- **Stakeholders:** Practitioners with limited time (analysts, researchers, data scientists, leadership).
+- **Resources:** Statistical software (R, Python/statsmodels, Tableau), textbooks (Casella & Berger, Gelman & Hill, etc.), citations (APA 7th, EN/ZH tags).
+
 ## I. Context
 
 **Purpose**: Develop decision-critical statistical reasoning through scenarios requiring methodological judgment, interpretation, and application.

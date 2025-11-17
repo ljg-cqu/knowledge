@@ -4,10 +4,17 @@
 
 Generate **4-6 decision-critical regulatory Q&As** for informed decision-making with limited time. Scenario-based, not news-driven.
 
-**Target**: Legal, Compliance, Security, Architecture (core roles)  
-**Scope**: Privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), standards (ISO 27001/27701, SOC2, NIST CSF)  
-**Cadence**: On-demand | **4-6h effort** | Validity: Evergreen (refresh annually or when regulations change)  
-**Constraints**: 150-250 words, scenario-based, quantified impact, actionable decision/trade-offs
+**Context:**
+- **Problem:** Hallucinations in regulatory advice, incomplete analysis, ambiguous recommendations leading to compliance failures, fines, or audit issues.
+- **Scope:** Privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), standards (ISO 27001/27701, SOC2, NIST CSF).
+- **Constraints:** 150-250 words per Q&A, scenario-based, quantified impact (fine $, audit days, remediation hours), actionable decisions/trade-offs.
+- **Assumptions:** Users have basic regulatory knowledge; LLMs access current regulations; evergreen content with annual refresh.
+- **Scale:** 4-6 Q&As, 3-4 clusters × 1-2 Q&As each, ≥2 stakeholders per Q&A.
+- **Timeline:** 4-6h effort; validity evergreen (refresh annually or when regulations change).
+- **Stakeholders:** Legal, Compliance, Security, Architecture (core roles).
+- **Resources:** Official regulatory sources (EUR-Lex, NIST), compliance tools (OneTrust, Vanta), literature (GDPR, ISO 27001).
+
+**Target**: Legal, Compliance, Security, Architecture (core roles)
 
 ---
 
@@ -79,6 +86,20 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 | 12 | **Final Review** | Scenario-based, decision-critical, actionable, no speculation |
 
 **Balance**: Acknowledge trade-offs (security vs cost, compliance vs usability), constraints, alternatives
+
+---
+
+## Quick Check (30s)
+
+**Before generating Q&As (mandatory for decision-critical scenarios):**
+
+☐ **Self-contained**: Complete context; no external refs  
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Logic | ☐ Risk/Value | ☐ Fairness  
+☐ Structure | ☐ Consistency  
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ---
 
@@ -210,6 +231,21 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 **A6.** AICPA. (2017). SOC2 TSC. [EN]
 **A7.** Rose et al. (2020). NIST SP 800-207 Zero Trust. https://doi.org/10.6028/NIST.SP.800-207 [EN]
 **A8.** EDPB. (2020). Guidelines 4/2019 Art. 25. https://edpb.europa.eu [EN]
+
+---
+
+## Document Verification
+
+**Self-assessment:**
+☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality
+⚠ Credibility: Citations include official sources but some may need recency checks
+⚠ Risk/Value: Trade-offs discussed but could compare more frameworks
+⚠ Evidence: Citations provided but flag uncertainties in regulatory interpretations
+⚠ Success Criteria: Qualitative targets; add measurable baselines
+
+**Gaps:** No alternative Q&A frameworks compared; metrics lack empirical validation; no user feedback criteria
+
+**Future:** A/B testing with different Q&A structures, framework comparison, success metrics, stakeholder feedback
 
 ---
 

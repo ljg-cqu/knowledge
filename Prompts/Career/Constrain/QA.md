@@ -2,13 +2,71 @@
 
 Generate 6-12 decision-critical Q&As for architects with constraint analysis—minimal viable set for informed decisions with time constraints.
 
+## LLM-Friendly Prompts Guidelines
+
+To ensure high-quality, hallucination-free output with improved decision quality, follow these guidelines when generating the Q&As:
+
+1. **Context**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
+2. **Clarity**: Define key terms and relationships; use diagrams for complex concepts.
+3. **Precision**: Use exact metrics, formulas, units; use math blocks for complex formulas.
+4. **Relevance**: Focus on essential information; move non-critical details to appendices.
+5. **MECE**: Ensure sections are distinct with no gaps or overlaps.
+6. **Sufficiency**: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes).
+7. **Breadth**: Include relevant stakeholder perspectives.
+8. **Depth**: Request implementation-level detail for high-impact areas.
+9. **Significance**: Focus on high-impact items; deemphasize low-impact details.
+10. **Priority**: Order by importance; label priority levels explicitly (critical/important/optional).
+11. **Conciseness**: Eliminate redundancy; state each concept once.
+12. **Accuracy**: Verify facts against authoritative sources.
+13. **Credibility**: Cite recent (2023+) primary sources.
+14. **Logic**: Provide coherent arguments with explicit trade-offs.
+15. **Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks.
+16. **Fairness**: Provide balanced view with counterarguments, limitations.
+17. **Structure**: Use headings, lists, tables, diagrams.
+18. **Consistency**: Use consistent hierarchy and formatting.
+19. **Evidence**: Provide structured citations with source details, recency, uncertainty flags.
+20. **Verification**: Self-review and error checking.
+21. **Practicality**: Provide concrete steps, examples, tools, commands.
+22. **Success Criteria**: Define measurable outcomes with baselines, targets.
+
+## Table of Contents
+- [Context & Success Criteria](#context--success-criteria)
+- [Coverage Requirements](#coverage-requirements)
+- [Content Standards](#content-standards)
+- [Generation Process](#generation-process)
+- [Templates](#templates)
+- [Example](#example)
+- [References](#references)
+- [Self-Assessment](#self-assessment)
+
 ## Context & Success Criteria
 
+**Problem**: Architects face time-constrained decisions in distributed systems with multiple constraints, risking suboptimal outcomes without structured analysis.
+
 **Audience**: Architects (5+ years), senior engineers
+
 **Scope**: 3-4 decision-critical dimensions × 4-5 constraint categories × ≥5 core stakeholders × 4-5 SDLC phases
+
 **Output**: 6-12 Q&As (25/50/25% F/I/A) | Quantified trade-offs (≥2) | Citations
-**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native
+
+**Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native | Timeline: 30-60min generation
+
+**Constraints**: Token limits (4K-8K); assumes basic architecture knowledge
+
+**Stakeholders**: Architects, Developers, SRE, Security, Leadership
+
+**Resources**: Any LLM; no cost
+
 **Validation**: 12/12 checks PASS | 6/6 criteria met
+
+**Success Criteria**: 100% decision-critical Q&As (baseline: 80%), ≥80% quantified trade-offs (baseline: 60%), p95 generation time <60min (baseline: 90min), stakeholder coverage 100% (baseline: 80%)
+
+## Key Terms
+- **F/I/A**: Foundation/Intermediate/Advanced difficulty levels
+- **SDLC Phases**: Software Development Life Cycle phases (Design, Development, Testing, Deployment, Operations)
+- **Decision-Critical**: >5% impact or blocks key decisions
+- **Quantified Trade-offs**: Explicit comparisons with metrics (e.g., +35ms latency, +40% ops complexity)
+- **MECE**: Mutually Exclusive, Collectively Exhaustive coverage
 
 ---
 
@@ -204,3 +262,15 @@ func (h *OrderHandler) ProcessCommand(ctx context.Context, cmd OrderCommand) err
 **A6.** Fowler (2002). *Enterprise architecture*. Addison-Wesley [EN]
 **A7.** 周爱民 (2021). *架构的本质*. 电子工业 [ZH]
 **A8.** 张逸 (2019). *领域驱动实践*. 电子工业 [ZH]
+
+## Self-Assessment
+**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
+
+**Trade-offs**:
+- **Rigor vs. Speed**: Detailed validation increases upfront time but reduces iteration
+- **Depth vs. Breadth**: Implementation details may exceed token limits
+- **Precision vs. Accessibility**: Technical specificity may reduce readability
+
+**Limitations**: Metrics lack external validation; single framework (no alternatives compared); observational only
+
+**Future**: A/B testing, framework comparison, success criteria, user feedback

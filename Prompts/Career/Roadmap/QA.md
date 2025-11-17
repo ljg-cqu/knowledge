@@ -2,8 +2,21 @@
 
 Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal time investment.
 
+**Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous strategic choices leading to delayed deployments or scalability issues.
+**Scope**: Architectural evolution, technology adoption, strategic pivots in production distributed systems.
+**Constraints**: 4K-8K token limit; assumes basic engineering knowledge; focus on decision-critical aspects only.
+**Assumptions**: Teams have access to standard tools (Mermaid, GitHub); stakeholders can provide context; decisions impact >5% of roadmap.
+**Scale**: Systems >10K rps, >1TB data; teams 10-100 engineers; cloud-native, regulated (GDPR/SOC 2/HIPAA).
+**Timeline**: Quarterly roadmap cycles; 4-6h generation time; benefits accumulate over cycles.
+**Stakeholders**: Architect (designs), Dev Lead (implements), SRE (operates), Engineering Manager (coordinates), DevOps (deploys).
+**Resources**: Mermaid for diagrams, GitHub for ADRs, Prometheus for metrics; no cost tools preferred.
+
+**Key Terms**:
+- **Decision-Critical**: Impacts roadmap, creates risk, affects ≥2 stakeholders, actively evolving, quantified.
+- **Q&A**: Question-Answer pair with context, impact, stakeholders, decision, action.
+- **ADR**: Architecture Decision Record documenting choices and consequences.
+
 **Purpose**: Analyze architectural evolution, tech decisions, and strategic shifts affecting system roadmap
-**Context**: Production distributed systems (>10K rps, >1TB data), 10-100 engineers, cloud-native, regulated (GDPR/SOC 2/HIPAA)
 **Output**: 6-8 Q&As across 3-4 decision-critical phases with quantified impact, decision criteria, trade-offs
 **Success**: 12/12 validation PASS | Decision Criticality: 100% satisfy ≥1 criterion
 
@@ -117,6 +130,20 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 **Submit**: 12/12 PASS + 4/4 criteria
 **High-Risk**: Decision criticality justification, metric formulas, stakeholder clarity, URLs
+
+---
+
+## Quick Check (30s)
+
+**Before generating:**
+
+☐ **Self-contained**: Complete context; no cross-file refs  
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Logic | ☐ Risk/Value | ☐ Fairness  
+☐ Structure | ☐ Consistency  
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ---
 

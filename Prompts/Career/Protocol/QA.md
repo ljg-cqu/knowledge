@@ -1,9 +1,42 @@
 # Protocol Standards Interview Q&A Generator (Optimized)
 
-**Mission**: Generate 12-15 decision-critical Q&As on protocols enabling informed decision-making with limited time. **Optimization Goal**: 60% reduction (30-35→12-15) focusing on decision-blocking, risk-creating, cross-functional impact scenarios only.
+**Mission**: Generate exactly 12-15 decision-critical Q&As on protocols enabling informed decision-making with limited time. **Optimization Goal**: 57-63% reduction (from 30-35 baseline to 12-15 target) focusing exclusively on decision-blocking (>5% impact), risk-creating (security/performance), cross-functional impact (≥3 stakeholders) scenarios only.
 
-**Context**: Production systems (>10K rps, >1TB data), multi-team (10-100 engineers), regulated environments
+**Context**:
+- **Problem**: Interview candidates struggle with protocol selection decisions in high-stakes environments, leading to poor architecture choices, security risks, and operational failures. Need focused Q&As that simulate real decision-making under time pressure.
+- **Scope**: Generate 12-15 decision-critical Q&As covering 6 protocol clusters (API, Data, Messaging, Auth, Network, Evolution) for senior-level interviews.
+- **Constraints**: Q&A length 150-350 words; focus on decision-blocking scenarios only; token limit ~8K for generation; must include quantitative metrics and citations.
+- **Assumptions**: Candidates have basic protocol knowledge; LLMs can access current standards; interviews last 45-60 minutes; decision criticality trumps breadth.
+- **Scale**: Production systems (10K-100K rps, 1TB-10PB data), multi-team orgs (50-500 engineers), regulated industries (finance, healthcare, government).
+- **Timeline**: Q&A generation in <30 minutes; interview preparation 2-4 weeks; protocol adoption decisions 3-12 months.
+- **Stakeholders**: Interviewers (Architects, Tech Leads), Candidates (Senior Engineers), Hiring Managers, Compliance Officers.
+- **Resources**: Official standards (IETF RFCs, ISO specs), industry reports (State of API 2024), tools (Postman, Buf), literature (Kleppmann's DDIA, Fielding's REST).
+
+**Key Terms**:
+- **Decision-Critical**: Q&A impacts >5% of project success or blocks key decisions (e.g., protocol selection affects architecture, security, performance).
+- **MECE (Mutually Exclusive, Collectively Exhaustive)**: Protocol clusters are distinct (no overlap) and cover all major areas (no gaps).
+- **Protocol Clusters**: 6 categories - API (REST/gRPC/GraphQL), Data (JSON/Protobuf/Avro), Messaging (AMQP/MQTT/Kafka), Auth (OAuth/OIDC/SAML), Network (HTTP/2/3/QUIC), Evolution (Versioning/Deprecation).
+- **Cross-Functional Impact**: Protocol decisions require coordination across ≥3 roles (Architect + Developer + DevOps/Security/SRE).
+- **Adoption Barrier**: Learning/migration cost >40 hours or requires specialized skills.
+- **Actively Evolving**: Protocol changed significantly in past 18 months (e.g., HTTP/3 2022, OAuth 2.1 2023).
+
 **Success**: 12/12 validation PASS, decision criticality justified for every Q&A, ≥80% cross-functional impact
+
+**Decision Criticality Flow**:
+```mermaid
+flowchart TD
+    A[Protocol Topic] --> B{Blocks Decision?}
+    B -->|Yes| C[Include]
+    B -->|No| D{Creates Risk?}
+    D -->|Yes| C
+    D -->|No| E{Affects ≥3 Stakeholders?}
+    E -->|Yes| C
+    E -->|No| F{Actively Evolving?}
+    F -->|Yes| C
+    F -->|No| G{High Adoption Barrier?}
+    G -->|Yes| C
+    G -->|No| H[Exclude]
+```
 
 ---
 
@@ -50,20 +83,20 @@
 
 **Minimums**: G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25 mix), ≥5 lifecycle phases represented, ≥7/10 stakeholder roles, **100% decision criticality justified**
 
-| # | Check | Target |
-|---|-------|--------|
-| 1 | Floors | G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25) |
-| 2 | Decision Criticality | 100% justified (blocks/risk/stakeholders/evolving/adoption) |
-| 3 | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
-| 4 | Recency | ≥70% last 2yr (≥85% technical standards) |
-| 5 | Links | 100% accessible, official specs/RFCs/standards bodies |
-| 6 | Word count | All 150-350 |
-| 7 | Insights | Trade-offs, version conflicts, adoption barriers |
-| 8 | Visuals | ≥90% (1 diagram + 1 comparison table + 1 metrics table per cluster) |
-| 9 | Metrics | 100% quantitative with formula |
-| 10 | Cross-functional | 100% ≥3 stakeholders per Q&A |
-| 11 | Lifecycle coverage | ≥5/6 phases represented |
-| 12 | Cluster coverage | All 6 decision-critical clusters covered |
+| # | Priority | Check | Target |
+|---|----------|-------|--------|
+| 1 | Critical | Decision Criticality | 100% justified (blocks/risk/stakeholders/evolving/adoption) |
+| 2 | Critical | Cross-functional | 100% ≥3 stakeholders per Q&A |
+| 3 | Critical | Cluster coverage | All 6 decision-critical clusters covered |
+| 4 | High | Metrics | 100% quantitative with formula |
+| 5 | High | Visuals | ≥90% (1 diagram + 1 comparison table + 1 metrics table per cluster) |
+| 6 | High | Citations | ≥70% with ≥1, ≥30% with ≥2+ |
+| 7 | High | Recency | ≥70% last 2yr (≥85% technical standards) |
+| 8 | Medium | Lifecycle coverage | ≥5/6 phases represented |
+| 9 | Medium | Insights | Trade-offs, version conflicts, adoption barriers |
+| 10 | Medium | Word count | All 150-350 |
+| 11 | Low | Links | 100% accessible, official specs/RFCs/standards bodies |
+| 12 | Low | Floors | G≥15, T≥6, L≥8, A≥12, Q=12-15 (25/50/25) |
 
 **Balance**: Acknowledge assumptions, trade-offs, alternatives, risk mitigations
 

@@ -1,5 +1,29 @@
 # Quality Engineering Q&A Generator (Minimal Viable)
 
+**Context:**
+- **Problem:** Quality engineering decisions often lack timely, decision-critical information, leading to suboptimal choices in testing strategies, automation, and quality gates.
+- **Scope:** Generate 6-8 Q&As on quality engineering topics for production systems (>10K rps, >1TB data), focusing on testing frameworks, automation tools, quality standards, defect patterns, observability breakthroughs.
+- **Constraints:** Bi-weekly cadence, 3-4h effort, expires 2 weeks from generation; token limits ~4K-8K.
+- **Assumptions:** Users have basic QA knowledge; LLMs have domain expertise; sources are authoritative.
+- **Scale:** 6-8 Q&As covering 3-4 phases, 3-4 categories, ≥5 roles.
+- **Timeline:** Bi-weekly generation; immediate use; benefits accumulate over time.
+- **Stakeholders:** QA/SET, Developer, DevOps, SRE, Architect.
+- **Resources:** Perplexity, ChatGPT, Google, GitHub releases; no cost.
+
+**Key Terms:**
+- **Q&A**: Question and Answer pair on a quality engineering topic. Analogy: Like a targeted FAQ entry for decision-making, not general knowledge.
+- **Phase**: Software development lifecycle stage (Development, Testing, Deployment, Operations). Relationship: Phases flow sequentially; each Q&A covers 1-2 phases. Analogy: Like stages in a manufacturing line.
+- **Category**: Topic grouping (Testing & Automation, Code Quality & Analysis, CI/CD & Quality Gates, Observability & Reliability). Relationship: Categories are orthogonal; each Q&A covers ≥1 category. Analogy: Like departments in a company handling different responsibilities.
+- **Decision Criticality**: Framework with 5 criteria ensuring topics impact real decisions (Blocks Decision, Creates Risk, Affects ≥2 Roles, Requires Action, Quantified Impact). Analogy: Like a priority filter for urgent vs. optional tasks.
+- **Freshness**: Age thresholds for news sources (High-Velocity: ≥85% <1mo, Medium-Velocity: ≥70% <2mo). Analogy: Like checking expiration dates on perishable goods.
+
+```mermaid
+graph LR
+    A[Development] --> B[Testing]
+    B --> C[Deployment]
+    C --> D[Operations]
+```
+
 Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viable tracking for informed decisions with limited time.
 
 **Cadence**: Bi-weekly | 3-4h effort | **Expires**: 2 weeks from generation

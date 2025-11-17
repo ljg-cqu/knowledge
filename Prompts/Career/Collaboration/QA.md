@@ -78,8 +78,8 @@ Generate 8-12 decision-critical senior/leadership interview Q&As demonstrating c
 |-----------|-----|------|
 | **Glossary** | ≥8 | Only terms used in Q&As + relations + lifecycle |
 | **Tools** | ≥4 | URL, update ≤18mo, pricing, adoption (decision-critical only) |
-| **Literature** | ≥5 | Brooks, DeMarco, Kim, Skelton, Patton (canonical only) |
-| **Citations** | ≥8 | APA 7th, 60/30/10% EN/ZH/Other |
+| **Literature** | ≥8 | Brooks, DeMarco, Kim, Skelton, Patton, Forsgren, HBR, Kobalia (canonical + recent) |
+| **Citations** | ≥11 | APA 7th, 60/30/10% EN/ZH/Other |
 
 **Quality**: ≥50% <5yr (≥60% collab); ≥3 types; <25% single; 100% valid URLs
 
@@ -92,7 +92,7 @@ Generate 8-12 decision-critical senior/leadership interview Q&As demonstrating c
 **✓**: 8-12; 25/50/25% F/I/A; 4 dimensions; 5-6 phases ≥1; 6-8 stakeholders ≥1; 100% decision-critical
 
 ## 2. References (Minimal)
-G≥8 (only terms used) → T≥4 (URL, ≤18mo, pricing, adoption) → L≥5 → A≥8 (APA 7th)
+G≥8 (only terms used) → T≥4 (URL, ≤18mo, pricing, adoption) → L≥8 → A≥11 (APA 7th)
 **✓**: Counts; 60/30/10% EN/ZH/Other; ≥50% <5yr (≥60% collab); ≥3 types; <25% single; 100% valid URLs
 
 ## 3. Q&As (Decision-Critical)
@@ -111,7 +111,7 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 
 | # | Check | Criteria |
 |---|-------|----------|
-| 1 | Ref counts | G≥8, T≥4, L≥5, A≥8 |
+| 1 | Ref counts | G≥8, T≥4, L≥8, A≥11 |
 | 2 | Q&A counts | 8-12, F:I:A 25:50:25 (±5pp) |
 | 3 | Citations | ≥80% ≥1 ref; ≥50% ≥2 refs; all resolve |
 | 4 | Language | EN 60-70%, ZH 20-30%, Other 5-10% |
@@ -198,7 +198,7 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 ## Validation Report (Minimal - 12 Checks)
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
-| 1 | Ref counts | G≥8, T≥4, L≥5, A≥8 | | PASS/FAIL |
+| 1 | Ref counts | G≥8, T≥4, L≥8, A≥11 | | PASS/FAIL |
 | 2 | Q&A counts | 8-12, F:I:A 25:50:25 (±5pp) | | PASS/FAIL |
 | 3 | Citations | ≥80% ≥1 ref; ≥50% ≥2 refs; all resolve | | PASS/FAIL |
 | 4 | Language | EN 60-70%, ZH 20-30%, Other 5-10% | | PASS/FAIL |
@@ -232,14 +232,17 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 **T3. GitHub** [EN] – Code, PR, review. 2024-11. $0-21/user/mo. 100M+ devs. https://github.com  
 **T4. ADR Tools** [EN] – ADR mgmt. 2024-08. Free/OSS. 3K+ stars. https://github.com/npryce/adr-tools
 
-## Literature (≥5 - Canonical Only)
+## Literature (≥8 - Canonical + Recent)
 **L1. Brooks, F. (1975). *Mythical Man-Month*. Addison-Wesley.** – Comm complexity, coord  
 **L2. DeMarco, T., & Lister, T. (2013). *Peopleware*. Addison-Wesley.** – Team dynamics, comm  
 **L3. Kim, G., et al. (2016). *DevOps Handbook*. IT Revolution.** – Cross-func collab, feedback  
 **L4. Skelton, M., & Pais, M. (2019). *Team Topologies*. IT Revolution.** – Interaction modes, contracts  
-**L5. Patton, J. (2014). *User Story Mapping*. O'Reilly.** – Collab discovery, understanding
+**L5. Patton, J. (2014). *User Story Mapping*. O'Reilly.** – Collab discovery, understanding  
+**L6. Forsgren, N., et al. (2024). *Accelerate State of DevOps Report*. Google Cloud.** – DevOps performance, collaboration metrics  
+**L7. Harvard Business Review. (2024). Why Cross-Functional Collaboration Stalls, and How to Fix It. https://hbr.org/2024/06/why-cross-functional-collaboration-stalls-and-how-to-fix-it** – Analysis of collaboration challenges  
+**L8. Kobalia, L. (2024). Cross-Functional Collaboration: A Real-World Guide. Medium. https://medium.productcoalition.com/cross-functional-collaboration-a-real-world-guide-5357e5eb1c12** – Practical collaboration guide
 
-## Citations (≥8, APA 7th, 60/30/10%)
+## Citations (≥11, APA 7th, 60/30/10%)
 **A1.** Brooks, F. (1975). *Mythical man-month*. Addison-Wesley. [EN]  
 **A2.** DeMarco, T., & Lister, T. (2013). *Peopleware*. Addison-Wesley. [EN]  
 **A3.** Kim, G., et al. (2016). *DevOps handbook*. IT Revolution. [EN]  
@@ -247,4 +250,7 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 **A5.** Patton, J. (2014). *User story mapping*. O'Reilly. [EN]  
 **A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley. [EN]  
 **A7.** Forsgren, N., et al. (2018). *Accelerate*. IT Revolution. [EN]  
-**A8.** 周志明. (2021). *凤凰架构*. 机械工业. [ZH]
+**A8.** 周志明. (2021). *凤凰架构*. 机械工业. [ZH]  
+**A9.** Forsgren, N., et al. (2024). *Accelerate State of DevOps Report*. Google Cloud. [EN]  
+**A10.** Harvard Business Review. (2024). Why cross-functional collaboration stalls, and how to fix it. https://hbr.org/2024/06/why-cross-functional-collaboration-stalls-and-how-to-fix-it [EN]  
+**A11.** Kobalia, L. (2024). Cross-functional collaboration: A real-world guide. Medium. https://medium.productcoalition.com/cross-functional-collaboration-a-real-world-guide-5357e5eb1c12 [EN]

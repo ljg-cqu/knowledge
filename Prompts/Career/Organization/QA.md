@@ -2,6 +2,33 @@
 
 Generate 6-12 decision-critical organizational Q&As for informed decision-making with limited time. Focus: minimal viable Q&A generation for org/talent/culture scenarios that block decisions or create material risk.
 
+## LLM-Friendly Prompts Guidelines
+
+To ensure high-quality, hallucination-free output with improved decision quality, follow these guidelines when generating the Q&As:
+
+1. **Context**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
+2. **Clarity**: Define key terms and relationships; use diagrams for complex concepts.
+3. **Precision**: Use exact metrics, formulas, units; use math blocks for complex formulas.
+4. **Relevance**: Focus on essential information; move non-critical details to appendices.
+5. **MECE**: Ensure sections are distinct with no gaps or overlaps.
+6. **Sufficiency**: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes).
+7. **Breadth**: Include relevant stakeholder perspectives.
+8. **Depth**: Request implementation-level detail for high-impact areas.
+9. **Significance**: Focus on high-impact items; deemphasize low-impact details.
+10. **Priority**: Order by importance; label priority levels explicitly (critical/important/optional).
+11. **Conciseness**: Eliminate redundancy; state each concept once.
+12. **Accuracy**: Verify facts against authoritative sources.
+13. **Credibility**: Cite recent (2023+) primary sources.
+14. **Logic**: Provide coherent arguments with explicit trade-offs.
+15. **Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks.
+16. **Fairness**: Provide balanced view with counterarguments, limitations.
+17. **Structure**: Use headings, lists, tables, diagrams.
+18. **Consistency**: Use consistent hierarchy and formatting.
+19. **Evidence**: Provide structured citations with source details, recency, uncertainty flags.
+20. **Verification**: Self-review and error checking.
+21. **Practicality**: Provide concrete steps, examples, tools, commands.
+22. **Success Criteria**: Define measurable outcomes with baselines, targets.
+
 ## Scope
 
 **Audience**: Engineering Managers, Directors, VPs, CTOs, Team Leads, CHRO/People Leaders

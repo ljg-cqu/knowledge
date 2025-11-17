@@ -1,21 +1,42 @@
 # Leadership News Tracking Q&A Generator (Minimal Viable)
 
-Generate 6–12 decision-critical leadership Q&As (senior+, 5-15 yrs) for informed decisions with limited time.
+**Context:**
+- **Problem**: Senior leaders (5-15 yrs experience) need decision-critical Q&As to make informed decisions with limited time, reducing hallucinations and improving outcomes in high-stakes scenarios.
+- **Scope**: Decision-critical leadership scenarios only—blocks decisions or creates material risk. Focus on strategic, people, change, and culture topics.
+- **Constraints**: 150–250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; 100% decision-critical; 4K-8K token limits.
+- **Assumptions**: LLM knows core frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety); users have basic leadership familiarity.
+- **Scale**: 6-12 Q&As across 3-4 topics; individual to 50+ team applications.
+- **Timeline**: Immediate generation (30-60s check); benefits accumulate over multiple uses.
+- **Stakeholders**: Senior leaders, executives, HR directors, technical writers.
+- **Resources**: Any LLM (ChatGPT, Claude, Gemini); internet access for citations; no cost.
 
-## I. Foundation
-
-**Scope**: Decision-critical leadership scenarios only—blocks decisions or creates material risk.  
 **Exclude**: Trivia, theory-only, junior tasks, niche/legacy, nice-to-have trends, speculation.
 
-**Constraints**: 150–250 words/answer; ≥70% have ≥1 citation; 100% scenario-based; 100% decision-critical.
-
 **Terminology**:
-- **Floor**: Minimum threshold
-- **Gate**: Mandatory checkpoint (fail = stop/fix)
-- **Difficulty**: F (execution) | I (strategic/systemic) | A (transformation/culture)
-- **Decision Criticality**: [Blocks/Risk/Roles/Evolving/Adoption] ← **NEW (mandatory)**
+- **Floor**: Minimum threshold (e.g., ≥8 glossary terms)
+- **Gate**: Mandatory checkpoint (fail = stop/fix); relationships: Gates ensure Floors are met
+- **Difficulty**: F (execution: tactical implementation) | I (strategic/systemic: cross-functional coordination) | A (transformation/culture: organization-wide change); relationship: Higher difficulty correlates with senior leadership levels
+- **Decision Criticality**: [Blocks/Risk/Roles/Evolving/Adoption] ← **NEW (mandatory)**; relationship: Independent of difficulty but often overlaps (e.g., A-level changes frequently block decisions)
 
-**Assumptions**: LLM knows core frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
+**Key Relationships Diagram**:
+```mermaid
+graph TD
+    A[Decision Criticality] --> B[Blocks Decision]
+    A --> C[Creates Risk]
+    A --> D[Affects ≥2 Stakeholders]
+    A --> E[Actively Evolving]
+    A --> F[High Adoption Barrier]
+    
+    G[Difficulty] --> H[F: Execution]
+    G --> I[I: Strategic/Systemic]
+    G --> J[A: Transformation/Culture]
+    
+    B --> K[Go/No-Go Impact]
+    C --> L[Quantified Threat]
+    D --> M[Multi-Team Impact]
+    E --> N[Recent Changes]
+    F --> O[>40h Barrier]
+```
 
 **Limitations**: Scenarios lack industry context; ≥50% citations from last 3yrs; trade-offs must be explicit; decision-critical focus only.
 

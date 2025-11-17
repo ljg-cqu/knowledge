@@ -4,11 +4,54 @@ Generate 20–30 comprehensive case study analyses covering both successful and 
 
 ## I. Context & Scope
 
+**Problem:** Lack of comprehensive, real-world case studies for software engineering learning; hallucinations from hypothetical examples; superficial analyses missing multi-viewpoint insights; inconsistent quality across sources.
+
 **Purpose**: Extract actionable lessons from real-world successes/failures through multi-viewpoint analysis, enabling pattern recognition and improved decision-making.
 
 **Scope**: Public documented cases across 8 lifecycle phases, 10 stakeholder roles, 6 viewpoints (technical/business/regulatory/operational/data/security) | **Exclude**: Hypotheticals, unverified claims, marketing, superficial analyses
 
+**Constraints:** 4K-8K token limits; must use public documented sources with accessible URLs; no proprietary or unverified information; focus on measurable outcomes.
+
+**Assumptions:** LLMs have domain knowledge of software engineering; users will iterate on outputs; sources are publicly accessible and verifiable; case studies should be balanced between success and failure.
+
+**Scale:** 20-30 cases across 7 categories (Architecture & Design, Business & Market, Regulatory & Compliance, Operational Excellence, Security & Privacy, Data & AI, Organizational & Team); 50/50 success/failure split; 30/40/30 simple/moderate/complex distribution.
+
+**Timeline:** Immediate generation of case studies; outputs for review within hours; iterative refinement based on validation.
+
+**Stakeholders:** Software engineers, architects, product managers, SREs, security professionals, data engineers, QA testers, DevOps engineers, leadership.
+
+**Resources:** Any LLM (ChatGPT, Claude, Gemini); public documentation URLs from postmortems, audits, regulatory filings, research papers.
+
 **Key Terms**: Success (achieved goals, measurable outcomes), Failure (missed goals, incidents), Lifecycle (Requirements→Design→Development→Testing→Deployment→Operations→Maintenance→Evolution), Stakeholders (BA/PM/Architect/Dev/QA/DevOps/Security/Data/SRE/Leadership), Pattern (reusable lesson), Anti-Pattern (failure mode)
+
+**Relationships Diagram**:
+```mermaid
+graph TD
+    A[Lifecycle Phases] --> B[Requirements]
+    B --> C[Design]
+    C --> D[Development]
+    D --> E[Testing]
+    E --> F[Deployment]
+    F --> G[Operations]
+    G --> H[Maintenance]
+    H --> I[Evolution]
+
+    J[Viewpoints] --> K[Technical/System]
+    J --> L[Business/Market]
+    J --> M[Regulatory/Legal]
+    J --> N[Operational]
+    J --> O[Data]
+    J --> P[Security]
+
+    Q[Stakeholders] --> R[BA/PM]
+    Q --> S[Architect/Dev/QA]
+    Q --> T[DevOps/SRE]
+    Q --> U[Security/Data]
+    Q --> V[Leadership]
+
+    A --> J
+    J --> Q
+```
 
 ## II. Requirements
 

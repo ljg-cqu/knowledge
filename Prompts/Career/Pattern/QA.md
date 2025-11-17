@@ -1,12 +1,23 @@
 # Pattern-Based Q&A Generation Template
 
-**Context**: Decision-critical patterns for informed decision-making with time constraints. Minimal viable coverage. Audience: architects, developers, business stakeholders (core roles only).
+**Context**:
+- **Problem**: Generate decision-critical Q&A content for career development patterns with time constraints and minimal viable coverage
+- **Scope**: 8-12 Q&As (2 Fundamental/4 Intermediate/2-6 Advanced; 150-250 words each); ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations; 20-30 decision-critical patterns across 4-6 domains
+- **Constraints**: GitHub Flavored Markdown ≤120 characters/line; prioritize Tier 1-2 sources; use RFC 2119 terminology; inline citations [Ref: ID]
+- **Assumptions**: Users have basic technical knowledge; LLMs have access to current industry knowledge; patterns are decision-critical per framework
+- **Scale**: Individual to team use; 100-500 token prompts; 20-30 patterns per domain
+- **Timeline**: Immediate generation; 30-60s validation; benefits accumulate over multiple uses
+- **Stakeholders**: Architects, developers, business stakeholders (core roles only); technical writers, PMs
+- **Resources**: Any LLM (ChatGPT, Claude, Gemini); no cost; access to web for verification
 
-**Scope**: 8-12 Q&As (2F/4I/2-6A; 150-250 words); ≥12 glossary, ≥6 tools, ≥6 literature, ≥8 citations; 20-30 decision-critical patterns.
+**Success Criteria**: All 12 validation steps PASS; 100% patterns meet ≥1 Decision Criticality criterion; 100% critical claims cited with Tier 1-2 sources; MECE domains verified; all links accessible/archived.
 
-**Constraints**: GFM ≤120 char/line; Tier 1-2 sources prioritized; RFC 2119; [Ref: ID] citations.
-
-**Success Criteria**: 12 validation steps PASS; 100% patterns meet Decision Criticality Framework; 100% critical claims cited; MECE verified; links accessible.
+**Key Terms**:
+- **F/I/A**: Fundamental (basic concepts), Intermediate (applied knowledge), Advanced (expert-level patterns)
+- **MECE**: Mutually Exclusive, Collectively Exhaustive - categories are distinct with no gaps or overlaps
+- **RFC 2119**: MUST (mandatory), SHOULD (strong recommendation), MAY (optional)
+- **Decision Criticality**: Patterns that block decisions, create risk, affect ≥2 roles, are evolving, or have high adoption barriers
+- **Tier Sources**: 1 (peer-reviewed/standards), 2 (vendor docs/frameworks), 3 (org blogs/analysts), 4 (expert blogs/conferences), 5 (forums)
 
 ---
 
@@ -307,5 +318,17 @@ Example subset shown below. Extend or adapt to reach 20-30 decision-critical pat
 - [ ] GFM ≤120 char/line
 - [ ] No placeholders
 - [ ] Decision Criticality justified for each Q&A
+
+## Quick Check (30s)
+
+**Before generating Q&A (mandatory for decision-critical content):**
+
+☐ **Self-contained**: Complete context; no cross-file refs
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility
+☐ Logic | ☐ Risk/Value | ☐ Fairness
+☐ Structure | ☐ Consistency
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
 ---
