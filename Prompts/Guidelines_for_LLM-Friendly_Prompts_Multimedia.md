@@ -4,9 +4,9 @@
 
 **1. Multimedia Context & Format** [↓40–50% quality issues]: Specify scope, create/link decision, formats, quality, accessibility. ❌ "Add media" | ✅ "3 diagrams (SVG/PNG 1920×1080, alt text, Mermaid), 2 videos (WebM/MP4 <2min, captions+transcript, YouTube URL returns HTTP 200)"
 
-**2. Content Creation vs Linking** [↓50–70% rework]: Complete generation specs OR search criteria+verification. ❌ "Generate diagram" | ✅ "Mermaid sequence: theme default, top-down, actors (User/API/DB), JWT flow, errors red, max 800px, export PNG+SVG" OR "Search 'OAuth flow' RFC 6749 HTTPS, SVG/PNG, published ≥2023, verify HTTP 200 status, fallback generate"
+**2. Content Creation vs Linking** [↓50–70% rework]: Complete generation specs OR search criteria+verification. ❌ "Generate diagram" | ✅ "Mermaid sequence: theme default, top-down, actors (User/API/DB), JWT flow, errors red, max 800px, export PNG+SVG" OR "Search 'OAuth flow' RFC 6749 HTTPS, SVG/PNG, published ≥2023, verify HTTP 200, fallback generate"
 
-**3. Credibility & Verification** [↓60–80% bad links]: Authoritative sources, URL validation, licensing. ❌ "Find tutorial" | ✅ "Official docs (docs.aws.amazon.com), GitHub >1K stars active, CNCF graduated. Verify HTTP 200 status, flag 404s. Cite: [1] AWS Icons (aws.amazon.com/arch/icons Oct 2023). CC-BY-ND 4.0"
+**3. Credibility & Verification** [↓60–80% bad links]: Authoritative sources, URL validation, licensing. ❌ "Find tutorial" | ✅ "Official docs (docs.aws.amazon.com), GitHub >1K stars active, CNCF graduated. Verify HTTP 200, flag 404s. Cite: [1] AWS Icons (aws.amazon.com/arch/icons Oct 2023). CC-BY-ND 4.0"
 
 **4. Accessibility & Fallback** [↑30–40% accessibility]: Meaningful alt text, captions, transcripts, fallback formats, keyboard navigation. ❌ "Embed video" | ✅ "Video: sync captions, full transcript, key frames as images+alt text, audio description, keyboard navigation, screen reader test. Fallback: poster+transcript"
 
@@ -28,4 +28,4 @@
 
 **Impact:** 1+2 ↓40–70% quality issues/rework | 3 ↓60–80% bad links | 4 ↑30–40% accessibility | 5 ↓40–60% wasted time | 6 ↑35–50% integration speed
 
-**Test Description:** Define a test that validates format+quality specs, create/link decision, credible+verified sources (HTTP 200 status), WCAG 2.1 AA accessibility (alt text, captions, transcripts)+fallback, decision-critical significance only (no decorative media), and text-media consistency/integration for all multimedia.
+**Test Description:** Define a test that validates format+quality specs, create/link decision, credible+verified sources (HTTP 200), WCAG 2.1 AA accessibility (alt text, captions, transcripts)+fallback, decision-critical significance only (no decorative media), and text-media consistency/integration for all multimedia.
