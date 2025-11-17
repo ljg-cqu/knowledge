@@ -52,7 +52,7 @@
 
 **18. Evidence** [↑40-50% trust]: Building on Credibility (12), the prompt requests structured citations with source details, recency, and explicit uncertainty flags. ❌ Bad: "What do studies show?" ✅ Optimized: "Cite sources in format: [1] Google SRE Book (2023) p.42 states 'MTTR <1h'. [2] AWS re:Invent 2023 [video URL]. Flag uncertainties: 'cache hit rate estimated (no empirical data)'."
 
-**19. Validation** [↓25-35% errors]: The prompt requests self-review and error checking. ❌ Bad: "Provide recommendation" ✅ Optimized: "After generating response, self-review: verify calculations, check for contradictions, test code examples, validate assumptions against sources, flag any uncertainties"
+**19. Validation** [↓25-35% errors]: The prompt requests self-review and error checking. ❌ Bad: "Provide recommendation" ✅ Optimized: "After generating response, self-review: verify calculations, check for contradictions and inconsistent terminology/metrics, test code examples, validate assumptions against sources, flag any uncertainties"
 
 **20. Practicality** [↑50-60% implementation speed]: The prompt requests actionable steps with tooling and examples. ❌ Bad: "Suggest monitoring improvements" ✅ Optimized: "Provide actionable monitoring setup: Prometheus for metrics, Grafana for dashboards, exact commands: 'helm install prometheus', sample queries: 'rate(http_requests_total[5m])', troubleshooting steps"
 
