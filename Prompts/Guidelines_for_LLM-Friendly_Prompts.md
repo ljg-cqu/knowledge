@@ -1,6 +1,6 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Improve LLM output quality, especially for decision-critical prompts (fewer hallucinations, better decision support).
+**Purpose:** Improve LLM output quality, especially for decision-critical prompts (fewer hallucinations, better decision support) by ensuring each prompt is self-contained (no "see other file" or "see previous answer" references; include all necessary instructions and context in a single prompt).
 
 **When to apply:** Apply all guidelines for decision-critical prompts that meet ≥1 of the following: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h. Apply them selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
@@ -60,7 +60,8 @@
 
 ## Quick Check (30s)
 
-**Before sending your prompt (mandatory for decision-critical prompts, recommended for others):** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
+**Before sending your prompt (mandatory for decision-critical prompts, recommended for others):** ☐ Self-contained (no cross-file refs or missing context; include instructions here, not in another prompt) ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
-**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact and low severity, proofs, trends without data, generic advice, speculation. **Always specify:** Key context: scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget
+**Exclude:** History (unless regulatory), pure theory (unless adoption cost ≥40h), edge cases with <5% impact and low severity, proofs, trends without data, generic advice, speculation, and prompts that rely on "see other prompt file" or "see previous answer" instead of including necessary instructions. **Always specify:** Key context: scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget, and make the prompt self-contained.
 **Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE+Sufficiency) | ↑30-45% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)
+

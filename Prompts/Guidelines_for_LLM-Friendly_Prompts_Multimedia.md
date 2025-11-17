@@ -1,6 +1,6 @@
 # Guidelines for LLM-Friendly Prompts with Multimedia Integration
 
-**Core principle:** Decision-critical multimedia prompts (that meet ≥1 of: blocks a decision, risk of >5% impact, 1–6mo action window, ≥2 stakeholders, adoption cost ≥40h) must specify create/link decision, format+quality, significance (decision-critical only), accessibility+fallback (WCAG 2.1 AA), credible, verified sources, and text-media integration/validation checks. **Result:** ↓40–50% quality issues, ↓50–70% rework, ↓60–80% bad links, ↑30–40% accessibility, ↓40–60% wasted time, ↑35–50% integration speed.
+**Core principle:** Decision-critical multimedia prompts (that meet ≥1 of: blocks a decision, risk of >5% impact, 1–6mo action window, ≥2 stakeholders, adoption cost ≥40h) must be self-contained (no "see other file" references; include all necessary instructions in a single prompt), specify create/link decision, format+quality, significance (decision-critical only), accessibility+fallback (WCAG 2.1 AA), credible, verified sources, and text-media integration/validation checks. **Result:** ↓40–50% quality issues, ↓50–70% rework, ↓60–80% bad links, ↑30–40% accessibility, ↓40–60% wasted time, ↑35–50% integration speed.
 
 **1. Multimedia Context & Format** [↓40–50% quality issues]: Specify scope, create/link decision, formats, quality, accessibility. ❌ "Add media" | ✅ "3 diagrams (SVG/PNG 1920×1080, alt text, Mermaid), 2 videos (WebM/MP4 <2min, captions+transcript, YouTube URL returns HTTP 200)"
 
@@ -16,11 +16,11 @@
 
 ## 30-Second Quick Reference
 
-☑ Format+quality specs ☑ Create/link decision ☑ Credible+verified sources ☑ Alt text+captions+transcripts+fallback (WCAG 2.1 AA) ☑ Decision-critical only ☑ Text-media consistency+validation
+☑ Self-contained (no cross-file refs) ☑ Format+quality specs ☑ Create/link decision ☑ Credible+verified sources ☑ Alt text+captions+transcripts+fallback (WCAG 2.1 AA) ☑ Decision-critical only ☑ Text-media consistency+validation
 
 **Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Recent | Relevant | Verified
 
-**Exclude:** Logos and other decorative media, redundant formats, videos <720p, autoplay, unverified links, proprietary formats with no fallback, missing alt text/captions/transcripts, images >500KB unoptimized, videos >20MB unoptimized. **Always:** Format, resolution, accessibility, fallback, source, license
+**Exclude:** Logos and other decorative media, redundant formats, videos <720p, autoplay, unverified links, proprietary formats with no fallback, missing alt text/captions/transcripts, images >500KB unoptimized, videos >20MB unoptimized, and prompts that rely on "see other prompt file" instead of including instructions. **Always:** Format, resolution, accessibility, fallback, source, license, self-contained instructions
 
 **LLM capability matrix:** Text-only (link+describe) | Multimodal (create+link+verify) | Vision (analyze+annotate+validate) | Audio (transcribe+synthesize)
 
@@ -28,4 +28,4 @@
 
 **Impact:** 1+2 ↓40–50% quality issues, ↓50–70% rework | 3 ↓60–80% bad links | 4 ↑30–40% accessibility | 5 ↓40–60% wasted time | 6 ↑35–50% integration speed
 
-**Test Description:** Define a test that validates format+quality specs, create/link decision, credible+verified sources (HTTP 200), WCAG 2.1 AA accessibility (alt text, captions, transcripts)+fallback, decision-critical significance only (no decorative media), and text-media consistency/integration for all multimedia.
+**Test Description:** Define a test that validates prompts are **self-contained (no external prompt file references)**, format+quality specs, create/link decision, credible+verified sources (HTTP 200), WCAG 2.1 AA accessibility (alt text, captions, transcripts)+fallback, decision-critical significance only (no decorative media), and text-media consistency/integration for all multimedia.
