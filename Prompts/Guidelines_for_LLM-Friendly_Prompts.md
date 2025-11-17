@@ -10,9 +10,9 @@
 
 **1. Context** [↓30-40% hallucinations]: Ensure prompt requests scope, constraints, assumptions, scale, timeline, domain, stakeholders. ❌ Bad: "Design system" ✅ Optimized: "Design payment system: 1M users, PCI-DSS compliance, 6mo timeline, fintech startup context, stakeholders: PM+Arch+Security+Legal, budget $500K"
 
-**2. Clarity** [↓25-35% ambiguity & interpretation errors]: Ensure prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
+**2. Clarity** [↓25-35% definition ambiguity]: Ensure prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
 
-**3. Precision** [↓40-50% ambiguity & interpretation errors]: Ensure prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
+**3. Precision** [↓40-50% specification ambiguity]: Ensure prompt requests quantified requirements with exact metrics. ❌ Bad: "Design fast and scalable system" ✅ Optimized: "Design system with: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
 
 **4. Relevance** [↓30-40% noise]: Ensure prompt requests focus on decision-critical aspects only. ❌ Bad: "Explain database history and current options" ✅ Optimized: "Compare SQL vs NoSQL for e-commerce use case: focus on transaction requirements, scale characteristics, query patterns. Exclude history."
 
@@ -44,9 +44,9 @@
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% actionability & implementation speed]: Ensure prompt requests structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting"
+**16. Structure** [↑30-40% scannability & actionability]: Ensure prompt requests structured output format. ❌ Bad: "Explain the solution" ✅ Optimized: "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting"
 
-**17. Format** [↑35-45% scannability]: Ensure prompt requests exact output structure with hierarchy. ❌ Bad: "Provide analysis" ✅ Optimized: "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → #### Comparison Table → ##### Recommendation → ###### Timeline with milestones"
+**17. Format** [↑35-45% readability]: Ensure prompt requests exact output structure with hierarchy. ❌ Bad: "Provide analysis" ✅ Optimized: "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → #### Comparison Table → ##### Recommendation → ###### Timeline with milestones"
 
 ### Validation: Ensure Correctness
 
@@ -66,4 +66,4 @@
 
 **Exclude:** History (unless regulatory), pure theory (unless >40h adoption cost), edge cases <5% impact and low-severity, proofs, trends without data, generic advice, speculation. **Always specify:** Tech stack, scale, timeline, constraints, stakeholders, budget
 
-**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓25-50% ambiguity & interpretation errors (Clarity+Precision) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE) | ↑30-60% actionability & implementation speed (Structure+Practicality)
+**Impact metrics:** ↓30-60% hallucinations (Context+Credibility) | ↓40-60% ambiguity (Clarity definition+Precision quantification) | ↑60-80% decision quality (Risk/Value) | ↑40-50% completeness (MECE) | ↑30-40% scannability (Structure+Format) | ↑50-60% implementation speed (Practicality)

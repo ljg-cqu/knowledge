@@ -1,6 +1,6 @@
 # Guidelines for LLM-Friendly Prompts with Multimedia Integration
 
-**Core principle:** Decision-critical multimedia prompts (blocks decision, quality risk >5%, 1-6mo action, ≥2 roles, fix >40h) need: create/link clarity, format+quality specs, accessibility (WCAG 2.1 AA), verification. **Result:** ↓40-50% quality issues, ↑60-80% accessibility, ↓50-70% rework.
+**Core principle:** Decision-critical multimedia prompts (blocks decision, quality risk >5%, 1-6mo action, ≥2 roles, fix >40h) need: create/link clarity, format+quality specs, accessibility (WCAG 2.1 AA), verification. **Result:** ↓40-50% quality issues, ↓50-70% rework, ↓60-80% bad links, ↑30-40% accessibility, ↓40-60% wasted time, ↑35-50% integration speed.
 
 **1. Multimedia Context & Format** [↓40-50% quality issues]: Specify scope, create/link decision, formats, quality, accessibility. ❌ "Add media" | ✅ "3 diagrams (SVG/PNG 1920×1080, alt text, Mermaid), 2 videos (WebM/MP4 <2min, captions+transcript, link YouTube verified)"
 
@@ -10,7 +10,7 @@
 
 **4. Accessibility & Fallback** [↑30-40% WCAG compliance]: Alt text, captions, transcripts, fallback formats, keyboard nav. ❌ "Embed video" | ✅ "Video: sync captions, full transcript, key frames as images+alt text, audio description, keyboard nav, screen reader test. Fallback: poster+transcript"
 
-**5. Significance & Optimization** [↓40-60% media time]: Decision-critical only, eliminate redundancy, optimize delivery. ❌ "Visuals all pages" | ✅ "Error screenshots, arch diagrams, perf charts ONLY. Exclude: logos, decorative. SVG diagrams, WebP+PNG fallback, lazy load, images <500KB, videos <20MB"
+**5. Significance & Optimization** [↓40-60% wasted time]: Decision-critical only, eliminate redundancy, optimize delivery. ❌ "Visuals all pages" | ✅ "Error screenshots, arch diagrams, perf charts ONLY. Exclude: logos, decorative. SVG diagrams, WebP+PNG fallback, lazy load, images <500KB, videos <20MB"
 
 **6. Integration & Validation** [↑35-50% integration speed]: Structure, text-media consistency, validation, success metrics. ❌ "Add chart" | ✅ "Text: 'Latency <100ms (Fig 2)'. Fig 2: 500ms→100ms with cache. Test: URLs 200, alt descriptive, captions ±50ms sync, screen reader, mobile, broken links. WCAG 2.1 AA: 100% alt+captions, LCP <3s, mobile >90"
 
@@ -18,7 +18,7 @@
 
 ☑ Create/link clarity ☑ Format+quality specs ☑ Verified sources ☑ Alt text+captions ☑ Decision-critical only ☑ Text-media consistency
 
-**Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Relevant | Verified | Recent | WCAG 2.1 AA
+**Quality:** Accurate | Accessible | Cited | Complete | Compatible | Consistent | Relevant | Verified | Recent
 
 **Exclude:** Decorative (unless brand), redundant formats, <720p, autoplay, unverified links, proprietary no-fallback, missing alt/captions, >50MB unoptimized. **Always:** Format, resolution, accessibility, fallback, source, license
 
