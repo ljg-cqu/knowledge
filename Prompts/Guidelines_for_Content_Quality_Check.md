@@ -1,8 +1,8 @@
 # Guidelines for Content Quality Check
 
-**Purpose:** Improve the quality of notes, articles, templates, and other knowledge-base documents so that readers (including future you and LLMs) can make reliable decisions with minimal clarification cycles and rework.
+**Purpose:** Improve the quality of notes, articles, templates, and other knowledge base documents so that readers (including future you and LLMs) can make reliable decisions with minimal clarification cycles and rework.
 
-**When to apply:** Apply all guidelines for decision-critical content that meets ≥1 of the following: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption or implementation cost ≥40h. Apply them selectively for other content that still requires high quality. **Expected impact:** ↓30-60% misunderstandings, ↓30-60% avoidable questions, ↑60-80% decision quality based on the documents.
+**When to apply:** Apply all guidelines for decision-critical content that meets ≥1 of the following: blocks a decision, risk of >5% impact on key metrics, 1-6mo action window, ≥2 stakeholders, adoption or implementation cost ≥40h. Apply them selectively for other content that still requires high quality. **Expected impact:** ↓30-60% misunderstandings, ↓30-60% avoidable questions, ↑60-80% decision quality based on the documents.
 
 ## Guidelines (21 Total)
 
