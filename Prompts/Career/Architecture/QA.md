@@ -71,7 +71,7 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 | **Glossary** | ≥5 | Terms with relationships (e.g., "Hexagonal: isolation via ports/adapters. Related: DI") |
 | **Tools** | ≥3 | URL (valid), update ≤18mo, pricing, adoption metrics |
 | **Literature** | ≥3 | Authoritative books (Fowler, Evans, Vernon, Richardson, Newman, Kleppmann) |
-| **Citations** | ≥8 | APA 7th, 60% [EN] / 30% [ZH] / 10% other (±10%) |
+| **Citations** | ≥8 | APA 7th, balanced mix of [EN]/[ZH]/[Other] (≥2 languages represented) |
 
 **Quality**: Recency (≥50% last 3yr, ≥70% cloud); Diversity (≥3 types, <25% single source); Credibility (peer-reviewed, authoritative); 100% valid links
 
@@ -81,15 +81,15 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## 1. Plan Structure
 
-**Actions**: Select 6 dimensions → Allocate 2-2.5 Q&As/dimension (12-15 total) → Assign 1F + 1A per dimension (skip intermediate)
+**Actions**: Select 6 dimensions → Allocate 2-2.5 Q&As/dimension (12-15 total) → Ensure overall 50/50 F/A mix (±5%) across all Q&As
 
 **Checks**: Total 12-15; 50/50% F/A (±5%); all 6 dimensions; no overlap
 
 ## 2. Build References
 
-**Actions**: Glossary (≥5 terms + relationships) → Tools (≥3: URL, update ≤18mo, pricing, adoption) → Literature (≥3 books + relevance) → Citations (≥8 APA 7th [EN]/[ZH])
+**Actions**: Glossary (≥5 terms + relationships) → Tools (≥3: URL, update ≤18mo, pricing, adoption) → Literature (≥3 books + relevance) → Citations (≥8 APA 7th [EN]/[ZH]/[Other])
 
-**Checks**: G≥5, T≥3, L≥3, A≥8; 60/30/10% EN/ZH/Other (±10%); ≥50% recency (≥70% cloud); ≥3 types, <25% single; 100% valid URLs
+**Checks**: G≥5, T≥3, L≥3, A≥8; balanced EN/ZH/Other mix (≥2 languages represented); ≥50% recency (≥70% cloud); ≥3 types, <25% single; 100% valid URLs
 
 ## 3. Write Q&As
 
@@ -109,15 +109,15 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 **Actions**: Populate all sections → Extract `[Ref: ID]` from Q&As → Verify all IDs exist → Remove orphans → Validate URLs
 
-**Checks**: G≥5, T≥3, L≥3, A≥8; 100% `[Ref: ID]` resolved; 0 broken links; 60/30/10% EN/ZH/Other; no orphans
+**Checks**: G≥5, T≥3, L≥3, A≥8; 100% `[Ref: ID]` resolved; 0 broken links; balanced EN/ZH/Other mix (≥2 languages represented); no orphans
 
 ## 6. Validate (19 Checks)
 
 | # | Check | Target |
 |---|-------|--------|
 | 1 | Counts | G≥5, T≥3, L≥3, A≥8, Q=12-15 (50/50%) |
-| 2 | Citations | ≥70% Q&As ≥1; ≥50% ≥2 |
-| 3 | Language | 60/30/10% EN/ZH/Other (±10%) |
+| 2 | Citations | 100% Q&As ≥1; all advanced ≥2 |
+| 3 | Language | Balanced EN/ZH/Other; ≥2 languages represented |
 | 4 | Recency | ≥50% last 3yr (≥70% cloud) |
 | 5 | Diversity | ≥3 types; <25% single |
 | 6 | Links | 100% valid |
@@ -162,7 +162,7 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 
 ## Topic Areas
 | Cluster | Dimension | Range | Count | Difficulty |
-| [Title] | [Type] | Q1-Q2 | 2-2.5 | 1F/1A |
+| [Title] | [Type] | Q1-Q2 | 2-2.5 | F/A 50/50 (±5%) |
 [6 dimensions, 12-15 total, 50/50% F/A]
 
 ---
@@ -212,7 +212,7 @@ Generate 12-15 interview Q&A pairs for senior/architect/expert roles demonstrati
 **L1. Author(s). (Year). *Title*. Publisher.** [Tag]  
 **Relevance**: [Why]
 
-### Citations (≥8, APA 7th, 60/30/10%)
+### Citations (≥8, APA 7th, mixed EN/ZH/Other)
 **A1.** Author(s). (Year). *Title*. Source. [EN]
 
 ---

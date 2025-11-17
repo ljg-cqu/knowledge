@@ -53,7 +53,7 @@ Apply all guidelines from Guidelines_for_LLM-Friendly_Prompts.md. Key requiremen
 
 ### References
 
-**Language:** ~60% EN, ~30% ZH, ~10% other (tag: [EN]/[ZH])
+**Language:** EN ~50–70%, ZH ~20–40%, Other ~5–15% (tags: [EN]/[ZH]/[Other])
 
 **Types (all 4):** (1) Architecture patterns, (2) Quality attributes, (3) Case studies (peer-reviewed/industry-validated), (4) Tools.
 
@@ -61,7 +61,7 @@ Apply all guidelines from Guidelines_for_LLM-Friendly_Prompts.md. Key requiremen
 
 **Format:** APA 7th + tags. Inline: `[Ref: ID]`. Verify facts, cross-check years/authors.
 
-**Minimums:** Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12. If unmet: state shortfall, rationale, plan. Scale: >25 scenarios → 1.5×.
+**Minimums:** Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12. If unmet: state shortfall, rationale, plan. Scale: >22 scenarios → 1.5×.
 
 ---
 
@@ -95,7 +95,7 @@ Description with deliverable and success criteria.
 
 **Glossary:** Table: ID | Term | Definition | Use Cases | Related. Cover: Hexagonal, CQRS, Event Sourcing, DDD, Bounded Context, Aggregate, Repository, Domain Event, Saga, Circuit Breaker.
 
-**Tools:** Table: ID | Name | Description | Pricing | Adoption | Updated (≤18mo or "(legacy)") | Integrations | Use Cases | URL. Verify URLs. Examples: Mermaid, OpenAPI, Kubernetes, C4.
+**Tools:** Table: ID | Name | Description | Pricing | Adoption | Updated (≤18mo or "(legacy)") | Integrations | Use Cases | URL. Verify URLs. Examples: Mermaid, OpenAPI, JSON Schema, Kubernetes, ADR.
 
 **Literature:** Table: ID | Citation (APA 7th) | Description. Prioritize peer-reviewed, established authors, production-validated. Examples: Fowler, Evans, Vernon, Richardson, Newman, Kleppmann.
 
@@ -136,13 +136,13 @@ Execute all; proceed only when PASS. If FAIL: remediate, re-validate.
 
 Execute sequentially. Validate at checkpoints (✓).
 
-**Step 1: Plan** — Allocate 16–22 scenarios: 5 clusters (3–5 each), 20/40/40% difficulty. Ensure MECE.  
+**Step 1: Plan** — Allocate 16–22 scenarios: 5 clusters (3–5 each), 20/40/40% difficulty. Ensure MECE.
 **✓** Total 16–22? Difficulty 20/40/40 ±5%? MECE?
 
-**Step 2: Collect References** — Gather: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12 (EN ~60%, ZH ~30%). Prioritize authoritative, tested sources. Assign IDs.  
-**✓** Counts? Language ~60/30/10? Recency ≥50% (≥70% cloud)? Diversity ≥3 types, max 25%? Credible?
+**Step 2: Collect References** — Gather: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12 (Language mix: EN ~50–70%, ZH ~20–40%, Other ~5–15%). Prioritize authoritative, tested sources. Assign IDs.
+**✓** Counts? Language mix within 50–70/20–40/5–15? Recency ≥50% from 2022–2025 (≥70% cloud/distributed)? Diversity ≥3 types, max 25%? Credible?
 
-**Step 3: Generate Scenarios** — For each: (1) Context 200–400 words (≥2 constraints, ≥2 stakeholders, ≥1 requirement, ≥1 org factor, ≥1 `[Ref: ID]`; vary industry/size/context); (2) 3–4 MECE tasks with success criteria, reasoning requirements (deliverables: diagram, trade-off matrix with metrics, implementation with error handling, decision memo with risk); (3) Rubrics (25/35/25/15%) with partial credit, omissions, metrics; (4) Bonus (1–2 pts).  
+**Step 3: Generate Scenarios** — For each: (1) Context 200–400 words (≥2 constraints, ≥2 stakeholders, ≥1 requirement, ≥1 org factor, ≥1 `[Ref: ID]`; vary industry/size/context); (2) 3–4 MECE tasks with success criteria, reasoning requirements (deliverables: diagram, trade-off matrix with metrics, implementation with error handling, decision memo with risk); (3) Rubrics (25/35/25/15%) with partial credit, omissions, metrics; (4) Bonus (1–2 pts).
 **✓** (Every 3) Context 200–400, ≥1 citation, diverse? MECE? Rubrics complete? Reasoning explicit? Risk included?
 
 **Step 4: Compile References** — Populate tables. Verify `[Ref: ID]` resolve. Flag uncertainties.  
@@ -183,7 +183,7 @@ Execute sequentially. Validate at checkpoints (✓).
 **L5.** Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly. – Distributed systems  
 **L6.** Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley. – Repository, patterns
 
-## Citations
+## APA Citations
 **A1.** Evans, E. (2003). *Domain-driven design*. Addison-Wesley. [EN]  
 **A2.** Richardson, C. (2018). *Microservices patterns*. Manning. [EN]  
 **A3.** 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]  

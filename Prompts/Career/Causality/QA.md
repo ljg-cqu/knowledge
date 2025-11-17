@@ -42,9 +42,10 @@ Generate **24 Q&As** (minimum viable) testing causal reasoning across the softwa
 | **Maintenance & Support** | Technical debt → Maintenance burden → Feature development time ↓ → Innovation lag → Market position loss | Support ticket volume → Engineering distraction → Feature velocity ↓ → Roadmap delay → Competitive pressure | Vulnerability disclosure → Patch urgency → Testing sacrifice → Production bug → Customer trust erosion | Legacy system maintenance → Modern stack adoption delay → Developer retention risk → Hiring difficulty → Team capability gap | Maintenance load + Innovation pressure + Resource constraint → Technical debt strategy |
 | **Evolution & Governance** | Monolith → Microservices migration → Team restructuring → Communication overhead → Conway's Law → Re-architecture | Technical capability → Product innovation → Market differentiation → Pricing power → Margin improvement → Business sustainability | Regulatory change → Compliance requirement → Architecture modification → Development cost → Budget pressure → Strategic trade-off | Cloud-native adoption → Operational model shift → Team skill gap → Training investment → Hiring need → Organizational change | Technology evolution + Business strategy + Market dynamics → Digital transformation pathway |
 
-### Causality Dimension Reference
+### Causality Dimensions & Analysis Axes Reference
+ Core coverage dimensions are the first five rows; Temporal and Stakeholder causality are auxiliary analysis axes (used in analysis but not counted as separate coverage dimensions).
 
-| Dimension | Causal Chain Pattern | Key Metrics (Relationships) | Analysis Frameworks |
+| Dimension/Axis | Causal Chain Pattern | Key Metrics (Relationships) | Analysis Frameworks |
 |-----------|---------------------|----------------------------|--------------------|
 | **Technical/System/Ecosystem** | Technology choice → System characteristics → Performance outcomes → Business impact | Latency impact = f(Architecture), Scalability = f(Design patterns), Cost = f(Tech stack) | C4 Model, ADR, Performance budgets, Capacity planning |
 | **Business/Market** | Market forces → Strategic decisions → Product features → Customer behavior → Revenue outcomes | Customer acquisition cost = f(Features), Churn = f(Quality), Market share = f(Differentiation) | Business Model Canvas, Value Stream Mapping, SWOT, Porter's Five Forces |
@@ -199,6 +200,11 @@ Requirements (3), Architecture (3), Development (3), Testing (3), Deployment (3)
 | Maintenance & Support | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
 | Evolution & Governance | ✓ | ✓ | ✓ | ✓ | ✓ | 3 |
 | **Total** | **≥4** | **≥4** | **≥4** | **≥4** | **≥4** | **24** |
+
+## Topic Clusters
+ Briefly summarize the 8 lifecycle-aligned clusters (Requirements & Discovery → Evolution & Governance), with 3 Q&As per phase.
+
+## Q&A Sections
 
 ## Topic 1: [Cluster Name - Lifecycle Phase]
 

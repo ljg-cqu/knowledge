@@ -56,7 +56,7 @@ Generate 6-12 decision-critical interview questions assessing how technical lead
 - **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Adoption] - must satisfy ≥1 criterion
 - **Answer**: 150-250 words with inline citations [Ref: ID], covering business analysis → architecture translation → trade-offs
 - **Key Insight**: One concrete, specific insight (e.g., "subscription revenue requires usage metering but legacy assumes one-time delivery")
-- **Visual Artifacts**: Mermaid diagram + comparison table per dimension (compressed)
+- **Visual Artifacts**: For ≥90% of questions, provide a Mermaid diagram + comparison table per associated dimension (compressed)
 - **Traceability**: Explicit Business→Architecture mapping with citations
 
 **JSON Format**:
@@ -220,7 +220,7 @@ flowchart TD
 **Validation Failures** (fix then re-validate):
 - <70% citations → Add references
 - <80% traceability → Explicit business→arch with [Ref: ID]
-- 100% scenario → Rewrite recall as judgment
+- Any recall-style questions → Rewrite as judgment-based, scenario-driven prompts
 - <100% decision-critical → Remove nice-to-have Q&As
 
 ## Key Terms Reference (8 decision-critical terms)

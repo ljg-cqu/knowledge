@@ -53,7 +53,7 @@ Identify 4-8 clusters covering business-architecture translation. Allocate 5-10 
 
 **Literature (≥6)**: Osterwalder, Evans, Vernon, Conway, Skelton, Richardson + Chinese authors (周爱民, 张逸, 肖然). Format: **L#. Author. (Year). *Title*. Publisher.** + relevance
 
-**APA Citations (≥12)**: APA 7th + [LANG] tags. ~60% EN, ~30% ZH, ~10% other. ≥50% from last 3 years.
+**APA Citations (≥12)**: APA 7th + [LANG] tags. ~60% EN, ~30% ZH, ~10% other. ≥50% from last 3 years (≥70% for emerging topics).
 
 ### Step 3: Generate Questions
 

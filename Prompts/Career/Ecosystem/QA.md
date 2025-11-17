@@ -16,7 +16,7 @@ Generate 6–12 decision-critical questions enabling informed ecosystem decision
 
 ### Quantitative Floors
 
-**Q&A**: 6–12 total | 25%Foundational/50%Integration/25%Advanced (±5%) | 150–250 words | ≥80% have ≥1 cite (≥50% have ≥2) | Each answer addresses ≥2 viewpoints
+**Q&A**: 6–12 total | 25%Foundational/50%Integration/25%Advanced (±5%) | 150–250 words | ≥80% have ≥1 cite (≥50% have ≥2) | ≥80% answers address ≥2 viewpoints
 
 **Topic Coverage (Decision-Critical Only)**:
 1. **Ecosystem Structure** (1–2): Core parties, roles, value flows blocking decisions
@@ -51,13 +51,13 @@ Generate 6–12 decision-critical questions enabling informed ecosystem decision
 
 ### Quality Requirements
 
-**Gates** (integrated into validation): Recency (≥50% <2yrs) | Source diversity (≥3 types, none >40%) | Per-topic evidence (≥2 authoritative + ≥1 standard) | Links (100% accessible) | Cross-refs (100% resolve) | Viewpoint coverage (≥2 per Q&A) | Decision Criticality (100% satisfy ≥1 criterion)
+**Gates** (integrated into validation): Recency (≥50% <2yrs) | Source diversity (≥3 types, none >40%) | Per-topic evidence (≥2 authoritative + ≥1 standard) | Links (100% accessible) | Cross-refs (100% resolve) | Viewpoint coverage (≥80% answers with ≥2 viewpoints) | Decision Criticality (100% satisfy ≥1 criterion)
 
 ## III. Execution
 
 ### Step 1: Plan Allocation (Decision-Critical Only)
 
-Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Example (10 total): Structure(2):1F/1I | Value/Business(2):1F/1I | Integration(2):0F/1I/1A | Architecture(2):1F/0I/1A | Regulatory(2):1F/0I/1A → Total:4F/3I/3A
+Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Example (10 total): Structure(2):1F/1I | Value Chains & Business(2):1F/1I | Integration(2):0F/1I/1A | Architecture(2):1F/0I/1A | Regulatory & Compliance(2):1F/0I/1A → Total:4F/3I/3A
 
 **Complexity**: F=foundational (core concepts, core parties, essential patterns) | I=integration (interactions, trade-offs, constraints) | A=advanced (strategic implications, evolution)
 
@@ -92,7 +92,7 @@ Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Examp
 
 ### Step 4: Create Visuals (Minimal - ≥1 diagram + ≥1 table per topic)
 
-**By Topic** (5 decision-critical): Structure (component/party diagram) | Value Chains (flow/revenue) | Integration (sequence/API flow) | Architecture (C4/comparison) | Regulatory (compliance matrix)
+**By Topic** (5 decision-critical): Structure (component/party diagram) | Value Chains & Business (flow/revenue) | Integration (sequence/API flow) | Architecture (C4/comparison) | Regulatory & Compliance (compliance matrix)
 
 **Best Practices**: Mermaid for architecture/sequence/flow (≥2 total) | Tables for comparisons/matrices | Include legends | Cite sources [Ref: ID] | Keep readable (<15 nodes) | Show directionality | Label integration points
 
@@ -104,7 +104,6 @@ Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Examp
 
 **Tools/Platforms**: **T#. Name (Category)** | Description | Maturity/adoption | Update (Q# YYYY) | Integrations | Docs URL | Role | Group by category
 
-**Literature**: **L#. Author, Title, Year** | Summary | Relevance | Type | Group by type, alphabetize
 
 **Citations**: **A#. [Citation] [Tag]** | Books: `Author, A. (Year). *Title*. Publisher. [EN]` | Papers: `Author, A. (Year). Title. *Journal*, Vol(Issue), pages. DOI [EN]` | Standards: `Org. (Year). *Standard*. URL [Standard]` | Web: `Author/Org. (Year). *Title*. Site. URL [EN/Report]` | ZH: `作者. (Year). *标题*. 出版社. [ZH]` | Sort by ID
 
@@ -120,37 +119,14 @@ Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Examp
 6. **Links**: 100% accessible
 7. **Cross-Refs**: 100% resolve; no orphans
 8. **Word Count**: Sample 5; 100% in 150–250
-9. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
-10. **Viewpoint Coverage**: ≥80% address ≥2 viewpoints
+9. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/HighAdoptionBarrier)
+10. **Viewpoint Coverage**: ≥80% answers with ≥2 viewpoints
 11. **Visual Coverage**: ≥2 Mermaid; ≥5 diagrams; ≥5 tables
 12. **Ecosystem Focus**: 100% ecosystem-related + decision-critical
 
 ### Step 7: Final Review (Minimal)
 
 **Questions**: Clear, specific | Decision-critical | Multi-viewpoint | Complexity aligned | Satisfies ≥1 criticality criterion
-
-**Answers** (sample ≥3): ≥2 viewpoints | Context with cites | Real examples | Stakeholder views | Trade-offs | Decision criteria
-
-**Visuals**: ≥2 Mermaid | ≥5 diagrams | ≥5 tables | Legends/labels | Cited | Readable
-
-**Submission**: All validations PASS | All floors met | TOC linked | No placeholders | Consistent format | Decision-critical coverage
-
-## IV. Validation Report (Minimal - fill all; ANY fail = stop, fix, re-run ALL)
-
-| # | Check           | Measurement                     | Criteria                          | Result | Status    |
-|---|-----------------|---------------------------------|-----------------------------------|--------|-----------|
-| 1 | Floors          | G:__ S:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥8, S≥4, T≥5, L≥6, A≥10, Q:6-12, 25/50/25% | | PASS/FAIL |
-| 2 | Citations       | __%≥1, __%≥2                    | ≥80%≥1, ≥50%≥2                    | | PASS/FAIL |
-| 3 | Lang/Type       | EN:__%, ZH:__%, Std:__%         | EN:60-70%, ZH:20-30%, Std:10-15%  | | PASS/FAIL |
-| 4 | Recency         | __% <2yrs                       | ≥50%                              | | PASS/FAIL |
-| 5 | Source Types    | __ types; max __%               | ≥3 types, max 40%                 | | PASS/FAIL |
-| 6 | Links           | __/__ accessible                | 100%                              | | PASS/FAIL |
-| 7 | Cross-Refs      | __/__ resolved                  | 100%                              | | PASS/FAIL |
-| 8 | Word Count      | __ sampled: __ compliant        | 100% (150-250)                    | | PASS/FAIL |
-| 9 | Decision Crit.  | __% satisfy ≥1 criterion        | 100%                              | | PASS/FAIL |
-| 10| Viewpoints      | __%≥2                           | ≥80%                              | | PASS/FAIL |
-| 11| Visuals         | M:__, D:__, T:__                | ≥2, ≥5, ≥5                        | | PASS/FAIL |
-| 12| Ecosystem Focus | __/__                           | 100% + decision-critical          | | PASS/FAIL |
 
 ## V. Question Quality (review each; ≥2 fails = rewrite)
 
@@ -172,11 +148,11 @@ Distribute 6–12 across 5 decision-critical dimensions (25/50/25% F/I/A). Examp
 | # | Topic                  | Range   | Count | Mix      | Artifacts | Decision Criticality |
 |---|------------------------|---------|-------|----------|-----------|----------------------|
 | 1 | Ecosystem Structure    | Q1–Q2   | 2     | 1F/1I    | 1D+1T     | Blocks decision, Affects 3+ roles |
-| 2 | Value Chains/Business  | Q3–Q4   | 2     | 1F/1I    | 1D+1T     | Blocks decision, Creates risk |
+| 2 | Value Chains & Business| Q3–Q4   | 2     | 1F/1I    | 1D+1T     | Blocks decision, Creates risk |
 | 3 | Integration Patterns   | Q5–Q6   | 2     | 0F/1I/1A | 1D+1T     | Affects 3+ roles, Actively evolving |
 | 4 | Technical Architecture | Q7–Q8   | 2     | 1F/0I/1A | 1D+1T     | Blocks decision, High adoption barrier |
-| 5 | Regulatory/Compliance  | Q9–Q12  | 2     | 1F/0I/1A | 1D+1T     | Creates risk, Actively evolving |
-|   | **Total**              |         | **6–12**| **4F/3I/3A** | **5+5** | **100% ≥1 criterion** |
+| 5 | Regulatory & Compliance| Q9–Q10  | 2     | 1F/0I/1A | 1D+1T     | Creates risk, Actively evolving |
+|   | **Total (example)**    |         | **10**| **4F/3I/3A** | **5+5** | **100% ≥1 criterion** |
 
 Legend: F=foundational | I=integration | A=advanced | D=diagram | T=table
 
@@ -217,11 +193,11 @@ Legend: F=foundational | I=integration | A=advanced | D=diagram | T=table
 
 **Q1: How do payment processors integrate with e-commerce platforms in the digital payments ecosystem?**
 
-**Complexity**: I | **Topic**: Integration Patterns | **Viewpoints**: Technical, Business
+**Complexity**: I | **Topic**: Integration Patterns | **Viewpoints**: Technical, Business | **Decision Criticality**: Blocks decision, Affects ≥3 stakeholders
 
 **Key Insight**: Payment processors act as intermediaries enabling secure transaction flows between merchants, customers, and banks through standardized APIs and protocols, balancing security, user experience, and compliance requirements.
 
-**Answer** (280 words):
+**Answer** (150–250 words):
 
 **Context**: Processors (Stripe, PayPal, Adyen) sit between e-commerce and financial networks (card networks, banks) [Ref: G1], abstracting payment regulations [Ref: S2], card rules, and bank integrations [Ref: A3].
 

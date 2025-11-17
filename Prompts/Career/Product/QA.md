@@ -62,18 +62,19 @@ Generate **6-12 decision-critical scenario-based interview questions** testing s
 
 ### Step 1: Plan Allocation
 
-Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F, ≥1I, ≥1A.
-**Example** (30): Strategy (5), Discovery (5), Prioritization (6), Metrics (5), Stakeholder (4), GTM (5) = 6F/12I/12A
+Decide total Q&A count (6–12) and select 3–4 decision-critical topics: Strategy & Prioritization, Metrics & Decision-Making, Stakeholder Alignment, and optional GTM.
+Target overall mix 25%F/50%I/25%A; ensure each topic contributes at least one intermediate (I) question and ≥1 other difficulty across the set.
+**Example** (8): Strategy & Prioritization (3: 1F/1I/1A), Metrics & Decision-Making (3: 1F/1I/1A), Stakeholder Alignment (2: 0F/2I/0A) = 2F/4I/2A (≈25/50/25)
 
 ### Step 2: Build References (BEFORE Q&A → run Gates 1–6 after)
 
-**Glossary (≥10)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST + optional (HEART, Value/Effort, KANO, V2MOM, Dual-track, ICE) | Format: term, definition (1–2 sentences), use cases, related, limitations | Assign G1, G2...
+**Glossary (≥8)**: RICE, AARRR, JTBD, North Star, PMF, OKR, Continuous Discovery, PLG, Feature Factory, OST + optional (HEART, Value/Effort, KANO, V2MOM, Dual-track, ICE) | Format: term, definition (1–2 sentences), use cases, related, limitations | Assign G1, G2...
 
-**Tools (≥5)**: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro, Figma), Feedback (Pendo, Canny) | Include: category, pricing, users, update (≤18mo), ≥3 integrations, PM use case, URL | Assign T1, T2...
+**Tools (≥3)**: Analytics (Mixpanel, Amplitude), Roadmapping (ProductBoard, Aha!), Research (Dovetail, UserTesting), Collaboration (Miro, Figma), Feedback (Pendo, Canny) | Include: category, pricing, users, update (≤18mo), ≥3 integrations, PM use case, URL | Assign T1, T2...
 
-**Literature (≥6)**: EN—Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*) | ZH (≥2)—俞军 (*俞军产品方法论*), 梁宁 (*产品思维30讲*), 苏杰 (*人人都是产品经理*) | Include: author, title, year, summary, frameworks, relevance | Assign L1, L2...
+**Literature (≥4)**: EN—Cagan (*Inspired*), Olsen (*Lean Product Playbook*), Torres (*Continuous Discovery*) | ZH (≥1)—俞军 (*俞军产品方法论*), 梁宁 (*产品思维30讲*), 苏杰 (*人人都是产品经理*) | Include: author, title, year, summary, frameworks, relevance | Assign L1, L2...
 
-**Citations (≥12)**: Convert to APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/case studies/tools | Assign A1, A2... | **Alternatives**: Gartner, Forrester, Lenny's Newsletter, Product Coalition, HBR, MIT Sloan
+**Citations (≥6)**: Convert to APA 7th + tags | Verify ≥50% from last 3yrs | Classify: frameworks/research/case studies/tools | Assign A1, A2... | **Alternatives**: Gartner, Forrester, Lenny's Newsletter, Product Coalition, HBR, MIT Sloan
 
 ### Step 3: Generate Q&A (5 at a time → self-check each batch)
 
@@ -81,7 +82,7 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 
 **Difficulty**: F=execution ("Track activation?") | I=strategy/trade-offs ("Churn vs. features?") | A=portfolio/vision/P&L ("Choose: API, mobile, or intl?")
 
-**Answer** (150–300 words):
+**Answer** (150–250 words):
 1. Key Insight (1 sentence): Specific dilemma/tension
 2. Framework/approach [Ref: G#/A#]
 3. Multi-dimensional (≥2 dimensions)
@@ -92,11 +93,11 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 8. Citations (≥1 [Ref: ID]; flag if low confidence)
 9. Artifact (optional): Matrix, journey, dashboard, roadmap
 
-**Batch Self-Check** (per 5): Scenario-based | Tests ≥2 signals | 150–300 words | Concrete insight | ≥2 dimensions | ≥3/5 have ≥1 cite (≥1/5 has ≥2) | Difficulty matches content
+**Batch Self-Check** (per 5): Scenario-based | Tests ≥2 signals | 150–250 words | Concrete insight | ≥2 dimensions | ≥3/5 have ≥1 cite (≥1/5 has ≥2) | Difficulty matches content
 
 ### Step 4: Create Visuals (≥1 diagram + ≥1 table per topic; reference from ≥50% answers)
 
-**Strategy**: Roadmap (now/next/later), competitive 2×2, decision matrix | **Discovery**: User journey, research synthesis | **Prioritization**: OST, Value/Effort 2×2, RICE table | **Metrics**: AARRR funnel, cohort chart, dashboard | **Stakeholder**: Power/interest 2×2, engagement matrix | **GTM**: Growth loop, channel strategy, launch checklist
+**Strategy & Prioritization**: Roadmap (now/next/later), competitive 2×2, OST, Value/Effort 2×2, RICE table, decision matrix | **Metrics & Decision-Making**: AARRR funnel, cohort chart, dashboards, decision matrices | **Stakeholder Alignment**: Power/interest 2×2, engagement matrix | **GTM (Optional)**: Growth loop, channel strategy, launch checklist
 
 **Best Practices**: Tables for quantitative; diagrams for workflows; include units/time periods; cite sources
 
@@ -106,7 +107,7 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 
 **Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
 
-**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN first, then ≥2 ZH)
+**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN first, then ≥1 ZH)
 
 **Citations**: **A#. [Citation] [Lang]** | Books: `Author, A. (Year). *Title*. Publisher. [EN]` | Articles: `Author, A. (Year). Title. *Journal*, Vol(Issue), pages. DOI [EN]` | Web: `Author. (Year). *Title*. Site. URL [EN]` | ZH: `俞军. (2020). *俞军产品方法论*. 中信出版社. [ZH] (Yu, J. (2020). *Yu Jun's Product Methodology*. CITIC Press.)` | Sort by ID
 
@@ -164,7 +165,7 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 ## VI. Output Format
 
 ### A. TOC
-1. Topic Areas Overview | 2. Questions by Topic (6 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Topic Areas Overview | 2. Questions by Topic (3–4 topics) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
 
 ### B. Topic Overview (Optimized)
 **Total**: [6–12] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 3-4 decision-critical PM competencies
@@ -175,7 +176,7 @@ Distribute 25–30 across 6 topics (20%F/40%I/40%A). Each: 4–6 Q&A with ≥1F,
 | 2 | Metrics & Decision-Making | Q4–Q6  | 2–3   | 1F/1I/1A | 1 diagram+table | Creates risk |
 | 3 | Stakeholder Alignment | Q7–Q8  | 1–2   | 1F/1I | 1 diagram+table | Affects ≥2 roles |
 | 4 | GTM (Optional) | Q9–Q12 | 1     | 1I/1A | 1 diagram+table | Actively evolving |
-|   | **Total**      |        | **6–12**| **2F/3I/2A** | **compressed** | 100% decision-critical |
+|   | **Total**      |        | **6–12**| **≈25%F/50%I/25%A** | **compressed** | 100% decision-critical |
 
 Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
@@ -201,7 +202,7 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Tools**: **T#. Tool (Category)** | Description | Pricing | Users | Update (Q# YYYY) | Integrations (≥3) | PM use case | URL | Group by category
 
-**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥2 ZH)
+**Literature**: **L#. Author, Title, Year** | Summary (focus/frameworks) | Relevance | Group by language (EN, then ≥1 ZH)
 
 **Citations**: **A#. [Citation] [Lang]** | APA 7th format with language tags
 
@@ -209,7 +210,7 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Q1: How evaluate building feature requested by top 5 enterprise customers (40% revenue) that doesn't align with product vision for mass market?**
 
-**Difficulty**: A | **Topic**: Strategy
+**Difficulty**: A | **Topic**: Strategy & Prioritization
 
 **Key Insight**: Tests revenue protection (enterprise retention) vs. long-term PMF (mass-market scalability); distinguishes PMs navigating executive pressure from those defaulting to pleasing customers or rigid vision adherence.
 

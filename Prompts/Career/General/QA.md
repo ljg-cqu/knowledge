@@ -16,6 +16,7 @@ Generate 12-15 discriminative technical interview Q&As for senior/architect/expe
 - **MECE**: Mutually Exclusive, Collectively Exhaustive
 - **Cluster**: 3-5 related Q&As per high-impact technical area
 - **Difficulty**: Foundational (0-3yr), Intermediate (3-7yr), Advanced (7+yr)
+- **Type (Q&A)**: Theoretical (concepts), Practical (implementation), Scenario (real-world cases)
 - **Roles**: Senior (5+yr, mentors), Architect (system design), Expert (thought leader)
 - **Contentious**: ≥2 peer-reviewed sources with conflicting conclusions
 - **Source Types**: (1) Official docs, (2) Standards/peer-reviewed, (3) Audits, (4) Vetted code
@@ -26,7 +27,7 @@ Generate 12-15 discriminative technical interview Q&As for senior/architect/expe
 **Target**: 12-15 Q&As | 150-300 words/answer | 20/40/40% difficulty split
 **Citations**: ≥6 APA (~60% EN, ~30% ZH, ~10% other) | ≥70% answers cited
 **References**: ≥5 glossary | ≥3 codebases | ≥3 literature
-**Quality**: ≥50% <3yr (≥70% AI/security) | ≥3 types | Max 25% single source
+**Quality**: ≥50% <3yr (≥70% AI/security) | ≥3 source types | Max 25% single source
 **Per Cluster**: ≥1 diagram or table | ≥2 authoritative + ≥1 codebase
 
 ## Content Principles
@@ -41,19 +42,19 @@ Generate 12-15 discriminative technical interview Q&As for senior/architect/expe
 ## Execution Workflow
 
 ### 1. Topic Planning
-- Identify 3-4 high-impact clusters; allocate 3-5 Q&As each (total 12-15)
+- Identify 3-4 high-impact clusters; tentatively allocate 3-5 Q&As each (adjust to stay within 12-15 total)
 - Assign difficulty: 20% Foundational / 40% Intermediate / 40% Advanced
 - Verify ≥10 credible sources exist; adjust scope if insufficient
 **Checkpoint**: 12-15 total ✓ | 20/40/40 ratio ✓ | Sources sufficient ✓
 
 ### 2. Reference Collection
 - Collect: ≥5 glossary, ≥3 codebases, ≥3 literature, ≥6 APA
-- Tag: Language ([EN]/[ZH]/Other), year, type (1-4)
+- Tag: Language ([EN]/[ZH]/Other), year, source type (1-4)
 - Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
-**Checkpoint**: Floors met ✓ | EN 50-70%, ZH 20-40%, Other 5-15% ✓ | ≥50% <3yr ✓ | ≥3 types, max 25% ✓
+**Checkpoint**: Floors met ✓ | EN 50-70%, ZH 20-40%, Other 5-15% ✓ | ≥50% <3yr ✓ | ≥3 source types, max 25% single source ✓
 
 ### 3. Q&A Generation
-- Draft clear single-ask question; assign difficulty + type
+- Draft clear single-ask question; assign difficulty + Q&A type
 - Write 150-300 words with depth, examples, trade-offs
 - Cite: ≥1 `[Ref: ID]` after claims, metrics, trade-offs, recommendations
 - State concrete Key Insight: misconception, failure path, or trade-off
@@ -75,21 +76,21 @@ Generate 12-15 discriminative technical interview Q&As for senior/architect/expe
 ### 6. Validation
 
 **Validation Tiers**:
-- **Express** (Steps 1,2,6,7): <10 Q&As, time-constrained, drafts
-- **Standard** (Steps 1,2,3,5,6,7,8): 12-15 Q&As (recommended)
-- **Thorough** (All 11): Regulated domains, >15 Q&As, production
+- **Express** (Checks 1,2,6,7 below): <10 Q&As, time-constrained, drafts
+- **Standard** (Checks 1,2,3,5,6,7,8): 12-15 Q&As (recommended)
+- **Thorough** (All 11 checks): Regulated domains, >15 Q&As, production
 
-**11-Step Checklist**:
+**11-Check Checklist**:
 1. **Count Audit**: Floors + 20/40/40 ratio
 2. **Citation Coverage**: ≥70% have ≥1, ≥30% have ≥2
 3. **Language**: EN 50-70%, ZH 20-40%, Other 5-15%
 4. **Recency**: ≥50% <3yr (≥70% AI/security)
-5. **Diversity**: ≥3 types, max 25%
+5. **Diversity**: ≥3 source types, max 25% single source
 6. **Links**: All accessible/archived
 7. **Cross-refs**: All `[Ref: ID]` resolve
 8. **Word Count**: Sample 5, verify 150-300
 9. **Insights**: ≥90% concrete (not generic)
-10. **Per-Topic**: Each ≥2 authoritative + ≥1 codebase
+10. **Per Cluster**: Each ≥2 authoritative + ≥1 codebase
 11. **Coherence**: Sample 3 aligned; contentious have ≥2 viewpoints
 
 **Report Template**:
@@ -99,12 +100,12 @@ Generate 12-15 discriminative technical interview Q&As for senior/architect/expe
 | Citations | X% ≥1, Y% ≥2 | PASS/FAIL |
 | Language | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
 | Recency | X% <3yr | PASS/FAIL |
-| Diversity | N types, max P% | PASS/FAIL |
+| Diversity | N source types, max P% any single source | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
 | Words | 5/5 in range | PASS/FAIL |
 | Insights | Y/X concrete | PASS/FAIL |
-| Per-topic | X/Y meet | PASS/FAIL |
+| Per Cluster | X/Y meet | PASS/FAIL |
 | Coherence | X/3 \| Y% fair | PASS/FAIL |
 ```
 > **CRITICAL**: If ANY fails, halt, fix, regenerate, re-validate. Proceed only when ALL pass.
@@ -215,7 +216,7 @@ Smith, J., & Wang, L. (2024). Blockchain consensus: Comparative analysis.
 
 ## Progress Reporting
 
-**Template**: `Cluster 2/3 | 8/12 Q&As | 12 citations | Validation: Step 2 pending`
+**Template**: `Cluster 2/3 | 8/12 Q&As | 12 citations | Validation: Check 2 pending`
 
 **Transparency**:
 - State assumptions/constraints upfront

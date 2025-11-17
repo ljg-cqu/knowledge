@@ -27,10 +27,10 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 4. **Regulatory/Compliance**: Data protection, compliance, audit
 5. **Operational** (optional): Deployment, SLA/SLO, incident response
 
-### 6 Decision Process Stages (Minimal Viable)
+### 6 of 9 Decision Process Stages (Minimal Viable)
 
 | Stage | Activities | Outputs | Focus Roles |
-|-------|------------|---------|-------------||
+|-------|------------|---------|-------------|
 | **1. Framing** | Identify need, scope, urgency | Problem statement, success criteria | All validate |
 | **2. Constraints** | Analyze ≥3 categories, thresholds | Constraint catalog | Tech/Resource/Reg leads |
 | **3. Stakeholders** | Elicit concerns from ≥2 roles | Stakeholder matrix | PM/Arch facilitate |
@@ -41,7 +41,7 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 ### 6-7 Core Stakeholder Roles
 
 | Role | Concerns | Trade-Off Priorities | Key Metrics |
-|------|----------|----------------------|-------------||
+|------|----------|----------------------|-------------|
 | **PM** | Time-to-market, features | Speed vs quality | Release frequency, NPS |
 | **Architect** | System quality, coherence | Flexibility vs simplicity | NFR achievement, debt |
 | **Developer** | Maintainability | Abstraction vs explicitness | Build time, complexity |
@@ -50,14 +50,16 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 | **SRE** | Reliability, observability | Availability vs cost | SLO, MTTR |
 | **Leadership** | ROI, risk, strategy | Cost vs capability | Revenue, TTM |
 
-### 5-6 Decision-Critical Constraint Categories
+### 8 Decision-Critical Constraint Categories
 
 1. **Technical**: Hardware (CPU/RAM/storage), Platform, Legacy, Stack
 2. **Resource**: Time (deadlines), Budget (infra/licensing), Team (size/skills)
 3. **Business/Market**: Revenue model, Competition, Strategy
-4. **Regulatory/Compliance**: Data protection (GDPR/HIPAA/PCI), Standards (SOC 2), Audit
-5. **Operational**: Availability (RTO/RPO), SLA/SLO, Capacity
-6. **Ecosystem** (optional): Vendor lock-in, OSS health, Partners
+4. **Organizational**: Team structure, ownership, processes, culture
+5. **Regulatory/Compliance**: Data protection (GDPR/HIPAA/PCI), Standards (SOC 2), Audit
+6. **Operational**: Availability (RTO/RPO), SLA/SLO, Capacity
+7. **Ecosystem** (optional): Vendor lock-in, OSS health, Partners
+8. **Lifecycle** (optional): Product/system maturity, migration state, technical debt
 
 ## Content Standards
 
@@ -81,7 +83,7 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 1. **Decision Type**: Explicit (Strategic/Technical/Business/Regulatory/Operational)
 2. **Decision Criticality**: ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Adoption)
 3. **Process**: ≥4 of 6 stages
-4. **Constraints**: ≥3 of 5 categories quantified
+4. **Constraints**: ≥3 of 8 categories quantified
 5. **Stakeholders**: ≥2 roles with concerns/positions
 6. **Alternatives**: ≥2 options evaluated
 7. **Trade-Offs**: Quantified across ≥3 dimensions
@@ -93,21 +95,21 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 ## Required Per Cluster (2-3 Q&As)
 
 1. **Decision Flow Diagram** (Mermaid, <80 nodes, 6-stage process)
-2. **Decision Matrix** (≥2 alternatives × ≥5 dimensions: Technical/Resource/Business/Regulatory/Risk)
+2. **Decision Matrix** (≥3 alternatives × ≥6 dimensions: Technical/Resource/Business/Regulatory/Risk/Operational)
 3. **Risk Matrix** (≥2 risks: Risk/Probability/Impact/Mitigation)
 
 ### Visual Standards
 
 **Mermaid**: <120 nodes, subgraphs (3-5 max), color coding (blue=input, green=decision, yellow=monitoring, red=risk), labeled edges, decision points (diamonds), feedback loops
 
-**Tables**: ≥3 alternatives, ≥8 dimensions, quantified values (not vague), "When to Choose" with thresholds, tags [Consensus]/[Context-dependent]/[Emerging]
+**Tables**: ≥3 alternatives, ≥6 dimensions, quantified values (not vague), "When to Choose" with thresholds, tags [Consensus]/[Context-dependent]/[Emerging]
 
 **Anti-Patterns**: ❌ Text-only (no diagrams) ❌ <3 alternatives ❌ <6 dimensions ❌ Vague terms ❌ Missing conflict visualization ❌ No risk matrix for high-stakes
 
 ## References (Minimal Viable)
 
 | Component | Min | Requirements |
-|-----------|-----|--------------||
+|-----------|-----|--------------|
 | **Glossary** | ≥10 | Only terms used in Q&As (decision types, stages, constraints, stakeholders) |
 | **Tools** | ≥5 | Decision support, ADR, Mermaid; URL, update ≤18mo |
 | **Literature** | ≥6 | Decision-making (Kahneman, Hammond), Architecture (Fowler), Business (Porter) |
@@ -122,7 +124,7 @@ Generate 6-12 decision-critical Q&As identifying decisions that block action or 
 - Select 3-4 clusters across 4-5 decision types
 - Allocate 2-3 Q&As/cluster
 - Map decision patterns, ≥3 constraints, ≥5 stakeholders, 4-5 lifecycle phases
-- Ensure ≥70% satisfy Decision Criticality Framework
+- Ensure 100% satisfy Decision Criticality Framework
 
 ## 2. Build References
 
@@ -146,7 +148,7 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 
 ## 6. Validate (12 Checks—All PASS or STOP)
 
-**Counts**: G≥10, T≥5, L≥6, A≥10, Q=6-12 | **Citations**: ≥80% ≥1; ≥50% ≥2 | **Language**: 60/30/10% | **Recency**: ≥50% <3yr | **Decision Criticality**: 100% satisfy ≥1 criterion | **Stages**: 100% ≥4 of 6 | **Constraints**: 100% ≥3 of 5 | **Stakeholders**: 100% ≥2 roles | **Alternatives**: 100% ≥2 | **Trade-Offs**: 100% ≥3 dims | **Artifacts**: 100% 3/3 per cluster | **Quantified**: 100% measurable
+**Counts**: G≥10, T≥5, L≥6, A≥10, Q=6-12 | **Citations**: ≥80% ≥1; ≥50% ≥2 | **Language**: 60/30/10% | **Recency**: ≥50% <3yr | **Decision Criticality**: 100% satisfy ≥1 criterion | **Stages**: 100% ≥4 of 6 | **Constraints**: 100% ≥3 of 8 | **Stakeholders**: 100% ≥2 roles | **Alternatives**: 100% ≥2 | **Trade-Offs**: 100% ≥3 dims | **Artifacts**: 100% 3/3 per cluster | **Quantified**: 100% measurable
 
 **Fail Protocol**: ANY fail → STOP → Fix → Re-validate ALL → 12/12 PASS
 
@@ -203,7 +205,7 @@ graph TB
         Problem[Framing] --> SuccessCriteria[Success Criteria]
     end
     subgraph "2. Constraints"
-        SuccessCriteria --> Constraints[Constraints<br/>5 Categories]
+        SuccessCriteria --> Constraints[Constraints<br/>8 Categories]
     end
     subgraph "3. Stakeholders"
         Constraints --> Stakeholders[Stakeholders<br/>6 Roles]
@@ -232,14 +234,14 @@ graph TB
 | 5 | Recency | ≥50% <3yr | | PASS/FAIL |
 | 6 | Decision Criticality | 100% satisfy ≥1 criterion | | PASS/FAIL |
 | 7 | Stages | 100% ≥4 of 6 | | PASS/FAIL |
-| 8 | Constraints | 100% ≥3 of 5 | | PASS/FAIL |
+| 8 | Constraints | 100% ≥3 of 8 | | PASS/FAIL |
 | 9 | Stakeholders | 100% ≥2 roles | | PASS/FAIL |
 | 10 | Alternatives | 100% ≥2 options | | PASS/FAIL |
 | 11 | Artifacts | 100% 3/3 per cluster | | PASS/FAIL |
 | 12 | Quantified | 100% measurable | | PASS/FAIL |
 
 **Overall**: [X/12 PASS]  
-**Coverage**: 4-5 Types: [counts] | 6 Stages: [counts] | 5 Constraints: [counts] | ≥5 Stakeholders: [counts]
+**Coverage**: 4-5 Types: [counts] | 6 Stages: [counts] | 8 Constraints: [counts] | ≥5 Stakeholders: [counts]
 ```
 
 # Minimal Viable Example

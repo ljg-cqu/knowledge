@@ -12,7 +12,7 @@ Generate **4–6 decision-critical Q&As** on PM evolution—origin/history/trend
 
 **Purpose**: Assess senior+ PM understanding of product management evolution through temporal reasoning, pattern recognition, and strategic forecasting—decision-critical scenarios only.
 
-**Scope**: 4–6 decision-critical Q&As | 150–250 words/answer | ≥70% with ≥1 citation (≥30% with ≥2) | ≥2 temporal dimensions per answer
+**Scope**: 4–6 decision-critical Q&As | 150–270 words/answer | ≥70% with ≥1 citation (≥30% with ≥2) | ≥2 temporal dimensions per answer
 
 **Difficulty**: 25% F (recent 5yr trends) | 50% I (10–15yr evolution) | 25% A (20+yr origins/shifts)
 
@@ -33,15 +33,15 @@ Generate **4–6 decision-critical Q&As** on PM evolution—origin/history/trend
 
 ## II. Requirements
 
-**Q&A**: 4–6 total | 25%F/50%I/25%A (±5%) | 150–250 words | ≥70% have ≥1 cite (≥30% have ≥2) | Each addresses ≥2 temporal dimensions | **100% decision-critical**
+**Q&A**: 4–6 total | 25%F/50%I/25%A (±5%) | 150–270 words | ≥70% have ≥1 cite (≥30% have ≥2) | Each addresses ≥2 temporal dimensions | **100% decision-critical**
 
 **Topic Coverage** (decision-critical only): 
 - Prioritization Framework Evolution (1–2 Q) - Blocks decision (framework selection)
 - PLG/GTM Transformation (1–2 Q) - Creates risk (market misalignment)
-- Data-Driven PM Shift (1 Q) - Blocks capability roadmap
-- Continuous Discovery (1 Q) - Affects ≥2 stakeholders (PM + Research)
-- AI/ML Impact (1 Q) - Actively evolving (2023–2025)
-- PM Role Emergence (1 Q) - Foundational context for all others
+- Data-Driven PM Shift (0–1 Q) - Blocks capability roadmap (optional)
+- Continuous Discovery (0–1 Q) - Affects ≥2 stakeholders (PM + Research, optional)
+- AI/ML Impact (0–1 Q) - Actively evolving (2023–2025, optional)
+- PM Role Emergence (0–1 Q) - Foundational context that may be woven into other topics
 
 **References** (proportional 60% reduction):
 - **Glossary**: ≥8 terms (RICE, North Star, PLG, AARRR, OKR, Continuous Discovery, Feature Factory, OST)
@@ -68,15 +68,15 @@ Generate **4–6 decision-critical Q&As** on PM evolution—origin/history/trend
 Identify 4–6 decision-critical PM evolution scenarios using Decision Criticality Framework:
 - **Prioritization Framework Evolution** (Blocks: framework selection for roadmaps)
 - **PLG/GTM Transformation** (Creates risk: market misalignment if missed)
-- **Data-Driven PM Shift** (Blocks: hiring, tooling, team structure decisions)
-- **Continuous Discovery** (Affects: PM + Research collaboration, velocity)
-- **AI/ML Impact on PM** (Actively evolving: 2023–2025, emerging capability gap)
-- **PM Role Emergence** (Foundational: provides context for all others)
+- **Data-Driven PM Shift** (Blocks: hiring, tooling, team structure decisions, optional)
+- **Continuous Discovery** (Affects: PM + Research collaboration, velocity, optional)
+- **AI/ML Impact on PM** (Actively evolving: 2023–2025, emerging capability gap, optional)
+- **PM Role Emergence** (Foundational: provides context for all others, optional)
 
 ### Step 2: Build References (30–45 min)
 
 **Glossary (≥8)**: RICE, North Star, PLG, AARRR, OKR, Continuous Discovery, Feature Factory, OST
-- Fields: term | definition | origin year/creator | evolution | current use | limitations | Assign G1–G8
+- Fields: term | definition | origin year/creator | evolution | current use | limitations | Assign G1–G8+ as needed
 
 **Tools (≥4)**: Amplitude (analytics), ProductBoard (roadmapping), Mixpanel (analytics), Dovetail (research)
 - Fields: category | launch year | adoption | market evolution | URL | Assign T1–T4
@@ -85,7 +85,7 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 - Fields: author, title, year | historical context | influence/legacy | Assign L1–L5
 
 **Citations (≥8)**: Gartner/Forrester (trends), Lenny's Newsletter (evolution), HBR (academic), PM journals (origins)
-- Format: APA 7th + [EN]/[ZH]/[Other] tag | Verify: ≥30% historical + ≥40% trend + ≥20% foundational | Assign A1–A8
+- Format: APA 7th + [EN]/[ZH]/[Other] tag | Verify: ≥30% historical + ≥40% trend + ≥20% foundational | Assign A1–A8+ as needed
 
 ### Step 3: Generate Q&A (2–3 at a time → self-check each batch)
 
@@ -100,7 +100,7 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 - I (10–15yr): "Trace prioritization evolution: MoSCoW → RICE → North Star. What drove shifts?"
 - A (20+yr): "Why did PM emerge as distinct from engineering? How has the role fundamentally changed?"
 
-**Answer Structure** (150–250 words, streamlined):
+**Answer Structure** (150–270 words, streamlined):
 1. Key Insight (1 sent): Core temporal pattern/inflection point
 2. Origin Context [Ref: G#/A#]: Why created, initial problem, creator/timeframe
 3. Evolution Timeline: Key milestones, paradigm shifts, adoption curve
@@ -110,7 +110,7 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 7. Implications: Impact on PM practice today/tomorrow
 8. Citations: ≥1 [Ref: ID] (prioritize historical + trend)
 
-**Batch Self-Check**: Decision-critical | ≥2 temporal signals | 150–250 words | Concrete insight | ≥2 temporal dimensions | ≥2/3 have ≥1 cite
+**Batch Self-Check**: Decision-critical | ≥2 temporal signals | 150–270 words | Concrete insight | ≥2 temporal dimensions | ≥2/3 have ≥1 cite
 
 ### Step 4: Create Visuals (≥1 diagram + ≥1 table per Q&A)
 - **Prioritization**: Framework timeline (MoSCoW 1994 → RICE 2016 → North Star 2018 → AI-assisted 2025) + adoption/cycle time table
@@ -138,7 +138,7 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 | 5 | Source Types       | __ types; max __%              | ≥3 types, max 25%              | PASS/FAIL |
 | 6 | Links              | __/__ accessible               | 100%                           | PASS/FAIL |
 | 7 | Cross-Refs         | __/__ resolved                 | 100%                           | PASS/FAIL |
-| 8 | Word Count         | __ sampled: __ compliant       | 100% (150–250w)                | PASS/FAIL |
+| 8 | Word Count         | __ sampled: __ compliant       | 100% (150–270w)                | PASS/FAIL |
 | 9 | Key Insights       | __/__ concrete temporal        | 100%                           | PASS/FAIL |
 | 10| Temporal Dimensions| __/__ address ≥2               | 100%                           | PASS/FAIL |
 | 11| Artifacts          | __ diagrams, __ tables         | ≥1 each per Q&A                | PASS/FAIL |
@@ -151,13 +151,13 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 ### TOC Structure
 1. Decision Criticality Framework
 2. Topic Coverage Overview
-3. Questions by Topic (4–6 decision-critical topics)
+3. Questions by Topic (4–6 decision-critical Q&As)
 4. References (Glossary, Tools, Literature, Citations)
 5. Validation Report
 
 ### Topic Coverage Overview
 
-**Total**: [4–6] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 4–6 decision-critical PM evolution topics
+**Total**: [4–6] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 4–6 decision-critical PM evolution Q&As across 3–6 topics
 
 | # | Topic                    | Range | Count | Mix      | Decision Criticality | Artifacts       |
 |---|--------------------------|-------|-------|----------|----------------------|-----------------|
@@ -177,7 +177,7 @@ Identify 4–6 decision-critical PM evolution scenarios using Decision Criticali
 - **Difficulty**: [F/I/A] | **Topic**: [Area]
 - **Decision Criticality**: [Blocks/Risk/Roles/Evolving/Quantified]
 - **Key Insight**: [1 sentence—core temporal pattern/inflection point]
-- **Answer** (150–250 words): Origin Context [Ref: G#/A#] | Evolution Timeline (≥2 temporal dimensions) | Current State | Trend Analysis | Driving Forces | Implications | ≥1 [Ref: ID]
+- **Answer** (150–270 words): Origin Context [Ref: G#/A#] | Evolution Timeline (≥2 temporal dimensions) | Current State | Trend Analysis | Driving Forces | Implications | ≥1 [Ref: ID]
 - **Artifact**: Timeline, evolution diagram, adoption curve, or metrics table
 
 ### Reference Formats (Minimal Viable)

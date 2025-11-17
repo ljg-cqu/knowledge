@@ -237,17 +237,17 @@
 
 **Answer** (340 words):
 
-**P1: Standard Selection** - Three candidates: (1) **REST + OpenAPI 3.1** [A1]: 30+ million APIs, tooling ecosystem (Swagger [T1], Postman [T2]), JSON/HTTP, browser-native, 60% latency overhead vs binary; (2) **gRPC** [A3]: HTTP/2 + Protobuf [A7], 7-10x faster serialization, bidirectional streaming, 80% reduction in payload size, limited browser support (gRPC-Web proxy required); (3) **GraphQL** [A4]: single endpoint, client-driven queries, over/under-fetching solution, 20-40% fewer requests, REST-level latency, complex caching. Regulatory: MiFID II requires audit trails, timestamping, request-response logging [A15].
+**P1: Standard Selection** - Three candidates: (1) **REST + OpenAPI 3.1** [A1]: 30+ million APIs, tooling ecosystem (Swagger [T1], Postman [T2]), JSON/HTTP, browser-native, 60% latency overhead vs binary; (2) **gRPC** [A3]: HTTP/2 + Protobuf [A7], 7-10x faster serialization, bidirectional streaming, 80% reduction in payload size, limited browser support (gRPC-Web proxy required); (3) **GraphQL** [A4]: single endpoint, client-driven queries, over/under-fetching solution, 20-40% fewer requests, REST-level latency, complex caching. Regulatory: PCI-DSS Req 10 requires audit trails, timestamping, request-response logging [A14].
 
 **P2: Trade-off Analysis** - Performance: gRPC wins (binary, multiplexing, <5ms p99 at 100K rps benchmarks [L5]). Ecosystem: REST dominates (50M+ developers, every language/tool supports). Developer experience: GraphQL reduces iterations (self-documenting schema, Playground). Browser clients: REST/GraphQL native, gRPC needs proxy (+3ms latency). Mobile: gRPC ideal (battery, bandwidth). Algo traders: gRPC preferred (low-latency, code generation [T4]). Regulatory: all support audit (OpenAPI + AsyncAPI [A5] for async events, gRPC interceptors, GraphQL resolvers).
 
 **P3: Implementation Strategy** - **Hybrid architecture**: (1) gRPC for algo trader APIs (Protobuf schema [A7], Buf [T4] for breaking change detection); (2) GraphQL gateway for web/mobile (Apollo Federation, REST fallback); (3) OpenAPI 3.1 for audit/compliance APIs (Swagger UI [T1], regulatory visibility); (4) AsyncAPI 3.0 [A5] for market data streaming (WebSocket + CloudEvents [A20]). Migration: 6 months, backward compatibility via API gateway (Kong/Envoy with protocol translation). Cost: $400K implementation, $80K/yr maintenance.
 
-**P4: Validation Approach** - Conformance: Buf lint [T4] for Protobuf, Spectral [T14] for OpenAPI/AsyncAPI, contract testing with Postman [T2]. Performance: k6 load testing (50K orders/s, p99 <10ms SLO), distributed tracing (OpenTelemetry + Jaeger). Regulatory: automated audit log validation (MiFID II timestamps, PCI-DSS Req 10 [A15]), quarterly compliance scans.
+**P4: Validation Approach** - Conformance: Buf lint [T4] for Protobuf, Spectral for OpenAPI/AsyncAPI, contract testing with Postman [T2]. Performance: k6 load testing (50K orders/s, p99 <10ms SLO), distributed tracing (OpenTelemetry + Jaeger). Regulatory: automated audit log validation (PCI-DSS Req 10 [A14]), quarterly compliance scans.
 
-**P5: Stakeholder Coordination** - Architect (A: standard selection, ADR [A33]), Developer (R: implementation, schema design), QA/SET (R: contract tests [L14], performance benchmarks), Security (C: audit trails, TLS 1.3 enforcement), SRE (C: observability, latency budgets). Approval: Architecture Review Board, 2-week RFC period. Training: 40hrs (gRPC/Protobuf), internal docs (Backstage [T13]).
+**P5: Stakeholder Coordination** - Architect (A: standard selection, ADR), Developer (R: implementation, schema design), QA/SET (R: contract tests [L5], performance benchmarks), Security (C: audit trails, TLS 1.3 enforcement), SRE (C: observability, latency budgets). Approval: Architecture Review Board, 2-week RFC period. Training: 40hrs (gRPC/Protobuf), internal docs (Backstage).
 
-**P6: Lifecycle Integration** - Architecture & Design: schema-first design, API contracts in Git, breaking change CI checks [T4]. Development: code generation (protoc [A7], OpenAPI Generator [T1]), stub mocking. Testing & Quality: contract tests (Pact-like), load tests, conformance validation. Deployment: versioned APIs (/v1, /v2), canary rollout, feature flags. Operations: metrics (request rates, latency histograms), alerts (p99 >10ms). Evolution: SemVer [A31], 12-month deprecation [A32], migration guides.
+**P6: Lifecycle Integration** - Architecture & Design: schema-first design, API contracts in Git, breaking change CI checks [T4]. Development: code generation (protoc [A7], OpenAPI Generator [T1]), stub mocking. Testing & Quality: contract tests (Pact-like), load tests, conformance validation. Deployment: versioned APIs (/v1, /v2), canary rollout, feature flags. Operations: metrics (request rates, latency histograms), alerts (p99 >10ms). Evolution: SemVer [A19], 12-month deprecation [A20], migration guides.
 
 **Artifacts**:
 
@@ -284,7 +284,7 @@ graph TB
 - **GraphQL Efficiency**: `(8 avg requests / 12 REST baseline) × 100% = 33% reduction` (mobile app)
 - **Schema Coverage**: `(48 services with schemas / 50 total) × 100% = 96%` (Buf [T4] registry)
 - **Breaking Changes Detected**: `12 catches in 6 months` (prevented production issues)
-- **Conformance Pass**: `(45 APIs passing Spectral [T14] / 50) × 100% = 90%`
+- **Conformance Pass**: `(45 APIs passing Spectral / 50) × 100% = 90%`
 - **Migration Progress**: `(30 migrated services / 50) × 100% = 60%` (month 3 of 6)
 - **Cost Efficiency**: `$400K initial / (50K orders/s × $0.02/1K) = 40% ROI` (vs managed API gateway)
 

@@ -115,7 +115,7 @@ Generate 6-8 decision-critical scenario-based questions for hiring senior+ PMs w
 8. ✅ **Word Count**: 150-250w per Q&A
 9. ✅ **Hiring Signals**: Clear strong/weak answer distinction
 10. ✅ **Interview Time**: 6-8 Q&As × 10-15 min = 60-120 min
-11. ✅ **Topic Coverage**: Strategy (1-2), Metrics (1-2), Stakeholder (1-2)
+11. ✅ **Topic Coverage**: Strategy & Prioritization (1-2), Metrics & Analytics (1-2), Stakeholder Alignment (1-2)
 12. ✅ **Final Review**: All Q&As decision-critical, no nice-to-haves
 
 ---
@@ -123,7 +123,7 @@ Generate 6-8 decision-critical scenario-based questions for hiring senior+ PMs w
 ## VIII. Workflow (Minimal Viable)
 
 1. **Scenario Selection** (30-45 min): Identify 6-8 decision-critical hiring scenarios
-2. **Build References** (30-45 min): G≥8, T≥3, L≥4, A≥6
+2. **Build References** (30-45 min): G≥8, T≥3, L≥4, C≥6 (citations)
 3. **Generate Q&As** (2-3h): Batch 2-3, scenario-based, 150-250w, quantified impact
 4. **Define Evaluation** (30-45 min): Strong/weak answer criteria per Q&A
 5. **Validate** (30-45 min): Execute 12 checks, fix, iterate
@@ -150,7 +150,7 @@ Generate 6-8 decision-critical scenario-based questions for hiring senior+ PMs w
 2. Validate against 12 checks
 3. Define strong/weak answer criteria
 4. Calibrate hiring managers (1-2h session)
-5. Deploy: 1-2 Q&As per candidate, 60-120 min total
+5. Deploy: 6-8 Q&As per candidate, 60-120 min total
 
 ---
 

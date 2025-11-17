@@ -90,19 +90,19 @@ Start with TOC linking sections. Use lists, tables, code blocks (language-tagged
 ```markdown
 ## Contents
 - [Task Bank](#task-bank)
-  - [Topic 1](#topic-1-title)
+  - [Cluster 1](#cluster-1-title)
     - [Task 1](#task-1-title)
 - [References](#references)
-  - [Glossary](#glossary-terminology--acronyms)
-  - [Codebase](#codebase--library-references)
-  - [Literature](#authoritative-literature--reports)
-  - [APA Citations](#apa-style-source-citations)
+  - [Glossary](#glossary)
+  - [Codebase](#codebase)
+  - [Literature](#literature)
+  - [APA Citations](#apa-citations)
 
 ---
 
 ## Task Bank
 
-### Topic 1: [Title]
+### Cluster 1: [Title]
 
 #### Task 1: [Title]
 **Language:** [python/js/go/rust] | **Difficulty:** [Foundational/Intermediate/Advanced]
@@ -199,13 +199,13 @@ Execute all; present in table; fix; re-validate until pass.
 | Diversity | N types, max P% | PASS/FAIL |
 | Links | Y/X accessible | PASS/FAIL |
 | Cross-refs | Y/X resolved | PASS/FAIL |
-| Tests | Y/X complete | PASS/FAIL |
-| Solutions | Y/X present | PASS/FAIL |
+| Tests | Y/X complete (6-10; 3-5 public, 3-5 hidden) | PASS/FAIL |
+| Solutions | Y/X with complexity | PASS/FAIL |
 | Constraints | Y/X specified | PASS/FAIL |
+| Alternatives | Y/X with trade-offs | PASS/FAIL |
 | Quality | Sig:X/Y Risk:W/Y Fair:V/Y Reason:U/Y | PASS/FAIL |
 | Practicality | Y/X criteria | PASS/FAIL |
 | Concision | Reviewed | PASS/FAIL |
 
 **MANDATORY**: Fix failures; re-validate until all pass.
-
 

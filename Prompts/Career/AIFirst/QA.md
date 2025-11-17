@@ -3,7 +3,7 @@
 **Mission**: Generate 12-15 decision-critical Q&As enabling informed decision-making on AI-First adoption across 6 lifecycle phases, ≥7 stakeholder roles, 4 AI patterns with quantified productivity/quality gains. **Optimization Goal**: 60% reduction (30-35→12-15) focusing on decision-blocking, risk-creating, cross-functional impact scenarios only.
 
 **Context**: Production systems (>10K rps, >1TB data), LLM-augmented workflows (GPT-4/Claude/Gemini), AI IDEs (Copilot/Cursor/Windsurf), agentic frameworks  
-**Success**: 12/12 validation PASS, 6/6 quality criteria, actionable workflows with measurable outcomes, ≥80% decision criticality coverage
+**Success**: 12/12 validation PASS, 6/6 quality criteria, actionable workflows with measurable outcomes, 100% decision criticality coverage
 
 ---
 
@@ -32,21 +32,20 @@
 
 ## Artifacts Required
 
-**Per Cluster (4 items)**:
-1. **Mermaid Sequence**: Human-AI collaboration flow (<120 nodes)
-2. **Workflow**: Prompt pattern (5-20 lines with placeholders) OR tool chain (step-by-step with validation points)
-3. **Comparison Table**: ≥2 AI approaches (Productivity Gain / Quality Impact / When AI Excels / Human-Critical Tasks / Automation Tag)
-4. **Metrics Table**: Baseline vs AI-augmented with % improvement
+**Per Cluster (3 items + embedded workflow)**:
+1. **Mermaid Sequence**: Human-AI collaboration flow (<80 nodes)
+2. **Comparison Table**: ≥2 AI approaches (Productivity Gain / Quality Impact / When AI Excels / Human-Critical Tasks / Automation Tag)
+3. **Metrics Table**: Baseline vs AI-augmented with % improvement
+**Embedded Workflow (in answer)**: Prompt pattern (5-20 lines with placeholders) OR tool chain (step-by-step with validation points)
 
-**Metric Formulas by Phase**:
-- **Discovery**: `Time Saved = Manual - AI (hours)`, `Coverage = AI-found / Total × 100%`
-- **Design**: `Design Speed = Iterations / Time`, `Quality = Validated Patterns / Total`
+## Metric Formulas by Phase
+
+- **Requirements & Discovery**: `Time Saved = Manual - AI (hours)`, `Coverage = AI-found / Total × 100%`
+- **Architecture & Design**: `Design Speed = Iterations / Time`, `Quality = Validated Patterns / Total`
 - **Development**: `Velocity = Tasks / Sprint × AI Factor`, `Defects = Bugs / KLOC`
-- **Testing**: `Coverage = AI-gen / Total × 100%`, `Detection = Found / Injected`
-- **Deployment**: `Decision Time = Manual - AI (min)`, `Success Rate = Successful / Total × 100%`
-- **Operations**: `MTTD = Detection Time`, `False Positive = FP / Total × 100%`
-- **Maintenance**: `Resolution Time = Manual - AI (hours)`, `Accuracy = Correct / Total × 100%`
-- **Evolution**: `Planning Time = Manual - AI (days)`, `Alignment = Validated / Proposed × 100%`
+- **Testing & Quality**: `Coverage = AI-gen / Total × 100%`, `Detection = Found / Injected`
+- **Operations & Observability**: `MTTD = Detection Time`, `False Positive = FP / Total × 100%`
+- **Deployment & Maintenance**: `Decision Time = Manual - AI (min)`, `Success Rate = Successful / Total × 100%`, `Resolution Time = Manual - AI (hours)`, `Accuracy = Correct / Total × 100%`
 
 ## References
 
@@ -57,17 +56,17 @@
 | **Literature** | ≥6 | AI-First + lifecycle classics (canonical references only) with key concepts and relevance |
 | **Citations** | ≥10 | APA 7th; 60/30/10% EN/ZH/Other (±10%); ≥60% with productivity metrics |
 
-**Quality Gates**: ≥60% AI tools last 2yr, ≥50% methods last 3yr; 100% valid URLs; peer-reviewed sources; authoritative practitioners; ≥80% decision-critical (blocks decision, creates risk, affects ≥2 stakeholders, actively evolving, or >40h adoption barrier)
+**Quality Gates**: ≥60% AI tools last 2yr, ≥50% methods last 3yr; 100% valid URLs; peer-reviewed sources; authoritative practitioners; 100% Q&As decision-critical (blocks decision, creates risk, affects ≥2 stakeholders, actively evolving, or >40h adoption barrier)
 
 ---
 
 # Process
 
 ## 1. Plan (6 clusters, 12-15 Q&As)
-- Allocate 2 Q&As/cluster across 6 lifecycle phases, 4 AI patterns, ≥7 stakeholders
+- Allocate ≈2 Q&As/cluster (total 12-15) across 6 lifecycle phases, 4 AI patterns, ≥7 stakeholders
 - Difficulty: 25/50/25% Foundational/Intermediate/Advanced (±5%)
 - **Decision Criticality Check**: Every Q&A must satisfy ≥1 of 5 criteria: (1) Blocks decision, (2) Creates risk, (3) Affects ≥2 stakeholders, (4) Actively evolving, (5) >40h adoption barrier
-- **Validate**: Coverage complete, no overlap, distribution balanced, ≥80% decision-critical
+- **Validate**: Coverage complete, no overlap, distribution balanced, 100% decision-critical
 
 ## 2. Build References (G≥10, T≥6, L≥6, A≥10)
 - Glossary: Only terms used in Q&As (10 canonical terms)
@@ -97,10 +96,10 @@
 | 1 | Counts | G≥10, T≥6, L≥6, A≥10, Q=12-15 |
 | 2 | Citations | ≥70% ≥1; ≥30% ≥2 |
 | 3 | Recency | ≥60% AI 2yr; ≥50% methods 3yr |
-| 4 | Decision Criticality | ≥80% Q&As satisfy ≥1 of 5 criteria |
+| 4 | Decision Criticality | 100% Q&As satisfy ≥1 of 5 criteria |
 | 5 | Lifecycle coverage | All 6 phases |
 | 6 | AI pattern coverage | All 4 patterns |
-| 7 | Stakeholder coverage | ≥7/10 roles with cross-functional impact |
+| 7 | Stakeholder coverage | ≥7 roles with cross-functional impact |
 | 8 | Artifacts | ≥90% clusters 3/3 (diagram + comparison + metrics) |
 | 9 | Productivity metrics | ≥70% quantified gains |
 | 10 | Human-AI boundaries | 100% specify human-critical tasks |
@@ -136,7 +135,7 @@
 **Criticality Justification**: [Why this Q&A is decision-critical]
 **Answer**: [150-350 words following answer flow] [≥1 citation]
 
-**3 Required Artifacts**:
+**Linked Cluster Artifacts** (3 total per cluster):
 1. **Mermaid Sequence**: Human-AI collaboration (<80 nodes)
 2. **Comparison Table**: Approach | Productivity | Quality | When AI Excels | Human-Critical | Tag
 3. **Metrics Table**: Baseline | AI-Augmented | Improvement

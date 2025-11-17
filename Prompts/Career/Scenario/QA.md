@@ -8,7 +8,7 @@
 
 **Cadence**: Per training cycle | 4–6h effort | Reusable across sessions
 
-**Terms**: **B/I/A** = Basic (execution) / Intermediate (trade-offs) / Advanced (portfolio/P&L/vision) | **MECE** = Mutually Exclusive, Collectively Exhaustive | **RICE** = Reach, Impact, Confidence, Effort | **JTBD** = Jobs-To-Be-Done | **PMF** = Product-Market Fit | **North Star** = Key value metric | **Decision Criticality** = Blocks decision, Creates risk, Affects ≥2 stakeholders, Actively evolving
+**Terms**: **B/I/A** = Basic (execution) / Intermediate (trade-offs) / Advanced (portfolio/P&L/vision) | **UC** = Use Case (scenario) | **MECE** = Mutually Exclusive, Collectively Exhaustive | **RICE** = Reach, Impact, Confidence, Effort | **JTBD** = Jobs-To-Be-Done | **PMF** = Product-Market Fit | **North Star** = Key value metric | **Decision Criticality** = Blocks decision, Creates risk, Affects ≥2 stakeholders, Actively evolving, Quantified impact (revenue $, pipeline $, adoption %, retention %, or market share)
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -73,9 +73,9 @@
 
 ### Step 1: Plan Allocation
 
-Distribute 6–8 decision-critical scenarios (25/50/25% B/I/A). Each capability: 1–2 scenarios with ≥1B or ≥1I, ≥1A.
+Distribute 6–8 decision-critical scenarios (25/50/25% B/I/A). Allocate per capability using the Quantitative Floors: Strategy & Prioritization (2–3), Metrics & Decision-Making (2–3), Stakeholder Alignment (1–2), (Optional) GTM (1). Ensure each capability has ≥1B or ≥1I; overall, ≥2A scenarios.
 
-**Example** (8): Strategy & Prioritization (3): 1B/1I/1A | Metrics & Decision-Making (3): 0B/1I/2A | Stakeholder Alignment (2): 0B/1I/1A = **1B/3I/4A**
+**Example** (8): Strategy & Prioritization (3): 1B/1I/1A | Metrics & Decision-Making (3): 0B/2I/1A | Stakeholder Alignment (2): 1B/1I/0A = **2B/4I/2A**
 
 **Decision Criticality Check**: Verify each scenario satisfies ≥1 criterion (Blocks/Risk/Stakeholders/Evolving/Quantified)
 
@@ -204,9 +204,9 @@ Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphan
 | # | Capability | Range | Count | Mix | Artifacts |
 |---|------------|-------|-------|-----|-----------|
 | 1 | Strategy & Prioritization | UC1–3 | 3 | 1B/1I/1A | 1 diagram+table |
-| 2 | Metrics & Decision-Making | UC4–6 | 3 | 0B/1I/2A | 1 diagram+table |
-| 3 | Stakeholder Alignment | UC7–8 | 2 | 0B/1I/1A | 1 diagram+table |
-| | **Total** | | **8** | **1B/3I/4A** | **3+3** |
+| 2 | Metrics & Decision-Making | UC4–6 | 3 | 0B/2I/1A | 1 diagram+table |
+| 3 | Stakeholder Alignment | UC7–8 | 2 | 1B/1I/0A | 1 diagram+table |
+| | **Total** | | **8** | **2B/4I/2A** | **3+3** |
 
 **Usage**: Select 1 capability (2–3 scenarios) → demonstrate 1–2 per session (5–10 min/scenario)
 
@@ -253,7 +253,7 @@ Use formats from Step 2. **Verify**: ✓ 100% [Ref: ID] resolve \| ✓ No orphan
 
 **UC1: Top 5 enterprise customers (40% revenue) request feature misaligned with mass-market vision. Prioritize?**
 
-**Complexity**: Advanced | **Capability**: Strategy & Prioritization | **Decision Criticality**: [Blocks/Risk/Stakeholders/Quantified]
+**Complexity**: Advanced | **Capability**: Strategy & Prioritization | **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving/Quantified]
 
 **Key Capability**: Tests revenue protection vs. long-term PMF under stakeholder pressure; distinguishes strategic decision support from roadmap tools.
 

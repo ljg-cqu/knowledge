@@ -1,4 +1,4 @@
-# Software Quality Management Q&A Generator (Minimal Viable)
+# Quality Engineering Q&A Generator (Minimal Viable)
 
 Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viable tracking for informed decisions with limited time.
 
@@ -28,7 +28,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 phases, ≥2 roles) + decision (Adopt/Prioritize/Monitor/Defer/Skip + rationale) + timeline (immediate/short). Projections only if sourced.
 
-## II. Requirements
+## Requirements
 
 **Q&A**: 6-8 total | 1-2/phase | 120-200w | 100% topic-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
@@ -38,7 +38,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥5/10): Developer, QA/SET, DevOps, SRE, Architect (core roles only)
+**Stakeholders** (≥5 roles): Developer, QA/SET, DevOps, SRE, Architect (core roles only)
 
 **References** (build before Q&A): G≥8 (100% terms used), T≥2-3 (testing tools), C≥2 (code quality), O≥2 (observability), S≥4-5 (sources/studies), A≥6 (APA 7th+tag)
 
@@ -46,17 +46,17 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **Quality Gates** (fail ANY = stop):
 1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
-2. **Topic Relevance**: 100% cite ≥1 source; 0% marketing/speculation
+2. **Topic Relevance**: ≥85% cite ≥1 source (≥30% ≥2 cites); 0% marketing/speculation
 3. **Impact**: 100% ≥2 phases + ≥2 roles + quantified
 4. **Decision**: 100% decision + rationale + timeline
 5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
 6. **Actionability**: 100% concrete; 0% abstract
 
-## III. Execution
+## Execution
 
 ### Step 1: Topic Discovery & Curation (Minimal)
 
-**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
+1. **Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
 
 2. **Search** (≥12-15 candidates, tiered):
 
@@ -121,7 +121,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 3. **Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 4. **Decision** (~50w): **Rec**: Adopt/Prioritize/Monitor/Defer/Skip | **Rationale**: Why | **Success**: Targets
 5. **Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
-6. **Links**: Define at end: `[n1]: URL`
+6. **Links**: Define at end: `[s1]: URL`
 
 **Self-Check**: Source OK | Decision Criticality ✓ | ≥2 phases | ≥2 roles | Decision clear | 120-200w | Quantified | ≥1 cite | 0% hype | 100% actionable | All terms in glossary
 
@@ -147,7 +147,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
 
-## IV. Validation Report (Minimal)
+## Validation Report (Minimal)
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
@@ -156,18 +156,18 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 | 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
 | 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;6-8 | | PASS/FAIL |
 | 5 | **Categories** | Test__% Code__% CI/CD__% Obs__% | ≥50,40,40,25% | | PASS/FAIL |
-| 6 | **Roles** | __/10 | ≥5 | | PASS/FAIL |
+| 6 | **Roles** | __ roles | ≥5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
-| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
+| 10 | **Citations** | __%≥1cite; __%≥2cites | ≥85%;≥30% | | PASS/FAIL |
 | 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
 | 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
 | | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
 | | **Source Dist** | Primary__% Secondary__% Tertiary__% | Balanced | | INFO |
 | | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥2 fails of 7 = rewrite)
+## Question Quality (≥2 fails of 7 = rewrite)
 
 **Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
 
@@ -175,7 +175,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **✗ Bad**: "What is test pyramid?" (generic) | "How to write tests?" (overview) | "Adopt AI testing?" (no context) | "Python 3.13" (tech ops) | "Competitor launched feature" (no decision)
 
-## VI. Output Format (Minimal)
+## Output Format (Minimal)
 
 ### A. TOC
 
@@ -235,7 +235,7 @@ Generate 6-8 decision-critical Q&As on quality engineering topics—minimal viab
 
 **G#. Term (Acronym)**: Definition | Analogy | Context | Example
 
-**S#. Title** (Source): Summary | Cat | URL
+**S#. Title** (Source): Summary | Cat | URL | Decision Criticality criterion
 
 **T#. Tool** (Category): Purpose | URL
 

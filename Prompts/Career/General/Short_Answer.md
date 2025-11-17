@@ -29,7 +29,7 @@ Generate 25–40 senior-level problems with worked solutions, citations, validat
 | Gate | Pass Criteria |
 |------|---------------|
 | Recency | ≥50% last 3yr (≥70% AI/security) |
-| Diversity | ≥3 types; no source >25% |
+| Diversity | ≥3 types; max 25% single type |
 | Coverage | ≥70% problems cite ≥1; ≥30% cite ≥2 |
 | Links | All resolve or archived |
 | Cross-Refs | All `[Ref: ID]` resolve |
@@ -44,8 +44,8 @@ Generate 25–40 senior-level problems with worked solutions, citations, validat
 
 ### 2. Collect References
 - Gather ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA
-- Tag language ([EN]/[ZH]), year, type; assign IDs (G#/C#/L#/A#)
-- **Verify**: Floors met, language ≈60/30/10, recency ≥50% 3yr, diversity ≥3 types
+- Tag language ([EN]/[ZH]/Other), year, type; assign IDs (G#/C#/L#/A#)
+- **Verify**: Floors met, language ≈60/30/10, recency ≥50% 3yr, diversity ≥3 types, max 25% single type
 
 ### 3. Generate Problems
 - Clear statement (values, units, difficulty, type, assumptions/constraints)
@@ -67,8 +67,8 @@ Generate 25–40 senior-level problems with worked solutions, citations, validat
 1. **Counts**: `G: X (≥10) | C: Y (≥5) | L: Z (≥6) | A: W (≥12) | Problems: N (F/I/A)` → Pass: Floors met, difficulty ≈20/40/40
 2. **Coverage**: `X of Y cite ≥1 (Z%); W cite ≥2 (V%)` → Pass: ≥70% cite ≥1, ≥30% cite ≥2
 3. **Language**: `EN: X (Y%) | ZH: A (B%) | Other: C (D%)` → Pass: EN ≈50-70%, ZH ≈20-40%, Other ≈5-15%
-4. **Recency**: `X of Y (Z%) from 2022-2025` → Pass: ≥50% (≥70% AI/security)
-5. **Diversity**: `T1: X | T2: Y | T3: Z | T4: W | Types: N | Max: M (P%)` → Pass: ≥3 types, no source >25%
+4. **Recency**: `X of Y (Z%) from last 3yr` → Pass: ≥50% (≥70% AI/security)
+5. **Diversity**: `T1: X | T2: Y | T3: Z | T4: W | Types: N | Max: M (P%)` → Pass: ≥3 types, max 25% single type
 6. **Links**: `Tested X: Y ok, Z broken` → Pass: All ok OR archived
 7. **Cross-Refs**: `X refs: Y ok, Z broken` → Pass: Z=0
 8. **Solutions**: `X of Y complete; Z incomplete` → Pass: Z=0
@@ -82,7 +82,7 @@ Generate 25–40 senior-level problems with worked solutions, citations, validat
 ### 7. Checklist
 
 - [ ] Floors: G≥10, C≥5, L≥6, A≥12; Difficulty 20/40/40; Language ~60/30/10
-- [ ] Recency ≥50% 3yr (≥70% AI/security); Diversity ≥3 types, no source >25%
+- [ ] Recency ≥50% 3yr (≥70% AI/security); Diversity ≥3 types, max 25% single type
 - [ ] Coverage ≥70% cite ≥1, ≥30% cite ≥2
 - [ ] Quality: 2-4 steps, tolerances, units, assumptions, uncertainty, risk/value
 - [ ] Maturity: License, update ≤12mo, stable, audit; Links/cross-refs resolve; Alternatives

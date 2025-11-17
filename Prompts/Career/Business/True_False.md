@@ -76,9 +76,9 @@ Per statement:
 
 - [ ] **Counts**: Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12, Statements 18–32
 - [ ] **Difficulty**: 20/40/40 across clusters
-- [ ] **Clusters**: 3–6 statements each, unique focus
+- [ ] **Clusters**: 4–6 clusters; 3–6 statements each, unique focus
 - [ ] **Citations**: ≥70%: ≥1; ≥30%: ≥2 from different types
-- [ ] **Languages**: EN 50–70%, ZH 20–40%, Other 5–15%
+- [ ] **Languages**: EN 55–65%, ZH 25–35%, Other 5–15%
 - [ ] **Recency**: ≥50% ≤3yrs (≥70% cloud/digital)
 - [ ] **Source diversity**: ≥3 types; none >25%
 - [ ] **References**: All `[Ref: ID]` resolve; URLs accessible

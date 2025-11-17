@@ -78,15 +78,15 @@ Generate 12–15 scenario-based Q&A testing judgment for Senior Manager/Director
 
 ## Examples
 
-### F (20%): Explain + Apply
+### F (17%): Explain + Apply
 **Q**: What is STP and when is it used?  
 **A** (~150w): STP [Ref: G1] has 3 stages: (1) Segmentation divides markets by needs/behaviors; (2) Targeting selects segments by fit; (3) Positioning defines brand perception vs. competitors [Ref: L1]. Use for market entry, launches, rebranding in fragmented markets. **Limitations**: Assumes stable segments—fails in rapidly evolving markets or micro-segmentation [Ref: L4]. Requires research investment. Segments must be measurable, accessible, substantial, actionable.
 
-### I (40%): Diagnose + Apply Multiple
+### I (42%): Diagnose + Apply Multiple
 **Q**: B2B SaaS: CAC $1,200, LTV $3,800 (3.2:1). Assess mid-market expansion feasibility.  
 **A** (~180w): Current 3.2:1 is healthy [Ref: G5]. Mid-market needs ≥3:1. Variables: (1) CAC increases (longer cycles, multiple buyers) [Ref: A11]; (2) LTV increases (higher ARPU, lower churn) [Ref: G5]. **Approach**: Benchmark with ChartMogul [Ref: T3]; pilot 20 accounts, 3 months [Ref: L5]; track CAC, conversion, cycle, ACV, churn; model 12-mo LTV. **Decision**: Proceed if LTV:CAC ≥3:1, payback <18mo. **Limitations**: Needs different positioning [Ref: G1], sales infrastructure, product capabilities—CAC alone insufficient. Pilot may have selection bias [Ref: L5].
 
-### A (40%): Synthesize + Justify
+### A (42%): Synthesize + Justify
 **Q**: $10M budget, awareness -8pts YoY, ROAS +15% YoY. CEO wants "more performance." Respond.  
 **A** (~280w): Performance cannibalizes brand—"efficiency trap" [Ref: L4, A10]. Declining awareness shrinks funnel; performance captures demand but doesn't create it [Ref: L4]. ROAS gains reflect last-click bias over-crediting bottom-funnel [Ref: G6, A12]. **Response**: "ROAS unsustainable. Harvesting equity faster than building. Propose 60/40 brand/performance [Ref: L4, A10] per econometric models." **Strategy**: (1) Q1-Q2: Reallocate 20% ($2M) to brand (video, sponsorships, content) [Ref: L3]; brand lift studies [Ref: T1]; geo holdouts [Ref: A11]; (2) Q3-Q4: Campaign for +5pts awareness; MMM [Ref: G6]; (3) Year 2: Optimize to 60/40. **Alternative**: 100% performance if prioritizing market share—risks commoditization [Ref: L5]. **When NOT**: Early-stage pre-PMF [Ref: L5]. **Limitations**: Brand lags 6–18mo [Ref: L4]; ROAS dips -10-20% Q1-Q2; MMM has 10-20% error [Ref: A12].
 
@@ -163,7 +163,7 @@ Generate 12–15 scenario-based Q&A testing judgment for Senior Manager/Director
 ## Output Structure
 
 ```markdown
-# Interview Q&A - Marketing Professional
+# Interview Q&A - Marketing Leadership
 
 ## Contents
 [TOC: Overview | 6 Domains | References (G, T, L, A) | Validation]

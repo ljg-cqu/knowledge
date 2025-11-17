@@ -19,7 +19,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 |--------|-------------|
 | **Count** | 4-6 (25% F / 50% I / 25% A) |
 | **Length** | 120-200 words |
-| **Components** | News trigger → Decision Criticality → Impact → Stakeholders → Decision → Action |
+| **Components** | Scenario context → Decision Criticality → Impact → Stakeholders → Decision → Action |
 | **Citations** | ≥1 per Q&A |
 | **Artifacts/Cluster** | ≥2 diagrams + ≥1 table (60% reduction) |
 
@@ -55,7 +55,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 | **DevOps** | Deployment/infrastructure impact | Scaling strategy | Automation gaps |
 | **Security** | Threat landscape shifts | Compliance gaps | Data classification changes |
 
-## Content Standards (Decision-Critical News Tracking)
+## Content Standards (Decision-Critical Requirement Scenarios)
 
 **Decision Criticality Framework**: Every Q&A must satisfy ≥1 criterion:
 - **Blocks Decision**: Directly impacts requirement prioritization, go/no-go, or strategic pivot
@@ -64,9 +64,9 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 - **Requires Action**: 1-6mo action window (not speculative)
 - **Quantified Impact**: Requirement coverage %, NFR threshold change, compliance deadline, integration risk score
 
-**Quantified Impact**: ✅ "NFR threshold change: p95 latency <300ms → <200ms" ❌ "Performance improved"  
-**Freshness**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo | Bi-weekly cadence | Expires 2 weeks  
-**Traceability**: News trigger → Decision Criticality → Impact → Stakeholder action → Metric
+**Quantified Impact**: ✅ "NFR threshold change: p95 latency <300ms → <200ms" ❌ "Performance improved"
+**Review cadence**: Review and refresh scenarios and references at least every 12-18 months or whenever requirement practices, architecture, or regulatory context change materially.
+**Traceability**: Scenario context → Decision Criticality → Impact → Stakeholder action → Metric
 
 ---
 
@@ -109,7 +109,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 
 ---
 
-# Minimal Viable Generation Process (4-6h, Bi-weekly)
+# Minimal Viable Generation Process (4-6h, On-Demand)
 
 ## 1. Scenario Selection & Analysis (1-2h)
 
@@ -119,7 +119,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 ## 2. Build References (30-45 min)
 
 **Actions**: Glossary (≥8 terms) | Tools (≥3: decision-critical only) | Literature (≥6: canonical only) | Citations (≥6 APA 7th)  
-**Checks**: G≥8, T≥3, L≥6, C≥6 | 100% valid URLs | All citations ≤2yr old
+**Checks**: G≥8, T≥3, L≥6, C≥6 | 100% valid URLs | ≥2 citations ≤10yr old (recent practice), others canonical
 
 ## 3. Write Q&As (2-3h)
 
@@ -142,8 +142,8 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 |---|-------|--------|
 | 1 | Counts | Q=4-6, G≥8, T≥3, L≥6, C≥6 |
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion |
-| 3 | Citations | ≥70% ≥1; all ≤2yr |
-| 4 | Freshness | ≥75% <2mo, ≥90% <4mo |
+| 3 | Citations | ≥70% Q&As have ≥1; mix of canonical + ≥2 citations ≤10yr |
+| 4 | Review | All Q&As and references reviewed in last 18mo |
 | 5 | Links | 100% valid |
 | 6 | Word count | Sample 3: 120-200 |
 | 7 | Impact | 100% quantified |
@@ -157,7 +157,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 
 ## 7. Final Review (3 Criteria)
 
-**Criteria (All PASS)**: Clarity (decision-critical focus, consistent terms) | Accuracy (verifiable news, sound impact, valid metrics) | Actionability (go/no-go criteria, timeline, owner)  
+**Criteria (All PASS)**: Clarity (decision-critical focus, consistent terms) | Accuracy (verifiable scenarios and sources, sound impact, valid metrics) | Actionability (go/no-go criteria, timeline, owner)
 **Submit**: 12/12 PASS + 3/3 criteria  
 **High-Risk**: Decision Criticality | Quantified impact | Timeline/owner
 
@@ -215,7 +215,7 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 ### Literature (≥6, Canonical)
 **L1. Author(s). (Year). *Title*. Publisher.** [Tag]: [Relevance]
 
-### Citations (≥6, APA 7th, ≤2yr)
+### Citations (≥6, APA 7th, canonical + ≥2 ≤10yr)
 **C1.** Author(s). (Year). *Title*. Source. [EN/ZH/Other]
 
 ---
@@ -224,8 +224,8 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 | # | Check | Target | Result | Status |
 | 1 | Counts | Q=4-6, G≥8, T≥3, L≥6, C≥6 | [X] | PASS/FAIL |
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion | [X] | PASS/FAIL |
-| 3 | Citations | ≥70% ≥1; all ≤2yr | [X] | PASS/FAIL |
-| 4 | Freshness | ≥75% <2mo, ≥90% <4mo | [X] | PASS/FAIL |
+| 3 | Citations | ≥70% ≥1; mix of canonical + ≥2 citations ≤10yr | [X] | PASS/FAIL |
+| 4 | Review | All Q&As and references reviewed in last 18mo | [X] | PASS/FAIL |
 | 5 | Links | 100% valid | [X] | PASS/FAIL |
 | 6 | Word count | Sample 3: 120-200 | [X] | PASS/FAIL |
 | 7 | Impact | 100% quantified | [X] | PASS/FAIL |
@@ -244,8 +244,8 @@ Generate 4-6 decision-critical Q&As for requirement analysis with minimal viable
 
 ## Glossary (≥8)
 
-**G1. Decision Criticality** [EN]: Framework for prioritizing news: Blocks decision, Creates risk, Affects ≥2 roles, Requires 1-6mo action, Quantified impact  
-**G2. NFR** [EN]: Non-Functional Requirements (performance, security, reliability, scalability)  
+**G1. Decision Criticality** [EN]: Framework for prioritizing requirement scenarios and changes: Blocks decision, Creates risk, Affects ≥2 roles, Requires 1-6mo action, Quantified impact
+**G2. NFR** [EN]: Non-Functional Requirements (performance, security, reliability, scalability, observability)
 **G3. SLO** [EN]: Service Level Objective (e.g., 99.9% availability). Drives error budget  
 **G4. STRIDE** [EN]: Threat model (Spoofing, Tampering, Repudiation, Info Disclosure, DoS, Elevation)  
 **G5. RACI** [EN]: Responsible, Accountable, Consulted, Informed ownership  

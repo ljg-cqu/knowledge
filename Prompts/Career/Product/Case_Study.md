@@ -64,7 +64,7 @@ Generate 16-22 scenarios (20/40/40% F/I/A) testing judgment over recall.
 | Languages | 60% EN / 30% ZH / 10% other |
 | Recency | ≥50% last 3yr (≥70% AI) |
 | Judgment | ≥80% trade-offs |
-| Context | 200-400 words |
+| Context | 200-400w |
 | MECE | 100% non-overlapping |
 
 ---
@@ -73,7 +73,7 @@ Generate 16-22 scenarios (20/40/40% F/I/A) testing judgment over recall.
 
 **Assumptions:** 3-7yr PM experience; knows frameworks (RICE, JTBD, AARRR, OKR); evaluated by PM leaders.
 
-**Limits:** 45-60min/scenario; 200-400 word context; ≤300 word deliverables; accessible URLs; realistic metrics.
+**Limits:** 45-60min/scenario; 200-400w context; ≤300w deliverables; accessible URLs; realistic metrics.
 
 **Risks:** Approximated data; outdated tools (>18mo); >25% single-source bias.
 
@@ -84,7 +84,7 @@ Generate 16-22 scenarios (20/40/40% F/I/A) testing judgment over recall.
 Each includes:
 
 1. **Difficulty:** F | I | A
-2. **Domain:** Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM
+2. **Domain(s):** Strategy | Discovery | Prioritization | Metrics | Stakeholder | GTM
 3. **Context (200-400w):** Market, users, metrics, stakeholders, constraints, ≥1 [Ref: ID]
 4. **Tasks (3-4 MECE):** Objectives, outputs, points (20-30 total), criteria
 5. **Rubric:** Partial credit, gaps, bonuses
@@ -164,7 +164,7 @@ Execute sequentially. Verify before advancing.
 
 Select 4-6 domains, allocate 3-4 scenarios/domain (16-22 total), assign 20/40/40% F/I/A, map trade-offs.
 
-**Verify:** 16-22 ✓ | 20/40/40% ✓ | ≥3/cluster ✓ | Trade-offs ✓
+**Verify:** 16-22 ✓ | 20/40/40% ✓ | ≥3/domain ✓ | Trade-offs ✓
 
 ---
 
@@ -244,7 +244,7 @@ Checklist, TOC+anchors, formatting, review.
 ```markdown
 ### Scenario X: [Title]
 
-**Difficulty:** [F|I|A] | **Domain:** [Strategy|Discovery|Prioritization|Metrics|Stakeholder|GTM]
+**Difficulty:** [F|I|A] | **Domain(s):** [Strategy|Discovery|Prioritization|Metrics|Stakeholder|GTM]
 
 **Context (200-400w):** [Market, users, metrics, stakeholders, constraints, ≥1 [Ref: ID]]
 
@@ -303,19 +303,19 @@ A1. [Full APA 7th]. [Tag]
 
 ### Scenario 1: Enterprise vs Mass Market Conflict
 
-**Difficulty:** A | **Domain:** Strategy, Prioritization
+**Difficulty:** A | **Domain(s):** Strategy, Prioritization
 
-**Context:**
+**Context (200-400w):**
 
-B2B SaaS: 50K SMB ($50/mo) + 5 enterprise ($200K/yr, 40% ARR). Enterprise wants custom workflow builder (6mo). Vision: simplicity, self-serve [Ref: L4]. Custom adds complexity, needs services.
+B2B SaaS: 50K SMB accounts ($50/mo) + 5 enterprise logos ($200K/yr each, 40% of ARR). Product is a workflow automation platform positioned as "simple, opinionated defaults" for non-technical operations teams. Enterprise customers are pushing for a fully flexible workflow builder that allows arbitrary steps, conditions, and integrations (estimated 6 months of build time). The current vision emphasizes low-configuration, self-serve onboarding [Ref: L4], while the requested builder moves the product toward a complex, services-heavy solution.
 
-Analytics [Ref: T1]:
-- SMB activation: 65% (7d), retention: 72% (90d)
-- Enterprise retention: 95%
+Analytics [Ref: T1] show:
+- SMB activation: 65% in 7 days, 90-day retention: 72%
+- Enterprise retention: 95%, but usage is concentrated in 2-3 power teams per logo
 
-CEO: enterprise churn risk ($200-400K) [Assumption]. Engineering: custom delays activation by 2Q. Market [Ref: A8]: SMB TAM 10×, enterprise predictable.
+The CEO flags enterprise churn risk of $200-400K ARR if the request is rejected [Assumption: rough estimate based on 1-2 at-risk logos]. Engineering estimates the custom builder will delay the current activation roadmap by two quarters and add ~20% maintenance overhead. Market research [Ref: A8] suggests SMB TAM is roughly 10× larger than the current enterprise segment, but enterprise revenue is more predictable and less churn-prone.
 
-Sales: custom unlocks 10 deals ($2M) [Open Question: close rate?]. Analytics [Ref: T3]: simplified onboarding → 15% activation (+7.5K users, +$450K) [Evidence: Q3 2023 A/B].
+Sales argues the builder could unlock 10 incremental enterprise deals worth ~$2M in the next 12 months [Open Question: true win rate and discounting?]. Product analytics [Ref: T3] from a previous simplified onboarding experiment indicate a 15% absolute lift in activation (+7.5K active SMB users, +$450K ARR) [Evidence: Q3 2023 A/B]. There is no dedicated professional services team today; any services-heavy solution would require either pulling engineers into bespoke projects or hiring a new implementation pod.
 
 **Task 1: Diagnosis+Framework (8pt)**
 

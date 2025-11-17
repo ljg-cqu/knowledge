@@ -176,7 +176,7 @@ See **Section IV** for complete checklist. Key:
 | 2 | Development | Q4–Q6 | 2–3 | 1F/1–2I/1A | Tech/Org/Risk | Dev/Arch/PM | 1 diagram+table |
 | 3 | Deployment | Q7–Q9 | 2–3 | 1F/1I/1A | Org/Risk/Bus | DevOps/SRE/Arch | 1 diagram+table |
 | 4 | Operations | Q10–Q12 | 2–3 | 0–1F/1–2I/1A | User/Bus/Risk | SRE/DevOps/PM | 1 diagram+table |
-| | **Total** | | **8–12** | **2–4F/4–8I/2–4A** | **≥2 per Q&A** | **≥5 core** | **4–8 total** |
+| | **Total** | | **6–12** | **≈25%F/50%I/25%A** | **≥2 per Q&A** | **≥5 core** | **≥1 per Q&A** |
 
 **Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic | Risk=Risk
 
@@ -202,11 +202,6 @@ See **Step 5** for formats. Summary:
 - **Literature**: **L#. Author, Title, Year** | Summary | Lifecycle (group: EN, ZH)
 - **Citations**: **A#. [APA 7th] [Lang]** (sort by ID)
 
-|---|-----------|--------|--------|
-| 1 | **Clarity**: Single value ask | "Microservices ($500K, 6mo)—assess business/tech/org value?" | "Explain value types" |
-| 2 | **Decision Criticality**: Blocks/Risk | "$2M investment blocks roadmap. Allocate: product/debt/platform?" | "Should we invest in platform?" |
-| 3 | **Quantification**: Metrics | "Feature: +$2M revenue, -40% velocity. NPV? Payback? Risk?" | "Calculate ROI" |
-| 4 | **Realism**: Stakeholder tension | "Sales: $5M customization. Arch: 30% debt. PM: Q4 launch. Assess?" | "What's the value?" |
 ## VII. Example
 
 **Q1: Architect proposes microservices migration ($800K, 9mo, 5 engineers). PM: roadmap delayed. CFO: ROI justification. DevOps: operational complexity +40%. Assess total value across lifecycle?**
@@ -215,8 +210,7 @@ See **Step 5** for formats. Summary:
 
 **Key Insight**: Comprehensive value assessment across lifecycle/stakeholders, balancing investment cost (negative) against distributed benefits (positive: technical/organizational/strategic) while navigating conflicting priorities.
 
-**Answer** (262 words):
-
+**Answer** (~250 words):
 Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] for lifecycle assessment.
 
 **Multi-value analysis**:

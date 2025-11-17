@@ -18,14 +18,14 @@ Generate 8-12 decision-critical senior/leadership interview Q&As demonstrating c
 
 | Aspect | Requirement |
 |--------|-------------|
-| **Count** | 8-12 (3-4 dimensions × 2-4) |
+| **Count** | 8-12 (4 dimensions × 2-3 each) |
 | **Difficulty** | 25% F / 50% I / 25% A |
 | **Answer** | 200-350 words: Context → Strategy → Framework → Metrics → Trade-offs |
 | **Citations** | ≥1 (≥2 for complex) |
 | **Cluster** | Diagram + framework + table + metric |
 | **Coverage** | 5-6 phases ≥1 each; 6-8 stakeholders ≥1 each; 100% decision-critical |
 
-## 4 Decision-Critical Dimensions (2-4 Each)
+## 4 Decision-Critical Dimensions (2-3 Q&As Each)
 
 | Dimension | Decision Criticality | Topics |
 |-----------|---------------------|--------|
@@ -70,7 +70,7 @@ Generate 8-12 decision-critical senior/leadership interview Q&As demonstrating c
 | 7. Maintenance & Support | Transfer, runbooks, security, docs | SRE(R), Sec(R), Data(C) |
 | 8. Evolution & Governance | RFC, roadmap, deprecation, engage | PM(R), Arch(R), Lead(A) |
 
-**Req**: 8 phases ≥2 each; 10 stakeholders ≥2 each; explicit lifecycle link
+**Req**: 5-6 of 8 phases (≥1 each); 6-8 of 10 stakeholders (≥1 each); explicit lifecycle link
 
 ## References (Minimal Viable - 60% Reduction)
 
@@ -88,7 +88,7 @@ Generate 8-12 decision-critical senior/leadership interview Q&As demonstrating c
 # Generation Process
 
 ## 1. Plan (Decision-Critical)
-4 dimensions × 2-4 Q&As → 8-12; 2F/4I/2A mix; map 5-6 phases + 6-8 stakeholders; 100% decision-critical
+4 dimensions × 2-3 Q&As → 8-12; 25/50/25% F/I/A; map 5-6 phases + 6-8 stakeholders; 100% decision-critical
 **✓**: 8-12; 25/50/25% F/I/A; 4 dimensions; 5-6 phases ≥1; 6-8 stakeholders ≥1; 100% decision-critical
 
 ## 2. References (Minimal)
@@ -119,7 +119,7 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 | 6 | Decision Criticality | 100% satisfy ≥1 criterion: Blocks/Risk/Stakeholders/Evolving |
 | 7 | Frameworks | ≥80% RFC/ADR/RACI/DACI/RAPID used |
 | 8 | Metrics | ≥70% have quantified metrics |
-| 9 | Artifacts | ≥90% have diagram + table + metric |
+| 9 | Artifacts | ≥90% have diagram + framework + table + metric |
 | 10 | Lifecycle | 5-6 phases ≥1 each; explicit link |
 | 11 | Stakeholders | 6-8 roles ≥1 each; RACI clear |
 | 12 | **Final Review** | **6 criteria below PASS** |
@@ -199,16 +199,16 @@ Populate → extract [Ref: ID] → verify → remove orphans → validate URLs
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
 | 1 | Ref counts | G≥8, T≥4, L≥5, A≥8 | | PASS/FAIL |
-| 2 | Q&A counts | 8-12, F:I:A 25:50:25 | | PASS/FAIL |
-| 3 | Citations | ≥80% ≥1; ≥50% ≥2 | | PASS/FAIL |
-| 4 | Language | EN 60-70%, ZH 20-30% | | PASS/FAIL |
-| 5 | Recency | ≥50% <5yr | | PASS/FAIL |
-| 6 | Decision Criticality | 100% satisfy ≥1 criterion | | PASS/FAIL |
-| 7 | Frameworks | ≥80% used | | PASS/FAIL |
-| 8 | Metrics | ≥70% have quantified | | PASS/FAIL |
-| 9 | Artifacts | ≥90% diagram+table+metric | | PASS/FAIL |
-| 10 | Lifecycle | 5-6 phases ≥1 each | | PASS/FAIL |
-| 11 | Stakeholders | 6-8 roles ≥1 each | | PASS/FAIL |
+| 2 | Q&A counts | 8-12, F:I:A 25:50:25 (±5pp) | | PASS/FAIL |
+| 3 | Citations | ≥80% ≥1 ref; ≥50% ≥2 refs; all resolve | | PASS/FAIL |
+| 4 | Language | EN 60-70%, ZH 20-30%, Other 5-10% | | PASS/FAIL |
+| 5 | Recency | ≥50% <5yr (≥60% collab) | | PASS/FAIL |
+| 6 | Decision Criticality | 100% satisfy ≥1 criterion (Blocks/Risk/Stakeholders/Evolving) | | PASS/FAIL |
+| 7 | Frameworks | ≥80% RFC/ADR/RACI/DACI/RAPID used | | PASS/FAIL |
+| 8 | Metrics | ≥70% have quantified metrics | | PASS/FAIL |
+| 9 | Artifacts | ≥90% diagram+framework+table+metric | | PASS/FAIL |
+| 10 | Lifecycle | 5-6 phases ≥1 each; explicit link | | PASS/FAIL |
+| 11 | Stakeholders | 6-8 roles ≥1 each; RACI clear | | PASS/FAIL |
 | 12 | Final Review | 6/6 criteria PASS | | PASS/FAIL |
 
 **Overall**: [X/12] | **Issues**: [Failures] | **Remediation**: [Actions]

@@ -14,7 +14,7 @@ Generate 20–30 comprehensive case study analyses covering both successful and 
 
 ### Quantitative Floors
 
-**Cases**: 20–30 | 50/50 success/failure (±10%) | 30/40/30 Simple/Moderate/Complex (±5%) | 400-700 words | ≥90% have ≥2 cites (≥50% have ≥3) | ≥3 viewpoints each | Both outcomes per category
+**Cases**: 20–30 | 50/50 success/failure (±10%) | 30/40/30 Simple/Moderate/Complex (±5%) | 400-700 words | ≥90% have ≥2 cites (≥50% have ≥3) | ≥85% have ≥3 viewpoints | Both outcomes per category
 
 **7 Categories (MECE)**: Architecture & Design (4-5) | Business & Market (3-4) | Regulatory & Compliance (3-4) | Operational Excellence (3-4) | Security & Privacy (3-4) | Data & AI (2-3) | Organizational & Team (2-3)
 
@@ -34,7 +34,7 @@ Generate 20–30 comprehensive case study analyses covering both successful and 
 
 ### Step 1: Plan Allocation
 
-Distribute 20–30 across 7 categories (30/40/30 S/M/C; 50/50 success/failure). Example (24): Arch(4):1S+1M+2C, 2/2 | Bus(4):1S+2M+1C, 2/2 | Reg(3):1S+1M+1C, 2/1 | Ops(4):1S+2M+1C, 2/2 | Sec(3):1S+1M+1C, 2/1 | Data(3):1S+1M+1C, 2/1 | Org(3):1S+1M+1C, 1/2 → 7S/10M/10C (29/42/42%), 13/11 (54/46%)
+Distribute 20–30 across 7 categories (30/40/30 S/M/C; 50/50 success/failure). Example (24): Arch(4):1S+1M+2C, 2/2 | Bus(4):1S+2M+1C, 2/2 | Reg(3):1S+1M+1C, 2/1 | Ops(4):1S+2M+1C, 2/2 | Sec(3):1S+1M+1C, 2/1 | Data(3):1S+1M+1C, 2/1 | Org(3):1S+1M+1C, 1/2 → 7S/9M/8C (~29/38/33%), 13/11 (~54/46%)
 
 **Complexity**: Simple (1-2 phases, <3 stakeholders, clear cause-effect) | Moderate (3-5 phases, 3-6 stakeholders, multiple factors) | Complex (6-8 phases, >6 stakeholders, systemic/organizational) | **Balance**: Each category has ≥1 success AND ≥1 failure
 
@@ -136,13 +136,13 @@ Distribute 20–30 across 7 categories (30/40/30 S/M/C; 50/50 success/failure). 
 | # | Category               | Range   | Count | Mix      | Success/Fail | Artifacts |
 |---|------------------------|---------|-------|----------|--------------|-----------|
 | 1 | Architecture & Design  | C1–C4   | 4     | 1S/1M/2C | 2 Suc/2 Fail | 1D+1T     |
-| 2 | Business Model & Market| C5–C8   | 4     | 1S/2M/1C | 2 Suc/2 Fail | 1D+1T     |
+| 2 | Business & Market      | C5–C8   | 4     | 1S/2M/1C | 2 Suc/2 Fail | 1D+1T     |
 | 3 | Regulatory & Compliance| C9–C11  | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
 | 4 | Operational Excellence | C12–C15 | 4     | 1S/2M/1C | 2 Suc/2 Fail | 1D+1T     |
 | 5 | Security & Privacy     | C16–C18 | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
-| 6 | Data & AI Systems      | C19–C21 | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
+| 6 | Data & AI              | C19–C21 | 3     | 1S/1M/1C | 2 Suc/1 Fail | 1D+1T     |
 | 7 | Organizational & Team  | C22–C24 | 3     | 1S/1M/1C | 1 Suc/2 Fail | 1D+1T     |
-|   | **Total**              |         | **24**| **7S/10M/7C** | **13/11** | **7+7** |
+|   | **Total**              |         | **24**| **7S/9M/8C** | **13/11** | **7+7** |
 
 Legend: S=Simple | M=Moderate | C=Complex | Suc=Success | Fail=Failure | D=diagram | T=table
 

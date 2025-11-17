@@ -95,7 +95,7 @@ Decision = trade-off (optimize X at Y's expense), constraint-bounded, stakeholde
 ## Required Per Q&A (Minimal Viable)
 
 1. ≥3 forces (quantified)
-2. ≥4 constraint impacts (technical, resource, business, operational)
+2. ≥4 constraint categories (including technical, resource, business, operational)
 3. Quantified trade-off (+40% perf, +60% cost, +30% complexity)
 4. Stakeholder alignment/conflict (≥2 roles)
 5. Decision criteria (go/no-go thresholds)
@@ -140,7 +140,7 @@ Decision = trade-off (optimize X at Y's expense), constraint-bounded, stakeholde
 
 1. Select 3-4 decision-critical clusters (Structural, Behavioral, Quality, ±Data)
 2. Allocate 2-3 Q&As/cluster (6-12 total, 25% F / 50% I / 25% A)
-3. Map patterns, ≥4 constraints, ≥5 core stakeholders, 3-4 phases (decision-critical only)
+3. Map patterns, ≥4 constraint categories, ≥5 core stakeholders, 3-4 phases (decision-critical only)
 4. Define thresholds (≥70% Q&As)
 
 **Example**: "Modularity vs Simplicity" (Structural, team scaling), "Consistency vs Availability" (Behavioral, data correctness)
@@ -155,9 +155,9 @@ Glossary (≥10) → Tools (≥3) → Literature (≥4) → Citations (≥8, 60/
 
 **Questions**: ≥70% judgment ("How would you..." / "When..." / "Compare..."); multi-dimensional constraints
 
-**Answer**: Header (difficulty, dimension, phase, stakeholders) → Insight (quantified, 1 sentence) → Constraints (≥4, interactions) → Body (150-250 words: rationale, trade-offs, conflicts, decision criteria, mitigation) → Citations (≥1) → Trade-offs (≥3 alt, ≥6 cols) → Stakeholder Matrix (≥2 roles)
+**Answer**: Header (difficulty, dimension, phase, stakeholders) → Insight (quantified, 1 sentence) → Constraints (≥4 categories, interactions) → Body (150-250 words: rationale, trade-offs, conflicts, decision criteria, mitigation) → Citations (≥1) → Trade-offs (≥3 alt, ≥6 cols) → Stakeholder Matrix (≥2 roles)
 
-**Validate Every 3**: Count, citations, syntax, traceability, quantification, ≥3 forces, ≥4 constraints, conflicts, decision criteria
+**Validate Every 3**: Count, citations, syntax, traceability, quantification, ≥3 forces, ≥4 constraint categories, conflicts, decision criteria
 
 ## 4. Create Artifacts (Compressed)
 Per Cluster: ≥1 Diagram (<80 nodes) + ≥1 Table (≥3 alt, ≥6 cols)
@@ -177,7 +177,7 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 7. Quantified (100%)
 8. Decision Criticality (100% satisfy ≥1 criterion)
 9. Forces (100% ≥3)
-10. Constraints (100% ≥4; ≥4 overall)
+10. Constraints (100% ≥4 categories/Q&A; 100% 8 categories overall)
 11. Conflicts (≥80%)
 12. Mitigation (≥70%)
 
@@ -187,7 +187,7 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 
 1. **Clarity**: Logical, consistent, jargon defined
 2. **Accuracy**: Verifiable facts, valid diagrams, sound metrics
-3. **Completeness**: 3-4 dims (2-3 each), ≥4 constraints, ≥5 stakeholders, 3-4 phases, 12/12 PASS
+3. **Completeness**: 3-4 dims (2-3 each), all 8 constraint categories covered, ≥5 stakeholders, 3-4 phases, 12/12 PASS
 4. **Trade-Off Centrality**: 100% ≥3 forces, multi-dimensional, decision-critical
 5. **Quantification**: 100% quantified ≥4 dims, numerical
 6. **Stakeholder Multi-Perspective**: ≥2 views, conflicts, alignment; ≥5 core roles covered
@@ -260,7 +260,7 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 **Issues**: [Failures]
 **Fix**: [Actions]
 
-**Coverage**: ≥4 Constraints: [counts] | ≥5 Stakeholders: [counts] | 3-4 Phases: [counts]
+**Coverage**: Constraint Categories (8/8): [counts] | ≥5 Stakeholders: [counts] | 3-4 Phases: [counts]
 ```
 
 # Reference Example: Complete Q&A
@@ -275,12 +275,14 @@ Populate → Extract → Verify → Remove orphans → Validate URLs
 - **Technical**: 4-core 3.2GHz, 16GB RAM, 500 IOPS, <50ms network
 - **Resource**: $8K/mo (12 inst max), 8 devs (4 sr, 4 mid), 1 SRE, 1 sec, 4mo, 2-wk sprints
 - **Business**: $500K/mo rev ($50×10K orders/day), 15% share target, 3 rivals <200ms, enterprise (hospitals)
+- **Organizational**: ARB approval, moderate risk tolerance, healthcare compliance culture, cross-functional team ownership
 - **Regulatory**: HIPAA (PHI encrypt, 7yr logs), SOC 2 Type II
 - **Operational**: 99.9% avail (43min/mo), SEV-1 <30min MTTR, 24/7 on-call
 - **Ecosystem**: AWS lock-in OK, Kafka OSS (LTS), SOAP pharmacy (5-10s), OpenAPI partners
+- **Lifecycle**: existing monolith to be decomposed, CI/CD with canary deploys, limited staging envs for migration
 
 **Answer**: 
-Healthcare PHI (Protected Health Info) orders face 8 constraint dimensions: **Technical** (4-core), **Resource** (8 eng, $8K/mo, 4mo), **Business** ($500K/mo, <200ms compete, 15% share), **Regulatory** (HIPAA, SOC 2), **Operational** (99.9%, 24/7), **Ecosystem** (AWS, Kafka OSS, SOAP legacy). CQRS with event sourcing separates: commands → event store (write-optimized, append-only for HIPAA), queries → materialized views (read-optimized, cached). Independent scaling (3 write, 6 read within budget), full audit, competitive latency [A2, A7].
+Healthcare PHI (Protected Health Info) orders face 8 constraint dimensions: **Technical** (4-core), **Resource** (8 eng, $8K/mo, 4mo), **Business** ($500K/mo, <200ms compete, 15% share), **Organizational** (ARB approval, moderate risk appetite, cross-functional 8-person team with 2-wk sprints), **Regulatory** (HIPAA, SOC 2), **Operational** (99.9%, 24/7), **Ecosystem** (AWS, Kafka OSS, SOAP legacy), **Lifecycle** (existing monolith migration, CI/CD with canary deploys, limited non-prod envs). CQRS with event sourcing separates: commands → event store (write-optimized, append-only for HIPAA), queries → materialized views (read-optimized, cached). Independent scaling (3 write, 6 read within budget), full audit, competitive latency [A2, A7].
 
 Implementation: Kafka OSS (LTS) for events (TLS 1.3 + AES-256), AWS PostgreSQL (encrypted, auto-backup), Redis for reads. SOAP isolated via anti-corruption layer + circuit breaker (5s timeout, 50% threshold). Trade-offs: +35ms write (OK vs 2s legacy), +40% ops (3 stores, mitigated by Kafka exp), +60% storage ($2.4K/mo within budget). **Business**: +$150K/mo capacity, <200ms SLA, 4mo TTM [A4].
 

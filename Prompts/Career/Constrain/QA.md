@@ -43,7 +43,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 3. **Constraints**: ≥2 decision-critical categories with magnitudes
 4. **Body**: Context → Pattern → Trade-offs → Metrics → Stakeholder impact
 5. **Code**: 10-20 lines with error handling (optional for F)
-6. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Tag)
+6. **Trade-offs**: ≥2 alternatives (Approach | Pros | Cons | Hardware | Budget | Business | Tag)
 7. **Citations**: ≥1 (≥2 for I/A)
 
 ## Quality Standards
@@ -69,8 +69,8 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 
 ## 1. Plan (Minimal Viable)
 - Allocate 6-12 Q&As across 3-4 dimensions (25/50/25% F/I/A)
-- Map 4-5 decision-critical constraints + 5 core stakeholders + 4-5 phases
-- Verify decision criticality: all Q&As block decisions or create risk
+- Map 4-5 decision-critical constraint categories + 5 core stakeholders + 4-5 phases
+- Verify decision criticality: all Q&As satisfy ≥1 criterion (Blocks decision, Creates risk, Affects stakeholders, Actively evolving)
 
 ## 2. Build References (Minimal)
 - Glossary: Only terms used in Q&As; decision-critical categories
@@ -83,7 +83,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 - **Checkpoints**: Words 150-250 | Citations | Syntax | Traceability | Quantified | Constraints (≥2/Q&A) | Stakeholders (≥2/Q&A) | Decision Criticality ✓
 
 ## 4. Artifacts & Links
-- Per Q&A: Mermaid diagram + code (optional for F) + trade-offs table
+- For ≥80% Q&As: Mermaid diagram + code (optional for F) + trade-offs table
 - Verify [Ref: ID] resolved, 100% valid URLs
 
 ## 5. Final Validation (12/12 PASS)
@@ -109,7 +109,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 **Constraints**: [≥2 decision-critical categories with magnitudes]
 **Answer** (150-250 words): [Context → Pattern → Trade-offs → Metrics → Impact] [Ref: X]
 **Code** (10-20 lines, optional for F): [Language + error handling]
-**Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Tag |
+**Trade-offs**: | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
 **Stakeholders**: [≥2 with concerns]
 ```
 
@@ -124,7 +124,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 **Counts**: G:X/10 | T:X/4 | L:X/5 | C:X/8 | Q:X/6-12 (F:X% I:X% A:X%)
 **Quality**: Cites X% | Lang EN:X% ZH:X% | Recent X% | URLs X% | Links X%
 **Content**: Words X% | Quantified X% | Judgment X% | Trace X% | Artifacts X% | Syntax X%
-**Coverage**: Decision Criticality X% | Constraints X% | Stakeholders X% | Phases X%
+**Coverage**: Decision Criticality X% | Constraints X% | Stakeholders X% | Phases X% | Business X%
 **Status**: X/12 PASS | X/6 MET | **Issues**: [List] | **Fix**: [Actions]
 ```
 
@@ -139,7 +139,7 @@ Architect, Developer, DevOps/SRE, Security, Leadership
 
 **Constraints**: **Technical**: 4-core, 16GB, 500 IOPS | **Resource**: $8K/mo, 4mo | **Compliance**: HIPAA, SOC 2
 
-**Answer** (220 words): CQRS with event sourcing: commands → append-only store (HIPAA audit), queries → materialized views (cached). Independent scaling (3 write, 6 read) within $8K/mo, <200ms latency [Ref: A2]. Stack: Kafka OSS (PHI encrypted TLS 1.3), PostgreSQL (events), Redis (reads). Legacy SOAP via anti-corruption layer + circuit breaker. Trade-offs: +35ms write (vs 2s baseline), +40% ops (team Kafka experience). Impact: +$150K/mo capacity, 4mo feasible [Ref: A4]. Metrics: p95 write 180ms, reads 25ms, CPU 65%, $7.8K/mo. Stakeholder alignment: Sec (encrypted), Lead (ROI). Limits: 5GB/day growth → partition at 18mo.
+**Answer** (220 words): CQRS with event sourcing: commands → append-only store (HIPAA audit), queries → materialized views (cached). Independent scaling (3 write, 6 read) within $8K/mo, <200ms latency [Ref: A2]. Stack: Kafka OSS (PHI encrypted TLS 1.3), PostgreSQL (events), Redis (reads). Legacy SOAP via anti-corruption layer + circuit breaker. Trade-offs: +35ms write (vs 145ms monolith baseline), +40% ops (team Kafka experience). Impact: +$150K/mo capacity, 4mo feasible [Ref: A4]. Metrics: p95 write 180ms, reads 25ms, CPU 65%, $7.8K/mo. Stakeholder alignment: Sec (encrypted), Lead (ROI). Limits: 5GB/day growth → partition at 18mo.
 
 **Code** (Go):
 ```go

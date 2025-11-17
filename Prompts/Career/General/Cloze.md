@@ -14,7 +14,7 @@ Generate 24–40 senior-level cloze items for [domain] targeting professionals w
 - **References**: ≥10 glossary, ≥5 codebase, ≥6 literature, ≥12 APA
 - **Language**: ~60% EN, ~30% ZH, ~10% other
 - **Citations**: ≥70% items ≥1; ≥30% items ≥2 distinct types
-- **Recency**: ≥50% from last 3yr (≥70% for AI/security/blockchain)
+- **Recency**: ≥50% from last 3 years (≥70% for AI/security/blockchain)
 - **Diversity**: ≥3 source types; single type <25%
 - **Validation**: 100% pass all 13 checks
 
@@ -95,7 +95,7 @@ Each item requires:
 - Assign IDs: G1-Gn, C1-Cn, L1-Ln, A1-An
 - Record metadata: credibility, jurisdiction, risks, gaps
 
-**Check**: Floors met, language≈60%/30%/10% (±10%), recency≥50% (≥70% AI/security/blockchain), diversity≥3 types, single<25%
+**Check**: Floors met, language≈60%/30%/10% (±10%), recency≥50% from last 3 years (≥70% for AI/security/blockchain), diversity≥3 types, single<25%
 
 ### 3. Generation
 Per item: statement, difficulty, answer array with variants, normalization rules, rationale with ≥1 [Ref: ID] (≥30% need ≥2 distinct types), fairness notes
@@ -121,7 +121,7 @@ Execute sequentially. If ANY fails, fix and re-validate ALL.
 1. **Counts**: G≥10, C≥5, L≥6, A≥12, Items=24-40, difficulty=20%/40%/40% (±5%)
 2. **Citations**: ≥70% items ≥1, ≥30% items ≥2 distinct
 3. **Language**: EN=50-70%, ZH=20-40%, Other=5-15%
-4. **Recency**: ≥50% last 3yr (≥70% AI/security/blockchain)
+4. **Recency**: ≥50% from last 3 years (≥70% for AI/security/blockchain)
 5. **Diversity**: ≥3 types, single<25%
 6. **Links**: 100% accessible OR archived
 7. **Cross-refs**: 100% [Ref: ID] resolve
@@ -139,7 +139,7 @@ Execute sequentially. If ANY fails, fix and re-validate ALL.
 | 1. Floors | G:X C:Y L:Z A:W I:N (F/I/A) | PASS/FAIL |
 | 2. Citation | X% ≥1, Y% ≥2 | PASS/FAIL |
 | 3. Language | EN:X% ZH:Y% Other:Z% | PASS/FAIL |
-| 4. Recency | X% last 3yr | PASS/FAIL |
+| 4. Recency | X% from last 3 years | PASS/FAIL |
 | 5. Diversity | N types, max P% | PASS/FAIL |
 | 6. Links | Y/X accessible | PASS/FAIL |
 | 7. Cross-refs | Y/X resolved | PASS/FAIL |
@@ -208,15 +208,15 @@ Execute sequentially. If ANY fails, fix and re-validate ALL.
 ### Glossary
 **Term** (ID: G#): Definition [Lang]
 - Stakeholders: [roles]
-- Notes: [risks, variants]
+- Notes: [risks, assumptions, variants]
 
 ### Codebase
 **Project** (ID: C#) (GitHub: owner/repo | License: Type)
-- Description, Maturity, Update, Security, Risks/Mitigations
+- Description, Maturity, Last Update, Security, Risks/Mitigations
 
 ### Literature
 **Title** (ID: L#) (Year) [Lang]
-- Authors, Type, Findings, Credibility, Jurisdiction, Impact, Risks
+- Authors, Type, Key Findings, Credibility, Jurisdiction, Impact, Risks
 
 ### APA Citations
 [APA 7th] [Lang]
@@ -271,7 +271,7 @@ Execute sequentially. If ANY fails, fix and re-validate ALL.
 - [ ] Language: ~60%EN/~30%ZH/~10%other (±10%)
 
 **Quality**:
-- [ ] Recency: ≥50% last 3yr (≥70% AI/security/blockchain)
+- [ ] Recency: ≥50% from last 3 years (≥70% for AI/security/blockchain)
 - [ ] Diversity: ≥3 types; single<25%
 - [ ] Citations: ≥70% ≥1; ≥30% ≥2 distinct
 

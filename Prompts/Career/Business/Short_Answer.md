@@ -181,7 +181,7 @@ Report format:
 
 ---
 
-## Terminology
+## Glossary: Terminology & Acronyms
 
 **G1. Business Model Canvas (BMC)**: 9-block business template (Segments, Value Props, Channels, Relationships, Revenue, Resources, Activities, Partnerships, Costs). [EN]
 
@@ -213,7 +213,7 @@ Report format:
 
 **G15. Process Mapping**: Workflow visualization (activities, decisions, flows). Optimization, automation. [EN]
 
-## Tools
+## Business & Architecture Tools
 
 **T1. Miro**: Visual collaboration (BMC, diagrams). Freemium-Enterprise. 80M+ users. Q4 2024. https://miro.com [EN]
 
@@ -225,7 +225,7 @@ Report format:
 
 **T5. LucidChart**: Cloud diagramming. Individual-Enterprise. 60M+ users. Q4 2024. https://www.lucidchart.com [EN]
 
-## Literature
+## Authoritative Literature & Case Studies
 
 **L1. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.** BMC; business-tech alignment.
 
@@ -239,7 +239,7 @@ Report format:
 
 **L6. Richardson, C. (2018). *Microservices Patterns*. Manning.** Decomposition, patterns.
 
-## APA Citations
+## APA Style Source Citations
 
 **A1. Osterwalder, A., & Pigneur, Y. (2010). *Business model generation: A handbook for visionaries, game changers, and challengers*. Wiley. [EN]**
 

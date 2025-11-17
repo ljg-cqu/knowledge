@@ -113,9 +113,9 @@ Russian APT29 compromised SolarWinds Orion via build system injection March-Dece
 
 ## Usage
 
-**Select events**: High-impact with clear lessons across 6 domains  
-**Answer 4 questions**: 150-200w total per event  
-**Track efficiently**: 5 events/month minimum (1 per key domain) for baseline awareness; 10 events/month maximum to avoid overload  
+**Select events**: High-impact with clear lessons across 6 domains
+**Answer 4 questions**: 150-200w total per event
+**Track efficiently**: 6 events/month minimum (1 per key domain) for baseline awareness; 10 events/month maximum to avoid overload
 **Focus on**: Actionable lessons > comprehensive documentation
 
 **Success**: Can read and extract decision-relevant insights in <90 seconds per event

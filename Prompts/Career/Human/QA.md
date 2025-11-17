@@ -11,7 +11,7 @@ Generate 6-12 decision-critical Q&As on human nature, psychology, behavior for i
 
 **Coverage**: 3-4 Decision-Critical Dimensions × 3-4 Core Contexts  
 **Dimensions (3-4 of 8)**: Behavioral Patterns | Cognitive & Emotional | Social & Relational | Health & Well-being  
-**Contexts (3-4 of 10)**: Workplace | Leadership | Personal Development | Daily Life
+**Contexts (3-4 core contexts)**: Workplace | Leadership | Personal Development | Daily Life
 
 ---
 
@@ -37,6 +37,14 @@ Generate 6-12 decision-critical Q&As on human nature, psychology, behavior for i
 | 6 | **Social & Relational** | Attachment, communication, conflict, empathy, social skills, influence, trust | Affects collaboration, retention, culture | 1-2 |
 | 8 | **Health & Well-being** | Physical/mental/emotional health, stress, resilience, flourishing, balance | Creates risk (burnout, attrition), retention | 1-2 |
 
+## Decision Criticality Framework (≥1 criterion)
+
+Include a Q&A only if it satisfies at least one:
+- **Blocks Decision**: Directly impacts hiring, promotion, team velocity, culture, or retention outcomes.
+- **Creates Risk**: Material threat (burnout, attrition, mis-hiring, conflict, psychological harm).
+- **Affects ≥2 Roles**: Multi-role impact (e.g., HR + Manager, Manager + Team, Leader + Coachee).
+- **Actively Evolving**: Human or organizational patterns shifting in the past 1–5 years (e.g., remote work, generational norms).
+
 ## Content Standards
 
 - **Evidence**: Peer-reviewed → theory → application → examples → quantified impact; cite with N/methodology
@@ -60,11 +68,11 @@ Generate 6-12 decision-critical Q&As on human nature, psychology, behavior for i
 | 7 | Development & Growth | Life stages, Growth curve | Erikson, Dweck mindset | `Growth = (Challenge-Skill) × Effort` |
 | 8 | Health & Well-being | PERMA, Stress-resilience | Positive psych, Resilience | `Well-being = (P+E+R+M+A)/5` |
 
-**Visuals**: Mermaid <120 nodes; tables with N/p-value/effect size; formulas with definitions
+**Visuals**: Mermaid <80 nodes; tables with N/p-value/effect size; formulas with definitions
 
 **Frameworks**: Big Five/OCEAN, MBTI, Maslow, SDT, EQ (Goleman), Attachment (Bowlby), Hofstede, Schwartz, Kohlberg, Erikson, Social Identity, Growth Mindset (Dweck), PERMA (Seligman)
 
-## Decision-Critical Contexts (3-4 of 10)
+## Decision-Critical Contexts (3-4 Core Contexts)
 
 | Context | Dimensions | Decision Impact |
 |---------|-----------|-----------------|
@@ -217,46 +225,16 @@ Generate 6-12 decision-critical Q&As on human nature, psychology, behavior for i
 ## References
 
 ### Glossary (≥8, only terms used)
-**G[ID]. [Term]** [EN/ZH] – [Definition]. **Related**: [IDs]. **Dim**: [#]
+**G1. Cognitive Architecture** [EN/认知架构] – Mental structure organizing perception, memory, reasoning; includes working memory (7±2), long-term storage, executive functions. N=500+ studies. **Related**: G2, G5. **Dim**: #1
+**G2. Habit Loop** [EN/习惯回路] – Cue → Routine → Reward. 40-45% daily actions are habits (N=10,000). 21-66 days to change (avg 66). **Related**: G1, G8. **Dim**: #2
+**G3. Intersectionality** [EN/交叉性] – Overlapping identities (race, gender, class) create unique privilege/oppression experiences. Crenshaw (1989). **Related**: G4, G8. **Dim**: #3
+**G4. Schwartz Values** [EN/施瓦茨价值观] – 10 universal values: Self-direction, Stimulation, Hedonism, Achievement, Power, Security, Conformity, Tradition, Benevolence, Universalism. 80+ countries. **Related**: G3, G8. **Dim**: #4
+**G5. Emotional Intelligence (EQ)** [EN/情商] – Perceive, understand, manage, use emotions. 4 branches (Mayer-Salovey). Predicts 58% job performance. **Related**: G1, G6. **Dim**: #5
+**G6. Attachment Style** [EN/依恋风格] – Secure (60%), Anxious (20%), Avoidant (15%), Disorganized (5%). Predicts adult relationships (r=0.50). **Related**: G3, G5. **Dim**: #6
+**G7. Erikson Stages** [EN/埃里克森阶段] – 8 psychosocial stages, each with crisis. Longitudinal N=1000+, 40yr. **Related**: G3, G8. **Dim**: #7
+**G8. PERMA** [EN] – Positive emotion, Engagement, Relationships, Meaning, Accomplishment. R²=0.65 life satisfaction. **Related**: G5, G7. **Dim**: #8
 
-### Tools (≥4)
-**T[ID]. [Name]** – **Purpose**: [measures]. **Validation**: [α, validity]. **Updated**: [YYYY-MM]. **URL**: [link]
-
-### Literature (≥6, canonical)
-**L[ID]. Author. (Year). *Title*. Publisher.** [Lang] – [Contribution]
-
-### Citations (≥10, APA 7th)
-**A[ID].** Author. (Year). Title. *Journal*, Vol(Issue), pages. [Lang] [Type]
-
----
-
-## Validation (12+6)
-
-| # | Check | Target | Result | Status |
-| 1-12 | [from Step 6] | [targets] | [actuals] | [PASS/FAIL] |
-
-| # | Review | Assessment | Status |
-| 1-6 | [Decision-Critical, Clarity, Accuracy, Completeness, Practicality, Correctness] | [evidence] | [PASS/FAIL] |
-
-**Status**: [X/12] + [Y/6] = [PASS/FAIL]
-**Issues**: [failures + root causes]
-**Remediation**: [fixes]
-**Cert**: Ready when 12/12 + 6/6
-```
-
-# Reference Examples
-
-## Glossary (8 Dimensions)
-**G1. Cognitive Architecture** [EN/认知架构] – Mental structure organizing perception, memory, reasoning; includes working memory (7±2), long-term storage, executive functions. N=500+ studies. **Related**: G2, G5. **Dim**: #1  
-**G2. Habit Loop** [EN/习惯回路] – Cue → Routine → Reward. 40-45% daily actions are habits (N=10,000). 21-66 days to change (avg 66). **Related**: G12, G18. **Dim**: #2  
-**G3. Intersectionality** [EN/交叉性] – Overlapping identities (race, gender, class) create unique privilege/oppression experiences. Crenshaw (1989). **Related**: G15, G22. **Dim**: #3  
-**G4. Schwartz Values** [EN/施瓦茨价值观] – 10 universal values: Self-direction, Stimulation, Hedonism, Achievement, Power, Security, Conformity, Tradition, Benevolence, Universalism. 80+ countries. **Related**: G7, G25. **Dim**: #4  
-**G5. Emotional Intelligence (EQ)** [EN/情商] – Perceive, understand, manage, use emotions. 4 branches (Mayer-Salovey). Predicts 58% job performance. **Related**: G9, G17. **Dim**: #5  
-**G6. Attachment Style** [EN/依恋风格] – Secure (60%), Anxious (20%), Avoidant (15%), Disorganized (5%). Predicts adult relationships (r=0.50). **Related**: G11, G19. **Dim**: #6  
-**G7. Erikson Stages** [EN/埃里克森阶段] – 8 psychosocial stages, each with crisis. Longitudinal N=1000+, 40yr. **Related**: G14, G21. **Dim**: #7  
-**G8. PERMA** [EN] – Positive emotion, Engagement, Relationships, Meaning, Accomplishment. R²=0.65 life satisfaction. **Related**: G10, G16, G24. **Dim**: #8
-
-## Tools
+### Tools
 **T1. Big Five (BFI)** – OCEAN traits. α=0.75-0.90, r=0.80-0.90. 2024-06. Free. 50M+. https://openpsychometrics.org/tests/IPIP-BFFM/  
 **T2. MBTI** – Type indicator. r=0.70-0.85. 2024-09. $50-200. 50M/yr. https://www.myersbriggs.org/  
 **T3. EQ-i 2.0** – EQ inventory. α=0.69-0.86. 2024-08. $50-150. 20+ countries. https://www.mhs.com/  

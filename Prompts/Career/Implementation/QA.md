@@ -30,6 +30,6 @@
 **Answer**: Problem → Approach → Code → Metrics → Edge cases
 **Code**: [runnable]
 **Tests**: [edge cases]
-**Benchmarks**: | Approach | Time | Space | ops/sec |
+**Benchmarks**: | Approach | Time | Space | ops/sec | Allocs |
 **Analysis**: | Approach | Pros | Cons | Context |
 ```

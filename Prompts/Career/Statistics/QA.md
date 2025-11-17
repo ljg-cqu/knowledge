@@ -49,12 +49,14 @@ Generate **4–6 decision-critical scenario-based questions** testing statistica
 
 **Format**: `Author, A. (Year). *Title*. Publisher. [EN]` | Inline: `[Ref: ID]` (G#=Glossary, T#=Tool, L#=Textbook, A#=Citation)
 
-**Distribution**: EN 60–80% | ZH 10–30% | Other 5–15% | **Source Types** (≥4): Textbooks, papers, software docs, case studies
+**Distribution**: EN 60–80% | ZH 10–30% | Other 5–15%
+
+**Source Types** (≥3): Textbooks, papers, software docs, case studies
 
 ### Quality Gates (fail ANY → stop/fix/revalidate ALL)
 
 1. **Math Accuracy**: 100% formulas verified
-2. **Source Diversity**: ≥4 types; max 30%/type
+2. **Source Diversity**: ≥3 types; max 40%/type
 3. **Per-Topic Evidence**: Each has ≥2 texts + ≥1 applied ref + ≥1 tool
 4. **Software Docs**: Version, URL, capabilities, update (≤24mo)
 5. **Links**: 100% accessible/archived
@@ -112,7 +114,7 @@ Distribute 4–6 across 4 decision-critical topics (25%F/50%I/25%A). Each topic:
 9. Citations (≥1; ≥2 for A)
 10. Artifact (≥60%): plot, decision tree, derivation, table
 
-**Batch Self-Check** (per 2–3): Application-based | ≥2 reasoning signals | 150–250 words | Concrete insight | ≥2 dimensions | ≥2/3 worked examples | ≥2/3 with ≥1 cite (≥1/3 with ≥2) | Difficulty matches level | Assumptions explicit
+**Batch Self-Check** (per 2–3): Application-based | ≥2 reasoning signals | 150–250 words | Concrete insight | ≥2 dimensions | ≥2/3 worked examples | ≥70% with ≥1 cite (≥30% with ≥2) | Difficulty matches level | Assumptions explicit
 
 ### Step 4: Create Visuals (30–45 min) — ≥1 diagram + ≥1 table per topic
 
@@ -186,7 +188,7 @@ Distribute 4–6 across 4 decision-critical topics (25%F/50%I/25%A). Each topic:
 ## VI. Output Format (Minimal Viable)
 
 ### A. TOC
-1. Topic Overview | 2. Q&A by Topic (4) | 3. References (Glossary, Tools, Textbooks, Citations) | 4. Evaluation Materials | 5. Validation Report
+1. Topic Overview | 2. Q&A by Topic (4–6) | 3. References (Glossary, Tools, Textbooks, Citations) | 4. Evaluation Materials | 5. Validation Report
 
 ### B. Topic Overview
 **Total**: [4–6] | **Difficulty**: [X]F ([Y]%) / [X]I ([Y]%) / [X]A ([Y]%) | **Coverage**: 4 decision-critical topics
@@ -194,10 +196,10 @@ Distribute 4–6 across 4 decision-critical topics (25%F/50%I/25%A). Each topic:
 | # | Topic | Range | Count | Mix | Decision Criticality | Artifacts |
 |---|-------|-------|-------|-----|---------------------|-----------|
 | 1 | Inference & Hypothesis Testing | Q1–Q2 | 1–2 | 1F/1I or 1I/1A | Blocks decision: p-value misuse, power analysis | 1 diagram+table |
-| 2 | Experimental Design & Causal | Q3 | 1–2 | 1F/1I or 1I/1A | Blocks decision: confounding, RCT vs. observational | 1 diagram+table |
+| 2 | Experimental Design & Causal Inference | Q3 | 1–2 | 1F/1I or 1I/1A | Blocks decision: confounding, RCT vs. observational | 1 diagram+table |
 | 3 | Regression & Modeling | Q4–Q5 | 1–2 | 1F/1I or 1I/1A | Creates risk: assumption violations, multicollinearity | 1 diagram+table |
 | 4 | Applied Statistics & Interpretation | Q6 | 1–2 | 1F/1I or 1I/1A | Affects stakeholders: actionable insights, communication | 1 diagram+table |
-| | **Total** | | **4–6** | **1F/3I/2A** | **100% decision-critical** | **4+4** |
+| | **Total** | | **4–6** | **25%F/50%I/25%A** | **100% decision-critical** | **4+4** |
 
 Legend: F=foundational | I=intermediate | A=advanced
 
@@ -241,7 +243,7 @@ Legend: F=foundational | I=intermediate | A=advanced
 
 **Q1: A clinical trial with n=45 shows treatment mean=12 (SD=8) vs. control mean=8 (SD=7). Two-sample t-test yields p=0.04, Cohen's d=0.53. Original power analysis assumed d=0.8 for n=40. How should you interpret these results and what additional analyses would strengthen the conclusion?**
 
-**Difficulty**: I | **Topic**: Statistical Inference | **Decision Criticality**: Blocks decision (p-value misuse, power analysis)
+**Difficulty**: I | **Topic**: Inference & Hypothesis Testing | **Decision Criticality**: Blocks decision (p-value misuse, power analysis)
 
 **Key Insight**: Distinguish statistical significance from practical significance; recognize underpowered studies. p=0.04 barely crosses α=0.05 while d=0.53 falls short of design d=0.8, raising robustness questions.
 

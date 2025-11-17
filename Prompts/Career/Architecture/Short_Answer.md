@@ -20,13 +20,13 @@ Generate 25-30 interview Q&A pairs for senior/architect/expert roles demonstrati
 |--------|-------------|
 | **Count** | 25-30 (20% F / 40% I / 40% A) |
 | **Length** | 150-300 words (code excluded) |
-| **Structure** | Pattern → rationale → code → trade-offs → metrics |
+| **Structure** | Context → Pattern → Reasoning → Trade-offs → Code → Metrics |
 | **Citations** | ≥1 each; ≥2 complex |
-| **Per Cluster** | Diagram + code + table + formula |
+| **Per Dimension (Cluster)** | Diagram + code + table + formula |
 
 ## Coverage (6 Dimensions - MECE)
 
-Cover all with 4-6 Q&As each (mutually exclusive, complete):
+Cover all with 4-5 Q&As each (mutually exclusive, complete):
 
 1. **Structural**: Components, modularity, coupling, boundaries
 2. **Behavioral**: Events, state, orchestration, error handling
@@ -57,7 +57,7 @@ Cover all with 4-6 Q&As each (mutually exclusive, complete):
 
 **Formats**: Diagrams (Mermaid), code blocks, tables, formulas
 
-**Per Dimension**:
+**Per Dimension (Cluster)**:
 
 | Dimension | Diagram | Code | Metric |
 |-----------|---------|------|--------|
@@ -91,7 +91,7 @@ Cover all with 4-6 Q&As each (mutually exclusive, complete):
 
 **Goal**: MECE coverage (6 dimensions, 25-30 Q&As, 20/40/40% F/I/A)
 
-**Actions**: Select 5-6 clusters → Allocate 4-6 Q&As each → Assign difficulty (1F/2I/2A per cluster)
+**Actions**: Define 6 clusters (one per dimension) → Allocate 4-5 Q&As each → Assign difficulty (1F/2I/2A per cluster)
 
 **Checks**: Total 25-30; Difficulty 20/40/40% (±5%); All 6 dimensions; Zero overlap; Multiple perspectives
 
@@ -107,7 +107,7 @@ Cover all with 4-6 Q&As each (mutually exclusive, complete):
 
 **Goal**: Scenario-based (≥70% "How/When...") with actionable answers
 
-**Each Answer**: 150-300 words; ≥1 citation (≥2 complex); pattern → rationale → code → metrics; 10-30 line code; quantified trade-offs; ≥2 alternatives with costs/benefits/risks
+**Each Answer**: 150-300 words; ≥1 citation (≥2 complex); context → pattern → reasoning → trade-offs → code → metrics; 10-30 line code; quantified trade-offs; ≥2 alternatives with costs/benefits/risks
 
 **Self-Review**: Clarity, accuracy, completeness, logic, practicality, fairness
 
@@ -115,7 +115,7 @@ Cover all with 4-6 Q&As each (mutually exclusive, complete):
 
 ## 4. Create Artifacts
 
-**Per Cluster**: Mermaid diagram (<120 nodes); 10-30 line code; comparison table; metric formula
+**Per Dimension (Cluster)**: Mermaid diagram (<120 nodes); 10-30 line code; comparison table; metric formula
 
 **Checks**: All complete; diagrams render; code compiles; tables/formulas valid
 
@@ -179,6 +179,7 @@ Cover all with 4-6 Q&As each (mutually exclusive, complete):
 
 ## Topic Areas
 | Cluster | Range | Count | Difficulty |
+|---------|-------|-------|------------|
 | Structural | Q1-Q5 | 5 | 1F/2I/2A |
 [6 clusters, 25-30 Q&As, 20/40/40% F/I/A]
 

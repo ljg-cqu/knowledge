@@ -71,7 +71,7 @@ Execute sequentially; verify at each step.
    - Literature ≥6: EN (Cagan, Olsen, Torres, Perri, Patton, Klement); ZH (俞军, 梁宁, 苏杰)
    - Citations ≥12: Assign IDs (G#/T#/L#/A#); tag language/year/type
    
-   **Verify**: Counts, language 60/30/10%, recency ≥50% last 3yr, ≥3 types.
+   **Verify**: Counts; language within EN 50-70%, ZH 20-40%, Other 5-15% (target 60/30/10); recency ≥50% last 3yr; ≥3 types.
 
 3. **Generate**: Write unambiguous blanks; define answer arrays; add 1–2 sentence rationales citing [Ref: ID]. **Verify** every 5: clarity, citations, answers.
 

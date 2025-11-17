@@ -4,7 +4,7 @@ Generate **4-6 decision-critical system analysis Q&As** for informed decision-ma
 
 **Scope**: Production-grade systems (>10K rps, >1TB data, multi-team, distributed, regulated)
 **Output**: Decision-critical Q&As with multi-viewpoint analysis, quantified metrics, ≥2 alternatives, diagrams, citations
-**Success**: 12/12 validation PASS | ≥5 core stakeholder roles | 4-6 decision-critical phases × viewpoints × perspectives
+**Success**: 12/12 validation PASS | ≥5 core stakeholder roles | 4-5 decision-critical phases × viewpoints × perspectives
 **Cadence**: Bi-weekly | Effort: 4-6 hours | Expires: 2 weeks from generation
 
 ---
@@ -130,7 +130,7 @@ Create: Glossary ≥10 (Tech 30%, Biz 25%, Eco 15%, Reg 15%, Ops 15%) | Tools �
 
 Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100% exist. Remove orphans. Validate all URLs.
 
-**Verify**: G≥25, T≥12, F≥8, L≥12, A≥20 | 100% `[Ref: ID]` resolved | 0 broken URLs | 60/30/10% lang (±10%) | All 5 viewpoints | No orphans
+**Verify**: G≥10, T≥6, F≥5, L≥6, A≥8 | 100% `[Ref: ID]` resolved | 0 broken URLs | 60/30/10% lang (±10%) | All 5 viewpoints | No orphans
 
 ## 6. Validate (12 Streamlined Checks)
 
@@ -323,7 +323,7 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 **G24. DORA Metrics** [EN] – Operational – Four key metrics: deployment frequency, lead time, change failure rate, MTTR. Related: DevOps. Used in: Operations, Evolution  
 **G25. Technical Debt** [EN] – Technical/Operational – Cost of rework from quick solutions vs better approaches. Related: Tech Debt Ratio. Used in: Maintenance, Evolution
 
-## Tools (≥2 per viewpoint: Technical/Business/Ecosystem/Regulatory/Operational)
+## Tools (≥6, Decision-Critical; ≥1 per viewpoint: Technical/Business/Ecosystem/Regulatory/Operational)
 
 **Technical**:  
 **T1. Mermaid** [EN] – Technical – Text-based diagrams (flowchart, sequence, C4, ER). GitHub-native. Updated: 2024-10. Pricing: Free/OSS. Adoption: GitHub official. https://mermaid.js.org  
@@ -347,7 +347,7 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 **T11. Grafana** [EN] – Operational – Observability dashboards, alerting. Updated: 2024-11. Pricing: Free/Cloud/Enterprise. Adoption: 1M+ active installs. https://grafana.com  
 **T12. PagerDuty** [EN] – Operational – Incident response, on-call management. Updated: 2024-11. Pricing: $21+/user/mo. Adoption: 19K+ customers. https://www.pagerduty.com
 
-## Frameworks (≥8, Analysis Methods Across Viewpoints)
+## Frameworks (≥5, Analysis Methods Across Viewpoints)
 
 **Business Analysis**:  
 **F1. Business Model Canvas (BMC)** [EN] – Business – Purpose: Visualize business model in 9 blocks. Key Elements: Value Proposition, Customer Segments, Channels, Revenue Streams, Cost Structure, Key Resources, Activities, Partnerships. Output: One-page business model. Source: https://www.strategyzer.com/library/the-business-model-canvas  
@@ -391,7 +391,7 @@ Populate all sections (G/T/F/L/A). Extract all `[Ref: ID]` from Q&As. Verify 100
 **Cross-Domain**:  
 **L12. Bass, L., Clements, P., & Kazman, R. (2021). *Software Architecture in Practice* (4th). Addison-Wesley.** [EN] – Technical/Operational – Relevance: Quality attributes, architecture evaluation, ATAM. Key Concepts: QAS, ADD, Architecture tactics
 
-## Citations (≥20, APA 7th, 60/30/10% EN/ZH/Other, ≥30% Business/Regulatory)
+## Citations (≥8, APA 7th, 60/30/10% EN/ZH/Other, ≥30% Business/Regulatory)
 
 **Technical (40%)**:  
 **A1.** Evans, E. (2003). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley. [EN]  

@@ -98,7 +98,7 @@ Distribute 6–12 across 6 topics (25%F/50%I/25%A). Each topic: 1–2 Q&A, all d
 9. Word count: Sample 5, 100% within 150–250
 10. Key insights: 100% concrete (specific dilemma/tension)
 11. Per-topic evidence: 6/6 topics have ≥1 authoritative + ≥1 tool
-12. Judgment ratio: ≥70% scenario-based + decision-critical
+12. Judgment ratio: 100% scenario-based (all Q&As)
 
 ### Step 7: Final Review
 **Questions**: Clarity (single ask) | Signal (judgment not trivia) | Depth (trade-offs) | Realism (senior+ PM) | Discriminative (application over recall) | Alignment (difficulty matches seniority)
@@ -115,14 +115,14 @@ Distribute 6–12 across 6 topics (25%F/50%I/25%A). Each topic: 1–2 Q&A, all d
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion | __/__ satisfy | PASS/FAIL |
 | 3 | Citations | ≥70% have ≥1, ≥40% have ≥2 | __%≥1, __%≥2 | PASS/FAIL |
 | 4 | Language | EN:60-70%, ZH:20-30%, Other:5-10% | EN:__%, ZH:__%, Other:__% | PASS/FAIL |
-| 5 | Recency | ≥50% from 2yrs | __% from 2yrs | PASS/FAIL |
+| 5 | Recency | ≥50% from last 2yrs | __% from last 2yrs | PASS/FAIL |
 | 6 | Source Types | ≥2 types, max 50% | __ types; max __% | PASS/FAIL |
 | 7 | Links | 100% accessible/archived | __/__ accessible | PASS/FAIL |
 | 8 | Cross-Refs | 100% [Ref: ID] resolve, no orphans | __/__ resolved | PASS/FAIL |
 | 9 | Word Count | 100% within 150-250 | __ sampled: __ compliant | PASS/FAIL |
 | 10 | Key Insights | 100% concrete (dilemma/tension) | __/__ concrete | PASS/FAIL |
 | 11 | Per-Topic Evidence | 6/6 have ≥1 authoritative + ≥1 tool | __/6 | PASS/FAIL |
-| 12 | Judgment Ratio | ≥70% scenario-based + decision-critical | __%scenario-based | PASS/FAIL |
+| 12 | Judgment Ratio | 100% scenario-based (all Q&As) | __%scenario-based | PASS/FAIL |
 
 ## V. Question Quality (fails ≥2 = rewrite/replace)
 
@@ -155,7 +155,7 @@ Distribute 6–12 across 6 topics (25%F/50%I/25%A). Each topic: 1–2 Q&A, all d
 | 4 | Stakeholder Dynamics | Q7–Q8 | 1–2 | F/I or I/A | 1 diagram+table | Affects stakeholders, Actively evolving |
 | 5 | Resource Constraints | Q9–Q10 | 1–2 | F/I or I/A | 1 diagram+table | Blocks decision, Creates risk |
 | 6 | Team & Morale | Q11–Q12 | 1–2 | F/I or I/A | 1 diagram+table | Affects stakeholders, Adoption barrier |
-| | **Total** | | **6–12** | **3F/3–6I/2–3A** | **6** | **100% ≥1 criterion** |
+| | **Total** | | **6–12** | **25%F/50%I/25%A (±5%)** | **6** | **100% ≥1 criterion** |
 
 Legend: F=execution | I=strategy/trade-offs | A=portfolio/program/organization
 

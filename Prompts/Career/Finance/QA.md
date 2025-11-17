@@ -105,15 +105,15 @@ Generate **6–12 decision-critical Q&A pairs** for informed financial decision-
 
 ## Examples by Difficulty
 
-### F (20%): Explain + Apply
+### F (25%): Explain + Apply
 **Q**: What is CAPM and when is it most appropriate?  
 **A** (~150w): CAPM [Ref: G1] calculates expected return: E(R) = Rf + β(Rm - Rf), where Rf is risk-free rate, β is systematic risk, and Rm is market return [Ref: L1]. Use for: (1) Cost of equity estimation in WACC [Ref: G2], (2) Required returns for capital budgeting [Ref: L2], (3) Performance evaluation vs. risk-adjusted benchmark. **Limitations**: Assumes single-period, homogeneous expectations, perfect markets, mean-variance optimization [Ref: L3]. Fails in emerging markets (low correlation), private equity (illiquid), or when specific risk dominates. Beta unstable in small-cap, high-growth stocks [Ref: A5]. Multi-factor models (Fama-French) often superior [Ref: L4].
 
-### I (40%): Diagnose + Apply Multiple
+### I (50%): Diagnose + Apply Multiple
 **Q**: Portfolio: 60% equity (β=1.2), 40% bonds (duration=7yrs). Fed signals +200bps hikes. Sharpe ratio 0.85. Adjust allocation?  
 **A** (~180w): Rising rates impact both [Ref: G11, G12]: (1) Bonds: 7-yr duration → ~14% price decline for +200bps [Ref: L1]; (2) Equities: Higher discount rates compress valuations, β>1 amplifies volatility [Ref: G6]. Current Sharpe 0.85 is solid [Ref: G5] but vulnerable. **Approach**: Scenario analysis [Ref: T2] modeling: +100/+200/+300bps over 12-18mo. Rebalance to: (1) Reduce duration to 3-4yrs via short-term bonds/TIPS [Ref: L3]; (2) Lower equity to 50%, increase cash/alternatives to 10-15%; (3) Tilt equity to value/financials (benefit from rate hikes) [Ref: L5]; (4) Consider rate hedges (receiver swaps, bond puts) [Ref: G8]. **Limitations**: Timing risk—if Fed pivots, miss rally [Ref: A8]. Transaction costs 10-25bps [Ref: T4]. Alternatives illiquid. Need 3-6mo [Ref: L2].
 
-### A (40%): Synthesize + Justify
+### A (25%): Synthesize + Justify
 **Q**: $500M AUM, tracking error 3.2% vs. benchmark, alpha -0.3% (3yr). CIO wants "more active management." Respond.  
 **A** (~250w): Negative alpha + 3.2% tracking error signals "closet indexing" inefficiency [Ref: L4, A10]. High fees for index-like returns. Two paths: truly active (6-8% TE, target 2-3% alpha) or passive (0.2% TE, lower fees) [Ref: L3, A12]. Current position unsustainable [Ref: G10]. **Response**: "Data shows neither fish nor fowl. Need decisive choice: genuine active or embrace passive." **Analysis**: (1) Attribution analysis [Ref: T1] by sector/factor—where alpha leaks? (2) Holdings-based TE [Ref: T3]: are high-conviction bets sized appropriately? (3) Turnover: is portfolio rebalanced to maintain active weights? [Ref: L5] (4) Benchmark fit [Ref: A11]. **Recommendations**: 3-phase [Ref: L2]: (1) M1-3: Full attribution + manager review; identify skill vs. luck [Ref: T1, T3]; (2) M4-6: If skill exists, increase conviction (30-50 holdings, 6-8% TE, concentrated sectors) [Ref: L4]; if not, transition to factor/smart beta (fees 15-40bps) [Ref: L6]; (3) M7-12: Monitor Sharpe, Information Ratio quarterly [Ref: G5, A9]. **Alternative**: Multi-manager core-satellite (passive core 70%, active satellites 30%) balances cost-alpha [Ref: L7]. **When NOT**: Market regime shifts (volatility, liquidity) may temporarily hurt active [Ref: A10]. **Limitations**: Active requires 3-5yr to prove skill [Ref: L4, A12]. Transition costs 30-80bps [Ref: T4]. Governance/career risk if underperforms year 1-2. Factor models have 15-25% explanatory gaps [Ref: L3].
 

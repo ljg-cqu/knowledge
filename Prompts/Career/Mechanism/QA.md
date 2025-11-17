@@ -12,7 +12,7 @@ Generate 6-8 decision-critical mechanism-analysis questions testing senior+ PM (
 
 **Exclude**: Trivia, surface descriptions, tool details, generic practices.
 
-**Constraints**: 150-300 words/answer | ≥70% with ≥1 citation (≥30% with ≥2) | 100% mechanism-focused | Senior+ only.
+**Constraints**: 150-300 words/answer | ≥80% with ≥1 citation (≥50% with ≥2) | 100% mechanism-focused | Senior+ only.
 
 **Assumptions**: Core mechanism knowledge; user provides domain context or accepts generic scenarios; quantitative models state assumptions.
 
@@ -20,7 +20,7 @@ Generate 6-8 decision-critical mechanism-analysis questions testing senior+ PM (
 
 ## II. Requirements & Gates
 
-**Floors**: Q&A: 6-8 (25%F/50%I/25%A±5%) | 150-300 words | ≥2 causal/feedback each | Citations: ≥80%≥1, ≥50%≥2 | Mechanisms (decision-critical): Growth(1-2), Retention(1-2), Monetization(1), User Behavior(1-2), Market(1), System(1) | Refs: G≥8, T≥4, L≥5(≥1 ZH), A≥8 | Visuals: ≥1 diagram+table per mechanism type | 
+**Floors**: Q&A: 6-8 (25%F/50%I/25%A±5%) | 150-300 words | ≥2 causal/feedback each | Citations: ≥80%≥1, ≥50%≥2 | Mechanisms (decision-critical, coverage 4-6 types): Growth(1-2), Retention(1-2), Monetization(1), User Behavior(1-2), Market(1), System(0-1) | Refs: G≥8, T≥4, L≥5(≥1 ZH), A≥8 | Visuals: ≥1 diagram+table per mechanism type
 
 **Citations**: APA 7th+tag: `Author, A. (Year). *Title*. Publisher. [EN]` | Inline: `[Ref: G#/T#/L#/A#]` | Lang: EN 60-70%, ZH 20-30%, Other 5-10% | Types: ≥2 (Frameworks/Research/Cases); no type >40%
 
@@ -70,7 +70,7 @@ Distribute 6-8 across 4-6 decision-critical types (25%F/50%I/25%A). Each: 1-2 Q&
 8. **Cite**: ≥1 [Ref: ID]; flag uncertainty
 9. **Artifact**: Diagram/chart
 
-**Self-Check (per batch)**: Decision-critical | Mechanism-focused | ≥2 causal/loops | 150–300 words | Clear causality | ≥2/3 ≥1 cite (≥1/3 ≥2) | Difficulty matches
+**Self-Check (per batch)**: Decision-critical | Mechanism-focused | ≥2 causal/loops | 150–300 words | Clear causality | ≥80% ≥1 cite (≥50% ≥2) | Difficulty matches
 
 ### Step 4: Visuals (Minimal: ≥1 diagram+table per type)
 
@@ -94,7 +94,7 @@ Distribute 6-8 across 4-6 decision-critical types (25%F/50%I/25%A). Each: 1-2 Q&
 
 | # | Check | Criteria | Measure |
 |---|-------|----------|----------|
-| 1 | Floors | G≥8, T≥4, L≥5, A≥8, Q:6-8, 25/50/25%±5 | Count |
+| 1 | Floors | G≥8, T≥4, L≥5(≥1 ZH), A≥8, Q:6-8, 25/50/25%±5 | Count |
 | 2 | Decision Criticality | 100% satisfy ≥1 criterion | Review |
 | 3 | Citations | ≥80%≥1, ≥50%≥2 | Calc % |
 | 4 | Lang | EN:60-70%, ZH:20-30%, Other:5-10% | Calc % |
@@ -154,8 +154,8 @@ Fail ≥2 = rewrite.
 | 3 | Monetization | Q5 | 1 | 1I | Blocks/Risk | 1 diagram+table |
 | 4 | User Behavior | Q6–7 | 1-2 | 1I/1A or 1I | Blocks/Stakeholders | 1 diagram+table |
 | 5 | Market | Q8 | 1 | 1I | Risk/Evolving | 1 diagram+table |
-| 6 | System | Optional | 0-1 | 1A | Blocks/Risk | 1 diagram |
-| | **Total** | | **6-8** | **2F/4I/2A** | **100% ≥1 criterion** | **6-8** |
+| 6 | System | Optional | 0-1 | 1A | Blocks/Risk | 1 diagram+table |
+| | **Total** | | **6-8** | **25/50/25%±5** | **100% ≥1 criterion** | **6-8** |
 
 **Q&A**: **Type [#]: [Title]** | **Q[#]**: [Question] | **Difficulty**: [F/I/A] | **Decision Criticality**: [Criterion] | **Key Insight**: [1 sent—core causal/feedback] | **Answer** (150–300): Mech [Ref: G#/A#] | ≥2 causal | Flow (input→process→output→feedback) | Quantitative (rates/coef/thresholds) | +/- loops | Leading/lagging | ≥1 [Ref: ID] | Limits | **Artifact**: Diagram/chart
 

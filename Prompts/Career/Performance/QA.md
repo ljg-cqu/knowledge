@@ -155,10 +155,6 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ### Step 6: Validate Against All 12 Quality Gates
 
-**Execute**: Run through Gates #1-#12 systematically  
-**Document**: Create validation table showing PASS/FAIL with evidence  
-**Fix**: Address any FAIL immediately; re-validate
-
 ## Output Format (Minimal)
 
 ```markdown
@@ -166,9 +162,9 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ## Contents (Minimal Navigation)
 1. **[Executive Summary](#executive-summary)**
-   - Insights (2-3 high-impact news items)
-   - Dashboard (Phase | News | Decision | Timeline)
-2. **[Q&A by Phase](#qa-by-phase)** (6-12 total, 2-3 clusters)
+   - Insights (2-3 high-impact performance insights)
+   - Dashboard (Dimension | Phase | Decision | Timeline)
+2. **[Q&A by Cluster](#qa-by-cluster)** (6-12 total, 2-3 clusters)
    - [Cluster 1: Latency Optimization](#cluster-1-latency-optimization) (Q1-Q4)
    - [Cluster 2: Throughput Scaling](#cluster-2-throughput-scaling) (Q5-Q8)
    - [Cluster 3: Database Performance](#cluster-3-database-performance) (Q9-Q12)
@@ -202,13 +198,13 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 ## Q&A by Cluster
 
-### Cluster 1: [Name] (Q1-Q5)
+### Cluster 1: [Name] (Q1-Q4)
 
 #### Q1: [Specific Scenario-Based Question]
 **Difficulty**: [Foundational/Intermediate/Advanced] | **Dimension**: [Latency/Throughput/Scalability/Resources] | **Phase**: [Measure/Analyze/Optimize/Validate]  
 **Key Insight**: [One sentence: "X optimization achieved Y% improvement at Z cost"] [Ref: ID]
 
-**Answer** (150-300 words):  
+**Answer** (120-200 words):  
 [SLO → Measure → Bottleneck → Optimize → Validate → Quantified Impact with [Ref: ID]]
 
 **Practical Element** (5-30 lines):
@@ -254,12 +250,12 @@ Generate 6-12 decision-critical Q&As for performance engineering—minimal viabl
 
 | # | Gate | Requirement | Status | Evidence |
 |---|------|-------------|--------|----------|
-| 1 | Quantity | 25-30 Q&As | PASS | 28 Q&As generated |
-| 2 | MECE Coverage | 16/16 cells | PASS | Coverage matrix: all cells ≥1 Q&A |
+| 1 | Decision Criticality | 100% satisfy ≥1 criterion | PASS | All Q&As tagged Blocks/Risk/Roles/Action/Quantified |
+| 2 | Quantity | 6-12 Q&As | PASS | 8 Q&As generated |
 | ... | ... | ... | ... | ... |
-| 20 | Self-Review | All standards met | PASS | Reviewed against all quality standards |
+| 12 | Clarity | All acronyms defined | PASS | Glossary G1-G8 covers all terms |
 
-**Summary**: All 20 Quality Gates PASS. Ready for use.
+**Summary**: All 12 Quality Gates PASS. Ready for use.
 ```
 
 ## Example (API Latency Optimization)

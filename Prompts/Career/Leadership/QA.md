@@ -28,8 +28,8 @@ Generate 6–12 decision-critical leadership Q&As (senior+, 5-15 yrs) for inform
 **Topics (Decision-Critical Only)**: 3–4 topics × 1–3 Q&As each
 - Strategic Leadership (1–2): Blocks decision, Affects ≥2 stakeholders
 - People & Retention (1–2): Creates risk, Actively evolving (remote/hybrid/AI)
-- Change & Ambiguity (1–2): Blocks decision, High adoption barrier
-- Culture & Trust (1–2): Creates risk, Affects ≥2 stakeholders
+- Change & Ambiguity (2–3): Blocks decision, High adoption barrier
+- Culture & Trust (2–3): Creates risk, Affects ≥2 stakeholders
 - *(Optional)* Communication or Org Design (if decision-critical)
 
 **References** (proportional 60% reduction): Glossary ≥8 | Tools ≥3 | Literature ≥4 (≥1 ZH) | Citations ≥6 APA 7th + [EN]/[ZH] tags
@@ -114,9 +114,9 @@ Distribute 6–12 across 3–4 decision-critical topics (25%F/50%I/25%A).
 5. **Trade-offs** (≥2 alternatives)
 6. **People/stakeholder impact**
 7. **Success criteria**
-8. **Citations** (≥1 [Ref: ID])
+8. **Citations** (≥1 [Ref: ID] for ≥70% of Q&As; prefer ≥1 per answer)
 
-**Batch Self-Check** (per 2–3): Scenario-based ✓ | Tests ≥2 signals ✓ | 150–250 words ✓ | Decision-critical ✓ | ≥2 dimensions ✓ | ≥1 cite ✓ | Difficulty matches content ✓
+**Batch Self-Check** (per 2–3): Scenario-based ✓ | Tests ≥2 signals ✓ | 150–250 words ✓ | Decision-critical ✓ | ≥2 dimensions ✓ | ≥1 cite (aim ≥70% overall) ✓ | Difficulty matches content ✓
 
 ### Step 4: Create Visuals (Compressed—≥2 diagrams + ≥1 table total)
 
@@ -143,7 +143,7 @@ Distribute 6–12 across 3–4 decision-critical topics (25%F/50%I/25%A).
 | 9  | Word Count             | 100% within 150-250                         | Sample all |
 | 10 | Key Insights           | 100% concrete (specific dilemma/tension)    | Review all |
 | 11 | Frameworks             | ≥80% correct + cited                        | Review usage |
-| 12 | Judgment Ratio         | ≥70% scenario-based                         | % testing judgment |
+| 12 | Judgment Ratio         | 100% scenario-based                         | % testing judgment |
 
 ### Step 6: Final Review
 
@@ -168,7 +168,7 @@ Distribute 6–12 across 3–4 decision-critical topics (25%F/50%I/25%A).
 | 2 | People & Retention      | Q3–Q4   | 1–2   | 0–1F/1–2I/0–1A | 1 diagram |
 | 3 | Change & Ambiguity      | Q5–Q7   | 2–3   | 1F/1–2I/1A | 1 table |
 | 4 | Culture & Trust         | Q8–Q10  | 2–3   | 0–1F/1–2I/1–2A | 1 table |
-|   | **Total**               |         | **6–12** | **2–3F/5I/2–3A** | **≥2 diagrams + ≥1 table** |
+|   | **Total**               |         | **6–12** | **≈25%F/50%I/25%A (±5%)** | **≥2 diagrams + ≥1 table** |
 
 Legend: F=execution | I=strategic/systemic | A=transformation/culture | **Decision-Critical Only**
 
@@ -184,7 +184,7 @@ Legend: F=execution | I=strategic/systemic | A=transformation/culture | **Decisi
 
 **Key Insight**: [1 sentence—specific leadership dilemma/tension]
 
-**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps (3–5 bullets) | Trade-offs/alternatives | People/stakeholder impact | Success criteria | ≥1 [Ref: ID]
+**Answer** (150–250 words): Framework [Ref: G#/A#] | ≥2 dimensions | Concrete steps (3–5 bullets) | Trade-offs/alternatives | People/stakeholder impact | Success criteria | ≥1 [Ref: ID] (target ≥70% of Q&As with cites)
 
 **Artifact** *(optional)*: Diagram, matrix, or roadmap
 
@@ -224,19 +224,19 @@ Legend: F=execution | I=strategic/systemic | A=transformation/culture | **Decisi
 | 9  | Word Count             | __ sampled: __ compliant            | 100% (150-250)                              | | PASS/FAIL |
 | 10 | Key Insights           | __/__ concrete                      | 100%                                        | | PASS/FAIL |
 | 11 | Frameworks             | __/__ correct+cited                 | ≥80%                                        | | PASS/FAIL |
-| 12 | Judgment Ratio         | __% scenario-based                  | ≥70%                                        | | PASS/FAIL |
+| 12 | Judgment Ratio         | __% scenario-based                  | 100%                                        | | PASS/FAIL |
 
 ## VII. Example (Decision-Critical Leadership Q&A)
 
 **Q1: How would you lead a team through a major reorganization where 40% of roles are being eliminated, including some of your direct reports, while maintaining productivity and morale?**
 
-**Difficulty**: A | **Topic**: Change Management & People Leadership | **Decision Criticality**: [Blocks/Risk]
+**Difficulty**: A | **Topic**: Change & Ambiguity | **Decision Criticality**: [Blocks/Risk]
 
 **Criticality Justification**: Blocks decision on communication strategy & retention approach; creates material risk (key talent loss, morale collapse, compliance issues).
 
 **Key Insight**: Tests balancing empathy (supporting impacted) with accountability (maintaining performance) and transparency (honest communication) vs. confidentiality (legal/HR constraints); distinguishes leaders navigating ambiguity from those avoiding difficult conversations or over-indexing on results vs. relationships.
 
-**Answer** (267 words):
+**Answer**:
 
 Use Kotter's change framework [Ref: G9] with Radical Candor [Ref: G7]. **Phase 1: Pre-announcement (1-2 weeks)**: Work with HR/legal on timeline, severance, messaging. Identify retention risks. Prepare managers for reactions [Ref: A4]. Create urgency narrative: why change necessary, consequences of inaction.
 

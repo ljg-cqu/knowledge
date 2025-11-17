@@ -39,7 +39,7 @@ Run checks; fix failures; repeat until all PASS. **Stop on ANY failure.**
 | Floors | G≥10, T≥5, L≥6, A≥12, MCQs 40–80 (20/40/40) | G:X T:Y L:Z A:W Q:N (F/I/A) |
 | Citations | ≥70% MCQs ≥1 cite; ≥30% ≥2 cites | X% ≥1, Y% ≥2 |
 | Language | EN 50-70%, ZH 20-40%, Other 5-15% | EN:X% ZH:Y% Other:Z% |
-| Recency | ≥50% last 3yr (≥70% AI/platform) | X% last 3yr |
+| Recency | ≥50% last 3yr; ≥70% AI/platform topics | X% last 3yr, Y% AI/platform |
 | Diversity | ≥3 source types; single <25% | N types, max P% |
 | Links | All accessible/archived | Y/X accessible |
 | Cross-refs | All [Ref: ID] resolve | Y/X resolved |
@@ -58,9 +58,9 @@ Execute sequentially; verify after each step.
    - Literature ≥6: EN (Cagan, Olsen, Torres, Perri, Patton, Klement); ZH (俞军, 梁宁, 苏杰)
    - Citations ≥12: Assign IDs (G#/T#/L#/A#); tag language/year/type
    
-   **Verify**: Counts, language 60/30/10%, recency ≥50% last 3yr, ≥3 types.
+   **Verify**: Reference counts; recency ≥50% last 3yr; ≥3 source types.
 
-3. **Generate MCQs**: 1–2 sentence stems; 4 options; 1–2 sentence rationales citing [Ref: ID]. **Verify** every 5 MCQs: length, citations, distractor quality.
+3. **Generate MCQs**: 1–2 sentence stems; 4 options; 1–2 sentence rationales citing [Ref: ID]. **Verify** every 5 MCQs: length, citations, distractor quality, and overall language mix trending toward ~60% EN / ~30% ZH / ~10% other (within specified ranges).
 
 4. **Populate References**: Complete all sections. **Verify**: All [Ref: ID] resolve.
 

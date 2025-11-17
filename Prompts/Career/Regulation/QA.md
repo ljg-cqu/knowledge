@@ -67,16 +67,16 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 |---|-------|--------|
 | 1 | **Floors** | G≥10, T≥4, L≥6, A≥8, Q=4-6 (25/50/25) |
 | 2 | **Decision Criticality** | 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified] |
-| 3 | **Freshness** | ≥75% <2mo, ≥90% <4mo, 100% ≤12mo |
+| 3 | **Freshness** | ≥70% updated in last 5 years, 100% ≤10 years; refresh when regulations or guidance change |
 | 4 | **Citations** | ≥70% with ≥1, ≥30% with ≥2+ |
 | 5 | **Language** | EN 60-80%, ZH 15-30%, Other 5-10% |
 | 6 | **Links** | 100% accessible, prefer official |
-| 7 | **Word Count** | All 150-250w (news-driven, concise) |
+| 7 | **Word Count** | All 150-250w (scenario-based, concise) |
 | 8 | **Impact** | Quantified: fine $, audit days, deadline, remediation hours |
 | 9 | **Decision** | Clear go/no-go, adopt/defer/skip, rationale |
-| 10 | **Visuals** | ≥2 diagrams + ≥1 table per cluster (60% reduction) |
+| 10 | **Visuals** | ≥1 diagram + ≥1 table + ≥1 metric per cluster (matches Visual Standards) |
 | 11 | **Cross-refs** | All [Ref: ID] resolve |
-| 12 | **Final Review** | News-driven, decision-critical, actionable, no speculation |
+| 12 | **Final Review** | Scenario-based, decision-critical, actionable, no speculation |
 
 **Balance**: Acknowledge trade-offs (security vs cost, compliance vs usability), constraints, alternatives
 
@@ -84,10 +84,10 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 ## Workflow (Minimal Viable)
 
-1. **News Discovery** (1-2h): Tiered search (past 1-3d, 7-14d, 2-6mo), ≥10-15 candidates, decision-critical filter
+1. **Scenario Discovery** (1-2h): Identify ≥10-15 decision-critical regulatory scenarios from recent regulatory changes, audits, risk registers, or architectural conflicts; apply Decision Criticality filter
 2. **Build References** (30-45min): G≥10, T≥4, L≥6, A≥8, assign IDs, tag languages, validate links
-3. **Generate Q&As** (2-3h): Batch 2-3, news-driven, 150-250w, quantified impact, cite [Ref: ID]
-4. **Visuals** (30-45min): ≥2 diagrams + ≥1 table per cluster (Mermaid, <80 nodes)
+3. **Generate Q&As** (2-3h): Batch 2-3, scenario-based, 150-250w, quantified impact, cite [Ref: ID]
+4. **Visuals** (30-45min): ≥1 diagram + ≥1 table + ≥1 metric per cluster (Mermaid, <80 nodes)
 5. **Validate** (30-45min): Execute 12 checks, fix, iterate until 100% pass
 
 ---
@@ -111,25 +111,25 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 ## Output Format
 
-### Question Quality (News-Driven)
+### Question Quality (Scenario-Based)
 
-**Approach**: News Trigger → Regulatory Mapping → Risk Assessment → Stakeholder Impact → Decision & Action
+**Approach**: Scenario → Regulatory Mapping → Risk Assessment → Stakeholder Impact → Decision & Action
 
 | Principle | Good ✅ | Bad ❌ |
 |-----------|---------|---------|
-| **News-Driven** | "GDPR Art. 17 enforcement action (Jan 2025). Deletion architecture?" | "Explain GDPR Art. 17" |
+| **Scenario-Based** | "GDPR Art. 17 erasure request conflicts with HIPAA 6-year retention in multi-tenant SaaS. Deletion architecture?" | "Explain GDPR Art. 17" |
 | **Signal** | "SOC2 audit in 4mo. Evidence gaps?" | "List SOC2 controls" |
 | **Quantified** | "HIPAA fine $1.5M, 6-year retention conflict. Remediation $300K, 3mo?" | "Encrypt data?" |
 | **Actionable** | "Consent rate 60%. Privacy-by-Design roadmap: 2mo, $150K, 3 phases?" | "Design privacy" |
 | **Decision-Critical** | "Compliance debt $500K, deadline 6mo. Prioritize: GDPR/HIPAA/PCI?" | "What is compliance?" |
 | **Role Alignment** | Multi-stakeholder (Legal + Compliance, Security + Architecture) | Generic |
 
-### Template (News-Tracking)
+### Template (Scenario-Based, Evergreen)
 
 ```markdown
 ## Contents
 - [Cluster Overview](#clusters) - Cluster | Decision Trigger | Q&A Count
-- [Q&As 1-6](#qa) - News + Impact + Decision + Action
+- [Q&As 1-6](#qa) - Scenario + Impact + Decision + Action
 - [References](#references) - Glossary, Tools, Literature, Citations
 
 ## Cluster Overview
@@ -137,11 +137,11 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 | Compliance Modeling | New deadline, failed audit, debt >$500K | 1-2 | Blocks/Risk |
 | ... | ... | ... | ... |
 
-## Q[N]: [News-Triggered Question]
+## Q[N]: [Scenario-Based Question]
 **Difficulty**: [F/I/A] | **Cluster**: [Topic] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
 **Answer** (150-250 words):
-[P1: News (~25w) - What, when, why, regulation, articles [Ref: ID]]
+[P1: Scenario (~25w) - What, who, why, regulation, context [Ref: ID]]
 [P2: Impact (~50w) - Quantified: fine $, audit days, deadline, remediation hours [Ref: ID]]
 [P3: Stakeholders (~35w) - ≥2 roles, concerns, actions [Ref: ID]]
 [P4: Decision (~50w) - Go/no-go, adopt/defer/skip, rationale, success targets [Ref: ID]]
@@ -219,7 +219,7 @@ Generate **4-6 decision-critical regulatory Q&As** for informed decision-making 
 
 **Difficulty**: Advanced | **Cluster**: Compliance Modeling, Privacy Engineering | **Criticality**: Blocks/Risk/Roles/Action/Quantified
 
-**Answer** (200-250 words):
+**Answer** (150-250 words):
 
 **Scenario**: SaaS processes EU patient data (GDPR) + US PHI (HIPAA). Customer requests erasure (Art. 17). Legal conflict: GDPR mandates erasure "without delay"; HIPAA requires 6yr retention. Remediation cost: $300K, 3mo timeline. Fine risk: €20M (GDPR) vs $1.5M (HIPAA).
 

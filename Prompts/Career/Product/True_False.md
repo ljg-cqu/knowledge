@@ -180,7 +180,6 @@ Discovery vs delivery, empowered teams.
 ---
 
 ## Validation Report
-```
 | Check | Result | Status |
 |-------|--------|--------|
 | Floors | G:X T:Y L:Z A:W S:N (F/I/A) | PASS/FAIL |
@@ -192,6 +191,4 @@ Discovery vs delivery, empowered teams.
 | Cross-refs | Y/X resolved | PASS/FAIL |
 | Quality | MECE/on-topic/actionable | PASS/FAIL |
 ```
-```
-
 ---

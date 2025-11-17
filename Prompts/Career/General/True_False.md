@@ -78,7 +78,7 @@ Execute sequentially, fix failures, re-validate until all PASS:
 1. **Floors**: G≥10, C≥5, L≥6, APA≥12, S:18-32, Difficulty ≈20/40/40
 2. **Citations**: ≥70% with ≥1 cite, ≥30% with ≥2
 3. **Language**: EN 50-70%, ZH 20-40%, Other 5-15%
-4. **Recency**: ≥50% last 3yr (≥70% AI/security)
+4. **Recency**: ≥50% last 3yr (≥70% for AI/security/cloud)
 5. **Diversity**: ≥3 types, no single >25%
 6. **Links**: 100% accessible/archived
 7. **Cross-refs**: All `[Ref: ID]` resolve
@@ -86,7 +86,7 @@ Execute sequentially, fix failures, re-validate until all PASS:
 9. **Negatives**: No double negatives
 10. **Rationales**: 1-2 sentences + citation
 11. **Context**: ≥80% clarify assumptions
-12. **Fairness**: ≥90% balanced
+12. **Fairness**: True/False ratio 45-55%, no answer patterns
 13. **Jargon**: 100% defined
 
 **Report**:
@@ -154,7 +154,7 @@ Execute sequentially, fix failures, re-validate until all PASS:
 
 **Usage**: `[Ref: G3]` (Glossary), `[Ref: C1]` (Codebase), `[Ref: L2]` (Literature), `[Ref: A7]` (APA)
 
-**Minimums**: G≥10 | C≥5 | L≥6 | APA≥12 (60% EN / 30% ZH / 10% other)
+**Minimums**: G≥10 | C≥5 | L≥6 | APA≥12 (target ~60% EN / ~30% ZH / ~10% other)
 
 ### Glossary, Terminology & Acronyms
 

@@ -38,7 +38,7 @@ Generate **6-12 decision-critical stakeholder management Q&As** for informed dec
 | Aspect | Requirement |
 |--------|-------------|
 | **Count** | 6-12 (25% Foundational / 50% Intermediate / 25% Advanced) |
-| **Length** | 120-200 words (News → Impact → Stakeholders → Decision → Action) |
+| **Length** | 120-200 words (Context → Impact → Stakeholders → Decision → Action) |
 | **Citations** | ≥1 per Q&A (≥2 for advanced) |
 | **Artifacts** | ≥1 diagram + ≥1 table per Q&A (compressed) |
 | **Coverage** | 3-4 decision-critical dimensions; ≥4/8 phases; ≥5 core stakeholder roles |
@@ -103,17 +103,17 @@ Generate **6-12 decision-critical stakeholder management Q&As** for informed dec
 
 # Generation Process
 
-## Step 1: News Curation (Tiered Search)
+## Step 1: Scenario Curation (Decision-Critical)
 
-**Tier 1 - High-Velocity** (past 7-14 days, ≥50% of candidates):
+**Tier 1 - High-Impact** (blocks decision, ≥50% of candidates):
 - Stakeholder alignment failures, escalation patterns, team conflicts
 - Org changes affecting stakeholder dynamics
 
-**Tier 2 - Medium-Velocity** (past 2-4 weeks, ≥30% of candidates):
+**Tier 2 - Structural Risk** (creates risk, ≥30% of candidates):
 - Compliance/regulatory stakeholder changes
 - Process improvements
 
-**Tier 3 - Backfill** (past 4-8 weeks, ≤20% of candidates):
+**Tier 3 - Backfill** (context/edge cases, ≤20% of candidates):
 - Only if Tier 1+2 insufficient
 
 **Target**: ≥10-15 candidates → 6-12 Q&As (60% reduction)
@@ -126,7 +126,7 @@ Create Glossary (≥8 terms) → Tools (≥4) → Literature (≥5) → Citation
 
 ## Step 3: Write Q&As
 
-**Answer Structure** (120-200 words): News (~25w) → Impact (~50w) → Stakeholders (~35w) → Decision (~50w) → Action (~20w)
+**Answer Structure** (120-200 words): Context (~25w) → Impact (~50w) → Stakeholders (~35w) → Decision (~50w) → Action (~20w)
 
 **Validate Every 3**: Word count · Citations · Decision criticality · Quantified impact
 

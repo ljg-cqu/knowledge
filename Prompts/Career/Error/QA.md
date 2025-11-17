@@ -16,7 +16,7 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 **Difficulty**: 25% Foundational (1), 50% Intermediate (2-3), 25% Advanced (1-2)
 **Coverage**: Decision-critical scenarios only (≥1 criterion: Blocks decision, Creates risk, Affects ≥2 roles, Requires action, Quantified impact)
   - **Lifecycle**: Architecture & Design, Development, Testing & Quality, Deployment & Release, Operations & Observability, Evolution & Governance
-  - **Error Categories**: System, Integration, Data, Security, Configuration, Operational (skip Human, Business unless decision-critical)
+  - **Error Categories**: Human, System, Integration, Data, Security, Configuration, Business, Operational (8 total; focus on System/Integration/Data/Security/Configuration/Operational; include Human/Business only when decision-critical)
 **Traceability**: Error Source → Prevention → Detection → Recovery → Metric (explicit chain required)
 **Per Q&A**: ≥1 error flow diagram, ≥1 practical code/config, ≥1 metrics table
 
@@ -44,10 +44,10 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 |---|-------|------------|-------------|-----------|
 | **Q1** | Architecture & Design | System, Integration | Blocks: Resilience pattern selection | Circuit breaker vs. bulkhead vs. saga: when each? Trade-offs? |
 | **Q2** | Development | System, Data | Blocks: Idempotency implementation | Idempotent payment processing: retry logic, deduplication, consistency? |
-| **Q3** | Testing & Quality | All 6 types | Creates risk: Chaos coverage | Chaos engineering program: failure scenarios, blast radius, validation? |
+| **Q3** | Testing & Quality | System, Integration, Data, Security, Configuration, Operational | Creates risk: Chaos coverage | Chaos engineering program: failure scenarios, blast radius, validation? |
 | **Q4** | Deployment & Release | Config, System, Operational | Blocks: Safe rollout automation | Canary analysis, rollback triggers, error budget gates? |
 | **Q5** | Operations & Observability | System, Operational, Integration | Creates risk: MTTD/MTTR optimization | SLO monitoring, alert tuning, postmortem process? |
-| **Q6** | Evolution & Governance | All 6 types | Blocks: Error budget governance | Budget allocation, freeze policies, stakeholder communication? |
+| **Q6** | Evolution & Governance | All 8 types | Blocks: Error budget governance | Budget allocation, freeze policies, stakeholder communication? |
 
 ## Visuals & Metrics (Decision-Critical)
 
@@ -123,7 +123,7 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 |------|-------------|-----------|
 | **Decision Criticality** | 100% Q&As satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) | Review all |
 | **Lifecycle Coverage** | ≥4/6 phases covered (Architecture, Development, Testing, Deployment, Operations, Governance) | Count by phase |
-| **Error Category Coverage** | ≥4/6 error types covered (System, Integration, Data, Security, Configuration, Operational) | Check glossary/Q&As |
+| **Error Category Coverage** | ≥6/8 error types covered (Human, System, Integration, Data, Security, Configuration, Business, Operational) | Check glossary/Q&As |
 | **Practical Elements** | 100% Q&As have code/config/diagram example | Review all |
 | **Metrics Presence** | 100% Q&As have quantified targets with formulas | Review all |
 | **Trade-offs** | 100% Q&As acknowledge ≥2 trade-offs/alternatives | Review all |
@@ -158,7 +158,7 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 
 ```markdown
 ## Contents
-- [Decision-Critical Scenarios](#scenarios): 6 decision-critical error management Q&As
+- [Decision-Critical Scenarios](#scenarios): 4-6 decision-critical error management Q&As
 - [Q&A by Phase](#qa-sections): 4-6 Q&As with mandatory 7 elements
 - [References](#references): G# (≥10), T# (≥6), L# (≥8), A# (≥12)
 - [Validation](#validation-results): 8 gates, all PASS
@@ -169,10 +169,10 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 |---|-------|------------|-------------|-----|
 | **Q1** | Architecture & Design | System, Integration | Blocks: Resilience pattern selection | Circuit breaker vs. bulkhead vs. saga: when each? Trade-offs? |
 | **Q2** | Development | System, Data | Blocks: Idempotency implementation | Idempotent payment processing: retry logic, deduplication, consistency? |
-| **Q3** | Testing & Quality | All 6 types | Creates risk: Chaos coverage | Chaos engineering program: failure scenarios, blast radius, validation? |
+| **Q3** | Testing & Quality | System, Integration, Data, Security, Configuration, Operational | Creates risk: Chaos coverage | Chaos engineering program: failure scenarios, blast radius, validation? |
 | **Q4** | Deployment & Release | Config, System, Operational | Blocks: Safe rollout automation | Canary analysis, rollback triggers, error budget gates? |
 | **Q5** | Operations & Observability | System, Operational, Integration | Creates risk: MTTD/MTTR optimization | SLO monitoring, alert tuning, postmortem process? |
-| **Q6** | Evolution & Governance | All 6 types | Blocks: Error budget governance | Budget allocation, freeze policies, stakeholder communication? |
+| **Q6** | Evolution & Governance | All 8 types | Blocks: Error budget governance | Budget allocation, freeze policies, stakeholder communication? |
 
 ## Q&A Template
 
@@ -220,7 +220,7 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 |------|-------------|--------|
 | Decision Criticality | 100% satisfy ≥1 criterion | ✅ PASS |
 | Lifecycle Coverage | ≥4/6 phases | ✅ PASS |
-| Error Category Coverage | ≥4/6 types | ✅ PASS |
+| Error Category Coverage | ≥6/8 types | ✅ PASS |
 | Practical Elements | 100% have code/config/diagram | ✅ PASS |
 | Metrics Presence | 100% have formulas+targets | ✅ PASS |
 | Trade-offs | 100% acknowledge ≥2 alternatives | ✅ PASS |
@@ -234,7 +234,7 @@ Generate 4-6 decision-critical Q&A pairs for error management across the full so
 
 **Difficulty**: Advanced | **Phase**: Operations (+ Design, Dev, Test, Deploy) | **Roles**: SRE, Arch, Dev, PM, Sec, Data, Lead | **Errors**: All 8 | **Insight**: Multi-layered defense (prevention→detection→recovery→governance) with blast radius containment protects $50M GMV while maintaining velocity [Ref: L1, A1].
 
-**Answer** (295 words): 99.95% SLO (21.9min monthly budget) protects $50M GMV [Ref: L1, A1].
+**Answer** (extended example, ~300 words): 99.95% SLO (21.9min monthly budget) protects $50M GMV [Ref: L1, A1].
 
 **Prevention→Detection→Recovery by Category** [Ref: L2]:  
 **Human**: Refund automation (80% ↓ errors), workflows, guardrails → Peer review, testing → Rollback, feature flags  

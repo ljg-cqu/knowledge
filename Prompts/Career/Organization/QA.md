@@ -15,7 +15,7 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 ## Requirements
 
-**Q&A Specs**: 6-12 total; 25% F / 50% I / 25% A difficulty; 150-250 words; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation; each Q&A: ≥1 diagram or table
+**Q&A Specs**: 6-12 total; 25% F / 50% I / 25% A difficulty; 150-250 words; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation; each Q&A: ≥1 diagram + ≥1 table
 
 **Decision Criticality Framework** (NEW, MANDATORY):
 - **Include if ≥1 criterion satisfied**:
@@ -36,7 +36,7 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 **Standards**:
 - **Traceability**: Scenario → Decision Criticality → Impact → Decision → Timeline → Metrics
-- **Quantified**: ✅ "Attrition ↑ 8%→15% YoY, hiring velocity ↓40%" ❌ "Hiring is hard"
+- **Quantified**: "Attrition ↑ 8%→15% YoY, hiring velocity ↓40%"
 - **Decision-Critical**: Every Q&A must satisfy ≥1 criticality criterion; justify inclusion
 - **Precision**: Define jargon inline; cite sources; concrete metrics with thresholds
 - **Scenario-Based**: Focus on decision-critical situations, not time-bound news
@@ -51,7 +51,7 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 ## Lifecycle-Stakeholder Coverage (Decision-Critical Only)
 
-| Phase | Decision-Critical News | Core Stakeholders |
+| Phase | Decision-Critical Scenarios | Core Stakeholders |
 |-------|------------------------|-------------------|
 | 1. Requirements & Discovery | Org restructuring, hiring strategy, skill gap analysis | Manager, Director, CHRO |
 | 2. Development | Team scaling, onboarding velocity, team topology changes | Manager, Architect, Team Lead |
@@ -70,9 +70,9 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 ## Generation Process (Minimal Viable, 3-4h)
 
-1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (6-12 total) → 25% F / 50% I / 25% A → map to 4-5 phases + ≥5 stakeholders → verify Decision Criticality Framework ✅
+1. **Plan**: 3-4 dimensions → 1-2 Q&As/dimension (6-12 total) → 25% F / 50% I / 25% A → map to 4-5 phases + ≥5 stakeholders → verify Decision Criticality Framework
 2. **References**: Glossary (≥8) + Tools (≥4) + Literature (≥5) + Citations (≥8) → verify quality + freshness (≥70% <2yr)
-3. **Write**: News-driven Q&As → 150-250 words → News → Impact → Stakeholders → Decision → Action → ≥1 citation → Decision Criticality justification → validate every 3
+3. **Write**: Scenario-driven Q&As → 150-250 words → Scenario → Impact → Stakeholders → Decision → Action → ≥1 citation → Decision Criticality justification → validate every 3
 4. **Artifacts**: Per Q&A: ≥1 diagram (Mermaid <80 nodes) + ≥1 table → verify all present
 5. **Link**: Populate sections → verify all [Ref: ID] resolved → remove orphans → validate URLs
 6. **Validate**: 12 checks → ANY fail = STOP → fix → re-validate → iterate until 12/12 PASS
@@ -91,7 +91,7 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 | 8 | Artifacts | ≥90% Q&As have ≥1 diagram + ≥1 table |
 | 9 | Lifecycle Coverage | All 4-5 phases ≥1 Q&A |
 | 10 | Stakeholder Coverage | ≥5 core roles represented; ≥60% multi-stakeholder |
-| 11 | Freshness | ≥75% <2mo, ≥90% <4mo, 100% ≤9mo |
+| 11 | Freshness | ≥70% citations <2yr old |
 | 12 | Final Review | Clarity, Accuracy, Completeness, Actionability, Decision-Critical Fit |
 
 **Submit When**: 12/12 PASS
@@ -108,11 +108,11 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 
 | Dimension | Range | Count | Difficulty | Decision Criticality |
 |-----------|-------|-------|------------|---------------------|
-| [Title] | Q1-Q3 | 1-2 | 1F/1I/1A | [Blocks/Risk/Roles/Action/Quantified] |
+| [Title] | Q1-Q3 | 1-2 | F/I/A mix (across all Q&As) | [Blocks/Risk/Roles/Action/Quantified] |
 
 ## Lifecycle-Stakeholder Coverage (Decision-Critical Only)
 
-| Phase | Q# | Core Stakeholders | Decision-Critical News |
+| Phase | Q# | Core Stakeholders | Decision-Critical Scenarios |
 | 1. Requirements & Discovery | Q1 | Manager, Director, CHRO | Org restructuring, hiring strategy |
 | 2. Development | Q2 | Manager, Architect, Team Lead | Team scaling, onboarding velocity |
 | 3. Deployment | Q3 | Manager, Team Lead, Director | On-call burnout, SRE retention |
@@ -124,12 +124,12 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 ## Dimension 1: [Title]
 **Overview**: [1-2 sentences] | **Phase**: [1-5] | **Stakeholders**: [Roles] | **Decision Criticality**: [Blocks/Risk/Roles/Action/Quantified]
 
-### Q1: [What/How/When question - news-driven]
+### Q1: [What/How/When question - scenario-driven]
 **Difficulty**: [F/I/A] | **Dimension**: [Type] | **Phase**: [1-5] | **Stakeholders**: [Roles]
 
 **Decision Criticality Justification**: [Why this Q&A satisfies ≥1 criterion]
 
-**Answer**: [150-250 words: News → Impact → Stakeholders → Decision → Action] [≥1 citation [Ref: A1]]
+**Answer**: [150-250 words: Scenario → Impact → Stakeholders → Decision → Action] [≥1 citation [Ref: A1]]
 
 **Diagram** (Mermaid, <80 nodes):
 ```mermaid
@@ -168,11 +168,11 @@ Generate 6-12 decision-critical organizational Q&As for informed decision-making
 | 4 | Language | 60/30/10% EN/ZH/Other | [Distribution] | PASS/FAIL |
 | 5 | Links | 100% valid URLs | [Count] | PASS/FAIL |
 | 6 | Word count | All 150-250w | [Sample] | PASS/FAIL |
-| 7 | Quantified Impact | 100% have metrics | [Count] | PASS/FAIL |
+| 7 | Quantified Impact | 100% have quantified metrics (%,$, or timeline) | [Count] | PASS/FAIL |
 | 8 | Artifacts | ≥90% have diagram+table | [Count] | PASS/FAIL |
 | 9 | Lifecycle | All 4-5 phases ≥1 Q | [Coverage] | PASS/FAIL |
 | 10 | Stakeholders | ≥5 roles; ≥60% multi | [Coverage] | PASS/FAIL |
-| 11 | Freshness | ≥75% <2mo, ≥90% <4mo | [Distribution] | PASS/FAIL |
+| 11 | Freshness | ≥70% citations <2yr old | [Distribution] | PASS/FAIL |
 | 12 | Final Review | Clarity, Accuracy, Completeness, Actionability | [Notes] | PASS/FAIL |
 
 **Overall**: [X/12 PASS] | **Issues**: [Failures] | **Remediation**: [Actions]

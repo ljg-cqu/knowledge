@@ -12,7 +12,7 @@
 
 - **Scenario-based**: ≥70% with explicit [Phase | Stakeholder | Domain]
 - **Analysis**: 100% SWOT or risk matrix; ≥70% quantified (market size, ROI, risk score)
-- **Citations**: ≥80% ≥1 ref, ≥40% ≥2 refs; all resolve; ≥80% with empirical data
+- **Citations**: ≥80% ≥1 ref, ≥50% ≥2 refs; all resolve; ≥80% with empirical data
 - **Balance**: ≥60% include threats/risks + "when NOT"
 - **Actionable**: ≥80% with go/no-go criteria + validation approach
 - **Insights**: Non-obvious, strategic, quantified, falsifiable, decision-critical
@@ -199,7 +199,7 @@
 | Technology & Innovation | 1,2,3 | Arch, Dev, SRE | Q1-Q3 | 3 | 1/1/1 | Blocks decision, Actively evolving |
 | Business & Market | 1,8 | PM, Lead | Q4-Q5 | 2 | 1/1 | Blocks decision, Affects 2+ stakeholders |
 | Regulatory & Compliance | 2,8 | Sec, Lead | Q6-Q7 | 2 | 1/1 | Creates risk, Actively evolving |
-| **Total** | **4-5** | **≥5 roles** | **Q1-Q12** | **6-12** | **3/3/2-6** | **100% ≥1 criterion** |
+| **Total** | **4-5** | **≥5 roles** | **Q1-Q12** | **6-12** | **25/50/25 (±5pp)** | **100% ≥1 criterion** |
 
 **Phases**: 1=Discovery, 2=Design, 3=Dev, 8=Evolve (focus on decision-critical phases)
 
@@ -221,27 +221,27 @@
 
 ## References
 
-### Glossary (≥18)
+### Glossary (≥10)
 **G1. TAM/SAM/SOM** [EN] – Total/Serviceable/Serviceable Obtainable Market. Formula: TAM = Total users × ARPU. Use: Market sizing. Stakeholder: PM, BA, Leadership.
 
 [G2-G18: PMF, Chasm, Blue Ocean, Disruptive Innovation, Network Effects, Platform Economics, Regulatory Arbitrage, TRL, SWOT, Porter's Five Forces, Risk Matrix, Technology Adoption, Market Maturity, Ecosystem Value, CAGR, etc.]
 
-### Tools (≥8, ≥4 types)
+### Tools (≥5, ≥4 types)
 **T1. Gartner Hype Cycle / Magic Quadrant** [Market Research] – Tech maturity, vendor eval. Phase: 1,2,8. Stakeholder: Arch, Leadership. Pricing: $15K-50K/yr. Update: Quarterly. URL: https://www.gartner.com
 
 [T2-T8: IDC, Forrester, CB Insights, Crunchbase, SWOT tools, risk assessment, opportunity scoring, validation platforms]
 
-### Frameworks (≥8)
+### Frameworks (≥5)
 **F1. SWOT** – Strengths/Weaknesses (internal), Opportunities/Threats (external). Originator: Humphrey (1960s). Use: Strategic planning, opportunity assessment. Ref: [L3]
 
 [F2-F8: PESTLE, Porter's Five Forces, Blue Ocean, Disruptive Innovation, TAM/SAM/SOM, Technology Adoption, BMC, Risk Matrix, Decision Trees]
 
-### Literature (≥10)
+### Literature (≥6)
 **L1. Christensen, C. (1997). *The Innovator's Dilemma*. Harvard Business Review Press.** [EN] – Disruptive innovation, lower-end vs new-market disruption.
 
 [L2-L10: Kim/Mauborgne *Blue Ocean Strategy*, Moore *Crossing the Chasm*, Osterwalder *Business Model Generation*, Porter *Competitive Strategy*, Rogers *Diffusion of Innovations*, 克里斯坦森《创新者的窘境》, etc.]
 
-### Citations (≥18, APA 7th)
+### Citations (≥10, APA 7th)
 **A1.** Ziegler, A., et al. (2024). *Productivity assessment of neural code completion*. GitHub Research. https://doi.org/... [EN] – 55% faster, 35-40% productivity gain.
 
 [A2-A18: Market reports (Gartner, IDC, Forrester), academic papers, regulatory docs (EU AI Act, GDPR), industry studies, Chinese lit, etc.]
@@ -250,9 +250,9 @@
 
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|---------|
-[24 checks: Ref counts, Q&A counts, Citations, Language, Recency, Diversity, Links, Cross-refs, Word count, Insights, Domain/Phase/Stakeholder coverage, Question type, SWOT/Risk, Quantification, Artifacts, Decision support, "When NOT", Validation approach, Empirical data, Framework coverage, Final Review]
+[12 checks: Ref counts, Q&A counts, Citations, Language, Recency, Decision Criticality, SWOT/Risk coverage, Quantification, Artifacts, "When NOT", Actionability, Final Review]
 
-**Overall**: X/24 PASS | **Final**: X/6 PASS | **Status**: ✅ APPROVED / ❌ REJECTED
+**Overall**: X/12 PASS | **Final**: X/6 PASS | **Status**: ✅ APPROVED / ❌ REJECTED
 ```
 
 ---
@@ -264,7 +264,7 @@
 **Difficulty**: A | **Phase**: 6 (Operations & Observability) | **Stakeholders**: SRE, Security, Leadership, Data Engineer | **Domain**: Technology & Innovation + Business & Market  
 **Key Insight**: Tests ability to synthesize technology trends (OpenTelemetry, AI), business constraints (cost, vendor lock-in), operational risk (MTTR, data portability), and stakeholder priorities—distinguishes strategic from tactical thinking in cost-vs-capability trade-offs.
 
-**Answer** (395w):  
+**Answer** (~400w):
 **Context**: Technology + business opportunity, operations phase, multi-stakeholder strategic decision balancing cost, capability, risk, and vendor dependency.
 
 **Opportunity Analysis**: Observability TAM $5.2B (2024), 28% CAGR [Ref: A5]. Three trends: (1) OpenTelemetry adoption 180% YoY (CNCF survey, 2024) [Ref: A7]—vendor-neutral standard reduces lock-in. (2) AI-powered observability (Datadog AI, New Relic AI): 60% MTTR reduction, 40% alert noise reduction [Ref: A6]. (3) OSS maturity: Prometheus (90K stars), Grafana (65K stars), Tempo (3K stars), Loki (20K stars)—proven at scale (Netflix, Uber). **Market evidence**: 45% enterprises migrating to OSS observability (Gartner, 2024) [Ref: A8] for cost (-50-70%) + portability.

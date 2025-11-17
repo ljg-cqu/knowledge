@@ -6,15 +6,15 @@ Generate **6–12 decision-critical Q&As** from emerging concepts (≤5 years OR
 
 **Scope**: Decision-critical emerging tech only—adoption disruptions, competitive threats, regulatory shifts, ecosystem changes. For mature tech organizations.
 
-**Exclusions**: Academic research, vendor marketing, hype without evidence, rumors, stale news (>6mo for HV, >12mo for LT).
+**Exclusions**: Academic research, vendor marketing, hype without evidence, rumors, stale news (>4mo for HV, >12mo for LT).
 
 ## I. Framework
 
 **Freshness** (category-adaptive):
-- **High-Velocity** (Tech disruption, adoption shifts): ≥75% <1mo (≥25% in 1–7d), ≥95% <2mo, 100% ≤4mo  
-- **Medium-Velocity** (Ecosystem, standards): ≥65% <2mo (≥20% in 1–14d), ≥90% <3mo, 100% ≤6mo  
-- **Long-Tail** (Regulatory, compliance): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo  
-- **Overall**: ≥70% <2mo, ≥90% <4mo, 100% ≤12mo  
+- **High-Velocity** (Tech disruption, adoption shifts): ≥75% <1mo (≥25% in 1–7d), ≥95% <2mo, 100% ≤4mo
+- **Medium-Velocity** (Ecosystem, standards): ≥65% <2mo (≥20% in 1–14d), ≥90% <3mo, 100% ≤6mo
+- **Long-Tail** (Regulatory, compliance): ≥50% <6mo, ≥80% <12mo, 100% ≤12mo
+- **Overall**: ≥70% <2mo, ≥90% <4mo, 100% ≤12mo
 - **Validity**: 2 weeks; re-validate if used beyond 1 month
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
@@ -138,11 +138,11 @@ Architect, Developer, DevOps/SRE, PM/Leadership, Security.
 ## Contents
 1. Executive Summary
 2. Decision-Critical Q&As by Lifecycle Phase (4-5 sections)
-   - Architecture & Design (Q1-Q2)
-   - Development (Q3)
-   - Deployment & Release (Q4)
-   - Operations & Observability (Q5)
-   - Evolution & Governance (Q6-Q12)
+   - Architecture & Design
+   - Development
+   - Deployment & Release
+   - Operations & Observability
+   - Evolution & Governance
 3. References
    - Glossary (G1-G8)
    - Tools (T1-T4)

@@ -71,7 +71,7 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 | **Glossary** | ≥10 | Only decision-critical terms (TRIZ, Design Thinking, Blue Ocean, First Principles, Analogical Reasoning, etc.) |
 | **Tools** | ≥4 | Miro, Figma, Strategyzer (valid URL, update ≤18mo) |
 | **Literature** | ≥6 | de Bono, Brown, Christensen, Kim/Mauborgne (canonical only) |
-| **Citations** | ≥8 | APA 7th: 60% [EN]/30% [ZH]/10% other; ≥50% <5yr; all decision-critical |
+| **Citations** | ≥8 | APA 7th: 60/30/10% EN/ZH/Other (±10%); ≥50% <5yr; all decision-critical |
 
 ---
 
@@ -79,11 +79,11 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 
 **Step 1 - Plan**: Map 4-5 phases × 3-4 dimensions → Allocate 6-12 Q&As (≥1/phase, ≥5 roles) → Prioritize by Decision Criticality. *Check*: 6-12 total, 4-5 phases, ≥5 roles, 3-4 dimensions, 100% decision-critical
 
-**Step 2 - References**: Build G≥10, T≥4, L≥6, A≥8 (canonical only). *Check*: Counts met, 60/30/10% EN/ZH/Other, ≥50% <5yr, all decision-critical
+**Step 2 - References**: Build G≥10, T≥4, L≥6, C≥8 (canonical only). *Check*: Counts met, 60/30/10% EN/ZH/Other (±10%), ≥50% <5yr, all decision-critical
 
 **Step 3 - Write Q&As**: 150-250 words; ≥1 citation; Business need → Technique → Workflow → Productivity → Trade-offs. *Validate every 3*: word count, citations, decision criticality
 
-**Step 4 - Artifacts**: Per Q&A: (1) ≥1 Mermaid <80 nodes; (2) ≥1 metrics table. *Check*: ≥90% have both, diagrams render, metrics quantified
+**Step 4 - Artifacts**: Per Q&A: (1) ≥1 Mermaid <80 nodes; (2) ≥1 metrics table. *Check*: 100% have both, diagrams render, metrics quantified
 
 **Step 5 - Link**: Populate sections → Verify `[Ref: ID]` → Validate URLs. *Check*: All IDs resolved, 0 broken links
 
@@ -91,10 +91,10 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 
 | # | Check | Target | # | Check | Target |
 |---|-------|--------|---|-------|--------|
-| 1 | Counts | G≥10, T≥4, L≥6, A≥8, Q=6-12 | 7 | Cross-refs | 100% resolved |
-| 2 | Citations | ≥70% Q&As ≥1 | 8 | Word count | Sample 3: 150-250 |
+| 1 | Counts | G≥10, T≥4, L≥6, C≥8, Q=6-12 | 7 | Cross-refs | 100% resolved |
+| 2 | Citations | 100% Q&As ≥1 | 8 | Word count | Sample 3: 150-250 |
 | 3 | Decision Criticality (NEW) | 100% satisfy ≥1 criterion | 9 | Phases | 4-5 phases (≥1/phase) |
-| 4 | Language | 60/30/10% EN/ZH/Other | 10 | Stakeholders | ≥5 of 10 roles |
+| 4 | Language | 60/30/10% EN/ZH/Other (±10%) | 10 | Stakeholders | ≥5 of 10 roles |
 | 5 | Recency | ≥50% <5yr | 11 | Dimensions | 3-4 balanced |
 | 6 | Links | 100% valid | 12 | Final review | 4/4 criteria below |
 
@@ -108,20 +108,20 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 
 ```markdown
 ## Contents
-[TOC: Topic Areas (4-5 phases × 3-4 dimensions) | Q&As (6-12) | References (G≥10, T≥4, L≥6, A≥8) | Validation (12 checks)]
+[TOC: Topic Areas (4-5 phases × 3-4 dimensions) | Q&As (6-12) | References (G≥10, T≥4, L≥6, C≥8) | Validation (12 checks)]
 
 ## Topic Areas (Decision-Critical Only)
 | Phase | Dimension | Range | Stakeholders | Decision Criticality |
-| Requirements & Discovery | Cognitive, Collaborative | Q1-Q2 | PM, Architect | Blocks alignment |
-| Architecture & Design | Technical, Cognitive | Q3-Q4 | Architect, Developer | Blocks architecture |
-| Development | Technical, Collaborative | Q5-Q6 | Developer, QA | Creates velocity risk |
-| Deployment & Release | Technical | Q7-Q8 | DevOps, SRE | Blocks release |
+| Requirements & Discovery | Cognitive Problem-Solving, Collaborative | Q1-Q2 | PM, Architect | Blocks alignment |
+| Architecture & Design | Technical Innovation, Cognitive Problem-Solving | Q3-Q4 | Architect, Developer | Blocks architecture |
+| Development | Technical Innovation, Collaborative | Q5-Q6 | Developer, QA | Creates velocity risk |
+| Deployment & Release | Technical Innovation | Q7-Q8 | DevOps, SRE | Blocks release |
 | Evolution & Governance | Business/Market | Q9-Q12 | PM, Leadership | Affects strategy |
 
 ---
 
 ## Q1: [How to apply/When should/Compare decision-critical creativity for...]
-**Phase**: [Requirements/Architecture/Development/Deployment/Evolution] | **Stakeholder**: [Role] | **Dimension**: [Technical/Business/Collaborative/Cognitive]
+**Phase**: [Requirements & Discovery / Architecture & Design / Development / Deployment & Release / Evolution & Governance] | **Stakeholder**: [Role] | **Dimension**: [Technical Innovation | Business/Market | Collaborative | Cognitive Problem-Solving]
 
 **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving] - [Justification]
 
@@ -136,10 +136,10 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 ---
 
 ## References (Decision-Critical Only)
-**Glossary (≥10)**: G1. [Term] [EN/ZH] - [Definition]. Related: [Terms]
+**Glossary (≥10)**: G1. [Term] [EN/ZH/Other] - [Definition]. Related: [Terms]
 **Tools (≥4)**: T1. [Tool] - [Purpose]. Updated: [YYYY-MM]. URL: [Link]
 **Literature (≥6)**: L1. Author(s). (Year). *Title*. Publisher. - [Relevance]
-**Citations (≥8)**: A1. [APA 7th format]. [EN/ZH] [60/30/10% ±10%; ≥50% <5yr]
+**Citations (≥8)**: A1. [APA 7th format]. [EN/ZH/Other] [60/30/10% EN/ZH/Other (±10%); ≥50% <5yr]
 
 ---
 
@@ -181,7 +181,7 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 **L5. Altshuller, G. S. (1984). *Creativity as an Exact Science*. Gordon & Breach.** – TRIZ foundations
 **L6. Osterwalder, A., & Pigneur, Y. (2010). *Business Model Generation*. Wiley.** – BMC for innovation
 
-## Citations (Representative Samples, Total ≥8, 60/30/10% EN/ZH/Other)
+## Citations (Representative Samples, Total ≥8, 60/30/10% EN/ZH/Other (±10%))
 
 **A1.** de Bono, E. (1970). *Lateral thinking: Creativity step by step*. Harper & Row. [EN]
 **A2.** Brown, T. (2009). *Change by design*. HarperBusiness. [EN]
@@ -190,4 +190,4 @@ Generate **6-12 decision-critical Q&A pairs** for informed innovation decisions 
 **A5.** 陈春花. (2018). *激活组织*. 机械工业出版社. [ZH]
 **A6.** 俞军. (2016). *产品方法论*. 电子工业出版社. [ZH]
 **A7.** Altshuller, G. S. (1984). *Creativity as an exact science*. Gordon & Breach. [EN]
-**A8.** Osterwalder, A., & Pigneur, Y. (2010). *Business model generation*. Wiley. [EN]
+**A8.** Osterwalder, A., & Pigneur, Y. (2010). *Business model generation*. Wiley. [Other]

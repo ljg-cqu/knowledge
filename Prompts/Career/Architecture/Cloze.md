@@ -281,7 +281,7 @@ Rationale: Event Sourcing [Ref: G3] persists domain changes as immutable event s
 **L5. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly.** – Distributed systems: replication, partitioning, transactions  
 **L6. Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley.** – Repository, Unit of Work, Service Layer
 
-## Citations
+## APA Citations
 **A1.** Evans, E. (2003). *Domain-driven design*. Addison-Wesley. [EN]  
 **A2.** Richardson, C. (2018). *Microservices patterns*. Manning. [EN]  
 **A3.** 周爱民. (2021). *架构的本质*. 电子工业出版社. [ZH]  

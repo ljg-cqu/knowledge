@@ -23,11 +23,11 @@ Generate 6-12 decision-critical Q&As for reverse engineering professionals (3+ y
 
 ## Coverage (4-5 Decision-Critical Dimensions, 1-3 Q&As/Each)
 
-1. **Static Analysis** (1-2 Q): Function ID, CFG, data flow analysis—blocks analysis strategy (IDA Pro, Ghidra, Binary Ninja)
-2. **Dynamic Analysis** (1-2 Q): Instrumentation, tracing, runtime monitoring—blocks runtime understanding (Frida, GDB, x64dbg)
-3. **Code Recovery** (1-2 Q): Decompilation accuracy, symbol inference—blocks vulnerability discovery (Hex-Rays, RetDec, Ghidra)
-4. **Vulnerability Discovery** (1-2 Q): Fuzzing, symbolic execution, taint analysis—blocks security decisions (AFL++, angr, radare2)
-5. **Obfuscation Handling** (1-2 Q): Unpacking, VM protection, anti-debug—blocks analysis feasibility (UPX, VMProtect, Themida)
+1. **Static Analysis** (1-3 Q): Function ID, CFG, data flow analysis—blocks analysis strategy (IDA Pro, Ghidra, Binary Ninja)
+2. **Dynamic Analysis** (1-3 Q): Instrumentation, tracing, runtime monitoring—blocks runtime understanding (Frida, GDB, x64dbg)
+3. **Code Recovery** (1-3 Q): Decompilation accuracy, symbol inference—blocks vulnerability discovery (Hex-Rays, RetDec, Ghidra)
+4. **Vulnerability Discovery** (1-3 Q): Fuzzing, symbolic execution, taint analysis—blocks security decisions (AFL++, angr, radare2)
+5. **Obfuscation Handling** (1-3 Q): Unpacking, VM protection, anti-debug—blocks analysis feasibility (UPX, VMProtect, Themida)
 
 **Skip**: Protocol Analysis (nice-to-have unless decision-critical to your role)
 
@@ -62,7 +62,7 @@ Generate 6-12 decision-critical Q&As for reverse engineering professionals (3+ y
 |------|-----|--------------|
 | **Glossary** | ≥8 | Only terms used in Q&As + relationships |
 | **Tools** | ≥3 | Decision-critical only; URL, update ≤18mo, pricing, adoption |
-| **Literature** | ≥4 | Canonical references (Eilam, Eagle, Sikorski, Dang) |
+| **Literature** | ≥4 | Canonical references (e.g., Eilam, Eagle, Sikorski, Dang) |
 | **Citations** | ≥6 | APA 7th, 60/30/10% EN/ZH/Other (±10%) |
 
 **Quality**: ≥50% last 3yr (≥70% modern tools), ≥3 types (<25% single), peer-reviewed/authoritative, 100% valid links
@@ -73,15 +73,15 @@ Generate 6-12 decision-critical Q&As for reverse engineering professionals (3+ y
 
 ## 1. Plan
 
-Select 4-5 decision-critical dimensions → Allocate 1-3 Q&As/dimension (6-12 total) → Assign 1-2F/2-3I/1-2A per dimension
+Select 4-5 decision-critical dimensions → Allocate 1-3 Q&As/dimension (target 6-12 total) → Assign 1-2F/2-3I/1-2A across all Q&As
 
 **Check**: 6-12 total; 25/50/25% F/I/A (±5%); 4-5 dimensions; decision-critical only; no overlap
 
 ## 2. References
 
-Glossary (≥8 + relations) → Tools (≥3: URL, ≤18mo, pricing, adoption) → Lit (≥4 books + relevance) → Cites (≥6 APA [EN]/[ZH])
+Glossary (≥8 + relations) → Tools (≥3: URL, ≤18mo, pricing, adoption) → Lit (≥4 books + relevance) → Cites (≥6 APA [EN]/[ZH]/[Other])
 
-**Check**: G≥8, T≥3, L≥4, A≥6; 60/30/10% (±10%); ≥50% recent (≥70% tools); ≥3 types <25% single; 100% valid URLs
+**Check**: G≥8, T≥3, L≥4, A≥6; 60/30/10% (±10%); ≥50% recent (≥70% modern tools); ≥3 types <25% single; 100% valid URLs
 
 ## 3. Write
 
@@ -89,7 +89,7 @@ Glossary (≥8 + relations) → Tools (≥3: URL, ≤18mo, pricing, adoption) �
 
 **Answers**: 150-250 words, ≥1 cite (≥2 adv), technique→rationale→script→trade-offs→metrics, 10-30 line script, ≥2 alternatives + table, assumptions/limits
 
-**Validate per 5**: Count, cites, syntax, traceability, type, quantified
+**Validate**: Count, cites, syntax, traceability, type, quantified
 
 ## 4. Artifacts
 
@@ -227,7 +227,7 @@ Populate sections → Extract `[Ref: ID]` → Verify IDs → Remove orphans → 
 **L3. Dang, B., et al. (2014). *Practical Reverse Engineering*. Wiley.** – Windows, x64/ARM, kernel  
 **L4. Erickson, J. (2008). *Hacking: The Art of Exploitation* (2nd). No Starch.** – Exploitation, shellcode
 
-## Citations (≥6, APA 7th, 60/30/10% EN/ZH/Other)
+## Citations (≥6, APA 7th, 60/30/10% EN/ZH/Other; examples illustrate format, not required distribution)
 **A1.** Eilam, E. (2005). *Reversing: Secrets of reverse engineering*. Wiley. [EN]  
 **A2.** Sikorski, M., & Honig, A. (2012). *Practical malware analysis*. No Starch Press. [EN]  
 **A3.** 段钢. (2013). *加密与解密* (4th). 电子工业出版社. [ZH]  

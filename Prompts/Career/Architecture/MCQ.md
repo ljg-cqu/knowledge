@@ -18,7 +18,7 @@ Generate MCQs evaluating senior technical leaders' ability to select architectur
 
 | Parameter | Requirement | Rationale |
 | --- | --- | --- |
-| **Questions** | 40–80 (20% foundational, 40% intermediate, 40% advanced) | Comprehensive coverage; emphasize application, pattern selection, trade-off evaluation over recall |
+| **Questions** | 42–78 (20% foundational, 40% intermediate, 40% advanced) | Comprehensive coverage; emphasize application, pattern selection, trade-off evaluation over recall |
 | **Audience** | Senior developers, architects (5+ years) | Architecture-to-code translation and real-world decision-making |
 | **Format** | 1–2 sentence stem + 4 mutually exclusive options (exactly 1 correct) | Clarity, precision, machine-gradability, unambiguous assessment |
 | **Distractors** | Map to specific errors (pattern misuse, premature optimization, over-engineering, context mismatch, incomplete understanding) | Reflect common architectural errors; diagnostic learning value |
@@ -46,7 +46,7 @@ Generate MCQs evaluating senior technical leaders' ability to select architectur
 
 ### Validation Gates (All Must Pass)
 
-1. **Sufficiency**: G≥10, T≥5, L≥6, A≥12, Q=40-80 (20/40/40 split); comprehensive coverage
+1. **Sufficiency**: G≥10, T≥5, L≥6, A≥12, Q=42-78 (20/40/40 split); comprehensive coverage
 2. **Evidence**: ≥70% questions cite ≥1 source, ≥30% cite ≥2 sources; credible references back all claims
 3. **Breadth**: EN 50-70%, ZH 20-40%, Other 5-15%; multiple linguistic perspectives
 4. **Credibility**: ≥50% sources from last 3 years (≥70% cloud-native); current, tested approaches
@@ -69,7 +69,7 @@ Generate MCQs evaluating senior technical leaders' ability to select architectur
 
 **Actions**:
 - Identify 6 mutually exclusive, collectively exhaustive dimensions
-- Allocate 7-13 questions per dimension (40-80 total)
+- Allocate 7-13 questions per dimension (42-78 total)
 - Apply 20/40/40 difficulty split per dimension
 - Verify complete coverage of architectural decision-making
 - Prioritize practical, high-value scenarios over theory

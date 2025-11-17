@@ -2,7 +2,7 @@
 
 Decision-critical risk tracking: 6-12 risks × 3-4 dimensions × 4-5 lifecycle phases with quantitative validation.
 
-**Mission**: Generate 6-12 decision-critical risks identifying, assessing, mitigating threats that block decisions or create material risk. Focus: minimal viable news tracking with time constraints.
+**Mission**: Generate 6-12 decision-critical risks identifying, assessing, mitigating threats that block decisions or create material risk. Focus: minimal viable risk tracking with time constraints.
 
 **Context**: Production systems (>10K rps, >1TB data), regulated industries, multi-team  
 **Output**: 6-12 risks (200-350w) | ≥80% mitigated | ≥70% quantified | EN 60-70%, ZH 20-30%, Other 5-10% | ≥50% refs <2yr  
@@ -83,13 +83,13 @@ Distribute 6–12 risks: 2–4/dimension, 1–3/phase.
 
 ### 2. Build References (Minimal, run Gates after)
 
-**Glossary (≥10)**: Risk, Threat, Vulnerability, Impact, Probability, Mitigation, Residual, Appetite, Tolerance, RTO, RPO, MTTR, CVSS, STRIDE, FAIR | **Format**: term, definition, context | Assign G1-G#
+ **Glossary (≥10)**: Risk, Threat, Vulnerability, Impact, Probability, Mitigation, Residual, Appetite, Tolerance, RTO, RPO, MTTR, CVSS, STRIDE, FAIR | **Format**: term, definition, context | Assign G1-G#
 
-**Frameworks (≥5)**: ISO 31000, FAIR, NIST CSF, STRIDE, OWASP Top 10 | **Format**: purpose, application, limits | Assign F1-F#
+ **Frameworks (≥5)**: ISO 31000, FAIR, NIST CSF, STRIDE, OWASP Top 10 | **Format**: purpose, application, limits | Assign F1-F#
 
-**Tools (≥5)**: Risk (ServiceNow GRC, Archer), Security (Snyk, SonarQube), Monitor (Prometheus, Grafana), Compliance (Vanta, Drata), Incident (PagerDuty) | **Format**: category, features, pricing, integrations (≥2), URL | Assign T1-T#
+ **Tools (≥5)**: Risk (ServiceNow GRC, Archer), Security (Snyk, SonarQube), Monitor (Prometheus, Grafana), Compliance (Vanta, Drata), Incident (PagerDuty) | **Format**: category, features, pricing, integrations (≥3), URL | Assign T1-T#
 
-**Literature (≥6)**: EN—*SRE* (Beyer), *Security Engineering* (Anderson), *Release It!* (Nygard), *Accelerate* (Forsgren), ISO 31000:2018 | ZH (≥1)—风险管理 | **Format**: author, title, year, applicability | Assign L1-L#
+ **Literature (≥6)**: EN—*SRE* (Beyer), *Security Engineering* (Anderson), *Release It!* (Nygard), *Accelerate* (Forsgren), ISO 31000:2018 | ZH (≥1)—风险管理 | **Format**: author, title, year, applicability | Assign L1-L#
 
 **Citations (≥10)**: APA 7th + [EN]/[ZH] | ≥60% from 3yrs | Types: frameworks/standards/research/cases | Assign C1-C# | **Alternatives**: Gartner, Forrester, NIST, Verizon DBIR
 
@@ -174,7 +174,7 @@ Distribute 6–12 risks: 2–4/dimension, 1–3/phase.
 
 ### 7. Review
 
-**Quality** (sample ≥10):
+**Quality** (sample ≥10 or all if <10):
 - **Clarity**: Concrete, measurable, contextualized
 - **Relevance**: Real precedent (cases, breaches, postmortems)
 - **Completeness**: All 15 components
@@ -196,7 +196,7 @@ Distribute 6–12 risks: 2–4/dimension, 1–3/phase.
 - **Finance**: TCO included; ROI assumptions documented
 
 **Final Checks**:
-- All 18 validations PASS
+- All 12 validations PASS
 - Floors met
 - 12 gates passed
 - TOC with taxonomy
@@ -205,7 +205,7 @@ Distribute 6–12 risks: 2–4/dimension, 1–3/phase.
 - Balanced coverage
 - Exportable register (CSV/JSON)
 - Heat maps timestamped
-- Executive summary: top 10 + priorities
+- Executive summary: top risks + priorities
 
 ## IV. Validation Report (Minimal, fill all; ANY fail = stop, fix, re-run ALL)
 
@@ -339,11 +339,13 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 **Example**:
 
-**RISK-T-DEV-01: Technical-Development-UntestedDatabaseMigration**
+**RISK-T-DEV-01: Technical-Development & Testing-UntestedDatabaseMigration**
 
 **Statement**: DB schema migration without staging testing causes data inconsistency, app errors, 4–8hr downtime requiring rollback.
 
-**Phase**: Development
+**Phase**: Development & Testing
+
+**Decision Criticality**: Blocks Decision (release gate) + Creates Material Risk (financial, reputational)
 
 **Probability** (1–5): 4 | 60% orgs experience migration incidents in microservices (DORA 2023); team lacks automated testing [Ref: C15]
 
@@ -433,8 +435,8 @@ Legend: C=Critical (≥20) | H=High (15–19) | M=Medium (10–14) | L=Low (5–
 
 | Rank | ID | Name | Score | Dimension | Phase | Owner | Priority |
 |------|----|------|-------|-----------|-------|-------|----------|
-| 1 | RISK-T-REQ-01 | [Risk name] | 20 (C) | Technical | Requirements | [Role] | Immediate |
-| 2 | RISK-R-REQ-01 | [Risk name] | 18 (H) | Regulatory | Requirements | [Role] | High |
+| 1 | RISK-T-REQ-01 | [Risk name] | 20 (C) | Technical | Requirements & Discovery | [Role] | Immediate |
+| 2 | RISK-R-REQ-01 | [Risk name] | 18 (H) | Regulatory | Requirements & Discovery | [Role] | High |
 | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Mitigation Priorities

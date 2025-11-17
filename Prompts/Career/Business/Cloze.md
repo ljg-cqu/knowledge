@@ -39,7 +39,7 @@ Generate 24–40 cloze items testing business-to-architecture translation for se
 | Citation Coverage | ≥70% items: ≥1 citation; ≥30% items: ≥2 citations |
 | Recency | ≥50% ≤3 years (≥70% for cloud/AI/microservices) |
 | Source Diversity | ≥3 types; <25% from single source; ≥3 regions |
-| Business-Arch Mapping | ≥70% items |
+| Business-Architecture Mapping | ≥70% items |
 | Link Integrity | 100% URLs accessible/archived; all [Ref: ID] resolve |
 | MECE | Zero overlap; complete coverage |
 
@@ -55,7 +55,7 @@ Generate 24–40 cloze items testing business-to-architecture translation for se
 ## Process
 
 ### 1. Plan
-Select 4–6 MECE clusters; 4–8 items/cluster; 20/40/40 difficulty per cluster.
+Select 4–6 MECE clusters; 4–8 items/cluster; 20/40/40 difficulty per cluster; ensure total items 24–40.
 
 ### 2. Collect References
 Gather sources meeting minimums and quality gates.
@@ -174,13 +174,12 @@ Populate sections; verify [Ref: ID] resolution; archive unstable URLs.
 | Language ZH | 20–40% | [%] | ✅/❌ |
 | Recency ≤3yr | ≥50% | [%] | ✅/❌ |
 | Source Types | ≥3 | [N] | ✅/❌ |
-| Biz-Arch Mapping | ≥70% | [%] | ✅/❌ |
+| Business-Architecture Mapping | ≥70% | [%] | ✅/❌ |
 | URLs Accessible | 100% | [%] | ✅/❌ |
 | Refs Resolve | 100% | [%] | ✅/❌ |
 | MECE | Pass | [Pass/Fail] | ✅/❌ |
 
 **Notes**: [Deviations, borderline cases, recommendations]
-```
 
 ---
 
@@ -196,4 +195,4 @@ Rationale: Recurring Revenue Streams [Ref: G1] create cost pressure, driving mul
 
 **Advanced**: Per Conway's Law, restructuring from functional silos to cross-functional teams shifts architecture from ___ to microservices.  
 Answers: monolithic architecture | monolith | monolithic system | layered monolith | modular monolith  
-Rationale: Conway's Law [Ref: G4]: silos → layered monoliths [Ref: L4]; cross-functional teams → microservices [Ref: A6], showing org structure driving architecture [Ref: L5].
+Rationale: Conway's Law [Ref: G2]: silos → layered monoliths [Ref: L4]; cross-functional teams → microservices [Ref: A6], showing org structure driving architecture [Ref: L5].

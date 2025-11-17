@@ -1,6 +1,6 @@
 # MCQ Generator
 
-Generate 40-80 expert-level MCQs with stems, 4 options, rationales, misconception-mapped distractors, authoritative citations.
+Generate 40-80 (default, configurable) expert-level MCQs with stems, 4 options, rationales, misconception-mapped distractors, authoritative citations.
 
 ---
 
@@ -40,19 +40,19 @@ citation_style: APA7
 | Type | Count | Purpose | Requirements |
 |------|-------|---------|--------------|
 | **Glossary** | ≥10 | Define terms, acronyms | Clear definitions with language tags |
-| **Codebase/Libraries** | ≥5 | Tools, SDKs, frameworks | License, update ≤12mo, stable release, audit status |
-| **Literature/Reports** | ≥6 | Standards, peer-reviewed, audits | Persistent links (DOI/archived), findings, methodology |
+| **Codebase & Libraries** | ≥5 | Tools, SDKs, frameworks | License, update ≤12mo, stable release, audit status |
+| **Literature & Reports** | ≥6 | Standards, peer-reviewed, audits | Persistent links (DOI/archived), findings, methodology |
 | **APA Citations** | ≥12 | All sources | EN 50-70% / ZH 20-40% / Other 5-15% |
 
 ### Citation Standards
-- **Format**: APA7 + language tags ([EN], [ZH])
-- **IDs**: G# (Glossary), C# (Codebase), L# (Literature), A# (APA)
+- **Format**: APA7 + language tags ([EN], [ZH], [Other])
+- **IDs**: G# (Glossary), C# (Codebase & Libraries), L# (Literature & Reports), A# (APA Citations)
 - **Usage**: `[Ref: ID]` in rationales
 - **Hierarchy**: Official docs → Standards/peer-reviewed → Security audits → Vetted codebases
 - **Confidence**: Score [0-1] for contested claims
 
 ### Quality Gates
-1. **Recency**: ≥50% sources ≤36mo (≥70% AI/security)
+1. **Recency**: ≥50% sources within `recency_threshold` (default 36mo; ≥70% AI/security)
 2. **Diversity**: ≥3 types; max 25% single type
 3. **Coverage**: ≥70% questions ≥1 citation; ≥30% ≥2
 4. **Maturity**: License + update ≤12mo + stable + audit status
@@ -71,11 +71,11 @@ citation_style: APA7
 - **Verify**: Count, MECE, ratio
 
 ### 2. References
-- **Gather** minimums (G≥10, C≥5, L≥6, A≥12)
+- **Gather** minimums (G≥10, C≥5, L≥6, A≥12; apply ×1.5 scaling if >80 questions or regulated)
 - **Tag** language, year, type
 - **Assign** IDs (G1-Gn, C1-Cn, L1-Ln, A1-An)
 - **Validate** URLs (accessible/archived)
-- **Verify**: Counts, distribution (60/30/10), recency (≥50% ≤36mo), diversity (≥3 types, max 25%)
+- **Verify**: Counts, language distribution per config (e.g., 60/30/10), recency (≥50% within `recency_threshold`), diversity (≥3 types, max 25%)
 
 ### 3. Questions
 - **Write**: Stem (1-2 sentences) + 4 options (one correct)
@@ -90,7 +90,7 @@ citation_style: APA7
 - **Verify**: All mapped
 
 ### 5. Compile References
-- **Populate**: All sections (Glossary, Codebase, Literature, APA)
+- **Populate**: All sections (Glossary, Codebase & Libraries, Literature & Reports, APA Citations)
 - **Match**: All `[Ref: ID]` to entries
 - **Verify**: IDs resolve? Fields complete? Links persistent? Tags present?
 
@@ -111,7 +111,7 @@ citation_style: APA7
 
 ### JSONL Schema (Primary)
 ```json
-{"id":"Q001","language":"en","topic":"...","difficulty":"intermediate","stem":"...","options":["A","B","C","D"],"key":"B","rationale":"... [Ref: L3]","misconceptions":["distractor A maps to...","distractor C maps to...","distractor D maps to..."],"significance":"...","risk":"...","fairness":"...","evidence":[{"title":"...","url":"...","accessed":"2025-10-20","citation":"[EN]"}],"confidence":0.95}
+{"id":"Q001","language":"en","topic":"...","difficulty":"intermediate","stem":"...","options":["A","B","C","D"],"key":"B","rationale":"... [Ref: L3]","misconceptions":["distractor A maps to...","distractor C maps to...","distractor D maps to..."],"significance":"...","risk":"...","fairness":"...","evidence":[{"title":"Blockchain consensus","url":"https://doi.org/10.xxxx/jds.2024.15.3.245","accessed":"2025-10-20","citation":"Smith, J., & Wang, L. (2024). Blockchain consensus. Journal of Distributed Systems, 15(3), 245-267. https://doi.org/10.xxxx/jds.2024.15.3.245 [EN]"}],"confidence":0.95}
 ```
 
 **Constraints**: `language` in {en, zh, other}; `difficulty` in {foundational, intermediate, advanced}; `key` in {A,B,C,D}; `confidence` in [0,1].
@@ -141,7 +141,7 @@ citation_style: APA7
 
 ### References
 
-**Usage**: `[Ref: ID]` in rationales → G# (Glossary), C# (Codebase), L# (Literature), A# (APA)
+**Usage**: `[Ref: ID]` in rationales → G# (Glossary), C# (Codebase & Libraries), L# (Literature & Reports), A# (APA Citations)
 
 **Example**: "Answer B correct: consensus algorithms require Byzantine fault tolerance [Ref: G2] per protocol design [Ref: L5]."
 
@@ -197,10 +197,10 @@ Smith, J., & Wang, L. (2024). Blockchain consensus. Journal of Distributed Syste
 
 | Check | Pass Criteria | Report Format |
 |-------|---------------|---------------|
-| **1. Counts** | G≥10, C≥5, L≥6, A≥12, Q=40-80, Ratio 20/40/40 (±5%) | `G:X C:Y L:Z A:W Q:N (F/I/A: P%/Q%/R%)` |
+| **1. Counts** | G≥10, C≥5, L≥6, A≥12 (scaled ×1.5 if >80 Q or regulated), Q in configured range (default 40-80), Ratio 20/40/40 (±5%) | `G:X C:Y L:Z A:W Q:N (F/I/A: P%/Q%/R%)` |
 | **2. Citations** | ≥70% questions ≥1 cite; ≥30% ≥2 cites | `X/Y ≥1 (Z%); W/Y ≥2 (V%)` |
-| **3. Languages** | EN 50-70%, ZH 20-40%, Other 5-15% | `EN:X (Y%) ZH:A (B%) Other:C (D%)` |
-| **4. Recency** | ≥50% last 36mo (≥70% AI/security) | `X/Y (Z%) last 36mo` |
+| **3. Languages** | Per configured `language_distribution` (default: EN 50-70%, ZH 20-40%, Other 5-15%) | `EN:X (Y%) ZH:A (B%) Other:C (D%)` |
+| **4. Recency** | ≥50% within `recency_threshold` (default 36mo; ≥70% AI/security) | `X/Y (Z%) within threshold` |
 | **5. Diversity** | ≥3 types; max 25% single | `Types=N; Max=P%` |
 | **6. Links** | 100% accessible or archived | `Y/X accessible (list broken)` |
 | **7. Cross-refs** | All `[Ref: ID]` resolve; no orphans | `Y/X resolved (list broken)` |
@@ -208,7 +208,7 @@ Smith, J., & Wang, L. (2024). Blockchain consensus. Journal of Distributed Syste
 | **9. Distractors** | All quality (mapped to misconceptions) | `Y/X quality (list weak)` |
 | **10. Options** | All unambiguous | `Y/X clear (list vague)` |
 | **11. Conflicts** | ≥80% comply with documented perspectives | `X applicable; Y comply (Z%)` |
-| **12. Quality** | Significance/Risk/Fairness/Reasoning ≥90% each | `S:X/Y R:W/Y F:V/Y Logic:U/Y` |
+| **12. Quality** | Significance/Risk/Fairness ≥90% each | `S:X/Y R:W/Y F:V/Y` |
 
 **Report Template**:
 ```

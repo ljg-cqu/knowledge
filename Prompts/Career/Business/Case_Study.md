@@ -41,7 +41,7 @@ Each scenario includes:
 
 ### References
 
-**Language:** ~60% EN, ~30% ZH, ~10% other (tag: [EN], [ZH])
+**Language:** EN ~50–70%, ZH ~20–40%, Other ~5–15% (tag: [EN], [ZH])
 
 **Source Types (all 4 required):** (1) Business frameworks (BMC, Lean Canvas, VPC), (2) Architecture patterns (DDD, microservices, event-driven), (3) Case studies/reports, (4) Tools (modeling, documentation).
 
@@ -95,9 +95,9 @@ Execute all; proceed only when all PASS. If FAIL: remediate and re-validate.
 | 1 | Count Audit | Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12 | [counts] | PASS/FAIL |
 | 2 | Difficulty | 20/40/40 ±5% | [F%/I%/A%] | PASS/FAIL |
 | 3 | Citation Coverage | ≥70% scenarios with ≥1, ≥30% with ≥2 | [%] | PASS/FAIL |
-| 4 | Language | EN ~50-70%, ZH ~20-40%, Other ~5-15% | [%] | PASS/FAIL |
+| 4 | Language | EN ~50–70%, ZH ~20–40%, Other ~5–15% | [%] | PASS/FAIL |
 | 5 | Recency | ≥50% from 2022-2025 (≥70% digital) | [%] | PASS/FAIL |
-| 6 | Source Diversity | ≥3 types, no source >25% | [types, max%] | PASS/FAIL |
+| 6 | Source Diversity | All 4 source types present, no type >25% | [types, max%] | PASS/FAIL |
 | 7 | Links | All accessible OR archived | [broken: URLs] | PASS/FAIL |
 | 8 | Cross-Refs | All `[Ref: ID]` resolve | [broken: IDs] | PASS/FAIL |
 | 9 | Context Length | 200–400 words | [sample 5] | PASS/FAIL |
@@ -112,11 +112,11 @@ Execute all; proceed only when all PASS. If FAIL: remediate and re-validate.
 
 Execute sequentially. Validate at checkpoints (✓).
 
-**Step 1: Plan** — Allocate 16–22 scenarios across 5 clusters (3–5 each): Strategic Modeling, Value & Risk Analysis, Organizational Dynamics, Architectural Translation, Evolution & Adaptation. Assign difficulty: 20% F, 40% I, 40% A.  
+**Step 1: Plan** — Allocate 16–22 scenarios across 5 clusters (3–5 each): Strategic Modeling, Value & Risk Analysis, Organizational Dynamics, Architectural Translation, Evolution & Adaptation. Assign difficulty: 20% F, 40% I, 40% A.
 **✓** Total 16–22? Difficulty 20/40/40 ±5%?
 
-**Step 2: Collect References** — Gather Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12 (language ~60/30/10). Assign IDs: G1-Gn, T1-Tn, L1-Ln, A1-An.  
-**✓** Counts met? Language ~60/30/10? Recency ≥50% (≥70% digital)? Diversity ≥3 types, no source >25%?
+**Step 2: Collect References** — Gather Glossary ≥10, Tools ≥5, Literature ≥6, APA ≥12 (language distribution EN ~50–70%, ZH ~20–40%, Other ~5–15%). Assign IDs: G1-Gn, T1-Tn, L1-Ln, A1-An.
+**✓** Counts met? Language within EN ~50–70%, ZH ~20–40%, Other ~5–15%? Recency ≥50% from 2022-2025 (≥70% digital)? Diversity: all 4 source types present, no type >25%?
 
 **Step 3: Generate Scenarios** — For each: (1) Context 200–400 words (≥2 constraints, ≥2 stakeholders, ≥1 market dynamic, ≥1 org factor, ≥1 `[Ref: ID]`; vary industry/size/region); (2) Design 3–4 MECE tasks (business analysis → architecture decisions; deliverables: BMC analysis, value matrix, risk assessment, decision memo); (3) Create rubrics (30/25/30/15%) with partial credit and common omissions; (4) Add bonus (1–2 pts).  
 **✓** (Every 3 scenarios) Context 200–400 words, ≥1 citation, diverse stakeholders? MECE? Rubrics complete? Diversity?

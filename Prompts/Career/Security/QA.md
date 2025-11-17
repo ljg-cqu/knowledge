@@ -28,7 +28,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 **Format**: 120-200 words/answer with Mermaid diagrams, YAML configs, APA 7th [EN]/[ZH]
 **Quantity**: 6-12 Q&A pairs
 **Difficulty**: 25% Foundational (1-2), 50% Intermediate (3-6), 25% Advanced (1-3)
-**Coverage**: Decision-critical security dimensions only (3-4 of 4)
+**Coverage**: Decision-critical security dimensions only (≥3 of 4)
 **Traceability**: Scenario → Risk → Control → Action → Metric (explicit chain required)
 **Per Q&A**: ≥1 diagram or table, ≥1 practical config/playbook, ≥1 metric
 
@@ -56,18 +56,18 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 | Dimension | Diagram (Mermaid) | Key Metrics (formula, target) |
 |-----------|-------------------|-------------------------------|
 | **Threat Detection** | Attack tree, CVSS heat map | CVSS ≥9.0; Affected systems; Active exploitation (Y/N) |
-| **Incident Response** | Incident workflow (NIST 800-61) | MTTD ≤5 min; MTTR <30 min; Detection Rate ≥95% |
-| **Compliance** | Control mapping, audit trail | Compliance % (100%); Deadline (days); Impact (systems affected) |
+| **Incident Response** | Incident workflow (NIST SP 800-61) | MTTD ≤5 min; MTTR <30 min; Detection Rate ≥95% |
+| **Compliance & Governance** | Control mapping, audit trail | Compliance % (100%); Deadline (days); Impact (systems affected) |
 | **Risk & Control** | Risk matrix, control effectiveness | Control Effectiveness ≥80%; False Positive Rate ≤2%; RTO/RPO targets |
 
 ## Decision-Critical Frameworks
 
 | Framework | When to Use | Decision Impact | Standards |
 |-----------|-------------|-----------------|-----------|
-| **Incident Response (NIST 800-61)** | Breach/0-day detected | MTTD/MTTR targets, containment strategy, RTO/RPO | NIST SP 800-61 |
+| **Incident Response (NIST SP 800-61)** | Breach/0-day detected | MTTD/MTTR targets, containment strategy, RTO/RPO | NIST SP 800-61 |
 | **Risk-Based Prioritization** | Multiple threats; limited resources | Allocate resources to P×I >8 threats first | ISO 31000, NIST CSF 2.0 |
 | **Zero-Trust Architecture** | Insider threats, distributed systems | Reduce blast radius, enforce least privilege | NIST SP 800-207 |
-| **Defense-in-Depth** | Compliance requirement, critical infrastructure | Multiple control layers, compensating controls | NIST CSF, ISO 27001 A.13 |
+| **Defense-in-Depth** | Compliance requirement, critical infrastructure | Multiple control layers, compensating controls | NIST CSF 2.0, ISO 27001 A.13 |
 
 ## Decision-Critical Q&A Design
 
@@ -125,7 +125,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 | **Quantified** | 100% include specific metrics (CVSS/deadline/systems/impact) | Review all |
 | **Timeline** | 100% include immediate (0-2wk) + short-term (2wk-2mo) | Review all |
 | **Stakeholders** | ≥5/5 core roles represented | Count roles |
-| **Coverage** | ≥3-4 decision-critical dimensions covered | Check matrix |
+| **Coverage** | ≥3 of 4 decision-critical dimensions covered | Check matrix |
 | **Actionability** | 100% concrete; 0% abstract/speculative | Review all |
 
 ## Workflow (Minimal Viable)
@@ -156,7 +156,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 
 ### 3. Generate Q&A (batch 2-3, self-check each)
 **Structure** (120-200w):
-1. **Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: S#]
+1. **Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: A#]
 2. **Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
 3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
 4. **Decision** (~50w): Immediate (0-2wk) + Short-term (2wk-2mo) + owner
@@ -169,7 +169,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 
 ### 5. Validate
 **Execute**: All 12 quality gates from table
-**Verify**: 6-12 Q&As, 25/50/25 difficulty, ≥3-4 dimensions, ≥5 roles
+**Verify**: 6-12 Q&As, 25/50/25 difficulty, ≥3 of 4 dimensions, ≥5 roles
 
 ### 6. Submit
 **Checklist**: Validations PASS | Floors met | Glossary complete | TOC complete | 0 placeholders | Visuals OK | Citations OK | Freshness OK | Dates (gen + expire=gen+2wk)
@@ -179,10 +179,10 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 ```markdown
 ## Contents
 - [Executive Summary](#executive-summary)
-- [Decision-Critical Dimensions](#dimensions)
-- [Q&A by Dimension](#qa-sections)
+- [Decision-Critical Dimensions](#decision-critical-dimensions)
+- [Q&A Template](#qa-template)
 - [References](#references): Glossary, Tools, Literature, Citations
-- [Validation Results](#validation-results)
+- [Validation Results](#validation-results-12-checks)
 
 ## Executive Summary
 **Domain**: [Security domain] | **Period**: [YYYY-MM-DD] | **Coverage**: [# items, 3-4 dimensions]
@@ -196,10 +196,10 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 ## Decision-Critical Dimensions
 | # | Dimension | Count | Scenarios | Roles |
 |---|-----------|-------|-----------|-------|
-| 1 | Threat Detection | 1-3 | 0-days, breaches | Security Eng, DevOps |
-| 2 | Incident Response | 1-3 | Active incidents | Security Eng, SRE |
-| 3 | Compliance & Governance | 1-3 | Regulatory changes | Security Lead, Compliance |
-| 4 | Risk & Control | 1-3 | Control gaps, emerging threats | Architect, Security Lead |
+| 1 | Threat Detection | 0-3 | 0-days, breaches | Security Eng, DevOps |
+| 2 | Incident Response | 0-3 | Active incidents | Security Eng, SRE |
+| 3 | Compliance & Governance | 0-3 | Regulatory changes | Security Lead, Compliance |
+| 4 | Risk & Control | 0-3 | Control gaps, emerging threats | Architect, Security Lead |
 | | **Total** | **6-12** | **4+** | **≥5** |
 
 ## Q&A Template
@@ -208,7 +208,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 
 **Dimension**: [Dimension] | **Roles**: [Primary, Secondary] | **Decision Criticality**: [Criterion]
 
-**Scenario** (~25w): What, when, why, CVSS/impact [Ref: S#]
+**Scenario** (~25w): What, when, why, CVSS/impact, category [Ref: A#]
 
 **Risk** (~40w): Threat/Compliance → Risk (CVSS/deadline/systems) → Control
 
@@ -245,7 +245,7 @@ Generate 6-12 decision-critical security Q&As for informed decisions with limite
 
 **Dimension**: Threat Detection | **Roles**: Security Engineer, DevOps/SRE | **Decision Criticality**: Blocks incident response, creates material risk
 
-**Scenario** (~25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation reported in 3 critical infrastructure sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: S1]
+**Scenario** (~25w): CVE-2024-XXXXX disclosed 2024-11-15 (CVSS 9.8, RCE, unauthenticated). Affects Siemens S7-1200/1500 PLCs. Active exploitation reported in 3 critical infrastructure sectors. 50K+ systems vulnerable globally, ~2K in healthcare. [Ref: A1]
 
 **Risk** (~40w): **Threat**: Remote code execution on PLC → loss of control → operational shutdown. **Impact**: CVSS 9.8 (critical). **Affected**: 2K healthcare systems, 5K energy systems. **Timeline**: Patch available 2024-11-20 (5-day window). **Control**: Detection (MTTD ≤5 min), isolation (MTTR <30 min), patching (7-day window).
 

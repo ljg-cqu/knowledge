@@ -23,9 +23,9 @@ Generate 15-22 debugging tasks with buggy code, tests, fixes, root-cause analysi
 | **Literature (L#)** | 6 | Persistent links (DOI/archived) |
 | **APA (A#)** | 12 | APA 7th + [Lang]: EN 50-70% / ZH 20-40% / Other 5-15% |
 
-**Scaling**: >30 tasks → multiply by 1.5×  
-**Format**: APA 7th + language tags  
-**Inline**: `[Ref: ID]` (≥1 per task, 2+ for complex)  
+**Scaling**: If you later expand the task bank beyond 30 tasks, multiply all reference minimums (G, C, L, A) by 1.5×
+**Format**: APA 7th + language tags
+**Inline**: `[Ref: ID]` (≥1 per task, 2+ for complex)
 **Hierarchy**: Official docs → Standards/peer-reviewed → Security audits → Vetted codebases
 
 ### Quality Gates
@@ -87,7 +87,7 @@ Generate 15-22 debugging tasks with buggy code, tests, fixes, root-cause analysi
 **Validate**: All IDs cited? No orphans? Fields complete? URLs accessible? Tags present? Sequential?
 
 ### 6. Validate (11 Checks)
-1. Count audit (G≥10, C≥5, L≥6, A≥12, Tasks 15-22, Ratio 20/40/40)
+1. Count audit (G≥10, C≥5, L≥6, A≥12, Tasks 15-22, Ratio 20/40/40 (±5%))
 2. Citation coverage (≥70% ≥1 cite, ≥30% ≥2 cites)
 3. Language distribution (EN 50-70%, ZH 20-40%, Other 5-15%)
 4. Recency (≥50% last 3yr, ≥70% for AI/security)
@@ -102,8 +102,8 @@ Generate 15-22 debugging tasks with buggy code, tests, fixes, root-cause analysi
 Generate report (Check | Result | Status). Fix failures, re-validate until ALL PASS. Attach final report.
 
 ### 7. Submit
-**Checklist**: References + Tasks + Citations + Technical rigor + Validation (ALL PASS) + Success criteria  
-**Review**: Coherence, spot-checks, formatting, TOC links, citations  
+**Checklist**: References + Tasks + Citations + Technical rigor + Validation (ALL PASS)
+**Review**: Coherence, spot-checks, formatting, TOC links, citations
 **Submit when**: Checklist complete + ALL PASS + no placeholders
 
 ---

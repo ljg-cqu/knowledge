@@ -16,12 +16,12 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | Aspect | Requirement |
 |--------|-------------|
 | **Total** | 6-8 (25% F / 50% I / 25% A) |
-| **Answer** | 150-250 words: News → Impact → Stakeholders → Decision → Action |
+| **Answer** | 150-250 words: Context/Trigger → Impact → Stakeholders → Decision → Action |
 | **Citations** | ≥1 per Q&A |
 | **Per Phase** | Diagram + Decision matrix + Metrics |
 | **Decision Criticality** | 100% satisfy ≥1 criterion: Blocks/Risk/Roles/Evolving/Quantified |
 
-## Coverage (3-4 Decision-Critical Phases, 1-3 Q&As Each)
+## Coverage (3-4 Decision-Critical Phases, 1-2 Q&As Each)
 
 1. **Architecture & Design**: Major tech decisions, ADRs, design pattern evolution (Q1-Q2)
 2. **Development & Quality**: Code quality evolution, testing strategy shifts, CI/CD improvements (Q3-Q4)
@@ -60,7 +60,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 |-----------|-----|--------------|
 | **Glossary** | ≥8 | Terms + phase mapping (only decision-critical terms used in Q&As) |
 | **Tools** | ≥5 | Valid URL, ≤18mo old, decision-critical only (ADR, roadmap, metrics tools) |
-| **Literature** | ≥6 | Canonical references (Bass, Forsgren, Beyer, Skelton, Evans, Richardson) |
+| **Literature** | ≥6 | Canonical references (Bass, Forsgren, Beyer, Skelton, Kleppmann, Richardson) |
 | **Citations** | ≥8 | APA 7th, 60%[EN]/30%[ZH]/10%other (±10%), all decision-critical |
 
 **Quality**: ≥50% last 3yr (≥70% DevOps/SRE); ≥3 types, <25% single source; peer-reviewed; 100% valid links
@@ -70,8 +70,8 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 # Generation Process
 
 ## 1. Plan Structure
-**Actions**: Identify decision-critical roadmap topics → Select 1-3 Q&As/phase → Allocate 6-8 total → Assign 25/50/25% F/I/A → Map ≥5 core stakeholders
-**Checks**: 6-8 total; 25/50/25% F/I/A (±5%); 3-4 phases (1-3 each); ≥5 core roles; 100% decision-critical
+**Actions**: Identify decision-critical roadmap topics → Select 1-2 Q&As/phase → Allocate 6-8 total → Assign 25/50/25% F/I/A → Map ≥5 core stakeholders
+**Checks**: 6-8 total; 25/50/25% F/I/A (±5%); 3-4 phases (1-2 each); ≥5 core roles; 100% decision-critical
 
 ## 2. Build References
 **Actions**: Glossary (≥8, decision-critical only) → Tools (≥5, URL/phase/≤18mo) → Literature (≥6 canonical) → Citations (≥8 APA 7th)
@@ -79,7 +79,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 ## 3. Write Q&As
 **Questions**: Decision-focused ("How to decide on...", "When to migrate...", "Compare..."); scenario-based
-**Answers**: 150-250 words; ≥1 citation; Context → Impact → Stakeholders → Decision → Action; quantified; ≥2 alternatives; decision criteria explicit
+**Answers**: 150-250 words; ≥1 citation; Context/Trigger → Impact → Stakeholders → Decision → Action; quantified; ≥2 alternatives; decision criteria explicit
 **Validate Every 2**: Word count, citations, decision criticality, quantified impact, stakeholder clarity
 
 ## 4. Create Artifacts
@@ -102,7 +102,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 | 6 | Links | 100% valid |
 | 7 | Word count | All Q&As: 150-250 words |
 | 8 | Quantified Impact | 100% have measurable metrics + targets |
-| 9 | Phase coverage | All 3-4 phases covered (1-3 Q&As each) |
+| 9 | Phase coverage | All 3-4 phases covered (1-2 Q&As each) |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles |
 | 11 | Decision Matrix | ≥80% have ≥2 alternatives × ≥5 criteria |
 | 12 | Artifacts | ≥90% phases have diagram + metrics |
@@ -111,7 +111,7 @@ Generate 6-8 decision-critical Q&As for informed roadmap decisions with minimal 
 
 ## 7. Final Review (4 Criteria, All PASS)
 1. **Decision-First**: Every Q&A blocks a decision or creates material risk; 100% decision-critical
-2. **Clarity**: Clear news trigger → impact → decision → action; consistent terms; explicit decision criteria
+2. **Clarity**: Clear trigger (scenario/change) → impact → decision → action; consistent terms; explicit decision criteria
 3. **Accuracy**: Verifiable metrics; realistic alternatives; current tools/practices; valid URLs
 4. **Completeness**: 6-8 Q&As across 3-4 phases; minimums met; 12/12 PASS
 
@@ -232,6 +232,7 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 **A6.** Kleppmann (2017). *Designing data-intensive applications*. O'Reilly. [EN]
 **A7.** 周志明 (2021). *凤凰架构*. 机械工业出版社. [ZH]
 **A8.** 张逸 (2019). *架构整洁之道实战*. 电子工业出版社. [ZH]
+**A9.** ISO/IEC/IEEE 42010:2011. *Systems and software engineering — Architecture description*. International Organization for Standardization. [Other]
 
 ---
 
@@ -246,7 +247,7 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 | 6 | Links | 100% valid | X% valid | PASS/FAIL |
 | 7 | Word count | All Q&As: 150-250 words | [Range] | PASS/FAIL |
 | 8 | Quantified Impact | 100% have measurable metrics + targets | X% quantified | PASS/FAIL |
-| 9 | Phase coverage | All 3-4 phases covered (1-3 Q&As each) | [Distribution] | PASS/FAIL |
+| 9 | Phase coverage | All 3-4 phases covered (1-2 Q&As each) | [Distribution] | PASS/FAIL |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles | X% multi-role | PASS/FAIL |
 | 11 | Decision Matrix | ≥80% have ≥2 alternatives × ≥5 criteria | X% with matrix | PASS/FAIL |
 | 12 | Artifacts | ≥90% phases have diagram + metrics | X/4 complete | PASS/FAIL |
@@ -259,7 +260,7 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 
 ---
 
-# Example Question Patterns (Decision-Critical News Triggers)
+# Example Question Patterns (Decision-Critical Roadmap Triggers)
 
 ## Foundational (25%)
 - "What are the key decision criteria for adopting a new architecture pattern?"
@@ -297,7 +298,7 @@ Acceptable downtime: SLO target - actual uptime. Guides incident response. **Rel
 **Review Cadence**: Quarterly (roadmap cycles)
 
 **Change Log**:
-- 2025-11-16: Optimized to minimal viable decision-critical Q&As: 30-35 Q&As → 6-8; 8 phases → 3-4; 21 checks → 12; Decision Criticality Framework added; 60% reduction across all dimensions
+- 2025-11-16: Optimized to minimal viable decision-critical Q&As: 30-35 Q&As → 6-8; 8 phases → 3-4; 21 checks → 12; Decision Criticality Framework added; 50-80% reduction across major dimensions
 - 2025-11-13: Initial version, adapted from Software System Construction Lifecycle Roadmap handbook, 8-phase coverage with quantified criteria and stakeholder focus
 
 **Optimization Summary**:

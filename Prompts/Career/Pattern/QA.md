@@ -18,7 +18,7 @@
 - All 12 validation steps PASS
 - 100% patterns satisfy ≥1 Decision Criticality criterion
 
-**4-6 Decision-Critical Domains** (MECE): Regulatory, Business, Technical, Data, Organizational, NFR (Security, Reliability, Observability, Scalability, Adaptability)
+**4-6 Decision-Critical Domains** (MECE), chosen from the catalog below (e.g. Regulatory, Business, Technical, Data, Organizational, NFR)
 
 **RFC 2119**: MUST (mandatory), SHOULD (strong recommendation), MAY (optional)
 
@@ -78,6 +78,8 @@
 - **Format**: Author/Org. (Year). _Title_. URL/DOI. [Lang]. Inline: [Ref: ID]
 
 ## Pattern Domains (MECE, G5)
+
+Full domain catalog (superset). For each run, select 4-6 decision-critical domains, consistent with **Scope**.
 
 | Domain | Examples | Stakeholders |
 |--------|----------|--------------|
@@ -171,7 +173,7 @@
 ```markdown
 ## Contents
 - [Decision Criticality Framework](#decision-criticality-framework)
-- [Topic Areas](#topic-areas) - Q1-12
+- [Topic Areas](#topic-areas) - Q1-12 (8-12 total)
 - [Topic 1: Domain](#topic-1) (Q1-QX) [F/I/A]
 - [References](#references): [Glossary](#glossary) | [Tools](#tools) | [Literature](#literature) | [Citations](#citations)
 - [Validation Report](#validation-report)
@@ -242,12 +244,22 @@
 | **Data** | ERD, Flow | DDL/SQL | Normalization, Perf |
 | **Organizational** | Team topology | Team structure | Alignment % |
 | **NFR-Security** | Threat model | Security config | Vulnerabilities |
+| **NFR-Performance** | Latency breakdown | Flamegraph | p50/p95/p99 |
+| **NFR-Availability** | Failure tree | Health checks | Uptime %, MTTR |
 | **NFR-Reliability** | Retry flow | Idempotency keys | Recovery % |
 | **NFR-Observability** | Tracing | Distributed traces | MTTD |
 | **NFR-Scalability** | Scaling strategy | Horizontal scaling | Factor |
 | **NFR-Adaptability** | Feature flags | Toggle code | Lead Time |
+| **NFR-Extensibility** | Extension map | Plugin registry | #extensions |
+| **NFR-Maintainability** | Layered diagram | Refactoring diff | Churn, complexity |
+| **NFR-Testability** | Test pyramid | Contract tests | Coverage, flaky % |
+| **Market** | Market map | Blue Ocean canvas | Share, growth % |
+| **Process** | Workflow | Kanban board | Cycle time |
+| **Hybrid** | Cross-domain map | Compliance-by-design flow | Risk score |
 
-## Decision-Critical Pattern Catalog (20-30)
+## Decision-Critical Pattern Catalog (Target: 20-30 patterns)
+
+Example subset shown below. Extend or adapt to reach 20-30 decision-critical patterns in your final output.
 
 | Domain | Pattern | Contexts | Evidence | Stakeholders | Decision Criticality |
 |--------|---------|----------|----------|--------------|----------------------|

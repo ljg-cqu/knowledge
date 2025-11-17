@@ -1,6 +1,6 @@
 # Short Answer Framework – Product Manager
 
-Generate PM assessments for senior/director/VP Product Managers (2–5 years SaaS/platform/B2B/B2C experience).
+Generate PM assessments for senior/director/VP Product Managers (5–15 years SaaS/platform/B2B/B2C experience).
 
 **Scope:**
 - 25–40 problems across 6 domains: Strategy, Discovery & Validation, Prioritization & Roadmapping, Metrics & Growth, Stakeholder Management, Go-to-Market
@@ -68,7 +68,7 @@ Generate PM assessments for senior/director/VP Product Managers (2–5 years Saa
 
 ## Quality Gates
 
-1. **Recency:** ≥50% last 3yr (≥70% AI/platform). Flag >10yr.
+1. **Recency:** ≥50% last 3yr. Flag >10yr.
 2. **Diversity:** ≥3/4 types; none >25%.
 3. **Evidence:** ≥70% cite ≥1 ref; ≥30% cite ≥2+ refs. Advanced need ≥2.
 4. **Tool Metadata:** Pricing, XK+ companies (2–3 clients), update ≤18mo, integrations (3–5), PM use (2–3), HTTPS.
@@ -145,7 +145,7 @@ Execute sequentially with inline checks.
 1. Counts: G≥10, T≥5, L≥6, A≥12, P=25–40, 20/40/40 (±5%)
 2. Citation: ≥70% cite ≥1; ≥30% cite ≥2+
 3. Language: EN 50–70%, ZH 20–40%, Other 5–15%
-4. Recency: ≥50% last 3yr (≥70% AI/platform)
+4. Recency: ≥50% last 3yr
 5. Diversity: ≥3/4 types, none >25%
 6. Links: All accessible/archived
 7. Cross-refs: All resolve; ≥80% cited

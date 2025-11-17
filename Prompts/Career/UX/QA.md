@@ -88,7 +88,7 @@ Distribute 6-12 across 3-4 decision-critical dimensions (25/50/25% F/I/A).
 - **Format**: `G#. Term [Lang] | Definition | Use: [Cases]`
 
 **Tools (≥4)**: Figma (Design), Axe DevTools (Accessibility), Storybook (System docs), Hotjar (Research)
-- **Format**: `T#. Tool (Category) [Lang] | Desc | Use | URL`
+- **Format**: `T#. Tool (Category) [Lang] | Desc | Price | Updated Q# YYYY | Integrations (≥3) | Use | URL`
 
 **Literature (≥5)**: EN—Norman, Krug, Cooper, Gothelf | ZH—刘津/李月
 - **Format**: `L#. Author, Title, Year [Lang] | Relevance`
@@ -163,7 +163,7 @@ Distribute 6-12 across 3-4 decision-critical dimensions (25/50/25% F/I/A).
 
 ### B. Overview
 
-**Total**: 6-12 | **Difficulty**: 2F (25%) / 4I (50%) / 3A (25%)
+**Total**: 6-12 | **Difficulty (example for 9 Q&As)**: 2F (25%) / 4I (50%) / 3A (25%)
 
 | # | Dimension | Q Range | Mix | Artifacts |
 |---|-----------|---------|-----|-----------|
@@ -171,7 +171,7 @@ Distribute 6-12 across 3-4 decision-critical dimensions (25/50/25% F/I/A).
 | 2 | Accessibility | Q4-5 | 0F/1I/1A | diagram+table |
 | 3 | Research/IA | Q6-7 | 1F/1I/0A | diagram+table |
 | 4 | Interaction | Q8-9 | 0F/1I/1A | diagram+table |
-| | **Total** | **6-9** | **2F/4I/3A** | **8 min** |
+| | **Total** | **9** | **2F/4I/3A** | **diagram+table per Q&A** |
 
 **Usage**: All Q&As decision-critical; use for informed decisions on UX strategy, system governance, accessibility compliance
 
@@ -215,10 +215,10 @@ Distribute 6-12 across 3-4 decision-critical dimensions (25/50/25% F/I/A).
 **G8. Information Architecture** [EN] | Structural design of information environments for findability | **Use**: Navigation, taxonomy
 
 ### Tools (≥4)
-**T1. Figma** [EN] | Collaborative design for UI/UX, components, prototypes | **Updated**: Q4 2024 | **Use**: Interface design | **URL**: https://figma.com  
-**T2. Axe DevTools** [EN] | WCAG testing; browser extension, CLI | **Updated**: Q4 2024 | **Use**: Accessibility audits | **URL**: https://deque.com/axe  
-**T3. Storybook** [EN] | Component docs, isolated dev environment | **Updated**: Q4 2024 | **Use**: System docs | **URL**: https://storybook.js.org  
-**T4. Hotjar** [EN] | Behavior analytics: heatmaps, recordings, surveys | **Updated**: Q3 2024 | **Use**: Research, analytics | **URL**: https://hotjar.com
+**T1. Figma (Design)** [EN] | Collaborative design for UI/UX, components, prototypes | **Price**: Free tier + subscription | **Updated**: Q4 2024 | **Integrations**: Slack, Jira, GitHub | **Use**: Interface design | **URL**: https://figma.com
+**T2. Axe DevTools (Accessibility Testing)** [EN] | WCAG testing; browser extension and CI/CD | **Price**: Free + commercial plans | **Updated**: Q4 2024 | **Integrations**: Chrome, Firefox, Jest | **Use**: Accessibility audits | **URL**: https://deque.com/axe
+**T3. Storybook (Component Docs)** [EN] | Component docs, isolated dev environment | **Price**: Open source + paid team features | **Updated**: Q4 2024 | **Integrations**: React, Vue, Angular | **Use**: System docs | **URL**: https://storybook.js.org
+**T4. Hotjar (Behavior Analytics)** [EN] | Behavior analytics: heatmaps, recordings, surveys | **Price**: Free tier + subscription | **Updated**: Q3 2024 | **Integrations**: Google Analytics, Slack, HubSpot | **Use**: Research, analytics | **URL**: https://hotjar.com
 
 ### Literature (≥5)
 **L1. Norman, D. (2013). *Design of Everyday Things*. Basic Books.** [EN] | Affordances, signifiers, mental models | **Relevance**: Core UX principles  

@@ -107,10 +107,10 @@ Execute sequentially; verify checks before advancing.
 1. Compile minimums (G≥10, C≥5, L≥6, APA≥12); assign IDs
 2. Tag language ([EN], [ZH], [Other]), year, source type
 3. Document recency, credibility, jurisdiction, applicability
-4. **Check**: Minimums met; language ≈60/30/10; ≥50% last 3yr; ≥3 source types
+4. **Check**: Minimums met; language ≈60/30/10; ≥50% last 3yr (≥70% AI/security); ≥3 source types; single ≤25%
 
 ### 3. Scenario Generation
-1. Draft 200–400 word contexts with constraints, stakeholders, systems, metrics, risks; embed ≥1 `[Ref: ID]`
+1. Draft 200–400 word contexts with constraints, assumptions, stakeholders, technical stack/systems, regulatory environment, boundary conditions, metrics, risks; embed ≥1 `[Ref: ID]`
 2. Define 3–4 MECE tasks with deliverables and point allocations
 3. Capture expected responses with quantitative thresholds and qualitative criteria
 4. **Check** (every 3 scenarios): Length, citations, MECE, rubrics, trade-offs, fairness
@@ -163,13 +163,13 @@ Include `## Contents` with links. Use lists, tables, Mermaid diagrams, LaTeX for
 
 ---
 
-## Scenario Bank (Scenarios 1–N)
+## Scenario Bank (Scenarios 1-N)
 
 ### Scenario X: [Title]
 
 **Difficulty:** [Foundational/Intermediate/Advanced] | **Domain:** [Domain] | **Stakeholders:** [List]
 
-**Context:** 200–400 words with constraints, systems, metrics, risks; `[Ref: ID]` for claims.
+**Context:** 200–400 words stating constraints, assumptions, stakeholders, technical stack/systems, regulatory environment, boundary conditions, metrics, risks; `[Ref: ID]` for claims.
 
 **Task 1: [Name] (X pts)**
 - **Expected**: Key points with reasoning, metrics

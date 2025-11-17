@@ -12,9 +12,9 @@
 
 ## Coverage
 
-**8 Phases** (3-5 Q&As each): Requirements → Design → Development → Testing → Deployment → Operations → Maintenance → Evolution
+**8 Phases** (≥6/8 covered across 8-12 Q&As): Requirements → Design → Development → Testing → Deployment → Operations → Maintenance → Evolution
 
-**10 Categories** (≥3/Q&A):
+**10 Categories** (≥2/Q&A; ≥7/10 covered overall):
 
 | Category | Standards & Metrics |
 |----------|--------------------|
@@ -31,7 +31,7 @@
 
 **10 Stakeholders** (≥2/Q&A): BA, PM, Arch, Dev, QA, DevOps, Sec, Data, SRE, Lead
 
-**6 Viewpoints** (all): Technical (code, arch, testing), Business (ROI, time-to-market), Regulatory (GDPR/HIPAA/PCI-DSS), Operational (SLOs, monitoring, DR), Data (schema, quality, governance), Security (threat model, zero-trust)
+**6 Viewpoints** (target coverage ≥5/6): Technical (code, arch, testing), Business (ROI, time-to-market), Regulatory (GDPR/HIPAA/PCI-DSS), Operational (SLOs, monitoring, DR), Data (schema, quality, governance), Security (threat model, zero-trust)
 
 ## Decision Criticality Framework
 
@@ -60,13 +60,13 @@
 | Glossary | 10 | Only terms used in Q&As; cover decision-critical categories and phases |
 | Tools | 6 | URL, updated ≤18mo, pricing, phase, productivity metric if available |
 | Literature | 6 | Canonical references only (DORA/SRE/OWASP/Clean Code/Agile/Team Topologies) |
-| Citations | 8 | APA 7th, 60/30/10% EN/ZH/Other (±10%), ≥60% ≤3yr, 100% URLs |
+| Citations | 8 | APA 7th, 60/30/10% EN/ZH/Other (±10%), ≥60% ≤3yr, URLs for all web sources |
 
 **Quality Gates**: ≥60% tools last 2yr, ≥50% methods last 3yr; 100% valid URLs; peer-reviewed or authoritative sources
 
 ## Generation Process
 
-**1. Plan (8-12 Q&As)**: Allocate 1-2 Q&As per phase, prioritize by **Decision Criticality** (blocks decision, creates risk, affects ≥3 stakeholders, actively evolving); difficulty 25/50/25% F/I/A; verify all 6 viewpoints covered, ≥8 stakeholders
+**1. Plan (8-12 Q&As)**: Select candidate Q&As across all phases (target coverage ≥6/8), prioritize by **Decision Criticality** (blocks decision, creates risk, affects ≥3 stakeholders, actively evolving); difficulty 25/50/25% F/I/A; verify viewpoints ≥5/6 and ≥8 stakeholders covered
 
 **2. References** (G≥10, T≥6, L≥6, C≥8): Build glossary with only decision-critical terms; tools with productivity metrics; canonical literature only; citations 60/30/10% EN/ZH/Other
 
@@ -90,7 +90,7 @@
 **Q&A Template**:
 ```
 **Q**: [Judgment question: How/When/Why/Compare...]
-**Difficulty**: F/I/A | **Phase**: [Phase] | **Category**: [≥1] | **Stakeholders**: [≥2] | **Viewpoints**: [≥2]
+**Difficulty**: F/I/A | **Phase**: [Phase] | **Category**: [≥2] | **Stakeholders**: [≥2] | **Viewpoints**: [≥2]
 **Decision Criticality**: [Blocks/Risk/Stakeholders/Evolving] – [Justification]
 **Key Insight**: [Quantified benefit, 1 sentence]
 **Best Practice**: [Name | Source]
