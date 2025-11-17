@@ -42,7 +42,7 @@
 **3. Precision** [↓40-50% ambiguity]: Use exact metrics, formulas, units.
 
 - ❌ "Design fast and scalable system"
-- ✅ "Design system: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
+- ✅ "Design system: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime. Cost formula: `TCO = (servers × $100/mo) + (bandwidth_GB × $0.05) + (storage_TB × $20/mo)`. Use math blocks for complex formulas."
 
 **Rationale:** Eliminates ambiguity; enables measurable recommendations.
 
@@ -92,42 +92,49 @@
 
 **Rationale:** Reduces cognitive load; focuses on decision-critical info.
 
-**10. Concision** [↓35-45% word count]: Eliminate redundancy; state each concept once.
+**10. Priority** [↑45-55% focus]: Order by importance; label priority levels explicitly (critical/important/optional).
+
+- ❌ "Handle errors, implement logging, add metrics"
+- ✅ "Critical: 429/503 errors (circuit breaker). Important: 401/403 (alerts). Optional: 404 logging (<5% impact)"
+
+**Rationale:** LLMs prioritize labeled items; prevents equal treatment of unequal concerns.
+
+**11. Concision** [↓35-45% word count]: Eliminate redundancy; state each concept once.
 
 - ❌ "Explain why we should consider using caching and how caching can improve performance"
 - ✅ "Caching strategy: Redis for sessions (TTL 30min), CDN for static assets (TTL 1d). No explanatory text."
 
 **Rationale:** Saves time; improves scannability.
 
-**11. Accuracy** [↓20-30% errors]: Verify facts against authoritative sources.
+**12. Accuracy** [↓20-30% errors]: Verify facts against authoritative sources.
 
 - ❌ "Recommend libraries"
 - ✅ "Recommend libraries: verify current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs"
 
 **Rationale:** Reduces factual errors and outdated info.
 
-**12. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources.
+**13. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources.
 
 - ❌ "What are best practices?"
 - ✅ "Cite: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+). Include URLs."
 
 **Rationale:** Credible sources reduce hallucinations; improve trust.
 
-**13. Logic** [↓30-40% reasoning errors]: Provide coherent arguments with explicit trade-offs.
+**14. Logic** [↓30-40% reasoning errors]: Provide coherent arguments with explicit trade-offs.
 
 - ❌ "Explain why microservices simplify architecture"
 - ✅ "Microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10. Include reasoning."
 
 **Rationale:** Prevents contradictions; ensures sound recommendations.
 
-**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks.
+**15. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks.
 
 - ❌ "Recommend Kubernetes setup"
 - ✅ "Compare: (1) K8s self-managed ($2K/mo, ops team, full control), (2) Managed K8s ($500/mo, vendor lock-in, less ops), (3) VMs ($200/mo, limited scale). Include migration paths."
 
 **Rationale:** Enables informed decisions; reveals hidden costs.
 
-**15. Fairness** [↓40-50% bias]: Provide balanced view with counterarguments, limitations.
+**16. Fairness** [↓40-50% bias]: Provide balanced view with counterarguments, limitations.
 
 - ❌ "Why should we use GraphQL?"
 - ✅ "GraphQL vs REST: pros (flexible queries, reduced over-fetching), cons (complexity, caching challenges), when NOT to use (simple CRUD, public API, small team)"
@@ -136,14 +143,14 @@
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% scannability]: Use headings, lists, tables, diagrams.
+**17. Structure** [↑30-40% scannability]: Use headings, lists, tables, diagrams.
 
 - ❌ "Explain the solution"
 - ✅ "Format: ## TOC → ### H2 sections → Bullet lists → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting → Math blocks"
 
 **Rationale:** Improves scannability; easier to locate and act upon.
 
-**17. Consistency** [↑35-45% readability]: Use consistent hierarchy and formatting.
+**18. Consistency** [↑35-45% readability]: Use consistent hierarchy and formatting.
 
 - ❌ "Provide analysis"
 - ✅ "Structure: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → ### Comparison → ### Recommendation → ### Timeline. H2 for main, H3 for subsections."
@@ -152,28 +159,28 @@
 
 ### Validation: Ensure Correctness
 
-**18. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, uncertainty flags.
+**19. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, uncertainty flags.
 
 - ❌ "What do studies show?"
 - ✅ "Cite: [1] Google SRE Book (2023) p.42 'MTTR <1h'. [2] AWS re:Invent 2024 [URL, timestamp]. Flag: 'cache hit rate estimated (no empirical data)'."
 
 **Rationale:** Enables fact-checking; builds trust.
 
-**19. Verification** [↓25-35% errors]: Self-review and error checking.
+**20. Verification** [↓25-35% errors]: Self-review and error checking.
 
 - ❌ "Provide recommendation"
 - ✅ "Self-review: verify calculations, check contradictions, validate terminology, test code, cross-reference claims, flag uncertainties"
 
 **Rationale:** Catches errors; improves reliability.
 
-**20. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands.
+**21. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands.
 
 - ❌ "Suggest monitoring improvements"
 - ✅ "Monitoring setup: tools (Prometheus, Grafana), commands ('helm install prometheus'), queries ('rate(http_requests_total[5m])'), dashboards, common issues"
 
 **Rationale:** Accelerates implementation; reduces trial-and-error.
 
-**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets.
+**22. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets.
 
 - ❌ "How to achieve better performance?"
 - ✅ "Metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo (current: $8K/mo), timeline 3mo. Specify tools."
@@ -187,7 +194,7 @@
 ☐ **Self-contained**: Complete context; no cross-file refs  
 ☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
-☐ Significance | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
 ☐ Structure | ☐ Consistency  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
@@ -219,7 +226,7 @@
 ## Document Verification
 
 **Self-assessment:**
-☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
+☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Priority, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
 ⚠ Credibility: Impact metrics lack external citations  
 ⚠ Risk/Value: Single framework (no alternatives compared)  
 ⚠ Evidence: Observational metrics, not peer-reviewed  

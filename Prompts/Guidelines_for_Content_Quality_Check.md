@@ -12,7 +12,7 @@
 
 **2. Clarity**: Define key terms and relationships; use diagrams for complexity. ❌ Unexplained jargon. ✅ Defined terms; diagrams.
 
-**3. Precision**: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "soon"). ✅ Specific criteria (numbers, ranges, thresholds).
+**3. Precision**: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "soon"). ✅ Specific criteria (numbers, ranges, thresholds); formulas (`cost = base + (users × $0.10)`).
 
 **4. Relevance**: Focus on essential information; move non-critical details to appendices. ❌ Unconnected background. ✅ Information supports purpose.
 
