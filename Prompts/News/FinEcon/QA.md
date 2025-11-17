@@ -37,7 +37,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2/cycle | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Q&A**: 4-6 total | 1-2/cycle | 120-200w | 100% news-driven | 100% ≥1 cite; ≥30% ≥2 cites | ≥1 category + impact + decision
 
 **Cycles** (3-4, 1-2 Q each): Capital Allocation, Liquidity/Cash, M&A/Corp Dev, Risk/Compliance (skip Annual Budgeting, Quarterly Forecasting unless decision-critical)
 
@@ -181,7 +181,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 ## Contents
 1. Executive Summary (Insights | Dashboard)
 2. Cycle Coverage (3-4 cycles)
-3. Questions by Cycle: Capital Allocation (Q1-Q2) | Liquidity (Q3-Q4) | M&A/Corp Dev (Q5-Q6) | Risk/Compliance (Q7-Q8)
+3. Questions by Cycle: Capital Allocation | Liquidity | M&A/Corp Dev | Risk/Compliance
 4. References: G (G1-G8) | N (N1-N5) | M (M1-M3) | T (T1-T2) | R (R1-R2) | A (A1-A6)
 5. Validation (12 checks)
 ```

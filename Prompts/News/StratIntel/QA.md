@@ -11,7 +11,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 - **MV** (Policy/Cross-Industry): ≥65% <3mo (≥15% 1-14d), ≥85% <6mo, 100% ≤9mo
 - **LT** (ESG/Cultural): ≥50% <6mo, ≥75% <12mo, 100% ≤18mo
 - **Overall**: ≥65% <3mo, ≥80% <6mo, ≥90% <9mo, 100% ≤18mo
-- **Validity**: 4 weeks; re-validate if >2mo
+- **Validity**: 4 weeks; re-validate if used beyond 4 weeks
 
 ## How the LLM should use this file
 
@@ -22,7 +22,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
   - Organization profile: size, stage, regions, main products, current strategic bets.
   - Baseline strategic metrics: R&D spend %, core TAM and current share, growth rates, ESG ratings/targets, key regulatory exposures.
   - Existing strategy hypotheses or theses to test (e.g., "solid-state by 2030", "carbon price stays < $X").
-  - Stakeholders and their goals: CEO, CSO, CRO, CIO, VP Corp Dev, Chief Sustainability Officer, others as relevant.
+  - Stakeholders and their goals (11 core roles; add others as relevant): CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Head of Strategy, Head of Market Research, Head of ESG, Board.
   - Constraints: capital envelope, risk appetite, regulatory boundaries, execution capacity.
 - **Objective**: Using only the instructions in this file (no other prompt files), produce:
   - An executive summary and horizon coverage overview.
@@ -38,37 +38,9 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
   - Provide clear recommendations, action paths, and success metrics that can be monitored.
   - Use structured Markdown (headings, bullets, tables, diagrams, reference links) for high scanability.
 
-## I. Context & Scope
-
-**Audience**: C-suite, strategy teams, corporate dev, research leaders (core roles only).
-
-**Decision Criticality Framework** (include if ≥1 criterion met):
-1. **Blocks Decision**: Directly impacts R&D investment, M&A, strategic pivot, or market entry
-2. **Creates Risk**: Material threat to competitive position, regulatory compliance, or ESG standing
-3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (CEO + CSO, CRO + CIO, etc.)
-4. **Requires Action**: 3-24mo action window (not speculative)
-5. **Quantified Impact**: TAM/CAGR, funding $, policy $, ESG targets, market share
-
-**Categories** (4, each Q covers ≥1):
-1. **Research & Innovation**: Breakthroughs, patents, funding, TRL progression affecting R&D roadmap
-2. **Policy & Regulatory**: Legislation, trade, tax, compliance affecting operations/strategy
-3. **Market & Consumer**: Adoption trends, TAM shifts, generational changes affecting positioning
-4. **Industry Analysis**: M&A, consolidation, benchmarks, analyst reports affecting competitive strategy
-
-**Relevance** (≥2 required, Recency mandatory):
-1. **Recency** (mandatory per freshness)
-2. **Strategic Impact**: Long-term positioning, R&D, market strategy
-3. **Horizon Breadth**: ≥2 horizons OR cross-horizon
-4. **Stakeholder Breadth**: ≥3 roles OR multi-role
-5. **Decision Urgency**: 3-24mo OR planning cycles
-6. **Quantified**: Market/consumer/policy/ESG/funding metrics
-7. **Trend Significance**: Confirms/refutes thesis, shifts trajectory
-
-**Answer Structure** (200-300w): Begin with 1–2 sentences summarizing the news (what happened, when, why it matters, category, and at least one citation). Then explain the strategic impact across at least two time horizons and two stakeholder groups, using quantified metrics (TAM, CAGR, funding $, policy $, ESG targets, market share, NPV/IRR where relevant). Next compare at least two decision paths (for example Invest vs Monitor vs Pivot/Prepare/Delay/Ignore), outlining benefits, costs, risks, conditions where each path is preferred, and key uncertainties or assumptions. Close with concrete next steps for S/M/L horizons, named owners, and 2–3 measurable success criteria with baselines, targets, and how they will be monitored. Clearly distinguish sourced figures from rough estimates.
-
 ## II. Requirements
 
-**Q&A**: 6-8 total | 1-2/horizon | 200-300w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Q&A**: 6-8 total | 1-2/horizon | 200-300w | 100% news-driven | 100% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
 **Horizons** (3-4, 1-2 Q each): Short (6-18mo), Medium (18-36mo), Long (3-5yr), (Optional: Transformational 5-10yr if decision-critical)
 
@@ -76,7 +48,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥5/11): CEO, CSO, CRO, CIO, VP Corp Dev (core roles only)
+**Stakeholders** (≥5/11): CEO, CSO, CRO, CIO, CFO, VP Corp Dev (core roles only)
 
 **References** (build before Q&A): G≥10 (100% terms used), N≥5-6 (per freshness), A≥3 (academic), P≥2 (policy), I≥3 (industry), R≥10 (APA 7th+tag)
 
@@ -86,7 +58,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
 2. **News**: 100% cite ≥1 per freshness; 0% hype/speculation
 3. **Impact**: 100% ≥2 horizons + ≥2 roles + quantified (TAM/CAGR/$, policy $, market share)
-4. **Decision**: 100% decision + rationale + timeline
+4. **Decision**: 100% decision + rationale + criteria + timeline
 5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
 6. **Actionable**: 100% concrete; 0% abstract
 
@@ -208,7 +180,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 | 11 | **Words** | 5 samples: __%200-300w | 100% | | PASS/FAIL |
 | 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
 | | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
-| | **Age Dist** | <1mo__%(1-7d__%) 1-3mo__% 3-6mo__% | Per header | | INFO |
+| | **Age Dist** | <1mo__%(1-7d__%) 1-3mo__% 3-6mo__% 6-9mo__% 9-18mo__% | Per header | | INFO |
 | | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
 ## V. Question Quality (≥2 fails of 7 = rewrite)
@@ -253,7 +225,7 @@ Generate 6–8 decision-critical Q&As from recent industry news—minimal viable
 | 1 | Short | 1-2 | Research, Policy | [Top] | CEO, CSO |
 | 2 | Medium | 1-2 | Market, Industry | [Top] | CSO, CRO, CIO |
 | 3 | Long | 1-2 | Research, Industry | [Top] | CEO, CRO, Board |
-| 4 | Transform | 1-2 | Policy, Market | [Top] | CEO, Board |
+| 4 | Transformational | 1-2 | Policy, Market | [Top] | CEO, Board |
 | | **Total** | **6-8** | **4** | **6+** | **≥5** |
 
 ### D. Q&A Template

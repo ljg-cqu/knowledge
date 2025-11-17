@@ -19,7 +19,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 - **MV** (Funding/VC/Business Models/Talent/Macro): ≥70% <2mo (≥20% in 1–3d), ≥90% <3mo, 100% ≤6mo
 - **LT** (Regulatory/Compliance): ≥50% <3mo, ≥75% <6mo, 100% ≤12mo (≤20% at 12–18mo if enduring impact)
 - **Overall**: ≥70% <2mo, ≥85% <4mo, ≥95% <6mo, 100% ≤12mo
-- **Validity**: Re-validate if used >1 month after generation.
+- **Validity**: 2 weeks from generation (per expiry date in the report); re-validate if used beyond expiry.
 
 **Scope**: Decision-critical startup news only—funding environment, market entry barriers and opportunities, competitive moves, business model & pricing, GTM strategies, regulatory barriers/incentives, partnerships & ecosystem, talent/execution risk, macro shocks.
 
@@ -53,11 +53,11 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 ## II. Requirements
 
-- **Q&A**: 4–6 total; 120–200 words; 100% news-triggered; ≥85% with ≥1 citation, ≥30% with ≥2.
+- **Q&A**: 4–6 total; 120–200 words; 100% news-triggered; 100% with ≥1 citation, ≥30% with ≥2.
 - **Business Lifecycle Phases** (3–4, 1–2 Q each): Market Research & Validation, Fundraising (Pre-seed–Series A), Product–Market Fit, GTM & Early Growth (skip Incorporation and Scaling unless decisively affected).
 - **Category Coverage (min)**: Funding ≥50% of Qs, Market ≥40%, Business/GTM ≥40%, Talent ≥25% (optional, as news allows).
 - **Decision Criticality**: 100% of Qs satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified).
-- **Stakeholders**: ≥5/12 roles across Q-set, with a focus on Founder/CEO, CFO, Investor, VP Sales, Product Lead.
+- **Stakeholders**: All 5 core roles appear across the Q-set (each Q covers ≥2 roles), with a focus on Founder/CEO, CFO, Investor, VP Sales, Product Lead.
 - **References (build before Q&A)**: G≥8 (all terms used), N≥4–5 (per freshness), M≥2–3 (market), F≥2–3 (funding), R≥2 (research), O≥1–2 (org/talent events), A≥6 (APA 7th + tag).
 - **Visuals**: ≥2 diagrams + ≥1 table in the final report.
 - **Quality Gates** (fail ANY = stop and fix):
@@ -112,7 +112,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 - **Allocate**:
 
-  - Plan 4–6 Qs across 3–4 phases (1–2 each), 3–4 categories (≥1 per Q), and ≥5 roles.
+  - Plan 4–6 Qs across 3–4 phases (1–2 each), 3–4 categories (≥1 per Q), and all 5 core roles (plus any additional roles as needed).
 
 ### Step 2: Build References (Minimal)
 
@@ -178,11 +178,11 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 - **Refs**: 100% resolve; ages OK; floors met: G≥8, N≥4–5, M≥2–3, F≥2–3, R≥2, O≥1–2, A≥6.
 - **Decision**: 100% decision + rationale + criteria + timeline.
-- **Stakeholders**: ≥5 roles across Q-set; actions and authority clear.
+- **Stakeholders**: All 5 core roles appear across the Q-set (each Q covers ≥2 roles); actions and authority clear.
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-- **Quantitative**: Floors met | Glossary 100% | 3–4 phases | Categories meet % targets | ≥5 roles | Citations OK | 5 word samples 120–200w | Visuals OK | Decision 100% | Timeline 100% | Age per Freshness.
+- **Quantitative**: Floors met | Glossary 100% | 3–4 phases | Categories meet % targets | 5/5 core roles covered | Citations OK | 5 word samples 120–200w | Visuals OK | Decision 100% | Timeline 100% | Age per Freshness.
 
 - **Qualitative**: News meets freshness, 0% hype/rumors | Decision Criticality 100% | Impact 100% (≥2 phases+roles+quantified) | Decision 100% | Source diversity ≥3 types | Each phase backed by ≥1 news+analysis | Links valid | Quantification consistent with sources | 100% actionable | Evidence 100% | Search documented.
 
@@ -199,7 +199,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 | 3 | **Glossary** | __%terms; __%analogies | 100%; ≥50% | | PASS/FAIL |
 | 4 | **Phases** | __/3–4 (1–2Q each); total__ | 3–4/3–4; 4–6 | | PASS/FAIL |
 | 5 | **Categories** | Funding__% Market__% Business__% Talent__% | ≥50,40,40,25% | | PASS/FAIL |
-| 6 | **Roles** | __/12 | ≥5 | | PASS/FAIL |
+| 6 | **Roles** | __/5 | 5/5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2 phases + 2 roles + quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision + rationale + criteria | 100% | | PASS/FAIL |
@@ -210,7 +210,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 | | **Age Dist** | <1mo__% (1–3d__%) 1–2mo__% 2–4mo__% | Per header | | INFO |
 | | **OVERALL** | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥2 fails of 7 = rewrite)
+## V. Question Quality (≥2 fails of 9 = rewrite)
 
 **Criteria**: News-driven (per Freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1–2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact with explicit targets | Comparative (≥2 alternatives with trade-offs) | Assumptions & risks explicit | Timely | Actionable.
 
@@ -228,7 +228,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 ## Contents
 1. Executive Summary (Insights | Dashboard)
 2. Phase Coverage (3-4 phases)
-3. Questions by Phase: Market Research (Q1-Q2) | Fundraising (Q3-Q4) | PMF (Q5-Q6) | GTM (Q7-Q8)
+3. Questions by Phase: Market Research (Q1-Q2) | Fundraising (Q3-Q4) | PMF & GTM (Q5-Q6, as needed)
 4. References: G (G1-G8) | N (N1-N5) | M (M1-M3) | F (F1-F3) | R (R1-R2) | O (O1-O2) | A (A1-A6)
 5. Validation (12 checks)
 ```
@@ -244,7 +244,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 **Dashboard**: [Table: Phase | News | Decision | Timeline]
 
-**Roles**: [5+ roles] | **Refs**: G=[#] N=[#] M=[#] F=[#] R=[#] O=[#] A=[#]
+**Roles**: [5 core roles (+ others if used)] | **Refs**: G=[#] N=[#] M=[#] F=[#] R=[#] O=[#] A=[#]
 ```
 
 ### C. Phase Overview

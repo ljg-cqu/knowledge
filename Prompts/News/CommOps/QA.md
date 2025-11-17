@@ -2,6 +2,8 @@
 
 Generate 4–6 decision-critical Q&As from recent commercial news—minimal viable tracking for informed decisions with limited time.
 
+## I. Context & Scope
+
 **Target**: Bi-weekly | 4-6h effort | **Expires**: 2 weeks from generation
 
 **Freshness** (all news must meet these age thresholds):
@@ -15,26 +17,26 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **How the LLM should use this file**
 
- - **Role**: Act as a Commercial Operations news intelligence analyst for a post-PMF company.
- - **Inputs (fill before running)**:
-   - Domain and vertical (e.g., B2B SaaS, fintech, region).
-   - Period (e.g., last 2 weeks, Q4 2024).
-   - Company context: size, stage, regions, primary GTM motions, main products, average contract value.
-   - Baseline metrics: recent pipeline $, win rate, CAC, LTV, GRR/NRR, churn, key conversion rates.
-   - Stakeholders and their goals: CRO, VP Sales, VP Marketing, VP CS, RevOps analyst, others as relevant.
-   - Constraints: budget, hiring limits, regulatory or contractual boundaries.
- - **Objective**: Using only the instructions in this file (no other prompt files), produce:
-   - An executive summary.
-   - A stage coverage overview.
-   - 4–6 Q&As that satisfy all requirements below.
-   - Glossary and reference sections (G, N, P, M, R, A) with citations.
-   - At least 2 diagram descriptions and 1 table in Markdown.
-   - A completed validation report.
- - **Output expectations**:
-   - Respect word counts and freshness thresholds.
-   - Focus on high-impact news that meets the decision criticality framework.
-   - Prefer concrete numbers, formulas, and thresholds over vague language.
-   - Cover multiple stakeholder viewpoints and explicitly describe trade-offs, risks, and limitations.
+- **Role**: Act as a Commercial Operations news intelligence analyst for a post-PMF company.
+- **Inputs (fill before running)**:
+  - Domain and vertical (e.g., B2B SaaS, fintech, region).
+  - Period (e.g., last 2 weeks, Q4 2024).
+  - Company context: size, stage, regions, primary GTM motions, main products, average contract value.
+  - Baseline metrics: recent pipeline $, win rate, CAC, LTV, GRR/NRR, churn, key conversion rates.
+  - Stakeholders and their goals: CRO, VP Sales, VP Marketing, VP CS, RevOps analyst, others as relevant.
+  - Constraints: budget, hiring limits, regulatory or contractual boundaries.
+- **Objective**: Using only the instructions in this file (no other prompt files), produce:
+  - An executive summary.
+  - A stage coverage overview.
+  - 4–6 Q&As that satisfy all requirements below.
+  - Glossary and reference sections (G, N, P, M, R, A) with citations.
+  - At least 2 diagram descriptions and 1 table in Markdown.
+  - A completed validation report.
+- **Output expectations**:
+  - Respect word counts and freshness thresholds.
+  - Focus on high-impact news that meets the decision criticality framework.
+  - Prefer concrete numbers, formulas, and thresholds over vague language.
+  - Cover multiple stakeholder viewpoints and explicitly describe trade-offs, risks, and limitations.
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts quota strategy, GTM pivot, or revenue model
@@ -63,7 +65,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥5/13): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst (core roles only)
+**Stakeholders** (≥5/5): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst (core roles only)
 
 **References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), P≥2 (platforms), M≥1-2 (methodologies), R≥2 (reports), A≥6 (APA 7th+tag)
 
@@ -178,8 +180,8 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 | 2 | **Floors** | G:__ N:__ P:__ M:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥2,≥1-2,≥2,≥6,4-6 | | PASS/FAIL |
 | 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
 | 4 | **Stages** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
-| 5 | **Categories** | Sales__% Market__% CS__% RevOps__% | ≥50,40,40,25% | | PASS/FAIL |
-| 6 | **Roles** | __/13 | ≥5 | | PASS/FAIL |
+| 5 | **Categories** | Sales__% Marketing__% CS__% RevOps__% | ≥50,40,40,25% | | PASS/FAIL |
+| 6 | **Roles** | __/5 | ≥5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2stages+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
@@ -232,7 +234,7 @@ Generate 4–6 decision-critical Q&As from recent commercial news—minimal viab
 | # | Stage | Count | Categories | News | Roles |
 |---|-------|-------|------------|------|-------|
 | 1 | Lead Gen & Demand | 1-2 | Sales, Marketing | [Top] | VP Marketing, Demand Gen |
-| 2 | Sales & Closing | 1-2 | Sales, Competitive | [Top] | VP Sales, AE |
+| 2 | Sales & Closing | 1-2 | Sales, RevOps | [Top] | VP Sales, AE |
 | 3 | Retention & Expansion | 1-2 | CS, RevOps | [Top] | VP CS, CSM |
 | 4 | Analytics & Optimization | 1-2 | RevOps, Marketing | [Top] | RevOps Analyst, CRO |
 | | **Total** | **4-6** | **3-4** | **4+** | **≥5** |

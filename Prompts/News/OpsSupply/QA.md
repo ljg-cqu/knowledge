@@ -13,7 +13,7 @@ Act as an operations & supply chain analyst. Using only this prompt and web sear
 - **Medium-Velocity** (Technology, Inventory/Demand): ≥65% <2mo (≥20% in 1–14d), ≥90% <3mo, 100% ≤6mo  
 - **Long-Tail** (Safety/Regulatory, Resilience): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo  
 - **Overall**: ≥70% <2mo, ≥90% <4mo, 100% ≤12mo  
-- **Validity**: 4 weeks; re-validate if used beyond 2 months
+- **Validity**: 4 weeks; re-validate if used beyond 4 weeks
 
 **Decision Criticality Framework** (include if ≥1 criterion met):
 1. **Blocks Decision**: Directly impacts sourcing, capacity, supplier change, resilience investment
@@ -51,7 +51,7 @@ COO, VP Supply Chain, Plant/Factory Manager, Head of Procurement, Quality & Safe
 
 ## II. Requirements
 
-**Q&A**: 4–6 total | 1-2/cycle | 200–300w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Q&A**: 4–6 total | 1-2/cycle | 200–300w | 100% news-driven | 100% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
 
 **Operations Cycles** (4, 1-2 Q each): Source, Make, Deliver, Enable (skip if no decision-critical news)
 
@@ -158,15 +158,15 @@ Trigger only if **major disruption** (port/canal blockage, tier-1 supplier failu
 
 **Types**: Supply chain risk heatmap, decision trees, capacity vs demand table, impact matrix, using Mermaid for flows and Markdown tables/2×2 matrices for data.
 
-**Checks**: All links resolve; ages follow freshness; floors from Step 2 are met; each Q&A shows a clear decision with rationale, criteria, timeline, and ≥4 roles with actions and authority.
+**Checks**: All links resolve; ages follow freshness; floors from Step 2 are met; each Q&A shows a clear decision with rationale, criteria, timeline, and ≥2 roles with actions and authority.
 
 ### Step 5: Self-Review & Validate (fail ANY = stop, correct, then re-check before final output)
 
-**Quantitative**: Floors met; glossary 100%; 4 cycles covered; category % targets met; ≥4 roles; citations OK; 5 Q&A samples within 200–300w; visuals present; decisions and timelines included; ages within freshness rules.
+**Quantitative**: Floors met; glossary 100%; 4 cycles covered; category % targets met; ≥4 roles; citations OK; all Q&As (4–6) within 200–300w; visuals present; decisions and timelines included; ages within freshness rules.
 
 **Qualitative**: News meets freshness thresholds with 0% hype; Decision Criticality 100%; each Q&A covers ≥2 cycles and ≥2 roles with quantified impact; sources span ≥3 types with valid links; per-cycle ≥1 news+analysis; content is 100% quantified, actionable, and evidence-based; search steps documented.
 
-**Checklist** (all YES): All validations PASS; floors met; glossary complete (100% terms, ≥50% analogies); TOC complete; no placeholders; visuals and citations OK; impact, decision, timeline, categories, and roles OK; freshness OK; URLs valid; dates recorded (generation + expire=gen+4wk); search documented.
+**Checklist** (all YES): All validations PASS; floors met; glossary complete (100% terms, ≥50% analogies); no placeholders; visuals and citations OK; impact, decision, timeline, categories, and roles OK; freshness OK; URLs valid; dates recorded (generation + expire=gen+4wk); search documented.
 
 ---
 
@@ -184,7 +184,7 @@ Trigger only if **major disruption** (port/canal blockage, tier-1 supplier failu
 | 8 | **Impact** | __% ≥2cycles+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
 | 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
-| 11 | **Words** | 5 samples: __%200-300w | 100% | | PASS/FAIL |
+| 11 | **Words** | All Q&As: __%200-300w | 100% | | PASS/FAIL |
 | 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
 | | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
 | | **Age Dist** | <1mo__%(1-7d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |

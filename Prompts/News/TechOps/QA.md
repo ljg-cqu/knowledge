@@ -45,7 +45,7 @@ You are an LLM generating 4–6 decision-critical Q&As from recent infrastructur
 
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥5/12): Architect, DevOps/SRE, Security Engineer, Backend Developer, Engineering Manager (core roles only)
+**Stakeholders** (5 core; cover all 5): Architect, DevOps/SRE, Security Engineer, Backend Developer, Engineering Manager
 
 **References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), T≥3 (tools), S≥2 (standards), R≥2 (reports), A≥6 (APA 7th+tag)
 
@@ -164,7 +164,7 @@ You are an LLM generating 4–6 decision-critical Q&As from recent infrastructur
 | 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
 | 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
 | 5 | **Categories** | Sec__% Infra__% Prac__% Tech__% | ≥50,40,30,25% | | PASS/FAIL |
-| 6 | **Roles** | __/12 | ≥5 | | PASS/FAIL |
+| 6 | **Roles** | __/5 | ≥5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
@@ -190,12 +190,12 @@ You are an LLM generating 4–6 decision-critical Q&As from recent infrastructur
 ### A. TOC
 
 ```markdown
-# [Domain] Technical Operations Intelligence Q&A ([Period])
+# [Domain] Technical Operations News Intelligence Q&A ([Period])
 
 ## Contents
 1. Executive Summary (Insights | Dashboard)
 2. Phase Coverage (3-4 phases)
-3. Questions by Phase: Arch (Q1-Q2) | Dev (Q3-Q4) | Deploy (Q5-Q6) | Ops (Q7-Q8)
+3. Questions by Phase (4-6 total; 1-2 per phase across Arch, Dev, Deploy, Ops)
 4. References: G (G1-G8) | N (N1-N5) | T (T1-T3) | S (S1-S2) | R (R1-R2) | A (A1-A6)
 5. Validation (12 checks)
 ```

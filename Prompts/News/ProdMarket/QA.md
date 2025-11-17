@@ -18,6 +18,8 @@ Use this template as a single, self-contained LLM prompt (with web search and Ma
 
 **Exclude**: Technical implementation, sales execution, corporate finance (except pricing), long-term R&D, rumors, marketing fluff, stale news, nice-to-have trends.
 
+## I. Framework
+
 **Context Inputs (set before running)**:
 - Product, business model, and main value proposition (e.g., B2B SaaS, consumer app).
 - Target customers/segments and regions (ICPs, markets for this period).
@@ -51,7 +53,7 @@ Use this template as a single, self-contained LLM prompt (with web search and Ma
 
 **Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
 
-**Stakeholders** (≥5/11): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead (core roles only)
+**Stakeholders** (≥5/5): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead (core roles only)
 
 **References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), C≥2-3 (competitive), P≥2 (pricing), R≥2 (research), A≥6 (APA 7th+tag)
 
@@ -172,7 +174,7 @@ Use this template as a single, self-contained LLM prompt (with web search and Ma
 | 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
 | 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
 | 5 | **Categories** | Comp__% Pric__% Strat__% Res__% | ≥50,40,40,25% | | PASS/FAIL |
-| 6 | **Roles** | __/11 | ≥5 | | PASS/FAIL |
+| 6 | **Roles** | __/5 | ≥5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
@@ -253,7 +255,7 @@ LLM: Structure your entire output exactly using the following subsections and Ma
 
 **G#. Term (Acronym)**: Definition | Analogy | Context | Example
 
-**N#. Title** (Source, MM/DD): Summary | Cat | URL
+**N#. Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
 
 **C#. Competitor Feature** (Source, Date): Details | URL
 

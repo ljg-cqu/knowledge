@@ -29,7 +29,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 - **MV** (Comp/Benefits/Policy/Labor): ≥65% <2mo (≥20% in 1–14d), ≥85% <3mo, 100% ≤6mo.
 - **LT** (Culture/Engagement/Wellbeing/DEI): ≥50% <6mo, ≥80% <12mo, 100% ≤18mo (≤20% at 18–24mo if enduring).
 - **Overall**: ≥70% <2mo, ≥85% <4mo, ≥95% <6mo, 100% ≤12mo.
-- **Validity**: Content expires 4 weeks after generation; re-validate if used beyond 2 months.
+- **Validity**: Content expires 4 weeks after generation; re-validate if used beyond 4 weeks.
 
 **Inputs (user must provide before generation)**:
 - **Domain & Scope**: Industry, geography, key workforce segment (e.g., "Global tech, software engineers and product managers").
@@ -67,12 +67,12 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 - **Q&A Output**: 6–8 Q&As | 1–2 per lifecycle stage | 200w target (max 250w) | 100% news-driven (≥1 item/Q) | ≥85% with ≥1 citation, ≥30% with ≥2 citations | Each Q links ≥1 category + impact + decision.
 
-- **Category Distribution** (velocity-weighted, minimum coverage):
-  - Talent Markets & Hiring: 2–3 Q&As (≥50%).
-  - Skills & Education: ≥1 Q&A (≥40%).
-  - Compensation & Benefits: 1–2 Q&As (≥40%).
-  - Policy & Labor: 1–2 Q&As (≥40%).
-  - Culture & Wellbeing: ≥1 Q&A (≥30%).
+- **Category Distribution** (velocity-weighted, minimum coverage by share of Q&As):
+  - Talent Markets & Hiring: ≥50%.
+  - Skills, Education & Development: ≥40%.
+  - Compensation & Benefits: ≥40%.
+  - Policies, Labor Law & Relations: ≥40%.
+  - Culture, Engagement & DEI + Health, Safety & Wellbeing (combined): ≥30%.
 
 - **Lifecycle Stages** (4–5, 1–2 Q each):
   1. **Attract & Brand**: Employer brand, market presence, talent availability.
@@ -154,7 +154,7 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 
 ### Step 5: Validate (fail ANY = stop, fix, re-run ALL)
 
-- **Quantitative**: Floors met; glossary 100%; 4–5 stages; category percentages met; ≥5 roles; citations OK; 5 word samples near 200w; visuals OK; decision 100%; timeline 100%; success criteria 100% (baseline + target + metric); age per freshness.
+- **Quantitative**: Floors met; glossary 100%; 4–5 stages; category percentages met; ≥5 roles; citations OK; 5 word samples within 200–250w (target ~200w); visuals OK; decision 100%; timeline 100%; success criteria 100% (baseline + target + metric); age per freshness.
 - **Qualitative**: News per freshness, 0% hype; 0 fabricated facts/URLs; Decision Criticality 100%; Impact 100% (≥2 stages + roles + quantified); Decision 100% with ≥1 alternative and trade-offs; source diversity ≥3 types; each stage has ≥1 news + analysis; links valid; quantification 100%; actions specific and actionable; balanced employer/employee perspective where relevant; evidence 100%; search documented; no internal contradictions or terminology drift.
 
 ### Step 6: Submit
@@ -171,13 +171,13 @@ Use this specification as a single, self-contained prompt for an LLM to generate
 | 2 | **Floors** | G:__ N:__ B:__ L:__ R:__ A:__ Q:__ | ≥8,≥5–6,≥2–3,≥2,≥2,≥6,6–8 | | PASS/FAIL |
 | 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
 | 4 | **Stages** | __/4–5 (1–2Q each); total__ | 4–5/4–5;6–8 | | PASS/FAIL |
-| 5 | **Categories** | Talent__% Comp__% Policy__% Skills__% Culture__% | ≥50,≥40,≥40,≥40,≥30% | | PASS/FAIL |
+| 5 | **Categories** | Talent__% Skills__% Comp__% Policy__% Culture/DEI/Health/Safety__% | ≥50,≥40,≥40,≥40,≥30% | | PASS/FAIL |
 | 6 | **Roles** | __/11 | ≥5 | | PASS/FAIL |
 | 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
 | 8 | **Impact** | __% ≥2stages+2roles+quantified | 100% | | PASS/FAIL |
 | 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
 | 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
-| 11 | **Words** | 5 samples: __%200w | 100% | | PASS/FAIL |
+| 11 | **Words** | 5 samples: __%200–250w | 100% | | PASS/FAIL |
 | 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
 | | **Meta** | Start:__ End:__ Expires:[+4wk] | | INFO |
 | | **Age Dist** | <1mo__%(1–7d__%) 1–2mo__% 2–4mo__% | Per header | | INFO |
