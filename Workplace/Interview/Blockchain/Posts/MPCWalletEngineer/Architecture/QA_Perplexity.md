@@ -2,12 +2,14 @@
 
 ## Context & Scope
 
-- **Problem**: Evaluate candidates' ability to design secure, production-grade blockchain MPC wallet systems (custody-grade, typical TVL ≥$1M) with concrete architectures, metrics, and trade-offs.
+- **Problem**: Evaluate candidates' ability to design secure, production-grade blockchain MPC wallet systems (custody-grade, typical Total Value Locked (TVL) ≥$1M) with concrete architectures, metrics, and trade-offs.
 - **Scope**: 30 Q&As across structural, behavioral, quality/performance, data, integration, and evolution/migration aspects of MPC wallet architecture. Focus on system-level design instead of protocol-level cryptography proofs.
 - **Assumptions**: Candidate already knows core blockchain concepts (accounts, transactions, gas, UTXO) and MPC/threshold signatures at a conceptual level. Intended for senior/staff+ roles; interview time ~60–120 minutes.
 - **Constraints**: Security-critical, multi-party, often multi-chain environments (exchanges, institutional custody, large consumer wallets); typical team size ≥5; strict compliance and audit requirements.
 - **Stakeholders**: Hiring managers, interviewers, candidates, and LLM assistants preparing or reviewing interviews; downstream readers include security, SRE, and product teams.
 - **Resources**: Key terms, tools, and literature are summarized in the Glossary, Tools, Literature, and Citations sections at the end of this document.
+- **Metrics & percentages**: All latency, gas, and percentage figures are indicative targets and interview prompts, not audited production benchmarks. Adapt them to your environment and verify against real measurements when designing or reviewing systems.
+ - **Success criteria**: Using this Q&A set, interviewers can (a) cover at least one question from each critical cluster (Structural, Behavioral, Quality & Performance) within 60–120 minutes, (b) assess candidates across all six architecture dimensions (structure, behavior, quality/performance, data, integration, evolution), and (c) elicit from candidates at least one concrete design, one quantified trade-off, and one risk/mitigation per selected question.
 
 ## Contents
 - [Context & Scope](#context--scope)
@@ -1454,6 +1456,9 @@ Threshold ECDSA protocols by Gennaro/Goldfeder. Basis for most MPC wallets (BitG
 **G15. Pedersen Commitment** [EN]  
 Cryptographic commitment to a value without revealing it. Used in DKG for verification.
 
+**G16. TVL (Total Value Locked)** [EN]  
+Total on-chain asset value held in a protocol or wallet, typically denominated in USD. Used as a proxy for scale and risk exposure in MPC wallet design.
+
 ---
 
 ## Tools (≥5)
@@ -1538,7 +1543,7 @@ Repository; Unit of Work; Service Layer; Data Mapper; architectural patterns.
 
 | Check # | Item | Target | Result | Status |
 |---------|------|--------|--------|--------|
-| 1 | Glossary Terms | ≥10 | 15 | ✓ PASS |
+| 1 | Glossary Terms | ≥10 | 16 | ✓ PASS |
 | 2 | Tools | ≥5 | 6 | ✓ PASS |
 | 3 | Literature | ≥6 | 6 | ✓ PASS |
 | 4 | Citations | ≥12 | 12 | ✓ PASS |
