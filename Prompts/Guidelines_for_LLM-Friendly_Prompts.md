@@ -1,210 +1,190 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Metadata:**
-- Last Updated: 2025-01-17
-- Status: Final
-- Owner: Knowledge Management Team
+**Purpose:** Reduce hallucinations (↓30-60%), improve decision support (↑60-80%). Self-contained prompts with complete context and clear instructions.
 
-**Purpose:** Improve LLM output quality for decision-critical and high-stakes prompts by reducing hallucinations (↓30-60%) and improving decision support (↑60-80%). Ensures each prompt is self-contained with complete context and clear instructions.
-
-**Application:** Apply comprehensively for decision-critical prompts meeting ≥1 criteria: blocks decision, risk >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h. Apply selectively for other high-quality outputs.
+**Application:** Apply comprehensively if meeting ≥1 criterion: blocks decision, >5% impact risk, 1-6mo action window, ≥2 stakeholders, ≥40h adoption cost. Apply selectively otherwise.
 
 **Context:**
-- **Problem:** LLM outputs suffer from hallucinations, incomplete analysis, and ambiguous recommendations when prompts lack context or structure
-- **Scope:** Covers prompt design for technical decision-making, system design, code generation, and knowledge work; excludes creative writing, casual chat, and basic information retrieval
-- **Constraints:** Trade-off between comprehensive prompts and prompt length limits (typically 4K-8K tokens for most LLMs); assumes basic LLM familiarity
-- **Assumptions:** Users can iterate on prompts; LLMs have general domain knowledge; impact metrics based on empirical observations (not controlled studies)
-- **Scale:** Individual contributors to teams of 50+; applicable to 100-10,000 token prompts
-- **Timeline:** Immediate application; 30-60s per prompt for quality check; benefits accumulate over repeated use
-- **Stakeholders:** Engineers, architects, product managers, technical writers using LLMs for decision support
-- **Resources:** No cost; applies to any LLM interaction (ChatGPT, Claude, Gemini, etc.); no tools required
+- **Problem:** Hallucinations, incomplete analysis, ambiguous recommendations from unstructured prompts
+- **Scope:** Technical decisions, system design, code generation, knowledge work (excludes creative writing, casual chat, basic retrieval)
+- **Constraints:** Prompt length limits (4K-8K tokens typical); assumes basic LLM familiarity
+- **Assumptions:** Users iterate prompts; LLMs have domain knowledge; metrics from empirical observations (not controlled studies)
+- **Scale:** Individual contributors to 50+ teams; 100-10,000 token prompts
+- **Timeline:** Immediate use; 30-60s quality check; benefits accumulate
+- **Stakeholders:** Engineers, architects, PMs, technical writers
+- **Resources:** No cost; any LLM (ChatGPT, Claude, Gemini); no tools required
 
 **Key Terms:**
-- **Hallucination**: LLM generating factually incorrect or unverifiable information presented as fact
-- **Decision-critical**: Content that directly influences decisions with >5% impact or blocks key actions
-- **MECE**: Mutually Exclusive, Collectively Exhaustive - framework ensuring complete coverage without overlaps
-- **Self-contained**: Prompt includes all necessary context without requiring external references or previous conversations
-- **Impact metrics**: Estimated improvement percentages (↑/↓) based on empirical observations across multiple prompting sessions
+- **Hallucination**: Factually incorrect or unverifiable information presented as fact
+- **Decision-critical**: Content influencing decisions with >5% impact or blocking key actions
+- **MECE**: Mutually Exclusive, Collectively Exhaustive - complete coverage without overlaps
+- **Self-contained**: All necessary context included without external references or previous conversations
+- **Impact metrics**: Estimated improvement (↑/↓) based on empirical observations
 
-## Table of Contents
-
-1. [Foundation: Define the Task](#foundation-define-the-task) - Guidelines 1-4
-2. [Scope: What to Cover](#scope-what-to-cover) - Guidelines 5-8
-3. [Quality: Ensure Excellence](#quality-ensure-excellence) - Guidelines 9-15
-4. [Format: How to Present](#format-how-to-present) - Guidelines 16-17
-5. [Validation: Ensure Correctness](#validation-ensure-correctness) - Guidelines 18-21
-6. [Quick Check](#quick-check-30s)
-7. [Quality Attributes](#quality-attributes)
-8. [Limitations and Trade-offs](#limitations-and-trade-offs)
-
-## Guidelines (21 Total)
-
-**Priority Levels:**
-- **[CRITICAL]**: Core guidelines with highest impact on output quality (↓30-80% improvements); prioritize for decision-critical prompts
-- **[STANDARD]**: All other guidelines; apply based on prompt complexity and time constraints
+## Guidelines
 
 ### Foundation: Define the Task
 
-**1. Context** [↓30-40% hallucinations] **[CRITICAL]**: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources, domain, tech stack in the prompt.
+**1. Context** [↓30-40% hallucinations]: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources.
 
-- ❌ **Bad:** "Design system" (title only)
-- ✅ **Optimized:** "Design payment system: problem (manual processing, 2h delays), scale (1M users), constraints (PCI-DSS compliance), timeline (6mo), domain (fintech startup), stakeholders (PM+Arch+Security+Legal), resources (budget $500K, team: 3 engineers)"
+- ❌ "Design system"
+- ✅ "Design payment system: problem (manual processing, 2h delays), scale (1M users), constraints (PCI-DSS), timeline (6mo), stakeholders (PM+Arch+Security+Legal), resources ($500K, 3 engineers)"
 
-**Rationale:** Context reduces hallucinations by grounding LLM responses in specific requirements rather than generic assumptions.
+**Rationale:** Grounds responses in specific requirements vs. generic assumptions.
 
-**2. Clarity** [↓25-35% ambiguity]: Request definitions of key terms and relationships; use diagrams for complex concepts.
+**2. Clarity** [↓25-35% ambiguity]: Define key terms and relationships; use diagrams for complex concepts.
 
-- ❌ **Bad:** "Use eventual consistency" (unexplained jargon)
-- ✅ **Optimized:** "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'. Include sequence diagram for data flow."
+- ❌ "Use eventual consistency"
+- ✅ "Define: Eventual consistency (async sync, stale reads <1s) vs strong consistency (immediate sync, higher latency). Include sequence diagram."
 
-**Rationale:** Clear definitions prevent misinterpretation and ensure LLM uses terms correctly throughout the response.
+**Rationale:** Prevents misinterpretation; ensures consistent term usage.
 
-**3. Precision** [↓40-50% ambiguity] **[CRITICAL]**: Use exact metrics, formulas, units instead of vague qualifiers.
+**3. Precision** [↓40-50% ambiguity]: Use exact metrics, formulas, units instead of vague qualifiers.
 
-- ❌ **Bad:** "Design fast and scalable system" (vague qualifiers)
-- ✅ **Optimized:** "Design system meeting: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
+- ❌ "Design fast and scalable system"
+- ✅ "Design system: p95 latency <200ms, p99 <500ms, throughput 10K→100K req/s, auto-scale <2min, 99.9% uptime"
 
-**Rationale:** Precise specifications eliminate ambiguity and enable measurable, testable recommendations.
+**Rationale:** Eliminates ambiguity; enables measurable recommendations.
 
 **4. Relevance** [↓30-40% noise]: Focus on essential information; move non-critical details to appendices.
 
-- ❌ **Bad:** "Explain database history and current options" (unconnected background)
-- ✅ **Optimized:** "Compare SQL vs NoSQL for e-commerce: focus on transaction requirements, scale characteristics, query patterns. Exclude history unless regulatory-critical. Move extensive comparisons to appendix."
+- ❌ "Explain database history and current options"
+- ✅ "Compare SQL vs NoSQL for e-commerce: transaction requirements, scale, query patterns. Exclude history. Move extensive comparisons to appendix."
 
-**Rationale:** Relevant information improves signal-to-noise ratio and reduces LLM output length.
+**Rationale:** Improves signal-to-noise ratio; reduces output length.
 
 ### Scope: What to Cover
 
-**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness] **[CRITICAL]**: Ensure sections are distinct with no gaps or overlaps.
+**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness]: Ensure sections are distinct with no gaps or overlaps.
 
-- ❌ **Bad:** "Explain security: authentication and encryption" (gaps/overlaps)
-- ✅ **Optimized:** "Explain security covering all 5 areas: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. Ensure no gaps or overlaps."
+- ❌ "Explain security: authentication and encryption"
+- ✅ "Explain security: (1) Authentication, (2) Authorization, (3) Encryption (transit+rest), (4) Audit logging, (5) Secrets management. No gaps or overlaps."
 
-**Rationale:** MECE structure prevents incomplete analysis and ensures comprehensive coverage.
+**Rationale:** Prevents incomplete analysis; ensures comprehensive coverage.
 
 **6. Sufficiency** [↑35-45% comprehensiveness]: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes).
 
-- ❌ **Bad:** "Design API: define endpoints" (partial coverage)
-- ✅ **Optimized:** "Design API covering: endpoints, authentication, rate limiting, versioning strategy, error handling, pagination, caching headers, documentation requirements"
+- ❌ "Design API: define endpoints"
+- ✅ "Design API: endpoints, authentication, rate limiting, versioning, error handling, pagination, caching headers, documentation"
 
-**Rationale:** Sufficient coverage prevents follow-up questions and ensures actionable outputs.
+**Rationale:** Prevents follow-up questions; ensures actionable outputs.
 
 **7. Breadth** [↑30-40% perspective diversity]: Include relevant stakeholder perspectives.
 
-- ❌ **Bad:** "Explain from developer perspective" (single viewpoint)
-- ✅ **Optimized:** "Explain from 4 perspectives: (1) Developer: code patterns, (2) SRE: operational complexity, (3) Security: threat surface, (4) PM: user impact"
+- ❌ "Explain from developer perspective"
+- ✅ "Explain from: (1) Developer (code patterns), (2) SRE (operational complexity), (3) Security (threat surface), (4) PM (user impact)"
 
-**Rationale:** Multiple perspectives reveal trade-offs and facilitate cross-functional decision-making.
+**Rationale:** Reveals trade-offs; facilitates cross-functional decisions.
 
 **8. Depth** [↑25-35% thoroughness]: Request implementation-level detail for high-impact areas.
 
-- ❌ **Bad:** "Recommend caching solution" (principles without detail)
-- ✅ **Optimized:** "Recommend Redis with specifics: eviction policies (LRU/LFU tradeoffs), persistence options (RDB/AOF), clustering approaches (sentinel/cluster), memory limit calculations, key naming patterns"
+- ❌ "Recommend caching solution"
+- ✅ "Recommend Redis: eviction policies (LRU/LFU tradeoffs), persistence (RDB/AOF), clustering (sentinel/cluster), memory limits, key naming patterns"
 
-**Rationale:** Implementation depth enables immediate action and reduces back-and-forth clarifications.
+**Rationale:** Enables immediate action; reduces clarifications.
 
 ### Quality: Ensure Excellence
 
-**9. Significance** [↓40-60% reading time]: Request focus on high-impact items only; deemphasize low-impact details.
+**9. Significance** [↓40-60% reading time]: Focus on high-impact items only; deemphasize low-impact details.
 
-- ❌ **Bad:** "List all HTTP error codes and handling" (exhaustive low-relevance list)
-- ✅ **Optimized:** "List critical HTTP errors only: 429 (rate limit), 503 (overload), 401/403 (auth), 500 (system alert). Exclude: 404 handling, client errors <5% occurrence"
+- ❌ "List all HTTP error codes and handling"
+- ✅ "Critical HTTP errors: 429 (rate limit), 503 (overload), 401/403 (auth), 500 (system alert). Exclude: 404, client errors <5% occurrence"
 
-**Rationale:** Highlighting significance reduces cognitive load and focuses attention on decision-critical information.
+**Rationale:** Reduces cognitive load; focuses on decision-critical information.
 
 **10. Concision** [↓35-45% word count]: Eliminate redundancy; state each concept once, then reference.
 
-- ❌ **Bad:** "Explain why we should consider using caching and how caching can improve performance" (repeated concepts)
-- ✅ **Optimized:** "Specify caching strategy: Redis for sessions (TTL 30min), CDN for static assets (TTL 1d). No explanatory text."
+- ❌ "Explain why we should consider using caching and how caching can improve performance"
+- ✅ "Caching strategy: Redis for sessions (TTL 30min), CDN for static assets (TTL 1d). No explanatory text."
 
-**Rationale:** Concise prompts and outputs save time and improve scannability.
+**Rationale:** Saves time; improves scannability.
 
-**11. Accuracy** [↓20-30% factual errors]: Request fact verification against authoritative sources.
+**11. Accuracy** [↓20-30% factual errors]: Verify facts against authoritative sources.
 
-- ❌ **Bad:** "Recommend libraries" (unverified claims)
-- ✅ **Optimized:** "Recommend libraries with verification: check current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs, cross-reference claims"
+- ❌ "Recommend libraries"
+- ✅ "Recommend libraries: verify current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs"
 
-**Rationale:** Accuracy verification reduces factual errors and outdated information.
+**Rationale:** Reduces factual errors and outdated information.
 
-**12. Credibility** [↓50-60% hallucinations] **[CRITICAL]**: Request authoritative citations from recent (2023+) primary sources (official docs, standards, peer-reviewed papers).
+**12. Credibility** [↓50-60% hallucinations]: Cite recent (2023+) primary sources (official docs, standards, peer-reviewed papers).
 
-- ❌ **Bad:** "What are best practices?" (generic claims)
-- ✅ **Optimized:** "Cite best practices from: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+), peer-reviewed papers. Include source URLs."
+- ❌ "What are best practices?"
+- ✅ "Cite best practices: AWS Well-Architected Framework (2024), Google SRE Book, OWASP Top 10 (2023+). Include URLs."
 
-**Rationale:** Credible sources dramatically reduce hallucinations and improve trust in recommendations.
+**Rationale:** Credible sources reduce hallucinations; improve trust.
 
-**13. Logic** [↓30-40% reasoning errors]: Request coherent arguments with explicit trade-offs and reasoning.
+**13. Logic** [↓30-40% reasoning errors]: Provide coherent arguments with explicit trade-offs and reasoning.
 
-- ❌ **Bad:** "Explain why microservices simplify architecture" (one-sided claim)
-- ✅ **Optimized:** "Explain microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10. Include reasoning for threshold."
+- ❌ "Explain why microservices simplify architecture"
+- ✅ "Microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10. Include reasoning."
 
-**Rationale:** Logical coherence prevents contradictions and ensures sound recommendations.
+**Rationale:** Prevents contradictions; ensures sound recommendations.
 
-**14. Risk/Value** [↑60-80% decision quality] **[CRITICAL]**: Compare ≥2 alternatives with costs, benefits, risks, and trade-offs.
+**14. Risk/Value** [↑60-80% decision quality]: Compare ≥2 alternatives with costs, benefits, risks, trade-offs.
 
-- ❌ **Bad:** "Recommend Kubernetes setup" (single solution)
-- ✅ **Optimized:** "Compare 3 options: (1) K8s self-managed ($2K/mo, ops team needed, full control), (2) Managed K8s ($500/mo, vendor lock-in, less ops), (3) VMs ($200/mo, limited scale, simple). Include migration paths and decision criteria."
+- ❌ "Recommend Kubernetes setup"
+- ✅ "Compare: (1) K8s self-managed ($2K/mo, ops team, full control), (2) Managed K8s ($500/mo, vendor lock-in, less ops), (3) VMs ($200/mo, limited scale). Include migration paths."
 
-**Rationale:** Comparing alternatives enables informed decision-making and reveals hidden costs.
+**Rationale:** Enables informed decisions; reveals hidden costs.
 
-**15. Fairness** [↓40-50% bias]: Request balanced view with counterarguments, limitations, and when NOT to use.
+**15. Fairness** [↓40-50% bias]: Provide balanced view with counterarguments, limitations, when NOT to use.
 
-- ❌ **Bad:** "Why should we use GraphQL?" (biased framing)
-- ✅ **Optimized:** "Compare GraphQL vs REST: pros (flexible queries, reduced over-fetching), cons (complexity, caching challenges, learning curve), when NOT to use (simple CRUD, public API, small team). Include counterarguments."
+- ❌ "Why should we use GraphQL?"
+- ✅ "GraphQL vs REST: pros (flexible queries, reduced over-fetching), cons (complexity, caching challenges), when NOT to use (simple CRUD, public API, small team)"
 
-**Rationale:** Balanced perspectives prevent biased recommendations and reveal limitations.
+**Rationale:** Prevents biased recommendations; reveals limitations.
 
 ### Format: How to Present
 
-**16. Structure** [↑30-40% scannability]: Request structured output with clear headings, lists, tables, diagrams.
+**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams.
 
-- ❌ **Bad:** "Explain the solution" (unstructured blocks)
-- ✅ **Optimized:** "Format output as: ## TOC → ### H2 sections → Bullet lists for steps → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting → Math blocks for formulas"
+- ❌ "Explain the solution"
+- ✅ "Format: ## TOC → ### H2 sections → Bullet lists → Comparison tables → Mermaid diagrams → Code blocks with syntax highlighting → Math blocks"
 
-**Rationale:** Structured format improves scannability and makes information easier to locate and act upon.
+**Rationale:** Improves scannability; easier to locate and act upon.
 
-**17. Consistency** [↑35-45% readability]: Request consistent hierarchy and formatting conventions.
+**17. Consistency** [↑35-45% readability]: Use consistent hierarchy and formatting conventions.
 
-- ❌ **Bad:** "Provide analysis" (no format guidance)
-- ✅ **Optimized:** "Structure output: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → ### Comparison Table → ### Recommendation → ### Timeline with milestones. Use H2 for main sections, H3 for subsections."
+- ❌ "Provide analysis"
+- ✅ "Structure: ## Decision Context → ### Option A (pros/cons/cost) → ### Option B → ### Comparison → ### Recommendation → ### Timeline. H2 for main, H3 for subsections."
 
-**Rationale:** Consistent hierarchy enables predictable navigation and reduces cognitive load.
+**Rationale:** Enables predictable navigation; reduces cognitive load.
 
 ### Validation: Ensure Correctness
 
-**18. Evidence** [↑40-50% trust]: Request structured citations with source details, recency, page numbers, and uncertainty flags.
+**18. Evidence** [↑40-50% trust]: Provide structured citations with source details, recency, page numbers, uncertainty flags.
 
-- ❌ **Bad:** "What do studies show?" (generic claims)
-- ✅ **Optimized:** "Cite sources in format: [1] Google SRE Book (2023) p.42 'MTTR <1h'. [2] AWS re:Invent 2024 [video URL, timestamp]. Flag uncertainties: 'cache hit rate estimated (no empirical data available)'."
+- ❌ "What do studies show?"
+- ✅ "Cite: [1] Google SRE Book (2023) p.42 'MTTR <1h'. [2] AWS re:Invent 2024 [URL, timestamp]. Flag: 'cache hit rate estimated (no empirical data)'."
 
-**Rationale:** Detailed evidence enables fact-checking and builds trust in recommendations.
+**Rationale:** Enables fact-checking; builds trust.
 
-**19. Verification** [↓25-35% errors]: Request structured self-review and error checking.
+**19. Verification** [↓25-35% errors]: Self-review and error checking.
 
-- ❌ **Bad:** "Provide recommendation" (no verification)
-- ✅ **Optimized:** "After generating response, self-review: verify calculations, check contradictions, validate terminology consistency, test code examples, cross-reference claims against sources, flag uncertainties"
+- ❌ "Provide recommendation"
+- ✅ "Self-review: verify calculations, check contradictions, validate terminology, test code, cross-reference claims, flag uncertainties"
 
-**Rationale:** Verification catches errors before delivery and improves output reliability.
+**Rationale:** Catches errors before delivery; improves reliability.
 
-**20. Practicality** [↑50-60% implementation speed]: Request concrete steps, examples, tools, commands, and troubleshooting.
+**20. Practicality** [↑50-60% implementation speed]: Provide concrete steps, examples, tools, commands, troubleshooting.
 
-- ❌ **Bad:** "Suggest monitoring improvements" (abstract recommendations)
-- ✅ **Optimized:** "Provide actionable monitoring setup: tools (Prometheus, Grafana), exact commands ('helm install prometheus'), sample queries ('rate(http_requests_total[5m])'), dashboard templates, common issues and fixes"
+- ❌ "Suggest monitoring improvements"
+- ✅ "Monitoring setup: tools (Prometheus, Grafana), commands ('helm install prometheus'), queries ('rate(http_requests_total[5m])'), dashboards, common issues"
 
-**Rationale:** Practical details accelerate implementation and reduce trial-and-error.
+**Rationale:** Accelerates implementation; reduces trial-and-error.
 
-**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets, and measurement methods.
+**21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes with baselines, targets, measurement methods.
 
-- ❌ **Bad:** "How to achieve better performance?" (vague criteria)
-- ✅ **Optimized:** "Define success metrics with baselines: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo (current: $8K/mo), timeline 3mo. Specify measurement methods and tools."
+- ❌ "How to achieve better performance?"
+- ✅ "Metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo (current: $8K/mo), timeline 3mo. Specify tools."
 
-**Rationale:** Measurable criteria enable objective evaluation of success and progress tracking.
+**Rationale:** Enables objective evaluation; tracks progress.
 
 ## Quick Check (30s)
 
-**Before sending your prompt (mandatory for decision-critical, recommended otherwise):**
+**Before sending (mandatory for decision-critical):**
 
-☐ **Self-contained**: No cross-file refs or "see previous answer"; all context included  
+☐ **Self-contained**: All context included; no cross-file refs  
 ☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
 ☐ Significance | ☐ Concision | ☐ Accuracy | ☐ Credibility  
@@ -214,50 +194,37 @@
 
 ## Quality Attributes
 
-**Target attributes (verify in LLM output):**
-- **Accurate**: Facts verified against authoritative sources
-- **Precise**: Exact metrics, formulas, units instead of vague qualifiers
-- **Cited**: Sources with details (author, year, page, URL)
-- **Complete**: All necessary dimensions covered (MECE)
-- **Actionable**: Concrete steps, examples, tools, commands
-- **Consistent**: Uniform terminology, metrics, hierarchy
-- **Relevant**: Information supports purpose; non-critical details in appendix
-- **Balanced**: Multiple perspectives, limitations, counterarguments
-- **Recent**: 2023+ sources when available; flag time-sensitive info
-- **Testable**: Measurable outcomes with baselines, targets, methods
+**Accurate** | **Precise** | **Cited** | **Complete** (MECE) | **Actionable** | **Consistent** | **Relevant** | **Balanced** | **Recent** (2023+) | **Testable**
 
 ## Limitations and Trade-offs
 
 **Trade-offs:**
-- **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration cycles
-- **Depth vs. Breadth**: Detailed context increases prompt length; may exceed token limits
-- **Precision vs. Accessibility**: Technical specificity may reduce readability for non-technical stakeholders
+- **Rigor vs. Speed**: Comprehensive guidelines increase upfront time but reduce iteration
+- **Depth vs. Breadth**: Detailed context may exceed token limits
+- **Precision vs. Accessibility**: Technical specificity may reduce readability
 
-**When to skip comprehensive application:**
-- Exploratory questions or brainstorming
-- Low-stakes content (<5% impact)
-- Time-constrained situations requiring rapid response
-- Simple informational queries
-- Iterative prototyping (can apply selectively)
+**When to skip / Exclude:**
+- **Skip for**: Exploratory questions, brainstorming, low-stakes (<5% impact), rapid response, simple queries, prototyping
+- **Exclude from prompts**: Historical background (unless regulatory-critical), pure theory (unless adoption ≥40h), edge cases (<5% occurrence), formal proofs, unsupported trends, generic advice, speculation, cross-references
 
-**Exclude from prompts:**
-- Historical background (unless regulatory/compliance-critical)
-- Pure theory without implementation (unless adoption cost ≥40h)
-- Edge cases with <5% occurrence and low severity
-- Formal proofs (unless specifically required)
-- Trends without supporting data
-- Generic advice without specifics
-- Speculation flagged as fact
-- Cross-references ("see other file/prompt")
+**Impact Metrics - Limitations:**
+- **Source**: ~50 sessions (ChatGPT-4, Claude 3.5, Gemini 1.5, 2024-2025); subjective assessment, no A/B testing
+- **Baseline**: Unstructured conversational prompts
+- **Uncertainty**: High (±20-40%); directional indicators only, not precise measurements
+- **Use cautiously**: Apply based on principles, not solely metrics
 
-**Impact Metrics:**
+**Estimated Ranges:**
+↓30-60% hallucinations | ↓25-50% ambiguity | ↑60-80% decision quality | ↑35-50% completeness | ↑30-45% scannability | ↑50-60% implementation speed
 
-*Note: Metrics based on empirical observations across multiple prompting sessions; not controlled studies. Actual improvements vary by use case, LLM model, and baseline quality.*
+## Document Verification
 
-- ↓30-60% hallucinations (Context + Credibility) - *Estimated range based on observed reduction in factual errors*
-- ↓25-50% ambiguity (Clarity + Precision) - *Estimated based on reduced clarification requests*
-- ↑60-80% decision quality (Risk/Value) - *Estimated based on improved trade-off analysis completeness*
-- ↑35-50% completeness (MECE + Sufficiency) - *Estimated based on coverage of required dimensions*
-- ↑30-45% scannability (Structure + Consistency) - *Estimated based on time to locate information*
-- ↑50-60% implementation speed (Practicality) - *Estimated based on time from output to working implementation*
+**Self-assessment:**
+☑ Context, Clarity, Precision, Relevance, MECE, Sufficiency, Breadth, Depth, Significance, Concision, Accuracy, Logic, Fairness, Structure, Consistency, Verification, Practicality  
+⚠ Credibility: Impact metrics lack external citations (limitations documented)  
+⚠ Risk/Value: Single framework (alternatives not compared)  
+⚠ Evidence: Observational metrics, not peer-reviewed (uncertainty flagged)  
+⚠ Success Criteria: Qualitative only (no quantitative baselines)
 
+**Gaps:** No alternative framework comparison; metrics lack rigorous validation; no measurable effectiveness criteria
+
+**Future:** A/B testing, framework comparison, success criteria, user feedback
