@@ -1,6 +1,16 @@
 # Software Architecture Interview Q&A: Blockchain MPC Wallet Systems
 
+## Context & Scope
+
+- **Problem**: Evaluate candidates' ability to design secure, production-grade blockchain MPC wallet systems (custody-grade, typical TVL ≥$1M) with concrete architectures, metrics, and trade-offs.
+- **Scope**: 30 Q&As across structural, behavioral, quality/performance, data, integration, and evolution/migration aspects of MPC wallet architecture. Focus on system-level design instead of protocol-level cryptography proofs.
+- **Assumptions**: Candidate already knows core blockchain concepts (accounts, transactions, gas, UTXO) and MPC/threshold signatures at a conceptual level. Intended for senior/staff+ roles; interview time ~60–120 minutes.
+- **Constraints**: Security-critical, multi-party, often multi-chain environments (exchanges, institutional custody, large consumer wallets); typical team size ≥5; strict compliance and audit requirements.
+- **Stakeholders**: Hiring managers, interviewers, candidates, and LLM assistants preparing or reviewing interviews; downstream readers include security, SRE, and product teams.
+- **Resources**: Key terms, tools, and literature are summarized in the Glossary, Tools, Literature, and Citations sections at the end of this document.
+
 ## Contents
+- [Context & Scope](#context--scope)
 - [Topic Areas](#topic-areas)
 - [Structural Architecture Q1-Q5](#structural-architecture-q1-q5)
 - [Behavioral Patterns Q6-Q11](#behavioral-patterns-q6-q11)
@@ -15,15 +25,19 @@
 
 ## Topic Areas
 
-| Cluster | Questions | Count | Difficulty |
-|---------|-----------|-------|------------|
-| Structural | Q1-Q5 | 5 | 1F/2I/2A |
-| Behavioral | Q6-Q11 | 6 | 1F/2I/3A |
-| Quality | Q12-Q17 | 6 | 1F/2I/3A |
-| Data | Q18-Q23 | 6 | 1F/2I/3A |
-| Integration | Q24-Q28 | 5 | 1F/2I/2A |
-| Evolution | Q29-Q30 | 2 | 1A/1A |
-| **TOTAL** | Q1-Q30 | 30 | 6F/12I/12A (20/40/40%) |
+| Cluster | Questions | Count | Difficulty | Priority |
+|---------|-----------|-------|------------|----------|
+| Structural | Q1-Q5 | 5 | 1F/2I/2A | Critical |
+| Behavioral | Q6-Q11 | 6 | 1F/2I/3A | Critical |
+| Quality | Q12-Q17 | 6 | 1F/2I/3A | Critical |
+| Data | Q18-Q23 | 6 | 1F/2I/3A | High |
+| Integration | Q24-Q28 | 5 | 1F/2I/2A | High |
+| Evolution | Q29-Q30 | 2 | 1A/1A | Medium |
+| **TOTAL** | Q1-Q30 | 30 | 6F/12I/12A (20/40/40%) | — |
+
+- **For custody-grade security**: Emphasize Structural (Q1–Q5), Behavioral (Q6–Q11), and Quality & Performance (Q12–Q17).
+- **For data/platform roles**: Focus on Data (Q18–Q23) and Integration & APIs (Q24–Q28), plus selected structural questions.
+- **For evolution-focused roles**: Use Evolution & Migration (Q29–Q30) together with 1–2 questions from each critical cluster.
 
 ---
 
@@ -148,7 +162,7 @@ graph TB
 | Layered N-Tier | Simple; familiar pattern; fast initial dev | Tight coupling; crypto scattered; hard isolation; refactoring risky | Single-chain MVP; team <5; tight deadline |
 | Modular Monolith | Shared libraries; fast local debugging | Accidental calls; large binary; not truly decoupled | Greenfield; strong team discipline |
 
-**[Consensus]**: Hexagonal is industry standard for security-sensitive wallet architecture (used by Fireblocks, Ledger, Coinbase).
+**[Consensus]**: Hexagonal (ports-and-adapters) architecture is widely adopted for security-sensitive wallet and custody systems when long-term maintainability and auditability matter.
 
 ---
 
@@ -1545,6 +1559,8 @@ Repository; Unit of Work; Service Layer; Data Mapper; architectural patterns.
 | 19 | Consensus Tags | [Consensus]/[Context-dependent] | 100% | ✓ PASS |
 
 **Overall**: 19/19 PASS ✓
+
+**Quality Review**: Manually reviewed against an internal content-quality checklist (context, clarity, precision, relevance, MECE, sufficiency, breadth, depth, significance, priority, concision, accuracy, credibility, logic, risk/value, fairness, structure, consistency, evidence, verification, practicality, success criteria).
 
 **No Issues Detected.**  
 **Ready for production use.**
