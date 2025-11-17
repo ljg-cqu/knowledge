@@ -1,208 +1,190 @@
-# Technical Operations News Intelligence Q&A Generator (Minimal Viable)
+# Technical Operations News Intelligence Q&A Generator
 
-You are an LLM generating 4–6 decision-critical Q&As from recent infrastructure and security news for engineering organizations. This prompt is fully self-contained; follow it exactly and ignore any other prompts or prior conversation.
+Generate 4-6 decision-critical Q&As from recent infrastructure and security news for engineering teams. Follow this prompt exactly.
 
-**Goal**: Minimal viable tracking for informed technical decisions with limited time—generate 4–6 decision-critical Q&As from recent infrastructure/security news.
+**Goal**: Enable informed technical decisions via minimal viable news tracking.
 
-**Cadence**: Bi-weekly | 4-6h effort | **Validity**: 2 weeks from generation (after that, treat content as stale and re-run this prompt with fresh news).
+**Cadence**: Bi-weekly | Validity: 2 weeks (re-run after).
 
-**Freshness** (all news must meet these age thresholds):
-- **High-Velocity** (Security, Infrastructure, Tech Releases): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
-- **Medium-Velocity** (Standards, Eng Practices): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
-- **Overall**: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
-**Balance & Fairness**: When comparing tools, clouds, or practices, present both advantages and disadvantages, avoid vendor favoritism, and call out situations where a popular option is *not* a good fit.
+**Freshness Thresholds** (all news must meet):
+- High-Velocity (Security, Infrastructure, Releases): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
+- Medium-Velocity (Standards, Practices): ≥70% <2mo (≥20% 1-3d), ≥90% <3mo, 100% ≤6mo
+- Overall: ≥75% <2mo, ≥90% <4mo, 100% ≤9mo
 
-**Decision Criticality Framework** (include if ≥1 criterion met):
-1. **Blocks Decision**: Directly impacts infrastructure choices, security posture, or deployment strategy
-2. **Creates Risk**: Material security threat (CVE), reliability risk, or vendor stability concern
-3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (DevOps + Security, Architect + SRE, etc.)
-4. **Requires Action**: 1-6mo action window (not speculative)
-5. **Quantified Impact**: Performance %, reliability %, security risk, or cost impact
-## I. Context & Scope
+**Balance**: Present pros/cons fairly; avoid favoritism; highlight non-fits.
 
-**Audience**: Engineering teams at scale—architects, DevOps/SRE, security, data engineers, technical leadership. Focus: technical decisions (stack, infrastructure, security, practices, governance).
+**Decision Criticality Criteria** (≥1 per Q&A):
+1. Blocks Decision: Impacts infrastructure/security choices
+2. Creates Risk: Material threat/risk/concern
+3. Affects ≥2 Roles: Multi-stakeholder impact
+4. Requires Action: 1-6mo window
+5. Quantified Impact: Measurable perf/reliability/security/cost
 
-**Include**: Releases, infrastructure, security (CVEs/patches), ecosystem (APIs/deprecations), standards/regulations, engineering practices, vendor stability, benchmarks, patterns.
+## Context & Scope
 
-**Exclude**: Marketing/GTM, vendor fluff, trivial updates, rumors, nice-to-have trends, stale news (>4mo HV, >12mo regulatory), and financial metrics except infra costs.
+**Audience**: Architects, DevOps/SRE, Security, Developers, Eng Managers.
 
-**Categories** (use 3–4 per cycle; each Q covers ≥1, ideally ≥2): (1) Technical Releases (tools, frameworks, DBs, SDKs, APIs), (2) Infrastructure/Cloud (providers, containers, IaC), (3) Security (CVEs, patches, threats), (4) Ecosystem/Integration (APIs, deprecations, partnerships), (5) Standards/Regulations (compliance, governance), (6) Engineering Practices (CI/CD, observability, patterns, vendor stability).
+**Include**: Releases, infrastructure, security (CVEs), ecosystem, standards, practices, stability, benchmarks.
 
-**Relevance Criteria** (≥2, Recency MANDATORY):
-1. **Recency** (per freshness guarantee)
-2. **Lifecycle**: ≥2 phases or cross-phase
-3. **Stakeholders**: ≥3 roles or multi-role
-4. **Urgency**: 1-6mo action
-5. **Significance**: Shifts practices/patterns/infrastructure
-6. **Quantified**: Measurable perf/reliability/security/cost impact
-## II. Requirements
+**Exclude**: Marketing, fluff, trivial, rumors, stale (>4mo HV), non-infra financials.
 
-**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision
+**Categories** (3-4 per cycle): Technical Releases, Infrastructure/Cloud, Security, Ecosystem/Integration, Standards/Regulations, Engineering Practices.
 
-**Phases** (3-4, 1-2 Q each): Architecture & Design, Development, Deploy & Release, Operations & Observability (skip Req, Test, Maintenance, Evolution unless decision-critical)
+**Relevance** (≥2 criteria, recency mandatory): Recency, Lifecycle (≥2 phases), Stakeholders (≥3 roles), Urgency (1-6mo), Significance, Quantified.
 
-**Category Coverage** (min): Security ≥50%, Infrastructure ≥40%, Practices ≥30%, Tech Releases ≥25% (optional)
+## Requirements
 
-**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
+**Q&A**: 4-6 total | 1-2 per phase | 120-200 words | 100% news-driven | ≥85% ≥1 cite | ≥1 cat + impact + decision
 
-**Stakeholders** (5 core; cover all 5): Architect, DevOps/SRE, Security Engineer, Backend Developer, Engineering Manager
+**Phases** (3-4): Architecture & Design, Development, Deploy & Release, Operations & Observability
 
-**References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), T≥3 (tools), S≥2 (standards), R≥2 (reports), A≥6 (APA 7th+tag)
+**Coverage Min**: Security ≥50%, Infrastructure ≥40%, Practices ≥30%, Releases ≥25%
+
+**Criticality**: 100% satisfy ≥1 criterion
+
+**Stakeholders**: 5 core roles, all covered
+
+**References**: G≥8 (all used), N≥4-5 (fresh), T≥3, S≥2, R≥2, A≥6
 
 **Visuals**: ≥2 diagrams + ≥1 table
 
-**Quality Gates** (fail ANY = stop):
-1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
-2. **News**: 100% cite ≥1 per freshness; 0% marketing/rumors
-3. **Impact**: 100% ≥2 phases + ≥2 roles + quantified
-4. **Decision**: 100% decision + rationale + timeline
-5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
-6. **Actionability**: 100% concrete; 0% abstract
-7. **Coverage (MECE across Q&As)**: Questions must each focus on a distinct decision; avoid repeating essentially the same scenario or impact in multiple Q&As.
+**Quality Gates** (fail any = stop):
+1. Criticality: 100% ≥1 criterion
+2. News: 100% cited, fresh; 0% marketing
+3. Impact: 100% ≥2 phases + ≥2 roles + quantified
+4. Decision: 100% + rationale + timeline
+5. Sources: ≥3 types, max 50%/type; URLs valid
+6. Actionability: 100% concrete
+7. Coverage: MECE decisions, no repeats
 
-## III. Execution
+## Execution
 
-### Step 1: News Discovery & Curation (Minimal)
+### 1. News Discovery & Curation
 
-**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
+Record generation date (YYYY-MM-DD).
 
-1. **Domain**: Infrastructure/Security/Practices + date
+**Search** (≥10-15 candidates, tiered):
+- Tier 1 (1-3d): CVE/security/infrastructure/Kubernetes/database/framework + 1-3d
+- Tier 2 (7-14d if needed): Same + 7-14d
 
-2. **Search** (≥10-15 candidates, tiered):
+**Sources** (prioritize whitelist):
+- Security: CVE DB, CISA, vendor advisories, GitHub alerts
+- Infrastructure: Cloud blogs, Kubernetes, registries
+- Practices: InfoQ, Fowler, SRE/Observability Weekly
+- Releases: GitHub, vendor blogs, TechCrunch
+- Avoid: PR, rumors, speculation
 
-   **Tier 1** (1-3d, search first): `"CVE|security|infrastructure|Kubernetes|database|framework" + 1-3d`
+**Tools**: Search engines, GitHub Trending
 
-   **Tier 2** (7-14d if insufficient): Same + 7-14d
+**Curate** (≥10-15: Security ≥5, Infra ≥3, Practices ≥2):
+- Age per freshness
+- Whitelist/primary source
+- ≥1 criticality criterion
+- Specific details
+- No marketing/rumors
 
-   **Sources** (whitelist, prioritize):
-   - **Security**: CVE DB, CISA, vendor security advisories, GitHub security alerts
-   - **Infrastructure**: AWS/GCP/Azure blogs, Kubernetes releases, container registries
-   - **Practices**: InfoQ, Martin Fowler, SRE Weekly, Observability Weekly
-   - **Tech Releases**: GitHub releases, official vendor blogs, TechCrunch
-   - **Avoid**: PR fluff, rumors, listicles, speculation
+**Verify**: Criticality; retry if fail
 
-   **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), GitHub Trending
+**Allocate**: 4-6 Q&A across 3-4 phases/categories/roles
 
-3. **Curate** (≥10-15 candidates: Security ≥5, Infrastructure ≥3, Practices ≥2):
-   - ✅ Age per freshness
-   - ✅ Whitelist OR primary source
-   - ✅ Satisfies ≥1 Decision Criticality criterion
-   - ✅ Specific details (dates, versions, metrics)
-   - ✅ Not marketing/rumors
-
-4. **Verify**: Check decision criticality; if fail, retry earlier tiers
-
-5. **Allocate**: 4-6 Q × 3-4 phases (1-2 each) × 3-4 categories (≥1/Q) × ≥5 roles
-
-### Step 2: Build References (Minimal)
+### 2. Build References
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | T# (tool, ver, URL) | S# (standard, changes) | R# (report, findings) | A# (APA 7th+tag)
 
-**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+**Citation**: [Ref: N#][n#] in text, [n#]: URL at end
 
-**Floors**: G≥8 (100% terms used), N≥4-5, T≥3, S≥2, R≥2, A≥6
+**Floors**: G≥8 (all used), N≥4-5, T≥3, S≥2, R≥2, A≥6
 
-**Glossary** (only terms used in Q&As):
-- **Coverage**: Only terms/acronyms used (CVE, SRE, p95, RTO, RPO, etc.)
-- **Clarity**: Plain language, avoid jargon
-- **Analogies**: 1-2 real-world comparisons per term
-- **Context**: Why it matters for decisions
-- **Examples**: Real numbers
+**Glossary** (used terms only):
+- Plain language, analogies, context, examples
 
-**Evidence & Accuracy**: Prefer primary or official sources (security advisories, vendor documentation, standards, major reports). When recommending tools, versions, or configurations, check they are current and compatible; if information is uncertain or based on estimates, label it explicitly.
+**Evidence**: Prefer primary sources; label uncertainties.
 
-**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
+**News Entry**: Title (Source, MM/DD): Summary | Cat | URL | Criticality
 
-### Step 3: Generate Q&A (batch 2-3, self-check each)
+### 3. Generate Q&A
 
-**Before**: Review glossary. Track ALL terms used.
+**Patterns**: "[News] implications for [Phase]+[Roles]?" | "[CVE/Change]: response?" | "[Change]: adoption strategy?"
 
-**Patterns**: "[News] implications for [Phase]+[Roles]?" | "[CVE/Change]: response?" | "[Infrastructure change]: adoption strategy?"
-
-**Avoid**: Generic questions, hype, unattributed claims, stale news, speculation
+**Avoid**: Generic, hype, unattributed, stale, speculation
 
 **Structure** (120-200w):
-1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~50w): ≥2 phases + quantified (perf %, reliability %, security risk, cost $)
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): State the recommended choice (Adopt/Investigate/Defer/Avoid), briefly compare it with at least one viable alternative when appropriate, and explain trade-offs, risks, and criteria for revisiting the decision.
-5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
-6. **Links**: Define at end: `[n1]: URL`
+1. **News** (~25w): What, when, why, cat [Ref: N#][n#]
+2. **Impact** (~50w): ≥2 phases + quantified
+3. **Stakeholders** (~35w): ≥2 roles + concerns/actions
+4. **Decision** (~50w): Rec (Adopt/Investigate/Defer/Avoid) + rationale (trade-offs vs alternatives) + success criteria
+5. **Action** (~20w): Immed (0-2wk) + Short (2wk-2mo) + owners
+6. Links: [n#]: URL
 
-**Self-Check**: Age OK | Decision Criticality | ≥2 phases & ≥2 roles | 120–200w | Quantified impact | ≥1 cite | 0% hype | 100% actionable | All terms in glossary | No internal contradictions | Key risks and limitations stated | Estimates and assumptions clearly flagged
+**Self-Check**: Fresh, criticality, ≥2 phases/roles, word count, quantified, cited, no hype, actionable, terms in glossary, no contradictions, risks flagged, assumptions labeled
 
-### Step 4: Visuals (≥2 diagrams + ≥1 table)
+### 4. Visuals
 
-**Types**: Risk matrices, decision trees, adoption timelines, comparison tables
+≥2 diagrams (Mermaid flows, matrices) + ≥1 table
 
-**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
+### 5. Final Checks
 
-### Step 5: Final Checks
+Refs: Resolve, fresh, complete, floors met
 
-**Refs**: 100% resolve | Age OK | Complete | G≥8 (100% terms used) | N≥4-5 | T≥3 | S≥2 | R≥2 | A≥6
+Decision: 100% + rationale + criteria + timeline
 
-**Decision**: 100% decision + rationale + criteria + timeline
+Stakeholders: ≥5 roles + actions
 
-**Stakeholders**: ≥5 roles | Actions + authority
+### 6. Validate
 
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
+**Quantitative**: Floors, glossary 100%, phases/categories/roles, citations, words, visuals, decisions, timelines, freshness
 
-**Quantitative**: Floors met | Glossary 100% | 3–4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120–200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
+**Qualitative**: Fresh, no hype, criticality 100%, impact 100%, decisions 100%, source diversity, links valid, quantified/actionable/evidence 100%, consistent, risks surfaced
 
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Reasoning consistent (no contradictions) | Major risks and counterarguments surfaced when relevant
+### 7. Submit
 
-### Step 7: Submit
+**Checklist**: All validations pass, floors met, glossary complete (100% terms, ≥50% analogies), TOC, no placeholders, visuals/citations/impact/decisions/timelines/categories/roles/freshness OK, evidence 100%, URLs valid, dates (gen + expire=gen+2wk), search documented
 
-**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
-
-## IV. Validation Report (Minimal)
+## Validation Report
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
-| 1 | **Freshness** | HV: __%<1mo (1-3d:__%), __%<2mo \| MV: __%<2mo (1-3d:__%) \| Overall: __%<2mo | Per header | | PASS/FAIL |
-| 2 | **Floors** | G:__ N:__ T:__ S:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥3,≥2,≥2,≥6,4-6 | | PASS/FAIL |
-| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
-| 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
-| 5 | **Categories** | Sec__% Infra__% Prac__% Tech__% | ≥50,40,30,25% | | PASS/FAIL |
-| 6 | **Roles** | __/5 | ≥5 | | PASS/FAIL |
-| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
-| 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
-| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
-| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
-| 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
-| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
-| | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
-| | **Age Dist** | <1mo__%(1-3d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |
-| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
+| 1 | Freshness | HV: __%<1mo (1-3d:__%), __%<2mo; MV: __%<2mo (1-3d:__%); Overall: __%<2mo | Per thresholds | | PASS/FAIL |
+| 2 | Floors | G:__ N:__ T:__ S:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥3,≥2,≥2,≥6,4-6 | | PASS/FAIL |
+| 3 | Glossary | __% terms; __% analogies | 100%; ≥50% | | PASS/FAIL |
+| 4 | Phases | __/3-4 (1-2Q each); total __ | 3-4/3-4; 4-6 | | PASS/FAIL |
+| 5 | Categories | Sec __% Infra __% Prac __% Tech __% | ≥50,40,30,25% | | PASS/FAIL |
+| 6 | Roles | __/5 | ≥5 | | PASS/FAIL |
+| 7 | Criticality | __% ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | Impact | __% ≥2 phases+2 roles+quantified | 100% | | PASS/FAIL |
+| 9 | Decision | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | Citations | __% ≥1 cite | 100% | | PASS/FAIL |
+| 11 | Words | 5 samples: __% 120-200w | 100% | | PASS/FAIL |
+| 12 | Visuals | diag __; tab __ | ≥2; ≥1 | | PASS/FAIL |
+| | Meta | Start: __ End: __ Expires: [+2wk] | | INFO |
+| | Age Dist | <1mo __% (1-3d __%) 1-2mo __% 2-4mo __% | Per thresholds | | INFO |
+| | OVERALL | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥2 fails of 7 = rewrite)
+## Question Quality
 
-**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
+**Criteria**: News-driven (fresh), critical (≥1 criterion), phase-specific (1-2), multi-role (≥2), quantified, timely, actionable
 
-**✓ Good**: "CVE-2024-XXXXX (Oct 2024) critical: patching timeline?" | "Kubernetes 1.30 deprecation (Nov 2024): migration strategy?" | "AWS pricing change (Nov 2024): cost impact?" | "Observability shift to OTEL (2024): adoption readiness?"
+**Good**: CVE-XXXX (Oct 2024) critical: patching? | Kubernetes 1.30 deprecation (Nov 2024): migration? | AWS pricing (Nov 2024): cost impact? | OTEL shift (2024): adoption?
 
-**✗ Bad**: "How does CVE work?" (no news) | "What is SRE?" (overview) | "Should we use Kubernetes?" (no trigger) | "AWS released feature" (no decision)
+**Bad**: How CVE works? (no news) | What is SRE? (overview) | Use Kubernetes? (no trigger) | AWS feature release (no decision)
 
-## VI. Output Format (Minimal)
+## Output Format
 
-**Final Output Requirement**: When answering this prompt, produce a single Markdown document that follows the structure in this section (TOC → Executive Summary → Phase Overview → Q&As → References → Validation Report). Do **not** include your planning notes, self-check list, or explanations of how you used this template.
+Produce single Markdown doc: TOC → Executive Summary → Phase Overview → Q&As → References → Validation Report. No planning notes.
 
-### A. TOC
+### TOC
 
-```markdown
 # [Domain] Technical Operations News Intelligence Q&A ([Period])
 
 ## Contents
-1. Executive Summary (Insights | Dashboard)
-2. Phase Coverage (3-4 phases)
-3. Questions by Phase (4-6 total; 1-2 per phase across Arch, Dev, Deploy, Ops)
-4. References: G (G1-G8) | N (N1-N5) | T (T1-T3) | S (S1-S2) | R (R1-R2) | A (A1-A6)
-5. Validation (12 checks)
-```
+1. Executive Summary
+2. Phase Coverage
+3. Questions by Phase (4-6 total)
+4. References
+5. Validation
 
-### B. Executive Summary
+### Executive Summary
 
-```markdown
 ## Executive Summary
 **Domain**: [Category] | **Period**: [Q3-Q4'24] | **Coverage**: [# items, 3-4 cats]
 
@@ -211,55 +193,52 @@ You are an LLM generating 4–6 decision-critical Q&As from recent infrastructur
 **Dashboard**: [Table: Phase | News | Decision | Timeline]
 
 **Roles**: [5+ roles] | **Refs**: G=[#] N=[#] T=[#] S=[#] R=[#] A=[#]
-```
 
-### C. Phase Overview
+### Phase Overview
 
 | # | Phase | Count | Categories | News | Roles |
 |---|-------|-------|------------|------|-------|
 | 1 | Arch & Design | 1-2 | Security, Infrastructure | [Top] | Architect, SRE |
-| 2 | Development | 1-2 | Practices, Tech Releases | [Top] | Developer, DevOps |
+| 2 | Development | 1-2 | Practices, Releases | [Top] | Developer, DevOps |
 | 3 | Deploy & Release | 1-2 | Infrastructure, Security | [Top] | DevOps, SRE |
 | 4 | Ops & Observability | 1-2 | Infrastructure, Practices | [Top] | SRE, Eng Manager |
 | | **Total** | **4-6** | **3-4** | **4+** | **≥5** |
 
-### D. Q&A Template
+### Q&A Template
 
-```markdown
 ### Q#: [News Question + Phase + Roles]
 
-**Phase**: [Phase] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
+**Phase**: [Phase] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Criticality**: [Criterion]
 
-**News** (~25w): What, when, why, cat [Ref: N#][n#]
+**News**: What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~50w): **Phases** (≥2) | **Quantified**: Perf % | Reliability % | Security risk | Cost $
+**Impact**: Phases (≥2) | Quantified: Perf % | Reliability % | Security risk | Cost $
 
-**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+**Stakeholders**: **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~50w): **Rec**: Adopt/Investigate/Defer/Avoid | **Rationale**: Why (include 1–2 key trade-offs vs alternatives) | **Success**: Concrete, measurable targets and how they will be checked
+**Decision**: **Rec**: Adopt/Investigate/Defer/Avoid | **Rationale**: Why (trade-offs vs alternatives) | **Success**: Targets and checks
 
-**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
+**Action**: **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same
 
-[n1]: URL
+[n#]: URL
 ---
-```
 
 ## References
 
-### Glossary (G1-G8+)
-**G#. Term (Acronym)**: Definition | Analogy | Context | Example
+### Glossary
+**G#. Term**: Definition | Analogy | Context | Example
 
-### News (N1-N5+)
+### News
 **N#. Title** (Source, MM/DD): Summary | Cat | URL
 
-### Tools (T1-T3+)
-**T#. Tool (Cat)**: Desc | Ver | URL
+### Tools
+**T#. Tool**: Desc | Ver | URL
 
-### Standards (S1-S2+)
-**S#. ID (Org)**: Title | Changes | URL
+### Standards
+**S#. ID**: Title | Changes | URL
 
-### Reports (R1-R2+)
+### Reports
 **R#. Title** (Firm, Date): Findings | URL
 
-### Citations (A1-A6+)
-**A#. APA 7th [Tag]**: Author/Org. YYYY, Mon DD. *Title*. Pub. URL [Tag]
+### Citations
+**A#. APA 7th**: Author/Org. YYYY, Mon DD. *Title*. Pub. URL

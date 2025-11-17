@@ -1,13 +1,13 @@
-# Product & Market Intelligence News Q&A Generator (Minimal Viable)
+# Product & Market Intelligence News Q&A Generator
 
-Use this template as a single, self-contained LLM prompt (with web search and Markdown output) to generate 4–6 decision-critical Q&As, visuals, and a validation report from recent product and market news in one run.
+Use this template as a single, self-contained LLM prompt to generate 4–6 decision-critical Q&As, visuals, and a validation report from recent product and market news.
 
 **How to use**:
-1. Fill contextual placeholders in the Output Format (`[Domain]`, `[Period]`, roles, generation date) and decide product, stage, region, target segment, key competitors, and priorities for this period.
+1. Fill contextual placeholders in the Output Format (`[Domain]`, `[Period]`, roles, generation date) and set product, stage, region, target segment, key competitors, and priorities.
 2. Paste this entire prompt into the LLM with those context values.
-3. Tell the LLM to strictly follow all requirements, execution steps, and the output format to produce Q&As, references, visuals, and the validation report.
+3. Instruct the LLM to strictly follow all requirements, execution steps, and the output format.
 
-**Cadence & Effort**: Bi-weekly | 4–6h equivalent analysis effort | **Validity**: Results are valid for 2 weeks from the generation date.
+**Cadence & Effort**: Bi-weekly | 4–6h equivalent analysis effort | **Validity**: Results valid for 2 weeks from generation date.
 
 **Freshness** (all news must meet these age thresholds):
 - **High-Velocity** (Competitive, Pricing): ≥85% <1mo (≥30% 1-3d), ≥95% <2mo, 100% ≤4mo
@@ -20,182 +20,158 @@ Use this template as a single, self-contained LLM prompt (with web search and Ma
 
 ## I. Framework
 
-**Context Inputs (set before running)**:
-- Product, business model, and main value proposition (e.g., B2B SaaS, consumer app).
-- Target customers/segments and regions (ICPs, markets for this period).
-- Company stage and scale (post-PMF, revenue or user band, team size).
+**Context Inputs** (set before running):
+- Product, business model, and main value proposition.
+- Target customers/segments and regions.
+- Company stage and scale (post-PMF, revenue/user band, team size).
 - Competitive set (3–7 key competitors).
-- Strategic priorities (e.g., retention, expansion, pricing, new segments).
-- Key constraints and risk tolerance (time, budget, regulatory/contract limits).
+- Strategic priorities.
+- Key constraints and risk tolerance.
 
-**Decision Criticality Framework** (include if ≥1 criterion met):
-1. **Blocks Decision**: Directly impacts roadmap prioritization, go/no-go, or strategic pivot
-2. **Creates Risk**: Material competitive threat, churn signal, or pricing pressure
-3. **Affects ≥2 Core Roles**: Multi-stakeholder impact (PM + Marketing, PM + Eng, etc.)
-4. **Requires Action**: 1-6mo action window (not speculative)
-5. **Quantified Impact**: Adoption %, pricing $, market share, or churn signal
+**Decision Criticality** (include if ≥1 criterion met):
+1. **Blocks Decision**: Impacts roadmap prioritization, go/no-go, or strategic pivot.
+2. **Creates Risk**: Material competitive threat, churn signal, or pricing pressure.
+3. **Affects ≥2 Core Roles**: Multi-stakeholder impact.
+4. **Requires Action**: 1-6mo action window.
+5. **Quantified Impact**: Adoption %, pricing $, market share, or churn signal.
 
 **Categories** (3-4, each Q covers ≥1):
-1. **Competitive Features**: Launches, updates, parity gaps, deprecations affecting your roadmap
-2. **Pricing & Monetization**: Pricing changes, model shifts, packaging affecting your strategy
-3. **Product Strategy**: Pivots, expansions, build/buy/partner decisions affecting positioning
-4. **Customer Research** (optional): Adoption signals, churn patterns, usage trends affecting roadmap
+1. **Competitive Features**: Launches, updates, parity gaps, deprecations.
+2. **Pricing & Monetization**: Pricing changes, model shifts, packaging.
+3. **Product Strategy**: Pivots, expansions, build/buy/partner decisions.
+4. **Customer Research** (optional): Adoption signals, churn patterns, usage trends.
 
-**Answer Structure** (120-200w): News (what, when, why) + impact (quantified, ≥2 phases, ≥2 roles) + decision (Build/Prioritize/Monitor/Defer/Ignore + rationale) + timeline (immediate/short). Projections only if sourced.
+**Answer Structure**: News (what, when, why) + impact (quantified, ≥2 phases, ≥2 roles) + decision (Build/Prioritize/Monitor/Defer/Ignore + rationale) + timeline (immediate/short). Projections only if sourced.
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2/phase | 120-200w | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision | No generic theory or intros—focus only on decision and concrete actions
+**Q&A**: 4-6 total | 1-2/phase | 100% news-driven | ≥85% ≥1 cite, ≥30% ≥2 cites | ≥1 category + impact + decision | No generic theory—focus on decisions and actions.
 
-**Phases** (3-4, 1-2 Q each): Discovery, Design, Launch, Growth (skip Maturity, Expansion, Sunsetting unless decision-critical)
+**Phases** (3-4, 1-2 Q each): Discovery, Design, Launch, Growth.
 
-**Category Coverage** (min): Competitive ≥50%, Pricing ≥40%, Strategy ≥40%, Research ≥25% (optional)
+**Category Coverage** (min): Competitive ≥50%, Pricing ≥40%, Strategy ≥40%, Research ≥25%.
 
-**Decision Criticality** (100%): Each Q must satisfy ≥1 of 5 criteria (Blocks/Risk/Roles/Action/Quantified)
+**Decision Criticality** (100%): Each Q satisfies ≥1 criterion.
 
-**Stakeholders** (≥5/5): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead (core roles only)
+**Stakeholders** (≥5): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead.
 
-**References** (build before Q&A): G≥8 (100% terms used), N≥4-5 (per freshness), C≥2-3 (competitive), P≥2 (pricing), R≥2 (research), A≥6 (APA 7th+tag)
+**References**: G≥8 (100% terms used), N≥4-5 (per freshness), C≥2-3, P≥2, R≥2, A≥6 (APA 7th+tag).
 
-**Visuals**: ≥2 diagrams + ≥1 table
+**Visuals**: ≥2 diagrams + ≥1 table.
 
 **Quality Gates** (fail ANY = stop):
-1. **Decision Criticality**: 100% satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified)
-2. **News**: 100% cite ≥1 per freshness; 0% marketing/rumors
-3. **Impact**: 100% ≥2 phases + ≥2 roles + quantified
-4. **Decision**: 100% decision + rationale + timeline
-5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid
-6. **Actionability**: 100% concrete; 0% abstract
+1. **Decision Criticality**: 100% satisfy ≥1 criterion.
+2. **News**: 100% cite ≥1 per freshness; 0% marketing/rumors.
+3. **Impact**: 100% ≥2 phases + ≥2 roles + quantified.
+4. **Decision**: 100% decision + rationale + timeline.
+5. **Sources**: ≥3 types, max 50%/type; 100% URLs valid.
+6. **Actionability**: 100% concrete; 0% abstract.
 
 ## III. Execution
 
-### Step 1: News Discovery & Curation (Minimal)
+### Step 1: News Discovery & Curation
 
-**Record generation date (YYYY-MM-DD)—calculate all news ages from this.**
+Record generation date (YYYY-MM-DD)—calculate all news ages from this.
 
-1. **Domain**: Define industry/product category + date (e.g., "B2B SaaS Q4 2024")
+1. **Domain**: Define industry/product category + date.
 
 2. **Search** (≥10–15 candidates, tiered):
-   - **Tier 1 (1–3d, search first)**: `"[Competitor/Domain] launched|pricing|strategy"` + 1–3d.
-   - **Tier 2 (7–14d, if Tier 1 insufficient)**: Same query + 7–14d.
-   - **Sources (whitelist, prioritize)**: Competitive (Product Hunt, TechCrunch, competitor changelogs); Pricing (ProfitWell, competitor sites, Archive.org); Strategy (Lenny's Newsletter, a16z, company blogs); Research (Pendo, Amplitude, UserTesting reports). Avoid PR fluff, rumors, listicles, speculation.
-   - **Tools**: Perplexity ("past week"), ChatGPT ("latest"), Google (`after:DATE`), Product Hunt.
+   - **Tier 1 (1–3d)**: `"[Competitor/Domain] launched|pricing|strategy"` + 1–3d.
+   - **Tier 2 (7–14d)**: Same if Tier 1 insufficient.
+   - **Sources**: Competitive (Product Hunt, TechCrunch, changelogs); Pricing (ProfitWell, sites, Archive.org); Strategy (newsletters, blogs); Research (Pendo, Amplitude, reports). Avoid fluff, rumors.
+   - **Tools**: Perplexity, ChatGPT, Google, Product Hunt.
 
-3. **Curate** (≥10–15 candidates: Competitive ≥4, Pricing ≥2, Strategy ≥2, Research ≥2):
-   - Meets freshness thresholds.
-   - From whitelist or primary source.
-   - Satisfies ≥1 Decision Criticality criterion.
-   - Includes specific details (dates, names, numbers, metrics).
-   - Not marketing/rumors.
-   - High impact on roadmap, pricing, or positioning (drop marginal items even if fresh).
+3. **Curate** (≥10–15: Competitive ≥4, Pricing ≥2, Strategy ≥2, Research ≥2):
+   - Meets freshness.
+   - From whitelist/primary sources.
+   - Satisfies ≥1 Decision Criticality.
+   - Specific details.
+   - High impact.
 
-4. **Verify**: Check decision criticality; if fail, retry earlier tiers
+4. **Verify**: Check criticality; retry if needed.
 
-5. **Allocate**: 4–6 Q × 3–4 phases (1–2 each) × 3–4 categories (≥1/Q) × ≥5 roles; avoid duplicate questions about the same news unless you split by phase.
+5. **Allocate**: 4–6 Q × 3–4 phases × 3–4 categories × ≥5 roles; avoid duplicates.
 
-### Step 2: Build References (Minimal)
+### Step 2: Build References
 
 **Format**: G# (term, def+analogy, context) | N# (news, source, date, cat, URL) | C# (competitive, feature, URL) | P# (pricing, model, URL) | R# (research, findings, URL) | A# (APA 7th+tag)
 
-**Citation**: Markdown reference links: `[Ref: N1][n1]` in text, `[n1]: URL` at answer end
+**Citation**: `[Ref: N1][n1]` in text, `[n1]: URL` at end.
 
-**Quality**: Prefer primary or official sources (pricing pages, product announcements, release notes, research reports). When you rely on summaries or commentary, cross-check at least one primary or high-credibility source, and mention any uncertainty or ranges in the Q&A if figures differ.
+**Quality**: Prefer primary sources; cross-check summaries.
 
-**Floors**: G≥8 (100% terms used), N≥4-5, C≥2-3, P≥2, R≥2, A≥6
+**Floors**: G≥8, N≥4-5, C≥2-3, P≥2, R≥2, A≥6.
 
-**Glossary** (only terms used in Q&As):
-- Only terms/acronyms used (NPS, MAU, ICP, JTBD, etc.), in plain language (no jargon).
-- For each term, include 1–2 real-world analogies, why it matters for decisions, and at least one numeric example.
+**Glossary** (terms used): Plain language, 1–2 analogies, why matters, numeric example.
 
-**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
+**News Entry**: **Title** (Source, MM/DD): Summary | Cat | URL | Criterion.
 
-### Step 2.5: Opportunistic Refresh (optional, skip default)
+### Step 3: Generate Q&A
 
-**Trigger**: Major launch/pricing shift in 24-48h affecting ≥3 Qs
+**Patterns**: "[News] implications for [Phase]+[Roles]?" etc.
 
-**Action**: Quick search → Add 1-2 "BREAKING" items → Adjust 1-2 Qs → Document
+**Avoid**: Generic, hype, unattributed, stale, speculation.
 
-### Step 3: Generate Q&A (batch 2-3, self-check each)
+**Structure**:
+1. **News**: What, when, why, cat `[Ref: N#][n#]`
+2. **Impact**: ≥2 phases + quantified.
+3. **Stakeholders**: ≥2 roles + concerns + actions.
+4. **Decision**: Build/Prioritize/Monitor/Defer/Ignore + rationale + criteria.
+5. **Action**: Immediate (0-2wk) + Short (2wk-2mo) + owner.
+6. **Links**: `[n1]: URL`
 
-**Before**: Review glossary. Track ALL terms used.
+**Self-Check**: Freshness, criticality, ≥2 phases/roles/quantified, balanced, consistent, actionable, terms in glossary.
 
-**Patterns**: "[News] implications for [Phase]+[Roles]?" | "[Pricing News]: response?" | "[Launch] vs [Roadmap]: prioritize?"
+### Step 4: Visuals
 
-**Avoid**: Generic questions, hype, unattributed claims, stale news, speculation
+**Types**: Matrices, tables, 2×2, trees.
 
-**Structure** (120-200w):
-1. **News** (~25w): What, when, why, cat `[Ref: N#][n#]`
-2. **Impact** (~50w): ≥2 phases + quantified (adoption %, pricing $, market share, churn signal)
-3. **Stakeholders** (~35w): ≥2 roles + concerns + actions
-4. **Decision** (~50w): Build/Prioritize/Monitor/Defer/Ignore + rationale + criteria
-5. **Action** (~20w): Immediate (0-2wk), Short (2wk-2mo) + owner
-6. **Links**: Define at end: `[n1]: URL`
-
-**Self-Check** (for each Q&A):
-- Age within freshness thresholds and Decision Criticality satisfied
-- Covers ≥2 phases and ≥2 roles with quantified impact
-- Balanced view (pros, cons, and explicit uncertainties; no hype or untested claims)
-- Decision and rationale consistent with the described impact and stakeholder concerns
-- Word count 120-200, ≥1 citation from credible sources, links valid
-- 100% actionable next steps; all domain terms are present in the glossary and clearly defined
-
-### Step 4: Visuals (≥2 diagrams + ≥1 table)
-
-**Types**: Competitive matrices, pricing tables, prioritization (2×2), decision trees
-
-**Format**: Mermaid (flows), Markdown tables (data), 2×2 matrices
+**Format**: Mermaid, Markdown.
 
 ### Step 5: Final Checks
 
-**Refs**: 100% resolve, age OK, complete; floors met (G≥8, N≥4–5, C≥2–3, P≥2, R≥2, A≥6).
+Refs complete, floors met, decisions/timelines, coverage, stakeholders.
 
-**Decision**: 100% decision + rationale + criteria + timeline
+### Step 6: Validate
 
-**Coverage & Non-Overlap**: Q&As collectively cover the curated, high-impact news items without redundant overlap; any excluded item is intentionally out of scope (e.g., low impact, speculative, or outside this product/segment).
+Quantitative: Floors, glossary, phases, categories, roles, citations, visuals, decisions, timelines, age.
 
-**Stakeholders**: ≥5 roles | Actions + authority
-
-### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
-
-**Quantitative**: Floors met | Glossary 100% | 3-4 phases | Categories per % | ≥5 roles | Citations OK | 5 word samples 120-200w | Visuals OK | Decision 100% | Timeline 100% | **Age per freshness**
-
-**Qualitative**: News per freshness, 0% hype | Decision Criticality 100% | Impact 100% ≥2 phases+roles+quantified | Decision 100% | Source diversity ≥3 types | Per-phase ≥1 news+analysis | Links valid | Quantified 100% | Actionable 100% | Evidence 100% | Search documented | Logic consistent (no contradictions, circular reasoning, or unjustified jumps)
+Qualitative: Freshness, no hype, criticality, impact, decisions, diversity, links, quantified, actionable, evidence, logic.
 
 ### Step 7: Submit
 
-**Checklist** (all YES): Validations PASS | Floors met | Glossary complete (100% terms, ≥50% analogies) | TOC complete | 0 placeholders | Visuals OK | Citations OK | Impact OK | Decision OK | Timeline OK | Categories OK | Roles OK | **Freshness OK** | Evidence 100% | URLs valid | **Dates (gen + expire=gen+2wk)** | Search documented
+Checklist: All validations pass, complete glossary, TOC, no placeholders, OK visuals/citations/impact/decisions/timelines/categories/roles/freshness/evidence/URLs/dates/search.
 
-## IV. Validation Report (Minimal)
+## IV. Validation Report
 
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
-| 1 | **Freshness** | HV: __%<1mo (1-3d:__%), __%<2mo \| MV: __%<2mo (1-3d:__%) \| Overall: __%<2mo | Per header | | PASS/FAIL |
-| 2 | **Floors** | G:__ N:__ C:__ P:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥2-3,≥2,≥2,≥6,4-6 | | PASS/FAIL |
-| 3 | **Glossary** | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
-| 4 | **Phases** | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
-| 5 | **Categories** | Comp__% Pric__% Strat__% Res__% | ≥50,40,40,25% | | PASS/FAIL |
-| 6 | **Roles** | __/5 | ≥5 | | PASS/FAIL |
-| 7 | **Decision Criticality** | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
-| 8 | **Impact** | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
-| 9 | **Decision** | __% decision+rationale+criteria | 100% | | PASS/FAIL |
-| 10 | **Citations** | __%≥1cite | 100% | | PASS/FAIL |
-| 11 | **Words** | 5 samples: __%120-200w | 100% | | PASS/FAIL |
-| 12 | **Visuals** | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
-| | **Meta** | Start:__ End:__ Expires:[+2wk] | | INFO |
-| | **Age Dist** | <1mo__%(1-3d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |
-| | **OVERALL** | All checks | All PASS | | PASS/FAIL |
+| 1 | Freshness | HV: __%<1mo (1-3d:__%), __%<2mo; MV: __%<2mo (1-3d:__%); Overall: __%<2mo | Per header | | PASS/FAIL |
+| 2 | Floors | G:__ N:__ C:__ P:__ R:__ A:__ Q:__ | ≥8,≥4-5,≥2-3,≥2,≥2,≥6,4-6 | | PASS/FAIL |
+| 3 | Glossary | __%terms; __%analogies | 100%;≥50% | | PASS/FAIL |
+| 4 | Phases | __/3-4 (1-2Q each); total__ | 3-4/3-4;4-6 | | PASS/FAIL |
+| 5 | Categories | Comp__% Pric__% Strat__% Res__% | ≥50,40,40,25% | | PASS/FAIL |
+| 6 | Roles | __/5 | ≥5 | | PASS/FAIL |
+| 7 | Decision Criticality | __% satisfy ≥1 criterion | 100% | | PASS/FAIL |
+| 8 | Impact | __% ≥2phases+2roles+quantified | 100% | | PASS/FAIL |
+| 9 | Decision | __% decision+rationale+criteria | 100% | | PASS/FAIL |
+| 10 | Citations | __%≥1cite | 100% | | PASS/FAIL |
+| 11 | Visuals | diag__; tab__ | ≥2;≥1 | | PASS/FAIL |
+| | Meta | Start:__ End:__ Expires:[+2wk] | | INFO |
+| | Age Dist | <1mo__%(1-3d__%) 1-2mo__% 2-4mo__% | Per header | | INFO |
+| | OVERALL | All checks | All PASS | | PASS/FAIL |
 
-## V. Question Quality (≥2 fails of 7 = rewrite)
+## V. Question Quality
 
-**Criteria**: News-driven (per freshness) | Decision-critical (≥1 criterion) | Lifecycle-specific (1-2 phases) | Multi-stakeholder (≥2 roles) | Quantified impact | Timely | Actionable
+**Criteria**: News-driven | Decision-critical | Lifecycle-specific | Multi-stakeholder | Quantified impact | Timely | Actionable. Rewrite if ≥2 fails.
 
-**✓ Good**: "Notion AI 40% adoption (Oct'24)—roadmap impact?" | "Linear 3→2 tier simplification (Sep'24): response?" | "Competitor pricing ↑20% (Nov'24): strategy?" | "UserTesting: 65% mobile preference (Nov'24): prioritize?"
+**✓ Good**: "Notion AI 40% adoption (Oct'24)—roadmap impact?" | "Linear 3→2 tier (Sep'24): response?" | "Competitor pricing ↑20% (Nov'24): strategy?" | "UserTesting: 65% mobile (Nov'24): prioritize?"
 
 **✗ Bad**: "How does PMF work?" (no news) | "What is NPS?" (overview) | "Build AI features?" (no trigger) | "Kubernetes 1.30" (tech ops) | "Competitor launched feature" (no decision)
 
-## VI. Output Format (Minimal)
+## VI. Output Format
 
-LLM: Structure your entire output exactly using the following subsections and Markdown headings, in this order.
+LLM: Structure output exactly as follows.
 
 ### A. TOC
 
@@ -237,15 +213,15 @@ LLM: Structure your entire output exactly using the following subsections and Ma
 
 **Phase**: [Phase] | **Roles**: [Primary, Secondary] | **Cats**: [✓] | **Decision Criticality**: [Criterion]
 
-**News** (~25w): What, when, why, cat [Ref: N#][n#]
+**News**: What, when, why, cat [Ref: N#][n#]
 
-**Impact** (~50w): **Phases** (≥2) | **Quantified**: Use concrete numbers with baselines where possible (adoption %, pricing $, market %, churn signal)
+**Impact**: **Phases** (≥2) | **Quantified**: Concrete numbers (adoption %, pricing $, market %, churn signal)
 
-**Stakeholders** (~35w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
+**Stakeholders**: **[Role 1]**: Concerns, actions | **[Role 2]**: Same
 
-**Decision** (~50w): Briefly compare at least 2 plausible responses, then **Rec**: Build/Prioritize/Monitor/Defer/Ignore | **Rationale**: Why | **Success**: Measurable targets and thresholds (e.g., adoption %, churn %, revenue or margin impact, NPS)
+**Decision**: Compare ≥2 responses, **Rec**: Build/Prioritize/Monitor/Defer/Ignore | **Rationale**: Why | **Success**: Measurable targets (e.g., adoption %, churn %, revenue impact, NPS)
 
-**Action** (~20w): **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same; include concrete experiments or tools where relevant (e.g., price tests, in-product experiments, surveys)
+**Action**: **Immed (0-2wk)**: Actions+owner | **Short (2wk-2mo)**: Same; concrete experiments/tools (e.g., price tests, surveys)
 
 [n1]: URL
 ---
@@ -255,7 +231,7 @@ LLM: Structure your entire output exactly using the following subsections and Ma
 
 **G#. Term (Acronym)**: Definition | Analogy | Context | Example
 
-**N#. Title** (Source, MM/DD): Summary | Cat | URL | Decision Criticality criterion
+**N#. Title** (Source, MM/DD): Summary | Cat | URL | Criterion
 
 **C#. Competitor Feature** (Source, Date): Details | URL
 

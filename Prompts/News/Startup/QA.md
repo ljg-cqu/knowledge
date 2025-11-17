@@ -1,73 +1,72 @@
-# Startup & Formation Intelligence Q&A Generator (Minimal Viable)
+# Startup & Formation Intelligence Q&A Generator
 
-Use this specification as a single, self-contained prompt for an LLM to generate 4–6 decision-critical Q&As from recent startup/formation news. The goal is to support fast, high-quality decisions on market entry, fundraising, product–market fit, and early GTM for founders and investors.
+Use this as a self-contained prompt for an LLM to generate 4–6 decision-critical Q&As from recent startup news. Supports decisions on market entry, fundraising, product-market fit, and early GTM for founders and investors.
 
-## I. Context & Scope
+## Context & Scope
 
-- **Cadence & Effort**: Bi-weekly, 4–6h analyst effort. Output valid for 2 weeks from the generation date; always state generation and expiry dates.
+- **Cadence**: Bi-weekly, 4–6h effort. Valid for 2 weeks from generation date; include generation and expiry dates.
 - **Domain**: Formation-stage startups (pre-seed–Series A) and corporate new-market initiatives.
-- **Stakeholders**: Founder/CEO, CFO, Investor (angel/VC/PE), VP Sales, Product Lead (core roles).
-- **Decision Horizon**: 6–18 month runway/planning window. Ignore intraday noise and very long-term speculation unless it blocks a near-term decision.
-- **Assumptions**: Readers know basic startup metrics (ARR, CAC, LTV, TAM/SAM, burn, runway) and need decision-ready synthesis, not tutorials.
-- **Constraints**: Brief must be scannable in ≤30 minutes; avoid generic startup how-to content.
-- **Self-contained usage**: Treat this file as the full prompt; do not rely on previous answers or other files. Put all necessary context into a single LLM call.
-- **LLM Call**: When calling the LLM, provide domain/geography, news period, startup stage and scale, runway and key constraints, and primary roles (≥2 of the core roles), and instruct it to follow Sections I–VI and output a Markdown report.
+- **Stakeholders**: Founder/CEO, CFO, Investor (angel/VC/PE), VP Sales, Product Lead.
+- **Decision Horizon**: 6–18 months. Ignore intraday noise and long-term speculation unless blocking near-term decisions.
+- **Assumptions**: Readers know basic metrics (ARR, CAC, LTV, TAM/SAM, burn, runway); need decision-ready synthesis.
+- **Constraints**: Scannable in ≤30 minutes; avoid generic how-to content.
+- **Usage**: Self-contained prompt; provide domain/geography, news period, stage/scale, runway/constraints, and ≥2 primary roles when calling LLM.
 
-**Freshness** (category-adaptive thresholds):
+**Freshness Thresholds** (category-adaptive):
 
 - **HV** (Market/Competition/Partnerships): ≥85% <1mo (≥30% in 1–3d), ≥95% <2mo, 100% ≤4mo
 - **MV** (Funding/VC/Business Models/Talent/Macro): ≥70% <2mo (≥20% in 1–3d), ≥90% <3mo, 100% ≤6mo
-- **LT** (Regulatory/Compliance): ≥50% <3mo, ≥75% <6mo, 100% ≤12mo (≤20% at 12–18mo if enduring impact)
+- **LT** (Regulatory/Compliance): ≥50% <3mo, ≥75% <6mo, 100% ≤12mo (≤20% at 12–18mo if enduring)
 - **Overall**: ≥70% <2mo, ≥85% <4mo, ≥95% <6mo, 100% ≤12mo
-- **Validity**: 2 weeks from generation (per expiry date in the report); re-validate if used beyond expiry.
+- **Validity**: 2 weeks; re-validate beyond expiry.
 
-**Scope**: Decision-critical startup news only—funding environment, market entry barriers and opportunities, competitive moves, business model & pricing, GTM strategies, regulatory barriers/incentives, partnerships & ecosystem, talent/execution risk, macro shocks.
+**Scope**: Decision-critical news only—funding, market entry, competition, business models/pricing, GTM, regulatory, partnerships, talent, macro shocks.
 
-**Exclude**: Technical implementation details, infrastructure/tooling choices, pure marketing hype, unverified rumors, trivial product updates, stale news outside freshness rules, and mature-organization optimization (for those, use other templates).
+**Exclude**: Technical details, infrastructure, hype, rumors, trivial updates, stale news, mature-org optimization.
 
 **News Categories** (each Q covers ≥2):
 
-1. **Market/Competition**
-2. **Funding/VC**
-3. **Business Models & GTM**
-4. **Regulatory/Compliance**
-5. **Partnerships/Ecosystem**
-6. **Talent/Labor**
-7. **Economic/Macro**
+1. Market/Competition
+2. Funding/VC
+3. Business Models & GTM
+4. Regulatory/Compliance
+5. Partnerships/Ecosystem
+6. Talent/Labor
+7. Economic/Macro
 
 **News Relevance** (must meet Recency + ≥1):
 
-- Lifecycle impact: affects ≥2 phases or cross-phase coordination.
-- Stakeholder breadth: relevant to ≥3 roles or a multi-role decision.
-- Decision urgency: action needed in 1–6 months or affects strategy.
-- Strategic significance: changes fundraising environment, market landscape, or competitive position.
-- Quantified impact: meaningful numbers (market size, funding amounts, valuation changes, CAC, burn rate, etc.).
+- Lifecycle impact: ≥2 phases or cross-phase.
+- Stakeholder breadth: ≥3 roles or multi-role decision.
+- Decision urgency: Action in 1–6 months or strategy change.
+- Strategic significance: Alters fundraising, market, or competition.
+- Quantified impact: Meaningful numbers (market size, funding, valuation, CAC, burn, etc.).
 
-**Decision Criticality Framework** (include news/Q if ≥1):
+**Decision Criticality** (include if ≥1):
 
-1. **Blocks Decision**: Directly impacts go/no-go on market entry, major product/GTM bet, fundraising, or key hiring.
-2. **Creates Risk**: Materially increases risk of failure (cash crunch, competitive displacement, regulatory/tax shock, execution/talent risk).
-3. **Affects ≥2 Roles**: Requires trade-offs across Founder, CFO, Investor, Sales, Product, etc.
-4. **Requires Action**: Needs decision/adjustment within 1–6 months.
-5. **Quantified Impact**: Tied to hard numbers (funding/valuation, pricing, CAC/LTV, burn/runway, TAM/SAM, headcount, macro indicators).
+1. Blocks Decision: Impacts go/no-go on entry, product/GTM, fundraising, hiring.
+2. Creates Risk: Increases failure risk (cash, competition, regulatory, talent).
+3. Affects ≥2 Roles: Trade-offs across roles.
+4. Requires Action: Decision/adjustment in 1–6 months.
+5. Quantified Impact: Tied to hard numbers.
 
-## II. Requirements
+## Requirements
 
-- **Q&A**: 4–6 total; 120–200 words; 100% news-triggered; 100% with ≥1 citation, ≥30% with ≥2.
-- **Business Lifecycle Phases** (3–4, 1–2 Q each): Market Research & Validation, Fundraising (Pre-seed–Series A), Product–Market Fit, GTM & Early Growth (skip Incorporation and Scaling unless decisively affected).
-- **Category Coverage (min)**: Funding ≥50% of Qs, Market ≥40%, Business/GTM ≥40%, Talent ≥25% (optional, as news allows).
-- **Decision Criticality**: 100% of Qs satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified).
-- **Stakeholders**: All 5 core roles appear across the Q-set (each Q covers ≥2 roles), with a focus on Founder/CEO, CFO, Investor, VP Sales, Product Lead.
-- **References (build before Q&A)**: G≥8 (all terms used), N≥4–5 (per freshness), M≥2–3 (market), F≥2–3 (funding), R≥2 (research), O≥1–2 (org/talent events), A≥6 (APA 7th + tag).
-- **Visuals**: ≥2 diagrams + ≥1 table in the final report.
-- **Quality Gates** (fail ANY = stop and fix):
+- **Q&A**: 4–6 total; ~150 words each; 100% news-triggered; ≥1 citation each, ≥30% with ≥2.
+- **Phases** (3–4, 1–2 Q each): Market Research & Validation, Fundraising (Pre-seed–Series A), Product–Market Fit, GTM & Early Growth.
+- **Category Coverage (min)**: Funding ≥50%, Market ≥40%, Business/GTM ≥40%, Talent ≥25%.
+- **Decision Criticality**: 100% satisfy ≥1 criterion.
+- **Stakeholders**: All 5 core roles across Q-set; each Q covers ≥2 roles.
+- **References**: G≥8 (terms used), N≥4–5 (fresh), M≥2–3, F≥2–3, R≥2, O≥1–2, A≥6.
+- **Visuals**: ≥2 diagrams + ≥1 table.
+- **Quality Gates** (fail any = fix):
 
-  1. **Decision Criticality**: 100% satisfy ≥1 criterion.  
-  2. **News**: 100% cite ≥1 source meeting freshness; 0% PR/rumors.  
-  3. **Impact**: 100% cover ≥2 phases + ≥2 roles + quantified metrics (market size, funding, burn, runway, valuation, TAM/SAM).  
-  4. **Decision**: 100% contain explicit decision, rationale, and timeline.  
-  5. **Sources**: ≥3 source types; ≤50% from any one type; all URLs valid.  
-  6. **Actionability**: 100% concrete; no vague advice.
+  1. Decision Criticality: 100% ≥1 criterion.
+  2. News: 100% ≥1 fresh source; no PR/rumors.
+  3. Impact: 100% ≥2 phases + ≥2 roles + quantified metrics.
+  4. Decision: 100% explicit decision, rationale, timeline.
+  5. Sources: ≥3 types; ≤50% from one; valid URLs.
+  6. Actionability: 100% concrete.
 
 ## III. Execution
 
