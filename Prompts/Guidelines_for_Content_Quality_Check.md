@@ -30,42 +30,44 @@
 
 **9. Significance**: Highlight critical information; deemphasize low-impact details. ❌ Exhaustive low-relevance lists. ✅ Critical elements with references.
 
-**10. Concision**: Eliminate redundancy. ❌ Repeated concepts. ✅ Each concept stated once, then referenced.
+**10. Priority**: Order information by importance; label priority levels explicitly. ❌ Equal treatment of all information. ✅ Critical items first; priority indicators (critical/important/optional).
 
-**11. Accuracy**: Verify facts against authoritative sources. ❌ Unverified claims. ✅ Verified facts; time-sensitive info flagged.
+**11. Concision**: Eliminate redundancy. ❌ Repeated concepts. ✅ Each concept stated once, then referenced.
 
-**12. Credibility**: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (source, standard, documentation).
+**12. Accuracy**: Verify facts against authoritative sources. ❌ Unverified claims. ✅ Verified facts; time-sensitive info flagged.
 
-**13. Logic**: Present coherent arguments with explicit trade-offs. ❌ One-sided claims. ✅ Balanced analysis with reasoning.
+**13. Credibility**: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (source, standard, documentation).
 
-**14. Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks. ❌ Single solution. ✅ Multiple options with trade-offs.
+**14. Logic**: Present coherent arguments with explicit trade-offs. ❌ One-sided claims. ✅ Balanced analysis with reasoning.
 
-**15. Fairness**: Present balanced views and limitations. ❌ Single approach without downsides. ✅ Multiple perspectives; specify when NOT recommended.
+**15. Risk/Value**: Compare ≥2 alternatives with costs, benefits, risks. ❌ Single solution. ✅ Multiple options with trade-offs.
+
+**16. Fairness**: Present balanced views and limitations. ❌ Single approach without downsides. ✅ Multiple perspectives; specify when NOT recommended.
 
 ### Format
 
-**16. Structure**: Use clear headings, lists, tables, diagrams. ❌ Unstructured blocks. ✅ Organized headings, lists, tables, diagrams.
+**17. Structure**: Use clear headings, lists, tables, diagrams. ❌ Unstructured blocks. ✅ Organized headings, lists, tables, diagrams.
 
-**17. Consistency**: Follow consistent hierarchy and conventions. ❌ Mixed formatting. ✅ Predictable structure (H1 title, H2 sections).
+**18. Consistency**: Follow consistent hierarchy and conventions. ❌ Mixed formatting. ✅ Predictable structure (H1 title, H2 sections).
 
-**18. TOC**: Include table of contents for long documents (>3 pages or >5 sections). ❌ No navigation aid. ✅ TOC with section links.
+**19. TOC**: Include table of contents for long documents (>3 pages or >5 sections). ❌ No navigation aid. ✅ TOC with section links.
 
 ### Validation
 
-**19. Evidence**: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, section); uncertainty flagged.
+**20. Evidence**: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, section); uncertainty flagged.
 
-**20. Verification**: Perform structured self-review. ❌ No verification. ✅ Facts verified, contradictions checked, unknowns flagged.
+**21. Verification**: Perform structured self-review. ❌ No verification. ✅ Facts verified, contradictions checked, unknowns flagged.
 
-**21. Practicality**: Include concrete steps, examples, tools. ❌ Abstract recommendations. ✅ Specific steps, examples, tools.
+**22. Practicality**: Include concrete steps, examples, tools. ❌ Abstract recommendations. ✅ Specific steps, examples, tools.
 
-**22. Success Criteria**: Define measurable outcomes. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, target, measurement).
+**23. Success Criteria**: Define measurable outcomes. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, target, measurement).
 
 ## Quick Check
 
 ☐ **Self-contained**: Key context present; references summarized with links  
 ☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance  
 ☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth  
-☐ Significance | ☐ Concision | ☐ Accuracy | ☐ Credibility  
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility  
 ☐ Logic | ☐ Risk/Value | ☐ Fairness  
 ☐ Structure | ☐ Consistency | ☐ TOC  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
