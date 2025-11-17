@@ -2,7 +2,16 @@
 
 **Purpose:** Improve the quality of notes, articles, templates, and other knowledge base documents so that readers (including future you and LLMs) can make reliable decisions with minimal clarification cycles and rework.
 
-**When to apply:** Apply all guidelines for decision-critical content that meets ≥1 of the following: blocks a decision, risk of >5% impact on key metrics, 1-6mo action window, ≥2 stakeholders, adoption or implementation cost ≥40h. Apply them selectively for other content that still requires high quality. **Expected impact:** ↓30-60% misunderstandings, ↓30-60% avoidable questions, ↑60-80% decision quality based on the documents.
+**When to apply:** Apply all guidelines for decision-critical content that meets ≥1 of the following:
+- Blocks a decision
+- Risk of >5% impact on key metrics
+- 1-6mo action window
+- ≥2 stakeholders
+- Adoption or implementation cost ≥40h
+
+Apply them selectively for other content that still requires high quality.
+
+**Expected impact:** ↓30-60% misunderstandings, ↓30-60% avoidable questions, ↑60-80% decision quality.
 
 ## Guidelines (21 Total)
 
@@ -60,9 +69,57 @@
 
 ## Quick Check (30s)
 
-**Before publishing or committing your content (mandatory for decision-critical documents, recommended for others):** ☐ Self-contained enough (key context is present here; references to other notes include brief summaries and working relative links, not just "see previous answer") ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
-**Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Appropriately recent (for time-sensitive topics) | Testable/Verifiable
-**Exclude or move to references:** Long history sections (unless needed for regulation or migration), pure theory (unless adoption cost ≥40h or concept is central), edge cases with <5% impact and low severity, formal proofs, trends without data, speculation, and content that only says "see other file" or "see previous answer" without summary and a working link. **Always specify:** Key context (scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget) so the document stands on its own and can be used reliably without guessing.
-**Impact metrics:** ↓30-60% clarification cycles and misunderstandings (Context + Clarity) | ↓25-50% ambiguity (Precision) | ↑60-80% decision quality (Risk/Value) | ↑35-50% completeness (MECE + Sufficiency) | ↑30-45% scannability (Structure + Format) | ↑50-60% implementation speed (Practicality).
+**Before publishing or committing your content (mandatory for decision-critical documents, recommended for others):**
+- ☐ Self-contained enough (key context is present here; references to other notes include brief summaries and working relative links, not just "see previous answer")
+- ☐ Context
+- ☐ Clarity
+- ☐ Precision
+- ☐ Relevance
+- ☐ MECE
+- ☐ Sufficiency
+- ☐ Breadth
+- ☐ Depth
+- ☐ Significance
+- ☐ Concision
+- ☐ Accuracy
+- ☐ Credibility
+- ☐ Logic
+- ☐ Risk/Value
+- ☐ Fairness
+- ☐ Structure
+- ☐ Format
+- ☐ Evidence
+- ☐ Validation
+- ☐ Practicality
+- ☐ Success Criteria
 
+**Quality attributes (10):**
+- Accurate
+- Precise
+- Cited
+- Complete
+- Actionable
+- Consistent
+- Relevant
+- Balanced
+- Appropriately recent (for time-sensitive topics)
+- Testable/Verifiable
 
+**Exclude or move to references:**
+- Long history sections (unless needed for regulation or migration)
+- Pure theory (unless adoption cost ≥40h or concept is central)
+- Edge cases with <5% impact and low severity
+- Formal proofs
+- Trends without data
+- Speculation
+- Content that only says "see other file" or "see previous answer" without summary and a working link
+
+**Always specify:** Key context (scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget) so the document stands on its own and can be used reliably without guessing.
+
+**Impact metrics:**
+- ↓30-60% clarification cycles and misunderstandings (Context + Clarity)
+- ↓25-50% ambiguity (Precision)
+- ↑60-80% decision quality (Risk/Value)
+- ↑35-50% completeness (MECE + Sufficiency)
+- ↑30-45% scannability (Structure + Format)
+- ↑50-60% implementation speed (Practicality)
