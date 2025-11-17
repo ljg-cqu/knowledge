@@ -1,14 +1,14 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Improve LLM output quality for decision-critical prompts (fewer hallucinations, better decision support).
+**Purpose:** Improve LLM output quality, especially for decision-critical prompts (fewer hallucinations, better decision support).
 
-**When to apply:** Prompts that are decision-critical (meet ≥1 of: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h) and require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
+**When to apply:** Apply all guidelines for prompts that are decision-critical (meet ≥1 of: blocks a decision, risk of >5% impact, 1-6mo action window, ≥2 stakeholders, adoption cost ≥40h), and selectively for other prompts that still require high-quality LLM outputs. **Expected impact:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
 ## Guidelines (21 Total)
 
 ### Foundation: Define the Task
 
-**1. Context** [↓30-40% hallucinations]: The prompt requests scope, constraints, assumptions, scale, timeline, domain, stakeholders. ❌ Bad: "Design system" ✅ Optimized: "Design payment system: 1M users, PCI-DSS compliance, 6mo timeline, fintech startup context, stakeholders: PM+Arch+Security+Legal, budget $500K"
+**1. Context** [↓30-40% hallucinations]: The prompt requests scope, constraints, assumptions, scale, timeline, domain, stakeholders, tech stack, budget. ❌ Bad: "Design system" ✅ Optimized: "Design payment system: 1M users, PCI-DSS compliance, 6mo timeline, fintech startup context, stakeholders: PM+Arch+Security+Legal, budget $500K"
 
 **2. Clarity** [↓25-35% ambiguity in definitions]: The prompt requests definitions of technical terms and relationship explanations. ❌ Bad: "Use eventual consistency" ✅ Optimized: "Define terms: 'Eventual consistency (async data sync, stale reads acceptable for <1s) vs strong consistency (immediate sync, higher latency)'"
 
@@ -60,7 +60,7 @@
 
 ## Quick Check (30s)
 
-**Before sending your prompt:** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
+**Before sending your prompt (mandatory for decision-critical prompts, recommended for others):** ☐ Context ☐ Clarity ☐ Precision ☐ Relevance ☐ MECE ☐ Sufficiency ☐ Breadth ☐ Depth ☐ Significance ☐ Concision ☐ Accuracy ☐ Credibility ☐ Logic ☐ Risk/Value ☐ Fairness ☐ Structure ☐ Format ☐ Evidence ☐ Validation ☐ Practicality ☐ Success Criteria
 
 **Quality attributes (10):** Accurate | Precise | Cited | Complete | Actionable | Consistent | Relevant | Balanced | Recent (2023+) | Testable
 
