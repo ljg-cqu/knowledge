@@ -1,8 +1,10 @@
 # Content Quality Check Guidelines
 
-**Purpose:** Enable action with minimal clarification.
+**Purpose:** Ensure content enables action with minimal clarification.
 
-**Apply comprehensively when:** content blocks decisions, has high impact, is time-sensitive, affects multiple stakeholders, or requires substantial effort. **Otherwise apply selectively.**
+**Application:** Use comprehensively when content is decision-critical, high-impact, time-sensitive, multi-stakeholder, or effort-intensive. Otherwise apply selectively.
+
+**Note:** Percentage impacts are approximate estimates based on typical improvements.
 
 ## Guidelines
 
@@ -10,21 +12,21 @@
 
 **1. Context** [↓30-40% clarification]: State problem, scope, constraints, assumptions, scale, timeline, stakeholders, resources. ❌ Title only. ✅ All context elements present.
 
-**2. Clarity** [↓25-35% ambiguity]: Define key terms and critical relationships; use diagrams for complex structures. ❌ Unexplained jargon/specialized terms. ✅ Key terms defined; diagrams for architectures/workflows/dependencies.
+**2. Clarity** [↓25-35% ambiguity]: Define key terms and critical relationships; use diagrams for complex structures. ❌ Unexplained jargon/specialized terms. ✅ Key terms defined; diagrams for complex relationships/processes.
 
-**3. Precision** [↓40-50% specification ambiguity]: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "scalable", "soon"). ✅ Specific, measurable criteria (numbers, ranges, thresholds); formulas for calculations/algorithms.
+**3. Precision** [↓40-50% specification ambiguity]: Use exact metrics, formulas, units. ❌ Vague qualifiers ("fast", "scalable", "soon"). ✅ Specific, measurable criteria (numbers, ranges, thresholds); explicit methods for processes.
 
-**4. Relevance** [↓30-40% noise]: Focus on decision-critical information; move non-essential details to appendices. ❌ Extensive background without connection to decisions. ✅ Information directly supports decisions/actions; background brief or linked.
+**4. Relevance** [↓30-40% noise]: Focus on decision-critical information; move non-essential details to appendices/references. ❌ Extensive background without connection to decisions. ✅ Information directly supports decisions/actions; background brief or linked.
 
 ### Scope
 
-**5. MECE** [↑40-50% completeness]: Make sections mutually exclusive and collectively exhaustive. ❌ Gaps/overlaps in coverage. ✅ Distinct, non-overlapping sections covering all relevant aspects.
+**5. MECE** (Mutually Exclusive, Collectively Exhaustive) [↑40-50% completeness]: Apply MECE principle to sections. ❌ Gaps/overlaps in coverage. ✅ Distinct, non-overlapping sections covering all relevant aspects.
 
 **6. Sufficiency** [↑35-45% comprehensiveness]: Cover all necessary dimensions (what, why, how, when, who, constraints, alternatives, risks, outcomes). ❌ Partial understanding/action only. ✅ All dimensions addressed.
 
 **7. Breadth** [↑30-40% perspective diversity]: Reflect relevant stakeholder perspectives. ❌ Single viewpoint only. ✅ Multiple stakeholder concerns addressed.
 
-**8. Depth** [↑25-35% thoroughness]: Include implementation detail for high-impact areas. ❌ Principles without supporting detail. ✅ Actionable specifics (options, trade-offs, parameters, examples).
+**8. Depth** [↑25-35% thoroughness]: Include sufficient detail for high-impact areas. ❌ Principles without supporting detail. ✅ Actionable specifics (options, trade-offs, parameters, examples).
 
 ### Quality
 
@@ -34,7 +36,7 @@
 
 **11. Accuracy** [↓20-30% factual errors]: Verify facts against authoritative sources. ❌ Unverified/outdated information. ✅ Facts verified; version-specific/time-sensitive information flagged.
 
-**12. Credibility** [↑50-60% trust]: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (official docs, peer-reviewed research, recognized standards).
+**12. Credibility** [↑50-60% trust]: Cite authoritative sources. ❌ Generic claims ("best practices say..."). ✅ Specific citations (official documentation, reputable sources, recognized standards).
 
 **13. Logic** [↓30-40% reasoning errors]: Present coherent arguments with explicit trade-offs. ❌ One-sided claims without context/limitations. ✅ Balanced analysis with clear reasoning, trade-offs, conditions.
 
@@ -44,7 +46,7 @@
 
 ### Format
 
-**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams. ❌ Long, unstructured text blocks. ✅ Clear headings, bullet lists, comparison tables; diagrams (flowcharts, decision trees, architectures) for complex structures.
+**16. Structure** [↑30-40% scannability]: Use clear headings, lists, tables, diagrams. ❌ Long, unstructured text blocks. ✅ Clear headings, bullet lists, comparison tables; diagrams for complex structures.
 
 **17. Consistency** [↑35-45% readability]: Follow consistent hierarchy and conventions. ❌ Mixed heading levels, inconsistent formatting. ✅ Predictable structure following conventions (H1 title, H2 sections, bullets, tables).
 
@@ -52,9 +54,9 @@
 
 **18. Evidence** [↑40-50% trust]: Include source details; flag uncertainty. ❌ Generic claims ("studies show..."). ✅ Specific citations (source, date, page/section); estimates, assumptions, uncertainty flagged.
 
-**19. Verification** [↓25-35% errors]: Perform structured self-review. ❌ Finalized without verification. ✅ Calculations verified, contradictions/inconsistencies checked, examples validated, assumptions confirmed, unknowns flagged.
+**19. Verification** [↓25-35% errors]: Perform structured self-review. ❌ Finalized without verification. ✅ Facts verified, contradictions/inconsistencies checked, examples validated, assumptions confirmed, unknowns flagged.
 
-**20. Practicality** [↑50-60% implementation speed]: Include concrete steps, examples, formulas, diagrams. ❌ Generic/abstract recommendations. ✅ Actionable steps, examples, commands; formulas; diagrams/checklists/decision trees.
+**20. Practicality** [↑50-60% implementation speed]: Include concrete steps, examples, tools. ❌ Generic/abstract recommendations. ✅ Actionable steps, specific examples, practical tools/aids.
 
 **21. Success Criteria** [↑40-50% measurability]: Define measurable outcomes and validation methods. ❌ Vague criteria ("better performance"). ✅ Specific targets (baseline, targets, measurement/validation methods).
 
@@ -68,10 +70,24 @@
 ☐ Structure | ☐ Consistency  
 ☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
 
+## Limitations
+
+**Trade-offs:**
+- Rigor vs. speed: Comprehensive application takes time; selective application prioritizes velocity
+- Depth vs. breadth: Detailed analysis may delay broader coverage
+- Precision vs. accessibility: Specificity may reduce readability for non-expert audiences
+
+**When NOT to apply comprehensively:**
+- Informal notes, brainstorms, personal documentation
+- Rapid prototypes, exploratory work, disposable drafts
+- Time-constrained situations where speed outweighs thoroughness
+- Low-stakes content with minimal impact
+- Contexts where audience prefers brevity over completeness
+
 **Exclude or move to references:**
 - Extensive background/history
-- Pure theory (unless central)
+- Pure theory (unless central to purpose)
 - Low-impact edge cases
 - Formal proofs (unless required)
-- Unsupported trends/speculation
-- References without summary/link
+- Unsupported speculation
+- References without context/link
