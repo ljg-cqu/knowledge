@@ -1,6 +1,6 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Apply these guidelines when creating prompts for LLMs. Optimized prompts following these guidelines produce higher-quality LLM outputs with fewer hallucinations and better decision support.
+**Purpose:** Apply these guidelines when creating decision-critical prompts for LLMs. Optimized prompts following these guidelines produce higher-quality LLM outputs with fewer hallucinations and better decision support.
 
 **When to apply:** Decision-critical prompts (blocks decision, risk >5%, 1-6mo action window, ≥2 stakeholders, adoption cost >40h) requiring high-quality LLM outputs. **Result:** ↓30-60% hallucinations, ↑60-80% decision quality from LLM outputs.
 
@@ -34,7 +34,7 @@
 
 **11. Accuracy** [↓20-30% factual errors]: Ensure prompt requests fact verification. ❌ Bad: "Recommend libraries" ✅ Optimized: "Recommend libraries with verification: check current versions (npm/PyPI), cite compatibility matrices from official docs, flag deprecated APIs, cross-reference claims"
 
-**12. Credibility** [↓50-60% hallucinations from unverified claims]: Ensure prompt requests authoritative citations. ❌ Bad: "What are best practices?" ✅ Optimized: "Cite best practices from: AWS Well-Architected Framework, Google SRE Book, OWASP Top 10 (2023+), academic papers. Flag any assumptions or unverified claims."
+**12. Credibility** [↓50-60% hallucinations from unverified claims]: Ensure prompt requests authoritative citations from primary sources (official docs, standards, peer-reviewed papers). ❌ Bad: "What are best practices?" ✅ Optimized: "Cite best practices from: AWS Well-Architected Framework, Google SRE Book, OWASP Top 10 (2023+), peer-reviewed academic papers."
 
 **13. Logic** [↓30-40% reasoning errors]: Ensure prompt requests coherent reasoning without contradictions. ❌ Bad: "Explain why microservices simplify architecture" ✅ Optimized: "Explain microservices tradeoff: increases operational complexity but improves scalability. Recommend modular monolith if team <10."
 
@@ -50,13 +50,13 @@
 
 ### Validation: Ensure Correctness
 
-**18. Evidence** [↑40-50% trust]: Ensure prompt requests citations with sources and uncertainty flags. ❌ Bad: "What do studies show?" ✅ Optimized: "Cite sources in format: [1] Google SRE Book (2023) p.42 states 'MTTR <1h'. [2] AWS re:Invent 2023 [video URL]. Flag uncertainties: 'cache hit rate estimated (no empirical data)'."
+**18. Evidence** [↑40-50% trust]: Building on Credibility (12), ensure prompt requests structured citations with source details and explicit uncertainty flags. ❌ Bad: "What do studies show?" ✅ Optimized: "Cite sources in format: [1] Google SRE Book (2023) p.42 states 'MTTR <1h'. [2] AWS re:Invent 2023 [video URL]. Flag uncertainties: 'cache hit rate estimated (no empirical data)'."
 
 **19. Validation** [↓25-35% errors]: Ensure prompt requests self-review and error checking. ❌ Bad: "Provide recommendation" ✅ Optimized: "After generating response, self-review: verify calculations, check for contradictions, test code examples, validate assumptions against sources, flag any uncertainties"
 
 **20. Practicality** [↑50-60% implementation speed]: Ensure prompt requests actionable steps with tooling and examples. ❌ Bad: "Suggest monitoring improvements" ✅ Optimized: "Provide actionable monitoring setup: Prometheus for metrics, Grafana for dashboards, exact commands: 'helm install prometheus', sample queries: 'rate(http_requests_total[5m])', troubleshooting steps"
 
-**21. Success Criteria** [↑40-50% measurability]: Ensure prompt requests measurable outcomes with baselines. ❌ Bad: "How to achieve better performance?" ✅ Optimized: "Define success metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo, implementation timeline 3 months. Include measurement methods."
+**21. Success Criteria** [↑40-50% measurability]: Ensure prompt requests measurable outcomes with baselines. ❌ Bad: "How to achieve better performance?" ✅ Optimized: "Define success metrics: p95 latency <200ms (current: 800ms), error rate <0.1% (current: 0.5%), cost <$5K/mo, implementation timeline 3mo. Include measurement methods."
 
 ## Quick Check (30s)
 
