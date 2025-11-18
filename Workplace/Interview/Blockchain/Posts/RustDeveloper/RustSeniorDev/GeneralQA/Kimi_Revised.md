@@ -17,6 +17,23 @@ This document contains 10 decision-critical Q&A pairs for a Senior Rust Develope
 
 ---
 
+## Visual Overview
+
+| # | Topic | Domain Focus | Key Rust/Infra Skill |
+|---|-----------------------------|------------------------------|---------------------------|
+| Q1 | High-TPS Ethereum Client Memory Leak Diagnosis | Ethereum client performance & memory | Profiling, heap analysis, cache design |
+| Q2 | Solana Transaction Parallelization Conflict | High-throughput runtime scheduling | Concurrency, graph analysis |
+| Q3 | DEX AMM Integer Overflow Prevention | DeFi math & type safety | Big integer math, formal verification |
+| Q4 | Async Rust for Web3 Indexer Architecture | Data ingestion & async pipelines | Tokio, backpressure, DB batching |
+| Q5 | EVM Storage Trie Corruption Recovery | State trie integrity & recovery | Trie internals, partial rebuild |
+| Q6 | Blockchain Data Structure Selection | L2 data structures & proofs | Merkle/Verkle trees, bitmaps |
+| Q7 | MEV-Boost Relay Monitoring & Bidding | MEV monitoring & detection | Statistical detection, MEV-Boost APIs |
+| Q8 | Cross-Chain Bridge Rust Security Audit | Bridge security & unsafe Rust | Risk assessment, unsafe confinement |
+| Q9 | CEX Order Matching Engine Latency Optimization | Low-latency trading systems | Lock contention, sharding, profiling |
+| Q10 | Web3 Wallet Key Management Security | Wallet key security & UX | WASM isolation, key management |
+
+---
+
 ## **Q1: High-TPS Ethereum Client Memory Leak Diagnosis**
 
 **Question:** While debugging Geth/Reth during a 2,000 TPS (transactions per second) load test, you observe RSS memory growing from 4GB to 32GB over 30 minutes, eventually triggering an out-of-memory (OOM) kill. Outline your systematic debugging approach using Rust-specific tooling and blockchain domain knowledge.
@@ -239,6 +256,18 @@ tokio::spawn(async move {
 
 **Tooling:** Deploy with `tokio-console` feature; monitor `poll_duration_mean` <50μs per task.
 
+### **Visual Workflow – Async Indexer Pipeline**
+
+```mermaid
+graph LR
+    A[Eth node watcher] --> B[Fetcher task]
+    B --> C[Block channel]
+    C --> D[Parser task]
+    D --> E[Log channel]
+    E --> F[DB writer]
+    F --> G[PostgreSQL]
+```
+
 ---
 
 ## **Q5: EVM Storage Trie Corruption Recovery**
@@ -304,6 +333,22 @@ fn rebuild_corrupted_subtrie(
 - **Decision:** Surgical if corruption depth <1000 nodes; else resync
 
 **Success Criteria:** `reth node` starts without error; `eth_getBalance` for 100 random mainnet accounts matches Infura within block 18,450,001.
+
+### **Visual Decision Tree – Recover vs Resync**
+
+```mermaid
+graph TD
+    A[State trie corruption detected] --> B[Estimate corruption depth and scope]
+    B --> C{Corruption depth under 1000 nodes}
+    C -- Yes --> D[Subtrie rebuild about 3 hours]
+    C -- No --> E[Full resync about 72 hours]
+    D --> F[Run verification checks]
+    E --> F
+    F --> G[Compare balances vs reference node]
+    G --> H{Within tolerance}
+    H -- Yes --> I[Return node to service under 4h downtime]
+    H -- No --> E
+```
 
 ---
 

@@ -91,6 +91,16 @@ graph TD
 - **Trade-offs & Constraints**: Developers and architects face a trade-off between building highly secure, but potentially less efficient, custom integration solutions versus using off-the-shelf bridges that might carry higher systemic risks. Compliance teams grapple with ensuring consistent regulatory adherence across diverse technical stacks, adding to operational complexity.
 - **Stakeholder Perspectives**: Architects prioritize designing modular and secure interoperability solutions that can scale. Developers focus on implementing robust APIs and smart contracts for seamless cross-chain asset movement. Security teams scrutinize cross-chain bridges for vulnerabilities that could lead to exploits or asset loss. PMs evaluate the market demand for multi-chain support against the associated technical and regulatory risks.
 
+**Table 1a: Integration Challenges and Impacts in Stablecoin Ecosystems**
+
+| Challenge Type | Description (from text) | Impact on Adoption & Stability | Primary Stakeholders |
+|:---------------|:------------------------|:-------------------------------|:---------------------|
+| Fragmented Platforms & DeFi Protocols | Stablecoins must operate across a "balkanized" landscape of heterogeneous chains and protocols. | Hurts user experience, limits complex DeFi use-cases, and fragments liquidity across networks. | Architects, Developers, PMs |
+| Cross-Chain Bridges & Wrapped Tokens | Reliance on bridges and wrapped assets to move value between chains. | Introduces new points of trust and potential failure; exploits can cause large-scale losses. | Security Teams, Architects |
+| Lack of Standardized Interoperability | Absence of consistent cross-chain standards for transfers and data sharing. | Makes it hard to build robust, reusable integration patterns and hinders network effects. | Developers, PMs |
+| Regulatory Oversight Complexity | Inconsistent KYC/AML expectations across chains and jurisdictions. | Complicates supervision of cross-chain flows and increases compliance overhead. | Compliance Teams, Legal |
+| Operational Overhead for Multi-Chain Deployments | Need to maintain and monitor multiple technical stacks and integrations. | Increases cost and complexity of operating a resilient, multi-chain stablecoin. | Business Leaders, Operations |
+
 #### Topic 2: Value Chains & Business
 
 **Q3: How do stablecoin revenue models, particularly minting/redemption and collateral management, influence the economic viability and strategic investment decisions for issuers?**
@@ -130,6 +140,16 @@ graph TD
 - **Trade-offs & Constraints**: Designing resilient stablecoin systems involves trade-offs between capital efficiency and robustness, and between purely algorithmic mechanisms and collateral backing. Collateral requirements cannot entirely eliminate debasement risks but can mitigate the severity of negative shocks. Continuous parameter tuning is required for algorithmic stablecoins to react to changing market dynamics.
 - **Stakeholder Perspectives**: Architects and developers must rigorously model and test incentive compatibility and game theory within the protocol design to prevent vulnerabilities. Business leaders must understand the risk exposure to market sentiment and liquidity crises. Security teams must assess the protocol's resilience against speculative attacks that exploit these economic fragilities.
 
+**Table 2a: Stablecoin Incentive Structures and Failure Modes**
+
+| Incentive Element | Intended Effect (from text) | Failure Mode / Risk | Example / Outcome |
+|:------------------|:----------------------------|:--------------------|:------------------|
+| Arbitrage Opportunities | Encourage users to restore the peg when price deviates from the reference asset. | If incentives are misaligned or insufficient during stress, arbitrage is not profitable enough to defend the peg, leading to de-pegging. | UST de-peg when redeemed value via LUNA was undercompensated. |
+| Governance / Volatile Token Design | Use a second, more volatile token to absorb fluctuations and support the stablecoin. | In a "death spiral" scenario, the governance token also loses value, making redemptions unprofitable or impossible. | Algorithmic designs where panic selling collapses both tokens. |
+| Redemption Mechanisms | Provide users with predictable conversion between stablecoin and backing assets. | Poorly calibrated redemption can underpay exiting holders, eroding confidence and accelerating runs. | Undercompensation of UST during redemption.
+| Collateralization & Capital Efficiency | Balance robustness with efficient use of capital and reserves. | Overemphasis on efficiency reduces buffers; under-collateralization amplifies shocks and contagion risk. | Highly capital-efficient but fragile algorithmic models. |
+| Parameter Tuning & Market Adaptation | Continuously adjust system parameters to react to changing market dynamics. | Static or slow-to-adjust parameters fail under new conditions, allowing small mispricings to escalate into systemic failures. | Insufficiently tuned incentive parameters during fast-moving markets. |
+
 #### Topic 3: Integration Patterns
 
 **Q5: What are the key integration patterns and associated constraints for achieving stablecoin interoperability across diverse blockchain networks and DeFi platforms?**
@@ -154,21 +174,21 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph Blockchain A (e.g., Ethereum)
-        SA(Stablecoin A) -- Lock/Burn --> BridgeA
+    subgraph ChainA
+        SA[Stablecoin A] -->|Lock/Burn| BridgeA
     end
 
-    subgraph Cross-Chain Bridge
-        BridgeA -- Relay/Verification --> InteropLayer
-        InteropLayer -- Relay/Verification --> BridgeB
+    subgraph BridgeLayer
+        BridgeA -->|Relay/Verification| InteropLayer
+        InteropLayer -->|Relay/Verification| BridgeB
     end
 
-    subgraph Blockchain B (e.g., Polygon)
-        BridgeB -- Mint/Release --> SB(Stablecoin B - Wrapped A)
+    subgraph ChainB
+        BridgeB -->|Mint/Release| SB[Stablecoin B - Wrapped A]
     end
 
-    SA -- Transfer Intent --> InteropLayer
-    SB -- Use in DeFi --> DeFiApp
+    SA -->|Transfer Intent| InteropLayer
+    SB -->|Use in DeFi| DeFiApp
 ```
 
 **Table 3: Common Stablecoin Interoperability Patterns**
@@ -242,6 +262,35 @@ graph TD
 - **Real-World Examples**: Major stablecoins like USDC have already adjusted their governance and reserve disclosures to align with evolving US regulatory expectations. European market entrants are now redesigning their stablecoin offerings to meet MiCA licensing requirements, which impacts everything from their technical stack to their business strategy. The general regulatory uncertainty can delay stablecoin projects, highlighting the impact on development timelines and strategic planning.
 - **Trade-offs & Constraints**: While regulatory certainty under MiCA may foster broader EU market access and enhance user trust, it also introduces significant compliance overheads and potential innovation constraints. For cross-border operations, a lack of global regulatory harmonization means stablecoins must navigate a patchwork of requirements, adding complexity and cost. Issuers face the challenge of balancing regulatory demands with the desire for decentralization and efficiency.
 - **Stakeholder Perspectives**: Leadership and PMs must navigate complex regulatory timelines, allocate substantial resources for legal and compliance teams, and reassess strategic market positioning. Architects face challenges in embedding regulatory compliance into system designs, such as auditable smart contracts and data privacy controls. Compliance officers become central figures, ensuring ongoing adherence to evolving legal mandates to mitigate financial and reputational risks.
+
+```mermaid
+flowchart TD
+    MiCA["MiCA (EU)"] --> EU_Issuers["EU Stablecoin Issuers"]
+    USBills["US Stablecoin Bills"] --> US_Issuers["US Stablecoin Issuers"]
+
+    EU_Issuers --> Governance["Formalized Governance & Accountability"]
+    US_Issuers --> Governance
+
+    EU_Issuers --> ComplianceEU["Licensing, Capital & Reserve Mandates"]
+    US_Issuers --> ComplianceUS["FDIC-like Requirements, KYC/AML, Reserve Attestations"]
+
+    Governance --> BusinessModels["More Institutional Business Models & Higher Compliance Cost"]
+
+    ComplianceEU --> CrossBorder["EU Market Access & Harmonization Efforts"]
+    ComplianceUS --> CrossBorder
+
+    CrossBorder --> Fragmentation["Potential Global Regulatory Fragmentation"]
+```
+
+**Table 5a: MiCA vs. US Stablecoin Proposals and Ecosystem Impact**
+
+| Dimension | MiCA (EU) (from text) | US Proposals (from text) | Ecosystem Impact (as described) |
+|:----------|:----------------------|:-------------------------|:--------------------------------|
+| Licensing & Supervision | Imposes licensing requirements and supervisory oversight, primarily by the European Banking Authority for significant stablecoins. | Proposals include requiring issuers to be FDIC-insured institutions under banking-style supervision. | Formalizes issuer roles and increases accountability, but raises entry barriers and operational complexity. |
+| Capital & Reserves | Mandates capital and reserve management, with clear expectations on how reserves are held and managed. | Emphasizes rigorous reserve management with periodic attestations. | Drives more transparent and conservative reserve practices, impacting business models and yield strategies. |
+| KYC/AML & Compliance | Part of broader regulatory expectations for stablecoin operations across the EU. | Explicit focus on rigorous KYC/AML and ongoing compliance obligations. | Increases integration complexity with traditional finance, but enhances trust and financial crime controls. |
+| Business Model & Governance | Pushes issuers toward institutionally anchored, regulated entities operating under MiCA-compliant structures. | Encourages issuer structures comparable to insured deposit institutions. | Shifts stablecoin projects away from informal or highly decentralized setups toward regulated, institution-like organizations. |
+| Cross-Border Integration | Aims for regional harmonization within the EU, simplifying operations across member states. | May diverge from EU and other regimes, contributing to a patchwork of global rules. | Together, these frameworks shape both opportunities for harmonization and the risk of regulatory fragmentation in global stablecoin operations. |
 
 ### D. References
 

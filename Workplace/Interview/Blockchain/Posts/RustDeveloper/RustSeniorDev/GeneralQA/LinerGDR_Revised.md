@@ -30,6 +30,17 @@
 #### 5. 具有良好的数据结构和算法基础。
 #### 6. 思维严谨，沟通能力良好。
 
+#### Responsibilities & Requirements Summary
+
+| Category | Key Points |
+|----------|-----------|
+| Responsibilities | Debugging Ethereum/Solana source code; developing core Web3 infrastructure modules |
+| Experience | 5+ years backend development (C++/Go/Rust), including 2+ years of Rust experience |
+| Blockchain Knowledge | Principles and runtime logic of public blockchains, DEXs, CEXs, and wallets |
+| Project Experience | Hands-on DEX, CEX, and smart contract development on-chain |
+| Computer Science | Solid data structures and algorithms foundation |
+| Soft Skills | Rigorous thinking and strong communication skills |
+
 ---
 
 <a name="qa-interview-pairs-for-senior-rust-developer-position"></a>
@@ -62,6 +73,22 @@ For Solana, I've worked extensively with emulation environments such as Bokken, 
 
 Troubleshooting failed Solana transactions often involves carefully analyzing error messages, checking transaction parameters, and utilizing the Solana CLI and Explorer to track state changes [35]. On Ethereum, debugging frequently requires tracing transactions through the EVM with debug and trace APIs, enabling code execution simulation to pinpoint faults [51]. My approach combines these blockchain-specific debugging tools with rigorous test suites and real-time monitoring to efficiently identify and fix bugs in decentralized applications and core blockchain modules [43].
 
+**Debugging summary (Ethereum vs Solana)**
+
+| Chain | Key Tools & Environments | Typical Focus | Common Challenges |
+|-------|--------------------------|--------------|-------------------|
+| Ethereum | Ethdbg; network-level debuggers integrated with web3.js; transaction simulation with Tenderly | Transaction-level analysis, gas usage monitoring, static and dynamic code analysis | Tracing EVM execution, identifying gas inefficiencies, reproducing on-chain state accurately |
+| Solana | Bokken emulator; native Solana debugging tools; unit, Anchor integration, and fuzz tests | Program execution in emulated environments; robustness under varied inputs | Rust version conflicts, Borsh serialization issues, reproducing failed transactions in an immutable ledger |
+
+```mermaid
+graph LR
+  A[Reproduce failing transaction or program] --> B[Simulate in local or emulated environment]
+  B --> C[Inspect behavior with chain-specific debuggers]
+  C --> D[Strengthen tests - unit, integration, fuzz]
+  D --> E[Apply fix and rerun]
+  E --> F[Observe behavior and confirm issue is resolved]
+```
+
 #### Q2: Designing and Implementing Core Web3 Infrastructure Modules
 
 **Question:** Can you describe your approach to designing and implementing core modules for Web3 infrastructure, such as consensus, networking, and storage? Please discuss the key architectural considerations involved, including trade-offs, modularity, and scalability aspects.
@@ -80,6 +107,19 @@ The *storage module* manages the persistent recording of blockchain data, which 
 | Monolithic   | Simpler to reason about; may hit scaling limits sooner | Lower initial complexity; harder long-term evolution and refactoring | Early-stage L1s, smaller systems, single-tenant deployments |
 | Modular      | Higher potential throughput and flexibility by separating execution, data availability, and settlement | Higher design and operational complexity; more components and interfaces to secure and monitor | High-throughput L1/L2 ecosystems, rollup-centric and modular designs |
 
+```mermaid
+flowchart LR
+  subgraph Node[Blockchain node]
+    C[Consensus]
+    N[Networking]
+    S[Storage]
+  end
+  U[Users / dApps] --> N
+  N --> C
+  C --> S
+  S --> L[(Immutable ledger / state)]
+```
+
 #### Q3: Idiomatic Rust Development and Project Structure
 
 **Question:** Can you describe your approach to writing idiomatic Rust code in an independent project? Please include how you organize your project structure, handle errors idiomatically, and adhere to Rust syntax best practices. Illustrate your explanation with brief examples where appropriate.
@@ -90,6 +130,13 @@ When developing an independent Rust project, I emphasize writing idiomatic code 
 For error handling, Rust favors return values over exceptions, primarily using the `Result<T, E>` type for recoverable errors. I apply idiomatic error handling by matching on results and using the `?` operator for propagation, which maintains readable and concise code [22]. For complex error types or situations requiring more context, I might leverage custom error types with crates for better ergonomics and error chaining.
 
 Regarding Rust syntax and best practices, I strive to follow established guidelines such as using `UpperCamelCase` for type-level constructs and `snake_case` for functions and variables, as outlined in RFC 430 and API guidelines [19]. I consistently use 4 spaces for indentation and embrace Rust’s ownership model, leveraging references (`&T`) and mutable references (`&mut T`) to share and mutate data safely. To enforce these best practices and maintain code quality, I regularly use `clippy` for linting and stay current with community recommendations [9][47].
+
+| Aspect | Idiomatic Practice |
+|--------|--------------------|
+| Project structure | Use Cargo to create and manage projects; organize code into multiple modules and files as the project grows |
+| Error handling | Prefer `Result<T, E>` for recoverable errors; use pattern matching and the `?` operator for clear error propagation; introduce custom error types when more context is needed |
+| Syntax and naming | Follow Rust naming guidelines (e.g., `UpperCamelCase` for types, `snake_case` for functions/variables) and keep consistent 4-space indentation |
+| Tooling and quality | Use `clippy` and community guidelines to continuously enforce idiomatic, maintainable Rust code |
 
 #### Q4: Understanding Public Blockchains, DEXs, CEXs, and Wallets
 
@@ -114,6 +161,15 @@ Together, public blockchains provide the trustless infrastructure; DEXs leverage
 | Liquidity & UX | May have fragmented liquidity; UX depends on wallet/dApp | Generally deeper liquidity and polished UX |
 | When preferable | DeFi-native users prioritizing self-custody and composability | Users needing fiat on/off ramps, institutional access, or advanced trading tools |
 
+```mermaid
+flowchart LR
+  U[User] --> W[Wallet]
+  W --> DEX[DEX smart contracts]
+  W --> CEX[CEX account]
+  DEX --> PB[Public blockchain]
+  CEX --> PB
+```
+
 #### Q5: Hands-on Development Experience with On-chain Projects
 
 **Question:** Can you describe your hands-on development experience with on-chain projects such as decentralized exchanges (DEXs), centralized exchanges (CEXs), and smart contracts? Please specify your roles, the technologies you utilized, and the measurable outcomes or impacts of these projects.
@@ -125,6 +181,14 @@ I also contributed to enhancing a centralized exchange platform, specifically fo
 
 A notable impact from these experiences includes the implementation of secure Rust-based modules that reduced potential vulnerabilities in smart contract execution, which was validated through rigorous audits and testing. These projects demanded a deep understanding of blockchain principles, precise mechanics of DEX and CEX operations, and a strong foundation in data structures and algorithms to ensure optimal performance and security. My work consistently involved close collaboration with cross-functional teams and meticulous code review processes to deliver reliable and scalable blockchain infrastructure solutions.
 
+**Project impact summary**
+
+| Project type | Technologies | Responsibilities | Measurable impact |
+|--------------|-------------|------------------|-------------------|
+| Decentralized exchange (DEX) | Rust; Ethereum smart contracts | Built core modules and Rust-based smart contracts enabling token swaps and liquidity management directly from user wallets | Monthly trading volume increased by over 30% after improving contract logic and UX |
+| Centralized exchange (CEX) | Rust backend services; blockchain asset integrations | Enhanced order-matching and user-management components; optimized transaction processing and interoperability with on-chain assets | Improved transaction throughput and overall system robustness |
+| Cross-chain infrastructure and security | Rust; Ethereum and Solana smart contracts | Debugged and optimized smart contract source code; implemented secure Rust modules validated by audits and testing | Reduced potential vulnerabilities and improved execution efficiency and gas/compute costs |
+
 #### Q6: Data Structures and Algorithms in Blockchain
 
 **Question:** Can you explain the roles and importance of key data structures like Merkle trees and Patricia tries in blockchain and distributed systems, and discuss the algorithmic considerations involved in implementing them?
@@ -135,6 +199,26 @@ In blockchain and distributed systems, data integrity, efficient verification, a
 Patricia tries, often combined with Merkle trees to form Merkle Patricia tries, are radix tree-based data structures optimized for storing key-value pairs. In blockchain systems like Ethereum, the Merkle Patricia trie architecture elegantly supports state data management, offering fast key navigation and ensuring cryptographic proof of data integrity [36][44][54]. This data structure efficiently handles large, dynamic datasets with frequent updates, facilitating rapid lookup, insert, and delete operations.
 
 From an algorithmic perspective, designing and implementing these structures requires careful consideration of cryptographic hashing functions for security, balancing tree depth for efficient operations, and ensuring immutability and verifiability. For example, consensus algorithms, a procedure through which all peers in a blockchain network reach a common agreement, rely heavily on these data structures to maintain the current state across a distributed network [56]. Algorithmic considerations also extend to factors like computational complexity, network latency, and fault tolerance in distributed algorithms, ensuring the system can operate reliably with interconnected processors [59][60].
+
+| Structure | Role in blockchain systems | Key properties |
+|----------|---------------------------|----------------|
+| Merkle tree | Efficiently verifies inclusion or exclusion of data (e.g., transactions) without downloading the full dataset | Binary tree of hashes; each leaf hashes a data block, inner nodes hash children; supports compact proofs of integrity |
+| Patricia trie | Stores key–value pairs such as account or state entries in blockchains like Ethereum | Radix tree optimized for fast navigation and updates over large, dynamic datasets |
+| Merkle Patricia trie | Combines Merkle trees with Patricia tries to manage blockchain state | Provides both efficient key lookup and cryptographic proof of data integrity for frequently changing state |
+
+```mermaid
+graph TD
+  T1[Tx 1] --> H1[hash1]
+  T2[Tx 2] --> H2[hash2]
+  T3[Tx 3] --> H3[hash3]
+  T4[Tx 4] --> H4[hash4]
+  H1 --> I1[inner hash]
+  H2 --> I1
+  H3 --> I2[inner hash]
+  H4 --> I2
+  I1 --> Root[Merkle root]
+  I2 --> Root
+```
 
 #### Q7: Problem-Solving Methodology for Complex Systems
 
@@ -177,6 +261,14 @@ I utilized *analogies and visual aids* effectively, comparing the blockchain to 
 
 Finally, I emphasized the *outcome and benefits*, highlighting how these technical mechanisms guarantee trust and security without relying on a central authority, directly linking them to business advantages like user confidence and faster settlement. This communication led to a clearer understanding for the product and compliance teams, expediting their sign-off on features and informing UX improvements, ultimately reducing project delays by 20%. This shared understanding also fostered smoother ongoing collaboration between technical and non-technical teams.
 
+**Communication structure used in the example**
+
+1. Clarify context and goals in stakeholder terms (trade speed, security, compliance).
+2. Replace jargon with accessible metaphors (e.g., "digital auction house", "shared spreadsheet").
+3. Use visual aids (simple block/chain diagrams) to explain transaction finality and data immutability.
+4. Keep the conversation interactive with pauses, questions, and rephrasing based on feedback.
+5. Close by connecting technical mechanisms to business outcomes (user trust, faster settlement, fewer project delays).
+
 #### Q9: Recent Trends and Advancements in Web3
 
 **Question:** Can you discuss recent trends and advancements in the blockchain and Web3 ecosystem, particularly focusing on key updates in Ethereum and Solana technologies in 2025, and explain their implications for decentralized application development and scalability?
@@ -188,6 +280,15 @@ On the Solana blockchain, 2025 has seen proposals and implementations aimed at s
 
 Beyond specific chain updates, broader trends are shaping the Web3 space. The convergence of AI and Web3 is fostering smarter, decentralized applications through AI-driven smart contracts and advanced fraud detection systems [8][10][14]. The tokenization of real-world assets (RWAs) and the emergence of Decentralized Physical Infrastructure Networks (DePINs) are transforming asset liquidity and digital business models, driven by innovations such as Layer 3 solutions and quantum-resistant encryption. These trends are set to influence how digital businesses operate, making Web3 more practical and accessible. These advancements collectively improve the foundational infrastructure of Web3, enabling more efficient and scalable decentralized applications, and signal a maturation of blockchain technology aligned with real-world use cases and regulatory clarity [3][5][40].
 
+**2025 Web3 trends at a glance**
+
+| Area | 2025 development | Implications for dApp development and scalability |
+|------|------------------|-----------------------------------------------|
+| Ethereum scalability | Fusaka hard fork improves data blobs and is expected to increase Ethereum's data capacity by up to 20× while reducing gas costs | More room for complex DeFi and infrastructure modules with lower transaction costs and better throughput |
+| Solana performance | Proposals to increase block capacity from 60M to 100M Compute Units (CUs), targeting ~66% throughput gains, alongside growing treasury adoption | Higher-throughput, low-latency environment for DeFi and Web3 apps, with stronger institutional confidence |
+| AI × Web3 | AI-driven smart contracts and fraud detection enhance intelligence and security of decentralized systems | Smarter dApps that can react to patterns and anomalies, improving user protection and operational efficiency |
+| RWAs and DePINs | Tokenization of real-world assets and decentralized physical infrastructure networks enabled by new L3 designs and stronger cryptography | New business models and revenue streams, making Web3 more practical and accessible for traditional industries |
+
 #### Q10: Security Best Practices in Rust and Blockchain Development
 
 **Question:** Can you explain the key security best practices for Rust development in blockchain projects, including some common vulnerabilities encountered and effective mitigation strategies?
@@ -198,6 +299,23 @@ In blockchain projects developed with Rust, robust security practices are paramo
 Common vulnerabilities in blockchain contexts extend beyond memory safety to include logic errors, reentrancy attacks, oracle manipulation, and unauthorized minting or transfer capabilities in smart contracts [42][45][50]. NFT projects using Rust contracts, particularly on blockchains like Solana, must be thoroughly audited to prevent unauthorized minting and transfer exploits. Blockchain networks are also susceptible to attacks like Sybil attacks, 51% attacks, and liveness attacks, which can lead to network disruptions or shutdowns.
 
 Mitigation strategies include conducting regular, thorough code audits and employing formal verification methods to mathematically prove code correctness and identify language-specific vulnerabilities [20][26][39]. It is crucial to keep dependencies updated and to use proven cryptographic libraries to reduce exposure to third-party vulnerabilities. Implementing safe concurrency primitives, validating all input data, and handling errors smartly ensure runtime safety and resilience against typical attack vectors. Additionally, maintaining a clean and modular code structure, staying plugged into the security community, and applying robust encryption to blockchain networks are essential practices [42]. These measures, combined with Rust's secure-by-design features, significantly fortify blockchain applications against prevalent security threats.
+
+**Security risks and mitigations overview**
+
+| Area | Typical risks | Mitigation approaches |
+|------|--------------|----------------------|
+| Rust language and memory safety | Data races, buffer overflows, and other memory-safety bugs when using low-level constructs or `unsafe` code | Rely on Rust's ownership and borrowing model, minimize `unsafe` usage, and use well-reviewed cryptographic and systems libraries |
+| Smart contract logic | Reentrancy attacks, oracle manipulation, unauthorized minting or transfers, and other business-logic flaws | Apply thorough audits and formal verification where appropriate, validate inputs, design clear access controls, and favor modular, well-reviewed contract patterns |
+| Network and protocol level | Sybil attacks, 51% attacks, and liveness issues that can disrupt or halt the network | Keep dependencies and nodes up to date, use robust encryption and authentication, and stay engaged with the broader security community to track emerging threats |
+
+**Security process checklist for Rust blockchain projects**
+
+- Schedule regular code audits with teams experienced in Rust and blockchain.
+- Use formal verification or property-based testing for critical contracts and infrastructure components.
+- Keep all dependencies, toolchains, and node software current; avoid unmaintained libraries.
+- Prefer safe concurrency primitives and validate all external inputs rigorously.
+- Maintain a clean, modular architecture to limit blast radius when issues occur.
+- Monitor community advisories and apply patches quickly for disclosed vulnerabilities.
 
 <a name="sources"></a>
 ### Sources

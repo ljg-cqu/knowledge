@@ -65,6 +65,22 @@ impl TransactionPool {
 
 **Refactoring Approach:** For Solana's transaction processing pipeline, I would use `Arc<RwLock<T>>` for shared read access with exclusive write locks, ensuring that the consensus-critical path maintains strict ownership semantics. The key is to avoid `unsafe` blocks unless absolutely necessary for performance-critical sections, and always wrap them in safe abstractions with comprehensive test coverage.
 
+**Ownership & Concurrency Flow (Diagram):**
+```mermaid
+sequenceDiagram
+    participant Client as Client / RPC
+    participant Node as Validator Node
+    participant Pool as TransactionPool
+    participant Consensus as Consensus Module
+
+    Client->>Node: submit_transaction(tx)
+    Node->>Pool: lock(pending: Mutex<...>)
+    Pool->>Pool: check tx.hash for duplicates
+    Pool-->>Node: insert or reject
+    Node->>Consensus: broadcast validated tx
+    Consensus-->>Node: update state / finalize block
+```
+
 **Success Criteria**
 - Transaction pool and consensus code pass concurrency tests with no data races or double spends under peak load.
 - Consensus-critical Rust modules expose only safe APIs in their public surface (no `unsafe` in hot paths), with unit and integration tests covering ownership/borrowing edge cases.
@@ -118,6 +134,23 @@ fn process_vote(&self, slot: u64, vote: Vote) -> Result<(), ConsensusError> {
 
 **Answer:**  
 **System Architecture (Precision-Optimized Design):**
+
+**High-Level Transaction Routing Flow (Diagram):**
+```mermaid
+flowchart LR
+    subgraph Ingress
+        A["Network I/O tasks (tokio workers)"]
+    end
+
+    A --> R[TransactionRouter]
+    R --> RC["Route Cache (DashMap<ChainId, RouteConfig>)"]
+    R --> C["Consensus Module (Raft-based state sync)"]
+    R --> P[Persistence / WAL]
+    R --> M[Metrics Collector]
+
+    P -->|state snapshots| C
+    M -->|P99 latency, TPS| R
+```
 
 **Core Components:**
 ```rust
@@ -650,6 +683,21 @@ impl ValidatorRuntime {
 **Answer:**  
 **Cross-Chain Bridge Security Architecture (Defense-in-Depth):**
 
+**Bridge Components & Message Flow (Diagram):**
+```mermaid
+graph LR
+    ETH[ Ethereum Chain ] --> L1[ Lock & Mint Contract ]
+    SOL[ Solana Chain ] --> L2[ Burn & Release Contract ]
+
+    L1 --> M[ CrossChainMessage ]
+    M --> VSet["ThresholdValidatorSet (3-of-5 BLS)"]
+    VSet --> SP["StateProofVerifier (zk-SNARKs / Merkle proofs)"]
+    SP --> L2
+
+    M --> AR["AntiReplaySystem (chain-specific nonce, epoch)"]
+    VSet --> ES["EconomicSecurityModule (bonding, slashing, insurance)"]
+```
+
 **Threat Model (STRIDE Framework):**
 | Threat | Impact | Probability | Mitigation Strategy |
 |--------|--------|-------------|-------------------|
@@ -728,10 +776,10 @@ Let:
 Security Condition:
 V > A + C
 
-For Ethereum→Solana bridge with $100M TVL:
-- Required bond per validator: V/n > $100M / 20 = $5M
-- Attack profit A < $100M (TVL)
-- Coordination cost C > $10M (for 11/20 validators)
+For Ethereum→Solana bridge with 100M TVL:
+- Required bond per validator: V/n > 100M / 20 = 5M
+- Attack profit A < 100M (TVL)
+- Coordination cost C > 10M (for 11/20 validators)
 ```
 
 **Implementation in Rust:**
@@ -811,6 +859,12 @@ impl EconomicSecurityModule {
 - **Security vs Usability:** Time-locks reduce UX but increase security by 100x
 - **Decentralization vs Performance:** 20 validators provide good decentralization with < 2 second finality
 - **Cost vs Security:** $500K/month operational cost for $100M TVL protection (0.5% APR)
+
+**Mitigation Recommendations:**
+1. **Hybrid approach:** Use VDFs for large orders (>100K), auctions for medium orders
+2. **Progressive decentralization:** Start with centralized VDF, move to decentralized computing
+3. **Transparency:** Publish MEV protection metrics and user rebate reports
+4. **Regulatory compliance:** Consult legal experts on profit-sharing mechanisms
 
 ---
 
@@ -1091,7 +1145,7 @@ impl OrderObfuscator {
 **Economic Analysis:**
 ```math
 Let:
-- TV = Total Value extracted by MEV annually = $2B
+- TV = Total Value extracted by MEV annually = 2B
 - P_mitigation = Probability of successful mitigation
 - C_implementation = Implementation cost
 - R_user_share = User revenue share percentage
@@ -1102,16 +1156,11 @@ EV_mitigation = TV × P_mitigation × (1 - R_user_share) - C_implementation
 For VDF implementation:
 - P_mitigation = 0.95
 - R_user_share = 0.10 (10% to users)
-- C_implementation = $500K
-- EV_mitigation = $2B × 0.95 × 0.90 - $500K = $1.71B - $0.5M = $1.7095B
+- C_implementation = 500K
+- EV_mitigation = 2B × 0.95 × 0.90 - 500K = 1.71B - 0.5M = 1.7095B
 
-Net benefit vs no mitigation: $1.7095B - $0 = $1.7095B
+Net benefit vs no mitigation: 1.7095B - 0 = 1.7095B
 ```
-
-**Real-World Implementation Results:**
-- **VDF-based ordering:** Reduced sandwich attacks by 92% with 110ms average delay
-- **MEV auctions:** Generated $15M in user rebates over 6 months
-- **Backrun protection:** Reduced liquidation MEV by 68% with minimal performance impact
 - **Overall:** 85% reduction in MEV extraction with < 5% increase in average trade latency
 
 **Risk Analysis:**
@@ -1133,6 +1182,22 @@ Net benefit vs no mitigation: $1.7095B - $0 = $1.7095B
 
 **Answer:**  
 **Incident Response Protocol (Structured Approach):**
+
+**End-to-End Incident Lifecycle (Diagram):**
+```mermaid
+graph TD
+    A[Slashing detected\n(on-chain event)] --> B[Automatic containment\n(shutdown & isolate node)]
+    B --> C[Stakeholder notification]
+    C --> D[Initial assessment\n(severity, scope, loss)]
+    D --> E[War room activation]
+    E --> F[Forensic evidence collection]
+    F --> G[Root cause analysis\n(5 Whys, fishbone)]
+    G --> H[Post-mortem document\n(timeline, impact, actions)]
+    H --> I[Implement technical & process controls]
+    I --> J[Training & simulations]
+    J --> K[Metrics review\n(MTTD, MTTR, prevention rate)]
+    K --> A
+```
 
 **Phase 1: Immediate Response (0-15 minutes)**
 ```rust

@@ -236,6 +236,13 @@ pub fn batch_transfer_v2(transfers: &[Transfer]) -> Result<()> {
 - **Event consolidation**: Single event vs. multiple events
 - **Reference passing**: Use `&[Transfer]` instead of `Vec<Transfer>`
 
+**Visual: Gas cost comparison**
+
+| Version | Approx. gas units | Key techniques |
+|--------|-------------------:|----------------|
+| `batch_transfer_v1` | 500,000 | Per-transfer storage I/O and per-transfer events |
+| `batch_transfer_v2` | ~300,000 | Batched storage writes, cached accounts, single batch event |
+
 ---
 
 ### Q5: Ethereum Source Code Analysis (Advanced)
@@ -398,6 +405,10 @@ impl LiquidityPool {
     }
 }
 ```
+
+**Visual: Constant product formula**
+
+`x_before * y_before = x_after * y_after = k`
 
 **Key Features**:
 - **Slippage tolerance**: User-defined minimum output
@@ -1107,6 +1118,20 @@ services:
       - "3000:3000"
 ```
 
+**Visual: Production deployment architecture**
+
+```mermaid
+flowchart LR
+    Users --> LB[Load balancer]
+    LB --> DexAPI["dex-api (3 replicas)"]
+    DexAPI --> SolanaRPC["Solana RPC endpoints"]
+    DexAPI --> PrimaryDB["Primary Postgres database"]
+    PrimaryDB --> Replica1["Replica 1"]
+    PrimaryDB --> Replica2["Replica 2"]
+    DexAPI --> Prometheus
+    Prometheus --> Grafana
+```
+
 **Key Production Metrics**:
 - **Availability**: 99.95% SLA (22 minutes downtime/month maximum)
 - **Response time**: P50 < 100ms, P99 < 500ms
@@ -1140,6 +1165,21 @@ The 10 interview questions cover a comprehensive range of topics aligned with th
 - Data structures and algorithms (Q7, Q9)
 - Production experience (Q10)
 
+**Visual: Q&A coverage matrix**
+
+| Q# | Difficulty | Primary focus |
+|----|------------|---------------|
+| Q1 | Foundational | Rust ownership and memory safety in blockchain transaction handling |
+| Q2 | Intermediate | Solana DEX order book and account/instruction design |
+| Q3 | Advanced | Cross-chain bridge architecture and security between Ethereum and Solana |
+| Q4 | Intermediate | Gas optimization for Rust smart contract batch transfers |
+| Q5 | Advanced | Ethereum beacon chain attestation tracing and slashing conditions |
+| Q6 | Intermediate | AMM liquidity pool implementation using the constant product formula (`x*y=k`) |
+| Q7 | Advanced | High-throughput concurrent transaction processing with ACID guarantees |
+| Q8 | Foundational | HD wallet key derivation and signing for Ethereum and Solana |
+| Q9 | Intermediate | Profiling and optimizing Rust blockchain node performance under load |
+| Q10 | Advanced | Production deployment, monitoring, and incident response for a Rust-based DEX |
+
 Each answer provides:
 - Concrete code implementations
 - Specific metrics and measurements
@@ -1160,6 +1200,19 @@ Each answer provides:
   - Hand-wavy explanations with no concrete examples.
   - No discussion of trade-offs, failure modes, or recovery paths.
   - Confusion about consensus/finality guarantees or safety invariants in financial systems.
+
+**Visual: Interview flow**
+
+```mermaid
+flowchart TD
+    Start["Start interview"] --> SelectMix["Select 1–2 foundational, 3–4 intermediate, 2–3 advanced questions"]
+    SelectMix --> AlignFocus["Align questions with product focus (DEX / infra / wallets / performance / ops)"]
+    AlignFocus --> AskQuestions["Ask questions and probe for implementation details and trade-offs"]
+    AskQuestions --> EvaluateStrong["Look for strong answer signals"]
+    AskQuestions --> DetectRedFlags["Watch for red flags"]
+    EvaluateStrong --> Decide["Assess seniority and role fit"]
+    DetectRedFlags --> Decide
+```
 
 ## Validation Notes
 

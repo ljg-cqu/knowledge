@@ -10,6 +10,42 @@
 - **Stakeholders**: Hiring manager, lead blockchain engineer, infrastructure/SRE, security reviewer.
 - **Constraints**: 60–90 minute interview; typically 3–5 questions used per session; remaining Q&A serve as deep-dive reference.
 
+**Context Summary Table**
+
+| Item | Details |
+|------|---------|
+| Role | Senior Rust Engineer (Web3/Blockchain) |
+| Domains | Ethereum clients, Solana runtime, DeFi/AMM, cross-chain bridges, infrastructure/RPC, security |
+| Use cases | Interview preparation for candidates; Evaluation rubric for hiring managers and tech leads |
+| Stakeholders | Hiring manager; lead blockchain engineer; infrastructure/SRE; security reviewer |
+| Constraints | 60–90 minute interview; 3–5 questions per session; remaining Q&A as deep-dive reference |
+
+```mermaid
+mindmap
+  root(Senior Rust Engineer Interview)
+    Role
+      Senior Rust Engineer (Web3/Blockchain)
+    Domains
+      Ethereum clients
+      Solana runtime
+      DeFi / AMM
+      Cross-chain bridges
+      Infrastructure / RPC
+      Security
+    Use_cases
+      Interview preparation
+      Evaluation rubric
+    Stakeholders
+      Hiring manager
+      Lead blockchain engineer
+      Infrastructure / SRE
+      Security reviewer
+    Constraints
+      60–90 minute interview
+      3–5 questions per session
+      Deep-dive reference Q&A
+```
+
 ## Table of Contents
 
 - [Context](#context)
@@ -69,6 +105,27 @@ fn process_transaction(tx: &mut Transaction, account_state: &mut AccountState) {
 - **Learning Curve:** 15-20% longer initial development time for developers transitioning from C++/Go
 - **Compilation Time:** Larger codebases (>100k LOC) may have 2-5 minute compile times vs. Go's <30 seconds
 - **Benefit:** 60-80% reduction in memory-related runtime bugs (based on Mozilla/Microsoft security research)
+
+**Q1 Visual Summary**
+
+| Aspect | Rust Ownership/Borrowing | Blockchain Impact |
+|--------|--------------------------|-------------------|
+| Memory safety | Compile-time ownership and lifetime checks | Reduces use-after-free and double-spend bugs in transaction/state handling |
+| Concurrency | Borrowing rules (`&T` vs `&mut T`) prevent data races | Safer parallel transaction processing and block validation |
+| Performance | Zero-cost abstractions; checks happen at compile time | Supports high-throughput execution for nodes (e.g., Solana-level TPS targets) |
+| Reliability | Each value has a single owner and deterministic drop semantics | Fewer runtime crashes and consensus divergence issues |
+
+```mermaid
+sequenceDiagram
+  participant Caller as process_transaction()
+  participant Tx as tx: Transaction
+  participant State as account_state: AccountState
+
+  Caller->>State: deduct_balance(tx.from, tx.value)
+  Caller->>State: add_balance(tx.to, tx.value)
+  Caller->>Tx: tx.nonce += 1
+  Note over State: Single &mut AccountState\nprevents concurrent modification
+```
 
 ---
 
@@ -213,6 +270,23 @@ After implementing fixes, verify:
 | Cache hit ratio | 68% | >85% | Measure after fix | ✓/✗ |
 | DB IOPS | 12k read/s | <8k read/s | `iostat` | ✓/✗ |
 | Memory usage | 6GB | <8GB | `ps aux` | ✓/✗ |
+
+**Q2 Debugging Flow (Visual)**
+
+```mermaid
+flowchart TD
+  A[Detect slow block processing] --> B[Phase 1: Collect baseline metrics]
+  B --> C[Phase 2: Identify bottleneck]
+  C --> C1{Is cache the issue?}
+  C1 -->|Yes| D[Analyze cache hit ratio & CPU hotspots]
+  C1 -->|No| C2{Is DB I/O the issue?}
+  C2 -->|Yes| E[Inspect I/O wait & RocksDB statistics]
+  C2 -->|No| F[Check Merkle proof hash performance]
+  D --> G[Apply optimizations]
+  E --> G
+  F --> G
+  G --> H[Phase 3: Re-measure metrics vs targets]
+```
 
 **Real-World Example:**
 In 2023, Reth (Rust Ethereum client) achieved 3-5x faster sync times than Geth by optimizing trie caching (increased cache from 1GB to 4GB adaptive) and reducing DB writes by 40% through dirty page batching.
