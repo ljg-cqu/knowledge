@@ -209,6 +209,7 @@ flowchart LR
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Director | Operational risk | $2M+ fine exposure | 90 days | Approve framework budget |
 | CHRO | Team productivity | 30% velocity reduction | 60 days | Implement training program |
 | CTO | Technical debt | 45% manual overhead | 30 days | Integrate compliance APIs |
@@ -250,6 +251,7 @@ flowchart TD
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Director | Strategic positioning | 25% market share risk | 18 months | Approve transformation budget |
 | VP Eng | Delivery capability | 45-day delay reduction | 6 months | Lead squad formation |
 | Architect | Technical debt | $5M recovery cost | 12 months | Design capability framework |
