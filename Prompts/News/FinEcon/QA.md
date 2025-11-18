@@ -1,6 +1,6 @@
 # Financial & Economic News Intelligence Q&A Generator
 
-**Purpose:** Generate 4–6 decision-critical Q&As from recent financial/economic news for finance leadership capital allocation and risk decisions. Self-contained; complete context included.
+**Purpose:** Generate 4–6 decision-critical Q&As from recent financial/economic news for finance leadership capital allocation and risk decisions.
 
 ## Table of Contents
 - [I. Context & Scope](#i-context--scope)
@@ -20,8 +20,7 @@
 - **Org Scale**: $100M+ revenue or $50M+ annual finance decisions
 - **Resources**: 2-4h per cycle (analyst/AI-assisted)
 - **Format**: Scannable ≤30min
-
-**Freshness**: News <2mo (preferred), <4mo (acceptable), ≤9mo (max). High-velocity topics (capital markets, macro) require fresher sources.
+- **Freshness**: News <2mo (preferred), <4mo (acceptable), ≤9mo (max); high-velocity topics (capital markets, macro) require fresher sources
 
 **Decision Criticality** (each Q must meet ≥1):
 1. Impacts capital allocation, capital structure, M&A, or liquidity
@@ -54,31 +53,29 @@
 ## III. Execution
 
 ### Step 1: News Discovery
-Record generation date (YYYY-MM-DD). Search ≥10 candidates (<2mo preferred, ≤9mo max).
+Record generation date (YYYY-MM-DD). Search ≥10 candidates; select 4-6 meeting decision criticality.
 
 **Sources**: Fed/ECB, WSJ, Bloomberg, FT, Reuters (markets); BLS/BEA (macro); MergerMarket (M&A); research. Avoid rumors/PR.
 
-**Curate**: Select 4-6 items meeting decision criticality. Rank: (1) quantified impact, (2) urgency, (3) multi-cycle effects.
+**Rank by**: (1) quantified impact, (2) urgency, (3) multi-cycle effects
 
 ### Step 2: Build References
 **Format**: G# (term, definition) | N# (news, source, date, URL) | M# (M&A, date, URL) | T# (treasury, date, URL) | R# (research, author, year, URL)
 
-**Citations**: `[Ref: N1][n1]` in text, `[n1]: [Source] (YYYY-MM-DD) URL` at end. Verify figures; label estimates ("est.", "proj.", "assumes X").
+**Citations**: `[Ref: N1][n1]` in text, `[n1]: [Source] (YYYY-MM-DD) URL` at end. Verify figures; label estimates ("est.", "proj.", "assumes X"). Research 2023+.
 
-**Recency**: News <2mo (preferred), <4mo (acceptable), ≤9mo (max). Research 2023+.
-
-**Glossary**: Define non-core terms. Use plain language.
+**Glossary**: Define non-core terms.
 
 ### Step 3: Generate Q&A
 **Question**: "[Specific News] implications for [Cycle]?"
 
-**Structure** (120-200 words total):
-1. **News** (~25w): What happened, when, why it matters [Ref: N#][n#]
-2. **Impact** (~50w): ≥2 cycles + quantified metrics (%, $, multiple, IRR); explicit causal links ("X causes Y because Z"). Order: critical first.
-3. **Stakeholders** (~35w): **[Primary]**: Concerns + actions | **[Secondary]**: Concerns + actions. Order: primary decision-maker first.
+**Structure** (120-200w total):
+1. **News** (~25w): What, when, why [Ref: N#][n#]
+2. **Impact** (~50w): ≥2 cycles + quantified metrics (%, $, multiple, IRR, bps); explicit causal links ("X causes Y because Z")
+3. **Stakeholders** (~35w): **Primary**: Concerns → actions | **Secondary**: Concerns → actions
 4. **Decision** (~50w): **Recommended**: [Option] - benefits, costs, risks, criteria | **Alternative**: [Option] - benefits, costs, risks
 5. **Action** (~20w): **Critical (0-2wk)**: [Step] - [Owner] | **Important (2wk-2mo)**: [Step] - [Owner]
-6. Links: [n1]: [Source] (YYYY-MM-DD) URL
+6. Links: [n#]: [Source] (YYYY-MM-DD) URL
 
 ### Step 4: Add Visuals
 **Diagrams** (≥2): Mermaid flowcharts (decision trees, WACC/DCF), sequence diagrams (timelines), scenario comparisons.
@@ -86,7 +83,7 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates (<2mo preferred, �
 **Tables** (≥1): Decision matrix (Option, Benefits, Costs, Risks, Timeline), impact summary (Cycle, Metric, Current, Target), or action tracker (Role, Action, Timeline, Priority).
 
 ### Step 5: Self-Review
-Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), logic (no contradictions), completeness (News/Impact/Stakeholders/Decision/Action), uncertainties (flag estimates/assumptions).
+Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), logic (no contradictions), completeness (News/Impact/Stakeholders/Decision/Action), uncertainties flagged (prefix with "est.", "proj.", "assumes X" for estimates/projections/assumptions).
 
 ## IV. Validation
 
@@ -114,7 +111,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 
 ## VI. Output Format
 
-### Structure
+### Document Structure
 ```markdown
 # Financial & Economic Intelligence Q&A ([Period])
 
@@ -123,42 +120,40 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 ## Executive Summary
 **Coverage**: [X] Q&As | [Y] cycles | [Z] categories
 
-**Key Insights** (priority-ordered):
-1. **[Critical]**: [Decision] by [Timeline] - [Owner]
-2. **[Important]**: [Decision] by [Timeline] - [Owner]
-3. **[Notable]**: [Decision] by [Timeline] - [Owner]
+**Key Insights**:
+1. **Critical**: [Decision] by [Timeline] - [Owner]
+2. **Important**: [Decision] by [Timeline] - [Owner]
+3. **Notable**: [Decision] by [Timeline] - [Owner]
 
 **Action Dashboard**:
 | Cycle | News | Decision | Critical Action | Owner | Deadline |
 |-------|------|----------|-----------------|-------|----------|
-| ... | ... | ... | ... | ... | ... |
 
 ## Questions by Cycle
-[Organized: Capital Allocation | Liquidity/Cash | M&A/Corp Dev | Risk/Compliance]
+[Group by: Capital Allocation | Liquidity/Cash | M&A/Corp Dev | Risk/Compliance]
 
 ## References
-**Glossary**: [G#: Term - Definition]
-**News**: [N#: Source (YYYY-MM-DD) URL]
-**M&A**: [M#: Deal (YYYY-MM-DD) URL]
-**Treasury**: [T#: Instrument (YYYY-MM-DD) URL]
-**Research**: [R#: Author (Year) URL]
+**Glossary**: G#: Term - Definition
+**News**: N#: Source (YYYY-MM-DD) URL
+**M&A**: M#: Deal (YYYY-MM-DD) URL
+**Treasury**: T#: Instrument (YYYY-MM-DD) URL
+**Research**: R#: Author (Year) URL
 
 ## Validation
-[Validation table from Section IV with actual values]
+[Table from Section IV with actual PASS/FAIL]
 ```
 
-### Q&A Template
+### Q&A Structure
 ```markdown
 ### Q#: [News Event] implications for [Cycle]?
 
 **Cycle**: [Capital Allocation/Liquidity/M&A/Risk] | **Roles**: [Primary, Secondary] | **Criticality**: [#]
 
-**News** (~25w): [What], [when], [why] [Ref: N#][n#]
+**News** (~25w): [What, when, why] [Ref: N#][n#]
 
 **Impact** (~50w): 
 - **[Cycle 1]**: [Quantified change] because [mechanism]
 - **[Cycle 2]**: [Quantified change] because [mechanism]
-Use: %, $, multiples, bps, IRR. Order: critical first.
 
 **Stakeholders** (~35w): 
 - **[Primary]**: [Concerns] → [Actions]

@@ -22,6 +22,7 @@
 - **G2. Decision-Critical**: Blocks/enables roadmap/budget/competitive decisions within 1-6mo. Analogy: Traffic light—red blocks, green enables. Example: Competitor launches AI feature blocking Q3 roadmap commitment.
 - **G3. High-Velocity**: Competitive/pricing categories requiring <1mo freshness. Analogy: Perishables vs canned goods. Example: Competitor pricing changes (expires 4wk) vs market research (expires 24wk).
 - **G4. MECE**: Mutually Exclusive, Collectively Exhaustive—no gaps/overlaps. Analogy: Pizza slices—each unique, none missing. Example: Security categories: Authentication, Authorization, Encryption, Audit (not "Security" + "Authentication").
+- **G5. Product Lifecycle Phases**: Discovery (research/validate), Design (spec/prioritize), Launch (build/release), Growth (scale/optimize). Analogy: Building construction—survey land, blueprint, construct, furnish. Example: Q on competitor pricing affects Design (feature scope) + Launch (GTM timing).
 
 **Freshness** (from generation date):
 - **High-Velocity** (Competitive, Pricing): Majority <1mo, none >4mo
@@ -36,13 +37,13 @@
 - Competitors: [List 3-7] with positioning
 - Priorities: [Top 3 strategic goals, 6mo]
 
-**Output Requirements**: 4-6 Q&As | 3-4 phases (Discovery, Design, Launch, Growth) | 1-2 Q/phase | ≥5 stakeholders total (CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, Sales Eng) | All news-cited | All decisions actionable
+**Output Requirements**: 4-6 Q&As | 3-4 phases (Discovery, Design, Launch, Growth) | 1-2 Q/phase | ≥5 stakeholders total (see Context) | All news-cited | All decisions actionable
 
-**Categories** (balance required):
-1. **Competitive** (30%+): Feature launches, updates, parity gaps
-2. **Pricing** (25%+): Model changes, tier adjustments, packaging shifts
-3. **Strategy** (25%+): Pivots, market expansions, partnerships
-4. **Research** (20%+): Adoption rates, churn triggers, usage patterns
+**Categories** (balance required—distribute 4-6 Q&As across all 4):
+1. **Competitive** (≥1): Feature launches, updates, parity gaps
+2. **Pricing** (≥1): Model changes, tier adjustments, packaging shifts
+3. **Strategy** (≥1): Pivots, market expansions, partnerships
+4. **Research** (≥1): Adoption rates, churn triggers, usage patterns
 
 **Criticality Labels** (≥1 per Q&A):
 1. **[CRITICAL] Blocks Decision**: Roadmap, go/no-go, pivot
@@ -184,7 +185,7 @@
 | **[CRITICAL] References** | G (all terms), N≥5, C≥2, P≥2, R≥2, URLs valid | | ☐ PASS |
 | **[CRITICAL] Impact** | All have ≥2 phases + ≥2 roles + metrics (%, $, units) | | ☐ PASS |
 | **[IMPORTANT] Q&A** | 4-6 total, 3-4 phases, 1-2 Q/phase | | ☐ PASS |
-| **[IMPORTANT] Category** | Comp 30%+, Pricing 25%+, Strategy 25%+, Research 20%+ | | ☐ PASS |
+| **[IMPORTANT] Category** | All 4 categories covered: Comp≥1, Pricing≥1, Strategy≥1, Research≥1 | | ☐ PASS |
 | **[IMPORTANT] Stakeholders** | ≥5 roles total | | ☐ PASS |
 | **[IMPORTANT] Criticality** | All Q&As labeled [CRITICAL/IMPORTANT] criterion | | ☐ PASS |
 | **[IMPORTANT] Decisions** | All have ≥2 options + rec + rationale + criteria (baseline → target by date) | | ☐ PASS |

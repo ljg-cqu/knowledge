@@ -12,9 +12,9 @@
 
 ## I. Context & Scope
 
-**Problem**: Commercial teams lack timely, actionable intelligence from fragmented news sources, resulting in delayed competitive responses and missed revenue opportunities.
+**Problem**: Commercial teams lack timely, actionable intelligence from fragmented news sources, causing delayed competitive responses and missed revenue opportunities.
 
-**Scope**: Generate 4-6 decision-critical Q&As from recent commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) to enable informed, time-sensitive decisions across CRO, Sales, Marketing, CS, and RevOps functions.
+**Scope**: Generate 4-6 decision-critical Q&As from recent commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) for CRO, Sales, Marketing, CS, and RevOps decision-making.
 
 **Target**: Bi-weekly cycles | 4-6h/cycle | **Expires**: 2wk post-gen | **Freshness**: ≥70% <2mo (≥25% <1wk), 100% ≤9mo
 
@@ -22,13 +22,11 @@
 - **Decision-critical**: News requiring action within 1-6mo that impacts revenue, blocks decisions, creates risk, or requires multi-stakeholder coordination
 - **Commercial Operations**: Sales execution, marketing ops, customer success, RevOps, GTM strategy, competitive intelligence
 
-**Exclude**: Technical implementation, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors.
+**Exclude**: Technical specs/architecture, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, internal-only process changes, single-function tasks.
 
 **Role**: Commercial Operations news intelligence analyst.
 
 **Limitations**: News-dependent (quality varies); 2-week shelf life; requires baseline metrics for quantified impact.
-
-**When NOT to use**: Technical architecture, product specs, internal-only process changes, >6mo strategy, single-function tasks (use specialized tools instead).
 
 **Inputs**: Domain/vertical, period, company (size, stage, GTM, ACV) | Metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion) | Stakeholders (CRO, VP Sales, VP Marketing, VP CS, RevOps) | Constraints (budget, hiring, regulatory)
 
@@ -38,14 +36,14 @@
 1. **[CRITICAL] Blocks Decision**: Quota, GTM pivot, revenue model
 2. **[CRITICAL] Creates Risk**: Competitive threat, churn signal, CAC/LTV pressure
 3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles
-4. **[IMPORTANT] Requires Action**: 1-6mo window
+4. **[IMPORTANT] Requires Action**: 1-6mo timeline
 5. **[IMPORTANT] Quantified Impact**: Revenue, pipeline, conversion, retention, efficiency
 
-**Categories** (cover all, mutually exclusive):
-1. **Sales**: Win rates, quota, pipeline velocity, cycle length (exclude marketing)
-2. **Marketing**: CAC, lead conversion, campaign ROI, attribution (exclude post-sale)
-3. **Customer Success**: Churn, NRR, expansion ARR, retention (exclude pre-sale)
-4. **RevOps**: CRM/tools, analytics, process optimization, forecasting (exclude execution)
+**Categories** (MECE coverage):
+1. **Sales**: Win rates, quota, pipeline velocity, cycle length
+2. **Marketing**: CAC, lead conversion, campaign ROI, attribution
+3. **Customer Success**: Churn, NRR, expansion ARR, retention
+4. **RevOps**: CRM/tools, analytics, process optimization, forecasting
 
 ## II. Requirements
 
@@ -55,14 +53,14 @@
 1. **News** (~25w): What, when, why, category + citation
 2. **Impact** (~50w): ≥2 stages, ≥2 roles, quantified metrics
 3. **Stakeholders** (~35w): ≥2 roles with concerns/actions
-4. **Decision** (~50w): ≥2 options with rationale, risks, trade-offs
-5. **Action** (~20w): Immediate (0-2wk) + short (2wk-2mo) with owner + metrics
+4. **Decision** (~50w): ≥2 options with cost/benefit, rationale, trade-offs
+5. **Action** (~20w): Immediate (0-2wk) + short (2wk-2mo), owner + metrics
 
 **Stages** (3-4): Lead Gen & Demand, Sales & Closing, Retention & Expansion, Analytics & Optimization
 
 **Stakeholders** (≥4): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst
 
-**References**: G≥4, N≥4, P≥1, M≥1, R≥1, A≥4 (all 100% used)
+**References**: G≥4 (glossary), N≥4 (news), P≥1 (platform), M≥1 (methodology), R≥1 (report), A≥4 (academic/analyst). 100% used.
 
 **Visuals**: ≥2 diagrams + ≥1 table
 
@@ -84,7 +82,7 @@ Record generation date (YYYY-MM-DD).
 **Search** (10-15 candidates):
 - **Keywords**: `[Domain] {sales performance|pipeline|quota|CAC|conversion|churn|retention|expansion|competitive|win/loss}`
 - **Sources**: SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot, Gainsight, RevOps Co-op, G2, Gartner, Forrester
-- **Tools**: Perplexity `"[domain] sales trends" timerange:1month` | ChatGPT "Latest [domain] commercial ops news past 60d" | Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD` | Product Hunt category filter + "launched this month"
+- **Tools**: Perplexity `"[domain] sales trends" timerange:1month` | ChatGPT "Latest [domain] commercial ops news 60d" | Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD` | Product Hunt "launched this month"
 
 **Filter**: Freshness ✓ | Trusted source ✓ | ≥1 criticality criterion ✓ | No rumors ✓
 
@@ -93,12 +91,12 @@ Record generation date (YYYY-MM-DD).
 ### Step 2: Build References
 
 **Formats**:
-- **G#**: Term (def + analogy + context) — `G1. Pipeline Velocity: Time to move opps through stages (like conveyor belt speed); measures sales efficiency`
-- **N#**: Title (Source, MM/DD): Summary | Category | URL — `N1. "Sales Cycle Down 18%" (Gong Labs, 11/15): Q3 data shows faster closes in enterprise | Sales | https://...`
-- **P#**: Platform (Source, Date): Model | URL — `P1. Gong Revenue Intelligence (Gong.io, 2024): Conversation analytics for pipeline | https://...`
-- **M#**: Methodology (Source, Date): Application | URL — `M1. MEDDIC Framework (Sales Hacker, 2024): Enterprise qualification | https://...`
-- **R#**: Report (Firm, Date): Findings | URL — `R1. SaaS Benchmarks 2024 (SaaS Capital, Q3 2024): Median NRR 108% | https://...`
-- **A#**: APA 7th [Tag] — `A1. Smith, J. (2024). Revenue operations trends. RevOps Journal, 12(3), 45-67. [Empirical]`
+- **G#**: Term (def + analogy + context) — `G1. Pipeline Velocity: Time to move opps through stages (conveyor speed); measures sales efficiency`
+- **N#**: Title (Source, MM/DD): Summary | Category | URL — `N1. "Sales Cycle ↓18%" (Gong Labs, 11/15): Q3 faster enterprise closes | Sales | https://...`
+- **P#**: Platform (Source, Date): Model | URL — `P1. Gong Revenue Intelligence (Gong.io, 2024): Conversation analytics | https://...`
+- **M#**: Methodology (Source, Date): Application | URL — `M1. MEDDIC (Sales Hacker, 2024): Enterprise qualification | https://...`
+- **R#**: Report (Firm, Date): Findings | URL — `R1. SaaS Benchmarks 2024 (SaaS Capital, Q3): Median NRR 108% | https://...`
+- **A#**: APA 7th [Tag] — `A1. Smith, J. (2024). Revenue ops trends. RevOps Journal, 12(3), 45-67. [Empirical]`
 
 **Citation**: `[Ref: N1 – Gong, 2024][n1]`
 
@@ -106,19 +104,19 @@ Record generation date (YYYY-MM-DD).
 
 Pattern: "[News] implications for [Stage]+[Roles]?"
 
-**Avoid**: Generic claims (quantify) | Hype (show limitations) | Unattributed statements (cite) | Stale news (check age) | Speculation (flag if needed)
+**Avoid**: Generic claims (quantify) | Hype (show limitations) | Unattributed statements (cite) | Stale news | Speculation (flag uncertainty)
 
-**Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 120-200w | quantified | cited | actionable | balanced
+**Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 120-200w | Quantified | Cited | Actionable | Balanced
 
 ### Step 4: Add Visuals
 
 ≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table
 
-Funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor | CAC | Change | Source | Cohort: retention curves by segment, 12mo
+Example funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source | Cohort: 12mo retention by segment
 
 ### Step 5: Validate
 
-**Self-Review**: URLs accessible | Calculations correct (word counts, metrics) | No contradictions | Terminology consistent | All references used | Uncertainties flagged
+**Self-Review**: URLs accessible | Calculations correct | No contradictions | Terminology consistent | All references used | Uncertainties flagged
 
 **Quality Gates**: All CRITICAL + IMPORTANT pass | Reference floors met | No placeholders | Valid URLs
 
@@ -138,7 +136,7 @@ Funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]
 
 ## V. Methodology Sources
 
-**Framework**: Adapted from RevOps Co-op Research (2024), SaaStr Annual Reports (2023-2024), Gartner GTM Analytics Framework (2024) | **Freshness**: Based on B2B SaaS product cycle velocity (2-3mo median) per OpenView SaaS Benchmarks (2024) | **References**: APA 7th + Forrester/Gartner analyst formats | **Quality Gates**: Content Marketing Institute (2024) + Reuters Trust Principles
+**Framework**: RevOps Co-op (2024), SaaStr (2023-2024), Gartner GTM (2024) | **Freshness**: B2B SaaS 2-3mo cycle per OpenView (2024) | **References**: APA 7th, Forrester/Gartner formats | **Quality**: CMI (2024), Reuters Trust Principles
 
 ## VI. Question Quality
 
@@ -154,7 +152,7 @@ Funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]
 
 **Key Insights**: 1-2 high-impact findings (impact → decision → timeline)
 
-**Roles**: ≥4 | **Refs**: G, N, P, M, R, A counts
+**Roles**: ≥4 | **Refs**: G#, N#, P#, M#, R#, A# counts
 
 ### Q&A Template
 
@@ -164,11 +162,11 @@ Funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]
 
 **News**: What, when, why, category [Ref: N#][n#]
 
-**Impact**: **Stages** (≥2) | **Metrics**: Revenue/Pipeline/Conversion/Retention with numbers
+**Impact**: **Stages** (≥2) | **Metrics**: Revenue/Pipeline/Conversion/Retention (quantified)
 
 **Stakeholders**: **[Role 1]**: Concerns + actions | **[Role 2]**: Concerns + actions
 
-**Decision**: **Options**: (A) [Option 1 + cost/benefit], (B) [Option 2 + cost/benefit] | **Recommendation**: [Choice] | **Rationale**: [Why] | **Trade-offs**: Risks/limitations
+**Decision**: **Options**: (A) [cost/benefit], (B) [cost/benefit] | **Recommendation**: [Choice] | **Rationale**: [Why] | **Trade-offs**: Risks/limitations
 
 **Action**: **Immediate (0-2wk)**: Tasks + owner | **Short (2wk-2mo)**: Tasks + owner + metrics
 
