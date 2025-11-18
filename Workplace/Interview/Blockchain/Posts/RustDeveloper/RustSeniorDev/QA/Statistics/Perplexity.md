@@ -405,12 +405,12 @@ ZKP generation times span 30-180s (6× range)—multiplicative scale appropriate
 
 ```mermaid
 flowchart TD
-    start((Benchmark Results)) --> margin[Set Equivalence Margin (Δ)]
-    margin --> tost[Run Two One-Sided Tests]
-    tost --> power[Assess Power / CI Width]
+    start((Benchmark Results)) --> setMargin[Set Equivalence Margin]
+    setMargin --> tost[Run Two One-Sided Tests]
+    tost --> power[Assess Power or CI Width]
     power --> decision{Both Tests Significant?}
     decision -->|Yes| claim[Declare Practical Equivalence]
-    decision -->|No| expand[Increase Sample Size / Reduce Variance]
+    decision -->|No| expand[Increase Sample Size or Reduce Variance]
 ```
 
 ***
