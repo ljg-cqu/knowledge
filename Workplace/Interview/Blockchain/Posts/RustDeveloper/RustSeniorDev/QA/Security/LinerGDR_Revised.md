@@ -215,32 +215,37 @@ flowchart TD
 
 ```mermaid
 graph TD
-    A --> B{MiCA Compliance (EU)}
-    A --> C{NIST CSF 2.0 (Global)}
-    A --> D{ISO 27001 Adoption (Global)}
+    A["Regulatory Changes 2025"] -->|impacts|> B["MiCA (EU)"]
+    A -->|impacts|> C["NIST CSF 2.0"]
+    A -->|impacts|> D["ISO 27001 / SOC 2"]
 
-    B --> B1
-    B --> B2
-    B --> B3
+    B -->|focus|> B1["Token & CASP rules"]
+    B -->|focus|> B2["Reserves & disclosures"]
+    B -->|focus|> B3["AML / KYC controls"]
 
-    C --> C1
-    C --> C2
+    C -->|focus|> C1["Govern function"]
+    C -->|focus|> C2["Supply-chain risk"]
 
-    D --> D1
-    D --> D2
+    D -->|focus|> D1["ISMS controls"]
+    D -->|focus|> D2["On-chain certifications"]
 
-    B1 & B2 & B3 & C1 & C2 & D1 & D2 --> E{Rust-based Web3 Development}
+    B1 -->|impacts|> E["Rust-based Web3 Development"]
+    B2 -->|impacts|> E
+    B3 -->|impacts|> E
+    C1 -->|impacts|> E
+    C2 -->|impacts|> E
+    D1 -->|impacts|> E
+    D2 -->|impacts|> E
 
-    E --> F
-    E --> G
-    E --> H
-    E --> I
+    E -->|leads to|> F["Compliance by design"]
+    E -->|leads to|> G["Governance & controls"]
+    E -->|leads to|> H["Supply-chain security"]
+    E -->|leads to|> I["Continuous auditing"]
 
-    F & G & H & I --> J
-    J --> K
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style J fill:#bbf,stroke:#333,stroke-width:2px
+    F -->|results in|> J["Stronger security posture"]
+    G -->|results in|> J
+    H -->|results in|> J
+    I -->|results in|> J
 ```
 
 ---
@@ -304,7 +309,7 @@ graph LR
     -   **Trade-offs**: Increased complexity in architectural design and initial setup; potential for operational overhead due to continuous verification. However, it significantly reduces the impact of insider threats and external breaches, making it ideal for high-stakes blockchain environments.
 3.  **Proactive Security Movement & Automated Tooling**:
     -   **Shift Left**: Integrate security into every stage of the Rust development lifecycle, using real-time static analysis in IDEs and automated comprehensive testing that probes for vulnerabilities, not just code coverage.
-    -   **Tool Accuracy**: Leverage new generations of security tools that use custom intermediate representations and AI trained on historical exploits for higher accuracy (e.g., 75% true positive rates compared to 15% for legacy tools).
+    -   **Tool Accuracy**: Leverage new generations of security tools that use custom intermediate representations and AI trained on historical exploits for higher accuracy (e.g., 75% vs 15% true positive rates compared to legacy tools).
     -   **Continuous Security**: Security is an ongoing process that extends beyond deployment, requiring continuous monitoring, regular security reviews for upgrades, and staying current on emerging threats.
  
 **Strategy Trade-off Comparison**:

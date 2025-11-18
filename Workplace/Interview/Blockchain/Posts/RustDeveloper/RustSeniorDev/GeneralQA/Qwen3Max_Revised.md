@@ -1186,16 +1186,16 @@ Net benefit vs no mitigation: 1.7095B - 0 = 1.7095B
 **End-to-End Incident Lifecycle (Diagram):**
 ```mermaid
 graph TD
-    A[Slashing detected (on-chain event)] --> B[Automatic containment (shutdown & isolate node)]
+    A[Slashing detected] --> B[Automatic containment]
     B --> C[Stakeholder notification]
-    C --> D[Initial assessment (severity, scope, loss)]
+    C --> D[Initial assessment]
     D --> E[War room activation]
     E --> F[Forensic evidence collection]
-    F --> G[Root cause analysis (5 Whys, fishbone)]
-    G --> H[Post-mortem document (timeline, impact, actions)]
-    H --> I[Implement technical & process controls]
-    I --> J[Training & simulations]
-    J --> K[Metrics review (MTTD, MTTR, prevention rate)]
+    F --> G[Root cause analysis]
+    G --> H[Post-mortem document]
+    H --> I[Implement controls]
+    I --> J[Training and simulations]
+    J --> K[Metrics review]
     K --> A
 ```
 
