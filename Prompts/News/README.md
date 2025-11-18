@@ -76,7 +76,7 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 | News Type | Files | Rationale |
 |-----------|-------|-----------|
 | **Macro/Economic** | Financial & Economic, Strategic Intelligence, Startup & Formation | Different stakeholder needs: (1) Treasury/capital impact (CFO), (2) Long-term strategy (CSO), (3) Fundraising environment (Founder) |
-| **Talent/Labor** | Startup & Formation (0-18mo tactical), Strategic Intelligence (2-10yr strategic) | Different horizons: (1) Hiring competition & compensation, (2) Workforce planning & skills gaps |
+| **Talent/Labor** | People & Workforce Intelligence (0-24mo tactical/operational), Strategic Intelligence (2-10yr strategic) | Different horizons: (1) Hiring, compensation, retention (CHRO), (2) Workforce planning & skills gaps (CSO) |
 | **Competitive Intelligence** | Startup & Formation, Product & Market Intelligence, Commercial Operations | Different contexts: (1) Market validation & positioning, (2) Feature parity & pricing, (3) Win/loss & sales intelligence |
 | **Organizational Dynamics** | Startup & Formation (competitive intel), Technical Operations (vendor risk) | Different purposes: (1) Competitor strength assessment, (2) Support/stability risk |
 
@@ -114,7 +114,11 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 | **Market entry (formation)** | Startup & Formation | ✓ |
 | **Business model validation** | Startup & Formation | ✓ |
 | **Operations & supply chain** | Operations & Supply Chain | ✓ |
+| **Quality management** | Operations & Supply Chain | ✓ |
 | **People/talent/HR** | People & Workforce Intelligence | ✓ |
+| **Partnerships/ecosystem (post-PMF)** | Strategic Intelligence | ✓ |
+| **Legal/governance** | Strategic Intelligence | ✓ |
+| **Routine compliance (operational)** | Operations & Supply Chain | ✓ |
 
 **Coverage Score**: 100% ✓
 
@@ -259,22 +263,32 @@ Are you a formation-stage company (pre-PMF, pre-Series A)?
 
 ### Talent/Labor News Boundary
 
-**Startup & Formation** (0-18mo tactical):
-- Hiring competition for early-stage roles
-- Compensation benchmarks for seed/Series A
-- Competitor hiring as market validation signal
-- Acqui-hire valuations
-
-**People & Workforce Intelligence** (operational, all stages):
-- Ongoing talent markets and hiring signals across regions and roles
+**People & Workforce Intelligence** (0-24mo tactical/operational, all stages):
+- Talent markets and hiring signals across regions and roles (including early-stage competition)
 - Skills supply, comp & benefits, workforce policies, labor law and relations
+- Compensation benchmarks (seed/Series A through mature organizations)
 - Engagement, DEI, wellbeing metrics and benchmarks for knowledge and frontline workers
+- Competitor hiring as competitive intelligence signal
 
 **Strategic Intelligence** (2-10yr strategic):
 - Long-term workforce planning and skills gaps
 - Generational workplace trends (remote, gig economy)
 - Education system and certification programs
 - Labor market macro trends affecting hiring pools
+
+### Supplier/Vendor News Boundary
+
+**Operations & Supply Chain** (physical suppliers, manufacturing, logistics):
+- Supplier capacity, quality, pricing, risk (raw materials, components, contract manufacturers)
+- Logistics providers and freight networks (ports, carriers, warehouses)
+- Regulatory compliance (safety, environmental, trade)
+- Supplier financial health and geopolitical risks
+
+**Technical Operations** (software/cloud vendors, technical services):
+- Software vendor roadmaps, deprecations, breaking changes
+- Cloud provider pricing, SLAs, outages
+- Security vulnerabilities in third-party libraries/dependencies
+- Technical support quality and vendor stability
 
 ### Macro/Economic Multi-File Coverage
 
@@ -295,14 +309,13 @@ Are you a formation-stage company (pre-PMF, pre-Series A)?
 
 ### Word Count Rationale
 
-Q&A word counts are standardized based on decision complexity and stakeholder analysis requirements:
+Q&A word counts are standardized to **150-200w** across all files to balance thoroughness with scannability:
 
 | Word Count | Files | Rationale |
 |------------|-------|-----------|
-| **120-200w** | TechOps, CommOps, FinEcon, Startup | Tactical/operational decisions with clear technical or financial metrics; immediate action focus (0-2mo); single-function optimization |
-| **150-250w** | ProdMarket, StratIntel, OpsSupply, PeopleWF | Strategic decisions requiring multi-stakeholder analysis; competitive/market context; longer planning horizons (3-18mo); cross-functional trade-offs |
+| **150-200w** | All 8 files | Sufficient for: (1) News context + citation, (2) Multi-phase/multi-role impact with quantified metrics, (3) ≥2 decision options with trade-offs, (4) Actionable timeline with owners. Compact enough for 30min executive scan of 4-6 Q&As. |
 
-**Design Principle**: Word count reflects decision complexity, not just update frequency. ProdMarket (bi-weekly) requires strategic depth for competitive positioning and pricing decisions despite frequent updates, while FinEcon (monthly) remains concise due to quantified financial metrics.
+**Design Principle**: Uniform word count reduces cognitive load across domains. Decision complexity is managed through structured sections (News/Impact/Stakeholders/Decision/Action) rather than variable length. Highly complex decisions use tables, diagrams, and appendices rather than longer prose.
 
 ### Freshness Requirements by Velocity
 
@@ -329,13 +342,14 @@ The following news types are intentionally excluded from all prompts in this fra
 | **Individual Career Decisions** | Personal job searches, salary negotiations, skill development (vs workforce trends) | Career development resources, mentorship programs |
 
 **Cross-File Exclusions** (specific to multiple files):
-- **TechOps**: Excludes product features (ProdMarket), business operations (OpsSupply), HR systems (PeopleWF)
+- **TechOps**: Excludes product features (ProdMarket), physical operations (OpsSupply), HR systems (PeopleWF)
 - **ProdMarket**: Excludes sales execution (CommOps), technical implementation (TechOps), R&D >12mo (StratIntel)
 - **CommOps**: Excludes product strategy (ProdMarket), infrastructure (TechOps), corporate finance (FinEcon)
 - **FinEcon**: Excludes formation fundraising (Startup), operations costs (OpsSupply), HR compensation strategy (PeopleWF)
-- **StratIntel**: Excludes <6mo tactical decisions (all operational files), product roadmaps (ProdMarket)
-- **OpsSupply**: Excludes product R&D (StratIntel), software infrastructure (TechOps), GTM (CommOps)
-- **PeopleWF**: Excludes formation hiring (Startup), frontline safety (OpsSupply), software engineering practices (TechOps)
+- **StratIntel**: Excludes <6mo tactical decisions (all operational files), product roadmaps (ProdMarket), routine legal/compliance (OpsSupply)
+- **OpsSupply**: Excludes product R&D (StratIntel), software infrastructure (TechOps), GTM (CommOps), major litigation/IP disputes (StratIntel)
+- **PeopleWF**: Excludes frontline safety (OpsSupply), software engineering practices (TechOps), long-term workforce macro trends (StratIntel)
+- **Startup**: Excludes tactical talent/hiring (PeopleWF), mature-org optimization (all operational files)
 
 ## Validation Checklist
 
@@ -350,7 +364,7 @@ The following news types are intentionally excluded from all prompts in this fra
 - [x] **Quality gates**: All files include validation reports and quality checks
 - [x] **Boundary clarifications**: Product vs Commercial vs Technical explicitly defined
 - [x] **Multi-file coverage**: Macro/economic, talent/labor, competitive intelligence boundaries documented
-- [x] **Word count standardization**: 120-200w (tactical/operational) vs 150-250w (strategic) with documented rationale
+- [x] **Word count standardization**: 150-200w across all files with documented rationale
 - [x] **Freshness standardization**: High/Medium/Low velocity categories with explicit targets
 - [x] **Intentional exclusions**: Crisis PR, internal IT, routine announcements, rumors, marketing hype documented
 - [x] **Legal/governance coverage**: Added to StratIntel scope (major litigation, IP disputes, board composition)
@@ -371,3 +385,4 @@ The following news types are intentionally excluded from all prompts in this fra
 | 2025-11-15 | 1.0 | Initial MECE-compliant framework established | Zencoder AI |
 | 2025-11-15 | 2.0 | Added Product & Market Intelligence News; clarified boundaries; documented multi-file coverage | Zencoder AI |
 | 2025-11-18 | 3.0 | **Optimization Pass**: (1) Expanded OpsSupply from 135→221 lines (MECE position, glossary, examples); (2) Standardized word counts with rationale (120-200w tactical vs 150-250w strategic); (3) Added Intentional Exclusions section; (4) Added legal/governance to StratIntel (litigation, IP, board composition); (5) Created central Freshness Reference table; (6) Documented glossary placement standards | Zencoder AI |
+| 2025-11-18 | 4.0 | **Consolidation Pass**: (1) Reduced talent coverage from 3-way to 2-way split (removed Startup, consolidated to PeopleWF 0-24mo + StratIntel 2-10yr); (2) Unified word counts to 150-200w across all files; (3) Added coverage gaps: quality management, partnerships/ecosystem (post-PMF), routine compliance operations; (4) Added supplier/vendor boundary clarification (OpsSupply vs TechOps); (5) Updated cross-file exclusions for consistency | Zencoder AI |

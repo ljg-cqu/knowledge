@@ -44,7 +44,7 @@
 
 ## II. Requirements
 
-**Output**: 4-6 Q&As | ≥3 decision cycles + ≥3 news categories | 120-200w per Q&A
+**Output**: 4-6 Q&As | ≥3 decision cycles + ≥3 news categories | 150-200w per Q&A
 
 **References**: ≥6 total (prioritize news; include M&A/treasury/research)
 
@@ -69,10 +69,10 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates; select 4-6 meeting
 ### Step 3: Generate Q&A
 **Question**: "[Specific News] implications for [Cycle]?"
 
-**Structure** (120-200w total):
-1. **News** (~25w): What, when, why [Ref: N#][n#]
-2. **Impact** (~50w): ≥2 cycles + quantified metrics (%, $, multiple, IRR, bps); explicit causal links ("X causes Y because Z")
-3. **Stakeholders** (~35w): **Primary**: Concerns → actions | **Secondary**: Concerns → actions
+**Structure** (150-200w total):
+1. **News** (~30w): What, when, why [Ref: N#][n#]
+2. **Impact** (~60w): ≥2 cycles + quantified metrics (%, $, multiple, IRR, bps); explicit causal links ("X causes Y because Z")
+3. **Stakeholders** (~40w): **Primary**: Concerns → actions | **Secondary**: Concerns → actions
 4. **Decision** (~50w): **Recommended**: [Option] - benefits, costs, risks, criteria | **Alternative**: [Option] - benefits, costs, risks
 5. **Action** (~20w): **Critical (0-2wk)**: [Step] - [Owner] | **Important (2wk-2mo)**: [Step] - [Owner]
 6. Links: [n#]: [Source] (YYYY-MM-DD) URL
@@ -92,7 +92,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 | **Freshness** | News recency | ≥50% <2mo, all ≤9mo | PASS/FAIL |
 | **Coverage** | Cycles + Categories | ≥3 cycles, ≥3 categories | PASS/FAIL |
 | **Output** | Q&A count | 4-6 Q&As | PASS/FAIL |
-| **Per Q&A** | Content requirements | 120-200w, ≥1 citation, ≥2 roles, decision (≥2 alternatives)+action | PASS/FAIL |
+| **Per Q&A** | Content requirements | 150-200w, ≥1 citation, ≥2 roles, decision (≥2 alternatives)+action | PASS/FAIL |
 | **References** | Total citations | ≥6 (news prioritized) | PASS/FAIL |
 | **Visuals** | Diagrams + Tables | ≥2 diagrams (Mermaid), ≥1 table | PASS/FAIL |
 | **Meta** | Generation/Expiry | Start: [YYYY-MM-DD], Expires: [+2wk] | INFO |

@@ -39,7 +39,7 @@
 
 ## Requirements
 
-**Structure**: 4-6 Q&As, 120-200 words each, URLs cited
+**Structure**: 4-6 Q&As, 150-200 words each, URLs cited
 
 **Phases**: Architecture & Design, Development, Deploy & Release, Operations & Observability
 
@@ -84,7 +84,7 @@
 
 **Avoid**: Generic, hype, unattributed claims, speculation
 
-**Structure** (120-200 words):
+**Structure** (150-200 words):
 1. News: What, when, why, category [Ref: N#][n#]
 2. Impact: ≥2 phases, quantified metrics
 3. Stakeholders: ≥2 roles, concerns, actions
@@ -102,7 +102,7 @@ Include ≥2 diagrams (Mermaid) + ≥1 table
 
 ### 5. Validate & Submit
 
-**Check**: Completeness (N≥4, 5+ roles, 4-6 Q&As, 120-200w, URLs, ≥2 diagrams, ≥1 table), Quality (freshness, ≥1 criticality/Q&A, quantified, no hype), Decisions (≥2 alternatives cost/benefit/risk, recommendation+rationale, baseline→target, limitations), Accuracy (verified, contradictions checked, uncertainties flagged)
+**Check**: Completeness (N≥4, 5+ roles, 4-6 Q&As, 150-200w, URLs, ≥2 diagrams, ≥1 table), Quality (freshness, ≥1 criticality/Q&A, quantified, no hype), Decisions (≥2 alternatives cost/benefit/risk, recommendation+rationale, baseline→target, limitations), Accuracy (verified, contradictions checked, uncertainties flagged)
 
 **Submit**: Glossary (used only), TOC, generation date, expiry (+2wk)
 
@@ -112,7 +112,7 @@ Include ≥2 diagrams (Mermaid) + ≥1 table
 |-------|----------|--------|
 | Freshness | Sec/Infra ≥80% <1mo; Stds/Prac ≥70% <2mo | ☐ |
 | References | N≥4 primary sources | ☐ |
-| Q&As | 4-6 total, 120-200w each | ☐ |
+| Q&As | 4-6 total, 150-200w each | ☐ |
 | Priority | Security/Infrastructure emphasized | ☐ |
 | Roles | ≥5 distinct roles | ☐ |
 | Criticality | Each Q&A: ≥1 criterion | ☐ |

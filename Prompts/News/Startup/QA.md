@@ -2,7 +2,7 @@
 
 **Purpose**: Generate 4–6 decision-critical Q&As from startup news to support formation-stage (pre-seed to Series A: <$10M raised, <50 employees, <18mo runway) decisions on market entry, fundraising, product-market fit, and early GTM. Addresses problem of fragmented news sources causing delayed or suboptimal decisions.
 
-**Output**: Self-contained document with quantified insights, ≥2 alternatives per Q, explicit recommendations, and actionable timelines. 120-200 words per Q. Valid 14 days from generation.
+**Output**: Self-contained document with quantified insights, ≥2 alternatives per Q, explicit recommendations, and actionable timelines. 150-200 words per Q. Valid 14 days from generation.
 
 ## Table of Contents
 - [Context & Scope](#context--scope)
@@ -26,10 +26,9 @@
 3. **Business Models & GTM**: Pricing, PLG, sales strategies (<3mo)
 4. **Regulatory/Compliance**: Policy, legal requirements (<6mo)
 5. **Partnerships/Ecosystem**: Strategic partnerships, platform changes (<2mo)
-6. **Talent/Labor**: Hiring, layoffs, compensation (<3mo)
-7. **Economic/Macro**: Interest rates, GDP, inflation (<3mo)
+6. **Economic/Macro**: Interest rates, GDP, inflation (<3mo)
 
-**Priority**: Critical (Funding/VC, Market/Competition, Business/GTM: ≥50% of Qs); Important (Regulatory, Partnerships); Optional (Talent, Macro: only if ≥10% impact).
+**Priority**: Critical (Funding/VC, Market/Competition, Business/GTM: ≥50% of Qs); Important (Regulatory, Partnerships, Macro: if ≥10% impact on fundraising/runway).
 
 **Include**: Quantified impacts on funding, market entry, competition, pricing/GTM, regulatory changes, partnerships.
 
@@ -44,7 +43,7 @@
 
 ## Requirements
 
-- **Q&A**: 4–6 total; 120–200 words each; ≥1 citation per Q
+- **Q&A**: 4–6 total; 150–200 words each; ≥1 citation per Q
 - **Phases**: 3–4 of: Market Research & Validation | Fundraising | Product–Market Fit | GTM & Early Growth
 - **Categories**: ≥50% Critical (Funding, Market, Business/GTM); remainder Important/Optional
 - **Stakeholders**: All 5 roles across Q-set; ≥2 roles per Q
@@ -67,15 +66,15 @@
 - **Funding**: `"[sector] seed funding"`, `"[sector] series A"`, `"[sector] raised $"`
 - **Market/Competition**: `"[sector] competitor"`, `"[sector] acquisition"`, `"[sector] market entry"`
 - **Business/GTM**: `"[sector] pricing"`, `"[sector] PLG"`, `"[sector] GTM strategy"`
-- **Talent**: `"[sector] layoffs"`, `"[sector] hiring"`, `"[sector] team"`
+- **Partnerships**: `"[sector] partnership"`, `"[sector] integration"`, `"[sector] ecosystem"`
 - **Regulatory**: `"[sector] regulatory"`, `"[sector] compliance"`, `"[sector] policy"`
 - **Timeframe**: 1–3d; expand to 7–14d if needed; verify freshness.
 
 **Trusted Sources**:
 - **Funding**: Crunchbase, PitchBook, CB Insights, TechCrunch
 - **Market/Business**: Gartner, Forrester, a16z, First Round Review, Lenny's Newsletter, SaaStr
+- **Partnerships**: Official partner blogs, ecosystem platform announcements
 - **Regulatory/Macro**: Official sites, major newspapers, central banks
-- **Talent**: LinkedIn Economic Graph, Carta, Layoffs.fyi
 - **Avoid**: PR releases, rumors, unsourced content
 
 **Curate** (6–10 items for 4–6 Qs): Meets freshness threshold | ≥1 criticality criterion | ≥2 quantified data points | ≥2 roles | ≥50% from Critical categories
@@ -90,7 +89,7 @@
 - **M#**: Market report - topic | firm | date | key metrics | URL
 - **F#**: Funding - company | round | amount | valuation | date | URL
 - **R#**: Research - topic | firm | date | key findings | URL
-- **O#**: Org/talent - company | event type | date | impact | URL
+- **P#**: Partnership - companies | type | date | strategic impact | URL
 - **A#**: APA 7th citation | [tag: primary/secondary/data]
 
 **Citation Format**: Markdown links `[Ref: N1][n1]` in text; `[n1]: URL` at end.
@@ -107,7 +106,7 @@
 
 **Avoid**: Generic questions, hype, unattributed claims, stale news, speculation, redundancy. State each concept once; reference thereafter; use active voice.
 
-**Structure** (120–200 words): News (1-2 sentences) → Impact (≥2 phases, ≥3 quantified metrics, cited) → Stakeholders (≥2 roles, conflicting priorities explicit) → Decision (≥2 options with costs/risks/benefits, conditions for each, recommendation with reasoning, success targets) → Action (Immediate 0–2wk + Short 2wk–2mo, with tools and owners) → Assumptions & Risks (critical assumptions, ≥10% impact risks with probabilities, revisit trigger). See Output Format for details.
+**Structure** (150–200 words): News (1-2 sentences) → Impact (≥2 phases, ≥3 quantified metrics, cited) → Stakeholders (≥2 roles, conflicting priorities explicit) → Decision (≥2 options with costs/risks/benefits, conditions for each, recommendation with reasoning, success targets) → Action (Immediate 0–2wk + Short 2wk–2mo, with tools and owners) → Assumptions & Risks (critical assumptions, ≥10% impact risks with probabilities, revisit trigger). See Output Format for details.
 
 ### Step 4: Visuals
 
@@ -148,7 +147,7 @@
 | **Diverse** | ≥3 types | [Count by type] | ☐ |
 | **Glossary** | 100% | [Terms] | ☐ |
 | **Visuals** | ≥2 diagrams + ≥1 table | [Counts, refs] | ☐ |
-| **Word Count** | 120–200/Q | [Per Q] | ☐ |
+| **Word Count** | 150–200/Q | [Per Q] | ☐ |
 | **Metadata** | Gen + exp dates | [Dates] | ☐ |
 
 ## Question Quality Examples
@@ -179,7 +178,7 @@
 
 ## 2. Questions by Phase
 ### Q#: [Specific News Question with Date]
-**Phase**: [Phase] | **Roles**: [Role 1, Role 2] | **Criticality**: [Criterion #] | **Word Count**: 120–200
+**Phase**: [Phase] | **Roles**: [Role 1, Role 2] | **Criticality**: [Criterion #] | **Word Count**: 150–200
 
 **News** (1-2 sentences): What, when (YYYY-MM-DD), category [Ref: N#][n#]
 
@@ -202,7 +201,7 @@
 [n#]: URL "Source (Date)"
 ---
 
-## 3. References (≥3 types: G/N/M/F/R/O/A)
+## 3. References (≥3 types: G/N/M/F/R/P/A)
 [See Step 2 for format]
 
 ## 4. Visuals (≥2 diagrams + ≥1 table)

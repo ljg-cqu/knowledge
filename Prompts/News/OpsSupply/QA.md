@@ -15,9 +15,9 @@
 
 **Problem**: Operations and supply chain leaders lack timely, actionable intelligence from fragmented news sources, causing delayed responses to disruptions, supplier risks, and cost pressures.
 
-**Scope**: Generate 4-6 decision-critical Q&As from recent operations/supply chain news (manufacturing, logistics, procurement, inventory, facilities, safety, resilience) for COO, VP Operations, and supply chain leadership decision-making.
+**Scope**: Generate 4-6 decision-critical Q&As from recent operations/supply chain news (manufacturing, logistics, procurement, inventory, facilities, quality management, safety, compliance, resilience) for COO, VP Operations, and supply chain leadership decision-making.
 
-**MECE Position**: Post-PMF operations & supply chain decisions. **Owns**: Physical operations, manufacturing, logistics, procurement, supplier management, facilities, quality, safety, inventory, resilience. **Excludes**: Product R&D (StratIntel), technical infrastructure/IT (TechOps), GTM execution (CommOps), corporate M&A (FinEcon), talent strategy (PeopleWF, except frontline workforce safety/productivity).
+**MECE Position**: Post-PMF operations & supply chain decisions. **Owns**: Physical operations, manufacturing, logistics, procurement, supplier management, facilities, quality management (QA/QC, standards, certifications), safety, routine operational compliance (environmental, safety, trade, manufacturing regulations), inventory, resilience. **Excludes**: Product R&D (StratIntel), technical infrastructure/IT (TechOps), GTM execution (CommOps), corporate M&A (FinEcon), major litigation/IP disputes (StratIntel), talent strategy (PeopleWF, except frontline workforce safety/productivity).
 
 **Target**: Monthly cycles | 4-6h/cycle | **Expires**: 4wk post-gen | **Freshness**: ≥60% <2mo (supplier/logistics), ≥40% <6mo (facilities/regulatory), 100% ≤12mo
 
@@ -56,7 +56,7 @@
 
 **Q&A Count**: 4-6 across 3-4 cycles, covering all categories (Manufacturing, Supply Chain, Procurement, Facilities, Quality, Resilience)
 
-**Answer Structure** (150-250w total):
+**Answer Structure** (150-200w total):
 1. **News** (~30w): What, when, why, category + citation
 2. **Impact** (~60w): ≥2 cycles, ≥2 roles, quantified metrics (cost, lead time, capacity, quality)
 3. **Stakeholders** (~40w): ≥2 roles with concerns/actions
@@ -118,7 +118,7 @@ Pattern: "[News] implications for [Cycle]+[Roles]?"
 
 **Avoid**: Generic claims (quantify) | Hype (show limitations) | Unattributed statements (cite) | Stale news | Speculation (flag uncertainty)
 
-**Self-Check**: Criticality ✓ | ≥2 cycles/roles | ≥2 options | 150-250w | Quantified | Cited | Actionable | Balanced
+**Self-Check**: Criticality ✓ | ≥2 cycles/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced
 
 ### Step 4: Add Visuals
 
@@ -141,7 +141,7 @@ Example risk matrix: `graph TD; A[High Impact] -->|High Prob| B[Critical]; A -->
 | **Q&A** | 4-6 Q, 3-4 cycles, all categories | | PASS/FAIL |
 | **Roles** | ≥4 roles | | PASS/FAIL |
 | **Quality** | 100% meet all gates | | PASS/FAIL |
-| **Words** | 100% within 150-250w | | PASS/FAIL |
+| **Words** | 100% within 150-200w | | PASS/FAIL |
 | **Visuals** | ≥2 diagrams, ≥1 table | | PASS/FAIL |
 | **Meta** | Start, End, Expires (+4wk) | | INFO |
 | **OVERALL** | All PASS | | PASS/FAIL |

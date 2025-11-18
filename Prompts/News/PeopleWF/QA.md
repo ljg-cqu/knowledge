@@ -1,6 +1,6 @@
 # People & Workforce Intelligence News Q&A Generator
 
-Generate **5-8 decision-critical Q&As** from recent workforce news for HR/People decisions.
+Generate **5-8 decision-critical Q&As** (150-200w each) from recent workforce news for HR/People decisions.
 
 **Decision-Critical** (meet ≥1): Blocks decisions | Creates risk | Affects ≥2 stakeholder roles | Requires action within 1-6mo | Has quantified impact
 
@@ -54,7 +54,7 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for HR/People
 
 ## Requirements
 
-**Output**: 5-8 Q&As, 150-250w each, news-driven with citations.
+**Output**: 5-8 Q&As, 150-200w each, news-driven with citations.
 
 **Coverage** (see Context for details):
 - 3-4 lifecycle stages
@@ -94,7 +94,7 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for HR/People
 
 ### Step 3: Generate Q&A [CRITICAL]
 
-Each Q&A (150-250 words):
+Each Q&A (150-200 words):
 1. **News** (~30w): What/when/why/category + source/date
 2. **Impact** (~60w): Lifecycle stages + quantified metrics (baseline → target); flag uncertainties
 3. **Stakeholders** (~40w): ≥2 roles + concerns/actions + perspective differences
@@ -114,7 +114,7 @@ Each Q&A (150-250 words):
 - Cross-check contradictions
 
 **Pre-Submission**:
-- 5-8 Q&As, 150-250w each
+- 5-8 Q&As, 150-200w each
 - ≥3 categories, ≥4 stakeholders
 - All citations: ≥1 source + date + URL
 - All decision-critical: meet ≥1 criterion
@@ -128,7 +128,7 @@ Each Q&A (150-250 words):
 
 | Check | Target | Status |
 |-------|--------|--------|
-| Q&A Count | 5-8 (~150-250w each) | |
+| Q&A Count | 5-8 (~150-200w each) | |
 | Categories | ≥3 | |
 | Stakeholders | ≥4 | |
 | Citations | All ≥1 (date/URL) | |

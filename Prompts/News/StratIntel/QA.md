@@ -6,7 +6,7 @@
 
 **Cadence**: Monthly | 4-6h | **Validity**: 4 weeks
 
-**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates, corporate governance, major litigation/IP disputes. **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors, routine legal matters.
+**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates, corporate governance, major litigation/IP disputes, strategic partnerships/ecosystem developments (post-PMF). **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors, routine legal matters, formation-stage partnerships (see Startup).
 
 **Freshness**: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo (from generation date)
 
@@ -25,7 +25,7 @@
 
 **Outputs**:
 - Executive summary (horizon coverage: Short/Medium/Long/Transformational)
-- 4-6 Q&As (150-250w each, ≥1 citation, ≥1 diagram, ≥1 table total)
+- 4-6 Q&As (150-200w each, ≥1 citation, ≥1 diagram, ≥1 table total)
 - References: G≥3, N≥3, A≥2, P≥1, I≥2, R≥5 (APA)
 - Validation report (all quality gates passed)
 
@@ -42,7 +42,7 @@
 2. **Impact**: 100% quantified (CAGR/TAM/$), ≥2 horizons/Q, ≥2 roles/Q
 3. **Decision**: 100% priority + recommendation + rationale + success metrics; ≥50% compare ≥2 alternatives
 4. **Action**: 100% concrete steps + owners; ≥50% include risks/when NOT to act
-5. **Format**: 100% within 150-250w | ≥1 diagram + ≥1 table total
+5. **Format**: 100% within 150-200w | ≥1 diagram + ≥1 table total
 
 **References**: G≥3 | N≥3 | A≥2 | P≥1 | I≥2 | R≥5 (APA)
 
@@ -71,7 +71,7 @@
 
 ### Step 3: Generate Q&A
 
-**Pattern**: "[News trigger] → [Strategic decision]?" | 150-250w total
+**Pattern**: "[News trigger] → [Strategic decision]?" | 150-200w total
 
 1. **News** (~30w): What, when (MM/DD/YY), why significant [Ref: N#][n#]
 2. **Impact** (~60w): ≥2 horizons + quantified (CAGR/TAM/NPV/$)
@@ -84,7 +84,7 @@
 
 **Create**: ≥1 Mermaid diagram + ≥1 Markdown table
 
-**Validate** (IV checklist): All 5 Quality Gates | Coverage (3-4 horizons, 4 categories, ≥4 roles) | Metrics quantified | 150-250w | Freshness | Valid URLs
+**Validate** (IV checklist): All 5 Quality Gates | Coverage (3-4 horizons, 5 categories, ≥4 roles) | Metrics quantified | 150-200w | Freshness | Valid URLs
 
 **Submit only if ALL gates pass.**
 
@@ -96,7 +96,7 @@
 | 2 | **Counts** | G≥3, N≥3, A≥2, P≥1, I≥2, R≥5, Q=4-6 | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ |
 | 3 | **Coverage** | 3-4 horizons, 5 categories, ≥4 roles | H:__ C:__ R:__ |
 | 4 | **Quality** | 100% critical+quantified+citations+priority+actions; ≥50% alternatives+limitations | __% |
-| 5 | **Format** | 100% within 150-250w | __%; D:__ T:__ |
+| 5 | **Format** | 100% within 150-200w | __%; D:__ T:__ |
 | 6 | **Meta** | Generated: __ | Expires: [+4wk] |
 | 7 | **Verification** | URLs valid; calculations verified; no contradictions | Pass/Fail |
 

@@ -49,10 +49,10 @@
 
 **Q&A Count**: 4-6 across 3-4 stages, covering all categories (Sales, Marketing, CS, RevOps)
 
-**Answer Structure** (120-200w total):
-1. **News** (~25w): What, when, why, category + citation
-2. **Impact** (~50w): ≥2 stages, ≥2 roles, quantified metrics
-3. **Stakeholders** (~35w): ≥2 roles with concerns/actions
+**Answer Structure** (150-200w total):
+1. **News** (~30w): What, when, why, category + citation
+2. **Impact** (~60w): ≥2 stages, ≥2 roles, quantified metrics
+3. **Stakeholders** (~40w): ≥2 roles with concerns/actions
 4. **Decision** (~50w): ≥2 options with cost/benefit, rationale, trade-offs
 5. **Action** (~20w): Immediate (0-2wk) + short (2wk-2mo), owner + metrics
 
@@ -106,7 +106,7 @@ Pattern: "[News] implications for [Stage]+[Roles]?"
 
 **Avoid**: Generic claims (quantify) | Hype (show limitations) | Unattributed statements (cite) | Stale news | Speculation (flag uncertainty)
 
-**Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 120-200w | Quantified | Cited | Actionable | Balanced
+**Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced
 
 ### Step 4: Add Visuals
 
@@ -129,7 +129,7 @@ Example funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Clo
 | **Q&A** | 4-6 Q, 3-4 stages, all categories | | PASS/FAIL |
 | **Roles** | ≥4 roles | | PASS/FAIL |
 | **Quality** | 100% meet all gates | | PASS/FAIL |
-| **Words** | 100% within 120-200w | | PASS/FAIL |
+| **Words** | 100% within 150-200w | | PASS/FAIL |
 | **Visuals** | ≥2 diagrams, ≥1 table | | PASS/FAIL |
 | **Meta** | Start, End, Expires (+2wk) | | INFO |
 | **OVERALL** | All PASS | | PASS/FAIL |
