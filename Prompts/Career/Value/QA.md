@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Value Assessment Q&A Generator
 
 Generate **4–8 decision-critical Q&As** for informed value decisions. Minimal viable scope: includes only questions that block decisions or create material risk.

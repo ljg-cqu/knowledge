@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Protocol Standards Interview Q&A Generator
 
 **Mission**: Generate 10 decision-critical Q&As on protocols for senior interviews, focusing on scenarios that block decisions, create risks, or require cross-functional coordination.

@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Constraint-Aware Architecture Interview Q&A Generator
 
 Generate 25-30 Q&As for senior/architect roles with constraint analysis across 8 categories, 10 stakeholder roles, 8 SDLC phases.

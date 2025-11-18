@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Software Safety & Security Q&A Generator
 
 **Purpose**: Generate decision-critical security Q&As to reduce hallucinations (↓30-40%) and improve decision quality (↑60-80%) for software and infrastructure security, particularly critical infrastructure.

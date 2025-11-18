@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Ecosystem Understanding Q&A Generator
 
 Generate 30–40 questions enabling newcomers to gain holistic ecosystem understanding through technical/business/regulatory viewpoints, lifecycle phases, and stakeholder perspectives.

@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Leadership Decision-Critical Q&A Generator
 
 **Context**:

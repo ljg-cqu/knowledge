@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Statistics Q&A Guide
 
 Generate scenario-based questions testing statistical reasoning in decision-critical contexts. Focus on methodological choices impacting conclusions, risks, or stakeholders.

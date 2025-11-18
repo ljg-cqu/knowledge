@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Business-Architecture Translation: Minimal Viable Assessment
 
 ## Objective

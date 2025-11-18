@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Cross-Functional Collaboration Interview Q&A Generator
 
 Generate 8-15 decision-critical Q&As on cross-functional collaboration for senior interviews. Each must impact decisions, risk, stakeholders, or require near-term action.

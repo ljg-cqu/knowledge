@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Case Study Deep Analysis Generator
 
 Generate 20–30 comprehensive case study analyses covering both successful and failure cases across full software lifecycle (8 phases), enabling deep learning through technical/system, business/market, regulatory/legal, operational, data, and security viewpoints.

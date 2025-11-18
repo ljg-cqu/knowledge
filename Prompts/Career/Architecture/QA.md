@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Software Architecture Interview Q&A Generator
 
 **Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality due to hallucinations (↓30-40%).

@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Software Roadmap & Evolution Q&A Generator
 
 Generate 3 decision-critical Q&As for informed roadmap decisions.

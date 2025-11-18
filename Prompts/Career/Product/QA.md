@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # PM Interview Q&A Generator
 
 **Purpose**: Generate scenario-based questions for senior PM interviews, focusing on judgment in decision-critical scenarios (>$1M impact, strategic pivots, >5% churn). Emphasize stakeholder navigation, trade-offs, strategic ambiguity.

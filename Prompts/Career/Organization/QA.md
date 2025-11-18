@@ -1,9 +1,3 @@
----
-last_updated: 2025-11-18
-status: Reviewed
-owner: ljg-cqu
----
-
 # Organization & Team Building Q&A Generator
 
 Generate 4-8 decision-critical Q&As for organizational scenarios blocking decisions or creating risk.
