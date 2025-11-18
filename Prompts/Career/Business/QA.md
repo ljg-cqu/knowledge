@@ -15,6 +15,8 @@ Generate 4-8 decision-critical interview questions evaluating senior technical l
 - Depth: Senior engineer to architect level (5-15 years experience)
 - Time: 5-10 minutes per question discussion
 
+**Difficulty**: 20% F / 40% I / 40% A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision)
+
 **Decision-Criticality** (every Q&A must satisfy ≥1):
 - **Blocks Decision**: Revenue model choice, market entry, migration strategy
 - **Creates Risk**: Material threat (compliance gaps, SLA failure, high churn, tech debt)

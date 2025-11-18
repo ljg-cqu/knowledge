@@ -28,7 +28,7 @@ graph LR
     C --> D[Operations]
 ```
 
-Generate 3-5 decision-critical Q&As.
+Generate 3-5 decision-critical Q&As with 30% F / 40% I / 30% A difficulty distribution.
 
 ## Criteria
 **Freshness** (news must meet):

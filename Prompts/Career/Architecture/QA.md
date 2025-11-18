@@ -33,7 +33,7 @@ owner: ljg-cqu
 
 ### Specifications
 - **Count**: 5 (1 per dimension)
-- **Difficulty**: 50% F (Foundational) / 50% A (Advanced) — **F**=execution-level, **I**=strategy/trade-offs, **A**=portfolio/vision
+- **Difficulty**: 20% F (Foundational) / 40% I (Intermediate) / 40% A (Advanced) — **F**=execution-level, **I**=strategy/trade-offs, **A**=portfolio/vision
 - **Answer Length**: 150-300 words (code excluded)
 - **Components**: Pattern, rationale, code, trade-offs, metrics
 - **Citations**: ≥1 each; ≥2 for Advanced
@@ -66,7 +66,7 @@ owner: ljg-cqu
 
 ## Process
 
-1. Select 5 dimensions, 50/50 difficulty mix
+1. Select 5 dimensions, 20/40/40 difficulty mix
 2. Build references meeting thresholds
 3. Write Q&As with required components
 4. Create artifacts per dimension

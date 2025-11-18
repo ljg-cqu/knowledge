@@ -36,7 +36,7 @@ owner: ljg-cqu
 **Output Specifications**
 - **Format**: Include diagrams, configs, citations.
 - **Quantity**: 3-7 Q&A pairs.
-- **Difficulty**: Mix of F/I/A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision).
+- **Difficulty**: 20% F / 40% I / 40% A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision).
 - **Coverage**: At least 3 decision-critical dimensions.
 - **Traceability**: Scenario → Risk → Control → Action → Metric.
 - **Visuals & Practicality**: ≥1 diagram + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.

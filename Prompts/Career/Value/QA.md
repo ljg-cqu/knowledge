@@ -55,7 +55,7 @@ Generate **4–8 decision-critical Q&As** for informed value decisions with limi
 
 | Category | Requirement |
 |----------|-------------|
-| **Q&A** | **4–8** \| Balanced difficulty \| Each: ≥2 value types+stakeholders \| ~150 words/answer |
+| **Q&A** | **4–8** \| 20% F / 40% I / 40% A \| Each: ≥2 value types+stakeholders \| ~150 words/answer |
 | **Lifecycle Phases** | 3–4 decision-critical only (Design, Development, Deployment, Operations) |
 | **Citations** | ≥50% have ≥1; ≥20% have ≥2 \| Diverse sources (EN majority, some ZH/other) |
 | **Value Types** | Each Q&A: ≥2 of 6 |
@@ -155,7 +155,7 @@ See checklist below. Key:
 
 | # | Check              | Measurement                           | Criteria                            | Result | Status    |
 |---|--------------------|---------------------------------------|-------------------------------------|--------|-----------|
-| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥4, T≥2, L≥3, A≥4, Q:4-8, balanced | | PASS/FAIL |
+| 1 | Floors             | G:__ T:__ L:__ A:__ Q:__ (__F/__I/__A)| G≥4, T≥2, L≥3, A≥4, Q:4-8, 20/40/40 | | PASS/FAIL |
 | 2 | Decision Criticality| __/__ satisfy ≥1 criterion            | 100% [Blocks/Risk/Roles/Action/Quantified] | | PASS/FAIL |
 | 3 | Citations          | __%≥1, __%≥2                          | ≥50%≥1, ≥20%≥2                      | | PASS/FAIL |
 | 4 | Diversity          | Types:__, Recency:__%                 | ≥3 types, ≥50% last 3yrs            | | PASS/FAIL |

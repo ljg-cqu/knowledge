@@ -30,7 +30,7 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 
 ## Structure
 
-**Q&A Pairs**: 3–5, balanced across difficulty and topics (Inference, Experimental Design, Modeling, Interpretation).
+**Q&A Pairs**: 3–5, 20% F / 40% I / 40% A across difficulty and topics (Inference, Experimental Design, Modeling, Interpretation).
 
 **Topics Coverage**: Inference, experimental design, modeling, interpretation.
 
@@ -49,7 +49,7 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 ## Output Format
 
 ### Overview
-- Difficulty mix: Balanced F/I/A
+- Difficulty mix: 20% F / 40% I / 40% A
 - Topics: 4 areas covered
 
 ### Q&A Format

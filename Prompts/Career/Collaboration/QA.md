@@ -21,7 +21,7 @@ Generate 8-15 decision-critical Q&As on cross-functional collaboration for senio
 | Aspect | Requirement |
 |--------|-------------|
 | **Count** | 8-15 (balanced across dimensions) |
-| **Difficulty** | Mix of F/I/A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision) |
+| **Difficulty** | 30% F / 40% I / 30% A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision) |
 | **Answer Length** | 100-250 words: Context → Strategy → Framework → Metrics → Trade-offs |
 | **Citations** | ≥1 per Q&A |
 | **Artifacts** | Diagram, framework, table, metric per dimension |

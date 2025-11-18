@@ -41,7 +41,7 @@ owner: ljg-cqu
 - High: Metrics (quantitative with formulas), Visuals (diagram + table + metrics per cluster), Citations (≥1 per Q&A, recent sources).
 - Medium: Insights (trade-offs and barriers covered), Balance (assumptions, alternatives, mitigations).
 
-## Coverage (5 Clusters × 2 Q&As Each)
+## Coverage (5 Clusters × 2 Q&As Each, 25% F / 40% I / 35% A)
 
 | Cluster | Protocols | Stakeholders | Phases | Criticality | Diagram | Key Metrics |
 |---------|-----------|--------------|--------|-------------|---------|-------------|
