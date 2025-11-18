@@ -1,19 +1,18 @@
-
-1. Analyze the given job description for the Rust 开发高级工程师 role, focusing on the required skills, experience, and responsibilities.
-2. Identify the key business models and architectural decisions relevant to the job description, such as Ethereum and Solana blockchain development, Web3 infrastructure, and financial products like DEX and CEX.
-3. Gather information on common business models in the blockchain and Web3 industry, including revenue models, market entry strategies, and compliance requirements.
-4. Research and document the architectural patterns and best practices for translating business models into architectural decisions in the context of blockchain and Web3 technologies.
-5. Identify the key stakeholders involved in the business-to-architecture translation process, such as architects, project managers, finance teams, leadership, and compliance officers.
-6. Develop a set of scenario-based interview questions that evaluate the candidate's ability to translate business models into architectural decisions, ensuring the questions cover various dimensions like strategic modeling, value and risk assessment, organizational structure, and evolution.
-7. Ensure the interview questions are decision-critical, covering aspects like revenue model pivots, market entry, compliance gaps, and migration strategies.
-8. Create a structured output format for the interview questions and answers, including difficulty levels, dimensions, decision criticality, key insights, artifacts, and traceability.
 # 高级 Rust 开发工程师（Web3/区块链基础设施方向）业务-架构转译能力评估面试问题设计
-
+ 
 > - 面试问题覆盖战略建模、价值与风险、组织协同、技术演进四大维度，难度分布均衡。  
 > - 每道问题基于真实业务场景，要求候选人将商业模式、市场需求、合规约束转化为技术架构决策。  
 > - 问题设计强调决策关键性，涉及阻塞决策、风险创造、多方利益相关者影响等。  
 > - 答案结构包括业务分析、架构转译、权衡分析、具体见解，并配以流程图和对比表等工件。  
 > - 参考最新行业资料（2022年后），涵盖公链、DEX/CEX、智能合约、合规等领域。
+
+## 背景与范围
+
+- **问题背景**：该岗位主要负责公链、跨链清算、DEX/CEX、钱包、清算与合规等基础设施的业务建模与架构落地，单个架构决策往往对应 10 万–500 万美元级别的年度营收机会或风险敞口。  
+- **适用场景**：高影响力招聘面试、关键岗位轮岗评估、架构评审前的候选人能力筛选；不适用于仅验证语法细节或单一模块实现能力的初级面试。  
+- **约束与假设**：假设候选人具备 3–5 年 Rust 经验、2 年以上 Web3 经验；团队规模 5–20 人，处于 A–C 轮成长阶段；业务对合规（OFAC、MiCA）、安全（跨链桥、MEV）、性能（p95 < 300ms）、可用性（99.9%+）敏感。  
+- **利益相关方**：招聘经理、业务负责人（BD/产品）、技术负责人（Tech Lead/Architect/Principal Engineer）、合规与风控负责人、潜在团队成员。  
+- **成功标准**：能够在 60–90 分钟内通过 4–6 道问题识别候选人在“业务理解→架构转译→权衡与风险→量化度量”上的成熟度，使面试官对是否录用形成 ≥80% 的信心，并为后续技术面/Leader 面提供可追溯的依据。
 
 ---
 
@@ -39,6 +38,7 @@
   - **优点**：提高用户参与度，增强项目的可持续性。
   - **风险**：智能合约的安全性和可靠性需要严格的测试和审计，以避免潜在的漏洞和攻击。
 - **具体见解**：代币经济学模型的有效实现需要深入理解用户行为和市场动态，以确保激励机制的合理性和可持续性。
+ - **成功标准**：例如，代币初始发行中团队与早期投资人持有比例控制在 ≤30%，社区与生态基金合计 ≥40%；主网上线后 6–12 个月内，链上活跃地址数环比提升 ≥20%，年化通胀率控制在 2–5%，TVL 达到既定目标（如 ≥5000 万美元），且代币相关核心合约至少通过 1 次第三方安全审计且未暴露高危漏洞。
 
 **参考来源**：
 - [Ref: V1] Vitalik Buterin (2021) *Rollup-Centric Ethereum* [EN]
@@ -66,6 +66,7 @@
   - **优点**：提高用户体验，优化做市商利润。
   - **风险**：需要处理高频交易带来的性能和安全性挑战，确保系统的稳定性和可靠性。
 - **具体见解**：动态手续费的实现需要深入理解市场动态和用户行为，以确保手续费调整的合理性和有效性。
+ - **成功标准**：例如，上线 3 个月内，相比固定手续费方案，平均滑点降低 ≥20%，做市商年化收益率提升 ≥10%，主动交易用户 30 日留存率提升 ≥15%，在峰值负载下 p95 交易确认延迟持续低于 1 秒，且手续费调整策略对极端行情（如波动率飙升）具备可回测的稳健性。
 
 **参考来源**：
 - [Ref: V1] Vitalik Buterin (2021) *Rollup-Centric Ethereum* [EN]
@@ -95,6 +96,7 @@
   - **优点**：提高系统的灵活性和可扩展性，支持多种执行环境。
   - **风险**：需要处理复杂的交易和数据带来的性能和安全性挑战，确保系统的稳定性和可靠性。
 - **具体见解**：模块化区块链的关键瓶颈在于跨模块的状态一致性，而非单一模块的性能。
+ - **成功标准**：例如，共识层在 12 个月生产运行期内保持 ≥99.95% 可用性，单执行环境 TPS 达到设计目标（如 ≥2000），跨执行环境事务成功率 ≥99%，在至少 1 次主网升级或新执行环境接入过程中无需停机即可完成切换，并通过性能基准测试证明在 2× 负载下仍能保持 p95 延迟 < 500ms。
 
 **参考来源**：
 - [Ref: V1] Vitalik Buterin (2021) *Rollup-Centric Ethereum* [EN]
@@ -122,6 +124,7 @@
   - **优点**：提高系统的灵活性和可扩展性，支持新的功能和改进。
   - **风险**：需要处理新的功能和数据带来的性能和安全性挑战，确保系统的稳定性和可靠性。
 - **具体见解**：应对以太坊升级的关键在于有效的兼容性处理和数据迁移，以确保系统的稳定性和可靠性。
+ - **成功标准**：例如，升级前后关键业务指标（TPS、p95 延迟、错误率）波动均小于 10%，兼容性适配层在 6–12 个月内完成 ≥80% 旧接口迁移并沉淀为清晰的 API 版本策略，技术债务在架构决策记录（ADR）中全部可追溯且每季度有关闭记录，且升级过程中零严重线上事故（P0）。
 
 **参考来源**：
 - [Ref: V1] Vitalik Buterin (2021) *Rollup-Centric Ethereum* [EN]
@@ -283,6 +286,7 @@
   - **优点**：提高用户体验和交易处理效率。
   - **风险**：需要处理高频交易和数据存储带来的性能和安全性挑战，确保系统的稳定性和可靠性。
 - **具体见解**：提高安全性和可用性的关键在于有效的交易处理和数据存储，以确保系统的稳定性和可靠性。
+ - **成功标准**：例如，平台在 12 个月内保持 ≥99.9% 可用性，无重大资产损失事件；安全扫描与第三方审计覆盖率 100%，关键路径智能合约零高危漏洞；用户 3 个月留存率 ≥60%，与可用性相关的客服工单占比较当前基线下降 ≥30%，且在峰值流量下 p95 下单–成交延迟持续低于 1 秒。
 
 **参考来源**：
 - [Ref: V1] Vitalik Buterin (2021) *Rollup-Centric Ethereum* [EN]

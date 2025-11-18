@@ -1,13 +1,5 @@
 
-1. Analyze the job description to identify key technical skills and requirements for the Rust development senior engineer role, focusing on Ethereum, Solana, Web3 infrastructure, and Rust programming.
-2. Research and define the core architectural concepts and patterns relevant to the job description, such as hexagonal architecture, CQRS, event sourcing, and their applications in blockchain and Web3 infrastructure.
-3. Gather information on the specific challenges and trade-offs involved in developing and debugging Ethereum and Solana source code, as well as building Web3 infrastructure core modules.
-4. Identify and quantify the key metrics and performance indicators for evaluating architectural decisions in the context of blockchain and Web3 infrastructure development.
-5. Compile a list of essential tools, libraries, and frameworks commonly used in Rust development for blockchain and Web3 infrastructure projects.
-6. Curate a selection of relevant literature, including books, articles, and documentation, to support the architectural concepts and practical implementations discussed in the Q&A.
-7. Develop a set of 5 Q&A pairs that cover the identified dimensions (Structural, Behavioral, Quality, Data, Integration) with a focus on translating architectural concepts into practical, idiomatic Rust code.
-8. Create detailed answers for each Q&A pair, including context, patterns, trade-offs, metrics, and code examples, ensuring the content meets the specified length and complexity requirements.
-# Rust高级工程师架构面试问答（Web3/区块链方向）
+ # Rust高级工程师架构面试问答（Web3/区块链方向）
 
 > - 5个架构维度（结构、行为、质量、数据、集成）覆盖，难度分布20%基础/40%中级/40%高级。  
 > - 所有问题直接关联公链、DEX/CEX、智能合约等岗位职责，Rust代码示例结合Web3工具链。  
