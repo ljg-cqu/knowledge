@@ -6,11 +6,11 @@
 
 **Cadence**: Monthly | 4-6h | **Validity**: 4 weeks
 
-**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates, corporate governance, major litigation/IP disputes, strategic partnerships/ecosystem developments (post-PMF). **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors, routine legal matters, formation-stage partnerships (see Startup).
+**Scope**: Research breakthroughs, policy/regulatory shifts (data privacy/sovereignty, trade policy, industry regulations, tax policy, antitrust), market trends, ESG mandates (climate disclosure/carbon pricing, environmental compliance, social equity, governance standards), corporate governance, legal affairs (major litigation, IP strategy, corporate legal trends), enterprise risk management (including geopolitical risk), brand/reputation intelligence, data strategy, strategic partnerships/ecosystem developments (industry consortiums, standards bodies, trade associations, cross-industry initiatives, joint ventures, platform plays—post-PMF only). **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors, routine legal matters, operational compliance (see OpsSupply), formation-stage partnerships (see Startup), crisis communications.
 
 **Freshness**: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo (from generation date)
 
-**Glossary**: CAGR (Compound Annual Growth Rate), TAM (Total Addressable Market), NPV (Net Present Value: `NPV = Σ(Cash Flow_t / (1+r)^t)`), TRL (Technology Readiness Level: 1-9 scale), ESG (Environmental/Social/Governance), CSO (Chief Strategy Officer), CRO (Chief Research Officer), CIO (Chief Information Officer), IP (Intellectual Property), Board Composition (Director mix: independent, executive, diversity), Fiduciary Duty (Legal obligation to act in shareholders' best interests), Material Litigation (Legal disputes with potential significant financial/reputational impact)
+**Glossary**: CAGR (Compound Annual Growth Rate), TAM (Total Addressable Market), NPV (Net Present Value: `NPV = Σ(Cash Flow_t / (1+r)^t)`), TRL (Technology Readiness Level: 1-9 scale), ESG (Environmental/Social/Governance), CSO (Chief Strategy Officer), CRO (Chief Research Officer), CIO (Chief Information Officer), IP (Intellectual Property), Board Composition (Director mix: independent, executive, diversity), Fiduciary Duty (Legal obligation to act in shareholders' best interests), Material Litigation (Legal disputes with potential significant financial/reputational impact), ERM (Enterprise Risk Management: Holistic approach to identifying, assessing, and mitigating organizational risks), Brand Equity (Value of brand reputation and customer perception), Data Governance (Policies and processes for data quality, security, and compliance)
 
 ## TOC
 [I. Inputs & Outputs](#i-inputs--outputs) | [II. Requirements](#ii-requirements) | [III. Execution](#iii-execution) | [IV. Validation](#iv-validation-checklist) | [V. Output Format](#v-output-format) | [VI. Example](#vi-example) | [VII. Use Cases](#vii-use-cases)
@@ -21,7 +21,7 @@
 - Domain, segment, period, generation date (YYYY-MM-DD)
 - Org profile: size, stage, regions, products, strategic bets, baseline metrics (R&D%, TAM, share%, growth%, ESG)
 - Strategy hypotheses, constraints (capital, risk, regulatory, capacity)
-- Stakeholders (≥4): CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Board
+- Stakeholders (≥4): CEO, CSO, CRO, CIO, CFO, VP Corp Dev, Chief Sustainability Officer, Board, Chief Legal Officer, Chief Risk Officer, Chief Data Officer, Chief Brand Officer
 
 **Outputs**:
 - Executive summary (horizon coverage: Short/Medium/Long/Transformational)
@@ -33,7 +33,7 @@
 
 **Coverage** (MECE):
 - **Horizons** (3-4): Short (6-18mo) | Medium (18-36mo) | Long (3-5yr) | Transformational (5-10yr, optional) | 1-2Q each
-- **Categories** (all 5): Research | Policy/Regulatory | Market/Industry | ESG/Sustainability | Governance/Legal | Each Q tagged ≥1
+- **Categories** (all 8): Research | Policy/Regulatory | Market/Industry | ESG/Sustainability | Governance/Legal | Risk Management | Brand/Reputation | Data Strategy | Each Q tagged ≥1
 - **Stakeholders**: ≥4 roles across all Q&As | ≥2 roles per Q
 - **Criticality** (100%): Each Q satisfies ≥1: Blocks investment/pivot | Material risk/opportunity | Multi-stakeholder tension | Action required | Quantifiable impact
 
@@ -52,19 +52,22 @@
 
 **Record generation date (YYYY-MM-DD)—calculate ages from this.**
 
-**Search** (8-10 candidates, query: `"[Domain] + [breakthrough|research|policy|M&A|market|governance|litigation]"`):
+**Search** (8-10 candidates, query: `"[Domain] + [breakthrough|research|policy|M&A|market|governance|litigation|risk|brand|data]"`):
 - **Research**: arXiv, Nature, Science, IEEE, ACM
 - **Policy/Regulatory**: Congress.gov, Federal Register, OECD, EU Commission
 - **Market/Industry**: McKinsey, Gartner, Forrester, IDC, CB Insights, Bloomberg
 - **ESG/Sustainability**: CDP, SASB, GRI, Corporate sustainability reports
-- **Governance/Legal**: SEC filings (10-K, DEF 14A), major legal databases, corporate governance news (WSJ, FT, Bloomberg Law)
+- **Governance/Legal**: SEC filings (10-K, DEF 14A), legal databases, corporate governance news (WSJ, FT, Bloomberg Law)
+- **Risk Management**: Risk.net, RIMS, insurance industry reports, rating agency reports (S&P, Moody's)
+- **Brand/Reputation**: Brand Finance, Interbrand, RepTrak, YouGov BrandIndex, major media sentiment
+- **Data Strategy**: MIT CDOIQ, Chief Data Officer Magazine, Gartner Data & Analytics, DAMA International
 
-**Curate** (≥8 candidates, all 5 categories): Freshness met | Primary sources | ≥1 criticality criterion | Concrete details (dates, numbers, impacts)
+**Curate** (≥8 candidates, balance across 8 categories): Freshness met | Primary sources | ≥1 criticality criterion | Concrete details (dates, numbers, impacts)
 
 ### Step 2: Build References
 
 - **G#**: Term (Acronym) | Definition | Context | Example
-- **N#**: Title (Source, MM/DD/YY) | Summary | Category (R/P/M/E/G: Research/Policy/Market/ESG/Governance) | Criticality | URL
+- **N#**: Title (Source, MM/DD/YY) | Summary | Category (R/P/M/E/G/K/B/D: Research/Policy/Market/ESG/Governance/Risk/Brand/Data) | Criticality | URL
 - **A/P/I/L#**: Title (Date) | Key Findings | URL (Academic/Policy/Industry/Legal)
 - **R#**: Full APA 7th with [Tag]
 - **In-text**: `[Ref: N1][n1]` with `[n1]: URL` at Q&A end
@@ -216,7 +219,10 @@ G: [≥3] | N: [≥3] | A: [≥2] | P: [≥1] | I: [≥2] | R: [≥5 APA]
 2. **Market Sizing**: TAM/CAGR forecasts, business case validation
 3. **Policy Foresight**: Regulation anticipation (costs, deadlines), supply chain risks
 4. **ESG Strategy**: Mandate tracking (carbon, reporting), opportunities
-5. **Governance & Legal**: Board composition trends, material litigation risk, IP strategy, fiduciary obligations
-6. **Competitive**: M&A monitoring, partnerships, benchmarking
+5. **Governance & Legal**: Board composition trends, material litigation risk, IP strategy, corporate legal trends, fiduciary obligations
+6. **Risk Management**: Enterprise risk assessment, business continuity, insurance strategy, emerging threats
+7. **Brand & Reputation**: Brand equity trends, reputation monitoring, crisis prevention, stakeholder perception
+8. **Data Strategy**: Data governance maturity, BI/analytics capabilities, data monetization, AI/ML strategic initiatives
+9. **Competitive**: M&A monitoring, partnerships, benchmarking
 
 **Cadence**: Monthly generation | Quarterly reviews | Annual planning

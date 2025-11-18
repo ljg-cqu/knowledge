@@ -31,7 +31,7 @@
 
 **Audience**: Architects, DevOps/SRE, Security Engineers, Developers, Engineering Managers
 
-**Include**: Security (CVEs), Infrastructure/Cloud, Releases, Standards/Regulations, Practices, Ecosystem/Integration
+**Include**: Security (CVEs, data privacy compliance—GDPR, CCPA, SOC2), Infrastructure/Cloud, Releases, Standards/Regulations, Practices, Ecosystem/Integration
 
 **Exclude**: Marketing, rumors, speculation, stale (>4mo security, >6mo practices)
 
