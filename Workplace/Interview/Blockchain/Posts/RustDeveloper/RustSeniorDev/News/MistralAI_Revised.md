@@ -328,7 +328,7 @@ flowchart LR
 flowchart TB
     A[公链共识选择] --> B{需求优先级}
     B -->|亚秒级最终性| SolanaRoute[PoH + Tower BFT]
-    B -->|稳健/可验证| EthereumRoute[PoS (Gasper)]
+    B -->|稳健/可验证| EthereumRoute["PoS (Gasper)"]
     SolanaRoute --> SolanaFocus[强调性能与硬件优化]
     EthereumRoute --> EthFocus[强调安全性与状态一致性]
 ```
