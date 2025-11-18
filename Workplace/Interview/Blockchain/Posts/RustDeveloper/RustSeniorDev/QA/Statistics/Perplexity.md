@@ -1,10 +1,14 @@
-## Statistics-Focused Q&A Guide for Rust Blockchain Developer Role### OverviewThis guide provides scenario-based statistical questions tailored to the technical demands of a senior Rust blockchain developer position. The questions integrate Web3 infrastructure challenges with rigorous statistical reasoning, emphasizing decision-critical contexts where methodological choices directly impact conclusions, risks, and stakeholder outcomes.
+ # Statistics-Focused Q&A Guide for Rust Blockchain Developer Role
 
-**Difficulty Distribution:** 20% Foundational (F) / 40% Intermediate (I) / 40% Advanced (A)
+ ## Overview
 
-**Topics Covered:** Statistical Inference, Experimental Design & A/B Testing, Performance Modeling & Benchmarking, Blockchain Data Analysis
+ This guide provides scenario-based statistical questions tailored to the technical demands of a senior Rust blockchain developer position. The questions integrate Web3 infrastructure challenges with rigorous statistical reasoning, emphasizing decision-critical contexts where methodological choices directly impact conclusions, risks, and stakeholder outcomes.
 
-***
+ **Difficulty Distribution:** 20% Foundational (F) / 40% Intermediate (I) / 40% Advanced (A)
+
+ **Topics Covered:** Statistical Inference, Experimental Design & A/B Testing, Performance Modeling & Benchmarking, Blockchain Data Analysis
+
+ ***
 
 ### Q1: Interpreting Performance Optimization Results**Difficulty:** F | **Topic:** Statistical Inference | **Criticality:** Blocks Decision
 

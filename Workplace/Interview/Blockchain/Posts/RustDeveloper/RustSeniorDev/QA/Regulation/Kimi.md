@@ -1,5 +1,7 @@
-## Contents
-- [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
+ # Regulation Q&A for Rust/Web3 Developer (Kimi)
+
+ ## Contents
+ - [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
 - [Q&As 1-8](#qas-1-8) - Scenario + Regulatory Mapping + Impact + Stakeholders + Decision + Trade-offs + Artifacts
 - [References](#references) - Glossary, Tools, Literature, Citations
 

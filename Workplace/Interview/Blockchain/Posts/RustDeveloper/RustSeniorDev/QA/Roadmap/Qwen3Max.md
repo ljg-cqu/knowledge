@@ -1,7 +1,9 @@
-## Contents
-[TOC: Phase Overview | Q&As by Phase | Cross-Cutting | References | Validation]
+ # Roadmap Q&A for Senior Rust Developer (Blockchain/Web3)
 
-## Phase Overview
+ ## Contents
+ [TOC: Phase Overview | Q&As by Phase | Cross-Cutting | References | Validation]
+
+ ## Phase Overview
 | Phase | Focus | Q&A Range | Count | Key Stakeholders | Decision Trigger |
 |-------|-------|-----------|-------|------------------|------------------|
 | Architecture & Design | Tech decisions, ADRs | Q1 | 1 | Architect, Dev Lead, SRE | Multi-chain support requirement |

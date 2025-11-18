@@ -1,4 +1,6 @@
-Of course. Here is collaboration-focused interview content tailored for the Senior Rust Developer role, emphasizing cross-functional collaboration in a blockchain infrastructure context.
+# Collaboration Q&A for Senior Rust Developer (Blockchain Infrastructure)
+
+This document provides collaboration-focused interview Q&A content for a Senior Rust Developer role, emphasizing cross-functional collaboration in a blockchain infrastructure context.
 
 ## Contents
 [TOC]

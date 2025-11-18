@@ -1,7 +1,9 @@
-# TOC
-1. Topic Overview | 2. Q&As by Topic | 3. References | 4. Validation Report
+ # Leadership Q&A for Senior Rust Developer (Blockchain/Web3)
 
-### Topic Overview
+ ## TOC
+ 1. Topic Overview | 2. Q&As by Topic | 3. References | 4. Validation Report
+
+ ### Topic Overview
 Total: 6 | Difficulty: 2F/3I/1A | Coverage: 3 areas
 
 | Topic | Q Range | Count | Mix | Artifacts |

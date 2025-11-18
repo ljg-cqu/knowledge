@@ -1,4 +1,6 @@
-I'll generate PM interview Q&A content focused on the Rust Senior Engineer position, creating scenario-based questions that test product judgment in the context of Web3 infrastructure development.
+# Product Interview Q&A for Web3 Infrastructure (Rust Senior Engineer)
+
+This document contains PM interview Q&A content focused on the Rust Senior Engineer position, with scenario-based questions that test product judgment in the context of Web3 infrastructure development.
 
 ## PM Interview Q&A for Web3 Infrastructure Product Manager
 

@@ -1,7 +1,9 @@
-## Contents
-[TOC: Topics | Q&As | Lifecycle-Stakeholder Matrix | References | Validation]
+ # Organization Q&A for Senior Rust Developer (Blockchain/Web3)
 
-## Dimension Areas (Decision-Critical Only)
+ ## Contents
+ [TOC: Topics | Q&As | Lifecycle-Stakeholder Matrix | References | Validation]
+
+ ## Dimension Areas (Decision-Critical Only)
 
 | Dimension | Range | Count | Difficulty | Decision Criticality |
 |-----------|-------|-------|------------|---------------------|
