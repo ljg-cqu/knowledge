@@ -10,14 +10,15 @@
 
 ## Lifecycle Phases Overview
 
-**Summary**: 5 total Q&As | 1F/2I/2A difficulty | 3 decision-critical phases | ≥2 value types per Q&A | 4 core stakeholders
+**Summary**: 5 total Q&As | 1F/2I/2A difficulty | 3 decision-critical phases | ≥2 value types per Q&A | ≥3 stakeholders per Q&A
+**Priority**: All 5 Q&As are **critical** decision scenarios; there are no optional items in this set.
 
 | # | Phase | Range | Count | Mix | Value Types | Stakeholders | Artifacts |
 |---|-------|-------|-------|-----|-------------|--------------|-----------|
-| 1 | Design | Q1-Q2 | 2 | 1F/1I | Tech/Org/Risk | Arch/Dev/PM | 1 diagram+table |
-| 2 | Development | Q3-Q4 | 2 | 1I/1A | Tech/Org/Bus | Dev/Arch/PM | 1 diagram+table |
-| 3 | Deployment | Q5 | 1 | 1A | Org/Risk/Bus | DevOps/SRE/PM | 1 diagram+table |
-| | **Total** | | **5** | **1F/2I/2A** | **≥2 per Q&A** | **4 core** | **≥1 per Q&A** |
+| 1 | Design | Q1-Q2 | 2 | 1F/1I | Tech/Org/Risk | Arch/Dev/PM | 1 table |
+| 2 | Development | Q3-Q4 | 2 | 1I/1A | Tech/Org/Bus | Dev/Arch/PM | 1 table |
+| 3 | Deployment | Q5 | 1 | 1A | Org/Risk/Bus | DevOps/SRE/PM | 1 table |
+| | **Total** | | **5** | **1F/2I/2A** | **≥2 per Q&A** | **≥3 roles/Q&A** | **≥1 table/Q&A** |
 
 **Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic | Risk=Risk
 

@@ -16,9 +16,9 @@ This document provides a set of ecosystem understanding Q&As tailored to the Web
 - **Scope**: Ecosystem structure, value creation/capture, and integration patterns across Ethereum/Solana DeFi and infrastructure.
 - **Stakeholders**: Developers, Architects, PMs, DevOps/SRE, Security, Business/Leadership.
 - **Constraints**: 200–400 words per answer; ≥2 viewpoints per question; quantified impacts where relevant.
+- **Data freshness**: Metrics and examples are approximate and were validated against public sources up to ~2024; update values if you reuse this in later years or for time-sensitive decisions.
 - **Legend**: `Complexity` — F = Foundational, I = Intermediate, A = Advanced. `Viewpoints` — Technical, Business, Regulatory, Operational, Security, Market.
-
----
+- **Priority usage**: In a 60–90 minute interview, treat Q1–10 as core coverage and Q11–15 as advanced/optional extensions; if time is limited, skip or shorten lower-priority items first.
 
 ## Topic 1: Ecosystem Structure (Q1–5)
 
@@ -61,6 +61,8 @@ This document provides a set of ecosystem understanding Q&As tailored to the Web
 **Trade-offs**: Removing full nodes reduces decentralization but increases network throughput (Solana's approach). Over-reliance on light clients creates censorship risks if full nodes collude.
 
 **Stakeholder Views**: Developers (full nodes for testing), DevOps (validator uptime SLA 99.9%), Security (light client eclipse attack vectors), Leadership (cost-benefit of running infrastructure vs. third-party RPC).
+
+**Evolution**: EIP-4844 (proto-danksharding) introduces blob storage, reducing L2 calldata costs 10-100x, potentially making L2s economically sustainable independent of L1 congestion [Ref: A1].
 
 ---
 
@@ -122,7 +124,7 @@ This document provides a set of ecosystem understanding Q&As tailored to the Web
 
 **Business**: Bridges generate revenue through bridge fees (0.05-0.3% per transfer) and MEV from cross-chain arbitrage. However, TVL concentration creates honeypot risk: Wormhole holds $200M+ in locked assets, making it a prime target [Ref: A6]. Liquidity fragmentation is another challenge—wrapped tokens (wETH) aren't fungible across bridges, creating 5+ versions of the same asset. The business model depends on asymmetric trust: users trust bridge validators more than the source chain's security.
 
-**Regulatory**: Bridges may be classified as money transmitters under FinCEN's 2019 guidance if they facilitate value transfer between users [Ref: A5]. The EU's MiCA regulation requires bridge operators to register as CASPs, implementing AML/KYC for transfers >€1000 [Ref: L6]. This conflicts with DeFi's permissionless nature, forcing geographic IP blocking or KYC-wrapped asset models.
+**Regulatory**: Bridges may be classified as money transmitters under FinCEN's 2019 guidance if they facilitate value transfer between users [Ref: A5]. The EU's MiCA regulation requires bridge operators to register as CASPs, implementing AML/KYC for transfers >€1000 [Ref: L6]. This creates jurisdictional complexity since bridges operate globally but anchor to permissionless L1.
 
 **Security**: Bridges are architecturally fragile because they hold custody of assets on the source chain while issuing IOUs on the destination. The $625M Ronin hack exploited validator key compromise; the $190M Nomad hack used a flawed upgrade mechanism [Ref: A6]. Security audits can't prevent systemic risk from validator centralization (many bridges have <10 validators controlling >$100M TVL).
 
@@ -252,7 +254,7 @@ This document provides a set of ecosystem understanding Q&As tailored to the Web
 
 **Regulatory**: The SEC's Wells notice to Kraken's staking service suggests centralized staking-as-a-service may be securities offering [Ref: A16]. LSTs exist in a gray area: they represent derivative claims on staked assets, potentially qualifying as securities under Howey Test if marketed as yield-bearing instruments. The EU's MiCA may require LST issuers to hold e-money licenses if stETH functions as payment token [Ref: L6]. This regulatory uncertainty creates jurisdictional fragmentation: Lido's DAO structure avoids direct regulation, but node operators may be subject to local licensing.
 
-**Stakeholder Perspectives**: Business Analysts (model depeg scenarios: stETH/ETH correlation breaks during volatility); Architects (design circuit breakers in lending protocols to prevent cascading liquidations) [Ref: A6]; Security (audit validator withdrawal credential management); Leadership (balance LST adoption with systemic risk to protocol); DevOps (monitor validator performance to ensure reward consistency) [Ref: A13].
+**Stakeholder Perspectives**: Business Analysts (model depeg scenarios: stETH/ETH correlation breaks during volatility); Architects (design circuit breakers in lending protocols to prevent cascading liquidations) [Ref: A6]; Security (assess trust assumptions in LST smart contracts); Leadership (balance LST adoption with systemic risk to protocol); DevOps (monitor validator performance to ensure reward consistency) [Ref: A13].
 
 **Evolution**: Distributed validator technology (Obol, SSV) aims to decentralize Lido's validator set, reducing single-operator risk. EigenLayer's restaking extends this further by using stETH to secure additional protocols, creating "yield on yield" but compounding systemic risk [Ref: A2].
 
@@ -408,11 +410,11 @@ This document provides a set of ecosystem understanding Q&As tailored to the Web
 
 Representative canonical sources used when drafting and validating this content (non-exhaustive):
 
-- **Ethereum.org Documentation** – Consensus (PoS), execution layer, EIP-1559, EIP-4844, rollups and L2 scaling.
-- **Solana Documentation** – Proof of History, Tower BFT, validator hardware guidance, runtime and networking details.
-- **Rollup & L2 Protocol Docs/Blogs** – Arbitrum, Optimism, zkSync, StarkNet documentation and research posts describing rollup security, economics, and EIP-4844 impact.
-- **MEV / Flashbots Resources** – Flashbots MEV-Boost docs, research posts on the MEV supply chain, SUAVE design, and validator/builder/relayer roles.
-- **Bridge Incident Postmortems** – Official and third-party analyses of Ronin, Wormhole, Nomad and similar bridge exploits from project teams, Chainalysis, Rekt, and security researchers.
-- **DeFi Protocol Documentation** – Uniswap v2/v3, Curve, Balancer, GMX, dYdX, Aave, Lido, Rocket Pool, Olympus DAO, Tokemak, and major DEX aggregator docs (1inch, 0x).
-- **Analytics & Market Data** – Dune Analytics, DeFiLlama, Nansen and comparable dashboards for TVL, volume, LST supply, and protocol revenue metrics.
-
+- **Ethereum.org documentation** – [Ethereum developer docs](https://ethereum.org/en/developers/docs/) – consensus (PoS), execution layer, EIP-1559, EIP-4844, rollups and L2 scaling.
+- **Solana docs** – [Solana documentation](https://spl_governance.crsp.gov/) – Proof of History, Tower BFT, validator hardware guidance, runtime and networking details.
+- **Rollup & L2 protocol docs/blogs** – Official documentation and research from [Arbitrum](https://docs.arbitrum.io/), [Optimism](https://community.optimism.io/docs/), [zkSync](https://docs.zksync.io/), and [StarkNet](https://docs.starknet.io/) on rollup security, economics, and EIP-4844 impact.
+- **MEV / Flashbots resources** – [Flashbots docs](https://docs.flashbots.net/) and research posts on the MEV supply chain, SUAVE design, and validator/builder/relayer roles.
+- **Bridge incident postmortems** – Official and third-party analyses of Ronin, Wormhole, Nomad and similar bridge exploits from project teams, [Chainalysis](https://blog.chainalysis.com/) and independent security researchers.
+- **DeFi protocol documentation** – Docs for [Uniswap v2/v3](https://docs.uniswap.org/), [Curve](https://curve.readthedocs.io/), [Balancer](https://docs.balancer.fi/), [GMX](https://gmxio.gitbook.io/), [dYdX](https://docs.dydx.exchange/), [Aave](https://docs.aave.com/), [Lido](https://docs.lido.fi/), [Rocket Pool](https://docs.rocketpool.net/), [Olympus DAO](https://docs.olympusdao.finance/), [Tokemak](https://docs.tokemak.xyz/), and major DEX aggregators such as [1inch](https://docs.1inch.io/) and [0x](https://docs.0x.org/).
+- **Analytics & market data** – [Dune Analytics](https://dune.com/), [DeFiLlama](https://defillama.com/), [Nansen](https://www.nansen.ai/) and comparable dashboards for TVL, volume, LST supply, and protocol revenue metrics.
+- **Reference tags** – Inline markers like `[Ref: G1]` are mapped to the shared reference index used across your interview templates; keep them if you want cross-file traceability, or remove them for standalone use.

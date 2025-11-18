@@ -8,6 +8,14 @@ This guide provides scenario-based statistical questions tailored to the technic
 
 **Topics Covered:** Statistical Inference, Experimental Design & A/B Testing, Performance Modeling & Benchmarking, Blockchain Data Analysis
 
+**Context:**
+- **Problem:** Assess and strengthen the statistical reasoning of senior Rust blockchain developer candidates in decision-critical Web3 scenarios.
+- **Scope:** Scenario-based Q&A focused on inference, experimental design, performance benchmarking, and blockchain data analysis, with Rust and DEX/infra contexts.
+- **Assumptions:** Reader is comfortable with Rust, core blockchain concepts (DEXs, ZKPs, indexers), and basic probability/statistics notation.
+- **Scale & Timeline:** Designed for 60–90 minute interviews or several focused self-study sessions (3–5 hours total) using this guide and referenced materials.
+- **Stakeholders:** Candidates, interviewers (Rust/blockchain leads), and hiring managers who rely on statistics-heavy technical decisions.
+- **Resources:** Glossary, tools, textbooks, and external citations listed in this document; online calculators and statistical software referenced in each answer.
+
 ### Contents
 
 - [Q1: Interpreting Performance Optimization Results](#q1-interpreting-performance-optimization-results)
@@ -457,6 +465,12 @@ ZKP generation times span 30-180s (6× range)—multiplicative scale appropriate
 - **Foundational (F):** Execute standard tests, interpret p-values and effect sizes, identify basic assumption violations
 - **Intermediate (I):** Design experiments accounting for confounds, choose appropriate corrections, communicate trade-offs to non-technical stakeholders
 - **Advanced (A):** Integrate multiple methodologies (Bayesian + frequentist), handle heterogeneity and missing data, optimize experimental portfolios under resource constraints
+
+**Success Criteria (for using this guide):**
+
+- **Self-study:** All items in the Self-Assessment Checklist are checked, and the reader can reconstruct the reasoning for each core answer (Q1–Q5) without notes in 5–7 minutes per question.
+- **Interview performance:** Candidate demonstrates at least Intermediate level on ≥4 of 5 core questions (by the Interview Evaluation Guide) and can quantify trade-offs (effect sizes, power, error rates) with concrete numerical examples.
+- **Content freshness:** Links in the Citations section remain valid and at least 80% of methodological/statistics references are ≤5 years old; older references are kept only when they are canonical.
 
 This guide equips candidates with decision-critical statistical reasoning applicable to Web3 infrastructure development, emphasizing rigor, transparency, and practical impact.
 

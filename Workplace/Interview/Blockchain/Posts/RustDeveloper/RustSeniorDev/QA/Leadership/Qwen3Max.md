@@ -15,6 +15,9 @@
 **Assumptions**: Candidates have strong Rust and blockchain fundamentals; audience includes hiring managers, architects, and senior individual contributors.
 
 **Usage**: 45–60 minute leadership-focused interview block or self-study guide for senior Rust candidates in blockchain/Web3.
+**Constraints**: 45–60 minutes total within a broader interview loop; remote or on-site; no pre-work or take-home exercise assumed here.
+**Scale & Stakeholders**: Designed for teams of 5–15 Rust/Web3 engineers building mission-critical infrastructure or DeFi systems; primary stakeholders are hiring managers, architects, senior individual contributors, and HR/people partners.
+**Resources**: This Q&A set, the references in Section 3, interviewer scoring rubrics, and the candidate’s prior experience.
 
 **Difficulty Levels**: F = Foundational, I = Intermediate, A = Advanced.
 
@@ -23,7 +26,7 @@ Total: 6 | Difficulty: 2F/3I/1A | Coverage: 3 areas
 | Topic | Q Range | Count | Mix | Artifacts |
 |-------|---------|-------|-----|-----------|
 | Strategic Leadership | Q1–Q2 | 2 | 1F/1I/0A | 1 diagram |
-| People & Retention | Q3–Q4 | 2 | 0F/1I/1A | 0 diagrams |
+| People & Retention | Q3–Q4 | 2 | 0F/1I/1A | 1 table |
 | Change & Ambiguity | Q5–Q6 | 2 | 1F/1I/0A | 1 table |
 
 ## 2. Q&As by Topic
@@ -73,6 +76,14 @@ graph TD
 **Key Insight**: Retention of specialized blockchain talent requires beyond-compensation value propositions centered around technical challenge, impact, and growth opportunities.
 
 **Answer**: Apply Radical Candor [Ref: G1] combined with career pathing framework. First, conduct stay interviews: understand individual motivations beyond salary (e.g., learning Solana internals, leading open-source contributions). Second, create personalized retention packages: technical leadership opportunities, conference budgets, equity refreshers, and dedicated research time. Third, build psychological safety [Ref: G2] through transparent technical decision-making and recognition programs. Trade-offs: immediate cost savings versus long-term capability loss; individual customization versus team equity. Dimensions: financial compensation versus non-monetary value; short-term retention versus long-term engagement. Impact: 40% reduction in regrettable attrition, increased internal promotion rate. Success criteria: regrettable attrition <10% annually, internal promotion rate for senior Rust developers >20% over 12 months. [Ref: A1, A2]
+
+**Artifact**:
+| Retention Lever | Description | Cost Level | Expected Impact |
+|-----------------|-------------|------------|-----------------|
+| Compensation adjustment | Targeted salary or equity refresh for top 10–20% critical Rust talent | High | Immediate retention signal; small group, high leverage |
+| Growth & ownership | Lead critical Rust/Web3 initiatives, open-source contributions, or mentorship programs | Medium | Increases engagement and internal promotion rate |
+| Learning & exposure | Conference budgets, internal tech talks, rotations across infra/DeFi teams | Medium | Broadens skills and reduces single-point-of-failure risk |
+| Environment & recognition | Psychological safety, regular feedback, public recognition of impact | Low | Sustains long-term engagement and team health |
 
 **Q4: How would you transform the engineering culture when inheriting a Web3 development team with siloed knowledge, poor documentation practices, and resistance to code reviews, despite having world-class Rust developers?**
 

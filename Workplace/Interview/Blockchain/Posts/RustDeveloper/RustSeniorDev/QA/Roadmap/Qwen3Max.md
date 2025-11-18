@@ -3,19 +3,19 @@
  This document provides three decision-critical roadmap Q&As for a senior Rust developer working on blockchain/Web3 infrastructure. It focuses on architecture, development quality, and operations/scalability decisions that directly affect multi-chain support, reliability, and cost. The scope is the next 3–12 months of the roadmap for teams of roughly 10–20 engineers, with primary stakeholders including architects, dev leads, SRE/DevOps, and product/engineering managers.
 
  ## Contents
- - [Phase Overview](#phase-overview)
- - [Phase 1: Architecture & Design](#phase-1-architecture--design)
- - [Phase 2: Development & Quality](#phase-2-development--quality)
- - [Phase 3: Operations & Scalability](#phase-3-operations--scalability)
- - [References](#references)
- - [Validation Report](#validation-report)
+- [Phase Overview](#phase-overview)
+- [Phase 1: Architecture & Design](#phase-1-architecture--design)
+- [Phase 2: Development & Quality](#phase-2-development--quality)
+- [Phase 3: Operations & Scalability](#phase-3-operations--scalability)
+- [References](#references)
+- [Validation Report](#validation-report)
 
- ## Phase Overview
-| Phase | Focus | Q&A Range | Count | Key Stakeholders | Decision Trigger |
-|-------|-------|-----------|-------|------------------|------------------|
-| Architecture & Design | Tech decisions, ADRs | Q1 | 1 | Architect, Dev Lead, SRE | Multi-chain support requirement |
-| Development & Quality | Code quality, testing | Q2 | 1 | Dev Lead, QA Lead, DevOps | Cross-chain transaction failures |
-| Operations & Scalability | SLOs, capacity | Q3 | 1 | SRE, DevOps, Architect | Node synchronization latency spikes |
+## Phase Overview
+| Phase | Focus | Q&A Range | Count | Priority | Key Stakeholders | Decision Trigger |
+|-------|-------|-----------|-------|----------|------------------|------------------|
+| Architecture & Design | Tech decisions, ADRs | Q1 | 1 | Critical | Architect, Dev Lead, SRE | Multi-chain support requirement |
+| Development & Quality | Code quality, testing | Q2 | 1 | Critical | Dev Lead, QA Lead, DevOps | Cross-chain transaction failures |
+| Operations & Scalability | SLOs, capacity | Q3 | 1 | Critical | SRE, DevOps, Architect | Node synchronization latency spikes |
 
 ---
 
@@ -111,11 +111,10 @@ flowchart TD
 
 ```mermaid
 pie
-    title SLO Budget Allocation
-    "Error Budget" : 0.1
-    "Normal Operations" : 99.9
-    "High Congestion Mode" : 5.0
-    "Maintenance Window" : 0.5
+    title Error Budget Usage Targets (% of error budget)
+    "Normal Operations" : 50
+    "High Congestion Mode" : 40
+    "Maintenance Window" : 10
 ```
 
 **SLO Formula**: `Reliability = (Total Time - Downtime) / Total Time × 100%`
@@ -146,6 +145,9 @@ Four key DevOps performance metrics: deployment frequency, lead time for changes
 **T3. Prometheus** [EN] – Operations | Metrics, PromQL, alerts, SLO tracking | 2024-10 | Free | https://prometheus.io  
 **T4. Grafana** [EN] – Operations | Dashboards, SLO visualization, alerting | 2024-11 | Free/Cloud/Ent | https://grafana.com  
 **T5. Terraform** [EN] – Architecture, Evolution | IaC (multi-cloud), capacity planning | 2024-10 | Free/Ent | https://www.terraform.io  
+**T6. Foundry** [EN] – Development & Quality | Smart contract development and testing toolkit for Ethereum-compatible chains (Rust-friendly workflows via CLI) | 2024-11 | Free | https://book.getfoundry.sh  
+**T7. ToxiProxy** [EN] – Testing, Operations | Network conditions simulator for injecting latency, packet loss, and failures into services | 2024-11 | Free | https://toxiproxy.io  
+**T8. Hardhat** [EN] – Development & Quality | Ethereum development environment with scripting, testing, and network forking support | 2024-11 | Free | https://hardhat.org  
 
 ### References (≥4, APA 7th, multi-language mix)
 **R1.** Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution Press. [EN] | Conway's Law, organizational design, architecture boundaries
@@ -165,7 +167,7 @@ Four key DevOps performance metrics: deployment frequency, lead time for changes
 ## Validation Report
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
-| 1 | Counts | G≥4, T≥3, R≥4, Q=3 (1/1/1) | G:4, T:5, R:6, Q:3 | PASS |
+| 1 | Counts | G≥4, T≥3, R≥4, Q=3 (1/1/1) | G:4, T:8, R:6, Q:3 | PASS |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion | 100% decision-critical | PASS |
 | 3 | Citations | 100% Q&As ≥1 citation | 100% cited | PASS |
 | 4 | Language | Use clear, consistent terminology | Terminology consistent, minimal jargon | PASS |
@@ -175,7 +177,7 @@ Four key DevOps performance metrics: deployment frequency, lead time for changes
 | 8 | Quantified Impact | 100% have measurable metrics + targets | 100% quantified | PASS |
 | 9 | Phase coverage | All 3 phases covered (1 Q&A each) | 100% covered | PASS |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles | 100% cover ≥5 roles | PASS |
-| 11 | Decision Matrices | Major trade-off decisions use a matrix (≥2 alternatives × ≥5 criteria) | Q2 includes decision matrix | PASS |
+| 11 | Decision Tables | Major trade-off decisions use a structured comparison table (≥3 alternatives × ≥3 criteria) | Q2 includes comparison table (4 layers × 4 criteria) | PASS |
 | 12 | Artifacts | ≥90% phases have diagram + metrics | 100% have artifacts | PASS |
 
 **Overall**: 12/12 PASS

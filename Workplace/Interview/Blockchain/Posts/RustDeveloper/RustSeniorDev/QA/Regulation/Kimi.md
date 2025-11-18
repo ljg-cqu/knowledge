@@ -18,9 +18,9 @@
 | Cluster | Decision Trigger | Q&A Count | Criticality |
 |---------|------------------|-----------|-------------|
 | **Compliance Modeling** | Breach notification <72hr, cross-border transfer debt >$400K | 2 | Blocks/Risk/Quantified |
-| **Privacy Engineering** | CCPA opt-out rate <80%, GDPR erasure vs immutability conflict | 3 | Blocks/Risk/Roles/Action |
-| **Audit & Evidence** | SOC2 audit <3mo, validator log gaps | 2 | Blocks/Action/Quantified |
-| **Remediation** | Vendor DPA missing, smart contract upgrade debt >$300K | 1 | Risk/Roles |
+| **Privacy Engineering** | CCPA opt-out rate <95%, GDPR erasure vs immutability conflict | 3 | Blocks/Risk/Roles/Action |
+| **Audit & Evidence** | SOC2 audit <3mo, validator log gaps | 1 | Blocks/Action/Quantified |
+| **Remediation** | Vendor DPA missing, smart contract upgrade debt >$300K | 2 | Risk/Roles |
 
 ---
 
@@ -34,7 +34,7 @@
 
 **Scenario**: Your Rust-based DEX processes 50K EU user trades/month. User invokes Art. 17 right to erasure. On-chain order book contains pseudonymous wallet addresses, timestamps, and trade amounts. Deleting from blockchain is impossible. Off-chain indexer stores IP logs and email mappings. Fine risk: €20M/4% global turnover. Remediation window: 2 months before DPIA audit.
 
-**Regulatory Mapping**: GDPR Art. 17(3)(b) exempts erasure when processing is necessary for compliance with legal obligations (e.g., AMLD5 5-year recordkeeping) [A1]. However, pure on-chain data is not covered by GDPR if fully anonymized [EDPB 4/2019]. Resolution: Separate PII (emails, IPs) from pseudonymous on-chain data. Delete off-chain PII; retain on-chain pseudonyms.
+**Regulatory Mapping**: GDPR Art. 17(3)(b) exempts erasure when processing is necessary for compliance with legal obligations (e.g., AMLD5 5-year recordkeeping) [A1]. However, pure on-chain data is not covered by GDPR if fully anonymized [A12]. Resolution: Separate PII (emails, IPs) from pseudonymous on-chain data. Delete off-chain PII; retain on-chain pseudonyms.
 
 **Impact**: Quantified: €20M fine potential. Remediation cost: $280K (pseudonymization engine, API changes). Deadline: 60 days. Audit days: 10 for DPIA review.
 
@@ -82,7 +82,7 @@ graph LR
 
 **Scenario**: Your Rust bridge transfers EU user cross-chain messages to 15 US validator nodes. No EU-US adequacy decision post-Schrems II (2021). Data includes wallet metadata and IP addresses. EDPB "Schrems II" guidance requires Supplementary Measures (TIA + encryption). Deadline: 6 months to avoid DPA investigation. Fine risk: €20M.
 
-**Regulatory Mapping**: GDPR Art. 44 prohibits transfer without adequacy/appropriate safeguards. SCCs (2021) are valid but require TIA documenting US law risks (FISA 702, EO 12333) and technical measures [A1, A8]. Rust implementation must enforce TLS 1.3 + AES-256 + potential data localization.
+**Regulatory Mapping**: GDPR Art. 44 prohibits transfer without adequacy/appropriate safeguards. SCCs (2021) are valid but require TIA documenting US law risks (FISA 702, EO 12333) and technical measures [A1, A7]. Rust implementation must enforce TLS 1.3 + AES-256 + potential data localization.
 
 **Impact**: Quantified: €20M fine. Remediation: $420K (SCC legal review, TIA, Rust crypto upgrades). Timeline: 5 months. Audit days: 20 for cross-border DPIA.
 
@@ -120,8 +120,8 @@ graph TB
 - TIA Coverage: `(8/8 risks documented) × 100% = 100%`
 - Encryption Strength: `TLS 1.3 + AES-256-GCM = 256-bit`
 - Latency Impact: `EU→US = 45ms, EU→EU = 15ms, p95 = 52ms < 100ms SLA`
-- Residual Risk: `€20M → 95% effective → €1M residual`
-- TCO: `$420K + $180K/yr + €1M residual`
+- Residual Risk: `€20M → 97.5% effective → €500K residual`
+- TCO: `$420K + $180K/yr + €500K residual`
 
 ---
 
@@ -183,13 +183,13 @@ graph TB
 
 **Scenario**: Your Rust-based CosmWasm DEX must comply with EU MiCA (effective Dec 2024). Art. 76 requires smart contract auditability and "measures to address vulnerabilities." Immutable contract cannot be patched. Governance wants upgradeability; users demand immutability. Upgrade cost: $480K. Non-compliance fine: €15M or 3% turnover. Deadline: 4 months to MiCA registration.
 
-**Regulatory Mapping**: MiCA Art. 76(2) mandates Crypto-Asset Service Providers (CASPs) ensure smart contracts are "soundly developed, tested, and have mechanisms to detect vulnerabilities and respond to incidents." Immutability conflicts with incident response. Solution: Diamond proxy pattern (EIP-2535) with multi-sig governance (3-of-5) and timelock (7 days). Rust `cosmwasm-storage` can isolate logic facets [A1].
+**Regulatory Mapping**: MiCA Art. 76(2) mandates Crypto-Asset Service Providers (CASPs) ensure smart contracts are "soundly developed, tested, and have mechanisms to detect vulnerabilities and respond to incidents." Immutability conflicts with incident response. Solution: Diamond proxy pattern (EIP-2535) with multi-sig governance (3-of-5) and timelock (7 days). Rust `cosmwasm-storage` can isolate logic facets [A2, A8].
 
 **Impact**: Quantified: €15M fine. Remediation: $480K (proxy migration, audit, governance). Timeline: 110 days. Multi-team: Legal, Compliance, Security, Architecture, Product.
 
 **Stakeholders**: Legal (drafts governance bylaws, liability clauses) | Compliance (registers with ESMA, documents ROPA) | Security (audits proxy, timelock) | Architecture (implements diamond pattern, facets) | Product (communicates to users).
 
-**Decision**: Adopt diamond proxy with 7-day timelock. Require Trail of Bits audit. Go: Governance decentralization score 0.7, acceptable for MiCA.
+**Decision**: Adopt diamond proxy with 7-day timelock. Require Trail of Bits audit. Go: Governance decentralization score 0.6, acceptable for MiCA.
 
 **Trade-offs**: Governance attack vector vs regulatory flexibility. Alternative: Bug bounty program insufficient for MiCA.
 
@@ -219,7 +219,7 @@ graph TB
 | Audit Trail | ESMA oversight | Event logs, ROPA | Splunk indexed | Compliance |
 
 **Metrics**:
-- Governance Decentralization: `(5 members/9 max) × (3 threshold/5 total) = 0.6`
+- Governance Decentralization: `(3 threshold/5 members) = 0.6`
 - Timelock Security: `7 days / 30 days = 23% rapid response`
 - Audit Coverage: `(8/8 facets audited) × 100% = 100%`
 - Compliance Debt: `$480K + $120K/yr + €10.5M residual`
@@ -234,9 +234,9 @@ graph TB
 
 **Answer** (190 words):
 
-**Scenario**: Your Rust-based DEX frontend serves 25K CA users. CCPA §1798.120 allows opt-out of "sale" of personal info. Mempool broadcasts orders with wallet addresses (PII). Opt-out rate: 65% (below 80% compliance threshold). Fine risk: $7.5K/violation × 10K users = $75M. Deadline: 30 days to CCPA audit.
+**Scenario**: Your Rust-based DEX frontend serves 25K CA users. CCPA §1798.120 allows opt-out of "sale" of personal info. Mempool broadcasts orders with wallet addresses (PII). Opt-out rate: 65% (below 95% compliance threshold). Fine risk: $7.5K/violation × 10K users = $75M. Deadline: 30 days to CCPA audit.
 
-**Regulatory Mapping**: CCPA "sale" includes sharing for monetary consideration. Public mempool is not a sale but is disclosure. CPRA amendments strengthen opt-out. Solution: Rust `arkworks` zk-SNARKs to hide wallet addresses in mempool, revealing only to validator encrypted [A8]. Zero Trust architecture: never trust, always verify.
+**Regulatory Mapping**: CCPA "sale" includes sharing for monetary consideration. Public mempool is not a sale but is disclosure. CPRA amendments strengthen opt-out. Solution: Rust `arkworks` zk-SNARKs to hide wallet addresses in mempool, revealing only to validator encrypted [A13]. Zero Trust architecture: never trust, always verify.
 
 **Impact**: Quantified: $75M fine. Remediation: $320K (zk circuit, integration). Timeline: 28 days. Consent rate must reach 95%.
 
@@ -341,7 +341,7 @@ graph TB
 
 **Scenario**: Your Rust RPC gateway serves 30K China users. PIPL Art. 40 requires "personal information of critical info infrastructure operators" be stored in China. Logs contain IPs, wallet addresses. Regulator (CAC) audit in 90 days. Fine: ¥50M or 5% revenue. Remediation: $290K, 45 days.
 
-**Regulatory Mapping**: PIPL Art. 40 triggers if handler processes >1M users or data crosses "critical" threshold. CAC guidance: blockchain nodes are critical. Solution: Rust `actix-web` middleware geo-locates CN IPs (MaxMind DB), routes to Beijing bare-metal nodes. Data residency enforced at storage layer [A1].
+**Regulatory Mapping**: PIPL Art. 40 triggers if handler processes >1M users or data crosses "critical" threshold. CAC guidance: blockchain nodes are critical. Solution: Rust `actix-web` middleware geo-locates CN IPs (MaxMind DB), routes to Beijing bare-metal nodes. Data residency enforced at storage layer [A11].
 
 **Impact**: Quantified: ¥50M fine. Remediation: $290K (CN infra, geo-routing). Timeline: 45 days. Audit days: 8 for CAC readiness.
 
@@ -520,6 +520,12 @@ graph LR
 **A9.** Parity Technologies. (2024). Substrate Rust blockchain framework. https://github.com/paritytech/substrate [EN]
 
 **A10.** Solana Labs. (2024). Solana validator logging requirements. https://docs.solana.com/running-validator [EN]
+
+**A11.** Standing Committee of the National People's Congress. (2021). Personal Information Protection Law of the People's Republic of China (PIPL). http://www.npc.gov.cn/englishnpc/c23934/202111/ee169cec5b904dff99b1b358f64059db.shtml [EN]
+
+**A12.** European Data Protection Board. (2020). Guidelines 4/2019 on Article 25 Data Protection by Design and by Default (Version 2.0). https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en [EN]
+
+**A13.** California Department of Justice. (2018). California Consumer Privacy Act of 2018 (CCPA). https://oag.ca.gov/privacy/ccpa [EN]
 
 ---
 

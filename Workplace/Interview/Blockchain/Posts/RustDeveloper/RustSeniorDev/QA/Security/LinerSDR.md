@@ -66,20 +66,20 @@ runtime_security_config:
 ```mermaid
 flowchart TD
     subgraph "Rust-based Web3 Core Modules"
-        A --> B
+        A[Core Rust Logic] --> B[Compiled Binary]
         B --> C{Memory Accesses}
-        C -- Not Guaranteed Safe --> D
-        C -- Guaranteed Safe --> E
+        C -- Not Guaranteed Safe --> D[Unsafe / High-Risk Region]
+        C -- Guaranteed Safe --> E[Safe Region]
     end
 
-    D --> F
-    E --> G
-    G --> H
-    H -- Tampered --> I
-    H -- Intact --> J
+    D --> F[ERASan Instrumentation]
+    E --> G[Runtime Execution]
+    G --> H[Binary At Load Time]
+    H -- Tampered --> I[Blocked by Validator]
+    H -- Intact --> J[Allowed to Run]
 
-    F -- Detects Bugs --> K
-    K --> L
+    F -- Detects Bugs --> K[Security Alerts]
+    K --> L[Response & Hardening]
 
     style A fill:#DDF,stroke:#333,stroke-width:2px
     style B fill:#FDD,stroke:#F00,stroke-width:2px
@@ -122,10 +122,17 @@ smart_contract_deployment_checklist:
     owner: Architect
     notes: Focus on USC upgradeability, access control, and interaction patterns.
   - requirement: Static Analysis Integration
-    tools: # Tools for Rust smart contracts
+    tools:
+      - hax
+      - SafeCheck
+      - cargo-contract
     config_params:
       precision_threshold: 90% # Aim for high precision to reduce false positives
       vulnerability_types:
+        - reentrancy
+        - integer_overflow_underflow
+        - access_control
+        - unchecked_external_calls
     status: Mandatory pre-deployment
     owner: Security Engineer
   - requirement: External Security Audit
@@ -217,6 +224,10 @@ incident_response_playbook_rust_supply_chain:
         - "Analyze network traffic for unusual outbound connections from build servers or deployed modules."
       owner: "Security Engineer"
       tools:
+        - "cargo-audit"
+        - "osv-scanner"
+        - "SIEM (e.g., Splunk, Elastic Security)"
+        - "Network monitoring (e.g., Zeek, Suricata)"
     - name: "Containment"
       actions:
         - "Isolate compromised build environments or affected production instances."

@@ -14,14 +14,14 @@ This document contains PM interview Q&A content focused on the Rust Senior Engin
 ## PM Interview Q&A for Web3 Infrastructure Product Manager
 
 ### A. Table of Contents
-1. Topic Areas Overview
-2. Questions by Topic
-   - Strategy & Prioritization (Q1-Q2)
-   - Metrics & Decision-Making (Q3-Q4)
-   - Stakeholder Alignment (Q5)
-   - GTM & Developer Adoption (Q6)
-3. References (Glossary, Tools, Literature, Citations)
-4. Validation Report
+1. [Topic Overview](#b-topic-overview)
+2. [Questions by Topic](#c-questions--answers)
+   - [Strategy & Prioritization (Q1–Q2)](#topic-1-strategy--prioritization)
+   - [Metrics & Decision-Making (Q3–Q4)](#topic-2-metrics--decision-making)
+   - [Stakeholder Alignment (Q5)](#topic-3-stakeholder-alignment)
+   - [GTM & Developer Adoption (Q6)](#topic-4-gtm--developer-adoption)
+3. [References (Glossary, Tools, Literature, Citations)](#d-references)
+4. [Validation Report](#e-validation-report)
 
 ### B. Topic Overview
 
@@ -41,7 +41,7 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 ### C. Questions & Answers
 
-**Topic 1: Strategy & Prioritization**
+#### Topic 1: Strategy & Prioritization
 
 **Q1: Your Web3 infrastructure team has built Rust-based tooling for Ethereum. The Solana ecosystem is growing rapidly with 40% QoQ developer growth. How do you prioritize between deepening Ethereum features versus expanding to Solana, given limited Rust engineers?**
 
@@ -116,7 +116,7 @@ Evaluate using Web3 business model framework [Ref: G5] considering both financia
 
 ---
 
-**Topic 2: Metrics & Decision-Making**
+#### Topic 2: Metrics & Decision-Making
 
 **Q3: Your Rust SDK shows 10K downloads but only 200 production deployments. How do you diagnose and address this activation gap?**
 
@@ -211,7 +211,7 @@ Build comprehensive ROI model incorporating direct and indirect benefits [Ref: G
 
 ---
 
-**Topic 3: Stakeholder Alignment**
+#### Topic 3: Stakeholder Alignment
 
 **Q5: Your Rust team wants to rewrite the core engine for better performance. The CEO wants new features for a major partnership. Engineering managers worry about technical debt. How do you align these competing priorities?**
 
@@ -263,7 +263,7 @@ Apply stakeholder mapping and RACI framework [Ref: G9] to structure alignment pr
 
 ---
 
-**Topic 4: GTM & Developer Adoption**
+#### Topic 4: GTM & Developer Adoption
 
 **Q6: You're launching a Rust-based Web3 development platform. How do you design a GTM strategy that captures both Ethereum and Solana developers while competing against established players?**
 
@@ -350,6 +350,14 @@ Design multi-chain GTM using crossing-the-chasm framework adapted for Web3 [Ref:
 
 **G11. Freemium Model** | Free basic tier with paid premium features | Use cases: Developer tools, SaaS products | Related: Product-led growth, conversion optimization | Limitations: Requires careful tier design
 
+**G12. ARR (Annual Recurring Revenue)** | Normalized 12-month subscription revenue from active contracts | Use cases: Evaluating deal size, forecasting | Related: MRR, LTV | Limitations: Excludes one-time revenue
+
+**G13. NPS (Net Promoter Score)** | Customer loyalty metric from -100 to 100 based on recommendation likelihood | Use cases: Tracking satisfaction trends | Related: CSAT, CES | Limitations: Sensitive to sampling bias
+
+**G14. MAU (Monthly Active Users)** | Number of distinct users active in a 30-day window | Use cases: Growth tracking, engagement baselines | Related: DAU, stickiness | Limitations: Hides depth of engagement
+
+**G15. QoQ (Quarter-over-Quarter Growth)** | Percentage change between consecutive quarters | Use cases: Momentum tracking, growth comparisons | Related: YoY, CAGR | Limitations: Volatile for small bases
+
 **Tools**
 
 **T1. Productboard (Product Management Platform)** | Centralized system for product decisions and roadmapping | Pricing: $20-100/user/month | Users: 6,000+ companies | Update: Q4 2024 | Integrations: Jira, Slack, GitHub | PM use case: Feature prioritization, stakeholder alignment | URL: productboard.com
@@ -424,7 +432,7 @@ Design multi-chain GTM using crossing-the-chasm framework adapted for Web3 [Ref:
 - ✅ Interview Quality: 100% questions elicit judgment (scenario-based)
 - ✅ Citations: 83% answers have ≥1 citation (Target: 70%)
 - ✅ Impact: 100% scenarios ≥$1M revenue or strategic impact
-- ✅ Reference Minimums: G=11 (✅), T=11 (✅), L=6 (✅, 1 ZH), A=9 (✅)
+- ✅ Reference Minimums: G=15 (✅), T=11 (✅), L=6 (✅, 1 ZH), A=9 (✅)
 
 **Decision Criticality Verification**
 - Q1: ✅ Blocks $8M revenue decision

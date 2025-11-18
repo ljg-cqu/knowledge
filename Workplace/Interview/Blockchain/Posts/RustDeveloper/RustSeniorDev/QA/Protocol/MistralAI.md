@@ -195,8 +195,15 @@
  - **HotStuff-style consensus** – A family of BFT protocols that achieve linear communication complexity and pipelined commits (e.g., Libra/DiEM, many modern PoS chains).
  - **Light client** – A client or contract that verifies another chain’s state using block headers and cryptographic proofs, without replaying all transactions.
  - **TVL (Total Value Locked)** – Aggregate value of user assets locked in a protocol or bridge; primary risk exposure metric for bridges.
+ - **DeFi (Decentralized Finance)** – On-chain financial protocols (e.g., DEXs, lending, derivatives) where smart contracts replace centralized intermediaries; typical high-throughput workloads for L1/L2 chains.
+ - **Rollup** – A scaling solution that executes transactions off-chain or on a separate layer and posts compressed data or proofs to a base L1 for security (e.g., optimistic and ZK-rollups).
  - **Circuit breaker** – A mechanism (often on-chain) that can pause or limit protocol behavior (e.g., transfers, upgrades) when risk thresholds or anomaly conditions are met.
  - **Finality** – The point at which a block is economically or mathematically irreversible under the protocol’s assumptions.
+ - **Multisig bridge** – A bridge design where a fixed set of operators jointly control asset movement via a multi-signature wallet (e.g., `m-of-n` signers must approve each transfer).
+ - **Optimistic bridge** – A bridge that assumes messages are valid by default but allows a challenge window during which honest observers can submit fraud proofs to revert invalid transfers.
+ - **On-chain governance** – A governance mechanism implemented in smart contracts where token holders or validators vote on proposals that directly trigger protocol changes.
+ - **Feature flags** – Configuration switches in the Rust runtime that enable or disable specific protocol behaviors (e.g., fee model v2, new slashing rules) without redeploying a new binary.
+ - **Canary subnet / canary network** – A smaller, production-like network used to trial upgrades and new features with real validators before full mainnet rollout.
 
  ---
 
@@ -217,7 +224,7 @@
  | # | Guideline | Status | Evidence in This File |
  |---|-----------|--------|------------------------|
  | 1 | Context | PASS | Overview defines problem, scope, assumptions, stakeholders; each Q has scenario context. |
- | 2 | Clarity | PASS | Key terms defined in Glossary; diagrams show flows. |
+ | 2 | Clarity | PASS | Key terms (BFT, HotStuff, light client, multisig bridge, optimistic bridge, on-chain governance, feature flags, canary subnet) defined in Glossary; diagrams show flows. |
  | 3 | Precision | PASS | Includes quantitative targets (TPS, latency, TVL %, quorum thresholds). |
  | 4 | Relevance | PASS | All content supports protocol design/interview prep; no unrelated background. |
  | 5 | MECE | PASS | Topics split into consensus, bridging, upgrades with minimal overlap. |

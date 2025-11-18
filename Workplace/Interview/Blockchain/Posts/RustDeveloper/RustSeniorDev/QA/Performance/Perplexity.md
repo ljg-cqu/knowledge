@@ -42,7 +42,7 @@ Web3 infrastructure development focusing on high-performance blockchain systems 
 - Production-ready solutions only; assumes access to profiling tools (perf, flamegraph, criterion)[16][6][17]
 - Focus on systems with measurable SLOs (p95/p99 latency, throughput targets)
 - Linux-based deployment environments with standard observability stack
- - Valid for use with metrics and tool versions current as of Nov–Dec 2024; re-validate benchmarks and tool versions if used after this period
+- Valid for use with metrics and tool versions current as of Nov–Dec 2024; re-validate benchmarks and tool versions if used after this period
 
 ### In Scope
 - **RPC node optimization**: Connection pooling, caching, load balancing[18][19][20]
@@ -76,7 +76,7 @@ Web3 infrastructure development focusing on high-performance blockchain systems 
 
 #### Q1: How do I identify and measure the CPU bottleneck consuming 80%+ execution time in a Rust-based Solana RPC node processing 2,000 TPS with p99 latency exceeding 300ms SLO target?
 
-**Difficulty**: Foundational (F) | **Dimension**: Latency, Resources | **Phase**: Measure  
+**Difficulty**: Foundational (F) | **Dimension**: Latency, Resources | **Phase**: Measure | **Priority**: Critical
 **Key Insight**: Flamegraph profiling reveals 80% of CPU time concentrated in 20% of code paths; connection pooling reduces DB query latency by 50-90%, while proper async runtime configuration prevents tokio mutex contention from degrading throughput by 2-3×.[9][4][16][6]
 
 **Answer**
@@ -156,7 +156,7 @@ Deploy to staging with production-mirrored traffic using load testing tools (k6,
 
 #### Q2: Our Rust DEX smart contract incurs 40% higher gas costs than competitors. How do we analyze and optimize gas consumption patterns to achieve 30-50% reduction while maintaining transaction throughput of 500 TPS?
 
-**Difficulty**: Intermediate (I) | **Dimension**: Latency, Resources | **Phase**: Analyze, Optimize  
+**Difficulty**: Intermediate (I) | **Dimension**: Latency, Resources | **Phase**: Analyze, Optimize | **Priority**: Important
 **Key Insight**: Gas optimization patterns (storage packing, batching, layer-2 solutions) reduce smart contract costs by 7-56%. Analysis via profiling tools reveals 80% of gas spent in 20% of operations, enabling targeted optimization of hot paths for maximum impact.[25][26][38][24]
 
 **Answer**
@@ -171,7 +171,7 @@ Monitor **gas efficiency metrics** via custom instrumentation: (1) **Gas per swa
 
 **Practical**: Gas Optimization Implementation
 
-```rust
+```solidity
 // BEFORE: Unoptimized storage (40% higher gas)
 struct Swap {
     user: address,
@@ -256,7 +256,7 @@ Deploy to Goerli testnet (Ethereum) or Devnet (Solana) with 500 TPS sustained lo
 
 #### Q3: How do we validate that our connection pooling optimization actually reduces p95 latency from 280ms to <100ms under production load, and what monitoring strategy prevents performance regressions?
 
-**Difficulty**: Intermediate (I) | **Dimension**: Latency | **Phase**: Optimize, Validate  
+**Difficulty**: Intermediate (I) | **Dimension**: Latency | **Phase**: Optimize, Validate | **Priority**: Critical
 **Key Insight**: Request-based latency SLOs ("99% of requests <100ms within 1-hour window") combined with burn-rate alerting detect 20%+ regressions within 15 minutes, preventing SLO violations. Connection pooling provides 50-90% latency reduction when properly validated via percentile tracking and saturation metrics.[1][15][3][10]
 
 **Answer**
@@ -360,7 +360,7 @@ Success criteria for production deployment: (1) **Statistical significance**: T-
 
 #### Q4: Our parallel blockchain transaction processing (using Rayon) achieves only 1.7× speedup on 8 cores instead of theoretical 5-6×. How do we diagnose and optimize parallel efficiency to reach 4× speedup while maintaining correctness?
 
-**Difficulty**: Advanced (A) | **Dimension**: Throughput, Scalability | **Phase**: Analyze, Optimize, Validate  
+**Difficulty**: Advanced (A) | **Dimension**: Throughput, Scalability | **Phase**: Analyze, Optimize, Validate | **Priority**: Important
 **Key Insight**: Amdahl's Law quantifies parallel speedup limits: if 30% of code is sequential, max speedup = 1/(0.3 + 0.7/8) = 2.5× regardless of cores. Real-world Rust parallel workloads achieve 1.7-8.6× speedup via careful mutex optimization, data partitioning, and avoiding false sharing; profiling reveals 60-80% time spent in synchronization overhead.[42][43][44][45][4]
 
 **Answer**

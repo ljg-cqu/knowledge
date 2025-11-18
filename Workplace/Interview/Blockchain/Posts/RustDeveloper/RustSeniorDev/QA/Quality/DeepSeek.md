@@ -1,23 +1,24 @@
 # Quality Engineering Q&A (Q3-Q4'24)
 
 ## Contents
-1. Executive Summary
-2. Phase Coverage
-3. Questions by Phase (4 total)
-4. References
-5. Validation
+1. [Executive Summary](#executive-summary)
+2. [Phase Coverage](#phase-coverage)
+3. [Questions by Phase (4 total)](#questions-by-phase-4-total)
+4. [References](#references)
+5. [Validation](#validation-report)
 
 ## Executive Summary
 **Domain**: Quality Engineering | **Period**: Q3-Q4'24 | **Coverage**: 4 items, 4 categories
-**Insights**: Rust Security Audit Tools ([RustSec]): Critical vulnerability detection → Mandatory pipeline integration (2 high-impact)
+**Insights**: Rust security audit tooling (cargo-audit, cargo-deny): Critical vulnerability detection → Mandatory pipeline integration (2 high-impact)
 **Dashboard**: 
-| Phase | Topic | Decision |
-|-------|-------|----------|
-| Development | Rust Security Audit Automation | Implement cargo-audit + cargo-deny |
-| Testing | Property-based Testing for Smart Contracts | Adopt proptest for state machine testing |
-| Deployment | Blockchain Node CI/CD Safety | Enforce canary deployments |
-| Operations | Blockchain Node Observability | Implement structured logging + metrics |
-**Roles**: QA/SET, Developer, DevOps, SRE, Architect, Product Manager | **References**: G=8, S=4, T=3, C=2, O=2, A=5
+| Phase | Topic | Decision | Priority |
+|-------|-------|----------|----------|
+| Development | Rust Security Audit Automation | Implement cargo-audit + cargo-deny | Critical |
+| Testing | Property-based Testing for Smart Contracts | Adopt proptest for state machine testing | Important |
+| Deployment | Blockchain Node CI/CD Safety | Enforce canary deployments | Critical |
+| Operations | Blockchain Node Observability | Implement structured logging + metrics | Important |
+**Roles**: QA/SET, Developer, DevOps, SRE, Architect, Product Manager | **References**: G=10, S=4, T=3, C=2, O=2, A=5
+**Priority Legend**: **Critical** = must implement in Q3–Q4'24 to reduce immediate production risk; **Important** = schedule in Q3–Q4'24 once critical items are in place.
 
 ### Context
 - **Problem**: Prioritize the most impactful quality engineering investments for Rust-based blockchain systems in Q3–Q4 2024.
@@ -33,6 +34,8 @@
 | Deployment | 1 | CI/CD, Quality Gates | Node Deployment Safety | DevOps, SRE, Dev |
 | Operations | 1 | Observability, Reliability | Node Monitoring | SRE, DevOps, QA |
 | **Total** | **4** | **4** | **4** | **6** |
+
+## Questions by Phase (4 total)
 
 ### Q1: Rust Security Audit Automation for Blockchain Infrastructure
 **Phase**: Development | **Roles**: Developer, Architect, QA/SET | **Categories**: Code Quality, Testing | **Decision Criticality**: Creates Risk
@@ -85,6 +88,8 @@
 **G6. Structured Logging**: Logs with key-value fields | *Like database records instead of text* | Enables filtering and analysis | Example: JSON logs
 **G7. Quality Gates**: Automated checkpoints in pipeline | *Like security checkpoints* | Blocks unsafe deployments | Example: test coverage threshold
 **G8. MTTR**: Mean Time to Recovery | *Like ambulance response time* | Measures incident resolution speed | Example: 15-minute target
+**G9. CEX (Centralized Exchange)**: Centralized trading platform where a company operates the order book and custody | *Like a traditional stock exchange for crypto* | Users trade through the platform | Example: Binance or Coinbase
+**G10. DEX (Decentralized Exchange)**: On-chain exchange protocol where users trade directly via smart contracts | *Like an automated marketplace without a central operator* | Liquidity pools and AMMs handle orders | Example: Uniswap or SushiSwap
 
 ### Sources
 **S1. Cargo Audit 0.18 Release** (Rust Blog): Enhanced vulnerability database | Code Quality | https://blog.rust-lang.org/2024/05/20/cargo-audit-0.18.html | Creates Risk
@@ -117,7 +122,7 @@
 | # | Check | Measurement | Criteria | Result | Status |
 |---|-------|-------------|----------|--------|--------|
 | 1 | Source Quality | Primary 100% | ≥70% | 100% | PASS |
-| 2 | Minimums | G:8 S:4 T:3 C:2 O:2 A:5 Q:4 | ≥6,≥3,≥2,≥1,≥1,≥4,3-5 | 8,4,3,2,2,5,4 | PASS |
+| 2 | Minimums | G:10 S:4 T:3 C:2 O:2 A:5 Q:4 | ≥6,≥3,≥2,≥1,≥1,≥4,3-5 | 10,4,3,2,2,5,4 | PASS |
 | 3 | Glossary | 100%terms; 100%analogies | 100%;≥50% | 100% | PASS |
 | 4 | Phases | 4/4; total4 | 3-4;3-5 | 4;4 | PASS |
 | 5 | Categories | Test50% Code25% CI/CD50% Obs50% | ≥40,30,30,20% | 50,25,50,50 | PASS |

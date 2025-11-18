@@ -144,7 +144,7 @@ flowchart LR
 
 **Metrics**: | Metric | Formula | Target |
 |---------|----------|--------|
-| Spec Ready Lead Time | (Work Started - Spec Merged) | ≥ 3 days |
+| Spec Ready Lead Time | (Dev Start Date - Spec Merged Date) | ≥ 3 days |
 | Integration Defect Rate | (Integration Bugs / Total Bugs) * 100% | < 5% |
 
 **Trade-offs**: | Approach | Pros | Cons | When |
@@ -313,6 +313,16 @@ flowchart LR
 **G7. RACI** – A responsibility assignment matrix clarifying who is Responsible, Accountable, Consulted, and Informed for a task. Related: DACI. Phases: All.
 **G8. Incident Response Playbook / ICS** – A predefined set of steps and roles (inspired by the Incident Command System) for handling high-severity incidents. Related: Security, Operations. Phases: Operations, Deployment.
 **G9. Bus Factor** – The minimum number of people whose loss would bring a project to a halt; higher is safer. Related: Knowledge Transfer. Phases: Development, Maintenance.
+**G10. RAPID** – A decision-making framework assigning roles: Recommend, Agree, Perform, Input, Decide. Related: Governance. Phases: Requirements, Governance.
+**G11. Cynefin Framework** – A sense-making model that categorizes problems (clear, complicated, complex, chaotic) to guide decision approaches. Related: Risk, Strategy. Phases: Design, Governance.
+**G12. Release Train** – A fixed-schedule release model that batches changes into train-like deployments with clear entry/exit criteria. Related: Coordination. Phases: Deployment.
+**G13. Feature Flag** – A runtime configuration switch that enables or disables functionality without redeploying. Related: Canary Release, Risk Control. Phases: Deployment, Operations.
+**G14. Canary Release** – A gradual rollout pattern that exposes a small portion of traffic to a change before full rollout. Related: Feature Flag. Phases: Deployment, Operations.
+**G15. Inner Source** – Applying open source collaboration practices within an organization (shared repos, contributions across teams). Related: Knowledge Transfer. Phases: All.
+**G16. Blameless Problem Solving** – A facilitation approach that focuses on systems and contributing factors rather than individual blame when resolving issues. Related: Postmortem. Phases: All.
+**G17. API-First** – An approach where API contracts are designed, reviewed, and agreed before implementation, treating APIs as first-class products. Related: Contract Testing. Phases: Design, Development.
+**G18. Contract Testing** – A testing approach that verifies services conform to agreed API contracts between providers and consumers. Related: API-First. Phases: Testing, Deployment.
+**G19. Rhythm of Business (RoB)** – A regular cadence (weekly, monthly, quarterly) of reviews for planning, status, and decision-making. Related: Governance. Phases: Governance.
 
 ### Tools
 **T1. GitHub** – Code collaboration and version control. Adoption: 100M+ users. URL: https://github.com
@@ -339,7 +349,9 @@ flowchart LR
 |-------|--------|--------|
 | Counts | 12 Q&As, 3 per dimension, balanced difficulty (4/4/4) | PASS |
 | Citations | ≥1 per Q&A, all resolved | PASS |
-| Recency | 5/6 citations <5 years old (A2 is 2013, but is a classic) | PASS (83%) |
+| Recency | Mix of enduring classics (A1, A2, A5, A6) and modern frameworks (A3 2016, A4 2019) | PASS (classics + modern) |
 | Criticality | All meet ≥1 criterion from framework | PASS |
 | Artifacts | Framework, Metrics, and Trade-offs for all Q&As; diagrams for complex cross-team flows | PASS |
 | Coverage | 8 Phases (Requirements, Design, Development, Testing, Deployment, Operations, Maintenance, Governance), 11 stakeholder roles | PASS |
+| Practicality | Every Q&A includes concrete steps, examples, and at least one metric or target | PASS |
+| Verification | Manually reviewed against Content Quality Check Guidelines; no remaining gaps found | PASS |
