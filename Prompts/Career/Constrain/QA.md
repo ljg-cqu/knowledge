@@ -12,7 +12,13 @@ Generate 25-30 Q&As for senior/architect roles with constraint analysis across 8
 
 **Audience**: Senior devs (5+ years), architects  
 **Scope**: 6 dimensions × 8 constraint categories × 10 stakeholders × 8 SDLC phases  
-**Output**: 25-30 Q&As (20/40/40% F/I/A) | Production code | Quantified trade-offs (≥2) | Citations  
+**Output**: 25-30 Q&As (20/40/40% F/I/A) | Production code | Quantified trade-offs (≥2) | Citations
+
+**Difficulty Levels**:
+- **F** = Foundational (execution-level tasks)
+- **I** = Intermediate (strategy/trade-offs)
+- **A** = Advanced (portfolio/vision/P&L)
+
 **Assumptions**: Distributed systems (>10K rps, >1TB data) | Go/Java/Python/TypeScript | Cloud-native  
 **Validation**: 25/25 checks PASS | 8/8 criteria met
 

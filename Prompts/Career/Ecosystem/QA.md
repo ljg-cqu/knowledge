@@ -62,7 +62,10 @@ Generate 30–40 questions enabling newcomers to gain holistic ecosystem underst
 
 Distribute 30–40 across 7 dimensions (30/40/30% F/I/A). Example (35 total): Structure(5):2F/2I/1A | Value/Business(6):2F/2I/2A | Integration(7):2F/3I/2A | Architecture(6):2F/2I/2A | Regulatory(5):2F/2I/1A | Market(4):1F/2I/1A | Lifecycle(3):0F/1I/2A → Total:11F/14I/11A
 
-**Complexity**: F=foundational (core concepts, components, patterns) | I=integration (interactions, cross-cutting, trade-offs) | A=advanced (strategic, evolution, deep analysis)
+**Difficulty Levels**:
+- **F** = Foundational (execution-level tasks)
+- **I** = Intermediate (strategy/trade-offs)
+- **A** = Advanced (portfolio/vision/P&L)
 
 ### Step 2: Build References (BEFORE Q&A → run Gates 1–8 after)
 

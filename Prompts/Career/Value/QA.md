@@ -29,7 +29,10 @@ Generate **4–8 decision-critical Q&As** for informed value decisions with limi
 **Terms**:
 - **Floor**: Min threshold (≥).
 - **Gate**: Fail-stop checkpoint (100% compliance).
-- **Difficulty**: F=execution, I=strategy, A=portfolio.
+- **Difficulty Levels**:
+  - **F** = Foundational (execution-level tasks)
+  - **I** = Intermediate (strategy/trade-offs)
+  - **A** = Advanced (portfolio/vision/P&L)
 - **Value Types** (MECE): Business, User, Technical, Organizational, Strategic, Risk.
 - **Decision Criticality**: Meets ≥1 criterion (below).
 

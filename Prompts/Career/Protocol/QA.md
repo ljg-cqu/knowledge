@@ -18,6 +18,10 @@ owner: ljg-cqu
 **Key Terms**:
 - MECE Clusters: 5 distinct categories covering major protocol decisions.
 - Decision Criticality: Scenarios blocking progress, creating risks, or affecting ≥3 stakeholders.
+- **Difficulty Levels**:
+  - **F** = Foundational (execution-level tasks)
+  - **I** = Intermediate (strategy/trade-offs)
+  - **A** = Advanced (portfolio/vision/P&L)
 
 **Success**: All Q&As pass validation with justified criticality and ≥3 stakeholders.
 

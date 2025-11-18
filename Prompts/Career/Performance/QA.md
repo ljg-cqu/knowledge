@@ -23,7 +23,11 @@ Generate 2-4 decision-critical Q&As for performance engineering—minimal viable
 **Cadence**: Bi-weekly | 1-2h effort | Expires: 2 weeks.
 
 **Quantity**: 2-4 Q&A pairs.
-**Difficulty**: 25% Foundational, 50% Intermediate, 25% Advanced.
+**Difficulty**: 25% F, 50% I, 25% A.
+**Difficulty Levels**:
+- **F** = Foundational (execution-level tasks)
+- **I** = Intermediate (strategy/trade-offs)
+- **A** = Advanced (portfolio/vision/P&L)
 **Coverage**: Balance across 4 dimensions (Latency, Throughput, Scalability, Resources) and 4 phases (Measure/Analyze/Optimize/Validate).
 **Answer Format**: 150-250 words prose (excluding code/diagrams), with [Ref: ID]; include Mermaid diagrams, YAML/JSON/code as needed; APA 7th citations [EN]/[ZH].
 **Performance Chain**: SLO → Measure → Analyze (Bottleneck) → Optimize → Validate → Quantified Impact (required).
