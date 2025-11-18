@@ -2,6 +2,14 @@
 
 Generate 4–6 decision-critical Q&As from recent financial/economic news to support capital allocation and risk decisions for finance leadership.
 
+## Table of Contents
+- [I. Context & Scope](#i-context--scope)
+- [II. Requirements](#ii-requirements)
+- [III. Execution](#iii-execution)
+- [IV. Validation](#iv-validation)
+- [V. Question Quality](#v-question-quality)
+- [VI. Output Format](#vi-output-format)
+
 ## I. Context & Scope
 
 - **Cadence**: Bi-weekly; valid 2 weeks (state generation/expiry dates)
@@ -44,28 +52,38 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates prioritizing recent
 
 **Sources**: Fed/ECB, WSJ, Bloomberg, FT, Reuters (markets); BLS/BEA (macro); MergerMarket (M&A); research reports. Avoid rumors/PR.
 
-**Curate**: Select 4-6 items meeting decision criticality, covering ≥3 cycles and ≥3 categories.
+**Curate**: Select 4-6 items meeting decision criticality, covering ≥3 cycles and ≥3 categories. Rank by impact: prioritize items with (1) quantified financial impact, (2) near-term urgency (<2mo), (3) multi-cycle effects.
 
 ### Step 2: Build References
-**Format**: G# (term, definition) | N# (news, source, date, URL) | M# (M&A deal, URL) | T# (treasury instrument, URL) | R# (research, URL)
+**Format**: G# (term, definition) | N# (news, source, date, URL) | M# (M&A deal, date, URL) | T# (treasury instrument, date, URL) | R# (research, author, year, URL)
 
-**Citations**: `[Ref: N1][n1]` in text, `[n1]: URL` at end. Verify figures; label estimates.
+**Citations**: `[Ref: N1][n1]` in text, `[n1]: [Source] (YYYY-MM-DD) URL` at end. Verify figures against primary sources; label estimates/projections explicitly.
+
+**Recency**: News sources <2mo (preferred), <4mo (acceptable), ≤9mo (maximum). Research/reports from 2023+.
 
 **Glossary**: Include only terms used; plain language.
 
 ### Step 3: Generate Q&A
 **Question**: "[Specific News] implications for [Cycle]?"
 
-**Structure** (120-200 words total):
+**Structure** (120-200 words total, ordered by priority):
 1. **News** (~25w): What, when, why [Ref: N#][n#]
-2. **Impact** (~50w): ≥2 cycles + quantified metrics; explicit causal links
-3. **Stakeholders** (~35w): ≥2 roles + concerns/actions
-4. **Decision** (~50w): Contrast ≥2 options (benefits/costs/risks); recommend with criteria
-5. **Action** (~20w): Immediate (0-2wk) + short-term (2wk-2mo) steps + owners
+2. **Impact** (~50w): ≥2 cycles + quantified metrics; explicit causal links. Order: critical impacts first.
+3. **Stakeholders** (~35w): ≥2 roles + concerns/actions. Order: primary decision-maker first.
+4. **Decision** (~50w): Contrast ≥2 options (benefits/costs/risks); recommend with criteria. Label: **Recommended**/Alternative.
+5. **Action** (~20w): **Critical** (0-2wk) + **Important** (2wk-2mo) steps + owners
 6. Links: [n1]: URL
 
 ### Step 4: Add Visuals
 ≥2 diagrams (Mermaid flows for WACC/DCF, scenarios) + ≥1 table.
+
+### Step 5: Self-Review
+Before finalizing, verify:
+- **Calculations**: Cross-check metrics (WACC%, IRR, multiples) against sources
+- **Citations**: Confirm dates, source names, URLs are accurate and recent
+- **Logic**: Check for contradictions between recommendations
+- **Completeness**: All Q&As have News/Impact/Stakeholders/Decision/Action
+- **Uncertainties**: Flag estimates, projections, or assumptions explicitly
 
 ## IV. Validation
 
@@ -119,13 +137,13 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates prioritizing recent
 
 **News** (~25w): What, when, why [Ref: N#][n#]
 
-**Impact** (~50w): ≥2 cycles + quantified metrics (WACC%/$/multiples/IRR); explicit causal links
+**Impact** (~50w): ≥2 cycles + quantified metrics (WACC%/$/multiples/IRR); explicit causal links. Order: critical impacts first.
 
-**Stakeholders** (~35w): **[Role 1]**: Concerns + actions | **[Role 2]**: Concerns + actions
+**Stakeholders** (~35w): **[Primary Role]**: Concerns + actions | **[Secondary Role]**: Concerns + actions
 
-**Decision** (~50w): **Options**: Contrast ≥2 (Execute/Defer/Hedge/Monitor) with benefits/costs/risks | **Recommendation**: Choice + rationale + criteria
+**Decision** (~50w): **Recommended**: [Option] - benefits/costs/risks + rationale | **Alternative**: [Option] - benefits/costs/risks
 
-**Action** (~20w): **Immediate (0-2wk)**: Steps + owner | **Short-term (2wk-2mo)**: Steps + owner
+**Action** (~20w): **Critical (0-2wk)**: Steps + owner | **Important (2wk-2mo)**: Steps + owner
 
-[n1]: URL
+[n1]: [Source] (YYYY-MM-DD) URL
 ---

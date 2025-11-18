@@ -2,6 +2,12 @@
 
 Generate **5-8 decision-critical Q&As** from recent workforce news for informed HR/People decisions.
 
+## Table of Contents
+- [Context & Scope](#context--scope)
+- [Requirements](#requirements)
+- [Execution](#execution)
+- [Validation Report](#validation-report)
+
 ## Context & Scope
 
 **Domain**: Workforce developments—talent supply/demand, skills, compensation, labor policy, culture/DEI, health/wellbeing.
@@ -63,7 +69,7 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 
 ## Execution
 
-### Step 1: News Discovery
+### Step 1: News Discovery [CRITICAL]
 
 - Set generation date; calculate news age
 - Web search 10-15 candidates per freshness priority
@@ -71,7 +77,7 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 - Filter: Meets freshness, decision criticality, has specifics, no rumors
 - Select: 5-8 items covering multiple categories and stakeholders
 
-### Step 2: Build References
+### Step 2: Build References [CRITICAL]
 
 - **Glossary** (G#): Term + definition + analogy
 - **News** (N#): Title + source + date + URL
@@ -80,18 +86,20 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 - **Research** (R#): Finding + source
 - Citation format: `[Ref: N1][n1]`, footnote: `[n1]: URL`
 
-### Step 3: Generate Q&A
+### Step 3: Generate Q&A [CRITICAL]
 
 Each Q&A (150-250 words):
 1. **News** (~30w): What/when/why/category/source/date
 2. **Impact** (~60w): Lifecycle stages affected, quantified metrics, baselines/targets
 3. **Stakeholders** (~40w): ≥2 roles, concerns/actions
-4. **Decision** (~40w): Primary path + alternatives with trade-offs
+4. **Decision** (~40w): Primary path + alternatives with trade-offs, limitations
 5. **Action** (~20w): Immediate steps, owners, measurement
+
+**Include**: Limitations, risks, when NOT to pursue option.
 
 **Avoid**: Generic advice, hype, unattributed claims, speculation.
 
-### Step 4: Validate & Submit
+### Step 4: Validate & Submit [IMPORTANT]
 
 **Checks**:
 - Q&A count: 5-8, ~150-250 words each

@@ -1,5 +1,17 @@
 # Technical Operations News Intelligence Q&A Generator
 
+## Table of Contents
+- [Overview](#overview)
+- [Scope](#scope)
+- [Requirements](#requirements)
+- [Execution](#execution)
+- [Validation Checklist](#validation-checklist)
+- [Question Quality](#question-quality)
+- [Output Format](#output-format)
+- [Glossary](#glossary)
+
+## Overview
+
 Generate 4-6 decision-critical Q&As from recent infrastructure and security news for engineering teams.
 
 **Goal**: Enable informed technical decisions via minimal viable news tracking.
@@ -35,7 +47,10 @@ Generate 4-6 decision-critical Q&As from recent infrastructure and security news
 
 **Lifecycle Phases**: Architecture & Design, Development, Deploy & Release, Operations & Observability
 
-**Topic Coverage**: Emphasize security and infrastructure; include practices and releases
+**Topic Coverage** (Priority order):
+1. **Critical**: Security (CVEs, vulnerabilities), infrastructure (cloud, networking)
+2. **Important**: Practices (DevOps, SRE), major releases
+3. **Optional**: Ecosystem updates (<5% adoption impact)
 
 **Stakeholder Coverage**: Address ≥5 distinct roles across all Q&As
 
@@ -43,13 +58,7 @@ Generate 4-6 decision-critical Q&As from recent infrastructure and security news
 
 **Visuals**: ≥2 diagrams + ≥1 table
 
-**Quality Validation**:
-1. All Q&As meet ≥1 criticality criterion
-2. Fresh, cited news (no marketing/speculation)
-3. Each Q&A impacts ≥2 phases and ≥2 roles with quantified metrics
-4. Recommendations include rationale and timeline
-5. Diverse, valid source URLs
-6. Actionable next steps with owners
+**Quality Validation**: See [Validation Checklist](#validation-checklist) for complete criteria
 
 ## Execution
 
@@ -61,7 +70,8 @@ Generate 4-6 decision-critical Q&As from recent infrastructure and security news
 - **Practices**: InfoQ, Martin Fowler, SRE Weekly
 - **Releases**: GitHub, vendor blogs
 
-**Curate** (prefer primary sources):
+**Curate**:
+- Prefer primary sources (official vendor announcements, CVE databases, official blogs vs secondary reporting)
 - Meet freshness thresholds and ≥1 criticality criterion
 - Include specific, quantified details
 - Balance across categories
@@ -95,11 +105,14 @@ Generate 4-6 decision-critical Q&As from recent infrastructure and security news
 1. **News**: What, when, why, category [Ref: N#][n#]
 2. **Impact**: ≥2 phases with quantified metrics (performance/reliability/security/cost)
 3. **Stakeholders**: ≥2 roles with specific concerns and actions
-4. **Decision**: Recommendation (Adopt/Investigate/Defer/Avoid) + rationale + success criteria
+4. **Decision**: 
+   - Compare ≥2 alternatives (costs, benefits, risks)
+   - Recommendation (Adopt/Investigate/Defer/Avoid) + rationale
+   - Success criteria + limitations/counterarguments
 5. **Action**: Immediate (0-2wk) and short-term (2wk-2mo) steps with owners
 6. **Links**: [n#]: URL
 
-**Self-Check**: Fresh news, meets criticality, multi-phase/role impact, quantified, cited, actionable, risks noted
+**Self-Check**: Per [Validation Checklist](#validation-checklist)
 
 ### 4. Add Visuals
 
@@ -110,7 +123,8 @@ Include ≥2 diagrams (Mermaid flows/matrices) + ≥1 table
 **Validate**:
 - References, coverage, citations, word count, visuals per requirements
 - Fresh news (no hype/speculation), criticality met, impact quantified
-- Recommendations with rationale, diverse sources, valid URLs
+- Recommendations with rationale + alternatives + limitations, diverse sources, valid URLs
+- Self-review: verify facts against authoritative sources, check contradictions, flag uncertainties
 
 **Submit**: Include complete glossary, TOC, generation date, and expiry date (generation + 2 weeks)
 
@@ -125,8 +139,9 @@ Include ≥2 diagrams (Mermaid flows/matrices) + ≥1 table
 | Roles | ≥5 distinct roles covered | PASS/FAIL |
 | Criticality | All meet ≥1 criterion | PASS/FAIL |
 | Impact | All with ≥2 phases+roles, quantified | PASS/FAIL |
-| Decision | All with recommendation+rationale+timeline | PASS/FAIL |
+| Decision | All with alternatives+recommendation+rationale+limitations | PASS/FAIL |
 | Citations | All Q&As cited with valid URLs | PASS/FAIL |
+| Verification | Facts verified, contradictions checked, uncertainties flagged | PASS/FAIL |
 | Visuals | ≥2 diagrams, ≥1 table | PASS/FAIL |
 | Dates | Generation: ___ | Expiry: ___ (+2wk) | INFO |
 
@@ -179,9 +194,11 @@ Include:
 - **[Role]**: Concerns and required actions
 
 **Decision**: 
+- **Alternatives**: [Option A] vs [Option B] (costs, benefits, risks)
 - **Recommendation**: Adopt/Investigate/Defer/Avoid
-- **Rationale**: Trade-offs and alternatives
+- **Rationale**: Trade-offs analysis
 - **Success Criteria**: Measurable targets
+- **Limitations**: When NOT recommended; counterarguments
 
 **Action**: 
 - **Immediate (0-2wk)**: [Actions] (Owner: [Role])
@@ -189,3 +206,15 @@ Include:
 
 [n#]: URL
 ```
+
+## Glossary
+
+**MECE** (Mutually Exclusive, Collectively Exhaustive): Framework ensuring sections are distinct with no gaps or overlaps. Like organizing files into folders where each file belongs to exactly one folder, and all files are covered.
+
+**Primary sources**: Original announcements or data (e.g., vendor blogs, CVE databases, official docs) vs secondary reporting (e.g., news articles summarizing announcements).
+
+**APA 7th format**: Author, A. A. (Year). Title. Source. URL (e.g., Smith, J. (2024). Cloud security practices. AWS Blog. https://aws.amazon.com/blogs/...)
+
+**Quantified metrics**: Specific, measurable values with units (e.g., "latency <200ms", "cost $5K/mo", "error rate <0.1%") vs vague qualifiers ("fast", "cheap", "reliable").
+
+**Decision criticality**: News that blocks decisions, creates material risk, impacts ≥2 roles, requires action within 1-6mo, or has quantified impact.

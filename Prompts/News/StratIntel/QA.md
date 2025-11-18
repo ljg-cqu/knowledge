@@ -8,6 +8,9 @@ Generate 4-6 decision-critical Q&As from recent industry news for strategic deci
 
 **Freshness**: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo
 
+## TOC
+[I. Inputs & Outputs](#i-inputs--outputs) | [II. Requirements](#ii-requirements) | [III. Execution](#iii-execution) | [IV. Validation](#iv-validation-checklist) | [V. Output Format](#v-output-format) | [VI. Example](#vi-example) | [VII. Use Cases](#vii-use-cases)
+
 ## I. Inputs & Outputs
 
 **Inputs**:
@@ -21,6 +24,7 @@ Generate 4-6 decision-critical Q&As from recent industry news for strategic deci
 **Outputs**:
 - Executive summary with horizon coverage
 - 4-6 Q&As with references, ≥1 diagram, ≥1 table
+- Glossary (G≥3) defining acronyms/terms used
 - Validation report
 
 ## II. Requirements
@@ -42,8 +46,9 @@ Generate 4-6 decision-critical Q&As from recent industry news for strategic deci
 **Quality Gates** (all must pass):
 1. **Evidence**: Every Q cites ≥1 source; 0% speculation; URLs valid
 2. **Impact**: 100% quantified + ≥2 horizons + ≥2 roles
-3. **Decision**: 100% have recommendation + rationale + success metrics
+3. **Decision**: 100% have recommendation + rationale + priority label (critical/important/optional) + success metrics; ≥50% compare ≥2 alternatives
 4. **Action**: 100% concrete steps with owners; 0% abstract
+5. **Limitations**: ≥50% include risks, constraints, or when NOT to act
 
 ## III. Execution
 
@@ -78,7 +83,7 @@ Generate 4-6 decision-critical Q&As from recent industry news for strategic deci
 1. **News** (~30w): What, when, why [Ref: N#][n#]
 2. **Impact** (~60w): ≥2 horizons + quantified (CAGR/TAM/$)
 3. **Stakeholders** (~40w): ≥2 roles with concerns, actions
-4. **Decision** (~50w): Recommendation | Rationale | Success metrics
+4. **Decision** (~50w): Priority (critical/important/optional) | Recommendation (compare ≥2 alternatives if applicable) | Rationale | Limitations/risks | Success metrics
 5. **Action** (~20w): S/M/L steps, owners, metrics
 6. **Links**: [n1]: URL
 
@@ -86,7 +91,7 @@ Generate 4-6 decision-critical Q&As from recent industry news for strategic deci
 
 **Create**: ≥1 diagram (Mermaid) + ≥1 table (Markdown)
 
-**Validate**: All requirements met | 3-4 horizons | 4 categories | ≥4 roles | Word counts | Quantified impacts | Valid citations | Concrete decisions | Freshness rules | 0% speculation
+**Validate**: Quality gates 1-5 | Coverage (3-4 horizons, 4 categories, ≥4 roles) | Quantified impacts | Word counts | Valid citations | Priority labels | Alternatives (≥50%) | Limitations (≥50%) | Freshness rules | Concrete actions
 
 Submit only if ALL quality gates pass.
 
@@ -97,7 +102,7 @@ Submit only if ALL quality gates pass.
 | 1 | **Freshness** | ≥60% <3mo, ≥75% <6mo, 100% ≤18mo | __%/<3mo |
 | 2 | **Counts** | G≥3, N≥3, A≥2, P≥1, I≥2, R≥5, Q=4-6 | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ |
 | 3 | **Coverage** | 3-4 horizons \| 4 categories \| ≥4 roles | H:__ C:__ R:__ |
-| 4 | **Quality** | 100% critical \| quantified \| decisions \| citations \| actions | __%  |
+| 4 | **Quality** | 100% critical \| quantified \| citations \| priority \| actions \| ≥50% alternatives \| ≥50% limitations | __%  |
 | 5 | **Word Count** | 100% within 150-250w | __% |
 | 6 | **Visuals** | ≥1 diagram + ≥1 table | D:__ T:__ |
 | 7 | **Meta** | Generated: __ \| Expires: [+4wk] | |
@@ -139,7 +144,7 @@ Submit only if ALL quality gates pass.
 **News** (~30w): What, when, why [Ref: N#][n#]
 **Impact** (~60w): ≥2 horizons | Quantified (CAGR/TAM/$)
 **Stakeholders** (~40w): **[Role 1]**: Concerns, actions | **[Role 2]**: Same
-**Decision** (~50w): **Rec**: [Action] | **Rationale**: Why | **Success**: Metrics
+**Decision** (~50w): **Priority**: [Critical/Important/Optional] | **Rec**: [Action] (compare alternatives if applicable) | **Rationale**: Why | **Risks/Limits**: When NOT to act, constraints | **Success**: Metrics
 **Action** (~20w): **S**: [Steps+owner] | **M**: Same | **L**: Same
 
 [n1]: URL
@@ -169,7 +174,7 @@ Submit only if ALL quality gates pass.
 
 **Stakeholders**: **CRO**: R&D pivot, $200M/3yr. **CSO**: M&A evaluation ($1-2B). **CEO**: $500M investment decision, potential pivot '28-30.
 
-**Decision**: **Rec**: Invest R&D + commercialization; Monitor Toyota '27. | **Rationale**: TRL 4-5 → 5-7yr timeline. 3x improvement transformational. +5-10% share ($15B NPV). Risk: scaling challenges. | **Success**: Pilot TRL 7 by '27, 200+ patents by '26, production by '30.
+**Decision**: **Priority**: Critical. | **Rec**: Invest R&D + commercialization; Monitor Toyota '27. Alternative: License technology ($100M vs $200M R&D). | **Rationale**: TRL 4-5 → 5-7yr timeline. 3x improvement transformational. +5-10% share ($15B NPV). | **Risks/Limits**: Scaling challenges, sulfide safety, supply chain. Do NOT invest if TRL <4 or pilot fails by Q2'27. | **Success**: Pilot TRL 7 by '27, 200+ patents by '26, production by '30.
 
 **Action**: **S**: CRO: $50M R&D (20 PhDs) → TRL 5 Q4'25. **M**: CRO: $150M pilot → Q2'27. **L**: CEO: $500M CapEx → 200K units/yr.
 
@@ -177,16 +182,6 @@ Submit only if ALL quality gates pass.
 
 ---
 
-## VII. Focus & Checklist
+## VII. Use Cases
 
-**Use for**: R&D roadmaps | Market sizing | Policy foresight | ESG strategy | Competitive positioning
-
-**Checklist**:
-- Self-contained with all context (domain, period, profile, metrics, stakeholders, constraints)
-- News-driven, strategic (6mo-10yr), decision-critical (Invest/Monitor/Pivot/Prepare)
-- Complete coverage: 3-4 horizons | 4 categories | ≥4 roles
-- Multi-perspective: Each Q touches ≥2 horizons, ≥2 roles
-- Concise: 150-250w per Q&A
-- Evidence-driven: Authoritative sources, valid URLs, 0% speculation
-- Quantified: TAM, CAGR, NPV, share, ESG metrics
-- Actionable: Concrete S/M/L steps with owners and success metrics
+**R&D roadmaps** | **Market sizing** | **Policy foresight** | **ESG strategy** | **Competitive positioning**
