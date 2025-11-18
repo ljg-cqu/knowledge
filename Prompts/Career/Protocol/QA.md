@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Protocol Standards Interview Q&A Generator
 
 **Mission**: Generate 10 decision-critical Q&As on protocols for senior interviews, focusing on scenarios that block decisions, create risks, or require cross-functional coordination.
@@ -15,14 +21,14 @@
 
 **Success**: All Q&As pass validation with justified criticality and ≥3 stakeholders.
 
-## Decision Framework
+## Decision-Criticality Framework
 
-**Include Q&A if ANY apply**:
-- Blocks Decision: Prevents progress in architecture/deployment.
-- Creates Risk: Impacts security, performance, or interoperability.
-- Affects ≥3 Stakeholders: Requires multi-role coordination.
-- Actively Evolving: Significant changes in past 18 months.
-- High Adoption Barrier: High learning/migration costs.
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Prevents progress in architecture choice or deployment strategy
+- **Creates Risk**: Material threat (security vulnerabilities, performance degradation, interoperability issues)
+- **Affects ≥2 Stakeholder Roles**: Multi-role coordination required (typically ≥3 for protocols)
+- **Requires Action**: 1-18mo implementation window (actively evolving protocols)
+- **Quantified Impact**: Measurable metrics (adoption barrier, learning/migration costs, performance impact)
 
 **Exclude**: Niche/legacy protocols, orthogonal topics, duplicates.
 

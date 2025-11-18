@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Business-Architecture Translation: Minimal Viable Assessment
 
 ## Objective
@@ -9,12 +15,12 @@ Generate 4-8 decision-critical interview questions evaluating senior technical l
 - Depth: Senior engineer to architect level (5-15 years experience)
 - Time: 5-10 minutes per question discussion
 
-**Decision Criticality** (every Q&A must satisfy ≥1):
-- Blocks decisions (revenue model, market entry, migration)
-- Creates material risk (compliance, SLA failure, high churn, tech debt)
-- Affects ≥2 stakeholders (multi-team impact)
-- Actively evolving (recent business/tech changes)
-- High adoption barrier (>40h effort or >$100K investment)
+**Decision-Criticality** (every Q&A must satisfy ≥1):
+- **Blocks Decision**: Revenue model choice, market entry, migration strategy
+- **Creates Risk**: Material threat (compliance gaps, SLA failure, high churn, tech debt)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact
+- **Requires Action**: 1-6mo window (recent business/tech changes, not speculative)
+- **Quantified Impact**: Measurable metrics (>40h effort or >$100K investment, revenue impact)
 
 **Assessment Dimensions** (cover 3-4 unless focused):
 1. Strategic Modeling: Business model → architecture
@@ -37,11 +43,13 @@ Generate 4-8 decision-critical interview questions evaluating senior technical l
 - `output_format` (default: text): text | json
 - `confidence_threshold` (default: medium): high | medium | low
 
+**Difficulty Levels**: **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision)
+
 ## Output Structure
 
 **Text Format**:
 - **Question**: Scenario-based requiring judgment
-- **Difficulty**: foundational | intermediate | advanced
+- **Difficulty**: F | I | A (Foundational | Intermediate | Advanced)
 - **Dimension**: Strategic Modeling | Value & Risk | Organization | Evolution
 - **Decision Criticality**: Specify criteria satisfied (e.g., Blocks decisions)
 - **Answer**: 150-250 words with citations; business analysis → architecture → trade-offs
@@ -140,3 +148,4 @@ flowchart TD
 - **Architecture Decision Record (ADR)**: Document logging context, decision, and consequences
 - **Wardley Mapping**: Maps value chain by visibility/evolution to identify opportunities
 - **Value Stream Mapping**: Visualizes delivery process steps to identify waste
+

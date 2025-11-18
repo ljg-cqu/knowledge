@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Leadership Decision-Critical Q&A Generator
 
 **Context**:
@@ -160,3 +166,5 @@ Trade-offs:
 - Rigor vs. Speed: Guidelines increase time but reduce iteration.
 - Depth vs. Breadth: Context may be too long.
 - Precision vs. Accessibility: Specificity may reduce readability.
+
+

@@ -1,10 +1,16 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Pattern-Based Q&A Generation Template
 
 ## Overview
 Generate 8-12 decision-critical Q&As for career development patterns across 4-6 MECE domains. Ensure concise answers with ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations.
 
 **Key Terms**:
-- **F/I/A**: Fundamental/Intermediate/Advanced
+- **F/I/A**: **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision)
 - **MECE**: Mutually Exclusive, Collectively Exhaustive
 - **RFC 2119**: MUST/SHOULD/MAY
 - **Decision Criticality**: Patterns blocking decisions, creating risk, affecting ≥2 roles, evolving, or with high adoption barriers
@@ -16,13 +22,13 @@ Generate 8-12 decision-critical Q&As for career development patterns across 4-6 
 - **Patterns**: 8-12 across domains
 - **Validation**: All criteria pass; 100% patterns meet ≥1 criticality criterion; critical claims cited with Tier 1-2 sources; MECE domains; accessible links
 
-## Decision Criticality Framework
-**Include if ≥1 criterion**:
-- Blocks decisions (architecture/technology/business/market/strategy)
-- Creates risk (performance/reliability/security/compliance)
-- Affects ≥2 roles
-- Actively evolving (changes in 12-18 months)
-- High adoption barrier (>40h effort)
+## Decision-Criticality Framework
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Architecture, technology, business, market, or strategy choices
+- **Creates Risk**: Material threat (performance, reliability, security, compliance issues)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact
+- **Requires Action**: 1-18mo implementation window (actively evolving)
+- **Quantified Impact**: Measurable metrics (adoption barrier >40h effort, performance %, cost impact)
 
 **Exclude if**:
 - Niche/legacy (<5% adoption)
@@ -157,3 +163,5 @@ Select/adapt 8-12 patterns.
 
 ## Quick Check
 ☐ Self-contained | ☐ Context/Clarity/Precision/Relevance | ☐ MECE/Sufficiency/Breadth/Depth | ☐ Significance/Priority/Conciseness/Accuracy/Credibility | ☐ Logic/Risk-Value/Fairness | ☐ Structure/Consistency | ☐ Evidence/Verification/Practicality/Success Criteria
+
+

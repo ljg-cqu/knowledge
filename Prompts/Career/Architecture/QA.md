@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Software Architecture Interview Q&A Generator
 
 **Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality due to hallucinations.
@@ -14,16 +20,23 @@
 
 **Success**: All validation checks pass.
 
+**Decision-Criticality** (Include if ≥1 criterion satisfied):
+- **Blocks Decision**: Impacts architecture choice, tech stack selection, or design strategy
+- **Creates Risk**: Material threat (scalability limits, security vulnerabilities, maintainability issues)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact (Architect + Developer, SRE + Security)
+- **Requires Action**: 1-6mo implementation window (not theoretical)
+- **Quantified Impact**: Measurable metrics (performance %, cost $, complexity score, time saved)
+
 ---
 
 ## Requirements
 
 ### Specifications
 - **Count**: 5 (1 per dimension)
-- **Difficulty**: 50% Foundational / 50% Advanced
+- **Difficulty**: 50% F (Foundational) / 50% A (Advanced) — **F**=execution-level, **I**=strategy/trade-offs, **A**=portfolio/vision
 - **Answer Length**: 150-300 words (code excluded)
 - **Components**: Pattern, rationale, code, trade-offs, metrics
-- **Citations**: ≥1 each; ≥2 for advanced
+- **Citations**: ≥1 each; ≥2 for Advanced
 
 ### Dimensions (5, 1 Q&A Each)
 1. **Structural**: Decomposition, modularity (hexagonal, layers)
@@ -132,3 +145,4 @@
 - Trade-offs: Rigor vs. speed
 - Skip for: Low-stakes decisions
 - Exclude: Pure theory, speculation
+

@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Software Safety & Security Q&A Generator
 
 **Purpose:** Generate decision-critical security Q&As to reduce hallucinations and improve decision quality for software and infrastructure security, particularly in critical infrastructure.
@@ -30,7 +36,7 @@
 **Output Specifications**
 - **Format**: Include diagrams, configs, citations.
 - **Quantity**: 3-7 Q&A pairs.
-- **Difficulty**: Mix of foundational, intermediate, advanced.
+- **Difficulty**: Mix of F/I/A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision).
 - **Coverage**: At least 3 decision-critical dimensions.
 - **Traceability**: Scenario → Risk → Control → Action → Metric.
 - **Visuals & Practicality**: ≥1 diagram + ≥1 table per batch; ≥1 metric and ≥1 practical element per Q&A.

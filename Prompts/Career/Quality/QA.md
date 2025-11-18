@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Quality Engineering Q&A Generator
 
 ## Context
@@ -32,12 +38,12 @@ Generate 3-5 decision-critical Q&As.
 
 **Exclude**: Academic research, niche tools (<5% adoption), marketing, tactics, speculation.
 
-**Decision Criticality** (include if ≥1 met):
-1. Blocks decisions on strategy, gates, or automation.
-2. Creates quality risks (defects, compliance, regression).
-3. Affects ≥2 roles.
-4. Requires action within 1-6mo.
-5. Quantified impact (defect %, speed gain, etc.).
+**Decision-Criticality** (include if ≥1 criterion satisfied):
+- **Blocks Decision**: Impacts strategy, quality gates, or automation choices
+- **Creates Risk**: Material threat (defects, compliance gaps, regression risks)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact
+- **Requires Action**: 1-6mo implementation window
+- **Quantified Impact**: Measurable metrics (defect %, speed gain, coverage %)
 
 **Categories** (each Q&A ≥1):
 1. **Testing & Automation**: Frameworks, tools, coverage, patterns.
@@ -145,4 +151,6 @@ Use Validation Report; fix failures.
 **C#. Metric**: Details | URL
 **O#. Metric**: Details | URL
 **A#. APA**: Author. YYYY. *Title*. URL
+
+
 

@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Regulatory Compliance Q&A Generator
 
 ## Purpose
@@ -29,7 +35,12 @@ Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Sce
 
 ### Coverage (Decision-Critical Only)
 
-**Distribution**: 4-8 Q&As, 25% Foundational / 50% Intermediate / 25% Advanced, across 4 clusters (1-2 per cluster), ≥2 stakeholders per Q&A
+**Distribution**: 4-8 Q&As, 25% F / 50% I / 25% A, across 4 clusters (1-2 per cluster), ≥2 stakeholders per Q&A
+
+**Difficulty Levels**:
+- **F** = Foundational (execution-level tasks)
+- **I** = Intermediate (strategy/trade-offs)
+- **A** = Advanced (portfolio/vision/P&L)
 
 | Cluster | Focus | Decision Trigger | Stakeholders |
 |---------|-------|------------------|--------------|

@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Cross-Functional Collaboration Interview Q&A Generator
 
 Generate 8-15 decision-critical Q&As on cross-functional collaboration for senior interviews. Each must impact decisions, risk, stakeholders, or require near-term action.
@@ -15,15 +21,22 @@ Generate 8-15 decision-critical Q&As on cross-functional collaboration for senio
 | Aspect | Requirement |
 |--------|-------------|
 | **Count** | 8-15 (balanced across dimensions) |
-| **Difficulty** | Mix of fundamental, intermediate, advanced |
+| **Difficulty** | Mix of F/I/A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision) |
 | **Answer Length** | 100-250 words: Context → Strategy → Framework → Metrics → Trade-offs |
 | **Citations** | ≥1 per Q&A |
 | **Artifacts** | Diagram, framework, table, metric per dimension |
 | **Coverage** | Multiple phases and stakeholders; all decision-critical |
 
-## Decision-Critical Dimensions
+## Decision-Criticality Framework
 
-Include Q&A if it blocks decisions (roadmap, release, resourcing), creates risk (delivery, quality, compliance), affects multiple stakeholders, or requires action within 1-6 months. Exclude niche, optional, redundant, or marketing-focused.
+**Include if ≥1 criterion satisfied**:
+- **Blocks Decision**: Impacts roadmap, release planning, or resource allocation
+- **Creates Risk**: Material threat (delivery delays, quality issues, compliance gaps)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact
+- **Requires Action**: 1-6mo implementation window (not theoretical)
+- **Quantified Impact**: Measurable metrics (meeting time %, delivery velocity, collaboration efficiency)
+
+**Exclude**: Niche, optional, redundant, or marketing-focused topics.
 
 | Dimension | Criticality | Topics |
 |-----------|-------------|--------|
@@ -176,3 +189,5 @@ Include Q&A if it blocks decisions (roadmap, release, resourcing), creates risk 
 **A4.** Skelton, M., & Pais, M. (2019). *Team topologies*. IT Revolution.  
 **A5.** Patton, J. (2014). *User story mapping*. O'Reilly.  
 **A6.** Humble, J., & Farley, D. (2010). *Continuous delivery*. Addison-Wesley.
+
+

@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Organization & Team Building Q&A Generator
 
 Generate 4-8 decision-critical Q&As for organizational scenarios blocking decisions or creating risk.
@@ -16,7 +22,12 @@ Ensure quality: define terms, use metrics, cite sources, compare trade-offs, inc
 **Stakeholders (≥5 core roles)**: Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead
 
 ## Requirements
-**Q&A Specs**: 4-8 Q&As (25% foundational, 50% intermediate, 25% advanced); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation and artifact per Q&A.
+**Q&A Specs**: 4-8 Q&As (25% F, 50% I, 25% A); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation and artifact per Q&A.
+
+**Difficulty Levels**:
+- **F** = Foundational (execution-level tasks)
+- **I** = Intermediate (strategy/trade-offs)
+- **A** = Advanced (portfolio/vision/P&L)
 
 **Decision Criticality Framework** (MANDATORY):
 - Include if ≥1 criterion: Blocks Decision (org restructuring, hiring, scaling), Creates Risk (attrition, burnout, gaps), Affects ≥2 Roles, Requires Action (1-6mo), Quantified Impact (turnover %, retention %, etc.).
@@ -157,5 +168,7 @@ Ensure quality: define terms, use metrics, cite sources, compare trade-offs, inc
 
 **Overall**: [X/12 PASS] | **Issues**: [Failures] | **Remediation**: [Actions]
 ```
+
+
 
 

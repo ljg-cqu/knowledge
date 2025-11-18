@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Statistics Q&A Guide
 
 Generate scenario-based questions testing statistical reasoning in decision-critical contexts. Focus on methodological choices impacting conclusions, risks, or stakeholders.
@@ -9,9 +15,18 @@ Generate scenario-based questions testing statistical reasoning in decision-crit
 **Assumptions**: Basic statistical knowledge.
 
 **Key Elements**:
-- Difficulty: Foundational (concepts), Intermediate (application), Advanced (design/inference).
+- **Difficulty Levels**:
+  - **F** = Foundational (execution-level tasks)
+  - **I** = Intermediate (strategy/trade-offs)
+  - **A** = Advanced (portfolio/vision/P&L)
 - Dimensions: Mathematical, Applied, Interpretive, Computational.
-- Criticality: Scenarios blocking decisions, creating risks, or affecting stakeholders.
+
+**Decision-Criticality** (include if ≥1 criterion satisfied):
+- **Blocks Decision**: Prevents drawing valid conclusions or choosing appropriate methods
+- **Creates Risk**: Material threat (incorrect inference, invalid assumptions, misleading conclusions)
+- **Affects ≥2 Stakeholder Roles**: Multi-team impact (Analysts, Researchers, Data Scientists, PMs)
+- **Requires Action**: 1-6mo implementation or analysis window
+- **Quantified Impact**: Measurable metrics (power %, confidence intervals, effect sizes, p-values)
 
 ## Structure
 
@@ -98,3 +113,4 @@ Recommendation: Results suggest moderate effect but uncertainty high; replicate 
 | Effect size d | 0.53 | Medium, below expected |
 | 95% CI | (−0.6,8.6) | Includes 0, wide range |
 | Power | ~0.45 | Underpowered |
+

@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Value Assessment Q&A Generator (Minimal Viable)
 
 Generate **4–8 decision-critical Q&As** for informed value decisions with limited time. Minimal viable: blocks decisions or creates material risk.
@@ -276,3 +282,4 @@ Accurate | Precise | Cited | Complete (MECE) | Actionable | Consistent | Relevan
 **Exclude**: Theory, speculation, edge cases (<5%), unsupported trends.
 
 **Metrics**: Directional (±20-30%); heuristics over exact.
+

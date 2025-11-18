@@ -20,7 +20,7 @@ owner: ljg-cqu
 - **Quality Gate**: Mandatory checkpoint (fail = stop/fix).
 - **Difficulty**: F=execution, I=strategy/trade-offs, A=portfolio/vision/P&L.
 - **Dimensions**: Lenses (metrics, users, stakeholders, risk, time).
-- **Decision-Critical**: Meets ≥1: blocks decisions (>1M impact), creates risk (>5% churn), affects ≥2 stakeholders, actively evolving, quantified impact.
+- **Decision-Critical**: Meets ≥1: Blocks Decision (>$1M impact), Creates Risk (>5% churn), Affects ≥2 Stakeholder Roles, Requires Action (actively evolving), Quantified Impact.
 
 ## Guidelines
 
@@ -154,3 +154,5 @@ Use multi-dimensional evaluation [Ref: A1]. **First, discover JTBD** [Ref: A7]�
 **Recommendation**: Generalized mass-market feature + enterprise premium services for edge cases.
 
 **Confidence**: High (established frameworks; common PM dilemma).
+
+

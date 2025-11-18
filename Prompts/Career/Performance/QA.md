@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Performance Engineering Q&A Generator (Minimal Viable)
 
 Generate 2-4 decision-critical Q&As for performance engineering—minimal viable tracking for informed decisions with limited time.
@@ -172,4 +178,5 @@ Domain/Audience/Constraints/In Scope/Out of Scope.
 |---|------|--------|----------|
 | ... | ... | PASS | ... |
 ```
+
 

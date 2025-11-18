@@ -1,3 +1,9 @@
+---
+last_updated: 2025-11-18
+status: Reviewed
+owner: ljg-cqu
+---
+
 # Software Roadmap & Evolution Q&A Generator
 
 Generate 3 decision-critical Q&As for informed roadmap decisions.
@@ -16,7 +22,10 @@ Generate 3 decision-critical Q&As for informed roadmap decisions.
 - **Decision-Critical**: Satisfies ≥1 criterion (see Content Standards).
 - **Q&A**: Pair with context, impact, stakeholders, decision, action.
 - **ADR**: Record documenting choices/consequences.
-- **Difficulty Levels**: F (Foundation), I (Intermediate), A (Advanced).
+- **Difficulty Levels**:
+  - **F** = Foundational (execution-level tasks)
+  - **I** = Intermediate (strategy/trade-offs)
+  - **A** = Advanced (portfolio/vision/P&L)
 
 **Purpose and Output**: Analyze evolution, tech decisions, shifts affecting roadmap. Generate 3 Q&As across 3 phases with quantified impact, criteria, trade-offs.
 **Success**: All validation checks pass; 100% decision-critical.
@@ -185,5 +194,6 @@ Runtime toggles: enable/disable features without deployment. **Related**: CI/CD,
 **Last Updated**: 2025-11-16
 **Maintained By**: Career Development Team
 **Review Cadence**: Quarterly (roadmap cycles)
+
 
 
