@@ -12,168 +12,150 @@
 
 ## Overview
 
-Generate 4-6 decision-critical Q&As from recent infrastructure and security news for engineering teams.
+**Problem**: Engineering teams lack time-efficient, decision-focused technical news filtering, leading to missed critical security/infrastructure updates or information overload.
+
+**Task**: Generate 4-6 decision-critical Q&As from infrastructure and security news for engineering teams.
 
 **Goal**: Enable informed technical decisions via minimal viable news tracking.
 
-**Cadence**: Bi-weekly | **Validity**: 2 weeks
+**Constraints**: Bi-weekly cadence, 2-week validity, primary sources only
 
 **Freshness Thresholds**:
 - Security/Infrastructure/Releases: ≥80% <1mo, 100% <4mo
 - Standards/Practices: ≥70% <2mo, 100% <6mo
 
-**Decision Criticality** (≥1 per Q&A):
-1. Blocks infrastructure/security decisions (e.g., vendor choice, architecture)
-2. Creates material risk/threat (security breach, outage, compliance violation)
-3. Impacts ≥2 roles (requires coordination across teams)
-4. Requires action within 1-6mo (time-sensitive window)
-5. Has quantified impact (measurable performance/cost/security metrics)
+**Decision Criticality** (≥1 required per Q&A):
+1. Blocks infrastructure/security decisions (vendor choice, architecture)
+2. Creates material risk (security breach, outage, compliance violation)
+3. Impacts ≥2 roles (cross-team coordination required)
+4. Time-sensitive (action window 1-6mo)
+5. Quantified impact (measurable performance/cost/security metrics)
 
 ## Scope
 
 **Audience**: Architects, DevOps/SRE, Security Engineers, Developers, Engineering Managers
 
-**Include**: Security (CVEs), infrastructure, releases, ecosystem, standards, practices, benchmarks
+**Categories** (include): Security (CVEs), Infrastructure/Cloud, Technical Releases, Standards/Regulations, Engineering Practices, Ecosystem/Integration
 
-**Exclude**: Marketing, rumors, speculation, stale news (>4mo for security)
+**Exclude**: Marketing, rumors, speculation, stale news (>4mo security, >6mo practices)
 
-**Categories**: Technical Releases, Infrastructure/Cloud, Security, Ecosystem/Integration, Standards/Regulations, Engineering Practices
-
-**Relevance** (≥2 required): 
-- Recency (<1mo security, <2mo practices)
-- Multi-phase impact (≥2 lifecycle phases)
-- Multi-role impact (≥2 distinct roles)
-- Time-sensitive (action window 1-6mo)
-- Quantified metrics (specific numbers with units)
+**Relevance Criteria** (≥2 required per Q&A): 
+- Recency: <1mo (security), <2mo (practices)
+- Multi-phase: ≥2 lifecycle phases impacted
+- Multi-role: ≥2 distinct roles impacted
+- Time-sensitive: action window 1-6mo
+- Quantified: specific metrics with units
 
 ## Requirements
 
-**Q&A Structure**: 4-6 total | 120-200 words each | cited sources with URLs
+**Q&A Structure**: 4-6 total, 120-200 words each, cited sources with URLs
 
 **Lifecycle Phases**: Architecture & Design, Development, Deploy & Release, Operations & Observability
 
-**Topic Coverage** (Priority order):
-1. **Critical**: Security (CVEs, vulnerabilities), infrastructure (cloud, networking)
-2. **Important**: Practices (DevOps, SRE), major releases
-3. **Optional**: Ecosystem updates (<5% adoption impact)
+**Topic Priority** (coverage order):
+1. **Critical**: Security (CVEs, vulnerabilities), Infrastructure (cloud, networking)
+2. **Important**: Practices (DevOps, SRE), Major releases (breaking changes)
+3. **Optional**: Ecosystem updates (adoption <5%)
 
-**Stakeholder Coverage**: Address ≥5 distinct roles across all Q&As
+**Coverage**:
+- **Roles**: ≥5 distinct roles across all Q&As
+- **News Sources**: ≥4 primary sources (N#)
+- **Visuals**: ≥2 diagrams, ≥1 table
 
-**References**: Glossary (terms used), News sources (≥4), Tools, Standards, Reports, Citations
-
-**Visuals**: ≥2 diagrams + ≥1 table
-
-**Quality Validation**: See [Validation Checklist](#validation-checklist) for complete criteria
+**References Types**: G# (Glossary), N# (News), T# (Tools), S# (Standards), R# (Reports), A# (Citations)
 
 ## Execution
 
 ### 1. News Discovery & Curation
 
-**Search** (≥10 candidates to ensure 4-6 quality Q&As after filtering; prioritize 1-7d for security/infrastructure):
-- **Security**: CVE DB, CISA KEV, vendor security advisories, GitHub Security Advisories
-- **Infrastructure**: AWS/GCP/Azure blogs, Kubernetes blog, CNCF, container registries
-- **Practices**: InfoQ, Martin Fowler blog, SRE Weekly, DevOps Institute
-- **Releases**: GitHub releases, official vendor blogs, package registries
+**Search** (≥10 candidates; prioritize 1-7d for security/infrastructure):
+- **Security**: CVE DB, CISA KEV, vendor advisories, GitHub Security Advisories
+- **Infrastructure**: AWS/GCP/Azure blogs, Kubernetes blog, CNCF
+- **Practices**: InfoQ, Martin Fowler blog, SRE Weekly
+- **Releases**: GitHub releases, vendor blogs, package registries
 
-**Curate**:
-- Prefer primary sources (official vendor announcements, CVE databases, official blogs vs secondary reporting)
-- Meet freshness thresholds and ≥1 criticality criterion
-- Include specific, quantified details
-- Balance across categories
+**Filter**:
+- Primary sources only (vendor announcements, CVE DB, official docs)
+- Meet freshness thresholds + ≥1 criticality criterion
+- Quantified details present
+- Balanced across categories
 
-**Allocate**: Distribute 4-6 Q&As across phases, categories, and roles. Record generation date (YYYY-MM-DD).
+**Allocate**: Distribute 4-6 Q&As across phases, categories, roles. Record date (YYYY-MM-DD).
 
 ### 2. Build References
 
-**Reference Types**:
-- **G#**: Glossary - term, definition with analogy, context (only terms used)
-  - Example: G1: CVE - Common Vulnerabilities and Exposures...
-- **N#**: News - title, source, date YYYY-MM-DD, category, URL
-  - Example: N1: "Kubernetes 1.30 Released", Kubernetes Blog, 2024-04-17, Releases, https://kubernetes.io/blog/...
-- **T#**: Tools - name, description, version, URL
-  - Example: T1: Prometheus v2.50 - metrics collection and alerting, https://prometheus.io
-- **S#**: Standards - ID, title, key changes, URL
-  - Example: S1: PCI-DSS v4.0 - Payment Card Industry standard, adds MFA requirements, https://...
-- **R#**: Reports - title, firm, date, key findings, URL
-  - Example: R1: "State of DevOps 2024", DORA, 2024-06, elite performers deploy 973x more frequently, https://...
-- **A#**: Citations - APA 7th format with URL
-  - Example: A1: Smith, J. (2024). Cloud security practices. AWS Blog. https://...
+**Reference Format**:
+- **G#**: term, definition with analogy (only used terms)
+- **N#**: title, source, YYYY-MM-DD, category, URL
+- **T#**: name, description, version, URL
+- **S#**: ID, title, key changes, URL
+- **R#**: title, firm, date, key findings, URL
+- **A#**: APA 7th with URL
 
-**Citation Format**: [Ref: N#][n#] inline → [n#]: URL at end
-- Example: "AWS announced Lambda SnapStart [Ref: N1][1]" → "[1]: https://aws.amazon.com/blogs/..."
+**Citation**: [Ref: N#][n#] inline → [n#]: URL at end
 
-**Evidence**: Prefer primary sources (vendor blogs, CVE DB, official docs) over secondary (news articles); flag uncertainties (e.g., "estimated", "unconfirmed")
+**Evidence**: Primary sources only; flag uncertainties ("estimated", "unconfirmed")
 
 ### 3. Generate Q&A
 
-**Question Patterns**: 
-- "[News] implications for [Phase]+[Roles]?"
-- "[CVE/Change]: response strategy?"
-- "[Release/Change]: adoption approach?"
+**Question Format**: "[News] implications for [Phase]+[Roles]?" or "[CVE/Change]: response strategy?"
 
-**Avoid**: 
-- Generic questions ("How do CVEs work?")
-- Hype/marketing ("Revolutionary AI tool...")
-- Unattributed claims ("Best practices recommend...")
-- Speculation ("May release next month...")
+**Avoid**: Generic questions, hype, unattributed claims, speculation
 
-**Structure** (120-200 words total):
+**Structure** (120-200 words):
 1. **News**: What, when, why, category [Ref: N#][n#]
-2. **Impact**: ≥2 phases with quantified metrics (performance/reliability/security/cost)
-3. **Stakeholders**: ≥2 roles with specific concerns and actions
+2. **Impact**: ≥2 phases, quantified metrics (latency/cost/severity)
+3. **Stakeholders**: ≥2 roles, concerns, actions
 4. **Decision**: 
-   - **Alternatives**: Compare ≥2 options (costs in $, benefits with metrics, risks with probability/impact)
-   - **Recommendation**: Adopt/Investigate/Defer/Avoid + rationale with trade-offs
-   - **Success Criteria**: Measurable targets (baseline → target, measurement method)
-   - **Limitations**: When NOT to use; counterarguments
-5. **Action**: Immediate (0-2wk) and short-term (2wk-2mo) steps with owners
+   - **Alternatives**: ≥2 options (cost $, benefit with metric, risk probability/impact)
+   - **Recommendation**: Adopt/Investigate/Defer/Avoid + rationale
+   - **Success Criteria**: baseline → target, measurement method
+   - **Limitations**: When NOT to use, counterarguments
+5. **Action**: Immediate (0-2wk), short-term (2wk-2mo), owners
 6. **Links**: [n#]: URL
-
-**Self-Check**: Per [Validation Checklist](#validation-checklist)
 
 ### 4. Add Visuals
 
-Include ≥2 diagrams (Mermaid flows/matrices) + ≥1 table
+Include ≥2 diagrams (Mermaid) + ≥1 table
 
 ### 5. Validate & Submit
 
-**Validate**:
-- **Completeness**: References (N≥4), coverage (5+ roles, 4-6 Q&As), citations with URLs, word count (120-200/Q&A), visuals (≥2 diagrams, ≥1 table)
-- **Quality**: Fresh news (meet thresholds, no hype/speculation), criticality met (≥1 criterion/Q&A), impact quantified (specific metrics with units)
-- **Decisions**: Recommendations with rationale + ≥2 alternatives (cost/benefit/risk) + success criteria (baseline→target) + limitations
-- **Accuracy**: Verify facts against primary sources (vendor docs, CVE DB, official blogs), check contradictions, flag uncertainties ("estimated", "unconfirmed"), validate all URLs
+**Check**:
+- **Completeness**: N≥4, 5+ roles, 4-6 Q&As, 120-200w/Q&A, URLs valid, ≥2 diagrams, ≥1 table
+- **Quality**: Freshness met, ≥1 criticality/Q&A, quantified metrics, no hype/speculation
+- **Decisions**: ≥2 alternatives (cost/benefit/risk), recommendation+rationale, success criteria (baseline→target), limitations
+- **Accuracy**: Facts verified (primary sources), contradictions checked, uncertainties flagged
 
-**Submit**: Include complete glossary, TOC, generation date, and expiry date (generation + 2 weeks)
+**Submit**: Glossary (used terms only), TOC, generation date, expiry (date+2wk)
 
 ## Validation Checklist
 
 | Check | Criteria | Status |
 |-------|----------|--------|
-| Freshness | Sec/Infra ≥80% <1mo; Stds/Prac ≥70% <2mo | PASS/FAIL |
-| References | Adequate coverage (N≥4, others as needed) | PASS/FAIL |
-| Q&As | 4-6 total, 120-200w each | PASS/FAIL |
-| Coverage | Security and infrastructure emphasized | PASS/FAIL |
-| Roles | ≥5 distinct roles covered | PASS/FAIL |
-| Criticality | All meet ≥1 criterion | PASS/FAIL |
-| Impact | All with ≥2 phases+roles, quantified | PASS/FAIL |
-| Decision | All with alternatives+recommendation+rationale+limitations | PASS/FAIL |
-| Citations | All Q&As cited with valid URLs | PASS/FAIL |
-| Verification | Facts verified, contradictions checked, uncertainties flagged | PASS/FAIL |
-| Visuals | ≥2 diagrams, ≥1 table | PASS/FAIL |
-| Dates | Generation: ___ | Expiry: ___ (+2wk) | INFO |
+| Freshness | Sec/Infra ≥80% <1mo; Stds/Prac ≥70% <2mo | ☐ |
+| References | N≥4 primary sources | ☐ |
+| Q&As | 4-6 total, 120-200w each | ☐ |
+| Priority | Security/Infrastructure emphasized | ☐ |
+| Roles | ≥5 distinct roles | ☐ |
+| Criticality | Each Q&A: ≥1 criterion | ☐ |
+| Impact | Each Q&A: ≥2 phases+roles, quantified | ☐ |
+| Decision | Each Q&A: ≥2 alternatives, recommendation, criteria, limitations | ☐ |
+| Citations | All URLs valid | ☐ |
+| Accuracy | Facts verified, contradictions checked, uncertainties flagged | ☐ |
+| Visuals | ≥2 diagrams, ≥1 table | ☐ |
+| Dates | Generation: ___ \| Expiry: ___ (+2wk) | ☐ |
 
 ## Question Quality
 
-**Good Examples**:
-- "CVE-2024-XXXX critical vulnerability: What's our patching strategy?"
-- "Kubernetes 1.30 deprecations: How to migrate affected workloads?"
-- "AWS pricing changes: What's the cost impact for our infrastructure?"
+**Good**: News-driven, decision-focused, quantified
+- "CVE-2024-XXXX (CVSS 9.8): patching strategy?"
+- "K8s 1.30 deprecations: migration approach?"
+- "AWS pricing +20%: cost impact?"
 
-**Bad Examples** (avoid):
-- "How do CVEs work?" (generic, not news-driven)
-- "What is SRE?" (educational, not decision-focused)
-- "Should we use Kubernetes?" (no specific news trigger)
-- Feature announcements without decision impact
+**Bad**: Generic, educational, no trigger
+- "How do CVEs work?"
+- "What is SRE?"
+- "Should we use Kubernetes?"
 
 ## Output Format
 
@@ -181,14 +163,20 @@ Single Markdown document with sections: **TOC** → **Executive Summary** → **
 
 ### Executive Summary
 
-Include:
-- **Domain**: TechOps | **Period**: [YYYY-MM-DD] to [YYYY-MM-DD] | **Coverage**: [X Q&As across Y phases]
-- **Key Insights** (1-2 highest-impact): 
-  - News item + quantified impact (metrics) + recommendation (Adopt/Investigate/Defer/Avoid) + timeline (action window)
-- **Dashboard**: Phase | News | Decision | Timeline table
-- **Stats**: Roles covered (X), References (N#/T#/S# counts)
+**Domain**: TechOps | **Period**: YYYY-MM-DD to YYYY-MM-DD | **Coverage**: X Q&As, Y phases
 
-### Phase Overview Table
+**Key Insights** (top 1-2 by impact):
+- News + quantified impact + recommendation + timeline
+
+**Dashboard**:
+
+| Phase | News | Decision | Timeline |
+|-------|------|----------|----------|
+| [Phase] | [Item] | [Adopt/Defer/etc] | [Xmo] |
+
+**Stats**: X roles, N# news, T# tools, S# standards
+
+### Phase Overview
 
 | Phase | Categories | Top News | Roles |
 |-------|------------|----------|-------|
@@ -199,53 +187,45 @@ Include:
 
 ### Q&A Template
 
-```
+```markdown
 ### Q#: [News Question + Phase + Roles]
 
-**Phase**: [Architecture & Design/Development/Deploy & Release/Operations & Observability] | **Roles**: [Primary, Secondary] | **Category**: [Security/Infrastructure/Releases/Practices/Standards/Ecosystem] | **Criticality**: [1-5 from list]
+**Phase**: [Phase] | **Roles**: [Role1, Role2] | **Category**: [Category] | **Criticality**: [#]
 
-**News**: [What happened] on [YYYY-MM-DD]: [why it matters] [Ref: N#][n#]
+**News**: [What] on YYYY-MM-DD: [why] [Ref: N#][n#]
 
 **Impact**: 
-- **[Phase 1]**: [Metric] (e.g., latency +50ms, cost +$2K/mo, CVE severity 9.8/10)
-- **[Phase 2]**: [Metric]
+- **[Phase 1]**: [metric with unit] (latency +50ms, cost +$2K/mo, CVSS 9.8)
+- **[Phase 2]**: [metric with unit]
 
 **Stakeholders**: 
-- **[Role 1]**: [Specific concern] → Action: [what to do]
-- **[Role 2]**: [Specific concern] → Action: [what to do]
+- **[Role 1]**: [concern] → [action]
+- **[Role 2]**: [concern] → [action]
 
 **Decision**: 
 - **Alternatives**: 
-  - Option A: [description] | Cost: [$] | Benefit: [metric] | Risk: [impact+probability]
-  - Option B: [description] | Cost: [$] | Benefit: [metric] | Risk: [impact+probability]
-- **Recommendation**: [Adopt/Investigate/Defer/Avoid]
-- **Rationale**: [Why this option? Trade-offs considered]
-- **Success Criteria**: [Current baseline] → [Target] (measure via [method/tool])
-- **Limitations**: Do NOT use when [condition]; [counterargument consideration]
+  - A: [description] | Cost: $ | Benefit: [metric] | Risk: [probability/impact]
+  - B: [description] | Cost: $ | Benefit: [metric] | Risk: [probability/impact]
+- **Recommendation**: Adopt/Investigate/Defer/Avoid
+- **Rationale**: [trade-offs]
+- **Success Criteria**: [baseline] → [target] (measure: [method])
+- **Limitations**: NOT for [condition]; [counterargument]
 
 **Action**: 
-- **Immediate (0-2wk)**: [Action 1], [Action 2] (Owner: [Role])
-- **Short-term (2wk-2mo)**: [Action 3], [Action 4] (Owner: [Role])
+- **Immediate (0-2wk)**: [actions] (Owner: [role])
+- **Short-term (2wk-2mo)**: [actions] (Owner: [role])
 
-[n#]: [Full URL]
+[n#]: [URL]
 ```
 
 ## Glossary
 
-**APA 7th format**: Citation standard: Author, A. A. (Year). Title. Source. URL. Example: Smith, J. (2024). Cloud security practices. AWS Blog. https://aws.amazon.com/blogs/security/...
+**CISA KEV**: Known Exploited Vulnerabilities catalog. Lists CVEs with active exploitation requiring priority patching.
 
-**CISA KEV**: Known Exploited Vulnerabilities catalog maintained by Cybersecurity and Infrastructure Security Agency. Lists CVEs with active exploitation requiring priority patching.
+**CVE**: Common Vulnerabilities and Exposures. Standardized security vulnerability ID (e.g., CVE-2024-12345). Scored 0-10 via CVSS.
 
-**CVE**: Common Vulnerabilities and Exposures - standardized identifier for publicly disclosed security vulnerabilities (e.g., CVE-2024-12345). Scored 0-10 via CVSS.
+**Decision criticality**: News blocking decisions, creating material risk, impacting ≥2 roles, time-sensitive (1-6mo), or quantified impact.
 
-**Decision criticality**: News that blocks decisions, creates material risk, impacts ≥2 roles, requires action within 1-6mo, or has quantified impact.
+**Primary sources**: Original announcements (vendor blogs, CVE DB, official docs) vs secondary reporting (news articles).
 
-**DevOps**: Development + Operations integration practices. Emphasizes automation, continuous delivery, and collaboration between dev and ops teams.
-
-**MECE** (Mutually Exclusive, Collectively Exhaustive): Framework ensuring sections are distinct with no gaps or overlaps. Like organizing files into folders where each file belongs to exactly one folder, and all files are covered.
-
-**Primary sources**: Original announcements or data (vendor blogs, CVE databases, official docs) vs secondary reporting (news articles summarizing announcements).
-
-**Quantified metrics**: Specific, measurable values with units (e.g., "latency <200ms", "cost $5K/mo", "error rate <0.1%") vs vague qualifiers ("fast", "cheap", "reliable").
-
-**SRE**: Site Reliability Engineering - discipline applying software engineering to infrastructure and operations. Focuses on reliability, scalability, and automation.
+**Quantified metrics**: Measurable values with units ("latency <200ms", "$5K/mo") vs vague qualifiers ("fast", "cheap").

@@ -8,7 +8,7 @@
 ## Purpose
 Generate 4–6 decision-critical Q&As from recent industry news for operations leaders. Use web search; self-contained.
 
-**Context**: Operations leaders need timely, actionable intelligence on supply chain events that require decisions within 6mo. Problem: fragmented news sources, unclear impact. Constraint: limit to decision-critical topics (blocks decisions, creates risk >5%, affects ≥2 stakeholders). Resources: 4–6h/mo effort. Scale: typically 1M+ users or $500K+ annual operations budget. Target: reduce decision time 30-40%, improve risk detection 40-50%.
+**Context**: Problem (fragmented news, unclear impact), scale (1M+ users or $500K+ ops budget), constraints (decision-critical only: blocks decisions, risk >5%, ≥2 stakeholders), timeline (6mo), resources (4–6h/mo), targets (decision time ↓30-40%, risk detection ↑40-50%).
 
 **Cadence**: Monthly
 
@@ -23,12 +23,9 @@ Generate 4–6 decision-critical Q&As from recent industry news for operations l
 
 **Freshness**: Majority <2mo; disruptions <1mo; regulatory <6mo.
 
-**Decision Criticality** (≥1 required, priority labeled):
-1. **Critical**: Blocks decisions (sourcing, capacity, suppliers)
-2. **Critical**: Creates risk (disruptions, incidents, cost shocks >5%)
-3. **Important**: Affects multiple stakeholders
-4. **Important**: Requires action within 6mo
-5. **Important**: Quantified impact
+**Decision Criticality** (each Q&A requires ≥1):
+1. **Critical**: Blocks decisions or creates risk >5%
+2. **Important**: Affects ≥2 stakeholders, requires action within 6mo, or has quantified impact
 
 ---
 
@@ -64,18 +61,17 @@ Generate 4–6 decision-critical Q&As from recent industry news for operations l
 - Industry: CSCMP's Supply Chain Quarterly (2024+), ASCM publications (2024+)
 
 **Curate**: 
-- Prefer primary sources (company announcements, regulatory bodies, official reports) over secondary reporting
+- Prefer primary sources (company announcements, regulatory bodies, official reports)
 - Cover ≥3 source types, multiple categories
-- Each Q&A must meet ≥1 criticality criterion
+- Each Q&A meets ≥1 criticality criterion
 - Verify freshness: majority <2mo, disruptions <1mo, regulatory <6mo
-- Include specific, quantified details from sources
 
 **Record**: Date (YYYY-MM-DD), domain, news title/source/date, summary, category, URL, criticality criterion.
 
 ### 2. Build References
 **Glossary**: Define terms in plain language with analogies (e.g., "Just-in-time inventory: ordering supplies only when needed, like a restaurant buying fresh ingredients daily"). Include only terms used in Q&As.
 
-**Citations**: Use [Ref: N#][n#] inline. Format: [n#]: Source Title. Publication/Organization (Date: YYYY-MM-DD). URL (Accessed: YYYY-MM-DD). Flag uncertainties (e.g., "impact estimated pending official data").
+**Citations**: Use [Ref: N#][n#] inline. Format: [n#]: Source Title. Publication/Organization (Date: YYYY-MM-DD). URL (Accessed: YYYY-MM-DD). Flag uncertainties.
 
 ### 3. Generate Q&A Structure
 1. ### Qn: Question
@@ -93,7 +89,7 @@ Generate 4–6 decision-critical Q&As from recent industry news for operations l
 7. #### References: [n#]: Full citation format per §2
 
 ### 4. Visuals
-Add ≥2 diagrams (Mermaid: risk heatmap, decision tree, impact matrix) + ≥1 comparison table (alternatives, pros/cons, costs).
+Include ≥2 diagrams (Mermaid: risk heatmap, decision tree, impact matrix) + ≥1 comparison table (alternatives with costs/benefits/risks).
 
 ### 5. Verification
 **Self-review**: Before finalizing, verify each item:
