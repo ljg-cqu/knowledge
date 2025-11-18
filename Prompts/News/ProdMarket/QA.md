@@ -37,7 +37,7 @@
 - Competitors: [List 3-7] with positioning
 - Priorities: [Top 3 strategic goals, 6mo]
 
-**Output Requirements**: 4-6 Q&As | 3-4 phases (Discovery, Design, Launch, Growth) | 1-2 Q/phase | ≥5 stakeholders total (see Context) | All news-cited | All decisions actionable
+**Output Requirements**: 4-6 Q&As (150-250w each) | 3-4 phases (Discovery, Design, Launch, Growth) | 1-2 Q/phase | ≥5 stakeholders total (see Context) | All news-cited | All decisions actionable
 
 **Categories** (balance required—distribute 4-6 Q&As across all 4):
 1. **Competitive** (≥1): Feature launches, updates, parity gaps
@@ -192,6 +192,7 @@
 | **[IMPORTANT] Citations** | All Q&As cited [Ref: X#][x#] | | ☐ PASS |
 | **[IMPORTANT] Visuals** | ≥2 diagrams/matrices + ≥1 table | | ☐ PASS |
 | **[IMPORTANT] Completeness** | No [TBD]/[TODO], all actions owned | | ☐ PASS |
+| **[IMPORTANT] Word Count** | All Q&As within 150-250w | | ☐ PASS |
 | **Meta** | Gen: YYYY-MM-DD \| Expires: [+2wk] | | INFO |
 
 ### Quick Checklist

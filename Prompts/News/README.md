@@ -291,6 +291,52 @@ Are you a formation-stage company (pre-PMF, pre-Series A)?
 - **Strategic Intelligence**: CSO, Board, long-term planners
 - **Startup & Formation**: Founder, early-stage investors
 
+## Standardization
+
+### Word Count Rationale
+
+Q&A word counts are standardized based on decision complexity and stakeholder analysis requirements:
+
+| Word Count | Files | Rationale |
+|------------|-------|-----------|
+| **120-200w** | TechOps, CommOps, FinEcon, Startup | Tactical/operational decisions with clear technical or financial metrics; immediate action focus (0-2mo); single-function optimization |
+| **150-250w** | ProdMarket, StratIntel, OpsSupply, PeopleWF | Strategic decisions requiring multi-stakeholder analysis; competitive/market context; longer planning horizons (3-18mo); cross-functional trade-offs |
+
+**Design Principle**: Word count reflects decision complexity, not just update frequency. ProdMarket (bi-weekly) requires strategic depth for competitive positioning and pricing decisions despite frequent updates, while FinEcon (monthly) remains concise due to quantified financial metrics.
+
+### Freshness Requirements by Velocity
+
+| Velocity | Categories | Freshness Target | Files |
+|----------|-----------|------------------|-------|
+| **High** | Security/CVEs, Competitive features, Pricing changes, Logistics disruptions | Majority <1mo, max 4mo | TechOps, ProdMarket (Competitive/Pricing), OpsSupply (Logistics) |
+| **Medium** | Product strategy, Market research, Compensation, Supplier risk | Majority <2mo, max 6mo | ProdMarket (Strategy/Research), CommOps, FinEcon, PeopleWF (Talent/Comp), OpsSupply (Supplier) |
+| **Low** | R&D breakthroughs, Policy/regulatory, ESG, Facilities, Culture trends | Majority <6mo, max 18mo | StratIntel, OpsSupply (Facilities/Regulatory), PeopleWF (Culture) |
+
+**Design Principle**: News decay rate varies by category. High-velocity categories (security, competitive, pricing) require fresher sources; low-velocity categories (R&D, policy, culture) have longer relevance windows.
+
+### Intentional Exclusions
+
+The following news types are intentionally excluded from all prompts in this framework:
+
+| Exclusion Type | Rationale | Alternative |
+|----------------|-----------|-------------|
+| **Crisis Communications & PR** | Real-time crisis response requires different workflows (incident command, stakeholder comms); not suitable for bi-weekly/monthly intelligence cycles | Crisis management playbooks, incident response procedures |
+| **Internal IT/Systems (non-technical)** | Internal tooling decisions (CRM config, HR systems, office productivity) are operational, not strategic | IT operations documentation, vendor selection frameworks |
+| **Routine Announcements** | Product updates, minor releases, incremental features without competitive/strategic impact | Product changelogs, release notes, internal newsletters |
+| **Rumors & Unverified Claims** | Speculative news, leaks, unconfirmed reports lack decision-quality evidence | Verified sources only; flag uncertainties when using emerging reports |
+| **Marketing Content & Hype** | Vendor marketing, PR releases, promotional content often lack substantive insights | Primary sources (research, official docs, regulatory filings) |
+| **Pre-Seed/Ideation Stage** | Pre-formation (idea validation, side projects, hobbyist ventures) lack organizational structure | Startup & Formation covers pre-seed → Series A with team/funding |
+| **Individual Career Decisions** | Personal job searches, salary negotiations, skill development (vs workforce trends) | Career development resources, mentorship programs |
+
+**Cross-File Exclusions** (specific to multiple files):
+- **TechOps**: Excludes product features (ProdMarket), business operations (OpsSupply), HR systems (PeopleWF)
+- **ProdMarket**: Excludes sales execution (CommOps), technical implementation (TechOps), R&D >12mo (StratIntel)
+- **CommOps**: Excludes product strategy (ProdMarket), infrastructure (TechOps), corporate finance (FinEcon)
+- **FinEcon**: Excludes formation fundraising (Startup), operations costs (OpsSupply), HR compensation strategy (PeopleWF)
+- **StratIntel**: Excludes <6mo tactical decisions (all operational files), product roadmaps (ProdMarket)
+- **OpsSupply**: Excludes product R&D (StratIntel), software infrastructure (TechOps), GTM (CommOps)
+- **PeopleWF**: Excludes formation hiring (Startup), frontline safety (OpsSupply), software engineering practices (TechOps)
+
 ## Validation Checklist
 
 - [x] **Stage separation**: Formation vs Growth/Scale clearly defined
@@ -304,6 +350,12 @@ Are you a formation-stage company (pre-PMF, pre-Series A)?
 - [x] **Quality gates**: All files include validation reports and quality checks
 - [x] **Boundary clarifications**: Product vs Commercial vs Technical explicitly defined
 - [x] **Multi-file coverage**: Macro/economic, talent/labor, competitive intelligence boundaries documented
+- [x] **Word count standardization**: 120-200w (tactical/operational) vs 150-250w (strategic) with documented rationale
+- [x] **Freshness standardization**: High/Medium/Low velocity categories with explicit targets
+- [x] **Intentional exclusions**: Crisis PR, internal IT, routine announcements, rumors, marketing hype documented
+- [x] **Legal/governance coverage**: Added to StratIntel scope (major litigation, IP disputes, board composition)
+- [x] **OpsSupply depth**: Expanded to match other files (221 lines, dedicated glossary, MECE position, example template)
+- [x] **Glossary placement**: All files have glossaries (flexible placement: inline in Context for critical terms or dedicated section)
 
 ## Maintenance
 
@@ -318,3 +370,4 @@ Are you a formation-stage company (pre-PMF, pre-Series A)?
 |------|---------|---------|--------|
 | 2025-11-15 | 1.0 | Initial MECE-compliant framework established | Zencoder AI |
 | 2025-11-15 | 2.0 | Added Product & Market Intelligence News; clarified boundaries; documented multi-file coverage | Zencoder AI |
+| 2025-11-18 | 3.0 | **Optimization Pass**: (1) Expanded OpsSupply from 135→221 lines (MECE position, glossary, examples); (2) Standardized word counts with rationale (120-200w tactical vs 150-250w strategic); (3) Added Intentional Exclusions section; (4) Added legal/governance to StratIntel (litigation, IP, board composition); (5) Created central Freshness Reference table; (6) Documented glossary placement standards | Zencoder AI |

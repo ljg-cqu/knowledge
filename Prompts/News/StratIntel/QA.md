@@ -6,11 +6,11 @@
 
 **Cadence**: Monthly | 4-6h | **Validity**: 4 weeks
 
-**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates. **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors.
+**Scope**: Research breakthroughs, policy/regulatory shifts, market trends, ESG mandates, corporate governance, major litigation/IP disputes. **Excludes**: tactical features, operations, speculation, marketing content, unverified rumors, routine legal matters.
 
 **Freshness**: ≥60% <3mo, ≥75% <6mo, 100% ≤18mo (from generation date)
 
-**Glossary**: CAGR (Compound Annual Growth Rate), TAM (Total Addressable Market), NPV (Net Present Value: `NPV = Σ(Cash Flow_t / (1+r)^t)`), TRL (Technology Readiness Level: 1-9 scale), ESG (Environmental/Social/Governance), CSO (Chief Strategy Officer), CRO (Chief Research Officer), CIO (Chief Information Officer), IP (Intellectual Property)
+**Glossary**: CAGR (Compound Annual Growth Rate), TAM (Total Addressable Market), NPV (Net Present Value: `NPV = Σ(Cash Flow_t / (1+r)^t)`), TRL (Technology Readiness Level: 1-9 scale), ESG (Environmental/Social/Governance), CSO (Chief Strategy Officer), CRO (Chief Research Officer), CIO (Chief Information Officer), IP (Intellectual Property), Board Composition (Director mix: independent, executive, diversity), Fiduciary Duty (Legal obligation to act in shareholders' best interests), Material Litigation (Legal disputes with potential significant financial/reputational impact)
 
 ## TOC
 [I. Inputs & Outputs](#i-inputs--outputs) | [II. Requirements](#ii-requirements) | [III. Execution](#iii-execution) | [IV. Validation](#iv-validation-checklist) | [V. Output Format](#v-output-format) | [VI. Example](#vi-example) | [VII. Use Cases](#vii-use-cases)
@@ -33,7 +33,7 @@
 
 **Coverage** (MECE):
 - **Horizons** (3-4): Short (6-18mo) | Medium (18-36mo) | Long (3-5yr) | Transformational (5-10yr, optional) | 1-2Q each
-- **Categories** (all 4): Research | Policy | Market | Industry | Each Q tagged ≥1
+- **Categories** (all 5): Research | Policy/Regulatory | Market/Industry | ESG/Sustainability | Governance/Legal | Each Q tagged ≥1
 - **Stakeholders**: ≥4 roles across all Q&As | ≥2 roles per Q
 - **Criticality** (100%): Each Q satisfies ≥1: Blocks investment/pivot | Material risk/opportunity | Multi-stakeholder tension | Action required | Quantifiable impact
 
@@ -52,19 +52,20 @@
 
 **Record generation date (YYYY-MM-DD)—calculate ages from this.**
 
-**Search** (8-10 candidates, query: `"[Domain] + [breakthrough|research|policy|M&A|market]"`):
+**Search** (8-10 candidates, query: `"[Domain] + [breakthrough|research|policy|M&A|market|governance|litigation]"`):
 - **Research**: arXiv, Nature, Science, IEEE, ACM
-- **Policy**: Congress.gov, Federal Register, OECD, EU Commission
-- **Market**: McKinsey, Gartner, Forrester, IDC
-- **Industry**: CB Insights, Bloomberg, FT, WSJ
+- **Policy/Regulatory**: Congress.gov, Federal Register, OECD, EU Commission
+- **Market/Industry**: McKinsey, Gartner, Forrester, IDC, CB Insights, Bloomberg
+- **ESG/Sustainability**: CDP, SASB, GRI, Corporate sustainability reports
+- **Governance/Legal**: SEC filings (10-K, DEF 14A), major legal databases, corporate governance news (WSJ, FT, Bloomberg Law)
 
-**Curate** (≥8 candidates, all 4 categories): Freshness met | Primary sources | ≥1 criticality criterion | Concrete details (dates, numbers, impacts)
+**Curate** (≥8 candidates, all 5 categories): Freshness met | Primary sources | ≥1 criticality criterion | Concrete details (dates, numbers, impacts)
 
 ### Step 2: Build References
 
 - **G#**: Term (Acronym) | Definition | Context | Example
-- **N#**: Title (Source, MM/DD/YY) | Summary | Category (R/P/M/I) | Criticality | URL
-- **A/P/I#**: Title (Date) | Key Findings | URL
+- **N#**: Title (Source, MM/DD/YY) | Summary | Category (R/P/M/E/G: Research/Policy/Market/ESG/Governance) | Criticality | URL
+- **A/P/I/L#**: Title (Date) | Key Findings | URL (Academic/Policy/Industry/Legal)
 - **R#**: Full APA 7th with [Tag]
 - **In-text**: `[Ref: N1][n1]` with `[n1]: URL` at Q&A end
 
@@ -93,15 +94,15 @@
 |---|-------|----------|--------|
 | 1 | **Freshness** | ≥60% <3mo, ≥75% <6mo, 100% ≤18mo | __%/<3mo |
 | 2 | **Counts** | G≥3, N≥3, A≥2, P≥1, I≥2, R≥5, Q=4-6 | G:__ N:__ A:__ P:__ I:__ R:__ Q:__ |
-| 3 | **Coverage** | 3-4 horizons, 4 categories, ≥4 roles | H:__ C:__ R:__ |
+| 3 | **Coverage** | 3-4 horizons, 5 categories, ≥4 roles | H:__ C:__ R:__ |
 | 4 | **Quality** | 100% critical+quantified+citations+priority+actions; ≥50% alternatives+limitations | __% |
 | 5 | **Format** | 100% within 150-250w | __%; D:__ T:__ |
 | 6 | **Meta** | Generated: __ | Expires: [+4wk] |
 | 7 | **Verification** | URLs valid; calculations verified; no contradictions | Pass/Fail |
 
 **Question Quality Examples**:
-- **✓ Good**: "Nature solid-state 3x (Oct '24): R&D investment?" | "CBAM $120B 2026-34: supply chain?"
-- **✗ Bad**: "How does ESG work?" (no news) | "Invest in AI?" (no trigger) | "Competitor feature" (tactical)
+- **✓ Good**: "Nature solid-state 3x (Oct '24): R&D investment?" | "CBAM $120B 2026-34: supply chain?" | "Major IP lawsuit $500M (Nov '24): IP strategy?"
+- **✗ Bad**: "How does ESG work?" (no news) | "Invest in AI?" (no trigger) | "Competitor feature" (tactical) | "Routine contract dispute" (not material)
 
 ## V. Output Format
 
@@ -166,10 +167,11 @@ G: [≥3] | N: [≥3] | A: [≥2] | P: [≥1] | I: [≥2] | R: [≥5 APA]
 
 ```markdown
 **G#. Term (Acronym)**: [Definition] | Context: [Usage] | Example: [Example]
-**N#. Title** (Source, MM/DD/YY): [Summary] | Cat: [R/P/M/I] | Criticality: [X] | URL: [URL]
+**N#. Title** (Source, MM/DD/YY): [Summary] | Cat: [R/P/M/E/G] | Criticality: [X] | URL: [URL]
 **A#. Title** (Journal, Date): [Findings] | URL: [DOI/URL]
 **P#. Title** (Agency, Date): [Summary+impact] | URL: [URL]
 **I#. Title** (Firm, Date): [Findings+numbers] | URL: [URL]
+**L#. Title** (Legal Source, Date): [Case/ruling summary] | URL: [URL]
 **R#. [Tag]**: Author/Org. (YYYY, Mon DD). *Title*. Publisher. URL
 ```
 
@@ -214,6 +216,7 @@ G: [≥3] | N: [≥3] | A: [≥2] | P: [≥1] | I: [≥2] | R: [≥5 APA]
 2. **Market Sizing**: TAM/CAGR forecasts, business case validation
 3. **Policy Foresight**: Regulation anticipation (costs, deadlines), supply chain risks
 4. **ESG Strategy**: Mandate tracking (carbon, reporting), opportunities
-5. **Competitive**: M&A monitoring, partnerships, benchmarking
+5. **Governance & Legal**: Board composition trends, material litigation risk, IP strategy, fiduciary obligations
+6. **Competitive**: M&A monitoring, partnerships, benchmarking
 
 **Cadence**: Monthly generation | Quarterly reviews | Annual planning
