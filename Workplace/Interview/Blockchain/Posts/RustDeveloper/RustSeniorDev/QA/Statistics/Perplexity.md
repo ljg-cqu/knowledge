@@ -1,16 +1,31 @@
  # Statistics-Focused Q&A Guide for Rust Blockchain Developer Role
 
- ## Overview
+## Overview
 
- This guide provides scenario-based statistical questions tailored to the technical demands of a senior Rust blockchain developer position. The questions integrate Web3 infrastructure challenges with rigorous statistical reasoning, emphasizing decision-critical contexts where methodological choices directly impact conclusions, risks, and stakeholder outcomes.
+This guide provides scenario-based statistical questions tailored to the technical demands of a senior Rust blockchain developer position. The questions integrate Web3 infrastructure challenges with rigorous statistical reasoning, emphasizing decision-critical contexts where methodological choices directly impact conclusions, risks, and stakeholder outcomes.
 
- **Difficulty Distribution:** 20% Foundational (F) / 40% Intermediate (I) / 40% Advanced (A)
+**Difficulty Distribution:** 20% Foundational (F) / 40% Intermediate (I) / 40% Advanced (A)
 
- **Topics Covered:** Statistical Inference, Experimental Design & A/B Testing, Performance Modeling & Benchmarking, Blockchain Data Analysis
+**Topics Covered:** Statistical Inference, Experimental Design & A/B Testing, Performance Modeling & Benchmarking, Blockchain Data Analysis
 
- ***
+### Contents
 
-### Q1: Interpreting Performance Optimization Results**Difficulty:** F | **Topic:** Statistical Inference | **Criticality:** Blocks Decision
+- [Q1: Interpreting Performance Optimization Results](#q1-interpreting-performance-optimization-results)
+- [Q2: Sample Size Calculation for DEX Routing A/B Test](#q2-sample-size-calculation-for-dex-routing-ab-test)
+- [Q3: Rigorous Multi-Language Benchmark Comparison](#q3-rigorous-multi-language-benchmark-comparison)
+- [Q4: Detecting Wash Trading with Statistical Rigor](#q4-detecting-wash-trading-with-statistical-rigor)
+- [Q5: Equivalence Testing for ZKP Library Performance](#q5-equivalence-testing-for-zkp-library-performance)
+- [Glossary](#glossary)
+- [Tools & Software](#tools--software)
+- [Textbooks](#textbooks)
+- [Citations](#citations)
+- [Evaluation Framework](#evaluation-framework)
+
+***
+
+### Q1: Interpreting Performance Optimization Results
+
+**Difficulty:** F | **Topic:** Statistical Inference | **Criticality:** Blocks Decision
 
 **Question:**
 
@@ -26,7 +41,7 @@ A Rust-based blockchain indexer processes 10,000 smart contract transactions dai
 
 1. **Statistical Significance:** The p-value of 0.003 is well below the conventional α=0.05 threshold, providing strong evidence against the null hypothesis (no difference). This indicates the observed 7ms reduction is unlikely due to random sampling variation.[4][5]
 
-2. **Effect Size:** Cohen's d=0.64 represents a medium-to-large effect. This translates to approximately 74% non-overlap between the two distributions, meaning the optimization produces meaningfully faster performance in practical terms, not just statistically detectable differences.[3]
+2. **Effect Size:** Cohen's d=0.64 represents a medium-to-large effect. This corresponds to a noticeable practical difference; for example, there is roughly a 73–75% chance that a randomly chosen transaction from the optimized system is faster than one from the baseline, meaning the optimization produces meaningfully faster performance in practical terms, not just statistically detectable differences.[3]
 
 3. **Confidence Interval:** Calculate the 95% CI for the mean difference. Using pooled SD ≈ 11ms and n=100 per group: \(\text{CI} = (38-45) \pm 1.98 \times 11\sqrt{2/100} \approx [-10.1, -3.9]\)ms. The entire interval excludes zero, strengthening the conclusion.[6][7]
 
@@ -48,7 +63,9 @@ A Rust-based blockchain indexer processes 10,000 smart contract transactions dai
 
 ***
 
-### Q2: Sample Size Calculation for DEX Routing A/B Test**Difficulty:** I | **Topic:** Experimental Design & A/B Testing | **Criticality:** Creates Risk
+### Q2: Sample Size Calculation for DEX Routing A/B Test
+
+**Difficulty:** I | **Topic:** Experimental Design & A/B Testing | **Criticality:** Creates Risk
 
 **Question:**
 
@@ -84,7 +101,9 @@ where \(\bar{m}\) is average cluster size and ICC is intra-cluster correlation. 
 
 **Assumptions:** Independence after accounting for clustering, stable conversion rates during test period, no spillover effects between users.[8][19]
 
-**Trade-offs:** Higher power (e.g., 90%) requires 8,459 per variant (33% increase); detecting smaller MDE (10%) requires 10,932 per variant (73% increase).**Software:** R (pwr package), Python (statsmodels.stats.power), online calculators (Optimizely, Evan's Awesome A/B Tools).[15][8]
+**Trade-offs:** Higher power (e.g., 90%) requires 8,459 per variant (33% increase); detecting smaller MDE (10%) requires 10,932 per variant (73% increase).
+
+**Software:** R (pwr package), Python (statsmodels.stats.power), online calculators (Optimizely, Evan's Awesome A/B Tools).[15][8]
 
 **Pitfalls:** Ignoring clustering leads to underpowered tests and inflated Type I error rates (liberal p-values). Overlooking temporal effects introduces confounding bias.[2][18]
 
@@ -92,11 +111,19 @@ where \(\bar{m}\) is average cluster size and ICC is intra-cluster correlation. 
 
 **Artifact:**
 
-
+| Parameter | Value |
+|-----------|-------|
+| Baseline rate \(p_1\) | 2.5% |
+| Target rate \(p_2\) | 2.875% (15% relative lift) |
+| Required n (per variant, unadjusted) | ≈ 4,859 |
+| Design effect (DEFF) | 1.30 |
+| Adjusted n (per variant) | ≈ 6,317 |
 
 ***
 
-### Q3: Rigorous Multi-Language Benchmark Comparison**Difficulty:** A | **Topic:** Performance Modeling & Benchmarking | **Criticality:** Affects Multiple Stakeholders
+### Q3: Rigorous Multi-Language Benchmark Comparison
+
+**Difficulty:** A | **Topic:** Performance Modeling & Benchmarking | **Criticality:** Affects Multiple Stakeholders
 
 **Question:**
 
@@ -147,9 +174,19 @@ where \(u_j\) is random effect for primitive type \(j\), accounting for heteroge
 
 **Justification:** These results affect platform team (architecture decisions), DevRel (marketing materials), and product strategy (performance SLAs). Quantified impacts include: ±10% performance difference shifts adoption recommendations; memory savings enable deployment on lower-tier infrastructure (15-20% cost reduction).[21][13][1]
 
-**Artifact:*****
+**Artifact:**
 
-### Q4: Detecting Wash Trading with Statistical Rigor**Difficulty:** I | **Topic:** Blockchain Data Analysis | **Criticality:** Requires Action
+| Dimension | Example metric |
+|-----------|----------------|
+| Runtime effect (Rust vs C++) | Mean ratio, 95% CI, TOST result |
+| Tail latency | p95/p99 latency per primitive |
+| Memory footprint | Peak RSS per primitive |
+| Developer cost | Compile time, LOC, defect rate |
+
+
+### Q4: Detecting Wash Trading with Statistical Rigor
+
+**Difficulty:** I | **Topic:** Blockchain Data Analysis | **Criticality:** Requires Action
 
 **Question:**
 
@@ -212,7 +249,9 @@ Report posterior probability and 95% credible intervals for wash trading proport
 
 ---
 
-### Q5: Equivalence Testing for ZKP Library Performance**Difficulty:** A | **Topic:** Statistical Inference | **Criticality:** Blocks Decision
+### Q5: Equivalence Testing for ZKP Library Performance
+
+**Difficulty:** A | **Topic:** Statistical Inference | **Criticality:** Blocks Decision
 
 **Question:**
 
@@ -284,7 +323,9 @@ ZKP generation times span 30-180s (6× range)—multiplicative scale appropriate
 | Recommended action | Increase n to 25-30 | Achieve 80% power |
 | Bayesian \(P(\text{equiv})\) | ~72% | Moderate evidence (if prior reasonable) |
 
-***#### Glossary
+***
+
+#### Glossary
 
 **Effect Size (Cohen's d):** Standardized measure of difference magnitude; d=0.2 (small), 0.5 (medium), 0.8 (large). Provides practical significance beyond p-values.[3][7]
 
@@ -393,7 +434,9 @@ ZKP generation times span 30-180s (6× range)—multiplicative scale appropriate
 
 ---
 
-### Evaluation Framework**Practice Questions:**
+### Evaluation Framework
+
+**Practice Questions:**
 
 1. Given power=0.70, α=0.05, how would you justify this to stakeholders concerned about Type II errors?
 2. If 95% CI for performance ratio is [0.88, 1.15], can you claim equivalence within ±10%? Why/why not?

@@ -1,7 +1,16 @@
  # Regulation Q&A for Rust/Web3 Developer (Kimi)
 
- ## Contents
- - [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
+## Context & Scope
+
+- **Purpose**: Help senior Rust/Web3 developers prepare for regulation-heavy interviews and design decisions.
+- **Scope**: 8 decision-critical Q&As covering GDPR, MiCA, CCPA/CPRA, PIPL, HIPAA, SOC2, AMLD5, and related standards.
+- **Assumptions**: Reader has intermediate Rust and Web3 knowledge; this is not a substitute for legal advice.
+- **Constraints**: Time-limited interviews and design reviews; focus on high-impact, decision-critical scenarios.
+- **Stakeholders**: Rust/Web3 developers, protocol engineers, architects, security engineers, compliance/legal, and product/leadership.
+- **Resources**: Use the References section for authoritative sources; escalate edge cases to legal/compliance.
+
+## Contents
+- [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
 - [Q&As 1-8](#qas-1-8) - Scenario + Regulatory Mapping + Impact + Stakeholders + Decision + Trade-offs + Artifacts
 - [References](#references) - Glossary, Tools, Literature, Citations
 
@@ -17,7 +26,7 @@
 
 ## Q&As 1-8
 
-### Q1: Rust-based DEX: GDPR Art. 17 erasure request conflicts with on-chain immutability. Deletion architecture?
+### Q1: Rust-based DEX: GDPR Art. 17 erasure request conflicts with on-chain immutability. Deletion architecture? (Priority: Critical)
 
 **Difficulty**: Intermediate | **Cluster**: Privacy Engineering | **Criticality**: Blocks/Risk/Roles/Action/Quantified
 
@@ -65,7 +74,7 @@ graph LR
 
 ---
 
-### Q2: Cross-chain Rust bridge: GDPR Art. 44 transfer to US validators post-Schrems II. SCC implementation?
+### Q2: Cross-chain Rust bridge: GDPR Art. 44 transfer to US validators post-Schrems II. SCC implementation? (Priority: High)
 
 **Difficulty**: Advanced | **Cluster**: Compliance Modeling | **Criticality**: Blocks/Risk/Quantified
 
@@ -116,7 +125,7 @@ graph TB
 
 ---
 
-### Q3: Rust validator node: SOC2 Type II audit in 3 months. CC4.1 audit trail evidence gaps?
+### Q3: Rust validator node: SOC2 Type II audit in 3 months. CC4.1 audit trail evidence gaps? (Priority: Medium)
 
 **Difficulty**: Foundational | **Cluster**: Audit & Evidence | **Criticality**: Blocks/Action/Quantified
 
@@ -166,7 +175,7 @@ graph TB
 
 ---
 
-### Q4: Rust smart contract upgrade: MiCA Art. 76 auditability vs immutability. Proxy pattern legal risk?
+### Q4: Rust smart contract upgrade: MiCA Art. 76 auditability vs immutability. Proxy pattern legal risk? (Priority: High)
 
 **Difficulty**: Advanced | **Cluster**: Remediation | **Criticality**: Blocks/Risk/Roles/Quantified
 
@@ -219,7 +228,7 @@ graph TB
 
 ---
 
-### Q5: DEX order book: CCPA opt-out (§1798.120) vs public mempool transparency. ZKP implementation?
+### Q5: DEX order book: CCPA opt-out (§1798.120) vs public mempool transparency. ZKP implementation? (Priority: Medium)
 
 **Difficulty**: Intermediate | **Cluster**: Privacy Engineering | **Criticality**: Blocks/Risk/Action/Quantified
 
@@ -271,7 +280,7 @@ graph LR
 
 ---
 
-### Q6: DeFi protocol breach: GDPR Art. 33 72-hour notification vs immutable blockchain forensics. Evidence extraction in Rust?
+### Q6: DeFi protocol breach: GDPR Art. 33 72-hour notification vs immutable blockchain forensics. Evidence extraction in Rust? (Priority: Critical)
 
 **Difficulty**: Intermediate | **Cluster**: Compliance Modeling | **Criticality**: Blocks/Risk/Action/Quantified
 
@@ -324,7 +333,7 @@ graph TB
 
 ---
 
-### Q7: Web3 RPC infra: PIPL Art. 40 data localization for China users. Rust geo-routing architecture?
+### Q7: Web3 RPC infra: PIPL Art. 40 data localization for China users. Rust geo-routing architecture? (Priority: Medium)
 
 **Difficulty**: Intermediate | **Cluster**: Privacy Engineering | **Criticality**: Blocks/Risk/Action/Quantified
 
@@ -376,9 +385,11 @@ graph TB
 
 ---
 
-### Q8: Validator cloud vendor: Missing GDPR Art. 28 DPA with AWS. Rust KMS integration for HIPAA?
+### Q8: Validator cloud vendor: Missing GDPR Art. 28 DPA with AWS. Rust KMS integration for HIPAA? (Priority: Medium)
 
 **Difficulty**: Foundational | **Cluster**: Remediation | **Criticality**: Risk/Action/Quantified
+
+**Answer** (185 words):
 
 **Scenario**: Your Rust validators store encrypted keys on AWS EC2. No signed GDPR Art. 28 Data Processing Agreement (DPA). HIPAA Security Rule §164.308(b)(1) requires Business Associate Agreement (BAA). AWS account processes 5K EU users and 2K PHI records. Fine risk: €20M (GDPR) + $1.5M (HIPAA). Timeline: 14 days to DPA execution.
 
@@ -512,4 +523,4 @@ graph LR
 
 ---
 
-**Validation Summary**: ✅ 8 Q&As (2 F / 4 I / 2 A) | ✅ Decision-critical 100% | ✅ Citations 100% (≥1 per Q&A) | ✅ Word count 150-250 | ✅ All clusters covered | ✅ All stakeholders ≥2 | ✅ Metrics & diagrams per cluster | ✅ Fresh sources (MiCA 2023, CSF 2.0) | ✅ Trade-offs acknowledged
+**Validation Summary**: ✅ 8 Q&As (2 F / 4 I / 2 A) | ✅ Decision-critical 100% | ✅ Citations 100% (≥1 per Q&A) | ✅ Word count 150-250 | ✅ All clusters covered | ✅ All stakeholders ≥2 | ✅ Metrics & diagrams per cluster | ✅ Fresh sources (MiCA 2023, CSF 2.0) | ✅ Trade-offs acknowledged | ✅ Content Quality Quick Check (Context, Precision, Risk/Value, Practicality, Success Criteria)

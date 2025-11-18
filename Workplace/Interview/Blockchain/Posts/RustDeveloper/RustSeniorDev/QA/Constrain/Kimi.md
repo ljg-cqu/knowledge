@@ -5,6 +5,12 @@
 
 ---
 
+## Contents
+
+- [1. References & Artifacts](#1-references--artifacts)
+- [2. Q&A Set (28 Total: 6F/11I/11A)](#2-qa-set-28-total-6f11i11a)
+- [3. Validation Report](#3-validation-report)
+
 ## 1. References & Artifacts
 
 ### Glossary (G1-G28)
@@ -125,7 +131,7 @@ impl TransactionSource for SolanaRpcAdapter {
 
 **Constraints**: **Technical**: 16-core, 64GB, 10Gbps | **Resource**: $50K/mo, 10 devs, 1 Sec, 6mo | **Business**: $1M/mo GMV, <500ms settlement | **Compliance**: AML/KYC audit trails | **Ecosystem**: ethers-rs v2, Solana SDK, Wormhole v2
 
-**Answer** (285 words): Use choreography-based saga: `LockEvent` (Ethereum) → `MintEvent` (Solana) → `ConfirmEvent` → `SettleEvent`. Each step emits domain events to Kafka (T5) with `transaction_key` for traceability. Rollback: `MintFailed` triggers `ReleaseLock` compensation. **Sec** requires `HMAC-SHA256` on events; **Data** persists events in PostgreSQL with 7yr retention (AML) [C5, C13]. Trade-off: +150ms vs. atomic batch; +$12K/mo for 3-node Kafka cluster; team must learn Rust saga patterns (2mo ramp). Pattern: `struct BridgeSaga { steps: Vec<Step>, compensations: HashMap<String, Compensation> }`. **Lead** ROI: 6mo breakeven vs. 15% manual refund cost. Metrics: p99 settlement 420ms, success 99.5%, CPU 55%. **Dev** implements idempotent handlers with `#[derive(Serialize, Deserialize)]` for event versioning. **Arch** decision: choreography over orchestrator to avoid single point; but **SRE** must monitor event lag (Prometheus rule: `kafka_consumergroup_lag > 50`). Assumption: Wormhole finality 12s Ethereum, 400ms Solana; risk: Wormhole downtime → manual compensations. Phase: Testing uses `anvil` (Foundry) and `solana-test-validator` for deterministic replay.
+**Answer** (285 words): Use choreography-based saga: `LockEvent` (Ethereum) → `MintEvent` (Solana) → `ConfirmEvent` → `SettleEvent`. Each step emits domain events to Kafka with `transaction_key` for traceability. Rollback: `MintFailed` triggers `ReleaseLock` compensation. **Sec** requires `HMAC-SHA256` on events; **Data** persists events in PostgreSQL with 7yr retention (AML) [C5, C13]. Trade-off: +150ms vs. atomic batch; +$12K/mo for 3-node Kafka cluster; team must learn Rust saga patterns (2mo ramp). Pattern: `struct BridgeSaga { steps: Vec<Step>, compensations: HashMap<String, Compensation> }`. **Lead** ROI: 6mo breakeven vs. 15% manual refund cost. Metrics: p99 settlement 420ms, success 99.5%, CPU 55%. **Dev** implements idempotent handlers with `#[derive(Serialize, Deserialize)]` for event versioning. **Arch** decision: choreography over orchestrator to avoid single point; but **SRE** must monitor event lag (Prometheus rule: `kafka_consumergroup_lag > 50`). Assumption: Wormhole finality 12s Ethereum, 400ms Solana; risk: Wormhole downtime → manual compensations. Phase: Testing uses `anvil` (Foundry) and `solana-test-validator` for deterministic replay.
 
 **Code** (Rust):
 ```rust
@@ -165,7 +171,7 @@ impl Compensation for ReleaseLock {
 
 **Constraints**: **Technical**: 32-core, 128GB, 25Gbps | **Resource**: $120K/mo, 12 devs, 3 DevOps, 8mo | **Business**: $2M/mo revenue, 5M users, <50ms latency | **Compliance**: SOC-2, GDPR data residency | **Organizational**: Dual team (CEX + DEX) | **Ecosystem**: AWS, Kubernetes, PostgreSQL, Redis
 
-**Answer** (295 words): Deploy `FeatureFlagService` (LaunchDarkly) routing 1% → 100% traffic to new DEX module over 8mo. **Arch** designs `OrderRouter` trait: `CEXRouter` and `DEXRouter` implementers. **DevOps** blue-green deploys DEX pods (T4) with 30% headroom; **SRE** monitors p95 latency via Prometheus (T5). **Sec** audit: both paths log to SOC-2 bucket (7yr). **PM** timeline: 1% (mo1), 10% (mo3), 50% (mo5), 100% (mo8) [C4, C6]. Trade-off: 12 devs vs. 8 FTE (2 CEX + 10 DEX) costs +$150K/mo, offset by $45K/mo CEX infra reduction at mo8. **Data**: ETL pipeline migrates 5M users (hashed PII) to new PostgreSQL schema; GDPR: delete via `DELETE FROM users WHERE migrated=true`. **Lead** P&L: +$180K/mo by mo8 (DEX fees 0.05% vs. CEX 0.1% costs). Risk: dual-write consistency → saga compensations for failed orders. Metrics: p95 CEX 35ms, DEX 42ms; user churn <0.5%; budget $118K/mo. Assumption: DEX liquidity reaches 80% CEX by mo6; else rollback feature flag. **Dev** implements `#[cfg(feature = "dex")]` compile-time switches to reduce binary size.
+**Answer** (295 words): Deploy `FeatureFlagService` (LaunchDarkly) routing 1% → 100% traffic to new DEX module over 8mo. **Arch** designs `OrderRouter` trait: `CEXRouter` and `DEXRouter` implementers. **DevOps** blue-green deploys DEX pods with 30% headroom; **SRE** monitors p95 latency via Prometheus (T5). **Sec** audit: both paths log to SOC-2 bucket (7yr). **PM** timeline: 1% (mo1), 10% (mo3), 50% (mo5), 100% (mo8) [C4, C6]. Trade-off: 12 devs vs. 8 FTE (2 CEX + 10 DEX) costs +$150K/mo, offset by $45K/mo CEX infra reduction at mo8. **Data**: ETL pipeline migrates 5M users (hashed PII) to new PostgreSQL schema; GDPR: delete via `DELETE FROM users WHERE migrated=true`. **Lead** P&L: +$180K/mo by mo8 (DEX fees 0.05% vs. CEX 0.1% costs). Risk: dual-write consistency → saga compensations for failed orders. Metrics: p95 CEX 35ms, DEX 42ms; user churn <0.5%; budget $118K/mo. Assumption: DEX liquidity reaches 80% CEX by mo6; else rollback feature flag. **Dev** implements `#[cfg(feature = "dex")]` compile-time switches to reduce binary size.
 
 **Code** (Rust):
 ```rust
@@ -246,8 +252,6 @@ impl ShardRouter {
 **Stakeholders**: **PM**: $300K/mo, <200ms | **Data**: 8 nodes, 6.25TB/shard | **SRE**: 30% headroom | **Lead**: +$2.8K storage
 
 ---
-
-[Continues with remaining 24 Q&As...]
 
 ### **Q5: Implement gas-optimized batch minting for NFT marketplace with MEV protection?**
 **Difficulty**: F | **Dimension**: Quality | **Phase**: Dev, Testing | **Stakeholders**: Dev, Sec, Data  
@@ -553,7 +557,7 @@ pub fn estimate_gas(_attr: TokenStream, item: TokenStream) -> TokenStream {
 
 **Constraints**: **Technical**: 48-core, 192GB, 50Gbps | **Resource**: $180K/mo, 15 devs, 3 SREs, 7mo | **Business**: $3M/mo, 10M users, <10ms matching | **Organizational**: Legacy team resistance | **Operational**: 99.99% uptime, 30% headroom
 
-**Answer** (295 words): **PM** prioritizes 3 microservices: OrderValidator (mo1-2), MatchingEngine (mo3-5), Settlement (mo6-7). **Arch** defines anti-corruption layer (ACL) translating legacy MySQL orders to new PostgreSQL events [C3, C6]. **Lead** P&L: $180K/mo × 7mo = $1.26M investment; infra savings $8K/mo → ROI 157mo; but bug reduction saves $20K/mo support = 63mo ROI. **Dev** refactors 200K LOC using `cargo-semver-checks` to avoid breaking changes. **SRE** runs新旧系统 parallel with feature flags (T1). **Stakeholder** alignment: **PM** owns roadmap; **Arch** reviews ACL weekly; **Dev** pair-programs legacy experts. **Budget**: $180K = team ($150K) + infra ($20K) + tools ($10K). Trade-off: 3× team size vs. business continuity; **Org** constraint: legacy team retraining 2mo. **DevOps** blue-green deploys each service. **Metrics**: bug density 0.2/KLOC, p95 latency 8ms, uptime 99.992%. **Risk**: mo3 delay → cut MatchingEngine scope to v1. **Compliance**: SOC-2 audit on new services. Phase: Evolution adds GRPC contracts for v2. **BA** documents legacy behavior with `specmatic`.
+**Answer** (295 words): **PM** prioritizes 3 microservices: OrderValidator (mo1-2), MatchingEngine (mo3-5), Settlement (mo6-7). **Arch** defines anti-corruption layer (ACL) translating legacy MySQL orders to new PostgreSQL events [C3, C6]. **Lead** P&L: $180K/mo × 7mo = $1.26M investment; infra savings $8K/mo → ROI 157mo; but bug reduction saves $20K/mo support = 63mo ROI. **Dev** refactors 200K LOC using `cargo-semver-checks` to avoid breaking changes. **SRE** runs 新旧系统 in parallel with feature flags. **Stakeholder** alignment: **PM** owns roadmap; **Arch** reviews ACL weekly; **Dev** pair-programs legacy experts. **Budget**: $180K = team ($150K) + infra ($20K) + tools ($10K). Trade-off: 3× team size vs. business continuity; **Org** constraint: legacy team retraining 2mo. **DevOps** blue-green deploys each service. **Metrics**: bug density 0.2/KLOC, p95 latency 8ms, uptime 99.992%. **Risk**: mo3 delay → cut MatchingEngine scope to v1. **Compliance**: SOC-2 audit on new services. Phase: Evolution adds GRPC contracts for v2. **BA** documents legacy behavior with `specmatic`.
 
 **Code** (Rust):
 ```rust
@@ -674,9 +678,9 @@ impl HsmKeyRotator {
 **Difficulty**: I | **Dimension**: Integration | **Phase**: Design, Evolution | **Stakeholders**: PM, Arch, Dev, QA, SRE  
 **Key Insight**: URL path versioning (`/v2`, `/v3`) supports 99.9% backward compatibility for 6mo deprecation, but doubles documentation effort, fitting 8-dev team and $15K/mo budget.
 
-**Constraints**: **Technical**: 24-core, 96GB, 15Gbps | **Resource**: $15K/mo, 8 devs, 2 QA, 6mo | **Business**: $900K/mo, 1M users, <2% churn | **Operational**: 99.95% uptime, 30% headroom | **Ecosystem**: OpenAPI (T2), Rust axum,utoipa | **Organizational**: Tech writer bandwidth
+**Constraints**: **Technical**: 24-core, 96GB, 15Gbps | **Resource**: $15K/mo, 8 devs, 2 QA, 6mo | **Business**: $900K/mo, 1M users, <2% churn | **Operational**: 99.95% uptime, 30% headroom | **Ecosystem**: OpenAPI, Rust axum, utoipa | **Organizational**: Tech writer bandwidth
 
-**Answer** (270 words): **Arch** designs `VersionRouter` trait with `route("/v2")` and `route("/v3")` mounting separate handlers. **Dev** shares core logic via `dex-core` crate; v2/v3 are thin adapters. **QA** uses `specmatic` for contract testing (OpenAPI) [C2, T2]. **PM** 6mo deprecation: v2 EOL after 90% traffic migrates. **SRE** monitors traffic split via Prometheus (T5): `http_requests_total{version="v2"}` drops 5%/week. **DevOps** blue-green deploys v3 with feature flag. **Lead** trade-off: +$3K/mo docs vs. 0 user churn. **Budget**: $15K = compute ($9K) + team ($5K) + docs ($1K). **Data** tracks v2 error rate (target <0.1%). **Compliance**: v2 audit logs retained 7yr. **Stakeholder** impact: **PM** owns comms plan; **Arch** ensures compatibility layer for `legacy_order` format; **Dev** spends 20% time on docs. **Risk**: v3 bug → instant rollback via flag. **Metrics**: v2→v3 migration 95% at mo6, p95 latency v3 45ms vs v2 50ms, CPU 52%. **Phase**: Evolution removes v2 code at mo7. **Ecosystem**: Rust `utoipa` generates OpenAPI specs.
+**Answer** (270 words): **Arch** designs `VersionRouter` trait with `route("/v2")` and `route("/v3")` mounting separate handlers. **Dev** shares core logic via `dex-core` crate; v2/v3 are thin adapters. **QA** uses `specmatic` for contract testing (OpenAPI) [C2]. **PM** 6mo deprecation: v2 EOL after 90% traffic migrates. **SRE** monitors traffic split via Prometheus (T5): `http_requests_total{version="v2"}` drops 5%/week. **DevOps** blue-green deploys v3 with feature flag. **Lead** trade-off: +$3K/mo docs vs. 0 user churn. **Budget**: $15K = compute ($9K) + team ($5K) + docs ($1K). **Data** tracks v2 error rate (target <0.1%). **Compliance**: v2 audit logs retained 7yr. **Stakeholder** impact: **PM** owns comms plan; **Arch** ensures compatibility layer for `legacy_order` format; **Dev** spends 20% time on docs. **Risk**: v3 bug → instant rollback via flag. **Metrics**: v2→v3 migration 95% at mo6, p95 latency v3 45ms vs v2 50ms, CPU 52%. **Phase**: Evolution removes v2 code at mo7. **Ecosystem**: Rust `utoipa` generates OpenAPI specs.
 
 **Code** (Rust):
 ```rust
@@ -984,8 +988,8 @@ fn test_swap_simulation() {
 **Trade-offs**:
 | Approach | Pros | Cons | Hardware | Budget | Business | Tag |
 |----------|------|------|----------|--------|----------|-----|
-| Deterministic Replay | 40% bugs caught | +3min build | 50% CPU | $4K/mo | $200K/mo, $8K save | [Consensus] |
-| Mock RPC | 0 build time, fast | 60% bugs escape | 40% CPU | $4K/mo | $192K/mo | [Context] |
+| Deterministic Replay | 40% bugs caught | +3min build (8min total) | 50% CPU | $4K/mo | $200K/mo, $8K save | [Consensus] |
+| Mock RPC | 5min build, 0 extra time | 60% bugs escape | 40% CPU | $4K/mo | $192K/mo | [Context] |
 
 **Stakeholders**: **Dev**: CI fixture | **QA**: 99.9% replay | **SRE**: 3GB cache | **Lead**: $8K/mo savings
 
@@ -1082,9 +1086,9 @@ impl LogRetriever {
 **Difficulty**: I | **Dimension**: Integration+Structural | **Phase**: Design, Dev | **Stakeholders**: PM, Arch, Dev, QA, Lead  
 **Key Insight**: Unified `Dex` trait with async multiplexing achieves 300ms quote latency across 5 chains, but requires 4mo for 8-dev team and $25K/mo, capturing +15% market share.
 
-**Constraints**: **Technical**: 32-core, 128GB, 20Gbps | **Resource**: $25K/mo, 8 devs, 3 QA, 4mo | **Business**: $300K/mo, +15% share = +$45K/mo | **Operational**: 99.95% uptime, <400ms quote | **Ecosystem**: ethers-rs, Solana SDK, 5 DEXs, OpenAPI (T2)
+**Constraints**: **Technical**: 32-core, 128GB, 20Gbps | **Resource**: $25K/mo, 8 devs, 3 QA, 4mo | **Business**: $300K/mo, +15% share = +$45K/mo | **Operational**: 99.95% uptime, <400ms quote | **Ecosystem**: ethers-rs, Solana SDK, 5 DEXs, OpenAPI
 
-**Answer** (285 words): **Arch** defines `trait Dex { async fn quote(&self, params: QuoteParams) -> Result<Quote, Error>; }`. **Dev** implements for Ethereum (Uniswap v3), Solana (Serum), Polygon (QuickSwap), Arbitrum (GMX), Avalanche (TraderJoe). **QA** contract tests with `specmatic` (OpenAPI) [C2, T2]. **Dev** uses `futures::select!` for parallel quoting; fastest 3 results aggregated. **PM** 4mo timeline: v0.1 (mo1), v0.5 (mo2), v1.0 (mo3), GA (mo4) with marketing. **Lead** P&L: $25K/mo × 4mo = $100K investment; +$45K/mo revenue → ROI 2.2mo. **SRE** monitors `quote_latency_p95` per chain; circuit breaker if >400ms. **DevOps** publishes SDK to crates.io with semver. **Budget**: $25K = team ($20K) + infra ($3K) + docs ($2K). Trade-off: 300ms vs. 150ms native (per-chain SDK) but dev UX unified; **Data** tracks which DEX quotes win (optimize weights). **Metrics**: p95 300ms, adoption 3K downloads/mo, error rate 0.2%, CPU 48%. **Risk**: DEX API change → SDK breaks; mitigated by weekly e2e tests. **Compliance**: no PII. **Phase**: Dev uses `#[cfg(feature = "uniswap")]` for modularity. **Stakeholder** alignment: **PM** owns feature parity; **Arch** reviews async safety; **Dev** maintains 5 adapters.
+**Answer** (285 words): **Arch** defines `trait Dex { async fn quote(&self, params: QuoteParams) -> Result<Quote, Error>; }`. **Dev** implements for Ethereum (Uniswap v3), Solana (Serum), Polygon (QuickSwap), Arbitrum (GMX), Avalanche (TraderJoe). **QA** contract tests with `specmatic` (OpenAPI) [C2]. **Dev** uses `futures::select!` for parallel quoting; fastest 3 results aggregated. **PM** 4mo timeline: v0.1 (mo1), v0.5 (mo2), v1.0 (mo3), GA (mo4) with marketing. **Lead** P&L: $25K/mo × 4mo = $100K investment; +$45K/mo revenue → ROI 2.2mo. **SRE** monitors `quote_latency_p95` per chain; circuit breaker if >400ms. **DevOps** publishes SDK to crates.io with semver. **Budget**: $25K = team ($20K) + infra ($3K) + docs ($2K). Trade-off: 300ms vs. 150ms native (per-chain SDK) but dev UX unified; **Data** tracks which DEX quotes win (optimize weights). **Metrics**: p95 300ms, adoption 3K downloads/mo, error rate 0.2%, CPU 48%. **Risk**: DEX API change → SDK breaks; mitigated by weekly e2e tests. **Compliance**: no PII. **Phase**: Dev uses `#[cfg(feature = "uniswap")]` for modularity. **Stakeholder** alignment: **PM** owns feature parity; **Arch** reviews async safety; **Dev** maintains 5 adapters.
 
 **Code** (Rust):
 ```rust

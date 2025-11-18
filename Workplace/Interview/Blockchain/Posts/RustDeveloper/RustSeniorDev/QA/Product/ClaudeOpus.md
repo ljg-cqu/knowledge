@@ -2,6 +2,15 @@
 
 This document contains PM interview Q&A content focused on the Rust Senior Engineer position, with scenario-based questions that test product judgment in the context of Web3 infrastructure development.
 
+- **Problem**: Evaluate senior Rust blockchain engineers on product judgment for Web3 infrastructure decisions.
+- **Scope**: 6 scenario-based Q&As covering strategy, metrics, stakeholder alignment, and GTM for Web3 infrastructure products.
+- **Constraints**: Time-boxed interviews (45–60 minutes) with limited business context; assume an early-stage (Seed–Series B) Web3 infrastructure startup.
+- **Assumptions**: Candidate has strong Rust/blockchain expertise; interviewer is a product or engineering leader; focus is product judgment rather than coding detail.
+- **Scale**: Decisions typically impact $1M–$10M ARR and 6–12 month product roadmaps.
+- **Timeline**: Questions calibrated for 2024–2025 Web3 infrastructure market conditions.
+- **Stakeholders**: Senior Rust engineer candidate, product manager, engineering manager, CTO, investors, and developer community.
+- **Resources**: Use the References section (glossary, tools, literature, citations) for deeper exploration and follow-up questions.
+
 ## PM Interview Q&A for Web3 Infrastructure Product Manager
 
 ### A. Table of Contents
@@ -38,17 +47,17 @@ Legend: F=execution | I=strategy/trade-offs | A=portfolio/vision/P&L
 
 **Difficulty**: F | **Topic**: Strategy & Prioritization  
 **Decision Criticality**: Blocks decision - $8M revenue opportunity, affects product roadmap for 2 quarters  
-**Key Insight**: Tests ability to balance market opportunity against technical debt and team capacity in rapidly evolving Web3 landscape [0]
+**Key Insight**: Tests ability to balance market opportunity against technical debt and team capacity in rapidly evolving Web3 landscape.
 
 **Answer** (235 words):
 
-Apply TAM-SAM-SOM framework [Ref: G1] to quantify opportunity. Ethereum has 500K+ developers but saturated tooling market; Solana has 15K developers with 40% growth and tooling gaps [0].
+Apply TAM-SAM-SOM framework [Ref: G1] to quantify opportunity. Ethereum has 500K+ developers but saturated tooling market; Solana has 15K developers with 40% growth and tooling gaps [Ref: A3].
 
 Use weighted scoring across dimensions [Ref: T1]:
 - **Market Size**: Ethereum ($2B tooling market, 15% share achievable) vs Solana ($200M, 40% share possible)
-- **Technical Leverage**: Solana's Rust-native development creates 70% code reuse from existing codebase versus 30% for deeper Ethereum features [0]
+- **Technical Leverage**: Solana's Rust-native development could enable ~70% code reuse from the existing codebase versus ~30% for deeper Ethereum features (scenario estimate for this team).
 - **Competitive Moat**: First-mover advantage on Solana (6-month window) versus incremental differentiation on Ethereum
-- **Team Readiness**: Current team has Rust expertise; Solana requires 2-3 months ramp-up on account model differences [0]
+- **Team Readiness**: Current team has Rust expertise; Solana requires an estimated 2-3 months of ramp-up on account model differences.
 
 **Trade-offs**: 
 1. **Ethereum-first**: Protects $3M ARR, slower growth (15% YoY), technical debt accumulation
@@ -127,7 +136,7 @@ Implement funnel analysis using HEART framework [Ref: G2] to identify drop-off p
 - **Task success**: Average 4.5 hours to first deployment (industry: 1.5 hours)
 
 **Root cause analysis**:
-1. Complex account model requires Ethereum developers to relearn concepts [0]
+1. Complex account model requires Ethereum developers to relearn concepts, as highlighted in Solana developer surveys [Ref: A5]
 2. Documentation assumes Rust proficiency (70% users are Rust beginners)
 3. Local testing environment setup requires 15+ steps
 4. Error messages cryptic, no debugging guides [Ref: A5]
@@ -268,7 +277,7 @@ Design multi-chain GTM using crossing-the-chasm framework adapted for Web3 [Ref:
 
 **Market segmentation** [Ref: T10]:
 - **Ethereum**: 500K developers, mature ecosystem, high competition
-- **Solana**: 15K developers, growing 40% QoQ, tooling gaps [0]
+- **Solana**: 15K developers, growing 40% QoQ, with meaningful tooling gaps [Ref: A3]
 - **Cross-chain**: 5K developers building multi-chain, underserved
 
 **Positioning strategy**:
@@ -278,7 +287,7 @@ Design multi-chain GTM using crossing-the-chasm framework adapted for Web3 [Ref:
 
 **Channel strategy** [Ref: L6]:
 1. **Developer communities**: Rust forums, Web3 Discord servers
-2. **Technical content**: Account model comparison guides [0], migration tutorials
+2. **Technical content**: Account model comparison guides between Ethereum and Solana, migration tutorials
 3. **Hackathons**: Sponsor with bounties for cross-chain projects
 4. **Strategic partnerships**: Integrate with Anchor framework, Foundry [Ref: T11]
 

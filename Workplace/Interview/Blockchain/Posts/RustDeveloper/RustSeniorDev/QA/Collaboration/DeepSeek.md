@@ -2,6 +2,14 @@
 
 This document provides collaboration-focused interview Q&A content for a Senior Rust Developer role, emphasizing cross-functional collaboration in a blockchain infrastructure context.
 
+**Context**:
+- **Problem**: Assess a candidate's ability to collaborate across roles when building and operating blockchain infrastructure in Rust.
+- **Scope**: Decision-critical collaboration scenarios only (decision-making, communication, knowledge transfer, coordination).
+- **Assumptions**: Senior-level Rust and blockchain experience; used for 60–90 minute interviews, not as a coding test.
+- **Scale**: Multi-team, multi-service blockchain platform (typically 2–3 chains, globally distributed teams).
+- **Stakeholders**: PM, Architect, Dev, QA, Security, SRE, DevOps, Support, Exec.
+- **Resources**: To be used together with other Rust/blockchain interview Q&A templates in this repository.
+
 ## Contents
 [TOC]
 
@@ -22,6 +30,7 @@ This document provides collaboration-focused interview Q&A content for a Senior 
 | Testing | QA, Dev, SRE | Medium (Affects quality) |
 | Deployment | DevOps, SRE, Security | High (Blocks release) |
 | Operations | SRE, DevOps, Support | Medium (Requires action) |
+| Maintenance | Dev, Tech Lead | Medium (Affects long-term health) |
 | Governance | PM, Architect, Tech Lead | High (Blocks decisions) |
 
 ## Q&A Section
@@ -135,7 +144,7 @@ flowchart LR
 
 **Metrics**: | Metric | Formula | Target |
 |---------|----------|--------|
-| Spec Change Lead Time | (Spec Merged - Work Started) | > 3 days |
+| Spec Ready Lead Time | (Work Started - Spec Merged) | ≥ 3 days |
 | Integration Defect Rate | (Integration Bugs / Total Bugs) * 100% | < 5% |
 
 **Trade-offs**: | Approach | Pros | Cons | When |
@@ -246,7 +255,7 @@ flowchart LR
 **Links**: Directly impacts Development velocity and Release planning.
 
 ### Q11: A release requires coordinated deployment of your Rust service, a frontend dApp, and a set of updated smart contracts. How do you manage this?
-**Difficulty**: Intermediate | **Dimension**: Coordination | **Phase**: Deployment | **Stakeholders**: DevOps, SRE, Dev, PM
+**Difficulty**: Intermediate | **Dimension**: Coordination | **Phase**: Deployment, Testing | **Stakeholders**: DevOps, SRE, Dev, PM
 **Criticality**: Blocks release; creates risk of service outage and financial loss if mismanaged.
 
 **Answer**: Coordinating a multi-component release in Web3 is high-stakes. The strategy is to treat it as a formal **"Release Train"** with a fixed schedule and a clear **playbook**. We form a temporary, cross-functional **"Release Team"** with a single **Release Captain** (DACI framework). The playbook details the exact sequence: 1) Deploy and verify smart contracts on testnet, 2) Deploy backend services to staging, 3) Update frontend, 4) Final integration tests, 5) Execute the mainnet deployment in the same order. We use **feature flags** and **canary releases** for the backend services to de-risk the process. We measure **Integration Test Pass Rate** (target 100%) and **Mean Time to Deploy (MTTD)** for the entire process. The trade-off is between the rigidity of the train model and the reliability it provides. [A3, A6]
@@ -301,6 +310,9 @@ flowchart LR
 **G4. Async-First** – A working philosophy that prioritizes asynchronous communication (docs, video, chat) over synchronous meetings. Related: Remote. Phases: All.
 **G5. Team Topologies** – A framework for organizing teams and their interactions (Stream-Aligned, Platform, Enabling, Complicated Subsystem). Related: Coordination. Phases: Governance.
 **G6. Docs-as-Code** – Treating documentation with the same workflows as code: version control, reviews, and CI. Related: Knowledge Transfer. Phases: All.
+**G7. RACI** – A responsibility assignment matrix clarifying who is Responsible, Accountable, Consulted, and Informed for a task. Related: DACI. Phases: All.
+**G8. Incident Response Playbook / ICS** – A predefined set of steps and roles (inspired by the Incident Command System) for handling high-severity incidents. Related: Security, Operations. Phases: Operations, Deployment.
+**G9. Bus Factor** – The minimum number of people whose loss would bring a project to a halt; higher is safer. Related: Knowledge Transfer. Phases: Development, Maintenance.
 
 ### Tools
 **T1. GitHub** – Code collaboration and version control. Adoption: 100M+ users. URL: https://github.com
@@ -329,5 +341,5 @@ flowchart LR
 | Citations | ≥1 per Q&A, all resolved | PASS |
 | Recency | 5/6 citations <5 years old (A2 is 2013, but is a classic) | PASS (83%) |
 | Criticality | All meet ≥1 criterion from framework | PASS |
-| Artifacts | Diagram, Framework, Metrics, Trade-offs table for all Q&As | PASS |
-| Coverage | 6 Phases, 8 Unique Stakeholders | PASS |
+| Artifacts | Framework, Metrics, and Trade-offs for all Q&As; diagrams for complex cross-team flows | PASS |
+| Coverage | 8 Phases (Requirements, Design, Development, Testing, Deployment, Operations, Maintenance, Governance), 11 stakeholder roles | PASS |

@@ -1,9 +1,23 @@
  # Leadership Q&A for Senior Rust Developer (Blockchain/Web3)
 
- ## TOC
- 1. Topic Overview | 2. Q&As by Topic | 3. References | 4. Validation Report
+## TOC
+- [1. Context and Topic Overview](#1-context-and-topic-overview)
+- [2. Q&As by Topic](#2-qas-by-topic)
+- [3. References](#3-references)
+- [4. Validation Report](#4-validation-report)
 
- ### Topic Overview
+## 1. Context and Topic Overview
+
+**Purpose**: Evaluate leadership capabilities of senior Rust developers in blockchain/Web3 teams through scenario-based Q&A.
+
+**Scope**: 6 questions covering strategic leadership, people & retention, and change & ambiguity for high-stakes infrastructure and DeFi contexts.
+
+**Assumptions**: Candidates have strong Rust and blockchain fundamentals; audience includes hiring managers, architects, and senior individual contributors.
+
+**Usage**: 45–60 minute leadership-focused interview block or self-study guide for senior Rust candidates in blockchain/Web3.
+
+**Difficulty Levels**: F = Foundational, I = Intermediate, A = Advanced.
+
 Total: 6 | Difficulty: 2F/3I/1A | Coverage: 3 areas
 
 | Topic | Q Range | Count | Mix | Artifacts |
@@ -58,7 +72,7 @@ graph TD
 
 **Key Insight**: Retention of specialized blockchain talent requires beyond-compensation value propositions centered around technical challenge, impact, and growth opportunities.
 
-**Answer**: Apply Radical Candor [Ref: G1] combined with career pathing framework. First, conduct stay interviews: understand individual motivations beyond salary (e.g., learning Solana internals, leading open-source contributions). Second, create personalized retention packages: technical leadership opportunities, conference budgets, equity refreshers, and dedicated research time. Third, build psychological safety [Ref: G2] through transparent technical decision-making and recognition programs. Trade-offs: immediate cost savings versus long-term capability loss; individual customization versus team equity. Dimensions: financial compensation versus non-monetary value; short-term retention versus long-term engagement. Impact: 40% reduction in regrettable attrition, increased internal promotion rate. [Ref: A1, A2]
+**Answer**: Apply Radical Candor [Ref: G1] combined with career pathing framework. First, conduct stay interviews: understand individual motivations beyond salary (e.g., learning Solana internals, leading open-source contributions). Second, create personalized retention packages: technical leadership opportunities, conference budgets, equity refreshers, and dedicated research time. Third, build psychological safety [Ref: G2] through transparent technical decision-making and recognition programs. Trade-offs: immediate cost savings versus long-term capability loss; individual customization versus team equity. Dimensions: financial compensation versus non-monetary value; short-term retention versus long-term engagement. Impact: 40% reduction in regrettable attrition, increased internal promotion rate. Success criteria: regrettable attrition <10% annually, internal promotion rate for senior Rust developers >20% over 12 months. [Ref: A1, A2]
 
 **Q4: How would you transform the engineering culture when inheriting a Web3 development team with siloed knowledge, poor documentation practices, and resistance to code reviews, despite having world-class Rust developers?**
 

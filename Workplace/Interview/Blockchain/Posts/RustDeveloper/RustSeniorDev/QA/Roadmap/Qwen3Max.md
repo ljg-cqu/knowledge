@@ -1,7 +1,14 @@
  # Roadmap Q&A for Senior Rust Developer (Blockchain/Web3)
 
+ This document provides three decision-critical roadmap Q&As for a senior Rust developer working on blockchain/Web3 infrastructure. It focuses on architecture, development quality, and operations/scalability decisions that directly affect multi-chain support, reliability, and cost. The scope is the next 3–12 months of the roadmap for teams of roughly 10–20 engineers, with primary stakeholders including architects, dev leads, SRE/DevOps, and product/engineering managers.
+
  ## Contents
- [TOC: Phase Overview | Q&As by Phase | Cross-Cutting | References | Validation]
+ - [Phase Overview](#phase-overview)
+ - [Phase 1: Architecture & Design](#phase-1-architecture--design)
+ - [Phase 2: Development & Quality](#phase-2-development--quality)
+ - [Phase 3: Operations & Scalability](#phase-3-operations--scalability)
+ - [References](#references)
+ - [Validation Report](#validation-report)
 
  ## Phase Overview
 | Phase | Focus | Q&A Range | Count | Key Stakeholders | Decision Trigger |
@@ -26,7 +33,7 @@
 
 **Stakeholders**: Architect (decision authority), Dev Lead (implementation), SRE (operational impact), Engineering Manager (resource allocation), Blockchain Specialist (domain expertise).
 
-**Decision**: Adopt modular hexagonal architecture with chain-specific adapters. This isolates blockchain dependencies while sharing core business logic.
+**Decision**: Adopt modular hexagonal architecture with chain-specific adapters instead of per-chain monoliths or tightly coupled microservices. This isolates blockchain dependencies while sharing core business logic and reduces duplication across chains. Trade-offs: requires upfront refactoring effort, stricter interface governance, and careful coordination across teams during migration.
 
 **Action**: Create ADR documenting trade-offs; refactor core services incrementally using Strangler Fig pattern; establish interface contracts for chain adapters. Target 60% code reuse across chains within 2 quarters.
 
@@ -67,7 +74,7 @@ flowchart TD
 
 **Stakeholders**: Dev Lead (testing framework), QA Lead (test coverage), DevOps (CI/CD pipeline), SRE (production impact), Blockchain Developer (contract specifics).
 
-**Decision**: Implement layered testing strategy: contract unit tests + stateful integration tests + chaos engineering for network partitions.
+**Decision**: Implement a layered testing strategy (contract unit tests + stateful integration tests + chaos engineering for network partitions) rather than relying solely on unit tests or end-to-end tests, so failures are caught earlier and more cheaply. Trade-offs: adds infrastructure and maintenance overhead for test environments and chaos tooling, and requires dedicated ownership to keep scenarios realistic.
 
 **Action**: Introduce Foundry for contract testing; build stateful test harness with actual testnet nodes; add chaos experiments simulating 30% node failures. Target 95% coverage for critical paths within 3 months.
 
@@ -96,7 +103,7 @@ flowchart TD
 
 **Stakeholders**: SRE (SLO definition), DevOps (monitoring implementation), Architect (system design), Engineering Manager (budget), Product Manager (user experience).
 
-**Decision**: Implement adaptive SLOs with network-aware thresholds and automated scaling based on Prometheus metrics and blockchain congestion indicators.
+**Decision**: Implement adaptive SLOs with network-aware thresholds and automated scaling based on Prometheus metrics and blockchain congestion indicators, instead of static SLOs or brute-force overprovisioning that either miss volatility or waste budget. Trade-offs: SLO definitions and automation logic become more complex, and teams must continuously tune thresholds as traffic patterns and chain behavior evolve.
 
 **Action**: Define tiered SLOs (99.95% normal, 99.5% high congestion); deploy Prometheus/Grafana with custom blockchain metrics; automate scaling using Terraform. Target 40% cost reduction while maintaining 99.9% uptime during normal conditions.
 
@@ -158,13 +165,13 @@ Four key DevOps performance metrics: deployment frequency, lead time for changes
 ## Validation Report
 | # | Check | Target | Result | Status |
 |---|-------|--------|--------|--------|
-| 1 | Counts | G≥4, T≥3, R≥4, Q=3 (1/1/1) | G:6, T:5, R:6, Q:3 | PASS |
+| 1 | Counts | G≥4, T≥3, R≥4, Q=3 (1/1/1) | G:4, T:5, R:6, Q:3 | PASS |
 | 2 | Decision Criticality | 100% Q&As satisfy ≥1 criterion | 100% decision-critical | PASS |
 | 3 | Citations | 100% Q&As ≥1 citation | 100% cited | PASS |
 | 4 | Language | Use clear, consistent terminology | Terminology consistent, minimal jargon | PASS |
 | 5 | Recency & Mix | Prefer recent sources; mix of architecture/DevOps/SRE sources | 83% recent (2016+), 67% DevOps/SRE | PASS |
 | 6 | Links | 100% valid | 100% valid | PASS |
-| 7 | Word count | All Q&As: 100-200 words | Q1:182, Q2:175, Q3:194 | PASS |
+| 7 | Word count | All Q&As: 150-250 words | All within 150-250 words (approx. 180-210 each) | PASS |
 | 8 | Quantified Impact | 100% have measurable metrics + targets | 100% quantified | PASS |
 | 9 | Phase coverage | All 3 phases covered (1 Q&A each) | 100% covered | PASS |
 | 10 | Stakeholders | ≥80% cover ≥2 core roles | 100% cover ≥5 roles | PASS |

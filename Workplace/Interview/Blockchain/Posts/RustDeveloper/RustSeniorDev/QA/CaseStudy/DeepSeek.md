@@ -1,10 +1,20 @@
 # 区块链基础设施案例研究深度分析
+ 
+**目的**: 为区块链基础设施方向（尤其是 Rust / 系统工程）候选人和面试官提供一组高质量、可量化的成功/失败案例，用于案例分析问答、系统设计讨论和经验反思。
+
+**目标读者**: Rust 高级开发工程师、区块链架构师、基础设施 / 安全 / 数据平台相关角色。
+
+**使用方式**: 结合岗位 JD，从 7 个类别中按难度选择 3–6 个案例，让候选人在有限时间内完成结构化分析（背景 → 生命周期 → 多视角 → 根因 / 成功因素 → 经验教训 → 建议）。
+
+**范围与假设**: 聚焦公链、跨链桥、DeFi 协议、预言机、钱包等「基础设施级」项目；假设读者对区块链基础概念（PoW/PoS、DeFi、NFT 等）已有基本了解。
+
+**时间与数据**: 覆盖约 2016–2023 年典型事件；量化指标来自公开报道 / 官方白皮书 / 研究论文，部分数值经四舍五入处理，仅用于相对量级比较。
 
 ## I. 目录
-1. 类别概览
-2. 按类别划分的案例研究（7个类别）
-3. 参考文献（G/S/T/L/A）
-4. 验证报告
+- [II. 类别概览](#ii-类别概览)
+- [III. 案例研究（7个类别）](#iii-案例研究)
+- [IV. 参考文献（G/S/T/L/A）](#iv-参考文献)
+- [V. 验证报告](#v-验证报告)
 
 ## II. 类别概览
 
@@ -1481,9 +1491,3 @@ A25. Ripple Labs, Inc. (2023). *SEC vs Ripple: Case Summary and Implications*. h
 A26. Garlinghouse, B. (2023). *The Ripple SEC Case: What It Means for Crypto*. Ripple Insights. [EN]
 A27. 区块链法律研究组. (2023). *Ripple案件对加密货币监管的影响*. [ZH]
 A28. Binance Holdings Ltd. (2023). *Binance Company Overview and Operations*. https://www.binance.com/en/about [Report]
-A29. CZ (Changpeng Zhao). (2023). *Building Binance: Lessons from Scaling a Global Exchange*. [EN]
-A30. FTX Trading Ltd. (2022). *Chapter 11 Bankruptcy Filing Documents*. Delaware Bankruptcy Court. [Bankruptcy]
-A31. Lewis, A. (2022). *The FTX Collapse: Risk Management Failures*. Risk Management Review, 15(4), 45-68. [EN]
-A32. 加密货币交易所研究. (2022). *FTX崩溃的风险管理教训*. [ZH]
-A33. Chainlink Foundation. (2023). *Chainlink Network Metrics and Adoption*. https://chain.link/whitepaper [Report]
-A34. ConsenSys. (2023). *MetaMask User Growth and Product Evolution*. https://metamask.io/
