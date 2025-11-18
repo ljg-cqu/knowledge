@@ -14,24 +14,19 @@
 
 **Problem**: Commercial teams lack actionable intelligence from fragmented news sources, causing delayed responses and missed revenue opportunities.
 
-**Scope**: Generate 4-6 decision-critical Q&As from commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) for CRO, VP Sales, VP Marketing, VP CS, RevOps.
-
-**Cadence**: Bi-weekly | 4-6h/cycle | **Expires**: 2wk post-gen | **Freshness**: ≥70% <2mo (≥25% <1wk), 100% ≤9mo
+**Scope**: Generate 4-6 decision-critical Q&As from commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) for CRO, VP Sales, VP Marketing, VP CS, RevOps. Bi-weekly | 4-6h/cycle | **Expires**: 2wk post-gen | **Freshness**: ≥70% <2mo (≥25% <1wk), 100% ≤9mo.
 
 **Definitions**:
-- **Decision-critical**: News requiring 1-6mo action impacting revenue, blocking decisions, creating risk, or requiring multi-stakeholder coordination
+- **Decision-critical**: 1-6mo action impacting revenue, blocking decisions, creating risk, or requiring ≥2 stakeholders
 - **Commercial Operations**: Sales execution, marketing ops, customer success, RevOps, GTM strategy, competitive intelligence
 
-**Exclude**: Technical specs/architecture, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, internal-only changes, single-function tasks
+**Exclude**: Technical specs/architecture, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, internal-only changes, single-function tasks.
 
-**Inputs**: Domain/vertical, period, company (size, stage, GTM, ACV) | Metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion) | Stakeholders | Constraints (budget, hiring, regulatory)
+**Inputs**: Domain/vertical, period, company (size, stage, GTM, ACV), metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion), stakeholders, constraints (budget, hiring, regulatory).
 
-**Decision Criticality** (≥1):
-1. **[CRITICAL] Blocks Decision**: Quota, GTM pivot, revenue model
-2. **[CRITICAL] Creates Risk**: Competitive threat, churn signal, CAC/LTV pressure
-3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles
-4. **[IMPORTANT] Requires Action**: 1-6mo timeline
-5. **[IMPORTANT] Quantified Impact**: Revenue, pipeline, conversion, retention, efficiency
+**Criticality Criteria** (≥1 required):
+1. **[CRITICAL]** Blocks decision (quota, GTM pivot, revenue model) OR creates risk (competitive threat, churn signal, CAC/LTV pressure)
+2. **[IMPORTANT]** Multi-stakeholder (≥2 roles) with 1-6mo action AND quantified impact (revenue, pipeline, conversion, retention, efficiency)
 
 **Categories** (MECE):
 1. **Sales**: Win rates, quota, pipeline velocity, cycle length
@@ -41,46 +36,25 @@
 
 ## II. Requirements
 
-**Q&A**: 4-6 across 3-4 stages, covering all categories (Sales, Marketing, CS, RevOps)
+**Q&A Count**: 4-6 across 3-4 stages (Lead Gen & Demand, Sales & Closing, Retention & Expansion, Analytics & Optimization), covering all categories (Sales, Marketing, CS, RevOps), engaging ≥4 roles (CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst).
 
-**Structure** (150-200w):
-1. **News** (~30w): What, when, why, category + citation
-2. **Impact** (~60w): ≥2 stages, ≥2 roles, quantified metrics
-3. **Stakeholders** (~40w): ≥2 roles with concerns/actions
-4. **Decision** (~50w): ≥2 options with cost/benefit, rationale, trade-offs
-5. **Action** (~20w): Immediate (0-2wk) + short (2wk-2mo), owner + metrics
-
-**Stages** (3-4): Lead Gen & Demand, Sales & Closing, Retention & Expansion, Analytics & Optimization
-
-**Stakeholders** (≥4): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst
+**Structure per Q** (150-200w): News (~30w: what, when, why, category + citation) | Impact (~60w: ≥2 stages, ≥2 roles, quantified metrics) | Stakeholders (~40w: ≥2 roles with concerns/actions) | Decision (~50w: ≥2 options with cost/benefit, rationale, trade-offs) | Action (~20w: immediate 0-2wk + short 2wk-2mo, owner + metrics).
 
 **References**: G≥4, N≥4, P≥1, M≥1, R≥1, A≥4. 100% used.
 
-**Visuals**: ≥2 diagrams + ≥1 table
+**Visuals**: ≥2 diagrams + ≥1 table.
 
 **Quality Gates**:
-- **[CRITICAL]** 100% meet ≥1 criticality criterion
-- **[CRITICAL]** 100% cited with valid, accessible URLs
-- **[CRITICAL]** 100% quantified impact (multi-stage + multi-role)
-- **[IMPORTANT]** 100% include ≥2 decision options with rationale + timeline
-- **[IMPORTANT]** 100% concrete actions with owner + metrics
+- **[CRITICAL]** 100% meet ≥1 criticality criterion, cited with valid URLs, quantified impact (multi-stage + multi-role)
+- **[IMPORTANT]** 100% include ≥2 decision options (rationale + timeline) + concrete actions (owner + metrics)
 
-**Success Criteria**: Time: 8h → 4-6h | Freshness: ≥70% <2mo | Stakeholders: ≥4 roles | URL validity: 100%
+**Success Criteria**: Time 4-6h | Freshness ≥70% <2mo | Stakeholders ≥4 | URL validity 100%.
 
 ## III. Execution
 
 ### Step 1: News Discovery
 
-Record generation date (YYYY-MM-DD).
-
-**Search** (10-15 candidates):
-- **Keywords**: `[Domain] {sales performance|pipeline|quota|CAC|conversion|churn|retention|expansion|competitive|win/loss}`
-- **Sources**: SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot, Gainsight, RevOps Co-op, G2, Gartner, Forrester
-- **Tools**: Perplexity `"[domain] sales trends" timerange:1month` | ChatGPT "Latest [domain] commercial ops news 60d" | Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD`
-
-**Filter**: Freshness ✓ | Trusted source ✓ | ≥1 criticality criterion ✓ | No rumors ✓
-
-**Allocate**: 4-6 Q across 3-4 stages, all categories, ≥4 roles
+Record generation date (YYYY-MM-DD). **Search** 10-15 candidates using keywords `[Domain] {sales performance|pipeline|quota|CAC|conversion|churn|retention|expansion|competitive|win/loss}` from SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot, Gainsight, RevOps Co-op, G2, Gartner, Forrester. **Tools**: Perplexity `"[domain] sales trends" timerange:1month`, ChatGPT "Latest [domain] commercial ops news 60d", Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD`. **Filter**: Freshness ✓ | Trusted source ✓ | ≥1 criticality ✓ | No rumors ✓. **Allocate**: 4-6 Q across 3-4 stages, all categories, ≥4 roles.
 
 ### Step 2: Build References
 
@@ -96,23 +70,15 @@ Record generation date (YYYY-MM-DD).
 
 ### Step 3: Generate Q&A
 
-Pattern: "[News] implications for [Stage]+[Roles]?"
-
-**Avoid**: Generic claims (quantify) | Hype (show limitations) | Unattributed statements (cite) | Stale news | Speculation (flag uncertainty)
-
-**Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced
+Pattern: "[News] implications for [Stage]+[Roles]?". **Avoid**: Generic claims (quantify), hype (show limitations), unattributed statements (cite), stale news, speculation (flag uncertainty). **Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced.
 
 ### Step 4: Add Visuals
 
-≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table
-
-Example: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source
+≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table. Example: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source.
 
 ### Step 5: Validate
 
-**Self-Review**: URLs accessible | Calculations correct | No contradictions | Terminology consistent | All references used | Uncertainties flagged
-
-**Quality Gates**: All CRITICAL + IMPORTANT pass | Reference floors met | No placeholders | Valid URLs
+**Self-Review**: URLs accessible, calculations correct, no contradictions, terminology consistent, all references used, uncertainties flagged. **Quality Gates**: All CRITICAL + IMPORTANT pass, reference floors met, no placeholders, valid URLs.
 
 ## IV. Validation Report
 

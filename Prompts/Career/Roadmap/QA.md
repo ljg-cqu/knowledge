@@ -9,14 +9,22 @@ owner: ljg-cqu
 Generate 3 decision-critical Q&As for informed roadmap decisions.
 
 **Problem**: Hallucinations in roadmap decisions, incomplete analysis of tech shifts, ambiguous choices leading to delays or scalability issues.
+
 **Scope**: Architectural evolution, technology adoption, strategic pivots in production distributed systems.
 
-**Constraints**: Basic software engineering knowledge required; focus on decision-critical aspects.
-**Assumptions**: Decisions materially affect roadmap.
-**Context**: Typical production systems; adapt scale/constraints.
-**Timeline**: Adapt to roadmap cycles.
-**Stakeholders**: Architect, Dev Lead, SRE, Engineering Manager, DevOps.
-**Resources**: Tools like Mermaid, GitHub, Prometheus.
+**Scale**: 3 Q&As (1 F / 1 I / 1 A); 10-15min/question.
+
+**Timeline**: Roadmap cycles (quarterly/annual); adapt to planning windows.
+
+**Stakeholders**: Architect, Dev Lead, SRE, Engineering Manager, DevOps (≥5 core roles).
+
+**Constraints**: Basic software engineering knowledge; decision-critical only; 100-200 words/answer.
+
+**Assumptions**: Decisions materially affect roadmap; production systems (10-100 engineers, 100-100K rps, 1-100TB data).
+
+**Resources**: Tools (Mermaid, ADR tools, Prometheus, Grafana, Terraform).
+
+**Success**: All validations pass (12/12); 100% decision-critical; ≥1 citation per Q&A; G≥4, T≥3, R≥4.
 
 **Key Terms**:
 - **Decision-Critical**: Satisfies ≥1 criterion (see Content Standards).

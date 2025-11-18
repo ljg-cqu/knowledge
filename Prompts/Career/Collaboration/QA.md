@@ -9,8 +9,14 @@ owner: ljg-cqu
 Generate 8-15 decision-critical Q&As on cross-functional collaboration for senior interviews. Each must impact decisions, risk, stakeholders, or require near-term action.
 
 **Audience**: Engineering Managers, Directors, VPs, CTOs, Architects, Tech Leads, Product Managers
-**Context**: Teams of various sizes, potentially distributed/remote
-**Success Criteria**: Actionable insights with frameworks and metrics
+
+**Context**: Teams 5-500+, potentially distributed/remote across timezones.
+
+**Scale**: 8-15 Q&As; 10-15min/question.
+
+**Timeline**: Interview (60-90min) or training (2-4h workshop).
+
+**Success**: Actionable insights with frameworks (RACI/DACI, RFC/ADR, Team Topologies) and quantified metrics (async ratio %, approval velocity days, documentation coverage %).
 
 ---
 

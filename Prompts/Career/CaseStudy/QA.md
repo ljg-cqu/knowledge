@@ -10,7 +10,7 @@ Generate 20–30 comprehensive case study analyses covering both successful and 
 
 ## I. Context & Scope
 
-**Purpose**: Extract actionable lessons from real-world successes/failures through multi-viewpoint analysis, enabling pattern recognition and improved decision-making.
+**Purpose**: Extract actionable lessons from real-world successes/failures through multi-viewpoint analysis (technical/business/regulatory/operational/data/security), enabling pattern recognition and improved decision-making (↓30-60% hallucinations, ↑60-80% decision quality).
 
 **Scope**: Public documented cases across 8 lifecycle phases, 10 stakeholder roles, 6 viewpoints (technical/business/regulatory/operational/data/security) | **Exclude**: Hypotheticals, unverified claims, marketing, superficial analyses
 

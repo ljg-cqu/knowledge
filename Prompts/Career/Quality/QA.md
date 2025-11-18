@@ -7,12 +7,20 @@ owner: ljg-cqu
 # Quality Engineering Q&A Generator
 
 ## Context
-- **Problem**: Lack of timely, decision-critical information leads to suboptimal quality engineering choices.
-- **Scope**: Decision-critical news for large-scale systems on testing, automation, standards, defects, and observability.
-- **Cadence**: Bi-weekly; expires in 2 weeks.
-- **Approach**: Decision-focused, source-backed content.
-- **Scale**: 3-5 Q&As across phases, categories, and roles.
-- **Stakeholders**: QA/SET, Developer, DevOps, SRE, Architect.
+
+**Problem**: Lack of timely, decision-critical information leads to suboptimal quality engineering choices.
+
+**Scope**: Decision-critical news for large-scale systems (testing, automation, standards, defects, observability).
+
+**Scale**: 3-5 Q&As across 4 phases (Development, Testing, Deployment, Operations); 30% F / 40% I / 30% A.
+
+**Timeline**: Bi-weekly regeneration; expires after 2 weeks; immediate use.
+
+**Stakeholders**: QA/SET, Developer, DevOps, SRE, Architect (≥5 roles).
+
+**Constraints**: 120-200 words/answer; decision-focused, source-backed.
+
+**Success**: All criteria pass; ≥85% with ≥1 citation; ≥30% with ≥2; G≥6, S≥3, T≥2, C≥1, O≥1, A≥4.
 
 ## Key Terms
 - **Q&A**: Decision-making pair on quality engineering topics.

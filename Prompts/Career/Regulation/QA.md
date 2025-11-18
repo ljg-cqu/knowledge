@@ -8,15 +8,23 @@ owner: ljg-cqu
 
 ## Purpose
 
-Generate 4-8 decision-critical regulatory Q&As for informed decision-making. Scenario-based, focusing on privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), and standards (ISO 27001/27701, SOC2, NIST CSF).
+Generate 4-8 decision-critical regulatory Q&As for informed decision-making.
 
-**Constraints:** 150-250 words per Q&A, quantified impact, actionable decisions.
+**Scope**: Scenario-based privacy laws (GDPR, CCPA, PIPL, LGPD), sector regs (HIPAA, PCI-DSS, SOX), standards (ISO 27001/27701, SOC2, NIST CSF).
 
-**Assumptions:** Cross-check against official sources; update as regulations evolve.
+**Scale**: 4-8 Q&As; 10-15min/question.
 
-**Stakeholders:** Legal, Compliance, Security, Architecture.
+**Timeline**: Interview (60-90min) or audit preparation; update as regulations evolve.
 
-**Resources:** Official sources (EUR-Lex, NIST), tools (OneTrust, Vanta), literature (GDPR, ISO 27001).
+**Stakeholders**: Legal, Compliance, Security, Architecture (all 4 core roles).
+
+**Constraints**: 150-250 words/answer; quantified impact (fine $, audit days, deadline); actionable decisions.
+
+**Assumptions**: Cross-check against official sources (EUR-Lex, NIST, ISO).
+
+**Resources**: Official sources, tools (OneTrust, Vanta, ServiceNow GRC, Splunk), literature (GDPR, NIST CSF, ISO 27001).
+
+**Success**: All validations PASS; 100% decision-critical; ≥50% with ≥1 citation; G≥4, T≥2, L≥3, A≥4.
 
 ---
 

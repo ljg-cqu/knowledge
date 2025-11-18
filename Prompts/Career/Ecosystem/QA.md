@@ -10,11 +10,19 @@ Generate 30–40 questions enabling newcomers to gain holistic ecosystem underst
 
 ## I. Context & Scope
 
-**Purpose**: Comprehensive ecosystem understanding: value chains, interaction patterns, stakeholder roles, technical architectures, business models, regulatory frameworks.
+**Purpose**: Comprehensive ecosystem understanding (value chains, interaction patterns, stakeholder roles, technical architectures, business models, regulatory frameworks) for newcomers.
 
-**Scope**: Ecosystem structure, value flows, integration patterns, multi-stakeholder views, lifecycle, market dynamics, compliance | **Exclude**: Generic programming, isolated tutorials, overly technical details, interview scenarios
+**Scope**: Ecosystem structure, value flows, integration patterns, multi-stakeholder views, lifecycle, market dynamics, compliance.
 
-**Constraints**: 200-400 words/answer | ≥80% have ≥1 cite (≥40% have ≥2) | 100% ecosystem-focused | Newcomer-appropriate
+**Scale**: 30-40 Q&As; newcomer-appropriate.
+
+**Timeline**: Self-study (8-12h) or training (2-day workshop); onboarding.
+
+**Stakeholders**: Business Analysts, PM, Architect, Developer, QA, DevOps, Security, Data Engineer, SRE, Leadership.
+
+**Constraints**: 200-400 words/answer, ≥80% have ≥1 cite (≥40% have ≥2), 100% ecosystem-focused.
+
+**Exclude**: Generic programming, isolated tutorials, overly technical details, interview scenarios.
 
 **Key Terms**: Ecosystem (interconnected parties/systems), Viewpoint (technical/business/regulatory/operational), Integration Pattern (interaction/communication), Stakeholder (10 roles: Business/PM/Architect/Developer/QA/DevOps/Security/Data/SRE/Leadership), Floor (≥ = minimum), Quality gate (mandatory—fail = stop/fix)
 

@@ -1,14 +1,5 @@
 # People & Workforce Intelligence News Q&A Generator
 
-Generate **4-6 decision-critical Q&As** (150-200w each) from workforce news for HR/People decisions.
-
-**Decision-Critical** (≥1): Blocks decisions | Creates risk | Affects ≥2 roles | Requires 1-6mo action | Has quantified impact
-
-**Key Terms**:
-- **MECE**: Mutually Exclusive, Collectively Exhaustive—sections distinct with no gaps/overlaps
-- **Lifecycle Stages**: Attract/Brand → Hire/Onboard → Develop/Grow → Reward/Retain → Transition/Exit
-- **Quantified Impact**: Specific metrics (numbers, %, ranges, formulas)—not "significant"/"many"
-
 ## Table of Contents
 - [Context & Scope](#context--scope)
 - [Requirements](#requirements)
@@ -19,104 +10,47 @@ Generate **4-6 decision-critical Q&As** (150-200w each) from workforce news for 
 
 **Problem**: HR leaders need curated, decision-critical workforce intelligence from fragmented news sources.
 
-**Domain**: Workforce developments—talent supply/demand, skills, compensation, labor policy, culture/DEI, health/wellbeing.
+**Scope**: Generate 4-6 Q&As (150-200w each) from workforce news (talent supply/demand, skills, compensation, labor policy, culture/DEI, health/wellbeing) for CHRO, VP People, HRBP, Talent Acquisition Lead, L&D Lead, Comp & Benefits Lead, Employee Relations/Labor Lead, DEI Lead, People Analytics Lead, BU Leaders, Line Managers. Monthly | Expires 4wk | 1-18mo timeline (Immediate <3mo, Near-term 3-6mo, Medium-term 6-18mo). **Sources**: SHRM, HBR, LinkedIn Talent Blog, Gartner HR, Radford, Mercer, ILO, OECD, Gallup Workplace, McKinsey People.
 
-**Stakeholders**: CHRO, VP People, HRBP, Talent Acquisition Lead, L&D Lead, Comp & Benefits Lead, Employee Relations/Labor Lead, DEI Lead, People Analytics Lead, BU Leaders, Line Managers.
-
-**Timeline**: 1-18mo (Immediate: <3mo | Near-term: 3-6mo | Medium-term: 6-18mo).
-
-**Resources**: Web search | Sources: SHRM, HBR, LinkedIn Talent Blog, Gartner HR, Radford, Mercer, ILO, OECD, Gallup Workplace, McKinsey People.
+**Definitions**:
+- **Decision-Critical** (≥1 required): Blocks decisions OR creates risk OR affects ≥2 roles with 1-6mo action AND quantified impact
+- **MECE**: Mutually Exclusive, Collectively Exhaustive—sections distinct with no gaps/overlaps
+- **Lifecycle Stages**: Attract/Brand → Hire/Onboard → Develop/Grow → Reward/Retain → Transition/Exit
+- **Quantified Impact**: Specific metrics (numbers, %, ranges, formulas)—not "significant"/"many"
 
 **Include**: Talent shortages, hiring trends, skills/reskilling, compensation shifts, policy/labor changes, retention risks, engagement/wellbeing signals.
 
-**Exclude**: Technical HR config, product/GTM, finance, rumors, PR fluff, stale (>12mo).
+**Exclude**: Technical HR config, product/GTM, finance, rumors, PR fluff, stale (>12mo), orgs <50 employees, deep-dive analysis, technical HR systems, immediate crisis (<1wk).
 
-**Freshness Priority**:
-- Talent/Skills: <2mo
-- Comp/Policy: <3mo
-- Culture/Wellbeing: <12mo
+**Freshness**: Talent/Skills <2mo | Comp/Policy <3mo | Culture/Wellbeing <12mo.
 
-**Refresh**: Regenerate every 4wk (expires 4wk from generation).
+**Inputs**: Industry/geography, org size/challenges, stakeholder priorities, generation date (YYYY-MM-DD).
 
-**User Inputs**: Industry/geography, org size/challenges, stakeholder priorities, generation date (YYYY-MM-DD).
-
-**When NOT to Use**: Orgs <50 employees, deep-dive analysis, technical HR systems, immediate crisis (<1wk).
-
-**Categories** (≥3):
-1. **Talent Markets & Hiring**: Trends, shortages, skills, branding, layoffs
-2. **Skills & Development**: Certifications, reskilling, licensing
-3. **Compensation & Benefits**: Benchmarks, pay equity, healthcare, leave
-4. **Policy & Labor**: Regulations, unions, remote/RTO, visas, gig work
-5. **Culture & DEI**: Engagement, initiatives, representation, trust
-6. **Health & Wellbeing**: Mental health, burnout, safety
+**Categories** (≥3 of 6): Talent Markets & Hiring (trends, shortages, skills, branding, layoffs) | Skills & Development (certifications, reskilling, licensing) | Compensation & Benefits (benchmarks, pay equity, healthcare, leave) | Policy & Labor (regulations, unions, remote/RTO, visas, gig work) | Culture & DEI (engagement, initiatives, representation, trust) | Health & Wellbeing (mental health, burnout, safety).
 
 ## Requirements
 
-**Output**: 4-6 Q&As, 150-200w each, news-driven with citations.
+**Output**: 4-6 Q&As (150-200w each) covering 3-4 lifecycle stages, ≥4 stakeholder roles (of 11), ≥3 categories (of 6). All Q&As: ≥1 news source (date + URL), quantified impact (or flag "unavailable"), decision path (rationale + trade-offs + timeline). Total 1-2 visuals (diagrams/tables).
 
-**Coverage**:
-- 3-4 lifecycle stages
-- ≥4 stakeholder roles (of 11)
-- ≥3 categories (of 6)
-
-**Quality** (all Q&As):
-- ≥1 news source (date + URL)
-- Quantified impact (or flag "unavailable")
-- Decision path: rationale + trade-offs + timeline
-- 1-2 visuals total (diagrams/tables)
-
-**References**:
-- Glossary: Terms + definitions (+ analogies if complex)
-- ≥4 news sources with URLs
-- Benchmarks/laws/research as applicable
+**References**: Glossary (terms + definitions + analogies if complex), ≥4 news sources with URLs, benchmarks/laws/research as applicable.
 
 ## Execution
 
 ### Step 1: News Discovery [CRITICAL]
 
-- Set generation date; calculate news age per freshness priority
-- Web search 10-15 candidates
-- **Filter**: Freshness + decision-critical + quantified; exclude rumors/PR
-- **Select**: 4-6 items covering ≥3 categories, ≥4 stakeholder roles
+Set generation date, calculate news age per freshness priority. Web search 10-15 candidates. **Filter**: Freshness + decision-critical + quantified; exclude rumors/PR. **Select**: 4-6 items covering ≥3 categories, ≥4 stakeholder roles.
 
 ### Step 2: Build References [CRITICAL]
 
-- **Glossary** (G#): Term + definition + analogy (if complex)
-- **News** (N#): Title + source + date (YYYY-MM-DD) + URL
-- **Benchmarks** (B#): Metric + source + date
-- **Laws** (L#): Regulation + jurisdiction + effective date
-- **Research** (R#): Finding + source + date (if time-sensitive)
-- Citation: Inline `[Ref: N1][n1]`; footnote `[n1]: URL`
+**Formats**: G# (term + definition + analogy if complex) | N# (title + source + date YYYY-MM-DD + URL) | B# (metric + source + date) | L# (regulation + jurisdiction + effective date) | R# (finding + source + date if time-sensitive). **Citation**: Inline `[Ref: N1][n1]`, footnote `[n1]: URL`.
 
 ### Step 3: Generate Q&A [CRITICAL]
 
-Each Q&A (150-200w):
-1. **News** (~30w): What/when/why/category + source/date
-2. **Impact** (~60w): Lifecycle stages + quantified metrics (baseline → target); flag uncertainties
-3. **Stakeholders** (~40w): ≥2 roles + concerns/actions + perspective differences
-4. **Decision** (~40w): Primary path + ≥1 alternative; trade-offs (costs/benefits/risks); when NOT to pursue
-5. **Action** (~20w): Steps + owners + success metrics
-
-**Include**: Limitations, risks, counterarguments, when NOT to pursue.
-
-**Exclude**: Generic advice ("best practices"), hype, unattributed claims, speculation, one-sided views.
+**Structure per Q** (150-200w): News (~30w: what/when/why/category + source/date) | Impact (~60w: lifecycle stages + quantified metrics baseline → target, flag uncertainties) | Stakeholders (~40w: ≥2 roles + concerns/actions + perspective differences) | Decision (~40w: primary path + ≥1 alternative, trade-offs - costs/benefits/risks, when NOT to pursue) | Action (~20w: steps + owners + success metrics). **Include**: Limitations, risks, counterarguments, when NOT to pursue. **Exclude**: Generic advice ("best practices"), hype, unattributed claims, speculation, one-sided views.
 
 ### Step 4: Validate & Submit [CRITICAL]
 
-**Verification**:
-- URLs accessible; dates match source
-- Check metrics against source claims
-- Flag uncertainties ("estimated", "projected", "unavailable")
-- Cross-check contradictions
-
-**Pre-Submission**:
-- 4-6 Q&As, 150-200w each
-- ≥3 categories, ≥4 stakeholders
-- All citations: ≥1 source + date + URL
-- All decision-critical: meet ≥1 criterion
-- 1-2 visuals total
-
-**Deliverable**: Q&As + citations + glossary + references + visuals + generation date
+**Verification**: URLs accessible, dates match source, check metrics against source claims, flag uncertainties ("estimated", "projected", "unavailable"), cross-check contradictions. **Pre-Submission**: 4-6 Q&As (150-200w each), ≥3 categories, ≥4 stakeholders, all citations (≥1 source + date + URL), all decision-critical (≥1 criterion), 1-2 visuals total. **Deliverable**: Q&As + citations + glossary + references + visuals + generation date.
 
 ## Validation Report
 

@@ -10,10 +10,13 @@ owner: ljg-cqu
 
 Generate 4-8 decision-critical interview questions evaluating senior technical leaders' ability to translate business models into architectural decisions.
 
-**Scope**:
-- Focus: Business-to-architecture translation in critical scenarios
-- Depth: Senior engineer to architect level (5-15 years experience)
-- Time: 5-10 minutes per question discussion
+**Scope**: Business-to-architecture translation in critical scenarios (revenue model pivots, market entry, compliance gaps).
+
+**Depth**: Senior engineer to architect level (5-15 years experience).
+
+**Timeline**: 5-10 min/question; 45-60min interview total.
+
+**Stakeholders**: Architect, PM, Finance, Leadership, Compliance.
 
 **Difficulty**: 20% F / 40% I / 40% A — **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision)
 

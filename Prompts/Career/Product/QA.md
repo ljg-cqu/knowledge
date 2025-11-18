@@ -6,13 +6,23 @@ owner: ljg-cqu
 
 # PM Interview Q&A Generator
 
-**Purpose**: Generate scenario-based questions for senior PM interviews, focusing on judgment in decision-critical scenarios (e.g., >$1M impact, strategic pivots, >5% churn). Emphasize stakeholder navigation, trade-offs, strategic ambiguity. Exclude trivia, design, junior tasks, technical questions.
+**Purpose**: Generate scenario-based questions for senior PM interviews, focusing on judgment in decision-critical scenarios (>$1M impact, strategic pivots, >5% churn). Emphasize stakeholder navigation, trade-offs, strategic ambiguity.
 
-**Constraints**: Answers 150-250 words; 70% with citations; 100% decision-critical; senior level.
+**Scope**: Decision-critical PM scenarios only; strategic, metrics, stakeholder, GTM.
+
+**Scale**: 5-7 Q&As; 10-15min/question.
+
+**Timeline**: Interview (60-90min); immediate use.
+
+**Stakeholders**: PMs, Engineering Managers, Directors, VPs, Finance, Sales, Marketing.
+
+**Constraints**: 150-250 words/answer; ≥70% with citations; 100% decision-critical; senior level (5-15 years).
 
 **Assumptions**: Industry context generic or provided; text output.
 
-**Limitations**: Generic scenarios lack nuance; citations vary in recency; frameworks need context.
+**Exclude**: Trivia, design, junior tasks, technical questions.
+
+**Success**: 80% elicit judgment, 70% hiring accuracy, ≥70% with citations, 100% >$1M impact; G≥6, T≥3, L≥3 (≥1 ZH), A≥5.
 
 **Terms**:
 - **Q&A**: Scenario pair testing judgment.

@@ -14,12 +14,17 @@ Ensure quality: define terms, use metrics, cite sources, compare trade-offs, inc
 
 ## Scope
 
-**Audience**: Managers, leaders, HR professionals.
-**Purpose**: Generate decision-critical Q&As for interviews, training, or analysis (3-4h effort, evergreen).
+**Audience**: Managers, Team Leads, Directors, VPs, CTOs, CHRO, HR professionals.
 
-**Lifecycle (5 phases)**: Requirements & Discovery → Development → Deployment → Operations → Evolution
+**Purpose**: Generate 4-8 decision-critical Q&As for interviews, training, or organizational analysis.
 
-**Stakeholders (≥5 core roles)**: Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead
+**Scale**: 4-8 Q&As; 10-15min/question.
+
+**Timeline**: Interview (60-90min) or workshop (3-4h); evergreen.
+
+**Lifecycle**: Requirements & Discovery → Development → Deployment → Operations → Evolution (5 phases).
+
+**Stakeholders**: Manager, Team Lead, Director/VP, CTO, Architect, CHRO/People Lead (≥5 core roles).
 
 ## Requirements
 **Q&A Specs**: 4-8 Q&As (25% F, 50% I, 25% A); 150-250 words each; structure: Scenario → Impact → Stakeholders → Decision → Action; ≥1 citation and artifact per Q&A.

@@ -7,12 +7,14 @@ owner: ljg-cqu
 # Leadership Decision-Critical Q&A Generator
 
 **Context**:
-- **Problem**: Senior leaders (5-15 yrs) need Q&As for high-stakes scenarios to reduce hallucinations (↓30-60%) and improve decisions (↑60-80%).
-- **Scope**: Decision-critical scenarios only (blocks decisions or creates risk). Focus: strategic, people, change, culture.
-- **Constraints**: Scenario-based Q&As.
-- **Assumptions**: Uses common frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
-- **Scale**: 6 Q&As across 3 topics.
-- **Resources**: Any LLM; internet for citations.
+- **Problem**: Senior leaders (5-15 years) need Q&As for high-stakes scenarios to reduce hallucinations (↓30-60%) and improve decisions (↑60-80%).
+- **Scope**: Decision-critical scenarios only (blocks decisions or creates risk); strategic, people, change, culture.
+- **Scale**: 6 Q&As across 3 topics; 10-15min/question.
+- **Timeline**: Interview (60-90min) or leadership training; immediate use.
+- **Stakeholders**: Engineering Managers, Directors, VPs, CTOs, CHRO, Team Leads.
+- **Constraints**: Scenario-based Q&As; 150-250 words/answer.
+- **Assumptions**: Common frameworks (Situational Leadership, Kotter, Radical Candor, Psychological Safety).
+- **Success**: All validations PASS; ≥70% with ≥1 citation; G≥6, T≥3, L≥3, A≥5.
 
 **Exclude/Skip**:
 - Low-stakes, exploratory, trivia, theory, niche/legacy (<5% adoption), speculation.

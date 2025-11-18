@@ -8,12 +8,23 @@ owner: ljg-cqu
 
 **Mission**: Generate 10 decision-critical Q&As on protocols for senior interviews, focusing on scenarios that block decisions, create risks, or require cross-functional coordination.
 
-**Context**:
-- Problem: Candidates need practice in protocol decisions under time pressure.
-- Scope: 10 Q&As across 5 protocol clusters.
-- Assumptions: Intermediate protocol knowledge; access to standards; 45-60 min interviews.
-- Stakeholders: Architects, Developers, DevOps, Security, SRE.
-- Resources: IETF RFCs, ISO standards, industry reports, tools like Postman/Buf.
+**Problem**: Candidates need practice in protocol decisions under time pressure.
+
+**Scope**: 10 Q&As across 5 protocol clusters (API, Data, Messaging, Auth, Network).
+
+**Scale**: 10 Q&As; 10-15min/question.
+
+**Timeline**: 45-60min interview; immediate use.
+
+**Stakeholders**: Architects, Developers, DevOps, Security, SRE (≥3 per Q&A).
+
+**Constraints**: 120-300 words/answer; ≥1 citation per Q&A.
+
+**Assumptions**: Intermediate protocol knowledge; access to standards (IETF RFCs, ISO, OWASP).
+
+**Resources**: IETF RFCs, ISO standards, industry reports, tools (Postman, Buf, Swagger).
+
+**Success**: 100% decision-critical justified, ≥3 stakeholders per Q&A, all 5 clusters covered; G≥15, T≥6, L≥8, A≥12.
 
 **Key Terms**:
 - MECE Clusters: 5 distinct categories covering major protocol decisions.

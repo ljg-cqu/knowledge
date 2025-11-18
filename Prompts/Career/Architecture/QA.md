@@ -6,19 +6,23 @@ owner: ljg-cqu
 
 # Software Architecture Interview Q&A Generator
 
-**Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality due to hallucinations.
+**Problem**: Candidates struggle translating architecture concepts to practical code, reducing hiring quality due to hallucinations (↓30-40%).
 
-**Scope**: Generate 5 Q&A pairs for senior/architect roles, focusing on architecture-to-code translation.
+**Scope**: 5 Q&A pairs for senior/architect roles (5-15 years experience), architecture-to-code translation.
 
-**Constraints**: Idiomatic code in common languages.
+**Constraints**: Idiomatic code (Java/Python/Go/TypeScript); 150-300 words/answer; 10-30 lines code.
 
-**Assumptions**: Familiarity with software architecture concepts.
+**Assumptions**: Familiarity with software architecture concepts (hexagonal, CQRS, event sourcing).
 
-**Audience**: Senior developers, architects.
+**Scale**: 1-5 candidates/session, 10-15min/question.
 
-**Output**: 5 Q&As across 5 dimensions with code, quantified trade-offs, ≥2 alternatives, citations.
+**Timeline**: 45-60min interview; immediate use.
 
-**Success**: All validation checks pass.
+**Stakeholders**: Hiring managers, senior engineers, architects, tech leads.
+
+**Output**: 5 Q&As across 5 dimensions with code, quantified trade-offs, ≥2 alternatives, ≥1 citation each.
+
+**Success**: All validation checks pass (≥6 citations, ≥3 tools, ≥3 literature, ≥5 glossary).
 
 **Decision-Criticality** (Include if ≥1 criterion satisfied):
 - **Blocks Decision**: Impacts architecture choice, tech stack selection, or design strategy

@@ -7,7 +7,18 @@ owner: ljg-cqu
 # Pattern-Based Q&A Generation Template
 
 ## Overview
-Generate 8-12 decision-critical Q&As for career development patterns across 4-6 MECE domains. Ensure concise answers with ≥12 glossary terms, ≥6 tools, ≥6 literature references, ≥8 citations.
+
+Generate 8-12 decision-critical Q&As for career development patterns across 4-6 MECE domains.
+
+**Scale**: 8-12 Q&As; 10-15min/question.
+
+**Timeline**: Interview (90-120min) or self-study; immediate use.
+
+**Stakeholders**: Developers, Architects, SREs, DevOps, Security Engineers, Data Engineers, Compliance Officers.
+
+**Output**: Concise answers with ≥12 glossary, ≥6 tools, ≥6 literature, ≥8 citations.
+
+**Success**: All criteria pass, 100% decision-critical, ≥80% with Tier 1-2 citations.
 
 **Key Terms**:
 - **F/I/A**: **F**=Foundational (execution), **I**=Intermediate (strategy/trade-offs), **A**=Advanced (portfolio/vision)

@@ -11,16 +11,24 @@ Generate 2-4 decision-critical Q&As for performance engineering—minimal viable
 ## Scope & Requirements
 
 **Problem**: Inconsistent performance advice leading to suboptimal decisions, hallucinations in optimization strategies, incomplete bottleneck analysis.
-**Scope**: Decision-critical topics—bottleneck analysis, optimization strategies, tool evaluation, architectural patterns. Applicable to systems with measurable SLOs, from low-volume to high-scale.
-**Constraints**: Assumes basic performance knowledge; focuses on production-ready solutions.
-**Assumptions**: Users typically have access to profiling tools and observability (APM/logs/traces); adapt if tools are unavailable.
-**Scale**: Individual engineers to large teams.
-**Timeline**: Immediate use; 30-60s pre-send check; assume bi-weekly regeneration.
+
+**Scope**: Decision-critical topics (bottleneck analysis, optimization strategies, tool evaluation, architectural patterns); systems with measurable SLOs, low-volume to high-scale.
+
+**Scale**: 2-4 Q&As; individual engineers to large teams.
+
+**Timeline**: Bi-weekly regeneration; 1-2h effort; expires after 2 weeks; immediate use.
+
 **Stakeholders**: Performance Engineers, SREs, Backend Developers, Architects, DevOps.
-**Resources**: Any capable LLM plus standard profiling tools.
+
+**Constraints**: Assumes basic performance knowledge; production-ready solutions only; 150-250 words/answer.
+
+**Assumptions**: Access to profiling tools and observability (APM/logs/traces); adapt if tools unavailable.
+
 **Domain**: Web/cloud/microservices/distributed/real-time/data-intensive systems.
+
 **Exclude**: Hardware selection, network topology, vendor comparisons, non-performance concerns.
-**Cadence**: Bi-weekly | 1-2h effort | Expires: 2 weeks.
+
+**Success**: All 10 quality gates pass; G≥4, T≥2, L≥3, A≥5; 100% decision-critical, quantified impact.
 
 **Quantity**: 2-4 Q&A pairs.
 **Difficulty**: 25% F, 50% I, 25% A.

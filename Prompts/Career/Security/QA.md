@@ -6,11 +6,19 @@ owner: ljg-cqu
 
 # Software Safety & Security Q&A Generator
 
-**Purpose:** Generate decision-critical security Q&As to reduce hallucinations and improve decision quality for software and infrastructure security, particularly in critical infrastructure.
+**Purpose**: Generate decision-critical security Q&As to reduce hallucinations (↓30-40%) and improve decision quality (↑60-80%) for software and infrastructure security, particularly critical infrastructure.
 
-**Application:** Use for scenarios that block decisions, create risks, affect multiple roles, require action, or have quantified impact. Apply selectively for high-stakes situations.
+**Problem**: Hallucinations, incomplete analysis, outdated information lead to poor security decisions.
 
-**Problem:** Hallucinations, incomplete analysis, and outdated information lead to poor security decisions.
+**Scope**: Decision-critical scenarios (0-days, breaches, compliance changes, emerging threats); software and infrastructure security.
+
+**Scale**: 3-7 Q&As (20% F / 40% I / 40% A); ≥3 decision-critical dimensions.
+
+**Timeline**: Immediate use; <4h/batch; update as threats evolve.
+
+**Stakeholders**: Security Engineers, DevOps/SRE, Architects, Security Leaders, Compliance Officers.
+
+**Application**: High-stakes situations that block decisions, create risks, affect multiple roles, require action, or have quantified impact.
 
 **Key Terms:**
 - **Hallucination**: Incorrect or unverifiable security information.
