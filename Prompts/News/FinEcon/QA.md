@@ -1,6 +1,6 @@
 # Financial & Economic News Intelligence Q&A Generator
 
-**Purpose:** Generate 4–6 decision-critical Q&As from recent financial/economic news for finance leadership capital allocation and risk decisions.
+**Purpose**: Generate 4-6 decision-critical Q&As from financial/economic news for finance leadership capital allocation and risk decisions.
 
 ## Table of Contents
 - [I. Context & Scope](#i-context--scope)
@@ -12,35 +12,41 @@
 
 ## I. Context & Scope
 
-- **Problem**: Finance leadership needs decision-critical insights from fragmented financial news
-- **Cadence**: Bi-weekly; valid 2wk (state generation/expiry dates)
-- **Domain**: Financial/economic news affecting capital structure, liquidity, M&A, risk/compliance
-- **Audience**: CFO, VP Finance, Treasurer, Corp Dev, FP&A
-- **Horizon**: 1–6mo decisions; exclude <1mo tactical moves and >6mo speculation
-- **Org Scale**: $100M+ revenue or $50M+ annual finance decisions
-- **Resources**: 2-4h per cycle (analyst/AI-assisted)
-- **Format**: Scannable ≤30min
-- **Freshness**: News <2mo (preferred), <4mo (acceptable), ≤9mo (max); high-velocity topics (capital markets, macro) require fresher sources
+**Problem**: Finance leadership needs decision-critical insights from fragmented financial news
 
-**Decision Criticality** (each Q must meet ≥1):
+**Cadence**: Bi-weekly | Valid 2wk | State generation/expiry dates
+
+**Domain**: Financial/economic news affecting capital structure, liquidity, M&A, risk/compliance
+
+**Audience**: CFO, VP Finance, Treasurer, Corp Dev, FP&A
+
+**Horizon**: 1-6mo decisions | Exclude <1mo tactical, >6mo speculation
+
+**Scale**: $100M+ revenue or $50M+ annual finance decisions
+
+**Resources**: 2-4h/cycle | Scannable ≤30min
+
+**Freshness**: <2mo preferred, <4mo acceptable, ≤9mo max | High-velocity (capital markets, macro) require fresher sources
+
+**Decision Criticality** (≥1):
 1. Impacts capital allocation, capital structure, M&A, or liquidity
 2. Creates material risk (financial stability, compliance, cash flow)
-3. Requires action within 1-6mo
-4. Has quantified impact (WACC%, $, multiples, IRR)
+3. Requires 1-6mo action
+4. Quantified impact (WACC%, $, multiples, IRR)
 
-**Decision Cycles** (cover ≥3):
-1. **Capital Allocation**: Investment decisions, project prioritization, capex/opex
+**Decision Cycles** (≥3):
+1. **Capital Allocation**: Investment, project prioritization, capex/opex
 2. **Liquidity/Cash**: Working capital, cash runway, debt servicing
 3. **M&A/Corp Dev**: Acquisitions, divestitures, partnerships
 4. **Risk/Compliance**: Regulatory, FX/interest rate risk, controls
 
-**News Categories** (cover ≥3):
+**News Categories** (≥3):
 1. **Capital Markets/Rates**: Rate changes, equity valuations, credit spreads
 2. **Macro Trends**: GDP/CPI/unemployment, recession signals, sector shifts
 3. **M&A/Corp Dev**: Transactions, valuations, implications
 4. **Treasury/FX**: Currency volatility, liquidity stress, refinancing
 
-**Exclude**: Operations, product strategy, fundraising, rumors, educational content.
+**Exclude**: Operations, product strategy, fundraising, rumors, educational content
 
 ## II. Requirements
 
@@ -53,13 +59,15 @@
 ## III. Execution
 
 ### Step 1: News Discovery
+
 Record generation date (YYYY-MM-DD). Search ≥10 candidates; select 4-6 meeting decision criticality.
 
 **Sources**: Fed/ECB, WSJ, Bloomberg, FT, Reuters (markets); BLS/BEA (macro); MergerMarket (M&A); research. Avoid rumors/PR.
 
-**Rank by**: (1) quantified impact, (2) urgency, (3) multi-cycle effects
+**Rank**: (1) quantified impact, (2) urgency, (3) multi-cycle effects
 
 ### Step 2: Build References
+
 **Format**: G# (term, definition) | N# (news, source, date, URL) | M# (M&A, date, URL) | T# (treasury, date, URL) | R# (research, author, year, URL)
 
 **Citations**: `[Ref: N1][n1]` in text, `[n1]: [Source] (YYYY-MM-DD) URL` at end. Verify figures; label estimates ("est.", "proj.", "assumes X"). Research 2023+.
@@ -67,9 +75,10 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates; select 4-6 meeting
 **Glossary**: Define non-core terms.
 
 ### Step 3: Generate Q&A
+
 **Question**: "[Specific News] implications for [Cycle]?"
 
-**Structure** (150-200w total):
+**Structure** (150-200w):
 1. **News** (~30w): What, when, why [Ref: N#][n#]
 2. **Impact** (~60w): ≥2 cycles + quantified metrics (%, $, multiple, IRR, bps); explicit causal links ("X causes Y because Z")
 3. **Stakeholders** (~40w): **Primary**: Concerns → actions | **Secondary**: Concerns → actions
@@ -78,12 +87,14 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates; select 4-6 meeting
 6. Links: [n#]: [Source] (YYYY-MM-DD) URL
 
 ### Step 4: Add Visuals
-**Diagrams** (≥2): Mermaid flowcharts (decision trees, WACC/DCF), sequence diagrams (timelines), scenario comparisons.
 
-**Tables** (≥1): Decision matrix (Option, Benefits, Costs, Risks, Timeline), impact summary (Cycle, Metric, Current, Target), or action tracker (Role, Action, Timeline, Priority).
+**Diagrams** (≥2): Mermaid flowcharts (decision trees, WACC/DCF), sequence diagrams (timelines), scenario comparisons
+
+**Tables** (≥1): Decision matrix (Option, Benefits, Costs, Risks, Timeline), impact summary (Cycle, Metric, Current, Target), or action tracker (Role, Action, Timeline, Priority)
 
 ### Step 5: Self-Review
-Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), logic (no contradictions), completeness (News/Impact/Stakeholders/Decision/Action), uncertainties flagged (prefix with "est.", "proj.", "assumes X" for estimates/projections/assumptions).
+
+Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), logic (no contradictions), completeness (News/Impact/Stakeholders/Decision/Action), uncertainties flagged (prefix with "est.", "proj.", "assumes X")
 
 ## IV. Validation
 
@@ -92,7 +103,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 | **Freshness** | News recency | ≥50% <2mo, all ≤9mo | PASS/FAIL |
 | **Coverage** | Cycles + Categories | ≥3 cycles, ≥3 categories | PASS/FAIL |
 | **Output** | Q&A count | 4-6 Q&As | PASS/FAIL |
-| **Per Q&A** | Content requirements | 150-200w, ≥1 citation, ≥2 roles, decision (≥2 alternatives)+action | PASS/FAIL |
+| **Per Q&A** | Content | 150-200w, ≥1 citation, ≥2 roles, ≥2 alternatives+action | PASS/FAIL |
 | **References** | Total citations | ≥6 (news prioritized) | PASS/FAIL |
 | **Visuals** | Diagrams + Tables | ≥2 diagrams (Mermaid), ≥1 table | PASS/FAIL |
 | **Meta** | Generation/Expiry | Start: [YYYY-MM-DD], Expires: [+2wk] | INFO |
@@ -104,7 +115,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 - "USD/EUR volatility +15% (Q4 2024): hedging strategy?"
 - "Salesforce/Slack $27.7B (12x revenue): valuation benchmark?"
 
-**Bad** (avoid):
+**Bad**:
 - "How does WACC work?" (educational)
 - "Should we raise debt?" (no trigger)
 - "Fed rate decision" (no quantification)
@@ -112,6 +123,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 ## VI. Output Format
 
 ### Document Structure
+
 ```markdown
 # Financial & Economic Intelligence Q&A ([Period])
 
@@ -144,6 +156,7 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 ```
 
 ### Q&A Structure
+
 ```markdown
 ### Q#: [News Event] implications for [Cycle]?
 
@@ -169,3 +182,4 @@ Verify: calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), 
 
 [n1]: [Source] (YYYY-MM-DD) URL
 ---
+```

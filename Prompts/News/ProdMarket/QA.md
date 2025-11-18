@@ -9,37 +9,37 @@
 
 ## I. Context & Setup
 
-**Role**: Product intelligence analyst generating 4–6 decision-critical Q&As from recent product/market news.
+**Role**: Product intelligence analyst generating 4-6 decision-critical Q&As from product/market news.
 
-**Context**: Problem: Manual monitoring misses threats, delays decisions. Scope: Product/market news → actionable Q&As. Scale: 50+ sources, 4-6 Q&As bi-weekly. Timeline: 2wk validity. Stakeholders: CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, Sales Eng. Constraints: News <4mo (high-velocity), <6mo (medium-velocity). Resources: Post-PMF orgs (≥$1M ARR, ≥20% YoY growth, ≥3 competitors, team ≥10).
+**Context**: Problem: Manual monitoring misses threats. Scope: Product/market news → actionable Q&As. Scale: 50+ sources, 4-6 Q&As bi-weekly. Timeline: 2wk validity. Stakeholders: CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, Sales Eng. Constraints: News <4mo (high-velocity), <6mo (medium-velocity). Resources: Post-PMF orgs (≥$1M ARR, ≥20% YoY growth, ≥3 competitors, team ≥10).
 
 **Prerequisites**: Fill `[Domain]`, `[Period]`, date, product, competitors, priorities before Step 1.
 
 **Exclusions**: Pre-PMF (<$1M ARR), <3 competitors, purely operational/technical, team <5, technical ops, sales execution, finance (except pricing), R&D >12mo, rumors, unverified claims.
 
 **Key Terms**:
-- **G1. Post-PMF**: $1M+ ARR, 20%+ YoY growth. Analogy: Past survival mode, now optimizing growth. Example: Slack at $1M ARR (2014) adding enterprise features.
-- **G2. Decision-Critical**: Blocks/enables roadmap/budget/competitive decisions within 1-6mo. Analogy: Traffic light—red blocks, green enables. Example: Competitor launches AI feature blocking Q3 roadmap commitment.
-- **G3. High-Velocity**: Competitive/pricing categories requiring <1mo freshness. Analogy: Perishables vs canned goods. Example: Competitor pricing changes (expires 4wk) vs market research (expires 24wk).
-- **G4. MECE**: Mutually Exclusive, Collectively Exhaustive—no gaps/overlaps. Analogy: Pizza slices—each unique, none missing. Example: Security categories: Authentication, Authorization, Encryption, Audit (not "Security" + "Authentication").
-- **G5. Product Lifecycle Phases**: Discovery (research/validate), Design (spec/prioritize), Launch (build/release), Growth (scale/optimize). Analogy: Building construction—survey land, blueprint, construct, furnish. Example: Q on competitor pricing affects Design (feature scope) + Launch (GTM timing).
+- **G1. Post-PMF**: $1M+ ARR, 20%+ YoY growth. Example: Slack at $1M ARR (2014) adding enterprise features.
+- **G2. Decision-Critical**: Blocks/enables roadmap/budget/competitive decisions within 1-6mo. Example: Competitor AI feature blocks Q3 roadmap.
+- **G3. High-Velocity**: Competitive/pricing requiring <1mo freshness. Example: Competitor pricing changes (expires 4wk) vs market research (expires 24wk).
+- **G4. MECE**: Mutually Exclusive, Collectively Exhaustive—no gaps/overlaps. Example: Security categories: Authentication, Authorization, Encryption, Audit.
+- **G5. Product Lifecycle Phases**: Discovery (research/validate), Design (spec/prioritize), Launch (build/release), Growth (scale/optimize).
 
-**Freshness** (from generation date):
+**Freshness**:
 - **High-Velocity** (Competitive, Pricing): Majority <1mo, none >4mo
 - **Medium-Velocity** (Strategy, Research): Majority <2mo, none >6mo
 
 ## II. Framework
 
 **Context Inputs** (fill before Step 1):
-- Product: [Name], business model, value proposition
+- Product, business model, value proposition
 - Target: Customer segments, regions
 - Scale: ARR $, users, team size
 - Competitors: [List 3-7] with positioning
 - Priorities: [Top 3 strategic goals, 6mo]
 
-**Output Requirements**: 4-6 Q&As (150-200w each) | 3-4 phases (Discovery, Design, Launch, Growth) | 1-2 Q/phase | ≥5 stakeholders total (see Context) | All news-cited | All decisions actionable
+**Output**: 4-6 Q&As (150-200w each) | 3-4 phases | 1-2 Q/phase | ≥5 stakeholders total | All news-cited | All decisions actionable
 
-**Categories** (balance required—distribute 4-6 Q&As across all 4):
+**Categories** (distribute 4-6 Q&As across all 4):
 1. **Competitive** (≥1): Feature launches, updates, parity gaps
 2. **Pricing** (≥1): Model changes, tier adjustments, packaging shifts
 3. **Strategy** (≥1): Pivots, market expansions, partnerships
@@ -52,14 +52,14 @@
 4. **[IMPORTANT] Time-Sensitive**: 1-6mo action window
 5. **[IMPORTANT] Quantified Impact**: %, $, units specified
 
-**Q&A Structure** (all sections required):
+**Q&A Structure**:
 1. **News**: Event + date (MM/DD/YYYY) + significance + category + `[Ref: N#][n#]`
 2. **Impact**: ≥2 phases + metrics (%, $, units) + baseline comparison
 3. **Stakeholders**: ≥2 roles × (concern + action)
 4. **Decision**: ≥2 options table (cost/benefit/risk) → Recommendation + rationale + success criteria (baseline → target by date)
 5. **Timeline**: Immediate (0-2wk, ≤3 actions) + Short-term (2wk-2mo, ≤3 actions), all with owners
 
-**References** (all required):
+**References**:
 - **G#**: All terms + 1-sentence definition + analogy with numbers + example
 - **N#**: ≥5 news items (Title, Source, MM/DD/YYYY, summary, category, URL)
 - **C#/P#/R#**: ≥2 each (Competitive/Pricing/Research: entity, detail, metric, URL)
@@ -70,14 +70,16 @@
 ## III. Execution
 
 ### Step 1: News Discovery
+
 1. **Record** date (YYYY-MM-DD), domain, product category
 2. **Search** (prioritize <1wk: 50%+, <1mo: 30%+, <2mo: 20%):
    - Sources: Primary (changelogs, pricing pages, official blogs) > Secondary (Product Hunt, TechCrunch) > Tertiary (reports)
    - Verify rumors with ≥2 sources or exclude
-3. **Curate** ≥10 items meeting: freshness threshold, ≥1 criticality criterion, category balance, metrics/dates present
+3. **Curate** ≥10 items: freshness threshold, ≥1 criticality criterion, category balance, metrics/dates present
 4. **Map** 10 items → 4-6 Q&As across 3-4 phases (maintain category balance)
 
 ### Step 2: Build References
+
 **Citation**: Inline `[Ref: N1][n1]`, footer `[n1]: https://...`
 
 **Formats**:
@@ -86,12 +88,13 @@
 - **C#/P#/R#**: `[Entity]: [Detail] ([Source], [MM/DD/YYYY]). [Metric]. [URL]`
 - **A#**: `[Last, F.] ([YYYY], [Mon DD]). *[Title]*. [Journal]. [URL] [Accessed: MM/DD/YYYY]`
 
-**Test**: Can non-expert understand Q&As without external search? If no, add term.
+**Test**: Can non-expert understand Q&As without external search?
 
 ### Step 3: Generate Q&A
+
 **Question Format**: `"[News with Date] implications for [Phase] ([≥2 Roles])?"`
 
-**Answer Sections** (all required, follow template in Section IV.D):
+**Answer Sections** (all required):
 1. **News**: Event + MM/DD/YYYY + significance + category + `[Ref: N#][n#]`
 2. **Impact**: ≥2 phases + metrics (%, $, units) + baseline comparison
 3. **Stakeholders**: ≥2 roles × (concern + action)
@@ -104,11 +107,13 @@
 **Flag Uncertainty**: "Estimated: [claim]" or "Reported (unverified): [claim]"
 
 ### Step 4: Create Visuals
+
 **Required**: ≥2 diagrams/matrices (competitive 2×2, decision flowchart, timeline Mermaid gantt) + ≥1 comparison table (Markdown)
 
 **Format**: Label axes, add legend if >3 categories
 
 ### Step 5: Validate & Submit
+
 **Self-Review**: Verify metrics/dates, check contradictions, confirm glossary completeness, validate URLs, flag uncertainties
 
 **Critical Checks**:
@@ -121,16 +126,18 @@
 ## IV. Output Format
 
 ### Document Structure
+
 ```markdown
 # [Domain] Product & Market Intelligence Q&A ([Period])
 
 1. Executive Summary (2-3 insights, dashboard table)
-2. Q&As by Phase (4-6 total, use Q&A Template below)
-3. References (G, N, C, P, R, A formats from Step 2)
-4. Validation Report (use template from Section V)
+2. Q&As by Phase (4-6 total)
+3. References (G, N, C, P, R, A)
+4. Validation Report
 ```
 
 ### Executive Summary
+
 **Domain**: [Category] | **Period**: MM/DD-MM/DD/YYYY | **Roles**: [5+ roles]
 
 **Top Insights** (2-3): `[MM/DD]: [News] → [Impact %/$] → [Decision] → [Timeline]`
@@ -141,6 +148,7 @@
 | [Phase] | [Brief] ([MM/DD]) | [Rec] | [Immediate/Short] |
 
 ### Q&A Template
+
 ```markdown
 ### Q#: [News with Date] implications for [Phase] ([Role 1], [Role 2])?
 
@@ -179,6 +187,7 @@
 ## V. Validation
 
 ### Validation Report Template
+
 | Check | Criteria | Result | Status |
 |-------|----------|--------|--------|
 | **[CRITICAL] Freshness** | HV <1mo (maj), <4mo (max); MV <2mo (maj), <6mo (max) | | ☐ PASS |
@@ -196,7 +205,8 @@
 | **Meta** | Gen: YYYY-MM-DD \| Expires: [+2wk] | | INFO |
 
 ### Quick Checklist
-**Before submission (all required):**
+
+**Before submission**:
 ☐ Context: Date, domain, product, competitors, priorities specified  
 ☐ Clarity: All terms glossarized (G#), no unexplained jargon  
 ☐ Precision: Metrics with units (%, $, count), dates MM/DD/YYYY  

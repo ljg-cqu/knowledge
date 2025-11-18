@@ -13,38 +13,32 @@
 
 ## I. Context & Scope
 
-**Problem**: Operations and supply chain leaders lack timely, actionable intelligence from fragmented news sources, causing delayed responses to disruptions, supplier risks, and cost pressures.
+**Problem**: Operations and supply chain leaders lack actionable intelligence from fragmented news sources, causing delayed responses to disruptions, supplier risks, and cost pressures.
 
-**Scope**: Generate 4-6 decision-critical Q&As from recent operations/supply chain news (manufacturing, logistics, procurement, inventory, facilities, quality management, safety, compliance, resilience) for COO, VP Operations, and supply chain leadership decision-making.
+**Scope**: Generate 4-6 decision-critical Q&As from operations/supply chain news (manufacturing, logistics, procurement, inventory, facilities, quality, safety, compliance, resilience) for COO, VP Operations, supply chain leadership.
 
-**MECE Position**: Post-PMF operations & supply chain decisions. **Owns**: Physical operations, manufacturing, logistics, procurement, supplier management, facilities, quality management (QA/QC, standards, certifications), safety, routine operational compliance (environmental, safety, trade, manufacturing regulations), inventory, resilience. **Excludes**: Product R&D (StratIntel), technical infrastructure/IT (TechOps), GTM execution (CommOps), corporate M&A (FinEcon), major litigation/IP disputes (StratIntel), talent strategy (PeopleWF, except frontline workforce safety/productivity).
+**MECE Position**: Post-PMF operations & supply chain. **Owns**: Physical operations, manufacturing, logistics, procurement, supplier management, facilities, quality (QA/QC, standards, certifications), safety, routine operational compliance (environmental, safety, trade, manufacturing), inventory, resilience. **Excludes**: Product R&D (StratIntel), technical infrastructure/IT (TechOps), GTM (CommOps), corporate M&A (FinEcon), major litigation/IP (StratIntel), talent strategy (PeopleWF, except frontline workforce safety/productivity).
 
-**Target**: Monthly cycles | 4-6h/cycle | **Expires**: 4wk post-gen | **Freshness**: ≥60% <2mo (supplier/logistics), ≥40% <6mo (facilities/regulatory), 100% ≤12mo
+**Cadence**: Monthly | 4-6h/cycle | **Expires**: 4wk post-gen | **Freshness**: ≥60% <2mo (supplier/logistics), ≥40% <6mo (facilities/regulatory), 100% ≤12mo
 
 **Definitions**:
-- **Decision-critical**: News requiring action within 1-12mo that impacts costs ≥5%, blocks operations decisions, creates material risk, or requires multi-stakeholder coordination
-- **Operations & Supply Chain**: Manufacturing, production, logistics, procurement, inventory management, facilities, quality, safety, resilience, supplier management
-- **MECE (Mutually Exclusive, Collectively Exhaustive)**: Categories cover all ops/supply domains without overlap
+- **Decision-critical**: News requiring 1-12mo action impacting costs ≥5%, blocking operations decisions, creating material risk, or requiring multi-stakeholder coordination
+- **Operations & Supply Chain**: Manufacturing, production, logistics, procurement, inventory, facilities, quality, safety, resilience, supplier management
+- **MECE**: Categories cover all ops/supply domains without overlap
 - **Quantified Impact**: Specific metrics (cost %, lead time days, defect rates, capacity units, OTIF %) with baselines
 
-**Exclude**: Product development, sales/marketing execution, HR talent (except frontline workforce), pure IT/software systems, >12mo strategic R&D, rumors, internal-only process changes.
-
-**Role**: Operations & supply chain intelligence analyst.
-
-**Limitations**: News-dependent (quality varies); 4-week shelf life; requires baseline metrics for quantified impact.
+**Exclude**: Product development, sales/marketing execution, HR talent (except frontline workforce), pure IT/software systems, >12mo strategic R&D, rumors, internal-only changes
 
 **Inputs**: Domain/vertical, period, company (size, manufacturing footprint, supply chain complexity) | Metrics (COGS, lead time, inventory turns, OEE, defect rate, OTIF, capacity utilization) | Stakeholders (COO, VP Ops, VP Supply Chain, Procurement, Logistics, Quality, Safety) | Constraints (budget, capacity, regulatory, geopolitical)
 
-**Deliverables**: Executive summary, 4-6 Q&As, references, ≥2 visuals, validation report.
-
-**Decision Criticality** (each Q must meet ≥1):
+**Decision Criticality** (≥1):
 1. **[CRITICAL] Blocks Decision**: Capacity expansion, supplier change, reshoring, facility investment
 2. **[CRITICAL] Creates Risk**: Supply disruption, quality/safety incident, cost spike ≥5%, regulatory violation
 3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles with different priorities
 4. **[IMPORTANT] Requires Action**: 1-12mo timeline with resource commitment
 5. **[IMPORTANT] Quantified Impact**: Cost, lead time, quality, capacity, safety, or inventory metrics
 
-**Categories** (MECE coverage):
+**Categories** (MECE):
 1. **Manufacturing & Production**: Capacity, OEE, automation, quality, yield, production costs
 2. **Supply Chain & Logistics**: Supplier risk, lead times, transportation, freight costs, inventory levels
 3. **Procurement & Sourcing**: Commodity prices, contract terms, supplier diversity, dual sourcing
@@ -54,9 +48,9 @@
 
 ## II. Requirements
 
-**Q&A Count**: 4-6 across 3-4 cycles, covering all categories (Manufacturing, Supply Chain, Procurement, Facilities, Quality, Resilience)
+**Q&A**: 4-6 across 3-4 cycles, covering all categories
 
-**Answer Structure** (150-200w total):
+**Structure** (150-200w):
 1. **News** (~30w): What, when, why, category + citation
 2. **Impact** (~60w): ≥2 cycles, ≥2 roles, quantified metrics (cost, lead time, capacity, quality)
 3. **Stakeholders** (~40w): ≥2 roles with concerns/actions
@@ -67,18 +61,18 @@
 
 **Stakeholders** (≥4): COO, VP Operations, VP Supply Chain, Procurement Head, Logistics Director, Plant Manager, Quality Lead, Safety Manager
 
-**References**: G≥4 (glossary), N≥4 (news), I≥1 (industry), S≥1 (standard/regulation), R≥1 (report), A≥3 (academic/analyst). 100% used.
+**References**: G≥4, N≥4, I≥1, S≥1, R≥1, A≥3. 100% used.
 
 **Visuals**: ≥2 diagrams + ≥1 table
 
-**Quality Gates** (all must pass):
+**Quality Gates**:
 - **[CRITICAL]** 100% meet ≥1 criticality criterion
 - **[CRITICAL]** 100% cited with valid, accessible URLs
 - **[CRITICAL]** 100% quantified impact (multi-cycle + multi-role)
 - **[IMPORTANT]** 100% include ≥2 decision options with rationale + timeline
 - **[IMPORTANT]** 100% concrete actions with owner + metrics
 
-**Success Criteria**: Time: 8h → 4-6h | Freshness: 30% → ≥60% (<2mo) | Stakeholders: 1 → ≥4 roles | URL validity: 100%
+**Success Criteria**: Time: 8h → 4-6h | Freshness: ≥60% <2mo | Stakeholders: ≥4 roles | URL validity: 100%
 
 ## III. Execution
 
@@ -103,10 +97,10 @@ Record generation date (YYYY-MM-DD).
 ### Step 2: Build References
 
 **Formats**:
-- **G#**: Term (def + analogy + context) — `G1. OEE (Overall Equipment Effectiveness): Manufacturing efficiency metric combining availability, performance, quality (0-100%); measures asset utilization like car MPG; target 85%+ = world-class`
+- **G#**: Term (def + analogy + context) — `G1. OEE: Manufacturing efficiency combining availability × performance × quality (0-100%); measures asset utilization; target 85%+`
 - **N#**: Title (Source, MM/DD): Summary | Category | URL — `N1. "Port congestion +30%" (Supply Chain Dive, 11/15): West Coast delays avg 12d | Logistics | https://...`
-- **I#**: Report (Firm/Org, Date): Findings | URL — `I1. Supply Chain Top 25 (Gartner, 2024): Best practices benchmarks | https://...`
-- **S#**: Standard/Regulation (Authority, Date): Requirements | URL — `S1. ISO 9001:2015 (ISO, 2024): Quality management requirements | https://...`
+- **I#**: Report (Firm/Org, Date): Findings | URL — `I1. Supply Chain Top 25 (Gartner, 2024): Best practices | https://...`
+- **S#**: Standard/Regulation (Authority, Date): Requirements | URL — `S1. ISO 9001:2015 (ISO, 2024): Quality management | https://...`
 - **R#**: Report (Firm, Date): Findings | URL — `R1. State of Manufacturing 2024 (IndustryWeek, Q3): OEE median 72% | https://...`
 - **A#**: APA 7th [Tag] — `A1. Smith, J. (2024). Supply chain resilience. Operations Journal, 15(2), 45-67. [Empirical]`
 
@@ -124,7 +118,7 @@ Pattern: "[News] implications for [Cycle]+[Roles]?"
 
 ≥2 diagrams (Mermaid: supplier risk matrix, decision tree, disruption impact flow, scenario comparison) + ≥1 table
 
-Example risk matrix: `graph TD; A[High Impact] -->|High Prob| B[Critical]; A -->|Low Prob| C[Monitor]` | Table: Option, Cost, Lead Time Impact, Risk, Timeline | Decision tree: Disruption → Alternatives → Outcomes
+Example: `graph TD; A[High Impact] -->|High Prob| B[Critical]; A -->|Low Prob| C[Monitor]` | Table: Option, Cost, Lead Time Impact, Risk, Timeline
 
 ### Step 5: Validate
 
@@ -194,21 +188,21 @@ See Step 2 for reference formats (G#, N#, I#, S#, R#, A#).
 
 ## VIII. Glossary
 
-**G1. OEE (Overall Equipment Effectiveness)**: Manufacturing efficiency metric combining availability × performance × quality (0-100%); measures asset utilization like car MPG; target 85%+ = world-class. Context: Used to assess production line efficiency. Example: OEE 72% means 28% capacity loss.
+**G1. OEE**: Manufacturing efficiency combining availability × performance × quality (0-100%); measures asset utilization; target 85%+. Example: OEE 72% = 28% capacity loss.
 
-**G2. OTIF (On-Time In-Full)**: Logistics metric measuring deliveries meeting both schedule and quantity requirements; analogy: package arriving on promised date with all items. Context: Supply chain reliability KPI. Example: OTIF 95% means 95 of 100 shipments meet commitments.
+**G2. OTIF**: On-Time In-Full - deliveries meeting schedule and quantity. Context: Supply chain reliability KPI. Example: OTIF 95% = 95 of 100 shipments meet commitments.
 
-**G3. Lead Time**: Duration from order placement to delivery; analogy: restaurant wait time from order to meal. Context: Supply chain planning. Example: 90-day lead time requires 90-day advance planning.
+**G3. Lead Time**: Duration from order to delivery. Context: Supply chain planning. Example: 90-day lead time requires 90-day advance planning.
 
-**G4. Inventory Turns**: Times per year inventory is sold/replaced (COGS ÷ Avg Inventory); analogy: grocery store rotating perishables daily = high turns. Context: Working capital efficiency. Example: 12 turns = inventory replaced monthly.
+**G4. Inventory Turns**: Annual inventory replacement (COGS ÷ Avg Inventory). Context: Working capital efficiency. Example: 12 turns = monthly replacement.
 
-**G5. COGS (Cost of Goods Sold)**: Direct costs to produce goods (materials, labor, overhead); analogy: recipe ingredients + chef time. Context: Profitability analysis. Example: COGS 60% of revenue = 40% gross margin.
+**G5. COGS**: Cost of Goods Sold - direct production costs (materials, labor, overhead). Context: Profitability analysis. Example: COGS 60% of revenue = 40% gross margin.
 
-**G6. Dual Sourcing**: Procurement strategy using two suppliers for same item; analogy: backup generator. Context: Risk mitigation. Example: 70/30 split between primary/secondary supplier.
+**G6. Dual Sourcing**: Two suppliers for same item. Context: Risk mitigation. Example: 70/30 split primary/secondary.
 
-**G7. Reshoring**: Moving production back to domestic facilities from offshore locations; analogy: reversing outsourcing. Context: Supply chain resilience. Example: Moving from China to US manufacturing.
+**G7. Reshoring**: Moving production back to domestic facilities. Context: Supply chain resilience. Example: China to US manufacturing.
 
-**G8. Just-in-Time (JIT)**: Inventory strategy ordering supplies only when needed; analogy: restaurant buying fresh ingredients daily. Context: Working capital optimization. Example: Auto parts delivered same day as assembly.
+**G8. JIT**: Just-in-Time - ordering supplies only when needed. Context: Working capital optimization. Example: Auto parts delivered same day as assembly.
 
 ## IX. Quick Check (Before Delivery)
 

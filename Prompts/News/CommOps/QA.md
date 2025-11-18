@@ -12,34 +12,28 @@
 
 ## I. Context & Scope
 
-**Problem**: Commercial teams lack timely, actionable intelligence from fragmented news sources, causing delayed competitive responses and missed revenue opportunities.
+**Problem**: Commercial teams lack actionable intelligence from fragmented news sources, causing delayed responses and missed revenue opportunities.
 
-**Scope**: Generate 4-6 decision-critical Q&As from recent commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) for CRO, Sales, Marketing, CS, and RevOps decision-making.
+**Scope**: Generate 4-6 decision-critical Q&As from commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) for CRO, VP Sales, VP Marketing, VP CS, RevOps.
 
-**Target**: Bi-weekly cycles | 4-6h/cycle | **Expires**: 2wk post-gen | **Freshness**: ≥70% <2mo (≥25% <1wk), 100% ≤9mo
+**Cadence**: Bi-weekly | 4-6h/cycle | **Expires**: 2wk post-gen | **Freshness**: ≥70% <2mo (≥25% <1wk), 100% ≤9mo
 
 **Definitions**:
-- **Decision-critical**: News requiring action within 1-6mo that impacts revenue, blocks decisions, creates risk, or requires multi-stakeholder coordination
+- **Decision-critical**: News requiring 1-6mo action impacting revenue, blocking decisions, creating risk, or requiring multi-stakeholder coordination
 - **Commercial Operations**: Sales execution, marketing ops, customer success, RevOps, GTM strategy, competitive intelligence
 
-**Exclude**: Technical specs/architecture, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, internal-only process changes, single-function tasks.
+**Exclude**: Technical specs/architecture, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, internal-only changes, single-function tasks
 
-**Role**: Commercial Operations news intelligence analyst.
+**Inputs**: Domain/vertical, period, company (size, stage, GTM, ACV) | Metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion) | Stakeholders | Constraints (budget, hiring, regulatory)
 
-**Limitations**: News-dependent (quality varies); 2-week shelf life; requires baseline metrics for quantified impact.
-
-**Inputs**: Domain/vertical, period, company (size, stage, GTM, ACV) | Metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion) | Stakeholders (CRO, VP Sales, VP Marketing, VP CS, RevOps) | Constraints (budget, hiring, regulatory)
-
-**Deliverables**: Executive summary, 4-6 Q&As, references, ≥2 visuals, validation report.
-
-**Decision Criticality** (each Q must meet ≥1):
+**Decision Criticality** (≥1):
 1. **[CRITICAL] Blocks Decision**: Quota, GTM pivot, revenue model
 2. **[CRITICAL] Creates Risk**: Competitive threat, churn signal, CAC/LTV pressure
 3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles
 4. **[IMPORTANT] Requires Action**: 1-6mo timeline
 5. **[IMPORTANT] Quantified Impact**: Revenue, pipeline, conversion, retention, efficiency
 
-**Categories** (MECE coverage):
+**Categories** (MECE):
 1. **Sales**: Win rates, quota, pipeline velocity, cycle length
 2. **Marketing**: CAC, lead conversion, campaign ROI, attribution
 3. **Customer Success**: Churn, NRR, expansion ARR, retention
@@ -47,9 +41,9 @@
 
 ## II. Requirements
 
-**Q&A Count**: 4-6 across 3-4 stages, covering all categories (Sales, Marketing, CS, RevOps)
+**Q&A**: 4-6 across 3-4 stages, covering all categories (Sales, Marketing, CS, RevOps)
 
-**Answer Structure** (150-200w total):
+**Structure** (150-200w):
 1. **News** (~30w): What, when, why, category + citation
 2. **Impact** (~60w): ≥2 stages, ≥2 roles, quantified metrics
 3. **Stakeholders** (~40w): ≥2 roles with concerns/actions
@@ -60,18 +54,18 @@
 
 **Stakeholders** (≥4): CRO, VP Sales, VP Marketing, VP CS, RevOps Analyst
 
-**References**: G≥4 (glossary), N≥4 (news), P≥1 (platform), M≥1 (methodology), R≥1 (report), A≥4 (academic/analyst). 100% used.
+**References**: G≥4, N≥4, P≥1, M≥1, R≥1, A≥4. 100% used.
 
 **Visuals**: ≥2 diagrams + ≥1 table
 
-**Quality Gates** (all must pass):
+**Quality Gates**:
 - **[CRITICAL]** 100% meet ≥1 criticality criterion
 - **[CRITICAL]** 100% cited with valid, accessible URLs
 - **[CRITICAL]** 100% quantified impact (multi-stage + multi-role)
 - **[IMPORTANT]** 100% include ≥2 decision options with rationale + timeline
 - **[IMPORTANT]** 100% concrete actions with owner + metrics
 
-**Success Criteria**: Time: 8h → 4-6h | Freshness: 40% → ≥70% (<2mo) | Stakeholders: 1 → ≥4 roles | URL validity: 100%
+**Success Criteria**: Time: 8h → 4-6h | Freshness: ≥70% <2mo | Stakeholders: ≥4 roles | URL validity: 100%
 
 ## III. Execution
 
@@ -82,7 +76,7 @@ Record generation date (YYYY-MM-DD).
 **Search** (10-15 candidates):
 - **Keywords**: `[Domain] {sales performance|pipeline|quota|CAC|conversion|churn|retention|expansion|competitive|win/loss}`
 - **Sources**: SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot, Gainsight, RevOps Co-op, G2, Gartner, Forrester
-- **Tools**: Perplexity `"[domain] sales trends" timerange:1month` | ChatGPT "Latest [domain] commercial ops news 60d" | Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD` | Product Hunt "launched this month"
+- **Tools**: Perplexity `"[domain] sales trends" timerange:1month` | ChatGPT "Latest [domain] commercial ops news 60d" | Google `site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD`
 
 **Filter**: Freshness ✓ | Trusted source ✓ | ≥1 criticality criterion ✓ | No rumors ✓
 
@@ -112,7 +106,7 @@ Pattern: "[News] implications for [Stage]+[Roles]?"
 
 ≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table
 
-Example funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source | Cohort: 12mo retention by segment
+Example: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source
 
 ### Step 5: Validate
 
@@ -176,7 +170,7 @@ Example funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Clo
 
 ### References
 
-See Step 2 for reference formats (G#, N#, P#, M#, R#, A#).
+See **Step 2** for reference formats (G#, N#, P#, M#, R#, A#).
 
 ---
 

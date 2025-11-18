@@ -4,52 +4,29 @@ status: Reviewed
 owner: ljg-cqu
 ---
 
-# Value Assessment Q&A Generator (Minimal Viable)
+# Value Assessment Q&A Generator
 
-Generate **4–8 decision-critical Q&As** for informed value decisions with limited time. Minimal viable: blocks decisions or creates material risk.
+Generate **4–8 decision-critical Q&As** for informed value decisions. Minimal viable scope: includes only questions that block decisions or create material risk.
 
 ## Context
 
-**Problem**: Poor value assessments lead to bad decisions (e.g., over-investing in low-ROI projects, underestimating technical debt). Need structured Q&A to evaluate value across 6 dimensions: business, user, technical, organizational, strategic, risk.
+**Problem**: Poor value assessments lead to bad decisions (over-investing in low-ROI, underestimating technical debt). Structured Q&A evaluates value across 6 dimensions: business, user, technical, organizational, strategic, risk.
 
-**Scope**: Decision-critical scenarios only (e.g., ≥$100K impact or ≥20% velocity change; adjustable). Focus: software engineering lifecycle (design, development, deployment, operations).
+**Scope**: Decision-critical scenarios (≥$100K impact or ≥20% velocity change; adjustable). Focus: software engineering lifecycle (design, development, deployment, operations).
 
-**Constraints**: ~10–15min per Q&A; self-contained.
+**Constraints**: ~10–15min per Q&A; self-contained. **Assumptions**: Conflicting stakeholder priorities; context-dependent measurements. **Scale**: Individual to 50+ team decisions; 4-8 Q&A sets. **Timeline**: On-demand; 4-6h effort; refresh annually. **Stakeholders**: PM, Architect, Developer, SRE/DevOps, CFO. **Resources**: Capable LLM; optional online access.
 
-**Assumptions**: Stakeholders have conflicting priorities; measurements context-dependent.
+**Terms**: Floor (min threshold ≥), Gate (fail-stop, 100% compliance), Difficulty (F=execution, I=strategy/trade-offs, A=portfolio/P&L), Value Types (Business, User, Technical, Organizational, Strategic, Risk—MECE), Decision Criticality (meets ≥1 criterion below).
 
-**Scale**: Individual to 50+ team decisions; 4-8 Q&A sets.
-
-**Timeline**: On-demand; 4-6h effort; refresh annually.
-
-**Stakeholders**: PM, Architect, Developer, SRE/DevOps, CFO.
-
-**Resources**: Capable LLM; optional online access.
-
-**Terms**:
-- **Floor**: Min threshold (≥).
-- **Gate**: Fail-stop checkpoint (100% compliance).
-- **Difficulty Levels**:
-  - **F** = Foundational (execution-level tasks)
-  - **I** = Intermediate (strategy/trade-offs)
-  - **A** = Advanced (portfolio/vision/P&L)
-- **Value Types** (MECE): Business, User, Technical, Organizational, Strategic, Risk.
-- **Decision Criticality**: Meets ≥1 criterion (below).
-
-**Limitations**: Balances conflicts; context-dependent; excludes speculation; customize domains.
+**Limitations**: Balances conflicts; context-dependent; excludes speculation; customize for specific domains.
 
 ## Requirements
 
 ### Decision Criticality Framework (MANDATORY)
 
-**Include if ≥1 criterion is satisfied**:
-- **Blocks Decision**: Directly impacts investment go/no-go, resource allocation, or strategic/roadmap pivot.
-- **Creates Risk**: Material threat (e.g., financial loss >10%, major opportunity cost, strategic misalignment, or velocity impact >20%).
-- **Affects ≥2 Core Roles**: Multi-stakeholder impact (CFO + Architect, PM + DevOps, etc.).
-- **Requires Action**: 1–6mo action window (not speculative).
-- **Quantified Impact**: Clear metrics (NPV $, ROI %, velocity %, cost/benefit ratio, adoption %).
+**Include if ≥1 criterion satisfied**: (1) **Blocks Decision** (investment go/no-go, resource allocation, strategic pivot), (2) **Creates Risk** (financial loss >10%, major opportunity cost, strategic misalignment, velocity impact >20%), (3) **Affects ≥2 Core Roles** (CFO+Architect, PM+DevOps, etc.), (4) **Requires Action** (1–6mo window, not speculative), (5) **Quantified Impact** (NPV, ROI, velocity, cost/benefit, adoption %).
 
-**Exclude if**: Niche/legacy (<5% adoption), orthogonal/nice-to-have, already covered, speculative.
+**Exclude**: Niche/legacy (<5% adoption), orthogonal/nice-to-have, already covered, speculative.
 
 ### Floors (Minimum Thresholds)
 
@@ -81,9 +58,7 @@ Generate **4–8 decision-critical Q&As** for informed value decisions with limi
 
 ### Step 1: Plan Allocation
 
-Distribute **4–8 Q&As** across 3–4 phases (balanced difficulty). ≥4 stakeholders; each Q&A ≥2 value types + ≥1 criticality criterion.
-
-**Example** (6): Design (2) + Development (2) + Deployment (1) + Operations (1) = balanced F/I/A
+Distribute **4–8 Q&As** across 3–4 phases (balanced F/I/A). ≥4 stakeholders; each Q&A ≥2 value types + ≥1 criticality criterion. **Example**: 6 Q&As = Design (2) + Development (2) + Deployment (1) + Operations (1)
 
 ### Step 2: Build References (BEFORE Q&A, then run Gates 1–6)
 
@@ -95,26 +70,16 @@ Distribute **4–8 Q&As** across 3–4 phases (balanced difficulty). ≥4 stakeh
 | **Citations** | ≥4 | APA 7th+[EN]/[ZH]/[Other]; ≥50% from last 3yrs | A1... |
 
 **Examples**:
-- **Glossary**: NPV (Net Present Value: future cash flows discounted to present), ROI (Return on Investment: (gain-cost)/cost × 100%), TCO (Total Cost of Ownership: acquisition + operation + maintenance), WSJF (Weighted Shortest Job First: cost of delay / job duration).
-- **Tools**: Pendo (product analytics, $50K/yr, 10K users, Q2 2024), SonarQube (code quality, free/open-source, 1M users, Q3 2024).
-- **Literature**: Reinertsen, D. (2009). The Principles of Product Development Flow. Celeritas Publishing. [EN, value flow]; Kim, M. (2018). The Phoenix Project. IT Revolution Press. [EN, DevOps value]; 俞军. (2018). 俞军产品方法论. 中信出版社. [ZH, product strategy].
-- **Citations**: Cite recent primary sources, e.g., AWS Well-Architected Framework (https://aws.amazon.com/architecture/well-architected/), OWASP Top 10 (https://owasp.org/www-project-top-ten/).
+- **Glossary**: NPV (Net Present Value), ROI (Return on Investment), TCO (Total Cost of Ownership), WSJF (Weighted Shortest Job First)
+- **Tools**: Pendo (product analytics, $50K/yr, Q2 2024), SonarQube (code quality, free, Q3 2024)
+- **Literature**: Reinertsen (2009) Product Development Flow [EN], Kim (2018) Phoenix Project [EN], 俞军 (2018) 产品方法论 [ZH]
+- **Citations**: AWS Well-Architected Framework, OWASP Top 10 (recent primary sources with URLs)
 
 ### Step 3: Generate Q&A (2–3 at a time, self-check)
 
-**Question**: Decision-critical scenario with tensions. Test quantification, trade-offs, alignment. Avoid recall. Difficulty: F/I/A. Justify criticality.
+**Question**: Decision-critical scenario with tensions. Test quantification, trade-offs, alignment. Avoid recall. Assign F/I/A. Justify criticality.
 
-**Answer** (~150 words):
-1. **Key Insight**: Value tension + criticality (1 sentence)
-2. **Framework** [Ref: G#/A#]
-3. **Multi-Value** (≥2 types + quantification)
-4. **Multi-Stakeholder** (≥2 roles)
-5. **Lifecycle** (brief)
-6. **Quantification** (metrics/methods/sources)
-7. **Trade-offs** (≥2 alternatives)
-8. **Decision Criteria** (thresholds/targets)
-9. **Citations** ≥1 [Ref: ID]
-10. **Artifact** (optional)
+**Answer** (~150 words): (1) Key Insight (value tension + criticality, 1 sentence), (2) Framework [Ref: G#/A#], (3) Multi-Value (≥2 types + quantification), (4) Multi-Stakeholder (≥2 roles), (5) Lifecycle (brief), (6) Quantification (metrics/methods/sources), (7) Trade-offs (≥2 alternatives), (8) Decision Criteria (thresholds/targets), (9) Citations ≥1 [Ref: ID], (10) Artifact (optional).
 
 **Batch Check**: Criticality | ≥2 signals | Word count | ≥2 types/stakeholders | Quantified | ≥1 cite
 
@@ -124,32 +89,17 @@ By phase: Design (value/cost), Development (quality/velocity), Deployment (frequ
 
 ### Step 5: Populate References
 
-| Type | Format |
-|------|--------|
-| **Glossary** | G#. Term | Definition | Measurement | Stakeholder | Lifecycle |
-| **Tools** | T#. Tool | Description | Pricing | Users | Update | Metrics | URL |
-| **Literature** | L#. Author, Title, Year | Summary | Lifecycle |
-| **Citations** | A#. [APA 7th] [Lang] |
+**Glossary**: G#. Term | Definition | Measurement | Stakeholder | Lifecycle. **Tools**: T#. Tool | Description | Pricing | Users | Update | Metrics | URL. **Literature**: L#. Author, Title, Year | Summary | Lifecycle. **Citations**: A#. [APA 7th] [Lang].
 
 Validate: 100% [Ref: ID] resolve; no orphans; complete fields; G≥4, T≥2, L≥3, A≥4
 
 ### Step 6: Validate (fail ANY = stop, fix, re-run ALL)
 
-See checklist below. Key:
-- **Floors**: G≥4, T≥2, L≥3, A≥4, Q=4–8, balanced
-- **Decision Criticality**: 100% satisfy ≥1 criterion [Blocks/Risk/Roles/Action/Quantified]
-- **Citations**: ≥50% have ≥1; ≥20% have ≥2 | Diverse
-- **Quality**: ~150 words | 100% value-concrete + quantified | ≥90% scenario-based
-- **Coverage**: ≥4 core stakeholders, each Q&A ≥2 | ≥2 value types per Q&A | 3–4 phases covered
-- **Integrity**: 100% links accessible | 100% [Ref: ID] resolve, no orphans
+**Floors**: G≥4, T≥2, L≥3, A≥4, Q=4–8, balanced | **Decision Criticality**: 100% satisfy ≥1 criterion | **Citations**: ≥50% have ≥1; ≥20% have ≥2 | **Quality**: ~150 words, 100% quantified, ≥90% scenario-based | **Coverage**: ≥4 stakeholders, ≥2 per Q&A, ≥2 value types per Q&A, 3–4 phases | **Integrity**: 100% links accessible, 100% [Ref: ID] resolve
 
 ### Step 7: Final Review
 
-**Questions**: Clarity (single ask) | Value focus | Depth (trade-offs) | Realism (stakeholder tension) | Decision-critical (blocks decision or creates risk) | Discriminative (judgment>recall) | Aligned difficulty
-
-**Answers** (sample ≥3): ≥2 value types | ≥2 stakeholders | Quantification | Frameworks+cites | Trade-offs/alternatives | Positive+negative | Decision criteria | Limitations/assumptions
-
-**Submit**: All validations PASS | All gates PASS | TOC with links | No placeholders | Decision Criticality justified for each Q&A
+**Questions**: Clarity | Value focus | Trade-offs | Stakeholder tension | Decision-critical | Judgment>recall | Aligned difficulty. **Answers** (sample ≥3): ≥2 value types, ≥2 stakeholders, quantified, frameworks+cites, trade-offs, balanced view, decision criteria, limitations. **Submit**: All validations PASS, all gates PASS, TOC, no placeholders, criticality justified.
 
 ## Validation Report (fill all; ANY fail = stop, fix, re-run ALL)
 
@@ -184,7 +134,7 @@ See checklist below. Key:
 ## Output Structure
 
 ### A. Table of Contents
-1. Lifecycle Phases Overview | 2. Q&A by Phase (3–4 phases) | 3. References (Glossary, Tools, Literature, Citations) | 4. Validation Report
+1. Lifecycle Phases Overview | 2. Q&A by Phase | 3. References | 4. Validation Report
 
 ### B. Lifecycle Phases Overview
 
@@ -216,11 +166,7 @@ See checklist below. Key:
 
 ### D. References Template
 
-See **Step 5** for formats. Summary:
-- **Glossary**: **G#. Term** | Definition | Measurement | Stakeholder | Lifecycle (alphabetize)
-- **Tools**: **T#. Tool** | Description | Pricing | Users | Update | Metrics | URL (group by category)
-- **Literature**: **L#. Author, Title, Year** | Summary | Lifecycle (group: EN, ZH)
-- **Citations**: **A#. [APA 7th] [Lang]** (sort by ID)
+See **Step 5** for formats. Alphabetize Glossary, group Tools by category, group Literature by language (EN, ZH), sort Citations by ID.
 
 ## Example
 
@@ -231,24 +177,7 @@ See **Step 5** for formats. Summary:
 **Key Insight**: Comprehensive value assessment across lifecycle/stakeholders, balancing investment cost (negative) against distributed benefits (positive: technical/organizational/strategic) while navigating conflicting priorities.
 
 **Answer** (~150 words):
-Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] for lifecycle assessment.
-
-**Multi-value analysis**:
-- **Business** [Ref: G1]: Costs $800K + $120K/yr ops vs. 30% velocity gain $400K/yr. NPV (3yr, 10%): -$90K.
-- **Technical** [Ref: G3]: Reduces coupling, debt -$200K, scalability +$80K/yr.
-- **Organizational** [Ref: G4]: Team autonomy, -25% coordination, but -30% velocity $270K cost.
-- **Risk** [Ref: G6]: Migration risk $150K, ops risk up, resilience improves.
-- **Strategic** [Ref: G5]: API potential $500K/yr, faster time-to-market.
-
-**Stakeholder views**: CFO: negative NPV; Architect: debt reduction; PM: delay; DevOps: +2 FTE; Developers: autonomy.
-
-**Lifecycle**: Design → architecture value; Development → opportunity cost; Operations → efficiency; Evolution → strategic gains.
-
-**Trade-offs**: Migrate now (cost/gain), delay (debt), hybrid (slower/lower risk).
-
-**Realization**: Track DORA metrics, costs, MTTR.
-
-**Limitations**: ±15% velocity uncertainty; assumes capability; speculative API value.
+Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8]. **Multi-value**: Business [G1]: $800K+$120K/yr ops vs. $400K/yr velocity gain, NPV (3yr, 10%): -$90K; Technical [G3]: debt -$200K, scalability +$80K/yr; Organizational [G4]: autonomy +25%, velocity -30% ($270K cost); Risk [G6]: migration risk $150K, resilience improves; Strategic [G5]: API $500K/yr potential. **Stakeholders**: CFO: negative NPV; Architect: debt reduction; PM: delay; DevOps: +2 FTE; Developers: autonomy. **Lifecycle**: Design (architecture) → Development (opportunity cost) → Operations (efficiency) → Evolution (strategic gains). **Trade-offs**: Migrate now (cost/gain), delay (compound debt), hybrid (slower/lower risk). **Realization**: DORA metrics, costs, MTTR. **Limitations**: ±15% velocity uncertainty; assumes capability; speculative API value.
 
 **Artifact**:
 
@@ -261,28 +190,9 @@ Apply **Value Stream Mapping** [Ref: G7] + **Total Economic Impact** [Ref: A8] f
 | **Strategic**     | Evolution    | Platform/API value        | $0          | +$200K      | +$500K      | +$580K        |
 | **Total NPV**     |              |                           |             |             |             | **+$830K**    |
 
-**Communication**:
-- **CFO**: 3yr NPV +$830K; breakeven mo 18
-- **PM**: 3-quarter impact, 30% faster after
-- **Architect**: Debt -$200K, scalability gains
-- **DevOps**: +2 FTE, better resilience+observability [Ref: T4]
-- **Developers**: Autonomy+modern stack
-
-**Recommendation**: Approve with strangler pattern; allocate $50K observability; commit 2 DevOps FTE; track quarterly
-
-**Confidence**: Medium (velocity ±15%; strategic value depends on API adoption)
-
-## Quality Attributes
-
-Accurate | Precise | Cited | Complete (MECE) | Actionable | Consistent | Relevant | Balanced | Recent (last 3yrs) | Testable
+**Communication**: CFO: NPV +$830K, breakeven mo 18 | PM: 3Q impact, 30% faster after | Architect: debt -$200K, scalability | DevOps: +2 FTE, resilience [T4] | Developers: autonomy. **Recommendation**: Approve with strangler pattern; $50K observability; 2 DevOps FTE; quarterly tracking. **Confidence**: Medium (velocity ±15%; API adoption uncertain).
 
 ## Limitations and Trade-offs
 
-**Trade-offs**: Rigor/speed (↑time ↓errors 30-40%), depth/breadth, precision/accessibility.
-
-**Skip for**: Low-stakes (<$100K), rapid (<1h), exploratory, prototyping.
-
-**Exclude**: Theory, speculation, edge cases (<5%), unsupported trends.
-
-**Metrics**: Directional (±20-30%); heuristics over exact.
+**Trade-offs**: Rigor/speed (↑time ↓errors 30-40%), depth/breadth, precision/accessibility. **Skip for**: Low-stakes (<$100K), rapid (<1h), exploratory, prototyping. **Exclude**: Theory, speculation, edge cases (<5%), unsupported trends. **Metrics**: Directional (±20-30%); heuristics over exact.
 
