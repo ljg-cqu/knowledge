@@ -66,6 +66,13 @@
 
 **Rationale:** Enables immediate action; reduces clarifications.
 
+**8a. Difficulty Distribution** (Optional) [↑30-40% accessibility]: For educational/knowledge content, balance skill levels.
+
+- ❌ "Explain advanced distributed systems"
+- ✅ "Cover: Foundational (20%: basic concepts, terminology), Intermediate (40%: common patterns, trade-offs), Advanced (40%: edge cases, optimizations). Adjust ratio for audience."
+
+**Rationale:** Ensures accessibility while maintaining depth; matches diverse skill levels.
+
 ### Quality: Ensure Excellence
 
 **9. Significance** [↓40-60% reading time]: Focus on high-impact items; deemphasize low-impact details.

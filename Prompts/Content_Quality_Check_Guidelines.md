@@ -26,6 +26,8 @@
 
 **8. Depth**: Provide sufficient detail for high-impact areas. ❌ Principles without detail. ✅ Specifics (options, trade-offs, examples).
 
+**8a. Difficulty Distribution** (Optional): For educational/knowledge content, balance skill levels. ❌ All advanced. ✅ Foundational (20%), Intermediate (40%), Advanced (40%) as baseline; adjust for audience.
+
 ### Quality
 
 **9. Significance**: Highlight critical information; deemphasize low-impact details. ❌ Exhaustive low-relevance lists. ✅ Critical elements with references.
