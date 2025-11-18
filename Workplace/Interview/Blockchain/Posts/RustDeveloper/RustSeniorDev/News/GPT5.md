@@ -34,6 +34,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 - Best practices
   - Optimize for parallel execution by designing account sets that avoid write locks; keep instructions cohesive but granular enough for concurrency. [1]
 
+### Visual summary – Solana performance incident
+
+| Aspect        | Details |
+|--------------|---------|
+| Stakeholders | Protocol team, validators, users facing failed swaps |
+| Main issue   | Lower throughput and elevated transaction retries after a core program upgrade |
+| Root causes  | Suboptimal account access patterns; excessive compute-unit usage in a newly added instruction |
+| Constraints  | Mainnet conditions, compute budgets, account lock contention |
+| Targets      | ≥30% fewer compute units; ≥90% fewer transaction retries; no new security findings in review |
+
 ## 2) Ethereum smart contract vulnerability post-mortem: DEX pool drained via logic bug
 
 - News brief (hypothetical)
@@ -55,6 +65,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 
 - Best practices
   - Defense-in-depth: privileged operations gated, on-chain pause/guard rails, and staged deploys with time locks for high-risk changes. [0]
+
+### Visual summary – Ethereum DEX exploit response
+
+| Aspect        | Details |
+|--------------|---------|
+| Incident     | Loss at an Ethereum DEX caused by a logic error in a smart contract that wasn’t covered by tests |
+| Stakeholders | Protocol users, security partners, exchanges |
+| Scope        | EVM bytecode review, upgrade path, security hardening |
+| Response     | Triage and containment, transaction-trace forensics, minimal audited patch, long-term secure SDLC and threat modeling |
+| Goals        | P0: close exploit in 24–48 hours; P1: 100% invariant coverage; P2: third-party audit with zero critical findings before redeploy |
 
 ## 3) Wallet integration issue: users fail to sign transactions reliably across providers
 
@@ -78,6 +98,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 - Best practices
   - Maintain a wallet compatibility matrix; continuous integration runs simulated signing tests for each supported wallet/provider combo. [0][1]
 
+### Visual summary – Wallet integration reliability
+
+| Aspect        | Details |
+|--------------|---------|
+| Scenario     | Cross-chain dApp with intermittent failures and UX friction during wallet signing |
+| Chains       | Solana program interactions and Ethereum bridging flows |
+| Stakeholders | Users of popular wallets, integration/backend owners |
+| Constraints  | Multi-wallet support, multi-network latency, UI clarity |
+| Targets      | ≥99% successful signatures; <0.5% drop-off at sign step; clear, actionable error messages |
+
 ## 4) Cross-chain bridge roadmap: adding Solana↔Ethereum asset transfers
 
 - News brief (hypothetical)
@@ -99,6 +129,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 
 - Best practices
   - Start with limited-asset allowlists, require multi-party governance for upgrades, and publish clear incident playbooks. [0][1]
+
+### Visual summary – Solana↔Ethereum bridge roadmap
+
+| Aspect        | Details |
+|--------------|---------|
+| Scenario     | Enabling Solana↔Ethereum transfers for SPL/ERC-20 assets |
+| Stakeholders | Protocol engineers, security reviewers, ecosystem partners |
+| Constraints  | Trust assumptions, latency, fees, failure modes |
+| Alternatives | Mature third-party bridge integration vs. custom verification (e.g., light-client-based design) |
+| Targets      | Bridge MTTR < 30 minutes; zero critical audit findings; capped TVL with gradual increases tied to health metrics |
 
 ## 5) Protocol refactor: migrating a core module to Rust for security and performance
 
@@ -122,6 +162,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 - Best practices
   - Enforce code reviews, continuous testing, and clear rollback procedures; keep changes MECE and avoid scope creep. [0][1]
 
+### Visual summary – Rust migration for performance and safety
+
+| Aspect        | Details |
+|--------------|---------|
+| Scenario     | Migrating a latency-critical module from a dynamic language to Rust |
+| Context      | Ethereum off-chain services and Solana program-adjacent tooling |
+| Stakeholders | Infra team, dApp teams, security |
+| Constraints  | Interop with existing APIs, testing parity, rollout risk |
+| Targets      | ≥2x throughput on hot paths; zero memory-safety bugs; 100% pass rate on parity test suite before enablement |
+
 ## How these Q&A pairs meet the Content Quality Check Guidelines
 
 - Context, clarity, precision
@@ -135,6 +185,16 @@ Note: Each “news brief” is a realistic, hypothetical scenario designed for i
 
 - Practicality and success criteria
   - Each scenario provides concrete steps, tools (Solana CLI, Anchor, audits, tests), and measurable targets to validate outcomes. [0][1]
+
+### Visual overview of the five scenarios
+
+| # | Scenario theme                 | Main chain(s)                          | Primary focus |
+|---|--------------------------------|----------------------------------------|---------------|
+| 1 | Solana performance incident    | Solana                                 | Throughput regression after program upgrade; compute-unit and account model optimization |
+| 2 | Ethereum DEX exploit           | Ethereum                               | Smart contract incident response, forensics, and hardening |
+| 3 | Wallet signing reliability     | Solana + Ethereum                      | Multi-wallet integration, error handling, and UX drop-off reduction |
+| 4 | Solana↔Ethereum bridge roadmap | Solana + Ethereum                      | Cross-chain asset transfers, trust assumptions, and operational safety |
+| 5 | Rust migration for core module | Solana-adjacent + Ethereum-adjacent services | Rust refactor for performance and memory safety |
 
 ## References
 [0] Ethereum Foundation. "Smart contract security best practices." https://ethereum.org/en/developers/docs/smart-contracts/security/

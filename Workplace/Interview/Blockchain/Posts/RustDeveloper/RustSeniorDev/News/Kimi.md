@@ -43,6 +43,19 @@ Design a memory management strategy using Rust's ownership system that eliminate
 
 Use **Arena Allocation** with scoped lifetimes and **Rayon** parallel iterators:
 
+**Visual: Transaction validation pipeline and memory lifetimes**
+```mermaid
+flowchart LR
+  A[Block received] --> B[Stage 1: Signature]
+  B --> C[Stage 2: State preload]
+  C --> D[Stage 3: EVM execution]
+  D --> E[Stage 4: State commit]
+  subgraph Per-thread_arena
+    C
+    D
+  end
+```
+
 ```rust
 // Memory arena for one block's transactions
 use bumpalo::Bump;
@@ -142,6 +155,25 @@ Compare the account model differences with specific impact on DEX architecture, 
 | **Finality** | 12-15 min (64 blocks) | 400ms (32 votes) | Solana enables real-time trading; Ethereum needs layer-2 confirmations |
 
 **2. Unified Rust Abstraction Design**
+
+**Visual: ChainAdapter trait and concrete adapters**
+```mermaid
+classDiagram
+  class ChainAdapter {
+    <<trait>>
+    +derive_address(seed)
+    +serialize_state(state)
+    +estimate_cost(ops)
+  }
+  class EthereumAdapter {
+    +rpc: Provider<Http>
+  }
+  class SolanaAdapter {
+    +rpc: RpcClient
+  }
+  ChainAdapter <|.. EthereumAdapter
+  ChainAdapter <|.. SolanaAdapter
+```
 
 ```rust
 // Trait abstracts account model differences
@@ -333,6 +365,25 @@ impl<K: OrderKind> MatchingWorker<K> {
 }
 ```
 
+**Visual: Order ingestion and matching flow**
+```mermaid
+sequenceDiagram
+  participant Client
+  participant Ingestor as OrderIngestor
+  participant Channel
+  participant Worker as MatchingWorker
+  participant Engine as MatchingEngine<K>
+  participant Settlement
+
+  Client->>Ingestor: ingest(orders)
+  Ingestor->>Channel: try_send(OrderBatch)
+  Worker->>Channel: recv()
+  Worker->>Engine: match_orders(batch)
+  Engine->>Engine: process_single(order) in parallel
+  Engine->>Settlement: commit(proofs)
+  Settlement-->>Worker: publish_settlement(results)
+```
+
 **4. ZK Proof Generation Pipeline (DEX)**  
 - **Circuit**: `zkevm-circuits` v0.1.0, 2M constraints per batch
 - **Prover**: `halo2_proofs` with 128-bit security
@@ -441,6 +492,16 @@ let batch_ix = batch_token_transfers(orders)?; // Custom program instruction
 invoke(&batch_ix, &accounts)?;
 ```
 
+**Visual: Solana BPF debugging and optimization path**
+```mermaid
+flowchart TD
+  A[ProgramFailedToComplete on 50+ orders] --> B[Stream logs and CU with solana logs]
+  B --> C[Add msg! checkpoints inside order loop and CPI]
+  C --> D[Profile instructions with solana-ledger-tool]
+  D --> E[Identify CPI account translation CU hotspot]
+  E --> F[Batch CPI calls into single instruction]
+```
+
 **5. Performance Metrics**  
 - **CU Savings**: 1.35M → 45K (97% reduction)
 - **TX Success Rate**: 12% → 99.7% (measured over 1,000 TXs)
@@ -490,11 +551,22 @@ Design a synchronization and indexing architecture that balances cost, latency, 
         │ $200/mo     │    │ $250/mo   │    │ $180/mo│
         └──────┬──────┘    └────┬──────┘    └──┬────┘
                │                │              │
-        ┌──────▼────────────────▼──────────────▼──────┐
-        │         Indexed Database (PostgreSQL)        │
-        │         (r6g.2xlarge, 64GB RAM, $800/mo)    │
-        │         - Partitioned by chain_id, block_number│
-        └───────────────────────────────────────────────┘
+         ┌──────▼────────────────▼──────────────▼──────┐
+         │         Indexed Database (PostgreSQL)        │
+         │         (r6g.2xlarge, 64GB RAM, $800/mo)    │
+         │         - Partitioned by chain_id, block_number│
+         └───────────────────────────────────────────────┘
+```
+
+**Visual: Multi-chain sync and query topology**
+```mermaid
+flowchart LR
+  LB[HAProxy load balancer\n3× c6i.large] --> Eth[Helios Ethereum light client]
+  LB --> Sol[Solana LiteRPC]
+  LB --> Poly[Polygon Heimdall]
+  Eth --> DB[(PostgreSQL index DB)]
+  Sol --> DB
+  Poly --> DB
 ```
 
 **3. Cost-Benefit Analysis**

@@ -69,6 +69,35 @@ Both platforms increasingly adopt Rust for performance-critical components. When
 - Reduced latency (measured in milliseconds for Solana, seconds for Ethereum)
 - Lower validator resource consumption (CPU, memory, network bandwidth)
 
+**Visual Summary – Ethereum vs. Solana (Architecture & Performance)**
+
+| Chain    | Consensus Model                                      | Typical TPS (2025)                 | Finality          | Key Bottlenecks                                                                 |
+|----------|------------------------------------------------------|------------------------------------|-------------------|---------------------------------------------------------------------------------|
+| Ethereum | Proof-of-Stake (Beacon Chain + EVM execution layer)  | ~15 TPS                            | ~12 seconds       | Validator synchronization delays, state growth impacting disk I/O, EVM overhead |
+| Solana   | PoH + PoS hybrid with Sealevel parallel runtime      | ~4,700 TPS (real-world), 65,000 TPS theoretical | ~400ms (sub-second) | Network bandwidth constraints, validator hardware limitations, account contention |
+
+```mermaid
+flowchart LR
+    subgraph Ethereum
+        E1[Profile TPS, latency, resource use]
+        E2[Inspect beacon chain validator committees & attestations]
+        E3[Analyze mempool ordering & gas auction dynamics]
+        E4[Apply optimizations: batching, state access tuning]
+    end
+
+    subgraph Solana
+        S1[Profile slots, PoH timing & slot consistency]
+        S2[Inspect Sealevel parallel execution for conflicts]
+        S3[Detect account contention & bandwidth limits]
+        S4[Optimize account layout & validator hardware]
+    end
+
+    E1 --> E2 --> E3 --> E4
+    S1 --> S2 --> S3 --> S4
+```
+
+This diagram follows the step-by-step methodology already described above, contrasting how you would debug consensus and execution bottlenecks on each chain starting from the same baseline profiling approach.
+
 ***
 
 ### **Q2: DEX Smart Contract Development - Security & Performance Trade-offs**
@@ -1236,6 +1265,14 @@ Given the rapidly evolving Web3 landscape in 2025, how do you stay current with 
   - Work with multiple protocols on high-impact technical problems
   - Write influential technical content (books, courses, research papers)
   - Financial independence through consulting ($500/hr+) and investment portfolio
+
+```mermaid
+timeline
+    title Example Rust Web3 Career Roadmap
+    2025-2027 : Senior Rust Engineer in Web3 infrastructure\nFocus: Solana/Ethereum runtime & DEX performance\nConference talks + OSS PRs
+    2027-2029 : Staff/Principal Engineer or Technical Founder\nDesign protocols with $500M+ TVL\nLead 5-10 engineer teams
+    2029-2035 : Technical Fellow / CTO / Independent Researcher\nHigh-impact consensus & infra design\nAdvisory work across multiple protocols
+```
 
 **Core Values Guiding Career:**
 1. **Technical Excellence:** Continuous pursuit of deep expertise over breadth

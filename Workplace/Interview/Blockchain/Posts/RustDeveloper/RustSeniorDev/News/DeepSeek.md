@@ -43,6 +43,30 @@
 >
 > **(Critical) For concurrency,** I recall a scenario where we had a shared, mutable cache of blockchain block headers that was accessed by multiple async tasks. I chose `Arc<Mutex<HashMap<...>>>` because we needed thread-safe shared ownership (`Arc`) and the tasks were across multiple OS threads. `Rc<RefCell<T>>` is not `Send`, making it unusable in async contexts. For a read-heavy workload, I'd later consider migrating to `Arc<RwLock<T>>` to allow multiple concurrent readers, trading off more complex internal locking."
 
+**Visual Summary for Q1 (Architecture & Crates)**
+
+```mermaid
+graph LR
+  API[API Layer] --> CORE[Core Logic]
+  CORE --> STORAGE[Storage Layer]
+  CORE --> RUNTIME[Async Runtime]
+  RUNTIME --> NET[Networking]
+  STORAGE --> DB[(PostgreSQL via sqlx)]
+```
+
+| Aspect                | Choice / example                | Reason / Trade-off                                                     |
+|-----------------------|----------------------------------|-------------------------------------------------------------------------|
+| Async runtime         | `tokio`                          | Mature ecosystem, production-grade performance; slightly steeper to learn |
+| Database access       | `sqlx` + PostgreSQL              | Compile-time SQL checking; trades for longer compile times              |
+| Error handling        | `thiserror` + `AppError` enum    | Unified, hierarchical errors across modules; easy mapping to API status |
+| Concurrency primitive | `Arc<Mutex<T>>` / `Arc<RwLock<T>>` | Thread-safe shared ownership; `RwLock` better for read-heavy workloads |
+
+**Evaluator tip:** Use this visual to quickly check whether the candidate covers:
+
+- Clear module boundaries such as `api`, `core`, `storage`.
+- Concrete crate choices with explicit trade-offs.
+- Appropriate concurrency primitives for async, multi-threaded Rust.
+
 ---
 
 ### Q2: Web3 Infrastructure & Blockchain Debugging
@@ -59,6 +83,33 @@
 > 3.  **(Critical) Use a Debugger:** I would not rely solely on logs. I'd use a debugger like `gdb` or `delve` (for Go) to attach to the running client process, set breakpoints in the critical validation functions, and step through the execution. I would inspect the state of key variables (e.g., block hash, parent hash, gas used, state root) to identify where our client's state diverges from the expected state.
 > 4.  **(Important) Compare with a Reference:** I would run a known-good client (like the mainnet version) against the same testnet data and compare the internal state at the same block height. This differential analysis often pinpoints the exact calculation that is wrong.
 > 5.  **(Revealing) Tooling:** I might use custom scripting to dump the state trie at the point of failure or use the client's built-in RPC methods (like `debug_traceBlock`) to get a detailed execution trace."
+
+**Visual Summary for Q2 (Debugging Consensus Failure)**
+
+```mermaid
+graph TD
+  A[Reproduce issue]
+  B[Enable TRACE logs]
+  C[Map logs to code path]
+  D[Attach debugger]
+  E[Inspect key state]
+  F[Run reference client]
+  G[Compare internal state]
+  H[Use RPC or scripts]
+  I[Identify root cause]
+
+  A --> B --> C --> D --> E --> F --> G --> H --> I
+```
+
+| Step | Focus                              | Primary tool(s)                    | Outcome                                      |
+|------|------------------------------------|------------------------------------|----------------------------------------------|
+| 1    | Reproduce & isolate                | Testnet setup, logs                | Consistent failure with rich diagnostics     |
+| 2    | Map execution to code              | Source navigation, logs            | Exact validation functions identified        |
+| 3    | Observe execution state            | `gdb` / `delve`                    | Diverging variables located                  |
+| 4    | Differential client comparison     | Reference Ethereum client          | Confirms which calculation/state is broken   |
+| 5    | Deep execution tracing / state dump | `debug_traceBlock`, custom scripts | Detailed trace around faulty validation path |
+
+**Evaluator tip:** Look for a structured, tool-assisted workflow rather than ad-hoc debugging.
 
 ---
 
@@ -77,6 +128,28 @@
 >
 > **(Important) Trade-off vs. Single-Threaded Simplicity:** A simpler, single-threaded service for everything would be easier to write but would bottleneck on I/O (e.g., database writes). By isolating the matching engine and making it purely in-memory, we achieve extreme speed, but we introduce complexity in persisting the state and recovering from failures, which requires a write-ahead log or event sourcing pattern."
 
+**Visual Summary for Q3 (High-Frequency DEX Matching Engine)**
+
+```mermaid
+graph LR
+  CLIENT[Clients] --> GATEWAY[API Gateway]
+  GATEWAY --> BUS[Message Bus]
+  BUS --> ENGINE1[Matching Engine A/B]
+  BUS --> ENGINE2[Matching Engine C/D]
+  ENGINE1 --> LOG1[Write-Ahead Log]
+  ENGINE2 --> LOG2[Write-Ahead Log]
+```
+
+| Dimension        | Design in answer                                      | Key trade-off                                           |
+|------------------|--------------------------------------------------------|---------------------------------------------------------|
+| Architecture     | API gateway + message bus + single-threaded engine    | Extra components vs. clear separation of concerns       |
+| Data structure   | `BTreeMap` order book per trading pair                | O(log n) ops; slightly more complex than `HashMap`      |
+| Concurrency      | Single-threaded core logic                            | Lowest latency; cannot scale by adding cores to one engine |
+| Scalability      | Multiple engine instances for different pairs         | Operational complexity vs. parallelism across pairs     |
+| Durability       | Write-ahead log / event sourcing                      | Added persistence complexity vs. fast in-memory matching |
+
+**Evaluator tip:** Check whether the candidate can articulate why single-threaded matching plus multiple engine instances is often preferred for ultra-low latency.
+
 ---
 
 ### Q4: System Design for Scalability & Data Structures
@@ -93,6 +166,28 @@
 > 3.  **(Important) Caching Strategy:** We can't hold all 10M users in memory hot. I'd implement an LRU (Least Recently Used) cache using a crate like `moka`, holding the most active ~100k users. The cache would be in front of the sharded data stores.
 > 4.  **(Critical) Persistence:** The sharded data stores themselves would be backed by a database. The role of the in-memory structures is to act as a write-through cache. For this scale, I'd use `RocksDB` embedded within the process for each shard, as it's designed for fast key-value storage and is a known quantity in the blockchain space. This design trades off initial implementation complexity for horizontal scalability and controlled memory usage."
 
+**Visual Summary for Q4 (Wallet Balance Storage for 10M Users)**
+
+```mermaid
+graph TD
+  REQ[Balance request] --> CACHE[LRU cache]
+  CACHE --> RESP[Cache hit]
+  CACHE --> SHARDSEL[Choose shard]
+  SHARDSEL --> SHARD1[Shard 1 store]
+  SHARDSEL --> SHARDN[Shard N store]
+  SHARD1 --> DB1[RocksDB 1]
+  SHARDN --> DBN[RocksDB N]
+```
+
+| Layer          | Technique from answer                          | Benefit at 10M-user scale                             |
+|----------------|-------------------------------------------------|--------------------------------------------------------|
+| Keys & layout  | `u64` `UserID`, `Vec<Balance>`                  | Better cache locality than `HashMap<String, Balance>`  |
+| Sharding       | `UserID % N` into N `RwLock`-guarded shards     | Parallelism; reduces lock contention                   |
+| Caching        | LRU cache (e.g., `moka`) of ~100k active users  | Keeps hot users fast without storing all in memory     |
+| Persistence    | Embedded `RocksDB` per shard                    | Durable, high-throughput key–value storage             |
+
+**Evaluator tip:** Look for a clear separation between hot-path data structures and long-term persistence.
+
 ---
 
 ### Q5: Consensus & Algorithmic Thinking
@@ -106,6 +201,33 @@
 > *   **Nakamoto Consensus (Probabilistic Finality):** In Bitcoin, a block is never truly 'final'. Its confirmation is probabilistic. The more blocks are mined on top of it, the lower the probability of a reorganization. It's possible, though exponentially unlikely, to undo blocks that are hours old.
 > *   **BFT-Consensus (Absolute Finality):** In Tendermint, once a block is committed by a supermajority (2/3+), it is absolutely final. There is no reorg beyond that point. This is achieved in a single round by having validators pre-vote and pre-commit. The trade-off is a requirement for a known validator set and liveness issues if >1/3 of validators go offline.
 > **(Revealing) Algorithm Application:** A clear scenario for Paxos/Raft would be in building a highly-available, centralized *off-chain* service that is part of the Web3 stack. For example, the 'relayer' service for a meta-transaction system or the key management server for a multi-sig wallet. These services need a strongly consistent, fault-tolerant way to manage their internal state (e.g., nonce sequencing, transaction scheduling) to prevent double-spending or service inconsistency if a leader node fails. The blockchain itself provides trust, but the supporting infrastructure needs its own consensus for reliability."
+
+**Visual Summary for Q5 (Finality Models & Off-Chain Consensus)**
+
+| Aspect          | Nakamoto Consensus (e.g., Bitcoin)                                        | BFT-style Consensus (e.g., Tendermint, Tower BFT)                       |
+|-----------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Finality type   | Probabilistic: confirmations reduce, but never remove, reorg risk        | Absolute: once 2/3+ commit, block is final                              |
+| Reorganizations | Possible even for older blocks (though exponentially unlikely)           | No reorg beyond committed height                                        |
+| Mechanism       | Longest-chain rule via ongoing block production                          | Pre-vote and pre-commit rounds among a known validator set              |
+| Trade-offs      | Works in open membership; slower certainty of finality                   | Requires known validators; liveness issues if >1/3 go offline           |
+
+```mermaid
+graph LR
+  A[Off-chain Web3 component] --> B[Leader node]
+  B --> C[Follower 1]
+  B --> D[Follower 2]
+  B --> E[Follower 3]
+  C --> B
+  D --> B
+  E --> B
+```
+
+**Example off-chain uses for Paxos/Raft (from answer):**
+
+- Meta-transaction relayer service maintaining nonce sequencing and scheduling.
+- Key management server for a multi-sig wallet that must avoid inconsistent state.
+
+These systems need strong consistency and fault tolerance even though the underlying blockchain already provides consensus for on-chain data.
 
 ---
 
