@@ -511,19 +511,150 @@ Design **wallet authentication without leaking transaction history**: User wants
 ✅ **Address security/privacy implications** explicitly
 ✅ **Acknowledge Ethereum/Solana standards** (ecosystem context)
 
-### Rust-Specific Considerations
+ ### Rust-Specific Considerations
 
-- **Async runtime**: Tokio dominance for Web3 infrastructure
-- **Serialization**: serde ecosystem (JSON, Protobuf, Bincode)
-- **Cryptography**: libsecp256k1 (ECDSA), bls12-381 (ZKP)
-- **Networking**: tokio-tungstenite (WebSocket), tonic (gRPC)
-- **Concurrency**: rayon for parallelism (UTXO state)
+ - **Async runtime**: Tokio dominance for Web3 infrastructure
+ - **Serialization**: serde ecosystem (JSON, Protobuf, Bincode)
+ - **Cryptography**: libsecp256k1 (ECDSA), bls12-381 (ZKP)
+ - **Networking**: tokio-tungstenite (WebSocket), tonic (gRPC)
+ - **Concurrency**: rayon for parallelism (UTXO state)
 
----
+ ---
 
-## References & Standards
+ ## Visual Summaries
 
-### Ethereum & Solana Documentation
+ The visuals below reorganize the existing Q&As into tables and diagrams for faster scanning. They do **not** add new facts; they only restate information already present above.
+
+ ### Visual 1 – RPC & Serialization Trade-offs (Q1–Q2)
+
+ #### 1.1 RPC Protocol Comparison (Q1)
+
+ | Protocol                      | Payload & Bandwidth                                      | Latency & Throughput                            | Notes (from Q1)                                                                 |
+ |-------------------------------|----------------------------------------------------------|-------------------------------------------------|----------------------------------------------------------------------------------|
+ | JSON-RPC 2.0 (HTTP/WebSocket) | Payloads **2–3× larger** than binary Protobuf           | ~**25K rps**/connection, **50–100ms** latency   | Stateless, human-readable, strong tooling; HTTP/1.1 connection overhead          |
+ | gRPC + Protobuf (HTTP/2)     | Binary, **3–10× smaller** than JSON, **60% bandwidth reduction** | ~**250K+ rps**/connection, **5–15ms** latency   | HTTP/2 multiplexing, bi-directional streaming; higher setup complexity           |
+ | WebSocket + JSON             | Persistent connections                                   | Streaming latency **10–50ms**                   | Real-time subscriptions; stateful server, harder horizontal scaling              |
+
+ #### 1.2 Serialization Options (Q2)
+
+ | Format              | Approx Size per State (from Q2) | Example Volume for 1M Changes | Relative Performance (100K records) | Notes (from Q2)                                           |
+ |---------------------|----------------------------------|-------------------------------|-------------------------------------|-----------------------------------------------------------|
+ | JSON + gzip         | ~**1.2KB**                       | **1.2TB**                     | **45ms** (slowest)                  | Human-readable, schema-less, universal tooling            |
+ | Protobuf v3         | ~**200B**                        | **200GB**                     | **43ms**                            | Most compact, ~**83%** storage reduction vs JSON, requires .proto schemas |
+ | Avro                | ~**400B**                        | **400GB**                     | **232.6ms** (slow)                  | Flexible schema evolution, embedded schema, registry overhead |
+
+ ### Visual 2 – Consensus & MEV (Q3, Q8)
+
+ #### 2.1 Consensus Mechanism Comparison (Q3)
+
+ | Mechanism       | Security Cost / Risk (from Q3)                                           | Finality Characteristics                          | Notable Trade-offs                                                    |
+ |-----------------|---------------------------------------------------------------------------|---------------------------------------------------|------------------------------------------------------------------------|
+ | PoW             | Attack requires ~**51% hashrate**; example cost **$50M+** hardware       | Probabilistic; example ~**6 blocks ≈ 1 min**      | Strong guarantees, but **energy-intensive (~5MW)** for 10K tx/sec L2   |
+ | PoS             | Requires **32 ETH** per validator; slashing can destroy entire stake     | Ethereum: **64–95 slots ≈ 12–30min**; L2 design: **2 epochs ≈ 16s** | Energy-efficient; centralization risk (large staking pools)           |
+ | Hybrid PoW+PoS  | Requires **51% miners AND 51% stakers** to attack                        | Finality via PoS votes on PoW blocks (~10min)    | Stronger combined security, more complex protocol                     |
+
+ #### 2.2 MEV Sandwich Attack Flow (Q8)
+
+ ```mermaid
+ sequenceDiagram
+     participant Alice as User (Alice)
+     participant Mempool
+     participant Bob as Validator (Bob)
+     participant Dex as DEX Pool
+
+     Alice->>Mempool: Submit large swap tx (e.g., 100 ETH on Uniswap)
+     Bob->>Mempool: Insert buy tx before Alice (front-run)
+     Mempool->>Dex: Execute Bob buy (price moves up)
+     Mempool->>Dex: Execute Alice swap (worse price due to slippage)
+     Bob->>Mempool: Submit sell tx after Alice (back-run)
+     Mempool->>Dex: Execute Bob sell (captures MEV profit)
+ ```
+
+ This diagram restates the sandwich attack sequence described in Q8 (front-run → victim tx → back-run).
+
+ ### Visual 3 – Authentication & ZK Flows (Q4, Q10)
+
+ #### 3.1 EIP-712 Wallet Authentication (Q4)
+
+ ```mermaid
+ sequenceDiagram
+     participant User
+     participant Wallet
+     participant DApp as dApp Backend
+
+     DApp->>Wallet: Send EIP-712 typed data (domain + message)
+     Wallet->>User: Display structured message for approval
+     User-->>Wallet: Approve sign request
+     Wallet->>DApp: Return ECDSA signature (r, s, v)
+     DApp->>DApp: Recover address via ecrecover (3000 gas on-chain)
+     DApp-->>User: Grant authenticated session if address matches
+ ```
+
+ #### 3.2 ZK Balance Proof Flow (Q10)
+
+ ```mermaid
+ flowchart LR
+     A["User wallet (private address and balance)"] --> B["Generate witness from private inputs"]
+     B --> C["Prove balance is greater than 1 ETH"]
+     C --> D["Produce zk-SNARK or zk-STARK proof"]
+     D --> E["Verifier (on-chain or backend) checks proof within target time"]
+     E --> F["Authenticated without revealing address or exact balance"]
+ ```
+
+ ### Visual 4 – Networking & Layer Separation (Q5, Q9)
+
+ #### 4.1 Peer Discovery & Gossip (Q5)
+
+ ```mermaid
+ flowchart LR
+     A["New validator"] --> B["discv5 DHT"]
+     B --> C["Find peers in under five seconds"]
+     C --> D["rust-libp2p connections (30-100 peers per validator)"]
+     D --> E["Gossipsub mesh (attestations and blocks)"]
+ ```
+
+ This diagram follows the hybrid approach in Q5: discv5 for discovery, libp2p for multiplexed streams and gossip.
+
+ #### 4.2 Consensus vs Execution Separation (Q9)
+
+ ```mermaid
+ sequenceDiagram
+     participant Cons as Consensus Client
+     participant Exec as Execution Client
+
+     Cons->>Exec: engine_newPayload(transactions)
+     Exec->>Exec: Execute txs, update state
+     Exec-->>Cons: Return new state root
+     Cons->>Cons: Include payload in proposed block
+     Cons->>Cons: Collect attestations (2/3 supermajority)
+     Cons-->>Exec: Finalized block & state root
+ ```
+
+ ### Visual 5 – State Model Trade-offs (Q7)
+
+ | Aspect                    | UTXO Model (from Q7)                                                                 | Account Model (from Q7)                                                  |
+ |---------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+ | Representation            | Discrete UTXOs; each spend creates new outputs                                      | Single mutable balance per account; optional code (smart contracts)      |
+ | Privacy                   | Better privacy (fresh addresses, coin-style flows)                                 | Weaker privacy (all activity tied to account)                            |
+ | Balance Query             | Sum all UTXOs for an address; **O(num_utxos)**, 1–10ms typical, 100ms+ for exchanges | Direct hash lookup; **O(1)**, **<1ms**                                   |
+ | Parallel Execution        | Naturally parallel when UTXOs do not overlap                                       | Conflicts when same account touched; more sequential                      |
+ | Storage Profile           | ~**500B/UTXO × billions** → terabytes                                               | ~**256B/account × millions** → gigabytes                                 |
+ | Typical Usage             | Bitcoin and UTXO-based chains                                                       | Ethereum/Polygon/Solana-style account-based chains                       |
+
+ ### Visual 6 – Rate Limiting Strategies (Q6)
+
+ | Strategy                 | Scope / Unit                        | Strengths (from Q6)                                           | Limitations (from Q6)                                      |
+ |--------------------------|--------------------------------------|---------------------------------------------------------------|------------------------------------------------------------|
+ | Token Bucket per IP      | Per IP (e.g., **1000 req/sec**)     | Simple to implement; quickly reduces abusive bot traffic     | VPN/proxy issues; cannot distinguish dApp vs scanner       |
+ | Per-Method Throttling    | Per RPC method (e.g., eth_call, logs) | Protects expensive methods; aligns limits with real cost     | Requires method profiling and more complex configuration   |
+ | JWT-Based Tiers          | Per user/API key (free vs paid)     | Differentiates SLAs; enables quotas like **1M req/day**      | Key distribution overhead; less anonymous, added friction  |
+ | RLN + ZK Proofs          | Identity bound to ZK membership proof | Decentralized and privacy-preserving rate limiting concept   | Experimental; higher overhead (e.g., **~500ms** proof time) |
+
+ ---
+
+ ## References & Standards
+
+ ### Ethereum & Solana Documentation
 - [1] Ethereum JSON-RPC Spec: RFC 4627, RFC 9110
 - [8] Solana RPC Protocol: JSON-RPC 2.0 over HTTP/WebSocket
 - [9] Ethereum Execution Layer Specs: EIP-1559 (gas), EIP-4844 (Danksharding)
