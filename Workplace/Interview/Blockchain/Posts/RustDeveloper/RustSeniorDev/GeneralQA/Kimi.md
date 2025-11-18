@@ -1,16 +1,32 @@
-Here are 10 Q&A pairs for the Senior Rust Developer (Web3 Infrastructure) interview, complying with the provided Content Quality Check Guidelines:
+# Senior Rust Developer (Web3 Infrastructure) – Interview Q&A (Kimi)
+
+This document contains 10 decision-critical Q&A pairs for a Senior Rust Developer (Web3 infrastructure) interview, structured according to `Prompts/Content_Quality_Check_Guidelines.md`.
+
+## Table of Contents
+
+- [Q1: High-TPS Ethereum Client Memory Leak Diagnosis](#q1-high-tps-ethereum-client-memory-leak-diagnosis)
+- [Q2: Solana Transaction Parallelization Conflict](#q2-solana-transaction-parallelization-conflict)
+- [Q3: DEX AMM Integer Overflow Prevention](#q3-dex-amm-integer-overflow-prevention)
+- [Q4: Async Rust for Web3 Indexer Architecture](#q4-async-rust-for-web3-indexer-architecture)
+- [Q5: EVM Storage Trie Corruption Recovery](#q5-evm-storage-trie-corruption-recovery)
+- [Q6: Blockchain Data Structure Selection](#q6-blockchain-data-structure-selection)
+- [Q7: MEV-Boost Relay Monitoring & Bidding](#q7-mev-boost-relay-monitoring--bidding)
+- [Q8: Cross-Chain Bridge Rust Security Audit](#q8-cross-chain-bridge-rust-security-audit)
+- [Q9: CEX Order Matching Engine Latency Optimization](#q9-cex-order-matching-engine-latency-optimization)
+- [Q10: Web3 Wallet Key Management Security](#q10-web3-wallet-key-management-security)
 
 ---
 
 ## **Q1: High-TPS Ethereum Client Memory Leak Diagnosis**
 
-**Question:** While debugging Geth/Reth during a 2,000 TPS load test, you observe RSS memory growing from 4GB to 32GB over 30 minutes, eventually triggering OOM. Outline your systematic debugging approach using Rust-specific tooling and blockchain domain knowledge.
+**Question:** While debugging Geth/Reth during a 2,000 TPS (transactions per second) load test, you observe RSS memory growing from 4GB to 32GB over 30 minutes, eventually triggering an out-of-memory (OOM) kill. Outline your systematic debugging approach using Rust-specific tooling and blockchain domain knowledge.
 
 **Answer:**
 
 ### **Context & Scope**
 - **Problem:** Linear memory growth under sustained load, indicating unbounded state accumulation or memory leak
 - **Constraints:** Production-like environment; cannot attach debugger; must minimize test interruption
+- **Stakeholders:** Client/validator operators, on-call SREs, protocol engineering team
 - **Success Criteria:** Identify root cause with <5% memory overhead under sustained 2,000 TPS for 2+ hours
 
 ### **Phase 1: Reproduction & Baseline (5 minutes)**
@@ -60,6 +76,7 @@ heaptrack ./target/release/reth  # Track allocations with call stacks
 ### **Problem Definition**
 - **Metric:** 15% retry rate → throughput degradation from 65,000 to 55,000 TPS
 - **Root:** Solana's Sealevel parallelizes by `AccountKey` locks, but poorly scheduled tx batches cause false sharing
+- **Stakeholders:** Runtime team, performance engineers, validator operators
 
 ### **Diagnosis Approach**
 1. **Trace Analysis:**
@@ -88,7 +105,7 @@ heaptrack ./target/release/reth  # Track allocations with call stacks
 - **Secondary:** P99 lock acquisition time <50μs (measured via `banking_stage` metrics)
 - **Constraint:** No increase in BankingStage idle time (>95% utilization maintained)
 
-**Toolchain:** Use `solana-ledger-tool create-snapshot` to replay mainnet blocks; validate with `hyperledger/solang` for tx dependency analysis.
+**Toolchain:** Use `solana-ledger-tool create-snapshot` to replay mainnet blocks; use internal analysis scripts or `petgraph`-based tooling for transaction dependency analysis.
 
 ---
 
@@ -101,6 +118,7 @@ heaptrack ./target/release/reth  # Track allocations with call stacks
 ### **Design Constraints**
 - **Scope:** All arithmetic in `swap()`, `mint()`, `burn()`; support 256-bit values
 - **Security:** Must prevent overflow at compile-time where possible; runtime checks must never panic in production
+- **Stakeholders:** Protocol engineers, auditors, DeFi risk teams
 - **Performance:** <0.1% gas overhead vs unchecked math
 
 ### **Type-Level Solution**
@@ -168,6 +186,7 @@ fn verify_mul_div_invariant() {
 - **Ingestion:** 10,000 blocks/hour = ~2.8 blocks/sec; each block ~200 logs → 560 logs/sec
 - **Latency:** <5s from `finalized` tag to PostgreSQL availability
 - **Resource:** Single 16-core server, 64GB RAM, 1TB NVMe
+- **Stakeholders:** Indexer engineers, downstream data consumers, on-call SREs
 
 ### **Architecture Design**
 ```rust
@@ -231,7 +250,8 @@ tokio::spawn(async move {
 ### **Impact Assessment**
 - **Root Cause:** Likely race condition in `reth_stages::ExecutionStage` or disk corruption
 - **Constraint:** Full resync = 3 days; business requirement: <4 hour downtime
-- **Data:** Have `reth db stats` showing 1.2TB MDBX file; last valid snapshot at block 18,449,500
+- **Stakeholders:** Node operators, on-call SREs, business stakeholders depending on node data
+- **Data:** Have `reth db stats` showing a 1.2TB MDBX database file; last valid snapshot at block 18,449,500
 
 ### **Step-by-Step Recovery**
 **Phase 1: Damage Isolation (30 minutes)**
@@ -297,6 +317,7 @@ fn rebuild_corrupted_subtrie(
 - **Scale:** 1B txs → ~300M accounts (assuming 3 tx/account avg)
 - **Queries:** `eth_getProof` (10k QPS), `eth_getBalance` (100k QPS)
 - **Storage Budget:** 2TB NVMe per node; latency P99 <50ms
+- **Stakeholders:** L2 sequencer team, light client implementers, security reviewers
 
 ### **Option Comparison Matrix**
 | Dimension | Merkle Patricia Trie | Flat DB + Verkle | Roaring Bitmap |
@@ -331,7 +352,7 @@ fn get_proof(&self, address: Address, slots: &[H256]) -> AccountProof {
 ```
 
 ### **Trade-off Analysis**
-- **Security:** Verkle > MPT (quantum-resistant); Bitmap provides no state root
+- **Security:** Verkle > MPT (smaller proofs, faster verification); Bitmap provides no state root
 - **Cost:** Bitmap + Flat DB = 300GB vs MPT = 800GB → $300/month/node savings
 - **Dev Time:** Bitmap is 1 week; Verkle is 3 months (spec incomplete)
 
@@ -353,7 +374,8 @@ fn get_proof(&self, address: Address, slots: &[H256]) -> AccountProof {
 ### **Threat Model & Requirements**
 - **Stake:** 100 ETH = ~1 validator slot/epoch (every 6.4 minutes)
 - **Attack:** 3/10 relays collude to suppress high-value bids → 0.05 ETH/slot loss
-- **Detection SLA:** <24 seconds (2 slots) to trigger fallback to local building
+- **Stakeholders:** Validator operators, MEV searchers/builders, protocol governance
+- **Detection service-level agreement (SLA):** <24 seconds (2 slots) to trigger fallback to local building
 
 ### **Monitoring Architecture**
 ```rust
@@ -438,6 +460,7 @@ unsafe fn verify_merkle_root(
 ```
 - **Risk:** Malicious `proof` can trigger arbitrary memory read → root bypass → steal 50,000 ETH
 - **CVSS Score:** 9.8 (Critical) - Network exploitable, no auth needed
+- **Stakeholders:** Bridge users, protocol treasury, security and audit teams
 
 ### **Risk Assessment Matrix**
 | Attack Vector | Likelihood | Impact | Risk | Priority |
@@ -509,6 +532,7 @@ cargo flamegraph --bin matching_engine --freq 997
 ### **Root Cause Analysis**
 - **Contention:** Single `RwLock<OrderBook>` protects all symbols → 200 threads block on BTC/USDT volatility
 - **Latency Spikes:** Write lock held for 2μs × 100k orders/sec = 200ms cumulative wait time
+- **Stakeholders:** Exchange infrastructure team, trading systems, risk management
 
 ### **Optimization Strategy: Sharded OrderBook**
 ```rust
@@ -573,6 +597,7 @@ impl MatchingEngine {
 - **Threats:** Malicious NPM dependency, cold boot attack, phishing
 - **Compliance:** No raw private key in JS heap; SOC2 Type II ready
 - **UX:** Sub-500ms decryption; social recovery available
+- **Stakeholders:** Wallet engineering, security team, 1M+ end users
 
 ### **Architecture: Secure Enclave Pattern**
 ```rust
@@ -658,20 +683,21 @@ let shards = shamir::split_secret(
 - **Option B:** 12-word password only → 400ms unlock, $1B brute-force cost
 - **Decision:** Option B for >10 ETH users; Option A for <10 ETH (configurable)
 
-**Rollback:** If unlock success rate <99%, revert to previous version via extension store staged rollout.
+### References (indicative)
 
----
+- Ethereum clients and specifications (reth, Geth, consensus-specs) for memory behavior, state tries, and consensus
+- Solana validator, Sealevel runtime, and scheduler documentation for parallel execution and account locking
+- Uniswap v2/v3 AMM designs for constant-product and concentrated-liquidity math and overflow considerations
+- Rust performance tooling documentation for `cargo flamegraph`, `perf`, `heaptrack`, and `criterion`
+- Security audit practices from firms such as Trail of Bits and Cure53 for Rust/Web3 systems
 
-### **Self-Verification Checklist**
-☐ **Self-contained**: Each Q&A includes context, metrics, code, trade-offs  
-☐ **Context**: Problem, constraints, success criteria defined per question  
-☐ **Clarity**: Key terms (e.g., MDBX, OOM, TPS) explained inline  
-☐ **Precision**: Specific numbers (50μs, 2,000 TPS, $500M) throughout  
-☐ **MECE**: 10 distinct areas (memory, async, security, etc.) with no overlap  
-☐ **Sufficiency**: All dimensions (what, why, how, who, risk, outcome) covered  
-☐ **Depth**: Advanced Rust patterns (unsafe, WASM, sharding) with code  
-☐ **Difficulty**: Questions 1-4 (Advanced), 5-7 (Intermediate), 8-10 (Advanced)  
-☐ **Priority**: Critical security (Q8) first in answer structure  
-☐ **Logic**: Trade-off tables with explicit pros/cons for each option  
-☐ **Practicality**: Concrete commands, crate names, and verification steps  
-☐ **Success Criteria**: Measurable outcomes (P99 latency, audit pass rate) per answer
+### Self-Verification Checklist
+
+Use the checklist from `Prompts/Content_Quality_Check_Guidelines.md` when reviewing or extending these Q&As:
+
+☐ Context | ☐ Clarity | ☐ Precision | ☐ Relevance
+☐ MECE | ☐ Sufficiency | ☐ Breadth | ☐ Depth
+☐ Significance | ☐ Priority | ☐ Concision | ☐ Accuracy | ☐ Credibility
+☐ Logic | ☐ Risk/Value | ☐ Fairness
+☐ Structure | ☐ Consistency | ☐ TOC
+☐ Evidence | ☐ Verification | ☐ Practicality | ☐ Success Criteria
