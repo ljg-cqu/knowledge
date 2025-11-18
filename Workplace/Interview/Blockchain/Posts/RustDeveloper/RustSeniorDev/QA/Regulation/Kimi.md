@@ -9,6 +9,35 @@
 - **Stakeholders**: Rust/Web3 developers, protocol engineers, architects, security engineers, compliance/legal, and product/leadership.
 - **Resources**: Use the References section for authoritative sources; escalate edge cases to legal/compliance.
 
+### Visual Summary
+
+| Region | Regulation | Primary Trigger | Max Fine / Exposure | Related Qs |
+|--------|------------|-----------------|---------------------|------------|
+| EU | GDPR Art. 17/33/44 | Erasure conflict, breach notice, cross-border transfer | €20M or 4% global turnover | Q1, Q2, Q6 |
+| EU | MiCA Art. 76 | Smart contract auditability & upgradeability | €15M or 3% turnover | Q4 |
+| US (CA) | CCPA/CPRA §1798.120 | Opt-out enforcement on mempool data | $7.5K × 10K users = $75M | Q5 |
+| China | PIPL Art. 40 | Data localization for RPC traffic | ¥50M or 5% revenue | Q7 |
+| US Federal | HIPAA §164.308 | Business Associate Agreement for PHI | $1.5M (tiered) | Q8 |
+| Global | SOC2 CC4.1 & Vendor DPAs | Audit trail retention, missing processor clauses | $3M ARR risk + €20M GDPR exposure | Q3, Q8 |
+
+```mermaid
+flowchart LR
+    Trigger([Regulatory Trigger]) --> Assess{Map to Regulation}
+    Assess -->|GDPR Art. 17/33/44| GDPR[Design Privacy & Breach Workflow]
+    Assess -->|MiCA| MiCA[Smart Contract Governance]
+    Assess -->|CCPA/CPRA| CCPA[Opt-out & ZK Controls]
+    Assess -->|PIPL| PIPL[Geo-routing & Localization]
+    Assess -->|HIPAA/SOC2| HIPAA[Vendor & Audit Evidence]
+    GDPR --> Implement[Implement Rust Controls]
+    MiCA --> Implement
+    CCPA --> Implement
+    PIPL --> Implement
+    HIPAA --> Implement
+    Implement --> Validate[Metrics + Evidence + Escalation]
+```
+
+> **Compliance Debt Formula**: `Total Exposure = Remediation CapEx + Annual OpEx + Residual Fine Risk`. Apply per Q&A (e.g., Q1: `$280K + $90K/yr + €14M residual`).
+
 ## Contents
 - [Cluster Overview](#cluster-overview) - Cluster | Decision Trigger | Q&A Count
 - [Q&As 1-8](#qas-1-8) - Scenario + Regulatory Mapping + Impact + Stakeholders + Decision + Trade-offs + Artifacts
@@ -500,6 +529,24 @@ graph LR
 **L8.** Trail of Bits. (2023). "Smart Contract Security for MiCA." EIP-2535 diamond proxy audit guidance. https://blog.trailofbits.com [EN]
 
 ### Citations (APA 7th, Decision-Critical Only)
+
+### Reference Coverage Snapshot
+
+| Reference Type | Count | Representative Items | Primary Usage |
+|----------------|-------|----------------------|----------------|
+| Glossary | 10 Web3 + regulatory terms | Public Chain, Proxy Pattern, zk-SNARK | Anchor interview vocabulary and clarify legal-tech overlap |
+| Tools | 6 platforms | OneTrust, Splunk, foundry | Operationalize controls, evidence, and forensics |
+| Literature | 8 canonical sources | MiCA 2023/1114, GDPR 2016/679, ISO 27001 | Cite statutory/standards language for interviews |
+| Citations | 13 tagged references | A1–A13 | Trace each Q&A claim to auditable sources |
+
+```mermaid
+graph TB
+    Glossary -->|Provides| QandA[Q&As 1-8]
+    Tools -->|Implements| QandA
+    Literature -->|Justifies| QandA
+    Citations -->|Validates| QandA
+    QandA -->|Feeds| Validation[Validation Summary]
+```
 
 **A1.** EU. (2016). GDPR (2016/679). https://eur-lex.europa.eu/eli/reg/2016/679/oj [EN]
 

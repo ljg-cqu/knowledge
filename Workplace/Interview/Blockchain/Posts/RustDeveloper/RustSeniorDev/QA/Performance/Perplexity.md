@@ -25,6 +25,16 @@ This performance engineering guide addresses critical optimization challenges fo
 - **Cache Hit Rate**: ≥95% for optimal performance[13][14]
 - **Connection Pool**: 50-90% latency reduction with proper configuration[15][1]
 
+**Visual Aid – Optimization Lever Snapshot**
+
+| Lever | Primary Technique | Baseline Indicator | Optimized Target | Delta | Supporting Evidence |
+|-------|-------------------|--------------------|------------------|-------|--------------------|
+| Latency | Connection pooling across RPC/database layers | p99 ≈ 300ms | p99 < 100ms | ↓ ~200ms (≈70%) | [1][2][15]
+| Throughput | Caching + batching for RPC calls | 1,850 RPS | 4,200 RPS | ↑ 2.27× | [4][5][6]
+| CPU Efficiency | Profile-Guided Optimization + async tuning | 80% CPU in hot path | <20% per function | ↓ 60% concentration | [7][8][9]
+| Bandwidth | Request deduplication & cache hit rate ≥95% | 60-70% redundant calls | 10-20% redundant calls | ↓ 50%+ unnecessary traffic | [4][5][18]
+| Resource Usage | Right-sized connection pools (cores ×2) | 45% utilization | 70-80% utilization | ↑ 25-35% efficiency | [1][34][35]
+
 ---
 
 ## Context & Coverage
@@ -38,11 +48,29 @@ Web3 infrastructure development focusing on high-performance blockchain systems 
 - **Blockchain Developers**: Smart contract gas optimization, chain integration
 - **SREs**: SLO monitoring, RPC node infrastructure, load balancing
 
+**Audience Role Focus Matrix**
+
+| Role | Ownership Scope | Primary KPIs | Tooling Focus |
+|------|-----------------|--------------|---------------|
+| Rust Senior Engineer | Async runtime tuning, hot-path refactors | p95/p99 latency, CPU utilization | tokio profiler, cargo-flamegraph[6][9][17]
+| Performance Engineer | Capacity planning, regression detection | Throughput (TPS), error budget burn | criterion.rs, Prometheus SLO dashboards[3][27][40]
+| Blockchain Developer | Smart contract & DEX logic | Gas/compute units per tx, TPS ceiling | Solana compute budget tools, gas analyzers[24][25][39]
+| SRE | RPC node reliability & SLOs | SLO compliance %, availability | Burn-rate alerting, connection pool telemetry[1][3][40]
+
 ### Constraints
 - Production-ready solutions only; assumes access to profiling tools (perf, flamegraph, criterion)[16][6][17]
 - Focus on systems with measurable SLOs (p95/p99 latency, throughput targets)
 - Linux-based deployment environments with standard observability stack
 - Valid for use with metrics and tool versions current as of Nov–Dec 2024; re-validate benchmarks and tool versions if used after this period
+
+**Constraint Readiness Checklist**
+
+| Requirement | Validation Cue | Notes |
+|-------------|----------------|-------|
+| Profiling toolchain available | `perf`, `cargo flamegraph`, criterion installed | Needed for Q1/Q4 workflows[6][16][27]
+| SLO instrumentation | Histograms + burn-rate dashboards in place | Enables monitoring strategy in Q3[3][10]
+| Linux observability stack | `perf`, `pprof-rs`, Prometheus exporters | Cross-checks CPU/heap telemetry[30][31][40]
+| Metric freshness | Benchmarks verified Nov–Dec 2024 | Re-run if environment drifts beyond scope |
 
 ### In Scope
 - **RPC node optimization**: Connection pooling, caching, load balancing[18][19][20]
@@ -51,11 +79,30 @@ Web3 infrastructure development focusing on high-performance blockchain systems 
 - **Profiling & measurement**: Flamegraph, criterion, perf, DHAT analysis[6][23][17][16]
 - **Smart contract efficiency**: Gas optimization patterns for DEX platforms[24][25][26]
 
+**Scope Mapping Table**
+
+| Focus Area | Representative Techniques | Primary Metrics | Referenced Sections |
+|------------|---------------------------|-----------------|--------------------|
+| RPC Node Optimization | Connection pooling, caching, load balancing | p95 latency, TPS, cache hit rate | Executive Summary, Q1, Q3[1][3][18]
+| Async Rust Performance | Tokio tuning, mutex strategy, task scheduling | CPU hotspot %, async lock wait time | Q1, Q4[4][9][21]
+| Database Optimization | Query tuning, pooling, indexing | Query latency, pool utilization | Q1, Q3[1][2]
+| Profiling & Measurement | Flamegraph, criterion, perf, DHAT | Hot-path %, benchmark regression detection | Q1, Q4, Tools[6][17][23]
+| Smart Contract Efficiency | Storage packing, batching, L2 deployment | Gas per swap, compute units | Q2[24][25][26]
+
 ### Out of Scope
 - Hardware vendor selection, network topology design
 - Non-Rust language comparisons (Go, C++)
 - Blockchain consensus algorithm design
 - Front-end performance optimization
+
+**Visual Divider – Out-of-Scope Quick Reference**
+
+| Exclusion Area | Reason |
+|----------------|--------|
+| Hardware/vendor selection | Depends on procurement constraints outside performance engineering remit |
+| Non-Rust stacks | Template targets Rust-centric workflows |
+| Consensus algorithm design | Considered protocol research, not performance tuning |
+| Front-end optimizations | Focus is backend/RPC infrastructure |
 
 ***
 

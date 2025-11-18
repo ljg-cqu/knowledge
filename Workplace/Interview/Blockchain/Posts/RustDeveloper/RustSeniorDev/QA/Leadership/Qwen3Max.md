@@ -19,6 +19,17 @@
 **Scale & Stakeholders**: Designed for teams of 5–15 Rust/Web3 engineers building mission-critical infrastructure or DeFi systems; primary stakeholders are hiring managers, architects, senior individual contributors, and HR/people partners.
 **Resources**: This Q&A set, the references in Section 3, interviewer scoring rubrics, and the candidate’s prior experience.
 
+### Visual Snapshot
+
+| Element | Details |
+|---------|---------|
+| Purpose | Evaluate leadership capabilities of senior Rust/Web3 candidates via scenario-driven Q&A |
+| Scope | 6 questions across strategic leadership, people & retention, change & ambiguity |
+| Duration | 45–60 minute interview block inside the broader loop |
+| Team Scale | 5–15 Rust/Web3 engineers on mission-critical infra or DeFi products |
+| Primary Stakeholders | Hiring managers, architects, senior ICs, HR/people partners |
+| Key Resources | Q&A set, cited references, interviewer rubrics, candidate’s experience |
+
 **Difficulty Levels**: F = Foundational, I = Intermediate, A = Advanced.
 
 Total: 6 | Difficulty: 2F/3I/1A | Coverage: 3 areas
@@ -65,6 +76,15 @@ graph TD
 
 **Answer**: Use Kotter's change framework [Ref: G4] with market analysis matrix. First, establish metrics: developer activity, transaction volume, institutional adoption, and technical maturity for each chain. Second, create scenarios: bull/bear cases for each ecosystem with probability weighting. Third, implement phased allocation: 60% to dominant ecosystem (Ethereum), 30% to high-growth (Solana), 10% experimental. Fourth, establish review cadence: quarterly reallocation based on metrics. Trade-offs: specialization vs. diversification; short-term gains vs. long-term positioning. Dimensions: technical capability building versus market responsiveness. Success criteria: 20% market share growth in chosen ecosystems, team retention >85%. [Ref: A3, A4]
 
+**Scenario Allocation Matrix**
+
+| Ecosystem | Key Signals to Track | Allocation Band | Rationale |
+|-----------|---------------------|-----------------|-----------|
+| Ethereum | Developer activity, institutional adoption | 50–70% | Mature ecosystem sustaining core revenue; ensure stability |
+| Solana | Transaction volume, technical maturity | 20–40% | High-growth bet that benefits from continuous experimentation |
+| Experimental (Layer-2s/Alt L1s) | Emerging developer tools, partner pull | 5–15% | Option value for future pivots without overcommitting |
+| Review Cadence | Quarterly KPI review | Adjust bands | Maintain agility as market signals shift |
+
 **Topic: People & Retention**
 
 **Q3: How would you retain your top Rust developers when they're being aggressively recruited by competitors offering 30% higher salaries, especially given the specialized Web3 skills required?**
@@ -95,6 +115,15 @@ graph TD
 
 **Answer**: Leverage Kotter's 8-step model [Ref: G4] with psychological safety principles [Ref: G2]. First, create urgency: share incident post-mortems showing knowledge silo costs. Second, build coalition: identify respected senior engineers as change champions. Third, establish new norms: mandatory pair programming for critical modules, documentation-as-code practices, and blameless review sessions. Fourth, reinforce through systems: tie 30% of bonuses to collaboration metrics. Trade-offs: short-term velocity reduction versus long-term resilience; individual autonomy versus team standards. Dimensions: technical practices versus behavioral norms; immediate productivity versus sustainable growth. Impact: 50% reduction in knowledge-dependent incidents, 70% improvement in onboarding time. Success criteria: documentation coverage >80%, cross-team contributions >40%. [Ref: A3, A2]
 
+**Culture Shift Tracker**
+
+| Change Lever | Example Action | System/Behavior Focus | Leading Indicator |
+|--------------|----------------|-----------------------|-------------------|
+| Urgency & Narrative | Share post-mortems that quantify silo-induced outages | Behavior | Engineers reference shared incidents in retros |
+| Coalition & Champions | Appoint senior Rust maintainers as practice leads | System + Behavior | % of code reviews led by champions |
+| New Norms | Mandatory pair programming + docs-as-code | System | Documentation coverage (%) |
+| Reinforcement | 30% bonus tied to collaboration metrics | System | Collaboration OKR progress |
+
 **Topic: Change & Ambiguity**
 
 **Q5: How would you execute an urgent migration from a legacy C++ blockchain node to a new Rust-based infrastructure when the team has mixed Rust expertise and the business cannot afford downtime?**
@@ -106,6 +135,15 @@ graph TD
 **Key Insight**: Technical migrations under constraints require phased execution with rigorous testing and fallback strategies while building team capability simultaneously.
 
 **Answer**: Apply Situational Leadership [Ref: G3] with migration playbook. First, assess team capabilities: identify Rust experts, create mentorship pairs, provide targeted training. Second, implement phased migration: start with non-critical modules, use feature flags, maintain parallel systems. Third, establish safety nets: comprehensive test coverage, automated rollback procedures, 24/7 monitoring rotation. Fourth, communicate transparently: daily standups with business stakeholders, clear rollback criteria. Trade-offs: speed versus stability; team learning curve versus delivery pressure. Dimensions: technical execution versus team development; risk mitigation versus progress velocity. Impact: zero downtime migration, 30% performance improvement. Success criteria: <5 minute failover time, team Rust proficiency increased by 50%. [Ref: A5, A6]
+
+**Migration Timeline Checklist**
+
+| Phase | Focus | Key Actions | Owner |
+|-------|-------|-------------|-------|
+| Capability Prep | Skill assessment | Map experts, form mentorship pairs, schedule Rust upskilling | Engineering Manager |
+| Controlled Pilot | Non-critical modules | Dual-run systems, gate via feature flags, capture telemetry | Tech Leads |
+| Full Cutover | Critical services | Execute playbooks, enforce automated rollbacks, maintain 24/7 monitoring | Incident Commander |
+| Stabilization | Post-cutover | Validate KPIs, document lessons, graduate mentorship pairs | Program Lead |
 
 **Q6: How would you lead your engineering organization through regulatory uncertainty when building DeFi protocols, where compliance requirements are rapidly evolving and could invalidate current architectural decisions?**
 

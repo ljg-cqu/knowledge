@@ -2,6 +2,12 @@
 
 **Context & Scope**: Decision-critical organizational Q&A set for assessing Senior Rust developers in blockchain/Web3 companies. Assumes a 50–150 engineer, remote-first, multi-chain (Ethereum + Solana) product organization over a 12–18 month horizon, with key stakeholders including Engineering Managers, Directors/VP Engineering, CHRO/People, Legal/Compliance, and Finance. Primary use cases: interview preparation and scenario-based organizational diagnosis; secondary use: onboarding and leadership coaching.
 
+**Key Operating Assumptions**
+- Workforce: 50–150 fully distributed engineers operating across Ethereum and Solana initiatives.
+- Horizon: 12–18 month decision window covering hiring, compliance, and capability investments.
+- Stakeholders: Engineering leadership, People/Legal, and Finance teams jointly accountable for outcomes.
+- Use Cases: Interview readiness, scenario diagnosis, onboarding accelerators, and leadership coaching.
+
 ## Contents
 - [Dimension Areas](#dimension-areas-decision-critical-only)
 - [Lifecycle–Stakeholder Coverage](#lifecycle-stakeholder-coverage-decision-critical-only)
@@ -18,6 +24,14 @@
 | Culture & Capability | Q3, Q6 | 2 | I, F | Creates burnout risk (65% engineers), affects 3 roles, quantified 40% productivity loss |
 | Compliance & Policy | Q4, Q8 | 2 | I, A | Creates regulatory risk ($2M+ fines), blocks operations, affects 5+ roles |
 
+**Decision Criticality Snapshot**
+| Dimension | Primary Risk | Quantified Impact | Time Horizon |
+|-----------|--------------|-------------------|--------------|
+| Team Structure & Scaling | Velocity degradation | 30% slower delivery, $3M opportunity cost | 4–6 months |
+| Talent & Retention | Attrition + hiring freeze | 45% turnover risk, $500K recruitment cost | ≤3 months |
+| Culture & Capability | Burnout + innovation loss | 65% burnout, 35–40% productivity drop | ≤2 months |
+| Compliance & Policy | Regulatory penalties | $2M–$5M exposure, 90-day audit gap | 3–12 months |
+
 ## Lifecycle-Stakeholder Coverage (Decision-Critical Only)
 
 | Phase | Q# | Core Stakeholders | Decision-Critical Scenarios |
@@ -27,6 +41,20 @@
 | 3. Deployment | Q3 | Manager, Team Lead, Director | On-call rotation burnout, skill gap mitigation |
 | 4. Operations | Q4, Q8 | Director, CHRO, CTO, Legal | Regulatory compliance gaps, cross-border policy implementation |
 | 5. Evolution | Q5 | Director, VP Eng, Architect | Topology restructuring, long-term capability planning |
+
+```mermaid
+flowchart LR
+    R[Phase 1: Requirements & Discovery\nQ1, Q6] --> D[Phase 2: Development\nQ2, Q7]
+    D --> DEP[Phase 3: Deployment\nQ3]
+    DEP --> OP[Phase 4: Operations\nQ4, Q8]
+    OP --> EV[Phase 5: Evolution\nQ5]
+    R:::phase -->|Stakeholders| S1[Manager, CHRO, Director]
+    D:::phase --> S2[Manager, Architect, Team Lead]
+    DEP:::phase --> S3[Manager, Team Lead, Director]
+    OP:::phase --> S4[Director, CHRO, CTO, Legal]
+    EV:::phase --> S5[Director, VP Eng, Architect]
+    classDef phase fill:#eef4ff,stroke:#6b7fd7,stroke-width:1px;
+```
 
 ---
 
@@ -60,7 +88,9 @@ flowchart TD
 ```
 
 **Impact Matrix**:
+
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Manager | Team stability risk | 30% productivity loss | 3 months | Approve hybrid packages |
 | CHRO | Budget pressure | $500K recruitment cost | 6 months | Redesign comp structure |
 | Director | Project delays | 45% attrition rate | 3 months | Authorize token incentives |
@@ -98,7 +128,9 @@ flowchart LR
 ```
 
 **Impact Matrix**:
+
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Manager | Delivery delays | 30% velocity loss | 4 months | Approve team split |
 | Architect | Design complexity | 25% error rate increase | 2 months | Define ownership boundaries |
 | Team Lead | Resource allocation | 40% context-switching | 3 months | Implement skill mapping |
@@ -138,6 +170,7 @@ flowchart TD
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Manager | Team morale collapse | 65% burnout rate | 2 months | Implement shift limits |
 | Team Lead | Incident response quality | 3 deployment failures | 1 month | Configure alert tiering |
 | Director | Strategic capability risk | $750K replacement cost | 6 months | Approve framework budget |
@@ -255,6 +288,7 @@ flowchart LR
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Manager | Team performance | 35% innovation reduction | 4 months | Implement post-mortem rituals |
 | Team Lead | Audit quality | 25% quality decline risk | 3 months | Train facilitators |
 | CHRO | Talent retention | 60% engagement score | 6 months | Design reward system |
@@ -294,6 +328,7 @@ flowchart TD
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | Director | Strategic delivery risk | 8-10 month delays | 5 months | Approve partnership budget |
 | CHRO | Recruitment efficiency | 40% time-to-hire | 6 months | Implement benchmarking system |
 | Talent Acquisition | Pipeline quality | 35% contractor dependency | 4 months | Establish university programs |
@@ -334,6 +369,7 @@ flowchart LR
 
 **Impact Matrix**:
 | Stakeholder | Impact | Metric | Timeline | Action |
+|-------------|--------|--------|----------|--------|
 | VP Eng | Operational velocity | 12-month delay risk | 12 months | Architect integration layer |
 | CTO | Technical debt | $8M lost revenue | 18 months | Approve API-first design |
 | Chief Legal Officer | Regulatory exposure | $5M+ risk | 6 months | Conduct gap analysis |

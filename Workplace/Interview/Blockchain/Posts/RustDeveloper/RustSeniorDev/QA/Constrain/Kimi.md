@@ -3,6 +3,26 @@
 **SDLC Phases**: Requirements→Design→Dev→Testing→Deploy→Ops→Maintenance→Evolution  
 **Output**: 28 Q&As (6F/11I/11A) × 150-300 words | 100% quantified | 100% traceable
 
+#### Visual Snapshot: Difficulty & Phases
+
+| Difficulty | Count | Share |
+|------------|-------|-------|
+| Foundational | 6 | 21% |
+| Intermediate | 11 | 39% |
+| Advanced | 11 | 39% |
+
+```mermaid
+flowchart LR
+    Req[Requirements] --> Des[Design]
+    Des --> Dev[Development]
+    Dev --> Test[Testing]
+    Test --> Deploy[Deployment]
+    Deploy --> Ops[Operations]
+    Ops --> Maint[Maintenance]
+    Maint --> Evo[Evolution]
+    Evo --> Req
+```
+
 ---
 
 ## Contents
@@ -43,6 +63,42 @@
 **G27. HSM** [EN] – Hardware Security Module for key custody; FIPS 140-2. *Related: Sec stakeholder*  
 **G28. Zero-Knowledge** [EN] – zk-SNARKs for privacy; constraint systems. *Related: halo2, circom*
 
+#### Constraint Coverage Matrix
+
+| Constraint Focus | Glossary IDs | Primary Concerns |
+|------------------|--------------|------------------|
+| Technical & Performance | G1, G21, G24 | CPU/memory budgets, async runtimes, gas efficiency |
+| Resource & Business | G2, G3 | Team size, budget ceilings, SLA-linked revenue |
+| Organizational & Stakeholder | G4, G9 | RACI alignment, multi-role sign-offs |
+| Compliance & Security | G5, G27, G28 | GDPR/SOC-2 adherence, key custody, privacy proofs |
+| Operational & Lifecycle | G6, G8 | SLO/RTO/RPO tracking across SDLC phases |
+| Ecosystem & Integration | G7, G10-G26 | Tooling lock-in, MEV/DEX concepts, data structures |
+
+```mermaid
+mindmap
+  root((Constraints))
+    Technical
+      CPU/Mem
+      Async Rust
+      Gas Budgets
+    Business
+      Revenue Caps
+      CAC/LTV
+    Organizational
+      Stakeholders
+      Standards
+    Compliance
+      GDPR
+      Audit Trails
+    Operational
+      SLO
+      Error Budgets
+    Ecosystem
+      MEV
+      Bridges
+      Indexers
+```
+
 ### Tools (T1-T7)
 **T1. Foundry** – Ethereum dev toolkit (Rust bindings). 2024-11. Free. <https://github.com/foundry-rs>  
 **T2. Solana Rust SDK** – Native program development. 2024-10. Free. <https://github.com/solana-labs/solana>  
@@ -51,6 +107,17 @@
 **T5. Prometheus** – Metrics collection. 2024-09. Free. <https://prometheus.io>  
 **T6. Grafana** – Observability dashboards. 2024-10. Free tier+. <https://grafana.com/pricing>  
 **T7. Terraform** – IaC for cloud infra. 2024-11. Free. <https://www.terraform.io>
+
+#### Tool Coverage Matrix
+
+| Tool | Domain | Primary Usage |
+|------|--------|---------------|
+| Foundry (T1) | Smart contract dev/test | Deterministic builds, fork testing |
+| Solana Rust SDK (T2) | On-chain programs | Native Solana program authoring |
+| ethers-rs (T3) | Ethereum clients | Async RPC calls, wallet ops |
+| Lighthouse (T4) | Consensus | Rust beacon node for benchmarking |
+| Prometheus & Grafana (T5-T6) | Observability | Metrics scraping + dashboards |
+| Terraform (T7) | Infrastructure | Declarative cloud provisioning |
 
 ### Literature (L1-L8)
 **L1.** Evans, E. (2003). *Domain-Driven Design*. Addison-Wesley. Strategic modeling.  
@@ -61,6 +128,15 @@
 **L6.** Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley. Repository, CQRS.  
 **L7.** Buterin, V. et al. (2023). *Ethereum Yellow Paper*. Ethereum Foundation. EVM semantics.  
 **L8.** Yakovenko, A. (2022). *Solana Whitepaper* (v2). Solana Foundation. PoH consensus.
+
+#### Literature Emphasis Table
+
+| Focus Area | References | Key Themes |
+|------------|------------|------------|
+| Domain & Tactical Design | L1, L2, L6 | DDD patterns, tactical aggregates |
+| Distributed & Microservices | L3, L4 | Sagas, decomposition, deployment |
+| Data & Consistency | L5 | Replication, event sourcing |
+| Blockchain Protocols | L7, L8 | EVM semantics, PoH consensus |
 
 ### Citations (C1-C15)
 **C1.** Evans (2003). *Domain-driven design*. Addison-Wesley. [EN]  
@@ -78,6 +154,21 @@
 **C13.** Wormhole Foundation (2024). *Cross-Bridge Architecture*. Wormhole Docs. [EN]  
 **C14.** SigMP (2024). *Lighthouse Performance*. Sigma Prime. [EN]  
 **C15.** Tokio Team (2024). *Async Rust Performance*. Rust Foundation. [EN]
+
+#### Citation Language Mix
+
+| Language | Count | Representative IDs |
+|----------|-------|--------------------|
+| English | 13 | C1-C8, C11-C15 |
+| Chinese | 2 | C9, C10 |
+
+```mermaid
+pie title "Reference Types"
+    "Glossary" : 28
+    "Tools" : 7
+    "Literature" : 8
+    "Citations" : 15
+```
 
 ---
 

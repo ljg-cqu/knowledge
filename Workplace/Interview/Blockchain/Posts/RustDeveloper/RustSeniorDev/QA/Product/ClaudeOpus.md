@@ -78,6 +78,19 @@ Use weighted scoring across dimensions [Ref: T1]:
 | Team Efficiency | High | Medium (ramp) | 10% | 8 | 6 |
 | **Weighted** | | | | **5.1** | **7.8** |
 
+**Decision Path (Mermaid)**
+
+```mermaid
+flowchart LR
+    A[Assess TAM/SAM/SOM] --> B{Weighted Scoring}
+    B -->|Ethereum| C[Protect $3M ARR, incremental moat]
+    B -->|Solana| D[Target $5M new ARR, first-mover]
+    B -->|Hybrid| E[70/30 split, test PMF]
+    C --> F[Low risk, lower growth]
+    D --> G[Higher risk, rapid growth]
+    E --> H[Balanced bet with phased rollout]
+```
+
 ---
 
 **Q2: A major DEX wants custom Rust modules for their high-frequency trading infrastructure, worth $2M/year. This conflicts with your open-source strategy. How do you evaluate this opportunity?**
@@ -115,6 +128,15 @@ Evaluate using Web3 business model framework [Ref: G5] considering both financia
 **Success metrics**: Community sentiment (>70% positive), GitHub stars growth maintained (>100/month), DEX performance improvement (50% latency reduction), partnership pipeline ($5M+) [Ref: G4].
 
 ---
+
+**Stakeholder Impact Matrix**
+
+| Stakeholder | Benefit | Risk if mishandled | Mitigation |
+|-------------|---------|--------------------|------------|
+| Engineering | Revenue funds roadmap acceleration | Chronic maintenance burden | Time-box custom work, reuse modules |
+| Community | Performance modules stay open | Perception of closed source pivot | Public roadmap + RFCs |
+| Investors | $2M ARR uplift | Short-term focus over platform goals | Highlight partnership-funded open source |
+| DEX Client | Priority support + performance boosts | Loss of leverage if exclusivity denied | Co-develop SLA + governance seats |
 
 #### Topic 2: Metrics & Decision-Making
 
@@ -163,6 +185,22 @@ Implement funnel analysis using HEART framework [Ref: G2] to identify drop-off p
 | Test Deploy | 800 | 4,000 | 80% → 50% | Documentation |
 | Production | 200 | 2,000 | 75% → 50% | Debugging tools |
 
+**Activation Recovery Timeline (Mermaid)**
+
+```mermaid
+gantt
+    dateFormat  YYYY-MM
+    title 12-Week Intervention Plan
+    section Quick Wins
+    Quick-start template          :active, 2024-01, 2024-01
+    Docs gap audit                :2024-01, 2024-01
+    section Experience
+    Interactive tutorial          :2024-02, 2024-02
+    Progressive docs rewrite      :2024-02, 2024-03
+    section Tooling
+    IDE debugging tooling         :2024-03, 2024-04
+```
+
 ---
 
 **Q4: Your Web3 infrastructure processes 1M transactions daily. Gas optimization could save users $5M/month but requires significant refactoring. How do you build the business case?**
@@ -208,6 +246,16 @@ Build comprehensive ROI model incorporating direct and indirect benefits [Ref: G
 - User acquisition: 20% increase
 - NPS improvement: +15 points
 - Revenue impact: $3M additional ARR within 12 months
+
+**ROI Snapshot**
+
+| Component | Value |
+|-----------|-------|
+| Annual user savings | $60M |
+| Engineering investment | $225K |
+| Opportunity cost | $2M ARR deferment |
+| Net strategic gain (retention + fees) | ~$3.6M ARR |
+| Payback period | <2 months post-launch |
 
 ---
 
@@ -260,6 +308,20 @@ Apply stakeholder mapping and RACI framework [Ref: G9] to structure alignment pr
 | Rust Team | Technical excellence | Incremental refactoring | Patience on full rewrite | 25% performance gain |
 | Eng Managers | Stability | Modular architecture | Process adherence | <1 incident/month |
 | Users | Features + performance | Balanced delivery | Feedback participation | NPS >60 |
+
+**Parallel Execution Flow (Mermaid)**
+
+```mermaid
+flowchart LR
+    kick[Joint Planning]
+    kick --> split{Capacity Split}
+    split --> track1[Track 1: Partnership Features]
+    split --> track2[Track 2: Incremental Rewrite]
+    track1 --> milestone1[Q3 Delivery]
+    track2 --> milestone2[25% Perf Gain]
+    milestone1 & milestone2 --> review[Weekly Steering Review]
+    review --> adjust[Scope / Escalation Decisions]
+```
 
 ---
 
@@ -321,6 +383,22 @@ Design multi-chain GTM using crossing-the-chasm framework adapted for Web3 [Ref:
 | Launch | M3-4 | Early adopters (500) | Conferences, content | Sign-ups | $200K |
 | Growth | M5-8 | Early majority (2000) | Community, partnerships | MAU | $500K |
 | Scale | M9-12 | Mainstream (5000) | Self-serve, enterprise | ARR | $1M |
+
+**GTM Momentum (Mermaid)**
+
+```mermaid
+sequenceDiagram
+    participant Prod as Product
+    participant DevAdv as Dev Advocates
+    participant Comm as Communities
+    participant Partners as Chain Partners
+    Prod->>DevAdv: Enable cross-chain playbooks
+    DevAdv->>Comm: Run hackathons & tutorials
+    Comm->>Prod: Provide usage feedback
+    Prod->>Partners: Share roadmap + integration asks
+    Partners-->>DevAdv: Co-market launches
+    DevAdv-->>Prod: Surface enterprise leads
+```
 
 ---
 

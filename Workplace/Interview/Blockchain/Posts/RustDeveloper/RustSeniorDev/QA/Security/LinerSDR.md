@@ -11,6 +11,13 @@ This report provides decision-critical security Q&As focused on Rust-based Web3 
 - **Stakeholders**: Advanced Rust developers, security engineers, DevOps/SRE, architects, security leaders, and compliance officers.
 - **Resources**: This Q&A plus the curated source list at the end; intended to complement, not replace, internal policies and audits.
 
+**Visual Snapshot of Decision-Critical Q&As**
+| Q# | Focus Area | Primary Risk Highlight | Core Control Emphasis | Key Stakeholders |
+|----|------------|------------------------|-----------------------|------------------|
+| Q1 | Rust memory safety in Web3 core modules | `unsafe Rust` and tampered binaries enabling memory exploits | ERASan-based runtime instrumentation plus binary validation | Security Engineer, DevOps/SRE, Architects |
+| Q2 | Upgradable smart contracts & audit rigor | Misconfigured USCs and vulnerable Solana deployments causing asset loss or non-compliance | Formal reviews, high-precision static analysis, external audits, regulatory kill switches | Architects, Security Leaders, Compliance Officers |
+| Q3 | Rust supply chain incident response | Malicious crates/dependency confusion compromising infrastructure | NIST-aligned playbook with automated detection and containment | Security Engineer, DevOps/SRE, Security Leaders |
+
 ---
 
 ### Q1: How can Rust's memory safety guarantees be challenged in Web3 core modules, and what advanced runtime monitoring strategies are required to detect these subtle vulnerabilities?
@@ -34,6 +41,14 @@ This report provides decision-critical security Q&As focused on Rust-based Web3 
 - **Short-term (2 weeks - 2 months)**:
     - **Architects**: Re-evaluate critical Web3 core modules for `unsafe Rust` usage, prioritizing refactoring or enhanced runtime monitoring for these sections.
     - **Security Engineer**: Develop and refine detection rules for subtle memory-related anomalies, including atomic memory ordering issues, that could indicate an ongoing exploit.
+
+**Action Timeline Overview (Q1)**
+| Window | Owner | Core Focus | Supporting Tooling |
+|--------|-------|------------|--------------------|
+| Immediate (0-2 weeks) | Security Engineer | Deploy ERASan where compiler guarantees drop | ERASan instrumentation scoped to `unsafe` regions |
+| Immediate (0-2 weeks) | DevOps/SRE | Enforce binary validation before execution | Load-time validator checking spatial/temporal safety |
+| Short-term (2 weeks - 2 months) | Architects | Review and refactor `unsafe` modules | Architecture reviews, targeted runtime monitoring |
+| Short-term (2 weeks - 2 months) | Security Engineer | Author anomaly-detection rules for memory exploits | Behavioral analytics tuned for atomic ordering issues |
 
 **Practical** (ERASan Integration & Binary Validation):
 ```yaml
@@ -113,6 +128,15 @@ flowchart TD
 - **Short-term (2 weeks - 2 months)**:
     - **DevOps/SRE**: Establish automated auditing pipelines that include bytecode analysis for deployed smart contracts, especially for identifying known USC patterns and potential vulnerabilities without needing source code.
     - **Security Engineer**: Conduct external security audits by reputable firms for all decision-critical smart contracts and USCs before deployment, focusing on complex logic and interaction patterns.
+
+**Audit & Compliance Alignment Matrix (Q2)**
+| Requirement | Owner | Timing | Visual Checkpoint |
+|-------------|-------|--------|-------------------|
+| Formal security design review of USC patterns | Architects | Immediate | ✅ Design artifacts validated against USCDetector findings |
+| High-precision static analysis & formal verification | Security Leader / Security Engineer | Immediate | ✅ `hax`, `SafeCheck`, `cargo-contract` configured ≥90% precision |
+| Regulatory kill switch / pause capability | Compliance Officer & Architects | Immediate | ✅ Mechanism documented to satisfy EU Data Act-like mandates |
+| Automated bytecode auditing pipeline | DevOps/SRE | Short-term | ✅ Bytecode scanners flag USC chains pre-deployment |
+| External audit for CVSS ≥7.0 contracts | Security Engineer / Security Leader | Short-term | ✅ Third-party reports archived with remediation tracking |
 
 **Practical** (Smart Contract Audit & Compliance Checklist):
 ```yaml
@@ -248,6 +272,15 @@ incident_response_playbook_rust_supply_chain:
         - "Update dependency policies and security baselines."
       owner: "DevOps/SRE, Architect"
 ```
+
+**NIST SP 800-61 Phase Mapping (Q3)**
+| Phase | Primary Owner(s) | Key Actions | Tooling Reference |
+|-------|------------------|-------------|-------------------|
+| Identification | Security Engineer | Monitor CI/CD logs, SIEM alerts, network anomalies | `cargo-audit`, `osv-scanner`, SIEM, Zeek/Suricata |
+| Containment | DevOps/SRE | Isolate environments, block registries, halt deployments | CI/CD isolation scripts, registry controls |
+| Eradication | DevOps/SRE & Security Engineer | Remove compromised crates, rebuild modules, rotate secrets | Trusted build pipelines, credential rotation workflows |
+| Recovery | DevOps/SRE & Architect | Redeploy verified code, monitor for residual indicators, update baselines | Deployment automation, post-incident monitoring dashboards |
+| Lessons Learned | Security Leaders | Update dependency policies, refine playbooks, schedule simulations | Post-incident review templates, tabletop exercises |
 
 **Metrics**:
 | Metric | Formula / Description | Target Value | Primary Owner | Notes |

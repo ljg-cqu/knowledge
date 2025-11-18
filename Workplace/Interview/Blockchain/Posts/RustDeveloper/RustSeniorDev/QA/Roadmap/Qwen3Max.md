@@ -39,6 +39,13 @@
 
 *R1. Skelton & Pais (2019). Team topologies. IT Revolution.*
 
+**Architecture Comparison Matrix**
+| Option | Reuse Potential | Operational Complexity | Migration Effort | Notes |
+|--------|-----------------|-------------------------|------------------|-------|
+| Modular Hexagonal Core + Chain Adapters | 60%+ shared services across chains | Centralized governance of ports/adapters | Medium (requires interface refactor) | Balances reuse and isolation; aligns with action plan |
+| Per-Chain Monoliths | <20% (copy-paste across repos) | Low (chain-specific ops only) | Low initially, high ongoing | Fast for first chain, but scales poorly and increases bug surface |
+| Independent Microservices per Chain Capability | 30-40% via shared libraries | High (service sprawl, cross-chain comms) | High (requires service mesh + orchestration) | Fine-grained ownership but heavy coordination burden |
+
 ```mermaid
 flowchart TD
     A[API Gateway] --> B[Core Services]
@@ -49,9 +56,9 @@ flowchart TD
     D --> G[Solana Node]
     E --> H[New Chain Node]
     
-    classDef core fill:#4CAF50,stroke:#388E3C
-    classDef adapter fill:#2196F3,stroke:#0D47A1
-    classDef node fill:#FF9800,stroke:#E65100
+    classDef core fill:#E8F5E9,stroke:#1B5E20,color:#1B5E20
+    classDef adapter fill:#E3F2FD,stroke:#0D47A1,color:#0D47A1
+    classDef node fill:#FFF3E0,stroke:#E65100,color:#BF360C
     
     class B core
     class C,D,E adapter
@@ -87,6 +94,27 @@ flowchart TD
 | Chaos | 100% | Network failures | ToxiProxy |
 | End-to-End | 70% | User journeys | Hardhat |
 
+```mermaid
+flowchart LR
+    A[Contract Change] --> B[cargo-test]
+    B --> C[Foundry Stateful Harness]
+    C --> D[Chaos Suite / ToxiProxy]
+    D --> E[Hardhat E2E]
+    E --> F[Deployment Gate]
+    F --> G[Monitoring & Feedback]
+    G --> B
+
+    classDef unit fill:#E3F2FD,stroke:#0D47A1,color:#0D47A1;
+    classDef integ fill:#E8F5E9,stroke:#1B5E20,color:#1B5E20;
+    classDef chaos fill:#FFF8E1,stroke:#FF6F00,color:#BF360C;
+    classDef e2e fill:#FCE4EC,stroke:#880E4F,color:#880E4F;
+
+    class B unit;
+    class C integ;
+    class D chaos;
+    class E e2e;
+```
+
 ---
 
 ## Phase 3: Operations & Scalability
@@ -121,6 +149,12 @@ pie
 - **Target**: 99.9% (normal), 99.5% (congestion)
 - **Measurement**: 5-minute windows
 - **Reset**: Daily error budget reset
+
+| Tier | Trigger | Reliability Target | Scaling Response | Cost Guardrail |
+|------|---------|--------------------|------------------|----------------|
+| Normal Operations | Baseline traffic, TPS within P50 | 99.9% | Horizontal autoscaling limited to +20% nodes | <$8K/month per region |
+| High Congestion | TPS > P95, mempool backlog > 30% | 99.5% | Enable burst capacity (+40% nodes) and relax latency alerts | <$12K/month per region |
+| Recovery/Maintenance | Post-incident or planned upgrades | 99.0% | Freeze feature deploys, prioritize error budget burn-down | <$10K one-time |
 
 ---
 

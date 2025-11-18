@@ -44,6 +44,24 @@
 **Stakeholders**: **Developer**: Code review burden | **Architect**: Security framework selection | **QA/SET**: Test coverage validation
 **Decision**: **Rec** Implement cargo-audit + cargo-deny in CI | **Rationale** Combinatorial tool coverage catches 97% of known vulnerabilities | **Success** Zero critical CVEs in production deployments | **Trade-offs** Increased CI runtime and additional false positives versus lower likelihood of shipping known vulnerabilities
 **Action**: **Immed**: Integrate cargo-audit in pre-commit hooks (Dev owner) | **Short**: Weekly dependency scanning reports (2 weeks)
+
+**Action Plan Visual**
+
+| Horizon | Owner | Activity | Timeline |
+|----------|-------|----------|----------|
+| Immediate | Developer | Integrate cargo-audit pre-commit hooks | Week 0 |
+| Short-term | QA/SET | Publish weekly dependency scanning reports | ≤2 weeks |
+
+```mermaid
+flowchart LR
+    Dev(Developers) --> Hooks(Pre-commit hooks)
+    Hooks --> CI(CI Pipeline)
+    CI --> Audit[cargo-audit]
+    CI --> Deny[cargo-deny]
+    Audit --> Reports(Weekly reports)
+    Deny --> Reports
+    Reports --> Risk(Exposure ↓85%)
+```
 [s1]: https://blog.rust-lang.org/2024/05/20/cargo-audit-0.18.html
 [s5]: https://security.googleblog.com/2024/04/rust-cve-analysis-2024.html
 
@@ -54,6 +72,26 @@
 **Stakeholders**: **QA/SET**: Test strategy design | **Developer**: State machine implementation | **Architect**: System reliability patterns
 **Decision**: **Rec** Adopt proptest for core state transitions | **Rationale** Generates thousands of test cases automatically; finds arithmetic overflow/underflow | **Success** 95% state transition coverage | **Trade-offs** Extra effort to learn property-based patterns and longer initial test runs versus broader defect detection in critical state machines
 **Action**: **Immed**: Train team on property writing (QA owner) | **Short**: Implement for swap/transfer logic (4 weeks)
+
+**Property-based Testing Metrics**
+
+| Metric | Target / Observed | Source |
+|--------|-------------------|--------|
+| Production state-machine defect reduction | 42% fewer defects | [s6] |
+| State transition coverage goal | 95% coverage for swap/transfer logic | Decision success criteria |
+
+```mermaid
+sequenceDiagram
+    participant QA as QA/SET
+    participant Tool as proptest-rs
+    participant State as State Machine
+    participant Dev as Developer
+    QA->>Tool: Define properties & invariants
+    Tool->>State: Generate thousands of cases
+    State-->>Tool: Counterexamples & edge cases
+    Tool-->>QA: Failure reports
+    QA->>Dev: Share remediation backlog
+```
 [s2]: https://proptest-rs.github.io/proptest/book/stateful-testing.html
 [s6]: https://arxiv.org/abs/2403.15745
 
@@ -64,6 +102,24 @@
 **Stakeholders**: **DevOps**: Pipeline design | **SRE**: Production stability | **Developer**: Node configuration validation
 **Decision**: **Rec** Implement canary deployments with sync validation | **Rationale** Gradual traffic routing with automatic rollback on sync issues | **Success** <1% deployment-related node outages | **Trade-offs** More complex deployment flows versus lower risk of large-scale node outages
 **Action**: **Immed**: Deploy canary to testnet (DevOps owner) | **Short**: Full production rollout (6 weeks)
+
+**Quality Gate Checklist**
+
+| Stage | Automatic Gate | Responsible Role |
+|-------|-----------------|------------------|
+| Build | Sync validation tests before artifact promotion | DevOps |
+| Canary | Chain health metrics + auto rollback trigger | SRE |
+| Full Rollout | <1% outage threshold enforced | DevOps & SRE |
+
+```mermaid
+flowchart LR
+    Build(Build & test) --> Canary(Canary deploy)
+    Canary --> Metrics(Chain health metrics)
+    Metrics --> Decision{Healthy?}
+    Decision -->|Yes| Full(Full rollout)
+    Decision -->|No| Rollback(Auto rollback)
+    Full --> Ops(Steady-state ops)
+```
 [s3]: https://github.com/actions/deployment-patterns/blob/main/canary.md
 [s7]: https://cloud.google.com/blog/products/devops-sre/canary-deployments-best-practices
 
@@ -74,6 +130,22 @@
 **Stakeholders**: **SRE**: Incident response | **DevOps**: Monitoring infrastructure | **QA/SET**: Production issue triage
 **Decision**: **Rec** Standardize on tokio-tracing + Prometheus metrics | **Rationale** Unified observability stack across node implementations | **Success** <5 minute detection of node health degradation | **Trade-offs** Higher logging and monitoring costs versus faster, more reliable incident triage and recovery
 **Action**: **Immed**: Implement structured logging (SRE owner) | **Short**: Dashboard creation for key metrics (3 weeks)
+
+**Observability Signals Overview**
+
+| Signal | Tooling | Target Impact |
+|--------|---------|----------------|
+| Structured logging | tokio-tracing + JSON fields | <5 minute detection of node health degradation |
+| Metrics | Prometheus dashboards | 58% faster MTTR for sync issues |
+
+```mermaid
+flowchart LR
+    Node(Rust blockchain node) --> Logging(tokio-tracing events)
+    Logging --> Metrics(Prometheus metrics)
+    Metrics --> Dash(Dashboards & alerts)
+    Dash --> SRE(SRE on-call)
+    SRE --> MTTR(MTTR < 5 min detection)
+```
 [s4]: https://tokio.rs/blog/2024-04-tracing-0.2
 [s8]: https://lightstep.com/blog/structured-logging
 

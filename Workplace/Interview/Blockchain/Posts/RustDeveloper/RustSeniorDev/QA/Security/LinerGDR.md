@@ -12,7 +12,18 @@ As an advanced Rust developer contributing to Ethereum, Solana, and other Web3 i
 - **Stakeholders**: Advanced Rust developers, security engineers, architects, DevOps/SRE, and compliance leaders working on Web3 infrastructure.
 - **Assumptions**: Teams have CI/CD pipelines, can adopt security tooling, and operate in or interact with regulated markets (e.g., EU).
  - **Constraints**: Production systems have strict uptime requirements; complete shutdowns for remediation are rarely acceptable. Teams rely heavily on third-party crates and external services, and security/compliance capacity is limited compared to system complexity.
- - **Scale & Resources**: Intended for teams running production Web3 infrastructure (mainnet/testnet) with at least several Rust engineers and dedicated or shared security/compliance support, plus access to modern CI/CD and monitoring tooling.
+- **Scale & Resources**: Intended for teams running production Web3 infrastructure (mainnet/testnet) with at least several Rust engineers and dedicated or shared security/compliance support, plus access to modern CI/CD and monitoring tooling.
+
+### Visual Snapshot
+
+| Dimension | Detail |
+| --- | --- |
+| Risk Driver | Accelerating 2024–2025 security incidents and regulatory shifts increasing exposure for Rust-based Web3 stacks |
+| Coverage | 3 decision-critical Q&As: vulnerabilities, compliance, defense-in-depth |
+| Time Horizon | Insights valid for 12 months; re-validate after major disclosures or regulatory updates |
+| Key Stakeholders | Rust engineers, security teams, architects, DevOps/SRE, compliance leaders |
+| Operating Constraints | 24/7 services, heavy third-party crate usage, limited downtime and compliance bandwidth |
+| Required Capabilities | Mature CI/CD, monitoring platforms, ability to implement security tooling and process changes |
 
 ## Table of Contents
 
@@ -27,6 +38,14 @@ As an advanced Rust developer contributing to Ethereum, Solana, and other Web3 i
 **Dimension**: Threat Detection, Incident Response | **Roles**: Security Engineer, DevOps/SRE, Architect | **Decision Criticality**: Blocks incident response, creates material risk, affects multiple roles, requires immediate action, quantified impact.
 
 **Scenario**: The Rust ecosystem, despite its memory safety guarantees, is not immune to critical vulnerabilities and supply chain attacks, particularly as its adoption grows within Web3 infrastructure. Recent incidents from late 2025 highlight significant threats, demanding proactive and informed responses from Rust developers working on core blockchain modules.
+
+### Vulnerability Severity Matrix
+
+| Threat | Attack Vector | Primary Impact | Required Action |
+| --- | --- | --- | --- |
+| CVE-2025-62518 (TARmageddon) | Boundary parsing bug in `async-tar` / `tokio-tar` enabling nested TAR smuggling | Remote code execution leading to CI/CD compromise and config tampering | Upgrade to `astral-tokio-tar` ≥0.5.6, add sandboxing and post-extraction validation |
+| CVE-2025-62370 (Alloy Core) | Malformed `TypedData` input triggering uncaught panic in `eip712_signing_hash()` | Denial-of-service on high-availability services | Patch to Alloy Core v1.4.1 or v0.8.26+, enforce input validation |
+| Malicious crates (`faster_log`, `async_println`) | Typosquatting with embedded key-harvesting routines | Theft of Solana/Ethereum private keys, direct asset loss | Automate supply-chain scans, maintain approved crate lists, educate developers |
 
 **Risk Chain**:
 - **Threat Vector**:
@@ -144,6 +163,14 @@ flowchart TD
 
 **Scenario**: The Web3 regulatory landscape is rapidly formalizing in 2025, with major frameworks like the EU's Markets in Crypto-Assets (MiCA), updates to NIST Cybersecurity Framework (CSF) 2.0, and continued relevance of ISO 27001. These changes profoundly influence the design, development, and deployment of Rust-based blockchain infrastructure, demanding a compliance-by-design approach.
 
+### Regulatory Alignment Table
+
+| Framework | Focus in 2025 | Rust-Specific Adjustments |
+| --- | --- | --- |
+| MiCA | Stablecoin reserve rules, CASP licensing, AML/KYC enforcement | Encode token classifications and disclosures in smart contracts, enforce jurisdiction-aware controls |
+| NIST CSF 2.0 | New GOVERN function, supply-chain risk, continuous improvement | Integrate dependency provenance checks, zero-trust principles, and lifecycle security metrics |
+| ISO 27001 / SOC 2 | Persistent ISMS maturity, on-chain verifiable certifications | Map Annex A controls to Rust modules, automate audit trails, surface evidence via telemetry |
+
 **Risk Chain**:
 - **Regulatory Change**:
     - **MiCA Regulation**: Fully effective in phases, with stablecoin rules applied since June 30, 2024, and licensing for Crypto-Asset Service Providers (CASPs) required starting January 2025. MiCA mandates authorization, robust governance, capital requirements, AML/KYC policies, and comprehensive transparency for token issuers and CASPs operating within the EU. It effectively bans algorithmic stablecoins and imposes strict 1:1 liquid reserve requirements for fiat-backed stablecoins.
@@ -223,6 +250,27 @@ graph TD
 **Dimension**: Risk & Control, Threat Detection | **Roles**: Architect, Security Engineer, Security Leader | **Decision Criticality**: Blocks architectural decisions, addresses systemic risk, affects multiple roles, requires long-term strategy, quantified impact.
 
 **Scenario**: Traditional security audits alone are proving insufficient: according to [6], over 70% of major Web3 exploits in 2024 occurred in audited smart contracts. The increasing complexity of modern Web3 protocols, including composability, multi-chain deployments, and upgradeability, often exceeds the scope and effectiveness of snapshot audits. This necessitates a pivot towards advanced, continuous, and integrated defense-in-depth strategies for Rust-based smart contracts and core modules.
+
+```mermaid
+graph LR
+    A[Traditional Audit Output] -->|Limited scope| B[Residual Risk]
+    B -->|Triggers| C{Defense-in-Depth Pivot}
+    C --> D[Formal Methods Layer]
+    C --> E[Zero-Trust Architecture Layer]
+    C --> F[Proactive Automation Layer]
+
+    D --> D1[coq-of-rust proofs]
+    D1 --> D2[Verified critical paths]
+
+    E --> E1[Micro-segmentation]
+    E1 --> E2[Least-privilege RBAC]
+
+    F --> F1[Shift-left tooling]
+    F1 --> F2[Continuous monitoring]
+
+    D2 & E2 & F2 --> G[Lower exploit probability]
+    G --> H[Higher stakeholder trust]
+```
 
 **Risk Chain**:
 - **Sophisticated Threats**:

@@ -16,6 +16,24 @@ This guide provides scenario-based statistical questions tailored to the technic
 - **Stakeholders:** Candidates, interviewers (Rust/blockchain leads), and hiring managers who rely on statistics-heavy technical decisions.
 - **Resources:** Glossary, tools, textbooks, and external citations listed in this document; online calculators and statistical software referenced in each answer.
 
+**Visual Snapshot – Interview Parameters**
+
+| Dimension | Summary |
+|-----------|---------|
+| Difficulty mix | 20% F / 40% I / 40% A |
+| Core topics | Inference · Experimental Design · Performance · Blockchain Analytics |
+| Interview window | 60–90 minutes (or 3–5 hours self-study) |
+| Stakeholders | Candidate · Interviewer · Hiring Manager |
+| Decision focus | Blocks go/no-go calls, mitigates risk, quantifies trade-offs |
+
+```mermaid
+flowchart LR
+    A[Problem Definition] --> B[Scenario-Based Q&A]
+    B --> C[Statistical Methods]
+    C --> D[Decision Readiness]
+    D --> E[Stakeholder Alignment]
+```
+
 ### Contents
 
 - [Q1: Interpreting Performance Optimization Results](#q1-interpreting-performance-optimization-results)
@@ -68,6 +86,30 @@ A Rust-based blockchain indexer processes 10,000 smart contract transactions dai
 **Pitfall:** Avoid over-relying on p-values alone; effect size and CIs provide complementary information about magnitude and precision.[3][6]
 
 **Justification:** This analysis blocks the deployment decision—misinterpretation could lead to premature rollout (if power was insufficient) or missed optimization opportunities (if practical significance was ignored).[16][2]
+
+**Visual Aid – Two-Sample t-Test Summary**
+
+\[
+t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{\tfrac{2}{n}}}, \qquad s_p = \sqrt{\frac{(n-1)s_1^2 + (n-1)s_2^2}{2n-2}}
+\]
+
+| Element | Value | Interpretation |
+|---------|-------|----------------|
+| Mean difference | \(\Delta = -7\) ms | Optimization lowers latency |
+| Pooled SD | ≈ 11 ms | Inputs to t-statistic |
+| Test statistic | \(t \approx -3.0\) | Large magnitude → strong evidence |
+| 95% CI | [-10.1, -3.9] ms | Entirely below 0 → improvement confirmed |
+| Cohen's d | 0.64 | Medium-to-large practical impact |
+
+```mermaid
+flowchart TD
+    start((Sample Data)) --> sig[Significance Test]
+    sig --> eff[Effect Size]
+    eff --> ci[Confidence Interval]
+    ci --> decision{Deployment Decision}
+    decision -->|CI excludes 0 & d meaningful| go[Proceed]
+    decision -->|CI spans 0 or d small| hold[Gather More Evidence]
+```
 
 ***
 
@@ -126,6 +168,15 @@ where \(\bar{m}\) is average cluster size and ICC is intra-cluster correlation. 
 | Required n (per variant, unadjusted) | ≈ 4,859 |
 | Design effect (DEFF) | 1.30 |
 | Adjusted n (per variant) | ≈ 6,317 |
+
+```mermaid
+flowchart LR
+    A[Define MDE & α/β] --> B[Compute Baseline Sample Size]
+    B --> C[Estimate ICC & Cluster Size]
+    C --> D[Apply Design Effect]
+    D --> E[Plan Stratified Randomization]
+    E --> F[Monitor Sequential Analyses]
+```
 
 ***
 
@@ -190,6 +241,16 @@ where \(u_j\) is random effect for primitive type \(j\), accounting for heteroge
 | Tail latency | p95/p99 latency per primitive |
 | Memory footprint | Peak RSS per primitive |
 | Developer cost | Compile time, LOC, defect rate |
+
+```mermaid
+flowchart TD
+    collect[Collect Benchmarks] --> standardize[Standardize Environments]
+    standardize --> analyze[Mixed-Effects / Meta-Analysis]
+    analyze --> correct[Multiple Testing Control]
+    correct --> evaluate{Equivalence Within ±10%?}
+    evaluate -->|Yes| report[Report Practical Equivalence]
+    evaluate -->|No| refine[Investigate Heterogeneity]
+```
 
 
 ### Q4: Detecting Wash Trading with Statistical Rigor
@@ -256,6 +317,17 @@ Report posterior probability and 95% credible intervals for wash trading proport
 **Justification:** Action required within 3-month regulatory reporting window. Type I errors (false accusations) create legal liability and damage platform reputation; Type II errors (missed fraud) undermine market integrity and invite regulatory scrutiny. Proper calibration balances these competing risks.[42][12][32]
 
 ---
+
+```mermaid
+flowchart LR
+    ingest[Ingest 30-Day DEX Data] --> graphNode[Build Wallet Graph]
+    graphNode --> cluster[Louvain Clustering]
+    cluster --> score[Compute Wash Trading Score]
+    score --> bootstrap[Bootstrap Organic Baseline]
+    bootstrap --> test{Hypothesis/Bayesian Test}
+    test -->|Significant| flag[Flag Clusters & Report]
+    test -->|Not Significant| monitor[Monitor for Drift]
+```
 
 ### Q5: Equivalence Testing for ZKP Library Performance
 
@@ -330,6 +402,16 @@ ZKP generation times span 30-180s (6× range)—multiplicative scale appropriate
 | Post-hoc power | ~45% | Underpowered for equivalence |
 | Recommended action | Increase n to 25-30 | Achieve 80% power |
 | Bayesian \(P(\text{equiv})\) | ~72% | Moderate evidence (if prior reasonable) |
+
+```mermaid
+flowchart TD
+    start((Benchmark Results)) --> margin[Set Equivalence Margin (Δ)]
+    margin --> tost[Run Two One-Sided Tests]
+    tost --> power[Assess Power / CI Width]
+    power --> decision{Both Tests Significant?}
+    decision -->|Yes| claim[Declare Practical Equivalence]
+    decision -->|No| expand[Increase Sample Size / Reduce Variance]
+```
 
 ***
 

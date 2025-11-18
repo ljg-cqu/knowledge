@@ -22,6 +22,16 @@
 
 **Legend**: F=execution | I=strategy/trade-offs | A=portfolio/P&L | Bus=Business | User=User | Tech=Technical | Org=Organizational | Str=Strategic | Risk=Risk
 
+**Visual Summary**
+
+```mermaid
+flowchart LR
+    Design["Design\n(Q1-Q2)"] --> Development["Development\n(Q3-Q4)"] --> Deployment["Deployment\n(Q5)"]
+```
+
+- 5 个问题覆盖 3 个关键阶段，呈现“设计→开发→部署”的连贯价值链。
+- 每个阶段至少包含 1 个表格或图示，便于跨团队同步关键指标。
+
 ---
 
 ## Q&A by Phase
@@ -46,6 +56,24 @@
 | **商业** | 全周期 | 总体收益 | -200万 | +180万 | +230万 | +175万 |
 | **总NPV** | | | | | | **+280万** |
 
+**NPV 估算公式（10% 折现率）**
+
+```math
+\mathrm{NPV} = \sum_{t=0}^{3} \frac{CF_t}{(1 + 0.10)^t}
+```
+
+**价值流可视化**
+
+```mermaid
+graph TD
+    Capex["初始投入 -200万"] --> DebtDrop["技术债务减少 +150万"]
+    Capex --> Perf["性能提升 40%/内存 -60%"]
+    Capex --> Org["Rust 能力建设 +2 FTE"]
+    DebtDrop --> NPV["3 年 NPV +280万"]
+    Perf --> Ops["运维稳定性↑"]
+    Org --> Talent["招聘竞争力↑"]
+```
+
 ### Q2: Web3 基础设施项目需要在 Ethereum 和 Solana 双链部署。技术团队偏好 Ethereum（成熟生态），业务团队偏好 Solana（低成本高性能），预算限制只能优先一个。如何量化技术选型的价值影响？
 
 **Difficulty**: F | **Phase**: Design | **Value Types**: Technical, Business, Strategic, Risk | **Stakeholders**: Architect, PM, Developer, Business | **Decision Criticality**: Blocks Decision (strategic pivot), Creates Risk (opportunity cost), Affects ≥2 Core Roles
@@ -63,6 +91,18 @@
 | **市场机会** | 7/10 | 8/10 | 25% | E:1.75, S:2.0 |
 | **技术风险** | 8/10 | 5/10 | 20% | E:1.6, S:1.0 |
 | **总分** | | | | **E:6.8, S:7.2** |
+
+**决策路径示意**
+
+```mermaid
+flowchart TD
+    Start((预算受限)) --> EVM["优先 Ethereum\n生态稳健/成本高"]
+    Start --> SOL["优先 Solana\n高性能/网络波动"]
+    Start --> Phase["分阶段部署\n先 Ethereum 再扩展"]
+    EVM --> Criteria1{MVP 6 个月?}
+    SOL --> Criteria2{团队技能匹配?}
+    Phase --> Criteria3{可接受分散资源?}
+```
 
 ---
 
@@ -84,6 +124,18 @@
 | **速度优先** | 0 | -80万/年债务 | 技术风险高 | 4/10 |
 | **混合策略** | 20万延迟 | 40万/年节省 | 平衡风险 | 9/10 |
 
+**质量 vs 速度可视化**
+
+```mermaid
+graph TD
+    Quality["质量优先\n延迟成本 40万"] --> DebtLow["技术债务 -60万/年"]
+    Speed["速度优先\n无延迟"] --> DebtHigh["技术债务 +80万/年"]
+    Hybrid["混合策略\n延迟 20万"] --> Balanced["节省 40万/年"]
+    DebtLow --> Outcome1["长期满意度↑"]
+    DebtHigh --> Outcome2["缺陷率↑"]
+    Balanced --> Outcome3["交付/质量平衡"]
+```
+
 ### Q4: DEX 项目智能合约审计发现 3 个高危漏洞，修复需要 4 周，但市场窗口期只剩 6 周。安全团队要求全面修复，业务团队建议先上线再修复。如何评估安全风险与市场机会的价值权衡？
 
 **Difficulty**: A | **Phase**: Development | **Value Types**: Risk, Business, Technical | **Stakeholders**: Security, Business, Developer, PM | **Decision Criticality**: Creates Risk (financial loss >10%), Blocks Decision (go/no-go), Requires Action (6-week window)
@@ -99,6 +151,18 @@
 | **延迟修复** | 0% | -120万 | -120万 | ❌ |
 | **直接上线** | -600万(30%) | +300万 | -180万 | ❌ |
 | **分阶段发布** | -100万(10%) | +180万 | +170万 | ✅ |
+
+**风险-机会决策树**
+
+```mermaid
+flowchart TD
+    Vuln["3 个高危漏洞"] --> FixAll["延迟 4 周\n风险 0%"]
+    Vuln --> LaunchNow["立即上线\n风险 30%"]
+    Vuln --> Phased["分阶段发布\n风险 10%"]
+    FixAll --> Loss1["机会损失 -120万"]
+    LaunchNow --> Loss2["预期损失 -180万"]
+    Phased --> Gain["净价值 +170万"]
+```
 
 ---
 
@@ -119,6 +183,17 @@
 | **同时部署** | 5 | +150%（≈180 万/年） | 高 | TVL +300% | ≈220% | 高 |
 | **分批部署** | 3→5 | +80%→150% | 中 | TVL +220% | ≈210% | 中 |
 | **重点链优先** | 2→3 | +50%→100% | 低 | TVL +180% | ≈190% | 低 |
+
+**多链部署流程**
+
+```mermaid
+flowchart LR
+    Plan["流动性目标评估"] --> Batch1["批次 1:\nEthereum + Polygon"]
+    Batch1 --> Review1["稳定性评估 / ROI >200%?"]
+    Review1 --> Batch2["批次 2:\n扩展至 5 链"]
+    Batch2 --> Ops["统一监控 & 4h 恢复目标"]
+```
+
 
 ---
 
