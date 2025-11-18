@@ -1,4 +1,5 @@
 
+> **说明：以下 1–10 步为内部内容生成步骤，正式使用本文件时可忽略。**
 1. Analyze the core responsibilities and required skills for the Rust 开发高级工程师 role, focusing on Ethereum, Solana, Web3 infrastructure, and Rust development.
 2. Identify the key protocol clusters (API, Data, Messaging, Auth, Network) and their relevance to the job description.
 3. Gather information on the most critical protocol decisions within each cluster that could block decisions, create risks, or require cross-functional coordination.
@@ -16,6 +17,46 @@
 > - 网络层：区块传播与数据传输的高效实现，网络层优化协议选择。  
 > - 数据层：账户模型与存储格式定义，MPT 到 Verkle Tree 的升级。  
 > - 跨链：Wormhole 桥与 Neon EVM 集成，Layer-2 解决方案与跨链桥的集成。  
+
+### Context & Purpose
+- 面向对象：Rust 区块链高级开发工程师候选人、面试官。
+- 关注范围：以太坊、Solana 及 Web3 基础设施中共识、执行、网络、数据、跨链 5 个协议集群的关键实现与权衡。
+- 使用场景：60–90 分钟技术面试；从 10 个问题中按集群与难度组合选择 3–6 个，用于评估候选人在协议层设计与实现上的系统思维与落地能力。
+- 前置假设：候选人已熟悉 Rust 所有权/生命周期、异步编程、性能调优，并阅读过至少一条主流公链（如 Ethereum、Solana）的部分源码。
+
+### 使用方式
+- **面试官**：根据 JD 重点和时间预算选题；结合「背景 / 候选方案 / 决策依据 / 实施风险 / 验证方法 / 指标」追问细节，观察候选人如何在约束下做权衡与落地设计。
+- **候选人**：作为备考材料，先在不看答案的情况下写出自己的设计思路与权衡，再对照文档找出差距与可提升之处。
+
+### 注意事项（指标与时效性）
+- 文中出现的 TPS、延迟、Gas 优化率等数值均为 **示意性基准**，用于结构化讨论，不代表任何生产环境 SLA 或官方基准。
+- 新兴协议栈（如 Termina、Lollipop、跨链桥方案）处于快速演进阶段，使用前请以官方文档与最新审计报告为准。
+- 实际项目中，应在目标硬件与网络条件下重新基准测试，并补充团队内部风险评估结论。
+- 文中对某些协议“更成熟”“更安全”等表述，多数基于公开资料与经验性主观判断，用于引导候选人说明**如何评估成熟度与安全性**；真实技术选型时请查阅最新审计与生产案例。
+
+### 目录
+- [共识层](#共识层)
+- [执行层](#执行层)
+- [网络层](#网络层)
+- [数据层](#数据层)
+- [跨链](#跨链)
+- [参考资源](#参考资源)
+- [结论](#结论)
+
+### 题目总览（优先级与难度）
+
+| ID  | 集群   | 主题概述                                     | 优先级    | 难度 |
+|-----|--------|----------------------------------------------|-----------|------|
+| Q1  | 共识层 | Solana PoH 时间戳加密验证优化               | Critical  | A    |
+| Q2  | 共识层 | 以太坊 PoS 验证者管理与奖惩机制             | Critical  | A    |
+| Q3  | 执行层 | Sealevel 并行执行引擎任务调度器选择         | Critical  | A    |
+| Q4  | 执行层 | 以太坊 EVM Gas 成本与执行效率优化           | Important | A    |
+| Q5  | 网络层 | Solana 区块传播与数据传输优化               | Critical  | A    |
+| Q6  | 网络层 | 以太坊网络层数据传输与安全性优化           | Important | A    |
+| Q7  | 数据层 | Solana 账户模型与存储格式设计               | Important | A    |
+| Q8  | 数据层 | 以太坊 MPT → Verkle Tree 升级               | Critical  | A    |
+| Q9  | 跨链   | Solana Wormhole 桥与 Neon EVM 集成          | Critical  | A    |
+| Q10 | 跨链   | 以太坊 Layer-2 与跨链桥集成                 | Important | A    |
 
 ---
 
@@ -76,7 +117,7 @@ graph TD
 
 **决策依据**：
 - **性能**：`tokio` 提供了异步处理能力，但 `reth` 客户端结合 `revm` 更适合处理复杂的验证者管理逻辑。
-- **安全性**：两种方案均提供了强大的安全性，但 `reth` 客户端结合 `revm` 的安全审计更成熟。
+- **安全性**：两种方案在设计上都可以满足安全性需求；`reth` 客户端结合 `revm` 拥有更多公开审计与生产实践样例，可作为安全性评估的重要输入，但仍需结合本方威胁模型与代码审查结论做最终判断。
 
 **实施风险**：
 - **迁移复杂度**：从 `tokio` 到 `reth` 客户端结合 `revm` 的迁移需要重新设计验证者管理逻辑，可能影响现有代码。
@@ -162,7 +203,7 @@ graph LR
 
 **决策依据**：
 - **性能**：`reth` 客户端结合 `revm` 在 Gas 优化上更成熟，但 `Termina` 执行层结合 `Lollipop` 协议在加密验证上更优。
-- **安全性**：两种方案均提供了强大的安全性，但 `Termina` 执行层结合 `Lollipop` 协议的安全审计更成熟。
+- **安全性**：两种方案都引入了额外的复杂度和攻击面；`reth` + `revm` 已有较多公开使用与审计，而 Termina + Lollipop 更偏前沿架构，需要结合最新论文、官方文档与审计报告谨慎评估，不宜简单认为“更安全”。
 
 **实施风险**：
 - **迁移复杂度**：从 `reth` 客户端到 `Termina` 执行层的迁移需要重新设计 Gas 优化逻辑，可能影响现有代码。
@@ -206,7 +247,7 @@ Solana 的 Turbine 引擎和 Gulf Stream 协议需要高效的区块传播和数
 
 **决策依据**：
 - **性能**：`tokio` 提供了异步处理能力，但 `Termina` 执行层结合 `Lollipop` 协议在加密验证和数据传输上更优。
-- **安全性**：两种方案均提供了强大的安全性，但 `Termina` 执行层结合 `Lollipop` 协议的安全审计更成熟。
+- **安全性**：两种方案都引入了额外的复杂度和攻击面；`tokio` 生态相对成熟且运维经验丰富，Termina + Lollipop 则属于快速演进中的新架构，需要结合最新论文、官方文档与审计报告谨慎评估。
 
 **实施风险**：
 - **迁移复杂度**：从 `tokio` 到 `Termina` 执行层的迁移需要重新设计区块传播逻辑，可能影响现有代码。
@@ -248,7 +289,7 @@ graph TD
 
 **决策依据**：
 - **性能**：`tokio` 提供了异步处理能力，但 `reth` 客户端结合 `revm` 在数据传输和安全性优化上更成熟。
-- **安全性**：两种方案均提供了强大的安全性，但 `reth` 客户端结合 `revm` 的安全审计更成熟。
+- **安全性**：两种方案在设计上都可以满足安全性需求；`reth` 客户端结合 `revm` 拥有更多公开审计与生产实践样例，可作为安全性评估的重要输入，但仍需结合本方威胁模型与代码审查结论做最终判断。
 
 **实施风险**：
 - **迁移复杂度**：从 `tokio` 到 `reth` 客户端的迁移需要重新设计数据传输逻辑，可能影响现有代码。
@@ -292,7 +333,7 @@ Solana 的账户模型和存储格式定义需要高效的数据存储和检索�
 
 **决策依据**：
 - **性能**：`serde_json` 提供了高效的数据序列化，但 `Termina` 执行层结合 `Lollipop` 协议在数据存储和加密验证上更优。
-- **安全性**：两种方案均提供了强大的安全性，但 `Termina` 执行层结合 `Lollipop` 协议的安全审计更成熟。
+- **安全性**：两种方案都引入了额外的复杂度和攻击面；`serde_json` 在工程实践中被广泛使用，Termina + Lollipop 则更偏前沿架构，需要结合最新论文、官方文档与审计报告谨慎评估其安全边界。
 
 **实施风险**：
 - **迁移复杂度**：从 `serde_json` 到 `Termina` 执行层的迁移需要重新设计数据存储逻辑，可能影响现有代码。
@@ -334,7 +375,7 @@ graph TD
 
 **决策依据**：
 - **性能**：`reth` 客户端结合 `revm` 在数据存储和查询优化上更成熟，但 `Termina` 执行层结合 `Lollipop` 协议在加密验证上更优。
-- **安全性**：两种方案均提供了强大的安全性，但 `Termina` 执行层结合 `Lollipop` 协议的安全审计更成熟。
+- **安全性**：两种方案都引入了额外的复杂度和攻击面；`reth` + `revm` 已在社区中积累了较多使用与审计案例，而 Termina + Lollipop 仍处于快速演进阶段，安全性结论高度依赖最新研究与审计结果。
 
 **实施风险**：
 - **迁移复杂度**：从 `reth` 客户端到 `Termina` 执行层的迁移需要重新设计数据存储逻辑，可能影响现有代码。
@@ -378,7 +419,7 @@ Solana 的 Wormhole 桥和 Neon EVM 需要高效的跨链通信和智能合约�
 
 **决策依据**：
 - **性能**：`tokio` 提供了异步处理能力，但 `Termina` 执行层结合 `Lollipop` 协议在跨链通信和加密验证上更优。
-- **安全性**：两种方案均提供了强大的安全性，但 `Termina` 执行层结合 `Lollipop` 协议的安全审计更成熟。
+- **安全性**：两种方案都引入了额外的复杂度和攻击面；`tokio` 方案工程路径更清晰，而 Termina + Lollipop 代表更前沿的跨链架构，需要结合最新论文、官方文档与审计报告谨慎评估其信任假设。
 
 **实施风险**：
 - **迁移复杂度**：从 `tokio` 到 `Termina` 执行层的迁移需要重新设计跨链通信逻辑，可能影响现有代码。
@@ -420,7 +461,7 @@ graph TD
 
 **决策依据**：
 - **性能**：`tokio` 提供了异步处理能力，但 `reth` 客户端结合 `revm` 在跨链通信和安全性优化上更成熟。
-- **安全性**：两种方案均提供了强大的安全性，但 `reth` 客户端结合 `revm` 的安全审计更成熟。
+- **安全性**：两种方案在设计上都可以满足安全性需求；`reth` 客户端结合 `revm` 拥有更多公开审计与生产实践样例，可作为安全性评估的重要输入，但仍需结合本方威胁模型与代码审查结论做最终判断。
 
 **实施风险**：
 - **迁移复杂度**：从 `tokio` 到 `reth` 客户端的迁移需要重新设计跨链通信逻辑，可能影响现有代码。
@@ -454,6 +495,11 @@ graph TD
 - **源码链接**：
   - 以太坊 [reth](https://github.com/paradigmxyz/reth)、[revm](https://github.com/bluealloy/revm)
   - Solana [runtime](https://github.com/solana-labs/solana/tree/master/runtime)
+- **协议与基础设施**：
+  - Solana 扩展执行栈 [Termina](https://www.termina.technology/)
+  - Solana SVM Rollups [Lollipop](https://arxiv.org/abs/2405.08882)
+  - 跨链桥 [Wormhole](https://wormhole.com/)
+  - Neon EVM（Solana 上的 EVM 兼容层）[Neon EVM](https://www.neonevm.org/)
 
 - **工具**：
   - [Foundry](https://book.getfoundry.sh/)（智能合约测试）
