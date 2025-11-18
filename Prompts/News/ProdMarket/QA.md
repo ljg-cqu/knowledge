@@ -1,244 +1,227 @@
 # Product & Market Intelligence News Q&A Generator
 
-**Role**: You are a product intelligence analyst generating 4–6 decision-critical Q&As from recent product/market news for post-PMF (Product-Market Fit achieved, scaling phase) organizations.
+**Role**: Product intelligence analyst generating 4–6 decision-critical Q&As from recent product/market news for post-PMF organizations (≥$1M ARR, ≥20% YoY growth, ≥3 competitors, team ≥10).
 
-**Setup**: Fill contextual placeholders (`[Domain]`, `[Period]`, generation date, product, competitors, priorities) then execute all steps. Output complete Q&A document with TOC, glossary, Q&As, references, validation report.
+**Context**: Problem: Manual news monitoring misses competitive threats, delays decisions. Scope: Product/market news analysis. Scale: 50+ news sources, 4-6 Q&As bi-weekly. Timeline: 2-week validity. Stakeholders: CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, Sales Eng. Constraints: News <4mo (high-velocity), <6mo (medium-velocity).
 
-**When NOT to Use**: Pre-PMF stage, no competitors, no strategic decisions pending, purely operational/technical topics, team <5 people.
+**Setup**: Fill placeholders (`[Domain]`, `[Period]`, date, product, competitors, priorities), execute steps 1-6, output complete document (TOC, glossary, Q&As, references, validation).
 
-**Cadence**: Bi-weekly | Valid 2 weeks from generation date
+**When NOT to Use**: Pre-PMF (<$1M ARR), <3 competitors, no strategic decisions, purely operational/technical, team <5.
 
-**Freshness** (age from generation date):
+**Freshness** (from generation date):
 - **High-Velocity** (Competitive, Pricing): Majority <1mo, none >4mo
 - **Medium-Velocity** (Strategy, Research): Majority <2mo, none >6mo
 
-**Scope**: Decision-critical product news—competitive features, pricing, strategic pivots, customer research.
+**Scope**: Competitive features, pricing models, strategic pivots, adoption/churn trends.
 
-**Exclude**: Technical ops, sales execution, finance (except pricing), long-term R&D (>12mo), rumors, marketing fluff.
+**Exclude**: Technical ops, sales execution, finance (except pricing), R&D >12mo, rumors, unverified claims.
 
 **Key Terms**:
-- **Post-PMF**: Product-Market Fit achieved; focus shifts from validation to scaling
-- **Decision-Critical**: Impacts roadmap, budget allocation, or competitive position within 1-6mo
-- **High-Velocity**: Categories requiring fresh news (<1mo majority) due to rapid competitive changes
-- **MECE**: Mutually Exclusive, Collectively Exhaustive—no gaps or overlaps in coverage
+- **Post-PMF**: $1M+ ARR, 20%+ YoY growth; scaling from validation to optimization
+- **Decision-Critical**: Blocks/enables roadmap, budget, or competitive decisions within 1-6mo
+- **High-Velocity**: Competitive/pricing categories requiring <1mo freshness
+- **MECE**: Mutually Exclusive, Collectively Exhaustive—no gaps or overlaps
 
 ## I. Framework
 
-**Context Inputs**:
-- Product, business model, value proposition
-- Target customers and regions
-- Company stage and scale
-- 3–7 key competitors
-- Strategic priorities and constraints
+**Context Inputs** (fill before generation):
+- Product: [Name], business model, value proposition
+- Target: Customer segments, regions (primary + secondary)
+- Scale: ARR $, users, team size
+- Competitors: [List 3-7] with positioning
+- Priorities: [Top 3 strategic goals for next 6mo]
 
-**Decision Criticality** (include news if ≥1 met, label priority):
-1. **[CRITICAL] Blocks Decision**: Impacts roadmap, go/no-go, or pivot
+**Decision Criticality** (include if ≥1, label in Q&A):
+1. **[CRITICAL] Blocks Decision**: Roadmap, go/no-go, pivot
 2. **[CRITICAL] Creates Risk**: Competitive threat, churn signal, pricing pressure
-3. **[IMPORTANT] Multi-Stakeholder**: Affects ≥2 core roles
-4. **[IMPORTANT] Action Required**: 1-6mo action window
-5. **[IMPORTANT] Quantified Impact**: Adoption %, pricing $, market share %, churn %
+3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles affected
+4. **[IMPORTANT] Time-Sensitive**: 1-6mo action window
+5. **[IMPORTANT] Quantified Impact**: %, $, units specified
 
-**Categories** (cover majority):
-1. **Competitive**: Launches, updates, parity gaps
-2. **Pricing**: Changes, model shifts, packaging
-3. **Strategy**: Pivots, expansions, partnerships
-4. **Research**: Adoption, churn, usage trends
+**Categories** (balance: Competitive 30%+, Pricing 25%+, Strategy 25%+, Research 20%+):
+1. **Competitive**: Feature launches, updates, parity gaps
+2. **Pricing**: Model changes, tier adjustments, packaging shifts
+3. **Strategy**: Pivots, market expansions, partnerships
+4. **Research**: Adoption rates, churn triggers, usage patterns
 
-**Answer Structure**: 
-1. **News**: What happened, when (MM/DD/YYYY), why it matters, category
-2. **Impact**: ≥2 phases affected, quantified metrics (%, $, units)
-3. **Stakeholders**: ≥2 roles with specific concerns + actions
-4. **Decision**: ≥2 options compared → Recommendation (Build/Prioritize/Monitor/Defer/Ignore) + rationale + success criteria
-5. **Timeline**: Immediate (0-2wk) + Short-term (2wk-2mo) with owners
+**Answer Structure** (all sections required):
+1. **News**: Event + date (MM/DD/YYYY) + significance + category + citation
+2. **Impact**: ≥2 phases + quantified metrics (%, $, units) + baseline comparison
+3. **Stakeholders**: ≥2 roles, each with concern + action
+4. **Decision**: ≥2 options table (cost/benefit/risk) → Recommendation + rationale + success criteria (baseline → target by date)
+5. **Timeline**: Immediate (0-2wk) + Short-term (2wk-2mo), each with owners
 
 ## II. Requirements
 
-**Q&A**: 4-6 total | 1-2 per phase | All news-driven with citations | Each has category, impact, decision
+**Output**: 4-6 Q&As | 3-4 phases covered | 1-2 Q per phase | All news-cited | All decisions actionable
 
-**Phases** (cover 3-4): Discovery, Design, Launch, Growth
+**Phases**: Discovery, Design, Launch, Growth
 
-**Category Balance**: Emphasize Competitive & Pricing; include Strategy & Research
+**Stakeholders** (≥5 total): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, Sales Eng
 
-**Stakeholders** (≥5): CPO/VP Product, PM, Product Marketing, Competitive Intel, Eng Lead, others as relevant
+**References**: Glossary (all terms), News (≥5), Competitive (≥2), Pricing (≥2), Research (≥2), Academic/Industry (as needed, APA format)
 
-**References**: Glossary (key terms), News (≥5, per freshness), Competitive/Pricing/Research (≥2 each), Academic/Industry (as needed, APA format)
+**Visuals**: ≥2 diagrams/matrices + ≥1 comparison table (Mermaid/Markdown)
 
-**Visuals**: ≥2 (diagrams, matrices, tables in Mermaid/Markdown)
-
-**Quality Gates** (all must pass):
-1. **[CRITICAL] Criticality**: Every Q&A meets ≥1 Decision Criticality criterion with priority label
-2. **[CRITICAL] Sources**: All news <4mo (HV) or <6mo (MV), primary sources preferred, no rumors/unattributed claims
-3. **[CRITICAL] Impact**: Every Q&A has ≥2 phases + ≥2 stakeholders + quantified metrics (numbers with units)
-4. **[IMPORTANT] Decisions**: Every Q&A compares ≥2 options + recommendation + rationale + measurable success criteria (baseline → target)
-5. **[IMPORTANT] Completeness**: All terms defined in glossary, all URLs accessible, no placeholders ([TBD], [TODO]), every action has owner
+**Quality Gates** (all PASS required):
+1. **[CRITICAL] Criticality**: Every Q&A labeled with ≥1 criterion
+2. **[CRITICAL] Freshness**: HV <4mo, MV <6mo, primary sources, no rumors
+3. **[CRITICAL] Impact**: Every Q&A has ≥2 phases + ≥2 stakeholders + metrics with units
+4. **[IMPORTANT] Decisions**: ≥2 options compared + recommendation + success criteria (baseline → target with date)
+5. **[IMPORTANT] Completeness**: All terms glossarized, URLs valid, no placeholders, all actions owned
 
 ## III. Execution
 
-### Step 1: News Discovery & Curation
+### Step 1: News Discovery
 
-1. **Record** generation date (YYYY-MM-DD format) and define domain/product category
-2. **Search Strategy**:
-   - **[CRITICAL]** Prioritize: News <1wk (50%+) → <1mo (30%+) → <2mo (20%)
-   - **Sources**: Primary (changelogs, pricing pages, official blogs) > Secondary (Product Hunt, TechCrunch) > Tertiary (industry reports)
-   - **Verify**: Cross-reference rumors with ≥2 sources or exclude
-3. **Curate** ≥10 items passing: freshness thresholds (per category velocity), ≥1 criticality criterion, category balance (Competitive 30%+, Pricing 25%+, Strategy 25%+, Research 20%+), specific metrics/dates present
-4. **Allocate**: Map 10 items → 4-6 questions across 3-4 phases, ensuring category balance maintained
+1. **Record** date (YYYY-MM-DD), domain, product category
+2. **Search** (prioritize <1wk: 50%+, <1mo: 30%+, <2mo: 20%):
+   - Sources: Primary (changelogs, pricing pages, official blogs) > Secondary (Product Hunt, TechCrunch) > Tertiary (reports)
+   - Verify rumors with ≥2 sources or exclude
+3. **Curate** ≥10 items meeting: freshness threshold, ≥1 criticality criterion, category balance, metrics/dates present
+4. **Map** 10 items → 4-6 Q&As across 3-4 phases (maintain category balance)
 
 ### Step 2: Build References
 
-**Format Requirements**:
-- **G#** (Glossary): Term + definition (1 sentence) + analogy/example with numbers
-- **N#** (News): Title (Source, MM/DD/YYYY) + 1-sentence summary + category + URL
-- **C#/P#/R#** (Competitive/Pricing/Research): Entity + detail (Source, MM/DD/YYYY) + key metric + URL
-- **A#** (Academic): APA 7th format with access date
+**Formats** (all required):
+- **G#**: Term + 1-sentence definition + analogy with numbers + example
+- **N#**: Title (Source, MM/DD/YYYY) + summary + category + URL
+- **C#/P#/R#**: Entity + detail (Source, MM/DD/YYYY) + metric + URL
+- **A#**: APA 7th + access date
 
-**Citation Pattern**: Inline `[Ref: N1][n1]`, footer `[n1]: https://...`
+**Citation**: Inline `[Ref: N1][n1]`, footer `[n1]: https://...`
 
-**Glossary Completeness**: Define ALL terms in Q&As not universally known (e.g., PMF, freemium, usage-based pricing). Test: Can a non-domain expert understand without external search?
+**Glossary Test**: Can non-expert understand Q&As without external search? If no, add term.
 
 ### Step 3: Generate Q&A
 
-**Question Pattern**: "[Specific News with Date] implications for [Phase] ([≥2 Roles])?"
+**Question**: "[News with Date] implications for [Phase] ([≥2 Roles])?"
 
-**Answer Structure** (complete all sections):
-1. **News**: What happened + when (MM/DD/YYYY) + why significant + category label `[Ref: N#][n#]`
-2. **Impact**: ≥2 phases listed + quantified metrics with units (%, $, count) + comparison to baseline if available
-3. **Stakeholders**: ≥2 roles, each with: (a) specific concern, (b) concrete action
-4. **Decision** (mandatory comparison):
-   - **Options**: ≥2 alternatives (e.g., Build now vs Defer 3mo vs Monitor only)
-   - **Comparison**: Table with costs/benefits/risks for each
-   - **Recommendation**: One option + rationale linking to impact metrics + success criteria (baseline → target with timeline)
-5. **Action Timeline**:
-   - **Immediate (0-2wk)**: ≤3 actions with owners
-   - **Short-term (2wk-2mo)**: ≤3 actions with owners
-6. **Links**: `[n1]: https://...` (all URLs validated)
+**Answer** (all sections):
+1. **News**: Event + MM/DD/YYYY + significance + category + `[Ref: N#][n#]`
+2. **Impact**: ≥2 phases + metrics (%, $, units) + baseline comparison
+3. **Stakeholders**: ≥2 roles × (concern + action)
+4. **Decision**: Options table (≥2 alternatives: cost/benefit/risk) → Recommendation + rationale + success criteria (baseline → target by date)
+5. **Timeline**: Immediate (0-2wk, ≤3 actions) + Short-term (2wk-2mo, ≤3 actions), all with owners
+6. **Links**: `[n1]: https://...`
 
-**Avoid**: Generic claims without metrics, marketing hype, speculation without "Estimated:" flag, stale content, unattributed sources
+**Avoid**: Claims without metrics, hype, unverified speculation, stale content, unattributed sources. **Flag**: "Estimated:" or "Reported (unverified):" for uncertain data.
 
 ### Step 4: Create Visuals
 
-**Requirements**: ≥2 diagrams/matrices + ≥1 comparison table
+**Required**: ≥2 diagrams/matrices + ≥1 comparison table
 
-**Recommended Types**:
-- Competitive positioning matrix (2×2 grid)
-- Decision flowchart (Mermaid flowchart)
-- Options comparison table (Markdown table with costs/benefits/risks columns)
-- Timeline visualization (Mermaid gantt)
+**Types**: Competitive matrix (2×2), decision flowchart, options table, timeline (Mermaid gantt)
 
-**Format**: Mermaid for diagrams, Markdown tables for comparisons. Label axes, include legend if >3 categories.
+**Format**: Mermaid diagrams, Markdown tables. Label axes, add legend if >3 categories.
 
-### Step 5: Validate & Self-Review
+### Step 5: Validate
 
-**Check All**:
-- **[CRITICAL]** References: G (all terms), N≥5, C/P/R≥2 each, URLs valid
-- **[CRITICAL]** Q&A: 4-6 count, 3-4 phases, all criticality met, impact quantified
-- **[IMPORTANT]** Stakeholders ≥5, category balance, all citations present
-- **[IMPORTANT]** No placeholders, freshness thresholds met, decisions actionable
+**Critical**:
+- References: G (all terms), N≥5, C/P/R≥2 each, URLs valid
+- Q&A: 4-6 count, 3-4 phases, criticality labeled, metrics quantified
 
-**Self-Review**:
-1. Verify all metrics/dates are accurate
-2. Check for contradictions in recommendations
-3. Confirm all glossary terms appear in Q&As
-4. Validate URLs are accessible
-5. **Flag uncertainties**: Use "Estimated:" or "Reported (unverified):" where data is uncertain
+**Important**:
+- Stakeholders ≥5, category balance met, all citations present
+- No placeholders, freshness met, decisions actionable
+
+**Self-Review**: Verify metrics/dates, check contradictions, confirm glossary completeness, validate URLs, flag uncertainties.
 
 ### Step 6: Submit
 
-Output: Complete document with TOC, Key Terms, Q&As, References (all formats), Validation Report (all ☑ PASS)
+**Output**: Complete document (TOC, Key Terms, Q&As, References, Validation Report with all ☑ PASS)
 
 ## IV. Validation Report
 
 | Check | Criteria | Result | Status |
 |-------|----------|--------|--------|
-| **Freshness** | HV majority <1mo, MV majority <2mo | | ☐ PASS |
-| **References** | G (terms), N≥5, C/P/R≥2 each | | ☐ PASS |
-| **Q&A Count** | 4-6 total | | ☐ PASS |
-| **Phase Coverage** | 3-4 phases, 1-2 Q each | | ☐ PASS |
-| **Category Balance** | Competitive & Pricing emphasized | | ☐ PASS |
-| **Stakeholders** | ≥5 roles | | ☐ PASS |
-| **Criticality** | All Q&As meet ≥1 criterion | | ☐ PASS |
-| **Impact** | All quantified, multi-phase, multi-role | | ☐ PASS |
-| **Decisions** | All have rec + rationale + timeline | | ☐ PASS |
-| **Citations** | All Q&As cited | | ☐ PASS |
-| **Visuals** | ≥2 diagrams + ≥1 table | | ☐ PASS |
-| **Completeness** | No placeholders, all URLs valid | | ☐ PASS |
-| **Meta** | Gen: `____` | Expires: `[+2wk]` | INFO |
+| **Freshness** | HV <1mo (maj), <4mo (max); MV <2mo (maj), <6mo (max) | | ☐ PASS |
+| **References** | G (all terms), N≥5, C≥2, P≥2, R≥2, URLs valid | | ☐ PASS |
+| **Q&A** | 4-6 total, 3-4 phases, 1-2 Q/phase | | ☐ PASS |
+| **Category** | Comp 30%+, Pricing 25%+, Strategy 25%+, Research 20%+ | | ☐ PASS |
+| **Stakeholders** | ≥5 roles total | | ☐ PASS |
+| **Criticality** | All Q&As labeled [CRITICAL/IMPORTANT] criterion | | ☐ PASS |
+| **Impact** | All have ≥2 phases + ≥2 roles + metrics (%, $, units) | | ☐ PASS |
+| **Decisions** | All have ≥2 options + rec + rationale + criteria (baseline → target by date) | | ☐ PASS |
+| **Citations** | All Q&As cited [Ref: X#][x#] | | ☐ PASS |
+| **Visuals** | ≥2 diagrams/matrices + ≥1 table | | ☐ PASS |
+| **Completeness** | No [TBD]/[TODO], all actions owned | | ☐ PASS |
+| **Meta** | Gen: YYYY-MM-DD | Expires: [+2wk] | INFO |
 
 ## V. Question Quality
 
-**Good Questions**: News-driven | Decision-critical | Lifecycle-specific | Multi-stakeholder | Quantified | Actionable
+**Good**: News-driven (date specified) | Decision-critical (labeled) | Lifecycle-phase-specific | Multi-stakeholder (≥2 roles) | Quantified (metrics with units) | Actionable (timeline + owners)
 
-**✓ Examples**: "Notion AI 40% adoption (Oct'24)—roadmap impact?" | "Linear 3→2 tier pricing (Sep'24): response?" | "Competitor ↑20% pricing (Nov'24): strategy?"
+**✓ Examples**: "Notion AI 40% adoption (10/15/2024): Design phase roadmap impact for PM + Eng Lead?" | "Linear 3→2 tier pricing shift (09/20/2024): Launch phase response for PM + Product Marketing?" | "Competitor ↑20% pricing (11/01/2024): Growth phase strategy for CPO + Competitive Intel?"
 
-**✗ Avoid**: Generic theory | No news trigger | Tech ops focus | Vague impact
+**✗ Avoid**: Generic theory without news trigger | No date specified | Pure technical ops | Vague impact without metrics | Single-role focus | No action timeline
 
 ## VI. Output Format
 
-### A. TOC
+### A. Structure
 
 ```markdown
 # [Domain] Product & Market Intelligence Q&A ([Period])
 
-1. Executive Summary (Insights | Dashboard)
-2. Phase Coverage
-3. Questions by Phase
+1. Executive Summary (Top 2-3 insights | Dashboard table)
+2. Phase Coverage (Table: phase, count, categories, roles)
+3. Q&As by Phase (4-6 total, template below)
 4. References (G | N | C | P | R | A)
-5. Validation
+5. Validation Report (Table from Section IV)
 ```
 
-### B. Executive Summary
+### B. Executive Summary Template
 
-**Domain**: [Category] | **Period**: [Date range] | **Roles**: [5+ roles]
+**Domain**: [Category] | **Period**: MM/DD-MM/DD/YYYY | **Roles**: [List 5+ roles]
 
-**Top Insights** (2-3): [Date]: [News] → [Impact] → [Decision] → [Timeline]
+**Top Insights** (2-3): `[MM/DD]: [News] → [Impact %/$] → [Decision] → [Timeline]`
 
 **Dashboard**:
-| Phase | News | Decision | Timeline |
-|-------|------|----------|----------|
-| ... | ... | ... | ... |
+| Phase | News (Date) | Decision | Timeline |
+|-------|-------------|----------|----------|
+| [Phase] | [Brief news] ([MM/DD]) | [Rec] | [Immediate/Short-term] |
 
-### C. Phase Overview
+### C. Phase Coverage Template
 
 | Phase | Count | Categories | Primary Roles |
 |-------|-------|------------|---------------|
-| Discovery | 1-2 | Competitive, Strategy | PM, Intel |
+| Discovery | 1-2 | Competitive, Strategy | PM, Competitive Intel |
 | Design | 1-2 | Strategy, Research | PM, Eng Lead |
-| Launch | 1-2 | Competitive, Pricing | PM, Marketing |
-| Growth | 1-2 | Pricing, Research | PM, Analyst |
+| Launch | 1-2 | Competitive, Pricing | PM, Product Marketing |
+| Growth | 1-2 | Pricing, Research | PM, Data Analyst |
 
 ### D. Q&A Template
 
 ```markdown
-### Q#: [Specific News with Date] implications for [Phase] ([≥2 Roles])?
+### Q#: [News with Date] implications for [Phase] ([Role 1], [Role 2])?
 
-**Phase**: [Phase] | **Roles**: [Role 1, Role 2] | **Category**: [Competitive/Pricing/Strategy/Research] | **Criticality**: [CRITICAL/IMPORTANT] [Criterion]
+**Phase**: [Phase] | **Roles**: [≥2] | **Category**: [Comp/Pricing/Strategy/Research] | **Criticality**: [CRITICAL/IMPORTANT]: [Criterion]
 
-**News**: [What happened] on [MM/DD/YYYY]. [Why significant]. Category: [Category] [Ref: N#][n#]
+**News**: [Event] on [MM/DD/YYYY]. [Significance]. [Ref: N#][n#]
 
 **Impact**: 
-- **Phases**: [Phase 1]: [specific impact]; [Phase 2]: [specific impact]
-- **Metrics**: [Metric 1] = [X]% (baseline: [Y]%), [Metric 2] = $[amount], [Metric 3] = [count] units
-- **Comparison**: [vs baseline/competitor if available]
+- **Phases**: [Phase 1]: [impact]; [Phase 2]: [impact]
+- **Metrics**: [Metric 1]: X% (baseline: Y%), [Metric 2]: $Z, [Metric 3]: N units
+- **Comparison**: [vs baseline/competitor]
 
 **Stakeholders**: 
-- **[Role 1]**: Concern: [specific concern]. Action: [concrete action]
-- **[Role 2]**: Concern: [specific concern]. Action: [concrete action]
+- **[Role 1]**: Concern: [specific]. Action: [concrete]
+- **[Role 2]**: Concern: [specific]. Action: [concrete]
 
 **Decision**: 
 
 | Option | Cost | Benefit | Risk | Timeline |
 |--------|------|---------|------|----------|
-| [Option 1] | [specific cost] | [specific benefit] | [specific risk] | [timeframe] |
-| [Option 2] | [specific cost] | [specific benefit] | [specific risk] | [timeframe] |
+| [Opt 1] | [$X or Xh] | [Quantified] | [Specific] | [Xwk/Xmo] |
+| [Opt 2] | [$Y or Yh] | [Quantified] | [Specific] | [Ywk/Ymo] |
 
-- **Recommendation**: [Option X] 
-- **Rationale**: [Why this option] linked to [Impact metrics]. Success criteria: [Metric]: [Baseline X] → [Target Y] by [Date].
+**Recommendation**: [Option X]. **Rationale**: [Why] linked to [metric]. **Success**: [Metric]: A → B by [MM/DD/YYYY].
 
 **Action**: 
 - **Immediate (0-2wk)**: [Action 1] (Owner: [Role]); [Action 2] (Owner: [Role])
 - **Short-term (2wk-2mo)**: [Action 1] (Owner: [Role]); [Action 2] (Owner: [Role])
 
-**Uncertainty Flags** (if any): "Estimated: [claim]" or "Reported (unverified): [claim]"
+**Flags** (if uncertain): "Estimated: [claim]" or "Reported (unverified): [claim]"
 
 [n#]: https://...
 ---
@@ -246,57 +229,55 @@ Output: Complete document with TOC, Key Terms, Q&As, References (all formats), V
 
 ### E. Reference Formats
 
-**Required Elements** (verify all present):
+**G#. Glossary**: `**[Term]**: [1-sentence definition]. Analogy: [with numbers]. Example: [concrete case].`
+- Example: `G1. **Freemium**: Free basic + paid premium tiers. Analogy: Store samples—10% convert. Example: Slack free (≤10K msgs) vs paid ($8/user/mo, unlimited).`
 
-- **G#. Glossary**: `G1. **[Term]**: [1-sentence definition]. Analogy: [comparison with numbers]. Example: [concrete case].`
-  - Example: `G1. **Freemium**: Business model offering free basic tier + paid premium features. Analogy: Free samples at store—10% convert to paying. Example: Slack free (≤10K messages) vs paid ($8/user/mo, unlimited).`
+**N#. News**: `**[Title]** ([Source], [MM/DD/YYYY]). [Summary]. Category: [Type]. [URL]`
+- Example: `N1. **Notion AI 40% adoption** (TechCrunch, 10/15/2024). Enterprise accounts: 40% active AI usage in 3mo. Category: Research. https://...`
 
-- **N#. News**: `N1. **[Title]** ([Source], [MM/DD/YYYY]). [1-sentence summary]. Category: [Competitive/Pricing/Strategy/Research]. [URL]`
-  - Example: `N1. **Notion AI hits 40% adoption** (TechCrunch, 10/15/2024). Enterprise accounts show 40% active AI feature usage within 3mo of launch. Category: Research. https://...`
+**C#. Competitive**: `[Competitor]: [Feature] ([Source], [MM/DD/YYYY]). [Metric]. [URL]`
 
-- **C#. Competitive**: `C1. [Competitor]: [Feature] ([Source], [MM/DD/YYYY]). [Key metric/detail]. [URL]`
+**P#. Pricing**: `[Company]: [Change] ([Source], [MM/DD/YYYY]). [Old] → [New]. Impact: [metric]. [URL]`
 
-- **P#. Pricing**: `P1. [Company]: [Pricing change] ([Source], [MM/DD/YYYY]). [Old model] → [New model]. Impact: [metric]. [URL]`
+**R#. Research**: `**[Title]** ([Firm], [MM/DD/YYYY]). Finding: [quantified]. [URL]`
 
-- **R#. Research**: `R1. **[Title]** ([Firm/Author], [MM/DD/YYYY]). Key finding: [quantified result]. [URL]`
-
-- **A#. Academic**: `A1. [Author Last, F.] ([YYYY], [Month DD]). *[Title]*. [Journal/Publisher]. https://... [Accessed: MM/DD/YYYY]`
+**A#. Academic**: `[Last, F.] ([YYYY], [Mon DD]). *[Title]*. [Journal]. [URL] [Accessed: MM/DD/YYYY]`
 
 ## VII. Final Quality Checklist
 
-**Before submission, verify ALL standards met:**
+**Verify ALL before submission:**
 
 ### Foundation
-☐ **Context**: Generation date, domain, product, competitors, priorities all specified  
-☐ **Clarity**: All terms in Key Terms section, no unexplained jargon  
-☐ **Precision**: All metrics have units (%, $, count), all dates in MM/DD/YYYY format  
-☐ **Relevance**: All content supports decision-making, no unconnected background  
+☐ Context: Date, domain, product, competitors, priorities specified  
+☐ Clarity: All terms glossarized, no unexplained jargon  
+☐ Precision: Metrics with units (%, $, count), dates MM/DD/YYYY  
+☐ Relevance: Content supports decisions, no unconnected info  
 
 ### Scope
-☐ **MECE**: Categories cover all 4 types, no overlaps, no gaps  
-☐ **Sufficiency**: Each Q&A has news/impact/stakeholders/decision/actions  
-☐ **Breadth**: ≥5 stakeholder roles represented across all Q&As  
-☐ **Depth**: Each Q&A has ≥2 options compared with costs/benefits/risks  
+☐ MECE: 4 categories covered, no gaps/overlaps  
+☐ Sufficiency: All Q&As have news/impact/stakeholders/decision/actions  
+☐ Breadth: ≥5 roles total  
+☐ Depth: ≥2 options/Q&A with cost/benefit/risk  
 
 ### Quality
-☐ **Significance**: [CRITICAL] items labeled and prioritized first  
-☐ **Priority**: All criticality criteria labeled (CRITICAL/IMPORTANT)  
-☐ **Concision**: No repeated concepts, each term defined once  
-☐ **Accuracy**: All dates verified, metrics cross-referenced with sources  
-☐ **Credibility**: All claims cited with [Ref: X#][x#] pattern  
-☐ **Logic**: Recommendations link to impact metrics, no contradictions  
-☐ **Risk/Value**: Every decision compares ≥2 options in table format  
-☐ **Fairness**: Options include defer/monitor alternatives, limitations noted  
+☐ Significance: [CRITICAL] labeled, prioritized first  
+☐ Priority: All criticality labeled (CRITICAL/IMPORTANT)  
+☐ Concision: No repetition, each term defined once  
+☐ Accuracy: Dates/metrics verified against sources  
+☐ Credibility: All claims cited [Ref: X#][x#]  
+☐ Logic: Recommendations link to metrics, no contradictions  
+☐ Risk/Value: ≥2 options/decision in table  
+☐ Fairness: Defer/monitor alternatives included, limitations noted  
 
 ### Format
-☐ **Structure**: TOC → Summary → Phase Coverage → Q&As → References → Validation  
-☐ **Consistency**: All Q&As follow template structure  
-☐ **Visuals**: ≥2 diagrams + ≥1 comparison table present  
+☐ Structure: TOC → Summary → Coverage → Q&As → References → Validation  
+☐ Consistency: All Q&As follow template  
+☐ Visuals: ≥2 diagrams + ≥1 table  
 
 ### Validation
-☐ **Evidence**: All URLs validated and accessible  
-☐ **Verification**: Cross-checked metrics, dates, contradictions; uncertainties flagged  
-☐ **Practicality**: All actions have owners, timelines specified (0-2wk, 2wk-2mo)  
-☐ **Success Criteria**: Each recommendation includes baseline → target with date  
+☐ Evidence: URLs validated, accessible  
+☐ Verification: Metrics/dates cross-checked, uncertainties flagged  
+☐ Practicality: All actions owned, timelines specified  
+☐ Success Criteria: All recs have baseline → target by date  
 
-**If ANY checkbox fails, fix before submission.**
+**Fix fails before submission. Use Validation Report (Section IV) for tracking.**

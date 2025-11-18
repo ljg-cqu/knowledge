@@ -10,15 +10,21 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 
 ## Context & Scope
 
+**Problem**: HR leaders need curated, decision-critical workforce intelligence from fragmented news sources.
+
 **Domain**: Workforce developments—talent supply/demand, skills, compensation, labor policy, culture/DEI, health/wellbeing.
 
 **Stakeholders**: CHRO, VP People, HRBP, Talent Acquisition Lead, L&D Lead, Comp & Benefits Lead, Employee Relations/Labor Lead, DEI Lead, People Analytics Lead, BU Leaders, Line Managers.
 
 **Timeline**: 1-18 month action window.
 
+**Resources**: Web search access, authoritative HR news sources.
+
 **Include**: Talent shortages, hiring trends, skills/reskilling, compensation shifts, policy/labor changes, retention risks, engagement/wellbeing signals.
 
 **Exclude**: Technical HR config, product/GTM, finance, rumors, PR fluff, stale news (>12 months).
+
+**Rationale**: Focus on decision-critical news (meets ≥1 criterion below) to reduce noise and accelerate decisions.
 
 **Decision Criticality** (meet ≥1):
 1. Blocks hiring, compensation, retention, or policy decisions
@@ -27,12 +33,18 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 4. Requires action within 1-6 months
 5. Has quantified impact on key metrics
 
-**Freshness Priority**:
-- Talent/Skills: <2 months
-- Comp/Policy: <3 months  
-- Culture/Wellbeing: <12 months for enduring trends
+**Freshness Priority** (rationale: balance recency with signal strength):
+- Talent/Skills: <2 months (fast-moving market signals)
+- Comp/Policy: <3 months (moderate change velocity)
+- Culture/Wellbeing: <12 months for enduring trends (slow-changing patterns)
 
 **User Inputs**: Industry/geography/segment, organization size/challenges, stakeholder priorities, generation date (YYYY-MM-DD)
+
+**Limitations / When NOT to Use**:
+- Organization has <50 employees (insufficient scale for most workforce trends)
+- Need deep-dive analysis (use dedicated research instead)
+- Technical HR system setup (out of scope)
+- Immediate crisis response (use real-time monitoring)
 
 **Categories** (cover ≥3):
 1. **Talent Markets & Hiring**: Trends, shortages, skills, branding, layoffs
@@ -48,6 +60,8 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 
 **Output**: 5-8 Q&As, ~150-250 words each, all news-driven with citations.
 
+**Rationale**: 5-8 Q&As balance breadth (multiple categories/stakeholders) and depth (actionable detail). 150-250 words optimize scannability while providing sufficient context for decisions.
+
 **Coverage**:
 - **Lifecycle Stages** (cover 3-4): Attract/Brand, Hire/Onboard, Develop/Grow, Reward/Retain, Transition/Exit
 - **Stakeholders**: Address ≥4 of 11 roles
@@ -56,8 +70,8 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 **Quality Standards** (all Q&As must):
 - Meet ≥1 decision criticality criterion
 - Cite ≥1 news source with date/URL
-- Include quantified impact where available
-- Provide decision path with rationale and timeline
+- Include quantified impact where available (or flag as "unavailable")
+- Provide decision path with rationale, trade-offs, and timeline
 - Include 1-2 visual aids total (diagrams/tables)
 
 **References** (include):
@@ -73,9 +87,9 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 
 - Set generation date; calculate news age
 - Web search 10-15 candidates per freshness priority
-- Sources: SHRM, HBR, LinkedIn, Gartner, Radford, Mercer, ILO, OECD, Gallup, McKinsey
-- Filter: Meets freshness, decision criticality, has specifics, no rumors
-- Select: 5-8 items covering multiple categories and stakeholders
+- **Sources** (authoritative HR/research): SHRM, HBR, LinkedIn, Gartner, Radford, Mercer, ILO, OECD, Gallup, McKinsey
+- **Filter**: Meets freshness, decision criticality, has quantified specifics, no rumors/PR
+- **Select**: 5-8 items covering ≥3 categories and ≥4 stakeholder roles
 
 ### Step 2: Build References [CRITICAL]
 
@@ -90,16 +104,22 @@ Generate **5-8 decision-critical Q&As** from recent workforce news for informed 
 
 Each Q&A (150-250 words):
 1. **News** (~30w): What/when/why/category/source/date
-2. **Impact** (~60w): Lifecycle stages affected, quantified metrics, baselines/targets
-3. **Stakeholders** (~40w): ≥2 roles, concerns/actions
-4. **Decision** (~40w): Primary path + alternatives with trade-offs, limitations
-5. **Action** (~20w): Immediate steps, owners, measurement
+2. **Impact** (~60w): Lifecycle stages affected, quantified metrics (with baselines/targets), uncertainties flagged
+3. **Stakeholders** (~40w): ≥2 roles, concerns/actions, perspectives
+4. **Decision** (~40w): Primary path + ≥1 alternative; explicit trade-offs (costs/benefits/risks); when NOT to pursue
+5. **Action** (~20w): Immediate steps, owners, success metrics
 
-**Include**: Limitations, risks, when NOT to pursue option.
+**Include**: Limitations, risks, counterarguments, when NOT to pursue each option.
 
-**Avoid**: Generic advice, hype, unattributed claims, speculation.
+**Avoid**: Generic advice ("best practices"), hype, unattributed claims, speculation, one-sided recommendations.
 
 ### Step 4: Validate & Submit [IMPORTANT]
+
+**Verification** (mandatory):
+- Verify URLs are accessible and dates match
+- Check metrics/statistics against source claims
+- Flag uncertainties explicitly (e.g., "estimated", "projected")
+- Cross-check contradictions across sources
 
 **Checks**:
 - Q&A count: 5-8, ~150-250 words each

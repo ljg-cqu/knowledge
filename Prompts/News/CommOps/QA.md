@@ -14,17 +14,13 @@
 
 **Problem**: Commercial teams lack timely, actionable intelligence from fragmented news sources, resulting in delayed competitive responses and missed revenue opportunities.
 
-**Purpose**: Generate 4-6 decision-critical Q&As from recent commercial news to enable informed, time-sensitive decisions across CRO, Sales, Marketing, CS, and RevOps functions.
+**Scope**: Generate 4-6 decision-critical Q&As from recent commercial news (sales, marketing, CS, RevOps, GTM, competitive intel) to enable informed, time-sensitive decisions across CRO, Sales, Marketing, CS, and RevOps functions.
 
-**Target**: Bi-weekly cycles | 4-6h effort per cycle | **Expires**: 2 weeks post-generation
-
-**Freshness**: ≥70% news <2mo old (≥25% <1wk), 100% ≤9mo
+**Target**: Bi-weekly cycles | 4-6h effort per cycle | **Expires**: 2 weeks post-generation | **Freshness**: ≥70% news <2mo old (≥25% <1wk), 100% ≤9mo
 
 **Definitions**:
 - **Decision-critical**: News requiring action within 1-6mo that impacts revenue, blocks decisions, creates risk, or requires multi-stakeholder coordination
 - **Commercial Operations**: Sales execution, marketing ops, customer success, RevOps, GTM strategy, competitive intelligence
-
-**Scope**: Decision-critical commercial news (sales, marketing, CS, RevOps, GTM, competitive intel).
 
 **Exclude**: Technical implementation, product R&D, corporate finance (except GTM pricing), >6mo strategy, rumors, stale news.
 
@@ -34,37 +30,35 @@
 
 **When NOT to use**: Technical architecture decisions, product feature specifications, internal-only process changes, >6mo strategic planning, single-function tactical tasks (use specialized tools/reports instead).
 
-**Inputs**:
-- Domain/vertical, period, company context (size, stage, GTM motions, ACV)
-- Baseline metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion rates)
-- Stakeholders (CRO, VP Sales, VP Marketing, VP CS, RevOps analyst)
-- Constraints (budget, hiring, regulatory)
+**Inputs**: Domain/vertical, period, company context (size, stage, GTM, ACV) | Baseline metrics (pipeline $, win rate, CAC, LTV, NRR, churn, conversion) | Stakeholders (CRO, VP Sales, VP Marketing, VP CS, RevOps) | Constraints (budget, hiring, regulatory)
 
 **Deliverables**: Executive summary, 4-6 Q&As, references, ≥2 visuals, validation report.
 
 **Decision Criticality** (each Q must meet ≥1):
-1. **[CRITICAL] Blocks Decision**: Impacts quota, GTM pivot, revenue model
+1. **[CRITICAL] Blocks Decision**: Quota, GTM pivot, revenue model
 2. **[CRITICAL] Creates Risk**: Competitive threat, churn signal, CAC/LTV pressure
-3. **[IMPORTANT] Multi-Stakeholder**: Affects ≥2 roles
+3. **[IMPORTANT] Multi-Stakeholder**: ≥2 roles
 4. **[IMPORTANT] Requires Action**: 1-6mo window
 5. **[IMPORTANT] Quantified Impact**: Revenue, pipeline, conversion, retention, efficiency
 
 **Categories** (cover all, mutually exclusive):
-1. **Sales**: Win rates, quota attainment, pipeline velocity, sales cycle length (exclude marketing attribution)
-2. **Marketing**: CAC, lead conversion, campaign ROI, attribution modeling (exclude post-sale)
-3. **Customer Success**: Churn rate, NRR, expansion ARR, retention programs (exclude pre-sale)
-4. **RevOps**: CRM/tools, analytics infrastructure, process optimization, forecasting (exclude tactical execution)
+1. **Sales**: Win rates, quota, pipeline velocity, cycle length (exclude marketing)
+2. **Marketing**: CAC, lead conversion, campaign ROI, attribution (exclude post-sale)
+3. **Customer Success**: Churn, NRR, expansion ARR, retention (exclude pre-sale)
+4. **RevOps**: CRM/tools, analytics, process optimization, forecasting (exclude execution)
 
 ## II. Requirements
 
 **Q&A Count**: 4-6 across 3-4 stages, covering all categories (Sales, Marketing, CS, RevOps)
 
-**Answer Structure** (120-200w):
+**Answer Structure** (120-200w total = News + Impact + Stakeholders + Decision + Action):
 1. **News** (~25w): What, when, why, category + citation
 2. **Impact** (~50w): ≥2 stages, ≥2 roles, quantified metrics
 3. **Stakeholders** (~35w): ≥2 roles with concerns/actions
 4. **Decision** (~50w): ≥2 options with rationale, risks, trade-offs
 5. **Action** (~20w): Immediate (0-2wk) + short (2wk-2mo) with owner + metrics
+
+*Formula: Target word count = 25 + 50 + 35 + 50 + 20 = 180w (within 120-200w range)*
 
 **Stages** (3-4): Lead Gen & Demand, Sales & Closing, Retention & Expansion, Analytics & Optimization
 
@@ -81,10 +75,7 @@
 - **[IMPORTANT]** 100% include ≥2 decision options with rationale + timeline
 - **[IMPORTANT]** 100% concrete actions with owner + metrics
 
-**Success Criteria** (measured at delivery):
-- **Baseline**: Current state (avg 8h manual news review, 40% outdated insights, single-perspective analysis)
-- **Target**: 4-6h per cycle, ≥70% fresh news (<2mo), multi-stakeholder coverage (≥4 roles)
-- **Metrics**: Time to generate, freshness %, decision-critical rate, stakeholder coverage, URL validity rate
+**Success Criteria**: **Baseline** → **Target** = Time: 8h → 4-6h | Freshness: 40% → ≥70% (<2mo) | Stakeholders: 1 → ≥4 roles | **Metrics**: Generation time, freshness %, decision-critical rate, stakeholder coverage, URL validity
 
 ## III. Execution
 
@@ -95,11 +86,7 @@ Record generation date (YYYY-MM-DD).
 **Search** (10-15 candidates):
 - **Keywords**: `[Domain] {sales performance|pipeline|quota|CAC|conversion|churn|retention|expansion|competitive|win/loss}`
 - **Sources**: SaaStr, Sales Hacker, MarketingProfs, Gong, Salesforce, HubSpot, Gainsight, RevOps Co-op, G2, Gartner, Forrester
-- **Tools**: 
-  - Perplexity: `"[domain] sales trends" timerange:1month`
-  - ChatGPT: "Latest [domain] commercial operations news from past 60 days"
-  - Google: `site:saastr.com OR site:saleshacker.com "[domain]" after:2024-10-01`
-  - Product Hunt: Filter by category + "launched this month"
+- **Tools**: Perplexity (`"[domain] sales trends" timerange:1month`) | ChatGPT ("Latest [domain] commercial ops news past 60d") | Google (`site:saastr.com OR site:saleshacker.com "[domain]" after:YYYY-MM-DD`) | Product Hunt (category filter + "launched this month")
 
 **Filter**: Age per freshness, trusted source, ≥1 criticality criterion, no rumors
 
@@ -127,12 +114,7 @@ Record generation date (YYYY-MM-DD).
 
 Pattern: "[News] implications for [Stage]+[Roles]?"
 
-**Avoid** (with rationale):
-- Generic claims (undermines specificity; use quantified metrics)
-- Hype-driven analysis (creates bias; balance with limitations)
-- Unattributed statements (reduces credibility; cite all claims)
-- Stale news (irrelevant; verify freshness criteria)
-- Speculation without evidence (increases hallucinations; flag as "estimated" if unavoidable)
+**Avoid**: Generic claims (use quantified metrics) | Hype-driven analysis (balance with limitations) | Unattributed statements (cite all) | Stale news (verify freshness) | Speculation (flag as "estimated" if unavoidable)
 
 **Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 120-200w | quantified | cited | actionable | balanced (pros+cons)
 
@@ -140,20 +122,11 @@ Pattern: "[News] implications for [Stage]+[Roles]?"
 
 ≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table
 
-**Examples**:
-- Funnel: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]`
-- Table: Competitive CAC comparison (Competitor | CAC | Change | Source)
-- Cohort: Retention curves by customer segment over 12mo
+**Examples**: Funnel (`graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]`) | Table (Competitor | CAC | Change | Source) | Cohort (retention curves by segment, 12mo)
 
 ### Step 5: Validate
 
-**Self-Review Checklist**:
-1. Verify all URLs accessible (test each link)
-2. Check calculations (word counts, percentages, metrics)
-3. Confirm no contradictions (cross-reference claims)
-4. Validate terminology consistency (use defined terms)
-5. Test references (all cited sources used, no orphans)
-6. Flag uncertainties (mark assumptions, estimates, unverified claims)
+**Self-Review**: Verify URLs accessible | Check calculations (word counts, metrics) | Confirm no contradictions | Validate terminology consistency | Test all references used | Flag uncertainties (assumptions, estimates)
 
 **Quality Gates**: All CRITICAL + IMPORTANT gates pass + reference floors met + no placeholders + valid URLs
 
@@ -173,13 +146,7 @@ Pattern: "[News] implications for [Stage]+[Roles]?"
 
 ## V. Methodology Sources
 
-**Framework**: Adapted from business intelligence best practices [RevOps Co-op Research, 2024; SaaStr Annual Reports, 2023-2024; Gartner GTM Analytics Framework, 2024]
-
-**Freshness Criteria**: Based on B2B SaaS product cycle velocity (median 2-3mo major releases) [OpenView SaaS Benchmarks, 2024]
-
-**Reference Standards**: Academic citation conventions (APA 7th) + industry analyst formats [Forrester, Gartner]
-
-**Quality Gates**: Derived from content production standards [Content Marketing Institute, 2024] + news curation best practices [Reuters Trust Principles]
+**Framework**: Adapted from RevOps Co-op Research (2024), SaaStr Annual Reports (2023-2024), Gartner GTM Analytics Framework (2024) | **Freshness**: Based on B2B SaaS product cycle velocity (2-3mo median) per OpenView SaaS Benchmarks (2024) | **References**: APA 7th + Forrester/Gartner analyst formats | **Quality Gates**: Content Marketing Institute (2024) + Reuters Trust Principles
 
 ## VI. Question Quality
 
