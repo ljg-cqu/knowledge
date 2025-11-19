@@ -33,6 +33,27 @@
 - [OpsSupply Q6 – Rust vs Go/C++ for PQC](#opssupply-q6-should-we-adopt-rust-as-primary-cryptography-development-language-given-post-quantum-gaps-in-the-ecosystem-ml-kemml-dsa-audits-incomplete-or-maintain-goc-for-near-term-stability-cto-vp-engineering-tech-lead)
 - [PeopleWF Q7 – Talent Shortage Strategy](#peoplewf-q7-how-should-we-approach-the-blockchain-developer-talent-shortage-17-job-openings-per-qualified-smart-contract-developer-to-build-our-mpc-wallet-team-of-8-12-engineers-by-q2-2025-chro-vp-engineering-talent-acquisition-lead)
 
+### Visual Overview
+
+```mermaid
+mindmap
+  root((MPC Wallet News – Perplexity))
+    TechOps
+      Q1
+    ProdMarket
+      Q2
+    StratIntel
+      Q3
+    CommOps
+      Q4
+    FinEcon
+      Q5
+    OpsSupply
+      Q6
+    PeopleWF
+      Q7
+```
+
 ***
 
 ## **[TechOps] Q1: Should we migrate from GG20 to CGGMP21 for threshold ECDSA signatures in our MPC wallet, and what's the implementation timeline? [CTO, Security Lead, DevOps Lead]**

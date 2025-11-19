@@ -38,6 +38,23 @@
 * Q9: 替代方案（智能合约钱包 vs MPC钱包）的战略权衡
 * Q10: MPC节点部署成本与性能优化
 
+### 可视化总览
+
+```mermaid
+mindmap
+  root((MPC 钱包面试 – Mistral))
+    Q1
+    Q2
+    Q3
+    Q4
+    Q5
+    Q6
+    Q7
+    Q8
+    Q9
+    Q10
+```
+
 ### [TechOps] Q1: GG18和GG20协议在MPC钱包中的漏洞及其影响
 
 **Domain**: Technical Operations | **Stage**: Growth/Scale | **Function**: Technical

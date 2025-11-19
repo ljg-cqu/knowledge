@@ -39,6 +39,29 @@ This briefing compiles decision-critical, news-driven interview Q&A for an MPC w
 - OpsSupply – Q7: How do we secure our cryptographic library supply chain given the tokio-tar abandonment?
 - PeopleWF – Q8: Should we implement a token equity program to compete for Rust cryptography talent?
 
+#### Visual Overview
+
+```mermaid
+mindmap
+  root((MPC Wallet News – Kimi))
+    Startup
+      Q1
+    TechOps
+      Q2
+    ProdMarket
+      Q3
+    CommOps
+      Q4
+    FinEcon
+      Q5
+    StratIntel
+      Q6
+    OpsSupply
+      Q7
+    PeopleWF
+      Q8
+```
+
 ### [Startup] Q1: Should we adopt the new Trout two-round threshold ECDSA protocol given its performance advantages?
 
 **Domain**: Startup & Formation | **Stage**: Growth/Scale | **Function**: Cross-functional  

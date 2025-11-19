@@ -39,6 +39,29 @@ This document provides decision-critical, news-driven interview Q&A for a "Block
 - OpsSupply – Q7: Our HSM supplier faces a 6-month delay. How do we secure the key generation ceremony for our new cluster?
 - PeopleWF – Q8: There's a severe talent shortage for MPC+Rust engineers. What's our hiring and development strategy?
 
+#### Visual Overview
+
+```mermaid
+mindmap
+  root((MPC Wallet News – DeepSeek))
+    Startup
+      Q1
+    TechOps
+      Q2
+    ProdMarket
+      Q3
+    CommOps
+      Q4
+    FinEcon
+      Q5
+    StratIntel
+      Q6
+    OpsSupply
+      Q7
+    PeopleWF
+      Q8
+```
+
 ### [Startup] Q1: [As an early technical lead, how would you validate our core MPC architecture choice?]
 
 **Domain**: Startup & Formation | **Stage**: Formation | **Function**: Cross-functional  

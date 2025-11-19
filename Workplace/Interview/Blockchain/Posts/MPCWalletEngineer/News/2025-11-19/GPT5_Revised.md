@@ -33,6 +33,29 @@ This document summarizes decision-critical, news-informed interview Q&A for a "B
 - OpsSupply – Q7: How should we operationalize device attestation, MFA, and risk scoring to prevent key-share abuse?
 - PeopleWF – Q8: What hiring mix (Rust/Go/C++; applied cryptography; blockchain) is required for a secure MPC wallet team?
 
+#### Visual Overview
+
+```mermaid
+mindmap
+  root((MPC Wallet News – GPT-5))
+    Startup
+      Q1
+    TechOps
+      Q2
+    ProdMarket
+      Q3
+    CommOps
+      Q4
+    FinEcon
+      Q5
+    StratIntel
+      Q6
+    OpsSupply
+      Q7
+    PeopleWF
+      Q8
+```
+
 ### [Startup] Q1: Which first two chains should we support for our multi-chain MPC wallet (Ethereum vs Bitcoin vs Solana) to maximize early adoption?
 
 Domain: Startup & Formation | Stage: Formation | Function: Cross-functional  
