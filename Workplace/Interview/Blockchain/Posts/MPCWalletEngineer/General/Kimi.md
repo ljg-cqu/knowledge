@@ -1,3 +1,7 @@
+# MPC Wallet Engineer Interview – General (Kimi)
+
+**Purpose**: Front-page, 75-minute cross-domain interview for a Senior Blockchain Security Cryptography Engineer & Architect (Multi-Chain MPC Integration), using 6 decision-critical Q&As as a hiring "front page" for this role.
+
 **Domain**: Career (Cross-Domain Interview Front Page)  
 **Role**: Senior Blockchain Security Cryptography Engineer & Architect (Multi-Chain MPC Integration)  
 **Time Budget**: 75 minutes  
