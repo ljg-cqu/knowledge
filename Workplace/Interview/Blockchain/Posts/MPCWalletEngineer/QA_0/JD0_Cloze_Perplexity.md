@@ -76,7 +76,7 @@
 
 **Difficulty:** Intermediate
 
-**Statement:** FROST (Flexible Round-Optimized Schnorr Threshold Signatures) improves upon earlier Schnorr threshold schemes by performing signing operations in as few as ___ round(s) without limiting concurrency, or optimized to a single-round variant with preprocessing.
+**Statement:** FROST (Flexible Round-Optimized Schnorr Threshold Signatures) improves upon earlier Schnorr threshold schemes by performing online signing operations in as few as ___ round(s), while using preprocessing to reduce latency and support high concurrency.
 
 **Acceptable Answers:** ["two", "2"]
 
@@ -666,10 +666,10 @@
 - Security: Audit status documented in repository
 
 **zcash/frost-rs** (GitHub: zcash/frost-rs | License: MIT)
-- Description: Reference implementation of FROST (Flexible Round-Optimized Schnorr Threshold Signatures) in Rust, enabling single-round signing.
+- Description: Reference implementation of FROST (Flexible Round-Optimized Schnorr Threshold Signatures) in Rust, providing two-round threshold signing with support for preprocessing.
 - Stack: Rust, generic over curves
 - Maturity: Experimental (undergoing IETF standardization)
-- Performance: Single-round or two-round signing with preprocessing
+- Performance: Two-round signing with preprocessing and batching to minimize online latency
 - Security: Formal security proofs, threshold parameter flexibility
 
 ---

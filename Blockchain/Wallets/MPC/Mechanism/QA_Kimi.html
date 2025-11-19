@@ -743,7 +743,7 @@
                 <div>
                   <h4 class="font-medium text-slate-700 mb-3">Eliminating Single Points of Failure</h4>
                   <p class="text-slate-600 text-sm leading-relaxed">
-                    The primary strategic advantage of MPC in digital asset custody is its fundamental ability to eliminate single points of failure through distributed key shares. By cryptographically splitting the private key into multiple encrypted shares, MPC ensures that no single party ever possesses the complete private key.
+                    The primary strategic advantage of MPC in digital asset custody is its fundamental ability to eliminate single private-key points of failure at the cryptographic layer through distributed key shares. By cryptographically splitting the private key into multiple encrypted shares, MPC ensures that no single party ever possesses the complete private key, although operational processes and infrastructure must still be engineered to avoid introducing new organizational or technical single points of failure.
                     <a href="#ref-73" class="citation-link">[Ref: 73]</a>
                     <a href="#ref-72" class="citation-link">[Ref: 72]</a>
                   </p>
@@ -768,7 +768,7 @@
                 <div>
                   <h4 class="font-medium text-slate-700 mb-3">Enhancing Privacy and Reducing Fees</h4>
                   <p class="text-slate-600 text-sm leading-relaxed">
-                    MPC enables private transactions by obscuring transaction details from public mempools, preventing front-running and toxic MEV. The single-signature output also significantly reduces transaction fees compared to multi-signature alternatives.
+                    MPC itself operates at the key-management layer and does not hide transaction contents from public mempools, but when combined with private transaction relays, commit–reveal schemes, or specialized MEV-protection services it can help keep pre-trade details out of the public mempool and reduce front-running and toxic MEV. The threshold schemes used in MPC wallets still produce a single standard signature on-chain, which can be more fee-efficient than script-based multi-signature alternatives.
                     <a href="#ref-3" class="citation-link">[Ref: 3]</a>
                   </p>
                 </div>

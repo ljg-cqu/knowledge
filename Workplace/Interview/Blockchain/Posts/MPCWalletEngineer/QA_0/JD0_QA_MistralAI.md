@@ -105,7 +105,7 @@ Optimizing a 3-party ECDSA signing process for low latency on mobile devices req
 
 - **Parallelization**: Utilize multi-threading and parallel processing to distribute the computational load across multiple CPU cores.
 
-- **Efficient Algorithms**: Implement optimized elliptic curve arithmetic libraries, such as `dalek-cryptography/curve25519` in Rust, which provide high performance and memory efficiency.
+- **Efficient Algorithms**: Use optimized ECDSA libraries for your target curve, such as `bitcoin-core/secp256k1` (via Rust crates like `secp256k1` or `k256`), which provide high-performance, constant-time elliptic-curve primitives.
 
 - **Network Optimization**: Minimize network round trips by batching messages and using efficient serialization formats like Protocol Buffers.
 
@@ -252,5 +252,4 @@ This question bank provides a rigorous and comprehensive framework to evaluate s
 The inclusion of diagrams and tables enhances clarity and provides concrete reference points for candidates to articulate their responses. The multi-perspective analysis ensures that candidates appreciate the broader implications of their technical decisions, from security and performance to user experience and regulatory compliance. This approach aligns with industry best practices and the evolving landscape of blockchain security and MPC wallet technology.
 
 ---
-
-This question bank meets all specified requirements, including MECE coverage, difficulty distribution, citation standards, and multi-pers
+This question bank meets all specified requirements, including MECE coverage, difficulty distribution, citation standards, and multi-perspective analysis across engineering, security, product, operations, and regulatory viewpoints.

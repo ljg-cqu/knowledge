@@ -572,10 +572,10 @@ Based on the job requirements, I'll organize the assessment into 6 topic cluster
 **C1. [multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa) (GitHub: ZenGo-X/multi-party-ecdsa | License: GPL-3.0)**
 - Description: Rust implementation of threshold ECDSA signatures (GG18/GG20)
 - Stack: Rust, num-bigint, curv-kzen
-- Maturity: Production
-- Performance: Sub-second signing for 2-of-3 setup
-- Security: Audited by Kudelski Security (2021), actively maintained
-- Last update: October 2024
+- Maturity: Archived; no longer actively maintained by ZenGo (experimental/educational use only)
+- Performance: Historical benchmarks only; treat results as reference rather than current production performance
+- Security: Previously audited by Kudelski Security (2021); since archival it no longer receives security updates and should not be used as the sole production dependency
+- Last update: See GitHub repository; consult ZenGo's newer MPC codebases for production implementations
 
 **C2. [Solana](https://github.com/solana-labs/solana) (GitHub: solana-labs/solana | License: Apache-2.0)**
 - Description: High-performance blockchain supporting 65,000 TPS

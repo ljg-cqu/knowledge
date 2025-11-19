@@ -1,6 +1,6 @@
 # Guidelines for LLM-Friendly Prompts
 
-**Purpose:** Reduce hallucinations (↓30-60%), improve decision quality (↑60-80%). Self-contained prompts with complete context.
+**Purpose:** Ensure prompts communicate clearly and comprehensively, supporting deep understanding, informed decisions, and meaningful action with minimal need for clarification. Self-contained prompts with complete context that reduce hallucinations (↓30-60%) and improve decision quality (↑60-80%).
 
 **Application:** Apply comprehensively if ≥1: blocks decision, >5% impact, 1-6mo timeline, ≥2 stakeholders, ≥40h adoption cost. Otherwise apply selectively.
 

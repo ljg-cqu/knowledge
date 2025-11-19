@@ -1,6 +1,6 @@
 # Content Quality Check Guidelines
 
-**Purpose:** Ensure content communicates clearly and comprehensively with minimal need for clarification.
+**Purpose:** Ensure content communicates clearly and comprehensively, supporting deep understanding, informed decisions, and meaningful action with minimal need for clarification.
 
 **Application:** Apply comprehensively for high-impact, decision-critical, time-sensitive, multi-stakeholder, or effort-intensive content. Otherwise apply selectively.
 
