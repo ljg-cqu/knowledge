@@ -558,7 +558,7 @@ MPC wallets rely on open-source cryptographic libraries (ECDSA, EdDSA, threshold
 | Library | Adoption | Maintenance | Audit Status | Risk Level | Action |
 |---------|----------|-------------|--------------|-----------|--------|
 | secp256k1 | 95%+ (Bitcoin standard) | Active | Multiple | Low | Use directly |
-| Threshold ECDSA (FROST) | Emerging | Moderate | Limited | Medium | Audit before Q1 ship; budget 2 sprints |
+| Threshold Schnorr/EdDSA (FROST) | Emerging | Moderate | Limited | Medium | Audit before Q1 ship; budget 2 sprints |
 | ZK-SNARK frameworks | Growing | Inconsistent | Limited | High | Wait for stable release; don't ship in MVP |
 
 **Roadmap implications** [Ref: A1]:

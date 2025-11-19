@@ -369,17 +369,17 @@ Across all environments, continuous performance benchmarking and profiling are e
 - Repository URL: https://github.com/Safeheron/multi-party-sig-cpp
 
 **C2: ZenGo-X/multi-party-ecdsa** (Rust)
-- Stack/Modules: Rust implementation of {t,n}-threshold ECDSA, specifically noted for GG18.
-- Maturity: Unknown license, not explicitly stated last update, stable release status not specified.
-- Benchmarks: Not explicitly mentioned, but the project is part of ZenGo-X's efforts in multi-party ECDSA.
-- Security audit status: ZenGo's multi-party ECDSA underwent a security audit by Kudelski Security in October 2019.
+- Stack/Modules: Rust implementation of {t,n}-threshold ECDSA, including GG18/GG20-style protocols.
+- Maturity: GPL-3.0 license; repository explicitly marked as "no longer maintained" by ZenGo and intended for experimentation/education rather than production use.
+- Benchmarks: Historical benchmarks demonstrate sub-second 2-of-3 signing, but performance characteristics should be treated as reference only.
+- Security audit status: Previously audited by Kudelski Security (2019); however, because the repository is archived and no security updates or hotfixes are issued, it must not be relied on as a current production dependency.
 - Repository URL: https://github.com/ZenGo-X/multi-party-ecdsa
 
 **C3: bnb-chain/tss-lib** (Go)
-- Stack/Modules: Threshold Signature Scheme library for ECDSA, noted for GG18-like behavior and one-round signing options.
-- Maturity: Unknown license, last update not explicitly mentioned but implied to be actively maintained given release statement, stable release status not specified.
-- Benchmarks: Not explicitly mentioned.
-- Security audit status: Audited by security professionals.
+- Stack/Modules: Threshold Signature Scheme library for ECDSA and EdDSA, providing GG18/GG20-inspired multi-round protocols and supporting production MPC custody use cases.
+- Maturity: MIT-licensed, with tagged releases and active ecosystem usage; should be consumed via vetted, version-pinned releases.
+- Benchmarks: Public repositories and vendor blogs report production-grade performance; concrete numbers depend on configuration and hardware.
+- Security audit status: Audited by Kudelski Security (2019); subsequent timing-attack and replay-related CVEs (GO-2023-1732, GO-2023-1733, GO-2023-1867) mean deployments must track advisories, upgrade promptly, and enable constant-time mitigations.
 - Repository URL: https://github.com/bnb-chain/tss-lib
 
 **C4: ZcashFoundation/frost** (Rust)

@@ -84,7 +84,7 @@
 
 **Difficulty:** Intermediate
 
-**Statement:** The GG18 protocol implements threshold _____ signatures with identifiable abort.
+**Statement:** The GG18 protocol implements threshold _____ signatures for ECDSA-based blockchains.
 
 **Acceptable Answers:** ["ECDSA", "ecdsa"]
 
@@ -423,10 +423,10 @@
 **C1. [multi-party-ecdsa](https://github.com/ZenGo-X/multi-party-ecdsa) (GitHub: ZenGo-X/multi-party-ecdsa | License: GPL-3.0)**
 - Description: Rust implementation of GG18/GG20 threshold ECDSA protocols
 - Stack: Rust, curv-kzen, paillier
-- Maturity: Production-ready, actively maintained
-- Performance: Sub-second 2-of-3 threshold signing
-- Security: Audited by Kudelski Security (2021), no critical findings
-- Last update: October 2024
+- Maturity: Archived; no longer maintained by ZenGo (experimental/educational use only)
+- Performance: Sub-second 2-of-3 threshold signing in published benchmarks (historical)
+- Security: Previously audited by Kudelski Security (2021), but repository now marked "no longer maintained"; security updates and hotfixes are not provided
+- Last update: See GitHub repository; use only as a reference implementation, not as a production dependency
 
 **C2. [Rust](https://github.com/rust-lang/rust) (GitHub: rust-lang/rust | License: MIT/Apache-2.0)**
 - Description: Systems programming language with memory safety guarantees

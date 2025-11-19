@@ -34,10 +34,10 @@
 **Key Insight**: Distributed key generation (DKG) splits private keys into multiple shares held by different parties, reducing single points of failure and attracting institutional users by enhancing security and privacy.
 
 **Answer**:  
-DKG is a cryptographic protocol that splits a private key into multiple shares distributed among participants. This mechanism ensures that no single participant holds the entire key, significantly reducing the risk of key compromise. By distributing key management, MPC wallets eliminate single points of failure, making them attractive to institutions seeking enhanced security and privacy. The collaborative model aligns with blockchain\u2019s decentralized principles, promoting a democratic and secure digital asset ecosystem.  
+DKG is a cryptographic protocol that splits a private key into multiple shares distributed among participants. This mechanism ensures that no single participant holds the entire key, significantly reducing the risk of key compromise. By distributing key management, MPC wallets eliminate single private-key points of failure at the cryptographic layer, making them attractive to institutions seeking enhanced security and privacy; operational and organizational single points of failure must still be addressed in the surrounding system design. The collaborative model aligns with blockchain’s decentralized principles, promoting a democratic and secure digital asset ecosystem.  
 **Causal/Feedback Loops**:  
-- **+**: Increased security and privacy features attract more users and institutions \u2192 higher adoption rates and market growth.  
-- **+**: Higher adoption rates lead to more extensive network effects \u2192 enhanced overall security and reliability of the blockchain ecosystem.  
+- **+**: Increased security and privacy features attract more users and institutions → higher adoption rates and market growth.  
+- **+**: Higher adoption rates lead to more extensive network effects → enhanced overall security and reliability of the blockchain ecosystem.  
 **Metrics**: User adoption rates, institutional partnerships, market penetration.  
 **Blockchain Constraints**: Compatibility with various blockchain protocols, gas costs, transaction speeds.  
 **Citations**:   
@@ -55,7 +55,7 @@ Increasing the threshold (T) in a (T,N) MPC wallet means requiring more particip
 - **+**: Higher T reduces collusion risk \u2192 more institutional stakers \u2192 higher TVL.  
 - **-**: Higher T increases gas costs and failed transactions \u2192 user churn \u2192 lower fees for nodes.  
 **Metrics**: Collusion risk reduction, gas cost increase, user churn rate.  
-**Blockchain Constraints**: Byzantine nodes >33% break liveness, gas costs.  
+**Blockchain Constraints**: In many BFT-style consensus designs, liveness can be affected once the fraction of Byzantine validators exceeds roughly one-third of total stake; concrete thresholds and failure modes depend on the specific chain, and gas costs must also be taken into account.  
 **Citations**:   
 **Artifact**: Table comparing T values, collusion risk, gas costs, and user churn.
 
@@ -79,18 +79,22 @@ Threshold Signature Schemes (TSS) split a private key into multiple shares and r
 
 ## Retention Mechanisms
 
-### F2: How do recovery mechanisms in MPC wallets ensure business continuity and user retention?
+### F2: How do recovery mechanisms in MPC wallets support business continuity and user retention?
 
-**Key Insight**: Recovery mechanisms prevent permanent loss of funds and maintain user trust by enabling transaction signing with partial key fragments.
+**Key Insight**: Recovery mechanisms are designed to reduce the risk of permanent loss of funds and support business continuity by allowing transactions to remain signable as long as a sufficient threshold of key shares is available.
 
-**Answer**:  
-MPC wallets employ recovery mechanisms such as moving funds to a dedicated address or using Threshold Signature Schemes (TSS) to sign transactions with partial key fragments. These mechanisms ensure that even if a member loses their key fragment, transactions can still be signed, preventing permanent loss of funds and maintaining user trust. This enhances user satisfaction and retention by providing a safety net and ensuring business continuity.  
-**Causal/Feedback Loops**:  
-- **+**: Effective recovery mechanisms increase user trust and satisfaction \u2192 higher retention rates.  
-- **+**: Recovery mechanisms prevent permanent loss of funds \u2192 sustained user engagement and retention.  
-**Metrics**: User retention rates, key recovery success rates, user satisfaction scores.  
-**Blockchain Constraints**: Key refresh intervals, compatibility with various blockchain protocols.  
-**Citations**:   
+**Answer**:
+MPC wallets can employ recovery mechanisms such as moving funds to a dedicated recovery address or using Threshold Signature Schemes (TSS) to sign transactions with a threshold of key shares. In a typical \(t\)-of-\(n\) design, as long as at least \(t\) independent share-holders remain honest and online, the wallet can continue to produce valid signatures even if some participants lose their devices or key shares. Compared with a single-key wallet, this substantially reduces the probability of permanent fund loss under the assumed threat model and gives operations more room to respond to local failures.
+
+At the same time, recovery is not automatically guaranteed: it still depends on correct protocol implementation, sound operational processes, and effective coordination between parties. A more robust posture combines MPC-based recovery with practices such as geographically distributed backups, regularly exercised recovery runbooks, and auditable change control. Together, these layers lower the practical risk of catastrophic loss and tend to increase user confidence and long-term retention.
+
+**Causal/Feedback Loops**:
+- **+**: Well-designed and regularly tested recovery procedures increase confidence in asset recoverability \u2192 higher retention.
+- **+**: Threshold signing and multi-party custody reduce single-point failure risk \u2192 sustained user engagement and stickiness.
+
+**Metrics**: User retention rates, key recovery success rates, user satisfaction scores, frequency and outcome of recovery drills.
+**Blockchain Constraints**: Key refresh intervals, compatibility with target chains, and on-chain cost of recovery or migration transactions.
+**Citations**:  
 **Artifact**: Diagram of recovery mechanisms in MPC wallets.
 
 ---
@@ -160,7 +164,7 @@ MPC node operators in a decentralized custody network are incentivized by transa
 - **+**: Transaction fees incentivize nodes to participate and maintain high uptime \u2192 enhanced network security and reliability.  
 - **-**: Slashing mechanisms disincentivize malicious behavior \u2192 reduced risk of node collusion and improved network security.  
 **Metrics**: Node uptime, transaction fee revenue, slashing events.  
-**Blockchain Constraints**: Byzantine nodes >33% break liveness, gas costs.  
+**Blockchain Constraints**: Many BFT-style consensus protocols lose their formal liveness guarantees once Byzantine stake rises above roughly one-third; exact limits and behavior depend on the underlying blockchain, and gas costs remain a practical constraint.  
 **Citations**:   
 **Artifact**: Diagram of economic incentives and disincentives for MPC node operators.
 

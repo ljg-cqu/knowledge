@@ -126,7 +126,7 @@
 
 **Difficulty:** Foundational
 
-**Statement:** EdDSA (Edwards-curve Digital Signature Algorithm) uses Curve25519 for ___ and Curve448 for ___ implementations, providing post-quantum considerations and deterministic signature generation.
+**Statement:** EdDSA (Edwards-curve Digital Signature Algorithm) uses Curve25519 for ___ and Curve448 for ___ implementations, providing strong classical security and deterministic signature generation.
 
 **Acceptable Answers:** ["Ed25519", "Ed448"]
 

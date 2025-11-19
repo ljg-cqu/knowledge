@@ -58,16 +58,16 @@ Feldman’s Verifiable Secret Sharing (VSS) extends SSS by introducing cryptogra
 
 ---
 
-### Q3: Analyze the trade-offs between GG18 and FROST threshold signature schemes in terms of round complexity, security assumptions, and compatibility with Schnorr signatures.
+### Q3: Analyze the trade-offs between GG18 and FROST threshold signature schemes in terms of round complexity, security assumptions, and compatibility with Schnorr/EdDSA signatures.
 
 **Difficulty**: Advanced | **Type**: Theoretical
 
 **Answer**:  
-GG18 and FROST are two prominent threshold signature schemes (TSS) used in MPC wallets. GG18 is a one-round protocol that supports threshold ECDSA signatures and is widely adopted due to its simplicity and efficiency. However, GG18 assumes a semi-honest adversary model and may be vulnerable to certain attacks if malicious parties collude.
+GG18 and FROST are two prominent threshold signature schemes (TSS) used in MPC wallets. GG18 is an early general-purpose threshold ECDSA protocol that supports t-of-n signing but requires multiple communication rounds (around 8–9 rounds in common instantiations), which can make it latency-sensitive in practice. It also has known pitfalls (e.g., bias attacks and Paillier-parameter validation issues) that later work such as GG20 and CGGMP address.
 
-FROST, on the other hand, is a two-round protocol that provides stronger security guarantees, including malicious security thresholds and compatibility with Schnorr signatures. The additional round in FROST increases communication overhead but enhances security by reducing the risk of rogue-key attacks and other vulnerabilities present in one-round protocols. FROST’s compatibility with Schnorr signatures makes it well-suited for blockchains like Bitcoin and Solana, which use Schnorr-based signatures .
+FROST, on the other hand, is a two-round protocol for Schnorr/EdDSA-style signatures. It provides strong security guarantees under standard assumptions while significantly reducing online round complexity compared to multi-round ECDSA TSS. The extra preprocessing required for FROST can often be moved off the critical path, so the two interactive rounds dominate latency. FROST’s compatibility with Schnorr/EdDSA signatures makes it well-suited for blockchains like Bitcoin Taproot and Solana that adopt these schemes .
 
-**Key Insight**: The choice between GG18 and FROST involves a trade-off between round complexity, security strength, and signature compatibility, with FROST offering stronger security at the cost of higher communication overhead.
+**Key Insight**: The choice between GG18 and FROST involves a trade-off between round complexity, protocol maturity, and signature compatibility—GG18 targets ECDSA with higher round complexity, while FROST targets Schnorr/EdDSA with two-round online signing and different implementation trade-offs.
 
 ---
 
@@ -237,7 +237,7 @@ MPC wallets must comply with several regulatory frameworks:
 | Feature                  | Description                              | Trade-offs / Considerations                         |
 |--------------------------|----------------------------------------|----------------------------------------------------|
 | **MPC vs. Multi-Sig**    | Off-chain vs. on-chain signing          | MPC: lower cost, no smart contract overhead         |
-| **GG18 vs. FROST**       | One-round vs. two-round protocol        | FROST: stronger security, higher communication cost |
+| **GG18 vs. FROST**       | Multi-round ECDSA vs. two-round Schnorr/EdDSA | FROST: simpler two-round online signing, but different curve/chain support |
 | **Cross-Chain Support**  | ECDSA, EdDSA signature compatibility    | Requires protocol-agnostic design and adapters      |
 | **Security**             | Protection against rogue-key, side-channel attacks | Requires key validation, secure enclaves, proactive security |
 | **Performance**          | Latency optimization for mobile         | Pre-computation, parallelization, hardware acceleration |
