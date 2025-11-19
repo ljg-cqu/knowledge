@@ -15,6 +15,7 @@ Rules:
 - Each question should help the reader understand a situation better and choose what to do next in practice.
  - Answers may use short lists, tiny tables, or compact code/formula/mermaid blocks when they make the decision or trade‑offs clearer; keep them minimal.
  - Make each question self-contained; include only the minimal context needed to understand the situation without the source text.
+ - Use only information stated or implied in the source text; do not invent facts or change the original meaning or terminology.
 
 Output (Markdown list only):
 - `Q: ...`  (scenario + decision question)

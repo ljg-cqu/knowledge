@@ -13,6 +13,7 @@ Rules:
 - Answer: briefly (a) identify the issue, (b) explain why, (c) show the corrected version.
  - Questions and answers may include short code/config snippets, formulas, or small tables/diagrams when needed to illustrate and correct the error; keep them minimal.
  - Include only the minimal portion of the flawed content needed so the card is self-contained and understandable without the source text.
+ - Use only information stated or implied in the source text; do not invent new flaws or corrections that are not consistent with it.
 
 Output (Markdown list only):
 - `Q: ...`  (contains the flawed content + debug question)
