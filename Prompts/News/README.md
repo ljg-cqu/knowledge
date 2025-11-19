@@ -53,6 +53,14 @@ This directory contains a **MECE-compliant** (Mutually Exclusive, Collectively E
 | **OpsSupply.md** | Growth/Scale (post-PMF) | Operations | Immediate-Medium (0-12mo) | Monthly | Manufacturing, production, logistics, procurement, inventory, facilities, safety, resilience |
 | **PeopleWF.md** | Growth/Scale (post-PMF) | People/Workforce | Short-Medium (1-24mo) | Monthly | Talent markets, skills, compensation & benefits, labor law, culture, engagement, wellbeing |
 
+### Optional Aggregator (Non-MECE): General Front-Page
+
+In addition to the 8 MECE base files above, the `General` prompt provides a **cross-functional front-page briefing**:
+
+| File | Org Stage | Function | Time Horizon | Update Freq | Scope |
+|------|-----------|----------|--------------|-------------|-------|
+| **General/QA.md** | Formation + Growth/Scale (aggregated) | Cross-functional (aggregator) | Matches underlying domains | Bi-weekly or Monthly | Front-page view: 8 decision-critical Q&As per cycle, exactly 1 per News domain (Startup, TechOps, ProdMarket, CommOps, FinEcon, StratIntel, OpsSupply, PeopleWF). Derived aggregator; no new coverage introduced. |
+
 ## MECE Compliance Verification
 
 ### 1. Mutually Exclusive (No Overlaps)

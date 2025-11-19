@@ -786,116 +786,30 @@
           <!-- Cross-Chain Interoperability -->
           <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200 mb-12">
             <h3 class="font-serif text-xl font-medium mb-6 text-slate-800">Cross-Chain Interoperability and Bridge Security</h3>
-
-            <div class="prose prose-slate max-w-none">
-              <p class="text-slate-600 leading-relaxed mb-6">
-                Cross-chain interoperability is one of the most critical and challenging problems in the blockchain space, and Multi-Party Computation (MPC) offers a compelling solution for building more secure and trust-minimized bridges. Traditional cross-chain bridges often rely on a small, trusted set of validators, creating significant centralization risk. MPC-based bridges mitigate this risk by distributing signing authority across a larger, more decentralized network of nodes.
-                <a href="#ref-1" class="citation-link">[Ref: 1]</a>
-                <a href="#ref-2" class="citation-link">[Ref: 2]</a>
-              </p>
-
-              <div class="bg-slate-50 p-6 rounded-lg">
-                <h4 class="font-medium text-slate-800 mb-3">MPC Bridge Security Advantages</h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div class="text-center">
-                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <i class="fas fa-shield-alt text-white"></i>
-                    </div>
-                    <h5 class="font-medium text-slate-700 text-sm mb-1">Distributed Security</h5>
-                    <p class="text-slate-600 text-xs">No single point of failure across multiple nodes</p>
-                  </div>
-                  <div class="text-center">
-                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <i class="fas fa-users text-white"></i>
-                    </div>
-                    <h5 class="font-medium text-slate-700 text-sm mb-1">Trust Minimization</h5>
-                    <p class="text-slate-600 text-xs">Reduced reliance on centralized validator sets</p>
-                  </div>
-                  <div class="text-center">
-                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <i class="fas fa-exchange-alt text-white"></i>
-                    </div>
-                    <h5 class="font-medium text-slate-700 text-sm mb-1">Operational Efficiency</h5>
-                    <p class="text-slate-600 text-xs">Faster and more flexible cross-chain transactions</p>
-                  </div>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              MPC-based bridges custody assets using distributed key shares on the source chain. This reduces reliance on any single signing device, but overall bridge safety still depends on robust bridge architecture, monitoring, Total Value Locked (TVL) limits, and clear incident response processes.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              <div class="text-center">
+                <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-shield-alt text-white"></i>
                 </div>
+                <h5 class="font-medium text-slate-700 text-sm mb-1">Distributed Security</h5>
+                <p class="text-slate-600 text-xs">No single signing device holds the full private key</p>
               </div>
-            </div>
-          </div>
-
-          <!-- Comparison with Alternative Techniques -->
-          <h3 class="font-serif text-2xl font-medium mb-8 text-slate-700">Comparison with Alternative Cryptographic Techniques</h3>
-
-          <div class="space-y-8">
-            <!-- MPC vs Multi-Sig -->
-            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
-              <h4 class="font-serif text-xl font-medium mb-6 text-slate-800">MPC vs. Multi-Signature: On-Chain Footprint and Privacy</h4>
-
-              <div class="prose prose-slate max-w-none">
-                <p class="text-slate-600 leading-relaxed mb-6">
-                  The most fundamental difference between MPC and Multi-Signature schemes lies in the nature of the cryptographic output. A multi-signature wallet requires multiple distinct private keys and produces multiple distinct signatures on-chain, while an MPC wallet splits a single private key and produces a single, standard signature indistinguishable from a traditional single-key wallet.
-                  <a href="#ref-98" class="citation-link">[Ref: 98]</a>
-                  <a href="#ref-100" class="citation-link">[Ref: 100]</a>
-                </p>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-4 bg-slate-50 rounded-lg">
-                  <h5 class="font-medium text-slate-800 mb-3">Multi-Signature Limitations</h5>
-                  <ul class="text-slate-700 text-sm space-y-2">
-                    <li>\u2022 Reveals governance structure on-chain</li>
-                    <li>\u2022 Larger transaction size and higher fees</li>
-                    <li>\u2022 Requires smart contract support</li>
-                    <li>\u2022 Limited compatibility with some dApps</li>
-                  </ul>
+              <div class="text-center">
+                <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-users text-white"></i>
                 </div>
-                <div class="p-4 bg-teal-50 rounded-lg">
-                  <h5 class="font-medium text-teal-800 mb-3">MPC Advantages</h5>
-                  <ul class="text-teal-700 text-sm space-y-2">
-                    <li>\u2022 Complete privacy of signing process</li>
-                    <li>\u2022 Constant transaction size and cost</li>
-                    <li>\u2022 Universal blockchain compatibility</li>
-                    <li>\u2022 Seamless integration with existing infrastructure</li>
-                  </ul>
-                </div>
+                <h5 class="font-medium text-slate-700 text-sm mb-1">Trust Minimization</h5>
+                <p class="text-slate-600 text-xs">Reduced reliance on centralized validator sets</p>
               </div>
-            </div>
-
-            <!-- MPC vs HSMs -->
-            <div class="bg-white rounded-lg p-8 shadow-sm border border-slate-200">
-              <h4 class="font-serif text-xl font-medium mb-6 text-slate-800">MPC vs. Hardware Security Modules: Flexibility vs. Physical Security</h4>
-
-              <div class="prose prose-slate max-w-none">
-                <p class="text-slate-600 leading-relaxed mb-6">
-                  The comparison between MPC and Hardware Security Modules (HSMs) represents a trade-off between cryptographic flexibility and physical security. HSMs provide tamper-resistant hardware protection but represent a single point of failure, while MPC offers distributed security with greater operational flexibility.
-                  <a href="#ref-76" class="citation-link">[Ref: 76]</a>
-                  <a href="#ref-75" class="citation-link">[Ref: 75]</a>
-                  <a href="#ref-73" class="citation-link">[Ref: 73]</a>
-                </p>
-              </div>
-
-              <div class="bg-slate-50 p-6 rounded-lg">
-                <h5 class="font-medium text-slate-800 mb-4">Strategic Trade-off Analysis</h5>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h6 class="font-medium text-slate-700 mb-2">HSMs</h6>
-                    <ul class="text-slate-600 text-sm space-y-1">
-                      <li>\u2022 <strong>Strength:</strong> Physical tamper resistance</li>
-                      <li>\u2022 <strong>Weakness:</strong> Single point of failure</li>
-                      <li>\u2022 <strong>Limitation:</strong> Requires physical access</li>
-                      <li>\u2022 <strong>Best for:</strong> Long-term cold storage</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h6 class="font-medium text-slate-700 mb-2">MPC</h6>
-                    <ul class="text-slate-600 text-sm space-y-1">
-                      <li>\u2022 <strong>Strength:</strong> Distributed security model</li>
-                      <li>\u2022 <strong>Advantage:</strong> Operational flexibility</li>
-                      <li>\u2022 <strong>Benefit:</strong> Remote management capability</li>
-                      <li>\u2022 <strong>Best for:</strong> Active trading and DeFi</li>
-                    </ul>
-                  </div>
+              <div class="text-center">
+                <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-exchange-alt text-white"></i>
                 </div>
+                <h5 class="font-medium text-slate-700 text-sm mb-1">Operational Efficiency</h5>
+                <p class="text-slate-600 text-xs">More flexible cross-chain routing and operations</p>
               </div>
             </div>
           </div>

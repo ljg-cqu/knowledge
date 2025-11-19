@@ -23,7 +23,7 @@
 > - Prioritizes decentralized custody, privacy-preserving DeFi, MEV protection, and cross-chain interoperability via MPC.  
 
 > **Note on status and quantitative statements**
-> 本文件可以视为早期的机制问答草案与结构说明，许多问题的回答在后续文件（如 `QA_ClaudeOpus.md`、`QA_DeepSeek.md`、`QA_GPT5.1HighReasoning.md` 等）中已有更系统的扩展与引用支持。文中涉及的百分比、风险概率、费用与收益等量化表述，如未注明外部数据来源，均应理解为**示例性建模假设**，仅适合用于思考与讨论，而不宜直接当作生产环境或市场真实数据使用。
+本文件可以视为早期的机制问答草案与结构说明，许多问题的回答在后续文件（如 `QA_ClaudeOpus.md`、`QA_DeepSeek.md`、`QA_GPT5.1HighReasoning.md` 等）中已有更系统的扩展与引用支持。文中涉及的百分比、风险概率、费用与收益等量化表述，如未注明外部数据来源，均应理解为**示例性建模假设**，仅适合用于思考与讨论，而不宜直接当作生产环境或市场真实数据使用。
 
 ---
 
@@ -31,10 +31,11 @@
 
 ### F1: How does distributed key generation in MPC wallets enhance institutional adoption and market growth?
 
-**Key Insight**: Distributed key generation (DKG) splits private keys into multiple shares held by different parties, reducing single points of failure and attracting institutional users by enhancing security and privacy.
+**Key Insight**: Distributed key generation (DKG) jointly creates a logical private key as secret shares across multiple parties, reducing single-node key exposure and attracting institutional users by enhancing security and privacy.
 
 **Answer**:  
-DKG is a cryptographic protocol that splits a private key into multiple shares distributed among participants. This mechanism ensures that no single participant holds the entire key, significantly reducing the risk of key compromise. By distributing key management, MPC wallets eliminate single private-key points of failure at the cryptographic layer, making them attractive to institutions seeking enhanced security and privacy; operational and organizational single points of failure must still be addressed in the surrounding system design. The collaborative model aligns with blockchain’s decentralized principles, promoting a democratic and secure digital asset ecosystem.  
+DKG is a cryptographic protocol in which parties jointly generate secret shares that represent a private key, without ever materializing the full key at a single location. This mechanism ensures that no single participant holds the entire key, significantly reducing the risk of key compromise. By distributing key management, MPC wallets eliminate single private-key points of failure at the cryptographic layer, making them attractive to institutions seeking enhanced security and privacy; operational and organizational single points of failure must still be addressed in the surrounding system design. The collaborative model aligns with blockchain’s decentralized principles, promoting a democratic and secure digital asset ecosystem.
+
 **Causal/Feedback Loops**:  
 - **+**: Increased security and privacy features attract more users and institutions → higher adoption rates and market growth.  
 - **+**: Higher adoption rates lead to more extensive network effects → enhanced overall security and reliability of the blockchain ecosystem.  

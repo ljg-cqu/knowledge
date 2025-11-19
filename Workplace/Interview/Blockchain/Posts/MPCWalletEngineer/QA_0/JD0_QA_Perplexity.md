@@ -241,7 +241,7 @@ FROST (**Flexible Round-Optimized Schnorr Threshold** signatures) is a threshold
 
 **Compatibility constraints:**
 
-1. **Bitcoin Taproot only:** Schnorr is standardized on Bitcoin via Taproot (BIP-341), but Ethereum and most EVM chains still use ECDSA (secp256k1). FROST wallets supporting Ethereum require adapter layers that convert FROST signatures to ECDSA-compatible formats, introducing overhead [Ref: C4].
+1. **Bitcoin Taproot first-class; EVM chains require custom verification:** Schnorr is standardized on Bitcoin via Taproot (BIP-341), but Ethereum and most EVM chains still only support secp256k1/ECDSA at the protocol level. 在以太坊上直接使用FROST，通常需要在合约中增加Schnorr/EdDSA验证逻辑，或部署支持Schnorr的专用L2/侧链，而不是简单地“将FROST签名转换为ECDSA”。这会引入额外的合约复杂度和Gas成本 [Ref: C4].
 
 2. **Private key derivation:** BIP-32 hierarchical deterministic wallets are standardized for ECDSA (secp256k1). FROST uses Ed25519 or other Edwards curves, requiring parallel BIP-32-like derivation schemes (SLIP-10). Wallets must manage both HD trees if supporting multiple curves [Ref: A10].
 
