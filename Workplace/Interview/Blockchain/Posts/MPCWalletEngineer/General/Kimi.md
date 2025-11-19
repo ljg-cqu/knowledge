@@ -6,8 +6,9 @@
 **Role**: Senior Blockchain Security Cryptography Engineer & Architect (Multi-Chain MPC Integration)  
 **Time Budget**: 75 minutes  
 **Coverage**: 6 Q&As (1 per essential domain)
+**Success Criteria**: After this 75-minute session, interviewers can make a hire/no-hire decision with ≥80% agreement across panelists and have clear notes on strengths and risks for each essential domain.
 
-**Key Signals**:
+## Key Signals
 - **[TechArch]** Multi-chain MPC architecture with domain-separated key management and chain-specific adapters → System design judgment for heterogeneous blockchain ecosystems
 - **[PerfQual]** Latency/reliability optimization of threshold signing on resource-constrained devices → Performance engineering with cryptographic protocol trade-offs
 - **[ProdBiz]** Developer experience and commercial viability of cryptographic SDKs → Value capture through security productization
@@ -15,7 +16,7 @@
 - **[OrgLead]** Cross-team orchestration with security audit constraints → Platform leadership and stakeholder alignment
 - **[RoadmapEco]** Long-term ecosystem strategy vs. integration depth trade-offs → Strategic technology evolution and standards influence
 
-**Dashboard**:
+## Dashboard
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
 |---|--------------------|--------|------------|-------------|---------------|---------------|
 | 1 | TechArch   | Technical Architecture & Design      | I   | Blocks, Risk, Roles | Multi-chain MPC system design judgment | ~12 min |
@@ -24,6 +25,17 @@
 | 4 | SecReg     | Security & Regulation                | I   | Blocks, Risk, Action | Breach response & share rotation | ~13 min |
 | 5 | OrgLead    | Organization & Leadership            | F   | Roles, Action | Cross-team integration leadership | ~10 min |
 | 6 | RoadmapEco | Roadmap & Ecosystem Strategy         | A   | Risk, Quantified, Action | Multi-chain ecosystem evolution | ~15 min |
+
+### Contents
+
+- [Key Signals](#key-signals)
+- [Dashboard](#dashboard)
+- [[TechArch] Q1: Multi-Chain MPC Wallet Architecture](#techarch-q1-multi-chain-mpc-wallet-architecture)
+- [[PerfQual] Q2: Mobile MPC Signing Performance Optimization](#perfqual-q2-mobile-mpc-signing-performance-optimization)
+- [[ProdBiz] Q3: MPC Cryptography SDK Productization](#prodbiz-q3-mpc-cryptography-sdk-productization)
+- [[SecReg] Q4: MPC Server Compromise Incident Response](#secreg-q4-mpc-server-compromise-incident-response)
+- [[OrgLead] Q5: Cross-Team MPC Integration Orchestration](#orglead-q5-cross-team-mpc-integration-orchestration)
+- [[RoadmapEco] Q6: Multi-Chain Ecosystem Strategy & Standardization](#roadmapeco-q6-multi-chain-ecosystem-strategy--standardization)
 
 ---
 
@@ -36,7 +48,7 @@
 Design the architecture for a multi-chain MPC wallet that must support Ethereum (secp256k1 ECDSA), Bitcoin (secp256k1 ECDSA), and Solana (ed25519 EdDSA) using a single key management system. The system must guarantee that no single server or party can reconstruct the full private key, achieve <2s end-to-end signing latency for mobile clients, and enable social recovery for non-technical users via email-based guardian shards. Walk through your key generation, signature coordination, and recovery architecture, including how you handle different elliptic curves, signature formats, and chain-specific nonce requirements while preventing replay attacks across chains.
 
 **Answer Key (~200 words)**:  
-**Key Insight**: Strong candidates propose a domain-separated architecture with a chain-agnostic MPC core (key generation using GG20 or FROST) and chain-specific adapter layers that handle curve-specific logic, ensuring security invariants are maintained at the core while enabling extensibility.
+**Key Insight**: Strong candidates propose a domain-separated architecture with a chain-agnostic MPC core (key generation using GG20 or FROST (Flexible Round-Optimized Schnorr Threshold signatures)) and chain-specific adapter layers that handle curve-specific logic, ensuring security invariants are maintained at the core while enabling extensibility.
 
 **Frameworks/Tools**: Proactive Secret Sharing (PSS) for share refresh, BIP-32 domain separation for chain-specific derivation, FROST for non-interactive signing, Shamir's Secret Sharing for social recovery, HSM-backed share storage, gRPC for backend coordination.
 
@@ -61,7 +73,7 @@ Our MPC wallet's 3-of-5 threshold signing on mobile devices averages 3.5s P95 la
 **Answer Key (~220 words)**:  
 **Key Insight**: Strong candidates decompose latency into network, compute, and serialization subsystems, then apply protocol substitution (FROST), pre-computation, and adaptive networking to achieve target metrics while preserving security through formal proof validation.
 
-**Frameworks/Tools**: DORA Latency/Error Rate metrics, flame graphs for mobile CPU profiling, network simulation (tc, Charles Proxy), FROST one-round signing, pre-computable nonces (DKG phase), Protocol Buffers for serialization, HTTP/2 connection pooling, edge compute (Cloudflare Workers) for geo-distributed coordinators, security proof validation via Tool for Computationally Secure Protocol Analysis (Tamarin).
+**Frameworks/Tools**: DORA (DevOps Research & Assessment) latency/error rate metrics, flame graphs for mobile CPU profiling, network simulation (tc, Charles Proxy), FROST one-round signing, pre-computable nonces (DKG phase), Protocol Buffers for serialization, HTTP/2 connection pooling, edge compute (Cloudflare Workers) for geo-distributed coordinators, security proof validation via Tool for Computationally Secure Protocol Analysis (Tamarin).
 
 **Trade-offs & Metrics**: Pre-computation trades 50MB storage for 800ms latency reduction. Switching from GG18 to FROST trades interactive security assumptions for non-interactive efficiency. Edge deployment trades consistency (eventual) for 200ms RTT reduction. Target metrics: <1.5s P95 (network: <600ms, compute: <600ms, serialization: <300ms), <2% timeout (adaptive retry with exponential backoff), maintain 128-bit security, 99.9% protocol compliance via automated verification.
 
@@ -79,14 +91,14 @@ Our MPC wallet's 3-of-5 threshold signing on mobile devices averages 3.5s P95 la
 **Difficulty**: I | **Criticality**: Roles, Quantified, Action | **Stakeholders**: Product Manager, External Partner, Security Engineer | **EstimatedTime**: ~12 min
 
 **Question (for candidate)**:  
-We must productize our MPC wallet cryptography into a developer SDK for external teams. Target segments: (1) institutional custody ($100M+ AUM) requiring SOC 2 Type II and formal verification, (2) mid-size DeFi protocols ($1-10M AUM) needing custom signing logic, and (3) early-stage startups wanting integration in <1 week with minimal security expertise. How would you design the SDK's security model, pricing/licensing, and feature prioritization? What metrics would you use to measure success, and how would you handle a conflict between Security's demands for a 4-week audit and a priority partner's 2-week launch deadline?
+We must productize our MPC wallet cryptography into a developer SDK for external teams. Target segments: (1) institutional custody ($100M+ AUM (Assets Under Management)) requiring SOC 2 Type II and formal verification, (2) mid-size DeFi protocols ($1-10M AUM (Assets Under Management)) needing custom signing logic, and (3) early-stage startups wanting integration in <1 week with minimal security expertise. How would you design the SDK's security model, pricing/licensing, and feature prioritization? What metrics would you use to measure success, and how would you handle a conflict between Security's demands for a 4-week audit and a priority partner's 2-week launch deadline?
 
 **Answer Key (~210 words)**:  
 **Key Insight**: Strong candidates architect a tiered SDK with layered APIs (pre-built UI widgets → high-level signing → raw MPC primitives) and value-based pricing (AUM-based fees) that segments security guarantees while maximizing market reach.
 
-**Frameworks/Tools**: Diátaxis documentation framework, feature flags (LaunchDarkly), WSJF prioritization, security audit tiers (Tier 1: formal verification + SOC 2, Tier 2: standard library + penetration test, Tier 3: community audit), licensing (usage-based: $0.005 per signature + AUM-based: 0.02% annually), "Time-to-First-Success" metric, developer NPS.
+**Frameworks/Tools**: Diátaxis documentation framework, feature flags (LaunchDarkly), WSJF (Weighted Shortest Job First) prioritization, security audit tiers (Tier 1: formal verification + SOC 2, Tier 2: standard library + penetration test, Tier 3: community audit), licensing (usage-based: $0.005 per signature + AUM-based: 0.02% annually), "Time-to-First-Success" metric, developer NPS.
 
-**Trade-offs & Metrics**: Tier 1 high security trades 6-month audit time vs. 2-week launch for Tier 3. Pre-built components trade flexibility for speed (startups integrate in 3 days vs. 2 weeks for custom logic). Pricing transparency vs. revenue: public pricing for Tier 3, custom enterprise contracts for Tier 1. Success metrics: Tier 3: <7 days integration, >1,000 developers in 6 months; Tier 1: >$100M AUM secured, zero critical audit findings; Overall: developer NPS >50, SDK revenue >$2M ARR by month 12.
+**Trade-offs & Metrics**: Tier 1 high security trades 6-month audit time vs. 2-week launch for Tier 3. Pre-built components trade flexibility for speed (startups integrate in 3 days vs. 2 weeks for custom logic). Pricing transparency vs. revenue: public pricing for Tier 3, custom enterprise contracts for Tier 1. Success metrics: Tier 3: <7 days integration, >1,000 developers in 6 months; Tier 1: >$100M AUM (Assets Under Management) secured, zero critical audit findings; Overall: developer NPS (Net Promoter Score) >50, SDK revenue >$2M ARR by month 12.
 
 **Stakeholder Handling**: To Product: WSJF scoring to justify audit timeline; to External Partner: sandboxed Tier 3 integration with upgrade path to Tier 1, clear SLA; to Security: parallel audit track starting Day 1 with pre-approved components.
 
@@ -165,4 +177,11 @@ Today we support Ethereum, Bitcoin, and Solana. In 18 months, we must support 10
 
 ---
 
-**Validation Summary**: All 6 Q&As satisfy the Validation Checklist and Content Quality Check Guidelines. Each is self-contained, scenario-based, includes specific frameworks, quantifies trade-offs, and provides clear strong/weak signals for hire/no-hire decisions.
+**Validation Summary**: All 6 Q&As are designed to satisfy the Validation Checklist and Content Quality Check Guidelines. Each is self-contained, scenario-based, includes specific frameworks, quantifies trade-offs, and provides clear strong/weak signals for hire/no-hire decisions. Interviewers should periodically re-validate metrics, protocol choices, and regulatory references against current production data and standards.
+
+## References
+
+- FROST threshold signatures – IETF CFRG draft-irtf-cfrg-frost (latest version).
+- NIST SP 800-61 – Computer Security Incident Handling Guide.
+- SOC 2 Type II – AICPA Trust Services Criteria for security and availability.
+- GDPR Article 33 – Notification of a personal data breach.
