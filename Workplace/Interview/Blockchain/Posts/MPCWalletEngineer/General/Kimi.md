@@ -6,7 +6,15 @@
 **Role**: Senior Blockchain Security Cryptography Engineer & Architect (Multi-Chain MPC Integration)  
 **Time Budget**: 75 minutes  
 **Coverage**: 6 Q&As (1 per essential domain)  
-**Success Criteria**: After this 75-minute session, interviewers can make a hire/no-hire decision with ≥80% agreement across panelists and have clear notes on strengths and risks for each essential domain.
+**Success Criteria**: After this 75-minute session, interviewers can make a hire/no-hire decision with ≥80% agreement across panelists and have clear notes on strengths and risks for each essential domain. Recommended hire: ≥4/6 domains rated Strong and no domains rated Weak on **TechArch** or **SecReg**.
+
+## Context & Assumptions
+
+- **Scope**: Front-page 75-minute technical screen; deeper protocol/code reviews, culture fit, and HR processes happen in later stages.  
+- **Candidate profile**: 7+ years in applied cryptography/blockchain with hands-on experience implementing at least one MPC/TSS protocol.  
+- **Panel**: 2–3 interviewers (e.g., Security Engineer, Backend Engineer, Product Manager).  
+- **Environment**: Production-grade multi-chain custody / MPC wallet platform.  
+- **Out of scope**: Detailed code walkthroughs, pure frontend/UI skills, and HR/culture-fit evaluation.  
 
 ## Glossary
 
@@ -88,9 +96,9 @@
 Design the architecture for a multi-chain MPC wallet that must support Ethereum (secp256k1 ECDSA), Bitcoin (secp256k1 ECDSA), and Solana (ed25519 EdDSA) using a single key management system. The system must guarantee that no single server or party can reconstruct the full private key, achieve <2s end-to-end signing latency for mobile clients, and enable social recovery for non-technical users via email-based guardian shards. Walk through your key generation, signature coordination, and recovery architecture, including how you handle different elliptic curves, signature formats, and chain-specific nonce requirements while preventing replay attacks across chains.
 
 **Answer Key (~200 words)**:  
-**Key Insight**: Strong candidates propose a domain-separated architecture with a chain-agnostic MPC core (key generation using GG20 or FROST (Flexible Round-Optimized Schnorr Threshold signatures)) and chain-specific adapter layers that handle curve-specific logic, ensuring security invariants are maintained at the core while enabling extensibility.
+**Key Insight**: Strong candidates propose a domain-separated architecture with a chain-agnostic MPC core (key generation using GG20 or FROST) and chain-specific adapter layers that handle curve-specific logic, ensuring security invariants are maintained at the core while enabling extensibility.
 
-**Frameworks/Tools**: Proactive Secret Sharing (PSS) for share refresh, BIP-32 domain separation for chain-specific derivation, FROST for non-interactive signing, Shamir's Secret Sharing for social recovery, HSM-backed share storage, gRPC for backend coordination.
+**Frameworks/Tools**: PSS for share refresh, BIP-32 domain separation for chain-specific derivation, FROST for non-interactive signing, Shamir's Secret Sharing for social recovery, HSM-backed share storage, gRPC for backend coordination.
 
 **Trade-offs & Metrics**: Domain separation trades implementation complexity for security (core remains chain-agnostic). Latency budget: 4 network RTTs (800ms) + MPC computation (600ms) + chain adapter (400ms) = 1.8s P95. FROST reduces rounds vs. GG18 but requires stronger non-interactive security assumptions. Shard storage: 5-of-9 for social recovery trades availability (need 5 guardians) against security (tolerates 4 compromised).
 
@@ -113,7 +121,7 @@ Our MPC wallet's 3-of-5 threshold signing on mobile devices averages 3.5s P95 la
 **Answer Key (~220 words)**:  
 **Key Insight**: Strong candidates decompose latency into network, compute, and serialization subsystems, then apply protocol substitution (FROST), pre-computation, and adaptive networking to achieve target metrics while preserving security through formal proof validation.
 
-**Frameworks/Tools**: DORA (DevOps Research & Assessment) latency/error rate metrics, flame graphs for mobile CPU profiling, network simulation (tc, Charles Proxy), FROST one-round signing, pre-computable nonces (DKG phase), Protocol Buffers for serialization, HTTP/2 connection pooling, edge compute (Cloudflare Workers) for geo-distributed coordinators, security proof validation via Tool for Computationally Secure Protocol Analysis (Tamarin).
+**Frameworks/Tools**: DORA latency/error rate metrics, flame graphs for mobile CPU profiling, network simulation (tc, Charles Proxy), FROST one-round signing, pre-computable nonces (DKG phase), Protocol Buffers for serialization, HTTP/2 connection pooling, edge compute (Cloudflare Workers) for geo-distributed coordinators, security proof validation via Tamarin prover.
 
 **Trade-offs & Metrics**: Pre-computation trades 50MB storage for 800ms latency reduction. Switching from GG18 to FROST trades interactive security assumptions for non-interactive efficiency. Edge deployment trades consistency (eventual) for 200ms RTT reduction. Target metrics: <1.5s P95 (network: <600ms, compute: <600ms, serialization: <300ms), <2% timeout (adaptive retry with exponential backoff), maintain 128-bit security, 99.9% protocol compliance via automated verification.
 
@@ -131,14 +139,14 @@ Our MPC wallet's 3-of-5 threshold signing on mobile devices averages 3.5s P95 la
 **Difficulty**: I | **Criticality**: Roles, Quantified, Action | **Stakeholders**: Product Manager, External Partner, Security Engineer | **EstimatedTime**: ~12 min
 
 **Question (for candidate)**:  
-We must productize our MPC wallet cryptography into a developer SDK for external teams. Target segments: (1) institutional custody ($100M+ AUM (Assets Under Management)) requiring SOC 2 Type II and formal verification, (2) mid-size DeFi protocols ($1-10M AUM (Assets Under Management)) needing custom signing logic, and (3) early-stage startups wanting integration in <1 week with minimal security expertise. How would you design the SDK's security model, pricing/licensing, and feature prioritization? What metrics would you use to measure success, and how would you handle a conflict between Security's demands for a 4-week audit and a priority partner's 2-week launch deadline?
+We must productize our MPC wallet cryptography into a developer SDK for external teams. Target segments: (1) institutional custody ($100M+ AUM) requiring SOC 2 Type II and formal verification, (2) mid-size DeFi protocols ($1-10M AUM) needing custom signing logic, and (3) early-stage startups wanting integration in <1 week with minimal security expertise. How would you design the SDK's security model, pricing/licensing, and feature prioritization? What metrics would you use to measure success, and how would you handle a conflict between Security's demands for a 4-week audit and a priority partner's 2-week launch deadline?
 
 **Answer Key (~210 words)**:  
 **Key Insight**: Strong candidates architect a tiered SDK with layered APIs (pre-built UI widgets → high-level signing → raw MPC primitives) and value-based pricing (AUM-based fees) that segments security guarantees while maximizing market reach.
 
-**Frameworks/Tools**: Diátaxis documentation framework, feature flags (LaunchDarkly), WSJF (Weighted Shortest Job First) prioritization, security audit tiers (Tier 1: formal verification + SOC 2, Tier 2: standard library + penetration test, Tier 3: community audit), licensing (usage-based: $0.005 per signature + AUM-based: 0.02% annually), "Time-to-First-Success" metric, developer NPS.
+**Frameworks/Tools**: Diátaxis documentation framework, feature flags (LaunchDarkly), WSJF prioritization, security audit tiers (Tier 1: formal verification + SOC 2, Tier 2: standard library + penetration test, Tier 3: community audit), licensing (usage-based: $0.005 per signature + AUM-based: 0.02% annually), "Time-to-First-Success" metric, developer NPS.
 
-**Trade-offs & Metrics**: Tier 1 high security trades 6-month audit time vs. 2-week launch for Tier 3. Pre-built components trade flexibility for speed (startups integrate in 3 days vs. 2 weeks for custom logic). Pricing transparency vs. revenue: public pricing for Tier 3, custom enterprise contracts for Tier 1. Success metrics: Tier 3: <7 days integration, >1,000 developers in 6 months; Tier 1: >$100M AUM (Assets Under Management) secured, zero critical audit findings; Overall: developer NPS (Net Promoter Score) >50, SDK revenue >$2M ARR by month 12.
+**Trade-offs & Metrics**: Tier 1 high security trades 6-month audit time vs. 2-week launch for Tier 3. Pre-built components trade flexibility for speed (startups integrate in 3 days vs. 2 weeks for custom logic). Pricing transparency vs. revenue: public pricing for Tier 3, custom enterprise contracts for Tier 1. Success metrics: Tier 3: <7 days integration, >1,000 developers in 6 months; Tier 1: >$100M AUM secured, zero critical audit findings; Overall: developer NPS >50, SDK revenue >$2M ARR by month 12.
 
 **Stakeholder Handling**: To Product: WSJF scoring to justify audit timeline; to External Partner: sandboxed Tier 3 integration with upgrade path to Tier 1, clear SLA; to Security: parallel audit track starting Day 1 with pre-approved components.
 
@@ -157,9 +165,9 @@ We must productize our MPC wallet cryptography into a developer SDK for external
 Our 3-of-5 MPC wallet system experiences a breach: one backend share server was compromised with root access for 48 hours. Forensics confirms memory snapshots were exfiltrated but no code modifications. No unauthorized transactions yet. The system secures $50M in user assets and serves 50k daily active users. Detail your immediate response (first 2 hours), blast radius assessment methodology, technical plan to rotate shares without service disruption, and regulatory notification obligations under SOC 2 Type II and GDPR Article 33. What long-term architectural hardening would you recommend, and how would you communicate with users?
 
 **Answer Key (~230 words)**:  
-**Key Insight**: Strong candidates execute immediate containment via proactive secret sharing (PSS) to refresh shares *before* potential key reconstruction, treating the compromise as a "partial key exposure" event requiring urgent but controlled rotation, while navigating precise regulatory timelines.
+**Key Insight**: Strong candidates execute immediate containment via PSS to refresh shares *before* potential key reconstruction, treating the compromise as a "partial key exposure" event requiring urgent but controlled rotation, while navigating precise regulatory timelines.
 
-**Frameworks/Tools**: NIST 800-61 Incident Response (Isolate → Analyze → Contain → Eradicate), STRIDE threat model (blast radius: 1-of-5 shares = no immediate key compromise but breach of confidentiality), Proactive Secret Sharing (DKG re-sharing without full key reconstruction), SOC 2 breach notification (72 hours to regulators, 7 days to customers after assessment), GDPR Article 33 (72 hours to supervisory authority if personal data at risk), Hardware Attestation (TPM-based share integrity), immutable audit logs (WORM storage).
+**Frameworks/Tools**: NIST 800-61 Incident Response (Isolate → Analyze → Contain → Eradicate), STRIDE threat model (blast radius: 1-of-5 shares = no immediate key compromise but breach of confidentiality), PSS (DKG re-sharing without full key reconstruction), SOC 2 breach notification (72 hours to regulators, 7 days to customers after assessment), GDPR Article 33, Hardware Attestation (TPM-based share integrity), immutable audit logs (WORM storage).
 
 **Trade-offs & Metrics**: Emergency share rotation trades service risk (0.1% error rate during transition) vs. security (preventing potential key reconstruction). Notification speed vs. accuracy: initial notification within 24 hours (preliminary) vs. final report in 7 days. User transparency vs. panic: factual disclosure of "share exposure" vs. "key compromise." Metrics: Time to containment (<1 hour), share refresh completion (<4 hours), zero fund loss, regulatory notification within 72 hours.
 
@@ -182,7 +190,7 @@ You are leading integration of the MPC wallet signing service with three product
 **Answer Key (~180 words)**:  
 **Key Insight**: Strong candidates establish a platform team model with stable MPC core (pre-audited) and Feature Toggles for chain-specific logic, using WSJF prioritization to sequence Payments first (highest business value), while running DeFi batch feature through audit in parallel.
 
-**Frameworks/Tools**: Team Topologies (Platform team serving product teams), WSJF prioritization (Value ÷ Time ÷ Risk), Feature Flags (LaunchDarkly), RFC process for cross-team decisions, weekly cross-team technical sync, Security pre-review checklist (reduces audit to 1 week for incremental changes).
+**Frameworks/Tools**: Team Topologies (Platform team serving product teams), WSJF prioritization, Feature Flags (LaunchDarkly), RFC process for cross-team decisions, weekly cross-team technical sync, Security pre-review checklist (reduces audit to 1 week for incremental changes).
 
 **Trade-offs & Metrics**: Platform stability vs. feature velocity: freeze core MPC after Week 2, only allow adapters. Audit parallelism vs. Security bandwidth: stagger submissions (Payments Week 2, DeFi Week 4, NFT Week 6). Resource allocation: 2 platform engineers + 1 embedded per product team. Success metrics: Payments launch on time (6 weeks), zero audit findings, DeFi batch support by Week 8, NFT experimental by Week 10, cross-team NPS >30.
 
@@ -218,6 +226,11 @@ Today we support Ethereum, Bitcoin, and Solana. In 18 months, we must support 10
 ---
 
 **Validation Summary**: All 6 Q&As are designed to satisfy the Validation Checklist and Content Quality Check Guidelines. Each is self-contained, scenario-based, includes specific frameworks, quantifies trade-offs, and provides clear strong/weak signals for hire/no-hire decisions. Interviewers should periodically re-validate metrics, protocol choices, and regulatory references against current production data and standards.
+
+- **Last review**: 2025-11-19  
+- **Reviewer**: Interview design owner (e.g., Head of Security Architecture)  
+- **Checks performed**: Content Quality Check Guidelines (1-23), protocol/version freshness, regulatory references.  
+- **Next review due**: Within 6-12 months or upon major protocol/standard changes.  
 
 ## References
 

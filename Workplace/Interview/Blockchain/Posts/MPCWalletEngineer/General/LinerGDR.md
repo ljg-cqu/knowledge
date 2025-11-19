@@ -1,4 +1,5 @@
 # MPC Wallet Engineer Interview Guide (LinerGDR)
+*Last Updated: 2025-11-19 | Status: Reviewed | Owner: Hiring Team*
 
 ## Executive Summary
 
@@ -6,7 +7,12 @@
 **Role**: Blockchain Security Cryptographic Development Engineer + Blockchain Architect - Multi-chain MPC Integration  
 **Time Budget**: 75 minutes  
 **Coverage**: 6 Q&As (1 per essential domain)  
-**Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain
+**Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain  
+**Intended Users**: Hiring managers and interviewers assessing senior/architect MPC wallet engineers.  
+**Interview Flow (75 minutes)**: 5 minutes for introductions and context, followed by 6 × 10–15 minute Q&As (Q1–Q6). Prioritize Q1, Q2, and Q4 as core; use Q3, Q5, or Q6 depending on candidate profile and time remaining.  
+**Scoring Model**: Rate each essential domain from 1–15 (1 = strong concern, 5 = exceptional). Proceed to offer when the candidate scores ≥12 in at least 4 of 6 domains and has no domain <3.  
+**Assumed Context**: Multi-chain MPC wallet platform (custody plus DeFi integrations) operating at roughly 10k–100k monthly active users, targeting institutional-grade security and compliance in US/EU markets.  
+**Scope Constraints**: Front-page 75-minute interview focused on protocol/architecture decisions, performance, security, cross-team leadership, and roadmap; detailed implementation, operational runbooks, and HR/culture-fit are handled in follow-up rounds and domain-specific files.
 
 ## Glossary
 
@@ -191,6 +197,12 @@ As a Blockchain Architect for a multi-chain MPC wallet platform, you are respons
 - **Weak**: Presents a rigid, linear roadmap without consideration for market dynamics, focuses solely on technical features without business justification, or overlooks the importance of external partnerships and emerging standards.
 
 ## Sources
+
+**Usage**: These references underpin protocol choices, wallet architecture patterns, security frameworks, and incident response guidance in this interview guide.  
+- **MPC protocol performance & design**: [1][10][11][16][26].  
+- **Wallet architecture & security**: [2][7][14][15][20][22][23][24][27][30].  
+- **Security frameworks, incident response & scoring**: [5][18][25][28][31].  
+**Verification (2025-11-19)**: Reviewed against `Prompts/Content_Quality_Check_Guidelines.md` for context, precision, structure, evidence mapping, and practicality; remaining deliberate choice: difficulty distribution skewed toward Intermediate/Advanced to match senior/architect role expectations.
 
 [1] ATLAS: Efficient and Scalable MPC in the Honest Majority Setting, https://www.semanticscholar.org/paper/abcd2e67d685b76487687bd9aee5569c9e741d92
 [2] Arcula: A Secure Hierarchical Deterministic Wallet for Multi-asset Blockchains, https://arxiv.org/abs/1906.05919

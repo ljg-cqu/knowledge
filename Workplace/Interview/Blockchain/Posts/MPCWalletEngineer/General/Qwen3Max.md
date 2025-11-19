@@ -2,11 +2,17 @@
 
 ## Executive Summary
 
-**Domain**: Career (Cross-Domain Interview Front Page)  
-**Role**: Senior Blockchain Security Cryptography Developer & Architect (Multi-chain MPC Integration)  
-**Time Budget**: 75 minutes  
-**Coverage**: 6 Q&As (1 per essential domain)  
+**Domain**: Career (Cross-Domain Interview Front Page)
+**Role**: Senior Blockchain Security Cryptography Developer & Architect (Multi-chain MPC Integration)
+**Time Budget**: 75 minutes
+**Coverage**: 6 Q&As (1 per essential domain)
 **Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain
+**Intended Use**: Front-page guide for onsite or late-stage interviews of senior/lead MPC wallet engineers.
+**Assumptions**: High-security MPC custody or infrastructure provider; candidate already strong in blockchain and cryptography fundamentals.
+**Out of Scope**: Live coding, low-level implementation details, and generic behavioral questions (covered in other rounds).
+**Difficulty Legend**: F = Foundational, I = Intermediate, A = Advanced.
+
+**⚠️ IMPORTANT DISCLAIMER**: Unless explicitly tied to an external source, numeric thresholds in this document (latency targets, probabilities, incident rates, cost estimates, etc.) are interview design targets for evaluation purposes, not measured production benchmarks. These values serve as reference points for assessing candidate judgment and should be calibrated to your organization's actual SLAs and operational requirements before use.
 
 ## Glossary
 
@@ -60,6 +66,7 @@
 - [[OrgLead] Q5: Cross-Team Cryptography Integration](#orglead-q5-cross-team-cryptography-integration)
 - [[RoadmapEco] Q6: Multi-Chain MPC Ecosystem Strategy](#roadmapeco-q6-multi-chain-mpc-ecosystem-strategy)
 - [References](#references)
+- [Validation Checklist](#validation-checklist)
 
 ## Key Signals
 - [TechArch] MPC protocol selection & system design judgment for cross-chain wallets
@@ -69,7 +76,7 @@
 - [OrgLead] Technical leadership in cross-functional security-cryptography collaboration
 - [RoadmapEco] Strategic planning for multi-chain MPC ecosystem evolution
 
-**Dashboard**:
+## Dashboard
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
 |---|--------------------|--------|------------|-------------|---------------|---------------|
 | 1 | TechArch   | Technical Architecture & Design      | A | Blocks      | MPC protocol architecture judgment | ~12 min |
@@ -94,7 +101,15 @@ You're designing an MPC wallet that must support Ethereum, Solana, and Bitcoin w
 
 **Frameworks/Tools**: Chain abstraction patterns, adapter design pattern, MPC protocol capability matrix (signature schemes, round complexity, fault tolerance).
 
-**Trade-offs & Metrics**: Protocol selection trades off development complexity vs performance: GG20 offers mature implementations but higher latency (300-500ms), FROST provides better parallelism but limited Bitcoin support. Latency targets: mobile signing <800ms, web <1.2s. Security metrics: key compromise probability <0.001%, transaction failure rate <0.1%.
+**Example Protocol-Chain Mapping**:
+
+| Chain    | Signature Scheme | Example MPC Protocol           |
+|----------|------------------|--------------------------------|
+| Bitcoin  | ECDSA            | GG20                           |
+| Ethereum | ECDSA            | GG20                           |
+| Solana   | Ed25519          | Custom Ed25519-capable MPC     |
+
+**Trade-offs & Metrics**: Protocol selection trades off development complexity vs performance: GG20 offers mature implementations but higher latency (300-500ms), FROST provides better parallelism but limited Bitcoin support. Latency targets: mobile signing <800ms, web <1.2s. Security metrics: key compromise probability <0.001%, transaction failure rate <0.1%. Avoid forcing a single protocol across all chains when that would materially degrade security guarantees or developer velocity; treat strict uniformity as a last resort and document associated risks explicitly.
 
 **Stakeholder Handling**: Present architecture options to PMs with clear UX impact timelines, to security team with threat models, and to mobile teams with latency benchmarks.
 
@@ -140,7 +155,7 @@ Your startup has limited engineering bandwidth to build either social recovery f
 
 **Frameworks/Tools**: WSJF (Weighted Shortest Job First), RICE scoring (Reach, Impact, Confidence, Effort), threat modeling for feature-specific risks, OKR alignment frameworks.
 
-**Trade-offs & Metrics**: Social recovery: +40% user growth but +15% support tickets, security mitigation cost: $150k engineering effort. Multi-chain approvals: $2M ARR but 6-month delay to consumer features. Success metrics: for social recovery - user activation rate >65%, security incident rate <0.1%; for approvals - enterprise conversion rate >8%, implementation time <4 months.
+**Trade-offs & Metrics**: Social recovery: +40% user growth but +15% support tickets, security mitigation cost: $150k engineering effort. Multi-chain approvals: $2M ARR but 6-month delay to consumer features. Success metrics: for social recovery - user activation rate >65%, security incident rate <0.1%; for approvals - enterprise conversion rate >8%, implementation time <4 months. Do not prioritize either option without committing to the corresponding mitigation: for social recovery, dedicated security and support investment; for approvals, validated enterprise demand and sufficient delivery capacity.
 
 **Stakeholder Handling**: Present quantified scenarios to PM with growth projections, to security lead with risk mitigation plans, and to growth team with implementation timelines and resource requirements.
 
@@ -222,27 +237,41 @@ Your company wants to become the default MPC wallet infrastructure provider for 
 ## References
 
 **MPC & Threshold Cryptography**:
-- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [IACR ePrint 2020/540]
-- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [https://eprint.iacr.org/2020/540](https://eprint.iacr.org/2020/540)
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [https://eprint.iacr.org/2020/852](https://eprint.iacr.org/2020/852)
 
 **Security & Compliance**:
-- NIST SP 800-53: Security and Privacy Controls for Information Systems. [nist.gov]
-- SOC 2 Type II: AICPA Trust Services Criteria. [aicpa.org]
-- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
-- ProVerif: Cryptographic Protocol Verifier. [proverif.inria.fr]
-- Tamarin Prover: Security Protocol Analysis. [tamarin-prover.github.io]
+- NIST SP 800-53: Security and Privacy Controls for Information Systems. [https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
+- SOC 2 Type II: AICPA Trust Services Criteria. [https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report)
+- STRIDE Threat Modeling: Microsoft Security Development Lifecycle. [https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
+- ProVerif: Cryptographic Protocol Verifier. [https://proverif.inria.fr/](https://proverif.inria.fr/)
+- Tamarin Prover: Security Protocol Analysis. [https://tamarin-prover.github.io/](https://tamarin-prover.github.io/)
 
 **Engineering Frameworks**:
-- DORA Metrics: DevOps Research and Assessment. [dora.dev]
-- WSJF (Weighted Shortest Job First). [SAFe Framework]
-- RICE Prioritization Framework. [Intercom Product Management]
-- Team Topologies. [Skelton & Pais, 2019]
+- DORA Metrics: DevOps Research and Assessment. [https://dora.dev/](https://dora.dev/)
+- WSJF (Weighted Shortest Job First): SAFe Framework. [https://scaledagileframework.com/wsjf/](https://scaledagileframework.com/wsjf/)
+- RICE Prioritization Framework: Intercom Product Management. [https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/)
+- Team Topologies. Skelton, M., & Pais, M. (2019). IT Revolution Press. [https://teamtopologies.com/](https://teamtopologies.com/)
 
 **Blockchain Ecosystems**:
-- Token Terminal: Crypto metrics and analytics. [tokenterminal.com]
-- DappRadar: Decentralized application analytics. [dappradar.com]
+- Token Terminal: Crypto metrics and analytics. [https://tokenterminal.com/](https://tokenterminal.com/)
+- DappRadar: Decentralized application analytics. [https://dappradar.com/](https://dappradar.com/)
 
 **Design Patterns**:
-- Gamma, E., et al. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. [Addison-Wesley]
-- API-First Design Principles. [Swagger/OpenAPI Specification]
-- Consumer-Driven Contracts. [Pact.io]
+- Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley Professional.
+- API-First Design Principles: OpenAPI Specification. [https://swagger.io/specification/](https://swagger.io/specification/)
+- Consumer-Driven Contracts: Pact Testing Framework. [https://pact.io/](https://pact.io/)
+
+## Validation Checklist
+
+**Purpose**: This checklist helps document maintainers and hiring managers verify the interview guide remains current, accurate, and aligned with organizational requirements. Review quarterly or before interview cycles.
+
+**For Document Maintainers**:
+- [ ] Chains/protocol mapping is current (Ethereum, Bitcoin, Solana, and MPC libraries still relevant).
+- [ ] Latency, risk, and incident thresholds are aligned with current product SLAs and risk appetite.
+- [ ] Stakeholder roles and domains still match your hiring loop structure.
+- [ ] References and external links are still valid and up to date.
+
+**For Hiring Managers**:
+- [ ] Interviewers are calibrated on strong/weak signals and how to synthesize them into hire/no-hire decisions.
+- [ ] Success criteria (≥80% hiring consensus) match your organization's hiring bar and decision-making process.

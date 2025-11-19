@@ -1,4 +1,5 @@
 # Career Interview Q&A – MPC Wallet & Multi-Chain Integration Role
+*Last Updated: 2025-11-19 | Status: Final | Owner: Career Development*
 
 ## Executive Summary
 
@@ -7,6 +8,10 @@
 **Time Budget**: 75 minutes  
 **Coverage**: 6 Q&As (1 per essential domain)  
 **Success Criteria**: Achieve ≥80% hiring consensus within 75-minute interview loop with clear signal capture per domain
+
+**Assumed Context**: Non-custodial MPC wallet product (B2C with institutional partners) targeting SOC 2 / ISO 27001 compliance in US/EU markets, operating at 10k–100k monthly active users.
+
+**Scope Constraints**: Focus on protocol/architecture decisions and cross-team alignment for a Senior/Lead engineer; operational runbooks and detailed implementation guides live in domain-specific files.
 
 ## Glossary
 
@@ -32,11 +37,14 @@
 - **ZK**: Zero-Knowledge proofs - cryptographic proofs without revealing secrets
 - **MtA**: Multiplicative-to-Additive share conversion (used in threshold ECDSA)
 - **FIPS 140-2/140-3**: Federal cryptographic module security standards
+- **DoS/DDoS**: Denial-of-Service / Distributed Denial-of-Service attacks that overload or block services (for example, signing nodes or RPC endpoints).
+- **QPS**: Queries per second – throughput metric for backend APIs or concurrent signing sessions.
 
 **Blockchain Standards**:
 - **RLP**: Recursive Length Prefix encoding (Ethereum transaction format)
 - **UTXO**: Unspent Transaction Output (Bitcoin transaction model)
 - **ERC-20**: Ethereum fungible token standard
+- **Account Abstraction (AA)**: Ethereum pattern where smart contract wallets handle authorization and gas payment logic, enabling gasless transactions and more flexible UX.
 
 **Engineering Frameworks**:
 - **WSJF**: Weighted Shortest Job First (prioritization framework)
@@ -75,7 +83,7 @@
 - **[OrgLead]** Cross-team collaboration (backend/security/product) → Communication effectiveness, stakeholder alignment
 - **[RoadmapEco]** Multi-chain evolution & protocol migration strategy → Long-term technical vision, ecosystem adaptation
 
-**Dashboard**:
+### Dashboard
 
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
 |---|--------------------|--------|------------|-------------|---------------|---------------|
