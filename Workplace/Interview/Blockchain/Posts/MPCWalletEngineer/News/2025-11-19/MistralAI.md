@@ -1,12 +1,3 @@
-
-1. Identify and review recent news and developments in the blockchain and cryptography fields, focusing on MPC (Multi-Party Computation) and threshold signature schemes like GG18, GG20, FROST, Threshold ECDSA, and Threshold EdDSA.
-2. Gather information on the latest advancements and research in MPC-based wallet core modules, including key generation, key sharding management, signature collaboration protocols, and recovery processes.
-3. Examine recent news on the implementation and optimization of signature protocols in blockchain wallets, focusing on security, performance, and stability.
-4. Investigate recent developments in security strategies for blockchain wallets, including risk control, device verification, and multi-factor authentication.
-5. Explore recent news on the encapsulation of underlying cryptographic capabilities into SDKs/APIs, enabling integration by internal products and external partners.
-6. Review recent advancements in wallet-related infrastructure, such as account abstraction, session keys, social recovery, and limit/approval flows.
-7. Stay updated on the transaction structures and signature standards of major blockchain ecosystems like Ethereum, EVM L2, BTC, and Solana to ensure compatibility.
-8. Assess recent news on the development and optimization of MPC-based wallet core modules, including key generation, key sharding management, signature collaboration protocols, and recovery processes.
 # 高质量技术面试问答对（Q&A）生成报告
 
 > - 8个决策临界性技术问题，覆盖MPC、TSS、账户抽象、公链兼容性等核心领域。  
@@ -272,3 +263,7 @@
 ## 结论
 
 本报告为“区块链安全密码开发工程师 + 区块链架构师（多链MPC集成方向）”职位生成了8组高质量技术面试问答对，每组问题均基于最新技术动态和安全事件，满足决策临界性要求，并提供了详细的量化影响分析、决策选项权衡及行动建议。这些问题涵盖了MPC协议安全、性能优化、多链兼容性、安全策略、合规风险、人才供需等多个维度，能够有效评估候选人的技术深度、安全意识和决策能力，为招聘决策提供强有力的技术支持。
+
+---
+
+_验证说明_: 上述内容基于文中引用的技术报告、标准文档和新闻源整理，数据截至 2025-11-19。涉及协议漏洞、法规要求和市场数据的部分建议至少按季度复核和更新。

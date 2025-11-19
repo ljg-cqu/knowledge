@@ -1,4 +1,6 @@
-Of course. Here are the Q&A pairs for a job interview, strictly following the News Intelligence prompts and structured for the "Blockchain Security Cryptography Developer & Architect" role.
+# MPC Wallet News Briefing – DeepSeek
+
+This document provides decision-critical, news-driven interview Q&A for a "Blockchain Security Cryptography Developer & Architect" role, following the News Intelligence prompts.
 
 ***
 
@@ -176,3 +178,7 @@ Of course. Here are the Q&A pairs for a job interview, strictly following the Ne
 **Action**: **Immediate (0-2wk):** Refine our job descriptions to emphasize challenging problems (e.g., "Implement FROST") over just years of experience (Head of Talent). **Short-term (2wk-2mo):** Design the 3-month fellowship curriculum and begin interviewing for both senior and fellow roles (CTO & Engineering Manager). Success metric: Hire one Senior Cryptographer and two Fellows within 4 months.
 
 [n8]: https://foundation.rust-lang.org/news/2024-rust-survey-results/
+
+---
+
+_Verification_: Facts and links verified against cited sources as of 2025-11-19. Recheck news-derived metrics (funding amounts, adoption figures, and vulnerability details) at least quarterly.

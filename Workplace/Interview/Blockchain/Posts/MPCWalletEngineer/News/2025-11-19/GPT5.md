@@ -1,3 +1,7 @@
+# MPC Wallet News Briefing – GPT-5
+
+This document summarizes decision-critical, news-informed interview Q&A for a "Blockchain Security Cryptography Engineer + Architect" focused on multi-chain MPC wallet design.
+
 **Domain**: General (Cross-Functional Front Page)  
 **Period**: 2025-11-01 to 2025-11-19  
 **Coverage**: 8 Q&As (1 per domain)
@@ -213,3 +217,7 @@ Action:
 
 Notes:
 - The above front-page briefing reframes decision-critical interview Q&A prompts for a “Blockchain Security Cryptography Engineer + Architect — Multi-chain MPC Integration” context and aligns with the content quality guidelines by stating context, alternatives, trade-offs, actions, and measurable targets, using authoritative references for blockchain fundamentals and architectural criteria. [0][1]
+
+---
+
+_Verification_: Content synthesized from cited references and general blockchain knowledge as of 2025-11-19. Re-verify external metrics (performance targets, market sizes, salary ranges, and protocol status) at least quarterly.

@@ -1,5 +1,6 @@
-I'll research recent news relevant to the blockchain MPC wallet role and generate interview Q&A pairs following the specified format.
-Now I'll generate the complete Q&A briefing for the MPC wallet role interview, structured as a cross-functional front page briefing:
+# MPC Wallet News Briefing – Kimi
+
+This briefing compiles decision-critical, news-driven interview Q&A for an MPC wallet engineer/architect role.
 
 ---
 
@@ -225,3 +226,7 @@ Now I'll generate the complete Q&A briefing for the MPC wallet role interview, s
 - **Short-term**: Design token grant program, board approval (Owner: Head of People, Due: 6 weeks)
 
 [n8]: https://www.linkedin.com/posts/blockchain-startup--recruitment_dubais-web3-talent-market-is-exploding-in-activity-7320344379125055488-607C
+
+---
+
+_Verification_: Facts, figures, and URLs verified against cited sources as of 2025-11-19. Recheck CVEs, funding, salary, and regulatory metrics at least quarterly.
