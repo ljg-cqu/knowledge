@@ -2,7 +2,7 @@
 
 **Domain**: General (Cross-Functional Front Page)  
 **Period**: 2024-11-01 to 2025-11-19  
-**Coverage**: 8 Q&As (1 per domain)
+**Coverage**: 8 Q&As across 7 domains (TechOps covered twice)
 
 **Key Insights**:
 - **[TechOps]** CGGMP21 protocol replaces GG20 as state-of-the-art ECDSA threshold signature standard → Adopt for production security → Immediate audit & implementation timeline: Q1 2025

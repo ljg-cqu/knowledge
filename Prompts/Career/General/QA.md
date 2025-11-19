@@ -36,6 +36,11 @@
 4. **Requires Action** – Evidence must be collected **now** (1–6 month impact window).
 5. **Quantified Impact** – Can be expressed with metrics (latency, revenue, risk, velocity, attrition, cost).
 
+**Success Criteria** (for using this prompt effectively):
+- All **6 Q&As** are generated, pass the Validation Checklist, and cover the 6 essential domains without gaps or overlaps.
+- The interview loop finishes within the **60–90 minute** time budget while still allowing follow-up questions.
+- For each Q&A, the answer key defines clear **strong vs weak signals** so the panel can make or support a **hire/no-hire/level** decision.
+
 ---
 
 ## Scope & MECE Position
@@ -91,6 +96,7 @@ Each Q&A must provide a one-line metadata row:
 - **CareerStage**: `Junior | Mid | Senior | Lead | Architect`  
 - **RoleFocus**: `IC | Manager | Mixed`  
 - **Difficulty**: `F | I | A` (Foundational / Intermediate / Advanced)  
+- **Criticality**: `[Blocks | Risk | Roles | Action | Quantified]` (at least one; must align with Decision Criticality criteria above)  
 - **Stakeholders**: 2–4 primary roles (e.g., Architect, PM, SRE, Security, HR)  
 - **EstimatedTime**: `~10–15 min`
 
@@ -153,6 +159,7 @@ Use the [Validation Checklist](#validation-checklist) to ensure the loop is bala
 |-------|----------|--------|
 | **Q&A Count** | Exactly 6 Q&As | ☐ |
 | **Domain Coverage** | 1 Q&A per EssentialDomainTag (TechArch, PerfQual, ProdBiz, SecReg, OrgLead, RoadmapEco) | ☐ |
+| **Tagging** | Each Q heading starts with `[EssentialDomainTag]` and includes the metadata line | ☐ |
 | **Difficulty Mix** | Overall ≈25% F / 50% I / 25% A (1–2 F, 3 I, 1–2 A) | ☐ |
 | **Decision Criticality** | 100% Q&As satisfy ≥1 criterion (Blocks/Risk/Roles/Action/Quantified) | ☐ |
 | **Stakeholders** | Each Q&A names ≥2 roles; across loop, ≥5 distinct roles | ☐ |
@@ -161,6 +168,10 @@ Use the [Validation Checklist](#validation-checklist) to ensure the loop is bala
 | **Role Fit** | All Q&As match the JD and level (no off-scope questions) | ☐ |
 | **Clarity** | All questions are scenario-based, non-ambiguous, non-trivia | ☐ |
 | **Self-Contained** | Each Q&A understandable without opening domain files | ☐ |
+
+**Priority**:
+- **Critical checks**: Q&A Count, Domain Coverage, Tagging, Time Budget. If any fail, fix before using the loop.
+- **Important checks**: Difficulty Mix, Decision Criticality, Stakeholders, Signals, Role Fit, Clarity, Self-Contained.
 
 ---
 
@@ -197,14 +208,14 @@ Use the [Validation Checklist](#validation-checklist) to ensure the loop is bala
 - [RoadmapEco] Long-term roadmap & ecosystem thinking → [main signal]
 
 **Dashboard**:
-| # | EssentialDomainTag | Domain | Difficulty | Target Signal | EstimatedTime |
-|---|--------------------|--------|------------|---------------|---------------|
-| 1 | TechArch   | Technical Architecture & Design      | I/A | System & API design judgment | ~10–15 min |
-| 2 | PerfQual   | Performance & Quality Engineering    | I   | Performance/quality trade-offs | ~10–15 min |
-| 3 | ProdBiz    | Product & Business Value             | I   | Value & prioritization judgment | ~10–15 min |
-| 4 | SecReg     | Security & Regulation                | I/A | Threat, risk, compliance mindset | ~10–15 min |
-| 5 | OrgLead    | Organization & Leadership            | F/I | Collaboration/leadership style | ~10–15 min |
-| 6 | RoadmapEco | Roadmap & Ecosystem Strategy         | I/A | Long-term thinking & evolution | ~10–15 min |
+| # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
+|---|--------------------|--------|------------|-------------|---------------|---------------|
+| 1 | TechArch   | Technical Architecture & Design      | I/A | Blocks      | System & API design judgment | ~10–15 min |
+| 2 | PerfQual   | Performance & Quality Engineering    | I   | Risk        | Performance/quality trade-offs | ~10–15 min |
+| 3 | ProdBiz    | Product & Business Value             | I   | Roles       | Value & prioritization judgment | ~10–15 min |
+| 4 | SecReg     | Security & Regulation                | I/A | Risk        | Threat, risk, compliance mindset | ~10–15 min |
+| 5 | OrgLead    | Organization & Leadership            | F/I | Roles       | Collaboration/leadership style | ~10–15 min |
+| 6 | RoadmapEco | Roadmap & Ecosystem Strategy         | I/A | Action      | Long-term thinking & evolution | ~10–15 min |
 ```
 
 ### General Career Q&A Template
@@ -213,7 +224,7 @@ Use the [Validation Checklist](#validation-checklist) to ensure the loop is bala
 ### [EssentialDomainTag] Q#: [Scenario Question Title]
 
 **Domain**: [Domain name] | **CareerStage**: [Junior/Mid/Senior/Lead/Architect] | **RoleFocus**: [IC/Manager/Mixed]  
-**Difficulty**: [F/I/A] | **Stakeholders**: [Role1, Role2, (Role3, Role4 optional)] | **EstimatedTime**: ~[10–15] min
+**Difficulty**: [F/I/A] | **Criticality**: [Blocks/Risk/Roles/Action/Quantified] | **Stakeholders**: [Role1, Role2, (Role3, Role4 optional)] | **EstimatedTime**: ~[10–15] min
 
 **Question (for candidate)**:  
 [Decision-critical scenario question, grounded in the candidate's likely work. Include constraints, trade-offs, and at least 2 stakeholder perspectives.]

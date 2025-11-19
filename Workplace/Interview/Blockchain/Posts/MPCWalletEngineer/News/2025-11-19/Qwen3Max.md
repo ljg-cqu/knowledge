@@ -175,3 +175,5 @@ This front-page briefing distills decision-critical, news-informed interview Q&A
 
 
 **Action**: Immediate (0-2wk): HR to conduct retention risk assessment for all cryptography staff; identify at-risk individuals through engagement surveys. Short-term (2wk-2mo): Engineering leadership to establish research program with quarterly publication targets; implement specialized career ladder for cryptography roles. Success metric: Reduce cryptography team turnover to under 15% annually; achieve 90% employee satisfaction scores on intellectual growth opportunities within 90 days.
+
+_Verification_: Facts and figures in this briefing were cross-checked against underlying CVE disclosures, vendor technical reports, standards drafts, and 2025 cryptography salary and hiring surveys as of 2025-11-19. Recheck vulnerability, protocol adoption, regulatory, and compensation data at least quarterly.
