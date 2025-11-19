@@ -17,7 +17,8 @@ Rules:
  - Make each question self-contained; include only the minimal context needed to understand the situation without the source text.
  - Use only information stated or implied in the source text; do not invent facts or change the original meaning or terminology.
 
-Output (Markdown list only):
-- `Q: ...`  (scenario + decision question)
-- `A: ...`  (short, high‑leverage answer)
- - Do not output any other text (no headings, comments, or explanations).
+Output (Markdown ordered list only):
+1. Q: ...  (scenario + decision question)
+   A: ...  (short, high‑leverage answer)
+- Use `1.` for every item; Markdown will auto-number the list.
+- Do not output any other text (no headings, comments, or explanations).
