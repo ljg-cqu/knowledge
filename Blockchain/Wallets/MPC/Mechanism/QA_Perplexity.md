@@ -1,5 +1,3 @@
-Now I'll generate the complete content following all the specifications:
-
 # Blockchain MPC Mechanism-Focused PM Interview Q&A
 
 ## Overview
@@ -17,6 +15,9 @@ Now I'll generate the complete content following all the specifications:
 | 5 | Market Mechanisms | Q13–15 | 3 | 1F/1I/1A | 1 diagram+table |
 | 6 | System Mechanisms | Q16–18 | 3 | 1F/1I/1A | 1 diagram+table |
 | | **Total** | | **18** | **6F/6I/6A** | **12** |
+
+> **Important note on numbers and formulas**
+> Unless a metric, percentage, or formula is explicitly attributed to a named external study or dataset, all quantitative values in this document should be treated as illustrative modeling assumptions for product-thinking and mechanism design exercises, not as measured production data.
 
 ***
 
@@ -545,7 +546,7 @@ MPC wallet Average Revenue Per User (ARPU) exhibits **super-linear scaling** wit
 
 **Revenue Feedback Loop (+)**: More protocols → Arbitrage opportunities → Higher transaction volume → More revenue → Better infrastructure investment → Attract power users → More protocols[Ref: A41, A61].
 
-**Quantitative Model**: ARPU(n) = 3.20 × n^1.3, R² = 0.89 (empirical fit from ).[30][39]
+**Quantitative Model**: ARPU(n) = 3.20 × n^1.3, R² ≈ 0.89 (illustrative model shape; not fitted to a specific published dataset).[30][39]
 
 **Break Points**: Gas costs erode margins for low-value users; regulatory limits on cross-chain operations.[11][35]
 

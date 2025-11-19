@@ -14,6 +14,10 @@
 | 6 | System | Q16–18 | 3 | 1F/1I/1A | 1 diagram+table |
 | | **Total** | | **18** | **6F/6I/6A** | **12** |
 
+> **Important note on numbers, formulas, and references**  
+> Unless a metric, percentage, threshold, or formula in this document is explicitly tied to a named external study, dataset, or production dashboard, please consider it as **illustrative modeling assumptions** for product mechanism reasoning and interview discussions, rather than verified real business data. Before applying to specific business or external materials, it is necessary to recalibrate and verify with your own data.
+> The `G#/T#/L#/A#` reference IDs used in this document are intended to provide structured reference clues. The actual literature, tools, and cases may differ in form and details; when used for formal writing or external reference, please verify and replace with the latest authoritative data.
+
 ## II. Q&A by Type
 
 ### Growth Mechanisms (Q1-3)
@@ -82,7 +86,7 @@ Cross-chain bridges in MPC systems create compounding growth through interconnec
 
 **Liquidity Network Effects**: Each bridge pools liquidity from connected chains, reducing slippage by approximately 30% per additional chain connected [Ref: A6]. Lower slippage attracts more traders, increasing volume, which attracts more liquidity providers—a classic two-sided marketplace dynamic [Ref: G6].
 
-**MPC-Specific Amplification**: MPC's distributed key generation enables trustless bridges without centralized validators. This reduces operational costs by 60% compared to traditional bridges, making new connections economically viable sooner [Ref: L3].
+**MPC-Specific Amplification**: MPC's distributed key generation enables bridges that reduce reliance on any single validator or key holder. In many deployed designs this can cut operational coordination overhead compared to more centralized bridges, making new connections economically viable sooner [Ref: L3].
 
 **Failure Modes**: (1) Bridge hacks create contagion risk—one exploit can drain multiple chains, (2) Complexity increases quadratically with bridges, causing user confusion, (3) Regulatory arbitrage becomes problematic across jurisdictions [Ref: A7].
 

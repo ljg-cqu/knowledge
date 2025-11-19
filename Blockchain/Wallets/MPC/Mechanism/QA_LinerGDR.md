@@ -14,6 +14,10 @@ This report presents a comprehensive framework for assessing senior product mana
 | 6 | System | Q16–18 | 3 | 1F/1I/1A | 1 diagram+table |
 | | **Total** | | **18** | **6F/6I/6A** | **12** |
 
+> **Important note on metrics and references**  
+> 本报告中的百分比、样本数据、时间窗口、K 因子等量化数字，除非明确说明来源于具体研究或生产数据仪表盘，否则均为**用于产品机制推理与面试讨论的示例性建模假设**，不应直接视为真实业务表现。在用于决策、汇报或对外材料前，请结合自有数据重新估算与校准。
+> 若文中出现 `G#/T#/L#/A#` 等引用 ID，请将其理解为知识定位标签而非严格的学术引用；正式写作时需自行查验并使用最新权威资料。
+
 ## II. Q&A by Mechanism Type
 
 ### 1. Growth (MPC in Privacy-Preserving Decentralized Networks)

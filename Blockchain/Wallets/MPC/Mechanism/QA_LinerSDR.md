@@ -5,6 +5,9 @@ This report provides an in-depth analysis of blockchain Multi-Party Computation 
 **Difficulty Distribution**: 6 Foundational (F), 6 Interpretive (I), 6 Analytical (A)
 **Coverage**: 6 mechanism types (Growth, Retention, Monetization, User Behavior, Market, System) with 3 questions per type.
 
+> **Important note on quantitative examples**
+> 下文中的百分比、增长率、留存曲线、LTV/CAC 等量化示例，除非特别说明来源于公开研究或真实业务数据，均为**用于机制分析与产品讨论的示例性假设**，目的是帮助推理而非刻画某个具体项目现状。实际决策时，应优先使用你自己团队的观测数据与审计结果进行替换与校准。
+
 ### Blockchain MPC Wallet Mechanism Analysis: Q&A
 
 #### 1. Growth Mechanisms

@@ -1,6 +1,4 @@
-Of course. Here is the mechanism-focused PM interview Q&A generator, strictly following all provided prompts and constraints, with a specialized focus on Blockchain MPC (Multi-Party Computation) technology.
-
-***
+# Blockchain MPC Mechanism-Focused PM Interview Q&A (DeepSeek)
 
 ### **I. Overview**
 
@@ -21,7 +19,9 @@ Of course. Here is the mechanism-focused PM interview Q&A generator, strictly fo
 | 6 | System | Q16–18 | 3 | 1F/1I/1A | 1 diagram+table |
 |   | **Total** |   | **18** | **4F/7I/7A** | **12** |
 
-***
+> **Important note on numbers, formulas, and references**  
+> Unless a metric, percentage, threshold, or formula in this document is explicitly tied to a named external study, dataset, or your own production monitoring data, consider it as **illustrative modeling assumptions** for mechanism analysis and product reasoning, rather than validated real-world data. Before adopting into roadmaps, external materials, or formal reviews, calibration and validation with actual data are necessary.  
+> The `G#/T#/L#/A#` reference IDs in this document are primarily used for organizing knowledge structures; specific literature and tool names may evolve over time. For formal citations, please refer to the latest authoritative sources.
 
 ### **II. Q&A by Mechanism Type**
 
