@@ -1,13 +1,58 @@
-
-1. Analyze the job description to identify key responsibilities and required skills for the role of Blockchain Security Cryptography Development Engineer + Blockchain Architect — Multi-Chain MPC Integration.
-2. Identify the essential domains relevant to the role: Technical Architecture & Design, Performance & Quality Engineering, Product & Business Value, Security & Regulation, Organization & Leadership, and Roadmap & Ecosystem Strategy.
-3. For each essential domain, generate a scenario-based, judgment-heavy, and decision-critical question tailored to the role and its responsibilities.
-4. Ensure each question is role-specific and aligned with the job description, focusing on the candidate's likely work and involving at least two stakeholders.
-5. Develop an answer key for each question, including key insights, frameworks/tools, trade-offs & metrics, stakeholder handling, and signals for strong vs. weak answers.
-6. Validate that each question meets the criteria for decision criticality, such as blocking a decision, creating risk, affecting multiple core roles, requiring immediate action, or having a quantified impact.
-7. Ensure the questions cover a range of difficulties (Foundational, Intermediate, Advanced) and are distributed appropriately (approximately 25% Foundational, 50% Intermediate, 25% Advanced).
-8. Confirm that the total estimated time for the interview loop is within the 60–90 minute budget, with each Q&A taking approximately 10–15 minutes.
 # 区块链安全密码开发工程师与区块链架构师（多链MPC集成方向）职位面试决策关键问答对设计
+
+## 执行摘要
+
+**领域**: 职业（跨领域面试首页）  
+**职位**: 区块链安全密码开发工程师+区块链架构师——多链MPC集成方向  
+**时间预算**: 75分钟  
+**覆盖范围**: 6个Q&A（每个核心领域1个）  
+**成功标准**: 在75分钟内，面试官可以基于6个Q&A达成≥80%的聘用/淘汰共识
+
+## 术语表
+
+**核心技术术语**:
+- **MPC**: Multi-Party Computation（多方安全计算）
+- **HSM**: Hardware Security Module（硬件安全模块）
+- **TSS**: Threshold Signature Scheme（阈值签名方案）
+- **DKG**: Distributed Key Generation（分布式密钥生成）
+
+**密码学协议**:
+- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures（灵活的轮优化Schnorr阈值签名）
+- **GG18/GG20**: Gennaro & Goldfeder阈值ECDSA协议（2018/2020版本）
+- **Schnorr**: Schnorr签名算法
+- **ECDSA**: Elliptic Curve Digital Signature Algorithm（椭圆曲线数字签名算法）
+- **EdDSA**: Edwards-curve Digital Signature Algorithm（Edwards曲线数字签名算法）
+
+**区块链标准**:
+- **EIP-712**: Ethereum Improvement Proposal 712（以太坊类型化数据签名标准）
+- **Taproot**: 比特币Taproot升级（BIP-340/341）
+- **APDU**: Application Protocol Data Unit（应用协议数据单元，Ledger硬件钱包通信协议）
+
+**安全框架**:
+- **STRIDE**: 威胁建模框架（Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege）
+- **SPA/DPA**: Simple/Differential Power Analysis（简单/差分功耗分析）
+- **SCA**: Side-Channel Attack（侧信道攻击）
+
+**工程指标**:
+- **DORA**: DevOps Research and Assessment（DevOps研究与评估）
+- **P99**: 第99百分位（性能指标）
+- **SDK**: Software Development Kit（软件开发工具包）
+
+## 目录
+
+- [执行摘要](#执行摘要)
+- [术语表](#术语表)
+- [引言](#引言)
+- [问答对详细设计](#问答对详细设计)
+  - [[TechArch] Q1: 多链MPC签名协议的模块化设计](#techarch-q1-多链mpc签名协议的模块化设计)
+  - [[PerfQual] Q2: 资源受限设备上的FROST协议优化](#perfqual-q2-资源受限设备上的frost协议优化)
+  - [[ProdBiz] Q3: MPC签名SDK的产品化设计](#prodbiz-q3-mpc签名sdk的产品化设计)
+  - [[SecReg] Q4: 安全漏洞与侧信道攻击防护](#secreg-q4-安全漏洞与侧信道攻击防护)
+  - [[OrgLead] Q5: 跨团队协作与MPC标准落地](#orglead-q5-跨团队协作与mpc标准落地)
+  - [[RoadmapEco] Q6: 支持新公链的签名标准扩展](#roadmapeco-q6-支持新公链的签名标准扩展)
+- [问题设计的合理性与有效性分析](#问题设计的合理性与有效性分析)
+- [参考文献](#参考文献)
+- [结论](#结论)
 
 > - 6组核心问答对覆盖技术架构、性能优化、产品化设计、安全防护、跨团队协作和生态扩展。  
 > - 每组问题均包含具体约束、利益相关者冲突和量化指标，确保决策关键性。  
@@ -141,6 +186,36 @@
 ### 安全意识与生态兼容性
 
 多个问题涉及安全漏洞分析和生态兼容性，要求候选人具备深厚的安全知识和对区块链生态的理解。
+
+---
+
+## 参考文献
+
+**MPC与阈值密码学**:
+- Gennaro, R., & Goldfeder, S. (2018). Fast Multiparty Threshold ECDSA with Fast Trustless Setup. [ACM CCS'18]
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [IACR ePrint 2020/540]
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+- Canetti, R., et al. (2021). UC Non-Interactive, Proactive, Threshold ECDSA (CGGMP21). [ACM CCS'21]
+
+**区块链标准**:
+- EIP-712: Typed Structured Data Hashing and Signing. [ethereum.org/eips]
+- BIP-340: Schnorr Signatures for secp256k1. [bitcoin.org/bips]
+- BIP-341: Taproot: SegWit version 1 spending rules. [bitcoin.org/bips]
+- Ledger APDU Protocol Documentation. [ledger.readthedocs.io]
+
+**安全与侧信道攻击**:
+- Kocher, P., et al. (1999). Differential Power Analysis. [CRYPTO'99]
+- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
+- NIST SP 800-175B: Guideline for Using Cryptographic Standards. [nist.gov]
+
+**软件架构模式**:
+- Martin, R. C. (2017). Clean Architecture. [Prentice Hall]
+- Gamma, E., et al. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. [Addison-Wesley]
+
+**工程实践**:
+- DORA Metrics (DevOps Research and Assessment). [dora.dev]
+- Rust异步编程: Tokio Runtime. [tokio.rs]
+- WebAssembly. [webassembly.org]
 
 ---
 

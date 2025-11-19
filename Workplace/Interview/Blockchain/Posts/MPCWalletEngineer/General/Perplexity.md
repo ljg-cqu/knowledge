@@ -1,15 +1,73 @@
-I'll now generate the 6 Q&A pairs for the MPC wallet blockchain security engineer position according to the provided guidelines.
-
----
-
 # Career Interview Q&A – MPC Wallet & Multi-Chain Integration Role
+
+## Executive Summary
 
 **Domain**: Career (Cross-Domain Interview Front Page)  
 **Role**: Senior Blockchain Security Engineer / MPC Wallet Architect (Multi-Chain Integration)  
 **Time Budget**: 75 minutes  
-**Coverage**: 6 Q&As (1 per essential domain)
+**Coverage**: 6 Q&As (1 per essential domain)  
+**Success Criteria**: Achieve ≥80% hiring consensus within 75-minute interview loop with clear signal capture per domain
 
-**Key Signals**:
+## Glossary
+
+**Core Cryptographic Terms**:
+- **MPC**: Multi-Party Computation - distributed cryptographic protocol
+- **TSS**: Threshold Signature Scheme
+- **ECDSA**: Elliptic Curve Digital Signature Algorithm (used by Ethereum/Bitcoin)
+- **EdDSA**: Edwards-curve Digital Signature Algorithm (used by Solana)
+- **Schnorr**: Schnorr signature algorithm (efficient threshold-friendly signature)
+- **Paillier**: Homomorphic encryption system used in threshold ECDSA protocols
+
+**MPC Protocols**:
+- **GG18**: Gennaro & Goldfeder threshold ECDSA (2018) - 9 rounds
+- **GG20**: GG18 update (2020) - fewer rounds but security vulnerability
+- **CGGMP21**: Canetti-Gennaro-Goldfeder-Makriyannis-Peled threshold ECDSA (2021) - 4 rounds, fixes GG20 vulnerabilities
+- **FROST**: Flexible Round-Optimized Schnorr Threshold - 2 rounds for EdDSA/Schnorr
+
+**Infrastructure & Security**:
+- **HSM**: Hardware Security Module - tamper-resistant hardware for key storage
+- **KMS**: Key Management System - manages HSM access policies
+- **TEE**: Trusted Execution Environment - secure area in mobile processors (e.g., Secure Enclave)
+- **STRIDE**: Threat modeling (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
+- **ZK**: Zero-Knowledge proofs - cryptographic proofs without revealing secrets
+- **MtA**: Multiplicative-to-Additive share conversion (used in threshold ECDSA)
+- **FIPS 140-2/140-3**: Federal cryptographic module security standards
+
+**Blockchain Standards**:
+- **RLP**: Recursive Length Prefix encoding (Ethereum transaction format)
+- **UTXO**: Unspent Transaction Output (Bitcoin transaction model)
+- **ERC-20**: Ethereum fungible token standard
+
+**Engineering Frameworks**:
+- **WSJF**: Weighted Shortest Job First (prioritization framework)
+- **NPS**: Net Promoter Score (customer satisfaction metric)
+- **DORA**: DevOps Research and Assessment metrics
+- **ADR**: Architecture Decision Record
+- **RBAC**: Role-Based Access Control
+- **RTT**: Round-Trip Time (network latency metric)
+- **WASM**: WebAssembly (portable bytecode for web/mobile)
+
+**Compliance Standards**:
+- **SOC 2**: Service Organization Control 2 (security audit framework)
+- **ISO 27001**: Information security management standard
+- **GDPR**: General Data Protection Regulation (EU data privacy law)
+- **MFA**: Multi-Factor Authentication
+
+## Table of Contents
+
+- [Executive Summary](#executive-summary)
+- [Glossary](#glossary)
+- [Key Signals](#key-signals)
+- [Dashboard](#dashboard)
+- [[TechArch] Q1: MPC Protocol Selection & Multi-Chain Abstraction Layer Design](#techarch-q1-mpc-protocol-selection--multi-chain-abstraction-layer-design)
+- [[PerfQual] Q2: Signing Latency Optimization & Mobile/Web Performance Constraints](#perfqual-q2-signing-latency-optimization--mobileweb-performance-constraints)
+- [[ProdBiz] Q3: Social Recovery vs. MPC Complexity](#prodbiz-q3-social-recovery-vs-mpc-complexity--feature-prioritization--user-value-trade-offs)
+- [[SecReg] Q4: Threat Modeling for MPC Wallet & Key Management Security](#secreg-q4-threat-modeling-for-mpc-wallet--key-management-security-stride--hsmkms-integration)
+- [[OrgLead] Q5: Cross-Functional Collaboration](#orglead-q5-cross-functional-collaboration--aligning-backend-security-and-product-teams-on-mpc-wallet-roadmap)
+- [[RoadmapEco] Q6: Multi-Chain Expansion & Protocol Migration Planning](#roadmapeco-q6-multi-chain-expansion--protocol-migration-planning-ethereum-l2s-solana-move-based-chains)
+- [References](#references)
+
+## Key Signals
 - **[TechArch]** MPC protocol design & multi-chain integration architecture → System design judgment, protocol selection rationale
 - **[PerfQual]** Signing latency & transaction throughput optimization → Performance-security trade-offs, mobile/web constraints
 - **[ProdBiz]** Wallet feature prioritization & user recovery flows → Business value vs. engineering cost, UX-security balance
@@ -226,6 +284,10 @@ How would you design a modular, extensible architecture that allows adding new c
 | **Self-Contained** | Each Q&A understandable without opening domain files | ✅ |
 
 **Note**: All answers are grounded in the research conducted (CGGMP21, FROST, STRIDE, Team Topologies, DORA metrics, WSJF, NPS, HSM/KMS, ADR, blockchain transaction structures), with citations provided throughout. The difficulty distribution is adjusted to 0 Foundational / 4 Intermediate / 2 Advanced to reflect the senior/lead level of the role, where foundational questions would be too basic for the candidate's expected expertise.
+
+---
+
+## References
 
 [1](https://www.cube.exchange/what-is/mpc-multi-party-computation)
 [2](https://github.com/bnb-chain/tss-lib)

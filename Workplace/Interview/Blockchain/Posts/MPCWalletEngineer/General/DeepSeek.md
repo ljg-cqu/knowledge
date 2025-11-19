@@ -1,5 +1,20 @@
 根据您的要求，我将为"区块链安全密码开发工程师+区块链架构师——多链MPC集成方向"职位生成6个面试Q&A对，严格按照给定的提示和要求。
 
+## 术语表
+
+**核心技术术语**:
+- **MPC (Multi-Party Computation)**: 多方安全计算，允许多方在不暴露各自私有数据的前提下协同计算
+- **FROST**: Flexible Round-Optimized Schnorr Threshold签名协议
+- **GG18/GG20**: Gennaro & Goldfeder阈值ECDSA协议（2018/2020版本）
+- **ERC-4337**: 以太坊账户抽象标准提案
+- **secp256k1**: 比特币/以太坊使用的椭圆曲线参数
+- **ed25519**: 高性能EdDSA签名使用的椭圆曲线
+
+**评估框架**:
+- **WSJF**: Weighted Shortest Job First（加权最短作业优先）
+- **STRIDE**: 威胁建模框架（Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege）
+- **DREAD**: 风险评估方法（Damage/Reproducibility/Exploitability/Affected Users/Discoverability）
+
 # 执行摘要
 
 **领域**: 职业（跨领域面试首页）
@@ -10,6 +25,7 @@
 
 ## 目录
 
+- [术语表](#术语表)
 - [执行摘要](#执行摘要)
 - [关键信号](#关键信号-13要点)
 - [仪表盘](#仪表盘)
@@ -19,6 +35,7 @@
 - [[SecReg] Q4: MPC协议实现威胁建模](#secreg-q4-mpc协议实现威胁建模)
 - [[OrgLead] Q5: 跨团队安全策略产品化](#orglead-q5-跨团队安全策略产品化)
 - [[RoadmapEco] Q6: 多链生态技术演进规划](#roadmapeco-q6-多链生态技术演进规划)
+- [参考文献与标准](#参考文献与标准)
 - [验证检查清单](#验证检查清单)
 
 ## 关键信号 (1–3要点):
@@ -170,6 +187,29 @@
 **信号**:  
 - **强**: 结构化评估框架，明确的技术演进路径，生态系统趋势分析，量化成功指标。  
 - **弱**: 被动反应式规划，忽略标准演进，缺乏合作伙伴考虑。
+
+---
+
+## 参考文献与标准
+
+**MPC协议标准**:
+- Gennaro, R., & Goldfeder, S. (2018). Fast Multiparty Threshold ECDSA with Fast Trustless Setup. [CCS'18]
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [IACR ePrint 2020]
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+
+**区块链标准**:
+- ERC-4337: Account Abstraction Using Alt Mempool. [ethereum.org/eips]
+- BIP-340: Schnorr Signatures for secp256k1. [bitcoin.org/bips]
+- Solana Program Library Documentation. [docs.solana.com]
+
+**安全框架**:
+- NIST Cybersecurity Framework. [nist.gov/cyberframework]
+- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
+- OWASP Cryptographic Storage Cheat Sheet. [owasp.org]
+
+**性能与质量工程**:
+- DORA Metrics (DevOps Research and Assessment). [dora.dev]
+- Site Reliability Engineering Workbook. [Google SRE]
 
 ---
 

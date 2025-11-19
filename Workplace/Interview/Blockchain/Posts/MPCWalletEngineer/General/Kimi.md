@@ -5,8 +5,46 @@
 **Domain**: Career (Cross-Domain Interview Front Page)  
 **Role**: Senior Blockchain Security Cryptography Engineer & Architect (Multi-Chain MPC Integration)  
 **Time Budget**: 75 minutes  
-**Coverage**: 6 Q&As (1 per essential domain)
+**Coverage**: 6 Q&As (1 per essential domain)  
 **Success Criteria**: After this 75-minute session, interviewers can make a hire/no-hire decision with ≥80% agreement across panelists and have clear notes on strengths and risks for each essential domain.
+
+## Glossary
+
+**Core Cryptographic Protocols**:
+- **MPC**: Multi-Party Computation - distributed cryptographic protocol for key management
+- **TSS**: Threshold Signature Scheme - cooperative signing with key shares
+- **GG18/GG20**: Gennaro & Goldfeder threshold ECDSA protocols (2018/2020)
+- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures
+- **PSS**: Proactive Secret Sharing - periodic share refresh without key reconstruction
+- **DKG**: Distributed Key Generation
+
+**Blockchain Standards**:
+- **BIP-32**: Bitcoin Improvement Proposal for hierarchical deterministic wallets
+- **PSBT**: Partially Signed Bitcoin Transaction
+
+**Infrastructure & Security**:
+- **HSM**: Hardware Security Module
+- **TPM**: Trusted Platform Module
+- **WORM**: Write Once Read Many (immutable storage)
+- **gRPC**: Google Remote Procedure Call framework
+
+**Security Frameworks**:
+- **STRIDE**: Threat modeling (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
+- **LINDDUN**: Privacy threat modeling framework
+- **NIST 800-61**: Computer Security Incident Handling Guide
+
+**Engineering & Product Metrics**:
+- **DORA**: DevOps Research and Assessment (performance metrics)
+- **WSJF**: Weighted Shortest Job First (prioritization framework)
+- **NPS**: Net Promoter Score
+- **AUM**: Assets Under Management
+- **ARR**: Annual Recurring Revenue
+- **SLA**: Service Level Agreement
+- **SLO**: Service Level Objective
+
+**Compliance Standards**:
+- **SOC 2 Type II**: Service Organization Control - security audit framework
+- **GDPR Article 33**: EU data breach notification requirement (72-hour window)
 
 ## Key Signals
 - **[TechArch]** Multi-chain MPC architecture with domain-separated key management and chain-specific adapters → System design judgment for heterogeneous blockchain ecosystems
@@ -26,8 +64,9 @@
 | 5 | OrgLead    | Organization & Leadership            | F   | Roles, Action | Cross-team integration leadership | ~10 min |
 | 6 | RoadmapEco | Roadmap & Ecosystem Strategy         | A   | Risk, Quantified, Action | Multi-chain ecosystem evolution | ~15 min |
 
-### Contents
+## Table of Contents
 
+- [Glossary](#glossary)
 - [Key Signals](#key-signals)
 - [Dashboard](#dashboard)
 - [[TechArch] Q1: Multi-Chain MPC Wallet Architecture](#techarch-q1-multi-chain-mpc-wallet-architecture)
@@ -36,6 +75,7 @@
 - [[SecReg] Q4: MPC Server Compromise Incident Response](#secreg-q4-mpc-server-compromise-incident-response)
 - [[OrgLead] Q5: Cross-Team MPC Integration Orchestration](#orglead-q5-cross-team-mpc-integration-orchestration)
 - [[RoadmapEco] Q6: Multi-Chain Ecosystem Strategy & Standardization](#roadmapeco-q6-multi-chain-ecosystem-strategy--standardization)
+- [References](#references)
 
 ---
 
@@ -181,7 +221,35 @@ Today we support Ethereum, Bitcoin, and Solana. In 18 months, we must support 10
 
 ## References
 
-- FROST threshold signatures – IETF CFRG draft-irtf-cfrg-frost (latest version).
-- NIST SP 800-61 – Computer Security Incident Handling Guide.
-- SOC 2 Type II – AICPA Trust Services Criteria for security and availability.
-- GDPR Article 33 – Notification of a personal data breach.
+**MPC & Threshold Cryptography**:
+- Gennaro, R., & Goldfeder, S. (2018). Fast Multiparty Threshold ECDSA with Fast Trustless Setup. [ACM CCS'18]
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [IACR Cryptology ePrint Archive 2020/540]
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+- IETF CFRG. draft-irtf-cfrg-frost: Two-Round Threshold Schnorr Signatures with FROST. [IETF CFRG]
+- Herzberg, A., et al. (1995). Proactive Secret Sharing. [CRYPTO'95]
+
+**Blockchain Standards**:
+- BIP-32: Hierarchical Deterministic Wallets. [bitcoin.org/bips]
+- BIP-174: Partially Signed Bitcoin Transaction Format. [bitcoin.org/bips]
+- ERC-4337: Account Abstraction Using Alt Mempool. [ethereum.org/eips]
+- Solana Documentation: Transaction Message Formats. [docs.solana.com]
+
+**Security & Compliance**:
+- NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide. [nist.gov]
+- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
+- LINDDUN Privacy Threat Modeling. [linddun.org]
+- SOC 2 Type II: AICPA Trust Services Criteria. [aicpa.org]
+- GDPR Article 33: Notification of a Personal Data Breach (72-hour requirement). [EUR-Lex]
+
+**Engineering Frameworks**:
+- DORA Metrics: DevOps Research and Assessment. [dora.dev]
+- Site Reliability Engineering. [Google SRE Book]
+- Team Topologies. [Skelton & Pais, 2019]
+- WSJF (Weighted Shortest Job First). [SAFe Framework]
+- Diátaxis Documentation Framework. [diataxis.fr]
+
+**Tools & Standards**:
+- Tamarin Prover: Tool for Computationally Secure Protocol Analysis. [tamarin-prover.github.io]
+- Protocol Buffers. [protobuf.dev]
+- W3C Decentralized Identifiers (DIDs). [w3.org/TR/did-core]
+- LaunchDarkly Feature Flags. [launchdarkly.com]

@@ -1,8 +1,61 @@
+# MPC Wallet Engineer Interview Guide
+
+## Executive Summary
+
 **Domain**: Career (Cross-Domain Interview Front Page) [1]  
 **Role**: Senior/Lead Blockchain Security Cryptography Engineer & Architect — Multi-Chain MPC Integration [1]  
 **Time Budget**: 75 minutes [1]  
 **Coverage**: 6 Q&As (1 per essential domain) [1]  
-**Key Signals** (1–3 bullets):  
+**Success Criteria**: Achieve ≥80% hiring consensus within 75-minute interview loop with clear signal capture per domain [1]
+
+## Glossary
+
+**Core Technical Terms**:
+- **MPC**: Multi-Party Computation - cryptographic protocol enabling distributed key management
+- **TSS**: Threshold Signature Scheme - subset of parties can cooperatively sign
+- **DKG**: Distributed Key Generation - protocol to create key shares without central authority
+- **PSBT**: Partially Signed Bitcoin Transaction (BIP-174)
+- **ERC-4337**: Ethereum Account Abstraction standard
+- **DRBG**: Deterministic Random Bit Generator
+
+**Protocols & Frameworks**:
+- **GG18/GG20**: Gennaro & Goldfeder threshold ECDSA protocols
+- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures
+- **STRIDE**: Threat modeling (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
+- **LINDDUN**: Privacy threat modeling framework
+
+**Prioritization & Decision Frameworks**:
+- **RICE**: Reach, Impact, Confidence, Effort (prioritization framework)
+- **WSJF**: Weighted Shortest Job First (value framework)
+- **ADR**: Architecture Decision Record
+- **RFC**: Request for Comments (design document)
+- **RACI**: Responsible, Accountable, Consulted, Informed (decision matrix)
+
+**Engineering Metrics**:
+- **SLI/SLO**: Service Level Indicator/Objective
+- **RCA**: Root Cause Analysis
+- **TTI**: Time To Integrate
+- **SRE**: Site Reliability Engineering
+
+**Role Types**:
+- **IC**: Individual Contributor
+
+## Table of Contents
+
+- [Executive Summary](#executive-summary)
+- [Glossary](#glossary)
+- [Key Signals](#key-signals)
+- [Dashboard](#dashboard)
+- [[TechArch] Q1: Design Multi-Chain MPC Wallet Platform](#techarch-q1-design-a-multi-chain-mpc-wallet-platform-ethbtcsolana-with-one-signing-interface)
+- [[PerfQual] Q2: Solana Mobile Performance Regression](#perfqual-q2-solana-mobile-p99-spikes-to-600-ms-ethbtc-stablefind-and-fix)
+- [[ProdBiz] Q3: Feature Prioritization (ERC-4337 vs Taproot)](#prodbiz-q3-prioritize-erc-4337-session-keys-vs-btc-taproot-schnorr-threshold-support)
+- [[SecReg] Q4: Security Incident Response](#secreg-q4-incidentsuspected-threshold-ecdsa-nonce-weakness-on-android-devices)
+- [[OrgLead] Q5: Partner SDK Alignment](#orglead-q5-aligning-sdk-design-with-partners-asking-to-reduce-mpc-rounds)
+- [[RoadmapEco] Q6: Ecosystem Evolution Strategy](#roadmapeco-q6-keeping-pace-with-eipsbipssolana-changes-without-breaking-sdks)
+- [References](#references)
+- [Validation Checklist](#validation-checklist-self-review)
+
+## Key Signals  
 - [TechArch] Structural & design judgment → Can they architect MPC TSS across Ethereum/BTC/Solana with clean abstractions and correct protocol choices. [1]  
 - [PerfQual] Performance/quality trade-offs → Can they drive p95/p99 signing latency down while preserving reliability across mobile/web/backend. [0]  
 - [ProdBiz] Value & prioritization → Can they sequence AA vs Taproot/FROST vs SDK partner asks using quantified value frameworks. [1]  
@@ -202,6 +255,40 @@ Signals:
 - Context and constraints are explicit, with metrics and stakeholders, enabling decision-critical evaluation. [1]  
 - Each Q&A references common frameworks/standards (e.g., ADRs, STRIDE, WSJF, OpenTelemetry) for credible, repeatable judgment. [0]  
 - Difficulty mix: 1 F, 3 I, 2 A; total time ≈75 minutes. [1]  
+
+---
+
+## References
+
+**MPC/TSS Protocols**:
+- Gennaro, R., & Goldfeder, S. (2018). Fast Multiparty Threshold ECDSA. [CCS'18]
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA. [IACR Cryptology ePrint]
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+
+**Blockchain Standards**:
+- BIP-174: Partially Signed Bitcoin Transactions (PSBT). [bitcoin.org/bips]
+- BIP-340: Schnorr Signatures for secp256k1. [bitcoin.org/bips]
+- BIP-341: Taproot: SegWit version 1 spending rules. [bitcoin.org/bips]
+- ERC-4337: Account Abstraction Using Alt Mempool. [ethereum.org/eips]
+- EIP-712: Typed structured data hashing and signing. [ethereum.org/eips]
+- EIP-1559: Fee market change for ETH transactions. [ethereum.org/eips]
+- Solana Transaction Message Formats v0. [docs.solana.com]
+
+**Security & Compliance**:
+- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
+- LINDDUN Privacy Threat Modeling. [LINDDUN.org]
+- NIST SP 800-90A: Recommendation for Random Number Generation Using Deterministic RBGs. [nist.gov]
+- RFC 6979: Deterministic Usage of DSA and ECDSA. [ietf.org/rfc]
+
+**Engineering Frameworks**:
+- DORA Metrics (DevOps Research and Assessment). [dora.dev]
+- Site Reliability Engineering. [Google SRE Book]
+- Team Topologies. [Skelton & Pais, 2019]
+- Architecture Decision Records (ADRs). [github.com/joelparkerhenderson/architecture-decision-record]
+
+**Product/Business**:
+- RICE Prioritization Framework. [Intercom Product Management]
+- WSJF (Weighted Shortest Job First). [SAFe Framework]
 
 ---
 

@@ -1,11 +1,67 @@
-**Executive Summary**
+# MPC Wallet Engineer Interview Guide (Qwen3Max)
+
+## Executive Summary
 
 **Domain**: Career (Cross-Domain Interview Front Page)  
 **Role**: Senior Blockchain Security Cryptography Developer & Architect (Multi-chain MPC Integration)  
 **Time Budget**: 75 minutes  
-**Coverage**: 6 Q&As (1 per essential domain)
+**Coverage**: 6 Q&As (1 per essential domain)  
+**Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain
 
-**Key Signals** (1–3 bullets):
+## Glossary
+
+**Core Cryptographic Terms**:
+- **MPC**: Multi-Party Computation - distributed cryptographic protocol
+- **TSS**: Threshold Signature Scheme
+- **ECDSA**: Elliptic Curve Digital Signature Algorithm
+- **Ed25519**: Edwards-curve Digital Signature Algorithm (used by Solana)
+- **Schnorr**: Schnorr signature algorithm
+
+**MPC Protocols**:
+- **GG20**: Gennaro & Goldfeder threshold ECDSA protocol (2020)
+- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures
+
+**Infrastructure**:
+- **HSM**: Hardware Security Module
+- **TEE**: Trusted Execution Environment
+- **API**: Application Programming Interface
+- **SDK**: Software Development Kit
+
+**Security & Compliance**:
+- **STRIDE**: Threat modeling framework (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
+- **NIST SP 800-53**: National Institute of Standards and Technology security controls
+- **SOC 2 Type II**: Service Organization Control - security audit framework
+- **ProVerif/Tamarin**: Formal verification tools for cryptographic protocols
+
+**Business & Engineering**:
+- **WSJF**: Weighted Shortest Job First (prioritization framework)
+- **RICE**: Reach, Impact, Confidence, Effort (scoring framework)
+- **OKR**: Objectives and Key Results
+- **DORA**: DevOps Research and Assessment
+- **ARR**: Annual Recurring Revenue
+- **TVL**: Total Value Locked (blockchain metric)
+
+**Design Patterns**:
+- **Adapter Pattern**: Software design pattern for interface compatibility
+- **API-First Design**: Design methodology starting with API contracts
+- **Consumer-Driven Contracts**: Testing approach where consumers define expected API behavior
+- **Team Topologies**: Framework for organizing software delivery teams
+
+## Table of Contents
+
+- [Executive Summary](#executive-summary)
+- [Glossary](#glossary)
+- [Key Signals](#key-signals)
+- [Dashboard](#dashboard)
+- [[TechArch] Q1: Cross-Chain MPC Wallet Architecture Design](#techarch-q1-cross-chain-mpc-wallet-architecture-design)
+- [[PerfQual] Q2: MPC Signing Performance Optimization](#perfqual-q2-mpc-signing-performance-optimization)
+- [[ProdBiz] Q3: MPC Wallet Feature Prioritization](#prodbiz-q3-mpc-wallet-feature-prioritization)
+- [[SecReg] Q4: MPC Key Management Risk Assessment](#secreg-q4-mpc-key-management-risk-assessment)
+- [[OrgLead] Q5: Cross-Team Cryptography Integration](#orglead-q5-cross-team-cryptography-integration)
+- [[RoadmapEco] Q6: Multi-Chain MPC Ecosystem Strategy](#roadmapeco-q6-multi-chain-mpc-ecosystem-strategy)
+- [References](#references)
+
+## Key Signals
 - [TechArch] MPC protocol selection & system design judgment for cross-chain wallets
 - [PerfQual] Performance-security trade-offs in threshold signature implementations
 - [ProdBiz] User experience vs security trade-offs in MPC wallet product decisions
@@ -160,3 +216,33 @@ Your company wants to become the default MPC wallet infrastructure provider for 
 **Signals**:  
 - **Strong**: Specific prioritization criteria with thresholds, quantified technical debt management, measurable ecosystem adoption targets.  
 - **Weak**: Feature-by-feature roadmap without strategic framework, ignores technical sustainability, lacks concrete success metrics or resource allocation strategy.
+
+---
+
+## References
+
+**MPC & Threshold Cryptography**:
+- Gennaro, R., & Goldfeder, S. (2020). One Round Threshold ECDSA with Identifiable Abort. [IACR ePrint 2020/540]
+- Komlo, C., & Goldberg, I. (2020). FROST: Flexible Round-Optimized Schnorr Threshold Signatures. [SAC 2020]
+
+**Security & Compliance**:
+- NIST SP 800-53: Security and Privacy Controls for Information Systems. [nist.gov]
+- SOC 2 Type II: AICPA Trust Services Criteria. [aicpa.org]
+- STRIDE Threat Modeling. [Microsoft Security Development Lifecycle]
+- ProVerif: Cryptographic Protocol Verifier. [proverif.inria.fr]
+- Tamarin Prover: Security Protocol Analysis. [tamarin-prover.github.io]
+
+**Engineering Frameworks**:
+- DORA Metrics: DevOps Research and Assessment. [dora.dev]
+- WSJF (Weighted Shortest Job First). [SAFe Framework]
+- RICE Prioritization Framework. [Intercom Product Management]
+- Team Topologies. [Skelton & Pais, 2019]
+
+**Blockchain Ecosystems**:
+- Token Terminal: Crypto metrics and analytics. [tokenterminal.com]
+- DappRadar: Decentralized application analytics. [dappradar.com]
+
+**Design Patterns**:
+- Gamma, E., et al. (1994). Design Patterns: Elements of Reusable Object-Oriented Software. [Addison-Wesley]
+- API-First Design Principles. [Swagger/OpenAPI Specification]
+- Consumer-Driven Contracts. [Pact.io]

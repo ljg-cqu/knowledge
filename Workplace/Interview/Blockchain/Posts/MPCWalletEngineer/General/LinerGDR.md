@@ -1,9 +1,64 @@
-**Domain**: Career (Cross-Domain Interview Front Page)
-**Role**: Blockchain Security Cryptographic Development Engineer + Blockchain Architect - Multi-chain MPC Integration
-**Time Budget**: 75 minutes
-**Coverage**: 6 Q&As (1 per essential domain)
+# MPC Wallet Engineer Interview Guide (LinerGDR)
 
-**Key Signals** (1–3 bullets):
+## Executive Summary
+
+**Domain**: Career (Cross-Domain Interview Front Page)  
+**Role**: Blockchain Security Cryptographic Development Engineer + Blockchain Architect - Multi-chain MPC Integration  
+**Time Budget**: 75 minutes  
+**Coverage**: 6 Q&As (1 per essential domain)  
+**Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain
+
+## Glossary
+
+**Core Cryptographic Terms**:
+- **MPC**: Multi-Party Computation - distributed key management protocol
+- **TSS**: Threshold Signature Scheme
+- **ECDSA**: Elliptic Curve Digital Signature Algorithm
+- **EdDSA**: Edwards-curve Digital Signature Algorithm
+- **GG18/GG20**: Gennaro & Goldfeder threshold ECDSA protocols (2018/2020)
+- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures
+- **CGGMP21**: Canetti-Gennaro-Goldfeder-Makriyannis-Peled threshold ECDSA (2021)
+- **DKG**: Distributed Key Generation
+
+**Security & Architecture**:
+- **AA**: Account Abstraction
+- **ADR**: Architecture Decision Record
+- **TEE**: Trusted Execution Environment
+- **STRIDE**: Threat modeling (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
+- **CVSS**: Common Vulnerability Scoring System
+- **NIST CSF**: NIST Cybersecurity Framework (Identify/Protect/Detect/Respond/Recover)
+- **FIDO2**: Fast Identity Online 2 (passwordless authentication standard)
+
+**Engineering Frameworks**:
+- **DORA**: DevOps Research and Assessment
+- **SOLID**: Software design principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
+- **RACI**: Responsibility Assignment Matrix (Responsible/Accountable/Consulted/Informed)
+- **OKR**: Objectives and Key Results
+
+**Prioritization Methods**:
+- **WSJF**: Weighted Shortest Job First
+- **MoSCoW**: Must-have/Should-have/Could-have/Won't-have (prioritization)
+
+**Blockchain Standards**:
+- **EVM**: Ethereum Virtual Machine
+- **L2**: Layer 2 scaling solutions
+- **DeFi**: Decentralized Finance
+
+## Table of Contents
+
+- [Executive Summary](#executive-summary)
+- [Glossary](#glossary)
+- [Key Signals](#key-signals)
+- [Dashboard](#dashboard)
+- [Q1: Designing a Secure and Extensible Multi-Chain MPC Wallet Core](#q1-designing-a-secure-and-extensible-multi-chain-mpc-wallet-core)
+- [Q2: Optimizing Transaction Signing Latency and Reliability for MPC Wallets](#q2-optimizing-transaction-signing-latency-and-reliability-for-mpc-wallets)
+- [Q3: Prioritizing MPC Wallet Infrastructure Features with Resource Constraints](#q3-prioritizing-mpc-wallet-infrastructure-features-with-resource-constraints)
+- [Q4: Responding to a Novel Attack Vector in MPC Signature Protocols](#q4-responding-to-a-novel-attack-vector-in-mpc-signature-protocols)
+- [Q5: Leading Cross-Functional Effort for Device Verification and MFA Productization](#q5-leading-cross-functional-effort-for-device-verification-and-mfa-productization)
+- [Q6: Strategic Evolution of Multi-Chain MPC Wallet for Emerging Standards](#q6-strategic-evolution-of-multi-chain-mpc-wallet-for-emerging-standards)
+- [Sources](#sources)
+
+## Key Signals
 - Structural & design judgment for secure, modular, multi-chain MPC wallets
 - Performance/quality trade-offs in cryptographic signing for diverse environments
 - Value & prioritization for security features like AA and social recovery
@@ -11,7 +66,7 @@
 - Cross-functional collaboration and leadership in productizing security
 - Strategic thinking for evolving blockchain standards and ecosystem integration
 
-**Dashboard**:
+## Dashboard
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
 |---|--------------------|--------|------------|-------------|---------------|---------------|
 | 1 | TechArch | Technical Architecture & Design | A | Blocks, Risk | System & API design judgment | ~10–15 min |
@@ -135,7 +190,8 @@ As a Blockchain Architect for a multi-chain MPC wallet platform, you are respons
 - **Strong**: Articulates a flexible, iterative roadmap process, leverages explicit frameworks for technology assessment and prioritization, demonstrates an understanding of both technical and business risks/opportunities, and details proactive engagement with the broader ecosystem.
 - **Weak**: Presents a rigid, linear roadmap without consideration for market dynamics, focuses solely on technical features without business justification, or overlooks the importance of external partnerships and emerging standards.
 
-Sources: 
+## Sources
+
 [1] ATLAS: Efficient and Scalable MPC in the Honest Majority Setting, https://www.semanticscholar.org/paper/abcd2e67d685b76487687bd9aee5569c9e741d92
 [2] Arcula: A Secure Hierarchical Deterministic Wallet for Multi-asset Blockchains, https://arxiv.org/abs/1906.05919
 [3] Securing blockchain transactions using quantum teleportation and quantum digital signature, https://link.springer.com/article/10.1007/s11063-020-10272-1
