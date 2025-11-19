@@ -1,5 +1,16 @@
+# MPC Wallet Architecture Q&A  
+*Last Updated: 2025-11-19 | Status: Final | Owner: Interview Team*
+
 ## Contents
-[TOC]
+- [Topic Areas](#topic-areas)
+- [Topic 1: Multi-region, multi-tenant MPC wallet core with crypto isolation](#topic-1-multi-region-multi-tenant-mpc-wallet-core-with-crypto-isolation)
+- [Topic 2: State machines for MPC keygen, signing, and recovery](#topic-2-state-machines-for-mpc-keygen-signing-and-recovery)
+- [Topic 3: Brownout and graceful degradation for MPC signing APIs](#topic-3-brownout-and-graceful-degradation-for-mpc-signing-apis)
+- [Topic 4: Encrypted event streams for key shares, devices, and recovery](#topic-4-encrypted-event-streams-for-key-shares-devices-and-recovery)
+- [Topic 5: Plugin-based chain adapters and stable SDK contracts](#topic-5-plugin-based-chain-adapters-and-stable-sdk-contracts)
+- [References](#references)
+- [Validation](#validation)
+- [Limitations](#limitations)
 
 ### Topic Areas
 | Dimension | Count | Difficulty |
@@ -92,7 +103,7 @@ Overview: JD0 requires implementing GG18/FROST-style keygen/signing and robust r
 
 #### Q2: How would you design a state machine for MPC keygen and signing sessions that handles multi-round messages, timeouts, retries, and aborts without leaking key shares?
 Difficulty: I | Dimension: Behavioral  
-Key Insight: Explicit session states with strict transitions and timeouts reduce “zombie” MPC sessions by ~60–80% in incident reviews, and make auditability and replay protection much easier than ad-hoc flags. [A2][A3]
+Key Insight: Explicit session states with strict transitions and timeouts reduce "zombie" MPC sessions by ~60–80% in incident reviews, and make auditability and replay protection much easier than ad-hoc flags. [A2][A3]
 
 Answer:  
 Represent each MPC lifecycle (keygen, signing, recovery) as a finite-state machine persisted in durable storage. For signing, states might be: `INIT`, `ROUND1_WAIT_SHARES`, `ROUND2_WAIT_SHARES`, `AGGREGATING`, `FINALIZED`, `ABORTED`. Transitions are driven by validated messages from devices/servers and internal timers. Each transition enforces invariants: correct quorum (t-of-n partials), monotonic round numbers, and idempotent processing by using `(sessionID, round, partyID)` as a natural key. Timeouts move sessions from `WAIT_*` to `ABORTED`, emitting events so the risk system can act (e.g., notify users, clamp spending limits).  
@@ -218,7 +229,7 @@ Difficulty: A | Dimension: Data
 Key Insight: Using encrypted append-only event streams for custody-critical actions yields 3–10× faster, tailored read models while providing an auditable trail; the trade-off is +20–40ms on writes and 100–500ms projection lag—acceptable for history and investigations. [A2][A4]
 
 Answer:  
-Persist everything custody-critical—keygen, share rotation, device binding, social-recovery approvals—as immutable events in an **encrypted event store**. The write model emits events like `KeyShareGenerated`, `DeviceBound`, `RecoveryGuardianApproved`, each carrying only the minimum metadata plus encrypted blobs for sensitive payloads (e.g., share handles, guardian IDs). CQRS read models project these into per-wallet views: active devices, guardian quorum status, share rotation history. Because the read side is denormalized and optimized for queries, you can answer “who could approve this recovery?” or “which devices were active at incident time?” with low latency.  
+Persist everything custody-critical—keygen, share rotation, device binding, social-recovery approvals—as immutable events in an **encrypted event store**. The write model emits events like `KeyShareGenerated`, `DeviceBound`, `RecoveryGuardianApproved`, each carrying only the minimum metadata plus encrypted blobs for sensitive payloads (e.g., share handles, guardian IDs). CQRS read models project these into per-wallet views: active devices, guardian quorum status, share rotation history. Because the read side is denormalized and optimized for queries, you can answer "who could approve this recovery?" or "which devices were active at incident time?" with low latency.  
 
 Event schemas are versioned; projections are idempotent and can be rebuilt from the encrypted log when formats change. Operationally you monitor projection lag p95, rebuild time, and event size growth. Trade-offs include extra storage, schema evolution complexity, and the need to manage encryption keys carefully (e.g., KMS-managed DEKs). You avoid logging plaintext shares anywhere, satisfying zero-single-point-custody requirements while keeping auditors happy. [A2][A4][A6]
 
@@ -349,14 +360,14 @@ Sources: [A1][A3][A7]
 
 #### Literature (≥3)
 - L1. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley. – Bounded contexts and domain modeling for Crypto Core vs. Chain Gateway.  
-- L2. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O’Reilly Media. – Event sourcing, CQRS, and consistency models for custody and audit trails.  
-- L3. Newman, S. (2021). *Building Microservices* (2nd ed.). O’Reilly Media. – Service boundaries, resiliency, and deployment patterns for multi-region platforms.  
+- L2. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media. – Event sourcing, CQRS, and consistency models for custody and audit trails.  
+- L3. Newman, S. (2021). *Building Microservices* (2nd ed.). O'Reilly Media. – Service boundaries, resiliency, and deployment patterns for multi-region platforms.  
 - L4. Baral, S. (Ed.). (n.d.). *Threshold Cryptography Literature*. GitHub repository. – Curated collection of threshold cryptography and MPC research papers. https://github.com/sanjibbaral435/Threshold-Cryptography-Literature  
 
 #### Citations (≥6 APA 7th, ≥2 languages)
 - A1. Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley. (English)  
-- A2. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O’Reilly Media. (English)  
-- A3. Newman, S. (2021). *Building Microservices* (2nd ed.). O’Reilly Media. (English)  
+- A2. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media. (English)  
+- A3. Newman, S. (2021). *Building Microservices* (2nd ed.). O'Reilly Media. (English)  
 - A4. Baral, S. (Ed.). (n.d.). *Threshold Cryptography Literature*. GitHub. https://github.com/sanjibbaral435/Threshold-Cryptography-Literature (English)  
 - A5. ZenGo-X. (n.d.). *multi-party-ecdsa* [GitHub repository]. GitHub. https://github.com/ZenGo-X/multi-party-ecdsa (English)  
 - A6. Zcash Foundation. (2023). *FROST: Flexible Round-Optimized Schnorr Threshold Signatures* (RFC draft and reference implementations). https://github.com/ZcashFoundation/frost (English)  
@@ -383,4 +394,3 @@ Overall: 100% PASS
 ### Limitations
 - Focuses on architecture-to-code translation for MPC wallet engineers; deep cryptographic proofs and protocol-level security analyses are out of scope and should follow dedicated crypto reviews. [A4][A6]  
 - Performance and risk metrics are indicative baselines; real thresholds must be calibrated from production telemetry and business risk appetite. [A2][A3]
-

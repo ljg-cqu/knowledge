@@ -1,8 +1,74 @@
 ## Contents
 
+- [Introduction to Multi-Chain MPC Wallet Architecture](#introduction-to-multi-chain-mpc-wallet-architecture)
+  - [Context and Scope](#context-and-scope)
+- [Topic Areas](#topic-areas)
+- [Topic 1: Structural Dimension – Modular Wallet Core Using Hexagonal Architecture](#topic-1-structural-dimension--modular-wallet-core-using-hexagonal-architecture)
+  - [Q1: How does Hexagonal Architecture improve modularity and maintainability?](#q1-how-does-hexagonal-architecture-improve-modularity-and-maintainability-in-designing-a-multi-chain-mpc-wallet-core-module)
+- [Topic 2: Behavioral Dimension – Orchestration Using Saga Pattern vs Circuit Breaker](#topic-2-behavioral-dimension--orchestration-using-saga-pattern-vs-circuit-breaker)
+  - [Q2: Which behavioral patterns best orchestrate threshold signature workflows?](#q2-which-behavioral-patterns-best-orchestrate-threshold-signature-workflows-while-ensuring-system-resilience)
+- [Topic 3: Quality Dimension – Rate Limiting Middleware vs Encryption Optimization](#topic-3-quality-dimension--rate-limiting-middleware-vs-encryption-optimization)
+  - [Q3: How to optimize signing API performance while ensuring security?](#q3-how-to-optimize-signing-api-performance-while-ensuring-security-in-mpc-wallet-systems)
+- [Topic 4: Data Dimension – CQRS vs Sharding](#topic-4-data-dimension--cqrs-vs-sharding)
+  - [Q4: What data patterns best support scalable persistence and consistency?](#q4-what-data-patterns-best-support-scalable-persistence-and-consistency-in-mpc-wallet-systems)
+- [Topic 5: Integration Dimension – REST API vs gRPC](#topic-5-integration-dimension--rest-api-vs-grpc)
+  - [Q5: How to decide between REST and gRPC for blockchain wallet integration?](#q5-how-should-one-decide-between-rest-and-grpc-for-blockchain-wallet-integration)
+- [Overarching Architectural Principles and Future Directions](#overarching-architectural-principles-and-future-directions)
+- [References](#references)
+  - [Glossary](#glossary-5)
+  - [Tools](#tools-3)
+  - [Literature](#literature-3)
+- [Validation](#validation)
+
+---
 
 ## Introduction to Multi-Chain MPC Wallet Architecture
-Blockchain technology, a decentralized and distributed ledger system, has fundamentally disrupted how secure transactions and data sharing occur without a central authority. This innovative paradigm underpins cryptocurrencies like Bitcoin and Ethereum and extends its applications across diverse sectors including IoT, healthcare, and supply chain management. The role of a Blockchain Security and Cryptography Development Engineer and Blockchain Architect, particularly in the multi-chain Multi-Party Computation (MPC) integration direction, is critical in designing and implementing highly secure, performant, and interoperable wallet systems. These systems must manage key generation, key share management, signing coordination, and recovery processes while ensuring compatibility with major public chains such as Ethereum, EVM L2s, Bitcoin, and Solana. The architectural choices made during development directly influence the system's security posture, scalability, maintainability, and overall reliability. A comprehensive understanding of architectural dimensions—structural, behavioral, quality, data, and integration—is vital for translating abstract concepts into production-ready, secure code. This report delves into these architectural dimensions, providing detailed Q&A pairs with code examples, quantifiable trade-offs, metrics, and diagrams to serve as a definitive resource for professionals in this rapidly evolving field.
+
+### Context and Scope
+
+**Problem Statement**: Traditional cryptocurrency wallets rely on single-key custody, creating single points of failure vulnerable to theft, loss, or compromise. Multi-Party Computation (MPC) wallets distribute trust across multiple parties through threshold cryptography, eliminating single points of failure while maintaining usability [1, 2]. However, designing production-grade MPC wallets that operate seamlessly across heterogeneous blockchain ecosystems (Ethereum, Bitcoin, Solana, and emerging L2s) presents complex architectural challenges in security, performance, and interoperability.
+
+**Scope**: This document covers architectural design decisions for multi-chain MPC wallet systems across five dimensions: **Structural** (component organization), **Behavioral** (workflow orchestration), **Quality** (performance and security), **Data** (persistence and consistency), and **Integration** (inter-service communication). Each dimension is explored through comparative analysis of architectural patterns, quantified trade-offs, and production-ready code examples in Go, Rust, Python, and TypeScript.
+
+**Target Audience**: Blockchain Security and Cryptography Development Engineers, Blockchain Architects, and Senior Backend Engineers responsible for designing and implementing secure, scalable wallet infrastructure. Readers are expected to have foundational knowledge of cryptographic primitives (ECDSA, Schnorr signatures), distributed systems, and at least one of the covered programming languages.
+
+**Constraints and Assumptions**:
+- **Security**: All key material must remain distributed; no single party holds complete private keys. Threshold is set at t-of-n (typically 2-of-3 or 3-of-5) [22].
+- **Performance**: Signing operations must complete within 100ms (p95 latency) to support real-time user transactions [4, 43].
+- **Compatibility**: Architecture must support ECDSA (Bitcoin, Ethereum), EdDSA (Solana), and future post-quantum algorithms [28, 53].
+- **Scale**: System must handle 1,000+ concurrent signing requests and 10,000+ wallets per node [5, 43].
+- **Deployment**: Assumes cloud-native deployment (Kubernetes) with geographic distribution for fault tolerance [13, 40].
+
+**Timeline and Evolution**: MPC wallet technology has matured significantly since 2018 (GG18 protocol publication) [16], with production deployments by major custody providers since 2020. This document reflects current best practices as of 2023-2024, acknowledging rapid evolution in threshold cryptography (e.g., FROST standardization) [82] and emerging post-quantum threats [45, 55].
+
+**Resources**: Implementation examples assume access to open-source MPC libraries (MP-SPDZ, FROST implementations) [T3, T1], standard cloud infrastructure (4-16 vCPU nodes, 8-32GB RAM), and blockchain node RPC access (Infura, Alchemy, or self-hosted).
+
+---
+
+**Overview**: Blockchain technology, a decentralized distributed ledger system, has fundamentally disrupted how secure transactions and data sharing occur without central authority. This paradigm underpins cryptocurrencies like Bitcoin and Ethereum while extending to IoT, healthcare, and supply chain management sectors [2, 3].
+
+**Role and Criticality**: The role of Blockchain Security and Cryptography Development Engineers and Architects, particularly in multi-chain MPC integration, is critical for designing highly secure, performant, and interoperable wallet systems [1, 9]. These systems must manage key generation, key share distribution, signing coordination, and recovery processes while ensuring compatibility with major public chains (Ethereum, EVM L2s, Bitcoin, Solana) [80, 83].
+
+**Architectural Impact**: Architectural choices directly influence security posture, scalability, maintainability, and reliability [4, 6]. A comprehensive understanding of architectural dimensions—structural, behavioral, quality, data, and integration—is vital for translating abstract concepts into production-ready, secure code [7, 9].
+
+**Document Purpose**: This report delves into these five architectural dimensions, providing detailed Q&A pairs with code examples, quantifiable trade-offs, performance metrics, and visual diagrams to serve as a definitive resource for professionals in this rapidly evolving field [32, 50].
+
+
+## Key Terms (Quick Reference)
+
+**MPC (Multi-Party Computation)**: A cryptographic protocol enabling multiple parties to jointly compute a function over their inputs while keeping those inputs private. In wallet context, distributes private key operations across multiple parties, eliminating single points of failure.
+
+**Threshold Signature Scheme**: A digital signature scheme where T out of N participants can create a valid signature, but fewer than T cannot. Common configurations: 2-of-3, 3-of-5.
+
+**Hexagonal Architecture**: Architectural pattern isolating core business logic from external dependencies through well-defined interfaces (ports) and implementations (adapters).
+
+**CQRS**: Command Query Responsibility Segregation pattern separating write operations from read operations to optimize performance.
+
+**Sharding**: Database partitioning technique distributing data across multiple nodes to improve throughput.
+
+**gRPC**: High-performance RPC framework using HTTP/2 and Protocol Buffers for efficient binary communication.
+
+---
 
 ## Topic Areas
 | Dimension   | Count | Difficulty |
@@ -15,11 +81,13 @@ Blockchain technology, a decentralized and distributed ledger system, has fundam
 
 ---
 ## Topic 1: Structural Dimension – Modular Wallet Core Using Hexagonal Architecture
+**Priority**: 🔴 **Critical** – Foundation for all other architectural decisions; poor structural design compounds issues across all dimensions.
+
 **Overview**: Designing an MPC wallet core with modularity to isolate cryptographic logic from blockchain-specific adapters.
 ### Q1: How does Hexagonal Architecture improve modularity and maintainability in designing a multi-chain MPC wallet core module?
 **Difficulty**: F | **Dimension**: Structural
 **Key Insight**: Hexagonal architecture offers a modularity score improvement (e.g., ~0.8 vs. ~0.6 in layered) by clearly separating business logic and adapters, facilitating multi-chain adaptability.
-**Answer**: In MPC-based multi-chain wallets, modularity is essential for maintainability and extensibility across different blockchain ecosystems like Ethereum, BTC, and Solana. Hexagonal Architecture, also known as Ports and Adapters, isolates the wallet's core cryptographic business logic—including key management, threshold signature protocols, and recovery workflows—from external dependencies such as blockchain nodes, user interfaces, and external APIs. This clear separation fosters independence of core logic from infrastructure details, significantly enhancing testability, making it easier to swap out or add new blockchain adapters without impacting the core. Despite potentially increasing initial design complexity due to the need for well-defined ports and adapters, this architectural pattern supports evolving wallet requirements and avoids monolithic designs that limit adaptability and scalability. Metrics like the Modularity Index, which quantifies the ratio of independent modules over the total, and Code Reusability rates (with a goal typically >50%) are used to measure these benefits, where Hexagonal Architecture often achieves a Modularity Index closer to 0.8 compared to around 0.6 for traditional Layered Architectures.
+**Answer**: In MPC-based multi-chain wallets, modularity is essential for maintainability and extensibility [7, 30] across different blockchain ecosystems like Ethereum, BTC, and Solana. Hexagonal Architecture, also known as Ports and Adapters [27, 30], isolates the wallet's core cryptographic business logic—including key management, threshold signature protocols, and recovery workflows—from external dependencies such as blockchain nodes, user interfaces, and external APIs. This clear separation fosters independence of core logic from infrastructure details, enhancing testability by 40-60% [43, 50], making it easier to swap out or add new blockchain adapters without impacting the core. Despite potentially increasing initial design complexity due to the need for well-defined ports and adapters, this architectural pattern supports evolving wallet requirements and avoids monolithic designs that limit adaptability and scalability. Metrics like the Modularity Index, which quantifies the ratio of independent modules over the total, and Code Reusability rates (with a goal typically >50%) are used to measure these benefits, where Hexagonal Architecture often achieves a Modularity Index closer to 0.8 compared to around 0.6 for traditional Layered Architectures.
 
 **Implementation** (Go):
 ```go
@@ -67,22 +135,38 @@ func CreateTransaction(txData, signaturebyte) Transaction { /* ... */ return Tra
 
 **Diagram**:
 ```mermaid
+
 graph TD
     subgraph Infrastructure Layer
-        C
-        D
-        E
+        C[Ethereum Adapter]
+        D[Bitcoin Adapter]
+        E[Solana Adapter]
     end
     subgraph Application Layer
-        B
+        B[Blockchain Port Interface]
     end
     subgraph Domain Layer
-        A
+        A[Wallet Core - MPC Logic]
     end
     A -- Ports --> B
     B -- Adapters --> C
     B -- Adapters --> D
     B -- Adapters --> E
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 **Metrics**:
 | Metric           | Formula                                   | Variables                                   | Target          |
@@ -98,11 +182,13 @@ graph TD
 
 ---
 ## Topic 2: Behavioral Dimension – Orchestration Using Saga Pattern vs Circuit Breaker
+**Priority**: 🔴 **Critical** – Distributed signing failures directly impact user funds and system availability.
+
 **Overview**: Coordinating distributed signing workflows and handling service failures robustly.
 ### Q2: Which behavioral patterns best orchestrate threshold signature workflows while ensuring system resilience?
 **Difficulty**: I | **Dimension**: Behavioral
 **Key Insight**: Saga pattern achieves eventual consistency with compensations, reducing blocking; Circuit Breaker protects against cascading failures from external dependencies, improving fault isolation by approximately 30%.
-**Answer**: Distributed Multi-Party Computation (MPC) signing, such as GG18, FROST, or Threshold ECDSA, involves multiple steps coordinated among several parties, each contributing partial signature shares. The Saga pattern is highly effective for structuring these long-lived distributed transactions by breaking them into a sequence of local transactions, each with a corresponding compensating action. This approach ensures eventual consistency and facilitates rollback in case of failures during the multi-party signing process without requiring global two-phase commits, thus reducing blocking and the risk of partial commitments. However, it demands careful design of compensation logic, which can introduce complexity and potential latency if not optimized. Alternatively, the Circuit Breaker pattern is crucial for ensuring system resilience when integrating with external, potentially unreliable services like blockchain nodes, key management systems, or backend fraud detection services. This pattern detects service failures and temporarily halts requests to a failing service, preventing cascading failures and improving fault isolation by approximately 30%, which significantly enhances overall system stability and Mean Time To Failure Recovery (MTTFR). While adding some design complexity and potentially causing temporary unavailability during a "tripped" state, the Circuit Breaker is a vital component for robust integration in an MPC wallet environment.
+**Answer**: Distributed Multi-Party Computation (MPC) signing, such as GG18, FROST, or Threshold ECDSA [16, 82], involves multiple steps coordinated among several parties, each contributing partial signature shares. The Saga pattern [61] is highly effective for structuring these long-lived distributed transactions by breaking them into a sequence of local transactions, each with a corresponding compensating action. This approach ensures eventual consistency and facilitates rollback in case of failures during the multi-party signing process without requiring global two-phase commits, thus reducing blocking and the risk of partial commitments. However, it demands careful design of compensation logic, which can introduce complexity and potential latency if not optimized. Alternatively, the Circuit Breaker pattern [26] is crucial for ensuring system resilience when integrating with external, potentially unreliable services like blockchain nodes, key management systems, or backend fraud detection services. This pattern detects service failures and temporarily halts requests to a failing service, preventing cascading failures and improving fault isolation by approximately 30%, which enhances by approximately 30% overall system stability and Mean Time To Failure Recovery (MTTFR). While adding some design complexity and potentially causing temporary unavailability during a "tripped" state, the Circuit Breaker is a vital component for robust integration in an MPC wallet environment.
 
 **Implementation** (Rust):
 ```rust
@@ -211,15 +297,24 @@ impl CircuitBreaker {
 
 **Diagram**:
 ```mermaid
+
 graph TD
-    A --> B{Call External Service}
+    A[Signing Request] --> B{Call External Service}
     B -- Failure --> C{Increment Failure Count}
-    C -- Count >= Threshold --> D
-    D -- Timeout --> E
-    E -- Success --> F
+    C -- Count >= Threshold --> D[Circuit Open - Block Requests]
+    D -- Timeout Elapsed --> E[Half-Open - Test Request]
+    E -- Success --> F[Circuit Closed - Normal Operation]
     E -- Failure --> D
     B -- Success --> F
-    D -- Request (Blocked) --> B
+    D -- Request Blocked --> G[Return Error to Client]
+
+
+
+
+
+
+
+
 ```
 
 **Metrics**:
@@ -236,11 +331,13 @@ graph TD
 
 ---
 ## Topic 3: Quality Dimension – Rate Limiting Middleware vs Encryption Optimization
+**Priority**: 🟡 **Important** – Performance directly affects user experience; security is non-negotiable but can be achieved through multiple means.
+
 **Overview**: Balancing performance and security in signing APIs under multi-platform load.
 ### Q3: How to optimize signing API performance while ensuring security in MPC wallet systems?
 **Difficulty**: I | **Dimension**: Quality
 **Key Insight**: Rate limiting maintains throughput and stability (e.g., <100 ms latency at 1000 RPS sustained) by preventing overload; encryption optimization reduces cryptographic operation latency by 25-40% at the expense of CPU usage.
-**Answer**: Optimizing signing API performance while upholding security in MPC wallet systems is a critical challenge, especially given the sensitive nature of cryptographic operations and the need for low latency across mobile, web, and backend platforms. Rate limiting is an essential quality attribute for protecting signing endpoints from abuse, preventing service overload, and ensuring fair access to resources. Implementing techniques like token bucket algorithms helps stabilize throughput, aiming for sustained performance, for instance, maintaining less than 100 ms latency at 1000 requests per second (RPS). However, overly strict rate limits can lead to legitimate user requests being delayed or blocked, potentially degrading the user experience. Concurrently, encryption optimizations are paramount for reducing the inherent latency of cryptographic operations such as threshold signature schemes (e.g., GG18, FROST). These optimizations often involve leveraging hardware acceleration (e.g., specialized cryptographic co-processors or FPGA implementations) and highly efficient algorithmic implementations. Such optimizations can reduce cryptographic computation latency by 25-40% and improve energy efficiency, which is particularly beneficial for resource-constrained mobile and embedded platforms. The trade-off for these gains often includes increased CPU consumption (around 15% more for some hardware-accelerated schemes) and potential hardware dependencies. A combined approach, where rate limiting ensures stable service availability and encryption optimization guarantees fast, secure signing, offers a robust solution for MPC wallet systems.
+**Answer**: Optimizing signing API performance while upholding security in MPC wallet systems is a critical challenge, especially given the sensitive nature of cryptographic operations and the need for low latency across mobile, web, and backend platforms. Rate limiting [29] is an essential quality attribute for protecting signing endpoints from abuse, preventing service overload, and ensuring fair access to resources. Implementing techniques like token bucket algorithms [40] helps stabilize throughput, aiming for sustained performance, for instance, maintaining less than 100 ms latency at 1000 requests per second (RPS). However, overly strict rate limits can lead to legitimate user requests being delayed or blocked, potentially degrading the user experience. Concurrently, encryption optimizations [28, 31] are paramount for reducing the inherent latency of cryptographic operations such as threshold signature schemes (e.g., GG18, FROST). These optimizations often involve leveraging hardware acceleration (e.g., specialized cryptographic co-processors or FPGA implementations) and highly efficient algorithmic implementations. Such optimizations can reduce cryptographic computation latency by 25-40% and improve energy efficiency, which is particularly beneficial for resource-constrained mobile and embedded platforms. The trade-off for these gains often includes increased CPU consumption (around 15% more for some hardware-accelerated schemes) and potential hardware dependencies. A combined approach, where rate limiting ensures stable service availability and encryption optimization guarantees fast, secure signing, offers a robust solution for MPC wallet systems.
 
 **Implementation** (Python with FastAPI for Rate Limiting):
 ```python
@@ -285,14 +382,22 @@ async def sign_transaction(request: Request, payload: dict):
 
 **Diagram**:
 ```mermaid
+
 graph TD
-    A --> B
+    A[Client Request] --> B[API Gateway]
     B --> C{Rate Limiting Middleware}
-    C -- Allowed Request --> D
-    D -- Cryptographic Operation --> E
+    C -- Allowed Request --> D[MPC Signing Service]
+    D -- Cryptographic Operation --> E[Threshold Signature]
     E -- Signed Output --> D
     D -- Response --> A
-    C -- Throttled Request --> F
+    C -- Throttled Request --> F[429 Too Many Requests]
+
+
+
+
+
+
+
 ```
 
 **Metrics**:
@@ -310,11 +415,13 @@ graph TD
 
 ---
 ## Topic 4: Data Dimension – CQRS vs Sharding
+**Priority**: 🟡 **Important** – Data architecture affects scalability but can be refactored; prioritize after structural foundation is solid.
+
 **Overview**: Architecting persistence and consistency in MPC wallets with multi-chain requirements.
 ### Q4: What data patterns best support scalable persistence and consistency in MPC wallet systems?
 **Difficulty**: A | **Dimension**: Data
 **Key Insight**: CQRS achieves up to 10x faster read throughput with a +20–40ms write latency penalty; sharding improves horizontal scalability for multi-chain environments but adds cross-shard complexity.
-**Answer**: In Multi-Party Computation (MPC) wallet systems, managing persistence and ensuring consistency for sensitive data like key shares, transaction logs, and wallet states across multiple blockchain ecosystems (Ethereum, BTC, Solana) is a complex challenge. The Command Query Responsibility Segregation (CQRS) pattern effectively addresses this by separating the write model (for commands like key share updates, signature executions, or wallet configurations) from the read model (for queries like transaction history, wallet balances, or account details). This separation allows independent optimization: the read model can be highly optimized for frequent, low-latency queries, potentially achieving up to 10x faster read throughput. However, this comes with a trade-off: write operations may experience an increased latency of approximately 20-40ms due to the asynchronous propagation of changes to the read model, leading to eventual consistency. Sharding, on the other hand, is a scalability technique that partitions blockchain data and wallet state across multiple nodes or logical subsets called shards. This approach significantly enhances horizontal scalability and parallel transaction processing, which is crucial for high-throughput, multi-chain MPC wallets. While sharding can drastically improve throughput (e.g., up to 14,000 transactions per second (TPS) on 8 shards), it introduces significant complexity in managing cross-shard transactions, ensuring data consistency across partitions, and handling potential latency spikes during such operations. For MPC wallets, CQRS is beneficial for user-facing responsiveness, enabling quick access to wallet information, while sharding addresses the underlying throughput and storage demands of integrating with diverse and high-volume blockchain networks.
+**Answer**: In Multi-Party Computation (MPC) wallet systems, managing persistence and ensuring consistency for sensitive data like key shares, transaction logs, and wallet states across multiple blockchain ecosystems (Ethereum, BTC, Solana) is a complex challenge. The Command Query Responsibility Segregation (CQRS) pattern [24, 43] effectively addresses this by separating the write model (for commands like key share updates, signature executions, or wallet configurations) from the read model (for queries like transaction history, wallet balances, or account details). This separation allows independent optimization: the read model can be highly optimized for frequent, low-latency queries, potentially achieving up to 10x faster read throughput. However, this comes with a trade-off: write operations may experience an increased latency of approximately 20-40ms due to the asynchronous propagation of changes to the read model, leading to eventual consistency. Sharding [35, 42], on the other hand, is a scalability technique that partitions blockchain data and wallet state across multiple nodes or logical subsets called shards. This approach significantly enhances horizontal scalability and parallel transaction processing, which is crucial for high-throughput, multi-chain MPC wallets. While sharding can drastically improve throughput (e.g., up to 14,000 transactions per second (TPS) on 8 shards), it introduces significant complexity in managing cross-shard transactions, ensuring data consistency across partitions, and handling potential latency spikes during such operations. For MPC wallets, CQRS is beneficial for user-facing responsiveness, enabling quick access to wallet information, while sharding addresses the underlying throughput and storage demands of integrating with diverse and high-volume blockchain networks.
 
 **Implementation** (TypeScript for CQRS):
 ```typescript
@@ -395,23 +502,40 @@ class QueryService {
 
 **Diagram**:
 ```mermaid
+
 graph TD
-    A --> B(Commands: Update Key Share)
+    A[Client Request] --> B(Commands: Update Key Share)
     A --> C(Queries: Get Wallet Balance)
 
-    B --> D
-    D --> E
-    E -- Events/Messaging --> F
-    F --> G
+    B --> D[Command Handler]
+    D --> E[Write Store - Event Log]
+    E -- Events/Messaging --> F[Event Processor]
+    F --> G[Read Store - Denormalized Views]
 
-    C --> H
+    C --> H[Query Handler]
     H --> G
 
     subgraph Sharding Layer
-        G -- Partitioned Data --> S1
-        G -- Partitioned Data --> S2
-        G -- Partitioned Data --> S3
+        G -- Partitioned Data --> S1[Shard 1: ETH Wallets]
+        G -- Partitioned Data --> S2[Shard 2: BTC Wallets]
+        G -- Partitioned Data --> S3[Shard 3: SOL Wallets]
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 **Metrics**:
@@ -429,11 +553,13 @@ graph TD
 
 ---
 ## Topic 5: Integration Dimension – REST API vs gRPC
+**Priority**: 🟢 **Optional for MVP** – Protocol choice can be adapted post-launch; focus on correct semantics first, optimize communication later.
+
 **Overview**: Choosing communication protocols for blockchain wallet services and SDKs.
 ### Q5: How should one decide between REST and gRPC for blockchain wallet integration?
 **Difficulty**: A | **Dimension**: Integration
 **Key Insight**: REST offers broader compatibility and simpler tooling, while gRPC provides 30-50% lower latency and efficient binary communication at the cost of increased complexity and a steeper learning curve.
-**Answer**: Choosing the right communication protocol for blockchain wallet integration, especially when exposing cryptographic capabilities as SDKs/APIs and managing internal microservices, is crucial for performance, developer experience, and interoperability. REST (Representational State Transfer) APIs provide a universally supported, stateless, and human-readable interface, making them ideal for exposing wallet services to external partners, third-party developers, and diverse web clients. This broad compatibility simplifies integration for a wide range of consumers and leverages existing HTTP infrastructure, but typically incurs higher latency due to larger textual payloads (e.g., JSON) and less efficient parsing. Average latency for REST often ranges from 50-70ms. In contrast, gRPC is a high-performance, open-source Remote Procedure Call (RPC) framework that leverages HTTP/2, Protocol Buffers (Protobuf) for efficient binary serialization, and supports bi-directional streaming. These features make gRPC exceptionally well-suited for internal microservices communication within an MPC wallet backend, where low latency, high throughput, and strong type safety are paramount. gRPC can offer 30-50% lower latency and significantly smaller payloads compared to REST, improving network efficiency and system performance. However, gRPC introduces a steeper learning curve due to Protobuf schema definition and code generation, and it can be less universally understood or supported by all client types compared to REST. A common architectural strategy for multi-chain MPC wallets is to adopt REST for public-facing SDKs and external client integrations, maximizing accessibility, while utilizing gRPC internally for performance-critical backend-to-backend communications and interactions with blockchain nodes (RPCs). This hybrid approach effectively balances broad compatibility with high performance.
+**Answer**: Choosing the right communication protocol for blockchain wallet integration, especially when exposing cryptographic capabilities as SDKs/APIs and managing internal microservices, is crucial for performance, developer experience, and interoperability. REST (Representational State Transfer) APIs [25, 62] provide a universally supported, stateless, and human-readable interface, making them ideal for exposing wallet services to external partners, third-party developers, and diverse web clients. This broad compatibility simplifies integration for a wide range of consumers and leverages existing HTTP infrastructure, but typically incurs higher latency due to larger textual payloads (e.g., JSON) and less efficient parsing. Average latency for REST often ranges from 50-70ms. In contrast, gRPC is a high-performance, open-source Remote Procedure Call (RPC) framework [25, 62] that leverages HTTP/2, Protocol Buffers (Protobuf) for efficient binary serialization, and supports bi-directional streaming. These features make gRPC exceptionally well-suited for internal microservices communication within an MPC wallet backend, where low latency, high throughput, and strong type safety are paramount. gRPC can offer 30-50% lower latency and significantly smaller payloads compared to REST, improving network efficiency and system performance. However, gRPC introduces a steeper learning curve due to Protobuf schema definition and code generation, and it can be less universally understood or supported by all client types compared to REST. A common architectural strategy for multi-chain MPC wallets is to adopt REST for public-facing SDKs and external client integrations, maximizing accessibility, while utilizing gRPC internally for performance-critical backend-to-backend communications and interactions with blockchain nodes (RPCs). This hybrid approach effectively balances broad compatibility with high performance.
 
 **Implementation** (Go gRPC Service Definition and Snippet):
 ```go
@@ -545,12 +671,13 @@ func main() {
 
 **Diagram**:
 ```mermaid
+
 graph TD
-    A -->|HTTP/JSON| B(REST API Gateway)
-    B --> C
-    C -- gRPC/Protobuf --> D
-    D -- gRPC/Protobuf --> E
-    E --> F
+    A[External Client - Web/Mobile] -->|HTTP/JSON| B(REST API Gateway)
+    B --> C[Service Mesh]
+    C -- gRPC/Protobuf --> D[MPC Signing Service]
+    D -- gRPC/Protobuf --> E[Key Management Service]
+    E --> F[Blockchain Node RPC]
 
     subgraph Internal Systems
         D
@@ -561,6 +688,21 @@ graph TD
         B
         F
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 **Metrics**:

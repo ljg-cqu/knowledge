@@ -57,9 +57,9 @@
 ### Q1: How would you architect the key generation and sharding module for an MPC wallet supporting threshold signatures?
 **Difficulty**: I | **Dimension**: Structural
 
-**Key Insight**: Modular design reduces coupling by 40%, enabling 2x faster protocol swaps.
+**Key Insight**: Modular design reduces coupling by 40%, enabling 2x faster protocol swaps. [Estimated]
 
-**Answer**: In MPC wallets, key generation involves distributed computation to create shares without exposing the full private key. Use a layered architecture: Core layer for cryptographic primitives (ECDSA keygen), Protocol layer for MPC algorithms (GG18/GG20), and API layer for integration. Implement key sharding using Shamir's Secret Sharing, distributing shares across parties. Ensure modularity with traits for pluggable protocols, allowing upgrades without refactoring. Trade-offs include complexity vs. security: monolithic code is simpler but less flexible for multi-protocol support. Quantified: GG18 setup time ~5s for 3 parties vs. 2s for optimized modular design. [Gennaro & Goldfeder, 2018]
+**Answer**: In MPC wallets, key generation involves distributed computation to create shares without exposing the full private key. Use a layered architecture: Core layer for cryptographic primitives (ECDSA keygen), Protocol layer for MPC algorithms (GG18/GG20), and API layer for integration. Implement key sharding using Shamir's Secret Sharing, distributing shares across parties. Ensure modularity with traits for pluggable protocols, allowing upgrades without refactoring. Trade-offs include complexity vs. security: monolithic code is simpler but less flexible for multi-protocol support. Quantified: GG18 setup time ~5s for 3 parties vs. 2s for optimized modular design [Estimated]. [Gennaro & Goldfeder, 2018]
 
 **Implementation** (Rust):
 ```rust
@@ -123,9 +123,9 @@ graph TD
 ### Q2: Design and implement a threshold signing orchestration for cross-party transaction approval in an MPC wallet.
 **Difficulty**: A | **Dimension**: Behavioral
 
-**Key Insight**: Threshold signing reduces single-party risk by 80%, but adds 50ms latency per round.
+**Key Insight**: Threshold signing reduces single-party risk by 80%, but adds 50ms latency per round. [Estimated]
 
-**Answer**: Use saga pattern for distributed signing: Initiate signing request, broadcast to parties, collect partial signatures, combine into final signature. For GG20, involve 2 rounds of communication. Handle failures with timeouts and retries. Ensure atomicity across parties using commitment schemes. Trade-offs: Synchronous vs. asynchronous - sync ensures consistency but blocks on slow parties; async improves availability but risks inconsistency. Quantified: GG20 signing latency 200ms for 3 parties vs. 500ms with retries. Advanced: Integrate recovery for offline parties using pre-signed shares. [Boneh & Shoup, 2020]
+**Answer**: Use saga pattern for distributed signing: Initiate signing request, broadcast to parties, collect partial signatures, combine into final signature. For GG20, involve 2 rounds of communication. Handle failures with timeouts and retries. Ensure atomicity across parties using commitment schemes. Trade-offs: Synchronous vs. asynchronous - sync ensures consistency but blocks on slow parties; async improves availability but risks inconsistency. Quantified: GG20 signing latency 200ms for 3 parties vs. 500ms with retries [Estimated]. Advanced: Integrate recovery for offline parties using pre-signed shares. [Boneh & Shoup, 2020]
 
 **Implementation** (Rust):
 ```rust
@@ -218,9 +218,9 @@ sequenceDiagram
 ### Q3: Optimize MPC signing for sub-200ms latency and 256-bit security in mobile MPC wallets.
 **Difficulty**: A | **Dimension**: Quality
 
-**Key Insight**: Pre-computation reduces latency by 60%, maintaining 256-bit security.
+**Key Insight**: Pre-computation reduces latency by 60%, maintaining 256-bit security. [Estimated]
 
-**Answer**: Use pre-computation for expensive operations like exponentiations in Paillier encryption for MPC. Implement batched signing for multiple transactions. Optimize elliptic curve operations with assembly or hardware acceleration. For security, use constant-time algorithms to prevent timing attacks. Trade-offs: Pre-computation vs. on-demand - pre-compute saves time but increases storage and setup cost. Quantified: Pre-computed GG18 signing 150ms vs. 400ms on-demand, with security bits maintained at 256. Advanced: Integrate zero-knowledge proofs for verification without revealing shares. [Lindell, 2020]
+**Answer**: Use pre-computation for expensive operations like exponentiations in Paillier encryption for MPC. Implement batched signing for multiple transactions. Optimize elliptic curve operations with assembly or hardware acceleration. For security, use constant-time algorithms to prevent timing attacks. Trade-offs: Pre-computation vs. on-demand - pre-compute saves time but increases storage and setup cost. Quantified: Pre-computed GG18 signing 150ms vs. 400ms on-demand, with security bits maintained at 256 [Estimated]. Advanced: Integrate zero-knowledge proofs for verification without revealing shares. [Lindell, 2020]
 
 **Implementation** (Rust):
 ```rust
@@ -291,9 +291,9 @@ graph LR
 ### Q4: Design a CQRS-based persistence layer for MPC key shares with encrypted storage and recovery.
 **Difficulty**: I | **Dimension**: Data
 
-**Key Insight**: CQRS separates read/write, improving consistency by 30% for distributed shares.
+**Key Insight**: CQRS separates read/write, improving consistency by 30% for distributed shares. [Estimated]
 
-**Answer**: Use CQRS: Command side for writing encrypted shares, Query side for reading and reconstructing keys. Encrypt shares with AES-256 before storage. Implement event sourcing for audit trails. For recovery, use threshold reconstruction from available shares. Trade-offs: CQRS vs. CRUD - CQRS handles complex queries better but adds complexity. Quantified: Write latency 20ms vs. read 50ms, with 99.9% consistency. Intermediate: Handle share rotation for security. [Gennaro & Goldfeder, 2018]
+**Answer**: Use CQRS: Command side for writing encrypted shares, Query side for reading and reconstructing keys. Encrypt shares with AES-256 before storage. Implement event sourcing for audit trails. For recovery, use threshold reconstruction from available shares. Trade-offs: CQRS vs. CRUD - CQRS handles complex queries better but adds complexity. Quantified: Write latency 20ms vs. read 50ms, with 99.9% consistency [Estimated]. Intermediate: Handle share rotation for security. [Gennaro & Goldfeder, 2018]
 
 **Implementation** (Rust):
 ```rust
@@ -368,9 +368,9 @@ graph TD
 ### Q5: Implement a unified API for MPC transaction signing compatible with Ethereum, Bitcoin, and Solana.
 **Difficulty**: F | **Dimension**: Integration
 
-**Key Insight**: Protocol abstraction reduces integration time by 50% across chains.
+**Key Insight**: Protocol abstraction reduces integration time by 50% across chains. [Estimated]
 
-**Answer**: Create a trait-based API: Signer trait with sign_transaction method, accepting chain-specific transaction structs. Implement adapters for each chain: Ethereum uses EIP-1559, Bitcoin legacy tx, Solana uses recent blockhash. Use serialization for cross-chain compatibility. Trade-offs: Unified vs. chain-specific APIs - unified is simpler but may miss optimizations. Quantified: API integration time 2h vs. 4h per chain. Foundational: Handle signature formats (ECDSA for ETH/BTC, Ed25519 for SOL). [Boneh & Shoup, 2020]
+**Answer**: Create a trait-based API: Signer trait with sign_transaction method, accepting chain-specific transaction structs. Implement adapters for each chain: Ethereum uses EIP-1559, Bitcoin legacy tx, Solana uses recent blockhash. Use serialization for cross-chain compatibility. Trade-offs: Unified vs. chain-specific APIs - unified is simpler but may miss optimizations. Quantified: API integration time 2h vs. 4h per chain [Estimated]. Foundational: Handle signature formats (ECDSA for ETH/BTC, Ed25519 for SOL). [Boneh & Shoup, 2020]
 
 **Implementation** (Rust):
 ```rust
@@ -451,6 +451,10 @@ graph TD
 
 **G5. GG18** – Specific MPC protocol for threshold ECDSA signing with 3 parties. Related: GG20, FROST.
 
+**G6. [Consensus]** – Trade-off recommendation label indicating broad industry agreement on the approach as best practice for the specified use case. Related: Context-dependent, Best Practices.
+
+**G7. [Context-dependent]** – Trade-off recommendation label indicating the optimal choice varies based on specific requirements, constraints, or organizational context. Related: Consensus, Trade-offs.
+
 ### Tools (≥3)
 **T1. zenGo-X/multi-party-ecdsa** – Rust implementation of MPC protocols including GG18/GG20. Updated: 2023. URL: https://github.com/ZenGo-X/multi-party-ecdsa
 
@@ -483,7 +487,7 @@ graph TD
 ## Validation
 | Check | Target | Status |
 |-------|--------|--------|
-| Counts | G≥5, T≥3, L≥3, A≥6, Q=5 | PASS |
+| Counts | G=7, T=3, L=3, A=6, Q=5 | PASS |
 | Citations | APA 7th, ≥2 languages | PASS |
 | Recency | ≥70% <3yr | PASS |
 | Links | All valid | PASS |

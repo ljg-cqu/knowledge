@@ -1,3 +1,21 @@
+## Introduction
+
+**Purpose**: Interview preparation material for MPC Wallet Engineer - Architecture position, covering critical architectural patterns for production-grade multi-chain wallet systems.
+
+**Scope**: 5 architectural deep-dives spanning cryptographic isolation, failure orchestration, performance optimization, data management, and API integration patterns. Each topic represents 1–6 month implementation cycles with measurable impact on security, reliability, and scalability.
+
+**Audience**: Senior/Staff engineers with 5+ years in distributed systems; assumes familiarity with blockchain protocols, basic MPC concepts, microservices architecture, and production operations.
+
+**Scale**: Production systems supporting millions of users, thousands of TPS per chain, 99.99% availability requirements, multi-region deployment with HSM infrastructure.
+
+**Timeline**: Patterns applicable to 3–6 month implementation cycles; trade-offs reflect real-world constraints (team size, infrastructure costs, time-to-market).
+
+**Constraints**: Infrastructure includes Kubernetes orchestration, HSM access (cloud or on-premise), multi-region deployment, compliance requirements (SOC2, financial regulations).
+
+**Decision Framework**: Each topic marked with decision-criticality indicators (blocks decisions, creates risk, affects multiple roles, requires significant action), helping prioritize architectural investments.
+
+---
+
 ## Contents
 [TOC]
 
@@ -20,9 +38,9 @@
 **Key Insight**: Isolating MPC compute into per-region crypto clusters with clear ports cuts blast radius for key-compromise incidents by ~50–70%, and moving chain-specific logic to adapters reduces cross-team change coupling (MPC vs chain) by ~30–40%. [A1][A2]
 
 **Answer**:  
-Design a hexagonal architecture with cryptographic compute at the core, surrounded by chain adapters and experience layers. The core MPC cluster handles key generation, threshold signing (GG18/GG20/FROST), and recovery protocols in isolated compute environments with hardware security modules (HSMs) backing. Each chain (Ethereum/EVM, Bitcoin, Solana) has dedicated adapters that translate generic MPC signing outputs to chain-specific transaction formats, eliminating cross-chain contamination.  
+Design a hexagonal architecture with cryptographic compute at the core, surrounded by chain adapters and experience layers. **[CRITICAL]** The core MPC cluster handles key generation, threshold signing (GG18/GG20/FROST), and recovery protocols in isolated compute environments with **[CRITICAL]** hardware security modules (HSMs) backing. Each chain (Ethereum/EVM, Bitcoin, Solana) has dedicated adapters that translate generic MPC signing outputs to chain-specific transaction formats, eliminating cross-chain contamination.  
 
-The architecture follows domain-driven design: Crypto Core (key shares, MPC protocols), Chain Adapters (transaction builders, RPC clients), Security Layer (device validation, MFA, rate limiting), and Experience APIs (AA, session keys, social recovery). This separation allows independent evolution—crypto team can upgrade signing algorithms without breaking chain integrations, while product teams can add new wallet features without touching cryptographic primitives. [A3][A4]
+The architecture follows domain-driven design: **[CRITICAL]** Crypto Core (key shares, MPC protocols), **[IMPORTANT]** Chain Adapters (transaction builders, RPC clients), **[IMPORTANT]** Security Layer (device validation, MFA, rate limiting), and **[OPTIONAL]** Experience APIs (AA, session keys, social recovery). This separation allows independent evolution—crypto team can upgrade signing algorithms without breaking chain integrations, while product teams can add new wallet features without touching cryptographic primitives. [A3][A4]
 
 **Implementation** (Rust):
 ```rust
@@ -110,9 +128,9 @@ graph TB
 **Key Insight**: Implementing per-party circuit breakers with exponential backoff reduces stuck signing sessions by ~60%, while state machine verification prevents cryptographic inconsistencies even during partial failures. [A2][A5]
 
 **Answer**:  
-Design a state machine-based MPC orchestrator with circuit breaker patterns for each participating party. The signing flow follows: KeyShare → PrepareSign → SignRound1 → SignRound2 → Verify → Complete. Each state transition has timeout guards and failure handlers. Circuit breakers monitor party health—after 3 consecutive timeouts, a party's circuit opens, routing subsequent requests to backup shares or alternative parties.  
+Design a **[CRITICAL]** state machine-based MPC orchestrator with **[IMPORTANT]** circuit breaker patterns for each participating party. The signing flow follows: KeyShare → PrepareSign → SignRound1 → SignRound2 → Verify → Complete. Each state transition has timeout guards and failure handlers. **[IMPORTANT]** Circuit breakers monitor party health—after 3 consecutive timeouts, a party's circuit opens, routing subsequent requests to backup shares or alternative parties.  
 
-The orchestrator maintains idempotent operation logs, allowing retry without double-signing. For GG18/GG20 protocols, implement round-based validation where each party verifies partial signatures before proceeding. This prevents malicious or failed parties from corrupting the overall computation. The system supports graceful degradation: if quorum cannot be reached, it falls back to higher-threshold signing or manual recovery flows. [A5][A6]
+The orchestrator maintains **[CRITICAL]** idempotent operation logs, allowing retry without double-signing. For GG18/GG20 protocols, implement **[CRITICAL]** round-based validation where each party verifies partial signatures before proceeding. This prevents malicious or failed parties from corrupting the overall computation. The system supports **[IMPORTANT]** graceful degradation: if quorum cannot be reached, it falls back to higher-threshold signing or manual recovery flows. [A5][A6]
 
 **Implementation** (Go):
 ```go
@@ -200,11 +218,11 @@ stateDiagram-v2
 **Key Insight**: Offloading heavy cryptographic operations to server-side MPC clusters while using lightweight cryptographic primitives on clients reduces signing time by ~40% and battery usage by ~35%, maintaining security through zero-knowledge proofs of correct computation. [A3][A6]
 
 **Answer**:  
-Implement a hybrid signing architecture where mobile/Web clients handle lightweight operations (user authentication, transaction preparation) while heavy cryptographic computations (threshold signing, proof generation) occur on optimized server clusters. Use WebAssembly for client-side crypto operations that must remain local (key share validation, signature verification).  
+Implement a **[IMPORTANT]** hybrid signing architecture where mobile/Web clients handle lightweight operations (user authentication, transaction preparation) while **[CRITICAL]** heavy cryptographic computations (threshold signing, proof generation) occur on optimized server clusters. Use **[IMPORTANT]** WebAssembly for client-side crypto operations that must remain local (key share validation, signature verification).  
 
-Optimize network communication with protobuf serialization and message batching—reduce round trips from 5-7 to 2-3 per signing session. Implement adaptive timeout based on network conditions (mobile: 5s, WiFi: 2s, backend: 500ms). Use connection pooling and HTTP/2 for multiplexing. Cache frequently used data (chain parameters, contract ABIs) locally to avoid repeated fetches. [A6][A7]
+**[IMPORTANT]** Optimize network communication with protobuf serialization and message batching—reduce round trips from 5-7 to 2-3 per signing session. Implement **[IMPORTANT]** adaptive timeout based on network conditions (mobile: 5s, WiFi: 2s, backend: 500ms). Use connection pooling and HTTP/2 for multiplexing. **[OPTIONAL]** Cache frequently used data (chain parameters, contract ABIs) locally to avoid repeated fetches. [A6][A7]
 
-For performance monitoring, track signing latency percentiles (p50, p95, p99) and optimize for the 95th percentile. Implement progressive signing—show users real-time progress through MPC rounds to improve perceived performance.
+For performance monitoring, track signing latency percentiles (p50, p95, p99) and optimize for the 95th percentile. **[OPTIONAL]** Implement progressive signing—show users real-time progress through MPC rounds to improve perceived performance.
 
 **Implementation** (TypeScript/WebAssembly):
 ```typescript
@@ -281,11 +299,11 @@ sequenceDiagram
 **Key Insight**: Implementing CQRS with eventual consistency for read models reduces query latency by ~70%, while consistent hash-based sharding of key shares provides linear scalability and 99.99% availability for write operations. [A4][A7]
 
 **Answer**:  
-Design a CQRS-based key share management system with separate read and write models. The write side handles key share generation, updates, and deletion through command handlers that enforce business rules and maintain audit trails. The read side uses materialized views optimized for different query patterns—user key lookup, share distribution verification, and recovery status.  
+Design a **[CRITICAL]** CQRS-based key share management system with separate read and write models. The write side handles **[CRITICAL]** key share generation, updates, and deletion through command handlers that enforce business rules and maintain audit trails. The read side uses **[IMPORTANT]** materialized views optimized for different query patterns—user key lookup, share distribution verification, and recovery status.  
 
-Shard key shares using consistent hashing based on user ID, with each shard containing a primary replica and two backup replicas across different availability zones. Use Raft consensus for shard leadership and write coordination. Implement write-ahead logging with snapshots for fast recovery. For cross-shard operations (multi-signature wallets), use saga patterns with compensating transactions. [A7][A8]
+**[CRITICAL]** Shard key shares using consistent hashing based on user ID, with each shard containing a primary replica and two backup replicas across different availability zones. Use **[IMPORTANT]** Raft consensus for shard leadership and write coordination. Implement **[CRITICAL]** write-ahead logging with snapshots for fast recovery. For cross-shard operations (multi-signature wallets), use **[IMPORTANT]** saga patterns with compensating transactions. [A7][A8]
 
-The system supports both hot and cold storage—frequently accessed shares in memory-backed databases with SSD persistence, while archived shares use encrypted object storage with lazy loading. Implement automatic share rotation and re-sharding when shard utilization exceeds 70%.
+The system supports **[IMPORTANT]** both hot and cold storage—frequently accessed shares in memory-backed databases with SSD persistence, while archived shares use encrypted object storage with lazy loading. **[OPTIONAL]** Implement automatic share rotation and re-sharding when shard utilization exceeds 70%.
 
 **Implementation** (Rust):
 ```rust
@@ -395,11 +413,11 @@ graph TB
 **Key Insight**: Using gRPC internally reduces inter-service latency by ~40% and provides type safety, while REST external APIs improve developer experience and tool compatibility, with protocol translation occurring at the gateway layer. [A8][A9]
 
 **Answer**:  
-Design a dual-protocol API architecture with gRPC for internal service-to-service communication and REST for external developer access. Internal services use Protocol Buffers for strongly typed contracts, supporting streaming for real-time updates (transaction status, signing progress). The API Gateway handles protocol translation, authentication, rate limiting, and request routing.  
+Design a **[IMPORTANT]** dual-protocol API architecture with **[IMPORTANT]** gRPC for internal service-to-service communication and **[IMPORTANT]** REST for external developer access. Internal services use **[IMPORTANT]** Protocol Buffers for strongly typed contracts, supporting streaming for real-time updates (transaction status, signing progress). The **[CRITICAL]** API Gateway handles protocol translation, authentication, rate limiting, and request routing.  
 
-Implement a unified Chain Abstraction Layer that defines common operations (get_balance, build_transaction, submit_transaction, get_status) with chain-specific adapters handling protocol nuances. Use OpenAPI/Swagger for REST documentation and gRPC reflection for internal service discovery.  
+Implement a **[CRITICAL]** unified Chain Abstraction Layer that defines common operations (get_balance, build_transaction, submit_transaction, get_status) with chain-specific adapters handling protocol nuances. Use **[IMPORTANT]** OpenAPI/Swagger for REST documentation and **[OPTIONAL]** gRPC reflection for internal service discovery.  
 
-The gateway supports feature flags for gradual rollout, canary deployments for new chain integrations, and circuit breakers for external dependency failures. Implement comprehensive observability with distributed tracing across service boundaries and protocol translation points. [A9][A10]
+The gateway supports **[OPTIONAL]** feature flags for gradual rollout, **[IMPORTANT]** canary deployments for new chain integrations, and **[IMPORTANT]** circuit breakers for external dependency failures. Implement **[IMPORTANT]** comprehensive observability with distributed tracing across service boundaries and protocol translation points. [A9][A10]
 
 **Implementation** (Protocol Buffers):
 ```protobuf

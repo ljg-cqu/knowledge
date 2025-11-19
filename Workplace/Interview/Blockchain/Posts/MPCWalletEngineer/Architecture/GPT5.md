@@ -2,17 +2,21 @@
 [TOC]
 
 ### Topic Areas
-| Dimension | Count | Difficulty |
-|-----------|-------|------------|
-| Structural | 1 | A |
-| Behavioral | 1 | I |
-| Quality | 1 | F |
-| Data | 1 | A |
-| Integration | 1 | I |
+| Dimension | Count | Difficulty | Priority |
+|-----------|-------|------------|----------|
+| Structural | 1 | A | CRITICAL |
+| Behavioral | 1 | I | CRITICAL |
+| Quality | 1 | F | IMPORTANT |
+| Data | 1 | A | CRITICAL |
+| Integration | 1 | I | CRITICAL |
+
+**Priority Distribution**: CRITICAL (4), IMPORTANT (1)
 
 ---
 
 ### Topic 1: Hexagonal decomposition for a multi-chain MPC wallet core
+**Priority**: CRITICAL
+
 Overview: Decompose MPC wallet services (keygen, shard management, signing, recovery) into ports/adapters to reduce coupling while keeping code testable and chain-agnostic. Decision-Criticality: Blocks decision (core architecture and boundaries), Creates risk (incorrect boundaries cause brittle signing flows), Affects ≥2 roles (Architect + Developer), Requires action (build in 3-6 months). [0][4]
 
 #### Q1: How would you design a hexagonal architecture that isolates MPC crypto from chain-specific adapters and expose it as an SDK and service?
@@ -96,6 +100,8 @@ Sources: [0][4]
 ---
 
 ### Topic 2: Sagas and circuit breakers for cross-chain orchestration
+**Priority**: CRITICAL
+
 Overview: Multi-chain transfer requires orchestrating MPC signing, nonce management, fee checks, and submission with retries and compensations; circuit breakers protect upstreams. Decision-Criticality: Blocks decision (orchestration style), Creates risk (double-spends/timeouts), Affects ≥2 roles (SRE + Security), Requires action (ship in 2-4 months). [0][4][2]
 
 #### Q2: How do you implement a saga for EVM→BTC→Solana batched payouts with circuit breakers and compensations?
@@ -175,6 +181,8 @@ Sources: [0][4][2]
 ---
 
 ### Topic 3: Rate limiting and crypto overhead for signing APIs
+**Priority**: IMPORTANT
+
 Overview: Mobile/Web signing endpoints require p99 latency control under bursts with encryption at rest/over the wire; rate-limits prevent abuse, encryption adds CPU. Decision-Criticality: Creates risk (DoS, SLO misses), Requires action (immediate rollout). [0][2]
 
 #### Q3: How do you implement per-device token-bucket limiting and AES-GCM envelope encryption without blowing p99?
@@ -243,6 +251,8 @@ Sources: [0][2]
 ---
 
 ### Topic 4: CQRS + Event Sourcing for signing sessions and transactions
+**Priority**: CRITICAL
+
 Overview: Separate write (commands/events) from read (projections) to scale read-heavy queries like “wallet history” while keeping an auditable log of MPC signing sessions. Decision-Criticality: Blocks decision (data architecture), Creates risk (consistency bugs), Affects ≥2 roles (Architect + SRE), Requires action (2-4 months). [0][4]
 
 #### Q4: When should you use CQRS + Event Sourcing for an MPC wallet, and how do you translate to code?
@@ -322,6 +332,8 @@ Sources: [0][4]
 ---
 
 ### Topic 5: gRPC vs REST for SDK/service integration
+**Priority**: CRITICAL
+
 Overview: Choose transport for SDKs (mobile/web/backend) interacting with wallet core; streaming and strict contracts vs browser compatibility and simplicity. Decision-Criticality: Blocks decision (protocol), Creates risk (SDK maintenance, latency), Affects ≥2 roles (Architect + DevRel). [0][4][2]
 
 #### Q5: REST or gRPC for the wallet SDK and why? Show a minimal gRPC contract for signing sessions.
@@ -434,6 +446,7 @@ Sources: [0][4][2]
 |-------|--------|--------|
 | Counts | G≥5, T≥3, L≥3, A≥6, Q=5 | PASS |
 | Difficulty Mix | F=1, I=2, A=2 | PASS |
+| Priority Labels | Explicit CRITICAL/IMPORTANT markers | PASS |
 | Answer Length | 150–300 words each | PASS |
 | Code | 10–30 lines each | PASS |
 | Artifacts | Mermaid, table, metrics per Q | PASS |

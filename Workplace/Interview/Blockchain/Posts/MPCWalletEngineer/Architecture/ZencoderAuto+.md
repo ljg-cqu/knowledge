@@ -1,5 +1,7 @@
 # MPC Wallet Architecture Interview Q&A
 
+*Last Updated: 2025-11-19 | Status: Final | Owner: Interview Team*
+
 **Problem**: Candidates struggle translating MPC wallet architecture concepts to production-ready code, reducing hiring quality for blockchain security roles.
 
 **Scope**: 5 Q&A pairs for senior MPC wallet engineer/architect roles (5-15 years experience), focusing on multi-chain MPC integration architecture-to-code translation.
