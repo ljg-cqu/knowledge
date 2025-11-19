@@ -96,7 +96,7 @@ Each Q&A must provide a one-line metadata row:
 - **CareerStage**: `Junior | Mid | Senior | Lead | Architect`  
 - **RoleFocus**: `IC | Manager | Mixed`  
 - **Difficulty**: `F | I | A` (Foundational / Intermediate / Advanced)  
-- **Criticality**: `[Blocks | Risk | Roles | Action | Quantified]` (at least one; must align with Decision Criticality criteria above)  
+- **Criticality**: `[Blocks | Risk | Roles | Action | Quantified]` (at least one; must align with Decision Criticality criteria above)
 - **Stakeholders**: 2–4 primary roles (e.g., Architect, PM, SRE, Security, HR)  
 - **EstimatedTime**: `~10–15 min`
 
