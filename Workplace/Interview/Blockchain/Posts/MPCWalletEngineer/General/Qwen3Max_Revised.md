@@ -14,6 +14,26 @@
 
 **⚠️ IMPORTANT DISCLAIMER**: Unless explicitly tied to an external source, numeric thresholds in this document (latency targets, probabilities, incident rates, cost estimates, etc.) are interview design targets for evaluation purposes, not measured production benchmarks. These values serve as reference points for assessing candidate judgment and should be calibrated to your organization's actual SLAs and operational requirements before use.
 
+**Interview Flow Overview**:
+```mermaid
+graph LR
+    START([Start Interview<br/>75 min]) --> Q1[Q1: TechArch<br/>12 min]
+    Q1 --> Q2[Q2: PerfQual<br/>11 min]
+    Q2 --> Q3[Q3: ProdBiz<br/>10 min]
+    Q3 --> Q4[Q4: SecReg<br/>13 min]
+    Q4 --> Q5[Q5: OrgLead<br/>9 min]
+    Q5 --> Q6[Q6: RoadmapEco<br/>10 min]
+    Q6 --> END([Wrap-up<br/>10 min])
+    
+    style Q1 fill:#ff6b6b
+    style Q4 fill:#ff6b6b
+    style Q2 fill:#ffd93d
+    style Q3 fill:#ffd93d
+    style Q6 fill:#ffd93d
+    style Q5 fill:#6bcf7f
+```
+**Legend**: 🔴 Advanced | 🟡 Intermediate | 🟢 Foundational
+
 ## Glossary
 
 **Core Cryptographic Terms**:
@@ -76,6 +96,16 @@
 - [OrgLead] Technical leadership in cross-functional security-cryptography collaboration
 - [RoadmapEco] Strategic planning for multi-chain MPC ecosystem evolution
 
+```mermaid
+graph LR
+    A[Key Signals] --> B[TechArch<br/>Protocol Design]
+    A --> C[PerfQual<br/>Performance Trade-offs]
+    A --> D[ProdBiz<br/>UX vs Security]
+    A --> E[SecReg<br/>Risk Management]
+    A --> F[OrgLead<br/>Cross-functional Leadership]
+    A --> G[RoadmapEco<br/>Ecosystem Strategy]
+```
+
 ## Dashboard
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
 |---|--------------------|--------|------------|-------------|---------------|---------------|
@@ -98,6 +128,40 @@ You're designing an MPC wallet that must support Ethereum, Solana, and Bitcoin w
 
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong architects prioritize protocol-chain alignment over uniformity, using adapter patterns for chain-specific implementations while maintaining core MPC logic. Protocol choice depends on signature scheme compatibility: GG20 for ECDSA chains (Bitcoin/Ethereum), FROST for Schnorr (Bitcoin improvement), and custom solutions for Solana's Ed25519. The architecture should separate concerns into: 1) Chain-agnostic MPC core, 2) Chain-specific adapters, 3) HSM integration layer, and 4) API gateway for mobile/web.
+
+**Architecture**:
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        M[Mobile App] --> API
+        W[Web App] --> API
+        API[API Gateway]
+    end
+    
+    subgraph "Chain Adapters"
+        API --> EA[Ethereum Adapter]
+        API --> BA[Bitcoin Adapter]
+        API --> SA[Solana Adapter]
+    end
+    
+    subgraph "MPC Core (Protocol-Agnostic)"
+        EA --> GG1[GG20 Protocol<br/>ECDSA]
+        BA --> GG2[GG20/FROST<br/>ECDSA/Schnorr]
+        SA --> ED[Custom Ed25519<br/>MPC]
+    end
+    
+    subgraph "Security Layer"
+        GG1 --> HSM[HSM Integration]
+        GG2 --> HSM
+        ED --> HSM
+    end
+```
+
+**Performance Targets**:
+- Mobile signing: `<800ms`
+- Web signing: `<1.2s`
+- Security: Key compromise `<0.001%`, tx failure `<0.1%`
 
 **Frameworks/Tools**: Chain abstraction patterns, adapter design pattern, MPC protocol capability matrix (signature schemes, round complexity, fault tolerance).
 
@@ -130,6 +194,30 @@ Your team's MPC wallet implementation has acceptable performance on backend serv
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong engineers identify compute-bound vs communication-bound bottlenecks and apply targeted optimizations without compromising cryptographic security. The primary mobile bottlenecks are: 1) Elliptic curve operations on resource-constrained devices, 2) Network latency for multi-party coordination, 3) Serialization/deserialization overhead.
 
+**Performance Bottleneck Analysis**:
+```mermaid
+flowchart TD
+    A[Mobile Signing: 2.5s] --> B{Bottleneck Analysis}
+    B --> C[Compute-Bound<br/>Elliptic Curve Ops<br/>~40%]
+    B --> D[Network-Bound<br/>Multi-Party Coordination<br/>~45%]
+    B --> E[Serialization<br/>Overhead<br/>~15%]
+    
+    C --> F[Optimization:<br/>Pre-computation<br/>WebAssembly]
+    D --> G[Optimization:<br/>Session Caching<br/>Optimistic Signing]
+    E --> H[Optimization:<br/>Binary Protocols<br/>Compression]
+    
+    F --> I[Target: <800ms]
+    G --> I
+    H --> I
+```
+
+**Current vs Target Metrics**:
+| Metric | Current (Mobile) | Current (Backend) | Target (Mobile) | Improvement Required |
+|--------|------------------|-------------------|-----------------|---------------------|
+| Signing Time | 2.5s | 200ms | <800ms | 68% reduction |
+| Battery Impact | ~8% per tx | N/A | <5% per tx | 37.5% reduction |
+| Error Rate | ~0.8% | ~0.2% | <0.5% | 37.5% reduction |
+
 **Frameworks/Tools**: Profiling tools (perf, flamegraph), DORA deployment metrics, MPC round complexity analysis, mobile-specific optimization frameworks (Rust's async runtime, WebAssembly compilation).
 
 **Trade-offs & Metrics**: Acceptable trade-offs: pre-computation of curve points (increased memory usage), optimistic signing (temporary security reduction with rollback capability), and session caching (reduced security freshness). Target metrics: P95 mobile latency <750ms, battery impact <5% per transaction, error rate <0.5%. Risk metrics: security degradation factor <1.05x, recovery time <30s for failed optimizations.
@@ -152,6 +240,49 @@ Your startup has limited engineering bandwidth to build either social recovery f
 
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong candidates use value-risk frameworks to quantify trade-offs and align security requirements with business objectives. Prioritization should consider: 1) User acquisition cost vs lifetime value, 2) Security risk quantification, 3) Engineering complexity vs revenue impact.
+
+**Feature Comparison Matrix**:
+| Dimension | Social Recovery | Multi-Chain Approvals | Winner |
+|-----------|----------------|----------------------|--------|
+| **User Growth** | +40% adoption | Minimal consumer impact | Social Recovery |
+| **Revenue Impact** | Delayed monetization | $2M ARR immediately | Multi-Chain |
+| **Security Risk** | +15% support tickets | Lower risk | Multi-Chain |
+| **Engineering Cost** | $150k mitigation | 6-month delay | Social Recovery |
+| **Time to Market** | ~3 months | ~4 months | Social Recovery |
+| **Strategic Fit** | Consumer-first | Enterprise-first | Depends on strategy |
+
+**RICE Scoring Example**:
+```
+Social Recovery:
+  Reach = 10,000 users × 40% = 4,000 users
+  Impact = High (3.0)
+  Confidence = Medium (70%)
+  Effort = 3 person-months
+  RICE Score = (4,000 × 3.0 × 0.7) / 3 = 2,800
+
+Multi-Chain Approvals:
+  Reach = 50 enterprise customers
+  Impact = Massive (4.0)
+  Confidence = High (90%)
+  Effort = 6 person-months
+  RICE Score = (50 × 4.0 × 0.9) / 6 = 30
+```
+
+**Decision Framework**:
+```mermaid
+graph TD
+    A[Feature Prioritization] --> B{Strategic Direction?}
+    B -->|Consumer-First| C[Social Recovery]
+    B -->|Enterprise-First| D[Multi-Chain Approvals]
+    
+    C --> E{Security Mitigation<br/>$150k Available?}
+    E -->|Yes| F[✓ Proceed with<br/>Social Recovery]
+    E -->|No| G[✗ Delay until funded]
+    
+    D --> H{Enterprise Demand<br/>Validated?}
+    H -->|Yes $2M ARR| I[✓ Proceed with<br/>Multi-Chain]
+    H -->|Speculative| J[✗ Validate first]
+```
 
 **Frameworks/Tools**: WSJF (Weighted Shortest Job First), RICE scoring (Reach, Impact, Confidence, Effort), threat modeling for feature-specific risks, OKR alignment frameworks.
 
@@ -176,6 +307,59 @@ Your MPC wallet will store $500M in user assets across 3 geographical regions wi
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong security architects implement defense-in-depth with regulatory-aligned controls, using formal verification and geographic isolation to mitigate collusion risks. The architecture must address: 1) Node compromise, 2) Insider collusion, 3) Regulatory jurisdiction conflicts, 4) Audit trail completeness.
 
+**3-of-5 Node Geographic Distribution Architecture**:
+```mermaid
+graph TB
+    subgraph "US Region"
+        US1[Node 1<br/>HSM + TEE]
+        US2[Node 2<br/>HSM + TEE]
+    end
+    
+    subgraph "EU Region"
+        EU1[Node 3<br/>HSM + TEE]
+        EU2[Node 4<br/>HSM + TEE]
+    end
+    
+    subgraph "Asia Region"
+        AS1[Node 5<br/>HSM + TEE]
+    end
+    
+    subgraph "Signing Coordination"
+        MPC[MPC Protocol<br/>3-of-5 Threshold]
+    end
+    
+    US1 --> MPC
+    US2 --> MPC
+    EU1 --> MPC
+    EU2 --> MPC
+    AS1 --> MPC
+    
+    MPC --> TX[Transaction<br/>Signature]
+    
+    subgraph "Audit Layer"
+        AUDIT[Immutable Audit Log<br/>99.99% Completeness]
+    end
+    
+    TX --> AUDIT
+```
+
+**Risk Mitigation Controls**:
+| Risk Scenario | Threat Level | Mitigation Control | Cost | Effectiveness |
+|---------------|--------------|-------------------|------|---------------|
+| **Node Compromise** | Critical | HSM per region + TEE | $150k/region | 99.99% |
+| **Insider Collusion** | High | Geographic separation | $200k infra | 99.9% |
+| **Regulatory Conflict** | Medium | Jurisdiction-aware routing | $50k dev | 95% |
+| **Audit Trail Gap** | High | Immutable logging + replication | $80k/year | 99.99% |
+| **Network Partition** | Medium | Multi-path routing | $30k/year | 98% |
+
+**STRIDE Threat Analysis**:
+- **S**poofing: Multi-factor authentication + HSM attestation
+- **T**ampering: Immutable audit logs + cryptographic signatures
+- **R**epudiation: Complete audit trail with timestamps
+- **I**nformation Disclosure: End-to-end encryption + access controls
+- **D**enial of Service: Geographic redundancy + rate limiting
+- **E**levation of Privilege: Principle of least privilege + threshold requirements
+
 **Frameworks/Tools**: STRIDE threat modeling, NIST SP 800-53 controls, SOC 2 Type II requirements, formal verification tools (ProVerif, Tamarin), geographic key isolation patterns.
 
 **Trade-offs & Metrics**: Risk mitigation costs: geographic node separation (+$200k infrastructure cost), hardware security modules (+$150k per region), formal verification (+3 months dev time). Key metrics: key compromise probability <0.0001% annually, audit trail completeness >99.99%, regulatory compliance score >95%. Acceptable trade-offs: increased latency (15%) for geographic separation, higher operational cost for HSMs.
@@ -199,6 +383,80 @@ You need to integrate your MPC wallet SDK into three different product teams' co
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong leaders establish clear interface contracts and shared ownership models while adapting to team-specific constraints. Success requires: 1) Standardized API contracts with versioning strategy, 2) Team-specific integration patterns, 3) Shared testing frameworks, 4) Clear escalation paths for security issues.
 
+**Cross-Team Integration Architecture**:
+```mermaid
+graph TB
+    subgraph "MPC Core Team"
+        SDK[MPC Wallet SDK<br/>Standardized API v2.0]
+        DOC[Shared Documentation<br/>Swagger/MkDocs]
+        TEST[Shared Test Framework<br/>95% Coverage Target]
+    end
+    
+    subgraph "React Native Team"
+        RN[React Native App]
+        RN_INT[Platform Integration]
+        RN_OFF[Offline Signing]
+    end
+    
+    subgraph "Flutter Team"
+        FL[Flutter App]
+        FL_INT[Platform Integration]
+        FL_OFF[Offline Signing]
+    end
+    
+    subgraph "Web Team"
+        WEB[Web App]
+        WEB_INT[Browser Integration]
+        WEB_OFF[Service Worker Cache]
+    end
+    
+    subgraph "Backend Team"
+        BE[Backend Services]
+        BE_VER[API Versioning]
+        BE_MON[Monitoring]
+    end
+    
+    SDK --> RN_INT
+    SDK --> FL_INT
+    SDK --> WEB_INT
+    SDK --> BE_VER
+    
+    DOC -.->|Documentation| RN
+    DOC -.->|Documentation| FL
+    DOC -.->|Documentation| WEB
+    DOC -.->|Documentation| BE
+    
+    TEST -.->|Test Contracts| RN_INT
+    TEST -.->|Test Contracts| FL_INT
+    TEST -.->|Test Contracts| WEB_INT
+```
+
+**Team-Specific Integration Requirements**:
+| Team | Tech Stack | Security Requirements | Release Cycle | Offline Support | Integration Time Target |
+|------|------------|----------------------|---------------|-----------------|------------------------|
+| **React Native** | JavaScript/TypeScript | Standard MPC + Biometric | 2-week sprints | Required | <4 weeks |
+| **Flutter** | Dart | Standard MPC + Platform KEK | 3-week sprints | Required | <4 weeks |
+| **Web** | TypeScript | Standard MPC + WebAuthn | Continuous | Optional (Service Worker) | <3 weeks |
+| **Backend** | Go/Rust | HSM Integration | Continuous | N/A | <2 weeks |
+
+**Coordination Mechanisms**:
+```mermaid
+gantt
+    title Cross-Team Integration Timeline
+    dateFormat YYYY-MM-DD
+    section Preparation
+    API Contract Review       :2024-01-01, 1w
+    Documentation Sprint      :2024-01-08, 1w
+    section Parallel Integration
+    React Native Integration  :2024-01-15, 4w
+    Flutter Integration       :2024-01-15, 4w
+    Web Integration          :2024-01-15, 3w
+    Backend Integration      :2024-01-22, 2w
+    section Validation
+    Security Review          :2024-02-12, 1w
+    Cross-Team Testing       :2024-02-19, 1w
+```
+
 **Frameworks/Tools**: API-first design principles, consumer-driven contracts, Team Topologies interaction modes, shared documentation portals (Swagger, MkDocs), cross-team guild structure for cryptography standards.
 
 **Trade-offs & Metrics**: Acceptable compromises: different offline signing implementations per platform (consistent security model, different UX flows), staggered release schedules with feature flags. Success metrics: integration time per team <4 weeks, security incident rate <0.1%, test coverage >95% for cryptographic functions.
@@ -221,6 +479,70 @@ Your company wants to become the default MPC wallet infrastructure provider for 
 
 **Answer Key (~150–250 words)**:  
 **Key Insight**: Strong strategists use ecosystem maturity frameworks and technical debt accounting to make sustainable roadmap decisions. Prioritization should consider: 1) Market adoption velocity, 2) Technical compatibility with existing architecture, 3) Revenue potential, 4) Community momentum.
+
+**Chain Prioritization Framework**:
+```mermaid
+graph TD
+    A[Chain Evaluation] --> B{TVL > $100M?}
+    B -->|No| Z1[Defer]
+    B -->|Yes| C{Active Devs > 100?}
+    C -->|No| Z2[Monitor]
+    C -->|Yes| D{Technical<br/>Compatibility?}
+    D -->|Low| E{Strategic<br/>Importance?}
+    E -->|High| F[Custom Protocol<br/>6-8 weeks]
+    E -->|Low| Z3[Deprioritize]
+    D -->|High| G[Adapter Pattern<br/>3-4 weeks]
+    
+    F --> H[Roadmap Q2-Q3]
+    G --> I[Roadmap Q1]
+```
+
+**Ecosystem Maturity Assessment**:
+| Chain | TVL | Active Devs | Technical Fit | Enterprise Demand | Priority | Time to Market |
+|-------|-----|-------------|---------------|-------------------|----------|----------------|
+| **Monad** | $150M | 120 | High (EVM-compatible) | Medium | P1 | 3-4 weeks |
+| **Sei** | $80M | 90 | Medium (CosmWasm) | Low | P3 | 6-8 weeks |
+| **Base** | $500M | 300 | High (EVM) | High | P0 | 2-3 weeks |
+| **Aptos** | $200M | 150 | Low (Move VM) | Medium | P2 | 8-10 weeks |
+
+**Technical Debt Management**:
+```mermaid
+pie title Engineering Capacity Allocation
+    "New Chain Support" : 50
+    "Account Abstraction" : 30
+    "Technical Debt Refactoring" : 20
+```
+
+**Debt Ratio Formula**:
+```
+Technical Debt Ratio = Debt Points / (Feature Points + Debt Points)
+
+Target: < 0.3 (30% of total work)
+Current: 0.25 (Healthy)
+Alert Threshold: > 0.4 (40%)
+```
+
+**18-Month Roadmap Visual**:
+```mermaid
+gantt
+    title Multi-Chain MPC Ecosystem Roadmap
+    dateFormat YYYY-MM
+    section Q1 2024
+    Base Chain Support           :done, 2024-01, 1M
+    EVM Adapter Optimization     :done, 2024-02, 1M
+    section Q2 2024
+    Monad Integration            :active, 2024-04, 1M
+    Account Abstraction EIP-4337 :active, 2024-05, 2M
+    section Q3 2024
+    Aptos Integration            :2024-07, 2M
+    Technical Debt Sprint        :2024-09, 1M
+    section Q4 2024
+    Institutional Custody API    :2024-10, 2M
+    Sei Integration              :2024-12, 1M
+    section Q1 2025
+    Protocol Refactoring         :2025-01, 2M
+    Next-Gen Chain Research      :2025-03, 1M
+```
 
 **Frameworks/Tools**: Gartner Hype Cycle analysis, technical debt quantification frameworks, ecosystem mapping tools (Token Terminal, DappRadar), modularity assessment scores (coupling/cohesion metrics).
 

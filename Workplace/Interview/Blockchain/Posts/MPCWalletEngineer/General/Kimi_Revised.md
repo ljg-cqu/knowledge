@@ -55,6 +55,36 @@
 - **GDPR Article 33**: EU data breach notification requirement (72-hour window)
 
 ## Key Signals
+
+```mermaid
+mindmap
+  root((MPC Wallet<br/>Engineer))
+    [TechArch]
+      Multi-chain architecture
+      Domain-separated keys
+      Chain-specific adapters
+    [PerfQual]
+      Latency optimization
+      Resource constraints
+      Protocol trade-offs
+    [ProdBiz]
+      Developer experience
+      SDK commercialization
+      Value capture
+    [SecReg]
+      Incident response
+      Share rotation
+      Regulatory compliance
+    [OrgLead]
+      Cross-team orchestration
+      Audit constraints
+      Stakeholder alignment
+    [RoadmapEco]
+      Ecosystem strategy
+      Integration depth
+      Standards influence
+```
+
 - **[TechArch]** Multi-chain MPC architecture with domain-separated key management and chain-specific adapters → System design judgment for heterogeneous blockchain ecosystems
 - **[PerfQual]** Latency/reliability optimization of threshold signing on resource-constrained devices → Performance engineering with cryptographic protocol trade-offs
 - **[ProdBiz]** Developer experience and commercial viability of cryptographic SDKs → Value capture through security productization
@@ -71,6 +101,31 @@
 | 4 | SecReg     | Security & Regulation                | I   | Blocks, Risk, Action | Breach response & share rotation | ~13 min |
 | 5 | OrgLead    | Organization & Leadership            | F   | Roles, Action | Cross-team integration leadership | ~10 min |
 | 6 | RoadmapEco | Roadmap & Ecosystem Strategy         | A   | Risk, Quantified, Action | Multi-chain ecosystem evolution | ~15 min |
+
+```mermaid
+gantt
+    title 75-Minute Interview Timeline
+    dateFormat mm:ss
+    axisFormat %M:%S
+    
+    section TechArch
+    Q1 Multi-Chain Architecture :12:00, 12m
+    
+    section PerfQual
+    Q2 Performance Optimization :15:00, 15m
+    
+    section ProdBiz
+    Q3 SDK Productization :12:00, 12m
+    
+    section SecReg
+    Q4 Incident Response :13:00, 13m
+    
+    section OrgLead
+    Q5 Cross-Team Leadership :10:00, 10m
+    
+    section RoadmapEco
+    Q6 Ecosystem Strategy :15:00, 15m
+```
 
 ## Table of Contents
 
@@ -98,6 +153,34 @@ Design the architecture for a multi-chain MPC wallet that must support Ethereum 
 **Answer Key (~200 words)**:  
 **Key Insight**: Strong candidates propose a domain-separated architecture with a chain-agnostic MPC core (key generation using GG20 or FROST) and chain-specific adapter layers that handle curve-specific logic, ensuring security invariants are maintained at the core while enabling extensibility.
 
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        M[Mobile Client]
+    end
+    
+    subgraph "Chain Adapters"
+        M --> EA[Ethereum Adapter<br/>secp256k1 ECDSA]
+        M --> BA[Bitcoin Adapter<br/>secp256k1 ECDSA]
+        M --> SA[Solana Adapter<br/>ed25519 EdDSA]
+    end
+    
+    subgraph "MPC Core"
+        EA --> MC[GG20/FROST Core]
+        BA --> MC
+        SA --> MC
+        MC --> DKG[Key Generation]
+        MC --> SS[Signature Service]
+    end
+    
+    subgraph "Key Management"
+        DKG --> HSM[HSM Storage<br/>3-of-5 Threshold]
+        SS --> SR[Social Recovery<br/>5-of-9 Guardians]
+    end
+```
+
+**Latency Budget**: `RTT (800ms) + MPC (600ms) + Adapter (400ms) = 1.8s P95`
+
 **Frameworks/Tools**: PSS for share refresh, BIP-32 domain separation for chain-specific derivation, FROST for non-interactive signing, Shamir's Secret Sharing for social recovery, HSM-backed share storage, gRPC for backend coordination.
 
 **Trade-offs & Metrics**: Domain separation trades implementation complexity for security (core remains chain-agnostic). Latency budget: 4 network RTTs (800ms) + MPC computation (600ms) + chain adapter (400ms) = 1.8s P95. FROST reduces rounds vs. GG18 but requires stronger non-interactive security assumptions. Shard storage: 5-of-9 for social recovery trades availability (need 5 guardians) against security (tolerates 4 compromised).
@@ -123,6 +206,34 @@ Our MPC wallet's 3-of-5 threshold signing on mobile devices averages 3.5s P95 la
 
 **Frameworks/Tools**: DORA latency/error rate metrics, flame graphs for mobile CPU profiling, network simulation (tc, Charles Proxy), FROST one-round signing, pre-computable nonces (DKG phase), Protocol Buffers for serialization, HTTP/2 connection pooling, edge compute (Cloudflare Workers) for geo-distributed coordinators, security proof validation via Tamarin prover.
 
+**Optimization Strategy**:
+
+| Component | Current | Target | Solution | Cost |
+|-----------|---------|--------|----------|------|
+| Network RTT (60%) | 2100ms | `<600ms` | FROST (1 round) + Edge compute | +Edge infrastructure |
+| Compute (25%) | 875ms | `<600ms` | Pre-computation | +50MB storage |
+| Serialization (15%) | 525ms | `<300ms` | Protocol Buffers + HTTP/2 | +Dev complexity |
+| **Total P95** | **3.5s** | **<1.5s** | Combined | **~60% reduction** |
+
+```mermaid
+graph LR
+    subgraph "Current: 3.5s P95"
+        A1[Network RTT<br/>2100ms - 60%]
+        A2[Compute<br/>875ms - 25%]
+        A3[Serialization<br/>525ms - 15%]
+    end
+    
+    subgraph "Target: <1.5s P95"
+        B1[Network RTT<br/><600ms<br/>FROST + Edge]
+        B2[Compute<br/><600ms<br/>Pre-computation]
+        B3[Serialization<br/><300ms<br/>Protobuf + HTTP/2]
+    end
+    
+    A1 -.60% reduction.-> B1
+    A2 -.31% reduction.-> B2
+    A3 -.43% reduction.-> B3
+```
+
 **Trade-offs & Metrics**: Pre-computation trades 50MB storage for 800ms latency reduction. Switching from GG18 to FROST trades interactive security assumptions for non-interactive efficiency. Edge deployment trades consistency (eventual) for 200ms RTT reduction. Target metrics: <1.5s P95 (network: <600ms, compute: <600ms, serialization: <300ms), <2% timeout (adaptive retry with exponential backoff), maintain 128-bit security, 99.9% protocol compliance via automated verification.
 
 **Stakeholder Handling**: To Mobile Dev: performance budget per component (CPU <50ms per ECDSA op); to SRE: latency SLOs with burn-rate alerts; to Security: formal proof diff analysis comparing FROST vs GG18 assumptions.
@@ -143,6 +254,41 @@ We must productize our MPC wallet cryptography into a developer SDK for external
 
 **Answer Key (~210 words)**:  
 **Key Insight**: Strong candidates architect a tiered SDK with layered APIs (pre-built UI widgets → high-level signing → raw MPC primitives) and value-based pricing (AUM-based fees) that segments security guarantees while maximizing market reach.
+
+**SDK Tiering Model**:
+
+| Tier | Target Segment | AUM | Security | Integration Time | Pricing | Audit |
+|------|----------------|-----|----------|------------------|---------|-------|
+| **Tier 1** | Institutional | $100M+ | Formal verification + SOC 2 | 6 months | 0.02% AUM/year | 6 months |
+| **Tier 2** | DeFi Protocols | $1-10M | Penetration test | 4 weeks | $0.005/signature | 6 weeks |
+| **Tier 3** | Startups | <$1M | Community audit | <1 week | Freemium | 2 weeks |
+
+```mermaid
+graph TB
+    subgraph "SDK Architecture"
+        UI[Pre-built UI Widgets<br/>Tier 3: Fastest Integration]
+        HL[High-Level Signing APIs<br/>Tier 2: Custom Logic]
+        MP[Raw MPC Primitives<br/>Tier 1: Full Control]
+    end
+    
+    subgraph "Market Segments"
+        T3[Tier 3: Startups<br/><$1M AUM<br/><1 week integration<br/>Freemium]
+        T2[Tier 2: DeFi<br/>$1-10M AUM<br/>4 weeks integration<br/>$0.005/sig]
+        T1[Tier 1: Institutional<br/>$100M+ AUM<br/>6 months integration<br/>0.02% AUM/year]
+    end
+    
+    UI --> T3
+    HL --> T2
+    MP --> T1
+    
+    T3 -.Upgrade Path.-> T2
+    T2 -.Upgrade Path.-> T1
+```
+
+**Success Metrics**: 
+- Tier 3: `<7 days` integration, `>1,000` developers in 6 months
+- Tier 1: `>$100M` AUM secured, **zero** critical findings
+- Overall: Developer NPS `>50`, SDK revenue `>$2M` ARR by month 12
 
 **Frameworks/Tools**: Diátaxis documentation framework, feature flags (LaunchDarkly), WSJF prioritization, security audit tiers (Tier 1: formal verification + SOC 2, Tier 2: standard library + penetration test, Tier 3: community audit), licensing (usage-based: $0.005 per signature + AUM-based: 0.02% annually), "Time-to-First-Success" metric, developer NPS.
 
@@ -167,6 +313,33 @@ Our 3-of-5 MPC wallet system experiences a breach: one backend share server was 
 **Answer Key (~230 words)**:  
 **Key Insight**: Strong candidates execute immediate containment via PSS to refresh shares *before* potential key reconstruction, treating the compromise as a "partial key exposure" event requiring urgent but controlled rotation, while navigating precise regulatory timelines.
 
+```mermaid
+gantt
+    title Incident Response Timeline
+    dateFormat HH:mm
+    axisFormat %H:%M
+    
+    section Immediate (0-2h)
+    Isolate compromised server :crit, 00:00, 15m
+    Memory dump forensics :00:15, 45m
+    Initiate PSS share refresh :01:00, 1h
+    
+    section Assessment (2-24h)
+    Blast radius analysis :02:00, 4h
+    STRIDE threat modeling :06:00, 2h
+    Draft preliminary report :08:00, 4h
+    Preliminary notification :12:00, 12h
+    
+    section Containment (24-72h)
+    Complete share rotation :24:00, 4h
+    TPM/HSM hardening :28:00, 8h
+    Regulatory notification (SOC2/GDPR) :milestone, 72:00, 0m
+    
+    section Recovery (72h-7d)
+    User communication :72:00, 24h
+    Final audit report :96:00, 72h
+```
+
 **Frameworks/Tools**: NIST 800-61 Incident Response (Isolate → Analyze → Contain → Eradicate), STRIDE threat model (blast radius: 1-of-5 shares = no immediate key compromise but breach of confidentiality), PSS (DKG re-sharing without full key reconstruction), SOC 2 breach notification (72 hours to regulators, 7 days to customers after assessment), GDPR Article 33, Hardware Attestation (TPM-based share integrity), immutable audit logs (WORM storage).
 
 **Trade-offs & Metrics**: Emergency share rotation trades service risk (0.1% error rate during transition) vs. security (preventing potential key reconstruction). Notification speed vs. accuracy: initial notification within 24 hours (preliminary) vs. final report in 7 days. User transparency vs. panic: factual disclosure of "share exposure" vs. "key compromise." Metrics: Time to containment (<1 hour), share refresh completion (<4 hours), zero fund loss, regulatory notification within 72 hours.
@@ -190,6 +363,36 @@ You are leading integration of the MPC wallet signing service with three product
 **Answer Key (~180 words)**:  
 **Key Insight**: Strong candidates establish a platform team model with stable MPC core (pre-audited) and Feature Toggles for chain-specific logic, using WSJF prioritization to sequence Payments first (highest business value), while running DeFi batch feature through audit in parallel.
 
+```mermaid
+graph TB
+    subgraph "Platform Team (MPC Core)"
+        PT[2 Platform Engineers<br/>Pre-audited MPC Core<br/>Frozen Week 2]
+        E1[Embedded Eng 1<br/>→ Payments]
+        E2[Embedded Eng 2<br/>→ DeFi]
+        E3[Embedded Eng 3<br/>→ NFT]
+    end
+    
+    subgraph "Product Teams"
+        P[Payments Team<br/><500ms latency<br/>Launch: Week 6<br/>WSJF: Highest]
+        D[DeFi Team<br/>Batch 100+ txns<br/>Flexible roadmap<br/>WSJF: Medium]
+        N[NFT Team<br/>Solana EdDSA<br/>Experimental<br/>WSJF: Low]
+    end
+    
+    subgraph "Security Audit Pipeline"
+        A1[Audit 1: Payments<br/>Week 2-4]
+        A2[Audit 2: DeFi<br/>Week 4-6]
+        A3[Audit 3: NFT<br/>Week 6-8]
+    end
+    
+    PT --> E1 --> P --> A1
+    PT --> E2 --> D --> A2
+    PT --> E3 --> N --> A3
+    
+    PT -.Weekly Sync.-> P
+    PT -.Weekly Sync.-> D
+    PT -.Weekly Sync.-> N
+```
+
 **Frameworks/Tools**: Team Topologies (Platform team serving product teams), WSJF prioritization, Feature Flags (LaunchDarkly), RFC process for cross-team decisions, weekly cross-team technical sync, Security pre-review checklist (reduces audit to 1 week for incremental changes).
 
 **Trade-offs & Metrics**: Platform stability vs. feature velocity: freeze core MPC after Week 2, only allow adapters. Audit parallelism vs. Security bandwidth: stagger submissions (Payments Week 2, DeFi Week 4, NFT Week 6). Resource allocation: 2 platform engineers + 1 embedded per product team. Success metrics: Payments launch on time (6 weeks), zero audit findings, DeFi batch support by Week 8, NFT experimental by Week 10, cross-team NPS >30.
@@ -212,6 +415,53 @@ Today we support Ethereum, Bitcoin, and Solana. In 18 months, we must support 10
 
 **Answer Key (~240 words)**:  
 **Key Insight**: Strong candidates propose a three-layer abstraction (MPC Primitives → Signature Scheme Adapter → Chain RPC Handler) and actively shape ecosystem standards by contributing to IETF CFRG's FROST specification and W3C Web3 standards, while using data-driven deprecation criteria.
+
+```mermaid
+graph TB
+    subgraph "Layer 1: MPC Primitives"
+        MPC[MPC Core<br/>GG20/FROST]
+    end
+    
+    subgraph "Layer 2: Signature Scheme Adapters"
+        SECP[secp256k1<br/>ECDSA]
+        ED[ed25519<br/>EdDSA]
+        BLS[BLS12-381<br/>BLS Signatures]
+        STARK[STARK-based<br/>Custom Schemes]
+    end
+    
+    subgraph "Layer 3: Chain RPC Handlers"
+        ETH[Ethereum<br/>Deep: Year 1]
+        BTC[Bitcoin<br/>Deep: Year 1]
+        SOL[Solana<br/>Deep: Year 1]
+        APTOS[Aptos<br/>Breadth: Year 1]
+        SUI[Sui<br/>Breadth: Year 1]
+        ZKEVM[zkEVM L2s<br/>Breadth: Year 2]
+        STARK_C[StarkNet<br/>Breadth: Year 2]
+    end
+    
+    MPC --> SECP
+    MPC --> ED
+    MPC --> BLS
+    MPC --> STARK
+    
+    SECP --> ETH
+    SECP --> BTC
+    ED --> SOL
+    BLS --> APTOS
+    ED --> SUI
+    SECP --> ZKEVM
+    STARK --> STARK_C
+    
+    style ETH fill:#90EE90
+    style BTC fill:#90EE90
+    style SOL fill:#90EE90
+    style APTOS fill:#FFD700
+    style SUI fill:#FFD700
+```
+
+**Integration Strategy**:
+- **Deep Integration** (3 months): Full MPC + Account Abstraction + Custom signing logic
+- **Breadth Integration** (2 weeks): Basic transfer support via adapters
 
 **Frameworks/Tools**: Technology Radar (Assess → Trial → Adopt → Deprecate), IETF CFRG FROST standardization, W3C Decentralized Identifiers (DIDs) for key management, Abstraction Layers (secp256k1, ed25519, BLS12-381 adapters), Ecosystem Health Metrics (Time-to-Support-New-Chain, partner adoption rate, transaction volume per chain, maintenance cost per chain), deprecation policy (sunset if <1% Tx volume for 2 quarters).
 

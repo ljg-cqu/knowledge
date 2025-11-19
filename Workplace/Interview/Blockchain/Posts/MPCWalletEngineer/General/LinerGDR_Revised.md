@@ -9,46 +9,83 @@
 **Coverage**: 6 Q&As (1 per essential domain)  
 **Success Criteria**: Achieve ≥80% hiring consensus with clear strengths/risks identified per domain  
 **Intended Users**: Hiring managers and interviewers assessing senior/architect MPC wallet engineers.  
-**Interview Flow (75 minutes)**: 5 minutes for introductions and context, followed by 6 × 10–15 minute Q&As (Q1–Q6). Prioritize Q1, Q2, and Q4 as core; use Q3, Q5, or Q6 depending on candidate profile and time remaining.  
-**Scoring Model**: Rate each essential domain from 1–15 (1 = strong concern, 5 = exceptional). Proceed to offer when the candidate scores ≥12 in at least 4 of 6 domains and has no domain <3.  
+**Interview Flow (75 minutes)**: 5 minutes for introductions and context, followed by 6 × 10–15 minute Q&As (Q1–Q6). Prioritize Q1, Q2, and Q4 as core; use Q3, Q5, or Q6 depending on candidate profile and time remaining.
+
+```mermaid
+graph LR
+    A[Intro<br/>5 min] --> B[Q1: TechArch<br/>10-15 min]
+    B --> C[Q2: PerfQual<br/>10-15 min]
+    C --> D[Q4: SecReg<br/>10-15 min]
+    D --> E{Time &<br/>Profile}
+    E -->|Optional| F[Q3/Q5/Q6<br/>10-15 min each]
+    F --> G[Total: 75 min]
+    E -->|Skip if low time| G
+    
+    style B fill:#ff9999
+    style C fill:#ff9999
+    style D fill:#ff9999
+    style F fill:#99ccff
+```
+
+**Scoring Model**: Rate each essential domain from 1–15 (1 = strong concern, 5 = exceptional). Proceed to offer when the candidate scores ≥12 in at least 4 of 6 domains and has no domain <3.
+
+| Score | Rating | Description | Decision Impact |
+|-------|--------|-------------|-----------------|
+| 5 | Exceptional | Outstanding expertise and insight | Strong hire signal |
+| 4 | Strong | Clear competence with depth | Positive signal |
+| 3 | Adequate | Meets basic requirements | Neutral, needs other strengths |
+| 2 | Concerning | Notable gaps or weaknesses | Red flag |
+| 1 | Strong Concern | Critical deficiencies | Likely rejection |
+
+**Offer Criteria**: `≥12 total points` across `≥4 domains` AND `no domain < 3`  
 **Assumed Context**: Multi-chain MPC wallet platform (custody plus DeFi integrations) operating at roughly 10k–100k monthly active users, targeting institutional-grade security and compliance in US/EU markets.  
 **Scope Constraints**: Front-page 75-minute interview focused on protocol/architecture decisions, performance, security, cross-team leadership, and roadmap; detailed implementation, operational runbooks, and HR/culture-fit are handled in follow-up rounds and domain-specific files.
 
 ## Glossary
 
-**Core Cryptographic Terms**:
-- **MPC**: Multi-Party Computation - distributed key management protocol
-- **TSS**: Threshold Signature Scheme
-- **ECDSA**: Elliptic Curve Digital Signature Algorithm
-- **EdDSA**: Edwards-curve Digital Signature Algorithm
-- **GG18/GG20**: Gennaro & Goldfeder threshold ECDSA protocols (2018/2020)
-- **FROST**: Flexible Round-Optimized Schnorr Threshold signatures
-- **CGGMP21**: Canetti-Gennaro-Goldfeder-Makriyannis-Peled threshold ECDSA (2021)
-- **DKG**: Distributed Key Generation
+### Core Cryptographic Terms
+| Term | Full Name | Description |
+|------|-----------|-------------|
+| **MPC** | Multi-Party Computation | Distributed key management protocol |
+| **TSS** | Threshold Signature Scheme | Cryptographic scheme requiring threshold of parties |
+| **ECDSA** | Elliptic Curve Digital Signature Algorithm | Standard digital signature algorithm |
+| **EdDSA** | Edwards-curve Digital Signature Algorithm | Modern signature algorithm using Edwards curves |
+| **GG18/GG20** | Gennaro & Goldfeder protocols | Threshold ECDSA protocols (2018/2020) |
+| **FROST** | Flexible Round-Optimized Schnorr Threshold | Efficient threshold signature scheme |
+| **CGGMP21** | Canetti-Gennaro-Goldfeder-Makriyannis-Peled | Latest threshold ECDSA (2021) |
+| **DKG** | Distributed Key Generation | Protocol for generating keys across parties |
 
-**Security & Architecture**:
-- **AA**: Account Abstraction
-- **ADR**: Architecture Decision Record
-- **TEE**: Trusted Execution Environment
-- **STRIDE**: Threat modeling (Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege)
-- **CVSS**: Common Vulnerability Scoring System
-- **NIST CSF**: NIST Cybersecurity Framework (Identify/Protect/Detect/Respond/Recover)
-- **FIDO2**: Fast Identity Online 2 (passwordless authentication standard)
+### Security & Architecture
+| Term | Full Name | Description |
+|------|-----------|-------------|
+| **AA** | Account Abstraction | Flexible account management on blockchain |
+| **ADR** | Architecture Decision Record | Documentation of design decisions |
+| **TEE** | Trusted Execution Environment | Secure area of processor |
+| **STRIDE** | Threat Modeling Framework | Spoofing/Tampering/Repudiation/Information Disclosure/DoS/Elevation of Privilege |
+| **CVSS** | Common Vulnerability Scoring System | Standardized vulnerability severity scoring |
+| **NIST CSF** | NIST Cybersecurity Framework | Identify/Protect/Detect/Respond/Recover |
+| **FIDO2** | Fast Identity Online 2 | Passwordless authentication standard |
 
-**Engineering Frameworks**:
-- **DORA**: DevOps Research and Assessment
-- **SOLID**: Software design principles (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
-- **RACI**: Responsibility Assignment Matrix (Responsible/Accountable/Consulted/Informed)
-- **OKR**: Objectives and Key Results
+### Engineering Frameworks
+| Term | Full Name | Description |
+|------|-----------|-------------|
+| **DORA** | DevOps Research and Assessment | DevOps metrics and practices |
+| **SOLID** | Software Design Principles | Single Responsibility/Open-Closed/Liskov Substitution/Interface Segregation/Dependency Inversion |
+| **RACI** | Responsibility Assignment Matrix | Responsible/Accountable/Consulted/Informed |
+| **OKR** | Objectives and Key Results | Goal-setting framework |
 
-**Prioritization Methods**:
-- **WSJF**: Weighted Shortest Job First
-- **MoSCoW**: Must-have/Should-have/Could-have/Won't-have (prioritization)
+### Prioritization Methods
+| Term | Full Name | Description |
+|------|-----------|-------------|
+| **WSJF** | Weighted Shortest Job First | Value-based prioritization method |
+| **MoSCoW** | Priority Classification | Must-have/Should-have/Could-have/Won't-have |
 
-**Blockchain Standards**:
-- **EVM**: Ethereum Virtual Machine
-- **L2**: Layer 2 scaling solutions
-- **DeFi**: Decentralized Finance
+### Blockchain Standards
+| Term | Full Name | Description |
+|------|-----------|-------------|
+| **EVM** | Ethereum Virtual Machine | Execution environment for smart contracts |
+| **L2** | Layer 2 | Scaling solutions built on top of L1 |
+| **DeFi** | Decentralized Finance | Financial applications on blockchain |
 
 ## Table of Contents
 
@@ -65,12 +102,43 @@
 - [Sources](#sources)
 
 ## Key Signals
-- Structural & design judgment for secure, modular, multi-chain MPC wallets
-- Performance/quality trade-offs in cryptographic signing for diverse environments
-- Value & prioritization for security features like AA and social recovery
-- Threat modeling, incident response, and regulatory compliance in advanced crypto systems
-- Cross-functional collaboration and leadership in productizing security
-- Strategic thinking for evolving blockchain standards and ecosystem integration
+
+```mermaid
+mindmap
+  root((MPC Wallet<br/>Engineer<br/>Signals))
+    TechArch
+      Modular design
+      Security boundaries
+      Multi-chain support
+    PerfQual
+      Latency optimization
+      Reliability metrics
+      QA strategies
+    ProdBiz
+      Feature prioritization
+      Value assessment
+      Stakeholder alignment
+    SecReg
+      Threat modeling
+      Incident response
+      Compliance
+    OrgLead
+      Cross-functional collab
+      Conflict resolution
+      Accountability
+    Roadmap
+      Strategic foresight
+      Ecosystem awareness
+      Risk assessment
+```
+
+**Core Competency Signals**:
+- **Technical Architecture**: Structural & design judgment for secure, modular, multi-chain MPC wallets
+- **Performance Engineering**: Performance/quality trade-offs in cryptographic signing for diverse environments
+- **Product Judgment**: Value & prioritization for security features like AA and social recovery
+- **Security & Compliance**: Threat modeling, incident response, and regulatory compliance in advanced crypto systems
+- **Leadership**: Cross-functional collaboration and leadership in productizing security
+- **Strategic Vision**: Strategic thinking for evolving blockchain standards and ecosystem integration
 
 ## Dashboard
 | # | EssentialDomainTag | Domain | Difficulty | Criticality | Target Signal | EstimatedTime |
@@ -94,6 +162,37 @@ You are tasked with designing the core module for a new multi-chain MPC wallet. 
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong candidate will propose a layered, modular architecture that clearly separates cryptographic logic from blockchain-specific integration and transaction serialization. This allows for pluggability of different MPC protocols and easier adaptation to new chains without refactoring the entire core. They would emphasize abstraction layers to manage complexity and maintain strong security boundaries, ensuring that cryptographic operations are isolated and robust.
+
+```mermaid
+graph TB
+    subgraph "Application Layer"
+        A[Wallet SDK/API]
+    end
+    
+    subgraph "Chain Adapters (Ports)"
+        A --> E[Ethereum Adapter]
+        A --> B[Bitcoin Adapter]
+        A --> S[Solana Adapter]
+    end
+    
+    subgraph "MPC Core (Domain)"
+        E --> MPC[Protocol Manager]
+        B --> MPC
+        S --> MPC
+        MPC --> GG[GG18/GG20]
+        MPC --> FR[FROST]
+        MPC --> TSS[Threshold ECDSA/EdDSA]
+    end
+    
+    subgraph "Infrastructure"
+        GG --> HSM[HSM/TEE]
+        FR --> HSM
+        TSS --> HSM
+    end
+```
+
+**Key Metrics**: Code cohesion, coupling, `>95%` test coverage, quarterly security audits
+
 **Frameworks/Tools**: The candidate should reference architectural patterns like `Clean Architecture` or `Ports and Adapters (Hexagonal Architecture)` to promote modularity and testability. `SOLID principles` (especially Interface Segregation and Dependency Inversion) are crucial for pluggable protocol implementations. They might mention `ADRs (Architectural Decision Records)` for documenting critical design choices and their trade-offs.
 **Trade-offs & Metrics**: Discussion should include trade-offs between abstraction complexity (for flexibility) and performance overhead. Chain-specific adapters add maintenance complexity but are necessary for compatibility. Key metrics would include `code cohesion`, `coupling`, `test coverage` for cryptographic primitives, and `auditing frequency` for security-critical components.
 **Stakeholder Handling**: They would engage backend engineers for seamless integration and API design, security engineers for thorough threat modeling of each protocol, and protocol developers for understanding specific cryptographic nuances and future evolutions. Clear APIs and SDKs are vital for cross-team collaboration.
@@ -113,6 +212,47 @@ Your team is facing challenges with transaction signing latency and reliability 
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong candidate recognizes that MPC signing latency is heavily influenced by multi-round communication and cryptographic computation. Optimization requires a multi-pronged approach: leveraging efficient threshold signature schemes, optimizing network interactions, and distributing computation effectively across client-side (mobile/web) and server-side environments. Reliability involves robust error handling, retry mechanisms, and clear status feedback.
+
+```mermaid
+graph TD
+    A[Transaction Sign Request] --> B{Identify Bottleneck}
+    B -->|Network| C[Optimize Communication]
+    B -->|Compute| D[Optimize Cryptography]
+    B -->|Client| E[Optimize Client-side]
+    
+    C --> C1[Reduce rounds<br/>CGGMP21]
+    C --> C2[Connection pooling]
+    C --> C3[Geographic distribution]
+    
+    D --> D1[Hardware acceleration]
+    D --> D2[Parallel computation]
+    D --> D3[Efficient protocols]
+    
+    E --> E1[Local caching]
+    E --> E2[Background precompute]
+    E --> E3[Progressive feedback]
+    
+    C1 --> F[Monitor Metrics]
+    C2 --> F
+    C3 --> F
+    D1 --> F
+    D2 --> F
+    D3 --> F
+    E1 --> F
+    E2 --> F
+    E3 --> F
+    
+    F --> G[p95/p99 latency<br/>Error rates<br/>Success rates]
+```
+
+**Performance Optimization Layers**:
+| Layer | Bottleneck | Optimization Strategies | Key Metrics |
+|-------|-----------|------------------------|-------------|
+| **Protocol** | Multi-round overhead | Use CGGMP21 (fewer rounds), precomputation | Rounds per signature, computation time |
+| **Network** | Communication latency | Connection pooling, geographic distribution, compression | Round-trip time, bandwidth usage |
+| **Client** | Resource constraints | Background tasks, progressive UI, caching | Client CPU/memory, battery impact |
+| **Server** | Processing capacity | Hardware acceleration, load balancing, queuing | Throughput, concurrent signatures |
+
 **Frameworks/Tools**: They would use `Prometheus` or similar monitoring tools to track `signing latency` (e.g., p95, p99 latencies), `error rates`, and `CPU/memory utilization` on different platforms. `Fuzz testing` and `property-based testing` (e.g., `QuickCheck`) are crucial QA strategies for cryptographic protocol robustness. `DORA metrics` can measure deployment frequency and change failure rates.
 **Trade-offs & Metrics**: Key trade-offs include cryptographic strength vs. computational overhead (e.g., choosing `CGGMP21` for fewer rounds), network latency vs. share geographic distribution, and resource consumption vs. offloading computation. Metrics would focus on reducing average and tail latencies, minimizing `timeout errors`, and ensuring `transaction success rates`.
 **Stakeholder Handling**: Collaboration with frontend engineers to optimize local cryptographic operations and UI feedback, backend engineers for efficient server-side processing and network protocols, and DevOps for infrastructure scaling and monitoring. Clear communication with product managers on acceptable latency thresholds and trade-offs is essential.
@@ -132,6 +272,41 @@ Your team is building out the next generation of MPC wallet infrastructure, incl
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong candidate will employ a structured prioritization framework to objectively evaluate features based on business value, user impact, technical feasibility, and security implications, especially under resource constraints. They understand that balancing security (fundamental to a wallet) with usability and strategic growth requires careful stakeholder alignment and transparent decision-making.
+
+```mermaid
+graph TD
+    A[Feature Backlog] --> B[WSJF Scoring]
+    
+    B --> C[Business Value<br/>0-10]
+    B --> D[Time Criticality<br/>0-10]
+    B --> E[Risk Reduction<br/>0-10]
+    B --> F[Job Size<br/>Estimate]
+    
+    C --> G[WSJF = <br/>Value + Urgency + Risk<br/>/ Size]
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H{MoSCoW<br/>Classification}
+    
+    H --> I[Must Have:<br/>Social Recovery<br/>Session Keys]
+    H --> J[Should Have:<br/>Account Abstraction<br/>Spending Limits]
+    H --> K[Could Have:<br/>Advanced Analytics]
+    H --> L[Won't Have:<br/>This Quarter]
+    
+    I --> M[Implementation<br/>Roadmap]
+    J --> M
+```
+
+**Feature Prioritization Matrix**:
+| Feature | Business Value | User Impact | Security Risk | Complexity | WSJF Score | Priority |
+|---------|---------------|-------------|---------------|------------|-----------|----------|
+| **Social Recovery** | High (retention) | Critical (key loss) | Medium (new attack surface) | Medium | **High** | Must-have |
+| **Session Keys** | High (UX) | High (convenience) | Low (time-bound) | Low | **High** | Must-have |
+| **Account Abstraction** | Medium (future-proof) | Medium (flexibility) | Medium (new patterns) | High | **Medium** | Should-have |
+| **Spending Limits** | Medium (safety) | Medium (risk mgmt) | Low (client-side) | Low | **Medium** | Should-have |
+| **Approval Flows** | Low (niche) | Low (enterprise only) | Low (process) | Medium | **Low** | Could-have |
+
 **Frameworks/Tools**: The candidate might use `WSJF (Weighted Shortest Job First)` to prioritize by considering business value, time criticality, risk reduction, and job size. `MoSCoW (Must-have, Should-have, Could-have, Won't-have)` can categorize features for clear communication. A simple `cost-benefit analysis` for each feature can also be used.
 **Trade-offs & Metrics**: They should discuss trade-offs such as faster time-to-market for a subset of features versus delivering a comprehensive, fully-featured wallet later. Prioritizing `Social Recovery` could significantly boost user retention but requires careful security implementation. `Account Abstraction` offers long-term flexibility but is technically complex. Metrics would include `user adoption rates`, `churn reduction`, `partner integration velocity`, and `security incident rates` as indicators of value and risk mitigation.
 **Stakeholder Handling**: They would engage product managers to define business goals and user needs, engineering leads for technical feasibility and implementation costs, security teams for threat modeling each feature, and business development for external partner requirements. Transparent communication of the rationale behind prioritization, using data and chosen frameworks, is key to managing expectations.
@@ -151,6 +326,59 @@ Your security research team has identified a novel side-channel attack affecting
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong response prioritizes immediate containment and assessment, followed by a structured mitigation plan that balances the urgency of the security fix with system stability. It highlights the importance of thorough risk quantification and transparent, multi-stakeholder communication, especially given the cryptographic nature of the vulnerability.
+
+```mermaid
+graph TB
+    A[Vulnerability<br/>Identified] --> B[Immediate Actions<br/>0-4 hours]
+    
+    B --> B1[Assemble response team]
+    B --> B2[Assess attack surface]
+    B --> B3[Enable enhanced monitoring]
+    
+    B1 --> C[Risk Assessment<br/>4-24 hours]
+    B2 --> C
+    B3 --> C
+    
+    C --> C1[CVSS Scoring]
+    C --> C2[STRIDE Analysis]
+    C --> C3[Impact quantification]
+    
+    C1 --> D{Severity Level}
+    C2 --> D
+    C3 --> D
+    
+    D -->|Critical| E1[Emergency patch<br/>Disable feature]
+    D -->|High| E2[Accelerated fix<br/>Increase monitoring]
+    D -->|Medium| E3[Standard response<br/>Scheduled patch]
+    
+    E1 --> F[Communication]
+    E2 --> F
+    E3 --> F
+    
+    F --> F1[Security team]
+    F --> F2[Engineering lead]
+    F --> F3[Compliance officer]
+    F --> F4[Product/users if needed]
+    
+    F1 --> G[Long-term<br/>Remediation]
+    F2 --> G
+    F3 --> G
+    
+    G --> G1[Protocol upgrade]
+    G --> G2[Architecture hardening]
+    G --> G3[Testing & validation]
+    G --> G4[Post-mortem]
+```
+
+**NIST CSF Response Framework**:
+| Phase | Timeline | Actions | Stakeholders | Metrics |
+|-------|----------|---------|--------------|---------|
+| **Identify** | 0-4h | Validate vulnerability, assess scope, gather evidence | Security team, researchers | Time-to-detection |
+| **Protect** | 4-24h | Temporary mitigations, access restrictions, monitoring boost | Engineering, DevOps | Attack surface reduction |
+| **Detect** | Ongoing | Enhanced logging, anomaly detection, transaction pattern analysis | Security, Data team | Detection coverage |
+| **Respond** | 24-72h | Deploy patches, test fixes, rollback plans, incident comms | Engineering, Product, Legal | Time-to-patch, residual risk |
+| **Recover** | 1-2 weeks | Full remediation, architecture review, process improvements | All teams | Zero security debt |
+
 **Frameworks/Tools**: The candidate should initiate a `STRIDE threat modeling` review specifically for Spoofing, Tampering, and Information Disclosure related to this attack. `CVSS (Common Vulnerability Scoring System)` would be used to quantify the vulnerability's severity and prioritize the response. The `NIST Cybersecurity Framework (CSF)` (Identify, Protect, Detect, Respond, Recover) can guide the overall incident response.
 **Trade-offs & Metrics**: Immediate mitigation might involve temporarily disabling affected transaction types or increasing monitoring, balancing service availability against security exposure. Long-term, patching requires careful testing to ensure the fix doesn't introduce regressions. Metrics include `time-to-detection`, `time-to-containment`, `time-to-patch`, and `residual risk score`.
 **Stakeholder Handling**: Communicate immediately with the `security team` for detailed analysis and validation. Engage the `engineering lead` to plan and execute patches, ensuring a rollback strategy. Inform the `compliance officer` about the regulatory implications and reporting obligations. Product managers need to be aware of any user-facing impacts or downtime. All communication must be factual, clear, and actionable.
@@ -170,6 +398,58 @@ You need to lead the productization of a new security feature—advanced device 
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong candidate will demonstrate the ability to orchestrate a complex cross-functional project by establishing clear roles, fostering open communication, and proactively managing conflicts. They understand that successfully productizing security features requires aligning technical implementation with product usability, ensuring all teams contribute effectively towards a shared goal.
+
+```mermaid
+graph LR
+    A[MFA Project] --> B[Project Setup]
+    
+    B --> C[Kick-off Meeting<br/>Week 0]
+    C --> D[Define Success Criteria]
+    C --> E[RACI Matrix]
+    C --> F[Communication Plan]
+    
+    E --> G[Backend Team<br/>Responsible: API/Storage]
+    E --> H[Security Team<br/>Responsible: Auth Flow]
+    E --> I[Product Team<br/>Responsible: UX/Testing]
+    
+    G --> J[Sprint Execution<br/>Weeks 1-20]
+    H --> J
+    I --> J
+    
+    J --> K[Regular Syncs<br/>Weekly]
+    K --> L[Standup: Progress]
+    K --> M[Review: Demo]
+    K --> N[Retro: Improve]
+    
+    J --> O{Conflicts?}
+    O -->|Security vs UX| P[Facilitated Discussion<br/>Risk vs Friction]
+    O -->|Backend vs Timeline| Q[Resource Reallocation<br/>Priority Adjustment]
+    
+    P --> R[Aligned Decision]
+    Q --> R
+    
+    R --> S[Delivery<br/>Week 24]
+    
+    style G fill:#99ccff
+    style H fill:#99ff99
+    style I fill:#ffcc99
+```
+
+**RACI Matrix for Device Verification & MFA**:
+| Component | Backend Team | Security Team | Product Team | DevOps | Engineering Lead |
+|-----------|--------------|---------------|--------------|--------|------------------|
+| FIDO2 Integration | R | A | C | I | C |
+| Device Fingerprinting | C | R, A | C | I | I |
+| Biometric Attestation | R | A | C | I | C |
+| API Design | A, R | C | C | I | C |
+| UI/UX Flow | C | I | A, R | I | C |
+| Security Testing | C | A, R | I | I | I |
+| Performance Testing | R | C | C | A, R | I |
+| Deployment Strategy | C | I | I | A, R | C |
+| User Documentation | I | C | A, R | I | I |
+
+_Legend: R=Responsible, A=Accountable, C=Consulted, I=Informed_
+
 **Frameworks/Tools**: They might propose using a `RACI matrix` to clarify responsibilities (Responsible, Accountable, Consulted, Informed) across the backend, security, and product teams for each component of the MFA feature. Concepts from `Team Topologies` could inform how teams interact and minimize cognitive load. Regular `Agile ceremonies` (stand-ups, sprint reviews, demos) would maintain synchronization.
 **Trade-offs & Metrics**: Discussions should highlight balancing the need for strong security controls (e.g., FIDO2, biometric attestation) against potential user friction and implementation complexity. Key metrics would include `feature completion rate`, `defect escape rate`, `user adoption of MFA`, and `time-to-resolve cross-team blockers`.
 **Stakeholder Handling**: They would initiate with a joint kick-off to establish a shared vision and success criteria. Facilitate regular syncs to address technical dependencies (backend), security implications (security), and user experience design (product). Conflicts (e.g., security strictness vs. UX simplicity) would be resolved through facilitated discussions focusing on trade-offs and agreed-upon risk appetite. Accountability would be maintained through clear ownership and regular progress reporting.
@@ -189,6 +469,58 @@ As a Blockchain Architect for a multi-chain MPC wallet platform, you are respons
 
 **Answer Key (~150–250 words)**:
 **Key Insight**: A strong candidate demonstrates strategic foresight, understanding that a flexible roadmap is essential for navigating the volatile blockchain ecosystem. They prioritize modularity and adaptable architecture to embrace emerging standards, while rigorously assessing risks and making data-driven decisions about when and how to adopt new technologies.
+
+```mermaid
+gantt
+    title MPC Wallet 12-18 Month Strategic Roadmap
+    dateFormat YYYY-MM
+    axisFormat %b %Y
+    
+    section Core Infrastructure
+    Post-quantum research & pilot    :active, pq1, 2025-01, 6M
+    Advanced DKG protocols           :dk1, 2025-04, 4M
+    Multi-signature v2 optimization  :ms1, 2025-07, 3M
+    
+    section Chain Expansion
+    EVM L2s (Arbitrum/Optimism/Base) :l2a, 2025-01, 3M
+    zkEVM chains (zkSync/Polygon)    :zk1, 2025-04, 4M
+    Cosmos ecosystem integration     :cos1, 2025-08, 4M
+    
+    section DeFi Integration
+    DEX aggregator support           :defi1, 2025-02, 3M
+    Lending protocol integration     :defi2, 2025-05, 4M
+    Cross-chain bridge support       :bridge1, 2025-09, 3M
+    
+    section Compliance & Security
+    Quarterly security audits        :crit, audit, 2025-01, 18M
+    Regulatory reporting framework   :reg1, 2025-03, 5M
+    Enhanced KYC/AML tooling         :kyc1, 2025-08, 4M
+```
+
+**Technology Radar (Q1 2025)**:
+| Technology | Category | Ring | Adoption Timeline | Risk Level | Business Value |
+|------------|----------|------|-------------------|------------|----------------|
+| **Post-quantum signatures** | Cryptography | Assess | 12-18 months | High (immature) | Critical (future-proof) |
+| **EVM L2s (Arbitrum, Base)** | Chains | Trial | 0-3 months | Low (proven) | High (market demand) |
+| **zkEVM (zkSync, Polygon)** | Chains | Assess | 3-6 months | Medium (maturing) | Medium (emerging demand) |
+| **Account Abstraction (ERC-4337)** | Standards | Trial | 3-6 months | Medium (new patterns) | High (UX improvement) |
+| **FROST signatures** | Cryptography | Adopt | 0-3 months | Low (well-researched) | High (performance) |
+| **Cross-chain bridges** | DeFi | Assess | 6-12 months | High (security risks) | Medium (niche demand) |
+| **Cosmos IBC** | Interoperability | Trial | 6-9 months | Medium (complex) | Medium (ecosystem growth) |
+
+_Ring definitions: Adopt (ready for production), Trial (pilot with select partners), Assess (research & prototype), Hold (avoid)_
+
+**OKR Framework**:
+**Objective 1**: Become the leading multi-chain MPC wallet for institutional custody
+- **KR1**: Support 15+ chains with <1s signing latency by Q2 2026
+- **KR2**: Achieve 50+ enterprise partnerships by Q4 2025
+- **KR3**: Zero critical security incidents across all integrations
+
+**Objective 2**: Pioneer quantum-resistant security in blockchain wallets
+- **KR1**: Complete post-quantum signature R&D and pilot by Q4 2025
+- **KR2**: Publish 2 technical whitepapers on PQ-MPC integration
+- **KR3**: Partner with 3 research institutions for validation
+
 **Frameworks/Tools**: The candidate should propose using `OKRs (Objectives and Key Results)` to align the roadmap with high-level business goals (e.g., market share, partner growth). A `Technology Radar` approach would be used to continuously monitor and assess the maturity of new EVM L2s, signature protocols, and DeFi trends. `Risk matrices` can help quantify the trade-offs of early adoption (e.g., immature tech) versus waiting for stability.
 **Trade-offs & Metrics**: Key trade-offs include being an early mover on a new chain/protocol (gaining competitive advantage) versus waiting for market validation (reducing integration risk). Metrics would track `time-to-integrate new chains`, `protocol upgrade success rates`, `partner satisfaction`, and `total addressable market expansion`.
 **Stakeholder Handling**: They would actively engage product managers to understand market opportunities, business development to align with partner integration needs, and blockchain core developers to anticipate protocol changes. Regular reviews of the roadmap with these stakeholders, adapting based on market signals and competitive analysis, are crucial.

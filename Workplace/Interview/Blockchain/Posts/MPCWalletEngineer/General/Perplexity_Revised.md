@@ -15,6 +15,32 @@
 
 ## Glossary
 
+```mermaid
+mindmap
+  root((MPC Wallet<br/>Glossary))
+    Cryptography
+      MPC/TSS
+      ECDSA/EdDSA/Schnorr
+      GG18/GG20/CGGMP21/FROST
+      Paillier/ZK Proofs
+    Infrastructure
+      HSM/KMS/TEE
+      FIPS 140-2/3
+      STRIDE Threat Model
+      DoS/DDoS/QPS
+    Blockchain
+      RLP/UTXO/ERC-20
+      Account Abstraction
+      Multi-Chain Support
+    Engineering
+      WSJF/NPS/DORA
+      ADR/RBAC/RTT
+      WASM
+    Compliance
+      SOC 2/ISO 27001
+      GDPR/MFA
+```
+
 **Core Cryptographic Terms**:
 - **MPC**: Multi-Party Computation - distributed cryptographic protocol
 - **TSS**: Threshold Signature Scheme
@@ -76,6 +102,24 @@
 - [References](#references)
 
 ## Key Signals
+
+```mermaid
+graph LR
+    TA[TechArch<br/>MPC Protocol Design] --> SD[System Design<br/>Judgment]
+    PQ[PerfQual<br/>Signing Latency] --> PT[Performance-Security<br/>Trade-offs]
+    PB[ProdBiz<br/>Feature Priority] --> BV[Business Value vs<br/>Engineering Cost]
+    SR[SecReg<br/>Threat Modeling] --> AS[Attack Surface<br/>Awareness]
+    OL[OrgLead<br/>Cross-Team Collab] --> CE[Communication<br/>Effectiveness]
+    RE[RoadmapEco<br/>Multi-Chain Evolution] --> TV[Technical Vision<br/>& Adaptation]
+    
+    style TA fill:#e1f5ff
+    style PQ fill:#fff4e1
+    style PB fill:#f0e1ff
+    style SR fill:#ffe1e1
+    style OL fill:#e1ffe1
+    style RE fill:#fff0e1
+```
+
 - **[TechArch]** MPC protocol design & multi-chain integration architecture → System design judgment, protocol selection rationale
 - **[PerfQual]** Signing latency & transaction throughput optimization → Performance-security trade-offs, mobile/web constraints
 - **[ProdBiz]** Wallet feature prioritization & user recovery flows → Business value vs. engineering cost, UX-security balance
@@ -110,6 +154,35 @@ Which threshold signature protocol (e.g., GG18, GG20, CGGMP21, FROST) would you 
 
 **Key Insight**: The candidate should recognize that CGGMP21 is the state-of-the-art for ECDSA (Ethereum/BTC) because it reduces signing to 4 rounds (vs. 9 for GG18) while fixing security vulnerabilities in GG20 (missing zero-knowledge range proofs in MtA share conversion). For Solana (EdDSA), FROST is the natural choice for threshold Schnorr signatures, offering 2-round signing and simpler cryptography without Paillier encryption overhead. Strong candidates will justify protocol selection by explicitly linking signing round count to mobile latency constraints (3-second target requires ≤4 rounds over typical mobile networks at 200–500ms RTT).[6][2][3][4][7][8][1]
 
+**Protocol Comparison**:
+
+| Protocol | Chain | Signing Rounds | Latency (500ms RTT) | Security | Computation Overhead |
+|----------|-------|----------------|---------------------|----------|----------------------|
+| **CGGMP21** | ETH/BTC | 4 rounds | `2.0s` | Malicious-secure (ZK proofs) | +30% vs GG20 |
+| GG20 | ETH/BTC | 5 rounds | `2.5s` | **Vulnerable** (missing ZK) | Baseline |
+| GG18 | ETH/BTC | 9 rounds | `4.5s` | Secure | High |
+| **FROST** | Solana | 2 rounds | `1.0s` | Malicious-secure | Low (no Paillier) |
+
+**Architecture**:
+
+```mermaid
+graph TB
+    A[Unified Signing API] --> B{Chain Parser}
+    B --> E[Ethereum RLP]
+    B --> BTC[Bitcoin UTXO]
+    B --> S[Solana Instructions]
+    
+    E --> P[Policy Layer]
+    BTC --> P
+    S --> P
+    
+    P --> PR[Amount Limits<br/>Whitelist Check]
+    PR --> MPC{MPC Protocol}
+    
+    MPC --> CG[CGGMP21<br/>ETH/BTC]
+    MPC --> FR[FROST<br/>Solana]
+```
+
 **Frameworks/Tools**: CGGMP21 for ECDSA threshold signatures, FROST for EdDSA/Schnorr, ADR (Architecture Decision Records) to document protocol choices, RPC abstraction layer for transaction construction, Paillier homomorphic encryption (CGGMP21 building block), zero-knowledge proofs (range proofs, commitments) for malicious-security.[3][4][9][10][11][12][13][14][15][1]
 
 **Trade-offs & Metrics**: CGGMP21 adds ~30% more computation than GG20 due to additional ZK proofs, but eliminates key-extraction attacks. FROST is faster and simpler for EdDSA but requires different key-generation logic than ECDSA protocols. Unified signing API should parse chain-specific transaction structures (Ethereum's RLP, Bitcoin's UTXO inputs/outputs, Solana's account-based instructions) into a canonical intermediate representation, then apply policy checks (amount limits, whitelist validation) before invoking the MPC signing protocol. Communication model: Hybrid approach with broadcast for commitment phases and P2P for ZK proof exchange to minimize bandwidth. Failure recovery: Pre-signing can be performed offline to generate signing shares in advance, reducing online rounds to 1 for CGGMP21. Metrics to track: signing latency P95/P99 (target <3s), protocol abort rate, key-refresh frequency.[16][4][17][18][19][20][21][22][3]
@@ -136,6 +209,38 @@ How would you redesign the signing workflow to meet the 3-second target while ma
 
 **Key Insight**: The candidate should propose **offline pre-signing** as the primary latency mitigation: CGGMP21 supports a 3-round pre-signing phase that generates signing shares without knowing the transaction message, reducing the online phase to a single round. Pre-signing can run in the background when the app opens or during idle time, creating a pool of pre-signatures. Strong candidates will quantify the latency improvement: if RTT is 500ms and 4 rounds require 2 seconds, reducing to 1 online round cuts network latency to 500ms, meeting the 3-second budget with room for computation and serialization.[16][4]
 
+**Latency Breakdown & Optimization**:
+
+```mermaid
+graph TB
+    subgraph "Current: 6-8s"
+        C1[Network RTT<br/>40% = 2.4-3.2s]
+        C2[Crypto Computation<br/>50% = 3-4s]
+        C3[Serialization<br/>10% = 0.6-0.8s]
+    end
+    
+    subgraph "Target: <3s"
+        T1[Network RTT<br/>Reduced to 500ms<br/>via Pre-signing]
+        T2[Crypto Computation<br/>Reduced to 2s<br/>via Parallelization]
+        T3[Serialization<br/>Reduced to 300ms<br/>via Caching]
+    end
+    
+    C1 -.->|Offline Pre-signing| T1
+    C2 -.->|WASM + Parallel| T2
+    C3 -.->|Template Cache| T3
+    
+    style T1 fill:#90EE90
+    style T2 fill:#90EE90
+    style T3 fill:#90EE90
+```
+
+| **Optimization** | **Technique** | **Latency Reduction** | **Trade-off** |
+|------------------|---------------|----------------------|---------------|
+| Network (4→1 rounds) | Offline pre-signing | 2s → 500ms | +100KB storage per 100 pre-sigs |
+| Computation | Parallelization + WASM | 4s → 2s | +10% battery consumption |
+| Serialization | Template caching | 800ms → 300ms | +50KB memory |
+| **Total** | **Combined** | **6.8s → 2.8s** | **Meets <3s target** |
+
 **Frameworks/Tools**: DORA metrics (lead time, deployment frequency, change failure rate) to track release velocity and quality, load testing frameworks (k6, Locust) for simulating 10,000 concurrent sessions, cryptographic profiling tools (perf, Instruments), WASM for portable cryptography on mobile/web, hardware security modules (HSM) or Trusted Execution Environments (TEE) for backend key-share protection.[11][31][32][33][34][35][36][28][29][30][37][38]
 
 **Trade-offs & Metrics**: Pre-signing trades storage (each pre-signature is ~1KB, storing 100 pre-signatures = 100KB) for latency. Parallelization: Paillier operations and ZK proofs can be parallelized across CPU cores; Rust's async runtime or Go's goroutines enable concurrent execution. Caching: Transaction templates (e.g., ERC-20 transfer) can be pre-validated to skip redundant policy checks. Network reliability: Implement exponential backoff and retry logic for packet loss; fallback to 2-round online signing if pre-signatures are exhausted. Metrics to instrument: P50/P95/P99 signing latency, pre-signature pool depth, cryptographic operation duration breakdown, mobile battery consumption per signature, backend CPU/memory per signing session. Testing: Establish performance baselines on low-end devices (e.g., Android with 2GB RAM, 3G network simulator at 250kbps with 10% packet loss), run continuous load tests at 10,000 QPS to detect server-side bottlenecks, use chaos engineering to simulate network partitions.[39][28][29][30][40][37][41]
@@ -161,6 +266,52 @@ Using a prioritization framework like WSJF (Weighted Shortest Job First), how wo
 **Answer Key (~225 words)**:  
 
 **Key Insight**: The candidate should apply the WSJF framework to systematically compare the two features. WSJF score = (Business Value + Time Criticality + Risk Reduction) / Job Size. Strong candidates will quantify each component explicitly and explain the rationale. For **Social Recovery**: Business Value = High (30% support ticket reduction = quantifiable cost savings, NPS improvement from 40% user fear), Time Criticality = Medium (users are churning due to lost-device anxiety, but not an immediate competitive threat), Risk Reduction = High (eliminates single-point-of-failure for account recovery, a top user complaint). Job Size = 4 weeks. WSJF = (High + Medium + High) / 4 ≈ 2.5. For **Session Keys**: Business Value = Medium (faster UX for small transactions, but unclear revenue impact), Time Criticality = Low (nice-to-have feature, not blocking user activation), Risk Reduction = Negative (increases attack surface if device is compromised). Job Size = 2 weeks. WSJF = (Medium + Low - Negative) / 2 ≈ 1.0. Social Recovery scores higher and should be prioritized.[48][49][50][54][55][56]
+
+**WSJF Prioritization Analysis**:
+
+```mermaid
+graph TD
+    subgraph "WSJF Formula"
+        F["WSJF = (Business Value + Time Criticality + Risk Reduction) / Job Size"]
+    end
+    
+    subgraph "Social Recovery"
+        SR1[Business Value: High<br/>30% ticket reduction]
+        SR2[Time Criticality: Medium<br/>User churn risk]
+        SR3[Risk Reduction: High<br/>Eliminates SPOF]
+        SR4[Job Size: 4 weeks]
+        SR5[WSJF ≈ 2.5]
+        
+        SR1 --> SR5
+        SR2 --> SR5
+        SR3 --> SR5
+        SR4 --> SR5
+    end
+    
+    subgraph "Session Keys"
+        SK1[Business Value: Medium<br/>Unclear revenue]
+        SK2[Time Criticality: Low<br/>Nice-to-have]
+        SK3[Risk Reduction: Negative<br/>Increases attack surface]
+        SK4[Job Size: 2 weeks]
+        SK5[WSJF ≈ 1.0]
+        
+        SK1 --> SK5
+        SK2 --> SK5
+        SK3 --> SK5
+        SK4 --> SK5
+    end
+    
+    SR5 -.->|Winner| D[Prioritize Social Recovery]
+    
+    style SR5 fill:#90EE90
+    style SK5 fill:#FFB6C6
+    style D fill:#FFD700
+```
+
+| **Feature** | **Business Value** | **Time Criticality** | **Risk Reduction** | **Job Size** | **WSJF Score** | **Priority** |
+|-------------|-------------------|----------------------|-------------------|--------------|----------------|--------------|
+| **Social Recovery** | High (9/10)<br/>30% ticket ↓ | Medium (6/10)<br/>User churn | High (9/10)<br/>Eliminates SPOF | 4 weeks | **(9+6+9)/4 = 6.0** | **✅ 1st** |
+| Session Keys | Medium (5/10)<br/>Unclear ROI | Low (3/10)<br/>Nice-to-have | Negative (-2/10)<br/>Security ↑ | 2 weeks | (5+3-2)/2 = 3.0 | ⏸️ 2nd |
 
 **Frameworks/Tools**: WSJF (Weighted Shortest Job First) for ROI-based prioritization, NPS (Net Promoter Score) for measuring user satisfaction and loyalty (score >0 is good, >50 is excellent), DORA metrics for tracking delivery velocity and quality, Cost of Delay analysis to quantify financial impact of postponing a feature, Team Topologies (stream-aligned, enabling, platform teams) to assess engineering capacity and dependencies.[57][29][58][30][59][60][37][61][62][63][64][49][65][50][51][54][52][55][53][56][66][28][48]
 
@@ -190,7 +341,47 @@ Using the STRIDE threat model (Spoofing, Tampering, Repudiation, Information Dis
 
 **Frameworks/Tools**: STRIDE threat model (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege), HSM (Hardware Security Module) for tamper-resistant key storage, KMS (Key Management System) for key lifecycle management (generation, rotation, distribution, destruction), TEE (Trusted Execution Environment) for mobile secure enclave, zero-knowledge proofs (commitment schemes, range proofs) for malicious-security, FIPS 140-2/140-3 certification for HSM compliance, immutable audit logs for non-repudiation, multi-factor authentication (MFA) and biometric verification for user access control.[67][10][68][78][31][70][71][32][79][72][33][80][73][34][74][35][81][75][36][82][76][77][3][9][11]
 
+**MPC Wallet Architecture & Components**:
+
+```mermaid
+graph TB
+    subgraph "2-of-3 Threshold Architecture"
+        Mobile[Mobile App<br/>📱 Key-Share 1<br/>TEE/Secure Enclave]
+        Backend[Backend HSM Cluster<br/>🔐 Key-Share 2<br/>FIPS 140-2 Level 3+]
+        Cloud[Cloud Backup<br/>☁️ Key-Share 3<br/>Password-Encrypted]
+    end
+    
+    subgraph "Normal Operation"
+        Mobile -->|Combine| Sign[Transaction<br/>Signing]
+        Backend -->|Combine| Sign
+    end
+    
+    subgraph "Recovery Mode"
+        Mobile -->|Combine| Recover[Account<br/>Recovery]
+        Cloud -->|Combine| Recover
+    end
+    
+    Backend -.->|Managed by| KMS[KMS<br/>Access Policies<br/>Audit Logs]
+    
+    style Mobile fill:#e1f5ff
+    style Backend fill:#ffe1e1
+    style Cloud fill:#fff4e1
+    style KMS fill:#f0e1ff
+```
+
 **Trade-offs & Metrics**: **Threats & Mitigations by STRIDE category**:
+
+| **STRIDE Category** | **Threat** | **Target Component** | **Mitigation** | **Control Type** |
+|---------------------|-----------|----------------------|----------------|------------------|
+| **S**poofing | Attacker impersonates user/backend | Mobile App, Backend HSM | • Mutual TLS authentication<br/>• Device attestation via TEE<br/>• KMS access tokens (5min TTL) | Authentication |
+| **T**ampering | Modified transaction data/key-shares | Signing Requests, Key-Shares | • HMAC signatures on requests<br/>• Cryptographic commitments<br/>• Include nonce + timestamp | Integrity |
+| **R**epudiation | User/backend denies action | All Components | • Immutable audit logs<br/>• Blockchain-based logging<br/>• KMS access logs | Non-repudiation |
+| **I**nformation Disclosure | Key extraction, metadata leakage | HSM, TEE, Cloud Backup | • FIPS 140-2 Level 3+ HSM<br/>• TEE secure enclave<br/>• PBKDF2 cloud encryption<br/>• ZK proofs in MPC | Confidentiality |
+| **D**enial of Service | Service unavailable, device lost | Backend HSM, Mobile | • Multi-region HSM cluster<br/>• Cloud backup recovery<br/>• Rate limiting<br/>• Fallback to 1-of-2 threshold | Availability |
+| **E**levation of Privilege | Insider/attacker gains admin access | Backend, Mobile App | • RBAC with 2-of-3 quorum<br/>• MFA for admin access<br/>• OS-level sandboxing | Authorization |
+
+**Detailed Mitigations**:
+
 1. **Spoofing** (mobile app, backend HSM): Attacker impersonates user or backend service. *Mitigation*: Mutual TLS authentication for mobile-backend communication, device attestation via TEE, HSM authentication via KMS-managed access tokens with short TTL (5 minutes).[70][32][33][34][81]
 2. **Tampering** (signing requests, key-shares): Attacker modifies transaction data or key-shares. *Mitigation*: HMAC or digital signatures on all signing requests (include nonce, timestamp, transaction hash to prevent replay), cryptographic commitments in MPC protocol (each party commits to their share before revealing).[68][73][76][3][9][11]
 3. **Repudiation** (user denies signing, backend denies providing share): No audit trail for who authorized what. *Mitigation*: Immutable audit logs stored in append-only database (e.g., blockchain-based log), KMS logs all HSM access with timestamp, user ID, transaction hash.[32][33][34][35][81][77][70]
@@ -226,6 +417,48 @@ How would you facilitate alignment across these three stakeholders? Describe you
 
 **Frameworks/Tools**: Team Topologies (Stream-Aligned, Enabling, Platform teams; Collaboration, X-as-a-Service, Facilitation interaction modes), ADR (Architecture Decision Records) for documenting decisions and rationale, DORA metrics (deployment frequency, lead time, change failure rate) to assess team velocity and capacity, WSJF for prioritization, RACI matrix (Responsible, Accountable, Consulted, Informed) for role clarity.[83][30][59][13][60][14][37][61][15][62][84][63][49][50][28][57][12][29][58][48]
 
+**Team Collaboration & Decision-Making Process**:
+
+```mermaid
+graph TB
+    subgraph "Phase 1: Gather Requirements (1-2 days)"
+        R1[Backend Team:<br/>Signing node at 80% CPU<br/>10K users = DoS risk]
+        R2[Security Team:<br/>SOC 2 audit requires<br/>key rotation policy<br/>$500K ARR at risk]
+        R3[Product Team:<br/>Competitors launched AA<br/>15% activation drop<br/>due to gas fees]
+    end
+    
+    subgraph "Phase 2: WSJF Workshop (0.5 day)"
+        W[Cross-Functional Workshop<br/>Score: Business Value<br/>Time Criticality<br/>Risk Reduction<br/>Job Size]
+        R1 --> W
+        R2 --> W
+        R3 --> W
+    end
+    
+    subgraph "Phase 3: Decision & Roadmap"
+        D1[Q1-S1: Account Abstraction<br/>Mode: Collaboration<br/>Deep crypto support]
+        D2[Q1-S2: Key Rotation<br/>Mode: Facilitation<br/>Design + enable team]
+        D3[Q2-S1: Backend Scaling<br/>Mode: X-as-a-Service<br/>Async consultation]
+        
+        W --> D1
+        W --> D2
+        W --> D3
+    end
+    
+    D1 -.->|Document| ADR[ADR<br/>Architecture Decision Record<br/>Rationale + Trade-offs]
+    
+    style D1 fill:#90EE90
+    style D2 fill:#FFD700
+    style D3 fill:#87CEEB
+```
+
+**Team Topologies Interaction Modes**:
+
+| **Initiative** | **Interaction Mode** | **Your Role** | **Team's Role** | **Duration** |
+|----------------|---------------------|---------------|-----------------|--------------|
+| Account Abstraction | **Collaboration** | Deep involvement<br/>Daily standups | Co-develop with Product | Q1 Sprint 1 |
+| Key Rotation | **Facilitation** | Design protocol<br/>Enable implementation | Implement independently | Q1 Sprint 2 |
+| Backend Scaling | **X-as-a-Service** | Async reviews<br/>On-demand consultation | Lead independently | Q2 Sprint 1 |
+
 **Trade-offs & Metrics**: **Step 1: Gather Requirements & Impact (1–2 days)**. Schedule 30-minute 1-on-1s with each stakeholder to understand their "why": Backend lead explains current signing node CPU is at 80%, and 10K users will saturate it (DoS risk). Security lead shows SOC 2 audit requires key rotation policy, and absence blocks enterprise customer deals ($500K ARR at risk). Product manager cites competitor analysis – 3 wallets launched AA in Q4, and user activation rate dropped 15% due to gas fee friction. Request quantitative data: backend provides load test results, security provides audit timeline, product provides user activation funnel. **Step 2: Assess Impact with WSJF (half-day workshop)**. Facilitate cross-functional workshop to score each initiative on Business Value, Time Criticality, Risk Reduction, and Job Size. Use voting (each person scores 0–10) to avoid anchoring bias. Example scoring: (1) Backend scaling: High Risk Reduction (DoS prevention), Medium Business Value (enables growth), Low Time Criticality (not blocking today), Job Size = 4 weeks. WSJF ≈ 1.5. (2) Key rotation: High Time Criticality (audit deadline in 6 weeks), Medium Risk Reduction (compliance), Low Business Value (no user-facing impact), Job Size = 5 weeks. WSJF ≈ 1.2. (3) Account Abstraction: High Business Value (15% activation rate increase = X new users), High Time Criticality (competitive pressure), Medium Risk Reduction (removes gas fee UX friction), Job Size = 6 weeks. WSJF ≈ 2.0. **AA wins**. **Step 3: Negotiate Trade-offs & Propose Roadmap (half-day)**. Present WSJF results and propose: Q1 Sprint 1 (current): Account Abstraction (you provide deep cryptography support). Q1 Sprint 2: Key rotation (you provide enabling support – design the protocol, let backend team implement). Q2 Sprint 1: Backend scaling (backend team leads, you provide X-as-a-Service consultation). Acknowledge concerns: "Backend scaling is critical for growth, but we have 20% capacity headroom today. Key rotation is urgent, but we can design the protocol in parallel while AA is in dev, then hand off implementation." Offer compromise: You'll dedicate 5 hours/week to review backend scaling design docs (X-as-a-Service mode) while focusing on AA. **Step 4: Document Decision with ADR**. Write an Architecture Decision Record capturing: Context (3 competing initiatives, bandwidth constraint), Decision (prioritize AA in Sprint 1), Consequences (backend scaling deferred but monitored, key rotation designed in parallel), Stakeholders Consulted (all 3 leads), Status (Accepted). Store ADR in shared repo so future team members understand the rationale. **Step 5: Communicate Roadmap & Maintain Trust (1-hour all-hands)**. Present roadmap to engineering team with transparent reasoning: "We used WSJF to score all 3 initiatives objectively. AA scored highest because it directly impacts user activation (our North Star metric). Backend scaling is on the roadmap for Q2, and we're monitoring server load weekly. Key rotation design starts next week, and I'll need Backend team's help to implement it in Sprint 2." Emphasize that all initiatives will ship, just sequenced for maximum impact. Schedule bi-weekly syncs with each stakeholder to review progress and re-prioritize if assumptions change (e.g., server load spikes unexpectedly).[59][13][60][14][61][15][62][84][49][50][28][57][12][58][48]
 
 **Stakeholder Handling**: Backend Engineer transitions to X-as-a-Service mode (you review their scaling design async). Security Lead gets Facilitation mode (you co-design key rotation protocol, then enable their team to implement). Product Manager gets Collaboration mode (you work closely on AA integration, daily standups). Engineering Manager approves roadmap and tracks DORA metrics (deployment frequency, lead time) to ensure velocity doesn't drop.[30][60][37][61][62][63][28][57][29][58][59]
@@ -252,18 +485,111 @@ How would you design a modular, extensible architecture that allows adding new c
 
 **Frameworks/Tools**: ADR (Architecture Decision Records) for documenting integration decisions, Chain Abstraction Layer (inspired by web3.js, ethers.js, solana-web3.js libraries), RPC client libraries (ethers.js, bitcoinjs-lib, @solana/web3.js, aptos-sdk), signature scheme adapters (ECDSA via CGGMP21, EdDSA via FROST, BLS via threshold BLS schemes, post-quantum via NIST PQC candidates like Dilithium), WASM for portable cryptography across mobile/web/backend, Team Topologies to structure stream-aligned teams per chain integration vs. platform team owning core MPC engine, DORA metrics to track integration velocity.[23][8][92][13][60][14][37][61][15][62][38][91][2][5][11][28][57][12][29][58][30][59]
 
+**Modular Multi-Chain Architecture**:
+
+```mermaid
+graph TB
+    subgraph "Layer 1: Chain Abstraction"
+        ETH[Ethereum Adapter<br/>parseTransaction<br/>serializeTransaction<br/>broadcastTransaction]
+        BTC[Bitcoin Adapter<br/>UTXO handling]
+        SOL[Solana Adapter<br/>Instructions]
+        ARB[Arbitrum Adapter<br/>L2 specific]
+        APT[Aptos Adapter<br/>Move-based]
+        ZEC[Zcash Adapter<br/>Shielded tx]
+    end
+    
+    subgraph "Layer 2: Signature Scheme"
+        ECDSA[ECDSA Scheme<br/>CGGMP21]
+        EdDSA[EdDSA Scheme<br/>FROST]
+        BLS[BLS Scheme<br/>Threshold BLS]
+        PQ[PostQuantum Scheme<br/>Dilithium]
+    end
+    
+    subgraph "Layer 3: RPC Client"
+        RPC1[Ethereum RPC<br/>JSON-RPC]
+        RPC2[Bitcoin RPC<br/>REST API]
+        RPC3[Solana RPC<br/>WebSocket]
+        RPC4[Chain-specific RPCs]
+    end
+    
+    ETH --> ECDSA
+    BTC --> ECDSA
+    SOL --> EdDSA
+    ARB --> ECDSA
+    APT --> EdDSA
+    ZEC --> ECDSA
+    
+    ETH --> RPC1
+    BTC --> RPC2
+    SOL --> RPC3
+    ARB --> RPC1
+    APT --> RPC4
+    ZEC --> RPC4
+    
+    ECDSA -.->|Core MPC Engine| MPCEngine[MPC Signing Engine<br/>Policy Layer<br/>Amount limits<br/>Whitelist checks]
+    EdDSA -.->|Core MPC Engine| MPCEngine
+    BLS -.->|Core MPC Engine| MPCEngine
+    PQ -.->|Future| MPCEngine
+    
+    style MPCEngine fill:#FFD700
+    style ECDSA fill:#90EE90
+    style EdDSA fill:#90EE90
+    style PQ fill:#FFB6C6
+```
+
+**Chain Characteristics Comparison**:
+
+| **Chain** | **Signature Scheme** | **Transaction Model** | **RPC Protocol** | **Integration Complexity** | **Business Priority** |
+|-----------|---------------------|----------------------|------------------|---------------------------|----------------------|
+| **Ethereum** (existing) | ECDSA (CGGMP21) | Account-based<br/>RLP encoding | JSON-RPC | ✅ Done | High (core market) |
+| **Bitcoin** (existing) | ECDSA (CGGMP21) | UTXO model | REST API | ✅ Done | High (core market) |
+| **Solana** (existing) | EdDSA (FROST) | Account-based<br/>Instructions | WebSocket | ✅ Done | High (core market) |
+| **Arbitrum** (L2) | ECDSA (CGGMP21) | Account-based<br/>Inherits Ethereum | JSON-RPC | Low (reuse ETH adapter) | High (scaling demand) |
+| **Aptos** (Move) | EdDSA (FROST) | Resource-oriented<br/>Move VM | JSON-RPC | Medium (new serialization) | Medium (emerging market) |
+| **Zcash** (privacy) | ECDSA (CGGMP21) | UTXO + shielded pool<br/>ZK proofs | JSON-RPC | High (complex ZK signing) | Medium (privacy niche) |
+| **Post-Quantum** | Dilithium (research) | N/A (future) | N/A | Research spike | Low (10-year horizon) |
+
 **Trade-offs & Metrics**: **Proposed Architecture (3 layers)**:
 1. **Chain Abstraction Layer**: Each chain implements a `ChainAdapter` interface with methods: `parseTransaction(rawTx) → CanonicalTx`, `serializeTransaction(signedTx) → bytes`, `broadcastTransaction(signedTx) → txHash`, `estimateFees() → gasEstimate`. Canonical representation captures universal fields (sender, receiver, amount, nonce, chainID) and chain-specific fields (e.g., Ethereum's `data`, Bitcoin's `inputs/outputs`, Solana's `instructions`). This allows the MPC engine to apply policy checks (amount limits, whitelist) uniformly without knowing chain-specific details.[17][18][19][20][21][22][87][38][89][91]
 2. **Signature Scheme Adapter**: Separate the signature algorithm from the MPC protocol. Define `SignatureScheme` interface: `generateKeyShares(threshold, parties) → shares[]`, `sign(message, shares) → signature`, `verify(message, signature, publicKey) → bool`. Implementations: `ECDSAScheme` (uses CGGMP21), `EdDSAScheme` (uses FROST), `BLSScheme` (uses threshold BLS), `PostQuantumScheme` (placeholder for Dilithium). The MPC engine calls `scheme.sign(canonicalTx.hash, myShare)` without knowing the underlying cryptography.[8][92][2][5][23][11]
 3. **RPC Client Abstraction**: Each chain provides an RPC client that implements `RPCClient` interface: `getBalance(address)`, `getNonce(address)`, `broadcastTx(signedTx)`, `getTxStatus(txHash)`. This isolates network-specific quirks (Ethereum's JSON-RPC, Bitcoin's REST API, Solana's Websocket subscriptions).[18][19][20][21][22][38][89][91][17]
 
 **12-Month Roadmap**:
-- **Month 1–2 (Refactoring for Modularity)**: Extract Ethereum/BTC/Solana logic into `ChainAdapter` implementations, define interfaces, write integration tests. Effort: 1 engineer-month. Success criteria: All 3 existing chains use new abstraction layer, no regression in signing latency or success rate.
-- **Month 3–4 (Layer-2 Integration – Arbitrum)**: Implement Arbitrum `ChainAdapter` (reuses Ethereum's ECDSA signing, different RPC endpoint). Effort: 2 engineer-weeks. Success criteria: Users can send Arbitrum transactions, L2 gas estimation works.
-- **Month 5–6 (Move-based Chain – Aptos)**: Implement Aptos `ChainAdapter` (EdDSA signing via FROST, new transaction serialization format). Effort: 1 engineer-month. Success criteria: Users can send Aptos transactions, transaction simulation works.
-- **Month 7–8 (Privacy Chain – Zcash)**: Implement Zcash `ChainAdapter` (shielded transactions require ZK proofs, complex signing flow). Effort: 1.5 engineer-months. Success criteria: Users can send shielded transactions, transaction validation works.
-- **Month 9–10 (Post-Quantum Research Spike)**: Prototype `PostQuantumScheme` adapter using NIST Dilithium threshold signature library (research-grade, not production). Effort: 0.5 engineer-month. Success criteria: Generate post-quantum key-shares, sign test transactions, measure performance overhead (latency, key size).
-- **Month 11–12 (Technical Debt Reduction & Monitoring)**: Refactor RPC client layer for better error handling, add chain-agnostic monitoring (latency, success rate, gas estimation accuracy), write documentation for future chain integrations. Effort: 1 engineer-month. Success criteria: Runbook for adding new chains in <2 weeks, DORA deployment frequency increases by 20%.[37][28][29][30]
+
+```mermaid
+gantt
+    title Multi-Chain Expansion & Technical Roadmap
+    dateFormat YYYY-MM
+    axisFormat %b
+    
+    section Foundation
+    Refactoring for Modularity :done, refactor, 2025-01, 2M
+    
+    section Chain Integrations
+    Arbitrum L2 Integration :arb, 2025-03, 2M
+    Aptos (Move) Integration :aptos, 2025-05, 2M
+    Zcash Privacy Integration :zcash, 2025-07, 2M
+    
+    section Future-Proofing
+    Post-Quantum Research :pq, 2025-09, 2M
+    
+    section Tech Debt
+    Monitoring & Documentation :tech, 2025-11, 2M
+```
+
+| **Phase** | **Timeline** | **Deliverable** | **Effort** | **Success Criteria** |
+|-----------|--------------|-----------------|------------|----------------------|
+| **Refactoring for Modularity** | Month 1–2 | Extract ETH/BTC/SOL into `ChainAdapter`<br/>Define interfaces, integration tests | 1 eng-month | All 3 chains use new abstraction<br/>No latency regression |
+| **Layer-2 Integration (Arbitrum)** | Month 3–4 | Implement Arbitrum `ChainAdapter`<br/>Reuse ECDSA, different RPC | 2 eng-weeks | Users send Arbitrum tx<br/>L2 gas estimation works |
+| **Move-based Chain (Aptos)** | Month 5–6 | Implement Aptos `ChainAdapter`<br/>EdDSA via FROST, new serialization | 1 eng-month | Users send Aptos tx<br/>Transaction simulation works |
+| **Privacy Chain (Zcash)** | Month 7–8 | Implement Zcash `ChainAdapter`<br/>Shielded tx with ZK proofs | 1.5 eng-months | Users send shielded tx<br/>Transaction validation works |
+| **Post-Quantum Research** | Month 9–10 | Prototype `PostQuantumScheme`<br/>NIST Dilithium (research-grade) | 0.5 eng-month | Generate PQ key-shares<br/>Measure perf overhead |
+| **Tech Debt & Monitoring** | Month 11–12 | Refactor RPC layer<br/>Chain-agnostic monitoring<br/>Integration docs | 1 eng-month | Runbook for <2 week integration<br/>DORA +20% deployment freq |
+
+**Investment Balance** (60% Revenue / 30% Tech Debt / 10% Future):
+- **Revenue-generating integrations**: 60% bandwidth → Arbitrum, Aptos, Zcash (4.5 eng-months)
+- **Technical debt reduction**: 30% bandwidth → Refactoring, monitoring, docs (2 eng-months)
+- **Future-proofing**: 10% bandwidth → Post-quantum research (0.5 eng-month)
 
 **Investment Balance**: Allocate 60% of bandwidth to revenue-generating chain integrations (Arbitrum, Aptos, Zcash), 30% to technical debt reduction (refactoring, monitoring), 10% to future-proofing (post-quantum research). This ratio ensures near-term revenue growth while maintaining long-term architectural health. Revisit allocation quarterly based on business priorities and technical risk.[28][29][30][37][48]
 
