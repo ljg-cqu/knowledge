@@ -32,6 +32,18 @@
 - [FinEcon Q5 – Security Budget & Insurance](#finecon-q5-how-should-we-allocate-security-budget-and-implement-risk-controls-given-247b-in-crypto-hacks-in-h1-2025-66-yoy-increase-and-what-insurance-coverage-is-required-for-institutional-custody-operations-cfo-chief-risk-officer-head-of-security)
 - [OpsSupply Q6 – Rust vs Go/C++ for PQC](#opssupply-q6-should-we-adopt-rust-as-primary-cryptography-development-language-given-post-quantum-gaps-in-the-ecosystem-ml-kemml-dsa-audits-incomplete-or-maintain-goc-for-near-term-stability-cto-vp-engineering-tech-lead)
 - [PeopleWF Q7 – Talent Shortage Strategy](#peoplewf-q7-how-should-we-approach-the-blockchain-developer-talent-shortage-17-job-openings-per-qualified-smart-contract-developer-to-build-our-mpc-wallet-team-of-8-12-engineers-by-q2-2025-chro-vp-engineering-talent-acquisition-lead)
+ 
+### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | TechOps | Technical Operations | TechOps Q1 – CGGMP21 vs GG20 | Blocks, Quantified | High |
+| 2 | ProdMarket | Product & Market Intelligence | ProdMarket Q2 – ERC-4337 AA Integration | Roles, Action | Medium |
+| 3 | StratIntel | Strategic Intelligence | StratIntel Q3 – MiCA CASP Compliance | Risk, Action | Low |
+| 4 | CommOps | Commercial Operations | CommOps Q4 – GTM Segment & Pricing | Quantified, Roles | Medium |
+| 5 | FinEcon | Financial & Economic | FinEcon Q5 – Security Budget & Insurance | Risk, Quantified | High |
+| 6 | OpsSupply | Operations & Supply Chain | OpsSupply Q6 – Rust vs Go/C++ for PQC | Blocks, Risk | Medium |
+| 7 | PeopleWF | People & Workforce | PeopleWF Q7 – Talent Shortage Strategy | Blocks, Action | High |
 
 ### Visual Overview
 

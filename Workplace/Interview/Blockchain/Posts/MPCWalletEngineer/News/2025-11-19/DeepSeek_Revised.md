@@ -39,6 +39,19 @@ This document provides decision-critical, news-driven interview Q&A for a "Block
 - OpsSupply – Q7: Our HSM supplier faces a 6-month delay. How do we secure the key generation ceremony for our new cluster?
 - PeopleWF – Q8: There's a severe talent shortage for MPC+Rust engineers. What's our hiring and development strategy?
 
+#### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | Startup | Startup & Formation | As an early technical lead, how would you validate our core MPC architecture choice? | Blocks | Formation |
+| 2 | TechOps | Technical Operations | How would you integrate the new MPC-CMP protocol into our existing Rust stack? | Risk | Growth/Scale |
+| 3 | ProdMarket | Product & Market | Our product metrics show low retention for non-crypto natives. How can Account Abstraction (AA) help? | Quantified | Growth/Scale |
+| 4 | CommOps | Commercial Operations | An enterprise client demands support for Solana's "Token-2022" program. What's our integration plan? | Action | Growth/Scale |
+| 5 | FinEcon | Financial & Economic | Our treasury relies on a 3-of-5 Bitcoin multisig. What are the operational and financial risks? | Risk | Growth/Scale |
+| 6 | StratIntel | Strategic Intelligence | The IETF is standardizing the FROST signature scheme. How should this influence our tech roadmap? | Action | Growth/Scale |
+| 7 | OpsSupply | Operations & Supply Chain | Our HSM supplier faces a 6-month delay. How do we secure the key generation ceremony for our new cluster? | Blocks | Growth/Scale |
+| 8 | PeopleWF | People & Workforce | There's a severe talent shortage for MPC+Rust engineers. What's our hiring and development strategy? | Roles | Growth/Scale |
+
 #### Visual Overview
 
 ```mermaid

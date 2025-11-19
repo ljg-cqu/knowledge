@@ -33,6 +33,19 @@ This document summarizes decision-critical, news-informed interview Q&A for a "B
 - OpsSupply – Q7: How should we operationalize device attestation, MFA, and risk scoring to prevent key-share abuse?
 - PeopleWF – Q8: What hiring mix (Rust/Go/C++; applied cryptography; blockchain) is required for a secure MPC wallet team?
 
+#### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | Startup | Startup & Formation | Which first two chains should we support for our multi-chain MPC wallet (Ethereum vs Bitcoin vs Solana) to maximize early adoption? | Blocks | Formation |
+| 2 | TechOps | Technical Operations | Which threshold scheme should we implement first for cross-platform MPC signing—Threshold ECDSA or EdDSA (FROST)—to balance chain coverage and latency? | Risk | Growth/Scale |
+| 3 | ProdMarket | Product & Market | Should we prioritize Account Abstraction (AA), session keys, and social recovery for EVM users in the first wallet MVP? | Roles | Growth/Scale |
+| 4 | CommOps | Commercial Operations | How should we package our cryptography into SDKs/APIs for partners—Rust core with Go/Node bindings, or native per language? | Blocks | Growth/Scale |
+| 5 | FinEcon | Financial & Economic | What fee strategy should we adopt to manage gas/fee volatility across chains without degrading UX or margins? | Action | Growth/Scale |
+| 6 | StratIntel | Strategic Intelligence | What compliance posture should we adopt for MPC custody (keys never co-located) vs. traditional KMS/HSM? | Risk | Growth/Scale |
+| 7 | OpsSupply | Operations & Supply Chain | How should we operationalize device attestation, MFA, and risk scoring to prevent key-share abuse? | Quantified | Growth/Scale |
+| 8 | PeopleWF | People & Workforce | What hiring mix (Rust/Go/C++; applied cryptography; blockchain) is required for a secure MPC wallet team? | Roles | Growth/Scale |
+
 #### Visual Overview
 
 ```mermaid

@@ -33,6 +33,19 @@ This front-page briefing distills decision-critical, news-informed interview Q&A
 - StratIntel – Q6: What strategic advantages can blockchain platforms gain by leading the standardization of multi-chain MPC protocols across Ethereum L2s, Bitcoin, and Solana ecosystems?
 - OpsSupply – Q7: What operational actions should infrastructure teams take to integrate Hardware Security Modules (HSMs) with MPC wallet systems while maintaining threshold signature security guarantees?
 - PeopleWF – Q8: What retention strategies should engineering leaders implement to prevent losing specialized MPC cryptography engineers to competitors amid the 2025 talent shortage crisis?
+ 
+#### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | Startup | Startup & Formation | How should early-stage blockchain security startups prioritize MPC protocol selection amid recent vulnerabilities to secure Series A funding? | Blocks | Formation |
+| 2 | TechOps | Technical Operations | What immediate technical actions must engineering teams take to mitigate the GG18/GG20 Paillier key vulnerability CVE-2023-33241 across multi-chain MPC infrastructure? | Risk | Growth/Scale |
+| 3 | ProdMarket | Product & Market | How does FROST protocol adoption impact product-market fit for enterprise MPC wallets compared to traditional threshold ECDSA implementations in 2025? | Quantified | Growth/Scale |
+| 4 | CommOps | Commercial Operations | What commercial strategies should security teams employ when selling MPC wallet solutions to regulated financial institutions concerned about recent threshold signature vulnerabilities? | Roles | Growth/Scale |
+| 5 | FinEcon | Financial & Economic | What is the ROI calculation for investing in specialized cryptography talent versus outsourcing MPC wallet development given current market salary premiums and security risk costs? | Quantified | Growth/Scale |
+| 6 | StratIntel | Strategic Intelligence | What strategic advantages can blockchain platforms gain by leading the standardization of multi-chain MPC protocols across Ethereum L2s, Bitcoin, and Solana ecosystems? | Blocks | Growth/Scale |
+| 7 | OpsSupply | Operations & Supply Chain | What operational actions should infrastructure teams take to integrate Hardware Security Modules (HSMs) with MPC wallet systems while maintaining threshold signature security guarantees? | Action | Growth/Scale |
+| 8 | PeopleWF | People & Workforce | What retention strategies should engineering leaders implement to prevent losing specialized MPC cryptography engineers to competitors amid the 2025 talent shortage crisis? | Risk | Growth/Scale |
 
 #### Visual Overview
 

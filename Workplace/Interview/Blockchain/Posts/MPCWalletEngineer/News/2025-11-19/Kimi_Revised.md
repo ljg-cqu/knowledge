@@ -38,6 +38,19 @@ This briefing compiles decision-critical, news-driven interview Q&A for an MPC w
 - StratIntel – Q6: Should we pursue MiCA licensing ahead of our EU expansion?
 - OpsSupply – Q7: How do we secure our cryptographic library supply chain given the tokio-tar abandonment?
 - PeopleWF – Q8: Should we implement a token equity program to compete for Rust cryptography talent?
+ 
+#### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | Startup | Startup & Formation | Should we adopt the new Trout two-round threshold ECDSA protocol given its performance advantages? | Blocks, Quantified | Growth/Scale |
+| 2 | TechOps | Technical Operations | How do we mitigate the TARmageddon vulnerability (CVE-2025-62518) in our Rust dependency chain? | Risk, Action | Growth/Scale |
+| 3 | ProdMarket | Product & Market Intelligence | Should we prioritize Solana support given $87M Q2-2025 wallet drain exploits? | Risk, Roles | Growth/Scale |
+| 4 | CommOps | Commercial Operations | How do we position our MPC wallet against Fireblocks' 1,800-institution network effect? | Blocks, Quantified | Growth/Scale |
+| 5 | FinEcon | Financial & Economic | What salary structure should we offer to hire Rust cryptography engineers in Singapore vs. remote? | Quantified, Action | Growth/Scale |
+| 6 | StratIntel | Strategic Intelligence | Should we pursue MiCA licensing ahead of our EU expansion? | Risk, Action | Growth/Scale |
+| 7 | OpsSupply | Operations & Supply Chain | How do we secure our cryptographic library supply chain given the tokio-tar abandonment? | Risk, Quantified | Growth/Scale |
+| 8 | PeopleWF | People & Workforce | Should we implement a token equity program to compete for Rust cryptography talent? | Risk, Roles | Growth/Scale |
 
 #### Visual Overview
 

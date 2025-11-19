@@ -38,6 +38,21 @@
 * Q9: 替代方案（智能合约钱包 vs MPC钱包）的战略权衡
 * Q10: MPC节点部署成本与性能优化
 
+### 问答总览表
+
+| # | 领域 | 问题 |
+|---|------|------|
+| Q1 | TechOps | GG18和GG20协议在MPC钱包中的漏洞及其影响 |
+| Q2 | TechOps | 在移动端优化GG20协议的签名延迟 |
+| Q3 | ProdMarket | 主流公链签名标准更新对MPC钱包的影响 |
+| Q4 | CommOps | MPC钱包的商业化模式与合规风险 |
+| Q5 | FinEcon | MPC钱包在DeFi黑客事件中的表现及保险机制 |
+| Q6 | StratIntel | 长期密码学标准变化对MPC的影响 |
+| Q7 | OpsSupply | MPC节点的供应链安全与部署成本 |
+| Q8 | PeopleWF | MPC密码学人才市场供需与安全培训 |
+| Q9 | StratIntel | 替代方案（智能合约钱包 vs MPC钱包）的战略权衡 |
+| Q10 | OpsSupply | MPC节点部署成本与性能优化 |
+
 ### 可视化总览
 
 ```mermaid

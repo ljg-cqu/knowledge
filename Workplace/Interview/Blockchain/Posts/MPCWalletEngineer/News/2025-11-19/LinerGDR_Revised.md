@@ -42,6 +42,19 @@ This briefing compiles decision-critical, news-driven interview Q&A for an insti
 - Q7: How do recent cloud service outages (AWS, Cloudflare) affect our MPC wallet infrastructure's resilience and multi-chain reliability?
 - Q8: How should our talent acquisition strategy for blockchain security engineers adapt to the impact of AI on developer productivity and the broader Web3 hiring landscape?
 
+#### Q&A Summary Table
+
+| # | DomainTag | Domain | Question | Criticality | Stage |
+|---|-----------|--------|----------|-------------|-------|
+| 1 | Startup | Startup & Formation | How does recent funding for institutional MPC wallet platforms impact our market entry and talent strategy? | Blocks | Formation |
+| 2 | TechOps | Technical Operations | How do recent vulnerabilities in core MPC protocols (GG18/GG20) impact our wallet's security and development priorities? | Risk | Growth/Scale |
+| 3 | ProdMarket | Product & Market Intelligence | How should we prioritize integrating advanced features like Account Abstraction and social recovery into our MPC wallets to meet evolving user expectations? | Roles | Growth/Scale |
+| 4 | CommOps | Commercial Operations | How does Safeheron's $150 billion in total transfers impact our commercial strategy and value proposition for institutional clients? | Quantified | Growth/Scale |
+| 5 | FinEcon | Financial & Economic | Given the 30-fold surge in crypto M&A, how should we position our company for potential acquisition or strategic investments in the MPC wallet sector? | Action | Growth/Scale |
+| 6 | StratIntel | Strategic Intelligence | How does the Digital Asset Market Clarity Act of 2025 (CLARITY Act) impact our MPC wallet product design and regulatory compliance strategy? | Blocks | Growth/Scale |
+| 7 | OpsSupply | Operations & Supply Chain | How do recent cloud service outages (AWS, Cloudflare) affect our MPC wallet infrastructure's resilience and multi-chain reliability? | Quantified | Growth/Scale |
+| 8 | PeopleWF | People & Workforce | How should our talent acquisition strategy for blockchain security engineers adapt to the impact of AI on developer productivity and the broader Web3 hiring landscape? | Roles | Growth/Scale |
+
 #### Visual Overview
 
 ```mermaid
