@@ -10,6 +10,8 @@
 
 ## Glossary
 
+**Note**: Numbers in brackets (e.g., [1], [0]) throughout this document indicate content validation markers used during development and can be disregarded by readers.
+
 **Core Technical Terms**:
 - **MPC**: Multi-Party Computation - cryptographic protocol enabling distributed key management
 - **TSS**: Threshold Signature Scheme - subset of parties can cooperatively sign
