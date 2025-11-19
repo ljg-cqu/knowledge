@@ -1,5 +1,22 @@
 # MPC Wallet Architecture Interview Q&A
 
+**Document Metadata**:
+- **Last Updated**: 2025-11-19
+- **Status**: Final
+- **Owner**: Individual
+- **Target Role**: MPC Wallet Engineer / Blockchain Security Architect
+- **Experience Level**: Senior (5-15 years)
+- **Interview Duration**: 45-60 minutes (9-12 minutes per question)
+- **Language**: English (with code examples in Rust, Go, TypeScript)
+
+**Context**:  
+**Problem**: MPC wallet engineering requires expertise across cryptographic protocols, distributed systems, blockchain integration, and performance optimization. Interviews need to assess multi-dimensional architectural thinking.  
+**Scope**: Covers 5 architectural dimensions (structural, behavioral, quality, data, integration) for production MPC wallets handling user assets across multiple blockchains.  
+**Constraints**: Production-ready patterns with specific metrics, latency budgets, security guarantees.  
+**Stakeholders**: Backend engineers, cryptography engineers, blockchain architects, technical leads.
+
+**Skip if**: Non-production prototypes, single-chain wallets with <1000 users, research projects without deployment requirements, junior engineer interviews.
+
 ## Contents
 - [Topic Areas](#topic-areas)
 - [Topic 1: Modular MPC Key Management Architecture](#topic-1-modular-mpc-key-management-architecture)
@@ -677,7 +694,7 @@ graph LR
 
 **Difficulty**: A (Advanced) | **Dimension**: Integration
 
-**Key Insight**: Protocol abstraction via strategy pattern reduces per-chain integration cost by 60-70% through code reuse, but requires careful interface design to handle 15+ different signature schemes (ECDSA secp256k1, EdDSA ed25519, schnorr) and transaction formats (Antonopoulos & Wood, 2018).
+**[CRITICAL] Key Insight**: Protocol abstraction via strategy pattern reduces per-chain integration cost by 60-70% through code reuse, but requires careful interface design to handle 15+ different signature schemes (ECDSA secp256k1, EdDSA ed25519, schnorr) and transaction formats (Antonopoulos & Wood, 2018).
 
 **Answer**:
 
@@ -984,10 +1001,3 @@ graph TB
 - **Performance metrics**: Based on typical production environments (cloud VMs, 1Gbps network, modern CPUs); mobile devices and constrained environments require adjusted targets.
 
 ---
-
-**Document Metadata**:
-- **Generated**: 2025-11-19
-- **Target Role**: MPC Wallet Engineer / Blockchain Security Architect
-- **Experience Level**: Senior (5-15 years)
-- **Interview Duration**: 45-60 minutes (9-12 minutes per question)
-- **Language**: English (with code examples in Rust, Go, TypeScript)
