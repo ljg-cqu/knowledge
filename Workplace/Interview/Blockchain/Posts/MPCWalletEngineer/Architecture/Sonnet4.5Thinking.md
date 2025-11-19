@@ -48,11 +48,11 @@
 
 **Difficulty**: F (Foundational) | **Dimension**: Structural
 
-**Key Insight**: Hexagonal architecture reduces coupling by 40-60% and enables independent testing of cryptographic components, but adds 15-20% complexity overhead in inter-module communication (Fowler, 2005).
+**[CRITICAL] Key Insight**: Hexagonal architecture reduces coupling by 40-60% and enables independent testing of cryptographic components, but adds 15-20% complexity overhead in inter-module communication (Fowler, 2005).
 
 **Answer**: 
 
-An MPC wallet requires strict separation between cryptographic primitives, key lifecycle management, and application logic to prevent security vulnerabilities and enable testability. The hexagonal architecture pattern (ports and adapters) provides clear boundaries where cryptographic operations remain isolated from external dependencies like storage, networking, or UI frameworks (Vernon, 2013).
+**[CRITICAL]** An MPC wallet requires strict separation between cryptographic primitives, key lifecycle management, and application logic to prevent security vulnerabilities and enable testability. The hexagonal architecture pattern (ports and adapters) provides clear boundaries where cryptographic operations remain isolated from external dependencies like storage, networking, or UI frameworks (Vernon, 2013).
 
 The core domain should contain three primary modules: **KeyGenerationService** (threshold key generation using GG20/FROST protocols), **ShareManager** (encrypted shard storage and retrieval), and **SigningCoordinator** (multi-party signature protocol execution). Each module exposes interfaces (ports) that external adapters implement—for example, the ShareManager port might have FileSystemAdapter, HSMAdapter, or CloudKMSAdapter implementations.
 
@@ -138,9 +138,9 @@ graph TB
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Module Coupling | `coupling = external_deps / total_modules` | external_deps: dependencies on external libraries; total_modules: count of core modules | < 0.3 (30%) |
-| Test Coverage | `coverage = tested_lines / total_lines × 100%` | tested_lines: lines executed in tests; total_lines: total code lines | > 85% for crypto modules |
-| Security Boundary Violations | `violations = cross_boundary_calls - allowed_interfaces` | cross_boundary_calls: direct module access; allowed_interfaces: port definitions | 0 violations |
+| Module Coupling **[IMPORTANT]** | `coupling = external_deps / total_modules` | external_deps: dependencies on external libraries; total_modules: count of core modules | < 0.3 (30%) |
+| Test Coverage **[CRITICAL]** | `coverage = tested_lines / total_lines × 100%` | tested_lines: lines executed in tests; total_lines: total code lines | > 85% for crypto modules |
+| Security Boundary Violations **[CRITICAL]** | `violations = cross_boundary_calls - allowed_interfaces` | cross_boundary_calls: direct module access; allowed_interfaces: port definitions | 0 violations |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -159,7 +159,7 @@ graph TB
 
 **Difficulty**: I (Intermediate) | **Dimension**: Behavioral
 
-**Key Insight**: Saga orchestration reduces partial signature failures from 15-20% to <2% through compensation actions, but increases latency by 30-50ms per retry cycle (Richardson, 2018).
+**[CRITICAL] Key Insight**: Saga orchestration reduces partial signature failures from 15-20% to <2% through compensation actions, but increases latency by 30-50ms per retry cycle (Richardson, 2018).
 
 **Answer**:
 
@@ -287,9 +287,9 @@ sequenceDiagram
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Signing Success Rate | `success_rate = successful_signs / total_attempts × 100%` | successful_signs: completed signatures; total_attempts: initiated signing requests | > 98% |
-| Mean Time To Sign (MTTS) | `MTTS = Σ(completion_time) / successful_signs` | completion_time: end-to-end latency per signature; successful_signs: count | < 800ms (local), < 3s (WAN) |
-| Compensation Frequency | `comp_freq = compensation_triggers / total_attempts × 100%` | compensation_triggers: saga rollbacks; total_attempts: signing requests | < 5% |
+| Signing Success Rate **[CRITICAL]** | `success_rate = successful_signs / total_attempts × 100%` | successful_signs: completed signatures; total_attempts: initiated signing requests | > 98% |
+| Mean Time To Sign (MTTS) **[IMPORTANT]** | `MTTS = Σ(completion_time) / successful_signs` | completion_time: end-to-end latency per signature; successful_signs: count | < 800ms (local), < 3s (WAN) |
+| Compensation Frequency **[IMPORTANT]** | `comp_freq = compensation_triggers / total_attempts × 100%` | compensation_triggers: saga rollbacks; total_attempts: signing requests | < 5% |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -308,7 +308,7 @@ sequenceDiagram
 
 **Difficulty**: A (Advanced) | **Dimension**: Quality
 
-**Key Insight**: Precomputation caching reduces signing latency by 60-75% (from 800ms to 200ms) but requires 50-100MB memory per 1000 precomputed sessions and careful session key management (Doerner et al., 2018).
+**[CRITICAL] Key Insight**: Precomputation caching reduces signing latency by 60-75% (from 800ms to 200ms) but requires 50-100MB memory per 1000 precomputed sessions and careful session key management (Doerner et al., 2018).
 
 **Answer**:
 
@@ -462,10 +462,10 @@ graph TB
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| P95 Signing Latency | `P95 = sorted_latencies[0.95 × count]` | sorted_latencies: array of end-to-end signing times; count: total signatures | < 200ms (mobile), < 100ms (server) |
-| Cache Hit Rate | `hit_rate = cache_hits / (cache_hits + cache_misses) × 100%` | cache_hits: sessions acquired from cache; cache_misses: on-demand generation | > 90% |
-| Precomputation Overhead | `overhead = precomp_cpu_time / total_cpu_time × 100%` | precomp_cpu_time: background CPU usage; total_cpu_time: total app CPU | < 5% battery impact |
-| Batch Efficiency | `efficiency = (tx_count × solo_latency - batch_latency) / (tx_count × solo_latency) × 100%` | tx_count: transactions in batch; solo_latency: individual signing time; batch_latency: batched signing time | > 50% time saved for 3+ txs |
+| P95 Signing Latency **[CRITICAL]** | `P95 = sorted_latencies[0.95 × count]` | sorted_latencies: array of end-to-end signing times; count: total signatures | < 200ms (mobile), < 100ms (server) |
+| Cache Hit Rate **[IMPORTANT]** | `hit_rate = cache_hits / (cache_hits + cache_misses) × 100%` | cache_hits: sessions acquired from cache; cache_misses: on-demand generation | > 90% |
+| Precomputation Overhead **[IMPORTANT]** | `overhead = precomp_cpu_time / total_cpu_time × 100%` | precomp_cpu_time: background CPU usage; total_cpu_time: total app CPU | < 5% battery impact |
+| Batch Efficiency **[OPTIONAL]** | `efficiency = (tx_count × solo_latency - batch_latency) / (tx_count × solo_latency) × 100%` | tx_count: transactions in batch; solo_latency: individual signing time; batch_latency: batched signing time | > 50% time saved for 3+ txs |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -485,7 +485,7 @@ graph TB
 
 **Difficulty**: I (Intermediate) | **Dimension**: Data
 
-**Key Insight**: CQRS enables 10-50× read performance improvement through denormalized projections but introduces eventual consistency lag (20-100ms) and operational complexity requiring event sourcing infrastructure (Fowler, 2011).
+**[CRITICAL] Key Insight**: CQRS enables 10-50× read performance improvement through denormalized projections but introduces eventual consistency lag (20-100ms) and operational complexity requiring event sourcing infrastructure (Fowler, 2011).
 
 **Answer**:
 
@@ -672,10 +672,10 @@ graph LR
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Read Query Latency | `P95_read = sorted_read_times[0.95 × count]` | sorted_read_times: query execution times; count: total queries | < 10ms (indexed views) |
-| Write Consistency Latency | `write_latency = event_store_append + projection_update` | event_store_append: time to persist event; projection_update: time to update views | < 50ms (append), < 100ms (projection lag) |
-| Projection Lag | `lag = current_time - last_processed_event_timestamp` | current_time: system time; last_processed_event_timestamp: newest event in projection | < 100ms P95 |
-| Read Scalability | `throughput = successful_queries / second` | successful_queries: completed queries; second: time window | > 1000 QPS per read replica |
+| Read Query Latency **[IMPORTANT]** | `P95_read = sorted_read_times[0.95 × count]` | sorted_read_times: query execution times; count: total queries | < 10ms (indexed views) |
+| Write Consistency Latency **[CRITICAL]** | `write_latency = event_store_append + projection_update` | event_store_append: time to persist event; projection_update: time to update views | < 50ms (append), < 100ms (projection lag) |
+| Projection Lag **[IMPORTANT]** | `lag = current_time - last_processed_event_timestamp` | current_time: system time; last_processed_event_timestamp: newest event in projection | < 100ms P95 |
+| Read Scalability **[OPTIONAL]** | `throughput = successful_queries / second` | successful_queries: completed queries; second: time window | > 1000 QPS per read replica |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -886,10 +886,10 @@ graph TB
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Code Reuse Ratio | `reuse = shared_code / (shared_code + chain_specific_code) × 100%` | shared_code: abstraction layer LOC; chain_specific_code: adapter LOC | > 60% |
-| Integration Cost | `cost = development_hours_per_chain` | development_hours_per_chain: time to add new chain support | < 40 hours (with abstractions) vs 120+ hours (without) |
-| Adapter Coverage | `coverage = supported_chains / total_chains × 100%` | supported_chains: implemented adapters; total_chains: target ecosystems | > 80% of top 20 chains by TVL |
-| Cross-Chain Latency | `latency = adapter_overhead + signing_time + broadcast_time` | adapter_overhead: abstraction dispatch time; signing_time: MPC signature generation; broadcast_time: RPC call | < 20ms adapter overhead |
+| Code Reuse Ratio **[IMPORTANT]** | `reuse = shared_code / (shared_code + chain_specific_code) × 100%` | shared_code: abstraction layer LOC; chain_specific_code: adapter LOC | > 60% |
+| Integration Cost **[CRITICAL]** | `cost = development_hours_per_chain` | development_hours_per_chain: time to add new chain support | < 40 hours (with abstractions) vs 120+ hours (without) |
+| Adapter Coverage **[IMPORTANT]** | `coverage = supported_chains / total_chains × 100%` | supported_chains: implemented adapters; total_chains: target ecosystems | > 80% of top 20 chains by TVL |
+| Cross-Chain Latency **[OPTIONAL]** | `latency = adapter_overhead + signing_time + broadcast_time` | adapter_overhead: abstraction dispatch time; signing_time: MPC signature generation; broadcast_time: RPC call | < 20ms adapter overhead |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -994,10 +994,36 @@ graph TB
 
 ## Limitations
 
-- **Trade-offs rigor**: Quantified metrics based on industry benchmarks and research papers; actual values may vary ±20-30% based on implementation details, hardware, and network conditions.
-- **Skip for**: Non-production prototypes, single-chain wallets with <1000 users, research projects without deployment requirements.
-- **Exclude**: Purely theoretical cryptographic proofs, non-threshold signature schemes, centralized wallet architectures.
-- **Code examples**: Simplified for clarity; production code requires additional error handling, logging, monitoring, and security hardening (input validation, rate limiting, audit trails).
-- **Performance metrics**: Based on typical production environments (cloud VMs, 1Gbps network, modern CPUs); mobile devices and constrained environments require adjusted targets.
+### Applicability
+
+**[CRITICAL] DO NOT USE when:**
+- **Non-custodial requirements**: If users control private keys directly (browser wallets, MetaMask-style), MPC adds unnecessary complexity
+- **Single-chain, low-value assets**: For wallets managing <$10k total value on single chain, traditional key management suffices
+- **Ultra-low latency requirements**: If you need <50ms signing (HFT, MEV bots), hardware acceleration (HSM/TEE) is required instead
+- **Offline-first wallets**: MPC requires online coordination; hardware wallets (Ledger, Trezor) are better for air-gapped security
+- **Resource-constrained environments**: IoT devices, embedded systems with <512MB RAM cannot support MPC protocols
+
+**[IMPORTANT] Use with caution when:**
+- **<3 team members**: Maintaining distributed systems and cryptographic protocols requires specialized expertise
+- **Regulatory uncertainty**: Some jurisdictions may classify MPC custody differently than traditional custody
+- **Experimental protocols**: GG20/FROST are production-ready; newer protocols (CMP, CGGMP) need more battle-testing
+
+### Accuracy and Variance
+
+- **[IMPORTANT] Trade-offs rigor**: Quantified metrics based on industry benchmarks and research papers; actual values may vary ±20-30% based on implementation details, hardware, and network conditions. Do NOT treat numbers as SLA guarantees without validation in your specific environment.
+- **Performance metrics**: Based on typical production environments (cloud VMs with 4-8 cores, 1Gbps network, modern CPUs with AES-NI). Mobile devices (1-2 cores, 4G/5G networks) and constrained environments require 2-5× adjusted targets.
+
+### Code Quality
+
+- **Code examples**: Simplified for clarity; production code requires additional components:
+  - **[CRITICAL]** Error handling: Timeout handling, retry logic with exponential backoff, circuit breakers
+  - **[CRITICAL]** Security hardening: Input validation, rate limiting (prevent DoS), audit trails, secrets management
+  - **[IMPORTANT]** Monitoring: Metrics collection (Prometheus), distributed tracing (Jaeger), alerting (PagerDuty)
+  - **[OPTIONAL]** Observability: Structured logging, performance profiling, chaos engineering tests
+
+### Excluded Topics
+
+- **Out of scope**: Purely theoretical cryptographic proofs, non-threshold signature schemes, centralized wallet architectures, blockchain consensus mechanisms, smart contract security, frontend implementation details.
+- **Prerequisites assumed**: Understanding of elliptic curve cryptography, distributed systems fundamentals, blockchain transaction formats, asynchronous programming patterns.
 
 ---
