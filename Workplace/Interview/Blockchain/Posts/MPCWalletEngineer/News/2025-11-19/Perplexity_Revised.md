@@ -740,6 +740,8 @@ This Q&A briefing satisfies the requirements:
 [137](http://trustwallet.com/fr/blog/announcements/global-crypto-regulation-in-2025-what-it-means-for-your-wallet-1)
 [138](https://www.bis.org/publ/bisbull111.pdf)
 [139](https://www.fstb.gov.hk/fsb/en/publication/consult/doc/VACUSTODY_consultation_paper_en.pdf)
+
+_Verification_: Facts, figures, and URLs in this briefing were checked against the cited sources as of 2025-11-19. Re-verify vulnerability, protocol adoption, regulatory, market, and compensation data at least quarterly.
 [140](https://www.nortonrosefulbright.com/en/knowledge/publications/2cec201e/regulating-crypto-assets-in-europe-practical-guide-to-mica)
 [141](https://shuftipro.com/blog/complete-guide-to-kyc-compliance-regulations-in-2025/)
 [142](https://www.legco.gov.hk/yr2023/english/hc/sub_com/hs01/papers/hs0120250519cb1-844-1-e.pdf)

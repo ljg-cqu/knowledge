@@ -23,6 +23,16 @@ This document summarizes decision-critical, news-informed interview Q&A for a "B
 | 7 | OpsSupply | Operations & Supply Chain | Risk controls: device attestation + MFA | Quantified | Medium | Growth/Scale | Operations |
 | 8 | PeopleWF  | People & Workforce | Hiring plan: Rust/Go crypto talent | Roles | Medium | Growth/Scale | People |
 
+**Contents**
+- Startup – Q1: Which first two chains should we support for our multi-chain MPC wallet (Ethereum vs Bitcoin vs Solana) to maximize early adoption?
+- TechOps – Q2: Which threshold scheme should we implement first for cross-platform MPC signing—Threshold ECDSA or EdDSA (FROST)—to balance chain coverage and latency?
+- ProdMarket – Q3: Should we prioritize Account Abstraction (AA), session keys, and social recovery for EVM users in the first wallet MVP?
+- CommOps – Q4: How should we package our cryptography into SDKs/APIs for partners—Rust core with Go/Node bindings, or native per language?
+- FinEcon – Q5: What fee strategy should we adopt to manage gas/fee volatility across chains without degrading UX or margins?
+- StratIntel – Q6: What compliance posture should we adopt for MPC custody (keys never co-located) vs. traditional KMS/HSM?
+- OpsSupply – Q7: How should we operationalize device attestation, MFA, and risk scoring to prevent key-share abuse?
+- PeopleWF – Q8: What hiring mix (Rust/Go/C++; applied cryptography; blockchain) is required for a secure MPC wallet team?
+
 ### [Startup] Q1: Which first two chains should we support for our multi-chain MPC wallet (Ethereum vs Bitcoin vs Solana) to maximize early adoption?
 
 Domain: Startup & Formation | Stage: Formation | Function: Cross-functional  

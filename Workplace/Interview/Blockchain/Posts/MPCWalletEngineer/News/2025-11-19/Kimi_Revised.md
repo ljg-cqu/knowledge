@@ -29,6 +29,16 @@ This briefing compiles decision-critical, news-driven interview Q&A for an MPC w
 
 ---
 
+**Contents**
+- Startup – Q1: Should we adopt the new Trout two-round threshold ECDSA protocol given its performance advantages?
+- TechOps – Q2: How do we mitigate the TARmageddon vulnerability (CVE-2025-62518) in our Rust dependency chain?
+- ProdMarket – Q3: Should we prioritize Solana support given $87M Q2-2025 wallet drain exploits?
+- CommOps – Q4: How do we position our MPC wallet against Fireblocks' 1,800-institution network effect?
+- FinEcon – Q5: What salary structure should we offer to hire Rust cryptography engineers in Singapore vs. remote?
+- StratIntel – Q6: Should we pursue MiCA licensing ahead of our EU expansion?
+- OpsSupply – Q7: How do we secure our cryptographic library supply chain given the tokio-tar abandonment?
+- PeopleWF – Q8: Should we implement a token equity program to compete for Rust cryptography talent?
+
 ### [Startup] Q1: Should we adopt the new Trout two-round threshold ECDSA protocol given its performance advantages?
 
 **Domain**: Startup & Formation | **Stage**: Growth/Scale | **Function**: Cross-functional  

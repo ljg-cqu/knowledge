@@ -29,6 +29,16 @@ This document provides decision-critical, news-driven interview Q&A for a "Block
 
 ***
 
+**Contents**
+- Startup – Q1: As an early technical lead, how would you validate our core MPC architecture choice?
+- TechOps – Q2: How would you integrate the new MPC-CMP protocol into our existing Rust stack?
+- ProdMarket – Q3: Our product metrics show low retention for non-crypto natives. How can Account Abstraction (AA) help?
+- CommOps – Q4: An enterprise client demands support for Solana's "Token-2022" program. What's our integration plan?
+- FinEcon – Q5: Our treasury relies on a 3-of-5 Bitcoin multisig. What are the operational and financial risks?
+- StratIntel – Q6: The IETF is standardizing the FROST signature scheme. How should this influence our tech roadmap?
+- OpsSupply – Q7: Our HSM supplier faces a 6-month delay. How do we secure the key generation ceremony for our new cluster?
+- PeopleWF – Q8: There's a severe talent shortage for MPC+Rust engineers. What's our hiring and development strategy?
+
 ### [Startup] Q1: [As an early technical lead, how would you validate our core MPC architecture choice?]
 
 **Domain**: Startup & Formation | **Stage**: Formation | **Function**: Cross-functional  
