@@ -23,6 +23,48 @@
 > Unless a metric, percentage, threshold, or formula in this document is explicitly tied to a named external study, dataset, or your own production monitoring data, consider it as **illustrative modeling assumptions** for mechanism analysis and product reasoning, rather than validated real-world data. Before adopting into roadmaps, external materials, or formal reviews, calibration and validation with actual data are necessary.  
 > The `G#/T#/L#/A#` reference IDs in this document are primarily used for organizing knowledge structures; specific literature and tool names may evolve over time. For formal citations, please refer to the latest authoritative sources.
 
+### Visual Structure Overview
+
+**Mechanism domains and question ranges（结构速览）**
+
+| 区块 | 机制类型 | 题号范围 | 示例场景 |
+|------|----------|----------|----------|
+| 1 | Growth | Q1–3 | 增长飞轮、病毒系数、开发者生态 |
+| 2 | Retention | Q4–6 | DeFi 资金留存、NFT 参与度、企业续约 |
+| 3 | Monetization | Q7–9 | 订阅 / 次数计费、代币激励、收入结构 |
+| 4 | User Behavior | Q10–12 | 信任建立、使用习惯、行为心理机制 |
+| 5 | Market | Q13–15 | 竞争事件、市场教育、监管冲击 |
+| 6 | System | Q16–18 | t-of-n 签名流、策略引擎、系统可靠性 |
+
+```mermaid
+mindmap
+  root((MPC Wallet Mechanisms))
+    Growth
+      Q1
+      Q2
+      Q3
+    Retention
+      Q4
+      Q5
+      Q6
+    Monetization
+      Q7
+      Q8
+      Q9
+    User Behavior
+      Q10
+      Q11
+      Q12
+    Market
+      Q13
+      Q14
+      Q15
+    System
+      Q16
+      Q17
+      Q18
+```
+
 ### **II. Q&A by Mechanism Type**
 
 #### **Growth (Q1-Q3)**

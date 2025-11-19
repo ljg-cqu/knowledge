@@ -8,6 +8,46 @@ This report provides an in-depth analysis of blockchain Multi-Party Computation 
 > **Important note on quantitative examples**
 > 下文中的百分比、增长率、留存曲线、LTV/CAC 等量化示例，除非特别说明来源于公开研究或真实业务数据，均为**用于机制分析与产品讨论的示例性假设**，目的是帮助推理而非刻画某个具体项目现状。实际决策时，应优先使用你自己团队的观测数据与审计结果进行替换与校准。
 
+### Visual Structure Overview
+
+| 模块 | 机制类型 | 示例主题 | 对应题号（示意） |
+|------|----------|----------|------------------|
+| 1 | Growth（增长） | 网络效应、跨链集成 | Q1–Q3 |
+| 2 | Retention（留存） | 恢复流程、提示疲劳 | Q4–Q6 |
+| 3 | Monetization（变现） | 费用结构、高级功能 | Q7–Q9 |
+| 4 | User Behavior（用户行为） | 信任、引导、心智模型 | Q10–Q12 |
+| 5 | Market（市场） | 竞争格局、产品定位 | Q13–Q15 |
+| 6 | System（系统交互） | 策略引擎、基础设施 | Q16–Q18 |
+
+```mermaid
+mindmap
+  root((Blockchain MPC Wallet Mechanisms))
+    Growth
+      Q1
+      Q2
+      Q3
+    Retention
+      Q4
+      Q5
+      Q6
+    Monetization
+      Q7
+      Q8
+      Q9
+    User_Behavior
+      Q10
+      Q11
+      Q12
+    Market
+      Q13
+      Q14
+      Q15
+    System
+      Q16
+      Q17
+      Q18
+```
+
 ### Blockchain MPC Wallet Mechanism Analysis: Q&A
 
 #### 1. Growth Mechanisms

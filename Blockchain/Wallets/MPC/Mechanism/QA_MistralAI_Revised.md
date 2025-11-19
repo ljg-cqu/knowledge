@@ -23,7 +23,45 @@
 > - Prioritizes decentralized custody, privacy-preserving DeFi, MEV protection, and cross-chain interoperability via MPC.  
 
 > **Note on status and quantitative statements**
-本文件可以视为早期的机制问答草案与结构说明，许多问题的回答在后续文件（如 `QA_ClaudeOpus.md`、`QA_DeepSeek.md`、`QA_GPT5.1HighReasoning.md` 等）中已有更系统的扩展与引用支持。文中涉及的百分比、风险概率、费用与收益等量化表述，如未注明外部数据来源，均应理解为**示例性建模假设**，仅适合用于思考与讨论，而不宜直接当作生产环境或市场真实数据使用。
+本文件可以视为早期的机制问答草稿与结构说明，许多问题的回答在后续文件（如 `QA_ClaudeOpus.md`、`QA_DeepSeek.md`、`QA_GPT5.1HighReasoning.md` 等）中已有更系统的扩展与引用支持。文中涉及的百分比、风险概率、费用与收益等量化表述，如未注明外部数据来源，均应理解为**示例性建模假设**，仅适合用于思考与讨论，而不宜直接当作生产环境或市场真实数据使用。
+
+### Visual Structure Overview
+
+| 模块 | 机制类型 | 典型题号前缀 |
+|------|----------|--------------|
+| 1 | Growth（增长机制） | F1 / I1 / A1 |
+| 2 | Retention（留存机制） | F2 / I2 / A2 |
+| 3 | Monetization（变现机制） | F3 / I3 / A3 |
+| 4 | User Behavior（用户行为） | F4 / I4 / A4 |
+| 5 | Market Dynamics（市场机制） | F5 / I5 / A5 |
+| 6 | System Interactions（系统交互） | 其余题目 |
+
+```mermaid
+mindmap
+  root((Blockchain MPC Mechanism Draft Q&A))
+    Growth
+      F1
+      I1
+      A1
+    Retention
+      F2
+      I2
+      A2
+    Monetization
+      F3
+      I3
+      A3
+    User_Behavior
+      F4
+      I4
+      A4
+    Market
+      F5
+      I5
+      A5
+    System
+      Other_Qs
+```
 
 ---
 

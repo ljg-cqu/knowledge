@@ -18,6 +18,46 @@ This report presents a comprehensive framework for assessing senior product mana
 > 本报告中的百分比、样本数据、时间窗口、K 因子等量化数字，除非明确说明来源于具体研究或生产数据仪表盘，否则均为**用于产品机制推理与面试讨论的示例性建模假设**，不应直接视为真实业务表现。在用于决策、汇报或对外材料前，请结合自有数据重新估算与校准。
 > 若文中出现 `G#/T#/L#/A#` 等引用 ID，请将其理解为知识定位标签而非严格的学术引用；正式写作时需自行查验并使用最新权威资料。
 
+### Visual Structure Overview
+
+| 区块 | 机制类型 | 题号范围 | 难度结构 |
+|------|----------|----------|----------|
+| 1 | Growth（增长） | Q1–3 | F / I / A |
+| 2 | Retention（留存） | Q4–6 | F / I / A |
+| 3 | Monetization（变现） | Q7–9 | F / I / A |
+| 4 | User Behavior（用户行为） | Q10–12 | F / I / A |
+| 5 | Market（市场） | Q13–15 | F / I / A |
+| 6 | System（系统） | Q16–18 | F / I / A |
+
+```mermaid
+mindmap
+  root((Blockchain MPC Mechanism Q&A))
+    Growth
+      Q1
+      Q2
+      Q3
+    Retention
+      Q4
+      Q5
+      Q6
+    Monetization
+      Q7
+      Q8
+      Q9
+    User_Behavior
+      Q10
+      Q11
+      Q12
+    Market
+      Q13
+      Q14
+      Q15
+    System
+      Q16
+      Q17
+      Q18
+```
+
 ## II. Q&A by Mechanism Type
 
 ### 1. Growth (MPC in Privacy-Preserving Decentralized Networks)

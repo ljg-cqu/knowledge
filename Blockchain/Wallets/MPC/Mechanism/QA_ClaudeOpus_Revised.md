@@ -18,6 +18,48 @@
 > Unless a metric, percentage, threshold, or formula in this document is explicitly tied to a named external study, dataset, or production dashboard, please consider it as **illustrative modeling assumptions** for product mechanism reasoning and interview discussions, rather than verified real business data. Before applying to specific business or external materials, it is necessary to recalibrate and verify with your own data.
 > The `G#/T#/L#/A#` reference IDs used in this document are intended to provide structured reference clues. The actual literature, tools, and cases may differ in form and details; when used for formal writing or external reference, please verify and replace with the latest authoritative data.
 
+### Visual Structure Overview
+
+**Sections and mechanism types（结构速览）**
+
+| 区块 | 机制类型 | 题号范围 | 难度结构（示意） |
+|------|----------|----------|------------------|
+| I | Growth（增长） | Q1–3 | F / I / A |
+| II | Retention（留存） | Q4–6 | F / I / A |
+| III | Monetization（变现） | Q7–9 | F / I / A |
+| IV | User Behavior（用户行为） | Q10–12 | F / I / A |
+| V | Market（市场） | Q13–15 | F / I / A |
+| VI | System（系统） | Q16–18 | F / I / A |
+
+```mermaid
+mindmap
+  root((Blockchain MPC Mechanism Q&A))
+    Growth
+      Q1
+      Q2
+      Q3
+    Retention
+      Q4
+      Q5
+      Q6
+    Monetization
+      Q7
+      Q8
+      Q9
+    User Behavior
+      Q10
+      Q11
+      Q12
+    Market
+      Q13
+      Q14
+      Q15
+    System
+      Q16
+      Q17
+      Q18
+```
+
 ## II. Q&A by Type
 
 ### Growth Mechanisms (Q1-3)

@@ -2,56 +2,81 @@
  
  **Template**: Derived from `Prompts/Career/Mechanism/QA.md`.
  
- **Domain**: Institutional blockchain MPC wallets and threshold-signature custody systems.
+**Domain**: Institutional blockchain MPC wallets and threshold-signature custody systems.
  
- **TOC**: 1. Overview | 2. Decision Criticality Framework | 3. Q&A by Type | 4. Refs (G/T/L/A) | 5. Validation Snapshot
- 
- ---
- 
- ## 1. Overview
- 
- **Total Q&A**: 8  
- **Difficulty Mix**: 2F (25%) / 4I (50%) / 2A (25%)  
- **Mechanism Coverage**: Growth, Retention, Monetization, User Behavior, Market, System
- 
- | # | Type          | Range   | Count | Mix          | Decision Criticality                                      | Artifacts               |
- |---|---------------|---------|-------|--------------|-----------------------------------------------------------|-------------------------|
- | 1 | Growth        | Q2, Q7  | 2     | 1F / 1A      | Blocks adoption roadmap / Affects ≥2 stakeholders        | Diagram + table         |
- | 2 | Retention     | Q3, Q7  | 2     | 1I / 1A      | Blocks renewal / Creates operational risk                | Diagram + table         |
- | 3 | Monetization  | Q4      | 1     | 1I           | Blocks pricing / Creates volume + security trade-offs    | Diagram + table         |
- | 4 | User Behavior | Q1, Q3, Q8 | 3  | 1F / 2I      | Affects ops + end users; changes approval behavior       | Diagram + table         |
- | 5 | Market        | Q2, Q5  | 2     | 1F / 1I      | Risk from competitor incidents + regulation              | Diagram + table         |
- | 6 | System        | Q1, Q6  | 2     | 1F / 1A      | Blocks core custody architecture / liveness guarantees   | Diagram + table         |
- |   | **Total**     |         | **8** | **2F/4I/2A** | **100% satisfy ≥1 criticality criterion**                | **8 diagrams + tables** |
+**TOC**: 1. Overview | 2. Decision Criticality Framework | 3. Q&A by Type | 4. Refs (G/T/L/A) | 5. Validation Snapshot
  
  ---
  
- ## 2. Decision Criticality Framework (MPC Wallet Context)
+## 1. Overview
  
- **Include a Q&A if ≥1 criterion is satisfied**:
+**Total Q&A**: 8
+**Difficulty Mix**: 2F (25%) / 4I (50%) / 2A (25%)
+**Mechanism Coverage**: Growth, Retention, Monetization, User Behavior, Market, System
  
- - **Blocks Decision**: Directly impacts custody architecture (HSM vs MPC), key-distribution policy, threshold `t`, or chain/protocol support (e.g., ECDSA vs EdDSA vs BLS).
- - **Creates Risk**: Material threat of key-share compromise, correlated failures, regulatory non-compliance, or liveness loss in signing.
- - **Affects ≥2 Stakeholders**: Multi-team impact (Product + Security, Custody Ops + Compliance, Client Integration + SRE).
- - **Actively Evolving**: MPC/TSS protocol families (DKLS23, CGGMP, FROST), custody regulation, or institutional adoption patterns have changed in the past 3–5 years.
+| # | Type          | Range      | Count | Mix          | Decision Criticality                                      | Artifacts               |
+|---|---------------|------------|-------|--------------|-----------------------------------------------------------|-------------------------|
+| 1 | Growth        | Q2, Q7     | 2     | 1F / 1A      | Blocks adoption roadmap / Affects ≥2 stakeholders        | Diagram + table         |
+| 2 | Retention     | Q3, Q7     | 2     | 1I / 1A      | Blocks renewal / Creates operational risk                | Diagram + table         |
+| 3 | Monetization  | Q4         | 1     | 1I           | Blocks pricing / Creates volume + security trade-offs    | Diagram + table         |
+| 4 | User Behavior | Q1, Q3, Q8 | 3     | 1F / 2I      | Affects ops + end users; changes approval behavior       | Diagram + table         |
+| 5 | Market        | Q2, Q5     | 2     | 1F / 1I      | Risk from competitor incidents + regulation              | Diagram + table         |
+| 6 | System        | Q1, Q6     | 2     | 1F / 1A      | Blocks core custody architecture / liveness guarantees   | Diagram + table         |
+|   | **Total**     |            | **8** | **2F/4I/2A** | **100% satisfy ≥1 criticality criterion**                | **8 diagrams + tables** |
+
+### Visual Structure Overview
+
+```mermaid
+mindmap
+  root((MPC Wallet Mechanism Q&A))
+    System
+      Q1
+      Q6
+    Growth
+      Q2
+      Q7
+    Retention
+      Q3
+      Q7
+    Monetization
+      Q4
+    User_Behavior
+      Q1
+      Q3
+      Q8
+    Market
+      Q2
+      Q5
+```
+
+---
+
+## 2. Decision Criticality Framework (MPC Wallet Context)
  
- **Exclude a Q&A if**:
+**Include a Q&A if ≥1 criterion is satisfied**:
  
- - Focus is purely cryptographic trivia (e.g., “define Paillier”) without system-level mechanism implications.
- - It is tool-specific configuration that does not change growth, retention, or risk (e.g., minor timeout tuning).
- - The scenario is niche (<5% of institutional use) or already covered by another Q&A.
+- **Blocks Decision**: Directly impacts custody architecture (HSM vs MPC), key-distribution policy, threshold `t`, or chain/protocol support (e.g., ECDSA vs EdDSA vs BLS).
+- **Creates Risk**: Material threat of key-share compromise, correlated failures, regulatory non-compliance, or liveness loss in signing.
+- **Affects ≥2 Stakeholders**: Multi-team impact (Product + Security, Custody Ops + Compliance, Client Integration + SRE).
+- **Actively Evolving**: MPC/TSS protocol families (DKLS23, CGGMP, FROST), custody regulation, or institutional adoption patterns have changed in the past 3–5 years.
  
- ---
+**Exclude a Q&A if**:
  
- ## 3. Q&A by Type (Blockchain MPC Wallet Mechanisms)
+- Focus is purely cryptographic trivia (e.g., “define Paillier”) without system-level mechanism implications.
+- It is tool-specific configuration that does not change growth, retention, or risk (e.g., minor timeout tuning).
+- The scenario is niche (<5% of institutional use) or already covered by another Q&A.
  
- ### Type 6 (System): t-of-n MPC Signing Flow and Liveness
+---
  
- **Q1**: How does a t-of-n MPC ECDSA wallet replace a single private key, and what liveness vs security feedback loops does this mechanism create for institutional custody?
+## 3. Q&A by Type (Blockchain MPC Wallet Mechanisms)
  
- **Difficulty**: F  |  **Decision Criticality**: Blocks core custody architecture (single-sig vs MPC)
+### Type 6 (System): t-of-n MPC Signing Flow and Liveness
  
- **Key Insight**: MPC wallets trade a single point of key compromise for distributed key shares, but every added party in the quorum introduces coordination and liveness risk.  
+**Q1**: How does a t-of-n MPC ECDSA wallet replace a single private key, and what liveness vs security feedback loops does this mechanism create for institutional custody?
+ 
+**Difficulty**: F  |  **Decision Criticality**: Blocks core custody architecture (single-sig vs MPC)
+ 
+**Key Insight**: MPC wallets trade a single point of key compromise for distributed key shares, but every added party in the quorum introduces coordination and liveness risk.  
  
 **Answer** (≈210 words):  
 In a t-of-n MPC wallet, the private key `sk` is never generated in monolithic form. Instead, parties run distributed key generation to obtain shares `sk_i` such that any t shares can jointly produce a valid signature, while fewer than t reveal no information about `sk` [Ref: G1/G2, A1]. The **input** is a signing request with policy metadata (asset, amount, risk score). The **process** is an interactive threshold ECDSA protocol (e.g., Lindell 2017; Gennaro & Goldfeder 2018) that computes a signature using preprocessed randomness and local computations on each share [Ref: A1/A2, T1/T2]. The **output** is a standard ECDSA signature accepted by the chain; **feedback** arises from how often quorums fail or succeed.

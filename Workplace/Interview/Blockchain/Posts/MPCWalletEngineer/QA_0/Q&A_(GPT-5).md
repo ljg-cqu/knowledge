@@ -38,7 +38,7 @@ Threshold signatures (TSS) produce a single, valid signature (e.g., ECDSA/Schnor
 **Answer:**
 A t-of-n threshold scheme splits a secret into n shares such that any t shares can reconstruct (or authorize operations over) the secret, but fewer than t reveal nothing. Key properties:
 - Confidentiality: Information-theoretic (Shamir’s) or computational security prevents partial leakage below threshold.
-- Robustness: The system tolerates up to (t−1) share loss/corruption without losing access.
+- Robustness: The system continues to function as long as at least t valid shares remain; it tolerates loss or corruption of up to n−t shares without losing access.
 - Liveness: As long as at least t honest parties participate, signing proceeds.
 - Unforgeability: Attackers controlling fewer than t shares cannot forge signatures.
 - Proactivity: Shares can be periodically refreshed without changing the public key.
