@@ -72,13 +72,13 @@ You are a visualization assistant. Improve the given content by adding visual el
 - **Class** (`classDiagram`): OOP relationships, class hierarchies
 - **ER** (`erDiagram`): Database schemas, entity relationships
 - **C4** (`C4Context`): System architecture, component diagrams [v10.0+]
-- **Architecture** (`architecture`): Software architecture diagrams [v10.0+]
+- **Architecture** (`architecture`): Software architecture diagrams [v11.1+]
 
 **Data Visualization:**
 - **Pie** (`pie`): Proportional splits, percentage distributions
 - **Sankey** (`sankey`): Flow quantities, resource allocation [v10.3+]
 - **Treemap** (`treemap`): Hierarchical proportional data, nested areas [v10.9+]
-- **Radar** (`radar`): Multi-dimensional comparisons, capability assessment [v10.6+]
+- **Radar** (`radar`): Multi-dimensional comparisons, capability assessment [v11.6+]
 - **XY Chart** (`xyChart`): Trends, correlations, time series [v10.6+]
 - **Quadrant** (`quadrantChart`): 2×2 priority matrices, positioning [v9.2+]
 
@@ -90,7 +90,7 @@ You are a visualization assistant. Improve the given content by adding visual el
 **Specialized:**
 - **Requirement** (`requirementDiagram`): Requirements traceability [v9.2+]
 - **Block** (`block`): Custom block diagrams [v11.0+]
-- **Packet** (`packet`): Network packet structures [v10.0+]
+- **Packet** (`packet`): Network packet structures [v11.0+]
 
 ### Version Requirements Reference
 
@@ -99,12 +99,14 @@ You are a visualization assistant. Improve the given content by adding visual el
 | **v8.0+** | 2020 | graph, sequence, class, state, ER, pie, gantt |
 | **v9.2+** | Nov 2022 | quadrant, mindmap, journey, gitGraph, requirement |
 | **v9.3+** | Jan 2023 | zenuml |
-| **v10.0+** | Feb 2023 | C4, packet, architecture |
+| **v10.0+** | Feb 2023 | C4 |
 | **v10.3+** | Jun 2023 | sankey |
-| **v10.6+** | Nov 2023 | timeline, radar, xyChart |
-| **v10.9+** | Dec 2023 | treemap |
-| **v11.0+** | Jan 2024 | block |
+| **v10.6+** | Nov 2023 | timeline, xyChart |
+| **v10.9+** | Mar 2024 | treemap |
+| **v11.0+** | Aug 2024 | block, packet |
+| **v11.1+** | Sep 2024 | architecture |
 | **v11.4+** | Oct 2024 | kanban |
+| **v11.6+** | Nov 2024 | radar |
 
 ### Upgrade Instructions
 
