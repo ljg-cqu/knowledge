@@ -11,6 +11,44 @@
 - [References](#references)
 - [Validation](#validation)
 
+---
+
+## Document Overview
+
+```mermaid
+graph TB
+    A[MPC Wallet Architecture Guide] --> B[5 Core Patterns]
+    
+    B --> C[Hexagonal Architecture]
+    B --> D[Circuit Breaker]
+    B --> E[Rate Limiting]
+    B --> F[CQRS]
+    B --> G[gRPC vs REST]
+    
+    C --> C1[Multi-chain Support]
+    D --> D1[Resilience]
+    E --> E1[Security]
+    F --> F1[Performance]
+    G --> G1[Integration]
+    
+    A --> H[For Interview Preparation]
+    H --> H1[Senior/Staff Engineers]
+    H --> H2[Technical Architects]
+    H --> H3[Engineering Managers]
+    
+    A --> I[Production Systems]
+    I --> I1[10K-100K DAU]
+    I --> I2[Multi-chain MPC Wallets]
+    I --> I3[3-6 Month Cycles]
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style H fill:#d4edda
+    style I fill:#ffe1e1
+```
+
+---
+
 ## Context
 
 **Purpose**: This document provides architectural patterns and implementation guidance for MPC (Multi-Party Computation) wallet engineers preparing for senior/staff-level technical interviews at blockchain infrastructure companies.
@@ -21,10 +59,48 @@
 - **Included**: Structural, behavioral, quality, data, and integration patterns for production MPC wallet systems supporting multiple threshold signature schemes (GG18, GG20, FROST) across EVM and non-EVM chains
 - **Excluded**: Cryptographic protocol implementation details, business logic, compliance frameworks, smart contract interactions
 
+```mermaid
+graph LR
+    A[Document Scope] --> B[✅ Included]
+    A --> C[❌ Excluded]
+    B --> B1[Architectural Patterns]
+    B --> B2[MPC Wallet Systems]
+    B --> B3[Multi-chain Support]
+    B --> B4[Threshold Signatures]
+    C --> C1[Crypto Implementation]
+    C --> C2[Business Logic]
+    C --> C3[Compliance]
+    C --> C4[Smart Contracts]
+    
+    style B fill:#d4edda
+    style C fill:#f8d7da
+```
+
 **Target Audience**:
 - Senior/Staff Software Engineers interviewing for MPC wallet infrastructure roles
 - Technical Architects evaluating MPC wallet system designs
 - Engineering Managers assessing candidate architectural depth
+
+```mermaid
+graph LR
+    A[Target Audience] --> B[Senior/Staff Engineers]
+    A --> C[Technical Architects]
+    A --> D[Engineering Managers]
+    
+    B --> B1[5+ years experience]
+    B --> B2[Backend/Distributed Systems]
+    
+    C --> C1[System Design Evaluation]
+    C --> C2[Pattern Selection]
+    
+    D --> D1[Candidate Assessment]
+    D --> D2[Architectural Depth]
+    
+    style A fill:#e1f5ff
+    style B fill:#e1ffe1
+    style C fill:#fff4e1
+    style D fill:#ffe1e1
+```
 
 **Assumptions**:
 - Reader has 5+ years backend development experience
@@ -32,16 +108,52 @@
 - Understanding of blockchain fundamentals (transactions, signatures, consensus)
 - Target system scale: 10K-100K daily active users, 1M+ transactions/month
 
+| Assumption Category | Required Level | Details |
+|-------------------|----------------|---------|
+| **Experience** | 5+ years | Backend development, distributed systems |
+| **Technical Knowledge** | Intermediate-Advanced | Microservices, cryptography basics, blockchain fundamentals |
+| **System Scale** | Medium-Large | 10K-100K DAU, 1M+ transactions/month |
+| **Architecture Familiarity** | Intermediate | Structural patterns, behavioral patterns, quality attributes |
+
 **Constraints**:
 - **Time**: Interview preparation typically 2-4 weeks; implementation patterns assume 3-6 month development cycles
 - **Resources**: Patterns assume 5-10 engineer teams with access to cloud infrastructure (AWS/GCP/Azure)
 - **Cost**: Architecture choices balance performance with operational costs (<$50K/month for 100K users)
 - **Technology**: Focus on Go, TypeScript, Python, Java implementations commonly used in blockchain infrastructure
 
+| Constraint | Minimum | Target | Maximum | Impact |
+|------------|---------|--------|---------|---------|
+| **Preparation Time** | 2 weeks | 3 weeks | 4 weeks | Interview readiness |
+| **Development Cycle** | 3 months | 4.5 months | 6 months | Time to production |
+| **Team Size** | 5 engineers | 7 engineers | 10 engineers | Implementation capacity |
+| **Monthly Cost** | $30K | $40K | $50K | Operational budget |
+| **Daily Active Users** | 10K | 50K | 100K | Scale target |
+
 **Success Criteria**:
 - Candidate can articulate architectural trade-offs with quantified metrics
 - Candidate can design systems balancing security (99.99% attack prevention), performance (p95 latency <100ms), and reliability (99.9% uptime)
 - Candidate demonstrates multi-stakeholder thinking (security, SRE, frontend teams)
+
+```mermaid
+graph TD
+    A[MPC Wallet Success Criteria] --> B[Quantified Trade-offs]
+    A --> C[System Balance]
+    A --> D[Multi-stakeholder Thinking]
+    
+    C --> C1[🔒 Security: 99.99% attack prevention]
+    C --> C2[⚡ Performance: p95 < 100ms]
+    C --> C3[🛡️ Reliability: 99.9% uptime]
+    
+    D --> D1[Security Team]
+    D --> D2[SRE Team]
+    D --> D3[Frontend Team]
+    
+    style A fill:#e1f5ff
+    style C fill:#fff4e1
+    style C1 fill:#ffe1e1
+    style C2 fill:#e1ffe1
+    style C3 fill:#e1e1ff
+```
 
 ## Topic Areas
 
@@ -52,6 +164,80 @@
 | Quality | 1 | A | Critical |
 | Data | 1 | I | Important |
 | Integration | 1 | F | Important |
+
+### Pattern Quick Reference
+
+| Pattern | Key Benefit | Performance Impact | Complexity | Best For |
+|---------|-------------|-------------------|------------|----------|
+| **Hexagonal Architecture** | 60% coupling reduction | Initial: +20-30% overhead<br/>Long-term: -40-60% maintenance | High | Multi-chain wallets |
+| **Circuit Breaker** | 85% failure reduction | +15-20ms latency | Medium | Unreliable RPCs |
+| **Rate Limiting** | 95% attack prevention | +5-10ms overhead | Medium | Public APIs |
+| **CQRS** | 10x read performance | +20-40ms write latency | High | High read/write ratio |
+| **gRPC vs REST** | 60% latency reduction (gRPC) | gRPC: 5-10ms<br/>REST: 15-25ms | Medium | Internal services |
+
+```mermaid
+graph TD
+    A[MPC Wallet Patterns] --> B[Structural]
+    A --> C[Behavioral]
+    A --> D[Quality]
+    A --> E[Data]
+    A --> F[Integration]
+    
+    B --> B1[Hexagonal Architecture]
+    C --> C1[Circuit Breaker]
+    D --> D1[Rate Limiting]
+    E --> E1[CQRS]
+    F --> F1[gRPC/REST]
+    
+    B1 --> B1A[Multi-chain Support]
+    C1 --> C1A[Resilience]
+    D1 --> D1A[Security]
+    E1 --> E1A[Performance]
+    F1 --> F1A[Communication]
+    
+    style A fill:#e1f5ff
+    style B1 fill:#d4edda
+    style C1 fill:#fff3cd
+    style D1 fill:#f8d7da
+    style E1 fill:#d1ecf1
+    style F1 fill:#e2e3e5
+```
+
+### Pattern Selection Decision Tree
+
+```mermaid
+graph TD
+    START[MPC Wallet Architecture Decision] --> Q1{Need multi-chain support?}
+    
+    Q1 -->|Yes| USE_HEX[✅ Use Hexagonal Architecture]
+    Q1 -->|No| Q2{Single chain but long-term project?}
+    Q2 -->|Yes| USE_HEX
+    Q2 -->|No| SIMPLE[Use Layered Architecture]
+    
+    USE_HEX --> Q3{Using external RPC endpoints?}
+    Q3 -->|Yes| USE_CB[✅ Add Circuit Breaker]
+    Q3 -->|No| Q4
+    
+    USE_CB --> Q4{Public-facing API?}
+    Q4 -->|Yes| USE_RL[✅ Add Rate Limiting]
+    Q4 -->|No| Q5
+    
+    USE_RL --> Q5{High read/write ratio?}
+    Q5 -->|Yes > 10:1| USE_CQRS[✅ Use CQRS]
+    Q5 -->|No| Q6
+    
+    USE_CQRS --> Q6{Internal microservices?}
+    Q6 -->|Yes| USE_GRPC[✅ Use gRPC internally + REST externally]
+    Q6 -->|No| USE_REST[Use REST only]
+    
+    style USE_HEX fill:#d4edda
+    style USE_CB fill:#d4edda
+    style USE_RL fill:#d4edda
+    style USE_CQRS fill:#d4edda
+    style USE_GRPC fill:#d4edda
+    style USE_REST fill:#fff4e1
+    style SIMPLE fill:#f8d7da
+```
 
 ---
 
@@ -111,6 +297,30 @@ graph TD
 | Coupling Reduction | (1 - (coupled_modules / total_modules)) × 100 | coupled_modules=3, total_modules=10 | ≥60% |
 | Test Coverage | (tested_lines / total_lines) × 100 | tested_lines=850, total_lines=1000 | ≥85% |
 
+**Coupling Reduction Formula**:
+```
+Coupling Reduction (%) = (1 - coupled_modules/total_modules) × 100
+
+Example:
+  coupled_modules = 3 (modules directly importing blockchain libraries)
+  total_modules = 10 (total modules in system)
+  
+  Coupling Reduction = (1 - 3/10) × 100 = 70%
+  ✅ Meets target of ≥60%
+```
+
+**Test Coverage Formula**:
+```
+Test Coverage (%) = (tested_lines/total_lines) × 100
+
+Example:
+  tested_lines = 850 (lines covered by tests)
+  total_lines = 1000 (total lines of code)
+  
+  Test Coverage = (850/1000) × 100 = 85%
+  ✅ Meets target of ≥85%
+```
+
 **Trade-offs**:
 
 | Approach | Pros | Cons | Use When | Consensus |
@@ -123,6 +333,22 @@ graph TD
 - Teams <3 engineers lacking architectural experience
 - Projects requiring delivery in <4 weeks
 - Systems with no plans for multi-chain support
+
+```mermaid
+graph TD
+    A[Should I use Hexagonal Architecture?] --> B{Multi-chain support needed?}
+    B -->|No| C{Project lifespan > 6 months?}
+    B -->|Yes| D[✅ USE Hexagonal]
+    C -->|No| E[❌ DON'T USE - Use simpler layered architecture]
+    C -->|Yes| F{Team size ≥ 3 engineers?}
+    F -->|No| E
+    F -->|Yes| G{Timeline > 4 weeks?}
+    G -->|No| E
+    G -->|Yes| D
+    
+    style D fill:#d4edda
+    style E fill:#f8d7da
+```
 
 **Risks**:
 - Over-engineering for simple use cases (30% overhead for single-chain wallets)
@@ -223,6 +449,22 @@ stateDiagram-v2
 - Systems with single RPC endpoint (no fallback options)
 - Development environments where debugging requires seeing all failures
 
+```mermaid
+graph TD
+    A[Should I use Circuit Breaker?] --> B{External RPC endpoints?}
+    B -->|No - Internal only| C{Service SLA < 99.99%?}
+    B -->|Yes| D[✅ USE Circuit Breaker]
+    C -->|No - High SLA| E[❌ DON'T USE]
+    C -->|Yes| F{Fallback endpoints available?}
+    F -->|No| E
+    F -->|Yes| G{Production environment?}
+    G -->|No - Dev/Debug| E
+    G -->|Yes| D
+    
+    style D fill:#d4edda
+    style E fill:#f8d7da
+```
+
 **Risks**:
 - Premature circuit opening causes false positives (configure threshold carefully)
 - State synchronization issues in distributed deployments (use Redis/etcd for shared state)
@@ -317,6 +559,24 @@ sequenceDiagram
 - Systems without distributed state infrastructure (Redis/Memcached)
 - Batch processing systems with legitimate burst requirements
 
+```mermaid
+graph TD
+    A[Should I use Rate Limiting?] --> B{Public-facing API?}
+    B -->|No - Internal only| C{Users > 10?}
+    B -->|Yes| D[✅ USE Rate Limiting]
+    C -->|No| E[❌ DON'T USE]
+    C -->|Yes| F{Distributed state available?}
+    F -->|No - No Redis/Memcached| E
+    F -->|Yes| G{Production environment?}
+    G -->|No - Dev testing| E
+    G -->|Yes| H{Batch processing with bursts?}
+    H -->|Yes| E
+    H -->|No| D
+    
+    style D fill:#d4edda
+    style E fill:#f8d7da
+```
+
 **Risks**:
 - Legitimate users blocked during legitimate spikes (implement whitelist/override mechanisms)
 - Clock skew in distributed systems causes inconsistent limits (use centralized Redis)
@@ -397,6 +657,24 @@ graph LR
 - Teams unfamiliar with event-driven architectures
 - Tight budget constraints preventing infrastructure investment
 
+```mermaid
+graph TD
+    A[Should I use CQRS?] --> B{Read/Write ratio > 10:1?}
+    B -->|No| C[❌ DON'T USE - Use CRUD]
+    B -->|Yes| D{Can tolerate eventual consistency?}
+    D -->|No - Need immediate consistency| C
+    D -->|Yes| E{Traffic > 10K req/day?}
+    E -->|No| C
+    E -->|Yes| F{Team familiar with event-driven?}
+    F -->|No| C
+    F -->|Yes| G{Budget supports infrastructure?}
+    G -->|No| C
+    G -->|Yes| H[✅ USE CQRS]
+    
+    style H fill:#d4edda
+    style C fill:#f8d7da
+```
+
 **Risks**:
 - Event ordering issues cause inconsistent read models (implement idempotent projections)
 - Message bus failures create data divergence (monitor consistency delay metrics)
@@ -475,11 +753,55 @@ graph TB
 - Services requiring HTTP caching (CDN, reverse proxy)
 - Legacy systems incompatible with HTTP/2
 
+```mermaid
+graph TD
+    A[Choose Integration Pattern] --> B{Client Type?}
+    B -->|Browser/Mobile| C[Use REST or REST + HTTP/2]
+    B -->|Internal Microservice| D{Performance Critical?}
+    D -->|Yes| E[✅ Use gRPC]
+    D -->|No| F{Need HTTP Caching?}
+    F -->|Yes| C
+    F -->|No| G{Third-party Integration?}
+    G -->|Yes| C
+    G -->|No| E
+    
+    style E fill:#d4edda
+    style C fill:#fff4e1
+```
+
 **Dissenting View**: Some teams prefer GraphQL for external APIs, arguing it provides better flexibility than REST while maintaining browser compatibility. However, GraphQL adds query complexity overhead not needed for simple CRUD operations.
 
 ---
 
 ## Measurement Methodology
+
+```mermaid
+graph TD
+    A[Measurement Process] --> B[1. Baseline Establishment]
+    A --> C[2. Collection Methods]
+    A --> D[3. Success Validation]
+    
+    B --> B1[Static Analysis Tools]
+    B --> B2[Coverage Tools]
+    B --> B3[7-day Log Collection]
+    B --> B4[Security Testing]
+    B --> B5[APM Instrumentation]
+    
+    C --> C1[Prometheus Metrics]
+    C --> C2[Distributed Tracing]
+    C --> C3[Log Aggregation]
+    C --> C4[Synthetic Testing]
+    
+    D --> D1[30-day Collection Period]
+    D --> D2[Statistical Significance p<0.05]
+    D --> D3[Account for Variations]
+    D --> D4[Document Configuration]
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#e1ffe1
+    style D fill:#ffe1e1
+```
 
 ### Baseline Establishment
 - **Coupling Reduction**: Measure module dependencies before/after using static analysis tools (SonarQube, NDepend). Baseline: Count direct blockchain imports in core domain
@@ -505,6 +827,36 @@ graph TB
 
 ## Limitations and Uncertainties
 
+```mermaid
+graph LR
+    A[Limitations & Uncertainties] --> B[Known Limitations]
+    A --> C[Uncertainties]
+    A --> D[Unverified Claims]
+    A --> E[Risk Disclosure]
+    
+    B --> B1[Performance Variance]
+    B --> B2[Scale Assumptions]
+    B --> B3[Tech Stack Maturity]
+    
+    C --> C1[Blockchain Evolution]
+    C --> C2[Regulatory Impact]
+    C --> C3[Protocol Advances]
+    C --> C4[Cost Variability]
+    
+    D --> D1[Citation A5]
+    D --> D2[Vendor Benchmarks]
+    D --> D3[Survey Data]
+    
+    E --> E1[Misconfiguration Risk]
+    E --> E2[Complexity Risk]
+    E --> E3[UX Impact Risk]
+    
+    style B fill:#fff4e1
+    style C fill:#ffe1e1
+    style D fill:#ffebcc
+    style E fill:#f8d7da
+```
+
 ### Known Limitations
 1. **Performance Metrics**: Quantified metrics (60% reduction, 10x improvement) are based on typical scenarios. Actual results vary by:
    - Blockchain RPC provider reliability (95-99.9% uptime range)
@@ -515,7 +867,23 @@ graph TB
    - Smaller systems (<1K DAU) where simpler architectures suffice
    - Hyper-scale systems (>1M DAU) requiring additional optimizations
 
+   | Scale Tier | DAU Range | Recommended Approach | Complexity Level |
+   |------------|-----------|---------------------|------------------|
+   | **Small** | <1K | Simple CRUD, Layered Architecture | Low ⭐ |
+   | **Medium** | 1K-10K | Modular Monolith, Basic Patterns | Medium ⭐⭐ |
+   | **Target** | 10K-100K | Full Patterns (Hexagonal, CQRS, Circuit Breaker) | High ⭐⭐⭐ |
+   | **Hyper-scale** | >1M | Advanced Patterns + Custom Optimizations | Very High ⭐⭐⭐⭐ |
+
 3. **Technology Stack**: Code examples assume mature ecosystems (Go, TypeScript, Python, Java). Emerging languages may lack library support.
+
+   | Language | Maturity | Library Support | Use Case | Pattern Support |
+   |----------|----------|----------------|----------|-----------------|
+   | **Go** | ✅ High | Excellent | Backend services, high performance | All patterns |
+   | **TypeScript** | ✅ High | Excellent | Full-stack, type safety | All patterns |
+   | **Python** | ✅ High | Excellent | Rapid prototyping, scripting | All patterns |
+   | **Java** | ✅ High | Excellent | Enterprise, complex systems | All patterns |
+   | **Rust** | ⚠️ Medium | Growing | Security-critical components | Limited |
+   | **Emerging** | ❌ Low | Limited | Experimental | Minimal |
 
 ### Uncertainties
 1. **Future Blockchain Evolution**: Patterns assume current blockchain architectures. Major protocol upgrades (Ethereum's The Surge, Solana Firedancer) may invalidate assumptions.
@@ -540,6 +908,25 @@ Implementing these patterns without proper expertise increases risk:
 ---
 
 ## References
+
+```mermaid
+graph LR
+    A[References] --> B[Glossary]
+    A --> C[Tools]
+    A --> D[Literature]
+    A --> E[Citations]
+    
+    B --> B1[5 Key Terms]
+    C --> C1[3 Essential Tools]
+    D --> D1[3 Core Books]
+    E --> E1[6+ Academic Papers]
+    
+    style A fill:#e1f5ff
+    style B fill:#d4edda
+    style C fill:#fff4e1
+    style D fill:#ffe1e1
+    style E fill:#d1ecf1
+```
 
 ### Glossary (≥5)
 
@@ -586,6 +973,44 @@ Implementing these patterns without proper expertise increases risk:
 ---
 
 ## Validation
+
+```mermaid
+graph TD
+    A[Document Validation] --> B[Content Quality]
+    A --> C[Structural Completeness]
+    A --> D[Code & Diagrams]
+    A --> E[Best Practices]
+    
+    B --> B1[✅ Context Defined]
+    B --> B2[✅ Priority Labels]
+    B --> B3[✅ Citations ≥6]
+    
+    C --> C1[✅ G≥5, T≥3, L≥3]
+    C --> C2[✅ Q=5 Topics]
+    C --> C3[✅ Measurement Methodology]
+    
+    D --> D1[✅ Code 10-30 lines]
+    D --> D2[✅ Mermaid <120 nodes]
+    D --> D3[✅ Trade-offs ≥2]
+    
+    E --> E1[✅ When NOT to Use]
+    E --> E2[✅ Risk Disclosure]
+    E --> E3[✅ Limitations Flagged]
+    
+    style A fill:#e1f5ff
+    style B1 fill:#d4edda
+    style B2 fill:#d4edda
+    style B3 fill:#d4edda
+    style C1 fill:#d4edda
+    style C2 fill:#d4edda
+    style C3 fill:#d4edda
+    style D1 fill:#d4edda
+    style D2 fill:#d4edda
+    style D3 fill:#d4edda
+    style E1 fill:#d4edda
+    style E2 fill:#d4edda
+    style E3 fill:#d4edda
+```
 
 | Check | Target | Status |
 |-------|--------|--------|

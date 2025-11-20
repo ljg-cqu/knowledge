@@ -44,6 +44,36 @@
 
 **Resources**: Assumes access to open-source MPC libraries (TSS-Lib, GG20 implementations), blockchain SDKs (Web3.js, ethers.js, Bitcoin Core RPC), and cloud infrastructure for geographic distribution.
 
+**Context Overview Diagram**:
+```mermaid
+graph LR
+    subgraph Security Requirements
+        S1[≥128-bit strength]
+        S2[Byzantine protection]
+    end
+    
+    subgraph Performance Requirements
+        P1[<100ms latency]
+        P2[≥1000 TPS]
+        P3[99.99% uptime]
+    end
+    
+    subgraph Compatibility
+        C1[Ethereum]
+        C2[Bitcoin]
+        C3[Solana]
+    end
+    
+    S1 --> ARCH[MPC Wallet Architecture]
+    S2 --> ARCH
+    P1 --> ARCH
+    P2 --> ARCH
+    P3 --> ARCH
+    ARCH --> C1
+    ARCH --> C2
+    ARCH --> C3
+```
+
 ---
 
 ## Topic Areas
@@ -55,6 +85,55 @@
 | Quality | 1 | F |
 | Data | 1 | I |
 | Integration | 1 | A |
+
+**Topic Overview Matrix**:
+
+| # | Topic | Priority | Dimension | Difficulty | Key Technologies | Target Metric |
+|---|-------|----------|-----------|------------|------------------|---------------|
+| 1 | Modular Architecture | CRITICAL | Structural | I | Hexagonal, Go | <100ms signing latency |
+| 2 | Ceremony Orchestration | CRITICAL | Behavioral | A | Saga Pattern, Rust | ≥97% success rate |
+| 3 | Performance Optimization | IMPORTANT | Quality | F | Precomputation, C++ | 40-60% latency reduction |
+| 4 | Key Shard Persistence | CRITICAL | Data | I | CQRS, Go | 99.99% availability |
+| 5 | Multi-Chain Abstraction | IMPORTANT | Integration | A | Strategy Pattern, TypeScript | 70% complexity reduction |
+
+**Difficulty Legend**: F = Foundational, I = Intermediate, A = Advanced
+
+**Implementation Timeline Overview**:
+```mermaid
+gantt
+    title MPC Wallet Architecture Implementation Timeline
+    dateFormat  YYYY-MM-DD
+    axisFormat  Week %W
+    
+    section Topic 1: Architecture
+    Architecture Design           :t1a, 2024-01-01, 2w
+    First Adapter                 :t1b, after t1a, 2w
+    Protocol Validation           :t1c, after t1b, 2w
+    
+    section Topic 2: Ceremony
+    Basic Saga Pattern            :t2a, 2024-01-01, 2w
+    Compensation Logic            :t2b, after t2a, 2w
+    Participant Recovery          :t2c, after t2b, 2w
+    Production Hardening          :t2d, after t2c, 2w
+    
+    section Topic 3: Performance
+    Precomputation Infrastructure :t3a, 2024-01-01, 2w
+    Batch Processing              :t3b, after t3a, 2w
+    Hardware Acceleration         :t3c, after t3b, 2w
+    Performance Tuning            :t3d, after t3c, 2w
+    
+    section Topic 4: Persistence
+    Storage Layer                 :t4a, 2024-01-01, 3w
+    Encryption                    :t4b, after t4a, 2w
+    Geographic Distribution       :t4c, after t4b, 3w
+    Recovery Testing              :t4d, after t4c, 2w
+    
+    section Topic 5: Multi-Chain
+    Interface Design              :t5a, 2024-01-01, 2w
+    First Chain Adapter           :t5b, after t5a, 2w
+    Additional Chains             :t5c, after t5b, 6w
+    Circuit Breaker Integration   :t5d, after t5c, 2w
+```
 
 ---
 
@@ -166,6 +245,22 @@ graph TB
 
 **Answer**: Threshold signing ceremonies require robust orchestration to handle participant failures and adversarial conditions. We implement a saga pattern where each ceremony phase is a transaction with compensating actions. The system tracks participant state via a `CeremonyStateMachine` that transitions through: INITIALIZED, ROUND_ACTIVE, ROUND_COMPLETE, and FINALIZED states. For each round, we employ timeout-based retry mechanisms with exponential backoff (1s, 2s, 4s). When participants drop, the coordinator initiates a compensation saga that either recovers the participant's state from secure storage or triggers a participant replacement protocol. This approach adds 20-35ms overhead per round but reduces overall ceremony failures from 15% to 2-3%. The system incorporates both optimistic execution (proceed with available participants) and pessimistic validation (cryptographic proofs of honest behavior). [Citation A2, L1]
 
+**Ceremony State Machine Diagram**:
+```mermaid
+stateDiagram-v2
+    [*] --> INITIALIZED: Start Ceremony
+    INITIALIZED --> ROUND_ACTIVE: Begin Round
+    ROUND_ACTIVE --> ROUND_COMPLETE: All Responses Received
+    ROUND_ACTIVE --> TIMEOUT: No Response
+    TIMEOUT --> COMPENSATION: Participant Dropout
+    COMPENSATION --> ROUND_ACTIVE: Recovery Success
+    COMPENSATION --> FAILED: Recovery Failed
+    ROUND_COMPLETE --> ROUND_ACTIVE: Next Round Required
+    ROUND_COMPLETE --> FINALIZED: All Rounds Complete
+    FINALIZED --> [*]: Signature Generated
+    FAILED --> [*]: Ceremony Aborted
+```
+
 **Implementation** (Rust):
 ```rust
 pub struct SigningCeremonySaga {
@@ -251,6 +346,33 @@ impl SigningCeremonySaga {
 
 **Answer**: Mobile-optimized threshold signing requires balancing computational overhead with battery and latency constraints. We implement three key optimizations: (1) Precomputation of nonce pairs during idle periods, reducing signing time from 200ms to 80-120ms; (2) Batch processing of signature generation for transaction bundles, achieving 30-50% throughput improvement; (3) Hardware acceleration via platform-specific cryptographic APIs (iOS Secure Enclave, Android KeyStore). The precomputation approach stores pre-generated (k, R) pairs in secure storage, trading 2-3MB storage overhead for 60% faster signing operations. Batch processing aggregates multiple signing requests, reducing network round trips from O(n) to O(1) for transaction bundles. These optimizations maintain the 128-bit security level while achieving sub-100ms signing latency on modern mobile devices. [Citation T1]
 
+**Performance Optimization Flow**:
+```mermaid
+graph TB
+    IDLE[Device Idle] --> PRECOMP[Precompute Nonces]
+    PRECOMP --> CACHE[Secure Cache<br/>2-3MB Storage]
+    
+    TX1[Transaction 1] --> BATCH[Batch Aggregator]
+    TX2[Transaction 2] --> BATCH
+    TX3[Transaction N] --> BATCH
+    
+    BATCH --> OPT{Optimization Strategy}
+    OPT --> |Single TX| SINGLE[Use Cached Nonce]
+    OPT --> |Multiple TX| MULTI[Batch Processing]
+    
+    SINGLE --> CACHE
+    CACHE --> SIGN[Sign with Precomputed]
+    
+    MULTI --> MPC[Single MPC Ceremony]
+    MPC --> SIGS[Multiple Signatures]
+    
+    SIGN --> RESULT[<100ms Latency]
+    SIGS --> RESULT
+    
+    RESULT --> HW[Hardware Acceleration<br/>iOS/Android]
+    HW --> FINAL[Final Signature]
+```
+
 **Implementation** (C++):
 ```cpp
 class MobileSigningOptimizer {
@@ -335,6 +457,49 @@ public:
 **Implementation Timeline**: Storage layer (Weeks 1-3) → Encryption (Weeks 4-5) → Geographic distribution (Weeks 6-8) → Recovery testing (Weeks 9-10)
 
 **Answer**: A robust key shard storage system employs CQRS (Command Query Responsibility Segregation) to separate write operations (shard storage, updates) from read operations (shard retrieval). Each key shard is encrypted with a shard-specific key, which is then encrypted with a master key stored in an HSM. We distribute shards across multiple geographic regions using a consistency model that prioritizes availability over strong consistency (AP from CAP theorem). The system maintains versioning for shard updates, allowing recovery from conflicting writes via vector clocks. For recovery scenarios, we implement a secure ceremony that requires threshold-number of administrative approvals plus cryptographic proofs. This design achieves 99.99% availability with RTO (Recovery Time Objective) of <15 minutes and RPO (Recovery Point Objective) of 0 data loss. [Citation L2]
+
+**CQRS Architecture & Multi-Layer Encryption**:
+```mermaid
+graph TB
+    subgraph Write Path - Commands
+        WRITE[Store Key Shard] --> ENC1[Layer 1: Shard Key<br/>AES-GCM]
+        ENC1 --> ENC2[Layer 2: Master Key<br/>HSM-backed]
+        ENC2 --> DIST[Geographic Distribution]
+        DIST --> R1[Region 1]
+        DIST --> R2[Region 2]
+        DIST --> R3[Region 3]
+        ENC2 --> CMD[Command Store<br/>Audit Trail]
+    end
+    
+    subgraph Read Path - Queries
+        READ[Retrieve Shard] --> QUERY[Query Store<br/>Nearest Region]
+        QUERY --> DEC2[Decrypt Layer 2<br/>Master Key]
+        DEC2 --> DEC1[Decrypt Layer 1<br/>Shard Key]
+        DEC1 --> SHARD[Key Shard]
+    end
+    
+    subgraph Geographic Distribution
+        R1 -.->|Eventual<br/>Consistency| R2
+        R2 -.->|Eventual<br/>Consistency| R3
+        R3 -.->|Eventual<br/>Consistency| R1
+    end
+    
+    HSM[Hardware Security Module] --> ENC2
+    HSM --> DEC2
+```
+
+**Encryption Layers Visualization**:
+```
+┌─────────────────────────────────────────────────────┐
+│ Layer 2: Master Key Encryption (HSM)                │
+│ ┌─────────────────────────────────────────────────┐ │
+│ │ Layer 1: Shard-Specific Key (AES-GCM 256-bit)  │ │
+│ │ ┌─────────────────────────────────────────────┐ │ │
+│ │ │ Raw Key Shard (Cryptographic Material)     │ │ │
+│ │ └─────────────────────────────────────────────┘ │ │
+│ └─────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────┘
+```
 
 **Implementation** (Go):
 ```go
@@ -576,6 +741,29 @@ graph TB
 
 **G5. Hexagonal Architecture** – Architectural pattern separating application core from external concerns via ports and adapters. Related: Clean Architecture, Ports & Adapters
 
+**Concept Relationships**:
+```mermaid
+graph TD
+    MPC[G1: MPC] --> TSS[G2: Threshold Signature]
+    MPC --> SHARD[G3: Cryptographic Shard]
+    TSS --> CEREMONY[G4: Ceremony Orchestration]
+    SHARD --> CEREMONY
+    
+    HEX[G5: Hexagonal Architecture] --> APP[Application Layer]
+    APP --> TSS
+    APP --> SHARD
+    
+    TSS --> ECDSA[ECDSA/EdDSA]
+    SHARD --> PERSIST[Key Persistence]
+    CEREMONY --> STATE[State Machine]
+    
+    style MPC fill:#e1f5ff
+    style TSS fill:#e1f5ff
+    style SHARD fill:#e1f5ff
+    style CEREMONY fill:#ffe1e1
+    style HEX fill:#e1ffe1
+```
+
 ### Tools (≥3)
 
 **T1. OpenZeppelin** – Blockchain security toolkit providing secure smart contract implementations and cryptographic utilities. Updated: 2024. URL: https://openzeppelin.com/
@@ -620,6 +808,37 @@ graph TB
 | Difficulty Distribution | 20%F/40%I/40%A | PASS (1F/2I/2A) |
 
 **Overall**: PASS - All validation checks satisfied
+
+**Performance Improvements Summary**:
+
+| Topic | Metric | Before Optimization | After Optimization | Improvement |
+|-------|--------|---------------------|-------------------|-------------|
+| Modular Architecture | Security Review Cycles | Baseline | 40-60% faster | +50% avg |
+| Ceremony Orchestration | Ceremony Failure Rate | 15% | 2-3% | -85% |
+| Performance Optimization | Signing Latency (Mobile) | 200ms | 80-120ms | -60% |
+| Key Shard Persistence | System Availability | Baseline | 99.99% | +99.99% |
+| Multi-Chain Abstraction | Integration Complexity | O(n×m) | O(n+m) | -70% |
+
+**Implementation Complexity vs Impact Matrix**:
+```
+High Impact │     ┌───────────────┐
+            │     │ Topic 2       │
+            │     │ Ceremony      │
+            │     │ Orchestration │
+            │     └───────────────┘
+            │ ┌───────────────┐   ┌───────────────┐
+            │ │ Topic 4       │   │ Topic 5       │
+            │ │ Key Shard     │   │ Multi-Chain   │
+            │ │ Persistence   │   │ Abstraction   │
+            │ └───────────────┘   └───────────────┘
+            │ ┌───────────────┐
+            │ │ Topic 1       │   ┌───────────────┐
+            │ │ Modular       │   │ Topic 3       │
+Low Impact  │ │ Architecture  │   │ Performance   │
+            │ └───────────────┘   └───────────────┘
+            └─────────────────────────────────────
+             Low Complexity      High Complexity
+```
 
 This architecture-focused Q&A set addresses the blockchain security and MPC wallet development requirements while maintaining the specified content quality standards. The questions progress from foundational to advanced concepts, covering structural decomposition, behavioral orchestration, performance optimization, data persistence, and multi-chain integration - all critical dimensions for the target role.
 

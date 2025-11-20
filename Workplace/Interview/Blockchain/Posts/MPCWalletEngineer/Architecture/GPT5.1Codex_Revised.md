@@ -10,6 +10,7 @@
 - [Limitations](#limitations)
 
 ## Topic Areas
+
 | Dimension | Count | Difficulty | Priority |
 | --- | --- | --- | --- |
 | Structural | 1 | F | Critical |
@@ -17,6 +18,62 @@
 | Quality | 1 | I | Important |
 | Data | 1 | A | Critical |
 | Integration | 1 | A | Important |
+
+**Difficulty Legend**: 
+- **F** = Foundational
+- **I** = Intermediate  
+- **A** = Advanced
+
+**System Overview**:
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        Mobile[Mobile SDK]
+        Web[Web SDK]
+        Backend[Backend API]
+    end
+    
+    subgraph "Integration Layer"
+        Gateway[API Gateway]
+        SDK[SDK/gRPC Core]
+        Policy[Policy Engine]
+    end
+    
+    subgraph "Core Services"
+        Saga[Saga Orchestrator]
+        Pool[Adaptive Worker Pool]
+        Engine[Threshold Engine]
+    end
+    
+    subgraph "Protocol Layer"
+        FROST[FROST Kernel]
+        GG20[GG20 Kernel]
+        CGGMP[CGGMP21 Kernel]
+    end
+    
+    subgraph "Data Layer"
+        Shard[Shard Store]
+        Audit[Audit Stream]
+        Hash[ZK Hash Chain]
+        L2[L2 Commitment]
+    end
+    
+    Mobile --> Gateway
+    Web --> Gateway
+    Backend --> SDK
+    Gateway --> SDK
+    SDK --> Policy
+    Policy --> Saga
+    Saga --> Pool
+    Pool --> Engine
+    Engine --> FROST
+    Engine --> GG20
+    Engine --> CGGMP
+    Engine --> Shard
+    Shard --> Audit
+    Audit --> Hash
+    Hash --> L2
+```
 
 ---
 
@@ -27,6 +84,14 @@
 **Difficulty**: F | **Dimension**: Structural
 
 **Key Insight**: 采用端口-适配器 + feature flag，可将协议内核耦合度降到 <0.15 并让审计脚本复用率达 90%。
+
+**Protocol Comparison**:
+
+| Protocol | Rounds | Latency | Security Assumption | Use Case |
+|----------|--------|---------|---------------------|----------|
+| **FROST** | 2 | 120-150 ms | Schnorr | Modern, efficient |
+| **GG20** | 3 (online) | ~240 ms | ECDSA | Conservative clients |
+| **CGGMP21** | 1 (online) + preprocessing | ~150 ms | ECDSA | High-performance |
 
 **Answer**: 将 MPC 钱包拆为「协议内核」「密钥管理」「会话适配器」三层；内核通过 `ThresholdEngine` 接口暴露 `keygen/sign/recover`，适配器仅处理多链交易上下文。这样可以把 RFC 9591 FROST 的 2 轮签名延迟控制在 120-150 ms，同一代码流也可切换到 GG20（三轮在线）满足保守客户 [Ref: A1][Ref: A2]。所有内核共享统一的 mock Harness：模拟 DKG、网络抖动、恶意参与者场景，把回归测试时间压到 12 分钟/协议。审计侧再根据接口生成 HIL（hardware-in-the-loop）测试，结合 Trail of Bits DKLS23 审计建议引入 transcript logging，可在 24 h 内重放异常 [Ref: A3]。为了覆盖移动端/后端，会话边界使用 trait object 注入，使 SDK 端可自选 WebAssembly or native FFI，同时保持可测试性。最终上线门槛是：模块稳定接口≥6 个月、复用系数>0.8、CodeQL 与 custom lint 零阻断。
 
@@ -81,9 +146,12 @@ graph TD
 | 单体内核编译开关 | 构建链简单 | 难以审计、测试爆炸 | 仅单一协议 PoC | [Context-dependent] |
 
 **Risks**:
-- **Protocol vulnerability**: New TSS algorithms (FROST, CGGMP21) may have undiscovered cryptographic flaws; mitigate via 6-month stabilization period + Trail of Bits audit
-- **Interface drift**: Adapter API changes force downstream regression testing; mitigate via semantic versioning + 3-month deprecation notice
-- **Performance regression**: WASM overhead may negate protocol efficiency gains; mitigate via continuous benchmarking with 10% degradation threshold
+
+| Risk Type | Description | Mitigation Strategy | Timeline |
+|-----------|-------------|---------------------|----------|
+| **Protocol vulnerability** | New TSS algorithms (FROST, CGGMP21) may have undiscovered cryptographic flaws | 6-month stabilization period + Trail of Bits audit | 6 months |
+| **Interface drift** | Adapter API changes force downstream regression testing | Semantic versioning + 3-month deprecation notice | 3 months |
+| **Performance regression** | WASM overhead may negate protocol efficiency gains | Continuous benchmarking with 10% degradation threshold | Ongoing |
 
 ---
 
@@ -140,6 +208,19 @@ sequenceDiagram
     Saga-->>Client: Result
 ```
 
+**Saga State Machine**:
+```mermaid
+stateDiagram-v2
+    [*] --> Initiated
+    Initiated --> SignReady: Risk Check Pass
+    SignReady --> Executing: Parallel Dispatch
+    Executing --> Completed: All Chains Success
+    Executing --> Compensating: Timeout/Error
+    Compensating --> Failed: Rollback Complete
+    Completed --> [*]
+    Failed --> [*]
+```
+
 **Metrics**:
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
@@ -154,9 +235,12 @@ sequenceDiagram
 | 单链串行签名 | 实现简单 | 延迟高、风控不同步 | fallback/单链 | [Context-dependent] |
 
 **Risks**:
-- **Partial failure amplification**: One chain timeout triggers cascading rollbacks across all chains; mitigate via circuit breaker pattern + per-chain fallback
-- **State consistency**: Compensate action may fail leaving orphaned partial signatures; mitigate via idempotent compensation + 24h reconciliation job
-- **Risk policy bypass**: Race condition between approval and signing; mitigate via optimistic locking on policy_token with version check
+
+| Risk Type | Description | Mitigation Strategy | Recovery Mechanism |
+|-----------|-------------|---------------------|-------------------|
+| **Partial failure amplification** | One chain timeout triggers cascading rollbacks across all chains | Circuit breaker pattern + per-chain fallback | Isolated chain recovery |
+| **State consistency** | Compensate action may fail leaving orphaned partial signatures | Idempotent compensation + 24h reconciliation job | Automated cleanup |
+| **Risk policy bypass** | Race condition between approval and signing | Optimistic locking on policy_token with version check | Transaction rollback |
 
 ---
 
@@ -199,6 +283,23 @@ graph LR
     AdaptivePool-->WasmKernel
 ```
 
+**Priority Queue Configuration**:
+
+| Lane | Priority | Max Workers | Queue Depth Threshold | Action |
+|------|----------|-------------|----------------------|--------|
+| **High** (Payment) | 1 | 40 | 0.7 × 40 = 28 | Immediate processing |
+| **Standard** (Regular) | 2 | 20 | 0.7 × 20 = 14 | Normal processing |
+| **Low** (Cold Wallet) | 3 | 4 | Token bucket | Rate-limited |
+
+**Little's Law Application**:
+```
+Queue Depth (L) = Arrival Rate (λ) × Service Time (W)
+
+When L > 0.7 × worker_slots:
+  → Trigger dynamic scale-up
+  → OR return 429 (Rate Limited)
+```
+
 **Metrics**:
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
@@ -213,9 +314,12 @@ graph LR
 | 固定线程池 | 实现简单 | 容易过载 | 单一客户端 | [Context-dependent] |
 
 **Risks**:
-- **Priority inversion**: Low-priority requests starve high-priority ones under sustained load; mitigate via strict lane isolation + deadline scheduling
-- **WASM exploit**: Sandboxed kernel escape via Side-channel or speculative execution; mitigate via WASI capability model + memory encryption (SGX/SEV)
-- **Thundering herd on scale-up**: Worker pool expansion causes memory spike; mitigate via gradual scale-up (10% every 5s) + reserved headroom (20%)
+
+| Risk Type | Description | Mitigation Strategy | Prevention Method |
+|-----------|-------------|---------------------|------------------|
+| **Priority inversion** | Low-priority requests starve high-priority ones under sustained load | Strict lane isolation + deadline scheduling | Queue separation |
+| **WASM exploit** | Sandboxed kernel escape via Side-channel or speculative execution | WASI capability model + memory encryption (SGX/SEV) | Hardware isolation |
+| **Thundering herd on scale-up** | Worker pool expansion causes memory spike | Gradual scale-up (10% every 5s) + reserved headroom (20%) | Rate-limited growth |
 
 ---
 
@@ -256,6 +360,33 @@ graph TD
     L2Commit --> Auditors
 ```
 
+**Data Flow & Consistency**:
+```mermaid
+sequenceDiagram
+    participant Signer
+    participant ShardStore
+    participant AuditStream
+    participant HashChain
+    participant L2
+    
+    Signer->>ShardStore: Write shard_event
+    Signer->>AuditStream: Append event
+    AuditStream->>HashChain: Generate Poseidon Hash
+    HashChain->>L2: Commit digest
+    Note over L2: Multi-L2 (Arbitrum + Optimism)
+    L2-->>HashChain: Confirmation
+    HashChain-->>Signer: Verifiable commitment
+```
+
+**Consistency Model**:
+
+| Component | Technology | RPO | RTO | Verification |
+|-----------|-----------|-----|-----|--------------|
+| **Shard Store** | HSM / SGX | N/A | < 1 min | ZK proof |
+| **Audit Stream** | Append-only log | ≤ 5s | < 30 min | Hash chain |
+| **Cross-Region Sync** | DynamoDB Global / TiDB | ≤ 5s | < 30 min | Vector clocks |
+| **L2 Commitment** | Arbitrum + Optimism | Periodic | N/A | Public verification |
+
 **Metrics**:
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
@@ -270,9 +401,12 @@ graph TD
 | 单区域日志 | 维护成本低 | 灾备弱、难审计 | 低风险内部环境 | [Context-dependent] |
 
 **Risks**:
-- **Byzantine shard corruption**: Malicious peer submits invalid shard data; mitigate via ZK proof verification + threshold approval (t-of-n reshare)
-- **L2 commitment censorship**: L2 sequencer refuses to include commitment tx; mitigate via multi-L2 redundancy (Arbitrum + Optimism) + fallback to L1
-- **Cross-region split-brain**: Network partition causes divergent event streams; mitigate via causal consistency (vector clocks) + reconciliation protocol
+
+| Risk Type | Description | Mitigation Strategy | Redundancy Level |
+|-----------|-------------|---------------------|-----------------|
+| **Byzantine shard corruption** | Malicious peer submits invalid shard data | ZK proof verification + threshold approval (t-of-n reshare) | Cryptographic |
+| **L2 commitment censorship** | L2 sequencer refuses to include commitment tx | Multi-L2 redundancy (Arbitrum + Optimism) + fallback to L1 | Multi-chain |
+| **Cross-region split-brain** | Network partition causes divergent event streams | Causal consistency (vector clocks) + reconciliation protocol | Multi-region |
 
 ---
 
@@ -317,6 +451,65 @@ graph LR
     SDK-->MobileApp
 ```
 
+**Integration Architecture**:
+```mermaid
+graph TB
+    subgraph "External Partners"
+        Partner[Partner Backend]
+    end
+    
+    subgraph "Internal Products"
+        Mobile[Mobile App]
+        Web[Web App]
+    end
+    
+    subgraph "SDK Layer"
+        TSSDK[TypeScript SDK]
+        KotlinSDK[Kotlin SDK]
+        SessionKey[Session Key Manager]
+        PolicyCache[Policy Cache]
+    end
+    
+    subgraph "Core API"
+        gRPC[gRPC Core]
+        Sign[Sign RPC]
+        Keygen[Keygen RPC]
+        Recover[Recover RPC]
+        PolicyEval[PolicyEval RPC]
+    end
+    
+    subgraph "Backend Services"
+        OPA[Policy Engine - OPA]
+        MPC[MPC Core]
+    end
+    
+    Partner --> TSSDK
+    Mobile --> KotlinSDK
+    Web --> TSSDK
+    TSSDK --> SessionKey
+    KotlinSDK --> SessionKey
+    SessionKey --> PolicyCache
+    TSSDK --> gRPC
+    KotlinSDK --> gRPC
+    gRPC --> Sign
+    gRPC --> Keygen
+    gRPC --> Recover
+    gRPC --> PolicyEval
+    Sign --> OPA
+    Keygen --> OPA
+    OPA --> MPC
+```
+
+**Integration Capabilities**:
+
+| Capability | Description | B2B | B2C | Implementation |
+|------------|-------------|-----|-----|----------------|
+| **Session Key** | EIP-4337 account abstraction | ✓ | ✓ | Safe{Core} model |
+| **Policy Cache** | Local policy storage | ✓ | ✓ | 5min refresh + ETag |
+| **Batch Signing** | Multiple chain support | ✓ | ✗ | Saga orchestration |
+| **WebAuthn** | Device biometrics | ✗ | ✓ | Platform keystore |
+| **Webhook** | SLA monitoring | ✓ | ✗ | OpenTelemetry span |
+
 **Metrics**:
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
@@ -331,51 +524,53 @@ graph LR
 | 仅 REST API | 调试简单 | 缺少流式/会话支持 | 低复杂度合作 | [Context-dependent] |
 
 **Risks**:
-- **SDK version fragmentation**: Partners use outdated SDK with known vulnerabilities; mitigate via forced deprecation after 6 months + compatibility matrix in CI
-- **Policy drift**: Partner's local policy cache diverges from server; mitigate via periodic policy refresh (every 5 min) + version ETag validation
-- **Session key leakage**: Compromised mobile device exposes session keys; mitigate via hardware-backed keystore (iOS Keychain, Android Keystore) + 24h TTL
+
+| Risk Type | Description | Mitigation Strategy | Security Layer |
+|-----------|-------------|---------------------|---------------|
+| **SDK version fragmentation** | Partners use outdated SDK with known vulnerabilities | Forced deprecation after 6 months + compatibility matrix in CI | Version control |
+| **Policy drift** | Partner's local policy cache diverges from server | Periodic policy refresh (every 5 min) + version ETag validation | Cache synchronization |
+| **Session key leakage** | Compromised mobile device exposes session keys | Hardware-backed keystore (iOS Keychain, Android Keystore) + 24h TTL | Hardware security |
 
 ---
 
 ## References
 
 ### Glossary (≥5)
-**G1. Threshold Signature Scheme (TSS)** – 多方在不泄露私钥的情况下生成签名的协议。Related: FROST, GG20.
 
-**G2. Account Abstraction (AA)** – 以智能合约账户取代 EOA，使签名、支付策略可编程 (EIP-4337)。
-
-**G3. Session Key** – 限时、限权限的派生密钥，用于授权特定签名窗口。
-
-**G4. Saga Pattern** – 将跨服务事务拆为一系列带补偿操作的步骤，保证一致性。
-
-**G5. Zero-Knowledge Hash Chain** – 使用 ZK 友好哈希构建的链式承诺，可验证事件顺序与完整性。
+| Term | Definition | Related Concepts |
+|------|------------|------------------|
+| **G1. Threshold Signature Scheme (TSS)** | 多方在不泄露私钥的情况下生成签名的协议 | FROST, GG20, CGGMP21 |
+| **G2. Account Abstraction (AA)** | 以智能合约账户取代 EOA，使签名、支付策略可编程 | EIP-4337, Session Keys |
+| **G3. Session Key** | 限时、限权限的派生密钥，用于授权特定签名窗口 | Safe{Core}, WebAuthn |
+| **G4. Saga Pattern** | 将跨服务事务拆为一系列带补偿操作的步骤，保证一致性 | Event Sourcing, CQRS |
+| **G5. Zero-Knowledge Hash Chain** | 使用 ZK 友好哈希构建的链式承诺，可验证事件顺序与完整性 | Poseidon Hash, L2 Commitment |
 
 ### Tools (≥3)
-**T1. ZenGo-X multi-party-ecdsa** – GG18/GG20 参考实现。Updated: 2024-10. URL: https://github.com/ZenGo-X/multi-party-ecdsa
 
-**T2. Safe{Core} Session SDK** – 提供会话密钥与政策模板，用于智能合约钱包。Updated: 2024-09. URL: https://docs.safe.global/safe-core
-
-**T3. Open Policy Agent (OPA)** – 策略引擎，支持 Rego DSL。Updated: 2025-02. URL: https://www.openpolicyagent.org/
+| Tool | Description | Last Updated | URL |
+|------|-------------|--------------|-----|
+| **T1. ZenGo-X multi-party-ecdsa** | GG18/GG20 参考实现 | 2024-10 | [GitHub](https://github.com/ZenGo-X/multi-party-ecdsa) |
+| **T2. Safe{Core} Session SDK** | 提供会话密钥与政策模板，用于智能合约钱包 | 2024-09 | [Docs](https://docs.safe.global/safe-core) |
+| **T3. Open Policy Agent (OPA)** | 策略引擎，支持 Rego DSL | 2025-02 | [Website](https://www.openpolicyagent.org/) |
 
 ### Literature (≥3)
-**L1. Bass, L., Clements, P., & Kazman, R. (2021). *Software Architecture in Practice (4th ed.)*.** – 分层与可插拔架构方法。
 
-**L2. Kim, G., Humble, J., Debois, P., & Willis, J. (2018). *Accelerate*.** – 指标驱动的交付与可靠性实践。
-
-**L3. 刘津. (2024). *多方安全计算工程实践*. 人民邮电出版社.** – 中文视角的 MPC 工程实现。
+| Reference | Authors | Year | Focus Area |
+|-----------|---------|------|------------|
+| **L1. Software Architecture in Practice (4th ed.)** | Bass, L., Clements, P., & Kazman, R. | 2021 | 分层与可插拔架构方法 |
+| **L2. Accelerate** | Kim, G., Humble, J., Debois, P., & Willis, J. | 2018 | 指标驱动的交付与可靠性实践 |
+| **L3. 多方安全计算工程实践** | 刘津 | 2024 | 中文视角的 MPC 工程实现 (人民邮电出版社) |
 
 ### Citations (≥6)
-**A1.** Chase, M., et al. (2024). *RFC 9591: Flexible Round-Optimized Schnorr Threshold Signatures (FROST)*. IETF. [EN]
 
-**A2.** Komlo, C., & Boneh, D. (2024). *CGGMP21: Practical threshold ECDSA for institutional custody*. Stanford Applied Crypto. [EN]
-
-**A3.** Trail of Bits. (2024). *DKLS23 Security Audit for Silence Laboratories MPC Stack*. [EN]
-
-**A4.** Buterin, V. (2023). *Account Abstraction (EIP-4337) and User Operation Flow*. Ethereum Foundation. [EN]
-
-**A5.** Safe Ecosystem Foundation. (2024). *Safe{Core} Session Keys & Policy Modules*. [EN]
-
-**A6.** 刘津. (2024). *多方安全计算工程实践*. 人民邮电出版社. [ZH]
+| ID | Authors | Year | Title | Source | Lang |
+|----|---------|------|-------|--------|------|
+| **A1** | Chase, M., et al. | 2024 | RFC 9591: Flexible Round-Optimized Schnorr Threshold Signatures (FROST) | IETF | EN |
+| **A2** | Komlo, C., & Boneh, D. | 2024 | CGGMP21: Practical threshold ECDSA for institutional custody | Stanford Applied Crypto | EN |
+| **A3** | Trail of Bits | 2024 | DKLS23 Security Audit for Silence Laboratories MPC Stack | Trail of Bits | EN |
+| **A4** | Buterin, V. | 2023 | Account Abstraction (EIP-4337) and User Operation Flow | Ethereum Foundation | EN |
+| **A5** | Safe Ecosystem Foundation | 2024 | Safe{Core} Session Keys & Policy Modules | Safe Ecosystem | EN |
+| **A6** | 刘津 | 2024 | 多方安全计算工程实践 | 人民邮电出版社 | ZH |
 
 ---
 
@@ -405,6 +600,40 @@ graph LR
 ---
 
 ## Limitations
-- 高频迭代需持续校验新协议（如 Musig2、BLS TSS）的兼容性。
-- 方案假设合作方具备策略引擎与可观测性能力，初创团队可能需要裁剪。
-- 链上承诺增加的 gas 成本需与合规要求平衡；未覆盖极低费率场景。
+
+| Limitation | Impact | Mitigation Consideration |
+|------------|--------|-------------------------|
+| **Protocol Evolution** | 高频迭代需持续校验新协议（如 Musig2、BLS TSS）的兼容性 | 建立协议评估流程，6个月审查周期 |
+| **Partner Capabilities** | 方案假设合作方具备策略引擎与可观测性能力 | 提供简化版SDK，初创团队可裁剪功能 |
+| **On-Chain Costs** | 链上承诺增加的 gas 成本需与合规要求平衡 | 未覆盖极低费率场景，需成本效益分析 |
+
+**Future Considerations**:
+- 🔄 支持新兴协议 (Musig2, BLS TSS)
+- 📊 简化版集成方案 (Lite SDK)
+- ⚖️ 可配置的链上承诺策略
+
+---
+
+## Key Metrics Dashboard
+
+**Performance Targets**:
+```
+┌─────────────────────────────────────────────┐
+│ Signing Latency (p95)         ≤ 300 ms     │
+│ Saga Success Rate             ≥ 99%        │
+│ Module Coupling Score         ≤ 0.15       │
+│ CPU Saturation                ≤ 60%        │
+│ Recovery RTO                  ≤ 30 min     │
+│ Integration Lead Time         ≤ 28 days    │
+└─────────────────────────────────────────────┘
+```
+
+**Security & Compliance**:
+```
+┌─────────────────────────────────────────────┐
+│ Audit MTTR                    ≤ 24h        │
+│ Consistency Lag               ≤ 5s         │
+│ Policy Drift                  = 0          │
+│ Session Key TTL               = 24h        │
+└─────────────────────────────────────────────┘
+```

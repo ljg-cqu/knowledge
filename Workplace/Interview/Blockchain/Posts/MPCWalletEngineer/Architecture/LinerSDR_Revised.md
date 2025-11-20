@@ -68,6 +68,59 @@
 
 **gRPC**: High-performance RPC framework using HTTP/2 and Protocol Buffers for efficient binary communication.
 
+**Visual: Key Concepts Relationship**
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
+graph LR
+    MPC[MPC Wallet] --> TSS[Threshold Signature Scheme]
+    MPC --> HA[Hexagonal Architecture]
+    MPC --> CQRS[CQRS Pattern]
+    
+    TSS --> |Implements| Signing[Distributed Signing]
+    TSS --> |Config| TofN[T-of-N Threshold]
+    
+    HA --> |Separates| Core[Core Logic]
+    HA --> |From| Adapters[Blockchain Adapters]
+    
+    CQRS --> |Separates| Commands[Write Operations]
+    CQRS --> |From| Queries[Read Operations]
+    
+    MPC --> Sharding[Data Sharding]
+    MPC --> Communication[API Communication]
+    
+    Sharding --> |Partitions| Data[Multi-Chain Data]
+    Communication --> REST[REST APIs]
+    Communication --> gRPC[gRPC]
+    
+    style MPC fill:#faf6f0,stroke:#a89670,stroke-width:3px,color:#1a1a1a
+    style TSS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style HA fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CQRS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
 ---
 
 ## Topic Areas
@@ -78,6 +131,60 @@
 | Quality     | 1     | I          |
 | Data        | 1     | A          |
 | Integration | 1     | A          |
+
+**Visual: Five Architectural Dimensions Overview**
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
+graph TD
+    subgraph Critical["🔴 Critical Priority"]
+        S[Structural Dimension<br/>Hexagonal Architecture<br/>Difficulty: F]
+        B[Behavioral Dimension<br/>Saga + Circuit Breaker<br/>Difficulty: I]
+    end
+    
+    subgraph Important["🟡 Important Priority"]
+        Q[Quality Dimension<br/>Rate Limiting + Encryption<br/>Difficulty: I]
+        D[Data Dimension<br/>CQRS + Sharding<br/>Difficulty: A]
+    end
+    
+    subgraph Optional["🟢 Optional for MVP"]
+        I[Integration Dimension<br/>REST vs gRPC<br/>Difficulty: A]
+    end
+    
+    S --> |Foundation for| B
+    S --> |Enables| D
+    B --> |Supports| Q
+    D --> |Requires| I
+    Q --> |Uses| I
+    
+    style S fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style Q fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style I fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
 
 ---
 ## Topic 1: Structural Dimension – Modular Wallet Core Using Hexagonal Architecture
@@ -136,6 +243,30 @@ func CreateTransaction(txData, signaturebyte) Transaction { /* ... */ return Tra
 **Diagram**:
 ```mermaid
 
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
 graph TD
     subgraph Infrastructure Layer
         C[Ethereum Adapter]
@@ -152,21 +283,9 @@ graph TD
     B -- Adapters --> C
     B -- Adapters --> D
     B -- Adapters --> E
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    style A fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 **Metrics**:
 | Metric           | Formula                                   | Variables                                   | Target          |
@@ -298,6 +417,30 @@ impl CircuitBreaker {
 **Diagram**:
 ```mermaid
 
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
 graph TD
     A[Signing Request] --> B{Call External Service}
     B -- Failure --> C{Increment Failure Count}
@@ -307,14 +450,9 @@ graph TD
     E -- Failure --> D
     B -- Success --> F
     D -- Request Blocked --> G[Return Error to Client]
-
-
-
-
-
-
-
-
+    
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -383,6 +521,30 @@ async def sign_transaction(request: Request, payload: dict):
 **Diagram**:
 ```mermaid
 
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
 graph TD
     A[Client Request] --> B[API Gateway]
     B --> C{Rate Limiting Middleware}
@@ -391,13 +553,10 @@ graph TD
     E -- Signed Output --> D
     D -- Response --> A
     C -- Throttled Request --> F[429 Too Many Requests]
-
-
-
-
-
-
-
+    
+    style C fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -503,6 +662,30 @@ class QueryService {
 **Diagram**:
 ```mermaid
 
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
 graph TD
     A[Client Request] --> B(Commands: Update Key Share)
     A --> C(Queries: Get Wallet Balance)
@@ -520,22 +703,10 @@ graph TD
         G -- Partitioned Data --> S2[Shard 2: BTC Wallets]
         G -- Partitioned Data --> S3[Shard 3: SOL Wallets]
     end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style H fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -672,6 +843,30 @@ func main() {
 **Diagram**:
 ```mermaid
 
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}
+}%%
 graph TD
     A[External Client - Web/Mobile] -->|HTTP/JSON| B(REST API Gateway)
     B --> C[Service Mesh]
@@ -688,21 +883,10 @@ graph TD
         B
         F
     end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:

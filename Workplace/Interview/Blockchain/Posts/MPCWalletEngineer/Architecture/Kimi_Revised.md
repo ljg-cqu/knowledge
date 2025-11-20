@@ -5,6 +5,77 @@
 **Last Updated**: 2024-12-19  
 **Status**: Final
 
+## System Architecture Overview
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        A1[Mobile SDK]
+        A2[Web SDK]
+        A3[Desktop SDK]
+    end
+    
+    subgraph "Integration Layer - gRPC"
+        B[gRPC Gateway<br/>mTLS + HMAC Auth]
+    end
+    
+    subgraph "Application Layer"
+        C[Saga Orchestrator<br/>Temporal.io]
+        D[Adaptive Rate Limiter<br/>Redis]
+    end
+    
+    subgraph "MPC Core - Hexagonal Architecture"
+        E1[FROST Signer]
+        E2[GG18 Signer]
+        E3[Key Generator]
+        E4[Shard Manager]
+    end
+    
+    subgraph "Data Layer - CQRS"
+        F1[Command Store<br/>PostgreSQL]
+        F2[Event Stream<br/>Kafka + Debezium]
+        F3[Query Store<br/>ClickHouse]
+    end
+    
+    subgraph "Blockchain Adapters"
+        G1[Ethereum]
+        G2[Solana]
+        G3[Bitcoin]
+    end
+    
+    A1 & A2 & A3 --> B
+    B --> D
+    D --> C
+    C --> E1 & E2 & E3 & E4
+    E1 & E2 --> G1 & G2 & G3
+    E3 & E4 --> F1
+    F1 --> F2
+    F2 --> F3
+```
+
+## Implementation Timeline
+
+```mermaid
+gantt
+    title 6-12 Month Implementation Roadmap
+    dateFormat YYYY-MM
+    section Foundation
+    Hexagonal Core Setup           :2024-01, 2m
+    MPC Protocol Integration        :2024-02, 2m
+    section Orchestration
+    Saga Pattern Implementation     :2024-03, 2m
+    Rate Limiting System           :2024-04, 1m
+    section Data Layer
+    CQRS Setup                     :2024-04, 2m
+    Event Sourcing Pipeline        :2024-05, 1m
+    section Integration
+    gRPC SDK Development           :2024-06, 2m
+    Multi-chain Adapters           :2024-07, 2m
+    section Testing & Hardening
+    Security Audit                 :2024-08, 1m
+    Load Testing & Optimization    :2024-09, 1m
+```
+
 ## Contents
 - [Topic 1: Modular MPC Core with Hexagonal Architecture](#topic-1)
 - [Topic 2: Saga Pattern for Distributed Signing Orchestration](#topic-2)
@@ -25,6 +96,56 @@
 | Data | 1 | Advanced |
 | Integration | 1 | Foundational |
 | **Total** | **5** | **20%F/40%I/40%A** |
+
+### Topics Interconnection Map
+
+```mermaid
+graph LR
+    T1[Topic 1<br/>Hexagonal Architecture<br/>🏗️ Structural]
+    T2[Topic 2<br/>Saga Pattern<br/>⚡ Behavioral]
+    T3[Topic 3<br/>Rate Limiting<br/>🛡️ Quality]
+    T4[Topic 4<br/>CQRS<br/>💾 Data]
+    T5[Topic 5<br/>gRPC SDK<br/>🔌 Integration]
+    
+    T1 -.->|provides modularity for| T2
+    T1 -.->|enables adapter pattern for| T5
+    T2 -.->|orchestrates ceremonies through| T5
+    T3 -.->|protects endpoints in| T5
+    T4 -.->|stores events from| T2
+    T4 -.->|provides audit data for| T1
+    
+    style T1 fill:#e1f5ff
+    style T2 fill:#fff4e1
+    style T3 fill:#ffe1e1
+    style T4 fill:#f0e1ff
+    style T5 fill:#e1ffe1
+```
+
+### Performance & Cost Comparison
+
+```mermaid
+graph TD
+    subgraph "Performance Impact"
+        P1["Hexagonal Architecture<br/>-15-20% overhead"]
+        P2["Saga Pattern<br/>+200-500ms latency"]
+        P3["Rate Limiting<br/>+5-8ms overhead"]
+        P4["CQRS<br/>+20-40ms sync lag<br/>10x read speedup"]
+        P5["gRPC Streaming<br/>-70% polling<br/>+15% CPU"]
+    end
+    
+    subgraph "Monthly Cost at 10K QPS"
+        C1["Base: $0"]
+        C2["Redis: $200-400"]
+        C3["ClickHouse: $500-800"]
+        C4["Infrastructure: $300-500"]
+    end
+    
+    style P1 fill:#fff9e6
+    style P2 fill:#ffe6e6
+    style P3 fill:#e6ffe6
+    style P4 fill:#e6f3ff
+    style P5 fill:#f0e6ff
+```
 
 ---
 
@@ -104,6 +225,24 @@ graph TD
 | **Hexagonal Architecture** | High testability; scheme flexibility; runtime adapter swapping | 15-20% perf overhead; 30% more LOC | Multi-chain support; high security audit requirements | [Consensus] Preferred for MPC wallets with >2 chains |
 | **Traditional Layered (DAO/Service)** | Simpler for single-chain; lower latency | Tight coupling; hard to mock cryptography | Single-chain MVP; small team (<3 devs) | [Context-dependent] Acceptable for initial PoC only |
 
+**Decision Tree**:
+
+```mermaid
+graph TD
+    A{Multi-chain<br/>support needed?}
+    A -->|Yes| B{More than<br/>2 chains?}
+    A -->|No| C{Team size?}
+    B -->|Yes| D[✅ Hexagonal Architecture]
+    B -->|No| E{Security<br/>audit required?}
+    E -->|Yes| D
+    E -->|No| F[Consider Traditional]
+    C -->|>3 devs| D
+    C -->|<3 devs| G[Traditional Layered]
+    
+    style D fill:#90EE90
+    style G fill:#FFE4B5
+```
+
 ---
 
 ## Topic 2: Saga Pattern for Distributed Signing Orchestration
@@ -158,7 +297,31 @@ func (w *MPCWorkflow) compensateFailedCeremony(ctx context.Context, ceremonyID s
 }
 ```
 
-**Diagram**:
+**Saga State Machine**:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Registering: StartCeremony
+    Registering --> Broadcasting: AllRegistered
+    Registering --> Compensating: Timeout/Failure
+    Broadcasting --> Aggregating: CommitmentsReceived
+    Broadcasting --> Compensating: Timeout/Failure
+    Aggregating --> Completed: SignatureCreated
+    Aggregating --> Compensating: Timeout/Failure
+    Compensating --> Failed: CompensationComplete
+    Completed --> [*]
+    Failed --> [*]
+    
+    note right of Compensating
+        Rollback actions:
+        - Deregister participants
+        - Revoke commitments
+        - Release locks
+    end note
+```
+
+**Compensation Flow Diagram**:
 
 ```mermaid
 sequenceDiagram
@@ -249,7 +412,7 @@ class AdaptiveRateLimiter:
         return bool(allowed), retry_after
 ```
 
-**Diagram**:
+**Request Flow Diagram**:
 
 ```mermaid
 graph LR
@@ -262,6 +425,37 @@ graph LR
     H --> I[Update eBPF Blacklist]
     C --> J[Behavioral Analysis]
     J -->|legitimate| K[Increase Burst +50%]
+```
+
+**Adaptive Algorithm Flowchart**:
+
+```mermaid
+flowchart TD
+    Start([New Request]) --> Check{Check IP<br/>in eBPF blocklist?}
+    Check -->|Blocked| Drop[Drop at kernel level<br/>0.01ms]
+    Check -->|Pass| Tokens{Redis:<br/>Tokens Available?}
+    Tokens -->|Yes| Deduct[Atomic Deduct Tokens]
+    Tokens -->|No| Analyze{Recent<br/>Failure Rate?}
+    Deduct --> Process[Process Request]
+    Analyze -->|<5%| Temp[429: Retry 100ms]
+    Analyze -->|5-20%| Medium[429: Retry 500ms]
+    Analyze -->|>20%| Block[Add to Blocklist<br/>Update eBPF]
+    Process --> Monitor[Monitor Response]
+    Monitor --> Update{Response Code?}
+    Update -->|2xx| Good[Behavior Score +1]
+    Update -->|4xx/5xx| Bad[Behavior Score -5]
+    Good --> Reward{Score > 100?}
+    Reward -->|Yes| Expand[Increase Token Bucket +50%]
+    Reward -->|No| End([Complete])
+    Bad --> Penalty{Score < -50?}
+    Penalty -->|Yes| Block
+    Penalty -->|No| End
+    Expand --> End
+    
+    style Drop fill:#ff6b6b
+    style Block fill:#ff6b6b
+    style Process fill:#51cf66
+    style Expand fill:#51cf66
 ```
 
 **Metrics**:
@@ -331,7 +525,7 @@ func (q *AuditQueryService) GetSigningHistory(ctx context.Context, userID string
 }
 ```
 
-**Diagram**:
+**CQRS Architecture Diagram**:
 
 ```mermaid
 graph TD
@@ -342,6 +536,55 @@ graph TD
     F[Audit Query] -->|5. Read| E
     G[Recovery Request] -->|6. Read| E
     B -->|7. Immediate Read| H[Live Signing Status]
+```
+
+**Event Sourcing Pipeline**:
+
+```mermaid
+sequenceDiagram
+    participant App as Application
+    participant PG as PostgreSQL<br/>(Command Store)
+    participant Deb as Debezium<br/>(CDC)
+    participant Kafka as Kafka
+    participant Consumer as Event Consumer
+    participant CH as ClickHouse<br/>(Query Store)
+    participant Audit as Auditor
+    
+    App->>PG: INSERT KeyGeneratedEvent<br/>3ms
+    PG-->>App: ACK
+    Note over PG,Deb: WAL streaming
+    PG->>Deb: Binary log change
+    Deb->>Kafka: Publish event<br/>5-10ms
+    Kafka->>Consumer: Consume event
+    Consumer->>Consumer: Transform & Aggregate<br/>5-10ms
+    Consumer->>CH: Batch INSERT<br/>5-10ms
+    Note over CH: Total lag: 20-40ms
+    Audit->>CH: SELECT * FROM signing_events<br/>WHERE...<br/><100ms
+    CH-->>Audit: Aggregated results
+```
+
+**Data Consistency Timeline**:
+
+```mermaid
+gantt
+    title Write-to-Read Consistency Window
+    dateFormat ss
+    axisFormat %S
+    
+    section Write Path
+    Command Write (PG)        :done, w1, 00, 3ms
+    WAL Capture              :active, w2, after w1, 2ms
+    
+    section Event Pipeline
+    Debezium Processing      :crit, p1, after w2, 8ms
+    Kafka Transport          :crit, p2, after p1, 5ms
+    Consumer Transform       :crit, p3, after p2, 7ms
+    ClickHouse Batch Insert  :crit, p4, after p3, 10ms
+    
+    section Read Path
+    Query Available          :milestone, after p4, 0ms
+    
+    Total Lag 20-40ms        :active, after w1, 35ms
 ```
 
 **Metrics**:
@@ -417,7 +660,7 @@ async function signWithMPC(ceremonyID: string, shards: KeyShard[]): Promise<Sign
 }
 ```
 
-**Diagram**:
+**gRPC Streaming Flow**:
 
 ```mermaid
 sequenceDiagram
@@ -439,6 +682,69 @@ sequenceDiagram
     gRPC-->>Client: Stream Push (40ms)
 ```
 
+**Authentication Layers**:
+
+```mermaid
+graph TB
+    subgraph "Layer 1: Network Auth"
+        A1[SPIFFE/SPIRE mTLS]
+        A2[Certificate Rotation<br/>Every 60 min]
+    end
+    
+    subgraph "Layer 2: Session Auth"
+        B1[Session Key Derivation]
+        B2[HMAC-SHA256 Signing]
+    end
+    
+    subgraph "Layer 3: Cryptographic Binding"
+        C1[MPC Ceremony ID]
+        C2[Key Shard Hash]
+    end
+    
+    A1 --> B1
+    A2 --> B1
+    B1 --> B2
+    B2 --> C1
+    C1 --> C2
+    
+    style A1 fill:#e3f2fd
+    style B1 fill:#fff3e0
+    style C1 fill:#f3e5f5
+```
+
+**REST vs gRPC Performance Comparison**:
+
+```mermaid
+graph LR
+    subgraph "REST Polling (500ms interval)"
+        R1["10 sec ceremony<br/>= 20 requests"]
+        R2["95% wasted requests"]
+        R3["Avg latency: 250ms"]
+        R4["Client CPU: 3 hrs/day"]
+    end
+    
+    subgraph "gRPC Streaming"
+        G1["10 sec ceremony<br/>= 5 events"]
+        G2["0% wasted requests"]
+        G3["Avg latency: 45ms"]
+        G4["Client CPU: 0.9 hrs/day"]
+    end
+    
+    R1 -.->|vs| G1
+    R2 -.->|vs| G2
+    R3 -.->|vs| G3
+    R4 -.->|vs| G4
+    
+    style R1 fill:#ffcdd2
+    style R2 fill:#ffcdd2
+    style R3 fill:#ffcdd2
+    style R4 fill:#ffcdd2
+    style G1 fill:#c8e6c9
+    style G2 fill:#c8e6c9
+    style G3 fill:#c8e6c9
+    style G4 fill:#c8e6c9
+```
+
 **Metrics**:
 
 | Metric | Formula | Variables | Target |
@@ -452,6 +758,70 @@ sequenceDiagram
 |----------|------|------|----------|-----------|
 | **gRPC Streaming** | Real-time events; 70% less polling; backpressure | 15% CPU overhead; firewall issues; debug complexity | Mobile/Web wallets; long ceremonies (>5s) | [Consensus] Standard for MPC SDKs |
 | **REST Polling** | Universal support; easy debug; simple client | High latency; wasted requests; no push | Legacy clients; short ops (<500ms); firewalled envs | [Context-dependent] Use only as fallback |
+
+---
+
+## Architecture Summary
+
+### Component Interaction Matrix
+
+| Component | Interacts With | Purpose | Latency Impact | Cost Impact |
+|-----------|----------------|---------|----------------|-------------|
+| **Hexagonal Core** | All Adapters | Protocol isolation | -15-20% | $0 |
+| **Saga Orchestrator** | MPC Core, gRPC | Ceremony coordination | +200-500ms | $300-500/mo |
+| **Rate Limiter** | gRPC Gateway | Abuse prevention | +5-8ms | $200-400/mo |
+| **CQRS System** | Saga Events | Audit trail | +20-40ms (write) | $500-800/mo |
+| **gRPC SDK** | All Clients | Real-time updates | -70% polling | $0 |
+
+### Technology Stack Overview
+
+```mermaid
+graph TB
+    subgraph "Languages"
+        L1[Rust - Core MPC]
+        L2[Go - Orchestration]
+        L3[TypeScript - SDK]
+        L4[Python - Rate Limiting]
+    end
+    
+    subgraph "Infrastructure"
+        I1[PostgreSQL - Commands]
+        I2[Redis - Rate Limits]
+        I3[ClickHouse - Queries]
+        I4[Kafka - Events]
+        I5[Temporal - Workflows]
+    end
+    
+    subgraph "Protocols"
+        P1[FROST - Schnorr TSS]
+        P2[GG18 - ECDSA TSS]
+        P3[gRPC - Communication]
+        P4[mTLS - Security]
+    end
+    
+    L1 & L2 --> I1
+    L2 --> I5
+    L4 --> I2
+    I1 --> I4
+    I4 --> I3
+    L3 --> P3
+    P3 --> P4
+    L1 --> P1 & P2
+    
+    style L1 fill:#ffc9a5
+    style I5 fill:#a5d8ff
+    style P1 fill:#c3fae8
+```
+
+### Quick Reference: Key Metrics Summary
+
+| Pattern | Primary Benefit | Trade-off | Sweet Spot |
+|---------|----------------|-----------|------------|
+| **Hexagonal** | 40-60% faster new chain integration | 15-20% performance overhead | >2 blockchains |
+| **Saga** | 85% fewer rollback failures | 200-500ms eventual consistency | >3 participants |
+| **Adaptive RL** | 95% malicious traffic blocked | 5-8ms per request | >1K QPS |
+| **CQRS** | 10x read performance | 20-40ms write lag | >1M events/day |
+| **gRPC** | 70% less client overhead | 15% CPU + firewall issues | Long ceremonies >5s |
 
 ---
 

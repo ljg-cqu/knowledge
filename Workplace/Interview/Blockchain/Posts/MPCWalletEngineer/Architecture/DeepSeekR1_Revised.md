@@ -28,6 +28,13 @@
 - Target <30s signing latency for custodial wallets
 - Hardware security module (HSM) or secure enclave required for production
 
+| Constraint Type | Requirement | Priority | Impact |
+|-----------------|-------------|----------|--------|
+| **Regulatory** | SOC2, ISO 27001 | Critical | High operational cost |
+| **Performance** | <5s retail, <30s custodial | High | Architecture complexity |
+| **Security** | HSM/Secure Enclave | Critical | Infrastructure cost |
+| **Scale** | 10K-100K wallets | Medium | Linear cost scaling |
+
 **Assumptions**:
 - Teams have intermediate-to-advanced expertise in Rust/Go/TypeScript
 - Cloud infrastructure available (AWS/GCP/Azure) with KMS and regional deployment capabilities
@@ -36,9 +43,41 @@
 
 **Timeline**: Implementation typically requires 6-12 months for full production deployment across all dimensions.
 
+```mermaid
+gantt
+    title MPC Wallet Implementation Timeline
+    dateFormat YYYY-MM
+    axisFormat %b %Y
+    
+    section Foundation
+    Multi-region Setup        :2024-01, 2M
+    Crypto Cluster Setup      :2024-02, 2M
+    
+    section Core Features
+    Protocol Integration      :2024-03, 3M
+    Security Optimization     :2024-04, 2M
+    Key Persistence Layer     :2024-05, 2M
+    
+    section Integration
+    SDK Development           :2024-06, 2M
+    Testing & Audit          :2024-07, 2M
+    
+    section Production
+    Compliance Certification  :2024-08, 3M
+    Production Deployment     :2024-10, 1M
+```
+
 **Stakeholders**: Security engineers, backend engineers, DevOps teams, compliance officers, product managers.
 
 **Resources**: Requires dedicated security engineering team (2+ engineers), backend development team (3-5 engineers), and DevOps support (1-2 engineers).
+
+```mermaid
+pie title Team Resource Allocation
+    "Security Engineering (30%)" : 30
+    "Backend Engineering (40%)" : 40
+    "DevOps/SRE (20%)" : 20
+    "Compliance (10%)" : 10
+```
 
 ---
 
@@ -63,6 +102,52 @@
 - **Security Compliance**: Pass rate for SOC2/ISO 27001 audit controls
 - **Integration Time**: Developer time from SDK installation to first successful transaction (target: <4 hours)
 
+**Key Formulas**:
+
+$$
+\text{Availability} = \frac{\text{Total Minutes} - \text{Downtime Minutes}}{\text{Total Minutes}} \times 100\%
+$$
+
+$$
+\text{Blast Radius} = \frac{\text{Keys Compromised in Failure}}{\text{Total Keys}} \times 100\%
+$$
+
+$$
+\text{Threshold Security}: \text{Signature requires } t \text{ out of } n \text{ shares, where } t \leq n
+$$
+
+**Visual Metrics Comparison**:
+```mermaid
+graph LR
+    subgraph "Baseline Metrics"
+        BL[30s P95 Latency] --> BA[99.9% Availability]
+        BA --> BR[100% Blast Radius]
+        BR --> BR_TIME[4-24h Recovery]
+    end
+    
+    subgraph "Target Metrics"
+        TL[5s P95 Latency] --> TA[99.99% Availability]
+        TA --> TR[30-50% Blast Radius]
+        TR --> TR_TIME[<1h Auto-failover]
+    end
+    
+    subgraph "Improvements"
+        I1[83% Latency Reduction]
+        I2[10x Better Uptime]
+        I3[50-70% Risk Reduction]
+        I4[4-24x Faster Recovery]
+    end
+    
+    BL -.-> TL
+    TL --> I1
+    BA -.-> TA
+    TA --> I2
+    BR -.-> TR
+    TR --> I3
+    BR_TIME -.-> TR_TIME
+    TR_TIME --> I4
+```
+
 ---
 
 ## Topic Areas
@@ -75,6 +160,92 @@
 | Integration | 1 | Advanced |
 
 **Note on Difficulty**: This document focuses exclusively on advanced topics for senior MPC wallet engineers. For foundational MPC concepts (basic threshold signatures, key generation), see introductory cryptography courses. For intermediate implementation patterns (single-region deployment, basic protocol integration), these are assumed prerequisites for the topics covered here.
+
+**Architecture Overview**:
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        SDK[MPC Wallet SDK<br/>TypeScript/Go/Rust]
+        MOBILE[Mobile Apps]
+        WEB[Web Apps]
+    end
+    
+    subgraph "Integration Layer (Topic 5)"
+        API[REST/gRPC API]
+        PS[Protocol Selector]
+        TB[Transaction Builders]
+    end
+    
+    subgraph "Business Logic Layer"
+        AA[Account Abstraction]
+        SK[Session Keys]
+        SR[Social Recovery]
+    end
+    
+    subgraph "Chain Adapters (Topic 1)"
+        ETH[Ethereum]
+        SOL[Solana]
+        EVM[EVM L2s]
+    end
+    
+    subgraph "Protocol Layer (Topic 2)"
+        GG20[GG20 Protocol<br/>30s signing]
+        FROST[FROST Protocol<br/>5s signing]
+    end
+    
+    subgraph "Optimization Layer (Topic 3)"
+        CACHE[Pre-computation<br/>& Caching]
+        HW[Hardware Accel<br/>AWS Nitro/SGX]
+        ADAPT[Adaptive Timeouts]
+    end
+    
+    subgraph "Crypto Clusters (Multi-Region)"
+        R1[Region 1<br/>Crypto Cluster]
+        R2[Region 2<br/>Crypto Cluster]
+        R3[Region 3<br/>Crypto Cluster]
+    end
+    
+    subgraph "Persistence Layer (Topic 4)"
+        KMS1[KMS Region 1]
+        KMS2[KMS Region 2]
+        KMS3[KMS Region 3]
+        SHARD1[(Encrypted<br/>Shard 1)]
+        SHARD2[(Encrypted<br/>Shard 2)]
+        SHARD3[(Encrypted<br/>Shard 3)]
+    end
+    
+    SDK --> API
+    MOBILE --> API
+    WEB --> API
+    API --> PS
+    PS --> AA
+    PS --> SK
+    AA --> ETH
+    AA --> SOL
+    ETH --> GG20
+    SOL --> FROST
+    GG20 --> CACHE
+    FROST --> CACHE
+    CACHE --> HW
+    HW --> R1
+    HW --> R2
+    HW --> R3
+    R1 --> KMS1
+    R2 --> KMS2
+    R3 --> KMS3
+    KMS1 --> SHARD1
+    KMS2 --> SHARD2
+    KMS3 --> SHARD3
+    
+    style SDK fill:#87CEEB
+    style CACHE fill:#FFD700
+    style R1 fill:#90EE90
+    style R2 fill:#90EE90
+    style R3 fill:#90EE90
+    style SHARD1 fill:#FF6347
+    style SHARD2 fill:#FF6347
+    style SHARD3 fill:#FF6347
+```
 
 ---
 
@@ -155,6 +326,38 @@ graph TB
 
 **Key Insight**: GG20 for high-security custodial use, FROST for low-latency retail wallets
 
+**Threshold Signature Concept**:
+```mermaid
+graph TB
+    subgraph "3-of-5 Threshold Signature Example"
+        KEY[Private Key<br/>Split into 5 shares] --> S1[Share 1<br/>Region A]
+        KEY --> S2[Share 2<br/>Region B]
+        KEY --> S3[Share 3<br/>Region C]
+        KEY --> S4[Share 4<br/>Region D]
+        KEY --> S5[Share 5<br/>Region E]
+        
+        S1 --> SIGN[Combine any 3 shares<br/>to create signature]
+        S2 --> SIGN
+        S3 --> SIGN
+        
+        S4 -.backup.-> BACKUP[Not needed but available]
+        S5 -.backup.-> BACKUP
+        
+        SIGN --> VALID[✓ Valid Signature]
+    end
+    
+    subgraph "Security Properties"
+        P1[Compromise 1-2 shares:<br/>❌ Cannot sign]
+        P2[Lose 1-2 shares:<br/>✓ Still operational]
+        P3[Need 3+ shares:<br/>✓ Can sign transactions]
+    end
+    
+    style VALID fill:#90EE90
+    style P1 fill:#FF6347
+    style P2 fill:#90EE90
+    style P3 fill:#90EE90
+```
+
 **Answer**: Implement a protocol adapter pattern with GG20 for custodial wallets requiring UC-security guarantees and FROST for retail wallets prioritizing latency. GG20 provides proven UC-security with 3-round keygen and 2-round signing, ideal for institutional custody where security outweighs latency concerns. FROST offers 1-round signing with pre-processing, reducing signing latency by 50% for high-frequency retail transactions. Use a protocol selector based on wallet type, transaction volume, and security requirements. Maintain backward compatibility by supporting both protocols simultaneously (A3, A4).
 
 **Implementation** (Go):
@@ -214,6 +417,34 @@ sequenceDiagram
 | GG20 | UC-secure proven | 30s | High | Custodial | Team consensus |
 | FROST | Standard security | 5s | Medium | Retail | Context-dependent |
 | Hybrid | Best of both | Variable | Very High | Mixed | - |
+
+**Protocol Performance Comparison**:
+```mermaid
+graph LR
+    subgraph "GG20 Protocol"
+        GG20_SEC[🔒 UC-Security<br/>Proven] --> GG20_ROUND[3-round Keygen<br/>2-round Signing]
+        GG20_ROUND --> GG20_LAT[⏱️ 30s Latency]
+        GG20_LAT --> GG20_USE[💼 Custodial<br/>Institutional]
+    end
+    
+    subgraph "FROST Protocol"
+        FROST_SEC[🔒 Standard Security<br/>Schnorr-based] --> FROST_ROUND[1-round Signing<br/>with Pre-processing]
+        FROST_ROUND --> FROST_LAT[⚡ 5s Latency]
+        FROST_LAT --> FROST_USE[🛍️ Retail<br/>High-frequency]
+    end
+    
+    subgraph "Selection Criteria"
+        CRIT1[Security Priority<br/>→ GG20]
+        CRIT2[Latency Priority<br/>→ FROST]
+        CRIT3[Transaction Volume<br/>< 1000/day → GG20<br/>> 1000/day → FROST]
+    end
+    
+    GG20_USE --> CRIT1
+    FROST_USE --> CRIT2
+    
+    style GG20_SEC fill:#FFD700
+    style FROST_LAT fill:#90EE90
+```
 
 ---
 
@@ -295,6 +526,39 @@ graph LR
 | Hardware acceleration | 40% speedup | Requires attestation | Medium | Enterprise | Context-dependent |
 | Adaptive caching | 60% total reduction | TTL-dependent | High | Variable load | - |
 | Software-only | Baseline | Full security | Low | Simple deployments | - |
+
+**Optimization Stack Impact**:
+```mermaid
+graph TB
+    subgraph "Performance Optimization Layers"
+        BASE[Baseline Software<br/>100% latency] --> LAYER1[+ Pre-computation<br/>-30% → 70%]
+        LAYER1 --> LAYER2[+ Hardware Accel<br/>-40% of 70% = -28% → 42%]
+        LAYER2 --> LAYER3[+ Adaptive Caching<br/>-5% → 37%]
+        LAYER3 --> FINAL[Final Performance<br/>63% reduction<br/>~5s retail signing]
+    end
+    
+    subgraph "Security Boundaries"
+        SEC1[✓ Nonces Pre-computed<br/>Non-sensitive data]
+        SEC2[✓ HW Attestation<br/>Verified enclave]
+        SEC3[✓ TTL Expiration<br/>< 60s cache lifetime]
+    end
+    
+    LAYER1 -.secured by.-> SEC1
+    LAYER2 -.secured by.-> SEC2
+    LAYER3 -.secured by.-> SEC3
+    
+    subgraph "Cost-Benefit Analysis"
+        CB1[Pre-computation: $0 cost<br/>30% improvement]
+        CB2[HW Accel: $3K/month<br/>40% improvement]
+        CB3[Caching: $0 cost<br/>Additional 5% improvement]
+    end
+    
+    style BASE fill:#FF6347
+    style LAYER1 fill:#FFA500
+    style LAYER2 fill:#FFD700
+    style LAYER3 fill:#90EE90
+    style FINAL fill:#228B22
+```
 
 ---
 
@@ -388,6 +652,40 @@ graph TB
 | Single region | Medium | Low latency | Low | 99.9% | - |
 | Hybrid 2/3 regions | High | Medium | Medium | 99.95% | Context-dependent |
 | Cloud-only | Standard | Variable | Variable | Cloud-dependent | - |
+
+**Shard Encryption & Recovery Flow**:
+```mermaid
+sequenceDiagram
+    participant KG as Key Generator
+    participant E as Encryption Layer
+    participant KMS1 as KMS Region 1
+    participant KMS2 as KMS Region 2
+    participant KMS3 as KMS Region 3
+    participant S1 as Storage Region 1
+    participant S2 as Storage Region 2
+    participant S3 as Storage Region 3
+    participant R as Recovery Service
+    
+    Note over KG,R: STORAGE FLOW
+    KG->>E: Generate 3 key shards (2-of-3)
+    E->>KMS1: Encrypt Shard 1 with Region 1 key
+    E->>KMS2: Encrypt Shard 2 with Region 2 key
+    E->>KMS3: Encrypt Shard 3 with Region 3 key
+    KMS1->>S1: Store encrypted shard 1
+    KMS2->>S2: Store encrypted shard 2
+    KMS3->>S3: Store encrypted shard 3
+    
+    Note over KG,R: RECOVERY FLOW (2-of-3)
+    R->>S1: Request shard 1
+    R->>S3: Request shard 3
+    S1->>KMS1: Decrypt with Region 1 key
+    S3->>KMS3: Decrypt with Region 3 key
+    KMS1->>R: Decrypted shard 1
+    KMS3->>R: Decrypted shard 3
+    R->>R: Reconstruct key (2-of-3 sufficient)
+    
+    Note over S2: Shard 2 not needed<br/>↓ 50% single-region risk
+```
 
 ---
 
@@ -497,6 +795,31 @@ graph TB
 - **ISO 27001**: Information security management system certification. Requires documented security policies and regular audits. Cost: $30K-100K annually.
 - **FIPS 140-2 Level 3**: Hardware security requirements for cryptographic modules. AWS Nitro Enclaves and Intel SGX provide compliant environments.
 
+```mermaid
+graph TB
+    subgraph "Compliance Requirements"
+        SOC2[SOC 2 Type II<br/>$50K-150K/year] --> KM[Key Management Controls]
+        SOC2 --> AL[Access Logging]
+        SOC2 --> IR[Incident Response]
+        
+        ISO[ISO 27001<br/>$30K-100K/year] --> SP[Security Policies]
+        ISO --> RA[Regular Audits]
+        
+        FIPS[FIPS 140-2 Level 3] --> AWS[AWS Nitro]
+        FIPS --> SGX[Intel SGX]
+    end
+    
+    subgraph "Compliance Cost Tiers"
+        STARTUP[Startup: $80K/year]
+        GROWTH[Growth: $150K/year]
+        ENTERPRISE[Enterprise: $250K/year]
+    end
+    
+    SOC2 --> STARTUP
+    ISO --> GROWTH
+    FIPS --> ENTERPRISE
+```
+
 **Regulatory Reporting**: Custodial wallets may require transaction monitoring and suspicious activity reporting depending on jurisdiction. Integrate with compliance tooling (Chainalysis, Elliptic) for AML/KYC requirements.
 
 ---
@@ -510,15 +833,55 @@ graph TB
 - **Networking**: Cross-region bandwidth $5K-10K/month
 - **Total**: ~$50K-100K/month infrastructure baseline
 
+```mermaid
+pie title Monthly Infrastructure Cost Breakdown ($75K avg)
+    "Compute 50-60%" : 40
+    "Networking 15-20%" : 10
+    "KMS 10-15%" : 8
+    "Storage 5-10%" : 4
+    "Monitoring & Tools 10%" : 5
+```
+
 **Scaling Costs** (per additional 10K wallets):
 - Incremental compute: +$8K-15K/month
 - Incremental storage: +$1K-3K/month
 - Linear scaling up to 100K wallets, then requires architecture review
 
+```mermaid
+graph LR
+    subgraph "Cost Scaling Model"
+        W10K[10K Wallets<br/>$75K/month] --> W20K[20K Wallets<br/>$86K/month]
+        W20K --> W50K[50K Wallets<br/>$119K/month]
+        W50K --> W100K[100K Wallets<br/>$207K/month]
+        W100K --> REVIEW[Architecture Review<br/>Non-linear scaling]
+    end
+    
+    style W10K fill:#90EE90
+    style W20K fill:#FFD700
+    style W50K fill:#FFA500
+    style W100K fill:#FF6347
+    style REVIEW fill:#DC143C
+```
+
 **Optimization Opportunities**:
 - Pre-computation reduces signing compute by 30% ($5K-10K/month savings)
 - Hardware acceleration (AWS Nitro) costs +$3K/month but saves 20% total compute
 - Regional consolidation trades resilience for 40% cost reduction (not recommended for production)
+
+```mermaid
+graph TB
+    subgraph "Cost Optimization Impact"
+        BASE[Baseline: $75K/month] --> OPT1[+ Pre-computation<br/>-$7.5K/month]
+        OPT1 --> OPT2[+ HW Acceleration<br/>+$3K, -$15K = -$12K]
+        OPT2 --> FINAL[Optimized: $55K/month<br/>27% savings]
+    end
+    
+    BASE -.Regional Consolidation<br/>-$30K but ↓ resilience.-> NOTRECOMMENDED[NOT RECOMMENDED<br/>for production]
+    
+    style BASE fill:#FFD700
+    style FINAL fill:#90EE90
+    style NOTRECOMMENDED fill:#FF6347
+```
 
 ---
 
@@ -548,6 +911,36 @@ graph TB
 - Data privacy and transfer agreements
 - License compliance for cryptographic libraries
 
+```mermaid
+graph TB
+    subgraph "Security Team (2-3 engineers)"
+        SE1[MPC Protocol<br/>Expertise] --> SE2[Threat<br/>Modeling]
+        SE2 --> SE3[HSM/Enclave<br/>Management]
+        SE3 --> SE4[Incident<br/>Response]
+    end
+    
+    subgraph "Backend Team (3-5 engineers)"
+        BE1[Distributed<br/>Systems] --> BE2[Blockchain<br/>Integration]
+        BE2 --> BE3[Performance<br/>Optimization]
+        BE3 --> BE4[API & SDK<br/>Design]
+    end
+    
+    subgraph "DevOps/SRE (1-2 engineers)"
+        DO1[Multi-region<br/>Deployment] --> DO2[Monitoring &<br/>Alerting]
+        DO2 --> DO3[Disaster<br/>Recovery]
+        DO3 --> DO4[Security<br/>Hardening]
+    end
+    
+    subgraph "Compliance (0.5-1 FTE)"
+        CO1[Regulatory<br/>Tracking] --> CO2[Audit<br/>Coordination]
+        CO2 --> CO3[Data Privacy<br/>Agreements]
+    end
+    
+    SE4 -.collaboration.-> BE4
+    BE4 -.collaboration.-> DO4
+    DO4 -.collaboration.-> CO3
+```
+
 ---
 
 ### Incident Response
@@ -557,11 +950,67 @@ graph TB
 - **Region failure**: Automatic failover to healthy regions within 60 seconds. RTO: <5 minutes, RPO: <1 minute.
 - **Coordinated attack**: Emergency key rotation across all regions. Target SLA: <4 hours with customer notification.
 
+```mermaid
+graph TB
+    subgraph "Incident Scenarios"
+        SC[Single Shard<br/>Compromise] --> SC_IMPACT[No Immediate Impact]
+        SC_IMPACT --> SC_ACTION[Rotate within 24h]
+        
+        RF[Region<br/>Failure] --> RF_IMPACT[Auto-failover<br/>60 seconds]
+        RF_IMPACT --> RF_SLA[RTO: <5min<br/>RPO: <1min]
+        
+        CA[Coordinated<br/>Attack] --> CA_IMPACT[Emergency Alert]
+        CA_IMPACT --> CA_ACTION[Full Key Rotation<br/>< 4 hours]
+    end
+    
+    subgraph "Severity Classification"
+        P0[P0: Key Compromise<br/>Immediate escalation]
+        P1[P1: Region Failure<br/>Auto-response]
+        P2[P2: Performance Degradation<br/>24h resolution]
+    end
+    
+    CA --> P0
+    RF --> P1
+    SC --> P2
+    
+    style P0 fill:#FF6347
+    style P1 fill:#FFA500
+    style P2 fill:#FFD700
+```
+
 **Playbook Requirements**:
 1. **Detection**: Real-time monitoring for abnormal signing patterns, unauthorized access attempts, and regional outages
 2. **Escalation**: 24/7 on-call rotation with P0 (key compromise) and P1 (region failure) severity levels
 3. **Communication**: Customer notification templates for security incidents, planned maintenance, and post-mortems
 4. **Recovery**: Automated shard rotation scripts, manual key ceremony procedures, disaster recovery runbooks
+
+```mermaid
+sequenceDiagram
+    participant M as Monitoring System
+    participant A as Alert Manager
+    participant OC as On-Call Engineer
+    participant T as Security Team
+    participant C as Customers
+    
+    M->>A: Detect anomaly
+    A->>A: Classify severity (P0/P1/P2)
+    
+    alt P0: Key Compromise
+        A->>OC: Immediate page
+        OC->>T: Escalate to security team
+        T->>T: Initiate emergency key rotation
+        T->>C: Customer notification
+        T->>T: Complete rotation < 4h
+    else P1: Region Failure
+        A->>OC: Alert on-call
+        A->>A: Trigger auto-failover
+        OC->>OC: Verify failover success
+        OC->>C: Status update if prolonged
+    else P2: Performance Issue
+        A->>OC: Low-priority alert
+        OC->>OC: Investigate within 24h
+    end
+```
 
 **Monitoring Metrics**:
 - Signing latency P50/P95/P99 per region
@@ -569,11 +1018,135 @@ graph TB
 - KMS key access patterns (anomaly detection)
 - Cross-region replication lag (alert threshold: >30s)
 
+```mermaid
+graph TB
+    subgraph "Real-time Monitoring Dashboard"
+        subgraph "Performance Metrics"
+            PM1[Signing Latency<br/>P50/P95/P99]
+            PM2[Transaction<br/>Throughput]
+            PM3[Cache Hit<br/>Rate]
+        end
+        
+        subgraph "Security Metrics"
+            SM1[Failed Sign<br/>Attempts > 10/min]
+            SM2[KMS Access<br/>Anomalies]
+            SM3[Unauthorized<br/>Access Attempts]
+        end
+        
+        subgraph "Availability Metrics"
+            AM1[Regional<br/>Health Status]
+            AM2[Replication Lag<br/>> 30s alert]
+            AM3[Failover<br/>Response Time]
+        end
+    end
+    
+    subgraph "Alert Thresholds"
+        T1[🔴 Critical: P0 Immediate]
+        T2[🟠 High: P1 < 5min]
+        T3[🟡 Medium: P2 < 1h]
+    end
+    
+    SM1 --> T1
+    SM2 --> T1
+    SM3 --> T1
+    AM2 --> T2
+    PM1 --> T3
+    
+    style T1 fill:#FF6347
+    style T2 fill:#FFA500
+    style T3 fill:#FFD700
+```
+
 **Testing Cadence**:
 - Disaster recovery drill: Quarterly
 - Region failover test: Monthly  
 - Security incident simulation: Quarterly
 - Full key rotation test: Annually
+
+```mermaid
+gantt
+    title Incident Response Testing Calendar
+    dateFormat YYYY-MM
+    axisFormat %b
+    
+    section Monthly
+    Region Failover Test    :milestone, m1, 2024-01, 0d
+    Region Failover Test    :milestone, m2, 2024-02, 0d
+    Region Failover Test    :milestone, m3, 2024-03, 0d
+    Region Failover Test    :milestone, m4, 2024-04, 0d
+    Region Failover Test    :milestone, m5, 2024-05, 0d
+    Region Failover Test    :milestone, m6, 2024-06, 0d
+    Region Failover Test    :milestone, m7, 2024-07, 0d
+    Region Failover Test    :milestone, m8, 2024-08, 0d
+    Region Failover Test    :milestone, m9, 2024-09, 0d
+    Region Failover Test    :milestone, m10, 2024-10, 0d
+    Region Failover Test    :milestone, m11, 2024-11, 0d
+    Region Failover Test    :milestone, m12, 2024-12, 0d
+    
+    section Quarterly
+    DR Drill                :crit, q1, 2024-03, 1d
+    Security Simulation     :crit, q2, 2024-03, 1d
+    DR Drill                :crit, q3, 2024-06, 1d
+    Security Simulation     :crit, q4, 2024-06, 1d
+    DR Drill                :crit, q5, 2024-09, 1d
+    Security Simulation     :crit, q6, 2024-09, 1d
+    DR Drill                :crit, q7, 2024-12, 1d
+    Security Simulation     :crit, q8, 2024-12, 1d
+    
+    section Annual
+    Full Key Rotation Test  :active, 2024-06, 2d
+```
+
+---
+
+## Architecture Summary
+
+**Success Criteria Achievement Mapping**:
+| Success Metric | Baseline | Target | Primary Topics | Key Techniques |
+|----------------|----------|--------|----------------|----------------|
+| **Signing Latency** | 30s P95 | <5s P95 | Topic 2 (Protocols), Topic 3 (Optimization) | FROST protocol, pre-computation, HW acceleration |
+| **Availability** | 99.9% | 99.99% | Topic 1 (Multi-region), Topic 4 (Persistence) | Active-active failover, 2-of-3 quorum recovery |
+| **Blast Radius** | 100% | 30-50% | Topic 1 (Modularity), Topic 4 (Sharding) | Regional isolation, encrypted multi-region shards |
+| **Recovery Time** | 4-24h | <1h | Topic 1 (Failover), Topic 4 (Automation) | Auto-failover (60s), automated rotation scripts |
+| **Integration Time** | Baseline | <4h | Topic 5 (SDK) | Async-first SDK, type-safe builders, retry logic |
+
+```mermaid
+graph TB
+    subgraph "Implementation Roadmap"
+        M1[Month 1-2<br/>Multi-region Setup] --> M3[Month 3-5<br/>Protocol Integration<br/>+ Optimization]
+        M3 --> M6[Month 6-7<br/>Persistence Layer<br/>+ SDK]
+        M6 --> M8[Month 8-10<br/>Compliance<br/>Certification]
+        M8 --> M11[Month 11-12<br/>Production Deploy<br/>+ Monitoring]
+    end
+    
+    subgraph "Resource Requirements"
+        SEC[Security: 2-3 FTE]
+        BACK[Backend: 3-5 FTE]
+        OPS[DevOps: 1-2 FTE]
+        COMP[Compliance: 0.5-1 FTE]
+    end
+    
+    subgraph "Cost Trajectory"
+        C1[Months 1-6<br/>$30K-50K/month<br/>Development]
+        C2[Months 7-10<br/>$50K-75K/month<br/>+ Compliance]
+        C3[Months 11+<br/>$75K-100K/month<br/>Production]
+    end
+    
+    M1 -.requires.-> SEC
+    M1 -.requires.-> BACK
+    M3 -.requires.-> OPS
+    M8 -.requires.-> COMP
+    
+    M1 --> C1
+    M6 --> C2
+    M11 --> C3
+    
+    style M1 fill:#87CEEB
+    style M3 fill:#FFD700
+    style M6 fill:#FFA500
+    style M8 fill:#FF6347
+    style M11 fill:#90EE90
+```
 
 ---
 

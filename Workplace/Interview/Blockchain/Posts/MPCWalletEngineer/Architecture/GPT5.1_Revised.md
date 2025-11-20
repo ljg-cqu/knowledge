@@ -21,6 +21,74 @@
 | Data | 1 | A |
 | Integration | 1 | I |
 
+**Difficulty Legend**: **F** = Foundation (core concepts), **I** = Intermediate (production patterns), **A** = Advanced (system design)
+
+### System Architecture Overview
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        Mobile[Mobile Apps]
+        Web[Web Apps]
+        Backend[Backend Services]
+    end
+    
+    subgraph "API & Gateway Layer"
+        SDK[Wallet SDK]
+        API[Public API]
+        Edge[Edge Gateway + Rate Limiting]
+    end
+    
+    subgraph "Orchestration & Policy Layer"
+        Risk[Risk & Policy Engine]
+        Orch[Wallet Orchestration]
+        FSM[State Machine Manager]
+        Brownout[Brownout Controller]
+    end
+    
+    subgraph "Core Services"
+        Crypto[Crypto Core - MPC Cluster]
+        EventStore[(Encrypted Event Store)]
+        ChainGW[Chain Gateway]
+    end
+    
+    subgraph "Chain Adapters"
+        PluginReg[Plugin Registry]
+        ETH[ETH Plugin]
+        BTC[BTC Plugin]
+        SOL[SOL Plugin]
+    end
+    
+    subgraph "Read Models"
+        Devices[(Active Devices)]
+        Guardians[(Guardians)]
+        History[(Audit History)]
+    end
+    
+    Mobile --> SDK
+    Web --> SDK
+    Backend --> API
+    SDK --> Edge
+    API --> Edge
+    Edge --> Risk
+    Risk --> Orch
+    Orch --> FSM
+    Orch --> Brownout
+    FSM --> Crypto
+    Orch --> EventStore
+    EventStore --> Devices
+    EventStore --> Guardians
+    EventStore --> History
+    Orch --> ChainGW
+    ChainGW --> PluginReg
+    PluginReg --> ETH
+    PluginReg --> BTC
+    PluginReg --> SOL
+    
+    style Crypto fill:#f96,stroke:#333,stroke-width:3px
+    style EventStore fill:#9cf,stroke:#333,stroke-width:2px
+    style FSM fill:#fc9,stroke:#333,stroke-width:2px
+```
+
 ---
 
 ### Topic 1: Multi-region, multi-tenant MPC wallet core with crypto isolation
@@ -34,6 +102,14 @@ Answer:
 Model the system as four bounded contexts: **Crypto Core**, **Wallet Orchestration**, **Chain Gateway**, and **Risk & Policy**. Crypto Core runs MPC protocols (GG18/FROST-style threshold signatures) in hardened clusters per region; it exposes ports like `StartSession`, `PartialSign`, and `Finalize`, but never leaks raw shares or full private keys. Wallet Orchestration owns business flows (AA, session keys, spending limits, social recovery) and persists session state and policies; it depends only on Crypto Core ports, not protocol internals. Chain Gateway hosts chain adapters (EVM, BTC, Solana, future L2s) responsible for transaction encoding/broadcast and fee estimation. Risk & Policy enforces device attestation, multi-factor verification, and limits before orchestration submits work to Crypto Core.  
 
 Structuring the platform this way lets you deploy Crypto Core in isolated security zones with stricter SLAs and audits, while Chain Gateway and Risk & Policy scale elastically with traffic. Trade-offs: extra hops (+3–7ms intra-region), more services to operate, and the need for clear ownership. Metrics: cross-region failover <5 minutes (RTO), p95 in-region sign latency <250ms, and no path where a single service can unilaterally exfiltrate usable keys. [A1][A2][A4]
+
+Bounded Context Responsibilities:
+| Context | Primary Responsibility | Key Operations | Security Zone | Scaling Strategy |
+|---------|----------------------|----------------|---------------|------------------|
+| **Crypto Core** | MPC protocol execution | StartSession, PartialSign, Finalize | **High** - Isolated network, HSM integration | Vertical + regional replication |
+| **Wallet Orchestration** | Business logic, session management | CreateWallet, ApplyPolicy, RecoveryFlow | Medium - VPC isolated | Horizontal autoscaling |
+| **Chain Gateway** | Chain-specific transaction handling | BuildTx, Broadcast, EstimateFee | Low - Public endpoints | Horizontal autoscaling |
+| **Risk & Policy** | Authentication, authorization, limits | VerifyDevice, CheckLimit, EnforceMFA | High - PII/sensitive data | Horizontal with geo-fencing |
 
 Implementation (Go):
 ```go
@@ -80,6 +156,30 @@ flowchart LR
   GW --> SOL[Solana Adapter]
 ```
 
+Multi-Region Deployment Architecture:
+```mermaid
+graph TB
+  subgraph "Region A"
+    A_LB[Load Balancer] --> A_API[API Gateway]
+    A_API --> A_Orch[Orchestration]
+    A_Orch --> A_Crypto[Crypto Core - Isolated Zone]
+    A_Orch --> A_Chain[Chain Gateway]
+  end
+  
+  subgraph "Region B"
+    B_LB[Load Balancer] --> B_API[API Gateway]
+    B_API --> B_Orch[Orchestration]
+    B_Orch --> B_Crypto[Crypto Core - Isolated Zone]
+    B_Orch --> B_Chain[Chain Gateway]
+  end
+  
+  A_Crypto -.cross-region failover.-> B_Crypto
+  A_Orch <-->|state sync| B_Orch
+  
+  style A_Crypto fill:#f96,stroke:#333,stroke-width:3px
+  style B_Crypto fill:#f96,stroke:#333,stroke-width:3px
+```
+
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
@@ -104,6 +204,16 @@ Overview: JD0 requires implementing GG18/FROST-style keygen/signing and robust r
 #### Q2: How would you design a state machine for MPC keygen and signing sessions that handles multi-round messages, timeouts, retries, and aborts without leaking key shares?
 Difficulty: I | Dimension: Behavioral  
 Key Insight: Explicit session states with strict transitions and timeouts reduce "zombie" MPC sessions by ~60–80% in incident reviews, and make auditability and replay protection much easier than ad-hoc flags. [A2][A3]
+
+Session State Invariants:
+| State | Invariants | Timeout Action | Valid Next States |
+|-------|-----------|----------------|-------------------|
+| `INIT` | Session created, no messages | N/A | `R1_WAIT` |
+| `R1_WAIT` | Awaiting t-of-n Round 1 shares | → `ABORT` | `R2_WAIT`, `ABORT` |
+| `R2_WAIT` | Round 1 verified, awaiting t-of-n Round 2 | → `ABORT` | `AGG`, `ABORT` |
+| `AGG` | All rounds complete, aggregating signature | 30s → `ABORT` | `FINAL`, `ABORT` |
+| `FINAL` | Signature produced, immutable | N/A | Terminal |
+| `ABORT` | Error or timeout occurred | N/A | Terminal |
 
 Answer:  
 Represent each MPC lifecycle (keygen, signing, recovery) as a finite-state machine persisted in durable storage. For signing, states might be: `INIT`, `ROUND1_WAIT_SHARES`, `ROUND2_WAIT_SHARES`, `AGGREGATING`, `FINALIZED`, `ABORTED`. Transitions are driven by validated messages from devices/servers and internal timers. Each transition enforces invariants: correct quorum (t-of-n partials), monotonic round numbers, and idempotent processing by using `(sessionID, round, partyID)` as a natural key. Timeouts move sessions from `WAIT_*` to `ABORTED`, emitting events so the risk system can act (e.g., notify users, clamp spending limits).  
@@ -142,6 +252,44 @@ stateDiagram-v2
   AGG --> ABORT: policy violation
   FINAL --> [*]
   ABORT --> [*]
+```
+
+MPC Signing Session Flow with Timing:
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Orch as Orchestrator
+    participant MPC1 as MPC Party 1
+    participant MPC2 as MPC Party 2
+    participant MPC3 as MPC Party 3
+    
+    Client->>Orch: SignRequest(walletID, digest)
+    Orch->>Orch: Create session (INIT→R1_WAIT)
+    
+    par Round 1
+        Orch->>MPC1: Round1 message
+        Orch->>MPC2: Round1 message
+        Orch->>MPC3: Round1 message
+        MPC1-->>Orch: Partial1
+        MPC2-->>Orch: Partial2
+        MPC3-->>Orch: Partial3
+    end
+    
+    Orch->>Orch: Verify quorum (R1_WAIT→R2_WAIT)
+    
+    par Round 2
+        Orch->>MPC1: Round2 message
+        Orch->>MPC2: Round2 message
+        Orch->>MPC3: Round2 message
+        MPC1-->>Orch: Partial1
+        MPC2-->>Orch: Partial2
+        MPC3-->>Orch: Partial3
+    end
+    
+    Orch->>Orch: Aggregate (R2_WAIT→AGG→FINAL)
+    Orch-->>Client: Signature
+    
+    Note over Orch,MPC3: Timeout moves to ABORT after SLA
 ```
 
 Metrics:
@@ -202,6 +350,47 @@ flowchart LR
   API --> MPC[MPC Cluster]
   Ctrl --> Config[(Feature Flags/SLOs)]
 ```
+
+Brownout Activation Sequence:
+```mermaid
+sequenceDiagram
+    participant Monitor as Metrics Monitor
+    participant Ctrl as Brownout Controller
+    participant Gate as Gateway
+    participant API as Signing API
+    participant MPC as MPC Cluster
+    
+    Note over Monitor,MPC: Normal operation (p95 < 150ms)
+    
+    Monitor->>Monitor: Detect: p99 > 200ms, queue > 80%
+    Monitor->>Ctrl: Alert: SLO degradation
+    Ctrl->>Ctrl: Calculate: error budget burn rate
+    
+    alt Error budget burning fast
+        Ctrl->>Gate: Enable brownout mode
+        Gate->>Gate: Tighten rate limits
+        Gate->>Gate: Disable non-essential features
+        
+        Note over Gate,API: High-cost flows rejected
+        
+        API->>API: Bound queues, reject overflow
+        API->>MPC: Only essential requests
+    end
+    
+    Monitor->>Monitor: p95 back to 120ms
+    Monitor->>Ctrl: SLO recovered
+    Ctrl->>Gate: Disable brownout mode
+    Gate->>Gate: Restore normal limits
+```
+
+Brownout Decision Matrix:
+| Load Level | Queue Length | p95 Latency | Action | Flows Disabled |
+|------------|-------------|-------------|---------|----------------|
+| Normal | < 50% | < 150ms | None | None |
+| Elevated | 50-80% | 150-180ms | Warn | None |
+| High | 80-95% | 180-220ms | **Brownout L1** | Cross-chain swaps, bulk payouts |
+| Critical | > 95% | > 220ms | **Brownout L2** | All except basic transfers |
+| Overload | Queue full | > 300ms | Shed load | Return 503 + retry-after |
 
 Metrics:
 | Metric | Formula | Variables | Target |
@@ -264,6 +453,45 @@ flowchart LR
   Views --> API[Query API]
 ```
 
+Event Flow with Encryption:
+```mermaid
+sequenceDiagram
+    participant Client
+    participant WriteAPI as Write API
+    participant KMS
+    participant EventStore as Encrypted Event Store
+    participant Projector
+    participant ReadDB as Read Models
+    
+    Client->>WriteAPI: BindDevice(walletID, deviceFingerprint)
+    WriteAPI->>KMS: Request DEK for walletID
+    KMS-->>WriteAPI: DEK (Data Encryption Key)
+    WriteAPI->>WriteAPI: Encrypt payload with DEK
+    WriteAPI->>EventStore: Append(DeviceBound, enc_payload)
+    EventStore-->>WriteAPI: eventID, timestamp
+    WriteAPI-->>Client: ACK (write lag ~20ms)
+    
+    Note over EventStore,Projector: Async projection (lag 100-500ms)
+    
+    EventStore->>Projector: Stream new events
+    Projector->>KMS: Request DEK for walletID
+    KMS-->>Projector: DEK
+    Projector->>Projector: Decrypt payload
+    Projector->>ReadDB: Update devices view
+    
+    Client->>ReadDB: Query active devices
+    ReadDB-->>Client: Device list (low latency)
+```
+
+Event Types and Projections:
+| Event Type | Encrypted Fields | Projections Updated | Retention |
+|------------|------------------|---------------------|-----------|
+| `KeyShareGenerated` | share_handle, pubkey_parts | WalletKeys, AuditLog | 7 years |
+| `DeviceBound` | device_fingerprint, attestation | ActiveDevices, WalletKeys | 7 years |
+| `RecoveryGuardianApproved` | guardian_id, approval_proof | RecoveryStatus, SocialGraph | 7 years |
+| `ShareRotated` | old_handle, new_handle | WalletKeys, AuditLog | 7 years |
+| `SessionKeyCreated` | session_pubkey, expiry | SessionKeys, WalletKeys | 1 year |
+
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
@@ -323,6 +551,55 @@ flowchart LR
   Sol --> Core
 ```
 
+Plugin Capability Matrix:
+| Chain Plugin | `estimateFee` | `buildUnsignedTx` | `signAndBroadcast` | `supportsAA` | `supportsSessionKey` | Version |
+|--------------|---------------|-------------------|-------------------|--------------|---------------------|---------|
+| ETH (Mainnet) | ✅ EIP-1559 | ✅ RLP encoding | ✅ JSON-RPC | ✅ ERC-4337 | ✅ | v2.3 |
+| ETH (L2s) | ✅ Optimism/Arb | ✅ RLP encoding | ✅ JSON-RPC | ✅ ERC-4337 | ✅ | v2.3 |
+| BTC | ✅ Fee estimation | ✅ PSBT | ✅ RPC broadcast | ❌ | ❌ | v1.8 |
+| Solana | ✅ Priority fees | ✅ Tx serialization | ✅ RPC broadcast | ⚠️ Limited | ✅ | v1.5 |
+| Cosmos | ✅ Gas simulation | ✅ Protobuf | ✅ RPC broadcast | ❌ | ⚠️ Planned | v0.9 |
+
+Plugin Versioning and Rollout:
+```mermaid
+sequenceDiagram
+    participant Dev as Plugin Developer
+    participant Reg as Plugin Registry
+    participant Gate as Feature Gate
+    participant SDK
+    participant Client
+    
+    Dev->>Reg: Register EthPluginV2.4
+    Reg->>Reg: Store v2.3 (current) + v2.4 (canary)
+    
+    Gate->>Gate: Enable v2.4 for 5% wallets
+    
+    Client->>SDK: signAndBroadcast(eth-mainnet)
+    SDK->>Gate: Check feature flag
+    
+    alt Wallet in canary group
+        Gate-->>SDK: Use v2.4
+        SDK->>Reg: Get EthPluginV2.4
+        Reg-->>SDK: Plugin v2.4
+    else Wallet in stable group
+        Gate-->>SDK: Use v2.3
+        SDK->>Reg: Get EthPluginV2.3
+        Reg-->>SDK: Plugin v2.3
+    end
+    
+    SDK->>SDK: Execute plugin method
+    SDK-->>Client: Result
+    
+    Note over Dev,Client: Monitor error rates, latency
+    
+    alt Success metrics met
+        Gate->>Gate: Ramp v2.4 to 100%
+        Reg->>Reg: Deprecate v2.3
+    else Regression detected
+        Gate->>Gate: Rollback to v2.3
+    end
+```
+
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
@@ -341,16 +618,102 @@ Sources: [A1][A3][A7]
 
 ---
 
+### Key Metrics Dashboard
+
+Operational Metrics Summary:
+```mermaid
+graph LR
+    subgraph "Performance SLOs"
+        P1["p95 Sign Latency<br/>Target: <250ms<br/>Brownout: <200ms"]
+        P2["RTO Cross-Region<br/>Target: <5 min"]
+        P3["Projection Lag<br/>p95: <300ms"]
+    end
+    
+    subgraph "Reliability Metrics"
+        R1["Zombie Sessions<br/>Target: <1%"]
+        R2["Abort Rate<br/>Target: <0.1%"]
+        R3["Overload Errors<br/>Target: <0.5%"]
+    end
+    
+    subgraph "Security Metrics"
+        S1["Blast Radius<br/>Target: ≤10% tenants"]
+        S2["Sensitive Leaks<br/>Target: 0/year"]
+        S3["Single Point Custody<br/>Target: None"]
+    end
+    
+    subgraph "Integration Metrics"
+        I1["New Chain Onboarding<br/>Target: <4 weeks"]
+        I2["SDK Breaking Changes<br/>Target: ≤1/year"]
+        I3["Plugin Coverage<br/>Target: ≥90%"]
+    end
+    
+    style P1 fill:#9f9,stroke:#333
+    style R1 fill:#9cf,stroke:#333
+    style S1 fill:#f96,stroke:#333
+    style I1 fill:#fc9,stroke:#333
+```
+
+Critical Formulas Reference:
+| Metric Category | Formula | Variables | Threshold Alert |
+|----------------|---------|-----------|-----------------|
+| **Latency** | `p95(t_complete − t_request)` | tracing spans | > 250ms |
+| **Availability** | `(uptime / total_time) × 100%` | region uptime | < 99.95% |
+| **Blast Radius** | `(tenants_impacted / tenants_total) × 100%` | incident scope | > 10% |
+| **Session Health** | `(stuck_sessions / total_sessions) × 100%` | stuck > 2×SLA | > 1% |
+| **Error Budget** | `1 − (errors / total_requests)` | 5xx errors | < 99.9% |
+| **Projection Lag** | `t_projection − t_event` | event timestamps | p95 > 300ms |
+| **Brownout Duration** | `(t_brownout / t_total) × 100%` | weekly duration | > 1% |
+
+---
+
 ### References
 
 #### Glossary (≥5)
-- G1. Threshold MPC Wallet – A wallet that uses threshold multi-party computation to generate and use signing keys without any single party ever holding the full private key; typically t-of-n parties collaborate to sign. Related: Threshold ECDSA, Threshold EdDSA. [A4][A6]
-- G2. Key Share – A cryptographic fragment of a private key held by one party in a threshold scheme; multiple shares are combined during signing but never materialize a full key on one node. Related: Shamir Secret Sharing, MPC. [A4]
-- G3. Signing Session – A bounded interaction window where parties run an MPC protocol (e.g., GG18, FROST) to produce a signature for a given message under specific security policies. Related: Nonce, Transcript. [A5]
-- G4. Brownout – An overload-protection technique where a system intentionally disables non-essential features while keeping core functionality available to protect SLOs. Related: Graceful Degradation, Circuit Breaker. [A3]
-- G5. CQRS – Command Query Responsibility Segregation; pattern that separates write models from read models (often with different stores) for scalability and flexibility. Related: Projections, Event Sourcing. [A2]
-- G6. Social Recovery – A scheme where designated guardians (people/devices) can jointly authorize wallet recovery when the primary device is lost, typically modeled as a threshold approval over time. Related: Guardian, Recovery Policy. [A4][A6]
-- G7. Account Abstraction (AA) – Smart-contract-based account model (e.g., on Ethereum) allowing custom validation logic, session keys, and batching, instead of EOAs with single private keys. Related: Session Key, Paymaster. [A7]
+
+Threshold MPC Signing Visual Concept (2-of-3 Example):
+```mermaid
+graph TB
+    subgraph "Key Generation Phase"
+        KG[Key Generation Protocol]
+        KG --> S1[Share 1<br/>Party A]
+        KG --> S2[Share 2<br/>Party B]
+        KG --> S3[Share 3<br/>Party C]
+    end
+    
+    subgraph "Signing Phase - Threshold 2-of-3"
+        MSG[Message to Sign]
+        MSG --> P1[Party A + Share 1]
+        MSG --> P2[Party B + Share 2]
+        
+        P1 --> R1[Round 1 Exchange]
+        P2 --> R1
+        R1 --> R2[Round 2 Compute]
+        R2 --> SIG[Valid Signature]
+        
+        style S3 fill:#ccc,stroke:#999,stroke-dasharray: 5 5
+        Note1[Party C not needed<br/>t=2 sufficient]
+    end
+    
+    subgraph "Security Properties"
+        SP1["✓ No single point of failure"]
+        SP2["✓ Any t parties can sign"]
+        SP3["✓ <t parties learn nothing"]
+        SP4["✗ Full key never exists"]
+    end
+    
+    style SIG fill:#9f9,stroke:#333,stroke-width:2px
+    style SP4 fill:#f96,stroke:#333,stroke-width:2px
+```
+
+Definitions:
+
+- G1. **Threshold MPC Wallet** – A wallet that uses threshold multi-party computation to generate and use signing keys without any single party ever holding the full private key; typically t-of-n parties collaborate to sign. Related: Threshold ECDSA, Threshold EdDSA. [A4][A6]
+- G2. **Key Share** – A cryptographic fragment of a private key held by one party in a threshold scheme; multiple shares are combined during signing but never materialize a full key on one node. Related: Shamir Secret Sharing, MPC. [A4]
+- G3. **Signing Session** – A bounded interaction window where parties run an MPC protocol (e.g., GG18, FROST) to produce a signature for a given message under specific security policies. Related: Nonce, Transcript. [A5]
+- G4. **Brownout** – An overload-protection technique where a system intentionally disables non-essential features while keeping core functionality available to protect SLOs. Related: Graceful Degradation, Circuit Breaker. [A3]
+- G5. **CQRS** – Command Query Responsibility Segregation; pattern that separates write models from read models (often with different stores) for scalability and flexibility. Related: Projections, Event Sourcing. [A2]
+- G6. **Social Recovery** – A scheme where designated guardians (people/devices) can jointly authorize wallet recovery when the primary device is lost, typically modeled as a threshold approval over time. Related: Guardian, Recovery Policy. [A4][A6]
+- G7. **Account Abstraction (AA)** – Smart-contract-based account model (e.g., on Ethereum) allowing custom validation logic, session keys, and batching, instead of EOAs with single private keys. Related: Session Key, Paymaster. [A7]
 
 #### Tools (≥3)
 - T1. EventStoreDB – Production-grade event store with streams and projections, suitable for encrypted custody event logs and CQRS read models. Updated: see official releases. URL: https://www.eventstore.com/  

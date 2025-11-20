@@ -30,6 +30,30 @@
 | Integration | 1 | I | API protocol selection for blockchain integration |
 | **Total** | **5** | **20% F, 40% I, 40% A** | **All decision-critical** |
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "pie1": "#eff6fb",
+    "pie2": "#f1f8f4",
+    "pie3": "#f3f5f7",
+    "pieTitleTextColor": "#1a1a1a",
+    "pieSectionTextColor": "#1a1a1a"
+  }
+}}%%
+pie title Difficulty Distribution
+    "Foundational (F)" : 20
+    "Intermediate (I)" : 40
+    "Advanced (A)" : 40
+```
+
 ---
 
 ## Topic 1: Hexagonal Architecture for MPC Wallet SDK
@@ -43,7 +67,12 @@
 
 **Answer**:
 
-The hexagonal (ports and adapters) pattern solves the core challenge of MPC wallet modularity: separating cryptographic protocol implementation from wallet business logic. The architecture organizes code into three layers: (1) **Core Domain** containing protocol-agnostic wallet operations (key share management, transaction construction, recovery coordination), (2) **Ports** defining interfaces for signing protocols, blockchain RPCs, and storage backends, and (3) **Adapters** implementing concrete protocols like FROST for EdDSA chains or GG20 for ECDSA chains.
+The hexagonal (ports and adapters) pattern solves the core challenge of MPC wallet modularity: separating cryptographic protocol implementation from wallet business logic. 
+
+**Architecture Layers:**
+- **(1) Core Domain** - Protocol-agnostic wallet operations (key share management, transaction construction, recovery coordination)
+- **(2) Ports** - Interfaces for signing protocols, blockchain RPCs, and storage backends
+- **(3) Adapters** - Concrete protocols like FROST for EdDSA chains or GG20 for ECDSA chains
 
 The critical design decision is defining port boundaries that capture the invariants common across all threshold signature schemes. For example, a `ThresholdSigner` port exposes methods like `distributedKeyGen(threshold: u32, parties: u32) -> KeyShareSet`, `coordinateSign(message: bytes, shares: Vec<KeyShare>) -> Signature`, and `reconstructSecret(shares: Vec<KeyShare>) -> PrivateKey` for recovery. Each signature protocol adapter (GG18Adapter, FROSTAdapter) implements this interface while encapsulating protocol-specific details like round complexity (GG18: 9 rounds, FROST: 2 rounds) and cryptographic primitives (Paillier encryption for GG18, Schnorr proofs for FROST).
 
@@ -125,6 +154,26 @@ impl ThresholdSigner for FrostAdapter {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 graph TB
     subgraph "Application Layer"
         A[Wallet API REST/gRPC]
@@ -165,13 +214,13 @@ graph TB
     I -.implements.- N
     J -.implements.- O
     
-    style D fill:#90EE90
-    style E fill:#90EE90
-    style F fill:#90EE90
-    style G fill:#90EE90
-    style H fill:#FFE4B5
-    style I fill:#FFE4B5
-    style J fill:#FFE4B5
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style H fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style I fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style J fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -399,6 +448,25 @@ func (cb *DKGCircuitBreaker) attemptRecovery(failedRound int) error {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 stateDiagram-v2
     [*] --> CLOSED: DKG Start
     
@@ -727,6 +795,30 @@ export function rateLimitMiddleware(limiter: TokenBucketRateLimiter) {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "noteTextColor": "#1a1a1a",
+    "noteBkgColor": "#f8f9fa",
+    "noteBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "edgeLabelBackground": "#ffffff",
+    "actorTextColor": "#1a1a1a",
+    "actorBkg": "#eff6fb",
+    "actorBorder": "#7a9fc5",
+    "activationBkgColor": "#f3f5f7",
+    "activationBorderColor": "#8897a8"
+  }
+}}%%
 sequenceDiagram
     participant Client
     participant Gateway as API Gateway<br/>(Rate Limiter)
@@ -1150,6 +1242,26 @@ class TransactionQueryService:
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 graph TB
     subgraph "Write Side - Commands & Events"
         A[Sign Transaction<br/>Command] --> B[Command Handler]
@@ -1183,12 +1295,12 @@ graph TB
         O --> M
     end
     
-    style D fill:#FFE4B5
-    style E fill:#87CEEB
-    style K fill:#87CEEB
-    style L fill:#FFB6C1
-    style M fill:#FFB6C1
-    style F fill:#90EE90
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style K fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style L fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style M fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -1530,6 +1642,26 @@ async fn benchmark_protocols() {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#7a9fc5",
+    "tertiaryColor": "#f3f5f7",
+    "tertiaryTextColor": "#1a1a1a",
+    "tertiaryBorderColor": "#8897a8",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 graph TB
     subgraph "Client Applications"
         A[Mobile Wallet]
@@ -1572,15 +1704,12 @@ graph TB
     E -->|JSON-RPC<br/>80-250ms| K
     E -->|JSON-RPC<br/>120-400ms| L
     
-    style D fill:#90EE90
-    style E fill:#FFB6C1
-    style G fill:#87CEEB
-    style J fill:#FFE4B5
-    style K fill:#FFE4B5
-    style L fill:#FFE4B5
-    
-    classDef highlight fill:#FFFF99
-    class D,E highlight
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style G fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style J fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style K fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style L fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:

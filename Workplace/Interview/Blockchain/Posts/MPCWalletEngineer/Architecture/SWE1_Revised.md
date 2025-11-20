@@ -20,13 +20,109 @@
 [TOC]
 
 ### Topic Areas
-| Dimension | Count | Difficulty |
-|-----------|-------|------------|
-| Structural | 1 | A |
-| Behavioral | 1 | I |
-| Quality | 1 | F |
-| Data | 1 | A |
-| Integration | 1 | I |
+| Dimension | Count | Difficulty | Focus Area | Implementation Time |
+|-----------|-------|------------|------------|---------------------|
+| Structural | 1 | A | Crypto Isolation | 3-6 months |
+| Behavioral | 1 | I | MPC Orchestration | 1-3 months |
+| Quality | 1 | F | Performance Optimization | 1-2 months |
+| Data | 1 | A | Key Share Management | 2-4 months |
+| Integration | 1 | I | Multi-Chain APIs | 1-2 months |
+
+**Difficulty Legend**: `A` = Advanced | `I` = Intermediate | `F` = Focused/Specialized
+
+```mermaid
+gantt
+    title Architecture Implementation Timeline
+    dateFormat YYYY-MM
+    section Structural
+    Crypto Isolation           :a1, 2025-01, 6M
+    section Behavioral
+    MPC Orchestration         :a2, 2025-02, 3M
+    section Quality
+    Performance Optimization  :a3, 2025-03, 2M
+    section Data
+    Key Share Management      :a4, 2025-01, 4M
+    section Integration
+    Multi-Chain APIs          :a5, 2025-04, 2M
+```
+
+---
+
+## System Architecture Overview
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        Web[Web App<br/>TypeScript + WASM]
+        Mobile[Mobile App<br/>TypeScript + WASM]
+        Backend[Backend Services<br/>Go/Rust]
+    end
+    
+    subgraph "API Gateway Layer"
+        REST[REST API<br/>External]
+        gRPC_Gateway[gRPC Gateway<br/>Translation]
+        Auth[Auth & Rate Limit]
+    end
+    
+    subgraph "Service Layer"
+        MPC[MPC Orchestrator<br/>Go + Circuit Breakers]
+        Wallet[Wallet Service<br/>CQRS + Sharding]
+        Chain[Chain Service<br/>Multi-Chain Abstraction]
+    end
+    
+    subgraph "Crypto Core"
+        Core[MPC Core<br/>Rust + HSM]
+        KeyStore[Key Share Storage<br/>Raft Consensus]
+        HSM[Hardware Security<br/>Modules]
+    end
+    
+    subgraph "Chain Adapters"
+        ETH[Ethereum<br/>EVM]
+        BTC[Bitcoin<br/>UTXO]
+        SOL[Solana<br/>Programs]
+    end
+    
+    subgraph "Storage Layer"
+        Hot[Hot: Memory+SSD<br/>Active Users]
+        Warm[Warm: SSD<br/>Recent]
+        Cold[Cold: S3<br/>Archive]
+    end
+    
+    Web --> REST
+    Mobile --> REST
+    Backend --> gRPC_Gateway
+    
+    REST --> Auth
+    Auth --> gRPC_Gateway
+    
+    gRPC_Gateway --> MPC
+    gRPC_Gateway --> Wallet
+    gRPC_Gateway --> Chain
+    
+    MPC --> Core
+    Wallet --> KeyStore
+    Chain --> ETH
+    Chain --> BTC
+    Chain --> SOL
+    
+    Core --> HSM
+    KeyStore --> Hot
+    Hot --> Warm
+    Warm --> Cold
+    
+    style Core fill:#ff9999
+    style HSM fill:#ff9999
+    style KeyStore fill:#ff9999
+    style Auth fill:#ffcc99
+    style MPC fill:#ffcc99
+```
+
+**Architecture Principles**:
+- 🔒 **Security First**: Crypto isolation with HSM backing
+- 🚀 **Performance**: <200ms MPC signing, <50ms API latency
+- 📈 **Scalability**: Sharding + CQRS for millions of users
+- 🔄 **Resilience**: Circuit breakers + multi-region deployment
+- 🌐 **Multi-Chain**: Unified abstraction across protocols
 
 ---
 
@@ -111,6 +207,22 @@ graph TB
 | Isolation Index | I = 1 - (blast_radius / total_keys) | blast_radius: compromised keys, total_keys: system total | >0.7 |
 | Adapter Throughput | R = successful_tx / second | successful_tx: completed transactions | >1000 TPS |
 
+**MPC Latency Breakdown**:
+```
+Total Signing Time (200ms target)
+├─ MPC Computation: ~80ms (40%)
+│  ├─ Round 1: 30ms
+│  ├─ Round 2: 30ms
+│  └─ Verification: 20ms
+├─ HSM Operations: ~60ms (30%)
+│  ├─ Key retrieval: 20ms
+│  ├─ Signature: 30ms
+│  └─ Audit log: 10ms
+└─ Network Communication: ~60ms (30%)
+   ├─ Party coordination: 40ms
+   └─ Result aggregation: 20ms
+```
+
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
 |----------|------|------|----------|----------|
@@ -192,6 +304,31 @@ stateDiagram-v2
     Recovery --> PrepareSign: Retry
     
     Complete --> [*]
+```
+
+**Circuit Breaker States**:
+```mermaid
+stateDiagram-v2
+    [*] --> Closed
+    Closed --> Open: 3 consecutive failures
+    Open --> HalfOpen: After timeout period
+    HalfOpen --> Closed: Success
+    HalfOpen --> Open: Failure
+    
+    note right of Closed
+        Normal operation
+        Requests pass through
+    end note
+    
+    note right of Open
+        Fail fast mode
+        Reject all requests
+    end note
+    
+    note right of HalfOpen
+        Testing mode
+        Allow single request
+    end note
 ```
 
 **Metrics**:
@@ -281,6 +418,23 @@ sequenceDiagram
 | Signing Latency | L = t_client + t_network + t_mpc | t_client: local processing, t_network: round trips, t_mpc: server computation | <3s (mobile), <1s (desktop) |
 | Battery Impact | BI = cpu_cycles + network_bytes | cpu_cycles: processor usage, network_bytes: data transfer | <5% per signing |
 | Memory Usage | MU = peak_memory / device_memory | peak_memory: maximum RAM, device_memory: total RAM | <50MB (mobile) |
+
+**Performance Optimization Impact**:
+| Optimization | Baseline | Optimized | Improvement |
+|--------------|----------|-----------|-------------|
+| Signing Latency (Mobile) | 5.0s | 3.0s | **-40%** ⬇️ |
+| Battery Usage | 8% | 5% | **-35%** ⬇️ |
+| Network Round Trips | 6 | 2-3 | **-50%** ⬇️ |
+| Memory Footprint | 80MB | 45MB | **-44%** ⬇️ |
+
+**Adaptive Timeout Strategy**:
+```
+Network Condition → Timeout Setting
+├─ 4G/5G (Good)    : 2000ms
+├─ 3G (Fair)       : 5000ms
+├─ 2G (Poor)       : 8000ms
+└─ Offline         : Fail immediately
+```
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -396,6 +550,43 @@ graph TB
 | Read Latency | RL = t_cache + t_db | t_cache: cache hit, t_db: database query | <10ms (p95) |
 | Availability | A = uptime / total_time | uptime: available time, total_time: measured period | 99.99% |
 
+**Sharding Strategy Visualization**:
+```mermaid
+graph LR
+    subgraph "Consistent Hash Ring"
+        User1[User A] --> Shard1[Shard 1]
+        User2[User B] --> Shard2[Shard 2]
+        User3[User C] --> Shard3[Shard 3]
+        User4[User D] --> Shard1
+    end
+    
+    subgraph "Replication (Shard 1)"
+        Shard1 --> Primary1[Primary<br/>Zone A]
+        Shard1 --> Replica1[Replica 1<br/>Zone B]
+        Shard1 --> Replica2[Replica 2<br/>Zone C]
+    end
+```
+
+**CQRS Data Flow**:
+```
+Write Path (Strong Consistency)
+Command → Validation → Raft Consensus → WAL → Disk → Event
+
+Read Path (Eventual Consistency)
+Query → Cache Hit? → [Yes] Return
+                  → [No] DB → Update Cache → Return
+
+Cache Hit Rate: 85-95%
+Read Latency: <10ms (p95)
+```
+
+**Storage Tier Strategy**:
+| Tier | Storage | Access Time | Use Case | Cost |
+|------|---------|-------------|----------|------|
+| Hot | Memory + SSD | <10ms | Active users (last 30d) | High |
+| Warm | SSD | 10-50ms | Recent users (30-180d) | Medium |
+| Cold | S3/Object Storage | 100-500ms | Archived (>180d) | Low |
+
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
 |----------|------|------|----------|----------|
@@ -496,12 +687,102 @@ graph TB
 | REST Throughput | RT = successful_requests / second | successful_requests: completed API calls | >5000 RPS |
 | API Compatibility | AC = backward_compatible_changes / total_changes | backward_compatible_changes: non-breaking changes, total_changes: all changes | >90% |
 
+**Protocol Performance Comparison**:
+| Aspect | REST | gRPC | Improvement |
+|--------|------|------|-------------|
+| Latency (p95) | 85ms | 50ms | **-41%** ⬇️ |
+| Payload Size | 100% (JSON) | 40% (Protobuf) | **-60%** ⬇️ |
+| Type Safety | Manual | Auto-generated | **Strong** ✓ |
+| Streaming | Limited (SSE) | Bidirectional | **Native** ✓ |
+| Browser Support | Universal | Requires proxy | **Limited** |
+| Tooling | Excellent | Growing | **Moderate** |
+
+**API Gateway Request Flow**:
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Gateway
+    participant Auth
+    participant RateLimit
+    participant gRPC
+    participant Service
+    
+    Client->>Gateway: REST Request
+    Gateway->>Auth: Validate Token
+    Auth-->>Gateway: ✓ Valid
+    Gateway->>RateLimit: Check Limit
+    RateLimit-->>Gateway: ✓ Allowed
+    Gateway->>gRPC: Translate to gRPC
+    gRPC->>Service: Internal Call
+    Service-->>gRPC: Response
+    gRPC-->>Gateway: Translate to REST
+    Gateway-->>Client: JSON Response
+```
+
+**Chain Abstraction Interface**:
+```
+Common Operations (All Chains)
+├─ GetBalance(address, tokens[])
+├─ BuildTransaction(from, to, amount, metadata)
+├─ SubmitTransaction(signed_tx)
+├─ GetTransactionStatus(tx_hash)
+└─ StreamEvents(filters)
+
+Chain-Specific Adapters
+├─ Ethereum: EIP-1559, gas estimation, nonce management
+├─ Bitcoin: UTXO selection, fee estimation, RBF
+└─ Solana: Recent blockhash, compute units, priority fees
+```
+
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
 |----------|------|------|----------|----------|
 | REST Only | Universal compatibility, simple | Higher latency, no streaming | External APIs, simple integrations | [Context-dependent] |
 | gRPC Only | High performance, type safety | Limited ecosystem, complex setup | Internal microservices | [Consensus] |
 | Hybrid (Gateway) | Best of both worlds | Added complexity, translation overhead | Full platform | [Consensus] |
+
+---
+
+## Architecture Summary
+
+### Key Performance Indicators (KPIs)
+| Component | Metric | Target | Status |
+|-----------|--------|--------|--------|
+| MPC Signing | Latency (2-of-3) | <200ms | 🎯 Critical |
+| Isolation | Blast Radius Containment | >70% | 🎯 Critical |
+| Orchestration | Success Rate | >95% | ✅ Important |
+| Mobile Performance | Signing Time | <3s | ✅ Important |
+| Key Storage | Write Latency (p99) | <100ms | 🎯 Critical |
+| API Gateway | gRPC Latency (p95) | <50ms | ✅ Important |
+| System Availability | Uptime | 99.99% | 🎯 Critical |
+
+### Decision Impact Matrix
+```mermaid
+quadrantChart
+    title Architecture Decision Impact vs Implementation Effort
+    x-axis Low Effort --> High Effort
+    y-axis Low Impact --> High Impact
+    quadrant-1 Strategic (Plan Carefully)
+    quadrant-2 Quick Wins (Do First)
+    quadrant-3 Low Priority (Consider Later)
+    quadrant-4 Major Initiatives (Invest Heavily)
+    
+    Crypto Isolation: [0.8, 0.9]
+    MPC Orchestration: [0.5, 0.7]
+    Performance Optimization: [0.4, 0.6]
+    Key Management: [0.7, 0.85]
+    Multi-Chain APIs: [0.4, 0.5]
+```
+
+### Technology Stack Overview
+| Layer | Technologies | Purpose |
+|-------|--------------|---------|
+| **Cryptography** | Rust, HSM (Cloud/On-Prem), GG18/GG20/FROST | MPC protocols, key management |
+| **Backend Services** | Go, gRPC, Protocol Buffers | High-performance internal APIs |
+| **Data Layer** | Raft Consensus, CQRS, Consistent Hashing | Distributed key share storage |
+| **Client Layer** | TypeScript, WebAssembly | Mobile/Web lightweight crypto |
+| **API Gateway** | REST, gRPC-Gateway, HTTP/2 | Protocol translation, rate limiting |
+| **Infrastructure** | Kubernetes, Multi-region, SSD + S3 | Orchestration, storage tiers |
 
 ---
 
@@ -512,7 +793,30 @@ graph TB
 **G2. Threshold Signing** – Digital signature scheme requiring minimum threshold of participants to produce valid signature. Related: MPC, key shares, quorum.  
 **G3. Circuit Breaker** – Design pattern detecting failures and preventing repeated calls to failing systems. Related: Fault tolerance, resilience, microservices.  
 **G4. CQRS (Command Query Responsibility Segregation)** – Architecture pattern separating read and write operations for optimized performance. Related: Event sourcing, eventual consistency, scalability.  
-**G5. Hexagonal Architecture** – Architecture pattern isolating core business logic from external concerns through ports and adapters. Related: Clean architecture, dependency inversion, testability.  
+**G5. Hexagonal Architecture** – Architecture pattern isolating core business logic from external concerns through ports and adapters. Related: Clean architecture, dependency inversion, testability.
+
+**Concept Relationships**:
+```mermaid
+graph LR
+    MPC[MPC<br/>Multi-Party Computation] --> TS[Threshold Signing]
+    MPC --> KS[Key Shares]
+    TS --> Quorum[Quorum Agreement]
+    
+    HA[Hexagonal<br/>Architecture] --> Core[Core Business Logic]
+    HA --> Adapters[Chain Adapters]
+    
+    CQRS[CQRS] --> Write[Write Model]
+    CQRS --> Read[Read Model]
+    Write --> ES[Event Sourcing]
+    
+    CB[Circuit Breaker] --> FT[Fault Tolerance]
+    CB --> Resilience[System Resilience]
+    
+    style MPC fill:#e1f5ff
+    style CQRS fill:#fff4e1
+    style HA fill:#ffe1f5
+    style CB fill:#e1ffe1
+```  
 
 ### Tools (≥3)
 **T1. Rust** – Systems programming language for cryptographic operations and performance-critical components. Updated: 2024-11. URL: https://www.rust-lang.org/  

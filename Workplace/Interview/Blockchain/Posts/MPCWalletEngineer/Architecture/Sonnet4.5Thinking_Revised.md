@@ -17,6 +17,38 @@
 
 **Skip if**: Non-production prototypes, single-chain wallets with <1000 users, research projects without deployment requirements, junior engineer interviews.
 
+## Quick Reference Card
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                    MPC WALLET ARCHITECTURE INTERVIEW                  ║
+║                          Quick Reference Guide                        ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ TARGET ROLE:  MPC Wallet Engineer / Blockchain Security Architect    ║
+║ DURATION:     45-60 minutes (5 questions × 9-12 min)                 ║
+║ DIFFICULTY:   20% F / 40% I / 40% A (Senior 5-15 years)              ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ Q1 │ Modular Key Management    │ Structural  │ F │ Hexagonal Arch  ║
+║ Q2 │ Distributed Signing        │ Behavioral  │ I │ Saga Pattern    ║
+║ Q3 │ Performance Optimization   │ Quality     │ A │ Caching/Batch   ║
+║ Q4 │ State Management          │ Data        │ I │ CQRS Pattern    ║
+║ Q5 │ Multi-Chain Integration   │ Integration │ A │ Strategy Pattern ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ KEY METRICS:                                                          ║
+║ • Module Coupling:      < 30%                                         ║
+║ • Test Coverage:        > 85%                                         ║
+║ • Signing Success:      > 98%                                         ║
+║ • P95 Latency:          < 200ms (mobile), < 100ms (server)          ║
+║ • Cache Hit Rate:       > 90%                                         ║
+║ • Read Latency (CQRS):  < 10ms                                       ║
+║ • Code Reuse:           > 60%                                         ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ CORE PATTERNS: Hexagonal | Saga | CQRS | Strategy | Event Sourcing  ║
+║ LANGUAGES:     Rust, Go, TypeScript (with code examples)             ║
+║ REFERENCES:    10 Glossary | 6 Tools | 6 Literature | 8 Citations   ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
 ## Contents
 - [Topic Areas](#topic-areas)
 - [Topic 1: Modular MPC Key Management Architecture](#topic-1-modular-mpc-key-management-architecture)
@@ -37,6 +69,29 @@
 | Integration | 1 | A (Advanced) |
 
 **Total**: 5 questions | **Distribution**: 20% F / 40% I / 40% A
+
+```mermaid
+graph TD
+    subgraph "MPC Wallet Architecture - 5 Dimensions"
+        Q1[Q1: Modular Key Management<br/>Structural - Foundational<br/>⚡ Hexagonal Architecture]
+        Q2[Q2: Distributed Signing<br/>Behavioral - Intermediate<br/>⚡ Saga Pattern]
+        Q3[Q3: Performance Optimization<br/>Quality - Advanced<br/>⚡ Caching & Batching]
+        Q4[Q4: State Management<br/>Data - Intermediate<br/>⚡ CQRS Pattern]
+        Q5[Q5: Multi-Chain Integration<br/>Integration - Advanced<br/>⚡ Strategy Pattern]
+    end
+    
+    Q1 -->|provides foundation| Q2
+    Q2 -->|requires| Q3
+    Q3 -->|generates events| Q4
+    Q4 -->|supports| Q5
+    Q5 -->|uses| Q1
+    
+    style Q1 fill:#90EE90
+    style Q2 fill:#FFD700
+    style Q3 fill:#FFB6C1
+    style Q4 fill:#FFD700
+    style Q5 fill:#FFB6C1
+```
 
 ---
 
@@ -141,6 +196,26 @@ graph TB
 | Module Coupling **[IMPORTANT]** | `coupling = external_deps / total_modules` | external_deps: dependencies on external libraries; total_modules: count of core modules | < 0.3 (30%) |
 | Test Coverage **[CRITICAL]** | `coverage = tested_lines / total_lines × 100%` | tested_lines: lines executed in tests; total_lines: total code lines | > 85% for crypto modules |
 | Security Boundary Violations **[CRITICAL]** | `violations = cross_boundary_calls - allowed_interfaces` | cross_boundary_calls: direct module access; allowed_interfaces: port definitions | 0 violations |
+
+**Visual Metrics Summary**:
+```
+Module Coupling Target:
+┌──────────────────────────────┐
+│ ✓✓✓                          │ < 30% (Good)
+│     ✗✗✗✗✗✗✗                  │ > 30% (High Coupling)
+└──────────────────────────────┘
+     0%        30%         100%
+
+Test Coverage Target:
+┌──────────────────────────────┐
+│                     ✓✓✓✓✓✓✓✓│ > 85% (Required)
+│         ⚠⚠⚠⚠⚠                │ < 85% (Insufficient)
+└──────────────────────────────┘
+     0%        50%        85% 100%
+
+Security Boundary Violations:
+Target: 0 violations (Zero Tolerance)
+```
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -290,6 +365,29 @@ sequenceDiagram
 | Signing Success Rate **[CRITICAL]** | `success_rate = successful_signs / total_attempts × 100%` | successful_signs: completed signatures; total_attempts: initiated signing requests | > 98% |
 | Mean Time To Sign (MTTS) **[IMPORTANT]** | `MTTS = Σ(completion_time) / successful_signs` | completion_time: end-to-end latency per signature; successful_signs: count | < 800ms (local), < 3s (WAN) |
 | Compensation Frequency **[IMPORTANT]** | `comp_freq = compensation_triggers / total_attempts × 100%` | compensation_triggers: saga rollbacks; total_attempts: signing requests | < 5% |
+
+**Visual Metrics Summary**:
+```
+Signing Success Rate:
+┌────────────────────────────────────┐
+│ ████████████████████████████████░░ │ > 98% ✓ (Target)
+│ ████████████████████████░░░░░░░░░░ │ 85-98% ⚠ (Acceptable)
+│ ██████████░░░░░░░░░░░░░░░░░░░░░░░░ │ < 85% ✗ (Critical)
+└────────────────────────────────────┘
+  0%        50%        85%   98% 100%
+
+Mean Time To Sign (MTTS):
+Local Network:   ▓▓▓▓░░░░░░ < 800ms (Target)
+WAN Network:     ▓▓▓▓▓▓▓▓▓░ < 3s (Target)
+
+Compensation Frequency:
+┌──────────────────────────────┐
+│ ░░                           │ < 5% ✓ (Healthy)
+│ ░░░░░░░░                     │ 5-15% ⚠ (Review needed)
+│ ░░░░░░░░░░░░░░░░             │ > 15% ✗ (System issue)
+└──────────────────────────────┘
+  0%    5%   15%          100%
+```
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -466,6 +564,32 @@ graph TB
 | Cache Hit Rate **[IMPORTANT]** | `hit_rate = cache_hits / (cache_hits + cache_misses) × 100%` | cache_hits: sessions acquired from cache; cache_misses: on-demand generation | > 90% |
 | Precomputation Overhead **[IMPORTANT]** | `overhead = precomp_cpu_time / total_cpu_time × 100%` | precomp_cpu_time: background CPU usage; total_cpu_time: total app CPU | < 5% battery impact |
 | Batch Efficiency **[OPTIONAL]** | `efficiency = (tx_count × solo_latency - batch_latency) / (tx_count × solo_latency) × 100%` | tx_count: transactions in batch; solo_latency: individual signing time; batch_latency: batched signing time | > 50% time saved for 3+ txs |
+
+**Visual Performance Comparison**:
+```
+Signing Latency Improvement (P95):
+Without Caching:    ████████████ 1200ms
+With Precomputation: ███ 280ms (↓ 77%)
+Target Mobile:      ██ 200ms
+
+Cache Hit Rate:
+┌──────────────────────────────────┐
+│ ███████████████████████████████░ │ 90%+ ✓ (Optimal)
+│ ████████████████████░░░░░░░░░░░░ │ 70-90% ⚠ (Review cache size)
+│ ████████████░░░░░░░░░░░░░░░░░░░░ │ < 70% ✗ (Increase precomputation)
+└──────────────────────────────────┘
+  0%        50%       70%  90%  100%
+
+Batch Efficiency (3 transactions):
+Solo: ███ ███ ███ (800ms × 3 = 2400ms)
+Batch: ████████ (850ms total)
+Savings: ↓ 65% time reduction
+
+Memory Usage Trade-off:
+Sessions:  10    50    100   200
+Memory:    5MB   25MB  50MB  100MB
+           ✓     ✓     ⚠     ✗
+```
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -676,6 +800,33 @@ graph LR
 | Write Consistency Latency **[CRITICAL]** | `write_latency = event_store_append + projection_update` | event_store_append: time to persist event; projection_update: time to update views | < 50ms (append), < 100ms (projection lag) |
 | Projection Lag **[IMPORTANT]** | `lag = current_time - last_processed_event_timestamp` | current_time: system time; last_processed_event_timestamp: newest event in projection | < 100ms P95 |
 | Read Scalability **[OPTIONAL]** | `throughput = successful_queries / second` | successful_queries: completed queries; second: time window | > 1000 QPS per read replica |
+
+**Visual Performance Comparison**:
+```
+Read Query Latency (Balance Check):
+Traditional CRUD:  ████████ 100-500ms (JOIN multiple tables)
+CQRS (Indexed):    █ 5-10ms (Single PRIMARY KEY lookup)
+Improvement:       ↓ 10-50× faster
+
+Read:Write Ratio Pattern:
+Reads:  ████████████████████████████████████████████████████ (1000 ops)
+Writes: ██ (10 ops)
+Ratio:  100:1 to 1000:1 (typical for wallets)
+
+Projection Lag Timeline:
+Event Written    →→→    Projection Updated    →→    Query Available
+    0ms              20-100ms (eventual)         complete
+    ↓                     ↓                           ↓
+    [Event Store]    [Event Bus]                [Read Model]
+    Strong ✓         Async Processing           Eventual ✓
+
+Scalability Comparison:
+┌─────────────────────────────────────┐
+│ Traditional:  1 DB ──→ 500 QPS      │
+│ CQRS:         1 DB ──→ 1000 QPS     │
+│               +3 replicas ──→ 4000+ │
+└─────────────────────────────────────┘
+```
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -891,6 +1042,33 @@ graph TB
 | Adapter Coverage **[IMPORTANT]** | `coverage = supported_chains / total_chains × 100%` | supported_chains: implemented adapters; total_chains: target ecosystems | > 80% of top 20 chains by TVL |
 | Cross-Chain Latency **[OPTIONAL]** | `latency = adapter_overhead + signing_time + broadcast_time` | adapter_overhead: abstraction dispatch time; signing_time: MPC signature generation; broadcast_time: RPC call | < 20ms adapter overhead |
 
+**Visual Cost-Benefit Analysis**:
+```
+Code Reuse with Strategy Pattern:
+┌─────────────────────────────────────────┐
+│ Shared Abstraction Layer:  ████████     │ 60-70% (1500-2500 LOC)
+│ Chain-Specific Adapters:   ███          │ 30-40% (500-1000 LOC/chain)
+└─────────────────────────────────────────┘
+
+Integration Cost Comparison (per chain):
+Without Abstraction: ████████████ (120+ hours, 3-5× duplication)
+With Strategy:       ████ (40 hours, reuse core logic)
+Savings:             ↓ 67% time reduction
+
+Signature Scheme Coverage:
+┌──────────────────────────────────────────┐
+│ Ethereum/Bitcoin:  ECDSA secp256k1   ✓   │
+│ Solana/Cardano:    EdDSA ed25519     ✓   │
+│ Ethereum 2.0:      BLS signatures    ✓   │
+│ Bitcoin Taproot:   Schnorr           ✓   │
+└──────────────────────────────────────────┘
+
+Maintenance Burden (Bug Fix Across 5 Chains):
+Monolithic:     █████ (Fix in 5 places × 2h = 10h)
+Strategy:       █ (Fix once in shared code = 2h)
+Savings:        ↓ 80% maintenance reduction
+```
+
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
 |----------|------|------|----------|-----------|
@@ -902,6 +1080,45 @@ graph TB
 ---
 
 ## References
+
+### Architecture Patterns Summary
+
+```mermaid
+graph TB
+    subgraph "Core Patterns"
+        HEX[Hexagonal Architecture<br/>Ports & Adapters]
+        SAGA[Saga Pattern<br/>Orchestrated Transactions]
+        CQRS[CQRS Pattern<br/>Read/Write Separation]
+        STRAT[Strategy Pattern<br/>Chain Abstraction]
+    end
+    
+    subgraph "Optimization Techniques"
+        CACHE[Precomputation Caching<br/>60-75% latency ↓]
+        BATCH[Transaction Batching<br/>50%+ efficiency ↑]
+        PROJ[Event Projections<br/>10-50× read speed ↑]
+    end
+    
+    subgraph "Infrastructure"
+        ES[Event Sourcing<br/>Immutable Event Log]
+        MPC[MPC Signing Layer<br/>Threshold Signatures]
+        ADAPT[Chain Adapters<br/>Multi-Chain Support]
+    end
+    
+    HEX -->|enables| SAGA
+    SAGA -->|produces| ES
+    ES -->|feeds| CQRS
+    CQRS -->|uses| PROJ
+    STRAT -->|implements| ADAPT
+    ADAPT -->|uses| MPC
+    MPC -->|optimized by| CACHE
+    CACHE -->|combined with| BATCH
+    
+    style HEX fill:#90EE90
+    style SAGA fill:#FFD700
+    style CQRS fill:#FFD700
+    style STRAT fill:#FFB6C1
+    style CACHE fill:#FFB6C1
+```
 
 ### Glossary (≥5)
 
@@ -924,6 +1141,36 @@ graph TB
 **G9. EIP-1559** – Ethereum Improvement Proposal introducing base fee mechanism and priority fee for transaction inclusion, replacing legacy gas price auction. Related: Base Fee, Priority Fee, Gas.
 
 **G10. FROST (Flexible Round-Optimized Schnorr Threshold)** – Two-round threshold signature protocol for Schnorr signatures with preprocessing phase enabling fast online signing. Related: Threshold Signature, Schnorr, GG20.
+
+**Glossary Concept Map**:
+```mermaid
+graph LR
+    MPC[MPC<br/>Multi-Party Computation]
+    TSS[TSS<br/>Threshold Signatures]
+    SHARD[Key Sharding<br/>Secret Sharing]
+    CQRS[CQRS<br/>Command/Query Split]
+    SAGA[Saga Pattern<br/>Distributed Tx]
+    AA[Account Abstraction<br/>EIP-4337]
+    HEX[Hexagonal Architecture<br/>Ports & Adapters]
+    ES[Event Sourcing<br/>Immutable Events]
+    FROST[FROST Protocol<br/>Schnorr Threshold]
+    EIP[EIP-1559<br/>Ethereum Gas]
+    
+    MPC -->|implements| TSS
+    MPC -->|uses| SHARD
+    TSS -->|protocol| FROST
+    SAGA -->|manages| TSS
+    HEX -->|contains| MPC
+    CQRS -->|uses| ES
+    ES -->|records| SAGA
+    AA -->|uses| TSS
+    EIP -->|signed by| TSS
+    
+    style MPC fill:#FFD700
+    style TSS fill:#FFB6C1
+    style CQRS fill:#90EE90
+    style HEX fill:#90EE90
+```
 
 ### Tools (≥3)
 
@@ -990,6 +1237,36 @@ graph TB
 
 **Overall**: 10/10 checks passed (100%)
 
+**Visual Validation Summary**:
+```
+Quality Checklist:
+┌──────────────────────────────────────┐
+│ ✅ Counts (G=10, T=6, L=6, A=8, Q=5) │
+│ ✅ Difficulty Mix (20/40/40)         │
+│ ✅ Answer Length (~280 words avg)    │
+│ ✅ Citations (all cited)             │
+│ ✅ Code Snippets (15-35 lines)       │
+│ ✅ Diagrams (<120 nodes)             │
+│ ✅ Metrics Tables (all present)      │
+│ ✅ Trade-offs Tables (3-4 each)      │
+│ ✅ URL Validity (verified)           │
+│ ✅ Language Diversity (✓)            │
+└──────────────────────────────────────┘
+Progress: ██████████ 100% (10/10 PASS)
+
+Difficulty Distribution:
+Foundational:  █████████████████████ 20% (1Q)
+Intermediate:  ██████████████████████████████████████████ 40% (2Q)
+Advanced:      ██████████████████████████████████████████ 40% (2Q)
+
+Content Richness:
+Glossary:     ████████████████████ 10 terms (target ≥5)
+Tools:        ████████████ 6 tools (target ≥3)
+Literature:   ████████████ 6 papers (target ≥3)
+Citations:    ████████████████ 8 refs (target ≥6)
+Questions:    ██████████ 5 topics (target =5)
+```
+
 ---
 
 ## Limitations
@@ -1025,5 +1302,36 @@ graph TB
 
 - **Out of scope**: Purely theoretical cryptographic proofs, non-threshold signature schemes, centralized wallet architectures, blockchain consensus mechanisms, smart contract security, frontend implementation details.
 - **Prerequisites assumed**: Understanding of elliptic curve cryptography, distributed systems fundamentals, blockchain transaction formats, asynchronous programming patterns.
+
+**Document Applicability Decision Tree**:
+```mermaid
+graph TD
+    START{MPC Wallet<br/>Architecture?}
+    START -->|Yes| Q1{Production-ready<br/>system?}
+    START -->|No| SKIP1[❌ Skip: Non-MPC wallets]
+    
+    Q1 -->|Yes| Q2{Multi-chain<br/>support?}
+    Q1 -->|No| SKIP2[❌ Skip: Prototypes only]
+    
+    Q2 -->|Yes| Q3{>1000 users or<br/>>$10k TVL?}
+    Q2 -->|Single chain| CAUTION1[⚠️ Use Q1,Q3 only]
+    
+    Q3 -->|Yes| Q4{Team has crypto<br/>expertise?}
+    Q3 -->|No| SKIP3[❌ Skip: Use traditional custody]
+    
+    Q4 -->|Yes| Q5{Latency requirement<br/>< 50ms?}
+    Q4 -->|No| CAUTION2[⚠️ Use with caution:<br/>Consider training]
+    
+    Q5 -->|No| USE[✅ USE THIS DOCUMENT]
+    Q5 -->|Yes| SKIP4[❌ Skip: Need HSM/TEE]
+    
+    style USE fill:#90EE90
+    style SKIP1 fill:#FFB6C1
+    style SKIP2 fill:#FFB6C1
+    style SKIP3 fill:#FFB6C1
+    style SKIP4 fill:#FFB6C1
+    style CAUTION1 fill:#FFD700
+    style CAUTION2 fill:#FFD700
+```
 
 ---

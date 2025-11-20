@@ -340,6 +340,45 @@ type KeyShareQuery struct {
 }
 ```
 
+**Key Share Invariants Visualization**:
+
+```
+Invariant Enforcement Layers:
+
+┌────────────────────────────────────────────────────────────┐
+│  Layer 1: Aggregate Root (Domain Logic)                   │
+│  ✓ Threshold ≤ Total                                       │
+│  ✓ Threshold > Total/2 (Byzantine tolerance)              │
+│  ✓ Exactly 'total' shares exist                            │
+│  ✓ No individual share reconstructs key                    │
+└────────────────────────────────────────────────────────────┘
+                          ↓ Commands
+┌────────────────────────────────────────────────────────────┐
+│  Layer 2: Repository (Persistence Boundary)                │
+│  ✓ All shares have valid commitments (Pedersen)           │
+│  ✓ All shares have valid MACs                              │
+│  ✓ Encrypted with AES-256-GCM                              │
+│  ✓ Unique per-share KMS keys                               │
+└────────────────────────────────────────────────────────────┘
+                          ↓ Persist
+┌────────────────────────────────────────────────────────────┐
+│  Layer 3: Storage (Database)                               │
+│  ✓ ACID transactions                                       │
+│  ✓ Optimistic locking (version field)                      │
+│  ✓ Event sourcing for audit trail                          │
+└────────────────────────────────────────────────────────────┘
+```
+
+**Security Guarantees**:
+
+| Property | Mechanism | Result |
+|----------|-----------|--------|
+| **Confidentiality** | AES-256-GCM encryption per share | Share unreadable without KMS key |
+| **Integrity** | Pedersen commitment + HMAC | Tampering detectable |
+| **No reconstruction** | t-of-n threshold enforcement | <t shares → no key recovery |
+| **Auditability** | Event sourcing all mutations | Complete history reconstructible |
+| **Atomicity** | Repository transaction boundary | All-or-nothing persistence |
+
 **Metrics**:
 
 | Metric | Formula | Target |
@@ -483,6 +522,48 @@ contract ThresholdSignatureValidator {
 }
 ```
 
+**ERC-4337 UserOperation Flow**:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant MPCWallet
+    participant Parties as MPC Parties (t of n)
+    participant Bundler
+    participant EntryPoint
+    participant SmartAccount
+    participant Validator as ThresholdValidator
+    participant Blockchain
+    
+    User->>MPCWallet: Create Transaction
+    MPCWallet->>MPCWallet: Generate UserOperation
+    Note over MPCWallet: UserOp with empty signature
+    
+    MPCWallet->>Parties: Request threshold signatures
+    loop Collect t signatures
+        Parties->>MPCWallet: Sign UserOp hash
+    end
+    
+    MPCWallet->>MPCWallet: Combine signatures
+    MPCWallet->>Bundler: Submit UserOperation
+    
+    Bundler->>EntryPoint: handleOps([UserOp])
+    EntryPoint->>SmartAccount: validateUserOp()
+    SmartAccount->>Validator: validate(hash, combinedSig)
+    
+    alt Valid Signature
+        Validator-->>SmartAccount: ✓ Success
+        SmartAccount-->>EntryPoint: ✓ Valid
+        EntryPoint->>SmartAccount: execute()
+        SmartAccount->>Blockchain: Execute transaction
+        Blockchain-->>User: ✓ Confirmed (80k gas)
+    else Invalid Signature
+        Validator-->>SmartAccount: ✗ Fail
+        SmartAccount-->>EntryPoint: ✗ Invalid
+        EntryPoint-->>User: ✗ Rejected
+    end
+```
+
 **Metrics**:
 
 | Metric | Formula | Target |
@@ -502,6 +583,34 @@ contract ThresholdSignatureValidator {
 **Answer**:
 
 Multi-chain wallets derive keys hierarchically from a BIP-39 seed (12-24 words) using path: `m/purpose'/coin_type'/account'/change/address_index`. Each segment is a hardened derivation (requires parent private key; non-linkable from public key). In MPC, the seed itself is never generated in full; instead, seed is split into shares, and each party derives their share of the child key using homomorphic properties.
+
+**BIP-32/44 Derivation Hierarchy**:
+
+```
+m (Master Seed)
+ ├── m/44' (Purpose: BIP-44)
+      ├── m/44'/0' (Bitcoin)
+      │    ├── m/44'/0'/0' (Account 0)
+      │    │    ├── m/44'/0'/0'/0 (External Chain)
+      │    │    │    ├── m/44'/0'/0'/0/0 (Address 0)
+      │    │    │    ├── m/44'/0'/0'/0/1 (Address 1)
+      │    │    │    └── ...
+      │    │    └── m/44'/0'/0'/1 (Change Chain)
+      │    └── m/44'/0'/1' (Account 1)
+      ├── m/44'/60' (Ethereum)
+      │    └── m/44'/60'/0'/0/0 (ETH Address 0)
+      ├── m/44'/501' (Solana)
+      └── m/44'/714' (BNB Chain)
+```
+
+**Path Components**:
+- `purpose'`: Always 44' for BIP-44
+- `coin_type'`: Chain identifier (0'=BTC, 60'=ETH, 501'=SOL)
+- `account'`: Account index (usually 0')
+- `change`: 0=external/receiving, 1=change addresses
+- `address_index`: Sequential address counter
+
+**Note**: Apostrophe (') indicates hardened derivation (index ≥ 2³¹)
 
 The DKG must be idempotent: re-running with the same seed produces identical shares. This enables recovery/resharing without contacting all participants (one can restart DKG locally and get the same shares). Maintain a ChainKeyDerivationRegistry mapping (curve, chain_id, derivation_path) → (shared_public_key, active_version). When onboarding a chain, register it; a background reconciliation service verifies each party's derived key commitment matches others.
 
@@ -635,6 +744,61 @@ Core wallet logic (MPC signing, key management) remains protocol-agnostic; it co
 Adapters can be tested in isolation and deployed as separate binaries/containers, enabling A/B testing (different Bitcoin fee estimators without core wallet redeploy). Registry pattern centralizes protocol discovery; ProtocolRegistry stores implementations keyed by chain ID. Adding a new chain: implement ProtocolAdapter + register—no core wallet changes. This design reduced onboarding from 6 weeks (monolithic) to 10 days (modular).
 
 Trade-off: inter-adapter marshaling adds ~5% serialization overhead; plugin loading adds ~500ms startup latency. Mitigate with lazy loading and caching.
+
+**Plugin Architecture Diagram**:
+
+```mermaid
+graph TB
+    subgraph Core["Core Wallet Engine (Protocol-Agnostic)"]
+        WalletEngine[Wallet Engine]
+        MPCSigner[MPC Signer]
+        KeyMgmt[Key Management]
+        Registry[Protocol Registry]
+    end
+    
+    subgraph PluginInterface["Plugin Interface Layer"]
+        ProtocolAdapter["ProtocolAdapter Interface<br/>- SerializeTransaction()<br/>- VerifySignature()<br/>- EstimateGas()<br/>- BroadcastSignedTx()"]
+    end
+    
+    subgraph Adapters["Protocol Adapters (Plugins)"]
+        ETHAdapter["Ethereum Adapter<br/>EIP-1559, EIP-4337<br/>JSON-RPC"]
+        BTCAdapter["Bitcoin Adapter<br/>PSBT, SegWit<br/>BIP-32"]
+        SOLAdapter["Solana Adapter<br/>Message Format<br/>Ed25519"]
+        CustomAdapter["Custom Chain<br/>Your Protocol<br/>Custom Logic"]
+    end
+    
+    subgraph External["External Services"]
+        ETHRPC["Ethereum<br/>Node/Infura"]
+        BTCRPC["Bitcoin<br/>Node/Electrum"]
+        SOLRPC["Solana<br/>Node/RPC"]
+    end
+    
+    WalletEngine --> MPCSigner
+    WalletEngine --> Registry
+    Registry --> ProtocolAdapter
+    
+    ProtocolAdapter -.->|implements| ETHAdapter
+    ProtocolAdapter -.->|implements| BTCAdapter
+    ProtocolAdapter -.->|implements| SOLAdapter
+    ProtocolAdapter -.->|implements| CustomAdapter
+    
+    ETHAdapter --> ETHRPC
+    BTCAdapter --> BTCRPC
+    SOLAdapter --> SOLRPC
+    
+    style Core fill:#ffebee
+    style PluginInterface fill:#e3f2fd
+    style Adapters fill:#f3e5f5
+    style External fill:#e8f5e9
+```
+
+**Onboarding Timeline Comparison**:
+
+| Architecture | New Chain Onboarding | Changes Required | Risk Level |
+|--------------|---------------------|------------------|------------|
+| **Modular (Plugin)** | 10-14 days | Implement adapter interface only | Low (isolated) |
+| **Monolithic** | 6-8 weeks | Modify core + all integrations | High (coupling) |
+| **Generalized Abstraction** | 2-3 days | Config file changes | Very High (abstraction leak) |
 
 **Implementation** (Go):
 
@@ -861,6 +1025,49 @@ Distributed Key Generation (DKG) is the setup phase where n MPC parties jointly 
 
 Implement as state machine orchestrated by DKGOrchestrator coordinator; store state in persistent cache (Redis). If a party doesn't respond after timeout (default 30s), exclude it. Use saga pattern to handle failures—if round fails, compensate by deleting round data and restarting. This is critical because DKG is a "setup once" protocol; failures here prevent wallet creation.
 
+**DKG State Machine**:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Initialized: Start DKG
+    Initialized --> Round1_Commit: Begin Round 1
+    
+    Round1_Commit --> Round1_Waiting: Broadcast commitments
+    Round1_Waiting --> Round1_Verify: All parties responded
+    Round1_Waiting --> Failed: Timeout (>30s)
+    Round1_Verify --> Round2_Decommit: Commitments verified
+    Round1_Verify --> Failed: Invalid commitment
+    
+    Round2_Decommit --> Round2_Waiting: Send encrypted shares
+    Round2_Waiting --> Round2_Verify: All shares received
+    Round2_Waiting --> Failed: Timeout
+    Round2_Verify --> Round3_Consistency: Shares verified
+    Round2_Verify --> Failed: Invalid share/ZK proof
+    
+    Round3_Consistency --> Round3_Computing: Compute final share
+    Round3_Computing --> Completed: Success (t parties)
+    Round3_Computing --> Failed: Insufficient parties
+    
+    Completed --> [*]: Public key derived
+    Failed --> Initialized: Retry with n-1 parties
+    Failed --> [*]: Abort after max retries
+    
+    note right of Round1_Commit
+        O(n²) messages
+        Pedersen commitments
+    end note
+    
+    note right of Round2_Decommit
+        Encrypted peer-to-peer
+        ZK proofs included
+    end note
+    
+    note right of Round3_Consistency
+        Lagrange interpolation
+        No single party has full key
+    end note
+```
+
 **Implementation** (Go):
 
 ```go
@@ -1076,6 +1283,47 @@ Once key shares are distributed, signing must also be distributed via an MPC pro
 
 Implement via orchestrated saga: SigningOrchestrator manages protocol state across 4-6 rounds. Each round broadcasts commitments, waits for t responses (timeout 5s default), proceeds to next round. If party times out, exclude it and re-run current round with alternate. Store round state in persistent cache (Redis) so if orchestrator crashes, a new instance resumes from last committed round.
 
+**Threshold Signing Phases**:
+
+```mermaid
+flowchart TB
+    subgraph Preprocessing["Preprocessing Phase (Offline)"]
+        P1[Generate ephemeral k_i]
+        P2[Compute commitments]
+        P3[Generate ZK proofs]
+        P4[Batch & cache for reuse]
+        P1 --> P2 --> P3 --> P4
+    end
+    
+    subgraph Online["Online Phase (Real-time)"]
+        O1[Receive message m]
+        O2["Round 1: Commit<br/>(broadcast k_i commitment)"]
+        O3["Round 2: Reveal<br/>(share k_i * G)"]
+        O4["Round 3: Sign<br/>(compute s_i = k_i⁻¹(m + rx_i))"]
+        O5["Round 4: Verify<br/>(check ZK proofs)"]
+        O6["Combine: σ = Σ s_i<br/>(Lagrange interpolation)"]
+        O7[Verify final signature]
+        O1 --> O2 --> O3 --> O4 --> O5 --> O6 --> O7
+    end
+    
+    P4 -.->|"Cached values<br/>(1 hour TTL)"| O2
+    
+    O7 -->|Valid| Result[Broadcast transaction]
+    O7 -->|Invalid| Fail[Exclude malicious party]
+    
+    style Preprocessing fill:#e3f2fd
+    style Online fill:#fff3e0
+    style Result fill:#c8e6c9
+    style Fail fill:#ffcdd2
+```
+
+**Performance Comparison**:
+| Phase | Latency | When | Dependencies |
+|-------|---------|------|--------------|
+| Preprocessing | 200-400ms | Batch (before tx) | None (message-independent) |
+| Online (with cache) | 100-200ms | Per transaction | Requires message m |
+| Online (no cache) | 500-800ms | Cold start | Full protocol run |
+
 Saga includes Byzantine detection: if a party's proof fails verification, exclude it from future rounds. Model party state as FSM: Online → ActiveInRound → Responded → Ready for next round; failure transitions to Excluded.
 
 **Implementation** (Go):
@@ -1258,6 +1506,38 @@ func (p *SigningParty) round3SignContribution(ctx context.Context,
 }
 ```
 
+**ECDSA Threshold Signature Math**:
+
+```
+Standard ECDSA Signature:
+─────────────────────────
+Given: message m, private key x, curve order n
+1. Generate ephemeral k ∈ [1, n-1]
+2. Compute r = (k·G).x mod n
+3. Compute s = k⁻¹(H(m) + r·x) mod n
+4. Signature: σ = (r, s)
+
+Threshold ECDSA (MPC):
+──────────────────────
+Secret sharing: x = Σᵢ xᵢ (mod n) where xᵢ is party i's share
+                k = Σᵢ kᵢ (mod n) where kᵢ is party i's ephemeral
+
+Each party i computes:
+  sᵢ = kᵢ⁻¹(H(m) + r·xᵢ) mod n
+
+Final signature:
+  s = Σᵢ λᵢ·sᵢ mod n    (Lagrange interpolation)
+  σ = (r, s)
+
+Where λᵢ are Lagrange coefficients for threshold t:
+  λᵢ = ∏ⱼ≠ᵢ (j / (j-i))
+
+Security Property:
+  ✓ Any t shares → valid signature
+  ✗ Any <t shares → cannot reconstruct x or k
+  ✓ No party ever sees full x or k in plaintext
+```
+
 **Metrics**:
 
 | Metric | Formula | Target |
@@ -1283,6 +1563,61 @@ Private key loss is the most common failure mode (47% of major losses, per Chain
 2. **Trigger**: User loses key; submits recovery request to smart contract.
 3. **Voting**: Guardians receive notification; each signs recovery authorization. Once t approve, timelock activates (e.g., 3 days).
 4. **Execution**: After timelock expires, new key is activated; old key is revoked on-chain.
+
+**Social Recovery State Machine**:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Setup: Initialize wallet
+    Setup --> Active: n guardians registered
+    
+    Active --> RecoveryInitiated: User loses key
+    RecoveryInitiated --> CollectingApprovals: Notify guardians
+    
+    CollectingApprovals --> CollectingApprovals: Guardian approves (< t)
+    CollectingApprovals --> TimelockActive: Quorum reached (≥ t)
+    CollectingApprovals --> Cancelled: User cancels / timeout
+    
+    TimelockActive --> TimelockActive: Wait (3-7 days)
+    TimelockActive --> Cancelled: Owner cancels (key recovered)
+    TimelockActive --> Executed: Timelock expired
+    
+    Executed --> Active: New key activated
+    Cancelled --> Active: Recovery aborted
+    
+    note right of Setup
+        Threshold: t = ⌈2n/3⌉
+        Guardians: family, friends,
+        institutional services
+    end note
+    
+    note right of TimelockActive
+        Grace period prevents
+        immediate takeover
+        Owner can cancel if
+        key is found
+    end note
+    
+    note right of Executed
+        Old key revoked
+        on-chain
+        All assets transferred
+        to new key
+    end note
+```
+
+**Recovery Timeline**:
+
+```
+Day 0          Day 0-1         Day 1-3         Day 3           Day 4+
+│              │               │               │               │
+User loses ──→ Guardians  ──→  Timelock   ──→  Key      ──→   Normal
+key            vote (t/n)      waiting         rotation        operation
+               approval         (3 days)        executed        with new key
+                                                                
+               ↓ Can cancel                     ↓ Can cancel
+               if key found                     before expiry
+```
 
 Implement via RecoveryAggregate (DDD): state transitions PendingGuardianApprovals → TimelockActive → KeyRotated. Smart contract (ERC-4337 SmartAccount) maintains GuardianRegistry and tracks pending recoveries. When executing recovery, emit event (KeyRecoveryStarted) triggering saga: notify guardians, collect signatures, verify quorum, activate timelock, execute key swap.
 

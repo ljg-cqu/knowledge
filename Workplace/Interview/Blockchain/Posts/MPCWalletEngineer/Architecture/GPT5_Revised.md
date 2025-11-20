@@ -1,6 +1,31 @@
 ## Contents
 [TOC]
 
+### Architecture Overview
+
+```mermaid
+graph TB
+    subgraph "MPC Wallet Core System"
+        T1[Topic 1: Hexagonal Architecture<br/>Core Structure & Boundaries]
+        T2[Topic 2: Sagas & Circuit Breakers<br/>Cross-Chain Orchestration]
+        T3[Topic 3: Rate Limiting & Encryption<br/>API Security & Performance]
+        T4[Topic 4: CQRS + Event Sourcing<br/>Data Architecture & Audit]
+        T5[Topic 5: gRPC vs REST<br/>SDK Integration]
+        
+        T1 -.->|provides foundation for| T2
+        T1 -.->|exposes via| T5
+        T2 -.->|generates events for| T4
+        T3 -.->|protects| T5
+        T4 -.->|stores sessions from| T1
+    end
+    
+    style T1 fill:#e1f5ff,stroke:#333,stroke-width:2px
+    style T2 fill:#e1f5ff,stroke:#333,stroke-width:2px
+    style T3 fill:#fff4e1,stroke:#333,stroke-width:2px
+    style T4 fill:#e1f5ff,stroke:#333,stroke-width:2px
+    style T5 fill:#e1f5ff,stroke:#333,stroke-width:2px
+```
+
 ### Topic Areas
 | Dimension | Count | Difficulty | Priority |
 |-----------|-------|------------|----------|
@@ -12,12 +37,116 @@
 
 **Priority Distribution**: CRITICAL (4), IMPORTANT (1)
 
+### Priority-Difficulty Matrix
+
+```mermaid
+quadrantChart
+    title Topic Priority vs. Difficulty
+    x-axis Low Difficulty --> High Difficulty
+    y-axis Important --> Critical
+    quadrant-1 Critical & Complex
+    quadrant-2 Critical & Moderate
+    quadrant-3 Important & Moderate
+    quadrant-4 Important & Complex
+    Topic 1 (Hexagonal): [0.8, 0.9]
+    Topic 2 (Sagas): [0.6, 0.9]
+    Topic 3 (Rate Limiting): [0.3, 0.5]
+    Topic 4 (CQRS+ES): [0.8, 0.9]
+    Topic 5 (gRPC): [0.6, 0.9]
+```
+
+---
+
+### System Component Interaction Map
+
+```mermaid
+flowchart TB
+    subgraph Client["Client Layer"]
+        Web[Web Browser]
+        Mobile[Mobile SDK]
+        Backend[Backend Service]
+    end
+    
+    subgraph API["API Gateway Layer - Topic 3 & 5"]
+        RL[Rate Limiter<br/>Token Bucket]
+        REST[REST Endpoint]
+        GRPC[gRPC Service]
+        Encrypt[AES-GCM<br/>Encryption]
+    end
+    
+    subgraph Core["Core Domain - Topic 1"]
+        SignPort[Sign Port<br/>Interface]
+        TxPort[Transaction Port<br/>Interface]
+        SignSvc[Sign Service<br/>Domain Logic]
+    end
+    
+    subgraph Orchestration["Orchestration Layer - Topic 2"]
+        Saga[Saga Coordinator]
+        CB[Circuit Breakers]
+    end
+    
+    subgraph Data["Data Layer - Topic 4"]
+        ES[Event Store<br/>Immutable Events]
+        Projections[Read Projections<br/>Denormalized Views]
+        EventBus[Event Bus]
+    end
+    
+    subgraph Adapters["Chain Adapters - Topic 1"]
+        EVM[EVM Adapter]
+        BTC[BTC Adapter]
+        SOL[Solana Adapter]
+    end
+    
+    Web --> REST --> RL --> Encrypt
+    Mobile --> GRPC --> RL --> Encrypt
+    Backend --> GRPC --> RL --> Encrypt
+    
+    Encrypt --> SignPort --> SignSvc
+    SignPort --> Saga --> CB
+    SignSvc --> TxPort
+    TxPort --> EVM & BTC & SOL
+    
+    CB --> EVM & BTC & SOL
+    
+    SignSvc --> ES --> EventBus --> Projections
+    Projections --> REST & GRPC
+    
+    style Client fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style API fill:#e1f5ff,stroke:#333,stroke-width:2px
+    style Core fill:#ffe1e1,stroke:#333,stroke-width:2px
+    style Orchestration fill:#e1ffe1,stroke:#333,stroke-width:2px
+    style Data fill:#fff4e1,stroke:#333,stroke-width:2px
+    style Adapters fill:#f0e1ff,stroke:#333,stroke-width:2px
+```
+
 ---
 
 ### Topic 1: Hexagonal decomposition for a multi-chain MPC wallet core
 **Priority**: CRITICAL
 
 Overview: Decompose MPC wallet services (keygen, shard management, signing, recovery) into ports/adapters to reduce coupling while keeping code testable and chain-agnostic. Decision-Criticality: Blocks decision (core architecture and boundaries), Creates risk (incorrect boundaries cause brittle signing flows), Affects ≥2 roles (Architect + Developer), Requires action (build in 3-6 months). [0][4]
+
+**Key Benefits Visualization:**
+```mermaid
+mindmap
+  root((Hexagonal<br/>Architecture))
+    Testability
+      50-70% faster unit tests
+      No RPC dependencies
+      Mock adapters easily
+    Modularity
+      Swap chain adapters
+      Independent evolution
+      Clear boundaries
+    Compliance
+      Audit core separately
+      Isolate sensitive logic
+      Clear data flows
+    Maintainability
+      Lower coupling CBO
+      Higher cohesion LCOM
+      Reduced change failure
+```
 
 #### Q1: How would you design a hexagonal architecture that isolates MPC crypto from chain-specific adapters and expose it as an SDK and service?
 Difficulty: A | Dimension: Structural  
@@ -104,6 +233,62 @@ Sources: [0][4]
 
 Overview: Multi-chain transfer requires orchestrating MPC signing, nonce management, fee checks, and submission with retries and compensations; circuit breakers protect upstreams. Decision-Criticality: Blocks decision (orchestration style), Creates risk (double-spends/timeouts), Affects ≥2 roles (SRE + Security), Requires action (ship in 2-4 months). [0][4][2]
 
+**Saga State Machine:**
+```mermaid
+stateDiagram-v2
+    [*] --> BuildTx: Start Batch
+    BuildTx --> MPCSession: Tx Built
+    MPCSession --> Partial: Session Started
+    Partial --> Finalize: All Partials Received
+    Finalize --> Submit: Signature Complete
+    Submit --> Confirm: Tx Submitted
+    Confirm --> [*]: Success
+    
+    BuildTx --> Compensate: Build Failed
+    MPCSession --> Compensate: MPC Failed
+    Partial --> Compensate: Partial Failed
+    Finalize --> Compensate: Finalize Failed
+    Submit --> Compensate: Submit Failed (Breaker Open)
+    
+    Compensate --> CancelSession: Rollback Step 1
+    CancelSession --> ReleaseNonce: Rollback Step 2
+    ReleaseNonce --> RefundLedger: Rollback Step 3
+    RefundLedger --> [*]: Compensated
+    
+    note right of Submit
+        Circuit Breaker
+        - 5 fails → Open
+        - 30s cooldown
+        - Jittered retry
+    end note
+```
+
+**Circuit Breaker State Transitions:**
+```mermaid
+stateDiagram-v2
+    [*] --> Closed
+    Closed --> Open: failures >= threshold (5)
+    Open --> HalfOpen: after cooldown (30s)
+    HalfOpen --> Closed: success
+    HalfOpen --> Open: failure
+    
+    note right of Closed
+        Normal operation
+        Track failures
+    end note
+    
+    note right of Open
+        Fail fast
+        No requests
+        Wait cooldown
+    end note
+    
+    note right of HalfOpen
+        Test probe
+        Single request
+    end note
+```
+
 #### Q2: How do you implement a saga for EVM→BTC→Solana batched payouts with circuit breakers and compensations?
 Difficulty: I | Dimension: Behavioral  
 Key Insight: Centralized orchestration reduces “lost saga” risk by ~30-40% vs choreography in incident reviews; circuit breaker trips at 5 consecutive failures with 30s half-open improves MTTR by ~20%. [0][4][2]
@@ -185,6 +370,68 @@ Sources: [0][4][2]
 
 Overview: Mobile/Web signing endpoints require p99 latency control under bursts with encryption at rest/over the wire; rate-limits prevent abuse, encryption adds CPU. Decision-Criticality: Creates risk (DoS, SLO misses), Requires action (immediate rollout). [0][2]
 
+**Token Bucket Algorithm Flow:**
+```mermaid
+flowchart TD
+    Start([Request Arrives]) --> CheckDevice{Device ID<br/>Exists?}
+    CheckDevice -->|No| CreateBucket[Create New Bucket<br/>rate=10 rps, burst=20]
+    CheckDevice -->|Yes| LoadBucket[Load Bucket State]
+    CreateBucket --> Refill
+    LoadBucket --> Refill[Refill Tokens<br/>tokens += Δt × rate]
+    Refill --> Cap[Cap at burst limit<br/>tokens = min tokens burst]
+    Cap --> HasToken{tokens >= 1?}
+    HasToken -->|Yes| Consume[tokens -= 1<br/>Allow Request]
+    HasToken -->|No| Reject[Reject with 429<br/>Too Many Requests]
+    Consume --> Encrypt[AES-GCM Encrypt<br/>~0.1-0.4ms/32KB]
+    Encrypt --> Process[Process Sign Request]
+    Process --> End([Response])
+    Reject --> End
+    
+    style Consume fill:#90EE90
+    style Reject fill:#FFB6C6
+    style Encrypt fill:#FFE4B5
+```
+
+**Encryption Pipeline:**
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant G as Gateway
+    participant KMS as Key Management
+    participant S as Sign Service
+    participant DB as Encrypted Store
+    
+    C->>G: POST /sign (device_id, payload)
+    Note over G: Rate Limit Check<br/>Token Bucket
+    G->>G: Allow() -> true
+    
+    G->>KMS: Get DEK (device_id)
+    KMS-->>G: Wrapped DEK
+    G->>G: Unwrap DEK (cached 5min)
+    
+    Note over G: AES-GCM Encrypt<br/>0.1-0.4ms
+    G->>G: Encrypt(payload, DEK, nonce)
+    
+    G->>S: Forward encrypted request
+    S->>S: Process MPC signing
+    S->>DB: Store encrypted session
+    S-->>G: Encrypted response
+    
+    Note over G: AES-GCM Decrypt
+    G->>G: Decrypt(response, DEK, nonce)
+    G-->>C: Plain response
+```
+
+**Performance Impact Breakdown:**
+```mermaid
+pie title Latency Components (p95 < 120ms target)
+    "MPC Signing Core" : 70
+    "Network I/O" : 15
+    "Rate Limiting" : 3
+    "AES-GCM Encrypt/Decrypt" : 5
+    "Token Validation" : 7
+```
+
 #### Q3: How do you implement per-device token-bucket limiting and AES-GCM envelope encryption without blowing p99?
 Difficulty: F | Dimension: Quality  
 Key Insight: Per-device token bucket at 10 rps with 20 burst caps peak CPU spikes by 25-35% less than global limiters; AES-GCM adds ~0.1–0.4ms/32KB on x86, amortized under p95<120ms if batching is avoided. [0][2]
@@ -254,6 +501,14 @@ Sources: [0][2]
 **Priority**: CRITICAL
 
 Overview: Separate write (commands/events) from read (projections) to scale read-heavy queries like “wallet history” while keeping an auditable log of MPC signing sessions. Decision-Criticality: Blocks decision (data architecture), Creates risk (consistency bugs), Affects ≥2 roles (Architect + SRE), Requires action (2-4 months). [0][4]
+
+**CQRS Visualization:**
+```mermaid
+flowchart LR
+    Write[Write Client] --> CMD[Command Handler] --> ES[(Event Store)]
+    ES --> EB[Event Bus] --> PROJ[(Projections)]
+    PROJ --> QUERY[Query API] --> Read[Read Client]
+```
 
 #### Q4: When should you use CQRS + Event Sourcing for an MPC wallet, and how do you translate to code?
 Difficulty: A | Dimension: Data  
@@ -336,6 +591,50 @@ Sources: [0][4]
 
 Overview: Choose transport for SDKs (mobile/web/backend) interacting with wallet core; streaming and strict contracts vs browser compatibility and simplicity. Decision-Criticality: Blocks decision (protocol), Creates risk (SDK maintenance, latency), Affects ≥2 roles (Architect + DevRel). [0][4][2]
 
+**Hybrid Protocol Architecture:**
+```mermaid
+flowchart TB
+    subgraph Clients
+        Web[Web Browser<br/>REST/JSON]
+        Mobile[Mobile SDK<br/>gRPC/Protobuf]
+        Backend[Backend Service<br/>gRPC/Protobuf]
+        Partner[Partner API<br/>REST/JSON]
+    end
+    
+    subgraph Gateway
+        REST[REST Endpoint]
+        Transcode[gRPC-Gateway<br/>Transcoder<br/>+2-5ms]
+    end
+    
+    subgraph Services
+        GRPC[gRPC Service<br/>Sign/Session]
+    end
+    
+    Web --> REST --> Transcode
+    Partner --> REST
+    Transcode --> GRPC
+    Mobile --> GRPC
+    Backend --> GRPC
+    
+    style Web fill:#FFE4E1
+    style Mobile fill:#E1FFE4
+    style Backend fill:#E1FFE4
+    style Partner fill:#FFE4E1
+    style GRPC fill:#E1E4FF
+```
+
+**Protocol Comparison:**
+| Feature | REST | gRPC | Winner |
+|---------|------|------|--------|
+| **Throughput** | 1x baseline | 2-4x | ✅ gRPC |
+| **Latency** | baseline | -20-40% | ✅ gRPC |
+| **Browser Support** | Native | Requires proxy | ✅ REST |
+| **Streaming** | SSE/WebSocket | Native bidirectional | ✅ gRPC |
+| **Type Safety** | Runtime (JSON Schema) | Compile-time (Protobuf) | ✅ gRPC |
+| **Debugging** | Easy (curl, browser) | Requires tools | ✅ REST |
+| **Caching** | HTTP cache-friendly | Not cache-friendly | ✅ REST |
+| **Payload Size** | Larger (JSON text) | Smaller (binary) | ✅ gRPC |
+
 #### Q5: REST or gRPC for the wallet SDK and why? Show a minimal gRPC contract for signing sessions.
 Difficulty: I | Dimension: Integration  
 Key Insight: gRPC delivers 2–4x throughput improvements for small protobuf payloads and supports streaming for progress, but REST is simpler for browsers and proxies; hybrid (public REST, internal gRPC) balances evolvability and DX. [0][4]
@@ -403,6 +702,87 @@ Trade-offs:
 | REST | Simple, cacheable | Verbose, no streaming | Public APIs/partners | [Consensus] |
 
 Sources: [0][4][2]
+
+---
+
+### Architecture Decision Summary
+
+**Quick Reference Matrix:**
+| Topic | Pattern | Key Metrics | When to Use |
+|-------|---------|-------------|-------------|
+| **1. Hexagonal** | Ports/Adapters | CBO ≤8, Test time -40-60% | Multi-chain, testability critical |
+| **2. Sagas** | Orchestrated | Success ≥99.5%, E2E p95 <2s | Cross-chain, compensation needed |
+| **3. Rate Limiting** | Token Bucket | 10 rps/device, p99 <150ms | Public APIs, DoS protection |
+| **4. CQRS+ES** | Event Sourcing | Read 10x faster, lag <300ms | Audit trail, read-heavy |
+| **5. gRPC/REST** | Hybrid | gRPC 2-4x throughput | Internal gRPC, public REST |
+
+**Implementation Roadmap:**
+```mermaid
+gantt
+    title MPC Wallet Architecture Implementation Timeline
+    dateFormat YYYY-MM
+    section Foundation
+    Hexagonal Core :done, hex, 2025-01, 3M
+    section Data
+    CQRS+Event Store :active, cqrs, 2025-02, 3M
+    section Orchestration
+    Sagas+Breakers :saga, 2025-03, 2M
+    section Security
+    Rate Limiting :rl, 2025-04, 1M
+    section Integration
+    gRPC/REST Gateway :grpc, 2025-04, 2M
+```
+
+**System Health Dashboard (Target SLIs):**
+| Component | SLI | Target | Current | Status |
+|-----------|-----|--------|---------|--------|
+| **Core Signing** | p95 latency | <120ms | - | 🎯 |
+| **Saga Success** | Success rate | ≥99.5% | - | 🎯 |
+| **Rate Limiter** | Rejection rate | <1% | - | 🎯 |
+| **Projection Lag** | p95 lag | <300ms | - | 🎯 |
+| **API Gateway** | p99 latency | <150ms | - | 🎯 |
+| **Circuit Breaker** | Open time | <1% | - | 🎯 |
+
+**Pattern Integration Flow:**
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as Client (Topic 5)
+    participant RL as Rate Limiter (Topic 3)
+    participant H as Hexagonal Core (Topic 1)
+    participant S as Saga (Topic 2)
+    participant ES as Event Store (Topic 4)
+    participant CH as Chain Adapter (Topic 1)
+    
+    C->>RL: Sign request (REST/gRPC)
+    RL->>RL: Token bucket check
+    RL->>H: Forward to core (if allowed)
+    H->>S: Orchestrate signing
+    
+    rect rgb(230, 245, 255)
+        Note over S,CH: Saga Execution
+        S->>H: Build unsigned tx
+        S->>H: MPC partial sign
+        S->>H: Finalize signature
+        S->>CH: Submit via circuit breaker
+    end
+    
+    H->>ES: Append SessionCompleted event
+    ES->>ES: Update projections
+    
+    alt Success
+        CH-->>S: Tx hash
+        S-->>H: Success
+        H-->>RL: Response
+        RL-->>C: 200 OK
+    else Failure
+        S->>S: Compensate (rollback)
+        S-->>H: Failure
+        H->>ES: Append SessionFailed event
+        H-->>RL: Error
+        RL-->>C: 500 Error
+    end
+```
 
 ---
 
