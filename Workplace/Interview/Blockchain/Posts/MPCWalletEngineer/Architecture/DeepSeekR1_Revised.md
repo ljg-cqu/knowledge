@@ -44,6 +44,21 @@
 **Timeline**: Implementation typically requires 6-12 months for full production deployment across all dimensions.
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 gantt
     title MPC Wallet Implementation Timeline
     dateFormat YYYY-MM
@@ -72,6 +87,16 @@ gantt
 **Resources**: Requires dedicated security engineering team (2+ engineers), backend development team (3-5 engineers), and DevOps support (1-2 engineers).
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 pie title Team Resource Allocation
     "Security Engineering (30%)" : 30
     "Backend Engineering (40%)" : 40
@@ -163,6 +188,17 @@ graph LR
 
 **Architecture Overview**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Client Layer"
         SDK[MPC Wallet SDK<br/>TypeScript/Go/Rust]
@@ -237,14 +273,14 @@ graph TB
     KMS2 --> SHARD2
     KMS3 --> SHARD3
     
-    style SDK fill:#87CEEB
-    style CACHE fill:#FFD700
-    style R1 fill:#90EE90
-    style R2 fill:#90EE90
-    style R3 fill:#90EE90
-    style SHARD1 fill:#FF6347
-    style SHARD2 fill:#FF6347
-    style SHARD3 fill:#FF6347
+    style SDK fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CACHE fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style R1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style R2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style R3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style SHARD1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style SHARD2 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style SHARD3 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -282,6 +318,17 @@ pub struct MultiRegionOrchestrator {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Region 1"
         C1[Crypto Cluster 1] --> K1[Key Share 1]
@@ -307,6 +354,11 @@ graph TB
     ETH --> C2
     SOL --> C1
     SOL --> C2
+    
+    style C1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style K1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style K2 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Trade-offs**:
@@ -328,6 +380,17 @@ graph TB
 
 **Threshold Signature Concept**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "3-of-5 Threshold Signature Example"
         KEY[Private Key<br/>Split into 5 shares] --> S1[Share 1<br/>Region A]
@@ -352,10 +415,12 @@ graph TB
         P3[Need 3+ shares:<br/>✓ Can sign transactions]
     end
     
-    style VALID fill:#90EE90
-    style P1 fill:#FF6347
-    style P2 fill:#90EE90
-    style P3 fill:#90EE90
+    style VALID fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style P1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style P2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style P3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style KEY fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style SIGN fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Answer**: Implement a protocol adapter pattern with GG20 for custodial wallets requiring UC-security guarantees and FROST for retail wallets prioritizing latency. GG20 provides proven UC-security with 3-round keygen and 2-round signing, ideal for institutional custody where security outweighs latency concerns. FROST offers 1-round signing with pre-processing, reducing signing latency by 50% for high-frequency retail transactions. Use a protocol selector based on wallet type, transaction volume, and security requirements. Maintain backward compatibility by supporting both protocols simultaneously (A3, A4).
@@ -392,6 +457,20 @@ func SelectProtocol(walletType WalletType, txVolume int64) ThresholdProtocol {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#1a1a1a",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     participant C as Client
     participant PS as Protocol Selector
@@ -420,17 +499,28 @@ sequenceDiagram
 
 **Protocol Performance Comparison**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "GG20 Protocol"
-        GG20_SEC[🔒 UC-Security<br/>Proven] --> GG20_ROUND[3-round Keygen<br/>2-round Signing]
-        GG20_ROUND --> GG20_LAT[⏱️ 30s Latency]
-        GG20_LAT --> GG20_USE[💼 Custodial<br/>Institutional]
+        GG20_SEC[UC-Security<br/>Proven] --> GG20_ROUND[3-round Keygen<br/>2-round Signing]
+        GG20_ROUND --> GG20_LAT[30s Latency]
+        GG20_LAT --> GG20_USE[Custodial<br/>Institutional]
     end
     
     subgraph "FROST Protocol"
-        FROST_SEC[🔒 Standard Security<br/>Schnorr-based] --> FROST_ROUND[1-round Signing<br/>with Pre-processing]
-        FROST_ROUND --> FROST_LAT[⚡ 5s Latency]
-        FROST_LAT --> FROST_USE[🛍️ Retail<br/>High-frequency]
+        FROST_SEC[Standard Security<br/>Schnorr-based] --> FROST_ROUND[1-round Signing<br/>with Pre-processing]
+        FROST_ROUND --> FROST_LAT[5s Latency]
+        FROST_LAT --> FROST_USE[Retail<br/>High-frequency]
     end
     
     subgraph "Selection Criteria"
@@ -442,8 +532,10 @@ graph LR
     GG20_USE --> CRIT1
     FROST_USE --> CRIT2
     
-    style GG20_SEC fill:#FFD700
-    style FROST_LAT fill:#90EE90
+    style GG20_SEC fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style FROST_LAT fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style GG20_USE fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style FROST_USE fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -491,6 +583,17 @@ impl PerformanceManager {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "Optimization Layers"
         PC[Pre-computation] --> NC[Nonce Cache]
@@ -517,6 +620,10 @@ graph LR
     SE --> R60
     VA --> T5
     NC --> C95
+    
+    style R60 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style T5 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C95 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Trade-offs**:
@@ -529,6 +636,17 @@ graph LR
 
 **Optimization Stack Impact**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Performance Optimization Layers"
         BASE[Baseline Software<br/>100% latency] --> LAYER1[+ Pre-computation<br/>-30% → 70%]
@@ -553,11 +671,11 @@ graph TB
         CB3[Caching: $0 cost<br/>Additional 5% improvement]
     end
     
-    style BASE fill:#FF6347
-    style LAYER1 fill:#FFA500
-    style LAYER2 fill:#FFD700
-    style LAYER3 fill:#90EE90
-    style FINAL fill:#228B22
+    style BASE fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style LAYER1 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style LAYER2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style LAYER3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style FINAL fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -618,6 +736,17 @@ func (sp *ShardPersistence) StoreShard(keyID string, shard []byte) error {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Key Shard Flow"
         KS[Key Shard] --> ENC[AES-256-GCM Encryption]
@@ -643,6 +772,10 @@ graph TB
     R3 --> QUORUM
     QUORUM --> R80
     ZKP --> CI
+    
+    style R80 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style ENC fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style KMS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Trade-offs**:
@@ -655,6 +788,20 @@ graph TB
 
 **Shard Encryption & Recovery Flow**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#1a1a1a",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     participant KG as Key Generator
     participant E as Encryption Layer
@@ -742,6 +889,17 @@ interface TransportLayer {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "SDK Components"
         AC[Async Client] --> RB[Retry & Backoff]
@@ -773,6 +931,10 @@ graph TB
     TL --> GO
     TL --> RUST
     TL --> JAVA
+    
+    style IT40 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style AC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style TB fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Trade-offs**:
@@ -796,6 +958,17 @@ graph TB
 - **FIPS 140-2 Level 3**: Hardware security requirements for cryptographic modules. AWS Nitro Enclaves and Intel SGX provide compliant environments.
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Compliance Requirements"
         SOC2[SOC 2 Type II<br/>$50K-150K/year] --> KM[Key Management Controls]
@@ -818,6 +991,10 @@ graph TB
     SOC2 --> STARTUP
     ISO --> GROWTH
     FIPS --> ENTERPRISE
+    
+    style SOC2 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style ISO fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style FIPS fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Regulatory Reporting**: Custodial wallets may require transaction monitoring and suspicious activity reporting depending on jurisdiction. Integrate with compliance tooling (Chainalysis, Elliptic) for AML/KYC requirements.
@@ -834,6 +1011,16 @@ graph TB
 - **Total**: ~$50K-100K/month infrastructure baseline
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 pie title Monthly Infrastructure Cost Breakdown ($75K avg)
     "Compute 50-60%" : 40
     "Networking 15-20%" : 10
@@ -848,6 +1035,17 @@ pie title Monthly Infrastructure Cost Breakdown ($75K avg)
 - Linear scaling up to 100K wallets, then requires architecture review
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "Cost Scaling Model"
         W10K[10K Wallets<br/>$75K/month] --> W20K[20K Wallets<br/>$86K/month]
@@ -856,11 +1054,11 @@ graph LR
         W100K --> REVIEW[Architecture Review<br/>Non-linear scaling]
     end
     
-    style W10K fill:#90EE90
-    style W20K fill:#FFD700
-    style W50K fill:#FFA500
-    style W100K fill:#FF6347
-    style REVIEW fill:#DC143C
+    style W10K fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style W20K fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style W50K fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style W100K fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style REVIEW fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Optimization Opportunities**:
@@ -869,6 +1067,17 @@ graph LR
 - Regional consolidation trades resilience for 40% cost reduction (not recommended for production)
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Cost Optimization Impact"
         BASE[Baseline: $75K/month] --> OPT1[+ Pre-computation<br/>-$7.5K/month]
@@ -878,9 +1087,9 @@ graph TB
     
     BASE -.Regional Consolidation<br/>-$30K but ↓ resilience.-> NOTRECOMMENDED[NOT RECOMMENDED<br/>for production]
     
-    style BASE fill:#FFD700
-    style FINAL fill:#90EE90
-    style NOTRECOMMENDED fill:#FF6347
+    style BASE fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style FINAL fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style NOTRECOMMENDED fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ---

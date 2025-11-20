@@ -25,6 +25,17 @@
 ## Document Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 mindmap
   root((MPC Wallet<br/>Architecture<br/>Interview))
     Topic Areas
@@ -51,6 +62,17 @@ mindmap
 ### Interview Structure
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 gantt
     title Interview Timeline (45-60 minutes)
     dateFormat mm:ss
@@ -116,6 +138,17 @@ gantt
 ### Topic Relationships
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Foundation Layer"
         T1[Topic 1: Key Shard Distribution<br/>Hexagonal Architecture<br/>Difficulty: F]
@@ -145,16 +178,27 @@ graph TB
     T4 --> |Ensures Consistency| T1
     T4 --> |Coordinates| T2
     
-    style T1 fill:#e6ffe6
-    style T2 fill:#fff6e6
-    style T3 fill:#fff6e6
-    style T4 fill:#ffe6e6
-    style T5 fill:#ffe6e6
+    style T1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style T2 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style T3 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style T4 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style T5 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Key Concepts Map
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "Security"
         SEC1[Threshold Cryptography]
@@ -244,6 +288,17 @@ impl MPCWalletCore {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Application Layer"
         Web[Web Client]
@@ -298,6 +353,17 @@ graph TB
 | Attack Surface Reduction | `reduction = 1 - (isolated_components / monolithic_components)` | isolated: independent audit units<br/>monolithic: single codebase exposure | ≥70% reduction |
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph Latency Components
         A[Base Storage<br/>5-50ms] --> D[Total Latency]
@@ -389,6 +455,17 @@ impl PresignaturePool {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "Protocol Selection Layer"
         Router[Protocol Router]
@@ -432,6 +509,17 @@ graph LR
 **Protocol Comparison**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Curve → Protocol Mapping"
         secp[secp256k1] --> gg20[GG20<br/>• Presig: 800ms offline<br/>• Sign: 80-120ms online]
@@ -448,8 +536,8 @@ graph TB
         frost --> ton[TON]
     end
     
-    style gg20 fill:#ffe6e6
-    style frost fill:#e6f3ff
+    style gg20 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style frost fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -559,6 +647,17 @@ func (r *AdaptiveRouter) SelectCoordinator(parties []Party, userLoc Location) *P
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant U as User (Mobile)
     participant O as Latency Optimizer
@@ -600,13 +699,24 @@ sequenceDiagram
 **Latency Optimization Strategy**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Without Optimization"
         W1[User Request] --> W2[Generate Presig<br/>800ms]
         W2 --> W3[Random Coordinator<br/>250ms avg]
         W3 --> W4[Sign + Sync<br/>200ms]
         W4 --> W5[Total: 5-8s]
-        style W5 fill:#ffcccc
+        style W5 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
     end
     
     subgraph "With Optimization"
@@ -614,7 +724,7 @@ graph TB
         O2 --> O3[Adaptive Coordinator<br/>150ms optimized]
         O3 --> O4[Sign + Sync<br/>80-120ms]
         O4 --> O5[Total: ~200ms<br/>60-70% reduction]
-        style O5 fill:#ccffcc
+        style O5 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
     end
     
     subgraph "Key Improvements"
@@ -753,6 +863,17 @@ impl PaxosKeyRotation {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant M as Mobile (Proposer)
     participant C as Cloud Node
@@ -812,6 +933,17 @@ sequenceDiagram
 **Epoch State Transitions**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Preparing: Propose Rotation<br/>(epoch_n)
     
@@ -850,6 +982,17 @@ stateDiagram-v2
 **Byzantine Fault Tolerance**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "3-Node System 2-of-3 Threshold"
         A[Mobile Node]
@@ -869,9 +1012,9 @@ graph LR
     A -.Offline.-> S3
     B -.Offline.-> S3
     
-    style S1 fill:#ccffcc
-    style S2 fill:#ccffcc
-    style S3 fill:#ffffcc
+    style S1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style S2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style S3 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Trade-offs**:
@@ -1072,6 +1215,17 @@ func (s *MultiChainSigner) SignTransaction(chain ChainType, ast *TransactionAST)
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Application Layer"
         Client[Wallet Client]
@@ -1135,6 +1289,17 @@ graph TB
 **Transaction Compilation Flow**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant App as Application
     participant AST as Universal AST
@@ -1175,6 +1340,17 @@ sequenceDiagram
 **Chain-Specific Differences**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Ethereum EIP-1559"
         E1[AST] --> E2[RLP Encoding]
@@ -1189,7 +1365,7 @@ graph TB
         B2 --> B3[Witness Structure]
         B3 --> B4[DER-Encoded ECDSA]
         B4 --> B5[Segwit Tx]
-        style B5 fill:#fff6e6
+        style B5 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
     end
     
     subgraph "Solana Versioned"
@@ -1212,6 +1388,17 @@ graph TB
 **Integration Time Comparison**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 gantt
     title New Chain Integration Timeline
     dateFormat YYYY-MM-DD
@@ -1245,6 +1432,17 @@ gantt
 ### Reference Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 mindmap
   root((References))
     Glossary 8
@@ -1342,6 +1540,17 @@ mindmap
 ### Validation Results
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 pie title Validation Status
     "Passed (12)" : 12
     "Failed (0)" : 0
@@ -1367,6 +1576,17 @@ pie title Validation Status
 ### Quality Metrics
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     subgraph "Content Quality"
         Q1[Questions: 5/5]
@@ -1402,7 +1622,7 @@ graph LR
     V2 --> Result
     V3 --> Result
     
-    style Result fill:#90ee90
+    style Result fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -1410,6 +1630,17 @@ graph LR
 ## Complete Architecture Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "Client Layer"
         WEB[Web App]
@@ -1463,11 +1694,11 @@ graph TB
     REG --> BTC
     REG --> SOL
     
-    style MULTI fill:#e6f3ff
-    style REG fill:#fff6e6
-    style POOL fill:#fff6e6
-    style PAXOS fill:#ffe6e6
-    style SHARD fill:#e6ffe6
+    style MULTI fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style REG fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style POOL fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style PAXOS fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style SHARD fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Performance & Security Trade-offs Summary

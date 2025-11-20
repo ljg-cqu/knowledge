@@ -25,6 +25,22 @@
 
 ### System Architecture Overview
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 graph TB
     subgraph "Client Layer"
         Mobile[Mobile Apps]
@@ -84,9 +100,9 @@ graph TB
     PluginReg --> BTC
     PluginReg --> SOL
     
-    style Crypto fill:#f96,stroke:#333,stroke-width:3px
-    style EventStore fill:#9cf,stroke:#333,stroke-width:2px
-    style FSM fill:#fc9,stroke:#333,stroke-width:2px
+    style Crypto fill:#faf4f4,stroke:#a87a7a,stroke-width:3px,color:#1a1a1a
+    style EventStore fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style FSM fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -145,19 +161,49 @@ func (o *Orchestrator) SignAndSend(walletID, chainID string, digest []byte) (str
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart LR
   Client --> API[Public API / SDK]
   API --> Risk[Risk & Policy]
   Risk --> Orch[Wallet Orchestration]
-  Orch --> Crypto[Crypto Core (MPC Cluster)]
+  Orch --> Crypto[Crypto Core - MPC Cluster]
   Orch --> GW[Chain Gateway]
   GW --> EVM[EVM Adapter]
   GW --> BTC[BTC Adapter]
   GW --> SOL[Solana Adapter]
+  
+  style Crypto fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+  style Orch fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style GW fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 Multi-Region Deployment Architecture:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
   subgraph "Region A"
     A_LB[Load Balancer] --> A_API[API Gateway]
@@ -176,16 +222,16 @@ graph TB
   A_Crypto -.cross-region failover.-> B_Crypto
   A_Orch <-->|state sync| B_Orch
   
-  style A_Crypto fill:#f96,stroke:#333,stroke-width:3px
-  style B_Crypto fill:#f96,stroke:#333,stroke-width:3px
+  style A_Crypto fill:#faf4f4,stroke:#a87a7a,stroke-width:3px,color:#1a1a1a
+  style B_Crypto fill:#faf4f4,stroke:#a87a7a,stroke-width:3px,color:#1a1a1a
 ```
 
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Blast radius | tenants_impacted / tenants_total | incident scope | ≤ 10% per incident |
-| Sign latency p95 | p95(t_complete − t_request) | tracing spans | < 250ms in-region |
-| RTO | t_failover | region failover time | < 5 minutes |
+| **Blast radius** | $\frac{\text{tenants}_{\text{impacted}}}{\text{tenants}_{\text{total}}}$ | incident scope | ≤ 10% per incident |
+| **Sign latency p95** | $p95(t_{\text{complete}} - t_{\text{request}})$ | tracing spans | < 250ms in-region |
+| **RTO** | $t_{\text{failover}}$ | region failover time | < 5 minutes |
 
 Trade-offs:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -241,6 +287,17 @@ function advance(sess:Session, evt:{typ:string; round:number}):Session {
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
   [*] --> INIT
   INIT --> R1_WAIT: create
@@ -256,6 +313,17 @@ stateDiagram-v2
 
 MPC Signing Session Flow with Timing:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant Client
     participant Orch as Orchestrator
@@ -295,9 +363,9 @@ sequenceDiagram
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Zombie sessions | stuck / total | sessions stuck > 2× SLA | < 1% |
-| Abort rate | aborted / total | aborted due to internal error | < 0.1% |
-| Mean rounds | Σrounds / sessions | protocol rounds per session | As per protocol spec |
+| **Zombie sessions** | $\frac{\text{stuck}}{\text{total}}$ | sessions stuck > 2× SLA | < 1% |
+| **Abort rate** | $\frac{\text{aborted}}{\text{total}}$ | aborted due to internal error | < 0.1% |
+| **Mean rounds** | $\frac{\sum \text{rounds}}{\text{sessions}}$ | protocol rounds per session | As per protocol spec |
 
 Trade-offs:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -342,6 +410,17 @@ func HandleSign(req *Request, lim Limiter, qlen int, cfg BrownoutCfg) error {
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart LR
   Client --> Edge[Edge Gateway]
   Edge --> Lim[Per-device Limiter]
@@ -349,10 +428,25 @@ flowchart LR
   Ctrl --> API[Signing API]
   API --> MPC[MPC Cluster]
   Ctrl --> Config[(Feature Flags/SLOs)]
+  
+  style MPC fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+  style Ctrl fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+  style Edge fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 Brownout Activation Sequence:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant Monitor as Metrics Monitor
     participant Ctrl as Brownout Controller
@@ -395,9 +489,9 @@ Brownout Decision Matrix:
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| p95 latency | p95(t_done − t_start) | tracing | < 150ms normal, < 200ms brownout |
-| Brownout time | t_brownout / t_total | duration | < 1% weekly |
-| Overload errors | errors_overload / total | 5xx tagged overload | < 0.5% |
+| **p95 latency** | $p95(t_{\text{done}} - t_{\text{start}})$ | tracing | < 150ms normal, < 200ms brownout |
+| **Brownout time** | $\frac{t_{\text{brownout}}}{t_{\text{total}}}$ | duration | < 1% weekly |
+| **Overload errors** | $\frac{\text{errors}_{\text{overload}}}{\text{total}}$ | 5xx tagged overload | < 0.5% |
 
 Trade-offs:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -446,15 +540,41 @@ class Projection:
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart LR
   Cmd[Write Model] --> ES[(Encrypted Event Store)]
   ES --> Proj[Projectors]
   Proj --> Views[(Read Models: Devices, Guardians, History)]
   Views --> API[Query API]
+  
+  style ES fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style Proj fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style Views fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 Event Flow with Encryption:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant Client
     participant WriteAPI as Write API
@@ -495,9 +615,9 @@ Event Types and Projections:
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Projection lag | t_proj − t_event | timestamps | p95 < 300ms |
-| Rebuild time | N / r | events N, rate r | < 30min @ 100M events |
-| Sensitive leak incidents | leaks / year | confirmed data leaks | 0 |
+| **Projection lag** | $t_{\text{proj}} - t_{\text{event}}$ | timestamps | p95 < 300ms |
+| **Rebuild time** | $\frac{N}{r}$ | events N, rate r | < 30min @ 100M events |
+| **Sensitive leak incidents** | $\frac{\text{leaks}}{\text{year}}$ | confirmed data leaks | 0 |
 
 Trade-offs:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -541,6 +661,17 @@ class PluginRegistry {
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart LR
   SDK[Wallet SDK] --> Reg[Plugin Registry]
   Reg --> Eth[ETH Plugin]
@@ -549,6 +680,10 @@ flowchart LR
   Eth --> Core[MPC Wallet Core]
   Btc --> Core
   Sol --> Core
+  
+  style SDK fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style Reg fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style Core fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 Plugin Capability Matrix:
@@ -562,6 +697,17 @@ Plugin Capability Matrix:
 
 Plugin Versioning and Rollout:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant Dev as Plugin Developer
     participant Reg as Plugin Registry
@@ -603,9 +749,9 @@ sequenceDiagram
 Metrics:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Onboarding time | t_done − t_start | new chain integration | < 4 weeks |
-| Breaking SDK changes | breaking / year | changes requiring client code changes | ≤ 1/year |
-| Plugin coverage | chains_with_plugins / target_chains | plugin count | ≥ 90% |
+| **Onboarding time** | $t_{\text{done}} - t_{\text{start}}$ | new chain integration | < 4 weeks |
+| **Breaking SDK changes** | $\frac{\text{breaking}}{\text{year}}$ | changes requiring client code changes | ≤ 1/year |
+| **Plugin coverage** | $\frac{\text{chains}_{\text{with\_plugins}}}{\text{target\_chains}}$ | plugin count | ≥ 90% |
 
 Trade-offs:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -622,6 +768,21 @@ Sources: [A1][A3][A7]
 
 Operational Metrics Summary:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph LR
     subgraph "Performance SLOs"
         P1["p95 Sign Latency<br/>Target: <250ms<br/>Brownout: <200ms"]
@@ -647,22 +808,22 @@ graph LR
         I3["Plugin Coverage<br/>Target: ≥90%"]
     end
     
-    style P1 fill:#9f9,stroke:#333
-    style R1 fill:#9cf,stroke:#333
-    style S1 fill:#f96,stroke:#333
-    style I1 fill:#fc9,stroke:#333
+    style P1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style R1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style S1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style I1 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 Critical Formulas Reference:
 | Metric Category | Formula | Variables | Threshold Alert |
 |----------------|---------|-----------|-----------------|
-| **Latency** | `p95(t_complete − t_request)` | tracing spans | > 250ms |
-| **Availability** | `(uptime / total_time) × 100%` | region uptime | < 99.95% |
-| **Blast Radius** | `(tenants_impacted / tenants_total) × 100%` | incident scope | > 10% |
-| **Session Health** | `(stuck_sessions / total_sessions) × 100%` | stuck > 2×SLA | > 1% |
-| **Error Budget** | `1 − (errors / total_requests)` | 5xx errors | < 99.9% |
-| **Projection Lag** | `t_projection − t_event` | event timestamps | p95 > 300ms |
-| **Brownout Duration** | `(t_brownout / t_total) × 100%` | weekly duration | > 1% |
+| **Latency** | $p95(t_{\text{complete}} - t_{\text{request}})$ | tracing spans | > 250ms |
+| **Availability** | $\frac{\text{uptime}}{\text{total\_time}} \times 100\%$ | region uptime | < 99.95% |
+| **Blast Radius** | $\frac{\text{tenants}_{\text{impacted}}}{\text{tenants}_{\text{total}}} \times 100\%$ | incident scope | > 10% |
+| **Session Health** | $\frac{\text{stuck\_sessions}}{\text{total\_sessions}} \times 100\%$ | stuck > 2×SLA | > 1% |
+| **Error Budget** | $1 - \frac{\text{errors}}{\text{total\_requests}}$ | 5xx errors | < 99.9% |
+| **Projection Lag** | $t_{\text{projection}} - t_{\text{event}}$ | event timestamps | p95 > 300ms |
+| **Brownout Duration** | $\frac{t_{\text{brownout}}}{t_{\text{total}}} \times 100\%$ | weekly duration | > 1% |
 
 ---
 
@@ -672,6 +833,21 @@ Critical Formulas Reference:
 
 Threshold MPC Signing Visual Concept (2-of-3 Example):
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph "Key Generation Phase"
         KG[Key Generation Protocol]
@@ -690,7 +866,7 @@ graph TB
         R1 --> R2[Round 2 Compute]
         R2 --> SIG[Valid Signature]
         
-        style S3 fill:#ccc,stroke:#999,stroke-dasharray: 5 5
+        style S3 fill:#f3f5f7,stroke:#8897a8,stroke-dasharray: 5 5,color:#1a1a1a
         Note1[Party C not needed<br/>t=2 sufficient]
     end
     
@@ -701,8 +877,8 @@ graph TB
         SP4["✗ Full key never exists"]
     end
     
-    style SIG fill:#9f9,stroke:#333,stroke-width:2px
-    style SP4 fill:#f96,stroke:#333,stroke-width:2px
+    style SIG fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style SP4 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 Definitions:

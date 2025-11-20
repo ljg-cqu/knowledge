@@ -2,14 +2,17 @@
 
 ## Context & Scope
 
-- **Problem**: Evaluate candidates' ability to design secure, production-grade blockchain MPC wallet systems (custody-grade, typical Total Value Locked (TVL) ≥$1M) with concrete architectures, metrics, and trade-offs.
-- **Scope**: 30 Q&As across structural, behavioral, quality/performance, data, integration, and evolution/migration aspects of MPC wallet architecture. Focus on system-level design instead of protocol-level cryptography proofs.
-- **Assumptions**: Candidate already knows core blockchain concepts (accounts, transactions, gas, UTXO) and MPC/threshold signatures at a conceptual level. Intended for senior/staff+ roles; interview time ~60–120 minutes.
-- **Constraints**: Security-critical, multi-party, often multi-chain environments (exchanges, institutional custody, large consumer wallets); typical team size ≥5; strict compliance and audit requirements.
+- **Problem**: Evaluate candidates' ability to design secure, production-grade blockchain MPC wallet systems (custody-grade, typical Total Value Locked (TVL) `≥$1M`) with concrete architectures, metrics, and trade-offs.
+- **Scope**: 30 Q&As across structural, behavioral, quality/performance, data, integration, and evolution/migration aspects of MPC wallet architecture. Focus on *system-level design* instead of protocol-level cryptography proofs.
+- **Assumptions**: Candidate already knows core blockchain concepts (`accounts`, `transactions`, `gas`, `UTXO`) and MPC/threshold signatures at a conceptual level. Intended for *senior/staff+* roles; interview time `~60–120 minutes`.
+- **Constraints**: Security-critical, multi-party, often multi-chain environments (exchanges, institutional custody, large consumer wallets); typical team size `≥5`; strict compliance and audit requirements.
 - **Stakeholders**: Hiring managers, interviewers, candidates, and LLM assistants preparing or reviewing interviews; downstream readers include security, SRE, and product teams.
 - **Resources**: Key terms, tools, and literature are summarized in the Glossary, Tools, Literature, and Citations sections at the end of this document.
-- **Metrics & percentages**: All latency, gas, and percentage figures are indicative targets and interview prompts, not audited production benchmarks. Adapt them to your environment and verify against real measurements when designing or reviewing systems.
- - **Success criteria**: Using this Q&A set, interviewers can (a) cover at least one question from each critical cluster (Structural, Behavioral, Quality & Performance) within 60–120 minutes, (b) assess candidates across all six architecture dimensions (structure, behavior, quality/performance, data, integration, evolution), and (c) elicit from candidates at least one concrete design, one quantified trade-off, and one risk/mitigation per selected question.
+- **Metrics & percentages**: All latency, gas, and percentage figures are *indicative targets and interview prompts*, not audited production benchmarks. Adapt them to your environment and verify against real measurements when designing or reviewing systems.
+- **Success criteria**: Using this Q&A set, interviewers can:
+  - (a) Cover at least **one question from each critical cluster** (Structural, Behavioral, Quality & Performance) within `60–120 minutes`
+  - (b) Assess candidates across **all six architecture dimensions** (structure, behavior, quality/performance, data, integration, evolution)
+  - (c) Elicit from candidates at least **one concrete design**, **one quantified trade-off**, and **one risk/mitigation** per selected question
 
 ## Contents
 - [Context & Scope](#context--scope)
@@ -115,7 +118,18 @@ func (s *SigningOrchestrator) ExecuteSignature(ctx context.Context,
 
 **Diagram** (Mermaid):
 
-```
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph Layers
         UI["UI Layer (React/Mobile)"]
@@ -141,10 +155,14 @@ graph TB
     Ports --> MPC
     MPC --> EventBus
     
-    style Core fill:#ff6b6b,stroke:#cc0000,stroke-width:3px
-    style MPC fill:#ffcccc
-    style Ports fill:#ffeeee
-    style EventBus fill:#90EE90
+    style Core fill:#faf4f4,stroke:#a87a7a,stroke-width:3px,color:#1a1a1a
+    style MPC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Ports fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style EventBus fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style UI fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style ETH fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SOL fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -175,6 +193,18 @@ graph TB
 **Key Insight**: Model key shares as immutable DDD aggregate; enforce invariants (no share alone reconstructs secret; any t shares valid). Repository pattern prevents invariant violations through command handlers. Reduces key derivation bugs by 85%.
 
 **Answer**:
+
+**Threshold Signing Invariants** (Mathematical):
+
+$$t \leq n \text{ where } t > \frac{n}{2}$$
+
+- **$t$**: Minimum number of shares required to sign (threshold)
+- **$n$**: Total number of shares generated
+- **Byzantine tolerance**: $t > n/2$ ensures majority consensus
+
+**Security property**: No set of $< t$ shares can reconstruct the private key or forge signatures.
+
+
 
 Threshold ECDSA key shares require strict invariant enforcement: (1) no individual share reveals the private key, (2) any t out of n shares must produce a valid signature, (3) shares cannot be reconstructed in plaintext. Model this as a DDD aggregate (KeyShareAggregate) rooted at a KeyAggregateId (curve + derivation path). The aggregate enforces all invariants through public command methods; state mutations only occur via command handlers that check preconditions.
 
@@ -367,6 +397,45 @@ Invariant Enforcement Layers:
 │  ✓ Optimistic locking (version field)                      │
 │  ✓ Event sourcing for audit trail                          │
 └────────────────────────────────────────────────────────────┘
+
+
+**DDD Aggregate Command Flow**:
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[External Request] --> B[Command Handler]
+    B --> C{Validate Invariants<br/>in Aggregate}
+    C -->|Invalid| D[Reject & Return Error]
+    C -->|Valid| E[Update Aggregate State]
+    E --> F[Generate Domain Event]
+    F --> G[Repository Save]
+    G --> H{Transaction<br/>Commit}
+    H -->|Fail| I[Rollback & Retry]
+    H -->|Success| J[Persist Events]
+    J --> K[Publish to Event Bus]
+    K --> L[Return Success]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style H fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style I fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style L fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+
 ```
 
 **Security Guarantees**:
@@ -525,6 +594,17 @@ contract ThresholdSignatureValidator {
 **ERC-4337 UserOperation Flow**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant User
     participant MPCWallet
@@ -572,6 +652,19 @@ sequenceDiagram
 | UserOp Latency | Creation → Bundler | <500ms |
 | Nonce Collision | Unique / Total | 100% |
 
+
+**Gas Cost Comparison** (ERC-4337 vs EOA):
+
+| Operation | EOA (Traditional) | ERC-4337 (Account Abstraction) | Overhead | Benefit |
+|-----------|------------------|-------------------------------|----------|---------|
+| **Simple Transfer** | 21,000 gas | ~101,000 gas (+80k validator) | +380% | Custom validation logic |
+| **With Paymaster** | N/A (must hold ETH) | ~120,000 gas (+19k) | - | **Gasless UX** for users |
+| **Batch Operations** | 21k × n | ~80k + (21k × n) | Decreasing with n | Atomic multi-call |
+| **Session Keys** | N/A | ~100k (one-time setup) | - | Temporary permissions |
+
+**Cost/benefit**: Despite higher gas costs, ERC-4337 enables superior UX (gasless transactions, social recovery, batching), justifying the overhead for user-facing applications.
+
+
 ---
 
 ## Q4: Multi-Chain Key Derivation - BIP-32/44 Hierarchy
@@ -604,13 +697,31 @@ m (Master Seed)
 ```
 
 **Path Components**:
-- `purpose'`: Always 44' for BIP-44
-- `coin_type'`: Chain identifier (0'=BTC, 60'=ETH, 501'=SOL)
-- `account'`: Account index (usually 0')
-- `change`: 0=external/receiving, 1=change addresses
-- `address_index`: Sequential address counter
+
+| Component | Description | Example Values |
+|-----------|-------------|----------------|
+| **`purpose'`** | Always 44' for BIP-44 | `44'` (hardened) |
+| **`coin_type'`** | Chain identifier | `0'`=BTC, `60'`=ETH, `501'`=SOL |
+| **`account'`** | Account index | `0'`, `1'`, `2'`... |
+| **`change`** | Address type | `0`=external/receiving, `1`=change |
+| **`address_index`** | Sequential counter | `0`, `1`, `2`... |
 
 **Note**: Apostrophe (') indicates hardened derivation (index ≥ 2³¹)
+
+
+**BIP-32 Child Key Derivation Formula**:
+
+$$k_{child} = \text{HMAC-SHA512}(c_{parent}, \text{data}) \mod n$$
+
+Where:
+- **$k_{child}$**: Derived child private key
+- **$c_{parent}$**: Parent chain code (32 bytes)
+- **data**: For hardened ($i \geq 2^{31}$): `0x00 || k_{parent} || i`
+- **data**: For non-hardened: `K_{parent} || i` ($K$ = public key)
+- **$n$**: Order of the elliptic curve (secp256k1: $2^{256} - 2^{32} - 977$)
+
+**Security**: Hardened derivation ($i'$) prevents child key linkage from public keys alone.
+
 
 The DKG must be idempotent: re-running with the same seed produces identical shares. This enables recovery/resharing without contacting all participants (one can restart DKG locally and get the same shares). Maintain a ChainKeyDerivationRegistry mapping (curve, chain_id, derivation_path) → (shared_public_key, active_version). When onboarding a chain, register it; a background reconciliation service verifies each party's derived key commitment matches others.
 
@@ -748,6 +859,17 @@ Trade-off: inter-adapter marshaling adds ~5% serialization overhead; plugin load
 **Plugin Architecture Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph Core["Core Wallet Engine (Protocol-Agnostic)"]
         WalletEngine[Wallet Engine]
@@ -786,10 +908,14 @@ graph TB
     BTCAdapter --> BTCRPC
     SOLAdapter --> SOLRPC
     
-    style Core fill:#ffebee
-    style PluginInterface fill:#e3f2fd
-    style Adapters fill:#f3e5f5
-    style External fill:#e8f5e9
+    style Core fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style PluginInterface fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Adapters fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style External fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style WalletEngine fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style MPCSigner fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style KeyMgmt fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Registry fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 **Onboarding Timeline Comparison**:
@@ -1028,6 +1154,17 @@ Implement as state machine orchestrated by DKGOrchestrator coordinator; store st
 **DKG State Machine**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Initialized: Start DKG
     Initialized --> Round1_Commit: Begin Round 1
@@ -1286,6 +1423,17 @@ Implement via orchestrated saga: SigningOrchestrator manages protocol state acro
 **Threshold Signing Phases**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart TB
     subgraph Preprocessing["Preprocessing Phase (Offline)"]
         P1[Generate ephemeral k_i]
@@ -1311,10 +1459,10 @@ flowchart TB
     O7 -->|Valid| Result[Broadcast transaction]
     O7 -->|Invalid| Fail[Exclude malicious party]
     
-    style Preprocessing fill:#e3f2fd
-    style Online fill:#fff3e0
-    style Result fill:#c8e6c9
-    style Fail fill:#ffcdd2
+    style Preprocessing fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Online fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Result fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Fail fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Performance Comparison**:
@@ -1567,6 +1715,17 @@ Private key loss is the most common failure mode (47% of major losses, per Chain
 **Social Recovery State Machine**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Setup: Initialize wallet
     Setup --> Active: n guardians registered

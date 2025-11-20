@@ -8,6 +8,19 @@
 ## System Architecture Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph "Client Layer"
         A1[Mobile SDK]
@@ -100,6 +113,15 @@ gantt
 ### Topics Interconnection Map
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 graph LR
     T1[Topic 1<br/>Hexagonal Architecture<br/>🏗️ Structural]
     T2[Topic 2<br/>Saga Pattern<br/>⚡ Behavioral]
@@ -114,16 +136,27 @@ graph LR
     T4 -.->|stores events from| T2
     T4 -.->|provides audit data for| T1
     
-    style T1 fill:#e1f5ff
-    style T2 fill:#fff4e1
-    style T3 fill:#ffe1e1
-    style T4 fill:#f0e1ff
-    style T5 fill:#e1ffe1
+    style T1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style T2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T3 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style T4 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style T5 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Performance & Cost Comparison
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TD
     subgraph "Performance Impact"
         P1["Hexagonal Architecture<br/>-15-20% overhead"]
@@ -140,11 +173,11 @@ graph TD
         C4["Infrastructure: $300-500"]
     end
     
-    style P1 fill:#fff9e6
-    style P2 fill:#ffe6e6
-    style P3 fill:#e6ffe6
-    style P4 fill:#e6f3ff
-    style P5 fill:#f0e6ff
+    style P1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style P3 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style P4 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style P5 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -202,6 +235,15 @@ impl<T: ThresholdSigner> EthereumAdapter<T> {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 graph TD
     A[Blockchain Adapters<br/>Ethereum/Solana/BTC] -->|calls| B[Application Services<br/>Ceremony Orchestrator]
     C[Infrastructure Adapters<br/>WebSocket/gRPC/PostgreSQL] -->|injects| B
@@ -209,6 +251,10 @@ graph TD
     D -->|implemented by| E[FROST/GG18 Implementations]
     B -->|uses| F[Storage Ports<br/>ShardRepository]
     F -->|implemented by| G[PostgreSQL/S3 Adapters]
+    
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -228,6 +274,15 @@ graph TD
 **Decision Tree**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 graph TD
     A{Multi-chain<br/>support needed?}
     A -->|Yes| B{More than<br/>2 chains?}
@@ -239,8 +294,8 @@ graph TD
     C -->|>3 devs| D
     C -->|<3 devs| G[Traditional Layered]
     
-    style D fill:#90EE90
-    style G fill:#FFE4B5
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -300,6 +355,15 @@ func (w *MPCWorkflow) compensateFailedCeremony(ctx context.Context, ceremonyID s
 **Saga State Machine**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Idle
     Idle --> Registering: StartCeremony
@@ -324,6 +388,19 @@ stateDiagram-v2
 **Compensation Flow Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "noteBkgColor": "#eff6fb",
+    "noteBorderColor": "#7a9fc5"
+  }
+}}%%
 sequenceDiagram
     participant C as Coordinator
     participant P1 as Participant 1
@@ -430,6 +507,15 @@ graph LR
 **Adaptive Algorithm Flowchart**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart TD
     Start([New Request]) --> Check{Check IP<br/>in eBPF blocklist?}
     Check -->|Blocked| Drop[Drop at kernel level<br/>0.01ms]
@@ -452,10 +538,10 @@ flowchart TD
     Penalty -->|No| End
     Expand --> End
     
-    style Drop fill:#ff6b6b
-    style Block fill:#ff6b6b
-    style Process fill:#51cf66
-    style Expand fill:#51cf66
+    style Drop fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style Block fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style Process fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Expand fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -528,6 +614,15 @@ func (q *AuditQueryService) GetSigningHistory(ctx context.Context, userID string
 **CQRS Architecture Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 graph TD
     A[MPC Signing Command] -->|1. Write Event| B[PostgreSQL Command Store]
     B -->|2. CDC Stream| C[Debezium]
@@ -536,11 +631,27 @@ graph TD
     F[Audit Query] -->|5. Read| E
     G[Recovery Request] -->|6. Read| E
     B -->|7. Immediate Read| H[Live Signing Status]
+    
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Event Sourcing Pipeline**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "noteBkgColor": "#eff6fb",
+    "noteBorderColor": "#7a9fc5"
+  }
+}}%%
 sequenceDiagram
     participant App as Application
     participant PG as PostgreSQL<br/>(Command Store)
@@ -663,6 +774,19 @@ async function signWithMPC(ceremonyID: string, shards: KeyShard[]): Promise<Sign
 **gRPC Streaming Flow**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "noteBkgColor": "#eff6fb",
+    "noteBorderColor": "#7a9fc5"
+  }
+}}%%
 sequenceDiagram
     participant Client
     participant gRPC
@@ -685,6 +809,17 @@ sequenceDiagram
 **Authentication Layers**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph "Layer 1: Network Auth"
         A1[SPIFFE/SPIRE mTLS]
@@ -707,14 +842,25 @@ graph TB
     B2 --> C1
     C1 --> C2
     
-    style A1 fill:#e3f2fd
-    style B1 fill:#fff3e0
-    style C1 fill:#f3e5f5
+    style A1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 **REST vs gRPC Performance Comparison**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph LR
     subgraph "REST Polling (500ms interval)"
         R1["10 sec ceremony<br/>= 20 requests"]
@@ -735,14 +881,14 @@ graph LR
     R3 -.->|vs| G3
     R4 -.->|vs| G4
     
-    style R1 fill:#ffcdd2
-    style R2 fill:#ffcdd2
-    style R3 fill:#ffcdd2
-    style R4 fill:#ffcdd2
-    style G1 fill:#c8e6c9
-    style G2 fill:#c8e6c9
-    style G3 fill:#c8e6c9
-    style G4 fill:#c8e6c9
+    style R1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style R2 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style R3 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style R4 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style G1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G4 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
@@ -776,6 +922,17 @@ graph LR
 ### Technology Stack Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph "Languages"
         L1[Rust - Core MPC]
@@ -808,9 +965,9 @@ graph TB
     P3 --> P4
     L1 --> P1 & P2
     
-    style L1 fill:#ffc9a5
-    style I5 fill:#a5d8ff
-    style P1 fill:#c3fae8
+    style L1 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style I5 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style P1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Quick Reference: Key Metrics Summary

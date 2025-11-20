@@ -13,9 +13,122 @@
 
 ---
 
+## Quick Summary
+
+This guide covers **5 critical architectural patterns** for MPC wallet systems:
+
+| # | Pattern | When to Use | Key Metric |
+|---|---------|-------------|------------|
+| 1 | **Hexagonal Architecture** | Multi-chain support needed | **60%** coupling reduction |
+| 2 | **Circuit Breaker** | Unreliable external RPCs | **85%** failure reduction |
+| 3 | **Rate Limiting** | Public-facing APIs | **95%** attack prevention |
+| 4 | **CQRS** | High read/write ratio (>10:1) | **10x** read performance |
+| 5 | **gRPC vs REST** | Internal vs external services | **60%** latency reduction |
+
+> **Target Audience**: Senior/Staff Engineers preparing for MPC wallet infrastructure interviews at blockchain companies
+
+> **System Scale**: 10K-100K DAU, 1M+ transactions/month, $40K/month operational budget
+
+### Architecture Pattern Integration
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TB
+    subgraph External["External Layer"]
+        CLIENT[Mobile/Web Clients]
+        RPC[Blockchain RPC Endpoints]
+    end
+    
+    subgraph API["API Gateway Layer"]
+        REST[REST API]
+        GRPC[gRPC API]
+        RL[Rate Limiter]
+    end
+    
+    subgraph Core["MPC Wallet Core - Hexagonal Architecture"]
+        PORTS[Ports/Interfaces]
+        DOMAIN[Domain Logic<br/>GG18/FROST]
+    end
+    
+    subgraph Adapters["Adapter Layer"]
+        ETH[Ethereum Adapter]
+        SOL[Solana Adapter]
+        KMS[Key Management]
+    end
+    
+    subgraph Data["Data Layer - CQRS"]
+        WRITE[Write Model<br/>Event Store]
+        READ[Read Model<br/>Query DB]
+    end
+    
+    subgraph Resilience["Resilience Layer"]
+        CB[Circuit Breaker]
+    end
+    
+    CLIENT -->|HTTP/REST| REST
+    CLIENT -->|HTTP/2| GRPC
+    REST --> RL
+    GRPC --> RL
+    RL --> PORTS
+    
+    PORTS --> DOMAIN
+    DOMAIN --> PORTS
+    
+    PORTS --> ETH
+    PORTS --> SOL
+    PORTS --> KMS
+    
+    ETH --> CB
+    SOL --> CB
+    CB --> RPC
+    
+    DOMAIN --> WRITE
+    WRITE -->|Event Propagation| READ
+    
+    style CLIENT fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style REST fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style GRPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style RL fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style DOMAIN fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style CB fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style WRITE fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style READ fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
+**Pattern Responsibilities**:
+- **Rate Limiter**: Protects API endpoints from abuse (95% attack prevention)
+- **Hexagonal Architecture**: Isolates core logic from blockchain dependencies (60% coupling reduction)
+- **Circuit Breaker**: Prevents cascading failures from RPC endpoints (85% failure reduction)
+- **CQRS**: Optimizes read/write operations separately (10x read performance)
+- **gRPC/REST**: Efficient internal communication vs. browser-compatible external API (60% latency reduction)
+
+
+---
+
 ## Document Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     A[MPC Wallet Architecture Guide] --> B[5 Core Patterns]
     
@@ -41,10 +154,10 @@ graph TB
     I --> I2[Multi-chain MPC Wallets]
     I --> I3[3-6 Month Cycles]
     
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style H fill:#d4edda
-    style I fill:#ffe1e1
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style I fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -60,6 +173,17 @@ graph TB
 - **Excluded**: Cryptographic protocol implementation details, business logic, compliance frameworks, smart contract interactions
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Document Scope] --> B[✅ Included]
     A --> C[❌ Excluded]
@@ -72,8 +196,8 @@ graph LR
     C --> C3[Compliance]
     C --> C4[Smart Contracts]
     
-    style B fill:#d4edda
-    style C fill:#f8d7da
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Target Audience**:
@@ -82,6 +206,17 @@ graph LR
 - Engineering Managers assessing candidate architectural depth
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Target Audience] --> B[Senior/Staff Engineers]
     A --> C[Technical Architects]
@@ -96,10 +231,10 @@ graph LR
     D --> D1[Candidate Assessment]
     D --> D2[Architectural Depth]
     
-    style A fill:#e1f5ff
-    style B fill:#e1ffe1
-    style C fill:#fff4e1
-    style D fill:#ffe1e1
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 **Assumptions**:
@@ -110,10 +245,10 @@ graph LR
 
 | Assumption Category | Required Level | Details |
 |-------------------|----------------|---------|
-| **Experience** | 5+ years | Backend development, distributed systems |
-| **Technical Knowledge** | Intermediate-Advanced | Microservices, cryptography basics, blockchain fundamentals |
-| **System Scale** | Medium-Large | 10K-100K DAU, 1M+ transactions/month |
-| **Architecture Familiarity** | Intermediate | Structural patterns, behavioral patterns, quality attributes |
+| **Experience** | **5+ years** | Backend development, distributed systems |
+| **Technical Knowledge** | **Intermediate-Advanced** | Microservices, cryptography basics, blockchain fundamentals |
+| **System Scale** | **Medium-Large** | 10K-100K DAU, 1M+ transactions/month |
+| **Architecture Familiarity** | **Intermediate** | Structural patterns, behavioral patterns, quality attributes |
 
 **Constraints**:
 - **Time**: Interview preparation typically 2-4 weeks; implementation patterns assume 3-6 month development cycles
@@ -123,18 +258,34 @@ graph LR
 
 | Constraint | Minimum | Target | Maximum | Impact |
 |------------|---------|--------|---------|---------|
-| **Preparation Time** | 2 weeks | 3 weeks | 4 weeks | Interview readiness |
-| **Development Cycle** | 3 months | 4.5 months | 6 months | Time to production |
-| **Team Size** | 5 engineers | 7 engineers | 10 engineers | Implementation capacity |
-| **Monthly Cost** | $30K | $40K | $50K | Operational budget |
-| **Daily Active Users** | 10K | 50K | 100K | Scale target |
+| **Preparation Time** | 2 weeks | **3 weeks** | 4 weeks | Interview readiness |
+| **Development Cycle** | 3 months | **4.5 months** | 6 months | Time to production |
+| **Team Size** | 5 engineers | **7 engineers** | 10 engineers | Implementation capacity |
+| **Monthly Cost** | $30K | **$40K** | $50K | Operational budget |
+| **Daily Active Users** | 10K | **50K** | 100K | Scale target |
 
 **Success Criteria**:
-- Candidate can articulate architectural trade-offs with quantified metrics
-- Candidate can design systems balancing security (99.99% attack prevention), performance (p95 latency <100ms), and reliability (99.9% uptime)
-- Candidate demonstrates multi-stakeholder thinking (security, SRE, frontend teams)
+
+> ✅ **Interview Success Indicators**:
+> - Articulate architectural trade-offs with **quantified metrics**
+> - Design systems balancing:
+>   - **Security**: 99.99% attack prevention
+>   - **Performance**: p95 latency <100ms  
+>   - **Reliability**: 99.9% uptime
+> - Demonstrate **multi-stakeholder thinking** (security, SRE, frontend teams)
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[MPC Wallet Success Criteria] --> B[Quantified Trade-offs]
     A --> C[System Balance]
@@ -148,34 +299,45 @@ graph TD
     D --> D2[SRE Team]
     D --> D3[Frontend Team]
     
-    style A fill:#e1f5ff
-    style C fill:#fff4e1
-    style C1 fill:#ffe1e1
-    style C2 fill:#e1ffe1
-    style C3 fill:#e1e1ff
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ## Topic Areas
 
 | Dimension | Count | Difficulty | Priority |
 |-----------|-------|------------|----------|
-| Structural | 1 | I | Critical |
-| Behavioral | 1 | A | Critical |
-| Quality | 1 | A | Critical |
-| Data | 1 | I | Important |
-| Integration | 1 | F | Important |
+| **Structural** | 1 | I | **Critical** |
+| **Behavioral** | 1 | A | **Critical** |
+| **Quality** | 1 | A | **Critical** |
+| **Data** | 1 | I | **Important** |
+| **Integration** | 1 | F | **Important** |
 
 ### Pattern Quick Reference
 
 | Pattern | Key Benefit | Performance Impact | Complexity | Best For |
 |---------|-------------|-------------------|------------|----------|
-| **Hexagonal Architecture** | 60% coupling reduction | Initial: +20-30% overhead<br/>Long-term: -40-60% maintenance | High | Multi-chain wallets |
-| **Circuit Breaker** | 85% failure reduction | +15-20ms latency | Medium | Unreliable RPCs |
-| **Rate Limiting** | 95% attack prevention | +5-10ms overhead | Medium | Public APIs |
-| **CQRS** | 10x read performance | +20-40ms write latency | High | High read/write ratio |
-| **gRPC vs REST** | 60% latency reduction (gRPC) | gRPC: 5-10ms<br/>REST: 15-25ms | Medium | Internal services |
+| **Hexagonal Architecture** | **60% coupling reduction** | Initial: +20-30% overhead<br/>Long-term: **-40-60% maintenance** | High ⭐⭐⭐ | Multi-chain wallets |
+| **Circuit Breaker** | **85% failure reduction** | +15-20ms latency | Medium ⭐⭐ | Unreliable RPCs |
+| **Rate Limiting** | **95% attack prevention** | +5-10ms overhead | Medium ⭐⭐ | Public APIs |
+| **CQRS** | **10x read performance** | +20-40ms write latency | High ⭐⭐⭐ | High read/write ratio |
+| **gRPC vs REST** | **60% latency reduction** (gRPC) | gRPC: 5-10ms<br/>REST: 15-25ms | Medium ⭐⭐ | Internal services |
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[MPC Wallet Patterns] --> B[Structural]
     A --> C[Behavioral]
@@ -195,17 +357,28 @@ graph TD
     E1 --> E1A[Performance]
     F1 --> F1A[Communication]
     
-    style A fill:#e1f5ff
-    style B1 fill:#d4edda
-    style C1 fill:#fff3cd
-    style D1 fill:#f8d7da
-    style E1 fill:#d1ecf1
-    style F1 fill:#e2e3e5
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F1 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Pattern Selection Decision Tree
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     START[MPC Wallet Architecture Decision] --> Q1{Need multi-chain support?}
     
@@ -230,13 +403,13 @@ graph TD
     Q6 -->|Yes| USE_GRPC[✅ Use gRPC internally + REST externally]
     Q6 -->|No| USE_REST[Use REST only]
     
-    style USE_HEX fill:#d4edda
-    style USE_CB fill:#d4edda
-    style USE_RL fill:#d4edda
-    style USE_CQRS fill:#d4edda
-    style USE_GRPC fill:#d4edda
-    style USE_REST fill:#fff4e1
-    style SIMPLE fill:#f8d7da
+    style USE_HEX fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style USE_CB fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style USE_RL fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style USE_CQRS fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style USE_GRPC fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style USE_REST fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SIMPLE fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -249,7 +422,7 @@ graph TD
 
 **Difficulty**: I | **Dimension**: Structural
 
-**Key Insight**: Hexagonal architecture reduces blockchain coupling by 60% and increases test coverage by 40% through adapter isolation.
+> **💡 Key Insight**: Hexagonal architecture reduces blockchain coupling by 60% and increases test coverage by 40% through adapter isolation.
 
 **Answer**: Hexagonal architecture decouples MPC wallet core logic from blockchain-specific implementations by defining clear ports and adapters. The core domain contains threshold signature protocols (GG18, FROST) as pure functions, while adapters handle blockchain interactions. This separation enables protocol swapping without core modifications and simplifies testing by mocking external dependencies. For MPC wallets, this pattern is critical because different blockchains require distinct transaction formats and signature validation rules. The trade-off is increased initial complexity (20-30% more boilerplate code) but long-term maintenance costs drop by 40-60%. Key ports include `SignaturePort` for signing operations, `KeyManagementPort` for shard storage, and `BlockchainPort` for transaction submission. Adapters implement these interfaces for specific chains (Ethereum, Solana) and security environments (HSM, cloud KMS). This pattern aligns with zero-trust principles by isolating security-critical components from network-facing code.
 
@@ -278,6 +451,17 @@ func (a *GG18Adapter) SignTransaction(ctx context.Context, txData []byte, shares
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Application Core] --> B[SignaturePort]
     A --> C[KeyManagementPort]
@@ -298,28 +482,36 @@ graph TD
 | Test Coverage | (tested_lines / total_lines) × 100 | tested_lines=850, total_lines=1000 | ≥85% |
 
 **Coupling Reduction Formula**:
-```
-Coupling Reduction (%) = (1 - coupled_modules/total_modules) × 100
 
-Example:
-  coupled_modules = 3 (modules directly importing blockchain libraries)
-  total_modules = 10 (total modules in system)
-  
-  Coupling Reduction = (1 - 3/10) × 100 = 70%
-  ✅ Meets target of ≥60%
-```
+$$
+\text{Coupling Reduction (\%)} = \left(1 - \frac{\text{coupled modules}}{\text{total modules}}\right) \times 100
+$$
+
+**Example Calculation**:
+- `coupled_modules = 3` (modules directly importing blockchain libraries)
+- `total_modules = 10` (total modules in system)
+
+$$
+\text{Coupling Reduction} = \left(1 - \frac{3}{10}\right) \times 100 = 70\%
+$$
+
+> ✅ **Meets target of ≥60%**
 
 **Test Coverage Formula**:
-```
-Test Coverage (%) = (tested_lines/total_lines) × 100
 
-Example:
-  tested_lines = 850 (lines covered by tests)
-  total_lines = 1000 (total lines of code)
-  
-  Test Coverage = (850/1000) × 100 = 85%
-  ✅ Meets target of ≥85%
-```
+$$
+\text{Test Coverage (\%)} = \frac{\text{tested lines}}{\text{total lines}} \times 100
+$$
+
+**Example Calculation**:
+- `tested_lines = 850` (lines covered by tests)
+- `total_lines = 1000` (total lines of code)
+
+$$
+\text{Test Coverage} = \frac{850}{1000} \times 100 = 85\%
+$$
+
+> ✅ **Meets target of ≥85%**
 
 **Trade-offs**:
 
@@ -328,13 +520,25 @@ Example:
 | Hexagonal | Protocol independence, testable core | Higher initial complexity | Multi-chain MPC wallets | [Consensus] |
 | Layered | Simpler structure, faster development | Tight coupling to blockchain | Single-chain prototypes | [Context-dependent] |
 
-**When NOT to Use**:
+> ❌ **When NOT to Use**:
+> 
 - Single blockchain prototypes with <6 month lifespan
 - Teams <3 engineers lacking architectural experience
 - Projects requiring delivery in <4 weeks
 - Systems with no plans for multi-chain support
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Should I use Hexagonal Architecture?] --> B{Multi-chain support needed?}
     B -->|No| C{Project lifespan > 6 months?}
@@ -346,11 +550,12 @@ graph TD
     G -->|No| E
     G -->|Yes| D
     
-    style D fill:#d4edda
-    style E fill:#f8d7da
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
-**Risks**:
+> ⚠️ **Implementation Risks**:
+> 
 - Over-engineering for simple use cases (30% overhead for single-chain wallets)
 - Team learning curve adds 2-3 weeks to initial sprint
 - Port/adapter proliferation can create maintenance burden if not governed
@@ -365,7 +570,7 @@ graph TD
 
 **Difficulty**: A | **Dimension**: Behavioral
 
-**Key Insight**: Circuit breakers reduce failed transactions by 85% during network partitions but add 15-20ms latency under normal conditions.
+> **💡 Key Insight**: Circuit breakers reduce failed transactions by 85% during network partitions but add 15-20ms latency under normal conditions.
 
 **Answer**: Circuit breakers monitor blockchain RPC endpoint health during MPC signing workflows and prevent cascading failures by tripping when failure rates exceed thresholds. For GG20 signature orchestration, the breaker tracks RPC call success rates across Ethereum, Polygon, and Solana endpoints. When failure rates exceed 30% for 30 seconds, the circuit opens, failing fast and redirecting to backup endpoints. This pattern is particularly valuable in MPC workflows because partial signing failures waste computational resources and increase latency. Implementation uses state machines with half-open states for graceful recovery. Monitoring includes error rates, latency percentiles, and fallback success rates. The trade-off is increased latency (15-20ms) from state checking versus prevention of cascading failures that could increase latency by 500-1000ms during outages. For institutional MPC wallets, this pattern creates significant risk reduction by preventing complete service unavailability during chain congestion or RPC provider outages. The breaker should be configurable per chain based on reliability SLAs.
 
@@ -421,6 +626,17 @@ class CircuitBreaker {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: failures >= threshold
@@ -443,13 +659,25 @@ stateDiagram-v2
 | Circuit Breaker | Prevents cascading failures, graceful degradation | Adds latency, complex state management | Multi-chain MPC with unreliable RPCs | [Consensus] |
 | Retry with Exponential Backoff | Simpler implementation, automatic recovery | Can amplify failures during outages | Single-chain applications with stable RPCs | [Context-dependent] |
 
-**When NOT to Use**:
+> ❌ **When NOT to Use**:
+> 
 - Internal services with 99.99% SLA guarantees
 - Synchronous operations requiring immediate failure feedback
 - Systems with single RPC endpoint (no fallback options)
 - Development environments where debugging requires seeing all failures
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Should I use Circuit Breaker?] --> B{External RPC endpoints?}
     B -->|No - Internal only| C{Service SLA < 99.99%?}
@@ -461,11 +689,12 @@ graph TD
     G -->|No - Dev/Debug| E
     G -->|Yes| D
     
-    style D fill:#d4edda
-    style E fill:#f8d7da
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
-**Risks**:
+> ⚠️ **Implementation Risks**:
+> 
 - Premature circuit opening causes false positives (configure threshold carefully)
 - State synchronization issues in distributed deployments (use Redis/etcd for shared state)
 - Delayed recovery during intermittent failures (tune timeout parameters per chain)
@@ -480,7 +709,7 @@ graph TD
 
 **Difficulty**: A | **Dimension**: Quality
 
-**Key Insight**: Adaptive rate limiting reduces brute force attack surface by 95% while maintaining 99.9% availability for legitimate users, with 5-10ms overhead.
+> **💡 Key Insight**: Adaptive rate limiting reduces brute force attack surface by 95% while maintaining 99.9% availability for legitimate users, with 5-10ms overhead.
 
 **Answer**: Adaptive rate limiting for MPC endpoints uses multiple dimensions: IP-based limits for key generation (1 request/minute), user-based limits for signing (100 requests/minute), and global limits for DDoS protection. For institutional MPC wallets, this strategy prevents key enumeration attacks while allowing high-frequency trading operations. The implementation uses token bucket algorithms with Redis for distributed state, ensuring consistency across microservices. Rate limits are adaptive based on risk scores from security telemetry - suspicious IPs face stricter limits. Performance impact is minimal (5-10ms per request) but crucial for security compliance. Trade-offs include increased infrastructure complexity versus prevention of $1M+ potential losses from key compromise. For mobile clients, client-side caching reduces server load while maintaining security boundaries. This pattern directly impacts architecture choice as it requires distributed coordination and real-time threat intelligence integration. The solution creates risk mitigation by preventing resource exhaustion attacks that could block legitimate MPC operations during market volatility.
 
@@ -524,6 +753,17 @@ class MPCRateLimiter:
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant Client
     participant APIGateway
@@ -553,13 +793,25 @@ sequenceDiagram
 | Adaptive Rate Limiting | Context-aware, balances security/usability | Complex implementation, Redis dependency | Production MPC wallets with multiple clients | [Consensus] |
 | Static Rate Limiting | Simple, predictable performance | Inflexible, poor UX during legitimate spikes | Development environments, internal tools | [Context-dependent] |
 
-**When NOT to Use**:
+> ❌ **When NOT to Use**:
+> 
 - Internal admin tools with <10 users
 - Development environments requiring unlimited testing
 - Systems without distributed state infrastructure (Redis/Memcached)
 - Batch processing systems with legitimate burst requirements
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Should I use Rate Limiting?] --> B{Public-facing API?}
     B -->|No - Internal only| C{Users > 10?}
@@ -573,11 +825,12 @@ graph TD
     H -->|Yes| E
     H -->|No| D
     
-    style D fill:#d4edda
-    style E fill:#f8d7da
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
-**Risks**:
+> ⚠️ **Implementation Risks**:
+> 
 - Legitimate users blocked during legitimate spikes (implement whitelist/override mechanisms)
 - Clock skew in distributed systems causes inconsistent limits (use centralized Redis)
 - Redis single point of failure (implement Redis Sentinel/Cluster for HA)
@@ -592,7 +845,7 @@ graph TD
 
 **Difficulty**: I | **Dimension**: Data
 
-**Key Insight**: CQRS improves read performance by 10x but increases write latency by 20-40ms due to event propagation overhead.
+> **💡 Key Insight**: CQRS improves read performance by 10x but increases write latency by 20-40ms due to event propagation overhead.
 
 **Answer**: CQRS separates MPC wallet command (write) and query (read) operations into distinct models. Commands handle key generation, signing, and state updates through event sourcing, while queries serve optimized read models for transaction history and key status. For multi-chain MPC wallets, this pattern is essential because write operations (signing) require strong consistency across participants, while read operations (transaction history) can tolerate eventual consistency. The command side uses domain events to propagate state changes to read models via message queues. This separation allows optimizing database schemas independently - commands use write-optimized schemas while queries use denormalized read models. Trade-offs include eventual consistency (20-100ms delay) and increased system complexity, but read performance improves 10x under high load. For MPC wallets, this pattern affects architecture choice by requiring event-driven infrastructure and impacts SRE teams through operational complexity. Implementation uses event sourcing for audit trails and compensating transactions for error handling.
 
@@ -627,6 +880,17 @@ public class WalletQueryService {
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Client] --> B[Command Service]
     A --> C[Query Service]
@@ -651,13 +915,25 @@ graph LR
 | CQRS | 10x read performance, scalable writes | 20-40ms write overhead, eventual consistency | Multi-chain MPC with high read/write ratio | [Consensus] |
 | CRUD | Simple implementation, strong consistency | Poor scalability, performance bottlenecks | Single-chain prototypes, low-traffic systems | [Context-dependent] |
 
-**When NOT to Use**:
+> ❌ **When NOT to Use**:
+> 
 - Systems requiring immediate read-after-write consistency
 - Small applications (<10K requests/day)
 - Teams unfamiliar with event-driven architectures
 - Tight budget constraints preventing infrastructure investment
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Should I use CQRS?] --> B{Read/Write ratio > 10:1?}
     B -->|No| C[❌ DON'T USE - Use CRUD]
@@ -671,11 +947,12 @@ graph TD
     G -->|No| C
     G -->|Yes| H[✅ USE CQRS]
     
-    style H fill:#d4edda
-    style C fill:#f8d7da
+    style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
-**Risks**:
+> ⚠️ **Implementation Risks**:
+> 
 - Event ordering issues cause inconsistent read models (implement idempotent projections)
 - Message bus failures create data divergence (monitor consistency delay metrics)
 - Increased operational complexity for debugging (implement correlation IDs)
@@ -690,7 +967,7 @@ graph TD
 
 **Difficulty**: F | **Dimension**: Integration
 
-**Key Insight**: gRPC reduces latency by 60% and bandwidth by 40% compared to REST but requires more complex client libraries and lacks browser support.
+> **💡 Key Insight**: gRPC reduces latency by 60% and bandwidth by 40% compared to REST but requires more complex client libraries and lacks browser support.
 
 **Answer**: For MPC wallet microservices, gRPC excels for internal communication between signing services and blockchain adapters due to its binary serialization and bidirectional streaming capabilities. REST remains preferable for external client APIs due to browser compatibility and caching support. The decision considers latency requirements: gRPC achieves 5-10ms latency versus REST's 15-25ms for the same operations. Bandwidth usage is 40% lower with gRPC Protocol Buffers versus JSON. For mobile clients, REST with HTTP/2 provides a good balance of performance and compatibility. The integration pattern affects architecture choice by requiring separate API gateways for internal (gRPC) and external (REST) traffic. This creates multi-team impact - frontend developers prefer REST while backend teams benefit from gRPC's type safety. Performance metrics include request latency, error rates, and bandwidth usage. The solution requires implementation within 3 months to support growing transaction volumes.
 
@@ -725,6 +1002,17 @@ func (h *BlockchainHandler) SignTransactionHandler(w http.ResponseWriter, r *htt
 **Diagram**:
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     A[Mobile Client] -->|REST/HTTP2| B[API Gateway]
     C[Web Client] -->|REST/HTTP2| B
@@ -754,6 +1042,17 @@ graph TB
 - Legacy systems incompatible with HTTP/2
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Choose Integration Pattern] --> B{Client Type?}
     B -->|Browser/Mobile| C[Use REST or REST + HTTP/2]
@@ -765,8 +1064,8 @@ graph TD
     G -->|Yes| C
     G -->|No| E
     
-    style E fill:#d4edda
-    style C fill:#fff4e1
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Dissenting View**: Some teams prefer GraphQL for external APIs, arguing it provides better flexibility than REST while maintaining browser compatibility. However, GraphQL adds query complexity overhead not needed for simple CRUD operations.
@@ -776,6 +1075,17 @@ graph TD
 ## Measurement Methodology
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Measurement Process] --> B[1. Baseline Establishment]
     A --> C[2. Collection Methods]
@@ -797,10 +1107,10 @@ graph TD
     D --> D3[Account for Variations]
     D --> D4[Document Configuration]
     
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style C fill:#e1ffe1
-    style D fill:#ffe1e1
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Baseline Establishment
@@ -828,6 +1138,17 @@ graph TD
 ## Limitations and Uncertainties
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Limitations & Uncertainties] --> B[Known Limitations]
     A --> C[Uncertainties]
@@ -851,10 +1172,10 @@ graph LR
     E --> E2[Complexity Risk]
     E --> E3[UX Impact Risk]
     
-    style B fill:#fff4e1
-    style C fill:#ffe1e1
-    style D fill:#ffebcc
-    style E fill:#f8d7da
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Known Limitations
@@ -910,6 +1231,17 @@ Implementing these patterns without proper expertise increases risk:
 ## References
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[References] --> B[Glossary]
     A --> C[Tools]
@@ -921,11 +1253,11 @@ graph LR
     D --> D1[3 Core Books]
     E --> E1[6+ Academic Papers]
     
-    style A fill:#e1f5ff
-    style B fill:#d4edda
-    style C fill:#fff4e1
-    style D fill:#ffe1e1
-    style E fill:#d1ecf1
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Glossary (≥5)
@@ -975,6 +1307,17 @@ graph LR
 ## Validation
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Document Validation] --> B[Content Quality]
     A --> C[Structural Completeness]
@@ -997,19 +1340,19 @@ graph TD
     E --> E2[✅ Risk Disclosure]
     E --> E3[✅ Limitations Flagged]
     
-    style A fill:#e1f5ff
-    style B1 fill:#d4edda
-    style B2 fill:#d4edda
-    style B3 fill:#d4edda
-    style C1 fill:#d4edda
-    style C2 fill:#d4edda
-    style C3 fill:#d4edda
-    style D1 fill:#d4edda
-    style D2 fill:#d4edda
-    style D3 fill:#d4edda
-    style E1 fill:#d4edda
-    style E2 fill:#d4edda
-    style E3 fill:#d4edda
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style B2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style B3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 | Check | Target | Status |

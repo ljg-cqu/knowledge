@@ -26,6 +26,22 @@
 
 **System Overview**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
 graph TB
     subgraph "Client Layer"
         Mobile[Mobile SDK]
@@ -73,6 +89,19 @@ graph TB
     Shard --> Audit
     Audit --> Hash
     Hash --> L2
+    
+    style Mobile fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Web fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Backend fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Gateway fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SDK fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Policy fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Saga fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Pool fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Engine fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style FROST fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style GG20 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style CGGMP fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -83,7 +112,7 @@ graph TB
 ### Q1: 如何在单一代码基中隔离多种阈值签名算法，同时保持测试与审计效率？
 **Difficulty**: F | **Dimension**: Structural
 
-**Key Insight**: 采用端口-适配器 + feature flag，可将协议内核耦合度降到 <0.15 并让审计脚本复用率达 90%。
+> **Key Insight**: 采用端口-适配器 + feature flag，可将协议内核耦合度降到 <0.15 并让审计脚本复用率达 90%。
 
 **Protocol Comparison**:
 
@@ -121,23 +150,52 @@ impl<W: Network> ThresholdEngine for FrostEngine<W> {
 }
 ```
 
-**Diagram**:
+**Architecture Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
+    Client[Client Application]
+    Adapter[Protocol Adapter]
+    Engine[Threshold Engine Interface]
+    FROST[FROST Kernel<br/>2 rounds, 120-150ms]
+    GG20[GG20 Kernel<br/>3 rounds, ~240ms]
+    Mock[Test Harness]
+    Ledger[Blockchain Ledger]
+    
     Client --> Adapter
-    Adapter -->|ports| ThresholdEngine
-    ThresholdEngine -->|FROST| FrostKernel
-    ThresholdEngine -->|GG20| Gg20Kernel
-    ThresholdEngine -->|Mock| TestHarness
-    FrostKernel --> Ledger
+    Adapter -->|ports| Engine
+    Engine -->|FROST| FROST
+    Engine -->|GG20| GG20
+    Engine -->|Mock| Mock
+    FROST --> Ledger
+    GG20 --> Ledger
+    
+    style Client fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Adapter fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Engine fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style FROST fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style GG20 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Mock fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Ledger fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
-**Metrics**:
+**Performance Metrics**:
+
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
-| Module Coupling Score | cross_calls / total_calls | cross_calls=跨层调用, total_calls=模块总调用 | ≤0.15 |
-| Audit MTTR | sum(replay_time) / incidents | replay_time=重放耗时 | ≤24h |
-| Kernel Reuse Ratio | shared_lines / total_lines | shared_lines=内核公共代码行 | ≥0.8 |
+| Module Coupling Score | $\frac{\text{cross\_calls}}{\text{total\_calls}}$ | cross_calls=跨层调用, total_calls=模块总调用 | ≤0.15 |
+| Audit MTTR | $\frac{\sum \text{replay\_time}}{\text{incidents}}$ | replay_time=重放耗时 | ≤24h |
+| Kernel Reuse Ratio | $\frac{\text{shared\_lines}}{\text{total\_lines}}$ | shared_lines=内核公共代码行 | ≥0.8 |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -158,10 +216,10 @@ graph TD
 ## Topic 2: 多链签名协作编排
 **Overview**: 通过事件驱动 Saga 协调多链阈值签名、风控与限额审批。
 
-### Q2: 如何保证多链签名协作在 400 ms SLA 内完成，同时兼顾风控补偿？
+### Q2: 如何保证多链签名协作在 400 ms SLA 内完成，同时兼顾风控补偿？
 **Difficulty**: I | **Dimension**: Behavioral
 
-**Key Insight**: 采用 Saga Orchestrator + 并行会话池，可把 3 链并发签名成功率提高到 99.2%，失败回滚<80 ms。
+> **Key Insight**: 采用 Saga Orchestrator + 并行会话池，可把 3 链并发签名成功率提高到 99.2%，失败回滚<80 ms。
 
 **Answer**: 构建一个基于事件总线的 Saga：`Initiate` 事件分配 Session Key（EIP-4337），随后并行触发 Ethereum、BTC、Solana 子任务；每个子任务进入 `SignReady` 前必须通过风控服务判定（设备指纹、限额）。若任一子任务超时 250 ms，就触发 `Compensate`，撤销所有链上的 partial signatures 并写入审计流 [Ref: A4][Ref: A5]. Saga 状态存入低延迟 KV（如 TiKV）便于横向扩展。为提升成功率，对底层协议选择 CGGMP21，在预处理阶段准备 2 轮 nonce，在线阶段只需 1 轮广播，平均节约 90 ms [Ref: A2]。限额策略采用 `risk_bucket * exposure < limit` 公式并推送到策略 DSL，以确保多身份用户的审批链路不被阻塞。
 
@@ -189,44 +247,100 @@ func (s *Saga) Run(ctx context.Context, req SignRequest) error {
 }
 ```
 
-**Diagram**:
+**Multi-Chain Signing Flow**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "activationBkgColor": "#eff6fb",
+    "activationBorderColor": "#7a9fc5",
+    "noteBkgColor": "#f3f5f7",
+    "noteBorderColor": "#8897a8"
+  }
+}}%%
 sequenceDiagram
     participant Client
-    participant Saga
-    participant ETH
-    participant BTC
-    participant SOL
-    Client->>Saga: Initiate
-    Saga->>ETH: SignReady
-    Saga->>BTC: SignReady
-    Saga->>SOL: SignReady
-    ETH-->>Saga: PartialSig
-    BTC-->>Saga: PartialSig
-    SOL-->>Saga: Timeout?
-    Saga->>Saga: Compensate if timeout
-    Saga-->>Client: Result
+    participant Saga as Saga Orchestrator
+    participant Risk as Risk Control
+    participant ETH as Ethereum Chain
+    participant BTC as Bitcoin Chain
+    participant SOL as Solana Chain
+    
+    Client->>Saga: Initiate Multi-Chain Sign
+    Saga->>Risk: Check Device & Limits
+    Risk-->>Saga: ✓ Approved
+    
+    par Parallel Signing
+        Saga->>ETH: SignReady (Session Key)
+        Saga->>BTC: SignReady (Session Key)
+        Saga->>SOL: SignReady (Session Key)
+    end
+    
+    ETH-->>Saga: PartialSig (120ms)
+    BTC-->>Saga: PartialSig (180ms)
+    
+    alt Timeout Scenario
+        SOL-->>Saga: Timeout (>250ms)
+        Saga->>Saga: Trigger Compensate
+        Saga->>ETH: Revoke PartialSig
+        Saga->>BTC: Revoke PartialSig
+        Saga-->>Client: ❌ Failed + Audit Log
+    else Success Scenario
+        SOL-->>Saga: PartialSig (200ms)
+        Saga->>Saga: Aggregate Signatures
+        Saga-->>Client: ✓ Success (Total: 230ms)
+    end
 ```
 
 **Saga State Machine**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 stateDiagram-v2
-    [*] --> Initiated
+    [*] --> Initiated: Client Request
     Initiated --> SignReady: Risk Check Pass
-    SignReady --> Executing: Parallel Dispatch
-    Executing --> Completed: All Chains Success
-    Executing --> Compensating: Timeout/Error
-    Compensating --> Failed: Rollback Complete
-    Completed --> [*]
-    Failed --> [*]
+    Initiated --> Failed: Risk Check Fail
+    SignReady --> Executing: Parallel Dispatch<br/>(ETH+BTC+SOL)
+    Executing --> Completed: All Chains Success<br/>(≤400ms)
+    Executing --> Compensating: Timeout/Error<br/>(>250ms)
+    Compensating --> Failed: Rollback Complete<br/>(≤80ms)
+    Completed --> [*]: Audit Log
+    Failed --> [*]: Audit Log
+    
+    note right of Executing
+        Success Rate: ≥99%
+        Max Latency: 400ms
+    end note
+    
+    note right of Compensating
+        Revoke partial signatures
+        Cleanup session keys
+        Write failure audit
+    end note
 ```
 
-**Metrics**:
+**Performance Metrics**:
+
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
-| Saga Success Rate | success_sagas / total_sagas | success_sagas=成功事务 | ≥99% |
-| Compensation Latency | sum(comp_latency)/comp_events | comp_latency=补偿耗时 | ≤80 ms |
-| Per-chain SLA | p95_latency | 95 分位延迟 | ≤400 ms |
+| Saga Success Rate | $\frac{\text{success\_sagas}}{\text{total\_sagas}}$ | success_sagas=成功事务 | ≥99% |
+| Compensation Latency | $\frac{\sum \text{comp\_latency}}{\text{comp\_events}}$ | comp_latency=补偿耗时 | ≤80 ms |
+| Per-chain SLA | $P_{95}(\text{latency})$ | 95 分位延迟 | ≤400 ms |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -250,7 +364,7 @@ stateDiagram-v2
 ### Q3: 移动/Web/后端共享同一 MPC 服务时，如何平衡吞吐与延迟？
 **Difficulty**: I | **Dimension**: Quality
 
-**Key Insight**: 以自适应工作池配合 WASM SIMD，可把 p95 签名延迟压到 280 ms，并维持 5k RPS 下 <60% CPU。
+> **Key Insight**: 以自适应工作池配合 WASM SIMD，可把 p95 签名延迟压到 280 ms，并维持 5k RPS 下 <60% CPU。
 
 **Answer**: 将签名请求进入 API Gateway 后贴上 `client_type`、`risk_level` 标签，交由 Adaptive Worker 池：高优先级（支付）分配更多 WASM 线程，低优先级（冷钱包）进入令牌桶缓冲，确保后端不会出现“惊群”。利用 DKLS23 建议的批量 nonce 预取，一次获取 8 份 nonce，减少与协作者往返 [Ref: A3]。移动端 SDK 使用 WebAssembly + WebCrypto，将 FROST 算法 SIMD 化后速度提升 ~1.8× (benchmarked on M2/Snapdragon 8 Gen2) [Ref: A1]。指标由 OpenTelemetry 导出：签名延迟、错误率、系统饱和度（Little’s Law 计算 queue depth）。当 `queue_depth > 0.7 * worker_slots` 时动态扩容 worker，或触发限流返回 `429`。
 
@@ -270,17 +384,50 @@ export async function sign(req: SignRequest) {
 }
 ```
 
-**Diagram**:
+**Adaptive Worker Pool Architecture**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
+    Gateway[API Gateway<br/>+ Labels]
+    Classifier{Request<br/>Classifier}
+    High[High Priority<br/>Payment/Urgent]
+    Std[Standard Priority<br/>Regular Ops]
+    Low[Low Priority<br/>Cold Wallet]
+    Pool[Adaptive Pool<br/>8-64 Workers]
+    Bucket[Token Bucket<br/>Rate Limiter]
+    Kernel[WASM Kernel<br/>+ SIMD]
+    Metrics[Metrics<br/>OpenTelemetry]
+    
     Gateway-->Classifier
-    Classifier-->HighPriority
-    Classifier-->Standard
-    Classifier-->LowPriority
-    HighPriority-->AdaptivePool
-    Standard-->AdaptivePool
-    LowPriority-->TokenBucket
-    AdaptivePool-->WasmKernel
+    Classifier-->|Priority=1| High
+    Classifier-->|Priority=2| Std
+    Classifier-->|Priority=3| Low
+    High-->Pool
+    Std-->Pool
+    Low-->Bucket
+    Bucket-->Pool
+    Pool-->Kernel
+    Kernel-->Metrics
+    
+    style Gateway fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Classifier fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style High fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Std fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Low fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Pool fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Bucket fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Kernel fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Metrics fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 **Priority Queue Configuration**:
@@ -292,20 +439,26 @@ graph LR
 | **Low** (Cold Wallet) | 3 | 4 | Token bucket | Rate-limited |
 
 **Little's Law Application**:
-```
-Queue Depth (L) = Arrival Rate (λ) × Service Time (W)
 
-When L > 0.7 × worker_slots:
-  → Trigger dynamic scale-up
-  → OR return 429 (Rate Limited)
-```
+$$L = \lambda \times W$$
 
-**Metrics**:
+Where:
+- **L** = Queue Depth (number of requests in system)
+- **λ** = Arrival Rate (requests per second)
+- **W** = Service Time (average response time)
+
+**Scaling Policy**:
+> When $L > 0.7 \times \text{worker\_slots}$:
+> - **Action 1**: Trigger dynamic scale-up (+10% workers every 5s)
+> - **Action 2**: OR return `429 Rate Limited` if max capacity reached
+
+**Performance Metrics**:
+
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
-| p95 Latency | percentile(latency, 0.95) | latency=签名耗时 | ≤300 ms |
-| CPU Saturation | busy_cycles / total_cycles | busy_cycles=忙时 CPU | ≤0.6 |
-| Queue Depth | arrival_rate * service_time | 来量λ, 服务时长W | ≤0.7 * worker_slots |
+| p95 Latency | $P_{95}(\text{latency})$ | latency=签名耗时 | ≤300 ms |
+| CPU Saturation | $\frac{\text{busy\_cycles}}{\text{total\_cycles}}$ | busy_cycles=忙时 CPU | ≤60% |
+| Queue Depth | $\lambda \times W$ | λ=arrival_rate, W=service_time | ≤0.7 × worker_slots |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -329,7 +482,7 @@ When L > 0.7 × worker_slots:
 ### Q4: 阈值分片与审计日志跨区域部署时，如何确保数据一致且可追溯？
 **Difficulty**: A | **Dimension**: Data
 
-**Key Insight**: 双写事件流 + ZK 摘要可将恢复用时缩短 ~35% (vs. full event replay)，且满足 SOC2「不可抵赖」审计。
+> **Key Insight**: 双写事件流 + ZK 摘要可将恢复用时缩短 ~35% (vs. full event replay)，且满足 SOC2「不可抵赖」审计。
 
 **Answer**: 通过 CQRS + 事件溯源，写路径采用「Shard Store」(HSM or SGX) 与「Audit Stream」(append-only) 双写。事件载荷包含 `shard_id`, `peer_id`, `opacity_hash`; 同时把事件摘要提交到 Keccak 累积器，周期性发布到以太坊 L2 以提供外部可验证性 [Ref: A4]. 为避免跨区域复制延迟，使用 DynamoDB global table 或 TiDB placement driver，并设定 `RPO <= 5s`。恢复流程使用 ZK 哈希链校验 shards 是否被篡改；如果 mismatch，就自动触发 DKLS23 建议的 `reshare` 协议，避免单点被破坏 [Ref: A3]. 数据面通过 Delta Sync，每 10k events 生成 Snapshot 以降低重放成本。该方案同时满足 CCF（custody control framework）关于「split knowledge + split control」的要求。
 
@@ -349,19 +502,65 @@ fn verify_chain(events: &[ShardEvent], commitments: &[Commitment]) -> bool {
 }
 ```
 
-**Diagram**:
+**Data Consistency Architecture**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
-    Signer --> EventBus
-    EventBus --> ShardStore
-    EventBus --> AuditStream
-    AuditStream --> HashChain
-    HashChain --> L2Commit
-    L2Commit --> Auditors
+    Signer[Threshold Signer]
+    Bus[Event Bus<br/>CQRS]
+    Shard[Shard Store<br/>HSM/SGX]
+    Audit[Audit Stream<br/>Append-Only]
+    Hash[ZK Hash Chain<br/>Poseidon/Keccak]
+    L2A[L2: Arbitrum]
+    L2O[L2: Optimism]
+    Auditor[External Auditors<br/>SOC2/CCF]
+    Snapshot[Delta Snapshots<br/>Every 10k Events]
+    
+    Signer --> Bus
+    Bus -->|Write| Shard
+    Bus -->|Append| Audit
+    Audit --> Hash
+    Audit --> Snapshot
+    Hash -->|Commit| L2A
+    Hash -->|Commit| L2O
+    L2A --> Auditor
+    L2O --> Auditor
+    
+    style Signer fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Bus fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Shard fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Audit fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Hash fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style L2A fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style L2O fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Auditor fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Snapshot fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 **Data Flow & Consistency**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     participant Signer
     participant ShardStore
@@ -387,12 +586,13 @@ sequenceDiagram
 | **Cross-Region Sync** | DynamoDB Global / TiDB | ≤ 5s | < 30 min | Vector clocks |
 | **L2 Commitment** | Arbitrum + Optimism | Periodic | N/A | Public verification |
 
-**Metrics**:
+**Performance Metrics**:
+
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
-| Recovery RTO | failover_time | 事件到恢复时长 | ≤30 min |
-| Snapshot Interval | events_per_snapshot | 事件数量 | 10k |
-| Consistency Lag | |timestamp_l2 - timestamp_dc| | 提交与本地差值 | ≤5 s |
+| Recovery RTO | $\text{failover\_time}$ | 事件到恢复时长 | ≤30 min |
+| Snapshot Interval | $\text{events\_per\_snapshot}$ | 事件数量 | 10k events |
+| Consistency Lag | $\|\text{timestamp}_{L2} - \text{timestamp}_{DC}\|$ | 提交与本地差值 | ≤5 s |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -416,7 +616,7 @@ sequenceDiagram
 ### Q5: 如何同时满足内部产品与外部伙伴在 MPC 签名上的集成需求？
 **Difficulty**: A | **Dimension**: Integration
 
-**Key Insight**: 发布「Policy-aware SDK + gRPC Core」双轨接口，可在 4 周内集成 3 个合作方且保持 100% 签名兼容。
+> **Key Insight**: 发布「Policy-aware SDK + gRPC Core」双轨接口，可在 4 周内集成 3 个合作方且保持 100% 签名兼容。
 
 **Answer**: 构建双层接口：底层 gRPC Core 暴露 `Sign`, `Keygen`, `Recover`, `PolicyEval`，用于后端服务；上层 SDK 提供 TS/Kotlin API，并内置 Session Key（Safe{Core} 模型）与风控策略缓存 [Ref: A5]. 所有请求携带 `policy_token`，由 Policy Engine（OPA）校验是否满足额度、地理位置、设备风险。对外合作伙伴通过 `Capability Descriptor` 声明所需链种、阈值算法、批量大小，CI 自动生成最小化配置文件以及示例代码。内部产品（移动端）则使用同一 SDK 但启用本地 WebAuthn 作为因子合成。此边界可与 account abstraction（EIP-4337）入口点整合，使签名与支付 gas bundle 结合，减少 25% 交易交互 [Ref: A4]. 为应对突发集成请求，采用可观测性契约：每次签名都会写入 OpenTelemetry span，合作方需消费 webhook 以做 SLA 报表。
 
@@ -440,19 +640,59 @@ export class MpcClient {
 }
 ```
 
-**Diagram**:
+**SDK Integration Flow**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
-    PartnerApp-->SDK
+    Partner[Partner App<br/>B2B]
+    Mobile[Mobile App<br/>B2C]
+    SDK[MPC SDK<br/>TS/Kotlin]
+    gRPC[gRPC Core]
+    Policy[Policy Engine<br/>OPA]
+    Core[MPC Core]
+    Cluster[Signer Cluster]
+    
+    Partner-->SDK
+    Mobile-->SDK
     SDK-->gRPC
-    gRPC-->PolicyEngine
-    PolicyEngine-->MpcCore
-    MpcCore-->SignerCluster
-    SDK-->MobileApp
+    gRPC-->Policy
+    Policy-->Core
+    Core-->Cluster
+    
+    style Partner fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Mobile fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SDK fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style gRPC fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Policy fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Core fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Cluster fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Integration Architecture**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph "External Partners"
         Partner[Partner Backend]
@@ -498,6 +738,21 @@ graph TB
     Sign --> OPA
     Keygen --> OPA
     OPA --> MPC
+    
+    style Partner fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Mobile fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Web fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style TSSDK fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style KotlinSDK fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SessionKey fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style PolicyCache fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style gRPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Sign fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Keygen fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Recover fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style PolicyEval fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style OPA fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style MPC fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Integration Capabilities**:
@@ -510,12 +765,13 @@ graph TB
 | **WebAuthn** | Device biometrics | ✗ | ✓ | Platform keystore |
 | **Webhook** | SLA monitoring | ✓ | ✗ | OpenTelemetry span |
 
-**Metrics**:
+**Performance Metrics**:
+
 | Metric | Formula | Variables | Target |
 | --- | --- | --- | --- |
-| Integration Lead Time | delivery_days | 需求到上线 | ≤28 天 |
-| Policy Drift | mismatched_policies / total_calls | 违规请求 | 0 |
-| Compatibility Score | passed_tests / total_tests | 兼容性测试 | ≥0.98 |
+| Integration Lead Time | $\text{delivery\_days}$ | 需求到上线 | ≤28 days |
+| Policy Drift | $\frac{\text{mismatched\_policies}}{\text{total\_calls}}$ | 违规请求 | 0 |
+| Compatibility Score | $\frac{\text{passed\_tests}}{\text{total\_tests}}$ | 兼容性测试 | ≥98% |
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |

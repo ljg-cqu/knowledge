@@ -19,6 +19,51 @@
 
 ---
 
+## Document Overview
+
+### Architecture Topics Coverage
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff"
+  }
+}}%%
+quadrantChart
+    title Architecture Pattern Complexity vs Impact
+    x-axis Low Complexity --> High Complexity
+    y-axis Low Impact --> High Impact
+    quadrant-1 High Value
+    quadrant-2 Strategic
+    quadrant-3 Quick Wins
+    quadrant-4 Complex Trade-offs
+    Hexagonal Architecture: [0.4, 0.9]
+    Circuit Breaker: [0.7, 0.8]
+    Rate Limiting: [0.2, 0.7]
+    CQRS + Event Sourcing: [0.8, 0.9]
+    gRPC vs REST: [0.3, 0.6]
+```
+
+### Key Architecture Decisions
+
+| Topic | Pattern | Difficulty | Primary Benefit | Risk Mitigation |
+|-------|---------|------------|-----------------|-----------------|
+| **SDK Modularity** | Hexagonal Architecture | Intermediate | 60-80% coupling reduction | Protocol changes isolated to adapters |
+| **DKG Resilience** | Circuit Breaker | Advanced | 75% fewer timeout failures | Graceful abort prevents corrupt shares |
+| **API Protection** | Token Bucket Rate Limiting | Foundational | 95% resource protection | DDoS + cryptographic oracle prevention |
+| **Audit Compliance** | CQRS + Event Sourcing | Advanced | 100% audit completeness | 7-year immutable transaction history |
+| **Service Integration** | gRPC (internal) + REST (blockchain) | Intermediate | 50-70% latency reduction | Hybrid approach balances performance & ecosystem |
+
+---
+
+
 ## Topic Areas
 
 | Dimension | Count | Difficulty | Description |
@@ -1737,39 +1782,130 @@ graph TB
 
 ### Glossary (≥5 terms)
 
-**G1. Multi-Party Computation (MPC)** – Cryptographic protocol enabling multiple parties to jointly compute a function over their inputs while keeping those inputs private. In threshold signatures, parties cooperatively generate signatures without any single party holding the complete private key, eliminating single points of failure. Related: *Threshold Signature Scheme (TSS)*, *Secret Sharing*, *Distributed Key Generation (DKG)*.
+#### Concept Relationship Map
 
-**G2. Threshold Signature Scheme (TSS)** – Cryptographic signature protocol where a threshold t out of n parties must cooperate to generate a valid signature. For example, a 3-of-5 TSS requires any 3 of 5 key share holders to participate in signing. Implementations include GG18/GG20 (ECDSA), FROST (Schnorr/EdDSA). Related: *MPC*, *Key Sharding*, *Shamir's Secret Sharing*.
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff"
+  }
+}}%%
+mindmap
+  root((MPC Wallet<br/>Architecture))
+    Cryptography
+      MPC
+        TSS
+          GG18_GG20
+          FROST
+        DKG
+          Pedersen
+        Secret_Sharing
+      Account_Abstraction
+        ERC_4337
+    Software_Design
+      Hexagonal_Arch
+        Ports
+        Adapters
+      CQRS
+        Event_Sourcing
+      DDD
+    Resilience_Patterns
+      Circuit_Breaker
+        CLOSED
+        OPEN
+        HALF_OPEN
+      Rate_Limiting
+        Token_Bucket
+        Leaky_Bucket
+```
 
-**G3. Hexagonal Architecture (Ports & Adapters)** – Software design pattern organizing code into three layers: (1) core domain logic, (2) ports defining interfaces to external systems, (3) adapters implementing concrete integrations. Enables swapping infrastructure (databases, APIs, protocols) without changing business logic. Related: *Dependency Inversion*, *Clean Architecture*, *Domain-Driven Design*.
+#### Term Definitions
 
-**G4. CQRS (Command Query Responsibility Segregation)** – Architectural pattern separating read operations (queries) from write operations (commands) using distinct data models. Write model optimized for consistency and business rules; read model denormalized for query performance. Often combined with Event Sourcing for complete audit trails. Related: *Event Sourcing*, *Materialized Views*, *Eventual Consistency*.
-
-**G5. Event Sourcing** – Persistence pattern storing state changes as immutable sequence of events rather than current state snapshots. Enables temporal queries ("what was the balance on date X?"), complete audit trails, and event replay for debugging. Essential for regulatory compliance in financial systems. Related: *CQRS*, *Event Store*, *Aggregate Root*.
-
-**G6. Circuit Breaker Pattern** – Fault tolerance pattern that monitors for failures and "opens the circuit" to prevent cascading failures. States: CLOSED (normal), OPEN (failing, reject requests immediately), HALF_OPEN (testing recovery). Applied to MPC protocols to abort failing DKG ceremonies gracefully. Related: *Fault Tolerance*, *Bulkhead Pattern*, *Saga Pattern*.
-
-**G7. Token Bucket Algorithm** – Rate limiting algorithm modeling request capacity as "tokens" in a virtual bucket. Bucket refills at constant rate R tokens/second; each request consumes tokens. Allows burst traffic up to bucket capacity while enforcing average rate. Preferred over fixed window due to burst handling. Related: *Rate Limiting*, *Leaky Bucket*, *Sliding Window*.
-
-**G8. Account Abstraction (ERC-4337)** – Ethereum protocol enabling smart contract wallets with programmable transaction logic (social recovery, multi-sig, session keys) without requiring EOA ownership. UserOperations replace transactions, bundlers coordinate execution, paymasters sponsor gas. Enhances UX while maintaining self-custody. Related: *Smart Wallets*, *Session Keys*, *Paymasters*.
-
-**G9. Distributed Key Generation (DKG)** – Protocol where multiple parties collaboratively generate a shared public key while each holding only a private key share. No single party ever possesses the complete private key. Critical first step in threshold signature schemes. Implementations: Pedersen DKG, FROST DKG. Related: *TSS*, *MPC*, *Shamir's Secret Sharing*.
+| Term | Category | Definition | Related Concepts |
+|------|----------|------------|------------------|
+| **Multi-Party Computation (MPC)** | Cryptography | Cryptographic protocol enabling multiple parties to jointly compute a function over their inputs while keeping those inputs private. In threshold signatures, parties cooperatively generate signatures without any single party holding the complete private key, eliminating single points of failure. | TSS, Secret Sharing, DKG |
+| **Threshold Signature Scheme (TSS)** | Cryptography | Cryptographic signature protocol where a threshold t out of n parties must cooperate to generate a valid signature. Example: 3-of-5 TSS requires any 3 of 5 key share holders to participate. Implementations: GG18/GG20 (ECDSA), FROST (Schnorr/EdDSA). | MPC, Key Sharding, Shamir's Secret Sharing |
+| **Hexagonal Architecture** | Architecture | Software design pattern with three layers: (1) core domain logic, (2) ports (interfaces to external systems), (3) adapters (concrete integrations). Enables swapping infrastructure without changing business logic. | Dependency Inversion, Clean Architecture, DDD |
+| **CQRS** | Architecture | Command Query Responsibility Segregation – separates read operations (queries) from write operations (commands) using distinct data models. Write model: consistency + business rules; Read model: denormalized for performance. | Event Sourcing, Materialized Views, Eventual Consistency |
+| **Event Sourcing** | Data Pattern | Persistence pattern storing state changes as immutable event sequence vs current state snapshots. Enables temporal queries, complete audit trails, and event replay. Essential for regulatory compliance. | CQRS, Event Store, Aggregate Root |
+| **Circuit Breaker Pattern** | Resilience | Fault tolerance pattern monitoring failures to prevent cascades. States: CLOSED (normal), OPEN (failing, reject immediately), HALF_OPEN (testing recovery). Applied to MPC for graceful DKG abort. | Fault Tolerance, Bulkhead Pattern, Saga Pattern |
+| **Token Bucket Algorithm** | Performance | Rate limiting algorithm modeling capacity as "tokens" in virtual bucket. Refills at rate R tokens/sec; requests consume tokens. Allows bursts up to capacity while enforcing average rate. | Rate Limiting, Leaky Bucket, Sliding Window |
+| **Account Abstraction (ERC-4337)** | Blockchain | Ethereum protocol for smart contract wallets with programmable logic (social recovery, multi-sig, session keys) without EOA ownership. UserOperations + bundlers + paymasters. | Smart Wallets, Session Keys, Paymasters |
+| **Distributed Key Generation (DKG)** | Cryptography | Multi-party protocol generating shared public key where each party holds only a private key share. No single party possesses complete private key. First step in TSS. Implementations: Pedersen DKG, FROST DKG. | TSS, MPC, Shamir's Secret Sharing |
 
 ### Tools (≥3)
 
-**T1. tss-lib (Binance/ZenGo)** – Open-source Go implementation of threshold ECDSA protocols (GG18/GG20) supporting distributed key generation and t-of-n signing for Secp256k1 curve (Bitcoin, Ethereum). Production-grade with extensive testing and audit. Last updated: 2024-11. URL: https://github.com/bnb-chain/tss-lib
+| Tool | Language | Purpose | Key Features | Updated | URL |
+|------|----------|---------|--------------|---------|-----|
+| **tss-lib** | Go | Threshold ECDSA | GG18/GG20, Secp256k1, Production-grade | 2024-11 | [GitHub](https://github.com/bnb-chain/tss-lib) |
+| **Givre** | Rust | FROST protocol | EdDSA, BIP340, CGGMP21 DKG | 2025-02 | [GitHub](https://github.com/LFDT-Lockness/givre) |
+| **multi-party-sig** | Go | Multi-protocol MPC | CGGMP/CMP/Frost, Coinbase production | 2024-09 | [GitHub](https://github.com/coinbase/kryptology) |
+| **Redis** | C | Rate limiting | Atomic ops, Lua, <3ms latency | 2025-11 | [redis.io](https://redis.io) |
+| **EventStoreDB** | C# | Event sourcing | Projections, temporal queries | 2025-10 | [eventstore.com](https://www.eventstore.com) |
+| **gRPC** | Multi | RPC framework | HTTP/2, Protobuf, Streaming | 2025-11 | [grpc.io](https://grpc.io) |
 
-**T2. Givre (Dfns/Lockness)** – Rust implementation of FROST (Flexible Round-Optimal Schnorr Threshold) protocol for EdDSA signatures. Supports Schnorr signatures for Bitcoin (BIP340) and Ed25519 for Solana/Stellar/Tezos. UC-secure DKG based on CGGMP21. Last updated: 2025-02. URL: https://github.com/LFDT-Lockness/givre
+**Detailed Descriptions:**
 
-**T3. multi-party-sig (Coinbase Kryptology)** – Production MPC library in Go supporting multiple threshold signature protocols including CGGMP, CMP, and Frost. Used by Coinbase for institutional custody. Includes comprehensive test vectors and performance benchmarks. Last updated: 2024-09. URL: https://github.com/coinbase/kryptology
+- **T1. tss-lib (Binance/ZenGo)**: Open-source Go implementation of threshold ECDSA protocols (GG18/GG20) supporting distributed key generation and t-of-n signing for Secp256k1 curve (Bitcoin, Ethereum). Production-grade with extensive testing and audit.
 
-**T4. Redis (Distributed Rate Limiting)** – In-memory data store providing atomic operations (INCR, EVAL) for distributed rate limiting with <3ms latency. Lua scripting enables complex token bucket logic in single atomic operation. Essential for multi-server API gateways. Last updated: 2025-11 (Redis 7.4). URL: https://redis.io
+- **T2. Givre (Dfns/Lockness)**: Rust implementation of FROST (Flexible Round-Optimal Schnorr Threshold) protocol for EdDSA signatures. Supports Schnorr signatures for Bitcoin (BIP340) and Ed25519 for Solana/Stellar/Tezos. UC-secure DKG based on CGGMP21.
 
-**T5. EventStoreDB** – Purpose-built database for event sourcing with built-in projections, temporal queries, and event streaming. Supports append-only event logs with optimistic concurrency. Alternative to PostgreSQL for pure event sourcing architectures. Last updated: 2025-10. URL: https://www.eventstore.com
+- **T3. multi-party-sig (Coinbase Kryptology)**: Production MPC library in Go supporting multiple threshold signature protocols including CGGMP, CMP, and Frost. Used by Coinbase for institutional custody. Includes comprehensive test vectors and performance benchmarks.
 
-**T6. gRPC (Google)** – High-performance RPC framework using HTTP/2 and Protocol Buffers. Generates strongly-typed clients in 11+ languages. Supports bi-directional streaming and built-in authentication. Industry standard for microservice communication. Last updated: 2025-11 (v1.68). URL: https://grpc.io
+- **T4. Redis (Distributed Rate Limiting)**: In-memory data store providing atomic operations (INCR, EVAL) for distributed rate limiting with <3ms latency. Lua scripting enables complex token bucket logic in single atomic operation. Essential for multi-server API gateways.
+
+- **T5. EventStoreDB**: Purpose-built database for event sourcing with built-in projections, temporal queries, and event streaming. Supports append-only event logs with optimistic concurrency. Alternative to PostgreSQL for pure event sourcing architectures.
+
+- **T6. gRPC (Google)**: High-performance RPC framework using HTTP/2 and Protocol Buffers. Generates strongly-typed clients in 11+ languages. Supports bi-directional streaming and built-in authentication. Industry standard for microservice communication.
 
 ### Literature (≥3)
+
+#### Key References Timeline
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff"
+  }
+}}%%
+graph LR
+    A[2002<br/>Fowler<br/>Enterprise Patterns<br/>Hexagonal Arch]
+    B[2013<br/>Vernon<br/>Domain-Driven Design<br/>CQRS + Event Sourcing]
+    C[2017<br/>Kleppmann<br/>Data-Intensive Apps<br/>Distributed Systems]
+    D[2018<br/>Richardson<br/>Microservices<br/>Circuit Breaker]
+    
+    A --> B --> C --> D
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+```
+
+#### Book Summaries
+
+| Author(s) | Year | Title | Key Topics | Relevance to MPC Wallets |
+|-----------|------|-------|------------|-------------------------|
+| **Fowler, M.** | 2002 | Patterns of Enterprise Application Architecture | Hexagonal Architecture, Repository Pattern, Domain Model | Foundational patterns for separating business logic from infrastructure |
+| **Vernon, V.** | 2013 | Implementing Domain-Driven Design | CQRS, Event Sourcing, Bounded Contexts | Chapter 8-9 guide MPC wallet service structuring |
+| **Kleppmann, M.** | 2017 | Designing Data-Intensive Applications | Distributed Systems, Consistency Models, Stream Processing | Chapter 11-12 cover event-driven architectures with quantitative analysis |
+| **Richardson, C.** | 2018 | Microservices Patterns | Circuit Breaker, Saga, API Gateway, Event Sourcing | Chapter 6-7 directly applicable to wallet transaction history |
+
+**Detailed Descriptions:**
 
 **L1. Fowler, M. (2002). *Patterns of Enterprise Application Architecture*. Addison-Wesley.** – Foundational text on software architecture patterns including hexagonal architecture principles, CQRS precursors, and domain model design. While predating blockchain, principles directly apply to wallet architecture design. Defines patterns like Repository, Unit of Work, and Domain Model essential for separating business logic from infrastructure.
 

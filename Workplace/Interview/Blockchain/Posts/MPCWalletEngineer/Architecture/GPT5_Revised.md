@@ -4,6 +4,17 @@
 ### Architecture Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "MPC Wallet Core System"
         T1[Topic 1: Hexagonal Architecture<br/>Core Structure & Boundaries]
@@ -19,11 +30,11 @@ graph TB
         T4 -.->|stores sessions from| T1
     end
     
-    style T1 fill:#e1f5ff,stroke:#333,stroke-width:2px
-    style T2 fill:#e1f5ff,stroke:#333,stroke-width:2px
-    style T3 fill:#fff4e1,stroke:#333,stroke-width:2px
-    style T4 fill:#e1f5ff,stroke:#333,stroke-width:2px
-    style T5 fill:#e1f5ff,stroke:#333,stroke-width:2px
+    style T1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T3 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style T4 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T5 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Topic Areas
@@ -40,19 +51,20 @@ graph TB
 ### Priority-Difficulty Matrix
 
 ```mermaid
+%%{init: {"theme": "default"}}%%
 quadrantChart
-    title Topic Priority vs. Difficulty
+    title Topic Priority vs Difficulty
     x-axis Low Difficulty --> High Difficulty
     y-axis Important --> Critical
     quadrant-1 Critical & Complex
     quadrant-2 Critical & Moderate
     quadrant-3 Important & Moderate
     quadrant-4 Important & Complex
-    Topic 1 (Hexagonal): [0.8, 0.9]
-    Topic 2 (Sagas): [0.6, 0.9]
-    Topic 3 (Rate Limiting): [0.3, 0.5]
-    Topic 4 (CQRS+ES): [0.8, 0.9]
-    Topic 5 (gRPC): [0.6, 0.9]
+    "Topic 1 Hexagonal": [0.8, 0.9]
+    "Topic 2 Sagas": [0.6, 0.9]
+    "Topic 3 Rate Limiting": [0.3, 0.5]
+    "Topic 4 CQRS ES": [0.8, 0.9]
+    "Topic 5 gRPC": [0.6, 0.9]
 ```
 
 ---
@@ -60,6 +72,19 @@ quadrantChart
 ### System Component Interaction Map
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 flowchart TB
     subgraph Client["Client Layer"]
         Web[Web Browser]
@@ -111,12 +136,24 @@ flowchart TB
     SignSvc --> ES --> EventBus --> Projections
     Projections --> REST & GRPC
     
-    style Client fill:#f9f9f9,stroke:#333,stroke-width:1px
-    style API fill:#e1f5ff,stroke:#333,stroke-width:2px
-    style Core fill:#ffe1e1,stroke:#333,stroke-width:2px
-    style Orchestration fill:#e1ffe1,stroke:#333,stroke-width:2px
-    style Data fill:#fff4e1,stroke:#333,stroke-width:2px
-    style Adapters fill:#f0e1ff,stroke:#333,stroke-width:2px
+    style Web fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Mobile fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Backend fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style RL fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style REST fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style GRPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Encrypt fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style SignPort fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style TxPort fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SignSvc fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Saga fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style CB fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style ES fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Projections fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style EventBus fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style EVM fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SOL fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -128,6 +165,15 @@ Overview: Decompose MPC wallet services (keygen, shard management, signing, reco
 
 **Key Benefits Visualization:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 mindmap
   root((Hexagonal<br/>Architecture))
     Testability
@@ -199,6 +245,17 @@ func (s *SignService) Finalize(id string, parts [][]byte)([]byte,error){ return 
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart LR
   Inbound[HTTP/gRPC/SDK] -->|commands| App(Use Cases)
   App -->|SignPort| SignSvc
@@ -208,6 +265,16 @@ flowchart LR
   ChainPort --> SOL[SOL Adapter]
   SignSvc --> MPC[MPC Lib]
   SignSvc --> Store[(Persistence)]
+  
+  style Inbound fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style App fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style SignSvc fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style ChainPort fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style EVM fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style BTC fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style SOL fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style MPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style Store fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 Metrics:
@@ -235,6 +302,15 @@ Overview: Multi-chain transfer requires orchestrating MPC signing, nonce managem
 
 **Saga State Machine:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 stateDiagram-v2
     [*] --> BuildTx: Start Batch
     BuildTx --> MPCSession: Tx Built
@@ -265,6 +341,15 @@ stateDiagram-v2
 
 **Circuit Breaker State Transitions:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: failures >= threshold (5)
@@ -333,6 +418,20 @@ async function saga(steps:Step[], compensate:Step[]){
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#8897a8",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
   participant C as Client
   participant O as Orchestrator
@@ -372,6 +471,15 @@ Overview: Mobile/Web signing endpoints require p99 latency control under bursts 
 
 **Token Bucket Algorithm Flow:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart TD
     Start([Request Arrives]) --> CheckDevice{Device ID<br/>Exists?}
     CheckDevice -->|No| CreateBucket[Create New Bucket<br/>rate=10 rps, burst=20]
@@ -387,13 +495,36 @@ flowchart TD
     Process --> End([Response])
     Reject --> End
     
-    style Consume fill:#90EE90
-    style Reject fill:#FFB6C6
-    style Encrypt fill:#FFE4B5
+    style Start fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style CheckDevice fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CreateBucket fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style LoadBucket fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Refill fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Cap fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style HasToken fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Consume fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Reject fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style Encrypt fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Process fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style End fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 **Encryption Pipeline:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#8897a8",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     participant C as Client
     participant G as Gateway
@@ -424,6 +555,18 @@ sequenceDiagram
 
 **Performance Impact Breakdown:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "pie1": "#eff6fb",
+    "pie2": "#f1f8f4",
+    "pie3": "#faf6f0",
+    "pie4": "#f3f5f7",
+    "pie5": "#f8f9fa"
+  }
+}}%%
 pie title Latency Components (p95 < 120ms target)
     "MPC Signing Core" : 70
     "Network I/O" : 15
@@ -473,11 +616,26 @@ func EncryptGCM(key, nonce, plain []byte)([]byte,error){
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart LR
-  Client --> Edge[Edge Gateway]
-  Edge -->|Allow()| SignAPI
+  Client[Client] --> Edge[Edge Gateway]
+  Edge -->|Allow| SignAPI[Sign API]
   SignAPI --> Crypto[AES-GCM]
   Crypto --> Store[(Encrypted Blob)]
+  
+  style Client fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style Edge fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style SignAPI fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style Crypto fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+  style Store fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 Metrics:
@@ -504,10 +662,27 @@ Overview: Separate write (commands/events) from read (projections) to scale read
 
 **CQRS Visualization:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart LR
     Write[Write Client] --> CMD[Command Handler] --> ES[(Event Store)]
     ES --> EB[Event Bus] --> PROJ[(Projections)]
     PROJ --> QUERY[Query API] --> Read[Read Client]
+    
+    style Write fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CMD fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style ES fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style EB fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style PROJ fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style QUERY fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Read fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 #### Q4: When should you use CQRS + Event Sourcing for an MPC wallet, and how do you translate to code?
@@ -562,11 +737,26 @@ for ev in es.stream(): pr.apply(ev)
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart LR
   Cmd[Command API] --> ES[(Event Store)]
   ES --> Proj[Projector Workers]
   Proj --> Read[(Read Models)]
   Read --> Query[Query API]
+  
+  style Cmd fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style ES fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+  style Proj fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style Read fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style Query fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 Metrics:
@@ -593,6 +783,17 @@ Overview: Choose transport for SDKs (mobile/web/backend) interacting with wallet
 
 **Hybrid Protocol Architecture:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 flowchart TB
     subgraph Clients
         Web[Web Browser<br/>REST/JSON]
@@ -616,11 +817,13 @@ flowchart TB
     Mobile --> GRPC
     Backend --> GRPC
     
-    style Web fill:#FFE4E1
-    style Mobile fill:#E1FFE4
-    style Backend fill:#E1FFE4
-    style Partner fill:#FFE4E1
-    style GRPC fill:#E1E4FF
+    style Web fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Mobile fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Backend fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Partner fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style REST fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Transcode fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style GRPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Protocol Comparison:**
@@ -681,11 +884,26 @@ func (s *server) Finalize(ctx context.Context, req *wallet.FinalizeReq)(*wallet.
 
 Diagram:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
 flowchart LR
   Web --> REST[REST Gateway]
   REST --> GRPC[gRPC Service]
   Mobile --> GRPC
   Backend --> GRPC
+  
+  style Web fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+  style REST fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style GRPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style Mobile fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+  style Backend fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 Metrics:
@@ -718,6 +936,15 @@ Sources: [0][4][2]
 
 **Implementation Roadmap:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "gridColor": "#8897a8"
+  }
+}}%%
 gantt
     title MPC Wallet Architecture Implementation Timeline
     dateFormat YYYY-MM
@@ -745,6 +972,20 @@ gantt
 
 **Pattern Integration Flow:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#8897a8",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     autonumber
     participant C as Client (Topic 5)
@@ -759,7 +1000,7 @@ sequenceDiagram
     RL->>H: Forward to core (if allowed)
     H->>S: Orchestrate signing
     
-    rect rgb(230, 245, 255)
+    rect rgb(239, 246, 251)
         Note over S,CH: Saga Execution
         S->>H: Build unsigned tx
         S->>H: MPC partial sign

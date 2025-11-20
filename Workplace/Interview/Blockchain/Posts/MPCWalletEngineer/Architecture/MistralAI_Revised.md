@@ -21,6 +21,17 @@ Advanced:        [██████    ] 60% (Q2, Q3, Q5)
 
 **Q&A Coverage Matrix:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Architecture Dimensions] --> B[Q1: Structural<br/>Hexagonal Ports/Adapters]
     A --> C[Q2: Behavioral<br/>Saga Patterns]
@@ -28,11 +39,12 @@ graph LR
     A --> E[Q4: Data<br/>CQRS Event Sourcing]
     A --> F[Q5: Integration<br/>Cross-Chain Compatibility]
     
-    style B fill:#4CAF50
-    style C fill:#FF9800
-    style D fill:#FF9800
-    style E fill:#4CAF50
-    style F fill:#FF9800
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -40,6 +52,17 @@ graph LR
 ## Architecture Patterns Overview
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 flowchart TD
     A[MPC/TSS Architecture] --> B[Structural Layer]
     A --> C[Behavioral Layer]
@@ -53,11 +76,17 @@ flowchart TD
     E --> E1[CQRS + Event Sourcing<br/>Consistency & Recovery]
     F --> F1[Cross-Chain Support<br/>EVM & Solana]
     
-    style B1 fill:#E3F2FD
-    style C1 fill:#FFF3E0
-    style D1 fill:#FCE4EC
-    style E1 fill:#F3E5F5
-    style F1 fill:#E8F5E9
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ## Table of Contents
@@ -130,11 +159,28 @@ fn main() {
 
 **Diagram:**  
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Core MPC Logic] -->|Port| B[Ethereum Adapter]
     A -->|Port| C[Solana Adapter]
     B -->|Blockchain| D[Ethereum Network]
     C -->|Blockchain| E[Solana Network]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Citations:**  
@@ -205,6 +251,22 @@ func main() {
 
 **Diagram:**  
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "activationBkgColor": "#eff6fb",
+    "activationBorderColor": "#7a9fc5"
+  }
+}}%%
 sequenceDiagram
     participant A as Alice
     participant B as Bob
@@ -280,11 +342,27 @@ fn optimize_gg20_rounds(
 
 **Diagram:**  
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Mobile Wallet] -->|GG20: 5 rounds| B[MPC Node 1]
     A -->|FROST: 2 rounds| C[MPC Node 2]
     B -->|Signature Share| D[Blockchain]
     C -->|Signature Share| D
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Citations:**  
@@ -356,10 +434,26 @@ func (es *EventStore) RebuildState() map[string][]byte {
 
 **Diagram:**  
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Key Share Update] -->|Command| B[Event Store]
     B -->|Event| C[Key Share State]
     C -->|Query| D[Wallet SDK]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 **Citations:**  
@@ -426,11 +520,28 @@ fn sign_transaction(validator: &dyn TransactionValidator, payload: &[u8]) -> Res
 
 **Diagram:**  
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[MPC Wallet Core] -->|Validate| B[EVM Validator]
     A -->|Validate| C[Solana Validator]
     B -->|Sign| D[EVM Transaction]
     C -->|Sign| E[Solana Transaction]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Citations:**  
@@ -444,11 +555,26 @@ graph TD
 
 **Performance vs Security Trade-off Space:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "quadrant1Fill": "#f1f8f4",
+    "quadrant2Fill": "#eff6fb",
+    "quadrant3Fill": "#faf4f4",
+    "quadrant4Fill": "#faf6f0"
+  }
+}}%%
 quadrantChart
     title MPC Architecture Design Trade-offs
     x-axis Low Latency --> High Latency
     y-axis Low Security --> High Security
-    quadrant-1 Optimal Zone (High Security, Low Latency)
+    quadrant-1 Optimal Zone
     quadrant-2 Security First
     quadrant-3 Legacy Systems
     quadrant-4 Performance First
@@ -474,6 +600,17 @@ quadrantChart
 
 **GG20 vs. FROST Quick Reference:**
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[TSS Protocol Selection] --> B{Latency Critical?}
     B -->|Yes| C[FROST<br/>120ms p90<br/>2+1 rounds]
@@ -481,8 +618,11 @@ graph TD
     D -->|Yes| E[GG20<br/>300ms p90<br/>5 rounds<br/>Simpler to audit]
     D -->|No| C
     
-    style C fill:#4CAF50
-    style E fill:#2196F3
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Performance Comparison Table:**

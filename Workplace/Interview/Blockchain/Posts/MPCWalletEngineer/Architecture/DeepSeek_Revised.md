@@ -19,14 +19,34 @@
 **Problem**: MPC wallet systems require balancing cryptographic security, operational performance, fault tolerance, and multi-chain compatibility. Engineers must design architectures that handle distributed key management, threshold signing ceremonies, and chain-specific optimizations while maintaining ≥99.9% availability and sub-100ms signing latency.
 
 **Scope**: 
-- **Covered**: Structural design patterns (hexagonal architecture, CQRS), behavioral orchestration (saga pattern, state machines), performance optimization (precomputation, batching), data persistence (multi-layer encryption, geographic distribution), multi-chain abstraction (strategy pattern, circuit breakers)
-- **Not Covered**: Smart contract integration, regulatory compliance details, specific HSM vendor implementations, deployment infrastructure
+
+**Covered**:
+- **Structural**: Hexagonal architecture, CQRS pattern
+- **Behavioral**: Saga pattern, state machines, ceremony orchestration
+- **Performance**: Precomputation, batching, hardware acceleration
+- **Data**: Multi-layer encryption, geographic distribution, recovery mechanisms
+- **Integration**: Multi-chain abstraction, strategy pattern, circuit breakers
+
+**Not Covered**:
+- Smart contract integration
+- Regulatory compliance details
+- Specific HSM vendor implementations
+- Deployment infrastructure
 
 **Constraints**:
-- **Security**: ≥128-bit cryptographic strength, protection against malicious participants
-- **Performance**: Sub-100ms signing latency for 3 participants, ≥1000 TPS for batch operations
-- **Availability**: 99.99% uptime, RTO <15 minutes, RPO 0
-- **Compatibility**: Support for Ethereum (EIP-1559), Bitcoin (SegWit), Solana (Versioned Transactions)
+
+| Category | Requirement | Target Value |
+|----------|-------------|--------------|
+| **Security** | Cryptographic strength | ≥128-bit |
+| | Byzantine protection | Protection against malicious participants |
+| **Performance** | Signing latency | <100ms (3 participants) |
+| | Throughput | ≥1000 TPS (batch operations) |
+| **Availability** | Uptime | 99.99% |
+| | Recovery Time Objective (RTO) | <15 minutes |
+| | Recovery Point Objective (RPO) | 0 (no data loss) |
+| **Compatibility** | Ethereum | EIP-1559 support |
+| | Bitcoin | SegWit support |
+| | Solana | Versioned Transactions support |
 
 **Assumptions**:
 - Reader has foundational knowledge of blockchain technology, cryptographic primitives (ECDSA, EdDSA), and distributed systems
@@ -40,12 +60,28 @@
 
 **Stakeholders**:
 - **Primary**: Backend engineers implementing MPC wallet core
-- **Secondary**: Security auditors reviewing cryptographic implementations, DevOps teams deploying infrastructure, Frontend teams integrating APIs
+- **Secondary**: 
+  - Security auditors reviewing cryptographic implementations
+  - DevOps teams deploying infrastructure
+  - Frontend teams integrating APIs
 
 **Resources**: Assumes access to open-source MPC libraries (TSS-Lib, GG20 implementations), blockchain SDKs (Web3.js, ethers.js, Bitcoin Core RPC), and cloud infrastructure for geographic distribution.
 
 **Context Overview Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph LR
     subgraph Security Requirements
         S1[≥128-bit strength]
@@ -72,7 +108,30 @@ graph LR
     ARCH --> C1
     ARCH --> C2
     ARCH --> C3
+    
+    style S1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P3 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style ARCH fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
+
+---
+
+> **Key Architectural Principles**
+>
+> This document covers **5 critical architectural dimensions** for MPC wallet systems:
+> 1. **Modular Design** - Hexagonal architecture for protocol flexibility
+> 2. **Fault Tolerance** - Saga patterns for ceremony orchestration
+> 3. **Performance** - Precomputation and batching for sub-100ms latency
+> 4. **Data Resilience** - Multi-layer encryption with geographic distribution
+> 5. **Multi-Chain Support** - Strategy pattern for chain abstraction
+>
+> **Target Metrics**: <100ms signing latency, ≥97% ceremony success rate, 99.99% availability, -70% integration complexity
 
 ---
 
@@ -98,8 +157,62 @@ graph LR
 
 **Difficulty Legend**: F = Foundational, I = Intermediate, A = Advanced
 
+---
+
+**Topic Dependency Flow**:
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    T1[Topic 1<br/>Modular Architecture<br/>CRITICAL]
+    T2[Topic 2<br/>Ceremony Orchestration<br/>CRITICAL]
+    T3[Topic 3<br/>Performance Optimization<br/>IMPORTANT]
+    T4[Topic 4<br/>Key Shard Persistence<br/>CRITICAL]
+    T5[Topic 5<br/>Multi-Chain Abstraction<br/>IMPORTANT]
+    
+    T1 --> T2
+    T1 --> T4
+    T1 --> T5
+    T2 --> T3
+    T4 --> T2
+    
+    style T1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:3px,color:#1a1a1a
+    style T2 fill:#faf4f4,stroke:#a87a7a,stroke-width:3px,color:#1a1a1a
+    style T3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T4 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:3px,color:#1a1a1a
+    style T5 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
+**Legend**:
+- **Bold borders (CRITICAL)**: Foundational topics that must be implemented first
+- **Regular borders (IMPORTANT)**: Enhancement topics that improve system capabilities
+- **Arrows**: Dependency relationships (prerequisite → dependent)
+
+---
+
 **Implementation Timeline Overview**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 gantt
     title MPC Wallet Architecture Implementation Timeline
     dateFormat  YYYY-MM-DD
@@ -199,6 +312,17 @@ func (m *MPCSigningCoordinator) GenerateSignature(
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     APP[Application Layer] --> |Uses| DOM[Domain Layer]
     DOM --> |Defines| KM[KeyManager Interface]
@@ -209,14 +333,24 @@ graph TB
     SC --> |Uses| PROTO[SigningProtocol Interface]
     GG20 --> |Implements| PROTO
     FROST --> |Implements| PROTO
+    
+    style APP fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style DOM fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style INF fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style KM fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style GG20 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style FROST fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style COMM fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style PROTO fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Signing Latency | T = T_init + (n_rounds × T_round) + T_finalize | n_rounds = protocol rounds, T_round = round processing time | < 100ms for 3 participants |
-| Security Audit Coverage | Coverage = (Audited_modules / Total_modules) × 100% | | ≥ 90% cryptographic modules |
+| Signing Latency | $T = T_{init} + (n_{rounds} \times T_{round}) + T_{finalize}$ | $n_{rounds}$ = protocol rounds<br/>$T_{round}$ = round processing time | < 100ms for 3 participants |
+| Security Audit Coverage | $Coverage = \frac{Audited_{modules}}{Total_{modules}} \times 100\%$ | | ≥ 90% cryptographic modules |
 
 **Trade-offs**:
 
@@ -247,6 +381,17 @@ graph TB
 
 **Ceremony State Machine Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 stateDiagram-v2
     [*] --> INITIALIZED: Start Ceremony
     INITIALIZED --> ROUND_ACTIVE: Begin Round
@@ -316,8 +461,8 @@ impl SigningCeremonySaga {
 
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Ceremony Success Rate | Success_rate = (Successful_ceremonies / Total_ceremonies) × 100% | | ≥ 97% |
-| Participant Dropout Recovery | Recovery_rate = (Recovered_dropouts / Total_dropouts) × 100% | | ≥ 90% |
+| Ceremony Success Rate | $Success_{rate} = \frac{Successful_{ceremonies}}{Total_{ceremonies}} \times 100\%$ | | ≥ 97% |
+| Participant Dropout Recovery | $Recovery_{rate} = \frac{Recovered_{dropouts}}{Total_{dropouts}} \times 100\%$ | | ≥ 90% |
 
 **Trade-offs**:
 
@@ -348,6 +493,17 @@ impl SigningCeremonySaga {
 
 **Performance Optimization Flow**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     IDLE[Device Idle] --> PRECOMP[Precompute Nonces]
     PRECOMP --> CACHE[Secure Cache<br/>2-3MB Storage]
@@ -371,6 +527,23 @@ graph TB
     
     RESULT --> HW[Hardware Acceleration<br/>iOS/Android]
     HW --> FINAL[Final Signature]
+    
+    style IDLE fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style PRECOMP fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CACHE fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style TX1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style TX2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style TX3 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style BATCH fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style OPT fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style SINGLE fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style MULTI fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SIGN fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style MPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SIGS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style RESULT fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style HW fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style FINAL fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Implementation** (C++):
@@ -428,8 +601,8 @@ public:
 
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Signing Latency | T_sign = T_precomputed + T_crypto + T_network | T_precomputed = 0 if cached | < 100ms mobile |
-| Throughput | Transactions/sec = Batch_size / T_batch | Batch_size = 5-50 transactions | > 1000 TPS |
+| Signing Latency | $T_{sign} = T_{precomputed} + T_{crypto} + T_{network}$ | $T_{precomputed} = 0$ if cached | < 100ms mobile |
+| Throughput | $TPS = \frac{Batch_{size}}{T_{batch}}$ | $Batch_{size}$ = 5-50 transactions | > 1000 TPS |
 
 **Trade-offs**:
 
@@ -460,6 +633,19 @@ public:
 
 **CQRS Architecture & Multi-Layer Encryption**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8"
+  }
+}}%%
 graph TB
     subgraph Write Path - Commands
         WRITE[Store Key Shard] --> ENC1[Layer 1: Shard Key<br/>AES-GCM]
@@ -486,6 +672,21 @@ graph TB
     
     HSM[Hardware Security Module] --> ENC2
     HSM --> DEC2
+    
+    style WRITE fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style ENC1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style ENC2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style DIST fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style R1 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R2 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R3 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style CMD fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style READ fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style QUERY fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style DEC2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style DEC1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SHARD fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style HSM fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
 ```
 
 **Encryption Layers Visualization**:
@@ -568,8 +769,8 @@ func (m *MultiLayerEncryptor) Encrypt(shard *KeyShard) (*EncryptedShard, error) 
 
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Availability | Uptime = (Total_time - Downtime) / Total_time × 100% | | ≥ 99.99% |
-| Recovery Time | RTO = Time_from_failure_to_fully_operational | | < 15 minutes |
+| Availability | $Uptime = \frac{Total_{time} - Downtime}{Total_{time}} \times 100\%$ | | ≥ 99.99% |
+| Recovery Time | $RTO = Time_{failure \to operational}$ | | < 15 minutes |
 
 **Trade-offs**:
 
@@ -696,6 +897,17 @@ class EthereumAdapter implements BlockchainAdapter {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     API[Unified API Layer] --> |Uses| ETH[Ethereum Adapter]
     API --> |Uses| BTC[Bitcoin Adapter]
@@ -709,14 +921,24 @@ graph TB
     ETH --> |Uses| EIP1559[EIP-1559 Fee Market]
     BTC --> |Uses| SEGWIT[SegWit Transaction]
     SOL --> |Uses| V0[Versioned Transactions]
+    
+    style API fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style ETH fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SOL fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style CB fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style BCI fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style EIP1559 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style SEGWIT fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style V0 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Integration Complexity | Complexity = ∑(Features_i × Chains_i) | | Reduce by 70% |
-| Chain Addition Time | T_add = Time_to_integrate_new_chain | | < 2 developer-weeks |
+| Integration Complexity | $Complexity = \sum(Features_i \times Chains_i)$ | Before abstraction: $O(n \times m)$<br/>After abstraction: $O(n + m)$ | Reduce by 70% |
+| Chain Addition Time | $T_{add} = Time_{integrate\_new\_chain}$ | | < 2 developer-weeks |
 
 **Trade-offs**:
 
@@ -743,6 +965,17 @@ graph TB
 
 **Concept Relationships**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     MPC[G1: MPC] --> TSS[G2: Threshold Signature]
     MPC --> SHARD[G3: Cryptographic Shard]
@@ -757,11 +990,15 @@ graph TD
     SHARD --> PERSIST[Key Persistence]
     CEREMONY --> STATE[State Machine]
     
-    style MPC fill:#e1f5ff
-    style TSS fill:#e1f5ff
-    style SHARD fill:#e1f5ff
-    style CEREMONY fill:#ffe1e1
-    style HEX fill:#e1ffe1
+    style MPC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style TSS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SHARD fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style CEREMONY fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style HEX fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style APP fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style ECDSA fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style PERSIST fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style STATE fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
 ```
 
 ### Tools (≥3)
@@ -813,32 +1050,65 @@ graph TD
 
 | Topic | Metric | Before Optimization | After Optimization | Improvement |
 |-------|--------|---------------------|-------------------|-------------|
-| Modular Architecture | Security Review Cycles | Baseline | 40-60% faster | +50% avg |
-| Ceremony Orchestration | Ceremony Failure Rate | 15% | 2-3% | -85% |
-| Performance Optimization | Signing Latency (Mobile) | 200ms | 80-120ms | -60% |
-| Key Shard Persistence | System Availability | Baseline | 99.99% | +99.99% |
-| Multi-Chain Abstraction | Integration Complexity | O(n×m) | O(n+m) | -70% |
+| Modular Architecture | Security Review Cycles | Baseline | 40-60% faster | **+50% avg** |
+| Ceremony Orchestration | Ceremony Failure Rate | 15% | 2-3% | **-85%** |
+| Performance Optimization | Signing Latency (Mobile) | 200ms | 80-120ms | **-60%** |
+| Key Shard Persistence | System Availability | Baseline | 99.99% | **+99.99%** |
+| Multi-Chain Abstraction | Integration Complexity | $O(n \times m)$ | $O(n + m)$ | **-70%** |
+
+**Key Improvements Visualization**:
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+xychart-beta
+    title "Performance Improvement Impact (%)"
+    x-axis [Architecture, Ceremony, Performance, Persistence, Multi-Chain]
+    y-axis "Improvement %" 0 --> 100
+    bar [50, 85, 60, 99, 70]
+```
 
 **Implementation Complexity vs Impact Matrix**:
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+quadrantChart
+    title Complexity vs Impact Analysis
+    x-axis Low Complexity --> High Complexity
+    y-axis Low Impact --> High Impact
+    Topic 2 Ceremony: [0.75, 0.95]
+    Topic 4 Persistence: [0.45, 0.70]
+    Topic 5 Multi-Chain: [0.70, 0.65]
+    Topic 1 Architecture: [0.35, 0.45]
+    Topic 3 Performance: [0.75, 0.40]
 ```
-High Impact │     ┌───────────────┐
-            │     │ Topic 2       │
-            │     │ Ceremony      │
-            │     │ Orchestration │
-            │     └───────────────┘
-            │ ┌───────────────┐   ┌───────────────┐
-            │ │ Topic 4       │   │ Topic 5       │
-            │ │ Key Shard     │   │ Multi-Chain   │
-            │ │ Persistence   │   │ Abstraction   │
-            │ └───────────────┘   └───────────────┘
-            │ ┌───────────────┐
-            │ │ Topic 1       │   ┌───────────────┐
-            │ │ Modular       │   │ Topic 3       │
-Low Impact  │ │ Architecture  │   │ Performance   │
-            │ └───────────────┘   └───────────────┘
-            └─────────────────────────────────────
-             Low Complexity      High Complexity
-```
+
+**Matrix Interpretation**:
+- **Top-Right (High Impact, High Complexity)**: Topic 2 (Ceremony), Topic 3 (Performance) - critical but resource-intensive
+- **Top-Left (High Impact, Low Complexity)**: Topic 4 (Persistence) - highest ROI implementations
+- **Bottom-Right (Low Impact, High Complexity)**: Topic 5 (Multi-Chain) - consider carefully before investing
+- **Bottom-Left (Low Impact, Low Complexity)**: Topic 1 (Architecture) - foundational but straightforward
+
+---
 
 This architecture-focused Q&A set addresses the blockchain security and MPC wallet development requirements while maintaining the specified content quality standards. The questions progress from foundational to advanced concepts, covering structural decomposition, behavioral orchestration, performance optimization, data persistence, and multi-chain integration - all critical dimensions for the target role.
 

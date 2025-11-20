@@ -3,13 +3,26 @@
 **Problem**: Candidates struggle translating MPC architecture concepts to practical code for blockchain wallets, reducing hiring quality due to security risks and performance issues (↓30-40%).
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Problem:<br/>Theory-Code Gap] --> B[Solution:<br/>5 Q&A Framework]
     B --> C[Target:<br/>Senior MPC Engineers]
     C --> D[Outcome:<br/>Better Hiring Quality]
     
-    style A fill:#ffcccc
-    style D fill:#ccffcc
+    style A fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Scope**: 5 Q&A pairs for senior MPC Wallet Engineer roles (5-15 years experience), MPC architecture-to-code translation for multi-chain wallets.
@@ -20,9 +33,9 @@ graph LR
 - **Code Samples**: 10-30 lines
 
 **Assumptions**: 
-- ✓ Familiarity with MPC
-- ✓ Cryptography fundamentals
-- ✓ Blockchain transaction flows
+- **MPC Familiarity**: Candidates understand multi-party computation concepts
+- **Cryptography Fundamentals**: Knowledge of ECDSA, EdDSA, encryption schemes
+- **Blockchain Transaction Flows**: Experience with signing, broadcasting, and confirmation
 
 **Scale**: 
 - **Candidates**: 1-5 per session
@@ -33,10 +46,10 @@ graph LR
 - **Availability**: Immediate use
 
 **Stakeholders**: 
-- 👔 Hiring managers
-- 🔧 Senior engineers
-- 🔐 Security architects
-- ⛓️ Blockchain developers
+- **Hiring Managers**: Interview design and candidate evaluation
+- **Senior Engineers**: Technical depth validation
+- **Security Architects**: Cryptographic implementation review
+- **Blockchain Developers**: Multi-chain integration assessment
 
 **Output**: 5 Q&As across 5 dimensions with code, quantified trade-offs, ≥2 alternatives, ≥1 citation each.
 
@@ -97,9 +110,72 @@ graph LR
 | Integration | 1 | F |
 [5 total]
 
-**Difficulty Legend**: I = Intermediate, A = Advanced, F = Foundational
+**Difficulty Legend**: 
+- **F (Foundational)**: Core building blocks, essential knowledge
+- **I (Intermediate)**: Complex integration, requires experience
+- **A (Advanced)**: Cutting-edge optimization, expert-level
 
+**Complete MPC Wallet Architecture Flow**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TB
+    subgraph "1. Key Architecture"
+        KA[MPC Key Generation<br/>Shamir Secret Sharing]
+    end
+    
+    subgraph "4. Persistence Layer"
+        PS[CQRS Storage<br/>AES-256 Encryption]
+    end
+    
+    subgraph "2. Signing Protocol"
+        TS[Threshold Signing<br/>Saga Pattern]
+    end
+    
+    subgraph "3. Optimization"
+        OPT[Pre-computation Cache<br/>Performance Tuning]
+    end
+    
+    subgraph "5. Multi-Chain"
+        MC[Cross-Chain API<br/>ETH/BTC/SOL]
+    end
+    
+    KA -->|Key Shares| PS
+    PS -->|Load Shares| TS
+    TS -->|Performance| OPT
+    OPT -->|Fast Signing| MC
+    MC -->|Blockchain Tx| CHAIN[Live Networks]
+    
+    style KA fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style PS fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style TS fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style OPT fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style MC fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style CHAIN fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+```
+
+**Topic Dependency Graph**:
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
     subgraph "MPC Wallet Architecture Stack"
         T1[Topic 1: MPC Key Architecture<br/>Structural - I]
@@ -116,11 +192,11 @@ graph TB
     T4 --> T2
     T3 --> T5
     
-    style T1 fill:#e1f5ff
-    style T2 fill:#fff4e1
-    style T3 fill:#fff4e1
-    style T4 fill:#e1f5ff
-    style T5 fill:#e8f5e9
+    style T1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T2 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style T3 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style T4 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style T5 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ---
@@ -138,19 +214,43 @@ graph TB
 
 **Key Insight**: Modular design reduces coupling by 40%, enabling 2x faster protocol swaps. [Estimated]
 
-**Answer**: In MPC wallets, key generation involves distributed computation to create shares without exposing the full private key. Use a layered architecture: Core layer for cryptographic primitives (ECDSA keygen), Protocol layer for MPC algorithms (GG18/GG20), and API layer for integration. Implement key sharding using Shamir's Secret Sharing, distributing shares across parties. Ensure modularity with traits for pluggable protocols, allowing upgrades without refactoring. Trade-offs include complexity vs. security: monolithic code is simpler but less flexible for multi-protocol support. Quantified: GG18 setup time ~5s for 3 parties vs. 2s for optimized modular design [Estimated]. [Gennaro & Goldfeder, 2018]
+**Answer**: 
+
+In MPC wallets, **key generation** involves distributed computation to create shares without exposing the full private key. 
+
+**Architecture Layers**:
+- **Core Layer**: Cryptographic primitives (ECDSA keygen)
+- **Protocol Layer**: MPC algorithms (GG18/GG20)
+- **API Layer**: Wallet integration interface
+
+**Key Sharding**: Implement using **Shamir's Secret Sharing**, distributing shares across parties. Ensure modularity with **traits** for pluggable protocols, allowing protocol upgrades without refactoring. 
+
+**Trade-offs**: Complexity vs. security - monolithic code is simpler but less flexible for multi-protocol support. 
+
+**Quantified Performance**: GG18 setup time ~5s for 3 parties vs. 2s for optimized modular design [Estimated]. [Gennaro & Goldfeder, 2018]
 
 **Shamir's Secret Sharing Visual**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
-    subgraph "Secret Sharing (t=2, n=3)"
-        PK[Private Key<br/>256 bits] --> P[Polynomial<br/>f(x) = s + a₁x]
-        P --> S1[Share 1<br/>f(1)]
-        P --> S2[Share 2<br/>f(2)]
-        P --> S3[Share 3<br/>f(3)]
+    subgraph "Secret Sharing t=2 n=3"
+        PK[Private Key<br/>256 bits] --> P["Polynomial<br/>Degree t-1"]
+        P --> S1[Share 1<br/>Point 1]
+        P --> S2[Share 2<br/>Point 2]
+        P --> S3[Share 3<br/>Point 3]
     end
     
-    subgraph "Reconstruction (≥2 shares)"
+    subgraph "Reconstruction min 2 shares"
         S1R[Share 1] --> R[Lagrange<br/>Interpolation]
         S2R[Share 2] --> R
         R --> PKR[Private Key<br/>Recovered]
@@ -159,8 +259,16 @@ graph LR
     S1 -.-> S1R
     S2 -.-> S2R
     
-    style PK fill:#ffcccc
-    style PKR fill:#ccffcc
+    style P fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style S2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style S3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style S1R fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style S2R fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style R fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    
+    style PK fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style PKR fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Implementation** (Rust):
@@ -197,29 +305,46 @@ impl MPCKeyGen for ShamirShard {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[API Layer] --> B[Protocol Layer]
     B --> C[Core Layer]
     C --> D[ECDSA Primitives]
     B --> E[GG18/GG20 Protocols]
     A --> F[Wallet Integration]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style E fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style F fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Key Gen Time | time = parties * (threshold * 100ms) | parties=3, threshold=2 | <2s |
-| Shard Size | size = key_size / threshold | key_size=256bit, threshold=2 | 128bit |
+| Key Gen Time | $t = n \times (k \times 100\text{ms})$ | $n=3$ parties, $k=2$ threshold | <2s |
+| Shard Size | $s = \frac{b}{k}$ | $b=256\text{bit}$ key size, $k=2$ threshold | 128bit |
 
 **Calculation Example**:
-```
-Key Gen Time = 3 parties × (2 threshold × 100ms)
-             = 3 × 200ms
-             = 600ms ✓ (< 2s target)
+$$
+\text{Key Gen Time} = 3 \text{ parties} \times (2 \text{ threshold} \times 100\text{ms}) = 3 \times 200\text{ms} = 600\text{ms} \,\checkmark
+$$
 
-Shard Size = 256 bits ÷ 2 threshold
-           = 128 bits per shard
-```
+$$
+\text{Shard Size} = \frac{256 \text{ bits}}{2 \text{ threshold}} = 128 \text{ bits per shard}
+$$
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -242,7 +367,25 @@ Shard Size = 256 bits ÷ 2 threshold
 
 **Key Insight**: Threshold signing reduces single-party risk by 80%, but adds 50ms latency per round. [Estimated]
 
-**Answer**: Use saga pattern for distributed signing: Initiate signing request, broadcast to parties, collect partial signatures, combine into final signature. For GG20, involve 2 rounds of communication. Handle failures with timeouts and retries. Ensure atomicity across parties using commitment schemes. Trade-offs: Synchronous vs. asynchronous - sync ensures consistency but blocks on slow parties; async improves availability but risks inconsistency. Quantified: GG20 signing latency 200ms for 3 parties vs. 500ms with retries [Estimated]. Advanced: Integrate recovery for offline parties using pre-signed shares. [Boneh & Shoup, 2020]
+**Answer**: 
+
+Use **saga pattern** for distributed signing workflow:
+
+**Signing Protocol Steps**:
+1. **Initiate**: Signing request broadcast
+2. **Commit**: Parties compute commitments (Round 1)
+3. **Sign**: Collect partial signatures (Round 2)
+4. **Combine**: Aggregate into final signature
+
+**Failure Handling**: Implement timeouts and retries with exponential backoff. Ensure **atomicity** across parties using **commitment schemes**.
+
+**Trade-offs**: 
+- **Synchronous**: Ensures consistency but blocks on slow parties
+- **Asynchronous**: Improves availability but risks inconsistency
+
+**Quantified Performance**: GG20 signing latency 200ms for 3 parties vs. 500ms with retries [Estimated]. 
+
+**Advanced**: Integrate recovery for offline parties using pre-signed shares. [Boneh & Shoup, 2020]
 
 **Implementation** (Rust):
 ```rust
@@ -290,6 +433,17 @@ impl SigningSaga {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 sequenceDiagram
     participant W as Wallet
     participant P1 as Party1
@@ -318,19 +472,17 @@ sequenceDiagram
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Signing Latency | latency = rounds * (network + compute) | rounds=2, network=50ms, compute=50ms | <300ms |
-| Failure Rate | rate = (failed_signs / total_signs) * 100% | failed_signs=5, total_signs=1000 | <1% |
+| Signing Latency | $L = r \times (t_n + t_c)$ | $r=2$ rounds, $t_n=50\text{ms}$ network, $t_c=50\text{ms}$ compute | <300ms |
+| Failure Rate | $F = \frac{f}{N} \times 100\%$ | $f=5$ failed signs, $N=1000$ total signs | <1% |
 
 **Calculation Example**:
-```
-Signing Latency = 2 rounds × (50ms network + 50ms compute)
-                = 2 × 100ms
-                = 200ms ✓ (< 300ms target)
+$$
+\text{Signing Latency} = 2 \text{ rounds} \times (50\text{ms network} + 50\text{ms compute}) = 2 \times 100\text{ms} = 200\text{ms} \,\checkmark
+$$
 
-Failure Rate = (5 failed ÷ 1000 total) × 100%
-             = 0.005 × 100%
-             = 0.5% ✓ (< 1% target)
-```
+$$
+\text{Failure Rate} = \frac{5 \text{ failed}}{1000 \text{ total}} \times 100\% = 0.5\% \,\checkmark
+$$
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -353,7 +505,23 @@ Failure Rate = (5 failed ÷ 1000 total) × 100%
 
 **Key Insight**: Pre-computation reduces latency by 60%, maintaining 256-bit security. [Estimated]
 
-**Answer**: Use pre-computation for expensive operations like exponentiations in Paillier encryption for MPC. Implement batched signing for multiple transactions. Optimize elliptic curve operations with assembly or hardware acceleration. For security, use constant-time algorithms to prevent timing attacks. Trade-offs: Pre-computation vs. on-demand - pre-compute saves time but increases storage and setup cost. Quantified: Pre-computed GG18 signing 150ms vs. 400ms on-demand, with security bits maintained at 256 [Estimated]. Advanced: Integrate zero-knowledge proofs for verification without revealing shares. [Lindell, 2020]
+**Answer**: 
+
+**Optimization Strategies**:
+- **Pre-computation**: Cache expensive operations (Paillier exponentiations)
+- **Batched Signing**: Process multiple transactions together
+- **Hardware Acceleration**: Use assembly or CPU intrinsics for elliptic curve operations
+- **Constant-Time Algorithms**: Prevent timing attacks
+
+**Security Considerations**: Maintain **256-bit security level** throughout optimizations. Use constant-time implementations to prevent side-channel attacks.
+
+**Trade-offs**: 
+- **Pre-computation**: Saves time but increases storage and setup cost
+- **On-demand**: Lower storage but variable latency
+
+**Quantified Performance**: Pre-computed GG18 signing 150ms vs. 400ms on-demand (**60% reduction**), with security bits maintained at 256 [Estimated]. 
+
+**Advanced**: Integrate **zero-knowledge proofs** for verification without revealing shares. [Lindell, 2020]
 
 **Performance Comparison**:
 ```
@@ -410,6 +578,17 @@ impl MPCPrecompute {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Transaction Request] --> B{Precompute Cache}
     B -->|Hit| C[Use Cached Value]
@@ -417,23 +596,29 @@ graph LR
     C --> E[Sign]
     D --> E
     E --> F[Output Signature]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Latency | latency = base + (miss_rate * compute_time) | miss_rate=0.1, compute_time=200ms, base=50ms | <150ms |
-| Security Bits | bits = min(key_bits, protocol_bits) | key_bits=256, protocol_bits=256 | 256 |
+| Latency | $L = L_b + (m \times t_c)$ | $m=0.1$ miss rate, $t_c=200\text{ms}$ compute, $L_b=50\text{ms}$ base | <150ms |
+| Security Bits | $S = \min(S_k, S_p)$ | $S_k=256$ key bits, $S_p=256$ protocol bits | 256 |
 
 **Calculation Example**:
-```
-Latency = 50ms base + (0.1 miss rate × 200ms compute)
-        = 50ms + 20ms
-        = 70ms ✓ (< 150ms target)
+$$
+\text{Latency} = 50\text{ms base} + (0.1 \text{ miss rate} \times 200\text{ms compute}) = 50\text{ms} + 20\text{ms} = 70\text{ms} \,\checkmark
+$$
 
-Security Bits = min(256 key bits, 256 protocol bits)
-              = 256 bits ✓ (maintains full security)
-```
+$$
+\text{Security Bits} = \min(256 \text{ key bits}, 256 \text{ protocol bits}) = 256 \text{ bits} \,\checkmark
+$$
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -457,7 +642,29 @@ Security Bits = min(256 key bits, 256 protocol bits)
 
 **Key Insight**: CQRS separates read/write, improving consistency by 30% for distributed shares. [Estimated]
 
-**Answer**: Use CQRS: Command side for writing encrypted shares, Query side for reading and reconstructing keys. Encrypt shares with AES-256 before storage. Implement event sourcing for audit trails. For recovery, use threshold reconstruction from available shares. Trade-offs: CQRS vs. CRUD - CQRS handles complex queries better but adds complexity. Quantified: Write latency 20ms vs. read 50ms, with 99.9% consistency [Estimated]. Intermediate: Handle share rotation for security. [Gennaro & Goldfeder, 2018]
+**Answer**: 
+
+Use **CQRS pattern** to separate concerns:
+
+**Command Side (Write)**:
+- Encrypt shares with **AES-256** before storage
+- Write to command database
+- Event sourcing for audit trails
+
+**Query Side (Read)**:
+- Query metadata for share location
+- Fetch encrypted shares
+- Decrypt and reconstruct keys using threshold scheme
+
+**Recovery Mechanism**: Use **threshold reconstruction** from available shares (requires t-of-n shares).
+
+**Trade-offs**: 
+- **CQRS**: Handles complex queries better, enables event sourcing, but adds architectural complexity
+- **CRUD**: Simpler implementation but limited scalability and audit capabilities
+
+**Quantified Performance**: Write latency 20ms vs. read 50ms, with 99.9% consistency [Estimated]. 
+
+**Intermediate**: Implement **share rotation** for security hygiene. [Gennaro & Goldfeder, 2018]
 
 **CQRS Pattern Flow**:
 ```
@@ -524,6 +731,17 @@ impl KeyShareStore {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Write Command] --> B[Encrypt Share]
     B --> C[Command DB]
@@ -531,23 +749,31 @@ graph TD
     E[Read Query] --> F[Query DB]
     F --> G[Decrypt Share]
     G --> H[Reconstruct Key]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style D fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Write Latency | latency = encrypt_time + db_time | encrypt_time=10ms, db_time=10ms | <25ms |
-| Consistency | consistency = (successful_reads / total_reads) * 100% | successful_reads=999, total_reads=1000 | >99.9% |
+| Write Latency | $L_w = t_e + t_d$ | $t_e=10\text{ms}$ encrypt, $t_d=10\text{ms}$ db time | <25ms |
+| Consistency | $C = \frac{R_s}{R_t} \times 100\%$ | $R_s=999$ successful reads, $R_t=1000$ total reads | >99.9% |
 
 **Calculation Example**:
-```
-Write Latency = 10ms encrypt + 10ms db write
-              = 20ms ✓ (< 25ms target)
+$$
+\text{Write Latency} = 10\text{ms encrypt} + 10\text{ms db write} = 20\text{ms} \,\checkmark
+$$
 
-Consistency = (999 successful ÷ 1000 total) × 100%
-            = 0.999 × 100%
-            = 99.9% ✓ (≥ 99.9% target)
-```
+$$
+\text{Consistency} = \frac{999 \text{ successful}}{1000 \text{ total}} \times 100\% = 99.9\% \,\checkmark
+$$
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -570,7 +796,29 @@ Consistency = (999 successful ÷ 1000 total) × 100%
 
 **Key Insight**: Protocol abstraction reduces integration time by 50% across chains. [Estimated]
 
-**Answer**: Create a trait-based API: Signer trait with sign_transaction method, accepting chain-specific transaction structs. Implement adapters for each chain: Ethereum uses EIP-1559, Bitcoin legacy tx, Solana uses recent blockhash. Use serialization for cross-chain compatibility. Trade-offs: Unified vs. chain-specific APIs - unified is simpler but may miss optimizations. Quantified: API integration time 2h vs. 4h per chain [Estimated]. Foundational: Handle signature formats (ECDSA for ETH/BTC, Ed25519 for SOL). [Boneh & Shoup, 2020]
+**Answer**: 
+
+Create a **trait-based unified API**:
+
+**Core Design**:
+- **Signer trait**: Abstract interface with `sign_transaction()` method
+- **Chain-specific adapters**: Implement trait for each blockchain
+- **Transaction enum**: Accept chain-specific transaction structures
+
+**Chain Implementations**:
+- **Ethereum**: EIP-1559 transactions with RLP encoding, ECDSA on secp256k1
+- **Bitcoin**: Legacy/SegWit transactions, ECDSA on secp256k1
+- **Solana**: Compact array format with recent blockhash, Ed25519 on Curve25519
+
+**Serialization**: Use Serde for cross-chain compatibility and type safety.
+
+**Trade-offs**: 
+- **Unified API**: Simpler integration, consistent interface, but may miss chain-specific optimizations
+- **Chain-specific APIs**: Optimized per chain, but increases code duplication and maintenance
+
+**Quantified Performance**: API integration time 2h per chain (unified) vs. 4h per chain (separate) - **50% reduction** [Estimated]. 
+
+**Foundational**: Handle different signature formats (ECDSA for ETH/BTC, Ed25519 for SOL). [Boneh & Shoup, 2020]
 
 **Cross-Chain Signature Compatibility Matrix**:
 ```
@@ -632,6 +880,17 @@ impl MPCSigner for EthereumSigner {
 
 **Diagram**:
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[Unified API] --> B{Ethereum Adapter}
     A --> C{Bitcoin Adapter}
@@ -640,24 +899,29 @@ graph TD
     C --> E
     D --> E
     E --> F[Chain-Specific Signature]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 **Metrics**:
 | Metric | Formula | Variables | Target |
 |--------|---------|-----------|--------|
-| Integration Time | time = base + (chains * adapter_time) | chains=3, adapter_time=1h, base=1h | <4h |
-| Compatibility | compatibility = (supported_chains / total_chains) * 100% | supported_chains=3, total_chains=3 | 100% |
+| Integration Time | $T = T_b + (n \times t_a)$ | $n=3$ chains, $t_a=1\text{h}$ adapter time, $T_b=1\text{h}$ base | <4h |
+| Compatibility | $C = \frac{n_s}{n_t} \times 100\%$ | $n_s=3$ supported chains, $n_t=3$ total chains | 100% |
 
 **Calculation Example**:
-```
-Integration Time = 1h base + (3 chains × 1h adapter)
-                 = 1h + 3h
-                 = 4h ✓ (≤ 4h target)
+$$
+\text{Integration Time} = 1\text{h base} + (3 \text{ chains} \times 1\text{h adapter}) = 1\text{h} + 3\text{h} = 4\text{h} \,\checkmark
+$$
 
-Compatibility = (3 supported ÷ 3 total chains) × 100%
-              = 1.0 × 100%
-              = 100% ✓ (full coverage)
-```
+$$
+\text{Compatibility} = \frac{3 \text{ supported}}{3 \text{ total chains}} \times 100\% = 100\% \,\checkmark
+$$
 
 **Trade-offs**:
 | Approach | Pros | Cons | Use When | Consensus |
@@ -668,6 +932,35 @@ Compatibility = (3 supported ÷ 3 total chains) × 100%
 ---
 
 ## Quick Reference Summary
+
+**Topics Performance Summary**:
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+quadrantChart
+    title MPC Wallet Topics: Impact vs Complexity
+    x-axis Low Complexity --> High Complexity
+    y-axis Low Impact --> High Impact
+    quadrant-1 High Impact Low Complexity
+    quadrant-2 High Impact High Complexity
+    quadrant-3 Low Impact Low Complexity
+    quadrant-4 Low Impact High Complexity
+    "Cross-Chain API": [0.3, 0.85]
+    "Key Architecture": [0.6, 0.75]
+    "Threshold Signing": [0.85, 0.95]
+    "Performance Opt": [0.75, 0.80]
+    "Key Persistence": [0.5, 0.70]
+```
 
 **Topics Overview**:
 
@@ -695,38 +988,115 @@ Compatibility = (3 supported ÷ 3 total chains) × 100%
 └──────────────────────────────────────────────────────────────┘
 ```
 
+**Technology Stack Visualization**:
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    subgraph "Application Layer"
+        APP[MPC Wallet Application]
+    end
+    
+    subgraph "Cross-Chain Layer"
+        ETH[Ethereum Adapter<br/>EIP-1559]
+        BTC[Bitcoin Adapter<br/>Legacy/SegWit]
+        SOL[Solana Adapter<br/>Ed25519]
+    end
+    
+    subgraph "MPC Protocol Layer"
+        GG20[GG20 Protocol<br/>Threshold Signing]
+        CACHE[Pre-computation<br/>Cache]
+    end
+    
+    subgraph "Storage Layer"
+        CQRS_W[Command DB<br/>Write]
+        CQRS_R[Query DB<br/>Read]
+        ENC[AES-256<br/>Encryption]
+    end
+    
+    subgraph "Cryptographic Layer"
+        SHAMIR[Shamir SSS<br/>Key Sharding]
+        ECDSA[ECDSA<br/>secp256k1]
+        ED25519[Ed25519<br/>Curve25519]
+    end
+    
+    APP --> ETH
+    APP --> BTC
+    APP --> SOL
+    
+    ETH --> GG20
+    BTC --> GG20
+    SOL --> ED25519
+    
+    GG20 --> CACHE
+    CACHE --> CQRS_R
+    
+    CQRS_W --> ENC
+    ENC --> SHAMIR
+    SHAMIR --> ECDSA
+    
+    style APP fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style ETH fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SOL fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style GG20 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style CACHE fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style CQRS_W fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style CQRS_R fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style ENC fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style SHAMIR fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style ECDSA fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style ED25519 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
 ---
 
 ## References
 
 ### Glossary (≥5)
-**G1. MPC (Multi-Party Computation)** – Secure protocol allowing multiple parties to jointly compute functions on private inputs without revealing them. Related: Threshold Signature, Key Shard.
 
-**G2. Threshold Signature** – Cryptographic scheme requiring a threshold number of key shares to generate a valid signature. Related: MPC, Shamir's Secret Sharing.
+**Core Cryptographic Concepts**:
 
-**G3. Key Shard** – Portion of a private key distributed among parties in MPC. Related: Threshold Signature, Recovery.
+- **G1. MPC (Multi-Party Computation)**: Secure protocol allowing multiple parties to jointly compute functions on private inputs without revealing them. *Related*: Threshold Signature, Key Shard.
 
-**G4. ECDSA** – Elliptic Curve Digital Signature Algorithm used in Ethereum and Bitcoin. Related: Ed25519, Schnorr.
+- **G2. Threshold Signature**: Cryptographic scheme requiring a threshold number of key shares to generate a valid signature. *Related*: MPC, Shamir's Secret Sharing.
 
-**G5. GG18** – Specific MPC protocol for threshold ECDSA signing with 3 parties. Related: GG20, FROST.
+- **G3. Key Shard**: Portion of a private key distributed among parties in MPC. *Related*: Threshold Signature, Recovery.
 
-**G6. [Consensus]** – Trade-off recommendation label indicating broad industry agreement on the approach as best practice for the specified use case. Related: Context-dependent, Best Practices.
+- **G4. ECDSA**: Elliptic Curve Digital Signature Algorithm used in Ethereum and Bitcoin. *Related*: Ed25519, Schnorr.
 
-**G7. [Context-dependent]** – Trade-off recommendation label indicating the optimal choice varies based on specific requirements, constraints, or organizational context. Related: Consensus, Trade-offs.
+- **G5. GG18**: Specific MPC protocol for threshold ECDSA signing with 3 parties. *Related*: GG20, FROST.
+
+**Trade-off Labels**:
+
+- **G6. [Consensus]**: Trade-off recommendation label indicating broad industry agreement on the approach as best practice for the specified use case. *Related*: Context-dependent, Best Practices.
+
+- **G7. [Context-dependent]**: Trade-off recommendation label indicating the optimal choice varies based on specific requirements, constraints, or organizational context. *Related*: Consensus, Trade-offs.
 
 ### Tools (≥3)
-**T1. zenGo-X/multi-party-ecdsa** – Rust implementation of MPC protocols including GG18/GG20. Updated: 2023. URL: https://github.com/ZenGo-X/multi-party-ecdsa
 
-**T2. silence-laboratories/dkls23** – Optimized 2-party ECDSA MPC library. Updated: 2024. URL: https://github.com/silence-laboratories/dkls23
-
-**T3. ZcashFoundation/frost** – Threshold Schnorr signature implementation. Updated: 2023. URL: https://github.com/ZcashFoundation/frost
+| Tool | Description | Language | Last Updated | Link |
+|------|-------------|----------|--------------|------|
+| **T1. zenGo-X/multi-party-ecdsa** | Rust implementation of MPC protocols including GG18/GG20 | Rust | 2023 | [GitHub](https://github.com/ZenGo-X/multi-party-ecdsa) |
+| **T2. silence-laboratories/dkls23** | Optimized 2-party ECDSA MPC library | Rust | 2024 | [GitHub](https://github.com/silence-laboratories/dkls23) |
+| **T3. ZcashFoundation/frost** | Threshold Schnorr signature implementation | Rust | 2023 | [GitHub](https://github.com/ZcashFoundation/frost) |
 
 ### Literature (≥3)
-**L1. Gennaro, R., & Goldfeder, S. (2018). *Fast multiparty threshold ECDSA with fast trustless setup*. ACM SIGSAC Conference on Computer and Communications Security.**
 
-**L2. Boneh, D., & Shoup, V. (2020). *A Graduate Course in Applied Cryptography*. Cambridge University Press.**
-
-**L3. Lindell, Y. (2020). *Secure Multiparty Computation*. Springer.**
+| ID | Reference | Year | Publisher | Focus Area |
+|----|-----------|------|-----------|------------|
+| **L1** | Gennaro, R., & Goldfeder, S. *Fast multiparty threshold ECDSA with fast trustless setup* | 2018 | ACM SIGSAC CCS | Threshold ECDSA, GG18 Protocol |
+| **L2** | Boneh, D., & Shoup, V. *A Graduate Course in Applied Cryptography* | 2020 | Cambridge University Press | Applied Cryptography Fundamentals |
+| **L3** | Lindell, Y. *Secure Multiparty Computation* | 2020 | Springer | MPC Theory and Practice |
 
 ### Citations (≥6)
 **A1.** Gennaro, R., & Goldfeder, S. (2018). Fast multiparty threshold ECDSA with fast trustless setup. In Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security (pp. 1179-1194). ACM. [English]
