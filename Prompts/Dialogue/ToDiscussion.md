@@ -11,75 +11,27 @@ Extracted Q&A pairs from any Extract/ prompt type (Cloze, Decision, Creativity, 
 
 ## Discussion Characteristics
 
-**Language Style**:
-- Conversational but focused
-- Mixing complete sentences and natural speech
-- Turn-taking between speakers
-- Selective contractions for naturalness
-- Active listening cues
+**Language**: Conversational, focused, turn-taking, selective contractions, active listening cues
 
-**Turn-Taking Markers**:
-- **Building**: "Building on that...", "To add to what you said...", "Expanding on that point..."
-- **Agreeing**: "Exactly.", "Right.", "That's a good point.", "I see what you mean."
-- **Contrasting**: "On the other hand...", "Another angle...", "What if we consider...", "But..."
-- **Clarifying**: "So you're saying...", "Just to make sure I understand...", "Can you elaborate on..."
-- **Questioning**: "What about...?", "Have we considered...?", "How would that work with...?"
-- **Synthesizing**: "So if we put this together...", "Connecting these ideas...", "What I'm hearing is..."
+**Turn-Taking**: Building ("Building on that..."), Agreeing ("Exactly"), Contrasting ("On the other hand..."), Clarifying ("So you're saying..."), Questioning ("What about...?"), Synthesizing ("Connecting these ideas...")
 
-**Interaction Patterns**:
-- Question → Response → Follow-up
-- Idea → Build → Refine
-- Challenge → Clarification → Resolution
-- Multiple perspectives on same point
-- Natural interruptions and asides
+**Interaction**: Question → Response → Follow-up; Idea → Build → Refine; Challenge → Clarification → Resolution
 
-**Tone**:
-- Collaborative and exploratory
-- Respectful but direct
-- Engaged and thinking aloud
-- Professional but conversational
-- Problem-solving focus
+**Tone**: Collaborative, respectful but direct, thinking aloud, problem-solving focus
 
-**Clarity Techniques**:
-- Ideas developed through dialogue
-- Analogies introduced and refined by participants
-- Examples suggested and discussed
-- Group thinking process visible
-- Consensus building evident
+**Clarity**: Ideas developed through dialogue, analogies refined by group, visible thinking process
 
-**Natural Flow**:
-- Not perfectly linear—ideas circle back
-- Side discussions briefly explored
-- Return to main thread with signposts
-- Build complexity through exchange
-- Summarize periodically to align
+**Flow**: Non-linear, side discussions, signposted returns, periodic summaries
 
 ## Rules
 
-**Fidelity**:
-- **Preserve all decision-critical content** from the original Q&A
-- Never change facts, numbers, or technical accuracy
-- Maintain logical structure through dialogue exchange
-- Don't add ungrounded information
+**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; maintain logical structure; no ungrounded additions
 
-**Transformation**:
-- Convert into multi-turn dialogue (2-4 speakers typical)
-- Show idea development through exchange
-- Include natural discussion dynamics
-- Use speaker labels (A:, B:, C:) or roles (Engineer:, PM:, etc.)
-- Balance contributions—avoid monologue
+**Transformation**: Multi-turn dialogue (2-4 speakers), show idea development, natural dynamics, speaker labels, balanced contributions
 
-**Format**:
-- Question becomes discussion opener
-- Answer distributed across multiple turns
-- Each turn contributes to complete understanding
-- Show thinking process, not just conclusions
-- May include brief asides or clarifications
+**Format**: Question → opener; answer distributed across turns; show thinking process; may include asides
 
-**Self-contained**:
-- Each dialogue provides context naturally
-- Establish scenario through opening exchange
-- Don't assume shared context beyond what's stated
+**Self-contained**: Provides context naturally, establishes scenario in opening, no assumed shared context
 
 ## Intelligent Complexity Adaptation
 
@@ -204,38 +156,15 @@ Group discussions naturally include debate, drift, and participation challenges.
 
 **Balance principle**: 80% content, 20% dynamics. Use when they enhance collaborative learning, not as artificial conflict.
 
-**For 1-on-1 dynamics, presentation patterns, and comprehensive coverage** → See ConversationDynamics.md §1, §3, §5, §7
+**For 1-on-1 confusion handling, formal presentation patterns, and comprehensive coverage** → See ConversationDynamics.md §6, §9, §10, §19, §20
 
 ## Audio-Only Adaptation
 
-When adapting for audio-only scenarios (conference calls, audio meetings, podcasts):
-
-**Remove Visual References**:
-- Never use "look at this", "as shown", "here", "as you can see"
-- Replace with verbal descriptions: "imagine...", "consider...", "think about..."
-
-**Add Confirmation Markers**:
-- Check understanding: "Does that make sense?", "Are we aligned?", "Everyone following?"
-- Acknowledge: "Got it.", "Okay.", "Right.", "Agreed."
-- Request confirmation: "Are we on the same page?", "Make sense to everyone?"
-
-**Break Into Shorter Chunks**:
-- Shorter explanations to prevent audio fatigue
-- Pause for acknowledgment between concepts
-- One main idea per speaking turn
-- More frequent turn-taking to maintain engagement
-
-**Use Explicit Structure**:
-- Number items verbally: "First... Second... Third..."
-- Signal transitions: "Now let's turn to...", "Moving on to..."
-- Recap periodically: "So to recap where we are...", "Just to summarize what we've covered..."
-- Identify speakers: "This is Alex speaking...", "As Sarah mentioned..."
-
-**Add Turn-Taking**:
-- Include brief acknowledgments between speakers
-- Show listening cues: "Uh-huh", "Right", "I see"
-- Allow for clarification questions
-- Explicitly invite participation: "What do you think?", "Any thoughts on that?"
+**Visual → Verbal**: Replace "look at this", "as shown" with "imagine...", "consider..."  
+**Confirmation**: Add "Are we aligned?", "Everyone following?", "Got it.", "Agreed."  
+**Shorter chunks**: One idea per turn, frequent turn-taking, pause for acknowledgment  
+**Explicit structure**: Number verbally, signal transitions, recap periodically, identify speakers  
+**Turn-taking**: Brief acknowledgments, allow clarification, invite participation explicitly
 
 ## Output Format
 

@@ -11,67 +11,25 @@ Extracted Q&A pairs from any Extract/ prompt type (Cloze, Decision, Creativity, 
 
 ## Presentation Characteristics
 
-**Language Style**:
-- Complete sentences with professional structure
-- Clear, declarative statements
-- Minimal contractions (use selectively for naturalness)
-- Active voice predominant
-- Precise terminology maintained
+**Language**: Complete sentences, declarative statements, minimal contractions, active voice, precise terminology
 
-**Presentation Markers**:
-- **Opening**: "Let's examine...", "Today we'll cover...", "I'll walk you through..."
-- **Transitions**: "Moving on...", "Let's turn to...", "Next up...", "Now..."
-- **Signposting**: "To recap...", "To summarize...", "The key takeaway...", "In summary..."
-- **Navigation**: "As you can see here...", "Note that...", "Looking at this...", "Consider..."
-- **Structure cues**: "First...", "Second...", "Finally...", "There are three points..."
-- **Emphasis**: "This is critical...", "Pay attention to...", "Importantly...", "Keep in mind..."
-- **Engagement**: "You might ask...", "This raises the question...", "Consider this scenario..."
+**Markers**: Opening ("Let's examine..."), Transitions ("Moving on..."), Signposting ("To recap..."), Navigation ("Note that..."), Structure ("First...", "Second..."), Emphasis ("This is critical..."), Engagement ("You might ask...")
 
-**Tone**:
-- Professional and authoritative
-- Confident and clear
-- Accessible without being casual
-- Educational and informative
-- Engaging but formal
+**Tone**: Professional, authoritative, confident, accessible, educational
 
-**Clarity Techniques**:
-- Structured explanations with clear hierarchy
-- Examples introduced formally ("For instance...", "Consider the case where...")
-- Analogies presented professionally ("This is analogous to...")
-- Step-by-step breakdowns with explicit numbering
-- Visual cues ("On this slide...", "As illustrated...")
+**Clarity**: Structured hierarchy, formal examples ("For instance..."), professional analogies, explicit numbering
 
-**Natural Flow**:
-- Logical progression between points
-- Smooth transitions with explicit connectors
-- Building complexity gradually
-- Reinforcing key points periodically
+**Flow**: Logical progression, explicit connectors, gradual complexity, periodic reinforcement
 
 ## Rules
 
-**Fidelity**:
-- **Preserve all decision-critical content** from the original Q&A
-- Never change facts, numbers, or technical accuracy
-- Maintain logical structure and all key points
-- Don't add ungrounded information
+**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; maintain logical structure; no ungrounded additions
 
-**Transformation**:
-- Rewrite into spoken presentation language
-- Add presentation markers and signposting
-- Structure for oral delivery clarity
-- Use rhetorical devices appropriate for formal settings
-- Complete sentences, not fragments
+**Transformation**: Spoken presentation language, add markers/signposting, oral delivery structure, formal rhetorical devices, complete sentences
 
-**Format**:
-- Questions become presentation prompts or section introductions
-- Answers structured as presentation content with clear organization
-- Use formatting cues that would translate to spoken emphasis
-- Break complex answers into clearly numbered or bulleted points
+**Format**: Question → prompt/introduction; answer → structured presentation; spoken emphasis cues; numbered/bulleted points
 
-**Self-contained**:
-- Each piece provides sufficient context
-- Include setup naturally in delivery
-- Assume audience is following a structured presentation
+**Self-contained**: Provides sufficient context, natural setup, assumes structured presentation following
 
 ## Intelligent Complexity Adaptation
 
@@ -207,40 +165,15 @@ Professional presentations encounter disruptions requiring graceful recovery. Ap
 
 **Balance principle**: 90% content, 10% dynamics for formal settings. Maintain professional polish while handling real-world challenges.
 
-**For casual dynamics, group debates, and comprehensive patterns** → See ConversationDynamics.md §1, §2, §4, §6, §7
+**For casual dynamics, group debates, and comprehensive patterns** → See ConversationDynamics.md §1, §2, §3, §8, §14, §17
 
 ## Audio-Only Adaptation
 
-When adapting for audio-only scenarios (podcast presentations, webinar audio, recorded lectures):
-
-**Remove Visual References**:
-- Replace "as you can see here" → "note that"
-- Replace "looking at this" → "examining this"
-- Replace "on this slide" → "at this point"
-- Replace "illustrated here" → "demonstrated through"
-
-**Add Confirmation Markers**:
-- Check engagement: "Are you following along?", "This is an important point..."
-- Emphasize structure: "This is critical...", "Pay close attention to..."
-- Acknowledge complexity: "This may seem complex, but...", "Let me clarify..."
-
-**Break Into Shorter Chunks**:
-- Shorter explanations to prevent audio fatigue
-- Pause between major sections
-- One key concept per section
-- Recap main points more frequently
-
-**Use Explicit Structure**:
-- Number items verbally: "There are three key points. First... Second... Third..."
-- Signal transitions clearly: "Now let's turn to...", "Moving to our next section..."
-- Recap periodically: "To recap what we've covered...", "In summary so far..."
-- Preview upcoming content: "Next, we'll examine...", "Coming up..."
-
-**Add Verbal Emphasis**:
-- Use repetition for key points
-- Slow down for complex concepts
-- Use pauses strategically
-- Emphasize through phrasing: "The critical takeaway here is...", "Most importantly..."
+**Visual → Verbal**: Replace "as you can see" → "note that", "on this slide" → "at this point"  
+**Confirmation**: "Are you following?", "This is critical...", "Let me clarify..."  
+**Shorter chunks**: One concept per section, pause between sections, recap frequently  
+**Explicit structure**: Number verbally, signal transitions, recap periodically, preview upcoming  
+**Verbal emphasis**: Repeat key points, slow for complexity, strategic pauses, emphasize phrasing
 
 ## Output Format
 
@@ -360,17 +293,3 @@ When adapting for audio-only scenarios (podcast presentations, webinar audio, re
 >    Questions?
 
 **LLM Analysis**: Multiple teaching layers (problem → solution → options → decision → recommendation), requires systematic breakdown → 5 sections; with dynamics shows technical interruption recovery, audience re-engagement, and question handling
-
----
-
-### Example 4: Single Section (Despite Technical Nature)
-
-**Before** (Formal Extract):
-> Q: What's the difference between TCP and UDP?
-> A: TCP is connection-oriented with guaranteed delivery. UDP is connectionless, faster, but no delivery guarantees.
-
-**After** (Presentation - Single Section):
-> 1. Q: Let's examine two fundamental transport protocols: TCP and UDP. What distinguishes these protocols?
->    A: The core distinction comes down to reliability versus speed. TCP is connection-oriented—it establishes a connection, guarantees delivery through acknowledgments and retries, and ensures packets arrive in order. This comes with overhead. UDP, by contrast, is connectionless. It simply sends packets without confirmation, offering no delivery guarantees. This makes it significantly faster with lower latency. The application determines the choice: use TCP for scenarios where reliability is paramount—database connections, file transfers, financial transactions. Use UDP where speed matters more than perfection—video streaming, online gaming, DNS queries. In these cases, a dropped packet is acceptable if it means maintaining low latency.
-
-**LLM Analysis**: Clear dichotomy, comprehensive in ~140 words, natural flow without section breaks → Single section

@@ -11,55 +11,23 @@ Extracted Q&A pairs from any Extract/ prompt type (Cloze, Decision, Creativity, 
 
 ## Conversation Characteristics
 
-**Language Style**:
-- Concise, prepositional phrases
-- Short sentences and sentence fragments
-- Contractions and colloquialisms ("Here's", "Let's", "You'd", "gonna")
-- Oral markers ("So...", "Well...", "Actually...", "Look...")
-- Discourse particles ("right?", "you know", "I mean")
+**Language**: Concise phrases, short sentences/fragments, contractions ("Here's", "gonna"), oral markers ("So...", "Well..."), discourse particles ("right?", "you know")
 
-**Tone**:
-- Friendly and approachable
-- Conversational, not formal
-- Occasionally humorous where appropriate
-- Engaged and enthusiastic
+**Tone**: Friendly, conversational, occasionally humorous, engaged
 
-**Clarity Techniques**:
-- Analogies and metaphors for complex concepts
-- "Think of it like..." or "Imagine..." framing
-- Real-world examples and scenarios
-- Breaking down into digestible chunks
+**Clarity**: Analogies ("Think of it like..."), real-world examples, digestible chunks
 
-**Natural Flow**:
-- Questions sound like someone actually asking
-- Answers flow as if speaking naturally
-- Use transitions between ideas
-- Build on previous statements organically
+**Flow**: Natural questions/answers, smooth transitions, organic building
 
 ## Rules
 
-**Fidelity**:
-- **Preserve all decision-critical content** from the original Q&A
-- Never change facts, numbers, or technical accuracy
-- Maintain the logical structure and key points
-- Don't add ungrounded information
+**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; maintain logical structure; no ungrounded additions
 
-**Transformation**:
-- Rewrite formal text into conversational equivalents
-- Replace written conventions with spoken patterns
-- Add natural pauses and rhythm through punctuation
-- Use active voice and direct address
+**Transformation**: Formal → conversational equivalents, written → spoken patterns, add natural pauses/rhythm, active voice
 
-**Format**:
-- Keep Q/A structure but make it feel like dialogue
-- Questions: Make them sound like actual spoken questions
-- Answers: Structure like someone explaining in conversation
-- May break long answers into multiple speaking turns with "..." for natural pauses
+**Format**: Q&A structure feels like dialogue; natural spoken questions; conversational answers; may break into multiple turns
 
-**Self-contained**:
-- Each dialogue piece should work independently
-- Include context naturally in the conversation
-- Don't assume prior knowledge of source text
+**Self-contained**: Works independently, includes context naturally, no assumed prior knowledge
 
 ## Intelligent Complexity Adaptation
 
@@ -172,35 +140,15 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 
 **Balance principle**: 80% content, 20% dynamics. Use when they enhance learning, not as decoration.
 
-**For group dynamics, disagreement handling, and comprehensive patterns** → See ConversationDynamics.md §2, §4, §5, §6
+**For group dynamics, disagreement handling, and comprehensive patterns** → See ConversationDynamics.md §8, §14, §17, §19
 
 ## Audio-Only Adaptation
 
-When adapting for audio-only scenarios (phone calls, podcasts, audio recordings):
-
-**Remove Visual References**:
-- Never use "look at this", "as shown", "here", "as you can see"
-- Replace with verbal descriptions: "imagine...", "picture this...", "think about..."
-
-**Add Confirmation Markers**:
-- Check understanding: "Does that make sense?", "Are you following?", "Clear so far?"
-- Acknowledge: "Got it.", "Okay.", "Right.", "Mm-hmm."
-- Request confirmation: "You with me?", "Make sense?"
-
-**Break Into Shorter Chunks**:
-- Shorter explanations to prevent audio fatigue
-- Pause for acknowledgment between concepts
-- One main idea per speaking turn
-
-**Use Explicit Structure**:
-- Number items verbally: "First... Second... Third..."
-- Signal transitions: "Now let me cover...", "Moving on to..."
-- Recap periodically: "So to recap...", "Just to summarize..."
-
-**Add Turn-Taking**:
-- Include brief acknowledgments between speakers
-- Show listening cues: "Uh-huh", "Right", "I see"
-- Allow for clarification questions
+**Visual → Verbal**: Replace "look at this", "as shown" with "imagine...", "picture this..."  
+**Confirmation**: Add "Does that make sense?", "You with me?", "Got it.", "Mm-hmm."  
+**Shorter chunks**: One idea per turn, pause for acknowledgment  
+**Explicit structure**: Number verbally ("First... Second..."), signal transitions, recap periodically  
+**Turn-taking**: Brief acknowledgments ("Uh-huh", "Right"), allow clarification
 
 ## Output Format
 
@@ -304,17 +252,3 @@ When adapting for audio-only scenarios (phone calls, podcasts, audio recordings)
 >    A: Orchestration. Checkout's critical, needs tight monitoring. Trade scalability for debuggability. You want one place tracking the whole flow.
 
 **LLM Analysis**: Multiple layers (problem/solution/mechanism/implementation/choice), needs scaffolding → 4 rounds
-
----
-
-### Example 4: Single Round (Despite Technical Topic)
-
-**Before** (Formal Extract):
-> Q: What's the difference between TCP and UDP?
-> A: TCP is connection-oriented with guaranteed delivery, ordering, and error checking. UDP is connectionless, faster, but no delivery guarantees.
-
-**After** (Conversation - Single Round):
-> 1. Q: TCP vs UDP—what's the key difference?
->    A: Reliability vs speed. TCP guarantees delivery with handshakes and retries. UDP just fires packets and forgets—way faster, but packets can drop. TCP for bank transfers. UDP for video streaming.
-
-**LLM Analysis**: Clear dichotomy, fits in ~50 words with examples, no natural follow-ups needed → Single round (even though technical)

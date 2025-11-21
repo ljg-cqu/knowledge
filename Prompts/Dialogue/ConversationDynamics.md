@@ -6,30 +6,6 @@
 
 **Definition**: Layer conversational style, tone, and format patterns onto Q&A content, showing how people actually communicate in technical/educational contexts while maintaining focus on decision-critical information.
 
-## Usage
-
-**Two modes of operation**:
-
-### Mode 1: Supporting Reference (During Creation)
-**This file supports other Dialogue formats**:
-- `ToConversation.md` - Add casual 1-on-1 dynamics (single or multi-round)
-- `ToDiscussion.md` - Add group dynamics and multi-party patterns (single or multi-phase)
-- `ToPresentation.md` - Add formal presentation patterns (single or multi-section)
-
-**Quick start**: Each format file includes a "Management" section with quick patterns. Come here for detailed examples and comprehensive dynamics coverage.
-
-### Mode 2: Standalone Post-Check (After Creation)
-**Use independently to audit and improve existing dialogues**:
-- Review completed dialogues for missing conversational realism
-- Identify gaps in flow, engagement, or authenticity
-- Apply targeted dynamics to enhance natural feel
-- Validate quality before finalization
-
-**Quick start**: See "Standalone Usage: Post-Check & Improvement" section below for step-by-step workflow.
-
-## Input
-Any dialogue format (Conversation, Discussion, Presentation, DialogueFlow) that needs real-world conversational style enrichment.
-
 ## Fidelity Principle
 
 **Critical**: These dynamics add conversational **style/tone/format** without changing **content/facts**.
@@ -48,9 +24,118 @@ After:  Q: Normalization reduces redundancy? A: Exactly. Eliminates duplicates. 
 [Same content, more natural tone]
 ```
 
+---
+
+## Quick Reference: Top 10 Patterns (80% of Use Cases)
+
+**Most frequent dynamics covering 80% of conversational needs. Apply these first.**
+
+### 1. Acknowledgment (90% frequency)
+**Purpose**: Active listening signals that maintain flow  
+**Patterns**: "Mm-hmm", "Right", "I see", "Okay", "Got it", "Makes sense"  
+**Example**:
+> A: Indexes speed up queries.  
+> B: Right.  
+> A: Trade-off is slower writes.  
+> B: Got it.
+
+### 2. Agreement (70% frequency)
+**Purpose**: Validate understanding, confirm alignment  
+**Patterns**: "Exactly", "Correct", "True", "That's right", "Agreed"  
+**Example**:
+> Q: Normalization reduces redundancy?  
+> A: Exactly. One source of truth.  
+> Q: Which simplifies updates.  
+> A: Correct.
+
+### 3. Building (50% frequency)
+**Purpose**: Co-construct understanding collaboratively  
+**Patterns**: "And also...", "Plus...", "Building on that...", "Additionally..."  
+**Example**:
+> A: Redis gives us caching.  
+> B: Right, and it also handles pub/sub.  
+> A: Plus session storage.  
+> B: True. Three use cases then.
+
+### 4. Thinking & Processing (40% frequency)
+**Purpose**: Show natural cognitive processing  
+**Patterns**: "Hmm...", "Let me think...", "[pause]", "Give me a sec..."  
+**Example**:
+> Q: Big O of binary search?  
+> A: [pause] Let me think... You halve each time, so... log n.  
+> Q: Right.
+
+### 5. Validation (30% frequency)
+**Purpose**: Build confidence and safety  
+**Patterns**: "Good question", "Smart observation", "That's insightful", "Fair point"  
+**Example**:
+> Q: What if two users modify simultaneously?  
+> A: Good question. Conflict resolution strategies—last-write-wins or custom merge.
+
+### 6. Curiosity (40% frequency)
+**Purpose**: Drive deeper understanding  
+**Patterns**: "What if...", "How about...", "Why...", "What happens if...", "Could we..."  
+**Example**:
+> A: We'll use eventual consistency.  
+> B: What happens if two users modify the same record?  
+> A: Good question. Conflict resolution...
+
+### 7. Understanding Progression (35% frequency)
+**Purpose**: Show incremental comprehension, breakthrough moments  
+**Patterns**: "Oh!", "Ah!", "I see now!", "Starting to see...", "Got it!"  
+**Example**:
+> Q: Closures remember outer scope variables?  
+> A: Yes, even after outer function finishes.  
+> Q: Oh! The inner function holds a reference?  
+> A: Exactly.
+
+### 8. Confusion & Clarification (40% frequency)
+**Purpose**: Handle misunderstanding naturally  
+**Patterns**: "Wait, lost me...", "Let me rephrase...", "Different angle: ...", "Where'd I lose you?"  
+**Example**:
+> A: Use choreography for sagas.  
+> B: [pause]  
+> A: Not clicking? Event-driven. Services react independently. No central coordinator.  
+> B: Ah, now I see.
+
+### 9. Off-Topic Redirection (20% frequency)
+**Purpose**: Maintain focus without being harsh  
+**Patterns**: "Good point. Let's bookmark that...", "Related, but let's stick with...", "Parking that for now..."  
+**Example**:
+> A: This reminds me of blockchain consensus...  
+> B: Related, but different problem. Sticking with microservices...
+
+### 10. Context Recovery (15% frequency)
+**Purpose**: Resume after interruptions  
+**Patterns**: "Back. Where were we?", "Quick recap: ...", "Before we dropped...", "Picking up from..."  
+**Example**:
+> [After interruption]  
+> A: Back. Quick recap: choreography vs orchestration. Pros/cons so far...
+
+**→ 80% of users have everything they need above. Continue for: post-check workflow, comprehensive framework.**
+
+---
+
 ## Standalone Usage: Post-Check & Improvement
 
 **Purpose**: Use this file independently to audit existing dialogues and enhance conversational realism after initial creation.
+
+**Two modes of operation**:
+
+### Mode 1: Supporting Reference (During Creation)
+**This file supports other Dialogue formats**:
+- `ToConversation.md` - Add casual 1-on-1 dynamics (single or multi-round)
+- `ToDiscussion.md` - Add group dynamics and multi-party patterns (single or multi-phase)
+- `ToPresentation.md` - Add formal presentation patterns (single or multi-section)
+
+**Quick start**: Each format file includes essential patterns. Use Top 10 Patterns above, or come here for comprehensive coverage.
+
+### Mode 2: Standalone Post-Check (After Creation)
+**Use independently to audit and improve existing dialogues**:
+- Review completed dialogues for missing conversational realism
+- Identify gaps in flow, engagement, or authenticity
+- Apply targeted dynamics to enhance natural feel
+- Validate quality before finalization
 
 ### Review Workflow
 
@@ -170,7 +255,13 @@ Run through validation checklist:
 
 **For detailed patterns, examples, and comprehensive coverage** → See Conversational Dynamics Framework below (§I-VIII)
 
-## Conversational Dynamics Framework
+**→ For comprehensive reference of all dynamics patterns, continue below.**
+
+---
+
+## Conversational Dynamics Framework (Advanced Reference)
+
+**→ Deep dive into all 8 categories. Most users don't need this level of detail.**
 
 Eight MECE categories covering all essential conversational patterns:
 
