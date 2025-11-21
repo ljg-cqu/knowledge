@@ -1,26 +1,23 @@
 # Extract Cloze Cards
 
-Task: From the source text, create **cloze cards** that are decision-critical and support deep understanding, informed decisions, and meaningful action.
+**Task**: From the source text, create cloze cards that are decision-critical.
 
-Definition:
-- Each card covers one fact, list (2-5 items), threshold, or short definition.
-- The answer is fixed and short (context-independent).
+**Definition**: Each card covers one fact, list, threshold, or short definition with a fixed, context-independent answer.
 
-Rules:
-- **Read the entire source text**: Process line-by-line to identify all decision-critical content. Do not stop prematurely or skip sections.
-- **Extract comprehensively**: Cover all decision-critical aspects. If the source has depth, generate sufficient cards to reflect that depth.
-- **Maintain strict fidelity**: Use only information explicitly stated or logically implied in the source. Never invent facts, numbers, concepts, or corrections.
-- Use 1-3 blanks `___` per card, or a prompt like "List the N ...".
-- No options (no MCQ or match questions).
-- Skip trivia; keep only items that anchor decisions or actions.
-- Focus on precise facts, numbers, terms, or sequences that must be recalled accurately.
-- Answers may include a short formula or code fragment when that is the item to recall.
-- Make each question self-contained; add context only if needed for clarity.
+**Rules**:
+- **Read completely**: Process the entire source to identify all decision-critical content.
+- **Extract comprehensively**: Generate sufficient cards to reflect source depth.
+- **Maintain fidelity**: Use only information explicitly stated or logically implied. Never invent content.
+- Use 1-3 blanks `___` for facts/terms, or "List the N ..." for sequences.
+- No options (MCQ or matching).
+- Focus on precise facts, numbers, terms, or sequences requiring accurate recall.
+- Include formulas or code fragments when they are the recall target.
+- Make questions self-contained; add context only when necessary.
 
-Output format (Markdown ordered list):
-1. Q: ...  (question with blanks or list prompt)
-   A: ...  (exact answer, concise and complete)
+**Output format**:
+1. Q: ... (question with blanks or list prompt)  
+   A: ... (exact answer, concise and complete)
 
-Instructions:
+**Instructions**:
 - Use `1.` for every item; Markdown auto-numbers.
 - Output only the numbered list, no other text.
