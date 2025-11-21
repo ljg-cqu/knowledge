@@ -1,22 +1,24 @@
 # Extract Debug Cards
 
-Task: From the source text, create **debug cards** that test detection and correction of errors that matter for deep understanding, informed decisions, and meaningful action.
+Task: From the source text, create **debug cards** that test detection and correction of errors that affect deep understanding, informed decisions, and meaningful action.
 
 Definition:
-- Each card shows a flawed statement/plan/code/decision related to the text.
-- The answer explains what is wrong and gives a better version.
+- Each card presents a flawed statement/plan/code/decision from the text.
+- The answer identifies the error and provides the corrected version.
 
 Rules:
+- **Read the entire source text thoroughly**: Process word-by-word, line-by-line to identify all decision-critical content. Do not stop prematurely or skip sections.
+- **Extract comprehensively**: Cover all decision-critical aspects; generate sufficient cards to reflect the source's depth.
+- **Maintain strict fidelity**: Use only information explicitly stated or logically implied in the source text. Never invent facts, numbers, concepts, or corrections that contradict the original content.
 - Use only realistic, plausible mistakes (not trivial typos).
-- Keep them decision‑critical: errors that would change understanding, risk, or action.
-- Question: include the wrong statement and ask "What is wrong and how to fix it?" (or similar).
-- Answer: briefly (a) identify the issue, (b) explain why, (c) show the corrected version.
-- Questions and answers may include short code/config snippets, formulas, or small tables/diagrams when needed to illustrate and correct the error; keep them minimal.
-- Include only the minimal portion of the flawed content needed so the card is self-contained and understandable without the source text.
-- Use only information stated or implied in the source text; do not invent new flaws or corrections that are not consistent with it.
+- Errors must be decision-critical: they would change understanding, risk, or action.
+- Question: Include the flawed content and ask "What is wrong and how to fix it?" (or similar).
+- Answer: Briefly (a) identify the issue, (b) explain why it matters, (c) provide the corrected version.
+- Questions and answers may include code snippets, formulas, or diagrams to illustrate errors and corrections. Keep them minimal.
+- Include just enough flawed content so the card is self-contained and understandable without the source text.
 
 Output (Markdown ordered list only):
-1. Q: ...  (contains the flawed content + debug question)
-   A: ...  (issue + explanation + corrected form)
-- Use `1.` for every item; Markdown will auto-number the list.
-- Do not output any other text (no headings, comments, or explanations).
+1. Q: ... (flawed content + debug question)
+   A: ... (issue + explanation + corrected form)
+- Use `1.` for every item; Markdown will auto-number.
+- Output only the list—no headings, comments, or explanations.
