@@ -318,10 +318,27 @@ Use these harmonious, eye-friendly combinations with **cool-neutral tones**:
 ```
 
 #### Manual Node Styling
-Apply styles using the palette above with 2px stroke-width:
+
+**IMPORTANT: Styling support varies by diagram type**
+
+**Flowcharts/Graphs** (`graph TD/LR`) - Support inline `style` statements:
 ```
 style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
+
+**Sequence Diagrams** (`sequenceDiagram`) - Only use theme configuration:
+```
+✅ CORRECT: Use theme variables in init block (shown above)
+❌ WRONG: Do NOT use style statements - they cause parse errors
+```
+
+**Other Diagram Types** - Check Mermaid documentation for styling support:
+- State diagrams: Support inline styling
+- Class diagrams: Use CSS classes
+- ER diagrams: Theme-based only
+- Pie charts: Theme-based only
+- Gantt charts: Theme-based only
 
 #### Diagram Layout Best Practices
 1. **Use neutral as default** - styles A/B/C should cover 80%+ of nodes
@@ -340,6 +357,7 @@ Before finalizing visualizations:
 - [ ] **Version check**: Note required Mermaid version if using v9.2+ features
 - [ ] **Syntax**: All nodes have brackets, no parentheses in labels, quoted strings for data points
 - [ ] **No math in labels**: Avoid operators (`=`,`+`,`-`,`*`,`/`) and Unicode symbols (₁₂₃,²³) in node labels
+- [ ] **Styling compatibility**: Use inline `style` statements only for flowcharts/graphs; sequence diagrams use theme-based styling only
 - [ ] Include theme init block with light backgrounds (>92% luminance)
 - [ ] Dark text (`#1a1a1a`) with 7:1 contrast ratio
 - [ ] Soft, muted colors only - cool-neutral palette primary

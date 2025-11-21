@@ -1,44 +1,709 @@
-1. Q: A developer writes this Rust code for a blockchain transaction pool: `let mut pending = Arc::new(HashMap::new()); thread::spawn(move || { pending.insert(tx_hash, tx); });` What is wrong and how to fix it?
-   A: **Issue**: `Arc<HashMap>` provides shared ownership but not interior mutability. The code won't compile because `Arc` doesn't allow mutation without a lock. **Impact**: Compilation failure; even if it compiled with unsafe code, would cause data races in concurrent transaction insertion leading to undefined behavior and potential double-spending. **Correction**: Use `Arc<Mutex<HashMap<TxHash, Transaction>>>` or `Arc<RwLock<HashMap>>` for shared mutable state across threads: `let pending = Arc::new(Mutex::new(HashMap::new())); let pending_clone = Arc::clone(&pending); thread::spawn(move || { pending_clone.lock().unwrap().insert(tx_hash, tx); });`
+# Blockchain & Rust Debugging Scenarios
 
-1. Q: In Solana transaction processing, a program declares accounts as: `accounts: [signer, writable_account, writable_account]` but only reads from both writable accounts. What is wrong and how to fix it?
-   A: **Issue**: Declaring accounts as writable when only reading them causes false account conflicts, preventing parallel execution of non-conflicting transactions. Sealevel runtime conservatively assumes write lock needed. **Impact**: Reduces parallelism by 40-60% for read-heavy workloads, directly lowering validator throughput and potentially missing block production deadlines. **Correction**: Declare read-only accounts explicitly: `accounts: [signer, readonly_account, readonly_account]` or in Anchor: `#[account(mut)]` only for accounts that will be modified. This allows runtime to schedule parallel execution of transactions reading same accounts.
+## Overview
 
-1. Q: A smart contract uses `uint256 amount = balanceOf[sender] - value; balanceOf[sender] = amount;` to deduct tokens. What is wrong and how to fix it?
-   A: **Issue**: Integer underflow vulnerability. If `value > balanceOf[sender]`, uint256 wraps around to 2^256 - (value - balance), crediting sender with massive unintended balance. **Impact**: Critical security vulnerability enabling theft of all contract funds. Exploited in multiple 2016-2017 token hacks before Solidity 0.8. **Correction**: Use Solidity 0.8+ with built-in overflow checks (reverts on underflow), or explicitly check: `require(balanceOf[sender] >= value, "Insufficient balance"); balanceOf[sender] -= value;` In Rust smart contracts, use checked arithmetic: `balance.checked_sub(value).ok_or(Error::InsufficientBalance)?`
+This document contains common debugging scenarios in blockchain development, focusing on Rust and smart contract issues.
 
-1. Q: A DEX AMM swap function calculates output as: `output_amount = (input_amount * output_reserve) / input_reserve;` without applying fees. What is wrong and how to fix it?
-   A: **Issue**: Violates constant product invariant x*y=k by not accounting for fees. After swap, `(input_reserve + input_amount) * (output_reserve - output_amount)` will be less than k, breaking the core AMM property. **Impact**: Pool value leaks with each trade, incentivizing arbitrage that drains pool reserves over time. Mathematical inconsistency causes price manipulation vulnerabilities. **Correction**: Apply fee before calculation: `let input_with_fee = input_amount * 997 / 1000; // 0.3% fee; let output_amount = (input_with_fee * output_reserve) / (input_reserve + input_with_fee);` This ensures new product `(input_reserve + input_amount) * (output_reserve - output_amount) >= k` (grows slightly due to fees).
+| # | Category | Issue Type | Severity | Impact |
+|---|----------|-----------|----------|--------|
+| 1 | Concurrency | Missing interior mutability | Critical | Compilation failure, data races |
+| 2 | Performance | False write locks | High | 40-60% parallelism loss |
+| 3 | Security | Integer underflow | Critical | Fund theft vulnerability |
+| 4 | DeFi | AMM invariant violation | High | Pool value drainage |
+| 5 | Blockchain | Missing reorg handling | Medium | 1-3% phantom events |
+| 6 | Security | Signature validation | Critical | Multi-million dollar exploit |
+| 7 | Gas | Storage read inefficiency | Medium | 30-50% higher gas costs |
+| 8 | Async | Mutex across await | High | 10-100x slowdown |
+| 9 | Concurrency | TOCTOU race condition | Critical | Double-spending |
+| 10 | Gas | Storage packing misuse | Medium | Misleading optimization |
+| 11 | Integration | Unbounded RPC queries | High | Application crashes |
+| 12 | Security | Oracle manipulation | Critical | Mass liquidation exploit |
+| 13 | Algorithm | Median calculation | Low | 5-10% estimation skew |
+| 14 | Performance | Cache contention | Medium | 20-40% slowdown |
+| 15 | Security | Non-idempotent retry | Critical | 2-10x fund overdraft |
 
-1. Q: An event monitor processes Ethereum events with: `for block in last_processed..=current_block { process_events(block); }` What is wrong and how to fix it?
-   A: **Issue**: No reorg handling. If blockchain reorganizes (uncle blocks), events from reverted blocks are already processed and won't be unwound, causing state inconsistencies. **Impact**: Duplicated/phantom events lead to incorrect balance calculations, missed reversals, and potential financial loss. Affects 1-3% of blocks during network instability. **Correction**: Add confirmation depth and reorg detection: `let confirmed_block = current_block.saturating_sub(12); if current_block < last_processed { handle_reorg(last_processed, current_block); } for block in last_processed..=confirmed_block { process_events(block); }` Store last 12 blocks in reversible buffer for reorg recovery.
+---
 
-1. Q: A cross-chain bridge validates transfers with: `if signatures.len() >= threshold { execute_transfer(); }` What is wrong and how to fix it?
-   A: **Issue**: Count-based threshold without verifying signature validity or uniqueness. Malicious validator could submit same signature multiple times or invalid signatures to meet threshold. **Impact**: Critical security vulnerability allowing unauthorized bridge transfers and total loss of locked funds (multi-million dollar exploit risk). **Correction**: Verify each signature and ensure uniqueness: `let mut valid_signers = HashSet::new(); for sig in &signatures { let signer = recover_signer(transfer_hash, sig)?; require!(authorized_validators.contains(&signer), "Unauthorized"); require!(valid_signers.insert(signer), "Duplicate signature"); } require!(valid_signers.len() >= threshold, "Insufficient signatures");`
+## 1. Arc Without Interior Mutability
 
-1. Q: Gas optimization code uses: `for (uint i; i < arr.length; i++) { process(arr[i]); }` What is wrong and how to fix it?
-   A: **Issue**: `arr.length` is read from storage on every iteration, costing 100 gas per read. For 100-element array, wastes 10,000 gas unnecessarily. **Impact**: 30-50% higher gas costs for array operations, making protocol uncompetitive and limiting adoption. **Correction**: Cache length in memory: `uint256 len = arr.length; for (uint256 i; i < len; i++) { process(arr[i]); }` Saves 9,900 gas for 100-element array (1 storage read instead of 100). Further optimize with unchecked increment: `for (uint256 i; i < len;) { process(arr[i]); unchecked { ++i; } }` saves additional 5-10 gas per iteration in Solidity 0.8+.
+### Question
+A developer writes this Rust code for a blockchain transaction pool:
+```rust
+let mut pending = Arc::new(HashMap::new());
+thread::spawn(move || {
+    pending.insert(tx_hash, tx);
+});
+```
+What is wrong and how to fix it?
 
-1. Q: A Rust async function holds a mutex across await: `let data = mutex.lock().unwrap(); async_operation().await; drop(data);` What is wrong and how to fix it?
-   A: **Issue**: Holding synchronous mutex guard across await point blocks executor thread, preventing other tasks from running. If async operation takes seconds, entire runtime stalls. **Impact**: Deadlocks or severe throughput degradation (10-100x slowdown) in async blockchain indexers, RPC servers, and validators. Violates async runtime assumptions. **Correction**: Use async-aware lock or minimize critical section: **Option 1**: `let data = { mutex.lock().unwrap().clone() }; async_operation().await;` (release lock before await) **Option 2**: Use `tokio::sync::Mutex`: `let data = async_mutex.lock().await; async_operation().await; drop(data);` (async-aware locking). Best practice: restructure to avoid holding locks across await entirely.
+### Answer
 
-1. Q: A blockchain node checks transaction nonce with: `if tx.nonce == expected_nonce { apply_transaction(tx); expected_nonce++; }` in concurrent environment. What is wrong and how to fix it?
-   A: **Issue**: Race condition (check-then-act pattern) allows multiple threads to pass the nonce check simultaneously, executing duplicate transactions. Time-of-check-time-of-use (TOCTOU) vulnerability. **Impact**: Double-spending if two threads process same transaction concurrently. Causes consensus failure and chain split if different validators execute different transaction sets. **Correction**: Use atomic compare-and-swap or lock critical section: `let mut account = accounts.entry(tx.sender).or_default(); if account.nonce != tx.nonce { return Err(Error::InvalidNonce); } apply_transaction(&tx, &mut account)?; account.nonce += 1;` Entire check-execute-increment sequence must be atomic. Better: use `Mutex` or `RwLock` to serialize per-account transaction processing.
+**Issue**: `Arc<HashMap>` provides shared ownership but not interior mutability. The code won't compile because `Arc` doesn't allow mutation without a lock.
 
-1. Q: A developer optimizes storage by packing multiple values: `uint128 value1; uint128 value2;` in a struct, assuming they'll fit in one storage slot, but updates them separately: `data.value1 = new_value1;` and later `data.value2 = new_value2;` What is wrong and how to fix it?
-   A: **Issue**: While both uint128 fit in one uint256 slot (good), updating them separately causes two SSTORE operations (20,000 gas each = 40,000 gas total) instead of one. Packing benefit wasted by unoptimized access pattern. **Impact**: Expected 50% gas savings from packing, but actual savings only 10-15% due to separate writes. Misleading optimization. **Correction**: Update both values simultaneously when possible: `data = Data { value1: new_value1, value2: new_value2 };` uses single SSTORE (20,000 gas = 50% savings). If values update independently, reconsider packing—separate uint256s with separate update patterns may be more gas-efficient despite using two slots. Measure actual gas with both approaches.
+**Impact**: Compilation failure; even if it compiled with unsafe code, would cause data races in concurrent transaction insertion leading to undefined behavior and potential double-spending.
 
-1. Q: An indexer queries Ethereum events with: `let events = contract.events().from_block(0).to_block(latest).query().await?;` What is wrong and how to fix it?
-   A: **Issue**: Querying entire chain history (millions of blocks) in single RPC call will timeout or hit provider rate limits (most providers limit to 10,000 blocks per query). Also loads gigabytes of data into memory at once. **Impact**: Application crashes with OOM error or RPC timeouts; never successfully syncs. Development and testing can't detect issue on small testnets. **Correction**: Batch queries in chunks: `let chunk_size = 1000; for start_block in (0..=latest).step_by(chunk_size) { let end_block = (start_block + chunk_size).min(latest); let events = contract.events().from_block(start_block).to_block(end_block).query().await?; process_events(events).await?; save_progress(end_block).await?; }` Add progress checkpointing for crash recovery and respect provider rate limits with delays between chunks.
+**Correction**: Use `Arc<Mutex<HashMap<TxHash, Transaction>>>` or `Arc<RwLock<HashMap>>` for shared mutable state across threads:
 
-1. Q: A smart contract oracle updates price with: `latestPrice = fetchPrice(); emit PriceUpdated(latestPrice);` without validation. What is wrong and how to fix it?
-   A: **Issue**: No staleness check, price reasonableness validation, or manipulation detection. Malicious/compromised oracle could inject extreme prices (0, max uint, 100x off-market) causing liquidations or arbitrage exploits. **Impact**: Flash loan attacks manipulate oracle source to trigger mass liquidations in lending protocols, stealing millions. Historical examples: bZx 2020 ($350k), Harvest Finance 2020 ($24M). **Correction**: Multi-layered validation: `uint256 newPrice = fetchPrice(); require(block.timestamp - lastUpdate >= MIN_UPDATE_INTERVAL, "Too frequent"); require(newPrice > 0 && newPrice <= MAX_REASONABLE_PRICE, "Invalid price"); uint256 change = newPrice > latestPrice ? newPrice - latestPrice : latestPrice - newPrice; require(change <= latestPrice / MAX_CHANGE_PERCENT, "Price changed too fast"); latestPrice = newPrice; lastUpdate = block.timestamp; emit PriceUpdated(newPrice);` Use Chainlink or Uniswap TWAP (time-weighted average) for manipulation resistance.
+```rust
+let pending = Arc::new(Mutex::new(HashMap::new()));
+let pending_clone = Arc::clone(&pending);
+thread::spawn(move || {
+    pending_clone.lock().unwrap().insert(tx_hash, tx);
+});
+```
 
-1. Q: A Rust program calculates median with: `let mut values = vec![...]; values.sort(); let median = values[values.len() / 2];` What is wrong and how to fix it?
-   A: **Issue**: Integer division floors down, so for even-length vectors, always returns second-half element instead of average of two middle elements (standard median definition). Off-by-one bias. **Impact**: Systematic skew in blockchain gas price estimation, potentially causing 5-10% overpayment or transaction failures. Statistical incorrectness breaks assumptions in dependent systems. **Correction**: Handle odd/even cases: `values.sort_unstable(); let median = if values.len() % 2 == 1 { values[values.len() / 2] } else { let mid = values.len() / 2; (values[mid - 1] + values[mid]) / 2 };` For integer types, be careful with overflow in average calculation: `values[mid-1]/2 + values[mid]/2` or use checked arithmetic.
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    A[Wrong: Arc HashMap] -->|Compilation Error| B[No Interior Mutability]
+    C[Correct: Arc Mutex HashMap] -->|Thread-Safe| D[Multiple Threads Access]
+    
+    style A fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
 
-1. Q: A developer profiles Rust code and sees 30% CPU time in `keccak256()` calls, then optimizes by caching hashes: `let cache = Arc::new(Mutex<HashMap<Vec<u8>, Hash>>);` What is wrong and how to fix it?
-   A: **Issue**: Using `Vec<u8>` as HashMap key requires cloning data on every lookup for hashing, negating cache benefits. Also mutex contention in hot path causes more overhead than original hash computation. **Impact**: Cache actually slows down code by 20-40% instead of speeding it up. Incorrect profiling interpretation leads to counter-productive optimization. **Correction**: Use borrowed key type or fixed-size array: `let cache: DashMap<[u8; 32], Hash> = DashMap::new();` (lock-free concurrent map with fixed-size key). Or restructure to cache by higher-level identifier (transaction hash) instead of raw data. Always benchmark "optimization" to confirm improvement; premature optimization is root of evil. Consider if SIMD-accelerated hash (`sha3` crate with AVX-512) would be simpler than caching.
+---
 
-1. Q: A cross-chain bridge implements retry logic: `while !transaction_confirmed() { submit_transaction(); sleep(1 sec); }` What is wrong and how to fix it?
-   A: **Issue**: No idempotency check—if first transaction is pending (not failed), subsequent submits create duplicate transactions, executing bridge transfer multiple times and losing funds. **Impact**: Multiplies user funds loss; 2-10x overdraft depending on retry count. Catastrophic in production. Historical example: several bridges lost $10M+ from retry logic bugs. **Correction**: Generate deterministic transaction ID and check before retry: `let tx_id = generate_idempotent_id(&transfer); loop { match check_status(tx_id) { Status::Confirmed => return Ok(()), Status::Failed => { submit_transaction(tx_id, &transfer)?; sleep(backoff.next()); }, Status::Pending => sleep(poll_interval), } }` Use exponential backoff to avoid hammering network. Store processed tx_id in database to prevent double-processing across restarts.
+## 2. Solana Account Lock Optimization
+
+### Question
+In Solana transaction processing, a program declares accounts as:
+```rust
+accounts: [signer, writable_account, writable_account]
+```
+but only reads from both writable accounts. What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Declaring accounts as writable when only reading them causes false account conflicts, preventing parallel execution of non-conflicting transactions. Sealevel runtime conservatively assumes write lock needed.
+
+**Impact**: Reduces parallelism by 40-60% for read-heavy workloads, directly lowering validator throughput and potentially missing block production deadlines.
+
+**Correction**: Declare read-only accounts explicitly:
+```rust
+accounts: [signer, readonly_account, readonly_account]
+```
+or in Anchor:
+```rust
+#[account(mut)]  // only for accounts that will be modified
+```
+
+This allows runtime to schedule parallel execution of transactions reading same accounts.
+
+**Parallelism Comparison:**
+
+$$
+\text{Throughput Loss (\%)} = \frac{\text{false write locks}}{\text{total accounts}} \times \text{conflict probability} \times 100
+$$
+
+---
+
+## 3. Integer Underflow Vulnerability
+
+### Question
+A smart contract uses:
+```solidity
+uint256 amount = balanceOf[sender] - value;
+balanceOf[sender] = amount;
+```
+to deduct tokens. What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Integer underflow vulnerability. If `value > balanceOf[sender]`, uint256 wraps around to $2^{256} - (\text{value} - \text{balance})$, crediting sender with massive unintended balance.
+
+**Impact**: Critical security vulnerability enabling theft of all contract funds. Exploited in multiple 2016-2017 token hacks before Solidity 0.8.
+
+**Correction**: 
+
+**Solidity 0.8+** (built-in overflow checks):
+```solidity
+require(balanceOf[sender] >= value, "Insufficient balance");
+balanceOf[sender] -= value;
+```
+
+**Rust smart contracts** (checked arithmetic):
+```rust
+balance.checked_sub(value).ok_or(Error::InsufficientBalance)?
+```
+
+---
+
+## 4. AMM Constant Product Invariant
+
+### Question
+A DEX AMM swap function calculates output as:
+```rust
+output_amount = (input_amount * output_reserve) / input_reserve;
+```
+without applying fees. What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Violates constant product invariant $x \times y = k$ by not accounting for fees. After swap, the product will be less than $k$, breaking the core AMM property.
+
+$$
+(x + \Delta x) \times (y - \Delta y) < k
+$$
+
+**Impact**: Pool value leaks with each trade, incentivizing arbitrage that drains pool reserves over time. Mathematical inconsistency causes price manipulation vulnerabilities.
+
+**Correction**: Apply fee before calculation:
+```rust
+let input_with_fee = input_amount * 997 / 1000;  // 0.3% fee
+let output_amount = (input_with_fee * output_reserve) / (input_reserve + input_with_fee);
+```
+
+This ensures new product $(x + \Delta x) \times (y - \Delta y) \geq k$ (grows slightly due to fees).
+
+**Fee-Adjusted Invariant:**
+
+$$
+(x + \Delta x) \times (y - \Delta y) = k \times (1 + \text{fee rate})
+$$
+
+---
+
+## 5. Blockchain Reorg Handling
+
+### Question
+An event monitor processes Ethereum events with:
+```rust
+for block in last_processed..=current_block {
+    process_events(block);
+}
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: No reorg handling. If blockchain reorganizes (uncle blocks), events from reverted blocks are already processed and won't be unwound, causing state inconsistencies.
+
+**Impact**: Duplicated/phantom events lead to incorrect balance calculations, missed reversals, and potential financial loss. Affects 1-3% of blocks during network instability.
+
+**Correction**: Add confirmation depth and reorg detection:
+```rust
+let confirmed_block = current_block.saturating_sub(12);
+if current_block < last_processed {
+    handle_reorg(last_processed, current_block);
+}
+for block in last_processed..=confirmed_block {
+    process_events(block);
+}
+```
+
+Store last 12 blocks in reversible buffer for reorg recovery.
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+sequenceDiagram
+    participant M as Monitor
+    participant C as Chain
+    participant B as Buffer
+    
+    M->>C: Get current block (1000)
+    C-->>M: Block 1000
+    M->>M: Process blocks 988-1000
+    M->>B: Store in reversible buffer
+    
+    Note over C: Reorg detected!
+    C->>C: Block 995 uncle
+    
+    M->>C: Get current block
+    C-->>M: Block 994
+    M->>B: Revert blocks 995-1000
+    M->>C: Process new chain from 995
+    
+    style M fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+---
+
+## 6. Bridge Signature Validation
+
+### Question
+A cross-chain bridge validates transfers with:
+```rust
+if signatures.len() >= threshold {
+    execute_transfer();
+}
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Count-based threshold without verifying signature validity or uniqueness. Malicious validator could submit same signature multiple times or invalid signatures to meet threshold.
+
+**Impact**: Critical security vulnerability allowing unauthorized bridge transfers and total loss of locked funds (multi-million dollar exploit risk).
+
+**Correction**: Verify each signature and ensure uniqueness:
+```rust
+let mut valid_signers = HashSet::new();
+for sig in &signatures {
+    let signer = recover_signer(transfer_hash, sig)?;
+    require!(authorized_validators.contains(&signer), "Unauthorized");
+    require!(valid_signers.insert(signer), "Duplicate signature");
+}
+require!(valid_signers.len() >= threshold, "Insufficient signatures");
+```
+
+**Validation Steps:**
+1. **Recover signer** from signature
+2. **Check authorization** against validator set
+3. **Ensure uniqueness** via HashSet insertion
+4. **Verify threshold** of unique valid signers
+
+---
+
+## 7. Gas Optimization: Storage Reads
+
+### Question
+Gas optimization code uses:
+```solidity
+for (uint i; i < arr.length; i++) {
+    process(arr[i]);
+}
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: `arr.length` is read from storage on every iteration, costing 100 gas per read. For 100-element array, wastes 10,000 gas unnecessarily.
+
+**Impact**: 30-50% higher gas costs for array operations, making protocol uncompetitive and limiting adoption.
+
+**Correction**: Cache length in memory:
+```solidity
+uint256 len = arr.length;
+for (uint256 i; i < len; i++) {
+    process(arr[i]);
+}
+```
+
+Saves 9,900 gas for 100-element array (1 storage read instead of 100).
+
+**Further optimization** with unchecked increment:
+```solidity
+for (uint256 i; i < len;) {
+    process(arr[i]);
+    unchecked { ++i; }
+}
+```
+
+Saves additional 5-10 gas per iteration in Solidity 0.8+.
+
+**Gas Cost Formula:**
+
+$$
+\text{Gas Saved} = (\text{array length} - 1) \times 100
+$$
+
+---
+
+## 8. Async Mutex Across Await
+
+### Question
+A Rust async function holds a mutex across await:
+```rust
+let data = mutex.lock().unwrap();
+async_operation().await;
+drop(data);
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Holding synchronous mutex guard across await point blocks executor thread, preventing other tasks from running. If async operation takes seconds, entire runtime stalls.
+
+**Impact**: Deadlocks or severe throughput degradation (10-100x slowdown) in async blockchain indexers, RPC servers, and validators. Violates async runtime assumptions.
+
+**Correction**: Use async-aware lock or minimize critical section:
+
+**Option 1** - Release lock before await:
+```rust
+let data = { mutex.lock().unwrap().clone() };
+async_operation().await;
+```
+
+**Option 2** - Use async-aware Mutex:
+```rust
+let data = async_mutex.lock().await;
+async_operation().await;
+drop(data);
+```
+
+> **Best practice**: Restructure to avoid holding locks across await entirely.
+
+---
+
+## 9. Transaction Nonce Race Condition
+
+### Question
+A blockchain node checks transaction nonce with:
+```rust
+if tx.nonce == expected_nonce {
+    apply_transaction(tx);
+    expected_nonce++;
+}
+```
+in concurrent environment. What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Race condition (check-then-act pattern) allows multiple threads to pass the nonce check simultaneously, executing duplicate transactions. Time-of-check-time-of-use (TOCTOU) vulnerability.
+
+**Impact**: Double-spending if two threads process same transaction concurrently. Causes consensus failure and chain split if different validators execute different transaction sets.
+
+**Correction**: Use atomic compare-and-swap or lock critical section:
+```rust
+let mut account = accounts.entry(tx.sender).or_default();
+if account.nonce != tx.nonce {
+    return Err(Error::InvalidNonce);
+}
+apply_transaction(&tx, &mut account)?;
+account.nonce += 1;
+```
+
+Entire check-execute-increment sequence must be atomic. Better: use `Mutex` or `RwLock` to serialize per-account transaction processing.
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+sequenceDiagram
+    participant T1 as Thread 1
+    participant T2 as Thread 2
+    participant S as Shared State
+    
+    Note over T1,T2: TOCTOU Vulnerability
+    T1->>S: Check nonce = 5
+    T2->>S: Check nonce = 5
+    S-->>T1: OK
+    S-->>T2: OK
+    T1->>S: Execute & increment
+    T2->>S: Execute & increment
+    Note over S: Double execution!
+    
+    Note over T1,T2: Atomic Solution
+    T1->>S: Lock account
+    T1->>S: Check, execute, increment
+    T1->>S: Unlock
+    T2->>S: Lock account
+    T2->>S: Nonce mismatch
+    Note over T2: Rejected
+    
+    style T1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style T2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
+---
+
+## 10. Storage Packing Anti-Pattern
+
+### Question
+A developer optimizes storage by packing multiple values:
+```solidity
+uint128 value1;
+uint128 value2;
+```
+in a struct, assuming they'll fit in one storage slot, but updates them separately:
+```solidity
+data.value1 = new_value1;
+// later...
+data.value2 = new_value2;
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: While both uint128 fit in one uint256 slot (good), updating them separately causes two SSTORE operations (20,000 gas each = 40,000 gas total) instead of one. Packing benefit wasted by unoptimized access pattern.
+
+**Impact**: Expected 50% gas savings from packing, but actual savings only 10-15% due to separate writes. Misleading optimization.
+
+**Correction**: Update both values simultaneously when possible:
+```solidity
+data = Data { value1: new_value1, value2: new_value2 };
+```
+
+Uses single SSTORE (20,000 gas = 50% savings).
+
+> **Warning**: If values update independently, reconsider packing—separate uint256s with separate update patterns may be more gas-efficient despite using two slots. Measure actual gas with both approaches.
+
+| Approach | Storage Slots | Gas per Update | Total Gas (2 updates) |
+|----------|---------------|----------------|----------------------|
+| Separate writes (packed) | 1 | 20,000 | 40,000 |
+| Single write (packed) | 1 | 20,000 | 20,000 |
+| Separate uint256 | 2 | 20,000 | 40,000 |
+
+---
+
+## 11. Unbounded RPC Queries
+
+### Question
+An indexer queries Ethereum events with:
+```rust
+let events = contract.events()
+    .from_block(0)
+    .to_block(latest)
+    .query()
+    .await?;
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Querying entire chain history (millions of blocks) in single RPC call will timeout or hit provider rate limits (most providers limit to 10,000 blocks per query). Also loads gigabytes of data into memory at once.
+
+**Impact**: Application crashes with OOM error or RPC timeouts; never successfully syncs. Development and testing can't detect issue on small testnets.
+
+**Correction**: Batch queries in chunks:
+```rust
+let chunk_size = 1000;
+for start_block in (0..=latest).step_by(chunk_size) {
+    let end_block = (start_block + chunk_size).min(latest);
+    let events = contract.events()
+        .from_block(start_block)
+        .to_block(end_block)
+        .query()
+        .await?;
+    process_events(events).await?;
+    save_progress(end_block).await?;
+}
+```
+
+Add progress checkpointing for crash recovery and respect provider rate limits with delays between chunks.
+
+---
+
+## 12. Oracle Price Manipulation
+
+### Question
+A smart contract oracle updates price with:
+```solidity
+latestPrice = fetchPrice();
+emit PriceUpdated(latestPrice);
+```
+without validation. What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: No staleness check, price reasonableness validation, or manipulation detection. Malicious/compromised oracle could inject extreme prices (0, max uint, 100x off-market) causing liquidations or arbitrage exploits.
+
+**Impact**: Flash loan attacks manipulate oracle source to trigger mass liquidations in lending protocols, stealing millions.
+
+**Historical examples:**
+- **bZx 2020**: $350k loss
+- **Harvest Finance 2020**: $24M loss
+
+**Correction**: Multi-layered validation:
+```solidity
+uint256 newPrice = fetchPrice();
+require(block.timestamp - lastUpdate >= MIN_UPDATE_INTERVAL, "Too frequent");
+require(newPrice > 0 && newPrice <= MAX_REASONABLE_PRICE, "Invalid price");
+
+uint256 change = newPrice > latestPrice ? newPrice - latestPrice : latestPrice - newPrice;
+require(change <= latestPrice / MAX_CHANGE_PERCENT, "Price changed too fast");
+
+latestPrice = newPrice;
+lastUpdate = block.timestamp;
+emit PriceUpdated(newPrice);
+```
+
+Use **Chainlink** or **Uniswap TWAP** (time-weighted average) for manipulation resistance.
+
+**Validation Layers:**
+1. **Timestamp check** - Prevent update spam
+2. **Range check** - Reject impossible prices
+3. **Delta check** - Limit price movement per update
+4. **TWAP** - Average over time window
+
+---
+
+## 13. Median Calculation Bug
+
+### Question
+A Rust program calculates median with:
+```rust
+let mut values = vec![...];
+values.sort();
+let median = values[values.len() / 2];
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Integer division floors down, so for even-length vectors, always returns second-half element instead of average of two middle elements (standard median definition). Off-by-one bias.
+
+**Impact**: Systematic skew in blockchain gas price estimation, potentially causing 5-10% overpayment or transaction failures. Statistical incorrectness breaks assumptions in dependent systems.
+
+**Correction**: Handle odd/even cases:
+```rust
+values.sort_unstable();
+let median = if values.len() % 2 == 1 {
+    values[values.len() / 2]
+} else {
+    let mid = values.len() / 2;
+    (values[mid - 1] + values[mid]) / 2
+};
+```
+
+For integer types, be careful with overflow in average calculation:
+```rust
+values[mid-1]/2 + values[mid]/2
+```
+or use checked arithmetic.
+
+**Median Formulas:**
+
+$$
+\text{Median (odd)} = x_{\frac{n+1}{2}}
+$$
+
+$$
+\text{Median (even)} = \frac{x_{\frac{n}{2}} + x_{\frac{n}{2}+1}}{2}
+$$
+
+---
+
+## 14. Hash Cache Anti-Pattern
+
+### Question
+A developer profiles Rust code and sees 30% CPU time in `keccak256()` calls, then optimizes by caching hashes:
+```rust
+let cache = Arc::new(Mutex<HashMap<Vec<u8>, Hash>>);
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: Using `Vec<u8>` as HashMap key requires cloning data on every lookup for hashing, negating cache benefits. Also mutex contention in hot path causes more overhead than original hash computation.
+
+**Impact**: Cache actually slows down code by 20-40% instead of speeding it up. Incorrect profiling interpretation leads to counter-productive optimization.
+
+**Correction**: Use borrowed key type or fixed-size array:
+```rust
+let cache: DashMap<[u8; 32], Hash> = DashMap::new();
+```
+
+(lock-free concurrent map with fixed-size key)
+
+**Alternative approaches:**
+- Restructure to cache by higher-level identifier (transaction hash) instead of raw data
+- Always benchmark "optimization" to confirm improvement
+- Consider if SIMD-accelerated hash (`sha3` crate with AVX-512) would be simpler than caching
+
+> **Remember**: Premature optimization is the root of evil
+
+---
+
+## 15. Non-Idempotent Retry Logic
+
+### Question
+A cross-chain bridge implements retry logic:
+```rust
+while !transaction_confirmed() {
+    submit_transaction();
+    sleep(1 sec);
+}
+```
+What is wrong and how to fix it?
+
+### Answer
+
+**Issue**: No idempotency check—if first transaction is pending (not failed), subsequent submits create duplicate transactions, executing bridge transfer multiple times and losing funds.
+
+**Impact**: Multiplies user funds loss; 2-10x overdraft depending on retry count. Catastrophic in production.
+
+**Historical example**: Several bridges lost $10M+ from retry logic bugs.
+
+**Correction**: Generate deterministic transaction ID and check before retry:
+```rust
+let tx_id = generate_idempotent_id(&transfer);
+loop {
+    match check_status(tx_id) {
+        Status::Confirmed => return Ok(()),
+        Status::Failed => {
+            submit_transaction(tx_id, &transfer)?;
+            sleep(backoff.next());
+        },
+        Status::Pending => sleep(poll_interval),
+    }
+}
+```
+
+**Key improvements:**
+- Use **exponential backoff** to avoid hammering network
+- Store processed `tx_id` in database to prevent double-processing across restarts
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+stateDiagram-v2
+    [*] --> GenerateID: Start transfer
+    GenerateID --> CheckStatus: Use deterministic tx_id
+    
+    CheckStatus --> Confirmed: Already done
+    CheckStatus --> Failed: Submit needed
+    CheckStatus --> Pending: Wait
+    
+    Failed --> Submit: Idempotent submit
+    Submit --> Backoff: Exponential delay
+    Backoff --> CheckStatus
+    
+    Pending --> PollingWait: Sleep interval
+    PollingWait --> CheckStatus
+    
+    Confirmed --> [*]: Success
+    
+    note right of GenerateID
+        Deterministic ID prevents
+        duplicate submissions
+    end note
+    
+    note right of CheckStatus
+        Check before submit
+        avoids duplication
+    end note
+```
