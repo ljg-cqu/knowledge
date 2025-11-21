@@ -33,57 +33,39 @@ Extracted Q&A pairs from any Extract/ prompt type (Cloze, Decision, Creativity, 
 
 **LLM: Automatically determine single vs. multi-round based on content complexity**
 
-### When to Use Multiple Rounds (2-5 rounds)
+### When to Use Multiple Rounds (2-5)
 
-Expand to multiple rounds when content exhibits:
-- **Depth layers**: Topic has 3+ distinct levels (concept → mechanism → usage → edge cases)
+Expand when content exhibits:
+- **Depth layers**: 3+ distinct levels (concept → mechanism → usage → edge cases)
 - **Length threshold**: Single answer would exceed 150 words
 - **Natural follow-ups**: Predictable questions emerge from initial answer
 - **Progressive building**: Understanding requires incremental steps
-- **Application gap**: Theory needs separate practical demonstration
-- **Significant edge cases**: Trade-offs or limitations warrant dedicated discussion
 
 ### When to Keep Single Round
 
 Use single Q&A when:
-- Topic is straightforward with 1-2 key points
+- Topic straightforward with 1-2 key points
 - Answer naturally fits in <150 words
 - No obvious follow-up questions
-- Concept doesn't require scaffolding
 
-### Multi-Round Structure for Conversations
+### Multi-Round Structure
 
 **Round Progression** (adapt to content):
-1. **Foundation**: Core concept, high-level answer
-2. **Mechanism**: How it works, deeper detail
-3. **Practice**: Real-world usage, concrete examples
-4. **Nuance**: Edge cases, trade-offs, when not to use
+1. Foundation: Core concept, high-level answer
+2. Mechanism: How it works, deeper detail
+3. Practice: Real-world usage, concrete examples
+4. Nuance: Edge cases, trade-offs, when not to use
 
-**Round Labels** (conversational style):
-- Avoid rigid "Round 1, Round 2"
-- Use natural conversation markers
-- Label with purpose: "(Getting Started)", "(Going Deeper)", "(Getting Practical)", "(Edge Cases)"
-- Or omit labels entirely if flow is obvious
+**Round Labels**: Use natural markers like "(Getting Started)", "(Going Deeper)" or omit if flow is obvious
 
-**Question Evolution**:
-- **Initial**: "What is X?"
-- **Clarification**: "Wait, so..." or "How does that work?"
-- **Application**: "How would I use this?"
-- **Edge case**: "What if..." or "When shouldn't I..."
+**Key Principles**:
+- Ruthlessly eliminate filler
+- One focus per round
+- Answer what's asked, nothing more
+- Leave hooks for next question
+- Self-contained rounds
 
-**Key Principles for Multi-Round** (preserve brevity):
-- **Ruthlessly eliminate filler**: Cut every unnecessary word
-- **One focus per round**: Don't pack multiple concepts in one exchange
-- **Answer what's asked**: Nothing more per round
-- **Leave hooks**: End answers with natural segues to next question
-- **Self-contained rounds**: Can pause/resume between exchanges
-- **Fragments welcome**: "Exactly.", "Three things.", "Nope." when natural
-
-**Pacing**:
-- 2 rounds: Simple topic with one natural follow-up
-- 3 rounds: Standard complex topic (concept → detail → usage)
-- 4 rounds: Complex with significant edge cases
-- 5 rounds: Maximum (rare), only for deeply layered topics
+**Pacing**: 2 rounds (simple + follow-up) | 3 rounds (standard complex) | 4 rounds (complex + edge cases) | 5 rounds (max, rare)
 
 ## Conversation Management
 
@@ -91,21 +73,17 @@ Use single Q&A when:
 - **Redirect off-topic**: "Let's get back to...", "Parking that for now..."
 - **Recover from interruption**: "Back. Where were we?", "Picking up from..."
 - **Handle confusion**: "Lost you? Let me rephrase...", "Different angle: [reframe]"
-- **Check engagement**: "Still with me?", "Making sense?", "Too fast?"
+- **Check engagement**: "Still with me?", "Making sense?"
 
 ## Essential Dynamics for 1-on-1 Conversations
 
-Real-world 1-on-1 conversations include natural disruptions. Apply selectively (not to every dialogue).
+Apply selectively (not to every dialogue). Balance: 80% content, 20% dynamics.
 
 ### Confusion and Clarification
 
-**Detection**: Long pause, "Wait, what?", wrong interpretation in follow-up
+**Detection**: Long pause, "Wait, what?", wrong interpretation
 
-**Response patterns**:
-- **Backtrack**: "Let me rephrase that..."
-- **Simplify**: "Too abstract? Here's concrete: [example]"
-- **Check**: "Where'd I lose you?"
-- **Different angle**: "Okay, try this way: [alternative]"
+**Response**: "Let me rephrase...", "Too abstract? Here's concrete: [example]", "Where'd I lose you?", "Try this way: [alternative]"
 
 **Example**:
 > A: Use choreography for distributed sagas.
@@ -116,10 +94,7 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 
 **Common**: Connection loss, PC freeze, background noise
 
-**Recovery patterns**:
-- **Resume**: "Back. Where were we? Right—[last point]..."
-- **Quick recap**: "Lost you for a sec. We covered X, now Y..."
-- **Context rebuild**: "Before we dropped, you asked about... [resume]"
+**Recovery**: "Back. Where were we? Right—[last point]...", "Lost you for a sec. We covered X, now Y..."
 
 **Example**:
 > A: So the compensating trans— [connection drops]
@@ -129,18 +104,13 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 
 **When needed**: After interruptions, long pauses, tangled threads
 
-**Rebuild techniques**:
-- **Quick summary**: "To recap: covered X, Y. Now on Z."
-- **Last point**: "We left off at [key concept]. Continuing..."
-- **Thread trace**: "You asked A, I answered B, which led to C. Now..."
+**Rebuild**: "To recap: covered X, Y. Now on Z.", "We left off at [key concept]. Continuing...", "You asked A, I answered B, which led to C. Now..."
 
 **Example**:
 > [After 5-minute interruption]
 > A: Back. Quick recap: indexes speed up lookups. We covered when to use them. Now: trade-offs.
 
-**Balance principle**: 80% content, 20% dynamics. Use when they enhance learning, not as decoration.
-
-**For group dynamics, disagreement handling, and comprehensive patterns** → See ConversationDynamics.md §8, §14, §17, §19
+**For comprehensive patterns** → See ConversationDynamics.md
 
 ## Audio-Only Adaptation
 
@@ -184,8 +154,6 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 > 1. Q: What's O(log n) mean?
 >    A: Runtime grows super slowly as input grows. Double your data? Only one extra step. It's what you get with binary search—chop the problem in half each time.
 
-**LLM Analysis**: Simple concept, <50 words, no natural follow-ups needed → Single round
-
 ---
 
 ### Example 2: Multi-Round (Complex Topic)
@@ -207,7 +175,7 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 >    Q: Any downsides?
 >    A: Yep. Writes get slower—index needs updating on INSERT/UPDATE. Uses storage. Don't over-index. Profile first, optimize what's actually slow.
 
-**After** (With Dynamics - More Realistic):
+**With Dynamics** (More Realistic):
 > 1. Q: What's a database index?
 >    A: Fast lookup table. Maps column values to row locations. Like a book index—jump straight to what you need instead of scanning every page.
 >    
@@ -227,8 +195,6 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 >    
 >    Q: How do I know which ones then?
 >    A: Profile first. Find what's actually slow. Then index those specific columns. Measure, don't guess.
-
-**LLM Analysis**: Has depth layers (what/how/when/trade-offs), predictable follow-ups, needs progressive building → 4 rounds; with dynamics shows realistic confusion and interruption handling
 
 ---
 
@@ -250,5 +216,3 @@ Real-world 1-on-1 conversations include natural disruptions. Apply selectively (
 >    
 >    Q: Which one for e-commerce checkout?
 >    A: Orchestration. Checkout's critical, needs tight monitoring. Trade scalability for debuggability. You want one place tracking the whole flow.
-
-**LLM Analysis**: Multiple layers (problem/solution/mechanism/implementation/choice), needs scaffolding → 4 rounds

@@ -37,57 +37,40 @@ Extracted Q&A pairs from any Extract/ prompt type (Cloze, Decision, Creativity, 
 
 **LLM: Automatically determine single vs. multi-phase based on content complexity**
 
-### When to Use Multiple Phases (2-5 phases)
+### When to Use Multiple Phases (2-5)
 
-Expand to multiple discussion phases when content exhibits:
-- **Depth layers**: Topic has 3+ distinct levels requiring exploration
-- **Length threshold**: Single discussion exchange would exceed 200 words total
+Expand when content exhibits:
+- **Depth layers**: 3+ distinct levels requiring exploration
+- **Length threshold**: Single exchange would exceed 200 words total
 - **Natural topic shifts**: Predictable phase transitions (overview → deep dive → application → trade-offs)
 - **Progressive building**: Group needs to align on basics before tackling complexity
-- **Multiple perspectives**: Topic benefits from different viewpoints across phases
-- **Significant debate points**: Trade-offs or approaches warrant separate discussion
 
 ### When to Keep Single Phase
 
 Use single discussion when:
-- Topic is straightforward, resolvable in one exchange
+- Topic straightforward, resolvable in one exchange
 - Discussion naturally fits in <200 words total across speakers
 - No obvious phase transitions
-- Concept doesn't require staged exploration
 
-### Multi-Phase Structure for Discussions
+### Multi-Phase Structure
 
 **Phase Progression** (adapt to content):
-1. **Initial Discussion**: Framing the problem, initial perspectives
-2. **Deep Dive**: Technical details, mechanism exploration
-3. **Application Debate**: How to use, implementation approaches
-4. **Trade-off Analysis**: Pros/cons, when to use/avoid
+1. Initial Discussion: Framing the problem, initial perspectives
+2. Deep Dive: Technical details, mechanism exploration
+3. Application Debate: How to use, implementation approaches
+4. Trade-off Analysis: Pros/cons, when to use/avoid
 
-**Phase Labels** (discussion style):
-- Avoid rigid "Phase 1, Phase 2"
-- Use discussion markers: "(Opening)", "(Digging Deeper)", "(Getting Practical)", "(Weighing Options)"
-- Or use natural transitions without labels
-- Signal shifts: "Let's pivot to...", "Okay, next angle...", "Building on that..."
+**Phase Labels**: Use discussion markers like "(Opening)", "(Digging Deeper)" or natural transitions without labels
 
-**Discussion Evolution**:
-- **Opening**: Frame problem, get initial takes
-- **Exploration**: Challenge assumptions, build on ideas
-- **Application**: "How would this work in practice?"
-- **Synthesis**: Resolve disagreements, reach alignment or agree to disagree
+**Key Principles**:
+- Concise turns per speaker
+- One topic per phase
+- Build through dialogue, not monologue
+- Distribute speaking across participants
+- Natural phase transitions
+- Maintain momentum
 
-**Key Principles for Multi-Phase** (preserve efficiency):
-- **Concise turns**: Each speaker contribution focused and brief
-- **One topic per phase**: Don't mix concerns across phases
-- **Build through dialogue**: Ideas evolve through exchange, not monologue
-- **All voices matter**: Distribute speaking across participants per phase
-- **Natural transitions**: Phase shifts emerge organically from discussion
-- **Maintain momentum**: Don't let phases drag; move forward when ready
-
-**Phase Distribution**:
-- 2 phases: Simple topic with one natural pivot (problem → solution)
-- 3 phases: Standard complex topic (problem → approaches → choice)
-- 4 phases: Complex with trade-offs (problem → solutions → debate → synthesis)
-- 5 phases: Maximum (rare), only for highly controversial or layered topics
+**Phase Distribution**: 2 phases (simple + pivot) | 3 phases (standard complex) | 4 phases (complex + trade-offs) | 5 phases (max, rare)
 
 ## Discussion Management
 
@@ -95,21 +78,18 @@ Use single discussion when:
 - **Redirect drift**: "Good tangent, but let's refocus on...", "Related, but let's stick with..."
 - **Recover disruption**: "Before we dropped, we were discussing...", "Back—quick recap..."
 - **Align understanding**: "Are we all on the same page?", "Let me check everyone's following..."
-- **Navigate disagreement**: "Both valid. Let's explore...", "Different contexts maybe? For our case..."
+- **Navigate disagreement**: "Both valid. Let's explore...", "Different contexts maybe?"
 - **Manage participation**: "What do others think?", "Let's hear from...", "Any other perspectives?"
 
 ## Essential Dynamics for Group Discussions
 
-Group discussions naturally include debate, drift, and participation challenges. Apply selectively (not to every dialogue).
+Apply selectively (not to every dialogue). Balance: 80% content, 20% dynamics.
 
 ### Off-Topic Drift and Redirection
 
 **Recognition**: Tangential questions, related but non-essential topics, scope creep
 
-**Redirection techniques**:
-- **Gentle**: "Good point. Let's bookmark that and get back to..."
-- **Direct**: "That's off our main thread. Back to..."
-- **Parking lot**: "Let's note that for later. Right now..."
+**Redirection**: "Good point. Let's bookmark that and get back to...", "That's off our main thread. Back to...", "Let's note that for later. Right now..."
 
 **Example**:
 > A: So anyway, this reminds me of blockchain consensus...
@@ -117,11 +97,7 @@ Group discussions naturally include debate, drift, and participation challenges.
 
 ### Disagreement and Constructive Debate
 
-**Constructive conflict patterns**:
-- **Respectful challenge**: "I see it differently. What if..."
-- **Evidence-based**: "My experience says X. Why Y in your case?"
-- **Explore both**: "Valid. Let's look at both angles..."
-- **Find common ground**: "We agree on X. Disagree on Y. Let's focus on..."
+**Constructive patterns**: "I see it differently. What if...", "My experience says X. Why Y in your case?", "Valid. Let's look at both angles...", "We agree on X. Disagree on Y. Let's focus on..."
 
 **Example**:
 > A: Always normalize to 3NF.
@@ -130,11 +106,7 @@ Group discussions naturally include debate, drift, and participation challenges.
 
 ### Managing Participation
 
-**Balance techniques**:
-- **Invite quiet voices**: "What do others think?", "Let's hear from..."
-- **Redirect dominance**: "Good points. Before we continue, any other perspectives?"
-- **Check alignment**: "Are we all on the same page?"
-- **Explicitly rotate**: "We've heard from A and B. C, your take?"
+**Balance techniques**: "What do others think?", "Let's hear from...", "Are we all on the same page?", "Before we continue, any other perspectives?"
 
 **Example**:
 > A: [Extended monologue on architecture]
@@ -145,18 +117,13 @@ Group discussions naturally include debate, drift, and participation challenges.
 
 **When needed**: After disruptions, when late joiners arrive, after tangents
 
-**Recovery patterns**:
-- **Quick summary**: "To recap: covered X, Y. Now on Z."
-- **Full reset**: "Let's realign. Main question was..."
-- **For newcomers**: "Catching up—we're discussing [topic]. Question on the table: [current focus]"
+**Recovery**: "To recap: covered X, Y. Now on Z.", "Let's realign. Main question was...", "Catching up—we're discussing [topic]. Question on the table: [current focus]"
 
 **Example**:
 > [After interruption]
 > A: Back. Quick recap: we're debating choreography vs orchestration for Sagas. Pros and cons so far...
 
-**Balance principle**: 80% content, 20% dynamics. Use when they enhance collaborative learning, not as artificial conflict.
-
-**For 1-on-1 confusion handling, formal presentation patterns, and comprehensive coverage** → See ConversationDynamics.md §6, §9, §10, §19, §20
+**For comprehensive patterns** → See ConversationDynamics.md
 
 ## Audio-Only Adaptation
 
@@ -182,9 +149,7 @@ Group discussions naturally include debate, drift, and participation challenges.
    
    [Phase 3: Application/synthesis]
 
-**Speaker Labels**:
-- **A:** / **B:** / **C:**
-- Or role labels: **Engineer:** / **PM:** / **Designer:**
+**Speaker Labels**: **A:** / **B:** / **C:** or role labels: **Engineer:** / **PM:** / **Designer:**
 
 ## Instructions
 - Use `1.` for every item; Markdown auto-numbers
@@ -216,8 +181,6 @@ Group discussions naturally include debate, drift, and participation challenges.
 >    **B:** Got it. And that's better than O(N²) but worse than O(N).
 >    
 >    **A:** Right. It's in that efficient sorting territory.
-
-**LLM Analysis**: Straightforward calculation, quick back-and-forth, ~80 words total → Single phase
 
 ---
 
@@ -253,8 +216,6 @@ Group discussions naturally include debate, drift, and participation challenges.
 >    
 >    **B:** Good call.
 
-**LLM Analysis**: Has distinct phases (concepts → details → application), benefits from staged exploration → 3 phases
-
 ---
 
 ### Example 3: Multi-Phase (High Complexity with Debate)
@@ -263,37 +224,7 @@ Group discussions naturally include debate, drift, and participation challenges.
 > Q: In a microservices architecture, you need to implement distributed transactions across three services. How would you approach this?
 > A: Consider the Saga pattern with compensating transactions. Implement either choreography (event-driven) or orchestration (coordinator-based). Key factors: consistency requirements, failure handling, monitoring complexity.
 
-**After** (Discussion - Multi-Phase, Clean):
-> 1. Q: Our payment flow spans three microservices. How do we handle the transaction across all of them?
->    A: **Architect:** Can't use traditional ACID. Need Saga pattern.
->    
->    **Dev Lead:** Sagas... that's compensating transactions? Each service can undo its work if something fails?
->    
->    **Architect:** Right. Each step has a compensating action.
->    
->    **Implementation approaches:**
->    
->    **Dev Lead:** How do we implement it?
->    
->    **Architect:** Two ways. Choreography—event-driven, services react to events. Or orchestration—central coordinator manages the flow.
->    
->    **Dev Lead:** What's better?
->    
->    **Now let's decide for our use case:**
->    
->    **Architect:** Depends on our consistency requirements. How strict?
->    
->    **Product:** Pretty strict. Failed payments can't show as successful.
->    
->    **Architect:** Then orchestration. Easier to monitor, easier to debug. One place tracking state.
->    
->    **Dev Lead:** But doesn't that create a single point of failure?
->    
->    **Architect:** It does. But choreography is harder to debug—tracing events across services. Given our team size and payment criticality, orchestration wins.
->    
->    **Dev Lead:** Makes sense. Let's prototype it.
-
-**After** (With Dynamics - More Realistic):
+**After** (Discussion - Multi-Phase):
 > 1. Q: Our payment flow spans three microservices. How do we handle the transaction across all of them?
 >    A: **Architect:** Can't use traditional ACID across services. Need Saga pattern.
 >    
@@ -343,8 +274,6 @@ Group discussions naturally include debate, drift, and participation challenges.
 >    
 >    **Dev Lead:** Agreed. Let's prototype it.
 
-**LLM Analysis**: Multiple phases (problem → solutions → debate → decision), requires structured exploration → 4 phases; with dynamics shows clarification requests, disagreement, interruptions, and natural decision-making
-
 ---
 
 ### Example 4: Single Phase (Despite Moderate Length)
@@ -368,5 +297,3 @@ Group discussions naturally include debate, drift, and participation challenges.
 >    **B:** TCP. Can't lose a payment. Reliability over speed.
 >    
 >    **A:** Clear. UDP for us then.
-
-**LLM Analysis**: Clear comparison, quick decision, single conversational flow, ~90 words → Single phase (no need to artificially split)
