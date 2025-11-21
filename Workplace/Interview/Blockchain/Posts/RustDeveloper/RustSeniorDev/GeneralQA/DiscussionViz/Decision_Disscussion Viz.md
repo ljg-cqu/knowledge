@@ -31,6 +31,41 @@
    
    **Lead:** Exactly. We're addressing root cause, not symptoms. Let's get instrumenting.
 
+   **3-Day Recovery Plan:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   gantt
+       title Transaction Retry Rate Optimization Timeline
+       dateFormat YYYY-MM-DD
+       section Diagnosis
+       Instrument banking_stage.rs           :a1, 2024-01-01, 1d
+       Build transaction dependency graph    :a2, after a1, 1d
+       Identify hot accounts                 :a3, after a1, 1d
+       section Quick Wins
+       Implement account-specific sharding   :b1, 2024-01-02, 1d
+       Deploy and validate                   :b2, after b1, 1d
+       section Optimization
+       Implement greedy scheduler            :c1, 2024-01-03, 1d
+       Test and measure results              :c2, after c1, 1d
+   ```
+
+   | **Phase** | **Day** | **Action** | **Expected Impact** | **Target Retry Rate** |
+   |-----------|---------|------------|---------------------|----------------------|
+   | Diagnosis | 1 | Instrument `banking_stage.rs` + build dependency graph | Identify bottleneck | 15% (baseline) |
+   | Quick Win | 2 | Account-specific sharding for hot accounts | 5-8% reduction | 7-10% |
+   | Optimization | 3 | Greedy maximal independent set scheduler | 7-10% reduction | <5% ✓ |
+
 1. Q: We're building a DEX. Target market is 60% stablecoin pairs, 40% volatile pairs. Uniswap V2 constant product versus Curve's StableSwap model. How do we choose?
    A: **Architect:** Hmm... Hybrid approach. Best of both worlds.
    
@@ -66,6 +101,39 @@
    
    **Architect:** Exactly. Let's derisk with V2 launch first, then layer in Curve when we've got users.
 
+   **Market Split & Model Comparison:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8"
+     }
+   }}%%
+   pie title Target Market Distribution
+       "Stablecoin Pairs" : 60
+       "Volatile Pairs" : 40
+   ```
+
+   | **Aspect** | **Uniswap V2** | **Curve StableSwap** |
+   |------------|---------------|---------------------|
+   | **Best For** | Volatile pairs (ETH-TOKEN) | Stablecoin pairs (USDC-USDT) |
+   | **Slippage** | Standard | 10-50x lower for stablecoins |
+   | **Complexity** | Simple | Complex (amplification tuning) |
+   | **Capital Efficiency** | Moderate | High for stablecoins |
+   | **Audit Cost** | Baseline | +30% over V2 |
+   | **TVL Potential** | 1x | 2-3x growth with hybrid |
+
+   **Implementation Strategy:**
+
+   | **Phase** | **Timeline** | **Action** | **Rationale** |
+   |-----------|--------------|------------|---------------|
+   | 1 | Months 1-3 | Launch V2-only | Prove traction, simple implementation |
+   | 2 | Months 4-6 | Add Curve pools | Capture 60% of market with optimal model |
+
 1. Q: Blockchain indexer is 3 hours behind chain head. Target is under 5 seconds. Profiling shows 60% database writes, 30% RPC fetches, 10% parsing. One engineer, two weeks. Where do we focus?
    A: **Tech Lead:** Bottlenecks in ROI order. Database writes first.
    
@@ -96,6 +164,42 @@
    **Tech Lead:** Exactly. Low-hanging fruit. Proven patterns. If we're still behind after that, we consider horizontal scaling.
    
    **Engineer:** Makes sense. Pareto principle—address the 60% problem first.
+
+   **Current Bottleneck Distribution:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8"
+     }
+   }}%%
+   pie title Indexer Time Breakdown
+       "Database Writes" : 60
+       "RPC Fetches" : 30
+       "Parsing" : 10
+   ```
+
+   **Optimization ROI Analysis:**
+
+   | **Component** | **Current %** | **Optimization** | **Speedup** | **After %** | **Total Speedup** | **Effort** |
+   |---------------|---------------|------------------|-------------|-------------|-------------------|------------|
+   | DB Writes | 60% | Bulk inserts (1000 batch) | 5-10x | 6-12% | 2.2x | Week 1 (50 LOC) |
+   | RPC Fetches | 30% | Parallel batch (10-20 blocks) | 3-5x | 6-10% | 4.5x (cumulative) | Week 2 (100 LOC) |
+   | Parsing | 10% | ❌ Skip (low ROI) | 2x | 5% | Negligible | Not worth it |
+
+   **Expected Results:**
+
+   $$
+   \text{Total Speedup} = \frac{1}{\frac{0.06 + 0.06 + 0.10}{1}} \approx 4.5\text{x}
+   $$
+
+   **Before:** 3 hours behind (10,800 seconds)  
+   **After:** ~40 minutes behind (2,400 seconds)  
+   **Target:** <5 seconds ✓ (achieved with further horizontal scaling if needed)
 
 1. Q: Critical smart contract bug found in production. No exploit yet. We can pause immediately—30 min downtime, affects all users—or gradually migrate over 6 hours with no downtime but the exploit window stays open. How do we decide?
    A: **Security Lead:** Risk-based framework. First question: is the vulnerability public?
@@ -132,6 +236,47 @@
    
    **Security:** Absolutely. Pre-pause communication, incident report, post-mortem. Transparency builds trust.
 
+   **Decision Framework:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   graph TD
+       A[Critical Bug Found] --> B{Vulnerability Public?}
+       B -->|Yes| C{Value at Risk?}
+       B -->|No| D{Value at Risk?}
+       C -->|>$10M| E[Pause Immediately]
+       C -->|$10K-$1M| F[Hybrid: Reduce Exposure + Monitor]
+       C -->|<$10K| F
+       D -->|>$10M| E
+       D -->|$10K-$1M| G[Gradual Migration]
+       D -->|<$10K| G
+       
+       style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+       style F fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+       style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+   ```
+
+   | **Scenario** | **Vulnerability Status** | **Value at Risk** | **Decision** | **Rationale** |
+   |--------------|--------------------------|-------------------|--------------|---------------|
+   | 1 | Public | >$10M | ⚠️ Pause immediately (30 min) | ~100% exploit probability within hours |
+   | 2 | Internal | >$10M | ⚠️ Pause immediately (30 min) | Insolvency risk > downtime cost |
+   | 3 | Internal | $10K-$1M | ⚡ Hybrid (reduce limits + migrate) | 1-2% exploit probability over 6h |
+   | 4 | Internal | <$10K | ✅ Gradual migration (6h) | Minimal risk, preserve UX |
+
+   **Exploit Probability:**
+   - **Public disclosure:** ~1 hour before exploit attempts
+   - **Internal finding:** 10-20% probability per day
+
 1. Q: Cross-chain bridge for Ethereum to Solana. Option A: 7-of-10 multisig, 2-minute finality, $20 per transfer. Option B: optimistic bridge, 7-day dispute period, $5 per transfer. Users are DeFi traders doing 10-50 transfers per month. Which one?
    A: **Architect:** Multisig. No question.
    
@@ -164,6 +309,51 @@
    **Product:** Makes sense. Uptime requirements?
    
    **Architect:** 99.9%. Average transfer under 3 minutes. Zero security incidents. That's the bar.
+
+   **Bridge Comparison:**
+
+   | **Aspect** | **Option A: Multisig** | **Option B: Optimistic** |
+   |------------|------------------------|--------------------------|
+   | **Finality** | 2 minutes | 7 days |
+   | **Cost per Transfer** | $20 | $5 |
+   | **Monthly Cost (50 transfers)** | $1,000 | $250 |
+   | **Capital Lock Time** | ~2 min | 7 days |
+   | **Security Model** | 7-of-10 validators | Fraud proof dispute |
+   | **Best For** | Active traders | Long-term holders |
+
+   **Opportunity Cost Analysis (for $100K capital):**
+
+   $$
+   \text{Opportunity Cost (7 days)} = \$100{,}000 \times \frac{5\%}{365} \times 7 \approx \$96
+   $$
+
+   $$
+   \text{Real Cost per Transfer} = \$5 + \$96 = \$101 \text{ (vs. \$20 for multisig)}
+   $$
+
+   **Time Comparison:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8"
+     }
+   }}%%
+   gantt
+       title Bridge Finality Comparison
+       dateFormat YYYY-MM-DD
+       section Multisig
+       Transfer Complete    :done, a1, 2024-01-01, 2m
+       section Optimistic
+       Dispute Period       :active, b1, 2024-01-01, 7d
+       Transfer Complete    :crit, b2, after b1, 1m
+   ```
+
+   **Recommendation:** Hybrid approach - Multisig primary for traders, Optimistic as "economy" option for infrequent users
 
 1. Q: Ethereum client state trie corruption at block 18,450,001. Full resync is 72 hours but we need recovery under 4 hours. We have a snapshot from 500 blocks back. What's the recovery strategy?
    A: **DevOps Lead:** Surgical repair with escalation path.
@@ -208,6 +398,60 @@
    
    **DevOps:** Exactly. Time-boxed attempt, extensive validation. If we can't nail it, we fall back.
 
+   **Recovery Strategy:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   graph TD
+       A[State Trie Corruption Detected] --> B[Triage: reth db check]
+       B --> C{Corruption Scope?}
+       C -->|<1000 nodes| D[Plan A: Surgical Repair]
+       C -->|>10000 nodes| E[Plan B: Archive Snapshot]
+       
+       D --> F[Rollback to block 18,449,500]
+       F --> G[Fast-sync 500 blocks]
+       G --> H{State root match?}
+       H -->|Yes| I[Rebuild corrupted subtrie]
+       H -->|No| E
+       I --> J[Validate with peers]
+       J --> K{Validation OK?}
+       K -->|Yes| L[Recovery Complete 3.5h]
+       K -->|No| E
+       
+       E --> M[Request snapshot at 18,449,900]
+       M --> N[Sync 101 blocks]
+       N --> O[Recovery Complete 6h]
+       
+       style L fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style O fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+   ```
+
+   | **Phase** | **Action** | **Duration** | **Success Criteria** |
+   |-----------|------------|--------------|----------------------|
+   | **Triage** | Run `reth db check` | 30 min | Identify corruption scope |
+   | **Plan A** | Surgical repair | 3.5h total | <1000 nodes, 98-99% correctness |
+   | ↳ Rollback | Load snapshot at 18,449,500 | 1h | State restored |
+   | ↳ Fast-sync | Sync 500 blocks | 1h | Reach block 18,450,001 |
+   | ↳ Rebuild | Recompute corrupted subtrie | 2h | State root validation |
+   | **Plan B** | Archive snapshot | 6h total | 100% correctness, exceeds SLA |
+   | ↳ Request | Get snapshot at 18,449,900 | 1h | Recent snapshot acquired |
+   | ↳ Sync | Sync 101 blocks | 5h | Full validation |
+
+   **Prevention Measures:**
+   - State root validation every 1000 blocks
+   - Rolling snapshots every 500 blocks
+   - Documented runbook for rapid response
+
 1. Q: Our DEX has $50M TVL and wants concentrated liquidity like Uniswap V3. Building it costs 6 months and $500K. Forking an existing V3 implementation costs 1 month and $50K but we give up 20% of fee revenue. What do we do?
    A: **CEO:** What's the breakeven analysis?
    
@@ -246,6 +490,47 @@
    **CTO:** Then we saved $500K by not building something nobody wanted. That's the whole point of derisking.
    
    **CEO:** I'm convinced. Let's go hybrid.
+
+   **Cost-Benefit Analysis:**
+
+   | **Approach** | **Cost** | **Timeline** | **Time-to-Market** | **Fee Revenue** | **Breakeven** | **Risks** |
+   |--------------|----------|--------------|--------------------|-----------------|--------------|-----------| 
+   | **Build Custom** | $500K | 6 months | 6 months | 100% ownership | 8-10 months | $500K at risk, slower market entry |
+   | **Fork Existing** | $50K | 1 month | 1 month | 80% (20% tax) | 2 months | Limited differentiation, permanent fee loss |
+   | **Hybrid ✓** | $550K total | 9 months | 1 month | 80% → 100% | 8 months | Best of both worlds |
+
+   **Hybrid Timeline:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   gantt
+       title Hybrid Deployment Strategy
+       dateFormat YYYY-MM-DD
+       section Fork Phase
+       Deploy fork for MVP           :done, a1, 2024-01-01, 1M
+       Test product-market fit        :active, a2, 2024-02-01, 2M
+       section Custom Build
+       Build custom implementation    :b1, 2024-04-01, 6M
+       Migrate to custom             :b2, 2024-10-01, 1M
+       section Revenue
+       Pay 20% fee tax               :crit, c1, 2024-02-01, 8M
+       Reclaim 100% fees             :c2, 2024-10-01, 12M
+   ```
+
+   **Monthly Fee Impact:**
+   - **Fee tax:** 20% of revenue = $10K-$20K/month
+   - **Total tax paid (8 months):** ~$80K-$160K
+   - **Value proposition:** De-risk $500K investment + fast market entry
 
 1. Q: Hiring a senior Rust blockchain engineer. Candidate A: 5 years C++ blockchain, 6 months Rust. Candidate B: 3 years Rust systems programming, zero blockchain. Both passed technical interviews. Team has 2 Rust experts, needs blockchain domain knowledge. Who do we hire?
    A: **Hiring Manager:** Context-dependent, but I'm leaning Candidate B.
@@ -286,6 +571,50 @@
    
    **Hiring Manager:** Absolutely. Team composition matters. Default to Candidate B unless we're working on existing blockchain codebases where domain context is critical.
 
+   **Candidate Comparison:**
+
+   | **Aspect** | **Candidate A** | **Candidate B** |
+   |------------|-----------------|-----------------|
+   | **Rust Experience** | 6 months (from C++) | 3 years (systems programming) |
+   | **Blockchain Experience** | 5 years | 0 years |
+   | **Learning Curve** | 12 months to Rust mastery | 3-6 months to blockchain concepts |
+   | **Time to Productivity** | 12 months | 6 months |
+   | **Risk Area** | Rust ownership, lifetimes, async | Blockchain consensus, cryptography |
+   | **Team Mentoring Fit** | 2 Rust experts available | 2 Rust experts available |
+   | **Best For** | Extending existing clients | Greenfield projects ✓ |
+
+   **Learning Asymmetry:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   gantt
+       title Time to Full Productivity
+       dateFormat YYYY-MM-DD
+       section Candidate A
+       Learn Rust ownership & lifetimes    :a1, 2024-01-01, 6M
+       Master async Rust patterns          :a2, 2024-07-01, 6M
+       Full productivity                   :milestone, a3, 2025-01-01, 0d
+       section Candidate B
+       Learn blockchain concepts           :b1, 2024-01-01, 3M
+       Master consensus mechanisms         :b2, 2024-04-01, 3M
+       Full productivity                   :milestone, b3, 2024-07-01, 0d
+   ```
+
+   **Decision Framework:**
+   - **Greenfield projects:** Candidate B (Rust expertise critical)
+   - **Extending existing clients:** Candidate A (Domain context valuable)
+   - **Team composition:** 2 Rust experts → Blockchain mentoring easier than Rust mentoring
+
 1. Q: Blockchain node processing 2000 TPS but users report 5-10 second pauses every 2-3 minutes. Profiling shows no hot function. Rust has no GC, so what's causing GC-like symptoms?
    A: **Performance Engineer:** Hmm... Investigate periodic batch operations. Rust doesn't have GC, but something's mimicking that behavior.
    
@@ -324,6 +653,57 @@
    **Backend Dev:** Makes sense. Most likely culprit?
    
    **Performance Engineer:** H1 or H3. Absence of hot function indicates system-level blocking, not CPU bottleneck. My money's on RocksDB compaction or checkpoint.
+
+   **Diagnostic Hypotheses:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   graph TD
+       A[5-10s pauses every 2-3 min] --> B{Hypothesis Testing}
+       B --> C[H1: RocksDB Compaction]
+       B --> D[H2: Memory Allocator]
+       B --> E[H3: State Snapshots]
+       
+       C --> F[Test: iostat -x 1]
+       F --> G{>80% iowait?}
+       G -->|Yes| H[RocksDB merging SSTables]
+       
+       D --> I[Test: jemalloc stats]
+       I --> J{background_thread spikes?}
+       J -->|Yes| K[Allocator reclaiming memory]
+       
+       E --> L[Test: Disable checkpointing]
+       L --> M{Pauses disappear?}
+       M -->|Yes| N[Checkpoint blocking main thread]
+       
+       style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style K fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style N fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+   ```
+
+   | **Hypothesis** | **Root Cause** | **Test Method** | **Symptoms** | **Likelihood** |
+   |----------------|----------------|-----------------|--------------|----------------|
+   | **H1: RocksDB** | Compaction blocking writes | `iostat -x 1` during pause | High iowait (>80%), fsync syscalls | High ⭐⭐⭐ |
+   | **H2: Allocator** | jemalloc background thread | jemalloc stats, `perf record` | madvise syscalls | Medium ⭐⭐ |
+   | **H3: Checkpointing** | State snapshot on main thread | Disable temporarily | memcpy patterns, block correlation | High ⭐⭐⭐ |
+
+   **Diagnostic Plan:**
+   1. **Deploy `perf record -g` during next pause** (15 min)
+   2. **Quick test:** Disable checkpointing temporarily (5 min)
+   3. **Inspect syscall patterns:**
+      - `fsync` → H1 (RocksDB)
+      - `madvise` → H2 (Allocator)
+      - `memcpy` → H3 (Checkpoint)
 
 1. Q: New Merkle Patricia Trie caching strategy shows 40% read speedup in microbenchmarks but 5% slowdown in full node sync. Do we deploy it?
    A: **Tech Lead:** No. Production workload trumps synthetic benchmarks.
@@ -366,6 +746,53 @@
    
    **Tech Lead:** Exactly. System-level validation is the only thing that matters. Optimize for production workload, not synthetic tests.
 
+   **Benchmark vs. Production Reality:**
+
+   | **Metric** | **Microbenchmark** | **Full Node Sync** | **Why the Gap?** |
+   |------------|--------------------|--------------------|------------------|
+   | **Cache Hit Rate** | 95% (hot data) | 50% (cold data) | Realistic access patterns differ |
+   | **Memory Pressure** | Minimal | High contention | Cache consumes 4GB, starves buffers |
+   | **I/O Interference** | None | Significant | Networking + parsing + disk I/O |
+   | **Read Speedup** | +40% ✓ | -5% ✗ | Cache overhead > benefit at low hit rate |
+   | **Decision** | ❌ Don't deploy | ✓ Ground truth | Production workload is reality |
+
+   **What Went Wrong:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   graph TD
+       A[New Caching Strategy] --> B{Microbenchmark}
+       A --> C{Full Node Sync}
+       
+       B --> D[+40% speedup]
+       B --> E[95% cache hit rate]
+       B --> F[Isolated component]
+       
+       C --> G[-5% slowdown]
+       C --> H[50% cache hit rate]
+       C --> I[Memory contention]
+       C --> J[I/O interference]
+       
+       style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style G fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+   ```
+
+   **Next Steps (Instead of Deploying):**
+   1. **Profile full sync with caching enabled** - Identify where slowdown occurs
+   2. **Reduce cache size** - Test 4GB → 1GB to reduce memory pressure
+   3. **Optimize eviction logic** - Improve cold data handling
+   4. **Implement adaptive caching** - Enable for steady-state (95% hit rate), disable for sync (50% hit rate)
+
 1. Q: Stablecoin protocol with three revenue models. Seigniorage from minting—high during growth, zero steady-state. Collateral yield—steady 3-5% APR. Transaction fees—0.1% per transfer. Initial users are 70% buy-and-hold, 30% active traders. How do we prioritize for Year 1?
    A: **CFO:** Prioritize seigniorage and collateral yield. Defer transaction fees to Year 2.
    
@@ -401,6 +828,53 @@
    
    **CFO:** Exactly. That's why we capture it aggressively in Year 1. Collateral yield becomes the sustainable baseline long-term.
 
+   **Year 1 Revenue Breakdown:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8"
+     }
+   }}%%
+   pie title Year 1 Revenue Sources (Total: ~$3M)
+       "Seigniorage" : 33
+       "Collateral Yield" : 67
+       "Transaction Fees" : 2
+   ```
+
+   | **Revenue Model** | **Year 1 Revenue** | **Sustainability** | **User Impact** | **Priority** |
+   |-------------------|--------------------|--------------------|-----------------|--------------|
+   | **Seigniorage** | $1M (from $0→$100M TVL) | One-time (growth only) | No direct cost | ⭐⭐⭐ Capture aggressively |
+   | **Collateral Yield** | $2M ($50M avg × 4% APR) | Sustainable baseline | No user fees | ⭐⭐⭐ Sustainable income |
+   | **Transaction Fees** | $60K ($30M volume × 0.1%) | Scales with activity | Alienates early users | ❌ Defer to Year 2 |
+
+   **User Behavior Impact:**
+   - **70% buy-and-hold:** Low transaction volume, minimal fee revenue
+   - **30% active traders:** $30M volume with 2x annual turnover
+
+   **Strategic Calculation:**
+
+   $$
+   \text{Transaction Fee Revenue} = \$30M \times 2 \times 0.1\% = \$60K
+   $$
+
+   $$
+   \text{Collateral Yield} = \$50M \times 4\% = \$2M \text{ annually}
+   $$
+
+   $$
+   \text{Seigniorage} = \text{TVL Growth} \times \text{Mint Spread} \approx \$1M
+   $$
+
+   **Year 2 Strategy:**
+   - Introduce 0.05-0.1% transaction fees when TVL stabilizes
+   - Maintain zero fees during Year 1 to maximize adoption
+   - Collateral yield becomes sustainable long-term baseline
+
 1. Q: New blockchain indexer needs an async runtime. Tokio has big ecosystem but steep learning curve. async-std is simpler but fewer Web3 libraries. Team: 2 senior engineers familiar with both, 3 mid-level new to async. What do we choose?
    A: **Tech Lead:** Tokio. No contest.
    
@@ -433,6 +907,55 @@
    **Tech Lead:** For a blockchain indexer, compatibility with the ecosystem is non-negotiable. Generic HTTP API? async-std becomes viable. But Web3 project? Tokio.
    
    **Mid-Level Dev:** Makes sense. Short-term pain, long-term gain.
+
+   **Runtime Comparison:**
+
+   | **Aspect** | **Tokio** | **async-std** |
+   |------------|-----------|---------------|
+   | **Learning Curve** | Steep (2-3 weeks) | Gentle (1 week) |
+   | **Ecosystem Support** | 90% of blockchain Rust crates | Limited Web3 support |
+   | **Web3 Libraries** | ethers-rs, solana-client, jsonrpsee ✓ | Requires wrappers (20-30% overhead) |
+   | **Production Use** | Discord, AWS Lambda, Cloudflare | Fewer blockchain projects |
+   | **Team Familiarity** | 2 senior engineers ✓ | 2 senior engineers ✓ |
+   | **Long-term ROI** | High (saves 10-15 weeks over 12 months) | Low (accumulates friction) |
+   | **Best For** | Blockchain indexers ✓ | Generic HTTP APIs |
+
+   **ROI Timeline:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   gantt
+       title Learning Investment vs. Accumulated Friction
+       dateFormat YYYY-MM-DD
+       section Tokio
+       Learning investment       :done, a1, 2024-01-01, 3w
+       Smooth development        :active, a2, 2024-01-22, 49w
+       section async-std
+       Learning investment       :done, b1, 2024-01-01, 1w
+       Accumulated friction      :crit, b2, 2024-01-08, 51w
+   ```
+
+   **Decision Factors:**
+   - **Upfront cost:** Tokio = 2-3 weeks, async-std = 1 week (1-2 week difference)
+   - **Ongoing cost:** Tokio = minimal, async-std = 20-30% overhead for Web3 integration
+   - **12-month savings:** 10-15 weeks by choosing Tokio
+   - **Ecosystem compatibility:** Non-negotiable for blockchain projects
+
+   **Mitigation Strategy:**
+   - Week 1: Hands-on Tokio workshop for mid-level devs
+   - Week 2-3: Senior engineers document common patterns
+   - Ongoing: Code reviews + linter rules
+   - Use `tokio-console` for debugging
 
 1. Q: User reports transaction confirmed at block 18,000,100 but disappeared after reorg to 18,000,095. They demand compensation for "lost funds." System displayed it as confirmed with 3 confirmations. How do we respond and what changes do we make?
    A: **Customer Support Lead:** First, clarify no funds are lost. Transaction is in mempool, will be re-included within 1-10 blocks.
@@ -478,3 +1001,64 @@
    **Product:** Absolutely. "What is a reorg?" "Are funds safe?" "How many confirmations needed?" User education prevents future support tickets.
    
    **CTO:** Key lesson: "Confirmed" versus "Final" must be crystal clear. Reorgs are rare but possible. We communicate confidence levels, not binary states.
+
+   **Reorg Response Strategy:**
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7"
+     }
+   }}%%
+   graph TD
+       A[User Reports Lost Transaction] --> B{Verify Reorg}
+       B -->|Yes| C[Transaction in Mempool?]
+       B -->|No| D[Investigate Other Issues]
+       
+       C -->|Yes| E[Reassure: Will Re-include]
+       C -->|No| F[Investigate Why Dropped]
+       
+       E --> G{UI Claimed Final?}
+       G -->|Yes at 3 conf| H[Consider Goodwill Gesture]
+       G -->|No, just Confirmed| I[No Compensation Owed]
+       
+       H --> J[Implement UI Changes]
+       I --> J
+       
+       style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style I fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+       style H fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+   ```
+
+   **UI Improvements:**
+
+   | **Before (Problematic)** | **After (Clear)** | **Benefit** |
+   |--------------------------|-------------------|-------------|
+   | "Confirmed" at 3 blocks | "Pending (3/12 confirmations)" | Shows progress, not finality |
+   | Binary status | Probabilistic meter (0-100%) | Educates users on risk |
+   | No reorg detection | Real-time reorg alerts | Proactive communication |
+   | Single status for all amounts | Value-based warnings for high amounts | Risk-appropriate guidance |
+
+   **Finality Confidence Levels:**
+
+   | **Confirmations** | **Status** | **Confidence** | **Use Case** |
+   |-------------------|------------|----------------|--------------|
+   | 0 | Mempool | 0% | Pending broadcast |
+   | 1-2 | Pending | 90-99% | Small purchases |
+   | 3-5 | Confirmed | 99.7-99.9% | Medium transactions |
+   | 6-11 | Highly Confirmed | 99.99% | Most use cases |
+   | 12+ | **Final ✓** | ~100% | High-value transfers |
+
+   **Reorg Detection System:**
+   - Monitor chain head every 12 seconds
+   - Detect reorgs, calculate depth
+   - Notify affected users immediately
+   - FAQ: "What is a reorg?", "Are funds safe?", "How many confirmations needed?"
+
+   **Key Lesson:** Communicate probability, not binary states - "Confirmed" ≠ "Final"

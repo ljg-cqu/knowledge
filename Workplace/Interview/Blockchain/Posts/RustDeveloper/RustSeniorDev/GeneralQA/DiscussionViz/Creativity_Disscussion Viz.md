@@ -62,6 +62,64 @@
    
    **C:** Good plan.
 
+### Architecture Comparison
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Mempool Concurrency Strategies] --> B[Sharded Lock-Free]
+    A --> C[Channel-Based Pipeline]
+    A --> D[Epoch-Based Reclamation]
+    A --> E[Hybrid Hot/Cold Tier]
+    
+    B --> B1["DashMap 16-32 shards"]
+    B --> B2["5-10x throughput"]
+    B --> B3["20-30% memory overhead"]
+    
+    C --> C1["MPSC channels"]
+    C --> C2["P99 latency under 1ms"]
+    C --> C3["Explicit backpressure"]
+    
+    D --> D1["Hazard pointers"]
+    D --> D2["10:1 read-write ratio"]
+    D --> D3["Near-zero read contention"]
+    
+    E --> E1["RwLock + persistent queue"]
+    E --> E2["40-60% memory reduction"]
+    E --> E3["P99 under 5ms hot path"]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
+### Performance Comparison
+
+| Strategy | Throughput Gain | Latency (P99) | Memory Overhead | Read/Write Ratio | Complexity |
+|----------|----------------|---------------|-----------------|------------------|------------|
+| **Sharded Lock-Free** | **5-10x** | Normal | 20-30% | Any | Low |
+| **Channel Pipeline** | 1-2x | **<1ms** | 10-15% | Any | Medium |
+| **Epoch-Based** | 8-12x reads | Normal | 5-10% | **10:1+** | High |
+| **Hybrid Hot/Cold** | 2-3x | <5ms hot | **-40-60%** | Any | Medium |
+
+**Throughput formula:**
+
+$$
+\text{Throughput gain} = \frac{\text{ops per second (new)}}{\text{ops per second (baseline)}}
+$$
+
 ---
 
 ## 2. DEX Gas Optimization Strategies
@@ -78,7 +136,7 @@
    
    **Exploring signature aggregation:**
    
-   **B:** For small swaps, meta-transactions might be better. EIP-2771 aggregation.
+   **Dev B:** For small swaps, meta-transactions might be better. EIP-2771 aggregation.
    
    **A:** Gasless transactions, bundle signatures off-chain...
    
@@ -127,6 +185,64 @@
    **B:** Good strategy. Multi-tiered approach.
    
    **C:** Let's start implementing.
+
+### Gas Optimization Flow
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Swap Request] --> B{Batch Size?}
+    B -->|Small 1-10| C[Meta-Transactions]
+    B -->|Large 100+| D[Merkle Batch]
+    B -->|Medium 11-99| E{Post-Cancun?}
+    
+    E -->|Yes| F[EIP-4844 Blobs]
+    E -->|No| G[Standard Batching]
+    
+    C --> H[40-50% gas savings]
+    D --> I[60-80% gas savings]
+    F --> J[94% calldata savings]
+    G --> K[Storage Slot Packing]
+    
+    K --> L[75% SSTORE savings]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+### Gas Cost Comparison
+
+| Strategy | Gas Savings | Off-Chain Compute | Latency Impact | Best For | Blockchain |
+|----------|-------------|-------------------|----------------|----------|------------|
+| **Merkle Batch** | **60-80%** | 3-5x | None | 100+ swaps | Any |
+| **Meta-Transactions** | 40-50% | 1.5x | 5-10s | 1-10 swaps | Any |
+| **Storage Packing** | **75%** SSTORE | None | None | Heavy writes | Any |
+| **EIP-4844 Blobs** | **94%** calldata | Normal | None | All sizes | **Post-Cancun** |
+
+**Gas cost formula:**
+
+$$
+\text{Savings (\%)} = \left(1 - \frac{\text{optimized gas}}{\text{baseline gas}}\right) \times 100
+$$
+
+**Storage packing savings:**
+
+$$
+\text{SSTORE savings} = 20000 - 5000 = 15000 \text{ gas per slot}
+$$
 
 ---
 
@@ -201,6 +317,53 @@
    **B:** Good plan. Let's design the tiering system.
    
    **C:** Agreed.
+
+### Bridge Architecture Comparison
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+quadrantChart
+    title Bridge Architecture Trade-offs
+    x-axis Low Cost --> High Cost
+    y-axis Low Security --> High Security
+    quadrant-1 "Optimal Zone"
+    quadrant-2 "Over-Engineered"
+    quadrant-3 "Avoid"
+    quadrant-4 "Budget Option"
+    "Light Client": [0.9, 0.95]
+    "ZK Bridge": [0.4, 0.90]
+    "Threshold Crypto": [0.3, 0.75]
+    "Optimistic": [0.1, 0.70]
+```
+
+### Bridge Strategy Matrix
+
+| Bridge Type | Cost/Transfer | Finality Time | Security Level | Dev Time | Best For |
+|-------------|---------------|---------------|----------------|----------|----------|
+| **Light Client** | **$50-500** | 30-60 min | **Highest** | 1-2 months | Institutional ($1M+) |
+| **ZK Bridge** | $8-15 | 5-10 min | **Very High** | **2-3 months** | Mature protocols |
+| **Threshold Crypto** | **$10-20** | **1-5 min** | High | 1 month | **DeFi retail** |
+| **Optimistic** | **$5** | **7 days** | High | 2-3 weeks | Cost-sensitive users |
+
+**Security-Cost-Speed Triangle:**
+
+- **Security ∝ Cost**: Higher security → Higher cost per transfer
+- **Speed ∝ Cost**: Faster finality → Higher operational cost
+- **Security ⊕ Speed**: Trade-off requires careful balancing
+
+$$
+\text{Value Score} = \frac{\text{Security} \times \text{Speed}}{\text{Cost}} \times \text{User Preference Weight}
+$$
 
 ---
 
@@ -281,6 +444,61 @@
    **A:** Agreed. Start with streams, optimize CPU path if needed.
    
    **C:** Sounds like a plan. Let's implement.
+
+### Indexer Architecture Pipeline
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    A[Block Stream] -->|Tokio Async| B[Fetch]
+    B -->|Buffer 32| C[Parse]
+    C -->|Rayon Pool| D[Transform]
+    D -->|Channel 128| E[DB Write]
+    E --> F[Indexed Data]
+    
+    B -.->|Backpressure| A
+    C -.->|Backpressure| B
+    D -.->|Backpressure| C
+    E -.->|Backpressure| D
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+### Async Architecture Comparison
+
+| Architecture | Throughput Gain | CPU Utilization | Memory Overhead | Latency | Complexity | Best For |
+|--------------|-----------------|-----------------|-----------------|---------|------------|----------|
+| **Actor Model** | 1.5-2x | 70-80% | **15-20%** | Normal | Medium | Fault tolerance |
+| **Reactive Streams** | **2-3x** | 70-80% | 5-10% | Normal | Medium | **I/O-heavy** |
+| **Tokio + Rayon** | 1.4-1.6x base | **90%+** | 5-10% | Normal | Low | **CPU-heavy** |
+| **Shared-Nothing** | **10x** | 85-95% | 10-15% | Normal | **High** | 100k+ blocks/hr |
+
+**Throughput calculation:**
+
+$$
+\text{Blocks per hour} = \frac{3600 \text{ sec/hr}}{\text{Latency per block (sec)}} \times \text{Parallelism factor}
+$$
+
+**CPU utilization with hybrid approach:**
+
+$$
+\text{Utilization (\%)} = \frac{\text{Active cores}}{\text{Total cores}} \times 100
+$$
 
 ---
 
@@ -365,6 +583,70 @@
    **C:** Makes sense. Let's start with gas-weighted, monitor CPU usage.
    
    **A:** Good approach.
+
+### State Trie Caching Strategies
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[State Trie Access] --> B{Cache Strategy}
+    
+    B --> C[Hot Account Affinity]
+    B --> D[Merkle Path Prediction]
+    B --> E[Block-Scoped Temporal]
+    B --> F[Gas-Weighted Importance]
+    
+    C --> C1["95%+ hit rate"]
+    C --> C2["100MB cache"]
+    C --> C3["Daily rebalancing"]
+    
+    D --> D1["8x speedup on hit"]
+    D --> D2["40-50% penalty on miss"]
+    D --> D3["LSTM model"]
+    
+    E --> E1["85-90% hit rate"]
+    E --> E2["64 blocks window"]
+    E --> E3["Deterministic"]
+    
+    F --> F1["90% hit rate"]
+    F --> F2["Auto-adapts"]
+    F --> F3["10-20% CPU overhead"]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+### Caching Strategy Comparison
+
+| Strategy | Hit Rate | Cache Size | CPU Overhead | Complexity | Adaptivity | Best For |
+|----------|----------|------------|--------------|------------|------------|----------|
+| **Hot Account Affinity** | **95%+** | **100MB** | Low | Low | Manual daily | Known hot accounts |
+| **Merkle Path Prediction** | 90%+ | 200-500MB | Medium | **High** | Automatic | Predictable patterns |
+| **Block-Scoped Temporal** | 85-90% | Variable | **Low** | **Low** | Automatic | General purpose |
+| **Gas-Weighted Importance** | **90%** | 150-300MB | 10-20% | Medium | **Automatic** | **DeFi nodes** |
+
+**Cache hit rate formula:**
+
+$$
+\text{Hit Rate (\%)} = \frac{\text{Cache hits}}{\text{Total requests}} \times 100
+$$
+
+**Speedup from path prediction:**
+
+$$
+\text{Speedup} = \frac{\text{Avg nodes (no cache)}}{\text{Avg nodes (cached)}} = \frac{5-7}{0-1} \approx 8x
+$$
 
 ---
 
@@ -458,6 +740,72 @@
    
    **A:** Good plan.
 
+### Slippage Protection Mechanisms
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+sequenceDiagram
+    participant User
+    participant DEX
+    participant Oracle
+    participant MultiDEX
+    participant Blockchain
+    
+    User->>DEX: Initiate Swap
+    DEX->>Oracle: Check TWAP (10 blocks)
+    Oracle-->>DEX: Time-weighted price
+    
+    DEX->>DEX: Check liquidity depth
+    DEX->>DEX: Calculate scaled slippage
+    
+    DEX->>MultiDEX: Query 3-5 pools
+    MultiDEX-->>DEX: Price comparison
+    
+    alt High-value swap
+        DEX->>Blockchain: Commit hash (Block N)
+        Note over DEX,Blockchain: Wait 1-2 blocks
+        DEX->>Blockchain: Reveal params (Block N+1)
+    else Standard swap
+        DEX->>Blockchain: Execute immediately
+    end
+    
+    Blockchain-->>User: Swap complete
+```
+
+### Protection Strategy Matrix
+
+| Mechanism | Protection Type | Effectiveness | Latency Impact | Gas Cost | Best For |
+|-----------|----------------|---------------|----------------|----------|----------|
+| **Multi-block TWAP** | Price manipulation | 90-95% | **1-2 min** | Normal | Large swaps ($100k+) |
+| **Liquidity-Scaled Bounds** | Liquidity drain | 85-90% | None | **+15-20%** | Variable pool depth |
+| **Multi-Path Validation** | **Price manipulation** | **95%** | 50-100ms | Normal | All swaps |
+| **Commit-Reveal** | **Sandwich attacks** | **80%** | **12-24 sec** | Normal | **High-value** |
+| **Adaptive Fees** | Economic attack | 70-80% | None | Normal | Large impact swaps |
+
+**TWAP formula:**
+
+$$
+\text{TWAP} = \frac{\sum_{i=1}^{n} (P_i \times t_i)}{\sum_{i=1}^{n} t_i}
+$$
+
+Where $P_i$ is price and $t_i$ is time duration in block $i$.
+
+**Slippage calculation:**
+
+$$
+\text{Slippage (\%)} = \left|\frac{P_{\text{expected}} - P_{\text{actual}}}{P_{\text{expected}}}\right| \times 100
+$$
+
 ---
 
 ## 7. Solana Transaction Scheduling Algorithms
@@ -544,6 +892,74 @@
    
    **A:** Good plan. We can optimize from there.
 
+### Transaction Scheduling Flow
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Transaction Pool] --> B{Scheduling Algorithm}
+    
+    B --> C[ML Predictor]
+    B --> D[Graph Coloring]
+    B --> E[Fee-Priority]
+    B --> F[Speculative Execution]
+    
+    C --> C1["LSTM inference 50-100ms"]
+    C --> C2["20-30% parallelism gain"]
+    
+    D --> D1["Lookahead N=5 blocks"]
+    D --> D2["15-25% improvement"]
+    D --> D3["100-200ms latency"]
+    
+    E --> E1["Preempt low-fee txs"]
+    E --> E2["10-20% revenue gain"]
+    E --> E3["Potential starvation"]
+    
+    F --> F1["2-3x if conflict under 10%"]
+    F --> F2["50% overhead if conflict over 30%"]
+    
+    C --> G[Parallel Execution]
+    D --> G
+    E --> G
+    F --> G
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+### Scheduling Algorithm Comparison
+
+| Algorithm | Parallelism Gain | Latency | Conflict Handling | Requirements | Best For |
+|-----------|------------------|---------|-------------------|--------------|----------|
+| **ML Predictor** | **20-30%** | 50-100ms | Predictive | Historical data | Long-running validators |
+| **Graph Coloring** | 15-25% | **100-200ms** | Optimal | None | Throughput-focused |
+| **Fee-Priority** | Maintains 60-70% | Low | Preemption | None | **Revenue-focused** |
+| **Speculative Execution** | **2-3x** | **Low** | Rollback | **Low conflicts** | Predictable workloads |
+
+**Parallelism gain formula:**
+
+$$
+\text{Parallelism gain (\%)} = \left(\frac{\text{Parallel TPS}}{\text{Serial TPS}} - 1\right) \times 100
+$$
+
+**Conflict rate threshold:**
+
+$$
+\text{Use speculative if: } \frac{\text{Conflicting txs}}{\text{Total txs}} < 0.10
+$$
+
 ---
 
 ## 8. Blockchain Reorganization Handling Strategies
@@ -625,6 +1041,59 @@
    **B:** Let's design the UI mockups and backend architecture.
    
    **C:** Agreed.
+
+### Probabilistic Finality Model
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    A[Transaction Confirmed] --> B[Block 1: 50%]
+    B --> C[Block 3: 75%]
+    C --> D[Block 6: 95%]
+    D --> E[Block 12: 99.9%]
+    E --> F[Finalized]
+    
+    D -.->|Safe for most operations| G[User Action]
+    E -.->|Safe for withdrawals| H[Critical Action]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+### Reorg Handling Strategy Matrix
+
+| Strategy | Reorg Protection | User Experience | Storage Overhead | Complexity | Best For |
+|----------|------------------|-----------------|------------------|------------|----------|
+| **Probabilistic Finality UI** | Education | **Transparent** | None | Low | All users |
+| **Dual-State Architecture** | **Critical ops protected** | Transparent | **2x (5-10GB)** | Medium | **Exchanges, custody** |
+| **Auto-Compensation** | **Full refund** | **Excellent** | 0.1-0.5% fee pool | Medium | **Consumer DeFi** |
+| **Reorg Prediction** | **Proactive alerts** | Advanced | None | High | Power users |
+
+**Finality confidence formula:**
+
+$$
+\text{Confidence (\%)} = \left(1 - \frac{1}{2^{\text{confirmations}}}\right) \times 100
+$$
+
+**Example calculations:**
+
+- **1 block**: $1 - \frac{1}{2^1} = 50\%$
+- **6 blocks**: $1 - \frac{1}{2^6} = 98.4\%$
+- **12 blocks**: $1 - \frac{1}{2^{12}} = 99.98\%$
 
 ---
 
@@ -719,3 +1188,85 @@
    **C:** Agreed. We can benchmark against current HashMap implementation.
    
    **A:** Good plan.
+
+### Order Matching Engine Architecture
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Incoming Orders] --> B{Order Book Structure}
+    
+    B --> C["B+ Tree with SIMD"]
+    B --> D["Arena-Allocated Lists"]
+    B --> E["Lock-Free Skip List"]
+    B --> F["Hot/Cold L1 Cache"]
+    
+    C --> C1["AVX-512 parallel match"]
+    C --> C2["500k-1M matches/sec"]
+    C --> C3["8-16 orders per cycle"]
+    
+    D --> D1["Contiguous memory"]
+    D --> D2["80-90% allocation reduction"]
+    D --> D3["40-50% cache improvement"]
+    
+    E --> E1["16-32 cores"]
+    E --> E2["90%+ efficiency"]
+    E --> E3["3-4x complexity"]
+    
+    F --> F1["Top 10 levels in L1"]
+    F --> F2["Under 100 CPU cycles"]
+    F --> F3["95% orders"]
+    
+    C --> G[Matched Orders]
+    D --> G
+    E --> G
+    F --> G
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+### Memory Layout Strategy Comparison
+
+| Strategy | Throughput | Latency | Multi-Core Scaling | Complexity | Hardware Req | Best For |
+|----------|-----------|---------|-------------------|------------|--------------|----------|
+| **B+ Tree + SIMD** | **500k-1M/sec** | Normal | 5-10x | **High** | **AVX-512** | **HFT** |
+| **Arena Allocation** | 2-3x | **80-90% reduction** | Normal | Medium | None | High churn |
+| **Lock-Free Skip List** | 3-5x | Normal | **90%+ (16-32 cores)** | **Very High** | Multi-core | Concurrent load |
+| **Hot/Cold L1 Cache** | 2-4x | **<100 cycles (95%)** | Normal | Medium | None | **Top-of-book** |
+
+**Throughput formula:**
+
+$$
+\text{Matches per second} = \frac{\text{Orders processed}}{\text{Time (sec)}}
+$$
+
+**SIMD parallelism:**
+
+$$
+\text{SIMD speedup} = \frac{\text{Orders per cycle (SIMD)}}{\text{Orders per cycle (scalar)}} = \frac{8-16}{1} = 8-16x
+$$
+
+**L1 cache hit calculation:**
+
+$$
+\text{Avg latency} = (0.95 \times 100) + (0.05 \times 5000) = 95 + 250 = 345 \text{ cycles}
+$$
+
+vs standard DRAM: ~5000 cycles → **14x faster** for 95% of orders
+
+---
+
