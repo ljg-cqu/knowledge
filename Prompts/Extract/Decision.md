@@ -11,7 +11,7 @@ Rules:
 - **Read the entire source text thoroughly**: Identify all decision-critical content. Do not stop prematurely or skip sections.
 - **Extract comprehensively**: Cover all decision-critical scenarios without omission. If the source has depth, generate sufficient questions to reflect that depth.
 - **Maintain strict fidelity**: Use only information explicitly stated or logically implied in the source text. Never invent facts, numbers, concepts, or ideas that contradict or extend beyond the original material.
-- Focus only on decision-critical scenarios: actions, choices between alternatives, trade-offs, priorities.
+- Focus only on decision-critical scenarios: actions, choices between alternatives, trade-offs, priorities, resource allocation, planning, execution choices.
 - Scenario: 1-3 short sentences of context.
 - Question: 1 line, ask for action + rationale or comparison + selection criteria.
 - Answer: 3-5 bullets or 3-5 short sentences covering key model, steps, trade-offs, comparison factors.
