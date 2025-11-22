@@ -212,8 +212,8 @@
               <div class="text-gray-300 text-sm">Blockchain Networks Analyzed</div>
             </div>
             <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
-              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">160K</div>
-              <div class="text-gray-300 text-sm">Max TPS Achieved</div>
+              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">297K</div>
+              <div class="text-gray-300 text-sm">Peak testnet TPS (Sui benchmark, 2023)</div>
             </div>
             <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
               <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">3</div>
@@ -283,7 +283,7 @@
                     <td class="px-6 py-4 font-semibold text-primary">Ethereum</td>
                     <td class="px-6 py-4 text-secondary">EVM</td>
                     <td class="px-6 py-4 text-secondary">PoS + Casper</td>
-                    <td class="px-6 py-4 text-secondary">~2-3 minutes</td>
+                    <td class="px-6 py-4 text-secondary">~13 minutes (2 epochs to finality)</td>
                     <td class="px-6 py-4 text-secondary">Rollups</td>
                   </tr>
                   <tr>
@@ -341,7 +341,8 @@
                 <i class="fas fa-coins"></i>
               </div>
               <h3 class="font-display text-xl font-semibold text-primary mb-4">Proof-of-Stake (PoS)</h3>
-              <p class="text-secondary mb-4">Validators are chosen based on token holdings, eliminating energy waste while maintaining security through economic incentives.</p>
+              <p class="text-secondary mb-4">
+                Validators are chosen based on token holdings, eliminating energy waste while maintaining security through economic incentives.</p>
               <div class="text-sm text-muted">
                 <strong>Example:</strong> Ethereum 2.0 (15 TPS)
               </div>
@@ -352,7 +353,8 @@
                 <i class="fas fa-shield-alt"></i>
               </div>
               <h3 class="font-display text-xl font-semibold text-primary mb-4">BFT Variants</h3>
-              <p class="text-secondary mb-4">Byzantine Fault Tolerance protocols enable fast, deterministic finality through validator voting systems.</p>
+              <p class="text-secondary mb-4">
+                Byzantine Fault Tolerance protocols enable fast, deterministic finality through validator voting systems.</p>
               <div class="text-sm text-muted">
                 <strong>Example:</strong> Solana, Aptos (&gt;10K TPS)
               </div>
@@ -366,9 +368,18 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div class="border-l-4 border-accent pl-6">
                 <h4 class="font-semibold text-primary mb-3">UTXO Model</h4>
-                <p class="text-secondary mb-3">Unspent Transaction Outputs enable parallel validation and enhanced privacy.</p>
+                <p class="text-secondary mb-3">
+                  The UTXO model represents funds as discrete outputs from previous transactions, enabling parallel validation and enhanced privacy. Each transaction consumes existing UTXOs and creates new ones.
+                </p>
+
                 <div class="text-sm text-muted">
-                  <strong>Use Case:</strong> Bitcoin, privacy-focused applications
+                  <strong>Key Advantages:</strong>
+                  <ul class="list-disc list-inside mt-2">
+                    <li>✓ Improved privacy relative to simple account models (while remaining fully transparent on-chain)</li>
+                    <li>✓ Parallel transaction validation</li>
+                    <li>✓ Transparent coin history</li>
+                    <li>✓ Simplified verification process</li>
+                  </ul>
                 </div>
               </div>
 
@@ -400,7 +411,7 @@
                 <ul class="space-y-3 text-secondary">
                   <li class="flex items-center">
                     <i class="fas fa-tachometer-alt text-accent mr-3"></i>
-                    <span><strong>TPS Range:</strong> 7 (Bitcoin) to 160,000 (Sui testnet)</span>
+                    <span><strong>TPS Range:</strong> ~7 (Bitcoin mainnet) to ~297,000 (Sui peak testnet benchmark)</span>
                   </li>
                   <li class="flex items-center">
                     <i class="fas fa-clock text-accent mr-3"></i>
@@ -471,7 +482,7 @@
                 <div class="border-l-4 border-accent pl-6">
                   <h4 class="font-semibold text-primary mb-3">Key Advantages</h4>
                   <ul class="text-secondary space-y-2">
-                    <li>✓ High degree of privacy</li>
+                    <li>✓ Improved privacy relative to simple account models (while remaining fully transparent on-chain)</li>
                     <li>✓ Parallel transaction validation</li>
                     <li>✓ Transparent coin history</li>
                     <li>✓ Simplified verification process</li>
@@ -517,7 +528,7 @@
                 <ul class="text-secondary space-y-3">
                   <li class="flex items-center">
                     <i class="fas fa-cubes text-accent mr-3"></i>
-                    <span><strong>Block Size:</strong> 1 MB limit</span>
+                    <span><strong>Block Size:</strong> ~1 MB base (up to ~4 MB with SegWit weight)</span>
                   </li>
                   <li class="flex items-center">
                     <i class="fas fa-clock text-accent mr-3"></i>
@@ -605,13 +616,13 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div class="lg:col-span-2">
                 <p class="text-secondary leading-relaxed mb-6">
-                  Sharding represents Ethereum&#39;s ultimate scalability solution, partitioning the blockchain into 64 parallel chains that can process transactions simultaneously. The Beacon Chain coordinates these shards, enabling Ethereum to potentially process over 100,000 TPS.
+                  Sharding now focuses on scaling Ethereum&#39;s data availability rather than creating 64 independent execution chains. In the rollup-centric roadmap and danksharding design, up to 64 data shards provide cheap data space for rollups, coordinated by the Beacon (consensus) chain. Together with rollups, this approach aims to support 100,000+ TPS across the broader Ethereum ecosystem.
                 </p>
 
                 <div class="bg-gray-50 p-6 rounded-lg">
                   <h4 class="font-semibold text-primary mb-4">Sharding Benefits</h4>
                   <ul class="text-secondary space-y-2">
-                    <li>• Parallel transaction processing</li>
+                    <li>• Parallel data availability for rollups</li>
                     <li>• Reduced load on individual validators</li>
                     <li>• Increased network capacity</li>
                     <li>• Lower transaction costs</li>
@@ -653,7 +664,7 @@
                   Use zero-knowledge proofs to cryptographically verify transaction validity. Higher security with near-instant withdrawals.
                 </p>
                 <div class="text-sm text-muted">
-                  <strong>Withdrawal Time:</strong> ~15 minutes
+                  <strong>Withdrawal Time:</strong> Minutes (implementation-dependent; no week-long challenge period)
                   <br/>
                   <strong>Use Case:</strong> High-security applications
                 </div>
@@ -776,11 +787,11 @@
               </div>
               <div class="text-center p-4 bg-gray-50 rounded-lg">
                 <div class="text-3xl font-bold text-accent mb-2">~1s</div>
-                <div class="text-sm text-muted">Finality Time</div>
+                <div class="text-sm text-muted">Optimistic confirmation</div>
               </div>
               <div class="text-center p-4 bg-gray-50 rounded-lg">
-                <div class="text-3xl font-bold text-accent mb-2">10K+</div>
-                <div class="text-sm text-muted">Active Validators</div>
+                <div class="text-3xl font-bold text-accent mb-2">1.4K+</div>
+                <div class="text-sm text-muted">Mainnet validators (late 2024)</div>
               </div>
             </div>
 
@@ -914,9 +925,9 @@
               </div>
 
               <div>
-                <h4 class="font-semibold text-primary mb-4">Parachain Auctions</h4>
+                <h4 class="font-semibold text-primary mb-4">Parachain Auctions and Agile Coretime</h4>
                 <p class="text-secondary mb-4">
-                  Projects compete for limited parachain slots through candle auctions, with winning projects leasing slots for up to 2 years.
+                  Historically, projects competed for limited parachain slots through candle auctions, with winning projects leasing slots for up to 2 years. Since 2024, Polkadot has been transitioning to Agile Coretime, a sale-based model for renting execution core time, while existing leases continue until expiry.
                 </p>
 
                 <div class="bg-gray-50 p-4 rounded-lg">
@@ -942,7 +953,7 @@
           <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-xl mb-12">
             <h3 class="font-display text-2xl font-semibold mb-4">The Move Programming Language</h3>
             <p class="text-lg leading-relaxed">
-              Originally developed by Meta for the Diem project, Move introduces resource-oriented programming to blockchain development, preventing entire classes of vulnerabilities through its type system and ownership model.
+              Originally developed by Meta for the Diem project, Move introduces resource-oriented programming to blockchain development, significantly reducing several common classes of vulnerabilities through its type system and ownership model.
             </p>
           </div>
 
@@ -951,7 +962,7 @@
             <div>
               <h3 class="font-display text-2xl font-semibold text-primary mb-6">Resource-Oriented Programming</h3>
               <p class="text-secondary leading-relaxed mb-6">
-                Move treats digital assets as first-class resources that cannot be copied or discarded, only moved between locations. This fundamental design choice prevents common vulnerabilities like double-spending and reentrancy attacks.
+                Move treats digital assets as first-class resources that cannot be copied or discarded, only moved between locations. This fundamental design choice is engineered to prevent many asset-handling bugs, including double-spending and reentrancy-style attacks.
               </p>
 
               <div class="space-y-4">
@@ -988,7 +999,7 @@
                   Sui&#39;s Object-Centric Model
                 </h4>
                 <p class="text-secondary mb-4">
-                  Everything is an object with unique ownership, enabling maximum parallelization and simple transactions that bypass consensus entirely.
+                  Everything is an object with unique ownership, enabling maximum parallelization and allowing some simple single-owner transactions to be finalized via a fast path without running full global consensus, while shared objects still use Narwhal &amp; Bullshark.
                 </p>
 
                 <div class="space-y-2 text-sm">
@@ -1060,7 +1071,7 @@
             <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
               <h4 class="font-semibold text-primary mb-3">Innovation in Smart Contract Security</h4>
               <p class="text-secondary">
-                Both Sui and Aptos leverage Move&#39;s resource-oriented programming to prevent entire classes of vulnerabilities that have plagued other blockchain platforms, representing a significant step forward in secure smart contract development.
+                Both Sui and Aptos leverage Move&#39;s resource-oriented programming to substantially reduce classes of vulnerabilities that have plagued other blockchain platforms, representing a significant step forward in secure smart contract development.
               </p>
             </div>
           </div>
