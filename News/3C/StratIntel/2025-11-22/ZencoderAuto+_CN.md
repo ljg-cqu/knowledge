@@ -8,6 +8,31 @@
 1. **AI芯片突破**（2024/09）: NVIDIA Blackwell系列与AI优化芯片推动算力效率提升3倍 → 短/中期R&D投资决策 → 影响：18个月内TAM扩张至$500B+，NPV $8B
 2. **CHIPS法案落地**（2024/03）: $500亿联邦激励推动美国半导体制造产能2022-2032间增长3倍 → 中/长期供应链重构 → 影响：2026年前新增$2000亿产能投资
 
+**战略投资分配概览**
+
+总投资规模（2024-2028）: **$2.7B**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "pie1": "#eff6fb",
+    "pie2": "#f1f8f4",
+    "pie3": "#faf6f0",
+    "pie4": "#f3f5f7",
+    "pie5": "#e8f4f8"
+  }
+}}%%
+pie title 战略投资分配（2024-2028，单位：百万美元）
+    "Q1 AI芯片研发" : 500
+    "Q2 供应链重构" : 300
+    "Q4 可持续性投资" : 1100
+    "Q3 合规管理" : 150
+    "Q5 并购战略" : 650
+```
+
 **仪表盘**:
 | 视野 | 新闻触发 | 战略决策 | 时间线 | 优先级 |
 |------|----------|----------|--------|--------|
@@ -18,6 +43,36 @@
 | 中期 | 3C行业M&A活跃 | 并购战略 | 12-24月 | 重要 |
 
 **角色**: CEO, CSO, CRO, CFO, CIO, 首席可持续发展官, 首席风险官 | **参考文献**: G=4 N=5 A=2 P=2 I=3 R=12
+
+**战略优先级矩阵**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "quadrant1Fill": "#f1f8f4",
+    "quadrant2Fill": "#eff6fb",
+    "quadrant3Fill": "#faf6f0",
+    "quadrant4Fill": "#f3f5f7"
+  }
+}}%%
+quadrantChart
+    title 战略举措优先级矩阵
+    x-axis 低紧迫性 --> 高紧迫性
+    y-axis 低影响 --> 高影响
+    quadrant-1 立即执行
+    quadrant-2 战略规划
+    quadrant-3 监控观察
+    quadrant-4 快速响应
+    "Q1 AI芯片研发": [0.85, 0.92]
+    "Q2 供应链重构": [0.88, 0.90]
+    "Q3 合规管理": [0.65, 0.70]
+    "Q4 可持续性投资": [0.45, 0.75]
+    "Q5 并购战略": [0.70, 0.65]
+```
 
 ---
 
@@ -30,6 +85,42 @@
 | Q3 | 中期/长期 | 政策/监管 | 重要 |
 | Q4 | 长期/变革性 | ESG/可持续性 | 重要 |
 | Q5 | 中期 | 市场/并购 | 重要 |
+
+**战略时间线可视化**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "cScale0": "#f1f8f4",
+    "cScale1": "#eff6fb",
+    "cScale2": "#faf6f0"
+  }
+}}%%
+gantt
+    title 3C行业战略举措时间线
+    dateFormat YYYY-MM
+    axisFormat %Y-%m
+    
+    section 关键优先级
+    Q1 AI芯片研发投资           :crit, q1a, 2024-09, 12M
+    Q1 AI PC产品线商业化         :crit, q1b, 2025-09, 18M
+    Q2 供应链双轨化部署          :crit, q2a, 2024-09, 18M
+    Q2 美国产能协议锁定          :crit, q2b, 2025-03, 12M
+    
+    section 重要优先级
+    Q3 全球合规管理系统          :active, q3a, 2024-09, 12M
+    Q3 供应链碳核算平台          :q3b, 2025-09, 12M
+    Q5 并购目标筛选与交易        :q5a, 2024-10, 14M
+    
+    section 长期变革
+    Q4 可再生能源部署            :q4a, 2024-09, 48M
+    Q4 2nm节点技术研发           :q4b, 2025-01, 30M
+    Q4 碳中和目标实现            :milestone, q4c, 2030-01, 0M
+```
 
 ---
 
@@ -66,21 +157,38 @@
 - **中期** (18-36月): CRO: 追加$100M（Phase 2） → 目标：TRL 8（2026Q2），AI PC原型发布（2026Q3），产能10万台/年
 - **长期** (3-5年): CEO: CapEx $500M → 目标：50万台/年产能（2027），市场份额+3%（2028）
 
+> **关键决策点**: AI PC市场窗口期仅18-24个月，2025年错失将导致竞争劣势。建议采用**混合模式**（内部研发70% + 外部许可30%），平衡速度与控制权，确保2026Q3前产品上市。
+
 **图表：AI PC市场增长路径**
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
-    A[2024: AI PC<5%<br/>市场$155B] --> B[2025: 31%份额<br/>7780万台]
-    B --> C[2026: 43%份额<br/>市场$220B]
-    C --> D[2027-2030:<br/>主流化+TAM扩张]
+    A["2024: AI PC 份额低于5%<br/>市场规模 155B美元"] --> B["2025: 份额31%<br/>出货7780万台"]
+    B --> C["2026: 份额43%<br/>市场规模 220B美元"]
+    C --> D["2027-2030:<br/>主流化与市场扩张"]
     
-    A -->|投资决策点| E[R&D $150M]
-    E --> F[TRL 7-8<br/>18-24月]
-    F --> G[商业化<br/>2026-2027]
+    A -->|投资决策点| E["研发投资 150M美元"]
+    E --> F["技术就绪度 7-8级<br/>周期18-24个月"]
+    F --> G["商业化阶段<br/>2026-2027年"]
     
-    style B fill:#ff9
-    style C fill:#9f9
-    style F fill:#f99
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 [n1]: https://www.gartner.com/en/newsroom/press-releases/2025-08-28-gartner-says-artificial-intelligence-pcs-will-represent-31-percent-of-worldwide-pc-market-by-the-end-of-2025
@@ -117,6 +225,8 @@ graph LR
 - **短期** (6-18月): CSO: 启动供应商尽职调查（2024Q4），与TSMC/Intel签订MOU → 目标：锁定2025-2026产能协议
 - **中期** (18-36月): CFO: 投资$300M供应链重构 → 目标：2026美国采购30%，双轨库存系统上线（2025Q4）
 - **长期** (3-5年): 首席风险官: 建立供应链韧性框架 → 目标：地缘风险敞口-70%（2029），供应链中断成本<$10M/年
+
+> **战略警示**: CHIPS法案产能爬坡期（2024-2026）存在良率风险，建议保留**双轨供应链**（亚洲70% + 美国30%），避免过度依赖单一地区。成本溢价10-15%可视为**地缘风险保险费**，NPV分析支持中期投资。
 
 **表格：CHIPS法案对3C供应链影响**
 
@@ -164,6 +274,8 @@ graph LR
 - **中期** (18-36月): CSO: 部署供应链碳核算平台$10M → 目标：2026 CBAM合规，80%供应商碳数据接入
 - **长期** (3-5年): CFO: ESG融资$500M → 目标：融资成本-100bp（2028），ESG投资NPV $200M
 
+> **合规风险警示**: 2026年CBAM全面实施将影响$1200亿市场，**非合规企业将失去欧盟市场准入**（占全球3C市场20%）。建议优先投资**一体化合规平台**，虽初期成本高（$25M）但长期运营成本可降低30%。ESG评级提升（BBB→AA）可降低融资成本100-150bp，5年NPV $200M，投资回报率显著。
+
 [n3]: https://www.complianceandrisks.com/blog/regulatory-trends-in-consumer-electronics-2024-a-12-18-month-outlook
 
 ---
@@ -199,31 +311,54 @@ graph LR
 - **中期** (18-36月): CRO: 投资$150M 2nm节点研发 → 目标：2027能效+40%，量产就绪
 - **长期** (3-5年): CEO: 追加$650M（RE+技术） → 目标：2030碳中和，客户ESG溢价+10%
 
+> **可持续性机遇**: Apple/Google等头部客户要求供应商**2030年实现碳中和**，不达标将失去30% TAM（$50B）。2030-2035全球碳税（$50-150/吨）可能导致年度碳成本$10B-30B。建议采用**RE+效率提升组合策略**（$1.1B投资），确定性高于激进技术路线（光子芯片TRL 4），可实现2027年50%减排、2030年碳中和，并获得客户ESG溢价+10%（NPV $300M）。
+
 **图表：半导体可持续性路径**
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TB
-    A[2024: 能耗150 TWh<br/>碳排放基线] --> B[2027: 能耗190 TWh<br/>碳减排-50%]
-    B --> C[2030: 能耗220 TWh<br/>碳中和达成]
+    A["2024: 能耗150TWh<br/>碳排放基线"] --> B["2027: 能耗190TWh<br/>碳减排50%"]
+    B --> C["2030: 能耗220TWh<br/>实现碳中和"]
     
-    A --> D[投资决策]
-    D --> E[RE $800M<br/>2024-2028]
-    D --> F[2nm节点 $300M<br/>2025-2027]
-    D --> G[光子芯片 探索<br/>TRL 4→6]
+    A --> D["投资决策"]
+    D --> E["可再生能源 800M美元<br/>2024-2028"]
+    D --> F["2nm节点研发 300M美元<br/>2025-2027"]
+    D --> G["光子芯片探索<br/>技术就绪度 4到6级"]
     
-    E --> H[RE 80%<br/>2028]
-    F --> I[能效+40%<br/>2027]
-    G --> J[商业化<br/>2030+]
+    E --> H["可再生能源占比80%<br/>2028年"]
+    F --> I["能效提升40%<br/>2027年"]
+    G --> J["商业化阶段<br/>2030年后"]
     
     H --> C
     I --> C
     
-    K[风险因素] --> L[客户要求<br/>2030碳中和]
-    K --> M[碳税$50-150/吨<br/>2030-2035]
+    K["风险因素"] --> L["客户碳中和要求<br/>2030年截止"]
+    K --> M["碳税每吨50-150美元<br/>2030-2035"]
     
-    style C fill:#9f9
-    style L fill:#f99
-    style M fill:#f99
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style F fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style G fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style I fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style J fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style K fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style L fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style M fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 [n4]: https://www.techinsights.com/blog/semiconductor-sustainability-eight-moments-mattered-2024
@@ -273,6 +408,26 @@ graph TB
 | 音频技术 | $150M-300M | 产品差异化 | 低（品牌整合） | 2-3年 | 25-30% | 中 |
 | 战略联盟/JV | $50M-200M | 灵活性+风险分担 | 低（控制权低） | 3-4年 | 15-20% | 中 |
 
+**M&A目标回报率对比**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591"
+  }
+}}%%
+xyChart-beta
+    title "M&A目标回报率与回收期分析"
+    x-axis "回收期（年）" 2 --> 5
+    y-axis "IRR预期（%）" 15 --> 35
+    line [2.5, 3.5, 2.5, 4.5, 3.5]
+```
+
+> **关键洞察**: 智能家居生态与AI芯片设计呈现最优风险回报比，建议作为2024-2025年度M&A战略重点。音频技术与OLED显示可作为补充性收购目标。
+
 [n5]: https://mandaequilibrium.com/mergers-acquisitions-in-the-consumer-electronics-sector
 
 ---
@@ -283,11 +438,33 @@ graph TB
 
 **G1. CAGR (复合年增长率)**: 投资或市场在多年期间的年化增长率 | 背景：衡量长期增长趋势 | 示例：PC市场2024-2030 CAGR 8%
 
+计算公式：
+$$
+\text{CAGR} = \left(\frac{\text{终值}}{\text{初值}}\right)^{\frac{1}{\text{年数}}} - 1
+$$
+
 **G2. TAM (总可寻址市场)**: 产品/服务在完全渗透情况下的最大市场规模 | 背景：战略规划基础 | 示例：AI PC 2026 TAM $220B
+
+计算公式：
+$$
+\text{TAM} = \text{目标客户总数} \times \text{平均客单价} \times \text{购买频率}
+$$
 
 **G3. TRL (技术就绪等级)**: 1-9级评估技术成熟度，9为全面商业化 | 背景：R&D投资决策 | 示例：AI芯片TRL 6-7 = 18-24月商业化
 
+TRL等级：
+- **TRL 1-3**: 基础研究
+- **TRL 4-6**: 技术开发
+- **TRL 7-9**: 系统集成与商业化
+
 **G4. NPV (净现值)**: 未来现金流按折现率折现的总和，评估投资价值 | 背景：资本配置决策 | 示例：供应链重构NPV $8B（5年，折现率10%）
+
+计算公式：
+$$
+\text{NPV} = \sum_{t=0}^{n} \frac{\text{现金流}_t}{(1 + r)^t} - \text{初始投资}
+$$
+
+其中 $r$ 为折现率，$t$ 为时间期数，$n$ 为项目周期
 
 ---
 

@@ -108,11 +108,18 @@
 
 **Structure** (150-200w): News (1-2 sentences) → Impact (≥2 phases, ≥3 quantified metrics, cited) → Stakeholders (≥2 roles, conflicting priorities explicit) → Decision (≥2 options with costs/risks/benefits, conditions for each, recommendation with reasoning, success targets) → Action (Immediate 0-2wk + Short 2wk-2mo, with tools and owners) → Assumptions & Risks (critical assumptions, ≥10% impact risks with probabilities, revisit trigger).
 
-### Step 4: Visuals
+### Step 4: Visuals (Inline Placement)
 
-**Types**: Market maps, funding timelines, decision trees, burn/runway scenarios, valuation comparables.
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
 
-**Format**: Mermaid diagrams for flows/timelines; Markdown tables for comparisons.
+**Placement Logic**:
+- **Market positioning**: Map/matrix after Impact section showing competitive landscape
+- **Funding timelines**: Diagram inline when describing runway/fundraising sequence
+- **Decision comparisons**: Table directly after Decision text comparing enter/wait/pass options
+- **Burn/runway scenarios**: Chart after Impact section with financial metrics
+- **Valuation comparables**: Table inline with funding/valuation analysis
+
+**Minimum**: ≥2 diagrams (Mermaid for flows/timelines/decision trees) + ≥1 table (Markdown for comparisons), all placed inline within Q&A sections (not grouped separately)
 
 ### Step 5: Self-Review & Validate
 
@@ -184,6 +191,20 @@
 
 **Impact** (2-3 sentences): ≥2 phases + ≥3 quantified metrics ($, %, timeline); cite all
 
+| Metric | Baseline | Target | Timeline | Impact |
+|--------|----------|--------|----------|--------|
+| [Optional: Metrics table if ≥3 financial/runway metrics] | | | | |
+
+```mermaid
+[Optional: Funding/runway timeline or burn scenario diagram]
+gantt
+    title Runway & Fundraising
+    section Current
+    Burn Rate $50K/mo: done, 0-12mo
+    section Target
+    Series A $5M: milestone, 12mo
+```
+
 **Stakeholders** (2-3 sentences): **[Role 1]**: concern | action + **[Role 2]**: concern | action
 
 **Decision** (2-3 sentences): 
@@ -192,9 +213,24 @@
 - **Recommendation**: [Enter/Wait/Pass] because [rationale] given [assumptions]
 - **Success targets**: metric ≥ target by date
 
+| Option | Cost | Benefit | Risk | Conditions | Timeline |
+|--------|------|---------|------|------------|----------|
+| A | [$] | [metric] | [prob%] | [when] | [Xmo] |
+| B | [$] | [metric] | [prob%] | [when] | [Xmo] |
+
 **Action** (2-3 bullets):
 - **Immediate (0-2wk)**: [Task with tool] [Owner]
 - **Short (2wk-2mo)**: [Task with tool] [Owner]
+
+```mermaid
+[Optional: Market positioning or competitive landscape diagram]
+quadrantChart
+    title Market Position
+    x-axis Niche --> Broad Market
+    y-axis Low Traction --> High Traction
+    Competitor A: [0.7, 0.6]
+    Us: [0.3, 0.4]
+```
 
 **Assumptions & Risks** (1-2 sentences): Assumes [X, Y]; risks (≥10%): [R1 (prob %), R2 (prob %)]; revisit if [trigger] by [YYYY-MM-DD]
 
@@ -204,9 +240,8 @@
 ## 3. References (≥3 types: G/N/M/F/R/P/A)
 [See Step 2 for format]
 
-## 4. Visuals (≥2 diagrams + ≥1 table)
-[Mermaid diagrams; Markdown tables with quantified columns]
-
-## 5. Validation
+## 4. Validation
 [Completed checklist from Validation Checklist section]
+
+**Note**: All visuals (≥2 diagrams + ≥1 table) should be embedded inline within Q&A sections, not grouped separately.
 ```

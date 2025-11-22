@@ -102,6 +102,12 @@ For each selected item, generate one Q&A using the **General Q&A Template** (see
 - Clear domain tagging and metadata
 - News → Impact → Stakeholders → Decision → Action
 
+**Inline Visuals**: Embed ≥2 diagrams + ≥1 table directly within Q&As (not grouped separately):
+- **Domain dashboards**: Table after executive summary showing all 8 domain Q&As
+- **Decision comparisons**: Table directly after Decision text in each Q&A
+- **Impact flows**: Diagram after Impact section when describing cross-functional cascades
+- Place visuals immediately after the text they illustrate to avoid reader navigation
+
 ### 4. Validate & Publish
 
 Run the **Validation Checklist** and ensure all items pass before delivery.
@@ -174,7 +180,23 @@ Run the **Validation Checklist** and ensure all items pass before delivery.
 
 **Impact**: Summarize impact with **quantified metrics** (e.g., latency, revenue, CAC, churn, capacity, regulatory deadlines), including baseline → target when known. Cover ≥2 relevant phases when applicable.
 
+| Metric | Baseline | Target | Timeline | Function Impact |
+|--------|----------|--------|----------|-----------------|
+| [Optional: Metrics table if cross-functional impact spans ≥3 metrics] | | | | |
+
+```mermaid
+[Optional: Cross-functional impact flow diagram]
+graph LR
+A[Event] --> B[Function 1 Impact]
+B --> C[Function 2 Impact]
+C --> D[Business Outcome]
+```
+
 **Decision**: Present ≥2 concrete options (e.g., Adopt/Investigate/Defer/Avoid) with **cost**, **benefit**, and **risk**. Clearly state the **recommendation** and rationale, and note limitations or when not to choose each option if relevant.
+
+| Option | Cost | Benefit | Risk | Recommendation |
+|--------|------|---------|------|----------------|
+| [Optional: Decision comparison table if ≥2 alternatives] | | | | |
 
 **Action**: List immediate (0-2wk) and short-term (2wk-2mo) actions with **owners** and **success metrics** (baseline → target, measurement method).
 

@@ -96,9 +96,17 @@
 5. Action: Immediate (0-2wk), short-term (2wk-2mo), owners
 6. Links: [n#]: URL
 
-### 4. Add Visuals
+### 4. Add Visuals (Inline Placement)
 
-Include ≥2 diagrams (Mermaid) + ≥1 table
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Decision comparisons** (≥2 alternatives): Table directly after Decision text
+- **Process flows** (impact chains, deployment sequences): Diagram directly after describing the flow
+- **Risk/priority matrices**: Diagram inline where risk assessment occurs
+- **Metric dashboards**: Table inline with Impact section
+
+**Minimum**: ≥2 diagrams (Mermaid) + ≥1 table, all placed inline within Q&A sections (not grouped separately)
 
 ### 5. Validate & Submit
 
@@ -174,6 +182,14 @@ Single Markdown document with sections: **TOC** → **Executive Summary** → **
 - [Phase 1]: [metric+unit] (latency +50ms, cost +$2K/mo, CVSS 9.8)
 - [Phase 2]: [metric+unit]
 
+```mermaid
+[Optional: Process flow diagram if describing deployment/impact sequence]
+```
+
+| Metric | Baseline | Target | Timeline |
+|--------|----------|--------|----------|
+| [Optional: Metrics table if ≥3 quantified impacts] | | | |
+
 **Stakeholders**: 
 - [Role 1]: [concern] → [action]
 - [Role 2]: [concern] → [action]
@@ -187,9 +203,18 @@ Single Markdown document with sections: **TOC** → **Executive Summary** → **
 - Success Criteria: [baseline] → [target] (measure: [method])
 - Limitations: NOT for [condition]; [counterargument]
 
+| Option | Cost | Benefit | Risk | Timeline |
+|--------|------|---------|------|----------|
+| A | [$] | [metric] | [prob/impact] | [Xwk] |
+| B | [$] | [metric] | [prob/impact] | [Xwk] |
+
 **Action**: 
 - Immediate (0-2wk): [actions] (Owner: [role])
 - Short-term (2wk-2mo): [actions] (Owner: [role])
+
+```mermaid
+[Optional: Timeline/deployment diagram if showing action sequence]
+```
 
 [n#]: [URL]
 ```

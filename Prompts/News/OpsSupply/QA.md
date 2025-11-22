@@ -63,9 +63,19 @@ Record generation date (YYYY-MM-DD). **Search** 10-15 candidates using keywords 
 
 Pattern: "[News] implications for [Cycle]+[Roles]?". **Avoid**: Generic claims (quantify), hype (show limitations), unattributed statements (cite), stale news, speculation (flag uncertainty). **Self-Check**: Criticality ✓ | ≥2 cycles/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced.
 
-### Step 4: Add Visuals
+### Step 4: Add Visuals (Inline Placement)
 
-≥2 diagrams (Mermaid: supplier risk matrix, decision tree, disruption impact flow, scenario comparison) + ≥1 table. Example: `graph TD; A[High Impact] -->|High Prob| B[Critical]; A -->|Low Prob| C[Monitor]` | Table: Option, Cost, Lead Time Impact, Risk, Timeline.
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Risk matrices**: Diagram after Impact section showing supplier/disruption risk positioning
+- **Decision comparisons**: Table directly after Decision text comparing sourcing/capacity options
+- **Disruption flows**: Diagram inline when describing supply chain impact cascades
+- **Metric comparisons**: Table after Impact section with cost/lead time/quality metrics
+
+**Minimum**: ≥2 diagrams (Mermaid: supplier risk matrix, decision tree, disruption impact flow, scenario comparison) + ≥1 table, all placed inline within Q&A sections (not grouped separately)
+
+**Example**: `graph TD; A[High Impact] -->|High Prob| B[Critical]; A -->|Low Prob| C[Monitor]` placed directly after risk assessment text
 
 ### Step 5: Validate
 
@@ -115,11 +125,35 @@ Pattern: "[News] implications for [Cycle]+[Roles]?". **Avoid**: Generic claims (
 
 **Impact**: **Cycles** (≥2) | **Metrics**: Cost/Lead Time/Quality/Capacity (quantified with baselines)
 
+| Metric | Baseline | Current | Target | Change | Impact |
+|--------|----------|---------|--------|--------|--------|
+| [Optional: Metrics table if ≥3 quantified impacts] | | | | | |
+
+```mermaid
+[Optional: Supply chain disruption flow diagram]
+graph TD
+A[Supplier Issue] --> B[Lead Time +30%]
+B --> C[Capacity -15%]
+C --> D[Cost +$500K]
+```
+
 **Stakeholders**: **[Role 1]**: Concerns + actions | **[Role 2]**: Concerns + actions
 
 **Decision**: **Options**: (A) [cost/benefit/risk], (B) [cost/benefit/risk] | **Recommendation**: [Choice] | **Rationale**: [Why] | **Trade-offs**: Risks/limitations | **Timeline**: Milestones (2wk, 2mo, 6mo)
 
+| Option | Cost | Lead Time Impact | Risk | Timeline | Trade-offs |
+|--------|------|------------------|------|----------|------------|
+| A | [$] | [days/weeks] | [specific] | [Xwk/mo] | [limitation] |
+| B | [$] | [days/weeks] | [specific] | [Xwk/mo] | [limitation] |
+
 **Action**: **Immediate (0-2wk)**: Tasks + owner | **Short (2wk-2mo)**: Tasks + owner | **Medium (2-6mo)**: Tasks + owner + metrics
+
+```mermaid
+[Optional: Risk matrix for supplier/disruption assessment]
+graph TD
+A[High Impact + High Prob] --> B[Critical - Act Now]
+C[High Impact + Low Prob] --> D[Monitor Closely]
+```
 
 [n1]: URL
 

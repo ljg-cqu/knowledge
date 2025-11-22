@@ -83,9 +83,17 @@
 5. **Action** (~20w): S/M/L steps with owner + metric
 6. **Links**: [n#]: URL
 
-### Step 4: Create Visuals & Validate
+### Step 4: Create Visuals (Inline Placement) & Validate
 
-**Create**: ≥2 Mermaid diagrams + ≥1 Markdown table
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Horizon impacts**: Table after Impact section showing timeline-quantified metrics (CAGR/TAM/NPV)
+- **Technology roadmaps**: Diagram inline when describing TRL progression or R&D phases
+- **Risk/opportunity matrices**: Diagram after stakeholder analysis showing positioning
+- **Decision comparisons**: Table directly after Decision text comparing strategic alternatives
+
+**Minimum**: ≥2 Mermaid diagrams + ≥1 Markdown table, all placed inline within Q&A sections (not grouped separately)
 
 **Validate** (IV checklist): All 5 Quality Gates | Coverage (3-4 horizons, 5 categories, ≥4 roles) | Metrics quantified | 150-200w | Freshness | Valid URLs
 
@@ -146,6 +154,16 @@ G: [≥3] | N: [≥3] | A: [≥2] | P: [≥1] | I: [≥2] | R: [≥5 APA]
 - **[H1]**: [CAGR/TAM/$/NPV/%]
 - **[H2]**: [CAGR/TAM/$/NPV/%]
 
+| Horizon | Metric | Baseline | Target | Timeline | Assumptions |
+|---------|--------|----------|--------|----------|-------------|
+| [Optional: Horizon impact table if ≥3 metrics] | | | | | |
+
+```mermaid
+[Optional: Technology roadmap or TRL progression diagram]
+graph LR
+A[TRL 4: Lab] --> B[TRL 7: Pilot] --> C[TRL 9: Commercial]
+```
+
 **Stakeholders** (~40w): ≥2 roles
 - **[Role 1]**: Concern: [X]; Action: [Y, $/timeline]
 - **[Role 2]**: Concern: [X]; Action: [Y, $/timeline]
@@ -158,9 +176,23 @@ G: [≥3] | N: [≥3] | A: [≥2] | P: [≥1] | I: [≥2] | R: [≥5 APA]
 - **Risks/Limits**: [When NOT to act]
 - **Success**: [Baseline→target, timeline]
 
+| Alternative | Cost | Benefit | Risk | Timeline | NPV |
+|-------------|------|---------|------|----------|-----|
+| [Optional: Decision comparison table if ≥2 alternatives] | | | | | |
+
 **Action** (~20w):
 - **S** (6-18mo): [Role]: [Steps] → [Metric]
 - **M/L** (as applicable): [Role]: [Steps] → [Metric]
+
+```mermaid
+[Optional: Action timeline gantt chart]
+gantt
+    title Strategic Action Timeline
+    section Phase 1
+    Action 1: 6-12mo
+    section Phase 2
+    Action 2: 12-18mo
+```
 
 [n#]: [URL]
 ---

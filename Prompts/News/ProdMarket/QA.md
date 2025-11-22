@@ -80,9 +80,17 @@
 
 **Flag Uncertainty**: "Estimated: [claim]" or "Reported (unverified): [claim]"
 
-### Step 4: Create Visuals
+### Step 4: Create Visuals (Inline Placement)
 
-**Required**: ≥2 diagrams/matrices (competitive 2×2, decision flowchart, timeline Mermaid gantt) + ≥1 comparison table (Markdown)
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Competitive positioning**: 2×2 matrix after Impact section showing market position
+- **Decision comparison**: Table directly after Decision text comparing feature/pricing options
+- **Timeline/roadmap**: Gantt chart inline when describing phased rollout
+- **Adoption/conversion**: Funnel diagram after metrics in Impact section
+
+**Minimum**: ≥2 diagrams/matrices (competitive 2×2, decision flowchart, timeline Mermaid gantt) + ≥1 comparison table (Markdown), all placed inline within Q&A sections (not grouped separately)
 
 **Format**: Label axes, add legend if >3 categories
 
@@ -135,6 +143,24 @@
 - **Metrics**: [Metric 1]: X% (baseline: Y%), [Metric 2]: $Z, [Metric 3]: N units
 - **Comparison**: [vs baseline/competitor]
 
+| Metric | Baseline | Current | Target | Change | Competitor |
+|--------|----------|---------|--------|--------|------------|
+| [Optional: Metrics comparison table if ≥3 competitors/benchmarks] | | | | | |
+
+```mermaid
+[Optional: Competitive positioning matrix or adoption funnel]
+quadrantChart
+    title Market Position
+    x-axis Low Features --> High Features
+    y-axis Low Price --> High Price
+    quadrant-1 Premium
+    quadrant-2 Leader
+    quadrant-3 Budget
+    quadrant-4 Challenger
+    Competitor A: [0.7, 0.8]
+    Us: [0.5, 0.6]
+```
+
 **Stakeholders**: 
 - **[Role 1]**: Concern: [specific]. Action: [concrete]
 - **[Role 2]**: Concern: [specific]. Action: [concrete]
@@ -151,6 +177,16 @@
 **Action**: 
 - **Immediate (0-2wk)**: [Action 1] (Owner: [Role]); [Action 2] (Owner: [Role])
 - **Short-term (2wk-2mo)**: [Action 1] (Owner: [Role]); [Action 2] (Owner: [Role])
+
+```mermaid
+[Optional: Timeline gantt chart for phased rollout]
+gantt
+    title Implementation Timeline
+    section Phase 1
+    Research: 0-2wk
+    section Phase 2
+    Build: 2wk-2mo
+```
 
 **Flags** (if applicable): "Estimated: [claim]" or "Reported (unverified): [claim]"
 

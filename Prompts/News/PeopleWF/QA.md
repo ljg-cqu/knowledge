@@ -48,6 +48,11 @@ Set generation date, calculate news age per freshness priority. Web search 10-15
 
 **Structure per Q** (150-200w): News (~30w: what/when/why/category + source/date) | Impact (~60w: lifecycle stages + quantified metrics baseline → target, flag uncertainties) | Stakeholders (~40w: ≥2 roles + concerns/actions + perspective differences) | Decision (~40w: primary path + ≥1 alternative, trade-offs - costs/benefits/risks, when NOT to pursue) | Action (~20w: steps + owners + success metrics). **Include**: Limitations, risks, counterarguments, when NOT to pursue. **Exclude**: Generic advice ("best practices"), hype, unattributed claims, speculation, one-sided views.
 
+**Inline Visuals**: Embed ≥2 diagrams + ≥1 table directly after relevant sections:
+- **Lifecycle flow**: Diagram after Impact section showing talent pipeline stages
+- **Decision comparison**: Table directly after Decision text comparing alternatives
+- **Metric trends**: Table inline with Impact section (comp benchmarks, retention rates, skills gaps)
+
 ### Step 4: Validate & Submit [CRITICAL]
 
 **Verification**: URLs accessible, dates match source, check metrics against source claims, flag uncertainties ("estimated", "projected", "unavailable"), cross-check contradictions. **Pre-Submission**: 4-6 Q&As (150-200w each), ≥3 categories, ≥4 stakeholders, all citations (≥1 source + date + URL), all decision-critical (≥1 criterion), ≥2 diagrams + ≥1 table. **Deliverable**: Q&As + citations + glossary + references + visuals + generation date.

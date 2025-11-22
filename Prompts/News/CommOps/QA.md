@@ -72,9 +72,19 @@ Record generation date (YYYY-MM-DD). **Search** 10-15 candidates using keywords 
 
 Pattern: "[News] implications for [Stage]+[Roles]?". **Avoid**: Generic claims (quantify), hype (show limitations), unattributed statements (cite), stale news, speculation (flag uncertainty). **Self-Check**: Criticality ✓ | ≥2 stages/roles | ≥2 options | 150-200w | Quantified | Cited | Actionable | Balanced.
 
-### Step 4: Add Visuals
+### Step 4: Add Visuals (Inline Placement)
 
-≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table. Example: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` | Table: Competitor, CAC, Change, Source.
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Decision comparisons**: Table directly after Decision text comparing options
+- **Funnel/pipeline flows**: Diagram after Impact section describing conversion stages
+- **Competitive positioning**: Matrix inline with stakeholder analysis
+- **Metric trends**: Table inline with Impact metrics
+
+**Minimum**: ≥2 diagrams (Mermaid: funnels, pipelines, cohorts, matrices) + ≥1 table, all placed inline within Q&A sections (not grouped separately)
+
+**Example**: `graph TD; A[Leads 10K] --> B[MQLs 2K] --> C[SQLs 500] --> D[Closed 100]` placed directly after describing conversion flow
 
 ### Step 5: Validate
 
@@ -124,9 +134,24 @@ Pattern: "[News] implications for [Stage]+[Roles]?". **Avoid**: Generic claims (
 
 **Impact**: **Stages** (≥2) | **Metrics**: Revenue/Pipeline/Conversion/Retention (quantified)
 
+| Metric | Baseline | Current | Target | Change |
+|--------|----------|---------|--------|--------|
+| [Optional: Metrics table if ≥3 quantified impacts] | | | | |
+
+```mermaid
+[Optional: Funnel/pipeline diagram if describing conversion flow]
+graph TD
+A[Stage 1] --> B[Stage 2] --> C[Stage 3]
+```
+
 **Stakeholders**: **[Role 1]**: Concerns + actions | **[Role 2]**: Concerns + actions
 
 **Decision**: **Options**: (A) [cost/benefit], (B) [cost/benefit] | **Recommendation**: [Choice] | **Rationale**: [Why] | **Trade-offs**: Risks/limitations
+
+| Option | Cost | Benefit | Risk | Timeline |
+|--------|------|---------|------|----------|
+| A | [$] | [metric] | [specific] | [Xwk/mo] |
+| B | [$] | [metric] | [specific] | [Xwk/mo] |
 
 **Action**: **Immediate (0-2wk)**: Tasks + owner | **Short (2wk-2mo)**: Tasks + owner + metrics
 

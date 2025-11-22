@@ -40,9 +40,17 @@ Record generation date (YYYY-MM-DD). Search ≥10 candidates from Fed/ECB, WSJ, 
 
 **Question**: "[Specific News] implications for [Cycle]?". **Structure** (150-200w): News (~30w: what, when, why [Ref: N#][n#]) | Impact (~60w: ≥2 cycles + quantified metrics - %, $, multiple, IRR, bps - with explicit causal links "X causes Y because Z") | Stakeholders (~40w: Primary/Secondary with concerns → actions) | Decision (~50w: Recommended option - benefits/costs/risks/criteria, Alternative option - benefits/costs/risks) | Action (~20w: Critical 0-2wk [Step - Owner], Important 2wk-2mo [Step - Owner]) | Links: [n#]: [Source] (YYYY-MM-DD) URL.
 
-### Step 4: Add Visuals
+### Step 4: Add Visuals (Inline Placement)
 
-**Diagrams** (≥2): Mermaid flowcharts (decision trees, WACC/DCF), sequence diagrams (timelines), scenario comparisons. **Tables** (≥1): Decision matrix (Option, Benefits, Costs, Risks, Timeline), impact summary (Cycle, Metric, Current, Target), or action tracker (Role, Action, Timeline, Priority).
+**Principle**: Embed visuals immediately after relevant text to avoid reader navigation.
+
+**Placement Logic**:
+- **Decision comparisons**: Table directly after Decision text showing options/costs/benefits
+- **WACC/DCF flows**: Diagram after Impact section explaining capital structure
+- **Timeline scenarios**: Sequence diagram inline with timeline-dependent decisions
+- **Impact summaries**: Table after Impact section with cycle/metric breakdowns
+
+**Minimum**: ≥2 diagrams (Mermaid: flowcharts for decision trees/WACC/DCF, sequence diagrams for timelines, scenario comparisons) + ≥1 table, all placed inline within Q&A sections (not grouped separately)
 
 ### Step 5: Self-Review
 
@@ -120,6 +128,16 @@ Verify calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), l
 - **[Cycle 1]**: [Quantified change] because [mechanism]
 - **[Cycle 2]**: [Quantified change] because [mechanism]
 
+| Cycle | Metric | Current | Target | Change | Mechanism |
+|-------|--------|---------|--------|--------|-----------|
+| [Optional: Impact summary table if ≥3 cycles affected] | | | | | |
+
+```mermaid
+[Optional: WACC/DCF flow diagram if explaining capital structure impact]
+graph LR
+A[Rate Change] --> B[WACC Impact] --> C[NPV Effect]
+```
+
 **Stakeholders** (~35w): 
 - **[Primary]**: [Concerns] → [Actions]
 - **[Secondary]**: [Concerns] → [Actions]
@@ -128,9 +146,21 @@ Verify calculations (WACC%, IRR, multiples), citations (dates, URLs, recency), l
 - **Recommended**: [Option] - Benefits: [X], Costs: [Y], Risks: [Z], Criteria: [When]
 - **Alternative**: [Option] - Benefits: [X], Costs: [Y], Risks: [Z]
 
+| Option | Cost | Benefit | Risk | Criteria | Timeline |
+|--------|------|---------|------|----------|----------|
+| Recommended | [$] | [metric] | [prob/impact] | [when] | [Xmo] |
+| Alternative | [$] | [metric] | [prob/impact] | [when] | [Xmo] |
+
 **Action** (~20w): 
 - **Critical (0-2wk)**: [Step] - [Owner]
 - **Important (2wk-2mo)**: [Step] - [Owner]
+
+```mermaid
+[Optional: Timeline sequence if showing phased actions]
+sequenceDiagram
+Note over Owner: Critical Actions (0-2wk)
+Note over Owner: Important Actions (2wk-2mo)
+```
 
 [n1]: [Source] (YYYY-MM-DD) URL
 ---

@@ -388,6 +388,16 @@
 ### 图1: AI PC市场竞争格局（2025年市场份额）
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 pie title AI PC处理器市场份额（2025年Q3）
     "Apple" : 47
     "Intel" : 40
@@ -399,6 +409,17 @@ pie title AI PC处理器市场份额（2025年Q3）
 ### 图2: 中国智能手机市场TOP 5份额变化
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[Q2 2025] --> B[Q3 2025]
     A --> |vivo 15%| B1[vivo 18% ↑3pp 第一]
@@ -406,6 +427,14 @@ graph LR
     A --> |小米 14%| B3[小米 15% ↑1pp 并列第四]
     A --> |Apple 13%| B4[Apple 15% ↑2pp 第三]
     A --> |OPPO 16%| B5[OPPO 15% ↓1pp 并列第四]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style B2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B4 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B5 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 图3: 产品生命周期关键决策时间线

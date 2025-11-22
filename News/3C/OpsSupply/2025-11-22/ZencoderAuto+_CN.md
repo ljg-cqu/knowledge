@@ -190,47 +190,112 @@
 ### 图表1: 供应链风险矩阵 - 3C行业2024 Q4
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
-    A[高影响] -->|高概率| B[关键风险<br/>芯片断供/关税]
-    A -->|低概率| C[监控风险<br/>工厂火灾]
-    D[低影响] -->|高概率| E[管理风险<br/>物流延误]
-    D -->|低概率| F[接受风险<br/>小额损耗]
+    A[高影响] -->|高概率| B[关键风险 芯片断供与关税]
+    A -->|低概率| C[监控风险 工厂火灾]
+    D[低影响] -->|高概率| E[管理风险 物流延误]
+    D[低影响] -->|低概率| F[接受风险 小额损耗]
     
-    B --> G[即时行动:<br/>双源采购+区域化]
-    C --> H[预防措施:<br/>消防升级+BCP]
-    E --> I[优化流程:<br/>TMS+库存缓冲]
+    B --> G[即时行动 双源采购与区域化]
+    C --> H[预防措施 消防升级与BCP]
+    E --> I[优化流程 TMS与库存缓冲]
+    
+    style A fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style H fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style I fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 图表2: 供应链重构决策树 - 关税应对策略
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
-    A[2025年2月<br/>20%基础关税] --> B{产品利润率}
-    B -->|高利润>20%| C[终端涨价2-3%<br/>维持中国供应]
-    B -->|中利润10-20%| D[混合策略<br/>部分转移30-40%]
-    B -->|低利润<5-10%| E[全面转移<br/>区域化供应链]
+    A[2025年2月 20%基础关税] --> B{产品利润率}
+    B -->|高利润大于20%| C[终端涨价2-3% 维持中国供应]
+    B -->|中利润10-20%| D[混合策略 部分转移30-40%]
+    B -->|低利润小于10%| E[全面转移 区域化供应链]
     
-    C --> F[短期方案<br/>2-3个月]
-    D --> G[中期方案<br/>6-12个月]
-    E --> H[长期方案<br/>12-18个月]
+    C --> F[短期方案 2-3个月]
+    D --> G[中期方案 6-12个月]
+    E --> H[长期方案 12-18个月]
     
-    G --> I[试点越南/墨西哥<br/>10-15%产能]
-    G --> J[价格优化<br/>2-3%]
+    G --> I[试点越南与墨西哥 10-15%产能]
+    G --> J[价格优化 2-3%]
+    
+    style A fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style F fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style H fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style I fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style J fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 图表3: 区域化供应链场景对比
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[当前状态] --> B[中国集中70%]
     B --> C[成本基线100%]
     B --> D[交付周期45天]
-    B --> E[风险:地缘政治高]
+    B --> E[风险 地缘政治高]
     
-    F[目标状态] --> G[区域化分散<br/>中国40%/东南亚30%/美洲30%]
+    F[目标状态] --> G[区域化分散 中国40% 东南亚30% 美洲30%]
     G --> H[成本增加4-6%]
     G --> I[交付周期35天]
-    G --> J[风险:地缘政治降低50%]
+    G --> J[风险 地缘政治降低50%]
+    
+    style A fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style F fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style H fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style I fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 表格1: Q&A决策方案对比

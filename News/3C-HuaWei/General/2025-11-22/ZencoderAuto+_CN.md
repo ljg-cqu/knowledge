@@ -10,6 +10,31 @@
 - **[ProdMarket]** Mate 70系列发布搭载HarmonyOS NEXT，AI能力深度融合 → 产品竞争力增强，市场份额领先19.4% → 建议关注产品战略 → 持续监测
 - **[StratIntel]** 华为通过哈勃科技投资加速半导体全链条布局 → 供应链自主化战略推进 → 建议评估长期影响 → 2025年Q4-2026年Q1
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+timeline
+    title 华为3C产业关键事件时间线
+    section Q4 2025
+        11月 : AI算力技术突破
+           : Mate 70系列发布
+           : 三折叠手机上市
+        12月 : 半导体布局深化
+           : 鸿蒙车载生态扩展
+    section Q1 2026
+        01-03月 : 供应链自主化推进
+             : 市场份额持续领先
+```
+
 ## 仪表板
 
 | # | 领域标签 | 领域名称 | 标题 | 关键性 | 速度 | 阶段 | 职能 |
@@ -22,6 +47,36 @@
 | 6 | StratIntel | 战略情报 | 华为加速半导体供应链自主化布局 | Risk | Medium | Growth/Scale | Strategic |
 | 7 | OpsSupply | 运营与供应链 | 数智化天线商用运维效率提升30倍 | Quantified | Medium | Growth/Scale | Operations |
 | 8 | PeopleWF | 人力与劳动力 | AI智能体小艺系统级升级人机交互 | Roles | Medium | Growth/Scale | People |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+quadrantChart
+    title 领域优先级矩阵：关键性 vs 速度
+    x-axis 低速度 --> 高速度
+    y-axis 低关键性 --> 高关键性
+    quadrant-1 高优先级
+    quadrant-2 战略重点
+    quadrant-3 监测观察
+    quadrant-4 快速响应
+    "TechOps AI算力": [0.85, 0.90]
+    "ProdMarket Mate 70": [0.85, 0.80]
+    "CommOps市场份额": [0.50, 0.75]
+    "StratIntel半导体": [0.50, 0.70]
+    "Startup鸿蒙车载": [0.50, 0.60]
+    "FinEcon三折叠": [0.50, 0.55]
+    "OpsSupply数智天线": [0.50, 0.75]
+    "PeopleWF AI智能体": [0.50, 0.65]
+```
 
 ---
 
@@ -59,7 +114,53 @@
 
 **影响**: 算力利用率提升至70%意味着单位算力成本降低40-50%，AI训练时间缩短30-40%（基线：传统GPU集群利用率35%，目标：70%）。对于大规模AI部署企业，可减少50%服务器采购需求，运营成本下降35-45%。技术采用需要评估现有基础设施兼容性、迁移成本及技术支持能力。
 
+**关键指标对比**:
+
+| 指标 | 传统方案基线 | 华为技术目标 | 提升幅度 |
+|------|------------|-------------|---------|
+| **算力利用率** | 30-40% | 70% | +75-133% |
+| **单位成本** | 基准100% | 50-60% | -40-50% |
+| **AI训练时间** | 基准100% | 60-70% | -30-40% |
+| **服务器需求** | 基准100台 | 50台 | -50% |
+| **运营成本** | 基准100% | 55-65% | -35-45% |
+
 **决策**: **选项1（推荐）**: 立即启动POC测试，评估技术兼容性与ROI。成本：小规模测试投入约50-100万元；收益：年度算力成本降低30-40%；风险：技术成熟度待验证。**选项2**: 等待技术成熟后再部署。成本：低；收益：降低技术风险；风险：竞争对手抢占成本优势。建议选择选项1，因为算力成本是AI企业核心支出。
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[华为AI算力技术发布] --> B{评估决策}
+    B -->|选项1推荐| C[启动POC测试]
+    B -->|选项2| D[等待观望]
+    C --> E[获取技术白皮书]
+    C --> F[申请测试资源]
+    E --> G[设计测试方案]
+    F --> G
+    G --> H[执行POC测试]
+    H --> I{测试结果}
+    I -->|利用率60%+| J[全面部署]
+    I -->|未达标| K[技术优化或延后]
+    J --> L[成本降低30-40%]
+    D --> M[竞争劣势风险]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style L fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style M fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+```
 
 **行动**: 
 - **即时行动（0-2周）**: CTO与基础设施负责人联系华为技术团队，申请POC测试（成功指标：获取技术白皮书与测试资源）。

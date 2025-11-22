@@ -153,51 +153,97 @@
 ### 图表1: 华为智能手机市场份额增长趋势（2023-2024）
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
-    A[2023 Q4<br/>市场份额 9%] --> B[2024 Q1<br/>市场份额 13%<br/>+4%]
-    B --> C[2024 Q2<br/>市场份额 15.6%<br/>+2.6%]
-    C --> D[2024 Q3<br/>市场份额 16.6%<br/>+1%]
-    D --> E[2024 Q4<br/>市场份额 18.1%<br/>+1.5%]
+    A["2023 Q4 市场份额 9%"] --> B["2024 Q1 市场份额 13% +4%"]
+    B --> C["2024 Q2 市场份额 15.6% +2.6%"]
+    C --> D["2024 Q3 市场份额 16.6% +1%"]
+    D --> E["2024 Q4 市场份额 18.1% +1.5%"]
     
-    style E fill:#ff6b6b,stroke:#c92a2a,color:#fff
-    style A fill:#e9ecef,stroke:#adb5bd
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 图表2: 生态系统用户分层与留存策略
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
-    A[总用户 10亿] --> B[单设备用户<br/>60% - 6亿]
-    A --> C[多设备用户<br/>30% - 3亿]
-    A --> D[全场景用户<br/>10% - 1亿]
+    A["总用户 10亿"] --> B["单设备用户 60% - 6亿"]
+    A --> C["多设备用户 30% - 3亿"]
+    A --> D["全场景用户 10% - 1亿"]
     
-    B --> E[激活策略<br/>多设备优惠<br/>目标转化率 30%]
-    C --> F[深化策略<br/>场景化推荐<br/>目标 NRR 105%]
-    D --> G[VIP策略<br/>专属服务<br/>目标留存率 98%]
+    B --> E["激活策略 多设备优惠 目标转化率 30%"]
+    C --> F["深化策略 场景化推荐 目标 NRR 105%"]
+    D --> G["VIP策略 专属服务 目标留存率 98%"]
     
-    style D fill:#51cf66,stroke:#2f9e44,color:#fff
-    style C fill:#74c0fc,stroke:#1c7ed6,color:#fff
-    style B fill:#ffd43b,stroke:#f08c00
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style F fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 图表3: 3C行业线索转化漏斗对比（行业平均 vs 优化后）
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
-    subgraph 行业平均
-    A1[潜客 10000] --> B1[MQL 2000<br/>转化率 20%]
-    B1 --> C1[SQL 400<br/>转化率 20%]
-    C1 --> D1[成交 40<br/>转化率 10%]
+    subgraph S1["行业平均"]
+    A1["潜客 10000"] --> B1["MQL 2000 转化率 20%"]
+    B1 --> C1["SQL 400 转化率 20%"]
+    C1 --> D1["成交 40 转化率 10%"]
     end
     
-    subgraph 优化后目标
-    A2[潜客 10000] --> B2[MQL 3000<br/>转化率 30%]
-    B2 --> C2[SQL 900<br/>转化率 30%]
-    C2 --> D2[成交 180<br/>转化率 20%]
+    subgraph S2["优化后目标"]
+    A2["潜客 10000"] --> B2["MQL 3000 转化率 30%"]
+    B2 --> C2["SQL 900 转化率 30%"]
+    C2 --> D2["成交 180 转化率 20%"]
     end
     
-    style D2 fill:#51cf66,stroke:#2f9e44,color:#fff
-    style D1 fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    style A1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style A2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
 ### 表格1: 竞争对手渠道效率对比（2024年Q3-Q4）

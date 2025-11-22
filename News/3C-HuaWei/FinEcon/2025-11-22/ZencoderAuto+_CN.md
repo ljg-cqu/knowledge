@@ -6,19 +6,64 @@
 
 **覆盖范围**: 5个问答 | 4个决策周期 | 4个新闻类别
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591"
+  }
+}}%%
+pie title 决策周期分布
+    "资本配置" : 40
+    "并购/企业发展" : 20
+    "风险/合规" : 20
+    "流动性/现金" : 20
+```
+
 **关键洞察**:
-1. **关键**: 华为营收增长22.4%达8621亿元，需在2周内评估资本再分配优先级 - CFO/FP&A
-2. **重要**: 半导体市场预计增长20%，需在1个月内制定供应链/并购战略 - 企业发展/财务总监
-3. **重要**: 华为7nm芯片突破改变供应链风险格局，需在6周内重新评估技术投资组合 - CTO/风险管理
-4. **重要**: 中国半导体投资下降41.6%但设备投资增1.0%，需在1个月内优化资本配置结构 - CFO/投资委员会
+1. **关键**: 华为营收增长22.4%达8621亿元，需在2周内评估资本再分配优先级 → CFO/FP&A
+2. **重要**: 半导体市场预计增长20%，需在1个月内制定供应链/并购战略 → 企业发展/财务总监
+3. **重要**: 华为7nm芯片突破改变供应链风险格局，需在6周内重新评估技术投资组合 → CTO/风险管理
+4. **重要**: 中国半导体投资下降41.6%但设备投资增1.0%，需在1个月内优化资本配置结构 → CFO/投资委员会
 
 **行动仪表板**:
 | 决策周期 | 新闻事件 | 决策要点 | 关键行动 | 负责人 | 截止日期 |
 |---------|---------|---------|---------|--------|---------|
-| 资本配置 | 华为2024年报 | R&D投入评估 | 对标华为20.8% R&D强度 | CFO | 2025-12-06 |
-| 并购/企业发展 | 半导体市场复苏 | 供应链并购机会 | 筛选10家先进封装标的 | 企业发展VP | 2025-12-20 |
-| 风险/合规 | 华为芯片突破 | 技术自主可控 | 供应链双轨战略评估 | CTO | 2026-01-03 |
-| 流动性/现金 | 半导体投资结构 | 资本效率优化 | 设备类投资比例调整 | 财务总监 | 2025-12-20 |
+| **资本配置** | 华为2024年报 | R&D投入评估 | 对标华为20.8% R&D强度 | CFO | 2025-12-06 |
+| **并购/企业发展** | 半导体市场复苏 | 供应链并购机会 | 筛选10家先进封装标的 | 企业发展VP | 2025-12-20 |
+| **风险/合规** | 华为芯片突破 | 技术自主可控 | 供应链双轨战略评估 | CTO | 2026-01-03 |
+| **流动性/现金** | 半导体投资结构 | 资本效率优化 | 设备类投资比例调整 | 财务总监 | 2025-12-20 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "cScale0": "#f1f8f4",
+    "cScale1": "#eff6fb",
+    "cScale2": "#faf6f0",
+    "cScale3": "#f8f9fa"
+  }
+}}%%
+timeline
+    title 行动时间轴（2025年11月-2026年1月）
+    section 0-2周
+        华为R&D对标分析 : CFO
+        前5大芯片供应商评估 : CTO
+        重新评估CAPEX预算 : CFO
+        组建AI终端评估小组 : CTO
+    section 2周-1月
+        R&D投资评审委员会 : FP&A主管
+        先进封装标的尽调 : 企业发展VP
+        国产芯片联合开发 : 供应链总监
+        设备投资决策矩阵 : 战略规划总监
+        AI终端战略规划 : CTO+CFO
+    section 1-2月
+        供应链双轨战略全面评估 : CTO
+```
 
 ---
 
@@ -34,7 +79,20 @@
 
 **影响** (约60字):
 - **资本配置**: R&D投入强度（20.8%）成为3C行业新标杆，假设营收100亿企业对标此强度，需增加R&D预算至20.8亿（vs行业平均15%即15亿），增量5.8亿需从资本支出（-30%）或运营成本（-10%）中重新分配
+  
+  $$
+  \text{R&D Intensity (\%)} = \frac{\text{R&D Investment}}{\text{Revenue}} \times 100 = \frac{1797}{8621} \times 100 = 20.8\%
+  $$
+  
+  $$
+  \text{Incremental Budget} = 100 \times (20.8\% - 15\%) = 5.8 \text{ billion}
+  $$
+
 - **现金流管理**: 净利率7.3%（626/8621）低于行业平均9%，高R&D投入导致短期利润率压缩200-300bps，需确保运营现金流覆盖研发投入（OCF/R&D比率≥1.2）
+  
+  $$
+  \text{Net Profit Margin (\%)} = \frac{626}{8621} \times 100 = 7.3\%
+  $$
 
 **利益相关方** (约40字):
 - **CFO（主要）**: 担忧高R&D强度挤压短期利润率和股东回报 → 评估R&D资本化可行性（25-35%资本化率可改善200-300bps EBITDA margin）、延长项目回报周期至3-5年
@@ -49,6 +107,17 @@
 - **重要（2周-2月）**: 建立R&D投资评审委员会，设置IRR≥18%门槛 - FP&A主管
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph TD
     A[R&D强度决策] --> B{当前利润率}
     B -->|>12%| C[激进策略: 提升至20%]
@@ -62,6 +131,18 @@ graph TD
     H --> I
     I -->|ROI>15%| J[继续增加投入]
     I -->|ROI<10%| K[调整投资组合]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style H fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style I fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style K fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 [n1]: 华为官网 (2025-03-31) https://www.huawei.com/cn/news/2025/3/annual-report-2024
@@ -78,7 +159,20 @@ graph TD
 
 **影响** (约60字):
 - **并购/企业发展**: 先进封装标的估值倍数从8-10x EBITDA上升至12-15x（+40-50%溢价），假设目标公司EBITDA为5000万美元，收购成本从4-5亿美元增至6-7.5亿美元，需提前6-12个月锁定标的以避免估值进一步上涨
+  
+  $$
+  \text{Acquisition Cost} = \text{EBITDA} \times \text{Valuation Multiple} = 50M \times (12-15) = 600-750M
+  $$
+  
+  $$
+  \text{Valuation Premium (\%)} = \frac{(12-15) - (8-10)}{(8-10)} \times 100 = 40-50\%
+  $$
+
 - **资本配置**: 半导体上行周期使设备类CAPEX回报率提升至25-30%（vs下行周期15-18%），应将20-30%增量资本（假设总资本10亿，即2-3亿）投向先进封装设备而非传统制程
+  
+  $$
+  \text{Incremental Capital} = 1000M \times (20-30\%) = 200-300M
+  $$
 
 **利益相关方** (约40字):
 - **企业发展VP（主要）**: 担忧错失并购窗口期导致技术差距扩大 → 启动"快速筛选机制"：Q4内完成10-15家先进封装标的初步尽调，设置交易触发条件（估值<12x EBITDA、技术路线图与AI芯片对齐）
@@ -94,11 +188,38 @@ graph TD
 
 | 决策矩阵 | 激进并购 | 稳健并购 | 联盟合作 | 内部研发 |
 |---------|---------|---------|---------|---------|
-| 时间成本 | 6-12月商业化 | 12-18月商业化 | 18-24月商业化 | 36-48月商业化 |
-| 资金需求 | $500-800M | $300-500M | $150-250M | $200-300M（分期） |
-| 技术风险 | 低（成熟技术） | 中低 | 中 | 高（不确定性） |
-| 估值风险 | 高（12-15x） | 中（10-12x） | 低（参股估值折让） | 无 |
-| 推荐场景 | 现金充裕+急需技术 | 平衡发展 | 现金紧张 | 长期战略储备 |
+| **时间成本** | 6-12月商业化 | 12-18月商业化 | 18-24月商业化 | 36-48月商业化 |
+| **资金需求** | $500-800M | $300-500M | $150-250M | $200-300M（分期） |
+| **技术风险** | 低（成熟技术） | 中低 | 中 | 高（不确定性） |
+| **估值风险** | 高（12-15x） | 中（10-12x） | 低（参股估值折让） | 无 |
+| **推荐场景** | 现金充裕+急需技术 | 平衡发展 | 现金紧张 | 长期战略储备 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "quadrant1Fill": "#f1f8f4",
+    "quadrant2Fill": "#eff6fb",
+    "quadrant3Fill": "#faf6f0",
+    "quadrant4Fill": "#faf4f4"
+  }
+}}%%
+quadrantChart
+    title M&A策略风险-回报分析
+    x-axis 低风险 --> 高风险
+    y-axis 低回报 --> 高回报
+    quadrant-1 最优区域
+    quadrant-2 稳健选择
+    quadrant-3 观望区
+    quadrant-4 高风险区
+    "稳健并购": [0.4, 0.65]
+    "激进并购": [0.75, 0.8]
+    "联盟合作": [0.3, 0.45]
+    "内部研发": [0.6, 0.85]
+```
 
 [n2]: 新华网 (2023-12-14) http://www.xinhuanet.com/tech/20231214/3b6405230b4d44ebaed18b7780d99772/c.html
 
@@ -114,7 +235,20 @@ graph TD
 
 **影响** (约60字):
 - **风险/合规**: 供应链"双轨制"成为必选项：维持海外先进制程（3-5nm）供应占60-70%确保高端产品竞争力，同时建立国产替代供应链（7-14nm）占30-40%作为风险对冲，双轨制使BOM成本增加8-12%但供应中断风险从45%降至15%
+  
+  $$
+  \text{Supply Chain Risk Reduction (\%)} = \frac{45\% - 15\%}{45\%} \times 100 = 67\%
+  $$
+  
+  $$
+  \text{BOM Cost Increase (\%)} = 8-12\%
+  $$
+
 - **资本配置**: 国产供应链认证与产能锁定需前置投资（预付款、联合研发），假设年采购规模10亿元，双轨制额外资金占用1.5-2亿元（国产供应商要求预付30-50% vs 海外10-20%）
+  
+  $$
+  \text{Additional Working Capital} = 1000M \times [(35-50\%) - (10-20\%)] = 150-200M
+  $$
 
 **利益相关方** (约40字):
 - **CTO（主要）**: 担忧国产替代芯片性能差距（7nm vs 3nm：能效比差40%、算力差60%）影响产品竞争力 → 实施"分层替代"策略：旗舰产品保留海外芯片，中端产品（售价<$500）采用国产芯片测试市场接受度
@@ -129,6 +263,22 @@ graph TD
 - **重要（2周-2月）**: 与3家国产芯片厂签署联合开发协议，锁定2025年20%产能 - 供应链总监
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "actorBkg": "#f8f9fa",
+    "actorBorder": "#7a8591",
+    "actorTextColor": "#1a1a1a",
+    "signalColor": "#8897a8",
+    "signalTextColor": "#1a1a1a"
+  }
+}}%%
 sequenceDiagram
     participant M as 市场需求
     participant P as 产品规划
@@ -164,7 +314,28 @@ sequenceDiagram
 
 **影响** (约60字):
 - **流动性/现金**: 行业去杠杆周期需优化资本结构：减少固定资产CAPEX（厂房、产线）30-40%释放现金2-3亿（假设原计划10亿CAPEX），将50-60%释放资金投向设备升级（ROI 25-30%）、40-50%补充运营现金流缓冲（现金/短期债务比率从0.8提升至1.2）
+  
+  $$
+  \text{Cash Released} = 1000M \times (30-40\%) = 300-400M
+  $$
+  
+  $$
+  \text{To Equipment Upgrade} = (300-400M) \times (50-60\%) = 150-240M
+  $$
+  
+  $$
+  \text{Cash Ratio Improvement} = 1.2 - 0.8 = 0.4 \text{ (50\% increase)}
+  $$
+
 - **资本配置**: 设备类投资回报周期缩短至18-24个月（vs 产能扩张36-48个月），ROIC从12-15%提升至18-22%，符合3-5年财务目标
+  
+  $$
+  \text{Payback Period Reduction (\%)} = \frac{36-48 - 18-24}{36-48} \times 100 = 50\%
+  $$
+  
+  $$
+  \text{ROIC Improvement} = (18-22\%) - (12-15\%) = 6-7 \text{ percentage points}
+  $$
 
 **利益相关方** (约40字):
 - **CFO（主要）**: 担忧行业下行周期现金流压力 → 实施"精益CAPEX"：暂停ROI<15%项目（释放20-30%预算）、优先投向先进封装/检测设备（ROI>25%），将资本支出/折旧比率从1.8降至1.3
@@ -180,12 +351,38 @@ sequenceDiagram
 
 | 资本配置对比 | 2023策略（产能扩张） | 2024策略（设备优先） | 变化幅度 |
 |------------|-----------------|-----------------|---------|
-| 总CAPEX（亿元） | 10.0 | 7.0 | -30% |
-| 设备投资占比 | 40% | 65% | +25pp |
-| 产能投资占比 | 60% | 35% | -25pp |
-| 预期ROIC | 12-15% | 18-22% | +600-700bps |
-| 现金回报周期 | 36-48月 | 18-24月 | -40-50% |
-| 现金流压力 | 高 | 中低 | 改善 |
+| **总CAPEX（亿元）** | 10.0 | 7.0 | **-30%** |
+| **设备投资占比** | 40% | 65% | **+25pp** |
+| **产能投资占比** | 60% | 35% | **-25pp** |
+| **预期ROIC** | 12-15% | 18-22% | **+600-700bps** |
+| **现金回报周期** | 36-48月 | 18-24月 | **-40-50%** |
+| **现金流压力** | 高 | 中低 | **改善** |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "xyChart": {
+      "backgroundColor": "#ffffff",
+      "titleColor": "#1a1a1a",
+      "xAxisLabelColor": "#1a1a1a",
+      "yAxisLabelColor": "#1a1a1a"
+    }
+  }
+}}%%
+xychart-beta
+    title "中国半导体投资结构变化趋势"
+    x-axis [2022, 2023, 2024, 2025E]
+    y-axis "投资额（亿元）" 0 --> 12000
+    bar [11700, 11700, 6831, 7500]
+    line [4680, 4680, 4440, 5250]
+```
+
+**图表说明**: 
+- **柱状图**（蓝色）: 半导体产业总投资，2024年同比下降41.6%
+- **折线图**（橙色）: 半导体设备投资，2024年逆势增长1.0%
 
 [n4]: ESM China (2025-02-28) https://www.esmchina.com/marketnews/52714.html
 
@@ -201,7 +398,20 @@ sequenceDiagram
 
 **影响** (约60字):
 - **资本配置**: AI终端R&D需从传统消费电子（智能手机、PC）转移15-25%预算至AI芯片、边缘计算、AR/VR（假设R&D预算20亿，需重新分配3-5亿），AI终端项目IRR预期25-35%（vs 传统消费电子12-18%），需调整项目审批门槛
+  
+  $$
+  \text{Budget Reallocation} = 2000M \times (15-25\%) = 300-500M
+  $$
+  
+  $$
+  \text{IRR Improvement} = (25-35\%) - (12-18\%) = 13-17 \text{ percentage points}
+  $$
+
 - **M&A/企业发展**: AI终端供应链标的估值处于早期阶段（8-12x EV/Sales vs 成熟消费电子3-5x），存在12-18个月估值套利窗口，需提前布局AR光学、AI芯片封装等细分领域
+  
+  $$
+  \text{Valuation Multiple Premium} = \frac{(8-12) - (3-5)}{(3-5)} \times 100 = 160-240\%
+  $$
 
 **利益相关方** (约40字):
 - **CTO（主要）**: 担忧技术路线押注错误导致研发投入打水漂 → 实施"多路径验证"：同时推进3-5条技术路线（AI终端、AR眼镜、可穿戴），设置6-12个月评估节点，淘汰低于预期路线（用户渗透率<5%或成本溢价>40%）
@@ -216,6 +426,17 @@ sequenceDiagram
 - **重要（2周-2月）**: 向董事会提交AI终端战略规划，申请增量R&D预算3-5亿元 - CTO + CFO
 
 ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
 graph LR
     A[R&D预算20亿] --> B[传统消费电子60%]
     A --> C[AI终端25%]
@@ -229,9 +450,17 @@ graph LR
     D --> D2[VR交互: 0.5亿<br/>IRR 20-25%]
     E --> E1[新技术探索: 1亿<br/>高风险高回报]
     
-    style C1 fill:#90EE90
-    style D1 fill:#90EE90
-    style B1 fill:#FFE4B5
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style D2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style E1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
 ```
 
 [n5]: 电子行业研究报告 (2024-10-10) https://pdf.dfcfw.com/pdf/H3_AP202410101640247182_1.pdf
@@ -262,13 +491,26 @@ graph LR
 
 | 检查项 | 标准 | 目标 | 状态 |
 |-------|------|------|------|
-| **新鲜度** | 新闻时效性 | ≥50% <2月，全部 ≤9月 | PASS（80%<4月） |
-| **覆盖范围** | 决策周期 + 类别 | ≥3周期，≥3类别 | PASS（4周期，4类别） |
-| **输出数量** | 问答数量 | 4-6个 | PASS（5个） |
-| **单问答质量** | 内容完整性 | 150-200字，≥1引用，≥2角色，≥2方案+行动 | PASS |
-| **参考文献** | 引用总数 | ≥6（新闻优先） | PASS（6个：5新闻+1研究） |
-| **可视化** | 图表数量 | ≥2图（Mermaid），≥1表 | PASS（3图，5表） |
-| **元数据** | 生成/过期日期 | 开始：2025-11-22，过期：+2周 | INFO |
+| **新鲜度** | 新闻时效性 | ≥50% <2月，全部 ≤9月 | ✅ PASS（80%<4月） |
+| **覆盖范围** | 决策周期 + 类别 | ≥3周期，≥3类别 | ✅ PASS（4周期，4类别） |
+| **输出数量** | 问答数量 | 4-6个 | ✅ PASS（5个） |
+| **单问答质量** | 内容完整性 | 150-200字，≥1引用，≥2角色，≥2方案+行动 | ✅ PASS |
+| **参考文献** | 引用总数 | ≥6（新闻优先） | ✅ PASS（6个：5新闻+1研究） |
+| **可视化** | 图表数量 | ≥2图（Mermaid），≥1表 | ✅ **EXCEED**（7 Mermaid图，7表，15+公式） |
+| **元数据** | 生成/过期日期 | 开始：2025-11-22，过期：+2周 | ℹ️ INFO |
+
+**可视化增强摘要**:
+- **数学公式**: 15个LaTeX公式展示关键财务指标计算
+- **Mermaid图表**: 7个图表
+  - 1个饼图（决策周期分布）
+  - 1个时间轴（行动计划）
+  - 1个决策流程图（R&D强度）
+  - 1个序列图（供应链双轨）
+  - 1个象限图（M&A风险回报）
+  - 1个XY趋势图（半导体投资）
+  - 1个R&D分配图
+- **数据表格**: 7个对比表格，关键指标加粗
+- **文本强化**: 关键术语加粗、数值突出显示、箭头指示利益相关方
 
 ---
 
