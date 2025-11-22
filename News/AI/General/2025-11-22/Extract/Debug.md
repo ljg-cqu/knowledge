@@ -1,19 +1,420 @@
 # Extract Debug Cards
 
-1. Q: A CFO models 12-month runway assuming CAC will increase 10-15% due to AI startup competition. The report states AI startups captured 52.5% of VC funding with competitors likely to outspend on customer acquisition. What is wrong with the 10-15% assumption and how should it be corrected?
-   A: **Issue**: The 10-15% assumption significantly underestimates competitive pressure. The report explicitly states CAC may increase 20-40%, not 10-15%. **Impact**: Underestimating CAC increase by half could lead to runway miscalculation of 2-4 months, causing emergency fundraising or layoffs. **Correction**: Use 20-40% CAC increase assumption (or model three scenarios: 20%, 30%, 40%) and include sensitivity analysis showing cash exhaustion dates at each level. Conservative planning would use 40% for Formation-stage startups with <12mo runway.
+## Card 1: CAC Increase Underestimation
 
-1. Q: An engineering team plans a staged rollout of critical RCE vulnerability patches: dev (Day 1) → staging (Day 5) → low-priority prod (Day 12) → high-priority prod (Day 20). What is wrong with this timeline and how should it be corrected?
-   A: **Issue**: The 20-day total timeline for completing patches violates the report's explicit recommendation of patching "within 2 weeks" (14 days). Critical RCE vulnerabilities expose production systems to immediate compromise risk. **Impact**: Extending to 20 days increases exploitation window by 43%, particularly risky for high-priority production systems patched last. Potential data exfiltration, service disruption, regulatory penalties. **Correction**: Compress timeline: dev (Day 1) → staging (Day 3-4) → low-priority prod (Day 7-8) → high-priority prod (Day 12-14), with 24-hour monitoring between stages. For mission-critical systems, consider Option 3 from report: temporary workarounds (network segmentation/WAF rules) immediately while testing patches in parallel.
+**Scenario**: A CFO models 12-month runway assuming CAC will increase 10-15% due to AI startup competition. The report states AI startups captured 52.5% of VC funding with competitors likely to outspend on customer acquisition.
 
-1. Q: A product team decides to migrate all features to GPT-5.1 immediately after reading that it "significantly outperforms" GPT-4 in reasoning tasks. They allocate 1 sprint for full migration and plan to deploy to production without A/B testing. What are the errors in this approach?
-   A: **Issue 1**: Report recommends 2 sprints for evaluation + testing, not immediate full migration. Team skipped the evaluation framework and benchmarking phase. **Issue 2**: No A/B testing ignores the report's explicit recommendation to "monitor customer NPS/satisfaction scores bi-weekly during migration" with success metric of "no >5% NPS degradation." **Issue 3**: Migrating all features ignores cost consideration—GPT-5.1 is 20-30% more expensive. Team didn't evaluate cost-performance trade-offs or consider tiered approach. **Impact**: Risk of integration bugs, UX degradation, unexpected cost overruns (potentially 20-30% increase in inference costs), no rollback plan. **Correction**: Follow report's recommended approach: (1) Define top 3 reasoning-critical use cases, (2) Allocate 2 sprints for parallel benchmarks with 20-30 test cases from production data, (3) Migrate highest-value use case first with A/B testing, (4) Monitor NPS bi-weekly, (5) Stage additional migrations only if success criteria met.
+### Issue
+- **10-15% assumption significantly underestimates competitive pressure**
+- Report explicitly states CAC may increase **20-40%**, not 10-15%
+- Underestimating by half the actual projected increase
 
-1. Q: A marketing team repositions product messaging to emphasize "autonomous AI agents" despite having only basic workflow automation and API integrations. They claim this aligns with the 78% enterprise adoption finding. What is problematic about this positioning?
-   A: **Issue**: The report defines agentic AI as "autonomous task execution, tool use, workflow orchestration" and recommends messaging pivot "if product already has 2+ agentic capabilities." Basic workflow automation doesn't meet this standard. Report explicitly recommends "Option 3 - Product-First Approach" (build features before repositioning) for products where "features non-existent." **Impact**: Creates customer expectations mismatch, risks reputation damage when buyers discover limited autonomy, potential false advertising concerns. May confuse existing customers (per report: "Risk: confuses existing customers if execution is inconsistent"). **Correction**: Follow report's Option 2 (Gradual Messaging Evolution): A/B test agentic messaging in new campaigns while maintaining legacy positioning, or invest 3-6 months in product development to build genuine agentic capabilities before full repositioning. Alternatively, use report's "Human-in-Loop Agent" framing to accurately describe supervised automation capabilities without overpromising autonomy.
+### Impact
+$$\text{Runway Miscalculation} = 2\text{ to }4\text{ months shortfall}$$
 
-1. Q: A CTO reads that the EU Digital Omnibus may delay high-risk AI system rules by 16 months and immediately cancels all AI Act compliance work scheduled for 2026, redirecting resources to product development. The company operates healthcare AI tools in the EU market. What is wrong with this decision?
-   A: **Issue**: Report explicitly states: "Organizations with high-risk AI systems gain extended compliance runway but face continued regulatory uncertainty" and recommends "Option 1 - Maintain Original Timeline (Recommended for high-risk exposure)" specifically for regulated industries including healthcare. The decision contradicts this guidance. **Impact**: Healthcare AI qualifies as high-risk under AI Act Annex III. Canceling compliance work creates massive debt if delay doesn't materialize or if interim enforcement occurs. Healthcare is heavily regulated—GDPR and sector-specific regulations still apply regardless of AI Act timeline. **Correction**: Follow report's Option 1: Continue August 2026 compliance prep despite potential delay. Rationale from report: "Readiness regardless of final timeline, competitive advantage if standards tighten." For healthcare specifically, maintain foundational work (model documentation, data lineage, explainability) that applies regardless of final timeline. This positions the company for readiness and demonstrates regulatory good faith.
+| Risk | Consequence |
+|------|-------------|
+| Cash exhaustion earlier than planned | Emergency fundraising |
+| Insufficient buffer | Potential layoffs |
+| Operational disruption | Business continuity risk |
 
-1. Q: A CFO allocates exactly $68K/month for AI infrastructure in 2026 based on the report's projection that current $50K/month could increase to $68K (+36% growth). They present this as a "data-driven" budget. What is insufficient about this approach?
-   A: **Issue 1**: Report recommends "Option 3 - Hybrid Model: Reforecast +20%, initiate optimization workstream" (not just accepting +36% as inevitable) or modeling three scenarios (+20%, +30%, +40%) with trade-offs. Single-point estimate ignores uncertainty and optimization potential. **Issue 2**: The 36% is industry average—report explicitly warns this includes "organizations with vastly different AI usage patterns" and that "individual company's cost drivers may differ significantly." Blindly applying average commits aggregation fallacy. **Issue 3**: No quarterly review gates or optimization plan—report recommends "quarterly review gates" and identifying "top 3 optimization opportunities" to achieve "15-20% cost efficiency gain." **Impact**: Budget may be too high (wasted allocation) or too low (mid-year scramble), no flexibility for changing usage patterns, missed optimization opportunities. **Correction**: Model three scenarios tied to feature roadmap (base case +20%, moderate +30%, aggressive +40%), implement cost tracking dashboard by feature/user cohort, prioritize top 3 optimization opportunities (prompt caching, model downgrading for low-value requests, usage-based throttling), establish monthly AI cost review with Engineering, include quarterly decision gates to reallocate based on actual burn rate.
+### Correction Approach
+
+| Aspect | Wrong Approach | Correct Approach |
+|--------|----------------|------------------|
+| **Assumption** | Single 10-15% estimate | 20-40% range or three scenarios |
+| **Modeling** | Point estimate | Scenario analysis (20%, 30%, 40%) |
+| **Analysis** | Basic projection | Sensitivity analysis with cash exhaustion dates |
+| **Conservative Planning** | Use midpoint (12.5%) | Use 40% for Formation-stage (<12mo runway) |
+
+**Recommended Action**: Model three scenarios with clear decision triggers at each CAC threshold level.
+
+---
+
+## Card 2: Vulnerability Patch Timeline Violation
+
+**Scenario**: An engineering team plans staged rollout of critical RCE vulnerability patches across environments over 20 days.
+
+### Timeline Comparison
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+gantt
+    title Patch Rollout Timeline Comparison
+    dateFormat YYYY-MM-DD
+    
+    section Wrong Approach
+    Dev Environment           :a1, 2025-01-01, 1d
+    Staging Environment       :a2, 2025-01-05, 1d
+    Low-Priority Production   :a3, 2025-01-12, 1d
+    High-Priority Production  :a4, 2025-01-20, 1d
+    
+    section Correct Approach
+    Dev Environment           :b1, 2025-01-01, 1d
+    Staging Environment       :b2, 2025-01-03, 2d
+    Low-Priority Production   :b3, 2025-01-07, 2d
+    High-Priority Production  :b4, 2025-01-12, 3d
+```
+
+### Issue
+- **20-day timeline violates report's "within 2 weeks" (14 days) recommendation**
+- Critical RCE vulnerabilities expose production systems to immediate compromise
+- High-priority systems patched last, extending exposure window
+
+### Impact
+$$\text{Increased Exploitation Window} = 43\% = \frac{20 - 14}{14} \times 100$$
+
+**Risks**:
+- Data exfiltration during extended exposure
+- Service disruption from active exploitation
+- Regulatory penalties for delayed patching
+- Reputational damage
+
+### Correction
+
+**Compressed Timeline**:
+1. **Dev** (Day 1)
+2. **Staging** (Day 3-4) + 24hr monitoring
+3. **Low-Priority Prod** (Day 7-8) + 24hr monitoring
+4. **High-Priority Prod** (Day 12-14) + continuous monitoring
+
+**Alternative for Mission-Critical Systems** (Option 3 from report):
+- Implement temporary workarounds **immediately**:
+  - Network segmentation
+  - WAF rules
+- Test patches in parallel
+- Deploy when validated
+
+---
+
+## Card 3: Hasty GPT-5.1 Migration
+
+**Scenario**: Product team decides to migrate all features to GPT-5.1 immediately after reading it "significantly outperforms" GPT-4, allocating 1 sprint for full migration without A/B testing.
+
+### Issues Breakdown
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+mindmap
+  root((Migration<br/>Errors))
+    Issue 1: Timeline
+      Report: 2 sprints
+      Team: 1 sprint
+      Skipped evaluation
+      Skipped benchmarking
+    Issue 2: Testing
+      No A/B testing
+      No NPS monitoring
+      No rollback plan
+      Success metric ignored
+    Issue 3: Cost
+      GPT-5.1 is 20-30% more expensive
+      No cost analysis
+      No tiered approach
+      All-or-nothing migration
+```
+
+### Impact Analysis
+
+| Risk Category | Consequence |
+|---------------|-------------|
+| **Technical** | Integration bugs, system instability |
+| **User Experience** | Potential UX degradation without validation |
+| **Financial** | 20-30% unexpected cost increase |
+| **Operational** | No rollback strategy if issues arise |
+
+### Correction: Five-Phase Approach
+
+**Proper Migration Process**:
+
+1. **Define Scope** (Week 1)
+   - Identify top 3 reasoning-critical use cases
+   - Prioritize by business value
+
+2. **Benchmark** (Weeks 2-3)
+   - Allocate 2 sprints for evaluation
+   - Test 20-30 cases from production data
+   - Run parallel GPT-4 vs GPT-5.1 comparison
+
+3. **Pilot Migration** (Week 4)
+   - Migrate highest-value use case only
+   - Implement A/B testing
+   - Set success threshold: **no >5% NPS degradation**
+
+4. **Monitor** (Weeks 5-8)
+   - Bi-weekly NPS/satisfaction tracking
+   - Cost analysis per use case
+   - Performance metrics dashboard
+
+5. **Stage Rollout** (Week 9+)
+   - Migrate additional features only if criteria met
+   - Continue cost-performance monitoring
+
+**Success Metrics**:
+- NPS degradation < 5%
+- Cost increase justified by value
+- Technical stability maintained
+
+---
+
+## Card 4: Misleading Agentic AI Positioning
+
+**Scenario**: Marketing team repositions product as "autonomous AI agents" despite having only basic workflow automation, citing 78% enterprise adoption finding.
+
+### Capability Gap Analysis
+
+| Dimension | Report Definition | Current Product | Gap |
+|-----------|-------------------|-----------------|-----|
+| **Autonomy** | Autonomous task execution | Manual triggers | ❌ Missing |
+| **Tool Use** | External tool integration | Basic APIs only | ⚠️ Limited |
+| **Orchestration** | Complex workflow coordination | Simple automation | ❌ Missing |
+| **Minimum Threshold** | 2+ agentic capabilities | 0-1 capabilities | ❌ Below threshold |
+
+### Issue
+- **Product doesn't meet report's agentic AI definition**
+- Report recommends **"Option 3 - Product-First Approach"** when features non-existent
+- Messaging pivot only recommended if product has **2+ agentic capabilities**
+
+### Impact
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Misleading Positioning] --> B[Customer Expectations Mismatch]
+    B --> C[Reputation Damage]
+    B --> D[False Advertising Concerns]
+    B --> E[Customer Confusion]
+    C --> F[Lost Trust]
+    D --> F
+    E --> F
+    
+    style A fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+```
+
+### Correction Options
+
+| Option | Timeline | Approach | Best For |
+|--------|----------|----------|----------|
+| **Option 2: Gradual Evolution** | Immediate | A/B test agentic messaging in new campaigns only | Risk-averse organizations |
+| **Option 3: Product-First** | 3-6 months | Build genuine capabilities before repositioning | Quality-focused brands |
+| **Alternative Framing** | Immediate | Use "Human-in-Loop Agent" messaging | Honest communication |
+
+**Recommended**: Option 3 or Alternative Framing to maintain credibility and avoid overpromising.
+
+---
+
+## Card 5: AI Act Compliance Cancellation
+
+**Scenario**: CTO reads about potential 16-month EU Digital Omnibus delay and cancels all AI Act compliance work for 2026, redirecting resources to product development. Company operates healthcare AI tools in EU market.
+
+### Regulatory Context
+
+**Healthcare AI Classification**:
+- Qualifies as **high-risk** under AI Act Annex III
+- Subject to stricter requirements regardless of timeline
+- GDPR and sector-specific regulations still apply
+
+### Issue
+- **Decision contradicts report's explicit guidance**
+- Report recommends **"Option 1 - Maintain Original Timeline"** for high-risk exposure
+- Healthcare specifically listed as regulated industry requiring continued compliance
+
+### Impact Analysis
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Cancel Compliance Work] --> B{Delay Materializes?}
+    B -->|No| C[Massive Compliance Debt]
+    B -->|Yes| D[16-Month Extension]
+    C --> E[Emergency Scramble]
+    C --> F[Regulatory Penalties]
+    D --> G[Competitive Disadvantage]
+    G --> H[Lost Market Position]
+    
+    I[Other Regulations] --> J[GDPR Still Applies]
+    I --> K[Healthcare Regulations]
+    J --> F
+    K --> F
+    
+    style A fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style G fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style H fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+```
+
+### Correction: Maintain Compliance Timeline
+
+**Follow Report's Option 1**:
+
+**Core Activities to Continue**:
+- Model documentation and lineage tracking
+- Data governance frameworks
+- Explainability mechanisms
+- Risk assessment procedures
+
+**Benefits**:
+- ✅ Readiness regardless of final timeline
+- ✅ Competitive advantage if standards tighten
+- ✅ Demonstrates regulatory good faith
+- ✅ Foundational work applies to other regulations
+
+**Target**: August 2026 compliance readiness (original timeline)
+
+---
+
+## Card 6: Naive AI Infrastructure Budgeting
+
+**Scenario**: CFO allocates exactly $68K/month for AI infrastructure in 2026 based on report's projection from current $50K/month (+36% growth), presenting this as "data-driven" budget.
+
+### Budget Projection Analysis
+
+$$\text{Projected Budget} = \$50\text{K} \times 1.36 = \$68\text{K/month}$$
+
+### Three Critical Issues
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+mindmap
+  root((Budget<br/>Issues))
+    Issue 1: Single Point Estimate
+      Ignores uncertainty
+      No optimization plan
+      Report recommends scenarios
+      Missing +20/+30/+40 models
+    Issue 2: Aggregation Fallacy
+      36% is industry average
+      Different usage patterns
+      Not company-specific
+      Commits statistical error
+    Issue 3: No Review Gates
+      No quarterly reviews
+      No optimization tracking
+      Missing efficiency targets
+      No adjustment mechanism
+```
+
+### Impact
+
+| Problem | Consequence |
+|---------|-------------|
+| **Budget too high** | Wasted capital allocation |
+| **Budget too low** | Mid-year scramble for funds |
+| **No flexibility** | Cannot adapt to changing patterns |
+| **Missed optimization** | Forgo 15-20% potential savings |
+
+### Correction: Scenario-Based Budget
+
+**Step 1: Model Three Scenarios**
+
+| Scenario | Monthly Cost | Annual Cost | Assumptions |
+|----------|-------------|-------------|-------------|
+| **Base Case** | $60K (+20%) | $720K | Moderate growth, optimizations applied |
+| **Moderate** | $65K (+30%) | $780K | Current trajectory, some optimization |
+| **Aggressive** | $70K (+40%) | $840K | High adoption, limited optimization |
+
+**Step 2: Implement Cost Tracking**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    A[Cost Tracking Dashboard] --> B[By Feature]
+    A --> C[By User Cohort]
+    A --> D[By Model Type]
+    
+    B --> E[Monthly Review]
+    C --> E
+    D --> E
+    
+    E --> F{Quarterly Gate}
+    F --> G[Reallocate Budget]
+    F --> H[Adjust Forecasts]
+    F --> I[Implement Optimizations]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style F fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style H fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style I fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
+**Step 3: Prioritize Top 3 Optimization Opportunities**
+
+1. **Prompt Caching**: Reduce redundant API calls
+2. **Model Downgrading**: Use cheaper models for low-value requests
+3. **Usage-Based Throttling**: Implement rate limits per user tier
+
+**Expected Efficiency Gain**: 15-20% cost reduction
+
+**Step 4: Governance Structure**
+- **Monthly**: AI cost review with Engineering
+- **Quarterly**: Decision gates to reallocate based on actual burn rate
+- **Success Metric**: Stay within scenario range while maximizing feature delivery

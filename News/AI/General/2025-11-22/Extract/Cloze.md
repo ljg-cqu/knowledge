@@ -1,70 +1,281 @@
 # Extract Cloze Cards
 
+## AI Venture Capital & Funding
+
 1. Q: AI startups captured ___ of global VC funding in 2025 YTD, totaling $___B.
    A: 52.5%; $192.7B
 
-1. Q: In the U.S., AI startups accounted for ___ of VC investments in November 2025.
+2. Q: In the U.S., AI startups accounted for ___ of VC investments in November 2025.
    A: 63%
 
-1. Q: List the 4 critical RCE vulnerabilities disclosed in AI inference servers in November 2025.
+**Regional AI VC Investment Share (2025)**
+
+| Region/Metric | Share | Amount |
+|---------------|-------|--------|
+| Global AI VC (YTD) | 52.5% | $192.7B |
+| U.S. AI VC (Nov) | 63% | N/A |
+
+---
+
+## Security Vulnerabilities
+
+3. Q: List the 4 critical RCE vulnerabilities disclosed in AI inference servers in November 2025.
    A: CVE-2025-30165 (vLLM), CVE-2025-23254 (NVIDIA TensorRT-LLM), CVE-2025-60455 (Modular Max Server), CVE-2025-32711 (Microsoft 365 Copilot - EchoLeak)
 
-1. Q: The recommended patching timeline for critical AI infrastructure vulnerabilities is within ___ weeks.
+4. Q: The recommended patching timeline for critical AI infrastructure vulnerabilities is within ___ weeks.
    A: 2 weeks
 
-1. Q: OpenAI released GPT-5.1 on ___ and Google launched Gemini 3 on ___, with ___ days between launches.
+**Critical AI Infrastructure RCE Vulnerabilities (November 2025)**
+
+| CVE ID | Affected Platform | Type |
+|--------|------------------|------|
+| CVE-2025-30165 | vLLM | RCE |
+| CVE-2025-23254 | NVIDIA TensorRT-LLM | RCE |
+| CVE-2025-60455 | Modular Max Server | RCE |
+| CVE-2025-32711 | Microsoft 365 Copilot | EchoLeak RCE |
+
+> **Security Note**: Patch within **2 weeks** for critical vulnerabilities
+
+---
+
+## Model Releases & Competition
+
+5. Q: OpenAI released GPT-5.1 on ___ and Google launched Gemini 3 on ___, with ___ days between launches.
    A: November 12, 2025; November 18, 2025; 6 days
 
-1. Q: GPT-5.1 pricing is estimated to be ___% higher than GPT-4.
+6. Q: GPT-5.1 pricing is estimated to be ___% higher than GPT-4.
    A: 20-30%
 
-1. Q: In November 2025, ___% of organizations were using AI in at least one business function.
+**Major LLM Releases Timeline (November 2025)**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+timeline
+    title Model Launch Competition
+    section Week 1
+        Nov 12 : OpenAI GPT-5.1
+    section Week 2
+        Nov 18 : Google Gemini 3
+```
+
+**Launch Interval**: 6 days between competing releases
+
+**Pricing Impact**: 
+$$
+\text{GPT-5.1 Price} = \text{GPT-4 Price} \times (1.20 \text{ to } 1.30)
+$$
+
+---
+
+## Enterprise AI Adoption
+
+7. Q: In November 2025, ___% of organizations were using AI in at least one business function.
    A: 78%
 
-1. Q: List the top 3 enterprise LLM providers by market share in November 2025.
+8. Q: List the top 3 enterprise LLM providers by market share in November 2025.
    A: Anthropic (32%), OpenAI (25%), Google (20%)
 
-1. Q: Average monthly AI infrastructure spend is projected to reach $___ in 2025, representing a ___% increase from 2024.
+**Enterprise LLM Market Share (November 2025)**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8"
+  }
+}}%%
+pie title Enterprise LLM Provider Distribution
+    "Anthropic" : 32
+    "OpenAI" : 25
+    "Google" : 20
+    "Others" : 23
+```
+
+**Adoption Rate**: 78% of organizations use AI in ≥1 business function
+
+---
+
+## Infrastructure Spending
+
+9. Q: Average monthly AI infrastructure spend is projected to reach $___ in 2025, representing a ___% increase from 2024.
    A: $85,521; 36%
 
-1. Q: The percentage of organizations planning >$100K/month AI investments increased from ___% in 2024 to ___% in 2025.
-   A: 20%; 45%
+10. Q: The percentage of organizations planning >$100K/month AI investments increased from ___% in 2024 to ___% in 2025.
+    A: 20%; 45%
 
-1. Q: OpenAI committed $___ trillion for hardware/cloud infrastructure between 2025-2035, with annual compute spending estimated to grow from $___ (2025) to $___ (2029).
-   A: $1.15 trillion; $6B; $173B
+11. Q: OpenAI committed $___ trillion for hardware/cloud infrastructure between 2025-2035, with annual compute spending estimated to grow from $___ (2025) to $___ (2029).
+    A: $1.15 trillion; $6B; $173B
 
-1. Q: The EU Digital Omnibus may delay high-risk AI system rules by up to ___ months, shifting the deadline from ___ to potentially ___.
-   A: 16 months; August 2, 2026; December 2027
+**AI Infrastructure Investment Trends**
 
-1. Q: The European Commission aims to reduce administrative burdens from AI Act by ≥___% by end of ___.
-   A: 25%; 2029
+| Metric | 2024 | 2025 | Growth |
+|--------|------|------|--------|
+| Avg Monthly Spend | $62,883 | $85,521 | +36% |
+| Orgs >$100K/month | 20% | 45% | +125% |
 
-1. Q: The Microsoft-NVIDIA-Anthropic alliance involves $___ in compute commitments and $___ in direct investments, totaling $___B.
-   A: $30 billion; $15 billion; $45B
+**OpenAI Compute Spending Projection (2025-2029)**
 
-1. Q: The $45B Microsoft-NVIDIA-Anthropic alliance represents approximately ___% of 2025 total AI VC funding.
-   A: 26%
+$$
+\text{Annual Growth Rate} = \left(\frac{173}{6}\right)^{\frac{1}{4}} - 1 \approx 140\% \text{ CAGR}
+$$
 
-1. Q: In November 2025, ___% of U.S. hiring managers reported AI helps them make faster and better hiring decisions.
-   A: 70%
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb"
+  }
+}}%%
+xyChart-beta
+    title "OpenAI Annual Compute Spend Forecast"
+    x-axis [2025, 2026, 2027, 2028, 2029]
+    y-axis "Spending (Billions USD)" 0 --> 180
+    line [6, 28, 66, 122, 173]
+```
 
-1. Q: AI-augmented recruiting can increase baseline recruiter productivity from ___-___ hires/year to ___-___ hires/year.
-   A: 10-15; 20-30
+**Long-term Commitment**: $1.15 trillion hardware/cloud investment (2025-2035)
 
-1. Q: AI recruiting tools can reduce time-to-fill by ___-___%.
-   A: 30-40%
+---
 
-1. Q: The typical AI recruiting platform annual cost ranges from $___ to $___.
-   A: $50K; $150K
+## Regulatory Developments
 
-1. Q: For Formation-stage AI startups, the baseline fundraising timeline is ___ months, with a target of securing seed/Series A within ___ months.
-   A: 3-6 months; 4 months
+12. Q: The EU Digital Omnibus may delay high-risk AI system rules by up to ___ months, shifting the deadline from ___ to potentially ___.
+    A: 16 months; August 2, 2026; December 2027
 
-1. Q: CAC may increase ___-___% as AI competitors outspend on customer acquisition.
-   A: 20-40%
+13. Q: The European Commission aims to reduce administrative burdens from AI Act by ≥___% by end of ___.
+    A: 25%; 2029
 
-1. Q: AI-augmented products can see win rate improvements of ___-___% when properly positioned for agentic messaging.
-   A: 25-40%
+**EU AI Act Timeline Changes**
 
-1. Q: Organizations spending $50K/month on AI currently could see 2026 run-rate increase to $___ (+$___ annually) based on industry trends.
-   A: $68K/month; +$216K annually
+| Milestone | Original | Proposed | Delay |
+|-----------|----------|----------|-------|
+| High-risk Rules | Aug 2, 2026 | Dec 2027 | 16 months |
+| Admin Burden Target | - | -25% by 2029 | - |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+gantt
+    title EU AI Act Implementation Timeline
+    dateFormat YYYY-MM-DD
+    section Original
+    High-risk Rules    :milestone, m1, 2026-08-02, 0d
+    section Proposed
+    High-risk Rules Delayed :milestone, m2, 2027-12-01, 0d
+    section Target
+    Admin Burden -25%  :milestone, m3, 2029-12-31, 0d
+```
+
+---
+
+## Strategic Partnerships
+
+14. Q: The Microsoft-NVIDIA-Anthropic alliance involves $___ in compute commitments and $___ in direct investments, totaling $___B.
+    A: $30 billion; $15 billion; $45B
+
+15. Q: The $45B Microsoft-NVIDIA-Anthropic alliance represents approximately ___% of 2025 total AI VC funding.
+    A: 26%
+
+**Microsoft-NVIDIA-Anthropic Alliance Breakdown**
+
+| Component | Amount | Share |
+|-----------|--------|-------|
+| Compute Commitments | $30B | 67% |
+| Direct Investments | $15B | 33% |
+| **Total** | **$45B** | **100%** |
+
+**Market Context**: 
+$$
+\text{Alliance Share} = \frac{45}{192.7} \approx 26\% \text{ of 2025 total AI VC}
+$$
+
+---
+
+## AI in Recruiting & Hiring
+
+16. Q: In November 2025, ___% of U.S. hiring managers reported AI helps them make faster and better hiring decisions.
+    A: 70%
+
+17. Q: AI-augmented recruiting can increase baseline recruiter productivity from ___-___ hires/year to ___-___ hires/year.
+    A: 10-15; 20-30
+
+18. Q: AI recruiting tools can reduce time-to-fill by ___-___%.
+    A: 30-40%
+
+19. Q: The typical AI recruiting platform annual cost ranges from $___ to $___.
+    A: $50K; $150K
+
+**AI Recruiting Impact Metrics**
+
+| Metric | Baseline | AI-Augmented | Improvement |
+|--------|----------|--------------|-------------|
+| Hires/Year | 10-15 | 20-30 | 2x productivity |
+| Time-to-Fill | 100% | 60-70% | 30-40% reduction |
+| Manager Satisfaction | N/A | 70% | Faster decisions |
+
+**Cost**: $50K-$150K annually per platform
+
+**Productivity Multiplier**:
+$$
+\text{Efficiency Gain} = \frac{\text{AI Hires}}{\text{Baseline Hires}} = \frac{25}{12.5} = 2.0x
+$$
+
+---
+
+## AI Startup Fundraising & Growth
+
+20. Q: For Formation-stage AI startups, the baseline fundraising timeline is ___ months, with a target of securing seed/Series A within ___ months.
+    A: 3-6 months; 4 months
+
+21. Q: CAC may increase ___-___% as AI competitors outspend on customer acquisition.
+    A: 20-40%
+
+22. Q: AI-augmented products can see win rate improvements of ___-___% when properly positioned for agentic messaging.
+    A: 25-40%
+
+23. Q: Organizations spending $50K/month on AI currently could see 2026 run-rate increase to $___ (+$___ annually) based on industry trends.
+    A: $68K/month; +$216K annually
+
+**Formation-Stage AI Startup Metrics**
+
+| Metric | Range | Target |
+|--------|-------|--------|
+| Fundraising Timeline | 3-6 months | 4 months |
+| CAC Increase | +20-40% | - |
+| Win Rate Improvement | +25-40% | - |
+
+**2026 Spending Projection Example**
+
+- **Current**: $50K/month → $600K/year
+- **2026 Projected**: $68K/month → $816K/year
+- **Increase**: +$18K/month → +$216K/year
+
+$$
+\text{Growth Rate} = \frac{68 - 50}{50} = 36\% \text{ YoY}
+$$
