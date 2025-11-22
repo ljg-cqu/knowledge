@@ -77,6 +77,8 @@
 - At minimum, **N≥8** (one primary news source per Q&A).
 - You may reuse or reference G#/T#/S#/R#/A# from the underlying domain prompts.
 
+**Visuals**: ≥2 diagrams + ≥1 table.
+
 ## Execution
 
 ### 1. Collect Candidates from Domains
@@ -119,6 +121,7 @@ Run the **Validation Checklist** and ensure all items pass before delivery.
 | **Actions** | Each Q defines immediate (0-2wk) and short-term (2wk-2mo) actions with owners | ☐ |
 | **Consistency** | Domain, Stage, Function align with Domain Tags table | ☐ |
 | **Self-contained** | Reader can understand each Q&A without opening domain files | ☐ |
+| **Visuals** | ≥2 diagrams + ≥1 table | ☐ |
 
 ## Question Quality
 

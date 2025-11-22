@@ -30,7 +30,7 @@
 
 ## Requirements
 
-**Output**: 4-6 Q&As (150-200w each) covering 3-4 lifecycle stages, ≥4 stakeholder roles (of 11), ≥3 categories (of 6). All Q&As: ≥1 news source (date + URL), quantified impact (or flag "unavailable"), decision path (rationale + trade-offs + timeline). Total 1-2 visuals (diagrams/tables).
+**Output**: 4-6 Q&As (150-200w each) covering 3-4 lifecycle stages, ≥4 stakeholder roles (of 11), ≥3 categories (of 6). All Q&As: ≥1 news source (date + URL), quantified impact (or flag "unavailable"), decision path (rationale + trade-offs + timeline). ≥2 diagrams + ≥1 table.
 
 **References**: Glossary (terms + definitions + analogies if complex), ≥4 news sources with URLs, benchmarks/laws/research as applicable.
 
@@ -50,7 +50,7 @@ Set generation date, calculate news age per freshness priority. Web search 10-15
 
 ### Step 4: Validate & Submit [CRITICAL]
 
-**Verification**: URLs accessible, dates match source, check metrics against source claims, flag uncertainties ("estimated", "projected", "unavailable"), cross-check contradictions. **Pre-Submission**: 4-6 Q&As (150-200w each), ≥3 categories, ≥4 stakeholders, all citations (≥1 source + date + URL), all decision-critical (≥1 criterion), 1-2 visuals total. **Deliverable**: Q&As + citations + glossary + references + visuals + generation date.
+**Verification**: URLs accessible, dates match source, check metrics against source claims, flag uncertainties ("estimated", "projected", "unavailable"), cross-check contradictions. **Pre-Submission**: 4-6 Q&As (150-200w each), ≥3 categories, ≥4 stakeholders, all citations (≥1 source + date + URL), all decision-critical (≥1 criterion), ≥2 diagrams + ≥1 table. **Deliverable**: Q&As + citations + glossary + references + visuals + generation date.
 
 ## Validation Report
 
@@ -61,6 +61,6 @@ Set generation date, calculate news age per freshness priority. Web search 10-15
 | Stakeholders | ≥4 | |
 | Citations | All ≥1 (date/URL) | |
 | Decision-Critical | All ≥1 criterion | |
-| Visuals | 1-2 total | |
+| Visuals | ≥2 diagrams + ≥1 table | |
 
 **Dates**: Generation: _____ | Expires: [+4 weeks]
