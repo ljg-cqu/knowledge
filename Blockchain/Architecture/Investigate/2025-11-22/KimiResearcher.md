@@ -1,0 +1,1617 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Deep Architecture Investigation of Mainstream Blockchain Networks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e293b',
+                        secondary: '#475569',
+                        accent: '#3b82f6',
+                        muted: '#64748b'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1024px) {
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="font-body text-primary bg-gray-50" style="overflow-x: hidden;">
+
+    <!-- Fixed Table of Contents -->
+    <nav id="toc" class="fixed left-0 top-0 h-full w-80 bg-white shadow-xl z-50 overflow-y-auto border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="font-display text-lg font-semibold text-primary">Table of Contents</h3>
+          <button id="toc-close" class="lg:hidden text-gray-500 hover:text-primary">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="#introduction" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Introduction</a>
+          </li>
+          <li>
+            <a href="#comparative-analysis" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Comparative Analysis</a>
+          </li>
+          <li>
+            <a href="#bitcoin" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Bitcoin: The Foundation</a>
+          </li>
+          <li>
+            <a href="#ethereum" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Ethereum 2.0</a>
+          </li>
+          <li>
+            <a href="#solana" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Solana: High Performance</a>
+          </li>
+          <li>
+            <a href="#polkadot" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Polkadot: Multi-Chain Framework</a>
+          </li>
+          <li>
+            <a href="#move-ecosystem" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Sui &amp; Aptos: Move-Based</a>
+          </li>
+          <li>
+            <a href="#future-directions" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Future Directions</a>
+          </li>
+          <li>
+            <a href="#conclusion" class="block py-2 px-3 rounded hover:bg-gray-100 text-secondary hover:text-primary transition-colors">Conclusion</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hamburger Menu Button (Mobile Only) -->
+    <button id="toc-toggle" class="fixed top-4 left-4 z-40 bg-white p-3 rounded-full shadow-lg lg:hidden">
+      <i class="fas fa-bars text-primary"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="lg:ml-80">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-br from-primary via-secondary to-primary min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="container mx-auto px-4 sm:px-8 py-16 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            <!-- Title Section -->
+            <div class="lg:col-span-2 text-white">
+              <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-8">
+                <span class="italic">Deep Architecture</span>
+                <br/>
+                Investigation of
+                <br/>
+                <span class="text-accent">Blockchain Networks</span>
+              </h1>
+              <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                A comprehensive analysis of mainstream blockchain architectures, from Bitcoin&#39;s foundational security to next-generation high-performance networks.
+              </p>
+            </div>
+
+            <!-- Visual Element -->
+            <div class="relative">
+              <img src="https://kimi-web-img.moonshot.cn/img/imageio.forbes.com/fd5b08cab04498670a0657fac1606ec3ee0dbf91.jpg" alt="Abstract blockchain network architecture with interconnected nodes" class="w-full h-auto rounded-2xl shadow-2xl transform rotate-3 opacity-90 max-w-full" size="large" aspect="wide" query="abstract blockchain network nodes connections" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent rounded-2xl"></div>
+            </div>
+          </div>
+
+          <!-- Key Highlights Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-16">
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
+              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">6</div>
+              <div class="text-gray-300 text-sm">Blockchain Networks Analyzed</div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
+              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">160K</div>
+              <div class="text-gray-300 text-sm">Max TPS Achieved</div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
+              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">3</div>
+              <div class="text-gray-300 text-sm">Consensus Models</div>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white border-opacity-20">
+              <div class="text-accent text-2xl sm:text-3xl font-bold mb-2">&lt;1s</div>
+              <div class="text-gray-300 text-sm">Fastest Finality</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introduction -->
+      <section id="introduction" class="py-20 bg-white">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Introduction</h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg text-secondary leading-relaxed mb-8">
+              The blockchain landscape has evolved dramatically since Bitcoin&#39;s inception, giving rise to a diverse ecosystem of platforms each designed with unique architectural philosophies. This comprehensive investigation examines the deep architecture of mainstream blockchain networks—<strong>Bitcoin</strong>, <strong>Ethereum</strong>, <strong>Solana</strong>, <strong>Polkadot</strong>, <strong>Sui</strong>, and <strong>Aptos</strong>—to understand how their design choices impact performance, security, and decentralization.
+            </p>
+
+            <div class="bg-gray-50 p-8 rounded-xl border-l-4 border-accent my-8">
+              <h3 class="font-display text-xl font-semibold text-primary mb-4">The Blockchain Trilemma</h3>
+              <p class="text-secondary">
+                Every blockchain architecture represents a fundamental trade-off between three competing goals: <strong>security</strong>, <strong>scalability</strong>, and <strong>decentralization</strong>. The challenge lies in optimizing one aspect without compromising the other two—a puzzle that has driven architectural innovation across the industry.
+              </p>
+            </div>
+
+            <p class="text-lg text-secondary leading-relaxed">
+              Our analysis reveals how different platforms navigate these trade-offs through unique approaches to consensus mechanisms, data models, scalability strategies, and smart contract execution environments. From Bitcoin&#39;s energy-intensive Proof-of-Work to Solana&#39;s innovative Proof-of-History, from Ethereum&#39;s account-based model to Sui&#39;s object-centric architecture, each platform represents a distinct solution to the blockchain trilemma.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparative Analysis -->
+      <section id="comparative-analysis" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8 max-w-6xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Comparative Analysis of Blockchain Architectures</h2>
+
+          <!-- Architectural Comparison Table -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+            <div class="bg-accent text-white p-6">
+              <h3 class="font-display text-xl font-semibold">High-Level Architectural Comparison</h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold text-primary">Platform</th>
+                    <th class="px-6 py-4 text-left font-semibold text-primary">Execution</th>
+                    <th class="px-6 py-4 text-left font-semibold text-primary">Consensus</th>
+                    <th class="px-6 py-4 text-left font-semibold text-primary">Finality</th>
+                    <th class="px-6 py-4 text-left font-semibold text-primary">Scalability</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="px-6 py-4 font-semibold text-primary">Bitcoin</td>
+                    <td class="px-6 py-4 text-secondary">Native (Script)</td>
+                    <td class="px-6 py-4 text-secondary">Proof-of-Work</td>
+                    <td class="px-6 py-4 text-secondary">~60 minutes</td>
+                    <td class="px-6 py-4 text-secondary">Layer 2 (Lightning)</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-primary">Ethereum</td>
+                    <td class="px-6 py-4 text-secondary">EVM</td>
+                    <td class="px-6 py-4 text-secondary">PoS + Casper</td>
+                    <td class="px-6 py-4 text-secondary">~2-3 minutes</td>
+                    <td class="px-6 py-4 text-secondary">Rollups</td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 font-semibold text-primary">Solana</td>
+                    <td class="px-6 py-4 text-secondary">Sealevel</td>
+                    <td class="px-6 py-4 text-secondary">PoH + Tower BFT</td>
+                    <td class="px-6 py-4 text-secondary">~1 second</td>
+                    <td class="px-6 py-4 text-secondary">Vertical scaling</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-primary">Polkadot</td>
+                    <td class="px-6 py-4 text-secondary">WASM (Substrate)</td>
+                    <td class="px-6 py-4 text-secondary">NPoS + BABE/GRANDPA</td>
+                    <td class="px-6 py-4 text-secondary">~6-12 seconds</td>
+                    <td class="px-6 py-4 text-secondary">Parachains</td>
+                  </tr>
+                  <tr>
+                    <td class="px-6 py-4 font-semibold text-primary">Sui</td>
+                    <td class="px-6 py-4 text-secondary">Move</td>
+                    <td class="px-6 py-4 text-secondary">Narwhal &amp; Bullshark</td>
+                    <td class="px-6 py-4 text-secondary">&lt;1 second</td>
+                    <td class="px-6 py-4 text-secondary">Object parallelization</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="px-6 py-4 font-semibold text-primary">Aptos</td>
+                    <td class="px-6 py-4 text-secondary">Move</td>
+                    <td class="px-6 py-4 text-secondary">AptosBFT</td>
+                    <td class="px-6 py-4 text-secondary">~1 second</td>
+                    <td class="px-6 py-4 text-secondary">Block-STM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="px-6 py-3 bg-gray-50 text-sm text-muted">
+              <p>Table adapted from <a href="https://www.lcx.com/blockchain-platform-comparison-a-deep-dive-into-the-top-networks/" class="text-accent hover:underline">LCX Report</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Consensus Mechanisms -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="text-accent text-3xl mb-4">
+                <i class="fas fa-hammer"></i>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-primary mb-4">Proof-of-Work (PoW)</h3>
+              <p class="text-secondary mb-4">Energy-intensive computational puzzles secure the network through economic cost. Bitcoin&#39;s original consensus mechanism prioritizes security over speed.</p>
+              <div class="text-sm text-muted">
+                <strong>Example:</strong> Bitcoin (7 TPS)
+              </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="text-accent text-3xl mb-4">
+                <i class="fas fa-coins"></i>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-primary mb-4">Proof-of-Stake (PoS)</h3>
+              <p class="text-secondary mb-4">Validators are chosen based on token holdings, eliminating energy waste while maintaining security through economic incentives.</p>
+              <div class="text-sm text-muted">
+                <strong>Example:</strong> Ethereum 2.0 (15 TPS)
+              </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="text-accent text-3xl mb-4">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-primary mb-4">BFT Variants</h3>
+              <p class="text-secondary mb-4">Byzantine Fault Tolerance protocols enable fast, deterministic finality through validator voting systems.</p>
+              <div class="text-sm text-muted">
+                <strong>Example:</strong> Solana, Aptos (&gt;10K TPS)
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Models -->
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Data Models: UTXO, Account-Based, and Object-Centric</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div class="border-l-4 border-accent pl-6">
+                <h4 class="font-semibold text-primary mb-3">UTXO Model</h4>
+                <p class="text-secondary mb-3">Unspent Transaction Outputs enable parallel validation and enhanced privacy.</p>
+                <div class="text-sm text-muted">
+                  <strong>Use Case:</strong> Bitcoin, privacy-focused applications
+                </div>
+              </div>
+
+              <div class="border-l-4 border-accent pl-6">
+                <h4 class="font-semibold text-primary mb-3">Account-Based</h4>
+                <p class="text-secondary mb-3">Traditional account balances with shared state, ideal for complex smart contracts.</p>
+                <div class="text-sm text-muted">
+                  <strong>Use Case:</strong> Ethereum, DeFi applications
+                </div>
+              </div>
+
+              <div class="border-l-4 border-accent pl-6">
+                <h4 class="font-semibold text-primary mb-3">Object-Centric</h4>
+                <p class="text-secondary mb-3">Everything as objects enabling maximum parallelization and composability.</p>
+                <div class="text-sm text-muted">
+                  <strong>Use Case:</strong> Sui, high-performance dApps
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Comparison -->
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Performance and Finality Comparison</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Key Performance Metrics</h4>
+                <ul class="space-y-3 text-secondary">
+                  <li class="flex items-center">
+                    <i class="fas fa-tachometer-alt text-accent mr-3"></i>
+                    <span><strong>TPS Range:</strong> 7 (Bitcoin) to 160,000 (Sui testnet)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-clock text-accent mr-3"></i>
+                    <span><strong>Finality:</strong> 60 minutes (Bitcoin) to &lt;1 second (Sui)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-layer-group text-accent mr-3"></i>
+                    <span><strong>Scalability:</strong> Layer 2 to native parallel execution</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <img src="https://kimi-web-img.moonshot.cn/img/png.pngtree.com/5034ef444270272666d0eb1d279d2ffbf3cacdfc.jpg" alt="Abstract blockchain network performance visualization with glowing nodes" class="w-full h-48 object-cover rounded-lg" size="medium" aspect="wide" style="photo" query="abstract blockchain network performance" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+              <p class="text-sm text-muted">
+                <strong>Data Source:</strong>
+                <a href="https://www.cointranscend.com/the-blockchain-explorer-issue-1-popolar-layer-1-showdown/" class="text-accent hover:underline">CoinTranscend Performance Analysis</a> (May 2023)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bitcoin Section -->
+      <section id="bitcoin" class="py-20 bg-white">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Bitcoin: The Foundation of Blockchain</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">Proof-of-Work Consensus</h3>
+              <p class="text-secondary leading-relaxed mb-6">
+                Bitcoin&#39;s Proof-of-Work (PoW) consensus mechanism represents the original solution to the double-spending problem in decentralized networks. Through computational puzzles and economic incentives, PoW creates a system where attacking the network becomes prohibitively expensive.
+              </p>
+
+              <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                <h4 class="font-semibold text-primary mb-3">Mining Process</h4>
+                <ul class="text-secondary space-y-2">
+                  <li>• Miners compete to solve cryptographic puzzles</li>
+                  <li>• Difficulty adjusts every 2016 blocks (~2 weeks)</li>
+                  <li>• Target block time: 10 minutes</li>
+                  <li>• Energy consumption secures the network</li>
+                </ul>
+              </div>
+
+              <h4 class="font-semibold text-primary mb-3">Longest Chain Rule</h4>
+              <p class="text-secondary">Nakamoto consensus resolves conflicts by accepting the chain with the most cumulative computational work, ensuring network agreement even with temporary forks.</p>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/www.coindesk.com/aec43ff75504d979d266462d2574660f1f1c5d8b" alt="Industrial Bitcoin mining facility with rows of specialized hardware" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" style="photo" query="bitcoin mining farm" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+
+          <!-- UTXO Model -->
+          <div class="bg-gray-50 p-8 rounded-xl mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Unspent Transaction Output (UTXO) Model</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <p class="text-secondary leading-relaxed mb-6">
+                  The UTXO model represents funds as discrete outputs from previous transactions, enabling parallel validation and enhanced privacy. Each transaction consumes existing UTXOs and creates new ones.
+                </p>
+
+                <div class="border-l-4 border-accent pl-6">
+                  <h4 class="font-semibold text-primary mb-3">Key Advantages</h4>
+                  <ul class="text-secondary space-y-2">
+                    <li>✓ High degree of privacy</li>
+                    <li>✓ Parallel transaction validation</li>
+                    <li>✓ Transparent coin history</li>
+                    <li>✓ Simplified verification process</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+                  graph TD
+                  A[&#34;Previous Transaction&#34;] --&gt; B[&#34;UTXO #1&#34;]
+                  A --&gt; C[&#34;UTXO #2&#34;]
+                  B --&gt; D[&#34;New Transaction&#34;]
+                  C --&gt; D
+                  D --&gt; E[&#34;New UTXO #3&#34;]
+                  D --&gt; F[&#34;New UTXO #4&#34;]
+                  D --&gt; G[&#34;Change UTXO&#34;]
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scalability Limitations -->
+          <div class="bg-white border border-gray-200 p-8 rounded-xl">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Scalability and Limitations</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">On-Chain Constraints</h4>
+                <ul class="text-secondary space-y-3">
+                  <li class="flex items-center">
+                    <i class="fas fa-cubes text-accent mr-3"></i>
+                    <span><strong>Block Size:</strong> 1 MB limit</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-clock text-accent mr-3"></i>
+                    <span><strong>Block Time:</strong> ~10 minutes</span>
+                  </li>
+                  <li class="flex items-center">
+                    <i class="fas fa-chart-line text-accent mr-3"></i>
+                    <span><strong>Throughput:</strong> ~7 TPS</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Layer 2 Solution: Lightning Network</h4>
+                <p class="text-secondary mb-4">
+                  The Lightning Network enables instant, low-cost payments through off-chain payment channels, while maintaining Bitcoin&#39;s security for final settlement.
+                </p>
+                <div class="text-sm text-muted">
+                  <p><strong>Key Benefits:</strong></p>
+                  <ul class="list-disc list-inside mt-2">
+                    <li>Near-instant transactions</li>
+                    <li>Micropayment support</li>
+                    <li>Reduces main chain congestion</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ethereum Section -->
+      <section id="ethereum" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Ethereum 2.0: The Transition to Proof-of-Stake</h2>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <div class="flex items-center mb-8">
+              <div class="bg-accent text-white p-4 rounded-full mr-6">
+                <i class="fas fa-exchange-alt text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-semibold text-primary">The Merge: PoW → PoS Transition</h3>
+                <p class="text-secondary">September 2022 marked Ethereum&#39;s historic transition to Proof-of-Stake</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Beacon Chain Architecture</h4>
+                <p class="text-secondary mb-4">
+                  The Beacon Chain serves as Ethereum 2.0&#39;s coordination layer, managing validators, generating randomness, and facilitating consensus across the network.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="fas fa-user-check text-accent mr-3"></i>
+                    <span class="text-secondary">Validator Management</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-random text-accent mr-3"></i>
+                    <span class="text-secondary">Randomness Generation</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-handshake text-accent mr-3"></i>
+                    <span class="text-secondary">Consensus Coordination</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-network-wired text-accent mr-3"></i>
+                    <span class="text-secondary">Cross-Shard Communication</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <img src="https://fixedplaceholder" alt="Ethereum 2.0 Beacon Chain network diagram" class="w-full h-64 object-cover rounded-lg" size="medium" aspect="wide" query="Ethereum 2.0 Beacon Chain visualization" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sharding -->
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Sharding: The Future of Ethereum Scalability</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div class="lg:col-span-2">
+                <p class="text-secondary leading-relaxed mb-6">
+                  Sharding represents Ethereum&#39;s ultimate scalability solution, partitioning the blockchain into 64 parallel chains that can process transactions simultaneously. The Beacon Chain coordinates these shards, enabling Ethereum to potentially process over 100,000 TPS.
+                </p>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <h4 class="font-semibold text-primary mb-4">Sharding Benefits</h4>
+                  <ul class="text-secondary space-y-2">
+                    <li>• Parallel transaction processing</li>
+                    <li>• Reduced load on individual validators</li>
+                    <li>• Increased network capacity</li>
+                    <li>• Lower transaction costs</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-center">
+                <div class="text-center">
+                  <div class="text-4xl text-accent mb-2">64</div>
+                  <div class="text-sm text-muted">Planned Shards</div>
+                  <div class="mt-4 text-2xl text-accent">100K+</div>
+                  <div class="text-sm text-muted">Target TPS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layer 2 Solutions -->
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Layer 2 Scaling Solutions</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="border border-gray-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-primary mb-4">Optimistic Rollups</h4>
+                <p class="text-secondary mb-4">
+                  Assume transactions are valid by default, using fraud proofs for dispute resolution. Higher throughput but longer withdrawal periods.
+                </p>
+                <div class="text-sm text-muted">
+                  <strong>Withdrawal Time:</strong> ~7 days
+                  <br/>
+                  <strong>Use Case:</strong> General smart contracts
+                </div>
+              </div>
+
+              <div class="border border-gray-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-primary mb-4">ZK-Rollups</h4>
+                <p class="text-secondary mb-4">
+                  Use zero-knowledge proofs to cryptographically verify transaction validity. Higher security with near-instant withdrawals.
+                </p>
+                <div class="text-sm text-muted">
+                  <strong>Withdrawal Time:</strong> ~15 minutes
+                  <br/>
+                  <strong>Use Case:</strong> High-security applications
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solana Section -->
+      <section id="solana" class="py-20 bg-white">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Solana: High-Performance Through Novel Consensus</h2>
+
+          <div class="bg-gradient-to-r from-accent to-blue-600 text-white p-8 rounded-xl mb-12">
+            <h3 class="font-display text-2xl font-semibold mb-4">Proof-of-History: A Cryptographic Clock</h3>
+            <p class="text-lg leading-relaxed">
+              Solana&#39;s revolutionary consensus mechanism combines Proof-of-History (PoH) with Tower BFT to achieve unprecedented throughput without sacrificing security or decentralization.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">How Proof-of-History Works</h3>
+              <p class="text-secondary leading-relaxed mb-6">
+                PoH functions as a verifiable delay function (VDF), creating a cryptographic timeline that proves a specific amount of time has passed between events. This eliminates the need for validators to communicate extensively about transaction ordering.
+              </p>
+
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="bg-accent text-white p-2 rounded-full mr-4 mt-1">
+                    <i class="fas fa-clock text-sm"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary">Sequential Hashing</h4>
+                    <p class="text-secondary text-sm">A validator runs sequential hash functions where each output becomes the next input</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-accent text-white p-2 rounded-full mr-4 mt-1">
+                    <i class="fas fa-stopwatch text-sm"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary">Verifiable Time</h4>
+                    <p class="text-secondary text-sm">The process proves time passage through computational work</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-accent text-white p-2 rounded-full mr-4 mt-1">
+                    <i class="fas fa-check-circle text-sm"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary">Fast Verification</h4>
+                    <p class="text-secondary text-sm">Other validators can verify the timeline much faster than it was created</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://fixedplaceholder" alt="Abstract visualization of Solana blockchain network with interconnected nodes" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" color="blue" style="photo" query="Solana blockchain network diagram" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+
+          <!-- Network Architecture -->
+          <div class="bg-gray-50 p-8 rounded-xl mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Network Architecture for High Throughput</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Sealevel: Parallel Execution</h4>
+                <p class="text-secondary mb-4">
+                  Unlike traditional sequential execution engines, Sealevel leverages modern multi-core processors to execute thousands of smart contracts in parallel.
+                </p>
+
+                <div class="bg-white p-4 rounded-lg">
+                  <h5 class="font-medium text-primary mb-2">Key Features</h5>
+                  <ul class="text-secondary text-sm space-y-1">
+                    <li>• Identifies independent transactions</li>
+                    <li>• Executes across multiple cores</li>
+                    <li>• Pre-fetches account states</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Data Propagation Protocols</h4>
+                <p class="text-secondary mb-4">
+                  Custom protocols optimize transaction and block propagation across the network.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="bg-white p-3 rounded-lg">
+                    <strong class="text-primary">Gulf Stream:</strong>
+                    <span class="text-secondary text-sm">Mempool-less transaction forwarding</span>
+                  </div>
+                  <div class="bg-white p-3 rounded-lg">
+                    <strong class="text-primary">Turbine:</strong>
+                    <span class="text-secondary text-sm">Multi-layered block propagation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Metrics -->
+          <div class="bg-white border border-gray-200 p-8 rounded-xl">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Performance and Scalability</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-3xl font-bold text-accent mb-2">65K+</div>
+                <div class="text-sm text-muted">Theoretical TPS</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-3xl font-bold text-accent mb-2">400ms</div>
+                <div class="text-sm text-muted">Block Time</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-3xl font-bold text-accent mb-2">~1s</div>
+                <div class="text-sm text-muted">Finality Time</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-3xl font-bold text-accent mb-2">10K+</div>
+                <div class="text-sm text-muted">Active Validators</div>
+              </div>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg">
+              <h4 class="font-semibold text-primary mb-3">
+                <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
+                Network Stability Challenges
+              </h4>
+              <p class="text-secondary">
+                Despite impressive performance metrics, Solana has experienced several network outages and performance degradations. The team continues to address these challenges through protocol upgrades and network improvements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Polkadot Section -->
+      <section id="polkadot" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Polkadot: A Heterogeneous Multi-Chain Framework</h2>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Core Architecture: Relay Chain and Parachains</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <div class="mermaid-container">
+                  <div class="mermaid-controls">
+                    <button class="mermaid-control-btn zoom-in" title="放大">
+                      <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="mermaid-control-btn zoom-out" title="缩小">
+                      <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="mermaid-control-btn reset-zoom" title="重置">
+                      <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="mermaid">
+                    graph TB
+                    A[&#34;Relay Chain&#34;] --&gt; B[&#34;Parachain 1&#34;]
+                    A --&gt; C[&#34;Parachain 2&#34;]
+                    A --&gt; D[&#34;Parachain 3&#34;]
+                    A --&gt; E[&#34;Parachain 4&#34;]
+                    B --&gt; F[&#34;App-Specific Chain&#34;]
+                    C --&gt; G[&#34;DeFi Chain&#34;]
+                    D --&gt; H[&#34;Gaming Chain&#34;]
+                    E --&gt; I[&#34;Identity Chain&#34;]
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Shared Security Model</h4>
+                <p class="text-secondary mb-4">
+                  The Relay Chain provides pooled security to all connected parachains, eliminating the need for each chain to maintain its own validator set.
+                </p>
+
+                <div class="space-y-3">
+                  <div class="flex items-center">
+                    <i class="fas fa-lock text-accent mr-3"></i>
+                    <span class="text-secondary">Pooled Security</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-plug text-accent mr-3"></i>
+                    <span class="text-secondary">Interoperability</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-cogs text-accent mr-3"></i>
+                    <span class="text-secondary">Specialized Chains</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consensus Mechanism -->
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Advanced Consensus: NPoS, BABE, and GRANDPA</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="border border-gray-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-primary mb-3">NPoS</h4>
+                <p class="text-secondary text-sm mb-3">Nominated Proof-of-Stake allows token holders to nominate validators, promoting decentralization.</p>
+                <div class="text-xs text-muted">
+                  <strong>Key Feature:</strong> Inclusive validator selection
+                </div>
+              </div>
+
+              <div class="border border-gray-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-primary mb-3">BABE</h4>
+                <p class="text-secondary text-sm mb-3">Blind Assignment for Blockchain Extension randomly assigns block producers to slots.</p>
+                <div class="text-xs text-muted">
+                  <strong>Key Feature:</strong> Random block assignment
+                </div>
+              </div>
+
+              <div class="border border-gray-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-primary mb-3">GRANDPA</h4>
+                <p class="text-secondary text-sm mb-3">GHOST-based consensus finalizes entire chains of blocks in a single voting round.</p>
+                <div class="text-xs text-muted">
+                  <strong>Key Feature:</strong> Chain-wide finality
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interoperability -->
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">Interoperability and Cross-Chain Communication</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-primary mb-4">XCMP Protocol</h4>
+                <p class="text-secondary mb-4">
+                  Cross-Consensus Message Passing enables secure, trustless communication between parachains and external blockchains connected through bridges.
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-primary mb-2">Message Types</h5>
+                  <ul class="text-secondary text-sm space-y-1">
+                    <li>• Asset transfers</li>
+                    <li>• Smart contract calls</li>
+                    <li>• Data queries</li>
+                    <li>• Governance proposals</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-primary mb-4">Parachain Auctions</h4>
+                <p class="text-secondary mb-4">
+                  Projects compete for limited parachain slots through candle auctions, with winning projects leasing slots for up to 2 years.
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h5 class="font-medium text-primary mb-2">Auction Process</h5>
+                  <ul class="text-secondary text-sm space-y-1">
+                    <li>• Candle auction format</li>
+                    <li>• Bond DOT tokens</li>
+                    <li>• Random ending time</li>
+                    <li>• Community participation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Move Ecosystem Section -->
+      <section id="move-ecosystem" class="py-20 bg-white">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Sui and Aptos: The Move-Based Ecosystem</h2>
+
+          <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-xl mb-12">
+            <h3 class="font-display text-2xl font-semibold mb-4">The Move Programming Language</h3>
+            <p class="text-lg leading-relaxed">
+              Originally developed by Meta for the Diem project, Move introduces resource-oriented programming to blockchain development, preventing entire classes of vulnerabilities through its type system and ownership model.
+            </p>
+          </div>
+
+          <!-- Move Language Features -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">Resource-Oriented Programming</h3>
+              <p class="text-secondary leading-relaxed mb-6">
+                Move treats digital assets as first-class resources that cannot be copied or discarded, only moved between locations. This fundamental design choice prevents common vulnerabilities like double-spending and reentrancy attacks.
+              </p>
+
+              <div class="space-y-4">
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Linear Types</h4>
+                  <p class="text-secondary text-sm">Resources can only be used once, preventing duplication</p>
+                </div>
+
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Ownership Model</h4>
+                  <p class="text-secondary text-sm">Clear ownership tracking with move semantics</p>
+                </div>
+
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Formal Verification</h4>
+                  <p class="text-secondary text-sm">Mathematical proof of program correctness</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://kimi-web-img.moonshot.cn/img/media.springernature.com/5b750e5d3f6c3af0d1127005d7395d9cd7c15b90.png" alt="Abstract visualization of Move programming language features" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" query="Move programming language abstract visualization" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+
+          <!-- Sui vs Aptos Comparison -->
+          <div class="bg-gray-50 p-8 rounded-xl mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Sui vs Aptos: Two Move Implementations</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h4 class="font-semibold text-primary mb-4 flex items-center">
+                  <i class="fas fa-cube text-accent mr-3"></i>
+                  Sui&#39;s Object-Centric Model
+                </h4>
+                <p class="text-secondary mb-4">
+                  Everything is an object with unique ownership, enabling maximum parallelization and simple transactions that bypass consensus entirely.
+                </p>
+
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-muted">Consensus:</span>
+                    <span class="text-secondary">Narwhal &amp; Bullshark</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-muted">Finality:</span>
+                    <span class="text-secondary">&lt;1 second</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-muted">Data Model:</span>
+                    <span class="text-secondary">Object-based</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h4 class="font-semibold text-primary mb-4 flex items-center">
+                  <i class="fas fa-layer-group text-accent mr-3"></i>
+                  Aptos&#39;s High-Performance Design
+                </h4>
+                <p class="text-secondary mb-4">
+                  Enhanced account-based model with Block-STM parallel execution and AptosBFT consensus for maximum throughput.
+                </p>
+
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-muted">Consensus:</span>
+                    <span class="text-secondary">AptosBFT</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-muted">Finality:</span>
+                    <span class="text-secondary">~1 second</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-muted">Data Model:</span>
+                    <span class="text-secondary">Enhanced account-based</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Comparison -->
+          <div class="bg-white border border-gray-200 p-8 rounded-xl">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Performance Characteristics</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-accent mb-2">160K+</div>
+                <div class="text-sm text-muted">Sui Testnet TPS</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-accent mb-2">100K+</div>
+                <div class="text-sm text-muted">Aptos Target TPS</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-accent mb-2">Move VM</div>
+                <div class="text-sm text-muted">Common Runtime</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-accent mb-2">Resource Safety</div>
+                <div class="text-sm text-muted">Core Feature</div>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+              <h4 class="font-semibold text-primary mb-3">Innovation in Smart Contract Security</h4>
+              <p class="text-secondary">
+                Both Sui and Aptos leverage Move&#39;s resource-oriented programming to prevent entire classes of vulnerabilities that have plagued other blockchain platforms, representing a significant step forward in secure smart contract development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future Directions -->
+      <section id="future-directions" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Future Directions and Emerging Trends</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">
+                <i class="fas fa-puzzle-piece text-accent mr-3"></i>
+                Modular Blockchain Design
+              </h3>
+              <p class="text-secondary leading-relaxed mb-6">
+                The future of blockchain architecture lies in modularity, separating consensus, execution, and data availability into distinct layers that can be optimized independently.
+              </p>
+
+              <div class="space-y-4">
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Execution Layer</h4>
+                  <p class="text-secondary text-sm">High-performance transaction processing and smart contract execution</p>
+                </div>
+
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Consensus Layer</h4>
+                  <p class="text-secondary text-sm">Secure, decentralized agreement on network state</p>
+                </div>
+
+                <div class="border-l-4 border-accent pl-4">
+                  <h4 class="font-semibold text-primary">Data Availability</h4>
+                  <p class="text-secondary text-sm">Scalable storage and retrieval of blockchain data</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <img src="https://fixedplaceholder" alt="Abstract visualization of modular blockchain architecture layers" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" query="abstract modular blockchain architecture" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+            </div>
+          </div>
+
+          <!-- Zero-Knowledge Proofs -->
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">
+              <i class="fas fa-eye-slash text-accent mr-3"></i>
+              Advances in Zero-Knowledge Proofs
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <p class="text-secondary leading-relaxed mb-6">
+                  Zero-knowledge proofs are revolutionizing blockchain privacy and scalability, enabling verification without revealing underlying information.
+                </p>
+
+                <div class="space-y-4">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-primary mb-2">zk-SNARKs</h4>
+                    <p class="text-secondary text-sm">Succinct non-interactive proofs with constant verification size</p>
+                  </div>
+
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-primary mb-2">zk-STARKs</h4>
+                    <p class="text-secondary text-sm">Transparent proofs without trusted setup requirements</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="space-y-4">
+                  <h4 class="font-semibold text-primary mb-4">Applications</h4>
+
+                  <div class="flex items-center mb-3">
+                    <i class="fas fa-user-secret text-accent mr-3"></i>
+                    <span class="text-secondary">Privacy-preserving transactions</span>
+                  </div>
+
+                  <div class="flex items-center mb-3">
+                    <i class="fas fa-compress-arrows-alt text-accent mr-3"></i>
+                    <span class="text-secondary">Scalable rollups</span>
+                  </div>
+
+                  <div class="flex items-center mb-3">
+                    <i class="fas fa-shield-alt text-accent mr-3"></i>
+                    <span class="text-secondary">Identity verification</span>
+                  </div>
+
+                  <div class="flex items-center">
+                    <i class="fas fa-chart-line text-accent mr-3"></i>
+                    <span class="text-secondary">Regulatory compliance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Scalability Trilemma -->
+          <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-6">The Scalability Trilemma: Ongoing Challenges</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div class="text-center p-6 border border-gray-200 rounded-lg">
+                <div class="text-3xl text-accent mb-3">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Security</h4>
+                <p class="text-secondary text-sm">Resistance to attacks and malicious behavior</p>
+              </div>
+
+              <div class="text-center p-6 border border-gray-200 rounded-lg">
+                <div class="text-3xl text-accent mb-3">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Scalability</h4>
+                <p class="text-secondary text-sm">Ability to handle growing transaction volume</p>
+              </div>
+
+              <div class="text-center p-6 border border-gray-200 rounded-lg">
+                <div class="text-3xl text-accent mb-3">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <h4 class="font-semibold text-primary mb-2">Decentralization</h4>
+                <p class="text-secondary text-sm">Distributed control and participation</p>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 rounded-lg">
+              <h4 class="font-semibold mb-3">The Balancing Act</h4>
+              <p class="leading-relaxed">
+                The future of blockchain architecture will be shaped by continued efforts to balance these three competing priorities, with different platforms optimizing for different use cases and scenarios.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section id="conclusion" class="py-20 bg-white">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <h2 class="font-display text-4xl font-bold text-primary mb-12">Conclusion</h2>
+
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg text-secondary leading-relaxed mb-8">
+              The investigation into deep blockchain architectures reveals a vibrant ecosystem of platforms, each representing unique solutions to the fundamental challenges of decentralized systems. From Bitcoin&#39;s pioneering security-first approach to Solana&#39;s performance-optimized design, from Ethereum&#39;s programmable blockchain to Polkadot&#39;s multi-chain vision, and from the Move-based innovations of Sui and Aptos—each platform embodies distinct trade-offs in the quest to solve the blockchain trilemma.
+            </p>
+
+            <div class="bg-gray-50 p-8 rounded-xl mb-8">
+              <h3 class="font-display text-xl font-semibold text-primary mb-6">Key Architectural Takeaways</h3>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">Consensus Evolution</h4>
+                  <p class="text-secondary">
+                    The industry has evolved from energy-intensive PoW to efficient PoS and BFT variants, with novel approaches like Proof-of-History pushing performance boundaries while maintaining security guarantees.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">Data Model Innovation</h4>
+                  <p class="text-secondary">
+                    From UTXO&#39;s privacy focus to account-based programmability, and now object-centric parallelization, data models continue to evolve to meet diverse application requirements.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">Scalability Strategies</h4>
+                  <p class="text-secondary">
+                    The combination of on-chain solutions (sharding, parallel execution) and off-chain approaches (rollups, state channels) offers multiple paths to scaling decentralized systems.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-primary mb-3">Smart Contract Security</h4>
+                  <p class="text-secondary">
+                    The emergence of resource-oriented programming languages like Move represents a fundamental shift toward preventing vulnerabilities at the language level rather than just auditing.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-accent text-white p-8 rounded-xl mb-8">
+              <h3 class="font-display text-xl font-semibold mb-4">The Evolving Landscape</h3>
+              <p class="leading-relaxed">
+                The future of blockchain technology will not be a one-size-fits-all solution, but a diverse ecosystem of interconnected networks optimized for specific use cases. The trend toward specialization, modularity, and interoperability suggests a future where different blockchain architectures coexist and collaborate, each contributing unique strengths to the broader decentralized ecosystem.
+              </p>
+            </div>
+
+            <p class="text-lg text-secondary leading-relaxed">
+              As the technology continues to mature, we can expect further innovations in consensus mechanisms, data models, and scalability solutions. The ongoing research in areas like zero-knowledge proofs, modular blockchain design, and cross-chain interoperability will continue to push the boundaries of what&#39;s possible in decentralized systems. The architectural diversity we&#39;ve examined represents not fragmentation, but the healthy evolution of a technology finding its optimal forms across different applications and requirements.
+            </p>
+
+            <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+              <h3 class="font-semibold text-primary mb-3">References</h3>
+              <div class="text-sm text-secondary space-y-1">
+                <p>• <a href="https://www.lcx.com/blockchain-platform-comparison-a-deep-dive-into-the-top-networks/" class="text-accent hover:underline">LCX Blockchain Platform Comparison</a>
+                </p>
+                <p>• <a href="https://www.cointranscend.com/the-blockchain-explorer-issue-1-popolar-layer-1-showdown/" class="text-accent hover:underline">CoinTranscend Performance Analysis</a>
+                </p>
+                <p>• <a href="https://academy.binance.com/hr-HR/articles/what-is-the-blockchain-trilemma" class="text-accent hover:underline">Binance Academy: Blockchain Trilemma</a>
+                </p>
+                <p>• <a href="https://aeorysanalytics.medium.com/sui-vs-aptos-a-technical-deep-dive-into-move-language-implementations-b2c2c8132dd6" class="text-accent hover:underline">Sui vs Aptos Technical Deep Dive</a>
+                </p>
+                <p>• <a href="https://www.risein.com/blog/solana-vs-aptos-a-comprehensive-blockchain-comparison" class="text-accent hover:underline">Solana vs Aptos Comparison</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Toggle TOC on mobile
+        const toc = document.getElementById('toc');
+        const tocToggle = document.getElementById('toc-toggle');
+        const tocClose = document.getElementById('toc-close');
+        
+        tocToggle.addEventListener('click', () => {
+            toc.classList.remove('-translate-x-full');
+        });
+        
+        tocClose.addEventListener('click', () => {
+            toc.classList.add('-translate-x-full');
+        });
+        
+        // Close TOC when clicking on a link (mobile)
+        document.querySelectorAll('#toc a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    toc.classList.add('-translate-x-full');
+                }
+            });
+        });
+
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#1e293b',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#3b82f6',
+                lineColor: '#475569',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#e2e8f0',
+                background: '#ffffff',
+                mainBkg: '#1e293b',
+                secondBkg: '#3b82f6',
+                tertiaryBkg: '#64748b',
+                nodeBkg: '#1e293b',
+                nodeBorder: '#3b82f6',
+                clusterBkg: '#f8fafc',
+                clusterBorder: '#64748b',
+                defaultLinkColor: '#475569',
+                titleColor: '#1e293b',
+                edgeLabelBackground: '#ffffff',
+                nodeTextColor: '#ffffff'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize mermaid interactions after page loads
+        setTimeout(initializeMermaidControls, 1500);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in TOC
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('#toc a[href^="#"]');
+
+        function highlightActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('bg-accent', 'text-white');
+                link.classList.add('text-secondary');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-accent', 'text-white');
+                    link.classList.remove('text-secondary');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
+    </script>
+  
+
+</body></html>
