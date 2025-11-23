@@ -1,21 +1,10 @@
 # Prepositional Precision for Natural English
 
-**Type**: Dual-purpose - Supporting reference AND standalone post-check/improvement tool
-
-**Task**: Enhance English content with precise, natural prepositional usage to achieve structural clarity, conciseness, and native-like fluency.
-
-**Definition**: Systematically improve preposition and prepositional phrase usage in existing content, transforming verbose, awkward, or incorrect expressions into clear, concise, and idiomatically natural English.
+**Purpose**: Reference guide and post-check tool for precise, natural preposition usage—eliminates errors, reduces verbosity, improves fluency.
 
 ## Precision Principle
 
-**Critical**: Prepositional precision enhances **clarity and naturalness** without changing **meaning or facts**.
-
-**Rules**:
-- **Preserve all semantic content** from the original text
-- Never change facts, arguments, or core meaning
-- Maintain the logical flow and structure
-- Don't add ungrounded information
-- Prepositions enhance precision, not substance
+**Critical**: Enhance **clarity and naturalness** without changing **meaning or facts**—preserve all semantic content, never add or alter information.
 
 **Example**:
 ```
@@ -46,7 +35,7 @@ After:  We need to discuss database optimization.
 14. **Transitive verbs** | ✗ *discuss about* → ✓ *discuss* | ✗ *enter into* (room) → ✓ *enter* | [→ Section VII]
 15. **Time idioms** | *at first* (initially), *at last* (finally), *in the end* (outcome) | [→ Section VI]
 
-**→ 80% complete above. Continue for: post-check workflow (Mode 2), comprehensive patterns (Sections I-VII).**
+**→ 80% complete above. Continue for: usage workflow, comprehensive patterns (Sections I-VII).**
 
 ---
 
@@ -70,23 +59,7 @@ After:  We need to discuss database optimization.
 
 ---
 
-## Standalone Usage: Post-Check & Improvement
-
-**Purpose**: Use this file independently to audit existing content and enhance prepositional precision after initial writing.
-
-**Two modes of operation**:
-
-### Mode 1: Supporting Reference (During Writing)
-Keep this as a quick reference while writing to ensure correct preposition usage from the start.
-
-### Mode 2: Standalone Post-Check (After Writing)
-Use independently to audit and improve existing content:
-- Review completed text for prepositional errors
-- Identify verbose or awkward prepositional phrases
-- Apply precise, natural alternatives
-- Validate clarity and conciseness before finalization
-
-### Review Workflow
+## Usage Workflow
 
 **Step 1: Scan** — Identify errors by priority [→ Priority System]
 - **P0 check**: Collocations (#9-11), spatial/temporal (#1-2) → ~~depends of~~, ~~in Monday~~
@@ -106,35 +79,19 @@ Use independently to audit and improve existing content:
 
 ---
 
-## Prepositional Precision Framework (Advanced Reference)
+## Comprehensive Patterns (Advanced Reference)
 
-**→ Comprehensive patterns. 80% of users complete above. Continue only if needed.**
+**→ 80% of use cases covered above. Continue only if needed for edge cases.**
 
-**Structure**: Hierarchical layering (foundation → application → refinement)
+**Structure**: Hierarchical (foundation → application → refinement)
 
-**Foundation Layer** - Core prepositional meanings:
-- **I. Spatial** (90%) - at/on/in for location
-- **II. Temporal** (85%) - at/on/in for time  
-- **III. Directional** (70%) - to/toward/into/from/through for movement
-- **IV. Abstract** (75%) - about/on/of/for/with for concepts
-
-**Application Layer** - How core prepositions combine with words:
-- **V. Fixed Collocations** (80%) - verb/adj/noun + preposition from I-IV
-
-**Refinement Layer** - Advanced usage and error avoidance:
-- **VI. Idiomatic Expressions** (60%) - natural phrases extending I-IV
-- **VII. Efficiency Patterns** (70%) - eliminating verbosity/errors
-
-**Why Hierarchical, Not MECE?**
-
-Categories intentionally overlap—V applies I-IV, VI extends them, VII corrects them.
-
-**Rationale**: Prepositions are multi-dimensional (spatial + temporal + abstract). Forcing MECE would require splitting "at" into separate categories by use case (*at the door* spatial, *at 3 PM* temporal, *at first* idiomatic), which:
-- **Breaks learning**: Can't teach "at = point" (I) → apply to "arrive at" (V) → extend to "at first" (VI)
-- **Obscures error patterns**: "good at/in/of" errors cluster by collocation (V), not by preposition type
-- **Increases cognitive load**: Users categorize instead of apply
-
-Hierarchical layering optimizes for **user success** (learn → apply → refine) over document structure.
+- **I. Spatial** (90%): at/on/in for location
+- **II. Temporal** (85%): at/on/in for time  
+- **III. Directional** (70%): to/toward/into/from/through for movement
+- **IV. Abstract** (75%): about/on/of/for/with for concepts
+- **V. Fixed Collocations** (80%): verb/adj/noun + preposition patterns
+- **VI. Idiomatic Expressions** (60%): natural phrases and idioms
+- **VII. Efficiency Patterns** (70%): eliminating verbosity and redundancy
 
 ---
 
@@ -210,18 +167,15 @@ Hierarchical layering optimizes for **user success** (learn → apply → refine
 - **for** (purpose/beneficiary/reason): *designed for, work for, reason for, for two hours*
 - **with** (association/tool/agreement): *work with, build with Python, agree with, consistent with*
 
-**Note**: Some verbs are transitive (no preposition): *discuss* (not ~~discuss about~~), *consider*, *describe*
 ```
 ✓ talk about the project | focus on the issue | consists of modules | designed for testing
-✗ discuss about (wrong) | focus at (wrong)
+✗ discuss about → discuss (transitive, see VII-C) | focus at (wrong)
 ```
 
 ---
 
 ## V. Fixed Collocations
 [← Quick Reference #9-11 | Priority: P0]
-
-**Note**: Applies core prepositions (I-IV) in fixed word pairings. Learn the combination.
 
 **Verb+Preposition** (80% usage):
 - depend **on**, consist **of**, listen **to**, focus **on**
@@ -251,8 +205,6 @@ Hierarchical layering optimizes for **user success** (learn → apply → refine
 
 ## VI. Idiomatic Expressions
 [← Quick Reference #13-15 | Priority: P2]
-
-**Note**: Natural phrases extending I-IV. See Section II for basic temporal prepositions.
 
 **Time** (60% usage):
 - *at first* (initially), *at last* (finally), *in the end* (outcome)
@@ -305,24 +257,6 @@ Hierarchical layering optimizes for **user success** (learn → apply → refine
 
 ---
 
-## Application Guidelines
-
-**Contextual Application**:
-- Apply patterns contextually, not mechanically
-- Prioritize: clarity → correctness → conciseness → naturalness
-- Preserve semantic content (precision principle)
-- Match formality to context
-
-**Priority Order**: [→ See Priority System section above for details]
-
-**LLM Instructions**:
-1. Scan for P0 errors first (collocations V, spatial/temporal I-II)
-2. Apply P1 conciseness (efficiency patterns VII)
-3. Polish with P2 if appropriate (direction III-IV, idioms VI)
-4. Validate: semantic unchanged, more concise, natural
-
-**Quality Checks**: ✓ Facts preserved? ✓ Collocations correct? ✓ Concise? ✓ Natural?
-
 ## Examples
 
 **Example 1: Collocation Errors (P0)**
@@ -348,24 +282,4 @@ If it fails, retry. Where's the file? Success depends on many factors.
 [Patterns #9, #11, #7, #8, #12]
 ```
 
----
 
-## Summary
-
-**Framework Structure**: Hierarchical layering, not strict MECE categories
-
-**Foundation** (I-IV): Core preposition meanings - at/on/in, to/from, about/of/for/with  
-**Application** (V): Fixed collocations applying I-IV - verb/adj/noun + preposition  
-**Refinement** (VI-VII): Idioms extending I-IV, efficiency patterns correcting errors
-
-**Coverage**: ~95% of prepositional usage in technical/professional English
-
-**80/20 Implementation**:
-- **Quick Reference** (80%): 15 patterns covering most common errors  
-- **Comprehensive Framework** (20%): Detailed explanations for edge cases
-
-**Priority**: See Priority System section → P0 (correctness) → P1 (clarity) → P2 (polish)
-
-**Precision Principle**: All corrections preserve semantic content and factual accuracy
-
-**Usage**: Quick Reference for speed, Post-Check for audits, Sections I-VII for comprehensive reference

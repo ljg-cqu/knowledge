@@ -1,192 +1,138 @@
 # Investigate Q&A & Case Report Generator
 
-**Purpose**: Produce investigative Q&As and a structured case report for one *investigation case* (for example an industry situation, multi‑actor incident, ecosystem configuration, regulatory crackdown, or systemic failure), explaining how multiple related actors, objects, and factors interact over time, what happened, why, and with what implications.
+**Purpose**: Generate 4–6 investigative Q&As analyzing one multi-actor case (incident, regulatory action, industry pattern, systemic failure), explaining what happened, why, and implications for decisions.
 
-**Scope**: One investigation case per run, from earliest relevant background to present (+ optional 1–3 year outlook) across technical, business, ecosystem, regulatory, organizational, and geographic lenses. The case must involve multiple key objects/factors (for example several companies, protocols, products, regions, user segments, or policies); never limit the analysis to a single-object biography.
+**Scope**: One case from background to present (+ optional 1–3 year outlook) across ≥2 dimensions (technical, business, ecosystem, regulatory, organizational, geographic). Must involve ≥3 actors/factors.
 
-**Output**: 4–6 investigative Q&As plus one integrated case-summary paragraph in the Case Overview & Scope section; each Q&A centers on a major *investigation angle* (for example incentives & power, causal chain of an incident, industry structure, regulatory game, or systemic risk) that cuts across several actors and factors.
+**Output**: 4–6 Q&As (150–250 words each) + case-summary paragraph; each Q&A addresses one investigation angle across multiple actors/factors.
 
-**Validity**: Typically 6–12 months, until new evidence, major incidents, structural industry shifts, or regulatory regime changes emerge; then re-run.
+**Validity**: 6–12 months until new evidence, major shifts, or regulatory changes require re-run.
 
-**Stakeholders**: Product, technical, strategy, risk, finance, and policy roles needing a concise, accurate big-picture reconstruction (for example PMs, architects, engineers, researchers, founders, investors, risk managers, compliance, regulators, technical writers).
-
-**Constraints**: 150–250 words per answer; ≥70% answers with citations; 100% Q&As anchored in explicit time ranges (years/dates) and, where relevant, locations/regions/segments. Each answer should mention ≥2–3 concrete actors or factors (companies, products, protocols, regulators, user segments, structural forces) unless the case is extremely narrow.
-
-**Assumptions**: Prompt specifies the investigation case, rough time span, and decision context; public sources exist; output is text with optional diagrams and tables.
-
-**Exclude**: Speculation beyond 3–5 years, unsourced rumors, trivia, generic definitions without time/space context, and single-object narratives that do not synthesize across multiple actors or factors.
+**Users**: PM, architect, engineer, researcher, founder, investor, risk manager, compliance, regulator, technical writer.
 
 **Terms**:
-- **Investigation**: Evidence-based reconstruction and explanation of a complex situation involving multiple actors and factors, not a simple single-object timeline.
-- **Case**: A bounded situation, event, pattern, or configuration (for example an exchange collapse, a regulatory campaign, an industry price war, or a miner–protocol conflict) that can be described with clear temporal and contextual boundaries.
-- **Actor**: An entity that takes decisions or exerts influence in the case (for example company, protocol, DAO, regulator, cartel, user group, infrastructure provider).
-- **Factor**: A structural condition or variable that shapes outcomes (for example leverage, fee model, liquidity concentration, governance design, legal regime, macro environment).
-- **Critical Question**: A decision-critical or interpretation-critical question whose answer significantly influences whether to enter, invest, build, partner, regulate, pivot, or exit.
+- **Case**: Bounded situation with clear temporal/contextual boundaries
+- **Actor**: Entity influencing outcomes (company, protocol, DAO, regulator, user group)
+- **Factor**: Structural variable shaping outcomes (leverage, governance, legal regime, liquidity)
+- **Angle**: Investigation dimension (incentives, causal chain, industry structure, systemic risk)
 
-## LLM Prompt Context Checklist
+## Minimal Workflow (80/20)
 
-Before you ask an LLM to generate an Investigate report, include at least:
-- Case title and 1–2 sentence description (industry/domain, main incident or pattern, affected segments, maturity), including scale indicators where available (for example market size, user counts, TVL, volumes, geographies, revenue range).
-- Time span to cover (background→present, or explicit years) and whether to add a 1–3 year outlook; call out any periods, shocks, or transitions you especially care about.
-- Decision context and stakeholder roles (for example enter/invest/monitor/pivot/exit/regulate decision for PM + Architect + Investor + Risk/Compliance), plus current baselines or constraints they face (for example capital, risk appetite, regulatory limits).
-- Key actors, exemplars, and factors that must be covered (for example specific protocols, venues, jurisdictions, user segments, or structural variables such as leverage, custody model, or collateral design); allow the LLM to add more when necessary.
-- Suspected hypotheses or storylines to test (for example "Was this primarily a liquidity crisis or a governance failure?"); make clear that the LLM must contrast alternative explanations, not just confirm one narrative.
-- Constraints and preferences (language mix, maximum length, tools to favor/avoid, time available for research, sources to prefer/avoid).
-- 3–5 critical questions you want the investigation to answer, each phrased as a single, time-bounded ask about the *case* or *situation*, not just one object.
-- Optional for training/education-focused runs: state an approximate difficulty mix for the investigation outputs (for example ~20% foundational background, ~50% intermediate analysis, ~30% advanced/edge cases) so the LLM can balance explanation depth.
+**5 steps to produce a reliable investigation in minimal time:**
 
-**Self-contained prompt requirement**: When building an LLM prompt from this template, paste all necessary instructions and context into a single prompt. Do not rely on references such as “see other file”, “see previous answer”, or external memory.
+1. **Define**: Case title, time span, decision context (enter/invest/build/partner/monitor/pivot/exit/regulate), 3–5 critical questions, hypotheses to test
+2. **Map**: Background + ≥3 key events + ≥3 actors/factors (firms, protocols, regulators, segments, structural variables)
+3. **Write**: 4–6 Q&As (see Q&A Template); each covers ≥2 dimensions, references ≥2–3 actors/factors, includes ≥1 citation
+4. **Visualize**: 1 table summarizing events/years/actors/factors/impacts (or add timeline/network diagram)
+5. **Validate**: Confirm background→present coverage, main causal story + alternatives, ≥5 citations from ≥3 types
 
-## Guidelines
+**Target**: Reduce investigation time by ≥60% vs ad-hoc search.
 
-### Quantitative Guidelines
-- **Q&A units**: 4–6 investigative Q&As covering ≥2 dimensions
-- **Coverage**:
-  - Background & Framing (1 Q&A)
-  - Actors, Incentives & Relationships (1–2 Q&As)
-  - Causal Chain, Mechanisms & Evidence (1 Q&A)
-  - Impact, Accountability & Outlook (1–2 Q&As)
-- **References (full run)**: Glossary ≥6 terms, Tools/Platforms ≥3, Literature/Reports ≥3 (≥1 ZH), Citations ≥5 in APA 7th format. For minimal runs, see **Minimal Core Workflow (80/20)**
-- **Visuals (full run)**: ≥1 overall timeline or causal-chain/network diagram and ≥1 table summarizing actors/factors, events, and impacts. For minimal runs, a single shared table is sufficient (see **Minimal Core Workflow (80/20)**)
+## LLM Prompt Requirements
 
-### Citation Standards
-- **Format**: APA 7th with language tag. Inline citation form: `[Ref: ID]`
-- **Distribution**: 50–70% EN, 20–40% ZH, 5–15% other languages
-- **Types**: ≥3 citation types
+**Required context** (self-contained in single prompt):
+- **Case**: Title, 1–2 sentence description with scale (market size, TVL, users, geographies)
+- **Time span**: Background→present (+ optional 1–3 year outlook); note key periods/shocks
+- **Decision**: Context and roles (PM/Architect/Investor/Risk/Compliance), constraints (capital, risk appetite, regulatory)
+- **Actors/factors**: ≥3 mandatory (protocols, venues, jurisdictions, segments, leverage, custody model); LLM may add more
+- **Hypotheses**: ≥2 competing explanations to test (e.g., "liquidity crisis vs governance failure")
+- **Questions**: 3–5 critical, time-bounded questions about the *case*, not single objects
+- **Preferences**: Language mix, max length, source types, research time
 
-### Process
-1. **Define case & investigative goals**: Specify the case, boundaries, time span, primary perspectives (technical, business, ecosystem, regulatory, geographic, organizational), decision context (enter/invest/expand/monitor/pivot/exit/regulate/expose/mitigate), and key stakeholders. List initial hypotheses and mandatory actors/factors to examine.
-2. **Build references**: Create glossary, tools/platforms, literature/reports, and citations covering background, triggers, cascades, interventions, and outcomes across major regions/segments.
-3. **Map actors, factors, and timeline**: Identify major actors and structural factors; build a minimal timeline of key events (background, triggers, cascades, interventions) with dates/locations; map who did what, when, and under which conditions.
-4. **Generate Q&A**: For each question, focus on one investigation angle; explain what happened, who was involved, how factors interacted, why outcomes emerged, and what alternative explanations exist; connect angles to each other.
-5. **Create visuals**: For a full run, produce at least one combined timeline/causal-chain or network diagram and one actor/factor–event table; for a minimal run, a single shared table is sufficient. Reference visuals in the answers.
-6. **Populate references**: Format glossary, tools/platforms, literature/reports, and citations as in section **D. Reference Formats**.
-7. **Validate**: Check floors and quality gates (temporal coverage, source diversity, coherence, multi-actor coverage).
-8. **Final review**: Ensure clarity, narrative flow, fairness across perspectives, and decision usefulness (for example where and how to enter, invest, build, partner, regulate, pivot, exit, or mitigate risk).
+**Exclude**: External references ("see other file"), unsourced speculation >3–5 years, single-object narratives.
 
-### Minimal Core Workflow (80/20)
+## Standards
 
-Use this when time is limited; focus on minimal steps that still produce a reliable investigation.
+### Coverage
+- **Angles** (4–6 Q&As): Background (1), Actors/Incentives (1–2), Causal Chain (1), Impact/Outlook (1–2)
+- **Citations**: ≥5 total, ≥3 types (research, standards, news, vendor docs, regulatory filings), 50–70% EN / 20–40% ZH / 5–15% other; APA 7th with language tag; inline as `[Ref: ID]`
+- **References**: Glossary ≥6 terms, Tools ≥3, Literature ≥3 (≥1 ZH)
+- **Visuals**: Minimal = 1 table; Full = 1 timeline/network diagram + 1 table
+- **Per Q&A**: 150–250 words, ≥1 citation, explicit time range + regions/segments, ≥2–3 actors/factors
 
-1. **Define focus**: Choose the case and time span; note decision context, stakeholders, initial hypotheses, and 3–5 critical questions you want the investigation to answer.
-2. **Construct a minimal event & actor map**: Identify background plus ≥3 key events and ≥3 central actors or factors (for example key firms, protocols, regulators, user segments, or structural variables).
-3. **Write 4–6 Q&As**: Use the format in section **C. Q&A Format**; ensure each answer is time-bounded, covers at least 2 dimensions, and references ≥2–3 actors or factors.
-4. **Create 1 shared artifact**: At minimum, a single table summarizing events, years, main actors/factors, and impacts; optionally add a simple timeline or network diagram.
-5. **Run a quick validation**: Confirm background → present with no major blind spots; that you can state the main causal story and major alternative explanations; and that you have ≥5 citations from ≥3 types.
+### Quality Gates (must pass all)
+1. **Temporal**: Background→present, no unexplained multi-year gaps
+2. **Source diversity**: ≥3 citation types
+3. **Evidence**: ≥2 authoritative refs per major angle; controversial claims have ≥2 independent sources
+4. **Coverage**: All central actors/factors included; gaps marked explicitly
+5. **References**: Accessible links, consistent IDs
+6. **Coherence**: Dates/sequences align across Q&As, diagrams, tables
+7. **Balance**: Facts vs interpretation clear; opposing views presented; uncertainties flagged
 
-### Quality Gates
+### Success Metrics
+- Background + ≥3 key event clusters + ≥1 structural pattern
+- ≥70% paragraphs cite years/dates
+- ≥3 structural insights (how industry/ecosystem/regulatory/organizational structure shaped outcomes)
+- ≥3 Q&As address decision-critical angles
+- ≥70% Q&As include ≥1 citation
+- Reader can extract system-level insights and decision implications
 
-Failing any gate ⇒ stop and fix before using the output.
-1. **Temporal coverage**: The investigation spans from earliest relevant background (or first widely recorded milestone) to present with no unexplained multi-year gaps around major triggers, cascades, or interventions.
-2. **Source diversity**: ≥3 citation types (for example research, standards/specs, news/case studies, vendor or project documentation, regulatory filings).
-3. **Evidence per major angle**: Each major investigation angle or critical event cluster has ≥2 authoritative references; highly controversial claims have ≥2 independent sources where possible.
-4. **Actor / factor coverage**: The case includes all obviously central actors and structural factors (for example main firms, key protocols, core venues, pivotal regulators, critical user segments). If an important actor/factor cannot be covered, mark this explicitly as a gap.
-5. **References**: All links are accessible; citation IDs are consistent across answers and the reference section.
-6. **Chronological coherence**: Dates, sequences, and narratives align across Q&As, diagrams, and tables (no conflicting timelines).
-7. **Verification & balance**: Cross-check dates, figures, and citations; for controversial cases, distinguish facts from interpretation, present major opposing views where relevant, and flag uncertainties.
+## Question Checklist
+Rewrite if fails ≥2:
+1. **Clarity**: Single, time-bounded ask about *case* (not single object)
+2. **Temporal**: Specifies time window/events/slice
+3. **Causal**: Asks why/how actors/factors interacted, not just what changed
+4. **Multi-dimensional**: Invites ≥2 dimensions + synthesis across actors/factors
+5. **Signal**: Targets structural issues/failures/patterns, not trivia
+6. **Decision-aligned**: Connects to enter/invest/build/partner/monitor/pivot/exit/regulate/mitigate
+7. **Balanced**: For controversial cases, invites multiple perspectives + flags uncertainties
+8. **Self-contained**: Names case/timeframe/regions/segments/decision hook explicitly
 
-## Success Criteria
-- **Completeness**: Background plus ≥3 key events or clusters (triggers, cascades, interventions, outcomes) and (if relevant) ≥1 structural pattern or systemic risk clearly described
-- **Temporal clarity**: ≥70% paragraphs mention concrete years/dates or clear time ranges
-- **Structural insight**: ≥3 mentions of how industry, ecosystem, regulatory, or organizational structure shaped incentives and outcomes (not just a sequence of events)
-- **Decision support**: Reader can summarize what the case reveals about the underlying system (for example risk patterns, power structures, opportunity windows) and how that should shape enter/invest/build/partner/regulate/pivot/exit decisions
-- **Decision-critical focus**: ≥3 Q&As focus on angles that materially affect these decisions
-- **Citation use**: ≥70% answers include ≥1 citation
+## Output Structure
 
-Target: reduce investigative case research time by ≥60% vs ad-hoc web search.
+**Sections**: 1. Case Overview & Scope | 2. Investigation Q&As by Angle | 3. Visuals | 4. References | 5. Validation Report
 
-## Question Quality
-Rewrite any question that fails ≥2 checks.
-1. **Clarity**: Single, time-bounded ask about the *case* or one investigation angle (for example "What chain of incentives and failures led to X between 2019–2022?")
-2. **Temporal focus**: Clearly specifies a time window, set of events, or slice of the case
-3. **Causality**: Asks for why outcomes occurred and how actors/factors interacted, not just what changed
-4. **Perspective depth**: Invites ≥2 dimensions (for example technical + ecosystem, business + regulatory, incentives + governance) and synthesis across multiple actors or factors
-5. **Signal over trivia**: Targets real structural issues, failures, or patterns, not minor version bumps or isolated anecdotes
-6. **Decision-alignment**: Connects investigation results to enter/invest/build/partner/monitor/pivot/exit/regulate/mitigate choices where relevant
-7. **Fairness**: For controversial cases, invite multiple perspectives (for example incumbent vs entrant, regulator vs operator, retail vs institutional) and highlight uncertainties
-8. **Self-contained context**: Either the question itself or the shared prompt preamble explicitly names the case, timeframe, relevant regions/segments, and the decision hook so the LLM does not need to infer missing context
+**Angle coverage** (4–6 Q&As, Background→Present + optional 1–3yr outlook):
 
-## Output Format
+| Angle | Count | Dimensions | Artifacts |
+|---|---|---|---|
+| Background & Context | 1 | History, structure, regions | Timeline + table |
+| Actors & Incentives | 1–2 | Actors, incentives, power | Network map + matrix |
+| Causal Chain | 1 | Tech, market, governance | Diagram + event table |
+| Impact & Outlook | 1–2 | Impact, risk, strategy, policy | Matrix + scenarios |
 
-### A. TOC
-1. Case Overview & Scope
-2. Investigation Q&As by Angle
-3. Visuals (Timelines, Maps, Networks, Tables)
-4. References (Glossary, Tools/Platforms, Literature/Reports, Citations)
-5. Validation Report
+### Q&A Template
 
-### B. Angle Overview
-**Total Q&As**: [4–6] | **Coverage**: Background → Present (plus optional 1–3 year outlook) | **Dimensions**: Technical, Business, Ecosystem, Regulatory, Organizational, Geographic.
+**Angle**: [Background / Actors & incentives / Causal chain / Impact & fallout / Lessons]  
+**Q#**: [Full question]  
+**Timeframe**: [Years/dates] | **Regions/Segments**: [Global/CN/US/EU/etc.]  
+**Actors/factors**: [≥2–3 companies/protocols/venues/DAOs/regulators/segments/forces]  
+**Hypothesis**: [What this tests or explains]  
+**Decision**: [Enter/Invest/Build/Partner/Monitor/Pivot/Exit/Regulate/Mitigate] – [Why critical]  
+**Priority**: [Critical/Important/Optional]  
+**Key Insight**: [1 sentence: pattern/mechanism/failure]
 
-| Angle / Theme | Range | Count | Time span | Primary dimensions | Example artifacts |
-|---|---|---|---|---|---|
-| Background & Early Context | Q1 | 1 | [YYYY–YYYY] | History, structure, regions | Timeline + background table |
-| Actors, Incentives & Relationships | Q2–Q3 | 1–2 | [YYYY–YYYY] | Actors, incentives, power | Network map + actor–incentive matrix |
-| Causal Chain, Mechanisms & Evidence | Q4 | 1 | [YYYY–YYYY] | Tech, market, governance, process | Causal-chain diagram + event/impact table |
-| Impact, Accountability & Outlook | Q5–Q6 | 1–2 | [YYYY–YYYY+] | Impact, risk, strategy, policy | Impact matrix + scenarios / lessons table |
-| | **Total** | | **4–6** | **multi-dimensional** | **compressed** |
-For each major issue or shock, choose a single primary investigation angle. Treat domain-wide shocks as part of **Causal Chain, Mechanisms & Evidence** unless the question is primarily about long-run impact or lessons.
+**Answer** (150–250 words, include ≥1 `[Ref: ID]`):
+- **When/where**: Dates, locations, segments, scale (market share %, funding, TVL, DAU, volumes, scope)
+- **Who/what**: Actors, decisions, events; 1–2 metrics per key actor/factor
+- **How**: Causal chain/feedback loops (e.g., leverage + illiquidity + governance gaps)
+- **Why**: Competing narratives; how evidence supports/challenges each
+- **So what**: Implications for structure/risk/economics/regulation; decision thresholds
+- **Perspectives**: ≥2 stakeholder viewpoints (regulator vs operator, incumbent vs entrant, retail vs institutional)
 
-### C. Q&A Format
+**Artifact** *(optional)*: Timeline, causal diagram, network map, comparison table  
+**Confidence**: [High/Medium/Low] – [Evidence strength, uncertainties, gaps, contested points]
 
-**Investigation angle / Theme type**: [Background / Actors & incentives / Causal chain / Impact & fallout / Lessons & patterns]
+### Reference Formats
 
-**Q#: [Full question]**
+Prioritize recent primary sources (last 5–10 years) for current events; older sources for background; flag secondary/uncertain sources.
 
-**Timeframe**: [Years / specific dates] | **Regions/Segments (if any)**: [Global / CN / US / EU / etc.]
-
-**Core actors/factors**: [Key companies/protocols/venues/DAOs/regulators/user segments/structural forces].
-
-**Hypothesis / Focus**: [Short statement of what this Q&A is trying to test or explain].
-
-**Decision relevance**: [Enter / Invest / Expand / Build / Partner / Monitor / Pivot / Exit / Regulate / Expose / Mitigate] – [Short justification, especially for decision-critical angles].
-
-**Priority**: [Critical / Important / Optional] – [How much this Q&A should influence the current decision].
-
-**Key Insight**: [1 sentence – specific pattern, mechanism, or failure being highlighted.]
-
-**Answer** (150–250 words):
-- When & where: key dates, locations, segments, and (where available) scale indicators (for example market share %, funding $, TVL, DAU, liquidation volumes, enforcement scope)
-- Who & what: main actors and decisions/events, including 1–2 concrete metrics or examples per key actor/factor
-- How factors interacted: causal chain or feedback loops (for example leverage + illiquidity + governance gaps), including reinforcing or mitigating mechanisms
-- Why interpretations differ: competing narratives or explanations, and how evidence supports or challenges them
-- So what: implications for structure, risk, economics, or regulation; connect to specific thresholds or decision points
-- Risk, value, and perspectives: brief comparison of at least two stakeholder viewpoints or archetypes (for example regulator vs operator, incumbent vs entrant, retail vs institutional)
-- ≥1 `[Ref: ID]` pointing to the reference section
-
-**Artifact** *(optional)*: Timeline snippet, causal-chain diagram, network/relationship map, or case comparison table.
-
-**Confidence**: [High / Medium / Low] – [Short note on evidence strength, major uncertainties, missing data, or contested points].
-
-### D. Reference Formats
-
-Prioritize recent, primary sources for current phases and outcomes (ideally from the last 5–10 years); use older sources for background and structural context, and flag secondary or uncertain sources explicitly.
-
-**Glossary**: `G#. Term (Acronym)` | Definition | Use cases | Related concepts | Limitations. Alphabetize by term
-
-**Tools/Platforms**: `T#. Name (Category)` | Role in lifecycle or case (core implementation, infra, analytics, ecosystem, venue) | Pricing | Users/scale | Latest update (Q# YYYY) | Key integrations | Investigation notes | URL; group by category
-
-**Literature/Reports**: `L#. Author, Title, Year` | Summary (focus/framework/findings) | Relevance to the case or to similar cases/domains | Group by language (EN first, then ≥1 ZH)
-
-**Citations**: `A#. [Citation] [Lang]` | APA 7th format with language tags
+- **Glossary**: `G#. Term (Acronym)` | Definition | Use cases | Related | Limitations (alphabetized)
+- **Tools**: `T#. Name (Category)` | Role | Pricing | Users/scale | Latest update | Integrations | Notes | URL (grouped by category)
+- **Literature**: `L#. Author, Title, Year` | Summary | Relevance (grouped by language: EN, then ZH)
+- **Citations**: `A#. [Citation] [Lang]` | APA 7th with language tag
 
 ## Example
 
 **Q1: What chain of incentives, structural factors, and failures led to the collapse of an over-leveraged centralized exchange, and what does this reveal about CEX risk patterns (2017–2022)?**
 
-**Investigation angle / Theme type**: Causal chain (primary; impact & fallout secondary)
-
-**Timeframe**: 2017–2022 | **Regions/Segments**: Global (US/EU/Offshore jurisdictions; retail + institutional)
-
-**Core actors/factors**: Exchange management and trading affiliates, venture/credit providers, regulators, auditors, retail users, leverage and collateral practices.
-
-**Hypothesis / Focus**: Many centralized exchange collapses follow a repeatable pattern of leverage, opacity, and governance failures that create hidden fragility.
-
-**Decision relevance**: Exit / Regulate / Mitigate – Highlights structural risk patterns that should block unchecked expansion or reliance on opaque CEXs.
-
-**Priority**: Critical – Directly informs whether to entrust custody or liquidity to similar exchanges.
-
-**Key Insight**: Shows how related‑party trading, opaque balance sheets, and weak oversight combined with cheap leverage to create a brittle system that failed under stress, illustrating systemic CEX risks.
+**Angle**: Causal chain  
+**Timeframe**: 2017–2022 | **Regions/Segments**: Global (US/EU/Offshore; retail + institutional)  
+**Actors/factors**: Exchange management, trading affiliates, venture/credit providers, regulators, auditors, retail users, leverage/collateral practices  
+**Hypothesis**: CEX collapses follow repeatable pattern: leverage + opacity + governance failures → hidden fragility  
+**Decision**: Exit / Regulate / Mitigate – Structural risk patterns blocking expansion/reliance on opaque CEXs  
+**Priority**: Critical – Directly informs custody/liquidity decisions  
+**Key Insight**: Related-party trading + opaque balance sheets + weak oversight + cheap leverage = brittle system failing under stress
 
 **Answer** (≈220 words):
 In the late 2010s, cheap capital and a search for yield allowed centralized exchanges to grow rapidly by offering high leverage, proprietary tokens, and cross‑margin products that blurred lines between spot, derivatives, and collateral [Ref: A1]. Some exchanges created tightly coupled ecosystems in which their own tokens, affiliated market‑makers, and internal lending desks recycled liquidity, masking concentration and maturity mismatch risks [Ref: A2]. Governance was often founder‑centric, with limited board oversight, weak segregation between client and proprietary funds, and opaque disclosure practices, especially in offshore jurisdictions with lighter supervision [Ref: A3].
@@ -203,12 +149,10 @@ When macro conditions tightened and asset prices fell, these structures amplifie
 
 **Confidence**: Medium (strong evidence from filings and journalism; some details remain sealed or disputed).
 
-## Quick Check for Investigate Runs (30s)
+## Pre-Flight Check (30s)
 
-Before sending an Investigate prompt to an LLM or using a generated investigation report for decisions, confirm that:
-- **Context & questions**: The prompt satisfies the LLM Prompt Context Checklist and Minimal Core Workflow step 1 (case description, time span, decision context, stakeholders, hypotheses, and 3–5 critical questions)
-- **Self-contained prompt**: The prompt meets the self-contained prompt requirement defined above
-- **Per-Q&A structure**: Each Q&A follows section **C. Q&A Format** and the global Constraints
-- **Coverage & angles**: The overall set meets the Quantitative Guidelines and Success Criteria, and each Q&A maps cleanly to one primary investigation angle from section **B. Angle Overview**
-- **Evidence & references**: Citation practices meet **Citation Standards**, Quality Gates, and section **D. Reference Formats** (diverse, recent, and consistently labeled sources)
-- **Balance & decision usefulness**: For controversial cases, apply Quality Gate 7 (verification & balance), and ensure the reader can see how each Q&A informs enter/invest/build/partner/monitor/pivot/exit/regulate/mitigate decisions
+Before generating or using an investigation:
+- **Prompt**: Case + time span + decision context + stakeholders + ≥2 hypotheses + 3–5 questions; self-contained (no external refs)
+- **Q&As**: Follow Q&A Template; 4–6 total mapping to angle coverage; 150–250 words, ≥1 citation, explicit time/region, ≥2–3 actors/factors
+- **Standards**: Meet Coverage + Quality Gates + Success Metrics
+- **Balance**: For controversial cases, facts vs interpretation clear, opposing views presented, uncertainties flagged; decision implications explicit
