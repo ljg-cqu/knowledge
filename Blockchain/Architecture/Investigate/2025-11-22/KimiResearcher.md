@@ -361,6 +361,70 @@
             </div>
           </div>
 
+          <!-- Consensus Evolution Diagram -->
+          <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-8">Consensus Mechanism Evolution</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Consensus Mechanisms] --> B[Proof-of-Work]
+    A --> C[Proof-of-Stake]
+    A --> D[Byzantine Fault Tolerance]
+    
+    B --> B1[Bitcoin]
+    B --> B2[High Security]
+    B --> B3[Low TPS]
+    
+    C --> C1[Ethereum 2.0]
+    C --> C2[Energy Efficient]
+    C --> C3[Medium TPS]
+    
+    D --> D1[Solana PoH]
+    D --> D2[Aptos AptosBFT]
+    D --> D3[High TPS]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style B1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style B3 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C2 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style C3 fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style D1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D3 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+              </div>
+            </div>
+          </div>
+
           <!-- Data Models -->
           <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
             <h3 class="font-display text-2xl font-semibold text-primary mb-8">Data Models: UTXO, Account-Based, and Object-Centric</h3>
@@ -506,14 +570,33 @@
                   </button>
                 </div>
                 <div class="mermaid">
-                  graph TD
-                  A[&#34;Previous Transaction&#34;] --&gt; B[&#34;UTXO #1&#34;]
-                  A --&gt; C[&#34;UTXO #2&#34;]
-                  B --&gt; D[&#34;New Transaction&#34;]
-                  C --&gt; D
-                  D --&gt; E[&#34;New UTXO #3&#34;]
-                  D --&gt; F[&#34;New UTXO #4&#34;]
-                  D --&gt; G[&#34;Change UTXO&#34;]
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[&#34;Previous Transaction&#34;] --&gt; B[&#34;UTXO #1&#34;]
+  A --&gt; C[&#34;UTXO #2&#34;]
+  B --&gt; D[&#34;New Transaction&#34;]
+  C --&gt; D
+  D --&gt; E[&#34;New UTXO #3&#34;]
+  D --&gt; F[&#34;New UTXO #4&#34;]
+  D --&gt; G[&#34;Change UTXO&#34;]
+  
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+  style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+  style G fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
                 </div>
               </div>
             </div>
@@ -612,6 +695,68 @@
           <!-- Sharding -->
           <div class="bg-white p-8 rounded-xl shadow-lg mb-12">
             <h3 class="font-display text-2xl font-semibold text-primary mb-6">Sharding: The Future of Ethereum Scalability</h3>
+
+            <!-- Ethereum Architecture Diagram -->
+            <div class="mermaid-container mb-8">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TB
+    BC[Beacon Chain Consensus Layer]
+    
+    BC --> S1[Data Shard 1]
+    BC --> S2[Data Shard 2]
+    BC --> S3[Data Shard 3]
+    BC --> S4[Data Shard N]
+    
+    S1 --> R1[Rollup Layer 2a]
+    S1 --> R2[Rollup Layer 2b]
+    S2 --> R3[Rollup Layer 2c]
+    S3 --> R4[Rollup Layer 2d]
+    S4 --> R5[Rollup Layer 2e]
+    
+    R1 --> U1[Users Apps DApps]
+    R2 --> U1
+    R3 --> U1
+    R4 --> U1
+    R5 --> U1
+    
+    style BC fill:#eff6fb,stroke:#7a9fc5,stroke-width:3px,color:#1a1a1a
+    style S1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S3 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style S4 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style R1 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R2 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R3 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R4 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style R5 fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style U1 fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+              </div>
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div class="lg:col-span-2">
@@ -727,7 +872,51 @@
             </div>
 
             <div>
-              <img src="https://fixedplaceholder" alt="Abstract visualization of Solana blockchain network with interconnected nodes" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" color="blue" style="photo" query="Solana blockchain network diagram" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <!-- PoH Sequence Diagram -->
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+sequenceDiagram
+    participant User
+    participant Validator as Leader Validator
+    participant PoH as PoH Generator
+    participant Network as Validator Network
+    
+    User->>Validator: Submit Transaction
+    Validator->>PoH: Insert into PoH Stream
+    PoH->>PoH: Sequential Hash
+    Note over PoH: Hash N = SHA256(Hash N-1)
+    PoH->>Validator: Timestamp Proof
+    Validator->>Network: Broadcast with PoH
+    Network->>Network: Verify PoH
+    Network->>Validator: Consensus Vote
+    Validator->>User: Confirmation
+                </div>
+              </div>
             </div>
           </div>
 
@@ -834,15 +1023,36 @@
                     </button>
                   </div>
                   <div class="mermaid">
-                    graph TB
-                    A[&#34;Relay Chain&#34;] --&gt; B[&#34;Parachain 1&#34;]
-                    A --&gt; C[&#34;Parachain 2&#34;]
-                    A --&gt; D[&#34;Parachain 3&#34;]
-                    A --&gt; E[&#34;Parachain 4&#34;]
-                    B --&gt; F[&#34;App-Specific Chain&#34;]
-                    C --&gt; G[&#34;DeFi Chain&#34;]
-                    D --&gt; H[&#34;Gaming Chain&#34;]
-                    E --&gt; I[&#34;Identity Chain&#34;]
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TB
+    A[&#34;Relay Chain&#34;] --&gt; B[&#34;Parachain 1&#34;]
+    A --&gt; C[&#34;Parachain 2&#34;]
+    A --&gt; D[&#34;Parachain 3&#34;]
+    A --&gt; E[&#34;Parachain 4&#34;]
+    B --&gt; F[&#34;App-Specific Chain&#34;]
+    C --&gt; G[&#34;DeFi Chain&#34;]
+    D --&gt; H[&#34;Gaming Chain&#34;]
+    E --&gt; I[&#34;Identity Chain&#34;]
+    
+    style A fill:#eff6fb,stroke:#7a9fc5,stroke-width:3px,color:#1a1a1a
+    style B fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style C fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style G fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style H fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style I fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
                   </div>
                 </div>
               </div>
@@ -1112,7 +1322,69 @@
             </div>
 
             <div>
-              <img src="https://fixedplaceholder" alt="Abstract visualization of modular blockchain architecture layers" class="w-full h-80 object-cover rounded-xl shadow-lg" size="medium" aspect="wide" query="abstract modular blockchain architecture" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+              <!-- Modular Blockchain Diagram -->
+              <div class="mermaid-container">
+                <div class="mermaid-controls">
+                  <button class="mermaid-control-btn zoom-in" title="放大">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                  <button class="mermaid-control-btn zoom-out" title="缩小">
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  <button class="mermaid-control-btn reset-zoom" title="重置">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                  </button>
+                  <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                    <i class="fas fa-expand"></i>
+                  </button>
+                </div>
+                <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TB
+    subgraph Apps["Application Layer"]
+        A1[DeFi Apps]
+        A2[NFT Platforms]
+        A3[Gaming]
+    end
+    
+    subgraph Exec["Execution Layer"]
+        E1[Rollups]
+        E2[Smart Contracts]
+        E3[Transaction Processing]
+    end
+    
+    subgraph Cons["Consensus Layer"]
+        C1[Block Production]
+        C2[Finality]
+        C3[Validator Set]
+    end
+    
+    subgraph Data["Data Availability Layer"]
+        D1[State Storage]
+        D2[Transaction Data]
+        D3[Historical Records]
+    end
+    
+    Apps --> Exec
+    Exec --> Cons
+    Cons --> Data
+    
+    style Apps fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Exec fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Cons fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Data fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1173,6 +1445,65 @@
           <!-- The Scalability Trilemma -->
           <div class="bg-white p-8 rounded-xl shadow-lg">
             <h3 class="font-display text-2xl font-semibold text-primary mb-6">The Scalability Trilemma: Ongoing Challenges</h3>
+
+            <!-- Trilemma Diagram -->
+            <div class="mermaid-container mb-8">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    T[Blockchain Trilemma] --> S[Security]
+    T --> SC[Scalability]
+    T --> D[Decentralization]
+    
+    S --> BTC[Bitcoin Focus]
+    SC --> SOL[Solana Focus]
+    D --> POL[Polkadot Balance]
+    
+    S -.Trade-off.- SC
+    SC -.Trade-off.- D
+    D -.Trade-off.- S
+    
+    BTC --> BTCDec[High Decentralization]
+    BTC --> BTCSec[High Security]
+    BTC --> BTCScal[Low Scalability]
+    
+    SOL --> SOLScal[High Scalability]
+    SOL --> SOLSec[Medium Security]
+    SOL --> SOLDec[Medium Decentralization]
+    
+    style T fill:#f8f9fa,stroke:#7a8591,stroke-width:3px,color:#1a1a1a
+    style S fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style D fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style SOL fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style POL fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+              </div>
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
               <div class="text-center p-6 border border-gray-200 rounded-lg">
@@ -1313,24 +1644,24 @@
             startOnLoad: true,
             theme: 'base',
             themeVariables: {
-                primaryColor: '#1e293b',
-                primaryTextColor: '#ffffff',
-                primaryBorderColor: '#3b82f6',
-                lineColor: '#475569',
-                secondaryColor: '#f8fafc',
-                tertiaryColor: '#e2e8f0',
+                primaryColor: '#f8f9fa',
+                primaryTextColor: '#1a1a1a',
+                primaryBorderColor: '#7a8591',
+                lineColor: '#8897a8',
+                secondaryColor: '#eff6fb',
+                tertiaryColor: '#f3f5f7',
                 background: '#ffffff',
-                mainBkg: '#1e293b',
-                secondBkg: '#3b82f6',
-                tertiaryBkg: '#64748b',
-                nodeBkg: '#1e293b',
-                nodeBorder: '#3b82f6',
-                clusterBkg: '#f8fafc',
-                clusterBorder: '#64748b',
-                defaultLinkColor: '#475569',
-                titleColor: '#1e293b',
+                mainBkg: '#f8f9fa',
+                secondBkg: '#eff6fb',
+                tertiaryBkg: '#f3f5f7',
+                nodeBkg: '#f8f9fa',
+                nodeBorder: '#7a8591',
+                clusterBkg: '#f3f5f7',
+                clusterBorder: '#8897a8',
+                defaultLinkColor: '#8897a8',
+                titleColor: '#1a1a1a',
                 edgeLabelBackground: '#ffffff',
-                nodeTextColor: '#ffffff'
+                nodeTextColor: '#1a1a1a'
             },
             flowchart: {
                 useMaxWidth: false,

@@ -15,10 +15,10 @@
 
  **Decision context & stakeholders.** Product leaders, architects, protocol engineers, infra providers, custodians, and regulators assessing whether to **enter, invest, build, partner, monitor, or regulate** around these L1s, and how to design multi-chain strategies (for example, which L1 to treat as settlement, which for latency-sensitive workloads, which to integrate into custody and compliance stacks) over 2025–2028.
 
- **Primary dimensions.**
- - Technical: consensus (Nakamoto vs BFT-style PoS), state models (UTXO vs account vs object-centric), execution engines (single-threaded EVM vs Sealevel vs Block-STM), data availability.
- - Business & ecosystem: fee markets, MEV, tokenomics, validator economics, developer tooling, ecosystem funding.
- - Regulatory & geographic: treatment of staking yields and validator rewards; concentration of nodes, exchanges, and stablecoin issuers by region.
+ **Primary dimensions:**
+ - **Technical**: consensus (Nakamoto vs BFT-style PoS), state models (UTXO vs account vs object-centric), execution engines (single-threaded EVM vs Sealevel vs Block-STM), data availability
+ - **Business & ecosystem**: fee markets, MEV, tokenomics, validator economics, developer tooling, ecosystem funding
+ - **Regulatory & geographic**: treatment of staking yields and validator rewards; concentration of nodes, exchanges, and stablecoin issuers by region
 
  **Initial hypotheses.**
  - **H1 (architecture families).** By 2025, mainstream L1s cluster into three families: conservative UTXO + simple scripts; general-purpose account-based smart contracts; and aggressively parallel, Move-based or advanced concurrency designs. Each family encodes distinct assumptions about hardware, bandwidth, and decentralization.
@@ -68,15 +68,72 @@
 
  **Answer** (≈220 words):
 
- In 2008–2009, Bitcoin introduced a UTXO-based ledger and Nakamoto consensus, prioritizing censorship resistance and simplicity over programmability [Ref: A1]. Scripts were intentionally constrained, and throughput remained low, but Bitcoin established the pattern of globally replicated state transitions secured by proof-of-work. Ethereum’s 2015 launch generalized this idea by adopting an account-based model and the EVM, turning the L1 into a general-purpose state machine for DeFi, NFTs, and DAOs [Ref: A2]. This increased flexibility but made scalability and state growth central challenges.
+ In **2008–2009**, Bitcoin introduced a **UTXO-based ledger** and **Nakamoto consensus**, prioritizing censorship resistance and simplicity over programmability [Ref: A1]. Scripts were intentionally constrained, and throughput remained low (~7 TPS), but Bitcoin established the pattern of globally replicated state transitions secured by **proof-of-work**. Ethereum's **2015 launch** generalized this idea by adopting an **account-based model** and the **EVM**, turning the L1 into a general-purpose state machine for DeFi, NFTs, and DAOs [Ref: A2]. This increased flexibility but made **scalability** and **state growth** central challenges.
 
- From 2017–2020, scalability debates (Bitcoin block-size wars, Ethereum gas limits, delayed sharding) created space for alternative architectures. Polkadot proposed a relay chain securing heterogeneous parachains, each with its own execution logic but shared security [Ref: A4]. Solana launched a single-shard, high-throughput chain using Proof of History plus PoS and Sealevel parallel execution, trading higher hardware requirements and more complex failure modes for low-latency confirmations [Ref: A3].
+ From **2017–2020**, scalability debates (Bitcoin block-size wars, Ethereum gas limits, delayed sharding) created space for alternative architectures. **Polkadot** proposed a **relay chain** securing heterogeneous **parachains**, each with its own execution logic but **shared security** [Ref: A4]. **Solana** launched a single-shard, high-throughput chain using **Proof of History (PoH)** plus PoS and **Sealevel parallel execution**, trading higher hardware requirements and more complex failure modes for low-latency confirmations [Ref: A3].
 
- In 2022–2023, Aptos and Sui went further, using the Move language and Block-STM or object-centric execution to parallelize transactions while enforcing safety invariants [Ref: A5][Ref: A6]. Meanwhile, Ethereum shifted to PoS and a rollup-centric roadmap, pushing much execution off-chain but retaining settlement and data availability on L1. By 2025, the landscape spans conservative UTXO settlement, modular rollup stacks, and aggressively parallel L1s, each with distinct risk and performance profiles [Ref: A7].
+ In **2022–2023**, **Aptos** and **Sui** went further, using the **Move language** and **Block-STM** or **object-centric execution** to parallelize transactions while enforcing safety invariants [Ref: A5][Ref: A6]. Meanwhile, Ethereum shifted to **PoS** and a **rollup-centric roadmap**, pushing much execution off-chain but retaining settlement and data availability on L1. By 2025, the landscape spans conservative UTXO settlement, modular rollup stacks, and aggressively parallel L1s, each with distinct risk and performance profiles [Ref: A7].
 
  **Artifact**: See section 3.1 for the architecture evolution timeline.
 
  **Confidence**: High – Core milestones and architectural features are well documented in white papers and technical documentation; some performance claims remain contested.
+
+ **L1 Architecture Family Diagram:**
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    L1[L1 Blockchain Architectures]
+    
+    L1 --> Family1[Family 1: UTXO Conservative]
+    L1 --> Family2[Family 2: Account-Based Smart Contracts]
+    L1 --> Family3[Family 3: Parallel Execution]
+    
+    Family1 --> Bitcoin[Bitcoin]
+    Bitcoin --> BTC1[UTXO State Model]
+    Bitcoin --> BTC2[Nakamoto Consensus]
+    Bitcoin --> BTC3[Simple Scripts]
+    Bitcoin --> BTC4[~7 TPS]
+    
+    Family2 --> Ethereum[Ethereum]
+    Ethereum --> ETH1[Account State Model]
+    Ethereum --> ETH2[PoS Consensus]
+    Ethereum --> ETH3[EVM Single-Threaded]
+    Ethereum --> ETH4[Rollup-Centric]
+    
+    Family3 --> Solana[Solana]
+    Family3 --> Sui[Sui]
+    Family3 --> Aptos[Aptos]
+    
+    Solana --> SOL1[PoH + Sealevel]
+    Solana --> SOL2[High Throughput]
+    
+    Sui --> SUI1[Object-Centric Model]
+    Sui --> SUI2[Move Language]
+    
+    Aptos --> APT1[Block-STM]
+    Aptos --> APT2[Move Language]
+    
+    style L1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Family1 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Family2 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Family3 fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Bitcoin fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Ethereum fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Solana fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Sui fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Aptos fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+ ```
 
  ### Q2. Actors, Incentives & Relationships – Validator Economics, Fees, and MEV (2015–2025)
 
@@ -98,15 +155,67 @@
 
  **Answer** (≈220 words):
 
- Bitcoin’s PoW model pays miners via block subsidies and fees; halvings reduce subsidies roughly every four years, slowly shifting security budgets toward fees [Ref: A1]. Mining has consolidated into industrial-scale operations using ASICs and cheap energy, often in a few regions, raising geographic and regulatory concentration risks. Ethereum migrated to PoS, rewarding validators with newly issued ETH, priority fees, and MEV, moderated by burning base fees (EIP-1559) [Ref: A2]. Staking has concentrated in liquid staking protocols and large exchanges, which aggregate delegation and run professional validator fleets.
+ Bitcoin's **PoW model** pays miners via **block subsidies** and **transaction fees**; halvings reduce subsidies roughly every four years, slowly shifting security budgets toward fees [Ref: A1]. Mining has consolidated into industrial-scale operations using **ASICs** and cheap energy, often in a few regions, raising **geographic and regulatory concentration risks**. Ethereum migrated to **PoS**, rewarding validators with newly issued ETH, priority fees, and **MEV**, moderated by burning base fees (**EIP-1559**) [Ref: A2]. Staking has concentrated in **liquid staking protocols** and large exchanges, which aggregate delegation and run professional validator fleets.
 
- Solana, Polkadot, Sui, and Aptos use PoS variants with inflationary rewards and slashing penalties to encourage uptime and honest behavior [Ref: A3][Ref: A4][Ref: A5][Ref: A6]. Higher hardware requirements (for example Solana) and complex software stacks favor well-capitalized validators and cloud hosting, potentially reducing the number of truly independent operators. MEV opportunities (for example sandwich attacks, liquidation arbitrage) exist across programmable chains, but mitigation strategies differ: Ethereum experiments with PBS-style architectures and MEV-Boost, while newer L1s rely more on validator norms, limited tooling, or nascent MEV markets.
+ Solana, Polkadot, Sui, and Aptos use **PoS variants** with **inflationary rewards** and **slashing penalties** to encourage uptime and honest behavior [Ref: A3][Ref: A4][Ref: A5][Ref: A6]. Higher **hardware requirements** (e.g., Solana) and complex software stacks favor well-capitalized validators and cloud hosting, potentially reducing the number of truly independent operators. **MEV opportunities** (e.g., sandwich attacks, liquidation arbitrage) exist across programmable chains, but mitigation strategies differ: Ethereum experiments with **PBS-style architectures** and **MEV-Boost**, while newer L1s rely more on validator norms, limited tooling, or nascent MEV markets.
 
- For users, these dynamics translate into different fee volatility and censorship or reorg risks. Regulators increasingly scrutinize large staking providers and mining pools, especially in the US, EU, and East Asia [Ref: A7][Ref: A9]. Builders and investors must factor in not just nominal decentralization (validator count) but effective control structures and economic incentives when evaluating L1 risk.
+ For users, these dynamics translate into different **fee volatility** and **censorship or reorg risks**. Regulators increasingly scrutinize large staking providers and mining pools, especially in the US, EU, and East Asia [Ref: A7][Ref: A9]. Builders and investors must factor in not just **nominal decentralization** (validator count) but **effective control structures** and **economic incentives** when evaluating L1 risk.
 
  **Artifact**: See section 3.2 for a comparative table of architecture and incentive features.
 
  **Confidence**: Medium – Core mechanisms are public; MEV magnitudes and effective decentralization are partly inferred from on-chain and staking data.
+
+ **Validator Incentive Flow Diagram:**
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    Users[Users]
+    Validators[Validators/Miners]
+    Protocol[Protocol Layer]
+    
+    Users -->|Transaction Fees| Validators
+    Users -->|Priority Fees| Validators
+    Protocol -->|Block Subsidies| Validators
+    Protocol -->|Staking Rewards| Validators
+    Users -->|MEV Opportunities| Searchers[MEV Searchers]
+    Searchers -->|MEV Share| Validators
+    
+    Validators -->|Energy Cost| Mining[Mining Ops]
+    Validators -->|Hardware| Cloud[Cloud Providers]
+    Validators -->|Slashing Risk| Protocol
+    
+    Validators -->|Returns| Stakers[Token Stakers]
+    Validators -->|Centralization| Pools[Staking Pools]
+    
+    style Users fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Validators fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Protocol fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Searchers fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Stakers fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Pools fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+ ```
+
+ **Consensus & Reward Model Comparison:**
+
+ | Chain | Consensus Type | Block Rewards | Fee Model | MEV Exposure | Centralization Pressure |
+ |-------|----------------|---------------|-----------|--------------|------------------------|
+ | **Bitcoin** | PoW | Halving subsidy + fees | Simple fee market | Low | ASIC mining pools |
+ | **Ethereum** | PoS | Inflation + fees + MEV | EIP-1559 base + priority | High | Liquid staking protocols |
+ | **Solana** | PoH + PoS | Inflation + fees | Congestion-based | Emerging | Hardware + bandwidth |
+ | **Polkadot** | NPoS | Inflation + fees | Relay + parachain fees | Moderate | Nominated validators |
+ | **Sui** | PoS | Inflation + fees | Object-based fees | Low | Validator hardware |
+ | **Aptos** | PoS | Inflation + fees | Gas-based | Low | Cloud infrastructure |
 
  ### Q3. Causal Chain – From Scalability Debates to Parallel Execution and Multi-Chain Designs (2013–2025)
 
@@ -128,15 +237,70 @@
 
  **Answer** (≈210 words):
 
- Between 2013–2017, Bitcoin’s block-size debates exposed a deep split between those prioritizing on-chain throughput and those prioritizing decentralization and verifiability. The resulting compromise (SegWit, modest block-size increase, off-chain scaling such as Lightning) preserved Bitcoin’s conservative design but left little room for radical architectural experiments on the base layer [Ref: A1]. Ethereum, facing state growth and gas-limit constraints, explored sharding and rollups but maintained a single canonical execution environment (EVM) and relatively small block gas limits for years [Ref: A2].
+ Between **2013–2017**, Bitcoin's **block-size debates** exposed a deep split between those prioritizing on-chain throughput and those prioritizing decentralization and verifiability. The resulting compromise (**SegWit**, modest block-size increase, off-chain scaling such as **Lightning**) preserved Bitcoin's conservative design but left little room for radical architectural experiments on the base layer [Ref: A1]. Ethereum, facing **state growth** and **gas-limit constraints**, explored sharding and rollups but maintained a single canonical execution environment (**EVM**) and relatively small block gas limits for years [Ref: A2].
 
- Developers who wanted dramatically higher throughput or different execution models increasingly chose to build new L1s. Polkadot’s relay-chain-plus-parachains concept arose from research into heterogeneous shards governed by a shared security layer and on-chain governance [Ref: A4]. Solana pursued a monolithic, high-throughput design with PoH-assisted ordering and Sealevel, assuming powerful hardware and fast networks [Ref: A3]. Research into safe resource-oriented programming and parallel execution culminated in the Move language and Block-STM/object-centric designs adopted by Aptos and Sui after 2019 [Ref: A5][Ref: A6].
+ Developers who wanted dramatically higher throughput or different execution models increasingly chose to **build new L1s**. Polkadot's **relay-chain-plus-parachains** concept arose from research into heterogeneous shards governed by a **shared security layer** and **on-chain governance** [Ref: A4]. Solana pursued a **monolithic, high-throughput design** with **PoH-assisted ordering** and **Sealevel**, assuming powerful hardware and fast networks [Ref: A3]. Research into safe resource-oriented programming and parallel execution culminated in the **Move language** and **Block-STM/object-centric designs** adopted by Aptos and Sui after 2019 [Ref: A5][Ref: A6].
 
- Ethereum’s eventual move toward a rollup-centric roadmap and danksharding-style data availability reflects a different compromise: preserve an ecosystem built around the EVM and strong decentralization while outsourcing much execution to L2s. The causal chain shows that social and governance constraints, not just technical possibilities, determined which scalability paths became viable on which chains.
+ Ethereum's eventual move toward a **rollup-centric roadmap** and **danksharding-style data availability** reflects a different compromise: preserve an ecosystem built around the EVM and strong decentralization while outsourcing much execution to L2s. The causal chain shows that **social and governance constraints**, not just technical possibilities, determined which scalability paths became viable on which chains.
 
  **Artifact**: See section 3.1 for milestone alignment between debates and new L1 launches.
 
  **Confidence**: Medium – High-level chronology is well evidenced; precise causal attribution among technical, ideological, and economic motives remains debated.
+
+ **Scalability Debate Causal Chain:**
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    Start[Early L1 Limitations 2013-2017]
+    
+    Start --> BTC[Bitcoin Block Size Wars]
+    Start --> ETH[Ethereum Gas Limit Constraints]
+    
+    BTC --> BTCDec{Governance Decision}
+    BTCDec -->|Conservative Path| SegWit[SegWit + Lightning]
+    BTCDec -->|Radical Path Blocked| NewL1_1[Space for New L1s]
+    
+    ETH --> ETHDec{Scalability Strategy}
+    ETHDec -->|L1 Complexity| Sharding[Sharding Research]
+    ETHDec -->|L2 Focus| Rollups[Rollup-Centric Roadmap]
+    ETHDec -->|Alternative Needed| NewL1_2[Space for New L1s]
+    
+    NewL1_1 --> Solana[Solana 2020]
+    NewL1_1 --> Polkadot[Polkadot 2020]
+    NewL1_2 --> Move[Move Language Research]
+    
+    Solana --> SOLDesign[High Throughput Monolithic]
+    Polkadot --> DOTDesign[Heterogeneous Multi-Chain]
+    Move --> Aptos[Aptos 2022]
+    Move --> Sui[Sui 2023]
+    
+    Aptos --> APTDesign[Block-STM Parallel Execution]
+    Sui --> SUIDesign[Object-Centric Model]
+    
+    Sharding --> DAS[Danksharding + Data Availability]
+    Rollups --> L2Eco[L2 Ecosystem Explosion]
+    
+    style Start fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style BTC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style ETH fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style BTCDec fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style ETHDec fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Solana fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Polkadot fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Aptos fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Sui fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+ ```
 
  ### Q4. Architecture, Data Availability, and Systemic Risk – Ethereum, Polkadot, Solana, Sui, Aptos vs Bitcoin (2016–2025)
 
@@ -158,15 +322,86 @@
 
  **Answer** (≈220 words):
 
- Bitcoin’s base layer exposes a simple model: single asset (BTC), limited scripting, and relatively slow, predictable settlement. Most complexity (exchanges, custodians, sidechains, Lightning) lives off-chain or in separate systems, so systemic failures often originate in intermediaries rather than the consensus protocol [Ref: A1]. In contrast, Ethereum hosts rich DeFi, stablecoins, and, increasingly, rollups that depend on L1 data availability and finality guarantees [Ref: A2]. Failures or delays in L1 data availability, finality, or client diversity can cascade into L2 insolvencies, liquidations, or censorship risks.
+ Bitcoin's base layer exposes a **simple model**: single asset (BTC), limited scripting, and relatively slow, predictable settlement. Most complexity (exchanges, custodians, sidechains, **Lightning**) lives **off-chain** or in separate systems, so systemic failures often originate in **intermediaries** rather than the consensus protocol [Ref: A1]. In contrast, Ethereum hosts **rich DeFi**, stablecoins, and, increasingly, **rollups** that depend on **L1 data availability** and **finality guarantees** [Ref: A2]. Failures or delays in L1 data availability, finality, or **client diversity** can cascade into L2 insolvencies, liquidations, or censorship risks.
 
- Polkadot’s relay chain and parachains provide shared security and standardized cross-chain messaging (XCM). This reduces some bridge risk by avoiding ad-hoc multisig bridges but couples parachain safety to relay-chain governance and validator behavior [Ref: A4][Ref: A7]. Solana, Sui, and Aptos run high-throughput monolithic or semi-modular designs, where outages or consensus bugs can pause the entire chain, affecting all hosted assets and applications [Ref: A3][Ref: A5][Ref: A6]. Their ecosystems rely heavily on a small number of core client implementations and foundation-led coordination during incidents.
+ Polkadot's **relay chain** and **parachains** provide **shared security** and standardized **cross-chain messaging (XCM)**. This reduces some bridge risk by avoiding ad-hoc multisig bridges but couples parachain safety to **relay-chain governance** and validator behavior [Ref: A4][Ref: A7]. Solana, Sui, and Aptos run **high-throughput monolithic** or semi-modular designs, where **outages** or consensus bugs can **pause the entire chain**, affecting all hosted assets and applications [Ref: A3][Ref: A5][Ref: A6]. Their ecosystems rely heavily on a small number of **core client implementations** and foundation-led coordination during incidents.
 
- Cross-chain bridges between these L1s and Ethereum often combine smart-contract logic, external validators, and off-chain oracles, creating complex failure surfaces. Regulators and institutional risk managers increasingly treat bridges and shared-security constructs as critical infrastructure, demanding audits, incident playbooks, and clear responsibility allocation [Ref: A8][Ref: A9].
+ **Cross-chain bridges** between these L1s and Ethereum often combine smart-contract logic, external validators, and off-chain oracles, creating **complex failure surfaces**. Regulators and institutional risk managers increasingly treat bridges and shared-security constructs as **critical infrastructure**, demanding audits, incident playbooks, and clear responsibility allocation [Ref: A8][Ref: A9].
 
  **Artifact**: See section 3.2 for a table summarizing architecture, execution, and risk trade-offs.
 
  **Confidence**: Medium – Architectural patterns are documented; precise probabilities and correlations of systemic events remain uncertain.
+
+ **Systemic Risk Comparison Diagram:**
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    Risk[Systemic Risk Sources]
+    
+    Risk --> Bitcoin[Bitcoin]
+    Risk --> Ethereum[Ethereum]
+    Risk --> Modern[Modern L1s]
+    
+    Bitcoin --> BTCRisk1[Simple Base Layer]
+    Bitcoin --> BTCRisk2[Off-Chain Complexity]
+    BTCRisk2 --> BTCRisk3[Exchange/Custody Risk]
+    BTCRisk2 --> BTCRisk4[Lightning Network Risk]
+    
+    Ethereum --> ETHRisk1[Rich DeFi Ecosystem]
+    Ethereum --> ETHRisk2[L2 Dependencies]
+    ETHRisk1 --> ETHRisk3[Smart Contract Risk]
+    ETHRisk1 --> ETHRisk4[Oracle Dependencies]
+    ETHRisk2 --> ETHRisk5[DA Failures]
+    ETHRisk2 --> ETHRisk6[Bridge Exploits]
+    
+    Modern --> ModRisk1[Polkadot Shared Security]
+    Modern --> ModRisk2[Solana Monolithic]
+    Modern --> ModRisk3[Sui/Aptos Parallel]
+    
+    ModRisk1 --> PolRisk[Relay Chain Failures]
+    ModRisk1 --> XCMRisk[XCM Bridge Risk]
+    
+    ModRisk2 --> SolRisk1[Network Outages]
+    ModRisk2 --> SolRisk2[Client Centralization]
+    
+    ModRisk3 --> NewRisk1[Novel Design Risk]
+    ModRisk3 --> NewRisk2[Ecosystem Maturity]
+    
+    style Risk fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Bitcoin fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Ethereum fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Modern fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style BTCRisk3 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style BTCRisk4 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style ETHRisk3 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style ETHRisk4 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style ETHRisk5 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style ETHRisk6 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style SolRisk1 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style SolRisk2 fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+ ```
+
+ **Data Availability & Cross-Chain Risk Table:**
+
+ | Chain | DA Model | Cross-Chain Approach | Primary Risk Vectors | Mitigation Strategies |
+ |-------|----------|----------------------|---------------------|----------------------|
+ | **Bitcoin** | Full replication | Centralized bridges | Off-chain custody | Conservative base layer |
+ | **Ethereum** | Full nodes + rollup DA | Native bridges + L2s | DA failures, bridge hacks | Client diversity, audits |
+ | **Solana** | Full replication | Wormhole bridge | Network outages | Redundant infrastructure |
+ | **Polkadot** | Relay chain + erasure | XCM native messaging | Relay chain dependency | Shared security model |
+ | **Sui** | Full replication | Native bridges | Novel design bugs | Formal verification |
+ | **Aptos** | Full replication | LayerZero/bridges | Implementation complexity | Move safety guarantees |
 
  ### Q5. Impact, Accountability & Outlook – Architectural Divergence and 1–3 Year Decisions (2025–2028)
 
@@ -188,35 +423,174 @@
 
  **Answer** (≈220 words):
 
- Over 2025–2028, Bitcoin is likely to remain a conservative settlement and collateral asset, with incremental changes (for example soft-forked features, sidechains, or L2s) but no radical base-layer redesign [Ref: A1]. Builders rarely choose Bitcoin L1 for complex applications but may anchor collateral or long-term value there. Ethereum’s PoS + rollup-centric roadmap positions it as the main programmable settlement hub, especially for high-value DeFi, tokenized RWAs, and institution-friendly applications, helped by deep liquidity, tooling, and regulatory attention [Ref: A2][Ref: A7].
+ Over **2025–2028**, Bitcoin is likely to remain a **conservative settlement and collateral asset**, with incremental changes (e.g., soft-forked features, sidechains, or L2s) but no radical base-layer redesign [Ref: A1]. Builders rarely choose Bitcoin L1 for complex applications but may anchor collateral or long-term value there. Ethereum's **PoS + rollup-centric roadmap** positions it as the main **programmable settlement hub**, especially for high-value DeFi, **tokenized RWAs**, and institution-friendly applications, helped by deep liquidity, tooling, and regulatory attention [Ref: A2][Ref: A7].
 
- Solana, Sui, and Aptos target high-throughput, latency-sensitive workloads (for example games, consumer apps, order-book DEXs) where low fees and fast confirmations matter more than extreme decentralization, though outages and governance centralization remain key risks [Ref: A3][Ref: A5][Ref: A6]. Polkadot’s shared-security model may continue to appeal to specialized parachains needing custom execution but preferring not to bootstrap their own validator sets [Ref: A4].
+ Solana, Sui, and Aptos target **high-throughput, latency-sensitive workloads** (e.g., games, consumer apps, order-book DEXs) where **low fees** and **fast confirmations** matter more than extreme decentralization, though **outages** and **governance centralization** remain key risks [Ref: A3][Ref: A5][Ref: A6]. Polkadot's **shared-security model** may continue to appeal to specialized parachains needing custom execution but preferring not to bootstrap their own validator sets [Ref: A4].
 
- For infra teams and custodians, the architectural trend is **modularity**: treat L1s and rollups as pluggable execution and settlement layers, abstracted behind unified key management, compliance, and monitoring stacks. Regulators increasingly look at consensus and validator concentration, MEV practices, and cross-chain risk when writing rules (for example MiCA in the EU, FSA guidelines in Japan), nudging institutional flows toward chains with strong monitoring, transparent governance, and predictable upgrade paths [Ref: A8][Ref: A9].
+ For infra teams and custodians, the architectural trend is **modularity**: treat L1s and rollups as **pluggable execution and settlement layers**, abstracted behind unified **key management**, **compliance**, and **monitoring stacks**. Regulators increasingly look at **consensus and validator concentration**, **MEV practices**, and **cross-chain risk** when writing rules (e.g., **MiCA** in the EU, FSA guidelines in Japan), nudging institutional flows toward chains with strong monitoring, transparent governance, and predictable upgrade paths [Ref: A8][Ref: A9].
 
  **Artifact**: Outlook-oriented impact matrix can be added in future iterations if deeper scenario planning is required.
 
  **Confidence**: Medium – Short- to medium-term trends are grounded in current roadmaps and regulation; competitive dynamics and macro regimes remain uncertain.
 
+ **L1 Role Specialization (2025-2028 Outlook):**
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    Market[L1 Market Segmentation 2025-2028]
+    
+    Market --> Settlement[Settlement & Store of Value]
+    Market --> Programmable[Programmable Settlement Hub]
+    Market --> HighPerf[High-Performance Execution]
+    Market --> Specialized[Specialized Multi-Chain]
+    
+    Settlement --> Bitcoin[Bitcoin]
+    Bitcoin --> BTCUse1[Digital Gold]
+    Bitcoin --> BTCUse2[Macro Collateral]
+    Bitcoin --> BTCUse3[Conservative L2s]
+    
+    Programmable --> Ethereum[Ethereum]
+    Ethereum --> ETHUse1[DeFi Settlement]
+    Ethereum --> ETHUse2[Tokenized RWAs]
+    Ethereum --> ETHUse3[L2 Rollup Hub]
+    Ethereum --> ETHUse4[Institutional DApps]
+    
+    HighPerf --> Solana[Solana]
+    HighPerf --> Sui[Sui]
+    HighPerf --> Aptos[Aptos]
+    
+    Solana --> SolUse[Low-Latency Trading]
+    Sui --> SuiUse[Gaming & Consumer Apps]
+    Aptos --> AptUse[Scalable DeFi]
+    
+    Specialized --> Polkadot[Polkadot]
+    Polkadot --> DotUse1[Custom Parachains]
+    Polkadot --> DotUse2[Shared Security Model]
+    
+    style Market fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style Settlement fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Programmable fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style HighPerf fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Specialized fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Bitcoin fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Ethereum fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Solana fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Sui fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Aptos fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style Polkadot fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+ ```
+
+ **Key Decision Factors (2025-2028):**
+
+ | Decision Type | Bitcoin | Ethereum | Solana/Sui/Aptos | Polkadot |
+ |---------------|---------|----------|------------------|----------|
+ | **Store of Value** | ✅ Primary | ✅ Secondary | ❌ Not suitable | ❌ Not suitable |
+ | **DeFi Settlement** | ❌ Limited | ✅ Primary | ✅ Experimental | ✅ Custom chains |
+ | **High Throughput** | ❌ ~7 TPS | ❌ L1 limited | ✅ Primary | ⚠️ Variable |
+ | **Low Latency** | ❌ 10 min blocks | ❌ 12 sec blocks | ✅ Sub-second | ⚠️ 6-12 sec |
+ | **Regulatory Clarity** | ✅ Commodity | ✅ Evolving | ⚠️ Uncertain | ⚠️ Uncertain |
+ | **Ecosystem Maturity** | ✅ Established | ✅ Deep | ⚠️ Growing | ⚠️ Moderate |
+ | **Infrastructure Support** | ✅ Extensive | ✅ Extensive | ⚠️ Developing | ⚠️ Moderate |
+
  ## 3. Visuals (Timelines, Maps, Networks, Tables)
+
+ ### 3.0 L1 Architecture Trade-off Positioning
+
+ ```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "quadrant1Fill": "#f1f8f4",
+    "quadrant2Fill": "#eff6fb",
+    "quadrant3Fill": "#faf6f0",
+    "quadrant4Fill": "#f3f5f7",
+    "quadrant1TextFill": "#1a1a1a",
+    "quadrant2TextFill": "#1a1a1a",
+    "quadrant3TextFill": "#1a1a1a",
+    "quadrant4TextFill": "#1a1a1a"
+  }
+}}%%
+quadrantChart
+    title L1 Blockchain Positioning: Decentralization vs Throughput
+    x-axis Low Throughput --> High Throughput
+    y-axis Low Decentralization --> High Decentralization
+    quadrant-1 Experimental Zone
+    quadrant-2 Optimal Zone
+    quadrant-3 Limited Utility
+    quadrant-4 Pragmatic Zone
+    Bitcoin: [0.1, 0.9]
+    Ethereum: [0.3, 0.8]
+    Polkadot: [0.5, 0.7]
+    Solana: [0.9, 0.5]
+    Sui: [0.85, 0.4]
+    Aptos: [0.8, 0.45]
+ ```
+
+ **Architecture Trade-off Summary:**
+
+ | L1 | Decentralization | Throughput | Programmability | Security Budget | Complexity |
+ |---|---|---|---|---|---|
+ | **Bitcoin** | ⭐⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+ | **Ethereum** | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+ | **Polkadot** | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+ | **Solana** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+ | **Sui** | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+ | **Aptos** | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+
+ > **Note**: Ratings are approximate and reflect 2025 state. Security budget considers both economic security and battle-testing duration.
+
+ ---
 
  ### 3.1 Timeline – Mainstream L1 Architecture Milestones (2008–2025)
 
  ```mermaid
- timeline
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "cScale0": "#f8f9fa",
+    "cScale1": "#eff6fb",
+    "cScale2": "#f1f8f4",
+    "cScale3": "#f3f5f7"
+  }
+}}%%
+timeline
   title Mainstream L1 Architecture Milestones (2008–2025)
   2008 : Bitcoin white paper introduces UTXO model and Nakamoto consensus
   2009 : Bitcoin mainnet launches
-  2015 : Ethereum mainnet launches with account-based smart-contract platform (EVM)
+  2015 : Ethereum mainnet launches with account-based smart-contract platform EVM
   2016 : Polkadot white paper proposes relay chain and heterogeneous parachains
   2017 : Bitcoin SegWit activation after block-size debates
-  2020 : Polkadot relay chain goes live; Solana mainnet beta (PoH + PoS, Sealevel)
-  2020 : Ethereum Beacon Chain genesis (PoS) as precursor to full transition
-  2021 : First parachains go live on Kusama and Polkadot, enabling heterogeneous multi-chain architecture
+  2020 : Polkadot relay chain goes live
+       : Solana mainnet beta with PoH and PoS Sealevel
+       : Ethereum Beacon Chain genesis PoS precursor
+  2021 : First parachains go live on Kusama and Polkadot
   2022 : Aptos mainnet launches with Move and Block-STM parallel execution
   2023 : Sui mainnet launches with object-centric state model and Move
   2024 : Ethereum Dencun upgrade advances rollup-centric and data-availability roadmap
  ```
+
+ **Key Milestone Categories:**
+ - **2008-2009**: Foundation era (Bitcoin UTXO model)
+ - **2015-2017**: Smart contract expansion (Ethereum EVM, scalability debates)
+ - **2020-2021**: Multi-chain & PoS transition (Polkadot, Solana, Ethereum Beacon)
+ - **2022-2024**: Parallel execution & rollup era (Aptos, Sui, Ethereum Dencun)
 
  ### 3.2 Comparative Architecture & Incentive Table (Bitcoin, Ethereum, Solana, Polkadot, Sui, Aptos)
 
@@ -233,36 +607,36 @@
 
  ### 4.1 Glossary
 
- - **G1. Account-based model** | Ledger model where addresses hold balances and contract state; transactions modify account state directly. | Common in Ethereum, Solana, Aptos. | Related to EVM, smart contracts. | Can complicate parallelization and state pruning.
- - **G2. BFT consensus** | Byzantine Fault Tolerant consensus protocols (for example Tendermint-style, HotStuff variants) used in many PoS systems. | Ensures safety and liveness under bounded faults. | Related to finality, validator sets. | Often assumes partially synchronous networks and smaller validator sets.
- - **G3. Data availability (DA)** | Property that all block data needed to verify state transitions is accessible to verifiers. | Critical for rollups and light clients. | Related to DA sampling, erasure coding. | DA failures can compromise rollup security.
- - **G4. Move language** | Resource-oriented programming language designed for safety and formal reasoning, originally from Libra/Diem; adopted by Aptos and Sui. | Encodes assets as linear resources. | Related to Rust, smart-contract safety. | Newer ecosystem; tooling and audits still maturing [Ref: A5][Ref: A6].
- - **G5. Nakamoto consensus** | Longest-chain PoW consensus introduced by Bitcoin, relying on hash power competition. | Secures Bitcoin and some early chains. | Related to difficulty adjustment, forks. | Energy-intensive; probabilistic finality [Ref: A1].
- - **G6. Object-centric state model** | State model where on-chain objects (for example coins, NFTs) have explicit ownership and may be updated independently, enabling parallelism. | Used by Sui. | Related to UTXO and capability systems. | Requires careful design for shared objects and composability [Ref: A6].
- - **G7. Sharding** | Splitting state and/or execution across multiple shards or chains, often with a coordinating layer. | Underpins Ethereum’s danksharding vision and Polkadot’s parachains. | Related to cross-shard communication. | Complex security and UX trade-offs [Ref: A2][Ref: A4].
- - **G8. UTXO (Unspent Transaction Output)** | Ledger model tracking spendable outputs instead of account balances. | Used by Bitcoin and many early chains. | Related to privacy, stateless verification. | Less expressive smart-contract capabilities by default [Ref: A1].
- - **G9. Validator / Miner extractable value (MEV)** | Additional profit from reordering, inserting, or censoring transactions beyond standard fees. | Present in PoW and PoS systems with rich transaction flows. | Related to PBS, MEV-Boost. | Can centralize power and harm users if unmanaged [Ref: A2].
+ - **G1. Account-based model**: Ledger model where addresses hold balances and contract state; transactions modify account state directly | Common in Ethereum, Solana, Aptos | Related to EVM, smart contracts | Can complicate parallelization and state pruning
+ - **G2. BFT consensus**: Byzantine Fault Tolerant consensus protocols (e.g., Tendermint-style, HotStuff variants) used in many PoS systems | Ensures safety and liveness under bounded faults | Related to finality, validator sets | Often assumes partially synchronous networks and smaller validator sets
+ - **G3. Data availability (DA)**: Property that all block data needed to verify state transitions is accessible to verifiers | Critical for rollups and light clients | Related to DA sampling, erasure coding | DA failures can compromise rollup security
+ - **G4. Move language**: Resource-oriented programming language designed for safety and formal reasoning, originally from Libra/Diem; adopted by Aptos and Sui | Encodes assets as linear resources | Related to Rust, smart-contract safety | Newer ecosystem; tooling and audits still maturing [Ref: A5][Ref: A6]
+ - **G5. Nakamoto consensus**: Longest-chain PoW consensus introduced by Bitcoin, relying on hash power competition | Secures Bitcoin and some early chains | Related to difficulty adjustment, forks | Energy-intensive; probabilistic finality [Ref: A1]
+ - **G6. Object-centric state model**: State model where on-chain objects (e.g., coins, NFTs) have explicit ownership and may be updated independently, enabling parallelism | Used by Sui | Related to UTXO and capability systems | Requires careful design for shared objects and composability [Ref: A6]
+ - **G7. Sharding**: Splitting state and/or execution across multiple shards or chains, often with a coordinating layer | Underpins Ethereum's danksharding vision and Polkadot's parachains | Related to cross-shard communication | Complex security and UX trade-offs [Ref: A2][Ref: A4]
+ - **G8. UTXO (Unspent Transaction Output)**: Ledger model tracking spendable outputs instead of account balances | Used by Bitcoin and many early chains | Related to privacy, stateless verification | Less expressive smart-contract capabilities by default [Ref: A1]
+ - **G9. Validator/Miner Extractable Value (MEV)**: Additional profit from reordering, inserting, or censoring transactions beyond standard fees | Present in PoW and PoS systems with rich transaction flows | Related to PBS, MEV-Boost | Can centralize power and harm users if unmanaged [Ref: A2]
 
  ### 4.2 Tools/Platforms
 
- - **T1. Bitcoin Core (Node client)** | Reference full-node implementation for Bitcoin; validates blocks and transactions; supports wallet and RPC. | Open-source, free. | Millions of users indirectly via wallets and exchanges. | Continuous updates; conservative roadmap. | Key for monitoring Bitcoin consensus and forks. | https://bitcoincore.org
- - **T2. Geth (Execution client)** | Go-based Ethereum execution client; processes EVM transactions and maintains state. | Open-source. | Widely used by validators and archival nodes. | frequent releases (Q-level). | Integrates with consensus clients, tooling, and tracing. | https://geth.ethereum.org
- - **T3. Solana Validator Client (Core implementation)** | Rust-based validator software implementing Solana’s PoH + PoS consensus and Sealevel. | Open-source. | Used by Solana validators worldwide. | Updated frequently to address performance and reliability. | Critical for monitoring network health and outages. | https://docs.solana.com/running-validator
- - **T4. Polkadot/Substrate (Framework)** | Framework for building parachains and other chains in the Polkadot ecosystem. | Open-source. | Used by many parachain teams. | Regular releases coordinated by Web3 Foundation and Parity. | Central to understanding relay-chain/parachain architectures. | https://substrate.io
- - **T5. Sui Node (Validator implementation)** | Node software implementing Sui’s PoS consensus and object-centric execution. | Open-source. | Validators and full nodes run Sui Node. | Updated frequently as ecosystem matures. | Essential for analyzing object-based execution. | https://sui.io
- - **T6. Aptos Node (Validator implementation)** | Node software running Aptos’s PoS consensus and Block-STM engine. | Open-source. | Used by validators and testnet/mainnet operators. | Updated with performance and safety improvements. | Core reference for Block-STM in production. | https://aptoslabs.com
+ - **T1. Bitcoin Core**: Reference full-node implementation for Bitcoin | Validates blocks and transactions; supports wallet and RPC | Open-source, free | Millions of users indirectly via wallets and exchanges | Continuous updates; conservative roadmap | Key for monitoring Bitcoin consensus and forks | https://bitcoincore.org
+ - **T2. Geth (Execution client)**: Go-based Ethereum execution client | Processes EVM transactions and maintains state | Open-source | Widely used by validators and archival nodes | Frequent releases (quarterly) | Integrates with consensus clients, tooling, and tracing | https://geth.ethereum.org
+ - **T3. Solana Validator Client**: Rust-based validator software implementing Solana's PoH + PoS consensus and Sealevel | Open-source | Used by Solana validators worldwide | Updated frequently to address performance and reliability | Critical for monitoring network health and outages | https://docs.solana.com/running-validator
+ - **T4. Polkadot/Substrate**: Framework for building parachains and other chains in the Polkadot ecosystem | Open-source | Used by many parachain teams | Regular releases coordinated by Web3 Foundation and Parity | Central to understanding relay-chain/parachain architectures | https://substrate.io
+ - **T5. Sui Node**: Node software implementing Sui's PoS consensus and object-centric execution | Open-source | Validators and full nodes run Sui Node | Updated frequently as ecosystem matures | Essential for analyzing object-based execution | https://sui.io
+ - **T6. Aptos Node**: Node software running Aptos's PoS consensus and Block-STM engine | Open-source | Used by validators and testnet/mainnet operators | Updated with performance and safety improvements | Core reference for Block-STM in production | https://aptoslabs.com
 
  ### 4.3 Literature/Reports
 
- - **L1. Nakamoto, S. (2008). Bitcoin: A peer-to-peer electronic cash system.** | Original Bitcoin white paper describing UTXO and Nakamoto consensus. | Baseline reference for conservative L1 settlement design [EN].
- - **L2. Buterin, V. (2014). A next-generation smart contract and decentralized application platform.** | Ethereum white paper introducing account-based smart contracts and EVM. | Foundation for general-purpose L1 programmability [EN].
- - **L3. Wood, G. (2016). Polkadot: Vision for a heterogeneous multi-chain framework.** | White paper outlining Polkadot’s relay chain and parachain model. | Key for understanding shared security and heterogeneous sharding [EN].
- - **L4. Yakovenko, A. (2018). Solana: A new architecture for a high performance blockchain.** | Technical paper describing PoH, Sealevel, and Solana’s high-throughput design. | Primary source on monolithic high-throughput L1 trade-offs [EN].
- - **L5. Aptos Labs. (2022). Aptos: A scalable, safe, and reliable L1 blockchain.** | White paper combining Move, Block-STM, and PoS for parallel execution. | Reference for speculative parallel execution in production [EN].
- - **L6. Mysten Labs. (2022). Sui Smart Contracts Platform: Object-centric programming with Move.** | Documentation and technical papers on Sui’s object model and execution. | Explains object-centric state and its implications [EN].
- - **L7. 中国信息通信研究院. (2020). 区块链白皮书（2020年）. 中国信息通信研究院.** | Chinese-language report surveying global blockchain development and architectures. | Provides regional/regulatory perspective and adoption data [ZH].
- - **L8. 火币区块链研究院. (2019). 全球公链评估报告. 火币区块链研究院.** | Evaluation of major public chains including Bitcoin, Ethereum, and newer L1s from a Chinese research institute. | Offers comparative metrics and qualitative assessments [ZH].
- - **L9. Financial Services Agency of Japan. (2019). Guidelines for supervising crypto-asset exchange service providers.** | Regulatory guidance on supervising exchanges and custody. | Useful for understanding how architecture and infra affect regulatory obligations [JA].
+ - **L1. Nakamoto, S. (2008)**: *Bitcoin: A peer-to-peer electronic cash system* | Original Bitcoin white paper describing UTXO and Nakamoto consensus | Baseline reference for conservative L1 settlement design [EN]
+ - **L2. Buterin, V. (2014)**: *A next-generation smart contract and decentralized application platform* | Ethereum white paper introducing account-based smart contracts and EVM | Foundation for general-purpose L1 programmability [EN]
+ - **L3. Wood, G. (2016)**: *Polkadot: Vision for a heterogeneous multi-chain framework* | White paper outlining Polkadot's relay chain and parachain model | Key for understanding shared security and heterogeneous sharding [EN]
+ - **L4. Yakovenko, A. (2018)**: *Solana: A new architecture for a high performance blockchain* | Technical paper describing PoH, Sealevel, and Solana's high-throughput design | Primary source on monolithic high-throughput L1 trade-offs [EN]
+ - **L5. Aptos Labs (2022)**: *Aptos: A scalable, safe, and reliable L1 blockchain* | White paper combining Move, Block-STM, and PoS for parallel execution | Reference for speculative parallel execution in production [EN]
+ - **L6. Mysten Labs (2022)**: *Sui Smart Contracts Platform: Object-centric programming with Move* | Documentation and technical papers on Sui's object model and execution | Explains object-centric state and its implications [EN]
+ - **L7. 中国信息通信研究院 (2020)**: *区块链白皮书（2020年）* | Chinese-language report surveying global blockchain development and architectures | Provides regional/regulatory perspective and adoption data [ZH]
+ - **L8. 火币区块链研究院 (2019)**: *全球公链评估报告* | Evaluation of major public chains including Bitcoin, Ethereum, and newer L1s from a Chinese research institute | Offers comparative metrics and qualitative assessments [ZH]
+ - **L9. Financial Services Agency of Japan (2019)**: *Guidelines for supervising crypto-asset exchange service providers* | Regulatory guidance on supervising exchanges and custody | Useful for understanding how architecture and infra affect regulatory obligations [JA]
 
  ### 4.4 Citations (APA 7th + language tags)
 
