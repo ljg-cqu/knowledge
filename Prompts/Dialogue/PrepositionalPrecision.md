@@ -358,18 +358,17 @@ Check for opportunities to simplify:
 
 ## Prepositional Precision Framework (Advanced Reference)
 
-**→ Deep dive into all 8 categories. Most users don't need this level of detail.**
+**→ Deep dive into all 7 categories. Most users don't need this level of detail.**
 
-Eight MECE categories covering all essential prepositional patterns:
+Seven MECE categories covering all essential prepositional patterns:
 
 **I. Spatial Prepositions** (90% usage) - Location and position  
 **II. Temporal Prepositions** (85% usage) - Time relationships  
 **III. Directional Prepositions** (70% usage) - Movement and direction  
 **IV. Abstract Prepositions** (75% usage) - Conceptual relationships  
-**V. Fixed Collocations** (80% usage) - Verb/Adjective/Noun + Preposition  
-**VI. Idiomatic Expressions** (60% usage) - Natural prepositional phrases  
-**VII. Conciseness Patterns** (70% usage) - Eliminating verbose phrases  
-**VIII. Common Errors** (50% usage) - Frequent mistakes to avoid
+**V. Fixed Collocations** (80% usage) - Verb/Adjective/Noun + Preposition (applies I-IV)  
+**VI. Idiomatic Expressions** (60% usage) - Natural prepositional phrases (extends II)  
+**VII. Efficiency Patterns** (70% usage) - Eliminating verbosity and errors
 
 ---
 
@@ -720,6 +719,8 @@ Eight MECE categories covering all essential prepositional patterns:
 
 **Purpose**: Correct verb/adjective/noun + preposition pairings (80% of collocation usage)
 
+**Note**: These patterns apply core prepositions from Sections I-IV in fixed grammatical relationships. The preposition itself isn't arbitrary—learn the pairing, not just the preposition.
+
 ### Verb + Preposition
 
 **High-frequency patterns**:
@@ -920,6 +921,8 @@ Eight MECE categories covering all essential prepositional patterns:
 
 **Purpose**: Natural prepositional phrases native speakers use (60% of idiomatic usage)
 
+**Note**: For basic temporal prepositions (at/on/in), see Section II. These are idiomatic phrases that extend beyond simple time expressions.
+
 ### Time Idioms
 
 **At first** vs **At last** vs **In the end** vs **Finally**
@@ -1025,25 +1028,23 @@ Eight MECE categories covering all essential prepositional patterns:
 
 ---
 
-## VII. Conciseness Patterns
+## VII. Efficiency Patterns
 
-**Purpose**: Eliminate verbose prepositional phrases (70% of verbosity)
+**Purpose**: Eliminate verbosity and avoid common errors (70% of clarity improvements)
 
-### Common Wordy Phrases to Eliminate
+### A. Verbose Phrases → Concise Alternatives
 
 **In terms of** → (omit or use specific word)
 ```
 ✗ In terms of performance, the system is slow
 ✓ The system performs poorly
 ✓ The system's performance is poor
-✓ Performance-wise, the system is slow (informal)
 ```
 
-**With regard to / With respect to / In regard to** → about / regarding / concerning
+**With regard to / In regard to** → about / regarding
 ```
 ✗ With regard to your question about databases...
 ✓ Regarding your database question...
-✓ About your database question...
 ```
 
 **In the event of / In the event that** → if
@@ -1056,47 +1057,36 @@ Eight MECE categories covering all essential prepositional patterns:
 ```
 ✗ This is designed for the purpose of testing
 ✓ This is designed for testing
-✓ This is designed to test
 ```
 
 **By means of** → by / using / with
 ```
 ✗ Authenticate by means of OAuth
 ✓ Authenticate using OAuth
-✓ Authenticate with OAuth
 ```
 
-**In order to** → to (when meaning is clear)
+**In order to** → to (when clear)
 ```
 ✗ In order to improve performance, we cache data
 ✓ To improve performance, we cache data
 ```
 
-**At this point in time / At the present time** → now / currently
+**At this point in time** → now / currently
 ```
 ✗ At this point in time, the feature is unavailable
 ✓ Currently, the feature is unavailable
-✓ The feature is currently unavailable
 ```
 
-**Due to the fact that / Owing to the fact that** → because / since
+**Due to the fact that** → because / since
 ```
 ✗ Due to the fact that the API is slow...
 ✓ Because the API is slow...
-✓ Since the API is slow...
 ```
 
-**For the reason that** → because
-```
-✗ We chose React for the reason that it's performant
-✓ We chose React because it's performant
-```
-
-**In spite of the fact that / Despite the fact that** → although / though / despite
+**In spite of the fact that** → although / despite
 ```
 ✗ In spite of the fact that we tested thoroughly...
 ✓ Although we tested thoroughly...
-✓ Despite thorough testing...
 ```
 
 **During the course of** → during
@@ -1105,32 +1095,25 @@ Eight MECE categories covering all essential prepositional patterns:
 ✓ During the project...
 ```
 
-**In the process of** → (currently) + verb + -ing
+**In the process of** → verb + -ing
 ```
 ✗ We are in the process of migrating
-✓ We are migrating
-✓ We're currently migrating
+✓ We're migrating
 ```
 
-**A large/great number of** → many
+**A large number of** → many
 ```
 ✗ A large number of users reported issues
 ✓ Many users reported issues
 ```
 
-**In close proximity to** → near / close to
+**In close proximity to** → near
 ```
 ✗ The server is in close proximity to the database
 ✓ The server is near the database
 ```
 
----
-
-## VIII. Common Errors
-
-**Purpose**: Avoid frequent prepositional mistakes (50% error rate in non-native writing)
-
-### Redundant Prepositions
+### B. Redundant Prepositions → Eliminate
 
 **Where... at** → **Where...**
 ```
@@ -1138,19 +1121,11 @@ Eight MECE categories covering all essential prepositional patterns:
 ✓ Where's the file?
 ```
 
-**Where... to** (in some contexts)
-```
-✗ Where are we going to?
-✓ Where are we going?
-```
-
-**Inside of** (literal location) → **Inside**
+**Inside of** (literal) → **Inside**
 ```
 ✗ Inside of the container
 ✓ Inside the container
 ```
-
-Note: "Inside of" is acceptable in temporal contexts (inside of an hour)
 
 **Off of** → **Off**
 ```
@@ -1158,29 +1133,26 @@ Note: "Inside of" is acceptable in temporal contexts (inside of an hour)
 ✓ Get off the server
 ```
 
-**Outside of** (literal location) → **Outside**
+**Outside of** (literal) → **Outside**
 ```
 ✗ Outside of the building
 ✓ Outside the building
 ```
 
-Note: "Outside of" is acceptable meaning "except for" (outside of work hours)
+### C. Missing/Incorrect Prepositions
 
-### Missing Prepositions
-
-**Discuss** (transitive, no preposition needed)
+**Discuss** (transitive - no preposition)
 ```
 ✗ Let's discuss about the issue
 ✓ Let's discuss the issue
 ```
 
-**Enter** (transitive)
+**Enter** (transitive - no preposition for physical space)
 ```
 ✗ Enter into the room
 ✓ Enter the room
+Note: "Enter into" correct for agreements
 ```
-
-Note: "Enter into" is correct for agreements (enter into a contract)
 
 **Reach** (transitive)
 ```
@@ -1188,49 +1160,10 @@ Note: "Enter into" is correct for agreements (enter into a contract)
 ✓ Reach the conclusion
 ```
 
-**Approach** (transitive)
-```
-✗ Approach to the problem
-✓ Approach the problem
-```
-
 **Marry** (transitive)
 ```
 ✗ Marry with someone
 ✓ Marry someone
-```
-
-### Wrong Prepositions
-
-**Explanation for** (not ~~of~~)
-```
-✗ An explanation of why it failed
-✓ An explanation for why it failed
-✓ An explanation of how it works (how is acceptable)
-```
-
-**Comply with** (not ~~to~~)
-```
-✗ Comply to regulations
-✓ Comply with regulations
-```
-
-**Conform to** (not ~~with~~)
-```
-✗ Conform with standards
-✓ Conform to standards
-```
-
-**Prior to** vs **Before** (prior to is formal)
-```
-✓ Prior to deployment, test thoroughly
-✓ Before deployment, test thoroughly (less formal, preferred)
-```
-
-**Different from** (not ~~than~~ in formal writing)
-```
-✗ Different than the previous version (informal)
-✓ Different from the previous version (formal)
 ```
 
 ---
@@ -1362,16 +1295,17 @@ arrived at the office at 9 AM.
 
 ## Summary
 
-This framework provides **prepositional precision patterns** organized into **8 MECE categories**:
+This framework provides **prepositional precision patterns** organized into **7 MECE categories**:
 
 **I. Spatial Prepositions** (3 core: at/on/in + distinctions) - Location and position  
 **II. Temporal Prepositions** (3 core: at/on/in + duration/deadline) - Time relationships  
 **III. Directional Prepositions** (5 patterns: to/toward/into/from/through) - Movement and direction  
 **IV. Abstract Prepositions** (5 patterns: about/on/of/for/with) - Conceptual relationships  
-**V. Fixed Collocations** (3 types: verb+prep, adj+prep, noun+prep) - Required pairings  
-**VI. Idiomatic Expressions** (4 types: time/manner/degree/state) - Natural phrases  
-**VII. Conciseness Patterns** (15+ wordy phrases) - Eliminate verbosity  
-**VIII. Common Errors** (3 types: redundant/missing/wrong) - Avoid mistakes  
+**V. Fixed Collocations** (3 types: verb+prep, adj+prep, noun+prep) - Applications of I-IV in fixed pairings  
+**VI. Idiomatic Expressions** (4 types: time/manner/degree/state) - Natural phrases beyond basics  
+**VII. Efficiency Patterns** (3 types: verbose→concise, redundant→eliminate, missing/incorrect→fix) - Error avoidance  
+
+**Structure**: Sections I-IV are foundational (core prepositions), V-VII are applied (usage patterns)
 
 **Coverage**: ~95% of prepositional usage in technical/professional English
 
