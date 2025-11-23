@@ -3,9 +3,9 @@
    
       **Engineer:** Mm-hmm, right, while Bitcoin stayed on PoW, mining blocks with hash power. If we lump them together, we erase that consensus shift.
    
-      **Architect:** Exactly. And that shift really matters—validator incentives, security assumptions, and validator set structure all changed on Ethereum.
+      **Architect:** Exactly. And that shift really matters—validator incentives, security assumptions, and validator set structure all changed in Ethereum.
    
-      **Analyst:** Plus the energy profile is completely different. Post‑Merge estimates put Ethereum's energy use down by roughly 99.9% compared to PoW.
+      **Analyst:** Plus the energy profile is completely different. Post‑Merge estimates put Ethereum's energy use down by roughly 99.9% compared with PoW.
    
       **Engineer:** That's a massive drop.
    
@@ -18,7 +18,7 @@
    
       **Engineer:** Right.
    
-      **Analyst:** And the big scaling levers they call out are things like EIP‑4844 and future data‑sharding (danksharding), which make it cheaper for rollups to post data back to L1.
+      **Analyst:** And the big scaling levers they call out include EIP‑4844 and future data‑sharding (danksharding), which make it cheaper for rollups to post data back to L1.
    
       **Engineer:** Mm-hmm. Meanwhile, base‑layer TPS is still in the same order of magnitude post‑Merge. It didn't suddenly jump to tens of thousands.
    
@@ -33,14 +33,14 @@
    
       **Analyst:** That account model is what enables general‑purpose smart contracts and complex dApps. You mutate account balances and contract storage directly.
    
-      **Engineer:** True. And it also brings trade‑offs: more state bloat and more complex synchronization across nodes compared with just tracking UTXOs.
+      **Engineer:** True. And it also brings trade‑offs: more state bloat and more complex synchronization across nodes compared to just tracking UTXOs.
    
       **Architect:** Exactly. So the corrected description is: Ethereum doesn't simply stack scripts on a UTXO model—it adopts an account‑based global state with Turing‑complete contracts, which is a fundamental architectural divergence from Bitcoin.
 
 1. Q: When we talk about Layers 0, 1, 2, and 3 in today's multi‑layer ecosystem, is it fair to say they all mainly exist just to host dApps, and that interoperability and security are handled entirely at Layer 1?
    A: **Architect:** Good question. Hmm... That collapses too many roles. The investigations describe a more specialized stack.
    
-      **Analyst:** Right. Layer 0—think Polkadot or Cosmos—is about interoperability and shared security across multiple chains, not just another dApp host.
+      **Analyst:** Right. Layer 0—think of Polkadot or Cosmos—is about interoperability and shared security across multiple chains, not just another dApp host.
    
       **Engineer:** Got it. Layer 1 is the base: it runs consensus and settlement for the primary chain.
    
@@ -59,7 +59,7 @@
    
       **Analyst:** Mm-hmm. Validators still stake and participate in PoS‑style voting. PoH just gives them a shared time ordering for blocks and transactions.
    
-      **Engineer:** Exactly. The throughput advantage comes from that PoS+PoH combination plus other pipeline pieces—Gulf Stream, Turbine, Sealevel parallel execution—not from "abandoning PoS."
+      **Engineer:** Exactly. The throughput advantage comes from the PoS+PoH combination plus other pipeline pieces—Gulf Stream, Turbine, Sealevel parallel execution—not from "abandoning PoS."
    
       **Architect:** Got it. So the accurate summary is: Solana is a high‑throughput PoS chain augmented by PoH for ordering, not a pure PoH chain.
 
@@ -81,7 +81,7 @@
    
       **Engineer:** Mm-hmm. Projects bond DOT through parachain auctions to tap into that shared validator security on the relay chain.
    
-      **Architect:** Exactly. Parachains are logically sovereign in terms of their state machines and business logic, but they're not sovereign in security assumptions—they inherit security from the relay chain.
+      **Architect:** Exactly. Parachains are logically sovereign regarding their state machines and business logic, but they're not sovereign in security assumptions—they inherit security from the relay chain.
    
       **Analyst:** Got it. So the right framing is that Polkadot is explicitly architected around shared security plus native interoperability via things like XCMP, not around every chain bootstrapping its own security from scratch.
 
@@ -112,7 +112,7 @@
 1. Q: After EIP‑4844, I've heard claims that optimistic and zk rollups stopped depending on Ethereum's security and now rely entirely on their off‑chain provers, using L1 only as a convenience checkpoint. Does that match the rollup‑centric roadmap?
    A: **Analyst:** Good question. Not according to the materials. They keep stressing that rollups execute off‑chain but lean on Ethereum for security and data availability.
    
-      **Engineer:** Right. EIP‑4844 comes in as a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it doesn't remove the dependence on Ethereum's consensus.
+      **Engineer:** Right. EIP‑4844 is a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it doesn't remove the dependence on Ethereum's consensus.
    
       **Architect:** Rollups still post transaction data and proofs back to L1 so that any honest participant can reconstruct state and enforce correct exits.
    

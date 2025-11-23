@@ -46,7 +46,7 @@
 1. Q: For a new institutional blockchain or subnet, we have to choose a consensus family—PoW,
    longest-chain PoS, BFT-style PoS, or hybrids like PoH-assisted PoS or Snow consensus. How should we
    decide what to adopt and which trade-offs to accept?
-   A: **Architect:** Good question. Let me think... I would start from the required finality profile and threat model. If we need
+   A: **Architect:** Good question. Let me think... I would start with the required finality profile and threat model. If we need
    deterministic finality in seconds for exchange-style or institutional settlement, we should prioritize
    BFT-style PoS, like Tendermint-like or AptosBFT-like designs.
 
@@ -189,7 +189,7 @@
 1. Q: For a latency-sensitive trading or gaming platform, should we deploy on a monolithic
    high-throughput chain like Solana or on a modular stack such as Ethereum L2s, Polkadot parachains, or
    Cosmos IBC? How do we compare the options and decide?
-   A: **Product Lead:** Good question. Let's start from user-visible latency and uptime requirements.
+   A: **Product Lead:** Good question. Let's start with user-visible latency and uptime requirements.
 
    **Architect:** Right. If we truly need sub-second confirmations and tight event loops, the monolithic
    high-throughput chains look attractive. But we have to price in their historical outage patterns and

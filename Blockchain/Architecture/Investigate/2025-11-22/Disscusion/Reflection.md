@@ -67,7 +67,7 @@
 
    **SRE:** Mm-hmm. And our own SLOs—latency, uptime, fee ceilings—map to specific points on that surface. A chain can be "good" in the abstract but wrong for our target SLOs.
 
-   **Engineer A:** Exactly. So instead of asking "Is it secure and scalable?" we ask "Where on the trilemma surface does this chain actually live for our constraints?"
+   **Engineer A:** Exactly. So instead of asking "Is it secure and scalable?" we ask "Where on the trilemma surface does this chain actually live given our constraints?"
    
    **Engineer B:** Oh! That shifts it from binary pass/fail to fit-for-purpose evaluation.
    
@@ -138,7 +138,7 @@
 
    **Researcher:** Right. Move's resource model and linear types make "asset can't be duplicated or lost" a default property instead of an after‑thought.
 
-   **Security Engineer:** Which changes how I view audits: on EVM I rely heavily on auditors catching pattern‑based issues; on Move I expect language‑level guarantees plus formal proofs for critical modules.
+   **Security Engineer:** Which changes how I view audits: with EVM I rely heavily on auditors catching pattern‑based issues; with Move I expect language‑level guarantees plus formal proofs for critical modules.
 
    **Risk Lead:** And for "enterprise‑ready" platforms, I'm starting to weigh built‑in safety properties and verification tooling almost as highly as raw ecosystem size.
    
@@ -179,7 +179,7 @@
 
    **Researcher:** Do you still treat bridged assets as equivalent to native ones?
 
-   **Security Engineer:** Much less. I think in terms of wrapped claims secured by a particular governance and key‑management setup.
+   **Security Engineer:** Much less. I think of them as wrapped claims secured by a particular governance and key‑management setup.
 
    **Risk Lead:** Mm-hmm. And when reviewing documentation or code, I'm scanning for red‑flag patterns: opaque upgraders, centralized guardians, or poorly specified failure procedures.
    
@@ -253,7 +253,7 @@
 
    **Architect:** For example?
 
-   **Cryptographer:** Hmm... [pause] SNARKs for succinct verification in constrained environments, STARKs where transparency and post‑quantum hints matter, and no‑ZK when simplicity and auditability beat privacy.
+   **Cryptographer:** Hmm... [pause] SNARKs for succinct verification in constrained environments, STARKs when transparency and post‑quantum hints matter, and no‑ZK when simplicity and auditability beat privacy.
 
    **Policy Lead:** Interesting. And ZK clearly reshapes the trade‑offs between transparency, compliance, and user privacy.
 
@@ -281,7 +281,7 @@
 1. Q: The materials emphasize that different architectures are converging toward role specializations—Bitcoin as settlement, Ethereum as rollup hub, Solana/Sui/Aptos for high‑throughput workloads, Polkadot/Cosmos for multi‑chain. How does this specialization story change your view of winner‑take‑all narratives?
    A: **Strategist:** It weakens the idea that one chain will dominate everything.
 
-   **Architect:** Right. Instead, I'm thinking in terms of complementary roles: settlement, execution, interoperability.
+   **Architect:** Right. Instead, I'm thinking about complementary roles: settlement, execution, interoperability.
 
    **Strategist:** Exactly. That pushes me to design portfolios and system architectures that deliberately leverage multiple specialized roles rather than forcing everything onto one platform.
 

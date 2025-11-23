@@ -1,5 +1,5 @@
 1. Q: For this new blockchain platform, we have to choose a base architecture family—UTXO-style settlement, account-based smart contracts, or Move-style object/resource models. How should we think about selection strategies instead of just betting on one model?
-   A: **Architect:** Hmm, good question. I'd start from a dual-layer view. Keep a conservative UTXO base layer purely for final settlement, and hang an account-based contract hub or rollup off of it for programmability.
+   A: **Architect:** Hmm, good question. I'd start from a dual-layer view. Keep a conservative UTXO base layer purely for final settlement, and hang an account-based contract hub or rollup off it for programmability.
 
       **Protocol Researcher:** Right—that Dual-Layer UTXO + Contract Hub setup lets UTXO handle high-value transfers with simple scripts, while the execution layer can evolve faster and carry most of the smart-contract risk.
 
@@ -75,7 +75,7 @@
 
       **Consensus Engineer:** Exactly. Narrow latency-critical paths without permanently centralizing power.
 
-      **Geography Specialist:** Mm-hmm. We should also enforce Geo-Aware Committees. Explicitly construct consensus committees that span minimum numbers of regions and providers, and bake those constraints into leader selection and committee rotation.
+      **Geography Specialist:** Mm-hmm. We should also enforce Geo-Aware Committees. Explicitly construct consensus committees that span a minimum number of regions and providers, and bake those constraints into leader selection and committee rotation.
 
       **Risk Officer:** Good point. That makes geographic diversity a protocol invariant instead of a vague aspiration.
 
