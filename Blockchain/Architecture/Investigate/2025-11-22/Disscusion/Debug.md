@@ -16,6 +16,41 @@
 
 ### Key Comparison: Bitcoin vs Ethereum
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    subgraph Bitcoin["Bitcoin (PoW)"]
+        A[Hash Power Mining] --> B[Computational Difficulty]
+        B --> C[High Energy Use]
+        C --> D[Mining Rewards + Fees]
+    end
+    
+    subgraph Ethereum["Ethereum Post-Merge (PoS)"]
+        E[Validator Staking] --> F[Economic Stake at Risk]
+        F --> G[99.9% Energy Reduction]
+        G --> H[Staking Rewards + Fees]
+    end
+    
+    Bitcoin --> I{Different Architectures}
+    Ethereum --> I
+    
+    I --> J[Not Twins]
+    
+    style Bitcoin fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Ethereum fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
 | Aspect | Bitcoin | Ethereum (Post-Merge 2022) |
 |--------|---------|---------------------------|
 | **Consensus** | Proof-of-Work (PoW) | Proof-of-Stake (PoS) |
@@ -249,6 +284,51 @@ graph TD
 
 ### Solana Architecture Components
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Solana High-Throughput Architecture] --> B[Proof-of-Stake]
+    A --> C[Proof-of-History]
+    A --> D[Pipeline Optimizations]
+    
+    B --> E[Core Consensus]
+    B --> F[Validator Staking]
+    
+    C --> G[Cryptographic Clock]
+    C --> H[Event Ordering]
+    
+    D --> I[Gulf Stream]
+    D --> J[Turbine]
+    D --> K[Sealevel]
+    
+    I --> L[Transaction Forwarding]
+    J --> M[Block Propagation]
+    K --> N[Parallel Execution]
+    
+    E --> O[Combined Result]
+    G --> O
+    L --> O
+    M --> O
+    N --> O
+    
+    O --> P[High Throughput]
+    
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
 | Component | Role | Type |
 |-----------|------|------|
 | **Proof-of-Stake** | Consensus mechanism | Core security |
@@ -276,6 +356,42 @@ graph TD
 **Analyst:** Makes sense. So the corrected analysis is: Solana's high‑throughput architecture has historically been fragile under stress, with outages tied to bugs and congestion, not to PoW‑like finality delays.
 
 ### Actual Causes of Solana Outages
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Solana Outages 2021-2023] --> B[Actual Root Causes]
+    A --> C[NOT the Causes]
+    
+    B --> D[Validator Client Bugs]
+    B --> E[Transaction Floods]
+    B --> F[Pipeline Stress]
+    
+    D --> G[Software Implementation Issues]
+    E --> H[Bot-Driven Spam]
+    F --> I[Adversarial Load Conditions]
+    
+    C --> J[Slow Probabilistic Finality]
+    C --> K[Bitcoin-Style PoW Delays]
+    
+    L[Mitigation] --> M[Firedancer Client]
+    M --> N[Strengthen Implementation]
+    M --> O[Pipeline Robustness]
+    
+    style B fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style C fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style M fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
 
 **Root causes:**
 - **Validator client bugs** in software implementation
@@ -306,6 +422,50 @@ graph TD
 **Analyst:** Got it. So the right framing is that Polkadot is explicitly architected around shared security plus native interoperability via things like XCMP, not around every chain bootstrapping its own security from scratch.
 
 ### Polkadot Shared Security Model
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    RC[Relay Chain Validators] --> SEC[Shared Security]
+    
+    SEC --> P1[Parachain 1]
+    SEC --> P2[Parachain 2]
+    SEC --> P3[Parachain 3]
+    SEC --> P4[Parachain N]
+    
+    P1 --> L1[Custom Logic]
+    P1 --> S1[Custom State]
+    
+    P2 --> L2[Custom Logic]
+    P2 --> S2[Custom State]
+    
+    P3 --> L3[Custom Logic]
+    P3 --> S3[Custom State]
+    
+    P1 <-->|XCMP| P2
+    P2 <-->|XCMP| P3
+    P3 <-->|XCMP| P4
+    
+    BOND[Projects Bond DOT] --> AUC[Parachain Auctions]
+    AUC --> SEC
+    
+    style RC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style SEC fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style P1 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P2 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P3 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style P4 fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
 
 **How it actually works:**
 - **Relay chain validators** collectively secure **all parachains**
@@ -339,6 +499,41 @@ graph TD
 
 ### Bridge Security Analysis (2021-2022)
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    subgraph Multisig["Custodial/Multisig Bridges"]
+        A[User Assets] --> B[Locked by Multisig]
+        B --> C[Small Validator Set]
+        C --> D[Control Keys]
+        D -->|Compromised| E[Massive Losses]
+        E --> F[Ronin, Wormhole, Poly]
+    end
+    
+    subgraph IBC["IBC Light-Client Model"]
+        G[User Assets] --> H[On-Chain Light Client]
+        H --> I[Merkle Proofs]
+        I --> J[No Key Custody]
+        J --> K[Trust-Minimized]
+        K --> L[Cosmos IBC]
+    end
+    
+    style E fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style K fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Multisig fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style IBC fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
 **Major bridge hacks (highest losses):**
 - **Ronin, Wormhole, Poly Network**: Custodial/multisig bridges
 - **Attack vector**: Compromised keys, low signature thresholds
@@ -369,6 +564,43 @@ graph TD
 
 ### IBC Compatibility Requirements
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Blockchain Wants IBC] --> B{Compatible BFT?}
+    
+    B -->|Yes| C[Implement IBC Modules]
+    B -->|No| D[Significant Changes Required]
+    
+    C --> E[Add Light-Client Logic]
+    E --> F[Tendermint-Style Verification]
+    F --> G[Join Cosmos Ecosystem]
+    
+    D --> H[Not Universal Bridge]
+    
+    G --> I[Trust-Minimized Interop]
+    
+    J[Cosmos Chains] --> G
+    K[Related BFT Chains] --> G
+    
+    L[Major L1s Non-BFT] --> H
+    
+    style B fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style G fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style H fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style I fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
 **Design foundation:**
 - Built around **Tendermint-style BFT** consensus
 - Requires chains to implement **IBC modules**
@@ -395,6 +627,35 @@ graph TD
 **Analyst:** Exactly. That's the whole point of "inheriting security from Ethereum": users can rely on L1 consensus and data availability, not just trust the off‑chain operator.
 
 **Architect:** So the corrected framing is: cheaper blobs make Ethereum‑secured rollups more scalable; they do not turn Ethereum into an optional convenience layer.
+
+### Rollup Security Model: L1 Dependency
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+sequenceDiagram
+    participant User
+    participant Rollup as Rollup (L2)
+    participant Ethereum as Ethereum L1
+    
+    User->>Rollup: Submit transaction
+    Rollup->>Rollup: Execute off-chain
+    Rollup->>Ethereum: Post tx data + proofs (via blobs)
+    Note over Ethereum: Data availability guaranteed
+    Ethereum->>Ethereum: Store commitment on-chain
+    Note over Ethereum: Security anchored to L1
+    Ethereum-->>User: State reconstructable by anyone
+    Note over User: Can enforce correct exits via L1
+```
 
 ### EIP-4844 Reality Check
 
@@ -425,6 +686,41 @@ graph TD
 **Architect:** So the fix is to say that Move‑based blockchains purposely diverge from EVM's account storage model, encoding ownership and resource constraints in the type system. That's a major architectural shift, not a minor detail.
 
 ### Move vs EVM Storage Models
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph LR
+    subgraph EVM["EVM Storage Model"]
+        A[Global Account Map] --> B[Key-Value Pairs]
+        B --> C[Generic Storage]
+        C --> D[Runtime Type Checks]
+        D --> E[Implicit Ownership]
+        E --> F[Limited Parallelism]
+    end
+    
+    subgraph Move["Move Storage Model"]
+        G[Resource-Oriented] --> H[Linear Resources]
+        H --> I[Explicit Ownership]
+        I --> J[Compile-Time Guarantees]
+        J --> K[Type System Encoding]
+        K --> L[Safe Parallel Execution]
+    end
+    
+    style EVM fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style Move fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style L fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
 
 | Aspect | EVM Chains | Move-Based Chains (Aptos, Sui) |
 |--------|------------|--------------------------------|
@@ -460,6 +756,45 @@ graph TD
 
 ### Block-STM: Parallel Execution Reality
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    A[Transaction Batch] --> B[Optimistic Parallel Execution]
+    B --> C[Track Read/Write Sets]
+    C --> D{Conflicts Detected?}
+    
+    D -->|No Conflicts| E[Commit All Transactions]
+    D -->|Conflicts Found| F[Identify Conflicting Txs]
+    
+    F --> G[Rollback Affected Txs]
+    G --> H[Re-execute in Order]
+    H --> I{Conflicts Resolved?}
+    
+    I -->|Yes| E
+    I -->|No| F
+    
+    E --> J[Deterministic Final State]
+    
+    style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+    style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+    style D fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style G fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style E fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+```
+
 **How Block-STM actually works:**
 1. **Optimistic execution**: Run transactions in parallel speculatively
 2. **State tracking**: Monitor which state each transaction reads/writes
@@ -491,6 +826,47 @@ graph TD
 
 ### Lightning Network vs Rollups: Trust Models
 
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    subgraph Lightning["Lightning Network"]
+        A[User] --> B[Payment Channel]
+        B --> C[Multisig Lock]
+        C --> D[Monitor State]
+        D --> E{Old State?}
+        E -->|Yes| F[Watchtower Reacts]
+        E -->|No| G[Safe]
+        F -->|Timeout| H[User Vigilance Required]
+    end
+    
+    subgraph Rollups["Ethereum Rollups"]
+        I[User] --> J[L2 Execution]
+        J --> K[Post to L1]
+        K --> L[Data + Proofs]
+        L --> M[L1 Consensus]
+        M --> N[Protocol-Enforced]
+        N --> O[Any Participant Verifies]
+    end
+    
+    Lightning --> P[Different Trust Models]
+    Rollups --> P
+    
+    style H fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+    style O fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style Lightning fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+    style Rollups fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
+
 | Aspect | Lightning Network (Bitcoin) | Rollups (Ethereum) |
 |--------|----------------------------|-------------------|
 | **Mechanism** | Payment channels with multisig | Execution off-chain, post to L1 |
@@ -521,6 +897,50 @@ graph TD
 **Architect:** Makes sense. The right conclusion is: robust L1 consensus is necessary but not sufficient. Without careful bridge design, you can end up recreating centralized custodial risk on top of otherwise secure base layers.
 
 ### Bridge Failures vs L1 Security
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+    subgraph Failure["What Failed"]
+        A[Bridge Layer] --> B[Smart Contract Bugs]
+        A --> C[Poor Key Management]
+        A --> D[Low Validator Thresholds]
+        A --> E[Custodial Design]
+        
+        B --> F[Wormhole]
+        C --> G[Ronin 5-of-9]
+        E --> H[Poly Network]
+    end
+    
+    subgraph Working["What Kept Working"]
+        I[L1 Consensus] --> J[Ethereum PoS]
+        I --> K[Solana PoS+PoH]
+        
+        J --> L[Valid Blocks]
+        K --> L
+        
+        M[Base Chain Security] --> N[Operational]
+        M --> O[Secure]
+    end
+    
+    P[Lesson] --> Q[L1 Consensus Necessary]
+    Q --> R[But NOT Sufficient]
+    R --> S[Bridge Design Critical]
+    
+    style Failure fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+    style Working fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    style S fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+```
 
 **What actually failed:**
 - **Bridge layer vulnerabilities**: Smart contract bugs, poor key management
