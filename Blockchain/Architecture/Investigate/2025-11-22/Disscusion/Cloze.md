@@ -465,7 +465,7 @@ graph TD
 
       **Engineer B:** That ">$2 billion" number is why bridge risk is treated ___ systemic, not merely an edge‑case.
 
-      **A:** Exactly. So we should remember: three hacks, more than $___ billion gone.
+      **A:** Exactly. Therefore, we should remember: three hacks, more than $___ billion gone.
 
       **B:** That's substantial.
    
@@ -973,9 +973,9 @@ $$
 1. Q: ___ the rollup‑centric danksharding roadmap, what's the target number ___ data shards, and what ecosystem‑wide throughput do they aim ___ together ___ Layer 2s?
    A: **Architect A:** Roadmap‑wise, the plan is ___ ___ data shards.
 
-      **Researcher B:** Right. And ___ those shards plus rollups, the goal is roughly 100k+ TPS ___ the ecosystem.
+      **Researcher B:** Right. ___ those shards plus rollups, the goal is roughly 100k+ TPS ___ the ecosystem.
 
-      **A:** Exactly. So the shorthand is: 64 shards targeting about 100k+ TPS ___ aggregate.
+      **A:** Exactly. Therefore, the shorthand is: 64 shards targeting about 100k+ TPS ___ aggregate.
 
       **B:** Got it.
    
@@ -1020,7 +1020,7 @@ timeline
 
       **Engineer B:** Right. Things ___ scalability, security, or interoperability, rather ___ purely academic improvements.
 
-      **A:** Exactly. So each generation is a reaction ___ concrete pain points—scalability, security, interoperability—more ___ a quest ___ elegance alone.
+      **A:** Exactly. Thus, each generation is a reaction ___ concrete pain points—scalability, security, interoperability—more ___ a quest ___ elegance alone.
 
       **B:** Makes sense.
    
@@ -1042,7 +1042,7 @@ timeline
 
       **Engineer B:** Right. The reports emphasize that weaknesses ___ bridge design and implementation can still lead ___ multi‑hundred‑million‑dollar losses.
 
-      **A:** Exactly. So even if the L1s are solid, bridge failures remain a systemic risk.
+      **A:** Exactly. Therefore, even if the L1s are solid, bridge failures remain a systemic risk.
 
       **B:** Critical point.
    
@@ -1061,7 +1061,7 @@ timeline
 
       **Engineer B:** Right. Up to roughly $___ billion ___ 2035.
 
-      **A:** Exactly. So the forecast is $332.8 million → $1.83 billion ___ the interoperability market ___ that decade.
+      **A:** Exactly. Therefore, the forecast is $332.8 million → $1.83 billion ___ the interoperability market ___ that decade.
 
       **B:** Significant growth.
    
