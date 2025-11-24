@@ -104,13 +104,17 @@ Academic:  "System stability has not been achieved. This study examines underlyi
 
 **Most frequent patterns for fast application.**
 
-1. **Verbs & Phrasal Verbs** (85%) | ✗ *get* → ✓ *obtain* | ✗ *find out* → ✓ *determine* | [→ Section I]
-2. **Quantifiers** (75%) | ✗ *a lot of* → ✓ *many, numerous* | ✗ *kind of* → ✓ *somewhat* | [→ Section II]
-3. **Intensifiers** (70%) | ✗ *really, very* → ✓ *significantly, considerably* | [→ Section III]
-4. **Contractions** (90%) | ✗ *don't, can't, it's* → ✓ *do not, cannot, it is* | [→ Section IV]
-5. **Personal Pronouns** (65%) | ✗ *I think* → ✓ *This paper argues* | Use "we" judiciously | [→ Section V]
-6. **Latin Abbreviations** (60%) | *e.g., i.e., et al.* - correct usage | [→ Section VI]
-7. **Nominalizations** (55%) | Balance noun vs verb forms for clarity | [→ Section VII]
+| **Pattern** | **Priority** | **Impact** | **Fix** | **Details** |
+|---|---|---|---|---|
+| **Contractions** | P0 | 90% | ✗ *don't, can't, it's* → ✓ *do not, cannot, it is* | [→ Section I] |
+| **Verbs & Phrasal Verbs** | P1 | 85% | ✗ *get* → ✓ *obtain* \| ✗ *find out* → ✓ *determine* | [→ Section II] |
+| **Quantifiers** | P1 | 75% | ✗ *a lot of* → ✓ *many, numerous* \| ✗ *kind of* → ✓ *somewhat* | [→ Section III] |
+| **Intensifiers** | P1 | 70% | ✗ *really, very* → ✓ *significantly, considerably* | [→ Section IV] |
+| **Personal Pronouns** | P2 | 65% | ✗ *I think* → ✓ *This paper argues* \| Use "we" judiciously | [→ Section V] |
+| **Latin Abbreviations** | P2 | 60% | *e.g., i.e., et al.* - correct usage | [→ Section VI] |
+| **Nominalizations** | P2 | 55% | Balance noun vs verb forms for clarity | [→ Section VII] |
+
+**→ Ordered by priority (P0 → P1 → P2) and impact. Fix from top to bottom.**
 
 ---
 
@@ -169,11 +173,44 @@ Academic:  "System stability has not been achieved. This study examines underlyi
 
 **→ Advanced reference. 80% of users stop above. Continue only if needed.**
 
+**→ Sections ordered by priority (P0 → P1 → P2) and impact for systematic application.**
+
 ---
 
-## I. Verb Formality
+## I. Contractions
 
-[← Quick Reference #1 | Priority: P1 | 85% usage]
+[← Quick Reference #1 | Priority: P0 (Must Fix) | 90% usage]
+
+**Avoid in Formal Writing**:
+
+```
+can't, won't, don't → cannot, will not, do not
+it's, that's, there's → it is, that is, there is
+we've, I'd, could've → we have, I would, could have
+I'm, you're, they're → I am, you are, they are
+```
+
+**Context**:
+```
+Academic/Report: Never use contractions
+Email: Acceptable if less formal
+Chat/Slack: Standard and natural
+```
+
+**Common Errors**:
+```
+✗ it's [possessive - wrong]
+✓ its [possessive] / it is [expanded]
+
+✗ could of, should of [wrong]
+✓ could have, should have [correct]
+```
+
+---
+
+## II. Verb Formality
+
+[← Quick Reference #2 | Priority: P1 (High Value) | 85% usage]
 
 **Core Patterns**:
 
@@ -237,9 +274,9 @@ point out → indicate, highlight, note
 
 ---
 
-## II. Quantifiers
+## III. Quantifiers
 
-[← Quick Reference #2 | Priority: P1 | 75% usage]
+[← Quick Reference #3 | Priority: P1 (High Value) | 75% usage]
 
 **Core Patterns**:
 
@@ -285,9 +322,9 @@ thing / stuff → element, component, factor
 
 ---
 
-## III. Intensifiers
+## IV. Intensifiers
 
-[← Quick Reference #3 | Priority: P1 | 70% usage]
+[← Quick Reference #4 | Priority: P1 (High Value) | 70% usage]
 
 **Core Patterns**:
 

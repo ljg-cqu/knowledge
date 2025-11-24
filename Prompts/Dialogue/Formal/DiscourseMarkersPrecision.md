@@ -21,21 +21,66 @@ After:  The system is slow. Therefore, we need to optimize queries. Additionally
 
 ---
 
-## Quick Reference: Top 11 Marker Categories (80% of Use Cases)
+## 1-Minute Cheat Sheet
 
-1. **Addition** (90%) | *moreover, furthermore, additionally, besides* | [→ I.A]
-2. **Contrast** (85%) | *however, nevertheless, on the other hand, whereas* | [→ I.B]
-3. **Causation** (80%) | *therefore, thus, consequently, as a result, hence* | [→ I.C]
-4. **Exemplification** (75%) | *for example, for instance, such as, namely* | [→ II.A]
-5. **Clarification** (70%) | *in other words, that is, i.e., specifically* | [→ II.B]
-6. **Enumeration** (75%) | *first, second, finally, next, then* | [→ III.A]
-7. **Temporal** (70%) | *previously, currently, subsequently, meanwhile* | [→ III.B]
-8. **Summary/Conclusion** (65%) | *in summary, overall, to sum up, in conclusion* | [→ III.C]
-9. **Emphasis** (60%) | *indeed, notably, particularly, significantly* | [→ IV.A]
-10. **Concession** (70%) | *admittedly, granted, nonetheless, nevertheless* | [→ IV.B]
-11. **Topic Management** (50%) | *regarding, concerning, as for, turning to* | [→ V]
+**→ 15 most critical substitutions. Memorize these first.**
 
-**→ 80% complete. Continue for: post-check workflow, comprehensive patterns (Sections I-V).**
+| **Weak/Informal** | **Professional** | **Function** |
+|---|---|---|
+| and (overused) → | moreover, furthermore, additionally | Addition |
+| but (overused) → | however, nevertheless, conversely | Contrast |
+| so → | therefore, thus, consequently, hence | Causation |
+| for example: → | for example, | e.g., | Exemplification |
+| like → | such as, for example | Exemplification |
+| in other words: → | in other words, | that is | Clarification |
+| first ... at second → | first ... second | firstly ... secondly | Enumeration |
+| after that → | subsequently, then, next | Temporal |
+| to sum up → | in summary, in conclusion, overall | Summary |
+| obviously → | clearly, evidently (avoid "obviously") | Emphasis |
+| really important → | critically important, notably, significantly | Emphasis |
+| even though ... but → | although ... [remove but] | Concession |
+| but still → | nevertheless, nonetheless, yet, still | Concession |
+| about → | regarding, concerning | Topic |
+| in terms of → | regarding, for, with respect to | Topic |
+
+**→ Apply these + Quick Reference below for 80% coverage. Continue to Sections I-V for comprehensive patterns.**
+
+---
+
+## Quick Reference: Top 11 Marker Categories (80% Coverage)
+
+**Quick Selection Guide** (by function):
+- **Opposing facts?** → Contrast
+- **Showing cause/effect?** → Causation
+- **Adding information?** → Addition
+- **Giving examples?** → Exemplification
+- **Rephrasing?** → Clarification
+- **Listing steps?** → Enumeration
+- **Sequencing time?** → Temporal
+- **Wrapping up?** → Summary
+- **Acknowledging objections?** → Concession
+- **Stressing importance?** → Emphasis
+- **Changing topics?** → Topic Management
+
+### The 11 Categories (Ordered by Priority & Impact)
+
+| **Category** | **Priority** | **Impact** | **Professional Markers** | **Details** |
+|---|---|---|---|---|
+| **Contrast** | P0/P1 | 85% | *however, on the other hand, conversely, whereas* | [→ I.A] |
+| **Causation** | P0 | 80% | *therefore, thus, consequently, as a result, hence* | [→ I.B] |
+| **Addition** | P1 | 90% | *moreover, furthermore, additionally, besides* | [→ II.A] |
+| **Exemplification** | P1 | 75% | *for example, for instance, such as, namely* | [→ III.A] |
+| **Enumeration** | P1 | 75% | *first, second, finally, next, then* | [→ IV.A] |
+| **Clarification** | P1 | 70% | *in other words, that is, i.e., specifically* | [→ III.B] |
+| **Concession** | P1 | 70% | *admittedly, granted, nevertheless, nonetheless* | [→ IV.D] |
+| **Temporal** | P1 | 70% | *previously, currently, subsequently, meanwhile* | [→ IV.B] |
+| **Summary** | P1 | 65% | *in summary, overall, to sum up, in conclusion* | [→ IV.C] |
+| **Emphasis** | P2 | 60% | *indeed, notably, particularly, significantly* | [→ V.A] |
+| **Topic Management** | P2 | 50% | *regarding, concerning, as for, turning to* | [→ V.B] |
+
+**→ Ordered by priority (P0 → P1 → P2) and impact. Fix from top to bottom.**
+
+**→ Continue for: post-check workflow, comprehensive patterns (Sections I-V).**
 
 ---
 
@@ -83,19 +128,73 @@ After:  The system is slow. Therefore, we need to optimize queries. Additionally
 
 **→ 80% complete above. Continue only if needed.**
 
-**Categories** (by communicative function):
-- **I. Logical** — Addition, contrast, causation, comparison
-- **II. Explanatory** — Examples, clarification
-- **III. Structural** — Enumeration, temporal, summary
-- **IV. Stance** — Emphasis, concession
-- **V. Topic** — Introducing, shifting, focusing
+**→ Sections ordered by priority (P0 → P1 → P2) and impact for systematic application.**
+
+**Categories** (by priority):
+- **I. Critical Logical Markers (P0)** — Contrast, causation [must fix]
+- **II. High-Value Logical Markers (P1)** — Addition, comparison
+- **III. Explanatory Markers (P1)** — Exemplification, clarification
+- **IV. Structural Markers (P1)** — Enumeration, temporal, summary, concession
+- **V. Sophistication Markers (P2)** — Emphasis, topic management [polish]
 
 ---
 
-## I. Logical Relationship Markers
+## I. Critical Logical Markers (P0 — Must Fix)
+
+**→ Fix these first. Missing these causes confusion.**
+
+### A. Contrast
+[← Quick Ref #1 | Priority: P0/P1 | Impact: 85%]
+
+**Direct Opposition**: *however, on the other hand, conversely, in contrast, by contrast*  
+**Subordinate**: *while, whereas, although, though*  
+**Avoid**: *but* (overuse)
+
+**Positioning**:
+```
+✓ Tests passed. However, production failed.
+✓ Tests passed. Production, however, failed.
+✗ However tests passed. [needs comma]
+
+✓ While tests passed, production failed. [subordinate clause]
+✗ Tests passed. While production failed. [fragment]
+```
+
+**Levels**: but → however → conversely/in contrast
+
+**Errors**: ~~but however~~ → however | ~~in contrary~~ → in contrast
+
+**Note**: For acknowledging counterarguments before pivoting, see Concession (IV.D)
+
+---
+
+### B. Causation
+[← Quick Ref #2 | Priority: P0 | Impact: 80%]
+
+**Result**: *therefore, thus, consequently, as a result, hence, accordingly*  
+**Cause**: *because, since, due to, given that*  
+**Avoid**: *so* (informal)
+
+**Positioning**:
+```
+✓ Query is slow. Therefore, we need optimization.
+✓ Query is slow; therefore, we need optimization.
+✗ Therefore query is slow. [conclusion before premise]
+✗ Slow, therefore optimize. [needs semicolon/period]
+```
+
+**Levels**: so → therefore → thus/hence/consequently
+
+**Note**: For summarizing conclusions, see Section IV.C
+
+---
+
+## II. High-Value Logical Markers (P1)
+
+**→ Replace weak markers (and, but) with these for professional tone.**
 
 ### A. Addition
-[← #1 | P1]
+[← Quick Ref #3 | Priority: P1 | Impact: 90%]
 
 **Formal**: *moreover, furthermore, additionally, besides*  
 **Neutral**: *also, too*  
@@ -112,65 +211,27 @@ After:  The system is slow. Therefore, we need to optimize queries. Additionally
 
 ---
 
-### B. Contrast
-[← #2 | P0/P1]
-
-**Strong**: *however, nevertheless, nonetheless, on the other hand, conversely*  
-**Concessive**: *while, whereas, although, though, yet, still*
-
-**Positioning**:
-```
-✓ Tests passed. However, production failed.
-✓ Tests passed. Production, however, failed.
-✗ However tests passed. [needs comma]
-
-✓ While tests passed, production failed. [subordinate]
-✗ Tests passed. While production failed. [fragment]
-```
-
-**Levels**: but → however/yet → nevertheless/nonetheless
-
-**Errors**: ~~but however~~ → however | ~~While it failed~~ → while it failed
-
----
-
-### C. Causation
-[← #3 | P0]
-
-**Result**: *therefore, thus, consequently, as a result, hence, accordingly*  
-**Cause**: *because, since, due to, given that*  
-**Avoid**: *so* (informal)
-
-**Positioning**:
-```
-✓ Query is slow. Therefore, we need optimization.
-✓ Query is slow; therefore, we need optimization.
-✗ Therefore query is slow. [conclusion before premise]
-✗ Slow, therefore optimize. [needs semicolon/period]
-```
-
-**Levels**: so → therefore → thus/hence/consequently
-
-**Note**: For summarizing conclusions, see Section III.C
-
----
-
-### D. Comparison
-[← #10 | P2]
+### B. Comparison
+[Priority: P2 | Impact: Lower]
 
 **Markers**: *similarly, likewise, in the same way, correspondingly, equally*
 
 ```
 ✓ MySQL uses B-trees. Similarly, PostgreSQL uses them.
-✗ Systems are similar. Similarly, they use caching. [redundant]
+✓ Component A handles requests. Likewise, component B processes responses.
+✗ Systems are similar. Similarly, they use caching. [redundant - "similar" + "similarly"]
 ```
+
+**Note**: Use when drawing parallels, not when stating similarity directly
 
 ---
 
-## II. Explanatory Markers
+## III. Explanatory Markers (P1)
+
+**→ Essential for clarity and examples.**
 
 ### A. Exemplification
-[← #4 | P1]
+[← Quick Ref #4 | Priority: P1 | Impact: 75%]
 
 **General**: *for example, for instance, e.g., such as*  
 **Specific**: *namely, specifically, in particular*  
@@ -188,7 +249,7 @@ After:  The system is slow. Therefore, we need to optimize queries. Additionally
 ---
 
 ### B. Clarification
-[← #5 | P1]
+[← Quick Ref #5 | Priority: P1 | Impact: 70%]
 
 **Restatement**: *in other words, that is, i.e.*  
 **Specification**: *specifically, more precisely, namely*
@@ -209,10 +270,12 @@ i.e. = restatement | e.g. = examples
 
 ---
 
-## III. Structural Markers
+## IV. Structural Markers (P1)
+
+**→ Organize flow, sequence, and acknowledge counterpoints.**
 
 ### A. Enumeration
-[← #6 | P1]
+[← Quick Ref #6 | Priority: P1 | Impact: 75%]
 
 **Markers**: *first, second, finally, next, then, initially, ultimately*
 
@@ -227,7 +290,7 @@ i.e. = restatement | e.g. = examples
 ---
 
 ### B. Temporal
-[← #7 | P1]
+[← Quick Ref #7 | Priority: P1 | Impact: 70%]
 
 **Past**: *previously, formerly, earlier*  
 **Present**: *currently, presently, now*  
@@ -242,7 +305,7 @@ i.e. = restatement | e.g. = examples
 ---
 
 ### C. Summary/Conclusion
-[← #8 | P1]
+[← Quick Ref #8 | Priority: P1 | Impact: 65%]
 
 **Summary**: *in summary, overall, in brief, on the whole*  
 **Conclusion**: *in conclusion, to conclude, ultimately*
@@ -255,14 +318,42 @@ i.e. = restatement | e.g. = examples
 
 **Errors**: ~~To summarize it~~ → To summarize | ~~As a conclusion~~ → In conclusion
 
-**Note**: For causal conclusions (therefore, thus), see Section I.C
+**Note**: For causal conclusions (therefore, thus), see Section I.B
 
 ---
 
-## IV. Stance Markers
+### D. Concession
+[← Quick Ref #9 | Priority: P1 | Impact: 70%]
+
+**Acknowledge**: *admittedly, granted, of course, to be fair*  
+**Pivot Back**: *nevertheless, nonetheless, yet, still, that said, even so*  
+**Limitation**: *to some extent, in most cases, for the most part*
+
+**Distinction**: Concession acknowledges a counterpoint before pivoting back to main argument. Contrast (I.A) shows direct opposition between two equal claims.
+
+```
+Contrast:    Tests passed. However, production failed. [two facts]
+Concession:  Admittedly, testing takes time. Nevertheless, it prevents bugs. [acknowledge objection → pivot to main point]
+```
+
+**Pattern**: [Acknowledge counterpoint]. [Pivot back] + [main argument].
+
+```
+✓ Admittedly, the solution is complex. Nevertheless, the benefits justify it.
+✓ Granted, caching adds overhead. Still, performance gains are significant.
+✗ Granted that testing. Still prevents. [incomplete sentence]
+```
+
+**Errors**: ~~However nevertheless~~ → Nevertheless | ~~Even though still~~ → still
+
+---
+
+## V. Sophistication Markers (P2 — Polish)
+
+**→ Add these for advanced sophistication after fixing P0/P1.**
 
 ### A. Emphasis
-[← #9 | P2]
+[← Quick Ref #10 | Priority: P2 | Impact: 60%]
 
 **Strong**: *indeed, in fact, certainly, clearly*  
 **Selective**: *notably, particularly, especially, significantly*  
@@ -278,31 +369,9 @@ i.e. = restatement | e.g. = examples
 
 ---
 
-### B. Concession
-[← #10 | P1]
+### B. Topic Management
 
-**Acknowledge**: *admittedly, granted, of course*  
-**Pivot back**: *nonetheless, nevertheless, that said, still*  
-**Limitation**: *to some extent, in most cases, for the most part*
-
-```
-✓ Admittedly, solution is complex. Nevertheless, it's necessary.
-✓ Granted, testing takes time. Still, it prevents bugs.
-✗ Granted that testing. Still prevents. [incomplete]
-```
-
-**Pattern**: [Concession] + [counterpoint]. [Pivot] + [main argument].
-
-```
-✓ Admittedly, caching adds complexity. Nevertheless, gains justify it.
-✓ While approach is unconventional, it solves the problem.
-```
-
----
-
-## V. Topic Management
-
-[← #11 | P2]
+[← Quick Ref #11 | Priority: P2 | Impact: 50%]
 
 **Introduce**: *regarding, concerning, as for*  
 **Shift**: *turning to, moving on to, now, next*  
@@ -372,14 +441,22 @@ also → additionally → moreover
 
 ## Summary
 
-**Categories**: Logical • Explanatory • Structural • Stance • Topic
+**Structure**:
+- **Cheat Sheet**: 15 critical substitutions (1-minute scan)
+- **Quick Reference**: 11 categories ordered by priority (80% coverage)
+- **Comprehensive**: Sections I-V organized by priority for systematic application
+  - **I. Critical (P0)**: Contrast, Causation [must fix]
+  - **II. High-Value (P1)**: Addition, Comparison
+  - **III. Explanatory (P1)**: Exemplification, Clarification
+  - **IV. Structural (P1)**: Enumeration, Temporal, Summary, Concession
+  - **V. Sophistication (P2)**: Emphasis, Topic Management [polish]
 
-**Coverage**: ~85% of technical/academic discourse markers
+**Coverage**: ~85% of technical/academic discourse markers via Cheat Sheet + Quick Reference
 
-**80/20**: Quick Reference (80%) → Comprehensive (20%)
+**80/20**: Cheat Sheet (20 seconds) → Quick Reference (5 minutes) → Comprehensive (as needed)
 
 **Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
-**Principle**: Preserve meaning, enhance flow
+**Principle**: Preserve meaning, enhance flow, match formality
 
-**Usage**: Reference during writing • Post-check after writing • Sections I-V for depth
+**Usage**: Cheat Sheet for speed • Quick Reference for most cases • Sections I-V for comprehensive depth

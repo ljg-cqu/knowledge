@@ -6,6 +6,61 @@
 
 **Definition**: Systematically calibrate the strength of claims, assertions, and statements using hedging, modals, and qualifiers to achieve the appropriate balance between confidence and caution.
 
+---
+
+## How to Use This Document (MECE & 80/20 Approach)
+
+**This document is organized using MECE (Mutually Exclusive, Collectively Exhaustive) and 80/20 principles:**
+
+### 80/20: Start Here for Quick Impact
+**Most users need only 20% of content to handle 80% of situations:**
+1. **Quick Reference** (13 patterns) — Decision table showing when to use each pattern
+2. **Priority System** (P0 > P1 > P2) — Fix correctness first, then naturalness, then polish
+3. **Certainty Spectrum** — Evidence-based decision tree for calibrating claim strength
+4. **Post-Check Workflow** — 3-step process: Scan → Fix → Validate
+
+### MECE: Deep Dive for Comprehensive Coverage
+**For complete reference, patterns are organized into 6 mutually exclusive categories:**
+- **I. Modals** — Possibility, necessity, hypotheticals
+- **II. Hedging** — Verbs and adverbs that soften claims
+- **III. Qualifiers** — Degree and extent limiters
+- **IV. Intensifiers** — Strengthening language
+- **V. Attribution** — Sourcing and citation
+- **VI. Additional** — Approximators, negation, temporal markers
+
+### Navigation Flowchart
+
+```
+┌─ What do you need? ─────────────────────────────────────────────┐
+│                                                                   │
+├─ "Fix my existing text"                                          │
+│   └─→ Post-Check Workflow (Scan → Fix → Validate)               │
+│                                                                   │
+├─ "Help me write with better hedging"                             │
+│   └─→ Quick Reference (13 patterns) + Certainty Spectrum        │
+│                                                                   │
+├─ "I'm not sure if my claim is too strong"                        │
+│   └─→ Certainty Spectrum (evidence-based decision tree)         │
+│                                                                   │
+├─ "Quick fix for obvious errors"                                  │
+│   └─→ Priority System → P0 examples                             │
+│                                                                   │
+├─ "Deep reference for specific pattern"                           │
+│   └─→ Sections I-VI (comprehensive with examples)               │
+│                                                                   │
+└─ "Complete understanding of stance & certainty"                  │
+    └─→ Read full document (~30 min)                              │
+```
+
+**Time investment:**
+- **5 min**: Quick Reference + Priority System → 80% of common issues
+- **10 min**: Add Certainty Spectrum + Post-Check Workflow → comprehensive audit capability
+- **30 min**: Full document → mastery of all patterns
+
+**→ For most users: Start with Quick Reference below**
+
+---
+
 ## Precision Principle
 
 **Critical**: Stance markers express **degree of certainty** without changing **factual content**.
@@ -28,22 +83,46 @@ After:  The system appears faster. [appropriate hedging]
 
 ---
 
-## Quick Reference: Top 12 Patterns (80% Coverage)
+## Common Mistakes: Quick Fix Guide
 
-**Most frequent patterns covering 80% of academic hedging needs. Percentages = usage frequency in technical/academic writing.**
+**Top 10 errors that account for 80% of stance/certainty problems:**
 
-1. **Modal: Possibility** (90%) | *may, might, could, can* - uncertain outcomes | [→ I.A]
-2. **Modal: Necessity** (85%) | *should, must, need to* - obligation/recommendation | [→ I.B]
-3. **Modal: Hypothetical** (75%) | *would, could* - conditional scenarios | [→ I.C]
-4. **Hedging Verbs** (80%) | *appears, seems, tends to, suggests* - softening claims | [→ II.A]
-5. **Probability Adverbs** (70%) | *probably, possibly, likely, presumably* - likelihood | [→ II.B]
-6. **Degree Qualifiers** (75%) | *relatively, fairly, reasonably* - moderate degree | [→ III.A]
-7. **Extent Limiters** (65%) | *generally, typically, in some cases* - partial scope | [→ III.B]
-8. **Intensifiers** (70%) | *significantly, substantially, notably* - strengthening | [→ IV.A]
-9. **Certainty Expressions** (60%) | *clearly, evidently, consistently* - high confidence | [→ IV.B]
-10. **Attribution** (65%) | *according to, research shows, based on* - sourcing | [→ V]
-11. **Approximators** (70%) | *approximately, roughly, about, around* - imprecise values | [→ VI.A]
-12. **Negative Hedging** (60%) | *not necessarily, rarely, seldom* - negating absolutes | [→ VI.B]
+| **❌ Mistake** | **✓ Fix** | **Pattern** | **Priority** |
+|----------------|-----------|-------------|--------------|
+| X is always better | X is typically better / X is 30% better | #7 / quantify | **P0** |
+| Obviously/Clearly X [opinion] | X appears to / Research suggests X | #4 / #10 | **P0** |
+| You must use X [recommendation] | You should consider X / X is recommended | #2 | **P0** |
+| This never works | This rarely works / This hasn't worked | #12 | **P0** |
+| might possibly perhaps | might / possibly [choose one] | #1 or #5 | P1 |
+| seems to appear to | seems to / appears to [choose one] | #4 | P1 |
+| The system is fast [no context] | The system is relatively fast / responds in 50ms | #6 / quantify | P1 |
+| very fast / really good | significantly faster / reasonably good | #8 / #6 | P2 |
+| about 1000 [rounded] | approximately 1000 / ~1000 | #11 | P2 |
+| System supports X [may change] | System currently supports X | #13 | P1 |
+
+**→ If you found your issue above, jump to the corresponding pattern. Otherwise, continue to Quick Reference.**
+
+---
+
+## Quick Reference: Top 13 Patterns (80% Coverage)
+
+**Decision table: Match your situation to the appropriate pattern.**
+
+| **When You Need To...** | **Use Pattern** | **Examples** | **Priority** | **Details** |
+|--------------------------|-----------------|--------------|--------------|-------------|
+| Soften unproven claim | #1 Modal: Possibility | *may, might, could* | **P0** | [→ I.A] |
+| Make recommendation | #2 Modal: Necessity | *should, must, need to* | **P0** | [→ I.B] |
+| Describe hypothetical | #3 Modal: Hypothetical | *would, could* | P1 | [→ I.C] |
+| Express uncertain observation | #4 Hedging Verbs | *appears, seems, tends to* | P1 | [→ II.A] |
+| Estimate likelihood | #5 Probability Adverbs | *probably, possibly, likely* | P1 | [→ II.B] |
+| Moderate absolute adjective | #6 Degree Qualifiers | *relatively, fairly, reasonably* | P2 | [→ III.A] |
+| Limit scope/frequency | #7 Extent Limiters | *generally, typically, often* | P1 | [→ III.B] |
+| Strengthen with precision | #8 Intensifiers | *significantly, substantially* | P2 | [→ IV.A] |
+| Assert with evidence | #9 Certainty Expressions | *clearly, evidently, consistently* | **P0/P2** | [→ IV.B] |
+| Cite source/research | #10 Attribution | *research shows, based on* | P1 | [→ V] |
+| Express inexact number | #11 Approximators | *approximately, roughly, ~* | P2 | [→ VI.A] |
+| Negate absolute claim | #12 Negative Hedging | *not necessarily, rarely* | P1 | [→ VI.B] |
+| Indicate temporal state | #13 Time-Based | *currently, traditionally* | P1 | [→ VI.C] |
 
 **→ 80% complete above. Continue for: Certainty Spectrum, comprehensive patterns (I-VI), post-check workflow.**
 
@@ -51,55 +130,96 @@ After:  The system appears faster. [appropriate hedging]
 
 ## Priority System
 
-**Universal application order:**
+**Application order: Fix P0 first (correctness), then P1 (naturalness), then P2 (sophistication).**
 
-- **P0 (Must fix)**: Over-claiming without evidence
-  - ~~X is better~~ → X appears better / X is 30% better
-  - ~~You can do this~~ (impossible) → You cannot / should not
-  
-- **P1 (High value)**: Excessive/insufficient hedging (#1-7, #10, #12)
-  - Too weak: ~~might possibly perhaps~~ → possibly
-  - Too strong: ~~definitely works~~ → works well / tends to work
+### P0 (Must Fix) — Factual Correctness
+**Issue**: Over-claiming, false absolutes, arrogance
+**Patterns affected**: #1, #2, #9
 
-- **P2 (Polish)**: Precise qualifiers and intensifiers (#6, #8-9, #11)
-  - *significantly* vs *slightly* vs *substantially*
-  - *arguably* vs *maybe*
+| **Problem** | **Fix** | **Pattern** |
+|-------------|---------|-------------|
+| ~~X is better~~ [no evidence] | X appears better / X is 30% better | #1, #4 |
+| ~~You can do this~~ [impossible] | You cannot / should not | #2 |
+| ~~Clearly/Obviously X~~ [opinion] | X may be / Research suggests X | #9 → #1/#10 |
+| ~~Always/never happens~~ | Typically/rarely happens | #7, #12 |
+
+### P1 (High Value) — Natural Hedging
+**Issue**: Double hedging, missing hedges, wrong modal strength
+**Patterns affected**: #1-5, #7, #10, #12-13
+
+| **Problem** | **Fix** | **Pattern** |
+|-------------|---------|-------------|
+| ~~might possibly perhaps~~ | possibly / might | #1, #5 |
+| ~~seems to appear to~~ | seems to / appears to | #4 |
+| ~~definitely works~~ | works well / tends to work | #4, #7 |
+| ~~System is fast~~ [no context] | System is typically fast | #7 |
+| ~~X is better~~ [unsourced] | Research suggests X is better | #10 |
+
+### P2 (Polish) — Precise Expression
+**Issue**: Vague intensifiers, imprecise quantifiers
+**Patterns affected**: #6, #8, #9, #11
+
+| **Problem** | **Fix** | **Pattern** |
+|-------------|---------|-------------|
+| ~~very fast~~ | significantly faster / 3x faster | #8 |
+| ~~quite good~~ [ambiguous] | fairly effective / reasonably good | #6 |
+| ~~about~~ vs ~~approximately~~ | Choose based on precision level | #11 |
+| ~~maybe~~ vs ~~arguably~~ | maybe = uncertain; arguably = debatable | #5 vs #4 |
 
 ---
 
 ## Certainty Spectrum
 
-**Match language to evidence level:**
+**Decision tree: Choose language based on your evidence level.**
 
 ```
-[No Evidence / Speculation]
-   might, could possibly, may potentially
-   ↓
-[Weak Evidence / Observed Pattern]  
-   seems to, appears to, tends to, suggests
-   ↓
-[Moderate Evidence / Qualified Claim]
-   likely, probably, generally, typically
-   ↓
-[Strong Evidence / High Confidence]
-   clearly, evidently, consistently, regularly
-   ↓
-[Definitive Evidence / Established Fact]
-   is, does, will (use sparingly for absolutes)
+┌─ Do you have EVIDENCE for this claim? ─────────────────────────┐
+│                                                                  │
+NO ────────────────────────────────────────────────────────── YES ─┤
+│                                                                  │
+↓                                                                  ↓
+[SPECULATION]                                    What type of evidence?
+might, could                                                       │
+may, possibly                                    ┌─────────────────┴─────────────┐
+                                                 │                               │
+                                           OBSERVATIONAL                    EMPIRICAL
+                                           (patterns, anecdotal)        (data, measurements)
+                                                 │                               │
+                                                 ↓                               ↓
+                                          [WEAK EVIDENCE]                 [STRONG EVIDENCE]
+                                          appears, seems                  shows, demonstrates
+                                          tends to, suggests              consistently, reliably
+                                          indicates                       clearly (with care)
+                                                 │                               │
+                                                 ↓                               ↓
+                                          How strong is pattern?          How definitive is data?
+                                                 │                               │
+                                        ┌────────┴────────┐              ┌──────┴───────┐
+                                        │                 │              │              │
+                                    FREQUENT         OCCASIONAL      CONCLUSIVE     VERY STRONG
+                                        │                 │              │              │
+                                        ↓                 ↓              ↓              ↓
+                                   [MODERATE]        [QUALIFIED]    [DEFINITIVE]   [HIGH CONFIDENCE]
+                                   typically         sometimes       is, does       clearly shows
+                                   generally         in some cases   always/never   evidently
+                                   usually           may             (rare!)        substantially
+                                   likely            possibly
 ```
 
 **Calibration Examples**:
 ```
-✗ Caching is always better. [too strong]
-✓ Caching typically improves performance. [qualified]
-✓ Caching reduced latency by 40% in tests. [evidence-backed]
+✗ Caching is always better. [too strong - no qualification]
+✓ Caching typically improves performance. [moderate - qualified pattern]
+✓ Caching reduced latency by 40% in tests. [strong - evidence-backed]
 
-✗ The approach might possibly work. [over-hedged]
-✓ The approach could work. [appropriately hedged]
+✗ The approach might possibly work. [over-hedged - redundant]
+✓ The approach could work. [speculation - appropriately hedged]
 
-✗ The system appears to have 99.9% uptime. [don't hedge facts]
-✓ The system has 99.9% uptime. [fact with evidence]
+✗ The system appears to have 99.9% uptime. [wrong - don't hedge measured facts]
+✓ The system has 99.9% uptime. [definitive - stated fact with data]
 ```
+
+**Quick Decision**: If you can't cite a source or show data → add hedging (#1, #4, #5)
 
 ---
 
@@ -107,20 +227,57 @@ After:  The system appears faster. [appropriate hedging]
 
 **Purpose**: Audit existing content and calibrate claim strength after writing.
 
-**Step 1: Scan** — Identify issues by priority
-- **P0**: Absolute claims without evidence (*is, always, never, must*)
-- **P1**: Missing hedges or double hedges (*might possibly*)
-- **P2**: Imprecise qualifiers (*very* → *significantly*)
+### Step 1: SCAN — Identify Issues by Priority
 
-**Step 2: Fix** — Calibrate using Certainty Spectrum
-- Add hedges to unqualified claims
-- Remove excessive hedging
-- Match intensity to evidence
+**Search for these red flags in your text:**
 
-**Step 3: Validate** — Quality checks
-- ✓ Claims match evidence? ✓ Appropriate confidence? ✓ No over-claiming?
+| **Priority** | **Search Pattern** | **Look For** | **Example Problem** |
+|--------------|-------------------|--------------|---------------------|
+| **P0** | `is`, `always`, `never`, `must`, `clearly`, `obviously` | Unsupported absolutes | "X is better", "This always works" |
+| **P0** | Claims without citations | Unsourced assertions | "Research shows..." [no citation] |
+| **P1** | `might possibly`, `seems to appear`, `could potentially` | Double hedging | "might possibly work" |
+| **P1** | Strong adjectives without hedges | Missing qualifiers | "fast", "better", "efficient" |
+| **P2** | `very`, `quite`, `really` | Vague intensifiers | "very fast", "quite good" |
+| **P2** | Numbers without qualifiers | Missing approximators | "1000 requests" [estimated] |
 
-**→ For comprehensive patterns, continue to I-VI.**
+### Step 2: FIX — Apply Patterns
+
+**Use this decision process for each flagged item:**
+
+```
+1. Do I have evidence for this claim?
+   └─ NO  → Add hedging: #1 (may/might), #4 (appears/seems), #5 (possibly/probably)
+   └─ YES → Go to 2
+
+2. Is my claim too strong for the evidence?
+   └─ YES → Add qualifier: #7 (typically/generally), #10 (research shows)
+   └─ NO  → Go to 3
+
+3. Is my language too weak/redundant?
+   └─ YES → Remove double hedging, strengthen with #8 (significantly)
+   └─ NO  → Go to 4
+
+4. Can I be more precise?
+   └─ YES → Use #6 (degree), #8 (intensifiers), #11 (approximators)
+   └─ NO  → Done ✓
+```
+
+**Quick fixes by priority:**
+- **P0**: ~~is better~~ → appears better / is 30% better [add #4 or quantify]
+- **P1**: ~~might possibly~~ → might [remove redundancy]
+- **P2**: ~~very fast~~ → significantly faster [replace with #8]
+
+### Step 3: VALIDATE — Quality Check
+
+**Final verification checklist:**
+
+- [ ] **Accuracy**: Does claim strength match evidence level?
+- [ ] **Balance**: No over-claiming (too strong) or over-hedging (too weak)?
+- [ ] **Attribution**: All strong claims cited or qualified? (#10)
+- [ ] **Consistency**: Similar claims use similar certainty language?
+- [ ] **Precision**: Vague words replaced with specific qualifiers? (#6, #8, #11)
+
+**→ For comprehensive patterns with examples, continue to I-VI.**
 
 ---
 
@@ -438,81 +595,186 @@ Very Large: dramatically, drastically, remarkably, notably
 
 ## Application Guidelines
 
-**Common Over-Claiming**:
+### Decision Matrix: Pattern Selection
+
+**Use this matrix to choose the right pattern based on your situation:**
+
+| **Evidence Level** | **Claim Type** | **Recommended Patterns** | **Examples** |
+|--------------------|----------------|--------------------------|--------------|
+| None | Speculation | #1 (may/might/could) | "might work", "could help" |
+| None | Recommendation | #2 (should/could) + #10 | "you could consider", "based on experience" |
+| Observational | Pattern noticed | #4 (appears/seems/tends to) | "appears effective", "tends to fail" |
+| Anecdotal | Limited data | #5 (possibly/probably) + #7 | "probably works in most cases" |
+| Empirical | Measurements | #8 (quantified) or #7 + #10 | "significantly faster", "research shows" |
+| Established | Proven fact | #9 (evidently) or direct statement | "clearly O(n log n)", "has 99.9% uptime" |
+
+### Common Anti-Patterns to Avoid
+
+**P0 Issues (Fix immediately):**
 ```
-✗ X is always/never Y [use "typically" or "rarely"]
-✗ X is the best/worst [use "most effective" with criteria]
-✗ Everyone knows [cite source or use "well-established"]
-✗ Obviously/clearly X [risks condescension - use "evidently" with care]
+✗ X is always/never Y               → ✓ X typically/rarely Y [#7, #12]
+✗ X is the best/worst               → ✓ X appears most effective for Y [#4, criteria]
+✗ Everyone knows / Obviously X      → ✓ It is well-established / Research shows [#10]
+✗ You must use X [recommendation]   → ✓ You should consider X [#2]
 ```
 
-**Common Over-Hedging**:
+**P1 Issues (High impact fixes):**
 ```
-✗ might possibly perhaps [use one]
-✗ seems to appear to suggest [use one verb]
-✗ could potentially maybe [use one modal]
+✗ might possibly perhaps            → ✓ might / possibly [#1 or #5, choose one]
+✗ seems to appear to suggest        → ✓ seems to / suggests [#4, choose one]
+✗ could potentially maybe           → ✓ could / maybe [#1 or #5, choose one]
+✗ System is fast [unqualified]      → ✓ System is typically fast [#7]
 ```
 
-**Evidence-Based Calibration**:
+**P2 Issues (Polish):**
 ```
-NO evidence:       might, could, possibly
-WEAK evidence:     appears, seems, suggests, may
-GOOD evidence:     likely, probably, typically
-STRONG evidence:   shows, demonstrates, consistently
-DEFINITIVE:        is, does, always (use sparingly)
+✗ very/really/quite fast            → ✓ significantly/substantially faster [#8]
+✗ It's about around 1000            → ✓ approximately 1000 [#11, choose one]
+✗ System supports X [temporal]      → ✓ System currently supports X [#13]
+```
+
+### Quick Calibration Formula
+
+**Before publishing, apply this 3-question test to each claim:**
+
+1. **Evidence check**: Do I have data/source? → NO = add hedging (#1, #4, #5)
+2. **Scope check**: Is this always true? → NO = add limiters (#7, #12, #13)
+3. **Precision check**: Can I quantify? → YES = use numbers instead of vague intensifiers (#8)
+
+**Example application:**
+```
+Original: "Caching is faster and everyone uses it."
+
+Q1: Evidence? → No empirical data → Add hedging
+Q2: Always true? → No, context-dependent → Add scope limiter  
+Q3: Can quantify? → No specific metrics → Keep qualitative but qualified
+
+Result: "Caching typically improves performance and is widely adopted in web applications."
 ```
 
 ---
 
 ## Examples
 
+### Complete Paragraph Transformation (80/20 Approach)
+
+**Before (multiple issues):**
+```
+Our new caching system is always faster than the old one. Obviously everyone 
+should use Redis because it's the best database. The implementation is very 
+efficient and will definitely improve performance. You must migrate immediately 
+as this never fails. Testing shows it works great, handling about approximately 
+1000 requests per second. It seems to possibly be the perfect solution.
+```
+
+**Analysis (using Quick Reference patterns):**
+- "is always faster" → P0, over-claiming [#7]
+- "Obviously" → P0, arrogant [#9 → #4]
+- "everyone should" → overgeneralization [#7]
+- "must use" → P0, too strong [#2]
+- "the best" → P0, unsupported [#4]
+- "very efficient" → P2, vague [#8]
+- "will definitely" → P0, over-claiming [#5]
+- "must migrate" → P0, too strong [#2]
+- "never fails" → P0, absolute [#12]
+- "about approximately" → P2, redundant [#11]
+- "seems to possibly" → P1, double hedge [#4, #5]
+
+**After (calibrated using 13 patterns):**
+```
+Our new caching system typically performs faster than the previous version (#7). 
+Redis may be well-suited for this use case (#1), as research suggests it handles 
+concurrent operations effectively (#10). The implementation appears efficient (#4) 
+and could significantly improve performance (#1, #8). We recommend evaluating 
+migration (#2) as testing rarely revealed failures (#12). Benchmarks show it 
+handles approximately 1000 requests per second (#11). Based on current results 
+(#13), this appears to be a promising solution (#4).
+```
+
+**Key improvements:**
+- Removed 6 P0 errors (over-claiming, absolutes)
+- Fixed 2 P1 errors (double hedging, missing qualifiers)
+- Polished 3 P2 issues (vague intensifiers, redundancy)
+- Added attribution and evidence markers
+
+---
+
+### Individual Pattern Examples
+
 **Over-Claiming (P0)**:
 ```
 ✗ Caching is always faster. Everyone knows this works.
 ✓ Caching typically improves performance. It is well-established that caching reduces latency.
+[Fixed with #7 (extent limiter) and #10 (attribution)]
 ```
 
 **Under-Hedging (P1)**:
 ```
 ✗ Algorithm is O(n²). Implementation is faster.
 ✓ Algorithm appears O(n²). Implementation tends to be faster for small inputs.
+[Fixed with #4 (hedging verb) and #7 (extent limiter)]
 ```
 
 **Over-Hedging (P1)**:
 ```
 ✗ System might possibly perhaps work to some extent.
 ✓ System could work in many cases.
+[Fixed by removing redundant hedges - keep #1 (could) and #7 (many cases)]
 ```
 
 **Evidence-Based (P2)**:
 ```
 ✗ Optimization helps. It's faster.
-✓ Optimization significantly improved performance—reducing latency from 500ms to 50ms in benchmarks. Based on results, this approach appears promising for similar workloads.
+✓ Optimization significantly improved performance—reducing latency from 500ms to 50ms 
+  in benchmarks. Based on results, this approach appears promising for similar workloads.
+[Enhanced with #8 (intensifier), #10 (attribution), #4 (hedging verb)]
 ```
 
 **Academic Stance (Comprehensive)**:
 ```
 ✗ Obviously caching fixes everything. It's the best solution. You must use Redis.
 
-✓ Caching appears effective for this use case. Based on our analysis, Redis may be well-suited. We recommend evaluating caching as it typically improves performance 30-50% in similar scenarios. Results may vary by workload.
+✓ Caching appears effective for this use case. Based on our analysis, Redis may be 
+  well-suited. We recommend evaluating caching as it typically improves performance 
+  30-50% in similar scenarios. Results may vary by workload.
+[Fixed with #4, #10, #1, #2, #7 - comprehensive pattern application]
 ```
 
 ---
 
 ## Summary
 
-**Framework**: 6 categories covering ~90% of stance/certainty patterns
+### MECE Framework Structure
+**6 mutually exclusive, collectively exhaustive categories covering ~90% of stance/certainty patterns:**
 
-**Categories**:
-- **I. Modals**: Possibility, necessity, hypothetical (*may, should, would*)
-- **II. Hedging**: Softening devices (*appears, probably, arguably*)
-- **III. Qualifiers**: Degree and scope (*relatively, generally, in some cases*)
-- **IV. Intensifiers**: Strengthening (*significantly, clearly, substantially*)
-- **V. Attribution**: Sourcing (*research shows, based on, according to*)
-- **VI. Additional**: Approximators, negative hedging, time-based (*roughly, not necessarily, currently*)
+| **Category** | **Purpose** | **Key Patterns** | **Section** |
+|--------------|-------------|------------------|-------------|
+| **I. Modals** | Express possibility, necessity, conditionals | *may, should, would, could* | [→ I] |
+| **II. Hedging** | Soften claims, express uncertainty | *appears, seems, probably* | [→ II] |
+| **III. Qualifiers** | Limit degree/scope | *relatively, generally, typically* | [→ III] |
+| **IV. Intensifiers** | Strengthen/emphasize | *significantly, clearly, substantially* | [→ IV] |
+| **V. Attribution** | Source claims | *research shows, based on* | [→ V] |
+| **VI. Additional** | Special cases | *approximately, rarely, currently* | [→ VI] |
 
-**80/20**: Quick Reference (12 patterns) + Certainty Spectrum = 80% coverage
+### 80/20 Principle Application
+**80% coverage achieved through:**
+- **Quick Reference**: 13 most frequent patterns (→ top of document)
+- **Certainty Spectrum**: Evidence-based decision tree (→ calibration guide)
+- **Priority System**: P0 > P1 > P2 (→ focus on correctness first)
 
-**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
+**Most impactful patterns** (cover 80% of needs):
+1. **P0 patterns**: #1 (modals), #2 (necessity), #9 (certainty) — prevent factual errors
+2. **P1 patterns**: #4 (hedging verbs), #7 (extent limiters), #10 (attribution) — natural hedging
+3. **P2 patterns**: #8 (intensifiers), #11 (approximators) — precision polish
 
-**Principle**: Calibrate certainty to evidence; avoid over-claiming and over-hedging
+### Core Principle
+**Calibrate certainty to evidence**
+- Avoid **over-claiming** (too strong without evidence)
+- Avoid **over-hedging** (unnecessarily weak with evidence)
+- **Match claim strength to evidence level** using Certainty Spectrum
+
+### Usage Modes
+1. **Supporting reference**: Consult patterns (I-VI) while writing
+2. **Post-check tool**: Use 3-step workflow (Scan → Fix → Validate) after writing
+
+**→ For detailed patterns and examples, see sections I-VI above**

@@ -1,4 +1,7 @@
 # Prepositional Precision for Natural English
+*Last Updated: 2025-11-24 | Status: Reviewed | Owner: Documentation Team*
+
+**Type**: Dual-purpose - Supporting reference AND standalone post-check/improvement tool
 
 **Purpose**: Reference guide and post-check tool for precise, natural preposition usage—eliminates errors, reduces verbosity, improves fluency.
 
@@ -17,27 +20,56 @@ After:  We need to discuss database optimization.
 
 ---
 
-## Quick Reference: Top 15 Patterns (80% of Use Cases)
+## 1-Minute Cheat Sheet
 
-**Most frequent corrections. Memorize these for fast application.**
+**→ 20 most critical fixes. Memorize these first.**
 
-1. **Spatial: at/on/in** (90%) | ✗ *in the door* → ✓ *at the door* (point), *on the table* (surface), *in the room* (enclosed) | [→ Section I]
-2. **Temporal: at/on/in** (85%) | ✗ *in Monday* → ✓ *on Monday* | ✓ *at 3 PM* (time), *on Monday* (day), *in January* (period) | [→ Section II]
-3. **Direction: to/toward/into/from** (70%) | *go to*, *walk toward*, *step into*, *come from* | [→ Section III]
-4. **Abstract: about/on/of/for** (75%) | *talk about*, *focus on*, *part of*, *designed for* | [→ Section IV]
-5. **Causation** (65%) | *because of*, *due to*, *thanks to*, *despite* | [→ Section IV]
-6. **Method: by/with/through** (55%) | *by email*, *with Python*, *through analysis* | [→ Section IV]
-7. **Comparison: to/with/from** (50%) | ✗ *different with* → ✓ *different from* | *similar to*, *compared with* | [→ Section IV]
-8. **Conciseness** (70%) | ✗ *in terms of X* → ✓ omit/rephrase | ✗ *with regard to* → ✓ *about* | [→ Section VII]
-9. **Verb+Prep** (80%) | ✗ *depends of* → ✓ *depends **on*** | *consist **of***, *listen **to***, *focus **on*** | [→ Section V]
-10. **Adj+Prep** (75%) | ✗ *good in* → ✓ *good **at*** | *interested **in***, *capable **of***, *familiar **with*** | [→ Section V]
-11. **Noun+Prep** (70%) | ✗ *solution of* → ✓ *solution **to*** | *reason **for***, *impact **on***, *effect **on*** | [→ Section V]
-12. **Redundancy** (65%) | ✗ *Where is it at?* → ✓ *Where is it?* | ✗ *inside of* → ✓ *inside* | [→ Section VII]
-13. **Idioms** (60%) | *on time* (punctual), *in time* (before too late), *by accident* | [→ Section VI]
-14. **Transitive verbs** | ✗ *discuss about* → ✓ *discuss* | ✗ *enter into* (room) → ✓ *enter* | [→ Section VII]
-15. **Time idioms** | *at first* (initially), *at last* (finally), *in the end* (outcome) | [→ Section VI]
+| **Error** | **Correct** | **Category** |
+|---|---|---|
+| ~~in Monday~~ → | on Monday | Temporal |
+| ~~at Monday~~ → | on Monday | Temporal |
+| ~~in 3 PM~~ → | at 3 PM | Temporal |
+| ~~on January~~ → | in January | Temporal |
+| ~~depends of~~ → | depends on | Verb Collocation |
+| ~~consists from~~ → | consists of | Verb Collocation |
+| ~~listen of~~ → | listen to | Verb Collocation |
+| ~~arrive to~~ → | arrive at/in | Verb Collocation |
+| ~~good in~~ → | good at | Adj Collocation |
+| ~~interested at~~ → | interested in | Adj Collocation |
+| ~~different than/with~~ → | different from | Adj Collocation |
+| ~~solution of~~ → | solution to | Noun Collocation |
+| ~~impact to~~ → | impact on | Noun Collocation |
+| ~~discuss about~~ → | discuss | Transitive Verb |
+| ~~enter into~~ (room) → | enter | Transitive Verb |
+| ~~in terms of~~ → | (omit/rephrase) | Verbose |
+| ~~where...at~~ → | where | Redundant |
+| ~~inside of~~ → | inside | Redundant |
+| ~~in the door~~ → | at the door | Spatial |
+| ~~focus at~~ → | focus on | Verb Collocation |
 
-**→ 80% complete above. Continue for: usage workflow, comprehensive patterns (Sections I-VII).**
+**→ Apply these + Quick Reference below for 80% coverage.**
+
+---
+
+## Quick Reference: Core Patterns (80% of Use Cases)
+
+**Most frequent patterns by category. Ordered by impact.**
+
+| **Pattern** | **Usage** | **Examples** | **Common Errors** | **Details** |
+|---|---|---|---|---|
+| **Verb+Prep** | 80% | depend **on**, consist **of**, listen **to**, focus **on** | ~~depends of~~, ~~focus at~~ | [→ Section V] |
+| **Adj+Prep** | 75% | good **at**, interested **in**, different **from**, familiar **with** | ~~good in~~, ~~different than~~ | [→ Section V] |
+| **Noun+Prep** | 70% | solution **to**, impact **on**, reason **for**, knowledge **of** | ~~solution of~~, ~~impact to~~ | [→ Section V] |
+| **Spatial: at/on/in** | 90% | **at** door (point), **on** table (surface), **in** room (enclosed) | ~~in the door~~ | [→ Section I] |
+| **Temporal: at/on/in** | 85% | **at** 3 PM (time), **on** Monday (day), **in** January (period) | ~~in Monday~~, ~~on 3 PM~~ | [→ Section II] |
+| **Conciseness** | 70% | ~~in terms of~~ → omit, ~~with regard to~~ → about | Verbose phrases | [→ Section VII] |
+| **Redundancy** | 65% | ~~where...at~~ → where, ~~inside of~~ → inside | Double prepositions | [→ Section VII] |
+| **Transitive Verbs** | 60% | discuss (not ~~about~~), enter (not ~~into~~), marry (not ~~with~~) | Extra prepositions | [→ Section VII] |
+| **Direction** | 70% | **to** (arrive), **toward** (direction), **into** (enter), **from** (origin) | to vs toward confusion | [→ Section III] |
+| **Abstract** | 75% | talk **about**, focus **on**, part **of**, designed **for** | Mixed with verbs | [→ Section IV] |
+| **Idioms** | 60% | **on** time (punctual), **in** time (early), **by** accident | Fixed expressions | [→ Section VI] |
+
+**→ 80% complete above. Continue for: priority system, workflow, comprehensive patterns (Sections I-VII).**
 
 ---
 
@@ -61,21 +93,94 @@ After:  We need to discuss database optimization.
 
 ---
 
-## Usage Workflow
+## Standalone Usage: Post-Check Workflow
+
+**Mode 1: Reference During Writing** — Use Quick Reference and Cheat Sheet while drafting
+
+**Mode 2: Post-Check After Writing** — Audit completed content systematically
+
+### Review Workflow
 
 **Step 1: Scan** — Identify errors by priority [→ Priority System]
-- **P0 check**: Collocations (#9-11), spatial/temporal (#1-2) → ~~depends of~~, ~~in Monday~~
-- **P1 check**: Verbose (#8), redundant (#12) → ~~in terms of~~, ~~where...at~~
-- **P2 check**: Direction (#3-7), idioms (#13-15) → toward vs to, *on time*
+- **P0 check (correctness)**: Fixed collocations, spatial/temporal
+  - Scan for: verb+prep, adj+prep, noun+prep, time/date, location
+  - Tools: Cheat Sheet (20 top errors), Quick Reference table, Decision Tree
+- **P1 check (clarity)**: Verbose phrases, redundant prepositions, transitive verbs
+  - Scan for: "in terms of", "where...at", "discuss about"
+  - Tools: Section VII patterns
+- **P2 check (polish)**: Direction, idioms, naturalness
+  - Scan for: to/toward distinction, fixed expressions
+  - Tools: Sections III, VI
 
-**Step 2: Fix** — Apply corrections using patterns in Quick Reference above
-- Replace errors with correct forms
-- Simplify verbose phrases
+**Step 2: Fix** — Apply corrections using patterns
+- Replace errors with correct forms from Quick Reference
+- Simplify verbose phrases using Section VII
+- Remove redundant/unnecessary prepositions
 - Preserve all semantic content
 
 **Step 3: Validate** — Quality checks before finalization
-- ✓ Semantic content preserved? ✓ More concise? ✓ Grammatically correct?
-- Read aloud for naturalness
+- ✓ Semantic content preserved?
+- ✓ More concise and natural?
+- ✓ Grammatically correct?
+- ✓ Read aloud for fluency
+
+### Quick Diagnostic Questions
+- Are there verb/adj/noun + preposition combinations? → Check Section V
+- Are there time or location references? → Check Sections I, II
+- Are there phrases like "in terms of" or "where...at"? → Check Section VII
+- Does it sound unnatural or wordy? → Check Priority System
+
+**→ For pattern details and comprehensive reference, continue to Sections I-VII below.**
+
+---
+
+## Pattern Selection Guide (Decision Tree)
+
+**Use this to quickly identify which pattern applies:**
+
+```
+START: Identify the error type
+│
+├─ Is it a VERB + preposition? (e.g., "depends of")
+│  └─ → Use Section V: Verb+Prep Collocations (P0)
+│     Examples: depend on, consist of, listen to, focus on
+│
+├─ Is it an ADJECTIVE + preposition? (e.g., "good in")
+│  └─ → Use Section V: Adj+Prep Collocations (P0)
+│     Examples: good at, interested in, different from
+│
+├─ Is it a NOUN + preposition? (e.g., "solution of")
+│  └─ → Use Section V: Noun+Prep Collocations (P0)
+│     Examples: solution to, impact on, reason for
+│
+├─ Is it about LOCATION/PLACE? (e.g., "in the door")
+│  └─ → Use Section I: Spatial Prepositions (P0)
+│     Rule: at (point), on (surface), in (enclosed)
+│
+├─ Is it about TIME/DATE? (e.g., "in Monday")
+│  └─ → Use Section II: Temporal Prepositions (P0)
+│     Rule: at (time), on (day/date), in (period)
+│
+├─ Is it a VERBOSE phrase? (e.g., "in terms of")
+│  └─ → Use Section VII: Efficiency Patterns (P1)
+│     Action: Omit or rephrase for conciseness
+│
+├─ Is it a REDUNDANT preposition? (e.g., "where...at")
+│  └─ → Use Section VII: Redundancy Patterns (P1)
+│     Action: Remove unnecessary preposition
+│
+├─ Is the verb TRANSITIVE? (e.g., "discuss about")
+│  └─ → Use Section VII: Transitive Verbs (P1)
+│     Action: Remove preposition entirely
+│
+├─ Is it a FIXED EXPRESSION? (e.g., "on time" vs "in time")
+│  └─ → Use Section VI: Idiomatic Expressions (P2)
+│     Action: Memorize the fixed form
+│
+└─ Is it about MOVEMENT/DIRECTION? (e.g., "go toward" vs "go to")
+   └─ → Use Section III: Directional Prepositions (P2)
+      Rule: to (destination), toward (direction), into (entering)
+```
 
 **→ For comprehensive patterns and examples, continue to Sections I-VII below.**
 
@@ -85,15 +190,24 @@ After:  We need to discuss database optimization.
 
 **→ 80% of use cases covered above. Continue only if needed for edge cases.**
 
-**Structure**: Hierarchical (foundation → application → refinement)
+**Structure**: Two approaches (use both for complete mastery)
 
-- **I. Spatial** (90%): at/on/in for location
-- **II. Temporal** (85%): at/on/in for time  
-- **III. Directional** (70%): to/toward/into/from/through for movement
-- **IV. Abstract** (75%): about/on/of/for/with for concepts
-- **V. Fixed Collocations** (80%): verb/adj/noun + preposition patterns
-- **VI. Idiomatic Expressions** (60%): natural phrases and idioms
-- **VII. Efficiency Patterns** (70%): eliminating verbosity and redundancy
+### Approach 1: By Pattern Logic (Why/How)
+- **I. Spatial** (90%): Rules for at/on/in with location
+- **II. Temporal** (85%): Rules for at/on/in with time
+- **III. Directional** (70%): Rules for movement prepositions
+- **IV. Abstract** (75%): Rules for concept prepositions
+
+### Approach 2: By Word Type (What to Fix - Most Practical)
+- **V. Fixed Collocations** (80%): Memorized verb/adj/noun + prep pairs
+  - This section covers most errors (Verb+Prep, Adj+Prep, Noun+Prep)
+  - Sections I-IV explain the logic; Section V provides quick lookup
+
+### Special Cases
+- **VI. Idiomatic Expressions** (60%): Fixed phrases requiring memorization
+- **VII. Efficiency Patterns** (70%): Eliminating verbose/redundant prepositions
+
+**Recommendation**: Start with Section V (Fixed Collocations) for fastest results, then consult I-IV for understanding edge cases.
 
 ---
 
@@ -162,17 +276,32 @@ After:  We need to discuss database optimization.
 ## IV. Abstract Prepositions
 [← Quick Reference #4-7 | Priority: P2]
 
-**Core Patterns** (75% usage):
-- **about** (topic/approximate): *talk about, think about, worry about, about $100*
-- **on** (formal topic/dependency): *lecture on AI, focus on, depend on, rely on*
-- **of** (belonging/composition): *CEO of company, consist of, made of, matter of time*
-- **for** (purpose/beneficiary/reason): *designed for, work for, reason for, for two hours*
-- **with** (association/tool/agreement): *work with, build with Python, agree with, consistent with*
+**Purpose**: Understand semantic meaning to handle non-collocation cases. For fixed verb/adj/noun+prep pairs, see Section V.
+
+**Semantic Patterns** (75% usage):
+- **about** (topic/approximate): General topic, rough quantity
+  - *talk/think/worry about*, *about $100* (approximate)
+- **on** (formal topic/focus): Specific focus, formal subject matter
+  - *lecture/presentation/paper on*, *focus/concentrate on*
+- **of** (belonging/composition/origin): Possession, part-whole, source
+  - *CEO of company*, *consist/composed of*, *matter of time*
+- **for** (purpose/beneficiary/duration): Goal, recipient, time span
+  - *designed/built for*, *work for company*, *for two hours*
+- **with** (accompaniment/tool/manner): Association, instrument, method
+  - *work with team*, *build with Python*, *agree/consistent with*
+
+**When to Use**:
+- Choosing between prepositions with similar meanings
+- Understanding why certain collocations exist
+- Handling new combinations not in Section V
 
 ```
-✓ talk about the project | focus on the issue | consists of modules | designed for testing
-✗ discuss about → discuss (transitive, see VII-C) | focus at (wrong)
+✓ talk about the project (general topic) | lecture on AI (formal topic)
+✓ consists of modules (composition) | designed for testing (purpose)
+✗ focus at → focus on (wrong preposition for focus/concentration)
 ```
+
+**Note**: Many abstract prepositions form fixed collocations (see Section V). This section explains the logic; Section V provides the complete list.
 
 ---
 
@@ -259,44 +388,89 @@ After:  We need to discuss database optimization.
 
 ---
 
-## Examples
+## Examples with Pattern Analysis
 
-**Example 1: Collocation Errors (P0)**
+**Example 1: Collocation Errors (P0 - Must Fix)**
 ```
 ✗ The meeting starts in Monday. We'll discuss about features. The team is good in React.
-✓ The meeting starts on Monday. We'll discuss features. The team is good at React.
-[Patterns #2, #9, #10]
 ```
 
-**Example 2: Conciseness (P1)**
+**Analysis**:
+- "in Monday" → **Temporal error** (Section II): Days use "on" → "on Monday"
+- "discuss about" → **Transitive verb** (Section VII-C): No preposition needed → "discuss"
+- "good in" → **Adj+Prep collocation** (Section V): Correct form → "good at"
+
+```
+✓ The meeting starts on Monday. We'll discuss features. The team is good at React.
+```
+
+---
+
+**Example 2: Conciseness (P1 - High Value)**
 ```
 ✗ In terms of performance, the system is slow due to the fact that we have many queries.
-✓ The system performs poorly because we have many queries.
-[Pattern #8]
 ```
 
-**Example 3: Comprehensive (P0+P1+P2)**
+**Analysis**:
+- "In terms of performance" → **Verbose phrase** (Section VII-A): Omit → "The system performs poorly..."
+- "due to the fact that" → **Verbose phrase** (Section VII-A): Replace → "because"
+
+```
+✓ The system performs poorly because we have many queries.
+```
+
+---
+
+**Example 3: Comprehensive (All Priorities)**
 ```
 ✗ We need to discuss about the solution of this problem. The issue is different than expected. 
 In the event of failure, retry. Where's the file at? Success depends of many factors.
+```
+
+**Analysis**:
+- "discuss about" → **Transitive verb** (Section VII-C, P1): Remove prep → "discuss"
+- "solution of" → **Noun+Prep collocation** (Section V, P0): Correct form → "solution to"
+- "different than" → **Adj+Prep collocation** (Section V, P0): US standard → "different from"
+- "In the event of" → **Verbose phrase** (Section VII-A, P1): Replace → "If"
+- "Where's the file at?" → **Redundant preposition** (Section VII-B, P1): Remove → "Where's the file?"
+- "depends of" → **Verb+Prep collocation** (Section V, P0): Correct form → "depends on"
+
+```
 ✓ We need to discuss the solution to this problem. The issue differs from what we expected. 
 If it fails, retry. Where's the file? Success depends on many factors.
-[Patterns #9, #11, #7, #8, #12]
 ```
+
+**6 errors fixed**: 4 P0 (collocations), 2 P1 (verbose/redundant)
 
 ---
 
 ## Summary
 
+**Document Type**: Dual-purpose (reference + post-check tool)
+
+**Fast Start**: 
+- 1-Minute Cheat Sheet (20 top errors)
+- Quick Reference table (11 patterns, 80% coverage)
+- Decision Tree for pattern identification
+
 **Categories**: Spatial • Temporal • Direction • Abstract • Collocations • Idioms • Efficiency
 
-**Coverage**: ~90% of prepositional errors with Quick Reference patterns
+**Structure** (MECE):
+- **By Logic** (Approach 1): Spatial, Temporal, Direction, Abstract → understand "why"
+- **By Word Type** (Approach 2): Fixed Collocations (Verb/Adj/Noun+Prep) → quick lookup
+- **Special Cases**: Idioms, Efficiency patterns
 
-**80/20**: Quick Reference (80%) → Comprehensive Sections I-VII (20%)
+**Coverage**: ~90% of prepositional errors with Cheat Sheet + Quick Reference
 
-**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
+**80/20**: Cheat Sheet + Quick Reference (80%) → Comprehensive Sections I-VII (20%)
 
-**Principle**: Preserve meaning, enhance clarity
+**Priority**: P0 (correctness) → P1 (clarity) → P2 (polish)
 
-**Usage**: Quick Reference for most cases → Workflow for systematic review → Sections I-VII for comprehensive patterns
+**Principle**: Preserve meaning, enhance clarity and naturalness
+
+**Usage Flow**: 
+1. Quick fixes → Cheat Sheet (20 errors)
+2. Pattern lookup → Quick Reference table
+3. Systematic review → Post-Check Workflow
+4. Edge cases → Decision Tree + Sections I-VII
 

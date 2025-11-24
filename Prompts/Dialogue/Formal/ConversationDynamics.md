@@ -10,18 +10,18 @@
 
 ## Top 10 Patterns (80/20 Core)
 
-| Pattern | Freq | Markers | Use Case |
-|---------|------|---------|----------|
-| **1. Acknowledgment** | 85% | "Indeed", "I see", "Understood", "Certainly" | Maintain flow |
-| **2. Agreement** | 70% | "Precisely", "Correct", "Agreed", "Indeed" | Validate alignment |
-| **3. Building** | 50% | "Additionally...", "Furthermore...", "Building on that..." | Co-construct ideas |
-| **4. Thinking** | 35% | "Let me consider...", "[pause]", "Allow me to think..." | Show processing |
-| **5. Inquiry** | 45% | "What if...", "Why...", "How might...", "Consider..." | Drive exploration |
-| **6. Clarification** | 40% | "To clarify...", "Let me rephrase...", "If I understand correctly..." | Handle confusion |
-| **7. Understanding** | 30% | "I see", "That clarifies it", "Now I understand" | Show breakthroughs |
-| **8. Validation** | 35% | "Excellent question", "Insightful observation", "Valid point" | Build confidence |
-| **9. Redirection** | 20% | "Let us refocus on...", "Perhaps we should...", "Returning to..." | Maintain focus |
-| **10. Recovery** | 15% | "To resume...", "Where we left off...", "Continuing..." | Resume after breaks |
+| # | Pattern | Freq | Markers | Use Case |
+|---|---------|------|---------|----------|
+| **#1** | **Acknowledgment** | 85% | "Indeed", "I see", "Understood", "Certainly" | Maintain flow |
+| **#2** | **Agreement** | 70% | "Precisely", "Correct", "Agreed", "Indeed" | Validate alignment |
+| **#3** | **Building** | 50% | "Additionally...", "Furthermore...", "Building on that..." | Co-construct ideas |
+| **#4** | **Thinking** | 35% | "Let me consider...", "[pause]", "Allow me to think..." | Show processing |
+| **#7** | **Inquiry** | 45% | "What if...", "Why...", "How might...", "Consider..." | Drive exploration |
+| **#6** | **Clarification** | 40% | "To clarify...", "Let me rephrase...", "If I understand correctly..." | Handle confusion |
+| **#5** | **Understanding** | 30% | "I see", "That clarifies it", "Now I understand" | Show breakthroughs |
+| **#9** | **Validation** | 35% | "Excellent question", "Insightful observation", "Valid point" | Build confidence |
+| **#14** | **Redirection** | 20% | "Let us refocus on...", "Perhaps we should...", "Returning to..." | Maintain focus |
+| **#15** | **Recovery** | 15% | "To resume...", "Where we left off...", "Continuing..." | Resume after breaks |
 
 **Quick Example**:
 ```
@@ -38,17 +38,17 @@ After:  Q: Normalization reduces redundancy? A: Precisely. It eliminates duplica
 **Use this to audit completed dialogues.**
 
 ### Diagnostic Scan
-- **Too mechanical?** → Add: "Indeed", "I see", "Certainly"
-- **No thoughtfulness?** → Add: "Let me consider...", "[pause]"
-- **Rigid questions?** → Add: "What if...", "Consider...", "How might..."
-- **Cold tone?** → Add: "Excellent question", "Valid point"
-- **Too scripted?** → Add: "To clarify...", "Let me rephrase..."
-- **No decisions?** → Add: "The trade-off is...", "The options are...", "Let us weigh..."
+- **Too mechanical?** → Add: #1 Acknowledgment ("Indeed", "I see", "Certainly")
+- **No thoughtfulness?** → Add: #4 Thinking ("Let me consider...", "[pause]")
+- **Rigid questions?** → Add: #7 Inquiry ("What if...", "Consider...", "How might...")
+- **Cold tone?** → Add: #9 Validation ("Excellent question", "Valid point")
+- **Too scripted?** → Add: #6 Clarification ("To clarify...", "Let me rephrase...")
+- **No decisions?** → Add: #12 Decision-Making ("The trade-off is...", "The options are...")
 
 ### Application Priority
-**P1 (80/20 core)**: Acknowledgment, Agreement, Building, Thinking, Inquiry, Validation  
-**P2 (context-dependent)**: Clarification, Understanding, Decision-Making, Professional Courtesy  
-**P3 (sparingly)**: Disruption, Disagreement, Meta-reflection
+**P1 (80/20 core)**: #1 Acknowledgment, #2 Agreement, #3 Building, #4 Thinking, #7 Inquiry, #9 Validation  
+**P2 (context-dependent)**: #5 Understanding, #6 Clarification, #8 Critical Analysis, #12 Decision-Making, #13 Strategy, #19 Professional Courtesy, #22 Summary  
+**P3 (sparingly)**: #10 Empathy, #11 Measured Humor, #14 Redirection, #15 Disruption Recovery, #16 Context Rebuild, #17 Disagreement, #18 Session Management, #20 Respect, #21 Reflection
 
 ### Quality Check
 - ✓ Content/facts preserved?
@@ -124,10 +124,11 @@ After:  Q: Normalization reduces redundancy? A: Precisely. It eliminates duplica
 
 **Workflow**:
 1. Preserve all facts (fidelity principle)
-2. Apply P1 patterns first (Acknowledgment, Agreement, Building, Thinking, Inquiry, Validation)
-3. Add P2/P3 contextually (Clarification, Decision-Making, Disruption—sparingly)
-4. Maintain 75% constructive / 25% problem-handling balance
-5. Verify: content unchanged, professional tone, <30% word growth
+2. Apply P1 patterns first (#1-4, #7, #9: Acknowledgment, Agreement, Building, Thinking, Inquiry, Validation)
+3. Add P2 contextually (#5-6, #8, #12-13, #19, #22: Understanding, Clarification, Analysis, Decision, Strategy, Courtesy, Summary)
+4. Use P3 sparingly (#10-11, #14-18, #20-21: Support, Disruption handling, Meta-patterns)
+5. Maintain 75% constructive / 25% problem-handling balance
+6. Verify: content unchanged, professional tone, <30% word growth
 
 **Context Rules**:
 - Simple topics → Minimal dynamics, maintain professionalism
@@ -156,6 +157,20 @@ After:  Q: How do we handle distributed transactions? A: Excellent question. Let
         Q: I see. So each step maintains an undo operation? A: Precisely. Q: What about orchestration versus choreography? 
         A: Insightful follow-up. Allow me to think... [pause] The trade-off involves coordination styles...
 ```
+
+---
+
+## Quick Reference: Pattern Index (MECE)
+
+**All 22 patterns organized by priority tier:**
+
+| Tier | Patterns | Count | Purpose |
+|------|----------|-------|---------|
+| **P1** | #1 Acknowledgment, #2 Agreement, #3 Building, #4 Thinking, #7 Inquiry, #9 Validation | 6 | 80/20 core - use in majority of formal conversations |
+| **P2** | #5 Understanding, #6 Clarification, #8 Critical Analysis, #12 Decision-Making, #13 Strategy, #19 Professional Courtesy, #22 Summary | 7 | Context-dependent - apply based on conversation needs |
+| **P3** | #10 Empathy, #11 Measured Humor, #14 Redirection, #15 Disruption Recovery, #16 Context Rebuild, #17 Disagreement, #18 Session Management, #20 Respect, #21 Reflection | 9 | Special situations - use sparingly and appropriately |
+
+**Coverage verification**: 6 + 7 + 9 = 22 patterns (complete, mutually exclusive, collectively exhaustive)
 
 ---
 

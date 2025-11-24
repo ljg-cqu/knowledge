@@ -7,76 +7,65 @@
 ## Input
 Extracted Q&A pairs from any Extract/ prompt type.
 
-## Core Rules
+## Core Principles
 
-**Language**: Contractions ("Here's", "gonna"), oral markers ("So...", "Well..."), short sentences, fragments
+**Accuracy First**: Preserve all facts, numbers, technical details. When conversational fluency conflicts with accuracy, choose accuracy.
 
-**Fidelity**: Preserve all critical facts, numbers, technical accuracy; no ungrounded additions
+**Conversational Tone**:
+- Contractions: "Here's", "gonna", "that's"
+- Oral markers: "So...", "Well...", "Yep"
+- Short sentences, fragments OK
+- Active voice, natural rhythm
 
-**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+**Self-Contained**: Every exchange includes context. No assumed prior knowledge.
 
-**Transformation**: Formal → conversational; written → spoken; active voice; natural rhythm
+## Format Selection
 
-**Self-contained**: Include context naturally; no assumed prior knowledge
+**Auto-detect**: LLM determines single vs. multi-round based on content complexity.
 
-## Complexity Adaptation
-
-**LLM determines single vs. multi-round automatically**
-
-### Multiple Rounds (2-5) When:
-- 3+ depth layers (concept → mechanism → usage → edge cases)
-- Single answer exceeds 150 words
-- Natural follow-ups exist
-- Understanding needs incremental steps
-
-### Single Round When:
+### Single Round (Default)
+Use when:
+- Answer ≤150 words
 - 1-2 key points
-- Answer fits <150 words
-- No obvious follow-ups
+- No natural follow-ups
 
-### Round Progression
-1. Foundation: Core concept
-2. Mechanism: How it works
-3. Practice: Usage, examples
-4. Nuance: Edge cases, trade-offs
+### Multi-Round (2-5 exchanges)
+Use when:
+- Answer >150 words OR 3+ depth layers
+- Natural follow-ups exist
+- Incremental understanding needed
 
-**Principles**: One focus per round; eliminate filler; leave hooks; self-contained
+**Progression Pattern**:
+1. **Foundation**: Core concept
+2. **Mechanism**: How it works
+3. **Application**: Usage, examples
+4. **Nuance**: Edge cases, trade-offs
 
-**Pacing**: 2 (simple) | 3 (standard) | 4 (complex) | 5 (max, rare)
+**Guidelines**: One focus per round. No filler. Each round self-contained.
 
-## Dynamics (Optional)
+## Conversational Dynamics (Use Sparingly)
 
-Apply selectively: 80% content, 20% dynamics.
+Apply only when it adds clarity. Aim for 80% content, 20% dynamics max.
 
-**Patterns**: Clarify confusion ("Let me rephrase..."), recover interruptions ("Back. Where were we?"), rebuild context ("To recap...")
+**Minimal patterns**: "Let me rephrase...", "Back to...", "So basically..."
 
-**For detailed patterns** → See ConversationDynamics.md
+**Full patterns** → See ConversationDynamics.md
 
 ## Output Format
 
-**Single Round**:
+**Structure**:
 ```
 1. Q: [conversational question]
    A: [conversational answer]
+   
+   Q: [follow-up, if multi-round]
+   A: [next layer]
 ```
 
-**Multi-Round**:
-```
-1. Q: [initial question]
-   A: [foundation answer with hook]
-   
-   Q: [natural follow-up]
-   A: [deeper detail]
-   
-   Q: [edge case/application]
-   A: [practical answer]
-```
-
-**Instructions**:
-- Use `1.` for every item (Markdown auto-numbers)
-- LLM determines single vs. multi-round automatically
-- Output list only—no headings or explanations
-- Keep multi-round exchanges within same numbered item
+**Rules**:
+- Use `1.` for every Q&A pair (Markdown auto-numbers)
+- Multi-round exchanges stay within same numbered item
+- Output conversation list only—no meta-commentary
 
 ## Examples
 

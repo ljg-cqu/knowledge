@@ -9,38 +9,46 @@
 ## Input
 Extracted Q&A pairs from any Extract/ prompt type.
 
-## Presentation Characteristics
+## Core Principles (MECE)
 
-**Language**: Complete sentences, active voice, minimal contractions, precise terminology  
-**Markers**: "Let's examine...", "Moving on...", "To recap...", "First...", "This is critical...", "You might ask..."  
-**Tone**: Professional, authoritative, confident, accessible  
-**Structure**: Hierarchical, formal examples, explicit numbering, logical progression, explicit connectors
+### 1. Fidelity (Non-Negotiable)
+- Preserve all decision-critical content, facts, numbers, technical accuracy
+- No ungrounded additions or speculation
+- **Conflict resolution**: When fluency conflicts with accuracy, always choose accuracy
 
-## Rules
+### 2. Language Transformation
+**Voice & Structure**:
+- Active voice, complete sentences, minimal contractions
+- Hierarchical organization, explicit numbering, logical progression
+- Precise, domain-appropriate terminology
 
-**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions
+**Oral Delivery Markers**:
+- Opening: "Let's examine...", "Consider...", "Today we'll cover..."
+- Transitions: "Moving on...", "Next...", "Building on that..."
+- Emphasis: "This is critical...", "Note that...", "Key point:"
+- Closure: "To recap...", "In summary...", "Key takeaways:"
 
-**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+**Tone**: Professional, authoritative, confident, accessible
 
-**Transformation**: Spoken presentation language with markers, oral delivery structure, formal rhetorical devices  
-**Format**: Question → prompt/introduction; Answer → structured presentation with emphasis cues, numbered/bulleted points  
-**Self-contained**: Provide sufficient context, natural setup
+### 3. Format Conversion
+- **Question → Introduction**: Reframe as presentation prompt/setup with context
+- **Answer → Structured Response**: Use emphasis cues, numbered/bulleted points, signposting
+- **Self-contained**: Provide sufficient context without external dependencies
 
-## Complexity Adaptation
+## Structure Selection (Automatic)
 
-**LLM determines single vs. multi-section automatically**
+**Single Section** (default for concise content):
+- Topic deliverable in one block (<250 words)
+- No obvious sectional breaks
+- 1-2 depth layers
 
-**Use Multi-Section (2-5)** when:
-- 3+ depth layers requiring structured breakdown
+**Multi-Section** (2-5 sections for complex content):
 - Content exceeds 250 words
-- Clear topic divisions (overview → details → application → summary)
+- 3+ depth layers requiring structured breakdown
+- Clear topic divisions present
 - Progressive building needed
 
-**Use Single Section** when:
-- Topic concise, deliverable in one block (<250 words)
-- No obvious sectional breaks
-
-**Multi-Section Structure** (adapt to content):
+**Multi-Section Template** (adapt sections to content):
 1. **Overview**: High-level introduction, framing
 2. **Details**: Core concepts, technical depth
 3. **Application**: Implementation guidance
@@ -48,19 +56,15 @@ Extracted Q&A pairs from any Extract/ prompt type.
 
 **Principles**: Clear signposting, one focus per section, explicit transitions, controlled pacing
 
-## Presentation Dynamics
+## Delivery Enhancement (Optional)
 
-Apply selectively. Balance: 90% content, 10% dynamics.
+Apply selectively when relevant. Maintain 90% content, 10% dynamics.
 
-**Technical Disruptions**: "Technical difficulties aside...", "Before we dropped...", "Let me summarize where we were..."
+**Re-engagement**: "This is critical...", "Why does this matter?", "Let me make this concrete..."
 
-**Re-engagement** (declining attention): "This is critical...", "Why does this matter?", "I know that was a lot. Let me make this concrete..."
+**Context Recovery**: "To recap...", "Before we continue...", "Quick recap: [key point]"
 
-**Context Recovery** (interruptions): "To recap where we were...", "Before the interruption...", "Quick recap: [key point]"
-
-**Audience Questions**: "Excellent question. Let me address that in Q&A...", "Good timing. That connects to what I'm about to cover...", "Hold that thought."
-
-**Audio-Only**: Replace visual references ("as you can see" → "note that"); verbal confirmation ("Are you following?"); shorter chunks; explicit structure ("First...", "Second..."); verbal emphasis (repeat key points, strategic pauses)
+**Audio-Only Adaptation**: Replace visual references ("as you can see" → "note that"), use explicit structure markers ("First...", "Second..."), repeat key points for emphasis
 
 → See ConversationDynamics.md for comprehensive patterns
 
@@ -89,7 +93,7 @@ Apply selectively. Balance: 90% content, 10% dynamics.
 
 ## Examples
 
-### Example 1: Single Section
+### Example 1: Single Section (Concise Content)
 
 **Before**:
 > Q: A loop runs N times, each iteration taking O(log N). What is the total time complexity?
@@ -99,7 +103,9 @@ Apply selectively. Balance: 90% content, 10% dynamics.
 > 1. Q: Let's analyze a time complexity scenario. We have a loop executing N times, with each iteration performing an operation that takes O(log N). What's our total time complexity?
 >    A: Here's how we break this down. First, note that we have N iterations—that's our outer complexity. Second, each individual iteration costs us O(log N). When we multiply these together, we arrive at our total complexity: O(N log N). This is a common pattern in efficient sorting algorithms like mergesort and heapsort. Keep in mind: we're multiplying, not adding, because the logarithmic operation occurs within every single iteration.
 
-### Example 2: Multi-Section
+**Key transformations**: Introduction with context, signposting ("First...", "Second..."), concrete examples, emphasis markers ("Keep in mind:")
+
+### Example 2: Multi-Section (Complex Content)
 
 **Before**:
 > Q: What are the three key principles of database normalization?
@@ -119,3 +125,5 @@ Apply selectively. Balance: 90% content, 10% dynamics.
 >    
 >    **Key Takeaways**
 >    To recap: 1NF removes repetition, 2NF ensures full key dependency, 3NF eliminates indirect relationships. Most applications aim for 3NF as standard.
+
+**Key transformations**: Sectioned structure (Overview → Details → Summary), progressive transitions ("First...", "Moving to...", "Finally..."), recap with synthesis

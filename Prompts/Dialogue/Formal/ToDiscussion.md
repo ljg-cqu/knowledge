@@ -4,59 +4,65 @@
 
 **Input**: Extracted Q&A pairs from any Extract/ prompt type.
 
-## Core Rules
+## Essential Rules (Non-Negotiable)
 
-**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions
+### 1. Accuracy First
+- **Preserve**: All facts, numbers, technical details, decision-critical content
+- **Conflict Resolution**: When fluency conflicts with accuracy, always preserve accuracy
+- **No Additions**: Zero ungrounded information
 
-**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+### 2. Discussion Structure
+- **Speakers**: 2-4 participants with balanced contributions
+- **Turn-Taking**: Structured, professional exchanges
+- **Content Flow**: Q becomes opener; A distributed across collaborative dialogue
+- **Context**: Self-contained—establish context upfront, assume no shared knowledge
 
-**Format**: 
-- 2-4 speakers with balanced contributions
-- Professional conversational language with structured turn-taking
-- Q becomes discussion opener; A distributed across collaborative exchange
-- Self-contained: establish context in opening, no assumed shared knowledge
+### 3. Complexity Adaptation
+**Decision Rule**: Word count + topic complexity determines phases
 
-**Language Style**:
-- Minimal contractions (acceptable: "that's", "it's"; avoid: "we're", "can't")
-- Professional markers ("Let us examine", "As I understand", "Indeed")
-- Complete sentences with formal phrasing
-- Measured, thoughtful responses
+| Criteria | Approach | Implementation |
+|----------|----------|----------------|
+| <200 words, single concept | **Single Phase** | One continuous exchange, no breaks |
+| 200+ words OR 3+ depth layers OR topic shifts | **Multi-Phase** | 2-5 phases with formal transitions |
 
-**Dynamics** (apply selectively):
-- Building/agreeing: "Indeed", "Building on that point...", "Additionally..."
-- Contrasting/clarifying: "However, consider...", "To clarify...", "From another perspective..."
-- Managing: "Let us refocus on...", "What are your thoughts?", "Perhaps we should..."
-
-## Complexity Adaptation
-
-**Single Phase** (<200 words, straightforward topic):
-- One continuous exchange, no phase breaks
-- Topic resolvable in structured dialogue
-
-**Multi-Phase** (200+ words, 3+ depth layers, natural topic shifts):
-- 2-5 phases with formal transitions (e.g., "Let us examine...", "Regarding...", "In the context of...")
+**Multi-Phase Pattern** (apply flexibly):
 - Common progression: Frame → Analysis → Application → Trade-offs
-- Thoughtful turns, one topic per phase, distributed speaking
+- Transitions: "Let us examine...", "Regarding...", "In the context of..."
+- One subtopic per phase
+
+## Style Guidelines (Apply Judiciously)
+
+### Language Formality
+- **Tone**: Professional, measured, thoughtful
+- **Sentences**: Complete, formal phrasing
+- **Contractions**: Minimal (acceptable: "that's", "it's")
+- **Markers**: "Let us examine", "Indeed", "As I understand"
+
+### Discussion Dynamics
+Use selectively to enhance natural flow:
+- **Agreement**: "Indeed", "Building on that point..."
+- **Clarification**: "To clarify...", "From another perspective..."
+- **Transition**: "Let us refocus on...", "What are your thoughts?"
 
 ## Output Format
 
-**Structure**:
+### Structure Template
 ```
 1. Q: [professional discussion opener]
    A: **Speaker A:** [turn]
    
    **Speaker B:** [turn]
    
-   [For multi-phase: formal transition like "Let us examine..."]
+   [Multi-phase only: formal transition]
    
    **A:** [turn]
 ```
 
-**Guidelines**:
-- Use `1.` for every item; Markdown auto-numbers
-- Speaker labels: **A:** / **B:** / **C:** or **Moderator:** / **Panelist 1:** / **Expert:**
-- Multi-phase: keep all phases within same numbered item, separate with blank lines
-- Output list only—no headings or meta-commentary
+### Technical Requirements
+- **Numbering**: Use `1.` for each item (Markdown auto-numbers)
+- **Labels**: **A:** / **B:** / **C:** or **Moderator:** / **Expert:** / **Panelist 1:**
+- **Phases**: Keep within same numbered item, separate with blank lines
+- **Output**: List only—no meta-commentary or headings
 
 ## Examples
 

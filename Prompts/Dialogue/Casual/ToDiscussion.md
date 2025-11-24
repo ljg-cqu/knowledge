@@ -4,16 +4,29 @@
 
 **Input**: Extracted Q&A pairs from any Extract/ prompt type.
 
-## Core Rules
+## Essential Pattern (80/20 Core)
+
+**The Transformation**:
+- Q → Casual discussion opener with context
+- A → Distributed across 2-4 speakers in conversational turns
+- **Preserve**: All facts, numbers, technical accuracy (never compromise)
+- **Add**: Contractions, casual markers ("Yeah", "So..."), natural back-and-forth
+
+**Quick Decision**:
+- **<200 words, simple answer** → Single phase (one continuous exchange)
+- **≥200 words OR multi-layered** → Multi-phase (2-5 phases with transitions)
+
+## Content Preservation (Non-Negotiable)
 
 **Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions
 
 **Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
 
-**Format**: 
+## Structure Rules
+
+**Speaker Configuration**:
 - 2-4 speakers with balanced contributions
-- Casual conversational language with natural turn-taking
-- Q becomes discussion opener; A distributed across collaborative exchange
+- Natural turn-taking: no speaker dominates
 - Self-contained: establish context in opening, no assumed shared knowledge
 
 **Language Style**:
@@ -22,41 +35,41 @@
 - Informal phrasing ("Let's check out", "Okay, so", "Makes sense")
 - Fragments and short responses
 
-**Dynamics** (apply selectively):
+**Conversational Dynamics** (apply selectively):
 - Building/agreeing: "Yeah, exactly", "Building on that...", "Plus..."
 - Clarifying: "Wait, so...", "You mean...?", "So basically..."
 - Managing: "Let's get back to...", "What do you guys think?"
 
-## Complexity Adaptation
+**Phase Structure**:
 
-**Single Phase** (<200 words, straightforward topic):
+*Single Phase* (<200 words, straightforward topic):
 - One continuous exchange, no phase breaks
 - Topic resolvable in direct dialogue
 
-**Multi-Phase** (200+ words, 3+ depth layers, natural topic shifts):
-- 2-5 phases with casual transitions (e.g., "Okay, so...", "What about...", "For our thing:")
+*Multi-Phase* (≥200 words, 3+ depth layers, natural topic shifts):
+- 2-5 phases with casual transitions ("Okay, so...", "What about...", "For our thing:")
 - Common progression: Frame → Deep dive → Application → Trade-offs
 - Short turns, one topic per phase, distributed speaking
 
 ## Output Format
 
-**Structure**:
+**Template**:
 ```
 1. Q: [casual discussion opener]
    A: **Speaker A:** [turn]
    
    **Speaker B:** [turn]
    
-   [For multi-phase: casual transition like "Okay, so..."]
+   [Multi-phase only: casual transition like "Okay, so..."]
    
    **A:** [turn]
 ```
 
-**Guidelines**:
-- Use `1.` for every item; Markdown auto-numbers
+**Formatting Rules**:
+- Numbering: Use `1.` for every item (Markdown auto-numbers)
 - Speaker labels: **A:** / **B:** / **C:** or **Dev1:** / **Dev2:** / **Dev3:**
-- Multi-phase: keep all phases within same numbered item, separate with blank lines
-- Output list only—no headings or meta-commentary
+- Multi-phase: Keep all phases within same numbered item, separate phases with blank lines
+- Output: List only—no headings or meta-commentary
 
 ## Examples
 
