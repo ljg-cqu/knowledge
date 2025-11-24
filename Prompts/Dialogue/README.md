@@ -4,98 +4,154 @@
 
 **Philosophy**: Each guide is complete and independent. Use individually or in combination based on your needs.
 
+**Organization**: Resources organized by formality level (Casual vs Formal) for clear navigation and context-appropriate selection.
+
 ---
 
-## Available Guides
+## Directory Structure
 
-### Vocabulary Precision (Written & Spoken)
+```
+Dialogue/
+├── Casual/              # Informal spoken English
+│   ├── ToConversation.md
+│   ├── ToDiscussion.md
+│   └── ConversationDynamics.md
+│
+├── Formal/              # Professional/academic spoken & written English
+│   ├── ToPresentation.md
+│   ├── ToDiscussion.md
+│   ├── ConversationDynamics.md
+│   ├── DiscourseMarkersPrecision.md
+│   ├── StanceCertaintyPrecision.md
+│   └── AcademicCollocationsPrecision.md
+│
+└── (Root)               # Universal - applies to both casual & formal
+    ├── PrepositionalPrecision.md
+    ├── RegisterFormalityPrecision.md
+    └── README.md
+```
 
-**PrepositionalPrecision.md**
-- Correct preposition usage (at/on/in, verb+prep, efficiency patterns)
-- Covers: spatial, temporal, directional, abstract, collocations, idioms
-- 90% frequency | P0/P1/P2 priority system
+---
 
-**DiscourseMarkersPrecision.md**
+## Casual/ - Informal Oral English
+
+**Use for**: Team chats, peer learning, brainstorming, friendly discussions
+
+### ToConversation.md
+- Transform content to 1-on-1 casual dialogue format
+- Characteristics: contractions, informal verbs (get, find out), oral markers ("So...", "Yeah")
+- Use for: mentoring sessions, friendly chats, casual learning
+
+### ToDiscussion.md (Casual)
+- Transform content to informal multi-party discussion (3+ speakers)
+- Characteristics: casual turn-taking, collaborative building, short sentences
+- Use for: team meetings, brainstorming, peer discussions
+
+### ConversationDynamics.md (Casual)
+- Natural conversation flow patterns for informal contexts
+- Markers: "Mm-hmm", "Yeah", "Got it", "Hmm...", "What if..."
+- Covers: acknowledgment, agreement, thinking, curiosity, validation
+- 95% frequency for casual spoken contexts | Pattern-based system
+
+---
+
+## Formal/ - Professional/Academic Oral & Written English
+
+**Use for**: Presentations, academic discussions, formal meetings, papers, reports
+
+### ToPresentation.md
+- Transform content to formal presentation format
+- Characteristics: complete sentences, minimal contractions, authoritative tone, signposting
+- Use for: formal talks, conference presentations, slide deck narration
+
+### ToDiscussion.md (Formal)
+- Transform content to formal multi-party discussion (panels, academic roundtables)
+- Characteristics: professional discourse, structured turn-taking, precise terminology
+- Use for: academic panels, professional roundtables, formal meetings
+
+### ConversationDynamics.md (Formal)
+- Natural conversation flow patterns for formal contexts
+- Markers: "Indeed", "Precisely", "I see", "Allow me to consider...", "Excellent question"
+- Covers: acknowledgment, agreement, inquiry, validation, professional courtesy
+- 95% frequency for formal spoken contexts | Pattern-based system
+
+### DiscourseMarkersPrecision.md
 - Logical connectors for coherent flow (however, therefore, moreover)
 - Covers: addition, contrast, causation, examples, sequencing, emphasis
 - 85% frequency | P0/P1/P2 priority system
 
-**StanceCertaintyPrecision.md**
+### StanceCertaintyPrecision.md
 - Hedging and claim calibration (may, appears, significantly)
 - Covers: modals, hedging verbs, qualifiers, intensifiers, attribution
 - 80% frequency | P0/P1/P2 priority system
 
-**AcademicCollocationsPrecision.md**
+### AcademicCollocationsPrecision.md
 - Natural word combinations (conduct research, draw conclusions)
 - Covers: academic verbs, data/problems/arguments, methods, impact
 - 75% frequency | P0/P1/P2 priority system
 
-**RegisterFormalityPrecision.md**
-- Context-appropriate formality (get→obtain, contractions, phrasal verbs)
-- Covers: verb formality, quantifiers, intensifiers, personal pronouns
+---
+
+## Root/ - Universal (Both Casual & Formal)
+
+**Use for**: Correctness and formality calibration across all contexts
+
+### PrepositionalPrecision.md
+- Correct preposition usage (at/on/in, verb+prep, efficiency patterns)
+- Covers: spatial, temporal, directional, abstract, collocations, idioms
+- Applies to both casual and formal contexts
+- 90% frequency | P0/P1/P2 priority system
+
+### RegisterFormalityPrecision.md
+- Context-appropriate formality calibration (Chat → Email → Report → Academic)
+- Covers: verb formality, quantifiers, intensifiers, contractions, personal pronouns
+- Explicitly maps formality spectrum
 - 60% frequency | P0/P1/P2 priority system
-
----
-
-### Conversational Dynamics (Spoken)
-
-**ConversationDynamics.md**
-- Natural conversation flow patterns (acknowledgment, building, pauses)
-- Covers: flow dynamics, cognitive load, emotional states, recovery, meta-conversation
-- 95% frequency for spoken contexts | Pattern-based system
-
----
-
-### Format Transformations (Content Restructuring)
-
-**ToConversation.md**
-- Transform content to 1-on-1 casual dialogue format
-- Characteristics: oral expressions, friendly tone, short phrases, contractions
-- Use for: mentoring sessions, friendly chats, casual learning
-
-**ToDiscussion.md**
-- Transform content to multi-party meeting format
-- Characteristics: turn-taking, collaborative building, 3+ participants
-- Use for: team meetings, group problem-solving, brainstorming sessions
-
-**ToPresentation.md**
-- Transform content to formal presentation format
-- Characteristics: structured delivery, signposting, authoritative tone
-- Use for: formal talks, reports, slide deck narration
 
 ---
 
 ## Usage Patterns
 
 **Academic Paper Writing**
-- Use: All 5 Vocabulary Precision guides
+- Location: `Formal/` + Root
+- Use: All Formal/ precision guides + PrepositionalPrecision + RegisterFormalityPrecision
 - Focus: High formality, precise hedging, correct collocations
 
-**Technical Meeting (Spoken)**
-- Use: Vocabulary Precision + ConversationDynamics + ToDiscussion
-- Focus: Natural flow, professional but conversational, turn-taking
-
 **Formal Presentation**
-- Use: Vocabulary Precision + ToPresentation
+- Location: `Formal/`
+- Use: ToPresentation + ConversationDynamics (Formal) + All precision guides
 - Focus: Clear structure, authoritative delivery, signposting
 
+**Academic Panel Discussion**
+- Location: `Formal/`
+- Use: ToDiscussion (Formal) + ConversationDynamics (Formal) + Precision guides
+- Focus: Professional discourse, structured turn-taking, collaborative analysis
+
 **Professional Email**
-- Use: Vocabulary Precision (emphasis on RegisterFormality)
+- Location: Root + `Formal/`
+- Use: RegisterFormalityPrecision + PrepositionalPrecision + DiscourseMarkersPrecision
 - Focus: Context-appropriate formality, clear communication
 
-**Casual Chat**
-- Use: PrepositionalPrecision (basic) + ConversationDynamics + ToConversation
+**Team Meeting (Casual)**
+- Location: `Casual/` + Root
+- Use: ToDiscussion (Casual) + ConversationDynamics (Casual) + PrepositionalPrecision
+- Focus: Natural flow, collaborative, correct but informal
+
+**Casual Chat / Peer Learning**
+- Location: `Casual/` + Root
+- Use: ToConversation + ConversationDynamics (Casual) + PrepositionalPrecision (basic)
 - Focus: Natural flow, correctness without over-formality
 
 **Technical Documentation**
-- Use: Vocabulary Precision (emphasis on DiscourseMarkers)
+- Location: `Formal/` + Root
+- Use: DiscourseMarkersPrecision + PrepositionalPrecision + RegisterFormalityPrecision
 - Focus: Clarity, logical flow, user comprehension
 
 ---
 
 ## Guide Structure
 
-**All Vocabulary Precision guides follow this format**:
+**Precision guides (Formal/ + Root) follow this format**:
 1. Quick Reference (80% coverage, top patterns)
 2. Priority System (P0: must fix → P1: high value → P2: polish)
 3. Standalone Post-Check Workflow
@@ -103,11 +159,12 @@
 5. Examples (progressive complexity)
 6. Summary
 
-**Conversation & Format guides provide**:
+**Conversation & Format guides (Casual/ + Formal/) provide**:
 - Pattern libraries with examples
 - Before/after transformations
 - Context-specific applications
 - Fidelity principles (preserve content accuracy)
+- Formality-appropriate markers and dynamics
 
 ---
 
@@ -137,20 +194,20 @@
 
 ## Coverage Summary
 
-**Vocabulary Precision** (5 guides):
-- Structural relationships: Prepositions
-- Logical flow: Discourse Markers
-- Claim strength: Stance & Certainty
-- Word pairings: Academic Collocations
-- Formality level: Register & Formality
+**Universal Guides** (Root - 2 guides):
+- Structural relationships: PrepositionalPrecision
+- Formality calibration: RegisterFormalityPrecision
 
-**Conversational Style** (1 guide):
-- Natural interaction patterns: Conversation Dynamics
+**Formal Context Guides** (Formal/ - 6 guides):
+- Logical flow: DiscourseMarkersPrecision
+- Claim strength: StanceCertaintyPrecision
+- Word pairings: AcademicCollocationsPrecision
+- Format: ToPresentation, ToDiscussion (Formal), ConversationDynamics (Formal)
 
-**Format Transformation** (3 guides):
-- Casual: ToConversation
-- Collaborative: ToDiscussion
-- Formal: ToPresentation
+**Casual Context Guides** (Casual/ - 3 guides):
+- Format: ToConversation, ToDiscussion (Casual), ConversationDynamics (Casual)
+
+**Total**: 11 guides organized by formality level
 
 **Collective Coverage**: ~95% of fluency gaps across written, spoken, formal, and informal contexts
 
@@ -158,42 +215,57 @@
 
 ## Quick Start
 
-**For Writers (Written Content)**:
-1. Start with PrepositionalPrecision (most common errors)
-2. Add RegisterFormality (context-appropriate tone)
-3. Progress through remaining Vocabulary Precision guides
-4. Use Post-Check workflows to audit completed writing
+**For Formal Writers (Academic Papers, Reports)**:
+1. Start with PrepositionalPrecision (Root - most common errors)
+2. Add RegisterFormalityPrecision (Root - context-appropriate tone)
+3. Use Formal/ precision guides (DiscourseMarkers, StanceCertainty, AcademicCollocations)
+4. Apply Post-Check workflows to audit completed writing
 
-**For Speakers (Spoken Content)**:
-1. Master basic PrepositionalPrecision (correctness foundation)
-2. Apply ConversationDynamics (natural flow)
-3. Use appropriate format transformation guide
-4. Adjust RegisterFormality for context
+**For Formal Speakers (Presentations, Academic Discussions)**:
+1. Master PrepositionalPrecision (Root - correctness foundation)
+2. Choose format: ToPresentation or ToDiscussion (Formal/)
+3. Apply ConversationDynamics (Formal/ - natural flow with professional tone)
+4. Use Formal/ precision guides for language refinement
+
+**For Casual Speakers (Team Chats, Peer Learning)**:
+1. Master basic PrepositionalPrecision (Root - correctness foundation)
+2. Choose format: ToConversation or ToDiscussion (Casual/)
+3. Apply ConversationDynamics (Casual/ - natural informal flow)
+4. Avoid over-formality while maintaining correctness
 
 **For Learners (Progressive Mastery)**:
-1. Focus on Quick Reference sections first (80% coverage)
-2. Master P0 patterns (correctness)
-3. Add P1 patterns (naturalness)
-4. Polish with P2 patterns (sophistication)
+1. Start with Root guides (universal correctness)
+2. Choose Casual/ or Formal/ based on context
+3. Focus on Quick Reference sections first (80% coverage)
+4. Master P0 patterns (correctness) → P1 (naturalness) → P2 (sophistication)
 5. Build intuition through repeated practice
 
 ---
 
-## File List
+## File Organization
 
-1. `PrepositionalPrecision.md` (15.05 KB)
-2. `DiscourseMarkersPrecision.md` (21.26 KB)
-3. `StanceCertaintyPrecision.md` (27.82 KB)
-4. `AcademicCollocationsPrecision.md` (36.66 KB)
-5. `RegisterFormalityPrecision.md` (33.33 KB)
-6. `ConversationDynamics.md` (27.25 KB)
-7. `ToConversation.md` (9.29 KB)
-8. `ToDiscussion.md` (12.11 KB)
-9. `ToPresentation.md` (11.6 KB)
-10. `README.md` (this file)
+**Root (Universal)**:
+- `PrepositionalPrecision.md`
+- `RegisterFormalityPrecision.md`
+- `README.md` (this file)
+
+**Casual/ (Informal Oral)**:
+- `ToConversation.md`
+- `ToDiscussion.md`
+- `ConversationDynamics.md`
+
+**Formal/ (Professional/Academic)**:
+- `ToPresentation.md`
+- `ToDiscussion.md`
+- `ConversationDynamics.md`
+- `DiscourseMarkersPrecision.md`
+- `StanceCertaintyPrecision.md`
+- `AcademicCollocationsPrecision.md`
+
+**Total**: 11 guides organized into 3 locations
 
 ---
 
 **Last Updated**: 2025-11-24  
-**Status**: Complete - 9 guides + index  
+**Status**: Complete - Reorganized by formality level (Casual/Formal/Universal)  
 **Maintainer**: Knowledge Repository Owner
