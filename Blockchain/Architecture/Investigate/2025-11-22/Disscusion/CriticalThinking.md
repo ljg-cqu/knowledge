@@ -1,18 +1,18 @@
 ## 1. Benchmark TPS Numbers vs Real-World Performance
 
-**Q:** When our reports cite Solana, Aptos, and Sui benchmark TPS numbers (like 65,000–160,000 TPS) to argue they're better for "commercial-grade" or latency-sensitive workloads than Ethereum L1, how much weight should we really give those benchmarks for real-world applications?
+**Q:** When our reports cite Solana, Aptos, and Sui benchmark TPS numbers (like 65,000–160,000 TPS) to argue they are better for "commercial-grade" or latency-sensitive workloads than Ethereum L1, how much weight should we really give those benchmarks for real-world applications?
 
 ### Discussion
 
-**Analyst A:** Good question. [pause] My instinct is "not that much" by default. Those TPS numbers usually come from idealized lab conditions—no MEV-style traffic, limited state bloat, fairly homogeneous validator hardware, and clean network conditions.
+**Analyst A:** This is a valid question. [pause] My assessment is that we should be cautious when relying on these benchmarks. Those TPS numbers usually come from idealized lab conditions—no MEV-style traffic, limited state bloat, fairly homogeneous validator hardware, and clean network conditions.
 
-**Engineer B:** Exactly. Moreover, they quietly assume that end-to-end system performance is dominated by L1 TPS. In practice, however, many bottlenecks reside off-chain: wallets, RPC and indexing infra, bridges, compliance and KYC checks. Any of those can eliminate the theoretical throughput edge.
+**Engineer B:** Exactly. Moreover, they often assume that end-to-end system performance is dominated by L1 TPS. In practice, however, many bottlenecks reside off-chain: wallets, RPC and indexing infra, bridges, compliance and KYC checks. Any of those can eliminate the theoretical throughput edge.
 
-**Risk Lead C:** Mm-hmm. Additionally, the claims almost never provide realized mainnet numbers under load. We rarely observe sustained TPS, latency distributions, or outage frequency reported side by side.
+**Risk Lead C:** Additionally, the claims rarely provide realized mainnet numbers under load. We rarely observe sustained TPS, latency distributions, or outage frequency reported side by side.
 
-**Analyst A:** Right. Therefore, benchmarks are a useful hint, but not a decision by themselves.
+**Analyst A:** Right. Therefore, benchmarks are a useful hint, but not a decision by themselves. We should consider them as one of several factors when evaluating real-world performance.
 
-**Engineer B:** Agreed. To treat the argument as strong, we'd want longitudinal production metrics—TPS, p95 latency, uptime, incident counts—for representative workloads across chains, not just a whitepaper chart.
+**Engineer B:** Agreed. To treat the argument as strong, we would want longitudinal production metrics—TPS, p95 latency, uptime, incident counts—for representative workloads across chains, not just a whitepaper chart.
 
 ### Key Issues with Benchmark TPS Claims
 
@@ -72,7 +72,7 @@ To substantiate performance claims, we would need:
 - **Sustained throughput** over extended periods
 - **Off-chain infrastructure** performance analysis
 
-In summary, benchmark TPS alone provides insufficient evidence for real-world performance superiority.
+In summary, benchmark TPS alone provides insufficient evidence for real-world performance superiority. We should consider it as one of several factors when evaluating real-world performance.
 
 ---
 
@@ -82,7 +82,7 @@ In summary, benchmark TPS alone provides insufficient evidence for real-world pe
 
 ### Discussion
 
-**Architect A:** I'd be careful there. The argument tends to overgeneralize from a small set of early incidents, as if the original architectural flaws can never be mitigated—ignoring improvements in client diversity, congestion control, or operational processes.
+**Architect A:** I'd be careful there. The argument tends to overgeneralize from a small set of early incidents, as if the original architectural flaws could never be mitigated—ignoring improvements in client diversity, congestion control, or operational processes.
 
 **Risk Lead B:** Right. Furthermore, it sometimes treats "modular" architectures as automatically safer. However, they have their own systemic risks—bridge failures, sequencer centralization, and data-availability assumptions—that have caused multi-hundred-million-dollar losses.
 
@@ -160,13 +160,13 @@ Overall, a fair comparison must account for both architecture-specific risks and
 
 ### Discussion
 
-**Researcher A:** Hmm, the problem is that each decentralization metric captures only a slice of reality. A high Nakamoto coefficient doesn't tell you about stake delegation patterns, correlated staking providers, client diversity, or jurisdictional clustering.
+**Researcher A:** The central issue is that each decentralization metric captures only a slice of reality. A high Nakamoto coefficient does not tell you about stake delegation patterns, correlated staking providers, client diversity, or jurisdictional clustering.
 
 **Engineer B:** Right. Moreover, those reports often treat a snapshot of the metric as if it were stable. They rarely show how it changes under stress—during slashing events, market crashes, or regulatory shocks.
 
 **Risk Lead C:** Exactly. Additionally, they tend to overlook cross-layer centralization. Custodians, liquid staking protocols, and major RPC or infrastructure providers can concentrate practical control even when the base-layer validator set appears diverse on paper.
 
-**Researcher A:** Got it. Therefore, the raw "higher Nakamoto coefficient → more secure" leap is weak.
+**Researcher A:** Therefore, the raw "higher Nakamoto coefficient → more secure" leap is weak.
 
 **Engineer B:** Agreed. A stronger approach would combine several views: stake and operator concentration, client and implementation diversity, geographic and regulatory dispersion, and observed censorship or MEV behavior during contentious events.
 
@@ -254,15 +254,15 @@ mindmap
 
 ### Discussion
 
-**Engineer A:** Fair question. [pause] It's fair to say that linear, resource-oriented types can eliminate specific bug classes—certain reentrancy or asset-duplication patterns are structurally harder or impossible.
+**Engineer A:** This is a reasonable question. [pause] It is accurate to say that linear, resource-oriented types can eliminate specific bug classes—certain reentrancy or asset-duplication patterns are structurally harder or impossible.
 
-**Security Researcher B:** True. However, the leap from "fewer of these bugs" to "overall platform is safer" is significant. We don't yet have long production histories. Furthermore, much risk lives outside the language semantics.
+**Security Researcher B:** True. However, the leap from "fewer of these bugs" to "overall platform is safer" is significant. We do not yet have long production histories. Furthermore, much risk lives outside the language semantics.
 
 **Risk Lead C:** Exactly. Tooling is still immature. Additionally, there are fewer auditors with deep Move expertise, and consensus or implementation bugs can still bite, regardless of the smart-contract language.
 
 **Engineer A:** Right. Moreover, the evidence we cite is mostly theoretical—language design papers, whitepapers—not empirical metrics like incident rates per LOC or loss amounts compared with EVM over time.
 
-**Security Researcher B:** Mm-hmm. Therefore, a more defensible position is: Move plus formal verification can reduce certain bug classes. Nevertheless, "safer overall" needs empirical backing—audited Move versus Solidity contracts of similar complexity, actual exploit statistics, and a clear separation between "bugs prevented by the type system" and those that still require process and tooling.
+**Security Researcher B:** Therefore, a more defensible position is: Move plus formal verification can reduce certain bug classes. Nevertheless, "safer overall" needs empirical backing—audited Move versus Solidity contracts of similar complexity, actual exploit statistics, and a clear separation between "bugs prevented by the type system" and those that still require process and tooling.
 
 ### Move Language Safety Analysis
 
@@ -383,7 +383,7 @@ $$
 
 ### Discussion
 
-**Architect A:** Good question. They definitely improve the trust model relative to basic multisig bridges. However, stronger is not the same as negligible. You introduce new complexity: relay-chain consensus, light-client implementations, governance layers—all of which can fail.
+**Architect A:** This is an important question. They definitely improve the trust model relative to basic multisig bridges. However, stronger is not the same as negligible. You introduce new complexity: relay-chain consensus, light-client implementations, governance layers—all of which can fail.
 
 **Security Researcher B:** Right. Moreover, the comparisons can be unfair. They pit the worst historical failures of early bridges like Ronin or Wormhole against the design intent of newer protocols, instead of examining currently deployed code and its incident history.
 
@@ -530,7 +530,7 @@ Nevertheless, shared-security architectures represent a meaningful improvement o
 
 **Architect A:** I see this often—the narrative tends to understate centralization and trust issues around rollup sequencers, provers, and upgrade keys. Those can become chokepoints that resemble concentrated validator sets on alternative L1s.
 
-**Engineer B:** Mm-hmm. Furthermore, it assumes that data-availability guarantees and L1 finality are always enough. We rarely see quantitative analysis of how DA failures, client bugs, or reorgs would affect L2 solvency and user funds.
+**Engineer B:** Furthermore, it assumes that data-availability guarantees and L1 finality are always enough. We rarely see quantitative analysis of how DA failures, client bugs, or reorgs would affect L2 solvency and user funds.
 
 **Risk Lead C:** Good point. Moreover, the comparison is usually asymmetric. We celebrate L2 composability on Ethereum but gloss over cross-rollup fragmentation, UX friction in bridging, and week-long fraud windows for optimistic rollups.
 
@@ -699,13 +699,13 @@ graph LR
 
 ### Discussion
 
-**Analyst A:** [pause] That's a stretch. In practice, what we actually observe is revealed preference for specific pilots or products, often tightly scoped. It's not a blanket endorsement of the entire chain's risk profile.
+**Analyst A:** [pause] That is a substantial extrapolation. In practice, what we actually observe is revealed preference for specific pilots or products, often tightly scoped. It is not a blanket endorsement of the entire chain's risk profile.
 
-**Risk Lead B:** Right. Furthermore, there's survivorship and selection bias. We mostly hear about successful pilots, not the internal evaluations that rejected certain chains or limited them to non-systemic roles.
+**Risk Lead B:** Right. Furthermore, there is survivorship and selection bias. We mostly hear about successful pilots, not the internal evaluations that rejected certain chains or limited them to non-systemic roles.
 
 **Compliance Officer C:** Exactly. Moreover, the public write-ups rarely describe the risk controls in place: position limits, insurance, off-chain safeguards, or circuit-breakers that compensate for perceived protocol and ecosystem weaknesses.
 
-**Analyst A:** Got it. Therefore, "institutions are here, thus it's safe for anything" is not a logically sound jump.
+**Analyst A:** Therefore, "institutions are here, thus it's safe for anything" is not a logically sound jump.
 
 **Risk Lead B:** Agreed. To argue robustness more convincingly, we'd want explicit risk disclosures, capital-at-risk thresholds, comparative due-diligence outcomes, and a view of how these institutions actually price blockchain-specific risk versus traditional infrastructure.
 
@@ -830,11 +830,11 @@ $$
 $$
 
 **Example:** A $100B institution with a $10M blockchain pilot has only 0.01% exposure. This reveals:
-- Extreme caution despite public optimism
-- Non-systemic role assignment
-- Limited confidence in platform robustness
+- Suggests extreme caution despite public optimism
+- Points to a non-systemic role assignment
+- May indicate limited confidence in platform robustness
 
-In other words, institutional participation often masks significant risk management controls that limit actual exposure.
+In other words, institutional participation can mask significant risk management controls that limit actual exposure.
 
 ### Required Evidence for Robustness Claims
 
@@ -869,7 +869,7 @@ In other words, institutional participation often masks significant risk managem
 - Hidden in aggregate risk disclosures
 - Competitive information not shared
 
-> **Key Insight:** Institutional adoption signals **willingness to experiment** with specific use cases, NOT a blanket endorsement of platform robustness. Absence of risk disclosures and survivorship bias make it impossible to infer institutional-grade security from public announcements alone.
+> **Key Insight:** Institutional adoption signals **willingness to experiment** with specific use cases, NOT a blanket endorsement of platform robustness. Absence of risk disclosures and survivorship bias mean public announcements alone are insufficient to reliably infer institutional-grade security.
 
 ---
 
@@ -879,9 +879,9 @@ In other words, institutional participation often masks significant risk managem
 
 ### Discussion
 
-**Researcher A:** Honestly, it feels premature. The argument often underestimates network effects and standardization pressure—EVM dominance, tooling reuse, and liquidity gravity can all drive consolidation even when multiple architectures are technically viable.
+**Researcher A:** This conclusion appears premature. The argument often underestimates network effects and standardization pressure—EVM dominance, tooling reuse, and liquidity gravity can all drive consolidation even when multiple architectures are technically viable.
 
-**Strategist B:** Mm-hmm. Moreover, it treats the current 2020–2025 diversity as predictive of steady state, without really modeling consolidation dynamics like M&A, ecosystem failures, regulatory bans, or de facto standards.
+**Strategist B:** Moreover, it treats the current 2020–2025 diversity as predictive of steady state, without really modeling consolidation dynamics like M&A, ecosystem failures, regulatory bans, or de facto standards.
 
 **Analyst C:** Good point. Furthermore, we rarely observe solid economic evidence: developer counts, TVL share, and infrastructure investment are already skewed toward a few architectures, which may foreshadow greater concentration.
 

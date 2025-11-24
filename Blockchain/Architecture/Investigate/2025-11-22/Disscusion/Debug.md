@@ -1,16 +1,16 @@
 ## 1. Misconception: Bitcoin and Ethereum Use the Same Consensus
 
-**Q:** In our 2024–2025 architecture review, someone said Ethereum and Bitcoin both still use Proof-of-Work, so we can treat their consensus and energy profiles as basically the same. What's off about that?
+**Q:** In our 2024–2025 architecture review, someone said Ethereum and Bitcoin both still use Proof-of-Work, so we can treat their consensus and energy profiles as essentially the same. What is inaccurate about that?
 
-**A:** **Analyst:** First correction: Ethereum doesn't use Proof-of-Work anymore. Since the 2022 Merge, mainnet runs Proof-of-Stake with validators staking ETH.
+**A:** **Analyst:** First correction: Ethereum does not use Proof-of-Work anymore. Since the 2022 Merge, mainnet runs Proof-of-Stake with validators staking ETH.
 
 **Engineer:** While Bitcoin stayed on PoW, mining blocks with hash power. If we lump them together, we erase that consensus shift.
 
 **Architect:** Moreover, that shift significantly affects validator incentives, security assumptions, and validator set structure in Ethereum.
 
-**Analyst:** Additionally, the energy profile is completely different. Post‑Merge estimates put Ethereum's energy use down by roughly 99.9% compared with PoW.
+**Analyst:** Additionally, the energy profile is dramatically different. Post‑Merge estimates put Ethereum's energy use down by roughly 99.9% compared with PoW.
 
-**Engineer:** That represents a massive reduction.
+**Engineer:** That represents a substantial reduction.
 
 **Architect:** So for any architecture or energy analysis, we should frame Bitcoin as the canonical PoW settlement chain and Ethereum as a PoS chain with a very different risk and energy profile, not treat them as twins.
 
@@ -59,7 +59,7 @@ graph LR
 | **Validator Economics** | Mining rewards + fees | Staking rewards + fees |
 | **Security Assumptions** | Computational difficulty | Economic stake at risk |
 
-> **Corrected Analysis:** Bitcoin = canonical PoW settlement chain; Ethereum = PoS chain with fundamentally different risk and energy profiles. They are **not** twins.
+> **Corrected Analysis:** Bitcoin = canonical PoW settlement chain; Ethereum = PoS chain with materially different risk and energy profiles. They are **not** twins.
 
 ---
 
@@ -67,7 +67,7 @@ graph LR
 
 **Q:** I heard the Merge directly scaled Ethereum's base layer from about 15–30 TPS to tens of thousands of TPS, so L1 scalability is solved and rollups are now optional. Does that match what the investigation found?
 
-**A:** **Engineer:** Not really. The Merge was primarily a consensus switch—PoW to PoS—and a change in energy and security economics, not a "TPS explosion."
+**A:** **Engineer:** That is not fully accurate. The Merge was primarily a consensus switch—PoW to PoS—and a change in energy and security economics, not a "TPS explosion."
 
 **Architect:** Instead, the investigations describe Ethereum's roadmap as rollup‑centric. Execution load is meant to move to Layer 2s, not be handled entirely on L1.
 
@@ -139,7 +139,7 @@ graph TD
 
 **Engineer:** Nevertheless, it also brings trade‑offs: more state bloat and more complex synchronization across nodes compared to tracking UTXOs.
 
-**Architect:** Therefore, the corrected description is: Ethereum doesn't simply stack scripts on a UTXO model—it adopts an account‑based global state with Turing‑complete contracts, which is a fundamental architectural divergence from Bitcoin.
+**Architect:** Therefore, the corrected description is: Ethereum does not simply stack scripts on a UTXO model—it adopts an account‑based global state with Turing‑complete contracts, which is a major architectural divergence from Bitcoin.
 
 ### State Model Comparison: UTXO vs Account-Based
 
@@ -183,7 +183,7 @@ graph LR
     style J fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
 ```
 
-> **Corrected Description:** Ethereum doesn't stack scripts on UTXO—it uses an **account-based global state** with **Turing-complete contracts**, a **fundamental architectural divergence** from Bitcoin.
+> **Corrected Description:** Ethereum does not stack scripts on UTXO—it uses an **account-based global state** with **Turing-complete contracts**, a **fundamental architectural divergence** from Bitcoin.
 
 ---
 
@@ -337,9 +337,9 @@ graph TD
 
 ## 6. Misconception: Solana Outages Due to Slow Finality
 
-**Q:** Were Solana's multi‑hour outages between 2021–2023 mostly about slow probabilistic finality, kind of like Bitcoin taking a long time to confirm blocks?
+**Q:** Were Solana's multi‑hour outages between 2021–2023 mostly about slow probabilistic finality, similar to Bitcoin taking a long time to confirm blocks?
 
-**A:** **Analyst:** The sources point in a different direction. They attribute those incidents to validator client bugs, spammy or bot‑driven transaction floods, and stress on the network pipeline.
+**A:** **Analyst:** The sources point in a different direction. They attribute those incidents to validator client bugs, spam-like or bot‑driven transaction floods, and stress on the network pipeline.
 
 **Engineer:** In contrast, Solana runs a PoS‑based BFT‑style consensus with PoH assisting ordering. Its failure modes aren't "Bitcoin‑style slow PoW finality."
 
@@ -403,11 +403,11 @@ graph TD
 
 ## 7. Misconception: Polkadot Parachains Bring Their Own Security
 
-**Q:** On Polkadot, is each parachain basically bringing its own validators and economic security, with the relay chain just routing messages and not affecting security—so there's no true shared security?
+**Q:** On Polkadot, is each parachain essentially bringing its own validators and economic security, with the relay chain just routing messages and not affecting security—so there is no true shared security?
 
-**A:** **Architect:** That's almost the opposite of how the investigations describe Polkadot.
+**A:** **Architect:** That is almost the opposite of how the investigations describe Polkadot.
 
-**Analyst:** In reality, the relay chain validators collectively secure all parachains. Parachains don't each run completely isolated validator sets for core security.
+**Analyst:** In reality, the relay chain validators collectively secure all parachains. Parachains do not each run completely isolated validator sets for core security.
 
 **Engineer:** Instead, projects bond DOT through parachain auctions to access that shared validator security on the relay chain.
 
@@ -544,7 +544,7 @@ graph LR
 
 **Q:** Is it accurate to say Cosmos IBC is a completely general bridge protocol that can connect any blockchain regardless of consensus algorithm or state model, with almost no compatibility requirements?
 
-**A:** **Engineer:** That's overstated. The investigations are clear that IBC isn't "plug anything into anything."
+**A:** **Engineer:** That is overstated. The investigations are clear that IBC is not "plug anything into anything."
 
 **Analyst:** Specifically, it was designed around Tendermint‑style BFT chains, and participating chains need to implement specific IBC modules and light‑client verification logic.
 
@@ -612,11 +612,11 @@ graph TD
 
 **A:** **Analyst:** Not according to the materials. They emphasize that rollups execute off‑chain but depend on Ethereum for security and data availability.
 
-**Engineer:** Specifically, EIP‑4844 is a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it doesn't remove the dependence on Ethereum's consensus.
+**Engineer:** Specifically, EIP‑4844 is a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it does not remove the dependence on Ethereum's consensus.
 
 **Architect:** Moreover, rollups still post transaction data and proofs back to L1 so that any honest participant can reconstruct state and enforce correct exits.
 
-**Analyst:** Indeed, that's the whole point of "inheriting security from Ethereum": users can rely on L1 consensus and data availability, not just trust the off‑chain operator.
+**Analyst:** Indeed, that is the whole point of "inheriting security from Ethereum": users can rely on L1 consensus and data availability, not just trust the off‑chain operator.
 
 **Architect:** Therefore, the corrected framing is: cheaper blobs make Ethereum‑secured rollups more scalable; they do not turn Ethereum into an optional convenience layer.
 
@@ -642,7 +642,7 @@ sequenceDiagram
     User->>Rollup: Submit transaction
     Rollup->>Rollup: Execute off-chain
     Rollup->>Ethereum: Post tx data + proofs (via blobs)
-    Note over Ethereum: Data availability guaranteed
+    Note over Ethereum: Data availability enforced at L1
     Ethereum->>Ethereum: Store commitment on-chain
     Note over Ethereum: Security anchored to L1
     Ethereum-->>User: State reconstructable by anyone
@@ -665,7 +665,7 @@ sequenceDiagram
 
 ## 11. Misconception: Move-Based Chains Use Key-Value Storage Like EVM
 
-**Q:** Do Move‑based chains like Aptos and Sui simply store digital assets as arbitrary key–value pairs in a global account map like EVM chains, so they don't meaningfully change how ownership or safety is encoded?
+**Q:** Do Move‑based chains like Aptos and Sui simply store digital assets as arbitrary key–value pairs in a global account map like EVM chains, so they do not meaningfully change how ownership or safety is encoded?
 
 **A:** **Engineer:** The investigations explicitly push back on that. Move is described as resource‑oriented and, in Sui's case, object‑centric.
 
@@ -734,7 +734,7 @@ graph LR
 
 ## 12. Misconception: Block-STM Eliminates Coordination Costs
 
-**Q:** With speculative parallel execution engines like Block‑STM, is it fair to say we don't need conflict detection or rollback anymore—transactions just run in parallel with no coordination cost once parallelism is turned on?
+**Q:** With speculative parallel execution engines like Block‑STM, is it fair to say we do not need conflict detection or rollback anymore—transactions just run in parallel with no coordination cost once parallelism is turned on?
 
 **A:** **Analyst:** DeepSeek's glossary directly contradicts that "free parallelism" idea.
 
@@ -798,13 +798,13 @@ graph TD
 - ❌ **Not free**: Scheduling and rollback mechanisms required
 - ❌ **Not automatic**: Robust tracking of read/write sets needed
 
-> **Corrected Summary:** Parallel execution boosts throughput for **independent** transactions, but **absolutely depends** on robust conflict detection and rollback mechanisms.
+> **Corrected Summary:** Parallel execution boosts throughput for **independent** transactions, but still depends critically on robust conflict detection and rollback mechanisms.
 
 ---
 
 ## 13. Misconception: Lightning and Rollups Have Same Trust Model
 
-**Q:** Since Lightning Network on Bitcoin and rollups on Ethereum both move activity off‑chain, can we treat their trust and security models as basically the same, where users have to trust the off‑chain operators instead of the L1?
+**Q:** Since Lightning Network on Bitcoin and rollups on Ethereum both move activity off‑chain, can we treat their trust and security models as essentially the same, where users have to trust the off‑chain operators instead of the L1?
 
 **A:** **Analyst:** The materials are careful to distinguish those trust models.
 

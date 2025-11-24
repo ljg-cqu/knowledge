@@ -8,9 +8,9 @@
    **PM:** Mm-hmm. Moreover, it exposed earlier assumptions like "all chains basically work like Bitcoin or Ethereum" as way too coarse.
 
    **Architect:** Exactly. If I were explaining this to a non‑technical stakeholder now, I'd frame it as a family of architectures—each with different trade‑offs in state, consensus, and layering—rather than a single template everyone copies.
-   
-   **Researcher:** That's a good reframing. So more like design families than a single blueprint?
-   
+  
+   **Researcher:** That's a good reframing. In other words, more like design families than a single blueprint?
+  
    **Architect:** Precisely.
 
 ---
@@ -85,7 +85,7 @@ mindmap
 
    **Strategist:** Mm-hmm. Additionally, for multi‑chain strategy, the family view sharpens diversification: you consciously spread risk across different architectural bets instead of having accidental concentration.
    
-   **Architect:** That's insightful. So it's more about portfolio thinking than single-chain allegiance?
+   **Architect:** That's insightful. In other words, it's more about portfolio thinking than single-chain allegiance?
    
    **Strategist:** Precisely. Different tools for different jobs.
 
@@ -158,11 +158,11 @@ graph TD
 
    **Engineer B:** Where did your thinking change most?
 
-   **Engineer A:** I used to under‑weight hardware requirements and validator economics. Now I see how those shape real decentralization, not just the whitepaper narrative.
+   **Engineer A:** I used to under‑weight hardware requirements and validator economics. Consequently, I now see how those shape real decentralization, not just the whitepaper narrative.
 
    **SRE:** Mm-hmm. Furthermore, our own SLOs—latency, uptime, fee ceilings—map to specific points on that surface. A chain can be "good" in the abstract but wrong for our target SLOs.
 
-   **Engineer A:** Exactly. So instead of asking "Is it secure and scalable?" we ask "Where on the trilemma surface does this chain actually live given our constraints?"
+   **Engineer A:** Therefore, instead of asking "Is it secure and scalable?" we ask "Where on the trilemma surface does this chain actually live given our constraints?"
    
    **Engineer B:** Oh! That shifts it from binary pass/fail to fit-for-purpose evaluation.
    
@@ -209,7 +209,7 @@ graph TD
     style T fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
-**Key Insight**: No chain "solves" the trilemma—each occupies a specific point on the trade-off surface based on:
+**Key Insight**: No chain appears to "solve" the trilemma in practice; instead, each occupies a specific point on the trade-off surface based on:
 - **Hardware requirements**: Higher specs → fewer validators → less decentralization
 - **Validator economics**: Staking yield, slashing, liquid staking concentration
 - **Real performance**: Sustained TPS under adversarial conditions, not peak benchmarks
@@ -221,7 +221,7 @@ graph TD
 
    **Engineer:** Same. I care more about the effective Nakamoto coefficient, hardware bar, and how much stake sits in a few liquid‑staking providers.
 
-   **Risk Lead:** So when you evaluate Ethereum vs Solana vs Polkadot vs Move chains now, what's your first cut?
+   **Risk Lead:** Given that, when you evaluate Ethereum vs Solana vs Polkadot vs Move chains now, what's your first cut?
 
    **Researcher:** Let me think... [pause] I look at who can realistically join validation, how concentrated economic control is, and how slashing or governance actually work in practice.
 
@@ -325,7 +325,7 @@ graph TB
 1. Q: The investigations show gaps between theoretical TPS claims and sustained performance under spam, MEV, and state bloat. How does this change how you read performance marketing from L1 and L2 projects?
    A: **Engineer A:** I no longer take TPS or latency numbers at face value.
 
-   **Engineer B:** So what do you ask now when a project brags about performance?
+   **Engineer B:** What do you ask now when a project brags about performance?
 
    **Engineer A:** First, hardware specs. Subsequently, adversarial tests: spam, MEV stress, state‑growth scenarios. Finally, outage and degradation history.
 
@@ -386,7 +386,7 @@ $$
 
    **Developer:** I'd want stronger static analysis, better conflict visualization, and more targeted concurrency tests. Additionally, I expect new classes of bugs—subtle race‑like behavior rather than just simple logic mistakes.
    
-   **Architect:** Good observation. So the performance gain comes with a testing tax.
+   **Architect:** Good observation. Therefore, the performance gain comes with a testing tax.
    
    **Developer:** Exactly. No free lunch.
 
@@ -592,14 +592,14 @@ graph LR
 - What **incentives** do validators face (aligned with users, or conflicts)?
 - Are there **conflicts** between validator interests and bridge/user security?
 
-**Insight**: **"More staking ≠ safer"** — concentration, rehypothecation, and governance capture all hide in the details.
+**Insight**: **"More staking is not necessarily safer"** — concentration, rehypothecation, and governance capture all hide in the details.
 
 ---
 
 1. Q: Reading about MiCA's CASP regime, US staking enforcement, and regulatory views on centralization, how has your model of the relationship between technical architecture and legal risk changed?
    A: **Policy Lead:** I now see specific architectural features—validator concentration, sequencer control, bridge governance—as regulatory chokepoints, not just technical trivia.
 
-   **Architect:** So when you look at a chain, you're mentally mapping it to likely CASP obligations or securities‑law scrutiny?
+   **Architect:** In other words, when you look at a chain, you're mentally mapping it to likely CASP obligations or securities‑law scrutiny?
 
    **Policy Lead:** Exactly. A design that looks elegant technically can still be a magnet for enforcement if it centralizes too much power.
 
@@ -612,7 +612,7 @@ graph LR
 1. Q: Case studies of enterprise and institutional adoption—Onyx on Ethereum, Visa and stablecoins on Ethereum and Solana, Sui institutional products—show different alignment patterns. How does this reframe the question "Which L1 is enterprise‑ready?" for you?
    A: **Enterprise Architect:** I used to over‑weight TPS and fees. These examples highlight that enterprises actually prioritized governance clarity, tooling, auditability, and uptime.
 
-   **PM:** So marketing emphasized raw performance, but buying decisions leaned on reliability and compliance stories.
+   **PM:** In other words, marketing emphasized raw performance, but buying decisions leaned on reliability and compliance stories.
 
    **Enterprise Architect:** Exactly. Therefore, when I ask which L1 is "enterprise‑ready," I'm evaluating roadmap credibility, ecosystem health, support tooling, and governance maturity ahead of peak throughput numbers.
 
@@ -717,11 +717,11 @@ mindmap
 
    **Cryptographer:** Hmm... [pause] SNARKs for succinct verification in constrained environments, STARKs when transparency and post‑quantum hints matter, and no‑ZK when simplicity and auditability beat privacy.
 
-   **Policy Lead:** Interesting. Moreover, ZK clearly reshapes the trade‑offs between transparency, compliance, and user privacy.
+   **Policy Lead:** Interesting. Moreover, ZK can significantly reshape the trade‑offs between transparency, compliance, and user privacy.
 
    **Cryptographer:** True. However, it introduces new risks—trusted setup, prover centralization, circuit bugs—that we now need to track as first‑class concerns.
    
-   **Architect:** So it's not a silver bullet—just another tool with trade-offs.
+   **Architect:** Overall, it's not a silver bullet—just another tool with trade-offs.
    
    **Cryptographer:** Exactly.
 
@@ -758,15 +758,15 @@ Privacy/Compression ←───────────────────
 ---
 
 1. Q: After comparing performance tables and discussions of state growth, what new questions will you ask about storage, archival requirements, and node operation before trusting performance numbers from any L1 or L2?
-   A: **SRE:** I'll immediately ask who can realistically run full and archive nodes under the storage and bandwidth assumptions.
+   A: **SRE:** I will immediately ask who can realistically run full and archive nodes under the storage and bandwidth assumptions.
 
    **Engineer:** Therefore, TPS without node‑operation data is a red flag.
 
    **SRE:** Exactly. Specifically, I want explicit storage and bandwidth metrics next to TPS claims.
 
-   **Architect:** Additionally, you're also thinking about how state‑growth constraints might cap long‑term viability for high‑throughput designs, right?
+   **Architect:** Additionally, you are also thinking about how state‑growth constraints might cap long‑term viability for high‑throughput designs, right?
 
-   **SRE:** Indeed. Throughput that only a handful of data centers can keep up with doesn't look like sustainable decentralization.
+   **SRE:** Indeed. Throughput that only a handful of data centers can keep up with does not look like sustainable decentralization.
    
    **Engineer:** Good point. Accessibility matters.
    
@@ -798,7 +798,7 @@ $$
 - Is state growth rate sustainable over 5-10 years?
 - Are pruning and archival strategies well-defined?
 
-**Decentralization Reality**: Throughput that only data centers can sustain ≠ sustainable decentralization
+**Decentralization Reality**: Throughput that only data centers can sustain is unlikely to be consistent with sustainable decentralization in practice.
 
 ---
 
@@ -1006,10 +1006,10 @@ graph TD
 - **Interoperability patterns**: IBC, XCMP, light clients, ZK bridges
 
 **Ecosystem Structure Prediction**:
-- **Power concentration**: 3-5 dominant stacks (Bitcoin, Ethereum, 2-3 high-performance chains)
-- **Long tail**: Meaningful specialized chains (privacy, compliance, domain-specific)
-- **Permanent heterogeneity**: No single chain converges everything
-- **Structural challenges**: Coordination overhead, MEV, bridge risk as permanent features
+- **Power concentration**: Likely centered on 3–5 dominant stacks (Bitcoin, Ethereum, 2–3 high-performance chains)
+- **Long tail**: Likely to include meaningful specialized chains (privacy, compliance, domain-specific)
+- **Persistent heterogeneity**: A single chain converging everything seems unlikely
+- **Structural challenges**: Coordination overhead, MEV, and bridge risk look like long-lived structural features
 
 **Design Principle**: **Multi-chain-first mindset** — build for reality, not ideal consolidation.
 
@@ -1108,7 +1108,7 @@ Year 5+: Strategic Position
 ```
 
 **Hedging Against Uncertainty**:
-- ✅ **Don't bet on frozen snapshot**: Ecosystem evolves rapidly
+- ✅ **Do not bet on a frozen snapshot**: Ecosystem evolves rapidly
 - ✅ **Value optionality**: Ability to pivot > short-term optimization
 - ✅ **Stage commitments**: Increase exposure over time as validation occurs
 - ✅ **Build exit ramps**: Explicit migration paths in architecture

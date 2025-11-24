@@ -5,11 +5,11 @@
 ### Bitcoin Throughput
 
 1. Q: ___ Bitcoin's original Layer 1 design that combines consensus, execution, and data availability ___ a single monolithic chain, what kind ___ on‑chain throughput does this achieve?
-   A: **Researcher A:** Indeed, it's surprisingly low ___ terms of raw TPS—roughly ___ the single digits.
+   A: **Researcher A:** Indeed, it is surprisingly low ___ terms of raw TPS—roughly ___ the single digits.
 
       **Engineer B:** The investigations put it ___ 3–7 transactions ___ second on‑chain.
 
-      **A:** Precisely. This is tiny compared ___ Visa‑style systems; however, it matches Bitcoin's choice ___ prioritize security and decentralization over throughput.
+      **A:** Precisely. This level is extremely low compared ___ Visa‑style systems; however, it matches Bitcoin's choice ___ prioritize security and decentralization over throughput.
 
       **Product C:** Understood. Therefore, that 3–7 TPS number represents the trade‑off: strong censorship resistance, limited Layer 1 throughput.
    
@@ -125,7 +125,7 @@ graph TD
 
       **A:** Precisely. Thus: September 15, 2022, and roughly 99.98% lower energy use after moving ___ Proof‑of‑Stake.
 
-      **B:** That's substantial.
+      **B:** That is substantial.
    
    [Answers: on, 99.98, to]
 
@@ -138,7 +138,7 @@ $$
 ### Post-Merge Consensus
 
 1. Q: After The Merge, what consensus mechanism secures Ethereum instead ___ Proof‑of‑Work mining?
-   A: **Engineer A:** Since the Merge, it's fully ___ Proof‑of‑Stake now.
+   A: **Engineer A:** Since the Merge, it is fully ___ Proof‑of‑Stake now.
 
       **Architect B:** Indeed—validators stake ETH, propose and attest ___ blocks, and get rewarded or slashed accordingly.
 
@@ -202,7 +202,7 @@ $$
 1. Q: EIP‑4844 (proto‑danksharding) introduced blob data space. Roughly how much did this cut typical rollup data costs?
    A: **Engineer A:** ___ EIP‑4844, the cited figure is around a ___% reduction.
 
-      **Architect B:** That's substantial—95% lower data costs ___ rollups means sustainable low‑fee transactions ___ Layer 2.
+      **Architect B:** That is substantial—95% lower data costs ___ rollups means sustainable low‑fee transactions ___ Layer 2.
 
       **A:** Precisely. Therefore, EIP‑4844 → new blob space → about 95% cost reduction ___ rollup data.
 
@@ -280,9 +280,9 @@ graph TB
 ### Consensus Innovation
 
 1. Q: Solana aims ___ high throughput ___ Layer 1. What special mechanism does it pair ___ Proof‑of‑Stake to order events before consensus?
-   A: **Engineer A:** ___ Solana's case, that's ___.
+   A: **Engineer A:** ___ Solana's case, that is ___.
 
-      **Researcher B:** Indeed. Specifically, it's a cryptographic clock that gives a verifiable ordering ___ events.
+      **Researcher B:** Indeed. Specifically, it is a cryptographic clock that gives a verifiable ordering ___ events.
 
       **A:** Precisely. Therefore, Solana combines Proof‑of‑Stake ___ Proof‑of‑History to sequence transactions before running consensus.
 
@@ -454,7 +454,7 @@ graph TD
 
       **A:** Precisely. Therefore, 5‑of‑9 multisig was a concrete example ___ how concentrated and fragile those setups were.
 
-      **B:** That's concerning.
+      **B:** That is concerning.
    
    [Answers: of, on, In, as, 5, 9, With, of]
 
@@ -467,7 +467,8 @@ graph TD
 
       **A:** Exactly. Therefore, we should remember: three hacks, more than $___ billion gone.
 
-      **B:** That's substantial.
+      **B:** That is substantial.
+
    
    [Answers: in, to, In, 2, as, 2]
 
@@ -659,7 +660,7 @@ graph TD
 
       **Engineer B:** Indeed. Specifically, one headline number is around 100,000+ TPS ___ controlled tests.
 
-      **A:** Precisely. Therefore, "~100,000 TPS" is the rough benchmark figure we should remember, ___ the caveat that it's ___ lab conditions.
+      **A:** Precisely. Therefore, "~100,000 TPS" is the rough benchmark figure we should remember, ___ the caveat that it is ___ lab conditions.
 
       **B:** Understood.
    
@@ -756,7 +757,7 @@ graph TD
 ### EU MiCA Framework
 
 1. Q: ___ the EU's MiCA framework, many user‑facing crypto businesses fall ___ which regulated category, and what does that imply?
-   A: **Policy A:** ___ MiCA, they're treated ___ Crypto‑Asset Service Providers—CASPs.
+   A: **Policy A:** ___ MiCA, they are treated ___ Crypto‑Asset Service Providers—CASPs.
 
       **Researcher B:** Indeed. CASP status means they must obtain authorization, comply ___ AML/KYC, and maintain local governance.
 
@@ -894,11 +895,11 @@ graph TD
 ### Nakamoto Coefficient
 
 1. Q: What does the Nakamoto Coefficient measure ___ the context ___ blockchain security?
-   A: **Researcher A:** Formally, it's the minimum number ___ independent entities—like validators or mining pools—whose collusion could corrupt the network.
+   A: **Researcher A:** Formally, it is the minimum number ___ independent entities—like validators or mining pools—whose collusion could corrupt the network.
 
       **Engineer B:** Indeed. A lower coefficient means fewer actors need to collude, thus indicating higher centralization risk.
 
-      **A:** Precisely. Therefore, the Nakamoto Coefficient quantifies how many entities you'd need to control to corrupt or control the chain.
+      **A:** Precisely. Therefore, the Nakamoto Coefficient quantifies how many entities an attacker would need to control to corrupt or control the chain.
 
       **B:** Understood.
    
@@ -973,11 +974,11 @@ $$
 1. Q: ___ the rollup‑centric danksharding roadmap, what's the target number ___ data shards, and what ecosystem‑wide throughput do they aim ___ together ___ Layer 2s?
    A: **Architect A:** Roadmap‑wise, the plan is ___ ___ data shards.
 
-      **Researcher B:** Right. ___ those shards plus rollups, the goal is roughly 100k+ TPS ___ the ecosystem.
+      **Researcher B:** Indeed. ___ those shards plus rollups, the goal is roughly 100k+ TPS ___ the ecosystem.
 
       **A:** Exactly. Therefore, the shorthand is: 64 shards targeting about 100k+ TPS ___ aggregate.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: In, of, for, with, for, 64, with, across, in]
 
@@ -1016,13 +1017,13 @@ timeline
 ### Generational Drivers
 
 1. Q: What central qualitative lesson do the investigations draw ___ why new blockchain architecture generations appear?
-   A: **Researcher A:** Big picture, they mainly appear to fix specific limitations ___ previous designs.
+   A: **Researcher A:** At a high level, they mainly appear to address specific limitations ___ previous designs.
 
-      **Engineer B:** Right. Things ___ scalability, security, or interoperability, rather ___ purely academic improvements.
+      **Engineer B:** Indeed. Things ___ scalability, security, or interoperability, rather ___ purely academic improvements.
 
       **A:** Exactly. Thus, each generation is a reaction ___ concrete pain points—scalability, security, interoperability—more ___ a quest ___ elegance alone.
 
-      **B:** Makes sense.
+      **B:** That is clear.
    
    [Answers: about, of, like, than, to, than, for]
 
@@ -1040,7 +1041,7 @@ timeline
 1. Q: Even ___ secure base layers, which component does the report indicate remains a systemic risk, capable ___ causing substantial losses when it fails?
    A: **Researcher A:** ___ practice, bridges.
 
-      **Engineer B:** Right. The reports emphasize that weaknesses ___ bridge design and implementation can still lead ___ multi‑hundred‑million‑dollar losses.
+      **Engineer B:** Indeed. The reports emphasize that weaknesses ___ bridge design and implementation can still lead ___ multi‑hundred‑million‑dollar losses.
 
       **A:** Exactly. Therefore, even if the L1s are solid, bridge failures remain a systemic risk.
 
@@ -1048,7 +1049,7 @@ timeline
    
    [Answers: with, of, In, in, to]
 
-> **Key Insight**: Bridge security is the weakest link in cross-chain infrastructure. Even with secure base layers, bridge vulnerabilities have caused >$2B in losses (2021-2022).
+> **Key Insight**: In practice, bridge security has emerged as a critical weak point in cross-chain infrastructure. Even with secure base layers, bridge vulnerabilities have caused losses of more than $2B (2021-2022).
 
 ---
 
@@ -1059,7 +1060,7 @@ timeline
 1. Q: Finally, what market projection do the investigations cite ___ blockchain interoperability ___ 2025 ___ 2035?
    A: **Researcher A:** Projection‑wise, they estimate growth ___ about $___ million ___ 2025.
 
-      **Engineer B:** Right. Up to roughly $___ billion ___ 2035.
+      **Engineer B:** Indeed. Up to roughly $___ billion ___ 2035.
 
       **A:** Exactly. Therefore, the forecast is $332.8 million → $1.83 billion ___ the interoperability market ___ that decade.
 
