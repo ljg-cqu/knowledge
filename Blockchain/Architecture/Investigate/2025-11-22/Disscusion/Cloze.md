@@ -5,13 +5,13 @@
 ### Bitcoin Throughput
 
 1. Q: ___ Bitcoin's original Layer 1 design that combines consensus, execution, and data availability ___ a single monolithic chain, what kind ___ on‑chain throughput does this achieve?
-   A: **Researcher A:** Right, it's surprisingly low ___ terms of raw TPS—roughly ___ the single digits.
+   A: **Researcher A:** Indeed, it's surprisingly low ___ terms of raw TPS—roughly ___ the single digits.
 
       **Engineer B:** The investigations put it ___ 3–7 transactions ___ second on‑chain.
 
-      **A:** Exactly. Which is tiny compared ___ Visa‑style systems, but it matches Bitcoin's choice ___ prioritize security and decentralization over throughput.
+      **A:** Precisely. This is tiny compared ___ Visa‑style systems; however, it matches Bitcoin's choice ___ prioritize security and decentralization over throughput.
 
-      **Product C:** Got it. So that 3–7 TPS number is the trade‑off: strong censorship resistance, limited Layer 1 throughput.
+      **Product C:** Understood. Therefore, that 3–7 TPS number represents the trade‑off: strong censorship resistance, limited Layer 1 throughput.
    
    [Answers: For, in, of, in, in, around, per, to, to]
 
@@ -29,11 +29,11 @@
 1. Q: Ethereum also started ___ a largely monolithic design. ___ its early base layer, what kind ___ transaction throughput did it typically achieve before rollups became central?
    A: **Engineer A:** ___ practice, the reports describe Ethereum's early mainnet ___ handling ___ the order ___ tens of TPS.
 
-      **Architect B:** Right. More concretely, about 15–30 transactions ___ second ___ the base layer.
+      **Architect B:** Indeed. More concretely, about 15–30 transactions ___ second ___ the base layer.
 
-      **A:** Exactly. Which explains why DeFi and NFT waves quickly encountered scalability limits—15–30 TPS cannot handle global demand.
+      **A:** Precisely. This explains why DeFi and NFT waves quickly encountered scalability limits—15–30 TPS cannot handle global demand.
 
-      **Product C:** Makes sense. That 15–30 TPS window is what pushed the ecosystem ___ Layer 2 rollups.
+      **Product C:** Understood. Therefore, that 15–30 TPS window is what pushed the ecosystem ___ Layer 2 rollups.
    
    [Answers: as, On, of, In, as, on, of, per, on, toward]
 
@@ -46,11 +46,11 @@
 1. Q: When people discuss the blockchain "scalability trilemma", which three properties are considered to be ___ tension?
    A: **Architect A:** Textbook one—the classic trio is decentralization, security, ___ scalability.
 
-      **Engineer B:** Right. So the idea is: you cannot usually maximize all three ___ once—improving one tends ___ exert pressure on the others.
+      **Engineer B:** Indeed. Thus, the idea is: you cannot usually maximize all three ___ once—improving one tends ___ exert pressure on the others.
 
-      **A:** Exactly. Every architecture we studied essentially chooses a point ___ that decentralization–security–scalability space.
+      **A:** Precisely. Every architecture we studied essentially chooses a point ___ that decentralization–security–scalability space.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: about, in, and, at, to, in]
 
@@ -98,9 +98,9 @@ graph TD
 
       **Engineer B:** Ethereum shifted ___ an account model instead.
 
-      **A:** Right. And Sui/Aptos go further ___ object‑ or resource‑oriented models.
+      **A:** Indeed. Furthermore, Sui/Aptos go further ___ object‑ or resource‑oriented models.
 
-      **B:** Got it. So if we summarize: Bitcoin → ___, Ethereum → ___, Sui/Aptos → object/resource‑oriented.
+      **B:** Understood. Therefore, if we summarize: Bitcoin → ___, Ethereum → ___, Sui/Aptos → object/resource‑oriented.
    
    [Answers: At, with, to, with, UTXO, account]
 
@@ -121,9 +121,9 @@ graph TD
 1. Q: Ethereum's "Merge" was a major milestone. When did it happen, and how much did it reduce energy consumption?
    A: **Engineer A:** Historically, the Merge occurred ___ September 15, 2022.
 
-      **Researcher B:** Right. And the energy impact was dramatic—about a ___% reduction.
+      **Researcher B:** Indeed. Moreover, the energy impact was dramatic—about a ___% reduction.
 
-      **A:** Exactly. So: September 15, 2022, and roughly 99.98% lower energy use after moving ___ Proof‑of‑Stake.
+      **A:** Precisely. Thus: September 15, 2022, and roughly 99.98% lower energy use after moving ___ Proof‑of‑Stake.
 
       **B:** That's substantial.
    
@@ -140,11 +140,11 @@ $$
 1. Q: After The Merge, what consensus mechanism secures Ethereum instead ___ Proof‑of‑Work mining?
    A: **Engineer A:** Since the Merge, it's fully ___ Proof‑of‑Stake now.
 
-      **Architect B:** Right—validators stake ETH, propose and attest ___ blocks, and get rewarded or slashed accordingly.
+      **Architect B:** Indeed—validators stake ETH, propose and attest ___ blocks, and get rewarded or slashed accordingly.
 
-      **A:** Exactly. So when we discuss Ethereum post‑Merge, the consensus backbone is ___.
+      **A:** Precisely. Therefore, when we discuss Ethereum post‑Merge, the consensus backbone is ___.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: of, on, to, Proof‑of‑Stake]
 
@@ -183,11 +183,11 @@ sequenceDiagram
 1. Q: ___ Ethereum's rollup‑centric roadmap, how much can Layer 2 rollups reduce costs and increase effective throughput compared ___ the base layer?
    A: **Researcher A:** ___ costs, the numbers ___ the investigations are quite aggressive—rollups can reduce transaction costs ___ about ___–___×.
 
-      **Engineer B:** And that cost reduction translates ___ much higher effective throughput ___ the user level.
+      **Engineer B:** Additionally, that cost reduction translates ___ much higher effective throughput ___ the user level.
 
-      **A:** Right. So we should remember that 10–100× drop ___ costs as a core justification ___ the rollup‑centric strategy.
+      **A:** Indeed. Thus, we should remember that 10–100× drop ___ costs as a core justification ___ the rollup‑centric strategy.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: In, to, On, in, by, 10, 100, into, at, in, for]
 
@@ -204,9 +204,9 @@ $$
 
       **Architect B:** That's substantial—95% lower data costs ___ rollups means sustainable low‑fee transactions ___ Layer 2.
 
-      **A:** Exactly. So, EIP‑4844 → new blob space → about 95% cost reduction ___ rollup data.
+      **A:** Precisely. Therefore, EIP‑4844 → new blob space → about 95% cost reduction ___ rollup data.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: For, 95, for, on, for]
 
@@ -225,13 +225,13 @@ $$
 1. Q: ___ the layered architecture described ___ the investigations, what are the primary roles of Layer 0, Layer 1, and Layer 2?
    A: **Architect A:** Layer 0 focuses ___ interoperability and shared security.
 
-      **Engineer B:** Right. Layer 1 is ___ consensus and base security.
+      **Engineer B:** Indeed. Layer 1 is ___ consensus and base security.
 
-      **A:** And Layer 2 is where execution scaling happens.
+      **A:** Additionally, Layer 2 is where execution scaling happens.
 
-      **B:** Got it. Plus, Layer 3 is mentioned ___ application‑specific customization—but the core trio is: interoperability ___ Layer 0, consensus ___ Layer 1, execution ___ Layer 2.
+      **B:** Understood. Furthermore, Layer 3 is mentioned ___ application‑specific customization—however, the core trio is: interoperability ___ Layer 0, consensus ___ Layer 1, execution ___ Layer 2.
 
-      **A:** Exactly.
+      **A:** Precisely.
    
    [Answers: In, in, on, about, as, at, at, at]
 
@@ -282,11 +282,11 @@ graph TB
 1. Q: Solana aims ___ high throughput ___ Layer 1. What special mechanism does it pair ___ Proof‑of‑Stake to order events before consensus?
    A: **Engineer A:** ___ Solana's case, that's ___.
 
-      **Researcher B:** Right. Essentially a cryptographic clock that gives a verifiable ordering ___ events.
+      **Researcher B:** Indeed. Specifically, it's a cryptographic clock that gives a verifiable ordering ___ events.
 
-      **A:** Exactly. So Solana combines Proof‑of‑Stake ___ Proof‑of‑History to sequence transactions before running consensus.
+      **A:** Precisely. Therefore, Solana combines Proof‑of‑Stake ___ Proof‑of‑History to sequence transactions before running consensus.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: for, at, with, In, Proof‑of‑History, of, with]
 
@@ -302,11 +302,11 @@ graph TB
 
       **Researcher B:** ___ is ___ block propagation.
 
-      **A:** Right. And ___ is the parallel program execution engine.
+      **A:** Indeed. Additionally, ___ is the parallel program execution engine.
 
-      **B:** Got it. So the trio is: Gulf Stream, Turbine, and Sealevel.
+      **B:** Understood. Thus, the trio is: Gulf Stream, Turbine, and Sealevel.
 
-      **A:** Correct.
+      **A:** Precisely.
    
    [Answers: in, for, On, Gulf Stream, Turbine, for, Sealevel]
 
@@ -325,9 +325,9 @@ graph TB
 1. Q: Marketing and technical materials often quote a theoretical upper‑bound TPS ___ Solana. What's the number ___ ideal lab conditions?
    A: **Researcher A:** Marketing‑wise, the frequently cited figure is around ___ TPS.
 
-      **Engineer B:** Right—"up to ~65,000 transactions ___ second" ___ idealized benchmarks.
+      **Engineer B:** Indeed—"up to ~65,000 transactions ___ second" ___ idealized benchmarks.
 
-      **A:** The key is to treat that 65,000 TPS ___ a theoretical limit, not everyday real‑world throughput.
+      **A:** However, the key is to treat that 65,000 TPS ___ a theoretical limit, not everyday real‑world throughput.
    
    [Answers: for, under, 65,000, per, in, as]
 
@@ -336,11 +336,11 @@ graph TB
 1. Q: Between 2021 and 2024, what major reliability concern repeatedly occurred ___ Solana mainnet?
    A: **Engineer A:** The primary one was repeated network ___.
 
-      **Researcher B:** Right. Often tied ___ spam attacks or software bugs that stalled block production.
+      **Researcher B:** Indeed. These were often tied ___ spam attacks or software bugs that stalled block production.
 
-      **A:** Exactly. So when we summarize Solana's risk profile, we have to mention those outages ___ a key reliability issue.
+      **A:** Precisely. Therefore, when we summarize Solana's risk profile, we must mention those outages ___ a key reliability issue.
 
-      **B:** Good point.
+      **B:** Understood.
    
    [Answers: for, outages, to, as]
 
@@ -353,11 +353,11 @@ graph TB
 1. Q: How does Polkadot's interoperability model work ___ a high level, according ___ the investigations?
    A: **Architect A:** Conceptually, it centers ___ a relay chain that provides shared security.
 
-      **Engineer B:** And that relay chain secures multiple parachains, which are sovereign blockchains.
+      **Engineer B:** Additionally, that relay chain secures multiple parachains, which are sovereign blockchains.
 
-      **A:** Right. So the model is: a relay chain plus parachains, ___ shared security spreading ___ them.
+      **A:** Precisely. Thus, the model is: a relay chain plus parachains, ___ shared security spreading ___ them.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: at, to, on, with, across]
 
@@ -401,11 +401,11 @@ graph TD
 1. Q: What economic mechanism do Polkadot parachain slot auctions rely ___, and which token is locked up?
    A: **Researcher A:** Economically, projects bid ___ parachain slots ___ locking ___.
 
-      **Engineer B:** Right. The idea is that locking significant amounts ___ DOT aligns their incentives ___ the network's security.
+      **Engineer B:** Indeed. The idea is that locking significant amounts ___ DOT aligns their incentives ___ the network's security.
 
-      **A:** Exactly. So parachain auctions → lock up DOT → economic skin ___ the game.
+      **A:** Precisely. Therefore, parachain auctions → lock up DOT → economic skin ___ the game.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: on, for, by, DOT, of, with, in]
 
@@ -414,11 +414,11 @@ graph TD
 1. Q: Cosmos's IBC protocol, launched around 2021, relies ___ what key component ___ each chain to verify cross‑chain messages?
    A: **Engineer A:** Mechanically, each chain runs a ___ ___ ___ the other chain.
 
-      **Researcher B:** Right. That light client verifies headers and Merkle proofs, so messages can be trusted ___ centralized custodians.
+      **Researcher B:** Indeed. That light client verifies headers and Merkle proofs, therefore messages can be trusted ___ centralized custodians.
 
-      **A:** Exactly. So the core building block is the on‑chain ___ ___.
+      **A:** Precisely. Thus, the core building block is the on‑chain ___ ___.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: on, on, light, client, for, without, light, client]
 
@@ -433,9 +433,9 @@ graph TD
 1. Q: ___ 2024, how widely had Cosmos IBC been adopted, and roughly how much cross‑chain traffic did it handle annually?
    A: **Researcher A:** Adoption‑wise, it reached ___ the order ___ about ___ chains.
 
-      **Engineer B:** And it was moving tens ___ millions ___ cross‑chain transfers ___ year inside that ecosystem.
+      **Engineer B:** Additionally, it was moving tens ___ millions ___ cross‑chain transfers ___ year inside that ecosystem.
 
-      **A:** Right. So the headline is: ~120 chains and tens of millions of IBC transfers annually.
+      **A:** Indeed. Therefore, the headline is: ~120 chains and tens of millions of IBC transfers annually.
 
       **B:** Impressive.
    
@@ -450,9 +450,9 @@ graph TD
 1. Q: Early trusted multisig bridges like Ronin, Wormhole, and Poly Network used m‑of‑n signatures. What low threshold did some ___ them rely ___, and why was that risky?
    A: **Researcher A:** ___ some early designs, thresholds went as low ___ ___‑of‑___.
 
-      **Engineer B:** Right. ___ 5‑of‑9, compromising only five keys allows an attacker to drain the bridge.
+      **Engineer B:** Indeed. ___ 5‑of‑9, compromising only five keys allows an attacker to drain the bridge.
 
-      **A:** Exactly. So 5‑of‑9 multisig was a concrete example ___ how concentrated and fragile those setups were.
+      **A:** Precisely. Therefore, 5‑of‑9 multisig was a concrete example ___ how concentrated and fragile those setups were.
 
       **B:** That's concerning.
    

@@ -6,7 +6,7 @@
 
 **Engineer:** While Bitcoin stayed on PoW, mining blocks with hash power. If we lump them together, we erase that consensus shift.
 
-**Architect:** And that shift significantly affects validator incentives, security assumptions, and validator set structure in Ethereum.
+**Architect:** Moreover, that shift significantly affects validator incentives, security assumptions, and validator set structure in Ethereum.
 
 **Analyst:** Additionally, the energy profile is completely different. Post‑Merge estimates put Ethereum's energy use down by roughly 99.9% compared with PoW.
 
@@ -69,13 +69,13 @@ graph LR
 
 **A:** **Engineer:** Not really. The Merge was primarily a consensus switch—PoW to PoS—and a change in energy and security economics, not a "TPS explosion."
 
-**Architect:** The investigations describe Ethereum's roadmap as rollup‑centric. Execution load is meant to move to Layer 2s, not be handled entirely on L1.
+**Architect:** Instead, the investigations describe Ethereum's roadmap as rollup‑centric. Execution load is meant to move to Layer 2s, not be handled entirely on L1.
 
-**Analyst:** And the major scaling mechanisms they identify include EIP‑4844 and future data‑sharding (danksharding), which make it cheaper for rollups to post data back to L1.
+**Analyst:** Furthermore, the major scaling mechanisms they identify include EIP‑4844 and future data‑sharding (danksharding), which make it cheaper for rollups to post data back to L1.
 
 **Engineer:** Meanwhile, base‑layer TPS remains in the same order of magnitude post‑Merge. It didn't suddenly jump to tens of thousands.
 
-**Architect:** So the accurate story is: the Merge enabled PoS and set up future scalability work, but Ethereum's long‑term scaling still depends on rollups. Those rollups are central, not an optional extra.
+**Architect:** Therefore, the accurate story is: the Merge enabled PoS and set up future scalability work, but Ethereum's long‑term scaling still depends on rollups. Those rollups are central, not an optional extra.
 
 ### Ethereum Rollup-Centric Scaling Roadmap
 
@@ -133,13 +133,13 @@ graph TD
 
 **A:** **Engineer:** This is the mistaken framing the extract is debugging. Bitcoin's ledger is UTXO‑based—unspent outputs you can spend.
 
-**Architect:** But Ethereum explicitly moved away from that. It uses an account‑based model with a global state of accounts and contract storage.
+**Architect:** However, Ethereum explicitly moved away from that. It uses an account‑based model with a global state of accounts and contract storage.
 
 **Analyst:** That account model is what enables general‑purpose smart contracts and complex dApps. You mutate account balances and contract storage directly.
 
-**Engineer:** And it also brings trade‑offs: more state bloat and more complex synchronization across nodes compared to tracking UTXOs.
+**Engineer:** Nevertheless, it also brings trade‑offs: more state bloat and more complex synchronization across nodes compared to tracking UTXOs.
 
-**Architect:** So the corrected description is: Ethereum doesn't simply stack scripts on a UTXO model—it adopts an account‑based global state with Turing‑complete contracts, which is a fundamental architectural divergence from Bitcoin.
+**Architect:** Therefore, the corrected description is: Ethereum doesn't simply stack scripts on a UTXO model—it adopts an account‑based global state with Turing‑complete contracts, which is a fundamental architectural divergence from Bitcoin.
 
 ### State Model Comparison: UTXO vs Account-Based
 
@@ -193,15 +193,15 @@ graph LR
 
 **A:** **Architect:** That collapses too many roles. The investigations describe a more specialized stack.
 
-**Analyst:** Layer 0—think of Polkadot or Cosmos—provides interoperability and shared security across multiple chains, not just another dApp host.
+**Analyst:** Specifically, Layer 0—think of Polkadot or Cosmos—provides interoperability and shared security across multiple chains, not just another dApp host.
 
 **Engineer:** Layer 1 is the base: it runs consensus and settlement for the primary chain.
 
-**Architect:** Then Layer 2 handles execution scaling—rollups, payment channels—while inheriting security from L1 instead of re‑implementing it.
+**Architect:** Subsequently, Layer 2 handles execution scaling—rollups, payment channels—while inheriting security from L1 instead of re‑implementing it.
 
-**Analyst:** And emerging Layer 3 focuses on app‑specific customization on top of L2s.
+**Analyst:** Finally, emerging Layer 3 focuses on app‑specific customization on top of L2s.
 
-**Architect:** So the fix is to describe each layer by its architectural function—interoperability, settlement, scaling, app specialization—not as four copies of "the place where dApps live."
+**Architect:** Therefore, the fix is to describe each layer by its architectural function—interoperability, settlement, scaling, app specialization—not as four copies of "the place where dApps live."
 
 ### Multi-Layer Blockchain Architecture
 
@@ -268,13 +268,13 @@ graph TD
 
 **A:** **Engineer:** No, that's the misconception. The investigations explain that Solana still uses Proof‑of‑Stake for consensus.
 
-**Architect:** Proof‑of‑History is added on top as a cryptographic clock—a verifiable delay function that orders events, but not a standalone consensus algorithm.
+**Architect:** Specifically, Proof‑of‑History is added on top as a cryptographic clock—a verifiable delay function that orders events, but not a standalone consensus algorithm.
 
 **Analyst:** Validators still stake and participate in PoS‑style voting. PoH provides them a shared time ordering for blocks and transactions.
 
-**Engineer:** The throughput advantage comes from the PoS+PoH combination plus other pipeline components—Gulf Stream, Turbine, Sealevel parallel execution—not from "abandoning PoS."
+**Engineer:** Moreover, the throughput advantage comes from the PoS+PoH combination plus other pipeline components—Gulf Stream, Turbine, Sealevel parallel execution—not from "abandoning PoS."
 
-**Architect:** So the accurate summary is: Solana is a high‑throughput PoS chain augmented by PoH for ordering, not a pure PoH chain.
+**Architect:** Therefore, the accurate summary is: Solana is a high‑throughput PoS chain augmented by PoH for ordering, not a pure PoH chain.
 
 ### Solana Architecture Components
 
@@ -341,13 +341,13 @@ graph TD
 
 **A:** **Analyst:** The sources point in a different direction. They attribute those incidents to validator client bugs, spammy or bot‑driven transaction floods, and stress on the network pipeline.
 
-**Engineer:** Solana runs a PoS‑based BFT‑style consensus with PoH assisting ordering. Its failure modes aren't "Bitcoin‑style slow PoW finality."
+**Engineer:** In contrast, Solana runs a PoS‑based BFT‑style consensus with PoH assisting ordering. Its failure modes aren't "Bitcoin‑style slow PoW finality."
 
-**Architect:** What actually failed was software robustness and management of extreme load—how the pipeline behaved under adversarial or spiky conditions.
+**Architect:** Instead, what actually failed was software robustness and management of extreme load—how the pipeline behaved under adversarial or spiky conditions.
 
 **Engineer:** This explains mitigation efforts like the Firedancer client: strengthen the implementation and pipeline rather than trying to "fix" probabilistic finality.
 
-**Analyst:** So the corrected analysis is: Solana's high‑throughput architecture has historically been fragile under stress, with outages tied to bugs and congestion, not to PoW‑like finality delays.
+**Analyst:** Therefore, the corrected analysis is: Solana's high‑throughput architecture has historically been fragile under stress, with outages tied to bugs and congestion, not to PoW‑like finality delays.
 
 ### Actual Causes of Solana Outages
 
@@ -407,13 +407,13 @@ graph TD
 
 **A:** **Architect:** That's almost the opposite of how the investigations describe Polkadot.
 
-**Analyst:** The relay chain validators collectively secure all parachains. Parachains don't each run completely isolated validator sets for core security.
+**Analyst:** In reality, the relay chain validators collectively secure all parachains. Parachains don't each run completely isolated validator sets for core security.
 
-**Engineer:** Projects bond DOT through parachain auctions to access that shared validator security on the relay chain.
+**Engineer:** Instead, projects bond DOT through parachain auctions to access that shared validator security on the relay chain.
 
 **Architect:** Parachains are logically sovereign regarding their state machines and business logic, but they're not sovereign in security assumptions—they inherit security from the relay chain.
 
-**Analyst:** So the right framing is that Polkadot is explicitly architected around shared security plus native interoperability via mechanisms like XCMP, not around every chain bootstrapping its own security from scratch.
+**Analyst:** Therefore, the right framing is that Polkadot is explicitly architected around shared security plus native interoperability via mechanisms like XCMP, not around every chain bootstrapping its own security from scratch.
 
 ### Polkadot Shared Security Model
 
@@ -481,13 +481,13 @@ graph TD
 
 **A:** **Analyst:** No—the pattern in the reports is almost the reverse.
 
-**Engineer:** The largest losses—Ronin, Wormhole, Poly Network and others—were tied to custodial or multisig‑style bridges where a small validator federation controlled locked assets.
+**Engineer:** Specifically, the largest losses—Ronin, Wormhole, Poly Network and others—were tied to custodial or multisig‑style bridges where a small validator federation controlled locked assets.
 
 **Architect:** Once attackers compromised those keys or exploited low signature thresholds, they could drain assets without breaking the underlying L1.
 
-**Analyst:** Cosmos IBC, by contrast, is presented as a trust‑minimized model that uses on‑chain light clients and Merkle proofs precisely to avoid that custodial risk.
+**Analyst:** In contrast, Cosmos IBC is presented as a trust‑minimized model that uses on‑chain light clients and Merkle proofs precisely to avoid that custodial risk.
 
-**Architect:** So the corrected takeaway is: early multisig bridges concentrated risk in a few keys, while IBC‑style light‑client protocols reduce reliance on trusted third parties—though they bring their own compatibility and implementation constraints.
+**Architect:** Therefore, the corrected takeaway is: early multisig bridges concentrated risk in a few keys, while IBC‑style light‑client protocols reduce reliance on trusted third parties—though they bring their own compatibility and implementation constraints.
 
 ### Bridge Security Analysis (2021-2022)
 
@@ -546,11 +546,11 @@ graph LR
 
 **A:** **Engineer:** That's overstated. The investigations are clear that IBC isn't "plug anything into anything."
 
-**Analyst:** It was designed around Tendermint‑style BFT chains, and participating chains need to implement specific IBC modules and light‑client verification logic.
+**Analyst:** Specifically, it was designed around Tendermint‑style BFT chains, and participating chains need to implement specific IBC modules and light‑client verification logic.
 
 **Architect:** This explains why adoption is currently strongest inside the Cosmos ecosystem and closely related chains, not across every major L1 out there.
 
-**Engineer:** So while IBC is powerful, it's not a universal drop‑in bridge for any chain. There's substantial architectural work required to join.
+**Engineer:** Therefore, while IBC is powerful, it's not a universal drop‑in bridge for any chain. There's substantial architectural work required to join.
 
 **Architect:** The precise statement is: IBC provides trust‑minimized interoperability to compatible BFT chains that implement its protocol; it's not a generic bridge that any chain can adopt without significant changes.
 
@@ -612,13 +612,13 @@ graph TD
 
 **A:** **Analyst:** Not according to the materials. They emphasize that rollups execute off‑chain but depend on Ethereum for security and data availability.
 
-**Engineer:** EIP‑4844 is a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it doesn't remove the dependence on Ethereum's consensus.
+**Engineer:** Specifically, EIP‑4844 is a cost optimization—it introduces blobs that make posting rollup data to Ethereum cheaper, but it doesn't remove the dependence on Ethereum's consensus.
 
-**Architect:** Rollups still post transaction data and proofs back to L1 so that any honest participant can reconstruct state and enforce correct exits.
+**Architect:** Moreover, rollups still post transaction data and proofs back to L1 so that any honest participant can reconstruct state and enforce correct exits.
 
-**Analyst:** That's the whole point of "inheriting security from Ethereum": users can rely on L1 consensus and data availability, not just trust the off‑chain operator.
+**Analyst:** Indeed, that's the whole point of "inheriting security from Ethereum": users can rely on L1 consensus and data availability, not just trust the off‑chain operator.
 
-**Architect:** So the corrected framing is: cheaper blobs make Ethereum‑secured rollups more scalable; they do not turn Ethereum into an optional convenience layer.
+**Architect:** Therefore, the corrected framing is: cheaper blobs make Ethereum‑secured rollups more scalable; they do not turn Ethereum into an optional convenience layer.
 
 ### Rollup Security Model: L1 Dependency
 
@@ -669,13 +669,13 @@ sequenceDiagram
 
 **A:** **Engineer:** The investigations explicitly push back on that. Move is described as resource‑oriented and, in Sui's case, object‑centric.
 
-**Analyst:** Instead of treating everything as generic key–value entries, assets are modeled as linear resources with strict ownership and type guarantees.
+**Analyst:** Specifically, instead of treating everything as generic key–value entries, assets are modeled as linear resources with strict ownership and type guarantees.
 
-**Architect:** Sui goes further and exposes objects with explicit ownership and access patterns, which the runtime can leverage.
+**Architect:** Furthermore, Sui goes further and exposes objects with explicit ownership and access patterns, which the runtime can leverage.
 
-**Engineer:** That design enables safer parallel execution and eliminates some smart‑contract bug classes we've seen repeatedly on EVM.
+**Engineer:** Consequently, that design enables safer parallel execution and eliminates some smart‑contract bug classes we've seen repeatedly on EVM.
 
-**Architect:** So the fix is to say that Move‑based blockchains purposely diverge from EVM's account storage model, encoding ownership and resource constraints in the type system. This represents a major architectural shift, not a minor detail.
+**Architect:** Therefore, the fix is to say that Move‑based blockchains purposely diverge from EVM's account storage model, encoding ownership and resource constraints in the type system. This represents a major architectural shift, not a minor detail.
 
 ### Move vs EVM Storage Models
 
@@ -738,13 +738,13 @@ graph LR
 
 **A:** **Analyst:** DeepSeek's glossary directly contradicts that "free parallelism" idea.
 
-**Engineer:** Block‑STM runs transactions optimistically in parallel, but it must track which state each transaction reads and writes.
+**Engineer:** Specifically, Block‑STM runs transactions optimistically in parallel, but it must track which state each transaction reads and writes.
 
-**Architect:** And when two transactions touch the same state in conflicting ways, the engine must roll back or re‑execute some of them to preserve deterministic results.
+**Architect:** Moreover, when two transactions touch the same state in conflicting ways, the engine must roll back or re‑execute some of them to preserve deterministic results.
 
 **Engineer:** That conflict detection and scheduling logic is where substantial complexity resides. It's not something you can hand‑wave away.
 
-**Architect:** So the corrected summary is: parallel execution can increase throughput by running independent transactions concurrently, but it absolutely depends on robust conflict detection and rollback mechanisms.
+**Architect:** Therefore, the corrected summary is: parallel execution can increase throughput by running independent transactions concurrently, but it absolutely depends on robust conflict detection and rollback mechanisms.
 
 ### Block-STM: Parallel Execution Reality
 
@@ -808,13 +808,13 @@ graph TD
 
 **A:** **Analyst:** The materials are careful to distinguish those trust models.
 
-**Engineer:** Lightning uses payment channels with liquidity locked in multisig outputs. Security there relies on users—or their watchtowers—reacting within timeouts if a counterparty broadcasts an old state.
+**Engineer:** Specifically, Lightning uses payment channels with liquidity locked in multisig outputs. Security there relies on users—or their watchtowers—reacting within timeouts if a counterparty broadcasts an old state.
 
-**Architect:** Rollups are different: they post transaction data and proofs back to Ethereum L1 so that any honest participant can enforce correct state transitions or exits based on protocol rules.
+**Architect:** In contrast, rollups are different: they post transaction data and proofs back to Ethereum L1 so that any honest participant can enforce correct state transitions or exits based on protocol rules.
 
 **Analyst:** In both setups you introduce extra actors—channel operators for Lightning, sequencers for rollups—but the user responsibilities aren't identical.
 
-**Architect:** The corrected view is: both are off‑chain scaling mechanisms, but their trust assumptions, failure modes, and what users must do to stay safe are significantly different.
+**Architect:** Therefore, the corrected view is: both are off‑chain scaling mechanisms, but their trust assumptions, failure modes, and what users must do to stay safe are significantly different.
 
 ### Lightning Network vs Rollups: Trust Models
 
@@ -880,13 +880,13 @@ graph TD
 
 **A:** **Analyst:** The bridge sections argue almost the opposite. The major hacks are traced to weaknesses in bridge designs and operations.
 
-**Engineer:** Incidents like Wormhole and Ronin exploited smart‑contract bugs, poor key management, or insufficient validator thresholds at the bridge layer, while the base chains kept producing valid blocks.
+**Engineer:** Specifically, incidents like Wormhole and Ronin exploited smart‑contract bugs, poor key management, or insufficient validator thresholds at the bridge layer, while the base chains kept producing valid blocks.
 
-**Architect:** So consensus at L1 was doing its job; the failures were in how assets and messages were handled across chains.
+**Architect:** In other words, consensus at L1 was doing its job; the failures were in how assets and messages were handled across chains.
 
 **Analyst:** This is why the reports frame bridges and interoperability protocols as new attack surfaces introduced by multi‑chain architectures.
 
-**Architect:** The right conclusion is: robust L1 consensus is necessary but not sufficient. Without careful bridge design, you can end up recreating centralized custodial risk on top of otherwise secure base layers.
+**Architect:** Therefore, the right conclusion is: robust L1 consensus is necessary but not sufficient. Without careful bridge design, you can end up recreating centralized custodial risk on top of otherwise secure base layers.
 
 ### Bridge Failures vs L1 Security
 
