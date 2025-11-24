@@ -17,22 +17,22 @@ Hiring managers and technical interviewers for blockchain/Web3 senior positions
 ### Version 1: Ultra-Brief (30-60 seconds)
 **Use when**: Initial greeting, recruiter screening, or when asked to "briefly introduce yourself"
 
-Good morning/afternoon. My name is Jigao Luo, though I go by Zealy professionally. I have a master's degree from Chongqing University and started my career in construction engineering before transitioning to blockchain development in 2018. Over the past 7 years, I've worked across the full blockchain stack—from optimizing distributed storage clusters with hundreds of nodes, to developing DeFi protocols managing multi-million dollar TVL, and recently integrating AI with blockchain systems. I've held roles from blockchain developer to technical architect and team lead, working with companies across Singapore, US, and China. I'm currently looking for senior technical positions where I can apply my experience in distributed systems, smart contract development, and technical leadership.
+Good morning/afternoon. My name is Jigao Luo, professionally known as Zealy. I hold a master's degree from Chongqing University and began my career in construction engineering before transitioning to blockchain development in 2018. Over the past 7 years, I have worked across the full blockchain stack—from optimizing distributed storage clusters with hundreds of nodes, to developing DeFi protocols managing multi-million dollar TVL, and recently integrating AI with blockchain systems. I have held roles from blockchain developer to technical architect and team lead, working with companies across Singapore, the United States, and China. I am currently seeking senior technical positions where I can apply my experience in distributed systems, smart contract development, and technical leadership.
 
 ---
 
 ### Version 2: Standard (1-2 minutes)
 **Use when**: Formal interview start, panel interviews, or when given time to "tell us about yourself"
 
-Good morning/afternoon. My name is Jigao Luo—I go by Zealy in the blockchain community. I'm a senior blockchain engineer with 7+ years of specialized experience in distributed systems and DeFi protocols, working primarily with Golang, Solidity, and Rust.
+Good morning/afternoon. My name is Jigao Luo—I am known as Zealy in the blockchain community. I am a senior blockchain engineer with 7+ years of specialized experience in distributed systems and DeFi protocols, working primarily with Golang, Solidity, and Rust.
 
-My blockchain journey started in 2018 after completing my master's degree at Chongqing University. Since then, I've progressed from infrastructure work optimizing Filecoin storage clusters, to full-stack blockchain development on Polkadot and Ethereum, to leading smart contract development for production DeFi protocols.
+My blockchain journey started in 2018 after completing my master's degree at Chongqing University. Since then, I have progressed from infrastructure work optimizing Filecoin storage clusters, to full-stack blockchain development on Polkadot and Ethereum, to leading smart contract development for production DeFi protocols.
 
-My most significant recent work includes leading the development of uniBTC, a multi-chain BTC Restaking protocol that achieved $4 million TVL and deployment across 12+ networks, ranking top 3 among similar protocols. I also developed the complete smart contract suite for uniIOTX liquid staking on IoTeX, and designed an MPC system for Lido-on-Avalanche that was recognized by their official team.
+My most significant recent work includes leading the development of uniBTC, a multi-chain BTC Restaking protocol that achieved $4 million TVL and deployment across 12+ networks, ranking among the top 3 similar protocols. I also developed the complete smart contract suite for uniIOTX liquid staking on IoTeX, and designed an MPC system for Lido-on-Avalanche that was recognized by their official team.
 
-Beyond technical work, I built and led a 12-person engineering team at 21Vianet, and have extensive experience coordinating international teams across Singapore, US, and Europe. I'm also an active open-source contributor—my work is on GitHub under usernames Zealy-Rockx and Trisome-Bedrock.
+Beyond technical work, I established and led a 12-person engineering team at 21Vianet, and have extensive experience coordinating international teams across Singapore, the United States, and Europe. I am also an active open-source contributor—my work is on GitHub under usernames Zealy-Rockx and Trisome-Bedrock.
 
-I'm excited about opportunities to work on challenging distributed systems problems, contribute to secure and scalable blockchain infrastructure, and mentor engineering teams.
+I am excited about opportunities to work on challenging distributed systems problems, contribute to secure and scalable blockchain infrastructure, and mentor engineering teams.
 
 ## Key Talking Points
 
@@ -87,14 +87,14 @@ I'm excited about opportunities to work on challenging distributed systems probl
 
 ## Closing Statement
 
-"I'm excited about this opportunity because it aligns perfectly with my experience in building secure, scalable blockchain systems and my passion for solving complex distributed systems challenges. I believe my combination of hands-on technical expertise, proven track record in delivering high-stakes DeFi protocols, and experience leading international teams makes me well-suited for this senior position. I'm eager to contribute to your team's success and continue growing in this rapidly evolving space."
+"I am excited about this opportunity because it aligns perfectly with my experience in building secure, scalable blockchain systems and my passion for solving complex distributed systems challenges. I believe my combination of hands-on technical expertise, proven track record in delivering high-stakes DeFi protocols, and experience leading international teams makes me well-suited for this senior position. I am eager to contribute to your team's success and continue growing in this rapidly evolving space."
 
 ## Next Steps
 
 ### Practice Delivery
 - **Ultra-Brief Version**: Practice until smooth at 30-60 seconds
 - **Standard Version**: Practice until smooth at 90-120 seconds  
-- Record yourself and check pacing—avoid rushing
+- Record yourself and verify pacing—avoid rushing
 - Practice transitions if interrupted or asked to elaborate
 
 ### Content Preparation
@@ -106,5 +106,5 @@ I'm excited about opportunities to work on challenging distributed systems probl
 ### Adaptation
 - Be ready to adjust based on interviewer cues
 - If they seem rushed, use ultra-brief version
-- If they're engaged, use standard version and be ready to expand on specific points
+- If they are engaged, use standard version and be ready to expand on specific points
 - Watch for non-verbal cues about interest level
