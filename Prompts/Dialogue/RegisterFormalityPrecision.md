@@ -1,22 +1,20 @@
 # Register & Formality for Natural English
 
-**Type**: Dual-purpose - Supporting reference AND standalone post-check/improvement tool
+**Type**: Reference guide AND standalone post-check tool
 
 **Modes**: 
-- **Formal Mode (Elevation)**: Transform casual → professional/academic
-- **Casual Mode (Naturalization)**: Transform over-formal → conversational
+- **Formal Mode (Elevation)**: Casual → Professional/Academic
+- **Casual Mode (Naturalization)**: Over-formal → Conversational (default)
 
-**Task**: Calibrate English content to appropriate register and formality level—elevate informal drafts for professional contexts OR naturalize over-formal text for conversational contexts.
+**Task**: Calibrate English content to appropriate register—elevate informal drafts OR naturalize over-formal text.
 
-**Definition**: Systematically adjust word choice, phrasing, and tone to match formality expectations while maintaining natural, accessible language. Supports bidirectional transformation.
+**Definition**: Systematically adjust word choice, phrasing, and tone to match formality expectations while maintaining natural, accessible language.
 
 ---
 
 ## Precision Principle
 
-**Critical**: Register adjustment enhances **appropriateness and professionalism** without changing **meaning or facts**.
-
-**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+**Critical**: Register adjustment enhances appropriateness without changing meaning or facts. Preserve accuracy over fluency.
 
 **Rules**:
 - Preserve all semantic content
@@ -65,7 +63,7 @@
 
 ## Casual Mode Cheat Sheet
 
-**→ Reverse transformations for naturalizing over-formal text. Use when target is team chat, informal emails, collaborative contexts.**
+**→ Reverse transformations for naturalizing over-formal text (team chat, informal emails).**
 
 | **Formal** | **Casual** | **Category** |
 |---|---|---|
@@ -84,9 +82,7 @@
 | Evidence suggests → | It looks like | Academic Expression |
 | Results indicate → | Turns out | Academic Expression |
 
-**⚠ Warning**: Only casualize when context is genuinely informal (team chat, peer emails). Don't casualize client-facing, academic, or formal reports.
-
-**→ For comprehensive casualization patterns, see Section VIII.**
+**⚠ Warning**: Only casualize team chat/peer emails. Don't casualize client-facing, academic, or formal reports.
 
 ---
 
@@ -133,8 +129,6 @@ Academic:  "System stability has not been achieved. This study examines underlyi
 
 ## Quick Reference: Core Patterns (80% Coverage)
 
-**Most frequent patterns for fast application.**
-
 | **Pattern** | **Priority** | **Impact** | **Fix** | **Details** |
 |---|---|---|---|---|
 | **Contractions** | P0 | 90% | ✗ *don't, can't, it's* → ✓ *do not, cannot, it is* | [→ Section I] |
@@ -145,105 +139,80 @@ Academic:  "System stability has not been achieved. This study examines underlyi
 | **Latin Abbreviations** | P2 | 60% | *e.g., i.e., et al.* - correct usage | [→ Section VI] |
 | **Nominalizations** | P2 | 55% | Balance noun vs verb forms for clarity | [→ Section VII] |
 
-**→ Ordered by priority (P0 → P1 → P2) and impact. Fix from top to bottom.**
-
-**Note**: These patterns are for **Formal Mode (elevation)**. For **Casual Mode (naturalization)**, see Section VIII.
+**→ Ordered by priority (P0 → P1 → P2) and impact. For Casual Mode, see Section VIII.**
 
 ---
 
 ## Priority System
 
-**Universal application order:**
-
-- **P0 (Must fix)**: Unprofessional in formal context
-  - Contractions: ~~don't~~ → do not
-  - Slang: ~~a bunch of~~ → several
-  - Colloquialisms: ~~nowadays~~ → currently
+- **P0 (Must fix)**: Contractions, slang, colloquialisms
+  - ~~don't~~ → do not, ~~a bunch of~~ → several, ~~nowadays~~ → currently
   
-- **P1 (High value)**: Inappropriate register
-  - Informal verbs: ~~get~~ → obtain
-  - Phrasal verbs: ~~find out~~ → determine
-  - Vague quantifiers: ~~a lot of~~ → many
+- **P1 (High value)**: Informal verbs, phrasal verbs, vague quantifiers
+  - ~~get~~ → obtain, ~~find out~~ → determine, ~~a lot of~~ → many
 
-- **P2 (Polish)**: Fine-tuning
-  - Excessive personal pronouns
-  - Over-nominalization
-  - Context-specific adjustments
+- **P2 (Polish)**: Personal pronouns, nominalization, context-specific adjustments
 
 ---
 
 ## Mode Selection
 
-**Choose your mode based on transformation direction:**
+**Default**: Casual Mode if not specified.
 
 ### Formal Mode (Elevation)
-**Use when**: Casual draft → Professional/Academic output
-- Apply patterns as written (✗ → ✓)
-- Follow P0 → P1 → P2 priority
+**Use when**: Casual → Professional/Academic
+- Apply patterns: ✗ → ✓
+- Priority: P0 → P1 → P2
 - Target: Academic papers, technical reports, formal documentation
 
 ### Casual Mode (Naturalization)
-**Use when**: Over-formal text → Conversational output
-- Reverse patterns (✓ → ✗) selectively
-- Check context appropriateness first (Section IX)
+**Use when**: Over-formal → Conversational
+- Reverse patterns: ✓ → ✗ (selectively)
 - Target: Team chat, informal emails, collaborative discussions
 - **Warning**: Don't casualize client emails, formal reports, academic papers
 
 **Detection signals:**
 ```
-Formal input indicators: No contractions, "obtain/determine/examine", "numerous/substantial", passive voice
-Casual input indicators: Contractions present, "get/find/check", "a lot of/really", active voice
+Formal: No contractions, "obtain/determine/examine", "numerous/substantial", passive voice
+Casual: Contractions present, "get/find/check", "a lot of/really", active voice
 ```
-
-**→ For casualization patterns, see Section VIII. For context calibration, see Section IX.**
 
 ---
 
 ## Standalone Usage: Post-Check Workflow
 
-**Mode 1: Reference During Writing** — Use as quick guide while drafting
-
-**Mode 2: Post-Check After Writing** — Audit completed content
+**Mode 1**: Reference during writing  
+**Mode 2**: Post-check after writing
 
 ### Review Workflow
 
-**Step 1: Select Mode & Identify Context** [→ Mode Selection]
-- **Choose mode**: Formal (elevation) or Casual (naturalization)?
-- Current state: What register is the input text?
-- Target state: What register do you need?
-- Context type: Academic paper / technical doc / email / chat
-- Target audience: Researchers / engineers / management / general
+**Step 1: Select Mode & Context**
+- Mode: Formal (elevation) or Casual (naturalization)? (Default: Casual)
+- Context: Academic / technical / email / chat
+- Audience: Researchers / engineers / management / general
 
-**Step 2: Scan by Priority** [→ Priority System]
-- **Formal mode**: P0 → P1 → P2 (fix informal → formal)
-- **Casual mode**: Reverse selectively (fix over-formal → casual)
-  - P0: Expand overly pretentious vocabulary
-  - P1: Simplify verb choices, allow phrasal verbs
-  - P2: Add contractions, allow personal tone
+**Step 2: Scan by Priority**
+- **Formal**: P0 → P1 → P2 (informal → formal)
+- **Casual**: Reverse selectively (over-formal → casual)
 
-**Step 3: Transform** [→ Use Formality Spectrum + Cheat Sheet + Sections VIII-IX]
-- **Formal mode**: Replace informal → professional alternatives
-- **Casual mode**: Replace over-formal → conversational alternatives (see Section VIII)
-- Maintain readability and preserve semantic content
-- Check Section IX for context-appropriate targets
+**Step 3: Transform**
+- **Formal**: Replace informal → professional (use Cheat Sheet)
+- **Casual**: Replace over-formal → conversational (Section VIII)
+- Preserve semantic content
 
 **Step 4: Validate**
-- ✓ Appropriate for context? ✓ Professional/conversational as intended? ✓ Consistent register?
-
-**→ For comprehensive patterns, continue to Sections I-IX below.**
+✓ Context-appropriate? ✓ Consistent register? ✓ Meaning preserved?
 
 ---
 
 ## Comprehensive Patterns
 
-**→ Advanced reference. 80% of users stop above. Continue only if needed.**
+**Advanced reference. 80% of users stop above.**
 
 **Structure:**
-- **Sections I-VII**: Formal Mode (elevation) — Informal → Formal
-- **Section VIII**: Casual Mode (naturalization) — Over-formal → Casual
-- **Section IX**: Context Calibration — Formality by context
-
-**→ Sections I-VII ordered by priority (P0 → P1 → P2) and impact for systematic application.**
+- **I-VII**: Formal Mode (Informal → Formal)
+- **VIII**: Casual Mode (Over-formal → Casual)
+- **IX**: Context Calibration
 
 ---
 
@@ -429,37 +398,6 @@ totally different → entirely different → fundamentally different
 
 ---
 
-## IV. Contractions
-
-[← Quick Reference #4 | Priority: P0 | 90% usage]
-
-**Avoid in Formal Writing**:
-
-```
-can't, won't, don't → cannot, will not, do not
-it's, that's, there's → it is, that is, there is
-we've, I'd, could've → we have, I would, could have
-I'm, you're, they're → I am, you are, they are
-```
-
-**Context**:
-```
-Academic/Report: Never use contractions
-Email: Acceptable if less formal
-Chat/Slack: Standard and natural
-```
-
-**Common Errors**:
-```
-✗ it's [possessive - wrong]
-✓ its [possessive] / it is [expanded]
-
-✗ could of, should of [wrong]
-✓ could have, should have [correct]
-```
-
----
-
 ## V. Personal Pronouns
 
 [← Quick Reference #5 | Priority: P2 | 65% usage]
@@ -576,11 +514,11 @@ ETC. (and so forth):
 
 ## VIII. Casualization Patterns (Reverse Mode)
 
-[Priority: Context-dependent | For Casual Mode only]
+[Priority: Context-dependent | Casual Mode only]
 
-**When to use**: Making over-formal text conversational for team chat, informal emails, collaborative contexts
+**Use when**: Making over-formal text conversational (team chat, informal emails)
 
-**Warning**: Only casualize when target context is genuinely informal. When in doubt, stay formal.
+**Warning**: When in doubt, stay formal.
 
 ### Core Reverse Patterns
 
@@ -645,18 +583,11 @@ Example:
 
 ### Casualization Priority
 
-**P0 (Critical for natural casual tone)**:
-- Add contractions: cannot → can't, it is → it's
-- Simplify core verbs: obtain → get, determine → find out
+**P0**: Add contractions, simplify verbs (obtain → get, determine → find out)
 
-**P1 (Makes text conversational)**:
-- Natural quantifiers: numerous → a lot of, substantially → really
-- Phrasal verbs: examine → look at, conduct → do
-- Personal pronouns: "This study" → "We", passive → active
+**P1**: Natural quantifiers (numerous → a lot of), phrasal verbs (examine → look at), personal pronouns
 
-**P2 (Fine-tuning)**:
-- Casual intensifiers: significantly → really, somewhat → kind of
-- Relaxed phrasing: "It is evident" → "Clearly"
+**P2**: Casual intensifiers (significantly → really), relaxed phrasing
 
 ### Casualization Guidelines
 
@@ -747,32 +678,28 @@ Example: "Redis is working really well. Latency's way down—like 30% better. Ca
 
 ## Application Guidelines
 
-**Calibration Priority**:
-1. **Select mode**: Formal (elevation) or Casual (naturalization)
+**Steps**:
+1. Select mode: Formal or Casual
 2. Identify context (paper / report / email / chat)
-3. Match formality to context and audience
-4. Apply transformations: P0 → P1 → P2
-5. Preserve semantic content
+3. Apply transformations: P0 → P1 → P2
+4. Preserve semantic content
 
 **Common Pitfalls**:
 ```
-Over-formality (needs casualization):
-✗ "We shall endeavor to ascertain optimal parameters."
-✓ Formal: "We will determine optimal parameters."
-✓ Casual: "We'll figure out the best settings."
+Over-formality: "We shall endeavor to ascertain optimal parameters."
+→ Formal: "We will determine optimal parameters."
+→ Casual: "We'll figure out the best settings."
 
-Under-formality (needs elevation):
-✗ "We're gonna check out the system and figure out what's up."
-✓ Casual: "We'll check the system and figure out what's wrong."
-✓ Formal: "We will investigate the system to diagnose the issue."
+Under-formality: "We're gonna check out the system and figure out what's up."
+→ Formal: "We will investigate the system to diagnose the issue."
+→ Casual: "We'll check the system and figure out what's wrong."
 
-Inconsistency (mixed register):
-✗ "This study examines... We're gonna test... Results are pretty good."
-✓ Formal: "This study examines... We test... Results are promising."
-✓ Casual: "We're looking at... We're gonna test... Results look pretty good."
+Inconsistency: "This study examines... We're gonna test... Results are pretty good."
+→ Formal: "This study examines... We test... Results are promising."
+→ Casual: "We're looking at... We're gonna test... Results look pretty good."
 ```
 
-**Quality Checks**: ✓ Mode appropriate? ✓ Register matches context? ✓ Consistent? ✓ Preserves meaning?
+**Quality Checks**: ✓ Mode appropriate? ✓ Register consistent? ✓ Meaning preserved?
 
 ---
 
@@ -810,24 +737,17 @@ Academic: "This study evaluated Redis for distributed caching. Empirical results
 
 ## Summary
 
-**Coverage**: ~80% of register issues in technical/academic English via Quick Reference
+**Coverage**: ~80% via Quick Reference
 
 **Modes**:
-- **Formal Mode (Elevation)**: Casual → Professional/Academic (Sections I-VII)
-- **Casual Mode (Naturalization)**: Over-formal → Conversational (Section VIII)
+- **Formal (Elevation)**: Casual → Professional/Academic (Sections I-VII)
+- **Casual (Naturalization)**: Over-formal → Conversational (Section VIII, default)
 
 **Structure**:
-- **Mode Selection**: Choose elevation or naturalization
-- **Cheat Sheet**: 20 critical substitutions (1-minute scan, formal mode)
-- **Formality Spectrum**: Context calibration framework
-- **Quick Reference**: 7 core patterns (80% coverage, formal mode)
-- **Comprehensive**: Sections I-VII (formal mode), Section VIII (casual mode), Section IX (context calibration)
+- **Cheat Sheet**: 20 critical substitutions (1-minute)
+- **Quick Reference**: 7 core patterns (80% coverage)
+- **Comprehensive**: Sections I-VII (formal), VIII (casual), IX (context)
 
 **Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
-**Golden Rule**: Match register to context. Write professionally but readably. Avoid both slang and pretentiousness.
-
-**Usage**:
-- **Formal Mode**: Cheat Sheet for speed, Quick Reference for most cases, Sections I-VII for comprehensive coverage
-- **Casual Mode**: Section VIII for casualization patterns, Section IX for context appropriateness
-- **Both Modes**: Section IX for context calibration
+**Golden Rule**: Match register to context. Avoid both slang and pretentiousness.
