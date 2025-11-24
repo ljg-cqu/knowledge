@@ -3,7 +3,7 @@
 
 **Type**: Dual-purpose - Supporting reference AND standalone post-check/improvement tool
 
-**Purpose**: Reference guide and post-check tool for precise, natural preposition usage—eliminates errors, reduces verbosity, improves fluency.
+**Purpose**: Register-aware reference guide and post-check tool for precise, natural preposition usage—eliminates errors, reduces verbosity, improves fluency. Supports both formal (academic/professional) and casual (conversational) contexts.
 
 ## Precision Principle
 
@@ -17,6 +17,44 @@ Before: We need to have a discussion regarding the matter of database optimizati
 After:  We need to discuss database optimization.
 [Same meaning, more concise with correct preposition usage]
 ```
+
+---
+
+## Mode Selection
+
+**Before applying corrections, specify your context:**
+
+### **Formal Mode** (Academic papers, reports, presentations, professional writing)
+**Apply**: All P0 + P1 + P2 priorities
+- Enforce strict correctness and efficiency
+- Eliminate verbose/redundant constructions
+- Maximize clarity and professionalism
+
+**Use for**: Academic papers, technical reports, formal presentations, professional documentation
+
+**Example**:
+```
+Input:  Let's discuss about the solution. Where's the file at? It's in terms of performance.
+Output: Let's discuss the solution. Where is the file? Regarding performance...
+[All corrections applied]
+```
+
+### **Casual Mode** (Conversation, team chat, informal writing)
+**Apply**: P0 (universal grammar errors) only
+- Fix wrong collocations and spatial/temporal errors
+- P1/P2: Optional—preserve natural casual flow
+- Allow colloquial constructions when grammatically acceptable
+
+**Use for**: Team chat, casual conversation, peer discussions, informal emails
+
+**Example**:
+```
+Input:  Let's discuss about the solution. Where's the file at? It depends of many factors.
+Output: Let's discuss about the solution. Where's the file at? It depends on many factors.
+[Only P0 universal error fixed: "depends of" → "depends on"]
+```
+
+**Note**: Mode affects P1/P2 application. P0 (grammatical correctness) is universal and applies to both modes.
 
 ---
 
@@ -55,19 +93,21 @@ After:  We need to discuss database optimization.
 
 **Most frequent patterns by category. Ordered by impact.**
 
-| **Pattern** | **Usage** | **Examples** | **Common Errors** | **Details** |
-|---|---|---|---|---|
-| **Verb+Prep** | 80% | depend **on**, consist **of**, listen **to**, focus **on** | ~~depends of~~, ~~focus at~~ | [→ Section V] |
-| **Adj+Prep** | 75% | good **at**, interested **in**, different **from**, familiar **with** | ~~good in~~, ~~different than~~ | [→ Section V] |
-| **Noun+Prep** | 70% | solution **to**, impact **on**, reason **for**, knowledge **of** | ~~solution of~~, ~~impact to~~ | [→ Section V] |
-| **Spatial: at/on/in** | 90% | **at** door (point), **on** table (surface), **in** room (enclosed) | ~~in the door~~ | [→ Section I] |
-| **Temporal: at/on/in** | 85% | **at** 3 PM (time), **on** Monday (day), **in** January (period) | ~~in Monday~~, ~~on 3 PM~~ | [→ Section II] |
-| **Conciseness** | 70% | ~~in terms of~~ → omit, ~~with regard to~~ → about | Verbose phrases | [→ Section VII] |
-| **Redundancy** | 65% | ~~where...at~~ → where, ~~inside of~~ → inside | Double prepositions | [→ Section VII] |
-| **Transitive Verbs** | 60% | discuss (not ~~about~~), enter (not ~~into~~), marry (not ~~with~~) | Extra prepositions | [→ Section VII] |
-| **Direction** | 70% | **to** (arrive), **toward** (direction), **into** (enter), **from** (origin) | to vs toward confusion | [→ Section III] |
-| **Abstract** | 75% | talk **about**, focus **on**, part **of**, designed **for** | Mixed with verbs | [→ Section IV] |
-| **Idioms** | 60% | **on** time (punctual), **in** time (early), **by** accident | Fixed expressions | [→ Section VI] |
+| **Pattern** | **Priority** | **Usage** | **Examples** | **Common Errors** | **Details** |
+|---|---|---|---|---|---|
+| **Verb+Prep** | P0 (Universal) | 80% | depend **on**, consist **of**, listen **to**, focus **on** | ~~depends of~~, ~~focus at~~ | [→ Section V] |
+| **Adj+Prep** | P0 (Universal) | 75% | good **at**, interested **in**, different **from**, familiar **with** | ~~good in~~, ~~different than~~ | [→ Section V] |
+| **Noun+Prep** | P0 (Universal) | 70% | solution **to**, impact **on**, reason **for**, knowledge **of** | ~~solution of~~, ~~impact to~~ | [→ Section V] |
+| **Spatial: at/on/in** | P0 (Universal) | 90% | **at** door (point), **on** table (surface), **in** room (enclosed) | ~~in the door~~ | [→ Section I] |
+| **Temporal: at/on/in** | P0 (Universal) | 85% | **at** 3 PM (time), **on** Monday (day), **in** January (period) | ~~in Monday~~, ~~on 3 PM~~ | [→ Section II] |
+| **Conciseness** | P1 (Formal) | 70% | ~~in terms of~~ → omit, ~~with regard to~~ → about | Verbose phrases | [→ Section VII] |
+| **Redundancy** | P1 (Formal) | 65% | ~~where...at~~ → where, ~~inside of~~ → inside | Double prepositions | [→ Section VII] |
+| **Transitive Verbs** | P1 (Formal) | 60% | discuss (not ~~about~~), enter (not ~~into~~), marry (not ~~with~~) | Extra prepositions | [→ Section VII] |
+| **Direction** | P2 (Polish) | 70% | **to** (arrive), **toward** (direction), **into** (enter), **from** (origin) | to vs toward confusion | [→ Section III] |
+| **Abstract** | P2 (Polish) | 75% | talk **about**, focus **on**, part **of**, designed **for** | Mixed with verbs | [→ Section IV] |
+| **Idioms** | P2 (Polish) | 60% | **on** time (punctual), **in** time (early), **by** accident | Fixed expressions | [→ Section VI] |
+
+**Legend**: P0 (Universal) = Apply in both Formal & Casual modes | P1 (Formal) = Apply in Formal mode only | P2 (Polish) = Apply in Formal mode for sophistication
 
 **→ 80% complete above. Continue for: priority system, workflow, comprehensive patterns (Sections I-VII).**
 
@@ -75,21 +115,26 @@ After:  We need to discuss database optimization.
 
 ## Priority System
 
-**Universal application order:**
+**Register-aware application order:**
 
-- **P0 (Must fix)**: Fixed collocations (Quick Ref #9-11), spatial/temporal errors (#1-2)
+- **P0 (Must fix - Universal)**: Fixed collocations (Quick Ref #9-11), spatial/temporal errors (#1-2)
+  - **Context**: Apply in ALL modes (Formal + Casual)
   - Wrong collocations cause grammatical errors
   - Examples: ~~depends of~~ → depends on, ~~in Monday~~ → on Monday
   
-- **P1 (High value)**: Conciseness (#8), redundant prepositions (#12)
-  - Verbose phrases reduce clarity
-  - Examples: ~~in terms of~~ → (omit), ~~where...at~~ → where
+- **P1 (High value - Context-dependent)**: Conciseness (#8), redundant prepositions (#12)
+  - **Formal mode**: Must fix (verbose phrases reduce professionalism)
+  - **Casual mode**: Optional (colloquial constructions acceptable)
+  - Examples: ~~in terms of~~ → (omit), ~~where...at~~ → where, ~~discuss about~~ → discuss
 
-- **P2 (Polish)**: Direction/abstract (#3-7), idioms (#13-15)
-  - Improves naturalness and fluency
+- **P2 (Polish - Formal preferred)**: Direction/abstract (#3-7), idioms (#13-15)
+  - **Formal mode**: Recommended (improves sophistication)
+  - **Casual mode**: Usually skip (may sound unnatural)
   - Examples: toward vs to, *on time* vs *in time*
 
-**Application**: Fix P0 first (correctness), then P1 (clarity), then P2 (polish)
+**Application by Mode**:
+- **Formal**: Fix P0 (correctness) → P1 (clarity) → P2 (polish)
+- **Casual**: Fix P0 only (preserve natural flow)
 
 ---
 
@@ -101,27 +146,39 @@ After:  We need to discuss database optimization.
 
 ### Review Workflow
 
+**Step 0: Select Mode** [→ Mode Selection]
+- **Formal mode**: Academic papers, reports, presentations → Apply P0+P1+P2
+- **Casual mode**: Conversation, team chat, informal writing → Apply P0 only
+
 **Step 1: Scan** — Identify errors by priority [→ Priority System]
-- **P0 check (correctness)**: Fixed collocations, spatial/temporal
+
+**Formal Mode Path**:
+- **P0 check (correctness - universal)**: Fixed collocations, spatial/temporal
   - Scan for: verb+prep, adj+prep, noun+prep, time/date, location
   - Tools: Cheat Sheet (20 top errors), Quick Reference table, Decision Tree
-- **P1 check (clarity)**: Verbose phrases, redundant prepositions, transitive verbs
+- **P1 check (clarity - required)**: Verbose phrases, redundant prepositions, transitive verbs
   - Scan for: "in terms of", "where...at", "discuss about"
   - Tools: Section VII patterns
-- **P2 check (polish)**: Direction, idioms, naturalness
+- **P2 check (polish - recommended)**: Direction, idioms, naturalness
   - Scan for: to/toward distinction, fixed expressions
   - Tools: Sections III, VI
 
+**Casual Mode Path**:
+- **P0 check (correctness - universal)**: Fixed collocations, spatial/temporal
+  - Scan for: verb+prep, adj+prep, noun+prep, time/date, location
+  - Tools: Cheat Sheet (20 top errors), Quick Reference table
+  - Skip: P1/P2 checks (preserve casual flow)
+
 **Step 2: Fix** — Apply corrections using patterns
-- Replace errors with correct forms from Quick Reference
-- Simplify verbose phrases using Section VII
-- Remove redundant/unnecessary prepositions
-- Preserve all semantic content
+- **Formal mode**: Replace errors with correct forms, simplify verbose phrases, remove redundancies
+- **Casual mode**: Fix only P0 grammatical errors, preserve colloquial constructions
+- Always preserve all semantic content
 
 **Step 3: Validate** — Quality checks before finalization
 - ✓ Semantic content preserved?
-- ✓ More concise and natural?
+- ✓ Mode-appropriate corrections applied?
 - ✓ Grammatically correct?
+- ✓ Natural for target context?
 - ✓ Read aloud for fluency
 
 ### Quick Diagnostic Questions
@@ -357,90 +414,120 @@ START: Identify the error type
 ---
 
 ## VII. Efficiency Patterns
-[← Quick Reference #8, #12, #14 | Priority: P1]
+[← Quick Reference #8, #12, #14 | Priority: P1 - Context-dependent]
+
+**Register Note**: These patterns are **context-dependent**:
+- **Formal mode**: Apply all corrections (reduces verbosity, increases professionalism)
+- **Casual mode**: Optional (many constructions are colloquially acceptable)
 
 **A. Verbose → Concise** (70% usage):
-- ~~in terms of~~ → (omit or rephrase)
-- ~~with regard to~~ → about / regarding
-- ~~in the event of~~ → if
-- ~~for the purpose of~~ → to / for
-- ~~by means of~~ → by / using
-- ~~in order to~~ → to
-- ~~at this point in time~~ → now / currently
-- ~~due to the fact that~~ → because / since
-- ~~in spite of the fact that~~ → although / despite
-- ~~during the course of~~ → during
-- ~~in the process of~~ → verb+-ing
-- ~~a large number of~~ → many
-- ~~in close proximity to~~ → near
+- ~~in terms of~~ → (omit or rephrase) [Formal: required | Casual: acceptable]
+- ~~with regard to~~ → about / regarding [Formal: required | Casual: acceptable]
+- ~~in the event of~~ → if [Formal: preferred | Casual: acceptable]
+- ~~for the purpose of~~ → to / for [Formal: preferred | Casual: acceptable]
+- ~~by means of~~ → by / using [Formal: preferred | Casual: acceptable]
+- ~~in order to~~ → to [Formal: preferred | Casual: acceptable]
+- ~~at this point in time~~ → now / currently [Formal: required | Casual: acceptable]
+- ~~due to the fact that~~ → because / since [Formal: required | Casual: acceptable]
+- ~~in spite of the fact that~~ → although / despite [Formal: required | Casual: acceptable]
+- ~~during the course of~~ → during [Formal: preferred | Casual: acceptable]
+- ~~in the process of~~ → verb+-ing [Formal: preferred | Casual: acceptable]
+- ~~a large number of~~ → many [Formal: preferred | Casual: acceptable]
+- ~~in close proximity to~~ → near [Formal: preferred | Casual: acceptable]
 
 **B. Redundant → Eliminate**:
-- ~~where...at~~ → where
-- ~~inside of~~ → inside
-- ~~off of~~ → off
-- ~~outside of~~ → outside
+- ~~where...at~~ → where [Formal: required | Casual: colloquial/regional acceptable]
+- ~~inside of~~ → inside [Formal: required | Casual: acceptable in informal speech]
+- ~~off of~~ → off [Formal: required | Casual: acceptable in American English]
+- ~~outside of~~ → outside [Formal: required | Casual: acceptable in informal speech]
 
 **C. Transitive Verbs (no preposition)**:
-- *discuss* (not ~~discuss about~~)
-- *enter* room (not ~~enter into~~) [but: enter into agreement]
-- *reach* conclusion (not ~~reach to~~)
-- *marry* someone (not ~~marry with~~)
+- *discuss* (not ~~discuss about~~) [Formal: required | Casual: "discuss about" acceptable in some dialects]
+- *enter* room (not ~~enter into~~) [Universal: no preposition except "enter into agreement"]
+- *reach* conclusion (not ~~reach to~~) [Universal: no preposition]
+- *marry* someone (not ~~marry with~~) [Universal: no preposition]
 
 ---
 
 ## Examples with Pattern Analysis
 
-**Example 1: Collocation Errors (P0 - Must Fix)**
+**Example 1: Collocation Errors (P0 - Universal)**
 ```
 ✗ The meeting starts in Monday. We'll discuss about features. The team is good in React.
 ```
 
 **Analysis**:
-- "in Monday" → **Temporal error** (Section II): Days use "on" → "on Monday"
-- "discuss about" → **Transitive verb** (Section VII-C): No preposition needed → "discuss"
-- "good in" → **Adj+Prep collocation** (Section V): Correct form → "good at"
+- "in Monday" → **Temporal error** (Section II, P0): Days use "on" → "on Monday"
+- "discuss about" → **Transitive verb** (Section VII-C, P1): Context-dependent
+- "good in" → **Adj+Prep collocation** (Section V, P0): Correct form → "good at"
 
+**Formal Mode Output**:
 ```
 ✓ The meeting starts on Monday. We'll discuss features. The team is good at React.
+[All errors fixed: 2 P0 + 1 P1]
+```
+
+**Casual Mode Output**:
+```
+✓ The meeting starts on Monday. We'll discuss about features. The team is good at React.
+[Only P0 errors fixed: 2 universal corrections, "discuss about" preserved as colloquial]
 ```
 
 ---
 
-**Example 2: Conciseness (P1 - High Value)**
+**Example 2: Conciseness (P1 - Context-Dependent)**
 ```
 ✗ In terms of performance, the system is slow due to the fact that we have many queries.
 ```
 
 **Analysis**:
-- "In terms of performance" → **Verbose phrase** (Section VII-A): Omit → "The system performs poorly..."
-- "due to the fact that" → **Verbose phrase** (Section VII-A): Replace → "because"
+- "In terms of performance" → **Verbose phrase** (Section VII-A, P1): Context-dependent
+- "due to the fact that" → **Verbose phrase** (Section VII-A, P1): Context-dependent
+- No P0 errors present
 
+**Formal Mode Output**:
 ```
 ✓ The system performs poorly because we have many queries.
+[P1 corrections applied: reduced verbosity, increased professionalism]
+```
+
+**Casual Mode Output**:
+```
+✓ In terms of performance, the system is slow due to the fact that we have many queries.
+[No corrections: P1 patterns preserved as acceptable in casual context]
 ```
 
 ---
 
-**Example 3: Comprehensive (All Priorities)**
+**Example 3: Comprehensive (Mixed P0 + P1)**
 ```
 ✗ We need to discuss about the solution of this problem. The issue is different than expected. 
 In the event of failure, retry. Where's the file at? Success depends of many factors.
 ```
 
 **Analysis**:
-- "discuss about" → **Transitive verb** (Section VII-C, P1): Remove prep → "discuss"
+- "discuss about" → **Transitive verb** (Section VII-C, P1): Context-dependent
 - "solution of" → **Noun+Prep collocation** (Section V, P0): Correct form → "solution to"
 - "different than" → **Adj+Prep collocation** (Section V, P0): US standard → "different from"
-- "In the event of" → **Verbose phrase** (Section VII-A, P1): Replace → "If"
-- "Where's the file at?" → **Redundant preposition** (Section VII-B, P1): Remove → "Where's the file?"
+- "In the event of" → **Verbose phrase** (Section VII-A, P1): Context-dependent
+- "Where's the file at?" → **Redundant preposition** (Section VII-B, P1): Context-dependent (colloquial)
 - "depends of" → **Verb+Prep collocation** (Section V, P0): Correct form → "depends on"
 
+**Error Count**: 3 P0 (universal), 3 P1 (context-dependent)
+
+**Formal Mode Output**:
 ```
 ✓ We need to discuss the solution to this problem. The issue differs from what we expected. 
 If it fails, retry. Where's the file? Success depends on many factors.
+[All 6 errors fixed: 3 P0 + 3 P1]
 ```
 
-**6 errors fixed**: 4 P0 (collocations), 2 P1 (verbose/redundant)
+**Casual Mode Output**:
+```
+✓ We need to discuss about the solution to this problem. The issue is different from what we expected. 
+In the event of failure, retry. Where's the file at? Success depends on many factors.
+[Only 3 P0 errors fixed: universal collocations corrected, P1 patterns preserved as colloquial]
+```
 
 ---
 
@@ -448,9 +535,14 @@ If it fails, retry. Where's the file? Success depends on many factors.
 
 **Document Type**: Dual-purpose (reference + post-check tool)
 
+**Mode Selection**: Register-aware correction system
+- **Formal mode**: Apply P0+P1+P2 (academic papers, reports, presentations)
+- **Casual mode**: Apply P0 only (conversation, team chat, informal writing)
+
 **Fast Start**: 
+- Mode Selection (choose Formal or Casual)
 - 1-Minute Cheat Sheet (20 top errors)
-- Quick Reference table (11 patterns, 80% coverage)
+- Quick Reference table (11 patterns with priority indicators, 80% coverage)
 - Decision Tree for pattern identification
 
 **Categories**: Spatial • Temporal • Direction • Abstract • Collocations • Idioms • Efficiency
@@ -464,13 +556,17 @@ If it fails, retry. Where's the file? Success depends on many factors.
 
 **80/20**: Cheat Sheet + Quick Reference (80%) → Comprehensive Sections I-VII (20%)
 
-**Priority**: P0 (correctness) → P1 (clarity) → P2 (polish)
+**Priority System**: Register-aware
+- **P0 (Universal)**: Apply in ALL modes (grammatical correctness)
+- **P1 (Formal)**: Apply in Formal mode only (clarity, conciseness)
+- **P2 (Polish)**: Apply in Formal mode for sophistication
 
-**Principle**: Preserve meaning, enhance clarity and naturalness
+**Principle**: Preserve meaning, enhance clarity and naturalness while respecting context
 
 **Usage Flow**: 
-1. Quick fixes → Cheat Sheet (20 errors)
-2. Pattern lookup → Quick Reference table
-3. Systematic review → Post-Check Workflow
-4. Edge cases → Decision Tree + Sections I-VII
+1. Select mode → Formal or Casual
+2. Quick fixes → Cheat Sheet (20 errors)
+3. Pattern lookup → Quick Reference table
+4. Systematic review → Post-Check Workflow (mode-specific)
+5. Edge cases → Decision Tree + Sections I-VII
 
