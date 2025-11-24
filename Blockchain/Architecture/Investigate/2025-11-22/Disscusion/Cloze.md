@@ -485,11 +485,11 @@ graph TD
 1. Q: Why were early custodial bridges considered more dangerous ___ the underlying blockchains they connected?
    A: **Architect A:** The core issue was that they centralized risk ___ the bridge validator set.
 
-      **Engineer B:** Right. Even if the base blockchains stayed secure, compromising that one bridge validator set could still steal funds.
+      **Engineer B:** Indeed. Even if the base blockchains stayed secure, compromising that one bridge validator set could still steal funds.
 
-      **A:** Exactly. So, compared ___ trust‑minimized designs, these custodial bridges concentrated risk ___ the underlying blockchains remained secure.
+      **A:** Precisely. Therefore, compared ___ trust‑minimized designs, these custodial bridges concentrated risk ___ the underlying blockchains remained secure.
 
-      **B:** Good point.
+      **B:** Understood.
    
    [Answers: than, in, with, while]
 
@@ -502,11 +502,11 @@ graph TD
 1. Q: What is Polkadot's XCMP (Cross‑Consensus Message Passing) leveraging to avoid each chain bootstrapping its own full security model?
    A: **Architect A:** ___ XCMP, it leans ___ the relay chain validators.
 
-      **Engineer B:** Right. Since those validators already secure all parachains together, they can safely pass messages ___ each chain re‑implementing its own independent security model.
+      **Engineer B:** Indeed. Since those validators already secure all parachains together, they can safely pass messages ___ each chain re‑implementing its own independent security model.
 
-      **A:** Exactly. ___ other words, XCMP rides ___ shared security instead ___ duplicating it.
+      **A:** Precisely. ___ other words, XCMP rides ___ shared security instead ___ duplicating it.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: For, on, without, In, on, of]
 
@@ -515,13 +515,13 @@ graph TD
 1. Q: The investigations group interoperability designs ___ several models. What are the three main ones plus the emerging fourth category?
    A: **Researcher A:** ___ a high level, the first category is trusted multisig bridges.
 
-      **Engineer B:** Right. Second, light‑client‑based protocols ___ IBC.
+      **Engineer B:** Indeed. Second, light‑client‑based protocols ___ IBC.
 
       **A:** Third, shared‑security frameworks ___ Polkadot's XCMP.
 
-      **B:** Got it. And ___ a fourth, emerging category, ZK‑based bridges.
+      **B:** Understood. Furthermore, ___ a fourth, emerging category, ZK‑based bridges.
 
-      **A:** Exactly.
+      **A:** Precisely.
    
    [Answers: into, At, like, like, as]
 
@@ -580,11 +580,11 @@ graph LR
 1. Q: ZK‑based bridges change the trust model. What do they use to let a destination chain verify a source‑chain state transition, and what's the main cost?
    A: **Engineer A:** Trust‑wise, they use succinct validity proofs—zero‑knowledge proofs that attest ___ a source‑chain state transition.
 
-      **Researcher B:** The downside is high proof generation latency ___ cost.
+      **Researcher B:** However, the downside is high proof generation latency ___ cost.
 
-      **A:** Right. So the trade‑off is: stronger trust‑minimization ___ proofs, ___ the price ___ higher proof generation latency or cost.
+      **A:** Precisely. Therefore, the trade‑off is: stronger trust‑minimization ___ proofs, ___ the price ___ higher proof generation latency or cost.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: to, or, via, at, of]
 
@@ -614,11 +614,11 @@ graph LR
 1. Q: Aptos's Block‑STM engine is often cited ___ performance discussions. What execution approach does it use?
    A: **Engineer A:** Execution‑wise, it applies ___ ___ ___.
 
-      **Researcher B:** Right. Many transactions run ___ parallel, and any that conflict are rolled back and retried.
+      **Researcher B:** Indeed. Many transactions run ___ parallel, and any that conflict are rolled back and retried.
 
-      **A:** Exactly. So Block‑STM essentially represents optimistic concurrency control ___ parallel transaction execution.
+      **A:** Precisely. Thus, Block‑STM essentially represents optimistic concurrency control ___ parallel transaction execution.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: in, optimistic, concurrency, control, in, for]
 
@@ -657,11 +657,11 @@ graph TD
 1. Q: ___ benchmarks, what order ___ magnitude throughput have Aptos and Sui demonstrated ___ controlled tests?
    A: **Researcher A:** Benchmark‑wise, the reports mention high five‑ to six‑figure TPS ranges.
 
-      **Engineer B:** Right. One headline number is around 100,000+ TPS ___ controlled tests.
+      **Engineer B:** Indeed. Specifically, one headline number is around 100,000+ TPS ___ controlled tests.
 
-      **A:** Exactly. So "~100,000 TPS" is the rough benchmark figure we should remember, ___ the caveat that it's ___ lab conditions.
+      **A:** Precisely. Therefore, "~100,000 TPS" is the rough benchmark figure we should remember, ___ the caveat that it's ___ lab conditions.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: In, of, in, in, with, in]
 
@@ -674,11 +674,11 @@ graph TD
 1. Q: What key hardware‑related trade‑off do many high‑throughput chains make compared ___ more conservative designs?
    A: **Architect A:** The trade‑off is they expect validators to run more powerful hardware.
 
-      **Engineer B:** Plus higher‑bandwidth network links.
+      **Engineer B:** Additionally, they require higher‑bandwidth network links.
 
-      **A:** Right. So they gain throughput, but ___ the cost ___ stricter hardware assumptions ___ validators.
+      **A:** Indeed. Therefore, they gain throughput, but ___ the cost ___ stricter hardware assumptions ___ validators.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: with, at, of, for]
 
@@ -700,13 +700,13 @@ graph TD
 1. Q: ___ 2025, the investigations group L1 architectures ___ three broad families. How do they characterize those families?
    A: **Researcher A:** Broadly, the first family is conservative UTXO plus simple scripts—Bitcoin‑like designs.
 
-      **Engineer B:** Right. Second, general‑purpose account‑based smart contracts, ___ Ethereum.
+      **Engineer B:** Indeed. Second, general‑purpose account‑based smart contracts, ___ Ethereum.
 
-      **A:** And third, aggressively concurrent parallel or Move‑based designs, ___ Solana, Sui, and Aptos.
+      **A:** Furthermore, third, aggressively concurrent parallel or Move‑based designs, ___ Solana, Sui, and Aptos.
 
-      **B:** Got it. So the three buckets are: UTXO, account‑based, and aggressively concurrent Move/parallel.
+      **B:** Understood. Therefore, the three buckets are: UTXO, account‑based, and aggressively concurrent Move/parallel.
 
-      **A:** Exactly.
+      **A:** Precisely.
    
    [Answers: By, into, like, like]
 
@@ -758,11 +758,11 @@ graph TD
 1. Q: ___ the EU's MiCA framework, many user‑facing crypto businesses fall ___ which regulated category, and what does that imply?
    A: **Policy A:** ___ MiCA, they're treated ___ Crypto‑Asset Service Providers—CASPs.
 
-      **Researcher B:** Right. CASP status means they must obtain authorization, comply ___ AML/KYC, and maintain local governance.
+      **Researcher B:** Indeed. CASP status means they must obtain authorization, comply ___ AML/KYC, and maintain local governance.
 
-      **A:** Exactly. So MiCA essentially pulls many exchanges, custodians, and similar actors ___ the CASP regime.
+      **A:** Precisely. Therefore, MiCA essentially pulls many exchanges, custodians, and similar actors ___ the CASP regime.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: Under, into, Under, as, with, into]
 
@@ -777,11 +777,11 @@ graph TD
 1. Q: MiCA also introduces a "significant CASP" category. What's the user threshold ___ that designation?
    A: **Policy A:** The threshold is more ___ ___ million active EU users.
 
-      **Researcher B:** Right. Crossing that 15‑million line triggers enhanced supervision.
+      **Researcher B:** Indeed. Crossing that 15‑million line triggers enhanced supervision.
 
-      **A:** Exactly. So 15 million active EU users is the critical number to watch.
+      **A:** Precisely. Therefore, 15 million active EU users is the critical number to watch.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: for, than, 15]
 
@@ -790,13 +790,13 @@ graph TD
 1. Q: According ___ the investigations, how is MiCA's rollout phased ___ stablecoins, broader CASP licensing, and the TFR "travel rule"?
    A: **Policy A:** Timeline‑wise, stablecoin rules start ___ mid‑2024.
 
-      **Researcher B:** Right. Broader CASP licensing rolls out ___ 2025–2026.
+      **Researcher B:** Indeed. Additionally, broader CASP licensing rolls out ___ 2025–2026.
 
-      **A:** And the Transfer ___ Funds Regulation travel rule ___ crypto transfers kicked in ___ December 2024.
+      **A:** Furthermore, the Transfer ___ Funds Regulation travel rule ___ crypto transfers kicked in ___ December 2024.
 
-      **B:** Got it. So the sequence is: mid‑2024 ___ stablecoins, 2025–2026 ___ CASP licensing, and December 2024 ___ the travel rule.
+      **B:** Understood. Therefore, the sequence is: mid‑2024 ___ stablecoins, 2025–2026 ___ CASP licensing, and December 2024 ___ the travel rule.
 
-      **A:** Correct.
+      **A:** Precisely.
    
    [Answers: to, for, from, through, of, for, from, for, for, for]
 
@@ -813,11 +813,11 @@ graph TD
 1. Q: ___ MiCA's architecture‑driven view, which entities are clearly CASPs, and who might sit outside the definition?
    A: **Policy A:** Concretely, staking pools, custodial wallets, centralized bridges, and some sequencer operators are obvious CASPs.
 
-      **Researcher B:** Right. Base‑layer validators that validate only ___ their own account often fall outside many interpretations.
+      **Researcher B:** However, base‑layer validators that validate only ___ their own account often fall outside many interpretations.
 
-      **A:** Exactly. So the line is drawn more around service providers—like pools and bridges—___ around individual validators.
+      **A:** Precisely. Therefore, the line is drawn more around service providers—like pools and bridges—___ around individual validators.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: In, on, than]
 
@@ -859,11 +859,11 @@ graph TD
 1. Q: ___ the U.S. perspective summarized ___ the investigations, how do the SEC and CFTC split focus ___ crypto activities?
    A: **Policy A:** ___ the U.S., the SEC has focused heavily ___ centralized staking programs ___ potential securities offerings.
 
-      **Researcher B:** Right. Meanwhile, the CFTC looks more ___ derivatives and some spot markets.
+      **Researcher B:** Indeed. Meanwhile, the CFTC looks more ___ derivatives and some spot markets.
 
-      **A:** Exactly. So SEC → staking and securities, CFTC → derivatives and some spot oversight.
+      **A:** Precisely. Therefore, SEC → staking and securities, CFTC → derivatives and some spot oversight.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: From, in, over, In, on, as, at]
 
@@ -879,11 +879,11 @@ graph TD
 1. Q: How does the modular Ethereum‑style stack change where regulatory exposure tends to concentrate, compared ___ more monolithic chains?
    A: **Architect A:** Structurally, ___ modular stacks exposure shifts ___ sequencers, bridges, and staking businesses.
 
-      **Policy B:** Right. Monolithic chains, ___ contrast, concentrate more exposure ___ large validator operators and infrastructure providers.
+      **Policy B:** Indeed. Conversely, monolithic chains, ___ contrast, concentrate more exposure ___ large validator operators and infrastructure providers.
 
-      **A:** Exactly. So the same economic activity ends up regulated ___ different layers, depending ___ whether the stack is modular or monolithic.
+      **A:** Precisely. Therefore, the same economic activity ends up regulated ___ different layers, depending ___ whether the stack is modular or monolithic.
 
-      **B:** Interesting.
+      **B:** Understood.
    
    [Answers: with, in, toward, by, on, at, on]
 
@@ -896,11 +896,11 @@ graph TD
 1. Q: What does the Nakamoto Coefficient measure ___ the context ___ blockchain security?
    A: **Researcher A:** Formally, it's the minimum number ___ independent entities—like validators or mining pools—whose collusion could corrupt the network.
 
-      **Engineer B:** Right. Lower coefficient means fewer actors need to collude, so higher centralization risk.
+      **Engineer B:** Indeed. A lower coefficient means fewer actors need to collude, thus indicating higher centralization risk.
 
-      **A:** Exactly. So the Nakamoto Coefficient quantifies how many entities you'd need to control to corrupt or control the chain.
+      **A:** Precisely. Therefore, the Nakamoto Coefficient quantifies how many entities you'd need to control to corrupt or control the chain.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: in, of, of]
 
@@ -924,11 +924,11 @@ $$
 1. Q: What consensus mechanism did Bitcoin originally use to prioritize security and censorship resistance ___ throughput and energy efficiency?
    A: **Engineer A:** Originally, it relied ___ ___.
 
-      **Researcher B:** Right. Specifically, a Proof‑of‑Work mechanism where miners solve computational puzzles.
+      **Researcher B:** Indeed. Specifically, it employs a Proof‑of‑Work mechanism where miners solve computational puzzles.
 
-      **A:** Exactly. So Bitcoin's design choice was Proof‑of‑Work, accepting energy cost ___ stronger security and censorship resistance.
+      **A:** Precisely. Therefore, Bitcoin's design choice was Proof‑of‑Work, accepting energy cost ___ stronger security and censorship resistance.
 
-      **B:** Got it.
+      **B:** Understood.
    
    [Answers: over, on, Proof‑of‑Work, for]
 
@@ -950,11 +950,11 @@ $$
 1. Q: Ethereum's account‑based design and rich smart‑contract layer led ___ rapid state growth. ___ the early 2020s, what kind ___ state sizes were typical ___ full nodes?
    A: **Researcher A:** Storage‑wise, the reports indicate tens ___ low hundreds ___ gigabytes.
 
-      **Engineer B:** Right. So a full node might need ___ the order ___ tens of GB, pushing toward low hundreds of GB as the state ballooned.
+      **Engineer B:** Indeed. Thus, a full node might need ___ the order ___ tens of GB, pushing toward low hundreds of GB as the state ballooned.
 
-      **A:** Exactly. That tens‑to‑hundreds of gigabytes range is a concrete symptom ___ the account‑based, high‑usage model.
+      **A:** Precisely. That tens‑to‑hundreds of gigabytes range is a concrete symptom ___ the account‑based, high‑usage model.
 
-      **B:** Makes sense.
+      **B:** Understood.
    
    [Answers: to, By, of, for, to, of, on, of, of]
 

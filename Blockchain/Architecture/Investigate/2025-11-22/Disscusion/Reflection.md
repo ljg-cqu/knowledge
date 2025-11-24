@@ -3,7 +3,7 @@
 
    **Researcher:** Right. Which of those shifts challenged you most—state model, consensus, or the way newer chains layer execution and data?
 
-   **Architect:** [pause] State model first. Moving from UTXO to accounts, then to object/resource-oriented designs, forced me to stop treating "blockchain" as one canonical pattern.
+   **Architect:** [pause] State model first. Specifically, moving from UTXO to accounts, then to object/resource-oriented designs, forced me to stop treating "blockchain" as one canonical pattern.
 
    **PM:** Mm-hmm. Moreover, it exposed earlier assumptions like "all chains basically work like Bitcoin or Ethereum" as way too coarse.
 
@@ -48,9 +48,9 @@ mindmap
 
    **Engineer B:** Got it. Spell that out a bit—how do you see parallelism across the three?
 
-   **Engineer A:** Let me think... [pause] UTXO shines at embarrassingly parallel spends, account-based makes composable DeFi easy, and object/resource models push for fine‑grained parallel execution with stronger invariants.
+   **Engineer A:** Let me think... [pause] UTXO shines at embarrassingly parallel spends. In contrast, account-based makes composable DeFi easy, while object/resource models push for fine‑grained parallel execution with stronger invariants.
 
-   **Researcher:** Mm-hmm. Good breakdown. And which model actually fits the applications you care about most?
+   **Researcher:** Mm-hmm. Good breakdown. Now, which model actually fits the applications you care about most?
 
    **Engineer A:** For rich DeFi and on‑chain governance, account-based still feels natural. For high‑throughput, asset‑centric workloads, the object/resource approach is compelling.
 
@@ -160,7 +160,7 @@ graph TD
 
    **Engineer A:** I used to under‑weight hardware requirements and validator economics. Now I see how those shape real decentralization, not just the whitepaper narrative.
 
-   **SRE:** Mm-hmm. And our own SLOs—latency, uptime, fee ceilings—map to specific points on that surface. A chain can be "good" in the abstract but wrong for our target SLOs.
+   **SRE:** Mm-hmm. Furthermore, our own SLOs—latency, uptime, fee ceilings—map to specific points on that surface. A chain can be "good" in the abstract but wrong for our target SLOs.
 
    **Engineer A:** Exactly. So instead of asking "Is it secure and scalable?" we ask "Where on the trilemma surface does this chain actually live given our constraints?"
    
@@ -540,7 +540,7 @@ graph LR
 
    **Security Engineer:** Much less. I think of them as wrapped claims secured by a particular governance and key‑management setup.
 
-   **Risk Lead:** Mm-hmm. And when reviewing documentation or code, I'm scanning for red‑flag patterns: opaque upgraders, centralized guardians, or poorly specified failure procedures.
+   **Risk Lead:** Mm-hmm. Moreover, when reviewing documentation or code, I'm scanning for red‑flag patterns: opaque upgraders, centralized guardians, or poorly specified failure procedures.
    
    **Security Engineer:** Exactly. Assume hostile until proven otherwise.
    
@@ -549,11 +549,11 @@ graph LR
 1. Q: When you compare trust‑minimized interoperability (IBC light clients, XCMP) with trusted multisig bridges and emerging ZK‑bridges, how has your notion of end‑to‑end security across chains become more nuanced?
    A: **Architect:** I now map out which components must be honest in each model for safety to hold—light clients, validators, guardians, provers.
 
-   **Security Engineer:** Right. And that mapping becomes the core of how we prioritize options for a cross‑chain DeFi protocol.
+   **Security Engineer:** Right. Moreover, that mapping becomes the core of how we prioritize options for a cross‑chain DeFi protocol.
 
-   **Architect:** Trust‑minimized designs reduce the set of parties we rely on but can be operationally heavier. Trusted multisigs are simpler but concentrate risk. ZK‑bridges shift trust into circuits and provers.
+   **Architect:** Trust‑minimized designs reduce the set of parties we rely on but can be operationally heavier. Conversely, trusted multisigs are simpler but concentrate risk. Meanwhile, ZK‑bridges shift trust into circuits and provers.
 
-   **Risk Lead:** Regulatory and operational constraints might still push us toward "less pure" options, but at least we're explicit about what we're trading away.
+   **Risk Lead:** Nevertheless, regulatory and operational constraints might still push us toward "less pure" options, but at least we're explicit about what we're trading away.
    
    **Security Engineer:** Good framing. Trade-offs with eyes open.
    
@@ -717,9 +717,9 @@ mindmap
 
    **Cryptographer:** Hmm... [pause] SNARKs for succinct verification in constrained environments, STARKs when transparency and post‑quantum hints matter, and no‑ZK when simplicity and auditability beat privacy.
 
-   **Policy Lead:** Interesting. And ZK clearly reshapes the trade‑offs between transparency, compliance, and user privacy.
+   **Policy Lead:** Interesting. Moreover, ZK clearly reshapes the trade‑offs between transparency, compliance, and user privacy.
 
-   **Cryptographer:** True. But it introduces new risks—trusted setup, prover centralization, circuit bugs—that we now need to track as first‑class concerns.
+   **Cryptographer:** True. However, it introduces new risks—trusted setup, prover centralization, circuit bugs—that we now need to track as first‑class concerns.
    
    **Architect:** So it's not a silver bullet—just another tool with trade-offs.
    
@@ -760,13 +760,13 @@ Privacy/Compression ←───────────────────
 1. Q: After comparing performance tables and discussions of state growth, what new questions will you ask about storage, archival requirements, and node operation before trusting performance numbers from any L1 or L2?
    A: **SRE:** I'll immediately ask who can realistically run full and archive nodes under the storage and bandwidth assumptions.
 
-   **Engineer:** So TPS without node‑operation data is a red flag.
+   **Engineer:** Therefore, TPS without node‑operation data is a red flag.
 
-   **SRE:** Exactly. I want explicit storage and bandwidth metrics next to TPS claims.
+   **SRE:** Exactly. Specifically, I want explicit storage and bandwidth metrics next to TPS claims.
 
-   **Architect:** And you're also thinking about how state‑growth constraints might cap long‑term viability for high‑throughput designs, right?
+   **Architect:** Additionally, you're also thinking about how state‑growth constraints might cap long‑term viability for high‑throughput designs, right?
 
-   **SRE:** Yes—throughput that only a handful of data centers can keep up with doesn't look like sustainable decentralization.
+   **SRE:** Indeed. Throughput that only a handful of data centers can keep up with doesn't look like sustainable decentralization.
    
    **Engineer:** Good point. Accessibility matters.
    
@@ -807,9 +807,9 @@ $$
 
    **Architect:** Right. Instead, I'm thinking about complementary roles: settlement, execution, interoperability.
 
-   **Strategist:** Exactly. That pushes me to design portfolios and system architectures that deliberately leverage multiple specialized roles rather than forcing everything onto one platform.
+   **Strategist:** Precisely. Consequently, that pushes me to design portfolios and system architectures that deliberately leverage multiple specialized roles rather than forcing everything onto one platform.
 
-   **Risk Lead:** But it also raises coordination and interoperability challenges—governance, MEV across domains, and bridge risk become structural, not temporary obstacles.
+   **Risk Lead:** However, it also raises coordination and interoperability challenges—governance, MEV across domains, and bridge risk become structural, not temporary obstacles.
    
    **Strategist:** True. Specialization brings its own complexity costs.
    
@@ -870,9 +870,9 @@ graph LR
 
    **Analyst:** How does that variance affect your trust in any single source?
 
-   **Researcher:** It nudges me to treat each source as one perspective, not ground truth.
+   **Researcher:** Therefore, it nudges me to treat each source as one perspective, not ground truth.
 
-   **Architect:** Good approach. And it suggests specific follow‑ups: extra data, experiments, or independent measurements we'd want before forming a strong view on contentious topics.
+   **Architect:** Good approach. Moreover, it suggests specific follow‑ups: extra data, experiments, or independent measurements we'd want before forming a strong view on contentious topics.
    
    **Researcher:** Exactly. Triangulate, don't trust blindly.
    
@@ -946,9 +946,9 @@ graph TD
 
    **Strategist:** Hmm... [pause] I expect heterogeneity to persist, with power concentrated in a few stacks but meaningful long‑tail chains.
 
-   **Engineer:** And that feeds back into your own skill and tooling investments?
+   **Engineer:** How does that feed back into your own skill and tooling investments?
 
-   **Strategist:** Yes—I plan for cross‑chain observability, MEV‑aware design, and bridge‑savvy security reviews as baseline skills, not niche specializations.
+   **Strategist:** Therefore, I plan for cross‑chain observability, MEV‑aware design, and bridge‑savvy security reviews as baseline skills, not niche specializations.
    
    **Researcher:** That's a multi-chain-first mindset.
    
@@ -1020,7 +1020,7 @@ graph TD
 
    **Risk Lead:** How does that translate into concrete decisions?
 
-   **Architect:** I'd stage large commitments—capital, integrations—over time, and build explicit exit ramps or migration options into any serious bet on a specific chain.
+   **Architect:** Specifically, I'd stage large commitments—capital, integrations—over time, and build explicit exit ramps or migration options into any serious bet on a specific chain.
 
    **Strategist:** In other words, we design for graceful pivots rather than betting on a single frozen snapshot of today's ecosystem.
    
