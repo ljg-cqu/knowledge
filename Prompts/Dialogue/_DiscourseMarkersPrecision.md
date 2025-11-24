@@ -10,6 +10,8 @@
 
 **Critical**: Markers enhance **logical flow** without changing **meaning or facts**.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 **Rules**: Preserve semantic content • Clarify relationships • Never add/remove information
 
 ```
@@ -39,16 +41,18 @@ After:  The system is slow. Therefore, we need to optimize queries. Additionally
 
 ## Priority System
 
-- **P0 (Clarity)**: Missing connectors causing confusion  
+**Universal application order:**
+
+- **P0 (Must fix)**: Missing connectors causing confusion  
   *~~Test passed. Failed in production.~~ → Test passed. However, it failed in production.*
   
-- **P1 (Precision)**: Weak/repetitive markers (and, but, so)  
+- **P1 (High value)**: Weak/repetitive markers (and, but, so)  
   *~~and also~~ → moreover | ~~but~~ → however*
 
 - **P2 (Polish)**: Advanced markers for sophistication  
   *admittedly, notably, granted*
 
-**Apply**: P0 → P1 → P2
+**Application**: Fix P0 first (clarity), then P1 (naturalness), then P2 (sophistication)
 
 ---
 
@@ -374,7 +378,7 @@ also → additionally → moreover
 
 **80/20**: Quick Reference (80%) → Comprehensive (20%)
 
-**Priority**: P0 (clarity) → P1 (precision) → P2 (polish)
+**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
 **Principle**: Preserve meaning, enhance flow
 

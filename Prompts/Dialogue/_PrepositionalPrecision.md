@@ -6,6 +6,8 @@
 
 **Critical**: Enhance **clarity and naturalness** without changing **meaning or facts**—preserve all semantic content, never add or alter information.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 **Example**:
 ```
 Before: We need to have a discussion regarding the matter of database optimization.
@@ -41,7 +43,7 @@ After:  We need to discuss database optimization.
 
 ## Priority System
 
-**Universal application order for all corrections:**
+**Universal application order:**
 
 - **P0 (Must fix)**: Fixed collocations (Quick Ref #9-11), spatial/temporal errors (#1-2)
   - Wrong collocations cause grammatical errors
@@ -282,4 +284,19 @@ If it fails, retry. Where's the file? Success depends on many factors.
 [Patterns #9, #11, #7, #8, #12]
 ```
 
+---
+
+## Summary
+
+**Categories**: Spatial • Temporal • Direction • Abstract • Collocations • Idioms • Efficiency
+
+**Coverage**: ~90% of prepositional errors with Quick Reference patterns
+
+**80/20**: Quick Reference (80%) → Comprehensive Sections I-VII (20%)
+
+**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
+
+**Principle**: Preserve meaning, enhance clarity
+
+**Usage**: Quick Reference for most cases → Workflow for systematic review → Sections I-VII for comprehensive patterns
 

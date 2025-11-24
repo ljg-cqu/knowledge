@@ -4,12 +4,12 @@
 
 ### Bitcoin Throughput
 
-1. Q: ___ Bitcoin's original Layer 1 design that combines consensus, execution, and data availability ___ a single monolithic chain, what kind ___ on‑chain throughput are we actually talking about?
-   A: **Researcher A:** Right, it's surprisingly low ___ raw TPS terms—roughly ___ the single digits.
+1. Q: ___ Bitcoin's original Layer 1 design that combines consensus, execution, and data availability ___ a single monolithic chain, what kind ___ on‑chain throughput does this achieve?
+   A: **Researcher A:** Right, it's surprisingly low ___ terms of raw TPS—roughly ___ the single digits.
 
-      **Engineer B:** Mm-hmm. The investigations put it ___ 3–7 transactions ___ second on‑chain.
+      **Engineer B:** The investigations put it ___ 3–7 transactions ___ second on‑chain.
 
-      **A:** Exactly. Which is tiny compared ___ Visa‑style systems, but it matches Bitcoin's choice ___ prioritize security and decentralization.
+      **A:** Exactly. Which is tiny compared ___ Visa‑style systems, but it matches Bitcoin's choice ___ prioritize security and decentralization over throughput.
 
       **Product C:** Got it. So that 3–7 TPS number is the trade‑off: strong censorship resistance, limited Layer 1 throughput.
    
@@ -27,11 +27,11 @@
 ### Ethereum Throughput
 
 1. Q: Ethereum also started ___ a largely monolithic design. ___ its early base layer, what kind ___ transaction throughput did it typically achieve before rollups became central?
-   A: **Engineer A:** Hmm... ___ practice, the reports describe Ethereum's early mainnet ___ handling ___ the order ___ tens of TPS.
+   A: **Engineer A:** ___ practice, the reports describe Ethereum's early mainnet ___ handling ___ the order ___ tens of TPS.
 
       **Architect B:** Right. More concretely, about 15–30 transactions ___ second ___ the base layer.
 
-      **A:** Exactly. Which explains why DeFi and NFT waves quickly hit scalability limits—15–30 TPS can't handle global demand.
+      **A:** Exactly. Which explains why DeFi and NFT waves quickly encountered scalability limits—15–30 TPS cannot handle global demand.
 
       **Product C:** Makes sense. That 15–30 TPS window is what pushed the ecosystem ___ Layer 2 rollups.
    
@@ -43,12 +43,12 @@
 
 ### Scalability Trilemma
 
-1. Q: When people talk ___ the blockchain "scalability trilemma", which three properties are considered to be ___ tension?
+1. Q: When people discuss the blockchain "scalability trilemma", which three properties are considered to be ___ tension?
    A: **Architect A:** Textbook one—the classic trio is decentralization, security, ___ scalability.
 
-      **Engineer B:** Right. So the idea is: you can't usually maximize all three ___ once—improving one tends ___ pressure the others.
+      **Engineer B:** Right. So the idea is: you cannot usually maximize all three ___ once—improving one tends ___ exert pressure on the others.
 
-      **A:** Exactly. Every architecture we studied is basically choosing a point ___ that decentralization–security–scalability space.
+      **A:** Exactly. Every architecture we studied essentially chooses a point ___ that decentralization–security–scalability space.
 
       **B:** Makes sense.
    
@@ -93,10 +93,10 @@ graph TD
 
 ### State Models
 
-1. Q: The investigations compare different state models. How do Bitcoin, Ethereum, and newer Move‑style chains differ here?
+1. Q: The investigations compare different state models. How do Bitcoin, Ethereum, and newer Move‑style chains differ in this regard?
    A: **Researcher A:** ___ a high level, Bitcoin sticks ___ the UTXO model—unspent transaction outputs.
 
-      **Engineer B:** Mm-hmm. Ethereum shifted ___ an account model instead.
+      **Engineer B:** Ethereum shifted ___ an account model instead.
 
       **A:** Right. And Sui/Aptos go further ___ object‑ or resource‑oriented models.
 
@@ -118,14 +118,14 @@ graph TD
 
 ### The Merge
 
-1. Q: Ethereum's "Merge" was a big milestone. When did it happen, and how much did it cut energy consumption?
-   A: **Engineer A:** Let me think... Historically, the Merge landed ___ September 15, 2022.
+1. Q: Ethereum's "Merge" was a major milestone. When did it happen, and how much did it reduce energy consumption?
+   A: **Engineer A:** Historically, the Merge occurred ___ September 15, 2022.
 
       **Researcher B:** Right. And the energy impact was dramatic—about a ___% reduction.
 
       **A:** Exactly. So: September 15, 2022, and roughly 99.98% lower energy use after moving ___ Proof‑of‑Stake.
 
-      **B:** That's huge.
+      **B:** That's substantial.
    
    [Answers: on, 99.98, to]
 
@@ -137,12 +137,12 @@ $$
 
 ### Post-Merge Consensus
 
-1. Q: After The Merge, what consensus mechanism actually secures Ethereum instead ___ Proof‑of‑Work mining?
+1. Q: After The Merge, what consensus mechanism secures Ethereum instead ___ Proof‑of‑Work mining?
    A: **Engineer A:** Since the Merge, it's fully ___ Proof‑of‑Stake now.
 
       **Architect B:** Right—validators stake ETH, propose and attest ___ blocks, and get rewarded or slashed accordingly.
 
-      **A:** Exactly. So when we talk about Ethereum post‑Merge, the consensus backbone is ___.
+      **A:** Exactly. So when we discuss Ethereum post‑Merge, the consensus backbone is ___.
 
       **B:** Got it.
    
@@ -181,9 +181,9 @@ sequenceDiagram
 ### Rollup Economics
 
 1. Q: ___ Ethereum's rollup‑centric roadmap, how much can Layer 2 rollups reduce costs and increase effective throughput compared ___ the base layer?
-   A: **Researcher A:** ___ costs, the numbers ___ the investigations are pretty aggressive—rollups can cut transaction costs ___ about ___–___×.
+   A: **Researcher A:** ___ costs, the numbers ___ the investigations are quite aggressive—rollups can reduce transaction costs ___ about ___–___×.
 
-      **Engineer B:** Mm-hmm. And that cost reduction translates ___ much higher effective throughput ___ the user level.
+      **Engineer B:** And that cost reduction translates ___ much higher effective throughput ___ the user level.
 
       **A:** Right. So we should remember that 10–100× drop ___ costs as a core justification ___ the rollup‑centric strategy.
 
@@ -202,7 +202,7 @@ $$
 1. Q: EIP‑4844 (proto‑danksharding) introduced blob data space. Roughly how much did this cut typical rollup data costs?
    A: **Engineer A:** ___ EIP‑4844, the cited figure is around a ___% reduction.
 
-      **Architect B:** Wow, that's huge—95% lower data costs ___ rollups means sustainable low‑fee transactions ___ Layer 2.
+      **Architect B:** That's substantial—95% lower data costs ___ rollups means sustainable low‑fee transactions ___ Layer 2.
 
       **A:** Exactly. So, EIP‑4844 → new blob space → about 95% cost reduction ___ rollup data.
 
@@ -223,7 +223,7 @@ $$
 ### Layer Definitions
 
 1. Q: ___ the layered architecture described ___ the investigations, what are the primary roles of Layer 0, Layer 1, and Layer 2?
-   A: **Architect A:** Let me break it down. Layer 0 focuses ___ interoperability and shared security.
+   A: **Architect A:** Layer 0 focuses ___ interoperability and shared security.
 
       **Engineer B:** Right. Layer 1 is ___ consensus and base security.
 
@@ -300,7 +300,7 @@ graph TB
 1. Q: Beyond consensus, which Solana components are highlighted ___ the investigations ___ transaction forwarding, block propagation, and parallel execution?
    A: **Engineer A:** ___ the networking side, ___ handles transaction forwarding.
 
-      **Researcher B:** Mm-hmm. ___ is ___ block propagation.
+      **Researcher B:** ___ is ___ block propagation.
 
       **A:** Right. And ___ is the parallel program execution engine.
 
@@ -333,8 +333,8 @@ graph TB
 
 ### Reliability Concerns
 
-1. Q: Between 2021 and 2024, what major reliability concern kept showing up ___ Solana mainnet?
-   A: **Engineer A:** The big one was repeated network ___.
+1. Q: Between 2021 and 2024, what major reliability concern repeatedly occurred ___ Solana mainnet?
+   A: **Engineer A:** The primary one was repeated network ___.
 
       **Researcher B:** Right. Often tied ___ spam attacks or software bugs that stalled block production.
 
@@ -353,7 +353,7 @@ graph TB
 1. Q: How does Polkadot's interoperability model work ___ a high level, according ___ the investigations?
    A: **Architect A:** Conceptually, it centers ___ a relay chain that provides shared security.
 
-      **Engineer B:** Mm-hmm. And that relay chain secures multiple parachains, which are sovereign blockchains.
+      **Engineer B:** And that relay chain secures multiple parachains, which are sovereign blockchains.
 
       **A:** Right. So the model is: a relay chain plus parachains, ___ shared security spreading ___ them.
 
@@ -433,7 +433,7 @@ graph TD
 1. Q: ___ 2024, how widely had Cosmos IBC been adopted, and roughly how much cross‑chain traffic did it handle annually?
    A: **Researcher A:** Adoption‑wise, it reached ___ the order ___ about ___ chains.
 
-      **Engineer B:** Mm-hmm. And it was moving tens ___ millions ___ cross‑chain transfers ___ year inside that ecosystem.
+      **Engineer B:** And it was moving tens ___ millions ___ cross‑chain transfers ___ year inside that ecosystem.
 
       **A:** Right. So the headline is: ~120 chains and tens of millions of IBC transfers annually.
 
@@ -450,7 +450,7 @@ graph TD
 1. Q: Early trusted multisig bridges like Ronin, Wormhole, and Poly Network used m‑of‑n signatures. What low threshold did some ___ them rely ___, and why was that risky?
    A: **Researcher A:** ___ some early designs, thresholds went as low ___ ___‑of‑___.
 
-      **Engineer B:** Right. ___ 5‑of‑9, compromising just five keys lets an attacker drain the bridge.
+      **Engineer B:** Right. ___ 5‑of‑9, compromising only five keys allows an attacker to drain the bridge.
 
       **A:** Exactly. So 5‑of‑9 multisig was a concrete example ___ how concentrated and fragile those setups were.
 
@@ -463,11 +463,11 @@ graph TD
 1. Q: Roughly how much user value did the Ronin, Wormhole, and Poly Network bridge incidents lose ___ total, according ___ the investigations?
    A: **Researcher A:** ___ total, the combined losses exceeded $___ billion.
 
-      **Engineer B:** Wow. That ">$2 billion" number is why bridge risk is treated ___ systemic, not just edge‑case.
+      **Engineer B:** That ">$2 billion" number is why bridge risk is treated ___ systemic, not merely an edge‑case.
 
       **A:** Exactly. So we should remember: three hacks, more than $___ billion gone.
 
-      **B:** That's huge.
+      **B:** That's substantial.
    
    [Answers: in, to, In, 2, as, 2]
 
@@ -517,7 +517,7 @@ graph TD
 
       **Engineer B:** Right. Second, light‑client‑based protocols ___ IBC.
 
-      **A:** Mm-hmm. Third, shared‑security frameworks ___ Polkadot's XCMP.
+      **A:** Third, shared‑security frameworks ___ Polkadot's XCMP.
 
       **B:** Got it. And ___ a fourth, emerging category, ZK‑based bridges.
 
@@ -580,7 +580,7 @@ graph LR
 1. Q: ZK‑based bridges change the trust model. What do they use to let a destination chain verify a source‑chain state transition, and what's the main cost?
    A: **Engineer A:** Trust‑wise, they use succinct validity proofs—zero‑knowledge proofs that attest ___ a source‑chain state transition.
 
-      **Researcher B:** Mm-hmm. The downside is high proof generation latency ___ cost.
+      **Researcher B:** The downside is high proof generation latency ___ cost.
 
       **A:** Right. So the trade‑off is: stronger trust‑minimization ___ proofs, ___ the price ___ higher proof generation latency or cost.
 
@@ -594,10 +594,10 @@ graph LR
 
 ### Resource Model
 
-1. Q: Move‑based platforms like Aptos and Sui talk about "resources" ___ their programming model. What does that mean ___ key assets on‑chain?
+1. Q: Move‑based platforms like Aptos and Sui discuss "resources" ___ their programming model. What does that mean ___ key assets on‑chain?
    A: **Engineer A:** ___ Move‑style systems, key assets are modeled ___ resources.
 
-      **Researcher B:** Resources can't be implicitly copied ___ destroyed—they must move or be explicitly handled.
+      **Researcher B:** Resources cannot be implicitly copied ___ destroyed—they must move or be explicitly handled.
 
       **A:** That resource treatment is what reduces many common smart contract vulnerabilities.
    
@@ -616,7 +616,7 @@ graph LR
 
       **Researcher B:** Right. Many transactions run ___ parallel, and any that conflict are rolled back and retried.
 
-      **A:** Exactly. So Block‑STM is basically optimistic concurrency control ___ parallel transaction execution.
+      **A:** Exactly. So Block‑STM essentially represents optimistic concurrency control ___ parallel transaction execution.
 
       **B:** Got it.
    
@@ -674,7 +674,7 @@ graph TD
 1. Q: What key hardware‑related trade‑off do many high‑throughput chains make compared ___ more conservative designs?
    A: **Architect A:** The trade‑off is they expect validators to run more powerful hardware.
 
-      **Engineer B:** Mm-hmm. Plus higher‑bandwidth network links.
+      **Engineer B:** Plus higher‑bandwidth network links.
 
       **A:** Right. So they gain throughput, but ___ the cost ___ stricter hardware assumptions ___ validators.
 
@@ -948,7 +948,7 @@ $$
 ### Ethereum State Growth
 
 1. Q: Ethereum's account‑based design and rich smart‑contract layer led ___ rapid state growth. ___ the early 2020s, what kind ___ state sizes were typical ___ full nodes?
-   A: **Researcher A:** Storage‑wise, the reports talk about tens ___ low hundreds ___ gigabytes.
+   A: **Researcher A:** Storage‑wise, the reports indicate tens ___ low hundreds ___ gigabytes.
 
       **Engineer B:** Right. So a full node might need ___ the order ___ tens of GB, pushing toward low hundreds of GB as the state ballooned.
 
@@ -1037,7 +1037,7 @@ timeline
 
 ### Systemic Bridge Risk
 
-1. Q: Even ___ secure base layers, which component does the report say remains a systemic risk, capable ___ causing huge losses when it fails?
+1. Q: Even ___ secure base layers, which component does the report indicate remains a systemic risk, capable ___ causing substantial losses when it fails?
    A: **Researcher A:** ___ practice, bridges.
 
       **Engineer B:** Right. The reports emphasize that weaknesses ___ bridge design and implementation can still lead ___ multi‑hundred‑million‑dollar losses.

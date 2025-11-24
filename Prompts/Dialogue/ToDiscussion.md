@@ -8,6 +8,8 @@
 
 **Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+
 **Format**: 
 - 2-4 speakers with balanced contributions
 - Conversational language with natural turn-taking patterns

@@ -10,6 +10,8 @@
 
 **Critical**: Stance markers express **degree of certainty** without changing **factual content**.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 **Rules**:
 - **Preserve all factual content** from the original text
 - Never add ungrounded claims or exaggerate certainty
@@ -511,6 +513,6 @@ DEFINITIVE:        is, does, always (use sparingly)
 
 **80/20**: Quick Reference (12 patterns) + Certainty Spectrum = 80% coverage
 
-**Priority**: P0 (accuracy) → P1 (appropriateness) → P2 (precision)
+**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
 **Principle**: Calibrate certainty to evidence; avoid over-claiming and over-hedging

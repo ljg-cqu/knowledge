@@ -18,7 +18,10 @@ Extracted Q&A pairs from any Extract/ prompt type.
 
 ## Rules
 
-**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions  
+**Fidelity**: Preserve all decision-critical content, facts, numbers, technical accuracy; no ungrounded additions
+
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+
 **Transformation**: Spoken presentation language with markers, oral delivery structure, formal rhetorical devices  
 **Format**: Question → prompt/introduction; Answer → structured presentation with emphasis cues, numbered/bulleted points  
 **Self-contained**: Provide sufficient context, natural setup

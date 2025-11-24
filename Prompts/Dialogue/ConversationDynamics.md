@@ -4,6 +4,8 @@
 
 **Fidelity Principle**: Dynamics add **style/tone/format**, never change **content/facts**.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 ---
 
 ## Top 10 Patterns (80/20 Core)

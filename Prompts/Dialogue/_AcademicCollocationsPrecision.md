@@ -8,6 +8,8 @@
 
 **Critical**: Enhance **naturalness** without changing **meaning or facts**.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 **Example**: ~~We did research and made conclusions~~ → We conducted research and drew conclusions
 
 ---
@@ -47,6 +49,25 @@
 20. ~~make experiments~~ → **conduct/run** experiments
 
 **→ 95% complete. Continue for categorized patterns & detailed examples.**
+
+---
+
+## Priority System
+
+**Universal application order:**
+
+- **P0 (Must fix)**: Wrong verbs, wrong collocations
+  - ~~do research~~ → conduct research
+  - ~~make conclusions~~ → draw conclusions
+  
+- **P1 (High value)**: Unnatural pairings
+  - ~~get data~~ → collect data
+  - ~~find problems~~ → identify problems
+
+- **P2 (Polish)**: Advanced academic collocations
+  - Fine-tuned verb-noun pairs for sophistication
+
+**Application**: Fix P0 first (correctness), then P1 (naturalness), then P2 (sophistication)
 
 ---
 
@@ -303,7 +324,6 @@ I. Core Verbs | II. Knowledge Work | III. Methodology | IV. Analysis & Impact | 
 
 ## Application Guidelines
 
-**Priority**: correctness → naturalness → precision → variety  
 **Principle**: Preserve meaning, apply contextually, match formality, vary verbs
 
 **Formality ladder**: get → obtain → acquire | show → present → demonstrate | find → identify → ascertain
@@ -351,6 +371,6 @@ I. Core Verbs | II. Knowledge Work | III. Methodology | IV. Analysis & Impact | 
 
 **Coverage**: ~95% with TOP 20, ~80% comprehensive coverage of academic collocation patterns
 
-**Priority**: P0 (correctness) → P1 (naturalness) → P2 (precision)
+**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
 **Usage**: TOP 20 for most cases → Mode 1/2 for workflow → Sections I-VI for deep reference

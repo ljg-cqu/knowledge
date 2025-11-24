@@ -6,9 +6,9 @@
 
 **Analyst A:** Good question. [pause] My instinct is "not that much" by default. Those TPS numbers usually come from idealized lab conditions—no MEV-style traffic, limited state bloat, fairly homogeneous validator hardware, and clean network conditions.
 
-**Engineer B:** Exactly. And they quietly assume that end-to-end system performance is dominated by L1 TPS. In practice, many bottlenecks live off-chain: wallets, RPC and indexing infra, bridges, compliance and KYC checks. Any of those can erase the theoretical throughput edge.
+**Engineer B:** Exactly. And they quietly assume that end-to-end system performance is dominated by L1 TPS. In practice, many bottlenecks reside off-chain: wallets, RPC and indexing infra, bridges, compliance and KYC checks. Any of those can eliminate the theoretical throughput edge.
 
-**Risk Lead C:** Mm-hmm. Plus, the claims almost never come with realized mainnet numbers under load. We rarely see sustained TPS, latency distributions, or outage frequency reported side by side.
+**Risk Lead C:** Mm-hmm. Plus, the claims almost never provide realized mainnet numbers under load. We rarely observe sustained TPS, latency distributions, or outage frequency reported side by side.
 
 **Analyst A:** Right. So benchmarks are a useful hint, but not a decision by themselves.
 
@@ -57,9 +57,9 @@ graph TD
 
 | Missing Metric | Why It Matters | Current Status |
 |----------------|----------------|----------------|
-| **Sustained TPS** | Lab burst vs real workload | Rarely reported |
+| **Sustained TPS** | Lab burst versus real workload | Rarely reported |
 | **p95 Latency** | User experience reliability | Usually omitted |
-| **Uptime %** | Production stability | Not side-by-side |
+| **Uptime %** | Production stability | Not reported side-by-side |
 | **Incident Count** | Operational maturity | Incomplete data |
 | **Load Conditions** | Real traffic patterns | Idealized only |
 
@@ -67,7 +67,7 @@ graph TD
 
 - **Longitudinal production metrics** across multiple chains
 - **Representative workloads** under realistic conditions
-- **Latency distributions** (not just averages)
+- **Latency distributions** (not merely averages)
 - **Sustained throughput** over extended periods
 - **Off-chain infrastructure** performance analysis
 
@@ -83,7 +83,7 @@ graph TD
 
 **Risk Lead B:** Right. And it sometimes treats "modular" architectures as automatically safer. But they have their own systemic risks—bridge failures, sequencer centralization, and data-availability assumptions—that have caused multi-hundred-million-dollar losses.
 
-**Analyst C:** Good point. The evidence also tends to be qualitative: counting outages on Solana, say, without normalizing for downtime hours per year, incident severity, or recovery quality across different chains.
+**Analyst C:** Good point. The evidence also tends to be qualitative: documenting outages on Solana, say, without normalizing for downtime hours per year, incident severity, or recovery quality across different chains.
 
 **Architect A:** Exactly. So instead of "monolithic bad, modular good," a stronger argument would compare risk-adjusted reliability: uptime, blast radius, and recovery guarantees for concrete financial use cases, looking across both monolithic and modular designs.
 
@@ -136,8 +136,8 @@ graph LR
 - **Downtime hours** (total and by severity)
 - **Blast radius** (users/value affected per incident)
 - **Recovery time** (mean time to resolution)
-- **Incident trend** (improving vs worsening)
-- **Root cause diversity** (systemic vs operational)
+- **Incident trend** (improving versus worsening)
+- **Root cause diversity** (systemic versus operational)
 
 **Modular-Specific Metrics:**
 - Bridge exploit frequency and loss amounts
@@ -157,7 +157,7 @@ graph LR
 
 **Engineer B:** Right, and those reports often treat a snapshot of the metric as if it were stable. They rarely show how it changes under stress—during slashing events, market crashes, or regulatory shocks.
 
-**Risk Lead C:** Exactly. They also tend to ignore cross-layer centralization. Custodians, liquid staking protocols, and major RPC or infrastructure providers can concentrate practical control even when the base-layer validator set appears diverse on paper.
+**Risk Lead C:** Exactly. They also tend to overlook cross-layer centralization. Custodians, liquid staking protocols, and major RPC or infrastructure providers can concentrate practical control even when the base-layer validator set appears diverse on paper.
 
 **Researcher A:** Got it. So the raw "higher Nakamoto coefficient → more secure" leap is weak.
 
@@ -215,7 +215,7 @@ mindmap
 **Layer 1: Base Consensus**
 - Stake concentration (Nakamoto coefficient)
 - Operator independence (correlated staking)
-- Hardware diversity (homogeneous vs heterogeneous)
+- Hardware diversity (homogeneous versus heterogeneous)
 
 **Layer 2: Infrastructure**
 - Client implementation diversity
@@ -247,7 +247,7 @@ mindmap
 
 ### Discussion
 
-**Engineer A:** Fair question. [pause] It's fair to say that linear, resource-oriented types can eliminate specific bug classes—certain reentrancy or asset-duplication patterns are just structurally harder or impossible.
+**Engineer A:** Fair question. [pause] It's fair to say that linear, resource-oriented types can eliminate specific bug classes—certain reentrancy or asset-duplication patterns are structurally harder or impossible.
 
 **Security Researcher B:** True. But the leap from "fewer of these bugs" to "overall platform is safer" is big. We don't yet have long production histories, and much risk lives outside the language semantics.
 
@@ -255,7 +255,7 @@ mindmap
 
 **Engineer A:** Right. And the evidence we cite is mostly theoretical—language design papers, whitepapers—not empirical metrics like incident rates per LOC or loss amounts compared with EVM over time.
 
-**Security Researcher B:** Mm-hmm. So a more defensible position is: Move plus formal verification can reduce certain bug classes, but "safer overall" needs empirical backing—audited Move vs Solidity contracts of similar complexity, real exploit statistics, and a clear separation between "bugs prevented by the type system" and those that still need process and tooling.
+**Security Researcher B:** Mm-hmm. So a more defensible position is: Move plus formal verification can reduce certain bug classes, but "safer overall" needs empirical backing—audited Move versus Solidity contracts of similar complexity, actual exploit statistics, and a clear separation between "bugs prevented by the type system" and those that still require process and tooling.
 
 ### Move Language Safety Analysis
 
@@ -315,12 +315,12 @@ graph TD
 - Formal verification capabilities
 
 **Missing Evidence (Empirical):**
-- Incident rates per LOC (Move vs Solidity)
-- Real exploit statistics over time
+- Incident rates per LOC (Move versus Solidity)
+- Actual exploit statistics over time
 - Loss amounts comparison
 - Audited contracts of similar complexity
 - Production bug frequency data
-- Time-to-fix metrics
+- Time-to-resolution metrics
 
 ### Risk Landscape Beyond Language
 
@@ -358,11 +358,11 @@ $$
 $$
 
 **Required for Strong Claims:**
-1. **Empirical comparison** of Move vs Solidity exploits
+1. **Empirical comparison** of Move versus Solidity exploits
 2. **Controlled study** of similar-complexity contracts
 3. **Ecosystem maturity** metrics (auditor availability, tool quality)
 4. **Production incident** tracking over multiple years
-5. **Clear taxonomy** of bugs prevented vs remaining
+5. **Clear taxonomy** of bugs prevented versus remaining
 
 > **Key Caveat:** Move reduces specific bug classes through type system design, but overall platform safety requires empirical validation across all risk layers, not just language semantics.
 
@@ -374,7 +374,7 @@ $$
 
 ### Discussion
 
-**Architect A:** Good question. They definitely improve the trust model relative to basic multisig bridges, but stronger is not the same as negligible. You add new complexity: relay-chain consensus, light-client implementations, governance layers—all of which can fail.
+**Architect A:** Good question. They definitely improve the trust model relative to basic multisig bridges, but stronger is not the same as negligible. You introduce new complexity: relay-chain consensus, light-client implementations, governance layers—all of which can fail.
 
 **Security Researcher B:** Right. And the comparisons can be unfair. They pit the worst historical failures of early bridges like Ronin or Wormhole against the design intent of newer protocols, instead of examining currently deployed code and its incident history.
 
@@ -438,7 +438,7 @@ graph LR
 - **Shared security**: Compare against design intent, not deployed code reality
 
 **Fair Comparison Would Require:**
-- Current state-of-art multisig bridges (threshold signatures, MPC, upgrades)
+- Current state-of-the-art multisig bridges (threshold signatures, MPC, upgrades)
 - Actual incident history of shared-security bridges
 - Near-miss analysis for both architectures
 - Formal threat models for both designs
@@ -479,17 +479,17 @@ graph TD
 
 ### Risk Transformation, Not Elimination
 
-**What Shared Security Does:**
+**What Shared Security Achieves:**
 - ✅ Eliminates trusted multisig key holders
 - ✅ Leverages existing validator security budget
 - ✅ Provides cryptographic proofs of cross-chain state
 
-**What It Doesn't Do:**
+**What It Doesn't Achieve:**
 - ❌ Eliminate all bridge risk
 - ❌ Prevent consensus-level failures
 - ❌ Remove implementation bugs
 - ❌ Avoid governance exploits
-- ❌ Stop correlated failures across connected chains
+- ❌ Prevent correlated failures across connected chains
 
 ### Required Evidence for Strong Claims
 
@@ -517,7 +517,7 @@ graph TD
 
 ### Discussion
 
-**Architect A:** I see this often—the narrative tends to underplay centralization and trust issues around rollup sequencers, provers, and upgrade keys. Those can become chokepoints that look much like concentrated validator sets on alternative L1s.
+**Architect A:** I see this often—the narrative tends to understate centralization and trust issues around rollup sequencers, provers, and upgrade keys. Those can become chokepoints that resemble concentrated validator sets on alternative L1s.
 
 **Engineer B:** Mm-hmm. It also assumes that data-availability guarantees and L1 finality are always enough. We rarely see quantitative analysis of how DA failures, client bugs, or reorgs would affect L2 solvency and user funds.
 
@@ -586,7 +586,7 @@ graph TD
 - **7-day fraud proof windows** (user friction)
 - Prover liveness assumptions
 - Economic security of fraud proofs
-- Capital efficiency vs security trade-off
+- Capital efficiency versus security trade-off
 
 **ZK-Rollup Challenges:**
 - **Trusted setup requirements** (some designs)
@@ -643,10 +643,10 @@ graph LR
 
 **Required for Fair Comparison:**
 1. **Full-stack latency**: User action → L2 finality → L1 finality
-2. **Cross-rollup friction**: Time and cost to move assets
+2. **Cross-rollup friction**: Time and cost to transfer assets
 3. **Failure mode analysis**: DA failure impact on L2 solvency
 4. **Liveness dependency**: Sequencer/prover downtime effects
-5. **Economic security**: Fraud proof incentives vs attack costs
+5. **Economic security**: Fraud proof incentives versus attack costs
 6. **Capital efficiency**: Fraud window impact on DeFi
 7. **Regulatory accountability**: Liability mapping in multi-layer failures
 
@@ -662,13 +662,13 @@ graph LR
 - Cross-rollup fragmentation
 - Complex accountability
 - UX friction (bridging, delays)
-- New attack surfaces (DA, fraud proofs)
+- Novel attack surfaces (DA, fraud proofs)
 
 **High-Throughput L1 Advantages:**
 - Unified composability
 - Simpler accountability
 - Faster finality (no fraud windows)
-- Better UX (single token, no bridges)
+- Superior UX (single token, no bridges)
 
 **High-Throughput L1 Disadvantages:**
 - Validator centralization pressure
@@ -686,7 +686,7 @@ graph LR
 
 ### Discussion
 
-**Analyst A:** [pause] That's a stretch. In practice, what we really see is revealed preference for specific pilots or products, often tightly scoped. It's not a blanket endorsement of the entire chain's risk profile.
+**Analyst A:** [pause] That's a stretch. In practice, what we actually observe is revealed preference for specific pilots or products, often tightly scoped. It's not a blanket endorsement of the entire chain's risk profile.
 
 **Risk Lead B:** Right. And there's survivorship and selection bias. We mostly hear about successful pilots, not the internal evaluations that rejected certain chains or limited them to non-systemic roles.
 
@@ -825,15 +825,15 @@ $$
 
 **1. Risk Disclosure Requirements:**
 - **Capital at risk**: Absolute amounts and percentages
-- **Use case scope**: Systemic vs experimental
+- **Use case scope**: Systemic versus experimental
 - **Risk classification**: How blockchain compares to traditional rails
 - **Position limits**: Maximum exposure thresholds
 
 **2. Due Diligence Transparency:**
-- **Comparative analysis**: Why this chain vs alternatives?
+- **Comparative analysis**: Why this chain versus alternatives?
 - **Risk assessment**: What risks were accepted?
 - **Mitigation measures**: What controls are in place?
-- **Exit criteria**: Under what conditions would they leave?
+- **Exit criteria**: Under what conditions would they exit?
 
 **3. Track Record Evidence:**
 - **Time horizon**: How long has exposure existed?
@@ -843,8 +843,8 @@ $$
 
 ### Pricing Blockchain Risk
 
-**What We Need to See:**
-- Insurance premium rates for blockchain vs traditional infrastructure
+**What We Need to Observe:**
+- Insurance premium rates for blockchain versus traditional infrastructure
 - Capital charges applied by risk management
 - Collateral requirements for blockchain-based products
 - Reserve allocations for platform-specific risks
@@ -868,7 +868,7 @@ $$
 
 **Strategist B:** Mm-hmm. It also treats the current 2020–2025 diversity as predictive of steady state, without really modeling consolidation dynamics like M&A, ecosystem failures, regulatory bans, or de facto standards.
 
-**Analyst C:** Good point. And we rarely see solid economic evidence: developer counts, TVL share, and infrastructure investment are already skewed toward a few architectures, which may foreshadow more concentration.
+**Analyst C:** Good point. And we rarely observe solid economic evidence: developer counts, TVL share, and infrastructure investment are already skewed toward a few architectures, which may foreshadow greater concentration.
 
 **Researcher A:** Right. So "multi-chain is inevitable" is more of a narrative than a proven equilibrium.
 
@@ -1020,11 +1020,11 @@ $$
 
 ### Missing Empirical Analysis
 
-**What We Need to See:**
+**Required Data:**
 1. **Cycle-over-cycle data**: How has concentration evolved through 2017, 2021, and current cycles?
 2. **Developer migration patterns**: Are developers sticky or switching between chains?
 3. **Liquidity flow dynamics**: Does liquidity concentrate or distribute over time?
-4. **Failed chain analysis**: How many chains launched in 2017-2020 are still viable?
+4. **Failed chain analysis**: How many chains launched in 2017-2020 remain viable?
 5. **Cross-chain activity**: Is interoperability usage growing or stagnating?
 6. **Economic sustainability**: Can smaller chains maintain security budgets through bear markets?
 
@@ -1053,7 +1053,7 @@ xychart-beta
 
 ### Counterarguments to Multi-Chain Thesis
 
-1. **EVM standardization**: 70%+ of chains use EVM, reducing actual diversity
+1. **EVM standardization**: 70%+ of chains employ EVM, reducing actual diversity
 2. **Layer 2 absorption**: Ethereum rollups may capture specialization without L1 fragmentation
 3. **Infrastructure economics**: Supporting 20+ chains is costly; market may force winnowing
 4. **Security budget math**: Only a few chains can afford robust validator incentives

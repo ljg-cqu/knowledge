@@ -13,6 +13,8 @@ Extracted Q&A pairs from any Extract/ prompt type.
 
 **Fidelity**: Preserve all critical facts, numbers, technical accuracy; no ungrounded additions
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy
+
 **Transformation**: Formal → conversational; written → spoken; active voice; natural rhythm
 
 **Self-contained**: Include context naturally; no assumed prior knowledge

@@ -12,6 +12,8 @@
 
 **Critical**: Register adjustment enhances **appropriateness and professionalism** without changing **meaning or facts**.
 
+**Conflict Resolution**: When fluency enhancements conflict with factual accuracy, always preserve accuracy.
+
 **Rules**:
 - Preserve all semantic content
 - Match formality to context (academic ≠ email ≠ chat)
@@ -114,7 +116,7 @@ Academic:  "System stability has not been achieved. This study examines underlyi
 
 ## Priority System
 
-**Fix in order:**
+**Universal application order:**
 
 - **P0 (Must fix)**: Unprofessional in formal context
   - Contractions: ~~don't~~ → do not
@@ -568,7 +570,7 @@ Academic: "This study evaluated Redis for distributed caching. Empirical results
 - **Quick Reference**: 7 core patterns (80% coverage)
 - **Comprehensive**: Sections I-VII for detailed reference
 
-**Priority**: P0 (unprofessional) → P1 (clarity) → P2 (sophistication)
+**Priority**: P0 (correctness) → P1 (naturalness) → P2 (sophistication)
 
 **Golden Rule**: Write professionally but readably. Avoid both slang and pretentiousness.
 
