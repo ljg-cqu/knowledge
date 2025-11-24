@@ -18,6 +18,7 @@ Dialogue/
 │   └── ConversationDynamics.md
 │
 ├── Formal/              # Professional/academic spoken & written English
+│   ├── ToConversation.md
 │   ├── ToPresentation.md
 │   ├── ToDiscussion.md
 │   ├── ConversationDynamics.md
@@ -58,6 +59,11 @@ Dialogue/
 ## Formal/ - Professional/Academic Oral & Written English
 
 **Use for**: Presentations, academic discussions, formal meetings, papers, reports
+
+### ToConversation.md (Formal)
+- Transform content to 1-on-1 professional dialogue format
+- Characteristics: complete sentences, minimal contractions, professional tone, measured pacing
+- Use for: professional mentoring, formal interviews, expert consultations
 
 ### ToPresentation.md
 - Transform content to formal presentation format
@@ -198,16 +204,16 @@ Dialogue/
 - Structural relationships: PrepositionalPrecision
 - Formality calibration: RegisterFormalityPrecision
 
-**Formal Context Guides** (Formal/ - 6 guides):
+**Formal Context Guides** (Formal/ - 7 guides):
 - Logical flow: DiscourseMarkersPrecision
 - Claim strength: StanceCertaintyPrecision
 - Word pairings: AcademicCollocationsPrecision
-- Format: ToPresentation, ToDiscussion (Formal), ConversationDynamics (Formal)
+- Format: ToConversation (Formal), ToPresentation, ToDiscussion (Formal), ConversationDynamics (Formal)
 
 **Casual Context Guides** (Casual/ - 3 guides):
 - Format: ToConversation, ToDiscussion (Casual), ConversationDynamics (Casual)
 
-**Total**: 11 guides organized by formality level
+**Total**: 12 guides organized by formality level
 
 **Collective Coverage**: ~95% of fluency gaps across written, spoken, formal, and informal contexts
 
@@ -255,6 +261,7 @@ Dialogue/
 - `ConversationDynamics.md`
 
 **Formal/ (Professional/Academic)**:
+- `ToConversation.md`
 - `ToPresentation.md`
 - `ToDiscussion.md`
 - `ConversationDynamics.md`
@@ -262,7 +269,7 @@ Dialogue/
 - `StanceCertaintyPrecision.md`
 - `AcademicCollocationsPrecision.md`
 
-**Total**: 11 guides organized into 3 locations
+**Total**: 12 guides organized into 3 locations
 
 ---
 
