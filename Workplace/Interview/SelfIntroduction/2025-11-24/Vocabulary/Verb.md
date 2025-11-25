@@ -412,6 +412,90 @@ To decrease, lower, or minimize costs/issues/complexity
 
 ---
 
+## Behavioral & Interpersonal Verbs (For STAR Responses)
+
+### 26. **Navigated**
+- Meaning: To find a way through difficult or complicated situations
+- Example: "I **navigated** conflicting stakeholder requirements by facilitating discussions to reach consensus on project priorities"
+
+### 27. **Facilitated**
+- Meaning: To make an action or process easier; to enable discussion or collaboration
+- Example: "I **facilitated** cross-functional collaboration between smart contract developers, backend engineers, and security auditors"
+
+### 28. **Mediated**
+- Meaning: To intervene in a dispute to bring about agreement or reconciliation
+- Example: "I **mediated** technical disagreements within the team by presenting objective trade-off analyses"
+
+### 29. **Prioritized**
+- Meaning: To determine the order of importance for tasks or requirements
+- Example: "Under tight deadlines, I **prioritized** critical security features over nice-to-have enhancements"
+
+### 30. **Delegated**
+- Meaning: To assign responsibility or authority to others
+- Example: "I **delegated** routine maintenance tasks to junior developers while focusing on architecture design"
+
+### 31. **Mentored**
+- Meaning: To advise or train someone, especially a younger or less experienced person
+- Example: "I **mentored** three junior developers on smart contract best practices and security patterns"
+
+### 32. **Advocated**
+- Meaning: To publicly recommend or support a particular cause or policy
+- Example: "I **advocated** for adopting Rust over Golang for performance-critical components based on benchmarking data"
+
+### 33. **Communicated**
+- Meaning: To share or exchange information, news, or ideas
+- Example: "I **communicated** complex technical concepts to non-technical stakeholders through visual diagrams and simplified explanations"
+
+### 34. **Aligned**
+- Meaning: To bring into cooperation or agreement with a particular group, cause, or viewpoint
+- Example: "I **aligned** the development roadmap with business objectives by collaborating with product and leadership teams"
+
+### 35. **Influenced**
+- Meaning: To affect or change how someone develops, behaves, or thinks
+- Example: "I **influenced** the team's adoption of more rigorous code review practices, reducing production bugs by 40%"
+
+### 36. **Collaborated**
+- Meaning: To work jointly with others, especially in an intellectual endeavor
+- Example: "I **collaborated** with international teams across Singapore, US, and Europe to deliver the ABFPaaS platform"
+
+### 37. **Adapted**
+- Meaning: To adjust to new conditions or modify something for new purposes
+- Example: "I **adapted** my technical approach when project requirements changed mid-development, switching from centralized to decentralized architecture"
+
+### 38. **Overcame**
+- Meaning: To succeed in dealing with a problem or difficulty
+- Example: "I **overcame** the challenge of transaction consistency across 12+ blockchains by implementing a robust event subscription system"
+
+### 39. **Identified**
+- Meaning: To recognize or discover something, especially problems or opportunities
+- Example: "I **identified** a critical security vulnerability during code review that could have compromised $4M in assets"
+
+### 40. **Learned**
+- Meaning: To gain knowledge or skill by studying, practicing, or experiencing
+- Example: "I **learned** Rust within three months to contribute to Substrate-based parachain development"
+
+### 41. **Proposed**
+- Meaning: To put forward an idea or plan for consideration or discussion
+- Example: "I **proposed** a plugin architecture that solved multi-currency precision issues, which was adopted by the team"
+
+### 42. **Negotiated**
+- Meaning: To try to reach an agreement through discussion and compromise
+- Example: "I **negotiated** technical requirements with external auditors to balance security concerns with project timelines"
+
+### 43. **Presented**
+- Meaning: To show or offer something for consideration; to deliver information formally
+- Example: "I **presented** technical whitepapers and architecture proposals to leadership and external partners"
+
+### 44. **Motivated**
+- Meaning: To provide someone with a reason for doing something; to inspire enthusiasm
+- Example: "I **motivated** the team during challenging phases by recognizing contributions and maintaining clear communication about project impact"
+
+### 45. **Addressed**
+- Meaning: To deal with or speak to a matter or problem
+- Example: "I **addressed** stakeholder concerns about security by implementing comprehensive audit processes and multi-signature requirements"
+
+---
+
 ## Interview Context Categories
 
 ### **Technical Implementation**
