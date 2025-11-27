@@ -1,4 +1,7 @@
-```markdown
+# Consensus Essence Thinking Q&A
+
+## Essence Loop Executive Summary
+
 **Domain**: Consensus (Decision-Making & Governance)  
 **Role**: Interviewer or coach assessing consensus and essence-thinking skills  
 **Industry**: Cross-industry (product teams, public policy, open-source communities, protocols)  
@@ -9,7 +12,6 @@
 - Ability to isolate 3–5 decision-critical levers in messy consensus situations
 - Ability to group levers into 2–3 MECE clusters that separate process, people, and stakes
 - Ability to tie consensus choices to decisions, stakeholders, risks, and simple metrics
-```
 
 ### Q1: Essence of a small-team product consensus decision
 
