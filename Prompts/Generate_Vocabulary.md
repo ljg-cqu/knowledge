@@ -1,0 +1,1 @@
+Generate a focused, comprehensive **Bed** vocabulary pack by creating nine Markdown files in `/home/zealy/nas/github/ljg-cqu/knowledge/Vocabulary/Bed`. Each file corresponds to one prompt in `/home/zealy/nas/github/ljg-cqu/knowledge/Prompts/Vocabulary` and should follow that template exactly, specialized for the topic **“Bed”**.
