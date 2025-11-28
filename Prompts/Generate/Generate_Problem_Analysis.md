@@ -1,6 +1,6 @@
 # Orchestrator: Nine-Aspects Analysis for Problems
 
-**Prompt**: `/home/zealy/nas/github/ljg-cqu/knowledge/Prompts/Problem/Analysis/Nine_Aspects_Analysis.md`  
+**Prompt**: `/home/zealy/nas/github/ljg-cqu/knowledge/Prompts/Problem/Analyse.md`  
 **Problems**: `<PATH_TO_PROBLEM_FILE/{FileName}.md>`  
 **Output**: `<PATH_TO_OUTPUT_FILE/{FileName}.md>`  
 **{FileName}**: `<BASENAME_WITHOUT_EXTENSION>`
