@@ -113,3 +113,116 @@
      - 分析纲要
      - 求证答案
      - 修正答案与反馈闭环
+
+---
+
+## 可视化总览（Visual Summary）
+
+### 1. 九个方面与章节映射表
+
+| 维度 | 示例内容 | 在书中的位置 |
+|------|----------|--------------|
+| 界定 | 矛盾、目标与条件 | 第一章 |
+| 内部逻辑 | 平衡关系、过犹不及 | 第二章 |
+| 外部联系 | 上下游、多方关系 | 第三章 |
+| 由来 | 问题如何逐步累积 | 第四章 |
+| 趋向 | 现象、苗头与趋势 | 第五章 |
+| 能力储备 | 沟通、心态、直觉 | 第六章 |
+| 纲要化 | 把思考写成纲要 | 第七章 |
+| 求证 | 知己知彼与回馈作用 | 第八章 |
+| 修正 | 反馈闭环、修正答案 | 第九章 |
+
+> **提示**：上表把“九个方面”与章节位置对应起来，便于快速定位原文与复习记忆。
+
+### 2. 九个方面 + 程序化 的流程图
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
+graph LR
+  A[界定] --> B[内部逻辑]
+  B --> C[外部联系]
+  C --> D[由来]
+  D --> E[趋向]
+  E --> F[能力储备]
+  F --> G[分析纲要]
+  G --> H[求证答案]
+  H --> I[修正答案]
+  I --> J[程序化]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style H fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style I fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style J fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+### 3. 快速记忆九面一程序（要点清单）
+
+- **分析对象**：问题本身的矛盾结构、内部逻辑、外部联系、由来与趋向。
+- **解决者配置**：沟通、心态、语言与谋略、随机应变和直觉等能力储备。
+- **迭代机制**：把思考纲要化 → 通过情报与反馈去求证 → 根据结果修正答案并固化为程序。
+
+> **使用方式**：遇到复杂问题时，可按上图流程依次检查：是否先界定清楚？是否兼顾内部与外部？是否回到由来与趋向？能力储备是否足够？是否已经形成纲要、完成求证并修正？
+
+### 4. Essence cards – 快速总览表
+
+| # | Label | Type | 关键维度 |
+|---|-------|------|----------|
+| 1 | 九面一程序的问题分析框架 | pattern | 九个方面 + 程序化 |
+| 2 | 界定矛盾、目标与条件是分析起点 | constraint | 界定 + 当前形态 |
+| 3 | 利用可拓性扩展解法空间 | mechanism | 可拓性 + 传导 |
+| 4 | 内部逻辑平衡与外部联系的系统视角 | mechanism | 内部逻辑 + 外部联系 |
+| 5 | 从由来与趋向看本质与趋势 | concept | 由来 + 趋向 |
+| 6 | 建设解决问题的能力储备 | concept | 能力储备 + 解决者 |
+| 7 | 纲要化、求证与修正构成迭代闭环 | workflow | 纲要 + 求证 + 修正 |
+
+> **使用建议**：读书或复盘时，可先扫一遍上表，再按需要回到对应卡片细读。
+
+### 5. 纲要化、求证与修正的迭代闭环（Mermaid）
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7",
+    "background": "#ffffff",
+    "mainBkg": "#f8f9fa",
+    "clusterBkg": "#f3f5f7",
+    "clusterBorder": "#8897a8",
+    "edgeLabelBackground": "#ffffff"
+  }
+}}%%
+graph TD
+  A[分析纲要] --> B[求证答案]
+  B --> C[修正答案]
+  C --> A[分析纲要]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+```

@@ -1,4 +1,19 @@
-1. Q: 书中强调“先界定矛盾、目标与条件，再谈任何方案”。这与我们日常习惯的“先想办法”有什么冲突？这句话如何改变你对“解决问题”的理解？
+ # 把握分析问题的九个方面 · 反思问题（可视化）
+
+ > 本页在原有反思问题基础上，补充表格与图示，帮助更系统地回顾和应用书中的九个方面。
+
+ | # | 主题 | 关键聚焦点 |
+ |---|------|------------|
+ | 1 | 界定矛盾、目标与条件 | 从“先想办法”转向“先把问题说清楚” |
+ | 2 | 虚部实部与软部硬部 | 不只看数字结果，也看氛围、信任与知识沉淀 |
+ | 3 | 危中有机 | 在危机中识别结构性机会 |
+ | 4 | 能力储备 | 先补沟通、心态、语言与谋略等基本功 |
+ | 5 | 分析纲要 | 用结构化写作把个人感觉变成集体智慧 |
+ | 6 | 程序化习惯 | 把九个方面变成团队常规流程与工作语言 |
+
+ ---
+
+ 1. Q: 书中强调“先界定矛盾、目标与条件，再谈任何方案”。这与我们日常习惯的“先想办法”有什么冲突？这句话如何改变你对“解决问题”的理解？
    A: 
    - 反思你过去是否习惯在目标不够清晰时就匆忙寻找对策，结果在错误的问题上投入了大量精力。
    - 思考在当前工作或生活中，哪个正在困扰你的难题，其实还没有被好好界定：矛盾究竟在哪、真正的目标是什么、哪些条件是硬约束？
@@ -33,3 +48,43 @@
    - 设想在例会或重大项目启动时，大家习惯性地按“界定–内部–外部–由来–趋向–能力–纲要–求证–修正”的顺序发言，你们的讨论结构会如何改变。
    - 反思团队目前在决策和复盘中最常见的痛点（例如信息散乱、谁都说不清为什么这样决定），哪些痛点可以通过引入这套程序得到缓解。
    - 思考如果你从今天开始，在自己负责的问题上先行使用这套程序，会不会在一段时间后形成“反向示范效应”，带动团队逐步改变工作方式。
+
+   > 九个方面程序化应用的一种示意顺序：
+
+   ```mermaid
+   %%{init: {
+     "theme": "base",
+     "themeVariables": {
+       "primaryColor": "#f8f9fa",
+       "primaryTextColor": "#1a1a1a",
+       "primaryBorderColor": "#7a8591",
+       "lineColor": "#8897a8",
+       "secondaryColor": "#eff6fb",
+       "tertiaryColor": "#f3f5f7",
+       "background": "#ffffff",
+       "mainBkg": "#f8f9fa",
+       "clusterBkg": "#f3f5f7",
+       "clusterBorder": "#8897a8",
+       "edgeLabelBackground": "#ffffff"
+     }
+   }}%%
+   graph LR
+     A[界定] --> B[内部]
+     B --> C[外部]
+     C --> D[由来]
+     D --> E[趋向]
+     E --> F[能力]
+     F --> G[纲要]
+     G --> H[求证]
+     H --> I[修正]
+
+     style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+     style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+     style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+     style D fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+     style E fill:#faf6f0,stroke:#a89670,stroke-width:2px,color:#1a1a1a
+     style F fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+     style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+     style H fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+     style I fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+   ```

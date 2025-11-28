@@ -46,3 +46,213 @@
    - **Mechanism**: 写纲要的过程会迫使我们检查论证链条是否完整、是否有遗漏的条件或反例，以及结论是否真正建立在前面分析的基础上；同时，它也让他人可以在同一结构下理解和质疑我们的思路，为后续求证与修正提供载体。
    - **Significance**: 没有纲要，问题分析就难以进入团队层面的讨论和复盘，更无法沉淀为可传承的知识。将思考外化为结构化文本，是从个人直觉走向集体智慧、从一次性判断走向可迭代流程的关键一步。
    - **Example**: 一位项目负责人如果只是凭印象在会上“随机发挥”，与提前写好包含关键假设、备选方案和风险点的纲要相比，后者不仅更易获得同事反馈，也更便于在项目结束后进行系统复盘和经验总结。
+
+---
+
+## 可视化小结（按问题编号）
+
+### 1. 问题的可拓性：发散方向一览
+
+**结构图（发散路径）**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[问题的可拓性] --> B[特征组合]
+  A --> C[对象替换]
+  A --> D[条件调整]
+  A --> E[关系重组]
+
+  B --> F[一物多征]
+  B --> G[一征多物]
+  E --> H[一征多值]
+  E --> I[一值多物]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+  style E fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+  style F fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+  style H fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+  style I fill:#f8f9fa,stroke:#7a8591,stroke-width:1px,color:#1a1a1a
+```
+
+**典型可拓方式与案例对应**
+
+| 可拓方式 | 含义提示 | 文中案例 |
+|----------|----------|----------|
+| 一物多征 | 同一对象挖掘多种特征 | 烤香蕉被重新命名包装 |
+| 一征多物 | 同一特征应用到不同对象 | 将成功做法迁移到其他产品 |
+| 一征多值 | 同一特征挖掘多种价值 | 工资调整影响士气与业绩 |
+| 一值多物 | 同一价值由多种对象承载 | 数控系统为机床带来升级 |
+
+> 提示：复习可拓性时，可先在脑中画出上述结构图，再对照表格回顾不同“可以性”的典型案例。
+
+---
+
+### 2. 问题共性结构：四性 × 四对要素
+
+**四大共性属性速记表**
+
+| 属性 | 核心关注点 | 典型提示 |
+|------|------------|----------|
+| 物质性 | 有形载体与资源 | 厂房、设备、资金 |
+| 系统性 | 要素之间的连接 | 部门分工、流程协作 |
+| 动态性 | 演化与变化趋势 | 增长、衰退、波动 |
+| 对立性 | 利弊与矛盾张力 | 正负、攻守、轻重 |
+
+**四对结构要素对照**
+
+| 结构对 | 一侧示例 | 另一侧示例 |
+|--------|----------|------------|
+| 虚部 / 实部 | 品牌、知识、形象 | 厂房、人员、设备 |
+| 软部 / 硬部 | 协作方式、流程 | 具体零件、物理结构 |
+| 潜部 / 显部 | 潜在空调用户 | 已有用电负荷 |
+| 正部 / 补有利负部 | 长期有利因素 | 短期成本与负担 |
+
+> 使用方法：分析任何问题时，可先用“物质性—系统性—动态性—对立性”检查是否有遗漏，再用四对结构要素补充看不见的部分（虚、软、潜、正）。
+
+---
+
+### 3. 危机问题：从特征到转机
+
+**危机特征与含义**
+
+| 特征 | 含义提示 | 分析要点 |
+|------|----------|----------|
+| 突发性 | 来得快、预警少 | 预案是否覆盖极端情形 |
+| 紧急性 | 反应时间极短 | 决策链是否足够简洁 |
+| 破坏性 | 直接损害巨大 | 核心资产暴露在哪些点 |
+| 传导性 | 损失会外溢 | 外部联系如何放大冲击 |
+| 机遇性 | 结构被迫重组 | 能否借机完成必要调整 |
+
+**危机演化与应对路径（示意）**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  S[常规状态] --> C[危机爆发]
+  C --> D[损失传导]
+  D --> E[结构缺陷暴露]
+  D --> F[新机会显现]
+  E --> G[调整布局]
+  F --> G[修正方向]
+  G --> H[新的平衡]
+
+  style S fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style C fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+  style D fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:1px,color:#1a1a1a
+  style F fill:#f1f8f4,stroke:#6b9d7f,stroke-width:1px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style H fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+> 读“危中有机”时，可对照上图：危机既是破坏点，也是结构重构与方向修正的窗口。
+
+---
+
+### 4. 一举多得思想：一行动多目标
+
+**一举多得设计视角**
+
+| 设计维度 | 说明 | 文中案例 |
+|----------|------|----------|
+| 目标叠加 | 同一载体服务多重目标 | 培训班兼顾宣传与调研 |
+| 资源复用 | 现有资源多次利用 | 一次活动沉淀资料与关系 |
+| 时间打包 | 同一时间段解决多事 | 同场完成学习与市场拓展 |
+
+> 使用提示：设计方案时，可问自己“除此之外还能顺便完成什么？”以此检视是否存在可拓的一举多得空间。
+
+---
+
+### 5. 虚部与实部：三种典型场景
+
+**虚实对应速查表**
+
+| 场景 | 实部示例 | 虚部示例 |
+|------|----------|----------|
+| 房屋 | 墙壁、地板 | 空间感与舒适度 |
+| 企业 | 资金、设备 | 品牌形象、技术水平 |
+| 个人 | 身体、时间 | 知识结构、社会声誉 |
+
+> 分析问题时，可先列出现有实部，再追问：与这些实部相对应的虚部是否被低估或忽视？
+
+---
+
+### 6. “过犹不及”：变量与区间
+
+**典型“度”的失衡示意**
+
+| 变量 | 适度区间 | 过度后果提示 |
+|------|----------|--------------|
+| 成本节约 | 控制浪费、提高效率 | 士气受损、质量下降 |
+| 物质激励 | 激发合理动力 | 短视行为、违规风险 |
+| 控制检查 | 适量监督、保障质量 | 报表过多、占用一线时间 |
+
+> 结合书中案例，可将每个变量画成一条“U 型”曲线：两端是“做得太少”和“做得太多”，中间窄区才是合理区间。
+
+---
+
+### 7. 写出分析纲要：从思考到传承
+
+**写纲要推动的问题分析流程（示意）**
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[个人思考] --> B[写出分析纲要]
+  B --> C[团队讨论]
+  C --> D[求证与修正]
+  D --> E[经验沉淀]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style E fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
+**纲要常见结构提示**
+
+| 部分 | 内容要点 |
+|------|----------|
+| 背景 | 交代情境与关键事实 |
+| 问题 | 明确要解决的核心矛盾 |
+| 分析 | 展开条件、逻辑与对比 |
+| 方案 | 提出可行选择与理由 |
+| 风险与后续 | 标出风险点与后续跟踪方向 |
+
+> 建议：在实际写作中先画出流程图或表格，再据此展开自然语言表述，有助于让论证链条更完整、可复盘。

@@ -10,10 +10,46 @@
      6. 初步标出 1–3 个你认为最关键的条件或人物（类似“诸葛亮”），作为后续分析中重点关注的关键问题。
    - **Outcome**: 形成一份包含“矛盾描述 + 目标层级 + 关键条件”的简短界定说明，为后续内部逻辑、外部联系及由来与趋向的分析提供清晰起点。
 
-1. Q: 依据书中的“可拓性”思想，遇到看似无解或资源严重受限的问题时，如何系统地扩展解法空间？
-   A: 
-   - **Prerequisites**: 已有初步问题界定，知道当前“最卡住”的条件或资源限制。
-   - **Steps**:
+### Q1：界定矛盾、目标与条件（可视化）
+
+| 要素 | 关注点 |
+|------|--------|
+| 现象 | 一句话描述当前最困扰的现象 |
+| 矛盾 | 哪些目标或条件在发生冲突 |
+| 最高目标 | 用可观察、可量化的结果表述 |
+| 下位目标 | 止血、修复、优化等层级目标 |
+| 条件 | 区分硬约束与可调整条件 |
+| 关键条件/人物 | 后续分析的关键着力点 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[描述现象] --> B[澄清矛盾]
+  B --> C[确定最高目标]
+  C --> D[拆分下位目标]
+  D --> E[梳理条件]
+  E --> F[标出关键条件或人物]
+  F --> G[形成界定说明]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
      1. 罗列出与问题相关的关键对象（产品、流程、角色等），为每个对象写下至少 3 个可观察特征（功能、形态、位置、时间等）。
      2. 对每个对象分别问四个问题：是否存在“一物多征”“一征多物”“一征多值”“一值多物”的可能？把所有想到的替代特征和替代对象一并写出。
      3. 绘制简单的“传导链”：当你改变其中一个特征或量值时，会通过哪些关联关系传导到其他量（例如工资提升 → 士气 → 业绩）？用箭头连线标注正向或负向影响。
@@ -22,10 +58,49 @@
      6. 从这些方案中初步筛选 1–2 个最具可行性的方向，准备在后续分析和求证环节进一步评估。
    - **Outcome**: 得到一组源于“可拓性”的候选解法，使问题不再只有单一路径可走，为后续决策和实验提供更丰富的选择。
 
-1. Q: 根据第七章的建议，当你需要向团队汇报一个复杂问题时，如何写出一份清晰的分析纲要，让思路可被讨论、复盘和改进？
-   A: 
-   - **Prerequisites**: 已对该问题做过初步思考或收集过资料。
-   - **Steps**:
+### Q2：运用可拓性扩展解法空间（可视化）
+
+- **可拓性四类思路**：
+  - **一物多征**：同一对象可以有多种特征视角
+  - **一征多物**：同一特征可对应多个对象
+  - **一征多值**：同一特征可以取多种量值
+  - **一值多物**：同一量值可以出现在不同对象上
+
+| 模块 | 关键动作 |
+|------|----------|
+| 对象与特征 | 列出对象及其可观察特征 |
+| 特征与对象变换 | 寻找替代特征与替代对象 |
+| 传导链分析 | 画出量值变化的影响路径 |
+| 侧翼出击 | 找到可间接控制的下游环节 |
+| 候选方案 | 组合变换并筛选可行方向 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[对象與特征] --> B[特征與对象變換]
+  B --> C[傳導鏈分析]
+  C --> D[側翼出擊機會]
+  D --> E[生成候選方案]
+  E --> F[篩選可行方向]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+```
+
      1. 在纸上或文档中先写出 1 句“问题一句话描述”和 1 句“本次汇报的最高目标”。
      2. 按照九个方面，初步列出 5–7 个一级标题，例如“界定与背景”“内部逻辑与外部联系”“由来与趋向”“能力储备与约束”“方案与风险”“求证与修正计划”。
      3. 在每个一级标题下，用条目方式写出 3–5 个要点，优先写：关键事实、主要假设、重要推理链条和核心判断，而不是细节过程。
@@ -34,10 +109,45 @@
      6. 在与团队会前，自己先按纲要口头演练一遍，检查逻辑是否连贯、是否有重要遗漏或自相矛盾之处。
    - **Outcome**: 形成一份结构清晰、支点明确的分析纲要，使团队能围绕同一结构展开讨论，并为后续复盘与改进提供可追踪的“思路轨迹”。
 
-1. Q: 结合第八章“小心求证你的答案”的观点，当你已经形成一个初步决策方案时，如何设计求证与反馈机制，避免自以为是？
-   A: 
-   - **Prerequisites**: 已有一个初步可执行的方案草案，对预期结果有大致想象。
-   - **Steps**:
+### Q3：复杂问题汇报纲要（可视化）
+
+| 部分 | 内容要点 | 典型问题 |
+|------|----------|----------|
+| 问题与目标 | 两句话说明问题与最高目标 | 这次要解决什么、做到什么 |
+| 九个方面结构 | 5–7 个一级标题覆盖关键方面 | 有没有遗漏内部、外部、由来、趋向 |
+| 要点条目 | 每节 3–5 个关键要点 | 核心事实、假设、推理是否写清 |
+| 支点判断 | 2–3 个支点及其前提 | 哪些判断一旦错，全局就需重写 |
+| 小结与待验证点 | 列出现阶段不确定之处 | 需要在第八、九章意义上求证什么 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[問題一句話描述] --> B[最高目標]
+  B --> C[列出一级標題]
+  C --> D[填寫要點條目]
+  D --> E[標記支點判斷]
+  E --> F[列出待驗證點]
+  F --> G[口頭演練與修正]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
      1. 先“知己”：写下你在这个方案上可能存在的立场和偏好（例如更乐观、更激进或更保守）。
      2. 列出 3–5 个最关键的成败假设，例如“用户会接受价格上调”“供应商能按时交付”。
      3. 为每个关键假设设计至少一个可观测指标或信号（数据、行为反馈、试点结果等），明确什么变化代表“支持”或“反对”该假设。
@@ -46,10 +156,46 @@
      6. 在团队中指定 1–2 名“唱反调者”，鼓励他们从不同立场质疑方案，帮助你发现盲点和偏差。
    - **Outcome**: 建立起围绕该方案的求证与反馈闭环，使决策不再是一次性拍板，而是可以依据情报和回馈逐步修正的动态过程。
 
-1. Q: 结合全书最后“问题可以程序化”的七步思路，当你今后遇到一件重要问题时，如何在实际工作中把这套程序变成可操作的个人检查表？
-   A: 
-   - **Prerequisites**: 理解七步程序的大致内容，并愿意在实际工作中尝试应用。
-   - **Steps**:
+### Q4：求证与反馈闭环（可视化）
+
+| 步骤 | 关键产出 |
+|------|----------|
+| 知己 | 写下个人立场與偏好 |
+| 成败假设 | 梳理 3–5 个關鍵假設 |
+| 指标與信號 | 明确支持或反對假設的觀測指標 |
+| 試點或預演 | 小範圍實驗收集一手反饋 |
+| 回馈检查点 | 固定節點按指標評估調整或停止 |
+| 唱反調者 | 指定質疑角色防止自以為是 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[知己與立場] --> B[列出成敗假設]
+  B --> C[設計觀測指標]
+  C --> D[實施試點或預演]
+  D --> E[回饋檢查點評估]
+  E --> F[調整或停止方案]
+  F --> G[邀請唱反調者持續質疑]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+```
+
      1. 打开笔记工具，新建一份名为“问题分析检查表”的模板，按七步分别写出简短小标题，例如“1. 界定问题与目标”“2. 内部逻辑与外部联系”等。
      2. 在每个小标题下，填入 2–3 个提示性问题，例如“这里的矛盾是什么？”“有哪些关键条件难以改变？”“有哪些外部联系是硬约束？”等。
      3. 在实际遇到较大问题时，先克制住立刻找方案的冲动，花 10–20 分钟按检查表逐条写下要点，不追求完美，只求覆盖。
@@ -57,3 +203,43 @@
      5. 在问题处理结束后，对照实际过程和结果，简短记录“哪些步骤用得好，哪些被忽略后造成了代价”，并据此微调检查表内容。
      6. 持续在后续几个重要问题中复用和迭代这份检查表，使之逐渐成为你和团队的“默认分析习惯”。
    - **Outcome**: 一份可复用、可迭代的问题分析检查表，把抽象的七步程序具体化为日常可执行的习惯，降低在压力下遗漏关键方面的概率。
+
+### Q5：七步程序个人检查表（可视化）
+
+| 步驟編號 | 小標題示例 | 提示性問題示例 |
+|----------|------------|----------------|
+| 1 | 界定問題與目標 | 這次核心矛盾與最高目標是什麼 |
+| 2 | 內部邏輯與外部联系 | 有哪些因果鏈與外部約束 |
+| 3 | 由來與趨向 | 問題如何形成、正在走向哪裡 |
+| 4 | 能力儲備與約束 | 我方有哪些資源與短板 |
+| 5 | 方案與風險 | 候選方案及其主要風險是什麼 |
+| 6 | 求證計畫 | 準備如何在小範圍驗證判斷 |
+| 7 | 修正與沉澱 | 如何迭代方案並沉澱為經驗 |
+
+```mermaid
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#f8f9fa",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#7a8591",
+    "lineColor": "#8897a8",
+    "secondaryColor": "#eff6fb",
+    "tertiaryColor": "#f3f5f7"
+  }
+}}%%
+graph TD
+  A[遇到重要問題] --> B[打開問題分析檢查表]
+  B --> C[按七步填寫要點]
+  C --> D[與同事討論補充]
+  D --> E[跟踪處理過程與結果]
+  E --> F[反思並調整檢查表]
+  F --> G[在後續問題中持續復用]
+
+  style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style D fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+  style E fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+  style F fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+  style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a

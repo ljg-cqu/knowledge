@@ -11,6 +11,45 @@
      - Use X when: 情况极端紧急、信息高度不完备且决策者在该领域拥有大量新近经验，并且事后仍计划用结构化方式复盘补课。
      - Use Y when: 问题重要度高、影响范围广，或属于会反复出现的类型，需要在团队层面形成可持续、可演进的问题分析能力。
 
+    - **概要对比表**:
+
+      | 维度 | X：经验快速拍板 | Y：九面一程序 |
+      |------|----------------|--------------|
+      | 决策依据 | 个人经验直觉 | 九个方面+七步 |
+      | 稳定性 | 结果波动较大 | 过程更稳定 |
+      | 可复用性 | 难以教给他人 | 易形成流程 |
+
+    ```mermaid
+    %%{init: {
+      "theme": "base",
+      "themeVariables": {
+        "primaryColor": "#f8f9fa",
+        "primaryTextColor": "#1a1a1a",
+        "primaryBorderColor": "#7a8591",
+        "lineColor": "#8897a8",
+        "secondaryColor": "#eff6fb",
+        "tertiaryColor": "#f3f5f7",
+        "background": "#ffffff",
+        "mainBkg": "#f8f9fa",
+        "clusterBkg": "#f3f5f7",
+        "clusterBorder": "#8897a8",
+        "edgeLabelBackground": "#ffffff"
+      }
+    }}%%
+    graph TD
+      Start[选择决策方式] --> U[情境极端紧急]
+      U -->|是| XNode[经验快速拍板 X]
+      U -->|否| I[问题重要且可复盘]
+      I -->|是| YNode[结构化分析 Y]
+      I -->|否| XNode
+
+      style Start fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+      style U fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+      style I fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+      style XNode fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+      style YNode fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    ```
+
 1. Q: 在看待组织资源时，比较“只关注实部指标（资金、设备、人员等）”（X）与“同时重视虚部要素（品牌、知识、信誉等）”（Y），两者在长期发展上的取舍有哪些？
    A: 
    - **Comparison Dimensions** (3-6 typical):
@@ -23,6 +62,44 @@
    - **Selection Criteria**:
      - Use X when: 仅针对一次性、短周期项目，且外部环境相对稳定，对长期关系与品牌依赖较低。
      - Use Y when: 面对持续经营、品牌敏感度高或高度依赖知识与信任的业务，需要在问题分析中系统审视虚实两部。
+
+    - **概要对比表**:
+
+      | 维度 | X：只看实部 | Y：虚实并重 |
+      |------|------------|------------|
+      | 资源定义 | 只算有形资产 | 有形+无形一起算 |
+      | 短期收益 | 报表改善更快 | 形象与信任更稳 |
+      | 风险暴露 | 危机时更脆弱 | 面对变化更有韧性 |
+
+    ```mermaid
+    %%{init: {
+      "theme": "base",
+      "themeVariables": {
+        "primaryColor": "#f8f9fa",
+        "primaryTextColor": "#1a1a1a",
+        "primaryBorderColor": "#7a8591",
+        "lineColor": "#8897a8",
+        "secondaryColor": "#eff6fb",
+        "tertiaryColor": "#f3f5f7",
+        "background": "#ffffff",
+        "mainBkg": "#f8f9fa",
+        "clusterBkg": "#f3f5f7",
+        "clusterBorder": "#8897a8",
+        "edgeLabelBackground": "#ffffff"
+      }
+    }}%%
+    graph TD
+      StartRes[看待资源方式] --> S[一次性短项目]
+      StartRes --> L[长期持续经营]
+      S --> XRes[强调实部 X]
+      L --> YRes[虚实并重 Y]
+
+      style StartRes fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+      style S fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+      style L fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+      style XRes fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+      style YRes fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    ```
 
 1. Q: 在处理问题时，比较“只看当前显性现象和短期结果”（X）与“同时分析问题的由来与未来趋向”（Y），两者对风险控制和机会把握的影响是什么？
    A: 
@@ -37,6 +114,44 @@
      - Use X when: 只是处理一次性的小问题，且其背后不太可能隐藏重大结构性矛盾。
      - Use Y when: 问题反复出现、可能影响长期走向，或已经带有危机特征，需要在“危”中寻找“机”。
 
+    - **概要对比表**:
+
+      | 维度 | X：只看当前 | Y：看由来与趋向 |
+      |------|------------|----------------|
+      | 时间视角 | 只盯眼前症状 | 放在时间轴上看全程 |
+      | 风险识别 | 只在爆发后应对 | 可提前预警潜在风险 |
+      | 机会把握 | 易错过结构机会 | 更易在拐点主动布局 |
+
+    ```mermaid
+    %%{init: {
+      "theme": "base",
+      "themeVariables": {
+        "primaryColor": "#f8f9fa",
+        "primaryTextColor": "#1a1a1a",
+        "primaryBorderColor": "#7a8591",
+        "lineColor": "#8897a8",
+        "secondaryColor": "#eff6fb",
+        "tertiaryColor": "#f3f5f7",
+        "background": "#ffffff",
+        "mainBkg": "#f8f9fa",
+        "clusterBkg": "#f3f5f7",
+        "clusterBorder": "#8897a8",
+        "edgeLabelBackground": "#ffffff"
+      }
+    }}%%
+    graph TD
+      StartTime[处理问题的时间视角] --> CNow[只看当前现象]
+      StartTime --> HLong[分析由来与趋向]
+      CNow --> RiskX[被动应对风险]
+      HLong --> RiskY[提前预警与布局]
+
+      style StartTime fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+      style CNow fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+      style HLong fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+      style RiskX fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+      style RiskY fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    ```
+
 1. Q: 在跨部门协作中，比较“严格按职责边界划线、避免多管闲事”（X）与“以整体结果为导向、适度给对方留余地”（Y），两种做法在外部联系与长期合作上的差异是什么？
    A: 
    - **Comparison Dimensions** (3-6 typical):
@@ -49,3 +164,41 @@
    - **Selection Criteria**:
      - Use X when: 问题影响范围小、合作本就一次性，且外部联系简单清晰。
      - Use Y when: 问题牵涉多方、未来还需频繁合作，或处在高风险、高不确定性的环境中，需要通过关系网络共同承担与分散风险。
+
+    - **概要对比表**:
+
+      | 维度 | X：边界优先 | Y：结果导向 |
+      |------|------------|------------|
+      | 责任观 | 只保自家边界 | 为整体结果负责 |
+      | 冲突管理 | 快速划清界限 | 维护关系留空间 |
+      | 长期合作 | 易累积不信任 | 更利于长期协作 |
+
+    ```mermaid
+    %%{init: {
+      "theme": "base",
+      "themeVariables": {
+        "primaryColor": "#f8f9fa",
+        "primaryTextColor": "#1a1a1a",
+        "primaryBorderColor": "#7a8591",
+        "lineColor": "#8897a8",
+        "secondaryColor": "#eff6fb",
+        "tertiaryColor": "#f3f5f7",
+        "background": "#ffffff",
+        "mainBkg": "#f8f9fa",
+        "clusterBkg": "#f3f5f7",
+        "clusterBorder": "#8897a8",
+        "edgeLabelBackground": "#ffffff"
+      }
+    }}%%
+    graph TD
+      StartCollab[跨部门协作选择风格] --> Small[一次性且影响小]
+      StartCollab --> Long[长期多方协作]
+      Small --> XCollab[边界优先 X]
+      Long --> YCollab[结果导向 Y]
+
+      style StartCollab fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
+      style Small fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
+      style Long fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
+      style XCollab fill:#faf4f4,stroke:#a87a7a,stroke-width:2px,color:#1a1a1a
+      style YCollab fill:#f1f8f4,stroke:#6b9d7f,stroke-width:2px,color:#1a1a1a
+    ```
