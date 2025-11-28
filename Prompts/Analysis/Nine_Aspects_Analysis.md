@@ -1,611 +1,658 @@
- # 把握分析问题的九个方面
-
-## LLM Prompt Template：九方面问题分析
- 
-> 使用方式：将整段提示复制到 LLM 中，根据提示填写“待分析问题”，获得结构化的九方面分析。
-
-你是一名善于结构化思考的“问题分析顾问”，熟练运用《把握分析问题的九个方面》中提出的“九面一程序”来分析复杂问题。
-
-【你的任务】
-- 围绕用户给出的“待分析问题”，从九个方面进行系统分析。
-- 先澄清问题本身，再分析结构与趋势，检查能力与方案，最后给出可执行的建议。
-- 回答时使用清晰的小标题和条列式要点，便于阅读与复盘。
-
-【使用模式（80/20）】
-- 快速版（默认，适合一般 / 中等重要问题）：
-  - 重点深挖：1 问题界定、2 内部逻辑关系、3 外部联系、5 问题趋向、10 汇总与行动建议（标记为【核心】）。
-  - 对其余部分（4 / 6 / 7 / 8 / 9，标记为【进阶】）可以简要回答 1–2 条，或者在简单问题下注明“略（本次不展开）”。
-- 深度版（适合重大 / 高风险 / 高不确定性问题）：
-  - 按下文 1–10 全部结构依次回答，每一部分给出 3–5 条最关键要点。
-- 无论采用哪种模式，都要避免在不同部分重复大段内容，而是从不同角度补充：
-  - 第 4 部分专注“过去如何形成”，第 5 部分专注“未来可能走向”；
-  - 第 6 部分强调“人 / 团队的能力与心态”，第 8 部分强调“情报、数据和样本”；
-  - 第 7 部分给出分析结构与关键判断，第 10 部分聚焦提炼结论与行动清单。
-
-【输入】
-- 待分析问题：<<在这里粘贴用户的问题描述，包含背景、现状、目标、约束等信息。>>
-
-【输出结构】
-请严格按照以下结构输出（保持标题顺序与编号；【核心】优先保证质量，【进阶】可视时间与重要性酌情简化）：
-
-1. 问题界定（方面一，【核心】）
-   - 1.1 问题与矛盾：当前最核心的矛盾 / 冲突是什么？涉及哪些主体、目标和约束？
-   - 1.2 目标与条件：期望达到的结果是什么？有哪些硬性条件 / 资源限制 / 时间窗口？
-   - 1.3 可拓性与共性：从“一物多征、一征多物、虚实、软硬、潜显、正负”等角度看，这个问题还可以如何被重新界定或重构？
-
-2. 内部逻辑关系（方面二，【核心】）
-   - 2.1 关键要素：问题内部包含哪些关键角色、资源、流程、规则？
-   - 2.2 平衡关系与“度”：哪些地方可能出现“过犹不及”（例如速度 vs 质量，短期 vs 长期）？
-   - 2.3 关键内部因果链：给出 1–2 条最重要的内部因果或约束链条。
-
-3. 外部联系（方面三，【核心】）
-   - 3.1 利益相关方：上游、下游、旁侧有哪些外部角色？各自的诉求和约束是什么？
-   - 3.2 环境与制度：本问题受哪些政策、市场、技术或文化环境影响？
-   - 3.3 责任与余地：在哪些地方需要主动承担责任？在哪些地方要给他人留余地，为未来保留转圜空间？
-
-4. 问题由来（方面四，【进阶】）
-   - 4.1 关键历史节点：这个问题是如何一步步形成的？请拆分出 2–4 个关键阶段。
-   - 4.2 背景 vs 直接原因：区分“深层背景因素”和“直接诱因”，本部分专注于过去的形成过程，不展开详细未来趋势（未来走向放在第 5 部分）。
-   - 4.3 深层结构问题：哪些是制度、结构或文化层面的根本问题？
-
-5. 问题趋向（方面五，【核心】）
-   - 5.1 当前趋势判断：如果维持现状不干预，问题大概率会走向什么结果？
-   - 5.2 关键苗头与“斑点”：有哪些小信号（数据变化、个案、投诉、故障等）在预示未来？
-   - 5.3 可能情景：用 2–3 种情景（乐观 / 基准 / 悲观）概括未来 6–24 个月的演化方向。
-
-6. 能力储备（方面六，【进阶】）
-   - 6.1 现有能力：自己或团队当前在沟通、心态、谋略、随机应变、经验等方面的优势是什么？
-   - 6.2 能力短板：哪些能力不足正在放大问题风险？（突出“人 / 团队”的能力与心态，不与第 8 部分的情报 / 数据需求混淆。）
-   - 6.3 近期可补齐的能力：在 1–6 个月内，可以重点补齐或借用哪些能力或资源？
-
-7. 分析纲要（方面七，【进阶】）
-   - 7.1 结构化纲要：用“背景 → 问题 → 分析 → 方案 → 风险与后续”的结构，列出一级 / 二级要点（只需条目，不必展开长文，也不要在此处重复第 10 部分的详细行动清单）。
-   - 7.2 关键判断：标出 3–5 个最核心的判断或假设（后续需要重点求证）。
-   - 7.3 备选路径：简单列出 2–3 条可选行动路径的名称或一句话定位。
-
-8. 求证答案（方面八，【进阶】）
-   - 8.1 潜在偏见：当前分析中可能存在的立场偏差或盲区是什么？
-   - 8.2 所需情报与反馈：为检验关键判断，需要补充哪些数据、试点、访谈或外部信息？（突出“信息与样本”的缺口，不重复第 6 部分的能力短板。）
-   - 8.3 求证计划：给出一个简单的求证步骤（可以是“小步试验 + 观察的指标”）。
-
-9. 修正答案（方面九，【进阶】）
-   - 9.1 可能需要修正的部分：基于以上分析，哪些结论最有可能在拿到新信息后被调整？
-   - 9.2 渐进式调整思路：如何用“小步试错、逐步逼近更优解”的方式来迭代方案？
-   - 9.3 “更好而非完美”的标准：给出 2–4 条判断当前方案“已经足够好，可以行动”的可操作标准。
-
-10. 汇总与行动建议（【核心】）
-    - 10.1 核心洞见：用 3–5 句话总结九个方面中最重要的发现，优先抽取“20% 最关键判断”，避免逐字复述前文细节。
-    - 10.2 近期行动清单（0–3 个月）：列出 3–7 条可执行的优先行动（每条包含“做什么 + 由谁负责 + 预期结果 / 指标”）。
-    - 10.3 风险与应对：列出 2–4 个主要风险及对应的预案或缓解措施。
-
-【回答风格要求】
-- 使用简洁、严谨的中文；多用条目，少用空洞形容词。
-- 根据问题复杂度与时间限制，有意识地运用 80/20 原则：先保证【核心】部分扎实，再视情况展开【进阶】部分。
-- 每一方面都要结合“具体问题情境”，避免空泛模板话。
-- 如有不确定之处，请明确指出假设和不确定性来源，而不是编造细节。
-
-## Overview（原书概要）
- 
-《把握分析问题的九个方面》系统提出了一个“九面一程序”的问题分析框架：先从界定问题入手，依次厘清内部逻辑关系、外部联系、问题由来和发展趋向，再反过来审视自己解决问题的能力储备，学会把思考整理成清晰纲要，小心求证答案，并在反馈中不断修正，最终把整个过程程序化、标准化。
- 
- 全书以大量历史故事、管理案例和生活情境为载体，展示“分析问题”并不是天才的直觉，而是一套可学习、可训练、可迁移的方法论。作者特别强调“可拓性”与“共性结构”——任何问题背后，都可以从矛盾、要素关系、虚实软硬、潜显正负等维度抽象出来，从而借助结构化的思路找到突破口。
- 
- 本书既可作为一般读者的思维训练读物，也适合管理者、知识工作者在工作中直接套用：通过九个方面的自我提问与能力训练，把模糊、复杂、情绪化的问题，转化为可以分解、比较、权衡和迭代改进的分析任务。
- 
- 最后一章给出了“问题可以程序化”的七步程序，把前九章的思想压缩成一套可复用的流程和检查清单，帮助读者在时间有限、信息不完备的现实情境中，做出更稳健、更有前瞻性的判断。
- 
- ## Key Takeaways
- 
- - **问题分析是一个九面的闭环**：界定 → 内部逻辑 → 外部联系 → 由来 → 趋向 → 能力储备 → 分析纲要 → 求证答案 → 修正答案，最后再被程序化。
- - **好的开端是界定问题**：先看清矛盾、共性结构、目标与条件，再谈任何“对策”，可以大幅减少瞎忙和误判。
- - **学会用“可拓性”扩展解法空间**：一物多征、一征多物、传导变换、蕴含关系与多种“可以性”，都是从死胡同中杀出一条新路的工具。
- - **内部逻辑重在平衡与分寸**：在内部结构中处理好平衡关系、平等观念和“过犹不及”，避免单点极端和情绪化判断。
- - **外部联系决定问题的边界与后果**：懂得承担责任、以和为贵而不委屈求全，给别人留余地，就是给自己留后路。
- - **透视由来与趋向，是看清本质的关键**：既要追溯问题“从哪里来”“可能走向哪里”，也要通过苗头、小事和斑点去窥见整体趋势。
- - **解决问题之前，先建设能力储备**：沟通、心态、语言与谋略、随机应变、直觉判断等，都是“面对复杂问题”时的底层能力库。
- - **写出清晰的分析纲要，才能让思考可被讨论和复盘**：纲要化是从“感觉上好像想清楚了”到“可以呈现给别人并共同改进”的关键一步。
- - **答案不是一次性产物，而是不断求证与修正的结果**：依靠准确情报、反馈回路和审慎的经验使用，在“危”中看到“机”，在错误中校正方向。
- - **把九个方面程序化，才方便日常复用**：通过固定问题分析程序，把复杂问题拆解成一系列可重复的步骤和检查点，减轻临场压力。
-
- ### 九个方面与章节对应一览
-
- | 序号 | 方面 | 核心提问 | 对应章节 |
- |------|------|----------|----------|
- | 1 | 搞清问题界定 | 问题是什么？矛盾、目标与条件如何界定？ | 第一章 |
- | 2 | 搞清问题内部逻辑关系 | 问题内部各要素如何相互制约、保持平衡？ | 第二章 |
- | 3 | 搞清问题外部联系 | 问题与哪些外部角色、系统和环境相连？ | 第三章 |
- | 4 | 搞清问题由来 | 问题是怎样一步步形成的？背景与直接原因分别是什么？ | 第四章 |
- | 5 | 搞清问题趋向 | 从现象、苗头和小事看，问题要走向哪里？ | 第五章 |
- | 6 | 搞清解决这类问题的能力储备 | 自己和团队具备哪些沟通、心态、谋略与应变能力？ | 第六章 |
- | 7 | 善于写出你对问题的纲要 | 如何把分析结果整理成可讨论、可复盘的纲要？ | 第七章 |
- | 8 | 小心求证你的答案 | 如何利用情报和反馈验证结论、发现偏差？ | 第八章 |
- | 9 | 修正你的答案 | 在发现偏差后，怎样小步修正、持续逼近更合适的答案？ | 第九章 |
-
- 
- ## Content Graph
- 
- ```mermaid
- graph TD
-     A[问题分析整体能力] --> B[方面一：搞清问题界定]
-     B --> C[方面二：搞清问题内部逻辑关系]
-     C --> D[方面三：搞清问题外部联系]
-     D --> E[方面四：搞清问题由来]
-     E --> F[方面五：搞清问题趋向]
-     F --> G[方面六：搞清解决这类问题的能力储备]
-     G --> H[方面七：善于写出你对问题的纲要]
-     H --> I[方面八：小心求证你的答案]
-     I --> J[方面九：修正你的答案]
-     J --> K[问题可以程序化]
-
-     B --- E
-     C --- G
-     D --- F
-     H --- I
-     I --- J
-     K --> B
- ```
- 
- ## 第一章 方面一：搞清问题界定
-搞清问题的界定，是整个分析过程的起点。本章强调：只有把问题“简化、明确化”，准确界定矛盾、目标和条件，后续的分析、决策和行动才有可能有效。
-
-### 矛盾界定：把“解不开的结”变成可处理的问题
-
-- **矛盾问题的含义**
-  - 人类发展离不开解决矛盾，本章总结日常与历史案例，说明矛盾问题是可以被系统分析和化解的。
-  - 关键在于：看清“哪里难改、哪里易改”，再通过变换特征、调整目标或引入中介系统来重构问题。
-- **特征变换：改变“称什么”“搬什么”**
-  - 典型案例：
-    - 曹冲称象：秤的最大秤量难以改变，于是把“称大象”变成“称石头”，通过特征变换（对象变换）化解矛盾。
-    - 高柜入低门：通过把柜子“放倒”，改变形态特征，从而在原有门高不变的条件下完成搬运。
-    - 围魏救赵：无法直接“救赵”，就把目标变换为“围魏”，借由改变目标对象达到原目标。
-  - 方法要点：
-    - 把难以改变的条件视为“刚性”，优先寻找可变动的对象或特征。
-    - 允许同时改变多个特征，而不是只盯着一个维度。
-- **不相容目标的矛盾：让对立系统“共存”**
-  - 在同一情境下既要满足 A，又要满足 B，就会出现对立与不相容问题。
-  - 通过引入中介或“转桥”，可以把对立系统变成共存系统：
-    - 例如跨地区交通系统，通过修建“桥”，在尊重双方制度和习惯的前提下，把两个系统连成一个更大的系统。
-- **客观矛盾问题：利用人类干预重构局面**
-  - 植物需要生长，却受到病虫害侵袭；这类客观矛盾，可以通过药物、天敌昆虫等手段处理，把“矛盾问题”转化为“不相容问题”或“对立问题”，再进一步化解。
-  - 结论：矛盾问题并非不可解，而是需要通过特征变换、目标变换和系统重组来重新界定。
-
-### 问题的可拓性界定：从一个点发散出更多可能
-
-- **可拓性的概念**
-  - 书中提出“问题的可拓性”，包括发散性、问题间的关联性、蕴含关系以及多种“可以性”。
-  - 通过有意识地利用这些可拓性，可以扩展解法空间，为决策提供更多路径。
-- **发散性：一物多特征，一特征多用途**
-  - “一物多征”“一征多物”“一征多值”“一值多物”等，都是发散性的体现。
-  - 典型案例：烤香蕉
-    - 起初香蕉被火烤坏，看上去“丑陋”“有缺点”。
-    - 通过重新挖掘特征（独特口感、异国风味、独家经营），把缺点转化为卖点，使烤香蕉变成“进口风味香蕉”，以高于市场价的价格售罄。
-  - 要点：充分利用对象的多重特征，可以把原本的不利状态转化为有利局面。
-- **问题间的关联性：利用“传导变换”**
-  - 各种量之间往往存在依赖关系，一处特征值的改变会“传导”到其他量上。
-  - 例如：
-    - 提高职工工资，会通过消费水平、积极性等一系列“传导链条”影响企业整体状态。
-    - 引进一位学术权威，不仅提高学术水平，还会传导到项目数量、科研经费等多方面增长。
-    - 服装流行（迷你裙）改变，会传导到饰品（珍珠）的销量变化。
-  - 利用好正向传导，可以放大有利影响；警惕负向传导，则有助于控制风险。
-- **蕴含关系与“侧翼出击”**
-  - 某些事件 A 必然蕴含事件 B，或可以通过 B 反制 A。本章用商业吞并案例说明：
-    - 表面上是 B 公司被收购，实则 B 利用资金先悄悄持有 A 的股份，最终反过来控制 A。
-    - 通过抓住“关键蕴含关系”的薄弱环节，可以实现以小博大。
-  - 洛克菲勒的发家史：不直接参与上游石油开采，而是集中力量控制“下游精炼”和运输环节，从而在关键关节处实现对整个产业链的掌控。
-- **多种“可以性”：组合出更多解法**
-  - 文中通过机床改造、软件模块化、婴儿用品组合销售等例子，说明：
-    - 把普通机床配上数控系统，可以在低成本下获得接近数控机床的能力。
-    - 把软件拆成多个模块，由不同人员分工设计，再由少数核心人员统一连接，提高保密性和效率。
-    - 婴儿期短、需求集中，组合礼盒利用“可一起购买”的特性提高销售。
-  - 核心思想：充分利用事物“可以这样组合、可以那样搭配”的潜力，用较少的资源完成更大的事。
-
-### 问题的共性：四大共性与四对结构要素
-
-- **四大共性属性**
-  - 任何问题都具有：
-    - 物质性
-    - 系统性
-    - 动态性
-    - 对立性
-  - 这些属性共同构成问题的“共性基础”。
-- **虚部与实部**
-  - 实部：有形的物质部分，如房子的墙、地板，企业的资金、设备、厂房与人员等。
-  - 虚部：围绕实部形成的无形部分，如房子围成的空间，产品的品牌形象与知名度，企业的技术水平、管理水平、信誉等。
-  - 分析问题时，要同时关注“看得见的实部”和“看不见但同样关键的虚部”。
-- **硬部与软部**
-  - 硬部：系统的构成要素本身。
-  - 软部：要素之间的关系与配合方式。
-  - 通过“三个和尚”的俗语，本章强调：
-    - 相同的人数（硬部）搭配不同的分工和协作方式（软部），结果完全不同。
-    - 机器故障往往不仅来自零件损坏，也可能来自“软部”关系失调（流程、协作、配置）。
-- **潜部与显部**
-  - 显部：已经显露在表面的问题和现象。
-  - 潜部：尚未显露、但已经孕育中的因素，例如：
-    - 城市电网设计中，未来几年潜在增加的空调用户、宾馆和写字楼负荷。
-  - 只看显部而忽视潜部，会在未来引发严重后果，如城市因高温和空调激增而频繁停电的案例。
-- **正部与负部**
-  - 对同一特征，有利的部分称为正部，不利的部分称为负部。
-  - 本书特别提醒：
-    - 企业利润角度看，“三废”处理是一种负部；但从社会与环境角度看，不处理则会形成更大的“弊端”。
-    - 福利部、幼儿园、宣传部门对利润是负部，但有助于形象与长期发展，是“有利的负部”。
-  - 结论：分析正部与负部时，必须明确“相对于什么目标”“站在谁的立场”，充分利用那些“对局部不利但对整体有利”的成分。
-
-  #### 四对结构要素对照表
-
-  | 结构要素对 | 核心含义 | 典型提醒或例子 |
-  |------------|----------|----------------|
-  | 虚部 / 实部 | 实部是有形要素（资金、设备、人员、房屋等），虚部是围绕其实部形成的无形要素（品牌、技术水平、信誉等）。 | 分析问题时既要看得见的物质基础，也要看到无形影响力。 |
-  | 硬部 / 软部 | 硬部指系统构成要素本身，软部指要素之间的关系与配合方式。 | “三个和尚”的故事说明，相同硬部在不同软部安排下，结果迥异。 |
-  | 潜部 / 显部 | 显部是已经暴露出来的问题和现象，潜部是尚未显露但已在孕育的因素。 | 城市电网设计需要考虑未来几年空调负荷等潜在增长，否则将来频繁停电。 |
-  | 正部 / 负部 | 正部是对某个目标有利的部分，负部是对该目标不利的部分。 | 利润角度看，“三废”治理和福利部门是负部，但从长期发展和社会责任看，可能是“有利的负部”。 |
-
-### 分析问题需要具备的几种思想
-
-- **一举多得的思想**
-  - 同一活动可以同时服务多个目标，关键是提前设计好结构与内容。
-  - 某咨询公司为企业开设培训班：既宣传了自身理论，又完成了市场调研，还积累了专著资料并建立了长期合作关系，是典型的“一举多得”。
-- **“用别人的资源做自己的事”**
-  - 社会和自然界存在大量“可用资源”：虽然不属于自己所有，但经过转换可以变成“可资资源”为己所用。
-  - 核心不在于拥有多少，而在于善于把分散的可用资源整合起来，转化成可支配的力量，用较少的自有资源完成更大的目标。
-- **创新无限的观念**
-  - 书中强调：“一切都不完美”，任何方案都只是相对较优解。
-  - 随着时间和环境变化，原先的较优解可能被淘汰，因此需要持续改进与再创新。
-- **创造性思维贯穿始终**
-  - 复杂的理性分析离不开创造性思维，它是问题分析的“灵魂”。
-  - 创造性思维并非天马行空，而是建立在对对象本质属性和内在联系的深刻把握之上。
-
-### 目标与条件的界定：把“要什么”和“在什么下”说清楚
-
-- **必须有清晰的目标**
-  - 跨海峡游泳的故事表明：
-    - 身体的疲劳与寒冷固然重要，但真正决定成败的往往是能否“看得见目标”。
-    - 当浓雾遮蔽了终点，人就容易在半途失去信念；再次挑战时，因心中目标清晰而取得成功。
-  - 对分析者而言，目标越明确，越容易对结果做出恰当判断。
-- **明确分析主题与主对象**
-  - 分析并非对一切问题平均用力，而是要选出“主分析对象”。
-  - 书中通过一组逐步细化的主题示例说明：
-    - 从“提高营业额分析”一路收窄到“以提高特定地区、特定产品营业额 50% 为目标的渠道促销分析”。
-  - 只有当主题完全明确后，才适合进入实质操作。
-- **目标的量化与层次化**
-  - 目标可以分为最上位目标和若干下位目标：
-    - 单目标问题：最高目标只有一个。
-    - 多目标问题：最高层存在多个目标，下位目标的实现蕴含着上位目标的实现。
-  - 通过量化和分层：
-    - 可以明确“先做什么、后做什么”的顺序。
-    - 便于衡量方案效果和资源配置是否合理。
-- **明确目标的作用**
-  - 形成积极心态：给人一个“看得见的彼岸”。
-  - 集中精力与资源：把有限的时间与能力投入到真正关键的方向。
-  - 把注意力从“做了多少事”转到“达成了多少结果”。
-  - 为评估进展与效果提供标准，是检验方案优劣的重要依据。
-- **条件界定与“关键问题”的寻找**
-  - 条件包括资源条件（内部/外部）和环境条件（内部/外部），有的可以改变，有的难以改变。
-  - 在纷繁复杂的现实中，关键是：
-    - 分清哪些条件是必须满足的“硬约束”，哪些可以调整、替代或通过创新规避。
-    - 采用“以小力撬动大局”的思路，优先寻找和解决关键问题，而不是到处平均用力。
-  - 刘备“三顾茅庐”的故事说明：
-    - 在群雄割据、形势复杂的环境下，他真正缺的是“能运筹帷幄的军师”。
-    - 找到诸葛亮这一关键人物，相当于抓住了改变整体局面的“关键条件”。
-
-### 危机问题：在“危”中看到“机”
-
-- **危机的基本定义**
-  - 本章汇集多位学者和词典的界定，将“危机”概括为：
-    - 对组织、人员、资产、声誉等具有严重或潜在严重损害的突发性问题。
-    - 常常是系统从“常规状态”向“重大转折”迈进的关键时刻。
-- **危机问题的主要特征**
-  - 突发性：
-    - 何时、何地、以何种方式爆发往往始料未及，带有极大的偶然性和随机性。
-  - 紧急性：
-    - 危机一旦爆发，会在极短时间内释放巨大破坏力，留给决策和处置的时间非常有限。
-  - 破坏性：
-    - 损失不仅体现为生命与财产的损坏，还包括社会心理与个体心理的冲击。
-    - 书中以“9·11”事件为例，说明其对航空、金融、保险、旅游等行业的巨大连锁影响。
-  - 传导性：
-    - 一个危机像石子投入水中，会激起层层涟漪，引发一系列后续问题与行业间的相互牵连。
-  - 机遇性：
-    - 危机中既孕育失败的根源，也孕育成功的种子。
-    - 关键在于是否能在“危中寻机”，通过及时调整布局和策略，把潜在损失控制住，并抓住转机。
-
-  #### 危机问题特征速查表
-
-  | 特征 | 含义概括 | 分析时的提醒 |
-  |------|----------|----------------|
-  | 突发性 | 爆发时间、地点和方式具有高度偶然性和随机性。 | 预案要覆盖多种情形，不要只针对单一场景做准备。 |
-  | 紧急性 | 危机在短时间内释放巨大破坏力，留给决策和处置的时间极少。 | 事先设计决策权限与行动预案，避免临场慌乱。 |
-  | 破坏性 | 不仅损伤生命和财产，还会冲击社会心理和个体心理。 | 评估时纳入心理、社会影响，而不仅仅是直接经济损失。 |
-  | 传导性 | 像石子入水般引发连锁反应，波及多个行业与系统。 | 识别上游、下游与相关系统，防止危机在系统间无控制扩散。 |
-  | 机遇性 | 危机中同时孕育失败与成功的种子。 | 在控制损失的前提下，主动寻找结构调整和布局优化的机会。 |
-
-本章通过矛盾界定、可拓性、共性结构、思维方式以及目标和条件的系统界定，为后续八个方面的分析奠定了逻辑基础。
-
-## 第二章 方面二：搞清问题内部逻辑关系
-
-本章把视角从“问题是什么”转向“问题内部是怎样运作的”，强调在一个问题内部，各种要素之间存在着平衡关系、制约关系和层次关系。如果只看单一因素而忽略整体结构，往往会导致局部最优、整体失衡。
-
-### 内部平衡关系：找到恰当的“度”
-
-- 任何系统内部，都有相互牵制、相互补充的一组力量，需要保持动态平衡。
-- 一味偏向一端（例如只追求速度、不顾质量；只盯短期收益、不顾长期发展），都会触发“过犹不及”的后果。
-- 通过分析内部量与量之间的对应、比例和节奏，可以判断哪些地方已经失衡，需要调整。
-
-### 平等观念与多角度思考
-
-- 处理内部关系时，本章提醒读者不要过早给要素“贴标签”，把某些因素绝对化、神圣化，或把另一些因素视为无足轻重。
-- 所谓“平等观念”，是指在分析阶段尽量让数据、事实先说话，不被个人好恶、人际亲疏牵着走。
-- 只有在起点上把各要素“摆在同一张桌子上”比较，才更容易发现真正关键的、需要优先处理的内部关系。
-
-### “过犹不及”的内部逻辑
-
-- 书中通过生活与管理中的例子说明：
-  - 许多问题并非来自“做得不够”，而是来自“做得过头”。
-  - 例如过度节约会伤害团队士气，过度激励会引发短视行为。
-- 分析内部逻辑时，需要识别：
-  - 哪些行为从“适度”跨到了“过度”；
-  - 哪些变量一旦跨越某个阈值，就会引发质量、关系或情绪上的急剧变化。
-
-### 内部逻辑的实用步骤
-
-- 把问题拆解为若干内部要素（角色、资源、流程、规则等）。
-- 梳理出要素之间的因果链条和条件关系：谁影响谁，谁依赖谁。
-- 标出关键平衡点和可能的“过犹不及”区间，为后续调整和决策打基础。
-
-## 第三章 方面三：搞清问题外部联系
-
-如果说第二章关注“系统内部怎么运转”，本章则关注“系统与外界如何互动”。作者通过多个故事说明：许多问题表面发生在内部，其根源与解法却在外部联系之中。
-
-### 对问题“要负责任”
-
-- 面对问题时，首先要对结果负责，而不是急于推诿责任。
-- 负责任意味着：
-  - 主动厘清问题跟哪些外部人、外部系统有关；
-  - 主动承担与这些外部方沟通、协调、修复关系的义务。
-- 诸如“空城计”“破缸救人”等故事，体现的都是对结果负责而非对表面职责划界的态度。
-
-### 以和为贵，但不是一味退让
-
-- “以和为贵”并不等于凡事妥协、无底线让步。
-- 本章区分：
-  - 有原则的和谐：在重要底线不被突破的前提下，寻求双方都能接受的方案；
-  - 无原则的和稀泥：只求表面平静，牺牲长远利益与公平。
-- 通过现实和历史例子，作者提醒读者：真正的“和”，是建立在清晰的利益、责任和边界之上的。
-
-### 给别人留余地，就是给自己留余地
-
-- 在谈判、协调、合作关系中，“给别人留一条后路”，往往就是为自己保留未来转圜的空间。
-- 不把对方逼到绝境：
-  - 有助于减少报复、翻脸和长期敌对；
-  - 也让未来有可能在新的情境下重新合作。
-- 本章通过案例说明：很多局面之所以能转危为安，在于当事人事先就预留了“余地”。
-
-### 系统视角下的外部联系
-
-- 一个问题很少只属于一个人、一个部门或一个组织，它总是嵌在更大的环境和网络之中。
-- 分析外部联系的实用提问：
-  - 这个问题牵动了哪些外部角色？
-  - 哪些是上游条件（供应、规则、政策），哪些是下游后果（客户、民生、生态）？
-  - 哪些外部联系是“硬约束”，哪些则可以通过谈判、重构制度来改变？
-
-## 第四章 方面四：搞清问题由来
-
-本章把时间轴拉长，关注问题的“前世今生”：它是从哪里来的？如果放任不管，结果又会怎样？在什么阶段介入最合适？
-
-### 追溯“从哪里来”
-
-- 通过梳理历史过程，看清问题是一步步怎样积累而成的：
-  - 哪些是长期累积的小偏差堆叠出来的？
-  - 哪些是某一次关键决策或事件的直接后果？
-- 在追溯过程中，要区分：
-  - 背景因素 vs. 直接诱因；
-  - 结构性缺陷 vs. 偶发性事件。
-
-### 预判“结果会怎样”
-
-- 分析问题由来不是为了追责，而是为了更清楚地看清未来的几种可能路径：
-  - 如果不干预，问题会向哪个方向恶化？
-  - 如果采取不同类型的干预，各自可能导致怎样的连锁反应？
-- 作者强调：只有在明白“放任的结果”和“干预的代价”之后，才谈得上合理选择。
-
-### 透过表象看本质
-
-- 许多表面问题（投诉、冲突、业绩下滑）只是深层问题的“症状”。
-- 本章通过例子说明：
-  - 需要不断追问“为什么”，直到触及到制度、结构、文化等层面，而不仅停留在个人行为。
-  - 要警惕用简单标签给复杂问题盖棺定论。
-
-### “全部摆在桌上”的透明原则
-
-- 要真正理解问题由来，往往需要把相关事实、数据、利益和假设“摆在桌上”。
-- 这既是一种分析习惯，也是一种团队文化：
-  - 减少信息不对称带来的误解和怀疑；
-  - 让更多人基于共同信息参与判断，避免“暗箱里的误判”。
-
-## 第五章 方面五：搞清问题趋向
-
-第五章把时间轴继续向前延伸，关注的是“问题要走向哪里”。作者提出：在不确定环境中，最重要的能力之一就是通过现象、苗头和细小变化，判断整体趋势。
-
-### 透过现象看本质
-
-- 现象是表层，趋势和本质才是决定性的。
-- 对于反复出现的现象，要问：
-  - 它背后反映的是哪一类结构性变化？
-  - 它在变好、变坏，还是在周期性波动？
-
-### 通过苗头看趋势
-
-- 许多重大变化在早期只表现为“苗头”：
-  - 某类投诉突然增多；
-  - 某种产品销量缓慢但持续下滑；
-  - 某类风险事件开始在行业中频繁出现。
-- 本章鼓励读者培养对苗头的敏感度：
-  - 记录并比较时间序列；
-  - 把零散的信号连接成趋势线。
-
-### “小处不可小看”与“见斑而窥全豹”
-
-- “小事”往往是大问题的前哨：
-  - 小故障可能预示设备老化；
-  - 小摩擦可能预示组织结构或激励机制的隐患。
-- “见斑而窥全豹”的能力，来自于：
-  - 对系统结构足够了解；
-  - 对历史经验和当前数据有持续的积累与比对。
-
-### 特尔斐法与头脑风暴法
-
-- 书中简要介绍了两种常见的预测与创意工具：
-  - **特尔斐法**：通过多轮专家匿名意见收集与反馈，逐步收敛出对未来趋势的判断。
-  - **头脑风暴法**：在不急于评判的前提下，鼓励团队大量提出想法，为识别趋势与解法提供丰富素材。
-- 作者提示：
-  - 这些方法本身并不神奇，关键在于执行过程是否尊重多元观点、是否真正记录和整理结果。
-
-## 第六章 方面六：搞清解决这类问题的能力储备
-
-前五章更多关注“问题本身”，第六章开始转向“解决问题的人”。作者提醒：再好的方法，如果缺乏与之匹配的能力储备，也难以落地。
-
-### 良好的沟通能力
-
-- 解决复杂问题往往涉及多方利益和专业背景，沟通不畅会让误解和冲突放大。
-- 本章强调：
-  - 要能把复杂问题说清楚，让不同背景的人听得懂；
-  - 要善于倾听，对方的表述里往往隐藏着关键信息；
-  - 要学会在紧张情境下保持冷静、尊重与清晰表达。
-
-### 良好的心态与情绪管理
-
-- 问题越大、压力越强，越容易被情绪绑架，做出失衡决策。
-- 作者提出：
-  - 需要把问题当作成长与创新的机会，而不是纯粹的威胁；
-  - 保持“既不过度乐观，也不过度悲观”的心态，才能稳住团队情绪。
-
-### 语言技巧与谋略意识
-
-- 单纯“心里想得对”还不够，还要能在语言上准确、策略性地表达：
-  - 不同对象、不同场景需要不同的话语方式；
-  - 注意时机、顺序与铺垫，让对方更容易接受方案。
-- “谋略”并非阴谋，而是在多方约束下寻找双赢甚至多赢的布局能力。
-
-### 随机应变与直觉运用
-
-- 现实中的问题常常“计划赶不上变化”：
-  - 现场信息不全；
-  - 突发事件打断原计划。
-- 本章鼓励培养：
-  - 在原则清晰的前提下，灵活调整路径的能力；
-  - 在反复训练和经验积累基础上，适度信任自己的直觉感受。
-
-## 第七章 方面七：善于写出你对问题的纲要
-
-这一章从“思考”转入“表达与呈现”。作者认为：只有把分析结果写成有结构的纲要，问题分析才真正进入可讨论、可复盘、可传承的阶段。
-
-### 纲要的作用
-
-- 把零散的想法整理成有逻辑的架构：背景 → 问题 → 分析 → 方案 → 风险与后续。
-- 让自己在写的过程中再次检查：
-  - 论证链条是否完整；
-  - 是否有遗漏的条件或反例；
-  - 结论是否真正建立在前面的分析之上。
-
-### 写出清楚的层次与重点
-
-- 本章强调纲要的“层次感”：
-  - 先列出几个一级标题，对应九个方面中的哪些关键环节；
-  - 在每个标题下，再用条目方式呈现要点。
-- 同时要突出重点：
-  - 哪几个判断是整个分析的关键支点，应标注清楚；
-  - 哪些是补充说明或次要细节，可以压缩处理。
-
-### 从“会想”到“会写”的训练
-
-- 书中通过“能力训练”提醒读者：
-  - 可以从小问题开始练习写纲要，如一次小活动的复盘；
-  - 逐渐扩展到工作中的重要项目和决策。
-- 目标是形成一种习惯：
-  - 遇到较大的问题时，先写一份分析纲要，再进入具体执行与沟通。
-
-## 第八章 方面八：小心求证你的答案
-
-前七章帮助读者形成了一个相对完整的分析框架，但任何分析得出的“答案”，都需要被求证。本章就是关于如何审查自己的结论，避免自以为是。
-
-### 知己方能知彼
-
-- 作者引用“知己知彼，百战不殆”，强调求证答案前，要先了解自己：
-  - 自己的立场、利益和偏好是什么？
-  - 自己在哪些方面容易乐观或悲观？
-- 只有先识别自身偏差，才能更客观地看待外部信息和他人的反馈。
-
-### 利用回馈作用
-
-- 现实世界会不断对我们的决策给出“反馈信号”：
-  - 指标和数据的变化；
-  - 利益相关者的反应；
-  - 市场或环境的细小调整。
-- 本章强调：
-  - 要主动设计反馈渠道，而不是被动等待；
-  - 对负面反馈保持开放，把它视为修正答案的机会，而不是威胁。
-
-### 准确情报是求证答案的关键
-
-- 情报并不仅指“机密信息”，还包括：
-  - 一线人员的经验；
-  - 用户和客户的真实反应；
-  - 行业与环境的公开数据。
-- 作者提醒：
-  - 要警惕片面信息、被筛选的信息和带强烈立场的“二手解释”；
-  - 尽量从多个来源交叉验证重要判断。
-
-### 案例剖析与能力训练
-
-- 书中以“某饮料公司为何铤而走险”为例，展示：
-  - 在缺乏充分求证和情报支撑的情况下贸然决策，如何引发严重后果；
-  - 如果在前期就设计好测试、试点和反馈机制，本可以大幅降低风险。
-- 读者在能力训练部分，可以尝试：
-  - 选取一个现实中的决策，画出“求证路径”：需要哪些数据、哪些反馈、哪些观察点。
-
-## 第九章 方面九：修正你的答案
-
-求证之后，往往会发现原先的答案并不完美，甚至在某些方面是错的。本章重点讨论：如何在不陷入否定一切的困惑中，有步骤地修正答案，迈向更合适的方向。
-
-### 经验可以用来修正，但不能替代思考
-
-- 经验是宝贵的，但也是有边界的：
-  - 经验来自过去，而问题发生在不断变化的现在和未来。
-- 作者提醒：
-  - 不要把经验当作“铁律”，而要当作“参考样本”；
-  - 在求证中发现经验不再适用时，要敢于调整自己的判断。
-
-### 快速寻找反馈来修正答案
-
-- 修正答案的关键，是缩短从“发现问题”到“采取改动”的时间。
-- 本章鼓励：
-  - 一旦发现偏差，尽快设计并实施小步试验；
-  - 通过分阶段调整，而不是一次性“大翻盘”，来降低修正风险。
-
-### 迈向正确方向，而非追求绝对完美
-
-- 在复杂系统中，很难一次找到“完美答案”，更现实的是持续向“更好”靠近。
-- 因此，修正的标准是：
-  - 是否比原来更贴近目标、更符合事实、更容易执行；
-  - 是否兼顾了更多相关方的合理利益。
-- 作者在能力训练中，引导读者把“修正”视为常态，而不是失败。
-
-## 第十章：问题可以程序化
-
-最后一章把前九个方面压缩成一套“问题分析程序”，说明：
-
-- 问题并非只能凭感觉、凭灵感来处理；
-- 完整的问题分析流程是可以被总结、编码，并反复使用的。
-
-### 七步程序的核心思路
-
-书中给出了若干“程序”，大致对应：
-
-1. **先搞清界定**：回到第一章，明确矛盾结构、共性属性、目标和条件。
-2. **搞清内部逻辑关系与外部联系**：对应第二、三章，既看系统内部结构，也看外部环境和利益网络。
-3. **搞清由来**：对应第四章，追溯问题形成过程，分辨背景与直接原因。
-4. **搞清趋向**：对应第五章，从现象、苗头和小事中推断未来走向。
-5. **搞清解决这类问题的能力储备**：对应第六章，检查自己和团队在沟通、心态、谋略等方面的准备程度。
-6. **善于写出分析纲要**：对应第七章，把思路整理成可讨论的文稿与结构。
-7. **求证并修正答案**：对应第八、九章，通过情报与反馈不断校正判断。
+# Nine Aspects for Analyzing Problems
+
+## LLM Prompt Template: Nine-Aspects Problem Analysis
+
+> Usage: Copy only the content of this section **“LLM Prompt Template: Nine-Aspects Problem Analysis”** (from this line down to the end of 【LLM Self-Check Checklist】) into the LLM. First fill in all the fields in the **[Input]** section about the “problem to be analyzed”, then submit the prompt to the LLM to obtain a structured analysis along the nine aspects. In a single turn, this prompt must be **self-consistent, complete, and self-contained**, and must **not** refer to any other file, link, or previous conversation.
+
+You are a “problem analysis consultant” who is good at structured thinking and weighing risk vs. value. You are skilled at using the “nine aspects + one procedure” framework from the book *Nine Aspects for Analyzing Problems* to analyze complex issues.
+
+【Your Task】
+- Around the user’s “problem to be analyzed”, perform a systematic analysis from nine aspects.
+  - First clarify the problem itself, then analyze structure and trends, examine capabilities and options, and finally give actionable recommendations.
+  - Use clear subheadings and bullet points so the output is easy to read and review.
+  - For key options and action paths, compare **benefit / cost / risk**, and make clear under which assumptions you recommend or do **not** recommend a given approach.
+  - When multiple stakeholders are involved, explicitly state each role’s interests and potential conflicts, and keep the analysis balanced and fair.
+
+【Overall Output Requirements (Aligned with LLM-Friendly Prompting Guidelines)】
+- At the beginning, use 1–2 short sections to **restate the context**: core problem, goals and success criteria, key constraints (time / budget / policy, etc.), time window, main stakeholders, and available resources.
+- For abstract notions such as “efficiency, risk, satisfaction, quality, benefit, cost”, give **working definitions and ways to measure them** (e.g., concrete metrics, ranges, units), and use verifiable numbers or formula examples whenever possible.
+- When presenting complex causal chains, processes, or decompositions, use **comparison tables, step-by-step lists, or simple diagrams** to aid explanation, but keep the nodes concise and avoid huge, unreadable “panoramic” charts.
+- In the analysis and recommendations, focus first on the **20% of critical factors** that most affect outcomes, and compress background narrative that contributes little to conclusions. Avoid repeating earlier content.
+- Compare at least **two alternative paths or key decision branches** on benefit / cost / risk / applicability conditions, and state clearly under what conditions a given option is **not recommended or should be used with caution**.
+- When multiple roles are involved, try to give benefit–loss analysis from at least **two types of key stakeholders** (e.g., customer + team / manager + frontline), and avoid judging purely from a single perspective.
+- In the “Summary & Action Recommendations” section, provide 3–7 concrete actions in the format **“who does what by when, measured by which metrics”**, with priority and time window marked so they can be implemented directly.
+- If the overall output is long (e.g., more than 5 screens or 2,000 Chinese characters / ~1,000–1,500 English words), automatically generate a short table of contents before the main content, listing sections 1–10 so humans can quickly locate and skim.
+- For judgments that rely on experience or external facts, explicitly mark **assumptions and sources of uncertainty**. If you cannot confirm specific data, say that it is an estimate / example, and specify which data / experiments / interviews would be needed to verify it.
+
+【Applicable Scenarios & Priority】
+- When the problem satisfies any of the following, use a **deep analysis mode** and provide more detail and quantitative metrics:
+- Directly impacts major decisions (e.g., go/no-go, resource / budget allocation, strategic direction).
+- Is expected to change core metrics (revenue, cost, quality, satisfaction, safety, etc.) by ≥5%.
+- Involves a decision / action window of 1–6 months, not a one-off small task.
+- Involves ≥2 types of important stakeholders (e.g., customers + internal teams, upstream + downstream, etc.).
+- Is expected to require ≥40 person-hours of work or significant monetary cost.
+
+- Regardless of mode, avoid repeating large chunks of content in different sections; instead, complement from different angles:
+- Section 4 focuses on “how the problem formed in the past”, section 5 focuses on “where it may go in the future”.
+- Section 6 emphasizes “human / team capabilities and mindset”, section 8 emphasizes “intelligence, data, and samples”.
+- Section 7 gives the analysis structure and key judgments, section 10 focuses on distilled conclusions and action lists.
+
+【Input (fill in completely before use to keep the prompt self-contained)】
+- Filling principle: use **specific, quantifiable** descriptions (numbers, ratios, time spans, amounts, etc.), and avoid vague expressions like “a lot”, “relatively fast”, “try to reduce”.
+- Brief description of the problem to be analyzed: <<Summarize the core problem in one sentence.>>
+- Background and current situation: <<Domain / scenario, current approach, existing phenomena or pain points.>>
+- Goals and success criteria: <<Desired outcomes and quantifiable metrics (time, cost, quality, satisfaction, etc.). Provide the current baseline and the “minimum acceptable standard / target / ideal value”.>>
+- Key constraints and resources: <<Time window, budget, headcount, policy / compliance requirements, tech stack, existing assets or tools, etc.>>
+- Stakeholders and roles: <<List main roles (e.g., customers, managers, partner teams, end users, etc.) and their core needs / constraints.>>
+- Time scale and impact scope: <<Time span impacted (e.g., 3 months / 1 year / 3 years), systems / businesses / regions affected, and related scale (user counts, amounts, frequency, etc.).>>
+- Historical attempts and existing solutions (if any): <<Approaches already tried, major outcomes, and lessons learned.>>
+- Known facts, assumptions, and uncertainties: <<What has been reliably verified? What are assumption-based on experience or estimates? Where are the biggest information gaps now?>>
+
+【Output Structure】
+Please follow the structure below strictly (keep the titles and numbering; for items marked 【Core】, prioritize depth and quality; for items marked 【Advanced】, expand or simplify based on available time and importance):
+
+1. Problem Definition (Aspect 1, 【Core】)
+- 1.1 Problem and contradictions: What is the core contradiction / conflict? Which parties, goals, and constraints are involved?
+- 1.2 Goals and conditions: What results are expected? What hard constraints / resource limits / time windows exist?
+- 1.3 Extensibility and common structure: From angles such as “one object, many attributes; one attribute, many objects; virtual vs. physical; hard vs. soft; latent vs. visible; positive vs. negative”, how else can this problem be redefined or reframed?
+
+2. Internal Logical Relations (Aspect 2, 【Core】)
+- 2.1 Key elements: Which roles, resources, processes, and rules are inside the problem?
+- 2.2 Balance and “degree”: Where might “too much of a good thing becomes bad” appear (e.g., speed vs. quality, short term vs. long term)?
+- 2.3 Key internal causal chains: Provide 1–2 of the most important internal causal or constraint chains.
+
+3. External Connections (Aspect 3, 【Core】)
+- 3.1 Stakeholders: Which upstream, downstream, and side-line external roles are involved? What are their goals and constraints?
+- 3.2 Environment and institutions: Which policies, markets, technology, or cultural environments affect this problem?
+- 3.3 Responsibility and room to maneuver: Where must you proactively take responsibility? Where should you leave others room, and keep future options open?
+
+4. Origins of the Problem (Aspect 4, 【Advanced】)
+- 4.1 Key historical nodes: How did this problem gradually form? Break it into 2–4 key stages.
+- 4.2 Background vs. direct causes: Distinguish “deep background factors” from “immediate triggers”. This part focuses on the past formation process; do not yet detail future trends (reserve future evolution for section 5).
+- 4.3 Deep structural issues: Which are root problems at the level of institutions, structure, or culture?
+
+5. Problem Trends (Aspect 5, 【Core】)
+- 5.1 Current trend judgment: If nothing changes, what result is the problem most likely heading toward?
+- 5.2 Early signals and “spots”: Which small signals (data changes, specific cases, complaints, incidents, etc.) foreshadow the future?
+- 5.3 Possible scenarios: Use 2–3 scenarios (optimistic / baseline / pessimistic) to summarize how the situation may evolve over the next 6–24 months.
+
+6. Capability Reserves (Aspect 6, 【Advanced】)
+- 6.1 Existing capabilities: What are your or your team’s strengths in communication, mindset, strategy, adaptability, experience, etc.?
+- 6.2 Capability gaps: Which lacking capabilities are amplifying the problem’s risk? (Highlight “people / team” capabilities and mindset here, and do **not** mix this with the information / data gaps in section 8.)
+- 6.3 Capabilities that can be built in the near term: Over the next 1–6 months, which capabilities or resources can you focus on building or borrowing?
+
+7. Analysis Outline (Aspect 7, 【Advanced】)
+- 7.1 Structured outline: Using the structure “Background → Problem → Analysis → Options → Risks & Follow-ups”, list top-level and second-level bullet points (only bullet items; no long text here, and do not repeat the detailed action list from section 10).
+- 7.2 Key judgments: Mark 3–5 of the most critical judgments or assumptions (these need to be validated later).
+- 7.3 Alternative paths: Briefly list 2–3 candidate action paths with a short one-line positioning for each.
+
+8. Validating the Answer (Aspect 8, 【Advanced】)
+- 8.1 Potential biases: What stance biases or blind spots may exist in the current analysis?
+- 8.2 Required intelligence and feedback: What data, pilots, interviews, or external information are needed to test the key judgments? (Highlight “gaps in information and samples” here, and do **not** repeat the capability gaps from section 6.)
+- 8.3 Validation plan: Provide a simple validation plan (e.g., “small experiments + observed metrics”).
+
+9. Revising the Answer (Aspect 9, 【Advanced】)
+- 9.1 Parts likely to be revised: Based on the analysis so far, which conclusions are most likely to change once new information arrives?
+- 9.2 Incremental adjustment approach: How can you iterate the plan using small-step trials and gradual refinement instead of big-bang changes?
+- 9.3 “Better, not perfect” criteria: Provide 2–4 practical criteria for judging that the current plan is “good enough to act on”.
+
+10. Summary & Action Recommendations (【Core】)
+- 10.1 Core insights: In 3–5 sentences, summarize the most important findings across the nine aspects, prioritizing the “top 20% key judgments”. Avoid repeating earlier details verbatim.
+- 10.2 Near-term action list (0–3 months): List 3–7 executable priority actions. For each, mark the **priority** (e.g., P0 / P1 / P2 or 【Critical】【Important】【Optional】) and include “what to do + who owns it + expected result / metric + target completion date”.
+- 10.3 Risks and responses: List 2–4 major risks and corresponding contingencies or mitigation measures, and state each risk’s approximate impact level (High / Medium / Low) and trigger conditions.
+
+【Answer Style Requirements】
+- Use concise, rigorous English. Prefer bullet points over flowery adjectives; avoid “empty-template” language.
+- Based on problem complexity and time limits, consciously apply the 80/20 rule: make the 【Core】 parts solid first, then expand 【Advanced】 parts as appropriate.
+- Keep the structure **MECE (Mutually Exclusive, Collectively Exhaustive)**: sections 1–10 should avoid repeating large chunks of content, but together should cover “what it is, why it happens, what to do, what risks and alternatives exist, and how to implement and validate”.
+- Wherever possible, provide **quantifiable metrics and time windows** (e.g., “Within the next 6–12 months, increase metric X from A to B, keeping budget within Y”), so conclusions can be tested and compared.
+- Compare at least **two alternative paths or key decision branches**, with pros/cons, preconditions, and risks. Explicitly state “under which conditions this option is not recommended”.
+- For all key conclusions and action recommendations, state their **priority and ordering logic** (e.g., 【Critical】【Important】【Optional】 or P0 / P1 / P2) to highlight the 20% of points that drive most of the outcome.
+- When comparing options, clearly state **benefits, costs, and major risks**, and point out the “not applicable / not recommended” conditions for each, instead of only listing one-sided advantages.
+- In every aspect, tie the analysis to the **concrete problem context** and the 【Input】 information. Avoid copying textbook content or generic templates, and delete background that does not materially help judgment.
+- When multiple interests or conflicts exist, explicitly point out the positions and concerns of different stakeholders (customers, team, managers, etc.), and avoid judging purely from a single viewpoint.
+- Where uncertainty exists, explicitly state assumptions and sources of uncertainty instead of inventing details. When needed, suggest “data / experiments / interviews that should be conducted” and mark which content is based on experience or estimates.
+- For any judgments that require factual support, use the 【Validating the Answer】 section to state which authoritative sources or data are needed, and do **not** fabricate precise data or citations. If specific numbers cannot be confirmed, label them as examples / estimates / hypotheses.
+
+【LLM Self-Check Checklist (Quick Pre/Post Answer Scan)】
+- ☐ Have you fully understood and used the background, goals, constraints, and stakeholder information from 【Input】, without relying on “other files / past dialogue” as hidden context? (Self-contained + Context)
+- ☐ Have you covered all sections 1–10 in order, with especially solid content for the core parts (1 / 2 / 3 / 5 / 10), and reasonably expanded or briefly handled the advanced parts based on complexity? (MECE + Sufficiency)
+- ☐ For key judgments, have you given clear **reasons and assumptions**, and pointed out the main sources of uncertainty, instead of treating estimates as facts? (Logic + Verification)
+- ☐ Have you used at least 1–2 **quantitative metrics / success criteria** and clear time windows at key points so that outcomes can be evaluated later? (Precision + Success Criteria)
+- ☐ Have you compared at least two different action paths or strategies, explained their respective contexts, benefits, costs, and risks, and stated under what conditions they are not applicable or should be used with caution? (Risk / Value + Fairness)
+- ☐ Does the output use clear subheadings, bullet points, and tables when needed, so humans can scan and review it, instead of long unstructured paragraphs? (Structure + Consistency)
+- ☐ Have you marked priorities (e.g., 【Critical】【Important】【Optional】 or P0 / P1 / P2) for key conclusions and actions, and explained the ordering logic or trade-offs? (Priority + Significance)
+- ☐ Is the content focused on the most important 20% of information, with irrelevant background compressed or removed, and an overall length suitable for reading in limited time? (Concision)
+- ☐ For parts that rely on experience or external facts, have you marked assumption sources or uncertainty, and when necessary given “example source types / examples”, avoiding fabricated precise information or citations? (Accuracy + Credibility + Evidence)
+- ☐ Have you checked that the reasoning is self-consistent, with no obvious contradictions or leaps in the key causal chains and conclusions? (Logic)
+- ☐ Have you provided at least 1–2 **concrete, executable next steps or validation actions** (who does what by when, and which metrics will be used to judge effectiveness), instead of stopping at purely principle-level statements? (Practicality)
+- ☐ Have you considered at least two stakeholder perspectives (e.g., customer + team / manager + frontline), and explicitly pointed out possible stance differences and conflicts? (Breadth + Fairness)
+- ☐ For judgments needing factual support, have you in the 【Validating the Answer】 section specified the data / experiments / interviews to further verify them, and marked their importance or priority? (Verification + Practicality)
+
+---
+
+## Overview (Original book summary, for human reading; no need to copy into LLM prompts)
+
+*Nine Aspects for Analyzing Problems* proposes a systemic “nine aspects + one procedure” framework for problem analysis. You begin by defining the problem, then in sequence clarify internal logic, external connections, origins, and future trends. Afterwards, you turn back to examine your own capability reserves for solving the problem, learn to organize your thinking into a clear outline, carefully validate your answers, and keep refining them based on feedback, until the entire process becomes procedural and standardized.
+
+The book uses many historical stories, management cases, and life situations to show that “analyzing problems” is not the intuition of a genius, but a learnable, trainable, and transferable methodology. The author especially emphasizes “extensibility” and “common structure”: behind any problem, you can abstract from dimensions such as contradictions, element relations, virtual vs. physical, hard vs. soft, latent vs. visible, positive vs. negative. With these structural views, you can find leverage points and breakthroughs.
+
+The book can be used both as a thinking-training reader for the general audience and as a hands-on framework for managers and knowledge workers. By repeatedly asking themselves the nine aspects and practicing related skills, readers can transform vague, complex, and emotional problems into analyzable tasks that can be decomposed, compared, weighed, and iteratively improved.
+
+The final chapter provides a seven-step “problems can be proceduralized” process, compressing the ideas of the nine chapters into a reusable flow and checklist. This helps readers make more robust and forward-looking judgments in real situations where time is limited and information is incomplete.
+
+## Key Takeaways
+
+- **Problem analysis is a nine-aspect closed loop**: definition → internal logic → external connections → origins → trends → capability reserves → analysis outline → validating answers → revising answers, which are finally proceduralized.
+- **A good start is defining the problem**: seeing clearly the contradictions, common structures, goals, and conditions before talking about “solutions” can massively reduce busywork and misjudgment.
+- **Use “extensibility” to expand the solution space**: “one object, many attributes”, “one attribute, many objects”, transformation chains, implication relations, and multiple “possibilities” are all tools for breaking out of dead ends.
+- **Internal logic emphasizes balance and proportion**: handling internal balances, notions of equality, and “too much of a good thing becomes bad”, so as to avoid single-point extremism and emotional judgments.
+- **External connections determine boundaries and consequences**: understanding how to take responsibility, value harmony without blind compromise, and leave others room for maneuver is in fact leaving yourself a way out.
+- **Seeing origins and trends is key to grasping the essence**: you need to trace “where the problem came from” and “where it might go”, and use early signals, small events, and “spots” to glimpse overall trends.
+- **Build capability reserves before solving problems**: communication, mindset, language and strategy, adaptability, intuitive judgment, etc. are the base toolkit for facing complex issues.
+- **Writing a clear analysis outline makes thinking discussable and reviewable**: outlining is the bridge from “it feels like I’ve thought it through” to “I can present this to others and improve it together”.
+- **Answers are not one-shot products, but results of continual validation and revision**: with accurate intelligence, feedback loops, and careful use of experience, you can see opportunities in crises and correct direction through mistakes.
+- **Proceduralizing the nine aspects makes daily reuse easy**: by turning complex problems into a series of repeatable steps and checkpoints, you reduce pressure in live situations.
+
+### Overview of the Nine Aspects and Corresponding Chapters
+
+| # | Aspect | Core question | Chapter |
+|------|------|--------------|---------|
+| 1 | Clarify problem definition | What is the problem? How are contradictions, goals, and conditions defined? | Chapter 1 |
+| 2 | Clarify internal logical relations | How do internal elements constrain and balance each other? | Chapter 2 |
+| 3 | Clarify external connections | How is the problem connected to external roles, systems, and environments? | Chapter 3 |
+| 4 | Clarify origins | How did the problem form step by step? What are background vs. direct causes? | Chapter 4 |
+| 5 | Clarify trends | From phenomena, early signals, and small events, where is the problem heading? | Chapter 5 |
+| 6 | Clarify capability reserves | What communication, mindset, strategy, and adaptability capabilities do you and your team have? | Chapter 6 |
+| 7 | Be good at writing an outline | How do you organize the analysis into an outline that can be discussed and reviewed? | Chapter 7 |
+| 8 | Carefully validate your answer | How do you use intelligence and feedback to validate conclusions and uncover bias? | Chapter 8 |
+| 9 | Revise your answer | After discovering deviations, how do you make small-step corrections and move toward a better answer? | Chapter 9 |
+
+## Content Graph
+
+```mermaid
+graph TD
+    A[Overall problem-analysis capability] --> B[Aspect 1: Clarify problem definition]
+    B --> C[Aspect 2: Clarify internal logical relations]
+    C --> D[Aspect 3: Clarify external connections]
+    D --> E[Aspect 4: Clarify origins]
+    E --> F[Aspect 5: Clarify trends]
+    F --> G[Aspect 6: Clarify capability reserves]
+    G --> H[Aspect 7: Write your analysis outline]
+    H --> I[Aspect 8: Carefully validate your answer]
+    I --> J[Aspect 9: Revise your answer]
+    J --> K[Problems can be proceduralized]
+
+    B --- E
+    C --- G
+    D --- F
+    H --- I
+    I --- J
+    K --> B
+```
+
+## Chapter 1 – Aspect 1: Clarify Problem Definition
+
+Clarifying the definition of the problem is the starting point of the entire analysis. This chapter emphasizes that only by simplifying and making the problem explicit—accurately defining contradictions, goals, and conditions—can later analysis, decisions, and actions be effective.
+
+### Defining contradictions: Turning “unsolvable knots” into workable problems
+
+- **What contradictory problems mean**
+  - Human progress depends on resolving contradictions. This chapter summarizes everyday and historical cases to show that contradictory problems can be systematically analyzed and dissolved.
+  - The key is to see “what is hard to change and what is easy to change”, then reconstruct the problem by transforming attributes, adjusting goals, or introducing intermediary systems.
+- **Attribute transformation: Changing “what you weigh” or “what you move”**
+  - Classic cases:
+    - *Cao Chong weighs an elephant*: The scale’s maximum capacity is hard to change, so he turns “weigh the elephant” into “weigh stones”, resolving the contradiction through object transformation.
+    - *Tall cabinet, low doorway*: By laying the cabinet flat, you change its shape attributes and move it through the original doorway height.
+    - *Besieging Wei to rescue Zhao*: When you cannot directly “rescue Zhao”, you transform the goal into “besiege Wei”, achieving the original objective by changing the target object.
+  - Method points:
+    - Treat difficult-to-change conditions as “rigid”, and prioritize finding movable objects or attributes.
+    - Allow simultaneous changes across multiple attributes instead of being stuck on a single dimension.
+- **Contradictory goals: Letting opposing systems co-exist**
+  - In the same context, trying to satisfy both A and B creates opposition and incompatibility.
+  - By introducing an intermediary or “bridge”, you can turn opposing systems into co-existing systems:
+    - For example, cross-region transportation systems use “bridges” so that, while respecting both sides’ institutions and habits, two systems are connected into a larger one.
+- **Objective contradictions: Using human intervention to reshape the situation**
+  - Plants need to grow but face pests and diseases; such objective contradictions can be handled by pesticides, predator insects, etc., turning a “contradictory problem” into an “incompatibility problem” or “opposition problem”, and then resolving it further.
+  - Conclusion: Contradictory problems are not unsolvable; they require attribute transformation, goal transformation, and system reconfiguration to be redefined.
+
+### Extensible definition of the problem: Expanding possibilities from a single point
+
+- **The concept of extensibility**
+  - The book proposes “problem extensibility”, including divergence, inter-problem connections, implication relations, and multiple “possibilities”.
+  - By deliberately leveraging extensibility, you can expand the solution space and provide more options for decision-making.
+- **Divergence: One object, many attributes; one attribute, many uses**
+  - “One object, many attributes”, “one attribute, many objects”, “one attribute, many values”, and “one value, many objects” all reflect divergence.
+  - Classic example: *grilled bananas*
+    - At first, the bananas burnt by the fire look “ugly” and “defective”.
+    - By re-exploiting their attributes (unique taste, exotic flavor, exclusive offering), the flaw turns into a selling point. Named “import-style bananas”, they sell out at a higher price.
+  - Point: Fully using an object’s multiple attributes can turn an unfavorable situation into an advantageous one.
+- **Inter-problem connections: Using “transmission transformations”**
+  - Many quantities depend on one another; changing one attribute value “transmits” along a chain.
+  - For example:
+    - Raising workers’ wages affects consumption levels and morale, which further influence the enterprise’s overall state.
+    - Hiring a famous scholar not only improves academic standards but also leads to more projects and research funding.
+    - Changes in clothing fashion (such as miniskirts) transmit into changes in sales of accessories (e.g., pearls).
+  - If you leverage positive transmission, you amplify favorable effects; by guarding against negative transmission, you control risks.
+- **Implication relations and “flank attacks”**
+  - Some event A necessarily implies event B, or B can be used to counter A. A business acquisition case illustrates this:
+    - On the surface, company B is acquired, but B had quietly acquired shares of A using the funds, eventually turning the tables and controlling A.
+    - By seizing weak links in key implication chains, small players can win over larger ones.
+  - Rockefeller’s story: Instead of directly entering upstream oil extraction, he focused on downstream refining and transport, gaining control at a key chokepoint over the entire value chain.
+- **Multiple “possibilities”: Combining for more solutions**
+  - The book uses examples like machine-tool upgrades, software modularization, and bundled baby products:
+    - Adding numeric control systems to ordinary machine tools can approximate CNC capabilities at low cost.
+    - Splitting software into multiple modules to be designed by different people, then connected centrally, improves confidentiality and efficiency.
+    - The baby phase is short but need-intensive; bundled gift boxes leverage “can be bought together” to increase sales.
+  - Core idea: Fully exploit “can be combined this way / that way” possibilities to use limited resources for larger goals.
+
+### Common structures of problems: Four universal properties and four pairs of structural elements
+
+- **Four universal properties**
+  - Any problem has:
+    - Materiality
+    - Systemic nature
+    - Dynamism
+    - Opposition
+  - These together form a problem’s “common foundation”.
+- **Virtual vs. physical parts**
+  - Physical part: tangible elements, such as walls and floors of a house or an enterprise’s capital, equipment, plants, and staff.
+  - Virtual part: intangible elements around the physical part, such as indoor space, product brand image and awareness, technical level, management quality, and reputation.
+  - When analyzing problems, pay attention to both the “visible physical part” and the “invisible but equally critical virtual part”.
+- **Hard vs. soft parts**
+  - Hard part: the system’s constituent elements themselves.
+  - Soft part: the relationships and coordination among elements.
+  - Using the proverb “three monks have no water to drink”, the chapter illustrates:
+    - With the same headcount (hard part), different divisions of labor and collaboration (soft part) lead to completely different outcomes.
+    - Machine failures often stem not only from broken components but also from malfunctioning “soft parts” (processes, collaboration, configuration).
+- **Latent vs. manifest parts**
+  - Manifest part: problems and phenomena already visible on the surface.
+  - Latent part: factors still hidden but already germinating, for example:
+    - When designing a city’s power grid, one must account for future growth in air-conditioner usage, hotels, and office buildings.
+  - Looking only at the manifest part and ignoring the latent part can cause serious consequences later, such as repeated blackouts from surging air-conditioner load in hot summers.
+- **Positive vs. negative parts**
+  - For the same attribute, beneficial aspects are the positive part; harmful aspects are the negative part.
+  - The book stresses:
+    - From a profit standpoint, “three-waste” treatment (waste water, waste gas, waste residue) is a negative part; but from a social and environmental standpoint, not handling it creates even greater harms.
+    - Welfare departments, kindergartens, and PR units are negative from a short-term profit viewpoint but help image and long-term development—they are “beneficial negatives”.
+  - Conclusion: When analyzing positives and negatives, you must ask “relative to what goal?” and “from whose standpoint?”, and make good use of components that are locally harmful but globally beneficial.
+
+#### Quick Reference Table – Four Pairs of Structural Elements
+
+| Structural pair | Core meaning | Typical reminder or example |
+|-----------------|-------------|------------------------------|
+| Virtual / Physical | Physical parts are tangible elements (capital, equipment, staff, buildings); virtual parts are intangible elements around them (brand, technical level, reputation, etc.). | Analyze both tangible foundations and intangible influence. |
+| Hard / Soft | Hard parts are system elements; soft parts are their relationships and mode of collaboration. | The “three monks” story shows that the same hard part with different soft arrangements yields different outcomes. |
+| Latent / Manifest | Manifest parts are visible problems and phenomena; latent parts are factors still hidden but already forming. | City power-grid design must consider future air‑conditioner loads, or the city will later suffer frequent blackouts. |
+| Positive / Negative | The positive part benefits a given goal; the negative part harms it. | From a profit view, “three-waste” treatment and welfare units are negative, but from long-term development and social responsibility, they may be “beneficial negatives”. |
+
+### Mindsets needed for analyzing problems
+
+- **One effort, many gains**
+  - A single activity can serve multiple goals if its structure and content are designed in advance.
+  - Example: A consulting firm’s training courses simultaneously promoted its theory, conducted market research, generated material for books, and built long-term client relationships—an exemplar of “one effort, many gains”.
+- **“Using others’ resources to do your own work”**
+  - Society and nature offer many “usable resources”: not owned by you, but transformable into “available resources” for your benefit.
+  - The key is not how much you own, but whether you can integrate scattered usable resources into deployed power, using limited self-owned resources for greater goals.
+- **Belief in endless innovation**
+  - The book stresses that “nothing is perfect”; any solution is only relatively better.
+  - As time and environment change, yesterday’s best solution may become obsolete, so continuous improvement and re-innovation are necessary.
+- **Creative thinking throughout**
+  - Complex rational analysis depends on creative thinking, which is the “soul” of problem analysis.
+  - Creative thinking is not wild fantasy, but grounded in a deep grasp of essential properties and internal relations.
+
+### Defining goals and conditions: Clarifying “what you want” and “under what circumstances”
+
+- **Clear goals are essential**
+  - The story of swimming across the strait shows:
+    - Physical fatigue and cold matter, but success or failure is often determined by whether the goal can be “seen”.
+    - When fog hides the destination, people easily give up halfway; when the goal is clear in mind, they can persist and succeed.
+  - For analysts, the clearer the goal, the easier it is to judge outcomes.
+- **Clarifying analysis theme and main object**
+  - Analysis should not treat all issues equally; it must choose a “primary object of analysis”.
+  - The book uses a series of increasingly specific topic examples:
+    - From “analyzing how to increase sales” down to “channel-promotion analysis aiming to increase sales of a specific product in a specific region by 50%”.
+  - Only after the theme is fully clarified should you move into substantive work.
+- **Quantifying and layering goals**
+  - Goals can be divided into a top-level goal and several lower-level goals:
+    - Single-goal problems: only one top-level goal.
+    - Multi-goal problems: multiple top-level goals, with lower-level goals implying the realization of higher-level ones.
+  - Through quantification and layering:
+    - You can determine “what comes first and what comes later”.
+    - You can judge whether options and resource allocations are reasonable.
+- **The role of clear goals**
+  - Create a positive mindset: give people a “visible shore”.
+  - Focus energy and resources: invest limited time and capabilities in truly critical directions.
+  - Shift attention from “how much activity we did” to “how much result we achieved”.
+  - Provide standards for assessing progress and effectiveness—crucial for evaluating options.
+- **Defining conditions and finding the “key problem”**
+  - Conditions include resource conditions (internal / external) and environmental conditions (internal / external); some are easy to change, others are hard.
+  - In messy reality, the key is to:
+    - Distinguish hard constraints that must be met from those that can be adjusted, substituted, or creatively circumvented.
+    - Use leverage thinking—“small force moves the big picture”—and prioritize key problems instead of spreading efforts thin.
+  - Liu Bei’s “three visits to the thatched cottage” story shows:
+    - Amid a chaotic landscape, what he truly lacked was a strategist.
+    - Finding Zhuge Liang meant seizing the “key condition” that could change the whole situation.
+
+### Crisis problems: Seeing the “opportunity” in “crisis”
+
+- **Basic definition of crisis**
+  - Summarizing scholars and dictionaries, the book defines “crisis” as:
+    - Sudden problems that cause or may cause serious damage to organizations, people, assets, or reputation.
+    - Often a key moment when a system moves from “normal” to a “major turning point”.
+- **Main features of crisis problems**
+  - Suddenness:
+    - Time, place, and mode of outbreak are often unpredictable with high randomness.
+  - Urgency:
+    - Once a crisis breaks out, it unleashes huge destructive power in a short time; the window for decision and response is extremely narrow.
+  - Destructiveness:
+    - Loss is not only in lives and property, but also in social and psychological impacts.
+    - The book cites 9/11 as an example of its chain effect on aviation, finance, insurance, tourism, etc.
+  - Transmission:
+    - Like a stone thrown into water, one crisis triggers ripples of follow-up problems and cross-industry entanglement.
+  - Opportunity:
+    - Crises contain both seeds of failure and seeds of success.
+    - The key is “finding opportunity within danger”: by timely adjustments of layout and strategy, you can control damage and capture turning points.
+
+#### Quick Reference – Features of Crisis Problems
+
+| Feature | Meaning | Reminder when analyzing |
+|--------|---------|------------------------|
+| Suddenness | Time, place, and form of outbreak are highly random. | Preparedness should cover multiple scenarios, not only a single imagined case. |
+| Urgency | Crises release huge destructive power quickly; little time is left for decisions and response. | Pre-design decision authority and action plans to avoid panic in the moment. |
+| Destructiveness | Harms not only life and property but also social and psychological states. | Include psychological and societal impacts in assessments, not only direct financial loss. |
+| Transmission | Like a stone in water, a crisis triggers chain reactions across industries and systems. | Identify upstream, downstream, and related systems to prevent uncontrolled spread. |
+| Opportunity | Crises contain both failure and success seeds. | After controlling loss, actively search for opportunities to adjust structure and optimize layout. |
+
+This chapter lays the logical foundation for the next eight aspects through systematic treatment of contradictions, extensibility, common structures, mindsets, and the definition of goals and conditions.
+
+## Chapter 2 – Aspect 2: Clarify Internal Logical Relations
+
+This chapter shifts the focus from “what the problem is” to “how it operates inside”. It stresses that within any problem, there are balancing, constraining, and hierarchical relations among internal elements. If you fixate on a single factor while ignoring the whole structure, you end up with local optima and overall imbalance.
+
+### Internal balance: Finding the right “degree”
+
+- In any system, there are sets of forces that restrain and complement each other and need dynamic balance.
+- Leaning too far to one side (e.g., only speed while ignoring quality, or only short-term profit while ignoring long-term development) leads to “too much of a good thing becomes bad”.
+- By analyzing correspondences, ratios, and rhythms among internal quantities, you can see which parts are off-balance and need adjustment.
+
+### Notion of equality and multi-angle thinking
+
+- In handling internal relations, the chapter warns against labeling elements too early—treating some as sacred and others as negligible.
+- “Equality” here means letting data and facts speak first during analysis, rather than being led by personal likes, dislikes, or relationships.
+- Only by putting all elements “on the same table” at the outset is it easier to spot the truly critical relations that must be addressed first.
+
+### The internal logic of “too much of a good thing becomes bad”
+
+- Through examples from life and management, the book shows:
+  - Many problems do not arise from “doing too little”, but from “doing too much”.
+  - Over-frugality damages morale; excessive incentives create short-termism.
+- When analyzing internal logic, you should identify:
+  - Which behaviors have moved from “appropriate” to “excessive”.
+  - Which variables, once they cross a threshold, cause sharp changes in quality, relationships, or emotions.
+
+### Practical steps for analyzing internal logic
+
+- Break the problem into internal elements (roles, resources, processes, rules, etc.).
+- Map causal chains and conditional relations among them: who influences whom, and who depends on whom.
+- Mark key balance points and “too much of a good thing” zones as the basis for later adjustments and decisions.
+
+## Chapter 3 – Aspect 3: Clarify External Connections
+
+If chapter 2 focuses on “how the system works inside”, this chapter looks at “how the system interacts with the outside world”. Through various stories, the author shows that many issues which appear to be internal actually have their roots and solutions in external connections.
+
+### Taking responsibility for the problem
+
+- When facing problems, you should focus first on being responsible for outcomes, not on shirking blame.
+- Being responsible means:
+  - Actively clarifying which external people and systems the problem is tied to.
+  - Taking on the duty of communicating, coordinating, and repairing relationships with these external parties.
+- Stories like “Empty City Stratagem” and “Saving the drowning child by breaking water jars” illustrate an attitude of being responsible for results, not just for surface job descriptions.
+
+### Valuing harmony without blind concession
+
+- “Harmony is precious” does not mean compromise on everything or limitless concessions.
+- The chapter distinguishes:
+  - Principled harmony: seek mutually acceptable solutions as long as core bottom lines are intact.
+  - Unprincipled muddling: seeking surface peace while sacrificing long-term interests and fairness.
+- Using real and historical examples, the author reminds readers that genuine “harmony” is built on clear interests, responsibilities, and boundaries.
+
+### Leaving others room is leaving room for yourself
+
+- In negotiation, coordination, and collaboration, “leaving the other side a way out” often means keeping room for yourself in the future.
+- Not cornering the other party:
+  - Reduces retaliation, rupture, and long-term hostility.
+  - Keeps the possibility of working together again in a new context.
+- The chapter shows that many situations are saved from crisis because someone had left “slack space” in advance.
+
+### External connections from a systems view
+
+- Few problems belong to only one person, one department, or one organization; they are embedded in larger environments and networks.
+- Practical questions for analyzing external connections:
+  - Which external roles does the problem tug on?
+  - Which are upstream conditions (supply, rules, policies) and which are downstream consequences (customers, livelihoods, ecosystems)?
+  - Which external links are “hard constraints”, and which can be changed through negotiation or institutional redesign?
+
+## Chapter 4 – Aspect 4: Clarify Origins
+
+This chapter stretches the time axis to focus on the “past life and present life” of the problem: where did it come from, what happens if it is left alone, and at which stage intervention is most appropriate.
+
+### Tracing “where it came from”
+
+- By mapping the historical process, you see how the problem accumulated:
+  - Which parts were built up by many small, long-term deviations?
+  - Which came from a single key decision or event?
+- In tracing, you should distinguish:
+  - Background factors vs. immediate triggers.
+  - Structural defects vs. random incidents.
+
+### Anticipating “what the result will be”
+
+- The point of analyzing origins is not blame, but to clearly see future paths:
+  - If you do nothing, in which direction will the problem deteriorate?
+  - If you intervene in different ways, what kinds of chain reactions might each cause?
+- The author stresses that only after understanding the “result of inaction” and “costs of intervention” can you make reasonable choices.
+
+### Seeing essence beyond appearances
+
+- Many surface issues (complaints, conflicts, declining performance) are just “symptoms” of deeper problems.
+- Through examples, the chapter illustrates:
+  - Keep asking “why?” until you reach systems of institutions, structures, or culture, not stopping at individual behavior.
+  - Beware of using simplistic labels to prematurely close complex issues.
+
+### The “put everything on the table” principle
+
+- Truly understanding origins often requires putting relevant facts, data, interests, and assumptions “on the table”.
+- This is both an analysis habit and a team culture:
+  - It reduces misunderstandings and suspicion from information asymmetry.
+  - It lets more people judge based on shared information, avoiding “misjudgment in the dark”.
+
+## Chapter 5 – Aspect 5: Clarify Trends
+
+Chapter 5 extends the time axis further into the future, focusing on “where the problem is heading”. The author argues that in an uncertain environment, one of the most important capabilities is using phenomena, early signals, and small changes to judge overall trends.
+
+### Looking through phenomena to see essence
+
+- Phenomena are surface-level; trends and essence are decisive.
+- For recurring phenomena, ask:
+  - What structural change do they reflect?
+  - Is the situation getting better, getting worse, or cycling?
+
+### Using early signals to read trends
+
+- Many major changes appear first as faint “signals”:
+  - Sudden clusters of a certain type of complaint.
+  - Slow but persistent decline of a product’s sales.
+  - A certain type of risk incident becoming frequent in the industry.
+- The chapter encourages readers to develop sensitivity to signal:
+  - Record and compare time series.
+  - Connect scattered signals into trendlines.
+
+### “Do not underestimate small things” and “see the whole from a spot”
+
+- “Small issues” often serve as early warnings of big problems:
+  - Minor breakdowns may signal aging equipment.
+  - Small frictions may signal hidden issues in organizational structure or incentives.
+- The ability to “see the whole from a spot” comes from:
+  - Sufficient understanding of systemic structure.
+  - Long-term accumulation and comparison of historical experience and current data.
+
+### Delphi method and brainstorming
+
+- The book briefly introduces two common tools for forecasting and idea generation:
+  - **Delphi method**: multiple rounds of anonymous expert feedback and aggregation to converge on future judgments.
+  - **Brainstorming**: under a “no premature judgment” rule, encouraging many ideas to surface, providing raw material for understanding trends and solutions.
+- The author notes:
+  - These methods are not magic; what matters is whether the execution respects diverse viewpoints and properly records and processes results.
+
+## Chapter 6 – Aspect 6: Clarify Capability Reserves for Solving Such Problems
+
+The first five chapters focus more on “the problem itself”. From chapter 6 onward, the focus shifts to “the people solving the problem”. The author reminds us that even the best methods cannot land without matching capability reserves.
+
+### Strong communication skills
+
+- Solving complex problems often involves multiple interests and professional backgrounds; poor communication magnifies misunderstanding and conflict.
+- This chapter emphasizes:
+  - Being able to explain complex issues clearly so people from different backgrounds understand.
+  - Listening carefully; others’ words often contain key information.
+  - Staying calm, respectful, and clear, even in tense situations.
+
+### Mindset and emotional management
+
+- The bigger the problem and the heavier the pressure, the easier it is for emotion to hijack decisions.
+- The author suggests:
+  - Treat problems as opportunities for growth and innovation, not purely as threats.
+  - Maintain a mindset that is “neither overly optimistic nor overly pessimistic” to stabilize team emotions.
+
+### Language skills and strategic awareness
+
+- Merely “thinking correctly” is not enough; you must also express yourself precisely and strategically:
+  - Different audiences and scenarios call for different rhetorical approaches.
+  - Pay attention to timing, sequence, and framing so others can accept the plan more easily.
+- “Strategy” here is not conspiracy, but the ability to design multi-party win‑win or multi‑win layouts under constraints.
+
+### Adaptability and intuitive use
+
+- In reality, “plans can’t keep up with change”:
+  - On-site information is incomplete.
+  - Sudden events disrupt original plans.
+- The chapter encourages cultivating:
+  - Flexibility to adjust paths while holding principles steady.
+  - Moderate trust in your intuition, as long as it rests on repeated training and accumulated experience.
+
+## Chapter 7 – Aspect 7: Be Good at Writing Your Problem Outline
+
+This chapter moves from “thinking” to “expression and presentation”. The author believes that only when the analysis is written into a structured outline does problem analysis truly become discussable, reviewable, and transferable.
+
+### The role of an outline
+
+- Organize scattered thoughts into a logical framework: background → problem → analysis → options → risks and follow-ups.
+- While writing, you can re-check:
+  - Whether the reasoning chain is complete.
+  - Whether any conditions or counterexamples are missing.
+  - Whether conclusions truly rest on prior analysis.
+
+### Writing clear levels and priorities
+
+- The chapter stresses the “layered” nature of outlines:
+  - First list a few top-level headings that map to key links among the nine aspects.
+  - Under each heading, present bullet-point key messages.
+- At the same time, highlight priorities:
+  - Mark which judgments are pivotal support points for the entire analysis.
+  - Compress less critical details or place them in appendices.
+
+### Training from “being able to think” to “being able to write”
+
+- Through “capability training” sections, the book reminds readers:
+  - Start by outlining small issues, such as a retrospective on a minor activity.
+  - Gradually extend this to important projects and decisions at work.
+- The goal is to form a habit:
+  - When facing larger problems, first write an analysis outline, then enter detailed execution and communication.
+
+## Chapter 8 – Aspect 8: Carefully Validate Your Answer
+
+The first seven chapters help readers build a relatively complete analysis framework, but any answer derived from analysis needs validation. This chapter is about scrutinizing your conclusions and avoiding overconfidence.
+
+### Know yourself to know others
+
+- Citing “know yourself and know your enemy, and you will never be defeated”, the author stresses that before validating answers, you must understand yourself:
+  - What are your own positions, interests, and preferences?
+  - In which aspects are you prone to optimism or pessimism?
+- Only after recognizing your own biases can you more objectively interpret external information and others’ feedback.
+
+### Using feedback
+
+- The real world keeps sending us feedback on decisions:
+  - Changes in indicators and data.
+  - Reactions from stakeholders.
+  - Subtle shifts in markets or environments.
+- The chapter emphasizes:
+  - Proactively designing feedback channels instead of passively waiting.
+  - Treat negative feedback as a chance to revise answers, not as a threat.
+
+### Accurate intelligence is key to validation
+
+- “Intelligence” is not only secret information; it also includes:
+  - Frontline experience.
+  - Real reactions from users and customers.
+  - Public data about industries and environments.
+- The author reminds us to:
+  - Be wary of one-sided information, filtered information, and heavily biased “second-hand interpretations”.
+  - Cross-check important judgments using multiple sources whenever possible.
+
+### Case analysis and training
+
+- The book uses the case “Why a beverage company took a reckless gamble” to demonstrate:
+  - How making bold decisions without sufficient validation and intelligence can lead to serious consequences.
+  - How properly designed tests, pilots, and feedback mechanisms could have significantly reduced risk.
+- In the training section, readers are encouraged to:
+  - Choose a real decision and draw a “validation path”: which data, which feedback, and which observation points are needed.
+
+## Chapter 9 – Aspect 9: Revise Your Answer
+
+After validation, you often find that your original answer is imperfect or even wrong in places. This chapter focuses on how to revise answers methodically without falling into total denial or paralysis.
+
+### Experience can revise, but not replace thinking
+
+- Experience is precious but limited:
+  - It comes from the past, while problems happen in an evolving present and future.
+- The author cautions:
+  - Do not treat experience as “iron law”; treat it as “reference samples”.
+  - When validation shows that experience no longer applies, have the courage to adjust your judgments.
+
+### Rapid feedback to revise answers
+
+- The key to revising answers is shortening the time from “discovering a problem” to “implementing changes”.
+- The chapter encourages:
+  - Once a deviation is found, quickly design and run small experiments.
+  - Use phased adjustments rather than a single big turnaround to lower the risk of correction.
+
+### Moving in the right direction, not chasing perfection
+
+- In complex systems, it is very hard to find a “perfect answer” at once; realistically, you aim to move steadily toward “better”.
+- Thus, the criteria for revision are:
+  - Is the new direction closer to the goal, more in line with facts, and easier to execute?
+  - Does it better balance the legitimate interests of more stakeholders?
+- In the capability training, readers are guided to treat “revision” as normal rather than as failure.
+
+## Chapter 10 – Problems Can Be Proceduralized
+
+The final chapter compresses the previous nine aspects into a “problem analysis procedure”, showing that:
+
+- Problems need not be handled only by gut feeling or inspiration.
+- A complete problem-analysis flow can be summarized, encoded, and reused.
+
+### Core idea of the seven-step procedure
+
+The book proposes several “procedures”, roughly corresponding to:
+
+1. **Clarify the definition first**: return to chapter 1 to clarify contradictions, common attributes, goals, and conditions.
+2. **Clarify internal logic and external connections**: chapters 2 and 3—look both at internal structures and external environments and interest networks.
+3. **Clarify origins**: chapter 4—trace how the problem formed and differentiate background from direct causes.
+4. **Clarify trends**: chapter 5—use phenomena, early signals, and small events to infer future directions.
+5. **Clarify capability reserves**: chapter 6—check whether your and your team’s communication, mindset, and strategy capabilities are ready.
+6. **Write the analysis outline**: chapter 7—organize your thinking into a structure that can be discussed.
+7. **Validate and revise answers**: chapters 8 and 9—use intelligence and feedback to continuously adjust judgments.
 
 ```mermaid
 %%{init: {
@@ -625,13 +672,13 @@
   }
 }}%%
 graph TD
-  A[界定问题] --> B[内部逻辑与外部联系]
-  B --> C[由来]
-  C --> D[趋向]
-  D --> E[能力储备]
-  E --> F[分析纲要]
-  F --> G[求证与修正]
-  G --> A[再次面对新问题]
+  A[Clarify the problem] --> B[Internal logic & external connections]
+  B --> C[Origins]
+  C --> D[Trends]
+  D --> E[Capability reserves]
+  E --> F[Analysis outline]
+  F --> G[Validation & revision]
+  G --> A[Face new problems again]
   style A fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
   style B fill:#eff6fb,stroke:#7a9fc5,stroke-width:2px,color:#1a1a1a
   style C fill:#f3f5f7,stroke:#8897a8,stroke-width:2px,color:#1a1a1a
@@ -641,24 +688,23 @@ graph TD
   style G fill:#f8f9fa,stroke:#7a8591,stroke-width:2px,color:#1a1a1a
 ```
 
-| 步骤 | 关键问题 | 对应章节 |
-|------|----------|----------|
-| 1 先搞清界定 | 当前问题的矛盾结构、共性属性和目标条件是什么？ | 第一章 |
-| 2 内部逻辑与外部联系 | 系统内部如何运作？与哪些外部环境和利益网络相连？ | 第二、三章 |
-| 3 搞清由来 | 问题是如何一步步积累而成？背景与直接原因分别是什么？ | 第四章 |
-| 4 搞清趋向 | 现象、苗头和“小事”预示着怎样的未来走向？ | 第五章 |
-| 5 能力储备 | 面对这类问题，自己和团队的能力、心态与资源准备到位了吗？ | 第六章 |
-| 6 写出分析纲要 | 能否把思路整理成清晰纲要，方便讨论与复盘？ | 第七章 |
-| 7 求证并修正 | 如何通过情报与反馈不断验证、更新和修正答案？ | 第八、九章 |
+| Step | Key question | Chapter |
+|------|--------------|---------|
+| 1 Clarify definition | What are the contradiction structure, common attributes, and goal/condition set of the current problem? | Chapter 1 |
+| 2 Internal logic & external connections | How does the system work internally, and what external environments and interest networks is it linked to? | Chapters 2 & 3 |
+| 3 Clarify origins | How did the problem accumulate step by step? What are background vs. direct causes? | Chapter 4 |
+| 4 Clarify trends | What future directions do phenomena, early signals, and “small matters” point to? | Chapter 5 |
+| 5 Capability reserves | Are your and your team’s capabilities, mindset, and resources ready to face this kind of problem? | Chapter 6 |
+| 6 Write the analysis outline | Can you organize your thinking into a clear outline for discussion and review? | Chapter 7 |
+| 7 Validate and revise | How do you use intelligence and feedback to keep validating, updating, and revising answers? | Chapters 8 & 9 |
 
-### 把程序变成个人与团队的工作习惯
+### Turning the procedure into personal and team habit
 
-- 作者建议读者：
-  - 可以把这七步写成个人的“问题分析检查表”；
-  - 在遇到重要问题时，逐项对照，看看自己是否遗漏了某一面。
-- 对团队而言：
-  - 可以在例会、复盘、重大决策前后，引入这些步骤作为讨论框架；
-  - 长期坚持下来，就会逐渐形成一种“结构化分析问题”的文化。
+- The author suggests:
+  - Turning these seven steps into a personal “problem-analysis checklist”.
+  - Before and during important problems, check each item to see whether you have overlooked any aspect.
+- For teams:
+  - Use these steps as a discussion framework in regular meetings, retrospectives, and before/after major decisions.
+  - Over time, this builds a culture of “structural problem analysis”.
 
-通过这一章，全书从“知识与案例”提升到“程序与习惯”。读者如果能把这套程序内化为日常思考方式，就真正掌握了“把握分析问题的九个方面”的精髓。
-
+Through this chapter, the book moves from “knowledge and cases” to “procedures and habits”. If readers can internalize this procedure into daily thinking, they will truly grasp the essence of *Nine Aspects for Analyzing Problems*.
