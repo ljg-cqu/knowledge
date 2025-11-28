@@ -1,0 +1,1188 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Decision-Critical Problem Statements in the Blockchain Industry (2024-2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1a365d',
+                        'secondary': '#2d3748',
+                        'accent': '#4299e1',
+                        'muted': '#718096',
+                        'surface': '#f7fafc'
+                    },
+                    fontFamily: {
+                        'serif': ['Crimson Text', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9) 0%, rgba(45, 55, 72, 0.8) 100%);
+        }
+        .problem-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .problem-card:hover {
+            border-left-color: #4299e1;
+            transform: translateX(4px);
+        }
+        .citation-link {
+            color: #4299e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .citation-link:hover {
+            color: #3182ce;
+        }
+        
+        /* Mermaid diagram styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+@media (max-width: 1024px) {
+    .toc-fixed {
+        display: none;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    
+    /* Responsive mermaid controls */
+    .mermaid-control-btn:not(.reset-zoom) {
+        display: none;
+    }
+    .mermaid-controls {
+        top: auto;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 2rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    .key-metrics {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .hero-metric-value {
+        font-size: 1.8rem;
+    }
+    .hero-metric-label {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 390px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .hero-content {
+        padding: 1.5rem;
+    }
+}
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-surface font-sans text-secondary">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="text-white">
+        <h3 class="font-serif text-xl font-semibold mb-6 text-accent">Contents</h3>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="#hero" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">Overview</a>
+          </li>
+          <li>
+            <a href="#scalability" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">1. Scalability &amp; Performance</a>
+          </li>
+          <li>
+            <a href="#interoperability" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">2. Interoperability</a>
+          </li>
+          <li>
+            <a href="#regulatory" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">3. Regulatory Uncertainty</a>
+          </li>
+          <li>
+            <a href="#security" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">4. Security Vulnerabilities</a>
+          </li>
+          <li>
+            <a href="#environmental" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">5. Environmental Impact</a>
+          </li>
+          <li>
+            <a href="#adoption" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">6. Enterprise Adoption</a>
+          </li>
+          <li>
+            <a href="#analytics" class="block py-2 px-3 rounded hover:bg-white/10 transition-colors">7. Data Analytics</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="https://kimi-web-img.moonshot.cn/img/imageio.forbes.com/fd5b08cab04498670a0657fac1606ec3ee0dbf91.jpg" alt="Abstract blockchain nodes network background" class="w-full h-full object-cover opacity-20" size="wallpaper" aspect="wide" style="photo" query="abstract blockchain network" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+          <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-8 text-center">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <h1 class="font-serif text-4xl sm:text-5xl lg:text-7xl font-semibold text-white mb-6 leading-tight">
+                <em class="text-accent">Decision-Critical</em>
+                <br/>
+                Problem Statements
+              </h1>
+              <p class="text-lg sm:text-xl lg:text-2xl text-gray-200 font-light leading-relaxed mb-8">
+                An analytical exploration of the seven fundamental challenges shaping the blockchain industry&#39;s future from 2024-2025
+              </p>
+            </div>
+
+            <div class="lg:col-span-4">
+              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                <h3 class="text-white font-semibold mb-4">Key Metrics</h3>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <span class="text-gray-200">Problem Domains</span>
+                    <span class="text-white font-bold text-lg">7</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-gray-200">Timeframe</span>
+                    <span class="text-white font-bold text-lg">2024-2025</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-gray-200">Impact Scope</span>
+                    <span class="text-white font-bold text-lg">Global</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-gray-200">Investment Target</span>
+                    <span class="text-white font-bold text-lg">$1.3B+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scalability Section -->
+      <section id="scalability" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Scalability &amp; Performance Bottlenecks</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              The fundamental limitation of transaction throughput creates a critical bottleneck that restricts mainstream adoption and economic viability of decentralized applications.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Transaction Throughput Crisis</h3>
+              <p class="text-muted mb-4">
+                Major networks like Ethereum process only <strong class="text-secondary">15 transactions per second (TPS)</strong>, creating severe congestion during peak demand periods.
+                <a href="https://www.aiu.edu/innovative/blockchain-technology-in-2024/" class="citation-link">[34]</a>
+              </p>
+              <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+                <p class="text-sm text-red-700">
+                  <strong>Impact:</strong> Network congestion leads to transaction delays and poor user experience, limiting adoption for real-time applications.
+                </p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Escalating Transaction Fees</h3>
+              <p class="text-muted mb-4">
+                Gas fees on Ethereum have spiked to <strong class="text-secondary">hundreds of dollars</strong> during high activity periods, pricing out smaller transactions and users.
+                <a href="https://www.aiu.edu/innovative/blockchain-technology-in-2024/" class="citation-link">[34]</a>
+              </p>
+              <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
+                <p class="text-sm text-orange-700">
+                  <strong>Economic Barrier:</strong> High fees make micro-transactions and DeFi applications economically unviable for many users.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-primary/5 rounded-lg p-8">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Current Solutions &amp; Limitations</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Layer 2 Solutions</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• Rollups (Optimism, Arbitrum) achieving thousands of TPS</li>
+                  <li>• Polygon zkEVM offering transaction costs as low as $0.01</li>
+                  <li>• Lightning Network enabling fast, cheap Bitcoin payments</li>
+                </ul>
+                <a href="https://www.aiu.edu/innovative/blockchain-technology-in-2024/" class="citation-link text-sm">[34]</a>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Implementation Challenges</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• Complex user experience for bridging assets</li>
+                  <li>• Security guarantees differ from main chain</li>
+                  <li>• Ecosystem fragmentation across multiple L2s</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interoperability Section -->
+      <section id="interoperability" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Interoperability &amp; Ecosystem Fragmentation</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              The fragmented landscape of siloed blockchain networks creates fundamental barriers to asset transfer and cross-chain application development.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Cross-Chain Communication</h3>
+              <p class="text-sm text-muted mb-4">
+                Hundreds of independent networks operate in isolation, preventing seamless asset transfers and data sharing between chains.
+                <a href="https://www.universal-tech-expo.com/understanding-blockchain-technology-in-2024/" class="citation-link">[30]</a>
+              </p>
+              <div class="bg-blue-50 p-3 rounded">
+                <p class="text-xs text-blue-700">Goal: Enable free flow of assets between major networks within minutes and minimal fees.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Bridge Security Risks</h3>
+              <p class="text-sm text-muted mb-4">
+                Cross-chain bridges have suffered numerous high-profile exploits, with complex smart contract vulnerabilities leading to billions in losses.
+                <a href="https://info.polymath.network/blog/blockchain-industry-predictions-and-turnouts-reflections-in-2024" class="citation-link">[42]</a>
+              </p>
+              <div class="bg-red-50 p-3 rounded">
+                <p class="text-xs text-red-700">Risk: Large attack surface creates systemic vulnerabilities across interconnected networks.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Protocol Incompatibility</h3>
+              <p class="text-sm text-muted mb-4">
+                Different programming languages (Solidity vs Rust) and token standards (ERC-20 vs BEP-20) force developers to rewrite applications for each platform.
+                <a href="https://www.universal-tech-expo.com/understanding-blockchain-technology-in-2024/" class="citation-link">[21]</a>
+              </p>
+              <div class="bg-yellow-50 p-3 rounded">
+                <p class="text-xs text-yellow-700">Fragmentation: Duplicated development efforts and fragmented developer communities.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Interoperability Solutions Landscape</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid" id="interoperability-diagram">
+                graph TD
+                A[&#34;Siloed Blockchains&#34;] --&gt; B[&#34;Cross-Chain Protocols&#34;]
+                A --&gt; C[&#34;Decentralized Bridges&#34;]
+                A --&gt; D[&#34;Interoperability Standards&#34;]
+
+                B --&gt; E[&#34;Polkadot&#34;]
+                B --&gt; F[&#34;Cosmos&#34;]
+                C --&gt; G[&#34;LayerZero&#34;]
+                C --&gt; H[&#34;Wormhole&#34;]
+                D --&gt; I[&#34;ERC-20 Standard&#34;]
+                D --&gt; J[&#34;IBC Protocol&#34;]
+
+                E --&gt; K[&#34;Connected Ecosystem&#34;]
+                F --&gt; K
+                G --&gt; K
+                H --&gt; K
+                I --&gt; K
+                J --&gt; K
+
+                style A fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#1a365d
+                style K fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#1a365d
+                style B fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style C fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style D fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style E fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style F fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style G fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style H fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style I fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style J fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Regulatory Section -->
+      <section id="regulatory" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Regulatory Uncertainty &amp; Compliance</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              Fragmented global regulatory frameworks and ambiguous asset classification create substantial compliance risks and stifle innovation across jurisdictions.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Global Regulatory Fragmentation</h3>
+              <p class="text-muted mb-4">
+                Countries like Singapore and UAE embrace pro-innovation policies while others implement strict crackdowns, creating an unpredictable operating environment.
+                <a href="https://www.linkedin.com/pulse/blockchain-2024-year-review-milestones-challenges-whats-singh-p8jwf" class="citation-link">[29]</a>
+                <a href="https://info.polymath.network/blog/blockchain-industry-predictions-and-turnouts-reflections-in-2024" class="citation-link">[42]</a>
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <span class="text-sm text-muted">Supportive: Singapore, UAE, Switzerland</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                  <span class="text-sm text-muted">Restrictive: China, India, US (ambiguous)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Asset Classification Confusion</h3>
+              <p class="text-muted mb-4">
+                Digital assets face inconsistent classification as commodities, securities, or unique asset classes across different jurisdictions, creating legal uncertainty.
+                <a href="https://info.polymath.network/blog/blockchain-industry-predictions-and-turnouts-reflections-in-2024" class="citation-link">[42]</a>
+              </p>
+              <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <p class="text-sm text-yellow-700">
+                  <strong>Compliance Risk:</strong> Businesses struggle to determine applicable regulations and face potential legal disputes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-primary/5 rounded-lg p-8">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Regulatory Progress &amp; Challenges</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Positive Developments</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• EU&#39;s Markets in Crypto-Assets (MiCA) regulation providing comprehensive framework</li>
+                  <li>• FATF developing global standards for virtual asset regulation</li>
+                  <li>• Switzerland and Singapore establishing crypto-friendly regulations</li>
+                </ul>
+                <a href="https://info.polymath.network/blog/blockchain-industry-predictions-and-turnouts-reflections-in-2024" class="citation-link text-sm">[42]</a>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Ongoing Challenges</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• US regulatory clarity still emerging with conflicting agency stances</li>
+                  <li>• Cross-border compliance complexity for global operations</li>
+                  <li>• Tax treatment ambiguity for DeFi yields and staking rewards</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Security Section -->
+      <section id="security" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Security Vulnerabilities &amp; Exploits</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              Persistent security vulnerabilities in smart contracts and cross-chain bridges, combined with increasing fraud incidents, undermine trust and threaten ecosystem stability.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Smart Contract Bugs</h3>
+              <p class="text-sm text-muted mb-4">
+                Complex smart contracts are prone to critical bugs including reentrancy attacks, integer overflows, and access control issues that can lead to millions in losses.
+              </p>
+              <div class="bg-red-50 p-3 rounded">
+                <p class="text-xs text-red-700">Immutable Nature: Once deployed, bugs cannot be easily fixed, requiring rigorous pre-deployment auditing.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">51% Attack Risk</h3>
+              <p class="text-sm text-muted mb-4">
+                Proof-of-Work networks face vulnerability where attackers controlling majority mining power can reverse transactions and double-spend funds.
+              </p>
+              <div class="bg-orange-50 p-3 rounded">
+                <p class="text-xs text-orange-700">Smaller Networks: More vulnerable to attacks while large networks like Bitcoin remain relatively secure.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Fraudulent Schemes</h3>
+              <p class="text-sm text-muted mb-4">
+                Over $1.3 billion in virtual assets stolen in H1 2024 alone, with phishing, rug pulls, and investment scams targeting unsuspecting users.
+                <a href="https://www.dlapiper.com/insights/publications/blockchain-and-digital-assets-news-and-trends/2024/blockchain-and-digital-assets-news-and-trends-july-2024" class="citation-link">[45]</a>
+              </p>
+              <div class="bg-purple-50 p-3 rounded">
+                <p class="text-xs text-purple-700">Growing Sophistication: Criminals developing more complex schemes as industry matures.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Security Mitigation Strategies</h3>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid" id="security-mitigation">
+                graph LR
+                A[&#34;Security Threats&#34;] --&gt; B[&#34;Prevention Measures&#34;]
+                A --&gt; C[&#34;Detection Systems&#34;]
+                A --&gt; D[&#34;Response Protocols&#34;]
+
+                B --&gt; E[&#34;Formal Verification&#34;]
+                B --&gt; F[&#34;Security Audits&#34;]
+                B --&gt; G[&#34;Bug Bounty Programs&#34;]
+
+                C --&gt; H[&#34;Monitoring Tools&#34;]
+                C --&gt; I[&#34;Anomaly Detection&#34;]
+                C --&gt; J[&#34;Risk Assessment&#34;]
+
+                D --&gt; K[&#34;Emergency Upgrades&#34;]
+                D --&gt; L[&#34;Insurance Coverage&#34;]
+                D --&gt; M[&#34;Incident Response&#34;]
+
+                E --&gt; N[&#34;Enhanced Security&#34;]
+                F --&gt; N
+                G --&gt; N
+                H --&gt; O[&#34;Early Detection&#34;]
+                I --&gt; O
+                J --&gt; O
+                K --&gt; P[&#34;Rapid Recovery&#34;]
+                L --&gt; P
+                M --&gt; P
+
+                style A fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#1a365d
+                style N fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#1a365d
+                style O fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1a365d
+                style P fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#1a365d
+                style B fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style C fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style D fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#1a365d
+                style E fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style F fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style G fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style H fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style I fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style J fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style K fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style L fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+                style M fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1a365d
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Environmental Section -->
+      <section id="environmental" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Environmental Impact &amp; Sustainability</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              High energy consumption of Proof-of-Work consensus mechanisms creates significant environmental concerns and corporate adoption hesitancy.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">PoW Energy Consumption</h3>
+              <p class="text-muted mb-4">
+                Bitcoin network energy consumption comparable to entire countries, drawing environmental criticism and regulatory scrutiny.
+              </p>
+              <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                <p class="text-sm text-green-700">
+                  <strong>Success Story:</strong> Ethereum&#39;s transition to Proof-of-Stake reduced energy consumption by over 99%.
+                  <a href="https://info.polymath.network/blog/blockchain-industry-predictions-and-turnouts-reflections-in-2024" class="citation-link">[42]</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Corporate ESG Concerns</h3>
+              <p class="text-muted mb-4">
+                Environmental, social, and governance concerns create significant barriers to enterprise adoption, with companies fearing reputational damage.
+                <a href="https://www.rapidinnovation.io/post/predictions-for-blockchain-industry" class="citation-link">[24]</a>
+              </p>
+              <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                <p class="text-sm text-blue-700">
+                  <strong>Adoption Barrier:</strong> Companies hesitant to integrate technology perceived as environmentally harmful.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-primary/5 rounded-lg p-8">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Sustainability Solutions Timeline</h3>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary">2022: Ethereum PoS Transition</h4>
+                  <p class="text-sm text-muted">Successful transition reduced energy consumption by 99%, setting precedent for other networks.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                  <i class="fas fa-clock text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary">2024-2027: Renewable Energy Adoption</h4>
+                  <p class="text-sm text-muted">Increased mining operations powered by renewable sources and carbon offset initiatives.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                  <i class="fas fa-target text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-secondary">2025-2030: Alternative Consensus Mechanisms</h4>
+                  <p class="text-sm text-muted">Development and adoption of Proof-of-Space, Proof-of-Time, and other energy-efficient consensus mechanisms.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Enterprise Adoption Section -->
+      <section id="adoption" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Barriers to Enterprise &amp; Mainstream Adoption</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              High implementation costs, talent shortages, and integration challenges create significant barriers preventing widespread enterprise adoption of blockchain technology.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Implementation Costs</h3>
+              <p class="text-sm text-muted mb-4">
+                High initial investment for specialized developers, hardware, software, and integration with existing systems creates barriers for SMEs.
+              </p>
+              <div class="bg-orange-50 p-3 rounded">
+                <p class="text-xs text-orange-700">ROI Uncertainty: Difficult to justify investment when potential returns are unclear.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Talent Shortage</h3>
+              <p class="text-sm text-muted mb-4">
+                Severe shortage of skilled blockchain developers, security auditors, and legal professionals creates competitive job market and slows innovation.
+              </p>
+              <div class="bg-red-50 p-3 rounded">
+                <p class="text-xs text-red-700">Bottleneck: Limited talent pool restricts project development and enterprise adoption.</p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="font-serif text-lg font-semibold text-primary mb-3">Legacy Integration</h3>
+              <p class="text-sm text-muted mb-4">
+                Complex integration with existing IT infrastructure creates technical challenges, high costs, and operational risks for businesses.
+              </p>
+              <div class="bg-blue-50 p-3 rounded">
+                <p class="text-xs text-blue-700">Technical Debt: Old, monolithic systems difficult to interface with modern blockchain technology.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Adoption Acceleration Strategies</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Technology Solutions</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• Blockchain-as-a-Service (BaaS) platforms reducing implementation complexity</li>
+                  <li>• Low-code/no-code platforms enabling non-technical users</li>
+                  <li>• Middleware solutions for legacy system integration</li>
+                  <li>• Pre-built industry-specific solutions</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-3">Education &amp; Training</h4>
+                <ul class="space-y-2 text-muted">
+                  <li>• University blockchain programs and courses</li>
+                  <li>• Online learning platforms and bootcamps</li>
+                  <li>• Professional certification programs</li>
+                  <li>• Industry mentorship and apprenticeship programs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analytics" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="mb-16">
+            <h2 class="font-serif text-4xl font-semibold text-primary mb-6">Data Analytics &amp; Accuracy Challenges</h2>
+            <p class="text-lg text-muted leading-relaxed max-w-4xl">
+              Difficulty in processing and analyzing massive blockchain datasets creates challenges for businesses and researchers seeking to derive actionable insights.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Data Volume Challenge</h3>
+              <p class="text-muted mb-4">
+                Ethereum blockchain exceeds <strong class="text-secondary">21 TB</strong> with Solana&#39;s ledger surpassing <strong class="text-secondary">150 TB</strong>, creating massive processing and storage requirements.
+                <a href="https://arxiv.org/html/2503.09165v1" class="citation-link">[27]</a>
+              </p>
+              <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+                <p class="text-sm text-red-700">
+                  <strong>Storage Barrier:</strong> High entry barrier for running full nodes, potentially compromising network decentralization.
+                </p>
+              </div>
+            </div>
+
+            <div class="problem-card bg-gray-50 rounded-lg p-8">
+              <h3 class="font-serif text-xl font-semibold text-primary mb-4">Analysis Complexity</h3>
+              <p class="text-muted mb-4">
+                Heterogeneous and unstructured blockchain data difficult to process with traditional analytics tools, requiring specialized platforms and expertise.
+                <a href="https://arxiv.org/html/2503.09165v1" class="citation-link">[27]</a>
+              </p>
+              <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
+                <p class="text-sm text-orange-700">
+                  <strong>Tool Gap:</strong> Traditional relational databases poorly suited for blockchain data characteristics.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-primary/5 rounded-lg p-8">
+            <h3 class="font-serif text-2xl font-semibold text-primary mb-6">Analytics Solution Landscape</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-lg p-6">
+                <h4 class="font-semibold text-secondary mb-3">Specialized Platforms</h4>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Dune Analytics</li>
+                  <li>• Nansen</li>
+                  <li>• Glassnode</li>
+                  <li>• Chainalysis</li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-lg p-6">
+                <h4 class="font-semibold text-secondary mb-3">Big Data Technologies</h4>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Hadoop</li>
+                  <li>• Spark</li>
+                  <li>• OLAP Databases</li>
+                  <li>• Distributed Query Engines</li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-lg p-6">
+                <h4 class="font-semibold text-secondary mb-3">Data Management</h4>
+                <ul class="space-y-2 text-sm text-muted">
+                  <li>• Light Clients</li>
+                  <li>• Pruning Techniques</li>
+                  <li>• Efficient Storage Formats</li>
+                  <li>• Data Indexing Services</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-primary text-white py-12">
+        <div class="max-w-6xl mx-auto px-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-serif text-2xl font-semibold mb-4">Key Takeaways</h3>
+              <ul class="space-y-2 text-gray-200">
+                <li>• Seven critical problem domains spanning technical, regulatory, and adoption challenges</li>
+                <li>• Multi-year timelines required for comprehensive solutions across all areas</li>
+                <li>• Coordinated efforts needed from industry, regulators, and academia</li>
+                <li>• Significant investment opportunities in solution development</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl font-semibold mb-4">Research Sources</h3>
+              <div class="space-y-2 text-sm text-gray-300">
+                <p>Comprehensive analysis based on industry reports, academic research, and regulatory documentation from 2024-2025.</p>
+                <p class="mt-4">All data sources and citations are linked throughout the document for verification and further reading.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-white/20 mt-8 pt-8 text-center text-gray-400">
+            <p>© 2025 Blockchain Industry Analysis. Decision-critical problem statements for strategic planning.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#f7fafc',
+                primaryTextColor: '#1a365d',
+                primaryBorderColor: '#4299e1',
+                lineColor: '#4299e1',
+                secondaryColor: '#e2e8f0',
+                tertiaryColor: '#f7fafc',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondBkg: '#f7fafc',
+                tertiaryBkg: '#e2e8f0'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20
+            },
+            fontFamily: 'Inter, sans-serif'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize the controls after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMermaidControls();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active TOC item on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-fixed a[href^="#"]');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('bg-white/20');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('bg-white/20');
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
