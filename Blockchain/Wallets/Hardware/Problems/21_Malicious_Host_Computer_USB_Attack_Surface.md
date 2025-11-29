@@ -1,0 +1,69 @@
+# Malicious Host Computer USB Attack Surface
+
+**Last Updated**: 2025-11-29  
+**Status**: Draft  
+**Owner**: Security Team
+
+## Problem Statement
+
+1. **[CRITICAL]** Q: Hardware wallet users face significant security risks when connecting devices to compromised host computers via USB, exposing them to clipboard hijacking malware, BadUSB attacks, and firmware compromise methods like Dark Skippy that can extract seed phrases and redirect transactions. Formulate a structured problem statement using the following [Input] fields.
+   
+   A:
+   - **Brief description of the problem to be analyzed**: 
+     Hardware wallets connected to malicious host computers face multiple attack vectors: clipboard hijacking (replacing wallet addresses), USB-based firmware compromise (Dark Skippy can extract seed phrases from signed transactions), and HID injection attacks. With $1.93B lost to crypto crimes in H1 2025 and phishing attacks up 40%, the hardware-software trust boundary represents a critical vulnerability requiring enhanced protection mechanisms by Q2 2025 to secure the $582.98M hardware wallet market.
+   
+   - **Background and current situation**: 
+     Hardware wallets rely on USB connections to host computers for transaction broadcasting and software wallet integration [Web: Kaspersky]. Clipboard hijacking malware monitors and replaces cryptocurrency addresses copied by users, with 2.3M+ crypto addresses at risk [Web: CIO Bulletin]. Dark Skippy attack (disclosed 2024) enables malicious firmware to embed seed phrase fragments into transaction signatures, allowing reconstruction after a few signed transactions [Web: Merkle Science, 2024]. BadUSB attacks can modify USB device firmware to inject malicious commands [Web: scitepress.org, 2023]. H1 2025 saw $1.93B in crypto crime losses, exceeding all of 2024 [Web: Kroll, 2025]. Current protection: hardware wallet displays for address verification, but users often skip verification or trust compromised host displays. Attack complexity: clipboard hijacking requires basic malware; Dark Skippy requires firmware compromise (supply chain or social engineering); BadUSB requires USB controller access.
+   
+   - **Goals and success criteria**: 
+     Malicious host detection: 0% → 70% (min) / 85% (target) / 95% (ideal) of attacks detected before transaction signing by Q2 2025; Address verification enforcement: current <30% user compliance → 80% (min) / 95% (target) forced verification via UX design; Clipboard hijacking prevention: 0% → 90% (min) / 98% (target) transactions protected via in-wallet address comparison; Firmware authenticity verification: 0% → 95% (min) / 99.9% (target) users running verified firmware by Q3 2025; User awareness: <20% aware of USB risks → 70% (min) / 85% (target) educated via in-app warnings by Q2 2025; Incident reduction: baseline TBD → 60% (min) / 80% (target) reduction in USB-related compromises by Q4 2025.
+   
+   - **Key constraints and resources**: 
+     Timeline: Q1-Q2 2025 (6mo) for firmware and software updates; Budget: $300K-$800K for security research, firmware development, and user education; Team: 3-5 firmware security engineers + 2 software developers + 1 UX designer + 1 security researcher + 1 PM; Tech: USB protocol constraints (can't prevent host-side malware), limited device processing power for anomaly detection, secure display for address verification (existing); UX challenge: balance security warnings vs user friction (over-warning fatigue); Coordination: requires wallet software providers (MetaMask, Ledger Live, Trezor Suite) to implement enhanced verification flows; User behavior: 70%+ users skip address verification currently, need forced verification UX.
+   
+   - **Stakeholders and roles**: 
+     Hardware Wallet Users (est. 5M-10M globally, need protection from clipboard hijacking, clear visual warnings for USB risks, <5sec verification time to maintain usability), Hardware Manufacturers (Ledger, Trezor, Tangem, others, need firmware attestation, device-side address comparison, maintain <$150 device cost), Software Wallet Providers (MetaMask, Ledger Live, need integration with hardware wallet security features, API for address verification handshake), Security Researchers (need responsible disclosure channels, bounty programs $5K-$50K for USB attack vectors), Crypto Exchanges (integration partners, need assurance customer funds protected, support for enhanced verification protocols), Malware Defense Vendors (antivirus companies, need hardware wallet protection modules, clipboard monitoring detection).
+   
+   - **Time scale and impact scope**: 
+     Timeline: Q1-Q2 2025 (6mo) for initial protections, Q3-Q4 2025 for full ecosystem adoption; Affected systems: all USB-connected hardware wallets (Ledger Nano S/X/S Plus, Trezor Model One/T/Safe, Tangem, others); Global scope: 5M-10M hardware wallet users worldwide; Threat landscape: $1.93B lost in H1 2025 to crypto crimes, 40% increase in phishing attacks [Web: Kroll, 2025]; 2.3M+ cryptocurrency addresses at risk from clipboard hijacking [Web: CIO Bulletin]; Dark Skippy affects all hardware wallet models if firmware compromised [Web: Cointelegraph, 2024]; Attack complexity: clipboard hijacking (low), firmware compromise (medium-high), BadUSB (high).
+   
+   - **Historical attempts and existing solutions (if any)**: 
+     Current mitigations: (1) Hardware wallet displays for address verification - low user compliance <30% due to UX friction [inferred from security research best practices]; (2) Firmware signing and secure boot - protects against unsigned firmware but vulnerable to social engineering and supply chain attacks; (3) Device-side transaction parsing - prevents blind signing but can't detect clipboard hijacking on host side; (4) Air-gapped wallets (Coldcard, Keystone) - eliminates USB connection but reduces convenience (see Problem #15 Air-Gapped Transaction Signing UX Complexity). Dark Skippy disclosure (2024) highlighted firmware compromise risk, no comprehensive defense yet deployed [Web: Dark Skippy Disclosure, 2024]. BitBox02 implements forced address verification on device screen [Web: BitBox.swiss] but not universally adopted. Ledger Secure Screen technology [Web: Ledger Academy] provides tamper-proof display but requires active user verification. Industry lacks standardized protocol for hardware-software trust verification and clipboard comparison.
+   
+   - **Known facts, assumptions, and uncertainties**: 
+     - **Facts**: $1.93B lost to crypto crimes in H1 2025, exceeding 2024 total [Web: Kroll, 2025]; 40% increase in phishing attacks targeting crypto users [Web: Kroll, 2025]; 2.3M+ cryptocurrency addresses at risk from clipboard hijacking [Web: CIO Bulletin]; Dark Skippy attack can extract seed phrases from signed transactions via malicious firmware [Web: Merkle Science, 2024; Cointelegraph, 2024]; Dark Skippy affects all hardware wallet models if firmware compromised [Web: Cointelegraph, 2024]; BadUSB attacks can modify USB firmware to inject malicious commands [Web: scitepress.org, 2023]; Clipboard hijacking largest single theft $55.48M in 2025 [Web: Hackernoon, 2025]; Hardware wallet market $582.98M in 2025 [Web: CoinLaw, 2025]
+     - **Assumptions**: Est. 5M-10M hardware wallet users globally (inferred from $582.98M market ÷ avg device price $100-$150 + installed base over 5-10 years); User address verification compliance <30% (based on security research indicating most users skip verification steps due to inconvenience); Development cost $300K-$800K for firmware security enhancements (based on embedded security development costs + security audit fees); User education via in-app warnings can improve awareness from <20% to 70-85% (based on fintech security education campaign effectiveness); Incident reduction 60-80% achievable with combined firmware attestation + forced verification + clipboard comparison (extrapolated from phishing prevention success rates with multi-factor authentication)
+     - **Uncertainties**: Exact number of hardware wallet users unknown (manufacturers don't disclose); True incident rate of USB-based attacks unclear (many unreported); User compliance rate for address verification not publicly measured; Effectiveness of malicious host detection algorithms on resource-constrained hardware wallet MCUs TBD (requires research and testing); User tolerance for additional verification friction unknown (may lead to abandonment if >10sec added to transaction flow); Clipboard hijacking prevalence on different OS platforms (Windows, macOS, Linux, mobile) varies but not quantified; Attack sophistication evolution unpredictable (malware may adapt to bypass detection); Regulatory requirements for hardware wallet security standards emerging but unclear (may mandate certain protections by 2026-2027)
+
+---
+
+## Glossary
+
+- **BadUSB**: USB attack where malicious firmware is installed on a USB device's controller chip, allowing it to masquerade as a keyboard or other HID device to inject commands into the host computer without user knowledge.
+- **Clipboard Hijacking**: Malware attack that monitors the system clipboard for cryptocurrency addresses and replaces them with attacker-controlled addresses, causing users to send funds to wrong recipients.
+- **Dark Skippy**: Malicious firmware attack disclosed in 2024 that embeds fragments of a hardware wallet's seed phrase into transaction signature nonces, allowing attackers to reconstruct the full seed phrase after capturing a few signed transactions using algorithms like Pollard's Kangaroo.
+- **Firmware Attestation**: Cryptographic verification process ensuring the firmware running on a device matches the official version signed by the manufacturer, preventing execution of compromised or malicious firmware.
+- **HID Injection (Human Interface Device Injection)**: Attack technique where a malicious USB device emulates a keyboard or mouse to inject commands into the host computer, bypassing software security controls.
+- **Pollard's Kangaroo**: Cryptographic algorithm used to solve the discrete logarithm problem, employed in Dark Skippy attack to reconstruct seed phrases from transaction signature nonces.
+- **Seed Phrase (Recovery Phrase)**: 12-24 word mnemonic that encodes the master private key for cryptocurrency wallets; anyone with access to the seed phrase can recover all funds, making it the most critical secret to protect.
+- **Secure Boot**: Security mechanism that ensures only cryptographically signed firmware can execute on a device, preventing unauthorized code from running and protecting against firmware tampering.
+- **Secure Display/Screen**: Tamper-proof display component in hardware wallets connected directly to secure element, bypassing host computer to show transaction details, ensuring what user sees cannot be manipulated by compromised host software.
+- **Trust Boundary**: Interface between trusted (hardware wallet) and untrusted (host computer) components in a security architecture; the USB connection represents the primary trust boundary where attacks can occur.
+
+---
+
+## Reference
+
+### Web Sources
+- [Web: Kroll, 2025] - 2025 Cyber Threat Landscape Report: $1.93B crypto crime losses in H1 2025, 40% increase in phishing attacks targeting cryptocurrency users (https://www.kroll.com/en/reports/cyber/threat-intelligence-reports/threat-landscape-report-lens-on-crypto)
+- [Web: CIO Bulletin] - Cryptocurrency clipboard hijacking malware: 2.3 million cryptocurrency addresses at risk from clipboard injector attacks (https://ciobulletin.com/cyber-security/cyptowallets-dangerous-clipboard)
+- [Web: Merkle Science, 2024] - Dark Skippy attack analysis: malicious firmware embedding seed phrase fragments in transaction signatures for extraction via Pollard's Kangaroo algorithm (https://www.merklescience.com/blog/dark-skippy-a-new-threat-to-hardware-wallets)
+- [Web: Cointelegraph, 2024] - Dark Skippy method can steal Bitcoin hardware wallet keys: affects all hardware wallet models if users download malicious firmware (https://cointelegraph.com/news/dark-skippy-method-can-steal-bitcoin-hardware-wallet-keys)
+- [Web: Dark Skippy Disclosure, 2024] - Official disclosure of powerful key exfiltration method for hardware wallets via transaction signature manipulation (https://darkskippy.com)
+- [Web: Hackernoon, 2025] - 2025 crypto-stealing malware trends: clipboard hijackers with largest single theft $55.48 million in H1 2025 (https://hackernoon.com/2025-has-already-brought-a-host-of-new-crypto-stealing-malwaresheres-5-to-watch-out-for)
+- [Web: OSL-Hong Kong] - How clipboard hijacking malware steals crypto: wallet address replacement attack methodology and protection strategies (https://www.osl.com/hk-en/academy/article/how-clipboard-hijacking-malware-can-steal-your-crypto)
+- [Web: scitepress.org, 2023] - Bypassing security layers using malicious USB HID: BadUSB attack where host performs malicious firmware update on USB device controller (https://www.scitepress.org/Papers/2023/116771/116771.pdf)
+- [Web: Kaspersky] - Hardware wallet security overview: USB connections and host computer trust boundary attack surface (https://www.kaspersky.com/resource-center/definitions/what-is-a-hardware-wallet)
+- [Web: BitBox.swiss] - Hardware wallet display requirements: forced address verification on device screen to prevent host compromise attacks (https://blog.bitbox.swiss/en/heres-why-a-hardware-wallet-absolutely-needs-a-display)
+- [Web: Ledger Academy] - Ledger Secure Screen technology: tamper-proof display security model ensuring transaction details cannot be spoofed by compromised host (https://www.ledger.com/academy/topics/ledgersolutions/ledger-wallets-secure-screen-security-model)
+- [Web: CoinLaw, 2025] - Hardware wallet market statistics: $582.98M in 2025 with growing user base (https://coinlaw.io/hardware-wallet-market-statistics)
