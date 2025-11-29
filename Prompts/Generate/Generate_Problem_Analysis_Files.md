@@ -10,8 +10,11 @@ Generate problem analysis files for each problem file in `{ProblemDir}`, followi
 
 ## Input Parameters
 
-- **{ProblemDir}**: Source directory containing problem files to analyze
+- **{ProblemDir}**: Source directory containing problem files to analyze (used in directory mode)
 - **{AnalysisDir}**: Target directory for generated analysis files
+- **{ProblemFile}** (optional): Specific `.md` problem file to analyze  
+  - If provided, analyze only this file and skip scanning `{ProblemDir}` for other problems  
+  - Can be an absolute path or a path relative to `{ProblemDir}`
 - **{SupplementarySources}** (optional): Additional reference materials including:
   - Local file paths or directory paths
   - Pasted text content
@@ -34,18 +37,25 @@ Generate problem analysis files for each problem file in `{ProblemDir}`, followi
 ## Steps
 
 1. **Read the analysis framework**: Load `/home/zealy/nas/github/ljg-cqu/knowledge/Prompts/Problem/Analyse.md` to understand the nine-aspects analysis structure, guidelines, and output requirements
-2. **Scan problem directory**: List all `.md` files in `{ProblemDir}` to identify problems requiring analysis
-3. **Check existing analyses**: List all `.md` files in `{AnalysisDir}` to avoid duplication
-   - Compare filenames between `{ProblemDir}` and `{AnalysisDir}`
-   - Skip problems that already have corresponding analysis files (matching filename)
-4. **Review supplementary sources** (if provided):
+2. **Determine target problems**:
+   - If `{ProblemFile}` is provided:
+     - Treat `{ProblemFile}` as the only problem to analyze
+     - Do **not** scan `{ProblemDir}` for additional problem files
+   - If `{ProblemFile}` is not provided:
+     - **Scan problem directory**: List all `.md` files in `{ProblemDir}` to identify problems requiring analysis
+     - **Check existing analyses**: List all `.md` files in `{AnalysisDir}` to avoid duplication
+       - Compare filenames between `{ProblemDir}` and `{AnalysisDir}`
+       - Skip problems that already have corresponding analysis files (matching filename)
+3. **Review supplementary sources** (if provided):
    - Read local files/directories specified in `{SupplementarySources}`
    - Parse pasted text content
    - Fetch remote URLs
    - Extract domain knowledge, technical context, and relevant background
    - Note: Treat as exploratory leads ONLY, not authoritative information
-5. **For each unanalyzed problem file**:
-   - Read the problem file content from `{ProblemDir}/{FileName}.md`
+4. **For each target problem file**:
+   - Read the problem file content:
+     - In directory mode: from `{ProblemDir}/{FileName}.md`
+     - In single-file mode: from `{ProblemFile}`
    - Extract problem statement, context, constraints, stakeholders, and goals
    - Conduct web search for authoritative sources related to the problem domain:
      - Academic papers, industry reports, official documentation
@@ -58,7 +68,7 @@ Generate problem analysis files for each problem file in `{ProblemDir}`, followi
      - Add Glossary (section 11) and References (section 12)
    - Generate `{AnalysisDir}/{FileName}.md` with **identical filename** as source problem file
 
-6. **Quality verification**: Ensure each analysis file meets framework requirements:
+5. **Quality verification**: Ensure each analysis file meets framework requirements:
    - All nine aspects + context recap covered
    - ≥70% citation coverage with source quality tiers
    - Glossary with ≥10 entries
