@@ -17,24 +17,23 @@
 
 **Task**: Turn chosen options into a concrete execution or experiment plan (milestones, tasks, owners, timelines, metrics, risks).  
 
-**Goal**: Produce a realistic, trackable plan so everyone knows who does what by when, and how success will be measured.
+**Goal**: Produce a realistic, trackable plan: who does what, by when, and how success is measured.
 
 ## When to Use
 
 Use this prompt when:
 
-- You have selected problems or options (see `Decide.md`).  
-- You need an implementation or experiment plan for the next time window (e.g., sprint, month, quarter).
+- You have selected problems or options.  
+- You need an implementation or experiment plan for the next sprint/month/quarter.
 
 ---
 
 ## LLM Prompt Template
 
-> **Usage**: Copy from this line to the end of "LLM Self-Check" into the LLM.  
-> Replace every 【Input】 placeholder with specific details before submitting. Do not rely on previous chat messages for context.
+> **Usage**: Copy from this line through "LLM Self-Check" into the LLM.  
+> Replace every 【Input】 placeholder with concrete details before submitting. The message must be self-contained; do not rely on previous chat history.
 
-You are an **implementation planning and execution consultant**.  
-You turn chosen options into a feasible plan with clear milestones, tasks, metrics, risks, and review points.
+You are an **implementation planning and execution consultant**. Turn chosen options into a feasible plan with clear milestones, tasks, metrics, risks, and review points.
 
 【Input】
 
@@ -51,9 +50,8 @@ You turn chosen options into a feasible plan with clear milestones, tasks, metri
    - Preferred cadence for check-ins (e.g., weekly stand-up, monthly review).
 
 4. 【Team_and_Resources】  
-   - Available people and roles; approximate capacity if known.  
-   - Budget, tools, systems, and any external partners.  
-   - Constraints such as holidays, other commitments, or legal/compliance limits.
+   - Available people/roles and approximate capacity.  
+   - Budget, tools/systems, external partners, and key constraints (holidays, other commitments, legal/compliance).
 
 5. 【Known_Risks_and_Dependencies】 *(optional)*  
    - Major known risks and assumptions from earlier analysis.  
@@ -62,6 +60,8 @@ You turn chosen options into a feasible plan with clear milestones, tasks, metri
 ---
 
 【Your Tasks】
+
+Optimise for actionability and concision; prefer tables and bullets over long prose.
 
 1. **Clarify Scope and Goals**  
    - Restate what is in scope and explicitly out of scope.  
@@ -72,7 +72,7 @@ You turn chosen options into a feasible plan with clear milestones, tasks, metri
    - For each milestone, define outcome, target completion date, and entry/exit criteria.
 
 3. **Create a Work Breakdown**  
-   - For each milestone, list tasks with owner (role/person), short description, estimate, and dependencies.  
+   - For each milestone, list tasks with owner (role/person), short description, estimate, dependencies, and priority (Critical/Important/Optional).  
    - Highlight critical-path tasks and any blocking dependencies.
 
 4. **Plan Experiments and Validation**  
@@ -84,15 +84,15 @@ You turn chosen options into a feasible plan with clear milestones, tasks, metri
    - Define how often and by whom progress is reviewed, and how scope changes or new information update the plan.
 
 6. **Compile Risk, Dependencies, and Commitments**  
-   - Create a simple risk register: risk, probability, impact, mitigation, owner.  
+   - Create a risk register: risk, probability, impact, mitigation, owner.  
    - List key dependencies and how to manage them (owner, agreements, alignment meetings).  
-   - Summarise commitments: what will be delivered, by when, under what assumptions, and how progress and success will be recognised.
+   - Summarise commitments: what will be delivered, by when, under which assumptions, and how progress and success will be tracked.
 
 ---
 
 ## Answer Structure
 
-Organise the answer as:
+Organise the answer as (sections 1–4 are mandatory; 5–7 as needed). Keep it concise: use bullets and tables; avoid repeating information across sections.
 
 1. **Planning Context**  
    - Scope, goals, time window, major constraints and assumptions.
@@ -110,6 +110,8 @@ Organise the answer as:
    | Task ID | Task | Owner | Estimate | Dependencies | Priority (C/I/O) | Notes |
    |---------|------|-------|----------|--------------|------------------|-------|
    | …       | …    | …     | …        | …            | …                | …     |
+
+   - C/I/O = Critical / Important / Optional.
 
 4. **Experiments and Validation Plan**
 
@@ -146,6 +148,7 @@ Before finalising, quickly verify:
    - ☐ The critical path is explicit and makes sense.
 
 2. **Clarity and Precision**  
+   - ☐ The plan is self-contained and understandable without previous chat context.  
    - ☐ Every task has an owner and a short, concrete description.  
    - ☐ Metrics and objectives have baseline → target → date and clear units.
 
@@ -159,4 +162,5 @@ Before finalising, quickly verify:
 
 5. **Actionability and Priority**  
    - ☐ A team could start executing tomorrow based on this plan.  
-   - ☐ Critical vs important vs optional items are clearly distinguishable, and the plan is concise (no redundant sections).
+   - ☐ Critical vs important vs optional items are clearly distinguishable.  
+   - ☐ The plan primarily uses tables/bullets; prose is concise with no redundant sections.
