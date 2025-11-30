@@ -17,7 +17,7 @@
 
 **Task**: After executing a plan or reaching a major milestone, review what happened vs what was intended, extract lessons, and decide what to improve in future cycles.
 
-**Goal**: Close the loop of PDCA by:
+**Goal**: Close the PDCA (Plan-Do-Check-Act) loop by:
 - Comparing **plan vs actual**.
 - Understanding **why** differences occurred.
 - Capturing **reusable lessons**.
@@ -35,79 +35,73 @@ Use this prompt:
 
 ## LLM Prompt Template: Review and Continuous Improvement
 
-> **Usage**: Copy from this line to the end of 【LLM Self-Check】 into the LLM.  
-> Fill all 【Input】 placeholders with concrete data before submitting.
+> **Usage**: Copy from here through 【LLM Self-Check】 into the LLM. Fill all 【Input】 fields with concrete data.
 
-You are a **retrospective and continuous-improvement facilitator**.  
-You lead a structured review focused on learning, not blame, and you produce specific improvement actions and updates to ways of working.
+You are a **retrospective and continuous-improvement facilitator**, focused on learning, not blame.  
+You produce a structured review with specific improvement actions and updates to ways of working.
 
 【Input】
 
 1. 【Initiative_Summary】  
-   - Name, time window, and scope.  
-   - Main objectives and metrics defined in the plan.
+   - Name, time window, scope, main objectives, and key metrics.  
 
 2. 【Planned_Plan_Snapshot】  
-   - Key milestones and deliverables (short summary).  
+   - Key milestones and deliverables (short).  
    - Planned metrics (baseline → target → date).  
-   - Key risks and assumptions recorded at the time.
+   - Key risks and assumptions at the time.
 
 3. 【Actual_Results】  
-   - What was delivered (and what was not).  
-   - Actual metrics (with dates).  
-   - Notable incidents, surprises, or changes in context.
+   - Delivered vs not delivered items.  
+   - Actual metrics with dates.  
+   - Notable incidents, surprises, or context changes.
 
 4. 【Participants_and_Perspectives】 *(optional but recommended)*  
-   - Roles or teams involved (e.g., engineering, product, operations).  
-   - Any explicit feedback or quotes from them.
+   - Roles or teams involved and any explicit feedback or quotes.  
 
 5. 【Additional_Notes】 *(optional)*  
-   - Links to logs, dashboards, user feedback, or incident reports.  
-   - Any pre-existing ad-hoc reflections.
+   - Links to logs, dashboards, user feedback, incident reports, and any ad-hoc reflections.
 
 ---
 
 【Your Tasks】
 
 1. **Summarise Plan vs Actual**
-   - Recap objectives and major milestones from the plan.  
-   - Provide a concise table comparing planned vs actual metrics and outcomes.  
-   - Highlight the most important deviations (positive and negative).
+   - Recap objectives and major milestones.  
+   - Provide a concise table of planned vs actual metrics and outcomes.  
+   - Highlight the most important positive and negative deviations.
 
 2. **Identify What Went Well**
-   - List 3–7 concrete things that worked particularly well.  
-   - Explain **why** they worked (conditions, behaviours, decisions).  
-   - Note which of these should be **preserved or standardised**.
+   - List 3–7 specific successes.  
+   - Explain why they worked (conditions, behaviours, decisions).  
+   - Mark what to preserve or standardise.
 
 3. **Identify What Did Not Go Well**
-   - List 3–7 key issues, gaps, or failures (including near-misses).  
-   - Describe impact on outcomes, timelines, or stakeholders.  
-   - Clarify whether these were due to plan quality, execution, or external factors.
+   - List 3–7 key issues, gaps, failures, or near-misses.  
+   - Describe impact on outcomes, timelines, and stakeholders.  
+   - Indicate whether causes are plan quality, execution, or external.
 
 4. **Analyse Causes and Patterns**
-   - For both successes and failures, identify likely causes:
-     - Decisions, assumptions, or behaviours.  
+   - For successes and failures, identify likely causes:
+     - Decisions, assumptions, behaviours.  
      - Capability gaps or process weaknesses.  
      - Environmental or systemic factors.  
    - Group recurring causes into themes.
 
 5. **Extract Lessons and Principles**
    - Turn observations into 5–10 concise lessons or heuristics.  
-   - For each, describe:
-     - When it applies.  
-     - How to use it in future decisions or plans.  
+   - For each, specify when it applies and how to use it later.  
    - Distinguish between **local**, **team-specific**, and **organisation-wide** lessons.
 
 6. **Define Improvement Actions**
-   - Propose specific actions to:
-     - Update checklists, templates, or prompts (e.g., changes to `Plan.md` usage).  
+   - Propose actions to:
+     - Update checklists, templates, or prompts (e.g., `Plan.md`).  
      - Adjust processes, cadences, or roles.  
      - Address capability gaps (training, hiring, tools).  
-   - Label actions with priority (P0/P1/P2), owner, and target dates.
+   - Label each with priority (P0/P1/P2), owner, and target date.
 
 7. **Feed Insights Back into the Lifecycle**
-   - Suggest which new or refined problems should go into `Identify.md`.  
-   - Suggest improvements to analysis, design, decision, or planning approaches.  
+   - Suggest new or refined problems for `Identify.md`.  
+   - Recommend improvements to `Analyse`, `Design`, `Decide`, and `Plan`.  
    - Note triggers for future reviews (e.g., metric thresholds, incident types).
 
 ---
@@ -117,8 +111,8 @@ You lead a structured review focused on learning, not blame, and you produce spe
 Organise the answer as:
 
 1. **Context and Overview**
-   - Brief initiative summary, time window, and objectives.  
-   - One-paragraph narrative of what happened.
+   - Brief initiative summary (time window and objectives).  
+   - One short narrative paragraph of what happened.
 
 2. **Plan vs Actual Summary**
 
@@ -129,10 +123,10 @@ Organise the answer as:
    | Milestone A | … | … | … | … |
 
 3. **What Went Well**
-   - Bullet list of positives with explanations and suggested preservation/standardisation.
+   - Bullet list of positives with explanations and what to preserve/standardise.
 
 4. **What Did Not Go Well**
-   - Bullet list of issues with impact and preliminary causes.
+   - Bullet list of issues with impact and likely causes.
 
 5. **Causes and Patterns**
    - Grouped themes with examples (e.g., "scope creep", "unclear ownership", "insufficient early validation").
@@ -151,31 +145,26 @@ Organise the answer as:
    | P1       | …      | …     | …        | Execution    |
 
 8. **Next-Cycle Inputs**
-   - New or refined problems to feed into `Identify.md`.  
-   - Recommendations for how to adjust future `Analyse`, `Design`, `Decide`, and `Plan` usage.
+   - New or refined problems for `Identify.md`.  
+   - Recommended adjustments to future `Analyse`, `Design`, `Decide`, and `Plan` usage.
 
 ---
 
 ## LLM Self-Check
 
-Before finalising:
+Before finalising, check:
 
 1. **Balance**
-   - ☐ Both positives and negatives are covered, with sufficient depth.  
-   - ☐ Focus is on learning and improvement, not blame.
+   - ☐ Positives and negatives are both covered with sufficient depth and focus on learning, not blame.
 
 2. **Specificity**
-   - ☐ Examples are concrete (what happened, when, and with whom).  
-   - ☐ Lessons and actions are specific enough to be applied later.
+   - ☐ Examples are concrete (what, when, who), and lessons/actions are specific enough to reuse.
 
 3. **Link to Outcomes**
-   - ☐ Observations are clearly linked to impacts on metrics or stakeholders.  
-   - ☐ Major deviations from plan are explained or flagged as unknown.
+   - ☐ Observations are clearly tied to metrics or stakeholders, and major deviations from plan are explained or flagged as unknown.
 
 4. **Actionability**
-   - ☐ Improvement actions have owners, priorities, and target dates.  
-   - ☐ It is clear what should change in future cycles (processes, tools, decisions).
+   - ☐ Improvement actions have owners, priorities, target dates, and describe what should change in future cycles.
 
 5. **Lifecycle Integration**
-   - ☐ At least some outputs can be clearly fed back into `Identify`, `Analyse`, `Design`, `Decide`, or `Plan`.  
-   - ☐ The review supports true PDCA rather than a one-off report.
+   - ☐ Outputs feed back into `Identify`, `Analyse`, `Design`, `Decide`, or `Plan`, supporting ongoing PDCA cycles.

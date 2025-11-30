@@ -9,104 +9,84 @@
 
 - [Overview](#overview)
 - [When to Use](#when-to-use)
-- [LLM Prompt Template: Implementation and Experiment Planning](#llm-prompt-template-implementation-and-experiment-planning)
+- [LLM Prompt Template](#llm-prompt-template)
 - [Answer Structure](#answer-structure)
 - [LLM Self-Check](#llm-self-check)
 
 ## Overview
 
-**Task**: Turn chosen options or priorities into a concrete plan of work: milestones, tasks, owners, timelines, metrics, and risks.
+**Task**: Turn chosen options into a concrete execution or experiment plan (milestones, tasks, owners, timelines, metrics, risks).  
 
-**Goal**: Provide a plan that is **realistic**, **trackable**, and **easy to review**, so execution teams know exactly who does what by when, and how success will be measured.
+**Goal**: Produce a realistic, trackable plan so everyone knows who does what by when, and how success will be measured.
 
 ## When to Use
 
 Use this prompt when:
 
-- You have selected problems or options using `Decide.md`, and
-- You need a clear implementation or experiment plan for the next time window (e.g., sprint, month, quarter).
+- You have selected problems or options (see `Decide.md`).  
+- You need an implementation or experiment plan for the next time window (e.g., sprint, month, quarter).
 
 ---
 
-## LLM Prompt Template: Implementation and Experiment Planning
+## LLM Prompt Template
 
-> **Usage**: Copy from this line to the end of 【LLM Self-Check】 into the LLM.  
-> Fill all 【Input】 placeholders with specific details before submitting.
+> **Usage**: Copy from this line to the end of "LLM Self-Check" into the LLM.  
+> Replace every 【Input】 placeholder with specific details before submitting. Do not rely on previous chat messages for context.
 
 You are an **implementation planning and execution consultant**.  
-You take a chosen problem or option and turn it into a feasible plan with clear milestones, tasks, metrics, risks, and review points.
+You turn chosen options into a feasible plan with clear milestones, tasks, metrics, risks, and review points.
 
 【Input】
 
 1. 【Chosen_Items】  
-   - IDs and names of selected problems/options.  
-   - Short summaries and links to their analyses/decisions if available.
+   - IDs, names, and 1–2 sentence summaries of selected problems/options.  
+   - Links to their analyses/decisions, plus a short recap of key conclusions inline.
 
 2. 【Objectives_and_Metrics】  
-   - Target outcomes for this planning horizon (baseline → target → date).  
-   - Key metrics that define success.
+   - Target outcomes for this planning horizon (baseline → target → date, with units).  
+   - 3–7 key metrics that define success.
 
 3. 【Time_Horizon_and_Cadence】  
    - Planning window (e.g., 2-week sprint, 3-month project).  
    - Preferred cadence for check-ins (e.g., weekly stand-up, monthly review).
 
 4. 【Team_and_Resources】  
-   - Available people and roles.  
+   - Available people and roles; approximate capacity if known.  
    - Budget, tools, systems, and any external partners.  
-   - Constraints such as holidays, other commitments.
+   - Constraints such as holidays, other commitments, or legal/compliance limits.
 
 5. 【Known_Risks_and_Dependencies】 *(optional)*  
-   - Major known risks from earlier analysis.  
-   - Cross-team or external dependencies.  
-   - Hard deadlines (regulatory, customer, launch dates).
+   - Major known risks and assumptions from earlier analysis.  
+   - Cross-team or external dependencies and hard deadlines (regulatory, customer, launch).
 
 ---
 
 【Your Tasks】
 
-1. **Clarify Scope and Goals**
-   - Restate what is in scope and what is explicitly out of scope.  
-   - Translate objectives into 2–5 concrete, measurable goals.
+1. **Clarify Scope and Goals**  
+   - Restate what is in scope and explicitly out of scope.  
+   - Translate objectives into 2–5 measurable goals (baseline → target → date).
 
-2. **Define Milestones**
+2. **Define Milestones**  
    - Break the work into 3–7 milestones across the planning window.  
-   - For each milestone, define:
-     - Goal / outcome.  
-     - Expected completion date.  
-     - Entry and exit criteria.
+   - For each milestone, define outcome, target completion date, and entry/exit criteria.
 
-3. **Create a Work Breakdown**
-   - For each milestone, list tasks with:
-     - Owner (role or person).  
-     - Description.  
-     - Estimate (size or effort).  
-     - Dependencies and prerequisites.  
-   - Highlight tasks that are **critical path**.
+3. **Create a Work Breakdown**  
+   - For each milestone, list tasks with owner (role/person), short description, estimate, and dependencies.  
+   - Highlight critical-path tasks and any blocking dependencies.
 
-4. **Plan Experiments and Validation**
-   - Identify experiments or pilots needed to validate assumptions.  
-   - For each experiment:
-     - Hypothesis.  
-     - Metric and target.  
-     - Duration and sample size if applicable.  
-     - Decision rule (what happens if success/failure/mixed).
+4. **Plan Experiments and Validation**  
+   - Identify experiments or pilots needed to validate key assumptions or compare options.  
+   - For each experiment: hypothesis, metric and target, duration and sample size (if applicable), and decision rule (what happens on success/failure/mixed).
 
-5. **Define Monitoring and Feedback Loops**
-   - Specify what will be tracked (metrics, qualitative signals).  
-   - Define how often and by whom it will be reviewed.  
-   - Define how scope changes and new information are handled.
+5. **Define Monitoring and Feedback Loops**  
+   - Specify what will be tracked (metrics and qualitative signals) and where (dashboards/reports).  
+   - Define how often and by whom progress is reviewed, and how scope changes or new information update the plan.
 
-6. **Compile Risk and Dependency Management**
-   - Create a simple risk register:
-     - Risk, probability, impact, mitigation, owner.  
-   - List key dependencies and how to manage them (ownership, contracts, alignment meetings).
-
-7. **Summarise Commitments**
-   - Provide a concise overview:
-     - What will be delivered.  
-     - By when.  
-     - Under what assumptions.  
-     - How progress and success will be recognised.
+6. **Compile Risk, Dependencies, and Commitments**  
+   - Create a simple risk register: risk, probability, impact, mitigation, owner.  
+   - List key dependencies and how to manage them (owner, agreements, alignment meetings).  
+   - Summarise commitments: what will be delivered, by when, under what assumptions, and how progress and success will be recognised.
 
 ---
 
@@ -114,8 +94,8 @@ You take a chosen problem or option and turn it into a feasible plan with clear 
 
 Organise the answer as:
 
-1. **Planning Context**
-   - Scope, goals, time window, high-level constraints.
+1. **Planning Context**  
+   - Scope, goals, time window, major constraints and assumptions.
 
 2. **Milestones Overview**
 
@@ -124,18 +104,18 @@ Organise the answer as:
    | 1 | …         | …           | …                       |
    | 2 | …         | …           | …                       |
 
-3. **Work Breakdown by Milestone**
+3. **Work Breakdown by Milestone**  
    - For each milestone, a table:
 
-   | Task ID | Task | Owner | Estimate | Dependencies | Notes |
-   |---------|------|-------|----------|--------------|-------|
-   | …       | …    | …     | …        | …            | …     |
+   | Task ID | Task | Owner | Estimate | Dependencies | Priority (C/I/O) | Notes |
+   |---------|------|-------|----------|--------------|------------------|-------|
+   | …       | …    | …     | …        | …            | …                | …     |
 
 4. **Experiments and Validation Plan**
 
    | Experiment | Hypothesis | Metric & target | Duration | Decision rule |
-   |-----------|-----------|-----------------|----------|---------------|
-   | …         | …         | …               | …        | …             |
+   |-----------|------------|-----------------|----------|---------------|
+   | …         | …          | …               | …        | …             |
 
 5. **Risk and Dependency Register**
 
@@ -147,12 +127,11 @@ Organise the answer as:
    |-----------|-------|--------------------------|-----------------|-----------|
    | …         | …     | …                        | …               | …         |
 
-6. **Monitoring, Cadence, and Governance**
-   - Check-in cadence and participants.  
-   - Dashboards or reports to be used.  
-   - How decisions and changes will be documented.
+6. **Monitoring, Cadence, and Governance**  
+   - Check-in cadence, attendees, and where progress is tracked (dashboards, reports).  
+   - How decisions and changes will be documented and communicated.
 
-7. **Summary of Commitments**
+7. **Summary of Commitments**  
    - Bullet list of key deliverables with dates and owners.  
    - Assumptions and out-of-scope items.
 
@@ -160,24 +139,24 @@ Organise the answer as:
 
 ## LLM Self-Check
 
-Before finalising:
+Before finalising, quickly verify:
 
-1. **Feasibility**
-   - ☐ Milestones and tasks are realistic for the given time window and capacity.  
-   - ☐ Critical path is identifiable and makes sense.
+1. **Feasibility**  
+   - ☐ Milestones and tasks are realistic for the given time window and team capacity.  
+   - ☐ The critical path is explicit and makes sense.
 
-2. **Clarity**
-   - ☐ Every task has an owner and clear description.  
-   - ☐ Metrics and objectives are measurable (baseline → target → date).
+2. **Clarity and Precision**  
+   - ☐ Every task has an owner and a short, concrete description.  
+   - ☐ Metrics and objectives have baseline → target → date and clear units.
 
-3. **Risk Awareness**
-   - ☐ Major risks and dependencies are captured with owners and mitigations.  
-   - ☐ At least one risk relates to **learning/uncertainty**, not only delivery.
+3. **Risk and Dependencies**  
+   - ☐ Major risks, assumptions, and dependencies have owners and mitigations.  
+   - ☐ At least one risk relates to learning/uncertainty, not only delivery.
 
-4. **Adaptability**
-   - ☐ There is a mechanism for updating the plan when new information appears.  
-   - ☐ Experiments or checkpoints exist to test major assumptions.
+4. **Monitoring and Adaptability**  
+   - ☐ There is a clear review cadence and a place to see the metrics (dashboard/report).  
+   - ☐ Experiments or checkpoints test major assumptions and can trigger updates to the plan.
 
-5. **Actionability**
+5. **Actionability and Priority**  
    - ☐ A team could start executing tomorrow based on this plan.  
-   - ☐ Stakeholders can read and quickly understand who does what by when.
+   - ☐ Critical vs important vs optional items are clearly distinguishable, and the plan is concise (no redundant sections).
