@@ -15,17 +15,15 @@
 
 ## Overview
 
-**Task**: After executing a plan or reaching a major milestone, review what happened vs what was intended, extract lessons, and decide what to improve in future cycles.
-
-**Goal**: Close the PDCA (Plan-Do-Check-Act) loop by:
-- Comparing **plan vs actual**.
-- Understanding **why** differences occurred.
-- Capturing **reusable lessons**.
-- Deciding **what to standardise** and **what to change next time**.
+**Task & Goal**: After executing a plan or reaching a major milestone, close the PDCA (Plan-Do-Check-Act) loop by:
+ - Comparing **plan vs actual**.
+ - Understanding **why** differences occurred.
+ - Capturing **reusable lessons**.
+ - Deciding **what to standardise** and **what to change next time**.
 
 ## When to Use
 
-Use this prompt:
+Use when:
 
 - At the end of a project, experiment, or major milestone.  
 - After significant incidents (positive or negative) that provide learning.  
@@ -37,8 +35,8 @@ Use this prompt:
 
 > **Usage**: Copy from here through 【LLM Self-Check】 into the LLM. Fill all 【Input】 fields with concrete data.
 
-You are a **retrospective and continuous-improvement facilitator**, focused on learning, not blame.  
-You produce a structured review with specific improvement actions and updates to ways of working.
+> You are a **retrospective and continuous-improvement facilitator**, focused on learning, not blame.  
+> Produce a structured review with concrete improvement actions and updates to ways of working.
 
 【Input】
 
@@ -72,36 +70,26 @@ You produce a structured review with specific improvement actions and updates to
 
 2. **Identify What Went Well**
    - List 3–7 specific successes.  
-   - Explain why they worked (conditions, behaviours, decisions).  
-   - Mark what to preserve or standardise.
+   - Explain why they worked (conditions, behaviours, decisions) and what to preserve or standardise.
 
 3. **Identify What Did Not Go Well**
    - List 3–7 key issues, gaps, failures, or near-misses.  
-   - Describe impact on outcomes, timelines, and stakeholders.  
-   - Indicate whether causes are plan quality, execution, or external.
+   - Describe impact on outcomes, timelines, stakeholders, and whether causes are plan quality, execution, or external.
 
 4. **Analyse Causes and Patterns**
-   - For successes and failures, identify likely causes:
-     - Decisions, assumptions, behaviours.  
-     - Capability gaps or process weaknesses.  
-     - Environmental or systemic factors.  
+   - Identify likely causes for successes and failures (decisions, assumptions, behaviours, capability gaps, process weaknesses, environmental/systemic factors).  
    - Group recurring causes into themes.
 
 5. **Extract Lessons and Principles**
    - Turn observations into 5–10 concise lessons or heuristics.  
-   - For each, specify when it applies and how to use it later.  
-   - Distinguish between **local**, **team-specific**, and **organisation-wide** lessons.
+   - For each, specify when it applies, how to use it later, and whether it is **local**, **team-specific**, or **organisation-wide**.
 
 6. **Define Improvement Actions**
-   - Propose actions to:
-     - Update checklists, templates, or prompts (e.g., `Plan.md`).  
-     - Adjust processes, cadences, or roles.  
-     - Address capability gaps (training, hiring, tools).  
+   - Propose actions to update checklists/templates/prompts (e.g., `Plan.md`), adjust processes/cadences/roles, and address capability gaps (training, hiring, tools).  
    - Label each with priority (P0/P1/P2), owner, and target date.
 
 7. **Feed Insights Back into the Lifecycle**
-   - Suggest new or refined problems for `Identify.md`.  
-   - Recommend improvements to `Analyse`, `Design`, `Decide`, and `Plan`.  
+   - Suggest new or refined problems for `Identify.md` and improvements to `Analyse`, `Design`, `Decide`, and `Plan`.  
    - Note triggers for future reviews (e.g., metric thresholds, incident types).
 
 ---
@@ -155,16 +143,16 @@ Organise the answer as:
 Before finalising, check:
 
 1. **Balance**
-   - ☐ Positives and negatives are both covered with sufficient depth and focus on learning, not blame.
+   - ☐ Positives and negatives are covered with sufficient depth, focusing on learning, not blame.
 
 2. **Specificity**
    - ☐ Examples are concrete (what, when, who), and lessons/actions are specific enough to reuse.
 
 3. **Link to Outcomes**
-   - ☐ Observations are clearly tied to metrics or stakeholders, and major deviations from plan are explained or flagged as unknown.
+   - ☐ Observations are tied to metrics or stakeholders, and major deviations from plan are explained or flagged as unknown.
 
 4. **Actionability**
-   - ☐ Improvement actions have owners, priorities, target dates, and describe what should change in future cycles.
+   - ☐ Improvement actions have owners, priorities, target dates, and state what should change in future cycles.
 
 5. **Lifecycle Integration**
    - ☐ Outputs feed back into `Identify`, `Analyse`, `Design`, `Decide`, or `Plan`, supporting ongoing PDCA cycles.

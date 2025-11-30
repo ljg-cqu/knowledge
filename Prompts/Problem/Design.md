@@ -15,13 +15,13 @@
 
 ## Overview
 
-**Task**: Starting from a clearly defined problem (and optionally a completed nine-aspects analysis), design 2–4 coherent solution or architecture options with explicit trade-offs, metrics, and risks.
+**Task**: From a clearly defined problem (optionally with a nine-aspects analysis), design **2–4** coherent solution/architecture options with explicit trade-offs, metrics, and risks.
 
-**Goal**: Provide a small, high-quality set of options that are:
+**Goal**: Provide a small, high-quality option set that is:
 - **Feasible** under stated constraints.
-- **Distinct** in structure or strategic stance.
-- **Evaluable** via clear metrics and risk profiles.
-- **Composable** into concrete implementation plans.
+- **Clearly differentiated** in structure or strategy.
+- **Measurable** via clear metrics and risk profiles.
+- **Ready to assemble** into concrete implementation plans.
 
 ## When to Use
 
@@ -36,10 +36,9 @@ Use this prompt when **at least one** of the following is true:
 
 ## LLM Prompt Template: Solution and Architecture Design
 
-> **Usage**: Copy from this line to the end of 【LLM Self-Check】 into the LLM.  
-> Fill all 【Input】 placeholders with concrete, quantified content before running.
+> **Usage**: Copy from here to the end of 【LLM Self-Check】 into the LLM, after filling all 【Input】 placeholders with concrete, quantified content.
 
-You are a **solution and architecture design consultant**. Design **2–4 realistic, clearly differentiated options** to solve the problem, explain their structures, and clarify trade-offs so that later decision and implementation are straightforward.
+You are a **solution and architecture design consultant**. Design **2–4** realistic, clearly differentiated options, describe their structures, and clarify trade-offs to support clear decisions and implementation.
 
 【Input】
 
@@ -47,7 +46,7 @@ You are a **solution and architecture design consultant**. Design **2–4 realis
    - Short title; current state and pain points (with metrics); target state and success criteria (baseline → target → timeline).
 
 2. 【Context_and_Constraints】  
-   - Domain/environment/background; hard constraints (budget, deadlines, headcount, compliance, legacy systems); soft preferences (risk appetite, culture, strategic direction).
+   - Domain/environment; hard constraints (budget, deadlines, headcount, compliance, legacy systems); soft preferences (risk appetite, culture, strategic direction); key stakeholders and their priorities.
 
 3. 【Existing_Analysis】 *(optional but recommended)*  
    - Key insights from nine-aspects analysis (definition, origins, trends, capabilities, validation); known root causes and leverage points; key uncertainties and open questions.
@@ -110,10 +109,10 @@ Structure your answer as follows:
    - **Metrics and Experiments**: 3–5 core metrics (baseline → target → timeline); 1–3 experiments or pilots and what each is testing.
 
 5. **Trade-Off and Comparison**  
-   - Compare options across impact, cost, time, risk, reversibility, and alignment with strategy; provide a concise comparison table with brief commentary; highlight **dominant options** and **clearly dominated options**.
+   - Compare options on impact, cost, time, risk, reversibility, and strategic alignment; add a comparison table and highlight **dominant** vs **dominated** options.
 
 6. **Recommendations and Next Steps**  
-   - State the recommended shortlist (1–2 options) and rationale; list assumptions or uncertainties that could change the decision; propose next actions (what to prototype or pilot, which additional data to gather, which stakeholders to involve).
+   - State the recommended 1–2 options and rationale; list assumptions or uncertainties that could change the decision; propose concrete next actions (what to prototype or pilot, which additional data to gather, which stakeholders to involve).
 
 ---
 
@@ -131,7 +130,7 @@ Before finalising the answer, verify:
 
 3. **Trade-Offs, Risks, and Value**
    - ☐ Trade-offs are explicit (who/what wins or loses, under what conditions).  
-   - ☐ Major risks and mitigations are listed, plus at least one **baseline** (e.g., "do nothing / delay" or minimal-change) when relevant.  
+   - ☐ Major risks and mitigations are listed, plus at least one **baseline** option when relevant.  
    - ☐ Costs, benefits, reversibility, and lock-in are compared across options.
 
 4. **Metrics, Experiments, and Success Criteria**
@@ -142,5 +141,5 @@ Before finalising the answer, verify:
 5. **Actionability and Verification**
    - ☐ Recommendation is explicit (not just "it depends").  
    - ☐ Assumptions that could flip the recommendation are clearly listed.  
-   - ☐ Next steps are small enough to be achievable within the stated constraints.  
+   - ☐ Next steps are achievable within the stated constraints.  
    - ☐ Quick self-review for contradictions, missing constraints, or unjustified claims.

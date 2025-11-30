@@ -15,42 +15,41 @@
 
 ## Overview
 
-**Task**: Help choose **which problems or options to tackle first**, and document a clear decision log: what was chosen, why, under which assumptions, and what is deferred.
+**Task**: Choose **which problems or options to tackle first** and document a decision log: what was chosen, why, assumptions, and what is deferred.
 
-**Goal**: Turn a long list of possible work into a **small set of committed priorities** aligned with impact, risk, and capacity.
+**Goal**: Turn many possible items into a **short list of committed priorities** aligned with impact, risk, and capacity.
 
 ## When to Use
 
 Use this prompt when:
 
-- You have **multiple problems** extracted via `Identify.md`, or
-- You have **multiple solution options** from `Design.md` for one problem, and
-- You need a **transparent, reviewable decision** rather than ad-hoc choices.
+- Have **multiple problems** from `Identify.md`, or
+- Have **multiple solution options** from `Design.md` for one problem, and
+- Need a **transparent, reviewable prioritisation** instead of ad-hoc choices.
 
 ---
 
 ## LLM Prompt Template: Decision and Prioritisation
 
-> **Usage**: Copy from this line to the end of 【LLM Self-Check】 into the LLM. Fill all 【Input】 fields with concrete data before submitting.
+> **Usage**: Copy from here to the end of 【LLM Self-Check】 into the LLM. Fill all 【Input】 fields before sending.
 
-You are a **decision and prioritisation consultant**.  
-Your job: rank items using explicit criteria and produce a short, reviewable decision log.
+You are a **decision and prioritisation consultant**. Rank items using explicit criteria and produce a short, reviewable decision log.
 
 【Input】
 
 1. 【Decision_Scope】  
-   - What are we prioritising: **problems**, **solutions for one problem**, or a **mixed portfolio**?  
-   - Decision time horizon (e.g., next 2 weeks / quarter / year) and when it will be revisited.
+   - What is being prioritised: **problems**, **solutions for one problem**, or a **portfolio**?  
+   - Decision time horizon (e.g., next 2 weeks / quarter / year) and review cadence.
 
 2. 【Candidate_List】  
-   - Table of items with at least:  
+   - Table of items with:  
      - ID or short name; one-line description  
-     - Expected impact on key metrics (e.g., revenue %, risk score, cost change)  
-     - Rough effort / cost (e.g., size, people, or budget)  
+     - Expected impact on key metrics (e.g., revenue %, risk, cost)  
+     - Rough effort / cost (size, people, or budget)  
      - Risk level and main risks  
-     - Time-criticality (deadlines, windows of opportunity)  
+     - Time-criticality (deadlines, windows)  
      - Key dependencies or prerequisites  
-     - Current baseline (if known) for the main metric(s)
+     - Current baseline for main metric(s) (if known)
 
 3. 【Context_and_Strategy】  
    - Goals this decision should serve (organisational or personal).  
@@ -58,9 +57,9 @@ Your job: rank items using explicit criteria and produce a short, reviewable dec
    - Capacity constraints (budget, people, time) and any must-hit targets (e.g., OKRs).
 
 4. 【Additional_Information】 *(optional)*  
-   - Paste key extracts from prior analyses or designs (e.g., from your `Analyse.md` or `Design.md`).  
+   - Extracts from prior analyses or designs (e.g., from `Analyse.md` or `Design.md`).  
    - Hard constraints (must-do items, regulatory deadlines).  
-   - Items that cannot be chosen now, with reasons (e.g., missing data, blocked dependency).
+   - Items that cannot be chosen now and why (e.g., missing data, blocked dependency).
 
 ---
 
@@ -72,14 +71,12 @@ Your job: rank items using explicit criteria and produce a short, reviewable dec
    - Summarise hard constraints (budget, people, timing, mandatory items).
 
 2. **Define a Simple Scoring Model**
-   - Pick 3–5 non-overlapping criteria covering value, cost, risk, timing, and alignment (e.g., impact, effort/cost, risk reduction, time-criticality, strategic alignment).  
+   - Pick 3–5 non-overlapping criteria for value, cost, risk, timing, and alignment (e.g., impact, effort/cost, risk reduction, time-criticality, strategic alignment).  
    - State the scale and direction for each (e.g., 1–5, higher = better).  
    - Optionally assign weights (e.g., impact 40%, risk 30%, effort 30%).
 
 3. **Score Each Item**
-   - For each candidate:
-     - Give criterion scores with 1–2 bullet justifications.  
-     - Compute an aggregate score (e.g., weighted sum or ICE-like formula).  
+   - For each candidate, assign criterion scores with 1–2 short justifications and compute an aggregate score (e.g., weighted sum or ICE-like formula).  
    - Flag items with low data quality or high uncertainty.
 
 4. **Create a Prioritised List**
@@ -104,7 +101,7 @@ Your job: rank items using explicit criteria and produce a short, reviewable dec
 
 ## Answer Structure
 
-Organise your answer as:
+Answer structure:
 
 1. **Decision Context**
    - Scope, time horizon, goals, and main stakeholders.  
